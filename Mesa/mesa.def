@@ -1,0 +1,7 @@
+LIBRARY "Dinrus.Mesa.dll"
+DESCRIPTION "Графическая библиотека для DInRus"
+EXETYPE NT
+SUBSYSTEM WINDOWS
+CODE SHARED EXECUTE
+DATA WRITE
+
