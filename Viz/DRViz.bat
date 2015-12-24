@@ -1,10 +1,11 @@
-set R=%DINRUS%\..\imp\dinrus\
+set R=%DINRUS%\..\imp\dinrus
+set this=%DINRUS%\..\dev\DINRUS\Viz
 dinrus
 :go
 del *.rsp *.lib
 ls2 -d vizW/*.d>>win32.rsp
 :::dmd -inline -O  -g -debug -version=Unicode -lib -ofViz.lib @win32.rsp
-dmd -g -debug -O -ofDinrus.Viz.dll dll2 @win32.rsp viz.def viz.res import.lib
+dmd -g -debug -d -O -ofDinrus.Viz.dll %this%\dll2 @win32.rsp %this%\viz.def %this%\viz.res import.lib
 :dindll.lib
 :dmd -g -debug -O -lib -ofviz_stat.lib @win32.rsp
 implib /system Viz.lib Dinrus.Viz.dll

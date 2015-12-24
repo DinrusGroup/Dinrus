@@ -168,7 +168,7 @@ del core.lib
 cls
 
 :Lib
-%LS% -d %TANGO%\import\lib\*.d>>libs.rsp
+%LS% -d %TANGO%\import\lib\*.d>>%TANGO%\libs.rsp
 %DMD% -lib -d  -of%TANGO%\libs.lib @%TANGO%\libs.rsp
 if exist %TANGO%\libs.lib del %TANGO%\libs.rsp
 if not exist %TANGO%\libs.lib pause
@@ -186,7 +186,7 @@ del util.lib
 cls
 
 :Text
-%LS% -d %TANGO%\wdir\text\*.d %TANGO%\wdir\text\convert\*.d  %TANGO%\wdir\text\json\*.d  %TANGO%\wdir\text\locale\*.d %TANGO%\wdir\text\xml\*.d>>txt.rsp
+%LS% -d %TANGO%\wdir\text\*.d %TANGO%\wdir\text\convert\*.d  %TANGO%\wdir\text\json\*.d  %TANGO%\wdir\text\locale\*.d %TANGO%\wdir\text\xml\*.d>>%TANGO%\txt.rsp
 %DMD% -lib -d  -of%TANGO%\txt.lib @%TANGO%\txt.rsp
 if exist %TANGO%\txt.lib del %TANGO%\txt.rsp
 if not exist %TANGO%\txt.lib pause

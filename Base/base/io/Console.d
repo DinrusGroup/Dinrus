@@ -532,7 +532,10 @@ export:
                                 override т_мера пиши (проц[] ист)
                                 {
                                 if (перенапр)
-                                    return super.пиши (ист);
+								{
+								эхо("redirected!");
+                                    return super.пиши (ист);									
+									}
                                 else
                                    {
                                    DWORD i = ист.length;

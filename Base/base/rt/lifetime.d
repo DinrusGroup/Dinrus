@@ -69,9 +69,8 @@ extern (C) void rt_finalize(void* p, bool det = true)
 }
 
 /**
- * An optimized version of rt_finalize that assumes it's being called from
- * the garbage collector and avoids wasting time on things that are
- * irrelevant in this case.
+ * Оптимизированная версия rt_finalize, вызов которой предполагается
+ * из СМ, чем компенсируется задержка на ненужные операции.
  */
 extern (C) void rt_finalize_gc(void* p)
 {

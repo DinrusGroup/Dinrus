@@ -20,6 +20,7 @@
 
 :::Deleting previous objects
 @del %LDIR%\Dinrus.lib
+@del %LDIR%\Dinrus.bak
 @del %this%\*.rsp
 @del %this%\*.obj
 @del %this%\*.map

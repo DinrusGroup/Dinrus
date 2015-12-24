@@ -185,8 +185,9 @@ export extern (C) void consoleErrString (char[] s)
 
 *******************************************************************************/
 
-struct Console
+export extern (C) struct Console
 {
+export extern (C):
         alias newline opCall;
         alias emit    opCall;
     
@@ -227,12 +228,11 @@ public Console console;
 alias console say;
 alias say консоль;
 
-проц ошибнс(ткст ткт){console.err(ткт~"\r\n");}
+export extern(D)
+{
+    проц ошибнс(ткст ткт){console.err(ткт~"\r\n");}
 	проц скажи(бдол ткт){console(ткт);}
 	проц скажинс(бдол ткт){console(ткт).нс;}
-
-export extern(Windows)
-{
 	проц скажи(ткст ткт){console(ткт);}
 	проц скажинс(ткст ткт){console(ткт).нс;}
 	проц нс(){console();}
