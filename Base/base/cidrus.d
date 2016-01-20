@@ -1692,8 +1692,8 @@ struct т_делид
 цел дайНомош(){return getErrno();}      
 цел устНомош(цел n){return setErrno(n);}   
 
-проц влекиисклфе(цел исклы){return feraiseexcept(исклы);}
-проц сотриисклфе(цел исклы){return feclearexcept(исклы);}
+проц влекиисклфе(цел исклы){feraiseexcept(исклы);}
+проц сотриисклфе(цел исклы){feclearexcept(исклы);}
 
 цел тестисклфе(цел исклы){return fetestexcept(исклы);}
 цел задержиисклфе(т_фсред* средп){return feholdexcept(cast(fenv_t*) средп);}
@@ -1704,9 +1704,9 @@ struct т_делид
 цел дайкругфе(){return fegetround();}
 цел усткругфе(цел круг){return fesetround(круг);}
 
-проц дайсредфе(т_фсред* средп){return fegetenv(cast(fenv_t*)средп);}
-проц устсредфе(in т_фсред* средп){return fesetenv(cast(fenv_t*) средп);}
-проц обновисредфе(in т_фсред* средп){return feupdateenv(cast(fenv_t*) средп);}
+проц дайсредфе(т_фсред* средп){fegetenv(cast(fenv_t*)средп);}
+проц устсредфе(in т_фсред* средп){fesetenv(cast(fenv_t*) средп);}
+проц обновисредфе(in т_фсред* средп){feupdateenv(cast(fenv_t*) средп);}
 
 дол  цмаксабс(дол j){ return cast(дол) imaxabs(cast(intmax_t)j);}
 т_цмаксдел цмаксдел(дол число, дол делитель){return cast(т_цмаксдел) imaxdiv(число, делитель);}

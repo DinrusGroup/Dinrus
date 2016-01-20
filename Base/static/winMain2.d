@@ -1,4 +1,5 @@
 ﻿module winMain;
+pragma(lib,"DinrusTango.lib");
 import sys.win32.UserGdi;
 
 extern(C)	бул ртСтарт(ПередВходом передвхо = пусто, ОбработчикИсключения дг = пусто);
@@ -10,9 +11,9 @@ extern (Windows)
 {
     цел рез;
 
-    проц обрИскл(Исключение e)
+	проц обрИскл(Исключение e)
     {
-        throw e;
+        e.выведи();
     }
 
     try
@@ -22,14 +23,13 @@ extern (Windows)
 
         рез = myWinMain(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
 
-        ртСтоп(пусто, &обрИскл);
     }
     catch (Объект o)		// catch any uncaught exceptions
     {
        // MessageBoxA(null, вТкст0(o.вТкст()), "Ошибка", MB_OK | MB_ICONEXCLAMATION);
         рез = 0;		// failed
     }
-
+	scope(exit){ ртСтоп(пусто, &обрИскл); }
     return рез;
 }
 

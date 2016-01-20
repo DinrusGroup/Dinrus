@@ -106,7 +106,6 @@ extern (D) class Exception : Object
     this( ткст msg, ткст file, long  line, Exception next, TraceInfo info );
     this( ткст msg, Exception next=null );
     this( ткст msg, ткст file, long  line, Exception next=null );
-		
 	override проц print();
 	override проц выведи();	
 	

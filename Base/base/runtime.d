@@ -892,10 +892,17 @@ extern (C)  void _d_gc_removerange(ук pbot)
 
 extern (C) void setTypeInfo(TypeInfo ti, ук  укз)
 	{
+	try{
 		if (ti.flags() & 1)
 		_см.нетУказателей(укз);
 		else
 		_см.естьУказатели(укз);
+		}
+	catch(Исключение искл)
+		{
+		debug(TypeInfo) искл.выведи;
+		_см.нетУказателей(укз);
+		}
 	}
 
 extern (C) ук  getGCHandle()

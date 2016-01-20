@@ -1,13 +1,15 @@
 ﻿module scConfig;
 import util.worktools, cidrus, win, stdrus, exception;
 
-pragma(lib, "ucrt.lib");
-extern(C)
+version(UCRT)
 {
-int _waccess(wchar* path, int access_mode);
-int _wchmod(wchar* path, int mode);
+	pragma(lib, "ucrt.lib");
+	extern(C)
+	{
+	int _waccess(wchar* path, int access_mode);
+	int _wchmod(wchar* path, int mode);
+	}
 }
-
 alias пауза пз;
 alias раскройГлоб рг;
 
@@ -158,8 +160,8 @@ version=7.51 Build 020
 PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
-LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib
+LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\rulada_eng\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
+DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -174,8 +176,8 @@ version=7.51 Build 020
 PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
-LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib
+LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\rulada_eng\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
+DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -185,7 +187,7 @@ LINKCMD=%DINRUS%\\dmlink.exe
 
 бул проверьЗапись(ткст файл)
 {
-if( _waccess(вЮ16н(файл), 2) != -1) return да;
+version(UCRT) {if( _waccess(вЮ16н(файл), 2) != -1) return да;}
 return нет;
 }
 
@@ -194,24 +196,11 @@ return нет;
 {
 	try
 	{
-	if(проверьЗапись(КОНФ))
 	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	catch(ФайлИскл фи)
-	{
-	if( _wchmod(вЮ16н(КОНФ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	
-	try
-	{
-	if(проверьЗапись(СЦ_ИНИ))
 	запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУС);
 	}
 	catch(ФайлИскл фи)
 	{
-	if( _wchmod(вЮ16н(СЦ_ИНИ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУС);	
 	}
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(СЦ_ИНИ));
 	нс;
@@ -223,24 +212,11 @@ return нет;
 	
 	try
 	{
-	if(проверьЗапись(КОНФ))
 	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	catch(ФайлИскл фи)
-	{
-	if( _wchmod(вЮ16н(КОНФ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	
-	try
-	{
-	if(проверьЗапись(СЦ_ИНИ))
 	запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУСДОП);
 	}
 	catch(ФайлИскл фи)
 	{
-	if( _wchmod(вЮ16н(СЦ_ИНИ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУСДОП);	
 	}
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(СЦ_ИНИ));
 	нс;
@@ -251,24 +227,11 @@ return нет;
 {
 	try
 	{
-	if(проверьЗапись(КОНФ))
 	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	catch(ФайлИскл фи)
-	{
-	if( _wchmod(вЮ16н(КОНФ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	
-	try
-	{
-	if(проверьЗапись(СЦ_ИНИ))
 	запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУСДОПГИП);
 	}
 	catch(ФайлИскл фи)
 	{
-	if( _wchmod(вЮ16н(СЦ_ИНИ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(СЦ_ИНИ, КОНФИГ_ДИНРУСДОПГИП);	
 	}
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
 	нс;
@@ -279,24 +242,11 @@ return нет;
 {
 	try
 	{
-	if(проверьЗапись(КОНФ))
 	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
+	запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫ);	
 	}
 	catch(ФайлИскл фи)
 	{
-	if( _wchmod(вЮ16н(КОНФ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
-	}
-	
-	try
-	{
-	if(проверьЗапись(СЦ_ИНИ))
-	запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫ);
-	}
-	catch(ФайлИскл фи)
-	{
-	if( _wchmod(вЮ16н(СЦ_ИНИ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫ);	
 	}
 
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
@@ -308,25 +258,13 @@ return нет;
 {
 	try
 	{
-	if(проверьЗапись(КОНФ))
 	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
+	запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫДОП);	
 	}
 	catch(ФайлИскл фи)
 	{
-	if( _wchmod(вЮ16н(КОНФ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
 	}
-	
-	try
-	{
-	if(проверьЗапись(СЦ_ИНИ))
-	запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫ);
-	}
-	catch(ФайлИскл фи)
-	{
-	if( _wchmod(вЮ16н(СЦ_ИНИ), 6) == -1) ошибка("Файл незаписываемый");
-	 else запиши_в(СЦ_ИНИ, КОНФИГ_РУЛАДЫДОП);	
-	}
+
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
 	нс;
 	скажинс(" ВЕРСИЯ = РУЛАДА КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИТЕКАМИ");

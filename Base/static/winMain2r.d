@@ -1,4 +1,5 @@
 ﻿module winMain;
+pragma(lib,"DinrusTango.lib");
 import sys.win32.UserGdi;
 import sys.DStructs: КЛАССОКДОП;
 

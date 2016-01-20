@@ -89,12 +89,12 @@ copy %this%\import\geom\*.d  %R%\geom\*.di
 mkdir %R%\util
 copy %this%\import\util\*.d  %R%\util\*.di
 
-mkdir %R%\io
-mkdir %R%\io\device
-mkdir %R%\io\stream
-copy %this%\import\io\*.d  %R%\io\*.di
-copy %this%\import\io\device\*.d  %R%\io\*.di
-copy %this%\import\io\stream\*.d  %R%\io\*.di
+::mkdir %R%\io
+::mkdir %R%\io\device
+::mkdir %R%\io\stream
+::copy %this%\import\io\*.d  %R%\io\*.di
+::copy %this%\import\io\device\*.d  %R%\io\*.di
+::copy %this%\import\io\stream\*.d  %R%\io\*.di
 
 :::Compiling C code
 
@@ -109,7 +109,8 @@ copy %this%\import\io\stream\*.d  %R%\io\*.di
 :Base
 :::Creating respond file
 :::%this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d
-%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d %this%\base\sys\*.d %this%\base\sys\inc\*.d %this%\base\std\*.d %this%\base\*.d %this%\base\tpl\*.d %this%\base\rt\*.d>>%this%\objs.rsp
+::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
+%LS% -d %this%\base\std\*.d %this%\base\*.d %this%\base\tpl\*.d %this%\base\rt\*.d %this%\base\sys\*.d %this%\base\sys\inc\*.d>>%this%\objs.rsp
 
 :::Make Dinrus.Base.dll
 

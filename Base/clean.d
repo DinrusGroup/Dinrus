@@ -1,14 +1,16 @@
 ﻿import stdrus, win;
 
-pragma(lib, "ucrt.lib");
-extern(C)
+version(UCRT)
 {
-int _waccess(wchar* path, int access_mode);
-int _wchmod(wchar* path, int mode);
+	pragma(lib, "ucrt.lib");
+	extern(C)
+	{
+	int _waccess(wchar* path, int access_mode);
+	int _wchmod(wchar* path, int mode);
+	}
 }
-
 alias скажифнс ск;
- цел удалиФайлы(ткст флрасш, ткст путь = "e:\\dinrus\\dev\\DINRUS\\Base")
+ цел удалиФайлы(ткст флрасш, ткст путь = "d:\\dinrus\\dev\\DINRUS\\Base")
  { 
  цел удалено = 0;
 
@@ -24,7 +26,7 @@ alias скажифнс ск;
 		}
 		catch(ВВИскл искл){
 		//throw искл;
-		if( _wchmod(вЮ16н(d), 6) == -1) ошибка(фм("Файл незаписываемый: %s", d));
+		version(UCRT) if( _wchmod(вЮ16н(d), 6) == -1) ошибка(фм("Файл незаписываемый: %s", d));
 		удалиФайл(d);
 		удалено++;
 		}

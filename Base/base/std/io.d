@@ -365,6 +365,7 @@ size_t readln(фук fp, inout ткст buf)
 	}
 	finally{}
 	}
+	 //char[] buf = rt.charset.fromMBSz(char* inbuf, 0);
 
 	if (__fhnd_info[fp._file] & ФУК_ШИМ)
 	{   /* Stream is in wide characters.

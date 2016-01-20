@@ -424,12 +424,11 @@ debug  {
     {	
 		this(msg,file,cast(т_мера) line,null,ртСоздайКонтекстСледа(null));
     }
-	
 	override проц print()
     {
 		{
 		УстановиАтрибутыТекстаКонсоли(КОНСОШ, 0x0002|0x0008);
-		ошибнс(фм("\n\nВНИМАНИЕ! Перехвачен вывод исключения со следующим контекстом:"));
+		ошибнс(фм("\n\nВНИМАНИЕ! Произошло исключение со следующим контекстом:"));
 		окрась();		
 		if (file.length>0 || line!=0)
         {
@@ -781,7 +780,7 @@ export:
     проц[] init() { return null; }
 	проц[] иниц(){return init();}
 
-    /// Get flags for type: 1 means GC should scan for pointers
+    /// Получить флаги типа: 1 означает, что СМ должен сканировать указатели
     бцел flags() { return 0; }
 	бцел флаги(){return flags();}
 
@@ -809,25 +808,25 @@ export:
 		 this.base == c.base));
     }
 
-    override hash_t getHash(in ук p) { return getHash(p); }
+    override hash_t getHash(in ук p) { return super.getHash(p); }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
 	
-    override цел equals(in ук p1, in ук p2) { return equals(p1, p2); }
+    override цел equals(in ук p1, in ук p2) { return super.equals(p1, p2); }
 	override цел равны(in ук п1, in ук п2){return equals(п1, п2);}
 	
-    override цел compare(in ук p1, in ук p2) { return compare(p1, p2); }
+    override цел compare(in ук p1, in ук p2) { return super.compare(p1, p2); }
 	override цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
 	
     override т_мера tsize() { return tsize(); }
 	override т_мера тразм(){return tsize();}
 	
-    override проц swap(ук p1, ук p2) { return swap(p1, p2); }
+    override проц swap(ук p1, ук p2) { return super.swap(p1, p2); }
 	override проц поменяй( ук п1, ук п2){return swap(п1, п2);}
 	
-    override TypeInfo next() { return next(); }
+    override TypeInfo next() { return super.next(); }
 	override ИнфОТипе следщ(){return next();}
 	
-   override  бцел flags() { return flags(); }
+   override  бцел flags() { return super.flags(); }
    override бцел флаги(){return flags();}
    
     override проц[] init() { return m_init.length ? m_init : init(); }
