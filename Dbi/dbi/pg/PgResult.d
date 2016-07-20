@@ -42,7 +42,7 @@ class PgРезультат : Результат {
 		}
 		Ряд r = new Ряд();
 		for (цел a = 0; a < numFields; a++) {
-			r.добавьПоле(убери(toDString(PQfимя(результаты, a))), убери(toDString(PQgetvalue(результаты, индекс, a))), "", PQftype(результаты, a));
+			r.добавьПоле(убери(toDString(PQfname(результаты, a))), убери(toDString(PQgetvalue(результаты, индекс, a))), "", PQftype(результаты, a));
 		}
 		индекс++;
 		return r;

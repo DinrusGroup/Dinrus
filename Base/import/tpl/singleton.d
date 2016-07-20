@@ -62,7 +62,7 @@ public:
     {
         if (!укнаэкз__)
         {
-            // check if singleton alive
+            // check if singleton жив
             if (разрушен__)
             {
                 приМёртвойССылке();

@@ -23,7 +23,7 @@ private import dbi.mssql.imp, dbi.mssql.MssqlResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class MssqlDatabase : БазаДанных {
+class ЭмЭсЭсКюЭлБД : БазаДанных {
 	public:
 	/**
 	 * Create a new instance of БазаДанных, but don't подключись.
@@ -59,7 +59,7 @@ class MssqlDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	MssqlDatabase бд = new MssqlDatabase();
+	 *	ЭмЭсЭсКюЭлБД бд = new ЭмЭсЭсКюЭлБД();
 	 *	бд.подключись("host порт", "имя_пользователя", "пароль");
 	 *	---
 	 */
@@ -70,7 +70,7 @@ class MssqlDatabase : БазаДанных {
 		}
 
 		// allocate context
-		ret = cs_ctx_размест(CS_VERSION_100, &ctx);
+		ret = cs_ctx_alloc(CS_VERSION_100, &ctx);
 		if (ret != CS_SUCCEED) {
 			throw new ИсклДБИ("Cannot allocate context");
 		}
@@ -82,7 +82,7 @@ class MssqlDatabase : БазаДанных {
 		}
 
 		// allocate подключение
-		ret = ct_con_размест(ctx, &con);
+		ret = ct_con_alloc(ctx, &con);
 		if (ret != CS_SUCCEED) {
 			throw new ИсклДБИ("Cannot allocate подключение");
 		}
@@ -106,7 +106,7 @@ class MssqlDatabase : БазаДанных {
 		}
 
 		// подключись
-		ret = ct_подключись(con, пусто, CS_NULLTERM);
+		ret = ct_connect(con, пусто, CS_NULLTERM);
 		if (ret != CS_SUCCEED) {
 			throw new ИсклДБИ("Cannot подключись to бд");
 		}
@@ -117,7 +117,7 @@ class MssqlDatabase : БазаДанных {
 	 */
 	override проц закрой () {
 		if (con !is пусто) {
-			if (ct_закрой(con, CS_UNUSED) != CS_SUCCEED) {
+			if (ct_close(con, CS_UNUSED) != CS_SUCCEED) {
 				throw new ИсклДБИ("Cannot закрой подключение to бд");
 			} else {
 				con = пусто;
@@ -135,7 +135,7 @@ class MssqlDatabase : БазаДанных {
 	 *	ИсклДБИ if the SQL code couldn't be выполниd.
 	 */
 	override проц выполни (ткст эскюэл) {
-		if (ct_cmd_размест(con, &cmd) != CS_SUCCEED) {
+		if (ct_cmd_alloc(con, &cmd) != CS_SUCCEED) {
 			throw new ИсклДБИ("Cannot allocate command");
 		}
 
@@ -186,7 +186,7 @@ class MssqlDatabase : БазаДанных {
 	 *	ИсклДБИ if the SQL code couldn't be выполниd.
 	 */
 	override MssqlResult запрос (ткст эскюэл) {
-		if (ct_cmd_размест(con, &cmd) != CS_SUCCEED) {
+		if (ct_cmd_alloc(con, &cmd) != CS_SUCCEED) {
 			throw new ИсклДБИ("Cannot allocate command");
 		}
 
@@ -260,7 +260,7 @@ unittest {
 	}
 
 	s1("dbi.mssql.MssqlDatabase:");
-	MssqlDatabase бд = new MssqlDatabase();
+	ЭмЭсЭсКюЭлБД бд = new ЭмЭсЭсКюЭлБД();
 	s2("подключись");
 	бд.подключись("sqlvs1 1433", "test", "test");
 

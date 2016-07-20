@@ -1,85 +1,15 @@
-﻿/**
- * Thread Local Storage для DigitalMars D.
- * Модуль дает простой обмотчик для системно-специфичных средств (thread local storage)
- * локального сохранения в потоке.
- *
- * Authors: Mikola Lysenko, (mclysenk@mtu.edu)
- * License: Public Domain (100% free)
- * Date: 9-11-2006
- * Version: 0.3
- *
- * History:
- *  v0.3 - Fixed some clean up bugs and added fallback code for other platforms.
- *
- *  v0.2 - Merged with stackthreads.
- *
- *  v0.1 - Initial release.
- *
- * Bugs:
- *  On non-windows & non-posix systems, the implementation uses a synchronized
- *  block which may negatively impact performance.
- *
- *  Локальное хранилище потока на Windows имеет неверную сборку мусора. Это же
- *  на Posix и в других средах не имеет проблем.
- *
- * Пример:
- * <code><pre>
- * //Создать счетчик, исходно установленный на 5
- * auto tls_counter = new ThreadLocal!(int)(5);
- * 
- * //Создать поток
- * Thread t = new Thread(
- * {
- *   //Просто уменьшать счётчик до достижения 0.
- *   while(tls_counter.val > 0)
- *   {
- *       writefln("Countdown ... %d", tls_counter.val);
- *       tls_counter.val = tls_counter.val - 1;
- *   }
- *   writefln("Blast off!");
- *   return 0;
- * });
- *
- * //
- * // Смешать со счетчиком
- * //
- * assert(tls_counter.val == 5);
- * tls_counter.val = 20;
- * //
- * // Вызвать данную нить
- * //
- * t.start();
- * t.wait();
- * //
- * // В ходе работы будет выведено:
- * //
- * //  Countdown ... 5
- * //  Countdown ... 4
- * //  Countdown ... 3
- * //  Countdown ... 2
- * //  Countdown ... 1
- * //  Blast off!
- * //
- * // По выполнение нитью работы счётчик остается нетронутым
- * //
- * assert(tls_counter.val == 20);
- * </pre></code>
- */
-module st.tls;
+﻿module st.tls;
 
-private import
-    std.io,
-    std.string,
-    std.thread;
+private import stdrus, thread;
 
 /**
- * Исключение ThreadLocalException генерируется в случае,
+ * Исключение НитеЛокИскл генерируется в случае,
  * если во время выполнения (в рантайм) не удается
  * правильно обработать локальное поточное действие.
  */
-class ThreadLocalException : Exception
+class НитеЛокИскл : Исключение
 {
-    this(char[] msg) { super(msg); }
+    this(ткст сооб);
 }
 
 version(linux)
@@ -92,29 +22,29 @@ version(Win32)
 
 version(TLS_UsePthreads)
 {
-private import std.gc;
+private import gc;
 
 private extern(C)
 {
-    typedef uint pthread_key_t;
+    typedef бцел pthread_key_t;
     
-    int pthread_key_delete(pthread_key_t);
-    int pthread_key_create(pthread_key_t*, void function(void*));
-    int pthread_setspecific(pthread_key_t, void*);
-    void *pthread_getspecific(pthread_key_t);
+    цел pthread_key_delete(pthread_key_t);
+    цел pthread_key_create(pthread_key_t*, проц function(ук));
+    цел pthread_setspecific(pthread_key_t, ук);
+    укpthread_getspecific(pthread_key_t);
     
-    const int EAGAIN = 11;
-    const int ENOMEM = 12;
-    const int EINVAL = 22;
+    const цел EAGAIN = 11;
+    const цел ENOMEM = 12;
+    const цел EINVAL = 22;
 }
 
 /**
- * Thread Local Storage (Локальное Хранилище Потока) - это механизм
+ * Нить Local Storage (Локальное Хранилище Потока) - это механизм
  * для ассоциации переменных с определенными потоками.
- * This can be used to ensure the principle of confinement, and is
+ * This can be использован to ensure the principle of confinement, и is
  * useful for many sorts of algorithms.
  */
-public class ThreadLocal(T)
+public class НитеЛок(T)
 {
     /**
      * Allocates the thread local storage.
@@ -123,27 +53,27 @@ public class ThreadLocal(T)
      *  def = An optional default value for the thread local storage.
      *
      * Выводит исключение:
-     *  A ThreadLocalException if the system could not allocate the storage.
+     *  A НитеЛокИскл if the system could not allocate the storage.
      */
     public this(T def = T.init)
     {
         this.def = def;
         
-        switch(pthread_key_create(&tls_key, &clean_up))
+        switch(pthread_key_create(&ключ_нлх, &clean_up))
         {
             case 0: break; //Success
             
-            case EAGAIN: throw new ThreadLocalException
-                ("Out of keys for thread local storage");
+            case EAGAIN: throw new НитеЛокИскл
+                ("Вне диапазона ключей для НЛХ");
             
-            case ENOMEM: throw new ThreadLocalException
-                ("Out of memory for thread local storage");
+            case ENOMEM: throw new НитеЛокИскл
+                ("Вне диапазона памяти для НЛХ");
             
-            default: throw new ThreadLocalException
-                ("Undefined error while creating thread local storage");
+            default: throw new НитеЛокИскл
+                ("Неизвестная ошибка при создании НЛХ");
         }
         
-        debug (ThreadLocal) writefln("TLS: Created %s", toString);
+        debug (НитеЛок) скажифнс("НЛХ: Создано %s", вТкст);
     }
     
     /**
@@ -151,32 +81,32 @@ public class ThreadLocal(T)
      */
     public ~this()
     {
-        debug (ThreadLocal) writefln("TLS: Deleting %s", toString);
-        pthread_key_delete(tls_key);
+        debug (НитеЛок) скажифнс("НЛХ: Удаляется %s", вТкст);
+        pthread_key_delete(ключ_нлх);
     }
     
     /**
-     * Возвращает: The current value of the thread local storage.
+     * Возвращает: The текущ value of the thread local storage.
      */
-    public T val()
+    public T знач()
     {
-        debug (ThreadLocal) writefln("TLS: Accessing %s", toString);
+        debug (НитеЛок) скажифнс("НЛХ: Доступ к %s", вТкст);
         
-        TWrapper * w = cast(TWrapper*)pthread_getspecific(tls_key);
+        TWrapper * w = cast(TWrapper*)pthread_getspecific(ключ_нлх);
         
-        if(w is null)
+        if(w is пусто)
         {
-            debug(ThreadLocal) writefln("TLS: Not found");
+            debug(НитеЛок) скажифнс("НЛХ: Не найдено");
             return def;
         }
         
-        debug(ThreadLocal) writefln("TLS: Found %s", w);
+        debug(НитеЛок) скажифнс("НЛХ: Обнаружено %s", w);
         
-        return w.val;
+        return w.знач;
     }
     
     /**
-     * Sets the thread local storage.  Can be used with property syntax.
+     * Sets the thread local storage.  Can be использован with property syntax.
      *
      * Параметры:
      *  nv = The new value of the thread local storage.
@@ -185,36 +115,36 @@ public class ThreadLocal(T)
      *  nv upon success
      *
      * Выводит исключение:
-     *  ThreadLocalException if the system could not set the ThreadLocalStorage.
+     *  НитеЛокИскл if the system could not установи the НитеЛокStorage.
      */
-    public T val(T nv)
+    public T знач(T nv)
     {
-        debug (ThreadLocal) writefln("TLS: Setting %s", toString);
+        debug (НитеЛок) скажифнс("НЛХ: Устанавливается %s", вТкст);
         
-        void * w_old = pthread_getspecific(tls_key);
+        ук w_old = pthread_getspecific(ключ_нлх);
         
-        if(w_old !is null)
+        if(w_old !is пусто)
         {
-            (cast(TWrapper*)w_old).val = nv;
+            (cast(TWrapper*)w_old).знач = nv;
         }
         else
         {
-            switch(pthread_setspecific(tls_key, TWrapper(nv)))
+            switch(pthread_setspecific(ключ_нлх, TWrapper(nv)))
             {
                 case 0: break;
                     
-                case ENOMEM: throw new ThreadLocalException
-                    ("Insufficient memory to set new thread local storage");
+                case ENOMEM: throw new НитеЛокИскл
+                    ("Недостаток памяти для установки нового НЛХ");
                 
-                case EINVAL: throw new ThreadLocalException
-                    ("Invalid thread local storage");
+                case EINVAL: throw new НитеЛокИскл
+                    ("Неверное НЛХ");
                 
-                default: throw new ThreadLocalException
-                    ("Undefined error when setting thread local storage");
+                default: throw new НитеЛокИскл
+                    ("Неизвестная ошибка при кстановке НЛХ");
             }
         }
         
-        debug(ThreadLocal) writefln("TLS: Set %s", toString);
+        debug(НитеЛок) скажифнс("НЛХ: Установка %s", вТкст);
         return nv;
     }
     
@@ -225,104 +155,106 @@ public class ThreadLocal(T)
      * Возвращает:
      *  A string representing the thread local storage.
      */
-    public char[] toString()
+    public ткст вТкст()
     {
-        return format("ThreadLocal[%8x]", tls_key);
+        return фм("НитеЛок[%8x]", ключ_нлх);
     }
 
     
     // Clean up thread local resources
-    private extern(C) static void clean_up(void * объ)
+    private extern(C) static проц clean_up(ук объ)
     {
-        if(объ is null)
+        if(объ is пусто)
             return;
         
-        std.gc.removeRoot(объ);
+        смУдалиКорень(объ);
         delete объ;
     }
     
     // The wrapper manages the thread local attributes`
     private struct TWrapper
     {
-        T val;
+        T знач;
         
-        static void * opCall(T nv)
+        static ук opCall(T nv)
         {
             TWrapper * res = new TWrapper;
-            std.gc.addRoot(cast(void*)res);
-            res.val = nv;
-            return cast(void*)res;
+            смДобавьКорень(cast(ук)res);
+            res.знач = nv;
+            return cast(ук)res;
         }
     }
     
-    private pthread_key_t tls_key;
+    private pthread_key_t ключ_нлх;
     private T def;
 }
 
-} else version(TLS_UseWinAPI) {
+}
+ else version(TLS_UseWinAPI)
+{
 
-private import std.gc;
+private import gc;
     
 private extern(Windows)
 {
-    uint TlsAlloc();
-    bool TlsFree(uint);
-    bool TlsSetValue(uint, void*);
-    void* TlsGetValue(uint);
+    бцел TlsAlloc();
+    бул TlsFree(бцел);
+    бул TlsSetValue(бцел, ук);
+    ук TlsGetValue(бцел);
 }
 
-public class ThreadLocal(T)
+public class НитеЛок(T)
 {
     public this(T def = T.init)
     {
         this.def = def;
-        this.tls_key = TlsAlloc();
+        this.ключ_нлх = TlsAlloc();
     }
     
     public ~this()
     {
-        TlsFree(tls_key);
+        TlsFree(ключ_нлх);
     }
     
-    public T val()
+    public T знач()
     {
-        void * v = TlsGetValue(tls_key);
+        ук v = TlsGetValue(ключ_нлх);
         
-        if(v is null)
+        if(v is пусто)
             return def;
         
-        return (cast(TWrapper*)v).val;
+        return (cast(TWrapper*)v).знач;
     }
     
-    public T val(T nv)
+    public T знач(T nv)
     {
-        TWrapper * w_old = cast(TWrapper*)TlsGetValue(tls_key);
+        TWrapper * w_old = cast(TWrapper*)TlsGetValue(ключ_нлх);
         
-        if(w_old is null)
+        if(w_old is пусто)
         {
-            TlsSetValue(tls_key, TWrapper(nv));
+            TlsSetValue(ключ_нлх, TWrapper(nv));
         }
         else
         {
-            w_old.val = nv;
+            w_old.знач = nv;
         }
         
         return nv;
     }
     
-    private uint tls_key;
+    private бцел ключ_нлх;
     private T def;
         
     private struct TWrapper
     {
-        T val;
+        T знач;
         
-        static void * opCall(T nv)
+        static ук opCall(T nv)
         {
             TWrapper * res = new TWrapper;
-            std.gc.addRoot(cast(void*)res);
-            res.val = nv;
-            return cast(void*)res;
+            смДобавьКорень(cast(ук)res);
+            res.знач = nv;
+            return cast(ук)res;
         }
     }
 }
@@ -331,18 +263,18 @@ public class ThreadLocal(T)
 
 //Use a terrible hack insteaauxd...
 //Performance will be bad, but at least we can fake the result.
-public class ThreadLocal(T)
+public class НитеЛок(T)
 {
     public this(T def = T.init)
     {
         this.def = def;
     }
     
-    public T val()
+    public T знач()
     {
         synchronized(this)
         {
-            Thread t = Thread.getThis;
+            Нить t = Нить.дайЭту;
             
             if(t in tls_map)
                 return tls_map[t];
@@ -350,124 +282,16 @@ public class ThreadLocal(T)
         }
     }
     
-    public T val(T nv)
+    public T знач(T nv)
     {
         synchronized(this)
         {
-            return tls_map[Thread.getThis] = nv;
+            return tls_map[Нить.дайЭту] = nv;
         }
     }
     
     private T def;
-    private T[Thread] tls_map;
+    private T[Нить] tls_map;
 }
     
-}
-
-unittest
-{
-    //Attempt to test out the tls
-    auto tls = new ThreadLocal!(int);
-    
-    //Make sure default values work
-    assert(tls.val == 0);
-    
-    //Init tls to something
-    tls.val = 333;
-    
-    //Create some threads to mess with the tls
-    Thread a = new Thread(
-    {
-        tls.val = 10;
-        Thread.yield;
-        assert(tls.val == 10);
-        
-        tls.val = 1010;
-        Thread.yield;
-        assert(tls.val == 1010);
-        
-        return 0;
-    });
-    
-    Thread b = new Thread(
-    {
-        tls.val = 20;
-        Thread.yield;
-        assert(tls.val == 20);
-        
-        tls.val = 2020;
-        Thread.yield;
-        assert(tls.val == 2020);
-        
-        return 0;
-    });
-    
-    a.start;
-    b.start;
-    
-    //Wait until they have have finished
-    a.wait;
-    b.wait;
-    
-    //Make sure the value was preserved
-    assert(tls.val == 333);
-    
-    //Try out structs
-    struct TestStruct
-    {
-        int x = 10;
-        real r = 20.0;
-        byte b = 3;
-    }
-    
-    auto tls2 = new ThreadLocal!(TestStruct);
-    
-    assert(tls2.val.x == 10);
-    assert(tls2.val.r == 20.0);
-    assert(tls2.val.b == 3);
-    
-    Thread x = new Thread(
-    {
-        assert(tls2.val.x == 10);
-        
-        TestStruct nv;
-        nv.x = 20;
-        tls2.val = nv;
-        
-        assert(tls2.val.x == 20);
-        
-        return 0;
-    });
-    
-    x.start();
-    x.wait();
-    
-    assert(tls2.val.x == 10);
-    
-    //Try out objects
-    static class TestClass
-    {
-        int x = 10;
-    }
-    
-    auto tls3 = new ThreadLocal!(TestClass)(new TestClass);
-    
-    assert(tls3.val.x == 10);
-    
-    Thread y = new Thread(
-    {
-        tls3.val.x ++;
-        
-        tls3.val = new TestClass;
-        tls3.val.x = 2020;
-        
-        assert(tls3.val.x == 2020);
-        
-        return 0;
-    });
-    
-    y.start;
-    y.wait;
-    
-    assert(tls3.val.x == 11);
 }

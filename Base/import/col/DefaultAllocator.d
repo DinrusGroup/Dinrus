@@ -65,7 +65,7 @@ template ДефолтныйРазместитель(V);
     struct БлокРазместитель(V, бцел элтовНаБлок)
     {
         /**
-         * Free is needed to recycle nodes for another allocation.
+         * Free is needed to рециклируй nodes for another allocation.
          */
         const бул нужноСвоб = true;
         static if(V.sizeof < (ук).sizeof)
@@ -218,7 +218,7 @@ template ДефолтныйРазместитель(V);
                     if(свеж.члоОсвоб != 0)
                     {
                         //
-                        // can recycle elements from свеж
+                        // can рециклируй elements from свеж
                         //
                         используется = свеж;
                     }

@@ -1,10 +1,10 @@
 ﻿/******************************************************
- * Стековые Потоки (СтэкThreads) - это сотрудничающие, легковесные
- * потоки. СтэкThreads очень эффективны, требуют
+ * Стековые Потоки (СтэкНити) - это сотрудничающие, легковесные
+ * потоки. СтэкНити очень эффективны, требуют
  * меньше времени на переключение контекста, чем реальные потоки.
  * Для них также нужно меньше ресурсов, чем для реальных потоков,
  * что дает возможность одновременного существования большого числа
- * СтэкThreads. К тому же, СтэкThreads не требуется явная синхронизация,
+ * СтэкНити. К тому же, СтэкНити не требуется явная синхронизация,
  * так как они non-preemptive.  Не требуется, чтобы код был для повторного входа.
  *
  * Данный модуль реализует систему стековых потоков на основе
@@ -24,9 +24,9 @@
  * История:
  *  v0.7 - Резолюция отсчета времени переключена на миллисекунды.
  *
- *	v0.6 - Удалены функции отсчета времени из st_жни/st_throwYield
+ *	v0.6 - Удалены функции отсчета времени из сн_жни/сн_бросайЖни
  *
- *  v0.5 - Добавлены st_throwYield и MAX/MIN_THREAD_PRIORITY
+ *  v0.5 - Добавлены сн_бросайЖни и MAX/MIN_THREAD_PRIORITY
  *
  *  v0.4 - Unittests готов для первоначального выпуска.
  *
@@ -61,8 +61,8 @@ const т_приоритет МИН_ПРИОРИТЕТ_СТЭКНИТИ = 0x80000
 /// The состояние of a стэк thread
 enum ПСостояниеНити
 {
-    Готов,      /// Нить is ready to пуск
-    Выполняется,    /// Нить is currently running
+    Готов,      /// Нить is готов to пуск
+    Выполняется,    /// Нить is currently выполняется
     Завершён,       /// Нить имеется terminated
     Подвешен,  /// Нить is suspended
 }
@@ -70,16 +70,16 @@ enum ПСостояниеНити
 /// The состояние of the планировщик
 enum ПСостояниеПланировщика
 {
-    Готов,      /// Scheduler is ready to пуск a thread
-    Выполняется,    /// Scheduler is running a timeslice
+    Готов,      /// Scheduler is готов to пуск a thread
+    Выполняется,    /// Scheduler is выполняется a timeslice
 }
 
 //Timeslices
-private STPriorityQueue active_slice;
-private STPriorityQueue next_slice;
+private ОчередьПриоритетовСН активный_срез;
+private ОчередьПриоритетовСН следующий_срез;
 
 //Scheduler состояние
-private ПСостояниеПланировщика sched_state;
+private ПСостояниеПланировщика сост_планировщ;
     
 //Start time of the time slice
 private бдол sched_t0;
@@ -97,9 +97,9 @@ version(Win32)
 //Initialize the планировщик
 static this()
 {
-    active_slice = new STPriorityQueue();
-    next_slice = new STPriorityQueue();
-    sched_state = ПСостояниеПланировщика.Готов;
+    активный_срез = new ОчередьПриоритетовСН();
+    следующий_срез = new ОчередьПриоритетовСН();
+    сост_планировщ = ПСостояниеПланировщика.Готов;
     sched_t0 = -1;
     sched_st = пусто;
     
@@ -130,9 +130,9 @@ class ИсклСтэкНити : Исключение
 
 
 /******************************************************
- * СтэкThreads are much like regular threads except
+ * СтэкНити are much like regular threads except
  * they are cooperatively scheduleauxd.  A user may switch
- * between СтэкThreads using st_yielauxd.
+ * between СтэкНити using st_yielauxd.
  ******************************************************/
 class СтэкНить
 {
@@ -158,9 +158,9 @@ class СтэкНить
         this.m_priority = приоритет;
         
         //Schedule the thread
-        st_schedule(this);
+        сн_запланируй(this);
         
-        debug (СтэкНить) пишифнс("Created thread, %s", вТкст);
+        debug (СтэкНить) скажифнс("Created thread, %s", вТкст);
     }
     
     /**
@@ -187,9 +187,9 @@ class СтэкНить
         this.m_priority = приоритет;
         
         //Schedule the thread
-        st_schedule(this);
+        сн_запланируй(this);
         
-        debug (СтэкНить) пишифнс("Created thread, %s", вТкст);
+        debug (СтэкНить) скажифнс("Created thread, %s", вТкст);
     }
     
     /**
@@ -209,7 +209,7 @@ class СтэкНить
         }
         else
         {
-        static ткст[] state_names =
+        static ткст[] названия_состояний =
         [
             "RDY",
             "RUN",
@@ -222,8 +222,8 @@ class СтэкНить
         {
             struct dele
             {
-                проц * frame;
-                проц * fptr;
+                ук frame;
+                ук fptr;
             }
             
             dele d;
@@ -240,7 +240,7 @@ class СтэкНить
         return фм(
             "Нить[pr=%d,st=%s,fn=%8x]", 
             приоритет,
-            state_names[cast(бцел)состояние],
+            названия_состояний[cast(бцел)состояние],
             h.d.fptr);
         }
     }
@@ -252,19 +252,19 @@ class СтэкНить
         switch(состояние)
         {
             case ПСостояниеНити.Готов:
-                assert(контекст.ready);
+                assert(контекст.готов);
             break;
             
             case ПСостояниеНити.Выполняется:
-                assert(контекст.running);
+                assert(контекст.выполняется);
             break;
             
             case ПСостояниеНити.Завершён:
-                assert(!контекст.running);
+                assert(!контекст.выполняется);
             break;
             
             case ПСостояниеНити.Подвешен:
-                assert(контекст.ready);
+                assert(контекст.готов);
             break;
 
 			default: assert(false);
@@ -286,14 +286,14 @@ class СтэкНить
      * thread will not be пуск until it is added back to
      * the планировщик.
      */
-    public final проц pause()
+    public final проц пауза()
     {
-        debug (СтэкНить) пишифнс("Pausing %s", вТкст);
+        debug (СтэкНить) скажифнс("Pausing %s", вТкст);
         
         switch(состояние)
         {
             case ПСостояниеНити.Готов:
-                st_deschedule(this);
+                сн_отмени(this);
                 состояние = ПСостояниеНити.Подвешен;
             break;
             
@@ -302,10 +302,10 @@ class СтэкНить
             break;
             
             case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot pause a dead thread");
+                throw new ИсклСтэкНити(this, "Cannot пауза a мёртв thread");
             
             case ПСостояниеНити.Подвешен:
-                throw new ИсклСтэкНити(this, "Cannot pause a paused thread");
+                throw new ИсклСтэкНити(this, "Cannot пауза a на_паузе thread");
 
 			default: assert(false);
         }
@@ -313,22 +313,22 @@ class СтэкНить
     
     /**
      * Adds the стэк thread back to the планировщик. It
-     * will resume running with its приоритет & состояние
+     * will возобнови выполняется with its приоритет & состояние
      * intact.
      */
-    public final проц resume()
+    public final проц возобнови()
     {
-        debug (СтэкНить) пишифнс("Resuming %s", вТкст);
+        debug (СтэкНить) скажифнс("Возобновляется %s", вТкст);
         
-        //Can only resume paused threads
+        //Can only возобнови на_паузе threads
         if(состояние != ПСостояниеНити.Подвешен)
         {
-            throw new ИсклСтэкНити(this, "Нить is not suspended");
+            throw new ИсклСтэкНити(this, "Нить не заморожена!");
         }
         
-        //Set состояние to ready и schedule
+        //Set состояние to готов и schedule
         состояние = ПСостояниеНити.Готов;
-        st_schedule(this);
+        сн_запланируй(this);
     }
     
     /**
@@ -337,31 +337,31 @@ class СтэкНить
      * anything up, it is descheduled и all GC references
      * are releaseauxd.
      */
-    public final проц kill()
+    public final проц души()
     {
-        debug (СтэкНить) пишифнс("Killing %s", вТкст);
+        debug (СтэкНить) скажифнс("Killing %s", вТкст);
         
         switch(состояние)
         {
             case ПСостояниеНити.Готов:
-                //Kill thread и remove from планировщик
-                st_deschedule(this);
+                //Kill thread и удали from планировщик
+                сн_отмени(this);
                 состояние = ПСостояниеНити.Завершён;
-                контекст.kill();
+                контекст.души();
             break;
             
             case ПСостояниеНити.Выполняется:
-                //Transition to dead
+                //Transition to мёртв
                 transition(ПСостояниеНити.Завершён);
             break;
             
             case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot kill already dead threads");
+                throw new ИсклСтэкНити(this, "Уже потушенную нить удушить нельзя");
             
             case ПСостояниеНити.Подвешен:
-                //We need to kill the стэк, no need to touch планировщик
+                //We need to души the стэк, no need to touch планировщик
                 состояние = ПСостояниеНити.Завершён;
-                контекст.kill();
+                контекст.души();
             break;
 
 			default: assert(false);
@@ -369,27 +369,27 @@ class СтэкНить
     }
     
     /**
-     * Waits to join with this threaauxd.  If the given amount
-     * of milliseconds expires before the thread is dead,
+     * Waits to объедини with this thread.  If the given amount
+     * of milliseconds expires before the thread is мёртв,
      * then we return automatically.
      *
      * Параметры:
      *  ms = The maximum amount of time the thread is 
      *  allowed to wait. The special value -1 implies that
-     *  the join will wait indefinitely.
+     *  the объедини will wait indefinitely.
      *
      * Возвращает:
      *  The amount of millieconds the thread was actually
      *  waiting.
      */
-    public final бдол join(бдол ms = -1)
+    public final бдол объедини(бдол ms = -1)
     {
-        debug (СтэкНить) пишифнс("Joining %s", вТкст);
+        debug (СтэкНить) скажифнс("Joining %s", вТкст);
         
         //Make sure we are in a timeslice
-        if(sched_state != ПСостояниеПланировщика.Выполняется)
+        if(сост_планировщ != ПСостояниеПланировщика.Выполняется)
         {
-            throw new ИсклСтэкНити(this, "Cannot join unless a timeslice is currently in progress");
+            throw new ИсклСтэкНити(this, "Cannot объедини unless a timeslice is currently in progress");
         }
         
         //And make sure we are joining with a действителен thread
@@ -399,13 +399,13 @@ class СтэкНить
                 break;
             
             case ПСостояниеНити.Выполняется:
-                throw new ИсклСтэкНити(this, "A thread cannot join with itself!");
+                throw new ИсклСтэкНити(this, "A thread cannot объедини with itself!");
             
             case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot join with a dead thread");
+                throw new ИсклСтэкНити(this, "Cannot объедини with a мёртв thread");
             
             case ПСостояниеНити.Подвешен:
-                throw new ИсклСтэкНити(this, "Cannot join with a paused thread");
+                throw new ИсклСтэкНити(this, "Cannot объедини with a на_паузе thread");
 
 			default: assert(false);
         }
@@ -427,18 +427,18 @@ class СтэкНить
     
     /**
      * Restarts the thread's execution from the very
-     * beginning.  Suspended и dead threads are not
+     * beginning.  Suspended и мёртв threads are not
      * resumed, but upon resuming, they will перезапуск.
      */
     public final проц перезапуск()
     {
-        debug (СтэкНить) пишифнс("Restarting %s", вТкст);
+        debug (СтэкНить) скажифнс("Restarting %s", вТкст);
         
         //Each состояние needs to be handled carefully
         switch(состояние)
         {
             case ПСостояниеНити.Готов:
-                //If we are ready,
+                //If we are готов,
                 контекст.перезапуск();
             break;
             
@@ -487,12 +487,12 @@ class СтэкНить
     public final т_приоритет приоритет(т_приоритет p)
     {
         //Update приоритет
-        if(sched_state == ПСостояниеПланировщика.Готов && 
+        if(сост_планировщ == ПСостояниеПланировщика.Готов && 
             состояние == ПСостояниеНити.Готов)
         {
-            next_slice.remove(this);
+            следующий_срез.удали(this);
             m_priority = p;
-            next_slice.add(this);
+            следующий_срез.добавь(this);
         }
         
         return m_priority = p;
@@ -507,17 +507,17 @@ class СтэкНить
     }
     
     /**
-     * Возвращает: True if the thread is ready to пуск.
+     * Возвращает: True if the thread is готов to пуск.
      */
-    public final бул ready()
+    public final бул готов()
     {
         return состояние == ПСостояниеНити.Готов;
     }
     
     /**
-     * Возвращает: True if the thread is currently running.
+     * Возвращает: True if the thread is currently выполняется.
      */
-    public final бул running()
+    public final бул выполняется()
     {
         return состояние == ПСостояниеНити.Выполняется;
     }
@@ -525,23 +525,23 @@ class СтэкНить
     /**
      * Возвращает: True if the thread is deaauxd.
      */
-    public final бул dead()
+    public final бул мёртв()
     {
         return состояние == ПСостояниеНити.Завершён;
     }
     
     /**
-     * Возвращает: True if the thread is not deaauxd.
+     * Возвращает: True if the thread is not dead.
      */
-    public final бул alive()
+    public final бул жив()
     {
         return состояние != ПСостояниеНити.Завершён;
     }
     
     /**
-     * Возвращает: True if the thread is pauseauxd.
+     * Возвращает: True if the thread is на_паузе.
      */
-    public final бул paused()
+    public final бул на_паузе()
     {
         return состояние == ПСостояниеНити.Подвешен;
     }
@@ -561,9 +561,9 @@ class СтэкНить
         this.m_priority = приоритет;
         
         //Schedule the thread
-        st_schedule(this);
+        сн_запланируй(this);
         
-        debug (СтэкНить) пишифнс("Created thread, %s", вТкст);
+        debug (СтэкНить) скажифнс("Created thread, %s", вТкст);
     }
     
     /**
@@ -602,23 +602,23 @@ class СтэкНить
     {
         try
         {
-            debug (СтэкНить) пишифнс("Starting %s", вТкст);
+            debug (СтэкНить) скажифнс("Starting %s", вТкст);
             пуск;
         }
         catch(Объект o)
         {
-            debug (СтэкНить) пишифнс("Got a %s exception from %s", o.вТкст, вТкст);
+            debug (СтэкНить) скажифнс("Got a %s exception from %s", o.вТкст, вТкст);
             throw o;
         }
         finally
         {
-            debug (СтэкНить) пишифнс("Finished %s", вТкст);
+            debug (СтэкНить) скажифнс("Finished %s", вТкст);
             состояние = ПСостояниеНити.Завершён;
         }
     }
 
     /**
-     * Used to change the состояние of a running thread
+     * Used to change the состояние of a выполняется thread
      * gracefully
      */
     private final проц transition(ПСостояниеНити next_state)
@@ -631,13 +631,13 @@ class СтэкНить
 
 
 /******************************************************
- * The STPriorityQueue is использован by the планировщик to
+ * The ОчередьПриоритетовСН is использован by the планировщик to
  * order the objects in the стэк threads.  For the
  * moment, the implementation is binary heap, but future
  * versions might use a binomial heap for performance
  * improvements.
  ******************************************************/
-private class STPriorityQueue
+private class ОчередьПриоритетовСН
 {
 public:
     
@@ -647,7 +647,7 @@ public:
      * Параметры:
      *  st = The thread we are adding.
      */
-    проц add(СтэкНить st)
+    проц добавь(СтэкНить st)
     in
     {
         assert(st !is пусто);
@@ -697,7 +697,7 @@ public:
         assert(st);
         
         //Fixup the стэк и we're gooauxd.
-        bubble_up(st);
+        вспень(st);
     }
     
     /**
@@ -706,11 +706,11 @@ public:
      * Параметры:
      *  st = The стэк thread we are removing.
      */
-    проц remove(СтэкНить st)
+    проц удали(СтэкНить st)
     in
     {
         assert(st);
-        assert(hasThread(st));
+        assert(естьНить(st));
     }
     out
     {
@@ -814,9 +814,9 @@ public:
         
         
         //Bubble up
-        bubble_up(tmp);
+        вспень(tmp);
         //Bubble back down
-        bubble_down(tmp);
+        запень(tmp);
         
     }
     
@@ -899,7 +899,7 @@ public:
         head = tmp;
         
         //Bubble down
-        bubble_down(tmp);
+        запень(tmp);
         
         //Drop размер и return
         --размер;
@@ -913,7 +913,7 @@ public:
      * Параметры:
      *  other = The queue we are merging with.
      */
-    проц merge(STPriorityQueue other)
+    проц совмести(ОчередьПриоритетовСН other)
     {
         СтэкНить[] стэк;
         стэк ~= other.head;
@@ -932,7 +932,7 @@ public:
                 tmp.right =
                 tmp.left = пусто;
                 
-                add(tmp);
+                добавь(tmp);
             }
         }
         
@@ -944,7 +944,7 @@ public:
     /**
      * Возвращает: true if the heap actually contains the thread st.
      */
-    бул hasThread(СтэкНить st)
+    бул естьНить(СтэкНить st)
     {
         СтэкНить tmp = st;
         while(tmp !is пусто)
@@ -1001,10 +1001,10 @@ public:
             }
         }
         
-        пишифнс("");
+        скажифнс("");
     }
     
-    проц bubble_up(СтэкНить st)
+    проц вспень(СтэкНить st)
     {
         //Ok, now we are at the bottom, so time to bubble up
         while(st.parent !is пусто)
@@ -1019,7 +1019,7 @@ public:
             assert(st);
             assert(st.parent);
             
-            //пишифнс("%s <-> %s", a.вТкст, st.вТкст);
+            //скажифнс("%s <-> %s", a.вТкст, st.вТкст);
             
             //Switch parents
             st.parent = a.parent;
@@ -1068,7 +1068,7 @@ public:
             if(a.right !is пусто) a.right.parent = a;
             if(a.left !is пусто) a.left.parent = a;
             
-            //пишифнс("%s <-> %s", a.вТкст, st.вТкст);
+            //скажифнс("%s <-> %s", a.вТкст, st.вТкст);
             
             assert(st);
             assert(a);
@@ -1078,7 +1078,7 @@ public:
     }
     
     //Bubbles a thread downward
-    проц bubble_down(СтэкНить st)
+    проц запень(СтэкНить st)
     {
         while(st.left !is пусто)
         {
@@ -1093,7 +1093,7 @@ public:
                 {
                     a = st.left;
                     assert(a);
-                    //пишифнс("Left: %s - %s", st, a);
+                    //скажифнс("Left: %s - %s", st, a);
                     
                     st.left = a.left;
                     a.left = st;
@@ -1109,7 +1109,7 @@ public:
             {
                 a = st.right;
                 assert(a);
-                //пишифнс("Right: %s - %s", st, a);
+                //скажифнс("Right: %s - %s", st, a);
                 
                 st.right = a.right;
                 a.right = st;
@@ -1147,7 +1147,7 @@ public:
             
             assert(a);
             assert(st);
-            //пишифнс("Done: %s - %s", st, a);            
+            //скажифнс("Done: %s - %s", st, a);            
         }
     }
 }
@@ -1155,73 +1155,73 @@ public:
 debug (PQueue)
  unittest
 {
-    пишифнс("Testing приоритет queue");
+    скажифнс("Testing приоритет queue");
     
     
     //Созд some queue
-    STPriorityQueue q1 = new STPriorityQueue();
-    STPriorityQueue q2 = new STPriorityQueue();
-    STPriorityQueue q3 = new STPriorityQueue();
+    ОчередьПриоритетовСН q1 = new ОчередьПриоритетовСН();
+    ОчередьПриоритетовСН q2 = new ОчередьПриоритетовСН();
+    ОчередьПриоритетовСН q3 = new ОчередьПриоритетовСН();
     
     assert(q1);
     assert(q2);
     assert(q3);
     
     //Add some элементы
-    пишифнс("Adding элементы");
-    q1.add(new СтэкНить(1));
+    скажифнс("Adding элементы");
+    q1.добавь(new СтэкНить(1));
     q1.print();
     assert(q1);
-    q1.add(new СтэкНить(2));
+    q1.добавь(new СтэкНить(2));
     q1.print();
     assert(q1);
-    q1.add(new СтэкНить(3));
+    q1.добавь(new СтэкНить(3));
     q1.print();
     assert(q1);
-    q1.add(new СтэкНить(4));
+    q1.добавь(new СтэкНить(4));
     q1.print();
     assert(q1);
     
-    пишифнс("Removing элементы");
+    скажифнс("Removing элементы");
     СтэкНить t;
     
     t = q1.верх();
-    пишифнс("t:%s",t.приоритет);
+    скажифнс("t:%s",t.приоритет);
     q1.print();
     assert(t.приоритет == 4);
     assert(q1);
     
     t = q1.верх();
-    пишифнс("t:%s",t.приоритет);
+    скажифнс("t:%s",t.приоритет);
     q1.print();
     assert(t.приоритет == 3);
     assert(q1);
     
     t = q1.верх();
-    пишифнс("t:%s",t.приоритет);
+    скажифнс("t:%s",t.приоритет);
     q1.print();
     assert(t.приоритет == 2);
     assert(q1);
     
     t = q1.верх();
-    пишифнс("t:%s",t.приоритет);
+    скажифнс("t:%s",t.приоритет);
     q1.print();
     assert(t.приоритет == 1);
     assert(q1);
     
-    пишифнс("Second round of adds");
-    q2.add(new СтэкНить(5));
-    q2.add(new СтэкНить(4));
-    q2.add(new СтэкНить(1));
-    q2.add(new СтэкНить(3));
-    q2.add(new СтэкНить(6));
-    q2.add(new СтэкНить(2));
-    q2.add(new СтэкНить(7));
-    q2.add(new СтэкНить(0));
+    скажифнс("Second round of adds");
+    q2.добавь(new СтэкНить(5));
+    q2.добавь(new СтэкНить(4));
+    q2.добавь(new СтэкНить(1));
+    q2.добавь(new СтэкНить(3));
+    q2.добавь(new СтэкНить(6));
+    q2.добавь(new СтэкНить(2));
+    q2.добавь(new СтэкНить(7));
+    q2.добавь(new СтэкНить(0));
     assert(q2);
     q2.print();
     
-    пишифнс("Testing верх выкиньion again");
+    скажифнс("Testing верх выкиньion again");
     assert(q2.верх.приоритет == 7);
     q2.print();
     assert(q2.верх.приоритет == 6);
@@ -1233,45 +1233,45 @@ debug (PQueue)
     assert(q2.верх.приоритет == 0);
     assert(q2);
     
-    пишифнс("Third round");
-    q2.add(new СтэкНить(10));
-    q2.add(new СтэкНить(7));
-    q2.add(new СтэкНить(5));
-    q2.add(new СтэкНить(7));
+    скажифнс("Third round");
+    q2.добавь(new СтэкНить(10));
+    q2.добавь(new СтэкНить(7));
+    q2.добавь(new СтэкНить(5));
+    q2.добавь(new СтэкНить(7));
     q2.print();
     assert(q2);
     
-    пишифнс("Testing выкиньion");
+    скажифнс("Testing выкиньion");
     assert(q2.верх.приоритет == 10);
     assert(q2.верх.приоритет == 7);
     assert(q2.верх.приоритет == 7);
     assert(q2.верх.приоритет == 5);
     
-    пишифнс("Testing merges");
-    q3.add(new СтэкНить(10));
-    q3.add(new СтэкНить(-10));
-    q3.add(new СтэкНить(10));
-    q3.add(new СтэкНить(-10));
+    скажифнс("Testing merges");
+    q3.добавь(new СтэкНить(10));
+    q3.добавь(new СтэкНить(-10));
+    q3.добавь(new СтэкНить(10));
+    q3.добавь(new СтэкНить(-10));
     
-    q2.add(new СтэкНить(-9));
-    q2.add(new СтэкНить(9));
-    q2.add(new СтэкНить(-9));
-    q2.add(new СтэкНить(9));
+    q2.добавь(new СтэкНить(-9));
+    q2.добавь(new СтэкНить(9));
+    q2.добавь(new СтэкНить(-9));
+    q2.добавь(new СтэкНить(9));
     
     q2.print();
     q3.print();
-    q3.merge(q2);
+    q3.совмести(q2);
     
-    пишифнс("q2:%d", q2.размер);
+    скажифнс("q2:%d", q2.размер);
     q2.print();
-    пишифнс("q3:%d", q3.размер);
+    скажифнс("q3:%d", q3.размер);
     q3.print();
     assert(q2);
     assert(q3);
     assert(q2.размер == 0);
     assert(q3.размер == 8);
     
-    пишифнс("Extracting merges");
+    скажифнс("Extracting merges");
     assert(q3.верх.приоритет == 10);
     assert(q3.верх.приоритет == 10);
     assert(q3.верх.приоритет == 9);
@@ -1281,45 +1281,45 @@ debug (PQueue)
     assert(q3.верх.приоритет == -10);
     assert(q3.верх.приоритет == -10);
     
-    пишифнс("Testing removal");
+    скажифнс("Testing removal");
     СтэкНить ta = new СтэкНить(5);
     СтэкНить tb = new СтэкНить(6);
     СтэкНить tc = new СтэкНить(10);
     
-    q2.add(new СтэкНить(7));
-    q2.add(new СтэкНить(1));
-    q2.add(ta);
-    q2.add(tb);
-    q2.add(tc);
+    q2.добавь(new СтэкНить(7));
+    q2.добавь(new СтэкНить(1));
+    q2.добавь(ta);
+    q2.добавь(tb);
+    q2.добавь(tc);
     
     assert(q2);
     assert(q2.размер == 5);
     
-    пишифнс("Removing");
-    q2.remove(ta);
-    q2.remove(tc);
-    q2.remove(tb);
+    скажифнс("Removing");
+    q2.удали(ta);
+    q2.удали(tc);
+    q2.удали(tb);
     assert(q2.размер == 2);
     
-    пишифнс("Dumping heap");
+    скажифнс("Dumping heap");
     assert(q2.верх.приоритет == 7);
     assert(q2.верх.приоритет == 1);
     
     
-    пишифнс("Testing big add/subtract");
+    скажифнс("Testing big добавь/subtract");
     СтэкНить[100] st;
-    STPriorityQueue stq = new STPriorityQueue();
+    ОчередьПриоритетовСН stq = new ОчередьПриоритетовСН();
     
     for(цел i=0; i<100; i++)
     {
         st[i] = new СтэкНить(i);
-        stq.add(st[i]);
+        stq.добавь(st[i]);
     }
     
-    stq.remove(st[50]);
-    stq.remove(st[10]);
-    stq.remove(st[31]);
-    stq.remove(st[88]);
+    stq.удали(st[50]);
+    stq.удали(st[10]);
+    stq.удали(st[31]);
+    stq.удали(st[88]);
     
     for(цел i=99; i>=0; i--)
     {
@@ -1328,9 +1328,9 @@ debug (PQueue)
             assert(stq.верх.приоритет == i);
         }
     }
-    пишифнс("Big add/remove worked");
+    скажифнс("Big добавь/удали worked");
     
-    пишифнс("Priority queue passed");
+    скажифнс("Priority queue passed");
 }
 
 
@@ -1410,7 +1410,7 @@ else
  * Параметры:
  *  st = Нить we are scheduling
  */
-private проц st_schedule(СтэкНить st)
+private проц сн_запланируй(СтэкНить st)
 in
 {
     assert(st.состояние == ПСостояниеНити.Готов);
@@ -1419,8 +1419,8 @@ body
 {
     debug(PQueue) { return; }
     
-    debug (СтэкНить) пишифнс("Scheduling %s", st.вТкст);
-    next_slice.add(st);
+    debug (СтэкНить) скажифнс("Scheduling %s", st.вТкст);
+    следующий_срез.добавь(st);
 }
 
 /**
@@ -1429,43 +1429,43 @@ body
  * Параметры:
  *  st = Нить we are removing.
  */
-private проц st_deschedule(СтэкНить st)
+private проц сн_отмени(СтэкНить st)
 in
 {
     assert(st.состояние == ПСостояниеНити.Готов);
 }
 body
 {
-    debug (СтэкНить) пишифнс("Descheduling %s", st.вТкст);
-    if(active_slice.hasThread(st))
+    debug (СтэкНить) скажифнс("Descheduling %s", st.вТкст);
+    if(активный_срез.естьНить(st))
     {
-        active_slice.remove(st);
+        активный_срез.удали(st);
     }
     else
     {
-        next_slice.remove(st);
+        следующий_срез.удали(st);
     }
 }
 
 /**
  * Runs a single timeslice.  During a timeslice each
- * currently running thread is executed once, with the
+ * currently выполняется thread is executed once, with the
  * highest приоритет первый.  Any number of things may
  * cause a timeslice to be aborted, inclduing;
  *
  *  o An exception is unhandled in a thread which is пуск
- *  o The st_abortSlice function is called
- *  o The timelimit is exceeded in st_runSlice
+ *  o The сн_прекратиСрез function is called
+ *  o The timelimit is exceeded in сн_запустиСрез
  *
  * If a timeslice is not finished, it will be resumed on
- * the next call to st_runSlice.  If this is undesirable,
- * calling st_resetSlice will cause the timeslice to
+ * the next call to сн_запустиСрез.  If this is undesirable,
+ * calling сн_перезапустиСрез will cause the timeslice to
  * execute from the beginning again.
  *
  * Newly created threads are not пуск until the next
  * timeslice.
  * 
- * This works just like the regular st_runSlice, except it
+ * This works just like the regular сн_запустиСрез, except it
  * is timeauxd.  If the lasts longer than the specified amount
  * of nano seconds, it is immediately aborteauxd.
  *
@@ -1481,10 +1481,10 @@ body
  * Возвращает: The total number of milliseconds использован by the
  *  timeslice.
  */
-бдол st_runSlice(бдол ms = -1)
+бдол сн_запустиСрез(бдол ms = -1)
 {
     
-    if(sched_state != ПСостояниеПланировщика.Готов)
+    if(сост_планировщ != ПСостояниеПланировщика.Готов)
     {
         throw new ИсклСтэкНити("Cannot пуск a timeslice while another is already in progress!");
     }
@@ -1493,24 +1493,24 @@ body
     бдол stop_time = (ms == -1) ? ms : sched_t0 + ms;
     
     //Swap slices
-    if(active_slice.размер == 0)
+    if(активный_срез.размер == 0)
     {
-        STPriorityQueue tmp = next_slice;
-        next_slice = active_slice;
-        active_slice = tmp;
+        ОчередьПриоритетовСН tmp = следующий_срез;
+        следующий_срез = активный_срез;
+        активный_срез = tmp;
     }
     
-    debug (СтэкНить) пишифнс("Running slice with %d threads", active_slice.размер);
+    debug (СтэкНить) скажифнс("Running slice with %d threads", активный_срез.размер);
     
-    sched_state = ПСостояниеПланировщика.Выполняется;
+    сост_планировщ = ПСостояниеПланировщика.Выполняется;
     
-    while(active_slice.размер > 0 && 
+    while(активный_срез.размер > 0 && 
         (getSysMillis() - sched_t0) < stop_time &&
-        sched_state == ПСостояниеПланировщика.Выполняется)
+        сост_планировщ == ПСостояниеПланировщика.Выполняется)
     {
         
-        sched_st = active_slice.верх();
-        debug(СтэкНить) пишифнс("Starting thread: %s", sched_st);
+        sched_st = активный_срез.верх();
+        debug(СтэкНить) скажифнс("Starting thread: %s", sched_st);
         sched_st.состояние = ПСостояниеНити.Выполняется;
         
         
@@ -1522,7 +1522,7 @@ body
         {
             //Handle exit condition on thread
             
-            sched_state = ПСостояниеПланировщика.Готов;
+            сост_планировщ = ПСостояниеПланировщика.Готов;
             throw o;
         }
         finally
@@ -1533,13 +1533,13 @@ body
                 case ПСостояниеНити.Готов:
                     //Нить wants to be restarted
                     sched_st.контекст.перезапуск();
-                    next_slice.add(sched_st);
+                    следующий_срез.добавь(sched_st);
                 break;
                 
                 case ПСостояниеНити.Выполняется:
                     //Nothing unusual, pass it to next состояние
                     sched_st.состояние = ПСостояниеНити.Готов;
-                    next_slice.add(sched_st);
+                    следующий_срез.добавь(sched_st);
                 break;
                 
                 case ПСостояниеНити.Подвешен:
@@ -1548,7 +1548,7 @@ body
                 
                 case ПСостояниеНити.Завершён:
                     //Kill thread's контекст
-                    sched_st.контекст.kill();
+                    sched_st.контекст.души();
                 break;
 
 				default: assert(false);
@@ -1558,39 +1558,39 @@ body
         }
     }
     
-    sched_state = ПСостояниеПланировщика.Готов;
+    сост_планировщ = ПСостояниеПланировщика.Готов;
     
     return getSysMillis() - sched_t0;
 }
 
 /**
- * Aborts a currently running slice.  The thread which
- * invoked st_abortSlice will continue to пуск until it
+ * Aborts a currently выполняется slice.  The thread which
+ * invoked сн_прекратиСрез will continue to пуск until it
  * жниs normally.
  */
-проц st_abortSlice()
+проц сн_прекратиСрез()
 {
-    debug (СтэкНить) пишифнс("Aborting slice");
+    debug (СтэкНить) скажифнс("Aborting slice");
     
-    if(sched_state != ПСостояниеПланировщика.Выполняется)
+    if(сост_планировщ != ПСостояниеПланировщика.Выполняется)
     {
-        throw new ИсклСтэкНити("Cannot abort the timeslice while the планировщик is not running!");
+        throw new ИсклСтэкНити("Cannot abort the timeslice while the планировщик is not выполняется!");
     }
     
-    sched_state = ПСостояниеПланировщика.Готов;
+    сост_планировщ = ПСостояниеПланировщика.Готов;
 }
 
 /**
  * Restarts the entire timeslice from the beginning.
  * This имеется no effect if the последний timeslice was started
- * from the beginning.  If a slice is currently running,
+ * from the beginning.  If a slice is currently выполняется,
  * then the текущ thread will continue to execute until
  * it жниs normally.
  */
-проц st_resetSlice()
+проц сн_перезапустиСрез()
 {
-    debug (СтэкНить) пишифнс("Resetting timeslice");
-    next_slice.merge(active_slice);
+    debug (СтэкНить) скажифнс("Resetting timeslice");
+    следующий_срез.совмести(активный_срез);
 }
 
 /**
@@ -1598,22 +1598,22 @@ body
  * functionally equivalent to КонтекстСтэка.жни, except
  * it returns the amount of time the thread was жниeauxd.
  */
-проц st_жни()
+проц сн_жни()
 {
-    debug (СтэкНить) пишифнс("Yielding %s", sched_st.вТкст);
+    debug (СтэкНить) скажифнс("Yielding %s", sched_st.вТкст);
     
     КонтекстСтэка.жни();
 }
 
 /**
  * Throws an object и жниs the threaauxd.  The exception
- * is propagated out of the st_runSlice methoauxd.
+ * is propagated out of the сн_запустиСрез methoauxd.
  */
-проц st_throwYield(Объект t)
+проц сн_бросайЖни(Объект t)
 {
-    debug (СтэкНить) пишифнс("Throwing %s, Yielding %s", t.вТкст, sched_st.вТкст);
+    debug (СтэкНить) скажифнс("Throwing %s, Yielding %s", t.вТкст, sched_st.вТкст);
     
-    КонтекстСтэка.throwYield(t);
+    КонтекстСтэка.бросьЖни(t);
 }
 
 /**
@@ -1627,9 +1627,9 @@ body
  * Возвращает: The number of milliseconds the thread was
  * asleep.
  */
-бдол st_sleep(бдол ms)
+бдол сн_спи(бдол ms)
 {
-    debug(СтэкНить) пишифнс("Sleeping for %d in %s", ms, sched_st.вТкст);
+    debug(СтэкНить) скажифнс("Sleeping for %d in %s", ms, sched_st.вТкст);
     
     бдол t0 = getSysMillis();
     
@@ -1646,16 +1646,16 @@ body
  * Возвращает: The number of milliseconds since the start of
  * the timeslice.
  */
-бдол st_time()
+бдол сн_время()
 {
     return getSysMillis() - sched_t0;
 }
 
 /**
- * Возвращает: The currently running стэк threaauxd.  пусто if
+ * Возвращает: The currently выполняется стэк threaauxd.  пусто if
  * a timeslice is not in progress.
  */
-СтэкНить st_getRunning()
+СтэкНить сн_дайВыполняемый()
 {
     return sched_st;
 }
@@ -1663,36 +1663,36 @@ body
 /**
  * Возвращает: The текущ состояние of the планировщик.
  */
-ПСостояниеПланировщика st_getState()
+ПСостояниеПланировщика сн_дайСостояние()
 {
-    return sched_state;
+    return сост_планировщ;
 }
 
 /**
- * Возвращает: True if the планировщик is running a timeslice.
+ * Возвращает: True if the планировщик is выполняется a timeslice.
  */
-бул st_isRunning()
+бул сн_выполянем_ли()
 {
-    return sched_state == ПСостояниеПланировщика.Выполняется;
+    return сост_планировщ == ПСостояниеПланировщика.Выполняется;
 }
 
 /**
  * Возвращает: The number of threads stored in the планировщик.
  */
-цел st_numThreads()
+цел сн_члоНитей()
 {
-    return active_slice.размер + next_slice.размер;
+    return активный_срез.размер + следующий_срез.размер;
 }
 
 /**
  * Возвращает: The number of threads остаток in the timeslice.
  */
-цел st_numSliceThreads()
+цел сн_члоНитейВСрезе()
 {
-    if(active_slice.размер > 0)
-        return active_slice.размер;
+    if(активный_срез.размер > 0)
+        return активный_срез.размер;
     
-    return next_slice.размер;
+    return следующий_срез.размер;
 }
 
 debug (PQueue) {}
@@ -1700,14 +1700,14 @@ else
 {
 unittest
 {
-    пишифнс("Testing стэк thread creation & basic scheduling");
+    скажифнс("Testing стэк thread creation & basic scheduling");
     
     static цел q0 = 0;
     static цел q1 = 0;
     static цел q2 = 0;
     
     //Run one empty slice
-    st_runSlice();
+    сн_запустиСрез();
     
     СтэкНить st0 = new СтэкНить(
     delegate проц()
@@ -1715,7 +1715,7 @@ unittest
         while(true)
         {
             q0++;
-            st_жни();
+            сн_жни();
         }
     });
     
@@ -1725,7 +1725,7 @@ unittest
         while(true)
         {
             q1++;
-            st_жни();
+            сн_жни();
         }
     });
     
@@ -1738,7 +1738,7 @@ unittest
             while(true)
             {
                 q2++;
-                st_жни();
+                сн_жни();
             }
         }
     }
@@ -1749,64 +1749,64 @@ unittest
     assert(st1);
     assert(st2);
     
-    st_runSlice();
+    сн_запустиСрез();
     
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    st1.pause();
-    st_runSlice();
+    st1.пауза();
+    сн_запустиСрез();
     
     assert(st0);
     assert(st1);
     assert(st2);
     
-    assert(st1.paused);
+    assert(st1.на_паузе);
     assert(q0 == 2);
     assert(q1 == 1);
     assert(q2 == 2);
     
-    st2.kill();
-    st_runSlice();
+    st2.души();
+    сн_запустиСрез();
     
-    assert(st2.dead);
+    assert(st2.мёртв);
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 2);
     
-    st0.kill();
-    st_runSlice();
+    st0.души();
+    сн_запустиСрез();
     
-    assert(st0.dead);
+    assert(st0.мёртв);
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 2);
     
-    st1.resume();
-    st_runSlice();
+    st1.возобнови();
+    сн_запустиСрез();
     
-    assert(st1.ready);
+    assert(st1.готов);
     assert(q0 == 3);
     assert(q1 == 2);
     assert(q2 == 2);
     
-    st1.kill();
-    st_runSlice();
+    st1.души();
+    сн_запустиСрез();
     
-    assert(st1.dead);
+    assert(st1.мёртв);
     assert(q0 == 3);
     assert(q1 == 2);
     assert(q2 == 2);
     
     
-    assert(st_numThreads == 0);
-    пишифнс("Нить creation passed!");
+    assert(сн_члоНитей == 0);
+    скажифнс("Нить creation passed!");
 }
 
 unittest
 {
-    пишифнс("Testing priorities");
+    скажифнс("Testing priorities");
     
     //Test приоритет based scheduling
     цел a = 0;
@@ -1822,20 +1822,20 @@ unittest
         assert(b == 0);
         assert(c == 0);
         
-        st_жни;
+        сн_жни;
         
         a++;
         assert(a == 2);
         assert(b == 2);
         assert(c == 2);
         
-        st_жни;
+        сн_жни;
         
         a++;
         
-        пишифнс("a=%d, b=%d, c=%d", a, b, c);
+        скажифнс("a=%d, b=%d, c=%d", a, b, c);
         assert(a == 3);
-        пишифнс("b=%d : ", b, (b==2));
+        скажифнс("b=%d : ", b, (b==2));
         assert(b == 2);
         assert(c == 2);
         
@@ -1850,7 +1850,7 @@ unittest
         assert(b == 1);
         assert(c == 0);
         
-        st_жни;
+        сн_жни;
         
         b++;
         assert(a == 1);
@@ -1867,7 +1867,7 @@ unittest
         assert(b == 1);
         assert(c == 1);
         
-        st_жни;
+        сн_жни;
         
         c++;
         assert(a == 1);
@@ -1876,7 +1876,7 @@ unittest
         
         st0.приоритет = 100;
         
-        st_жни;
+        сн_жни;
         
         c++;
         assert(a == 3);
@@ -1885,7 +1885,7 @@ unittest
         
     }, 1);
     
-    st_runSlice();
+    сн_запустиСрез();
     
     assert(st0);
     assert(st1);
@@ -1898,30 +1898,30 @@ unittest
     st0.приоритет = -10;
     st1.приоритет = -5;
     
-    st_runSlice();
+    сн_запустиСрез();
     
     assert(a == 2);
     assert(b == 2);
     assert(c == 2);
     
-    st_runSlice();
+    сн_запустиСрез();
     
-    assert(st0.dead);
-    assert(st1.dead);
-    assert(st2.dead);
+    assert(st0.мёртв);
+    assert(st1.мёртв);
+    assert(st2.мёртв);
     
     assert(a == 3);
     assert(b == 2);
     assert(c == 3);
     
-    assert(st_numThreads == 0);
-    пишифнс("Priorities pass");
+    assert(сн_члоНитей == 0);
+    скажифнс("Priorities pass");
 }
 
 version(Win32)
 unittest
 {
-    пишифнс("Testing exception handling");
+    скажифнс("Testing exception handling");
     
     цел q0 = 0;
     цел q1 = 0;
@@ -1941,7 +1941,7 @@ unittest
     try
     {
         q3++;
-        st_runSlice();
+        сн_запустиСрез();
         q3++;
     }
     catch(Исключение e)
@@ -1949,7 +1949,7 @@ unittest
         e.print;
     }
     
-    assert(st0.dead);
+    assert(st0.мёртв);
     assert(q0 == 1);
     assert(q1 == 0);
     assert(q2 == 0);
@@ -1972,29 +1972,29 @@ unittest
         while(true)
         {
             q2++;
-            st_жни();
+            сн_жни();
         }
     });
     
-    st_runSlice();
-    assert(st1.ready);
+    сн_запустиСрез();
+    assert(st1.готов);
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 1);
     assert(q3 == 1);
     
-    st1.kill;
-    assert(st1.dead);
+    st1.души;
+    assert(st1.мёртв);
     
-    assert(st_numThreads == 0);
-    пишифнс("Исключение handling passed!");
+    assert(сн_члоНитей == 0);
+    скажифнс("Исключение handling passed!");
 }
 
 unittest
 {
-    пишифнс("Testing thread pausing");
+    скажифнс("Testing thread pausing");
     
-    //Test pause
+    //Test пауза
     цел q = 0;
     цел r = 0;
     цел s = 0;
@@ -2005,13 +2005,13 @@ unittest
     delegate проц()
     {
         s++;
-        st0.pause();
+        st0.пауза();
         q++;
     });
     
     try
     {
-        st0.resume();
+        st0.возобнови();
     }
     catch(Исключение e)
     {
@@ -2024,12 +2024,12 @@ unittest
     assert(r == 1);
     assert(s == 0);
     
-    st0.pause();
-    assert(st0.paused);
+    st0.пауза();
+    assert(st0.на_паузе);
     
     try
     {
-        st0.pause();
+        st0.пауза();
     }
     catch(Исключение e)
     {
@@ -2037,33 +2037,33 @@ unittest
         r ++;
     }
     
-    st_runSlice();
+    сн_запустиСрез();
     
     assert(q == 0);
     assert(r == 2);
     assert(s == 0);
     
-    st0.resume();
-    assert(st0.ready);
+    st0.возобнови();
+    assert(st0.готов);
     
-    st_runSlice();
+    сн_запустиСрез();
     
-    assert(st0.paused);
+    assert(st0.на_паузе);
     assert(q == 0);
     assert(r == 2);
     assert(s == 1);
     
-    st0.resume();
-    st_runSlice();
+    st0.возобнови();
+    сн_запустиСрез();
     
-    assert(st0.dead);
+    assert(st0.мёртв);
     assert(q == 1);
     assert(r == 2);
     assert(s == 1);
     
     try
     {
-        st0.pause();
+        st0.пауза();
     }
     catch(Исключение e)
     {
@@ -2071,21 +2071,21 @@ unittest
         r ++;
     }
     
-    st_runSlice();
+    сн_запустиСрез();
     
-    assert(st0.dead);
+    assert(st0.мёртв);
     assert(q == 1);
     assert(r == 3);
     assert(s == 1);
     
-    assert(st_numThreads == 0);
-    пишифнс("Pause passed!");
+    assert(сн_члоНитей == 0);
+    скажифнс("Pause passed!");
 }
 
 
 unittest
 {
-    пишифнс("Testing kill");
+    скажифнс("Testing души");
     
     цел q0 = 0;
     цел q1 = 0;
@@ -2099,7 +2099,7 @@ unittest
         while(true)
         {
             q0++;
-            st_жни();
+            сн_жни();
         }
     });
     
@@ -2107,7 +2107,7 @@ unittest
     delegate проц()
     {
         q1++;
-        st1.kill();
+        st1.души();
         q1++;
     });
     
@@ -2117,42 +2117,42 @@ unittest
         while(true)
         {
             q2++;
-            st_жни();
+            сн_жни();
         }
     });
     
-    assert(st1.ready);
+    assert(st1.готов);
     
-    st_runSlice();
+    сн_запустиСрез();
     
-    assert(st1.dead);
+    assert(st1.мёртв);
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 2);
     assert(q1 == 1);
     assert(q2 == 2);
     
-    st0.kill();
-    st_runSlice();
-    assert(st0.dead);
+    st0.души();
+    сн_запустиСрез();
+    assert(st0.мёртв);
     assert(q0 == 2);
     assert(q1 == 1);
     assert(q2 == 3);
     
-    st2.pause();
-    assert(st2.paused);
-    st2.kill();
-    assert(st2.dead);
+    st2.пауза();
+    assert(st2.на_паузе);
+    st2.души();
+    assert(st2.мёртв);
     
     цел r = 0;
     
     try
     {
         r++;
-        st2.kill();
+        st2.души();
         r++;
     }
     catch(ИсклСтэкНити e)
@@ -2160,16 +2160,16 @@ unittest
         e.print;
     }
     
-    assert(st2.dead);
+    assert(st2.мёртв);
     assert(r == 1);
     
-    assert(st_numThreads == 0);
-    пишифнс("Kill passed");
+    assert(сн_члоНитей == 0);
+    скажифнс("Kill passed");
 }
 
 unittest
 {
-    пишифнс("Testing join");
+    скажифнс("Testing объедини");
     
     цел q0 = 0;
     цел q1 = 0;
@@ -2180,7 +2180,7 @@ unittest
     delegate проц()
     {
         q0++;
-        st1.join();
+        st1.объедини();
         q0++;
     }, 10);
     
@@ -2188,15 +2188,15 @@ unittest
     delegate проц()
     {
         q1++;
-        st_жни();
+        сн_жни();
         q1++;
-        st1.join();
+        st1.объедини();
         q1++;
     }, 0);
     
     try
     {
-        st0.join();
+        st0.объедини();
         assert(false);
     }
     catch(ИсклСтэкНити e)
@@ -2204,16 +2204,16 @@ unittest
         e.print();
     }
     
-    st_runSlice();
+    сн_запустиСрез();
     
-    assert(st0.alive);
-    assert(st1.alive);
+    assert(st0.жив);
+    assert(st1.жив);
     assert(q0 == 1);
     assert(q1 == 1);
     
     try
     {
-        st_runSlice();
+        сн_запустиСрез();
         assert(false);
     }
     catch(Исключение e)
@@ -2221,24 +2221,24 @@ unittest
         e.print;
     }
     
-    assert(st0.alive);
-    assert(st1.dead);
+    assert(st0.жив);
+    assert(st1.мёртв);
     assert(q0 == 1);
     assert(q1 == 2);
     
-    st_runSlice();
-    assert(st0.dead);
+    сн_запустиСрез();
+    assert(st0.мёртв);
     assert(q0 == 2);
     assert(q1 == 2);
     
-    assert(st_numThreads == 0);
-    пишифнс("Join passed");
+    assert(сн_члоНитей == 0);
+    скажифнс("Join passed");
 }
 
 unittest
 {
-    пишифнс("Testing перезапуск");
-    assert(st_numThreads == 0);
+    скажифнс("Testing перезапуск");
+    assert(сн_члоНитей == 0);
     
     цел q0 = 0;
     цел q1 = 0;
@@ -2249,27 +2249,27 @@ unittest
     delegate проц()
     {
         q0++;
-        st_жни();
+        сн_жни();
         st0.перезапуск();
     });
     
-    st_runSlice();
-    assert(st0.ready);
+    сн_запустиСрез();
+    assert(st0.готов);
     assert(q0 == 1);
     
-    st_runSlice();
-    assert(st0.ready);
+    сн_запустиСрез();
+    assert(st0.готов);
     assert(q0 == 1);
     
-    st_runSlice();
-    assert(st0.ready);
+    сн_запустиСрез();
+    assert(st0.готов);
     assert(q0 == 2);
     
-    st0.kill();
-    assert(st0.dead);
+    st0.души();
+    assert(st0.мёртв);
     
-    assert(st_numThreads == 0);
-    пишифнс("Testing the other перезапуск");
+    assert(сн_члоНитей == 0);
+    скажифнс("Testing the other перезапуск");
     
     st1 = new СтэкНить(
     delegate проц()
@@ -2277,57 +2277,57 @@ unittest
         q1++;
         while(true)
         {
-            st_жни();
+            сн_жни();
         }
     });
     
-    assert(st1.ready);
+    assert(st1.готов);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q1 == 1);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q1 == 1);
     
     st1.перезапуск();
-    st_runSlice();
-    assert(st1.ready);
+    сн_запустиСрез();
+    assert(st1.готов);
     assert(q1 == 2);
     
-    st1.pause();
-    st_runSlice();
-    assert(st1.paused);
+    st1.пауза();
+    сн_запустиСрез();
+    assert(st1.на_паузе);
     assert(q1 == 2);
     
     st1.перезапуск();
-    st1.resume();
-    st_runSlice();
-    assert(st1.ready);
+    st1.возобнови();
+    сн_запустиСрез();
+    assert(st1.готов);
     assert(q1 == 3);
     
-    st1.kill();
+    st1.души();
     st1.перезапуск();
-    assert(st1.paused);
-    st1.resume();
+    assert(st1.на_паузе);
+    st1.возобнови();
     
-    st_runSlice();
-    assert(st1.ready);
+    сн_запустиСрез();
+    assert(st1.готов);
     assert(q1 == 4);
     
-    st1.kill();
+    st1.души();
     
-    assert(st_numThreads == 0);
-    пишифнс("Restart passed");
+    assert(сн_члоНитей == 0);
+    скажифнс("Restart passed");
 }
 
 unittest
 {
-    пишифнс("Testing abort / reset");
-    assert(st_numThreads == 0);
+    скажифнс("Testing abort / reset");
+    assert(сн_члоНитей == 0);
     
     try
     {
-        st_abortSlice();
+        сн_прекратиСрез();
         assert(false);
     }
     catch(ИсклСтэкНити e)
@@ -2345,10 +2345,10 @@ unittest
     {
         while(true)
         {
-            пишифнс("st0");
+            скажифнс("st0");
             q0++;
-            st_abortSlice();
-            st_жни();
+            сн_прекратиСрез();
+            сн_жни();
         }
     }, 10);
     
@@ -2357,10 +2357,10 @@ unittest
     {
         while(true)
         {
-            пишифнс("st1");
+            скажифнс("st1");
             q1++;
-            st_abortSlice();
-            st_жни();
+            сн_прекратиСрез();
+            сн_жни();
         }
     }, 5);
     
@@ -2369,55 +2369,55 @@ unittest
     {
         while(true)
         {
-            пишифнс("st2");
+            скажифнс("st2");
             q2++;
-            st_abortSlice();
-            st_жни();
+            сн_прекратиСрез();
+            сн_жни();
         }
     }, 0);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 1);
     assert(q1 == 0);
     assert(q2 == 0);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 0);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 2);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    st_resetSlice();
-    st_runSlice();
+    сн_перезапустиСрез();
+    сн_запустиСрез();
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    st0.kill();
-    st1.kill();
-    st2.kill();
+    st0.души();
+    st1.души();
+    st2.души();
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 1);
     
-    assert(st_numThreads == 0);
-    пишифнс("Abort slice passed");
+    assert(сн_члоНитей == 0);
+    скажифнс("Abort slice passed");
 }
 
 unittest
 {
-    пишифнс("Testing throwYield");
+    скажифнс("Testing бросьЖни");
     
     цел q0 = 0;
     
@@ -2425,13 +2425,13 @@ unittest
     delegate проц()
     {
         q0++;
-        st_throwYield(new Исключение("testing st_throwYield"));
+        сн_бросайЖни(new Исключение("testing сн_бросайЖни"));
         q0++;
     });
     
     try
     {
-        st_runSlice();
+        сн_запустиСрез();
         assert(false);
     }
     catch(Исключение e)
@@ -2440,13 +2440,13 @@ unittest
     }
     
     assert(q0 == 1);
-    assert(st0.ready);
+    assert(st0.готов);
     
-    st_runSlice();
+    сн_запустиСрез();
     assert(q0 == 2);
-    assert(st0.dead);
+    assert(st0.мёртв);
     
-    assert(st_numThreads == 0);
-    пишифнс("throwYield passed");
+    assert(сн_члоНитей == 0);
+    скажифнс("бросьЖни passed");
 }
 }

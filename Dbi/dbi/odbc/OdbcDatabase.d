@@ -41,7 +41,7 @@ static this () {
 	}
 	// Note: The cast is a pseudo-bug workaround for WindowsAPI revision 144.
 	if (!SQL_SUCCEEDED(SQLSetEnvAttr(environment, SQL_ATTR_ODBC_VERSION, cast(SQLPOINTER)SQL_OV_ODBC3, 0))) {
-		throw new ИсклДБИ("Unable to установи the ODBC environment to version 3.");
+		throw new ИсклДБИ("Не удаётся установить среду ODBC в версию 3.");
 	}
 }
 
@@ -60,23 +60,23 @@ static ~this () {
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class OdbcDatabase : БазаДанных {
+class ОдбцБД : БазаДанных {
 	public:
 	/**
-	 * Create a new instance of OdbcDatabase, but don't подключись.
+	 * Create a new instance of ОдбцБД, but don't подключись.
 	 *
 	 * Thряды:
 	 *	ИсклДБИ if an ODBC подключение couldn't be created.
 	 */
 	this () {
 		if (!SQL_SUCCEEDED(SQLAllocHandle(SQL_HANDLE_DBC, environment, &подключение))) {
-			throw new ИсклДБИ("Не удаётся создать подключение к ODBCе.  ODBC вернуло " ~ дайСообПоследнОш, дайКодПоследнОш);
+			throw new ИсклДБИ("Не удаётся создать подключение к ODBC.  ODBC вернуло " ~ дайСообПоследнОш, дайКодПоследнОш);
 		}
 
 	}
 
 	/**
-	 * Create a new instance of OdbcDatabase and подключись to a server.
+	 * Create a new instance of ОдбцБД and подключись to a server.
 	 *
 	 * Thряды:
 	 *	ИсклДБИ if an ODBC подключение couldn't be created.
@@ -120,7 +120,7 @@ class OdbcDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	OdbcDatabase бд = new OdbcDatabase();
+	 *	ОдбцБД бд = new ОдбцБД();
 	 *	бд.подключись("Data Source Name", "_userимя", "_password");
 	 *	---
 	 *
@@ -390,7 +390,7 @@ unittest {
 	}
 
 	s1("dbi.odbc.OdbcDatabase:");
-	OdbcDatabase бд = new OdbcDatabase();
+	ОдбцБД бд = new ОдбцБД();
 	s2("подключись (with DSN)");
 	бд.подключись("DDBI Unittest", "test", "test");
 

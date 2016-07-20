@@ -63,7 +63,7 @@ class MssqlDate {
 		secs = 0;
 		ms = 0;
 		dt_days = dt4.days;
-		dt_time = dt4.минуты;
+		dt_time = dt4.minutes;
 
 		return convert2();
 	}

@@ -1,17 +1,17 @@
 ﻿/******************************************************
- * СтэкThreads are userland, cooperative, lightweight
- * threads. СтэкThreads are very efficient, requiring
- * much less time per контекст switch than real threads.
- * They also require far fewer resources than real
- * threads, which allows many more СтэкThreads to exist
- * simultaneously. In addition, СтэкThreads do not
+ * СтэкНити are userland, cooperative, lightweight
+ * threads. СтэкНити более эффективны, требуют меньше времени
+ * на переключение контекста, чем реальные нити.
+ * Также для них требуется гораздо меньше ресурсов, чем для
+ * реальных нитей, что позволяет многим из СтэкНити 
+ * существовать одновременно. In addition, СтэкНити do not
  * require явный synchronization since they are
  * non-preemptive.  There is no requirement that код
  * be reentrant.
  *
  * This module implements the код necessary for контекст
  * switching.  СтэкContexts can be использован independently
- * of СтэкThreads, и may be использован for implementing
+ * of СтэкНити, и may be использован for implementing
  * coroutines, custom scheduling or complex iterators.
  *
  * Thanks to Lars Ivar Igesunde (larsivar@igesundes.no)
@@ -105,15 +105,15 @@ const т_мера МИН_РАЗМЕР_СТЕКА = 0x1000;
 /// The состояние of a контекст object
 enum ПСостояниеКонтекста
 {
-    Готов,      /// When a КонтекстСтэка is in ready состояние, it may be пуск
-    Выполняется,    /// When a КонтекстСтэка is running, it is currently in use, и cannot be пуск
-    Завершён,       /// When a КонтекстСтэка is dead, it may no longer be пуск
+    Готов,      /// When a КонтекстСтэка is in готов состояние, it may be пуск
+    Выполняется,    /// When a КонтекстСтэка is выполняется, it is currently in use, и cannot be пуск
+    Завершён,       /// When a КонтекстСтэка is мёртв, it may no longer be пуск
 }
 
 /******************************************************
  * A ИсклКонтекста is generated whenever there is a
  * problem in the КонтекстСтэка system.  ContextExceptions
- * can be triggered by running out of memory, or errors
+ * can be triggered by выполняется out of memory, or errors
  * relating to doubly starting threads.
  ******************************************************/
 public class ИсклКонтекста : Исключение
@@ -124,12 +124,12 @@ public class ИсклКонтекста : Исключение
     {
         if(контекст is пусто)
         {
-            debug (КонтекстСтэка) пишифнс("Generated an exception: %s", сооб);
+            debug (КонтекстСтэка) скажифнс("Сгенерировано исключение: %s", сооб);
             super(сооб);
         }
         else
         {
-            debug (КонтекстСтэка) пишифнс("%s generated an exception: %s", контекст.вТкст, сооб);
+            debug (КонтекстСтэка) скажифнс("%s генерировал исключение: %s", контекст.вТкст, сооб);
             super(фм("Контекст %s: %s", контекст.вТкст, сооб));
         }
     }
@@ -156,21 +156,21 @@ public class ОшибкаКонтекста : Ошибка
 /******************************************************
  * The КонтекстСтэка is building блок of the
  * СтэкНить system. It allows the user to swap the
- * стэк of the running program.
+ * стэк of the выполняется program.
  *
  * For most applications, there should be no need to use
- * the КонтекстСтэка, since the СтэкThreads are simpler.
+ * the КонтекстСтэка, since the СтэкНити are simpler.
  * However, the КонтекстСтэка can provide useful features
  * for custom планировщикs и coroutines.
  * 
- * Any non running контекст may be restarteauxd.  A restarted
+ * Any non выполняется контекст may be restarteauxd.  A restarted
  * контекст starts execution from the beginning of its
  * delegate.
  *
  * Contexts may be nested arbitrarily, ie Context A invokes
  * Context B, such that when B жниs A is resumeauxd.
  *
- * Calling пуск on already running or dead контекст will
+ * Calling пуск on already выполняется or мёртв контекст will
  * result in an exception.
  *
  * If an exception is generated in a контекст и it is
@@ -188,15 +188,15 @@ public class ОшибкаКонтекста : Ошибка
  * //
  * проц func1()
  * {
- *     пишифнс("Context 1 : Part 1");
+ *     скажифнс("Context 1 : Part 1");
  *     КонтекстСтэка.жни();
- *     пишифнс("Context 1 : Part 2");
+ *     скажифнс("Context 1 : Part 2");
  * }
  * проц func2()
  * {
- *     пишифнс("Context 2 : Part 1");
+ *     скажифнс("Context 2 : Part 1");
  *     КонтекстСтэка.жни();
- *     пишифнс("Context 2 : Part 2");
+ *     скажифнс("Context 2 : Part 2");
  * }
  * //Созд the contexts
  * КонтекстСтэка ctx1 = new КонтекстСтэка(&func1);
@@ -213,7 +213,7 @@ public class ОшибкаКонтекста : Ошибка
  * //
  * проц func3()
  * {
- *      пишифнс("Going to throw");
+ *      скажифнс("Going to throw");
  *      КонтекстСтэка.жни();
  *      throw new Исключение("Test Исключение");
  * }
@@ -225,7 +225,7 @@ public class ОшибкаКонтекста : Ошибка
  * {
  *      ctx3.пуск();     // Prints "Going to throw"
  *      ctx3.пуск();     // Throws an exception
- *      пишифнс("Bla");// Never gets here
+ *      скажифнс("Bla");// Never gets here
  * }
  * catch(Исключение e)
  * {
@@ -241,17 +241,17 @@ public class ОшибкаКонтекста : Ошибка
  *
  * проц funcA()
  * {
- *     пишифнс("A : Part 1");
+ *     скажифнс("A : Part 1");
  *     B.пуск();
- *     пишифнс("A : Part 2");
+ *     скажифнс("A : Part 2");
  *     КонтекстСтэка.жни();
- *     пишифнс("A : Part 3");
+ *     скажифнс("A : Part 3");
  * }
  * проц funcB()
  * {
- *      пишифнс("B : Part 1");
+ *      скажифнс("B : Part 1");
  *      КонтекстСтэка.жни();
- *      пишифнс("B : Part 2");
+ *      скажифнс("B : Part 2");
  * }
  * A = new КонтекстСтэка(&funcA);
  * B = new КонтекстСтэка(&funcB);
@@ -277,7 +277,7 @@ public final class КонтекстСтэка
      * using a delegate.
      *
      * Параметры:
-     *  fn = The delegate we will be running.
+     *  fn = The delegate we will be выполняется.
      *  размер_стэка = The размер of the стэк for this thread
      *  in байты.  Note, Must be greater than the minimum
      *  стэк размер.
@@ -300,7 +300,7 @@ public final class КонтекстСтэка
         //Set up the стэк
         установиСтэк(размер_стэка);
         
-        debug (КонтекстСтэка) пишифнс("Created %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Создан %s", this.вТкст);
     }
     
     /**
@@ -331,7 +331,7 @@ public final class КонтекстСтэка
         
         установиСтэк(размер_стэка);
         
-        debug (КонтекстСтэка) пишифнс("Created %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Создан %s", this.вТкст);
     }
     
     
@@ -340,7 +340,7 @@ public final class КонтекстСтэка
      * contexts are NOT GARBAGE COLLECTED, they must be
      * explicitly freeauxd.  This usually taken care of when
      * the user creates the КонтекстСтэка implicitly via
-     * СтэкThreads, but in the case of a Context, it must
+     * СтэкНити, but in the case of a Context, it must
      * be handled on a per case basis.
      *
      * Выводит исключение:
@@ -354,9 +354,9 @@ public final class КонтекстСтэка
     }
     body
     {
-        debug (КонтекстСтэка) пишифнс("Deleting %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Удаляется %s", this.вТкст);
         
-        //Delete the стэк if we are not dead
+        //Delete the стэк if we are not мёртв
         удалиСтэк();
     }
     
@@ -374,9 +374,9 @@ public final class КонтекстСтэка
      */
     public final проц пуск()
     {
-        debug (КонтекстСтэка) пишифнс("Running %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Запущен %s", this.вТкст);
         
-        //We must be ready to пуск
+        //We must be готов to пуск
         assert(состояние == ПСостояниеКонтекста.Готов, 
             "Контекст не в состоянии выполнения");
         
@@ -386,13 +386,13 @@ public final class КонтекстСтэка
         version(LEAK_FIX)
         {
             //Mark GC info
-            debug (LogGC) пишифнс("Adding range: %8x-%8x", &tmp, дайНизСтэка());
+            debug (LogGC) скажифнс("Добавляется диапазон: %8x-%8x", &tmp, дайНизСтэка());
             смДобавьПространство2(cast(ук)&tmp, дайНизСтэка());
         }
         
         //Set new контекст
         текущий_контекст.знач = this;
-		ctx.switchIn();
+		конткст.switchIn();
         текущий_контекст.знач = tmp;
         
         assert(состояние != ПСостояниеКонтекста.Выполняется);
@@ -400,24 +400,24 @@ public final class КонтекстСтэка
         version(LEAK_FIX)
         {
             //Clear GC info
-            debug (LogGC) пишифнс("Removing range: %8x", &tmp);
+            debug (LogGC) скажифнс("Удаляется дипазон: %8x", &tmp);
             смУдалиПространство(cast(ук)&tmp);
             
             
-            //If we are dead, we need to release the GC
+            //If we are мёртв, we need to release the GC
             if(состояние == ПСостояниеКонтекста.Завершён && 
-                gc_start !is пусто)
+                старт_см !is пусто)
             {
-                debug (LogGC) пишифнс("Removing range: %8x", gc_start);
-                смУдалиПространство(gc_start);
-                gc_start = пусто;
+                debug (LogGC) скажифнс("Удаляется диапазон: %8x", старт_см);
+                смУдалиПространство(старт_см);
+                старт_см = пусто;
             }
         }
         
         // Pass any exceptions generated up the стэк
         if(последн_искл !is пусто)
         {
-            debug (КонтекстСтэка) пишифнс("%s generated an exception: %s", this.вТкст, последн_искл.вТкст);
+            debug (КонтекстСтэка) скажифнс("%s генерировал исключение: %s", this.вТкст, последн_искл.вТкст);
             
             //Clear the exception
             Объект tmpo = последн_искл;
@@ -427,7 +427,7 @@ public final class КонтекстСтэка
             throw tmpo;
         }
         
-        debug (КонтекстСтэка) пишифнс("Done running контекст: %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Выполнен контекст: %s", this.вТкст);
     }
     
     
@@ -438,19 +438,19 @@ public final class КонтекстСтэка
      *
      * Выводит исключение:
      *  A ИсклКонтекста when there is no currently
-     *  running контекст.
+     *  выполняется контекст.
      */
     public final static проц жни()
     {
         КонтекстСтэка cur_ctx = текущий_контекст.знач;
         
-        //Make sure we are actually running
+        //Make sure we are actually выполняется
         assert(cur_ctx !is пусто,
             "Попытка использовать жни при незапущенном контексте.");
         
-        debug (КонтекстСтэка) пишифнс("Yielding %s", cur_ctx.вТкст);
+        debug (КонтекстСтэка) скажифнс("Жнётся %s", cur_ctx.вТкст);
         
-        assert(cur_ctx.running);
+        assert(cur_ctx.выполняется);
         
         //Leave the текущ контекст
         cur_ctx.состояние = ПСостояниеКонтекста.Готов;
@@ -459,45 +459,45 @@ public final class КонтекстСтэка
         version(LEAK_FIX)
         {
             //Save the GC range
-            cur_ctx.gc_start = cast(ук)&tmp;
-            debug (LogGC) пишифнс("Adding range: %8x-%8x",
-                cur_ctx.gc_start, cur_ctx.ctx.stack_top);
-            смДобавьПространство2(cur_ctx.gc_start, cur_ctx.ctx.stack_top);
+            cur_ctx.старт_см = cast(ук)&tmp;
+            debug (LogGC) скажифнс("Добавляется диапазон: %8x-%8x",
+                cur_ctx.старт_см, cur_ctx.конткст.верх_стэка);
+            смДобавьПространство2(cur_ctx.старт_см, cur_ctx.конткст.верх_стэка);
         }
         
         //Swap
-        cur_ctx.ctx.switchOut();
+        cur_ctx.конткст.switchOut();
         
         version(LEAK_FIX)
         {
             КонтекстСтэка t_ctx = текущий_контекст.знач;
             
             //Remove the GC range
-            debug (LogGC) пишифнс("Removing range: %8x",
-                t_ctx.gc_start);
-            assert(t_ctx.gc_start !is пусто);
-            смУдалиПространство(t_ctx.gc_start);
-            t_ctx.gc_start = пусто;
+            debug (LogGC) скажифнс("Удаляется диапазон: %8x",
+                t_ctx.старт_см);
+            assert(t_ctx.старт_см !is пусто);
+            смУдалиПространство(t_ctx.старт_см);
+            t_ctx.старт_см = пусто;
         }
         
         //Return
         текущий_контекст.знач = tmp;
         tmp.состояние = ПСостояниеКонтекста.Выполняется;
         
-        debug (КонтекстСтэка) пишифнс("Resuming контекст: %s", tmp.вТкст);
+        debug (КонтекстСтэка) скажифнс("Возобновляется контекст: %s", tmp.вТкст);
     }
     
     /**
      * Throws an exception и жниs.  The exception
      * will propagate out of the пуск method, while the
-     * контекст will remain alive и functioning.
+     * контекст will remain жив и functioning.
      * The контекст may be resumed after the exception имеется
      * been thrown.
      *
      * Параметры:
      *  t = The exception object we will propagate.
      */
-    public final static проц throwYield(Объект t)
+    public final static проц бросьЖни(Объект t)
     {
         текущий_контекст.знач.последн_искл = t;
         жни();
@@ -507,14 +507,14 @@ public final class КонтекстСтэка
      * Resets the контекст to its original состояние.
      *
      * Выводит исключение:
-     *  A ИсклКонтекста if the контекст is running.
+     *  A ИсклКонтекста if the контекст is выполняется.
      */
     public final проц перезапуск()
     {
-        debug (КонтекстСтэка) пишифнс("Restarting %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Перезапускается %s", this.вТкст);
         
         assert(состояние != ПСостояниеКонтекста.Выполняется,
-            "Cannot перезапуск a контекст while it is running");
+            "Перезапуск контекста невозможен, пока он выполняется");
         
         //Reset the контекст
         перезапустиСтэк();
@@ -526,14 +526,14 @@ public final class КонтекстСтэка
      * allocated contexts.
      *
      * Параметры:
-     *  dg = The delegate which we will be running.
+     *  dg = The delegate which we will be выполняется.
      */
-    public final проц recycle(проц delegate() dg)
+    public final проц рециклируй(проц delegate() dg)
     {
-        debug (КонтекстСтэка) пишифнс("Recycling %s", this.вТкст);
+        debug (КонтекстСтэка) скажифнс("Рециклируется %s", this.вТкст);
         
         assert(состояние != ПСостояниеКонтекста.Выполняется,
-            "Cannot recycle a контекст while it is running");
+            "Не удаётся рециклировать контекст, пока он выполняется");
         
         //Set the delegate и перезапуск
         proc = dg;
@@ -541,7 +541,7 @@ public final class КонтекстСтэка
     }
     
     /**
-     * Immediately sets the контекст состояние to deaauxd. This
+     * Immediately sets the контекст состояние to мёртв. This
      * can be использован as an alternative to deleting the 
      * контекст since it releases any GC references, и
      * may be easily reallocateauxd.
@@ -549,10 +549,10 @@ public final class КонтекстСтэка
      * Выводит исключение:
      *  A ИсклКонтекста if the контекст is not Готов.
      */
-    public final проц kill()
+    public final проц души()
     {
         assert(состояние != ПСостояниеКонтекста.Выполняется,
-            "Cannot kill a контекст while it is running.");
+            "Нельзя удушить контекст, пока он выполняется.");
         
         
         version(LEAK_FIX)
@@ -563,11 +563,11 @@ public final class КонтекстСтэка
             }
             
             //Clear the GC ranges if necessary
-            if(gc_start !is пусто)
+            if(старт_см !is пусто)
             {
-                debug (LogGC) пишифнс("Removing range: %8x", gc_start);
-                смУдалиПространство(gc_start);
-                gc_start = пусто;
+                debug (LogGC) скажифнс("Удаляется диапазон: %8x", старт_см);
+                смУдалиПространство(старт_см);
+                старт_см = пусто;
             }
         }
         
@@ -582,7 +582,7 @@ public final class КонтекстСтэка
      */
     public final ткст вТкст()
     {
-        static ткст[] state_names = 
+        static ткст[] названия_состояний = 
         [
             "RDY",
             "RUN",
@@ -608,9 +608,9 @@ public final class КонтекстСтэка
             h.dg = proc;
         
         return фм(
-            "Context[sp:%8x,st:%s,fn:%8x]",
-            ctx.stack_pointer,
-            state_names[cast(цел)состояние],
+            "Контекст[sp:%8x,st:%s,fn:%8x]",
+            конткст.указатель_на_стэк,
+            названия_состояний[cast(цел)состояние],
             h.d.fptr);
     }
     
@@ -625,32 +625,32 @@ public final class КонтекстСтэка
     /**
      * Возвращает: True if the контекст can be пуск.
      */
-    public бул ready()
+    public бул готов()
     {
         return состояние == ПСостояниеКонтекста.Готов;
     }
     
     /**
-     * Возвращает: True if the контекст is currently running
+     * Возвращает: True if the контекст is currently выполняется
      */
-    public бул running()
+    public бул выполняется()
     {
         return состояние == ПСостояниеКонтекста.Выполняется;
     }
     
     /**
-     * Возвращает: True if the контекст is currenctly dead
+     * Возвращает: True if the контекст is currenctly мёртв
      */
-    public бул dead()
+    public бул мёртв()
     {
         return состояние == ПСостояниеКонтекста.Завершён;
     }
     
     /**
-     * Возвращает: The currently running стэк контекст.
-     *  пусто if no контекст is currently running.
+     * Возвращает: The currently выполняется стэк контекст.
+     *  пусто if no контекст is currently выполняется.
      */
-    public static КонтекстСтэка getRunning()
+    public static КонтекстСтэка дайВыполняемый()
     {
         return текущий_контекст.знач;
     }
@@ -661,25 +661,25 @@ public final class КонтекстСтэка
         switch(состояние)
         {
             case ПСостояниеКонтекста.Выполняется:
-                //Make sure контекст is running
-                //assert(ctx.old_stack_pointer !is пусто);
+                //Make sure контекст is выполняется
+                //assert(конткст.old_stack_pointer !is пусто);
                 assert(текущий_контекст.знач !is пусто);
             
             case ПСостояниеКонтекста.Готов:
-                //Make sure состояние is ready
-                assert(ctx.stack_bottom !is пусто);
-                assert(ctx.stack_top !is пусто);
-                assert(ctx.stack_top >= ctx.stack_bottom);
-                assert(ctx.stack_top - ctx.stack_bottom >= МИН_РАЗМЕР_СТЕКА);
-                assert(ctx.stack_pointer !is пусто);
-                assert(ctx.stack_pointer >= ctx.stack_bottom);
-                assert(ctx.stack_pointer <= ctx.stack_top);
+                //Make sure состояние is готов
+                assert(конткст.низ_стэка !is пусто);
+                assert(конткст.верх_стэка !is пусто);
+                assert(конткст.верх_стэка >= конткст.низ_стэка);
+                assert(конткст.верх_стэка - конткст.низ_стэка >= МИН_РАЗМЕР_СТЕКА);
+                assert(конткст.указатель_на_стэк !is пусто);
+                assert(конткст.указатель_на_стэк >= конткст.низ_стэка);
+                assert(конткст.указатель_на_стэк <= конткст.верх_стэка);
                 assert(proc !is пусто);
             break;
             
             case ПСостояниеКонтекста.Завершён:
-                //Make sure контекст is dead
-				//assert(gc_start is пусто);
+                //Make sure контекст is мёртв
+				//assert(старт_см is пусто);
             break;
             
             default: assert(false);
@@ -689,11 +689,11 @@ public final class КонтекстСтэка
     version(LEAK_FIX)
     {
         // Start of GC range
-        private ук gc_start = пусто;
+        private ук старт_см = пусто;
     }
     
     // The system контекст
-    private СисКонтекст ctx;
+    private СисКонтекст конткст;
 
     // Context состояние
     private ПСостояниеКонтекста состояние;
@@ -701,14 +701,14 @@ public final class КонтекстСтэка
     // The последний exception generated
     private static Объект последн_искл = пусто;
     
-/*BEGIN TLS {*/
+/*BEGIN НЛХ {*/
         
-    // The currently running стэк контекст
+    // The currently выполняется стэк контекст
     private static st.tls.НитеЛок!(КонтекстСтэка) текущий_контекст = пусто;
     
-/*} END TLS*/
+/*} END НЛХ*/
     
-    // The procedure this контекст is running
+    // The procedure this контекст is выполняется
     private проц delegate() proc = пусто;
 
     // Used to convert a function pointer to a delegate
@@ -722,19 +722,19 @@ public final class КонтекстСтэка
     private проц установиСтэк(т_мера размер_стэка)
     {
         //Initialize the стэк
-        ctx.иницСтэк(размер_стэка);
+        конткст.иницСтэк(размер_стэка);
         
         //Initialize контекст состояние
         состояние = ПСостояниеКонтекста.Готов;
         
         version(LEAK_FIX)
         {
-            assert(gc_start is пусто);
-            gc_start = пусто;
+            assert(старт_см is пусто);
+            старт_см = пусто;
         }
         else
         {
-            смДобавьПространство2(ctx.дайНачалоСтэка, ctx.дайКонецСтэка);
+            смДобавьПространство2(конткст.дайНачалоСтэка, конткст.дайКонецСтэка);
         }
     }
     
@@ -746,15 +746,15 @@ public final class КонтекстСтэка
         version(LEAK_FIX)
         {
             //Clear the GC ranges if necessary
-            if(gc_start !is пусто)
+            if(старт_см !is пусто)
             {
-                debug (LogGC) пишифнс("Removing range: %8x", gc_start);
-                смУдалиПространство(gc_start);
-                gc_start = пусто;
+                debug (LogGC) скажифнс("Удаляется диапазон: %8x", старт_см);
+                смУдалиПространство(старт_см);
+                старт_см = пусто;
             }
         }
         
-        ctx.сбросьСтэк();
+        конткст.сбросьСтэк();
         состояние = ПСостояниеКонтекста.Готов;
     }
     
@@ -766,16 +766,16 @@ public final class КонтекстСтэка
         version(LEAK_FIX)
         {
             //Clear the GC ranges if necessary
-            if(gc_start !is пусто)
+            if(старт_см !is пусто)
             {
-                debug (LogGC) пишифнс("Removing range: %8x", gc_start);
-                смУдалиПространство(gc_start);
-                gc_start = пусто;
+                debug (LogGC) скажифнс("Удаляется диапазон: %8x", старт_см);
+                смУдалиПространство(старт_см);
+                старт_см = пусто;
             }
         }
         else
         {
-            смУдалиПространство(ctx.дайНачалоСтэка);
+            смУдалиПространство(конткст.дайНачалоСтэка);
         }
         
         // Clear состояние
@@ -784,7 +784,7 @@ public final class КонтекстСтэка
         f_proc = пусто;
         
         // Kill the стэк
-        ctx.удалиСтэк();
+        конткст.удалиСтэк();
     }
     
     /**
@@ -795,7 +795,7 @@ public final class КонтекстСтэка
     {
         assert(текущий_контекст.знач !is пусто);
 		version(LEAK_FIX)
-            assert(текущий_контекст.знач.gc_start is пусто);
+            assert(текущий_контекст.знач.старт_см is пусто);
     }
     body
     {
@@ -803,16 +803,16 @@ public final class КонтекстСтэка
         
         try
         {
-            //Set состояние to running, enter the контекст
+            //Set состояние to выполняется, enter the контекст
             cur_ctx.состояние = ПСостояниеКонтекста.Выполняется;
-            debug (КонтекстСтэка) пишифнс("Starting %s", cur_ctx.вТкст);
+            debug (КонтекстСтэка) скажифнс("Starting %s", cur_ctx.вТкст);
             cur_ctx.proc();
-            debug (КонтекстСтэка) пишифнс("Finished %s", cur_ctx.вТкст);
+            debug (КонтекстСтэка) скажифнс("Finished %s", cur_ctx.вТкст);
         }
         catch(Объект o)
         {
             //Save exceptions so we can throw them later
-            debug (КонтекстСтэка) пишифнс("Got an exception: %s, in %s", o.вТкст, cur_ctx.вТкст);
+            debug (КонтекстСтэка) скажифнс("Got an exception: %s, in %s", o.вТкст, cur_ctx.вТкст);
             cur_ctx.последн_искл = o;
         }
         finally
@@ -820,8 +820,8 @@ public final class КонтекстСтэка
             //Leave the object.  Don't need to worry about
             //GC, since it should already be releaseauxd.
             cur_ctx.состояние = ПСостояниеКонтекста.Завершён;
-            debug (КонтекстСтэка) пишифнс("Leaving %s", cur_ctx.вТкст);
-            cur_ctx.ctx.switchOut();
+            debug (КонтекстСтэка) скажифнс("Leaving %s", cur_ctx.вТкст);
+            cur_ctx.конткст.switchOut();
         }
         
         //This should never be reached
@@ -840,7 +840,7 @@ public final class КонтекстСтэка
             if(cur is пусто)
                 return ртНизСтэка();
             
-            return cur.ctx.stack_top;
+            return cur.конткст.верх_стэка;
         }
         else
         {
@@ -859,7 +859,7 @@ static this()
         //Get the system's page размер
         SYSTEM_INFO sys_info;
         GetSystemInfo(&sys_info);
-        page_size = sys_info.dwPageРазмер;
+        page_size = sys_info.dwPageSize;
     }
 }
 
@@ -890,7 +890,7 @@ struct SYSTEM_INFO
         }
     }
     
-    цел dwPageРазмер;
+    цел dwPageSize;
     ук lpMinimumApplicationAddress;
     ук lpMaximumApplicationAddress;
     цел* dwActiveProcessorMask;
@@ -952,9 +952,9 @@ const бцел PAGE_WRITECOMBINE        = 0x400;
 private struct СисКонтекст
 {
     // Стэк information
-    ук stack_bottom = пусто;
-    ук stack_top = пусто;
-    ук stack_pointer = пусто;
+    ук низ_стэка = пусто;
+    ук верх_стэка = пусто;
+    ук указатель_на_стэк = пусто;
 
     // The old стэк pointer
     ук old_stack_pointer = пусто;
@@ -965,7 +965,7 @@ private struct СисКонтекст
      */
     т_мера дайРазмер()
     {
-        return cast(т_мера)(stack_top - stack_bottom - page_size);
+        return cast(т_мера)(верх_стэка - низ_стэка - page_size);
     }
     
     
@@ -974,7 +974,7 @@ private struct СисКонтекст
      */
     ук дайНачалоСтэка()
     {
-        return stack_bottom + page_size;
+        return низ_стэка + page_size;
     }
     
     /**
@@ -982,7 +982,7 @@ private struct СисКонтекст
      */
     ук дайКонецСтэка()
     {
-        return stack_top;
+        return верх_стэка;
     }
     
     
@@ -1007,28 +1007,28 @@ private struct СисКонтекст
         цел num_pages = (размер_стэка + page_size - 1) / page_size;
         
         //Reserve the address space for the стэк
-        stack_bottom = VirtualAlloc(
+        низ_стэка = VirtualAlloc(
             пусто,
             (num_pages + 1) * page_size,
             MEM_RESERVE,
             PAGE_NOACCESS);
-        if(stack_bottom is пусто)
+        if(низ_стэка is пусто)
             обработайВинОш("резервировать адрес стэка");
         
         //Now allocate the base pages
         ук res = VirtualAlloc(
-            stack_bottom + page_size,
+            низ_стэка + page_size,
             num_pages * page_size,
             MEM_COMMIT,
             PAGE_READWRITE);
         if(res is пусто)
             обработайВинОш("разместить пространство стэка");
         
-        stack_top = res + num_pages * page_size;
+        верх_стэка = res + num_pages * page_size;
         
         //Созд a guard page
         res = VirtualAlloc(
-            stack_bottom,
+            низ_стэка,
             page_size,
             MEM_COMMIT,
             PAGE_READWRITE | PAGE_GUARD);
@@ -1044,27 +1044,27 @@ private struct СисКонтекст
      */
     проц сбросьСтэк()
     {
-        stack_pointer = stack_top;
-        assert(cast(бцел)stack_pointer % 4 == 0);
+        указатель_на_стэк = верх_стэка;
+        assert(cast(бцел)указатель_на_стэк % 4 == 0);
         
         //Initialize стэк состояние
         проц push(бцел знач)
         {
-            stack_pointer -= 4;
-            *cast(бцел*)stack_pointer = знач;
+            указатель_на_стэк -= 4;
+            *cast(бцел*)указатель_на_стэк = знач;
         }
         
         push(cast(бцел)&КонтекстСтэка.стартКонтекста); //EIP
         push(0xFFFFFFFF);                   //EBP
         push(0xFFFFFFFF);                   //FS:[0]
-        push(cast(бцел)stack_top);          //FS:[4]
-        push(cast(бцел)stack_bottom + 4);   //FS:[8]
+        push(cast(бцел)верх_стэка);          //FS:[4]
+        push(cast(бцел)низ_стэка + 4);   //FS:[8]
         push(0);    //EBX
         push(0);    //ESI
         push(0);    //EDI
         
-        assert(stack_pointer > stack_bottom);
-        assert(stack_pointer < stack_top);
+        assert(указатель_на_стэк > низ_стэка);
+        assert(указатель_на_стэк < верх_стэка);
     }
     
     /**
@@ -1073,10 +1073,10 @@ private struct СисКонтекст
     проц удалиСтэк()
     {
         //Work around for bug in DMD 0.170
-        if(stack_bottom is пусто)
+        if(низ_стэка is пусто)
         {
             debug(КонтекстСтэка)
-                пишифнс("WARNING!!!! Accidentally deleted a контекст twice");
+                скажифнс("WARNING!!!! Accidentally deleted a контекст twice");
             return;
         }
         
@@ -1084,24 +1084,24 @@ private struct СисКонтекст
         {
             static цел log_num = 0;
             пиши(фм("lg%auxd.bin", log_num++),
-                stack_bottom[0..(stack_top - stack_bottom)]);
+                низ_стэка[0..(верх_стэка - низ_стэка)]);
         }
         
-        assert(stack_pointer > stack_bottom);
-        assert(stack_pointer < stack_top);
+        assert(указатель_на_стэк > низ_стэка);
+        assert(указатель_на_стэк < верх_стэка);
         
         // Release the стэк
-        assert(stack_bottom !is пусто);
+        assert(низ_стэка !is пусто);
         
-        if(VirtualFree(stack_bottom, 0, MEM_RELEASE) == 0)
+        if(VirtualFree(низ_стэка, 0, MEM_RELEASE) == 0)
         {
             обработайВинОш("высвободить стэк");
         }
         
         //Clear all the old стэк pointers
-        stack_bottom =
-        stack_top =
-        stack_pointer =
+        низ_стэка =
+        верх_стэка =
+        указатель_на_стэк =
         old_stack_pointer = пусто;
     }
     
@@ -1127,7 +1127,7 @@ private struct СисКонтекст
             mov dword ptr old_stack_pointer[EAX], ESP;
             
             //Set the new стэк pointer
-            mov ESP, stack_pointer[EAX];
+            mov ESP, указатель_на_стэк[EAX];
             
             //Restore saved состояние
             pop EDI;
@@ -1162,7 +1162,7 @@ private struct СисКонтекст
             push EDI;
             
             // Set the стэк pointer
-            mov dword ptr stack_pointer[EAX], ESP;
+            mov dword ptr указатель_на_стэк[EAX], ESP;
             
             // Restore the стэк pointer
             mov ESP, dword ptr old_stack_pointer[EAX];
@@ -1216,25 +1216,25 @@ private const ук MAP_FAILED = cast(ук)-1;
 
 private struct СисКонтекст
 {
-    ук stack_top = пусто;
-    ук stack_bottom = пусто;
-	ук stack_pointer = пусто;
+    ук верх_стэка = пусто;
+    ук низ_стэка = пусто;
+	ук указатель_на_стэк = пусто;
 	ук old_stack_pointer = пусто;
 	
 
 	т_мера дайРазмер()
 	{
-        return cast(т_мера)(stack_top - stack_bottom);
+        return cast(т_мера)(верх_стэка - низ_стэка);
 	}
     
     ук дайНачалоСтэка()
     {
-        return stack_bottom;
+        return низ_стэка;
     }
     
     ук дайКонецСтэка()
     {
-        return stack_top;
+        return верх_стэка;
     }
 
     /**
@@ -1243,7 +1243,7 @@ private struct СисКонтекст
 	проц иницСтэк(т_мера размер_стэка)
 	{
         //Allocate стэк
-        stack_bottom = mmap(
+        низ_стэка = mmap(
 			пусто, 
 			размер_стэка, 
 			PROT_READ | PROT_WRITE | PROT_EXEC,
@@ -1251,13 +1251,13 @@ private struct СисКонтекст
 			0,
 			0);
 		
-		if(stack_bottom is MAP_FAILED)
+		if(низ_стэка is MAP_FAILED)
 		{
-			stack_bottom = пусто;
+			низ_стэка = пусто;
             throw new ИсклКонтекста(пусто, "Не удалось разместить стэк");
 		}
         
-        stack_top = stack_bottom + размер_стэка;
+        верх_стэка = низ_стэка + размер_стэка;
         
         //Initialize the контекст
         сбросьСтэк();
@@ -1269,11 +1269,11 @@ private struct СисКонтекст
 	проц сбросьСтэк()
 	{
 		//Initialize стэк pointer
-		stack_pointer = stack_top;
+		указатель_на_стэк = верх_стэка;
         
         //Initialize стэк состояние
-        *cast(бцел*)(stack_pointer-4) = cast(бцел)&КонтекстСтэка.стартКонтекста;
-        stack_pointer -= 20;
+        *cast(бцел*)(указатель_на_стэк-4) = cast(бцел)&КонтекстСтэка.стартКонтекста;
+        указатель_на_стэк -= 20;
 	}
     
 	/**
@@ -1282,20 +1282,20 @@ private struct СисКонтекст
 	проц удалиСтэк()
 	{
         //Make sure the GC didn't accidentally double собери us...
-        if(stack_bottom is пусто)
+        if(низ_стэка is пусто)
         {
-            debug(КонтекстСтэка) пишифнс("WARNING!!! Accidentally killed стэк twice");
+            debug(КонтекстСтэка) скажифнс("WARNING!!! Accidentally killed стэк twice");
             return;
         }
         
         //Deallocate the стэк
-        if(munmap(stack_bottom, (stack_top - stack_bottom)))
+        if(munmap(низ_стэка, (верх_стэка - низ_стэка)))
 			throw new ИсклКонтекста(пусто, "Не удалось выместить стэк");
         
         //Remove pointer references
-        stack_top =
-        stack_bottom =
-		stack_pointer =
+        верх_стэка =
+        низ_стэка =
+		указатель_на_стэк =
 		old_stack_pointer = пусто;
 	}
 
@@ -1318,8 +1318,8 @@ private struct СисКонтекст
 		//контекст switch; however since we are gauranteed to still have our range
 		//marked before we leave, this is acceptable, since the result is
 		//merely under-collection.
-		t.stackBottom = stack_top;
-		t.stackTop = stack_bottom;
+		t.stackBottom = верх_стэка;
+		t.stackTop = низ_стэка;
 		
 		pswiThunk();
 
@@ -1342,7 +1342,7 @@ private struct СисКонтекст
 
 			//Switch around the стэк pointers
 			mov dword ptr old_stack_pointer[EAX], ESP;
-			mov ESP, dword ptr stack_pointer[EAX];
+			mov ESP, dword ptr указатель_на_стэк[EAX];
 
 			//Restore previous состояние
 			pop EDI;
@@ -1370,7 +1370,7 @@ private struct СисКонтекст
 			push EDI;
 
 			//Return to previous контекст's sp.
-			mov dword ptr stack_pointer[EAX], ESP;
+			mov dword ptr указатель_на_стэк[EAX], ESP;
 			mov ESP, dword ptr old_stack_pointer[EAX];
 
 			//Restore previous контекст's состояние
@@ -1392,7 +1392,7 @@ else
 
 unittest
 {
-    пишифнс("Testing контекст creation/deletion");
+    скажифнс("Testing контекст creation/deletion");
     цел s0 = 0;
     static цел s1 = 0;
     
@@ -1426,9 +1426,9 @@ unittest
     assert(a.дайСостояние == ПСостояниеКонтекста.Готов);
     assert(b.дайСостояние == ПСостояниеКонтекста.Готов);
     
-    пишифнс("running a");
+    скажифнс("выполняется a");
     a.пуск();
-    пишифнс("done a");
+    скажифнс("done a");
     
     assert(a);
     
@@ -1439,9 +1439,9 @@ unittest
     
     assert(b.дайСостояние == ПСостояниеКонтекста.Готов);
     
-    пишифнс("Running b");
+    скажифнс("Running b");
     b.пуск();
-    пишифнс("Done b");
+    скажифнс("Done b");
     
     assert(s0 == 1);
     assert(s1 == 1);
@@ -1450,12 +1450,12 @@ unittest
     delete a;
     delete b;
     
-    пишифнс("Context creation passed");
+    скажифнс("Context creation passed");
 }
     
 unittest
 {
-    пишифнс("Testing контекст switching");
+    скажифнс("Testing контекст switching");
     цел s0 = 0;
     цел s1 = 0;
     цел s2 = 0;
@@ -1465,7 +1465,7 @@ unittest
     {
         while(true)
         {
-            debug пишифнс(" ---A---");
+            debug скажифнс(" ---A---");
             s0++;
             КонтекстСтэка.жни();
         }
@@ -1477,7 +1477,7 @@ unittest
     {
         while(true)
         {
-            debug пишифнс(" ---B---");
+            debug скажифнс(" ---B---");
             s1++;
             КонтекстСтэка.жни();
         }
@@ -1489,7 +1489,7 @@ unittest
     {
         while(true)
         {
-            debug пишифнс(" ---C---");
+            debug скажифнс(" ---C---");
             s2++;
             КонтекстСтэка.жни();
         }
@@ -1529,12 +1529,12 @@ unittest
     delete b;
     delete c;
     
-    пишифнс("Context switching passed");
+    скажифнс("Context switching passed");
 }
     
 unittest
 {
-    пишифнс("Testing nested contexts");
+    скажифнс("Testing nested contexts");
     КонтекстСтэка a, b, c;
     
     цел t0 = 0;
@@ -1593,12 +1593,12 @@ unittest
     delete b;
     delete c;
     
-    пишифнс("Nesting contexts passed");
+    скажифнс("Nesting contexts passed");
 }
 
 unittest
 {
-	пишифнс("Testing basic exceptions");
+	скажифнс("Testing basic exceptions");
 
 
 	цел t0 = 0;
@@ -1635,7 +1635,7 @@ unittest
 	assert(t1 == 1);
 	assert(t2 == 0);
 
-	пишифнс("Basic exceptions are supported");
+	скажифнс("Basic exceptions are supported");
 }
 
 
@@ -1644,14 +1644,14 @@ unittest
 version(Win32)
 unittest
 {
-    пишифнс("Testing exceptions");
+    скажифнс("Testing exceptions");
     КонтекстСтэка a, b, c;
     
     цел t0 = 0;
     цел t1 = 0;
     цел t2 = 0;
     
-    пишифнс("t0 = %s\nt1 = %s\nt2 = %s", t0, t1, t2);
+    скажифнс("t0 = %s\nt1 = %s\nt2 = %s", t0, t1, t2);
     
     a = new КонтекстСтэка(
     delegate проц()
@@ -1712,7 +1712,7 @@ unittest
         e.print;
     }
     
-    пишифнс("blah2");
+    скажифнс("blah2");
     
     assert(a);
     assert(b);
@@ -1744,7 +1744,7 @@ unittest
 		catch(Исключение ex)
 		{
 			q1++;
-			пишифнс("!!!!!!!!GOT EXCEPTION!!!!!!!!");
+			скажифнс("!!!!!!!!GOT EXCEPTION!!!!!!!!");
 			ex.print;
 		}
 	});
@@ -1755,7 +1755,7 @@ unittest
 	assert(q1 == 0);
 	t.пуск();
 	assert(t);
-	assert(t.dead);
+	assert(t.мёртв);
 	assert(q0 == 1);
 	assert(q1 == 1);
 
@@ -1811,18 +1811,18 @@ unittest
     assert(s0 == 2);
     assert(s1 == 1);
     
-    assert(auxd.dead);
-    assert(e.dead);
+    assert(auxd.мёртв);
+    assert(e.мёртв);
     
     delete d;
     delete e;
     
-    пишифнс("Exceptions passed");
+    скажифнс("Exceptions passed");
 }
 
 unittest
 {
-    пишифнс("Testing reset");
+    скажифнс("Testing reset");
     цел t0 = 0;
     цел t1 = 0;
     цел t2 = 0;
@@ -1894,14 +1894,14 @@ unittest
     
     delete a;
     
-    пишифнс("Reset passed");
+    скажифнс("Reset passed");
 }
 
 //Same problem as above.  
 version (Win32)
 unittest
 {
-    пишифнс("Testing standard exceptions");
+    скажифнс("Testing standard exceptions");
     цел t = 0;
     
     КонтекстСтэка a = new КонтекстСтэка(
@@ -1928,23 +1928,23 @@ unittest
     }
     
     assert(a);
-    assert(a.dead);
+    assert(a.мёртв);
     assert(t == 0);
     
     delete a;
     
     
-    пишифнс("Standard exceptions passed");
+    скажифнс("Standard exceptions passed");
 }
 
 unittest
 {
-    пишифнс("Memory stress test");
+    скажифнс("Memory stress test");
     
     const бцел STRESS_SIZE = 5000;
     
-    КонтекстСтэка ctx[];
-    ctx.length = STRESS_SIZE;
+    КонтекстСтэка конткст[];
+    конткст.length = STRESS_SIZE;
     
     цел cnt0 = 0;
     цел cnt1 = 0;
@@ -1956,7 +1956,7 @@ unittest
         cnt1++;
     }
     
-    foreach(inout КонтекстСтэка c; ctx)
+    foreach(inout КонтекстСтэка c; конткст)
     {
         c = new КонтекстСтэка(&threadFunc, МИН_РАЗМЕР_СТЕКА);
     }
@@ -1964,7 +1964,7 @@ unittest
     assert(cnt0 == 0);
     assert(cnt1 == 0);
     
-    foreach(inout КонтекстСтэка c; ctx)
+    foreach(inout КонтекстСтэка c; конткст)
     {
         c.пуск;
     }
@@ -1972,7 +1972,7 @@ unittest
     assert(cnt0 == STRESS_SIZE);
     assert(cnt1 == 0);
     
-    foreach(inout КонтекстСтэка c; ctx)
+    foreach(inout КонтекстСтэка c; конткст)
     {
         c.пуск;
     }
@@ -1980,7 +1980,7 @@ unittest
     assert(cnt0 == STRESS_SIZE);
     assert(cnt1 == STRESS_SIZE);
     
-    foreach(inout КонтекстСтэка c; ctx)
+    foreach(inout КонтекстСтэка c; конткст)
     {
         delete c;
     }
@@ -1988,12 +1988,12 @@ unittest
     assert(cnt0 == STRESS_SIZE);
     assert(cnt1 == STRESS_SIZE);
     
-    пишифнс("Memory stress test passed");
+    скажифнс("Memory stress test passed");
 }
 
 unittest
 {
-    пишифнс("Testing floating point");
+    скажифнс("Testing floating point");
     
     float f0 = 1.0;
     float f1 = 0.0;
@@ -2084,13 +2084,13 @@ unittest
     assert(r0 == 29.0);
     assert(r1 == 5.0);
     
-    пишифнс("Floating point passed");
+    скажифнс("Floating point passed");
 }
 
 
 version(x86) unittest
 {
-    пишифнс("Testing registers");
+    скажифнс("Testing registers");
     
     struct registers
     {
@@ -2182,13 +2182,13 @@ version(x86) unittest
     assert(g_old.edi = 12);
     assert(g_old == g_next);
     
-    пишифнс("Registers passed!");
+    скажифнс("Registers passed!");
 }
 
 
 unittest
 {
-    пишифнс("Testing throwYield");
+    скажифнс("Testing бросьЖни");
     
     цел q0 = 0;
     
@@ -2196,7 +2196,7 @@ unittest
     delegate проц()
     {
         q0++;
-        КонтекстСтэка.throwYield(new Исключение("testing throw жни"));
+        КонтекстСтэка.бросьЖни(new Исключение("testing throw жни"));
         q0++;
     });
     
@@ -2211,18 +2211,18 @@ unittest
     }
     
     assert(q0 == 1);
-    assert(st0.ready);
+    assert(st0.готов);
     
     st0.пуск();
     assert(q0 == 2);
-    assert(st0.dead);
+    assert(st0.мёртв);
     
-    пишифнс("throwYield passed!");
+    скажифнс("бросьЖни passed!");
 }
 
 unittest
 {
-    пишифнс("Testing thread safety");
+    скажифнс("Testing thread safety");
     
     цел x = 0, y = 0;
     
@@ -2275,6 +2275,6 @@ unittest
     assert(x == 10000);
     assert(y == 10000);
     
-    пишифнс("Нить safety passed!");
+    скажифнс("Нить safety passed!");
 }
 

@@ -33,10 +33,10 @@
  *   //Просто уменьшать счётчик до достижения 0.
  *   while(tls_counter.знач > 0)
  *   {
- *       пишифнс("Countdown ... %d", tls_counter.знач);
+ *       скажифнс("Countdown ... %d", tls_counter.знач);
  *       tls_counter.знач = tls_counter.знач - 1;
  *   }
- *   пишифнс("Blast off!");
+ *   скажифнс("Blast off!");
  *   return 0;
  * });
  *
@@ -70,11 +70,11 @@ module st.tls;
 private import stdrus, thread;
 
 /**
- * Исключение НитеЛокException генерируется в случае,
+ * Исключение НитеЛокИскл генерируется в случае,
  * если во время выполнения (в рантайм) не удается
  * правильно обработать локальное поточное действие.
  */
-class НитеЛокException : Исключение
+class НитеЛокИскл : Исключение
 {
     this(ткст сооб) { super(сооб); }
 }
@@ -98,7 +98,7 @@ private extern(C)
     цел pthread_key_delete(pthread_key_t);
     цел pthread_key_create(pthread_key_t*, проц function(ук));
     цел pthread_setspecific(pthread_key_t, ук);
-    проц *pthread_getspecific(pthread_key_t);
+    укpthread_getspecific(pthread_key_t);
     
     const цел EAGAIN = 11;
     const цел ENOMEM = 12;
@@ -120,27 +120,27 @@ public class НитеЛок(T)
      *  def = An optional default value for the thread local storage.
      *
      * Выводит исключение:
-     *  A НитеЛокException if the system could not allocate the storage.
+     *  A НитеЛокИскл if the system could not allocate the storage.
      */
     public this(T def = T.init)
     {
         this.def = def;
         
-        switch(pthread_key_create(&tls_key, &clean_up))
+        switch(pthread_key_create(&ключ_нлх, &clean_up))
         {
             case 0: break; //Success
             
-            case EAGAIN: throw new НитеЛокException
-                ("Out of ключи for thread local storage");
+            case EAGAIN: throw new НитеЛокИскл
+                ("Вне диапазона ключей для НЛХ");
             
-            case ENOMEM: throw new НитеЛокException
-                ("Out of memory for thread local storage");
+            case ENOMEM: throw new НитеЛокИскл
+                ("Вне диапазона памяти для НЛХ");
             
-            default: throw new НитеЛокException
-                ("Undefined ошибка while creating thread local storage");
+            default: throw new НитеЛокИскл
+                ("Неизвестная ошибка при создании НЛХ");
         }
         
-        debug (НитеЛок) пишифнс("TLS: Created %s", вТкст);
+        debug (НитеЛок) скажифнс("НЛХ: Создано %s", вТкст);
     }
     
     /**
@@ -148,8 +148,8 @@ public class НитеЛок(T)
      */
     public ~this()
     {
-        debug (НитеЛок) пишифнс("TLS: Deleting %s", вТкст);
-        pthread_key_delete(tls_key);
+        debug (НитеЛок) скажифнс("НЛХ: Удаляется %s", вТкст);
+        pthread_key_delete(ключ_нлх);
     }
     
     /**
@@ -157,17 +157,17 @@ public class НитеЛок(T)
      */
     public T знач()
     {
-        debug (НитеЛок) пишифнс("TLS: Accessing %s", вТкст);
+        debug (НитеЛок) скажифнс("НЛХ: Доступ к %s", вТкст);
         
-        TWrapper * w = cast(TWrapper*)pthread_getspecific(tls_key);
+        TWrapper * w = cast(TWrapper*)pthread_getspecific(ключ_нлх);
         
         if(w is пусто)
         {
-            debug(НитеЛок) пишифнс("TLS: Not found");
+            debug(НитеЛок) скажифнс("НЛХ: Не найдено");
             return def;
         }
         
-        debug(НитеЛок) пишифнс("TLS: Found %s", w);
+        debug(НитеЛок) скажифнс("НЛХ: Обнаружено %s", w);
         
         return w.знач;
     }
@@ -182,13 +182,13 @@ public class НитеЛок(T)
      *  nv upon success
      *
      * Выводит исключение:
-     *  НитеЛокException if the system could not установи the НитеЛокStorage.
+     *  НитеЛокИскл if the system could not установи the НитеЛокStorage.
      */
     public T знач(T nv)
     {
-        debug (НитеЛок) пишифнс("TLS: Setting %s", вТкст);
+        debug (НитеЛок) скажифнс("НЛХ: Устанавливается %s", вТкст);
         
-        проц * w_old = pthread_getspecific(tls_key);
+        ук w_old = pthread_getspecific(ключ_нлх);
         
         if(w_old !is пусто)
         {
@@ -196,22 +196,22 @@ public class НитеЛок(T)
         }
         else
         {
-            switch(pthread_setspecific(tls_key, TWrapper(nv)))
+            switch(pthread_setspecific(ключ_нлх, TWrapper(nv)))
             {
                 case 0: break;
                     
-                case ENOMEM: throw new НитеЛокException
-                    ("Insufficient memory to установи new thread local storage");
+                case ENOMEM: throw new НитеЛокИскл
+                    ("Недостаток памяти для установки нового НЛХ");
                 
-                case EINVAL: throw new НитеЛокException
-                    ("Invalid thread local storage");
+                case EINVAL: throw new НитеЛокИскл
+                    ("Неверное НЛХ");
                 
-                default: throw new НитеЛокException
-                    ("Undefined ошибка when setting thread local storage");
+                default: throw new НитеЛокИскл
+                    ("Неизвестная ошибка при кстановке НЛХ");
             }
         }
         
-        debug(НитеЛок) пишифнс("TLS: Set %s", вТкст);
+        debug(НитеЛок) скажифнс("НЛХ: Установка %s", вТкст);
         return nv;
     }
     
@@ -224,17 +224,17 @@ public class НитеЛок(T)
      */
     public ткст вТкст()
     {
-        return фм("НитеЛок[%8x]", tls_key);
+        return фм("НитеЛок[%8x]", ключ_нлх);
     }
 
     
     // Clean up thread local resources
-    private extern(C) static проц clean_up(проц * объ)
+    private extern(C) static проц clean_up(ук объ)
     {
         if(объ is пусто)
             return;
         
-        std.gc.removeRoot(объ);
+        смУдалиКорень(объ);
         delete объ;
     }
     
@@ -243,16 +243,16 @@ public class НитеЛок(T)
     {
         T знач;
         
-        static проц * opCall(T nv)
+        static ук opCall(T nv)
         {
             TWrapper * res = new TWrapper;
-            std.gc.addRoot(cast(ук)res);
+            смДобавьКорень(cast(ук)res);
             res.знач = nv;
             return cast(ук)res;
         }
     }
     
-    private pthread_key_t tls_key;
+    private pthread_key_t ключ_нлх;
     private T def;
 }
 
@@ -273,17 +273,17 @@ public class НитеЛок(T)
     public this(T def = T.init)
     {
         this.def = def;
-        this.tls_key = TlsAlloc();
+        this.ключ_нлх = TlsAlloc();
     }
     
     public ~this()
     {
-        TlsFree(tls_key);
+        TlsFree(ключ_нлх);
     }
     
     public T знач()
     {
-        проц * v = TlsGetValue(tls_key);
+        ук v = TlsGetValue(ключ_нлх);
         
         if(v is пусто)
             return def;
@@ -293,11 +293,11 @@ public class НитеЛок(T)
     
     public T знач(T nv)
     {
-        TWrapper * w_old = cast(TWrapper*)TlsGetValue(tls_key);
+        TWrapper * w_old = cast(TWrapper*)TlsGetValue(ключ_нлх);
         
         if(w_old is пусто)
         {
-            TlsSetValue(tls_key, TWrapper(nv));
+            TlsSetValue(ключ_нлх, TWrapper(nv));
         }
         else
         {
@@ -307,17 +307,17 @@ public class НитеЛок(T)
         return nv;
     }
     
-    private бцел tls_key;
+    private бцел ключ_нлх;
     private T def;
         
     private struct TWrapper
     {
         T знач;
         
-        static проц * opCall(T nv)
+        static ук opCall(T nv)
         {
             TWrapper * res = new TWrapper;
-            gc_addRoot(cast(ук)res);
+            смДобавьКорень(cast(ук)res);
             res.знач = nv;
             return cast(ук)res;
         }

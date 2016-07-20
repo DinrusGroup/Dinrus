@@ -1159,7 +1159,7 @@ CreateProcessWithTokenW Creates a new process and its primary thread. The new pr
 
 FreeEnvironmentStrings Frees a block of environment strings. 
 
-GetCurrentProcessorNumber Returns the number of the processor the current thread was running on during the call to this function. 
+GetCurrentProcessorNumber Returns the number of the processor the current thread was выполняется on during the call to this function. 
 GetEnvironmentStrings Retrieves the environment block for the current process. 
 GetEnvironmentVariable Retrieves the value of the specified variable from the environment block of the calling process. 
 
@@ -1212,7 +1212,7 @@ SetThreadStackGuarantee Sets the stack guarantee for the calling thread.
  
 SleepEx Suspends the current thread until the specified condition is met. 
 
-SwitchToThread Causes the calling thread to yield execution to another thread that is ready to run on the current processor. 
+SwitchToThread Causes the calling thread to yield execution to another thread that is готов to run on the current processor. 
 TerminateThread Terminates a thread. 
 ThreadProc An application-defined function that serves as the starting address for a thread. 
 
@@ -1222,14 +1222,14 @@ The following functions are used with WOW64.
 
 Function Description 
 IsWow64Message Determines if the last message read from the current thread's queue originated from a WOW64 process. 
-IsWow64Process Determines whether the specified process is running under WOW64. 
+IsWow64Process Determines whether the specified process is выполняется under WOW64. 
 
 The following functions are used with job objects.
 
 Function Description 
 AssignProcessToJobObject Associates a process with an existing job object. 
 CreateJobObject Creates or opens a job object. 
-IsProcessInJob Determines if the process is running in the specified job. 
+IsProcessInJob Determines if the process is выполняется in the specified job. 
 OpenJobObject Opens an existing job object. 
 QueryInformationJobObject Retrieves limit and job state information from the job object. 
 SetInformationJobObject Set limits for a job object. 

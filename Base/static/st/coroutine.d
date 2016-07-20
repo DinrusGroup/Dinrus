@@ -52,28 +52,28 @@ private
  * This enumeration defines что kind of coroutine you want.
  */
 enum
-CoroType
+ПТипСопроц
 {
     /**
      * This is the default.  Coroutines evaluate successive значения on-demanauxd.
      */
-    NonEager,
+    Неловкий,
 
     /**
-     * Eager coroutines will evaluate the next value in the sequence before
+     * Ловкий coroutines will evaluate the next value in the sequence before
      * being askeauxd.  This is требуется for обходчик support.
      */
-    Eager
+    Ловкий
 }
 
 private
 template
-CoroutinePublicT(Tin, Tout, CoroType TCoroType)
+CoroutinePublicT(Tin, Tout, ПТипСопроц TCoroType)
 {
     /// Records что kind of coroutine this is.
-    const CoroType coroType = TCoroType;
+    const ПТипСопроц coroType = TCoroType;
 
-    static if( is( Tin == проц ) )
+    static if( is( Tin == void ) )
     {
         /**
          * Resumes the coroutine.
@@ -89,29 +89,29 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
         opCall()
         in
         {
-            static if( coroType == CoroType.Eager )
-                assert( this.running );
+            static if( coroType == ПТипСопроц.Ловкий )
+                assert( this.выполняется );
             else
-                assert( контекст.ready );
+                assert( контекст.готов );
         }
         body
         {
-            static if( coroType == CoroType.Eager )
+            static if( coroType == ПТипСопроц.Ловкий )
             {
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     Tout temp = this.cout;
 
                 контекст.пуск();
-                if( контекст.dead )
-                    this.running = false;
+                if( контекст.мёртв )
+                    this.выполняется = false;
 
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     return temp;
             }
             else
             {
                 контекст.пуск();
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     return this.cout;
             }
         }
@@ -132,46 +132,46 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
         opCall(Tin value)
         in
         {
-            static if( coroType == CoroType.Eager )
-                assert( this.running );
+            static if( coroType == ПТипСопроц.Ловкий )
+                assert( this.выполняется );
             else
-                assert( контекст.ready );
+                assert( контекст.готов );
         }
         body
         {
             this.cin = value;
 
-            static if( coroType == CoroType.Eager )
+            static if( coroType == ПТипСопроц.Ловкий )
             {
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     Tout temp = this.cout;
 
                 контекст.пуск();
-                if( контекст.dead )
-                    this.running = false;
+                if( контекст.мёртв )
+                    this.выполняется = false;
 
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     return temp;
             }
             else
             {
                 контекст.пуск();
-                static if( !is( Tout == проц ) )
+                static if( !is( Tout == void ) )
                     return this.cout;
             }
         }
     }
 
-    static if( is( Tin == проц ) )
+    static if( is( Tin == void ) )
     {
         /**
-         * Returns a delegate that can be использован to resume the coroutine.
+         * Returns a delegate that can be использован to возобнови the coroutine.
          *
          * Возвращает:
          *  A delegate that is equivalent to calling the coroutine directly.
          */
         Tout delegate()
-        asDelegate()
+        какДелегат()
         {
             return &opCall;
         }
@@ -180,16 +180,16 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
     {
         /// ditto
         Tout delegate(Tin)
-        asDelegate()
+        какДелегат()
         {
             return &opCall;
         }
     }
 
     // TODO: Work out how to дай iteration working with non-eager coroutines.
-    static if( coroType == CoroType.Eager )
+    static if( coroType == ПТипСопроц.Ловкий )
     {
-        static if( is( Tin == проц ) && !is( Tout == проц ) )
+        static if( is( Tin == void ) && !is( Tout == void ) )
         {
             final
             цел
@@ -197,7 +197,7 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
             {
                 цел result = 0;
 
-                while( this.running )
+                while( this.выполняется )
                 {
                     Tout argTemp = opCall();
                     result = dg(argTemp);
@@ -215,7 +215,7 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
                 цел result = 0;
                 бцел counter = 0;
 
-                while( this.running )
+                while( this.выполняется )
                 {
                     Tout argTemp = opCall();
                     бцел counterTemp = counter;
@@ -232,23 +232,23 @@ CoroutinePublicT(Tin, Tout, CoroType TCoroType)
 
 private
 template
-CoroutineProtectedT(Tin, Tout, CoroType TCoroType)
+CoroutineProtectedT(Tin, Tout, ПТипСопроц TCoroType)
 {
     т_мера STACK_SIZE = ДЕФ_РАЗМЕР_СТЕКА;
 
-    static if( is( Tout == проц ) )
+    static if( is( Tout == void ) )
     {
         final
         Tin
         жни()
         in
         {
-            assert( КонтекстСтэка.getRunning is контекст );
+            assert( КонтекстСтэка.дайВыполняемый is контекст );
         }
         body
         {
             КонтекстСтэка.жни();
-            static if( is( Tin == проц ) ) {}
+            static if( is( Tin == void ) ) {}
             else
                 return this.cin;
         }
@@ -260,13 +260,13 @@ CoroutineProtectedT(Tin, Tout, CoroType TCoroType)
         жни(Tout value)
         in
         {
-            assert( КонтекстСтэка.getRunning is контекст );
+            assert( КонтекстСтэка.дайВыполняемый is контекст );
         }
         body
         {
             this.cout = value;
             КонтекстСтэка.жни();
-            static if( is( Tin == проц ) ) {}
+            static if( is( Tin == void ) ) {}
             else
                 return this.cin;
         }
@@ -277,7 +277,7 @@ CoroutineProtectedT(Tin, Tout, CoroType TCoroType)
  * TODO
  */
 class
-Coroutine(Tin, Tout, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -287,8 +287,8 @@ protected:
     this()
     {
         
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -299,19 +299,19 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск();
@@ -322,7 +322,7 @@ private:
  * TODO
  */
 class
-Coroutine(Tin, Tout, Ta1, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, Ta1, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -332,8 +332,8 @@ protected:
     this(Ta1 arg1)
     {
         this.arg1 = arg1;
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -344,19 +344,19 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     Ta1 arg1;
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск(arg1);
@@ -367,7 +367,7 @@ private:
  * TODO
  */
 class
-Coroutine(Tin, Tout, Ta1, Ta2, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, Ta1, Ta2, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -378,8 +378,8 @@ protected:
     {
         this.arg1 = arg1;
         this.arg2 = arg2;
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -390,20 +390,20 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     Ta1 arg1;
     Ta2 arg2;
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск(arg1, arg2);
@@ -414,7 +414,7 @@ private:
  * TODO
  */
 class
-Coroutine(Tin, Tout, Ta1, Ta2, Ta3, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, Ta1, Ta2, Ta3, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -426,8 +426,8 @@ protected:
         this.arg1 = arg1;
         this.arg2 = arg2;
         this.arg3 = arg3;
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -438,13 +438,13 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     Ta1 arg1;
@@ -452,7 +452,7 @@ private:
     Ta3 arg3;
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск(arg1, arg2, arg3);
@@ -463,7 +463,7 @@ private:
  * TODO
  */
 class
-Coroutine(Tin, Tout, Ta1, Ta2, Ta3, Ta4, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, Ta1, Ta2, Ta3, Ta4, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -476,8 +476,8 @@ protected:
         this.arg2 = arg2;
         this.arg3 = arg3;
         this.arg4 = arg4;
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -488,13 +488,13 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     Ta1 arg1;
@@ -503,7 +503,7 @@ private:
     Ta4 arg4;
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск(arg1, arg2, arg3, arg4);
@@ -514,7 +514,7 @@ private:
  * TODO
  */
 class
-Coroutine(Tin, Tout, Ta1, Ta2, Ta3, Ta4, Ta5, CoroType TCoroType = CoroType.NonEager)
+Сопроцедура(Tin, Tout, Ta1, Ta2, Ta3, Ta4, Ta5, ПТипСопроц TCoroType = ПТипСопроц.Неловкий)
 {
     mixin CoroutinePublicT!(Tin, Tout, TCoroType);
 
@@ -528,8 +528,8 @@ protected:
         this.arg3 = arg3;
         this.arg4 = arg4;
         this.arg5 = arg5;
-        контекст = new КонтекстСтэка(&startProc, STACK_SIZE);
-        static if( coroType == CoroType.Eager )
+        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
 
@@ -540,13 +540,13 @@ protected:
 private:
     КонтекстСтэка контекст;
     
-    static if( coroType == CoroType.Eager )
-        бул running = true;
+    static if( coroType == ПТипСопроц.Ловкий )
+        бул выполняется = true;
 
-    static if( !is( Tout == проц ) )
+    static if( !is( Tout == void ) )
         Tout cout;
 
-    static if( !is( Tin == проц ) )
+    static if( !is( Tin == void ) )
         Tin cin;
 
     Ta1 arg1;
@@ -556,7 +556,7 @@ private:
     Ta5 arg5;
 
     проц
-    startProc()
+    стартПроц()
     {
         // Initial call to coroutine proper
         пуск(arg1, arg2, arg3, arg4, arg5);

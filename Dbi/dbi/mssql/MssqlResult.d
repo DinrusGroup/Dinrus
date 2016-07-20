@@ -59,10 +59,10 @@ class MssqlResult : Результат {
 						numРяды += счёт;
 
 						ткст значение;
-						ткст fieldимя;
+						ткст имя_поля;
 
 						for (цел i = 0; i < numFields; ++i) {
-							fieldимя = поля[i].имя[0 .. locate(поля[i].имя, '\0')];
+							имя_поля = поля[i].name[0 .. locate(поля[i].name, '\0')];
 							switch (поля[i].datatype) {
 								case CS_CHAR_TYPE:
 									значение = strings[i][0 .. lengths[i]];
@@ -101,9 +101,9 @@ class MssqlResult : Результат {
 							}
 
 							version(Rulada) {
-								r.добавьПоле(fieldимя, значение, toDString(поля[i].datatype), поля[i].datatype);
+								r.добавьПоле(имя_поля, значение, toDString(поля[i].datatype), поля[i].datatype);
 							} else {
-								r.добавьПоле(fieldимя, значение, text.convert.Integer.вТкст(поля[i].datatype), поля[i].datatype);
+								r.добавьПоле(имя_поля, значение, text.convert.Integer.вТкст(поля[i].datatype), поля[i].datatype);
 							}
 						}
 						// we only want to return one ряд, so exit both while loops
@@ -162,19 +162,19 @@ class MssqlResult : Результат {
 					if (strings[i].length != поля[i].maxlength) {
 						strings[i].length = поля[i].maxlength;
 					}
-					ct_подвяз(cmd, (i + 1), &поля[i], strings[i].ptr, &lengths[i], &inds[i]);
+					ct_bind(cmd, (i + 1), &поля[i], strings[i].ptr, &lengths[i], &inds[i]);
 					break;
 				case CS_FLOAT_TYPE:
-					ct_подвяз(cmd, (i + 1), &поля[i], &floats[i], &lengths[i], &inds[i]);
+					ct_bind(cmd, (i + 1), &поля[i], &floats[i], &lengths[i], &inds[i]);
 					break;
 				case CS_DATETIME_TYPE:
-					ct_подвяз(cmd, (i + 1), &поля[i], &dts[i], &lengths[i], &inds[i]);
+					ct_bind(cmd, (i + 1), &поля[i], &dts[i], &lengths[i], &inds[i]);
 					break;
 				case CS_DATETIME4_TYPE:
-					ct_подвяз(cmd, (i + 1), &поля[i], &dt4s[i], &lengths[i], &inds[i]);
+					ct_bind(cmd, (i + 1), &поля[i], &dt4s[i], &lengths[i], &inds[i]);
 					break;
 				default:
-					ct_подвяз(cmd, (i + 1), &поля[i], &ints[i], &lengths[i], &inds[i]);
+					ct_bind(cmd, (i + 1), &поля[i], &ints[i], &lengths[i], &inds[i]);
 					break;
 			}
 		}

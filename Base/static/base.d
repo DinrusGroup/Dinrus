@@ -1159,8 +1159,8 @@ size_t gc_capacity(ук p);
 проц gc_removeRange( ук p );
 проц gc_monitor(ddel begin, dint end );
 GCStats gc_stats();
-проц _d_gc_addrange(проц *pbot, проц *ptop);
-проц _d_gc_removerange(проц *pbot);
+проц _d_gc_addrange(ук pbot, ук ptop);
+проц _d_gc_removerange(ук pbot);
 uint gc_getAttr( ук p );
 uint gc_setAttr( ук p, uint а );
 uint gc_clrAttr( ук p, uint а );
@@ -1179,7 +1179,7 @@ BlkInfo gc_query( ук p );
 проц gc_enable();
 проц gc_disable();
 проц gc_collect();
-проц gc_check(проц *p);
+проц gc_check(ук p);
 проц gc_addRangeOld( ук  p, ук разм );
 	
 /+

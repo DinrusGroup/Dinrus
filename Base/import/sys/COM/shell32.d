@@ -445,7 +445,7 @@ interface IShellDispatch2 : IShellDispatch {
   /*[id(0x60030004)]*/ цел ServiceStart(шим* ServiceName, ВАРИАНТ Persistent, out ВАРИАНТ pSuccess);
   // Stop a service by name, and optionally disable autostart.
   /*[id(0x60030005)]*/ цел ServiceStop(шим* ServiceName, ВАРИАНТ Persistent, out ВАРИАНТ pSuccess);
-  // Determine if a service is running by name.
+  // Determine if a service is выполняется by name.
   /*[id(0x60030006)]*/ цел IsServiceRunning(шим* ServiceName, out ВАРИАНТ pRunning);
   // Determine if the current user can start/stop the named service.
   /*[id(0x60030007)]*/ цел CanStartStopService(шим* ServiceName, out ВАРИАНТ pCanStartStop);

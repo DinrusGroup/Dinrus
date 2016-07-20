@@ -87,7 +87,7 @@ typedef void* SDLNet_SocketSet;
 
 struct _SDLNet_GenericSocket
 {
-    int ready;
+    int готов;
 }
 alias _SDLNet_GenericSocket* SDLNet_GenericSocket;
 
@@ -123,12 +123,12 @@ int SDLNet_UDP_DelSocket(SDLNet_SocketSet set, UDPsocket sock)
 
 bool SDLNet_SocketReady(TCPsocket sock)
 {
-    return cast(bool)((sock !is null) && (cast(SDLNet_GenericSocket)sock).ready);
+    return cast(bool)((sock !is null) && (cast(SDLNet_GenericSocket)sock).готов);
 }
 
 bool SDLNet_SocketReady(UDPsocket sock)
 {
-    return cast(bool)((sock !is null) && (cast(SDLNet_GenericSocket)sock).ready);
+    return cast(bool)((sock !is null) && (cast(SDLNet_GenericSocket)sock).готов);
 }
 
 void SDLNet_Write16(Uint16 value, void* areap)

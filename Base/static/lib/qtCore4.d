@@ -5724,7 +5724,7 @@
 
 		//вяжи(функция_2855)("_?keyValues@QVariantAnimation@@QBE?AV?$QVector@U?$QPair@NVQVariant@@@@@@XZ", биб);
 
-		//вяжи(функция_2856)("_?kill@QProcess@@QAEXXZ", биб);
+		//вяжи(функция_2856)("_?души@QProcess@@QAEXXZ", биб);
 
 		//вяжи(функция_2857)("_?killTimer@QObject@@QAEXH@Z", биб);
 
@@ -6534,11 +6534,11 @@
 
 		//вяжи(функция_3260)("_?patternSyntax@QRegExp@@QBE?AW4PatternSyntax@1@XZ", биб);
 
-		//вяжи(функция_3261)("_?pause@QAbstractAnimation@@QAEXXZ", биб);
+		//вяжи(функция_3261)("_?пауза@QAbstractAnimation@@QAEXXZ", биб);
 
-		//вяжи(функция_3262)("_?pause@QFutureWatcherBase@@QAEXXZ", биб);
+		//вяжи(функция_3262)("_?пауза@QFutureWatcherBase@@QAEXXZ", биб);
 
-		//вяжи(функция_3263)("_?paused@QFutureWatcherBase@@IAEXXZ", биб);
+		//вяжи(функция_3263)("_?на_паузе@QFutureWatcherBase@@IAEXXZ", биб);
 
 		//вяжи(функция_3264)("_?peek@QIODevice@@QAE?AVQByteArray@@_J@Z", биб);
 
@@ -7770,11 +7770,11 @@
 
 		//вяжи(функция_3878)("_?resultStoreBase@QFutureInterfaceBase@@QBEABVResultStoreBase@QtConcurrent@@XZ", биб);
 
-		//вяжи(функция_3879)("_?resume@QAbstractAnimation@@QAEXXZ", биб);
+		//вяжи(функция_3879)("_?возобнови@QAbstractAnimation@@QAEXXZ", биб);
 
-		//вяжи(функция_3880)("_?resume@QFutureWatcherBase@@QAEXXZ", биб);
+		//вяжи(функция_3880)("_?возобнови@QFutureWatcherBase@@QAEXXZ", биб);
 
-		//вяжи(функция_3881)("_?resume@QTimeLine@@QAEXXZ", биб);
+		//вяжи(функция_3881)("_?возобнови@QTimeLine@@QAEXXZ", биб);
 
 		//вяжи(функция_3882)("_?resumed@QFutureWatcherBase@@IAEXXZ", биб);
 
@@ -7872,7 +7872,7 @@
 
 		//вяжи(функция_3929)("_?run@ThreadEngineBase@QtConcurrent@@EAEXXZ", биб);
 
-		//вяжи(функция_3930)("_?running@QThread@@QBE_NXZ", биб);
+		//вяжи(функция_3930)("_?выполняется@QThread@@QBE_NXZ", биб);
 
 		//вяжи(функция_3931)("_?rwidth@QSize@@QAEAAHXZ", биб);
 
@@ -16298,7 +16298,7 @@
 
 		//вяжи(функция_8142)("_?keyValues@QVariantAnimation@@QBE?AV?$QVector@U?$QPair@NVQVariant@@@@@@XZ", биб);
 
-		//вяжи(функция_8143)("_?kill@QProcess@@QAEXXZ", биб);
+		//вяжи(функция_8143)("_?души@QProcess@@QAEXXZ", биб);
 
 		//вяжи(функция_8144)("_?killTimer@QObject@@QAEXH@Z", биб);
 
@@ -17108,11 +17108,11 @@
 
 		//вяжи(функция_8547)("_?patternSyntax@QRegExp@@QBE?AW4PatternSyntax@1@XZ", биб);
 
-		//вяжи(функция_8548)("_?pause@QAbstractAnimation@@QAEXXZ", биб);
+		//вяжи(функция_8548)("_?пауза@QAbstractAnimation@@QAEXXZ", биб);
 
-		//вяжи(функция_8549)("_?pause@QFutureWatcherBase@@QAEXXZ", биб);
+		//вяжи(функция_8549)("_?пауза@QFutureWatcherBase@@QAEXXZ", биб);
 
-		//вяжи(функция_8550)("_?paused@QFutureWatcherBase@@IAEXXZ", биб);
+		//вяжи(функция_8550)("_?на_паузе@QFutureWatcherBase@@IAEXXZ", биб);
 
 		//вяжи(функция_8551)("_?peek@QIODevice@@QAE?AVQByteArray@@_J@Z", биб);
 
@@ -18344,11 +18344,11 @@
 
 		//вяжи(функция_9165)("_?resultStoreBase@QFutureInterfaceBase@@QBEABVResultStoreBase@QtConcurrent@@XZ", биб);
 
-		//вяжи(функция_9166)("_?resume@QAbstractAnimation@@QAEXXZ", биб);
+		//вяжи(функция_9166)("_?возобнови@QAbstractAnimation@@QAEXXZ", биб);
 
-		//вяжи(функция_9167)("_?resume@QFutureWatcherBase@@QAEXXZ", биб);
+		//вяжи(функция_9167)("_?возобнови@QFutureWatcherBase@@QAEXXZ", биб);
 
-		//вяжи(функция_9168)("_?resume@QTimeLine@@QAEXXZ", биб);
+		//вяжи(функция_9168)("_?возобнови@QTimeLine@@QAEXXZ", биб);
 
 		//вяжи(функция_9169)("_?resumed@QFutureWatcherBase@@IAEXXZ", биб);
 
@@ -18446,7 +18446,7 @@
 
 		//вяжи(функция_9216)("_?run@ThreadEngineBase@QtConcurrent@@EAEXXZ", биб);
 
-		//вяжи(функция_9217)("_?running@QThread@@QBE_NXZ", биб);
+		//вяжи(функция_9217)("_?выполняется@QThread@@QBE_NXZ", биб);
 
 		//вяжи(функция_9218)("_?rwidth@QSize@@QAEAAHXZ", биб);
 

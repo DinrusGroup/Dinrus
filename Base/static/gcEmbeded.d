@@ -2962,7 +2962,7 @@ if(готов)
         {
             if (!безСтэка)
             {
-                // Scan stacks and registers for each paused thread
+                // Scan stacks and registers for each на_паузе thread
               нить_сканируйВсе( &this.пометь, верхСтэка );
             }
         }

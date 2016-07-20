@@ -19,16 +19,16 @@ private import dbi.msql.imp, dbi.msql.MsqlResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class MsqlDatabase : БазаДанных {
+class ЭмЭсКюЭлБД : БазаДанных {
 	public:
 	/**
-	 * Create a new instance of MsqlDatabase, but don't подключись.
+	 * Create a new instance of ЭмЭсКюЭлБД, but don't подключись.
 	 */
 	this () {
 	}
 
 	/**
-	 * Create a new instance of MsqlDatabase and подключись to a server.
+	 * Create a new instance of ЭмЭсКюЭлБД and подключись to a server.
 	 *
 	 * See_Also:
 	 *	подключись

@@ -830,7 +830,7 @@ Example:
 alias CommonType!(цел, дол, крат) X;
 assert(is(X == дол));
 alias CommonType!(цел, char[], крат) Y;
-assert(is(Y == проц));
+assert(is(Y == void));
 ----
 */
 template CommonType(Т...)
@@ -850,7 +850,7 @@ unittest
     alias CommonType!(цел, дол, крат) X;
     assert(is(X == дол));
     alias CommonType!(char[], цел, дол, крат) Y;
-    assert(is(Y == проц), Y.stringof);
+    assert(is(Y == void), Y.stringof);
 }
 
 /**
@@ -1432,7 +1432,7 @@ version( GNU )
 {
     // GDC should also be able to use the other version, but it probably
     // relies on a frontend fix in one of the latest DMD versions - will
-    // remove this when GDC is ready. For now, this code pass the unittests.
+    // remove this when GDC is готов. For now, this code pass the unittests.
     private template isStaticArrayTypeInst( Т )
     {
         const Т isStaticArrayTypeInst = void;

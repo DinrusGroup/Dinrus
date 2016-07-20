@@ -7130,7 +7130,7 @@ interface IMalloc: IUnknown
 {
 	extern(Windows):
 	ук Alloc(ULONG cb);
-	ук Realloc(проц *pv, ULONG cb);
+	ук Realloc(ук pv, ULONG cb);
 	проц Free(ук pv);
 	ULONG GetSize(ук pv);
 	цел DidAlloc(ук pv);

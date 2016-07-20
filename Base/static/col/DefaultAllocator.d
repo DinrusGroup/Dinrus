@@ -26,7 +26,7 @@ module col.DefaultAllocator;
     struct БлокРазместитель(V, бцел элтовНаБлок)
     {
         /**
-         * Free is needed to recycle узелs for another allocation.
+         * Free is needed to рециклируй узелs for another allocation.
          */
         const бул нужноСвоб = true;
         static if(V.sizeof < (ук).sizeof)
@@ -179,7 +179,7 @@ module col.DefaultAllocator;
                     if(свеж.члоОсвоб != 0)
                     {
                         //
-                        // can recycle элементы from свеж
+                        // can рециклируй элементы from свеж
                         //
                         используется = свеж;
                     }

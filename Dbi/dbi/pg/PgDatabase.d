@@ -23,16 +23,16 @@ private import dbi.pg.imp, dbi.pg.PgError, dbi.pg.PgResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class PgDatabase : БазаДанных {
+class ПгБД : БазаДанных {
 	public:
 	/**
-	 * Create a new instance of PgDatabase, but don't подключись.
+	 * Create a new instance of ПгБД, but don't подключись.
 	 */
 	this () {
 	}
 
 	/**
-	 * Create a new instance of PgDatabase and подключись to a server.
+	 * Create a new instance of ПгБД and подключись to a server.
 	 *
 	 * See_Also:
 	 *	подключись
@@ -82,7 +82,7 @@ class PgDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	PgDatabase бд = new PgDatabase();
+	 *	ПгБД бд = new ПгБД();
 	 *	бд.подключись("host=localhost;dbимя=test", "имя_пользователя", "пароль");
 	 *	---
 	 *
@@ -94,12 +94,12 @@ class PgDatabase : БазаДанных {
 			парамы = "";
 		}
 		if (имя_пользователя !is пусто) {
-			парамы ~= " пользователь=" ~ имя_пользователя ~ "";
+			парамы ~= " user=" ~ имя_пользователя ~ "";
 		}
 		if (пароль !is пусто) {
-			парамы ~= " пароль=" ~ пароль ~ "";
+			парамы ~= " user=" ~ пароль ~ "";
 		}
-		подключение = PQподключисьdb(toCString(парамы));
+		подключение = PQconnectdb(toCString(парамы));
 		кодОш = cast(цел)PQstatus(подключение);
 		if (кодОш != ConnStatusType.CONNECTION_OK && кодОш) {
 			throw new ИсклДБИ(toDString(PQerrorMessage(подключение)), кодОш);
@@ -111,7 +111,7 @@ class PgDatabase : БазаДанных {
 	 */
 	override проц закрой () {
 		if (подключение !is пусто) {
-			PQфиниш(подключение);
+			PQfinish(подключение);
 			подключение = пусто;
 		}
 	}
@@ -203,7 +203,7 @@ class PgDatabase : БазаДанных {
 	 *	The бд specific ошибка message.
 	 */
 	deprecated override ткст дайСообОшибки () {
-		return "not implemented";
+		return "не реализовано";
 	}
 
 	private:
@@ -231,9 +231,9 @@ unittest {
 	}
 
 	s1("dbi.pg.PgDatabase:");
-	PgDatabase бд = new PgDatabase();
+	ПгБД бд = new ПгБД();
 	s2("подключись");
-	бд.подключись("dbимя=test", "test", "test");
+	бд.подключись("dbname=test", "test", "test");
 
 	s2("запрос");
 	Результат рез = бд.запрос("SELECT * FROM test");

@@ -267,7 +267,7 @@ int deflate(z_streamp strm, int flush);
   - Compress more input starting at next_in and update next_in and avail_in
     accordingly. If not all input can be processed (because there is not
     enough room in the output buffer), next_in and avail_in are updated and
-    processing will resume at this point for the next call of deflate().
+    processing will возобнови at this point for the next call of deflate().
 
   - Provide more output starting at next_out and update next_out and avail_out
     accordingly. This action is forced if the parameter flush is non zero.
@@ -390,7 +390,7 @@ int inflate(z_streamp strm, int flush);
   - Decompress more input starting at next_in and update next_in and avail_in
     accordingly. If not all input can be processed (because there is not
     enough room in the output buffer), next_in is updated and processing
-    will resume at this point for the next call of inflate().
+    will возобнови at this point for the next call of inflate().
 
   - Provide more output starting at next_out and update next_out and avail_out
     accordingly.  inflate() provides as much output as possible, until there
@@ -1271,7 +1271,7 @@ void gzclearerr (gzFile file);
  uint adler32  (uint adler, ubyte *buf, uint len);
 
 /*
-     Update a running Adler-32 checksum with the bytes buf[0..len-1] and
+     Update a выполняется Adler-32 checksum with the bytes buf[0..len-1] and
    return the updated checksum. If buf is NULL, this function returns
    the required initial value for the checksum.
    An Adler-32 checksum is almost as reliable as a CRC32 but can be computed
@@ -1295,7 +1295,7 @@ uint adler32_combine(uint adler1, uint adler2, z_off_t len2);
 
 uint crc32(uint crc, ubyte *buf, uint len);
 /*
-     Update a running CRC-32 with the bytes buf[0..len-1] and return the
+     Update a выполняется CRC-32 with the bytes buf[0..len-1] and return the
    updated CRC-32. If buf is NULL, this function returns the required initial
    value for the for the crc. Pre- and post-conditioning (one's complement) is
    performed within this function so it shouldn't be done by the application.

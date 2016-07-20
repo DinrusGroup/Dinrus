@@ -2830,7 +2830,7 @@ interface IUnrestrictedPermission : IDispatch {
 
 interface IContextAttribute : IDispatch {
   mixin(uuid("4a68baa3-27aa-314a-bdbb-6ae9bdfc0420"));
-  /*[id(0x60020000)]*/ int IsContextOK(_Context ctx, IConstructionCallMessage msg, out short pRetVal);
+  /*[id(0x60020000)]*/ int IsContextOK(_Context конткст, IConstructionCallMessage msg, out short pRetVal);
   /*[id(0x60020001)]*/ int GetPropertiesForNewContext(IConstructionCallMessage msg);
 }
 

@@ -408,8 +408,8 @@ extern(C)
 		
 debug  {
 		this.выведи();
-		wchar[] soob = toUTF16(фм(msg~"\n\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\n\nСообщение Системы: \n"~СистОШ.последнСооб));
-        ОкноСооб(null, soob, toUTF16(фм("Исключение Динрус: "~this.classinfo.name)), ПСооб.Ошибка|ПСооб.Поверх);
+		wchar[] soob = toUTF16(фм("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
+        ОкноСооб(null, soob, "Исключение Динрус: ", ПСооб.Ошибка|ПСооб.Поверх);
 		сбросьЦветКонсоли();		
 		}
 		

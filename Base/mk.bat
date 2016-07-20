@@ -304,7 +304,7 @@ cls
 @goto Geom
 
 :IO
-::goto DRwin32
+:goto DRwin32
 %LS% -d %this%\import\io\*.d %this%\import\io\device\*.d %this%\import\io\stream\*.d>>%this%\io.rsp
 %DMD% -lib -of%this%\io.lib @%this%\io.rsp
 @if exist %this%\io.lib del %this%\io.rsp
@@ -358,7 +358,7 @@ cd %this%
 %LIB% -p256  %this%\Dinrus.lib %this%\geom.lib
 %LIB% -p256  %this%\Dinrus.lib %this%\mesh.lib
 %LIB% -p256  %this%\Dinrus.lib %this%\st.lib
-%LIB% -p256  %this%\Dinrus.lib %this%\io.lib
+::%LIB% -p256  %this%\Dinrus.lib %this%\io.lib
 %LIB% -p256  %this%\Dinrus.lib %ARCDIR%\arc2.lib
 %LIB% -p256  %this%\Dinrus.lib %MINIDDIR%\rminid.lib
 
