@@ -14,14 +14,14 @@ version (Windows) {
 
 
 extern (C) {
-  цел cs_ctx_размест(цел version_, проц * * ctx);
+  цел cs_ctx_alloc(цел version_, проц * * ctx);
   цел ct_init(проц * ctx, цел version_);
-  цел ct_con_размест(проц * ctx, проц * * con);
+  цел ct_con_alloc(проц * ctx, проц * * con);
   цел ct_con_props(проц * con, цел action, цел property, проц * буфер,
 		   цел buflen, цел * out_len);
-  цел ct_подключись(проц * con, char * serverимя, цел sимяlen);
+  цел ct_connect(проц * con, char * serverимя, цел sимяlen);
 
-  цел ct_cmd_размест(проц * con, проц * * cmd);
+  цел ct_cmd_alloc(проц * con, проц * * cmd);
   цел ct_command(проц * cmd, цел тип, проц * буфер, цел buflen, цел option);
   цел ct_send(проц * cmd);
 
@@ -30,10 +30,10 @@ extern (C) {
 		  цел * out_len);
   цел ct_fetch(проц * cmd, цел тип, цел offустанови, цел option, цел * ряды_read);
   цел ct_describe(проц * cmd, цел item, _cs_datafmt * datafmt);
-  цел ct_подвяз(проц * cmd, цел item, _cs_datafmt * datafmt, проц * буфер,
+  цел ct_bind(проц * cmd, цел item, _cs_datafmt * datafmt, проц * буфер,
 	      цел * copied, крат * indicator);
 
-  цел ct_закрой(проц * con, цел option);
+  цел ct_close(проц * con, цел option);
 }
 
 alias проц CS_CONTEXT;

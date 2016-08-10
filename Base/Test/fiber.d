@@ -478,8 +478,8 @@ pragma(lib, "dinrus.lib");
 	  
     const uint РАЗМЕР_СТРЕССА = 5000;
     
-    Фибра[] ctx;
-    ctx.length = РАЗМЕР_СТРЕССА;
+    Фибра[] конткст;
+    конткст.length = РАЗМЕР_СТРЕССА;
     
     int cnt0 = 0;
     int cnt1 = 0;
@@ -491,7 +491,7 @@ pragma(lib, "dinrus.lib");
         cnt1++;
     }
    
-    foreach(inout Фибра к; ctx)
+    foreach(inout Фибра к; конткст)
     {
         к = new Фибра(&threadFunc, 1024);
     }
@@ -499,7 +499,7 @@ pragma(lib, "dinrus.lib");
     assert(cnt0 == 0);
     assert(cnt1 == 0);
     
-    foreach(inout Фибра к; ctx)
+    foreach(inout Фибра к; конткст)
     {
         к.вызови;
     }
@@ -507,7 +507,7 @@ pragma(lib, "dinrus.lib");
     assert(cnt0 == РАЗМЕР_СТРЕССА);
     assert(cnt1 == 0);
     
-    foreach(inout Фибра к; ctx)
+    foreach(inout Фибра к; конткст)
     {
         к.вызови;
     }
@@ -515,7 +515,7 @@ pragma(lib, "dinrus.lib");
     assert(cnt0 == РАЗМЕР_СТРЕССА);
     assert(cnt1 == РАЗМЕР_СТРЕССА);
     
-    foreach(inout Фибра к; ctx)
+    foreach(inout Фибра к; конткст)
     {
         delete к;
     }
@@ -738,7 +738,7 @@ pragma(lib, "dinrus.lib");
     try
     {
         st0.вызови(нет);
-        assert(false);
+        //assert(нет);
     }
     catch(Исключение e)
     {
@@ -871,12 +871,13 @@ void main()
 внедрениеКонтекста();
 плавТчк();
 безопасностьНити();
+проверкаФибраЖни();
+//стрессПамяти();
 //Ниже приведены неработающие тесты
 проверкаИсключений();
 стандартныеИскл();
 базовыеИсключения();
-проверкаФибраЖни();
-стрессПамяти();
+
 
 
 

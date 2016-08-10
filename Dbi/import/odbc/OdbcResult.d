@@ -11,7 +11,7 @@ module dbi.odbc.OdbcResult;
 // WindowsAPI revision 144.  I'll see about fixing their ODBC and SQL files soon.
 // WindowsAPI should also include odbc32.lib itself.
 
-version(Rulada) {
+version(Dinrus) {
 	private import stdrus : убери = strip;
 } else {
 	private import text.Util : убери;

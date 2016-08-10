@@ -31,7 +31,7 @@ version (Windows) {
 /**
  * This тип is used with PQprint because C doesn't have a _true булean тип.
  */
-alias байт pqбул;
+alias байт pqbool;
 
 /**
  * Объект ID is a fundamental тип in PostgreSQL.
@@ -222,12 +222,12 @@ alias проц function(ук arg, char* message) PQnoticeProcessor;
  * Print options for PQprint().
  */
 struct _PQprintOpt {
-	pqбул header;			/// Print output field headings and ряд счёт.
-	pqбул alignment;		/// Fill align the поля.
-	pqбул standard;		/// Old brain dead format.
-	pqбул html3;			/// Output html таблицы.
-	pqбул expanded;		/// Expand таблицы.
-	pqбул pager;			/// Use pager for output if needed.
+	pqbool header;			/// Print output field headings and ряд счёт.
+	pqbool alignment;		/// Fill align the поля.
+	pqbool standard;		/// Old brain dead format.
+	pqbool html3;			/// Output html таблицы.
+	pqbool expanded;		/// Expand таблицы.
+	pqbool pager;			/// Use pager for output if needed.
 	char* fieldSep;			/// Field separator.
 	char* tableOpt;			/// Insert a таблица in HTML.
 	char* caption;			/// Insert a caption in HTML.
@@ -1095,7 +1095,7 @@ char* PQresultErrorField (PGresult* рез, char fieldcode);
  * Returns:
  *	The имя of the column if it есть or пусто otherwise.
  */
-char* PQfимя (PGresult* рез, цел field_num);
+char* PQfname (PGresult* рез, цел field_num);
 
 /**
  * Get the column number associated with a column имя in a запрос результат.
@@ -1571,12 +1571,12 @@ Oid lo_create (PGconn* conn, Oid lobjId);
  *
  * Params:
  *	conn = The PostgreSQL подключение.
- *	fileимя = Name of the file to load.
+ *	filename = Name of the file to load.
  *
  * Returns:
  *	The Oid of the large object or InvalidOid on failure.
  */
-Oid lo_import (PGconn* conn, char* fileимя);
+Oid lo_import (PGconn* conn, char* filename);
 
 /**
  * Save a large object to a file.
@@ -1584,12 +1584,12 @@ Oid lo_import (PGconn* conn, char* fileимя);
  * Params:
  *	conn = The PostgreSQL подключение.
  *	lobjOid = Oid of the large object to save.
- *	fileимя = Name of the file to save to.
+ *	filename = Name of the file to save to.
  *
  * Returns:
  *	1 on success or -1 on failure.
  */
-цел lo_export (PGconn* conn, Oid lobjId, char* fileимя);
+цел lo_export (PGconn* conn, Oid lobjId, char* filename);
 
 /**
  * todo

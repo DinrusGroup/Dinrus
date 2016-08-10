@@ -243,7 +243,7 @@ export extern(D) class Нить
 
 
         /**
-         * Waits for this thread to complete.  If the thread terminated as the
+        * Ждёт завершения данной нити.  If the thread terminated as the
          * результат of an unhandled exception, this exception will be rethrown.
          *
          * Параметры:

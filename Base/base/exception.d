@@ -1148,45 +1148,45 @@ static this()
 export extern (C)
 {
 
- бул устПроверОбр( типПроверОбр h )
-{
-    проверОбр = h;
-	return true;
-}
+	 бул устПроверОбр( типПроверОбр h )
+	{
+		проверОбр = h;
+		return true;
+	}
 
 
-/**
- * Overrides the default trace hander with a user-supplied version.
- *
- * Параметры:
- *  h = The new trace handler.  Set to null to use the default handler.
- */
-бул устСледОбр( типСледОбр h )
-{
-    трОбр = h;
-	return true;
-}
+	/**
+	 * Overrides the default trace hander with a user-supplied version.
+	 *
+	 * Параметры:
+	 *  h = The new trace handler.  Set to null to use the default handler.
+	 */
+	бул устСледОбр( типСледОбр h )
+	{
+		трОбр = h;
+		return true;
+	}
 
-/**
- * This function will be called when a ОтслежИскл is constructed.  The
- * user-supplied trace handler will be called if one has been supplied,
- * otherwise no trace will be generated.
- *
- * Параметры:
- *  ptr = A pointer to the location from which to generate the trace, or null
- *        if the trace should be generated from within the trace handler
- *        itself.
- *
- * Возвращает:
- *  An object describing the current calling context or null if no handler is
- *  supplied.
- */
-ИнфоОтслежИскл контекстТрассировки( ук ptr = null )
-{
-    if( трОбр is null )
-        return null;
-    return трОбр( ptr );
-}
+	/**
+	 * This function will be called when a ОтслежИскл is constructed.  The
+	 * user-supplied trace handler will be called if one has been supplied,
+	 * otherwise no trace will be generated.
+	 *
+	 * Параметры:
+	 *  ptr = A pointer to the location from which to generate the trace, or null
+	 *        if the trace should be generated from within the trace handler
+	 *        itself.
+	 *
+	 * Возвращает:
+	 *  An object describing the current calling context or null if no handler is
+	 *  supplied.
+	 */
+	ИнфоОтслежИскл контекстТрассировки( ук ptr = null )
+	{
+		if( трОбр is null )
+			return null;
+		return трОбр( ptr );
+	}
 
 }
 

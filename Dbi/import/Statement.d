@@ -6,18 +6,18 @@ private import dbi.DataBase, dbi.DBIException, dbi.Result;
  * Подготавливает инструкцию на SQL.
  *
  * Bugs:
- *	The statement is stored but not подготовьd.
+ *	Инструкция сохраняется, не не подготавливается.
  *
- *	The индекс version of вяжи ignores its first parameter.
+ *	Эта версия индекса игнорирует свой первый параметр.
  *
- *	The two forms of вяжи cannot be used at the same время.
+ *	Обе формы связки нельзя использовать одновременно.
  *
  * Todo:
  *	make выполни/запрос("10", "20", 30); work (variable arguments for подвязing to ?, ?, ?, etc...)
  */
 final class Инструкция {
 	/**
-	 * Make a new instance of Инструкция.
+	 * Создаёт новый экземпляр Инструкция.
 	 *
 	 * Params:
 	 *	бд = The бд подключение to use.

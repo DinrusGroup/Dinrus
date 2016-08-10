@@ -23,15 +23,15 @@ private import dbi.pg.imp, dbi.pg.PgError, dbi.pg.PgResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class PgDatabase : БазаДанных {
+class ПгБД : БазаДанных {
 	public:
 	/**
-	 * Create a new instance of PgDatabase, but don't подключись.
+	 * Create a new instance of ПгБД, but don't подключись.
 	 */
 	this ();
 
 	/**
-	 * Create a new instance of PgDatabase and подключись to a server.
+	 * Create a new instance of ПгБД and подключись to a server.
 	 *
 	 * See_Also:
 	 *	подключись
@@ -78,7 +78,7 @@ class PgDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	PgDatabase бд = new PgDatabase();
+	 *	ПгБД бд = new ПгБД();
 	 *	бд.подключись("host=localhost;dbимя=test", "имя_пользователя", "пароль");
 	 *	---
 	 *
@@ -176,7 +176,7 @@ unittest {
 	}
 
 	s1("dbi.pg.PgDatabase:");
-	PgDatabase бд = new PgDatabase();
+	ПгБД бд = new ПгБД();
 	s2("подключись");
 	бд.подключись("dbимя=test", "test", "test");
 

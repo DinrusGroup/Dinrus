@@ -10,9 +10,9 @@ version (Windows)
 
   version = ATOMIC; 
 
-  private проц waitWin32Impl(HANDLE событие, Объект объ, бцел таймаут);
+  private проц ждиВин32Реализ(HANDLE событие, Объект объ, бцел таймаут);
   
-  private struct WaitNotifyImpl 
+  private struct ЖдиСообщиРеализ 
   {
     private HANDLE событие;
 
@@ -23,7 +23,7 @@ version (Windows)
     проц уведоми() ;
   }
 
-  private struct WaitNotifyAllImpl 
+  private struct ЖдиСообщиВсемРеализ
   {
     private HANDLE событие;
 
@@ -77,7 +77,7 @@ version (Windows)
     объ = пусто;
   }
 
- struct WaitNotifyImpl 
+ struct ЖдиСообщиРеализ 
   {
     private ubyte[48] cond;    // _pthread_cond_t has sizeof 48
 
@@ -89,8 +89,8 @@ version (Windows)
 
   }
 
-  struct WaitNotifyAllImpl {
-    WaitNotifyImpl wnlock;
+  struct ЖдиСообщиВсемРеализ {
+    ЖдиСообщиРеализ wnlock;
     проц иниц() {
       wnlock.иниц();
     }
@@ -147,7 +147,7 @@ private {
 template ЖдиУведоми()
  {
 
-  WaitNotifyImpl waitNotifyImpl;
+  ЖдиСообщиРеализ waitNotifyImpl;
 
   проц иницЖдиУведоми() 
   {
@@ -186,7 +186,7 @@ class ОбъектЖдиУведоми
 
 template ЖдиУведомиВсех()
  {
-  WaitNotifyAllImpl waitNotifyAllImpl;
+  ЖдиСообщиВсемРеализ waitNotifyAllImpl;
 
   проц иницЖдиУведомиВсех()
   { 

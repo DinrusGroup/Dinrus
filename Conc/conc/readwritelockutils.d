@@ -19,7 +19,7 @@ private import conc.waitnotify;
 private import conc.fifosemaphore;
 private import cidrus;
 
-private import stdrus:Нить; // for unittest
+private import thread:Нить; // for unittest
 
 /** \class ЧЗЗамокПВПВ
  * \brief This class implements a policy for reader/writer locks in which

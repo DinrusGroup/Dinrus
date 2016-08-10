@@ -29,7 +29,7 @@ extern(Windows) бцел ФункцНити(ук данные)
 { 
    
  
-// Initialize the TLS index for this thread. 
+// Initialize the НЛХ index for this thread. 
  
    данные = cast(ук) РазместиЛок(ППамять.Лук, 256); 
    if (! УстановиЗначениеНлх(индНлх, данные)) 
@@ -57,7 +57,7 @@ extern(Windows) бцел ФункцНити(ук данные)
    int и; 
  //смОтключи();
  
-// Allocate a TLS index. 
+// Allocate a НЛХ index. 
  
    if ((индНлх = РазместиНлх()) == ПОшибка.НЛХВнеИндексов) 
       ошибка("ошибка функции РазместиНлх"); 

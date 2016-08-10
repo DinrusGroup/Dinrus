@@ -125,7 +125,7 @@ export extern (C) void consoleString (char[] s)
 				КОНСВЫВОД = ДайСтдДескр(cast(ПСтд) 0xfffffff5);
 			     if (КОНСВЫВОД != НЕВЕРНХЭНДЛ && GetConsoleMode (КОНСВЫВОД, &mode))
                    {
-                   wchar[512] utf;
+                   wchar[1024 * 1] utf;
                    while (s.length)
                          {
                          // crop to last complete utf8 sequence
@@ -156,7 +156,7 @@ export extern (C) void consoleErrString (char[] s)
 				КОНСОШ = ДайСтдДескр(ПСтд.Ошибка);
 			     if (КОНСОШ != НЕВЕРНХЭНДЛ && GetConsoleMode (КОНСОШ, &mode))
                    {
-                   wchar[512] utf;
+                   wchar[1024 * 1] utf;
                    while (s.length)
                          {
                          // crop to last complete utf8 sequence

@@ -305,7 +305,7 @@ void иницСДЛ() {
 
    /* Show some info */
    printf ("Set %dx%dx%d mode\n",
-      экран.w, экран.h, экран.формат.BitsPerPixel);
+      экран.w, экран.h, экран.format.BitsPerPixel);
 
    //printf ("Video surface located in %s memory.\n",
     //  (экран.flags & SDL_HWSURFACE) ? "video" : "system");
@@ -1346,7 +1346,7 @@ import tpl.traits;
 {
 	auto disp = сдлУстановиВидеоРежим(640,480,0,SDL_HWSURFACE|SDL_DOUBLEBUF);
     auto r = ПрямоугСДЛ(0,190,100,100);
-    auto c = сдлКартируйКЗСА(disp.формат,255,100,0,255);
+    auto c = сдлКартируйКЗСА(disp.format,255,100,0,255);
     while (r.x < disp.w-100)
 	{
         сдлЗаполниПрямоуг(disp, null, 0);

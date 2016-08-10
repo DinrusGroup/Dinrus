@@ -34,7 +34,7 @@ version (Windows) {
 
   version = ATOMIC; 
 
-  private проц waitWin32Impl(HANDLE событие, Объект объ, бцел таймаут) {
+  private проц ждиВин32Реализ(HANDLE событие, Объект объ, бцел таймаут) {
     // how can we check that нить has объ's monitor?
     if (таймаут == 0) 
       таймаут = INFINITE; 
@@ -82,14 +82,14 @@ version (Windows) {
     }
   }
 
-  private struct WaitNotifyImpl {
+  private struct ЖдиСообщиРеализ {
     private HANDLE событие;
 
-    проц init() {
+    проц иниц() {
       событие = CreateEventA(пусто,0,0,пусто);
     }
 
-    проц destroy() {
+    проц разрушь() {
       CloseHandle(событие);
     }
 
@@ -98,7 +98,7 @@ version (Windows) {
     }
 
     проц жди(Объект объ, бцел таймаут) {
-      waitWin32Impl(событие,объ,таймаут);
+      ждиВин32Реализ(событие,объ,таймаут);
     }
 
     проц уведоми() {
@@ -106,14 +106,14 @@ version (Windows) {
     }
   }
 
-  private struct WaitNotifyAllImpl {
+  private struct ЖдиСообщиВсемРеализ {
     private HANDLE событие;
 
-    проц init() {
+    проц иниц() {
       событие = CreateEventA(пусто,1,0,пусто);
     }
 
-    проц destroy() {
+    проц разрушь() {
       CloseHandle(событие);
     }
 
@@ -122,7 +122,7 @@ version (Windows) {
     }
 
     проц жди(Объект объ, бцел таймаут) {
-      waitWin32Impl(событие,объ,таймаут);
+      ждиВин32Реализ(событие,объ,таймаут);
     }
 
     проц уведомиВсех() {
@@ -181,13 +181,13 @@ version (Windows) {
     import std.c.linux.linuxextern;
   }
 
-  struct WaitNotifyImpl {
+  struct ЖдиСообщиРеализ {
     private ubyte[48] cond;    // _pthread_cond_t has sizeof 48
 
-    проц init() {
+    проц иниц() {
       pthread_cond_init(cond,пусто);
     }
-    проц destroy() {
+    проц разрушь() {
       pthread_cond_destroy(cond);
     }
 
@@ -236,13 +236,13 @@ version (Windows) {
 
   }
 
-  struct WaitNotifyAllImpl {
-    WaitNotifyImpl wnlock;
-    проц init() {
-      wnlock.init();
+  struct ЖдиСообщиВсемРеализ {
+    ЖдиСообщиРеализ wnlock;
+    проц иниц() {
+      wnlock.иниц();
     }
-    проц destroy() {
-      wnlock.destroy();
+    проц разрушь() {
+      wnlock.разрушь();
     }
     проц жди(Объект объ) {
       wnlock.жди(объ);
@@ -333,18 +333,18 @@ private {
  */
 template ЖдиУведоми() {
 
-  WaitNotifyImpl waitNotifyImpl;
+  ЖдиСообщиРеализ waitNotifyImpl;
 
   /** Initialize ЖдиУведоми
    */
   проц иницЖдиУведоми() {
-    waitNotifyImpl.init();
+    waitNotifyImpl.иниц();
   }
 
   /** Destroy ЖдиУведоми
    */
   проц удалиЖдиУведоми() {
-    waitNotifyImpl.destroy();
+    waitNotifyImpl.разрушь();
   }
 
   /** Causes current нить to жди until another нить invokes the уведоми() method.
@@ -426,18 +426,18 @@ class ОбъектЖдиУведоми {
  *  and cond_broadcast.
  */
 template ЖдиУведомиВсех() {
-  WaitNotifyAllImpl waitNotifyAllImpl;
+  ЖдиСообщиВсемРеализ waitNotifyAllImpl;
 
   /** Initialize ЖдиУведомиВсех
    */
   проц иницЖдиУведомиВсех() { 
-    waitNotifyAllImpl.init(); 
+    waitNotifyAllImpl.иниц(); 
   }
 
   /** Destroy ЖдиУведомиВсех
    */
   проц удалиЖдиУведомиВсех() { 
-    waitNotifyAllImpl.destroy(); 
+    waitNotifyAllImpl.разрушь(); 
   }
 
   /**  Causes current нить to жди until another нить invokes the уведомиВсех() method.

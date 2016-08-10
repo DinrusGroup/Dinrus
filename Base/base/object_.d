@@ -268,6 +268,7 @@ extern(C)
     т_мера  line = т_мера.init;  // дол would be better
     TraceInfo   info;
     Exception   next;
+	бул выведено = нет;
 	
 	alias msg сооб;
 	alias file файл;
@@ -406,12 +407,18 @@ extern(C)
         this.line = cast(т_мера)line;
         this.info = info;
 		
-debug  {
+//debug  {
+
+if(!выведено)
+{
 		this.выведи();
 		wchar[] soob = toUTF16(фм("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
-        ОкноСооб(null, soob, "Исключение Динрус: ", ПСооб.Ошибка|ПСооб.Поверх);
-		сбросьЦветКонсоли();		
-		}
+        ОкноСооб(null, soob, "Исключение Динрус", ПСооб.Ошибка|ПСооб.Поверх);
+		сбросьЦветКонсоли();	
+		выведено = да;
+} 
+		
+		//}
 		
     }
 

@@ -99,7 +99,7 @@ extern(C):
    dp = cast(tColorRGBA *) приёмник.pixels;
    sgap = src.pitch - src.w * 4;
    dgap = приёмник.pitch - приёмник.w * 4;
-   orderRGBA = (src.формат.Rmask == 0x000000ff);
+   orderRGBA = (src.format.Rmask == 0x000000ff);
    
    /* Switch between interpolating и non-interpolating код */
    if (smooth)
@@ -325,7 +325,7 @@ void трансформПоверхностиКЗСА (SDL_Surface * src, SDL_Su
    sh = src.h - 1;
    pc = cast(tColorRGBA *)приёмник.pixels;
    gap = приёмник.pitch - приёмник.w * 4;
-   orderRGBA = (src.формат.Rmask == 0x000000ff);
+   orderRGBA = (src.format.Rmask == 0x000000ff);
    
    /* Switch between interpolating и non-interpolating код */
    if (smooth)
@@ -517,7 +517,7 @@ Rotates и zoomes 8bit palette/Y 'src' surface to 'приёмник' surface.
    pc = cast(tColorY *)приёмник.pixels;
    gap = приёмник.pitch - приёмник.w;
    /* Clear surface to colorkey */
-   memset (pc, cast(ubyte) (src.формат.colorkey & 0xff),
+   memset (pc, cast(ubyte) (src.format.colorkey & 0xff),
       приёмник.pitch * приёмник.h);
    /* Iterate through приёмник surface */
    for (y = 0; y < приёмник.h; y++)
@@ -550,7 +550,7 @@ Rotates и zoomes 8bit palette/Y 'src' surface to 'приёмник' surface.
 Rotates и zoomes a 32bit or 8bit 'src' surface to newly created 'приёмник' surface.
 'angle' is the rotation in degrees. 'zoom' a scaling factor. If 'smooth' is 1
 then the приёмник 32bit surface is anti-есть_алиас. If the surface is not 8bit
-or 32bit RGBA/ABGR it will be converted into a 32bit RGBA формат on the fly.
+or 32bit RGBA/ABGR it will be converted into a 32bit RGBA format on the fly.
 
 */
 
@@ -571,8 +571,8 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
       return (пусто);
    
    /* Determine if source surface is 32bit or 8bit */
-   is32bit = (src.формат.BitsPerPixel == 32);
-   if ((is32bit) || (src.формат.BitsPerPixel == 8))
+   is32bit = (src.format.BitsPerPixel == 32);
+   if ((is32bit) || (src.format.BitsPerPixel == 8))
       {
          /* Use source surface 'as is' */
          rz_src = src;
@@ -643,10 +643,10 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
       /* Target surface is 32bit with source RGBA/ABGR ordering */
       rz_dst =
          сдлСоздайКЗСПоверхность (SDL_SWSURFACE, dstwidth, dstheight, 32,
-               rz_src.формат.Rmask,
-               rz_src.формат.Gmask,
-               rz_src.формат.Bmask,
-               rz_src.формат.Amask);
+               rz_src.format.Rmask,
+               rz_src.format.Gmask,
+               rz_src.format.Bmask,
+               rz_src.format.Amask);
       }
          else
       {
@@ -671,17 +671,17 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
          else
       {
       /* Copy palette и colorkey info */
-      for (i = 0; i < rz_src.формат.palette.ncolors; i++)
+      for (i = 0; i < rz_src.format.palette.ncolors; i++)
          {
-            rz_dst.формат.palette.colors[i] =
-         rz_src.формат.palette.colors[i];
+            rz_dst.format.palette.colors[i] =
+         rz_src.format.palette.colors[i];
          }
-      rz_dst.формат.palette.ncolors = rz_src.формат.palette.ncolors;
+      rz_dst.format.palette.ncolors = rz_src.format.palette.ncolors;
       /* Call the 8bit transformation routine to do the rotation */
       трансформПоверхностиВ (rz_src, rz_dst, dstwidthhalf, dstheighthalf,
                cast(цел) (sanglezoominv), cast(цел) (canglezoominv));
       сдлУстановиКлючЦвета (rz_dst, SDL_SRCCOLORKEY | SDL_RLEACCEL,
-               rz_src.формат.colorkey);
+               rz_src.format.colorkey);
       }
          /* Unlock source surface */
          сдлРазблокируйПоверхность (rz_src);
@@ -712,10 +712,10 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
       /* Target surface is 32bit with source RGBA/ABGR ordering */
       rz_dst =
          сдлСоздайКЗСПоверхность (SDL_SWSURFACE, dstwidth, dstheight, 32,
-               rz_src.формат.Rmask,
-               rz_src.формат.Gmask,
-               rz_src.формат.Bmask,
-               rz_src.формат.Amask);
+               rz_src.format.Rmask,
+               rz_src.format.Gmask,
+               rz_src.format.Bmask,
+               rz_src.format.Amask);
       }
          else
       {
@@ -738,16 +738,16 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
          else
       {
       /* Copy palette и colorkey info */
-      for (i = 0; i < rz_src.формат.palette.ncolors; i++)
+      for (i = 0; i < rz_src.format.palette.ncolors; i++)
          {
-            rz_dst.формат.palette.colors[i] =
-         rz_src.формат.palette.colors[i];
+            rz_dst.format.palette.colors[i] =
+         rz_src.format.palette.colors[i];
          }
-      rz_dst.формат.palette.ncolors = rz_src.формат.palette.ncolors;
+      rz_dst.format.palette.ncolors = rz_src.format.palette.ncolors;
       /* Call the 8bit transformation routine to do the zooming */
       зумПоверхностиВ (rz_src, rz_dst);
       сдлУстановиКлючЦвета (rz_dst, SDL_SRCCOLORKEY | SDL_RLEACCEL,
-               rz_src.формат.colorkey);
+               rz_src.format.colorkey);
       }
          /* Unlock source surface */
          сдлРазблокируйПоверхность (rz_src);
@@ -770,7 +770,7 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
 Zoomes a 32bit or 8bit 'src' surface to newly created 'приёмник' surface.
 'zoomx' и 'zoomy' are scaling factors for width и height. If 'smooth' is 1
 then the приёмник 32bit surface is anti-есть_алиас. If the surface is not 8bit
-or 32bit RGBA/ABGR it will be converted into a 32bit RGBA формат on the fly.
+or 32bit RGBA/ABGR it will be converted into a 32bit RGBA format on the fly.
 
 */
 
@@ -787,8 +787,8 @@ SDL_Surface *зумПоверхности (SDL_Surface * src, double zoomx, doub
       return (пусто);
    
    /* Determine if source surface is 32bit or 8bit */
-   is32bit = (src.формат.BitsPerPixel == 32);
-   if ((is32bit) || (src.формат.BitsPerPixel == 8))
+   is32bit = (src.format.BitsPerPixel == 32);
+   if ((is32bit) || (src.format.BitsPerPixel == 8))
       {
          /* Use source surface 'as is' */
          rz_src = src;
@@ -834,8 +834,8 @@ SDL_Surface *зумПоверхности (SDL_Surface * src, double zoomx, doub
          /* Target surface is 32bit with source RGBA/ABGR ordering */
          rz_dst =
       сдлСоздайКЗСПоверхность (SDL_SWSURFACE, dstwidth, dstheight, 32,
-                  rz_src.формат.Rmask, rz_src.формат.Gmask,
-                  rz_src.формат.Bmask, rz_src.формат.Amask);
+                  rz_src.format.Rmask, rz_src.format.Gmask,
+                  rz_src.format.Bmask, rz_src.format.Amask);
       }
    else
       {
@@ -858,16 +858,16 @@ SDL_Surface *зумПоверхности (SDL_Surface * src, double zoomx, doub
    else
       {
          /* Copy palette и colorkey info */
-         for (i = 0; i < rz_src.формат.palette.ncolors; i++)
+         for (i = 0; i < rz_src.format.palette.ncolors; i++)
       {
-      rz_dst.формат.palette.colors[i] =
-         rz_src.формат.palette.colors[i];
+      rz_dst.format.palette.colors[i] =
+         rz_src.format.palette.colors[i];
       }
-         rz_dst.формат.palette.ncolors = rz_src.формат.palette.ncolors;
+         rz_dst.format.palette.ncolors = rz_src.format.palette.ncolors;
          /* Call the 8bit transformation routine to do the zooming */
          зумПоверхностиВ (rz_src, rz_dst);
          сдлУстановиКлючЦвета (rz_dst, SDL_SRCCOLORKEY | SDL_RLEACCEL,
-               rz_src.формат.colorkey);
+               rz_src.format.colorkey);
       }
    /* Unlock source surface */
    сдлРазблокируйПоверхность (rz_src);
@@ -909,11 +909,11 @@ if (сдлБлокируйПоверхность (экран) == 0)
    {
       Uint32 black;
       Uint8 *pixels;
-      black = сдлКартируйКЗС (экран.формат, 0, 0, 0);
+      black = сдлКартируйКЗС (экран.format, 0, 0, 0);
       pixels = cast(Uint8 *) экран.pixels;
       for (i = 0; i < экран.h; ++i)
    {
-   memset (pixels, black, экран.w * экран.формат.BytesPerPixel);
+   memset (pixels, black, экран.w * экран.format.BytesPerPixel);
    pixels += экран.pitch;
    }
       сдлРазблокируйПоверхность (экран);

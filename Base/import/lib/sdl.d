@@ -1578,8 +1578,8 @@ struct SDL_PixelFormat
 alias SDL_Surface ПоверхностьСДЛ;
 struct SDL_Surface
 {
-    бцел флаги;
-    ФорматПикселяСДЛ *формат;
+    бцел flags;
+    ФорматПикселяСДЛ *format;
     цел w, h;
     бкрат pitch;
     ук pixels;
@@ -1617,7 +1617,7 @@ enum : бцел
 alias SDL_VideoInfo ВидеоИнфоСДЛ;
 struct SDL_VideoInfo
 {
-    бцел флаги;
+    бцел flags;
     бцел video_mem;
     ФорматПикселяСДЛ *vfmt;
     цел current_w;
@@ -1635,14 +1635,14 @@ enum : бцел
 
 struct SDL_Overlay
 {
-    бцел формат;
+    бцел format;
     цел w, h;
     цел planes;
     бкрат *pitches;
     ббайт **pixels;
     ук hwfuncs;
     ук hwdata;
-    бцел флаги;
+    бцел flags;
 }
 
 alias цел SDL_GLattr;
@@ -1685,7 +1685,7 @@ enum
 бул SDL_MUSTLOCK(ПоверхностьСДЛ* поверхность)
 {
     return cast(бул)(поверхность.offset ||
-        ((поверхность.флаги & (SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_RLEACCEL)) != 0));
+        ((поверхность.flags & (SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_RLEACCEL)) != 0));
 }
 
 

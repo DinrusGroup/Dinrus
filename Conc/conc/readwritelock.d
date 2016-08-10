@@ -17,7 +17,7 @@ import conc.sync;
 
 private import conc.waitnotify;
 private import cidrus;
-private import stdrus:Нить;
+private import thread:Нить;
 
 /** \class ЧЗЗамок
  * \brief  ReadWriteLocks maintain a pair of associated locks.

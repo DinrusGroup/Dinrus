@@ -11,7 +11,7 @@ module dbi.odbc.OdbcDatabase;
 // WindowsAPI revision 144.  I'll see about fixing their ODBC and SQL files soon.
 // WindowsAPI should also include odbc32.lib itself.
 
-version(Rulada) {
+version(Dinrus) {
 	private static import stdrus;
 	debug (UnitTest) private static import std.io;
 } else {
@@ -45,10 +45,10 @@ static ~this () ;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class OdbcDatabase : БазаДанных {
+class ОдбцБД : БазаДанных {
 	public:
 	/**
-	 * Create a new instance of OdbcDatabase, but don't подключись.
+	 * Create a new instance of ОдбцБД, but don't подключись.
 	 *
 	 * Thряды:
 	 *	ИсклДБИ if an ODBC подключение couldn't be created.
@@ -56,7 +56,7 @@ class OdbcDatabase : БазаДанных {
 	this () ;
 
 	/**
-	 * Create a new instance of OdbcDatabase and подключись to a server.
+	 * Create a new instance of ОдбцБД and подключись to a server.
 	 *
 	 * Thряды:
 	 *	ИсклДБИ if an ODBC подключение couldn't be created.
@@ -91,7 +91,7 @@ class OdbcDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	OdbcDatabase бд = new OdbcDatabase();
+	 *	ОдбцБД бд = new ОдбцБД();
 	 *	бд.подключись("Data Source Name", "_userимя", "_password");
 	 *	---
 	 *
@@ -234,7 +234,7 @@ unittest {
 	}
 
 	s1("dbi.odbc.OdbcDatabase:");
-	OdbcDatabase бд = new OdbcDatabase();
+	ОдбцБД бд = new ОдбцБД();
 	s2("подключись (with DSN)");
 	бд.подключись("DDBI Unittest", "test", "test");
 

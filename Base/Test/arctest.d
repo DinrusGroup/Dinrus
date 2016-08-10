@@ -1,6 +1,6 @@
 module arctest;
 
-import lib.arc, stdrus;
+import lib.arc, stdrus, win;
 
 цел main()
 {

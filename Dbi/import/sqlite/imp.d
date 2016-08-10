@@ -85,7 +85,7 @@ struct sqlite3_module {
 	extern (C) цел function(sqlite3* бд, ук pAux, цел argc, char** argv, sqlite3_vtab** ppVTab, char**) xCreate;
 	extern (C) цел function(sqlite3* бд, ук pAux, цел argc, char** argv, sqlite3_vtab** ppVTab, char**) xConnect;
 	extern (C) цел function(sqlite3_vtab* pVTab, sqlite3_index_info* pInfo) xBestIndex;
-	extern (C) цел function(sqlite3_vtab* pVTab) xDisподключись;
+	extern (C) цел function(sqlite3_vtab* pVTab) xDisconnect;
 	extern (C) цел function(sqlite3_vtab* pVTab) xDestroy;
 	extern (C) цел function(sqlite3_vtab* pVTab, sqlite3_vtab_cursor** ppCursor) xOpen;
 	extern (C) цел function(sqlite3_vtab_cursor* pVTabCursor) xClose;
@@ -293,7 +293,7 @@ deprecated цел sqlite3_aggregate_count (sqlite3_context* ctx);
 /**
  *
  */
-char* sqlite3_bind_parameter_имя (sqlite3_stmt* инстр, цел n);
+char* sqlite3_bind_parameter_name (sqlite3_stmt* инстр, цел n);
 
 /**
  *
@@ -493,12 +493,12 @@ sqlite3* sqlite3_db_handle (sqlite3_stmt* инстр);
 /**
  *
  */
-цел sqlite3_включи_load_extension (sqlite3* бд, цел onoff);
+цел sqlite3_enable_load_extension (sqlite3* бд, цел onoff);
 
 /**
  *
  */
-цел sqlite3_включи_shared_cache (цел включи);
+цел sqlite3_enable_shared_cache (цел включи);
 
 /**
  *
@@ -598,12 +598,12 @@ char* sqlite3_vmprintf (char* текст, va_list args);
 /**
  *
  */
-цел sqlite3_open (char* fileимя, sqlite3** бд);
+цел sqlite3_open (char* filename, sqlite3** бд);
 
 /**
  *
  */
-цел sqlite3_open16 (ук fileимя, sqlite3** бд);
+цел sqlite3_open16 (ук filename, sqlite3** бд);
 
 /**
  *
