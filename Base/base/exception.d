@@ -330,7 +330,7 @@ export:
 private:
     ИнфоОтслежИскл m_info;
 }
-alias ОтслежИскл Tracedexception;
+alias ОтслежИскл TracedException;
 
 /**
  * Основа export extern (D) class for operating system or library exceptions.
@@ -367,7 +367,7 @@ export:
 }
 alias ПроверИскл AssertException;
 
-export extern (D) class ПроверОшиб : Error
+export extern (D) class ПроверОшиб : Исключение
 {
 export:
     т_мера linnum;
@@ -435,7 +435,7 @@ export:
 }
 alias ГранМасИскл ArrayBoundsException;
 
-export extern (D) class ГранМасОшиб : Error
+export extern (D) class ГранМасОшиб : Исключение
 {
   private:
 
@@ -478,6 +478,7 @@ export:
 }
 alias ФинализИскл FinalizeException;
 
+
 /**
  * Thrown on a switch error.
  */
@@ -492,7 +493,7 @@ export:
 }
 alias ЩитИскл SwitchException;
 
-export extern (D) class ЩитОшиб : Error
+export extern (D) class ЩитОшиб : Исключение
 {
   private:
 
@@ -1232,7 +1233,7 @@ extern  (C) void onAssertErrorMsg( ткст файл, т_мера строка, 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Internal Error Callbacks
+// Internal Ошибка Callbacks
 ////////////////////////////////////////////////////////////////////////////////
 
 

@@ -18,7 +18,7 @@ private{
 
     ткст[] vGrepOpts;
 
-    class ФайлДопИскл : Error
+    class ФайлДопИскл : Ошибка
     {
         this(ткст pMsg)
         {

@@ -2533,6 +2533,34 @@ import std.date;
 
 import std.cpuid:mmx,fxsr,sse,sse2,sse3,ssse3,amd3dnow,amd3dnowExt,amdMmx,ia64,amd64,hyperThreading, vendor, processor,family,model,stepping,threadsPerCPU,coresPerCPU;
 
+export extern(D) struct Процессор
+{
+	export:
+
+	ткст производитель()	{return std.cpuid.vendor();}
+	ткст название()			{return std.cpuid.processor();}
+	бул поддержкаММЭкс()	{return std.cpuid.mmx();}
+	бул поддержкаФЭксСР()	{return std.cpuid.fxsr();}
+	бул поддержкаССЕ()		{return std.cpuid.sse();}
+	бул поддержкаССЕ2()		{return std.cpuid.sse2();}
+	бул поддержкаССЕ3()		{return std.cpuid.sse3();}
+	бул поддержкаСССЕ3()	{return std.cpuid.ssse3();}
+	бул поддержкаАМД3ДНау()	{return std.cpuid.amd3dnow();}
+	бул поддержкаАМД3ДНауЭкст(){return std.cpuid.amd3dnowExt();}
+	бул поддержкаАМДММЭкс()	{return std.cpuid.amdMmx();}
+	бул являетсяИА64()		{return std.cpuid.ia64();}
+	бул являетсяАМД64()		{return std.cpuid.amd64();}
+	бул поддержкаГиперПоточности(){return std.cpuid.hyperThreading();}
+	бцел потоковНаЦПБ()		{return std.cpuid.threadsPerCPU();}
+	бцел ядерНаЦПБ()		{return std.cpuid.coresPerCPU();}
+	бул являетсяИнтел()		{return std.cpuid.intel();}
+	бул являетсяАМД()		{return std.cpuid.amd();}
+	бцел поколение()		{return std.cpuid.stepping();}
+	бцел модель()			{return std.cpuid.model();}
+	бцел семейство()		{return std.cpuid.family();}
+	ткст вТкст()			{return о_ЦПУ();}
+}
+
 ткст о_ЦПУ(){
 
 	ткст feats;
@@ -2553,7 +2581,7 @@ import std.cpuid:mmx,fxsr,sse,sse2,sse3,ssse3,amd3dnow,amd3dnowExt,amdMmx,ia64,a
 		"\t\tИНФОРМАЦИЯ О ЦПУ ДАННОГО КОМПЬЮТЕРА\n\t**************************************************************\n\t"~
 		" Производитель   \t|   %s                                 \n\t"~"--------------------------------------------------------------\n\t", vendor(),
 		" Процессор       \t|   %s                                 \n\t"~"--------------------------------------------------------------\n\t", processor(),
-		" Сигнатура     \t| Семейство=%d | Модель=%d | Степпинг=%d \n\t"~"--------------------------------------------------------------\n\t", family(), model(), stepping(),
+		" Сигнатура     \t| Семейство %d | Модель %d | Поколение %d \n\t"~"--------------------------------------------------------------\n\t", family(), model(), stepping(),
 		" Функции         \t|   %s                                 \n\t"~"--------------------------------------------------------------\n\t", feats,
 		" Многопоточность \t|  %d-поточный / %d-ядерный            \n\t"~"**************************************************************", threadsPerCPU(), coresPerCPU());
 	return цпу;
@@ -9594,7 +9622,7 @@ private const бцел  ВЫХОД_ИЗ_ОЖИДАНИЯ = 258;
  */
  
 
-class ОшибкаНити : Ошибка
+class ОшибкаНити : Исключение
 {
 
     this(ткст т)

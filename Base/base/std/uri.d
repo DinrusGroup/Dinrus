@@ -48,7 +48,7 @@ private import std.utf;
 private import std.io;
 
 
-class ОшибкаУИР : Error
+class ОшибкаУИР : Исключение
 {
     this()
     {

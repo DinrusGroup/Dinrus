@@ -1156,9 +1156,9 @@ private проц инвариант()
     }
 
     /**
-     * Query a weak pointer and return either the Объект passed to
-     * weakpointerCreate, or пусто if it was cidrus.освободи'd in the meantime.
-     * If пусто is passed, пусто is returned.
+     * Опросить слабук, вернув либо Объект, переданный методу
+     * weakpointerCreate, либо пусто, если он был удалён.
+     * Если передаётся пусто, пусто и возвращается.
      */
     export extern (D) Объект дайСлабУк( ук p )
     {
@@ -4032,12 +4032,12 @@ export extern (C) т_см смНовый()
 		ClassInfo ci = СМ.classinfo;
 		укз = cidrus.празмести(ci.init.length);
 		(cast(байт*)укз)[0 .. ci.init.length] = ci.init[];
-		debug эхо("(gc ln 3735) Returning from gcNew all\n");
+		//debug эхо("(gc ln 3735) Returning from gcNew all\n");
 		return cast(т_см)укз;
 		}
 		else
 		{
-		debug эхо("(gc ln 3735) Returning from gcNew else\n");
+		//debug эхо("(gc ln 3735) Returning from gcNew else\n");
 		return cast(т_см)cidrus.кразмести(1, СМ.sizeof);
 		}
 	}

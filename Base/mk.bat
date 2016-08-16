@@ -192,7 +192,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 %DMD%  -c -O  -g  -of%this%\weakref.obj %this%\import\tpl\weakref.d -I%R%
 :pause
 %DMD%  -c -O  -g -of%this%\DStructs.obj %this%\import\sys\DStructs.d -I%R%
-:%DMD%  -c -O  -g %this%\import\sys\types.d 
+%DMD%  -c -O  -g %this%\import\sys\registry.d 
 %DMD%  -c -O  -g -of%this%\DIfaces.obj %this%\import\sys\DIfaces.d -I%R%
 %DMD%  -c -O  -g -of%this%\DConsts.obj %this%\import\sys\DConsts.d -I%R%
 %DMD%  -c -O  -g -of%this%\DFuncs.obj %this%\import\sys\DFuncs.d -I%R%
@@ -219,7 +219,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 :::Making library with static content
 :dinrus2
 
-%DMD% -lib -of%this%\dinrus2.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\DStructs.obj  %this%\DIfaces.obj  %this%\DConsts.obj  %this%\DFuncs.obj  %this%\DProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\Cdinr.lib
+%DMD% -lib -of%this%\dinrus2.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\DStructs.obj  %this%\DIfaces.obj  %this%\DConsts.obj  %this%\DFuncs.obj  %this%\DProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
 
 @if exist %this%\dinrus2.lib  goto Join
 @if not exist %this%\dinrus2.lib pause

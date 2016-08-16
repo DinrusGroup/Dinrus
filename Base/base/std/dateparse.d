@@ -38,7 +38,7 @@ private
 
 //debug=dateparse;
 
-class DateParseError : Error
+class DateParseError : Исключение
 {
     this(char[] s)
     {

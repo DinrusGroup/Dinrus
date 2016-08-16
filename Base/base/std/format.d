@@ -67,7 +67,7 @@ else
 /**********************************************************************
  * Signals a mismatch between a format and its corresponding argument.
  */
-class ОшФормата : Error
+class ОшФормата : Исключение
 {
   private:
     this()

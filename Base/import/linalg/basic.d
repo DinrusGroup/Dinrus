@@ -15,7 +15,7 @@ import linalg.config;
 но с видоизменениями, делающими её пригодной для сравнения почти нулевых чисел.
 
 Params:
-    x, y        = Numbers to сравни.
+    x, y        = Сравниваемые числа.
     отнпрец     = Minimal number of mantissa bits that have to be _equal in x and y
                   to suppose their's equality. Makes sense in comparisons of values
                   enough far from ноль.
@@ -83,7 +83,7 @@ template МинМакс(Т)
     }
 }
 
-/// Introduce мин and макс functions for basic numeric types.
+/// Вводим функции мин и макс для основных числовых типов.
 alias МинМакс!(бул).мин     мин;
 alias МинМакс!(бул).макс     макс; /// описано
 alias МинМакс!(байт).мин     мин; /// описано

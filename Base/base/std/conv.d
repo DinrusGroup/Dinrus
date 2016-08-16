@@ -26,7 +26,7 @@ alias ConvOverflowError ОшПереполненияПриПреобр;
 /**
  * Thrown on conversion errors, which happens on deviation from the grammar.
  */
-deprecated class ConvError : Error
+deprecated class ConvError : Исключение
 {
     this(char[] s)
     {
@@ -34,7 +34,7 @@ deprecated class ConvError : Error
     }
 }
 
-class ОшибкаПреобразования:Ошибка
+class ОшибкаПреобразования:Исключение
 {
 this(char[] s){super("Неудачное преобразование "~s);}
 
@@ -48,7 +48,7 @@ private void conv_error(char[] s)
 /**
  * Thrown on conversion overflow errors.
  */
-deprecated class ConvOverflowError : Error
+deprecated class ConvOverflowError : Исключение
 {
     this(char[] s)
     {
@@ -56,7 +56,7 @@ deprecated class ConvOverflowError : Error
     }
 }
 
-class ОшибкаПереполненияПриПреобразовании:Ошибка
+class ОшибкаПереполненияПриПреобразовании:Исключение
 {
 this(char[] s){super("Переполнение стека при преобразовании "~s);}
 }
@@ -181,7 +181,7 @@ unittest
 	    i = toInt(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -277,7 +277,7 @@ unittest
 	    i = toUint(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -406,7 +406,7 @@ unittest
 	    i = toLong(errors[j]);
 	    эхо("l = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -509,7 +509,7 @@ unittest
 	    i = toUlong(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -592,7 +592,7 @@ unittest
 	    i = toShort(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -670,7 +670,7 @@ unittest
 	    i = toUshort(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -753,7 +753,7 @@ unittest
 	    i = toByte(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;
@@ -831,7 +831,7 @@ unittest
 	    i = toUbyte(errors[j]);
 	    эхо("i = %d\n", i);
 	}
-	catch (Error e)
+	catch (Исключение e)
 	{
 	    debug(conv) e.print();
 	    i = 3;

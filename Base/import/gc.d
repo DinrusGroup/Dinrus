@@ -17,18 +17,13 @@ private т_см экз;
 
 this()
 {
-		ИнфОКлассе ci = СМ.classinfo;
-		экз = cast(т_см) cidrus.празмести(ci.init.length);
-		(cast(byte*)экз)[0 .. ci.init.length] = ci.init[];
-		//эхо("Returning from смНовый all\n");
-		this = cast(СМ) экз;
-		this.иниц();
+		this = смНовый();
+		this.иниц();		
 }
 
 ~this()
 {
-this.Дтор();
-cidrus.освободи(cast(ук )экз);
+смУдали(this);
 }
      проц иниц();
 	 проц Дтор();

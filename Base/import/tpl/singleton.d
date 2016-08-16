@@ -36,7 +36,7 @@ final static class ДержательСинглтона(T)
 ////////////////////////////////////////////////
 //module auxd.OpenMesh.Core.Utils.SingletonT;
 
-class ошибка_рантайма : Ошибка
+class ОшибкаРантайма : Искл
 {
     this(ткст сооб)
     {
@@ -88,7 +88,7 @@ private:
     // Will be called if instance is accessed after its lifetime has expired
     static проц приМёртвойССылке()
     {
-        throw new ошибка_рантайма("[Ошибка синглтона] - Обнаружена мёртвая ссылка!\n");
+        throw new ОшибкаРантайма("[Ошибка синглтона] - Обнаружена мёртвая ссылка!\n");
     }
 
     this();

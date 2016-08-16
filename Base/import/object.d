@@ -52,7 +52,7 @@ alias Object.Monitor        IMonitor, ИМонитор;
 
 //////////////////////////////////////////////////////////////////////
 /**
- * All irrecoverable exceptions should be derived from class Error.
+ * Все невосстановимые исключения должны проиходить от класса Ошибка.
  */
  
 extern (D) class Exception : Object
@@ -103,9 +103,9 @@ extern (D) class Exception : Object
     }
 	alias TraceInfo ИнфОСледе;//
 	
-    this( ткст msg, ткст file, long  line, Exception next, TraceInfo info );
-    this( ткст msg, Exception next=null );
-    this( ткст msg, ткст file, long  line, Exception next=null );
+    this( ткст сооб, ткст file, long  line, Exception next, TraceInfo info );
+    this( ткст сооб, Exception next=null );
+    this( ткст сооб, ткст file, long  line, Exception next=null );
 	override проц print();
 	override проц выведи();	
 	
@@ -120,14 +120,14 @@ extern (D) class Exception : Object
 	+/
 	проц сбрось();
 }
-alias Exception Исключение, Искл;
+alias Exception Исключение, Искл, Ошибка, Ош;
 ////////////////////////////////////////////////////
 
 alias Исключение.ИнфОСледе function( ук укз = пусто ) TraceHandler, Следопыт;
 
 private Следопыт следопыт = пусто;
 ////////////////////////////////////////////////////////
-
+/+
 extern (D) class Error : Exception
 {
     Error next; alias next следщ;
@@ -139,15 +139,15 @@ extern (D) class Error : Exception
 	override ткст toString();
 	override ткст вТкст();
     /**
-     * Конструктор; msg - сообщение, описывающее исключение.
+     * Конструктор; сооб - сообщение, описывающее исключение.
      */
-	this(ткст msg);
-    this(ткст msg, Error next);
+	this(ткст сооб);
+    this(ткст сооб, Error next);
 }
 
 alias Error Ошибка, Ош;
 ///////////////////////////////////////////////////////////////////////
-
++/
 alias проц delegate(Object) DEvent, ДСобыт;
 
 extern (D) struct Monitor
@@ -185,7 +185,7 @@ extern(D) class ModuleInfo
 
 	static int opApply( int delegate( ref  ModuleInfo ) дг );
     /******************
-     * Return collection of all modules in the program.
+     * Возвращает коллекцию всех модулей в программе.
      */
     static ИнфОМодуле[] модули();
 }

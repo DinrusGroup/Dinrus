@@ -78,7 +78,7 @@ class ПроверИскл : ОтслежИскл
 alias ПроверИскл AssertException;
 
 
-class ПроверОшиб : Ошибка
+class ПроверОшиб : Искл
 	{
 		this(ткст имяф =__FILE__, бцел номстроки =__LINE__);
 		this(ткст сооб, ткст имяф = __FILE__, бцел номстроки = __LINE__);
@@ -94,7 +94,7 @@ class ГранМасИскл : ОтслежИскл
 alias ГранМасИскл ArrayBoundsException;
 
 
-class ГранМасОшиб : Ошибка
+class ГранМасОшиб : Искл
 	{  
 		this(ткст имяф =__FILE__, т_мера номстроки = __LINE__);
 	}
@@ -116,7 +116,7 @@ class ЩитИскл : ОтслежИскл
 alias ЩитИскл SwitchException;
 
 
-class ЩитОшиб : Ошибка
+class ЩитОшиб : Искл
 	{
 	   this(ткст имяф = __FILE__, бцел номстроки =__LINE__);
 		override void print();
