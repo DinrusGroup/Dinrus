@@ -129,7 +129,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus.lib -L+DinrusWin32.lib+DinrusConc.lib+import.lib+DinrusTango.lib+DinrusDbi.lib
+DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus.lib -L+DinrusWin32.lib+DinrusConc.lib+import.lib+DinrusTango.lib+DinrusDbi.lib+DinrusWinDLL.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -220,7 +220,7 @@ return нет;
 	}
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(СЦ_ИНИ));
 	нс;
-	скажинс(" ВЕРСИЯ = ДИНРУС КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИТЕКАМИ");
+	скажинс(" ВЕРСИЯ = ДИНРУС КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИОТЕКАМИ");
 }
 	
 проц версияДинрусДоп_ГИП()
@@ -235,7 +235,7 @@ return нет;
 	}
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
 	нс;
-	скажинс(" ВЕРСИЯ = ДИНРУС ДЛЯ ГИП-ПРИЛОЖЕНИЙ С ДОБАВОЧНЫМИ БИБЛИТЕКАМИ ");
+	скажинс(" ВЕРСИЯ = ДИНРУС ДЛЯ ГИП-ПРИЛОЖЕНИЙ С ДОБАВОЧНЫМИ БИБЛИОТЕКАМИ ");
 }
 	
 проц версияРулада()
@@ -267,7 +267,7 @@ return нет;
 
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
 	нс;
-	скажинс(" ВЕРСИЯ = РУЛАДА КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИТЕКАМИ");
+	скажинс(" ВЕРСИЯ = РУЛАДА КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИОТЕКАМИ");
 }
 /+
 	
