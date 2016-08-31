@@ -6,7 +6,7 @@ package проц ошибка(ткст сооб) {
      throw new LocaleException (сооб);
 }
 
-package цел compareString(ткст strA, ткст strB) {
+package цел сравниСтроку(ткст strA, ткст strB) {
   // Comparison ignores case
   цел strALength = strA.length;
   цел strBLength = strB.length;
@@ -42,9 +42,9 @@ package struct ДанныеОКультуре {
   package ткст isoLangName;
   package ткст isoLangName2;
   package ткст ietfTag;
-  package ткст englishName;
-  package ткст nativeName;
-  package бул isNeutral;
+  package ткст англИмя;
+  package ткст исконноеИмя;
+  package бул нейтрален_ли;
 
   package цел geoId;
   package ткст regionName;
@@ -54,7 +54,7 @@ package struct ДанныеОКультуре {
   package ткст intlSymbol;
   package ткст englishCurrency;
   package ткст nativeCurrency;
-  package бул isMetric;
+  package бул метрическ_ли;
 
   package цел цифры;
   package цел negativeNumber;
@@ -68,12 +68,12 @@ package struct ДанныеОКультуре {
   package ткст monetaryDecimal;
   package ткст monetaryThousand;
   package ткст currency;
-  package ткст negativeSign;
-  package ткст positiveSign;
+  package ткст отрицатЗнак;
+  package ткст положитЗнак;
   package ткст nan;
   package ткст negInfinity;
   package ткст posInfinity;
-  package ткст[] nativeDigits;
+  package ткст[] исконныеЦифры;
 
   package цел типКалендаря;
   package цел[] опциональныеКалендари;
@@ -96,9 +96,9 @@ package struct ДанныеОКультуре {
   package ткст[] longDates;
   package ткст[] yearMonths;
   package ткст[] abbrevDayNames;
-  package ткст[] dayNames;
+  package ткст[] именаДней;
   package ткст[] abbrevMonthNames;
-  package ткст[] monthNames;
+  package ткст[] именаМесяцев;
 
   package static const ДанныеОКультуре[] cultureDataTable = [
 { 0x0001, 0x007F, "ar", "ar", "ara", "ar", "\u0041\u0072\u0061\u0062\u0069\u0063", "\u0627\u0644\u0639\u0631\u0628\u064A\u0629", да },
@@ -345,13 +345,13 @@ package struct ДанныеОКультуре {
 
     ткст actualName;
     for (цел i = 0; i < cultureDataTable.length; i++) {
-      if (compareString(имя, cultureDataTable[i].имя) == 0) {
+      if (сравниСтроку(имя, cultureDataTable[i].имя) == 0) {
         nameTable[actualName = cultureDataTable[i].имя] = &cultureDataTable[i];
         return nameTable[actualName];
       }
     }
 
-    ошибка ("Культура имя '" ~ имя ~ "' is not supported.");
+    ошибка ("Название культуры '" ~ имя ~ "' не поддерживается.");
     return пусто;
   }
 
@@ -371,8 +371,8 @@ version (Posix) {
             ~ "will expect that a локаль is установи via environment variables LANG or LC_ALL.");
 }
 else {
-    ошибка ("Культура не найден - if this was not tried установи by the application, Dinrus "
-            ~ "will expect that a локаль is установи for the system .");
+    ошибка ("Культура не найдена - если приложение не пыталось её установить, "
+            ~ "то требуется локализация установки системы .");
 }
     return пусто;
   }
@@ -383,7 +383,7 @@ else {
       return *данные;
 
     for (цел i = 0; i < cultureDataTable.length; i++) {
-      if (compareString(имя, cultureDataTable[i].regionName) == 0) {
+      if (сравниСтроку(имя, cultureDataTable[i].regionName) == 0) {
         regionNameTable[имя = cultureDataTable[i].regionName] = &cultureDataTable[i];
         return regionNameTable[имя];
       }
@@ -394,19 +394,19 @@ else {
       return *данные;
 
     for (цел i = 0; i < cultureDataTable.length; i++) {
-      if (compareString(имя, cultureDataTable[i].имя) == 0) {
+      if (сравниСтроку(имя, cultureDataTable[i].имя) == 0) {
         nameTable[имя = cultureDataTable[i].имя] = &cultureDataTable[i];
         return nameTable[имя];
       }
     }
 
-    ошибка ("Регион имя '" ~ имя ~ "' is not supported.");
+    ошибка ("Название региона '" ~ имя ~ "' не поддерживается.");
     return пусто;
   }
 
   package static ткст getCultureNameFromIetfName(ткст имя) {
     for (цел i = 0; i < cultureDataTable.length; i++) {
-      if (compareString(имя, cultureDataTable[i].ietfTag) == 0)
+      if (сравниСтроку(имя, cultureDataTable[i].ietfTag) == 0)
         return cultureDataTable[i].имя;
     }
     return пусто;

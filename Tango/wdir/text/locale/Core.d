@@ -19,7 +19,7 @@
  * $(MEMBERTABLE
  * $(TR
  * $(TH Interface)
- * $(TH DescrИПtion)
+ * $(TH Description)
  * )
  * $(TR
  * $(TD $(LINK2 #ИСлужбаФормата, ИСлужбаФормата))
@@ -30,7 +30,7 @@
  * $(MEMBERTABLE
  * $(TR
  * $(TH Class)
- * $(TH DescrИПtion)
+ * $(TH Description)
  * )
  * $(TR
  * $(TD $(LINK2 #Календарь, Календарь))
@@ -89,7 +89,7 @@
  * $(MEMBERTABLE
  * $(TR
  * $(TH Struct)
- * $(TH DescrИПtion)
+ * $(TH Description)
  * )
  * $(TR
  * $(TD $(LINK2 #Время, Время))
@@ -120,10 +120,10 @@ private import  time.chrono.Hijri,
                 time.chrono.ThaiBuddhist;
         
 version (Windows)
-         private import text.locale.Win32;
+         private import nativeMethods = text.locale.Win32;
 
 version (Posix)
-         private import text.locale.Posix;
+         private import nativeMethods = text.locale.Posix;
 
 
 // Initializes an Массив.
@@ -185,19 +185,19 @@ public interface ИСлужбаФормата {
  * проц main() {
  *   Культура культура = new Культура("it-IT");
  *
- *   Стдвыв.форматнс("englishName: {}", культура.englishName);
- *   Стдвыв.форматнс("nativeName: {}", культура.nativeName);
+ *   Стдвыв.форматнс("англИмя: {}", культура.англИмя);
+ *   Стдвыв.форматнс("исконноеИмя: {}", культура.исконноеИмя);
  *   Стдвыв.форматнс("имя: {}", культура.имя);
  *   Стдвыв.форматнс("предок: {}", культура.предок.имя);
- *   Стдвыв.форматнс("isNeutral: {}", культура.isNeutral);
+ *   Стдвыв.форматнс("нейтрален_ли: {}", культура.нейтрален_ли);
  * }
  *
  * // Produces the following вывод:
- * // englishName: Italian (Italy)
- * // nativeName: italiano (Italia)
+ * // англИмя: Italian (Italy)
+ * // исконноеИмя: italiano (Italia)
  * // имя: it-IT
  * // предок: it
- * // isNeutral: нет
+ * // нейтрален_ли: нет
  * ---
  */
 public class Культура : ИСлужбаФормата {
@@ -222,7 +222,7 @@ public class Культура : ИСлужбаФормата {
     invariantCulture_ = new Культура(LCID_INVARIANT);
     invariantCulture_.isReadOnly_ = да;
 
-    userDefaultCulture_ = new Культура(nativeMethods.getUserCulture());
+    userDefaultCulture_ = new Культура(nativeMethods.дайКультуруПользователя());
     if (userDefaultCulture_ is пусто)
       // Fallback
       userDefaultCulture_ = инвариантнаяКультура;
@@ -277,7 +277,7 @@ version (Clone)
    */
   public Объект клонируй() {
     Культура культура = cast(Культура)клонируйОбъект(this);
-    if (!культура.isNeutral) {
+    if (!культура.нейтрален_ли) {
       if (dateTimeFormat_ !is пусто)
         культура.dateTimeFormat_ = cast(ФорматДатыВремени)dateTimeFormat_.клонируй();
       if (numberFormat_ !is пусто)
@@ -384,7 +384,7 @@ version (Posix) {
     культура.isReadOnly_ = да;
 
     // Сейчас кэш the new экземпляр in все tables.
-    ietfCultures[культура.ietfLanguageTag] = культура;
+    ietfCultures[культура.тэгЯзыкаИЕТФ] = культура;
     namedCultures[культура.имя] = культура;
     idCultures[культура.опр] = культура;
 
@@ -402,7 +402,7 @@ version (Posix) {
 
     цел[] cultures;
     for (цел i = 0; i < ДанныеОКультуре.cultureDataTable.length; i++) {
-      if ((ДанныеОКультуре.cultureDataTable[i].isNeutral && includeNeutral) || (!ДанныеОКультуре.cultureDataTable[i].isNeutral && includeSpecific))
+      if ((ДанныеОКультуре.cultureDataTable[i].нейтрален_ли && includeNeutral) || (!ДанныеОКультуре.cultureDataTable[i].нейтрален_ли && includeSpecific))
         cultures ~= ДанныеОКультуре.cultureDataTable[i].lcid;
     }
 
@@ -440,11 +440,11 @@ version (Posix) {
 
     if (userDefaultCulture_ !is пусто) {
       // If the пользователь имеется изменён their локаль settings since последний we проверьed, invalidate our данные.
-      if (userDefaultCulture_.опр != nativeMethods.getUserCulture())
+      if (userDefaultCulture_.опр != nativeMethods.дайКультуруПользователя())
         userDefaultCulture_ = пусто;
     }
     if (userDefaultCulture_ is пусто) {
-      userDefaultCulture_ = new Культура(nativeMethods.getUserCulture());
+      userDefaultCulture_ = new Культура(nativeMethods.дайКультуруПользователя());
       if (userDefaultCulture_ is пусто)
         userDefaultCulture_ = инвариантнаяКультура;
       else
@@ -463,11 +463,11 @@ version (Posix) {
    *
    * проц main() {
    *   // Displays the имя of the текущ культура.
-   *   Println("The текущ культура is %s.", Культура.текущ.englishName);
+   *   Println("The текущ культура is %s.", Культура.текущ.англИмя);
    *
    *   // Changes the текущ культура в_ el-GR.
    *   Культура.текущ = new Культура("el-GR");
-   *   Println("The текущ культура is сейчас %s.", Культура.текущ.englishName);
+   *   Println("The текущ культура is сейчас %s.", Культура.текущ.англИмя);
    * }
    *
    * // Produces the following вывод:
@@ -477,7 +477,7 @@ version (Posix) {
    */
   public static проц текущ(Культура значение) {
     проверьНейтрал(значение);
-    nativeMethods.setUserCulture(значение.опр);
+    nativeMethods.установиКультуруПользователя(значение.опр);
     currentCulture_ = значение;
   }
 
@@ -512,35 +512,35 @@ version (Posix) {
 
   /**
    * $(I Property.) Retrieves the имя of the Культура in the форматируй &lt;languagename&gt; (&lt;regionname&gt;) in English.
-   * Возвращает: The имя of the текущ экземпляр in English. For example, the englishName of the UK English культура 
+   * Возвращает: The имя of the текущ экземпляр in English. For example, the англИмя of the UK English культура 
    * is "English (United Kingdom)".
    */
-  public ткст englishName() {
-    return cultureData_.englishName;
+  public ткст англИмя() {
+    return cultureData_.англИмя;
   }
 
   /**
    * $(I Property.) Retrieves the имя of the Культура in the форматируй &lt;languagename&gt; (&lt;regionname&gt;) in its исконный language.
-   * Возвращает: The имя of the текущ экземпляр in its исконный language. For example, if Культура.имя is "de-DE", nativeName is 
+   * Возвращает: The имя of the текущ экземпляр in its исконный language. For example, if Культура.имя is "de-DE", исконноеИмя is 
    * "Deutsch (Deutschland)".
    */
-  public ткст nativeName() {
-    return cultureData_.nativeName;
+  public ткст исконноеИмя() {
+    return cultureData_.исконноеИмя;
   }
 
   /**
    * $(I Property.) Retrieves the two-letter language код of the культура.
-   * Возвращает: The two-letter language код of the Культура экземпляр. For example, the twoLetterLanguageName for English is "en".
+   * Возвращает: The two-letter language код of the Культура экземпляр. For example, the имяЯзыкаИз2Букв for English is "en".
    */
-  public ткст twoLetterLanguageName() {
+  public ткст имяЯзыкаИз2Букв() {
     return cultureData_.isoLangName;
   }
 
   /**
    * $(I Property.) Retrieves the three-letter language код of the культура.
-   * Возвращает: The three-letter language код of the Культура экземпляр. For example, the threeLetterLanguageName for English is "eng".
+   * Возвращает: The three-letter language код of the Культура экземпляр. For example, the имяЯзыкаИз3Букв for English is "eng".
    */
-  public ткст threeLetterLanguageName() {
+  public ткст имяЯзыкаИз3Букв() {
     return cultureData_.isoLangName2;
   }
 
@@ -548,7 +548,7 @@ version (Posix) {
    * $(I Property.) Retrieves the RFC 3066 опрentification for a language.
    * Возвращает: A ткст representing the RFC 3066 language опрentification.
    */
-  public final ткст ietfLanguageTag() {
+  public final ткст тэгЯзыкаИЕТФ() {
     return cultureData_.ietfTag;
   }
 
@@ -582,9 +582,9 @@ version (Posix) {
    *
    * проц main() {
    *   foreach (c; Культура.дайКультуры(ТипыКультур.все)) {
-   *     if (c.twoLetterLanguageName == "zh") {
-   *       Print(c.englishName);
-   *       if (c.isNeutral)
+   *     if (c.имяЯзыкаИз2Букв == "zh") {
+   *       Print(c.англИмя);
+   *       if (c.нейтрален_ли)
    *         Println("neutral");
    *       else
    *         Println("specific");
@@ -602,8 +602,8 @@ version (Posix) {
    * // Chinese (Traditional) - neutral
    * ---
    */
-  public бул isNeutral() {
-    return cultureData_.isNeutral;
+  public бул нейтрален_ли() {
+    return cultureData_.нейтрален_ли;
   }
 
   /**
@@ -684,7 +684,7 @@ version (Posix) {
   }
 
   private static проц проверьНейтрал(Культура культура) {
-    if (культура.isNeutral)
+    if (культура.нейтрален_ли)
       ошибка("Культура '" ~ культура.имя ~ "' является нейтральной. 
 	  Её нельзя использовать при форматировании 
 	  и она не может быть установлена как текущая культура.");
@@ -735,18 +735,18 @@ version (Posix) {
  * проц main() {
  *   Регион region = new Регион("en-GB");
  *   Println("имя:              %s", region.имя);
- *   Println("englishName:       %s", region.englishName);
- *   Println("isMetric:          %s", region.isMetric);
- *   Println("currencySymbol:    %s", region.currencySymbol);
- *   Println("isoCurrencySymbol: %s", region.isoCurrencySymbol);
+ *   Println("англИмя:       %s", region.англИмя);
+ *   Println("метрическ_ли:          %s", region.метрическ_ли);
+ *   Println("символВалюты:    %s", region.символВалюты);
+ *   Println("символВалютыИСО: %s", region.символВалютыИСО);
  * }
  *
  * // Produces the following вывод.
  * // имя:              en-GB
- * // englishName:       United Kingdom
- * // isMetric:          да
- * // currencySymbol:    £
- * // isoCurrencySymbol: GBP
+ * // англИмя:       United Kingdom
+ * // метрическ_ли:          да
+ * // символВалюты:    £
+ * // символВалютыИСО: GBP
  * ---
  */
 public class Регион {
@@ -762,7 +762,7 @@ public class Регион {
    */
   public this(цел идКультуры) {
     cultureData_ = ДанныеОКультуре.дайДанныеИзИДКультуры(идКультуры);
-    if (cultureData_.isNeutral)
+    if (cultureData_.нейтрален_ли)
         ошибка ("Нейтральная культура не может использоваться для создания региона.");
     name_ = cultureData_.regionName;
   }
@@ -775,7 +775,7 @@ public class Регион {
   public this(ткст имя) {
     cultureData_ = ДанныеОКультуре.getDataFromRegionName(имя);
     name_ = имя;
-    if (cultureData_.isNeutral)
+    if (cultureData_.нейтрален_ли)
         ошибка ("Имя региона " ~ имя ~ " соответствует нейтральной культуре и не может
 		использоваться при создании региона.");
   }
@@ -799,7 +799,7 @@ public class Регион {
    * $(I Property.) Retrieves a unique определитель for the geographical location of the region.
    * Возвращает: An $(B цел) uniquely опрentifying the geographical location.
    */
-  public цел geoID() {
+  public цел геоИД() {
     return cultureData_.geoId;
   }
 
@@ -816,7 +816,7 @@ public class Регион {
    * $(I Property.) Retrieves the full имя of the region in English.
    * Возвращает: The full имя of the region in English.
    */
-  public ткст englishName() {
+  public ткст англИмя() {
     return cultureData_.englishCountry;
   }
 
@@ -824,7 +824,7 @@ public class Регион {
    * $(I Property.) Retrieves the full имя of the region in its исконный language.
    * Возвращает: The full имя of the region in the language associated with the region код.
    */
-  public ткст nativeName() {
+  public ткст исконноеИмя() {
     return cultureData_.nativeCountry;
   }
 
@@ -832,7 +832,7 @@ public class Регион {
    * $(I Property.) Retrieves the two-letter ISO 3166 код of the region.
    * Возвращает: The two-letter ISO 3166 код of the region.
    */
-  public ткст twoLetterRegionName() {
+  public ткст имяРегионаИз2Букв() {
     return cultureData_.regionName;
   }
 
@@ -840,7 +840,7 @@ public class Регион {
    * $(I Property.) Retrieves the three-letter ISO 3166 код of the region.
    * Возвращает: The three-letter ISO 3166 код of the region.
    */
-  public ткст threeLetterRegionName() {
+  public ткст имяРегионаИз3Букв() {
     return cultureData_.isoRegionName;
   }
 
@@ -848,7 +848,7 @@ public class Регион {
    * $(I Property.) Retrieves the currency symbol of the region.
    * Возвращает: The currency symbol of the region.
    */
-  public ткст currencySymbol() {
+  public ткст символВалюты() {
     return cultureData_.currency;
   }
 
@@ -856,7 +856,7 @@ public class Регион {
    * $(I Property.) Retrieves the three-character currency symbol of the region.
    * Возвращает: The three-character currency symbol of the region.
    */
-  public ткст isoCurrencySymbol() {
+  public ткст символВалютыИСО() {
     return cultureData_.intlSymbol;
   }
 
@@ -864,7 +864,7 @@ public class Регион {
    * $(I Property.) Retrieves the имя in English of the currency использован in the region.
    * Возвращает: The имя in English of the currency использован in the region.
    */
-  public ткст currencyEnglishName() {
+  public ткст англИмяВалюты() {
     return cultureData_.englishCurrency;
   }
 
@@ -872,7 +872,7 @@ public class Регион {
    * $(I Property.) Retrieves the имя in the исконный language of the region of the currency использован in the region.
    * Возвращает: The имя in the исконный language of the region of the currency использован in the region.
    */
-  public ткст currencyNativeName() {
+  public ткст исконноеИмяВалюты() {
     return cultureData_.nativeCurrency;
   }
 
@@ -880,8 +880,8 @@ public class Регион {
    * $(I Property.) Retrieves a значение indicating whether the region uses the metric system for measurements.
    * Возвращает: да is the region uses the metric system; otherwise, нет.
    */
-  public бул isMetric() {
-    return cultureData_.isMetric;
+  public бул метрическ_ли() {
+    return cultureData_.метрическ_ли;
   }
 
   /**
@@ -907,11 +907,11 @@ public class Регион {
  *
  * проц main(ткст[] арги) {
  *   foreach (c; Культура.дайКультуры(ТипыКультур.Особый)) {
- *     if (c.twoLetterLanguageName == "en") {
+ *     if (c.имяЯзыкаИз2Букв == "en") {
  *       ФорматЧисла фмт = c.форматЧисла;
  *       Println("The currency symbol for %s is '%s'", 
- *         c.englishName, 
- *         фмт.currencySymbol);
+ *         c.англИмя, 
+ *         фмт.символВалюты);
  *     }
  *   }
  * }
@@ -998,12 +998,12 @@ public class ФорматЧисла : ИСлужбаФормата {
       currencyGroupSeparator_ = данныеОКультуре.monetaryThousand;
       currencyDecimalSeparator_ = данныеОКультуре.monetaryDecimal;
       currencySymbol_ = данныеОКультуре.currency;
-      negativeSign_ = данныеОКультуре.negativeSign;
-      positiveSign_ = данныеОКультуре.positiveSign;
+      negativeSign_ = данныеОКультуре.отрицатЗнак;
+      positiveSign_ = данныеОКультуре.положитЗнак;
       nanSymbol_ = данныеОКультуре.nan;
       negativeInfinitySymbol_ = данныеОКультуре.negInfinity;
       positiveInfinitySymbol_ = данныеОКультуре.posInfinity;
-      nativeDigits_ = данныеОКультуре.nativeDigits;
+      nativeDigits_ = данныеОКультуре.исконныеЦифры;
     }
   }
 
@@ -1289,14 +1289,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст separating groups of цифры в_ the left of the decimal place in currency значения.
    * Возвращает: The ткст separating groups of цифры в_ the left of the decimal place in currency значения. For example, ",".
    */
-  public final ткст currencyGroupSeparator() {
+  public final ткст разделительГруппыВалют() {
     return currencyGroupSeparator_;
   }
   /**
    * $(I Property.) Assigns the ткст separating groups of цифры в_ the left of the decimal place in currency значения.
    * Параметры: значение = The ткст separating groups of цифры в_ the left of the decimal place in currency значения.
    */
-  public final проц currencyGroupSeparator(ткст значение) {
+  public final проц разделительГруппыВалют(ткст значение) {
     проверьТолькоЧтен();
     currencyGroupSeparator_ = значение;
   }
@@ -1305,14 +1305,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст использован as the decimal разделитель in currency значения.
    * Возвращает: The ткст использован as the decimal разделитель in currency значения. For example, ".".
    */
-  public final ткст currencyDecimalSeparator() {
+  public final ткст десятичнРазделительВалюты() {
     return currencyDecimalSeparator_;
   }
   /**
    * $(I Property.) Assigns the ткст использован as the decimal разделитель in currency значения.
    * Параметры: значение = The ткст использован as the decimal разделитель in currency значения.
    */
-  public final проц currencyDecimalSeparator(ткст значение) {
+  public final проц десятичнРазделительВалюты(ткст значение) {
     проверьТолькоЧтен();
     currencyDecimalSeparator_ = значение;
   }
@@ -1321,14 +1321,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст использован as the currency symbol.
    * Возвращает: The ткст использован as the currency symbol. For example, "£".
    */
-  public final ткст currencySymbol() {
+  public final ткст символВалюты() {
     return currencySymbol_;
   }
   /**
    * $(I Property.) Assigns the ткст использован as the currency symbol.
    * Параметры: значение = The ткст использован as the currency symbol.
    */
-  public final проц currencySymbol(ткст значение) {
+  public final проц символВалюты(ткст значение) {
     проверьТолькоЧтен();
     currencySymbol_ = значение;
   }
@@ -1337,14 +1337,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст denoting that a число is negative.
    * Возвращает: The ткст denoting that a число is negative. For example, "-".
    */
-  public final ткст negativeSign() {
+  public final ткст отрицатЗнак() {
     return negativeSign_;
   }
   /**
    * $(I Property.) Assigns the ткст denoting that a число is negative.
    * Параметры: значение = The ткст denoting that a число is negative.
    */
-  public final проц negativeSign(ткст значение) {
+  public final проц отрицатЗнак(ткст значение) {
     проверьТолькоЧтен();
     negativeSign_ = значение;
   }
@@ -1353,14 +1353,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст denoting that a число is positive.
    * Возвращает: The ткст denoting that a число is positive. For example, "+".
    */
-  public final ткст positiveSign() {
+  public final ткст положитЗнак() {
     return positiveSign_;
   }
   /**
    * $(I Property.) Assigns the ткст denoting that a число is positive.
    * Параметры: значение = The ткст denoting that a число is positive.
    */
-  public final проц positiveSign(ткст значение) {
+  public final проц положитЗнак(ткст значение) {
     проверьТолькоЧтен();
     positiveSign_ = значение;
   }
@@ -1369,14 +1369,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст representing the НЧ (not a число) значение.
    * Возвращает: The ткст representing the НЧ значение. For example, "НЧ".
    */
-  public final ткст nanSymbol() {
+  public final ткст символНЧ() {
     return nanSymbol_;
   }
   /**
    * $(I Property.) Assigns the ткст representing the НЧ (not a число) значение.
    * Параметры: значение = The ткст representing the НЧ значение.
    */
-  public final проц nanSymbol(ткст значение) {
+  public final проц символНЧ(ткст значение) {
     проверьТолькоЧтен();
     nanSymbol_ = значение;
   }
@@ -1385,14 +1385,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст representing negative infinity.
    * Возвращает: The ткст representing negative infinity. For example, "-Infinity".
    */
-  public final ткст negativeInfinitySymbol() {
+  public final ткст отрицатСимволБесконечности() {
     return negativeInfinitySymbol_;
   }
   /**
    * $(I Property.) Assigns the ткст representing negative infinity.
    * Параметры: значение = The ткст representing negative infinity.
    */
-  public final проц negativeInfinitySymbol(ткст значение) {
+  public final проц отрицатСимволБесконечности(ткст значение) {
     проверьТолькоЧтен();
     negativeInfinitySymbol_ = значение;
   }
@@ -1401,14 +1401,14 @@ version (Clone)
    * $(I Property.) Retrieves the ткст representing positive infinity.
    * Возвращает: The ткст representing positive infinity. For example, "Infinity".
    */
-  public final ткст positiveInfinitySymbol() {
+  public final ткст положитСимволБесконечности() {
     return positiveInfinitySymbol_;
   }
   /**
    * $(I Property.) Assigns the ткст representing positive infinity.
    * Параметры: значение = The ткст representing positive infinity.
    */
-  public final проц positiveInfinitySymbol(ткст значение) {
+  public final проц положитСимволБесконечности(ткст значение) {
     проверьТолькоЧтен();
     positiveInfinitySymbol_ = значение;
   }
@@ -1417,14 +1417,14 @@ version (Clone)
    * $(I Property.) Retrieves a ткст Массив of исконный equivalents of the цифры 0 в_ 9.
    * Возвращает: A ткст Массив of исконный equivalents of the цифры 0 в_ 9.
    */
-  public final ткст[] nativeDigits() {
+  public final ткст[] исконныеЦифры() {
     return nativeDigits_;
   }
   /**
    * $(I Property.) Assigns a ткст Массив of исконный equivalents of the цифры 0 в_ 9.
    * Параметры: значение = A ткст Массив of исконный equivalents of the цифры 0 в_ 9.
    */
-  public final проц nativeDigits(ткст[] значение) {
+  public final проц исконныеЦифры(ткст[] значение) {
     проверьТолькоЧтен();
     nativeDigits_ = значение;
   }
@@ -1604,7 +1604,7 @@ version(Clone)
         break;
       case 'm':
       case 'M':
-        результат ~= monthDayPattern;
+        результат ~= образецДняМесяца;
         break;
       case 'r':
       case 'R':
@@ -1641,8 +1641,8 @@ version(Clone)
    * Параметры: ДеньНедели = A ДеньНедели значение.
    * Возвращает: The abbreviated имя of the день of the week represented by ДеньНедели.
    */
-  public final ткст getAbbreviatedDayName(Календарь.ДеньНедели деньНедели) {
-    return abbreviatedDayNames[cast(цел)деньНедели];
+  public final ткст дайСокращённоеИмяДня(Календарь.ДеньНедели деньНедели) {
+    return сокращённыеИменаДней[cast(цел)деньНедели];
   }
 
   /**
@@ -1651,8 +1651,8 @@ version(Clone)
    * Параметры: ДеньНедели = A ДеньНедели значение.
    * Возвращает: The full имя of the день of the week represented by ДеньНедели.
    */
-  public final ткст getDayName(Календарь.ДеньНедели деньНедели) {
-    return dayNames[cast(цел)деньНедели];
+  public final ткст дайИмяДня(Календарь.ДеньНедели деньНедели) {
+    return именаДней[cast(цел)деньНедели];
   }
 
   /**
@@ -1661,8 +1661,8 @@ version(Clone)
    * Параметры: месяц = An целое between 1 и 13 indicating the имя of the _month в_ return.
    * Возвращает: The abbreviated имя of the _month represented by месяц.
    */
-  public final ткст getAbbreviatedMonthName(цел месяц) {
-    return abbreviatedMonthNames[месяц - 1];
+  public final ткст дайСокращённоеИмяМесяца(цел месяц) {
+    return сокращённыеИменаМесяцев[месяц - 1];
   }
 
   /**
@@ -1671,8 +1671,8 @@ version(Clone)
    * Параметры: месяц = An целое between 1 и 13 indicating the имя of the _month в_ return.
    * Возвращает: The full имя of the _month represented by месяц.
    */
-  public final ткст getMonthName(цел месяц) {
-    return monthNames[месяц - 1];
+  public final ткст дайИмяМесяца(цел месяц) {
+    return именаМесяцев[месяц - 1];
   }
 
   /**
@@ -1863,7 +1863,7 @@ version(Clone)
    * $(I Property.) Retrieves the ткст designator for часы before noon.
    * Возвращает: The ткст designator for часы before noon. For example, "AM".
    */
-  public final ткст amDesignator() {
+  public final ткст определительДоПолудня() {
     assert(amDesignator_ !is пусто);
     return amDesignator_;
   }
@@ -1871,7 +1871,7 @@ version(Clone)
    * $(I Property.) Assigns the ткст designator for часы before noon.
    * Параметры: значение = The ткст designator for часы before noon.
    */
-  public final проц amDesignator(ткст значение) {
+  public final проц определительДоПолудня(ткст значение) {
     проверьТолькоЧтен();
     amDesignator_ = значение;
   }
@@ -1881,7 +1881,7 @@ version(Clone)
    * $(I Property.) Retrieves the ткст designator for часы after noon.
    * Возвращает: The ткст designator for часы after noon. For example, "PM".
    */
-  public final ткст pmDesignator() {
+  public final ткст определительПослеПолудня() {
     assert(pmDesignator_ !is пусто);
     return pmDesignator_;
   }
@@ -1889,7 +1889,7 @@ version(Clone)
    * $(I Property.) Assigns the ткст designator for часы after noon.
    * Параметры: значение = The ткст designator for часы after noon.
    */
-  public final проц pmDesignator(ткст значение) {
+  public final проц определительПослеПолудня(ткст значение) {
     проверьТолькоЧтен();
     pmDesignator_ = значение;
   }
@@ -1899,7 +1899,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a крат дата значение.
    * Возвращает: The форматируй образец for a крат дата значение.
    */
-  public final ткст shortDatePattern() {
+  public final ткст краткийОбразецДаты() {
     assert(shortDatePattern_ !is пусто);
     return shortDatePattern_;
   }
@@ -1907,7 +1907,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a крат дата _value.
    * Параметры: значение = The форматируй образец for a крат дата _value.
    */
-  public final проц shortDatePattern(ткст значение) {
+  public final проц краткийОбразецДаты(ткст значение) {
     проверьТолькоЧтен();
     if (shortDatePatterns_ !is пусто)
       shortDatePatterns_[0] = значение;
@@ -1921,7 +1921,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a крат время значение.
    * Возвращает: The форматируй образец for a крат время значение.
    */
-  public final ткст shortTimePattern() {
+  public final ткст краткийОбразецВремени() {
     if (shortTimePattern_ is пусто)
       shortTimePattern_ = cultureData_.shortTime;
     return shortTimePattern_;
@@ -1930,7 +1930,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a крат время _value.
    * Параметры: значение = The форматируй образец for a крат время _value.
    */
-  public final проц shortTimePattern(ткст значение) {
+  public final проц краткийОбразецВремени(ткст значение) {
     проверьТолькоЧтен();
     shortTimePattern_ = значение;
     generalShortTimePattern_ = пусто;
@@ -1941,7 +1941,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a дол дата значение.
    * Возвращает: The форматируй образец for a дол дата значение.
    */
-  public final ткст longDatePattern() {
+  public final ткст длинныйОбразецДаты() {
     assert(longDatePattern_ !is пусто);
     return longDatePattern_;
   }
@@ -1949,7 +1949,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a дол дата _value.
    * Параметры: значение = The форматируй образец for a дол дата _value.
    */
-  public final проц longDatePattern(ткст значение) {
+  public final проц длинныйОбразецДаты(ткст значение) {
     проверьТолькоЧтен();
     if (longDatePatterns_ !is пусто)
       longDatePatterns_[0] = значение;
@@ -1962,7 +1962,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a дол время значение.
    * Возвращает: The форматируй образец for a дол время значение.
    */
-  public final ткст longTimePattern() {
+  public final ткст длинныйОбразецВремени() {
     assert(longTimePattern_ !is пусто);
     return longTimePattern_;
   }
@@ -1970,7 +1970,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a дол время _value.
    * Параметры: значение = The форматируй образец for a дол время _value.
    */
-  public final проц longTimePattern(ткст значение) {
+  public final проц длинныйОбразецВремени(ткст значение) {
     проверьТолькоЧтен();
     longTimePattern_ = значение;
     ПолнаяДатаTimePattern_ = пусто;
@@ -1981,7 +1981,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a месяц и день значение.
    * Возвращает: The форматируй образец for a месяц и день значение.
    */
-  public final ткст monthDayPattern() {
+  public final ткст образецДняМесяца() {
     if (monthDayPattern_ is пусто)
       monthDayPattern_ = cultureData_.monthDay;
     return monthDayPattern_;
@@ -1990,7 +1990,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a месяц и день _value.
    * Параметры: значение = The форматируй образец for a месяц и день _value.
    */
-  public final проц monthDayPattern(ткст значение) {
+  public final проц образецДняМесяца(ткст значение) {
     проверьТолькоЧтен();
     monthDayPattern_ = значение;
   }
@@ -2000,7 +2000,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a год и месяц значение.
    * Возвращает: The форматируй образец for a год и месяц значение.
    */
-  public final ткст yearMonthPattern() {
+  public final ткст образецМесяцаГода() {
     assert(yearMonthPattern_ !is пусто);
     return yearMonthPattern_;
   }
@@ -2008,7 +2008,7 @@ version(Clone)
    * $(I Property.) Assigns the форматируй образец for a год и месяц _value.
    * Параметры: значение = The форматируй образец for a год и месяц _value.
    */
-  public final проц yearMonthPattern(ткст значение) {
+  public final проц образецМесяцаГода(ткст значение) {
     проверьТолькоЧтен();
     yearMonthPattern_ = значение;
   }
@@ -2019,7 +2019,7 @@ version(Clone)
    * Возвращает: A ткст Массив containing the abbreviated names of the дни of the week. For $(LINK2 #DateTimeFormat_invariantFormat, инвариантныйФормат),
    *   this содержит "Sun", "Mon", "Tue", "Wed", "Thu", "Fri" и "Sat".
    */
-  public final ткст[] abbreviatedDayNames() {
+  public final ткст[] сокращённыеИменаДней() {
     if (abbreviatedDayNames_ is пусто)
       abbreviatedDayNames_ = cultureData_.abbrevDayNames;
     return abbreviatedDayNames_.dup;
@@ -2028,7 +2028,7 @@ version(Clone)
    * $(I Property.) Assigns a ткст Массив containing the abbreviated names of the дни of the week.
    * Параметры: значение = A ткст Массив containing the abbreviated names of the дни of the week.
    */
-  public final проц abbreviatedDayNames(ткст[] значение) {
+  public final проц сокращённыеИменаДней(ткст[] значение) {
     проверьТолькоЧтен();
     abbreviatedDayNames_ = значение;
   }
@@ -2039,16 +2039,16 @@ version(Clone)
    * Возвращает: A ткст Массив containing the full names of the дни of the week. For $(LINK2 #DateTimeFormat_invariantFormat, инвариантныйФормат),
    *   this содержит "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница" и "Суббота".
    */
-  public final ткст[] dayNames() {
+  public final ткст[] именаДней() {
     if (dayNames_ is пусто)
-      dayNames_ = cultureData_.dayNames;
+      dayNames_ = cultureData_.именаДней;
     return dayNames_.dup;
   }
   /**
    * $(I Property.) Assigns a ткст Массив containing the full names of the дни of the week.
    * Параметры: значение = A ткст Массив containing the full names of the дни of the week.
    */
-  public final проц dayNames(ткст[] значение) {
+  public final проц именаДней(ткст[] значение) {
     проверьТолькоЧтен();
     dayNames_ = значение;
   }
@@ -2059,7 +2059,7 @@ version(Clone)
    * Возвращает: A ткст Массив containing the abbreviated names of the месяцы. For $(LINK2 #DateTimeFormat_invariantFormat, инвариантныйФормат),
    *   this содержит "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" и "".
    */
-  public final ткст[] abbreviatedMonthNames() {
+  public final ткст[] сокращённыеИменаМесяцев() {
     if (abbreviatedMonthNames_ is пусто)
       abbreviatedMonthNames_ = cultureData_.abbrevMonthNames;
     return abbreviatedMonthNames_.dup;
@@ -2068,7 +2068,7 @@ version(Clone)
    * $(I Property.) Assigns a ткст Массив containing the abbreviated names of the месяцы.
    * Параметры: значение = A ткст Массив containing the abbreviated names of the месяцы.
    */
-  public final проц abbreviatedMonthNames(ткст[] значение) {
+  public final проц сокращённыеИменаМесяцев(ткст[] значение) {
     проверьТолькоЧтен();
     abbreviatedMonthNames_ = значение;
   }
@@ -2079,16 +2079,16 @@ version(Clone)
    * Возвращает: A ткст Массив containing the full names of the месяцы. For $(LINK2 #DateTimeFormat_invariantFormat, инвариантныйФормат),
    *   this содержит "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" и "".
    */
-  public final ткст[] monthNames() {
+  public final ткст[] именаМесяцев() {
     if (monthNames_ is пусто)
-      monthNames_ = cultureData_.monthNames;
+      monthNames_ = cultureData_.именаМесяцев;
     return monthNames_.dup;
   }
   /**
    * $(I Property.) Assigns a ткст Массив containing the full names of the месяцы.
    * Параметры: значение = A ткст Массив containing the full names of the месяцы.
    */
-  public final проц monthNames(ткст[] значение) {
+  public final проц именаМесяцев(ткст[] значение) {
     проверьТолькоЧтен();
     monthNames_ = значение;
   }
@@ -2098,16 +2098,16 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a дол дата и a дол время значение.
    * Возвращает: The форматируй образец for a дол дата и a дол время значение.
    */
-  public final ткст ПолнаяДатаTimePattern() {
+  public final ткст полныйОбразецДатыВремени() {
     if (ПолнаяДатаTimePattern_ is пусто)
-      ПолнаяДатаTimePattern_ = longDatePattern ~ " " ~ longTimePattern;
+      ПолнаяДатаTimePattern_ = длинныйОбразецДаты ~ " " ~ длинныйОбразецВремени;
     return ПолнаяДатаTimePattern_;
   }
   /**
    * $(I Property.) Assigns the форматируй образец for a дол дата и a дол время _value.
    * Параметры: значение = The форматируй образец for a дол дата и a дол время _value.
    */
-  public final проц ПолнаяДатаTimePattern(ткст значение) {
+  public final проц полныйОбразецДатыВремени(ткст значение) {
     проверьТолькоЧтен();
     ПолнаяДатаTimePattern_ = значение;
   }
@@ -2117,7 +2117,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец based on the IETF RFC 1123 specification, for a время значение.
    * Возвращает: The форматируй образец based on the IETF RFC 1123 specification, for a время значение.
    */
-  public final ткст rfc1123Pattern() {
+  public final ткст образецРФС1123() {
     return rfc1123Pattern_;
   }
 
@@ -2126,7 +2126,7 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a sortable дата и время значение.
    * Возвращает: The форматируй образец for a sortable дата и время значение.
    */
-  public final ткст sortableDateTimePattern() {
+  public final ткст сортируемыйОбразецДатыВремени() {
     return sortableDateTimePattern_;
   }
 
@@ -2135,19 +2135,19 @@ version(Clone)
    * $(I Property.) Retrieves the форматируй образец for a universal дата и время значение.
    * Возвращает: The форматируй образец for a universal дата и время значение.
    */
-  public final ткст universalSortableDateTimePattern() {
+  public final ткст универсальныйСортируемыйОбразецДатыВремени() {
     return universalSortableDateTimePattern_;
   }
 
   package ткст generalShortTimePattern() {
     if (generalShortTimePattern_ is пусто)
-      generalShortTimePattern_ = shortDatePattern ~ " " ~ shortTimePattern;
+      generalShortTimePattern_ = краткийОбразецДаты ~ " " ~ краткийОбразецВремени;
     return generalShortTimePattern_;
   }
 
   package ткст generalLongTimePattern() {
     if (generalLongTimePattern_ is пусто)
-      generalLongTimePattern_ = shortDatePattern ~ " " ~ longTimePattern;
+      generalLongTimePattern_ = краткийОбразецДаты ~ " " ~ длинныйОбразецВремени;
     return generalLongTimePattern_;
   }
 

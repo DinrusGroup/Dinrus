@@ -18,7 +18,7 @@ module util.collection.model.Comparator;
 /**
  *
  * Comparator is an interface for any class possessing an элемент
- * comparison метод.
+ * сравнение метод.
  * 
         author: Doug Lea
  * @version 0.93

@@ -192,7 +192,7 @@ typedef цел Missing;
  * templates (things like isPOD, объект_ли, etc.)  There are also a число of
  * mixins, and some switching templates (like toString_(n).)
  *
- * другой thing в_ mention is intCmp, which performs a safe comparison
+ * другой thing в_ mention is intCmp, which performs a safe сравнение
  * between two целыйs of arbitrary размер and signage.
  *
  * Following все this are the templated в_* implementations.
@@ -356,7 +356,7 @@ template бцелOfSize(бцел байты)
 }
 
 /*
- * Safely performs a comparison between two целое values, taking преобр_в
+ * Safely performs a сравнение between two целое values, taking преобр_в
  * account different sizes and signages.
  */
 цел intCmp(T,U)(T lhs, U rhs)
@@ -662,7 +662,7 @@ D вБул(D,S)(S значение)
 
     static if( типЦелЧис_ли!(S) /+|| типРеал_ли!(S) || типМнимое_ли!(S)
                 || типКомплекс_ли!(S)+/ )
-        // The weird comparison is в_ support НЧ as да
+        // The weird сравнение is в_ support НЧ as да
         return !(значение == 0);
 
     else static if( типСим_ли!(S) )

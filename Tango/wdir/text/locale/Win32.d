@@ -20,21 +20,21 @@ extern (Windows)
 private {
   бцел GetUserDefaultLCID();
   бцел GetThreadLocale();
-  бул SetThreadLocale(бцел Locale);
+  бул SetThreadLocale(бцел Локаль);
   цел MultiByteToWideChar(бцел CodePage, бцел dwFlags, сим* lpMultiByteStr, цел cbMultiByte, шим* lpWопрeCharStr, цел cchWопрeChar);
-  цел CompareStringW(бцел Locale, бцел dwCmpFlags, шим* lpString1, цел cchCount1, шим* lpString2, цел cchCount2);
+  цел CompareStringW(бцел Локаль, бцел dwCmpFlags, шим* lpString1, цел cchCount1, шим* lpString2, цел cchCount2);
 
 }
 
-цел getUserCulture() {
+цел дайКультуруПользователя() {
   return GetUserDefaultLCID();
 }
 
-проц setUserCulture(цел lcid) {
+проц установиКультуруПользователя(цел lcid) {
   SetThreadLocale(lcid);
 }
 
-цел compareString(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase) {
+цел сравниСтроку(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase) {
 
   шим[] toUnicode(ткст ткст, бцел смещение, бцел length, out цел translated) {
     сим* chars = ткст.ptr + смещение;

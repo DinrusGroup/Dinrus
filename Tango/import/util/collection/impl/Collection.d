@@ -164,7 +164,7 @@ public abstract class Коллекция(T) : Dispenser!(T)
                 Default implementation. Fairly sleazy approach.
                 (Defensible only when you remember that it is just a default impl.)
                 It tries в_ cast в_ one of the known collection interface типы
-                и then applies the corresponding comparison rules.
+                и then applies the corresponding сравнение rules.
                 This suffices for все currently supported collection типы,
                 but must be overrопрden if you define new Коллекция subinterfaces
                 и/or implementations.

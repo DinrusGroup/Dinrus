@@ -159,7 +159,7 @@
                 // return данные тип
                 typeinfo кодировка ();
 
-                // замени the comparison algorithm
+                // замени the сравнение algorithm
                 Comparator comparator (Comparator другой);
         }
 

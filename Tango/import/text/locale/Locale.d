@@ -16,21 +16,21 @@
         комбинируй with другой entities such as Стдвыв. To активируй a French
         Стдвыв, do the following:
         ---
-        Стдвыв.выкладка = new Locale (Культура.дайКультуру ("fr-FR"));
+        Стдвыв.выкладка = new Локаль (Культура.дайКультуру ("fr-FR"));
         ---
         
         Note that Стдвыв is a shared сущность, so every usage of it will
         be affected by the above example. For applications supporting 
-        multИПle regions создай multИПle Locale экземпляры instead, и 
+        multИПle regions создай multИПle Локаль экземпляры instead, и 
         кэш them in an appropriate manner.
 
-        In добавьition в_ region-specific currency, дата и время, Locale
+        In добавьition в_ region-specific currency, дата и время, Локаль
         добавьs ещё sophisticated formatting опция than Выкладка provопрes: 
         numeric цифра placement using '#' formatting, for example, is 
-        supported by Locale - along with placement of '$', '-', и '.'
+        supported by Локаль - along with placement of '$', '-', и '.'
         regional-specifics.
 
-        Locale is currently utf8 only. Support for Всё Utf16 и utf32 
+        Локаль is currently utf8 only. Support for Всё Utf16 и utf32 
         may be включен at a later время
 
 ******************************************************************************/
@@ -48,11 +48,11 @@ public  import text.locale.Core : Культура;
 
 /*******************************************************************************
 
-        Locale-включен wrapper around text.convert.Layout
+        Локаль-включен wrapper around text.convert.Layout
 
 *******************************************************************************/
 
-public class Locale : Выкладка!(сим)
+public class Локаль : Выкладка!(сим)
 {
         private ФорматДатыВремени  dateFormat;
         private ФорматЧисла    форматЧисла;
@@ -113,14 +113,14 @@ public class Locale : Выкладка!(сим)
 
 *******************************************************************************/
 
-debug (Locale)
+debug (Локаль)
 {
         import io.Console;
         import time.WallClock;
 
         проц main ()
         {
-                auto выкладка = new Locale (Культура.дайКультуру ("fr-FR"));
+                auto выкладка = new Локаль (Культура.дайКультуру ("fr-FR"));
 
                 Квывод (выкладка ("{:D}", Куранты.сейчас)) ();
         }

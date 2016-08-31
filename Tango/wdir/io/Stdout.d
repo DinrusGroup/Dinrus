@@ -8,12 +8,13 @@
 
         author:         Kris
 
-        Standard, global форматёрs for console вывод. If you don't need
-        formatted вывод or unicode translation, consider using the module
-        io.Console directly. If you need в_ форматируй, but not вывод
-        в_ console, consider text.convert.Format instead.
+        Стандартные, глобальные форматёры для консольного вывода.
+		Если форматированный вывод или трансляция в Юникод не требуется,
+		тогда лучше использовать непосредственно модуль io.Console.
+		Если же требуется форматирование, но без вывода в консоль,
+		то вместо этого лучше применять text.convert.Format.
 
-        Стдвыв & Стдош expose this стиль of usage:
+        Стдвыв & Стдош используются в следующем стиле:
         ---
         Стдвыв ("hello");                       => hello
         Стдвыв (1);                             => 1
@@ -63,12 +64,12 @@
         ---
         import text.locale.Locale;
 
-        Стдвыв.выкладка = new Locale (Культура.дайКультуру ("fr-FR"));
+        Стдвыв.выкладка = new Локаль (Культура.дайКультуру ("fr-FR"));
         ---
         
         Note that Стдвыв is a shared сущность, so every usage of it will
         be affected by the above example. For applications supporting 
-        multИПle regions, создай multИПle Locale instances instead and 
+        multИПle regions, создай multИПle Локаль instances instead and 
         cache them in an appropriate manner.
 
         Стдвыв.выкладка can also be used for formatting without outputting

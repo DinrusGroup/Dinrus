@@ -440,7 +440,7 @@ struct Вариант
 
     /**
      * This member can be used в_ determine if the значение stored in the Вариант
-     * is of the specified тип.  Note that this comparison is exact: it does
+     * is of the specified тип.  Note that this сравнение is exact: it does
      * not take implicit casting rules преобр_в account.
      *
      * Возвращает:
@@ -460,7 +460,7 @@ struct Вариант
 
     /**
      * This member can be used в_ determine if the значение stored in the Вариант
-     * is of the specified тип.  This comparison попытки в_ take implicit
+     * is of the specified тип.  This сравнение попытки в_ take implicit
      * conversion rules преобр_в account.
      *
      * Возвращает:
@@ -962,7 +962,7 @@ private:
     } // version( РазрешитьВарарг )
 
     /*
-     * Performs a тип-dependant comparison.  Note that this obviously doesn't
+     * Performs a тип-dependant сравнение.  Note that this obviously doesn't
      * take преобр_в account things like implicit conversions.
      */
     цел opEqualsВариант(Вариант rhs)
@@ -1168,7 +1168,7 @@ debug( UnitTest )
 
         v = "abc"; v ~= "def"; assert( v == "abcdef" );
 
-        // Test comparison
+        // Test сравнение
         assert( Вариант(0) < Вариант(42) );
         assert( Вариант(42) > Вариант(0) );
         assert( Вариант(21) == Вариант(21) );

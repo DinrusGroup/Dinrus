@@ -21,7 +21,7 @@ private import sys.Common, sys.DConsts, sys.DFuncs, sys.DStructs: АТРИБУТ
 
 private import io.device.Device, io.device.Conduit, io.Stdout;
 
-private import stringz, thread;
+private import stringz, thread, exception;
 
 /*******************************************************************************
 
@@ -347,7 +347,7 @@ class Файл : Устройство
                 //читай the контент
                 длин = файл.читай (приёмн);
                 if (длин is файл.Кф)
-                    файл.ошибка ("io.device.File.Файл.читай :: неожиданный кф");
+                    throw new ВВИскл("io.device.File.Файл.читай :: неожиданный кф");
 
                 return приёмн [0 .. длин];
         }

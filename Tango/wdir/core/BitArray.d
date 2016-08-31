@@ -483,7 +483,7 @@ struct МассивБит
 
 
     /**
-     * Performs a lexicographical comparison of this Массив в_ the supplied
+     * Performs a lexicographical сравнение of this Массив в_ the supplied
      * Массив.
      *
      * Параметры:

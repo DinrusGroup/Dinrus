@@ -79,32 +79,32 @@ version (СРасширениями)
 
 struct МестнДатаВремя
 {       
-        static ткст   rfc1123Pattern = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
-        static ткст   sortableDateTimePattern = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
-        static ткст   universalSortableDateTimePattern = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'";
+        static ткст   образецРФС1123 = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
+        static ткст   сортируемыйОбразецДатыВремени = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
+        static ткст   универсальныйСортируемыйОбразецДатыВремени = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'";
 
         Календарь        назначенныйКалендарь;
 
-        ткст          shortDatePattern,
-                        shortTimePattern,
-                        longDatePattern,
-                        longTimePattern,
-                        ПолнаяДатаTimePattern,
+        ткст          краткийОбразецДаты,
+                        краткийОбразецВремени,
+                        длинныйОбразецДаты,
+                        длинныйОбразецВремени,
+                        полныйОбразецДатыВремени,
                         generalShortTimePattern,
                         generalLongTimePattern,
-                        monthDayPattern,
-                        yearMonthPattern;
+                        образецДняМесяца,
+                        образецМесяцаГода;
 
-        ткст          amDesignator,
-                        pmDesignator;
+        ткст          определительДоПолудня,
+                        определительПослеПолудня;
 
         ткст          разделительВремени,
                         разделительДаты;
 
-        ткст[]        dayNames,
-                        monthNames,
-                        abbreviatedDayNames,
-                        abbreviatedMonthNames;
+        ткст[]        именаДней,
+                        именаМесяцев,
+                        сокращённыеИменаДней,
+                        сокращённыеИменаМесяцев;
 
         /**********************************************************************
 
@@ -336,26 +336,26 @@ else
 
 private МестнДатаВремя EngUS = 
 {
-        shortDatePattern                : "M/d/yyyy",
-        shortTimePattern                : "h:mm",       
-        longDatePattern                 : "dddd, MMMM d, yyyy",
-        longTimePattern                 : "h:mm:ss tt",        
-        ПолнаяДатаTimePattern             : "dddd, MMMM d, yyyy h:mm:ss tt",
+        краткийОбразецДаты                : "M/d/yyyy",
+        краткийОбразецВремени                : "h:mm",       
+        длинныйОбразецДаты                 : "dddd, MMMM d, yyyy",
+        длинныйОбразецВремени                 : "h:mm:ss tt",        
+        полныйОбразецДатыВремени             : "dddd, MMMM d, yyyy h:mm:ss tt",
         generalShortTimePattern         : "M/d/yyyy h:mm",
         generalLongTimePattern          : "M/d/yyyy h:mm:ss tt",
-        monthDayPattern                 : "MMMM d",
-        yearMonthPattern                : "MMMM, yyyy",
-        amDesignator                    : "AM",
-        pmDesignator                    : "PM",
+        образецДняМесяца                 : "MMMM d",
+        образецМесяцаГода                : "MMMM, yyyy",
+        определительДоПолудня                    : "AM",
+        определительПослеПолудня                    : "PM",
         разделительВремени                   : ":",
         разделительДаты                   : "/",
-        dayNames                        : ["Sunday", "Monday", "TuesDay", "Wednesday", 
+        именаДней                        : ["Sunday", "Monday", "TuesDay", "Wednesday", 
                                            "Thursday", "Friday", "Saturday"],
-        monthNames                      : ["January", "February", "March", "April", 
+        именаМесяцев                      : ["January", "February", "March", "April", 
                                            "May", "June", "July", "August", "September", 
                                            "October" "November", "December"],
-        abbreviatedDayNames             : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],    
-        abbreviatedMonthNames           : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        сокращённыеИменаДней             : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],    
+        сокращённыеИменаМесяцев           : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
                                            "Jul", "Aug", "Sep", "Oct" "Nov", "Dec"],
 };
 

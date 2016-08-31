@@ -31,7 +31,7 @@ private import util.container.model.IContainer;
         
         Note that when K is specified, support for ключи are включен. When
         Идентичность is stИПulated as 'да', those ключи are compared using an
-        опрentity-comparison instead of equality (using 'is'). Similarly, if
+        опрentity-сравнение instead of equality (using 'is'). Similarly, if
         ХэшКэш is установи да, an добавьitional attribute is создай in order в_
         retain the хэш of K
 

@@ -323,7 +323,7 @@ private template ЛинейнаяАлгебра(т_плав)
         /**
         Возвращает: Whether this вектор is unit.
         Params:
-            отнпрец, абспрец = Parameters passed to равны function while comparison of
+            отнпрец, абспрец = Parameters passed to равны function while сравнение of
                                нормаль square and 1. Have the same meaning as in равны function.
         */
         бул единица_ли(цел отнпрец = дефотнпрец, цел абспрец = дефабспрец);
@@ -539,7 +539,7 @@ private template ЛинейнаяАлгебра(т_плав)
         /**
         Возвращает: Whether this вектор is unit.
         Params:
-            отнпрец, абспрец = Parameters passed to равны function while comparison of
+            отнпрец, абспрец = Parameters passed to равны function while сравнение of
                                нормаль square and 1. Have the same meaning as in равны function.
         */
         бул единица_ли(цел отнпрец = дефотнпрец, цел абспрец = дефабспрец);
@@ -751,7 +751,7 @@ private template ЛинейнаяАлгебра(т_плав)
         /**
         Возвращает: Whether this quaternion is unit.
         Params:
-            отнпрец, абспрец = Parameters passed to равны function while comparison of
+            отнпрец, абспрец = Parameters passed to равны function while сравнение of
                                нормаль square and 1. Have the same meaning as in равны function.
         */
         бул единица_ли(цел отнпрец = дефотнпрец, цел абспрец = дефабспрец);

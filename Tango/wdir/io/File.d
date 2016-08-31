@@ -13,7 +13,7 @@
 
 module io.File;
 
-private import Провод = io.device.File;
+private import exception, Провод = io.device.File;
 
 //pragma (msg, "warning - io.File functionality has migrated to static functions within io.device.File");
 
@@ -82,7 +82,7 @@ class Файл
 
                 //читай the контент
                 if (провод.читай (контент) != контент.length)
-                    провод.ошибка ("неожиданный кф");
+                    throw new ВВИскл ("неожиданный кф");
 
                 return контент;
         }

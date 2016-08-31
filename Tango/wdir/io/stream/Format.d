@@ -75,7 +75,7 @@ private import text.convert.Layout;
         ---
         import text.locale.Locale;
 
-        auto locale = new Locale (Культура.дайКультуру ("fr-FR"));
+        auto locale = new Локаль (Культура.дайКультуру ("fr-FR"));
         auto выведи = new ФормВывод!(сим) (locale, ...);
         ---
 

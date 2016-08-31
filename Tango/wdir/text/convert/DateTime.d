@@ -79,32 +79,32 @@ version (СРасширениями)
 
 struct МестнДатаВремя
 {       
-        static ткст   rfc1123Pattern = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
-        static ткст   sortableDateTimePattern = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
-        static ткст   universalSortableDateTimePattern = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'";
+        static ткст   образецРФС1123 = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
+        static ткст   сортируемыйОбразецДатыВремени = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
+        static ткст   универсальныйСортируемыйОбразецДатыВремени = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'Z'";
 
         Календарь        назначенныйКалендарь;
 
-        ткст          shortDatePattern,
-                        shortTimePattern,
-                        longDatePattern,
-                        longTimePattern,
-                        ПолнаяДатаTimePattern,
+        ткст          краткийОбразецДаты,
+                        краткийОбразецВремени,
+                        длинныйОбразецДаты,
+                        длинныйОбразецВремени,
+                        полныйОбразецДатыВремени,
                         generalShortTimePattern,
                         generalLongTimePattern,
-                        monthDayPattern,
-                        yearMonthPattern;
+                        образецДняМесяца,
+                        образецМесяцаГода;
 
-        ткст          amDesignator,
-                        pmDesignator;
+        ткст          определительДоПолудня,
+                        определительПослеПолудня;
 
         ткст          разделительВремени,
                         разделительДаты;
 
-        ткст[]        dayNames,
-                        monthNames,
-                        abbreviatedDayNames,
-                        abbreviatedMonthNames;
+        ткст[]        именаДней,
+                        именаМесяцев,
+                        сокращённыеИменаДней,
+                        сокращённыеИменаМесяцев;
 
         /**********************************************************************
 
@@ -240,7 +240,7 @@ struct МестнДатаВремя
 
         ткст сокращённоеИмяДня (Календарь.ДеньНедели деньНедели)
         {
-                return abbreviatedDayNames [cast(цел) деньНедели];
+                return сокращённыеИменаДней [cast(цел) деньНедели];
         }
 
         /**********************************************************************
@@ -251,7 +251,7 @@ struct МестнДатаВремя
 
         ткст имяДня (Календарь.ДеньНедели деньНедели)
         {
-                return dayNames [cast(цел) деньНедели];
+                return именаДней [cast(цел) деньНедели];
         }
                        
         /**********************************************************************
@@ -263,7 +263,7 @@ struct МестнДатаВремя
         ткст сокращённоеИмяМесяца (цел месяц)
         {
                 assert (месяц > 0 && месяц < 13);
-                return abbreviatedMonthNames [месяц - 1];
+                return сокращённыеИменаМесяцев [месяц - 1];
         }
 
         /**********************************************************************
@@ -275,7 +275,7 @@ struct МестнДатаВремя
         ткст имяМесяца (цел месяц)
         {
                 assert (месяц > 0 && месяц < 13);
-                return monthNames [месяц - 1];
+                return именаМесяцев [месяц - 1];
         }
 
 version (Windows)
@@ -310,41 +310,41 @@ version (Windows)
                 auto lcid = LOCALE_USER_DEFAULT;
 
                 for (auto i=LOCALE_SDAYNAME1; i <= LOCALE_SDAYNAME7; ++i)
-                     dt.dayNames ~= вТкст (врем, lcid, i);
+                     dt.именаДней ~= вТкст (врем, lcid, i);
 
                 for (auto i=LOCALE_SABBREVDAYNAME1; i <= LOCALE_SABBREVDAYNAME7; ++i)
-                     dt.abbreviatedDayNames ~= вТкст (врем, lcid, i);
+                     dt.сокращённыеИменаДней ~= вТкст (врем, lcid, i);
 
                 for (auto i=LOCALE_SMONTHNAME1; i <= LOCALE_SMONTHNAME12; ++i)
-                     dt.monthNames ~= вТкст (врем, lcid, i);
+                     dt.именаМесяцев ~= вТкст (врем, lcid, i);
 
                 for (auto i=LOCALE_SABBREVMONTHNAME1; i <= LOCALE_SABBREVMONTHNAME12; ++i)
-                     dt.abbreviatedMonthNames ~= вТкст (врем, lcid, i);
+                     dt.сокращённыеИменаМесяцев ~= вТкст (врем, lcid, i);
 
                 dt.разделительДаты    = вТкст (врем, lcid, LOCALE_SDATE);
                 dt.разделительВремени    = вТкст (врем, lcid, LOCALE_STIME);
-                dt.amDesignator     = вТкст (врем, lcid, LOCALE_S1159);
-                dt.pmDesignator     = вТкст (врем, lcid, LOCALE_S2359);
-                dt.longDatePattern  = вТкст (врем, lcid, LOCALE_SLONGDATE);
-                dt.shortDatePattern = вТкст (врем, lcid, LOCALE_SSHORTDATE);
-                dt.yearMonthPattern = вТкст (врем, lcid, LOCALE_SYEARMONTH);
-                dt.longTimePattern  = вТкст (врем, lcid, LOCALE_STIMEFORMAT);
+                dt.определительДоПолудня     = вТкст (врем, lcid, LOCALE_S1159);
+                dt.определительПослеПолудня     = вТкст (врем, lcid, LOCALE_S2359);
+                dt.длинныйОбразецДаты  = вТкст (врем, lcid, LOCALE_SLONGDATE);
+                dt.краткийОбразецДаты = вТкст (врем, lcid, LOCALE_SSHORTDATE);
+                dt.образецМесяцаГода = вТкст (врем, lcid, LOCALE_SYEARMONTH);
+                dt.длинныйОбразецВремени  = вТкст (врем, lcid, LOCALE_STIMEFORMAT);
                          
                 // synthesize a крат время
-                auto s = dt.shortTimePattern = dt.longTimePattern;
+                auto s = dt.краткийОбразецВремени = dt.длинныйОбразецВремени;
                 for (auto i=s.length; i--;)
                      if (s[i] is dt.разделительВремени[0])
                         {
-                        dt.shortTimePattern = s[0..i];
+                        dt.краткийОбразецВремени = s[0..i];
                         break;
                         }
 
-                dt.ПолнаяДатаTimePattern = dt.longDatePattern ~ " " ~ 
-                                         dt.longTimePattern;
-                dt.generalLongTimePattern = dt.shortDatePattern ~ " " ~ 
-                                            dt.longTimePattern;
-                dt.generalShortTimePattern = dt.shortDatePattern ~ " " ~ 
-                                             dt.shortTimePattern;
+                dt.полныйОбразецДатыВремени = dt.длинныйОбразецДаты ~ " " ~ 
+                                         dt.длинныйОбразецВремени;
+                dt.generalLongTimePattern = dt.краткийОбразецДаты ~ " " ~ 
+                                            dt.длинныйОбразецВремени;
+                dt.generalShortTimePattern = dt.краткийОбразецДаты ~ " " ~ 
+                                             dt.краткийОбразецВремени;
                 return dt;
         }
         }
@@ -387,50 +387,50 @@ else
                 МестнДатаВремя dt;
 
                 for (auto i = DAY_1; i <= DAY_7; ++i)
-                     dt.dayNames ~= дайТкст (i);
+                     dt.именаДней ~= дайТкст (i);
 
                 for (auto i = ABDAY_1; i <= ABDAY_7; ++i)
-                     dt.abbreviatedDayNames ~= дайТкст (i);
+                     dt.сокращённыеИменаДней ~= дайТкст (i);
 
                 for (auto i = MON_1; i <= MON_12; ++i)
-                     dt.monthNames ~= дайТкст (i);
+                     dt.именаМесяцев ~= дайТкст (i);
 
                 for (auto i = ABMON_1; i <= ABMON_12; ++i)
-                     dt.abbreviatedMonthNames ~= дайТкст (i);
+                     dt.сокращённыеИменаМесяцев ~= дайТкст (i);
 
-                dt.amDesignator = дайТкст (AM_STR, "AM");
-                dt.pmDesignator = дайТкст (PM_STR, "PM");
+                dt.определительДоПолудня = дайТкст (AM_STR, "AM");
+                dt.определительПослеПолудня = дайТкст (PM_STR, "PM");
 
-                dt.longDatePattern = "dddd, MMMM d, yyyy"; //default
-                dt.shortDatePattern = дайТкстФормата(D_FMT, "M/d/yyyy");
+                dt.длинныйОбразецДаты = "dddd, MMMM d, yyyy"; //default
+                dt.краткийОбразецДаты = дайТкстФормата(D_FMT, "M/d/yyyy");
 
-                dt.longTimePattern = дайТкстФормата(T_FMT, "h:mm:ss tt");
-                dt.shortTimePattern = "h:mm"; //default
+                dt.длинныйОбразецВремени = дайТкстФормата(T_FMT, "h:mm:ss tt");
+                dt.краткийОбразецВремени = "h:mm"; //default
 
-                dt.yearMonthPattern = "MMMM, yyyy"; //no posix equivalent?
-                dt.ПолнаяДатаTimePattern = дайТкстФормата(D_T_FMT, "dddd, MMMM d, yyyy h:mm:ss tt");
+                dt.образецМесяцаГода = "MMMM, yyyy"; //no posix equivalent?
+                dt.полныйОбразецДатыВремени = дайТкстФормата(D_T_FMT, "dddd, MMMM d, yyyy h:mm:ss tt");
 
-                dt.разделительДаты = откиньРазделитель(dt.shortDatePattern, "/");
-                dt.разделительВремени = откиньРазделитель(dt.longTimePattern, ":");
+                dt.разделительДаты = откиньРазделитель(dt.краткийОбразецДаты, "/");
+                dt.разделительВремени = откиньРазделитель(dt.длинныйОбразецВремени, ":");
 
-                //выкинь shortTimePattern из_ longTimePattern
-                for (auto i = dt.longTimePattern.length; i--;) 
+                //выкинь краткийОбразецВремени из_ длинныйОбразецВремени
+                for (auto i = dt.длинныйОбразецВремени.length; i--;) 
                     {
-                    if (dt.longTimePattern[i] == dt.разделительВремени[$-1])
+                    if (dt.длинныйОбразецВремени[i] == dt.разделительВремени[$-1])
                        {
-                       dt.shortTimePattern = dt.longTimePattern[0..i];
+                       dt.краткийОбразецВремени = dt.длинныйОбразецВремени[0..i];
                        break;
                        }
                     }
 
-                //выкинь longDatePattern из_ ПолнаяДатаTimePattern
-                auto поз = dt.ПолнаяДатаTimePattern.length - dt.longTimePattern.length - 2;
-                if (поз < dt.ПолнаяДатаTimePattern.length)
-                    dt.longDatePattern = dt.ПолнаяДатаTimePattern[0..поз];
+                //выкинь длинныйОбразецДаты из_ полныйОбразецДатыВремени
+                auto поз = dt.полныйОбразецДатыВремени.length - dt.длинныйОбразецВремени.length - 2;
+                if (поз < dt.полныйОбразецДатыВремени.length)
+                    dt.длинныйОбразецДаты = dt.полныйОбразецДатыВремени[0..поз];
 
-                dt.ПолнаяДатаTimePattern = dt.longDatePattern ~ " " ~ dt.longTimePattern;
-                dt.generalLongTimePattern = dt.shortDatePattern ~ " " ~  dt.longTimePattern;
-                dt.generalShortTimePattern = dt.shortDatePattern ~ " " ~  dt.shortTimePattern;
+                dt.полныйОбразецДатыВремени = dt.длинныйОбразецДаты ~ " " ~ dt.длинныйОбразецВремени;
+                dt.generalLongTimePattern = dt.краткийОбразецДаты ~ " " ~  dt.длинныйОбразецВремени;
+                dt.generalShortTimePattern = dt.краткийОбразецДаты ~ " " ~  dt.краткийОбразецВремени;
 
                 return dt;
         }
@@ -618,16 +618,16 @@ else
                 switch (формат[0])
                        {
                        case 'd':
-                            f = shortDatePattern;
+                            f = краткийОбразецДаты;
                             break;
                        case 'D':
-                            f = longDatePattern;
+                            f = длинныйОбразецДаты;
                             break;
                        case 'f':
-                            f = longDatePattern ~ " " ~ shortTimePattern;
+                            f = длинныйОбразецДаты ~ " " ~ краткийОбразецВремени;
                             break;
                        case 'F':
-                            f = ПолнаяДатаTimePattern;
+                            f = полныйОбразецДатыВремени;
                             break;
                        case 'g':
                             f = generalShortTimePattern;
@@ -637,23 +637,23 @@ else
                             break;
                        case 'r':
                        case 'R':
-                            f = rfc1123Pattern;
+                            f = образецРФС1123;
                             break;
                        case 's':
-                            f = sortableDateTimePattern;
+                            f = сортируемыйОбразецДатыВремени;
                             break;
                        case 'u':
-                            f = universalSortableDateTimePattern;
+                            f = универсальныйСортируемыйОбразецДатыВремени;
                             break;
                        case 't':
-                            f = shortTimePattern;
+                            f = краткийОбразецВремени;
                             break;
                        case 'T':
-                            f = longTimePattern;
+                            f = длинныйОбразецВремени;
                             break;
                        case 'y':
                        case 'Y':
-                            f = yearMonthPattern;
+                            f = образецМесяцаГода;
                             break;
                        default:
                            return ("'{время в формате непригодно}'");
@@ -787,17 +787,17 @@ else
                                      {
                                      if (время.часы < 12)
                                         {
-                                        if (amDesignator.length != 0)
-                                            результат ~= amDesignator[0];
+                                        if (определительДоПолудня.length != 0)
+                                            результат ~= определительДоПолудня[0];
                                         }
                                      else
                                         {
-                                        if (pmDesignator.length != 0)
-                                            результат ~= pmDesignator[0];
+                                        if (определительПослеПолудня.length != 0)
+                                            результат ~= определительПослеПолудня[0];
                                         }
                                      }
                                   else
-                                     результат ~= (время.часы < 12) ? amDesignator : pmDesignator;
+                                     результат ~= (время.часы < 12) ? определительДоПолудня : определительПослеПолудня;
                                   break;
 
                              // timezone смещение
@@ -954,26 +954,26 @@ else
 
 private МестнДатаВремя EngUS = 
 {
-        shortDatePattern                : "M/d/yyyy",
-        shortTimePattern                : "h:mm",       
-        longDatePattern                 : "dddd, MMMM d, yyyy",
-        longTimePattern                 : "h:mm:ss tt",        
-        ПолнаяДатаTimePattern             : "dddd, MMMM d, yyyy h:mm:ss tt",
+        краткийОбразецДаты                : "M/d/yyyy",
+        краткийОбразецВремени                : "h:mm",       
+        длинныйОбразецДаты                 : "dddd, MMMM d, yyyy",
+        длинныйОбразецВремени                 : "h:mm:ss tt",        
+        полныйОбразецДатыВремени             : "dddd, MMMM d, yyyy h:mm:ss tt",
         generalShortTimePattern         : "M/d/yyyy h:mm",
         generalLongTimePattern          : "M/d/yyyy h:mm:ss tt",
-        monthDayPattern                 : "MMMM d",
-        yearMonthPattern                : "MMMM, yyyy",
-        amDesignator                    : "AM",
-        pmDesignator                    : "PM",
+        образецДняМесяца                 : "MMMM d",
+        образецМесяцаГода                : "MMMM, yyyy",
+        определительДоПолудня                    : "AM",
+        определительПослеПолудня                    : "PM",
         разделительВремени                   : ":",
         разделительДаты                   : "/",
-        dayNames                        : ["Воскресенье", "Понедельник", "Вторник", "Среда", 
+        именаДней                        : ["Воскресенье", "Понедельник", "Вторник", "Среда", 
                                            "Четверг", "Пятница", "Суббота"],
-        monthNames                      : ["January", "February", "March", "April", 
+        именаМесяцев                      : ["January", "February", "March", "April", 
                                            "May", "June", "July", "August", "September", 
                                            "October" "November", "December"],
-        abbreviatedDayNames             : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],    
-        abbreviatedMonthNames           : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        сокращённыеИменаДней             : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],    
+        сокращённыеИменаМесяцев           : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
                                            "Jul", "Aug", "Sep", "Oct" "Nov", "Dec"],
 };
 

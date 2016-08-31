@@ -29,7 +29,7 @@ private extern(C) проц putenv(сим*);
 
 private enum {LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGES, LC_ALL, LC_PAPER, LC_NAME, LC_добавьRESS, LC_TELEPHONE, LC_MEASUREMENT, LC_IDENTIFICATION};*/
 
-цел getUserCulture() {
+цел дайКультуруПользователя() {
   сим* среда = getenv("LC_ALL");
   if (!среда || *среда == '\0') {
     среда = getenv("LANG");
@@ -50,22 +50,22 @@ private enum {LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGE
       s="en-US";
   }
   foreach (Запись; ДанныеОКультуре.cultureDataTable) {
-    // todo: there is also a local compareString defined. Is it correct that here 
+    // todo: there is also a local сравниСтроку defined. Is it correct that here 
     // we use text.locale.Data, which совпадает the сигнатура?
-    if (text.locale.Data.compareString(Запись.имя, s) == 0)
+    if (text.locale.Data.сравниСтроку(Запись.имя, s) == 0)
       return Запись.lcid;
   }
   
   foreach (Запись; ДанныеОКультуре.cultureDataTable) {
-    // todo: there is also a local compareString defined. Is it correct that here 
+    // todo: there is also a local сравниСтроку defined. Is it correct that here 
     // we use text.locale.Data, which совпадает the сигнатура?
-    if (text.locale.Data.compareString(Запись.имя, "en-US") == 0)
+    if (text.locale.Data.сравниСтроку(Запись.имя, "en-US") == 0)
       return Запись.lcid;
   }
   return 0;
 }
 
-проц setUserCulture(цел lcid) {
+проц установиКультуруПользователя(цел lcid) {
   ткст имя;
   try {
     имя = ДанныеОКультуре.дайДанныеИзИДКультуры(lcid).имя ~ ".utf-8";
@@ -98,7 +98,7 @@ private enum {LC_CTYPE, LC_NUMERIC, LC_TIME, LC_COLLATE, LC_MONETARY, LC_MESSAGE
   setlocale(LC_IDENTIFICATION, имя.ptr);
 }
 
-цел compareString(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase) {
+цел сравниСтроку(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase) {
 
   проц strToLower(ткст ткст) {
     for(цел i = 0; i < ткст.length; i++) {
@@ -137,12 +137,12 @@ debug(UnitTest)
 {
     unittest
     {
-        цел c = getUserCulture();
-        assert(compareString(c, "Alphabet", 0, 8, "Alphabet", 0, 8, нет) == 0);
-        assert(compareString(c, "Alphabet", 0, 8, "alphabet", 0, 8, да) == 0);
-        assert(compareString(c, "Alphabet", 0, 8, "alphabet", 0, 8, нет) != 0);
-        assert(compareString(c, "lphabet", 0, 7, "alphabet", 0, 8, да) != 0);
-        assert(compareString(c, "Alphabet", 0, 8, "lphabet", 0, 7, да) != 0);
+        цел c = дайКультуруПользователя();
+        assert(сравниСтроку(c, "Alphabet", 0, 8, "Alphabet", 0, 8, нет) == 0);
+        assert(сравниСтроку(c, "Alphabet", 0, 8, "alphabet", 0, 8, да) == 0);
+        assert(сравниСтроку(c, "Alphabet", 0, 8, "alphabet", 0, 8, нет) != 0);
+        assert(сравниСтроку(c, "lphabet", 0, 7, "alphabet", 0, 8, да) != 0);
+        assert(сравниСтроку(c, "Alphabet", 0, 8, "lphabet", 0, 7, да) != 0);
     }
 }
 }

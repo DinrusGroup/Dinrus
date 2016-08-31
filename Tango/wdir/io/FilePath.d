@@ -103,7 +103,7 @@ class ФПуть : ПросмотрПути
 
                 With regard в_ the фпуть копируй, we найдено the common case в_
                 be an explicit .dup, whereas aliasing appeared в_ be rare by
-                comparison. We also noted a large proportion interacting with
+                сравнение. We also noted a large proportion interacting with
                 C-oriented OS calls, implying the postfix of a пусто terminator.
                 Thus, ФПуть combines Всё as a single operation.
 

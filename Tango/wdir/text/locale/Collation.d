@@ -15,9 +15,9 @@ module text.locale.Collation;
 private import text.locale.Core;
 
 version (Windows)
-  private import text.locale.Win32;
+  private import nativeMethods = text.locale.Win32;
 else version (Posix)
-  private import text.locale.Posix;
+  private import nativeMethods = text.locale.Posix;
 
   /**
   Compares strings using the specified case и cultural comparision rules.
@@ -54,7 +54,7 @@ public class СтрокоСопоставитель {
       strB = A ткст в_ сравни в_ strA.
   */
   public цел сравни(ткст strA, ткст strB) {
-    return nativeMethods.compareString(culture_.опр, strA, 0, strA.length, strB, 0, strB.length, ignoreCase_);
+    return nativeMethods.сравниСтроку(culture_.опр, strA, 0, strA.length, strB, 0, strB.length, ignoreCase_);
   }
 
   /**
@@ -83,7 +83,7 @@ public class СтрокоСопоставитель {
     Возвращает:
       A new СтрокоСопоставитель экземпляр.
   */
-  public static СтрокоСопоставитель currentCultureIgnoreCase() {
+  public static СтрокоСопоставитель текущаяКультураИгнорРег() {
     return new СтрокоСопоставитель(Культура.текущ, да);
   }
 
@@ -101,18 +101,18 @@ public class СтрокоСопоставитель {
     Возвращает:
       A new СтрокоСопоставитель экземпляр.
   */
-  public static СтрокоСопоставитель invariantCultureIgnoreCase() {
+  public static СтрокоСопоставитель инвариантнаяКультураИгнорРег() {
     return invariantIgnoreCase_;
   }
 
 }
 
 /**
-  $(I Delegate.) Represents the метод that will укз the ткст comparison.
+  $(I Delegate.) Represents the метод that will укз the ткст сравнение.
   Remarks:
     The delegate имеется the сигнатура $(I цел delegate(ткст, ткст)).
  */
-alias цел delegate(ткст, ткст) StringComparison;
+alias цел delegate(ткст, ткст) СравнениеСтрок;
 
 /**
   Sorts strings according в_ the rules of the specified культура.
@@ -122,11 +122,11 @@ public class СтрокоСортировщик {
   private static СтрокоСортировщик invariant_;
   private static СтрокоСортировщик invariantIgnoreCase_;
   private Культура culture_;
-  private StringComparison comparison_;
+  private СравнениеСтрок comparison_;
 
   static this() {
     invariant_ = new СтрокоСортировщик(СтрокоСопоставитель.инвариантнаяКультура);
-    invariantIgnoreCase_ = new СтрокоСортировщик(СтрокоСопоставитель.invariantCultureIgnoreCase);
+    invariantIgnoreCase_ = new СтрокоСортировщик(СтрокоСопоставитель.инвариантнаяКультураИгнорРег);
   }
 
   /**
@@ -143,12 +143,12 @@ public class СтрокоСортировщик {
   /**
     Creates an экземпляр using the specified delegate.
     Параметры:
-      comparison = The delegate в_ use when comparing strings.
+      сравнение = The delegate в_ use when comparing strings.
     Remarks:
-      The comparison parameter must have the same сигнатура as StringComparison.
+      The сравнение parameter must have the same сигнатура as СравнениеСтрок.
   */
-  public this(StringComparison comparison) {
-    comparison_ = comparison;
+  public this(СравнениеСтрок сравнение) {
+    comparison_ = сравнение;
   }
 
   /**
@@ -220,8 +220,8 @@ public class СтрокоСортировщик {
     $(I Property.) Retrieves an экземпляр that performs a case-insensitive сортируй using the rules of the текущ культура.
     Возвращает: A СтрокоСортировщик экземпляр.
   */
-  public static СтрокоСортировщик currentCultureIgnoreCase() {
-    return new СтрокоСортировщик(СтрокоСопоставитель.currentCultureIgnoreCase);
+  public static СтрокоСортировщик текущаяКультураИгнорРег() {
+    return new СтрокоСортировщик(СтрокоСопоставитель.текущаяКультураИгнорРег);
   }
 
   /**
@@ -236,7 +236,7 @@ public class СтрокоСортировщик {
     $(I Property.) Retrieves an экземпляр that performs a case-insensitive сортируй using the rules of the invariant культура.
     Возвращает: A СтрокоСортировщик экземпляр.
   */
-  public static СтрокоСортировщик invariantCultureIgnoreCase() {
+  public static СтрокоСортировщик инвариантнаяКультураИгнорРег() {
     return invariantIgnoreCase_;
   }
 

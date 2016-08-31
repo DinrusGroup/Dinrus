@@ -195,7 +195,7 @@ debug (UnitTest)
 
      Matches имяф characters.
 
-     Under Windows, the comparison is готово ignoring case. Under Linux
+     Under Windows, the сравнение is готово ignoring case. Under Linux
      an exact match is performed.
 
      Возвращает: да if c1 matches c2, нет otherwise.

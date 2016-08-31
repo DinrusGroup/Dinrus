@@ -1003,7 +1003,7 @@ unittest
 
 бул идентичен_ли(реал x, реал y)
 {
-    // We're doing a bitwise comparison so the endianness is irrelevant.
+    // We're doing a bitwise сравнение so the endianness is irrelevant.
     дол*   pxs = cast(дол *)&x;
     дол*   pys = cast(дол *)&y;
   static if (реал.mant_dig == 53){ //дво

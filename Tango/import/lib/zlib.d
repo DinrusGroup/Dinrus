@@ -752,7 +752,7 @@ int inflateInit2(z_streamp strm,
      windowBits can also be -8..-15 for raw inflate. In this case, -windowBits
    determines the window size. inflate() will then process raw deflate data,
    not looking for a zlib or gzip header, not generating a check value, and not
-   looking for any check values for comparison at the end of the stream. This
+   looking for any check values for сравнение at the end of the stream. This
    is for use with other formats that use the deflate compressed data format
    such as zip.  Those formats provide their own check values. If a custom
    format is developed using the raw deflate format for compressed data, it is
