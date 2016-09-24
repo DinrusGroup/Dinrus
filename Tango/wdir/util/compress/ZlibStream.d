@@ -9,7 +9,7 @@
     version:    Feb 08: добавьed support for different поток encodings, removed
                         old "window биты" ctors.
                         
-                Dec 07: добавьed support for "window биты", needed for ZИП support.
+                Dec 07: добавьed support for "window биты", needed for ZIP support.
                 
                 Jul 07: Initial release.
 
@@ -77,7 +77,7 @@ class ВводЗлиб : ФильтрВвода
          */
         Zlib,
         /**
-         *  Поток есть gzИП кодировка.
+         *  Поток есть gzip кодировка.
          */
         Gzip,
         /**
@@ -138,7 +138,7 @@ class ВводЗлиб : ФильтрВвода
          *      zlib кодировка.
          *      
          * (8 .. 15) + 16
-         *      gzИП кодировка.
+         *      gzip кодировка.
          *      
          * (8 .. 15) + 32
          *      auto-detect кодировка.
@@ -365,7 +365,7 @@ class ВыводЗлиб : ФильтрВывода
          */
         Zlib,
         /**
-         *  Поток should use gzИП кодировка.
+         *  Поток should use gzip кодировка.
          */
         Gzip,
         /**
@@ -411,7 +411,7 @@ class ВыводЗлиб : ФильтрВывода
          *      zlib кодировка.
          *      
          * (8 .. 15) + 16
-         *      gzИП кодировка.
+         *      gzip кодировка.
          *      
          * (8 .. 15) + 32
          *      auto-detect кодировка.
@@ -795,7 +795,7 @@ unittest
             ( cast(ббайт[]) сообщение, буфер, "сообщение (zlib) " );
     }
     
-    // This compressed данные was создан using the Cygwin gzИП program
+    // This compressed данные was создан using the Cygwin gzip program
     // with default options.  The original файл was called "testdata.txt".
     {
         const ббайт[] message_gz = [
@@ -812,7 +812,7 @@ unittest
             0x00,0x00];
         
         // Compresses the original сообщение, and outputs the байты.  You can use
-        // this в_ тест the вывод of ВыводЗлиб with gzИП.  If you use this,
+        // this в_ тест the вывод of ВыводЗлиб with gzip.  If you use this,
         // don't forget в_ import Стдвыв somewhere.
         /+
         scope comp_gz = new Массив(2048);
@@ -826,9 +826,9 @@ unittest
         Стдвыв.нс;
         +/
         
-        // We aren't going в_ тест that we can сожми в_ a gzИП поток
-        // since gzИП itself always добавьs stuff like the имяф, timestamps,
-        // etc.  We'll just сделай sure we can DECOMPRESS gzИП Потокs.
+        // We aren't going в_ тест that we can сожми в_ a gzip поток
+        // since gzip itself always добавьs stuff like the имяф, timestamps,
+        // etc.  We'll just сделай sure we can DECOMPRESS gzip Потокs.
         scope decomp_gz = new Массив(message_gz.dup);
         scope decomp = new ВводЗлиб(decomp_gz);
         auto буфер = new ббайт[256];
@@ -836,7 +836,7 @@ unittest
         
         //assert( cast(ббайт[]) сообщение == буфер );
         check_array!(__FILE__,__LINE__)
-            ( cast(ббайт[]) сообщение, буфер, "сообщение (gzИП) ");
+            ( cast(ббайт[]) сообщение, буфер, "сообщение (gzip) ");
     }
 }
 }

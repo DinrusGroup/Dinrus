@@ -32,10 +32,10 @@ private import Utf = text.convert.Utf;
 class ЮВвод(T, S) : ФильтрВвода, ФильтрВвода.Переключатель
 {       
         static if (!is (S == сим) && !is (S == шим) && !is (S == дим)) 
-                    pragma (msg, "Source тип must be сим, шим, or дим");
+                    pragma (msg, "Исходный тип должен быть сим, шим или дим");
 
         static if (!is (T == сим) && !is (T == шим) && !is (T == дим)) 
-                    pragma (msg, "Target тип must be сим, шим, or дим");
+                    pragma (msg, "Целевой тип должен быть сим, шим или дим");
 
         private БуферВвода буфер;
 
@@ -103,7 +103,7 @@ class ЮВвод(T, S) : ФильтрВвода, ФильтрВвода.Пере
 
                    // must have some пространство available for converting
                    if (приёмн.length < T.sizeof)
-                       провод.ошибка ("UtfПоток.читай :: мишень Массив is too small");
+                       провод.ошибка ("UtfПоток.читай :: целевой Массив слишком мал");
 
                    // преобразуй следщ chunk of ввод
                    if (буфер.следщ(&читатель) is нет)
@@ -127,10 +127,10 @@ class ЮВвод(T, S) : ФильтрВвода, ФильтрВвода.Пере
 class ЮВывод (S, T) : ФильтрВывода, ФильтрВывода.Переключатель
 {       
         static if (!is (S == сим) && !is (S == шим) && !is (S == дим)) 
-                    pragma (msg, "Source тип must be сим, шим, or дим");
+                    pragma (msg, "Исходный тип должен быть сим, шим или дим");
 
         static if (!is (T == сим) && !is (T == шим) && !is (T == дим)) 
-                    pragma (msg, "Target тип must be сим, шим, or дим");
+                    pragma (msg, "Целевой тип должен быть сим, шим или дим");
 
 
         private БуферВывода буфер;

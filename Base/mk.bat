@@ -109,7 +109,7 @@ copy %this%\import\util\*.d  %R%\util\*.di
 :Base
 :::Creating respond file
 :::%this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d
-::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
+:::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
 %LS% -d %this%\base\std\*.d %this%\base\*.d %this%\base\tpl\*.d %this%\base\rt\*.d %this%\base\sys\*.d %this%\base\sys\inc\*.d>>%this%\objs.rsp
 
 :::Make Dinrus.Base.dll
@@ -304,7 +304,7 @@ cls
 @goto Geom
 
 :IO
-:goto DRwin32
+goto DRwin32
 %LS% -d %this%\import\io\*.d %this%\import\io\device\*.d %this%\import\io\stream\*.d>>%this%\io.rsp
 %DMD% -lib -of%this%\io.lib @%this%\io.rsp
 @if exist %this%\io.lib del %this%\io.rsp

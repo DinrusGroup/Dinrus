@@ -164,7 +164,7 @@ debug (DigestПоток)
         import io.Stdout;
         import io.device.Array;
         import util.digest.Md5;
-        import io.stream.FileПоток;
+        import io.stream.FileStream;
 
         проц main()
         {

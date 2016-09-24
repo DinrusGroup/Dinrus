@@ -17,7 +17,7 @@ module util.compress.Zip;
 TODO
 ====
 
-* Disable UTF кодировка until I've worked out what version of ZИП that's
+* Disable UTF кодировка until I've worked out what version of ZIP that's
   related в_... (actually; it's entirely possible that's it's merely a
   *proposal* at the moment.) (*Готово*)
 
@@ -44,7 +44,7 @@ import PathUtil = util.PathUtil;
 import Целое = text.convert.Integer;
 
 
-debug(ZИП) import io.Stdout : Стдош;
+debug(ZIP) import io.Stdout : Стдош;
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ private
         бкрат      file_name_length = 0;
         бкрат      extra_field_length = 0;
 
-        debug(ZИП) проц dump();
+        debug(ZIP) проц dump();
     }
 
 struct ЛокалФайлЗаг
@@ -134,7 +134,7 @@ struct ЛокалФайлЗаг
         бцел        external_file_attributes = 0;
         цел         relative_offset_of_local_header;
 
-        debug(ZИП) проц dump();
+        debug(ZIP) проц dump();
 
         проц fromLocal(ЛокалФайлЗаг.Данные данные);
     }
@@ -181,7 +181,7 @@ struct ФайлЗаг
         бцел        offset_of_start_of_cd_from_starting_disk;
         бкрат      file_comment_length;
 
-        debug(ZИП) проц dump();
+        debug(ZIP) проц dump();
     }
 
 struct EndOfCDRecord
@@ -230,7 +230,7 @@ public
 
 private
 {
-    const бкрат ZИП_VERSION = 20;
+    const бкрат ZIP_VERSION = 20;
     const бкрат MAX_EXTRACT_VERSION = 20;
 
     /*                                     compression флаги
@@ -288,7 +288,7 @@ interface ПисательЗип
 // ЧитательБлокаЗип
 
 /**
- * The ЧитательБлокаЗип class is used в_ разбор a ZИП архив.  It exposes the
+ * The ЧитательБлокаЗип class is used в_ разбор a ZIP архив.  It exposes the
  * contents of the архив via an iteration interface.  For экземпляр, в_ loop
  * over все файлы in an архив, one can use either
  *
@@ -401,7 +401,7 @@ private:
     /*
      * This will locate the конец of CD record in the открой поток.
      *
-     * This код sucks, but that's because ZИП sucks.
+     * This код sucks, but that's because ZIP sucks.
      *
      * Basically, the EOCD record is stuffed somewhere at the конец of the файл.
      * In a brilliant перемести, the record is *variably sized*, which means we
@@ -436,7 +436,7 @@ private:
 // ПисательБлокаЗип
 
 /**
- * The ПисательБлокаЗип class is used в_ создай a ZИП архив.  It uses a
+ * The ПисательБлокаЗип class is used в_ создай a ZIP архив.  It uses a
  * writing iterator interface.
  *
  * Note that this class can only be used with вывод Потокs which can be
@@ -584,7 +584,7 @@ class ЗаписьЗип
      * and comparing it against the stored one.  Throws an исключение if the
      * checksums do not match.
      *
-     * Not valid on поточно ZИП archives.
+     * Not valid on поточно ZIP archives.
      */
     проц проверь();
 
@@ -601,7 +601,7 @@ private:
     open_dg_t open_dg;
 
     /*
-     * Необр ZИП заголовок.
+     * Необр ZIP заголовок.
      */
     ФайлЗаг заголовок;
 
@@ -713,7 +713,7 @@ private:
  * This исключение is thrown if you вызов получи читатель метод when there are no
  * ещё файлы in the архив.
  */
-class ZИПExhaustedException : ИсклЗип
+class ZIPExhaustedException : ИсклЗип
 {
     this() ;
 
@@ -725,12 +725,12 @@ private:
  * This исключение is thrown if you attempt в_ читай an архив that uses
  * features not supported by the читатель.
  */
-class ZИПNotSupportedException : ИсклЗип
+class ZIPNotSupportedException : ИсклЗип
 {
     this(ткст сооб) ;
 
 private:
-    alias ZИПNotSupportedException thisT;
+    alias ZIPNotSupportedException thisT;
 
     static проц opCall(ткст сооб);
 

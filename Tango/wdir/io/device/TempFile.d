@@ -395,7 +395,7 @@ class ВремФайл : Файл
 
                 // Check в_ see if anyone другой than us can пиши в_ the Пап.
                 if( (sb.st_mode & 022) != 0 && (sb.st_mode & 01000) == 0 )
-                    ошибка("sticky bit not set on world-writable дир");
+                    ошибка("не установлен бит-наклейка (sticky bit) на папку для общей записи");
             }
 
             // Созд файл
@@ -418,7 +418,7 @@ class ВремФайл : Файл
                     // returning нет, since this is a violation of our
                     // guarantees.
                     if( отвяжи(вТкст0(путь)) == -1 )
-                        ошибка("could not remove transient file");
+                        ошибка("не удаётся удалить транзитивный файл");
                 }
 
                 _style = стиль;
@@ -455,6 +455,7 @@ class ВремФайл : Файл
     }
 }
 
+/+
 version( TempFile_SelfTest ):
 
 import io.Console : Кввод;
@@ -523,4 +524,4 @@ You might want в_ delete the permanent one afterwards, too. :)")
     Стдвыв("\nDone.").нс;
 }
 
-
++/

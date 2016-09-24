@@ -520,7 +520,7 @@ export:
                                    // just track the байт-счёт instead
                                    if (! GetConsoleMode (cast(HANDLE) вв.указатель, &режим))
 								        {
-										debug эхо("consoleMode!");
+										//debug эхо("consoleMode!");
                                          перенапр = вв.след = да;
 										 ПрикрепиКонсоль(-1);
 										 }

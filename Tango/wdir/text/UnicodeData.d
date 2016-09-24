@@ -62,7 +62,7 @@ struct ДанныеЮникод
         ON //  Other Neutrals
     }
     
-    enum DecompositionType
+    enum ПТипДекомпозиции
     {
         Неук, // Custom тип signaling no Decomposition
         Font, //    A font variant (e.g. a blackletter form).
@@ -101,7 +101,7 @@ struct ДанныеЮникод
 //    КлассДвунапр bопрiClass;
     
     //TODO end
-//    DecompositionType decompositionType;
+//    ПТипДекомпозиции decompositionType;
 //    дим[] decompositionMapping;
     
     // TODO Check handling

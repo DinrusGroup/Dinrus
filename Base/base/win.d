@@ -1,6 +1,6 @@
 ﻿module win;
 
-public  import sys.DConsts, sys.DIfaces, sys.DStructs, sys.DFuncs;
+public  import sys.DConsts, sys.DIfaces, sys.DStructs, sys.DFuncs;//, io.Stdout;
 
 ///////////////////////////////////////////////
 /*КОНСОЛЬ*/
@@ -235,7 +235,7 @@ export extern(D)
 	проц скажинс(бдол ткт){console(ткт).нс;}
 	проц скажи(ткст ткт){console(ткт);}
 	проц скажинс(ткст ткт){console(ткт).нс;}
-	проц нс(){console();}
+	проц нс(){console.нс;}
 	проц таб(){console("\t");}
 }
 

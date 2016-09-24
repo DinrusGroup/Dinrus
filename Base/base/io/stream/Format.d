@@ -82,9 +82,11 @@ private import text.convert.Layout;
         Note that ФормВывод is *not* intended в_ be нить-safe
         
 *******************************************************************************/
-
+export extern(D):
 class ФормВывод(T) : ФильтрВывода
-{       
+{     
+
+export:  
         public  alias ФильтрВывода.слей слей;
 
         private T[]             кс;

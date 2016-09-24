@@ -17,7 +17,7 @@ module util.compress.Zip;
 TODO
 ====
 
-* Disable UTF кодировка until I've worked out what version of ZИП that's
+* Disable UTF кодировка until I've worked out what version of ZIP that's
   related в_... (actually; it's entirely possible that's it's merely a
   *proposal* at the moment.) (*Готово*)
 
@@ -44,7 +44,7 @@ import PathUtil = util.PathUtil;
 import Целое = text.convert.Integer;
 
 
-debug(ZИП) import io.Stdout : Стдош;
+debug(ZIP) import io.Stdout : Стдош;
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ private
         бкрат      file_name_length = 0;
         бкрат      extra_field_length = 0;
 
-        debug(ZИП) проц dump()
+        debug(ZIP) проц dump()
         {
             Стдош
             ("ЛокалФайлЗаг.Данные {")("\n")
@@ -147,7 +147,7 @@ struct ЛокалФайлЗаг
         читайРовно(ист, массив_данн);
         version( БигЭндиан ) свопВсе(данные);
 
-        //debug(ZИП) данные.dump;
+        //debug(ZIP) данные.dump;
 
         auto врем = new ббайт[данные.file_name_length];
         читайРовно(ист, врем);
@@ -219,7 +219,7 @@ struct ЛокалФайлЗаг
         бцел        external_file_attributes = 0;
         цел         relative_offset_of_local_header;
 
-        debug(ZИП) проц dump()
+        debug(ZIP) проц dump()
         {
             Стдош
             ("ФайлЗаг.Данные {\n")
@@ -334,7 +334,7 @@ struct ФайлЗаг
 
     дол карта(проц[] ист)
     {
-        //debug(ZИП) Стдош.форматнс("ФайлЗаг.карта([0..{}])",ист.length);
+        //debug(ZIP) Стдош.форматнс("ФайлЗаг.карта([0..{}])",ист.length);
 
         auto old_ptr = ист.ptr;
 
@@ -342,7 +342,7 @@ struct ФайлЗаг
         ист = ист[Данные.sizeof..$];
         version( БигЭндиан ) свопВсе(*данные);
 
-        //debug(ZИП) данные.dump;
+        //debug(ZIP) данные.dump;
 
         ткст function(ббайт[]) conv_fn;
         if( используетУтф8 )
@@ -362,7 +362,7 @@ struct ФайлЗаг
         ист = ист[данные.file_comment_length..$];
 
         // Return как many байты we've eaten
-        //debug(ZИП) Стдош.форматнс(" . used {} байты", cast(дол)(ист.ptr - old_ptr));
+        //debug(ZIP) Стдош.форматнс(" . used {} байты", cast(дол)(ист.ptr - old_ptr));
         return cast(дол)(ист.ptr - old_ptr);
     }
 }
@@ -384,7 +384,7 @@ struct ФайлЗаг
         бцел        offset_of_start_of_cd_from_starting_disk;
         бкрат      file_comment_length;
 
-        debug(ZИП) проц dump()
+        debug(ZIP) проц dump()
         {
             Стдош
                 .форматнс("EndOfCDRecord.Данные {}","{")
@@ -481,7 +481,7 @@ public
 
 private
 {
-    const бкрат ZИП_VERSION = 20;
+    const бкрат ZIP_VERSION = 20;
     const бкрат MAX_EXTRACT_VERSION = 20;
 
     /*                                     compression флаги
@@ -556,7 +556,7 @@ interface ПисательЗип
 // ЧитательБлокаЗип
 
 /**
- * The ЧитательБлокаЗип class is used в_ разбор a ZИП архив.  It exposes the
+ * The ЧитательБлокаЗип class is used в_ разбор a ZIP архив.  It exposes the
  * contents of the архив via an iteration interface.  For экземпляр, в_ loop
  * over все файлы in an архив, one can use either
  *
@@ -692,7 +692,7 @@ version( Неук )
     ЗаписьЗип получи()
     {
         if( !ещё )
-            ZИПExhaustedException();
+            ZIPExhaustedException();
 
         return new ЗаписьЗип(заголовки[current_index++], &open_file);
     }
@@ -701,7 +701,7 @@ version( Неук )
     ЗаписьЗип получи(ЗаписьЗип reuse)
     {
         if( !ещё )
-            ZИПExhaustedException();
+            ZIPExhaustedException();
 
         if( reuse is пусто )
             return new ЗаписьЗип(заголовки[current_index++], &open_file);
@@ -780,7 +780,7 @@ private:
                     eocdr.данные.disk_with_start_of_central_directory
                 || eocdr.данные.central_directory_entries_on_this_disk !=
                     eocdr.данные.central_directory_entries_total )
-            ZИПNotSupportedException.spanned;
+            ZIPNotSupportedException.spanned;
 
         // Ok, читай the whole damn thing in one go.
         cd_data = new ббайт[eocdr.данные.size_of_central_directory];
@@ -822,7 +822,7 @@ private:
     /*
      * This will locate the конец of CD record in the открой поток.
      *
-     * This код sucks, but that's because ZИП sucks.
+     * This код sucks, but that's because ZIP sucks.
      *
      * Basically, the EOCD record is stuffed somewhere at the конец of the файл.
      * In a brilliant перемести, the record is *variably sized*, which means we
@@ -909,13 +909,13 @@ private:
     {
         // Check в_ сделай sure that we actually *can* открой this файл.
         if( заголовок.данные.extract_version > MAX_EXTRACT_VERSION )
-            ZИПNotSupportedException.zИПver(заголовок.данные.extract_version);
+            ZIPNotSupportedException.zИПver(заголовок.данные.extract_version);
 
         if( заголовок.данные.general_flags & UNSUPPORTED_FLAGS )
-            ZИПNotSupportedException.флаги;
+            ZIPNotSupportedException.флаги;
 
         if( toMethod(заголовок.данные.метод_сжатия) == Метод.Unsupported )
-            ZИПNotSupportedException.метод(заголовок.данные.метод_сжатия);
+            ZIPNotSupportedException.метод(заголовок.данные.метод_сжатия);
 
         // Open a необр поток
         ИПотокВвода поток = open_file_Необр(заголовок);
@@ -981,7 +981,7 @@ private:
 // ПисательБлокаЗип
 
 /**
- * The ПисательБлокаЗип class is used в_ создай a ZИП архив.  It uses a
+ * The ПисательБлокаЗип class is used в_ создай a ZIP архив.  It uses a
  * writing iterator interface.
  *
  * Note that this class can only be used with вывод Потокs which can be
@@ -1174,11 +1174,11 @@ private:
 
     проц put_compressed(ИнфоОЗаписиЗип инфо, ИПотокВвода источник)
     {
-        debug(ZИП) Стдош.форматнс("ПисательБлокаЗип.put_compressed()");
+        debug(ZIP) Стдош.форматнс("ПисательБлокаЗип.put_compressed()");
 
         // Write out partial local файл заголовок
         auto header_pos = шагун.сместись(0, шагун.Якорь.Тек);
-        debug(ZИП) Стдош.форматнс(" . заголовок for {} at {}", инфо.имя, header_pos);
+        debug(ZIP) Стдош.форматнс(" . заголовок for {} at {}", инфо.имя, header_pos);
         put_local_header(инфо, _method);
 
         // Store коммент
@@ -1212,7 +1212,7 @@ private:
             in_chain = crc_s;
             scope(success)
             {
-                debug(ZИП) Стдош.форматнс(" . Success: storing CRC.");
+                debug(ZIP) Стдош.форматнс(" . Success: storing CRC.");
                 crc = crc_d.crc32Digest;
             }
 
@@ -1242,16 +1242,16 @@ private:
 
             out_chain.копируй(in_chain).слей;
 
-            debug(ZИП) if( сожми !is пусто )
+            debug(ZIP) if( сожми !is пусто )
             {
                 Стдош.форматнс(" . compressed в_ {} байты", сожми.записано);
             }
 
-            debug(ZИП) Стдош.форматнс(" . wrote {} байты", out_counter.счёт);
-            debug(ZИП) Стдош.форматнс(" . contents записано");
+            debug(ZIP) Стдош.форматнс(" . wrote {} байты", out_counter.счёт);
+            debug(ZIP) Стдош.форматнс(" . contents записано");
         }
 
-        debug(ZИП) Стдош.форматнс(" . CRC for \"{}\": 0x{:x8}", инфо.имя, crc);
+        debug(ZIP) Стдош.форматнс(" . CRC for \"{}\": 0x{:x8}", инфо.имя, crc);
 
         // Rewind, and patch the заголовок
         auto final_pos = шагун.сместись(0, шагун.Якорь.Тек);
@@ -1324,7 +1324,7 @@ private:
         auto f_name = PathUtil.нормализуй(имя_файла);
         auto p = Путь.разбор(f_name);
 
-        // Compute ZИП version
+        // Compute ZIP version
         if( данные.extract_version == данные.extract_version.max )
         {
 
@@ -1441,7 +1441,7 @@ class ЗаписьЗип
      * and comparing it against the stored one.  Throws an исключение if the
      * checksums do not match.
      *
-     * Not valid on поточно ZИП archives.
+     * Not valid on поточно ZIP archives.
      */
     проц проверь()
     {
@@ -1470,7 +1470,7 @@ private:
     open_dg_t open_dg;
 
     /*
-     * Необр ZИП заголовок.
+     * Необр ZIP заголовок.
      */
     ФайлЗаг заголовок;
 
@@ -1580,7 +1580,7 @@ private:
     static проц missingdir()
     {
         thisT("не обнаружена центральная дир архива; "
-                "файл повреждён или не является ZИП архивом");
+                "файл повреждён или не является ZIP архивом");
     }
 
     static проц toomanyentries()
@@ -1648,24 +1648,24 @@ private:
  * This исключение is thrown if you вызов получи читатель метод when there are no
  * ещё файлы in the архив.
  */
-class ZИПExhaustedException : ИсклЗип
+class ZIPExhaustedException : ИсклЗип
 {
     this() { super("no ещё записи in архив"); }
 
 private:
-    static проц opCall() { throw new ZИПExhaustedException; }
+    static проц opCall() { throw new ZIPExhaustedException; }
 }
 
 /**
  * This исключение is thrown if you attempt в_ читай an архив that uses
  * features not supported by the читатель.
  */
-class ZИПNotSupportedException : ИсклЗип
+class ZIPNotSupportedException : ИсклЗип
 {
     this(ткст сооб) { super(сооб); }
 
 private:
-    alias ZИПNotSupportedException thisT;
+    alias ZIPNotSupportedException thisT;
 
     static проц opCall(ткст сооб)
     {

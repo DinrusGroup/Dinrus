@@ -281,7 +281,7 @@ private
 // ************************************************************************ //
 
 /**
- * ПапкаЗип serves as the корень объект for все ZИП archives in the VFS.
+ * ПапкаЗип serves as the корень объект for все ZIP archives in the VFS.
  * Presently, it can only открой archives on the local filesystem.
  */
 class ПапкаЗип : ПодпапкаЗип
@@ -351,7 +351,7 @@ class ПапкаЗип : ПодпапкаЗип
         if( !изменён )
             return this;
 
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ПапкаЗип.синх");
         assert(нет);
@@ -593,7 +593,7 @@ private:
                 // Созд a new файл Запись for it.
                 {
                     // BUG: Bug_HeapCorruption
-                    // with ZИПTest, on the сбросьАрхив operation, on
+                    // with ZIPTest, on the сбросьАрхив operation, on
                     // the секунда время through this следщ строка, it erroneously
                     // allocates filent 16 байты lower than curent.  Запись
                     // is *way* larger than 16 байты, и this causes it в_
@@ -775,7 +775,7 @@ class ПодпапкаЗип : ПапкаВфс, СинхВфс
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ПапкаВфс.очисть");
         assert(нет);
@@ -847,8 +847,8 @@ else
             auto длин = ист.length > приёмн.length ? приёмн.length : ист.length;
 
             if( ист[0..длин] == приёмн[0..длин] )
-                ошибка(`папки "`~приёмн~`" и "`~ист~`" in архив "`
-                        ~архив.путь~`" overlap`);
+                ошибка(`папки "`~приёмн~`" и "`~ист~`" в архиве "`
+                        ~архив.путь~`" накладываются`);
         }
     }
 
@@ -893,7 +893,7 @@ private:
     {
         if( архив.толькочтен_ли )
             // TODO: исключение
-            throw new Исключение("cannot измени a читай-only ZИП архив");
+            throw new Исключение("нельзя модифицировать ZIP архив, предназначенный только для чтения");
     }
 
     final проц измени()
@@ -1005,7 +1005,7 @@ class ФайлЗип : ФайлВфс
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ФайлЗип.копируй");
         assert(нет);
@@ -1027,7 +1027,7 @@ else
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ФайлЗип.перемести");
         assert(нет);
@@ -1050,7 +1050,7 @@ else
     out { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ФайлЗип.создай");
         assert(нет);
@@ -1058,8 +1058,8 @@ version( ZИПFolder_NonMutating )
 else
 {
         if( есть_ли )
-            ошибка("ФайлЗип.создай: cannot создай already existing файл: "
-                    "this папка ain't big enough for the Всё of 'em");
+            ошибка("ФайлЗип.создай: не удаётся создать уже существующий файл: "
+                    "папки не хватает");
 
         // MUTATE
         форсируй_изм;
@@ -1085,7 +1085,7 @@ else
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ФайлЗип.создай");
         assert(нет);
@@ -1104,7 +1104,7 @@ else
     out { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         mutate_error("ФайлЗип.удали");
         assert(нет);
@@ -1112,8 +1112,8 @@ version( ZИПFolder_NonMutating )
 else
 {
         if( !есть_ли )
-            ошибка("ФайлЗип.удали: cannot удали non-existent файл; "
-                    "rather redundant, really");
+            ошибка("ФайлЗип.удали: нельзя удалить несуществующий файл; "
+                    "это более, чем повторение!");
 
         // MUTATE
         форсируй_изм;
@@ -1145,8 +1145,8 @@ else
             return запись.откройВвод;
 
         else
-            ошибка("ФайлЗип.ввод: cannot открой non-existent файл for ввод; "
-                    "results would not be very useful");
+            ошибка("ФайлЗип.ввод: не удаётся открыть для ввода несуществующий  файл; "
+                    "результатом не удастся попользоваться");
 
         assert(нет);
     }
@@ -1156,7 +1156,7 @@ else
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutable )
+version( ZIPFolder_NonMutable )
 {
         mutate_error("ФайлЗип.вывод");
         assert(нет);
@@ -1244,7 +1244,7 @@ else
     {
         if( архив.толькочтен_ли )
             // TODO: исключение
-            throw new Исключение("cannot измени a читай-only ZИП архив");
+            throw new Исключение("не удаётся изменить ZIP архив, только для чтения");
     }
 
     final проц измени()
@@ -1322,7 +1322,7 @@ class ЗаписьПодпапкиЗип : ЗаписьПапкиВфс
             // NOTE: this can be called with a multi-часть путь.
             ошибка("ЗаписьПодпапкиЗип.открой: \""
                     ~ предок.полное_имя ~ "/" ~ имя
-                    ~ "\" does not exist");
+                    ~ "\" не существует");
 
             assert(нет);
         }
@@ -1332,7 +1332,7 @@ class ЗаписьПодпапкиЗип : ЗаписьПапкиВфс
     in { assert( действителен ); }
     body
     {
-version( ZИПFolder_NonMutating )
+version( ZIPFolder_NonMutating )
 {
         // TODO: different исключение if папка есть_ли (this operation is
         // currently не_годится either way...)
@@ -1346,8 +1346,8 @@ else
 
         // If the папка есть_ли, we can't really создай it, сейчас can we?
         if( this.есть_ли )
-            ошибка("ЗаписьПодпапкиЗип.создай: cannot создай папка that already "
-                    "есть_ли, и believe me, I *tried*");
+            ошибка("ЗаписьПодпапкиЗип.создай: не удаётся создать уже существующую "
+                    "папку,- поверьте, я пробовал.");
         
         // Ok, I suppose I can do this for ya...
         auto запись = new Запись;
@@ -1404,7 +1404,7 @@ private:
     {
         if( архив.толькочтен_ли )
             // TODO: исключение
-            throw new Исключение("cannot измени a читай-only ZИП архив");
+            throw new Исключение("не удаётся изменить ZIP архив, только для чтения");
     }
 
     final проц измени()
@@ -1622,8 +1622,8 @@ private:
 
 проц mutate_error(ткст метод)
 {
-    ошибка(метод ~ ": mutating the contents of a ПапкаЗип "
-            "is not supported yet; terribly sorry");
+    ошибка(метод ~ ": изменение содержимого ПапкаЗип "
+            "пока не поддерживается; ужастно виноват");
 }
 
 бул nz(ткст s)

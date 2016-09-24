@@ -2139,13 +2139,13 @@ version(Clone)
     return universalSortableDateTimePattern_;
   }
 
-  package ткст generalShortTimePattern() {
+  package ткст общКраткийОбразецВремени() {
     if (generalShortTimePattern_ is пусто)
       generalShortTimePattern_ = краткийОбразецДаты ~ " " ~ краткийОбразецВремени;
     return generalShortTimePattern_;
   }
 
-  package ткст generalLongTimePattern() {
+  package ткст общДлинныйОбразецВремени() {
     if (generalLongTimePattern_ is пусто)
       generalLongTimePattern_ = краткийОбразецДаты ~ " " ~ длинныйОбразецВремени;
     return generalLongTimePattern_;
