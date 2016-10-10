@@ -19,7 +19,7 @@ private import exception;
 
 /*******************************************************************************
 
-        Recursively скан файлы and directories, добавьing filtered файлы в_
+        Recursively скан файлы and directories, добавим filtered файлы в_
         an вывод structure as we go. This can be used в_ произведи a список
         of subdirectories and the файлы contained therein. The following
         example lists все файлы with суффикс ".d" located via the current

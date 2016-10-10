@@ -346,7 +346,7 @@ class Сокет
 
         /***********************************************************************
 
-                Helper function куда укз the добавьing и dropping of группа
+                Helper function куда укз the добавим и dropping of группа
                 membershИП.
 
                 Dinrus: добавьed

@@ -269,7 +269,7 @@ class Грегориан : Календарь
          * да.  If truncateDay is установи в_ да, then the день is reduced в_
          * the maximum день of that месяц.
          *
-         * For example, добавьing one месяц в_ 1/31/2000 with truncateDay установи в_
+         * For example, добавим one месяц в_ 1/31/2000 with truncateDay установи в_
          * да results in 2/28/2000.
          *
          * Параметры: t = A время в_ добавь the месяцы в_

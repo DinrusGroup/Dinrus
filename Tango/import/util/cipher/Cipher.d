@@ -100,7 +100,7 @@ abstract class ШифрПоток : Шифр
     *
     * Возвращает: The число of pad байты in the блок.
     *
-    * Throws: dcrypt.crypto.ошибки.InvalКСЕРдобавьingError if 
+    * Throws: dcrypt.crypto.ошибки.InvalКСЕРдобавимError if 
     *         pad length cannot be discerned.
     */
     abstract бцел unpad(проц[] input_);

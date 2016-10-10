@@ -236,7 +236,7 @@ class КонтекстССЛ
         return this;
     }
 
-    // TODO need в_ финиш добавьing Session handling functionality
+    // TODO need в_ финиш добавим Session handling functionality
 /*    проц sessionCacheMode(цел режим)
     {
         if (!SSL_CTX_set_session_cache_mode(_ctx, режим))

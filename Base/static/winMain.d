@@ -2,7 +2,7 @@
 
 extern(C)	бул ртСтарт(ПередВходом передвхо = пусто, ОбработчикИсключения дг = пусто);
 extern(C)	бул ртСтоп(ПередВыходом передвых = пусто, ОбработчикИсключения дг = пусто );
-extern(C)   бул ПрикрепиКонсоль(бцел идПроц);
+//extern(C)   бул ПрикрепиКонсоль(бцел идПроц);
 
 extern (Windows)
 цел WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, цел nCmdShow)
@@ -18,7 +18,7 @@ extern (Windows)
     {
 				
        ртСтарт(пусто, &обрИскл);
-		ПрикрепиКонсоль(-1);
+		//ПрикрепиКонсоль(-1);
         рез = myWinMain(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
         
         ртСтоп(пусто, &обрИскл);

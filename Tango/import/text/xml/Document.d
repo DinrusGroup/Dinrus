@@ -75,7 +75,7 @@ version=discrete;
 
         Note that the document дерево() включает все узелs in the дерево,
         и not just элементы. Use doc.элементы в_ адрес the topmost
-        элемент instead. For example, добавьing an interior sibling в_
+        элемент instead. For example, добавим an interior sibling в_
         the приор illustration
         ---
         doc.элементы.элемент (пусто, "sibling");

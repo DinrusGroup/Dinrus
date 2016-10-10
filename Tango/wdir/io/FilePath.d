@@ -98,7 +98,7 @@ class ФПуть : ПросмотрПути
                 a rightmost путь-разделитель. The intent is в_ treat файлы and
                 directories in the same manner; as a имя with an optional
                 ancestral structure. It is possible в_ bias the interpretation
-                by добавьing a trailing путь-разделитель в_ the аргумент. Doing so
+                by добавим a trailing путь-разделитель в_ the аргумент. Doing so
                 will результат in an пустой имя attribute.
 
                 With regard в_ the фпуть копируй, we найдено the common case в_

@@ -271,16 +271,16 @@ alias int socklen_t;
     alias ACCESS_MASK *PACCESS_MASK;
     alias ACCESS_MASK REGSAM;
 	
-    alias extern (Windows) int function() FARPROC, NEARPROC, PROC, ПРОЦУК;
+  //  alias extern (Windows) int function() FARPROC, NEARPROC, PROC, ПРОЦУК;
 extern (Windows) 
 {	
 version (0)
 {   // Properly prototyped versions
-    alias BOOL function(HWND, UINT, WPARAM, LPARAM) DLGPROC;
-    alias VOID function(HWND, UINT, UINT, DWORD) TIMERPROC;
+   // alias BOOL function(HWND, UINT, WPARAM, LPARAM) DLGPROC;
+  //  alias VOID function(HWND, UINT, UINT, DWORD) TIMERPROC;
     alias BOOL function(HDC, LPARAM, int) GRAYSTRINGPROC;
-    alias BOOL function(HWND, LPARAM) WNDENUMPROC;
-    alias LRESULT function(int code, WPARAM wParam, LPARAM lParam) HOOKPROC;
+   // alias BOOL function(HWND, LPARAM) WNDENUMPROC;
+    //alias LRESULT function(int code, WPARAM wParam, LPARAM lParam) HOOKPROC;
     alias VOID function(HWND, UINT, DWORD, LRESULT) SENDASYNCPROC;
     alias BOOL function(HWND, LPCSTR, HANDLE) PROPENUMPROCA;
     alias BOOL function(HWND, LPCWSTR, HANDLE) PROPENUMPROCW;

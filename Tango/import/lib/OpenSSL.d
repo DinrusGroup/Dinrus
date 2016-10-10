@@ -109,7 +109,7 @@ extern (C)
         бцел num;
     };
 
-    struct EVP_CИПHER_CTX
+    struct EVP_CIPHER_CTX
     {
         ук cИПher;
         ук engine;
@@ -131,7 +131,7 @@ extern (C)
     };
     
     // fallback for OpenSSL 0.9.7l 28 Sep 2006 that defines only macros
-    цел EVP_CИПHER_CTX_block_size_097l(EVP_CИПHER_CTX *e){
+    цел EVP_CIPHER_CTX_block_size_097l(EVP_CIPHER_CTX *e){
         return *((cast(цел*)e.cИПher)+1);
     }
 
@@ -163,7 +163,7 @@ extern (C)
         // yadda yadda ...        
     };
     struct X509_STORE_CTX {};
-    struct EVP_CИПHER {};
+    struct EVP_CIPHER {};
     struct X509_ALGOR {};
     struct ASN1_INTEGER {};
     struct EVP_MD {};
@@ -261,8 +261,8 @@ extern (C)
     typedef проц function(RSA *r) tRSA_free;
     typedef BIO* function(BIO_METHOD *тип) tBIO_new;
     typedef BIO_METHOD* function() tBIO_s_mem;
-    typedef цел function(BIO *bp, EVP_PKEY *x, EVP_CИПHER *cИПher, сим *kstr, цел klen, pem_password_cb, проц *) tPEM_write_bio_PKCS8PrivateKey;
-    typedef EVP_CИПHER* function() tEVP_aes_256_cbc;
+    typedef цел function(BIO *bp, EVP_PKEY *x, EVP_CIPHER *cИПher, сим *kstr, цел klen, pem_password_cb, проц *) tPEM_write_bio_PKCS8PrivateKey;
+    typedef EVP_CIPHER* function() tEVP_aes_256_cbc;
     typedef проц* function(d2i_of_void d2i, сим *name, BIO *bp, проц **x, pem_password_cb cb, ук u) tPEM_ASN1_read_bio;
     typedef X509* function() tX509_new;
     typedef проц function(X509 *x) tX509_free;
@@ -281,7 +281,7 @@ extern (C)
     typedef цел function(X509_STORE_CTX *ctx, X509_STORE *store, X509 *x509, ук shizzle) tX509_STORE_CTX_init;
     typedef цел function(X509_STORE_CTX *ctx) tX509_verify_cert;
     typedef проц function(X509_STORE_CTX *ctx) tX509_STORE_CTX_free;
-    typedef цел function(i2d_of_void i2d, сим *name, BIO *bp, сим *x, EVP_CИПHER *enc, сим *kstr, цел klen, pem_password_cb cb, ук u) tPEM_ASN1_write_bio;
+    typedef цел function(i2d_of_void i2d, сим *name, BIO *bp, сим *x, EVP_CIPHER *enc, сим *kstr, цел klen, pem_password_cb cb, ук u) tPEM_ASN1_write_bio;
     typedef цел function(X509_NAME *name, сим* field, цел тип, сим *bytes, цел len, цел loc, цел set) tX509_NAME_add_entry_by_txt;
     typedef цел function(SSL_CTX *ctx, ббайт *id, бцел len) tSSL_CTX_set_session_id_context;
     typedef цел function(EVP_PKEY *a, EVP_PKEY *b) tEVP_PKEY_cmp_parameters;
@@ -300,15 +300,15 @@ extern (C)
     typedef проц function(MD5_CTX *c) tMD5_Init;
     typedef проц function(MD5_CTX *c, ук data, size_t len) tMD5_Update;
     typedef проц function(ббайт *md, MD5_CTX *c) tMD5_Final;
-    typedef цел function(EVP_CИПHER_CTX *ctx, EVP_CИПHER *тип, ук impl, ббайт *key, ббайт *iv) tEVP_EncryptInit_ex;
-    typedef цел function(EVP_CИПHER_CTX *ctx, EVP_CИПHER *тип, ук impl, ббайт *key, ббайт*iv) tEVP_DecryptInit_ex;
-    typedef цел function(EVP_CИПHER_CTX *ctx, ббайт *outv, цел *outl, ббайт *inv, цел inl) tEVP_EncryptUpdate;
-    typedef цел function(EVP_CИПHER_CTX *ctx, ббайт *outv, цел *outl, ббайт *inv, цел inl) tEVP_DecryptUpdate;
-    typedef цел function(EVP_CИПHER_CTX *ctx, ббайт *outv, цел *outl) tEVP_EncryptFinal_ex;
-    typedef цел function(EVP_CИПHER_CTX *ctx, ббайт *outv, цел *outl) tEVP_DecryptFinal_ex;
-    typedef цел function(EVP_CИПHER_CTX *ctx) tEVP_CИПHER_CTX_block_size;
-    typedef EVP_CИПHER *function() tEVP_aes_128_cbc;
-    typedef цел function(EVP_CИПHER_CTX *ctx) tEVP_CИПHER_CTX_cleanup;
+    typedef цел function(EVP_CIPHER_CTX *ctx, EVP_CIPHER *тип, ук impl, ббайт *key, ббайт *iv) tEVP_EncryptInit_ex;
+    typedef цел function(EVP_CIPHER_CTX *ctx, EVP_CIPHER *тип, ук impl, ббайт *key, ббайт*iv) tEVP_DecryptInit_ex;
+    typedef цел function(EVP_CIPHER_CTX *ctx, ббайт *outv, цел *outl, ббайт *inv, цел inl) tEVP_EncryptUpdate;
+    typedef цел function(EVP_CIPHER_CTX *ctx, ббайт *outv, цел *outl, ббайт *inv, цел inl) tEVP_DecryptUpdate;
+    typedef цел function(EVP_CIPHER_CTX *ctx, ббайт *outv, цел *outl) tEVP_EncryptFinal_ex;
+    typedef цел function(EVP_CIPHER_CTX *ctx, ббайт *outv, цел *outl) tEVP_DecryptFinal_ex;
+    typedef цел function(EVP_CIPHER_CTX *ctx) tEVP_CIPHER_CTX_block_size;
+    typedef EVP_CIPHER *function() tEVP_aes_128_cbc;
+    typedef цел function(EVP_CIPHER_CTX *ctx) tEVP_CIPHER_CTX_cleanup;
 
     struct CRYPTO_dynlock_value
     {
@@ -506,8 +506,8 @@ tEVP_DecryptUpdate EVP_DecryptUpdate;
 tEVP_EncryptFinal_ex EVP_EncryptFinal_ex;
 tEVP_DecryptFinal_ex EVP_DecryptFinal_ex;
 tEVP_aes_128_cbc EVP_aes_128_cbc;
-tEVP_CИПHER_CTX_block_size EVP_CИПHER_CTX_block_size;
-tEVP_CИПHER_CTX_cleanup EVP_CИПHER_CTX_cleanup;
+tEVP_CIPHER_CTX_block_size EVP_CIPHER_CTX_block_size;
+tEVP_CIPHER_CTX_cleanup EVP_CIPHER_CTX_cleanup;
 
 цел PEM_write_bio_RSAPublicKey(BIO *bp, RSA *x)
 {
@@ -831,12 +831,12 @@ version (Win32)
         вяжиФ(EVP_DecryptFinal_ex, "EVP_DecryptFinal_ex", ssllib);
         вяжиФ(EVP_aes_128_cbc, "EVP_aes_128_cbc", ssllib);
         try {
-            вяжиФ(EVP_CИПHER_CTX_block_size, "EVP_CИПHER_CTX_block_size", ssllib);
+            вяжиФ(EVP_CIPHER_CTX_block_size, "EVP_CIPHER_CTX_block_size", ssllib);
         } catch (Исключение e){
             // openSSL 0.9.7l defines only macros, not the function
-            EVP_CИПHER_CTX_block_size=&EVP_CИПHER_CTX_block_size_097l;
+            EVP_CIPHER_CTX_block_size=&EVP_CIPHER_CTX_block_size_097l;
         }
-        вяжиФ(EVP_CИПHER_CTX_cleanup, "EVP_CИПHER_CTX_cleanup", ssllib);
+        вяжиФ(EVP_CIPHER_CTX_cleanup, "EVP_CIPHER_CTX_cleanup", ssllib);
     }
 }
 

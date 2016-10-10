@@ -233,7 +233,7 @@ struct Контейнер
 
                 Can save approximately 30% память for small элементы (tested 
                 with целое элементы и a чанк размер of 1000), и is at 
-                least twice as fast at добавьing элементы when compared в_ the 
+                least twice as fast at добавим элементы when compared в_ the 
                 default разместитель (approximately 50x faster with LinkedList)
         
                 Note that, due в_ СМ behaviour, you should not конфигурируй

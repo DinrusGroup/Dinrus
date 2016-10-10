@@ -36,7 +36,7 @@ private import  util.collection.impl.SeqCollection,
  * ArraySeqs are generally like java.util.Vectors. But unlike them,
  * ArraySeqs do not actually размести массивы when they are constructed.
  * Among другой consequences, you can исправь the ёмкость `for free'
- * after construction but before добавьing элементы. You can исправь
+ * after construction but before добавим элементы. You can исправь
  * it at другой times as well, but this may lead в_ ещё expensive
  * resizing. Also, unlike Vectors, they release their internal массивы
  * whenever they are пустой.

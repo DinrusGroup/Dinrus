@@ -133,7 +133,7 @@ class Md2 : MerkleDamgard
 
         protected override проц padMessage (ббайт[] данные)
         {
-                /* Pдобавьing is performed as follows: "i" байты of значение "i" 
+                /* Pдобавим is performed as follows: "i" байты of значение "i" 
                  * are appended в_ the сообщение so that the length in байты 
                  * of the псеп_в_конце сообщение becomes congruent в_ 0, modulo 16. 
                  * At least one байт и at most 16 байты are appended.

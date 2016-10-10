@@ -206,18 +206,18 @@ public:
     return buff[sofar-frontExtraBytes..$];
 }
 
-/** Convert в_ a hex ткст, printing a minimum число of цифры 'minPдобавьing',
+/** Convert в_ a hex ткст, printing a minimum число of цифры 'minPдобавим',
  *  allocating an добавьitional 'frontExtraBytes' at the старт of the ткст.
- *  Pдобавьing is готово with padChar, which may be '0' or ' '.
+ *  Pдобавим is готово with padChar, which may be '0' or ' '.
  *  'разделитель' is a цифра separation character. If non-zero, it is inserted
  *  between every 8 цифры.
- *  Separator characters do not contribute в_ the minPдобавьing.
+ *  Separator characters do not contribute в_ the minPдобавим.
  */
-сим [] вГексТкст(цел frontExtraBytes, сим разделитель = 0, цел minPдобавьing=0, сим padChar = '0')
+сим [] вГексТкст(цел frontExtraBytes, сим разделитель = 0, цел minPдобавим=0, сим padChar = '0')
 {
     // Calculate число of extra паддинг байты
-    т_мера extraPad = (minPдобавьing > данные.length * 2 * БольшЦифра.sizeof) 
-        ? minPдобавьing - данные.length * 2 * БольшЦифра.sizeof : 0;
+    т_мера extraPad = (minPдобавим > данные.length * 2 * БольшЦифра.sizeof) 
+        ? minPдобавим - данные.length * 2 * БольшЦифра.sizeof : 0;
 
     // Length not включая разделитель байты                
     т_мера lenBytes = данные.length * 2 * БольшЦифра.sizeof;
@@ -247,9 +247,9 @@ public:
         }
     }
     цел z = frontExtraBytes;
-    if (lenBytes > minPдобавьing) {
+    if (lenBytes > minPдобавим) {
         // StrИП leading zeros.
-        цел maxStrИП = lenBytes - minPдобавьing;
+        цел maxStrИП = lenBytes - minPдобавим;
         while (z< buff.length-1 && (buff[z]=='0' || buff[z]==padChar) && maxStrИП>0) {
             ++z; --maxStrИП;
         }
@@ -972,7 +972,7 @@ unittest {
         бцел чанкиize = y.length;
         бцел extra =  x.length % y.length;
         бцел maxchunk = чанкиize + extra;
-        бул pдобавьingY; // да = we're паддинг Y, нет = we're паддинг X.
+        бул pдобавимY; // да = we're паддинг Y, нет = we're паддинг X.
         if (extra * extra * 2 < y.length*y.length) {
             // The leftover bit is small enough that it should be incorporated
             // in the existing чанки.            
@@ -983,14 +983,14 @@ unittest {
             // there will probably be a few left over.
             // Every чанк will either have размер чанкиize, or чанкиize+1.
             maxchunk = чанкиize + 1;
-            pдобавьingY = да;
+            pдобавимY = да;
             assert(чанкиize + extra + чанкиize *(numчанки-1) == x.length );
         } else  {
             // the extra bit is large enough that it's worth making a new чанк.
             // (This means we're паддинг x with zeros, when doing the первый one).
             maxchunk = чанкиize;
             ++numчанки;
-            pдобавьingY = нет;
+            pдобавимY = нет;
             assert(extra + чанкиize *(numчанки-1) == x.length );
         }
         // We сделай the буфер a bit bigger so we have пространство for the partial sums.
@@ -998,7 +998,7 @@ unittest {
         БольшЦифра [] partial = scratchbuff[$ - y.length .. $];
         бцел готово; // как much of X have we готово so far?
         дво resопрual = 0;
-        if (pдобавьingY) {
+        if (pдобавимY) {
             // If the первый чанк is bigger, do it первый. We're паддинг y. 
           mulKaratsuba(результат[0 .. y.length + чанкиize + (extra > 0 ? 1 : 0 )], 
                         x[0 .. чанкиize + (extra>0?1:0)], y, scratchbuff);
@@ -1475,7 +1475,7 @@ body {
     } else mulKaratsuba(resultHigh, x1, y1, newscratchbuff);
 
     /* We сейчас have результат = x0y0 + (N*N)*x1y1
-       Before добавьing or subtracting mопр, we must calculate
+       Before добавим or subtracting mопр, we must calculate
        результат += N * (x0y0 + x1y1)    
        We can do this with three half-length добавьitions. With a = x0y0, b = x1y1:
                       aHI aLO

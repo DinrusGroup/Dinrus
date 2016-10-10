@@ -201,7 +201,7 @@ public abstract class Коллекция(T) : Dispenser!(T)
                             if ((cast(Seq) this) || (cast(SortedValues) this))
                                  return sameOrderedElements(this, другой);
                             else
-                               if (cast(Bag) this)
+                               if (cast(Рюкзак) this)
                                    return sameOccurrences(this, другой);
                                else
                                   if (cast(Набор) this)

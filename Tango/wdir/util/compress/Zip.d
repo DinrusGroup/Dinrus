@@ -1528,7 +1528,7 @@ private:
  * This structure содержит various pieces of meta-данные on a файл.  The
  * contents of this structure may be safely mutated.
  *
- * This structure is also used в_ specify meta-данные about a файл when добавьing
+ * This structure is also used в_ specify meta-данные about a файл when добавим
  * it в_ an архив.
  */
 struct ИнфоОЗаписиЗип

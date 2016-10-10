@@ -350,7 +350,7 @@ public abstract class Календарь
          * да.  If truncateDay is установи в_ да, then the день is reduced в_
          * the maximum день of that месяц.
          *
-         * For example, добавьing one месяц в_ 1/31/2000 with truncateDay установи в_
+         * For example, добавим one месяц в_ 1/31/2000 with truncateDay установи в_
          * да results in 2/28/2000.
          *
          * The default implementation uses information provопрed by the
@@ -386,7 +386,7 @@ public abstract class Календарь
                 if(члоМес > 0)
                 {
                         //
-                        // добавьing, добавь все the годы until the год we want в_
+                        // добавим, добавь все the годы until the год we want в_
                         // be in.
                         //
                         auto miy = дайМесяцыГода(год, эра);

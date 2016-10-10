@@ -310,7 +310,7 @@ deprecated public class TreeBag(T) : BagCollection!(T), SortedValues!(T)
          * Время complexity: O(лог n).
          * See_Also: util.collection.MutableBag.добавьIfAbsent
         **/
-        public final проц добавьIf (T элемент)
+        public final проц добавьЕсли (T элемент)
         {
                 добавь_(элемент, да);
         }

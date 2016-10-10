@@ -20,7 +20,7 @@ public  import util.container.Container;
 
 /******************************************************************************
 
-        СтэкКарта extends the basic hashmap тип by добавьing a предел в_ 
+        СтэкКарта extends the basic hashmap тип by добавим a предел в_ 
         the число of items contained at any given время. In добавьition, 
         СтэкКарта retains the order in which элементы were добавьed, и
         employs that during foreach() traversal. добавьitions в_ the карта
@@ -481,7 +481,7 @@ debug (СтэкКарта)
                 const счёт = 1_000_000;
                 Секундомер w;
 
-                // benchmark добавьing
+                // benchmark добавим
                 w.старт;
                 for (цел i=счёт; i--;)
                      тест.добавь (i, i);

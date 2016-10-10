@@ -1,18 +1,4 @@
-﻿/*
- Файл: BagCollection.d
-
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
- Inc, Loral, и everyone contributing, testing, и using this код.
-
- History:
- Дата     Who                What
- 13Oct95  dl                 Созд
- 22Oct95  dl                 добавь добавьElements
- 28jan97  dl                 сделай class public
-*/
-
-
+﻿
 module util.collection.impl.BagCollection;
 
 private import  util.collection.model.Bag,
@@ -23,7 +9,7 @@ private import  util.collection.impl.Collection;
 /**
  *
  * MutableBagImpl extends MutableImpl в_ provопрe
- * default implementations of some Bag operations. 
+ * default implementations of some Рюкзак operations. 
  * 
         author: Doug Lea
  * @version 0.93
@@ -32,9 +18,9 @@ private import  util.collection.impl.Collection;
  *
 **/
 
-public abstract class BagCollection(V) : Коллекция!(V), Bag!(V)
+public abstract class BagCollection(V) : Коллекция!(V), Рюкзак!(V)
 {
-        alias Bag!(V).добавь               добавь;
+        alias Рюкзак!(V).добавь               добавь;
         alias Коллекция!(V).удали     удали;
         alias Коллекция!(V).удалиВсе  удалиВсе;
 
@@ -68,30 +54,30 @@ public abstract class BagCollection(V) : Коллекция!(V), Bag!(V)
         }
 
 
-        // Default implementations of Bag methods
+        // Default implementations of Рюкзак methods
 
 version (VERBOSE)
 {
         /**
-         * Implements util.collection.Bag.добавьingIfAbsent
-         * See_Also: util.collection.Bag.добавьingIfAbsent
+         * Implements util.collection.Рюкзак.добавимЕслиНет
+         * See_Also: util.collection.Рюкзак.добавимЕслиНет
         **/
-        public final Bag добавьingIf(V элемент)
+        public final Рюкзак добавимЕсли(V элемент)
         {
-                Bag c = дубликат();
-                c.добавьIf(элемент);
+                Рюкзак c = дубликат();
+                c.добавьЕсли(элемент);
                 return c;
         }
 
 
         /**
-         * Implements util.collection.Bag.добавьing
-         * See_Also: util.collection.Bag.добавьing
+         * Implements util.collection.Рюкзак.добавим
+         * See_Also: util.collection.Рюкзак.добавим
         **/
 
-        public final Bag добавьing(V элемент)
+        public final Рюкзак добавим(V элемент)
         {
-                Bag c = дубликат();
+                Рюкзак c = дубликат();
                 c.добавь(элемент);
                 return c;
         }
