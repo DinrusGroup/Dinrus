@@ -1,0 +1,746 @@
+Ôªø
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\*.d  d:\dinrus\bin\..\imp\dinrus\*.di  
+d:\dinrus\bin\..\dev\DINRUS\Base\import\base.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\cidrus.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\com.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\dinrus.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\dllMain.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\exception.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\exeMain.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\gc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\global.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\object.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\runtime.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\stdrus.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\stringz.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sync.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\thread.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\typestruct.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\win.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\winapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\winMain.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\winMain2.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\winthread.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        21.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\std 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\std\*.d  d:\dinrus\bin\..\imp\dinrus\std\*.di  
+d:\dinrus\bin\..\dev\DINRUS\Base\import\std\intrinsic.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         1.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\tpl 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\*.d  d:\dinrus\bin\..\imp\dinrus\tpl\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\all.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\alloc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\args.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\bind.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\box.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\collection.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\com.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\handles.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\metastrings.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\minmax.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\signal.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\singleton.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\std.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\stream.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\traits.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\typetuple.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\weakref.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        17.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\st 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\st\*.d  d:\dinrus\bin\..\imp\dinrus\st\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\st\coroutine.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\st\stackcontext.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\st\stackthread.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\st\tls.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         4.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\mesh 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\*.d  d:\dinrus\bin\..\imp\dinrus\mesh\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Attributes.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Geometry.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Handles.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Status.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Traits.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\mesh\Utils.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         6.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\win32 
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\win32\directx 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\*.d  d:\dinrus\bin\..\imp\dinrus\win32\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\accctrl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\aclapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\aclui.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\activex.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\basetsd.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\basetyps.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\cderr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\cguid.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\comcat.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\commctrl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\commdlg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\core.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\cpl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\cplext.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\custcntl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\dbt.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\dde.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ddeml.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\dhcpcsdk.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\dlgs.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\docobj.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\errorrep.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\exdisp.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\exdispid.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\httpext.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\idispids.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\imagehlp.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\imm.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\intshcut.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ipexport.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\iphlpapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ipifcons.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\iprtrmib.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\iptypes.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\isguids.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lm.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmaccess.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmalert.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmapibuf.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmat.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmaudit.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmbrowsr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmchdev.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmconfig.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmcons.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmerr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmerrlog.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmmsg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmremutl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmrepl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmserver.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmshare.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmsname.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmstats.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmsvc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmuse.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmuseflg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lmwksta.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\lzexpand.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mciavi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mcx.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mgmtapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mmsystem.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\msacm.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mshtml.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\mswsock.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\nb30.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\nddeapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\nspapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ntdef.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ntdll.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ntldap.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ntsecapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\oaidl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\objbase.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\objfwd.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\objidl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\objsafe.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ocidl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\odbcinst.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ole.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ole2.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ole2ver.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\oleacc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\oleauto.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\olectl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\olectlid.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\oledlg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\oleidl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\pbt.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\powrprof.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\prsht.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\psapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ras.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rasdlg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\raserror.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rassapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\reason.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\regstr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\richedit.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\richole.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcdce.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcdce2.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcdcep.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcndr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcnsi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcnsip.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\rpcnterr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\schannel.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\secext.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\servprov.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\setupapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\shellapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\shldisp.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\shlguid.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\shlobj.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\shlwapi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\snmp.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\sql.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\sqlext.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\sqltypes.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\sqlucode.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\subauth.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\testall.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\tlhelp32.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\tmschema.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\unknwn.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\usp10.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\uuid.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\vfw.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\w32api.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winbase.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winber.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\wincon.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\wincrypt.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\windef.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\windows.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winerror.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\wingdi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\wininet.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winioctl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winldap.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winnetwk.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winnls.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winnt.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winperf.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winreg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winsock2.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winspool.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winsvc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winuser.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\winver.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\ws2tcpip.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\wtypes.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:       157.
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\*.d   d:\dinrus\bin\..\imp\dinrus\win32\directx\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d10.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d10effect.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d10misc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d10shader.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d9.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d9caps.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d9types.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10async.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10core.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10math.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10mesh.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx10tex.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx9.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dinput8.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dsound8.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dxerr.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dxerr8.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dxerr9.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dxgi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dxgitype.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        21.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\def 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\*.def  d:\dinrus\bin\..\imp\dinrus\def\*.def 
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3d9.def
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\d3dx9.def
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dinput8.def
+d:\dinrus\bin\..\dev\DINRUS\Base\..\win32\directx\dsound8.def
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         4.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\sys 
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\sys\inc 
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\sys\COM 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\*.d  d:\dinrus\bin\..\imp\dinrus\sys\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\activex.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\com.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DConsts.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DFuncs.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DIfaces.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DProcess.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DStructs.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\memory.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\msscript.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\registry.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\uuid.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        11.
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\inc\*.d  d:\dinrus\bin\..\imp\dinrus\sys\inc\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\inc\kernel32.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         1.
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\*.d  d:\dinrus\bin\..\imp\dinrus\sys\COM\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\all.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\mscorlib.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\msscriptcontrol.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\shell32.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         4.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\lib 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\*.d  d:\dinrus\bin\..\imp\dinrus\lib\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\arc.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\cosyne.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\DinrusGluDLL.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\DinrusWinDLL.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\freeimage.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\ode.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\ogg.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\openal.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\sdl.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\sdlimage.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\sdlmixer.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\sdlnet.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\sdlttf.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\lib\zlib.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        14.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\col 
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\col\model 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\col\*.d  d:\dinrus\bin\..\imp\dinrus\col\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\ArrayList.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\ArrayMultiset.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\DefaultAllocator.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\Functions.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\Hash.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\HashMap.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\HashMultiset.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\HashSet.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\Heap.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\Iterators.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\Link.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\LinkList.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\List.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\RBTree.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\TreeMap.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\TreeMultiset.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\TreeSet.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:        17.
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\*.d  d:\dinrus\bin\..\imp\dinrus\col\model\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Addable.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Collection.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Iterator.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Keyed.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\List.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Map.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Multi.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Multiset.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\col\model\Set.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         9.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\linalg 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\*.d  d:\dinrus\bin\..\imp\dinrus\linalg\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\basic.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\color.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\config.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\Matrix.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\Quadric.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\random.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\Vector.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\linalg\VectorTypes.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         8.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\geom 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\geom\*.d  d:\dinrus\bin\..\imp\dinrus\geom\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\geom\Figure.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\geom\LoopSchemeMask.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\geom\MathDefs.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\geom\Plane3d.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         4.
+
+D:\dinrus\dev\DINRUS\Base>mkdir d:\dinrus\bin\..\imp\dinrus\util 
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\import\util\*.d  d:\dinrus\bin\..\imp\dinrus\util\*.di 
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\booltype.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\demangler.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\fdt.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\fileex.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\linetoken.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\pathex.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\series.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\str.d
+d:\dinrus\bin\..\dev\DINRUS\Base\import\util\worktools.d
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         9.
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmc.exe -c -od:\dinrus\bin\..\dev\DINRUS\Base\complex.obj d:\dinrus\bin\..\dev\DINRUS\Base\base\rt\complex.c -Id:\dinrus\bin\..\include 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmc.exe -c  -od:\dinrus\bin\..\dev\DINRUS\Base\critical.obj d:\dinrus\bin\..\dev\DINRUS\Base\base\rt\critical.c -Id:\dinrus\bin\..\include 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmc.exe -c  -od:\dinrus\bin\..\dev\DINRUS\Base\deh.obj d:\dinrus\bin\..\dev\DINRUS\Base\base\rt\deh.c -Id:\dinrus\bin\..\include 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmc.exe -c  -od:\dinrus\bin\..\dev\DINRUS\Base\monitor.obj d:\dinrus\bin\..\dev\DINRUS\Base\base\rt\monitor.c -Id:\dinrus\bin\..\include 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe -lib -ofd:\dinrus\bin\..\dev\DINRUS\Base\Cdinr.lib d:\dinrus\bin\..\dev\DINRUS\Base\complex.obj d:\dinrus\bin\..\dev\DINRUS\Base\critical.obj d:\dinrus\bin\..\dev\DINRUS\Base\deh.obj d:\dinrus\bin\..\dev\DINRUS\Base\monitor.obj 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\ls2.exe -d d:\dinrus\bin\..\dev\DINRUS\Base\base\std\*.d d:\dinrus\bin\..\dev\DINRUS\Base\base\*.d d:\dinrus\bin\..\dev\DINRUS\Base\base\tpl\*.d d:\dinrus\bin\..\dev\DINRUS\Base\base\rt\*.d d:\dinrus\bin\..\dev\DINRUS\Base\base\sys\*.d d:\dinrus\bin\..\dev\DINRUS\Base\base\sys\inc\*.d 1>>d:\dinrus\bin\..\dev\DINRUS\Base\objs.rsp 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe -g -O -debug -ofd:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.dll d:\dinrus\bin\..\dev\DINRUS\Base\static\dll.d @d:\dinrus\bin\..\dev\DINRUS\Base\objs.rsp d:\dinrus\bin\..\dev\DINRUS\Base\base.def d:\dinrus\bin\..\dev\DINRUS\Base\base.res d:\dinrus\bin\..\lib\minit.obj d:\dinrus\bin\..\lib\import.lib d:\dinrus\bin\..\dev\DINRUS\Base\Cdinr.lib 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6DB1H Record Type 0091 
+ Error 1: Previous Definition Different : _IDI_APPLICATION
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6DC1H Record Type 0091 
+ Error 1: Previous Definition Different : _IDC_ARROW
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6DD1H Record Type 0091 
+ Error 1: Previous Definition Different : _IDC_CROSS
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6DEDH Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_MSGBOX
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E07H Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_EDIT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E1EH Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_LISTBOX
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E31H Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_BTN
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E44H Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_DLG
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E5DH Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_SCROLLBAR
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E79H Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_STATIC
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6E8CH Record Type 0091 
+ Error 1: Previous Definition Different : _CTLCOLOR_MAX
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6EA8H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_SCROLLBAR
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6EC5H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BACKGROUND
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6EDFH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_ACTIVECAPTION
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6EFBH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_INACTIVECAPTION
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F0CH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_MENU
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F1FH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_WINDOW
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F3DH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_WINDOWFRAME
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F52H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_MENUTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F69H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_WINDOWTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F81H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_CAPTIONTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6F9AH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_ACTIVEBORDER
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6FBBH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_INACTIVEBORDER
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6FD4H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_APPWORKSPACE
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B6FEAH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_HIGHLIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7004H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_HIGHLIGHTTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B701EH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BTNFACE
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7034H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BTNSHADOW
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7049H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_GRAYTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B705DH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BTNTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B707DH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_INACTIVECAPTIONTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B709CH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BTNHIGHLIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B70B3H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DDKSHADOW
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B70C7H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DLIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B70DCH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_INFOTEXT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B70EFH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_INFOBK
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7109H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_DESKTOP
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B711CH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DFACE
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7131H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DSHADOW
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7149H Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DHIGHLIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B715FH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_3DHILIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B717CH Record Type 0091 
+ Error 1: Previous Definition Different : _COLOR_BTNHILIGHT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B7236H Record Type 0091 
+ Error 1: Previous Definition Different : _HWND_DESKTOP
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B8161H Record Type 0091 
+ Error 1: Previous Definition Different : _IN6ADDR_ANY
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B81B0H Record Type 0091 
+ Error 1: Previous Definition Different : _IN6ADDR_LOOPBACK
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B81C6H Record Type 0091 
+ Error 1: Previous Definition Different : _INET_ADDRSTRLEN
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B81DDH Record Type 0091 
+ Error 1: Previous Definition Different : _INET6_ADDRSTRLEN
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B8650H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFMT
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B865EH Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFDIR
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B866CH Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFCHR
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B867AH Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFIFO
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B8688H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFREG
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B8696H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IREAD
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B86A5H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IWRITE
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B86B3H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IEXEC
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B8761H Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFBLK
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset B876FH Record Type 0091 
+ Error 1: Previous Definition Different : _S_IFNAM
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C5A8EH Record Type 00C3 
+ Error 1: Previous Definition Different : _MAKELANGID@8
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C5ABBH Record Type 00C3 
+ Error 1: Previous Definition Different : _PRIMARYLANGID@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C5AD7H Record Type 00C3 
+ Error 1: Previous Definition Different : _SUBLANGID@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C6FDAH Record Type 00C3 
+ Error 1: Previous Definition Different : _CreateWindowA@44
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C795FH Record Type 00C3 
+ Error 1: Previous Definition Different : _MAKEINTRESOURCEA@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C7A3BH Record Type 00C3 
+ Error 1: Previous Definition Different : _RGB@12
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8829H Record Type 00C3 
+ Error 1: Previous Definition Different : _FD_CLR@8
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8889H Record Type 00C3 
+ Error 1: Previous Definition Different : _FD_ISSET@8
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C88CBH Record Type 00C3 
+ Error 1: Previous Definition Different : _FD_SET@8
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C88F3H Record Type 00C3 
+ Error 1: Previous Definition Different : _FD_ZERO@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8E6BH Record Type 00C3 
+ Error 1: Previous Definition Different : _htons@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8E99H Record Type 00C3 
+ Error 1: Previous Definition Different : _htonl@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8EC1H Record Type 00C3 
+ Error 1: Previous Definition Different : _ntohs@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset C8EE9H Record Type 00C3 
+ Error 1: Previous Definition Different : _ntohl@4
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset CA39CH Record Type 00C3 
+ Error 1: Previous Definition Different : _S_ISREG
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset CA3C4H Record Type 00C3 
+ Error 1: Previous Definition Different : _S_ISBLK
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset CA3ECH Record Type 00C3 
+ Error 1: Previous Definition Different : _S_ISNAM
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset CA414H Record Type 00C3 
+ Error 1: Previous Definition Different : _S_ISDIR
+d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.obj(Dinrus.Base)  Offset CA43CH Record Type 00C3 
+ Error 1: Previous Definition Different : _S_ISCHR
+dinrus.lib
+ Warning 2: File Not Found dinrus.lib
+--- errorlevel 76
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\implib.exe /system d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.lib d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.dll 
+Digital Mars Import Library Manager Version 7.6B1n
+Copyright (C) Digital Mars 2000.  All Rights Reserved.
+Input is a Windows NT DLL file 'DINRUS.BASE.DLL'.
+Warning: Public '_D6object10TypeInfo_c10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c12—Å—Ä–∞–≤–Ω–∏MFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c7compareMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c7getHashMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d14–ø–æ–º–µ–Ω—è–πMFPvPvZv' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d4swapMFPvPvZv' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d7getHashMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Å–ª–µ–¥—âMFZC8TypeInfo' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ñ–ª–∞–≥–∏MFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac12—Å—Ä–∞–≤–Ω–∏MFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac4nextMFZC8TypeInfo' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac5flagsMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac7compareMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac7getHashMFPvZk' already in library, redefinition ignored.  
+Output is a Windows NT import library.
+Digital Mars Import Library Creator complete.
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\implib.exe /system d:\dinrus\bin\..\dev\DINRUS\Base\DinrusBaseDLL.lib d:\dinrus\bin\..\dev\DINRUS\Base\Dinrus.Base.dll 
+Digital Mars Import Library Manager Version 7.6B1n
+Copyright (C) Digital Mars 2000.  All Rights Reserved.
+Input is a Windows NT DLL file 'DINRUS.BASE.DLL'.
+Warning: Public '_D6object10TypeInfo_c10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c12—Å—Ä–∞–≤–Ω–∏MFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c7compareMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_c7getHashMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d14–ø–æ–º–µ–Ω—è–πMFPvPvZv' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d4swapMFPvPvZv' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object10TypeInfo_d7getHashMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ä–∞–≤–Ω—ãMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Å–ª–µ–¥—âMFZC8TypeInfo' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ç—Ä–∞–∑–ºMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac10—Ñ–ª–∞–≥–∏MFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac12–¥–∞–π–•—ç—àMFPvZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac12—Å—Ä–∞–≤–Ω–∏MFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac4nextMFZC8TypeInfo' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac5flagsMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac5tsizeMFZk' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac6equalsMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac7compareMFPvPvZi' already in library, redefinition ignored.  
+Warning: Public '_D6object11TypeInfo_Ac7getHashMFPvZk' already in library, redefinition ignored.  
+Output is a Windows NT import library.
+Digital Mars Import Library Creator complete.
+
+D:\dinrus\dev\DINRUS\Base>copy d:\dinrus\bin\..\dev\DINRUS\Base\DinrusBaseDLL.lib d:\dinrus\bin\..\lib 
+ë™ÆØ®‡Æ¢†≠Æ ‰†©´Æ¢:         1.
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\cidrus.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\cidrus.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\stdrus.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\stdrus.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\runtime.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\runtime.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\object.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\object.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\gc.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\gc.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\thread.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\thread.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\sync.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sync.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\ini.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\ini.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\stringz.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\stringz.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\win.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\win.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\wincom.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\com.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\dinrus.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\dinrus.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\exception.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\exception.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\rotozoom.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\rotozoom.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\msscript.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\msscript.d DRwin32.lib -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\activex.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\activex.d DRwin32.lib -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\json.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\json.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\base.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\base.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\exeMain.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\exeMain.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\winapi.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\winapi.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\global.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\global.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\all.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\all.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\alloc.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\alloc.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\bind.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\bind.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\box.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\box.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\collection.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\collection.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\metastrings.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\metastrings.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\minmax.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\minmax.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\signal.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\signal.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\args.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\args.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\traits.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\traits.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\typetuple.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\typetuple.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\stream.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\stream.d  -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\singleton.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\singleton.d  -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\comtpl.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\com.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g  -ofd:\dinrus\bin\..\dev\DINRUS\Base\std.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\std.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g  -ofd:\dinrus\bin\..\dev\DINRUS\Base\weakref.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\tpl\weakref.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\DStructs.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DStructs.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\DIfaces.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DIfaces.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\DConsts.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DConsts.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\DFuncs.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DFuncs.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\DProcess.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\DProcess.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\registry.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\registry.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\kernel32.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\inc\kernel32.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\memory.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\memory.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\uuid.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\uuid.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\comsys.obj d:\dinrus\bin\..\dev\DINRUS\Base\static\sys0\com.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\shell32.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\shell32.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe  -c -O  -g -ofd:\dinrus\bin\..\dev\DINRUS\Base\scomall.obj d:\dinrus\bin\..\dev\DINRUS\Base\import\sys\COM\all.d -Id:\dinrus\bin\..\imp\dinrus 
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe -lib -ofd:\dinrus\bin\..\dev\DINRUS\Base\dinrus2.lib  d:\dinrus\bin\..\dev\DINRUS\Base\base.obj  d:\dinrus\bin\..\dev\DINRUS\Base\object.obj  d:\dinrus\bin\..\dev\DINRUS\Base\cidrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stdrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\dinrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\win.obj  d:\dinrus\bin\..\dev\DINRUS\Base\runtime.obj  d:\dinrus\bin\..\dev\DINRUS\Base\gc.obj  d:\dinrus\bin\..\dev\DINRUS\Base\thread.obj  d:\dinrus\bin\..\dev\DINRUS\Base\sync.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stringz.obj   d:\dinrus\bin\..\dev\DINRUS\Base\all.obj  d:\dinrus\bin\..\dev\DINRUS\Base\bind.obj  d:\dinrus\bin\..\dev\DINRUS\Base\box.obj  d:\dinrus\bin\..\dev\DINRUS\Base\metastrings.obj  d:\dinrus\bin\..\dev\DINRUS\Base\minmax.obj  d:\dinrus\bin\..\dev\DINRUS\Base\signal.obj  d:\dinrus\bin\..\dev\DINRUS\Base\args.obj  d:\dinrus\bin\..\dev\DINRUS\Base\typetuple.obj  d:\dinrus\bin\..\dev\DINRUS\Base\traits.obj  d:\dinrus\bin\..\dev\DINRUS\Base\exception.obj d:\dinrus\bin\..\lib\minit.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DStructs.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DIfaces.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DConsts.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DFuncs.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DProcess.obj  d:\dinrus\bin\..\dev\DINRUS\Base\comtpl.obj  d:\dinrus\bin\..\dev\DINRUS\Base\wincom.obj  d:\dinrus\bin\..\dev\DINRUS\Base\shell32.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stream.obj  d:\dinrus\bin\..\dev\DINRUS\Base\memory.obj  d:\dinrus\bin\..\dev\DINRUS\Base\msscript.obj  d:\dinrus\bin\..\dev\DINRUS\Base\activex.obj  d:\dinrus\bin\..\dev\DINRUS\Base\winapi.obj  d:\dinrus\bin\..\dev\DINRUS\Base\singleton.obj  d:\dinrus\bin\..\dev\DINRUS\Base\alloc.obj  d:\dinrus\bin\..\dev\DINRUS\Base\collection.obj  d:\dinrus\bin\..\dev\DINRUS\Base\kernel32.obj  d:\dinrus\bin\..\dev\DINRUS\Base\ini.obj  d:\dinrus\bin\..\dev\DINRUS\Base\Std.obj  d:\dinrus\bin\..\dev\DINRUS\Base\exeMain.obj  d:\dinrus\bin\..\dev\DINRUS\Base\uuid.obj  d:\dinrus\bin\..\dev\DINRUS\Base\comsys.obj  d:\dinrus\bin\..\dev\DINRUS\Base\rotozoom.obj  d:\dinrus\bin\..\dev\DINRUS\Base\scomall.obj  d:\dinrus\bin\..\dev\DINRUS\Base\global.obj  d:\dinrus\bin\..\dev\DINRUS\Base\weakref.obj d:\dinrus\bin\..\dev\DINRUS\Base\registry.obj d:\dinrus\bin\..\dev\DINRUS\Base\Cdinr.lib registry.obj 
+Error: multiple definition of registry: _D3sys8registry42–ü–†–µ–∂–∏–º–î–æ—Å—Ç—É–ø–∞–ö–†–µ–µ—Å—Ç—Ä—É6__initZ and registry: _D3sys8registry42–ü–†–µ–∂–∏–º–î–æ—Å—Ç—É–ø–∞–ö–†–µ–µ—Å—Ç—Ä—É6__initZ
+Ñ´Ô Ø‡Æ§Æ´¶•≠®Ô ≠†¶¨®‚• ´Ó°„Ó ™´†¢®Ë„ . . . 
+
+D:\dinrus\dev\DINRUS\Base>cls
+
+D:\dinrus\dev\DINRUS\Base>d:\dinrus\bin\dmd.exe -lib -ofd:\dinrus\bin\..\dev\DINRUS\Base\dinrus2.lib  d:\dinrus\bin\..\dev\DINRUS\Base\base.obj  d:\dinrus\bin\..\dev\DINRUS\Base\object.obj  d:\dinrus\bin\..\dev\DINRUS\Base\cidrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stdrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\dinrus.obj  d:\dinrus\bin\..\dev\DINRUS\Base\win.obj  d:\dinrus\bin\..\dev\DINRUS\Base\runtime.obj  d:\dinrus\bin\..\dev\DINRUS\Base\gc.obj  d:\dinrus\bin\..\dev\DINRUS\Base\thread.obj  d:\dinrus\bin\..\dev\DINRUS\Base\sync.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stringz.obj   d:\dinrus\bin\..\dev\DINRUS\Base\all.obj  d:\dinrus\bin\..\dev\DINRUS\Base\bind.obj  d:\dinrus\bin\..\dev\DINRUS\Base\box.obj  d:\dinrus\bin\..\dev\DINRUS\Base\metastrings.obj  d:\dinrus\bin\..\dev\DINRUS\Base\minmax.obj  d:\dinrus\bin\..\dev\DINRUS\Base\signal.obj  d:\dinrus\bin\..\dev\DINRUS\Base\args.obj  d:\dinrus\bin\..\dev\DINRUS\Base\typetuple.obj  d:\dinrus\bin\..\dev\DINRUS\Base\traits.obj  d:\dinrus\bin\..\dev\DINRUS\Base\exception.obj d:\dinrus\bin\..\lib\minit.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DStructs.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DIfaces.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DConsts.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DFuncs.obj  d:\dinrus\bin\..\dev\DINRUS\Base\DProcess.obj  d:\dinrus\bin\..\dev\DINRUS\Base\comtpl.obj  d:\dinrus\bin\..\dev\DINRUS\Base\wincom.obj  d:\dinrus\bin\..\dev\DINRUS\Base\shell32.obj  d:\dinrus\bin\..\dev\DINRUS\Base\stream.obj  d:\dinrus\bin\..\dev\DINRUS\Base\memory.obj  d:\dinrus\bin\..\dev\DINRUS\Base\msscript.obj  d:\dinrus\bin\..\dev\DINRUS\Base\activex.obj  d:\dinrus\bin\..\dev\DINRUS\Base\winapi.obj  d:\dinrus\bin\..\dev\DINRUS\Base\singleton.obj  d:\dinrus\bin\..\dev\DINRUS\Base\alloc.obj  d:\dinrus\bin\..\dev\DINRUS\Base\collection.obj  d:\dinrus\bin\..\dev\DINRUS\Base\kernel32.obj  d:\dinrus\bin\..\dev\DINRUS\Base\ini.obj  d:\dinrus\bin\..\dev\DINRUS\Base\Std.obj  d:\dinrus\bin\..\dev\DINRUS\Base\exeMain.obj  d:\dinrus\bin\..\dev\DINRUS\Base\uuid.obj  d:\dinrus\bin\..\dev\DINRUS\Base\comsys.obj  d:\dinrus\bin\..\dev\DINRUS\Base\rotozoom.obj  d:\dinrus\bin\..\dev\DINRUS\Base\scomall.obj  d:\dinrus\bin\..\dev\DINRUS\Base\global.obj  d:\dinrus\bin\..\dev\DINRUS\Base\weakref.obj d:\dinrus\bin\..\dev\DINRUS\Base\registry.obj d:\dinrus\bin\..\dev\DINRUS\Base\Cdinr.lib registry.obj 
+Error: multiple definition of registry: _D3sys8registry42–ü–†–µ–∂–∏–º–î–æ—Å—Ç—É–ø–∞–ö–†–µ–µ—Å—Ç—Ä—É6__initZ and registry: _D3sys8registry42–ü–†–µ–∂–∏–º–î–æ—Å—Ç—É–ø–∞–ö–†–µ–µ—Å—Ç—Ä—É6__initZ
+Ñ´Ô Ø‡Æ§Æ´¶•≠®Ô ≠†¶¨®‚• ´Ó°„Ó ™´†¢®Ë„ . . . 

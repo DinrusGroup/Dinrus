@@ -9,7 +9,7 @@ module sys.activex;
 import win, stdrus, tpl.args;
 
 pragma(lib, "DinrusWin32.lib");
-pragma(lib, "import.lib");
+//pragma(lib, "import.lib");
 
 import win32.winnt, win32.winnls, win32.uuid, win32.wtypes, win32.basetyps;
 import win32.oaidl, win32.objbase; /* for VARIANTARG */

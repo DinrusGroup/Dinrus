@@ -834,10 +834,10 @@ extern (C)
 	
 //rt.adi
 	long _adReverseChar(сим[] а);
-	long _adReverseWсим(wchar[] а);
+	long _adReverseWchar(wchar[] а);
 	long _adReverse(Array а, size_t szelem);
 	long _adSortChar(сим[] а);
-	long _adSortWсим(wchar[] а);
+	long _adSortWchar(wchar[] а);
 	int _adEq(Array a1, Array a2, TypeInfo ti);
 	int _adEq2(Array a1, Array a2, TypeInfo ti);
 	int _adCmp(Array a1, Array a2, TypeInfo ti);

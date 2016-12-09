@@ -1,4 +1,4 @@
-﻿import stdrus, win;
+﻿import stdrus, win, cidrus;
 
 version(UCRT)
 {
@@ -38,7 +38,7 @@ alias скажифнс ск;
 	return 0;
 }
 
-цел main()
+проц main()
 {
 	ск("Начало послепостроечной очистки: ");
 	alias удалиФайлы уд;
@@ -58,5 +58,5 @@ alias скажифнс ск;
 	нс;
 
 	
-	return 0;
+	выход(0);
 }
