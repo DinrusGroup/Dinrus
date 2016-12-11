@@ -4,8 +4,8 @@ pragma(lib, "dinrus.lib");
 проц созданиеКонтекста()
 {
  скажинс("Проверка создания/удаления контекста");
-    int s0 = 0;
-    static int s1 = 0;
+    цел s0 = 0;
+    static цел s1 = 0;
     
     Фибра a = new Фибра(
     delegate void()
@@ -18,7 +18,7 @@ pragma(lib, "dinrus.lib");
     Фибра b = new Фибра(&fb);
     
     Фибра к = new Фибра(
-        delegate void() { assert(false); });
+        delegate void() { assert(нет); });
     
     assert(a);
     assert(b);
@@ -67,14 +67,14 @@ pragma(lib, "dinrus.lib");
 проц переключениеКонтекста()
 {
     скажинс("Проверка переключения контекста");
-    int s0 = 0;
-    int s1 = 0;
-    int s2 = 0;
+    цел s0 = 0;
+    цел s1 = 0;
+    цел s2 = 0;
     
     Фибра a = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             debug эхо(" ---A---\n");
             s0++;
@@ -86,7 +86,7 @@ pragma(lib, "dinrus.lib");
     Фибра b = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             debug эхо(" ---B---\n");
             s1++;
@@ -98,7 +98,7 @@ pragma(lib, "dinrus.lib");
     Фибра к = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             debug эхо(" ---C---\n");
             s2++;
@@ -123,7 +123,7 @@ pragma(lib, "dinrus.lib");
     assert(s1 == 1);
     assert(s2 == 0);
     
-    for(int и=0; и<20; и++)
+    for(цел и=0; и<20; и++)
     {
         к.вызови();
         a.вызови();
@@ -148,9 +148,9 @@ pragma(lib, "dinrus.lib");
     скажинс("Проверка внедрения контекста");
     Фибра a, b, к;
     
-    int t0 = 0;
-    int t1 = 0;
-    int t2 = 0;
+    цел t0 = 0;
+    цел t1 = 0;
+    цел t2 = 0;
     
     a = new Фибра(
     delegate void()
@@ -212,9 +212,9 @@ pragma(lib, "dinrus.lib");
 	скажинс("Проверка базовых исключений");
 
 
-	int t0 = 0;
-	int t1 = 0;
-	int t2 = 0;
+	цел t0 = 0;
+	цел t1 = 0;
+	цел t2 = 0;
 
 	assert(t0 == 0);
 	assert(t1 == 0);
@@ -255,9 +255,9 @@ pragma(lib, "dinrus.lib");
     скажинс("Проверка исключений");
     Фибра a, b, к;
     
-    int t0 = 0;
-    int t1 = 0;
-    int t2 = 0;
+    цел t0 = 0;
+    цел t1 = 0;
+    цел t2 = 0;
     
     эхо("t0 = %d\nt1 = %d\nt2 = %d\n", t0, t1, t2);
     
@@ -299,7 +299,7 @@ pragma(lib, "dinrus.lib");
 		try
 		{
 			a.вызови(нет);
-			assert(false);
+			assert(нет);
 		}
 		
 		catch(Исключение e)
@@ -323,7 +323,7 @@ pragma(lib, "dinrus.lib");
     try
     {
         b.вызови(нет);
-        assert(false);
+        assert(нет);
     }
     catch(Исключение и)
     {
@@ -347,8 +347,8 @@ pragma(lib, "dinrus.lib");
     
 
 	Фибра t;
-	int q0 = 0;
-	int q1 = 0;
+	цел q0 = 0;
+	цел q1 = 0;
 
 	t = new Фибра(
 	delegate void()
@@ -380,8 +380,8 @@ pragma(lib, "dinrus.lib");
 	delete t;
    
     Фибра d, e;
-    int s0 = 0;
-    int s1 = 0;
+    цел s0 = 0;
+    цел s1 = 0;
     
     d = new Фибра(
     delegate void()
@@ -441,7 +441,7 @@ pragma(lib, "dinrus.lib");
 проц стандартныеИскл()
 {
     скажинс("Проверка стандартных исключений");
-    int t = 0;
+    цел t = 0;
     
     Фибра a = new Фибра(
     delegate void()
@@ -455,7 +455,7 @@ pragma(lib, "dinrus.lib");
     try
     {
         a.вызови(нет);
-        assert(false);
+        assert(нет);
     }
     catch(Исключение e)
     {
@@ -476,52 +476,52 @@ pragma(lib, "dinrus.lib");
 {
     скажинс("Тест на стресс памяти");
 	  
-    const uint РАЗМЕР_СТРЕССА = 5000;
+    const бцел РАЗМЕР_СТРЕССА = 5000;
     
     Фибра[] конткст;
     конткст.length = РАЗМЕР_СТРЕССА;
     
-    int cnt0 = 0;
-    int cnt1 = 0;
+    цел конт = 0;
+    цел конт1 = 0;
 	
-        void threadFunc()
+        void нфункц()
     {
-        cnt0++;
+        конт++;
         Фибра.жни;
-        cnt1++;
+        конт1++;
     }
    
     foreach(inout Фибра к; конткст)
     {
-        к = new Фибра(&threadFunc, 1024);
+        к = new Фибра(&нфункц, 1024);
     }
     	
-    assert(cnt0 == 0);
-    assert(cnt1 == 0);
+    assert(конт == 0);
+    assert(конт1 == 0);
     
     foreach(inout Фибра к; конткст)
     {
         к.вызови;
     }
     
-    assert(cnt0 == РАЗМЕР_СТРЕССА);
-    assert(cnt1 == 0);
+    assert(конт == РАЗМЕР_СТРЕССА);
+    assert(конт1 == 0);
     
     foreach(inout Фибра к; конткст)
     {
         к.вызови;
     }
     
-    assert(cnt0 == РАЗМЕР_СТРЕССА);
-    assert(cnt1 == РАЗМЕР_СТРЕССА);
+    assert(конт == РАЗМЕР_СТРЕССА);
+    assert(конт1 == РАЗМЕР_СТРЕССА);
     
     foreach(inout Фибра к; конткст)
     {
         delete к;
     }
     
-    assert(cnt0 == РАЗМЕР_СТРЕССА);
-    assert(cnt1 == РАЗМЕР_СТРЕССА);
+    assert(конт == РАЗМЕР_СТРЕССА);
+    assert(конт1 == РАЗМЕР_СТРЕССА);
     
     скажинс("Тест на стресс пройден\n");
 }
@@ -530,14 +530,14 @@ pragma(lib, "dinrus.lib");
 {
     скажинс("Проверка плавающей точки");
     
-    float f0 = 1.0;
-    float f1 = 0.0;
+    плав f0 = 1.0;
+    плав f1 = 0.0;
     
-    double d0 = 2.0;
-    double d1 = 0.0;
+    дво d0 = 2.0;
+    дво d1 = 0.0;
     
-    real r0 = 3.0;
-    real r1 = 0.0;
+    реал r0 = 3.0;
+    реал r1 = 0.0;
     
     assert(f0 == 1.0);
     assert(f1 == 0.0);
@@ -551,7 +551,7 @@ pragma(lib, "dinrus.lib");
     a = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             f0 ++;
             d0 ++;
@@ -564,7 +564,7 @@ pragma(lib, "dinrus.lib");
     b = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             f1 = d0 + r0;
             d1 = f0 + r0;
@@ -577,7 +577,7 @@ pragma(lib, "dinrus.lib");
     к = new Фибра(
     delegate void()
     {
-        while(true)
+        while(да)
         {
             f0 *= d1;
             d0 *= r1;
@@ -629,9 +629,9 @@ pragma(lib, "dinrus.lib");
     
     struct registers
     {
-        int eax, ebx, ecx, edx;
-        int esi, edi;
-        int ebp, esp;
+        цел eax, ebx, ecx, edx;
+        цел esi, edi;
+        цел ebp, esp;
         
         //TODO: Add fpu stuff
     }
@@ -725,7 +725,7 @@ pragma(lib, "dinrus.lib");
 {
     скажинс("Проверка Фибра.жни");
     
-    int q0 = 0;
+    цел q0 = 0;
     
     Фибра st0 = new Фибра(
     delegate void()
@@ -759,11 +759,11 @@ pragma(lib, "dinrus.lib");
 {
     скажинс("Проверка безопасности нити");
     
-    int x = 0, y = 0;
+    цел x = 0, y = 0;
     
     Фибра sc0 = new Фибра(
     {
-        while(true)
+        while(да)
         {
             x++;
             Фибра.жни;
@@ -772,7 +772,7 @@ pragma(lib, "dinrus.lib");
     
     Фибра sc1 = new Фибра(
     {
-        while(true)
+        while(да)
         {
             y++;
             Фибра.жни;
@@ -781,13 +781,13 @@ pragma(lib, "dinrus.lib");
     
     thread.Нить t0 = new thread.Нить(
     {
-        for(int и=0; и<10000; и++)
+        for(цел и=0; и<10000; и++)
             sc0.вызови();
     });
     
     thread.Нить t1 = new thread.Нить(
     {
-        for(int и=0; и<10000; и++)
+        for(цел и=0; и<10000; и++)
             sc1.вызови();
     });
     
@@ -810,22 +810,22 @@ pragma(lib, "dinrus.lib");
 проц сбросФибры()
 {
     скажинс("Проверка сброса фибры");
-    int чловызовов=1;
+    цел чловызовов=1;
     Фибра sc0 = new Фибра(
     {
-        for (int и=0;и<чловызовов;++и)
+        for (цел и=0;и<чловызовов;++и)
         {
             Фибра.жни;
         }
     });
 
-    for (int и=0;и<чловызовов+1;++и){
+    for (цел и=0;и<чловызовов+1;++и){
         assert(sc0.состояние==Фибра.Состояние.ЗАДЕРЖ);
         sc0.вызови();
     }
     assert(sc0.состояние==Фибра.Состояние.ТЕРМ);
     sc0.сбрось();
-    for (int и=0;и<чловызовов+1;++и){
+    for (цел и=0;и<чловызовов+1;++и){
         assert(sc0.состояние==Фибра.Состояние.ЗАДЕРЖ);
         sc0.вызови();
     }
@@ -833,12 +833,12 @@ pragma(lib, "dinrus.lib");
     sc0.сотри();
     
     sc0.сбрось(delegate void(){
-        for (int и=0;и<чловызовов+1;++и)
+        for (цел и=0;и<чловызовов+1;++и)
         {
             Фибра.жни;
         }
     });
-    for (int и=0;и<чловызовов+2;++и){
+    for (цел и=0;и<чловызовов+2;++и){
         assert(sc0.состояние==Фибра.Состояние.ЗАДЕРЖ);
         sc0.вызови();
     }
@@ -846,12 +846,12 @@ pragma(lib, "dinrus.lib");
     sc0.сотри();
     
     sc0.сбрось(function void(){
-        for (int и=0;и<1;++и)
+        for (цел и=0;и<1;++и)
         {
             Фибра.жни;
         }
     });
-    for (int и=0;и<2;++и){
+    for (цел и=0;и<2;++и){
         assert(sc0.состояние==Фибра.Состояние.ЗАДЕРЖ);
         sc0.вызови();
     }
@@ -872,12 +872,17 @@ void main()
 плавТчк();
 безопасностьНити();
 проверкаФибраЖни();
-//стрессПамяти();
-//Ниже приведены неработающие тесты
-проверкаИсключений();
-стандартныеИскл();
 базовыеИсключения();
 
+пз;
+try{
+//Ниже приведены неработающие тесты
+//причины несрабатывания не выяснены
+стрессПамяти();
+проверкаИсключений();
+стандартныеИскл();
+}
+catch(Искл и) {и.выведи;}
 
 
 

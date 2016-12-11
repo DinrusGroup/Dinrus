@@ -1,5 +1,5 @@
 ﻿module testlinalg;
-import math.Linalgebra, stdrus;
+import win, math.Linalgebra, stdrus;
 
 проц тест1()
 {

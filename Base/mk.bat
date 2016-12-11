@@ -121,7 +121,6 @@ copy %this%\import\util\*.d  %R%\util\*.di
 @if not exist %this%\Dinrus.Base.dll pause
 @if exist %this%\Dinrus.Base.dll goto nextStep
 @del %this%\objs.rsp
-
 @goto Base
 
 :nextStep
@@ -224,7 +223,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 @if exist %this%\dinrus2.lib  goto Join
 @if not exist %this%\dinrus2.lib pause
 cls
-@goto dinrus2
+@goto NextStep
 :::Ading static libraries to Dinrus.lib
 :Join
 %LIB% -p256   %this%\Dinrus.lib  %this%\dinrus2.lib

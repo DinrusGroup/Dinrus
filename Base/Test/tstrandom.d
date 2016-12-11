@@ -1,7 +1,8 @@
 ﻿module tstrandom;
 
-private import linalg.random, win, stdrus: пз;
+private import runtime,linalg.random, win, stdrus: пз;
 
+extern(C) проц выход(цел);
 
 проц тест1()
 {
@@ -96,4 +97,6 @@ private import linalg.random, win, stdrus: пз;
 тест4();
 	скажинс("Тест удачно пройден");
 	пз;
+	выход(0);
+	
 }

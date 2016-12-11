@@ -2,7 +2,7 @@
 void main()
 {
     Ключ HKCR    =   Реестр.кореньКлассов;
-    Ключ CLSID   =   HKCR.дайКлюч("CLSID");
+    Ключ CLSID   =   HKCR.дайКлюч("csc");
 
     foreach(Ключ ключ; CLSID.ключи())
     {

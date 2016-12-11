@@ -430,7 +430,7 @@ export extern (D) проц иниц()
         }
     }
 	
-	    invariant
+	 invariant
     {
 	инвариант();
     }
