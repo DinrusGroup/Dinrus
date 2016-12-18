@@ -107,7 +107,7 @@ enum ПСостояниеКонтекста
 {
     Готов,      /// When a КонтекстСтэка is in готов состояние, it may be пуск
     Выполняется,    /// When a КонтекстСтэка is выполняется, it is currently in use, и cannot be пуск
-    Завершён,       /// When a КонтекстСтэка is мёртв, it may no longer be пуск
+    Завершён,       /// When a КонтекстСтэка is завершён, it may no longer be пуск
 }
 
 /******************************************************
@@ -170,7 +170,7 @@ public class ОшибкаКонтекста : Ошибка
  * Contexts may be nested arbitrarily, ie Context A invokes
  * Context B, such that when B жниs A is resumeauxd.
  *
- * Calling пуск on already выполняется or мёртв контекст will
+ * Calling пуск on already выполняется or завершён контекст will
  * result in an exception.
  *
  * If an exception is generated in a контекст и it is
@@ -356,7 +356,7 @@ public final class КонтекстСтэка
     {
         debug (КонтекстСтэка) скажифнс("Удаляется %s", this.вТкст);
         
-        //Delete the стэк if we are not мёртв
+        //Delete the стэк if we are not завершён
         удалиСтэк();
     }
     
@@ -404,7 +404,7 @@ public final class КонтекстСтэка
             смУдалиПространство(cast(ук)&tmp);
             
             
-            //If we are мёртв, we need to release the GC
+            //If we are завершён, we need to release the GC
             if(состояние == ПСостояниеКонтекста.Завершён && 
                 старт_см !is пусто)
             {
@@ -541,7 +541,7 @@ public final class КонтекстСтэка
     }
     
     /**
-     * Immediately sets the контекст состояние to мёртв. This
+     * Immediately sets the контекст состояние to завершён. This
      * can be использован as an alternative to deleting the 
      * контекст since it releases any GC references, и
      * may be easily reallocateauxd.
@@ -639,9 +639,9 @@ public final class КонтекстСтэка
     }
     
     /**
-     * Возвращает: True if the контекст is currenctly мёртв
+     * Возвращает: True if the контекст is currenctly завершён
      */
-    public бул мёртв()
+    public бул завершён()
     {
         return состояние == ПСостояниеКонтекста.Завершён;
     }
@@ -678,7 +678,7 @@ public final class КонтекстСтэка
             break;
             
             case ПСостояниеКонтекста.Завершён:
-                //Make sure контекст is мёртв
+                //Make sure контекст is завершён
 				//assert(старт_см is пусто);
             break;
             
@@ -1755,7 +1755,7 @@ unittest
 	assert(q1 == 0);
 	t.пуск();
 	assert(t);
-	assert(t.мёртв);
+	assert(t.завершён);
 	assert(q0 == 1);
 	assert(q1 == 1);
 
@@ -1811,8 +1811,8 @@ unittest
     assert(s0 == 2);
     assert(s1 == 1);
     
-    assert(auxd.мёртв);
-    assert(e.мёртв);
+    assert(auxd.завершён);
+    assert(e.завершён);
     
     delete d;
     delete e;
@@ -1928,7 +1928,7 @@ unittest
     }
     
     assert(a);
-    assert(a.мёртв);
+    assert(a.завершён);
     assert(t == 0);
     
     delete a;
@@ -2215,7 +2215,7 @@ unittest
     
     st0.пуск();
     assert(q0 == 2);
-    assert(st0.мёртв);
+    assert(st0.завершён);
     
     скажифнс("бросьЖни passed!");
 }

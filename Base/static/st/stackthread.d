@@ -302,7 +302,7 @@ class СтэкНить
             break;
             
             case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot пауза a мёртв thread");
+                throw new ИсклСтэкНити(this, "Cannot пауза a завершён thread");
             
             case ПСостояниеНити.Подвешен:
                 throw new ИсклСтэкНити(this, "Cannot пауза a на_паузе thread");
@@ -351,7 +351,7 @@ class СтэкНить
             break;
             
             case ПСостояниеНити.Выполняется:
-                //Transition to мёртв
+                //Transition to завершён
                 transition(ПСостояниеНити.Завершён);
             break;
             
@@ -370,7 +370,7 @@ class СтэкНить
     
     /**
      * Waits to объедини with this thread.  If the given amount
-     * of milliseconds expires before the thread is мёртв,
+     * of milliseconds expires before the thread is завершён,
      * then we return automatically.
      *
      * Параметры:
@@ -402,7 +402,7 @@ class СтэкНить
                 throw new ИсклСтэкНити(this, "A thread cannot объедини with itself!");
             
             case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot объедини with a мёртв thread");
+                throw new ИсклСтэкНити(this, "Cannot объедини with a завершён thread");
             
             case ПСостояниеНити.Подвешен:
                 throw new ИсклСтэкНити(this, "Cannot объедини with a на_паузе thread");
@@ -427,7 +427,7 @@ class СтэкНить
     
     /**
      * Restarts the thread's execution from the very
-     * beginning.  Suspended и мёртв threads are not
+     * beginning.  Suspended и завершён threads are not
      * resumed, but upon resuming, they will перезапуск.
      */
     public final проц перезапуск()
@@ -525,7 +525,7 @@ class СтэкНить
     /**
      * Возвращает: True if the thread is deaauxd.
      */
-    public final бул мёртв()
+    public final бул завершён()
     {
         return состояние == ПСостояниеНити.Завершён;
     }
@@ -1770,7 +1770,7 @@ unittest
     st2.души();
     сн_запустиСрез();
     
-    assert(st2.мёртв);
+    assert(st2.завершён);
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 2);
@@ -1778,7 +1778,7 @@ unittest
     st0.души();
     сн_запустиСрез();
     
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q0 == 3);
     assert(q1 == 1);
     assert(q2 == 2);
@@ -1794,7 +1794,7 @@ unittest
     st1.души();
     сн_запустиСрез();
     
-    assert(st1.мёртв);
+    assert(st1.завершён);
     assert(q0 == 3);
     assert(q1 == 2);
     assert(q2 == 2);
@@ -1906,9 +1906,9 @@ unittest
     
     сн_запустиСрез();
     
-    assert(st0.мёртв);
-    assert(st1.мёртв);
-    assert(st2.мёртв);
+    assert(st0.завершён);
+    assert(st1.завершён);
+    assert(st2.завершён);
     
     assert(a == 3);
     assert(b == 2);
@@ -1949,7 +1949,7 @@ unittest
         e.print;
     }
     
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q0 == 1);
     assert(q1 == 0);
     assert(q2 == 0);
@@ -1984,7 +1984,7 @@ unittest
     assert(q3 == 1);
     
     st1.души;
-    assert(st1.мёртв);
+    assert(st1.завершён);
     
     assert(сн_члоНитей == 0);
     скажифнс("Исключение handling passed!");
@@ -2056,7 +2056,7 @@ unittest
     st0.возобнови();
     сн_запустиСрез();
     
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q == 1);
     assert(r == 2);
     assert(s == 1);
@@ -2073,7 +2073,7 @@ unittest
     
     сн_запустиСрез();
     
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q == 1);
     assert(r == 3);
     assert(s == 1);
@@ -2125,7 +2125,7 @@ unittest
     
     сн_запустиСрез();
     
-    assert(st1.мёртв);
+    assert(st1.завершён);
     assert(q0 == 1);
     assert(q1 == 1);
     assert(q2 == 1);
@@ -2137,7 +2137,7 @@ unittest
     
     st0.души();
     сн_запустиСрез();
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q0 == 2);
     assert(q1 == 1);
     assert(q2 == 3);
@@ -2145,7 +2145,7 @@ unittest
     st2.пауза();
     assert(st2.на_паузе);
     st2.души();
-    assert(st2.мёртв);
+    assert(st2.завершён);
     
     цел r = 0;
     
@@ -2160,7 +2160,7 @@ unittest
         e.print;
     }
     
-    assert(st2.мёртв);
+    assert(st2.завершён);
     assert(r == 1);
     
     assert(сн_члоНитей == 0);
@@ -2222,12 +2222,12 @@ unittest
     }
     
     assert(st0.жив);
-    assert(st1.мёртв);
+    assert(st1.завершён);
     assert(q0 == 1);
     assert(q1 == 2);
     
     сн_запустиСрез();
-    assert(st0.мёртв);
+    assert(st0.завершён);
     assert(q0 == 2);
     assert(q1 == 2);
     
@@ -2266,7 +2266,7 @@ unittest
     assert(q0 == 2);
     
     st0.души();
-    assert(st0.мёртв);
+    assert(st0.завершён);
     
     assert(сн_члоНитей == 0);
     скажифнс("Testing the other перезапуск");
@@ -2444,7 +2444,7 @@ unittest
     
     сн_запустиСрез();
     assert(q0 == 2);
-    assert(st0.мёртв);
+    assert(st0.завершён);
     
     assert(сн_члоНитей == 0);
     скажифнс("бросьЖни passed");

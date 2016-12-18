@@ -2,7 +2,7 @@
 
 import cidrus,  tpl.args;
 import std.string, std.utf, std.format, std.file, std.crc32;
-//import runtime: консоль;
+import win: скажинс;
 
 alias isfile естьФайл;
 alias toUTF16 вЮ16;
@@ -879,20 +879,20 @@ export:
 
 	  /***
 	   * Change the current позиция of the stream. whence is either ППозКурсора.Уст, in
-	   which case the offset is an absolute index from the beginning of the stream,
-	   ППозКурсора.Тек, in which case the offset is a delta from the current
-	   позиция, or ППозКурсора.Кон, in which case the offset is a delta from the end of
-	   the stream (negative or zero offsets only make sense in that case). This
+	   which case the смещение is an absolute index from the beginning of the stream,
+	   ППозКурсора.Тек, in which case the смещение is a delta from the current
+	   позиция, or ППозКурсора.Кон, in which case the смещение is a delta from the end of
+	   the stream (negative or zero смещениеs only make sense in that case). This
 	   returns the new файл позиция.
 	   */
-	  abstract бдол сместись(дол offset, ППозКурсора whence);
+	  abstract бдол сместись(дол смещение, ППозКурсора whence);
 
 	  /***
 	   * Aliases for their normal сместись counterparts.
 	   */
-	  бдол измпозУст(дол offset) { return сместись (offset, ППозКурсора.Уст); }
-	  бдол измпозТек(дол offset) { return сместись (offset, ППозКурсора.Тек); }	/// описано ранее
-	  бдол измпозКон(дол offset) { return сместись (offset, ППозКурсора.Кон); }	/// описано ранее
+	  бдол измпозУст(дол смещение) { return сместись (смещение, ППозКурсора.Уст); }
+	  бдол измпозТек(дол смещение) { return сместись (смещение, ППозКурсора.Тек); }	/// описано ранее
+	  бдол измпозКон(дол смещение) { return сместись (смещение, ППозКурсора.Кон); }	/// описано ранее
 
 	  /***
 	   * Sets файл позиция. Эквивалентно to calling сместись(pos, ППозКурсора.Уст).
@@ -947,12 +947,12 @@ export:
 	  {if(открытый())закрой();
 	  if(!естьФайл(имяф))
 		{
-		консоль(std.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
+		скажинс(std.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
 		}
 	  else if(!УдалиФайл(вЮ16(имяф)))
-	  консоль(std.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
+	  скажинс(std.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
 	  else
-	  консоль(std.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
+	  скажинс(std.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
 	   
 	   
 	  override ткст toString() {

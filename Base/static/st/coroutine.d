@@ -102,7 +102,7 @@ CoroutinePublicT(Tin, Tout, ПТипСопроц TCoroType)
                     Tout temp = this.cout;
 
                 контекст.пуск();
-                if( контекст.мёртв )
+                if( контекст.завершён )
                     this.выполняется = false;
 
                 static if( !is( Tout == void ) )
@@ -147,7 +147,7 @@ CoroutinePublicT(Tin, Tout, ПТипСопроц TCoroType)
                     Tout temp = this.cout;
 
                 контекст.пуск();
-                if( контекст.мёртв )
+                if( контекст.завершён )
                     this.выполняется = false;
 
                 static if( !is( Tout == void ) )
@@ -234,7 +234,7 @@ private
 template
 CoroutineProtectedT(Tin, Tout, ПТипСопроц TCoroType)
 {
-    т_мера STACK_SIZE = ДЕФ_РАЗМЕР_СТЕКА;
+    т_мера РАЗМЕР_СТЕКА = ДЕФ_РАЗМЕР_СТЕКА;
 
     static if( is( Tout == void ) )
     {
@@ -287,7 +287,7 @@ protected:
     this()
     {
         
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
@@ -332,7 +332,7 @@ protected:
     this(Ta1 arg1)
     {
         this.arg1 = arg1;
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
@@ -378,7 +378,7 @@ protected:
     {
         this.arg1 = arg1;
         this.arg2 = arg2;
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
@@ -426,7 +426,7 @@ protected:
         this.arg1 = arg1;
         this.arg2 = arg2;
         this.arg3 = arg3;
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
@@ -476,7 +476,7 @@ protected:
         this.arg2 = arg2;
         this.arg3 = arg3;
         this.arg4 = arg4;
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }
@@ -528,7 +528,7 @@ protected:
         this.arg3 = arg3;
         this.arg4 = arg4;
         this.arg5 = arg5;
-        контекст = new КонтекстСтэка(&стартПроц, STACK_SIZE);
+        контекст = new КонтекстСтэка(&стартПроц, РАЗМЕР_СТЕКА);
         static if( coroType == ПТипСопроц.Ловкий )
             контекст.пуск();
     }

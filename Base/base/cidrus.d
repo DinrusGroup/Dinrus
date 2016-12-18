@@ -1129,8 +1129,8 @@ alias бдол т_максбцел;
 
 extern  (D)
 {
-    wint_t getwсим()                     { return fgetwc(stdin);     }
-    wint_t putwсим(wchar_t c)            { return fputwc(c,stdout);  }
+    wint_t getwchar()                     { return fgetwc(stdin);     }
+    wint_t putwchar(wchar_t c)            { return fputwc(c,stdout);  }
     wint_t getwc(фук stream)            { return fgetwc(stream);    }
     wint_t putwc(wchar_t c, фук stream) { return fputwc(c, stream); }
 }
@@ -1896,8 +1896,8 @@ wchar_t* fgetws(wchar_t* s, цел n, фук поток);
 
 extern  (D)
 {
-    wint_t getwсим()                     { return fgetwc(stdin);     }
-    wint_t putwсим(wchar_t c)            { return fputwc(c,stdout);  }
+    wint_t getwchar()                     { return fgetwc(stdin);     }
+    wint_t putwchar(wchar_t c)            { return fputwc(c,stdout);  }
     wint_t getwc(фук поток)            { return fgetwc(поток);    }
     wint_t putwc(wchar_t c, фук поток) { return fputwc(c, поток); }
 }
