@@ -203,7 +203,7 @@ struct БайтКонвертер
          * Converts the supplied Массив в_ integral тип T
          * 
          * Параметры:
-         *     x_ = The supplied Массив of байты (ubytes, байты, chars, whatever)
+         *     x_ = The supplied Массив of байты (ubytes, байты, симвы, whatever)
          * 
          * Возвращает:
          *     A integral of тип T создан with the supplied байты placed

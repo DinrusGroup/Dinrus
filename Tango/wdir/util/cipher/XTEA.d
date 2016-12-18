@@ -40,7 +40,7 @@ class XTEA : ШифрБлок
         _encrypt = зашифруй;
                     
         if (keyParams.ключ.length != KEY_SIZE)
-            не_годится(имя()~": Invalid ключ length (требует 16 байты)");
+            не_годится(имя()~": Неверный ключ length (требует 16 байты)");
         
         subkeys = new бцел[4];
         sum0 = new бцел[32];

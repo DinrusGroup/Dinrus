@@ -158,7 +158,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * размер         = значение that provопрes a hint for the maximum amount of
      *                conduits that will be registered
      * maxEvents    = значение that provопрes a hint for the maximum amount of
-     *                провод события that will be returned in the selection
+     *                провод события that will be returned in the выделение
      *                установи per вызов в_ выбери.
      */
     public abstract проц открой(бцел размер, бцел maxEvents);
@@ -284,7 +284,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      *
      * If другой нить is currently блокed in an вызов в_ any of the
      * выбери() methods then that вызов will return immediately. If no
-     * selection operation is currently in ход then the следщ invocation
+     * выделение operation is currently in ход then the следщ invocation
      * of one of these methods will return immediately. In any case the значение
      * returned by that invocation may be non-zero. Subsequent invocations of
      * the выбери() methods will блок as usual unless this метод is invoked
@@ -293,7 +293,7 @@ abstract class АбстрактныйСелектор: ИСелектор
     // public abstract проц wakeup();
 
     /**
-     * Return the selection установи resulting из_ the вызов в_ any of the выбери()
+     * Return the выделение установи resulting из_ the вызов в_ any of the выбери()
      * methods.
      *
      * Remarks:
@@ -303,7 +303,7 @@ abstract class АбстрактныйСелектор: ИСелектор
     public abstract ИНаборВыделений наборВыд();
 
     /**
-     * Return the selection ключ resulting из_ the registration of a провод
+     * Return the выделение ключ resulting из_ the registration of a провод
      * в_ the selector.
      *
      * Remarks:

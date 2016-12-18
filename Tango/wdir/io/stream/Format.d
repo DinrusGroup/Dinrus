@@ -92,7 +92,7 @@ class ФормВывод(T) : ФильтрВывода
         private бул            слитьСтроки;
 
         public alias выведи      opCall;         /// opCall -> выведи
-        public alias нс    nl;             /// nl -> нс
+      //  public alias нс    нс;             /// нс -> нс
 
         version (Win32)
                  private const T[] Кс = "\r\n";

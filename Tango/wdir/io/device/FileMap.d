@@ -306,7 +306,7 @@ class КартированныйФайл
 
                 private проц сбрось ()
                 {
-                        // NOTE: When a process ends, все mmaps belonging в_ that process
+                        // NOTE: When a process заканчивается, все mmaps belonging в_ that process
                         //       are automatically unmapped by system (Linux).
                         //       On the другой hand, this is NOT the case when the related 
                         //       файл descrИПtor is закрыт.  This function unmaps explicitly.

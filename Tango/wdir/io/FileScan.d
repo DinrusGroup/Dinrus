@@ -145,7 +145,7 @@ class СканФайл
 
         /***********************************************************************
 
-                Internal routine в_ locate файлы and sub-directories. We
+                Internal routine в_ местоположение файлы and sub-directories. We
                 пропусти записи with names composed only of '.' characters. 
 
         ***********************************************************************/

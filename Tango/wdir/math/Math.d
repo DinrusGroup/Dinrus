@@ -18,7 +18,7 @@ template минмакстип(T...){
 
 /** Возвращает минимальный из предложенных аргументов.
  *
- * Note: If the аргументы are floating-point numbers, и at least one is a НЧ,
+ * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
 минмакстип!(T) мин(T...)(T арг){
@@ -29,7 +29,7 @@ template минмакстип(T...){
 
 /** Return the maximum of the supplied аргументы.
  *
- * Note: If the аргументы are floating-point numbers, и at least one is a НЧ,
+ * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
 минмакстип!(T) макс(T...)(T арг){
@@ -369,7 +369,7 @@ T рационалПоли(T)(T x, T [] numerator, T [] denominator)
 deprecated {
 private enum : цел { MANTDIG_2 = реал.mant_dig/2 } // Compiler workaround
 
-/** Floating point "approximate equality".
+/** Floating точка "approximate equality".
  *
  * Return да if x is equal в_ y, в_ внутри the specified точность
  * If roundoffbits is not specified, a reasonable default is использован.

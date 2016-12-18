@@ -30,7 +30,7 @@ public  import  io.protocol.model;
         relaxed fashion, consider using ИБуфер directly instead.
 
         все readers support the full установи of исконный данные типы, plus a full
-        selection of Массив типы. The latter can be configured в_ произведи
+        выделение of Массив типы. The latter can be configured в_ произведи
         either a копируй (.dup) of the буфер контент, or a срез. See classes
         КопияКучи, СрезБуфера и СрезКучи for ещё on this topic. Applications
         can disable память management by configuring a Читатель with one of the

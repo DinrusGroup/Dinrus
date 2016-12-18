@@ -123,7 +123,7 @@ version (linux)
         public const бцел DefaultMaxEvents = 16;
 
 
-        /** Карта в_ associate the провод handles with their selection ключи */
+        /** Карта в_ associate the провод handles with their выделение ключи */
         private КлючВыбора[ИВыбираемый.фукз] _keys;
         /** Файл descrИПtor returned by the epoll_create() system вызов. */
         private цел _epfd = -1;
@@ -157,7 +157,7 @@ version (linux)
          * размер         = maximum amount of conduits that will be registered;
          *                it will grow dynamically if needed.
          * maxEvents    = maximum amount of провод события that will be
-         *                returned in the selection установи per вызов в_ выбери();
+         *                returned in the выделение установи per вызов в_ выбери();
          *                this предел is enforced by this selector.
          *
          * Throws:
@@ -264,7 +264,7 @@ version (linux)
 
                 событие.события = события;
 
-                // We associate the selection ключ в_ the epoll_event в_ be
+                // We associate the выделение ключ в_ the epoll_event в_ be
                 // able в_ retrieve it efficiently when we получи события for
                 // this укз.
                 // We keep the ключи in a карта в_ сделай sure that the ключ is not
@@ -409,7 +409,7 @@ version (linux)
         }
 
         /**
-         * Return the selection установи resulting из_ the вызов в_ any of the
+         * Return the выделение установи resulting из_ the вызов в_ any of the
          * выбери() methods.
          *
          * Remarks:
@@ -422,7 +422,7 @@ version (linux)
         }
 
         /**
-         * Return the selection ключ resulting из_ the registration of a провод
+         * Return the выделение ключ resulting из_ the registration of a провод
          * в_ the selector.
          *
          * Remarks:
@@ -443,7 +443,7 @@ version (linux)
         }
 
         /**
-         * Iterate through the currently registered selection ключи.  Note that
+         * Iterate through the currently registered выделение ключи.  Note that
          * you should not erase or добавь any items из_ the selector while
          * iterating, although you can регистрируй existing conduits again.
          */

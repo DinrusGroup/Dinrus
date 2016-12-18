@@ -226,7 +226,7 @@ class Blowfish : ШифрБлок
         
         бцел длин = keyParams.ключ.length;
         if (длин < MIN_KEY_SIZE || длин > MAX_KEY_SIZE)
-            не_годится(имя()~": Invalid ключ length (требует 4-56 байты)");
+            не_годится(имя()~": Неверный ключ length (требует 4-56 байты)");
         
         workingKey = keyParams.ключ;
         

@@ -28,7 +28,7 @@ private import io.Path : стандарт, исконный;
 
 version (Win32)
         {
-        private import Text = text.Util;
+        private import Текст = text.Util;
         private extern (Windows) DWORD GetLogicalDriveStringsA (DWORD, LPSTR);
         private import stringz : изТкст16н, изТкст0;
 
@@ -277,7 +277,7 @@ struct ФСистема
                            GetLogicalDriveStringsA (длин, cast(PCHAR)ткт.ptr);
 
                            // разбей корни преобр_в seperate strings
-                           корни = Text.разграничь (ткт [0 .. $-1], "\0");
+                           корни = Текст.разграничь (ткт [0 .. $-1], "\0");
                            }
                         return корни;
                 }

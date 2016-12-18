@@ -23,7 +23,7 @@ private
     import io.device.Array;
     import io.device.File;
 
-    import Text = text.Util;
+    import Текст = text.Util;
     import Ascii = text.Ascii;
     import Целое = text.convert.Integer;
     import Timestamp = text.convert.TimeStamp;

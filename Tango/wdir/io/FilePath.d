@@ -76,7 +76,7 @@ class ФПуть : ПросмотрПути
 
         /***********************************************************************
 
-                Call-site shortcut в_ создай a ФПуть экземпляр. This
+                Вызов-site shortcut в_ создай a ФПуть экземпляр. This
                 enables the same syntax as struct usage, so may expose
                 a migration путь
 

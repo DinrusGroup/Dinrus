@@ -131,7 +131,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
      * размер         = maximum amount of conduits that will be registered;
      *                it will grow dynamically if needed.
      * maxEvents    = maximum amount of провод события that will be
-     *                returned in the selection установи per вызов в_ выбери();
+     *                returned in the выделение установи per вызов в_ выбери();
      *                this значение is currently not использован by this selector.
      */
     public проц открой(бцел размер = ДефРазмер, бцел maxEvents = ДефРазмер)
@@ -464,7 +464,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
     }
 
     /**
-     * Return the selection установи resulting из_ the вызов в_ any of the
+     * Return the выделение установи resulting из_ the вызов в_ any of the
      * выбери() methods.
      *
      * Remarks:
@@ -478,7 +478,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
     }
 
     /**
-     * Return the selection ключ resulting из_ the registration of a
+     * Return the выделение ключ resulting из_ the registration of a
      * провод в_ the selector.
      *
      * Remarks:
@@ -507,7 +507,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
     }
         
     /**
-     * Iterate through the currently registered selection ключи.  Note that
+     * Iterate through the currently registered выделение ключи.  Note that
      * you should not erase or добавь any items из_ the selector while
      * iterating, although you can регистрируй existing conduits again.
      */
@@ -581,7 +581,7 @@ private class SelectSelectionSet: ИНаборВыделений
                 текущ.события = события;
 
                 debug (selector)
-                    Стдвыв.форматируй("---   Calling foreach delegate with selection ключ ({0}, 0x{1:x})\n",
+                    Стдвыв.форматируй("---   Calling foreach delegate with выделение ключ ({0}, 0x{1:x})\n",
                                   cast(цел) укз, cast(бцел) события);
 
                 if ((rc = дг(текущ)) != 0)

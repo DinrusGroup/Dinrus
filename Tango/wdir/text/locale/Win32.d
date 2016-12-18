@@ -37,10 +37,10 @@ private {
 цел сравниСтроку(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase) {
 
   шим[] toUnicode(ткст ткст, бцел смещение, бцел length, out цел translated) {
-    сим* chars = ткст.ptr + смещение;
-    цел требуется = MultiByteToWideChar(0, 0, chars, length, пусто, 0);
+    сим* симвы = ткст.ptr + смещение;
+    цел требуется = MultiByteToWideChar(0, 0, симвы, length, пусто, 0);
     шим[] результат = new шим[требуется];
-    translated = MultiByteToWideChar(0, 0, chars, length, результат.ptr, требуется);
+    translated = MultiByteToWideChar(0, 0, симвы, length, результат.ptr, требуется);
     return результат;
   }
 

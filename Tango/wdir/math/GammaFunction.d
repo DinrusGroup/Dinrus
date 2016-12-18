@@ -560,7 +560,7 @@ unittest {
 
         t = эксп(y);
 /+
-        // There seems в_ be a bug in Cephes at this point.
+        // There seems в_ be a bug in Cephes at this точка.
         // Problems occur for y > МАКСЛОГ, not y < МИНЛОГ.
         if( y < МИНЛОГ ) {
             t = 0.0L;
@@ -754,7 +754,7 @@ newt:
     lgm = логГаммы(a+b) - логГаммы(a) - логГаммы(b);
 
     for( i=0; i<15; i++ ) {
-        /* Compute the function at this point. */
+        /* Compute the function at this точка. */
         if ( i != 0 )
             y = бетаНеполная(a,b,x);
         if ( y < yl ) {
@@ -772,7 +772,7 @@ newt:
         }
         if( x == 1.0L || x == 0.0L )
             break;
-        /* Compute the derivative of the function at this point. */
+        /* Compute the derivative of the function at this точка. */
         d = (a - 1.0L) * лог(x) + (b - 1.0L) * лог(1.0L - x) + lgm;
         if ( d < МИНЛОГ ) {
             goto готово;
@@ -1263,7 +1263,7 @@ body {
             x1 = x;
             yh = y;
         }
-    /* compute the derivative of the function at this point */
+    /* compute the derivative of the function at this точка */
         d = (a - 1.0L) * лог(x0) - x0 - lgm;
         if ( d < -MAXLOGL )
             goto ihalve;

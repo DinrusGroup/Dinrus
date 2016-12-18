@@ -27,7 +27,7 @@ private import  util.collection.model.View,
 /*******************************************************************************
 
         Коллекция serves as a convenient основа class for most implementations
-        of mutable containers. It maintains a version число и элемент счёт.
+        of изменяемый containers. It maintains a version число и элемент счёт.
         It also provопрes default implementations of many collection operations. 
 
         Authors: Doug Lea

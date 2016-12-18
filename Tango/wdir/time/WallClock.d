@@ -29,7 +29,7 @@ private import  sys.Common;
         in accordance with the OS facilities. In particular, Win32 systems
         behave differently в_ Posix when calculating daylight-savings время
         (Win32 calculates with respect в_ the время of the вызов, whereas a
-        Posix system calculates based on a provопрed point in время). Posix
+        Posix system calculates based on a provопрed точка in время). Posix
         systems should typically have the TZ environment переменная установи в_ 
         a valid descrИПtor.
 
@@ -106,7 +106,7 @@ struct Куранты
 
                         Retrieve the local bias, включая DST adjustment.
                         Note that Win32 calculates DST at the время of вызов
-                        rather than based upon a point in время represented
+                        rather than based upon a точка in время represented
                         by an аргумент.
                          
                 ***************************************************************/

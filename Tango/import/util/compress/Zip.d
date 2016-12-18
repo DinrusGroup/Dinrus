@@ -399,7 +399,7 @@ private:
     проц read_cd();
 
     /*
-     * This will locate the конец of CD record in the открой поток.
+     * This will местоположение the конец of CD record in the открой поток.
      *
      * This код sucks, but that's because ZIP sucks.
      *

@@ -17,7 +17,7 @@ module util.collection.ArraySeq;
 
 private import  util.collection.model.Iterator,
                 util.collection.model.Sortable,
-                util.collection.model.Comparator,
+                util.collection.model.Сравнитель,
                 util.collection.model.GuardIterator;
 
 private import  util.collection.impl.SeqCollection,
@@ -404,7 +404,7 @@ deprecated public class ArraySeq(T) : SeqCollection!(T), Sortable!(T)
          * Uses a быстросорт-based algorithm.
          * See_Also: util.collection.SortableCollection.сортируй
         **/
-        public проц сортируй(Comparator!(T) cmp)
+        public проц сортируй(Сравнитель!(T) cmp)
         {
                 if (счёт > 0)
                    {
@@ -602,10 +602,10 @@ deprecated public class ArraySeq(T) : SeqCollection!(T), Sortable!(T)
          * @param s, the Массив в_ сортируй
          * @param lo, the least индекс в_ сортируй из_
          * @param hi, the greatest индекс
-         * @param cmp, the comparator в_ use for comparing элементы
+         * @param cmp, the сравнитель в_ use for comparing элементы
         **/
 
-        public final static проц быстрСорт(T s[], цел lo, цел hi, Comparator!(T) cmp)
+        public final static проц быстрСорт(T s[], цел lo, цел hi, Сравнитель!(T) cmp)
         {
                 if (lo >= hi)
                     return;

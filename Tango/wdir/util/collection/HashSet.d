@@ -168,7 +168,7 @@ deprecated public class HashSet(T) : SetCollection!(T), ПараметрыХэш
                    проверьLoadFactor();
                    }
                 else
-                   throw new ИсклНелегальногоАргумента("Invalid Хэш таблица загрузи factor");
+                   throw new ИсклНелегальногоАргумента("Неверный Хэш таблица загрузи factor");
         }
 
 

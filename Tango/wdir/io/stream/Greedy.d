@@ -106,7 +106,7 @@ class ГридиВывод : ФильтрВывода
 
                 Consume everything we were given. Returns the число of
                 байты записано which will be less than ист.length only
-                when an Кф condition is reached, and Кф из_ that point 
+                when an Кф condition is reached, and Кф из_ that точка 
                 forward
 
         ***********************************************************************/

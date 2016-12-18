@@ -70,7 +70,7 @@ template типЦелЧис_ли( T )
 
 
 /**
- * Evaluates в_ да if T is a реал floating-point тип.
+ * Evaluates в_ да if T is a реал floating-точка тип.
  */
 template типРеал_ли( T )
 {
@@ -81,7 +81,7 @@ template типРеал_ли( T )
 
 
 /**
- * Evaluates в_ да if T is a комплексное floating-point тип.
+ * Evaluates в_ да if T is a комплексное floating-точка тип.
  */
 template типКомплекс_ли( T )
 {
@@ -92,7 +92,7 @@ template типКомплекс_ли( T )
 
 
 /**
- * Evaluates в_ да if T is an мнимое floating-point тип.
+ * Evaluates в_ да if T is an мнимое floating-точка тип.
  */
 template типМнимое_ли( T )
 {
@@ -103,7 +103,7 @@ template типМнимое_ли( T )
 
 
 /**
- * Evaluates в_ да if T is any floating-point тип: реал, комплексное, or
+ * Evaluates в_ да if T is any floating-точка тип: реал, комплексное, or
  * мнимое.
  */
 template isFloatingPointType( T )

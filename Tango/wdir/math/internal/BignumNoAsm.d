@@ -283,7 +283,7 @@ unittest {
 {
     ulong c = 0;
     for(цел i = 0; i < src.length; ++i){
-		 // At this point, c is 0 or 1, since FFFF*FFFF+FFFF_FFFF = 1_0000_0000.
+		 // At this точка, c is 0 or 1, since FFFF*FFFF+FFFF_FFFF = 1_0000_0000.
          c += cast(ulong)(src[i]) * src[i] + приёмник[2*i];
          приёмник[2*i] = cast(бцел)c;
          c = (c>>=32) + приёмник[2*i+1];

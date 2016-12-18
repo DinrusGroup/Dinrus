@@ -501,7 +501,7 @@ T[] format8601(T) (T[] вывод, Время t)
 
         Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
-        A decimal point, either a comma or a dot (without any preference as
+        A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
         CGPM in 2003), is использован as a разделитель between the время элемент и
         its дробь."
@@ -528,7 +528,7 @@ T[] format8601(T) (T[] вывод, Время t)
 
         Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
-        A decimal point, either a comma or a dot (without any preference as
+        A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
         CGPM in 2003), is использован as a разделитель between the время элемент и
         its дробь."
@@ -553,7 +553,7 @@ T[] format8601(T) (T[] вывод, Время t)
             *p++ == ' '      &&
             время (tod, p, e))
             {
-            // Are there chars left? If да, разбор миллисек. If no, миллисек = 0.
+            // Are there симвы left? If да, разбор миллисек. If no, миллисек = 0.
             if (p - ист.ptr) {
                 // проверь дробь разделитель
                 T frac_sep = *p++;

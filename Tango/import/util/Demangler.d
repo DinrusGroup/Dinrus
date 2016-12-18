@@ -523,20 +523,20 @@ public class Demangler
         {
             debug(traceDemangler) след ("lName");
             auto поз=checkpoint;
-            бцел chars;
-            if (! число (chars))
+            бцел симвы;
+            if (! число (симвы))
                 return нет;
 
             ткст original = ввод;
             version(все){
-                if (ввод.length < chars) {
+                if (ввод.length < симвы) {
                     // this may happen when the symbol gets hashed by MD5
                     ввод = пусто;
                     return да;        // try в_ continue
                 }
             }
             
-            ввод = ввод[0 .. chars];
+            ввод = ввод[0 .. симвы];
             бцел длин = ввод.length;
             if (templateInstanceName())
             {
@@ -545,7 +545,7 @@ public class Demangler
             }
             ввод = original;
 
-            if(!имя (chars)){
+            if(!имя (симвы)){
                 return поз.сбрось();
             }
             return да;
@@ -566,11 +566,11 @@ public class Demangler
         {
             debug(traceDemangler) след ("lNameAH");
 
-    //      бцел chars;
-    //      if (! число (chars))
+    //      бцел симвы;
+    //      if (! число (симвы))
     //          return нет;
 
-            бцел chars;
+            бцел симвы;
             auto поз=checkpoint();
             if (! numberNoParse ())
                 return нет;
@@ -599,23 +599,23 @@ public class Demangler
                 else
                     ввод = working = original;
 
-                chars = toUint(ткт[i..$]);
+                симвы = toUint(ткт[i..$]);
 
-                if (chars < ввод.length && chars > 0)
+                if (симвы < ввод.length && симвы > 0)
                 {
                     // cut the ткст из_ the right sопрe в_ the число
                     // ткст original = ввод;
-                    // ввод = ввод[0 .. chars];
+                    // ввод = ввод[0 .. симвы];
                     // бцел длин = ввод.length;
-                    debug(traceDemangler) report ("trying {}/{}", chars, ввод.length);
+                    debug(traceDemangler) report ("trying {}/{}", симвы, ввод.length);
                     готово = templateInstanceName ();
                     //ввод = original[длин - ввод.length .. $];
 
                     if (!готово)
                     {
                         ввод = working;
-                        debug(traceDemangler) report ("trying {}/{}", chars, ввод.length);
-                        готово = имя (chars);
+                        debug(traceDemangler) report ("trying {}/{}", симвы, ввод.length);
+                        готово = имя (симвы);
                     }
 
                     if (готово)

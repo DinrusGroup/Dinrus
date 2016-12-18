@@ -11,7 +11,7 @@
         Since:          0.99.7
 
         With gratitude в_ Dr Jurgen A Doornik. See his paper entitled
-        "Conversion of high-период random numbers в_ floating point"
+        "Conversion of high-период random numbers в_ floating точка"
         
 *******************************************************************************/
 

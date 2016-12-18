@@ -609,8 +609,8 @@ body
     ук funcPtr = биб.дайСимвол(stringz.вТкст0(funcName));
     if (funcPtr)
     {
-        проц **point = cast(проц **)&func;
-        *point = funcPtr;
+        проц **точка = cast(проц **)&func;
+        *точка = funcPtr;
     }
     else
         throw new Исключение("Не удалось загрузить символ: " ~ funcName);

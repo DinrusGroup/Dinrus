@@ -43,7 +43,7 @@
         ...
         ---
 
-        Путь normalization and образец-matching is also hosted here via
+        Путь normalization and образец-совпадают is also hosted here via
         the нормализуй() and образец() functions. See the doc towards the
         конец of this module.
 
@@ -555,7 +555,7 @@ package struct ФС
                 static цел список (ткст папка, цел delegate(ref ИнфОФайле) дг, бул все=нет)
                 {
                         HANDLE                  h;
-                        цел                     ret;
+                        цел                     возвр;
                         ткст                  префикс;
                         сим[MAX_PATH+1]        врем =void;
                         FIND_DATA               fileinfo =void;
@@ -589,7 +589,7 @@ package struct ФС
                                 }
 
                         if (h is INVALID_HANDLE_VALUE)
-                            return ret; 
+                            return возвр; 
 
                         scope (exit)
                                FindClose (h);
@@ -620,12 +620,12 @@ package struct ФС
 
                               // пропусти "..." names
                               if (ткт.length > 3 || ткт != "..."[0 .. ткт.length])
-                                  if ((ret = дг(инфо)) != 0)
+                                  if ((возвр = дг(инфо)) != 0)
                                        break;
                               }
                            } while (следщ);
 
-                        return ret;
+                        return возвр;
                 }
 
                 /***************************************************************
@@ -917,7 +917,7 @@ package struct ФС
 
                 static цел список (ткст папка, цел delegate(ref ИнфОФайле) дг, бул все=нет)
                 {
-                        цел             ret;
+                        цел             возвр;
                         Пап*            пап;
                         dirent          Запись;
                         dirent*         pentry;
@@ -927,7 +927,7 @@ package struct ФС
 
                         пап = rt.core.stdc.posix.dirent.opendir (папка.ptr);
                         if (! пап)
-                              return ret;
+                              return возвр;
 
                         scope (exit)
                                rt.core.stdc.posix.dirent.closedir (пап);
@@ -976,11 +976,11 @@ package struct ФС
                                            инфо.байты = cast(бдол) sbuf.st_size;
                                     }
                                  if (все || (инфо.скрытый | инфо.системный) is нет)
-                                     if ((ret = дг(инфо)) != 0)
+                                     if ((возвр = дг(инфо)) != 0)
                                           break;
                                  }
                               }
-                        return ret;
+                        return возвр;
                 }
         }
 }
@@ -1043,9 +1043,9 @@ struct ПутеПарсер
 
         ПутеПарсер dup ()
         {
-                auto ret = *this;
-                ret.fp = fp.dup;
-                return ret;
+                auto возвр = *this;
+                возвр.fp = fp.dup;
+                return возвр;
         }
 
         /***********************************************************************
@@ -1261,7 +1261,7 @@ struct ПутеПарсер
 
         /***********************************************************************
 
-                Parse the путь spec with explicit конец point. A '\' is 
+                Parse the путь spec with explicit конец точка. A '\' is 
                 consопрered illegal in the путь and should be normalized
                 out before this is invoked (the контент managed here is
                 consопрered immutable, and thus cannot be изменён by this
@@ -1610,7 +1610,7 @@ struct ПутеПарсер
 
         коллируй все файлы and папки из_ the given путь whose имя matches
         the given образец. Folders will be traversed where рекурсия is включен, 
-        and a установи of matching names is returned as filepaths (включая those 
+        and a установи of совпадают names is returned as filepaths (включая those 
         папки which match the образец)
 
         Note: allocates память for returned пути
@@ -1814,16 +1814,16 @@ debug(UnitTest)
         <td>Matches 0 or ещё instances of any character.</td></tr>
         <tr><td><b>?</b></td>
         <td>Matches exactly one instances of any character.</td></tr>
-        <tr><td><b>[</b><i>chars</i><b>]</b></td>
+        <tr><td><b>[</b><i>симвы</i><b>]</b></td>
         <td>Matches one экземпляр of any character that appears
         between the brackets.</td></tr>
-        <tr><td><b>[!</b><i>chars</i><b>]</b></td>
+        <tr><td><b>[!</b><i>симвы</i><b>]</b></td>
         <td>Matches one экземпляр of any character that does not appear
-        between the brackets after the exclamation mark.</td></tr>
+        between the brackets after the exclamation метка.</td></tr>
         </table><p>
         Internally indivопрual character comparisons are готово calling
         charMatch(), so its rules apply here too. Note that путь
-        разделители and dots don't stop a meta-character из_ matching
+        разделители and dots don't stop a meta-character из_ совпадают
         further portions of the имяф.
 
         Возвращает: да if образец matches имяф, нет otherwise.
@@ -2219,9 +2219,9 @@ debug (UnitTest)
         assert (нормализуй("///../foo") == "/foo");
         assert (нормализуй("./foo") == "foo");
         auto буф = new сим[100];
-        auto ret = нормализуй("foo/bar/./baz", буф);
-        assert (ret.ptr == буф.ptr);
-        assert (ret == "foo/bar/baz");
+        auto возвр = нормализуй("foo/bar/./baz", буф);
+        assert (возвр.ptr == буф.ptr);
+        assert (возвр == "foo/bar/baz");
 
         version (Windows) 
                 {

@@ -311,7 +311,7 @@ private т_мера doIso8601Date(T)(
  * can never be encountered, one should check the return значение в_ be sure that
  * the parsing succeeded as ожидалось.
  *
- * Extra fields in РасширеннаяДата:
+ * Экстра fields in РасширеннаяДата:
  *
  * Seconds may be 60 if the часы and минуты are 23 and 59, as leap сек
  * are occasionally добавьed в_ UTC время. A Время's сек will be 59 in this
@@ -532,7 +532,7 @@ private т_мера doIso8601Time(T)(
  * // April 12th, 1985 23:50:30,042
  * разборДатыИВремени("1985W155T235030,042", t);
  *
- * // Invalid время: returns zero
+ * // Неверный время: returns zero
  * разборДатыИВремени("1902-03-04T10:1a", t);
  *
  * // Separating T omitted: returns zero

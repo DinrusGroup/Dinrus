@@ -21,7 +21,7 @@ private {
 
 private ткст фиксируйИмя(ткст toFix) {
     if (естьОбразец(toFix, "/"))
-        toFix = toFix[(locatePrior(toFix, '/') + 1) .. length];
+        toFix = toFix[(местоположениеПеред(toFix, '/') + 1) .. length];
     return toFix;
 }
 
@@ -1157,7 +1157,7 @@ class ФайлФтп: ФайлВфс {
 }
 
 /******************************************************************************
-  Represents a selection of Files.
+  Represents a выделение of Files.
 ******************************************************************************/
 
 class ФайлыФтп: ФайлыВфс {

@@ -17,14 +17,14 @@ private import exception;
 
 /**
     An alias в_ a delegate taking a ткст as a parameter. The значение 
-    parameter will hold any chars immediately
+    parameter will hold any симвы immediately
     following the аргумент. 
 */
 alias проц delegate (ткст значение) ОбрвызПарсераАргов;
 
 /**
     An alias в_ a delegate taking a ткст as a parameter. The значение 
-    parameter will hold any chars immediately
+    parameter will hold any симвы immediately
     following the аргумент.
 
     The порядковый аргумент represents which default аргумент this is for
@@ -171,7 +171,7 @@ class АргПарсер{
     /**
         Binds a delegate обрвызов в_ все аргументы not conforming в_ an
         аргумент bound in a вызов в_ свяжи(). These аргументы will be passed в_ the
-        delegate without having any matching prefixes removed.
+        delegate without having any совпадают prefixes removed.
 
         Параметры:
             обрвызов = the default обрвызов
@@ -231,7 +231,7 @@ class АргПарсер{
     /**
         Parses the аргументы provопрed by the parameter. The bound обрвызовы are called as
         аргументы are recognized. If two аргументы have the same префикс, and старт with 
-        the same characters (e.g.: --открой, --opened), the longest matching bound обрвызов
+        the same characters (e.g.: --открой, --opened), the longest совпадают bound обрвызов
         is called.
 
         Параметры:
@@ -274,7 +274,7 @@ class АргПарсер{
                     }
 
                     if (найдено) {
-                        // Find the longest matching обрвызов определитель из_ the кандидаты.
+                        // Find the longest совпадают обрвызов определитель из_ the кандидаты.
                         т_мера indexLongestMatch = 0;
 
 						if (кандидаты.length > 1) {
@@ -285,7 +285,7 @@ class АргПарсер{
 							}
 						}
 
-                        // Call the best matching обрвызов.
+                        // Вызов the best совпадают обрвызов.
                         with(кандидаты[indexLongestMatch]) { ов(argData[опр.length..$]); }
                     }
                 }

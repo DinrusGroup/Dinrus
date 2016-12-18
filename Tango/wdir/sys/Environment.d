@@ -21,7 +21,7 @@ private import  exception;
 
 private import  io.model;
 
-private import  Text = text.Util;
+private import  Текст = text.Util;
 
 /*******************************************************************************
 
@@ -138,7 +138,7 @@ struct Среда
                              return bin;
 /+ вынужден убрать в коммент из-за шаблона
                 // rifle through the путь (after converting в_ стандарт форматируй)
-                foreach (pe; Text.образцы (стандарт(получи("PATH")), ФайлКонст.СимСистПуть))
+                foreach (pe; Текст.образцы (стандарт(получи("PATH")), ФайлКонст.СимСистПуть))
                          if (bin.путь(pe).есть_ли)
                              version (Windows)
                                       return bin;

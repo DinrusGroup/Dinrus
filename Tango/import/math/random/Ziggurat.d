@@ -16,7 +16,7 @@ import core.Traits;
 /// otherwise it is assumed в_ be из_ 0 в_ infinity.
 /// Struct based в_ avoопр extra indirection when wrapped in a class (и it should be wrapped
 /// in a class и not использован directly).
-/// Call стиль initialization avoопрed on purpose (this is a big structure, you don't want в_ return it)
+/// Вызов стиль initialization avoопрed on purpose (this is a big structure, you don't want в_ return it)
 struct Циггурат(СлучГ,T,alias плотностьВерФ,alias хвостГенератор,бул естьНегатив=да){
     static assert(типРеал_ли!(T),T.stringof~" недопустимо, поддерживаются только переменные с плавающей точкой");
     const цел члоБлоков=256;

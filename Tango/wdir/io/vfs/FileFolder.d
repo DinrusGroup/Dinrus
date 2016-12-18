@@ -40,7 +40,7 @@ class ФайлПапка : ПапкаВфс
 
                 Созд a файл папка with the given путь. 
 
-                Option 'создай' will создай the путь when установи да, 
+                Опция 'создай' will создай the путь when установи да, 
                 or reference an existing путь otherwise
 
         ***********************************************************************/
@@ -382,8 +382,8 @@ class ГруппаФайлов : ФайлыВфс
 
 /*******************************************************************************
 
-        A установи of папки representing a selection. This is where файл 
-        selection is made, и образец-matched папка subsets can be
+        A установи of папки representing a выделение. This is where файл 
+        выделение is made, и образец-matched папка subsets can be
         выкиньed. You need one of these в_ expose statistics (such as
         файл or папка счёт) of a selected папка группа 
 

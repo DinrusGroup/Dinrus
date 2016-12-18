@@ -188,9 +188,9 @@ class ВводЗлиб : ФильтрВвода
             next_in = пусто;
         }
 
-        auto ret = inflateInit2(&zs, windowBits);
-        if( ret != Z_OK )
-            throw new ИсклЗлиб(ret);
+        auto возвр = inflateInit2(&zs, windowBits);
+        if( возвр != Z_OK )
+            throw new ИсклЗлиб(возвр);
 
         zs_valid = да;
     }
@@ -245,9 +245,9 @@ class ВводЗлиб : ФильтрВвода
         // We'll tell zlib в_ inflate straight преобр_в the мишень Массив.
         zs.avail_out = приёмн.length;
         zs.next_out = cast(ббайт*)приёмн.ptr;
-        auto ret = inflate(&zs, Z_NO_FLUSH);
+        auto возвр = inflate(&zs, Z_NO_FLUSH);
 
-        switch( ret )
+        switch( возвр )
         {
             case Z_NEED_DICT:
                 // Whilst not technically an ошибка, this should never happen
@@ -255,7 +255,7 @@ class ВводЗлиб : ФильтрВвода
             case Z_DATA_ERROR:
             case Z_MEM_ERROR:
                 kill_zs();
-                throw new ИсклЗлиб(ret);
+                throw new ИсклЗлиб(возвр);
 
             case Z_STREAM_END:
                 // zlib поток is завершено; затуши the поток so we don't try в_
@@ -458,10 +458,10 @@ class ВыводЗлиб : ФильтрВывода
             opaque = пусто;
         }
 
-        auto ret = deflateInit2(&zs, уровень, Z_DEFLATED, windowBits, 8,
+        auto возвр = deflateInit2(&zs, уровень, Z_DEFLATED, windowBits, 8,
                 Z_DEFAULT_STRATEGY);
-        if( ret != Z_OK )
-            throw new ИсклЗлиб(ret);
+        if( возвр != Z_OK )
+            throw new ИсклЗлиб(возвр);
 
         zs_valid = да;
     }
@@ -504,9 +504,9 @@ class ВыводЗлиб : ФильтрВывода
             zs.avail_out = out_chunk.length;
             zs.next_out = out_chunk.ptr;
 
-            auto ret = deflate(&zs, Z_NO_FLUSH);
-            if( ret == Z_STREAM_ERROR )
-                throw new ИсклЗлиб(ret);
+            auto возвр = deflate(&zs, Z_NO_FLUSH);
+            if( возвр == Z_STREAM_ERROR )
+                throw new ИсклЗлиб(возвр);
 
             // Push the compressed байты out в_ the поток, until it's either
             // записано them все, or choked.
@@ -583,8 +583,8 @@ class ВыводЗлиб : ФильтрВывода
             zs.avail_out = out_chunk.length;
             zs.next_out = out_chunk.ptr;
 
-            auto ret = deflate(&zs, Z_FINISH);
-            switch( ret )
+            auto возвр = deflate(&zs, Z_FINISH);
+            switch( возвр )
             {
                 case Z_OK:
                     // Keep going
@@ -596,7 +596,7 @@ class ВыводЗлиб : ФильтрВывода
                     break;
 
                 default:
-                    throw new ИсклЗлиб(ret);
+                    throw new ИсклЗлиб(возвр);
             }
 
             auto have = out_chunk.length - zs.avail_out;

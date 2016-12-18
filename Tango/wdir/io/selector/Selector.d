@@ -63,7 +63,7 @@ module io.selector.Selector;
  * bigger than 0, it indicates the число of conduits that have been selected.
  * If this число is 0, the it means that the selector reached a таймаут, и
  * if it's -1, then it means that there was an ошибка. A нормаль блок that deals 
- * with the selection process would look like this:
+ * with the выделение process would look like this:
  *
  * ---
  * try
@@ -93,7 +93,7 @@ module io.selector.Selector;
  * ---
  *
  * Finally, в_ gather the события you need в_ iterate over the selector's
- * selection установи, which can be использовался via the наборВыд() метод.
+ * выделение установи, which can be использовался via the наборВыд() метод.
  *
  * ---
  * foreach (КлючВыбора ключ; selector.наборВыд())

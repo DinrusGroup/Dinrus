@@ -639,7 +639,7 @@ version( Неук )
         // NOTE: Originally ещё of the СМ allocated данные in this class were
         // explicitly deleted here, such as cd_data - this caused segfaults
         // and have been removed as they were not necessary из_ correctness
-        // point of view, and the память usage win is questionable.
+        // точка of view, and the память usage win is questionable.
         состояние = Состояние.Готово;
         источник = пусто;
         шагун = пусто;
@@ -771,7 +771,7 @@ private:
     {
         //Стдош.форматнс("ЧитательЗип.read_cd()");
 
-        // First, we need в_ locate the конец of cd record, so that we know
+        // First, we need в_ местоположение the конец of cd record, so that we know
         // where the cd itself is, and как big it is.
         auto eocdr = read_eocd_record;
 
@@ -820,7 +820,7 @@ private:
     }
 
     /*
-     * This will locate the конец of CD record in the открой поток.
+     * This will местоположение the конец of CD record in the открой поток.
      *
      * This код sucks, but that's because ZIP sucks.
      *
@@ -2006,7 +2006,7 @@ const ткст[] cp437_to_utf8_map_high = [
         if( (1 <= c && c <= 31) || c >= 127 )
         {
             /* Damn; we got a character not in ASCII.  Since this is the first
-             * non-ASCII character we найдено, копируй everything up в_ this point
+             * non-ASCII character we найдено, копируй everything up в_ this точка
              * преобр_в the вывод verbatim.  We'll размести twice as much пространство
              * as there are remaining characters в_ ensure we don't need в_ do
              * any further allocations.

@@ -605,7 +605,7 @@ version (prior_allocator)
                 чанк *следщ;
 
                 /**
-                 * The previous чанк in the chain.  Required for O(1) removal
+                 * The previous чанк in the chain.  Требуется for O(1) removal
                  * из_ the chain.
                  */
                 чанк *предш;

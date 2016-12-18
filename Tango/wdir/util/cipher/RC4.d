@@ -26,7 +26,7 @@ class RC4 : ШифрПоток
     final проц init(бул зашифруй, СимметричныйКлюч keyParams)
     {
         if (keyParams.ключ.length < 0 || keyParams.ключ.length > 256)
-            не_годится(имя()~": Invalid ключ length (требует 1-256 байты)");
+            не_годится(имя()~": Неверный ключ length (требует 1-256 байты)");
                 
         workingKey = keyParams.ключ;
         установи(workingKey);

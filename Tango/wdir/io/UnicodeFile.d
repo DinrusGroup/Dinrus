@@ -115,7 +115,7 @@ class ФайлЮ(T)
 
         /***********************************************************************
 
-                Call-site shortcut в_ создай a ФайлЮ экземпляр. This 
+                Вызов-site shortcut в_ создай a ФайлЮ экземпляр. This 
                 enables the same syntax as struct usage, so may expose
                 a migration путь
 

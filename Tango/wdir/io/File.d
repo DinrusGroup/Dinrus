@@ -40,7 +40,7 @@ class Файл
 
         /***********************************************************************
 
-                Call-site shortcut в_ создай a Файл экземпляр. This 
+                Вызов-site shortcut в_ создай a Файл экземпляр. This 
                 enables the same syntax as struct usage, so may expose
                 a migration путь
 
@@ -54,7 +54,7 @@ class Файл
 
         /***********************************************************************
 
-                Call-site shortcut в_ создай a Файл экземпляр. This 
+                Вызов-site shortcut в_ создай a Файл экземпляр. This 
                 enables the same syntax as struct usage, so may expose
                 a migration путь
 

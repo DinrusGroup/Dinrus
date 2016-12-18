@@ -3894,8 +3894,8 @@ enum : DWORD
 
 const 
 {
-char* CF_RTF = ("Rich Text Format");
-char* CF_RETEXTOBJ = ("RichEdit Text and Objects");
+char* CF_RTF = ("Rich Текст Format");
+char* CF_RETEXTOBJ = ("RichEdit Текст and Objects");
 }
 
 enum : DWORD 

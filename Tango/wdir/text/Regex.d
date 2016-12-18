@@ -529,18 +529,18 @@ struct ДиапазонСимволов(т_сим)
 
     static ДиапазонСимволов opCall(т_сим c)
     {
-        ДиапазонСимволов cr;
-        cr.l_ = c;
-        cr.r_ = c;
-        return cr;
+        ДиапазонСимволов вк;
+        вк.l_ = c;
+        вк.r_ = c;
+        return вк;
     }
 
     static ДиапазонСимволов opCall(т_сим a, т_сим b)
     {
-        ДиапазонСимволов cr;
-        cr.l_ = мин(a,b);
-        cr.r_ = макс(a,b);
-        return cr;
+        ДиапазонСимволов вк;
+        вк.l_ = мин(a,b);
+        вк.r_ = макс(a,b);
+        return вк;
     }
 
     т_сим l()
@@ -556,18 +556,18 @@ struct ДиапазонСимволов(т_сим)
     /* ********************************************************************************************
         Compares the ranges according в_ their beginning.
     **********************************************************************************************/
-    цел opCmp(ДиапазонСимволов cr)
+    цел opCmp(ДиапазонСимволов вк)
     {
-        if ( l_ == cr.l_ )
+        if ( l_ == вк.l_ )
             return 0;
-        if ( l_ < cr.l_ )
+        if ( l_ < вк.l_ )
             return -1;
         return 1;
     }
 
-    цел opEquals(ДиапазонСимволов cr)
+    цел opEquals(ДиапазонСимволов вк)
     {
-        if ( l_ == cr.l_ && r_ == cr.r_ )
+        if ( l_ == вк.l_ && r_ == вк.r_ )
             return 1;
         return 0;
     }
@@ -577,59 +577,59 @@ struct ДиапазонСимволов(т_сим)
         return c >= l_ && c <= r_;
     }
 
-    бул содержит(ДиапазонСимволов cr)
+    бул содержит(ДиапазонСимволов вк)
     {
-        return l_ <= cr.l_ && r_ >= cr.r_;
+        return l_ <= вк.l_ && r_ >= вк.r_;
     }
 
-    бул пересекает(ДиапазонСимволов cr)
+    бул пересекает(ДиапазонСимволов вк)
     {
-        return r_ >= cr.l_ && l_ <= cr.r_;
+        return r_ >= вк.l_ && l_ <= вк.r_;
     }
 
-    ДиапазонСимволов пересечение(ДиапазонСимволов cr)
+    ДиапазонСимволов пересечение(ДиапазонСимволов вк)
     {
-        assert(пересекает(cr));
+        assert(пересекает(вк));
         ДиапазонСимволов ir;
-        ir.l_ = макс(l_, cr.l_);
-        ir.r_ = мин(r_, cr.r_);
+        ir.l_ = макс(l_, вк.l_);
+        ir.r_ = мин(r_, вк.r_);
         if ( ir.l_ > ir.r_ )
             ir.l_ = ir.r_ = т_сим.min;
         return ir;
     }
 
-    ДиапазонСимволов[] вычти(ДиапазонСимволов cr)
+    ДиапазонСимволов[] вычти(ДиапазонСимволов вк)
     {
         ДиапазонСимволов[] sr;
-        if ( cr.содержит(*this) )
+        if ( вк.содержит(*this) )
             return sr;
-        if ( !пересекает(cr) )
+        if ( !пересекает(вк) )
             sr ~= *this;
         else
         {
             ДиапазонСимволов d;
-            if ( содержит(cr) )
+            if ( содержит(вк) )
             {
                 d.l_ = l_;
-                d.r_ = cr.l_-1;
+                d.r_ = вк.l_-1;
                 if ( d.l_ <= d.r_ )
                     sr ~= d;
-                d.l_ = cr.r_+1;
+                d.l_ = вк.r_+1;
                 d.r_ = r_;
                 if ( d.l_ <= d.r_ )
                     sr ~= d;
             }
-            else if ( cr.r_ > l_ )
+            else if ( вк.r_ > l_ )
             {
-                d.l_ = cr.r_+1;
+                d.l_ = вк.r_+1;
                 d.r_ = r_;
                 if ( d.l_ <= d.r_ )
                     sr ~= d;
             }
-            else if ( cr.l_ < r_ )
+            else if ( вк.l_ < r_ )
             {
                 d.l_ = l_;
-                d.r_ = cr.l_-1;
+                d.r_ = вк.l_-1;
                 if ( d.l_ <= d.r_ )
                     sr ~= d;
             }
@@ -698,7 +698,7 @@ struct КлассСимволов(т_сим)
                 {l_:0x01, r_:0xff}
             ]},
             dot_oper = {части: [
-                {l_:0x09, r_:0x13},   // basic control chars
+                {l_:0x09, r_:0x13},   // basic control симвы
                 {l_:0x20, r_:0x7e},   // basic latin
                 {l_:0xa0, r_:0xff}    // latin-1 supplement
             ]},
@@ -790,11 +790,11 @@ struct КлассСимволов(т_сим)
     }
 
     // требует the class в_ be optimized
-    бул содержит(т_диапазон cr)
+    бул содержит(т_диапазон вк)
     {
         foreach ( p; части )
         {
-            if ( p.содержит(cr) )
+            if ( p.содержит(вк) )
                 return да;
         }
         return нет;
@@ -827,9 +827,9 @@ struct КлассСимволов(т_сим)
         части ~= cc.части;
     }
 
-    проц добавь(т_диапазон cr)
+    проц добавь(т_диапазон вк)
     {
-        части ~= cr;
+        части ~= вк;
     }
 
     проц добавь(т_сим c)
@@ -838,7 +838,7 @@ struct КлассСимволов(т_сим)
     }
 
     /* ********************************************************************************************
-        Requires the КлассСимволов в_ be optimized.
+        Требует the КлассСимволов в_ be optimized.
     **********************************************************************************************/
     проц отрицай()
     {
@@ -852,10 +852,10 @@ struct КлассСимволов(т_сим)
             if ( старт < т_сим.max )
                 ++старт;
 
-            foreach ( i, ref cr; части[0 .. $-1] )
+            foreach ( i, ref вк; части[0 .. $-1] )
             {
-                cr.l_ = старт;
-                cr.r_ = части[i+1].l_-1;
+                вк.l_ = старт;
+                вк.r_ = части[i+1].l_-1;
                 старт = части[i+1].r_;
                 if ( старт < т_сим.max )
                     ++старт;
@@ -869,14 +869,14 @@ struct КлассСимволов(т_сим)
             return;
         }
 
-        foreach ( i, ref cr; части )
+        foreach ( i, ref вк; части )
         {
-            т_сим врем = cr.l_-1;
-            cr.l_ = старт;
-            старт = cr.r_;
+            т_сим врем = вк.l_-1;
+            вк.l_ = старт;
+            старт = вк.r_;
             if ( старт < т_сим.max )
                 ++старт;
-            cr.r_ = врем;
+            вк.r_ = врем;
         }
 
         // последний часть does not touch right boundary
@@ -1050,7 +1050,7 @@ private struct Предикат(т_сим)
     LnoBitmap:
 /*
         // проверь whether the class is small enough в_ justify a ткст-ищи
-        // TODO: consider inverse class for 8bit chars?
+        // TODO: consider inverse class for 8bit симвы?
         бцел class_size;
         foreach ( p; ввод.части )
             class_size += cast(бцел)p.r_+1-p.l_;
@@ -1090,11 +1090,11 @@ private struct Предикат(т_сим)
     {
         if ( тип != p.тип )
             return нет;
-        foreach ( cr; ввод.части )
+        foreach ( вк; ввод.части )
         {
             foreach ( cr2; p.ввод.части )
             {
-                if ( cr.пересекает(cr2) )
+                if ( вк.пересекает(cr2) )
                     return да;
             }
         }
@@ -1159,9 +1159,9 @@ private struct Предикат(т_сим)
         ввод = cc;
     }
 
-    проц добавьВвод(т_дс cr)
+    проц добавьВвод(т_дс вк)
     {
-        ввод.добавь(cr);
+        ввод.добавь(вк);
     }
 
     проц добавьВвод(т_кс cc)
@@ -1863,14 +1863,14 @@ private:
             return;
         }
         if ( ПросмотрPattern != ',' )
-            throw new ИсклРегВыр("Invalid occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
+            throw new ИсклРегВыр("Неверный occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
         readPattern;
         maxOccur = parseNumber;
         if ( ПросмотрPattern != '}' )
-            throw new ИсклРегВыр("Invalid occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
+            throw new ИсклРегВыр("Неверный occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
         readPattern;
         if ( maxOccur > 0 && maxOccur < minOccur )
-            throw new ИсклРегВыр("Invalid occurence range (макс < мин) at \""~Utf.вТкст(образец[cursor..$])~"\"");
+            throw new ИсклРегВыр("Неверный occurence range (макс < мин) at \""~Utf.вТкст(образец[cursor..$])~"\"");
     }
 
     trans_t клонируй(trans_t t)
@@ -1947,11 +1947,11 @@ private:
         return frag;
     }
 
-    frag_t constructChars(т_ткст chars, predicate_t.Тип тип)
+    frag_t constructChars(т_ткст симвы, predicate_t.Тип тип)
     {
         т_кс cc;
-        for ( цел i = 0; i < chars.length; ++i )
-            cc.добавь(chars[i]);
+        for ( цел i = 0; i < симвы.length; ++i )
+            cc.добавь(симвы[i]);
 
         return constructChars(cc, тип);
     }
@@ -3002,7 +3002,7 @@ private:
                     continue;
                 конец = m.c;
                 // the следщ range cannot старт at the same поз
-                // because starts are sorted before endings
+                // because начинается are sorted before endings
                 if ( активное > 0 )
                     ++m.c;
             }
@@ -3758,7 +3758,7 @@ class RegExpT(т_сим)
     }
 
     /**********************************************************************************************
-        Search ввод for сверь.
+        Поиск ввод for сверь.
         Возвращает: нет for no сверь, да for сверь
     **********************************************************************************************/
     бул тест(т_сим[] ввод)
@@ -4255,16 +4255,16 @@ class RegExpT(т_сим)
                 else
                     код ~= "\n                else if ( ";
                 бул first_cond=да;
-                foreach ( cr; cc.части )
+                foreach ( вк; cc.части )
                 {
                     if ( first_cond )
                         first_cond = нет;
                     else
                         код ~= " || ";
-                    if ( cr.l == cr.r )
-                        код ~= Формат.преобразуй("c == 0x{:x}", cast(цел)cr.l);
+                    if ( вк.l == вк.r )
+                        код ~= Формат.преобразуй("c == 0x{:x}", cast(цел)вк.l);
                     else
-                        код ~= Формат.преобразуй("c >= 0x{:x} && c <= 0x{:x}", cast(цел)cr.l, cast(цел)cr.r);
+                        код ~= Формат.преобразуй("c >= 0x{:x} && c <= 0x{:x}", cast(цел)вк.l, cast(цел)вк.r);
                 }
                 код ~= Формат.преобразуй(" ) {{\n                    s = {};", t.мишень.индекс);
 
@@ -4273,7 +4273,7 @@ class RegExpT(т_сим)
                 foreach ( cmd; t.commands )
                     код ~= compileCommand(cmd, "                    ");
 /*
-                // if inp ends here и we do not already прими, try в_ добавь an явный ткст/строка конец
+                // if inp заканчивается here и we do not already прими, try в_ добавь an явный ткст/строка конец
                 if ( p >= inp.length && !s.прими && c != 0 ) {
                     c = 0;
                     goto Lprocess_char;

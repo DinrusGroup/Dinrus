@@ -101,7 +101,7 @@ interface ХостВфс : ПапкаВфс
 
 /*******************************************************************************
 
-        Supports a model a bit like CSS selectors, where a selection
+        Supports a model a bit like CSS selectors, where a выделение
         of operands is made before applying some operation. For example:
         ---
         // счёт of файлы in this папка

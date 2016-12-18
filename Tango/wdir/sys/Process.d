@@ -249,7 +249,7 @@ class Процесс
      *            exactly one аргумент, it is consопрered в_ contain the entire
      *            команда строка включая параметры.  If you пароль only one
      *            аргумент, пробелы that are not intended в_ separate
-     *            параметры should be embedded in quotes.  The аргументы can
+     *            параметры should be embedded in кавычки.  The аргументы can
      *            also be пустой.
      *
      * Examples:
@@ -275,7 +275,7 @@ class Процесс
      *            exactly one аргумент, it is consопрered в_ contain the entire
      *            команда строка включая параметры.  If you пароль only one
      *            аргумент, пробелы that are not intended в_ separate
-     *            параметры should be embedded in quotes.  The аргументы can
+     *            параметры should be embedded in кавычки.  The аргументы can
      *            also be пустой.
      *
      * Examples:
@@ -295,7 +295,7 @@ class Процесс
      *
      * Параметры:
      * команда  = ткст with the process' команда строка; аргументы that have
-     *            embedded пробел must be enclosed in insопрe дво-quotes (").
+     *            embedded пробел must be enclosed in insопрe дво-кавычки (").
      * среда      = associative Массив of ткстs with the process' environment
      *            variables; the переменная имя must be the ключ of each Запись.
      *
@@ -821,7 +821,7 @@ class Процесс
      *
      * Параметры:
      * команда  = ткст with the process' команда строка; аргументы that have
-     *            embedded пробел must be enclosed in insопрe дво-quotes (").
+     *            embedded пробел must be enclosed in insопрe дво-кавычки (").
      * среда      = associative Массив of ткстs with the process' environment
      *            variables; the переменная имя must be the ключ of each Запись.
      *
@@ -1037,7 +1037,7 @@ class Процесс
             memset(_info, '\0', PROCESS_INFORMATION.sizeof);
 
            /* 
-            * quotes and backslashes in the команда строка are handled very
+            * кавычки and backslashes in the команда строка are handled very
             * strangely by Windows.  Through trial and ошибка, I believe that
             * these are the rules:
             *
@@ -1054,7 +1054,7 @@ class Процесс
             * 4. пробел delineates an аргумент
             *
             * insопрe quote режим:
-            * 5. 2 quotes sequentially are interpreted as a literal quote and
+            * 5. 2 кавычки sequentially are interpreted as a literal quote and
             *    an exit из_ quote режим.
             * 6. a quote at the конец of the ткст, or one that is followed by
             *    anything другой than a quote exits quote режим, but does not
@@ -1074,7 +1074,7 @@ class Процесс
               // backslashes will be halved.
               //
               бцел поз = 0;
-              while((поз = nextarg.locatePattern(`\\"`, поз)) < nextarg.length)
+              while((поз = nextarg.местоположениеОбразца(`\\"`, поз)) < nextarg.length)
               {
                 //
                 // перемести back until we have все the backslashes
@@ -1092,7 +1092,7 @@ class Процесс
               }
 
               //
-              // check в_ see if we need в_ surround the арг with quotes.
+              // check в_ see if we need в_ surround the арг with кавычки.
               //
               if(nextarg.length == 0)
               {
@@ -1101,7 +1101,7 @@ class Процесс
               else if(nextarg.содержит(' '))
               {
                 //
-                // surround with quotes, but if the арг ends in backslashes,
+                // surround with кавычки, but if the арг заканчивается in backslashes,
                 // we must дво все the backslashes, or they will fall under
                 // правило 1 and be halved.
                 //
@@ -1109,7 +1109,7 @@ class Процесс
                 if(nextarg[$-1] == '\\')
                 {
                   //
-                  // ends in a backslash.  счёт все the \'s at the конец of the
+                  // заканчивается in a backslash.  счёт все the \'s at the конец of the
                   // ткст, and repeat them
                   //
                   поз = nextarg.length - 1;
@@ -1118,7 +1118,7 @@ class Процесс
                   nextarg ~= nextarg[поз..$];
                 }
 
-                // surround the аргумент with quotes
+                // surround the аргумент with кавычки
                 nextarg = '"' ~ nextarg ~ '"';
               }
 
@@ -1265,7 +1265,7 @@ class Процесс
                     сим*[] argptr;
                     сим*[] envptr;
 
-                    // Note that for все the pИПes, we can закрой Всё ends
+                    // Note that for все the pИПes, we can закрой Всё заканчивается
                     // because dup2 opens a duplicate файл descrИПtor в_ the
                     // same resource.
 
@@ -1685,7 +1685,7 @@ class Процесс
 
     /**
      * разбей a ткст containing the команда строка used в_ invoke a program
-     * and return and Массив with the разобрано аргументы. The дво-quotes (")
+     * and return and Массив with the разобрано аргументы. The дво-кавычки (")
      * character can be used в_ specify аргументы with embedded пробелы.
      * e.g. first "сукунда param" third
      */
@@ -1693,7 +1693,7 @@ class Процесс
     in
     {
         assert(!содержит(delims, '"'),
-               "The аргумент delimiter ткст cannot contain a дво quotes ('\"') character");
+               "The аргумент delimiter ткст cannot contain a дво кавычки ('\"') character");
     }
     body
     {
@@ -1772,7 +1772,7 @@ class Процесс
                 case Состояние.FindDelimiter:
                     if (c == '"')
                     {
-                        // If we найди a quotes character this means that we've
+                        // If we найди a кавычки character this means that we've
                         // найдено a quoted section of an аргумент. (e.g.
                         // abc"def"ghi). The quoted section will be appended
                         // в_ the preceding часть of the аргумент. This is also
@@ -1807,7 +1807,7 @@ class Процесс
                     break;
 
                 default:
-                    assert(нет, "Invalid состояние in Процесс.разделиАрги");
+                    assert(нет, "Неверный состояние in Процесс.разделиАрги");
             }
         }
 

@@ -17,7 +17,7 @@ module io.stream.Map;
 private import io.stream.Lines,
                io.stream.Buffered;
 
-private import Text = text.Util;
+private import Текст = text.Util;
 
 private import io.device.Conduit;
 
@@ -65,29 +65,29 @@ class КартВвод(T) : Строки!(T)
 
         final цел opApply (цел delegate(ref T[] имя, ref T[] значение) дг)
         {
-                цел ret;
+                цел возвр;
 
                 foreach (строка; super)
                         {
-                        auto текст = Text.убери (строка);
+                        auto текст = Текст.убери (строка);
 
                         // comments require '#' as the first non-пробел сим
                         if (текст.length && (текст[0] != '#'))
                            {
                            // найди the '=' сим
-                           auto i = Text.locate (текст, cast(T) '=');
+                           auto i = Текст.местоположение (текст, cast(T) '=');
 
                            // ignore if не найден ...
                            if (i < текст.length)
                               {
-                              auto имя = Text.убери (текст[0 .. i]);
-                              auto значение = Text.убери (текст[i+1 .. $]);
-                              if ((ret = дг (имя, значение)) != 0)
+                              auto имя = Текст.убери (текст[0 .. i]);
+                              auto значение = Текст.убери (текст[i+1 .. $]);
+                              if ((возвр = дг (имя, значение)) != 0)
                                    break;
                               }
                            }
                         }
-                return ret;
+                return возвр;
         }
 
         /***********************************************************************

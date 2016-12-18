@@ -32,7 +32,7 @@ version (Posix)
         ---
 
         The measured интервал is in units of сек, using floating-
-        point в_ represent fractions. This approach is ещё flexible 
+        точка в_ represent fractions. This approach is ещё flexible 
         than целое arithmetic since it migrates trivially в_ ещё
         capable таймер hardware (there no implicit granularity в_ the
         measurable intervals, except the limits of fp representation)

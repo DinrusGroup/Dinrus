@@ -23,7 +23,7 @@ private
     import io.device.Array;
     import io.device.File;
 
-    import Text = text.Util;
+    import Текст = text.Util;
     import Ascii = text.Ascii;
     import Целое = text.convert.Integer;
     import Timestamp = text.convert.TimeStamp;
@@ -70,16 +70,16 @@ struct АдресФтп
         try {
             auto возвр = new АдресФтп;
             //удали ftp://
-            auto i = locatePattern(стр, "ftp://");
+            auto i = местоположениеОбразца(стр, "ftp://");
             if(i == 0)
                 стр = стр[6 .. $];
 
             //проверь for ник и/or пароль пользователь[:пароль]@
-            i = locatePrior(стр, '@');
+            i = местоположениеПеред(стр, '@');
             if(i != стр.length) {
                 ткст up = стр[0 .. i];
                 стр = стр[i + 1 .. $];
-                i = locate(up, ':');
+                i = местоположение(up, ':');
                 if(i != up.length) {
                     возвр.пользователь = up[0 .. i];
                     возвр.пароль = up[i + 1 .. $];
@@ -88,14 +88,14 @@ struct АдресФтп
             }
 
             //проверь for порт
-            i = locatePrior(стр, ':');
+            i = местоположениеПеред(стр, ':');
             if(i != стр.length) {
                 возвр.порт = cast(бцел) Целое.вДол(стр[i + 1 .. $]);
                 стр = стр[0 .. i];
             }
 
             //проверь any directories after the adress
-            i = locate(стр, '/');
+            i = местоположение(стр, '/');
             if(i != стр.length)
                 возвр.дир = стр[i + 1 .. $];
 
@@ -668,14 +668,14 @@ class СоединениеФтп: Telnet
         if(ответ.код != "211")
             delete supportedFeatures_;
         else {
-            ткст[] строки = Text.рабейнастр(ответ.сообщение);
+            ткст[] строки = Текст.рабейнастр(ответ.сообщение);
 
             // There are two ещё строки than features, but we also have FEAT.
             supportedFeatures_ = new ЭлтФтп[строки.length - 1];
             supportedFeatures_[0].команда = "FEAT";
 
             for(т_мера i = 1; i < строки.length - 1; i++) {
-                т_мера поз = Text.locate(строки[i], ' ');
+                т_мера поз = Текст.местоположение(строки[i], ' ');
 
                 supportedFeatures_[i].команда = строки[i][0 .. поз];
                 if(поз < строки[i].length - 1)
@@ -739,7 +739,7 @@ class СоединениеФтп: Telnet
             if(ответ.сообщение.length == 0) {
                 // The первый строка must have a код и then a пространство or hyphen.
                 // #1
-                // Response might be exactly 4 chars e.g. '230-'
+                // Response might be exactly 4 симвы e.g. '230-'
                 // (see ftp-stud.fht-esslingen.de or ftp.sunfreeware.com)
                 if(single_line.length < 4) {
                     ответ.код[] = "500";
@@ -754,20 +754,20 @@ class СоединениеФтп: Telnet
             else {
                 ответ.сообщение ~= "\n";
 
-                // If the строка starts like "123-", that is not часть of the ответ сообщение.
+                // If the строка начинается like "123-", that is not часть of the ответ сообщение.
                 if(single_line.length > 4 && single_line[0 .. 3] == ответ.код)
                     ответ.сообщение ~= single_line[4 .. single_line.length];
-                // If it starts with a пространство, that isn't either.
+                // If it начинается with a пространство, that isn't either.
                 else if(single_line.length > 2 && single_line[0] == ' ')
                     ответ.сообщение ~= single_line[1 .. single_line.length];
                 else
                     ответ.сообщение ~= single_line;
             }
 
-            // We're готово if the строка starts like "123 ".  Otherwise we're not.
+            // We're готово if the строка начинается like "123 ".  Otherwise we're not.
             // #1
-            // Response might be exactly 4 chars e.g. '220 '
-            // (see ftp.knoppix.nl)
+            // Response might be exactly 4 симвы e.g. '220 '
+            // (see ftp.knoppix.нс)
             if(single_line.length >= 4 && single_line[0 .. 3] == ответ.код && single_line[3] == ' ')
                 break;
         }
@@ -845,7 +845,7 @@ class СоединениеФтп: Telnet
                 if(this.поддерживается_ли("EPRT")) {
                     сим[64] врем =void;
 
-                    this.шлиКоманду("EPRT", Text.выкладка(врем, "|1|%0|%1|",
+                    this.шлиКоманду("EPRT", Текст.выкладка(врем, "|1|%0|%1|",
                             data_Addr.вТкстАдреса, data_Addr.вТкстПорта));
                     // this.шлиКоманду("EPRT", форматируй("|1|%s|%s|", data_Addr.вТкстАдреса(), data_Addr.вТкстПорта()));
                     this.читайОтвет("200");
@@ -861,7 +861,7 @@ class СоединениеФтп: Telnet
                     // low overhead метод в_ форматируй a numerical ткст
                     сим[64] врем =void;
                     сим[20] foo =void;
-                    auto стр = Text.выкладка(врем, "%0,%1,%2,%3,%4,%5",
+                    auto стр = Текст.выкладка(врем, "%0,%1,%2,%3,%4,%5",
                                     Целое.форматируй(foo[0 .. 3], h1), 
                                     Целое.форматируй(foo[3 .. 6], h2), 
                                     Целое.форматируй(foo[6 .. 9], h3), 
@@ -963,7 +963,7 @@ class СоединениеФтп: Telnet
         if(this.supportedFeatures_.length == 0)
             return да;
 
-        // Search through the список for the feature.
+        // Поиск through the список for the feature.
         foreach(ЭлтФтп feat; this.supportedFeatures_) {
             if(Ascii.сравнилюб(feat.команда, команда) == 0)
                 return да;
@@ -1103,7 +1103,7 @@ class СоединениеФтп: Telnet
             this.завершиКомандуДанных(данные);
 
             // Each строка is something in that дир.
-            ткст[] строки = Text.рабейнастр(cast(ткст) listing.срез());
+            ткст[] строки = Текст.рабейнастр(cast(ткст) listing.срез());
             scope(exit)
                 delete строки;
 
@@ -1256,7 +1256,7 @@ class СоединениеФтп: Telnet
         this.завершиКомандуДанных(данные);
 
         // разбей out the строки.  Most of the время, it's one-в_-one.
-        ткст[] строки = Text.рабейнастр(cast(ткст) listing.срез());
+        ткст[] строки = Текст.рабейнастр(cast(ткст) listing.срез());
         scope(exit)
             delete строки;
 
@@ -1265,7 +1265,7 @@ class СоединениеФтп: Telnet
                 continue;
             // If there are no пробелы, or if there's only one... пропусти the строка.
             // This is probably like a "total 8" строка.
-            if(Text.locate(строка, ' ') == Text.locatePrior(строка, ' '))
+            if(Текст.местоположение(строка, ' ') == Текст.местоположениеПеред(строка, ' '))
                 continue;
 
             // Сейчас разбор the строка, or try в_.
@@ -1302,7 +1302,7 @@ class СоединениеФтп: Telnet
         }
 
         // We have в_ sniff this... :/.
-        switch(!Text.содержит("0123456789", строка[0])) {
+        switch(!Текст.содержит("0123456789", строка[0])) {
             // Not a число; this is ЮНИКС форматируй.
             case да:
                 // The строка must be at least 20 characters дол.
@@ -1361,7 +1361,7 @@ class СоединениеФтп: Telnet
                 // Размер in байты or месяц
                 ткст size_or_month = parse_word();
 
-                if(!Text.содержит("0123456789", size_or_month[0])) {
+                if(!Текст.содержит("0123456789", size_or_month[0])) {
                     // Oops, no размер here - go back в_ previous column
                     поз = oldpos;
                     инфо.размер = cast(бдол) Целое.разбор(group_or_size);
@@ -1380,7 +1380,7 @@ class СоединениеФтп: Telnet
                 // Might be a link Запись - добавьitional тест here
                 if(инфо.тип == ПТипФайлаФтп.другой) {
                     // Is имя like 'имя -> /some/другой/путь'?
-                    т_мера pos2 = Text.locatePattern(инфо.имя, " -> ");
+                    т_мера pos2 = Текст.местоположениеОбразца(инфо.имя, " -> ");
                     if(pos2 != инфо.имя.length) {
                         // It is a link - разбей преобр_в мишень и имя
                         инфо.факты["мишень"] = инфо.имя[pos2 + 4 .. инфо.имя.length];
@@ -1460,11 +1460,11 @@ class СоединениеФтп: Telnet
         // Everything else is frosting on верх.
         if(filename_pos > 1) {
             ткст[]
-                    temp_facts = Text.разграничь(строка[0 .. filename_pos - 1], ";");
+                    temp_facts = Текст.разграничь(строка[0 .. filename_pos - 1], ";");
 
             // Go through each fact и разбор them преобр_в the Массив.
             foreach(ткст fact; temp_facts) {
-                цел поз = Text.locate(fact, '=');
+                цел поз = Текст.местоположение(fact, '=');
                 if(поз == fact.length)
                     continue;
 

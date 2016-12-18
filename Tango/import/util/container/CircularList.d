@@ -1075,7 +1075,7 @@ class ЦиркулярныйСписок (V, alias Извл = Контейнер
                 /***************************************************************
         
                         FlИП the direction of следщ() и opApply(), и 
-                        сбрось the termination point such that we can do
+                        сбрось the termination точка such that we can do
                         другой full traversal.
 
                 ***************************************************************/

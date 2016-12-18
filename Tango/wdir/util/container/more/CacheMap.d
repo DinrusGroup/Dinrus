@@ -326,11 +326,11 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                            {
                            предш = before.предш;
         
-                           // patch 'предш' в_ point at me
+                           // patch 'предш' в_ точка at me
                            if (предш)
                                предш.следщ = this;
         
-                           //patch 'before' в_ point at me
+                           //patch 'before' в_ точка at me
                            следщ = before;
                            before.предш = this;
                            }
@@ -350,11 +350,11 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                            {
                            следщ = after.следщ;
         
-                           // patch 'следщ' в_ point at me
+                           // patch 'следщ' в_ точка at me
                            if (следщ)
                                следщ.предш = this;
         
-                           //patch 'after' в_ point at me
+                           //patch 'after' в_ точка at me
                            предш = after;
                            after.следщ = this;
                            }

@@ -318,7 +318,7 @@ class СтэкКуки
 
 /*******************************************************************************
 
-        This is the support point for сервер-sопрe кукики. It wraps a
+        This is the support точка for сервер-sопрe кукики. It wraps a
         СтэкКуки together with a установи of ЗаголовкиППГТ, along with the
         appropriate куки парсер. One would do something very similar
         for клиент sопрe куки parsing also.
@@ -579,7 +579,7 @@ class РазборщикКуков : Обходчик!(сим)
                                     состояние = Состояние.ЛЗначение;
                                 continue;
 
-                           // скан until we have все lValue chars
+                           // скан until we have все lValue симвы
                            case Состояние.ЛЗначение:
                                 if (! токен_ли(c))
                                    {
@@ -612,7 +612,7 @@ class РазборщикКуков : Обходчик!(сим)
                                           состояние = Состояние.Токен;
                                 continue;
 
-                           // скан for все plain токен chars
+                           // скан for все plain токен симвы
                            case Состояние.Токен:
                                 if (! токен_ли(c))
                                    {

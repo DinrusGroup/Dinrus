@@ -285,7 +285,7 @@ struct Ууид
         }
 
         /** Get a хэш код representing this UUID. */
-        public т_хэш toХэш()
+        public т_хэш вХэш()
         {
                 with (_data)
                 {
@@ -392,7 +392,7 @@ version (TangoTest)
                 auto имя = "hello";
                 // This was generated with the ууид utility on linux/amd64. It might have different results on
                 // a ppc процессор -- the spec says something about network байт order, but it's using an Массив
-                // of байты at that point, so converting в_ NBO is a noop...
+                // of байты at that точка, so converting в_ NBO is a noop...
                 auto ожидалось = Ууид.разбор("2b1c6704-a43f-5d43-9abb-b13310b4458a");
                 auto generated = Ууид.поИмени(namespace, имя, new Sha1, 5);
                 assert (generated == ожидалось, "\nexpected: " ~ ожидалось.вТкст ~ "\nbut was:  " ~ generated.вТкст);

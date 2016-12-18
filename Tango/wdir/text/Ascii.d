@@ -8,7 +8,7 @@
 
         author:         Kris
 
-        Placeholder for a selection of ASCII utilities. These generally will
+        Placeholder for a выделение of ASCII utilities. These generally will
         not work with utf8, и cannot be easily extended в_ utf16 or utf32
         
 *******************************************************************************/

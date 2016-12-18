@@ -26,11 +26,11 @@ protected import io.device.Conduit : ФильтрВвода, БуферВвод�
         operate upon the протяженность of an Массив.
 
         There are two типы of iterators supported; исключительно and
-        включительно. The former are the ещё common kind, where a token
+        включительно. The former are the ещё common kind, where a сема
         is delimited by elements that are consопрered foreign. Examples
         include пространство, comma, and конец-of-строка delineation. Inclusive
         семы are just the opposite: they look for образцы in the
-        текст that should be часть of the token itself - everything else
+        текст that should be часть of the сема itself - everything else
         is consопрered foreign. Currently io.Поток включает the
         исключительно variety only.
 
@@ -40,7 +40,7 @@ protected import io.device.Conduit : ФильтрВвода, БуферВвод�
 
         The контент provопрed в_ these iterators is intended в_ be fully
         читай-only. все current tokenizers abопрe by this правило, but it is
-        possible a пользователь could mutate the контент through a token срез.
+        possible a пользователь could mutate the контент through a сема срез.
         To enforce the desired читай-only aspect, the код would have в_
         introduce redundant copying or the compiler would have в_ support
         читай-only массивы (сейчас in D2).
@@ -92,7 +92,7 @@ class Обходчик(T) : ФильтрВвода
 
         /***********************************************************************
 
-                Return the current token as a срез of the контент
+                Return the current сема as a срез of the контент
 
         ***********************************************************************/
 
@@ -123,7 +123,7 @@ class Обходчик(T) : ФильтрВвода
 
         /**********************************************************************
 
-                Iterate over a установи of семы, exposing a token счёт 
+                Iterate over a установи of семы, exposing a сема счёт 
                 starting at zero
 
         **********************************************************************/
@@ -145,7 +145,7 @@ class Обходчик(T) : ФильтрВвода
         /**********************************************************************
 
                 Iterate over a установи of семы and delimiters, exposing a 
-                token счёт starting at zero
+                сема счёт starting at zero
 
         **********************************************************************/
 
@@ -166,7 +166,7 @@ class Обходчик(T) : ФильтрВвода
 
         /***********************************************************************
 
-                Locate the следщ token. Returns the token if найдено, пусто
+                Locate the следщ сема. Returns the сема if найдено, пусто
                 otherwise. Пусто indicates an конец of поток condition. To
                 смети a провод for lines using метод следщ():
                 ---
@@ -227,7 +227,7 @@ class Обходчик(T) : ФильтрВвода
 
         /***********************************************************************
 
-                Called when a scanner fails в_ найди a matching образец.
+                Called when a scanner fails в_ найди a совпадают образец.
                 This may cause ещё контент в_ be загружен, and a rescan
                 initiated
 
@@ -242,7 +242,7 @@ class Обходчик(T) : ФильтрВвода
 
                 Invoked when a scanner matches a образец. The provопрed
                 значение should be the индекс of the последний element of the
-                matching образец, which is преобразованый back в_ a проц[]
+                совпадают образец, which is преобразованый back в_ a проц[]
                 индекс.
 
         ***********************************************************************/
@@ -268,7 +268,7 @@ class Обходчик(T) : ФильтрВвода
 
         /***********************************************************************
 
-                Consume the следщ token and place it in 'срез'. Returns 
+                Consume the следщ сема and place it in 'срез'. Returns 
                 да when there are potentially ещё семы
 
         ***********************************************************************/
@@ -278,7 +278,7 @@ class Обходчик(T) : ФильтрВвода
                 if (источник.следщ (&скан))
                     return да;
 
-                // используй trailing token
+                // используй trailing сема
                 источник.читатель ((проц[] масс) 
                               { 
                               срез = (cast(T*) масс.ptr) [0 .. масс.length/T.sizeof];

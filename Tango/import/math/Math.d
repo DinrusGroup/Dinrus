@@ -18,7 +18,7 @@ template минмакстип(T...){
 
 /** Возвращает минимальный из предложенных аргументов.
  *
- * Note: If the аргументы are floating-point numbers, и at least one is a НЧ,
+ * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
 минмакстип!(T) мин(T...)(T арг){
@@ -29,7 +29,7 @@ template минмакстип(T...){
 
 /** Return the maximum of the supplied аргументы.
  *
- * Note: If the аргументы are floating-point numbers, и at least one is a НЧ,
+ * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
 минмакстип!(T) макс(T...)(T арг){

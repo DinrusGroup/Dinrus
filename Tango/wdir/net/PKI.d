@@ -524,7 +524,7 @@ class ПубличныйКлюч
 
      /*******************************************************************************
 
-        Decrypts данные previously encrypted with the matching ЧастныйКлюч
+        Decrypts данные previously encrypted with the совпадают ЧастныйКлюч
 
         Please see the зашифруй notes.
 
@@ -744,7 +744,7 @@ class ЧастныйКлюч
 
      /*******************************************************************************
 
-        Decrypts данные previously encrypted with the matching ПубличныйКлюч
+        Decrypts данные previously encrypted with the совпадают ПубличныйКлюч
 
         Please see the зашифруй notes.
 

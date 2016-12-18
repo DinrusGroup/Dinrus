@@ -1213,7 +1213,7 @@ private class Иерархия : Логгер.Контекст
                          // найди best сверь for предок of new Запись
                          распространить (l, curr, да);
 
-                      // remember where insertion point should be
+                      // remember where insertion точка should be
                       предш = curr;  
                       curr = curr.следщ;  
                       }

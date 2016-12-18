@@ -366,7 +366,7 @@ struct ИнтервалВремени
         }
 
         /**
-         * Convert в_ a floating point интервал representing сек.
+         * Convert в_ a floating точка интервал representing сек.
          *
          * Note: This may cause a loss of точность as a дво cannot exactly
          * represent some fractional значения.
@@ -649,7 +649,7 @@ struct ИнтервалВремени
 
 /******************************************************************************
 
-        Represents a point in время.
+        Represents a точка in время.
 
         Remarks: Время represents dates и times between 12:00:00 
         mопрnight on January 1, 10000 BC и 11:59:59 PM on December 31, 
@@ -660,7 +660,7 @@ struct ИнтервалВремени
         12:00:00 mопрnight on January 1, 0001 AD in the Грегориан 
         Календарь.
         
-        Negative Время значения are offsets из_ that same reference point, 
+        Negative Время значения are offsets из_ that same reference точка, 
         but backwards in history.  Время значения are not specific в_ any 
         Календарь, but for an example, the beginning of December 31, 1 BC 
         in the Грегориан Календарь is Время.эпоха - ИнтервалВремени.дни(1).

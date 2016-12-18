@@ -14,7 +14,7 @@ module io.stream.TextFile;
 
 public  import io.device.File;
 
-private import io.stream.Text;
+private import io.stream.Текст;
 
 /*******************************************************************************
 

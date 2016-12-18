@@ -639,7 +639,7 @@ unittest
 }
 }
 
-// The inner multИПly-and-add loop, together with the Even entry point.
+// The inner multИПly-and-add loop, together with the Even entry точка.
 // MultИПles by M_ADDRESS which should be "ESP+LASTPARAM" or "ESP". OP must be "add" or "sub"
 // This is the most time-critical код in the BigInt library.
 // It is used by Всё MulAdd, multИПlyAccumulate, and triangleAccumulate
@@ -667,7 +667,7 @@ unittest
 
 version(D_PIC) { bool using_PIC = true; } else { bool using_PIC=false; }
 return "asm {
-        // Entry point for even length
+        // Entry точка for even length
         add EBX, 1;
         mov EBP, ECX; // carry
         
@@ -784,7 +784,7 @@ return "asm {
         test EBX, 1;
         jnz L_enter_odd;
 }
-		// Main loop, with entry point for even length
+		// Main loop, with entry точка for even length
 mixin(асмУмножьДоб_внутрцикл(OP, "ESP+LASTPARAM")); 
 asm {
         mov EAX, EBP; // get final carry
@@ -875,7 +875,7 @@ outer_loop:
         test EBX, 1;
         jnz L_enter_odd;
 		}
-        // -- Inner loop, with even entry point
+        // -- Inner loop, with even entry точка
         mixin(асмУмножьДоб_внутрцикл("add", "ESP"));
 asm {
         mov [-4+EDI+4*EBX], EBP;
@@ -1171,7 +1171,7 @@ outer_loop:
         test EBX, 1;
         jnz L_enter_odd;
     }
-    // -- Inner loop, with even entry point
+    // -- Inner loop, with even entry точка
     mixin(асмУмножьДоб_внутрцикл("add", "ESP"));
     asm {
         mov [-4+EDI+4*EBX], EBP;

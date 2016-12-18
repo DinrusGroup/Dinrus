@@ -1642,7 +1642,7 @@ private template ЛинейнаяАлгебра(т_плав)
         /** Constructs _translation matrix with offset values specified as v's components. */
         static Матрица44 перенос(Вектор3 v);
         /**
-        Constructs one-point perspecive projection matrix.
+        Constructs one-точка perspecive projection matrix.
         Params:
             fov =       Field of view in vertical plane in радианы.
             aspect =    Frustum's width / height coefficient. It shouldn't be 0.

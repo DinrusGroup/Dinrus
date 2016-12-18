@@ -550,7 +550,7 @@ private:
             if( имя[$-1] == '/' )
                 continue;
 
-            // Сейчас, we need в_ locate the right spot в_ вставь this Запись.
+            // Сейчас, we need в_ местоположение the right spot в_ вставь this Запись.
             {
                 // That's CURrent ENTity, not текущ OR currant...
                 Запись* curent = корень;

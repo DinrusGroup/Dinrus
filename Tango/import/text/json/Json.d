@@ -617,7 +617,7 @@ class Json(T) : private JsonParser!(T)
                             return ткст;
 
                         if (тип is Тип.Строка)
-                            return unescape (ткст, приёмн);
+                            return убериИскейп (ткст, приёмн);
 
                         return пусто;
                 }
@@ -637,7 +637,7 @@ class Json(T) : private JsonParser!(T)
                             дг(ткст);
                         else
                            if (тип is Тип.Строка)
-                               unescape (ткст, дг);
+                               убериИскейп (ткст, дг);
                            else
                               return нет;
                         return да;

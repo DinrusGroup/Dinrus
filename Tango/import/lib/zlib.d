@@ -294,7 +294,7 @@ int deflate(z_streamp strm, int flush);
   - Compress more input starting at next_in and update next_in and avail_in
     accordingly. If not all input can be processed (because there is not
     enough room in the output buffer), next_in and avail_in are updated and
-    processing will resume at this point for the next call of deflate().
+    processing will resume at this точка for the next call of deflate().
 
   - Provide more output starting at next_out and update next_out and avail_out
     accordingly. This action is forced if the parameter flush is non zero.
@@ -324,7 +324,7 @@ int deflate(z_streamp strm, int flush);
 
     If flush is set to Z_FULL_FLUSH, all output is flushed as with
   Z_SYNC_FLUSH, and the compression state is reset so that decompression can
-  restart from this point if previous compressed data есть been damaged or if
+  restart from this точка if previous compressed data есть been damaged or if
   random access is desired. Using Z_FULL_FLUSH too often can seriously degrade
   compression.
 
@@ -415,7 +415,7 @@ int inflate(z_streamp strm, int flush);
   - Decompress more input starting at next_in and update next_in and avail_in
     accordingly. If not all input can be processed (because there is not
     enough room in the output buffer), next_in is updated and processing
-    will resume at this point for the next call of inflate().
+    will resume at this точка for the next call of inflate().
 
   - Provide more output starting at next_out and update next_out and avail_out
     accordingly.  inflate() provides as much output as possible, until there
@@ -488,7 +488,7 @@ int inflate(z_streamp strm, int flush);
     inflate() returns Z_OK if some progress есть been made (more input processed
   or more output produced), Z_STREAM_END if the end of the compressed data есть
   been reached and all uncompressed output есть been produced, Z_NEED_DICT if a
-  preset dictionary is needed at this point, Z_DATA_ERROR if the input data was
+  preset dictionary is needed at this точка, Z_DATA_ERROR if the input data was
   corrupted (input stream not conforming to the zlib format or incorrect check
   value), Z_STREAM_ERROR if the stream structure was inconsistent (for example
   if next_in or next_out was NULL), Z_MEM_ERROR if there was not enough memory,
@@ -563,7 +563,7 @@ int deflateInit2 (z_streamp strm,
    encoding). Filtered data consists mostly of small values with a somewhat
    random distribution. In this case, the compression algorithm is tuned to
    compress them better. The effect of Z_FILTERED is to force more Huffman
-   coding and less string matching; it is somewhat intermediate between
+   coding and less string совпадают; it is somewhat intermediate between
    Z_DEFAULT and Z_HUFFMAN_ONLY. Z_RLE is designed to be almost as fast as
    Z_HUFFMAN_ONLY, but give better compression for PNG image data. The strategy
    parameter only affects the compression ratio but not the correctness of the
@@ -674,7 +674,7 @@ int deflateTune(z_streamp strm,
 /*
      Fine tune deflate's internal compression parameters.  This should only be
    used by someone who understands the algorithm used by zlib's deflate for
-   searching for the best matching string, and even then only by the most
+   searching for the best совпадают string, and even then only by the most
    fanatic optimizer trying to squeeze out the last compressed bit for their
    specific input data.  Read the deflate.c source code for the meaning of the
    max_lazy, good_length, nice_length, and max_chain parameters.
@@ -799,12 +799,12 @@ int inflateSetDictionary(z_streamp strm,
 
 int inflateSync(z_streamp strm);
 /*
-    Skips invalid compressed data until a full flush point (see above the
+    Skips invalid compressed data until a full flush точка (see above the
   description of deflate with Z_FULL_FLUSH) can be найдено, or until all
   available input is skipped. No output is provided.
 
-    inflateSync returns Z_OK if a full flush point есть been найдено, Z_BUF_ERROR
-  if no more input was provided, Z_DATA_ERROR if no flush point есть been найдено,
+    inflateSync returns Z_OK if a full flush точка есть been найдено, Z_BUF_ERROR
+  if no more input was provided, Z_DATA_ERROR if no flush точка есть been найдено,
   or Z_STREAM_ERROR if the stream structure was inconsistent. In the success
   case, the application may save the current current value of total_in which
   indicates where valid compressed data was найдено. In the error case, the

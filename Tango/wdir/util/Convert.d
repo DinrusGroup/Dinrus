@@ -48,7 +48,7 @@ version( TangoDoc )
      *
      * The function will attempt в_ preserve the ввод значение as exactly as
      * possible, given the limitations of the destination форматируй.  For
-     * экземпляр, converting a floating-point значение в_ an целое will cause it
+     * экземпляр, converting a floating-точка значение в_ an целое will cause it
      * в_ округли the значение в_ the nearest целое значение.
      *
      * Below is a complete список of conversions between built-in типы and
