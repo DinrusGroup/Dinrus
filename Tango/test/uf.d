@@ -1,4 +1,4 @@
-﻿import io.Stdout, io.Console, io.UnicodeFile, text.convert.UnicodeBom;
+import io.Stdout, io.Console, io.UnicodeFile, text.convert.UnicodeBom;
 //import io.File;
 import io.device.File, io.device.TempFile;
 
@@ -6,9 +6,8 @@ import io.device.File, io.device.TempFile;
 проц вф()
 {
     Стдвыв(r"
-Please ensure that the transient file no longer to once the ВремФайл
-объект is destroyed, and that the permanent file does.  You should also check
-the following on Всё:
+Убедитесь что транзитивный файл более не существует, т.к объект ВремФайл
+уничтожен, а перманентный файл остаётся. Также нужно проверить следующее:
 
  * файл должен принадлежать вам,
  * хозяин должен иметь разрешения на чтение и запись,
@@ -45,7 +44,7 @@ the following on Всё:
 
     Стдвыв.нс;
 
-    Стдвыв.форматнс("Creating a permanent файл:");
+    Стдвыв.форматнс("Создаётся постоянный файл:");
     {
         scope времФайл = new ВремФайл(ВремФайл.Навсегда);
 
@@ -57,13 +56,13 @@ the following on Всё:
         времФайл.сместись(0);
         буфер = буфер[0..времФайл.читай(буфер)];
 
-        Стдвыв.форматнс(" .. contents: \"{}\"", буфер);
+        Стдвыв.форматнс(" .. содержимое: \"{}\"", буфер);
 
-        Стдвыв(" .. нажми Enter в_ destroy ВремФайл объект.").слей;
+        Стдвыв(" .. нажми Enter, чтобы удалить ВремФайл объект.").слей;
         Кввод.копируйнс();
     }
 
-    Стдвыв("\nDone.").нс;
+    Стдвыв("\nГотово.").нс;
 }
 
 /+
@@ -86,7 +85,7 @@ the following on Всё:
         {
                 сим[10] ff;
 
-                auto файл = new Файл("tstio.d");
+                auto файл = new Файл("ts.d");
                 auto контент = cast(ткст) файл.загрузи (файл);
                 assert (контент.length is файл.length);
                 assert (файл.читай(ff) is файл.Кф);
@@ -99,4 +98,4 @@ the following on Всё:
                 assert (файл.сместись(0, файл.Якорь.Тек) is 10);
         }
 		
-проц main(){вф; иФ; фЮ; }
+проц main(){ фЮ; вф;}

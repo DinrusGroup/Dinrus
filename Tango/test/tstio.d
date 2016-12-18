@@ -1,8 +1,8 @@
-﻿  import io.Stdout, io.Path, io.FileSystem, io.FilePath, io.FileScan;
-  pragma(lib, "dinrus.lib");
+  import io.Stdout, io.Path, io.FileSystem, io.FilePath, io.FileScan;
+ // pragma(lib, "dinrus.lib");
   
   
-  static проц foo (ФПуть путь)
+   проц foo (ФПуть путь)
         {
         Стдвыв("все: ") (путь).нс;
         Стдвыв("путь: ") (путь.путь).нс;
@@ -17,7 +17,7 @@
         {
         Стдвыв.форматнс ("Пап: {}", ФСистема.дайПапку);
 
-        auto путь = new ФПуть (".");
+        auto путь = new ФПуть ("d:\\dinrus\\dev");
         foo (путь);
 
         путь.установи ("..");
@@ -55,7 +55,7 @@
         {
                 auto скан = new СканФайл;
 
-                скан ("..\\drTango");
+                скан ("..\\tango");
 
                 Стдвыв.форматнс ("{} Папок", скан.папки.length);
                 foreach (папка; скан.папки)
