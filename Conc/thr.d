@@ -1,4 +1,4 @@
-﻿import thread, stdrus: скажинс;
+﻿import thread, win: скажинс;
 
 class ПроизводнаяНить : Нить
       {

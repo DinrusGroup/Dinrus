@@ -1,8 +1,7 @@
-﻿import io.Console;
+﻿import stdrus;
 
 проц main()
 {
-//скажинс("ЖЖДЖД");
-Квывод("РРl';l[[[,Р");
+сделпапР("d:\\dinrus\\dev\\DINRUS\\base\\test\\testFolder\\infolder1\\infolder2");
 
 }

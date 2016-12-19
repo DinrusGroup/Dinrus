@@ -23,7 +23,7 @@ private import dbi.mssql.imp, dbi.mssql.MssqlResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class MssqlDatabase : БазаДанных {
+class ЭмЭсЭсКюЭлБД : БазаДанных {
 	public:
 	/**
 	 * Create a new instance of БазаДанных, but don't подключись.
@@ -57,7 +57,7 @@ class MssqlDatabase : БазаДанных {
 	 *
 	 * Examples:
 	 *	---
-	 *	MssqlDatabase бд = new MssqlDatabase();
+	 *	ЭмЭсЭсКюЭлБД бд = new ЭмЭсЭсКюЭлБД();
 	 *	бд.подключись("host порт", "имя_пользователя", "пароль");
 	 *	---
 	 */
@@ -121,75 +121,5 @@ class MssqlDatabase : БазаДанных {
 	 */
 	deprecated override ткст дайСообОшибки () ;
 
-	private:
-	CS_CONTEXT* ctx;
-	CS_CONNECTION* con;
-	CS_COMMAND* cmd;
 
-}
-
-unittest {
-	version (Phobos) {
-		проц s1 (ткст s) {
-			std.io.writefln("%s", s);
-		}
-
-		проц s2 (ткст s) {
-			std.io.writefln("   ...%s", s);
-		}
-	} else {
-		проц s1 (ткст s) {
-			io.Stdout.Стдвыв(s).нс();
-		}
-
-		проц s2 (ткст s) {
-			io.Stdout.Стдвыв("   ..." ~ s).нс();
-		}
-	}
-
-	s1("dbi.mssql.MssqlDatabase:");
-	MssqlDatabase бд = new MssqlDatabase();
-	s2("подключись");
-	бд.подключись("sqlvs1 1433", "test", "test");
-
-	s2("запрос");
-	Результат рез = бд.запрос("SELECT * FROM test");
-	assert (рез !is пусто);
-
-	s2("получиРяд");
-	Ряд ряд = рез.получиРяд();
-	assert (ряд !is пусто);
-	assert (ряд.дайИндексПоля("id") == 0);
-	assert (ряд.дайИндексПоля("имя") == 1);
-	assert (ряд.дайИндексПоля("dateofbirth") == 2);
-	assert (ряд.дай("id") == "1");
-	assert (ряд.дай("имя") == "John Doe");
-	assert (ряд.дай("dateofbirth") == "1970-01-01");
-	/** TODO: test some тип retrieval functions */
-	//assert (ряд.дайТипПоля(1) == FIELD_TYPE_STRING);
-	//assert (ряд.дайОбъявлПоля(1) == "char(40)");
-	рез.финиш();
-
-	s2("подготовь");
-	Инструкция инстр = бд.подготовь("SELECT * FROM test WHERE id = ?");
-	инстр.вяжи(1, "1");
-	рез = инстр.запрос();
-	ряд = рез.получиРяд();
-	рез.финиш();
-	assert (ряд[0] == "1");
-
-	s2("fetchOne");
-	ряд = бд.запросПолучиОдин("SELECT * FROM test");
-	assert (ряд[0] == "1");
-
-	s2("выполни(INSERT)");
-	бд.выполни("INSERT INTO test VALUES (2, 'Jane Doe', '2000-12-31')");
-
-	s2("выполни(DELETE via подготовь statement)");
-	инстр = бд.подготовь("DELETE FROM test WHERE id=?");
-	инстр.вяжи(1, "2");
-	инстр.выполни();
-
-	s2("закрой");
-	бд.закрой();
 }

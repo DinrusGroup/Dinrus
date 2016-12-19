@@ -1,9 +1,9 @@
-/** \file СемафорПриоритета.d
- * \brief Семафор granting requests based on нить priority
+п»ї/** \file РЎРµРјР°С„РѕСЂРџСЂРёРѕСЂРёС‚РµС‚РѕРІ.d
+ * \brief РЎРµРјР°С„РѕСЂ granting requests based on РЅРёС‚СЊ priority
  */
 
 /*
- *  TODO: thread doesn't implement приоритет().
+ *  TODO: thread doesn't implement РїСЂРёРѕСЂРёС‚РµС‚().
  */
 
 /*
@@ -24,67 +24,67 @@ private import cidrus;
 private import thread; // for unittest
 
 
-/** \class СемафорПриоритета
- * \brief Семафор that grants requests to threads with higher
- * Нить priority rather than lower priority when there is
+/** \class РЎРµРјР°С„РѕСЂРџСЂРёРѕСЂРёС‚РµС‚РѕРІ
+ * \brief РЎРµРјР°С„РѕСЂ that grants requests to threads with higher
+ * РќРёС‚СЊ priority rather than lower priority when there is
  * contention. 
  *
  * Ordering of requests with the same priority is approximately FIFO.
- * Priorities are based on Нить.приоритет.
- * Changing the priority of an already-ждущий нить does NOT 
+ * Priorities are based on РќРёС‚СЊ.РїСЂРёРѕСЂРёС‚РµС‚.
+ * Changing the priority of an already-Р¶РґСѓС‰РёР№ РЅРёС‚СЊ does NOT 
  * change its ordering. This class also does not specially deal with priority
- * inversion --  when a new high-priority нить enters
- * while a low-priority нить is currently running, their
+ * inversion --  when a new high-priority РЅРёС‚СЊ enters
+ * while a low-priority РЅРёС‚СЊ is currently running, their
  * priorities are <em>not</em> artificially manipulated.
  */
 
-class СемафорПриоритета : СемафорВОчереди {
+class РЎРµРјР°С„РѕСЂРџСЂРёРѕСЂРёС‚РµС‚РѕРІ : РЎРµРјР°С„РѕСЂРћС‡РµСЂРµРґРё {
 
   /** 
-   * Create a Семафор with the given initial число of права.
-   * Using a seed of one makes the semaphore act as a mutual exclusion замок.
+   * Create a РЎРµРјР°С„РѕСЂ with the given initial С‡РёСЃР»Рѕ of РїСЂР°РІР°.
+   * Using a seed of one makes the semaphore act as a mutual exclusion Р·Р°РјРѕРє.
    * Negative seeds are also allowed, in which case no acquires will proceed
-   * until the число of releases has pushed the число of права past 0.
+   * until the С‡РёСЃР»Рѕ of releases has pushed the С‡РёСЃР»Рѕ of РїСЂР°РІР° past 0.
   */
-  this(дол начальныеПрава) { 
-    super(new ЖдущаяПриоритетаОчередь(), начальныеПрава);
+  this(РґРѕР» РЅР°С‡Р°Р»СЊРЅС‹РµРџСЂР°РІР°) { 
+    super(new Р–РґСѓС‰Р°СЏРџСЂРёРѕСЂРёС‚РµС‚Р°РћС‡РµСЂРµРґСЊ(), РЅР°С‡Р°Р»СЊРЅС‹РµРџСЂР°РІР°);
   }
 
-  protected class ЖдущаяПриоритетаОчередь : ЖдущаяОчередь {
+  protected class Р–РґСѓС‰Р°СЏРџСЂРёРѕСЂРёС‚РµС‚Р°РћС‡РµСЂРµРґСЊ : Р–РґСѓС‰Р°СЏРћС‡РµСЂРµРґСЊ {
 
-    /** An array of жди queues, one per priority */
-    protected final СемафорПВПВ.ЖдущаяОчередьФИФО[] ячейки_ = 
-      new СемафорПВПВ.ЖдущаяОчередьФИФО[Нить.МАКСПРИОР -
-                                     Нить.МИНПРИОР + 1];
+    /** An array of Р¶РґРё queues, one per priority */
+    protected final РЎРµРјР°С„РѕСЂС•В¬С•В¬.Р–РґСѓС‰Р°СЏРћС‡РµСЂРµРґСЊвЂВ»вЂРћ[] СЏС‡РµР№РєРё_ = 
+      new РЎРµРјР°С„РѕСЂС•В¬С•В¬.Р–РґСѓС‰Р°СЏРћС‡РµСЂРµРґСЊвЂВ»вЂРћ[РќРёС‚СЊ.С›СВ вЂ”Р В»РћвЂ“ -
+                                     РќРёС‚СЊ.С›В»РќР В»РћвЂ“ + 1];
 
     /**
-     * The индекс of the highest priority cell that may need to be сигналБыл,
+     * The РёРЅРґРµРєСЃ of the highest priority cell that may need to be СЃРёРіРЅР°Р»Р…С‹Р»,
      * or -1 if none. Used to minimize array traversal.
     */
 
-    protected цел максИндекс_ = -1;
+    protected С†РµР» РјР°РєСЃРРЅРґРµРєСЃ_ = -1;
 
-    protected ЖдущаяПриоритетаОчередь() { 
-      for (цел i = 0; i < ячейки_.length; ++i) 
-        ячейки_[i] = new СемафорПВПВ.ЖдущаяОчередьФИФО();
+    protected Р–РґСѓС‰Р°СЏРџСЂРёРѕСЂРёС‚РµС‚Р°РћС‡РµСЂРµРґСЊ() { 
+      for (С†РµР» i = 0; i < СЏС‡РµР№РєРё_.length; ++i) 
+        СЏС‡РµР№РєРё_[i] = new РЎРµРјР°С„РѕСЂС•В¬С•В¬.Р–РґСѓС‰Р°СЏРћС‡РµСЂРµРґСЊвЂВ»вЂРћ();
     }
 
-    protected проц вставь(ЖдущийУзел w) {
-      цел инд = Нить.дайЭту().приоритет() - Нить.МИНПРИОР;
-      ячейки_[инд].вставь(w); 
-      if (инд > максИндекс_) максИндекс_ = инд;
+    protected РїСЂРѕС† РІСЃС‚Р°РІСЊ(Р–РґСѓС‰РёР№РЈР·РµР» w) {
+      С†РµР» РёРЅРґ = РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().РїСЂРёРѕСЂРёС‚РµС‚() - РќРёС‚СЊ.С›В»РќР В»РћвЂ“;
+      СЏС‡РµР№РєРё_[РёРЅРґ].РІСЃС‚Р°РІСЊ(w); 
+      if (РёРЅРґ > РјР°РєСЃРРЅРґРµРєСЃ_) РјР°РєСЃРРЅРґРµРєСЃ_ = РёРЅРґ;
     }
 
-    protected ЖдущийУзел извлеки() {
+    protected Р–РґСѓС‰РёР№РЈР·РµР» РёР·РІР»РµРєРё() {
       for (;;) {
-        цел инд = максИндекс_;
-        if (инд < 0) 
-          return пусто;
-        ЖдущийУзел w = ячейки_[инд].извлеки();
-        if (w != пусто) 
+        С†РµР» РёРЅРґ = РјР°РєСЃРРЅРґРµРєСЃ_;
+        if (РёРЅРґ < 0) 
+          return РїСѓСЃС‚Рѕ;
+        Р–РґСѓС‰РёР№РЈР·РµР» w = СЏС‡РµР№РєРё_[РёРЅРґ].РёР·РІР»РµРєРё();
+        if (w != РїСѓСЃС‚Рѕ) 
           return w;
         else
-          --максИндекс_;
+          --РјР°РєСЃРРЅРґРµРєСЃ_;
       }
     }
   }

@@ -1,5 +1,5 @@
-/* \file syncutils.d
- * \brief Utility классы for Синх объекты
+п»ї/* \file syncutils.d
+ * \brief Utility РєР»Р°СЃСЃС‹ for РЎРёРЅС… РѕР±СЉРµРєС‚С‹
  */
 
 /*
@@ -15,141 +15,141 @@ module conc.syncutils;
 import conc.sync;
 
 
-/** \class НуллСинх
- * \brief A No-Op implementation of Синх. 
+/** \class РќСѓР»Р»РЎРёРЅС…
+ * \brief A No-Op implementation of РЎРёРЅС…. 
  *
  * Acquire never blocks,
  * Attempt always succeeds, Release has no effect.
- * The methods are synchronized, so preserve memory барьер properties
+ * The methods are synchronized, so preserve memory Р±Р°СЂСЊРµСЂ properties
  * of Syncs.
  * <p>
- * NullSyncs can be useful in optimizing классы when
+ * NullSyncs can be useful in optimizing РєР»Р°СЃСЃС‹ when
  * it is found that locking is not strictly necesssary.
  */
-class НуллСинх : Синх {
+class РќСѓР»Р»РЎРёРЅС… : РЎРёРЅС… {
 
-  synchronized проц обрети() {}
+  synchronized РїСЂРѕС† РѕР±СЂРµС‚Рё() {}
 
-  synchronized бул пытайся(дол мсек) {
-    return да;
+  synchronized Р±СѓР» РїС‹С‚Р°Р№СЃСЏ(РґРѕР» РјСЃРµРє) {
+    return РґР°;
   }
 
-  synchronized проц отпусти() {}
+  synchronized РїСЂРѕС† РѕС‚РїСѓСЃС‚Рё() {}
 }
 
 
-/** \class ТаймаутСинх
+/** \class РўР°Р№РјР°СѓС‚РЎРёРЅС…
  * \brief A sync where all calls have timeouts.
  *
- *  A ТаймаутСинх is an adaptor class that transforms all
- * calls to обрети to instead invoke пытайся with a predetermined
- * таймаут значение.
+ *  A РўР°Р№РјР°СѓС‚РЎРёРЅС… is an adaptor class that transforms all
+ * calls to РѕР±СЂРµС‚Рё to instead invoke РїС‹С‚Р°Р№СЃСЏ with a predetermined
+ * С‚Р°Р№РјР°СѓС‚ Р·РЅР°С‡РµРЅРёРµ.
  */
-class ТаймаутСинх : Синх {
+class РўР°Р№РјР°СѓС‚РЎРёРЅС… : РЎРёРЅС… {
 
-  protected final Синх синх_;     // the adapted sync
-  protected final дол таймаут_;  // таймаут значение
+  protected final РЎРёРЅС… СЃРёРЅС…_;     // the adapted sync
+  protected final РґРѕР» С‚Р°Р№РјР°СѓС‚_;  // С‚Р°Р№РјР°СѓС‚ Р·РЅР°С‡РµРЅРёРµ
 
   /** 
-   * Create a ТаймаутСинх using the given Синх object, and
-   * using the given таймаут значение for all calls to обрети.
+   * Create a РўР°Р№РјР°СѓС‚РЎРёРЅС… using the given РЎРёРЅС… object, and
+   * using the given С‚Р°Р№РјР°СѓС‚ Р·РЅР°С‡РµРЅРёРµ for all calls to РѕР±СЂРµС‚Рё.
    */
-  this(Синх sync, дол таймаут) {
-    синх_ = sync;
-    таймаут_ = таймаут;
+  this(РЎРёРЅС… sync, РґРѕР» С‚Р°Р№РјР°СѓС‚) {
+    СЃРёРЅС…_ = sync;
+    С‚Р°Р№РјР°СѓС‚_ = С‚Р°Р№РјР°СѓС‚;
   }
 
-  /** Destroy ТаймаутСинх and отпусти system resources */
+  /** Destroy РўР°Р№РјР°СѓС‚РЎРёРЅС… and РѕС‚РїСѓСЃС‚Рё system resources */
   ~this() {
-    delete синх_;
+    delete СЃРёРЅС…_;
   }
 
-  проц обрети() {
-    if (!синх_.пытайся(таймаут_)) throw new ИсклТаймаута(таймаут_);
+  РїСЂРѕС† РѕР±СЂРµС‚Рё() {
+    if (!СЃРёРЅС…_.РїС‹С‚Р°Р№СЃСЏ(С‚Р°Р№РјР°СѓС‚_)) throw new РСЃРєР»РўР°Р№РјР°СѓС‚Р°(С‚Р°Р№РјР°СѓС‚_);
   }
 
-  бул пытайся(дол мсек) {
-    return синх_.пытайся(мсек);
+  Р±СѓР» РїС‹С‚Р°Р№СЃСЏ(РґРѕР» РјСЃРµРє) {
+    return СЃРёРЅС…_.РїС‹С‚Р°Р№СЃСЏ(РјСЃРµРє);
   }
 
-  проц отпусти() {
-    синх_.отпусти();
+  РїСЂРѕС† РѕС‚РїСѓСЃС‚Рё() {
+    СЃРёРЅС…_.РѕС‚РїСѓСЃС‚Рё();
   }
 }
 
-/** \class СлойныйСинх
+/** \class РЎР»РѕР№РЅС‹Р№РЎРёРЅС…
  * \brief A class that can be used to compose Syncs.
  *
- * A СлойныйСинх object manages two другое Синх объекты,
- * <em>внешний</em> and <em>внутренний</em>. The обрети operation
- * invokes <em>внешний</em>.обрети() followed by <em>внутренний</em>.обрети(),
- * but backing out of внешний (via отпусти) upon an exception in внутренний.
- * The другое methods work similarly.
+ * A РЎР»РѕР№РЅС‹Р№РЎРёРЅС… object manages two РґСЂСѓРіРѕРµ РЎРёРЅС… РѕР±СЉРµРєС‚С‹,
+ * <em>РІРЅРµС€РЅРёР№</em> and <em>РІРЅСѓС‚СЂРµРЅРЅРёР№</em>. The РѕР±СЂРµС‚Рё operation
+ * invokes <em>РІРЅРµС€РЅРёР№</em>.РѕР±СЂРµС‚Рё() followed by <em>РІРЅСѓС‚СЂРµРЅРЅРёР№</em>.РѕР±СЂРµС‚Рё(),
+ * but backing out of РІРЅРµС€РЅРёР№ (via РѕС‚РїСѓСЃС‚Рё) upon an exception in РІРЅСѓС‚СЂРµРЅРЅРёР№.
+ * The РґСЂСѓРіРѕРµ methods work similarly.
  * <p>
  * LayeredSyncs can be used to compose arbitrary chains
  * by arranging that either of the managed Syncs be another
- * СлойныйСинх.
+ * РЎР»РѕР№РЅС‹Р№РЎРёРЅС….
  *
  */
-class СлойныйСинх : Синх {
+class РЎР»РѕР№РЅС‹Р№РЎРёРЅС… : РЎРёРЅС… {
 
-  protected final Синх внешний_;
-  protected final Синх внутренний_;
+  protected final РЎРёРЅС… РІРЅРµС€РЅРёР№_;
+  protected final РЎРёРЅС… РІРЅСѓС‚СЂРµРЅРЅРёР№_;
 
   /** 
-   * Create a СлойныйСинх managing the given внешний and внутренний Синх
-   * объекты
+   * Create a РЎР»РѕР№РЅС‹Р№РЎРёРЅС… managing the given РІРЅРµС€РЅРёР№ and РІРЅСѓС‚СЂРµРЅРЅРёР№ РЎРёРЅС…
+   * РѕР±СЉРµРєС‚С‹
    */
-  this(Синх внешний, Синх внутренний) {
-    внешний_ = внешний;
-    внутренний_ = внутренний;
+  this(РЎРёРЅС… РІРЅРµС€РЅРёР№, РЎРёРЅС… РІРЅСѓС‚СЂРµРЅРЅРёР№) {
+    РІРЅРµС€РЅРёР№_ = РІРЅРµС€РЅРёР№;
+    РІРЅСѓС‚СЂРµРЅРЅРёР№_ = РІРЅСѓС‚СЂРµРЅРЅРёР№;
   }
 
-  /** Destroy СлойныйСинх and отпусти system resources */
+  /** Destroy РЎР»РѕР№РЅС‹Р№РЎРёРЅС… and РѕС‚РїСѓСЃС‚Рё system resources */
   ~this() {
-    delete внешний_;
-    delete внутренний_;
+    delete РІРЅРµС€РЅРёР№_;
+    delete РІРЅСѓС‚СЂРµРЅРЅРёР№_;
   }
 
-  проц обрети() {
-    внешний_.обрети();
+  РїСЂРѕС† РѕР±СЂРµС‚Рё() {
+    РІРЅРµС€РЅРёР№_.РѕР±СЂРµС‚Рё();
     try {
-      внутренний_.обрети();
+      РІРЅСѓС‚СЂРµРЅРЅРёР№_.РѕР±СЂРµС‚Рё();
     }
-    catch (ИсклОжидания искл) {
-      внешний_.отпусти();
-      throw искл;
+    catch (РСЃРєР»РћР¶РёРґР°РЅРёСЏ РёСЃРєР») {
+      РІРЅРµС€РЅРёР№_.РѕС‚РїСѓСЃС‚Рё();
+      throw РёСЃРєР»;
     }
   }
 
-  бул пытайся(дол мсек) {
+  Р±СѓР» РїС‹С‚Р°Р№СЃСЏ(РґРѕР» РјСЃРµРє) {
 
-    дол старт = (мсек <= 0)? 0 : clock();
-    дол времяОжидания = мсек;
+    РґРѕР» СЃС‚Р°СЂС‚ = (РјСЃРµРє <= 0)? 0 : clock();
+    РґРѕР» РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ = РјСЃРµРє;
 
-    if (внешний_.пытайся(времяОжидания)) {
+    if (РІРЅРµС€РЅРёР№_.РїС‹С‚Р°Р№СЃСЏ(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ)) {
       try {
-        if (мсек > 0)
-          времяОжидания = мсек - (clock() - старт);
-        if (внутренний_.пытайся(времяОжидания))
-          return да;
+        if (РјСЃРµРє > 0)
+          РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ = РјСЃРµРє - (clock() - СЃС‚Р°СЂС‚);
+        if (РІРЅСѓС‚СЂРµРЅРЅРёР№_.РїС‹С‚Р°Р№СЃСЏ(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ))
+          return РґР°;
         else {
-          внешний_.отпусти();
-          return нет;
+          РІРЅРµС€РЅРёР№_.РѕС‚РїСѓСЃС‚Рё();
+          return РЅРµС‚;
         }
       }
-      catch (ИсклОжидания искл) {
-        внешний_.отпусти();
-        throw искл;
+      catch (РСЃРєР»РћР¶РёРґР°РЅРёСЏ РёСЃРєР») {
+        РІРЅРµС€РЅРёР№_.РѕС‚РїСѓСЃС‚Рё();
+        throw РёСЃРєР»;
       }
     }
     else
-      return нет;
+      return РЅРµС‚;
   }
 
-  public проц отпусти() {
-    внутренний_.отпусти();
-    внешний_.отпусти();
+  public РїСЂРѕС† РѕС‚РїСѓСЃС‚Рё() {
+    РІРЅСѓС‚СЂРµРЅРЅРёР№_.РѕС‚РїСѓСЃС‚Рё();
+    РІРЅРµС€РЅРёР№_.РѕС‚РїСѓСЃС‚Рё();
   }
 
 }

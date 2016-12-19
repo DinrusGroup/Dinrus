@@ -1,4 +1,4 @@
-module conc.synchtimer;
+п»їmodule conc.synchtimer;
 
 import conc.all;
 
@@ -6,7 +6,7 @@ private import cidrus;
 private import thread;
 
 
-static цел[] nthreadsChoices = { 
+static С†РµР»[] nthreadsChoices = { 
     1, 
     2, 
     4, 
@@ -21,80 +21,80 @@ static цел[] nthreadsChoices = {
   };
 
 
-enum ПРежимыСинх { БлокРежим, РежимТаймаут, };
+enum Р РµР¶РёРјС‹РЎРёРЅС… { Р РµР¶РёРјР‘Р»РѕРє, Р РµР¶РёРјРўР°Р№РјР°СѓС‚Р°, };
 
-class ТестированныйКласс(Cls,BuffCls)
+class РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ(Cls,BuffCls)
  {
-    final ткст name; 
+    final С‚РєСЃС‚ name; 
     final Cls cls; 
-    final бул multipleOK; 
-    final бул singleOK;
+    final Р±СѓР» multipleOK; 
+    final Р±СѓР» singleOK;
     final BuffCls buffCls;
-    бул enabled_ = да;
-    synchronized проц активен(Бул b) { enabled_ = b; }
-    synchronized бул активен() { return enabled_; }
-    synchronized проц переключиАктив() {
-      enabled_ = !активен;
+    Р±СѓР» enabled_ = РґР°;
+    synchronized РїСЂРѕС† Р°РєС‚РёРІРµРЅ(Р‘СѓР» b) { enabled_ = b; }
+    synchronized Р±СѓР» Р°РєС‚РёРІРµРЅ() { return enabled_; }
+    synchronized РїСЂРѕС† РїРµСЂРµРєР»СЋС‡РёСРєС‚РёРІ() {
+      enabled_ = !Р°РєС‚РёРІРµРЅ;
     }
 
-    this(ткст n, Cls c, бул m, бул sok) {
+    this(С‚РєСЃС‚ n, Cls c, Р±СѓР» m, Р±СѓР» sok) {
       name = n; cls = c; multipleOK = m; singleOK = sok; 
-      buffCls = пусто;
+      buffCls = РїСѓСЃС‚Рѕ;
     }
     
-    this(ткст n, Cls c, бул m, бул sok, BuffCls bc) {
+    this(С‚РєСЃС‚ n, Cls c, Р±СѓР» m, Р±СѓР» sok, BuffCls bc) {
       name = n; cls = c; multipleOK = m; singleOK = sok; 
       buffCls = bc;
     }
 }
 
-class ТаймерСинхронизации 
+class РўР°Р№РјРµСЂРЎРёРЅС…СЂРѕРЅРёР·Р°С†РёРё 
 {
 
 
-  static ТестированныйКласс[] классы;
+  static РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ[] РєР»Р°СЃСЃС‹;
 
   static this {
-    классы ~= new ТестированныйКласс!(NoSynchRNG)("NoSynchronization", нет, да);
-    классы ~= new ТестированныйКласс!(PublicSynchRNG)("PublicSynchronization", да, да);
-    классы ~= new ТестированныйКласс!(SemRNG)("Семафор", да, да);
+    РєР»Р°СЃСЃС‹ ~= new РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ!(NoSynchRNG)("NoSynchronization", РЅРµС‚, РґР°);
+    РєР»Р°СЃСЃС‹ ~= new РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ!(PublicSynchRNG)("PublicSynchronization", РґР°, РґР°);
+    РєР»Р°СЃСЃС‹ ~= new РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ!(SemRNG)("РЎРµРјР°С„РѕСЂ", РґР°, РґР°);
   }
 
-  static ткст режимВТкст(цел m);
-  static ткст biasToString(цел b);
-  static ткст p2ToString(цел n) ;
+  static С‚РєСЃС‚ СЂРµР¶РёРјВ¬вЂњРєСЃС‚(С†РµР» m);
+  static С‚РєСЃС‚ biasToString(С†РµР» b);
+  static С‚РєСЃС‚ p2ToString(С†РµР» n) ;
   
-  const цел PRECISION = 10; // microseconds
+  const С†РµР» PRECISION = 10; // microseconds
     
-  static ткст форматируйВремя(дол ns, бул showDecimal) ;
+  static С‚РєСЃС‚ С„РѕСЂРјР°С‚РёСЂСѓР№В¬СЂРµРјСЏ(РґРѕР» ns, Р±СѓР» showDecimal) ;
     
-			  static class ИнфОНити
+			  static class РРЅС„РћРќРёС‚Рё
 			  {
-				final ткст name;
-				final цел число;
-				Бул активен;
-				ИнфОНити(цел nthr) ;
-				synchronized Бул дайАктив();
-				synchronized проц установиАктив(Бул v);
-				synchronized проц переключиАктив();
+				final С‚РєСЃС‚ name;
+				final С†РµР» С‡РёСЃР»Рѕ;
+				Р‘СѓР» Р°РєС‚РёРІРµРЅ;
+				РРЅС„РћРќРёС‚Рё(С†РµР» nthr) ;
+				synchronized Р‘СѓР» РґР°Р№СРєС‚РёРІ();
+				synchronized РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРёСРєС‚РёРІ(Р‘СѓР» v);
+				synchronized РїСЂРѕС† РїРµСЂРµРєР»СЋС‡РёСРєС‚РёРІ();
 			  }
 
-  final ИнфОНити[] инфОНити = new ИнфОНити[nthreadsChoices.length];
+  final РРЅС„РћРќРёС‚Рё[] РёРЅС„РћРќРёС‚Рё = new РРЅС„РћРќРёС‚Рё[nthreadsChoices.length];
 
-  бул нитьАктивирована(цел члонитей) ;
+  Р±СѓР» РЅРёС‚СЊСРєС‚РёРІРёСЂРѕРІР°РЅР°(С†РµР» С‡Р»РѕРЅРёС‚РµР№) ;
   
-  final static цел headerRows = 1;
-  final static цел classColumn = 0;
-  final static цел headerColumns = 1;
-  final цел tableRows = ТестированныйКласс.классы.length + headerRows;
-  final цел tableColumns = nthreadsChoices.length + headerColumns;
+  final static С†РµР» headerRows = 1;
+  final static С†РµР» classColumn = 0;
+  final static С†РµР» headerColumns = 1;
+  final С†РµР» tableRows = РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹.length + headerRows;
+  final С†РµР» tableColumns = nthreadsChoices.length + headerColumns;
   
   final JComponent[][] resultTable_ = new JComponent[tableRows][tableColumns];
   
   JPanel resultPanel() {
 
     JPanel[] colPanel = new JPanel[tableColumns];
-    for (цел col = 0; col < tableColumns; ++col) {
+    for (С†РµР» col = 0; col < tableColumns; ++col) {
       colPanel[col] = new JPanel();
       colPanel[col].setLayout(new GridLayout(tableRows, 1));
       if (col != 0)
@@ -115,12 +115,12 @@ class ТаймерСинхронизации
     resultTable_[0][0] = cornerLab;
     colPanel[0].add(cornerLab);
     
-    for (цел col = 1; col < tableColumns; ++col) {
-      final цел члонитей = col - headerColumns;
-      JCheckBox tcb = new JCheckBox(инфОНити[члонитей].name, да);
+    for (С†РµР» col = 1; col < tableColumns; ++col) {
+      final С†РµР» С‡Р»РѕРЅРёС‚РµР№ = col - headerColumns;
+      JCheckBox tcb = new JCheckBox(РёРЅС„РћРќРёС‚Рё[С‡Р»РѕРЅРёС‚РµР№].name, РґР°);
       tcb.addActionListener(new ActionListener() {
-        проц actionPerformed(ActionEvent evt) {
-          инфОНити[члонитей].переключиАктив();
+        РїСЂРѕС† actionPerformed(ActionEvent evt) {
+          РёРЅС„РћРќРёС‚Рё[С‡Р»РѕРЅРёС‚РµР№].РїРµСЂРµРєР»СЋС‡РёСРєС‚РёРІ();
         }});
       
       
@@ -133,13 +133,13 @@ class ТаймерСинхронизации
     }
     
     
-    for (цел row = 1; row < tableRows; ++row) {
-      final цел cls = row - headerRows;
+    for (С†РµР» row = 1; row < tableRows; ++row) {
+      final С†РµР» cls = row - headerRows;
       
-      JCheckBox cb = new JCheckBox(ТестированныйКласс.классы[cls].name, да); 
+      JCheckBox cb = new JCheckBox(РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹[cls].name, РґР°); 
       cb.addActionListener(new ActionListener() {
-        проц actionPerformed(ActionEvent evt) {
-          ТестированныйКласс.классы[cls].переключиАктив();
+        РїСЂРѕС† actionPerformed(ActionEvent evt) {
+          РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹[cls].РїРµСЂРµРєР»СЋС‡РёСРєС‚РёРІ();
         }});
       
       resultTable_[row][0] = cb;
@@ -148,8 +148,8 @@ class ТаймерСинхронизации
       cb.setFont(font);
       colPanel[0].add(cb);
       
-      for (цел col = 1; col < tableColumns; ++col) {
-        цел члонитей = col - headerColumns;
+      for (С†РµР» col = 1; col < tableColumns; ++col) {
+        С†РµР» С‡Р»РѕРЅРёС‚РµР№ = col - headerColumns;
         JLabel lab = new JLabel("");
         resultTable_[row][col] = lab;
         
@@ -167,7 +167,7 @@ class ТаймерСинхронизации
     
     JPanel tblPanel = new JPanel();
     tblPanel.setLayout(new BoxLayout(tblPanel, BoxLayout.X_AXIS));
-    for (цел col = 0; col < tableColumns; ++col) {
+    for (С†РµР» col = 0; col < tableColumns; ++col) {
       tblPanel.add(colPanel[col]);
     }
     
@@ -175,44 +175,44 @@ class ТаймерСинхронизации
     
   }
 
-  проц setTime(final дол ns, цел clsIdx, цел nthrIdx) {
-    цел row = clsIdx+headerRows;
-    цел col = nthrIdx+headerColumns;
+  РїСЂРѕС† setTime(final РґРѕР» ns, С†РµР» clsIdx, С†РµР» nthrIdx) {
+    С†РµР» row = clsIdx+headerRows;
+    С†РµР» col = nthrIdx+headerColumns;
     final JLabel cell = (JLabel)(resultTable_[row][col]);
 
-    SwingUtilities.invokeLater(new Пускаемый() {
-      проц пуск() { 
-        cell.setText(форматируйВремя(ns, да)); 
+    SwingUtilities.invokeLater(new С•СѓСЃРєР°РµРјС‹Р№() {
+      РїСЂРѕС† РїСѓСЃРє() { 
+        cell.setText(С„РѕСЂРјР°С‚РёСЂСѓР№В¬СЂРµРјСЏ(ns, РґР°)); 
       } 
     });
   }
   
      
 
-  проц clearTable() {
-    for (цел i = 1; i < tableRows; ++i) {
-      for (цел j = 1; j < tableColumns; ++j) {
+  РїСЂРѕС† clearTable() {
+    for (С†РµР» i = 1; i < tableRows; ++i) {
+      for (С†РµР» j = 1; j < tableColumns; ++j) {
         ((JLabel)(resultTable_[i][j])).setText("");
       }
     }
   }
 
-  проц setChecks(final бул setting) {
-    for (цел i = 0; i < ТестированныйКласс.классы.length; ++i) {
-      ТестированныйКласс.классы[i].установиАктив(new Бул(setting));
+  РїСЂРѕС† setChecks(final Р±СѓР» setting) {
+    for (С†РµР» i = 0; i < РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹.length; ++i) {
+      РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹[i].СѓСЃС‚Р°РЅРѕРІРёСРєС‚РёРІ(new Р‘СѓР»(setting));
       ((JCheckBox)resultTable_[i+1][0]).setSelected(setting);
     }
   }
 
 
-  ТаймерСинхронизации() { 
-    for (цел i = 0; i < инфОНити.length; ++i) 
-      инфОНити[i] = new ИнфОНити(nthreadsChoices[i]);
+  РўР°Р№РјРµСЂРЎРёРЅС…СЂРѕРЅРёР·Р°С†РёРё() { 
+    for (С†РµР» i = 0; i < РёРЅС„РћРќРёС‚Рё.length; ++i) 
+      РёРЅС„РћРќРёС‚Рё[i] = new РРЅС„РћРќРёС‚Рё(nthreadsChoices[i]);
 
   }
   
-  final СинхронЦел nextClassIdx_ = new СинхронЦел(0);
-  final СинхронЦел nextThreadIdx_ = new СинхронЦел(0);
+  final РЎРёРЅС…СЂРѕРЅГ·РµР» nextClassIdx_ = new РЎРёРЅС…СЂРѕРЅГ·РµР»(0);
+  final РЎРёРЅС…СЂРѕРЅГ·РµР» nextThreadIdx_ = new РЎРёРЅС…СЂРѕРЅГ·РµР»(0);
 
 
   JPanel mainPanel() {
@@ -224,14 +224,14 @@ class ТаймерСинхронизации
     buttonPanel.setLayout(new GridLayout(1, 3));
     
     startstop_.addActionListener(new ActionListener() {
-      проц actionPerformed(ActionEvent evt) {
-        if (running_.дай()) 
+      РїСЂРѕС† actionPerformed(ActionEvent evt) {
+        if (running_.РґР°Р№()) 
           cancel();
         else {
           try { 
             startTestSeries(new TestSeries());  
           }
-          catch (InterruptedException искл) { 
+          catch (InterruptedException РёСЃРєР») { 
             endTestSeries(); 
           }
         }
@@ -245,13 +245,13 @@ class ТаймерСинхронизации
     JButton continueButton = new JButton("Continue");
 
     continueButton.addActionListener(new ActionListener() {
-      проц actionPerformed(ActionEvent evt) {
-        if (!running_.дай()) {
+      РїСЂРѕС† actionPerformed(ActionEvent evt) {
+        if (!running_.РґР°Р№()) {
           try { 
-            startTestSeries(new TestSeries(nextClassIdx_.дай(),
-                                           nextThreadIdx_.дай()));  
+            startTestSeries(new TestSeries(nextClassIdx_.РґР°Р№(),
+                                           nextThreadIdx_.РґР°Р№()));  
           }
-          catch (InterruptedException искл) { 
+          catch (InterruptedException РёСЃРєР») { 
             endTestSeries(); 
           }
         }
@@ -262,7 +262,7 @@ class ТаймерСинхронизации
     JButton clearButton = new JButton("Clear cells");
     
     clearButton.addActionListener(new ActionListener(){
-      проц actionPerformed(ActionEvent evt) {
+      РїСЂРѕС† actionPerformed(ActionEvent evt) {
         clearTable();
       }
     });
@@ -274,22 +274,22 @@ class ТаймерСинхронизации
     JPanel p3 = new JPanel();
     p3.setLayout(new GridLayout(1, 2));
     
-    JButton setButton = new JButton("All классы");
+    JButton setButton = new JButton("All РєР»Р°СЃСЃС‹");
     
     setButton.addActionListener(new ActionListener(){
-      проц actionPerformed(ActionEvent evt) {
-        setChecks(да);
+      РїСЂРѕС† actionPerformed(ActionEvent evt) {
+        setChecks(РґР°);
       }
     });
 
     p3.add(setButton);
 
 
-    JButton unsetButton = new JButton("No классы");
+    JButton unsetButton = new JButton("No РєР»Р°СЃСЃС‹");
     
     unsetButton.addActionListener(new ActionListener(){
-      проц actionPerformed(ActionEvent evt) {
-        setChecks(нет);
+      РїСЂРѕС† actionPerformed(ActionEvent evt) {
+        setChecks(РЅРµС‚);
       }
     });
 
@@ -303,8 +303,8 @@ class ТаймерСинхронизации
 
     JCheckBox consoleBox = new JCheckBox("Console echo");
     consoleBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
-        echoToSystemOut.комплемент();
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
+        echoToSystemOut.РєРѕРјРїР»РµРјРµРЅС‚();
       }
     });
 
@@ -347,19 +347,19 @@ class ТаймерСинхронизации
   JComboBox syncModePanel() {
     JComboBox syncModeComboBox = new JComboBox();
     
-    for (цел j = 0; j < ПРежимыСинх.length; ++j) {
-      ткст lab = "Locks: " + режимВТкст(ПРежимыСинх[j]);
+    for (С†РµР» j = 0; j < Р РµР¶РёРјС‹РЎРёРЅС….length; ++j) {
+      С‚РєСЃС‚ lab = "Locks: " + СЂРµР¶РёРјВ¬вЂњРєСЃС‚(Р РµР¶РёРјС‹РЎРёРЅС…[j]);
       syncModeComboBox.addItem(lab);
     }
     syncModeComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.syncMode.установи(ПРежимыСинх[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.syncMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[РёРЅРґ]);
       }
     });
     
-    RNG.syncMode.установи(ПРежимыСинх[0]);
+    RNG.syncMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[0]);
     syncModeComboBox.setSelectedIndex(0);
     return syncModeComboBox;
   }
@@ -367,19 +367,19 @@ class ТаймерСинхронизации
   JComboBox producerSyncModePanel() {
     JComboBox producerSyncModeComboBox = new JComboBox();
     
-    for (цел j = 0; j < ПРежимыСинх.length; ++j) {
-      ткст lab = "Producers: " + режимВТкст(ПРежимыСинх[j]);
+    for (С†РµР» j = 0; j < Р РµР¶РёРјС‹РЎРёРЅС….length; ++j) {
+      С‚РєСЃС‚ lab = "Producers: " + СЂРµР¶РёРјВ¬вЂњРєСЃС‚(Р РµР¶РёРјС‹РЎРёРЅС…[j]);
       producerSyncModeComboBox.addItem(lab);
     }
     producerSyncModeComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.producerMode.установи(ПРежимыСинх[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.producerMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[РёРЅРґ]);
       }
     });
     
-    RNG.producerMode.установи(ПРежимыСинх[0]);
+    RNG.producerMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[0]);
     producerSyncModeComboBox.setSelectedIndex(0);
     return producerSyncModeComboBox;
   }
@@ -387,19 +387,19 @@ class ТаймерСинхронизации
   JComboBox consumerSyncModePanel() {
     JComboBox consumerSyncModeComboBox = new JComboBox();
     
-    for (цел j = 0; j < ПРежимыСинх.length; ++j) {
-      ткст lab = "Consumers: " + режимВТкст(ПРежимыСинх[j]);
+    for (С†РµР» j = 0; j < Р РµР¶РёРјС‹РЎРёРЅС….length; ++j) {
+      С‚РєСЃС‚ lab = "Consumers: " + СЂРµР¶РёРјВ¬вЂњРєСЃС‚(Р РµР¶РёРјС‹РЎРёРЅС…[j]);
       consumerSyncModeComboBox.addItem(lab);
     }
     consumerSyncModeComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.consumerMode.установи(ПРежимыСинх[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.consumerMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[РёРЅРґ]);
       }
     });
     
-    RNG.consumerMode.установи(ПРежимыСинх[0]);
+    RNG.consumerMode.СѓСЃС‚Р°РЅРѕРІРё(Р РµР¶РёРјС‹РЎРёРЅС…[0]);
     consumerSyncModeComboBox.setSelectedIndex(0);
     return consumerSyncModeComboBox;
   }
@@ -418,26 +418,26 @@ class ТаймерСинхронизации
     
     JComboBox contentionComboBox = new JComboBox();
     
-    for (цел j = 0; j < contentionChoices.length; ++j) {
-      ткст lab = contentionChoices[j].asDouble() * 100.0 + 
+    for (С†РµР» j = 0; j < contentionChoices.length; ++j) {
+      С‚РєСЃС‚ lab = contentionChoices[j].asDouble() * 100.0 + 
         "% contention/sharing";
       contentionComboBox.addItem(lab);
     }
     contentionComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        contention_.установи(contentionChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        contention_.СѓСЃС‚Р°РЅРѕРІРё(contentionChoices[РёРЅРґ]);
       }
     });
     
-    contention_.установи(contentionChoices[3]);
+    contention_.СѓСЃС‚Р°РЅРѕРІРё(contentionChoices[3]);
     contentionComboBox.setSelectedIndex(3);
     return contentionComboBox;
   }
   
   JComboBox itersBox() {
-    final цел[] loopsPerTestChoices = { 
+    final С†РµР»[] loopsPerTestChoices = { 
       1,
       16,
       256,
@@ -456,27 +456,27 @@ class ТаймерСинхронизации
     
     JComboBox precComboBox = new JComboBox();
     
-    for (цел j = 0; j < loopsPerTestChoices.length; ++j) {
-      ткст lab = p2ToString(loopsPerTestChoices[j]) + 
-        " calls per нить per test";
+    for (С†РµР» j = 0; j < loopsPerTestChoices.length; ++j) {
+      С‚РєСЃС‚ lab = p2ToString(loopsPerTestChoices[j]) + 
+        " calls per РЅРёС‚СЊ per test";
       precComboBox.addItem(lab);
     }
     precComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        loopsPerTest_.установи(loopsPerTestChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        loopsPerTest_.СѓСЃС‚Р°РЅРѕРІРё(loopsPerTestChoices[РёРЅРґ]);
       }
     });
     
-    loopsPerTest_.установи(loopsPerTestChoices[8]);
+    loopsPerTest_.СѓСЃС‚Р°РЅРѕРІРё(loopsPerTestChoices[8]);
     precComboBox.setSelectedIndex(8);
 
     return precComboBox;
   }
   
   JComboBox cloopBox() {
-    final цел[] computationsPerCallChoices = { 
+    final С†РµР»[] computationsPerCallChoices = { 
       1,
       2,
       4,
@@ -498,26 +498,26 @@ class ТаймерСинхронизации
     
     JComboBox cloopComboBox = new JComboBox();
     
-    for (цел j = 0; j < computationsPerCallChoices.length; ++j) {
-      ткст lab = p2ToString(computationsPerCallChoices[j]) + 
+    for (С†РµР» j = 0; j < computationsPerCallChoices.length; ++j) {
+      С‚РєСЃС‚ lab = p2ToString(computationsPerCallChoices[j]) + 
         " computations per call";
       cloopComboBox.addItem(lab);
     }
     cloopComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.computeLoops.установи(computationsPerCallChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.computeLoops.СѓСЃС‚Р°РЅРѕРІРё(computationsPerCallChoices[РёРЅРґ]);
       }
     });
     
-    RNG.computeLoops.установи(computationsPerCallChoices[3]);
+    RNG.computeLoops.СѓСЃС‚Р°РЅРѕРІРё(computationsPerCallChoices[3]);
     cloopComboBox.setSelectedIndex(3);
     return cloopComboBox;
   }
   
   JComboBox barrierBox() {
-    final цел[] itersPerBarrierChoices = { 
+    final С†РµР»[] itersPerBarrierChoices = { 
       1,
       2,
       4,
@@ -543,30 +543,30 @@ class ТаймерСинхронизации
     
     JComboBox barrierComboBox = new JComboBox();
     
-    for (цел j = 0; j < itersPerBarrierChoices.length; ++j) {
-      ткст lab = p2ToString(itersPerBarrierChoices[j]) + 
-        " iterations per барьер";
+    for (С†РµР» j = 0; j < itersPerBarrierChoices.length; ++j) {
+      С‚РєСЃС‚ lab = p2ToString(itersPerBarrierChoices[j]) + 
+        " iterations per Р±Р°СЂСЊРµСЂ";
       barrierComboBox.addItem(lab);
     }
     barrierComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.itersPerBarrier.установи(itersPerBarrierChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.itersPerBarrier.СѓСЃС‚Р°РЅРѕРІРё(itersPerBarrierChoices[РёРЅРґ]);
       }
     });
     
-    RNG.itersPerBarrier.установи(itersPerBarrierChoices[13]);
+    RNG.itersPerBarrier.СѓСЃС‚Р°РЅРѕРІРё(itersPerBarrierChoices[13]);
     barrierComboBox.setSelectedIndex(13);
 
-    //    RNG.itersPerBarrier.установи(itersPerBarrierChoices[15]);
+    //    RNG.itersPerBarrier.СѓСЃС‚Р°РЅРѕРІРё(itersPerBarrierChoices[15]);
     //    barrierComboBox.setSelectedIndex(15);
 
     return barrierComboBox;
   }
   
   JComboBox exchangeBox() {
-    final цел[] exchangerChoices = { 
+    final С†РµР»[] exchangerChoices = { 
       1,
       2,
       4,
@@ -582,26 +582,26 @@ class ТаймерСинхронизации
     
     JComboBox exchComboBox = new JComboBox();
     
-    for (цел j = 0; j < exchangerChoices.length; ++j) {
-      ткст lab = p2ToString(exchangerChoices[j]) + 
-        " max threads per барьер";
+    for (С†РµР» j = 0; j < exchangerChoices.length; ++j) {
+      С‚РєСЃС‚ lab = p2ToString(exchangerChoices[j]) + 
+        " max threads per Р±Р°СЂСЊРµСЂ";
       exchComboBox.addItem(lab);
     }
     exchComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.exchangeParties.установи(exchangerChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.exchangeParties.СѓСЃС‚Р°РЅРѕРІРё(exchangerChoices[РёРЅРґ]);
       }
     });
     
-    RNG.exchangeParties.установи(exchangerChoices[1]);
+    RNG.exchangeParties.СѓСЃС‚Р°РЅРѕРІРё(exchangerChoices[1]);
     exchComboBox.setSelectedIndex(1);
     return exchComboBox;
   }
   
   JComboBox biasBox() {
-    final цел[] biasChoices = { 
+    final С†РµР»[] biasChoices = { 
       -1, 
       0, 
       1 
@@ -610,26 +610,26 @@ class ТаймерСинхронизации
     
     JComboBox biasComboBox = new JComboBox();
     
-    for (цел j = 0; j < biasChoices.length; ++j) {
-      ткст lab = biasToString(biasChoices[j]);
+    for (С†РµР» j = 0; j < biasChoices.length; ++j) {
+      С‚РєСЃС‚ lab = biasToString(biasChoices[j]);
       biasComboBox.addItem(lab);
     }
     biasComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.bias.установи(biasChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.bias.СѓСЃС‚Р°РЅРѕРІРё(biasChoices[РёРЅРґ]);
       }
     });
     
-    RNG.bias.установи(biasChoices[1]);
+    RNG.bias.СѓСЃС‚Р°РЅРѕРІРё(biasChoices[1]);
     biasComboBox.setSelectedIndex(1);
     return biasComboBox;
   }
   
   JComboBox capacityBox() {
     
-    final цел[] bufferCapacityChoices = {
+    final С†РµР»[] bufferCapacityChoices = {
       1,
       4,
       64,
@@ -644,21 +644,21 @@ class ТаймерСинхронизации
     
     JComboBox bcapComboBox = new JComboBox();
     
-    for (цел j = 0; j < bufferCapacityChoices.length; ++j) {
-      ткст lab = p2ToString(bufferCapacityChoices[j]) + 
+    for (С†РµР» j = 0; j < bufferCapacityChoices.length; ++j) {
+      С‚РєСЃС‚ lab = p2ToString(bufferCapacityChoices[j]) + 
         " element bounded buffers";
       bcapComboBox.addItem(lab);
     }
     bcapComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        ДефолтнаяЁмкостьКанала.установи(bufferCapacityChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        Ж’РµС„РѕР»С‚РЅР°СЏВ®РјРєРѕСЃС‚СЊВ Р°РЅР°Р»Р°.СѓСЃС‚Р°РЅРѕРІРё(bufferCapacityChoices[РёРЅРґ]);
       }
     });
     
     
-    ДефолтнаяЁмкостьКанала.установи(bufferCapacityChoices[3]);
+    Ж’РµС„РѕР»С‚РЅР°СЏВ®РјРєРѕСЃС‚СЊВ Р°РЅР°Р»Р°.СѓСЃС‚Р°РЅРѕРІРё(bufferCapacityChoices[3]);
     bcapComboBox.setSelectedIndex(3);
     return bcapComboBox;
   }
@@ -666,7 +666,7 @@ class ТаймерСинхронизации
   JComboBox timeoutBox() {
     
     
-    final дол[] timeoutChoices = {
+    final РґРѕР»[] timeoutChoices = {
       0,
       1,
       10,
@@ -679,168 +679,168 @@ class ТаймерСинхронизации
     
     JComboBox timeoutComboBox = new JComboBox();
     
-    for (цел j = 0; j < timeoutChoices.length; ++j) {
-      ткст lab = timeoutChoices[j] + " msec timeouts";
+    for (С†РµР» j = 0; j < timeoutChoices.length; ++j) {
+      С‚РєСЃС‚ lab = timeoutChoices[j] + " msec timeouts";
       timeoutComboBox.addItem(lab);
     }
     timeoutComboBox.addItemListener(new ItemListener() {
-      проц itemStateChanged(ItemEvent evt) {
+      РїСЂРѕС† itemStateChanged(ItemEvent evt) {
         JComboBox src = (JComboBox)(evt.getItemSelectable());
-        цел инд = src.getSelectedIndex();
-        RNG.таймаут.установи(timeoutChoices[инд]);
+        С†РµР» РёРЅРґ = src.getSelectedIndex();
+        RNG.С‚Р°Р№РјР°СѓС‚.СѓСЃС‚Р°РЅРѕРІРё(timeoutChoices[РёРЅРґ]);
       }
     });
     
-    RNG.таймаут.установи(timeoutChoices[3]);
+    RNG.С‚Р°Р№РјР°СѓС‚.СѓСЃС‚Р°РЅРѕРІРё(timeoutChoices[3]);
     timeoutComboBox.setSelectedIndex(3);
     return timeoutComboBox;
   }
 
   ClockDaemon timeDaemon = new ClockDaemon();
   
-  проц startPoolStatus(final JLabel status) {
-    Пускаемый updater = new Пускаемый() {
-      цел lastps = 0;
-      проц пуск() {
-        final цел ps = Threads.activeThreads.дай();
+  РїСЂРѕС† startPoolStatus(final JLabel status) {
+    С•СѓСЃРєР°РµРјС‹Р№ updater = new С•СѓСЃРєР°РµРјС‹Р№() {
+      С†РµР» lastps = 0;
+      РїСЂРѕС† РїСѓСЃРє() {
+        final С†РµР» ps = Threads.activeThreads.РґР°Р№();
         if (lastps != ps) {
           lastps = ps;
-          SwingUtilities.invokeLater(new Пускаемый() {
-            проц пуск() {
+          SwingUtilities.invokeLater(new С•СѓСЃРєР°РµРјС‹Р№() {
+            РїСЂРѕС† РїСѓСЃРє() {
               status.setText("Active threads: " + ps);
             } } );
         }
       }
     };
-    timeDaemon.executePeriodically(250, updater, нет);
+    timeDaemon.executePeriodically(250, updater, РЅРµС‚);
   }
 
-  private final SynchronizedRef contention_ = new SynchronizedRef(пусто);
-  private final СинхронЦел loopsPerTest_ = new СинхронЦел(0);
+  private final SynchronizedRef contention_ = new SynchronizedRef(РїСѓСЃС‚Рѕ);
+  private final РЎРёРЅС…СЂРѕРЅГ·РµР» loopsPerTest_ = new РЎРёРЅС…СЂРѕРЅГ·РµР»(0);
 
   private final SynchronizedBool echoToSystemOut = 
-      new SynchronizedBool(нет);
+      new SynchronizedBool(РЅРµС‚);
 
 
   private final JButton startstop_ = new JButton("Start");
   
   private WaitableInt testNumber_ = new WaitableInt(1);
 
-  private проц runOneTest(Пускаемый tst) { 
-    цел nt = testNumber_.дай(); 
-    Threads.pool.выполни(tst);
-    testNumber_.whenNotEqual(nt, пусто);
+  private РїСЂРѕС† runOneTest(С•СѓСЃРєР°РµРјС‹Р№ tst) { 
+    С†РµР» nt = testNumber_.РґР°Р№(); 
+    Threads.pool.РІС‹РїРѕР»РЅРё(tst);
+    testNumber_.whenNotEqual(nt, РїСѓСЃС‚Рѕ);
   }
 
-  private проц endOneTest() {
+  private РїСЂРѕС† endOneTest() {
     testNumber_.increment();
   }
 
-  private SynchronizedBool running_ = new SynchronizedBool(нет);
+  private SynchronizedBool running_ = new SynchronizedBool(РЅРµС‚);
 
-  проц cancel() { 
+  РїСЂРѕС† cancel() { 
     //  not stable enough to cancel during construction
     synchronized (RNG.constructionLock) {
       try {
-        Threads.pool.прервиВсе();
+        Threads.pool.РїСЂРµСЂРІРёВ¬СЃРµ();
       }
-      catch(Искл искл) {
-        System.out.println("\nException during cancel:\n" + искл);
+      catch(В»СЃРєР» РёСЃРєР») {
+        System.out.println("\nException during cancel:\n" + РёСЃРєР»);
         return;
       }
     }
   }
 
 
-  проц startTestSeries(Пускаемый tst) {
-    running_.установи(да);
+  РїСЂРѕС† startTestSeries(С•СѓСЃРєР°РµРјС‹Р№ tst) {
+    running_.СѓСЃС‚Р°РЅРѕРІРё(РґР°);
     startstop_.setText("Stop");
-    Threads.pool.выполни(tst);
+    Threads.pool.РІС‹РїРѕР»РЅРё(tst);
   }
 
   // prevent odd class-gc problems on some VMs?
-  class PrintStart : Пускаемый {
-    проц пуск() {
+  class PrintStart : С•СѓСЃРєР°РµРјС‹Р№ {
+    РїСЂРѕС† РїСѓСЃРє() {
       startstop_.setText("Start");
     } 
   } 
 
 
-  проц endTestSeries() {
-    running_.установи(нет);
+  РїСЂРѕС† endTestSeries() {
+    running_.СѓСЃС‚Р°РЅРѕРІРё(РЅРµС‚);
     SwingUtilities.invokeLater(new PrintStart());
   }
 
   /*
-  проц old_endTestSeries() {
-    running_.установи(нет);
-    SwingUtilities.invokeLater(new Пускаемый() {
-      проц пуск() {
+  РїСЂРѕС† old_endTestSeries() {
+    running_.СѓСЃС‚Р°РЅРѕРІРё(РЅРµС‚);
+    SwingUtilities.invokeLater(new С•СѓСЃРєР°РµРјС‹Р№() {
+      РїСЂРѕС† РїСѓСЃРє() {
         startstop_.setText("Start");
       } } );
   }
   */
 
-  class TestSeries : Пускаемый {
-    final цел firstclass;
-    final цел firstnthreads;
+  class TestSeries : С•СѓСЃРєР°РµРјС‹Р№ {
+    final С†РµР» firstclass;
+    final С†РµР» firstnthreads;
 
     TestSeries() { 
       firstclass = 0;
       firstnthreads = 0;
     }
 
-    TestSeries(final цел firstc, final цел firstnt) { 
+    TestSeries(final С†РµР» firstc, final С†РµР» firstnt) { 
       firstclass = firstc;
       firstnthreads = firstnt;
     }
 
-    проц пуск() {
-      Нить.дайЭту().setPriority(Нить.NORM_PRIORITY);
+    РїСЂРѕС† РїСѓСЃРє() {
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY);
 
       try {
-        цел t = firstnthreads; 
-        цел c = firstclass;
+        С†РµР» t = firstnthreads; 
+        С†РµР» c = firstclass;
 
         if (t < nthreadsChoices.length &&
-            c < ТестированныйКласс.классы.length) {
+            c < РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹.length) {
 
           for (;;) {
 
             
             // these checks are duplicated in OneTest, but added here
-            // to minimize unecessary нить construction, 
+            // to minimize unecessary РЅРёС‚СЊ construction, 
             // which can skew results
 
-            if (нитьАктивирована(t)) {
+            if (РЅРёС‚СЊСРєС‚РёРІРёСЂРѕРІР°РЅР°(t)) {
 
-              ТестированныйКласс entry = ТестированныйКласс.классы[c];
+              РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ entry = РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹[c];
         
-              цел члонитей = nthreadsChoices[t];
-              цел iters = loopsPerTest_.дай();
-              Fraction pshr = (Fraction)(contention_.дай());
+              С†РµР» С‡Р»РѕРЅРёС‚РµР№ = nthreadsChoices[t];
+              С†РµР» iters = loopsPerTest_.РґР°Р№();
+              Fraction pshr = (Fraction)(contention_.РґР°Р№());
         
-              if (entry.isEnabled(члонитей, pshr)) {
+              if (entry.isEnabled(С‡Р»РѕРЅРёС‚РµР№, pshr)) {
 
                 runOneTest(new OneTest(c, t));
               }
             }
 
-            if (++c >= ТестированныйКласс.классы.length) {
+            if (++c >= РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹.length) {
               c = 0;
               if (++t >= nthreadsChoices.length) 
                 break;
             }
 
-            nextClassIdx_.установи(c);
-            nextThreadIdx_.установи(t);
+            nextClassIdx_.СѓСЃС‚Р°РЅРѕРІРё(c);
+            nextThreadIdx_.СѓСЃС‚Р°РЅРѕРІРё(t);
             
           }
         }
 
       }
-      catch (InterruptedException искл) { 
-        Нить.дайЭту().interrupt();
+      catch (InterruptedException РёСЃРєР») { 
+        РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
       }
       finally {
         endTestSeries();
@@ -848,16 +848,16 @@ class ТаймерСинхронизации
     }
   }
 
-  static class BarrierTimer : Пускаемый {
-    private дол startTime_ = 0;
-    private дол endTime_ = 0;
+  static class BarrierTimer : С•СѓСЃРєР°РµРјС‹Р№ {
+    private РґРѕР» startTime_ = 0;
+    private РґРѕР» endTime_ = 0;
 
-    synchronized дол getTime() {
+    synchronized РґРѕР» getTime() {
       return endTime_ - startTime_;
     }
 
-    synchronized проц пуск() {
-      дол now = System.currentTimeMillis();
+    synchronized РїСЂРѕС† РїСѓСЃРє() {
+      РґРѕР» now = System.currentTimeMillis();
       if (startTime_ == 0) 
         startTime_ = now;
       else
@@ -865,21 +865,21 @@ class ТаймерСинхронизации
     }
   }
       
-  class OneTest : Пускаемый {
-    final цел clsIdx; 
-    final цел nthreadsIdx; 
+  class OneTest : С•СѓСЃРєР°РµРјС‹Р№ {
+    final С†РµР» clsIdx; 
+    final С†РµР» nthreadsIdx; 
 
-    OneTest(цел инд, цел t) {
-      clsIdx = инд; 
+    OneTest(С†РµР» РёРЅРґ, С†РµР» t) {
+      clsIdx = РёРЅРґ; 
       nthreadsIdx = t; 
     }
 
-    проц пуск() {
-      Нить.дайЭту().setPriority(Нить.NORM_PRIORITY-3);
+    РїСЂРѕС† РїСѓСЃРє() {
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY-3);
 
-      бул wasInterrupted = нет;
+      Р±СѓР» wasInterrupted = РЅРµС‚;
 
-      final ТестированныйКласс entry = ТестированныйКласс.классы[clsIdx];
+      final РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ entry = РўРµСЃС‚РёСЂРѕРІР°РЅРЅС‹Р№РљР»Р°СЃСЃ.РєР»Р°СЃСЃС‹[clsIdx];
 
       final JLabel cell = (JLabel)(resultTable_[clsIdx+1][nthreadsIdx+1]);
       final Color oldfg =  cell.getForeground();
@@ -887,137 +887,137 @@ class ТаймерСинхронизации
       try {
 
 
-        if (Нить.interrupted()) return;
-        if (!нитьАктивирована(nthreadsIdx)) return;
+        if (РќРёС‚СЊ.interrupted()) return;
+        if (!РЅРёС‚СЊСРєС‚РёРІРёСЂРѕРІР°РЅР°(nthreadsIdx)) return;
         
-        цел члонитей = nthreadsChoices[nthreadsIdx];
-        цел iters = loopsPerTest_.дай();
-        Fraction pshr = (Fraction)(contention_.дай());
+        С†РµР» С‡Р»РѕРЅРёС‚РµР№ = nthreadsChoices[nthreadsIdx];
+        С†РµР» iters = loopsPerTest_.РґР°Р№();
+        Fraction pshr = (Fraction)(contention_.РґР°Р№());
         
-        if (!entry.isEnabled(члонитей, pshr))  return;
+        if (!entry.isEnabled(С‡Р»РѕРЅРёС‚РµР№, pshr))  return;
 
         BarrierTimer timer = new BarrierTimer();
-        ЦиклическийБарьер барьер = new ЦиклическийБарьер(члонитей+1, timer);
+        Г·РёРєР»РёС‡РµСЃРєРёР№Р…Р°СЂСЊРµСЂ Р±Р°СЂСЊРµСЂ = new Г·РёРєР»РёС‡РµСЃРєРёР№Р…Р°СЂСЊРµСЂ(С‡Р»РѕРЅРёС‚РµР№+1, timer);
 
         Class cls = entry.cls;
         Class chanCls = entry.buffCls;
 
         try {
-          SwingUtilities.invokeAndWait(new Пускаемый() {
-            проц пуск() {
+          SwingUtilities.invokeAndWait(new С•СѓСЃРєР°РµРјС‹Р№() {
+            РїСЂРѕС† РїСѓСЃРє() {
               cell.setForeground(Color.blue);
               cell.setText("RUN");
               cell.repaint();
             }
           });
         }
-        catch (InvocationTargetException искл) {
-          искл.printStackTrace();
+        catch (InvocationTargetException РёСЃРєР») {
+          РёСЃРєР».printStackTrace();
           System.exit(-1);
         }
         synchronized (RNG.constructionLock) {
-          RNG.reset(члонитей);
+          RNG.reset(С‡Р»РѕРЅРёС‚РµР№);
 
-          if (chanCls == пусто) {
+          if (chanCls == РїСѓСЃС‚Рѕ) {
             RNG shared = (RNG)(cls.newInstance());
-            for (цел k = 0; k < члонитей; ++k) {
+            for (С†РµР» k = 0; k < С‡Р»РѕРЅРёС‚РµР№; ++k) {
               RNG pri = (RNG)(cls.newInstance());
-              TestLoop l = new TestLoop(shared, pri, pshr, iters, барьер);
-              Threads.pool.выполни(l.testLoop());
+              TestLoop l = new TestLoop(shared, pri, pshr, iters, Р±Р°СЂСЊРµСЂ);
+              Threads.pool.РІС‹РїРѕР»РЅРё(l.testLoop());
             }
           }
           else {
-            Канал shared = (Канал)(chanCls.newInstance());
-            if (члонитей == 1) {
+            В Р°РЅР°Р» shared = (В Р°РЅР°Р»)(chanCls.newInstance());
+            if (С‡Р»РѕРЅРёС‚РµР№ == 1) {
               ChanRNG single = (ChanRNG)(cls.newInstance());
-              single.setSingle(да);
+              single.setSingle(РґР°);
               PCTestLoop l = new PCTestLoop(single.getDelegate(), single, pshr,
-                                            iters, барьер,
+                                            iters, Р±Р°СЂСЊРµСЂ,
                                             shared, shared);
-              Threads.pool.выполни(l.testLoop(да));
+              Threads.pool.РІС‹РїРѕР»РЅРё(l.testLoop(РґР°));
             }
-            else if (члонитей % 2 != 0) 
-              throw new Error("Must have even число of threads!");
+            else if (С‡Р»РѕРЅРёС‚РµР№ % 2 != 0) 
+              throw new Error("Must have even С‡РёСЃР»Рѕ of threads!");
             else {
-              цел npairs = члонитей / 2;
+              С†РµР» npairs = С‡Р»РѕРЅРёС‚РµР№ / 2;
               
-              for (цел k = 0; k < npairs; ++k) {
+              for (С†РµР» k = 0; k < npairs; ++k) {
                 ChanRNG t = (ChanRNG)(cls.newInstance());
-                t.setSingle(нет);
-                Канал chan = (Канал)(chanCls.newInstance());
+                t.setSingle(РЅРµС‚);
+                В Р°РЅР°Р» chan = (В Р°РЅР°Р»)(chanCls.newInstance());
                 
                 PCTestLoop l = new PCTestLoop(t.getDelegate(), t, pshr, 
-                                              iters, барьер,
+                                              iters, Р±Р°СЂСЊРµСЂ,
                                               shared, chan);
                 
-                Threads.pool.выполни(l.testLoop(нет));
-                Threads.pool.выполни(l.testLoop(да));
+                Threads.pool.РІС‹РїРѕР»РЅРё(l.testLoop(РЅРµС‚));
+                Threads.pool.РІС‹РїРѕР»РЅРё(l.testLoop(РґР°));
                 
               }
             }
           }
 
-          if (echoToSystemOut.дай()) {
+          if (echoToSystemOut.РґР°Р№()) {
             System.out.print(
                              entry.name + " " +
-                             члонитей + "T " +
+                             С‡Р»РѕРЅРёС‚РµР№ + "T " +
                              pshr + "S " +
-                             RNG.computeLoops.дай() + "I " +
-                             RNG.syncMode.дай() + "Lm " +
-                             RNG.таймаут.дай() + "TO " +
-                             RNG.producerMode.дай() + "Pm " +
-                             RNG.consumerMode.дай() + "Cm " +
-                             RNG.bias.дай() + "B " +
-                             ДефолтнаяЁмкостьКанала.дай() + "C " +
-                             RNG.exchangeParties.дай() + "Xp " +
-                             RNG.itersPerBarrier.дай() + "Ib : "
+                             RNG.computeLoops.РґР°Р№() + "I " +
+                             RNG.syncMode.РґР°Р№() + "Lm " +
+                             RNG.С‚Р°Р№РјР°СѓС‚.РґР°Р№() + "TO " +
+                             RNG.producerMode.РґР°Р№() + "Pm " +
+                             RNG.consumerMode.РґР°Р№() + "Cm " +
+                             RNG.bias.РґР°Р№() + "B " +
+                             Ж’РµС„РѕР»С‚РЅР°СЏВ®РјРєРѕСЃС‚СЊВ Р°РЅР°Р»Р°.РґР°Р№() + "C " +
+                             RNG.exchangeParties.РґР°Р№() + "Xp " +
+                             RNG.itersPerBarrier.РґР°Р№() + "Ib : "
                              );
           }
 
         }
         
         // Uncomment if AWT doesn't update right
-        //        Нить.sleep(100);
+        //        РќРёС‚СЊ.sleep(100);
 
-        барьер.барьер(); // старт
+        Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ(); // СЃС‚Р°СЂС‚
 
-        барьер.барьер(); // stop
+        Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ(); // stop
 
-        дол tm = timer.getTime();
-        дол totalIters = члонитей * iters;
+        РґРѕР» tm = timer.getTime();
+        РґРѕР» totalIters = С‡Р»РѕРЅРёС‚РµР№ * iters;
         double dns = tm * 1000.0 * PRECISION / totalIters;
-        дол ns = Math.round(dns);
+        РґРѕР» ns = Math.round(dns);
 
         setTime(ns, clsIdx, nthreadsIdx);
 
-        if (echoToSystemOut.дай()) {
-          System.out.println(форматируйВремя(ns, да));
+        if (echoToSystemOut.РґР°Р№()) {
+          System.out.println(С„РѕСЂРјР°С‚РёСЂСѓР№В¬СЂРµРјСЏ(ns, РґР°));
         }
 
       }
-      catch (ИсклСломанногоБарьера искл) { 
-        wasInterrupted = да;
+      catch (В»СЃРєР»вЂ”Р»РѕРјР°РЅРЅРѕРіРѕР…Р°СЂСЊРµСЂР° РёСЃРєР») { 
+        wasInterrupted = РґР°;
       }
-      catch (InterruptedException искл) {
-        wasInterrupted = да;
-        Нить.дайЭту().interrupt();
+      catch (InterruptedException РёСЃРєР») {
+        wasInterrupted = РґР°;
+        РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
       }
-      catch (Искл искл) { 
-        искл.printStackTrace();
-        System.out.println("Construction Искл?");
+      catch (В»СЃРєР» РёСЃРєР») { 
+        РёСЃРєР».printStackTrace();
+        System.out.println("Construction В»СЃРєР»?");
         System.exit(-1);
       }
       finally {
-        final бул clear = wasInterrupted;
-        SwingUtilities.invokeLater(new Пускаемый() {
-          проц пуск() {
+        final Р±СѓР» clear = wasInterrupted;
+        SwingUtilities.invokeLater(new С•СѓСЃРєР°РµРјС‹Р№() {
+          РїСЂРѕС† РїСѓСЃРє() {
             if (clear) cell.setText("");
             cell.setForeground(oldfg);
             cell.repaint();
           }
         });
 
-        Нить.дайЭту().setPriority(Нить.NORM_PRIORITY);
+        РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY);
         endOneTest();
       }
     }
@@ -1025,29 +1025,29 @@ class ТаймерСинхронизации
 
 }
 
-class Threads : ФабрикаНитей {
+class Threads : вЂР°Р±СЂРёРєР°РќРёС‚РµР№ {
 
-  static final СинхронЦел activeThreads = new СинхронЦел(0);
+  static final РЎРёРЅС…СЂРѕРЅГ·РµР» activeThreads = new РЎРёРЅС…СЂРѕРЅГ·РµР»(0);
 
-  static final Threads фабрика = new Threads();
+  static final Threads С„Р°Р±СЂРёРєР° = new Threads();
 
-  static final КатушечныйИсполнитель pool = new КатушечныйИсполнитель();
+  static final В Р°С‚СѓС€РµС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ pool = new В Р°С‚СѓС€РµС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ();
 
   static { 
-    pool.установиВремяАктивности(10000); 
-    pool.установиФабрикуНитей(фабрика);
+    pool.СѓСЃС‚Р°РЅРѕРІРёВ¬СЂРµРјСЏСРєС‚РёРІРЅРѕСЃС‚Рё(10000); 
+    pool.СѓСЃС‚Р°РЅРѕРІРёвЂР°Р±СЂРёРєСѓРќРёС‚РµР№(С„Р°Р±СЂРёРєР°);
   }
 
-  static class MyThread : Нить {
-    MyThread(Пускаемый cmd) { 
+  static class MyThread : РќРёС‚СЊ {
+    MyThread(С•СѓСЃРєР°РµРјС‹Р№ cmd) { 
       super(cmd); 
     }
 
-    проц пуск() {
+    РїСЂРѕС† РїСѓСЃРє() {
       activeThreads.increment();
 
       try {
-        super.пуск();
+        super.РїСѓСЃРє();
       }
       finally {
         activeThreads.decrement();
@@ -1055,7 +1055,7 @@ class Threads : ФабрикаНитей {
     }
   }
 
-  Нить новаяНить(Пускаемый cmd) {
+  РќРёС‚СЊ РЅРѕРІР°СЏРќРёС‚СЊ(С•СѓСЃРєР°РµРјС‹Р№ cmd) {
     return new MyThread(cmd);
   }
 }
@@ -1066,80 +1066,80 @@ class TestLoop {
 
   final RNG shared;
   final RNG primary;
-  final цел iters;
+  final С†РµР» iters;
   final Fraction pshared;
-  final ЦиклическийБарьер барьер;
-  final бул[] useShared;
-  final цел firstidx;
+  final Г·РёРєР»РёС‡РµСЃРєРёР№Р…Р°СЂСЊРµСЂ Р±Р°СЂСЊРµСЂ;
+  final Р±СѓР»[] useShared;
+  final С†РµР» firstidx;
 
-  TestLoop(RNG sh, RNG pri, Fraction pshr, цел it, ЦиклическийБарьер br) {
+  TestLoop(RNG sh, RNG pri, Fraction pshr, С†РµР» it, Г·РёРєР»РёС‡РµСЃРєРёР№Р…Р°СЂСЊРµСЂ br) {
     shared = sh; 
     primary = pri; 
     pshared = pshr; 
     iters = it; 
-    барьер = br; 
+    Р±Р°СЂСЊРµСЂ = br; 
 
-    firstidx = (цел)(primary.дай());
+    firstidx = (С†РµР»)(primary.РґР°Р№());
 
-    цел num = (цел)(pshared.numerator());
-    цел denom = (цел)(pshared.denominator());
+    С†РµР» num = (С†РµР»)(pshared.numerator());
+    С†РµР» denom = (С†РµР»)(pshared.denominator());
 
     if (num == 0 || primary == shared) {
-      useShared = new бул[1];
-      useShared[0] = нет;
+      useShared = new Р±СѓР»[1];
+      useShared[0] = РЅРµС‚;
     }
     else if (num >= denom) {
-      useShared = new бул[1];
-      useShared[0] = да;
+      useShared = new Р±СѓР»[1];
+      useShared[0] = РґР°;
     }
     else {
-      // create бул array and randomize it.
-      // This ensures that always same число of shared calls.
+      // create Р±СѓР» array and randomize it.
+      // This ensures that always same С‡РёСЃР»Рѕ of shared calls.
 
       // denom slots is too few. iters is too many. an arbitrary compromise is:
-      цел xfactor = 1024 / denom;
+      С†РµР» xfactor = 1024 / denom;
       if (xfactor < 1) xfactor = 1;
-      useShared = new бул[denom * xfactor];
-      for (цел i = 0; i < num * xfactor; ++i) 
-        useShared[i] = да;
-      for (цел i = num * xfactor; i < denom  * xfactor; ++i) 
-        useShared[i] = нет;
+      useShared = new Р±СѓР»[denom * xfactor];
+      for (С†РµР» i = 0; i < num * xfactor; ++i) 
+        useShared[i] = РґР°;
+      for (С†РµР» i = num * xfactor; i < denom  * xfactor; ++i) 
+        useShared[i] = РЅРµС‚;
 
-      for (цел i = 1; i < useShared.length; ++i) {
-        цел j = ((цел) (shared.следщ() & 0x7FFFFFFF)) % (i + 1);
-        бул tmp = useShared[i];
+      for (С†РµР» i = 1; i < useShared.length; ++i) {
+        С†РµР» j = ((С†РµР») (shared.СЃР»РµРґС‰() & 0x7FFFFFFF)) % (i + 1);
+        Р±СѓР» tmp = useShared[i];
         useShared[i] = useShared[j];
         useShared[j] = tmp;
       }
     }
   }
 
-  Пускаемый testLoop() {
-    return new Пускаемый() {
-      проц пуск() {
-        цел itersPerBarrier = RNG.itersPerBarrier.дай();
+  С•СѓСЃРєР°РµРјС‹Р№ testLoop() {
+    return new С•СѓСЃРєР°РµРјС‹Р№() {
+      РїСЂРѕС† РїСѓСЃРє() {
+        С†РµР» itersPerBarrier = RNG.itersPerBarrier.РґР°Р№();
         try {
-          цел delta = -1;
+          С†РµР» delta = -1;
           if (primary.getClass().equals(PrioritySemRNG.class)) {
-            delta = 2 - (цел)((primary.дай() % 5));
+            delta = 2 - (С†РµР»)((primary.РґР°Р№() % 5));
           }
-          Нить.дайЭту().setPriority(Нить.NORM_PRIORITY+delta);
+          РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY+delta);
           
-          цел nshared = (цел)(iters * pshared.asDouble());
-          цел nprimary = iters - nshared;
-          цел инд = firstidx;
+          С†РµР» nshared = (С†РµР»)(iters * pshared.asDouble());
+          С†РµР» nprimary = iters - nshared;
+          С†РµР» РёРЅРґ = firstidx;
           
-          барьер.барьер();
+          Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ();
           
-          for (цел i = iters; i > 0; --i) {
-            ++инд;
+          for (С†РµР» i = iters; i > 0; --i) {
+            ++РёРЅРґ;
             if (i % itersPerBarrier == 0)
               primary.exchange();
             else {
               
               RNG r;
               
-              if (nshared > 0 && useShared[инд % useShared.length]) {
+              if (nshared > 0 && useShared[РёРЅРґ % useShared.length]) {
                 --nshared;
                 r = shared;
               }
@@ -1147,28 +1147,28 @@ class TestLoop {
                 --nprimary;
                 r = primary;
               }
-              дол rnd = r.следщ();
-              if (rnd % 2 == 0 && Нить.дайЭту().isInterrupted()) 
+              РґРѕР» rnd = r.СЃР»РµРґС‰();
+              if (rnd % 2 == 0 && РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().isInterrupted()) 
                 break;
             }
           }
         }
-        catch (ИсклСломанногоБарьера искл) {
+        catch (В»СЃРєР»вЂ”Р»РѕРјР°РЅРЅРѕРіРѕР…Р°СЂСЊРµСЂР° РёСЃРєР») {
         }
-        catch (InterruptedException искл) {
-          Нить.дайЭту().interrupt();
+        catch (InterruptedException РёСЃРєР») {
+          РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
         }
         finally {
           try {
-            барьер.барьер();
+            Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ();
           }
-          catch (ИсклСломанногоБарьера искл) { 
+          catch (В»СЃРєР»вЂ”Р»РѕРјР°РЅРЅРѕРіРѕР…Р°СЂСЊРµСЂР° РёСЃРєР») { 
           }
-          catch (InterruptedException искл) {
-            Нить.дайЭту().interrupt();
+          catch (InterruptedException РёСЃРєР») {
+            РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
           }
           finally {
-            Нить.дайЭту().setPriority(Нить.NORM_PRIORITY);
+            РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY);
           }
 
         }
@@ -1178,40 +1178,40 @@ class TestLoop {
 }
 
 class PCTestLoop : TestLoop {
-  final Канал primaryChannel;
-  final Канал sharedChannel;
+  final В Р°РЅР°Р» primaryChannel;
+  final В Р°РЅР°Р» sharedChannel;
 
-  PCTestLoop(RNG sh, RNG pri, Fraction pshr, цел it, 
-    ЦиклическийБарьер br, Канал shChan, Канал priChan) {
+  PCTestLoop(RNG sh, RNG pri, Fraction pshr, С†РµР» it, 
+    Г·РёРєР»РёС‡РµСЃРєРёР№Р…Р°СЂСЊРµСЂ br, В Р°РЅР°Р» shChan, В Р°РЅР°Р» priChan) {
     super(sh, pri, pshr, it, br);
     sharedChannel = shChan;
     primaryChannel = priChan;
   }
 
-  Пускаемый testLoop(final бул isProducer) {
-    return new Пускаемый() {
-      проц пуск() {
-        цел delta = -1;
-        Нить.дайЭту().setPriority(Нить.NORM_PRIORITY+delta);
-        цел itersPerBarrier = RNG.itersPerBarrier.дай();
+  С•СѓСЃРєР°РµРјС‹Р№ testLoop(final Р±СѓР» isProducer) {
+    return new С•СѓСЃРєР°РµРјС‹Р№() {
+      РїСЂРѕС† РїСѓСЃРє() {
+        С†РµР» delta = -1;
+        РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY+delta);
+        С†РµР» itersPerBarrier = RNG.itersPerBarrier.РґР°Р№();
         try { 
           
-          цел nshared = (цел)(iters * pshared.asDouble());
-          цел nprimary = iters - nshared;
-          цел инд = firstidx;
+          С†РµР» nshared = (С†РµР»)(iters * pshared.asDouble());
+          С†РµР» nprimary = iters - nshared;
+          С†РµР» РёРЅРґ = firstidx;
           
-          барьер.барьер(); 
+          Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ(); 
           
           ChanRNG target = (ChanRNG)(primary);
           
-          for (цел i = iters; i > 0; --i) {
-            ++инд;
+          for (С†РµР» i = iters; i > 0; --i) {
+            ++РёРЅРґ;
             if (i % itersPerBarrier == 0)
               primary.exchange();
             else {
-              Канал c;
+              В Р°РЅР°Р» c;
             
-              if (nshared > 0 && useShared[инд % useShared.length]) {
+              if (nshared > 0 && useShared[РёРЅРґ % useShared.length]) {
                 --nshared;
                 c = sharedChannel;
               }
@@ -1220,33 +1220,33 @@ class PCTestLoop : TestLoop {
                 c = primaryChannel;
               }
               
-              дол rnd;
+              РґРѕР» rnd;
               if (isProducer) 
                 rnd = target.producerNext(c);
               else 
                 rnd = target.consumerNext(c);
               
-              if (rnd % 2 == 0 && Нить.дайЭту().isInterrupted()) 
+              if (rnd % 2 == 0 && РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().isInterrupted()) 
                 break;
             }
           }
         }
-        catch (ИсклСломанногоБарьера искл) {
+        catch (В»СЃРєР»вЂ”Р»РѕРјР°РЅРЅРѕРіРѕР…Р°СЂСЊРµСЂР° РёСЃРєР») {
         }
-        catch (InterruptedException искл) {
-          Нить.дайЭту().interrupt();
+        catch (InterruptedException РёСЃРєР») {
+          РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
         }
         finally {
           try {
-            барьер.барьер();
+            Р±Р°СЂСЊРµСЂ.Р±Р°СЂСЊРµСЂ();
           }
-          catch (InterruptedException искл) {
-            Нить.дайЭту().interrupt();
+          catch (InterruptedException РёСЃРєР») {
+            РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
           }
-          catch (ИсклСломанногоБарьера искл) { 
+          catch (В»СЃРєР»вЂ”Р»РѕРјР°РЅРЅРѕРіРѕР…Р°СЂСЊРµСЂР° РёСЃРєР») { 
           }
           finally {
-            Нить.дайЭту().setPriority(Нить.NORM_PRIORITY);
+            РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().setPriority(РќРёС‚СЊ.NORM_PRIORITY);
           }
         }
       }
@@ -1258,123 +1258,123 @@ class PCTestLoop : TestLoop {
 
 
 abstract class RNG {
-  const цел firstSeed = 4321;
-  const цел rmod = 2147483647;
-  const цел rmul = 16807;
+  const С†РµР» firstSeed = 4321;
+  const С†РµР» rmod = 2147483647;
+  const С†РµР» rmul = 16807;
 
-  const цел lastSeed = firstSeed;
-  const цел smod = 32749;
-  const цел smul = 3125;
+  const С†РµР» lastSeed = firstSeed;
+  const С†РµР» smod = 32749;
+  const С†РµР» smul = 3125;
 
-  const Объект constructionLock = RNG.class;
+  const РћР±СЉРµРєС‚ constructionLock = RNG.class;
 
-  // Use construction замок for all params to disable
-  // changes in midst of construction of test объекты.
+  // Use construction Р·Р°РјРѕРє for all params to disable
+  // changes in midst of construction of test РѕР±СЉРµРєС‚С‹.
 
-  const СинхронЦел computeLoops = 
-    new СинхронЦел(16, constructionLock);
-  const СинхронЦел syncMode = 
-    new СинхронЦел(0, constructionLock);
-  const СинхронЦел producerMode = 
-    new СинхронЦел(0, constructionLock);
-  const СинхронЦел consumerMode = 
-    new СинхронЦел(0, constructionLock);
-  const СинхронЦел bias = 
-    new СинхронЦел(0, constructionLock);
-  const SynchronizedLong таймаут = 
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» computeLoops = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(16, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» syncMode = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» producerMode = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» consumerMode = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» bias = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
+  const SynchronizedLong С‚Р°Р№РјР°СѓС‚ = 
     new SynchronizedLong(100, constructionLock);
-  const СинхронЦел exchangeParties = 
-    new СинхронЦел(1, constructionLock);
-  const СинхронЦел sequenceNumber = 
-    new СинхронЦел(0, constructionLock);
-  const СинхронЦел itersPerBarrier = 
-    new СинхронЦел(0, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» exchangeParties = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(1, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» sequenceNumber = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
+  const РЎРёРЅС…СЂРѕРЅГ·РµР» itersPerBarrier = 
+    new РЎРёРЅС…СЂРѕРЅГ·РµР»(0, constructionLock);
 
-  static Рандеву[] exchangers_;
+  static вЂ“Р°РЅРґРµРІСѓ[] exchangers_;
 
-  static проц reset(цел члонитей) {
+  static РїСЂРѕС† reset(С†РµР» С‡Р»РѕРЅРёС‚РµР№) {
     synchronized(constructionLock) {
-      sequenceNumber.установи(-1);
-      цел участники = exchangeParties.дай();
-      if (члонитей < участники) участники = члонитей;
-      if (члонитей % участники != 0) 
-        throw new Error("need even multiple of участники");
-      exchangers_ = new Рандеву[члонитей / участники];
-      for (цел i = 0; i < exchangers_.length; ++i) {
-        exchangers_[i] = new Рандеву(участники);
+      sequenceNumber.СѓСЃС‚Р°РЅРѕРІРё(-1);
+      С†РµР» СѓС‡Р°СЃС‚РЅРёРєРё = exchangeParties.РґР°Р№();
+      if (С‡Р»РѕРЅРёС‚РµР№ < СѓС‡Р°СЃС‚РЅРёРєРё) СѓС‡Р°СЃС‚РЅРёРєРё = С‡Р»РѕРЅРёС‚РµР№;
+      if (С‡Р»РѕРЅРёС‚РµР№ % СѓС‡Р°СЃС‚РЅРёРєРё != 0) 
+        throw new Error("need even multiple of СѓС‡Р°СЃС‚РЅРёРєРё");
+      exchangers_ = new вЂ“Р°РЅРґРµРІСѓ[С‡Р»РѕРЅРёС‚РµР№ / СѓС‡Р°СЃС‚РЅРёРєРё];
+      for (С†РµР» i = 0; i < exchangers_.length; ++i) {
+        exchangers_[i] = new вЂ“Р°РЅРґРµРІСѓ(СѓС‡Р°СЃС‚РЅРёРєРё);
       }
     }
   }
 
-  static дол nextSeed() {
+  static РґРѕР» nextSeed() {
     synchronized(constructionLock) {
-      дол s = lastSeed;
+      РґРѕР» s = lastSeed;
       lastSeed = (lastSeed * smul) % smod;
       if (lastSeed == 0) 
-        lastSeed = (цел)(clock());
+        lastSeed = (С†РµР»)(clock());
       return s;
     }
   }
 
-  final цел cloops = computeLoops.дай();
-  final цел pcBias = bias.дай();
-  final цел smode = syncMode.дай();
-  final цел pmode = producerMode.дай();
-  final цел cmode = consumerMode.дай();
-  final дол времяОжидания = таймаут.дай();
-  Рандеву exchanger_ = пусто;
+  final С†РµР» cloops = computeLoops.РґР°Р№();
+  final С†РµР» pcBias = bias.РґР°Р№();
+  final С†РµР» smode = syncMode.РґР°Р№();
+  final С†РµР» pmode = producerMode.РґР°Р№();
+  final С†РµР» cmode = consumerMode.РґР°Р№();
+  final РґРѕР» РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ = С‚Р°Р№РјР°СѓС‚.РґР°Р№();
+  вЂ“Р°РЅРґРµРІСѓ exchanger_ = РїСѓСЃС‚Рѕ;
 
-  synchronized Рандеву getExchanger() {
-    if (exchanger_ == пусто) {
+  synchronized вЂ“Р°РЅРґРµРІСѓ getExchanger() {
+    if (exchanger_ == РїСѓСЃС‚Рѕ) {
       synchronized (constructionLock) {
-        цел инд = sequenceNumber.increment();
-        exchanger_ = exchangers_[инд % exchangers_.length];
+        С†РµР» РёРЅРґ = sequenceNumber.increment();
+        exchanger_ = exchangers_[РёРЅРґ % exchangers_.length];
       }
     }
     return exchanger_;
   }
 
-  проц exchange() {
-    Рандеву искл = getExchanger(); 
-    Пускаемый r = (Пускаемый)(искл.рандеву(new UpdateCommand(this)));
-    if (r != пусто) r.пуск();
+  РїСЂРѕС† exchange() {
+    вЂ“Р°РЅРґРµРІСѓ РёСЃРєР» = getExchanger(); 
+    С•СѓСЃРєР°РµРјС‹Р№ r = (С•СѓСЃРєР°РµРјС‹Р№)(РёСЃРєР».СЂР°РЅРґРµРІСѓ(new UpdateCommand(this)));
+    if (r != РїСѓСЃС‚Рѕ) r.РїСѓСЃРє();
   }
 
-  цел compareTo(Объект другое) {
-    цел h1 = hashCode();
-    цел h2 = другое.hashCode();
+  С†РµР» compareTo(РћР±СЉРµРєС‚ РґСЂСѓРіРѕРµ) {
+    С†РµР» h1 = hashCode();
+    С†РµР» h2 = РґСЂСѓРіРѕРµ.hashCode();
     if (h1 < h2) return -1;
     else if (h1 > h2) return 1;
     else return 0;
   }
 
-  protected final дол compute(дол l) { 
-    цел loops = (цел)((l & 0x7FFFFFFF) % (cloops * 2)) + 1;
-    for (цел i = 0; i < loops; ++i) l = (l * rmul) % rmod;
+  protected final РґРѕР» compute(РґРѕР» l) { 
+    С†РµР» loops = (С†РµР»)((l & 0x7FFFFFFF) % (cloops * 2)) + 1;
+    for (С†РµР» i = 0; i < loops; ++i) l = (l * rmul) % rmod;
     return (l == 0)? firstSeed : l; 
   }
 
-  abstract protected проц установи(дол l);
-  abstract protected дол internalGet();
-  abstract protected проц internalUpdate();
+  abstract protected РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l);
+  abstract protected РґРѕР» internalGet();
+  abstract protected РїСЂРѕС† internalUpdate();
 
-  дол дай()    { return internalGet(); }
-  проц update() { internalUpdate();  }
-  дол следщ()   { internalUpdate(); return internalGet(); }
+  РґРѕР» РґР°Р№()    { return internalGet(); }
+  РїСЂРѕС† update() { internalUpdate();  }
+  РґРѕР» СЃР»РµРґС‰()   { internalUpdate(); return internalGet(); }
 }
 
 
 class UpdateCommand {
   private final RNG obj_;
-  final дол cmpVal;
+  final РґРѕР» cmpVal;
   UpdateCommand(RNG o) { 
     obj_ = o; 
-    cmpVal = o.дай();
+    cmpVal = o.РґР°Р№();
   }
 
-  цел пуск() { obj_.update(); return 0;} 
+  С†РµР» РїСѓСЃРє() { obj_.update(); return 0;} 
 
-  цел compareTo(Объект x) {
+  С†РµР» compareTo(РћР±СЉРµРєС‚ x) {
     UpdateCommand u = (UpdateCommand)x;
     if (cmpVal < u.cmpVal) return -1;
     else if (cmpVal > u.cmpVal) return 1;
@@ -1386,34 +1386,34 @@ class UpdateCommand {
 class GetFunction : Callable {
   private final RNG obj_;
   GetFunction(RNG o) { obj_ = o;  }
-  Объект call() { return new Long(obj_.дай()); } 
+  РћР±СЉРµРєС‚ call() { return new Long(obj_.РґР°Р№()); } 
 }
 
 class NextFunction : Callable {
   private final RNG obj_;
   NextFunction(RNG o) { obj_ = o;  }
-  Объект call() { return new Long(obj_.следщ()); } 
+  РћР±СЉРµРєС‚ call() { return new Long(obj_.СЃР»РµРґС‰()); } 
 }
 
 
 class NoSynchRNG : RNG {
-  protected дол current_ = nextSeed();
+  protected РґРѕР» current_ = nextSeed();
 
-  protected проц установи(дол l) { current_ = l; }
-  protected дол internalGet() { return current_; }  
-  protected проц internalUpdate() { установи(compute(internalGet())); }
+  protected РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l) { current_ = l; }
+  protected РґРѕР» internalGet() { return current_; }  
+  protected РїСЂРѕС† internalUpdate() { СѓСЃС‚Р°РЅРѕРІРё(compute(internalGet())); }
 }
 
 class PublicSynchRNG : NoSynchRNG {
-  synchronized дол дай() { return internalGet(); }  
-  synchronized проц update() { internalUpdate();  }
-  synchronized дол следщ() { internalUpdate(); return internalGet(); }
+  synchronized РґРѕР» РґР°Р№() { return internalGet(); }  
+  synchronized РїСЂРѕС† update() { internalUpdate();  }
+  synchronized РґРѕР» СЃР»РµРґС‰() { internalUpdate(); return internalGet(); }
 }
 
 class AllSynchRNG : PublicSynchRNG {
-  protected synchronized проц установи(дол l) { current_ = l; }
-  protected synchronized дол internalGet() { return current_; }
-  protected synchronized проц internalUpdate() { установи(compute(internalGet())); }
+  protected synchronized РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l) { current_ = l; }
+  protected synchronized РґРѕР» internalGet() { return current_; }
+  protected synchronized РїСЂРѕС† internalUpdate() { СѓСЃС‚Р°РЅРѕРІРё(compute(internalGet())); }
 }
 
 
@@ -1421,24 +1421,24 @@ class AClongRNG : RNG {
   protected final SynchronizedLong acurrent_ = 
     new SynchronizedLong(nextSeed());
 
-  protected проц установи(дол l) { throw new Error("No установи allowed"); }
-  protected дол internalGet() { return acurrent_.дай(); }
+  protected РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l) { throw new Error("No СѓСЃС‚Р°РЅРѕРІРё allowed"); }
+  protected РґРѕР» internalGet() { return acurrent_.РґР°Р№(); }
 
-  protected проц internalUpdate() { 
-    цел retriesBeforeSleep = 100;
-    цел maxSleepTime = 100;
-    цел retries = 0;
+  protected РїСЂРѕС† internalUpdate() { 
+    С†РµР» retriesBeforeSleep = 100;
+    С†РµР» maxSleepTime = 100;
+    С†РµР» retries = 0;
     for (;;) {
-      дол v = internalGet();
-      дол n = compute(v);
+      РґРѕР» v = internalGet();
+      РґРѕР» n = compute(v);
       if (acurrent_.commit(v, n))
         return;
       else if (++retries >= retriesBeforeSleep) {
         try {
-          Нить.sleep(n % maxSleepTime);
+          РќРёС‚СЊ.sleep(n % maxSleepTime);
         }
-        catch (InterruptedException искл) {
-          Нить.дайЭту().interrupt();
+        catch (InterruptedException РёСЃРєР») {
+          РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
         }
         retries = 0;
       }
@@ -1451,88 +1451,88 @@ class SynchLongRNG : RNG {
   protected final SynchronizedLong acurrent_ = 
     new SynchronizedLong(nextSeed());
 
-  protected проц установи(дол l) { acurrent_.установи(l); }
-  protected дол internalGet() { return acurrent_.дай(); }
-  protected проц internalUpdate() { установи(compute(internalGet())); }
+  protected РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l) { acurrent_.СѓСЃС‚Р°РЅРѕРІРё(l); }
+  protected РґРѕР» internalGet() { return acurrent_.РґР°Р№(); }
+  protected РїСЂРѕС† internalUpdate() { СѓСЃС‚Р°РЅРѕРІРё(compute(internalGet())); }
   
 }
 
 abstract class DelegatedRNG : RNG  {
-  protected RNG delegate_ = пусто;
-  synchronized проц setDelegate(RNG d) { delegate_ = d; }
+  protected RNG delegate_ = РїСѓСЃС‚Рѕ;
+  synchronized РїСЂРѕС† setDelegate(RNG d) { delegate_ = d; }
   protected synchronized RNG getDelegate() { return delegate_; }
 
-  дол дай() { return getDelegate().дай(); }
-  проц update() { getDelegate().update(); }
-  дол следщ() { return getDelegate().следщ(); }
+  РґРѕР» РґР°Р№() { return getDelegate().РґР°Р№(); }
+  РїСЂРѕС† update() { getDelegate().update(); }
+  РґРѕР» СЃР»РµРґС‰() { return getDelegate().СЃР»РµРґС‰(); }
 
-  protected проц установи(дол l) { throw new Error(); }
-  protected дол internalGet() { throw new Error(); }
-  protected проц internalUpdate() { throw new Error(); }
+  protected РїСЂРѕС† СѓСЃС‚Р°РЅРѕРІРё(РґРѕР» l) { throw new Error(); }
+  protected РґРѕР» internalGet() { throw new Error(); }
+  protected РїСЂРѕС† internalUpdate() { throw new Error(); }
 
 }
 
 class SDelegatedRNG : DelegatedRNG {
   SDelegatedRNG() { setDelegate(new NoSynchRNG()); }
-  synchronized дол дай() { return getDelegate().дай(); }
-  synchronized проц update() { getDelegate().update(); }
-  synchronized дол следщ() { return getDelegate().следщ(); }
+  synchronized РґРѕР» РґР°Р№() { return getDelegate().РґР°Р№(); }
+  synchronized РїСЂРѕС† update() { getDelegate().update(); }
+  synchronized РґРѕР» СЃР»РµРґС‰() { return getDelegate().СЃР»РµРґС‰(); }
 }
 
 
 class SyncDelegatedRNG : DelegatedRNG {
-  protected final Синх cond_;
-  SyncDelegatedRNG(Синх c) { 
+  protected final РЎРёРЅС… cond_;
+  SyncDelegatedRNG(РЎРёРЅС… c) { 
     cond_ = c; 
     setDelegate(new NoSynchRNG());
   }
 
 
-  protected final проц обрети() {
+  protected final РїСЂРѕС† РѕР±СЂРµС‚Рё() {
     if (smode == 0) {
-      cond_.обрети();
+      cond_.РѕР±СЂРµС‚Рё();
     }
     else {
-      while (!cond_.пытайся(времяОжидания)) {}
+      while (!cond_.РїС‹С‚Р°Р№СЃСЏ(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ)) {}
     }
   }
       
-  дол следщ() { 
+  РґРѕР» СЃР»РµРґС‰() { 
     try {
-      обрети();
+      РѕР±СЂРµС‚Рё();
 
       getDelegate().update();
-      дол l = getDelegate().дай();
-      cond_.отпусти(); 
+      РґРѕР» l = getDelegate().РґР°Р№();
+      cond_.РѕС‚РїСѓСЃС‚Рё(); 
       return l;
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return 0;
     }
   }
 
-  дол дай()  { 
+  РґРѕР» РґР°Р№()  { 
     try {
-      обрети();
-      дол l = getDelegate().дай();
-      cond_.отпусти(); 
+      РѕР±СЂРµС‚Рё();
+      РґРѕР» l = getDelegate().РґР°Р№();
+      cond_.РѕС‚РїСѓСЃС‚Рё(); 
       return l;
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return 0;
     }
   }
 
-  проц update()  { 
+  РїСЂРѕС† update()  { 
     try {
-      обрети();
+      РѕР±СЂРµС‚Рё();
       getDelegate().update();
-      cond_.отпусти(); 
+      cond_.РѕС‚РїСѓСЃС‚Рё(); 
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
     }
   }
 
@@ -1540,12 +1540,12 @@ class SyncDelegatedRNG : DelegatedRNG {
 }
 
 class MutexRNG : SyncDelegatedRNG {
-  MutexRNG() { super(new Мютекс()); }
+  MutexRNG() { super(new С›СЋС‚РµРєСЃ()); }
 }
 
 
 class SemRNG : SyncDelegatedRNG {
-  SemRNG() { super(new Семафор(1)); }
+  SemRNG() { super(new РЎРµРјР°С„РѕСЂ(1)); }
 }
 
 class WpSemRNG : SyncDelegatedRNG {
@@ -1553,52 +1553,52 @@ class WpSemRNG : SyncDelegatedRNG {
 }
 
 class FifoRNG : SyncDelegatedRNG {
-  FifoRNG() { super(new СемафорПВПВ(1)); }
+  FifoRNG() { super(new РЎРµРјР°С„РѕСЂС•В¬С•В¬(1)); }
 }
 
 class PrioritySemRNG : SyncDelegatedRNG {
-  PrioritySemRNG() { super(new СемафорПриоритета(1)); }
+  PrioritySemRNG() { super(new РЎРµРјР°С„РѕСЂРџСЂРёРѕСЂРёС‚РµС‚РѕРІ(1)); }
 }
 
 class RlockRNG : SyncDelegatedRNG {
-  RlockRNG() { super(new ВозобновляемыйЗамок()); }
+  RlockRNG() { super(new В¬РѕР·РѕР±РЅРѕРІР»СЏРµРјС‹Р№В«Р°РјРѕРє()); }
 }
 
 
 class RWLockRNG : NoSynchRNG {
-  protected final ЧЗЗамок замок_;
-  RWLockRNG(ЧЗЗамок l) { 
-    замок_ = l; 
+  protected final Р§Р—Р—Р°РјРѕРє Р·Р°РјРѕРє_;
+  RWLockRNG(Р§Р—Р—Р°РјРѕРє l) { 
+    Р·Р°РјРѕРє_ = l; 
   }
       
-  protected final проц acquireR() {
+  protected final РїСЂРѕС† acquireR() {
     if (smode == 0) {
-      замок_.замокЧтения().обрети();
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РѕР±СЂРµС‚Рё();
     }
     else {
-      while (!замок_.замокЧтения().пытайся(времяОжидания)) {}
+      while (!Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РїС‹С‚Р°Р№СЃСЏ(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ)) {}
     }
   }
 
-  protected final проц acquireW() {
+  protected final РїСЂРѕС† acquireW() {
     if (smode == 0) {
-      замок_.замокЗаписи().обрети();
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР—Р°РїРёСЃРё().РѕР±СЂРµС‚Рё();
     }
     else {
-      while (!замок_.замокЗаписи().пытайся(времяОжидания)) {}
+      while (!Р·Р°РјРѕРє_.Р·Р°РјРѕРєР—Р°РїРёСЃРё().РїС‹С‚Р°Р№СЃСЏ(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ)) {}
     }
   }
 
 
-  дол следщ() { 
-    дол l = 0;
+  РґРѕР» СЃР»РµРґС‰() { 
+    РґРѕР» l = 0;
     try {
       acquireR();
       l = current_;
-      замок_.замокЧтения().отпусти(); 
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РѕС‚РїСѓСЃС‚Рё(); 
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return 0;
     }
 
@@ -1606,40 +1606,40 @@ class RWLockRNG : NoSynchRNG {
 
     try {
       acquireW();
-      установи(l);
-      замок_.замокЗаписи().отпусти(); 
+      СѓСЃС‚Р°РЅРѕРІРё(l);
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР—Р°РїРёСЃРё().РѕС‚РїСѓСЃС‚Рё(); 
       return l;
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return 0;
     }
   }
 
 
-  дол дай()  { 
+  РґРѕР» РґР°Р№()  { 
     try {
       acquireR();
-      дол l = current_;
-      замок_.замокЧтения().отпусти(); 
+      РґРѕР» l = current_;
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РѕС‚РїСѓСЃС‚Рё(); 
       return l;
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return 0;
     }
   }
 
-  проц update()  { 
-    дол l = 0;
+  РїСЂРѕС† update()  { 
+    РґРѕР» l = 0;
 
     try {
       acquireR();
       l = current_;
-      замок_.замокЧтения().отпусти(); 
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РѕС‚РїСѓСЃС‚Рё(); 
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
       return;
     }
 
@@ -1647,40 +1647,40 @@ class RWLockRNG : NoSynchRNG {
 
     try {
       acquireW();
-      установи(l);
-      замок_.замокЗаписи().отпусти(); 
+      СѓСЃС‚Р°РЅРѕРІРё(l);
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР—Р°РїРёСЃРё().РѕС‚РїСѓСЃС‚Рё(); 
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
     }
   }
 
 }
 
 class WpRWlockRNG : RWLockRNG {
-  WpRWlockRNG() { super(new ЧЗЗамокПредпочтенияПисателя()); }
+  WpRWlockRNG() { super(new Р§Р—Р—Р°РјРѕРєС•СЂРµРґРїРѕС‡С‚РµРЅРёСЏС•РёСЃР°С‚РµР»СЏ()); }
 }
 
 class ReaderPrefRWlockRNG : RWLockRNG {
   ReaderPrefRWlockRNG() { 
-    super(new ЧЗЗамокПредпочтенияЧитателя()); 
+    super(new Р§Р—Р—Р°РјРѕРєС•СЂРµРґРїРѕС‡С‚РµРЅРёСЏвЂћРёС‚Р°С‚РµР»СЏ()); 
   }
 
 
 }
 
 class FIFORWlockRNG : RWLockRNG {
-  FIFORWlockRNG() { super(new ЧЗЗамокПВПВ()); }
+  FIFORWlockRNG() { super(new Р§Р—Р—Р°РјРѕРєС•В¬С•В¬()); }
 }
 
 
 class ReentrantRWlockRNG : RWLockRNG {
   ReentrantRWlockRNG() { 
-    super(new ВозобновляемыйЧЗЗамокПредпочтенияПисателя()); 
+    super(new В¬РѕР·РѕР±РЅРѕРІР»СЏРµРјС‹Р№Р§Р—Р—Р°РјРѕРєС•СЂРµРґРїРѕС‡С‚РµРЅРёСЏС•РёСЃР°С‚РµР»СЏ()); 
   }
 
-  проц update()  {  // use embedded acquires
-    дол l = 0;
+  РїСЂРѕС† update()  {  // use embedded acquires
+    РґРѕР» l = 0;
 
     try {
       acquireW();
@@ -1688,20 +1688,20 @@ class ReentrantRWlockRNG : RWLockRNG {
       try {
         acquireR();
         l = current_;
-        замок_.замокЧтения().отпусти(); 
+        Р·Р°РјРѕРє_.Р·Р°РјРѕРєР§С‚РµРЅРёСЏ().РѕС‚РїСѓСЃС‚Рё(); 
       }
       catch(InterruptedException x) { 
-        Нить.дайЭту().interrupt(); 
+        РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
         return;
       }
 
       l = compute(l);
 
-      установи(l);
-      замок_.замокЗаписи().отпусти(); 
+      СѓСЃС‚Р°РЅРѕРІРё(l);
+      Р·Р°РјРѕРє_.Р·Р°РјРѕРєР—Р°РїРёСЃРё().РѕС‚РїСѓСЃС‚Рё(); 
     }
     catch(InterruptedException x) { 
-      Нить.дайЭту().interrupt(); 
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt(); 
     }
   }
 
@@ -1709,60 +1709,60 @@ class ReentrantRWlockRNG : RWLockRNG {
 
 
 abstract class ExecutorRNG : DelegatedRNG {
-  Исполнитель executor_;
+  В»СЃРїРѕР»РЅРёС‚РµР»СЊ executor_;
 
 
-  synchronized проц setExecutor(Исполнитель e) { executor_ = e; }
-  synchronized Исполнитель getExecutor() { return executor_; }
+  synchronized РїСЂРѕС† setExecutor(В»СЃРїРѕР»РЅРёС‚РµР»СЊ e) { executor_ = e; }
+  synchronized В»СЃРїРѕР»РЅРёС‚РµР»СЊ getExecutor() { return executor_; }
 
-  Пускаемый delegatedUpdate_ = пусто;
-  Callable delegatedNext_ = пусто;
+  С•СѓСЃРєР°РµРјС‹Р№ delegatedUpdate_ = РїСѓСЃС‚Рѕ;
+  Callable delegatedNext_ = РїСѓСЃС‚Рѕ;
 
-  synchronized Пускаемый delegatedUpdateCommand() {
-    if (delegatedUpdate_ == пусто)
+  synchronized С•СѓСЃРєР°РµРјС‹Р№ delegatedUpdateCommand() {
+    if (delegatedUpdate_ == РїСѓСЃС‚Рѕ)
       delegatedUpdate_ = new UpdateCommand(getDelegate());
     return delegatedUpdate_;
   }
 
   synchronized Callable delegatedNextFunction() {
-    if (delegatedNext_ == пусто)
+    if (delegatedNext_ == РїСѓСЃС‚Рѕ)
       delegatedNext_ = new NextFunction(getDelegate());
     return delegatedNext_;
   }
 
-  проц update() { 
+  РїСЂРѕС† update() { 
     try {
-      getExecutor().выполни(delegatedUpdateCommand()); 
+      getExecutor().РІС‹РїРѕР»РЅРё(delegatedUpdateCommand()); 
     }
-    catch (InterruptedException искл) {
-      Нить.дайЭту().interrupt();
+    catch (InterruptedException РёСЃРєР») {
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
     }
   }
 
-  // Each call to следщ gets result of previous future 
-  FutureResult nextResult_ = пусто;
+  // Each call to СЃР»РµРґС‰ gets result of previous future 
+  FutureResult nextResult_ = РїСѓСЃС‚Рѕ;
 
-  synchronized дол следщ() { 
-    дол res = 0;
+  synchronized РґРѕР» СЃР»РµРґС‰() { 
+    РґРѕР» res = 0;
     try {
-      if (nextResult_ == пусто) { // direct call первое время through
+      if (nextResult_ == РїСѓСЃС‚Рѕ) { // direct call РїРµСЂРІРѕРµ РІСЂРµРјСЏ through
         nextResult_ = new FutureResult();
-        nextResult_.установи(new Long(getDelegate().следщ()));
+        nextResult_.СѓСЃС‚Р°РЅРѕРІРё(new Long(getDelegate().СЃР»РµРґС‰()));
       }
       FutureResult currentResult = nextResult_;
 
       nextResult_ = new FutureResult();
-      Пускаемый r = nextResult_.setter(delegatedNextFunction());
-      getExecutor().выполни(r); 
+      С•СѓСЃРєР°РµРјС‹Р№ r = nextResult_.setter(delegatedNextFunction());
+      getExecutor().РІС‹РїРѕР»РЅРё(r); 
 
-      res =  ((Long)(currentResult.дай())).longValue();
+      res =  ((Long)(currentResult.РґР°Р№())).longValue();
 
     }
-    catch (InterruptedException искл) {
-      Нить.дайЭту().interrupt();
+    catch (InterruptedException РёСЃРєР») {
+      РќРёС‚СЊ.РґР°Р№Р­С‚Сѓ().interrupt();
     }
-    catch (InvocationTargetException искл) {
-      искл.printStackTrace();
+    catch (InvocationTargetException РёСЃРєР») {
+      РёСЃРєР».printStackTrace();
       throw new Error("Bad Callable?");
     }
     return res;
@@ -1772,52 +1772,52 @@ abstract class ExecutorRNG : DelegatedRNG {
 class DirectExecutorRNG : ExecutorRNG {
   DirectExecutorRNG() { 
     setDelegate(new PublicSynchRNG()); 
-    setExecutor(new ПрямойИсполнитель()); 
+    setExecutor(new С•СЂСЏРјРѕР№В»СЃРїРѕР»РЅРёС‚РµР»СЊ()); 
   }
 }
 
 class LockedSemRNG : ExecutorRNG {
   LockedSemRNG() { 
     setDelegate(new NoSynchRNG()); 
-    setExecutor(new БлокированныйИсполнитель(new Семафор(1))); 
+    setExecutor(new Р…Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ(new РЎРµРјР°С„РѕСЂ(1))); 
   }
 }
 
 class QueuedExecutorRNG : ExecutorRNG {
-  const ОчереднойИсполнитель exec = new ОчереднойИсполнитель();
-  static { exec.установиФабрикуНитей(Threads.фабрика); }
+  const РћС‡РµСЂРµРґРЅРѕР№В»СЃРїРѕР»РЅРёС‚РµР»СЊ exec = new РћС‡РµСЂРµРґРЅРѕР№В»СЃРїРѕР»РЅРёС‚РµР»СЊ();
+  static { exec.СѓСЃС‚Р°РЅРѕРІРёвЂР°Р±СЂРёРєСѓРќРёС‚РµР№(Threads.С„Р°Р±СЂРёРєР°); }
   QueuedExecutorRNG() { 
     setDelegate(new PublicSynchRNG()); 
     setExecutor(exec); 
   }
 }
 
-class ForcedStartRunnable : Пускаемый {
-  protected final Щеколда latch_ = new Щеколда();
-  protected final Пускаемый command_;
+class ForcedStartRunnable : С•СѓСЃРєР°РµРјС‹Р№ {
+  protected final СћРµРєРѕР»РґР° latch_ = new СћРµРєРѕР»РґР°();
+  protected final С•СѓСЃРєР°РµРјС‹Р№ command_;
 
-  ForcedStartRunnable(Пускаемый команда) { command_ = команда; }
+  ForcedStartRunnable(С•СѓСЃРєР°РµРјС‹Р№ РєРѕРјР°РЅРґР°) { command_ = РєРѕРјР°РЅРґР°; }
 
-  Щеколда started() { return latch_; }
+  СћРµРєРѕР»РґР° started() { return latch_; }
 
-  проц пуск() {
-    latch_.отпусти();
-    command_.пуск();
+  РїСЂРѕС† РїСѓСЃРє() {
+    latch_.РѕС‚РїСѓСЃС‚Рё();
+    command_.РїСѓСЃРє();
   }
 }
 
 
-class ForcedStartThreadedExecutor : ПоточныйИсполнитель {
-  проц выполни(Пускаемый команда) {
-    ForcedStartRunnable wrapped = new ForcedStartRunnable(команда);
-    super.выполни(wrapped);
-    wrapped.started().обрети();
+class ForcedStartThreadedExecutor : С•РѕС‚РѕС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ {
+  РїСЂРѕС† РІС‹РїРѕР»РЅРё(С•СѓСЃРєР°РµРјС‹Р№ РєРѕРјР°РЅРґР°) {
+    ForcedStartRunnable wrapped = new ForcedStartRunnable(РєРѕРјР°РЅРґР°);
+    super.РІС‹РїРѕР»РЅРё(wrapped);
+    wrapped.started().РѕР±СЂРµС‚Рё();
   }
 }
 
 class ThreadedExecutorRNG : ExecutorRNG {
-  const ПоточныйИсполнитель exec = new ПоточныйИсполнитель();
-  static { exec.установиФабрикуНитей(Threads.фабрика); }
+  const С•РѕС‚РѕС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ exec = new С•РѕС‚РѕС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ();
+  static { exec.СѓСЃС‚Р°РЅРѕРІРёвЂР°Р±СЂРёРєСѓРќРёС‚РµР№(Threads.С„Р°Р±СЂРёРєР°); }
 
   ThreadedExecutorRNG() { 
     setDelegate(new PublicSynchRNG()); 
@@ -1827,7 +1827,7 @@ class ThreadedExecutorRNG : ExecutorRNG {
 
 
 class PooledExecutorRNG : ExecutorRNG {
-  const КатушечныйИсполнитель exec = Threads.pool;
+  const В Р°С‚СѓС€РµС‡РЅС‹Р№В»СЃРїРѕР»РЅРёС‚РµР»СЊ exec = Threads.pool;
 
   PooledExecutorRNG() { 
     setDelegate(new PublicSynchRNG()); 
@@ -1838,20 +1838,20 @@ class PooledExecutorRNG : ExecutorRNG {
 
 class ChanRNG : DelegatedRNG {
 
-  бул single_;
+  Р±СѓР» single_;
 
   ChanRNG() {
     setDelegate(new PublicSynchRNG());
   }
 
-  synchronized проц setSingle(бул s) { single_ = s; }
-  synchronized бул isSingle() { return single_; }
+  synchronized РїСЂРѕС† setSingle(Р±СѓР» s) { single_ = s; }
+  synchronized Р±СѓР» isSingle() { return single_; }
 
-  дол producerNext(Канал c) {
+  РґРѕР» producerNext(В Р°РЅР°Р» c) {
     RNG r = getDelegate();
     if (isSingle()) {
-      c.помести(r);
-      r = (RNG)(c.возьми());
+      c.РїРѕРјРµСЃС‚Рё(r);
+      r = (RNG)(c.РІРѕР·СЊРјРё());
       r.update();
     }
     else {
@@ -1864,22 +1864,22 @@ class ChanRNG : DelegatedRNG {
       }
       
       if (pmode == 0) {
-        c.помести(r);
+        c.РїРѕРјРµСЃС‚Рё(r);
       }
       else {
-        while (!(c.предложи(r, времяОжидания))) {}
+        while (!(c.РїСЂРµРґР»РѕР¶Рё(r, РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ))) {}
       }
     }
-    return r.дай();
+    return r.РґР°Р№();
   }
 
-  дол consumerNext(Канал c) {
-    RNG r = пусто;
+  РґРѕР» consumerNext(В Р°РЅР°Р» c) {
+    RNG r = РїСѓСЃС‚Рѕ;
     if (cmode == 0) {
-      r =  (RNG)(c.возьми());
+      r =  (RNG)(c.РІРѕР·СЊРјРё());
     }
     else {
-      while (r == пусто) r = (RNG)(c.запроси(времяОжидания));
+      while (r == РїСѓСЃС‚Рѕ) r = (RNG)(c.Р·Р°РїСЂРѕСЃРё(РІСЂРµРјСЏРћР¶РёРґР°РЅРёСЏ));
     }
     
     if (pcBias == 0) {
@@ -1889,13 +1889,13 @@ class ChanRNG : DelegatedRNG {
       r.update();
       r.update();
     }
-    return r.дай();
+    return r.РґР°Р№();
   }
 }
 
 /** Start up this application **/
-цел 
+С†РµР» 
 main(char[][] args) {
-  new ТаймерСинхронизации();
+  new РўР°Р№РјРµСЂРЎРёРЅС…СЂРѕРЅРёР·Р°С†РёРё();
   return 0;
 }

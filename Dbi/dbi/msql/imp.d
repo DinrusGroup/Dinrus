@@ -62,7 +62,7 @@ const uint UNIQUE_FLAG		= 2;		///
 
 const uint MSQL_PKT_LEN		= 131072;	///
 
-const char[12][] msqlTypeNames	= ["???", "int", "char", "real", "ident", "null", "text", "date", "uint", "money","время","ip","int64","uint64","int8","int16","cidr4", "cidr6", "???"]; ///
+const char[12][] msqlTypeNames	= ["???", "int", "char", "real", "ident", "null", "text", "date", "uint", "money","time","ip","int64","uint64","int8","int16","cidr4", "cidr6", "???"]; ///
 
 /**
  *
