@@ -164,7 +164,7 @@ final class Инструкция {
 			}
 		} else {
 			бцел beginIndex = 0, endIndex = 0;
-			while ((beginIndex = text.Util.locate(результат, ':')) != результат.length && (endIndex = text.Util.locate(результат, ':', beginIndex + 1)) != результат.length) {
+			while ((beginIndex = text.Util.местоположение(результат, ':')) != результат.length && (endIndex = text.Util.местоположение(результат, ':', beginIndex + 1)) != результат.length) {
 				результат = результат[0 .. beginIndex] ~ "'" ~ дайСвязанноеЗначение(результат[beginIndex + 1 .. endIndex]) ~ "'" ~ результат[endIndex + 1 .. length];
 			}
 		}

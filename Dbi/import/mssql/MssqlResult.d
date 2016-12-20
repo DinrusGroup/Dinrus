@@ -8,10 +8,10 @@
 module dbi.mssql.MssqlResult;
 
 version(Rulada) {
-	private import stdrus : toDString = вТкст, toCString = вТкст0, locate = найди;
+	private import stdrus : toDString = вТкст, toCString = вТкст0, местоположение = найди;
 } else {
 	private import stdrus : toDString = вТкст, toCString = вТкст0;
-	private import text.Util : locate;
+	private import text.Util : местоположение;
 	private static import text.convert.Float, text.convert.Integer;
 }
 import dbi.DBIException, dbi.Result, dbi.Row;
