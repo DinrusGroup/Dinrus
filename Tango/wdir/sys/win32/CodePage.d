@@ -1,17 +1,6 @@
-﻿/*******************************************************************************
-
-        copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
-
-        license:        BSD стиль: $(LICENSE)
-
-        version:        Initial release: April 2007
-
-        author:         Kris
-
-*******************************************************************************/
-
+﻿
 module sys.win32.CodePage;
-//pragma(lib,"drTango");
+//pragma(lib,"DinrusTango.lib");
 
 private import sys.Common;
 
@@ -24,7 +13,7 @@ private import exception;
 
 *******************************************************************************/
 
-struct CodePage
+struct КодоваяСтраница
 {
         /**********************************************************************
 
@@ -33,7 +22,7 @@ struct CodePage
 
         **********************************************************************/
 
-        static бул isAscii (ткст ист)
+        static бул аски_ли (ткст ист)
         {
                 foreach (c; ист)
                          if (c & 0x80)
@@ -127,7 +116,7 @@ struct CodePage
                        длин = WideCharToMultiByte (преобр_в, 0, wide.ptr, длин,
                                                   cast(PCHAR)приёмн.ptr, приёмн.length-1, пусто, пусто);
                    if (длин is 0)
-                       throw new ИсклНелегальногоАргумента ("CodePage.преобразуй :: "~СисОш.последнСооб);
+                       throw new ИсклНелегальногоАргумента ("КодоваяСтраница.преобразуй :: "~СисОш.последнСооб);
                    }
 
                 // добавь a пусто terminator
@@ -144,8 +133,8 @@ debug(Test)
                 ткст s = "foo";
                 сим[3] x =void;
 
-                //if (! CodePage.isAscii (s))
-                      s = CodePage.преобр_в (s, x);
-                      s = CodePage.из_ (s, x);
+                //if (! КодоваяСтраница.аски_ли (s))
+                      s = КодоваяСтраница.преобр_в (s, x);
+                      s = КодоваяСтраница.из_ (s, x);
         }
 }

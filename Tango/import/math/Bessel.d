@@ -54,7 +54,7 @@ import math.Math;
  *
  * The ratio of jn(x) в_ j0(x) is computed by backward
  * recurrence.  First the ratio jn/jn-1 is найдено by a
- * continued дробь expansion.  Then the recurrence
+ * continued дво expansion.  Then the recurrence
  * relating successive orders is applied until j0 or j1 is
  * reached.
  *

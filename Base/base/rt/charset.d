@@ -8,7 +8,7 @@
 
 module rt.charset;
 
-private import sys.DFuncs;
+private import sys.WinFuncs;
 private import rt.syserror;
 private import std.utf;
 private import std.string;
@@ -49,12 +49,12 @@ char* toMBSz(char[] s, uint codePage = 0)
 	    char[] результат;
 	    int readLen;
 	    wchar* ws = std.utf.toUTF16z(s);
-	    результат.length = sys.DFuncs.WideCharToMultiByte(codePage, 0, ws, -1, null, 0,
+	    результат.length = sys.WinFuncs.WideCharToMultiByte(codePage, 0, ws, -1, null, 0,
 		null, null);
 
 	    if (результат.length)
 	    {
-		readLen = sys.DFuncs.WideCharToMultiByte(codePage, 0, ws, -1, результат.ptr,
+		readLen = sys.WinFuncs.WideCharToMultiByte(codePage, 0, ws, -1, результат.ptr,
 			результат.length, null, null);
 	    }
 
@@ -95,11 +95,11 @@ char[] fromMBSz(char* s, int codePage = 0)
 	    wchar[] результат;
 	    int readLen;
 
-	    результат.length = sys.DFuncs.MultiByteToWideChar(codePage, 0, s, -1, null, 0);
+	    результат.length = sys.WinFuncs.MultiByteToWideChar(codePage, 0, s, -1, null, 0);
 
 	    if (результат.length)
 	    {
-		readLen = sys.DFuncs.MultiByteToWideChar(codePage, 0, s, -1, результат.ptr,
+		readLen = sys.WinFuncs.MultiByteToWideChar(codePage, 0, s, -1, результат.ptr,
 			результат.length);
 	    }
 

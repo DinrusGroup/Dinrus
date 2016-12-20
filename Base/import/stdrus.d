@@ -1,6 +1,6 @@
 ﻿module stdrus;
 
-private import sys.DStructs, sys.DConsts,sys.DFuncs;
+private import sys.WinStructs, sys.WinConsts,sys.WinFuncs;
 private import tpl.args, tpl.stream;
 import cidrus, global;
 public import exception;

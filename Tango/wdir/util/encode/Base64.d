@@ -60,7 +60,7 @@ module util.encode.Base64;
 {
     т_мера trИПletCount = length / 3;
     бцел trИПletFraction = length % 3;
-    return (trИПletCount + (trИПletFraction ? 1 : 0)) * 4; // for every 3 байты we need 4 байты в_ кодируй, with any дробь needing an добавьitional 4 байты with паддинг
+    return (trИПletCount + (trИПletFraction ? 1 : 0)) * 4; // for every 3 байты we need 4 байты в_ кодируй, with any дво needing an добавьitional 4 байты with паддинг
 }
 
 

@@ -154,7 +154,7 @@ import io.vfs.FileFolder;
         подст.прикрепи (new ФайлПапка (r"d:/d/import/temp"));
         подст.карта (подст.файл(r"temp/subtree/тест.txt"), "wumpus");
         
-        корень.прикрепи (new ФайлПапка (r"d:/d/import/drTango"))
+        корень.прикрепи (new ФайлПапка (r"d:/d/import/DinrusTango.lib"))
             .прикрепи (new ФайлПапка (r"c:/"), "windows");
         корень.прикрепи (подст);
 

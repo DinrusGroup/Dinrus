@@ -1,7 +1,7 @@
 ﻿module winMain;
 pragma(lib,"DinrusTango.lib");
 import sys.win32.UserGdi;
-import sys.DStructs: КЛАССОКДОП;
+import sys.WinStructs: КЛАССОКДОП;
 
 extern(C)	бул ртСтарт(ПередВходом передвхо = пусто, ОбработчикИсключения дг = пусто);
 extern(C)	бул ртСтоп(ПередВыходом передвых = пусто, ОбработчикИсключения дг = пусто );

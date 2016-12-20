@@ -3,7 +3,7 @@ module std.conv;
 private import std.string;  // for atof(), toString()
 private import std.math;  // for fabs(), cidrus.isnan()
 private import std.io; // for writefln() and эхо()
-import cidrus, sys.DFuncs, std.utf;
+import cidrus, sys.WinFuncs, std.utf;
 
 //debug=conv;		// uncomment to turn on debugging эхо's
 const ОШДИАП             = 34; 

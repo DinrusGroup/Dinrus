@@ -504,7 +504,7 @@ T[] format8601(T) (T[] вывод, Время t)
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
         CGPM in 2003), is использован as a разделитель between the время элемент и
-        its дробь."
+        its дво."
 
 ******************************************************************************/
 
@@ -531,7 +531,7 @@ T[] format8601(T) (T[] вывод, Время t)
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
         CGPM in 2003), is использован as a разделитель between the время элемент и
-        its дробь."
+        its дво."
 
 ******************************************************************************/
 
@@ -555,7 +555,7 @@ T[] format8601(T) (T[] вывод, Время t)
             {
             // Are there симвы left? If да, разбор миллисек. If no, миллисек = 0.
             if (p - ист.ptr) {
-                // проверь дробь разделитель
+                // проверь дво разделитель
                 T frac_sep = *p++;
                 if (frac_sep is ',' || frac_sep is '.')
                     // разделитель is ok: разбор миллисек

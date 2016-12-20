@@ -1,6 +1,6 @@
 ﻿module util.gcEmbeded;
 
-private import exception, stdrus, sync, sys.DConsts, cidrus, std.intrinsic;
+private import exception, stdrus, sync, sys.WinConsts, cidrus, std.intrinsic;
 
 
 /************** Отладка ***************************/
@@ -4125,7 +4125,7 @@ char [] ctfe_i2a(ulong i){
 ///////////////////////////////////////////////////////
 version (Win32)
 {
-    private import sys.DFuncs, thread, win;
+    private import sys.WinFuncs, thread, win;
 
     alias цел т_нук;
 

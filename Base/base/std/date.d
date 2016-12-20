@@ -948,7 +948,7 @@ static this()
 version (Win32)
 {
 
-    private import sys.DFuncs;
+    private import sys.WinFuncs;
     //import c.time;
 
     /******

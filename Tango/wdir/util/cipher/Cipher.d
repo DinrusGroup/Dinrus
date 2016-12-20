@@ -10,7 +10,7 @@ private import exception : ИсклНелегальногоАргумента;
 
 //alias ткст ткст;
 
-/** Base symmetric cИПher class */
+/** База symmetric cИПher class */
 abstract class Шифр
 {
     interface Параметры {}
@@ -82,7 +82,7 @@ abstract class ШифрПоток : Шифр
 }
 
  
- /** Base паддинг class for implementing блок паддинг schemes. */
+ /** База паддинг class for implementing блок паддинг schemes. */
  abstract class ПаддингБлокаШифра
  {
     /** Возвращает: The имя of the паддинг scheme implemented. */

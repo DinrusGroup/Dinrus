@@ -24,7 +24,7 @@ private import stdrus, stringz, cidrus, thread, sync, sys.SharedLib, io.FileSyst
 
    A lot of unsigned longs and longs were converted to бцел and цел
 
-   These will need to be reversed to support 64bit drTango
+   These will need to be reversed to support 64bit DinrusTango.lib
    (should use c_long and c_ulong from rt.core.stdc.config)
 
    XXX TODO XXX

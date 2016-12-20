@@ -33,7 +33,7 @@ private
     import cidrus;
     import std.date;
 	import std.utf: toUTF16;
-	import sys.DFuncs;
+	import sys.WinFuncs;
 }
 
 //debug=dateparse;

@@ -232,7 +232,7 @@ Journal of Statistical Software <b>11</b>, (July 2004).
  *
  *    betaDistributionCompl(a, b, x )  =  betaDistribution( b, a, 1-x )
  *
- * The integral is evaluated by a continued дробь expansion
+ * The integral is evaluated by a continued дво expansion
  * or, when b*x is small, by a power series.
  *
  * The inverse finds the значение of x for which betaDistribution(a,b,x) - y = 0

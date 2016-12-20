@@ -592,7 +592,7 @@ import io.vfs.FileFolder;
 {
         auto корень = new ВиртуальнаяПапка ("корень");
         auto подст  = new ВиртуальнаяПапка ("подст");
-        подст.прикрепи (new ФайлПапка (r"d:/d/import/drTango"));
+        подст.прикрепи (new ФайлПапка (r"d:/d/import/DinrusTango.lib"));
 
         корень.прикрепи (подст)
             .прикрепи (new ФайлПапка (r"c:/"), "windows")

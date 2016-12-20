@@ -20,7 +20,7 @@ module std.demangle;
 
 //debug=demangle;		// uncomment to turn on debugging эхо's
 
-private import std.ctype, sys.DFuncs;
+private import std.ctype, sys.WinFuncs;
 private import std.string;
 private import std.utf;
 

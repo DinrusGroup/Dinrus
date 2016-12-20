@@ -21,7 +21,7 @@ private {
   бцел GetUserDefaultLCID();
   бцел GetThreadLocale();
   бул SetThreadLocale(бцел Локаль);
-  цел MultiByteToWideChar(бцел CodePage, бцел dwFlags, сим* lpMultiByteStr, цел cbMultiByte, шим* lpWопрeCharStr, цел cchWопрeChar);
+  цел MultiByteToWideChar(бцел КодоваяСтраница, бцел dwFlags, сим* lpMultiByteStr, цел cbMultiByte, шим* lpWопрeCharStr, цел cchWопрeChar);
   цел CompareStringW(бцел Локаль, бцел dwCmpFlags, шим* lpString1, цел cchCount1, шим* lpString2, цел cchCount2);
 
 }

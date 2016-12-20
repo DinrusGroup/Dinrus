@@ -1,6 +1,6 @@
 ﻿module win;
 
-public  import sys.DConsts, sys.DIfaces, sys.DStructs, sys.DFuncs;//, io.Stdout;
+public  import sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;//, io.Stdout;
 
 ///////////////////////////////////////////////
 /*КОНСОЛЬ*/

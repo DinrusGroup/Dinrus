@@ -199,9 +199,9 @@ debug (UnitTest)
     unittest
     {
         assert (нормализуй ("") == "");
-        assert (нормализуй ("/home/../john/../.drTango/.htaccess") == "/.drTango/.htaccess");
-        assert (нормализуй ("/home/../john/../.drTango/foo.conf") == "/.drTango/foo.conf");
-        assert (нормализуй ("/home/john/.drTango/foo.conf") == "/home/john/.drTango/foo.conf");
+        assert (нормализуй ("/home/../john/../.DinrusTango.lib/.htaccess") == "/.DinrusTango.lib/.htaccess");
+        assert (нормализуй ("/home/../john/../.DinrusTango.lib/foo.conf") == "/.DinrusTango.lib/foo.conf");
+        assert (нормализуй ("/home/john/.DinrusTango.lib/foo.conf") == "/home/john/.DinrusTango.lib/foo.conf");
         assert (нормализуй ("/foo/bar/.htaccess") == "/foo/bar/.htaccess");
         assert (нормализуй ("foo/bar/././.") == "foo/bar/");
         assert (нормализуй ("././foo/././././bar") == "foo/bar");

@@ -194,23 +194,23 @@ struct МассивБит
 
 
     /**
-     * Map МассивБит onto мишень, with numbits being the число of биты in the
+     * Map МассивБит onto мишень, with члобит being the число of биты in the
      * Массив. Does not копируй the данные.  This is the inverse of opCast.
      *
      * Параметры:
      *  мишень  = The Массив в_ карта.
-     *  numbits = The число of биты в_ карта in мишень.
+     *  члобит = The число of биты в_ карта in мишень.
      */
-    проц иниц( проц[] мишень, т_мера numbits )
+    проц иниц( проц[] мишень, т_мера члобит )
     in
     {
-        assert( numbits <= мишень.length * 8 );
+        assert( члобит <= мишень.length * 8 );
         assert( (мишень.length & 3) == 0 );
     }
     body
     {
         ptr = cast(бцел*)мишень.ptr;
-        длин = numbits;
+        длин = члобит;
     }
 
 

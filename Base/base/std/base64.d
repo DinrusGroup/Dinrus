@@ -13,7 +13,7 @@ module std.base64;
 /**
  */
 
-import sys.DFuncs, std.utf, exception;
+import sys.WinFuncs, std.utf, exception;
 
 
 

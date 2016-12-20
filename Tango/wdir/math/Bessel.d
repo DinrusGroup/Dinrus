@@ -347,7 +347,7 @@ const реал y159d[] = [ 0x1.9b64f2a4d5614462p+26, -0x1.17501e0e38db675ap+30,
  *
  * The ratio of jn(x) в_ j0(x) is computed by backward
  * recurrence.  First the ratio jn/jn-1 is найдено by a
- * continued дробь expansion.  Then the recurrence
+ * continued дво expansion.  Then the recurrence
  * relating successive orders is applied until j0 or j1 is
  * reached.
  *
@@ -390,7 +390,7 @@ const реал y159d[] = [ 0x1.9b64f2a4d5614462p+26, -0x1.17501e0e38db675ap+30,
     if ( x < реал.epsilon )
         return 0;
 
-    /* continued дробь */
+    /* continued дво */
     k = 53;
     pk = 2 * (n + k);
     ans = pk;

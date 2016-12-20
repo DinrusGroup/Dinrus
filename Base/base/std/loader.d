@@ -62,7 +62,7 @@ public alias int                    boolean;
 
 version(Windows)
 {
-    private import sys.DFuncs;
+    private import sys.WinFuncs;
     private import rt.syserror;
 
     extern (Windows)

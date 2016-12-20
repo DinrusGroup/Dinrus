@@ -1,6 +1,6 @@
 ﻿module gc;
 
-private import exception, stdrus, sync, sys.DConsts, cidrus, std.intrinsic, util, rt.lifetime;
+private import exception, stdrus, sync, sys.WinConsts, cidrus, std.intrinsic, util, rt.lifetime;
 
 
 /************** Отладка ***************************/

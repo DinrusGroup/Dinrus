@@ -1,5 +1,5 @@
 module sys.inc.advapi32;
-import sys.DConsts, sys.DStructs, std.string, std.utf;
+import sys.WinConsts, sys.WinStructs, std.string, std.utf;
 /+
 
 ; --------------------------------------------------------------------------------------------------

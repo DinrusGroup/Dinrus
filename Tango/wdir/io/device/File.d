@@ -17,7 +17,7 @@
 
 module io.device.File;
 
-private import sys.Common, sys.DConsts, sys.DFuncs, sys.DStructs: АТРИБУТЫ_БЕЗОПАСНОСТИ;
+private import sys.Common, sys.WinConsts, sys.WinFuncs, sys.WinStructs: АТРИБУТЫ_БЕЗОПАСНОСТИ;
 
 private import io.device.Device, io.device.Conduit, io.Stdout;
 

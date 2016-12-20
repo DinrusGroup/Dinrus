@@ -2,7 +2,7 @@
 private import cidrus, rt.syserror, std.utf: вЮ8, вЮ16;
 private import std.string: format;
 alias format форматируй;//, stdrus;
-private import sys.DConsts, sys.DFuncs;
+private import sys.WinConsts, sys.WinFuncs;
 
 //Exceptions
 /+

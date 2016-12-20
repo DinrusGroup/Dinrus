@@ -44,7 +44,7 @@
  *   }
  * }}}
  *  Copyright: Copyright (C) 2007-2008 Zygfryd (aka Hxal), Fawzi. все rights reserved.
- *  License:   drTango license, apache 2.0
+ *  License:   DinrusTango.lib license, apache 2.0
  *  Authors:   Zygfryd (aka Hxal), Fawzi
  *
  */

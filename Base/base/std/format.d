@@ -38,7 +38,7 @@ module std.format;
 import tpl.args;
 
 private import std.utf;
-private import cidrus, sys.DFuncs;
+private import cidrus, sys.WinFuncs;
 private import std.string;
 
 version (Windows)

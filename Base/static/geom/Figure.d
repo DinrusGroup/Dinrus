@@ -17,7 +17,7 @@
 
 module geom.Figure;
 
-public import sys.DStructs, stdrus: фм;
+public import sys.WinStructs, stdrus: фм;
 
 struct Прямоугольник
 {	

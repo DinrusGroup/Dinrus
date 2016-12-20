@@ -17,7 +17,7 @@ class ПайпНить : Провод
     /**
      * Созд a new ПайпНить with the given buffer размер.
      *
-     * Params:
+     * Парамы:
      * размерБуфера = The размер to allocate the buffer.
      */
     this(т_мера размерБуфера=(1024*16))

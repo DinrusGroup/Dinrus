@@ -4,7 +4,7 @@
 */
 module runtime;
 import gc, cidrus: выход;
-import  sys.DFuncs;
+import  sys.WinFuncs;
 
 //debug = НА_КОНСОЛЬ;
 

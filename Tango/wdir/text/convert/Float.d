@@ -810,7 +810,7 @@ T[] форматируй(T) (T[] приёмн, ЧисТип x, бцел decimals
            {
            assert (приёмн.length >= (((эксп < 0) ? 0 : эксп) + decimals + 1));
 
-           // if дробь only, излей a leading zero
+           // if дво only, излей a leading zero
            if (эксп < 0)
               {
               x *= pow10 (абс);

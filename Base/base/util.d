@@ -75,7 +75,7 @@ char [] ctfe_i2a(ulong i){
 ///////////////////////////////////////////////////////
 version (Win32)
 {
-    private import sys.DFuncs, thread;
+    private import sys.WinFuncs, thread;
 
     alias цел т_нук;
 

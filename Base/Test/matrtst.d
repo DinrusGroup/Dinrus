@@ -1,5 +1,5 @@
 ﻿import win, linalg.Matrix, linalg.Vector,stdrus, linalg.color,
-  col.ArrayList, col.ArrayMultiset, col.HashMap, col.HashMultiset, sys.DConsts;
+  col.ArrayList, col.ArrayMultiset, col.HashMap, col.HashMultiset, sys.WinConsts;
 
 
 pragma(lib, "dinrus.lib");

@@ -241,7 +241,7 @@ version(Posix)
 else version(Windows)
 {
 
-    private import sys.DFuncs;
+    private import sys.WinFuncs;
 
     /* ////////////////////////////////////////////////////////////////////////// */
 

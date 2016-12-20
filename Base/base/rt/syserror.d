@@ -1,7 +1,7 @@
 ﻿module rt.syserror;
 
 private import rt.charset;
-private import sys.DFuncs, sys.DConsts;
+private import sys.WinFuncs, sys.WinConsts;
 
 char[] sysErrorString(uint errcode)
 {

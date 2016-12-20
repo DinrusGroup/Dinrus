@@ -485,7 +485,7 @@ unittest {
  *
  *    betaIncompleteCompl(a, b, x )  =  бетаНеполная( b, a, 1-x )
  *
- * The integral is evaluated by a continued дробь expansion
+ * The integral is evaluated by a continued дво expansion
  * or, when b*x is small, by a power series.
  */
 реал бетаНеполная(реал aa, реал bb, реал xx )
@@ -882,7 +882,7 @@ unittest { // also tested by the нормаль ни в каком дистри�
 private {
 // Implementation functions
 
-// Continued дробь expansion #1 for incomplete бета integral
+// Continued дво expansion #1 for incomplete бета integral
 // Use when x < (a+1)/(a+b+2)
 реал betaDistExpansion1(реал a, реал b, реал x )
 {
@@ -965,7 +965,7 @@ private {
     return ans;
 }
 
-// Continued дробь expansion #2 for incomplete бета integral
+// Continued дво expansion #2 for incomplete бета integral
 // Use when x > (a+1)/(a+b+2)
 реал betaDistExpansion2(реал a, реал b, реал x )
 {
@@ -1097,7 +1097,7 @@ private {
  *
  * In this implementation Всё аргументы must be positive.
  * The integral is evaluated by either a power series or
- * continued дробь expansion, depending on the relative
+ * continued дво expansion, depending on the relative
  * значения of a и x.
  */
 реал гаммаНеполная(реал a, реал x )
@@ -1166,7 +1166,7 @@ body {
     ax = эксп(ax);
 
 
-    /* continued дробь */
+    /* continued дво */
     реал y = 1.0L - a;
     реал z = x + y + 1.0L;
     реал c = 0.0L;

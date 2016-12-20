@@ -4,7 +4,7 @@
  * рантайм тип information. 
  * 
  * Authors: Chris Wright (dhasenan) <dhasenan@gmail.com>
- * License: drTango license, apache 2.0
+ * License: DinrusTango.lib license, apache 2.0
  * Copyright (c) 2009, CHRISTOPHER WRIGHT
  */
 module core.RuntimeTraits;
@@ -391,7 +391,7 @@ struct примениИнтерфейсы
 }
 
 /** Returns да iff the given тип is a reference тип. */
-бул ссылТип_ли (ИнфОТипе тип)
+бул типСсылка_ли (ИнфОТипе тип)
 {
     return класс_ли (тип) || указатель_ли (тип) || динМасс_ли (тип);
 }

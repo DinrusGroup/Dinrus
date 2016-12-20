@@ -1,5 +1,5 @@
 ﻿module std.utf;
-private import std.io, sys.DFuncs /*rt.console*/, std.string: format;
+private import std.io, sys.WinFuncs /*rt.console*/, std.string: format;
 
 alias isValidDchar реальноДсим_ли;
 alias stride пролёт;

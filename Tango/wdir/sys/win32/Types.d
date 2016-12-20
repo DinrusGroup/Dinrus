@@ -11819,7 +11819,7 @@ struct PERF_OBJECT_TYPE
  DWORD NumCounters;
  DWORD DefaultCounter;
  DWORD NumInstances;
- DWORD CodePage;
+ DWORD КодоваяСтраница;
  LARGE_INTEGER PerfTime;
  LARGE_INTEGER PerfFreq;
 }

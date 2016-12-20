@@ -4,7 +4,7 @@
  * www.digitalmars.com
  */
 //module rt.invariant;
-import tpl.traits, sys.DFuncs, runtime, stdrus: инфо, фм, ДАТА, ВРЕМЯ;
+import tpl.traits, sys.WinFuncs, runtime, stdrus: инфо, фм, ДАТА, ВРЕМЯ;
 
 export extern (D)
  void _d_invariant(Object o)

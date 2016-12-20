@@ -79,7 +79,7 @@ struct ДанныеЮникод
         Narrow, //    A narrow (or hankaku) compatibility character.
         Small, //    A small variant form (CNS compatibility).
         Square, //    A CJK squared font variant.
-        Fraction, //    A vulgar дробь form.
+        Fraction, //    A vulgar дво form.
         Compat //    Otherwise unspecified compatibility character.
     }
     

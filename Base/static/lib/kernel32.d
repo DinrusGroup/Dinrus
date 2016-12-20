@@ -8,7 +8,7 @@
 	module lib.kernel32;
 	
 	import stdrus;
-	import sys.DConsts, sys.DStructs;
+	import sys.WinConsts, sys.WinStructs;
 	
 	extern(Windows)
 {

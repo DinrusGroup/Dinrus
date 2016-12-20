@@ -103,10 +103,10 @@ IShellDispatch оболочка = Shell.создайКо!(IShellDispatch);
 
 проц тестГуид() 
 {
-    скажинс(фм("ГУИДом ИПоток является %s", tpl.com.ууид_у!(sys.DIfaces.ИПоток).stringof));
-	auto x = tpl.com.ууид_у!(sys.DIfaces.ИПоток).вТкст;
+    скажинс(фм("ГУИДом ИПоток является %s", tpl.com.ууид_у!(sys.WinIfaces.ИПоток).stringof));
+	auto x = tpl.com.ууид_у!(sys.WinIfaces.ИПоток).вТкст;
 	скажинс(фм("ГУИДом ИПоток является %s", x));
-	x = tpl.com.ууид_у!(sys.DIfaces.ИДиспетчер).вТкст;
+	x = tpl.com.ууид_у!(sys.WinIfaces.ИДиспетчер).вТкст;
 	скажинс(фм("ГУИДом ИДиспетчер является %s", x));
 	 return;
   }

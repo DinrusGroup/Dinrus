@@ -63,7 +63,7 @@ private typedef бцел Reserved;
 /+ ++++++ This is borrowed from synsoft.text.token, until such time as something
  + similar is in Phobos ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  +/
-ткст[] tokenise(ткст source, сим delimiter, булево bElideBlanks, булево bZeroTerminate)
+ткст[] tokenise(ткст исходник, сим разграничитель, булево bElideBlanks, булево bZeroTerminate)
 {
     цел         i;
     цел         cDelimiters =   128;
@@ -83,15 +83,15 @@ private typedef бцел Reserved;
 
     if(bElideBlanks)
     {
-        for(start = 0, begin = 0, cTokens = 0; begin < source.length; ++begin)
+        for(start = 0, begin = 0, cTokens = 0; begin < исходник.length; ++begin)
         {
-            if(source[begin] == delimiter)
+            if(исходник[begin] == разграничитель)
             {
                 if(start < begin)
                 {
                     ensure_length();
 
-                    tokens[cTokens++]   =   source[start .. begin];
+                    tokens[cTokens++]   =   исходник[start .. begin];
                 }
 
                 start = begin + 1;
@@ -102,18 +102,18 @@ private typedef бцел Reserved;
         {
             ensure_length();
 
-            tokens[cTokens++]   =   source[start .. begin];
+            tokens[cTokens++]   =   исходник[start .. begin];
         }
     }
     else
     {
-        for(start = 0, begin = 0, cTokens = 0; begin < source.length; ++begin)
+        for(start = 0, begin = 0, cTokens = 0; begin < исходник.length; ++begin)
         {
-            if(source[begin] == delimiter)
+            if(исходник[begin] == разграничитель)
             {
                 ensure_length();
 
-                tokens[cTokens++]   =   source[start .. begin];
+                tokens[cTokens++]   =   исходник[start .. begin];
 
                 start = begin + 1;
             }
@@ -121,7 +121,7 @@ private typedef бцел Reserved;
 
         ensure_length();
 
-        tokens[cTokens++]   =   source[start .. begin];
+        tokens[cTokens++]   =   исходник[start .. begin];
     }
 
     tokens.length = cTokens;
@@ -268,7 +268,7 @@ extern  (Windows)
     LONG    RegCreateKeyExA(in HKEY hkey, in LPCSTR lpSubKey, in Reserved 
                         ,   in Reserved , in бцел dwOptions
                         ,   in ПРежимДоступаКРеестру samDesired
-                        ,   in sys.DStructs.LPSECURITY_ATTRIBUTES lpsa
+                        ,   in sys.WinStructs.LPSECURITY_ATTRIBUTES lpsa
                         ,   out HKEY hkeyResult, out бцел disposition);
     LONG    RegDeleteKeyA(in HKEY hkey, in LPCSTR lpSubKey);
     LONG    RegDeleteValueA(in HKEY hkey, in LPCSTR lpValueName);
@@ -282,7 +282,7 @@ extern  (Windows)
                             ,   inout бцел cbData);
     LONG    RegEnumKeyExA(  in HKEY hkey, in бцел dwIndex, in LPSTR lpName
                         ,   inout бцел cchName, in Reserved , in LPSTR lpClass
-                        ,   in LPDWORD cchClass, in sys.DStructs.FILETIME *ftLastWriteTime);
+                        ,   in LPDWORD cchClass, in sys.WinStructs.FILETIME *ftLastWriteTime);
     LONG    RegEnumValueA(  in HKEY hkey, in бцел dwIndex, in LPSTR lpValueName
                         ,   inout бцел cchValueName, in Reserved 
                         ,   in LPDWORD lpType, in проц *lpData
@@ -295,7 +295,7 @@ extern  (Windows)
                             ,   in LPDWORD lpcMaxValueNameLen
                             ,   in LPDWORD lpcMaxValueLen
                             ,   in LPDWORD lpcbSecurityDescriptor
-                            ,   in sys.DStructs.FILETIME *lpftLastWriteTime);
+                            ,   in sys.WinStructs.FILETIME *lpftLastWriteTime);
     LONG    RegSetValueExA( in HKEY hkey, in LPCSTR lpSubKey, in Reserved 
                         ,   in ПТипЗначенияРеестра тип, in LPCVOID lpData
                         ,   in бцел cbData);
@@ -419,7 +419,7 @@ body
 
 private LONG Reg_CreateKeyExA_(     in HKEY hkey, in ткст subKey
                                 ,   in бцел dwOptions, in ПРежимДоступаКРеестру samDesired
-                                ,   in sys.DStructs.LPSECURITY_ATTRIBUTES lpsa
+                                ,   in sys.WinStructs.LPSECURITY_ATTRIBUTES lpsa
                                 ,   out HKEY hkeyResult, out бцел disposition)
 in
 {

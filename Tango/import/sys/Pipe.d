@@ -1,6 +1,6 @@
 ﻿module sys.Pipe;
 
-private import sys.Common, io.device.Device, sys.DStructs;
+private import sys.Common, io.device.Device, sys.WinStructs;
 
 private enum {ДефРазмерБуфера = 8 * 1024}
 

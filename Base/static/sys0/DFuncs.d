@@ -2,9 +2,9 @@
 Модуль функций WIN API для языка Динрус.
 Разработчик Виталий Кулич.
 */
-module sys.DFuncs;
+module sys.WinFuncs;
 
-import  sys.DStructs, sys.DConsts, sys.DIfaces, std.string, std.utf;
+import  sys.WinStructs, sys.WinConsts, sys.WinIfaces, std.string, std.utf;
 import  std.intrinsic;
 import cidrus;
 public import sys.inc.kernel32;
@@ -219,95 +219,95 @@ void SysFreeString(wchar*);
 uint SysStringLen(wchar*);
 uint SysStringByteLen(wchar*);
 wchar* SysAllocStringByteLen(in ubyte* psz, uint len);
-int CoCreateGuid(out sys.DStructs.ГУИД pGuid);
-int ProgIDFromCLSID(ref sys.DStructs.ГУИД clsid, out wchar* lplpszProgID);
-int CLSIDFromProgID(in wchar* lpszProgID, out sys.DStructs.ГУИД lpclsid);
-int CLSIDFromProgIDEx(in wchar* lpszProgID, out sys.DStructs.ГУИД lpclsid);
-int CoCreateInstance(ref sys.DStructs.ГУИД rclsid, sys.DIfaces.Инкогнито pUnkOuter, uint dwClsContext, ref sys.DStructs.ГУИД riid, void** ppv);
-int CoGetClassObject(ref sys.DStructs.ГУИД rclsid, uint dwClsContext, void* pvReserved, ref sys.DStructs.ГУИД riid, void** ppv);
-int CoCreateInstanceEx(ref sys.DStructs.ГУИД rclsid, sys.DIfaces.Инкогнито pUnkOuter, uint dwClsContext, sys.DStructs.КОСЕРВЕРИНФО* pServerInfo, uint dwCount, sys.DStructs.МУЛЬТИ_ОИ* pResults);
-int RegisterActiveObject(sys.DIfaces.Инкогнито punk, ref sys.DStructs.ГУИД rclsid, uint dwFlags, out uint pdwRegister);
+int CoCreateGuid(out sys.WinStructs.ГУИД pGuid);
+int ProgIDFromCLSID(ref sys.WinStructs.ГУИД clsid, out wchar* lplpszProgID);
+int CLSIDFromProgID(in wchar* lpszProgID, out sys.WinStructs.ГУИД lpclsid);
+int CLSIDFromProgIDEx(in wchar* lpszProgID, out sys.WinStructs.ГУИД lpclsid);
+int CoCreateInstance(ref sys.WinStructs.ГУИД rclsid, sys.WinIfaces.Инкогнито pUnkOuter, uint dwClsContext, ref sys.WinStructs.ГУИД riid, void** ppv);
+int CoGetClassObject(ref sys.WinStructs.ГУИД rclsid, uint dwClsContext, void* pvReserved, ref sys.WinStructs.ГУИД riid, void** ppv);
+int CoCreateInstanceEx(ref sys.WinStructs.ГУИД rclsid, sys.WinIfaces.Инкогнито pUnkOuter, uint dwClsContext, sys.WinStructs.КОСЕРВЕРИНФО* pServerInfo, uint dwCount, sys.WinStructs.МУЛЬТИ_ОИ* pResults);
+int RegisterActiveObject(sys.WinIfaces.Инкогнито punk, ref sys.WinStructs.ГУИД rclsid, uint dwFlags, out uint pdwRegister);
 int RevokeActiveObject(uint dwRegister, void* pvReserved);
-int GetActiveObject(ref sys.DStructs.ГУИД rclsid, void* pvReserved, out sys.DIfaces.Инкогнито ppunk);
+int GetActiveObject(ref sys.WinStructs.ГУИД rclsid, void* pvReserved, out sys.WinIfaces.Инкогнито ppunk);
 
-int SafeArrayAllocDescriptor(uint cDims, out sys.DStructs.БЕЗОПМАС* ppsaOut);
-int SafeArrayAllocDescriptorEx(ushort вт, uint cDims, out sys.DStructs.БЕЗОПМАС* ppsaOut);
-int SafeArrayAllocData(sys.DStructs.БЕЗОПМАС* psa);
-sys.DStructs.БЕЗОПМАС* SafeArrayCreate(ushort вт, uint cDims, sys.DStructs.ГРАНБЕЗОПМАСА* rgsabound);
-sys.DStructs.БЕЗОПМАС* SafeArrayCreateEx(ushort вт, uint cDims, sys.DStructs.ГРАНБЕЗОПМАСА* rgsabound, void* pvExtra);
-int SafeArrayCopyData(sys.DStructs.БЕЗОПМАС* psaSource, sys.DStructs.БЕЗОПМАС* psaTarget);
-int SafeArrayDestroyDescriptor(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayDestroyData(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayDestroy(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayRedim(sys.DStructs.БЕЗОПМАС* psa, sys.DStructs.ГРАНБЕЗОПМАСА* psaboundNew);
-uint SafeArrayGetDim(sys.DStructs.БЕЗОПМАС* psa);
-uint SafeArrayGetElemsize(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayGetUBound(sys.DStructs.БЕЗОПМАС* psa, uint cDim, out int plUbound);
-int SafeArrayGetLBound(sys.DStructs.БЕЗОПМАС* psa, uint cDim, out int plLbound);
-int SafeArrayLock(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayUnlock(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayAccessData(sys.DStructs.БЕЗОПМАС* psa, void** ppvData);
-int SafeArrayUnaccessData(sys.DStructs.БЕЗОПМАС* psa);
-int SafeArrayGetElement(sys.DStructs.БЕЗОПМАС* psa, int* rgIndices, void* pv);
-int SafeArrayPutElement(sys.DStructs.БЕЗОПМАС* psa, int* rgIndices, void* pv);
-int SafeArrayCopy(sys.DStructs.БЕЗОПМАС* psa, out sys.DStructs.БЕЗОПМАС* ppsaOut);
-int SafeArrayPtrOfIndex(sys.DStructs.БЕЗОПМАС* psa, int* rgIndices, void** ppvData);
-int SafeArraySetRecordInfo(sys.DStructs.БЕЗОПМАС* psa, sys.DIfaces.IRecordInfo prinfo);
-int SafeArrayGetRecordInfo(sys.DStructs.БЕЗОПМАС* psa, out sys.DIfaces.IRecordInfo prinfo);
-int SafeArraySetIID(sys.DStructs.БЕЗОПМАС* psa, ref sys.DStructs.ГУИД guid);
-int SafeArrayGetIID(sys.DStructs.БЕЗОПМАС* psa, out sys.DStructs.ГУИД pguid);
-int SafeArrayGetVartype(sys.DStructs.БЕЗОПМАС* psa, out ushort pvt);
-sys.DStructs.БЕЗОПМАС* SafeArrayCreateVector(ushort вт, int lLbound, uint cElements);
-sys.DStructs.БЕЗОПМАС* SafeArrayCreateVectorEx(ushort вт, int lLbound, uint cElements, void* pvExtra);
+int SafeArrayAllocDescriptor(uint cDims, out sys.WinStructs.БЕЗОПМАС* ppsaOut);
+int SafeArrayAllocDescriptorEx(ushort вт, uint cDims, out sys.WinStructs.БЕЗОПМАС* ppsaOut);
+int SafeArrayAllocData(sys.WinStructs.БЕЗОПМАС* psa);
+sys.WinStructs.БЕЗОПМАС* SafeArrayCreate(ushort вт, uint cDims, sys.WinStructs.ГРАНБЕЗОПМАСА* rgsabound);
+sys.WinStructs.БЕЗОПМАС* SafeArrayCreateEx(ushort вт, uint cDims, sys.WinStructs.ГРАНБЕЗОПМАСА* rgsabound, void* pvExtra);
+int SafeArrayCopyData(sys.WinStructs.БЕЗОПМАС* psaSource, sys.WinStructs.БЕЗОПМАС* psaTarget);
+int SafeArrayDestroyDescriptor(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayDestroyData(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayDestroy(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayRedim(sys.WinStructs.БЕЗОПМАС* psa, sys.WinStructs.ГРАНБЕЗОПМАСА* psaboundNew);
+uint SafeArrayGetDim(sys.WinStructs.БЕЗОПМАС* psa);
+uint SafeArrayGetElemsize(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayGetUBound(sys.WinStructs.БЕЗОПМАС* psa, uint cDim, out int plUbound);
+int SafeArrayGetLBound(sys.WinStructs.БЕЗОПМАС* psa, uint cDim, out int plLbound);
+int SafeArrayLock(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayUnlock(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayAccessData(sys.WinStructs.БЕЗОПМАС* psa, void** ppvData);
+int SafeArrayUnaccessData(sys.WinStructs.БЕЗОПМАС* psa);
+int SafeArrayGetElement(sys.WinStructs.БЕЗОПМАС* psa, int* rgIndices, void* pv);
+int SafeArrayPutElement(sys.WinStructs.БЕЗОПМАС* psa, int* rgIndices, void* pv);
+int SafeArrayCopy(sys.WinStructs.БЕЗОПМАС* psa, out sys.WinStructs.БЕЗОПМАС* ppsaOut);
+int SafeArrayPtrOfIndex(sys.WinStructs.БЕЗОПМАС* psa, int* rgIndices, void** ppvData);
+int SafeArraySetRecordInfo(sys.WinStructs.БЕЗОПМАС* psa, sys.WinIfaces.IRecordInfo prinfo);
+int SafeArrayGetRecordInfo(sys.WinStructs.БЕЗОПМАС* psa, out sys.WinIfaces.IRecordInfo prinfo);
+int SafeArraySetIID(sys.WinStructs.БЕЗОПМАС* psa, ref sys.WinStructs.ГУИД guid);
+int SafeArrayGetIID(sys.WinStructs.БЕЗОПМАС* psa, out sys.WinStructs.ГУИД pguid);
+int SafeArrayGetVartype(sys.WinStructs.БЕЗОПМАС* psa, out ushort pvt);
+sys.WinStructs.БЕЗОПМАС* SafeArrayCreateVector(ushort вт, int lLbound, uint cElements);
+sys.WinStructs.БЕЗОПМАС* SafeArrayCreateVectorEx(ushort вт, int lLbound, uint cElements, void* pvExtra);
 
-int VarDecFromUI4(uint ulIn, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromI4(int lIn, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromUI8(ulong ui64In, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromI8(long i64In, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromR4(float dlbIn, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromR8(double dlbIn, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarDecFromStr(in wchar* StrIn, uint lcid, uint dwFlags, out sys.DStructs.ДЕСЯТОК pdecOut);
-int VarBstrFromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, uint lcid, uint dwFlags, out wchar* pbstrOut);
-int VarUI4FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out uint pulOut);
-int VarI4FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out int plOut);
-int VarUI8FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out ulong pui64Out);
-int VarI8FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out long pi64Out);
-int VarR4FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out float pfltOut);
-int VarR8FromDec(ref sys.DStructs.ДЕСЯТОК pdecIn, out double pdblOut);
+int VarDecFromUI4(uint ulIn, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromI4(int lIn, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromUI8(ulong ui64In, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromI8(long i64In, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromR4(float dlbIn, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromR8(double dlbIn, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarDecFromStr(in wchar* StrIn, uint lcid, uint dwFlags, out sys.WinStructs.ДЕСЯТОК pdecOut);
+int VarBstrFromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, uint lcid, uint dwFlags, out wchar* pbstrOut);
+int VarUI4FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out uint pulOut);
+int VarI4FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out int plOut);
+int VarUI8FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out ulong pui64Out);
+int VarI8FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out long pi64Out);
+int VarR4FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out float pfltOut);
+int VarR8FromDec(ref sys.WinStructs.ДЕСЯТОК pdecIn, out double pdblOut);
 
-int VarDecAdd(ref sys.DStructs.ДЕСЯТОК pdecLeft, ref sys.DStructs.ДЕСЯТОК pdecRight, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecSub(ref sys.DStructs.ДЕСЯТОК pdecLeft, ref sys.DStructs.ДЕСЯТОК pdecRight, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecMul(ref sys.DStructs.ДЕСЯТОК pdecLeft, ref sys.DStructs.ДЕСЯТОК pdecRight, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecDiv(ref sys.DStructs.ДЕСЯТОК pdecLeft, ref sys.DStructs.ДЕСЯТОК pdecRight, out sys.DStructs.ДЕСЯТОК pdecResult);
+int VarDecAdd(ref sys.WinStructs.ДЕСЯТОК pdecLeft, ref sys.WinStructs.ДЕСЯТОК pdecRight, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecSub(ref sys.WinStructs.ДЕСЯТОК pdecLeft, ref sys.WinStructs.ДЕСЯТОК pdecRight, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecMul(ref sys.WinStructs.ДЕСЯТОК pdecLeft, ref sys.WinStructs.ДЕСЯТОК pdecRight, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecDiv(ref sys.WinStructs.ДЕСЯТОК pdecLeft, ref sys.WinStructs.ДЕСЯТОК pdecRight, out sys.WinStructs.ДЕСЯТОК pdecResult);
 
-int VarDecRound(ref sys.DStructs.ДЕСЯТОК pdecIn, int cDecimals, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecAbs(ref sys.DStructs.ДЕСЯТОК pdecIn, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecFix(ref sys.DStructs.ДЕСЯТОК pdecIn, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecInt(ref sys.DStructs.ДЕСЯТОК pdecIn, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecNeg(ref sys.DStructs.ДЕСЯТОК pdecIn, out sys.DStructs.ДЕСЯТОК pdecResult);
-int VarDecCmp(ref sys.DStructs.ДЕСЯТОК pdecLeft, out sys.DStructs.ДЕСЯТОК pdecRight);
+int VarDecRound(ref sys.WinStructs.ДЕСЯТОК pdecIn, int cDecimals, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecAbs(ref sys.WinStructs.ДЕСЯТОК pdecIn, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecFix(ref sys.WinStructs.ДЕСЯТОК pdecIn, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecInt(ref sys.WinStructs.ДЕСЯТОК pdecIn, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecNeg(ref sys.WinStructs.ДЕСЯТОК pdecIn, out sys.WinStructs.ДЕСЯТОК pdecResult);
+int VarDecCmp(ref sys.WinStructs.ДЕСЯТОК pdecLeft, out sys.WinStructs.ДЕСЯТОК pdecRight);
 
-int VarBstrFromDec(sys.DStructs.ДЕСЯТОК* pdecIn, uint lcid, uint dwFlags, out wchar* pbstrOut);
-int VarR8FromDec(sys.DStructs.ДЕСЯТОК* pdecIn, out double pdblOut);
-int VarDecNeg(sys.DStructs.ДЕСЯТОК* pdecIn, out sys.DStructs.ДЕСЯТОК pdecResult);
+int VarBstrFromDec(sys.WinStructs.ДЕСЯТОК* pdecIn, uint lcid, uint dwFlags, out wchar* pbstrOut);
+int VarR8FromDec(sys.WinStructs.ДЕСЯТОК* pdecIn, out double pdblOut);
+int VarDecNeg(sys.WinStructs.ДЕСЯТОК* pdecIn, out sys.WinStructs.ДЕСЯТОК pdecResult);
 
-void VariantInit(ref sys.DStructs.ВАРИАНТ pvarg);
-int VariantClear(ref sys.DStructs.ВАРИАНТ pvarg);
-int VariantCopy(ref sys.DStructs.ВАРИАНТ pvargDest, ref sys.DStructs.ВАРИАНТ pvargSrc);
+void VariantInit(ref sys.WinStructs.ВАРИАНТ pvarg);
+int VariantClear(ref sys.WinStructs.ВАРИАНТ pvarg);
+int VariantCopy(ref sys.WinStructs.ВАРИАНТ pvargDest, ref sys.WinStructs.ВАРИАНТ pvargSrc);
 
-int VarAdd(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarAnd(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarCat(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarDiv(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarMod(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarMul(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarOr(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarSub(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarXor(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, out sys.DStructs.ВАРИАНТ pvarResult);
-int VarCmp(ref sys.DStructs.ВАРИАНТ pvarLeft, ref sys.DStructs.ВАРИАНТ pvarRight, uint lcid, uint dwFlags);
+int VarAdd(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarAnd(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarCat(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarDiv(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarMod(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarMul(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarOr(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarSub(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarXor(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, out sys.WinStructs.ВАРИАНТ pvarResult);
+int VarCmp(ref sys.WinStructs.ВАРИАНТ pvarLeft, ref sys.WinStructs.ВАРИАНТ pvarRight, uint lcid, uint dwFlags);
 
-int VariantChangeType(ref sys.DStructs.ВАРИАНТ pvargDest, ref sys.DStructs.ВАРИАНТ pvarSrc, ushort wFlags, ushort вт);
-int VariantChangeTypeEx(ref sys.DStructs.ВАРИАНТ pvargDest, ref sys.DStructs.ВАРИАНТ pvarSrc, uint lcid, ushort wFlags, ushort вт);
+int VariantChangeType(ref sys.WinStructs.ВАРИАНТ pvargDest, ref sys.WinStructs.ВАРИАНТ pvarSrc, ushort wFlags, ushort вт);
+int VariantChangeTypeEx(ref sys.WinStructs.ВАРИАНТ pvargDest, ref sys.WinStructs.ВАРИАНТ pvarSrc, uint lcid, ushort wFlags, ushort вт);
 
 int SetErrorInfo(uint dwReserved, ИИнфОбОш perrinfo);
 int GetErrorInfo(uint dwReserved, out ИИнфОбОш pperrinfo);
@@ -394,7 +394,7 @@ else
 }
 
 // Removes.
-проц УД_УДАЛИ(СОКЕТ уд, sys.DStructs.набор_уд* набор)
+проц УД_УДАЛИ(СОКЕТ уд, sys.WinStructs.набор_уд* набор)
 {
 	бцел c = набор.счёт_уд;
 	СОКЕТ* старт = набор.массив_уд.ptr;
@@ -418,7 +418,7 @@ else
 
 
 // Tests.
-цел УД_УСТАНОВЛЕН(СОКЕТ уд, sys.DStructs.набор_уд* набор)
+цел УД_УСТАНОВЛЕН(СОКЕТ уд, sys.WinStructs.набор_уд* набор)
 {
 	СОКЕТ* старт = набор.массив_уд.ptr;
 	СОКЕТ* stop = старт + набор.счёт_уд;
@@ -433,7 +433,7 @@ else
 
 
 // Adds.
-проц УД_УСТАНОВИ(СОКЕТ уд, sys.DStructs.набор_уд* набор)
+проц УД_УСТАНОВИ(СОКЕТ уд, sys.WinStructs.набор_уд* набор)
 {
 	бцел c = набор.счёт_уд;
 	набор.массив_уд.ptr[c] = уд;
@@ -442,7 +442,7 @@ else
 
 
 // Resets to zero.
-проц УД_ОБНУЛИ(sys.DStructs.набор_уд* набор)
+проц УД_ОБНУЛИ(sys.WinStructs.набор_уд* набор)
 {
 	набор.счёт_уд = 0;
 }
@@ -489,23 +489,23 @@ else
 	return cast(бул)   FindClose(cast(HANDLE) найдиФайл);
 	}
 //////////
-ук НайдиПервыйФайлА(in ткст фимя, sys.DStructs.ПОИСК_ДАННЫХ_А* данныеПоискаФайла)
+ук НайдиПервыйФайлА(in ткст фимя, sys.WinStructs.ПОИСК_ДАННЫХ_А* данныеПоискаФайла)
 	{
 	return cast(ук) FindFirstFileA(cast(сим *) фимя, cast(WIN32_FIND_DATA*) данныеПоискаФайла);
 	}
 
-ук НайдиПервыйФайл(in шткст фимя, sys.DStructs.ПДАН* данныеПоискаФайла)
+ук НайдиПервыйФайл(in шткст фимя, sys.WinStructs.ПДАН* данныеПоискаФайла)
 	{
 	ткст ф = toUTF8(фимя);
 	return cast(ук) FindFirstFileW(toUTF16z(ф), cast(WIN32_FIND_DATAW*) данныеПоискаФайла);
 	}
 ////////////
-бул НайдиСледующийФайлА(ук найдиФайл, sys.DStructs.ПОИСК_ДАННЫХ_А* данныеПоискаФайла)
+бул НайдиСледующийФайлА(ук найдиФайл, sys.WinStructs.ПОИСК_ДАННЫХ_А* данныеПоискаФайла)
 	{
 	return cast(бул)   FindNextFileA(cast(HANDLE) найдиФайл, cast(WIN32_FIND_DATA*) данныеПоискаФайла);
 	}
 
-бул НайдиСледующийФайл(ук найдиФайл, sys.DStructs.ПДАН* данныеПоискаФайла)
+бул НайдиСледующийФайл(ук найдиФайл, sys.WinStructs.ПДАН* данныеПоискаФайла)
 	{
 	return cast(бул)   FindNextFileW(cast(HANDLE) найдиФайл, cast(WIN32_FIND_DATAW*) данныеПоискаФайла);
 	}
@@ -548,7 +548,7 @@ else
 	return cast(бул)   MoveFileW(toUTF16z(сф), toUTF16z(нф));
 	}
 ///////////////
-бул ЧитайФайл(ук файл, ук буфер, бцел члоБайтДляЧит, бцел *члоСчитБайт, sys.DStructs.АСИНХРОН *асинх)
+бул ЧитайФайл(ук файл, ук буфер, бцел члоБайтДляЧит, бцел *члоСчитБайт, sys.WinStructs.АСИНХРОН *асинх)
 	{
 	return cast(бул)   ReadFile(cast(HANDLE) файл, cast(ук ) буфер, cast(DWORD) члоБайтДляЧит, cast(DWORD *) члоСчитБайт, cast(OVERLAPPED *) асинх);
 	}
@@ -558,7 +558,7 @@ else
 	return cast(бцел)  SetFilePointer(cast(HANDLE) файл, cast(LONG) дистанцияПереноса, cast(LONG *) дистанцияПереносаВ, cast(DWORD) методПереноса);
 	}
 ////////////////
-бул ПишиФайл(ук файл, in ук буфер, бцел члоБайтДляЗаписи, убцел члоЗаписанБайт, sys.DStructs.АСИНХРОН *асинх)
+бул ПишиФайл(ук файл, in ук буфер, бцел члоБайтДляЗаписи, убцел члоЗаписанБайт, sys.WinStructs.АСИНХРОН *асинх)
 	{
 	return cast(бул)   WriteFile(cast(HANDLE) файл, cast(ук ) буфер, cast(DWORD) члоБайтДляЗаписи, cast(DWORD *) члоЗаписанБайт, cast(OVERLAPPED *) асинх);
 	}
@@ -661,7 +661,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(цел) RegDeleteValueA(cast(HKEY) ключ, cast(LPCSTR) имяЗнач);
 	}
 
-цел ПеречислиКлючиРегДопА(ПКлючРег ключ, бцел индекс, ткст имя, убцел пкбИмя, убцел резерв, ткст класс, убцел пкбКласс, sys.DStructs.ФВРЕМЯ *времяПоследнейЗаписи)
+цел ПеречислиКлючиРегДопА(ПКлючРег ключ, бцел индекс, ткст имя, убцел пкбИмя, убцел резерв, ткст класс, убцел пкбКласс, sys.WinStructs.ФВРЕМЯ *времяПоследнейЗаписи)
 	{
 	return cast(цел)  RegEnumKeyExA(cast(HKEY) ключ, cast(DWORD) индекс, cast(LPSTR) имя, cast(LPDWORD) пкбИмя, cast(LPDWORD) резерв, cast(LPSTR) класс, cast(LPDWORD) пкбКласс, cast(FILETIME*) времяПоследнейЗаписи);
 	}
@@ -685,7 +685,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(цел) RegOpenKeyExA(cast(HKEY) ключ, cast(LPCSTR) подключ,cast(DWORD) опции, cast(REGSAM) желательно, cast(PHKEY) результат);
 	}
 
-цел ЗапросиИнфОКлючеРегА(ПКлючРег ключ, ткст класс, убцел пкбКласс, убцел резерв, убцел подключи, убцел максДлинаПодключа, убцел пкбМаксДлинаКласса, убцел значения, убцел пкбМаксДлинаИмениЗначения, убцел пкбМаксДлинаЗначения, убцел пкбДескрБезоп, sys.DStructs.ФВРЕМЯ *времяПоследнейЗаписи)
+цел ЗапросиИнфОКлючеРегА(ПКлючРег ключ, ткст класс, убцел пкбКласс, убцел резерв, убцел подключи, убцел максДлинаПодключа, убцел пкбМаксДлинаКласса, убцел значения, убцел пкбМаксДлинаИмениЗначения, убцел пкбМаксДлинаЗначения, убцел пкбДескрБезоп, sys.WinStructs.ФВРЕМЯ *времяПоследнейЗаписи)
 	{
 	return cast(цел) RegQueryInfoKeyA(cast(HKEY) ключ, cast(LPSTR) класс, cast(LPDWORD) пкбКласс, cast(LPDWORD) резерв, cast(LPDWORD) подключи, cast(LPDWORD) максДлинаПодключа, cast(LPDWORD) пкбМаксДлинаКласса,  cast(LPDWORD) значения, cast(LPDWORD) пкбМаксДлинаИмениЗначения, cast(LPDWORD) пкбМаксДлинаЗначения, cast(LPDWORD) пкбДескрБезоп, cast(PFILETIME) времяПоследнейЗаписи);
 	}
@@ -694,7 +694,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	{
 	return cast(цел) RegQueryValueA(cast(HKEY) ключ, cast(LPCSTR) подключ, cast(LPSTR) значение, cast(LPLONG) пкбЗначение);	}
 
-цел СоздайКлючРегДопА(ПКлючРег ключ, ткст подключ, бцел резерв, ткст класс, ПРеестр опции, бцел желательно, sys.DStructs.БЕЗАТРЫ *безАтры, ук *результат, убцел расположение) 
+цел СоздайКлючРегДопА(ПКлючРег ключ, ткст подключ, бцел резерв, ткст класс, ПРеестр опции, бцел желательно, sys.WinStructs.БЕЗАТРЫ *безАтры, ук *результат, убцел расположение) 
 	{
 	return cast(цел) RegCreateKeyExA(cast(HKEY) ключ, cast(LPCSTR) подключ,cast(DWORD) резерв, cast(LPSTR) класс, cast(DWORD) опции, cast(REGSAM) желательно, cast(SECURITY_ATTRIBUTES*) безАтры, cast(PHKEY) результат, cast(LPDWORD) расположение);
 	}	
@@ -760,14 +760,14 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(бул) GlobalUnWire(cast(HGLOBAL) пам);
 	}
 
-проц СтатусГлобПамяти(sys.DStructs.СТАТПАМ *буф)
+проц СтатусГлобПамяти(sys.WinStructs.СТАТПАМ *буф)
 	{
 	GlobalMemoryStatus(cast(LPMEMORYSTATUS) буф);
 	}
 	
 
 /+	
-проц СтатусГлобПамятиДоп(sys.DStructs.СТАТПАМДОП *буф)
+проц СтатусГлобПамятиДоп(sys.WinStructs.СТАТПАМДОП *буф)
 	{
 	GlobalMemoryStatus(cast(LPMEMORYSTATUSEX) буф);
 	}
@@ -843,7 +843,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(бул) VirtualProtect(cast(LPVOID) адр, cast(DWORD) разм, cast(DWORD) новЗащ,cast(PDWORD) старЗащ);
 	}
 
-бцел ОпросиВирт(ук адр, sys.DStructs.БАЗИОП *буф, бцел длина)
+бцел ОпросиВирт(ук адр, sys.WinStructs.БАЗИОП *буф, бцел длина)
 	{
 	return cast(бцел) VirtualQuery(cast(LPCVOID) адр, cast(PMEMORY_BASIC_INFORMATION) буф, cast(DWORD) длина);
 	}
@@ -863,7 +863,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(бул) VirtualProtectEx(cast(HANDLE) процесс, cast(LPVOID) адр, cast(DWORD) разм, cast(DWORD) новЗащ, cast(PDWORD) старЗащ);
 	}
 
-бцел ОпросиВиртДоп(ук процесс, ук адр, sys.DStructs.БАЗИОП *буф, бцел длина)
+бцел ОпросиВиртДоп(ук процесс, ук адр, sys.WinStructs.БАЗИОП *буф, бцел длина)
 	{
 	return cast(бцел) VirtualQueryEx(cast(HANDLE) процесс, cast(LPCVOID) адр, cast(PMEMORY_BASIC_INFORMATION) буф, cast(DWORD) длина);
 	}
@@ -918,42 +918,42 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 
 бул УстановиИнфОКуче(ук куча, бцел клинф, ук кинф, т_мера длкинф){return cast(бул) HeapSetInformation( cast(HANDLE) куча, клинф, cast(PVOID) кинф, длкинф);}
 
-проц ДайСистВремя(sys.DStructs.СИСТВРЕМЯ* систВрем)
+проц ДайСистВремя(sys.WinStructs.СИСТВРЕМЯ* систВрем)
 	{
 	GetSystemTime(cast(SYSTEMTIME*) систВрем);
 	}
 
-бул ДайФВремя(ук файл, sys.DStructs.ФВРЕМЯ *времяСоздания, sys.DStructs.ФВРЕМЯ *времяПоследнегоДоступа, sys.DStructs.ФВРЕМЯ *времяПоследнейЗаписи)
+бул ДайФВремя(ук файл, sys.WinStructs.ФВРЕМЯ *времяСоздания, sys.WinStructs.ФВРЕМЯ *времяПоследнегоДоступа, sys.WinStructs.ФВРЕМЯ *времяПоследнейЗаписи)
 	{
 	return cast(бул) GetFileTime(cast(HANDLE) файл, cast(FILETIME*) времяСоздания, cast(FILETIME*) времяПоследнегоДоступа, cast(FILETIME*) времяПоследнейЗаписи);
 	}
 
-проц ДайСистВремяКакФВремя(sys.DStructs.ФВРЕМЯ* сисВремКакФВрем)
+проц ДайСистВремяКакФВремя(sys.WinStructs.ФВРЕМЯ* сисВремКакФВрем)
 	{
 	GetSystemTimeAsFileTime(cast(FILETIME*)  сисВремКакФВрем);
 	}
 
-бул УстановиСистВремя(sys.DStructs.СИСТВРЕМЯ* систВрем)
+бул УстановиСистВремя(sys.WinStructs.СИСТВРЕМЯ* систВрем)
 	{
 	return cast(бул) SetSystemTime(cast(SYSTEMTIME*) систВрем);
 	}
 
-бул УстановиФВремя(ук файл, in sys.DStructs.ФВРЕМЯ *времяСоздания, in sys.DStructs.ФВРЕМЯ *времяПоследнДоступа, in sys.DStructs.ФВРЕМЯ *времяПоследнЗаписи)
+бул УстановиФВремя(ук файл, in sys.WinStructs.ФВРЕМЯ *времяСоздания, in sys.WinStructs.ФВРЕМЯ *времяПоследнДоступа, in sys.WinStructs.ФВРЕМЯ *времяПоследнЗаписи)
 	{
 	return cast(бул) SetFileTime(cast(HANDLE) файл, cast(FILETIME*) времяСоздания, cast(FILETIME*) времяПоследнДоступа, cast(FILETIME*) времяПоследнЗаписи);
 	}
 
-проц ДайМестнВремя(sys.DStructs.СИСТВРЕМЯ *систВремя)
+проц ДайМестнВремя(sys.WinStructs.СИСТВРЕМЯ *систВремя)
 	{
 	GetLocalTime(cast(SYSTEMTIME*) систВремя);
 	}
 	
-бул УстановиМестнВремя(sys.DStructs.СИСТВРЕМЯ *систВремя)
+бул УстановиМестнВремя(sys.WinStructs.СИСТВРЕМЯ *систВремя)
 	{
 	return cast(бул) SetLocalTime(cast(SYSTEMTIME*) систВремя);
 	}
 
-бул СистВремяВМестнВремяЧП(ИНФОЧП *инфОЧасПоясе, sys.DStructs.СИСТВРЕМЯ *мировВремя, sys.DStructs.СИСТВРЕМЯ *местнВремя)
+бул СистВремяВМестнВремяЧП(ИНФОЧП *инфОЧасПоясе, sys.WinStructs.СИСТВРЕМЯ *мировВремя, sys.WinStructs.СИСТВРЕМЯ *местнВремя)
 	{
 	return cast(бул) SystemTimeToTzSpecificLocalTime(cast(TIME_ZONE_INFORMATION*) инфОЧасПоясе, cast(SYSTEMTIME*) мировВремя, cast(SYSTEMTIME*) местнВремя);
 	}
@@ -968,32 +968,32 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(бул) SetTimeZoneInformation(cast(TIME_ZONE_INFORMATION*) инфОЧП);
 	}
 
-бул СистВремяВФВремя(in sys.DStructs.СИСТВРЕМЯ *систВрем, sys.DStructs.ФВРЕМЯ *фВрем)
+бул СистВремяВФВремя(in sys.WinStructs.СИСТВРЕМЯ *систВрем, sys.WinStructs.ФВРЕМЯ *фВрем)
 	{
 	return cast(бул) SystemTimeToFileTime(cast(SYSTEMTIME*) систВрем, cast(FILETIME*) фВрем);
 	}
 
-бул ФВремяВМестнФВремя(in sys.DStructs.ФВРЕМЯ *фВрем, sys.DStructs.ФВРЕМЯ *местнФВрем)
+бул ФВремяВМестнФВремя(in sys.WinStructs.ФВРЕМЯ *фВрем, sys.WinStructs.ФВРЕМЯ *местнФВрем)
 	{
 	return cast(бул) FileTimeToLocalFileTime(cast(FILETIME*) фВрем, cast(FILETIME*) местнФВрем);
 	}
 
-бул МестнФВремяВФВремя(in sys.DStructs.ФВРЕМЯ *локФВрем, sys.DStructs.ФВРЕМЯ *фВрем)
+бул МестнФВремяВФВремя(in sys.WinStructs.ФВРЕМЯ *локФВрем, sys.WinStructs.ФВРЕМЯ *фВрем)
 	{
 	return cast(бул) LocalFileTimeToFileTime(cast(FILETIME*) локФВрем, cast(FILETIME*) фВрем);
 	}
 
-бул ФВремяВСистВремя(in sys.DStructs.ФВРЕМЯ *фВрем, sys.DStructs.СИСТВРЕМЯ *систВрем)
+бул ФВремяВСистВремя(in sys.WinStructs.ФВРЕМЯ *фВрем, sys.WinStructs.СИСТВРЕМЯ *систВрем)
 	{
 	return cast(бул) FileTimeToSystemTime(cast(FILETIME*) фВрем, cast(SYSTEMTIME*) систВрем);
 	}
 
-бул ФВремяВДатВремяДОС(in sys.DStructs.ФВРЕМЯ *фвр, убкрат фатДата, убкрат фатВремя)
+бул ФВремяВДатВремяДОС(in sys.WinStructs.ФВРЕМЯ *фвр, убкрат фатДата, убкрат фатВремя)
 	{
 	return cast(бул) FileTimeToDosDateTime(cast(FILETIME*) фвр, cast(WORD*) фатДата, cast(WORD*) фатВремя);
 	}
 
-бул ДатВремяДОСВФВремя(бкрат фатДата,  бкрат фатВремя, sys.DStructs.ФВРЕМЯ *фвр)
+бул ДатВремяДОСВФВремя(бкрат фатДата,  бкрат фатВремя, sys.WinStructs.ФВРЕМЯ *фвр)
 	{
 	return cast(бул) DosDateTimeToFileTime(cast(WORD) фатДата, cast(WORD) фатВремя, cast(FILETIME*) фвр);
 	}
@@ -1029,7 +1029,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(ук) GetCurrentThread();
 	}
 
-бул ДайВременаПроцесса(ук процесс, sys.DStructs.ФВРЕМЯ *времяСозд, sys.DStructs.ФВРЕМЯ *времяВыхода, sys.DStructs.ФВРЕМЯ *времяЯдра, sys.DStructs.ФВРЕМЯ *времяПользователя)
+бул ДайВременаПроцесса(ук процесс, sys.WinStructs.ФВРЕМЯ *времяСозд, sys.WinStructs.ФВРЕМЯ *времяВыхода, sys.WinStructs.ФВРЕМЯ *времяЯдра, sys.WinStructs.ФВРЕМЯ *времяПользователя)
 	{
 	return cast(бул) GetProcessTimes(cast(HANDLE) процесс, cast(FILETIME*) времяСозд, cast(FILETIME*) времяВыхода, cast(FILETIME*) времяЯдра, cast(FILETIME*) времяПользователя);
 	}
@@ -1071,7 +1071,7 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(бул) GetThreadPriorityBoost(cast(HANDLE) нить, cast(Бул*) отклПовышениеПриоритета);
 	}
 
-бул ДайВременаНити(ук нить, sys.DStructs.ФВРЕМЯ *времяСозд, sys.DStructs.ФВРЕМЯ *времяВыхода, sys.DStructs.ФВРЕМЯ *времяЯдра, sys.DStructs.ФВРЕМЯ *времяПользователя)
+бул ДайВременаНити(ук нить, sys.WinStructs.ФВРЕМЯ *времяСозд, sys.WinStructs.ФВРЕМЯ *времяВыхода, sys.WinStructs.ФВРЕМЯ *времяЯдра, sys.WinStructs.ФВРЕМЯ *времяПользователя)
 	{
 	return cast(бул) GetThreadTimes(cast(HANDLE) нить, cast(FILETIME*) времяСозд, cast(FILETIME*) времяВыхода, cast(FILETIME*) времяЯдра, cast(FILETIME*) времяПользователя);
 	}
@@ -1081,12 +1081,12 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(цел) GetThreadPriority(cast(HANDLE) нить);
 	}
 
-бул ДайКонтекстНити(ук нить, sys.DStructs.КОНТЕКСТ *контекст)
+бул ДайКонтекстНити(ук нить, sys.WinStructs.КОНТЕКСТ *контекст)
 	{
 	return cast(бул) GetThreadContext(cast(HANDLE) нить, cast(CONTEXT*) контекст);
 	}
 
-бул УстановиКонтекстНити(ук нить, sys.DStructs.КОНТЕКСТ *контекст)
+бул УстановиКонтекстНити(ук нить, sys.WinStructs.КОНТЕКСТ *контекст)
 	{
 	return cast(бул) SetThreadContext(cast(HANDLE) нить, cast(CONTEXT*) контекст);
 	}
@@ -1141,22 +1141,22 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 	return cast(ук) InterlockedCompareExchange(cast(PVOID *) цель, cast(PVOID) обмен, cast(PVOID) сравниваемое);
 	}
 
-проц ИнициализуйКритическуюСекцию(sys.DStructs.КРИТСЕКЦ *критСекц)
+проц ИнициализуйКритическуюСекцию(sys.WinStructs.КРИТСЕКЦ *критСекц)
 	{
 	InitializeCriticalSection(cast(CRITICAL_SECTION *) критСекц);
 	}
 
-проц ВойдиВКритическуюСекцию(sys.DStructs.КРИТСЕКЦ *критСекц)
+проц ВойдиВКритическуюСекцию(sys.WinStructs.КРИТСЕКЦ *критСекц)
 	{
 	EnterCriticalSection(cast(CRITICAL_SECTION *) критСекц);
 	}
 
-бул ПробуйВойтиВКритическуюСекцию(sys.DStructs.КРИТСЕКЦ *критСекц)
+бул ПробуйВойтиВКритическуюСекцию(sys.WinStructs.КРИТСЕКЦ *критСекц)
 	{
 	return cast(бул) TryEnterCriticalSection(cast(CRITICAL_SECTION *) критСекц);
 	}
 
-проц ПокиньКритическуюСекцию(sys.DStructs.КРИТСЕКЦ *критСекц)
+проц ПокиньКритическуюСекцию(sys.WinStructs.КРИТСЕКЦ *критСекц)
 	{
 	LeaveCriticalSection(cast(CRITICAL_SECTION *) критСекц);
 	}
@@ -1264,12 +1264,12 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		return  ioctlsocket(cast(SOCKET) с, кмд, аргук);
 		}
 		
-	цел свяжисок(СОКЕТ с, sys.DStructs.адрессок* имя, цел длинаим)
+	цел свяжисок(СОКЕТ с, sys.WinStructs.адрессок* имя, цел длинаим)
 		{
 		return  bind(cast(SOCKET) с, cast(sockaddr*) имя, длинаим);
 		}
 		
-	цел подключи(СОКЕТ с, sys.DStructs.адрессок* имя, цел длинаим)
+	цел подключи(СОКЕТ с, sys.WinStructs.адрессок* имя, цел длинаим)
 		{
 		return  connect(cast(SOCKET) с, cast(sockaddr*) имя, длинаим);
 		}
@@ -1279,7 +1279,7 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		return  listen(cast(SOCKET) с, бэклог);
 		}
 		
-	СОКЕТ пусти(СОКЕТ с, sys.DStructs.адрессок* адр,  цел * длинадр)
+	СОКЕТ пусти(СОКЕТ с, sys.WinStructs.адрессок* адр,  цел * длинадр)
 		{
 		return cast(СОКЕТ) accept(cast(SOCKET) с, cast(sockaddr*) адр, cast(int*) длинадр);
 		}
@@ -1289,12 +1289,12 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 	цел экстрзак(СОКЕТ с, ПЭкстрЗакрытиеСокета как){return  shutdown(cast(SOCKET) с, cast(цел) как);}
 	
 	
-	цел дайимяпира(СОКЕТ с, sys.DStructs.адрессок* имя,  цел * длинаим)
+	цел дайимяпира(СОКЕТ с, sys.WinStructs.адрессок* имя,  цел * длинаим)
 		{
 		return  getpeername(cast(SOCKET) с, cast(sockaddr*) имя, cast(int*) длинаим);
 		}
 		
-	цел дайимясок(СОКЕТ с, sys.DStructs.адрессок* адр,  цел * длинаим)
+	цел дайимясок(СОКЕТ с, sys.WinStructs.адрессок* адр,  цел * длинаим)
 		{
 		return  getsockname(cast(SOCKET) с, cast(sockaddr*) адр, cast(int*) длинаим);
 		}
@@ -1304,7 +1304,7 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		return  send(cast(SOCKET) с, буф, длин, cast(int) флаги);
 		}
 		
-	цел шли_на(СОКЕТ с, ук буф, цел длин, ПФлагиСокета флаги, sys.DStructs.адрессок* кому, цел длинаприём)
+	цел шли_на(СОКЕТ с, ук буф, цел длин, ПФлагиСокета флаги, sys.WinStructs.адрессок* кому, цел длинаприём)
 		{
 		return sendto(cast(SOCKET) с, буф, длин, cast(цел) флаги, cast(sockaddr*) кому, длинаприём);
 		}
@@ -1314,7 +1314,7 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		return recv(cast(SOCKET) с, буф, длин, cast(цел) флаги);
 		}
 		
-	цел прими_от(СОКЕТ с, ук буф, цел длин, ПФлагиСокета флаги, sys.DStructs.адрессок* от_кого,  цел * длинаистока)
+	цел прими_от(СОКЕТ с, ук буф, цел длин, ПФлагиСокета флаги, sys.WinStructs.адрессок* от_кого,  цел * длинаистока)
 		{
 		return  recvfrom(cast(SOCKET) с, буф, длин, cast(цел) флаги, cast(sockaddr*) от_кого, cast(int*) длинаистока);
 		}
@@ -1331,45 +1331,45 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		
 	бцел адр_инет(ткст т){return  inet_addr(cast(char*) т);}
 	
-	цел выбери(цел нуд, sys.DStructs.набор_уд* читнуд, sys.DStructs.набор_уд* запнуд, sys.DStructs.набор_уд* ошнуд, sys.DStructs.значврем* таймаут)
+	цел выбери(цел нуд, sys.WinStructs.набор_уд* читнуд, sys.WinStructs.набор_уд* запнуд, sys.WinStructs.набор_уд* ошнуд, sys.WinStructs.значврем* таймаут)
 		{
 		return select(нуд, cast(fd_set*) читнуд, cast(fd_set*) запнуд, cast(fd_set*) ошнуд, cast(timeval*) таймаут);
 		}
 		
-	ткст инетс8а(sys.DStructs.адрес_ин иа){return std.string.toString(inet_ntoa(cast(in_addr) иа));}
+	ткст инетс8а(sys.WinStructs.адрес_ин иа){return std.string.toString(inet_ntoa(cast(in_addr) иа));}
 	
-	sys.DStructs.хостзап* дайхостпоимени(ткст имя){return cast(sys.DStructs.хостзап*) gethostbyname(cast(char*) имя);}
+	sys.WinStructs.хостзап* дайхостпоимени(ткст имя){return cast(sys.WinStructs.хостзап*) gethostbyname(cast(char*) имя);}
 	
-	sys.DStructs.хостзап* дайхостпоадресу(ук адр, цел длин, цел тип)
+	sys.WinStructs.хостзап* дайхостпоадресу(ук адр, цел длин, цел тип)
 		{
-		return cast(sys.DStructs.хостзап*) gethostbyaddr(адр, длин, cast(цел) тип);
+		return cast(sys.WinStructs.хостзап*) gethostbyaddr(адр, длин, cast(цел) тип);
 		}
 		
-	sys.DStructs.протзап* дайпротпоимени(ткст имя){return cast(sys.DStructs.протзап*) getprotobyname(cast(char*) имя);}
+	sys.WinStructs.протзап* дайпротпоимени(ткст имя){return cast(sys.WinStructs.протзап*) getprotobyname(cast(char*) имя);}
 	
-	sys.DStructs.протзап* дайпротпономеру(цел номер){return cast(sys.DStructs.протзап*) getprotobynumber(cast(int) номер);}
+	sys.WinStructs.протзап* дайпротпономеру(цел номер){return cast(sys.WinStructs.протзап*) getprotobynumber(cast(int) номер);}
 	
 	
-	sys.DStructs.служзап* дайслужбупоимени(ткст имя, ткст протокол)
+	sys.WinStructs.служзап* дайслужбупоимени(ткст имя, ткст протокол)
 		{
-		return cast(sys.DStructs.служзап*) getservbyname(cast(char*) имя, cast(char*) протокол);
+		return cast(sys.WinStructs.служзап*) getservbyname(cast(char*) имя, cast(char*) протокол);
 		}
 		
-	sys.DStructs.служзап* дайслужбупопорту(цел порт, ткст протокол)
+	sys.WinStructs.служзап* дайслужбупопорту(цел порт, ткст протокол)
 		{
-		return cast(sys.DStructs.служзап*) getservbyport(порт, cast(char*) протокол);
+		return cast(sys.WinStructs.служзап*) getservbyport(порт, cast(char*) протокол);
 		}
 		
 	цел дайимяхоста(ткст имя, цел длинаим){return  gethostname(cast(char*) имя, длинаим);}
 	
-	цел дайадринфо(ткст имяузла, ткст имяслуж, sys.DStructs.адринфо* хинты, sys.DStructs.адринфо** рез)
+	цел дайадринфо(ткст имяузла, ткст имяслуж, sys.WinStructs.адринфо* хинты, sys.WinStructs.адринфо** рез)
 		{
 		return  getaddrinfo(cast(char*) имяузла, cast(char*) имяслуж, cast(addrinfo*) хинты, cast(addrinfo**) рез);
 		}
 		
-	проц высвободиадринфо(sys.DStructs.адринфо* аи){freeaddrinfo(cast(addrinfo*) аи);}
+	проц высвободиадринфо(sys.WinStructs.адринфо* аи){freeaddrinfo(cast(addrinfo*) аи);}
 	
-	цел дайинфобимени(sys.DStructs.адрессок* ас, т_длинсок длинсок, ткст хост, бцел длинхост, ткст серв, бцел длинсерв, ПИмИнфо флаги)
+	цел дайинфобимени(sys.WinStructs.адрессок* ас, т_длинсок длинсок, ткст хост, бцел длинхост, ткст серв, бцел длинсерв, ПИмИнфо флаги)
 		{
 		return  getnameinfo(cast(sockaddr*) ас, длинсок, cast(char*) хост, cast(DWORD) длинхост, cast(char*) серв, cast(DWORD) длинсерв, cast(int) флаги);
 		}
@@ -1413,7 +1413,7 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 	
 	бцел ВерсияПостройкиКо()	{	return cast(бцел) CoBuildVersion();	}
 	
-	цел ТкстИзГУИД2(sys.DStructs.ГУИД *удгуид, шткст уш, цел кбМакс)
+	цел ТкстИзГУИД2(sys.WinStructs.ГУИД *удгуид, шткст уш, цел кбМакс)
 	{
 	return cast(цел) StringFromGUID2(cast(GUID*) удгуид, cast(LPOLESTR) уш, cast(цел) кбМакс);
 	}
@@ -1426,28 +1426,28 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 
 //import sys.win32..objbase;
 	
-	цел СоздайГуидКо(out sys.DStructs.ГУИД уГуид)
+	цел СоздайГуидКо(out sys.WinStructs.ГУИД уГуид)
 	{
 	return cast(цел) CoCreateGuid( уГуид);
 	}
 	
-	цел ПрогИДИзКЛСИД(sys.DStructs.ГУИД клсид, out шим* прогИд){return  ProgIDFromCLSID( клсид, прогИд );}
+	цел ПрогИДИзКЛСИД(sys.WinStructs.ГУИД клсид, out шим* прогИд){return  ProgIDFromCLSID( клсид, прогИд );}
 	
-    цел КЛСИДИзПрогИД(in шим* прогИд, out sys.DStructs.ГУИД клсид){return  CLSIDFromProgID(прогИд, клсид);}
+    цел КЛСИДИзПрогИД(in шим* прогИд, out sys.WinStructs.ГУИД клсид){return  CLSIDFromProgID(прогИд, клсид);}
 	
-    цел КЛСИДИзПрогИДДоп(in шим* прогИд, out sys.DStructs.ГУИД клсид){return CLSIDFromProgIDEx(прогИд, клсид);}
+    цел КЛСИДИзПрогИДДоп(in шим* прогИд, out sys.WinStructs.ГУИД клсид){return CLSIDFromProgIDEx(прогИд, клсид);}
 	
-	цел СоздайЭкземплярКо(sys.DStructs.ГУИД рклсид, sys.DIfaces.Инкогнито анонВнешн, бцел контекстКл, sys.DStructs.ГУИД риид, ук* ув)
+	цел СоздайЭкземплярКо(sys.WinStructs.ГУИД рклсид, sys.WinIfaces.Инкогнито анонВнешн, бцел контекстКл, sys.WinStructs.ГУИД риид, ук* ув)
 		{
 		return cast(цел) CoCreateInstance(рклсид, анонВнешн,  контекстКл,  риид,  ув);
 		}
 
-	цел ДайОбъектКлассаКо(sys.DStructs.ГУИД рклсид, бцел контекстКл, ук резерв, sys.DStructs.ГУИД риид, ук* ув)
+	цел ДайОбъектКлассаКо(sys.WinStructs.ГУИД рклсид, бцел контекстКл, ук резерв, sys.WinStructs.ГУИД риид, ук* ув)
 		{
 		return cast(цел) CoGetClassObject( рклсид, контекстКл, резерв,  риид, ув);
 		}
 
-	цел СоздайЭкземплярКоДоп(ref sys.DStructs.ГУИД рклсид, sys.DIfaces.Инкогнито анонВнешн, бцел контекстКл, sys.DStructs.КОСЕРВЕРИНФО* сервИнф, бцел счёт, sys.DStructs.МУЛЬТИ_ОИ* результы)
+	цел СоздайЭкземплярКоДоп(ref sys.WinStructs.ГУИД рклсид, sys.WinIfaces.Инкогнито анонВнешн, бцел контекстКл, sys.WinStructs.КОСЕРВЕРИНФО* сервИнф, бцел счёт, sys.WinStructs.МУЛЬТИ_ОИ* результы)
 		{
 		return cast(цел) CoCreateInstanceEx( рклсид, анонВнешн, контекстКл,  сервИнф, счёт,  результы);
 		}	
@@ -1456,358 +1456,358 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
     ук ПереместиПамЗадачиКо(ук вв, т_мера разм){return  CoTaskMemRealloc(вв, разм);}
     проц ОсвободиПамЗадачиКо(ук в){CoTaskMemFree(в);}
 
-	цел РегистрируйАктивныйОбъект(sys.DIfaces.Инкогнито инк, ref sys.DStructs.ГУИД клсид, бцел флаги, out бцел рег)
+	цел РегистрируйАктивныйОбъект(sys.WinIfaces.Инкогнито инк, ref sys.WinStructs.ГУИД клсид, бцел флаги, out бцел рег)
 		{
 		return  RegisterActiveObject(инк,  клсид, флаги, рег);
 		}
 		
 	цел РевоцируйАктивныйОбъект(бцел рег, ук резерв){return  RevokeActiveObject(рег, резерв);}
 	
-	цел ДайАктивныйОбъект(ref sys.DStructs.ГУИД клсид, ук резерв, out sys.DIfaces.Инкогнито инк)
+	цел ДайАктивныйОбъект(ref sys.WinStructs.ГУИД клсид, ук резерв, out sys.WinIfaces.Инкогнито инк)
 		{
 		return  GetActiveObject( клсид, резерв, инк);
 		}
 		
-цел РазместиДескрипторБезопмаса(бцел члоИзм, out sys.DStructs.БЕЗОПМАС* укнаВыв)
+цел РазместиДескрипторБезопмаса(бцел члоИзм, out sys.WinStructs.БЕЗОПМАС* укнаВыв)
 	{
 	return cast(цел) SafeArrayAllocDescriptor(члоИзм,  укнаВыв);
 	}
 
-цел РазместиДескрипторБезопмасаДоп(бкрат вт, бцел члоИзм, out sys.DStructs.БЕЗОПМАС* укнаВыв)
+цел РазместиДескрипторБезопмасаДоп(бкрат вт, бцел члоИзм, out sys.WinStructs.БЕЗОПМАС* укнаВыв)
 	{
 	return cast(цел) SafeArrayAllocDescriptorEx( вт,  члоИзм, укнаВыв);
 	}
 
-цел РазместиДанныеБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+цел РазместиДанныеБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayAllocData( бм);
 	}
 
-sys.DStructs.БЕЗОПМАС* СоздайБезопмас(бкрат вт, бцел члоИзм, sys.DStructs.ГРАНБЕЗОПМАСА* бмГран)
+sys.WinStructs.БЕЗОПМАС* СоздайБезопмас(бкрат вт, бцел члоИзм, sys.WinStructs.ГРАНБЕЗОПМАСА* бмГран)
 	{
-	return cast(sys.DStructs.БЕЗОПМАС*) SafeArrayCreate( вт, члоИзм,  бмГран);
+	return cast(sys.WinStructs.БЕЗОПМАС*) SafeArrayCreate( вт, члоИзм,  бмГран);
 	}
 	
-sys.DStructs.БЕЗОПМАС* СоздайБезопмасДоп(бкрат вт, бцел члоИзм, sys.DStructs.ГРАНБЕЗОПМАСА* бмГран, ук вЭкстра)
+sys.WinStructs.БЕЗОПМАС* СоздайБезопмасДоп(бкрат вт, бцел члоИзм, sys.WinStructs.ГРАНБЕЗОПМАСА* бмГран, ук вЭкстра)
 	{
-	return cast(sys.DStructs.БЕЗОПМАС*) SafeArrayCreateEx( вт,  члоИзм,  бмГран, вЭкстра);
+	return cast(sys.WinStructs.БЕЗОПМАС*) SafeArrayCreateEx( вт,  члоИзм,  бмГран, вЭкстра);
 	}
 	
-цел КопируйДанныеБезопмаса(sys.DStructs.БЕЗОПМАС* бмИсх, sys.DStructs.БЕЗОПМАС* бмПрий)
+цел КопируйДанныеБезопмаса(sys.WinStructs.БЕЗОПМАС* бмИсх, sys.WinStructs.БЕЗОПМАС* бмПрий)
 	{
 	return cast(цел) SafeArrayCopyData( бмИсх,  бмПрий);
 	}
 
-цел УничтожьДескрипторБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+цел УничтожьДескрипторБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayDestroyDescriptor( бм);
 	}
 
-цел УничтожьДанныеБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+цел УничтожьДанныеБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayDestroyData(бм);
 	}
 
-цел УничтожьБезопмас(sys.DStructs.БЕЗОПМАС* бм)
+цел УничтожьБезопмас(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayDestroy( бм);
 	}
 
-цел ИзмениГраницуБезопмаса(sys.DStructs.БЕЗОПМАС* бм, sys.DStructs.ГРАНБЕЗОПМАСА* бмНовГран)
+цел ИзмениГраницуБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, sys.WinStructs.ГРАНБЕЗОПМАСА* бмНовГран)
 	{
 	return cast(цел) SafeArrayRedim( бм, бмНовГран);
 	}
 
-бцел ДайЧлоИзмеренийБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+бцел ДайЧлоИзмеренийБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(бцел) SafeArrayGetDim( бм);
 	}
 
-бцел ДайРазмерЭлементовБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+бцел ДайРазмерЭлементовБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(бцел) SafeArrayGetElemsize( бм);
 	}
 
-цел ДайВПределБезопмаса(sys.DStructs.БЕЗОПМАС* бм, бцел члоИзм, out цел вПредел)
+цел ДайВПределБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, бцел члоИзм, out цел вПредел)
 	{
 	return cast(цел) SafeArrayGetUBound( бм, cast(бцел) члоИзм,  вПредел);
 	}
 
-цел ДайНПределБезопмаса(sys.DStructs.БЕЗОПМАС* бм, бцел члоИзм, out цел нПредел)
+цел ДайНПределБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, бцел члоИзм, out цел нПредел)
 	{
 	return cast(цел) SafeArrayGetLBound( бм, члоИзм, нПредел);
 	}
 
-цел БлокируйБезопмас(sys.DStructs.БЕЗОПМАС* бм)
+цел БлокируйБезопмас(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayLock(бм);
 	}
 
-цел РазблокируйБезопмас(sys.DStructs.БЕЗОПМАС* бм)
+цел РазблокируйБезопмас(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayUnlock( бм);
 	}
 
-цел ДоступКДаннымБезопмаса(sys.DStructs.БЕЗОПМАС* бм, ук* данные)
+цел ДоступКДаннымБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, ук* данные)
 	{
 	return cast(цел) SafeArrayAccessData( бм, данные);
 	}
 
-цел ОтступОтДаныхБезопмаса(sys.DStructs.БЕЗОПМАС* бм)
+цел ОтступОтДаныхБезопмаса(sys.WinStructs.БЕЗОПМАС* бм)
 	{
 	return cast(цел) SafeArrayUnaccessData( бм);
 	}
 
-цел ДайЭлементБезопмаса(sys.DStructs.БЕЗОПМАС* бм,  цел * индексы, ук в)
+цел ДайЭлементБезопмаса(sys.WinStructs.БЕЗОПМАС* бм,  цел * индексы, ук в)
 	{
 	return cast(цел) SafeArrayGetElement( бм,  cast(цел*) индексы,  в);
 	}
 	
-цел ПоместиЭлементВБезопмас(sys.DStructs.БЕЗОПМАС* бм,  цел * индексы, ук в)
+цел ПоместиЭлементВБезопмас(sys.WinStructs.БЕЗОПМАС* бм,  цел * индексы, ук в)
 	{
 	return cast(цел) SafeArrayPutElement( бм,  cast(цел*) индексы,  в);
 	}
 
-цел КопируйБезопмас(sys.DStructs.БЕЗОПМАС* бм, out sys.DStructs.БЕЗОПМАС* бмВыв)
+цел КопируйБезопмас(sys.WinStructs.БЕЗОПМАС* бм, out sys.WinStructs.БЕЗОПМАС* бмВыв)
 	{
 	return cast(цел) SafeArrayCopy( бм, бмВыв);
 	}
 
-цел УкНаИндексБезопмаса(sys.DStructs.БЕЗОПМАС* бм,  цел * индексы, ук* данные)
+цел УкНаИндексБезопмаса(sys.WinStructs.БЕЗОПМАС* бм,  цел * индексы, ук* данные)
 	{
 	return cast(цел) SafeArrayPtrOfIndex( бм,  cast(цел*) индексы, данные);
 	}
 
-цел УстИнфОЗаписиБезопмаса(sys.DStructs.БЕЗОПМАС* бм, sys.DIfaces.ИИнфОЗаписи инфоз)
+цел УстИнфОЗаписиБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, sys.WinIfaces.ИИнфОЗаписи инфоз)
 	{
 	return cast(цел) SafeArraySetRecordInfo( бм,  инфоз);
 	}
 
-цел ДайИнфОЗаписиБезопмаса(sys.DStructs.БЕЗОПМАС* бм, out sys.DIfaces.ИИнфОЗаписи инфоз)
+цел ДайИнфОЗаписиБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, out sys.WinIfaces.ИИнфОЗаписи инфоз)
 	{
 	return cast(цел) SafeArrayGetRecordInfo( бм,  инфоз);
 	}
 
-цел УстановиИИДБезопмаса(sys.DStructs.БЕЗОПМАС* бм, ref sys.DStructs.ГУИД гуид)
+цел УстановиИИДБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, ref sys.WinStructs.ГУИД гуид)
 	{
 	return cast(цел) SafeArraySetIID( бм,  гуид);
 	}
 
-цел ДайИИДБезопмаса(sys.DStructs.БЕЗОПМАС* бм, out sys.DStructs.ГУИД гуид)
+цел ДайИИДБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, out sys.WinStructs.ГУИД гуид)
 	{
 	return cast(цел) SafeArrayGetIID( бм, гуид);
 	}
 
-цел ДайВартипБезопмаса(sys.DStructs.БЕЗОПМАС* бм, бкрат вт)
+цел ДайВартипБезопмаса(sys.WinStructs.БЕЗОПМАС* бм, бкрат вт)
 	{
 	return cast(цел) SafeArrayGetVartype( бм,  вт);
 	}
 
-sys.DStructs.БЕЗОПМАС* СоздайВекторБезопмаса(бкрат вт, цел нПредел, бцел элементы)
+sys.WinStructs.БЕЗОПМАС* СоздайВекторБезопмаса(бкрат вт, цел нПредел, бцел элементы)
 	{
-	return cast(sys.DStructs.БЕЗОПМАС*) SafeArrayCreateVector( вт,  нПредел, элементы);
+	return cast(sys.WinStructs.БЕЗОПМАС*) SafeArrayCreateVector( вт,  нПредел, элементы);
 	}
 
-sys.DStructs.БЕЗОПМАС* СоздайВекторБезопмасаДоп(бкрат вт, цел нПредел, бцел элементы, ук экстра)
+sys.WinStructs.БЕЗОПМАС* СоздайВекторБезопмасаДоп(бкрат вт, цел нПредел, бцел элементы, ук экстра)
 	{
-	return cast(sys.DStructs.БЕЗОПМАС*) SafeArrayCreateVectorEx( вт, нПредел,  элементы,  экстра);
+	return cast(sys.WinStructs.БЕЗОПМАС*) SafeArrayCreateVectorEx( вт, нПредел,  элементы,  экстра);
 	}
 ///////////////////////////////
 
-цел ДесВарИзБцел(бцел бцВхо, out sys.DStructs.ДЕСЯТОК десВых)
+цел ДесВарИзБцел(бцел бцВхо, out sys.WinStructs.ДЕСЯТОК десВых)
 	{
 	return cast(цел) VarDecFromUI4(бцВхо, десВых);
 	}
 
-цел ДесВарИзЦел(цел цВхо, out sys.DStructs.ДЕСЯТОК десВых)
+цел ДесВарИзЦел(цел цВхо, out sys.WinStructs.ДЕСЯТОК десВых)
 	{
 	return cast(цел) VarDecFromI4(цВхо, десВых);
 	}
 
-цел ДесВарИзБдол(бдол бдВхо, out sys.DStructs.ДЕСЯТОК десВых)
+цел ДесВарИзБдол(бдол бдВхо, out sys.WinStructs.ДЕСЯТОК десВых)
 	{
 		return cast(цел) VarDecFromUI8(бдВхо, десВых);
 	}
 
-цел ДесВарИзДол(дол дВхо, out sys.DStructs.ДЕСЯТОК десВых)
+цел ДесВарИзДол(дол дВхо, out sys.WinStructs.ДЕСЯТОК десВых)
 	{
 		return cast(цел) VarDecFromI8(дВхо,  десВых);
 	}
 	
 
-цел ДесВарИзПлав(плав вх, out sys.DStructs.ДЕСЯТОК дес)
+цел ДесВарИзПлав(плав вх, out sys.WinStructs.ДЕСЯТОК дес)
 	{	
 		return VarDecFromR4(вх,  дес);
 	}
 		
-цел ДесВарИзДво(дво вх, out sys.DStructs.ДЕСЯТОК дес)
+цел ДесВарИзДво(дво вх, out sys.WinStructs.ДЕСЯТОК дес)
 	{
 		return VarDecFromR8(вх,  дес);
 	}
 
-цел ДесВарИзТкстш0(in шим* ткс, бцел лкид, бцел флаги, out sys.DStructs.ДЕСЯТОК дес)
+цел ДесВарИзТкстш0(in шим* ткс, бцел лкид, бцел флаги, out sys.WinStructs.ДЕСЯТОК дес)
 	{
 	return VarDecFromStr(ткс, лкид, cast(бцел) флаги,  дес);
 	}
 /*
-цел БткстВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, бцел лкид, бцел флаги, out шим* стр)
+цел БткстВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, бцел лкид, бцел флаги, out шим* стр)
 	{
 	return VarBstrFromDec( дес,лкид, cast(бцел) флаги, стр);
 	}
 */	
-цел БткстВарИзДес(ref sys.DStructs.ДЕСЯТОК *дес, бцел лкид, бцел флаги, out шим* стр)
+цел БткстВарИзДес(ref sys.WinStructs.ДЕСЯТОК *дес, бцел лкид, бцел флаги, out шим* стр)
 	{
 	return VarBstrFromDec( дес, лкид, cast(бцел) флаги, стр);
 	}
 	
-цел БцелВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out бцел ц)
+цел БцелВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out бцел ц)
 	{
 	return VarUI4FromDec( дес, ц);
 	}
 	
-цел ЦелВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out цел зн )
+цел ЦелВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out цел зн )
 	{
 	return VarI4FromDec( дес, зн);
 	}
 	
-цел БдолВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out бдол зн)
+цел БдолВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out бдол зн)
 	{
 	return VarUI8FromDec( дес, зн);
 	}
 	
-цел ДолВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out дол зн)
+цел ДолВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out дол зн)
 	{	
 	return VarI8FromDec( дес, зн);
 	}
 	
-цел ПлавВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out плав зн)
+цел ПлавВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out плав зн)
 	{
 	return VarR4FromDec( дес, зн);
 	}
 /*	
-цел ДвоВарИзДес(ref sys.DStructs.ДЕСЯТОК дес, out дво зн)
+цел ДвоВарИзДес(ref sys.WinStructs.ДЕСЯТОК дес, out дво зн)
 	{
 	return VarR8FromDec( дес, зн);
 	}
 */	
-цел ДвоВарИзДес(sys.DStructs.ДЕСЯТОК *дес, out дво зн)
+цел ДвоВарИзДес(sys.WinStructs.ДЕСЯТОК *дес, out дво зн)
 	{
 	return VarR8FromDec( дес, зн);
 	}
 
-	цел ДесВарСложи(ref sys.DStructs.ДЕСЯТОК дес1, ref sys.DStructs.ДЕСЯТОК дес2, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарСложи(ref sys.WinStructs.ДЕСЯТОК дес1, ref sys.WinStructs.ДЕСЯТОК дес2, out sys.WinStructs.ДЕСЯТОК рез)
 		{
 		return VarDecAdd( дес1,  дес2,  рез);
 		}
 		
-	цел ДесВарОтними(ref sys.DStructs.ДЕСЯТОК дес1, ref sys.DStructs.ДЕСЯТОК дес2, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарОтними(ref sys.WinStructs.ДЕСЯТОК дес1, ref sys.WinStructs.ДЕСЯТОК дес2, out sys.WinStructs.ДЕСЯТОК рез)
 		{
 		return VarDecSub( дес1,  дес2,  рез);
 		}
 		
-	цел ДесВарУмножь(ref sys.DStructs.ДЕСЯТОК дес1, ref sys.DStructs.ДЕСЯТОК дес2, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарУмножь(ref sys.WinStructs.ДЕСЯТОК дес1, ref sys.WinStructs.ДЕСЯТОК дес2, out sys.WinStructs.ДЕСЯТОК рез)
 		{
 		return VarDecMul( дес1,  дес2,  рез);
 		}
 		
-	цел ДесВарДели(ref sys.DStructs.ДЕСЯТОК дес1, ref sys.DStructs.ДЕСЯТОК дес2, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарДели(ref sys.WinStructs.ДЕСЯТОК дес1, ref sys.WinStructs.ДЕСЯТОК дес2, out sys.WinStructs.ДЕСЯТОК рез)
 		{
 		return VarDecDiv( дес1,  дес2,  рез);
 		}
 		
-	цел ДесВарОкругли(ref sys.DStructs.ДЕСЯТОК дес1, цел дес, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарОкругли(ref sys.WinStructs.ДЕСЯТОК дес1, цел дес, out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecRound( дес1, дес,  рез);
 	}
 	
-	цел ДесВарАбс(ref sys.DStructs.ДЕСЯТОК дес1,  out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарАбс(ref sys.WinStructs.ДЕСЯТОК дес1,  out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecAbs( дес1,  рез);
 	}
 	
-	цел  ДесВарФиксируй(ref sys.DStructs.ДЕСЯТОК дес1,  out sys.DStructs.ДЕСЯТОК рез)
+	цел  ДесВарФиксируй(ref sys.WinStructs.ДЕСЯТОК дес1,  out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecFix( дес1,  рез);
 	}
 	
-	цел ДесВарИнт(ref sys.DStructs.ДЕСЯТОК дес1,  out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарИнт(ref sys.WinStructs.ДЕСЯТОК дес1,  out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecInt( дес1,  рез);
 	}
 	/*
-	цел  ДесВарОтриц(ref sys.DStructs.ДЕСЯТОК дес1, out sys.DStructs.ДЕСЯТОК рез)
+	цел  ДесВарОтриц(ref sys.WinStructs.ДЕСЯТОК дес1, out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecNeg( дес1,  рез);
 	}
 	*/
-	цел  ДесВарОтриц(sys.DStructs.ДЕСЯТОК *дес1, out sys.DStructs.ДЕСЯТОК рез)
+	цел  ДесВарОтриц(sys.WinStructs.ДЕСЯТОК *дес1, out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecNeg( дес1,  рез);
 	}
 	
-	цел ДесВарСравни(ref sys.DStructs.ДЕСЯТОК дес1, out sys.DStructs.ДЕСЯТОК рез)
+	цел ДесВарСравни(ref sys.WinStructs.ДЕСЯТОК дес1, out sys.WinStructs.ДЕСЯТОК рез)
 	{
 	return VarDecCmp( дес1,  рез);
 	}
 /*
    
-цел VarFormat(ref sys.DStructs.ВАРИАНТ pvarIn, in шим* pstrFormat, цел iFirstDay, цел iFirstWeek, бцел dwFlags, out шим* pbstrOut);
-цел VarFormatFromTokens(ref sys.DStructs.ВАРИАНТ pvarIn, in шим* pstrFormat, byte* pbTokCur, бцел dwFlags, out шим* pbstrOut, бцел лкид);
-цел VarFormatNumber(ref sys.DStructs.ВАРИАНТ pvarIn, цел iNumDig, цел ilncLead, цел iUseParens, цел iGroup, бцел dwFlags, out шим* pbstrOut);
+цел VarFormat(ref sys.WinStructs.ВАРИАНТ pvarIn, in шим* pstrFormat, цел iFirstDay, цел iFirstWeek, бцел dwFlags, out шим* pbstrOut);
+цел VarFormatFromTokens(ref sys.WinStructs.ВАРИАНТ pvarIn, in шим* pstrFormat, byte* pbTokCur, бцел dwFlags, out шим* pbstrOut, бцел лкид);
+цел VarFormatNumber(ref sys.WinStructs.ВАРИАНТ pvarIn, цел iNumDig, цел ilncLead, цел iUseParens, цел iGroup, бцел dwFlags, out шим* pbstrOut);
 */
-проц ИницВариант(ref sys.DStructs.ВАРИАНТ вар){VariantInit( вар);}
-цел СотриВариант(ref sys.DStructs.ВАРИАНТ вар){return cast(цел) VariantClear( вар);}
-цел КопируйВариант(ref sys.DStructs.ВАРИАНТ варгЦель, ref sys.DStructs.ВАРИАНТ варгИст)
+проц ИницВариант(ref sys.WinStructs.ВАРИАНТ вар){VariantInit( вар);}
+цел СотриВариант(ref sys.WinStructs.ВАРИАНТ вар){return cast(цел) VariantClear( вар);}
+цел КопируйВариант(ref sys.WinStructs.ВАРИАНТ варгЦель, ref sys.WinStructs.ВАРИАНТ варгИст)
 	{
 	return cast(цел) VariantCopy( варгЦель,  варгИст);
 	}
 
-цел СложиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел СложиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
     {
 	return cast(цел) VarAdd( варЛев,  варПрав,  варРез);
 	}
 	
-цел ИВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел ИВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarAnd( варЛев,  варПрав,  варРез);
 	}
 	
-цел СоединиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел СоединиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarCat( варЛев,  варПрав,  варРез); 
 	}
 	
-цел ДелиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел ДелиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarDiv( варЛев,  варПрав,  варРез);
 	}
 	
-цел УмножьВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел УмножьВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarMul( варЛев,  варПрав,  варРез);
 	}
 	
-цел ИлиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел ИлиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarOr( варЛев,  варПрав,  варРез);
 	}
 	
-цел ОтнимиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел ОтнимиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarSub( варЛев,  варПрав,  варРез);
 	}
 	
-цел ИИлиВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел ИИлиВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarXor( варЛев,  варПрав,  варРез);
 	}
 	
-цел СравниВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, бцел лкид, бцел флаги)
+цел СравниВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, бцел лкид, бцел флаги)
 	{
 	return cast(цел) VarCmp( варЛев,  варПрав, cast(бцел) лкид, cast(бцел) флаги);
 	}
 
-цел МодВар(ref sys.DStructs.ВАРИАНТ варЛев, ref sys.DStructs.ВАРИАНТ варПрав, out sys.DStructs.ВАРИАНТ варРез)
+цел МодВар(ref sys.WinStructs.ВАРИАНТ варЛев, ref sys.WinStructs.ВАРИАНТ варПрав, out sys.WinStructs.ВАРИАНТ варРез)
 	{
 	return cast(цел) VarMod( варЛев,  варПрав,  варРез);
 	}
@@ -1826,12 +1826,12 @@ sys.DStructs.БЕЗОПМАС* СоздайВекторБезопмасаДоп(
 цел СоздайИнфОбОш(out ИИнфОбОш ошинф){return  CreateErrorInfo(ошинф);}
 
 
-цел ИзмениТипВарианта(ref sys.DStructs.ВАРИАНТ приёмник, ref sys.DStructs.ВАРИАНТ источник, ПВар флаги, бкрат вт )
+цел ИзмениТипВарианта(ref sys.WinStructs.ВАРИАНТ приёмник, ref sys.WinStructs.ВАРИАНТ источник, ПВар флаги, бкрат вт )
 	{
 	return  VariantChangeType( приёмник,  источник, cast(бкрат) флаги, вт);
 	}
 	
-цел ИзмениТипВариантаДоп(ref sys.DStructs.ВАРИАНТ приёмник, ref sys.DStructs.ВАРИАНТ источник, бцел лкид, ПВар флаги, бкрат вт)
+цел ИзмениТипВариантаДоп(ref sys.WinStructs.ВАРИАНТ приёмник, ref sys.WinStructs.ВАРИАНТ источник, бцел лкид, ПВар флаги, бкрат вт)
 	{
 	return  VariantChangeTypeEx( приёмник,  источник, лкид, cast(бкрат) флаги, вт);
 	}

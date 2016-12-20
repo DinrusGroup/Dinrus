@@ -306,7 +306,7 @@ export:
         scope(exit) supportErrorInfo.Release();
 
         if (УД(supportErrorInfo.InterfaceSupportsErrorInfo(ууид_у!(ИДиспетчер)))) {
-          sys.DIfaces.ИИнфОбОш errorInfo;
+          sys.WinIfaces.ИИнфОбОш errorInfo;
           ДайИнфОбОш(0, errorInfo);
           if (errorInfo !is null) {
             scope(exit) errorInfo.Release();

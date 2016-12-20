@@ -32,10 +32,10 @@
 :::Files with staff that must be same in imports and base-making
 ::: just copied to imports immediately? without manual processing
 
-:copy %this%\base\sys\DConsts.d %this%\import\sys\DConsts.d 
-:copy %this%\base\sys\DStructs.d %this%\import\sys\DStructs.d 
-:copy %this%\base\sys\DTypes.d %this%\import\sys\DTypes.d 
-:copy %this%\base\sys\DIface.d %this%\import\sys\DIface.d 
+:copy %this%\base\sys\WinConsts.d %this%\import\sys\WinConsts.d 
+:copy %this%\base\sys\WinStructs.d %this%\import\sys\WinStructs.d 
+:copy %this%\base\sys\WinTypes.d %this%\import\sys\WinTypes.d 
+:copy %this%\base\sys\WinIfaces.d %this%\import\sys\WinIfaces.d 
 :copy %this%\base\base.d %this%\import\base.d
 
 :::Making dirs for di files in \imp\dinrus\
@@ -190,12 +190,12 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 %DMD%  -c -O  -g  -of%this%\std.obj %this%\import\tpl\std.d -I%R%
 %DMD%  -c -O  -g  -of%this%\weakref.obj %this%\import\tpl\weakref.d -I%R%
 :pause
-%DMD%  -c -O  -g -of%this%\DStructs.obj %this%\import\sys\DStructs.d -I%R%
+%DMD%  -c -O  -g -of%this%\WinStructs.obj %this%\import\sys\WinStructs.d -I%R%
 
-%DMD%  -c -O  -g -of%this%\DIfaces.obj %this%\import\sys\DIfaces.d -I%R%
-%DMD%  -c -O  -g -of%this%\DConsts.obj %this%\import\sys\DConsts.d -I%R%
-%DMD%  -c -O  -g -of%this%\DFuncs.obj %this%\import\sys\DFuncs.d -I%R%
-%DMD%  -c -O  -g -of%this%\DProcess.obj %this%\import\sys\DProcess.d -I%R%
+%DMD%  -c -O  -g -of%this%\WinIfaces.obj %this%\import\sys\WinIfaces.d -I%R%
+%DMD%  -c -O  -g -of%this%\WinConsts.obj %this%\import\sys\WinConsts.d -I%R%
+%DMD%  -c -O  -g -of%this%\WinFuncs.obj %this%\import\sys\WinFuncs.d -I%R%
+%DMD%  -c -O  -g -of%this%\WinProcess.obj %this%\import\sys\WinProcess.d -I%R%
 %DMD%  -c -O  -g -of%this%\registry.obj %this%\import\sys\registry.d -I%R%
 
 %DMD%  -c -O  -g -of%this%\kernel32.obj %this%\import\sys\inc\kernel32.d -I%R%
@@ -219,7 +219,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 :::Making library with static content
 :dinrus2
 
-%DMD% -lib -of%this%\dinrus2.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\DStructs.obj  %this%\DIfaces.obj  %this%\DConsts.obj  %this%\DFuncs.obj  %this%\DProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
+%DMD% -lib -of%this%\dinrus2.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
 @if exist %this%\dinrus2.lib  goto Join
 @if not exist %this%\dinrus2.lib pause
 cls

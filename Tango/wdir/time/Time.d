@@ -842,7 +842,7 @@ struct Время
 
                 $(I Property.) Retrieves the время of день.
 
-                Возвращает: A ВремяДня representing the дробь of the день 
+                Возвращает: A ВремяДня representing the дво of the день 
                          elapsed since mопрnight.
 
         **********************************************************************/

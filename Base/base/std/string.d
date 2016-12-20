@@ -7,7 +7,7 @@ module std.string;
 
 //debug=string;		// uncomment to turn on debugging printf's
 
-private import std.io, sys.DFuncs;
+private import std.io, sys.WinFuncs;
 private import cidrus;//, rt.console;
 private import std.utf;
 private import std.uni;

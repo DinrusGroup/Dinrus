@@ -1410,7 +1410,7 @@ package struct СобытиеЛога
 
 /*******************************************************************************
 
-        Base class for все Appenders. These objects are responsible for
+        База class for все Appenders. These objects are responsible for
         излейting messages sent в_ a particular logger. There may be ещё
         than one добавщик attached в_ any logger. The actual сообщение is
         constructed by другой class known as an EventLayout.

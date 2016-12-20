@@ -549,7 +549,7 @@ return cast(сим[]) rt.charset.fromMBSz(cast(char*) с, cast(int) кодСтр
                                        return Кф;
 
                                    // translate в_ utf8, directly преобр_в приёмн
-                                   i = sys.DFuncs.WideCharToMultiByte (65001, 0, ввод.ptr, i, 
+                                   i = sys.WinFuncs.WideCharToMultiByte (65001, 0, ввод.ptr, i, 
                                                             cast(PCHAR) буф.ptr, буф.length, null, 0);
                                    if (i is 0)
                                        exception.ошибка ("Неудачное преобразование консольного вввода");

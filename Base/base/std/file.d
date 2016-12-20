@@ -17,7 +17,7 @@ private import runtime;
 version (Win32)
 {
 
-private import sys.DFuncs;
+private import sys.WinFuncs;
 private import std.utf;
 private import rt.syserror;
 private import rt.charset;
@@ -128,12 +128,12 @@ void write(char[] name, void[] buffer)
     {
 	char* namez = toMBSz(name);
 	h = CreateFileA(namez,ППраваДоступа.ГенернаяЗапись,0,null,ПРежСоздФайла.СоздатьВсегда,
-	    ПФайл.Нормальный | ПФайл.ПоследоватСкан,cast(sys.DFuncs.HANDLE)null);
+	    ПФайл.Нормальный | ПФайл.ПоследоватСкан,cast(sys.WinFuncs.HANDLE)null);
     }
     if (h == cast(HANDLE) НЕВЕРНХЭНДЛ)
 	goto err;
 
-    if (sys.DFuncs.WriteFile(h,buffer.ptr,buffer.length,&numwritten,null) != 1)
+    if (sys.WinFuncs.WriteFile(h,buffer.ptr,buffer.length,&numwritten,null) != 1)
 	goto err2;
 
     if (buffer.length != numwritten)
@@ -170,14 +170,14 @@ void append(char[] name, void[] buffer)
     {
 	char* namez = toMBSz(name);
 	h = CreateFileA(namez,ППраваДоступа.ГенернаяЗапись,0,null,ПРежСоздФайла.ОткрытьВсегда,
-	    ПФайл.Нормальный | ПФайл.ПоследоватСкан,cast(sys.DFuncs.HANDLE)null);
+	    ПФайл.Нормальный | ПФайл.ПоследоватСкан,cast(sys.WinFuncs.HANDLE)null);
     }
     if (h == cast(HANDLE) НЕВЕРНХЭНДЛ)
 	goto err;
 
     SetFilePointer(h, 0, null, ПФайл.Кон);
 
-    if (sys.DFuncs.WriteFile(h,buffer.ptr,buffer.length,&numwritten,null) != 1)
+    if (sys.WinFuncs.WriteFile(h,buffer.ptr,buffer.length,&numwritten,null) != 1)
 	goto err2;
 
     if (buffer.length != numwritten)
@@ -490,10 +490,10 @@ struct DirEntry
 	clength = cidrus.strlen(fd.имяФайла.ptr);
 
 	// Convert cFileName[] to unicode
-	wlength = sys.DFuncs.MultiByteToWideChar(0,0,fd.имяФайла.ptr,clength,null,0);
+	wlength = sys.WinFuncs.MultiByteToWideChar(0,0,fd.имяФайла.ptr,clength,null,0);
 	if (wlength > wbuf.length)
 	    wbuf.length = wlength;
-	n = sys.DFuncs.MultiByteToWideChar(0,0,fd.имяФайла.ptr,clength,cast(wchar*)wbuf,wlength);
+	n = sys.WinFuncs.MultiByteToWideChar(0,0,fd.имяФайла.ptr,clength,cast(wchar*)wbuf,wlength);
 	assert(n == wlength);
 	// toUTF8() returns a new buffer
 	name = std.path.join(path, std.utf.toUTF8(wbuf[0 .. wlength]));

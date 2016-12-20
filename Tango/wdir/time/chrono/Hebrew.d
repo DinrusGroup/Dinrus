@@ -260,18 +260,18 @@ public class Hebrew : Календарь {
 
   private бцел getStartOfYear(бцел год) {
     auto месяцы = (235 * год - 234) / 19;
-    auto дробь = месяцы * DaysPerMonthFraction + FirstNewMoon;
-    auto день = месяцы * 29 + (дробь / PartsPerDay);
-    дробь %= PartsPerDay;
+    auto дво = месяцы * DaysPerMonthFraction + FirstNewMoon;
+    auto день = месяцы * 29 + (дво / PartsPerDay);
+    дво %= PartsPerDay;
 
     auto ДеньНедели = день % 7;
     if (ДеньНедели == 2 || ДеньНедели == 4 || ДеньНедели == 6) {
       день++;
       ДеньНедели = день % 7;
     }
-    if (ДеньНедели == 1 && дробь > 15 * PartsPerHour + 204 && !високосен_ли(год, ТЕКУЩАЯ_ЭРА))
+    if (ДеньНедели == 1 && дво > 15 * PartsPerHour + 204 && !високосен_ли(год, ТЕКУЩАЯ_ЭРА))
       день += 2;
-    else if (ДеньНедели == 0 && дробь > 21 * PartsPerHour + 589 && високосен_ли(год, ТЕКУЩАЯ_ЭРА))
+    else if (ДеньНедели == 0 && дво > 21 * PartsPerHour + 589 && високосен_ли(год, ТЕКУЩАЯ_ЭРА))
       день++;
     return день;
   }

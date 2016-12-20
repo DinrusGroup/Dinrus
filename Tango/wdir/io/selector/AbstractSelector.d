@@ -23,7 +23,7 @@ version (Windows)
 }
 
 /**
- * Base class for все selectors.
+ * База class for все selectors.
  *
  * A selector is a multИПlexor for I/O события associated в_ a Провод.
  * все selectors must implement this interface.

@@ -86,7 +86,7 @@ public:
 	/// Note that some CPUs have programmable vendorIDs.
 	ткст производитель()		{return vendorID;}
 	/// Returns процессор ткст, for display purposes only
-	ткст процессор()	{return processorName;}    
+	ткст процессор()	{return имяПроцессора;}    
 	
 	/// The данные caches. If there are fewer than 5 physical caches levels,
 	/// the остаток levels are установи в_ бцел.max (== entire память пространство)
@@ -185,7 +185,7 @@ private:
 	бул probablyIntel; // да = _probably_ an Intel процессор, might be faking
 	бул probablyAMD; // да = _probably_ an AMD процессор
 	сим [12] vendorID;
-	сим [] processorName;
+	сим [] имяПроцессора;
 	сим [48] processorNameBuffer;
 	бцел features = 0;     // mmx, sse, sse2, hyperthreading, etc
 	бцел miscfeatures = 0; // sse3, etc.
@@ -286,7 +286,7 @@ version(Really_D_InlineAsm_X86) {
 {
 	// CPUID2 is a dog's breakfast. What was Intel thinking???
 	// We are only interested in the данные caches
-	проц decИПherCpuid2(ббайт x) {
+	проц расшифруйИдцпб2(ббайт x) {
 		if (x==0) return;
 		// Values из_ http://www.sandpile.org/ia32/cpuid.htm.
 		// Includes Itanium и non-Intel CPUs.
@@ -365,10 +365,10 @@ version(Really_D_InlineAsm_X86) {
 		for (цел c=0; c<4;++c) {
 			// high bit установи == no инфо.
 			if (a[c] & 0x8000_0000) continue;
-			decИПherCpuid2(cast(ббайт)(a[c] & 0xFF));
-			decИПherCpuid2(cast(ббайт)((a[c]>>8) & 0xFF));
-			decИПherCpuid2(cast(ббайт)((a[c]>>16) & 0xFF));
-			decИПherCpuid2(cast(ббайт)((a[c]>>24) & 0xFF));
+			расшифруйИдцпб2(cast(ббайт)(a[c] & 0xFF));
+			расшифруйИдцпб2(cast(ббайт)((a[c]>>8) & 0xFF));
+			расшифруйИдцпб2(cast(ббайт)((a[c]>>16) & 0xFF));
+			расшифруйИдцпб2(cast(ббайт)((a[c]>>24) & 0xFF));
 		}
 	} while (--numinfos);
 }
@@ -559,9 +559,9 @@ version(Really_D_InlineAsm_X86) {
 		цел старт = 0, конец = 0;
 		while (processorNameBuffer[старт] == ' ') { ++старт; }
 		while (processorNameBuffer[$-конец-1] == 0) { ++конец; }
-		processorName = processorNameBuffer[старт..$-конец];
+		имяПроцессора = processorNameBuffer[старт..$-конец];
 	} else {
-		processorName = "Неизвестный процессор";
+		имяПроцессора = "Неизвестный процессор";
 	}
 	// Determine кэш размеры
 	

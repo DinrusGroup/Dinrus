@@ -466,7 +466,7 @@ template TN(T:T*)
 // ditto
 template TN(T)
 {
-    static if( isAssocArrayType!(T) )
+    static if( типАссоцМассив_ли!(T) )
         const TN = TN!(typeof(T.ключи[0]))~"_to_"
             ~TN!(typeof(T.values[0]))~"_map";
     else
@@ -701,7 +701,7 @@ D вБул(D,S)(S значение)
     {
         mixin unsupported!("Массив тип");
     }
-    else static if( isAssocArrayType!(S) )
+    else static if( типАссоцМассив_ли!(S) )
     {
         mixin unsupported!("associative Массив тип");
     }
@@ -1036,7 +1036,7 @@ D вТкст(D,S)(S значение)
     else static if( типДинМас_ли!(S) || типСтатМас_ли!(S) )
         mixin unsupported!("Массив тип");
 
-    else static if( isAssocArrayType!(S) )
+    else static if( типАссоцМассив_ли!(S) )
         mixin unsupported!("associative Массив тип");
 
     else static if( isPOD!(S) || объект_ли!(S) )
@@ -1053,7 +1053,7 @@ D fromString(D,S)(D значение)
     static if( типДинМас_ли!(S) || типСтатМас_ли!(S) )
         mixin unsupported_backwards!("Массив тип");
 
-    else static if( isAssocArrayType!(S) )
+    else static if( типАссоцМассив_ли!(S) )
         mixin unsupported_backwards!("тип ассоциативный Массив");
 
     else static if( isPOD!(S) || объект_ли!(S) )
@@ -1166,7 +1166,7 @@ D toImpl(D,S)(S значение)
     else static if( типМассив_ли!(D) && типМассив_ли!(S) )
         return toArrayFromArray!(D,S)(значение);
 
-    else static if( isAssocArrayType!(D) && isAssocArrayType!(S) )
+    else static if( типАссоцМассив_ли!(D) && типАссоцМассив_ли!(S) )
         return toMapFromMap!(D,S)(значение);
 
     else static if( isUDT!(D) || isUDT!(S) )

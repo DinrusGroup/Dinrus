@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 module math.random.Kiss;
-
+import base;
 
 version (Win32)
          private extern(Windows) цел QueryPerformanceCounter (бдол *);
@@ -58,7 +58,7 @@ struct Kiss
         ///
         public alias натурал  вЦел;
         ///
-        public alias дробь вРеал;
+        public alias дво вРеал;
         
         private бцел kiss_k;
         private бцел kiss_m;
@@ -230,8 +230,8 @@ debug (Kiss)
                 w.старт;
                 дво v1;
                 for (цел i=счёт; --i;)
-                     v1 = dbl.дробь;
-                Стдвыв.форматнс ("{} дробь, {}/s, {:f10}", счёт, счёт/w.stop, v1);
+                     v1 = dbl.дво;
+                Стдвыв.форматнс ("{} дво, {}/s, {:f10}", счёт, счёт/w.stop, v1);
 
                 w.старт;
                 for (цел i=счёт; --i;)
@@ -240,10 +240,10 @@ debug (Kiss)
 
                 for (цел i=счёт; --i;)
                     {
-                    auto v = dbl.дробь;
+                    auto v = dbl.дво;
                     if (v <= 0.0 || v >= 1.0)
                        {
-                       Стдвыв.форматнс ("дробь {:f10}", v);
+                       Стдвыв.форматнс ("дво {:f10}", v);
                        break;
                        }
                     v = dbl.дробьДоп;

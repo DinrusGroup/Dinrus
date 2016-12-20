@@ -1451,7 +1451,7 @@ public abstract class XMLFilter(Ch = сим) : XMLЧитатель {
 }
 
 /*******************************************************************************
- * Base class for deriving an XML фильтр.
+ * База class for deriving an XML фильтр.
  *
  * <p>This class is designed в_ sit between an {@link org.xml.sax.XMLЧитатель
  * XMLЧитатель} и the клиент application's событие handlers.  By default, it

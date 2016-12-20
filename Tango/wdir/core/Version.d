@@ -14,7 +14,7 @@
 
 module core.Version;
 
-public enum drTango {
-    Major = 1,
-    Minor = 0
+public enum Версия {
+    Мажор = 1,
+    Минор = 0
 }
