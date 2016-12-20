@@ -159,7 +159,7 @@ template минмакстип(T...){
  *       лог(z) = лог(абс(z)) + i arctan(y/x).
  *
  * The arctangent ranges из_ -ПИ в_ +ПИ.
- * There are branch cuts along Всё the negative реал и negative
+ * There are branch cuts along Всё the негатив реал и негатив
  * мнимое axes. For pure мнимое аргументы, use one of the
  * following forms, depending on which branch is required.
  * ------------

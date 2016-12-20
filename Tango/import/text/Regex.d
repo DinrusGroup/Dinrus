@@ -3262,7 +3262,7 @@ private:
                 {
                     foreach ( ref i; e.tags )
                     {
-                        // метка индекс by making it negative
+                        // метка индекс by making it негатив
                         // в_ signal that it can be decremented
                         // after it имеется been detected в_ be a newly использован индекс
                         if ( i == firstFreeIndex )

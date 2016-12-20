@@ -40,14 +40,14 @@ private import text.convert.Integer : вТкст;
  * параметры getting in the way :)
  */
 
-private enum { CHUNKSIZE = 256 * 1024 };
+private enum { РАЗМЕР_ЧАНКА = 256 * 1024 };
 
-/* This constant specifies the default windowBits значение.  This is taken из_
+/* This constant specifies the default окноБиты значение.  This is taken из_
  * documentation in zlib.h.  It shouldn't break anything if zlib changes в_
  * a different default.
  */
 
-private enum { WINDOWBITS_DEFAULT = 15 };
+private enum { ОКНОБИТЫ_ДЕФОЛТ = 15 };
 
 /*******************************************************************************
   
@@ -107,11 +107,11 @@ class ВводЗлиб : ФильтрВвода
         ввод.читай(myContent);
         ---
 
-        The optional windowBits parameter is the основа two logarithm of the
+        The optional окноБиты parameter is the основа two logarithm of the
         window размер, and should be in the range 8-15, defaulting в_ 15 if not
-        specified.  добавьitionally, the windowBits parameter may be negative в_
+        specified.  добавьitionally, the окноБиты parameter may be негатив в_
         indicate that zlib should omit the стандарт zlib заголовок and trailer,
-        with the window размер being -windowBits.
+        with the window размер being -окноБиты.
         
       Параметры:
         поток = compressed ввод поток.
@@ -122,17 +122,17 @@ class ВводЗлиб : ФильтрВвода
             no кодировка; in this case, you must manually specify
             Кодировка.Нет.
             
-        windowBits =
+        окноБиты =
             the основа two logarithm of the window размер, and should be in the
             range 8-15, defaulting в_ 15 if not specified.
 
     ***************************************************************************/
 
     this(ИПотокВвода поток, Кодировка кодировка,
-            цел windowBits = WINDOWBITS_DEFAULT)
+            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         /*
-         * Here's как windowBits works, according в_ zlib.h:
+         * Here's как окноБиты works, according в_ zlib.h:
          * 
          * 8 .. 15
          *      zlib кодировка.
@@ -147,13 +147,13 @@ class ВводЗлиб : ФильтрВвода
          *      необр/no кодировка.
          *      
          * Since we're going в_ be playing with the значение, we DO care whether
-         * windowBits is in the ожидалось range, so we'll check it.
+         * окноБиты is in the ожидалось range, so we'll check it.
          */
-        if( !( 8 <= windowBits && windowBits <= 15 ) )
+        if( !( 8 <= окноБиты && окноБиты <= 15 ) )
         {
             // No compression for you!
-            throw new ИсклЗлиб("не_годится windowBits аргумент"
-                ~ .вТкст(windowBits));
+            throw new ИсклЗлиб("непригодный аргумент окноБиты"
+                ~ .вТкст(окноБиты));
         }
         
         switch( кодировка )
@@ -163,20 +163,20 @@ class ВводЗлиб : ФильтрВвода
             break;
             
         case Кодировка.Gzip:
-            windowBits += 16;
+            окноБиты += 16;
             break;
 
         case Кодировка.Guess:
-            windowBits += 32;
+            окноБиты += 32;
             break;
             
         case Кодировка.Нет:
-            windowBits *= -1;
+            окноБиты *= -1;
             break;
         }
         
         super (поток);
-        in_chunk = new ббайт[CHUNKSIZE];
+        in_chunk = new ббайт[РАЗМЕР_ЧАНКА];
 
         // Размести inflate состояние
         with( zs )
@@ -188,7 +188,7 @@ class ВводЗлиб : ФильтрВвода
             next_in = пусто;
         }
 
-        auto возвр = inflateInit2(&zs, windowBits);
+        auto возвр = inflateInit2(&zs, окноБиты);
         if( возвр != Z_OK )
             throw new ИсклЗлиб(возвр);
 
@@ -201,7 +201,7 @@ class ВводЗлиб : ФильтрВвода
         // DRK 2009-02-26
         // Removed unique implementation in favour of passing on в_ другой
         // constructor.  The specific implementation was because the default
-        // значение of windowBits is documented in zlib.h, but not actually
+        // значение of окноБиты is documented in zlib.h, but not actually
         // exposed.  Using inflateInit over inflateInit2 ensured we would
         // never получи it wrong.  That saопр, the default значение of 15 is REALLY
         // unlikely в_ change: values below that aren't terribly useful, and
@@ -213,7 +213,7 @@ class ВводЗлиб : ФильтрВвода
     ~this()
     {
         if( zs_valid )
-            kill_zs();
+            туши_зп();
     }
 
     /***************************************************************************
@@ -254,13 +254,13 @@ class ВводЗлиб : ФильтрВвода
                 // for general-use код, so treat it as an ошибка.
             case Z_DATA_ERROR:
             case Z_MEM_ERROR:
-                kill_zs();
+                туши_зп();
                 throw new ИсклЗлиб(возвр);
 
             case Z_STREAM_END:
                 // zlib поток is завершено; затуши the поток so we don't try в_
                 // читай из_ it again.
-                kill_zs();
+                туши_зп();
                 break;
 
             default:
@@ -277,12 +277,12 @@ class ВводЗлиб : ФильтрВвода
 
     override ИПотокВвода слей()
     {
-        check_valid();
+        проверьГожесть();
 
         // TODO: What should this метод do?  We don't do any куча allocation,
         // so there's really nothing в_ сотри...  For сейчас, just invalidate the
         // поток...
-        kill_zs();
+        туши_зп();
 
         super.слей();
         return this;
@@ -290,9 +290,9 @@ class ВводЗлиб : ФильтрВвода
 
     // This function kills the поток: it deallocates the internal состояние, and
     // unsets the zs_valid flag.
-    private проц kill_zs()
+    private проц туши_зп()
     {
-        check_valid();
+        проверьГожесть();
 
         inflateEnd(&zs);
         zs_valid = нет;
@@ -300,7 +300,7 @@ class ВводЗлиб : ФильтрВвода
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid()
+    private проц проверьГожесть()
     {
         if( !zs_valid )
             throw new ИсклЗлибЗакрыт;
@@ -393,19 +393,19 @@ class ВыводЗлиб : ФильтрВывода
         вывод.пиши(myContent);
         ---
 
-        The optional windowBits parameter is the основа two logarithm of the
+        The optional окноБиты parameter is the основа two logarithm of the
         window размер, and should be in the range 8-15, defaulting в_ 15 if not
-        specified.  добавьitionally, the windowBits parameter may be negative в_
+        specified.  добавьitionally, the окноБиты parameter may be негатив в_
         indicate that zlib should omit the стандарт zlib заголовок and trailer,
-        with the window размер being -windowBits.
+        with the window размер being -окноБиты.
 
     ***************************************************************************/
 
     this(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
-            цел windowBits = WINDOWBITS_DEFAULT)
+            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         /*
-         * Here's как windowBits works, according в_ zlib.h:
+         * Here's как окноБиты works, according в_ zlib.h:
          * 
          * 8 .. 15
          *      zlib кодировка.
@@ -420,16 +420,16 @@ class ВыводЗлиб : ФильтрВывода
          *      необр/no кодировка.
          *      
          * Since we're going в_ be playing with the значение, we DO care whether
-         * windowBits is in the ожидалось range, so we'll check it.
+         * окноБиты is in the ожидалось range, so we'll check it.
          * 
          * Also, note that OUR Кодировка enum doesn't contain the 'Guess'
          * member.  I'm still waiting on io.psychic...
          */
-        if( !( 8 <= windowBits && windowBits <= 15 ) )
+        if( !( 8 <= окноБиты && окноБиты <= 15 ) )
         {
             // No compression for you!
-            throw new ИсклЗлиб("не_годится windowBits аргумент"
-                ~ .вТкст(windowBits));
+            throw new ИсклЗлиб("непригодный аргумент окноБиты"
+                ~ .вТкст(окноБиты));
         }
         
         switch( кодировка )
@@ -439,16 +439,16 @@ class ВыводЗлиб : ФильтрВывода
             break;
             
         case Кодировка.Gzip:
-            windowBits += 16;
+            окноБиты += 16;
             break;
             
         case Кодировка.Нет:
-            windowBits *= -1;
+            окноБиты *= -1;
             break;
         }
         
         super(поток);
-        out_chunk = new ббайт[CHUNKSIZE];
+        out_chunk = new ббайт[РАЗМЕР_ЧАНКА];
 
         // Размести deflate состояние
         with( zs )
@@ -458,7 +458,7 @@ class ВыводЗлиб : ФильтрВывода
             opaque = пусто;
         }
 
-        auto возвр = deflateInit2(&zs, уровень, Z_DEFLATED, windowBits, 8,
+        auto возвр = deflateInit2(&zs, уровень, Z_DEFLATED, окноБиты, 8,
                 Z_DEFAULT_STRATEGY);
         if( возвр != Z_OK )
             throw new ИсклЗлиб(возвр);
@@ -478,7 +478,7 @@ class ВыводЗлиб : ФильтрВывода
     ~this()
     {
         if( zs_valid )
-            kill_zs();
+            туши_зп();
     }
 
     /***************************************************************************
@@ -493,8 +493,8 @@ class ВыводЗлиб : ФильтрВывода
 
     override т_мера пиши(проц[] ист)
     {
-        check_valid();
-        scope(failure) kill_zs();
+        проверьГожесть();
+        scope(failure) туши_зп();
 
         zs.avail_in = ист.length;
         zs.next_in = cast(ббайт*)ист.ptr;
@@ -526,7 +526,7 @@ class ВыводЗлиб : ФильтрВывода
         // Loop while we are still using up the whole вывод буфер
         while( zs.avail_out == 0 );
 
-        assert( zs.avail_in == 0, "неудачно в_ сожми все provопрed данные" );
+        assert( zs.avail_in == 0, "неудачное сжатие всех предложенных данных" );
 
         return ист.length;
     }
@@ -570,8 +570,8 @@ class ВыводЗлиб : ФильтрВывода
 
     проц подай()
     {
-        check_valid();
-        scope(failure) kill_zs();
+        проверьГожесть();
+        scope(failure) туши_зп();
 
         zs.avail_in = 0;
         zs.next_in = пусто;
@@ -617,14 +617,14 @@ class ВыводЗлиб : ФильтрВывода
         }
         while( !завершено );
 
-        kill_zs();
+        туши_зп();
     }
 
     // This function kills the поток: it deallocates the internal состояние, and
     // unsets the zs_valid flag.
-    private проц kill_zs()
+    private проц туши_зп()
     {
-        check_valid();
+        проверьГожесть();
 
         deflateEnd(&zs);
         zs_valid = нет;
@@ -632,7 +632,7 @@ class ВыводЗлиб : ФильтрВывода
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid()
+    private проц проверьГожесть()
     {
         if( !zs_valid )
             throw new ИсклЗлибЗакрыт;
@@ -651,7 +651,7 @@ class ИсклЗлибЗакрыт : ВВИскл
 {
     this()
     {
-        super("cannot operate on закрыт zlib поток");
+        super("операция с закрытым потоком zlib невыполнима");
     }
 }
 
@@ -816,7 +816,7 @@ unittest
         // don't forget в_ import Стдвыв somewhere.
         /+
         scope comp_gz = new Массив(2048);
-        scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, WINDOWBITS_DEFAULT);
+        scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, ОКНОБИТЫ_ДЕФОЛТ);
         comp.пиши(сообщение);
         comp.закрой;
         

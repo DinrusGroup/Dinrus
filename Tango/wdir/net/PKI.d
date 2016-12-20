@@ -499,7 +499,7 @@ class ПубличныйКлюч
         Notes:
         This is размер limited based off the ключ
         Not recommended for general encryption, use RSA for encrypting a 
-        random ключ instead and switch в_ a block cИПher.
+        random ключ instead and switch в_ a block cipher.
 
         Параметры:
         данные = the данные в_ зашифруй
@@ -719,7 +719,7 @@ class ЧастныйКлюч
         Notes:
         This is размер limited based off the ключ
         Not recommended for general encryption, use RSA for encrypting a 
-        random ключ instead and switch в_ a block cИПher.
+        random ключ instead and switch в_ a block cipher.
 
         Параметры:
         данные = the данные в_ зашифруй

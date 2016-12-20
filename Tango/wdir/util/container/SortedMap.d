@@ -853,7 +853,7 @@ class SortedMap (K, V, alias Извл = Контейнер.извлеки,
                 @param fst первый аргумент
                 @param snd секунда аргумент
 
-                Возвращает: a negative число if fst is less than snd; a
+                Возвращает: a негатив число if fst is less than snd; a
                 positive число if fst is greater than snd; else 0
                  
         ***********************************************************************/
@@ -874,7 +874,7 @@ class SortedMap (K, V, alias Извл = Контейнер.извлеки,
                 @param fst первый аргумент
                 @param snd секунда аргумент
 
-                Возвращает: a negative число if fst is less than snd; a
+                Возвращает: a негатив число if fst is less than snd; a
                 positive число if fst is greater than snd; else 0
                  
         ***********************************************************************/

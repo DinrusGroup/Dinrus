@@ -134,8 +134,8 @@ struct ОтветФтп
      1xx =             a positive, but preliminary, reply
      2xx =             a positive reply indicating completion
      3xx =             a positive reply indicating incomplete статус
-     4xx =             a temporary negative reply
-     5xx =             a permanent negative reply
+     4xx =             a temporary негатив reply
+     5xx =             a permanent негатив reply
      
      сукунда Digit (субъект):
      x0x =             condition based on syntax
@@ -633,7 +633,7 @@ class СоединениеФтп: Telnet
 
     protected Время разборВремзнач(ткст значврем) {
         if(значврем.length < 14)
-            throw new ИсклФтп("CLIENT: Unable в_ разбор значврем", "501");
+            throw new ИсклФтп("КЛИЕНТ: Не удаётся разобрать значврем", "501");
 
         return Грегориан.генерный.воВремя(
                 Целое.atoi(значврем[0 .. 4]),
@@ -700,7 +700,7 @@ class СоединениеФтп: Telnet
         СОКЕТCommand ~= "\r\n";
 
         debug(FtpDebug) {
-            Стдвыв.форматнс("[шлиКоманду] Отправкаing команда '{0}'",
+            Стдвыв.форматнс("[шлиКоманду] Отправка команды '{0}'",
                     СОКЕТCommand);
         }
         отправьДанные(СОКЕТCommand);
@@ -708,12 +708,12 @@ class СоединениеФтп: Telnet
 
     public ОтветФтп читайОтвет(ткст ожидаемый_код) {
         debug(FtpDebug) {
-            Стдвыв.форматнс("[читайОтвет] Expected Response {0}",
+            Стдвыв.форматнс("[читайОтвет] Ожидаемый Ответ {0}",
                     ожидаемый_код)();
         }
         auto ответ = читайОтвет();
         debug(FtpDebug) {
-            Стдвыв.форматнс("[читайОтвет] Actual Response {0}", ответ.код)();
+            Стдвыв.форматнс("[читайОтвет] Действительный Ответ {0}", ответ.код)();
         }
 
         if(ответ.код != ожидаемый_код)
@@ -826,7 +826,7 @@ class СоединениеФтп: Telnet
         // What тип are we using?
         switch(this.inf_.тип) {
             default:
-                исключение("неизвестное connection тип");
+                исключение("подключение неизвестного типа");
 
             // Passive is complicated.  Дескр it in другой member.
             case ПТипСоединенияФтп.пассивное:
@@ -912,7 +912,7 @@ class СоединениеФтп: Telnet
             // Try в_ pull out the (possibly not parenthesized) адрес.
             auto r = Regex(`\([^0-9][^0-9][^0-9](\d+)[^0-9]\)`);
             if(!r.тест(ответ.сообщение[0 .. найди(ответ.сообщение, '\n')]))
-                throw new ИсклФтп("CLIENT: Unable в_ разбор адрес", "501");
+                throw new ИсклФтп("КЛИЕНТ: Не удаётся разобрать адрес", "501");
 
             АдресИПв4
                     remote = cast(АдресИПв4) this.сокет_.сокет.удалённыйАдрес();
@@ -929,7 +929,7 @@ class СоединениеФтп: Telnet
             // Try в_ pull out the (possibly not parenthesized) адрес.
             auto r = Regex(`(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)(,\s*(\d+))?`);
             if(!r.тест(ответ.сообщение[0 .. найди(ответ.сообщение, '\n')]))
-                throw new ИсклФтп("CLIENT: Unable в_ разбор адрес", "501");
+                throw new ИсклФтп("КЛИЕНТ: Не удаётся разобрать адрес", "501");
 
             // Сейчас помести it преобр_в something std.сокет will understand.
             ткст адрес = r.сверь(1) ~ "." ~ r.сверь(2) ~ "." ~ r.сверь(3) ~ "." ~ r.сверь(4);
@@ -1339,7 +1339,7 @@ class СоединениеФтп: Telnet
                 read_mode(1);
                 read_mode(2);
 
-                инфо.факты["ЮНИКС.mode"] = unix_mode;
+                инфо.факты["UNIX.mode"] = unix_mode;
 
                 // #4
                 // Not only разбор строки like
@@ -1383,9 +1383,9 @@ class СоединениеФтп: Telnet
                     т_мера pos2 = Текст.местоположениеОбразца(инфо.имя, " -> ");
                     if(pos2 != инфо.имя.length) {
                         // It is a link - разбей преобр_в мишень и имя
-                        инфо.факты["мишень"] = инфо.имя[pos2 + 4 .. инфо.имя.length];
+                        инфо.факты["target"] = инфо.имя[pos2 + 4 .. инфо.имя.length];
                         инфо.имя = инфо.имя[0 .. pos2];
-                        инфо.факты["тип"] = "link";
+                        инфо.факты["type"] = "link";
                     }
                 }
             break;
@@ -1449,7 +1449,7 @@ class СоединениеФтп: Telnet
             continue;
 
         if(filename_pos == строка.length)
-            throw new ИсклФтп("CLIENT: Bad syntax in MLSx response", "501");
+            throw new ИсклФтп("КЛИЕНТ: Плохой синтаксис в ответе MLSx", "501");
         /*{
          инфо.имя = "";
          return инфо;
@@ -1474,20 +1474,20 @@ class СоединениеФтп: Telnet
             // Do we have a тип?
             if("type" in инфо.факты) {
                 // Some reflection might be nice here.
-                switch(Ascii.вПроп(инфо.факты["тип"])) {
+                switch(Ascii.вПроп(инфо.факты["type"])) {
                     case "file":
                         инфо.тип = ПТипФайлаФтп.файл;
                     break;
 
-                    case "тдир":
+                    case "cdir":
                         инфо.тип = ПТипФайлаФтп.тдир;
                     break;
 
-                    case "пдир":
+                    case "pdir":
                         инфо.тип = ПТипФайлаФтп.пдир;
                     break;
 
-                    case "Пап":
+                    case "dir":
                         инфо.тип = ПТипФайлаФтп.пап;
                     break;
 
@@ -1535,7 +1535,7 @@ class СоединениеФтп: Telnet
                 // We should have already handled that.
                 if(temp.length < 1)
                     throw new ИсклФтп(
-                            "CLIENT: Bad LIST ответ из_ сервер", "501");
+                            "КЛИЕНТ: Плохой ответ LIST от сервера", "501");
 
                 // If there are multИПle строки, try в_ return the correct one.
                 if(temp.length != 1)

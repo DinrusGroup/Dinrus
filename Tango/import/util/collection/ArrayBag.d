@@ -165,7 +165,7 @@ deprecated public class ArrayBag(T) : BagCollection!(T)
                 if (newЧанкРазмер > 0)
                     размерЧанка_ = newЧанкРазмер;
                 else
-                   throw new ИсклНелегальногоАргумента("Attempt в_ установи negative чанк размер значение");
+                   throw new ИсклНелегальногоАргумента("Attempt в_ установи негатив чанк размер значение");
         }
 
         // Коллекция methods

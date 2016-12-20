@@ -817,20 +817,20 @@ unittest {
 
 
 /*  General unsigned subtraction routine for bigints.
- *  Sets результат = x - y. If the результат is negative, negative will be да.
+ *  Sets результат = x - y. If the результат is негатив, негатив will be да.
  */
-БольшЦифра [] подст(БольшЦифра[] x, БольшЦифра[] y, бул *negative)
+БольшЦифра [] подст(БольшЦифра[] x, БольшЦифра[] y, бул *негатив)
 {
     if (x.length == y.length) {
         // There's a possibility of cancellation, if x и y are almost equal.
         цел последний = highestDifferentDigit(x, y);
         БольшЦифра [] результат = new БольшЦифра[последний+1];
-        if (x[последний] < y[последний]) { // we know результат is negative
+        if (x[последний] < y[последний]) { // we know результат is негатив
             multibyteSub(результат[0..последний+1], y[0..последний+1], x[0..последний+1], 0);
-            *negative = да;
+            *негатив = да;
         } else { // positive or zero результат
             multibyteSub(результат[0..последний+1], x[0..последний+1], y[0..последний+1], 0);
-            *negative = нет;
+            *негатив = нет;
         }
         while (результат.length > 1 && результат[$-1] == 0) {
             результат = результат[0..$-1];
@@ -840,10 +840,10 @@ unittest {
     // Lengths are different
     БольшЦифра [] large, small;
     if (x.length < y.length) {
-        *negative = да;
+        *негатив = да;
         large = y; small = x;
     } else {
-        *negative = нет;
+        *негатив = нет;
         large = x; small = y;
     }
     
@@ -1362,22 +1362,22 @@ body {
     return x[k] < y[k];
 }
 
-// Набор результат = абс(x-y), return да if результат is negative(x<y), нет if x<=y.
+// Набор результат = абс(x-y), return да if результат is негатив(x<y), нет if x<=y.
 бул inplaceSub(БольшЦифра[] результат, БольшЦифра[] x, БольшЦифра[] y)
 {
     assert(результат.length == (x.length >= y.length) ? x.length : y.length);
     
     т_мера minlen;
-    бул negative;
+    бул негатив;
     if (x.length >= y.length) {
         minlen = y.length;
-        negative = less(x, y);
+        негатив = less(x, y);
     } else {
        minlen = x.length;
-       negative = !less(y, x);
+       негатив = !less(y, x);
     }
     БольшЦифра[] large, small;
-    if (negative) { large = y; small=x; } else { large=x; small=y; }
+    if (негатив) { large = y; small=x; } else { large=x; small=y; }
        
     БольшЦифра carry = multibyteSub(результат[0..minlen], large[0..minlen], small[0..minlen], 0);
     if (x.length != y.length) {
@@ -1385,7 +1385,7 @@ body {
         результат[large.length..$] = 0;
         if (carry) многобайтИнкрПрисвой!('-')(результат[minlen..$], carry);
     }
-    return negative;
+    return негатив;
 }
 
 /* Determine как much пространство is требуется for the temporaries
@@ -1425,7 +1425,7 @@ body {
     // requiring 3 multИПlies of length N, instead of 4.
     // The advantage of the subtractive over the аддитивный version is that
     // the mопр multИПly cannot exceed length N. But there are subtleties:
-    // (x0-x1),(y0-y1) may be negative or zero. To keep it simple, we 
+    // (x0-x1),(y0-y1) may be негатив or zero. To keep it simple, we 
     // retain все of the leading zeros in the subtractions
     
     // half length, округли up.
@@ -1710,7 +1710,7 @@ body {
 }
 
 // rem -= quot * v[0..k].
-// If would сделай rem negative, decrease quot until rem is >=0.
+// If would сделай rem негатив, decrease quot until rem is >=0.
 // Needs (quot.length * k) черновик пространство в_ сохрани the результат of the multИПly. 
 проц adjustRemainder(БольшЦифра[] quot, БольшЦифра[] rem, in БольшЦифра[] v, цел k,
                      БольшЦифра[] черновик)

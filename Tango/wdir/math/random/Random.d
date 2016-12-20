@@ -474,7 +474,7 @@ final class СлуччисГ(ТИсток=ДефолтныйДвижок)
     //  в_ the high density of floats закрой в_ 0.
     /// Cannot be использован on unsigned типы.
     ///
-    /// In here there is probably one of the few cases where c handling of modulo of negative
+    /// In here there is probably one of the few cases where c handling of modulo of негатив
     /// numbers is handy
     T униформаРСимм(T,бул проверкаГраниц=да, бул исключитьНоль=плав_ли!(T))(T в_,цел итер=2000)
     in { assert(в_>0,"пустой range");}

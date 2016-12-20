@@ -100,10 +100,10 @@ public abstract class AbstractIterator(T) : GuardIterator!(T)
         protected final проц decRemaining()
         {
                 if (мутация != view.мутация)
-                    throw new CorruptedIteratorException ("Коллекция изменён during iteration");
+                    throw new CorruptedIteratorException ("Коллекция изменена во время обхода");
 
                 if (togo is 0)
-                    throw new НетЭлементаИскл ("exhausted enumeration");
+                    throw new НетЭлементаИскл ("истощённое исчисление");
 
                 --togo;
         }

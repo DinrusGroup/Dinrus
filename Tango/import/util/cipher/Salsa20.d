@@ -27,7 +27,7 @@ class Salsa20 : ШифрПоток
         ббайт[] keyПоток;
         бцел индекс;
         
-        // Internal copies of the ключ и IV for resetting the cИПher
+        // Internal copies of the ключ и IV for resetting the cipher
         ббайт[] workingKey,
                 workingIV;
     }
@@ -269,7 +269,7 @@ class Salsa20 : ШифрПоток
                 
             ];
                  
-            static ткст[] test_cИПhertexts = [
+            static ткст[] test_ciphertexts = [
                 "4dfa5e481da23ea09a31022050859936"~ // Expected вывод
                 "da52fcee218005164f267cb65f5cfd7f"~
                 "2b4f97e0ff16924a52df269515110a07"~
@@ -303,12 +303,12 @@ class Salsa20 : ШифрПоток
                 s20.init(да, парамы);
                 s20.обнови(БайтКонвертер.hexDecode(test_plaintexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
-                assert(результат == test_cИПhertexts[i],
-                        s20.имя()~": ("~результат~") != ("~test_cИПhertexts[i]~")");           
+                assert(результат == test_ciphertexts[i],
+                        s20.имя()~": ("~результат~") != ("~test_ciphertexts[i]~")");           
                 
                 // Decryption
                 s20.init(нет, парамы);
-                s20.обнови(БайтКонвертер.hexDecode(test_cИПhertexts[i]), буфер);
+                s20.обнови(БайтКонвертер.hexDecode(test_ciphertexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
                 assert(результат == test_plaintexts[i],
                         s20.имя()~": ("~результат~") != ("~test_plaintexts[i]~")");

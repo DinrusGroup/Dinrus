@@ -186,7 +186,7 @@ private {
 реал матош(реал x)
 {
     if (x == 0.0)
-        return x; // deal with negative zero
+        return x; // deal with негатив zero
     if (x == -реал.infinity)
         return -1.0;
     if (x == реал.infinity)

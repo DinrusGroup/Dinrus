@@ -10,7 +10,7 @@ private import exception : ИсклНелегальногоАргумента;
 
 //alias ткст ткст;
 
-/** База symmetric cИПher class */
+/** База symmetric cipher class */
 abstract class Шифр
 {
     interface Параметры {}
@@ -33,10 +33,10 @@ abstract class Шифр
      */
     abstract бцел обнови(проц[] input_, проц[] output_);
     
-    /** Возвращает: The имя of the algorithm of this cИПher. */
+    /** Возвращает: The имя of the algorithm of this cipher. */
     abstract ткст имя();
     
-    /** Reset cИПher в_ its состояние immediately subsequent the последний init. */
+    /** Reset cipher в_ its состояние immediately subsequent the последний init. */
     abstract проц сбрось();
    
     /**
@@ -47,21 +47,21 @@ abstract class Шифр
      */
     static проц не_годится (ткст сооб);
      
-    /** Возвращает: Whether or not the cИПher имеется been инициализован. */
+    /** Возвращает: Whether or not the cipher имеется been инициализован. */
     final бул инициализован();
 }
 
 
 
-/** Interface for a стандарт блок cИПher. */
+/** Interface for a стандарт блок cipher. */
 abstract class ШифрБлок : Шифр
 {
-    /** Возвращает: The блок размер in байты that this cИПher will operate on. */
+    /** Возвращает: The блок размер in байты that this cipher will operate on. */
     abstract бцел размерБлока();
 }
 
 
-/** Interface for a стандарт поток cИПher. */
+/** Interface for a стандарт поток cipher. */
 abstract class ШифрПоток : Шифр
 {   
     /**
@@ -139,7 +139,7 @@ class СимметричныйКлюч : Шифр.Параметры
 }
 
 
-/** Wrap cИПher параметры и IV. */
+/** Wrap cipher параметры и IV. */
 class ParametersWithIV : Шифр.Параметры
 {
     private ббайт[] _iv;

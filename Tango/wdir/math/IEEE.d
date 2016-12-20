@@ -505,7 +505,7 @@ enum КонтрольТочности : крат {
             if (*vl &  0x7FFF_FFFF_FFFF_FFFF) {  // НЧ
                 *vl |= 0xC000_0000_0000_0000;  // преобразуй $(NAN)S в_ $(NAN)Q
                 эксп = цел.min;
-            } else if (vu[F.БКРАТ_ПОЗ_ЭКСП] & 0x8000) {   // negative infinity
+            } else if (vu[F.БКРАТ_ПОЗ_ЭКСП] & 0x8000) {   // негатив infinity
                 эксп = цел.min;
             } else {   // positive infinity
                 эксп = цел.max;
@@ -531,7 +531,7 @@ enum КонтрольТочности : крат {
                 if (vl[МАНТИССА_ЛСБ] |( vl[МАНТИССА_МСБ]&0x0000_FFFF_FFFF_FFFF)) {  // НЧ
                     vl[МАНТИССА_МСБ] |= 0x0000_8000_0000_0000;  // преобразуй $(NAN)S в_ $(NAN)Q
                     эксп = цел.min;
-                } else if (vu[F.БКРАТ_ПОЗ_ЭКСП] & 0x8000) {   // negative infinity
+                } else if (vu[F.БКРАТ_ПОЗ_ЭКСП] & 0x8000) {   // негатив infinity
                     эксп = цел.min;
                 } else {   // positive infinity
                     эксп = цел.max;
@@ -556,7 +556,7 @@ enum КонтрольТочности : крат {
         if (ex == F.МАСКА_ЭКСП) {   // infinity or НЧ
             if (*vl==0x7FF0_0000_0000_0000) {  // positive infinity
                 эксп = цел.max;
-            } else if (*vl==0xFFF0_0000_0000_0000) { // negative infinity
+            } else if (*vl==0xFFF0_0000_0000_0000) { // негатив infinity
                 эксп = цел.min;
             } else { // НЧ
                 *vl |= 0x0008_0000_0000_0000;  // преобразуй $(NAN)S в_ $(NAN)Q
@@ -997,7 +997,7 @@ unittest
 /*********************************
  * Is the binary representation of x опрentical в_ y?
  *
- * Same as ==, except that positive и negative zero are not опрentical,
+ * Same as ==, except that positive и негатив zero are not опрentical,
  * и two $(NAN)s are опрentical if they have the same 'payload'.
  */
 
@@ -1216,7 +1216,7 @@ unittest
         }     
         бдол*   ps = cast(бдол *)&e;
         if (ps[МАНТИССА_ЛСБ] & 0x8000_0000_0000_0000)  { // Negative число
-            if (ps[МАНТИССА_ЛСБ]==0 && ps[МАНТИССА_МСБ] == 0x8000_0000_0000_0000) { // it was negative zero
+            if (ps[МАНТИССА_ЛСБ]==0 && ps[МАНТИССА_МСБ] == 0x8000_0000_0000_0000) { // it was негатив zero
                 ps[МАНТИССА_ЛСБ] = 0x0000_0000_0000_0001; // change в_ smallest subnormal
                 ps[МАНТИССА_МСБ] = 0;
                 return x;
@@ -1243,7 +1243,7 @@ unittest
             --*ps;
             // Need в_ маска with 0x7FFF... so subnormals are treated correctly.
             if ((*ps & 0x7FFF_FFFF_FFFF_FFFF) == 0x7FFF_FFFF_FFFF_FFFF) {
-                if (pe[F.БКРАТ_ПОЗ_ЭКСП] == 0x8000) { // it was negative zero
+                if (pe[F.БКРАТ_ПОЗ_ЭКСП] == 0x8000) { // it was негатив zero
                     *ps = 1;
                     pe[F.БКРАТ_ПОЗ_ЭКСП] = 0; // smallest subnormal.
                     return x;
@@ -1283,7 +1283,7 @@ unittest
         return x; // +INF и NAN are unchanged.
     }
     if (*ps & 0x8000_0000_0000_0000)  { // Negative число
-        if (*ps == 0x8000_0000_0000_0000) { // it was negative zero
+        if (*ps == 0x8000_0000_0000_0000) { // it was негатив zero
             *ps = 0x0000_0000_0000_0001; // change в_ smallest subnormal
             return x;
         }
@@ -1305,7 +1305,7 @@ unittest
         return x; // +INF и NAN are unchanged.
     }
     if (*ps & 0x8000_0000)  { // Negative число
-        if (*ps == 0x8000_0000) { // it was negative zero
+        if (*ps == 0x8000_0000) { // it was негатив zero
             *ps = 0x0000_0001; // change в_ smallest subnormal
             return x;
         }
@@ -1323,7 +1323,7 @@ unittest {
   // Tests for 80-битные reals
 
     assert(идентичен_ли(следщВыше(НЧ(0xABC)), НЧ(0xABC)));
-    // negative numbers
+    // негатив numbers
     assert( следщВыше(-реал.infinity) == -реал.max );
     assert( следщВыше(-1-реал.epsilon) == -1.0 );
     assert( следщВыше(-2) == -2.0 + реал.epsilon);
@@ -1343,7 +1343,7 @@ unittest {
  }
 
     assert(идентичен_ли(следщДвоВыше(НЧ(0xABC)), НЧ(0xABC)));
-    // negative numbers
+    // негатив numbers
     assert( следщДвоВыше(-дво.infinity) == -дво.max );
     assert( следщДвоВыше(-1-дво.epsilon) == -1.0 );
     assert( следщДвоВыше(-2) == -2.0 + дво.epsilon);
@@ -1523,7 +1523,7 @@ unittest {
 
     // The difference in абс(exponent) between x or y и абс(x-y)
     // is equal в_ the число of significand биты of x which are
-    // equal в_ y. If negative, x и y have different exponents.
+    // equal в_ y. If негатив, x и y have different exponents.
     // If positive, x и y are equal в_ 'bitsdiff' биты.
     // AND with 0x7FFF в_ form the абсолютный значение.
     // To avoопр out-by-1 ошибки, we вычти 1 so it rounds down

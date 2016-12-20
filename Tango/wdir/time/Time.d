@@ -285,7 +285,7 @@ struct ИнтервалВремени
         /**
          * Negate a время вринтервал
          *
-         * Возвращает: The negative equivalent в_ this время вринтервал
+         * Возвращает: The негатив equivalent в_ this время вринтервал
          */
         ИнтервалВремени opNeg()
         {

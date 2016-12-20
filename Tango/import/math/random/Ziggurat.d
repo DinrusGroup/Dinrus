@@ -12,7 +12,7 @@ import core.Traits;
 
 /// ziggurat метод for decreasing distributions.
 /// Marsaglia, Tsang, Journal of Statistical Software, 2000
-/// If имеется negative is да the ни в каком дистрибутиве is assumed в_ be symmetric with respect в_ 0, 
+/// If имеется негатив is да the ни в каком дистрибутиве is assumed в_ be symmetric with respect в_ 0, 
 /// otherwise it is assumed в_ be из_ 0 в_ infinity.
 /// Struct based в_ avoопр extra indirection when wrapped in a class (и it should be wrapped
 /// in a class и not использован directly).

@@ -337,7 +337,7 @@ struct ФСистема
                         If a quota предел есть_ли for this area, that will be taken 
                         преобр_в account unless superuser is установи в_ да.
 
-                        If a пользователь есть exceeded the quota, a negative число can 
+                        If a пользователь есть exceeded the quota, a негатив число can 
                         be returned.
 
                         Note that the difference between total available пространство
@@ -546,7 +546,7 @@ struct ФСистема
                         If a quota предел есть_ли for this area, that will be taken 
                         преобр_в account unless superuser is установи в_ да.
 
-                        If a пользователь есть exceeded the quota, a negative число can 
+                        If a пользователь есть exceeded the quota, a негатив число can 
                         be returned.
 
                         Note that the difference between total available пространство

@@ -121,7 +121,7 @@ class БзипВывод : ФильтрВывода
 
     т_мера пиши(проц[] ист)
     {
-        check_valid();
+        проверьГожесть();
         scope(failure) kill_bzs();
 
         bzs.avail_in = ист.length;
@@ -196,7 +196,7 @@ class БзипВывод : ФильтрВывода
 
     проц подай()
     {
-        check_valid();
+        проверьГожесть();
         scope(failure) kill_bzs();
 
         bzs.avail_in = 0;
@@ -248,7 +248,7 @@ class БзипВывод : ФильтрВывода
     // unsets the bzs_valid flag.
     private проц kill_bzs()
     {
-        check_valid();
+        проверьГожесть();
 
         BZ2_bzCompressEnd(&bzs);
         bzs_valid = нет;
@@ -256,7 +256,7 @@ class БзипВывод : ФильтрВывода
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid()
+    private проц проверьГожесть()
     {
         if( !bzs_valid )
             throw new ИсклЗакрытБзип;
@@ -368,7 +368,7 @@ class БзипВвод : ФильтрВвода
 
     override ИПотокВвода слей()
     {
-        check_valid();
+        проверьГожесть();
 
         // TODO: What should this метод do?  We don't do any куча allocation,
         // so there's really nothing в_ сотри...  For сейчас, just invalidate the
@@ -382,7 +382,7 @@ class БзипВвод : ФильтрВвода
     // unsets the bzs_valid flag.
     private проц kill_bzs()
     {
-        check_valid();
+        проверьГожесть();
 
         BZ2_bzDecompressEnd(&bzs);
         bzs_valid = нет;
@@ -390,7 +390,7 @@ class БзипВвод : ФильтрВвода
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid()
+    private проц проверьГожесть()
     {
         if( !bzs_valid )
             throw new ИсклЗакрытБзип;

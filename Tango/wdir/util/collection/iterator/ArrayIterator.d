@@ -89,7 +89,7 @@ public class ArrayIterator(T) : GuardIterator!(T)
                    ++cur_;
                    return arr_[cur_];
                    }
-                throw new НетЭлементаИскл ("Exhausted Обходчик");
+                throw new НетЭлементаИскл ("Исчерпаный Обходчик");
         }
 
 

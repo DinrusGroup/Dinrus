@@ -262,7 +262,7 @@ class Грегориан : Календарь
 
         /**
          * Overrопрden. Returns a new Время with the specified число of месяцы
-         * добавьed.  If the месяцы are negative, the месяцы are subtracted.
+         * добавьed.  If the месяцы are негатив, the месяцы are subtracted.
          *
          * If the мишень месяц does not support the день component of the ввод
          * время, then an ошибка will be thrown, unless truncateDay is установи в_
@@ -274,7 +274,7 @@ class Грегориан : Календарь
          *
          * Параметры: t = A время в_ добавь the месяцы в_
          * Параметры: члоМес = The число of месяцы в_ добавь.  This can be
-         * negative.
+         * негатив.
          * Параметры: truncateDay = Round the день down в_ the maximum день of the
          * мишень месяц if necessary.
          *
@@ -330,10 +330,10 @@ class Грегориан : Календарь
          * Overrопрden.  Добавь the specified число of годы в_ the given Время.
          *
          * Note that the Грегориан Календарь takes преобр_в account that BC время
-         * is negative, и supports crossing из_ BC в_ AD.
+         * is негатив, и supports crossing из_ BC в_ AD.
          *
          * Параметры: t = A время в_ добавь the годы в_
-         * Параметры: члоЛет = The число of годы в_ добавь.  This can be negative.
+         * Параметры: члоЛет = The число of годы в_ добавь.  This can be негатив.
          *
          * Возвращает: A Время that represents the provопрed время with the число
          * of годы добавьed.
@@ -389,7 +389,7 @@ class Грегориан : Календарь
                         }
                         //
                         // numDays is the число of дни back из_ the конец of
-                        // the год, because the original тики were negative
+                        // the год, because the original тики were негатив
                         //
                         numDays = (статВисокосен_ли(год, эра) ? 366 : 365) - numDays - 1;
                 }
@@ -515,7 +515,7 @@ debug(UnitTest)
                 assert(d.деньнед == Грегориан.ДеньНедели.Вторник);
 
                 //
-                // проверь that it handles negative время
+                // проверь that it handles негатив время
                 //
                 t = Время.эпоха - ИнтервалВремени.изДней(366);
                 d = Грегориан.генерный.вДату(t);

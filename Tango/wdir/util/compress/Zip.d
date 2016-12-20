@@ -68,31 +68,31 @@ private
     align(1)
     struct ДанныеЛокалФайлЗага
     {
-        бкрат      extract_version = бкрат.max;
-        бкрат      general_flags = 0;
+        бкрат      версия_извлечения = бкрат.max;
+        бкрат      основные_флаги = 0;
         бкрат      метод_сжатия = 0;
-        бкрат      modification_file_time = 0;
-        бкрат      modification_file_date = 0;
+        бкрат      время_изменения_файла = 0;
+        бкрат      дата_изменения_файла = 0;
         бцел        crc_32 = 0; // offsetof = 10
         бцел        сжатый_размер = 0;
         бцел        разжатый_размер = 0;
-        бкрат      file_name_length = 0;
-        бкрат      extra_field_length = 0;
+        бкрат      длина_названия_файла = 0;
+        бкрат      экстрадлина_поля = 0;
 
         debug(ZIP) проц dump()
         {
             Стдош
             ("ЛокалФайлЗаг.Данные {")("\n")
-            ("  extract_version = ")(extract_version)("\n")
-            ("  general_flags = ")(general_flags)("\n")
+            ("  версия_извлечения = ")(версия_извлечения)("\n")
+            ("  основные_флаги = ")(основные_флаги)("\n")
             ("  метод_сжатия = ")(метод_сжатия)("\n")
-            ("  modification_file_time = ")(modification_file_time)("\n")
-            ("  modification_file_date = ")(modification_file_date)("\n")
+            ("  время_изменения_файла = ")(время_изменения_файла)("\n")
+            ("  дата_изменения_файла = ")(дата_изменения_файла)("\n")
             ("  crc_32 = ")(crc_32)("\n")
             ("  сжатый_размер = ")(сжатый_размер)("\n")
             ("  разжатый_размер = ")(разжатый_размер)("\n")
-            ("  file_name_length = ")(file_name_length)("\n")
-            ("  extra_field_length = ")(extra_field_length)("\n")
+            ("  длина_названия_файла = ")(длина_названия_файла)("\n")
+            ("  экстрадлина_поля = ")(экстрадлина_поля)("\n")
             ("}").нс;
         }
     }
@@ -132,8 +132,8 @@ struct ЛокалФайлЗаг
 
         // Update lengths in данные
         Данные данные = this.данные;
-        данные.file_name_length = cast(бкрат) имя_файла.length;
-        данные.extra_field_length = cast(бкрат) допполе.length;
+        данные.длина_названия_файла = cast(бкрат) имя_файла.length;
+        данные.экстрадлина_поля = cast(бкрат) допполе.length;
 
         // Do it
         version( БигЭндиан ) свопВсе(данные);
@@ -149,12 +149,12 @@ struct ЛокалФайлЗаг
 
         //debug(ZIP) данные.dump;
 
-        auto врем = new ббайт[данные.file_name_length];
+        auto врем = new ббайт[данные.длина_названия_файла];
         читайРовно(ист, врем);
-        имя_файла = cp437_to_utf8(врем);
+        имя_файла = кс437_в_утф8(врем);
         if( cast(сим*) врем.ptr !is имя_файла.ptr ) delete врем;
 
-        допполе = new ббайт[данные.extra_field_length];
+        допполе = new ббайт[данные.экстрадлина_поля];
         читайРовно(ист, допполе);
     }
 
@@ -169,11 +169,11 @@ struct ЛокалФайлЗаг
         // an assertion in certain archives. I найдено a mention of these fields being
         // allowed в_ be different, so I think it in general is wrong в_ include in
         // this sanity check. larsivi 20081111
-        if( данные.extract_version != h.данные.extract_version
-                || данные.general_flags != h.данные.general_flags
+        if( данные.версия_извлечения != h.данные.версия_извлечения
+                || данные.основные_флаги != h.данные.основные_флаги
                 || данные.метод_сжатия != h.данные.метод_сжатия
-                || данные.modification_file_time != h.данные.modification_file_time
-                || данные.modification_file_date != h.данные.modification_file_date
+                || данные.время_изменения_файла != h.данные.время_изменения_файла
+                || данные.дата_изменения_файла != h.данные.дата_изменения_файла
                 || данные.crc_32 != h.данные.crc_32
                 || данные.сжатый_размер != h.данные.сжатый_размер
                 || данные.разжатый_размер != h.данные.разжатый_размер
@@ -203,16 +203,16 @@ struct ЛокалФайлЗаг
     {
         ббайт       версия_зип;
         ббайт       тип_файл_атров;
-        бкрат      extract_version;
-        бкрат      general_flags;
+        бкрат      версия_извлечения;
+        бкрат      основные_флаги;
         бкрат      метод_сжатия;
-        бкрат      modification_file_time;
-        бкрат      modification_file_date;
+        бкрат      время_изменения_файла;
+        бкрат      дата_изменения_файла;
         бцел        crc_32;
         бцел        сжатый_размер;
         бцел        разжатый_размер;
-        бкрат      file_name_length;
-        бкрат      extra_field_length;
+        бкрат      длина_названия_файла;
+        бкрат      экстрадлина_поля;
         бкрат      file_comment_length;
         бкрат      disk_number_start;
         бкрат      internal_file_attributes = 0;
@@ -225,16 +225,16 @@ struct ЛокалФайлЗаг
             ("ФайлЗаг.Данные {\n")
             ("  версия_зип = ")(версия_зип)("\n")
             ("  тип_файл_атров = ")(тип_файл_атров)("\n")
-            ("  extract_version = ")(extract_version)("\n")
-            ("  general_flags = ")(general_flags)("\n")
+            ("  версия_извлечения = ")(версия_извлечения)("\n")
+            ("  основные_флаги = ")(основные_флаги)("\n")
             ("  метод_сжатия = ")(метод_сжатия)("\n")
-            ("  modification_file_time = ")(modification_file_time)("\n")
-            ("  modification_file_date = ")(modification_file_date)("\n")
+            ("  время_изменения_файла = ")(время_изменения_файла)("\n")
+            ("  дата_изменения_файла = ")(дата_изменения_файла)("\n")
             ("  crc_32 = ")(crc_32)("\n")
             ("  сжатый_размер = ")(сжатый_размер)("\n")
             ("  разжатый_размер = ")(разжатый_размер)("\n")
-            ("  file_name_length = ")(file_name_length)("\n")
-            ("  extra_field_length = ")(extra_field_length)("\n")
+            ("  длина_названия_файла = ")(длина_названия_файла)("\n")
+            ("  экстрадлина_поля = ")(экстрадлина_поля)("\n")
             ("  file_comment_length = ")(file_comment_length)("\n")
             ("  disk_number_start = ")(disk_number_start)("\n")
             ("  internal_file_attributes = ")(internal_file_attributes)("\n")
@@ -246,16 +246,16 @@ struct ЛокалФайлЗаг
 
         проц fromLocal(ЛокалФайлЗаг.Данные данные)
         {
-            extract_version = данные.extract_version;
-            general_flags = данные.general_flags;
+            версия_извлечения = данные.версия_извлечения;
+            основные_флаги = данные.основные_флаги;
             метод_сжатия = данные.метод_сжатия;
-            modification_file_time = данные.modification_file_time;
-            modification_file_date = данные.modification_file_date;
+            время_изменения_файла = данные.время_изменения_файла;
+            дата_изменения_файла = данные.дата_изменения_файла;
             crc_32 = данные.crc_32;
             сжатый_размер = данные.сжатый_размер;
             разжатый_размер = данные.разжатый_размер;
-            file_name_length = данные.file_name_length;
-            extra_field_length = данные.extra_field_length;
+            длина_названия_файла = данные.длина_названия_файла;
+            экстрадлина_поля = данные.экстрадлина_поля;
         }
     }
 
@@ -273,17 +273,17 @@ struct ФайлЗаг
 
     бул используетДескрипторДанных()
     {
-        return !!(данные.general_flags & 1<<3);
+        return !!(данные.основные_флаги & 1<<3);
     }
 
     бцел опцииСжатия()
     {
-        return (данные.general_flags >> 1) & 0b11;
+        return (данные.основные_флаги >> 1) & 0b11;
     }
 
     бул используетУтф8()
     {
-        //return !!(данные.general_flags & 1<<11);
+        //return !!(данные.основные_флаги & 1<<11);
         return нет;
     }
 
@@ -320,8 +320,8 @@ struct ФайлЗаг
 
         // Update the lengths
         Данные данные = *(this.данные);
-        данные.file_name_length = cast(бкрат) имя_файла.length;
-        данные.extra_field_length = cast(бкрат) допполе.length;
+        данные.длина_названия_файла = cast(бкрат) имя_файла.length;
+        данные.экстрадлина_поля = cast(бкрат) допполе.length;
         данные.file_comment_length = cast(бкрат) комментарий_файла.length;
 
         // Ok; let's do this!
@@ -346,16 +346,16 @@ struct ФайлЗаг
 
         ткст function(ббайт[]) conv_fn;
         if( используетУтф8 )
-            conv_fn = &cp437_to_utf8;
+            conv_fn = &кс437_в_утф8;
         else
             conv_fn = &utf8_to_utf8;
 
         имя_файла = conv_fn(
-                cast(ббайт[]) ист[0..данные.file_name_length]);
-        ист = ист[данные.file_name_length..$];
+                cast(ббайт[]) ист[0..данные.длина_названия_файла]);
+        ист = ист[данные.длина_названия_файла..$];
 
-        допполе = cast(ббайт[]) ист[0..данные.extra_field_length];
-        ист = ист[данные.extra_field_length..$];
+        допполе = cast(ббайт[]) ист[0..данные.экстрадлина_поля];
+        ист = ист[данные.экстрадлина_поля..$];
 
         комментарий_файла = conv_fn(
                 cast(ббайт[]) ист[0..данные.file_comment_length]);
@@ -908,10 +908,10 @@ private:
     ИПотокВвода open_file(ФайлЗаг заголовок, бул необр)
     {
         // Check в_ сделай sure that we actually *can* открой this файл.
-        if( заголовок.данные.extract_version > MAX_EXTRACT_VERSION )
-            ZIPNotSupportedException.zИПver(заголовок.данные.extract_version);
+        if( заголовок.данные.версия_извлечения > MAX_EXTRACT_VERSION )
+            ZIPNotSupportedException.zИПver(заголовок.данные.версия_извлечения);
 
-        if( заголовок.данные.general_flags & UNSUPPORTED_FLAGS )
+        if( заголовок.данные.основные_флаги & UNSUPPORTED_FLAGS )
             ZIPNotSupportedException.флаги;
 
         if( toMethod(заголовок.данные.метод_сжатия) == Метод.Unsupported )
@@ -1149,15 +1149,15 @@ private:
         // Write out local файл заголовок
         ЛокалФайлЗаг.Данные lhdata;
         auto chdata = Запись.заголовок.данные;
-        lhdata.extract_version = chdata.extract_version;
-        lhdata.general_flags = chdata.general_flags;
+        lhdata.версия_извлечения = chdata.версия_извлечения;
+        lhdata.основные_флаги = chdata.основные_флаги;
         lhdata.метод_сжатия = chdata.метод_сжатия;
         lhdata.crc_32 = chdata.crc_32;
         lhdata.сжатый_размер = chdata.сжатый_размер;
         lhdata.разжатый_размер = chdata.разжатый_размер;
 
-        timeToDos(инфо.изменён, lhdata.modification_file_time,
-                                 lhdata.modification_file_date);
+        timeToDos(инфо.изменён, lhdata.время_изменения_файла,
+                                 lhdata.дата_изменения_файла);
 
         put_local_header(lhdata, инфо.имя);
 
@@ -1308,8 +1308,8 @@ private:
         ЛокалФайлЗаг.Данные данные;
 
         данные.метод_сжатия = fromMethod(метод);
-        timeToDos(инфо.изменён, данные.modification_file_time,
-                                 данные.modification_file_date);
+        timeToDos(инфо.изменён, данные.время_изменения_файла,
+                                 данные.дата_изменения_файла);
 
         put_local_header(данные, инфо.имя);
     }
@@ -1325,7 +1325,7 @@ private:
         auto p = Путь.разбор(f_name);
 
         // Compute ZIP version
-        if( данные.extract_version == данные.extract_version.max )
+        if( данные.версия_извлечения == данные.версия_извлечения.max )
         {
 
             бкрат zИПver = 10;
@@ -1346,7 +1346,7 @@ private:
                     // Is a дир, not a реал файл
                     minver(20);
             }
-            данные.extract_version = zИПver;
+            данные.версия_извлечения = zИПver;
         }
 
         /+// Encode имяф
@@ -1358,7 +1358,7 @@ private:
         if( file_name_437.length > бкрат.max )
             ИсклЗип.fntoolong;
 
-        данные.file_name_length = file_name_437.length;+/
+        данные.длина_названия_файла = file_name_437.length;+/
 
         ЛокалФайлЗаг заголовок;
         заголовок.данные = данные;
@@ -1512,8 +1512,8 @@ private:
         with( инфо )
         {
             имя = Путь.стандарт(заголовок.имя_файла.dup);
-            dosToTime(заголовок.данные.modification_file_time,
-                      заголовок.данные.modification_file_date,
+            dosToTime(заголовок.данные.время_изменения_файла,
+                      заголовок.данные.дата_изменения_файла,
                       изменён);
             коммент = заголовок.комментарий_файла.dup;
         }
@@ -1999,7 +1999,7 @@ const ткст[] cp437_to_utf8_map_high = [
     "\u207f",   "\u00b2",   "\u25a0",   "\u00a0"
 ];
 
-ткст cp437_to_utf8(ббайт[] s)
+ткст кс437_в_утф8(ббайт[] s)
 {
     foreach( i,c ; s )
     {
@@ -2059,7 +2059,7 @@ debug( UnitTest )
 {
     unittest
     {
-        ткст c(ткст s) { return cp437_to_utf8(cast(ббайт[]) s); }
+        ткст c(ткст s) { return кс437_в_утф8(cast(ббайт[]) s); }
 
         auto s = c("Hi there \x01 old \x0c!");
         assert( s == "Hi there \u263a old \u2640!", "\""~s~"\"" );
@@ -2175,7 +2175,7 @@ debug( UnitTest )
 {
     unittest
     {
-        alias cp437_to_utf8 x;
+        alias кс437_в_утф8 x;
         alias utf8_to_cp437 y;
 
         ббайт[256] s;

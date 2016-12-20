@@ -522,7 +522,7 @@ int inflateEnd(z_streamp strm);
 int deflateInit2 (z_streamp strm,
                                   int       level,
                                   int       method,
-                                  int       windowBits,
+                                  int       окноБиты,
                                   int       memLevel,
                                   int       strategy);
 
@@ -533,18 +533,18 @@ int deflateInit2 (z_streamp strm,
      The method parameter is the compression method. It must be Z_DEFLATED in
    this version of the library.
 
-     The windowBits parameter is the base two logarithm of the window size
+     The окноБиты parameter is the base two logarithm of the window size
    (the size of the history buffer). It should be in the range 8..15 for this
    version of the library. Larger values of this parameter result in better
    compression at the expense of memory usage. The default value is 15 if
    deflateInit is used instead.
 
-     windowBits can also be -8..-15 for raw deflate. In this case, -windowBits
+     окноБиты can also be -8..-15 for raw deflate. In this case, -окноБиты
    determines the window size. deflate() will then generate raw deflate data
    with no zlib header or trailer, and will not compute an adler32 check value.
 
-     windowBits can also be greater than 15 for optional gzip encoding. Add
-   16 to windowBits to write a simple gzip header and trailer around the
+     окноБиты can also be greater than 15 for optional gzip encoding. Add
+   16 to окноБиты to write a simple gzip header and trailer around the
    compressed data instead of a zlib wrapper. The gzip header will have no
    file name, no extra data, no comment, no modification time (set to zero),
    no header crc, and the operating system will be set to 255 (unknown).  If a
@@ -554,7 +554,7 @@ int deflateInit2 (z_streamp strm,
    for the internal compression state. memLevel=1 uses minimum memory but
    is slow and reduces compression ratio; memLevel=9 uses maximum memory
    for optimal speed. The default value is 8. See zconf.h for total memory
-   usage as a function of windowBits and memLevel.
+   usage as a function of окноБиты and memLevel.
 
      The strategy parameter is used to tune the compression algorithm. Use the
    value Z_DEFAULT_STRATEGY for normal data, Z_FILTERED for data produced by a
@@ -734,22 +734,22 @@ int deflateSetHeader(z_streamp  strm,
 
 /*
 int inflateInit2(z_streamp strm,
-                 int       windowBits);
+                 int       окноБиты);
 
      This is another version of inflateInit with an extra parameter. The
    fields next_in, avail_in, zalloc, zfree and opaque must be initialized
    before by the caller.
 
-     The windowBits parameter is the base two logarithm of the maximum window
+     The окноБиты parameter is the base two logarithm of the maximum window
    size (the size of the history buffer).  It should be in the range 8..15 for
    this version of the library. The default value is 15 if inflateInit is used
-   instead. windowBits must be greater than or equal to the windowBits value
+   instead. окноБиты must be greater than or equal to the окноБиты value
    provided to deflateInit2() while compressing, or it must be equal to 15 if
    deflateInit2() was not used. If a compressed stream with a larger window
    size is given as input, inflate() will return with the error code
    Z_DATA_ERROR instead of trying to allocate a larger window.
 
-     windowBits can also be -8..-15 for raw inflate. In this case, -windowBits
+     окноБиты can also be -8..-15 for raw inflate. In this case, -окноБиты
    determines the window size. inflate() will then process raw deflate data,
    not looking for a zlib or gzip header, not generating a check value, and not
    looking for any check values for сравнение at the end of the stream. This
@@ -759,10 +759,10 @@ int inflateInit2(z_streamp strm,
    recommended that a check value such as an adler32 or a crc32 be applied to
    the uncompressed data as is done in the zlib, gzip, and zip formats.  For
    most applications, the zlib format should be used as is. Note that comments
-   above on the use in deflateInit2() applies to the magnitude of windowBits.
+   above on the use in deflateInit2() applies to the magnitude of окноБиты.
 
-     windowBits can also be greater than 15 for optional gzip decoding. Add
-   32 to windowBits to enable zlib and gzip decoding with automatic header
+     окноБиты can also be greater than 15 for optional gzip decoding. Add
+   32 to окноБиты to enable zlib and gzip decoding with automatic header
    detection, or add 16 to decode only the gzip format (the zlib format will
    return a Z_DATA_ERROR).  If a gzip stream is being decoded, strm->adler is
    a crc32 instead of an adler32.
@@ -896,16 +896,16 @@ int inflateGetHeader(z_streamp  strm,
 
 /*
 int inflateBackInit(z_streamp strm,
-                    int       windowBits,
+                    int       окноБиты,
                     ubyte*    window);
 
      Initialize the internal stream state for decompression using inflateBack()
    calls.  The fields zalloc, zfree and opaque in strm must be initialized
    before the call.  If zalloc and zfree are Z_NULL, then the default library-
-   derived memory allocation routines are used.  windowBits is the base two
+   derived memory allocation routines are used.  окноБиты is the base two
    logarithm of the window size, in the range 8..15.  window is a caller
    supplied buffer of that size.  Except for special applications where it is
-   assured that deflate was used with small window sizes, windowBits must be 15
+   assured that deflate was used with small window sizes, окноБиты must be 15
    and a 32K byte window must be supplied to be able to decompress general
    deflate streams.
 
@@ -1372,17 +1372,17 @@ int inflateInit_(z_streamp  strm,
 int deflateInit2_(z_streamp strm,
                   int       level,
                   int       method,
-                  int       windowBits,
+                  int       окноБиты,
                   int       memLevel,
                   int       strategy,
                   char*     ver,
                   int       stream_size);
 int inflateInit2_(z_streamp strm,
-                  int       windowBits,
+                  int       окноБиты,
                   char*     ver,
                   int       stream_size);
 int inflateBackInit_(z_streamp strm,
-                     int       windowBits,
+                     int       окноБиты,
                      ubyte*    window,
                      char*     ver,
                      int       stream_size);
@@ -1406,14 +1406,14 @@ extern (D) int inflateInit(z_streamp  strm)
 extern (D) int deflateInit2(z_streamp strm,
                            int       level,
                            int       method,
-                           int       windowBits,
+                           int       окноБиты,
                            int       memLevel,
                            int       strategy)
 {
     return deflateInit2_(strm,
                          level,
                          method,
-                         windowBits,
+                         окноБиты,
                          memLevel,
                          strategy,
                          ZLIB_VERSION,
@@ -1421,20 +1421,20 @@ extern (D) int deflateInit2(z_streamp strm,
 }
 
 extern (D) int inflateInit2(z_streamp strm,
-                            int       windowBits)
+                            int       окноБиты)
 {
     return inflateInit2_(strm,
-                         windowBits,
+                         окноБиты,
                          ZLIB_VERSION,
                          z_stream.sizeof);
 }
 
 extern (D) int inflateBackInit(z_streamp strm,
-                               int       windowBits,
+                               int       окноБиты,
                                ubyte*    window)
 {
     return inflateBackInit_(strm,
-                            windowBits,
+                            окноБиты,
                             window,
                             ZLIB_VERSION,
                             z_stream.sizeof);

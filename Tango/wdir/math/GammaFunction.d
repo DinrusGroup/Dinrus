@@ -187,7 +187,7 @@ unittest {
  * Аргументы |x| <= 13 are reduced by recurrence и the function
  * approximated by a rational function of degree 7/8 in the
  * интервал (2,3).  Large аргументы are handled by Stirling's
- * formula. Large negative аргументы are made positive using
+ * formula. Large негатив аргументы are made positive using
  * a reflection formula.
  */
 
@@ -201,7 +201,7 @@ unittest {
 
     if ( q > 13.0L )    {
         // Large аргументы are handled by Stirling's
-        // formula. Large negative аргументы are made positive using
+        // formula. Large негатив аргументы are made positive using
         // the reflection formula.
 
         if ( x < 0.0L ) {
@@ -1375,13 +1375,13 @@ assert(gammaIncompleteComplInv(3, 0)==реал.infinity);
         5.0L/(66*10), -691.0L/(2730*12), 7.0L/(6*14) ];
 
     реал p, q, nz, s, w, y, z;
-    цел i, n, negative;
+    цел i, n, негатив;
 
-    negative = 0;
+    негатив = 0;
     nz = 0.0;
 
     if ( x <= 0.0 ) {
-        negative = 1;
+        негатив = 1;
         q = x;
         p = пол(q);
         if( p == q ) {
@@ -1432,7 +1432,7 @@ assert(gammaIncompleteComplInv(3, 0)==реал.infinity);
     y = лог(s)  -  0.5L/s  -  y  -  w;
 
 готово:
-    if ( negative ) {
+    if ( негатив ) {
         y -= nz;
     }
     return y;

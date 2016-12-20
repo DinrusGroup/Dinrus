@@ -117,7 +117,7 @@ deprecated public class TreeMap(K, T) : КоллекцияКарт!(K, T), Sorte
          *
          * @param fst первый аргумент
          * @param snd секунда аргумент
-         * Возвращает: a negative число if fst is less than snd; a
+         * Возвращает: a негатив число if fst is less than snd; a
          * positive число if fst is greater than snd; else 0
         **/
 
@@ -135,7 +135,7 @@ deprecated public class TreeMap(K, T) : КоллекцияКарт!(K, T), Sorte
          *
          * @param fst первый аргумент
          * @param snd секунда аргумент
-         * Возвращает: a negative число if fst is less than snd; a
+         * Возвращает: a негатив число if fst is less than snd; a
          * positive число if fst is greater than snd; else 0
         **/
 

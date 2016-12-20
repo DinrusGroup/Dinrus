@@ -68,16 +68,16 @@ private
     align(1)
     struct ДанныеЛокалФайлЗага
     {
-        бкрат      extract_version = бкрат.max;
-        бкрат      general_flags = 0;
+        бкрат      версия_извлечения = бкрат.max;
+        бкрат      основные_флаги = 0;
         бкрат      метод_сжатия = 0;
-        бкрат      modification_file_time = 0;
-        бкрат      modification_file_date = 0;
+        бкрат      время_изменения_файла = 0;
+        бкрат      дата_изменения_файла = 0;
         бцел        crc_32 = 0; // offsetof = 10
         бцел        сжатый_размер = 0;
         бцел        разжатый_размер = 0;
-        бкрат      file_name_length = 0;
-        бкрат      extra_field_length = 0;
+        бкрат      длина_названия_файла = 0;
+        бкрат      экстрадлина_поля = 0;
 
         debug(ZIP) проц dump();
     }
@@ -118,16 +118,16 @@ struct ЛокалФайлЗаг
     {
         ббайт       версия_зип;
         ббайт       тип_файл_атров;
-        бкрат      extract_version;
-        бкрат      general_flags;
+        бкрат      версия_извлечения;
+        бкрат      основные_флаги;
         бкрат      метод_сжатия;
-        бкрат      modification_file_time;
-        бкрат      modification_file_date;
+        бкрат      время_изменения_файла;
+        бкрат      дата_изменения_файла;
         бцел        crc_32;
         бцел        сжатый_размер;
         бцел        разжатый_размер;
-        бкрат      file_name_length;
-        бкрат      extra_field_length;
+        бкрат      длина_названия_файла;
+        бкрат      экстрадлина_поля;
         бкрат      file_comment_length;
         бкрат      disk_number_start;
         бкрат      internal_file_attributes = 0;
@@ -914,13 +914,13 @@ const ткст[] cp437_to_utf8_map_high = [
     "\u207f",   "\u00b2",   "\u25a0",   "\u00a0"
 ];
 
-ткст cp437_to_utf8(ббайт[] s);
+ткст кс437_в_утф8(ббайт[] s);
 
 debug( UnitTest )
 {
     unittest
     {
-        ткст c(ткст s) { return cp437_to_utf8(cast(ббайт[]) s); }
+        ткст c(ткст s) { return кс437_в_утф8(cast(ббайт[]) s); }
 
         auto s = c("Hi there \x01 old \x0c!");
         assert( s == "Hi there \u263a old \u2640!", "\""~s~"\"" );
@@ -996,7 +996,7 @@ debug( UnitTest )
 {
     unittest
     {
-        alias cp437_to_utf8 x;
+        alias кс437_в_утф8 x;
         alias utf8_to_cp437 y;
 
         ббайт[256] s;

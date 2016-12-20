@@ -1062,7 +1062,7 @@ private template ЛинейнаяАлгебра(т_плав)
         Парамы:
             Q = Output matrix, will be orthogonal after decomposition.
                 Argument shouldn't be null.
-            S = Output matrix, will be symmetric non-negative definite after
+            S = Output matrix, will be symmetric non-негатив definite after
                 decomposition. Argument shouldn't be null.
 
         Примеры:
@@ -1368,7 +1368,7 @@ private template ЛинейнаяАлгебра(т_плав)
         Парамы:
             Q = Output matrix, will be orthogonal after decomposition.
                 Argument shouldn't be null.
-            S = Output matrix, will be symmetric non-negative definite after
+            S = Output matrix, will be symmetric non-негатив definite after
                 decomposition. Argument shouldn't be null.
 
         Примеры:

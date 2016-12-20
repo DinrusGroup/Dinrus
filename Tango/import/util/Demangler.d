@@ -1304,11 +1304,11 @@ public class Demangler
                 return да;
             }
 
-            бул negative = нет;
+            бул негатив = нет;
             if (ввод[0] == 'N')
             {
                 используй (1);
-                negative = да;
+                негатив = да;
             }
 
             бдол num;

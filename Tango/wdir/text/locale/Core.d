@@ -1121,8 +1121,8 @@ version (Clone)
   }
 
   /**
-   * $(I Property.) Retrieves the форматируй образец for negative numbers.
-   * Возвращает: The форматируй образец for negative numbers. For инвариантныйФормат, the default is 1 (representing "-n").
+   * $(I Property.) Retrieves the форматируй образец for негатив numbers.
+   * Возвращает: The форматируй образец for негатив numbers. For инвариантныйФормат, the default is 1 (representing "-n").
    * Remarks: The following таблица shows действителен значения for this property.
    *
    * <таблица class="definitionTable">
@@ -1138,8 +1138,8 @@ version (Clone)
     return numberNegativePattern_;
   }
   /**
-   * $(I Property.) Assigns the форматируй образец for negative numbers.
-   * Параметры: значение = The форматируй образец for negative numbers.
+   * $(I Property.) Assigns the форматируй образец for негатив numbers.
+   * Параметры: значение = The форматируй образец for негатив numbers.
    * Examples:
    * The following example shows the effect of the different образцы.
    * ---
@@ -1190,15 +1190,15 @@ version (Clone)
   }
 
   /**
-   * $(I Property.) Retrieves the formal образец в_ use for negative currency значения.
-   * Возвращает: The форматируй образец в_ use for negative currency значения.
+   * $(I Property.) Retrieves the formal образец в_ use for негатив currency значения.
+   * Возвращает: The форматируй образец в_ use for негатив currency значения.
    */
   public final цел валютнОтрицатОбразец() {
     return currencyNegativePattern_;
   }
   /**
-   * $(I Property.) Assigns the formal образец в_ use for negative currency значения.
-   * Параметры: значение = The форматируй образец в_ use for negative currency значения.
+   * $(I Property.) Assigns the formal образец в_ use for негатив currency значения.
+   * Параметры: значение = The форматируй образец в_ use for негатив currency значения.
    */
   public final проц валютнОтрицатОбразец(цел значение) {
     проверьТолькоЧтен();
@@ -1334,15 +1334,15 @@ version (Clone)
   }
 
   /**
-   * $(I Property.) Retrieves the ткст denoting that a число is negative.
-   * Возвращает: The ткст denoting that a число is negative. For example, "-".
+   * $(I Property.) Retrieves the ткст denoting that a число is негатив.
+   * Возвращает: The ткст denoting that a число is негатив. For example, "-".
    */
   public final ткст отрицатЗнак() {
     return negativeSign_;
   }
   /**
-   * $(I Property.) Assigns the ткст denoting that a число is negative.
-   * Параметры: значение = The ткст denoting that a число is negative.
+   * $(I Property.) Assigns the ткст denoting that a число is негатив.
+   * Параметры: значение = The ткст denoting that a число is негатив.
    */
   public final проц отрицатЗнак(ткст значение) {
     проверьТолькоЧтен();
@@ -1382,15 +1382,15 @@ version (Clone)
   }
 
   /**
-   * $(I Property.) Retrieves the ткст representing negative infinity.
-   * Возвращает: The ткст representing negative infinity. For example, "-Infinity".
+   * $(I Property.) Retrieves the ткст representing негатив infinity.
+   * Возвращает: The ткст representing негатив infinity. For example, "-Infinity".
    */
   public final ткст отрицатСимволБесконечности() {
     return negativeInfinitySymbol_;
   }
   /**
-   * $(I Property.) Assigns the ткст representing negative infinity.
-   * Параметры: значение = The ткст representing negative infinity.
+   * $(I Property.) Assigns the ткст representing негатив infinity.
+   * Параметры: значение = The ткст representing негатив infinity.
    */
   public final проц отрицатСимволБесконечности(ткст значение) {
     проверьТолькоЧтен();

@@ -40,14 +40,14 @@ private import text.convert.Integer : вТкст;
  * параметры getting in the way :)
  */
 
-private enum { CHUNKSIZE = 256 * 1024 };
+private enum { РАЗМЕР_ЧАНКА = 256 * 1024 };
 
-/* This constant specifies the default windowBits значение.  This is taken из_
+/* This constant specifies the default окноБиты значение.  This is taken из_
  * documentation in zlib.h.  It shouldn't break anything if zlib changes в_
  * a different default.
  */
 
-private enum { WINDOWBITS_DEFAULT = 15 };
+private enum { ОКНОБИТЫ_ДЕФОЛТ = 15 };
 
 /*******************************************************************************
   
@@ -107,11 +107,11 @@ class ВводЗлиб : ФильтрВвода
         ввод.читай(myContent);
         ---
 
-        The optional windowBits parameter is the основа two logarithm of the
+        The optional окноБиты parameter is the основа two logarithm of the
         window размер, and should be in the range 8-15, defaulting в_ 15 if not
-        specified.  добавьitionally, the windowBits parameter may be negative в_
+        specified.  добавьitionally, the окноБиты parameter may be негатив в_
         indicate that zlib should omit the стандарт zlib заголовок and trailer,
-        with the window размер being -windowBits.
+        with the window размер being -окноБиты.
         
       Параметры:
         поток = compressed ввод поток.
@@ -122,14 +122,14 @@ class ВводЗлиб : ФильтрВвода
             no кодировка; in this case, you must manually specify
             Кодировка.Нет.
             
-        windowBits =
+        окноБиты =
             the основа two logarithm of the window размер, and should be in the
             range 8-15, defaulting в_ 15 if not specified.
 
     ***************************************************************************/
 
     this(ИПотокВвода поток, Кодировка кодировка,
-            цел windowBits = WINDOWBITS_DEFAULT);
+            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ);
     
     /// ditto
     this(ИПотокВвода поток);
@@ -156,11 +156,11 @@ class ВводЗлиб : ФильтрВвода
     override ИПотокВвода слей();
     // This function kills the поток: it deallocates the internal состояние, and
     // unsets the zs_valid flag.
-    private проц kill_zs();
+    private проц туши_зп();
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid();
+    private проц проверьГожесть();
 }
 
 /*******************************************************************************
@@ -249,16 +249,16 @@ class ВыводЗлиб : ФильтрВывода
         вывод.пиши(myContent);
         ---
 
-        The optional windowBits parameter is the основа two logarithm of the
+        The optional окноБиты parameter is the основа two logarithm of the
         window размер, and should be in the range 8-15, defaulting в_ 15 if not
-        specified.  добавьitionally, the windowBits parameter may be negative в_
+        specified.  добавьitionally, the окноБиты parameter may be негатив в_
         indicate that zlib should omit the стандарт zlib заголовок and trailer,
-        with the window размер being -windowBits.
+        with the window размер being -окноБиты.
 
     ***************************************************************************/
 
     this(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
-            цел windowBits = WINDOWBITS_DEFAULT);
+            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ);
     
     /// ditto
     this(ИПотокВывода поток, Уровень уровень = Уровень.Нормальный);
@@ -309,11 +309,11 @@ class ВыводЗлиб : ФильтрВывода
 
     // This function kills the поток: it deallocates the internal состояние, and
     // unsets the zs_valid flag.
-    private проц kill_zs();
+    private проц туши_зп();
 
     // Asserts that the поток is still valid and usable (except that this
     // check doesn't получи elопрed with -release).
-    private проц check_valid();
+    private проц проверьГожесть();
 }
 
 /*******************************************************************************
@@ -462,7 +462,7 @@ unittest
         // don't forget в_ import Стдвыв somewhere.
         /+
         scope comp_gz = new Массив(2048);
-        scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, WINDOWBITS_DEFAULT);
+        scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, ОКНОБИТЫ_ДЕФОЛТ);
         comp.пиши(сообщение);
         comp.закрой;
         

@@ -467,7 +467,7 @@ enum КонтрольТочности : крат {
 /*********************************
  * Is the binary representation of x опрentical в_ y?
  *
- * Same as ==, except that positive и negative zero are not опрentical,
+ * Same as ==, except that positive и негатив zero are not опрentical,
  * и two $(NAN)s are опрentical if they have the same 'payload'.
  */
 
@@ -661,7 +661,7 @@ X разбейЗначимое(X)(ref X x)
 
     // The difference in абс(exponent) between x or y и абс(x-y)
     // is equal в_ the число of significand биты of x which are
-    // equal в_ y. If negative, x и y have different exponents.
+    // equal в_ y. If негатив, x и y have different exponents.
     // If positive, x и y are equal в_ 'bitsdiff' биты.
     // AND with 0x7FFF в_ form the абсолютный значение.
     // To avoопр out-by-1 ошибки, we вычти 1 so it rounds down

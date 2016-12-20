@@ -111,7 +111,7 @@ extern (C)
 
     struct EVP_CIPHER_CTX
     {
-        ук cИПher;
+        ук cipher;
         ук engine;
         цел зашифруй;
         цел buf_len;
@@ -124,7 +124,7 @@ extern (C)
         ук ap_data;
         цел key_len;
         c_ulong flags;
-        ук cИПher_data;
+        ук cipher_data;
         цел final_used;
         цел block_mask;
         ббайт[EVP_MAX_BLOCK_LENGTH] finalv;
@@ -132,7 +132,7 @@ extern (C)
     
     // fallback for OpenSSL 0.9.7l 28 Sep 2006 that defines only macros
     цел EVP_CIPHER_CTX_block_size_097l(EVP_CIPHER_CTX *e){
-        return *((cast(цел*)e.cИПher)+1);
+        return *((cast(цел*)e.cipher)+1);
     }
 
     struct BIO 
@@ -214,7 +214,7 @@ extern (C)
     typedef проц function(SSL_CTX *ctx, цел mode, цел function(цел, X509_STORE_CTX *) callback) tSSL_CTX_set_verify;
     typedef проц function(EVP_PKEY *pkey) tEVP_PKEY_free;
     typedef цел function(SSL_CTX *ctx, цел cmd, цел larg, ук parg) tSSL_CTX_ctrl;
-    typedef цел function(SSL_CTX *ctx, сим *str) tSSL_CTX_set_cИПher_list;
+    typedef цел function(SSL_CTX *ctx, сим *str) tSSL_CTX_set_cipher_list;
     typedef проц function(SSL_CTX *) tSSL_CTX_free;
     typedef проц function() tSSL_load_error_strings;
     typedef проц function() tSSL_library_init;
@@ -239,7 +239,7 @@ extern (C)
     typedef цел function(SSL_CTX *ctx) tSSL_CTX_check_private_key;
     typedef EVP_PKEY* function(BIO *bp, EVP_PKEY **x, pem_password_cb *cb, ук u) tPEM_read_bio_PrivateKey;
     typedef BIO* function(сим *filename, сим *mode) tBIO_new_file;
-    typedef цел function() tERR_Просмотр_error;
+    typedef цел function() tERR_peek_error;
     typedef цел function(BIO *b, цел flags) tBIO_test_flags;
     typedef цел function(BIO *b, цел cmd, цел larg, ук parg) tBIO_ctrl; 
     typedef проц function(SSL *ssl, цел mode) tSSL_set_shutdown;
@@ -261,7 +261,7 @@ extern (C)
     typedef проц function(RSA *r) tRSA_free;
     typedef BIO* function(BIO_METHOD *тип) tBIO_new;
     typedef BIO_METHOD* function() tBIO_s_mem;
-    typedef цел function(BIO *bp, EVP_PKEY *x, EVP_CIPHER *cИПher, сим *kstr, цел klen, pem_password_cb, проц *) tPEM_write_bio_PKCS8PrivateKey;
+    typedef цел function(BIO *bp, EVP_PKEY *x, EVP_CIPHER *cipher, сим *kstr, цел klen, pem_password_cb, проц *) tPEM_write_bio_PKCS8PrivateKey;
     typedef EVP_CIPHER* function() tEVP_aes_256_cbc;
     typedef проц* function(d2i_of_void d2i, сим *name, BIO *bp, проц **x, pem_password_cb cb, ук u) tPEM_ASN1_read_bio;
     typedef X509* function() tX509_new;
@@ -413,7 +413,7 @@ tSSL_CTX_use_PrivateKey SSL_CTX_use_PrivateKey;
 tSSL_CTX_set_verify SSL_CTX_set_verify;
 tEVP_PKEY_free EVP_PKEY_free;
 tSSL_CTX_ctrl SSL_CTX_ctrl;
-tSSL_CTX_set_cИПher_list SSL_CTX_set_cИПher_list;
+tSSL_CTX_set_cipher_list SSL_CTX_set_cipher_list;
 tSSL_CTX_free SSL_CTX_free;
 tSSL_load_error_strings SSL_load_error_strings;
 tSSL_library_init SSL_library_init;
@@ -435,7 +435,7 @@ tCRYPTO_cleanup_all_ex_data CRYPTO_cleanup_all_ex_data;
 tSSL_CTX_check_private_key SSL_CTX_check_private_key;
 tPEM_read_bio_PrivateKey PEM_read_bio_PrivateKey;
 tBIO_new_file BIO_new_file;
-tERR_Просмотр_error ERR_Просмотр_error;
+tERR_peek_error ERR_peek_error;
 tBIO_ctrl BIO_ctrl;
 tSSL_get_shutdown SSL_get_shutdown;
 tSSL_set_shutdown SSL_set_shutdown;
@@ -629,7 +629,7 @@ static ЧЗМютекс[] _locks = null;
 
 проц выдайОшибкуОпенССЛ()
 {
-    if (ERR_Просмотр_error())
+    if (ERR_peek_error())
     {
         ткст строкаИскл;
 
@@ -783,7 +783,7 @@ version (Win32)
         вяжиФ(X509_NAME_add_entry_by_txt, "X509_NAME_add_entry_by_txt", ssllib);
         вяжиФ(PEM_read_bio_PrivateKey, "PEM_read_bio_PrivateKey", ssllib);
         вяжиФ(BIO_new_file, "BIO_new_file", ssllib);
-        вяжиФ(ERR_Просмотр_error, "ERR_Просмотр_error", ssllib);
+        вяжиФ(ERR_peek_error, "ERR_peek_error", ssllib);
         try
             вяжиФ(BIO_test_flags, "BIO_test_flags", ssllib); // 0.9.7 doesn't have this function, it access the struct directly
         catch (Исключение ex)
@@ -872,7 +872,7 @@ version (Win32)
         вяжиФ(SSL_CTX_use_PrivateKey, "SSL_CTX_use_PrivateKey", ssllib);
         вяжиФ(SSL_CTX_set_verify, "SSL_CTX_set_verify", ssllib);
         вяжиФ(SSL_CTX_ctrl, "SSL_CTX_ctrl", ssllib);
-        вяжиФ(SSL_CTX_set_cИПher_list, "SSL_CTX_set_cИПher_list", ssllib);
+        вяжиФ(SSL_CTX_set_cipher_list, "SSL_CTX_set_cipher_list", ssllib);
         вяжиФ(SSL_load_error_strings, "SSL_load_error_strings", ssllib);
         вяжиФ(SSL_library_init, "SSL_library_init", ssllib);
         вяжиФ(SSL_CTX_check_private_key, "SSL_CTX_check_private_key", ssllib);
@@ -885,7 +885,7 @@ version (Win32)
         version(Posix)
         {
             version(darwin){
-                ткст[] loadPathCrypto = [ "/usr/биб/libcrypto.dylib", "libcrypto.dylib" ];
+                ткст[] loadPathCrypto = [ "/usr/lib/libcrypto.dylib", "libcrypto.dylib" ];
                 cryptolib = грузиБиб(loadPathCrypto);
                 if (cryptolib !is null) вяжиКрипто(cryptolib);
             } else {

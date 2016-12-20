@@ -265,7 +265,7 @@ public abstract class Календарь
 
         /**
          * Returns a new Время with the specified число of месяцы добавьed.  If
-         * the месяцы are negative, the месяцы are subtracted.
+         * the месяцы are негатив, the месяцы are subtracted.
          *
          * If the мишень месяц does not support the день component of the ввод
          * время, then an ошибка will be thrown, unless truncateDay is установи в_
@@ -284,7 +284,7 @@ public abstract class Календарь
          *
          * Параметры: t = A время в_ добавь the месяцы в_
          * Параметры: члоМес = The число of месяцы в_ добавь.  This can be
-         * negative.
+         * негатив.
          * Параметры: truncateDay = Round the день down в_ the maximum день of the
          * мишень месяц if necessary.
          *
@@ -304,7 +304,7 @@ public abstract class Календарь
          * эра boundaries.  Derived classes may support this.
          *
          * Параметры: t = A время в_ добавь the годы в_
-         * Параметры: члоЛет = The число of годы в_ добавь.  This can be negative.
+         * Параметры: члоЛет = The число of годы в_ добавь.  This can be негатив.
          *
          * Возвращает: A Время that represents the provопрed время with the число
          * of годы добавьed.
