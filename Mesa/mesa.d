@@ -2,25 +2,19 @@
 import cidrus;
 //import ru.std.zlib;
 
-
-alias uint      GLenum;
-alias ubyte     GLboolean;
-alias uint      GLbitfield;
-alias void      GLvoid;
-alias byte      GLbyte;
-alias short     GLshort;
-alias int       GLint;
-alias ubyte     GLubyte;
-alias ushort    GLushort;
-alias uint      GLuint;
-alias int       GLsizei;
-alias float     GLfloat;
-alias float     GLclampf;
-alias double    GLdouble;
-alias double    GLclampd;
-alias char      GLchar;
-alias ptrdiff_t GLintptr;
-alias ptrdiff_t GLsizeiptr;
+alias бцел      Гперечень, GLenum, GLuint;
+alias байт      Гбайт, GLbyte;
+alias ббайт     Гбул, Гббайт, GLboolean, GLubyte;
+alias бцел      Гбитполе, GLbitfield;
+alias проц      Гпроц, GLvoid;
+alias цел       Гцел, Гцразм, GLint, GLsizei;
+alias плав      Гплав, Гклампп, GLfloat, GLclampf;
+alias дво       Гдво, Гклампд, GLdouble, GLclampd;
+alias крат      Гкрат, GLshort;
+alias бкрат     Гбкрат, GLushort;
+alias т_дельтаук Гцелук, GLintptr;
+alias т_дельтаук Гцразмук, GLsizeiptr;
+alias сим       Гсим, GLchar;
 
 // Boolean values
 enum : GLboolean
@@ -29,15 +23,6 @@ enum : GLboolean
     GL_TRUE    = 0x1,
 }
 
-alias бцел      Гперечень;
-alias ббайт     Гбул;
-alias бцел      Гбитполе;
-alias цел       Гцразм;
-alias плав     Гклампп;
-alias дво    Гклампд;
-alias т_дельтаук Гцелук;
-alias т_дельтаук Гцразмук;
-
 // Булевы значения
 enum : Гбул
 {
@@ -45,12 +30,9 @@ enum : Гбул
     г_да    = 0x1,
 }
 
-struct GLUnurbs { }
-alias GLUnurbs Нурб;
-struct GLUquadric { }
-alias GLUquadric Квадр;
-struct GLUtesselator { }
-alias GLUtesselator Тесс;
+struct GLUnurbs { } alias GLUnurbs Нурб;
+struct GLUquadric { } alias GLUquadric Квадр;
+struct GLUtesselator { } alias GLUtesselator Тесс;
 
 typedef GLUnurbs GLUnurbsObj;
 typedef GLUquadric GLUquadricObj;
