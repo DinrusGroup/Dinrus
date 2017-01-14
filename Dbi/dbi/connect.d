@@ -3,7 +3,7 @@ module dbi.connect;
 import dbi.sqlite.all;
 import dbi.odbc.all;
 import dbi.msql.all;
-import dbi.mssql.all;
+//import dbi.mssql.all;
 import dbi.mysql.all;
 import dbi.pg.all;
 
@@ -14,7 +14,7 @@ ODBC,
 MySQL,
 Pg,
 MSQL,
-MSSQL
+//MSSQL
 }
 
 class ПодключениеКБазеДанных
@@ -24,7 +24,7 @@ private:
 ПгБД пг;
 ОдбцБД одбц;
 МайЭсКюЭлБД май;
-ЭмЭсЭсКюЭлБД мс;
+//ЭмЭсЭсКюЭлБД мс;
 ЭмЭсКюЭлБД м;
 ПТипБД типБд;
 
@@ -65,13 +65,13 @@ public:
 			this.типБд = ПТипБД.MSQL;
 			//То же (Нереализовано)
 			break;
-			
+			/*
 			case ПТипБД.MSSQL:
 			this.мс =new ЭмЭсЭсКюЭлБД();
 			this.типБд = ПТипБД.MSSQL;
 			//То же (Нереализовано)
 			break;
-			
+			*/
 			default:	
 		}
 
@@ -100,12 +100,82 @@ public:
 			case ПТипБД.MSQL:
 			this.м.подключись(параметры, имя_пользователя, пароль);
 			break;
-			
+			/*
 			case ПТипБД.MSSQL:
 			this.мс.подключись(параметры, имя_пользователя, пароль);
 			break;
+			*/
 			default:	
 		}
+	
+	
+	}
+	
+	проц выполни(ткст эскюэл)
+	{
+	switch(this.типБд)
+		{
+			case ПТипБД.Sqlite:
+			this.лайт.выполни(эскюэл);
+			break;
+			
+			case ПТипБД.ODBC: 
+			this.одбц.выполни(эскюэл);
+			break;
+			
+			case ПТипБД.MySQL:
+			this.май.выполни (эскюэл);
+			break;
+			
+			case ПТипБД.Pg:
+			this.пг.выполни(эскюэл);
+			break;
+			
+			case ПТипБД.MSQL:
+			this.м.выполни(эскюэл);
+			break;
+			/*
+			case ПТипБД.MSSQL:
+			this.мс.подключись(параметры, имя_пользователя, пароль);
+			break;
+			*/
+			default:	
+		}
+		
+		
+	проц закрой()
+	{
+	switch(this.типБд)
+		{
+			case ПТипБД.Sqlite:
+			this.лайт.закрой();
+			break;
+			
+			case ПТипБД.ODBC: 
+			this.одбц.закрой();
+			break;
+			
+			case ПТипБД.MySQL:
+			this.май.закрой ();
+			break;
+			
+			case ПТипБД.Pg:
+			this.пг.закрой();
+			break;
+			
+			case ПТипБД.MSQL:
+			this.м.закрой();
+			break;
+			/*
+			case ПТипБД.MSSQL:
+			this.мс.подключись(параметры, имя_пользователя, пароль);
+			break;
+			*/
+			default:	
+		}
+	
+	
+	}
 	
 	
 	}

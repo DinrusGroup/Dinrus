@@ -15,7 +15,7 @@
 module dbi.msql.imp;
 
 version (Windows) {
-	pragma (msg, "You will need to manually link in the mSQL library.");
+	pragma (lib, "mSql.lib");
 } else version (linux) {
 	pragma (lib, "libmsql.a");
 } else version (Posix) {
