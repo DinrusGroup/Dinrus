@@ -28,13 +28,13 @@ alias rt.charset.toMBSz toMBSz;
 int useWfuncs = 1;
 
 //extern(C) int      wcscmp(in wchar_t* s1, in wchar_t* s2);
-
+/*
 static this()
 {
     // Win 95, 98, ME do not implement the W functions
     useWfuncs = (GetVersion() < 0x80000000);
 }
-
+*/
   alias read читай;
   alias write пиши;
   alias append допиши;

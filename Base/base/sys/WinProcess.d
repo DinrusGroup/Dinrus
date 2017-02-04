@@ -8,9 +8,9 @@ export:
     /** First init step: this, then start the process based on its result */
    проц init1()
     {
-        читаем = true;
-        записываем = true;
-        сканируем = false;
+        читаемый(true);
+        записываемый(true);
+        сканируемый(false);
         
             БЕЗАТРЫ ба;
             ба.длина = БЕЗАТРЫ.sizeof;
@@ -49,17 +49,17 @@ export:
     /** The second init part */
     проц init2()
     {
-        открыт = true;
+        открытый(true);
     }
     
     override т_мера читайБлок(ук буфер, т_мера размер)
     {
             бцел rd;
             if (!ЧитайФайл(opr, буфер, размер, &rd, null)) {
-                читайдоКФ = true;
+                читатьдоКФ(true);
                 return 0;
             } else {
-                читайдоКФ = false;
+                читатьдоКФ(false);
             }
             return rd;
         
@@ -69,10 +69,10 @@ export:
     {
             бцел wt;
             if (!ПишиФайл(opr, буфер, размер, &wt, null)) {
-                читайдоКФ = true;
+                читатьдоКФ(true);
                 return 0;
             } else {
-                читайдоКФ = false;
+                читатьдоКФ(false);
             }
             return wt;
         
@@ -86,8 +86,8 @@ export:
     /** Close the process, return the result */
     проц закрой()
     {
-        if (открыт) {
-            открыт = false;
+        if (открытый()) {
+            открытый(false);
 			бцел *eval;
 			ДайКодВыходаПроцесса(phnd, eval);
               ЗакройДескр(phnd);

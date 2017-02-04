@@ -30,9 +30,10 @@ protected бул цифра16(сим c) {
 
 export extern (D) abstract class Поток :  win.ПотокВвода, win.ПотокВывода
  {
-extern(C) extern
+ 
+private
 {
-      шим[] возврат;
+      шим[] м_возврат;
 	  бул читаем;	
 	  бул записываем;
 	  бул сканируем;
@@ -59,6 +60,9 @@ export:
 	  
 	  проц возвратКаретки(бул б){this.предВкар = б;}
 	  бул возвратКаретки(){return  this.предВкар;} 
+	  
+	  шим[] возврат(){return м_возврат;}
+	  проц возврат (шим[] зн){this.м_возврат = зн;}
 	  
 
 	  //protected static this() {}
@@ -283,7 +287,7 @@ export:
 
 	  // отдай буфер
 	  
-	   бул верниЧтоЕсть() { return возврат.length > 1; }
+	   бул верниЧтоЕсть() { return м_возврат.length > 1; }
 
 	  // reads and returns следщ симacter from the stream,
 	  // handles симacters pushed back by отдайс()
@@ -296,9 +300,9 @@ export:
 		  if (c != '\n') 
 		  return c;
 		}
-		if (возврат.length > 1) {
-		  c = cast(сим) возврат[возврат.length - 1];
-		  возврат.length = возврат.length - 1;
+		if (м_возврат.length > 1) {
+		  c = cast(сим) м_возврат[м_возврат.length - 1];
+		  м_возврат.length = м_возврат.length - 1;
 		} else {
 		
 		   читайБлок(&c,1);
@@ -319,9 +323,9 @@ export:
 		  if (c != '\n') 
 		return c;
 		}
-		if (возврат.length > 1) {
-		  c = возврат[возврат.length - 1];
-		  возврат.length = возврат.length - 1;
+		if (м_возврат.length > 1) {
+		  c = м_возврат[м_возврат.length - 1];
+		  м_возврат.length = м_возврат.length - 1;
 		} else {
 		  ук буф = &c;
 		  т_мера n = читайБлок(буф,2);
@@ -336,9 +340,9 @@ export:
 	  сим отдайс(сим c) {
 		  if (c == c.init) return c;
 		// first байт is a dummy so that we never установи length to 0
-		if (возврат.length == 0)
-		  возврат.length = 1;
-		возврат ~= c;
+		if (м_возврат.length == 0)
+		  м_возврат.length = 1;
+		м_возврат ~= c;
 		return c;
 	  }
 
@@ -347,9 +351,9 @@ export:
 	  шим отдайш(шим c) {
 		if (c == c.init) return c;
 		// first байт is a dummy so that we never установи length to 0
-		if (возврат.length == 0)
-		  возврат.length = 1;
-		возврат ~= c;
+		if (м_возврат.length == 0)
+		  м_возврат.length = 1;
+		м_возврат ~= c;
 		return c;
 	  }
 
@@ -931,8 +935,8 @@ export:
 
 	  // слей the буфер if записываем
 	  проц слей() {
-		if (возврат.length > 1)
-		  возврат.length = 1; // keep at least 1 so that данные ptr stays
+		if (м_возврат.length > 1)
+		  м_возврат.length = 1; // keep at least 1 so that данные ptr stays
 	  }
 
 	  // закрой the stream somehow; the default just flushes the буфер
@@ -1044,7 +1048,7 @@ class ТПотокМассив(Буфер): Поток {
 
   /// Create the stream for the the буфер буф. Non-copying.
   this(Буфер бф) {
-    super ();
+   // super ();
 	this.буф = бф;
     this.длин = бф.length;
     читаемый(да); записываемый(да); сканируемый(да);

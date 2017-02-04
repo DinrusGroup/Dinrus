@@ -17,9 +17,9 @@ private import exception, stdrus, sync, sys.WinConsts, cidrus, std.intrinsic, ut
 /*************** Конфигурация *********************/
 //debug = SENTINEL;
 //debug = НА_КОНСОЛЬ;
-version = СТЭК_РАСТЁТ_ВНИЗ;	// growing the stack means subtracting from the stack pointer
-				// (use for Intel X86 CPUs)
-				// else growing the stack means adding to the stack pointer
+version = СТЭК_РАСТЁТ_ВНИЗ;	// наращивание стека означает вычитание от указателя стека
+				// (используется для Intel X86 CPUs)
+				// иначе наращивание стека означает прибавление к указателю стека
 version = МНОГОПОТОЧНАЯ;	// произвести многопоточную версию
 
     version (МНОГОПОТОЧНАЯ)

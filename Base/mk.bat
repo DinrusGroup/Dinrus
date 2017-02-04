@@ -367,7 +367,7 @@ cd %this%
 :::Copying Dinrus.lib to main Dinrus lib folder
 :%LIB% -p256  Dinrus.lib %LDIR%\import.lib
 copy %this%\Dinrus.lib %LDIR%
-copy %this%\Dinrus.Base.dll %DINRUS%
+copy %this%\Dinrus.Base.dll %windir%\system32
 
 
 %DMD%  -lib  -of%this%\DinrusSpecBuild.lib %this%\static\dllMain.d
@@ -386,8 +386,7 @@ copy ..\*.d  %R%\std\*.di
 del *.lib *.exe *.map
 cd %this%
 :::Cleaning
-%DMD% %this%\clean.d
-%this%\clean
+%DMD% -run %this%\clean.d
 ::: same with the Dll - to bin folder
 
 ::del *.lib *.dll
