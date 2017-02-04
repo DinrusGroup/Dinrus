@@ -1,7 +1,7 @@
 ﻿module io.stream.TextFile;
 
 public  import io.device.File;
-private import io.stream.Текст;
+private import io.stream.Text;
 
 class ТекстФайлВвод : ТекстВвод
 {

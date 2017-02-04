@@ -10,7 +10,7 @@
 
 *******************************************************************************/
 
-module io.stream.Текст;
+module io.stream.Text;
 
 private import io.stream.Lines;
 
