@@ -1,5 +1,5 @@
 ﻿module std.cpuid;
-
+pragma(lib, "DinrusStd.lib");
 private import stdrus: Процессор;
 
 

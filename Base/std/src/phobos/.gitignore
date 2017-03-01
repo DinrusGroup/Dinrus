@@ -1,0 +1,18 @@
+/etc/c/zlib/*.obj
+/etc/c/zlib/zlib.lib
+/phobos.json
+/phobos.lib
+
+generated
+GNUmakefile
+.DS_Store
+.*.sw*
+Makefile
+*.lst
+
+# Rules for Xamarin Studio project data/build output
+*.dproj
+bin/
+obj/
+
+*.html

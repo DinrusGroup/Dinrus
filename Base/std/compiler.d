@@ -1,4 +1,5 @@
 ﻿module std.compiler;
+pragma(lib, "DinrusStd.lib");
 
 const
 {

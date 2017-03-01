@@ -1,4 +1,5 @@
 ﻿module std.format;
+pragma(lib, "DinrusStd.lib");
 public import stdrus: форматДелай;
 
 enum Mangle : char

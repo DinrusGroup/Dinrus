@@ -1,4 +1,5 @@
 ﻿module std.bitarray;
+pragma(lib, "DinrusStd.lib");
 
 public import stdrus: МассивБит;
 

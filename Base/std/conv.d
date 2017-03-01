@@ -1,5 +1,6 @@
 ﻿module std.conv;
 public import stdrus: вЦел,вБцел, вДол, вБдол, вКрат, вБкрат, вБайт, вБбайт, вПлав,  вДво, вРеал ;
+pragma(lib, "DinrusStd.lib");
 
 alias вЦел toInt;
 alias вБцел toUint;

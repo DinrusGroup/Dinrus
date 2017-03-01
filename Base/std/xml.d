@@ -127,6 +127,7 @@ Distributed under the Boost Software License, Version 1.0.
          http://www.boost.org/LICENSE_1_0.txt)
 */
 module std.xml;
+pragma(lib, "DinrusStd.lib");
 
 import std.algorithm : count, startsWith;
 import std.array;
@@ -134,7 +135,7 @@ import std.ascii;
 import std.string;
 import std.encoding;
 
-enum cdata = "<![CDATA[";
+const ткст cdata = "<![CDATA[";
 
 /**
  * Returns true if the character is a character according to the XML standard
@@ -168,37 +169,6 @@ bool isChar(dchar c) // rule 2
     return false;
 }
 
-unittest
-{
-//  const CharTable=[0x9,0x9,0xA,0xA,0xD,0xD,0x20,0xD7FF,0xE000,0xFFFD,
-//        0x10000,0x10FFFF];
-    assert(!isChar(cast(dchar)0x8));
-    assert( isChar(cast(dchar)0x9));
-    assert( isChar(cast(dchar)0xA));
-    assert(!isChar(cast(dchar)0xB));
-    assert(!isChar(cast(dchar)0xC));
-    assert( isChar(cast(dchar)0xD));
-    assert(!isChar(cast(dchar)0xE));
-    assert(!isChar(cast(dchar)0x1F));
-    assert( isChar(cast(dchar)0x20));
-    assert( isChar('J'));
-    assert( isChar(cast(dchar)0xD7FF));
-    assert(!isChar(cast(dchar)0xD800));
-    assert(!isChar(cast(dchar)0xDFFF));
-    assert( isChar(cast(dchar)0xE000));
-    assert( isChar(cast(dchar)0xFFFD));
-    assert(!isChar(cast(dchar)0xFFFE));
-    assert(!isChar(cast(dchar)0xFFFF));
-    assert( isChar(cast(dchar)0x10000));
-    assert( isChar(cast(dchar)0x10FFFF));
-    assert(!isChar(cast(dchar)0x110000));
-
-    debug (stdxml_TestHardcodedChecks)
-    {
-        foreach (c; 0 .. dchar.max + 1)
-            assert(isChar(c) == lookup(CharTable, c));
-    }
-}
 
 /**
  * Returns true if the character is whitespace according to the XML standard
@@ -232,14 +202,6 @@ bool isDigit(dchar c)
         return lookup(DigitTable,c);
 }
 
-unittest
-{
-    debug (stdxml_TestHardcodedChecks)
-    {
-        foreach (c; 0 .. dchar.max + 1)
-            assert(isDigit(c) == lookup(DigitTable, c));
-    }
-}
 
 /**
  * Returns true if the character is a letter according to the XML standard
@@ -274,20 +236,6 @@ bool isIdeographic(dchar c)
     return false;
 }
 
-unittest
-{
-    assert(isIdeographic('\u4E00'));
-    assert(isIdeographic('\u9FA5'));
-    assert(isIdeographic('\u3007'));
-    assert(isIdeographic('\u3021'));
-    assert(isIdeographic('\u3029'));
-
-    debug (stdxml_TestHardcodedChecks)
-    {
-        foreach (c; 0 .. dchar.max + 1)
-            assert(isIdeographic(c) == lookup(IdeographicTable, c));
-    }
-}
 
 /**
  * Returns true if the character is a base character according to the XML
@@ -382,16 +330,6 @@ S encode(S)(S s)
     return result.data;
 }
 
-unittest
-{
-    auto s = "hello";
-    assert(encode(s) is s);
-    assert(encode("a > b") == "a &gt; b", encode("a > b"));
-    assert(encode("a < b") == "a &lt; b");
-    assert(encode("don't") == "don&apos;t");
-    assert(encode("\"hi\"") == "&quot;hi&quot;", encode("\"hi\""));
-    assert(encode("cat & dog") == "cat &amp; dog");
-}
 
 /**
  * Mode to use for decoding.
@@ -493,41 +431,7 @@ string decode(string s, DecodeMode mode=DecodeMode.LOOSE)
     return (buffer.length == 0) ? s : cast(string)buffer;
 }
 
-unittest
-{
-    void assertNot(string s)
-    {
-        bool b = false;
-        try { decode(s,DecodeMode.STRICT); }
-        catch (DecodeException e) { b = true; }
-        assert(b,s);
-    }
 
-    // Assert that things that should work, do
-    auto s = "hello";
-    assert(decode(s,                DecodeMode.STRICT) is s);
-    assert(decode("a &gt; b",       DecodeMode.STRICT) == "a > b");
-    assert(decode("a &lt; b",       DecodeMode.STRICT) == "a < b");
-    assert(decode("don&apos;t",     DecodeMode.STRICT) == "don't");
-    assert(decode("&quot;hi&quot;", DecodeMode.STRICT) == "\"hi\"");
-    assert(decode("cat &amp; dog",  DecodeMode.STRICT) == "cat & dog");
-    assert(decode("&#42;",          DecodeMode.STRICT) == "*");
-    assert(decode("&#x2A;",         DecodeMode.STRICT) == "*");
-    assert(decode("cat & dog",      DecodeMode.LOOSE) == "cat & dog");
-    assert(decode("a &gt b",        DecodeMode.LOOSE) == "a &gt b");
-    assert(decode("&#;",            DecodeMode.LOOSE) == "&#;");
-    assert(decode("&#x;",           DecodeMode.LOOSE) == "&#x;");
-    assert(decode("&#2G;",          DecodeMode.LOOSE) == "&#2G;");
-    assert(decode("&#x2G;",         DecodeMode.LOOSE) == "&#x2G;");
-
-    // Assert that things that shouldn't work, don't
-    assertNot("cat & dog");
-    assertNot("a &gt b");
-    assertNot("&#;");
-    assertNot("&#x;");
-    assertNot("&#2G;");
-    assertNot("&#x2G;");
-}
 
 /**
  * Class representing an XML document.

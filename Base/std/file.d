@@ -1,4 +1,5 @@
 ﻿module std.file;
+pragma(lib, "DinrusStd.lib");
 private import stdrus;
 
 alias stdrus.читайФайл read;

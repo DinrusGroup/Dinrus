@@ -1,4 +1,6 @@
 ﻿module std.base64;
+pragma(lib, "DinrusStd.lib");
+
 public import stdrus: кодируйДлину64, кодируй64, раскодируйДлину64, раскодируй64;
 
 alias кодируйДлину64 encodeLength;

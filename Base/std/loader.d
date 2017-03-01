@@ -1,4 +1,5 @@
 ﻿module std.loader;
+pragma(lib, "DinrusStd.lib");
 private import stdrus;
 
 alias stdrus.иницМодуль ExeModule_Init;

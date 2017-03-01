@@ -1,5 +1,5 @@
 ﻿module std.crc32;
-
+pragma(lib, "DinrusStd.lib");
 public import stdrus: иницЦПИ32, обновиЦПИ32б, обновиЦПИ32с, ткстЦПИ32 ;
 
 alias ЦПИ32.иниц init_crc32;

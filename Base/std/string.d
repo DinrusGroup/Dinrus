@@ -1,4 +1,5 @@
 ﻿module std.string;
+pragma(lib, "DinrusStd.lib");
 private import stdrus;
 
 const char[16] hexdigits = "0123456789ABCDEF";			/// 0..9A..F

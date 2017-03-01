@@ -1,4 +1,5 @@
 ﻿module std.console;
+pragma(lib, "DinrusStd.lib");
 public import win;
 
 
