@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ABE0329D-553F-4D5E-AE0E-C871776E8987}</ProjectGuid>
+    <RootNamespace>vsi</RootNamespace>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">nmake -f Makefile</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\Debug\vsi.lib</NMakeOutput>
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</IntDir>
+    <NMakeBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">nmake -f Makefile release</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <NMakeCleanCommandLine Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <NMakeOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\Release\vsi.lib</NMakeOutput>
+    <NMakePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="vsi\completion.d" />
+    <None Include="vsi\completionuuids.d" />
+    <None Include="vsi\compsvcspkg.d" />
+    <None Include="vsi\compsvcspkg80.d" />
+    <None Include="vsi\compsvcspkg90.d" />
+    <None Include="vsi\containedlanguage.d" />
+    <None Include="vsi\context.d" />
+    <None Include="vsi\context2.d" />
+    <None Include="vsi\contextuuids.d" />
+    <None Include="vsi\customfind.d" />
+    <None Include="vsi\debugger80.d" />
+    <None Include="vsi\designer.d" />
+    <None Include="vsi\discoveryservice.d" />
+    <None Include="vsi\discoveryservice80.d" />
+    <None Include="vsi\discoveryservice90.d" />
+    <None Include="vsi\dsltoolscmdid.d" />
+    <None Include="vsi\dte80.d" />
+    <None Include="vsi\dte80a.d" />
+    <None Include="vsi\dte90.d" />
+    <None Include="vsi\ee.d" />
+    <None Include="vsi\enc.d" />
+    <None Include="vsi\encbuild.d" />
+    <None Include="vsi\fpstfmt.d" />
+    <None Include="vsi\indentstyle.d" />
+    <None Include="vsi\ivsqueryeditquerysave2.d" />
+    <None Include="vsi\ivsqueryeditquerysave80.d" />
+    <None Include="vsi\ivsqueryeditquerysave90.d" />
+    <None Include="vsi\ivsregisterscciprovider.d" />
+    <None Include="vsi\ivssccaddwebprojectfromsourcecontrol.d" />
+    <None Include="vsi\ivsscccontrolnewsolution.d" />
+    <None Include="vsi\ivssccenlistmentpathtranslation.d" />
+    <None Include="vsi\ivssccglyphs.d" />
+    <None Include="vsi\ivssccmanager2.d" />
+    <None Include="vsi\ivssccmanagertooltip.d" />
+    <None Include="vsi\ivssccopenfromsourcecontrol.d" />
+    <None Include="vsi\ivssccproject2.d" />
+    <None Include="vsi\ivssccprojectenlistmentchoice.d" />
+    <None Include="vsi\ivssccprojectenlistmentfactory.d" />
+    <None Include="vsi\ivssccprojectproviderbinding.d" />
+    <None Include="vsi\ivssccprovider.d" />
+    <None Include="vsi\ivssccproviderfactory.d" />
+    <None Include="vsi\ivsscctoolsoptions.d" />
+    <None Include="vsi\ivssccvirtualfolders.d" />
+    <None Include="vsi\ivstrackprojectdocuments2.d" />
+    <None Include="vsi\ivstrackprojectdocuments80.d" />
+    <None Include="vsi\ivstrackprojectdocumentsevents2.d" />
+    <None Include="vsi\ivstrackprojectdocumentsevents80.d" />
+    <None Include="vsi\ivswebservices.d" />
+    <None Include="vsi\mnuhelpids.d" />
+    <None Include="vsi\msdbg.d" />
+    <None Include="vsi\objext.d" />
+    <None Include="vsi\ocdesign.d" />
+    <None Include="vsi\olecm.d" />
+    <None Include="vsi\oleipc.d" />
+    <None Include="vsi\proffserv.d" />
+    <None Include="vsi\scguids.d" />
+    <None Include="vsi\sh.d" />
+    <None Include="vsi\sharedids.d" />
+    <None Include="vsi\singlefileeditor.d" />
+    <None Include="vsi\stdidcmd.d" />
+    <None Include="vsi\textfind.d" />
+    <None Include="vsi\textfind2.d" />
+    <None Include="vsi\textfind90.d" />
+    <None Include="vsi\textmgr.d" />
+    <None Include="vsi\textmgr2.d" />
+    <None Include="vsi\textmgr90.d" />
+    <None Include="vsi\textmgruuids.d" />
+    <None Include="vsi\uilocale.d" />
+    <None Include="vsi\undoredo.d" />
+    <None Include="vsi\vbapkg.d" />
+    <None Include="vsi\venusids.d" />
+    <None Include="vsi\version.d" />
+    <None Include="vsi\vsbrowse.d" />
+    <None Include="vsi\vsdbgcmd.d" />
+    <None Include="vsi\vsdebugguids.d" />
+    <None Include="vsi\vsdisp.d" />
+    <None Include="vsi\vseeguids.d" />
+    <None Include="vsi\vshelp.d" />
+    <None Include="vsi\vshelp80.d" />
+    <None Include="vsi\vsi_shared.d" />
+    <None Include="vsi\vslangproj.d" />
+    <None Include="vsi\vslangproj2.d" />
+    <None Include="vsi\vslangproj80.d" />
+    <None Include="vsi\vslangproj90.d" />
+    <None Include="vsi\vsmanaged.d" />
+    <None Include="vsi\vsregkeynames.d" />
+    <None Include="vsi\vsshell.d" />
+    <None Include="vsi\vsshell2.d" />
+    <None Include="vsi\vsshell80.d" />
+    <None Include="vsi\vsshell90.d" />
+    <None Include="vsi\vsshelluuids.d" />
+    <None Include="vsi\vsshlids.d" />
+    <None Include="vsi\vssplash.d" />
+    <None Include="vsi\wbids.d" />
+    <None Include="vsi\wcfreferences.d" />
+    <None Include="vsi\wcfreferencesids.d" />
+    <None Include="vsi\webapplicationctx.d" />
+    <None Include="vsi\webmigration.d" />
+    <None Include="win32\basetsd.d" />
+    <None Include="win32\docobj.d" />
+    <None Include="win32\idispids.d" />
+    <None Include="win32\mshtmcid.d" />
+    <None Include="win32\ntstatus.d" />
+    <None Include="win32\oaidl.d" />
+    <None Include="win32\objidl.d" />
+    <None Include="win32\ocidl.d" />
+    <None Include="win32\oleidl.d" />
+    <None Include="win32\sdkddkver.d" />
+    <None Include="win32\winbase.d" />
+    <None Include="win32\windef.d" />
+    <None Include="win32\winnt.d" />
+    <None Include="win32\wtypes.d" />
+    <None Include="win32\xmldom.d" />
+    <None Include="win32\xmldomdid.d" />
+    <None Include="win32\xmldso.d" />
+    <None Include="win32\xmldsodid.d" />
+    <None Include="port\base.d" />
+    <None Include="port\basetsd.d" />
+    <None Include="port\dte.d" />
+    <None Include="port\guiddef.d" />
+    <None Include="port\msxml.d" />
+    <None Include="port\pp.d" />
+    <None Include="port\prsht.d" />
+    <None Include="port\servprov.d" />
+    <None Include="port\stdole2.d" />
+    <None Include="port\stdole32.d" />
+    <None Include="port\unknwn.d" />
+    <None Include="port\urlmon.d" />
+    <None Include="port\venuscmddef.d" />
+    <None Include="port\winerror.d" />
+    <None Include="Makefile" />
+    <None Include="vsi_sources" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="vsi">
+</Property><Property Name="Файл решения" Value="d:\dinrus\src\sdk\vsi.sln">
+</Property><Property Name="Date" Value="11 февраля 2014 г.">
+</Property><Property Name="Time" Value="21:13:28">
+</Property></Properties><Event ErrorLevel="0" Project="vsi" Source="vsi.vcproj" Description="Converting project file 'd:\dinrus\src\sdk\vsi.vcproj'.">
+</Event><Event ErrorLevel="1" Project="vsi" Source="vsi.vcproj" Description="VCConvertEngine could not convert attribute CompileAsManaged =  under Tool VCNMakeTool.">
+</Event><Event ErrorLevel="1" Project="vsi" Source="vsi.vcproj" Description="VCConvertEngine could not convert attribute CompileAsManaged =  under Tool VCNMakeTool.">
+</Event><Event ErrorLevel="0" Project="vsi" Source="vsi.vcproj" Description="Done converting to new project file 'd:\dinrus\src\sdk\vsi.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="vsi" Source="vsi.vcproj" Description="Converted">
+</Event></UpgradeLog>

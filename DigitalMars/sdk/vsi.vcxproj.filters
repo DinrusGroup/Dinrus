@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{690149df-1c5e-47bb-8e6d-8e8e8d402d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\vsi">
+      <UniqueIdentifier>{356da873-8ccb-4e41-aab2-223ad7960dce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\win32">
+      <UniqueIdentifier>{43b6a379-e731-49c2-88ff-7933af1a35c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\port">
+      <UniqueIdentifier>{57d0edfe-0098-4172-9ce7-68369592ddc1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vsi\completion.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\completionuuids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\compsvcspkg.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\compsvcspkg80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\compsvcspkg90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\containedlanguage.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\context.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\context2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\contextuuids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\customfind.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\debugger80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\designer.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\discoveryservice.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\discoveryservice80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\discoveryservice90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\dsltoolscmdid.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\dte80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\dte80a.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\dte90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ee.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\enc.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\encbuild.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\fpstfmt.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\indentstyle.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsqueryeditquerysave2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsqueryeditquerysave80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsqueryeditquerysave90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsregisterscciprovider.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccaddwebprojectfromsourcecontrol.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsscccontrolnewsolution.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccenlistmentpathtranslation.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccglyphs.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccmanager2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccmanagertooltip.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccopenfromsourcecontrol.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccproject2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccprojectenlistmentchoice.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccprojectenlistmentfactory.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccprojectproviderbinding.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccprovider.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccproviderfactory.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivsscctoolsoptions.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivssccvirtualfolders.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivstrackprojectdocuments2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivstrackprojectdocuments80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivstrackprojectdocumentsevents2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivstrackprojectdocumentsevents80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ivswebservices.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\mnuhelpids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\msdbg.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\objext.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\ocdesign.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\olecm.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\oleipc.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\proffserv.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\scguids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\sh.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\sharedids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\singlefileeditor.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\stdidcmd.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textfind.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textfind2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textfind90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textmgr.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textmgr2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textmgr90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\textmgruuids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\uilocale.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\undoredo.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vbapkg.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\venusids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\version.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsbrowse.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsdbgcmd.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsdebugguids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsdisp.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vseeguids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vshelp.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vshelp80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsi_shared.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vslangproj.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vslangproj2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vslangproj80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vslangproj90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsmanaged.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsregkeynames.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshell.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshell2.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshell80.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshell90.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshelluuids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vsshlids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\vssplash.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\wbids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\wcfreferences.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\wcfreferencesids.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\webapplicationctx.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="vsi\webmigration.d">
+      <Filter>sdk\vsi</Filter>
+    </None>
+    <None Include="win32\basetsd.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\docobj.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\idispids.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\mshtmcid.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\ntstatus.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\oaidl.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\objidl.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\ocidl.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\oleidl.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\sdkddkver.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\winbase.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\windef.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\winnt.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\wtypes.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\xmldom.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\xmldomdid.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\xmldso.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="win32\xmldsodid.d">
+      <Filter>sdk\win32</Filter>
+    </None>
+    <None Include="port\base.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\basetsd.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\dte.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\guiddef.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\msxml.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\pp.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\prsht.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\servprov.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\stdole2.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\stdole32.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\unknwn.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\urlmon.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\venuscmddef.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="port\winerror.d">
+      <Filter>sdk\port</Filter>
+    </None>
+    <None Include="Makefile" />
+    <None Include="vsi_sources" />
+  </ItemGroup>
+</Project>
