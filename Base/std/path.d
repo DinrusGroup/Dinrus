@@ -1,34 +1,16 @@
-﻿module std.path;
+﻿module std.путь;
 pragma(lib, "DinrusStd.lib");
 private import stdrus, cidrus;
 
-version(Posix)
-{
-    private import cidrus;
-    private import os.posix;
-    private import std.exception: OutOfMemoryException;
-}
 
-version(Windows)
-{
-    alias РАЗДПАП sep ;
-    alias АЛЬТРАЗДПАП altsep;
-    alias РАЗДПСТР pathsep;
-    alias РАЗДСТР linesep; 
-    alias ТЕКПАП curdir;	 
-    alias РОДПАП pardir; 
-}
-version(Posix)
-{
-    const char[1] sep = "/";
-    const char[0] altsep;
-    const char[1] pathsep = ":";
-    const char[1] linesep = "\n";
-    const char[1] curdir = ".";	
-    const char[2] pardir = "..";
-}
+alias РАЗДПАП sep ;
+alias АЛЬТРАЗДПАП altsep;
+alias РАЗДПСТР pathsep;
+alias РАЗДСТР linesep; 
+alias ТЕКПАП curdir;	 
+alias РОДПАП pardir; 
+
 version (Windows) alias stdrus.сравнлюб fcmp;
-
 version (Posix) alias std.ткст.cmp fcmp;
 
 alias  извлекиРасш getExt;
@@ -45,9 +27,9 @@ alias сравниПутьОбразец fnmatch;
 alias  разверниТильду expandTilde;
 
 
-//module stdext.path;
+//module stdext.путь;
 
-//import std.path;
+//import std.путь;
 //import std.array;
 import std.string;
 //import std.conv;
@@ -56,155 +38,156 @@ import std.string;
 {
 	if(пап.length == 0)
 		return ".\\";
-	пап = replace(пап, "/", "\\");
+	пап = std.string.replace(пап, "/", "\\");
 	if(пап[$-1] == '\\')
 		return пап;
 	return пап ~ "\\";
 }
 
-S normalizePath(S)(S path)
+S нормализуйПуть(S)(S путь)
 {
-	return replace(path, "/", "\\");
+	return std.string.replace(путь, "/", "\\");
 }
 
-ткст canonicalPath(ткст path)
+ткст каноническийПуть(ткст путь)
 {
-	return toLower(replace(path, "/", "\\"));
+	return std.string.tolower(std.string.replace(путь, "/", "\\"));
 }
 
-ткст makeFilenameAbsolute(ткст file, ткст workdir)
+ткст сделайИмяфАбс(ткст файл, ткст рабпап)
 {
-	if(!isAbsolute(file) && workdir.length)
+	if(!isabs(файл) && рабпап.length)
 	{
-		if(file == ".")
-			file = workdir;
+		if(файл == ".")
+			файл = рабпап;
 		else
-			file = нормализуйПап(workdir) ~ file;
+			файл = нормализуйПап(рабпап) ~ файл;
 	}
-	return file;
+	return файл;
 }
 
-void makeFilenamesAbsolute(ткст[] files, ткст workdir)
+void сделайИмяффАбсс(ткст[] файлы, ткст рабпап)
 {
-	foreach(ref file; files)
+	foreach(ref файл; файлы)
 	{
-		if(!isAbsolute(file) && workdir.length)
-			file = makeFilenameAbsolute(file, workdir);
+		if(!isabs(файл) && рабпап.length)
+			файл = сделайИмяфАбс(файл, рабпап);
 	}
 }
 
-ткст removeDotDotPath(ткст file)
+/+
+ткст удали2ТчкВПути(ткст файл)
 {
-	// assumes \\ used as path separator
-	for( ; file.length >= 2; )
+	// assumes \\ used as путь separator
+	for( ; файл.length >= 2; )
 	{
 		// remove duplicate back slashes
-		auto pos = indexOf(file[1..$], "\\\\");
+		auto pos = indexOf(файл[1..$], "\\\\");
 		if(pos < 0)
 			break;
-		file = file[0..pos+1] ~ file[pos + 2 .. $];
+		файл = файл[0..pos+1] ~ файл[pos + 2 .. $];
 	}
 	for( ; ; )
 	{
-		auto pos = indexOf(file, "\\..\\");
+		auto pos = indexOf(файл, "\\..\\");
 		if(pos < 0)
 			break;
-		auto lpos = lastIndexOf(file[0..pos], '\\');
+		auto lpos = lastIndexOf(файл[0..pos], '\\');
 		if(lpos < 0)
 			break;
-		file = file[0..lpos] ~ file[pos + 3 .. $];
+		файл = файл[0..lpos] ~ файл[pos + 3 .. $];
 	}
 	for( ; ; )
 	{
-		auto pos = indexOf(file, "\\.\\");
+		auto pos = indexOf(файл, "\\.\\");
 		if(pos < 0)
 			break;
-		file = file[0..pos] ~ file[pos + 2 .. $];
+		файл = файл[0..pos] ~ файл[pos + 2 .. $];
 	}
-	return file;
+	return файл;
 }
 
-ткст makeFilenameCanonical(ткст file, ткст workdir)
+ткст сделайИмяфКанонич(ткст файл, ткст рабпап)
 {
-	file = makeFilenameAbsolute(file, workdir);
-	file = normalizePath(file);
-	file = removeDotDotPath(file);
-	return file;
+	файл = сделайИмяфАбс(файл, рабпап);
+	файл = нормализуйПуть(файл);
+	файл = удали2ТчкВПути(файл);
+	return файл;
 }
 
-ткст makeDirnameCanonical(ткст пап, ткст workdir)
+ткст сделайИмяпКанонич(ткст пап, ткст рабпап)
 {
-	пап = makeFilenameAbsolute(пап, workdir);
+	пап = сделайИмяфАбс(пап, рабпап);
 	пап = нормализуйПап(пап);
-	пап = removeDotDotPath(пап);
+	пап = удали2ТчкВПути(пап);
 	return пап;
 }
 
-void makeFilenamesCanonical(ткст[] files, ткст workdir)
+void сделайИмяффКаноничч(ткст[] файлы, ткст рабпап)
 {
-	foreach(ref file; files)
-		file = makeFilenameCanonical(file, workdir);
+	foreach(ref файл; файлы)
+		файл = сделайИмяфКанонич(файл, рабпап);
 }
 
-void makeDirnamesCanonical(ткст[] dirs, ткст workdir)
+void сделайИмяппКаноничч(ткст[] папп, ткст рабпап)
 {
-	foreach(ref пап; dirs)
-		пап = makeDirnameCanonical(пап, workdir);
+	foreach(ref пап; папп)
+		пап = сделайИмяпКанонич(пап, рабпап);
 }
 
-ткст quoteFilename(ткст fname)
+ткст имяфВКавычки(ткст имяф)
 {
-	if(fname.length >= 2 && fname[0] == '\"' && fname[$-1] == '\"')
-		return fname;
-	if(fname.indexOf('$') >= 0 || indexOf(fname, ' ') >= 0)
-		fname = "\"" ~ fname ~ "\"";
-	return fname;
+	if(имяф.length >= 2 && имяф[0] == '\"' && имяф[$-1] == '\"')
+		return имяф;
+	if(имяф.indexOf('$') >= 0 || indexOf(имяф, ' ') >= 0)
+		имяф = "\"" ~ имяф ~ "\"";
+	return имяф;
 }
 
-void quoteFilenames(ткст[] files)
+void имяффВКавычки(ткст[] файлы)
 {
-	foreach(ref file; files)
+	foreach(ref файл; файлы)
 	{
-		file = quoteFilename(file);
+		файл = имяфВКавычки(файл);
 	}
 }
 
-ткст quoteNormalizeFilename(ткст fname)
+ткст имяфВКавычкиНормализуй(ткст имяф)
 {
-	return quoteFilename(normalizePath(fname));
+	return имяфВКавычки(нормализуйПуть(имяф));
 }
 
-ткст getNameWithoutExt(ткст fname)
+ткст дайИмяБезРасш(ткст имяф)
 {
-	ткст bname = baseName(fname);
+	ткст bname = baseName(имяф);
 	ткст name = stripExtension(bname);
 	if(name.length == 0)
 		name = bname;
 	return name;
 }
 
-ткст safeFilename(ткст fname, ткст rep = "-") // - instead of _ to not possibly be part of a module name
+ткст safeFilename(ткст имяф, ткст rep = "-") // - instead of _ to not possibly be part of a module name
 {
-	ткст safefile = fname;
+	ткст safefile = имяф;
 	foreach(char ch; ":\\/")
-		safefile = replace(safefile, to!ткст(ch), rep);
+		safefile = std.string.replace(safefile, вТкст(ch), rep);
 	return safefile;
 }
 
-ткст makeRelative(ткст file, ткст path)
+ткст makeRelative(ткст файл, ткст путь)
 {
-	if(!isAbsolute(file))
-		return file;
-	if(!isAbsolute(path))
-		return file;
+	if(!isabs(файл))
+		return файл;
+	if(!isabs(путь))
+		return файл;
 
-	file = replace(file, "/", "\\");
-	path = replace(path, "/", "\\");
-	if(path[$-1] != '\\')
-		path ~= "\\";
+	файл = std.string.replace(файл, "/", "\\");
+	путь = std.string.replace(путь, "/", "\\");
+	if(путь[$-1] != '\\')
+		путь ~= "\\";
 
-	ткст lfile = toLower(file);
-	ткст lpath = toLower(path);
+	ткст lfile = std.string.tolower(файл);
+	ткст lpath = std.string.tolower(путь);
 
 	int posfile = 0;
 	for( ; ; )
@@ -216,9 +199,9 @@ void quoteFilenames(ткст[] files)
 		if(idxfile < 0 || idxfile != idxpath || lfile[0..idxfile] != lpath[0 .. idxpath])
 		{
 			if(posfile == 0)
-				return file;
+				return файл;
 
-			// path longer than file path or different subdirs
+			// путь longer than файл путь or different subdirs
 			ткст res;
 			while(idxpath >= 0)
 			{
@@ -226,7 +209,7 @@ void quoteFilenames(ткст[] files)
 				lpath = lpath[idxpath + 1 .. $];
 				idxpath = indexOf(lpath, '\\');
 			}
-			return res ~ file[posfile .. $];
+			return res ~ файл[posfile .. $];
 		}
 
 		lfile = lfile[idxfile + 1 .. $];
@@ -235,41 +218,41 @@ void quoteFilenames(ткст[] files)
 
 		if(lpath.length == 0)
 		{
-			// file longer than path
-			return file[posfile .. $];
+			// файл longer than путь
+			return файл[posfile .. $];
 		}
 	}
 }
 
 unittest
 {
-	ткст file = "c:\\a\\bc\\def\\ghi.d";
-	ткст path = "c:\\a\\bc\\x";
-	ткст res = makeRelative(file, path);
+	ткст файл = "c:\\a\\bc\\def\\ghi.d";
+	ткст путь = "c:\\a\\bc\\x";
+	ткст res = makeRelative(файл, путь);
 	assert(res == "..\\def\\ghi.d");
 
-	file = "c:\\a\\bc\\def\\ghi.d";
-	path = "c:\\a\\bc\\def";
-	res = makeRelative(file, path);
+	файл = "c:\\a\\bc\\def\\ghi.d";
+	путь = "c:\\a\\bc\\def";
+	res = makeRelative(файл, путь);
 	assert(res == "ghi.d");
 
-	file = "c:\\a\\bc\\def\\Ghi.d";
-	path = "c:\\a\\bc\\Def\\ggg\\hhh\\iii";
-	res = makeRelative(file, path);
+	файл = "c:\\a\\bc\\def\\Ghi.d";
+	путь = "c:\\a\\bc\\Def\\ggg\\hhh\\iii";
+	res = makeRelative(файл, путь);
 	assert(res == "..\\..\\..\\Ghi.d");
 
-	file = "d:\\a\\bc\\Def\\ghi.d";
-	path = "c:\\a\\bc\\def\\ggg\\hhh\\iii";
-	res = makeRelative(file, path);
-	assert(res == file);
+	файл = "d:\\a\\bc\\Def\\ghi.d";
+	путь = "c:\\a\\bc\\def\\ggg\\hhh\\iii";
+	res = makeRelative(файл, путь);
+	assert(res == файл);
 }
 
 ткст commonParentDir(ткст path1, ткст path2)
 {
 	if (path1.length == 0 || path2.length == 0)
 		return null;
-	ткст p1 = toLower(нормализуйПап(path1));
-	ткст p2 = toLower(нормализуйПап(path2));
+	ткст p1 = std.string.tolower(нормализуйПап(path1));
+	ткст p2 = std.string.tolower(нормализуйПап(path2));
 
 	while(p2.length)
 	{
@@ -291,3 +274,4 @@ unittest
 	ткст res = commonParentDir(path1, path2);
 	assert(res == "c:\\A\\bc\\");
 }
++/

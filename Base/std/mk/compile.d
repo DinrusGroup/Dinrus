@@ -4,10 +4,10 @@
 void main()
 {
 сис("del compile.obj");
-scope флы = списпап("..", "*.d"); 
+scope флы = списпап("d:\\dinrus\\dev\\DINRUS\\Base\\std", "*.d"); 
     foreach (ф; флы)
 	{
-		if(ф != "..\\mk\\compile.d")
+		if(ф != "d:\\dinrus\\dev\\DINRUS\\Base\\std\\mk\\compile.d")
 		{
 		сис("%DINRUS%\\dmd -c "~ф);	
 		скажифнс("Попытка компилировать модуль: "~ф);
@@ -17,7 +17,7 @@ scope флы = списпап("..", "*.d");
 		нс;
 		скажифнс("Пропуск модуля: "~ф);
 		нс;
-		сис("del ..\\mk\\compile.obj");
+		сис("del d:\\dinrus\\dev\\DINRUS\\Base\\std\\mk\\compile.obj");
 			Процессор процессор;
 			скажинс(процессор.вТкст());
 			нс;			

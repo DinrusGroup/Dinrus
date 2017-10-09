@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Base" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Base" imp_lib="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).a" def_file="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).def" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="dmd" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Base" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="dmd" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="base.d" />
+		<Unit filename="cidrus.d" />
+		<Unit filename="dinrus.d" />
+		<Unit filename="dll.d" />
+		<Unit filename="exception.d" />
+		<Unit filename="gc.d" />
+		<Unit filename="io/Console.d" />
+		<Unit filename="io/device/Conduit.d" />
+		<Unit filename="io/stream/Buffered.d" />
+		<Unit filename="object_.d" />
+		<Unit filename="rt/aApply.d" />
+		<Unit filename="rt/aApplyR.d" />
+		<Unit filename="rt/aaA.d" />
+		<Unit filename="rt/adi.d" />
+		<Unit filename="rt/alloca.d" />
+		<Unit filename="rt/arraybyte.d" />
+		<Unit filename="rt/arraycast.d" />
+		<Unit filename="rt/arraycat.d" />
+		<Unit filename="rt/arraydouble.d" />
+		<Unit filename="rt/arrayfloat.d" />
+		<Unit filename="rt/arrayint.d" />
+		<Unit filename="rt/arrayreal.d" />
+		<Unit filename="rt/arrayshort.d" />
+		<Unit filename="rt/cast.d" />
+		<Unit filename="rt/charset.d" />
+		<Unit filename="rt/cmath2.d" />
+		<Unit filename="rt/compat.d" />
+		<Unit filename="rt/complex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rt/critical.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rt/deh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rt/hash.d" />
+		<Unit filename="rt/invariant.d" />
+		<Unit filename="rt/lifetime.d" />
+		<Unit filename="rt/llmath.d" />
+		<Unit filename="rt/macros.asm" />
+		<Unit filename="rt/mars.h" />
+		<Unit filename="rt/memset.d" />
+		<Unit filename="rt/minit.asm" />
+		<Unit filename="rt/monitor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rt/qsort.d" />
+		<Unit filename="rt/switch.d" />
+		<Unit filename="rt/syserror.d" />
+		<Unit filename="rt/trace.d" />
+		<Unit filename="runtime.d" />
+		<Unit filename="std/base64.d" />
+		<Unit filename="std/bitarray.d" />
+		<Unit filename="std/conv.d" />
+		<Unit filename="std/cpuid.d" />
+		<Unit filename="std/crc32.d" />
+		<Unit filename="std/ctype.d" />
+		<Unit filename="std/date.d" />
+		<Unit filename="std/dateparse.d" />
+		<Unit filename="std/demangle.d" />
+		<Unit filename="std/file.d" />
+		<Unit filename="std/format.d" />
+		<Unit filename="std/intrinsic.d" />
+		<Unit filename="std/io.d" />
+		<Unit filename="std/loader.d" />
+		<Unit filename="std/math.d" />
+		<Unit filename="std/math2.d" />
+		<Unit filename="std/md5.d" />
+		<Unit filename="std/outbuffer.d" />
+		<Unit filename="std/path.d" />
+		<Unit filename="std/perf.d" />
+		<Unit filename="std/process.d" />
+		<Unit filename="std/random.d" />
+		<Unit filename="std/regexp.d" />
+		<Unit filename="std/string.d" />
+		<Unit filename="std/system.d" />
+		<Unit filename="std/traits.d" />
+		<Unit filename="std/uni.d" />
+		<Unit filename="std/uri.d" />
+		<Unit filename="std/utf.d" />
+		<Unit filename="std/zip.d" />
+		<Unit filename="std/zlib.d" />
+		<Unit filename="stdrus.d" />
+		<Unit filename="stringz.d" />
+		<Unit filename="sync.d" />
+		<Unit filename="sys/WinConsts.d" />
+		<Unit filename="sys/WinFuncs.d" />
+		<Unit filename="sys/WinIfaces.d" />
+		<Unit filename="sys/WinProcess.d" />
+		<Unit filename="sys/WinStructs.d" />
+		<Unit filename="sys/com.d" />
+		<Unit filename="sys/inc/RESOURCE.H" />
+		<Unit filename="sys/inc/advapi32.d" />
+		<Unit filename="sys/inc/kernel32.d" />
+		<Unit filename="sys/inc/user32.d" />
+		<Unit filename="sys/memory.d" />
+		<Unit filename="sys/registry.d" />
+		<Unit filename="sys/uuid.d" />
+		<Unit filename="thread.d" />
+		<Unit filename="tpl/all.d" />
+		<Unit filename="tpl/args.d" />
+		<Unit filename="tpl/bind.d" />
+		<Unit filename="tpl/box.d" />
+		<Unit filename="tpl/com.d" />
+		<Unit filename="tpl/metastrings.d" />
+		<Unit filename="tpl/minmax.d" />
+		<Unit filename="tpl/signal.d" />
+		<Unit filename="tpl/stream.d" />
+		<Unit filename="tpl/traits.d" />
+		<Unit filename="tpl/typetuple.d" />
+		<Unit filename="util.d" />
+		<Unit filename="win.d" />
+		<Unit filename="zlib.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

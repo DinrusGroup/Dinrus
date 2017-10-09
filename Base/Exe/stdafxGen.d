@@ -1,4 +1,4 @@
-﻿module h2d;
+﻿module stdafxGen;
 import stdrus, win, io.Stdout, cidrus: аборт;
 
 
