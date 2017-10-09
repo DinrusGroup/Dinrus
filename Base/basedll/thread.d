@@ -77,7 +77,7 @@ extern(C) ук адаптВхоУкз(ук укз);
 
 
             //
-            // copy of the same-named function in phobos.std.thread--it uses the
+            // copy of the same-named function in phobos.std.x.thread--it uses the
             // Windows naming convention to be consistent with GetCurrentThreadId
             //
     export  extern (Windows)    ук ДайДескрТекущейНити()

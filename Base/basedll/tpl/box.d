@@ -367,7 +367,7 @@ struct Бокс
     }
 
     /**
-     * Attempt to convert the boxed value into a string using std.string.format;
+     * Attempt to convert the boxed value into a string using std.x.string.format;
      * this will throw if that function cannot хэндл it. If the box is
      * uninitialized then this returns "".    
      */

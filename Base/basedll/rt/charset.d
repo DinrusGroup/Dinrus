@@ -10,8 +10,8 @@ module rt.charset;
 
 private import sys.WinFuncs;
 private import rt.syserror;
-private import std.utf;
-private import std.string;
+private import std.x.utf;
+private import std.x.string;
 
 ///////////////////////////////////////////////////////
 ткст0 вМБТн(ткст с, бцел кодСтр = 1)
@@ -48,7 +48,7 @@ char* toMBSz(char[] s, uint codePage = 0)
 	{
 	    char[] результат;
 	    int readLen;
-	    wchar* ws = std.utf.toUTF16z(s);
+	    wchar* ws = std.x.utf.toUTF16z(s);
 	    результат.length = sys.WinFuncs.WideCharToMultiByte(codePage, 0, ws, -1, null, 0,
 		null, null);
 
@@ -67,7 +67,7 @@ char* toMBSz(char[] s, uint codePage = 0)
 	    return результат.ptr;
 	}
     }
-    return std.string.toStringz(s);
+    return std.x.string.toStringz(s);
 }
 
 
@@ -109,7 +109,7 @@ char[] fromMBSz(char* s, int codePage = 0)
 		    sysErrorString(GetLastError()),__FILE__,__LINE__);
 	    }
 
-	    return std.utf.toUTF8(результат[0 .. результат.length-1]); // omit trailing null
+	    return std.x.utf.toUTF8(результат[0 .. результат.length-1]); // omit trailing null
 	}
     }
     return s[0 .. c-s];		// string is ASCII, no conversion necessary

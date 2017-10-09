@@ -26,6 +26,9 @@
 				</Compiler>
 			</Target>
 		</Build>
+		<Linker>
+			<Add library="../../../../lib/import.lib" />
+		</Linker>
 		<Unit filename="base.d" />
 		<Unit filename="cidrus.d" />
 		<Unit filename="dinrus.d" />

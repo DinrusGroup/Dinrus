@@ -4,7 +4,7 @@
 */
 module sys.WinFuncs;
 
-import  std.string, std.utf;
+import  std.x.string, std.x.utf;
 import  std.intrinsic;
 import cidrus;
 public import sys.inc.kernel32;
@@ -1336,7 +1336,7 @@ return cast(ук) MapViewOfFile(cast(HANDLE) объектФМап, cast(бцел
 		return select(нуд, cast(fd_set*) читнуд, cast(fd_set*) запнуд, cast(fd_set*) ошнуд, cast(timeval*) таймаут);
 		}
 		
-	ткст инетс8а(sys.WinStructs.адрес_ин иа){return std.string.toString(inet_ntoa(cast(in_addr) иа));}
+	ткст инетс8а(sys.WinStructs.адрес_ин иа){return std.x.string.toString(inet_ntoa(cast(in_addr) иа));}
 	
 	sys.WinStructs.хостзап* дайхостпоимени(ткст имя){return cast(sys.WinStructs.хостзап*) gethostbyname(cast(char*) имя);}
 	

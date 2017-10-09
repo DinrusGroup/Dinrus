@@ -1,7 +1,7 @@
 ﻿module tpl.stream;
 
 import cidrus,  tpl.args;
-import std.string, std.utf, std.format, std.file, std.crc32;
+import std.x.string, std.x.utf, std.x.format, std.x.file, std.x.crc32;
 import win: скажинс;
 
 alias isfile естьФайл;
@@ -702,7 +702,7 @@ export:
 	  abstract т_мера пишиБлок(ук буфер, т_мера размер);
 
 	  проц пишиРовно(ук буфер, т_мера размер) {
-	// debug скажинс(std.string.format("вход в пишиРовно: буфер=%s; размер=%s", буфер, размер));
+	// debug скажинс(std.x.string.format("вход в пишиРовно: буфер=%s; размер=%s", буфер, размер));
 		for(;;) {
 		  if (!размер) return;
 		  т_мера writesize = пишиБлок(буфер, размер);
@@ -951,12 +951,12 @@ export:
 	  {if(открытый())закрой();
 	  if(!естьФайл(имяф))
 		{
-		скажинс(std.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
+		скажинс(std.x.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
 		}
 	  else if(!УдалиФайл(вЮ16(имяф)))
-	  скажинс(std.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
+	  скажинс(std.x.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
 	  else
-	  скажинс(std.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
+	  скажинс(std.x.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
 	   
 	   
 	  override ткст toString() {

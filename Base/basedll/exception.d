@@ -1,6 +1,6 @@
 ﻿module exception;
-private import cidrus, rt.syserror, std.utf: вЮ8, вЮ16;
-private import std.string: format;
+private import cidrus, rt.syserror, std.x.utf: вЮ8, вЮ16;
+private import std.x.string: format;
 alias format форматируй;//, stdrus;
 private import sys.WinConsts, sys.WinFuncs;
 
@@ -1401,7 +1401,7 @@ export extern (C)
 {
 	проц ошибка(ткст сооб, ткст файл = ткст.init, дол  строка = дол.init)
 		{
-		wchar[] soob =cast(wchar[])(вЮ16(сооб)~"\nФайл: "~вЮ16(файл)~"\nСтрока:"~вЮ16(std.string.toString(строка)));
+		wchar[] soob =cast(wchar[])(вЮ16(сооб)~"\nФайл: "~вЮ16(файл)~"\nСтрока:"~вЮ16(std.x.string.toString(строка)));
 		ОкноСооб(null, soob, "Исключение Динрус :", ПСооб.Ошибка|ПСооб.Поверх);
 		throw new Исключение(сооб, файл, строка);
 		}

@@ -1,7 +1,7 @@
 ﻿module cidrus;
 
-import /*rt.console*/ std.string: toStringz, toString;
- import std.utf: toUTF16z;
+import /*rt.console*/ std.x.string: toStringz, toString;
+ import std.x.utf: toUTF16z;
  public import tpl.args;
  
  alias toStringz вТкст0;

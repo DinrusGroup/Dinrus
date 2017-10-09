@@ -1,340 +1,76 @@
-﻿/* /////////////////////////////////////////////////////////////////////////////
- * File:        perf.d
- *
- * Purpose:     Performance measurement classes. These classes were ported
- *              over to D from the STLSoft (http://stlsoft.org/) C++ libraries,
- *              which were documented in the article "Win32 Performance
- *              Measurement Option", May 2003 issue of Windows Develper Network
- *              (http://www.windevnet.com/documents/win0305a/).
- *
- * Created      19th March 2004
- * Updated:     18th July 2004
- *
- * www:         http://www.digitalmars.com/
- *
- * Copyright (C) 2004 by Digital Mars
- * All Rights Reserved
- * Written by Matthew Wilson
- * www.digitalmars.com
- * License for redistribution is by either the Artistic License in artistic.txt,
- * or the LGPL
- *
- * ////////////////////////////////////////////////////////////////////////// */
+﻿module std.perf;
 
 
-/** \file std/perf.d This file contains platform-independent performance classes */
-
-module std.perf;
-
-
-/// \brief Performance counter scope class generating template
-///
-/// This template declares the class PerformanceCounterScope which manages a
-/// performance counter instance, scoping its measurement interval by virtue of
-/// its supporting the RAII mechanism.
-
-scope class PerformanceCounterScope(T)
+scope
+ class МасштабСчётчикаПроизводительности(T)
 {
-    /// \name Construction
-    /// @{
     public:
-	/// Constructs an instance of the PerformanceCounterScope using a reference 
-	/// to the parameterising performance counter class, whose measurement is
-	/// to be scoped. The measurement interval is commenced with a call to 
-	/// <b>start()</b> on the managed counter instance.
-	this(T counter)
+	this(T счётчик)
 	in
 	{
-	    assert(null !is counter);
+	    assert(null !is счётчик);
 	}
 	body
 	{
-	    м_счётer = counter;
+	    м_счётчик = счётчик;
 
-	    м_счётer.start();
+	    м_счётчик.старт();
 	}
-	/// The measurement interval is completed with a call to <b>stop()</b> on the 
-	/// managed counter instance.
-	~this()
-	{
-	    м_счётer.stop();
-	}
-
-	/// Calls <b>stop()</b> on the managed counter instance, so that intermediate
-	/// timings can be taken.
-	void stop()
-	{
-	    м_счётer.stop();
-	}
-
-	/// Returns a reference to the managed counter instance.
-	T counter()
-	{
-	    return м_счётer;
-	}
-    /// @}
-
-    /// \name Members
-    /// @{
+	~this()	{	    м_счётчик.стоп();	}
+	проц стоп()	{ м_счётчик.стоп();}
+	T счётчик()	{	    return м_счётчик;	}
     private:
-	T   м_счётer;
-    /// @}
+	T   м_счётчик;
 
-    // Not to be implemented
     private:
-	this(PerformanceCounterScope rhs);
+	this(МасштабСчётчикаПроизводительности rhs);
 }
 
-version(Posix)
-{
 
-    extern  (C)
-    {
-	private struct timeval
-	{
-	    int tv_sec;    /*!< The number of seconds, since Jan. 1, 1970, in the time value. */
-	    int tv_usec;   /*!< The number of microseconds in the time value. */
-	};
-	private struct timezone
-	{
-	    int tz_minuteswest; /*!< minutes west of Greenwich. */
-	    int tz_dsttime;     /*!< type of dst corrections to apply. */
-	};
-	private void gettimeofday(timeval *tv, timezone *tz);
-    }
+ export extern (D)
+  class СчётчикВысокойПроизводительности
+ {
 
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A performance counter that uses the most accurate measurement APIs available on the host machine
-    ///
-    /// This class attempts to use the high performance hardware counter as its measurement resource, but failing 
-    /// that it defaults to less accurate resources in order to guarantee that meaningful measurements are always
-    /// available to application code
-    ///
-    /// \ingroup group_synsoft_linux_perf
-    class PerformanceCounter
-    {
-    /// \name Types
-    /// @{
     private:
-	alias   timeval epoch_type;
+	alias   дол    epoch_type;
     public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
 
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(PerformanceCounter)  scope_type;
-    /// @}
+	alias   дол    т_интервал;
+	alias МасштабСчётчикаПроизводительности!(СчётчикВысокойПроизводительности)  scope_type;
 
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    timezone tz;
-
-	    gettimeofday(&m_start, &tz);
-	}
-
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
-	{
-	    timezone tz;
-
-	    gettimeofday(&m_end, &tz);
-	}
-    /// @}
-
-    /// \name Attributes
-    /// @{
-    public:
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
-	{
-	    return microseconds;
-	}
-
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
-	{
-	    interval_type   start   =   cast(interval_type)m_start.tv_sec + cast(interval_type)m_start.tv_usec / (1000 * 1000);
-	    interval_type   end     =   cast(interval_type)m_end.tv_sec   + cast(interval_type)m_end.tv_usec   / (1000 * 1000);
-
-	    return end - start;
-	}
-
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
-	{
-	    interval_type   start   =   cast(interval_type)m_start.tv_sec * 1000 + cast(interval_type)m_start.tv_usec / 1000;
-	    interval_type   end     =   cast(interval_type)m_end.tv_sec   * 1000 + cast(interval_type)m_end.tv_usec   / 1000;
-
-	    return end - start;
-	}
-
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
-	{
-	    interval_type   start   =   cast(interval_type)m_start.tv_sec * 1000 * 1000 + cast(interval_type)m_start.tv_usec;
-	    interval_type   end     =   cast(interval_type)m_end.tv_sec   * 1000 * 1000 + cast(interval_type)m_end.tv_usec;
-
-	    return end - start;
-	}
-    /// @}
-
-    /// \name Members
-    /// @{
-    private:
-	epoch_type  m_start;    // start of measurement период
-	epoch_type  m_end;      // End of measurement период
-    /// @}
-    }
-
-    unittest
-    {
-	alias PerformanceCounter    counter_type;
-
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-}
-else version(Windows)
-{
-
-    private import sys.WinFuncs;
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \defgroup group_synsoft_win32._perf synsoft.win32..perf
-    /// \ingroup group_synsoft_win32.
-    /// \brief This library provides Win32 Performance facilities
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A performance counter that uses the high performance hardware counter on the host machine
-    ///
-    /// This class provides high-resolution performance monitoring using the host machine's high performance
-    /// hardware counter. This class does not provide meaningful timing information on operating systems
-    /// that do not provide a high performance hardware counter.
-    ///
-    /// \ingroup group_synsoft_win32._perf
-    class HighPerformanceCounter
-    {
-    /// \name Types
-    /// @{
-    private:
-	alias   long    epoch_type;
-    public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
-
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(HighPerformanceCounter)  scope_type;
-    /// @}
-
-    /// \name Construction
-    /// @{
-    private:
+    export:
 	static this()
 	{
-	    if(!QueryPerformanceFrequency(&sm_freq))
+	    if(!ОпросиЧастотуПроизводительности(&sm_freq))
 	    {
 		sm_freq = 0x7fffffffffffffffL;
 	    }
 	}
-    /// @}
 
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    QueryPerformanceCounter(&m_start);
-	}
+	проц старт()
+		{
+			    ОпросиСчётчикПроизводительности(&m_start);	
+			}
 
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
-	{
-	    QueryPerformanceCounter(&m_end);
-	}
-    /// @}
+	проц стоп()
+		{	
+		    ОпросиСчётчикПроизводительности(&m_end);	
+		}
 
-    /// \name Attributes
-    /// @{
-    public:
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
+	т_интервал счётПериодов()
 	{
-	    return m_end - m_start;
-	}
+	 return m_end - m_start;
+		}
 
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
-	{
-	    return периодCount() / sm_freq;
-	}
+	т_интервал секунды()
+		{	
+		    return счётПериодов() / sm_freq;
+		    	}
 
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
+	т_интервал миллисекунды()
 	{
-	    interval_type   результат;
-	    interval_type   count   =   периодCount();
+	    т_интервал   результат;
+	    т_интервал   count   =   счётПериодов();
 
 	    if(count < 0x20C49BA5E353F7L)
 	    {
@@ -348,13 +84,10 @@ else version(Windows)
 	    return результат;
 	}
 
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
+	т_интервал микросекунды()
 	{
-	    interval_type   результат;
-	    interval_type   count   =   периодCount();
+	    т_интервал   результат;
+	    т_интервал   count   =   счётПериодов();
 
 	    if(count < 0x8637BD05AF6L)
 	    {
@@ -367,783 +100,224 @@ else version(Windows)
 
 	    return результат;
 	}
-    /// @}
 
-    /// \name Members
-    /// @{
     private:
-	epoch_type              m_start;    // start of measurement период
+	epoch_type              m_start;    // старт of measurement период
 	epoch_type              m_end;      // End of measurement период
-	static interval_type    sm_freq;    // Frequency
-    /// @}
-    }
+	static т_интервал    sm_freq;    // Frequency
 
-    unittest
+ }
+
+ export extern (D) 
+ class СчётчикТиков
     {
-	alias   HighPerformanceCounter  counter_type;
 
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A low-cost, low-resolution performance counter
-    ///
-    /// This class provides low-resolution, but low-latency, performance monitoring
-    /// and is guaranteed to be meaningful on all operating systems.
-    ///
-    /// \ingroup group_synsoft_win32._perf
-    class TickCounter
-    {
-    /// \name Types
-    /// @{
     private:
-	alias   long    epoch_type;
-    public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
+	alias   дол    epoch_type;
+    export:
 
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(TickCounter) scope_type;
-    /// @}
+	alias   дол    т_интервал;
 
-    /// \name Construction
-    /// @{
-    public:
-    /// @}
+	alias МасштабСчётчикаПроизводительности!(СчётчикТиков) scope_type;
+    export:
 
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    m_start = GetTickCount();
-	}
+    export:
 
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
-	{
-	    m_end = GetTickCount();
-	}
-    /// @}
+	проц старт()
+		{	
+		    m_start = win.ДайСчётТиков();
+		    	}
+	проц стоп()
+		{	
+		    m_end = win.ДайСчётТиков();
+		    	}
 
-    /// \name Attributes
-    /// @{
-    public:
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
-	{
-	    return m_end - m_start;
-	}
+    export:
 
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
-	{
-	    return периодCount() / 1000;
-	}
+	т_интервал счётПериодов()
+		{	
+		    return m_end - m_start;
+		    	}
 
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
-	{
-	    return периодCount();
-	}
+	т_интервал секунды()
+		{	
+		    return счётПериодов() / 1000;
+		    	}
 
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
-	{
-	    return периодCount() * 1000;
-	}
-    /// @}
+	т_интервал миллисекунды()
+		{	 
+		   return счётПериодов();
+		   	}
 
-    /// \name Members
-    /// @{
+	т_интервал микросекунды()
+		{	
+		    return счётПериодов() * 1000;	
+		}
+
     private:
-	uint    m_start;    // start of measurement период
-	uint    m_end;      // End of measurement период
+	бцел    m_start;    // старт of measurement период
+	бцел    m_end;      // End of measurement период
     /// @}
     }
 
-    unittest
+export extern (D) 
+class СчётчикВремениНити
     {
-	alias TickCounter   counter_type;
 
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A performance counter that provides thread-specific performance timings
-    ///
-    /// This class uses the operating system's performance monitoring facilities to provide timing 
-    /// information pertaining to the calling thread only, irrespective of the activities of other
-    /// threads on the system. This class does not provide meaningful timing information on operating
-    /// systems that do not provide thread-specific monitoring.
-    ///
-    /// \ingroup group_synsoft_win32._perf
-    class ThreadTimesCounter
-    {
-    /// \name Types
-    /// @{
     private:
-	alias   long    epoch_type;
-    public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
+	alias   дол    epoch_type;
+    export:
 
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(ThreadTimesCounter)  scope_type;
-    /// @}
+	alias   дол    т_интервал;
+	alias МасштабСчётчикаПроизводительности!(СчётчикВремениНити)  scope_type;
 
-    /// \name Construction
-    /// @{
-    public:
-	/// \brief Constructor
-	///
-	/// Creates an instance of the class, and caches the thread token so that measurements will
-	/// be taken with respect to the thread in which the class was created.
-	this()
+    export:
+
+	this(){	    m_thread = ДайТекущуюНить();	}
+
+
+	проц старт()
 	{
-	    m_thread = GetCurrentThread();
-	}
-    /// @}
+	    ФВРЕМЯ    creationTime;
+	    ФВРЕМЯ    exitTime;
 
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    FILETIME    creationTime;
-	    FILETIME    exitTime;
-
-	    GetThreadTimes(m_thread, &creationTime, &exitTime, cast(FILETIME*)&m_kernelStart, cast(FILETIME*)&m_userStart);
+	    ДайВременаНити(m_thread, &creationTime, &exitTime, cast(ФВРЕМЯ*)&m_kernelStart, cast(ФВРЕМЯ*)&m_userStart);
 	}
 
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
+	проц стоп()
 	{
-	    FILETIME    creationTime;
-	    FILETIME    exitTime;
+	    ФВРЕМЯ    creationTime;
+	    ФВРЕМЯ    exitTime;
 
-	    GetThreadTimes(m_thread, &creationTime, &exitTime, cast(FILETIME*)&m_kernelEnd, cast(FILETIME*)&m_userEnd);
-	}
-    /// @}
-
-    /// \name Attributes
-    /// @{
-    public:
-	/// \name Kernel
-	/// @{
-
-	/// \brief The elapsed count in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период for kernel mode activity
-	interval_type kernelPeriodCount()
-	{
-	    return m_kernelEnd - m_kernelStart;
-	}
-	/// \brief The number of whole seconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole seconds, of the measurement период for kernel mode activity
-	interval_type kernelSeconds()
-	{
-	    return kernelPeriodCount() / 10000000;
-	}
-	/// \brief The number of whole milliseconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период for kernel mode activity
-	interval_type kernelMilliseconds()
-	{
-	    return kernelPeriodCount() / 10000;
-	}
-	/// \brief The number of whole microseconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период for kernel mode activity
-	interval_type kernelMicroseconds()
-	{
-	    return kernelPeriodCount() / 10;
-	}
-	/// @}
-
-	/// \name User
-	/// @{
-
-	/// \brief The elapsed count in the measurement период for user mode activity
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период for user mode activity
-	interval_type userPeriodCount()
-	{
-	    return m_userEnd - m_userStart;
-	}
-	/// \brief The number of whole seconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole seconds, of the measurement период for user mode activity
-	interval_type userSeconds()
-	{
-	    return userPeriodCount() / 10000000;
-	}
-	/// \brief The number of whole milliseconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период for user mode activity
-	interval_type userMilliseconds()
-	{
-	    return userPeriodCount() / 10000;
-	}
-	/// \brief The number of whole microseconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период for user mode activity
-	interval_type userMicroseconds()
-	{
-	    return userPeriodCount() / 10;
-	}
-	/// @}
-
-	/// \name Total
-	/// @{
-
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
-	{
-	    return kernelPeriodCount() + userPeriodCount();
+	    ДайВременаНити(m_thread, &creationTime, &exitTime, cast(ФВРЕМЯ*)&m_kernelEnd, cast(ФВРЕМЯ*)&m_userEnd);
 	}
 
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
-	{
-	    return периодCount() / 10000000;
-	}
+    export:
 
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
-	{
-	    return периодCount() / 10000;
-	}
+	т_интервал счётПериодаЯдра()
+		{	
+		    return m_kernelEnd - m_kernelStart;	
+		}
 
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
-	{
-	    return периодCount() / 10;
-	}
-	/// @}
-    /// @}
+	т_интервал секундыЯдра()
+		{
+			    return счётПериодаЯдра() / 10000000;
+			    	}
 
-    /// \name Members
-    /// @{
+	т_интервал миллисекундыЯдра()
+		{	    return счётПериодаЯдра() / 10000;	}
+
+	т_интервал микросекундыЯдра()
+		{	    return счётПериодаЯдра() / 10;	}
+
+	т_интервал счётПользовательскогоПериода()
+		{	    return m_userEnd - m_userStart;	}
+
+	т_интервал секундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10000000;	}
+
+	т_интервал миллисекундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10000;	}
+
+	т_интервал микросекундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10;	}
+
+	т_интервал счётПериодов()
+		{	    return счётПериодаЯдра() + счётПользовательскогоПериода();	}
+
+	т_интервал секунды()
+		{	    return счётПериодов() / 10000000;	}
+
+	т_интервал миллисекунды()
+		{	    return счётПериодов() / 10000;	}
+
+	т_интервал микросекунды()
+		{	    return счётПериодов() / 10;	}
+
     private:
 	epoch_type  m_kernelStart;
 	epoch_type  m_kernelEnd;
 	epoch_type  m_userStart;
 	epoch_type  m_userEnd;
-	HANDLE      m_thread;
-    /// @}
+	ук      m_thread;
+
     }
 
-    unittest
+
+export extern (D) 
+class СчётчикВремениПроцесса
     {
-	alias ThreadTimesCounter    counter_type;
-
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A performance counter that provides process-specific performance timings
-    ///
-    /// This class uses the operating system's performance monitoring facilities to provide timing 
-    /// information pertaining to the calling process only, irrespective of the activities of other
-    /// processes on the system. This class does not provide meaningful timing information on operating
-    /// systems that do not provide process-specific monitoring.
-    ///
-    /// \ingroup group_synsoft_win32._perf
-    class ProcessTimesCounter
-    {
-    /// \name Types
-    /// @{
     private:
-	alias   long    epoch_type;
-    public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
+	alias   дол    epoch_type;
+    export:
+	alias   дол    т_интервал;
+	alias МасштабСчётчикаПроизводительности!(СчётчикВремениПроцесса) scope_type;
 
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(ProcessTimesCounter) scope_type;
-    /// @}
-
-    /// \name Construction
-    /// @{
-    private:
-	/// \brief Class constructor
-	///
-	/// Detects availability of the high performance hardware counter, and if
-	/// not available adjusts 
 	static this()
 	{
-	    sm_process = GetCurrentProcess();
-	}
-    /// @}
-
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    FILETIME    creationTime;
-	    FILETIME    exitTime;
-
-	    GetProcessTimes(sm_process, &creationTime, &exitTime, cast(FILETIME*)&m_kernelStart, cast(FILETIME*)&m_userStart);
+	    sm_process = ДайТекущийПроцесс();
 	}
 
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
-	{
-	    FILETIME    creationTime;
-	    FILETIME    exitTime;
+    export:
 
-	    GetProcessTimes(sm_process, &creationTime, &exitTime, cast(FILETIME*)&m_kernelEnd, cast(FILETIME*)&m_userEnd);
-	}
-    /// @}
+	проц старт()
+	{
+	    ФВРЕМЯ    creationTime;
+	    ФВРЕМЯ    exitTime;
 
-    /// \name Attributes
-    /// @{
-    public:
-	/// \name Kernel
-	/// @{
-
-	/// \brief The elapsed count in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период for kernel mode activity
-	interval_type kernelPeriodCount()
-	{
-	    return m_kernelEnd - m_kernelStart;
-	}
-	/// \brief The number of whole seconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole seconds, of the measurement период for kernel mode activity
-	interval_type kernelSeconds()
-	{
-	    return kernelPeriodCount() / 10000000;
-	}
-	/// \brief The number of whole milliseconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период for kernel mode activity
-	interval_type kernelMilliseconds()
-	{
-	    return kernelPeriodCount() / 10000;
-	}
-	/// \brief The number of whole microseconds in the measurement период for kernel mode activity
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период for kernel mode activity
-	interval_type kernelMicroseconds()
-	{
-	    return kernelPeriodCount() / 10;
-	}
-	/// @}
-
-	/// \name User
-	/// @{
-
-	/// \brief The elapsed count in the measurement период for user mode activity
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период for user mode activity
-	interval_type userPeriodCount()
-	{
-	    return m_userEnd - m_userStart;
-	}
-	/// \brief The number of whole seconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole seconds, of the measurement период for user mode activity
-	interval_type userSeconds()
-	{
-	    return userPeriodCount() / 10000000;
-	}
-	/// \brief The number of whole milliseconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период for user mode activity
-	interval_type userMilliseconds()
-	{
-	    return userPeriodCount() / 10000;
-	}
-	/// \brief The number of whole microseconds in the measurement период for user mode activity
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период for user mode activity
-	interval_type userMicroseconds()
-	{
-	    return userPeriodCount() / 10;
-	}
-	/// @}
-
-	/// \name Total
-	/// @{
-
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
-	{
-	    return kernelPeriodCount() + userPeriodCount();
+	    ДайВременаПроцесса(sm_process, &creationTime, &exitTime, cast(ФВРЕМЯ*)&m_kernelStart, cast(ФВРЕМЯ*)&m_userStart);
 	}
 
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
+	проц стоп()
 	{
-	    return периодCount() / 10000000;
+	    ФВРЕМЯ    creationTime;
+	    ФВРЕМЯ    exitTime;
+
+	    ДайВременаПроцесса(sm_process, &creationTime, &exitTime, cast(ФВРЕМЯ*)&m_kernelEnd, cast(ФВРЕМЯ*)&m_userEnd);
 	}
 
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
-	{
-	    return периодCount() / 10000;
-	}
+    export:
 
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
-	{
-	    return периодCount() / 10;
-	}
-	/// @}
-    /// @}
+	т_интервал счётПериодаЯдра()
+		{	    return m_kernelEnd - m_kernelStart;	}
 
-    /// \name Members
-    /// @{
+	т_интервал секундыЯдра()
+		{	    return счётПериодаЯдра() / 10000000;	}
+
+	т_интервал миллисекундыЯдра()
+		{	    return счётПериодаЯдра() / 10000;	}
+
+	т_интервал микросекундыЯдра()
+		{	    return счётПериодаЯдра() / 10;	}
+
+	т_интервал счётПользовательскогоПериода()
+		{	    return m_userEnd - m_userStart;	}
+
+	т_интервал секундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10000000;	}
+
+	т_интервал миллисекундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10000;	}
+
+	т_интервал микросекундыПользователя()
+		{	    return счётПользовательскогоПериода() / 10;	}
+
+	т_интервал счётПериодов()
+		{	    return счётПериодаЯдра() + счётПользовательскогоПериода();	}
+
+	т_интервал секунды()
+		{	    return счётПериодов() / 10000000;	}
+
+	т_интервал миллисекунды()
+		{	    return счётПериодов() / 10000;	}
+
+	т_интервал микросекунды()
+		{	    return счётПериодов() / 10;	}
+
     private:
 	epoch_type      m_kernelStart;
 	epoch_type      m_kernelEnd;
 	epoch_type      m_userStart;
 	epoch_type      m_userEnd;
-	static HANDLE   sm_process;
-    /// @}
+	static ук   sm_process;
     }
-
-    unittest
-    {
-	alias ProcessTimesCounter   counter_type;
-
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-
-    /// \brief A performance counter that uses the most accurate measurement APIs available on the host machine
-    ///
-    /// This class attempts to use the high performance hardware counter as its measurement resource, but failing 
-    /// that it defaults to less accurate resources in order to guarantee that meaningful measurements are always
-    /// available to application code
-    ///
-    /// \ingroup group_synsoft_win32._perf
-    class PerformanceCounter
-    {
-    /// \name Types
-    /// @{
-    private:
-	alias   long    epoch_type;
-    public:
-	/// \brief The interval type
-	///
-	/// The type of the interval measurement, a 64-bit signed integer
-	alias   long    interval_type;
-
-	/// \brief The scope type
-	///
-	/// The type with which instances of the counter class can be subject to the RAII mechanism in order
-	/// to scope particular measurement intervals
-	alias PerformanceCounterScope!(PerformanceCounter)    scope_type;
-    /// @}
-
-    /// \name Constructors
-    /// @{
-    private:
-	/// \brief Class constructor
-	///
-	/// Detects availability of the high performance hardware counter, and if
-	/// not available adjusts 
-	static this()
-	{
-	    if(QueryPerformanceFrequency(&sm_freq))
-	    {
-		sm_fn   =   &_qpc;
-	    }
-	    else
-	    {
-		sm_freq =   1000;
-		sm_fn   =   &_qtc;
-	    }
-	}
-    /// @}
-
-    /// \name Operations
-    /// @{
-    public:
-	/// \brief Starts measurement
-	///
-	/// Begins the measurement период
-	void start()
-	{
-	    sm_fn(m_start);
-	}
-
-	/// \brief Ends measurement
-	///
-	/// Ends the measurement период
-	void stop()
-	{
-	    sm_fn(m_end);
-	}
-    /// @}
-
-    /// \name Attributes
-    /// @{
-    public:
-	/// \brief The elapsed count in the measurement период
-	///
-	/// This represents the extent, in machine-specific increments, of the measurement период
-	interval_type периодCount()
-	{
-	    return m_end - m_start;
-	}
-
-	/// \brief The number of whole seconds in the measurement период
-	///
-	/// This represents the extent, in whole seconds, of the measurement период
-	interval_type seconds()
-	{
-	    return периодCount() / sm_freq;
-	}
-
-	/// \brief The number of whole milliseconds in the measurement период
-	///
-	/// This represents the extent, in whole milliseconds, of the measurement период
-	interval_type milliseconds()
-	{
-	    interval_type   результат;
-	    interval_type   count   =   периодCount();
-
-	    if(count < 0x20C49BA5E353F7L)
-	    {
-		результат = (count * 1000) / sm_freq;
-	    }
-	    else
-	    {
-		результат = (count / sm_freq) * 1000;
-	    }
-
-	    return результат;
-	}
-
-	/// \brief The number of whole microseconds in the measurement период
-	///
-	/// This represents the extent, in whole microseconds, of the measurement период
-	interval_type microseconds()
-	{
-	    interval_type   результат;
-	    interval_type   count   =   периодCount();
-
-	    if(count < 0x8637BD05AF6L)
-	    {
-		результат = (count * 1000000) / sm_freq;
-	    }
-	    else
-	    {
-		результат = (count / sm_freq) * 1000000;
-	    }
-
-	    return результат;
-	}
-    /// @}
-
-    /// \name Implementation
-    /// @{
-    private:
-	alias void function(out epoch_type interval)    measure_func;
-
-	static void _qpc(out epoch_type interval)
-	{
-	    QueryPerformanceCounter(&interval);
-	}
-
-	static void _qtc(out epoch_type interval)
-	{
-	    interval = GetTickCount();
-	}
-    /// @}
-
-    /// \name Members
-    /// @{
-    private:
-	epoch_type              m_start;    // start of measurement период
-	epoch_type              m_end;      // End of measurement период
-	static interval_type    sm_freq;    // Frequency
-	static measure_func     sm_fn;      // Measurement function
-    /// @}
-    }
-
-    unittest
-    {
-	alias PerformanceCounter    counter_type;
-
-	counter_type    counter = new counter_type();
-
-	counter.start();
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us1 =   counter.microseconds();
-	counter_type.interval_type  ms1 =   counter.milliseconds();
-	counter_type.interval_type  s1  =   counter.seconds();
-
-	volatile for(int i = 0; i < 10000000; ++i)
-	{   }
-	counter.stop();
-
-	counter_type.interval_type  us2 =   counter.microseconds();
-	counter_type.interval_type  ms2 =   counter.milliseconds();
-	counter_type.interval_type  s2  =   counter.seconds();
-
-	assert(us2 >= us1);
-	assert(ms2 >= ms1);
-	assert(s2 >= s1);
-    }
-
-    /* ////////////////////////////////////////////////////////////////////////// */
-}
-else
-{
-    const int platform_not_supported = 0;
-
-    static assert(platform_not_supported);
-}

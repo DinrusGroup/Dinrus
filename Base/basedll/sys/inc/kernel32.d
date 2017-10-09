@@ -1,5 +1,5 @@
 ﻿module sys.inc.kernel32;
-import sys.WinConsts, sys.WinStructs, std.string, std.utf;
+import sys.WinConsts, sys.WinStructs, std.x.string, std.x.utf;
 
 enum MEMORY_RESOURCE_NOTIFICATION_TYPE {
 		LowMemoryResourceNotification,

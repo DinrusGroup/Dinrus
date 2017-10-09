@@ -14,7 +14,7 @@ module rt.adi;
 private
 {
     import cidrus;
-    import std.utf;
+    import std.x.utf;
 
     extern (C) void* gc_malloc( size_t sz, uint ba = 0 );
     extern (C) void* gc_calloc( size_t sz, uint ba = 0 );

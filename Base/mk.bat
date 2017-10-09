@@ -114,7 +114,7 @@ copy %this%\import\util\*.d  %R%\util\*.di
 :::Creating respond file
 :::%this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d
 :::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
-%LS% -d %this%\basedll\std\*.d %this%\basedll\*.d %this%\basedll\tpl\*.d %this%\basedll\rt\*.d %this%\basedll\sys\*.d %this%\basedll\sys\inc\*.d>>%this%\objs.rsp
+%LS% -d %this%\basedll\std\x\*.d %this%\basedll\*.d %this%\basedll\tpl\*.d %this%\basedll\rt\*.d %this%\basedll\sys\*.d %this%\basedll\sys\inc\*.d>>%this%\objs.rsp
 
 @if exist %DINRUS%\dinrus.exe %DINRUS%\dinrus.exe
 
@@ -387,11 +387,10 @@ del *.obj
 if not exist %R%\std mkdir %R%\std
 del %R%\std\*.di
 copy %this%\std\*.d  %R%\std\*.di 
-%DMD% -of%this%\std\mk\compile.exe %this%\std\mk\compile.d
-%this%\std\mk\compile.exe
+%DMD% -run %this%\std\mk\compile.d
 if exist %this%\std\mk\DinrusStd.lib copy %this%\std\mk\DinrusStd.lib  %LDIR%
-if not exist %this%\std\mk\DinrusStd.lib pause
-del *.lib *.exe *.map
+::if not exist %this%\std\mk\DinrusStd.lib pause
+del %this%\*.lib %this%\*.exe %this%\*.map
 
 cd %this%
 :clean

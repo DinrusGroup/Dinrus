@@ -621,7 +621,7 @@ version (BindUseStruct) {
 привяжи(&foo, _0, _0)
 ---
 	will результат in a delegate accepting a single, optimal parameter тип. The best тип is computed
-	using std.typetuple.ПроизводныйВперёд, so in case of an цел and a дол, дол will be selected. Generally, привяжи will try to find
+	using std.x.typetuple.ПроизводныйВперёд, so in case of an цел and a дол, дол will be selected. Generally, привяжи will try to find
 	a тип that can be implicitly converted to all the other types a given dynamic parameter uses.
 		Note: in case of numeric types, an explicit, but transparent (to the user) cast will be performed
 	

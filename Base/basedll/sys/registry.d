@@ -164,7 +164,7 @@ private typedef бцел Reserved;
 
 /* ////////////////////////////////////////////////////////////////////////// */
 
-/// \defgroup group_std_windows_reg std.import rt.core.os.windows;.registry
+/// \defgroup group_std_windows_reg std.x.import rt.core.os.windows;.registry
 /// \ingroup group_std_windows
 /// \brief This library provides Win32 Реестр facilities
 
@@ -854,7 +854,7 @@ body
 ////////////////////////////////////////////////////////////////////////////////
 // ИсклРеестра
 
-/// Exception class thrown by the std.import rt.core.os.windows;.registry classes
+/// Exception class thrown by the std.x.import rt.core.os.windows;.registry classes
 ///
 /// \ingroup group_D_win32_reg
 

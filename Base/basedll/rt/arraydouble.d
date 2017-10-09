@@ -7,7 +7,7 @@
 
 module rt.arraydouble;
 
-import CPUid = std.cpuid;
+import CPUid = std.x.cpuid;
 
     int cpuid;
     const int CPUID_MAX = 5;
