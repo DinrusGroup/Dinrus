@@ -15,8 +15,11 @@ public static
 ук   УКНАНИТЬ;
 }
 
+const бцел винВерсия;
+
 static this()
 {
+  винВерсия = ДайВерсию();
 ИДПРОЦЕССА =  GetCurrentProcessId();
 УКНАПРОЦЕСС = cast(ук) OpenProcess(0x000F0000|0x00100000|0x0FFF,false,ИДПРОЦЕССА);
 УКНАНИТЬ  = GetCurrentThread();

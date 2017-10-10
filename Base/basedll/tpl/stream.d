@@ -1,31 +1,9 @@
 ﻿module tpl.stream;
 
 import cidrus,  tpl.args;
-import std.x.string, std.x.utf, std.x.format, std.x.file, std.x.crc32;
-import win: скажинс;
+import std.string, std.utf, std.format, std.file, std.crc32;
+import std.ctype, win: скажинс;
 
-alias isfile естьФайл;
-alias toUTF16 вЮ16;
-alias toUTF32 вЮ32;
-alias toUTF8 вЮ8;
-alias init_crc32 иницЦПИ32;
-alias update_crc32 обновиЦПИ32;
-
-protected бул пробел(сим c) {
-  return c == ' ' || c == '\t' || c == '\r' || c == '\n';
-}
-
-protected бул цифра(сим c) {
-  return c >= '0' && c <= '9';
-}
-
-protected бул цифра8(сим c) {
-  return c >= '0' && c <= '7';
-}
-
-protected бул цифра16(сим c) {
-  return цифра(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
-}
 
 
 export extern (D) abstract class Поток :  win.ПотокВвода, win.ПотокВывода
@@ -702,7 +680,7 @@ export:
 	  abstract т_мера пишиБлок(ук буфер, т_мера размер);
 
 	  проц пишиРовно(ук буфер, т_мера размер) {
-	// debug скажинс(std.x.string.format("вход в пишиРовно: буфер=%s; размер=%s", буфер, размер));
+	// debug скажинс(std.string.format("вход в пишиРовно: буфер=%s; размер=%s", буфер, размер));
 		for(;;) {
 		  if (!размер) return;
 		  т_мера writesize = пишиБлок(буфер, размер);
@@ -951,12 +929,12 @@ export:
 	  {if(открытый())закрой();
 	  if(!естьФайл(имяф))
 		{
-		скажинс(std.x.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
+		скажинс(std.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
 		}
 	  else if(!УдалиФайл(вЮ16(имяф)))
-	  скажинс(std.x.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
+	  скажинс(std.string.format("\n\tИНФО:  Файл %s остался не удалёным", имяф));
 	  else
-	  скажинс(std.x.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
+	  скажинс(std.string.format("\n\tИНФО:  Файл %s успешно удалён", имяф));}
 	   
 	   
 	  override ткст toString() {

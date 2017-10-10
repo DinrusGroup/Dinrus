@@ -4,8 +4,8 @@ module object;
 public import base, win, cidrus;
 private import rt.lifetime, rt.hash, rt.aaA /*rt.console*/;//: кразмести, перемести, освободи, перембуф, копирбуф, сравбуф;
 private import  runtime;
-private  import std.x.string, std.x.utf;
-alias std.x.string.format фм;
+private  import std.string, std.utf;
+alias std.string.format фм;
 import sys.memory;
 //debug = НА_КОНСОЛЬ;
 
@@ -351,7 +351,7 @@ alias SetConsoleTextAttribute УстановиАтрибутыТекстаКон
                 }
                 sink(file);
                 sink(":");
-                sink(std.x.string.ulongToUtf8(buf, cast(т_мера) line));
+                sink(std.string.ulongToUtf8(buf, cast(т_мера) line));
             }
         }
 		проц выпиши(проц delegate(ткст) синк){writeOut(синк);}
@@ -411,7 +411,7 @@ alias SetConsoleTextAttribute УстановиАтрибутыТекстаКон
 if(!выведено)
 {
 		this.выведи();
-		wchar[] soob = toUTF16(фм("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.x.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
+		wchar[] soob = toUTF16(фм("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
         ОкноСооб(null, soob, "Исключение Динрус", ПСооб.Ошибка|ПСооб.Поверх);
 		сбросьЦветКонсоли();	
 		выведено = да;
@@ -441,7 +441,7 @@ if(!выведено)
 		if (file.length>0 || line!=0)
         {
             char[25]buf;
-			ошибнс(фм("\n\n"~this.classinfo.name~"@"~file~"("~std.x.string.ulongToUtf8(buf, line)~"):\n "~this.msg~"\r\n"));	
+			ошибнс(фм("\n\n"~this.classinfo.name~"@"~file~"("~std.string.ulongToUtf8(buf, line)~"):\n "~this.msg~"\r\n"));	
         }
         else
         {
@@ -463,8 +463,8 @@ if(!выведено)
     проц writeOutMsg(проц delegate(char[])sink)
 	{
 	
-	//	wchar[] soob =cast(wchar[])(toUTF16(this.msg)~"\n"~toUTF16(СистОШ.последнСооб)~"\nФайл: "~toUTF16(file)~"\nСтрока:"~toUTF16(std.x.string.toString(line)));
-        sink(фм(this.msg~"\n"~СистОШ.последнСооб~"\nФайл: "~file~"\nСтрока:"~std.x.string.toString(line)));		
+	//	wchar[] soob =cast(wchar[])(toUTF16(this.msg)~"\n"~toUTF16(СистОШ.последнСооб)~"\nФайл: "~toUTF16(file)~"\nСтрока:"~toUTF16(std.string.toString(line)));
+        sink(фм(this.msg~"\n"~СистОШ.последнСооб~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)));		
 		//ОкноСооб(null, soob, "Исключение Динрус: "~toUTF16(this.classinfo.name), ПСооб.Ошибка|ПСооб.Поверх);			
 	
    }
@@ -477,7 +477,7 @@ if(!выведено)
         {
             char[25]buf;
 			sink("\n\n");
-            sink(this.classinfo.name~"@"~file~"("~std.x.string.ulongToUtf8(buf, line)~"): ");
+            sink(this.classinfo.name~"@"~file~"("~std.string.ulongToUtf8(buf, line)~"): ");
             sink(this.msg);
             sink("\n");
 			
@@ -689,7 +689,7 @@ export:
 	Объект создай(){return create();}
 }
 
-private import std.x.string;
+private import std.string;
 ///////////////////////////////////////////////////////////////////////////////////
 /**
  * Массив из пар, содержащих смещение и тип информации
@@ -733,7 +733,7 @@ export:
 	TypeInfo ti = cast(TypeInfo)o;
 	if (ti is null)
 	    return 1;
-	return std.x.string.cmp(this.toString(), ti.toString());
+	return std.string.cmp(this.toString(), ti.toString());
     }	
 
     override цел opEquals(Object o)
@@ -1036,9 +1036,9 @@ export:
 
     override ткст toString()
 		{
-		//return value.toString() ~ "[" ~ std.x.string.toString(len) ~ "]";
+		//return value.toString() ~ "[" ~ std.string.toString(len) ~ "]";
 		char [10] tmp = void;
-			return value.toString() ~ "[" ~ std.x.string.intToUtf8(tmp, len) ~ "]";
+			return value.toString() ~ "[" ~ std.string.intToUtf8(tmp, len) ~ "]";
 		}
 	override ткст вТкст(){return toString();}
 	

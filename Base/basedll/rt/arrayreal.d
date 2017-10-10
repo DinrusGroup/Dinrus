@@ -6,7 +6,7 @@
 
 module rt.arrayreal;
 
-import CPUid = std.x.cpuid;
+import CPUid = std.cpuid;
 
     int cpuid;
     const int CPUID_MAX = 1;

@@ -5,7 +5,7 @@
  * and dchar, and 2 of each of those.
  */
 
-private import std.x.utf, base;
+private import std.utf, base;
 
 /**********************************************
  */

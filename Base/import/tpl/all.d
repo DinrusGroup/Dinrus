@@ -10,7 +10,7 @@ public import	     tpl.args,
 					tpl.minmax,
 					tpl.box,
 					tpl.singleton,
-					 tpl.stream,
+					 std.stream,
 					 tpl.weakref
 					 ;
 					 

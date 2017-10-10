@@ -11,7 +11,7 @@
 
 module rt.arrayshort;
 
-private import CPUid = std.x.cpuid;
+private import CPUid = std.cpuid;
 
     int cpuid;
     const int CPUID_MAX = 4;

@@ -1,5 +1,5 @@
 ﻿
-// Написано на языке программирования Динрус. Разработчик Виталий Кулич.
+// Written in the D programming language.
 
 /**
  * Templates with which to extract information about
@@ -17,27 +17,27 @@
  *	Tomasz Stachowiak (isStaticArray, isExpressionTuple)
  */
 
-module std.x.traits;
+module std.traits;
 
 /***
  * Get the type of the return value from a function,
  * a pointer to function, or a delegate.
  * Example:
  * ---
- * import std.x.traits;
+ * import std.traits;
  * int foo();
  * ReturnType!(foo) x;   // x is declared as int
  * ---
  */
-template ReturnType(alias дг)
+template ReturnType(alias dg)
 {
-    alias ReturnType!(typeof(дг)) ReturnType;
+    alias ReturnType!(typeof(dg)) ReturnType;
 }
 
 /** ditto */
-template ReturnType(дг)
+template ReturnType(dg)
 {
-    static if (is(дг R == return))
+    static if (is(dg R == return))
 	alias R ReturnType;
     else
 	static assert(0, "argument has no return type");
@@ -48,26 +48,26 @@ template ReturnType(дг)
  * a pointer to function, or a delegate as a tuple.
  * Example:
  * ---
- * import std.x.traits;
+ * import std.traits;
  * int foo(int, long);
- * void bar(КортежТипаПараметров!(foo));      // declares void bar(int, long);
- * void abc(КортежТипаПараметров!(foo)[1]);   // declares void abc(long);
+ * void bar(ParameterTypeTuple!(foo));      // declares void bar(int, long);
+ * void abc(ParameterTypeTuple!(foo)[1]);   // declares void abc(long);
  * ---
  */
-template КортежТипаПараметров(alias дг)
+template ParameterTypeTuple(alias dg)
 {
-    alias КортежТипаПараметров!(typeof(дг)) КортежТипаПараметров;
+    alias ParameterTypeTuple!(typeof(dg)) ParameterTypeTuple;
 }
 
 /** ditto */
-template КортежТипаПараметров(дг)
+template ParameterTypeTuple(dg)
 {
-    static if (is(дг P == function))
-	alias P КортежТипаПараметров;
-    else static if (is(дг P == delegate))
-	alias КортежТипаПараметров!(P) КортежТипаПараметров;
-    else static if (is(дг P == P*))
-	alias КортежТипаПараметров!(P) КортежТипаПараметров;
+    static if (is(dg P == function))
+	alias P ParameterTypeTuple;
+    else static if (is(dg P == delegate))
+	alias ParameterTypeTuple!(P) ParameterTypeTuple;
+    else static if (is(dg P == P*))
+	alias ParameterTypeTuple!(P) ParameterTypeTuple;
     else
 	static assert(0, "argument has no parameters");
 }
@@ -90,11 +90,11 @@ template FieldTypeTuple(S)
 
 
 /***
- * Get a КортежТипа of the base class and base interfaces of
+ * Get a TypeTuple of the base class and base interfaces of
  * this class or interface.
  * Example:
  * ---
- * import std.x.traits, std.x.typetuple, std.x.io;
+ * import std.traits, std.typetuple, std.stdio;
  * interface I { }
  * class A { }
  * class B : A, I { }

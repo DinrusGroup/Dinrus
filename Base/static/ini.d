@@ -56,7 +56,7 @@ Differences with Windows' profile (INI) functions:
 /// Переносной модуль для чтения и записи файлов _INI. _ини.d version 0.6
 module ini;
 
-import win, stdrus, tpl.stream;
+import win, stdrus, std.stream;
 
 
 debug = INI; //show файл being parsed

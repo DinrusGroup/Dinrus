@@ -742,7 +742,7 @@ int _aaEqual(TypeInfo tiRaw, AA e1, AA e2)
             // The member in object_.d and object.di differ. This is to ensure
             //  the file can be compiled both independently in unittest and
             //  collectively in generating the library. Fixing object.di
-            //  requires changes to std.x.format in Phobos, fixing object_.d
+            //  requires changes to std.format in Phobos, fixing object_.d
             //  makes Phobos's unittest fail, so this hack is employed here to
             //  avoid irrelevant changes.
             static if (is(typeof(&tiConst.base) == TypeInfo*))

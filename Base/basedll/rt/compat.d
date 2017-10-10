@@ -43,9 +43,9 @@ module derelict.util.compat;
     {
         version(D_Version2)
         {
-            import std.x.conv;
+            import std.conv;
         }
-        import std.x.string;
+        import std.string;
         import cidrus;
     }
     

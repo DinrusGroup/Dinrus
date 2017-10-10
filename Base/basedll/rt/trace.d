@@ -15,7 +15,7 @@ module rt.trace;
 
 private
 {
-    import std.x.string;
+    import std.string;
     import cidrus;
 }
 
@@ -491,7 +491,7 @@ static Symbol* trace_addsym(char[] id)
     rover = *parent;
     while (rover !is null)               // while we haven't run out of tree
     {
-        cmp = std.x.string.cmp (id, rover.Sident);
+        cmp = std.string.cmp (id, rover.Sident);
         if (cmp == 0)
         {
             return rover;

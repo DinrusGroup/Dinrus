@@ -1,4 +1,5 @@
 ﻿module std.socket;
+import tpl.stream;
 
 abstract class Адрес
 {
@@ -21,7 +22,7 @@ export:
 	проц заполни(win.протзап* прото)
 	{
 	тип = cast(ППротокол)прото.прот;
-		имя = std.x.string.toString(прото.имя).dup;
+		имя = std.string.toString(прото.имя).dup;
 
 		int i;
 		for(i = 0;; i++)
@@ -36,7 +37,7 @@ export:
 			for(i = 0; i != алиасы.length; i++)
 			{
 			    алиасы[i] =
-				std.x.string.toString(прото.алиасы[i]).dup;
+				std.string.toString(прото.алиасы[i]).dup;
 			}
 		}
 		else
@@ -79,9 +80,9 @@ export:
 
 	проц заполни(служзап* служба)
 	{
-		имя = std.x.string.toString(служба.имя).dup;
+		имя = std.string.toString(служба.имя).dup;
 		порт = с8хбк(cast(бкрат)служба.порт);
-		имяПротокола = std.x.string.toString(служба.прот).dup;
+		имяПротокола = std.string.toString(служба.прот).dup;
 
 		int i;
 		for(i = 0;; i++)
@@ -96,7 +97,7 @@ export:
 			for(i = 0; i != алиасы.length; i++)
 			{
                             алиасы[i] =
-                                std.x.string.toString(служба.алиасы[i]).dup;
+                                std.string.toString(служба.алиасы[i]).dup;
 			}
 		}
 		else
@@ -164,7 +165,7 @@ export:
 	int i;
 		char* p;
 
-		имя = std.x.string.toString(хз.имя).dup;
+		имя = std.string.toString(хз.имя).dup;
 
 		for(i = 0;; i++)
 		{
@@ -179,7 +180,7 @@ export:
 			for(i = 0; i != алиасы.length; i++)
 			{
                             алиасы[i] =
-                                std.x.string.toString(хз.алиасы[i]).dup;
+                                std.string.toString(хз.алиасы[i]).dup;
 			}
 		}
 		else
@@ -270,7 +271,7 @@ export:
 
 	override ткст вТкст()
 	{
-		return std.x.string.toString("Неизвестно");
+		return std.string.toString("Неизвестно");
 	}
 }
 
@@ -346,7 +347,7 @@ export extern (D)
 
 	ткст вПортТкст()
 	{
-		return std.x.string.toString(порт());
+		return std.string.toString(порт());
 	}
 
 	override ткст вТкст()
@@ -622,7 +623,7 @@ static ткст имяХоста() // getter
 		char[256] результат; // Host names are limited to 255 chaрс.
 		if(-1 == дайимяхоста(результат, результат.length))
 			throw new СокетИскл("Не удаётся получить имя хоста", _lasterr());
-		return std.x.string.toString(cast(char*)результат).dup;
+		return std.string.toString(cast(char*)результат).dup;
 	}
 
 Адрес удалённыйАдрес()

@@ -1,12 +1,18 @@
 ﻿module std.bitarray;
-private import std.intrinsic, sd.x.bitarray;
+private import std.intrinsic;
 
 export extern(D) struct МассивБит
 {
-    т_мера длин;
-    бцел* укз;
+	private
+	{
 
-	alias  укз ptr;
+    т_мера len;
+    alias len длин;
+
+    бцел* ptr;
+	alias ptr укз;
+
+    }
 
 	export т_мера разм()
 	{
@@ -478,7 +484,9 @@ export extern(D) struct МассивБит
 
 }/////end of class
 
-МассивБит вМасБит(std.x.bitarray.BitArray ба)
+/*
+
+МассивБит вМасБит(std.bitarray.BitArray ба)
 	{
 	МассивБит рез;
 	рез.длин = ба.длин;
@@ -488,7 +496,7 @@ export extern(D) struct МассивБит
 
 BitArray изМасБита(МассивБит мб)
 	{
-	std.x.bitarray.BitArray рез;
+	std.bitarray.BitArray рез;
 	рез.длин = мб.длин;
 	рез.ptr = мб.укз;
 	return  рез;
@@ -525,4 +533,5 @@ BitArray изМасБита(МассивБит мб)
 	assert(c[1] == 1);
 	assert(c[2] == 0);
     }
-}
+
+*/

@@ -1,26 +1,5 @@
-﻿// Written in the D programming language
-// written by Walter Bright
-// www.digitalmars.com
-// Placed into the public domain
-
-/** These functions are built-in intrinsics to the compiler.
- *
-	Intrinsic functions are functions built in to the compiler,
-	usually to take advantage of specific CPU features that
-	are inefficient to хэндл via external functions.
-	The compiler's optimizer and code generator are fully
-	integrated in with intrinsic functions, bringing to bear
-	their full power on them.
-	This can результат in some surprising speedups.
- *
- * Copyright: Public Domain
- * License:   Public Domain
- * Authors:   Walter Bright
- * Macros:
- *	WIKI=Phobos/StdIntrinsic
- */
-
-module std.intrinsic;
+﻿module std.intrinsic;
+pragma(lib, "DinrusStd.lib");
 
 /**
  * Scans the bits in v starting with bit 0, looking
@@ -40,7 +19,7 @@ int bsf(uint v);
  *	The return value is undefined if v is zero.
  * Example:
  * ---
- * import std.x.io;
+ * import std.stdio;
  * import std.intrinsic;
  *
  * int main()
@@ -79,7 +58,7 @@ int btr(uint *p, uint bitnum);
 
 /**
  * Tests and sets the bit.
- * Параметры:
+ * Params:
  * p = a non-NULL pointer to an array of uints.
  * index = a bit number, starting with bit 0 of p[0],
  * and progressing. It addresses bits like the expression:
@@ -92,7 +71,7 @@ p[index / (uint.sizeof*8)] & (1 << (index & ((uint.sizeof*8) - 1)))
  *
  * Example: 
  * ---
-import std.x.io;
+import std.stdio;
 import std.intrinsic;
 
 int main()

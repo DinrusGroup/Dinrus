@@ -1,4 +1,5 @@
 ﻿module std.stream;
+import tpl.stream: Поток, ТПотокМассив;
 
 /// Этот подкласс предназначен для небуферированных системных файловых потоков.
 
@@ -1146,7 +1147,7 @@ alias длина length;
       {
         if (useWfuncs)
         {
-          auto namez = std.x.utf.toUTF16(имяф);
+          auto namez = std.utf.toUTF16(имяф);
           hFile = СоздайФайл(namez,
               dwDesiredAccess2,
               dwShareMode,

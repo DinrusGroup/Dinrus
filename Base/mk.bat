@@ -114,7 +114,7 @@ copy %this%\import\util\*.d  %R%\util\*.di
 :::Creating respond file
 :::%this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d
 :::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
-%LS% -d %this%\basedll\std\x\*.d %this%\basedll\*.d %this%\basedll\tpl\*.d %this%\basedll\rt\*.d %this%\basedll\sys\*.d %this%\basedll\sys\inc\*.d>>%this%\objs.rsp
+%LS% -d %this%\basedll\*.d %this%\basedll\tpl\*.d %this%\basedll\rt\*.d %this%\basedll\sys\*.d %this%\basedll\sys\inc\*.d %this%\basedll\std\*.d>>%this%\objs.rsp
 
 @if exist %DINRUS%\dinrus.exe %DINRUS%\dinrus.exe
 
@@ -142,7 +142,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 :::Compiling imports into static part of dinrus.lib
 
 %DMD%  -c -O  -g -of%this%\cidrus.obj %this%\import\cidrus.d -I%R%
-%DMD%  -c -O  -g -of%this%\stdrus.obj %this%\import\stdrus.d -I%R%
+::%DMD%  -c -O  -g -of%this%\stdrus.obj %this%\import\stdrus.d -I%R%
 %DMD%  -c -O  -g -of%this%\runtime.obj %this%\import\runtime.d -I%R%
 %DMD%  -c -O  -g -of%this%\object.obj %this%\import\object.d -I%R%
 %DMD%  -c -O  -g -of%this%\gc.obj %this%\import\gc.d -I%R%

@@ -213,7 +213,7 @@ export	проц резервируй(бцел члобайт)
 	бцел psize;
 	цел count;
 
-	auto f = вТкст0(формат);
+	auto f = std.string.вТкст0(формат);
 	p = буфер.ptr;
 	psize = буфер.length;
 	for (;;)
@@ -269,15 +269,15 @@ unittest
 {
     //эхо("Starting OutBuffer test\n");
 
-    OutBuffer buf = new OutBuffer();
+    БуферВывода buf = new БуферВывода();
 
     //эхо("buf = %p\n", buf);
     //эхо("buf.offset = %x\n", buf.offset);
-    assert(buf.offset == 0);
-    buf.write("hello");
-    buf.write(cast(byte)0x20);
-    buf.write("world");
+    assert(buf.смещение == 0);
+    buf.пиши("hello");
+    buf.пиши(cast(byte)0x20);
+    buf.пиши("world");
     buf.эхо(" %d", 6);
     //эхо("buf = '%.*s'\n", buf.toString());
-    assert(cmp(buf.toString(), "hello world 6") == 0);
+    assert(cmp(buf.вТкст(), "hello world 6") == 0);
 }

@@ -1,5 +1,5 @@
 ﻿module sys.WinProcess;
-import cidrus, stdrus, tpl.stream;
+import cidrus, stdrus, std.stream;
 
 export class ППоток : Поток 
 {

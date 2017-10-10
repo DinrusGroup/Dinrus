@@ -244,7 +244,7 @@ unittest
  * указатель на функцию или делегата в качестве кортежа.
  * Пример:
  * ---
- * import std.x.traits;
+ * import std.traits;
  * цел foo(цел, дол);
  * проц bar(КортежТипаПараметров!(foo));      // declares проц bar(цел, дол);
  * проц abc(КортежТипаПараметров!(foo)[1]);   // declares проц abc(дол);
@@ -672,7 +672,7 @@ unittest
  *
  * Example:
  * ---
- * import std.x.traits, std.x.typetuple, stdrus;
+ * import std.traits, std.typetuple, stdrus;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -712,7 +712,7 @@ template BaseClassesTuple(Т)
  *
  * Example:
  * ---
- * import std.x.traits, std.x.typetuple, stdrus;
+ * import std.traits, std.typetuple, stdrus;
  * interface I1 { }
  * interface I2 { }
  * class A : I1, I2 { }
@@ -776,7 +776,7 @@ unittest
  *
  * Example:
  * ---
- * import std.x.traits, std.x.typetuple, stdrus;
+ * import std.traits, std.typetuple, stdrus;
  * interface I { }
  * class A { }
  * class B : A, I { }

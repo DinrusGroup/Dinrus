@@ -1,8 +1,8 @@
 ﻿module sys.com;
 
 import tpl.com, tpl.args, exception; 
-import std.x.utf, runtime, cidrus;
-import std.x.string: format;
+import std.utf, runtime, cidrus;
+import std.string: format;
 alias format фм;
 
 бул КОМАктивен;

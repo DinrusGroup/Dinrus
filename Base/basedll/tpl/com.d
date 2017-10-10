@@ -3,9 +3,9 @@
 //pragma(lib, "dinrus.lib");
 import cidrus, runtime;
 import tpl.traits, tpl.args, tpl.typetuple;
-import std.x.string: format;
-import std.x.utf: toUTF8;
-import std.x.utf: toUTF16z;
+import std.string: format;
+import std.utf: toUTF8;
+import std.utf: toUTF16z;
 private import sys.uuid;
 alias toUTF16z вЮ16н;
 alias  toUTF8  вЮ8;

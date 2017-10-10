@@ -1,5 +1,5 @@
 ﻿module sys.com;
-private import tpl.com, tpl.args, tpl.stream, win, exception; 
+private import tpl.com, tpl.args, std.stream, win, exception; 
 
 extern(D)
 {

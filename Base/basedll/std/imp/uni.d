@@ -1,5 +1,5 @@
 ﻿
-// Написано на языке программирования Динрус. Разработчик Виталий Кулич.
+// Written in the D programming language.
 
 /*
  * Placed into the Public Domain.
@@ -9,7 +9,7 @@
 
 /**
  * Simple Unicode character classification functions.
- * For ASCII classification, see $(LINK2 std_ctype.html, std.x.ctype).
+ * For ASCII classification, see $(LINK2 std_ctype.html, std.ctype).
  * Macros:
  *	WIKI=Phobos/StdUni
  * References:
@@ -21,8 +21,13 @@
  */
 
 
-module std.x.uni;
+module std.uni;
 
+alias isUniLower пропУни_ли;
+alias isUniUpper загУни_ли;
+alias toUniLower вУнипроп;
+alias toUniUpper вУнизаг;
+alias isUniAlpha цифрабуквУни_ли;
 /**
  * Returns !=0 if c is a Unicode lower case character.
  */
@@ -556,7 +561,7 @@ int isUniAlpha(dchar u)
 	    if (i < table.length - 1)
 	    {
 		if (table[i][1] >= table[i + 1][0])
-		    эхо("table[%d][1] = x%x, table[%d][0] = x%x\n", i, table[i][1], i + 1, table[i + 1][0]);
+		    printf("table[%d][1] = x%x, table[%d][0] = x%x\n", i, table[i][1], i + 1, table[i + 1][0]);
 		assert(table[i][1] < table[i + 1][0]);
 	    }
 	}

@@ -1,7 +1,7 @@
 ﻿module stdrus;
 
 private import sys.WinStructs, sys.WinConsts,sys.WinFuncs;
-private import tpl.args, tpl.stream;
+private import tpl.args, std.stream;
 import cidrus, global;
 public import exception;
 
@@ -563,16 +563,7 @@ extern (D) class ФильтрПоток : Поток
 
 extern (D) class БуфПоток : ФильтрПоток 
 {
-extern(C) extern
-{
-      ббайт[] буфер; 
-	  бцел текБуфПоз;  
-	 бцел длинаБуф; 
-	  бул черновойБуф;
-	   бцел позИстокаБуф;  
-	  бдол позПотока; 
- }	
-  		static this(){};
+			
 	проц устБуфер(ббайт[] буф);//setter
 	ббайт[] дайБуфер();	//getter
 	  

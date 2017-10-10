@@ -1,12 +1,9 @@
 ﻿
 // Написано на языке программирования Динрус. Разработчик Виталий Кулич.
-
-
 module std.format;
-
 //debug=format;		// uncomment to turn on debugging эхо's
 
-import tpl.args;
+import tpl.args, exception;
 
 private import std.utf;
 private import cidrus, sys.WinFuncs;
@@ -135,6 +132,7 @@ else
   return ti;
 }
 
+export extern(D)
 проц форматДелай(проц delegate(дим) putc, ИнфОТипе[] arguments, спис_ва argptr)
 	{
 	цел j;
@@ -422,11 +420,11 @@ else
 		    goto L2;
 		}
 		else
-		{   if (!isValidDchar(vdchar))
+		{   if (!дим_ли(vdchar))
 			throw new Исключение("Неверный дим в формате",__FILE__, __LINE__);
 		    сим[4] vbuf;
 			debug(PutStr) win.скажинс("путстр5");
-		    putstr(toUTF8(vbuf, vdchar));
+		    putstr(std.utf.вЮ8(vbuf, vdchar));
 		}
 		return;
 
@@ -567,13 +565,13 @@ else
 			case ПМангл.Тшим:
 			LarrayWchar:
 			    шим[] sw = ва_арг!(wstring)(argptr);
-			    т = toUTF8(sw);
+			    т = std.utf.вЮ8(sw);
 			    goto Lputstr;
 
 			case ПМангл.Тдим:
 			LarrayDchar:
 			    дим[] sd = ва_арг!(dstring)(argptr);
-			    т = toUTF8(sd);
+			    т = std.utf.вЮ8(sd);
 			Lputstr:
 			    if (fc != 's')
 				{
@@ -811,12 +809,12 @@ else
 
 		case ПМангл.Тшим:
 		    wfmt = ва_арг!(wstring)(argptr);
-		    fmt = toUTF8(wfmt);
+		    fmt = std.utf.вЮ8(wfmt);
 		    break;
 
 		case ПМангл.Тдим:
 		    dfmt = ва_арг!(dstring)(argptr);
-		    fmt = toUTF8(dfmt);
+		    fmt = std.utf.вЮ8(dfmt);
 		    break;
 
 		case ПМангл.Тконст:
@@ -872,7 +870,7 @@ else
 		    if (c > 0x7F)	// if UTF sequence
 		    {
 			i--;		// back up and decode UTF sequence
-			c = std.x.utf.decode(fmt, i);
+			c = std.utf.decode(fmt, i);
 		    }
 		Lputc:
 		    putc(c);

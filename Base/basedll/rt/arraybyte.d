@@ -11,7 +11,7 @@
 
 module rt.arraybyte;
 
-import CPUid = std.x.cpuid;
+import CPUid = std.cpuid;
 
 const int CPUID_MAX = 4;
 int cpuid;

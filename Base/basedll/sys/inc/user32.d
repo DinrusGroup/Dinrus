@@ -1,5 +1,5 @@
 module sys.inc.user32;
-import sys.WinConsts, sys.WinStructs, std.x.string, std.x.utf;
+import sys.WinConsts, sys.WinStructs, std.string, std.utf;
 
 
 /+

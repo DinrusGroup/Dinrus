@@ -1,12 +1,9 @@
 ﻿module cidrus;
 
-import /*rt.console*/ std.x.string: toStringz, toString;
- import std.x.utf: toUTF16z;
+import std.string: вТкст0, вТкст;
+ import std.utf: toUTF16z;
  public import tpl.args;
  
- alias toStringz вТкст0;
-alias toString вТкст;
-
 enum ППозКурсора {
   Уст,
   Тек,
