@@ -1,26 +1,5 @@
-﻿// Written in the D programming language
-// written by Walter Bright
-// www.digitalmars.com
-// Placed into the public domain
-
-/** These functions are built-in intrinsics to the compiler.
- *
-	Intrinsic functions are functions built in to the compiler,
-	usually to take advantage of specific CPU features that
-	are inefficient to handle via external functions.
-	The compiler's optimizer and code generator are fully
-	integrated in with intrinsic functions, bringing to bear
-	their full power on them.
-	This can result in some surprising speedups.
- *
- * Copyright: Public Domain
- * License:   Public Domain
- * Authors:   Walter Bright
- * Macros:
- *	WIKI=Phobos/StdIntrinsic
- */
-
-module std.intrinsic;
+﻿module std.intrinsic;
+pragma(lib, "DinrusStd.lib");
 
 /**
  * Scans the bits in v starting with bit 0, looking
@@ -175,5 +154,43 @@ ushort outpw(uint port_address, ushort value);
  * ditto
  */
 uint   outpl(uint port_address, uint value);
+
+///////////////////////
+
+extern(D):
+
+    цел пуб(бцел х);//Поиск первого установленного бита (узнаёт его номер)
+    цел пубр(бцел х);//Поиск первого установленного бита (от старшего к младшему)
+    цел тб(in бцел *х, бцел номбит);//Тест бит
+    цел тбз(бцел *х, бцел номбит);// тест и заполнение
+    цел тбп(бцел *х, бцел номбит);// тест и переустановка
+    цел тбу(бцел *х, бцел номбит);// тест и установка
+    бцел развербит(бцел б);//Развернуть биты в байте
+    ббайт чипортБб(бцел адр_порта);//читает порт ввода с указанным адресом
+    бкрат чипортБк(бцел адр_порта);
+    бцел чипортБц(бцел адр_порта);
+    ббайт пипортБб(бцел адр_порта, ббайт зап);//пишет в порт вывода с указанным адресом
+    бкрат пипортБк(бцел адр_порта, бкрат зап);
+    бцел пипортБц(бцел адр_порта, бцел зап);
+
+    цел члоустбит32( бцел x );
+    бцел битсвоп( бцел x );
+
+
+
+struct ПерестановкаБайт
+{
+
+        final static проц своп16 (проц[] приёмн);
+        final static проц своп32 (проц[] приёмн);
+        final static проц своп64 (проц[] приёмн);
+        final static проц своп80 (проц[] приёмн);
+        final static проц своп16 (проц *приёмн, бцел байты);
+        final static проц своп32 (проц *приёмн, бцел байты);
+        final static проц своп64 (проц *приёмн, бцел байты);
+        final static проц своп80 (проц *приёмн, бцел байты);
+}
+
+
 
 

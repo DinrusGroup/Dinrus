@@ -171,7 +171,7 @@ import std.math2;
 private import cidrus, exception;
 private import std.string;
 
-private import std.traits;
+//private import std.traits;
 
 version(GNU){
     // GDC can't actually do inline asm.

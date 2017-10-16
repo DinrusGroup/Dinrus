@@ -770,13 +770,13 @@ export:
 		т_мера count;
 		while (true) {
 		  version (Win32) {
-		count = вснвыводф(stdrus.вТкст(p), psize, f, args);
+		count = вснвыводф(std.string.вТкст(p), psize, f, args);
 		if (count != -1)
 		  break;
 		psize *= 2;
 		p = cast(сим*) разместа(psize);
 		  } else version (Posix) {
-		count = вснвыводф(stdrus.вТкст(p), psize, f, args);
+		count = вснвыводф(std.string.вТкст(p), psize, f, args);
 		if (count == -1)
 		  psize *= 2;
 		else if (count >= psize)
@@ -800,7 +800,7 @@ export:
 		return ввыводф(format, ap);
 	  }
 
-	  проц doFormatCallback(дим c) { 
+	  проц форматДелайCallback(дим c) { 
 		сим[4] буф;
 		auto b = вЮ8(буф, c);
 		пишиТкст(b);
@@ -818,7 +818,7 @@ export:
 
 	  // writes данные with optional trailing newline
 	  win.ПотокВывода пишификс(ИнфОТипе[] arguments, ук argptr, цел newline=0) {
-		doFormat(&doFormatCallback,arguments,argptr);
+		форматДелай(&форматДелайCallback,arguments,argptr);
 		if (newline) 
 		  пишиСтр("");
 		return this;

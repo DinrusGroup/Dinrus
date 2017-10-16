@@ -1,6 +1,5 @@
 ﻿module std.boxer;
 public import tpl.box;
-pragma(lib, "DinrusStd.lib");
 
 alias  инфОТипеМассив_ли isArrayTypeInfo;
 alias  КлассТипа TypeClass;

@@ -2848,7 +2848,7 @@ char[] format(...)
 	std.utf.encode(s, c);
     }
 
-    std.format.doFormat(&putc, _arguments, _argptr);
+    std.format.форматДелай(&putc, _arguments, _argptr);
     return s;
 }
 
@@ -2882,7 +2882,7 @@ char[] sformat(char[] s, ...)
 	}
     }
 
-    std.format.doFormat(&putc, _arguments, _argptr);
+    std.format.форматДелай(&putc, _arguments, _argptr);
     return s[0 .. i];
 }
 

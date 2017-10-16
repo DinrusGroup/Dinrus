@@ -1,6 +1,6 @@
 ﻿module dinrus;
 
-public import thread, gc, sync, stdrus, cidrus, tpl.all, exception;
+public import thread, gc, sync, cidrus, tpl.all, exception;
 
 
 /** Динамическая версия русского диалекта языка программирования Ди.

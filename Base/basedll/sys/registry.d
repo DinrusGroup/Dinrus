@@ -1,5 +1,5 @@
 ﻿module sys.registry;
-import stdrus;
+//import std;
 
 /// A strongly-typed Boolean
 public alias цел        булево;
@@ -352,7 +352,7 @@ in
 }
 body
 {
-    LPCSTR  lpSrc       =   stdrus.вТкст0(значение);
+    LPCSTR  lpSrc       =   std.string.вТкст0(значение);
     бцел   cchRequired =   ExpandEnvironmentStringsA(lpSrc, null, 0);
     сим[]  newValue    =   new сим[cchRequired];
 
@@ -428,7 +428,7 @@ in
 }
 body
 {
-    return RegCreateKeyExA( hkey, stdrus.вТкст0(subKey), RESERVED, RESERVED
+    return RegCreateKeyExA( hkey, std.string.вТкст0(subKey), RESERVED, RESERVED
                         ,   dwOptions, samDesired, lpsa, hkeyResult
                         ,   disposition);
 }
@@ -441,7 +441,7 @@ in
 }
 body
 {
-    return RegDeleteKeyA(hkey, stdrus.вТкст0(subKey));
+    return RegDeleteKeyA(hkey, std.string.вТкст0(subKey));
 }
 
 private LONG Reg_DeleteValueA_(in HKEY hkey, in ткст valueName)
@@ -452,7 +452,7 @@ in
 }
 body
 {
-    return RegDeleteValueA(hkey, stdrus.вТкст0(valueName));
+    return RegDeleteValueA(hkey, std.string.вТкст0(valueName));
 }
 
 private HKEY Reg_Dup_(HKEY hkey)
@@ -579,7 +579,7 @@ in
 body
 {
     бцел   cbData  =   0;
-    LONG    res     =   RegQueryValueExA(   hkey, stdrus.вТкст0(имя), RESERVED, тип
+    LONG    res     =   RegQueryValueExA(   hkey, std.string.вТкст0(имя), RESERVED, тип
                                         ,   cast(байт*)0, cbData);
 
     if(ERROR_MORE_DATA == res)
@@ -599,7 +599,7 @@ in
 }
 body
 {
-    return RegOpenKeyExA(hkey, stdrus.вТкст0(subKey), RESERVED, samDesired, hkeyResult);
+    return RegOpenKeyExA(hkey, std.string.вТкст0(subKey), RESERVED, samDesired, hkeyResult);
 }
 
 private проц Reg_QueryValue_(   in HKEY hkey, ткст имя, out ткст значение
@@ -619,14 +619,14 @@ body
     U       u;
     проц    *data   =   &u.qw;
     бцел   cbData  =   U.qw.sizeof;
-    LONG    res     =   RegQueryValueExA(   hkey, stdrus.вТкст0(имя), RESERVED
+    LONG    res     =   RegQueryValueExA(   hkey, std.string.вТкст0(имя), RESERVED
                                         ,   тип, data, cbData);
 
     if(ERROR_MORE_DATA == res)
     {
         data = (new байт[cbData]).ptr;
 
-        res = RegQueryValueExA( hkey, stdrus.вТкст0(имя), RESERVED, тип, data
+        res = RegQueryValueExA( hkey, std.string.вТкст0(имя), RESERVED, тип, data
                             ,   cbData);
     }
 
@@ -645,30 +645,30 @@ body
 
             case    ПТипЗначенияРеестра.Ткст0:
             case    ПТипЗначенияРеестра.Ткст0Развёрт:
-                значение = stdrus.вТкст(cast(сим*)data);
+                значение = std.string.вТкст(cast(сим*)data);
 		if (значение.ptr == cast(сим*)&u.qw)
 		    значение = значение.dup;		// don't point into the stack
                 break;
 version(LittleEndian)
 {
             case    ПТипЗначенияРеестра.БцелЛЕ:
-                значение = stdrus.вТкст(u.dw);
+                значение = std.string.вТкст(u.dw);
                 break;
             case    ПТипЗначенияРеестра.БцелБЕ:
-                значение = stdrus.вТкст(swap(u.dw));
+                значение = std.string.вТкст(swap(u.dw));
                 break;
 }
 version(BigEndian)
 {
             case    ПТипЗначенияРеестра.БцелЛЕ:
-                значение = stdrus.вТкст(swap(u.dw));
+                значение = std.string.вТкст(swap(u.dw));
                 break;
             case    ПТипЗначенияРеестра.БцелБЕ:
-                значение = stdrus.вТкст(u.dw);
+                значение = std.string.вТкст(u.dw);
                 break;
 }
             case    ПТипЗначенияРеестра.Бцел64ЛЕ:
-                значение = stdrus.вТкст(u.qw);
+                значение = std.string.вТкст(u.qw);
                 break;
         }
     }
@@ -684,14 +684,14 @@ body
 {
     сим[]  data    =   new сим[256];
     бцел   cbData  =   data.sizeof;
-    LONG    res     =   RegQueryValueExA( hkey, stdrus.вТкст0(имя), RESERVED, тип
+    LONG    res     =   RegQueryValueExA( hkey, std.string.вТкст0(имя), RESERVED, тип
                                         , data.ptr, cbData);
 
     if(ERROR_MORE_DATA == res)
     {
         data.length = cbData;
 
-        res = RegQueryValueExA(hkey, stdrus.вТкст0(имя), RESERVED, тип, data.ptr, cbData);
+        res = RegQueryValueExA(hkey, std.string.вТкст0(имя), RESERVED, тип, data.ptr, cbData);
     }
     else if(ERROR_SUCCESS == res)
     {
@@ -727,7 +727,7 @@ in
 body
 {
     бцел   cbData  =   значение.sizeof;
-    LONG    res     =   RegQueryValueExA(   hkey, stdrus.вТкст0(имя), RESERVED, тип
+    LONG    res     =   RegQueryValueExA(   hkey, std.string.вТкст0(имя), RESERVED, тип
                                         ,   &значение, cbData);
 
     if(ERROR_SUCCESS != res)
@@ -770,7 +770,7 @@ in
 body
 {
     бцел   cbData  =   значение.sizeof;
-    LONG    res     =   RegQueryValueExA(   hkey, stdrus.вТкст0(имя), RESERVED, тип
+    LONG    res     =   RegQueryValueExA(   hkey, std.string.вТкст0(имя), RESERVED, тип
                                         ,   &значение, cbData);
 
     if(ERROR_SUCCESS != res)
@@ -800,14 +800,14 @@ body
 {
     байт[]  data    =   new байт[100];
     бцел   cbData  =   data.sizeof;
-    LONG    res     =   RegQueryValueExA(   hkey, stdrus.вТкст0(имя), RESERVED, тип
+    LONG    res     =   RegQueryValueExA(   hkey, std.string.вТкст0(имя), RESERVED, тип
                                         ,   data.ptr, cbData);
 
     if(ERROR_MORE_DATA == res)
     {
         data.length = cbData;
 
-        res = RegQueryValueExA(hkey, stdrus.вТкст0(имя), RESERVED, тип, data.ptr, cbData);
+        res = RegQueryValueExA(hkey, std.string.вТкст0(имя), RESERVED, тип, data.ptr, cbData);
     }
 
     if(ERROR_SUCCESS != res)
@@ -838,7 +838,7 @@ in
 }
 body
 {
-    LONG    res =   RegSetValueExA( hkey, stdrus.вТкст0(subKey), RESERVED, тип
+    LONG    res =   RegSetValueExA( hkey, std.string.вТкст0(subKey), RESERVED, тип
                                 ,   lpData, cbData);
 
     if(ERROR_SUCCESS != res)
@@ -1408,7 +1408,7 @@ export:
  +/
 	// ExpandEnvironemntStrings():
 	//	http://msdn2.microsoft.com/en-us/library/ms724265.aspx
-        LPCSTR  lpSrc       =   stdrus.вТкст0(значение);
+        LPCSTR  lpSrc       =   std.string.вТкст0(значение);
         бцел   cchRequired =   ExpandEnvironmentStringsA(lpSrc, null, 0);
         сим[]  newValue    =   new сим[cchRequired];
 
@@ -1417,7 +1417,7 @@ export:
             throw new Win32Exception("Не удалось развернуть переменные среды");
         }
 
-        return stdrus.вТкст(newValue.ptr);	// remove trailing 0
+        return std.string.вТкст(newValue.ptr);	// remove trailing 0
     }
 
     /// Obtains the current значение as an array of strings

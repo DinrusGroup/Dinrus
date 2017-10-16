@@ -1,5 +1,5 @@
 ﻿module sys.WinProcess;
-import cidrus, stdrus, std.stream;
+import exception, cidrus, std.stream, std.utf, std.io, std.string, std.file;
 
 export class ППоток : Поток 
 {
@@ -34,7 +34,7 @@ export:
             
             ИНФОПРОЦ инфоПроц;
             
-            СоздайПроцесс(null, stdrus.вЮ16(команда), null, null,
+            СоздайПроцесс(null, std.utf.вЮ16(команда), null, null,
                            1, cast(ПФлагСоздПроц) 0, null, null, &инфоСтарта, &инфоПроц);
             ЗакройДескр(ipr);
             ЗакройДескр(opw);
@@ -139,7 +139,7 @@ export extern(C):
     рез = cidrus.система(кмнд);
     if (рез)  // CyberShadow 2007.02.22: Display a message before exiting
     {
-        цел p = кмнд.найди(' ');
+        цел p = std.string.найди(кмнд,' ');
         if(p!=-1) кмнд=кмнд[0..p];
         скажифнс("Команда " ~ кмнд ~ " завершилась с кодом выхода ", рез, ", программа прерывается.");
         throw new ИсклУгасшегоПроцесса("Команда не удалась, последует выход.");
@@ -165,7 +165,7 @@ export extern(C):
 цел сисРеспонс(ткст кмнд, ткст рфлаг, ткст рфайл, бул удалитьРФайл)
 {
     цел ret;
-    ткст[] элемс = разбей(кмнд, " ");
+    ткст[] элемс = std.string.разбейдоп(кмнд, " ");
     
     /* the output is элемс past 1 joined with \n */
     ткст resp = объедини(элемс[1..$], "\n");

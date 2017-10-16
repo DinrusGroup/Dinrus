@@ -1,5 +1,5 @@
 ﻿module std.stream;
-import tpl.stream: Поток, ТПотокМассив;
+import exception, std.intrinsic, std.utf,tpl.stream: Поток, ТПотокМассив;
 
 /// Этот подкласс предназначен для небуферированных системных файловых потоков.
 
@@ -1145,8 +1145,6 @@ alias длина length;
 
       if (имяф)
       {
-        if (useWfuncs)
-        {
           auto namez = std.utf.toUTF16(имяф);
           hFile = СоздайФайл(namez,
               dwDesiredAccess2,
@@ -1154,19 +1152,8 @@ alias длина length;
               null,
               dwCreationDisposition,
               ПФайл.Нормальный,
-              cast(ук) null);
-        }
-        else
-        {
-          auto namez = имяф;
-          hFile =cast(ук) СоздайФайлА(namez,
-              dwDesiredAccess2,
-              dwShareMode,
-              null,
-              dwCreationDisposition,
-              ПФайл.Нормальный,
-              cast(ук)null);
-        }
+              cast(ук) null);        
+
         if (hFile == cast(ук) НЕВЕРНХЭНДЛ)
           goto err1;
       }

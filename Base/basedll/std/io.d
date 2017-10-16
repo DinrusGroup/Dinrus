@@ -373,7 +373,7 @@ void writefx(фук fp, TypeInfo[] arguments, void* argptr, int newline=false)
 	    }
 	}
 
-	std.format.doFormat(&putc, arguments, argptr);
+	std.format.форматДелай(&putc, arguments, argptr);
 	if (newline)
 	    FPUTC('\n', fp);
     }
@@ -410,7 +410,7 @@ void writefx(фук fp, TypeInfo[] arguments, void* argptr, int newline=false)
 	    static assert(0);
 	}
 
-	std.format.doFormat(&putcw, arguments, argptr);
+	std.format.форматДелай(&putcw, arguments, argptr);
 	if (newline)
 	    FPUTWC('\n', fp);
     }

@@ -1,5 +1,5 @@
 ﻿import win, cidrus: устбуф;
-import stdrus: дайтекпап;
+import std.file: дайтекпап;
 
 	extern(C)
 	{

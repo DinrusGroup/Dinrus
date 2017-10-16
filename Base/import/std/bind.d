@@ -1,6 +1,4 @@
 ﻿module std.bind;
-pragma(lib, "DinrusStd.lib");
-
 public import tpl.bind;
 
 alias ДинАрг  DynArg;

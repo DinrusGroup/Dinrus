@@ -35,7 +35,7 @@ export extern (C) ткст[] ртПолучиАрги(int argc, char **argv)
         size_t    wclen = wcslen(wcbuf);
         int       wargc = 0;
         wchar**   wargs = CommandLineToArgvW(wcbuf, &wargc);
-        assert(wargc == argc, stdrus.вТкст("Расхождение числа аргументов командной строки"));
+        assert(wargc == argc, std.string.вТкст("Расхождение числа аргументов командной строки"));
 
         char*     cargp = null;
         size_t    cargl = WideCharToMultiByte(65001, 0, wcbuf, wclen, null, 0, null, 0);
@@ -83,7 +83,7 @@ try{
 			for (т_мера i = 0, укз = 0; i < шаргчло; i++)
 			{
 				шдлина = длинашкс( шарги[i] );
-				assert(шдлина <= int.max, stdrus.вТкст("Длина аргументов не может превышать int.max"));
+				assert(шдлина <= int.max, std.string.вТкст("Длина аргументов не может превышать int.max"));
 				чдлин = ШирСимВМультиБайт(ПКодСтр.УТФ8, cast(ПШирСим) 0, &шарги[i][0], шдлина, null, 0, null, нет);
 				арги[i]  = аргук[укз .. укз+чдлин];
 				укз += чдлин; assert(укз <= аргстр);

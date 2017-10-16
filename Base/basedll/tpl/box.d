@@ -1,5 +1,5 @@
 ﻿module tpl.box;
-import stdrus,  runtime;
+import std.string,  runtime, std.utf, std.format;
 
 class РазбоксИскл : Исключение
 {

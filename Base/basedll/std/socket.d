@@ -1,5 +1,5 @@
 ﻿module std.socket;
-import tpl.stream;
+import tpl.stream, exception;
 
 abstract class Адрес
 {
@@ -608,11 +608,11 @@ protected this(){}
 		switch(_семейство)
 		{
 			case cast(ПСемействоАдресов) ПСемействоАдресов.ИНЕТ:
-				результат = new stdrus.ИнтернетАдрес;
+				результат = new ИнтернетАдрес;
 				break;
 
 			default:
-				результат = new stdrus.НеизвестныйАдрес;
+				результат = new НеизвестныйАдрес;
 		}
 		return результат;
 	}
@@ -980,3 +980,22 @@ class СокетПоток: Поток
 		сок.закрой();
 	}
 }
+
+
+static this()
+	{
+
+	ВИНСОКДАН вд;
+
+		цел знач;
+		знач = ВСАСтарт(0x2020, &вд);
+		if(знач) // Request Winsock 2.2 for IPv6.
+			throw new СокетИскл("Не удалось инициализовать библиотеку сокетов", знач);
+	}
+
+
+	        static ~this()
+        {
+                ВСАЧистка();
+        }
+

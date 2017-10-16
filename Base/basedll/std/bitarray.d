@@ -3,8 +3,7 @@ private import std.intrinsic;
 
 export extern(D) struct МассивБит
 {
-	private
-	{
+
 
     т_мера len;
     alias len длин;
@@ -12,7 +11,7 @@ export extern(D) struct МассивБит
     бцел* ptr;
 	alias ptr укз;
 
-    }
+    
 
 	export т_мера разм()
 	{

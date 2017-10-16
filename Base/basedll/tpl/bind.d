@@ -15,7 +15,7 @@
 module tpl.bind;
 
 
-import stdrus:форматируй;
+import std.string:форматируй;
 import tpl.traits;
 import tpl.typetuple;
 

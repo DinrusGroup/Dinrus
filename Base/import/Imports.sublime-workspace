@@ -12,55 +12,64 @@
 	"buffers":
 	[
 		{
-			"file": "sys/registry.d",
+			"file": "std/base64.d",
 			"settings":
 			{
-				"buffer_size": 61675,
+				"buffer_size": 346,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "std/bind.d",
+			"settings":
+			{
+				"buffer_size": 1038,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "sys/WinProcess.d",
+			"file": "std/bitarray.d",
 			"settings":
 			{
-				"buffer_size": 5176,
+				"buffer_size": 1280,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "std/boxer.d",
+			"settings":
+			{
+				"buffer_size": 4905,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "sys/WinStructs.d",
+			"file": "std/console.d",
 			"settings":
 			{
-				"buffer_size": 132729,
+				"buffer_size": 701,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "exception.d",
+			"file": "std/conv.d",
 			"settings":
 			{
-				"buffer_size": 30357,
+				"buffer_size": 724,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "tpl/box.d",
+			"file": "std/cpuid.d",
 			"settings":
 			{
-				"buffer_size": 19548,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tpl/stream.d",
-			"settings":
-			{
-				"buffer_size": 27265,
+				"buffer_size": 2969,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -69,7 +78,7 @@
 			"file": "std/crc32.d",
 			"settings":
 			{
-				"buffer_size": 3883,
+				"buffer_size": 295,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -78,7 +87,7 @@
 			"file": "std/ctype.d",
 			"settings":
 			{
-				"buffer_size": 10471,
+				"buffer_size": 796,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Unix"
 			}
@@ -87,8 +96,62 @@
 			"file": "std/date.d",
 			"settings":
 			{
-				"buffer_size": 49751,
+				"buffer_size": 2684,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "std/demangle.d",
+			"settings":
+			{
+				"buffer_size": 93,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "std/file.d",
+			"settings":
+			{
+				"buffer_size": 2305,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "std/format.d",
+			"settings":
+			{
+				"buffer_size": 139,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "std/intrinsic.d",
+			"settings":
+			{
+				"buffer_size": 4388,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "std/io.d",
+			"settings":
+			{
+				"buffer_size": 446,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "stdrus.d",
+			"settings":
+			{
+				"buffer_size": 47948,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		}
@@ -125,13 +188,12 @@
 	},
 	"expanded_folders":
 	[
-		"/D/dinrus/dev/DINRUS/Base/basedll",
-		"/D/dinrus/dev/DINRUS/Base/basedll/std",
-		"/D/dinrus/dev/DINRUS/Base/basedll/sys",
-		"/D/dinrus/dev/DINRUS/Base/basedll/tpl"
+		"/D/dinrus/dev/DINRUS/Base/import",
+		"/D/dinrus/dev/DINRUS/Base/import/std"
 	],
 	"file_history":
 	[
+		"/D/dinrus/dev/DINRUS/Base/import/std/array.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/regexp.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/bitarray.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/socket.d",
@@ -206,131 +268,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"дайЛокTZA",
-			"часИзВрем",
-			"нокругли",
-			"floor",
-			"нокругли",
-			"впроп",
-			"doFormat",
-			"stdrus.вТкст",
-			"ОшибкаНити",
-			"разбей",
-			"найди",
-			"stdrus.вЮ16",
-			"stdrus.вТкст",
-			"stdrus.вТкст0",
-			"текстСисОшибки",
-			"ДайПоследнююОшибку",
-			"ПлохойУкНаКод_ли",
-			"ошибка",
-			"stdrus.вТкст",
-			"(нить_нужнаБлокировка()||stdrus.Нить.члонн != 1)",
-			"(!нить_нужнаБлокировка()||stdrus.Нить.члонн ==1)",
-			"дайтекпап",
-			"нч_ли",
-			"форматируй",
-			"SYSTEMTIME2т_время",
-			"FILETIME2т_время",
-			"разбор",
-			"d_time",
-			"HoursPerDay",
-			"MinutesPerHour",
-			"TicksPerSecond",
-			"msPerMinute",
-			"msPerHour",
-			"msPerDay",
-			"doFormat",
-			"рскон",
-			"псовп",
-			"проверь",
-			"rchar",
-			"rfind",
-			"addExt",
-			"doFormat",
-			"day",
-			"month",
-			"year",
-			"разборString",
-			"parse",
-			"Invalid",
-			"monstr",
-			"daystr",
-			"sprцелf",
-			"TicksPerDay",
-			"TicksPerHour",
-			"TicksPerMs",
-			"d_time_nan",
-			"uцел",
-			"int",
-			"divisor",
-			"LocalTZA",
-			"TicksPerSecond",
-			"MinutesPerHour",
-			"HoursPerDay",
-			"msPerHour",
-			"msPerDay",
-			"PerformanceCounterScope",
-			"replaceSlice",
-			"РегВыр",
-			"starrchaрс",
-			"error",
-			"rs",
-			"RS",
-			"dash",
-			"rliteral",
-			"parseДиапазон",
-			"setbit2",
-			"setbitmax",
-			"BitArray",
-			"bits",
-			"Range",
-			"РегВыр",
-			"вДату",
-			"DateParseError",
-			"фтц",
-			"ФорматИскл",
-			"ОшФормата",
-			"Обрвызов_диэксп_Дим",
-			"простаяИнфОТипе",
-			"snprintf",
-			"__pfloatfmt",
-			"format",
-			"newdim",
-			"olddim",
-			"newlen",
-			"length",
-			"newразм",
-			"oldразм",
-			"dim",
-			"tolower",
-			"toupper",
-			"isspace",
-			"iscntrl",
-			"isalnum",
-			"len",
-			"writefln",
-			"buffer",
-			"context",
-			"file",
-			"void",
-			"MDFile",
-			"int",
-			"char[]",
-			"args",
-			"ubyte",
-			"digest",
-			"sum",
-			"винВерсия",
-			"filename",
-			"fgetwc",
-			"getwchar",
-			"сим*",
-			"elSize",
-			"newlength",
-			"weakpointerCreate",
-			"oldb",
-			"allocdim"
+			"stdrus.",
+			"export"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -338,99 +277,7 @@
 		"regex": false,
 		"replace_history":
 		[
-			"форматДелай",
-			"std.string.вТкст",
-			"std.utf.вЮ16",
-			"std.string.вТкст",
-			"std.string.вТкст0",
-			"exception.ошибка",
-			"std.string.вТкст",
-			"(нить_нужнаБлокировка())",
-			"(!нить_нужнаБлокировка())",
-			"SYSTEMTIME2d_time",
-			"FILETIME2d_time",
-			"т_время",
-			"ЧасовВДне",
-			"МинутВЧасе",
-			"ТиковВСекунду",
-			"МсекВМинуте",
-			"МсекВЧасе",
-			"МсекВДень",
-			"форматДелай",
-			"рсим",
-			"форматДелай",
-			"день",
-			"месяц",
-			"год",
-			"разборТекста",
-			"разбор",
-			"Неверная",
-			"стрмес",
-			"стрдней",
-			"sprintf",
-			"ТиковВДень",
-			"ТиковВЧас",
-			"ТиковВМсек",
-			"т_время_нч",
-			"бцел",
-			"цел",
-			"делитель",
-			"ЛокЧПП",
-			"ТиковВСекунду",
-			"МинутВЧасе",
-			"ЧасовВДне",
-			"МсекВЧасе",
-			"МсекВДень",
-			"МасштабСчётчикаПроизводительности",
-			"заменисрез",
-			"starrchars",
-			"ошибка",
-			"рс",
-			"РС",
-			"тире",
-			"рлитерал",
-			"разборДиапазона",
-			"устбит2",
-			"устбитмакс",
-			"МассивБит",
-			"биты",
-			"Диапазон",
-			"ОшибкаРазбораДаты",
-			"времяСоздания",
-			"формат",
-			"новразм",
-			"старразм",
-			"новдлин",
-			"длина",
-			"новразм",
-			"старразм",
-			"разм",
-			"впроп",
-			"взаг",
-			"межбукв_ли",
-			"управ_ли",
-			"числобукв_ли",
-			"длина",
-			"скажифнс",
-			"буфер",
-			"контекст",
-			"файл",
-			"проц",
-			"файлМД5",
-			"цел",
-			"ткст",
-			"арги",
-			"ббайт",
-			"дайджест",
-			"суммаМД5",
-			"ВИНВЕРСИЯ",
-			"имяф",
-			"char*",
-			"размЭлта",
-			"новДлина",
-			"создайСлабУк",
-			"старб",
-			"размпам"
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -441,231 +288,24 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 15,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sys/registry.d",
+					"file": "std/base64.d",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 61675,
+						"buffer_size": 346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20352,
-								20340
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9323.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "sys/WinProcess.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5176,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								812,
-								812
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "sys/WinStructs.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 132729,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								675,
-								675
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "exception.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 30357,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4668,
-								4668
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2115.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "tpl/box.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 19548,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1063,
-								1063
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "tpl/stream.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27265,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24291,
-								24302
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 14537.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "std/crc32.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3883,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								556,
-								556
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "std/ctype.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10471,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10471,
-								10471
+								346,
+								346
 							]
 						],
 						"settings":
@@ -673,27 +313,55 @@
 							"syntax": "Packages/D/D.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5176.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "std/date.d",
+					"buffer": 1,
+					"file": "std/bind.d",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 49751,
+						"buffer_size": 1038,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3909,
-								3909
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "std/bitarray.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
 							]
 						],
 						"settings":
@@ -703,7 +371,387 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3886.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "std/boxer.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4905,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41,
+								41
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "std/console.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "std/conv.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								457,
+								457
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "std/cpuid.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2969,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "std/crc32.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								109
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "std/ctype.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "std/date.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1782,
+								1782
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "std/demangle.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 93,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								63,
+								63
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "std/file.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1409,
+								1409
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "std/format.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 139,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "std/intrinsic.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3936,
+								3936
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2190.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "std/io.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "stdrus.d",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 47948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -748,7 +796,7 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "BaseDll.sublime-project",
+	"project": "Imports.sublime-project",
 	"replace":
 	{
 		"height": 72.0
@@ -789,7 +837,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 256.0,
+	"side_bar_width": 234.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

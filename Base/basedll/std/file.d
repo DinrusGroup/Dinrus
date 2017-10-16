@@ -1,6 +1,6 @@
 ﻿// Написано на языке программирования Динрус. Разработчик Виталий Кулич.
 module std.file;
-import std.string,std.regexp, std.path, cidrus: getenv;
+import std.string,std.regexp, std.path, sys.WinStructs,cidrus: getenv;
 
 export extern(D)
 {
@@ -700,7 +700,8 @@ void getTimes(char[] name, out т_время ftc, out т_время fta, out т_
 {
     HANDLE findhndl;
 
-    ПДАН filefindbuf = НайдиПервыйФайл(std.utf.toUTF16(name), &filefindbuf);
+    ПДАН filefindbuf;
+    findhndl = НайдиПервыйФайл(std.utf.toUTF16(name), &filefindbuf);
     ftc = std.date.FILETIME2d_time(&filefindbuf.времяСоздания);
     fta = std.date.FILETIME2d_time(&filefindbuf.времяПоследнегоДоступа);
     ftm = std.date.FILETIME2d_time(&filefindbuf.времяПоследнейЗаписи);
@@ -731,7 +732,8 @@ int exists(char[] name)
 
 uint getAttributes(string name)
 {  
-    if (GetFileAttributesW(std.utf.toUTF16z(name)) == 0xFFFFFFFF)
+    бцел результат = GetFileAttributesW(std.utf.toUTF16z(name));
+    if ( результат == 0xFFFFFFFF)
     {
     throw new ФайлИскл(name, GetLastError());
     }
@@ -1005,7 +1007,7 @@ string[] listdir(string pathname, РегВыр r)
     if (de.isdir)
         listdir(de.name, &callback);
     else
-    {   if (r.test(de.name))
+    {   if (r.проверь(de.name))
         результат ~= de.name;
     }
     return true; // continue

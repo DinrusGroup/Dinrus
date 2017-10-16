@@ -1,5 +1,5 @@
 ﻿module tpl.signal;
-import stdrus, cidrus;
+import cidrus;
 
 extern  (C) Object _d_toObject(ук p);
 extern  (C) проц _d_OutOfMemory();

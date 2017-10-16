@@ -4,6 +4,11 @@ private import std.string: format;
 alias format форматируй;//, stdrus;
 private import sys.WinConsts, sys.WinFuncs;
 
+
+    import rt.syserror;
+
+    ткст текстСисОшибки(бцел кодош){return  rt.syserror.sysErrorString(кодош);}
+
 //Exceptions
 /+
 extern (C)
@@ -140,6 +145,15 @@ export:
     - PayloadException
 */
 ////////////////////////////////////////////////////////////////////////////////
+
+export extern(D) class ОшибкаНити : Исключение
+{
+export:
+    this(ткст т)
+    {
+    super("Ошибка в классе Нить: " ~ т);
+    }
+}
 
 export extern(D) class ИсклОсновы64: Исключение
 {

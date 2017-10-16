@@ -3,7 +3,7 @@
 *Разработчик Виталий Кулич.
 */
 module sys.WinStructs;
-import tpl.com, sys.com, stdrus;
+import tpl.com, sys.com, std.string, std.utf;
 
 
 export extern(D)
@@ -375,7 +375,7 @@ export extern(D)
 	  /// Преобразует строковое представление числа в его ДЕСЯТИЧный эквивалент.
 	  static ДЕСЯТОК разбор(ткст s) {
 		ДЕСЯТОК d;
-		ДесВарИзТкстш0(stdrus.вЮ16н(s),  ДайЛокальНити(), 0, d);
+		ДесВарИзТкстш0(std.utf.вЮ16н(s),  ДайЛокальНити(), 0, d);
 		return d;
 	  }
 
