@@ -7,7 +7,7 @@ private import sys.WinConsts, sys.WinFuncs;
 
     import rt.syserror;
 
-    ткст текстСисОшибки(бцел кодош){return  rt.syserror.sysErrorString(кодош);}
+export extern(D)    ткст текстСисОшибки(бцел кодош){return  rt.syserror.sysErrorString(кодош);}
 
 //Exceptions
 /+

@@ -1,5 +1,4 @@
 ﻿module std.process;
-   import std.process;
 
 export extern(D)
 { 

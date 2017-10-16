@@ -578,7 +578,7 @@ return cast(сим[]) rt.charset.fromMBSz(cast(char*) с, cast(int) кодСтр
 	цел цифра_ли(дим б){return std.ctype.isdigit(б);}
 	цел проп_ли(дим б){return std.ctype.islower(б);}
 	цел пунктзнак_ли(дим б){return  std.ctype.ispunct(б);}
-	цел межбукв_ли(дим б){return std.ctype.isspace(б);}
+	цел межбукв(дим б){return std.ctype.isspace(б);}
 	цел заг_ли(дим б){return std.ctype.isupper(б);}
 	цел цифраикс_ли(дим б){return std.ctype.isxdigit(б);}
 	цел граф_ли(дим б){return  std.ctype.isgraph(б);}
@@ -4412,7 +4412,7 @@ export цел пробнсвер(цел pc, цел pcend)
 		debug(РегВыр) win.скажи("\tРВпространство\n");
 		if (истк == ввод.length)
 		    goto Lnomatch;
-		if (!межбукв_ли(ввод[истк]))
+		if (!межбукв(ввод[истк]))
 		    goto Lnomatch;
 		истк++;
 		pc++;
@@ -4422,7 +4422,7 @@ export цел пробнсвер(цел pc, цел pcend)
 		debug(РегВыр) win.скажи("\tРВнепространство\n");
 		if (истк == ввод.length)
 		    goto Lnomatch;
-		if (межбукв_ли(ввод[истк]))
+		if (межбукв(ввод[истк]))
 		    goto Lnomatch;
 		истк++;
 		pc++;
@@ -4957,13 +4957,13 @@ class Диапазон
 
 		    case 's':
 			for (i = 0; i <= cmax; i++)
-			    if (межбукв_ли(i))
+			    if (межбукв(i))
 				r.биты[i] = 1;
 			goto Lрс;
 
 		    case 'S':
 			for (i = 1; i <= cmax; i++)
-			    if (!межбукв_ли(i))
+			    if (!межбукв(i))
 				r.биты[i] = 1;
 			goto Lрс;
 
@@ -5415,14 +5415,14 @@ export цел starrchars(Диапазон r, ббайт[] прог)
 	    case РВпространство:
 		r.устбитмакс(0x7F);
 		for (c = 0; c <= r.maxc; c++)
-		    if (межбукв_ли(c))
+		    if (межбукв(c))
 			r.биты[c] = 1;
 		return 1;
 
 	    case РВнепространство:
 		r.устбитмакс(0x7F);
 		for (c = 0; c <= r.maxc; c++)
-		    if (!межбукв_ли(c))
+		    if (!межбукв(c))
 			r.биты[c] = 1;
 		return 1;
 

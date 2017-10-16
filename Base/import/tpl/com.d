@@ -1,6 +1,6 @@
 ﻿module tpl.com;
-import tpl.traits, tpl.args, tpl.typetuple, sys.uuid;
-import cidrus, gc, sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
+import tpl.traits, tpl.args, tpl.typetuple, sys.uuid, std.utf;
+import cidrus,exception, gc, sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
 
 extern(C) проц ошибкаНехваткиПамяти();
 

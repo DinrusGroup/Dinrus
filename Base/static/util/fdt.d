@@ -62,7 +62,7 @@ private
         alias util.booltype.Да Да;
         alias util.booltype.Нет Нет;
         alias util.booltype.Бул Бул;
-        import dinrus;
+        import std.string, std.utf;
     }
     version(Windows)      static import opsys = winapi;
     else version(linux)   static import opsys = std.c.linux.linux;

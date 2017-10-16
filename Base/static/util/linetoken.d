@@ -38,7 +38,7 @@
 module util.linetoken;
 
 private {
-   import stdrus;
+   import std.utf;
 
 }
 ткст[] разбериСтроку(ткст pSource,
@@ -107,7 +107,7 @@ private {
         if(lInToken == -1)
         {
             // Not in a токен yet.
-            if (межбукв_ли(c))
+            if (межбукв(c))
                 continue;  // Skip over spaces
 
             // Non-space so a токен is about to start.
@@ -135,7 +135,7 @@ private {
         {   // Only проверь for разграничители if not in 'bracket'-mode.
             if (lDelim.length == 0)
             {
-                if (межбукв_ли(c))
+                if (межбукв(c))
                 {
                     lTrimSpot = -1;
                     lInToken = -1;
@@ -213,7 +213,7 @@ private {
 
         if (lNestLevel == 0)
             // Only проверь for trailing spaces if not in 'bracket'-mode
-            if (межбукв_ли(c))
+            if (межбукв(c))
             {
                 // It was a space, so it is potentially a trailing space,
                 // thus I метка its spot (if it's the первый in a установи of spaces.)

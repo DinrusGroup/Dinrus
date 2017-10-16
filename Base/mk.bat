@@ -142,7 +142,6 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 :::Compiling imports into static part of dinrus.lib
 
 %DMD%  -c -O  -g -of%this%\cidrus.obj %this%\import\cidrus.d -I%R%
-::%DMD%  -c -O  -g -of%this%\stdrus.obj %this%\import\stdrus.d -I%R%
 %DMD%  -c -O  -g -of%this%\runtime.obj %this%\import\runtime.d -I%R%
 %DMD%  -c -O  -g -of%this%\object.obj %this%\import\object.d -I%R%
 %DMD%  -c -O  -g -of%this%\gc.obj %this%\import\gc.d -I%R%
@@ -221,7 +220,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 
 :dinruslib2
 :::Making library with static content
-%DMD% -lib -of%this%\Dinrus.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
+%DMD% -lib -of%this%\Dinrus.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
 @if exist %this%\Dinrus.lib  goto Join
 @if not exist %this%\Dinrus.lib pause
 cls
@@ -352,6 +351,7 @@ cd %this%
 %DINRUS%\dinrus
 
 :joinit
+
 :: Join all compiled into Dinrus.lib
 ::It's a place to go to different lib-constructing, but it's still static.
 
@@ -379,7 +379,7 @@ copy %this%\Dinrus.Base.dll %windir%\system32
 %DMD%  -lib  -of%this%\DinrusSpecBuild.lib %this%\static\dllMain.d
 copy %this%\DinrusSpecBuild.lib  %LDIR%
 
-del %this%\*.lib %this%\*.obj
+del %this%\*.bak %this%\*.obj
 
 cd %this%
 :clean

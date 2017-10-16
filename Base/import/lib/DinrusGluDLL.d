@@ -7,6 +7,7 @@
 
 
 	module lib.DinrusGluDLL;
+	import std.loader;
 		
 alias extern (/**/C) проц function(сим, цел, цел) сифунк_СЦЦ;
 alias extern (/**/C) проц function() сифунк;

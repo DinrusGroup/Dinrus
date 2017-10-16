@@ -7,7 +7,7 @@ version(linux)  version = Posix;
 version(darwin) version = Posix;
 
 private{
-    import dinrus;
+    import std.file, std.string, exception, std.io;
 
     import util.str;
     import util.booltype;   // definition of Да и Нет
@@ -114,7 +114,7 @@ enum ОпцСоздания
         // Strip off any trailing line-end chars.
         for(цел i = текст.length-1; i >= 0; i--)
         {
-            if (stdrus.найди(РАЗДСТР, текст[i]) == -1)
+            if (std.string.найди(РАЗДСТР, текст[i]) == -1)
             {
                 if (i != текст.length-1)
                     текст.length = i+1;
@@ -142,7 +142,7 @@ enum ОпцСоздания
 
 дол grep(ткст данные, ткст образец)
 {
-    return stdrus.найди(данные, образец, vGrepOpts[$-1]);
+    return std.string.найди(данные, образец, vGrepOpts[$-1]);
 }
 
 бдол[] найдиВФайле(ткст имяф, ткст текст, ткст опции = "", бцел макс=1)
@@ -209,9 +209,9 @@ enum ОпцСоздания
     else
     {
         if (lCaseSensitive)
-            lFind = cast(цел function(ткст a, ткст b)) &stdrus.найди;
+            lFind = cast(цел function(ткст a, ткст b)) &std.string.найди;
         else
-            lFind = cast(цел function(ткст a, ткст b)) &stdrus.найдлюб;
+            lFind = cast(цел function(ткст a, ткст b)) &std.string.найдлюб;
     }
 
     // Pull the entire text into RAM.
@@ -226,7 +226,7 @@ enum ОпцСоздания
             // A 'word' is an instance not surrounded by alphanumerics.
             if (lPos > 0)
             {
-                if (stdrus.числобукв_ли(буф[lPos-1]) )
+                if (std.string.числобукв(буф[lPos-1]) )
                 {
                     // Instance preceeded by a alphanumic so I
                     // move one place to the right и try to find
@@ -237,7 +237,7 @@ enum ОпцСоздания
             }
             if (lPos + текст.length < буф.length)
             {
-                if (stdrus.числобукв_ли(буф[lPos + текст.length - 1]) )
+                if (std.string.числобукв(буф[lPos + текст.length - 1]) )
                 {
                     // Instance followed by a alphanumic so I
                     // move one place to the right и try to find

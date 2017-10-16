@@ -2,7 +2,7 @@
 
 private
 {
-import lib.sdl;
+import lib.sdl,std.loader, std.string;
 pragma(lib,"dinrus.lib");
 }
 

@@ -56,7 +56,7 @@ Differences with Windows' profile (INI) functions:
 /// Переносной модуль для чтения и записи файлов _INI. _ини.d version 0.6
 module ini;
 
-import win, std.io, std.stream;
+import std.stream, std.file, std.string, std.io;
 
 
 debug = INI; //show файл being parsed
@@ -715,7 +715,7 @@ public:
 	проц сохрани()
 	{
 	
-		Файл f = new Файл;
+		std.stream.Файл f = new std.stream.Файл;
 		f.создай(файл);
 		try
 		{

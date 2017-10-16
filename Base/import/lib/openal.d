@@ -30,7 +30,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 module lib.openal;
-import dinrus;
+import std.loader;
 
 private
 {

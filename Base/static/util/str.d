@@ -7,7 +7,7 @@ private{
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
 
-    import stdrus;
+    import std.utf;
     // --------- C externals ----------------
     extern (C)
     {
@@ -630,7 +630,7 @@ body {
 //-------------------------------------------------------
 {
     if ( (pString.length > 0) &&
-         (stdrus.найди(pString, pTrigger) != -1) &&
+         (std.string.найди(pString, pTrigger) != -1) &&
 		 (начинается_с(pString, pPrefix) == Нет) &&
 		 (оканчивается_на(pString, pSuffix) == Нет)
        )
@@ -1220,7 +1220,7 @@ unittest
     цел lInPos;
     цел lOutPos;
 
-    if (stdrus.найди(pText, '\\') == -1)
+    if (std.string.найди(pText, '\\') == -1)
         return pText;
 
     lResult.length = pText.length;
@@ -1287,7 +1287,7 @@ unittest
     цел lPos;
     цел lEnd;
 
-    lPos = stdrus.найди(pLine, '%');
+    lPos = std.string.найди(pLine, '%');
     if (lPos == -1)
         return pLine;
 

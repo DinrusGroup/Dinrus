@@ -1,7 +1,7 @@
 ﻿
 module lib.rotozoom; 
 
-import lib.sdl, cidrus; 
+import lib.sdl, cidrus, std.math, std.io; 
 
 const float ПИ = 3.1415926535897931;
 
@@ -597,7 +597,7 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
    zoominv = 65536.0 / zoom;
    
    /* Check if we have a rotozoom or just a zoom */
-   if (stdrus.фабс (angle) > VALUE_LIMIT)
+   if (std.math.фабс (angle) > VALUE_LIMIT)
       {
    
          /* Angle!=0: full rotozoom */
@@ -623,16 +623,16 @@ SDL_Surface *ротозумПоверхности (SDL_Surface * src, double ang
       MAX (
          ceil (MAX
             (MAX
-            (MAX (stdrus.фабс (cx + sy), stdrus.фабс (cx - sy)), stdrus.фабс (-cx + sy)),
-            stdrus.фабс (-cx - sy))), 1);
+            (MAX (std.math.фабс (cx + sy), std.math.фабс (cx - sy)), std.math.фабс (-cx + sy)),
+            std.math.фабс (-cx - sy))), 1);
    
          dstheighthalf = cast(цел)
    
       MAX (
          ceil (MAX
             (MAX
-            (MAX (stdrus.фабс (sx + cy), stdrus.фабс (sx - cy)), stdrus.фабс (-sx + cy)),
-            stdrus.фабс (-sx - cy))), 1);
+            (MAX (std.math.фабс (sx + cy), std.math.фабс (sx - cy)), std.math.фабс (-sx + cy)),
+            std.math.фабс (-sx - cy))), 1);
          dstwidth = 2 * dstwidthhalf;
          dstheight = 2 * dstheighthalf;
    
@@ -1005,7 +1005,7 @@ if (сдлБлокируйПоверхность (экран) == 0)
          ОчистиЭкран (экран);
          zoomxf = cast(float) framecount / cast(float) framemax;
          zoomxf = 1.5 * zoomxf * zoomxf;
-         zoomyf = 0.5 + stdrus.фабс (1.0 * sin (cast(double) framecount / 80.0));
+         zoomyf = 0.5 + std.math.фабс (1.0 * sin (cast(double) framecount / 80.0));
          if ((картинка_вращения =
          зумПоверхности (картинка, zoomxf, zoomyf, smooth)) != пусто)
       {

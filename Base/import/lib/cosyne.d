@@ -8,7 +8,7 @@
  *******************************************************************************/
 
 module lib.cosyne;
-import dinrus;
+import cidrus, std.process, std.loader, sys.WinStructs, sys.WinConsts, std.stream, std.string;
 
 const РАЗМЕР_ЦИЛИНДРА = 64;
 const ЧЛОСЕМПЛОВ  = 3000*РАЗМЕР_ЦИЛИНДРА; 

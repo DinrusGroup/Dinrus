@@ -1,5 +1,5 @@
 ﻿module lib.sdl;
-import cidrus, std.loader;
+import cidrus, std.loader, std.intrinsic;
 pragma(lib,"dinrus.lib");
 
 alias char* CCPTR;

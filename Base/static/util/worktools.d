@@ -1,5 +1,5 @@
 ﻿module util.worktools;
-public import win, dinrus, util.str, util.fileex;
+public import std.io, dinrus, std.path, util.str, util.fileex;
 
 alias дайСред дайГлоб;
 alias устСред устГлоб;

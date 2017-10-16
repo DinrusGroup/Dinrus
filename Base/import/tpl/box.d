@@ -1,5 +1,5 @@
 ﻿module tpl.box;
-import dinrus;
+import dinrus, std.string, std.utf, std.format;
 
 class РазбоксИскл : Исключение
 {
