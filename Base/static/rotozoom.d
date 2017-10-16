@@ -1,7 +1,7 @@
 ﻿
 module lib.rotozoom; 
 
-import lib.sdl, cidrus, stdrus; 
+import lib.sdl, cidrus; 
 
 const float ПИ = 3.1415926535897931;
 

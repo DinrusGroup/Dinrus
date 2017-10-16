@@ -6,8 +6,6 @@ Authors:
     Victor Nakoryakov, nail-mail[at]mail.ru
 */
 module linalg.basic;
-
-//import stdrus;
 import linalg.config;
 
 /**

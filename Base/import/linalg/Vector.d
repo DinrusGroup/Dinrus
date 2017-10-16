@@ -3,7 +3,7 @@
 // Written in the D Programming Language (http://www.digitalmars.com/d)
 module linalg.Vector;
 
-import stdrus, tpl.metastrings;
+import tpl.metastrings;
 
 // ----------------------------------------------------------------------------
 

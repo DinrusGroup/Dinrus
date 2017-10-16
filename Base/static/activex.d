@@ -6,7 +6,7 @@ module sys.activex;
  * $Author: l8night $
  */
 
-import win, stdrus, tpl.args;
+import win, tpl.args, std.utf;
 
 pragma(lib, "DinrusWin32.lib");
 //pragma(lib, "import.lib");

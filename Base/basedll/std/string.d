@@ -39,7 +39,7 @@ alias фм форматируй;
 		if (c <= 0x7F)
 		{
 			if (i >= т.length)
-			throw new ГранМасОшиб("stdrus.форматируйс", __LINE__);
+			throw new ГранМасОшиб("std.string.форматируйс", __LINE__);
 			т[i] = cast(сим)c;
 			++i;
 		}
@@ -49,7 +49,7 @@ alias фм форматируй;
 
 			b = std.utf.toUTF8(буф, c);
 			if (i + b.length > т.length)
-		throw new ГранМасОшиб("stdrus.форматируйс", __LINE__);
+		throw new ГранМасОшиб("std.string.форматируйс", __LINE__);
 			т[i..i+b.length] = b[];
 			i += b.length;
 		}

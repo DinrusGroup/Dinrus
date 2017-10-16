@@ -1,6 +1,6 @@
 ﻿module sys.msscript;
 
-private import stdrus, sys.activex, sys.WinIfaces;
+private import sys.activex, sys.WinIfaces;
 pragma(lib,"DRwin32.lib");
 
 class СкриптДвижок

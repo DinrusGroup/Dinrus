@@ -1,23 +1,5 @@
-﻿// Написано на языке программирования Динрус
-
-/**
- * Привязка аргументов к функции.
- *
- * References:
- *	$(LINK2 http://www.boost.org/libs/привяжи/привяжи.html, boost::привяжи)	
- * Authors: Tomasz Stachowiak
- * Date: November 28, 2006
- * Macros:
- *	WIKI = Phobos/StdBind
- * Copyright:
- *	Public Domain
- */
-module tpl.bind;
-
-
-import stdrus:форматируй;
-import tpl.traits;
-import tpl.typetuple;
+﻿module tpl.bind;
+import std.string, tpl.traits, tpl.typetuple;
 
 /+ ИНТЕРФЕЙС:
 

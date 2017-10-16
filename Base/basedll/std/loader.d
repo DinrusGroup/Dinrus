@@ -4,6 +4,9 @@
 module std.loader;
 	import  cidrus,win, std.io, std.process, std.string, std.file;
 
+    export extern(D)
+    {
+
 	цел иницМодуль(){return std.loader.ExeModule_Init();}
 	проц деиницМодуль(){return std.loader.ExeModule_Uninit();}
 	ук загрузиМодуль(in ткст имямод){return cast(ук) адаптВыхУкз(std.loader.ExeModule_Load(имямод));}
@@ -11,6 +14,8 @@ module std.loader;
 	проц отпустиМодуль(inout ук умодуль){return std.loader.ExeModule_Release(cast(HXModule) умодуль);}
 	ук дайСимволИМодуля(inout ук умодуль, in ткст имяСимвола){return std.loader.ExeModule_GetSymbol(cast(HXModule) умодуль, имяСимвола);}
 	ткст ошибкаИМодуля(){return std.loader.ExeModule_Error();}
+
+}
 
 	//Загрузчик от Derelict'а	........................................
 
@@ -249,7 +254,7 @@ export:
 
             if(текстНазвБиб is null || текстНазвБиб == "")
             {
-                throw new Исключение("stdrus.ЖанБибгр.загружай: Название несуществующей библиотеки!");
+                throw new Исключение("std.loader.ЖанБибгр.загружай: Название несуществующей библиотеки!");
             }
 
         ткст[] назвыБиб = текстНазвБиб.splitStr(",");
@@ -268,7 +273,7 @@ export:
         if(пользовательскийЗагр is null)
         {
             // this should never, ever, happen
-            throw new Исключение("stdrus.ЖанБибгр.загружай: Кошмар! Внутренняя функция загрузки сконфигурирована с ошибками...",__FILE__, __LINE__);
+            throw new Исключение("std.loader.ЖанБибгр.загружай: Кошмар! Внутренняя функция загрузки сконфигурирована с ошибками...",__FILE__, __LINE__);
         }
 
         пользовательскийЗагр(мояБиб);
@@ -414,7 +419,7 @@ export extern(D)
 	ткст имп = std.string.фм("
 	module lib.%s;
 
-	import stdrus;
+	import std.loader;
 
 	проц грузи(Биб биб)
 	{

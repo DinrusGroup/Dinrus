@@ -1,5 +1,5 @@
 ﻿module lib.ode;
-import stdrus, cidrus: фук;
+import cidrus: фук;
 
 // odeconfig.h
 alias цел int32;

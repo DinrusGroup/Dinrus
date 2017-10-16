@@ -1,6 +1,6 @@
 ﻿module tpl.minmax;
 
-protected import stdrus : нч_ли;
+protected import std.math : нч_ли;
 
 /**
  * Возвращает наименьшее из двух чисел.

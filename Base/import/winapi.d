@@ -3599,7 +3599,7 @@ version(BigEndian)
 }
 else version(LittleEndian)
 {
-	private import stdrus: развербит;
+	private import std.intrinsic: развербит;
 	
 	
 	uint16_t htons(uint16_t x)

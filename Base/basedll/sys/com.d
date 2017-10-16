@@ -443,7 +443,7 @@ R вызовиМетод(R = ВАРИАНТ)(ИДиспетчер цель, тк
  * Выводит исключение: ИсклНедостающЧлена if the property is not found.
  * Примеры:
  * ---
- * import com.com, stdrus;
+ * import com.com;
  *
  * проц main() {
  *   // Create an экземпляр of the Microsoft Word automation object.

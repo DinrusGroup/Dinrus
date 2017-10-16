@@ -881,7 +881,7 @@ struct ВАРИАНТ
 		else static if (is(V == бцел)) return бцелЗнач;
 		else static if (is(V == бдол)) return бдолЗнач;
 		else static if (is(V == ДЕСЯТОК)) return десЗнач;
-		else static assert(нет, stdrus.вЮ8(cast(ткст)"'" ~ V.stringof ~ "' не относится к допустимым типам."));
+		else static assert(нет, std.utf.вЮ8(cast(ткст)"'" ~ V.stringof ~ "' не относится к допустимым типам."));
 	  }
 
 	  /**

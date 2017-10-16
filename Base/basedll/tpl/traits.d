@@ -94,7 +94,7 @@ template КортежТипаПоле(S)
  * данного класса или интерфейса.
  * Пример:
  * ---
- * import tpl.traits, tpl.typetuple, stdrus;
+ * import tpl.traits, tpl.typetuple;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -628,7 +628,7 @@ unittest
  * 
  * Example:
  * ---
- * import tpl.traits, tpl.typetuple, stdrus;
+ * import tpl.traits, tpl.typetuple;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -672,7 +672,7 @@ unittest
  *
  * Example:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import std.traits, std.typetuple;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -712,7 +712,7 @@ template BaseClassesTuple(Т)
  *
  * Example:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import std.traits, std.typetuple;
  * interface I1 { }
  * interface I2 { }
  * class A : I1, I2 { }
@@ -776,7 +776,7 @@ unittest
  *
  * Example:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import std.traits, std.typetuple;
  * interface I { }
  * class A { }
  * class B : A, I { }

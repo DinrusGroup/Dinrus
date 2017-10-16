@@ -457,10 +457,6 @@ extern (Windows) цел VirtualFree(
 
 extern (Windows) цел GetLastError();
 
-private debug(СтэкЛог)
-{
-    import stdrus; 
-}
 
 const бцел MEM_COMMIT           = 0x1000;
 const бцел MEM_RESERVE          = 0x2000;

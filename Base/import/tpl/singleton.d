@@ -1,6 +1,6 @@
 ﻿
 module tpl.singleton;
-import win, stdrus;
+import win;
 
 /**
   * ДержательСинглтона реализует образец синглтона

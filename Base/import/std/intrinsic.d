@@ -29,9 +29,9 @@ int bsf(uint v);
  *
  *     v = 0x21;
  *     x = bsf(v);
- *     writefln("bsf(x%x) = %d", v, x);
+ *     пишифнс("bsf(x%x) = %d", v, x);
  *     x = bsr(v);
- *     writefln("bsr(x%x) = %d", v, x);
+ *     пишифнс("bsr(x%x) = %d", v, x);
  *     return 0;
  * } 
  * ---
@@ -71,7 +71,7 @@ p[index / (uint.sizeof*8)] & (1 << (index & ((uint.sizeof*8) - 1)))
  *
  * Example: 
  * ---
-import std.stdio;
+import std.io;
 import std.intrinsic;
 
 int main()
@@ -81,20 +81,20 @@ int main()
     array[0] = 2;
     array[1] = 0x100;
 
-    writefln("btc(array, 35) = %d", <b>btc</b>(array, 35));
-    writefln("array = [0]:x%x, [1]:x%x", array[0], array[1]);
+    пишифнс("btc(array, 35) = %d", <b>btc</b>(array, 35));
+    пишифнс("array = [0]:x%x, [1]:x%x", array[0], array[1]);
 
-    writefln("btc(array, 35) = %d", <b>btc</b>(array, 35));
-    writefln("array = [0]:x%x, [1]:x%x", array[0], array[1]);
+    пишифнс("btc(array, 35) = %d", <b>btc</b>(array, 35));
+    пишифнс("array = [0]:x%x, [1]:x%x", array[0], array[1]);
 
-    writefln("bts(array, 35) = %d", <b>bts</b>(array, 35));
-    writefln("array = [0]:x%x, [1]:x%x", array[0], array[1]);
+    пишифнс("bts(array, 35) = %d", <b>bts</b>(array, 35));
+    пишифнс("array = [0]:x%x, [1]:x%x", array[0], array[1]);
 
-    writefln("btr(array, 35) = %d", <b>btr</b>(array, 35));
-    writefln("array = [0]:x%x, [1]:x%x", array[0], array[1]);
+    пишифнс("btr(array, 35) = %d", <b>btr</b>(array, 35));
+    пишифнс("array = [0]:x%x, [1]:x%x", array[0], array[1]);
 
-    writefln("bt(array, 1) = %d", <b>bt</b>(array, 1));
-    writefln("array = [0]:x%x, [1]:x%x", array[0], array[1]);
+    пишифнс("bt(array, 1) = %d", <b>bt</b>(array, 1));
+    пишифнс("array = [0]:x%x, [1]:x%x", array[0], array[1]);
 
     return 0;
 } 
@@ -118,8 +118,8 @@ int bts(uint *p, uint bitnum);
 
 /**
  * Swaps bytes in a 4 byte uint end-to-end, i.e. byte 0 becomes
-	byte 3, byte 1 becomes byte 2, byte 2 becomes byte 1, byte 3
-	becomes byte 0.
+*	byte 3, byte 1 becomes byte 2, byte 2 becomes byte 1, byte 3
+*	becomes byte 0.
  */
 uint bswap(uint v);
 

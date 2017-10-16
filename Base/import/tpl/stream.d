@@ -1,4 +1,4 @@
-﻿module std.stream;
+﻿module tpl.stream;
 import dinrus, sys.WinIfaces, sys.WinConsts, cidrus;
 
 protected бул пробел(сим c) {

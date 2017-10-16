@@ -1,6 +1,6 @@
 ﻿module tpl.com;
 import tpl.traits, tpl.args, tpl.typetuple, sys.uuid;
-import stdrus, cidrus, gc, sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
+import cidrus, gc, sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
 
 extern(C) проц ошибкаНехваткиПамяти();
 
@@ -16,8 +16,7 @@ body {
  * Извлекает ГУИД, связанный с указанной переменной или типом.
  * Примеры:
  * ---
- * import com.com, 
- *   stdrus;
+ * import com.com;
  *
  * проц main() {
  *   writefln("ГУИДом IXMLDOMDocument2 является %s", ууид_у!(IXMLDOMDocument2));
@@ -36,7 +35,7 @@ body {
   else static if (is(typeof(T.IID)))
     const ГУИД ууид_уТ = T.IID;
   else
-      static assert(нет, " No GUID has been associated with '" ~ T.stringof ~ "'.");
+      static assert(нет, " Никакого GUID не связано с '" ~ T.stringof ~ "'.");
 	
 }
 
@@ -237,9 +236,9 @@ template com_cast_impl(T, ППолитикаИсключений политик�
         else
           return T.init;
       }
-      else static assert(нет, "Cannot cast from '" ~ U.stringof ~ "' to '" ~ T.stringof ~ "'.");
+      else static assert(нет, "Не удаётся преобразовать из '" ~ U.stringof ~ "' в '" ~ T.stringof ~ "'.");
     }
-    else static assert(нет, "Cannot cast from '" ~ U.stringof ~ "' to '" ~ T.stringof ~ "'.");
+    else static assert(нет, "Не удаётся преобразовать из '" ~ U.stringof ~ "' в '" ~ T.stringof ~ "'.");
   }
 
 }
@@ -356,7 +355,7 @@ template создайКоДоп(T, ППолитикаИсключений пол
         гуид = ГУИД(клсид);
       }
       catch (Исключение) {
-        цел хрез = КЛСИДИзПрогИД(stdrus.вЮ16н(клсид), гуид);
+        цел хрез = КЛСИДИзПрогИД(std.utf.вЮ16н(клсид), гуид);
         if (НЕУД(хрез)) {
           static if (политика == ППолитикаИсключений.Выводить)
             throw new ИсклКОМ(хрез);
@@ -367,7 +366,7 @@ template создайКоДоп(T, ППолитикаИсключений пол
     }
 
     КОСЕРВЕРИНФО кси;
-    кси.имяОбъ = stdrus.вЮ16н(сервер);
+    кси.имяОбъ = std.utf.вЮ16н(сервер);
 
     МУЛЬТИ_ОИ ret;
     ret.укНаИИд = &ууид_у!(T);

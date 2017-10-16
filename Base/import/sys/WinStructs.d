@@ -4,7 +4,7 @@
 */
 module sys.WinStructs;
 import base, sys.WinConsts, sys.WinIfaces, sys.WinFuncs;
-import tpl.com, sys.com, stdrus;
+import tpl.com, sys.com;
 
 
 extern(D)

@@ -2082,7 +2082,7 @@ export проц оптимизируй()
         бцел смещение;
 
         смещение = i;
-        if (starрсимs(r, прог[i .. прог.length]))
+        if (starрchars(r, прог[i .. прог.length]))
         {
             debug(РегВыр) эхо("\tfilter built\n");
             буф.простели(смещение, 1 + 4 + r.maxb);
@@ -2107,7 +2107,7 @@ export проц оптимизируй()
 // Return 1 if success, 0 if we can't build a filter or
 // if there is no poцел to one.
 
-export цел starрсимs(Диапазон r, ббайт[] прог)
+export цел starрchars(Диапазон r, ббайт[] прог)
 {   рсим c;
     бцел maxc;
     бцел maxb;
@@ -2117,7 +2117,7 @@ export цел starрсимs(Диапазон r, ббайт[] прог)
     бцел m;
     ббайт* pop;
 
-  //  debug(РегВыр) скажифнс("РегВыр.starрсимs(прог = %p, progend = %p)\n", прог, progend);
+  //  debug(РегВыр) скажифнс("РегВыр.starрchars(прог = %p, progend = %p)\n", прог, progend);
     for (т_мера i = 0; i < прог.length;)
     {
     switch (прог[i])
@@ -2192,8 +2192,8 @@ export цел starрсимs(Диапазон r, ббайт[] прог)
 
         case РВили:
         длин = (cast(бцел *)&прог[i + 1])[0];
-        return starрсимs(r, прог[i + 1 + бцел.sizeof .. прог.length]) &&
-               starрсимs(r, прог[i + 1 + бцел.sizeof + длин .. прог.length]);
+        return starрchars(r, прог[i + 1 + бцел.sizeof .. прог.length]) &&
+               starрchars(r, прог[i + 1 + бцел.sizeof + длин .. прог.length]);
 
         case РВгоуту:
         длин = (cast(бцел *)&прог[i + 1])[0];
@@ -2210,7 +2210,7 @@ export цел starрсимs(Диапазон r, ббайт[] прог)
         n   = (cast(бцел *)&прог[i + 1])[1];
         m   = (cast(бцел *)&прог[i + 1])[2];
         pop = &прог[i + 1 + бцел.sizeof * 3];
-        if (!starрсимs(r, pop[0 .. длин]))
+        if (!starрchars(r, pop[0 .. длин]))
             return 0;
         if (n)
             return 1;
@@ -2222,7 +2222,7 @@ export цел starрсимs(Диапазон r, ббайт[] прог)
         длин = (cast(бцел *)&прог[i + 1])[0];
         n   = (cast(бцел *)&прог[i + 1])[1];
         pop = &прог[0] + i + 1 + бцел.sizeof * 2;
-        return starрсимs(r, pop[0 .. длин]);
+        return starрchars(r, pop[0 .. длин]);
 
         case РВконец:
         return 0;

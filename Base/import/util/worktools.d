@@ -1,5 +1,5 @@
 ﻿module util.worktools;
-public import stdrus, util.str, util.fileex;
+public import util.str, util.fileex;
 
 alias дайСред дайГлоб;
 alias устСред устГлоб;

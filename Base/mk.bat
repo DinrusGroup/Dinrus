@@ -381,17 +381,6 @@ copy %this%\DinrusSpecBuild.lib  %LDIR%
 
 del %this%\*.lib %this%\*.obj
 
-:::Making DinrusStd.lib
-cd %this%\std\mk
-del *.obj
-if not exist %R%\std mkdir %R%\std
-del %R%\std\*.di
-copy %this%\std\*.d  %R%\std\*.di 
-%DMD% -run %this%\std\mk\compile.d
-if exist %this%\std\mk\DinrusStd.lib copy %this%\std\mk\DinrusStd.lib  %LDIR%
-::if not exist %this%\std\mk\DinrusStd.lib pause
-del %this%\*.lib %this%\*.exe %this%\*.map
-
 cd %this%
 :clean
 :::Cleaning

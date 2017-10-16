@@ -1,7 +1,7 @@
 ﻿module exception;
 private import cidrus, rt.syserror, std.utf: вЮ8, вЮ16;
 private import std.string: format;
-alias format форматируй;//, stdrus;
+alias format форматируй;
 private import sys.WinConsts, sys.WinFuncs;
 
 

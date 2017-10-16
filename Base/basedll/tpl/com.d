@@ -3,13 +3,9 @@
 //pragma(lib, "dinrus.lib");
 import cidrus, runtime;
 import tpl.traits, tpl.args, tpl.typetuple;
-import std.string: format;
-import std.utf: toUTF8;
-import std.utf: toUTF16z;
+import std.string;
+import std.utf;
 private import sys.uuid;
-alias toUTF16z вЮ16н;
-alias  toUTF8  вЮ8;
-alias format фм;
 
 ук* возврзнач(T)(out T ppv)
 in {
@@ -23,8 +19,7 @@ body {
  * Извлекает ГУИД, связанный с указанной переменной или типом.
  * Примеры:
  * ---
- * import com.com, 
- *   stdrus;
+ * import com.com;
  *
  * проц main() {
  *   writefln("ГУИДом IXMLDOMDocument2 является %s", ууид_у!(IXMLDOMDocument2));
@@ -363,7 +358,7 @@ template создайКоДоп(T, ППолитикаИсключений пол
         гуид = ГУИД(клсид);
       }
       catch (Исключение) {
-        цел хрез = КЛСИДИзПрогИД(stdrus.вЮ16н(клсид), гуид);
+        цел хрез = КЛСИДИзПрогИД(std.utf.вЮ16н(клсид), гуид);
         if (НЕУД(хрез)) {
           static if (политика == ППолитикаИсключений.Выводить)
             throw new ИсклКОМ(хрез);
@@ -396,7 +391,7 @@ template Интерфейсы(ТСписок...) {
 
   static T создайКо(T, ППолитикаИсключений политика = cast(ППолитикаИсключений) 1)(ПКонтекстВып контекст = cast(ПКонтекстВып) 0x1) {
     static if (tpl.typetuple.Индекс_у!(T, ТСписок) == -1)
-      static assert(нет, stdrus.вЮ8(cast(ткст)"'" ~ typeof(this).stringof ~ "' не поддерживает '" ~ T.stringof ~ "'."));
+      static assert(нет, std.utf.вЮ8(cast(ткст)"'" ~ typeof(this).stringof ~ "' не поддерживает '" ~ T.stringof ~ "'."));
     else
       return создайКо!(T, политика)(ууид_у!(typeof(this)), контекст);
   }

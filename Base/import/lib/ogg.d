@@ -32,11 +32,6 @@
 module lib.ogg;
 import dinrus;
 
-private
-{
-    //import stdrus;
-}
-
 
 alias long      ogg_int64_t;
 alias int       ogg_int32_t;

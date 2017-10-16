@@ -9,8 +9,8 @@
 
 module json;
 
-import stdrus:tostring=вТкст, убери, уберисправа, уберислева, разбей, замени, найди, сравни, сравнлюб, ткствцел,ткствдробь;
-import stdrus: межбукв_ли, подставь, РегВыр, скажиф;
+import std.string:tostring=вТкст, убери, уберисправа, уберислева, разбей, замени, найди, сравни, сравнлюб, ткствцел,ткствдробь;
+import std.regexp, std.io;
 
 /// This is the interface implemented by all classes that represent JSON objects.
 interface ТипДжейСОН {

@@ -33,7 +33,6 @@ template КортежТипа(ТСписок...)
  * Пример:
  * ---
  * import tpl.typetuple;
- * import stdrus;
  *
  * проц foo()
  * {

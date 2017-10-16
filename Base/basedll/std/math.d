@@ -5,6 +5,8 @@ module std.math;
 
 import std.math2;
 
+export extern(D)
+{
 креал син(креал x){return sin(x);}
 вреал син(вреал x){return sin(x);}
 реал абс(креал x){return abs(x);}
@@ -165,6 +167,8 @@ import std.math2;
 реал гасек(реал р){return std.math2.asech(р);}
 реал гакосек(реал р){return std.math2.acosech(р);}
 реал ткст8реал(ткст т){return std.math2.atof(т);}
+
+}
 
 //debug=math;           // uncomment to turn on debugging эхо's
 
