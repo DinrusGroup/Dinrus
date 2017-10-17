@@ -38,7 +38,7 @@
 module util.linetoken;
 
 private {
-   import std.utf;
+   import std.utf, std.ctype, std.string;
 
 }
 ткст[] разбериСтроку(ткст pSource,

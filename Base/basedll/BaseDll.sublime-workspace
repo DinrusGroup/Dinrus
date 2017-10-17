@@ -12,83 +12,20 @@
 	"buffers":
 	[
 		{
-			"file": "sys/registry.d",
+			"file": "runtime.d",
 			"settings":
 			{
-				"buffer_size": 61675,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "sys/WinProcess.d",
-			"settings":
-			{
-				"buffer_size": 5176,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "sys/WinStructs.d",
-			"settings":
-			{
-				"buffer_size": 132729,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "exception.d",
-			"settings":
-			{
-				"buffer_size": 30357,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tpl/box.d",
-			"settings":
-			{
-				"buffer_size": 19548,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tpl/stream.d",
-			"settings":
-			{
-				"buffer_size": 27265,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "std/crc32.d",
-			"settings":
-			{
-				"buffer_size": 3883,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "std/ctype.d",
-			"settings":
-			{
-				"buffer_size": 10471,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "std/date.d",
-			"settings":
-			{
-				"buffer_size": 49751,
+				"buffer_size": 35440,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "win.d",
+			"settings":
+			{
+				"buffer_size": 16497,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		}
@@ -125,35 +62,36 @@
 	},
 	"expanded_folders":
 	[
-		"/D/dinrus/dev/DINRUS/Base/basedll",
-		"/D/dinrus/dev/DINRUS/Base/basedll/std",
-		"/D/dinrus/dev/DINRUS/Base/basedll/sys",
-		"/D/dinrus/dev/DINRUS/Base/basedll/tpl"
+		"/D/dinrus/dev/DINRUS/Base/basedll"
 	],
 	"file_history":
 	[
+		"/D/dinrus/dev/DINRUS/Base/basedll/sys/registry.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/sys/WinProcess.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/sys/WinStructs.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/exception.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/box.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/stream.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/std/crc32.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/std/ctype.d",
+		"/D/dinrus/dev/DINRUS/Base/basedll/std/date.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/regexp.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/bitarray.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/socket.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/stream.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/string.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/minmax.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/box.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/dll.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/rt/invariant.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/sys/WinProcess.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/stdrus.do",
 		"/D/dinrus/dev/DINRUS/Base/basedll/gc.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/runtime.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/loader.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/thread.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/sys/WinStructs.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/sys/memory.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/exception.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/dinrus.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/signal.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/tpl/bind.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/std/date.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/file.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/io.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/path.d",
@@ -162,7 +100,6 @@
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/zip.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/process.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/zlib.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/std/crc32.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/uri.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/uni.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/outbuffer.d",
@@ -178,7 +115,6 @@
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/format.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/demangle.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/conv.d",
-		"/D/dinrus/dev/DINRUS/Base/basedll/std/ctype.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/x/ctype.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/x/intrinsic.d",
 		"/D/dinrus/dev/DINRUS/Base/basedll/std/intrinsic.d",
@@ -206,6 +142,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"установиКонсоль",
 			"дайЛокTZA",
 			"часИзВрем",
 			"нокругли",
@@ -441,259 +378,53 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sys/registry.d",
+					"file": "runtime.d",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 61675,
+						"buffer_size": 35440,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20352,
-								20340
+								10785,
+								10785
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 9323.0,
+						"translation.y": 5400.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "sys/WinProcess.d",
+					"file": "win.d",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5176,
+						"buffer_size": 16497,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								812,
-								812
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "sys/WinStructs.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 132729,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								675,
-								675
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "exception.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 30357,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4668,
-								4668
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2115.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "tpl/box.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 19548,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1063,
-								1063
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "tpl/stream.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 27265,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24291,
-								24302
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 14537.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "std/crc32.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3883,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								556,
-								556
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "std/ctype.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10471,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10471,
-								10471
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/D/D.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5176.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "std/date.d",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 49751,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3909,
-								3909
+								6402,
+								6402
 							]
 						],
 						"settings":
@@ -703,10 +434,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3886.0,
+						"translation.y": 2896.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

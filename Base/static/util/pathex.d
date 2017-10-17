@@ -10,7 +10,7 @@ private {
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
 
-    import dinrus;
+    import std.file, std.regexp, std.string, std.path, exception;
 }
 
 private {
@@ -161,16 +161,16 @@ static this()
     }
 
     lLevel = РАЗДПАП ~ "." ~ РАЗДПАП;
-    lPosA = stdrus.найди(lPath, lLevel);
+    lPosA = std.string.найди(lPath, lLevel);
     while( lPosA != -1 ){
         lPath = lPath[0..lPosA] ~
                 lPath[lPosA + lLevel.length - РАЗДПАП.length .. length];
 
-        lPosA = stdrus.найди(lPath, lLevel);
+        lPosA = std.string.найди(lPath, lLevel);
     }
 
     lLevel = РАЗДПАП ~ ".." ~ РАЗДПАП;
-    lPosA = stdrus.найди(lPath, lLevel);
+    lPosA = std.string.найди(lPath, lLevel);
     while( lPosA != -1 ){
         // Locate preceding directory separator.
         lPosB = lPosA-1;
@@ -182,7 +182,7 @@ static this()
         lPath = lPath[0..lPosB] ~
                 lPath[lPosA + lLevel.length - РАЗДПАП.length .. length];
 
-        lPosA = stdrus.найди(lPath, lLevel);
+        lPosA = std.string.найди(lPath, lLevel);
     }
 
     return lDrive ~ lPath;
@@ -316,8 +316,8 @@ static this()
         {
             version(Windows)
             {
-                if( stdrus.впроп(lOrigName[0.. текпап.length]) ==
-                    stdrus.впроп(текпап) )
+                if( std.string.впроп(lOrigName[0.. текпап.length]) ==
+                    std.string.впроп(текпап) )
                 {
                     lShortName = lOrigName[текпап.length .. $];
                     break LBL_CheckDirs;
@@ -342,7 +342,7 @@ static this()
     // Remove any double путь seps.
     {{
         бцел lPos;
-        while ( (lPos = stdrus.найди(lShortName, `\\`)) != -1)
+        while ( (lPos = std.string.найди(lShortName, `\\`)) != -1)
         {
             lShortName = lShortName[0..lPos] ~ lShortName[lPos+1 .. $];
         }
@@ -353,7 +353,7 @@ static this()
 ткст определиФайл(ткст фимя, ткст списПутей)
 {
     return определиФайл(фимя,
-                        разбей(списПутей, РАЗДПСТР));
+                        std.regexp.разбей(списПутей, РАЗДПСТР));
 }
 
 ткст определиФайл(ткст фимя, ткст[] списПутей)
@@ -458,7 +458,7 @@ static this()
         необработЗнач = pSymName;
 
     // Rearrange путь list into an массив of paths.
-    пути = разбей(util.str.вАСКИ(необработЗнач), РАЗДПСТР);
+    пути = std.regexp.разбей(util.str.вАСКИ(необработЗнач), РАЗДПСТР);
 
     путьККомпилятору.length = 0;
     foreach(ткст lPath; пути)

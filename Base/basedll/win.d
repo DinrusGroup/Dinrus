@@ -197,6 +197,7 @@ export extern (C):
         /// emit a utf8 string to the console
         Console emit (char[] s)
         {
+          установиКонсоль();
                 consoleString (s);
                 return *this;
         }
@@ -217,6 +218,7 @@ export extern (C):
         /// emit a newline to the console
         Console newline ()
         {
+          установиКонсоль();
                 version (Windows)
                          const eol = "\r\n";
                 version (Posix)

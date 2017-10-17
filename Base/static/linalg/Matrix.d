@@ -15,7 +15,7 @@
 module linalg.Matrix;
 
 import linalg.Vector;
-import stdrus;
+import std.math, std.string: фм;
 
 
 /// Перестанавливает два значения
@@ -468,11 +468,11 @@ struct Матрица(Т, цел M, цел N)
                 возвр ~= "[ ";
             for (цел i = 0; i < члостолбцов; i++) {
                 static if (is(Т == struct))
-                    возвр ~= stdrus.фм("%15s",(*this)[j,i].вТкст);
+                    возвр ~= фм("%15s",(*this)[j,i].вТкст);
                 else if (is(Т : цел))
-                    возвр ~= stdrus.фм("%7s",(*this)[j,i]);
+                    возвр ~= фм("%7s",(*this)[j,i]);
                 else
-                    возвр ~= stdrus.фм("%7.4f",(*this)[j,i]);
+                    возвр ~= фм("%7.4f",(*this)[j,i]);
                 if (i != члостолбцов -1)
                     возвр ~= ",  ";
                 else 

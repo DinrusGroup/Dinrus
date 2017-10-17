@@ -40,7 +40,7 @@ Authors:
 */
 module linalg.basic;
 
-import stdrus;
+import std.math;
 import linalg.config;
 
 /**

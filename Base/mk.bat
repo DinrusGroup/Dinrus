@@ -38,65 +38,6 @@
 :copy %this%\base\sys\WinIfaces.d %this%\import\sys\WinIfaces.d 
 :copy %this%\base\base.d %this%\import\base.d
 
-:::Making dirs for di files in \imp\dinrus\
-::: and copying imports from .\import folder to them
-
-mkdir %R%
-copy %this%\import\*.d  %R%\*.di 
-
-mkdir %R%\std
-copy %this%\import\std\*.d  %R%\std\*.di 
-
-mkdir %R%\tpl
-copy %this%\import\tpl\*.d  %R%\tpl\*.di
-
-mkdir %R%\st
-copy %this%\import\st\*.d  %R%\st\*.di
-
-mkdir %R%\mesh
-copy %this%\import\mesh\*.d  %R%\mesh\*.di
-
-mkdir %R%\win32
-mkdir %R%\win32\directx
-copy %this%\..\win32\*.d  %R%\win32\*.di
-copy %this%\..\win32\directx\*.d   %R%\win32\directx\*.di
-
-mkdir %R%\def
-copy %this%\..\win32\directx\*.def  %R%\def\*.def
-
-mkdir %R%\sys
-mkdir %R%\sys\inc
-mkdir %R%\sys\COM
-copy %this%\import\sys\*.d  %R%\sys\*.di
-copy %this%\import\sys\inc\*.d  %R%\sys\inc\*.di
-copy %this%\import\sys\COM\*.d  %R%\sys\COM\*.di
-
-mkdir %R%\lib
-copy %this%\import\lib\*.d  %R%\lib\*.di
-
-mkdir %R%\col
-mkdir %R%\col\model
-copy %this%\import\col\*.d  %R%\col\*.di
-copy %this%\import\col\model\*.d  %R%\col\model\*.di
-
-
-mkdir %R%\linalg
-copy %this%\import\linalg\*.d  %R%\linalg\*.di
-
-mkdir %R%\geom
-copy %this%\import\geom\*.d  %R%\geom\*.di
-
-mkdir %R%\util
-copy %this%\import\util\*.d  %R%\util\*.di
-
-::mkdir %R%\io
-::mkdir %R%\io\device
-::mkdir %R%\io\stream
-::copy %this%\import\io\*.d  %R%\io\*.di
-::copy %this%\import\io\device\*.d  %R%\io\*.di
-::copy %this%\import\io\stream\*.d  %R%\io\*.di
-
-
 :Ccode
 :::Compiling C code
 %DMC% -c -o%this%\complex.obj %this%\basedll\rt\complex.c -I%DINRUS%\..\include
@@ -219,9 +160,11 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 
 
 :dinruslib2
+
 :::Making library with static content
 %DMD% -lib -of%this%\Dinrus.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
 @if exist %this%\Dinrus.lib  goto Join
+
 @if not exist %this%\Dinrus.lib pause
 cls
 @goto NextStep
@@ -229,6 +172,14 @@ cls
 :Join
 :::Ading static libraries to Dinrus.lib
 %LIB% -p256   %this%\Dinrus.lib  %this%\DinrusBaseDLL.lib
+::%LIB% -p256   %this%\Dinrus.lib %this%\Cdinr.lib
+
+:StdLib
+%LS% -d %this%\import\std\*.d>>dstd.rsp
+%DMD% -lib -of%this%\Dstd.lib @dstd.rsp
+@if exist %this%\Dstd.lib del %this%\dstd.rsp
+%LIB% -p256   %this%\Dinrus.lib %this%\Dstd.lib
+del %this%\*.obj
 
 :::Compiling codes from .\static folder
 
@@ -371,13 +322,13 @@ cd %this%
 
 :::Copying Dinrus.lib to main Dinrus lib folder
 ::%LIB% -p256  Dinrus.lib %LDIR%\import.lib
-copy %this%\Dinrus.lib %LDIR%
-copy %this%\Dinrus.Base.dll %DINRUS%
-copy %this%\Dinrus.Base.dll %windir%\system32
+:copy %this%\Dinrus.lib %LDIR%
+:copy %this%\Dinrus.Base.dll %DINRUS%
+:copy %this%\Dinrus.Base.dll %windir%\system32
 
 :specbuild
 %DMD%  -lib  -of%this%\DinrusSpecBuild.lib %this%\static\dllMain.d
-copy %this%\DinrusSpecBuild.lib  %LDIR%
+:copy %this%\DinrusSpecBuild.lib  %LDIR%
 
 del %this%\*.bak %this%\*.obj
 
@@ -394,4 +345,64 @@ cd %this%
 
 :exit
 exit
+
+
+:copyimps
+:::Making dirs for di files in \imp\dinrus\
+::: and copying imports from .\import folder to them
+
+mkdir %R%
+copy %this%\import\*.d  %R%\*.di 
+
+mkdir %R%\std
+copy %this%\import\std\*.d  %R%\std\*.di 
+
+mkdir %R%\tpl
+copy %this%\import\tpl\*.d  %R%\tpl\*.di
+
+mkdir %R%\st
+copy %this%\import\st\*.d  %R%\st\*.di
+
+mkdir %R%\mesh
+copy %this%\import\mesh\*.d  %R%\mesh\*.di
+
+mkdir %R%\win32
+mkdir %R%\win32\directx
+copy %this%\..\win32\*.d  %R%\win32\*.di
+copy %this%\..\win32\directx\*.d   %R%\win32\directx\*.di
+
+mkdir %R%\def
+copy %this%\..\win32\directx\*.def  %R%\def\*.def
+
+mkdir %R%\sys
+mkdir %R%\sys\inc
+mkdir %R%\sys\COM
+copy %this%\import\sys\*.d  %R%\sys\*.di
+copy %this%\import\sys\inc\*.d  %R%\sys\inc\*.di
+copy %this%\import\sys\COM\*.d  %R%\sys\COM\*.di
+
+mkdir %R%\lib
+copy %this%\import\lib\*.d  %R%\lib\*.di
+
+mkdir %R%\col
+mkdir %R%\col\model
+copy %this%\import\col\*.d  %R%\col\*.di
+copy %this%\import\col\model\*.d  %R%\col\model\*.di
+
+
+mkdir %R%\linalg
+copy %this%\import\linalg\*.d  %R%\linalg\*.di
+
+mkdir %R%\geom
+copy %this%\import\geom\*.d  %R%\geom\*.di
+
+mkdir %R%\util
+copy %this%\import\util\*.d  %R%\util\*.di
+
+::mkdir %R%\io
+::mkdir %R%\io\device
+::mkdir %R%\io\stream
+::copy %this%\import\io\*.d  %R%\io\*.di
+::copy %this%\import\io\device\*.d  %R%\io\*.di
+::copy %this%\import\io\stream\*.d  %R%\io\*.di
 

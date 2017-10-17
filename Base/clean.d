@@ -1,4 +1,5 @@
-﻿import stdrus, win, cidrus;
+﻿//import std.file, std.utf, std.io, std.string, exception, cidrus;
+import dinrus;
 
 version = UCRT;
 version(UCRT)

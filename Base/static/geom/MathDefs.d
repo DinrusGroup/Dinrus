@@ -1,6 +1,6 @@
 ﻿module geom.MathDefs;
 
-public import stdrus;
+public import std.math;
 
 /** comparison operators with user-selected precision control
 */

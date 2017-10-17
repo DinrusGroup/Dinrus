@@ -3,7 +3,7 @@
 // Written in the D Programming Language (http://www.digitalmars.com/d)
 module linalg.Vector;
 
-import stdrus, tpl.metastrings;
+import std.math, std.string, tpl.metastrings;
 
 // ----------------------------------------------------------------------------
 
@@ -251,7 +251,7 @@ alias укз ptr;
 
     /// дай i'th элемент read-only
     Скаляр opIndex(т_мера _i) {
-        assert(_i<N,"v["~stdrus.вТкст(_i)~"]: индекс вне диапазона"); return значения_[_i];
+        assert(_i<N,"v["~std.string.вТкст(_i)~"]: индекс вне диапазона"); return значения_[_i];
     }
     /// дай i'th элемент write-only
     void opIndexAssign(Скаляр v, т_мера _i) {

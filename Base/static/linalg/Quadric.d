@@ -1,6 +1,7 @@
 ﻿module linalg.Quadric;
 import linalg.Vector;
-import stdrus;
+import std.math;
+import std.string: фм;
 
 //== CLASS DEFINITION =========================================================
 

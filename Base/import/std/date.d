@@ -1,5 +1,5 @@
 module std.date;
-
+import sys.WinStructs;
 
 
        struct Дата
@@ -30,6 +30,7 @@ module std.date;
               день_недели = а.день_недели;    /// 0: not specified, 1..7: Sunday..Saturday
               коррекцияЧП = а.коррекцияЧП;
           }
+	}
 
       
 
@@ -76,4 +77,4 @@ extern(D):
       ФВремяДос вФВремяДос(т_время вр);
       ткст ДАТА();
       ткст ВРЕМЯ();
-    }
+    

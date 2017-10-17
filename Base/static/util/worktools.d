@@ -1,5 +1,5 @@
 ﻿module util.worktools;
-public import std.io, dinrus, std.path, util.str, util.fileex;
+public import exception, std.io, std.file,std.string, std.process, std.path, util.str, util.fileex;
 
 alias дайСред дайГлоб;
 alias устСред устГлоб;

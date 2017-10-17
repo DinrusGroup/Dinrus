@@ -43,7 +43,7 @@
 module st.stackthread;
 
 //Module imports
-private import st.stackcontext, stdrus;
+private import st.stackcontext, std.string;
 
 /// The приоритет of a стэк thread determines its order in
 /// the планировщик.  Higher приоритет threads go первый.

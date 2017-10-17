@@ -1,5 +1,5 @@
 ﻿module mesh.Handles;
-import tpl.Handles, win, stdrus: фм;
+import tpl.Handles, win, std.string: фм;
 
 //-----------------------------------------------------------------------------
 

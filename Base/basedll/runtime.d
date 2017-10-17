@@ -3,7 +3,7 @@
 
 */
 module runtime;
-import gc, cidrus: выход;
+import win, gc, cidrus: выход;
 import  sys.WinFuncs;
 
 //debug = НА_КОНСОЛЬ;
@@ -402,12 +402,9 @@ export extern (C)	бул ртСтарт(ПередВходом передвхо 
 		{
 			if( дг )
 				дг( e );
-					return нет;
+					
 		}
-		finally
-		{
-		установиКонсоль();
-		}
+
 		return да;
 	}
 //}
@@ -417,9 +414,6 @@ export extern (C)	бул ртСтарт(ПередВходом передвхо 
 
 export extern (C)	проц ртСтоп()//ПередВыходом передвых = пусто, ОбработчикИсключения дг = пусто )
 	{
-	
-	
-
 	
 		try
 			{

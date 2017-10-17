@@ -81,7 +81,7 @@
  ******************************************************/
 module st.stackcontext;
 
-private import dinrus, st.tls;
+private import st.tls, std.string;
 
 //Handle versions
 version(D_InlineAsm_X86)

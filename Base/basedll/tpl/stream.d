@@ -800,7 +800,7 @@ export:
 		return ввыводф(format, ap);
 	  }
 
-	  проц форматДелайCallback(дим c) { 
+	  проц doFormatCallback(дим c) { 
 		сим[4] буф;
 		auto b = вЮ8(буф, c);
 		пишиТкст(b);
@@ -818,7 +818,7 @@ export:
 
 	  // writes данные with optional trailing newline
 	  win.ПотокВывода пишификс(ИнфОТипе[] arguments, ук argptr, цел newline=0) {
-		форматДелай(&форматДелайCallback,arguments,argptr);
+		форматДелай(&doFormatCallback,arguments,argptr);
 		if (newline) 
 		  пишиСтр("");
 		return this;

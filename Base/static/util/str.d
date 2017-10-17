@@ -7,7 +7,7 @@ private{
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
 
-    import std.utf;
+    import std.utf, std.string;
     // --------- C externals ----------------
     extern (C)
     {

@@ -67,7 +67,7 @@
  */
 module st.tls;
 
-private import stdrus, thread;
+private import  thread, std.string;
 
 /**
  * Исключение НитеЛокИскл генерируется в случае,

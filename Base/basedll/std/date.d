@@ -5,21 +5,9 @@ module std.date;
 import  base, sys.WinStructs, std.string;
 
 
-export extern(D)
-{
-
-      Дата разборДаты(ткст т)
-      {  
-      РазборДаты dp;
-      Дата д;
-      dp.разбор(т, д);
-           return  д;
-      }
-
-
        struct Дата
       {
-      export:
+      
           цел год;    /// use цел.min as "nan" год значение
           цел месяц;      /// 1..12
           цел день;       /// 1..31
@@ -47,6 +35,21 @@ export extern(D)
           }
 
       }
+
+
+export extern(D)
+{
+
+      Дата разборДаты(ткст т)
+      {  
+      РазборДаты dp;
+      Дата д;
+      dp.разбор(т, д);
+           return  д;
+      }
+
+
+
 
 /*
       enum 

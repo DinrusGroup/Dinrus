@@ -23,7 +23,7 @@ Authors:
 module linalg.color;
 
  import linalg.basic,
-               linalg.config;
+               linalg.config, cidrus;
 
 /** Defines байты orders for плав to бцел conversions. */
 enum ПорядокБайтов
@@ -304,7 +304,7 @@ in implemented structs и routines.
         /** Возвращает: Whether all components are нормализованный numbers. */
         бул нормален_ли()
         {
-            return stdrus.нормален_ли(к) && stdrus.нормален_ли(з) && stdrus.нормален_ли(с);
+            return cidrus.нормаль_ли(к) && cidrus.нормаль_ли(з) && cidrus.нормаль_ли(с);
         }
 
         /**
@@ -748,7 +748,7 @@ in implemented structs и routines.
         /** Возвращает: Whether all components are нормализованный numbers. */
         бул нормален_ли()
         {
-            return stdrus.нормален_ли(к) && stdrus.нормален_ли(з) && stdrus.нормален_ли(с) && stdrus.нормален_ли(а);
+            return cidrus.нормаль_ли(к) && cidrus.нормаль_ли(з) && cidrus.нормаль_ли(с) && cidrus.нормаль_ли(а);
         }
 
         /**
@@ -1098,7 +1098,7 @@ unittest
 
 */
 import linalg.VectorTypes;
-import stdrus: пол;
+import std.math: пол;
 
 alias Век3бб  Color3ub;
 alias Век3п   Color3f;

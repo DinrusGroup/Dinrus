@@ -7,7 +7,7 @@ version(linux)  version = Posix;
 version(darwin) version = Posix;
 
 private{
-    import std.file, std.string, exception, std.io;
+    import cidrus, std.path, std.file, std.string, std.ctype, std.regexp, exception, std.io;
 
     import util.str;
     import util.booltype;   // definition of Да и Нет
@@ -15,6 +15,8 @@ private{
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
     static import util.pathex;
+	
+	alias std.path.извлекиРасш дайРасш;
 
     ткст[] vGrepOpts;
 
@@ -142,7 +144,7 @@ enum ОпцСоздания
 
 дол grep(ткст данные, ткст образец)
 {
-    return std.string.найди(данные, образец, vGrepOpts[$-1]);
+    return std.regexp.найди(данные, образец, vGrepOpts[$-1]);
 }
 
 бдол[] найдиВФайле(ткст имяф, ткст текст, ткст опции = "", бцел макс=1)
@@ -226,7 +228,7 @@ enum ОпцСоздания
             // A 'word' is an instance not surrounded by alphanumerics.
             if (lPos > 0)
             {
-                if (std.string.числобукв(буф[lPos-1]) )
+                if (std.ctype.числобукв(буф[lPos-1]) )
                 {
                     // Instance preceeded by a alphanumic so I
                     // move one place to the right и try to find
@@ -237,7 +239,7 @@ enum ОпцСоздания
             }
             if (lPos + текст.length < буф.length)
             {
-                if (std.string.числобукв(буф[lPos + текст.length - 1]) )
+                if (std.ctype.числобукв(буф[lPos + текст.length - 1]) )
                 {
                     // Instance followed by a alphanumic so I
                     // move one place to the right и try to find

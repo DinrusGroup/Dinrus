@@ -1,5 +1,5 @@
 ﻿module std.ctype;
-
+import std.utf, std.string, tpl.args;
 
 бул число_ли(ИнфОТипе[] _arguments, спис_ва _argptr)
 {
