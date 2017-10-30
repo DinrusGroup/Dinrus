@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1485153464 source:d:\dinrus\dev\dinrus\base\base\rt\complex.c
+	<math.h>
+
+1485153464 source:d:\dinrus\dev\dinrus\base\base\rt\critical.c
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<pthread.h>
+
+1485153464 source:d:\dinrus\dev\dinrus\base\base\rt\deh.c
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	<stdlib.h>
+	<excpt.h>
+	<windows.h>
+	<errno.h>
+	"mars.h"
+	"mars.h"
+
+1485153464 d:\dinrus\dev\dinrus\base\base\rt\mars.h
+	<stddef.h>
+
+1485153464 source:d:\dinrus\dev\dinrus\base\base\rt\monitor.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<windows.h>
+	<pthread.h>
+	"mars.h"
+

@@ -5,6 +5,7 @@
 :::Setting environment variables
 @set this=%DINRUS%\..\dev\DINRUS\Base
 @set R=%DINRUS%\..\imp\dinrus
+::@set R=%DINRUS%\..\dev\GITHUB\base\trunk\imp
 @set LIBS=%DINRUS%\..\lib\sysimport
 @set LDIR=%DINRUS%\..\lib
 @set DMD=%DINRUS%\dmd.exe
@@ -38,44 +39,101 @@
 :copy %this%\base\sys\WinIfaces.d %this%\import\sys\WinIfaces.d 
 :copy %this%\base\base.d %this%\import\base.d
 
-:Ccode
+:::Making dirs for di files in \imp\dinrus\
+::: and copying imports from .\import folder to them
+
+mkdir %R%
+copy %this%\import\*.d  %R%\*.di 
+
+mkdir %R%\std
+copy %this%\import\std\*.d  %R%\std\*.di 
+
+mkdir %R%\tpl
+copy %this%\import\tpl\*.d  %R%\tpl\*.di
+
+mkdir %R%\st
+copy %this%\import\st\*.d  %R%\st\*.di
+
+mkdir %R%\mesh
+copy %this%\import\mesh\*.d  %R%\mesh\*.di
+
+mkdir %R%\win32
+mkdir %R%\win32\directx
+copy %this%\..\win32\*.d  %R%\win32\*.di
+copy %this%\..\win32\directx\*.d   %R%\win32\directx\*.di
+
+mkdir %R%\def
+copy %this%\..\win32\directx\*.def  %R%\def\*.def
+
+mkdir %R%\sys
+mkdir %R%\sys\inc
+mkdir %R%\sys\COM
+copy %this%\import\sys\*.d  %R%\sys\*.di
+copy %this%\import\sys\inc\*.d  %R%\sys\inc\*.di
+copy %this%\import\sys\COM\*.d  %R%\sys\COM\*.di
+
+mkdir %R%\lib
+copy %this%\import\lib\*.d  %R%\lib\*.di
+
+mkdir %R%\col
+mkdir %R%\col\model
+copy %this%\import\col\*.d  %R%\col\*.di
+copy %this%\import\col\model\*.d  %R%\col\model\*.di
+
+
+mkdir %R%\linalg
+copy %this%\import\linalg\*.d  %R%\linalg\*.di
+
+mkdir %R%\geom
+copy %this%\import\geom\*.d  %R%\geom\*.di
+
+mkdir %R%\util
+copy %this%\import\util\*.d  %R%\util\*.di
+
+::mkdir %R%\io
+::mkdir %R%\io\device
+::mkdir %R%\io\stream
+::copy %this%\import\io\*.d  %R%\io\*.di
+::copy %this%\import\io\device\*.d  %R%\io\*.di
+::copy %this%\import\io\stream\*.d  %R%\io\*.di
+
 :::Compiling C code
-%DMC% -c -o%this%\complex.obj %this%\basedll\rt\complex.c -I%DINRUS%\..\include
-%DMC% -c  -o%this%\critical.obj %this%\basedll\rt\critical.c -I%DINRUS%\..\include
-%DMC% -c  -o%this%\deh.obj %this%\basedll\rt\deh.c -I%DINRUS%\..\include
-%DMC% -c  -o%this%\monitor.obj %this%\basedll\rt\monitor.c -I%DINRUS%\..\include
+
+%DMC% -c -o%this%\complex.obj %this%\base\rt\complex.c -I%DINRUS%\..\include
+%DMC% -c  -o%this%\critical.obj %this%\base\rt\critical.c -I%DINRUS%\..\include
+%DMC% -c  -o%this%\deh.obj %this%\base\rt\deh.c -I%DINRUS%\..\include
+%DMC% -c  -o%this%\monitor.obj %this%\base\rt\monitor.c -I%DINRUS%\..\include
 
 %DMD% -lib -of%this%\Cdinr.lib %this%\complex.obj %this%\critical.obj %this%\deh.obj %this%\monitor.obj
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::;
+
 :Base
-:::Make Dinrus.Base.dll
-
-
 :::Creating respond file
 :::%this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d
 :::%LS% -d %this%\base\io\*d %this%\base\io\device\*.d %this%\base\io\stream\*.d 
-%LS% -d %this%\basedll\*.d %this%\basedll\tpl\*.d %this%\basedll\rt\*.d %this%\basedll\sys\*.d %this%\basedll\sys\inc\*.d %this%\basedll\std\*.d>>%this%\objs.rsp
+%LS% -d %this%\base\std\*.d %this%\base\*.d %this%\base\tpl\*.d %this%\base\rt\*.d %this%\base\sys\*.d %this%\base\sys\inc\*.d>>%this%\objs.rsp
+
+:::Make Dinrus.Base.dll
 
 @if exist %DINRUS%\dinrus.exe %DINRUS%\dinrus.exe
 
-%DMD% -g -O -debug -of%this%\Dinrus.Base.dll @%this%\objs.rsp %this%\base.def %this%\base.res %LDIR%\minit.obj %LDIR%\import.lib %this%\Cdinr.lib
+%DMD% -g -O -debug -of%this%\Dinrus.Base.dll %this%\static\dll.d @%this%\objs.rsp %this%\base.def %this%\base.res %LDIR%\minit.obj %LDIR%\import.lib %this%\Cdinr.lib
 
 @if not exist %this%\Dinrus.Base.dll pause
 @if exist %this%\Dinrus.Base.dll goto nextStep
 @del %this%\objs.rsp
 @goto Base
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :nextStep
 :::Make its import lib
-::%IMPLIB% /system %this%\Dinrus.lib %this%\Dinrus.Base.dll
+%IMPLIB% /system %this%\Dinrus.lib %this%\Dinrus.Base.dll
 %IMPLIB% /system %this%\DinrusBaseDLL.lib %this%\Dinrus.Base.dll
 copy %this%\DinrusBaseDLL.lib %LDIR%
 ::copy %this%\Dinrus.Base.dll %DINRUS%
 ::copy %this%\Dinrus.Base.dll c:\Windows\system32
 
 :::To compress
-::%PACK% %this%\Dinrus.Base.dll
+:%PACK% %this%\Dinrus.Base.dll
 
 :::Clean
 @del %this%\*.obj
@@ -83,12 +141,13 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 :::Compiling imports into static part of dinrus.lib
 
 %DMD%  -c -O  -g -of%this%\cidrus.obj %this%\import\cidrus.d -I%R%
+%DMD%  -c -O  -g -of%this%\stdrus.obj %this%\import\stdrus.d -I%R%
 %DMD%  -c -O  -g -of%this%\runtime.obj %this%\import\runtime.d -I%R%
 %DMD%  -c -O  -g -of%this%\object.obj %this%\import\object.d -I%R%
 %DMD%  -c -O  -g -of%this%\gc.obj %this%\import\gc.d -I%R%
 %DMD%  -c -O  -g -of%this%\thread.obj %this%\import\thread.d -I%R%
 %DMD%  -c -O  -g -of%this%\sync.obj %this%\import\sync.d -I%R%
-::%DMD%  -c -O  -g %this%\import\tracer.d
+:%DMD%  -c -O  -g %this%\import\tracer.d
 %DMD%  -c -O  -g -of%this%\ini.obj %this%\static\ini.d -I%R%
 %DMD%  -c -O  -g -of%this%\stringz.obj %this%\import\stringz.d -I%R%
 
@@ -110,7 +169,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 
 
 
-::%DMD%  -c -O  -g exef.d
+:%DMD%  -c -O  -g exef.d
 
 %DMD%  -c -O  -g -of%this%\winapi.obj %this%\import\winapi.d -I%R%
 %DMD%  -c -O  -g -of%this%\global.obj %this%\import\global.d -I%R%
@@ -131,7 +190,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 %DMD%  -c -O  -g -of%this%\comtpl.obj %this%\import\tpl\com.d -I%R%
 %DMD%  -c -O  -g  -of%this%\std.obj %this%\import\tpl\std.d -I%R%
 %DMD%  -c -O  -g  -of%this%\weakref.obj %this%\import\tpl\weakref.d -I%R%
-::pause
+:pause
 %DMD%  -c -O  -g -of%this%\WinStructs.obj %this%\import\sys\WinStructs.d -I%R%
 
 %DMD%  -c -O  -g -of%this%\WinIfaces.obj %this%\import\sys\WinIfaces.d -I%R%
@@ -142,7 +201,7 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 
 %DMD%  -c -O  -g -of%this%\kernel32.obj %this%\import\sys\inc\kernel32.d -I%R%
 
-::%DMD%  -c -O  -g %this%\import\sys\en.d
+:%DMD%  -c -O  -g %this%\import\sys\en.d
 %DMD%  -c -O  -g -of%this%\memory.obj %this%\import\sys\memory.d -I%R%
 %DMD%  -c -O  -g -of%this%\uuid.obj %this%\import\sys\uuid.d -I%R%
 %DMD%  -c -O  -g -of%this%\comsys.obj %this%\static\sys0\com.d -I%R%
@@ -151,35 +210,24 @@ copy %this%\DinrusBaseDLL.lib %LDIR%
 %DMD%  -c -O  -g -of%this%\shell32.obj %this%\import\sys\COM\shell32.d -I%R%
 %DMD%  -c -O  -g -of%this%\scomall.obj %this%\import\sys\COM\all.d -I%R%
 
-::%DMD%  -c -O  -g  %this%\static\lib\mesa.d mesa.lib
+:%DMD%  -c -O  -g  %this%\static\lib\mesa.d mesa.lib
 
-::%DMD%  -c -O  -g %this%\import\stddinrus\base64.d
+:%DMD%  -c -O  -g %this%\import\stddinrus\base64.d
 
-::%DMD%  -c -O  -g -ofrt.obj @dobjs.rsp
+:%DMD%  -c -O  -g -ofrt.obj @dobjs.rsp
 
-
-
-:dinruslib2
 
 :::Making library with static content
-%DMD% -lib -of%this%\Dinrus.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
-@if exist %this%\Dinrus.lib  goto Join
+:dinrus2
 
-@if not exist %this%\Dinrus.lib pause
+%DMD% -lib -of%this%\dinrus2.lib  %this%\base.obj  %this%\object.obj  %this%\cidrus.obj  %this%\stdrus.obj  %this%\dinrus.obj  %this%\win.obj  %this%\runtime.obj  %this%\gc.obj  %this%\thread.obj  %this%\sync.obj  %this%\stringz.obj   %this%\all.obj  %this%\bind.obj  %this%\box.obj  %this%\metastrings.obj  %this%\minmax.obj  %this%\signal.obj  %this%\args.obj  %this%\typetuple.obj  %this%\traits.obj  %this%\exception.obj %LDIR%\minit.obj  %this%\WinStructs.obj  %this%\WinIfaces.obj  %this%\WinConsts.obj  %this%\WinFuncs.obj  %this%\WinProcess.obj  %this%\comtpl.obj  %this%\wincom.obj  %this%\shell32.obj  %this%\stream.obj  %this%\memory.obj  %this%\msscript.obj  %this%\activex.obj  %this%\winapi.obj  %this%\singleton.obj  %this%\alloc.obj  %this%\collection.obj  %this%\kernel32.obj  %this%\ini.obj  %this%\Std.obj  %this%\exeMain.obj  %this%\uuid.obj  %this%\comsys.obj  %this%\rotozoom.obj  %this%\scomall.obj  %this%\global.obj  %this%\weakref.obj %this%\registry.obj %this%\Cdinr.lib
+@if exist %this%\dinrus2.lib  goto Join
+@if not exist %this%\dinrus2.lib pause
 cls
 @goto NextStep
-
-:Join
 :::Ading static libraries to Dinrus.lib
-%LIB% -p256   %this%\Dinrus.lib  %this%\DinrusBaseDLL.lib
-::%LIB% -p256   %this%\Dinrus.lib %this%\Cdinr.lib
-
-:StdLib
-%LS% -d %this%\import\std\*.d>>dstd.rsp
-%DMD% -lib -of%this%\Dstd.lib @dstd.rsp
-@if exist %this%\Dstd.lib del %this%\dstd.rsp
-%LIB% -p256   %this%\Dinrus.lib %this%\Dstd.lib
-del %this%\*.obj
+:Join
+%LIB% -p256   %this%\Dinrus.lib  %this%\dinrus2.lib
 
 :::Compiling codes from .\static folder
 
@@ -267,7 +315,7 @@ cls
 @goto IO
 
 :DRwin32
-:::Making Dinrus_win32.lib
+:::Makin Dinrus_win32.lib
 :if exist %LDIR%\DinrusWin32.lib goto skip
 %LS% -d %this%\..\win32\*.d %this%\..\win32\directx\*.d %this%\..\win32\directx\*.def>>%this%\win32.rsp
 %DMD% -O -release -version=Unicode -lib -of%this%\DinrusWin32.lib @%this%\win32.rsp
@@ -276,7 +324,7 @@ if not exist %this%\DinrusWin32.lib pause
 copy %this%\DinrusWin32.lib /b  %LDIR%\DinrusWin32.lib /b
 
 :skip
-goto joinit
+::goto finish
 
 :Dinrus.Arc.dll
 :::Making Dinrus.Arc.dll
@@ -301,10 +349,7 @@ del %MINIDDIR%\*.dll %MINIDDIR%\*.obj %MINIDDIR%\*.rsp %MINIDDIR%\*.map
 cd %this%
 %DINRUS%\dinrus
 
-:joinit
-
-:: Join all compiled into Dinrus.lib
-::It's a place to go to different lib-constructing, but it's still static.
+:finish
 
 %LIB% -p256  %this%\Dinrus.lib %this%\dlib.lib
 %LIB% -p256  %this%\Dinrus.lib %this%\col.lib
@@ -314,95 +359,29 @@ cd %this%
 %LIB% -p256  %this%\Dinrus.lib %this%\mesh.lib
 %LIB% -p256  %this%\Dinrus.lib %this%\st.lib
 ::%LIB% -p256  %this%\Dinrus.lib %this%\io.lib
-::%LIB% -p256  %this%\Dinrus.lib %ARCDIR%\arc2.lib
-::%LIB% -p256  %this%\Dinrus.lib %MINIDDIR%\rminid.lib
+%LIB% -p256  %this%\Dinrus.lib %ARCDIR%\arc2.lib
+%LIB% -p256  %this%\Dinrus.lib %MINIDDIR%\rminid.lib
 
 :::Adding system imports
 ::::%LIB% -p256  Dinrus.lib %LDIR%\import.lib
 
 :::Copying Dinrus.lib to main Dinrus lib folder
-::%LIB% -p256  Dinrus.lib %LDIR%\import.lib
-:copy %this%\Dinrus.lib %LDIR%
-:copy %this%\Dinrus.Base.dll %DINRUS%
-:copy %this%\Dinrus.Base.dll %windir%\system32
+:%LIB% -p256  Dinrus.lib %LDIR%\import.lib
+copy %this%\Dinrus.lib %LDIR%
+copy %this%\Dinrus.Base.dll %DINRUS%
 
-:specbuild
+
 %DMD%  -lib  -of%this%\DinrusSpecBuild.lib %this%\static\dllMain.d
-:copy %this%\DinrusSpecBuild.lib  %LDIR%
+copy %this%\DinrusSpecBuild.lib  %LDIR%
 
-del %this%\*.bak %this%\*.obj
+del %this%\*.lib %this%\*.obj
 
-cd %this%
-:clean
-:::Cleaning
-%DMD% -run %this%\clean.d
-
+%DMD% %this%\clean.d
+%this%\clean
 ::: same with the Dll - to bin folder
 
-:exezz
 ::del *.lib *.dll
-%this%\Exe\mk.bat
-
-:exit
+cd %this%\Exe
+mk.bat
 exit
-
-
-:copyimps
-:::Making dirs for di files in \imp\dinrus\
-::: and copying imports from .\import folder to them
-
-mkdir %R%
-copy %this%\import\*.d  %R%\*.di 
-
-mkdir %R%\std
-copy %this%\import\std\*.d  %R%\std\*.di 
-
-mkdir %R%\tpl
-copy %this%\import\tpl\*.d  %R%\tpl\*.di
-
-mkdir %R%\st
-copy %this%\import\st\*.d  %R%\st\*.di
-
-mkdir %R%\mesh
-copy %this%\import\mesh\*.d  %R%\mesh\*.di
-
-mkdir %R%\win32
-mkdir %R%\win32\directx
-copy %this%\..\win32\*.d  %R%\win32\*.di
-copy %this%\..\win32\directx\*.d   %R%\win32\directx\*.di
-
-mkdir %R%\def
-copy %this%\..\win32\directx\*.def  %R%\def\*.def
-
-mkdir %R%\sys
-mkdir %R%\sys\inc
-mkdir %R%\sys\COM
-copy %this%\import\sys\*.d  %R%\sys\*.di
-copy %this%\import\sys\inc\*.d  %R%\sys\inc\*.di
-copy %this%\import\sys\COM\*.d  %R%\sys\COM\*.di
-
-mkdir %R%\lib
-copy %this%\import\lib\*.d  %R%\lib\*.di
-
-mkdir %R%\col
-mkdir %R%\col\model
-copy %this%\import\col\*.d  %R%\col\*.di
-copy %this%\import\col\model\*.d  %R%\col\model\*.di
-
-
-mkdir %R%\linalg
-copy %this%\import\linalg\*.d  %R%\linalg\*.di
-
-mkdir %R%\geom
-copy %this%\import\geom\*.d  %R%\geom\*.di
-
-mkdir %R%\util
-copy %this%\import\util\*.d  %R%\util\*.di
-
-::mkdir %R%\io
-::mkdir %R%\io\device
-::mkdir %R%\io\stream
-::copy %this%\import\io\*.d  %R%\io\*.di
-::copy %this%\import\io\device\*.d  %R%\io\*.di
-::copy %this%\import\io\stream\*.d  %R%\io\*.di
 
