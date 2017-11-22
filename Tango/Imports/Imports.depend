@@ -1,0 +1,261 @@
+# depslib dependency file v1.0
+1489497962 source:d:\dinrus\dev\dinrus\tango\imports\import\core\array.d
+	<core/Traits.d>
+
+1489498606 source:d:\dinrus\dev\dinrus\tango\imports\import\core\atomic.d
+	<core/Traits.d>
+	<ldc/intrinsics.d>
+
+1471022190 source:d:\dinrus\dev\dinrus\tango\imports\import\core\bitarray.d
+	<core/BitManip.d>
+
+1482217304 source:d:\dinrus\dev\dinrus\tango\imports\import\core\bitmanip.d
+	<core/BitManip.d>
+	<core/BitManip.d>
+	<ldc/bitmanip.d>
+	<std/intrinsic.d>
+
+1421660518 source:d:\dinrus\dev\dinrus\tango\imports\import\core\byteswap.d
+	<stdrus.d>
+
+1482091507 source:d:\dinrus\dev\dinrus\tango\imports\import\core\cpuid.d
+
+1482221586 source:d:\dinrus\dev\dinrus\tango\imports\import\core\runtimetraits.d
+
+1424058818 source:d:\dinrus\dev\dinrus\tango\imports\import\core\signal.d
+	<core/Array.d>
+
+1489498606 source:d:\dinrus\dev\dinrus\tango\imports\import\core\threadpool.d
+	<util/log/Trace.d>
+
+1482217304 source:d:\dinrus\dev\dinrus\tango\imports\import\core\traits.d
+
+1482217304 source:d:\dinrus\dev\dinrus\tango\imports\import\core\tuple.d
+
+1482085069 source:d:\dinrus\dev\dinrus\tango\imports\import\core\vararg.d
+	<std/stdarg.d>
+	<ldc/vararg.d>
+
+1482217304 source:d:\dinrus\dev\dinrus\tango\imports\import\core\variant.d
+	<core/Traits.d>
+	<core/Tuple.d>
+	<core/RuntimeTraits.d>
+	<core/Vararg.d>
+
+1421926054 source:d:\dinrus\dev\dinrus\tango\imports\import\core\version.d
+
+1511388219 source:d:\dinrus\dev\dinrus\tango\imports\import\core\weakref.d
+	<gc.d>
+	<gc.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\buffer.d
+	<io/model.d>
+
+1468964688 source:d:\dinrus\dev\dinrus\tango\imports\import\io\console.d
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\array.d
+	<exception.d>
+	<io/device/Conduit.d>
+
+1424295490 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\bitbucket.d
+	<io/device/Conduit.d>
+
+1425469176 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\conduit.d
+	<thread.d>
+	<io/model.d>
+
+1425469184 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\device.d
+	<dinrus.d>
+	<io/device/Conduit.d>
+
+1424295490 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\file.d
+	<io/device/Device.d>
+
+1424295580 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\filemap.d
+
+1511388356 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\serialport.d
+	<io/device/Device.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\tempfile.d
+	<io/device/File.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\device\threadpipe.d
+	<io/device/Conduit.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\file.d
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\filepath.d
+	<io/Path.d>
+	<io/model.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\filescan.d
+	<io/FilePath.d>
+
+1424295490 source:d:\dinrus\dev\dinrus\tango\imports\import\io\filesystem.d
+
+1425317414 source:d:\dinrus\dev\dinrus\tango\imports\import\io\model.d
+
+1424106536 source:d:\dinrus\dev\dinrus\tango\imports\import\io\path.d
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\allocator.d
+	<io/protocol/model.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\endianprotocol.d
+	<stdrus.d>
+	<io/model.d>
+	<io/protocol/NativeProtocol.d>
+
+1482217305 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\model.d
+	<io/model.d>
+
+1424295569 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\nativeprotocol.d
+	<io/Buffer.d>
+	<io/protocol/model.d>
+
+1424113671 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\pickleprotocol.d
+	<io/protocol/NativeProtocol.d>
+	<io/protocol/EndianProtocol.d>
+
+1482217305 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\reader.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1511388370 source:d:\dinrus\dev\dinrus\tango\imports\import\io\protocol\writer.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1482217305 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\abstractselector.d
+	<io/selector/model.d>
+
+1424295490 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\epollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<sys/linux/linux.d>
+
+1482217305 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\model.d
+	<time/Time.d>
+	<io/model.d>
+	<io/selector/model.d>
+	<io/Stdout.d>
+
+1482085925 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\pollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<sys/linux/linux.d>
+	<io/Stdout.d>
+	<io/selector/PollSelector.d>
+
+1424337567 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\selector.d
+	<io/selector/EpollSelector.d>
+	<io/selector/PollSelector.d>
+	<io/selector/SelectSelector.d>
+
+1424338428 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\selectorexception.d
+
+1511388661 source:d:\dinrus\dev\dinrus\tango\imports\import\io\selector\selectselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+
+1424340757 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stdout.d
+
+1425469206 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\buffered.d
+
+1482228660 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\bzip.d
+
+1482217305 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\data.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+
+1424338657 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\datafile.d
+	<io/device/File.d>
+	<io/stream/Data.d>
+	<io/Stdout.d>
+
+1424338689 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\delimiters.d
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+
+1424338755 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\digester.d
+	<io/device/Conduit.d>
+	<util/digest/Digest.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+	<io/device/File.d>
+
+1424338949 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\endian.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/device/Array.d>
+
+1484355923 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\format.d
+	<io/device/Conduit.d>
+	<text/convert/Layout.d>
+	<io/device/Array.d>
+
+1424339153 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\greedy.d
+	<io/device/Conduit.d>
+
+1482084092 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\iterator.d
+	<io/stream/Buffered.d>
+
+1424339429 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\lines.d
+	<io/stream/Iterator.d>
+
+1482084723 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\map.d
+	<io/device/Conduit.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1424339502 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\patterns.d
+	<text/Regex.d>
+	<io/stream/Iterator.d>
+
+1424339579 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\quotes.d
+	<io/stream/Iterator.d>
+
+1424339873 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\snoop.d
+
+1486197510 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\text.d
+	<io/stream/Lines.d>
+	<io/stream/Format.d>
+	<io/stream/Buffered.d>
+	<io/model.d>
+
+1486197510 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\textfile.d
+	<io/device/File.d>
+	<io/stream/Text.d>
+	<io/Console.d>
+
+1482083975 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\typed.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+
+1424340216 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\utf.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1482228660 source:d:\dinrus\dev\dinrus\tango\imports\import\io\stream\zlib.d
+	<lib/zlib.d>
+
+1424340705 source:d:\dinrus\dev\dinrus\tango\imports\import\io\unicodefile.d
+	<io/device/File.d>
+	<text/convert/UnicodeBom.d>
+
+1424170429 source:d:\dinrus\dev\dinrus\tango\imports\import\io\vfs\filefolder.d
+	<io/device/File.d>
+	<exception.d>
+	<io/vfs/model.d>
+	<io/model.d>
+

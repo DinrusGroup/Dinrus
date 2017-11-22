@@ -1,0 +1,2773 @@
+# depslib dependency file v1.0
+1482085078 source:d:\dinrus\dev\dinrus\tango\wdir\core\array.d
+	<core/Traits.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\core\atomic.d
+	<core/Traits.d>
+	<ldc/intrinsics.d>
+
+1482091027 source:d:\dinrus\dev\dinrus\tango\wdir\core\bitarray.d
+	<core/BitManip.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\core\bitmanip.d
+	<core/BitManip.d>
+	<core/BitManip.d>
+	<ldc/bitmanip.d>
+	<std/intrinsic.d>
+
+1421660489 source:d:\dinrus\dev\dinrus\tango\wdir\core\byteswap.d
+	<stdrus.d>
+
+1482091628 source:d:\dinrus\dev\dinrus\tango\wdir\core\cpuid.d
+
+1482221597 source:d:\dinrus\dev\dinrus\tango\wdir\core\runtimetraits.d
+
+1424058822 source:d:\dinrus\dev\dinrus\tango\wdir\core\signal.d
+	<core/Array.d>
+
+1482085078 source:d:\dinrus\dev\dinrus\tango\wdir\core\threadpool.d
+	<cidrus.d>
+	<util/log/Trace.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\core\traits.d
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\core\tuple.d
+
+1482085078 source:d:\dinrus\dev\dinrus\tango\wdir\core\vararg.d
+	<std/stdarg.d>
+	<ldc/vararg.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\core\variant.d
+	<core/Traits.d>
+	<core/Tuple.d>
+	<core/RuntimeTraits.d>
+	<core/Vararg.d>
+
+1482222219 source:d:\dinrus\dev\dinrus\tango\wdir\core\version.d
+
+1421919216 source:d:\dinrus\dev\dinrus\tango\wdir\core\weakref.d
+	<gc.d>
+	<gc.d>
+
+1474696259 source:d:\dinrus\dev\dinrus\tango\wdir\io\buffer.d
+	<io/model.d>
+
+1474668046 source:d:\dinrus\dev\dinrus\tango\wdir\io\console.d
+	<rt/console.d>
+	<rt/core/stdc/posix/unistd.d>
+
+1424293861 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\array.d
+	<exception.d>
+	<io/device/Conduit.d>
+	<io/Stdout.d>
+
+1424293861 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\bitbucket.d
+	<io/device/Conduit.d>
+
+1425554694 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\conduit.d
+	<io/model.d>
+
+1469697029 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\device.d
+	<io/device/Conduit.d>
+
+1482222761 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\file.d
+	<text/convert/Utf.d>
+	<rt/core/stringz/posix/unistd.d>
+	<io/Stdout.d>
+
+1482085933 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\filemap.d
+	<sys/Common.d>
+	<rt/core/stdc/posix/sys/mman.d>
+	<io/Path.d>
+
+1474668303 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\serialport.d
+
+1474668512 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\tempfile.d
+	<io/device/File.d>
+
+1482089865 source:d:\dinrus\dev\dinrus\tango\wdir\io\device\threadpipe.d
+	<io/device/Conduit.d>
+	<thread.d>
+
+1482085006 source:d:\dinrus\dev\dinrus\tango\wdir\io\file.d
+	<io/Stdout.d>
+
+1482085006 source:d:\dinrus\dev\dinrus\tango\wdir\io\filepath.d
+	<io/Path.d>
+	<io/model.d>
+	<cidrus.d>
+	<io/Console.d>
+
+1482083423 source:d:\dinrus\dev\dinrus\tango\wdir\io\filescan.d
+	<io/FilePath.d>
+	<exception.d>
+	<io/Stdout.d>
+
+1511379748 source:d:\dinrus\dev\dinrus\tango\wdir\io\filesystem.d
+	<sys/Common.d>
+	<io/FilePath.d>
+	<exception.d>
+	<cidrus.d>
+	<io/device/File.d>
+	<io/Stdout.d>
+
+1424109114 source:d:\dinrus\dev\dinrus\tango\wdir\io\model.d
+
+1482221597 source:d:\dinrus\dev\dinrus\tango\wdir\io\path.d
+	<sys/Common.d>
+	<rt/core/stdc/stdio.d>
+	<cidrus.d>
+	<rt/core/stdc/posix/utime.d>
+	<rt/core/stdc/posix/dirent.d>
+	<io/Stdout.d>
+
+1425326220 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\allocator.d
+	<io/protocol/model.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\endianprotocol.d
+	<stdrus.d>
+	<io/model.d>
+	<io/protocol/NativeProtocol.d>
+	<io/device/Array.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\model.d
+	<io/model.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\nativeprotocol.d
+	<io/Buffer.d>
+	<io/protocol/model.d>
+	<io/Buffer.d>
+	<io/protocol/Writer.d>
+	<io/protocol/Reader.d>
+	<io/protocol/NativeProtocol.d>
+
+1421385484 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\pickleprotocol.d
+	<io/protocol/NativeProtocol.d>
+	<io/protocol/EndianProtocol.d>
+	<io/device/Array.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\reader.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\io\protocol\writer.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\abstractselector.d
+	<io/selector/SelectorException.d>
+	<io/selector/model.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<io/selector/model.d>
+	<net/device/Socket.d>
+	<io/Stdout.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\epollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<sys/Common.d>
+	<sys/linux/linux.d>
+	<cidrus.d>
+	<io/Stdout.d>
+	<io/selector/EpollSelector.d>
+	<net/device/Socket.d>
+	<io/Stdout.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\model.d
+	<time/Time.d>
+	<io/model.d>
+	<io/selector/model.d>
+	<io/Stdout.d>
+
+1482085933 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\pollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<sys/linux/linux.d>
+	<io/Stdout.d>
+	<io/selector/PollSelector.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\selector.d
+	<io/selector/EpollSelector.d>
+	<io/selector/PollSelector.d>
+	<io/selector/SelectSelector.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\selectorexception.d
+	<exception.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\wdir\io\selector\selectselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<io/Stdout.d>
+	<text/convert/Integer.d>
+	<thread.d>
+	<core/BitArray.d>
+	<io/selector/SelectSelector.d>
+	<core/BitManip.d>
+
+1471120635 source:d:\dinrus\dev\dinrus\tango\wdir\io\stdout.d
+	<text/locale/Locale.d>
+	<io/Console.d>
+	<io/stream/Format.d>
+	<text/convert/Layout.d>
+
+1453180422 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\buffered.d
+	<io/device/Conduit.d>
+
+1482228670 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\bzip.d
+	<lib/bzlib.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\data.d
+	<core/ByteSwap.d>
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/device/Array.d>
+	<io/device/Array.d>
+
+1474698049 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\datafile.d
+	<io/device/File.d>
+	<io/stream/Data.d>
+	<io/Stdout.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\delimiters.d
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+
+1474698049 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\digester.d
+	<io/device/Conduit.d>
+	<util/digest/Digest.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+	<io/stream/FileStream.d>
+
+1474698287 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\endian.d
+	<core/ByteSwap.d>
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/device/Array.d>
+
+1482086925 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\format.d
+	<io/device/Conduit.d>
+	<text/convert/Layout.d>
+	<text/locale/Locale.d>
+	<io/device/Array.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\greedy.d
+	<io/device/Conduit.d>
+
+1482084100 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\iterator.d
+	<io/stream/Buffered.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\lines.d
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+	<io/Console.d>
+	<io/device/Array.d>
+
+1482084732 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\map.d
+	<io/device/Conduit.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\patterns.d
+	<text/Regex.d>
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+
+1424339583 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\quotes.d
+	<io/stream/Iterator.d>
+	<io/Stdout.d>
+	<text/Util.d>
+	<io/device/Array.d>
+
+1474697805 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\snoop.d
+	<text/convert/Format.d>
+
+1486197520 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\text.d
+	<io/stream/Lines.d>
+	<io/stream/Format.d>
+	<io/stream/Buffered.d>
+	<io/model.d>
+
+1486197520 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\textfile.d
+	<io/device/File.d>
+	<io/stream/Text.d>
+	<io/Console.d>
+
+1482083984 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\typed.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/Stdout.d>
+	<io/stream/Utf.d>
+	<io/device/Array.d>
+
+1474697534 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\utf.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\io\stream\zlib.d
+	<lib/zlib.d>
+
+1482085007 source:d:\dinrus\dev\dinrus\tango\wdir\io\unicodefile.d
+	<io/device/File.d>
+	<text/convert/UnicodeBom.d>
+	<io/Stdout.d>
+
+1482086642 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\filefolder.d
+	<io/device/File.d>
+	<exception.d>
+	<io/vfs/model.d>
+	<io/model.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\ftpfolder.d
+	<net/ftp/FtpClient.d>
+	<io/vfs/model.d>
+	<io/vfs/FileFolder.d>
+	<io/device/Conduit.d>
+	<text/Util.d>
+	<time/Time.d>
+
+1482221598 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\linkedfolder.d
+	<io/vfs/model.d>
+	<exception.d>
+	<io/vfs/VirtualFolder.d>
+	<io/Stdout.d>
+	<io/vfs/FileFolder.d>
+
+1482085728 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\model.d
+	<io/model.d>
+
+1482221598 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\virtualfolder.d
+	<exception.d>
+	<io/model.d>
+	<io/vfs/model.d>
+	<io/Stdout.d>
+	<io/vfs/FileFolder.d>
+
+1482083424 source:d:\dinrus\dev\dinrus\tango\wdir\io\vfs\zipfolder.d
+
+1421915995 source:d:\dinrus\dev\dinrus\tango\wdir\lib\bzlib.d
+
+1482229647 source:d:\dinrus\dev\dinrus\tango\wdir\lib\openssl.d
+
+1482228368 source:d:\dinrus\dev\dinrus\tango\wdir\lib\zlib.d
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\bessel.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1421998838 source:d:\dinrus\dev\dinrus\tango\wdir\math\bigint.d
+	<math/internal/BiguintCore.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\math\bracket.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\wdir\math\elliptic.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\errorfunction.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\gammafunction.d
+	<math/Math.d>
+	<math/IEEE.d>
+	<math/ErrorFunction.d>
+	<cidrus.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\ieee.d
+	<cidrus.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\wdir\math\internal\bignumnoasm.d
+
+1482087012 source:d:\dinrus\dev\dinrus\tango\wdir\math\internal\bignumx86.d
+	<rt/core/stdc/stdio.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\internal\biguintcore.d
+	<math/internal/BignumNoAsm.d>
+	<core/Cpuid.d>
+	<rt/core/stdc/stdio.d>
+
+1482091517 source:d:\dinrus\dev\dinrus\tango\wdir\math\internal\cache.d
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\math.d
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\probability.d
+	<math/ErrorFunction.d>
+	<math/GammaFunction.d>
+	<math/Math.d>
+	<math/IEEE.d>
+
+1420478938 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\arraysource.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\cmwc.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\kiss.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\kisscmwc.d
+
+1421645730 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\sync.d
+	<sync.d>
+
+1424339418 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\twister.d
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\engines\urandom.d
+	<sync.d>
+	<io/device/File.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\expsource.d
+	<math/Math.d>
+	<math/random/Ziggurat.d>
+	<core/Traits.d>
+
+1482222973 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\kiss.d
+	<base.d>
+	<rt/core/stdc/posix/sys/time.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\normalsource.d
+	<math/Math.d>
+	<math/ErrorFunction.d>
+	<math/random/Ziggurat.d>
+	<core/Traits.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\random.d
+	<math/random/engines/URandom.d>
+	<math/random/engines/KissCmwc.d>
+	<math/random/engines/ArraySource.d>
+	<math/random/engines/Sync.d>
+	<math/random/engines/Twister.d>
+	<math/random/NormalSource.d>
+	<math/random/ExpSource.d>
+	<math/Math.d>
+	<core/Traits.d>
+	<math/random/engines/KISS.d>
+	<math/random/engines/CMWC.d>
+	<rt/core/stdc/stdio.d>
+	<io/Stdout.d>
+
+1482223142 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\twister.d
+	<rt/core/stdc/posix/sys/time.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\math\random\ziggurat.d
+	<math/Bracket.d>
+	<math/Math.d>
+	<math/ErrorFunction.d>
+	<core/Traits.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\net\datagramconduit.d
+	<io/device/Conduit.d>
+	<io/Console.d>
+	<net/InternetAddress.d>
+
+1482222313 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\berkeley.d
+	<sys/Common.d>
+	<exception.d>
+	<stringz.d>
+	<sys/WinConsts.d>
+	<sys/WinStructs.d>
+	<core/BitManip.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\datagram.d
+	<net/device/Socket.d>
+	<io/Console.d>
+	<net/InternetAddress.d>
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\localsocket.d
+	<net/device/Socket.d>
+	<stdrus.d>
+	<io/Stdout.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\multicast.d
+	<net/InternetAddress.d>
+	<net/device/Datagram.d>
+	<io/Console.d>
+
+1482217316 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\socket.d
+	<sys/Common.d>
+	<io/device/Conduit.d>
+	<net/device/Berkeley.d>
+
+1424058822 source:d:\dinrus\dev\dinrus\tango\wdir\net\device\sslsocket.d
+	<net/PKI.d>
+	<net/device/Socket.d>
+	<lib/OpenSSL.d>
+	<tetra/util/Test.d>
+	<io/Stdout.d>
+	<io/device/File.d>
+	<io/FilePath.d>
+	<thread.d>
+	<stringz.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\wdir\net\ftp\ftpclient.d
+	<net/ftp/Telnet.d>
+	<text/Util.d>
+	<time/Clock.d>
+	<text/Regex.d>
+	<time/chrono/Gregorian.d>
+	<core/Array.d>
+	<net/device/Socket.d>
+	<io/device/Conduit.d>
+	<io/device/Array.d>
+	<io/device/File.d>
+	<text/Ascii.d>
+	<text/convert/TimeStamp.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\net\ftp\telnet.d
+	<exception.d>
+	<io/stream/Lines.d>
+	<net/device/Socket.d>
+
+1421998692 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\chunkstream.d
+	<io/stream/Lines.d>
+	<io/Console.d>
+	<io/device/Array.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpclient.d
+	<time/Time.d>
+	<io/device/Array.d>
+	<io/stream/Lines.d>
+	<io/stream/Buffered.d>
+	<io/Stdout.d>
+
+1482084964 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpconst.d
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpcookies.d
+	<cidrus.d>
+	<io/device/Array.d>
+	<io/stream/Iterator.d>
+	<net/http/HttpHeaders.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpget.d
+	<io/Console.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpheaders.d
+	<time/Time.d>
+	<io/stream/Lines.d>
+	<io/stream/Buffered.d>
+	<net/http/HttpConst.d>
+	<net/http/HttpTokens.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpparams.d
+	<time/Time.d>
+	<io/stream/Buffered.d>
+	<net/http/HttpTokens.d>
+	<io/stream/Delimiters.d>
+	<net/http/model/HttpParamsView.d>
+
+1482085320 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httppost.d
+	<net/Uri.d>
+	<io/stream/Buffered.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httpstack.d
+	<exception.d>
+
+1482085934 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httptokens.d
+	<time/Time.d>
+	<io/device/Array.d>
+	<io/stream/Buffered.d>
+	<text/convert/TimeStamp.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\httptriplet.d
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\wdir\net\http\model\httpparamsview.d
+	<time/Time.d>
+
+1421908276 source:d:\dinrus\dev\dinrus\tango\wdir\net\internetaddress.d
+	<net/device/Berkeley.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\wdir\net\model\uriview.d
+
+1482228910 source:d:\dinrus\dev\dinrus\tango\wdir\net\pki.d
+	<time/Time.d>
+	<stringz.d>
+	<lib/OpenSSL.d>
+	<util/Test.d>
+	<io/Stdout.d>
+
+1482222763 source:d:\dinrus\dev\dinrus\tango\wdir\net\socket.d
+	<sys/WinConsts.d>
+	<sys/WinStructs.d>
+	<sys/WinFuncs.d>
+	<cidrus.d>
+	<sys/WinConsts.d>
+	<core/BitManip.d>
+
+1424338410 source:d:\dinrus\dev\dinrus\tango\wdir\net\socketconduit.d
+	<io/device/Conduit.d>
+	<net/Socket.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\wdir\net\socketlistener.d
+	<thread.d>
+	<io/model.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\wdir\net\uri.d
+	<net/model/UriView.d>
+	<exception.d>
+	<util/log/Trace.d>
+
+1482221599 source:d:\dinrus\dev\dinrus\tango\wdir\sys\common.d
+	<exception.d>
+	<sys/linux/linux.d>
+	<sys/darwin/darwin.d>
+	<sys/freebsd/freebsd.d>
+	<sys/solaris/solaris.d>
+	<cidrus.d>
+	<cidrus.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\wdir\sys\consts\errno.d
+	<sys/linux/consts/errno.d>
+	<sys/freebsd/consts/errno.d>
+	<sys/darwin/consts/errno.d>
+	<sys/solaris/consts/errno.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\wdir\sys\consts\fcntl.d
+	<sys/linux/consts/fcntl.d>
+	<sys/freebsd/consts/fcntl.d>
+	<sys/darwin/consts/fcntl.d>
+	<sys/solaris/consts/fcntl.d>
+
+1421656233 source:d:\dinrus\dev\dinrus\tango\wdir\sys\consts\socket.d
+	<sys/linux/consts/socket.d>
+	<sys/freebsd/consts/socket.d>
+	<sys/darwin/consts/socket.d>
+	<sys/solaris/consts/socket.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\wdir\sys\consts\sysctl.d
+	<sys/linux/consts/sysctl.d>
+	<sys/freebsd/consts/sysctl.d>
+	<sys/darwin/consts/sysctl.d>
+	<sys/solaris/consts/sysctl.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\wdir\sys\consts\unistd.d
+	<sys/linux/consts/unistd.d>
+	<sys/freebsd/consts/unistd.d>
+	<sys/darwin/consts/unistd.d>
+	<sys/solaris/consts/unistd.d>
+
+1482084733 source:d:\dinrus\dev\dinrus\tango\wdir\sys\environment.d
+	<sys/Common.d>
+	<exception.d>
+	<io/model.d>
+	<text/convert/Utf.d>
+	<rt/core/stdc/posix/stdlib.d>
+	<cidrus.d>
+	<io/Console.d>
+
+1425405674 source:d:\dinrus\dev\dinrus\tango\wdir\sys\homefolder.d
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\wdir\sys\pipe.d
+	<sys/Common.d>
+	<io/device/Device.d>
+	<exception.d>
+	<rt/core/stdc/posix/unistd.d>
+	<io/Stdout.d>
+
+1482217316 source:d:\dinrus\dev\dinrus\tango\wdir\sys\process.d
+	<io/model.d>
+	<io/Console.d>
+	<sys/Common.d>
+	<sys/Pipe.d>
+	<exception.d>
+	<text/Util.d>
+	<cidrus.d>
+	<stringz.d>
+	<cidrus.d>
+	<rt/core/stdc/posix/fcntl.d>
+	<rt/core/stdc/posix/unistd.d>
+	<rt/core/stdc/posix/sys/wait.d>
+	<io/Stdout.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\wdir\sys\sharedlib.d
+	<rt/core/stdc/posix/dlfcn.d>
+	<util/log/Trace.d>
+
+1482221641 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\codepage.d
+	<sys/Common.d>
+	<exception.d>
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\consts\errno.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\consts\fcntl.d
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\consts\socket.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\consts\sysctl.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\consts\unistd.d
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\iunknown.d
+
+1419632195 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\macros.d
+	<cidrus.d>
+
+1482221599 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\process.d
+	<cidrus.d>
+
+1482222022 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\specialpath.d
+	<text/convert/Utf.d>
+	<sys/Common.d>
+	<stringz.d>
+
+1482221515 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\types.d
+
+1421683330 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\usergdi.d
+
+1421686681 source:d:\dinrus\dev\dinrus\tango\wdir\sys\win32\wsasock.d
+	<sys/Common.d>
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\wdir\text\arguments.d
+	<text/Util.d>
+	<util/container/more/Stack.d>
+	<io/Stdout.d>
+
+1482085729 source:d:\dinrus\dev\dinrus\tango\wdir\text\ascii.d
+
+1474699552 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\datetime.d
+	<exception.d>
+	<time/WallClock.d>
+	<text/convert/Utf.d>
+	<text/convert/Extentions.d>
+	<sys/Common.d>
+	<stringz.d>
+	<rt/core/stdc/posix/langinfo.d>
+	<io/Stdout.d>
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\float.d
+	<text/convert/Float.d>
+	<exception.d>
+	<io/Console.d>
+	<io/Console.d>
+
+1379499437 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\format.d
+	<text/convert/Layout.d>
+
+1482085080 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\integer.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\layout.d
+	<exception.d>
+	<text/convert/Utf.d>
+	<core/Variant.d>
+	<text/convert/Extentions.d>
+	<time/Time.d>
+	<text/convert/DateTime.d>
+	<tpl/args.d>
+	<tpl/args.d>
+	<io/Console.d>
+	<time/WallClock.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\sprint.d
+	<text/convert/Layout.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\timestamp.d
+	<text/convert/TimeStamp.d>
+	<time/Time.d>
+	<exception.d>
+	<text/Util.d>
+	<time/chrono/Gregorian.d>
+
+1424340090 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\unicodebom.d
+	<stdrus.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\wdir\text\convert\utf.d
+	<io/Console.d>
+
+1482231768 source:d:\dinrus\dev\dinrus\tango\wdir\text\json\json.d
+	<tpl/args.d>
+	<io/model.d>
+	<text/json/JsonEscape.d>
+	<text/json/JsonParser.d>
+	<text/convert/Float.d>
+	<io/Stdout.d>
+	<io/device/File.d>
+	<time/StopWatch.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\wdir\text\json\jsonescape.d
+	<text/json/JsonParser.d>
+	<text/Util.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+
+1482232013 source:d:\dinrus\dev\dinrus\tango\wdir\text\json\jsonparser.d
+	<util/container/more/Stack.d>
+
+1471032707 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\collation.d
+	<text/locale/Core.d>
+	<text/locale/Posix.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\convert.d
+	<time/WallClock.d>
+	<exception.d>
+	<text/locale/Core.d>
+	<time/chrono/Calendar.d>
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\core.d
+	<exception.d>
+	<text/locale/Data.d>
+	<time/Time.d>
+	<text/locale/Posix.d>
+
+1482084032 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\data.d
+	<exception.d>
+
+1471025548 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\locale.d
+	<time/Time.d>
+	<text/convert/Layout.d>
+	<io/Console.d>
+	<time/WallClock.d>
+
+1482223296 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\parse.d
+	<time/WallClock.d>
+	<exception.d>
+	<text/locale/Core.d>
+	<time/chrono/Calendar.d>
+
+1471022467 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\posix.d
+	<exception.d>
+	<text/locale/Data.d>
+	<rt/core/stdc/ctype.d>
+	<rt/core/stdc/posix/stdlib.d>
+	<cidrus.d>
+	<stringz.d>
+
+1482221516 source:d:\dinrus\dev\dinrus\tango\wdir\text\locale\win32.d
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\wdir\text\regex.d
+	<io/Stdout.d>
+	<math/Math.d>
+	<text/convert/Utf.d>
+	<text/convert/Format.d>
+	<core/Array.d>
+	<text/Util.d>
+	<io/Stdout.d>
+	<text/Regex.d>
+	<io/Stdout.d>
+	<text/Regex.d>
+	<rt/core/stdc/stdio.d>
+
+1482085146 source:d:\dinrus\dev\dinrus\tango\wdir\text\search.d
+	<text/Util.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1511379704 source:d:\dinrus\dev\dinrus\tango\wdir\text\text.d
+	<text/Search.d>
+	<io/model.d>
+	<text/convert/Layout.d>
+	<text/Util.d>
+	<text/convert/Utf.d>
+	<text/convert/Float.d>
+	<io/device/Array.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\text\unicode.d
+	<text/UnicodeData.d>
+	<text/convert/Utf.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\text\unicodedata.d
+
+1482085935 source:d:\dinrus\dev\dinrus\tango\wdir\text\util.d
+	<text/Util.d>
+
+1482085687 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\docentity.d
+	<text/Util.d>
+	<io/Console.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\docprinter.d
+	<io/model.d>
+	<text/xml/Document.d>
+	<text/xml/Document.d>
+	<util/log/Trace.d>
+
+1421841353 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\doctester.d
+	<exception.d>
+	<text/xml/Document.d>
+	<text/convert/Format.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\document.d
+	<text/xml/PullParser.d>
+	<io/Stdout.d>
+	<text/xml/DocPrinter.d>
+
+1482085081 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\pullparser.d
+
+1482089776 source:d:\dinrus\dev\dinrus\tango\wdir\text\xml\saxparser.d
+	<io/model.d>
+	<text/xml/PullParser.d>
+	<org/xml/sax/EntityResolver.d>
+	<org/xml/sax/InputSource.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\calendar.d
+	<time/Time.d>
+	<exception.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\gregorian.d
+	<time/chrono/Calendar.d>
+	<exception.d>
+	<io/Stdout.d>
+
+1421840328 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\gregorianbased.d
+	<exception.d>
+	<time/Time.d>
+	<time/chrono/Gregorian.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\hebrew.d
+	<exception.d>
+	<time/chrono/Calendar.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\hijri.d
+	<time/chrono/Calendar.d>
+
+1418564902 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\japanese.d
+	<time/chrono/GregorianBased.d>
+
+1418565019 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\korean.d
+	<time/chrono/GregorianBased.d>
+
+1418565082 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\taiwan.d
+	<time/chrono/GregorianBased.d>
+
+1418565112 source:d:\dinrus\dev\dinrus\tango\wdir\time\chrono\thaibuddhist.d
+	<time/chrono/GregorianBased.d>
+
+1422648893 source:d:\dinrus\dev\dinrus\tango\wdir\time\clock.d
+	<time/Time.d>
+	<dinrus.d>
+
+1482086672 source:d:\dinrus\dev\dinrus\tango\wdir\time\iso8601.d
+	<time/Time.d>
+	<time/chrono/Gregorian.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\wdir\time\stopwatch.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\wdir\time\time.d
+	<stdrus.d>
+	<io/Stdout.d>
+	<time/Clock.d>
+	<time/chrono/Gregorian.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\wdir\time\wallclock.d
+	<time/Time.d>
+	<time/Clock.d>
+	<sys/Common.d>
+
+1482085687 source:d:\dinrus\dev\dinrus\tango\wdir\util\argparser.d
+	<exception.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\aes.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\blowfish.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\chacha.d
+	<util/cipher/Cipher.d>
+
+1482228911 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\cipher.d
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\rc4.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\rc6.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\salsa20.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\tea.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\wdir\util\cipher\xtea.d
+	<util/cipher/Cipher.d>
+
+1474796909 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\arraybag.d
+	<exception.d>
+	<util/collection/model/GuardIterator.d>
+	<io/Console.d>
+
+1482085990 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\arrayseq.d
+	<io/Console.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\circularseq.d
+	<io/Console.d>
+
+1482217318 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\hashmap.d
+	<exception.d>
+	<io/Console.d>
+
+1482086672 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\hashset.d
+	<exception.d>
+	<io/Console.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482227691 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\abstractiterator.d
+	<exception.d>
+
+1474797193 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\bagcollection.d
+	<util/collection/impl/Collection.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\cell.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\clcell.d
+	<util/collection/impl/Cell.d>
+
+1482085360 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\collection.d
+	<exception.d>
+
+1511380157 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\llcell.d
+	<util/collection/impl/Cell.d>
+	<util/collection/model/Comparator.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\llpair.d
+	<util/collection/impl/LLCell.d>
+	<util/collection/model/Iterator.d>
+
+1471022196 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\mapcollection.d
+	<exception.d>
+	<util/collection/impl/Collection.d>
+
+1511380220 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\rbcell.d
+	<util/collection/impl/Cell.d>
+
+1482085990 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\rbpair.d
+	<util/collection/impl/RBCell.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\seqcollection.d
+	<util/collection/impl/Collection.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\impl\setcollection.d
+	<util/collection/impl/Collection.d>
+
+1482227383 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\iterator\arrayiterator.d
+	<exception.d>
+	<util/collection/model/GuardIterator.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\iterator\filteringiterator.d
+	<exception.d>
+	<util/collection/model/Iterator.d>
+
+1424338145 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\iterator\interleavingiterator.d
+	<exception.d>
+	<util/collection/model/Iterator.d>
+
+1482217318 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\linkmap.d
+	<exception.d>
+
+1482084899 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\linkseq.d
+	<io/Console.d>
+
+1474796909 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\bag.d
+
+1474797058 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\bagview.d
+	<util/collection/model/View.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\comparator.d
+
+1482085360 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\dispenser.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\guarditerator.d
+	<util/collection/model/Iterator.d>
+
+1482089777 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\hashparams.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\iterator.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\map.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\mapview.d
+
+1474796642 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\seq.d
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\seqview.d
+	<util/collection/model/View.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\set.d
+
+1474796642 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\setview.d
+	<util/collection/model/View.d>
+
+1511380409 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\sortable.d
+
+1511380434 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\sortedkeys.d
+
+1511380458 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\sortedvalues.d
+
+1474796756 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\model\view.d
+	<util/collection/model/Dispenser.d>
+	<util/collection/model/GuardIterator.d>
+
+1511380491 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\treebag.d
+	<io/Console.d>
+
+1511380519 source:d:\dinrus\dev\dinrus\tango\wdir\util\collection\treemap.d
+	<exception.d>
+	<io/Console.d>
+
+1482228673 source:d:\dinrus\dev\dinrus\tango\wdir\util\compress\bzipstream.d
+	<lib/bzlib.d>
+
+1482228200 source:d:\dinrus\dev\dinrus\tango\wdir\util\compress\zip.d
+	<util/PathUtil.d>
+
+1482232103 source:d:\dinrus\dev\dinrus\tango\wdir\util\compress\zlibstream.d
+	<lib/zlib.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\circularlist.d
+	<util/container/Clink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\clink.d
+
+1482086556 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\container.d
+	<cidrus.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\hashmap.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\hashset.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\linkedlist.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482084899 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\model\icontainer.d
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\bitset.d
+	<std/intrinsic.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\cachemap.d
+	<cidrus.d>
+	<util/container/HashMap.d>
+	<util/container/Container.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\hashfile.d
+	<io/Path.d>
+	<io/Stdout.d>
+	<text/convert/Integer.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\heap.d
+	<exception.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\stack.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\stackmap.d
+	<cidrus.d>
+	<util/container/HashMap.d>
+	<util/container/Container.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1424110135 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\more\vector.d
+	<io/Stdout.d>
+
+1482084900 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\redblack.d
+	<util/container/model/IContainer.d>
+
+1482085991 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\slink.d
+	<util/container/model/IContainer.d>
+
+1482232103 source:d:\dinrus\dev\dinrus\tango\wdir\util\container\sortedmap.d
+	<util/container/Container.d>
+	<util/container/RedBlack.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+	<math/random/Kiss.d>
+
+1482089579 source:d:\dinrus\dev\dinrus\tango\wdir\util\convert.d
+	<exception.d>
+	<core/Traits.d>
+	<math/Math.d>
+	<text/convert/Utf.d>
+	<text/convert/Float.d>
+	<text/convert/Integer.d>
+	<text/Ascii.d>
+
+1474674496 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\crc32.d
+	<util/digest/Digest.d>
+
+1482085688 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\digest.d
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\md2.d
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\md4.d
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228912 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\md5.d
+	<util/digest/MerkleDamgard.d>
+
+1424338124 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\merkledamgard.d
+	<stdrus.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\ripemd128.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\ripemd160.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\ripemd256.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\ripemd320.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1421647844 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\sha0.d
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\sha01.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228913 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\sha1.d
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\sha256.d
+	<stdrus.d>
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\sha512.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228964 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\tiger.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228964 source:d:\dinrus\dev\dinrus\tango\wdir\util\digest\whirlpool.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\encode\base16.d
+
+1482085688 source:d:\dinrus\dev\dinrus\tango\wdir\util\encode\base32.d
+
+1482217319 source:d:\dinrus\dev\dinrus\tango\wdir\util\encode\base64.d
+	<scrapple/util/Test.d>
+	<io/device/File.d>
+	<time/StopWatch.d>
+	<io/Stdout.d>
+
+1418411103 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\appendconsole.d
+	<io/Console.d>
+	<util/log/Log.d>
+
+1424058823 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\appendfile.d
+	<util/log/Log.d>
+	<io/device/File.d>
+	<io/stream/Buffered.d>
+	<io/model.d>
+
+1424063787 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\appendfiles.d
+	<time/Time.d>
+	<io/model.d>
+
+1421998841 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\appendmail.d
+	<util/log/Log.d>
+	<io/stream/Buffered.d>
+
+1424058823 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\appendsocket.d
+	<util/log/Log.d>
+	<io/Console.d>
+	<io/stream/Buffered.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\config.d
+
+1424339419 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\configprops.d
+	<util/log/Log.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\layoutchainsaw.d
+	<thread.d>
+	<util/log/Log.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\layoutdata.d
+	<text/Util.d>
+	<util/log/Log.d>
+
+1482217319 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\log.d
+	<util/log/Log.d>
+	<sys/Common.d>
+	<time/Clock.d>
+	<exception.d>
+	<io/model.d>
+	<text/convert/Format.d>
+	<util/log/model/ILogger.d>
+	<std/stdarg.d>
+	<util/log/Log.d>
+	<io/Console.d>
+
+1421998695 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\model\ilogger.d
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\log\trace.d
+	<io/Console.d>
+	<io/model.d>
+	<text/convert/Layout.d>
+
+1418410096 source:d:\dinrus\dev\dinrus\tango\wdir\util\minmax.d
+
+1482221602 source:d:\dinrus\dev\dinrus\tango\wdir\util\pathutil.d
+	<exception.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\uuid\namespacegenv3.d
+	<util/uuid/Uuid.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\uuid\namespacegenv5.d
+	<util/uuid/Uuid.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\wdir\util\uuid\randomgen.d
+	<util/uuid/RandomGen.d>
+	<util/uuid/Uuid.d>
+	<math/random/Twister.d>
+
+1482086014 source:d:\dinrus\dev\dinrus\tango\wdir\util\uuid\uuid.d
+	<exception.d>
+	<math/random/Kiss.d>
+
+1482085078 source:d:\dinrus\dev\dinrus\tango\tango\src\core\array.d
+	<core/Traits.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\core\atomic.d
+	<core/Traits.d>
+	<ldc/intrinsics.d>
+
+1482091027 source:d:\dinrus\dev\dinrus\tango\tango\src\core\bitarray.d
+	<core/BitManip.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\core\bitmanip.d
+	<core/BitManip.d>
+	<core/BitManip.d>
+	<ldc/bitmanip.d>
+	<std/intrinsic.d>
+
+1421660489 source:d:\dinrus\dev\dinrus\tango\tango\src\core\byteswap.d
+	<stdrus.d>
+
+1482091628 source:d:\dinrus\dev\dinrus\tango\tango\src\core\cpuid.d
+
+1482221597 source:d:\dinrus\dev\dinrus\tango\tango\src\core\runtimetraits.d
+
+1424058822 source:d:\dinrus\dev\dinrus\tango\tango\src\core\signal.d
+	<core/Array.d>
+
+1482085078 source:d:\dinrus\dev\dinrus\tango\tango\src\core\threadpool.d
+	<cidrus.d>
+	<util/log/Trace.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\core\traits.d
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\core\tuple.d
+
+1482085078 source:d:\dinrus\dev\dinrus\tango\tango\src\core\vararg.d
+	<std/stdarg.d>
+	<ldc/vararg.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\core\variant.d
+	<core/Traits.d>
+	<core/Tuple.d>
+	<core/RuntimeTraits.d>
+	<core/Vararg.d>
+
+1482222219 source:d:\dinrus\dev\dinrus\tango\tango\src\core\version.d
+
+1421919216 source:d:\dinrus\dev\dinrus\tango\tango\src\core\weakref.d
+	<gc.d>
+	<gc.d>
+
+1511386057 source:d:\dinrus\dev\dinrus\tango\tango\src\io\buffer.d
+	<io/model.d>
+
+1474668046 source:d:\dinrus\dev\dinrus\tango\tango\src\io\console.d
+	<rt/console.d>
+	<rt/core/stdc/posix/unistd.d>
+
+1424293861 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\array.d
+	<exception.d>
+	<io/device/Conduit.d>
+	<io/Stdout.d>
+
+1424293861 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\bitbucket.d
+	<io/device/Conduit.d>
+
+1425554694 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\conduit.d
+	<io/model.d>
+
+1469697029 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\device.d
+	<io/device/Conduit.d>
+
+1482222761 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\file.d
+	<text/convert/Utf.d>
+	<rt/core/stringz/posix/unistd.d>
+	<io/Stdout.d>
+
+1482085933 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\filemap.d
+	<sys/Common.d>
+	<rt/core/stdc/posix/sys/mman.d>
+	<io/Path.d>
+
+1474668303 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\serialport.d
+
+1474668512 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\tempfile.d
+	<io/device/File.d>
+
+1482089865 source:d:\dinrus\dev\dinrus\tango\tango\src\io\device\threadpipe.d
+	<io/device/Conduit.d>
+	<thread.d>
+
+1482085006 source:d:\dinrus\dev\dinrus\tango\tango\src\io\file.d
+	<io/Stdout.d>
+
+1482085006 source:d:\dinrus\dev\dinrus\tango\tango\src\io\filepath.d
+	<io/Path.d>
+	<io/model.d>
+	<cidrus.d>
+	<io/Console.d>
+
+1482083423 source:d:\dinrus\dev\dinrus\tango\tango\src\io\filescan.d
+	<io/FilePath.d>
+	<exception.d>
+	<io/Stdout.d>
+
+1511379748 source:d:\dinrus\dev\dinrus\tango\tango\src\io\filesystem.d
+	<sys/Common.d>
+	<io/FilePath.d>
+	<exception.d>
+	<cidrus.d>
+	<io/device/File.d>
+	<io/Stdout.d>
+
+1511385722 source:d:\dinrus\dev\dinrus\tango\tango\src\io\model.d
+
+1482221597 source:d:\dinrus\dev\dinrus\tango\tango\src\io\path.d
+	<sys/Common.d>
+	<rt/core/stdc/stdio.d>
+	<cidrus.d>
+	<rt/core/stdc/posix/utime.d>
+	<rt/core/stdc/posix/dirent.d>
+	<io/Stdout.d>
+
+1425326220 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\allocator.d
+	<io/protocol/model.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\endianprotocol.d
+	<stdrus.d>
+	<io/model.d>
+	<io/protocol/NativeProtocol.d>
+	<io/device/Array.d>
+
+1482217314 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\model.d
+	<io/model.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\nativeprotocol.d
+	<io/Buffer.d>
+	<io/protocol/model.d>
+	<io/Buffer.d>
+	<io/protocol/Writer.d>
+	<io/protocol/Reader.d>
+	<io/protocol/NativeProtocol.d>
+
+1421385484 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\pickleprotocol.d
+	<io/protocol/NativeProtocol.d>
+	<io/protocol/EndianProtocol.d>
+	<io/device/Array.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\reader.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\io\protocol\writer.d
+	<io/Buffer.d>
+	<io/model.d>
+	<io/protocol/model.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\abstractselector.d
+	<io/selector/SelectorException.d>
+	<io/selector/model.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<io/selector/model.d>
+	<net/device/Socket.d>
+	<io/Stdout.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\epollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<sys/Common.d>
+	<sys/linux/linux.d>
+	<cidrus.d>
+	<io/Stdout.d>
+	<io/selector/EpollSelector.d>
+	<net/device/Socket.d>
+	<io/Stdout.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\model.d
+	<time/Time.d>
+	<io/model.d>
+	<io/selector/model.d>
+	<io/Stdout.d>
+
+1482085933 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\pollselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<sys/linux/linux.d>
+	<io/Stdout.d>
+	<io/selector/PollSelector.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\selector.d
+	<io/selector/EpollSelector.d>
+	<io/selector/PollSelector.d>
+	<io/selector/SelectSelector.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\selectorexception.d
+	<exception.d>
+
+1511388799 source:d:\dinrus\dev\dinrus\tango\tango\src\io\selector\selectselector.d
+	<io/model.d>
+	<io/selector/model.d>
+	<io/selector/AbstractSelector.d>
+	<io/selector/SelectorException.d>
+	<sys/Common.d>
+	<cidrus.d>
+	<io/Stdout.d>
+	<text/convert/Integer.d>
+	<thread.d>
+	<core/BitArray.d>
+	<io/selector/SelectSelector.d>
+	<core/BitManip.d>
+
+1471120635 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stdout.d
+	<text/locale/Locale.d>
+	<io/Console.d>
+	<io/stream/Format.d>
+	<text/convert/Layout.d>
+
+1453180422 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\buffered.d
+	<io/device/Conduit.d>
+
+1482228670 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\bzip.d
+	<lib/bzlib.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\data.d
+	<core/ByteSwap.d>
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/device/Array.d>
+	<io/device/Array.d>
+
+1474698049 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\datafile.d
+	<io/device/File.d>
+	<io/stream/Data.d>
+	<io/Stdout.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\delimiters.d
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+
+1474698049 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\digester.d
+	<io/device/Conduit.d>
+	<util/digest/Digest.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+	<io/stream/FileStream.d>
+
+1474698287 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\endian.d
+	<core/ByteSwap.d>
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/device/Array.d>
+
+1482086925 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\format.d
+	<io/device/Conduit.d>
+	<text/convert/Layout.d>
+	<text/locale/Locale.d>
+	<io/device/Array.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\greedy.d
+	<io/device/Conduit.d>
+
+1482084100 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\iterator.d
+	<io/stream/Buffered.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\lines.d
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+	<io/Console.d>
+	<io/device/Array.d>
+
+1482084732 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\map.d
+	<io/device/Conduit.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1424339557 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\patterns.d
+	<text/Regex.d>
+	<io/stream/Iterator.d>
+	<io/device/Array.d>
+
+1424339583 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\quotes.d
+	<io/stream/Iterator.d>
+	<io/Stdout.d>
+	<text/Util.d>
+	<io/device/Array.d>
+
+1474697805 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\snoop.d
+	<text/convert/Format.d>
+
+1486197520 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\text.d
+	<io/stream/Lines.d>
+	<io/stream/Format.d>
+	<io/stream/Buffered.d>
+	<io/model.d>
+
+1486197520 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\textfile.d
+	<io/device/File.d>
+	<io/stream/Text.d>
+	<io/Console.d>
+
+1482083984 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\typed.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<io/Stdout.d>
+	<io/stream/Utf.d>
+	<io/device/Array.d>
+
+1474697534 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\utf.d
+	<io/device/Conduit.d>
+	<io/stream/Buffered.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\io\stream\zlib.d
+	<lib/zlib.d>
+
+1482085007 source:d:\dinrus\dev\dinrus\tango\tango\src\io\unicodefile.d
+	<io/device/File.d>
+	<text/convert/UnicodeBom.d>
+	<io/Stdout.d>
+
+1482086642 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\filefolder.d
+	<io/device/File.d>
+	<exception.d>
+	<io/vfs/model.d>
+	<io/model.d>
+	<io/Stdout.d>
+	<io/device/Array.d>
+
+1482085727 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\ftpfolder.d
+	<net/ftp/FtpClient.d>
+	<io/vfs/model.d>
+	<io/vfs/FileFolder.d>
+	<io/device/Conduit.d>
+	<text/Util.d>
+	<time/Time.d>
+
+1482221598 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\linkedfolder.d
+	<io/vfs/model.d>
+	<exception.d>
+	<io/vfs/VirtualFolder.d>
+	<io/Stdout.d>
+	<io/vfs/FileFolder.d>
+
+1482085728 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\model.d
+	<io/model.d>
+
+1482221598 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\virtualfolder.d
+	<exception.d>
+	<io/model.d>
+	<io/vfs/model.d>
+	<io/Stdout.d>
+	<io/vfs/FileFolder.d>
+
+1482083424 source:d:\dinrus\dev\dinrus\tango\tango\src\io\vfs\zipfolder.d
+
+1421915995 source:d:\dinrus\dev\dinrus\tango\tango\src\lib\bzlib.d
+
+1482229647 source:d:\dinrus\dev\dinrus\tango\tango\src\lib\openssl.d
+
+1482228368 source:d:\dinrus\dev\dinrus\tango\tango\src\lib\zlib.d
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\bessel.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1421998838 source:d:\dinrus\dev\dinrus\tango\tango\src\math\bigint.d
+	<math/internal/BiguintCore.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\math\bracket.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482217315 source:d:\dinrus\dev\dinrus\tango\tango\src\math\elliptic.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\errorfunction.d
+	<math/Math.d>
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\gammafunction.d
+	<math/Math.d>
+	<math/IEEE.d>
+	<math/ErrorFunction.d>
+	<cidrus.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\ieee.d
+	<cidrus.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\tango\src\math\internal\bignumnoasm.d
+
+1482087012 source:d:\dinrus\dev\dinrus\tango\tango\src\math\internal\bignumx86.d
+	<rt/core/stdc/stdio.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\internal\biguintcore.d
+	<math/internal/BignumNoAsm.d>
+	<core/Cpuid.d>
+	<rt/core/stdc/stdio.d>
+
+1482091517 source:d:\dinrus\dev\dinrus\tango\tango\src\math\internal\cache.d
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\math.d
+	<math/IEEE.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\probability.d
+	<math/ErrorFunction.d>
+	<math/GammaFunction.d>
+	<math/Math.d>
+	<math/IEEE.d>
+
+1420478938 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\arraysource.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\cmwc.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\kiss.d
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\kisscmwc.d
+
+1421645730 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\sync.d
+	<sync.d>
+
+1424339418 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\twister.d
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\engines\urandom.d
+	<sync.d>
+	<io/device/File.d>
+
+1482085079 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\expsource.d
+	<math/Math.d>
+	<math/random/Ziggurat.d>
+	<core/Traits.d>
+
+1482222973 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\kiss.d
+	<base.d>
+	<rt/core/stdc/posix/sys/time.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\normalsource.d
+	<math/Math.d>
+	<math/ErrorFunction.d>
+	<math/random/Ziggurat.d>
+	<core/Traits.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\random.d
+	<math/random/engines/URandom.d>
+	<math/random/engines/KissCmwc.d>
+	<math/random/engines/ArraySource.d>
+	<math/random/engines/Sync.d>
+	<math/random/engines/Twister.d>
+	<math/random/NormalSource.d>
+	<math/random/ExpSource.d>
+	<math/Math.d>
+	<core/Traits.d>
+	<math/random/engines/KISS.d>
+	<math/random/engines/CMWC.d>
+	<rt/core/stdc/stdio.d>
+	<io/Stdout.d>
+
+1482223142 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\twister.d
+	<rt/core/stdc/posix/sys/time.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\math\random\ziggurat.d
+	<math/Bracket.d>
+	<math/Math.d>
+	<math/ErrorFunction.d>
+	<core/Traits.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\net\datagramconduit.d
+	<io/device/Conduit.d>
+	<io/Console.d>
+	<net/InternetAddress.d>
+
+1482222313 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\berkeley.d
+	<sys/Common.d>
+	<exception.d>
+	<stringz.d>
+	<sys/WinConsts.d>
+	<sys/WinStructs.d>
+	<core/BitManip.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\datagram.d
+	<net/device/Socket.d>
+	<io/Console.d>
+	<net/InternetAddress.d>
+
+1421913613 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\localsocket.d
+	<net/device/Socket.d>
+	<stdrus.d>
+	<io/Stdout.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\multicast.d
+	<net/InternetAddress.d>
+	<net/device/Datagram.d>
+	<io/Console.d>
+
+1482217316 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\socket.d
+	<sys/Common.d>
+	<io/device/Conduit.d>
+	<net/device/Berkeley.d>
+
+1424058822 source:d:\dinrus\dev\dinrus\tango\tango\src\net\device\sslsocket.d
+	<net/PKI.d>
+	<net/device/Socket.d>
+	<lib/OpenSSL.d>
+	<tetra/util/Test.d>
+	<io/Stdout.d>
+	<io/device/File.d>
+	<io/FilePath.d>
+	<thread.d>
+	<stringz.d>
+
+1482232100 source:d:\dinrus\dev\dinrus\tango\tango\src\net\ftp\ftpclient.d
+	<net/ftp/Telnet.d>
+	<text/Util.d>
+	<time/Clock.d>
+	<text/Regex.d>
+	<time/chrono/Gregorian.d>
+	<core/Array.d>
+	<net/device/Socket.d>
+	<io/device/Conduit.d>
+	<io/device/Array.d>
+	<io/device/File.d>
+	<text/Ascii.d>
+	<text/convert/TimeStamp.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\net\ftp\telnet.d
+	<exception.d>
+	<io/stream/Lines.d>
+	<net/device/Socket.d>
+
+1421998692 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\chunkstream.d
+	<io/stream/Lines.d>
+	<io/Console.d>
+	<io/device/Array.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpclient.d
+	<time/Time.d>
+	<io/device/Array.d>
+	<io/stream/Lines.d>
+	<io/stream/Buffered.d>
+	<io/Stdout.d>
+
+1482084964 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpconst.d
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpcookies.d
+	<cidrus.d>
+	<io/device/Array.d>
+	<io/stream/Iterator.d>
+	<net/http/HttpHeaders.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpget.d
+	<io/Console.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpheaders.d
+	<time/Time.d>
+	<io/stream/Lines.d>
+	<io/stream/Buffered.d>
+	<net/http/HttpConst.d>
+	<net/http/HttpTokens.d>
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpparams.d
+	<time/Time.d>
+	<io/stream/Buffered.d>
+	<net/http/HttpTokens.d>
+	<io/stream/Delimiters.d>
+	<net/http/model/HttpParamsView.d>
+
+1482085320 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httppost.d
+	<net/Uri.d>
+	<io/stream/Buffered.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httpstack.d
+	<exception.d>
+
+1482085934 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httptokens.d
+	<time/Time.d>
+	<io/device/Array.d>
+	<io/stream/Buffered.d>
+	<text/convert/TimeStamp.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\httptriplet.d
+
+1424338322 source:d:\dinrus\dev\dinrus\tango\tango\src\net\http\model\httpparamsview.d
+	<time/Time.d>
+
+1421908276 source:d:\dinrus\dev\dinrus\tango\tango\src\net\internetaddress.d
+	<net/device/Berkeley.d>
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\tango\src\net\model\uriview.d
+
+1482228910 source:d:\dinrus\dev\dinrus\tango\tango\src\net\pki.d
+	<time/Time.d>
+	<stringz.d>
+	<lib/OpenSSL.d>
+	<util/Test.d>
+	<io/Stdout.d>
+
+1482222763 source:d:\dinrus\dev\dinrus\tango\tango\src\net\socket.d
+	<sys/WinConsts.d>
+	<sys/WinStructs.d>
+	<sys/WinFuncs.d>
+	<cidrus.d>
+	<sys/WinConsts.d>
+	<core/BitManip.d>
+
+1424338410 source:d:\dinrus\dev\dinrus\tango\tango\src\net\socketconduit.d
+	<io/device/Conduit.d>
+	<net/Socket.d>
+
+1421998839 source:d:\dinrus\dev\dinrus\tango\tango\src\net\socketlistener.d
+	<thread.d>
+	<io/model.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\tango\src\net\uri.d
+	<net/model/UriView.d>
+	<exception.d>
+	<util/log/Trace.d>
+
+1482221599 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\common.d
+	<exception.d>
+	<sys/linux/linux.d>
+	<sys/darwin/darwin.d>
+	<sys/freebsd/freebsd.d>
+	<sys/solaris/solaris.d>
+	<cidrus.d>
+	<cidrus.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\consts\errno.d
+	<sys/linux/consts/errno.d>
+	<sys/freebsd/consts/errno.d>
+	<sys/darwin/consts/errno.d>
+	<sys/solaris/consts/errno.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\consts\fcntl.d
+	<sys/linux/consts/fcntl.d>
+	<sys/freebsd/consts/fcntl.d>
+	<sys/darwin/consts/fcntl.d>
+	<sys/solaris/consts/fcntl.d>
+
+1421656233 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\consts\socket.d
+	<sys/linux/consts/socket.d>
+	<sys/freebsd/consts/socket.d>
+	<sys/darwin/consts/socket.d>
+	<sys/solaris/consts/socket.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\consts\sysctl.d
+	<sys/linux/consts/sysctl.d>
+	<sys/freebsd/consts/sysctl.d>
+	<sys/darwin/consts/sysctl.d>
+	<sys/solaris/consts/sysctl.d>
+
+1419543058 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\consts\unistd.d
+	<sys/linux/consts/unistd.d>
+	<sys/freebsd/consts/unistd.d>
+	<sys/darwin/consts/unistd.d>
+	<sys/solaris/consts/unistd.d>
+
+1482084733 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\environment.d
+	<sys/Common.d>
+	<exception.d>
+	<io/model.d>
+	<text/convert/Utf.d>
+	<rt/core/stdc/posix/stdlib.d>
+	<cidrus.d>
+	<io/Console.d>
+
+1425405674 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\homefolder.d
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\pipe.d
+	<sys/Common.d>
+	<io/device/Device.d>
+	<exception.d>
+	<rt/core/stdc/posix/unistd.d>
+	<io/Stdout.d>
+
+1482217316 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\process.d
+	<io/model.d>
+	<io/Console.d>
+	<sys/Common.d>
+	<sys/Pipe.d>
+	<exception.d>
+	<text/Util.d>
+	<cidrus.d>
+	<stringz.d>
+	<cidrus.d>
+	<rt/core/stdc/posix/fcntl.d>
+	<rt/core/stdc/posix/unistd.d>
+	<rt/core/stdc/posix/sys/wait.d>
+	<io/Stdout.d>
+
+1424295494 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\sharedlib.d
+	<rt/core/stdc/posix/dlfcn.d>
+	<util/log/Trace.d>
+
+1482221641 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\codepage.d
+	<sys/Common.d>
+	<exception.d>
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\consts\errno.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\consts\fcntl.d
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\consts\socket.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\consts\sysctl.d
+
+1418410092 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\consts\unistd.d
+
+1421913614 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\iunknown.d
+
+1419632195 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\macros.d
+	<cidrus.d>
+
+1482221599 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\process.d
+	<cidrus.d>
+
+1482222022 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\specialpath.d
+	<text/convert/Utf.d>
+	<sys/Common.d>
+	<stringz.d>
+
+1482221515 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\types.d
+
+1421683330 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\usergdi.d
+
+1421686681 source:d:\dinrus\dev\dinrus\tango\tango\src\sys\win32\wsasock.d
+	<sys/Common.d>
+
+1482086671 source:d:\dinrus\dev\dinrus\tango\tango\src\text\arguments.d
+	<text/Util.d>
+	<util/container/more/Stack.d>
+	<io/Stdout.d>
+
+1482085729 source:d:\dinrus\dev\dinrus\tango\tango\src\text\ascii.d
+
+1474699552 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\datetime.d
+	<exception.d>
+	<time/WallClock.d>
+	<text/convert/Utf.d>
+	<text/convert/Extentions.d>
+	<sys/Common.d>
+	<stringz.d>
+	<rt/core/stdc/posix/langinfo.d>
+	<io/Stdout.d>
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\float.d
+	<text/convert/Float.d>
+	<exception.d>
+	<io/Console.d>
+	<io/Console.d>
+
+1379499437 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\format.d
+	<text/convert/Layout.d>
+
+1482085080 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\integer.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\layout.d
+	<exception.d>
+	<text/convert/Utf.d>
+	<core/Variant.d>
+	<text/convert/Extentions.d>
+	<time/Time.d>
+	<text/convert/DateTime.d>
+	<tpl/args.d>
+	<tpl/args.d>
+	<io/Console.d>
+	<time/WallClock.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\sprint.d
+	<text/convert/Layout.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\timestamp.d
+	<text/convert/TimeStamp.d>
+	<time/Time.d>
+	<exception.d>
+	<text/Util.d>
+	<time/chrono/Gregorian.d>
+
+1424340090 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\unicodebom.d
+	<stdrus.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\tango\src\text\convert\utf.d
+	<io/Console.d>
+
+1482231768 source:d:\dinrus\dev\dinrus\tango\tango\src\text\json\json.d
+	<tpl/args.d>
+	<io/model.d>
+	<text/json/JsonEscape.d>
+	<text/json/JsonParser.d>
+	<text/convert/Float.d>
+	<io/Stdout.d>
+	<io/device/File.d>
+	<time/StopWatch.d>
+
+1482085686 source:d:\dinrus\dev\dinrus\tango\tango\src\text\json\jsonescape.d
+	<text/json/JsonParser.d>
+	<text/Util.d>
+	<text/convert/Utf.d>
+	<io/Stdout.d>
+
+1482232013 source:d:\dinrus\dev\dinrus\tango\tango\src\text\json\jsonparser.d
+	<util/container/more/Stack.d>
+
+1471032707 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\collation.d
+	<text/locale/Core.d>
+	<text/locale/Posix.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\convert.d
+	<time/WallClock.d>
+	<exception.d>
+	<text/locale/Core.d>
+	<time/chrono/Calendar.d>
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\core.d
+	<exception.d>
+	<text/locale/Data.d>
+	<time/Time.d>
+	<text/locale/Posix.d>
+
+1482084032 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\data.d
+	<exception.d>
+
+1471025548 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\locale.d
+	<time/Time.d>
+	<text/convert/Layout.d>
+	<io/Console.d>
+	<time/WallClock.d>
+
+1482223296 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\parse.d
+	<time/WallClock.d>
+	<exception.d>
+	<text/locale/Core.d>
+	<time/chrono/Calendar.d>
+
+1471022467 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\posix.d
+	<exception.d>
+	<text/locale/Data.d>
+	<rt/core/stdc/ctype.d>
+	<rt/core/stdc/posix/stdlib.d>
+	<cidrus.d>
+	<stringz.d>
+
+1482221516 source:d:\dinrus\dev\dinrus\tango\tango\src\text\locale\win32.d
+
+1482232101 source:d:\dinrus\dev\dinrus\tango\tango\src\text\regex.d
+	<io/Stdout.d>
+	<math/Math.d>
+	<text/convert/Utf.d>
+	<text/convert/Format.d>
+	<core/Array.d>
+	<text/Util.d>
+	<io/Stdout.d>
+	<text/Regex.d>
+	<io/Stdout.d>
+	<text/Regex.d>
+	<rt/core/stdc/stdio.d>
+
+1482085146 source:d:\dinrus\dev\dinrus\tango\tango\src\text\search.d
+	<text/Util.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1511379704 source:d:\dinrus\dev\dinrus\tango\tango\src\text\text.d
+	<text/Search.d>
+	<io/model.d>
+	<text/convert/Layout.d>
+	<text/Util.d>
+	<text/convert/Utf.d>
+	<text/convert/Float.d>
+	<io/device/Array.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\text\unicode.d
+	<text/UnicodeData.d>
+	<text/convert/Utf.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\text\unicodedata.d
+
+1482085935 source:d:\dinrus\dev\dinrus\tango\tango\src\text\util.d
+	<text/Util.d>
+
+1482085687 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\docentity.d
+	<text/Util.d>
+	<io/Console.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\docprinter.d
+	<io/model.d>
+	<text/xml/Document.d>
+	<text/xml/Document.d>
+	<util/log/Trace.d>
+
+1421841353 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\doctester.d
+	<exception.d>
+	<text/xml/Document.d>
+	<text/convert/Format.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\document.d
+	<text/xml/PullParser.d>
+	<io/Stdout.d>
+	<text/xml/DocPrinter.d>
+
+1482085081 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\pullparser.d
+
+1482089776 source:d:\dinrus\dev\dinrus\tango\tango\src\text\xml\saxparser.d
+	<io/model.d>
+	<text/xml/PullParser.d>
+	<org/xml/sax/EntityResolver.d>
+	<org/xml/sax/InputSource.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\calendar.d
+	<time/Time.d>
+	<exception.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\gregorian.d
+	<time/chrono/Calendar.d>
+	<exception.d>
+	<io/Stdout.d>
+
+1421840328 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\gregorianbased.d
+	<exception.d>
+	<time/Time.d>
+	<time/chrono/Gregorian.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\hebrew.d
+	<exception.d>
+	<time/chrono/Calendar.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\hijri.d
+	<time/chrono/Calendar.d>
+
+1418564902 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\japanese.d
+	<time/chrono/GregorianBased.d>
+
+1418565019 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\korean.d
+	<time/chrono/GregorianBased.d>
+
+1418565082 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\taiwan.d
+	<time/chrono/GregorianBased.d>
+
+1418565112 source:d:\dinrus\dev\dinrus\tango\tango\src\time\chrono\thaibuddhist.d
+	<time/chrono/GregorianBased.d>
+
+1422648893 source:d:\dinrus\dev\dinrus\tango\tango\src\time\clock.d
+	<time/Time.d>
+	<dinrus.d>
+
+1482086672 source:d:\dinrus\dev\dinrus\tango\tango\src\time\iso8601.d
+	<time/Time.d>
+	<time/chrono/Gregorian.d>
+
+1482217317 source:d:\dinrus\dev\dinrus\tango\tango\src\time\stopwatch.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\tango\src\time\time.d
+	<stdrus.d>
+	<io/Stdout.d>
+	<time/Clock.d>
+	<time/chrono/Gregorian.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\tango\src\time\wallclock.d
+	<time/Time.d>
+	<time/Clock.d>
+	<sys/Common.d>
+
+1482085687 source:d:\dinrus\dev\dinrus\tango\tango\src\util\argparser.d
+	<exception.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\aes.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\blowfish.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\chacha.d
+	<util/cipher/Cipher.d>
+
+1482228911 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\cipher.d
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\rc4.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\rc6.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\salsa20.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\tea.d
+	<util/cipher/Cipher.d>
+
+1482228962 source:d:\dinrus\dev\dinrus\tango\tango\src\util\cipher\xtea.d
+	<util/cipher/Cipher.d>
+
+1474796909 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\arraybag.d
+	<exception.d>
+	<util/collection/model/GuardIterator.d>
+	<io/Console.d>
+
+1482085990 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\arrayseq.d
+	<io/Console.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\circularseq.d
+	<io/Console.d>
+
+1482217318 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\hashmap.d
+	<exception.d>
+	<io/Console.d>
+
+1482086672 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\hashset.d
+	<exception.d>
+	<io/Console.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482227691 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\abstractiterator.d
+	<exception.d>
+
+1474797193 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\bagcollection.d
+	<util/collection/impl/Collection.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\cell.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\clcell.d
+	<util/collection/impl/Cell.d>
+
+1482085360 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\collection.d
+	<exception.d>
+
+1511380157 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\llcell.d
+	<util/collection/impl/Cell.d>
+	<util/collection/model/Comparator.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\llpair.d
+	<util/collection/impl/LLCell.d>
+	<util/collection/model/Iterator.d>
+
+1471022196 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\mapcollection.d
+	<exception.d>
+	<util/collection/impl/Collection.d>
+
+1511380220 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\rbcell.d
+	<util/collection/impl/Cell.d>
+
+1482085990 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\rbpair.d
+	<util/collection/impl/RBCell.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\seqcollection.d
+	<util/collection/impl/Collection.d>
+
+1421913615 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\impl\setcollection.d
+	<util/collection/impl/Collection.d>
+
+1482227383 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\iterator\arrayiterator.d
+	<exception.d>
+	<util/collection/model/GuardIterator.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\iterator\filteringiterator.d
+	<exception.d>
+	<util/collection/model/Iterator.d>
+
+1424338145 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\iterator\interleavingiterator.d
+	<exception.d>
+	<util/collection/model/Iterator.d>
+
+1482217318 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\linkmap.d
+	<exception.d>
+
+1482084899 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\linkseq.d
+	<io/Console.d>
+
+1474796909 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\bag.d
+
+1474797058 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\bagview.d
+	<util/collection/model/View.d>
+
+1482232102 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\comparator.d
+
+1482085360 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\dispenser.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\guarditerator.d
+	<util/collection/model/Iterator.d>
+
+1482089777 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\hashparams.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\iterator.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\map.d
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\mapview.d
+
+1474796642 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\seq.d
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\seqview.d
+	<util/collection/model/View.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\set.d
+
+1474796642 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\setview.d
+	<util/collection/model/View.d>
+
+1511380409 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\sortable.d
+
+1511380434 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\sortedkeys.d
+
+1511380458 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\sortedvalues.d
+
+1474796756 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\model\view.d
+	<util/collection/model/Dispenser.d>
+	<util/collection/model/GuardIterator.d>
+
+1511380491 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\treebag.d
+	<io/Console.d>
+
+1511380519 source:d:\dinrus\dev\dinrus\tango\tango\src\util\collection\treemap.d
+	<exception.d>
+	<io/Console.d>
+
+1482228673 source:d:\dinrus\dev\dinrus\tango\tango\src\util\compress\bzipstream.d
+	<lib/bzlib.d>
+
+1482228200 source:d:\dinrus\dev\dinrus\tango\tango\src\util\compress\zip.d
+	<util/PathUtil.d>
+
+1482232103 source:d:\dinrus\dev\dinrus\tango\tango\src\util\compress\zlibstream.d
+	<lib/zlib.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\circularlist.d
+	<util/container/Clink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\clink.d
+
+1482086556 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\container.d
+	<cidrus.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\hashmap.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\hashset.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1474796643 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\linkedlist.d
+	<util/container/Slink.d>
+	<util/container/Container.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+
+1482084899 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\model\icontainer.d
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\bitset.d
+	<std/intrinsic.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\cachemap.d
+	<cidrus.d>
+	<util/container/HashMap.d>
+	<util/container/Container.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\hashfile.d
+	<io/Path.d>
+	<io/Stdout.d>
+	<text/convert/Integer.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\heap.d
+	<exception.d>
+
+1421998840 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\stack.d
+	<exception.d>
+	<io/Stdout.d>
+
+1482085082 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\stackmap.d
+	<cidrus.d>
+	<util/container/HashMap.d>
+	<util/container/Container.d>
+	<io/Stdout.d>
+	<time/StopWatch.d>
+
+1424110135 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\more\vector.d
+	<io/Stdout.d>
+
+1482084900 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\redblack.d
+	<util/container/model/IContainer.d>
+
+1482085991 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\slink.d
+	<util/container/model/IContainer.d>
+
+1482232103 source:d:\dinrus\dev\dinrus\tango\tango\src\util\container\sortedmap.d
+	<util/container/Container.d>
+	<util/container/RedBlack.d>
+	<util/container/model/IContainer.d>
+	<io/Stdout.d>
+	<thread.d>
+	<time/StopWatch.d>
+	<math/random/Kiss.d>
+
+1482089579 source:d:\dinrus\dev\dinrus\tango\tango\src\util\convert.d
+	<exception.d>
+	<core/Traits.d>
+	<math/Math.d>
+	<text/convert/Utf.d>
+	<text/convert/Float.d>
+	<text/convert/Integer.d>
+	<text/Ascii.d>
+
+1474674496 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\crc32.d
+	<util/digest/Digest.d>
+
+1482085688 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\digest.d
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\md2.d
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\md4.d
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228912 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\md5.d
+	<util/digest/MerkleDamgard.d>
+
+1424338124 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\merkledamgard.d
+	<stdrus.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\ripemd128.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\ripemd160.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\ripemd256.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\ripemd320.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1421647844 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\sha0.d
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\sha01.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228913 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\sha1.d
+	<util/digest/Digest.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\sha256.d
+	<stdrus.d>
+	<util/digest/Digest.d>
+	<util/digest/MerkleDamgard.d>
+
+1482228963 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\sha512.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228964 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\tiger.d
+	<stdrus.d>
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1482228964 source:d:\dinrus\dev\dinrus\tango\tango\src\util\digest\whirlpool.d
+	<util/digest/MerkleDamgard.d>
+	<util/digest/Digest.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\encode\base16.d
+
+1482085688 source:d:\dinrus\dev\dinrus\tango\tango\src\util\encode\base32.d
+
+1482217319 source:d:\dinrus\dev\dinrus\tango\tango\src\util\encode\base64.d
+	<scrapple/util/Test.d>
+	<io/device/File.d>
+	<time/StopWatch.d>
+	<io/Stdout.d>
+
+1418411103 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\appendconsole.d
+	<io/Console.d>
+	<util/log/Log.d>
+
+1424058823 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\appendfile.d
+	<util/log/Log.d>
+	<io/device/File.d>
+	<io/stream/Buffered.d>
+	<io/model.d>
+
+1424063787 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\appendfiles.d
+	<time/Time.d>
+	<io/model.d>
+
+1421998841 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\appendmail.d
+	<util/log/Log.d>
+	<io/stream/Buffered.d>
+
+1424058823 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\appendsocket.d
+	<util/log/Log.d>
+	<io/Console.d>
+	<io/stream/Buffered.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\config.d
+
+1424339419 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\configprops.d
+	<util/log/Log.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\layoutchainsaw.d
+	<thread.d>
+	<util/log/Log.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\layoutdata.d
+	<text/Util.d>
+	<util/log/Log.d>
+
+1482217319 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\log.d
+	<util/log/Log.d>
+	<sys/Common.d>
+	<time/Clock.d>
+	<exception.d>
+	<io/model.d>
+	<text/convert/Format.d>
+	<util/log/model/ILogger.d>
+	<std/stdarg.d>
+	<util/log/Log.d>
+	<io/Console.d>
+
+1421998695 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\model\ilogger.d
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\log\trace.d
+	<io/Console.d>
+	<io/model.d>
+	<text/convert/Layout.d>
+
+1418410096 source:d:\dinrus\dev\dinrus\tango\tango\src\util\minmax.d
+
+1482221602 source:d:\dinrus\dev\dinrus\tango\tango\src\util\pathutil.d
+	<exception.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\uuid\namespacegenv3.d
+	<util/uuid/Uuid.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\uuid\namespacegenv5.d
+	<util/uuid/Uuid.d>
+
+1421913616 source:d:\dinrus\dev\dinrus\tango\tango\src\util\uuid\randomgen.d
+	<util/uuid/RandomGen.d>
+	<util/uuid/Uuid.d>
+	<math/random/Twister.d>
+
+1482086014 source:d:\dinrus\dev\dinrus\tango\tango\src\util\uuid\uuid.d
+	<exception.d>
+	<math/random/Kiss.d>
+
