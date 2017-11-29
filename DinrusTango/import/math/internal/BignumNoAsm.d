@@ -16,9 +16,9 @@
 module math.internal.BignumNoAsm;
 
 public:
-alias бцел БольшЦифра; // A Bignum is an array of BigDigits. 
-    
-    // Limits for when to switch between multИПlication algorithms.
+alias бцел БольшЦифра; // A Bignum is an array of BigDigits.
+
+// Limits for when to switch between multИПlication algorithms.
 enum : цел { KARATSUBALIMIT = 10 }; // Minimum value for which Karatsuba is worthwhile.
 enum : цел { KARATSUBASQUARELIMIT=12 }; // Minimum value for which square Karatsuba is worthwhile
 
@@ -57,9 +57,9 @@ enum : цел { KARATSUBASQUARELIMIT=12 }; // Minimum value for which square Kar
  */
 бцел многобайтУмножПрибавь(сим op)(бцел [] приёмник, бцел[] src, бцел множитель, бцел carry);
 
-/** 
+/**
    Sets result = result[0..left.length] + left * right
-   
+
    It is defined in this way to allow cache-efficient multИПlication.
    This function is equivalent to:
     ----

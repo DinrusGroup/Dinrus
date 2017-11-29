@@ -26,7 +26,7 @@ class КонтекстССЛ
     КонтекстССЛ настройВерификацию(цел флаги, SSLVerifyCallback ов);
     КонтекстССЛ сохрани(ХранилищеСертификатов сохрани) ;
     КонтекстССЛ путьКСертСА(ткст путь);
-	 SSL_CTX* исконный();
+    SSL_CTX* исконный();
 }
 
 
@@ -58,7 +58,7 @@ class ПубличныйКлюч
     package RSA *_evpKey = пусто;
     private ЧастныйКлюч _existingKey = пусто;
 
-    this (ткст publicPemData);	
+    this (ткст publicPemData);
     package this(ЧастныйКлюч ключ) ;
     ~this();
     ткст вФорматПЕМ();
@@ -73,7 +73,7 @@ class ЧастныйКлюч
     package EVP_PKEY *_evpKey = пусто;
 
     this (ткст privatePemData, ткст certPass = пусто);
-    this(цел биты);    
+    this(цел биты);
     ~this();
     override цел opEquals(Объект об);
     ткст вФорматПЕМ(ткст пароль = пусто);
@@ -114,11 +114,11 @@ class Сертификат
 
 version (Test)
 {
-      import io.Stdout;
+    import io.Stdout;
 
     auto t1 = ИнтервалВремени.нуль;
     auto t2 = ИнтервалВремени.изДней(365); // can't установи this up in delegate ..??
-	
+
     void main()
     {
         Test.Status _pkeyGenTest(inout ткст[] messages)
@@ -138,7 +138,7 @@ version (Test)
                     return Test.Status.Success;
                 }
             }
-                
+
             return Test.Status.Failure;
         }
 
@@ -194,7 +194,7 @@ version (Test)
             }
 
             return Test.Status.Failure;
-        }   
+        }
 
         Test.Status _rsaCrypto(inout ткст[] messages)
         {

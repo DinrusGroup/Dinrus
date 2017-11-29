@@ -14,7 +14,7 @@
   * convenience -- you can use the метод Ууид.поИмени if you already have an
   * appropriate дайджест.
   *
-  * Версия 5 UUIDs use SHA-1 as the хэш function. You may prefer в_ use 
+  * Версия 5 UUIDs use SHA-1 as the хэш function. You may prefer в_ use
   * version 3 UUIDs instead, which use MD5, if you require compatibility with
   * другой application.
   *
@@ -33,5 +33,5 @@ import util.digest.Sha1;
 /** Generates a UUID as described above. */
 Ууид новУуид(Ууид namespace, ткст имя)
 {
-        return Ууид.поИмени(namespace, имя, new Sha1, 5);
+    return Ууид.поИмени(namespace, имя, new Sha1, 5);
 }

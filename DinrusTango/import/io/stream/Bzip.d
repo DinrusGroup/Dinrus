@@ -1,8 +1,11 @@
 ﻿module io.stream.Bzip;
 
-private import exception : ВВИскл;
-private import io.device.Conduit : ФильтрВвода, ФильтрВывода;
-private import io.model : ИПотокВвода, ИПотокВывода, ИПровод;
+private import exception :
+ВВИскл;
+private import io.device.Conduit :
+ФильтрВвода, ФильтрВывода;
+private import io.model :
+ИПотокВвода, ИПотокВывода, ИПровод;
 
 
 

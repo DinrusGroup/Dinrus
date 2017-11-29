@@ -32,49 +32,50 @@ module lib.zlib;
 
 extern (C):
 
-const char* ZLIB_VERSION = "1.2.3";
-const uint  ZLIB_VERNUM  = 0x1230;
+    const char* ZLIB_VERSION = "1.2.3";
+    const uint  ZLIB_VERNUM  = 0x1230;
 
-/*
-     The 'zlib' compression library provides in-memory compression and
-  decompression functions, including integrity checks of the uncompressed
-  data.  This version of the library supports only one compression method
-  (deflation) but other algorithms will be added later and will have the same
-  stream interface.
+    /*
+         The 'zlib' compression library provides in-memory compression and
+      decompression functions, including integrity checks of the uncompressed
+      data.  This version of the library supports only one compression method
+      (deflation) but other algorithms will be added later and will have the same
+      stream interface.
 
-     Compression can be done in a single step if the buffers are large
-  enough (for example if an input file is mmap'ed), or can be done by
-  repeated calls of the compression function.  In the latter case, the
-  application must provide more input and/or используй the output
-  (providing more output space) before each call.
+         Compression can be done in a single step if the buffers are large
+      enough (for example if an input file is mmap'ed), or can be done by
+      repeated calls of the compression function.  In the latter case, the
+      application must provide more input and/or используй the output
+      (providing more output space) before each call.
 
-     The compressed data format used by default by the in-memory functions is
-  the zlib format, which is a zlib wrapper documented in RFC 1950, wrapped
-  around a deflate stream, which is itself documented in RFC 1951.
+         The compressed data format used by default by the in-memory functions is
+      the zlib format, which is a zlib wrapper documented in RFC 1950, wrapped
+      around a deflate stream, which is itself documented in RFC 1951.
 
-     The library also supports reading and writing files in gzip (.gz) format
-  with an interface similar to that of stdio using the functions that start
-  with "gz".  The gzip format is different from the zlib format.  gzip is a
-  gzip wrapper, documented in RFC 1952, wrapped around a deflate stream.
+         The library also supports reading and writing files in gzip (.gz) format
+      with an interface similar to that of stdio using the functions that start
+      with "gz".  The gzip format is different from the zlib format.  gzip is a
+      gzip wrapper, documented in RFC 1952, wrapped around a deflate stream.
 
-     This library can optionally read and write gzip streams in memory as well.
+         This library can optionally read and write gzip streams in memory as well.
 
-     The zlib format was designed to be compact and fast for use in memory
-  and on communications channels.  The gzip format was designed for single-
-  file compression on file systems, есть a larger header than zlib to maintain
-  directory information, and uses a different, slower check method than zlib.
+         The zlib format was designed to be compact and fast for use in memory
+      and on communications channels.  The gzip format was designed for single-
+      file compression on file systems, есть a larger header than zlib to maintain
+      directory information, and uses a different, slower check method than zlib.
 
-     The library does not install any signal handler. The decoder checks
-  the consistency of the compressed data, so the library should never
-  crash even in case of corrupted input.
-*/
+         The library does not install any signal handler. The decoder checks
+      the consistency of the compressed data, so the library should never
+      crash even in case of corrupted input.
+    */
 
-private
+    private
 {
 
     version( Posix )
     {
-        import rt.core.stdc.posix.sys.types : z_off_t = off_t;
+import rt.core.stdc.posix.sys.types :
+        z_off_t = off_t;
     }
     else
     {
@@ -181,7 +182,7 @@ alias gz_header* gz_headerp;
    a single step).
 */
 
-                        /* constants */
+/* constants */
 
 enum
 {
@@ -249,7 +250,7 @@ const Z_NULL = null;    /* for initializing zalloc, zfree, opaque */
 alias zlibVersion zlib_version;
 /* for compatibility with versions < 1.0.2 */
 
-                        /* basic functions */
+/* basic functions */
 
 char* zlibVersion();
 /* The application can compare zlibVersion and ZLIB_VERSION for consistency.
@@ -512,7 +513,7 @@ int inflateEnd(z_streamp strm);
    static string (which must not be deallocated).
 */
 
-                        /* Advanced functions */
+/* Advanced functions */
 
 /*
     The following functions are needed only in some special applications.
@@ -1041,7 +1042,7 @@ uLong zlibCompileFlags();
  */
 
 
-                        /* utility functions */
+/* utility functions */
 
 /*
      The following utility functions are implemented on top of the
@@ -1298,7 +1299,7 @@ void gzclearerr(gzFile file);
    file that is being written concurrently.
 */
 
-                        /* checksum functions */
+/* checksum functions */
 
 /*
      These functions are not related to compression but are exported
@@ -1357,7 +1358,7 @@ uLong crc32_combine(uLong crc1, uLong crc2, z_off_t len2);
 */
 
 
-                        /* various hacks, don't look :) */
+/* various hacks, don't look :) */
 
 /* deflateInit and inflateInit are macros to allow checking the zlib version
  * and the compiler's view of z_stream:
@@ -1404,11 +1405,11 @@ extern (D) int inflateInit(z_streamp  strm)
 }
 
 extern (D) int deflateInit2(z_streamp strm,
-                           int       level,
-                           int       method,
-                           int       окноБиты,
-                           int       memLevel,
-                           int       strategy)
+                            int       level,
+                            int       method,
+                            int       окноБиты,
+                            int       memLevel,
+                            int       strategy)
 {
     return deflateInit2_(strm,
                          level,

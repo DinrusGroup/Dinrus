@@ -1,8 +1,8 @@
 ﻿/*
  Файл: Обходчик.d
 
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+ Originally записано by Doug Lea и released преобр_в the public домен.
+ Thanks for the assistance и support of Sun Microsystems Labs, Agorics
  Inc, Loral, и everyone contributing, testing, и using this код.
 
  History:
@@ -21,9 +21,9 @@ module util.collection.model.Iterator;
 
 public interface Обходчик(V)
 {
-        public бул ещё();
+    public бул ещё();
 
-        public V получи();
+    public V получи();
 
-        цел opApply (цел delegate (inout V значение) дг);        
+    цел opApply (цел delegate (inout V значение) дг);
 }

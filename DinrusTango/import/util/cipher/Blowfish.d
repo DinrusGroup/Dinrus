@@ -200,11 +200,11 @@ class Blowfish : ШифрБлок
         ];
 
         static const бцел BLOCK_SIZE = 8,
-                          ROUNDS = 16,
-                          SBOX_SIZE = 256,
-                          PBOX_SIZE = 18,
-                          MAX_KEY_SIZE = 56, // 448 биты
-                          MIN_KEY_SIZE = 4; // 32 биты
+        ROUNDS = 16,
+        SBOX_SIZE = 256,
+        PBOX_SIZE = 18,
+        MAX_KEY_SIZE = 56, // 448 биты
+        MIN_KEY_SIZE = 4; // 32 биты
         бцел[18] P;
         бцел[256] S0, S1, S2, S3;
         ббайт[] workingKey;
@@ -242,8 +242,8 @@ class Blowfish : ШифрБлок
     private бцел F(бцел x)
     {
         return (((S0[(x >> 24)]
-                + S1[cast(ббайт)(x >> 16)])
-                ^ S2[cast(ббайт)(x >> 8)])
+                  + S1[cast(ббайт)(x >> 16)])
+                 ^ S2[cast(ббайт)(x >> 8)])
                 + S3[cast(ббайт)x]);
     }
 
@@ -253,7 +253,7 @@ class Blowfish : ШифрБлок
             не_годится(имя()~": Шифр not инициализован.");
 
         ббайт[] ввод = cast(ббайт[]) input_,
-                вывод = cast(ббайт[]) output_;
+        вывод = cast(ббайт[]) output_;
 
         if (ввод.length < BLOCK_SIZE)
             не_годится (имя()~": Ввод буфер too крат");
@@ -262,8 +262,8 @@ class Blowfish : ШифрБлок
             не_годится (имя()~": Вывод буфер too крат");
 
         бцел xl = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[0..4]),
-             xr = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[4..8]),
-             i = 0;
+                 xr = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[4..8]),
+                 i = 0;
 
         xl ^= P[i++];
         for (; i < ROUNDS;)
@@ -394,14 +394,14 @@ debug (UnitTest)
             t.обнови(БайтКонвертер.hexDecode(test_plaintexts[i]), буфер);
             результат = БайтКонвертер.hexEncode(буфер);
             assert(результат == test_ciphertexts[i],
-                    t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
+            t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
 
             // Decryption
             t.init(нет, ключ);
             t.обнови(БайтКонвертер.hexDecode(test_ciphertexts[i]), буфер);
             результат = БайтКонвертер.hexEncode(буфер);
             assert(результат == test_plaintexts[i],
-                    t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
+            t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
         }
     }
 }

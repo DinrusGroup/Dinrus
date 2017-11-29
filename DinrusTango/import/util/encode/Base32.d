@@ -169,14 +169,15 @@ debug (UnitTest)
             "JBSWY3DPFQQGQ33XEBQXEZJAPFXXKIDUN5SGC6J7",
         ];
 
-        for (бцел i; i < testBytes.length; i++) {
+        for (бцел i; i < testBytes.length; i++)
+        {
             auto resultChars = кодируй(cast(ббайт[])testBytes[i]);
             assert(resultChars == testChars[i],
-                    testBytes[i]~": ("~resultChars~") != ("~testChars[i]~")");
+            testBytes[i]~": ("~resultChars~") != ("~testChars[i]~")");
 
             auto resultBytes = раскодируй(testChars[i]);
             assert(resultBytes == cast(ббайт[])testBytes[i],
-                    testChars[i]~": ("~cast(ткст)resultBytes~") != ("~testBytes[i]~")");
+            testChars[i]~": ("~cast(ткст)resultBytes~") != ("~testBytes[i]~")");
         }
     }
 }

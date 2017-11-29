@@ -1,9 +1,10 @@
 ﻿module conc.threadfactory;
 
-import stdrus:Нить;
+import stdrus:
+Нить;
 
 
-interface ФабрикаНитей 
+interface ФабрикаНитей
 {
-  public Нить новаяНить(цел delegate() команда);
+    public Нить новаяНить(цел delegate() команда);
 }

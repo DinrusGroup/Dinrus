@@ -26,25 +26,38 @@ TODO
 
 */
 
-import core.ByteSwap : ПерестановкаБайт;
-import io.device.Array : Массив;
-import io.device.File : Файл;
-import io.FilePath : ФПуть, ПросмотрПути;
-import io.device.FileMap : ФайлМэп;
-import util.compress.ZlibStream : ВводЗлиб, ВыводЗлиб;
-import util.digest.Crc32 : Crc32;
-import io.model : ИПровод, ИПотокВвода, ИПотокВывода;
-import io.stream.Digester : ДайджестВвод;
-import time.Time : Время, ИнтервалВремени;
-import time.WallClock : Куранты;
-import time.chrono.Gregorian : Грегориан;
+import core.ByteSwap :
+ПерестановкаБайт;
+import io.device.Array :
+Массив;
+import io.device.File :
+Файл;
+import io.FilePath :
+ФПуть, ПросмотрПути;
+import io.device.FileMap :
+ФайлМэп;
+import util.compress.ZlibStream :
+ВводЗлиб, ВыводЗлиб;
+import util.digest.Crc32 :
+Crc32;
+import io.model :
+ИПровод, ИПотокВвода, ИПотокВывода;
+import io.stream.Digester :
+ДайджестВвод;
+import time.Time :
+Время, ИнтервалВремени;
+import time.WallClock :
+Куранты;
+import time.chrono.Gregorian :
+Грегориан;
 
 import Путь = io.Path;
 import PathUtil = util.PathUtil;
 import Целое = text.convert.Integer;
 
 
-debug(ZIP) import io.Stdout : Стдош;
+debug(ZIP) import io.Stdout :
+Стдош;
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -97,100 +110,100 @@ private
         }
     }
 
-struct ЛокалФайлЗаг
-{
-    const бцел сигнатура = 0x04034b50;
-
-    alias ДанныеЛокалФайлЗага Данные;
-    Данные данные;
-    static assert( Данные.sizeof == 26 );
-
-    ткст имя_файла;
-    ббайт[] допполе;
-
-    проц[] массив_данн()
+    struct ЛокалФайлЗаг
     {
-        return (&данные)[0..1];
-    }
+        const бцел сигнатура = 0x04034b50;
 
-    проц помести(ИПотокВывода вывод)
-    {
-        // Make sure var-length fields will fit.
-        if( имя_файла.length > бкрат.max )
-            ИсклЗип.fntoolong;
+        alias ДанныеЛокалФайлЗага Данные;
+        Данные данные;
+        static assert( Данные.sizeof == 26 );
 
-        if( допполе.length > бкрат.max )
-            ИсклЗип.eftoolong;
+        ткст имя_файла;
+        ббайт[] допполе;
 
-        // Encode имяф
-        auto имя_файла = utf8_to_cp437(this.имя_файла);
-        scope(exit) if( имя_файла !is cast(ббайт[])this.имя_файла )
-            delete имя_файла;
+        проц[] массив_данн()
+        {
+            return (&данные)[0..1];
+        }
 
-        if( имя_файла is пусто )
-            ИсклЗип.fnencode;
+        проц помести(ИПотокВывода вывод)
+        {
+            // Make sure var-length fields will fit.
+            if( имя_файла.length > бкрат.max )
+                ИсклЗип.fntoolong;
 
-        // Update lengths in данные
-        Данные данные = this.данные;
-        данные.длина_названия_файла = cast(бкрат) имя_файла.length;
-        данные.экстрадлина_поля = cast(бкрат) допполе.length;
+            if( допполе.length > бкрат.max )
+                ИсклЗип.eftoolong;
 
-        // Do it
-        version( БигЭндиан ) свопВсе(данные);
-        пишиРовно(вывод, (&данные)[0..1]);
-        пишиРовно(вывод, имя_файла);
-        пишиРовно(вывод, допполе);
-    }
+            // Encode имяф
+            auto имя_файла = utf8_to_cp437(this.имя_файла);
+            scope(exit) if( имя_файла !is cast(ббайт[])this.имя_файла )
+                delete имя_файла;
 
-    проц заполни(ИПотокВвода ист)
-    {
-        читайРовно(ист, массив_данн);
-        version( БигЭндиан ) свопВсе(данные);
+            if( имя_файла is пусто )
+                ИсклЗип.fnencode;
 
-        //debug(ZIP) данные.dump;
+            // Update lengths in данные
+            Данные данные = this.данные;
+            данные.длина_названия_файла = cast(бкрат) имя_файла.length;
+            данные.экстрадлина_поля = cast(бкрат) допполе.length;
 
-        auto врем = new ббайт[данные.длина_названия_файла];
-        читайРовно(ист, врем);
-        имя_файла = кс437_в_утф8(врем);
-        if( cast(сим*) врем.ptr !is имя_файла.ptr ) delete врем;
+            // Do it
+            version( БигЭндиан ) свопВсе(данные);
+            пишиРовно(вывод, (&данные)[0..1]);
+            пишиРовно(вывод, имя_файла);
+            пишиРовно(вывод, допполе);
+        }
 
-        допполе = new ббайт[данные.экстрадлина_поля];
-        читайРовно(ист, допполе);
-    }
+        проц заполни(ИПотокВвода ист)
+        {
+            читайРовно(ист, массив_данн);
+            version( БигЭндиан ) свопВсе(данные);
 
-    /*
-     * This метод will check в_ сделай sure that the local and central заголовки
-     * are the same; if they're not, then that indicates that the архив is
-     * corrupt.
-     */
-    бул agrees_with(ФайлЗаг h)
-    {
-        // NOTE: допполе used в_ be compared with h.допполе, but this caused
-        // an assertion in certain archives. I найдено a mention of these fields being
-        // allowed в_ be different, so I think it in general is wrong в_ include in
-        // this sanity check. larsivi 20081111
-        if( данные.версия_извлечения != h.данные.версия_извлечения
-                || данные.основные_флаги != h.данные.основные_флаги
-                || данные.метод_сжатия != h.данные.метод_сжатия
-                || данные.время_изменения_файла != h.данные.время_изменения_файла
-                || данные.дата_изменения_файла != h.данные.дата_изменения_файла
-                || данные.crc_32 != h.данные.crc_32
-                || данные.сжатый_размер != h.данные.сжатый_размер
-                || данные.разжатый_размер != h.данные.разжатый_размер
-                || имя_файла != h.имя_файла )
-            return нет;
+            //debug(ZIP) данные.dump;
 
-        // We need a separate check for the sizes and crc32, since these will
-        // be zero if a trailing descrИПtor was used.
-        if( !h.используетДескрипторДанных && (
-                   данные.crc_32 != h.данные.crc_32
+            auto врем = new ббайт[данные.длина_названия_файла];
+            читайРовно(ист, врем);
+            имя_файла = кс437_в_утф8(врем);
+            if( cast(сим*) врем.ptr !is имя_файла.ptr ) delete врем;
+
+            допполе = new ббайт[данные.экстрадлина_поля];
+            читайРовно(ист, допполе);
+        }
+
+        /*
+         * This метод will check в_ сделай sure that the local and central заголовки
+         * are the same; if they're not, then that indicates that the архив is
+         * corrupt.
+         */
+        бул agrees_with(ФайлЗаг h)
+        {
+            // NOTE: допполе used в_ be compared with h.допполе, but this caused
+            // an assertion in certain archives. I найдено a mention of these fields being
+            // allowed в_ be different, so I think it in general is wrong в_ include in
+            // this sanity check. larsivi 20081111
+            if( данные.версия_извлечения != h.данные.версия_извлечения
+            || данные.основные_флаги != h.данные.основные_флаги
+            || данные.метод_сжатия != h.данные.метод_сжатия
+            || данные.время_изменения_файла != h.данные.время_изменения_файла
+            || данные.дата_изменения_файла != h.данные.дата_изменения_файла
+            || данные.crc_32 != h.данные.crc_32
+            || данные.сжатый_размер != h.данные.сжатый_размер
+            || данные.разжатый_размер != h.данные.разжатый_размер
+            || имя_файла != h.имя_файла )
+                return нет;
+
+            // We need a separate check for the sizes and crc32, since these will
+            // be zero if a trailing descrИПtor was used.
+            if( !h.используетДескрипторДанных && (
+                данные.crc_32 != h.данные.crc_32
                 || данные.сжатый_размер != h.данные.сжатый_размер
                 || данные.разжатый_размер != h.данные.разжатый_размер ) )
-            return нет;
+                return нет;
 
-        return да;
+            return да;
+        }
     }
-}
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -240,7 +253,7 @@ struct ЛокалФайлЗаг
             ("  internal_file_attributes = ")(internal_file_attributes)("\n")
             ("  external_file_attributes = ")(external_file_attributes)("\n")
             ("  relative_offset_of_local_header = ")(relative_offset_of_local_header)
-                ("\n")
+            ("\n")
             ("}").нс;
         }
 
@@ -259,113 +272,113 @@ struct ЛокалФайлЗаг
         }
     }
 
-struct ФайлЗаг
-{
-    const бцел сигнатура = 0x02014b50;
-
-    alias ДанныеФайлЗага Данные;
-    Данные* данные;
-    static assert( Данные.sizeof == 42 );
-
-    ткст имя_файла;
-    ббайт[] допполе;
-    ткст комментарий_файла;
-
-    бул используетДескрипторДанных()
+    struct ФайлЗаг
     {
-        return !!(данные.основные_флаги & 1<<3);
-    }
+        const бцел сигнатура = 0x02014b50;
 
-    бцел опцииСжатия()
-    {
-        return (данные.основные_флаги >> 1) & 0b11;
-    }
+        alias ДанныеФайлЗага Данные;
+        Данные* данные;
+        static assert( Данные.sizeof == 42 );
 
-    бул используетУтф8()
-    {
-        //return !!(данные.основные_флаги & 1<<11);
-        return нет;
-    }
+        ткст имя_файла;
+        ббайт[] допполе;
+        ткст комментарий_файла;
 
-    проц[] массив_данн()
-    {
-        return (cast(проц*)данные)[0 .. Данные.sizeof];
-    }
+        бул используетДескрипторДанных()
+        {
+            return !!(данные.основные_флаги & 1<<3);
+        }
 
-    проц помести(ИПотокВывода вывод)
-    {
-        // Make sure the var-length fields will fit.
-        if( имя_файла.length > бкрат.max )
-            ИсклЗип.fntoolong;
+        бцел опцииСжатия()
+        {
+            return (данные.основные_флаги >> 1) & 0b11;
+        }
 
-        if( допполе.length > бкрат.max )
-            ИсклЗип.eftoolong;
+        бул используетУтф8()
+        {
+            //return !!(данные.основные_флаги & 1<<11);
+            return нет;
+        }
 
-        if( комментарий_файла.length > бкрат.max )
-            ИсклЗип.cotoolong;
+        проц[] массив_данн()
+        {
+            return (cast(проц*)данные)[0 .. Данные.sizeof];
+        }
 
-        // кодируй the имяф and коммент
-        auto имя_файла = utf8_to_cp437(this.имя_файла);
-        scope(exit) if( имя_файла !is cast(ббайт[])this.имя_файла )
-            delete имя_файла;
-        auto комментарий_файла = utf8_to_cp437(this.комментарий_файла);
-        scope(exit) if( комментарий_файла !is cast(ббайт[])this.комментарий_файла )
-            delete комментарий_файла;
+        проц помести(ИПотокВывода вывод)
+        {
+            // Make sure the var-length fields will fit.
+            if( имя_файла.length > бкрат.max )
+                ИсклЗип.fntoolong;
 
-        if( имя_файла is пусто )
-            ИсклЗип.fnencode;
+            if( допполе.length > бкрат.max )
+                ИсклЗип.eftoolong;
 
-        if( комментарий_файла is пусто && this.комментарий_файла !is пусто )
-            ИсклЗип.coencode;
+            if( комментарий_файла.length > бкрат.max )
+                ИсклЗип.cotoolong;
 
-        // Update the lengths
-        Данные данные = *(this.данные);
-        данные.длина_названия_файла = cast(бкрат) имя_файла.length;
-        данные.экстрадлина_поля = cast(бкрат) допполе.length;
-        данные.file_comment_length = cast(бкрат) комментарий_файла.length;
+            // кодируй the имяф and коммент
+            auto имя_файла = utf8_to_cp437(this.имя_файла);
+            scope(exit) if( имя_файла !is cast(ббайт[])this.имя_файла )
+                delete имя_файла;
+            auto комментарий_файла = utf8_to_cp437(this.комментарий_файла);
+            scope(exit) if( комментарий_файла !is cast(ббайт[])this.комментарий_файла )
+                delete комментарий_файла;
 
-        // Ok; let's do this!
-        version( БигЭндиан ) свопВсе(данные);
-        пишиРовно(вывод, (&данные)[0..1]);
-        пишиРовно(вывод, имя_файла);
-        пишиРовно(вывод, допполе);
-        пишиРовно(вывод, комментарий_файла);
-    }
+            if( имя_файла is пусто )
+                ИсклЗип.fnencode;
 
-    дол карта(проц[] ист)
-    {
-        //debug(ZIP) Стдош.форматнс("ФайлЗаг.карта([0..{}])",ист.length);
+            if( комментарий_файла is пусто && this.комментарий_файла !is пусто )
+                ИсклЗип.coencode;
 
-        auto old_ptr = ист.ptr;
+            // Update the lengths
+            Данные данные = *(this.данные);
+            данные.длина_названия_файла = cast(бкрат) имя_файла.length;
+            данные.экстрадлина_поля = cast(бкрат) допполе.length;
+            данные.file_comment_length = cast(бкрат) комментарий_файла.length;
 
-        данные = cast(Данные*) ист.ptr;
-        ист = ист[Данные.sizeof..$];
-        version( БигЭндиан ) свопВсе(*данные);
+            // Ok; let's do this!
+            version( БигЭндиан ) свопВсе(данные);
+            пишиРовно(вывод, (&данные)[0..1]);
+            пишиРовно(вывод, имя_файла);
+            пишиРовно(вывод, допполе);
+            пишиРовно(вывод, комментарий_файла);
+        }
 
-        //debug(ZIP) данные.dump;
+        дол карта(проц[] ист)
+        {
+            //debug(ZIP) Стдош.форматнс("ФайлЗаг.карта([0..{}])",ист.length);
 
-        ткст function(ббайт[]) conv_fn;
-        if( используетУтф8 )
-            conv_fn = &кс437_в_утф8;
-        else
-            conv_fn = &utf8_to_utf8;
+            auto old_ptr = ист.ptr;
 
-        имя_файла = conv_fn(
+            данные = cast(Данные*) ист.ptr;
+            ист = ист[Данные.sizeof..$];
+            version( БигЭндиан ) свопВсе(*данные);
+
+            //debug(ZIP) данные.dump;
+
+            ткст function(ббайт[]) conv_fn;
+            if( используетУтф8 )
+                conv_fn = &кс437_в_утф8;
+            else
+                conv_fn = &utf8_to_utf8;
+
+            имя_файла = conv_fn(
                 cast(ббайт[]) ист[0..данные.длина_названия_файла]);
-        ист = ист[данные.длина_названия_файла..$];
+            ист = ист[данные.длина_названия_файла..$];
 
-        допполе = cast(ббайт[]) ист[0..данные.экстрадлина_поля];
-        ист = ист[данные.экстрадлина_поля..$];
+            допполе = cast(ббайт[]) ист[0..данные.экстрадлина_поля];
+            ист = ист[данные.экстрадлина_поля..$];
 
-        комментарий_файла = conv_fn(
+            комментарий_файла = conv_fn(
                 cast(ббайт[]) ист[0..данные.file_comment_length]);
-        ист = ист[данные.file_comment_length..$];
+            ист = ист[данные.file_comment_length..$];
 
-        // Return как many байты we've eaten
-        //debug(ZIP) Стдош.форматнс(" . used {} байты", cast(дол)(ист.ptr - old_ptr));
-        return cast(дол)(ист.ptr - old_ptr);
+            // Return как many байты we've eaten
+            //debug(ZIP) Стдош.форматнс(" . used {} байты", cast(дол)(ист.ptr - old_ptr));
+            return cast(дол)(ист.ptr - old_ptr);
+        }
     }
-}
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -387,70 +400,70 @@ struct ФайлЗаг
         debug(ZIP) проц dump()
         {
             Стдош
-                .форматнс("EndOfCDRecord.Данные {}","{")
-                .форматнс("  disk_number = {}", disk_number)
-                .форматнс("  disk_with_start_of_central_directory = {}",
-                        disk_with_start_of_central_directory)
-                .форматнс("  central_directory_entries_on_this_disk = {}",
-                        central_directory_entries_on_this_disk)
-                .форматнс("  central_directory_entries_total = {}",
-                        central_directory_entries_total)
-                .форматнс("  size_of_central_directory = {}",
-                        size_of_central_directory)
-                .форматнс("  offset_of_start_of_cd_from_starting_disk = {}",
-                        offset_of_start_of_cd_from_starting_disk)
-                .форматнс("  file_comment_length = {}", file_comment_length)
-                .форматнс("}");
+            .форматнс("EndOfCDRecord.Данные {}","{")
+            .форматнс("  disk_number = {}", disk_number)
+            .форматнс("  disk_with_start_of_central_directory = {}",
+            disk_with_start_of_central_directory)
+            .форматнс("  central_directory_entries_on_this_disk = {}",
+            central_directory_entries_on_this_disk)
+            .форматнс("  central_directory_entries_total = {}",
+            central_directory_entries_total)
+            .форматнс("  size_of_central_directory = {}",
+            size_of_central_directory)
+            .форматнс("  offset_of_start_of_cd_from_starting_disk = {}",
+            offset_of_start_of_cd_from_starting_disk)
+            .форматнс("  file_comment_length = {}", file_comment_length)
+            .форматнс("}");
         }
     }
 
-struct EndOfCDRecord
-{
-    const бцел  сигнатура = 0x06054b50;
-
-    alias EndOfCDRecordData Данные;
-    Данные данные;
-    static assert( данные.sizeof == 18 );
-
-    ткст комментарий_файла;
-
-    проц[] массив_данн()
+    struct EndOfCDRecord
     {
-        return (cast(проц*)&данные)[0 .. данные.sizeof];
-    }
+        const бцел  сигнатура = 0x06054b50;
 
-    проц помести(ИПотокВывода вывод)
-    {
-        // Набор up the коммент; check length, кодируй
-        if( комментарий_файла.length > бкрат.max )
-            ИсклЗип.cotoolong;
+        alias EndOfCDRecordData Данные;
+        Данные данные;
+        static assert( данные.sizeof == 18 );
 
-        auto комментарий_файла = utf8_to_cp437(this.комментарий_файла);
-        scope(exit) if( комментарий_файла !is cast(ббайт[])this.комментарий_файла )
+        ткст комментарий_файла;
+
+        проц[] массив_данн()
+        {
+            return (cast(проц*)&данные)[0 .. данные.sizeof];
+        }
+
+        проц помести(ИПотокВывода вывод)
+        {
+            // Набор up the коммент; check length, кодируй
+            if( комментарий_файла.length > бкрат.max )
+                ИсклЗип.cotoolong;
+
+            auto комментарий_файла = utf8_to_cp437(this.комментарий_файла);
+            scope(exit) if( комментарий_файла !is cast(ббайт[])this.комментарий_файла )
                 delete комментарий_файла;
 
-        // Набор up данные block
-        Данные данные = this.данные;
-        данные.file_comment_length = cast(бкрат) комментарий_файла.length;
+            // Набор up данные block
+            Данные данные = this.данные;
+            данные.file_comment_length = cast(бкрат) комментарий_файла.length;
 
-        version( БигЭндиан ) свопВсе(данные);
-        пишиРовно(вывод, (&данные)[0..1]);
+            version( БигЭндиан ) свопВсе(данные);
+            пишиРовно(вывод, (&данные)[0..1]);
+        }
+
+        проц заполни(проц[] ист)
+        {
+            //Стдош.форматнс("EndOfCDRecord.заполни([0..{}])",ист.length);
+
+            auto _data = массив_данн;
+            _data[] = ист[0.._data.length];
+            ист = ист[_data.length..$];
+            version( БигЭндиан ) свопВсе(данные);
+
+            //данные.dump;
+
+            комментарий_файла = cast(ткст) ист[0..данные.file_comment_length].dup;
+        }
     }
-
-    проц заполни(проц[] ист)
-    {
-        //Стдош.форматнс("EndOfCDRecord.заполни([0..{}])",ист.length);
-
-        auto _data = массив_данн;
-        _data[] = ист[0.._data.length];
-        ист = ист[_data.length..$];
-        version( БигЭндиан ) свопВсе(данные);
-
-        //данные.dump;
-
-        комментарий_файла = cast(ткст) ист[0..данные.file_comment_length].dup;
-    }
-}
 
 // End of implementation crap
 }
@@ -495,9 +508,12 @@ private
     {
         switch( метод )
         {
-            case 0:     return Метод.Store;
-            case 8:     return Метод.Deflate;
-            default:    return Метод.Unsupported;
+        case 0:
+            return Метод.Store;
+        case 8:
+            return Метод.Deflate;
+        default:
+            return Метод.Unsupported;
         }
     }
 
@@ -505,10 +521,12 @@ private
     {
         switch( метод )
         {
-            case Метод.Store:      return 0;
-            case Метод.Deflate:    return 8;
-            default:
-                assert(нет, "неподдерживаемый метод сжатия");
+        case Метод.Store:
+            return 0;
+        case Метод.Deflate:
+            return 8;
+        default:
+            assert(нет, "неподдерживаемый метод сжатия");
         }
     }
 
@@ -593,23 +611,23 @@ class ЧитательБлокаЗип : ЧитательЗип
         this(file_source);
     }
 
-version( Неук )
-{
-    /**
-     * Creates a ЧитательБлокаЗип using the provопрed Файл экземпляр.  Where
-     * possible, the провод will be wrapped in a память-mapped буфер for
-     * optimum performance.  If you do not want the Файл память-mapped,
-     * either cast it в_ an ИПотокВвода first, or пароль источник.ввод в_ the
-     * constructor.
-     */
-    this(Файл источник)
+    version( Неук )
     {
-        // BUG: ФайлМэп doesn't implement ИПровод.ИШаг
-        //mm_source = new ФайлМэп(источник);
-        //this(mm_source);
-        this(источник.ввод);
+        /**
+         * Creates a ЧитательБлокаЗип using the provопрed Файл экземпляр.  Where
+         * possible, the провод will be wrapped in a память-mapped буфер for
+         * optimum performance.  If you do not want the Файл память-mapped,
+         * either cast it в_ an ИПотокВвода first, or пароль источник.ввод в_ the
+         * constructor.
+         */
+        this(Файл источник)
+        {
+            // BUG: ФайлМэп doesn't implement ИПровод.ИШаг
+            //mm_source = new ФайлМэп(источник);
+            //this(mm_source);
+            this(источник.ввод);
+        }
     }
-}
 
     /**
      * Creates a ЧитательБлокаЗип using the provопрed ИПотокВвода.  Please note
@@ -627,7 +645,10 @@ version( Неук )
         this.шагун = источник; //cast(ИПровод.ИШаг) источник;
     }
 
-    бул поточно() { return нет; }
+    бул поточно()
+    {
+        return нет;
+    }
 
     /**
      * Closes the читатель, and releases все resources.  After this operation,
@@ -646,10 +667,10 @@ version( Неук )
         delete заголовки;
 
         if( file_source !is пусто )
-          {
-          file_source.закрой;
-          delete file_source;
-          }
+        {
+            file_source.закрой;
+            delete file_source;
+        }
 
         if( mm_source !is пусто )
             delete mm_source;
@@ -665,19 +686,19 @@ version( Неук )
     {
         switch( состояние )
         {
-            case Состояние.Init:
-                read_cd;
-                assert( состояние == Состояние.Open );
-                return ещё;
+        case Состояние.Init:
+            read_cd;
+            assert( состояние == Состояние.Open );
+            return ещё;
 
-            case Состояние.Open:
-                return (current_index < заголовки.length);
+        case Состояние.Open:
+            return (current_index < заголовки.length);
 
-            case Состояние.Готово:
-                return нет;
+        case Состояние.Готово:
+            return нет;
 
-            default:
-                assert(нет);
+        default:
+            assert(нет);
         }
     }
 
@@ -777,9 +798,9 @@ private:
 
         // Сейчас, сделай sure the архив is все in one файл.
         if( eocdr.данные.disk_number !=
-                    eocdr.данные.disk_with_start_of_central_directory
-                || eocdr.данные.central_directory_entries_on_this_disk !=
-                    eocdr.данные.central_directory_entries_total )
+        eocdr.данные.disk_with_start_of_central_directory
+        || eocdr.данные.central_directory_entries_on_this_disk !=
+        eocdr.данные.central_directory_entries_total )
             ZIPNotSupportedException.spanned;
 
         // Ok, читай the whole damn thing in one go.
@@ -870,7 +891,7 @@ private:
         // machines, we need в_ byteсвоп the значение we're looking for.
         бцел eocd_magic = EndOfCDRecord.сигнатура;
         version( БигЭндиан )
-            своп(eocd_magic);
+        своп(eocd_magic);
 
         т_мера eocd_loc = -1;
 
@@ -927,18 +948,18 @@ private:
         // Next up, wrap in an appropriate decompression поток
         switch( toMethod(заголовок.данные.метод_сжатия) )
         {
-            case Метод.Store:
-                // Do nothing: \o/
-                break;
+        case Метод.Store:
+            // Do nothing: \o/
+            break;
 
-            case Метод.Deflate:
-                // Wrap in a zlib поток.  We want a необр deflate поток,
-                // so force no кодировка.
-                поток = new ВводЗлиб(поток, ВводЗлиб.Кодировка.Нет);
-                break;
+        case Метод.Deflate:
+            // Wrap in a zlib поток.  We want a необр deflate поток,
+            // so force no кодировка.
+            поток = new ВводЗлиб(поток, ВводЗлиб.Кодировка.Нет);
+            break;
 
-            default:
-                assert(нет);
+        default:
+            assert(нет);
         }
 
         // We готово, yo!
@@ -953,7 +974,7 @@ private:
     {
         // Seek в_ and разбор the local файл заголовок
         шагун.сместись(заголовок.данные.relative_offset_of_local_header,
-                шагун.Якорь.Нач);
+                                    шагун.Якорь.Нач);
 
         {
             бцел sig;
@@ -963,15 +984,16 @@ private:
                 ИсклЗип.badsig("local файл заголовок");
         }
 
-        ЛокалФайлЗаг lheader; lheader.заполни(источник);
+        ЛокалФайлЗаг lheader;
+        lheader.заполни(источник);
 
         if( !lheader.agrees_with(заголовок) )
             ИсклЗип.incons(заголовок.имя_файла);
 
         // Ok; получи a срез поток for the файл
         return new SliceSeekInputПоток(
-             источник, шагун.сместись(0, шагун.Якорь.Тек),
-             заголовок.данные.сжатый_размер);
+                   источник, шагун.сместись(0, шагун.Якорь.Тек),
+                   заголовок.данные.сжатый_размер);
     }
 }
 
@@ -1077,8 +1099,14 @@ class ПисательБлокаЗип : ПисательЗип
      * This property allows you в_ control what compression метод should be
      * used for файлы being добавьed в_ the архив.
      */
-    Метод метод() { return _method; }
-    Метод метод(Метод v) { return _method = v; } /// ditto
+    Метод метод()
+    {
+        return _method;
+    }
+    Метод метод(Метод v)
+    {
+        return _method = v;    /// ditto
+    }
 
 private:
     ИПотокВывода вывод;
@@ -1157,7 +1185,7 @@ private:
         lhdata.разжатый_размер = chdata.разжатый_размер;
 
         timeToDos(инфо.изменён, lhdata.время_изменения_файла,
-                                 lhdata.дата_изменения_файла);
+                  lhdata.дата_изменения_файла);
 
         put_local_header(lhdata, инфо.имя);
 
@@ -1222,17 +1250,17 @@ private:
 
             switch( _method )
             {
-                case Метод.Store:
-                    break;
+            case Метод.Store:
+                break;
 
-                case Метод.Deflate:
-                    сожми = new ВыводЗлиб(out_chain,
-                            ВыводЗлиб.Уровень.init, ВыводЗлиб.Кодировка.Нет);
-                    out_chain = сожми;
-                    break;
+            case Метод.Deflate:
+                сожми = new ВыводЗлиб(out_chain,
+                                                    ВыводЗлиб.Уровень.init, ВыводЗлиб.Кодировка.Нет);
+                out_chain = сожми;
+                break;
 
-                default:
-                    assert(нет);
+            default:
+                assert(нет);
             }
 
             // все готово.
@@ -1268,7 +1296,7 @@ private:
      * Запись.
      */
     проц patch_local_header(бцел crc_32, бцел сжатый_размер,
-            бцел разжатый_размер)
+                                бцел разжатый_размер)
     {
         /* BUG: For some резон, this код won't компилируй.  No опрea why... if
          * you instantiate LFHD, it says that there is no "offsetof" property.
@@ -1276,14 +1304,15 @@ private:
         /+
         alias ДанныеЛокалФайлЗага LFHD;
         static assert( LFHD.сжатый_размер.offsetof
-                == LFHD.crc_32.offsetof + 4 );
+                       == LFHD.crc_32.offsetof + 4 );
         static assert( LFHD.разжатый_размер.offsetof
-                == LFHD.сжатый_размер.offsetof + 4 );
+                       == LFHD.сжатый_размер.offsetof + 4 );
         +/
 
         // Don't forget we have в_ сместись past the сигнатура, too
         // BUG: .offsetof is broken here
-        /+шагун.сместись(LFHD.crc_32.offsetof+4, шагун.Якорь.Тек);+/
+        /+шагун.сместись(LFHD.crc_32.offsetof+4, шагун.Якорь.Тек);
+        +/
         шагун.сместись(10+4, шагун.Якорь.Тек);
         пиши(вывод, crc_32);
         пиши(вывод, сжатый_размер);
@@ -1309,7 +1338,7 @@ private:
 
         данные.метод_сжатия = fromMethod(метод);
         timeToDos(инфо.изменён, данные.время_изменения_файла,
-                                 данные.дата_изменения_файла);
+                  данные.дата_изменения_файла);
 
         put_local_header(данные, инфо.имя);
     }
@@ -1319,7 +1348,7 @@ private:
      * поток.  It also appends a new Запись with the данные and имяф.
      */
     проц put_local_header(ДанныеЛокалФайлЗага данные,
-            ткст имя_файла)
+                              ткст имя_файла)
     {
         auto f_name = PathUtil.нормализуй(имя_файла);
         auto p = Путь.разбор(f_name);
@@ -1329,16 +1358,23 @@ private:
         {
 
             бкрат zИПver = 10;
-            проц minver(бкрат v) { zИПver = v>zИПver ? v : zИПver; }
+            проц minver(бкрат v)
+            {
+                zИПver = v>zИПver ? v : zИПver;
+            }
 
             {
                 // Compression метод
                 switch( данные.метод_сжатия )
                 {
-                    case 0: minver(10); break;
-                    case 8: minver(20); break;
-                    default:
-                        assert(нет);
+                case 0:
+                    minver(10);
+                    break;
+                case 8:
+                    minver(20);
+                    break;
+                default:
+                    assert(нет);
                 }
 
                 // Файл is a папка
@@ -1352,13 +1388,15 @@ private:
         /+// Encode имяф
         auto file_name_437 = utf8_to_cp437(имя_файла);
         if( file_name_437 is пусто )
-            ИсклЗип.fnencode;+/
+            ИсклЗип.fnencode;
+        +/
 
         /+// Набор up файл имя length
         if( file_name_437.length > бкрат.max )
             ИсклЗип.fntoolong;
 
-        данные.длина_названия_файла = file_name_437.length;+/
+        данные.длина_названия_файла = file_name_437.length;
+        +/
 
         ЛокалФайлЗаг заголовок;
         заголовок.данные = данные;
@@ -1450,7 +1488,9 @@ class ЗаписьЗип
         auto s = открой;
         auto буфер = new ббайт[s.провод.размерБуфера];
         while( s.читай(буфер) != s.Кф )
-            {/*Do nothing*/}
+        {
+            /*Do nothing*/
+        }
         s.закрой;
     }
 
@@ -1555,11 +1595,17 @@ struct ИнфоОЗаписиЗип
  */
 class ИсклЗип : Исключение
 {
-    this(ткст сооб) { super(сооб); }
+    this(ткст сооб)
+    {
+        super(сооб);
+    }
 
 private:
     alias typeof(this) thisT;
-    static проц opCall(ткст сооб) { throw new ИсклЗип(сооб); }
+    static проц opCall(ткст сооб)
+    {
+        throw new ИсклЗип(сооб);
+    }
 
     static проц badsig()
     {
@@ -1574,13 +1620,13 @@ private:
     static проц incons(ткст имя)
     {
         thisT("неожидаемые заголовки у файла \""~имя~"\"; "
-                "архив, кажется, повреждён");
+              "архив, кажется, повреждён");
     }
 
     static проц missingdir()
     {
         thisT("не обнаружена центральная дир архива; "
-                "файл повреждён или не является ZIP архивом");
+              "файл повреждён или не является ZIP архивом");
     }
 
     static проц toomanyentries()
@@ -1641,7 +1687,10 @@ class ИсклКСЗип : ИсклЗип
     }
 
 private:
-    static проц opCall(ткст имя) { throw new ИсклКСЗип(имя); }
+    static проц opCall(ткст имя)
+    {
+        throw new ИсклКСЗип(имя);
+    }
 }
 
 /**
@@ -1650,10 +1699,16 @@ private:
  */
 class ZIPExhaustedException : ИсклЗип
 {
-    this() { super("в архиве нет больше записей"); }
+    this()
+    {
+        super("в архиве нет больше записей");
+    }
 
 private:
-    static проц opCall() { throw new ZIPExhaustedException; }
+    static проц opCall()
+    {
+        throw new ZIPExhaustedException;
+    }
 }
 
 /**
@@ -1662,7 +1717,10 @@ private:
  */
 class ZIPNotSupportedException : ИсклЗип
 {
-    this(ткст сооб) { super(сооб); }
+    this(ткст сооб)
+    {
+        super(сооб);
+    }
 
 private:
     alias ZIPNotSupportedException thisT;
@@ -1680,14 +1738,14 @@ private:
     static проц zИПver(бкрат ver)
     {
         throw new thisT("формат zИП  версии "
-                ~Целое.вТкст(ver / 10)
-                ~"."
-                ~Целое.вТкст(ver % 10)
-                ~" не поддерживается; максимально версия "
-                ~Целое.вТкст(MAX_EXTRACT_VERSION / 10)
-                ~"."
-                ~Целое.вТкст(MAX_EXTRACT_VERSION % 10)
-                ~" поддерживается.");
+                        ~Целое.вТкст(ver / 10)
+                        ~"."
+                        ~Целое.вТкст(ver % 10)
+                        ~" не поддерживается; максимально версия "
+                        ~Целое.вТкст(MAX_EXTRACT_VERSION / 10)
+                        ~"."
+                        ~Целое.вТкст(MAX_EXTRACT_VERSION % 10)
+                        ~" поддерживается.");
     }
 
     static проц флаги()
@@ -1701,29 +1759,59 @@ private:
         ткст ms;
         switch( m )
         {
-            case 0:
-            case 8:     assert(нет); // supported
+        case 0:
+        case 8:
+            assert(нет); // supported
 
-            case 1:     ms = "Shrink"; break;
-            case 2:     ms = "Reduce (factor 1)"; break;
-            case 3:     ms = "Reduce (factor 2)"; break;
-            case 4:     ms = "Reduce (factor 3)"; break;
-            case 5:     ms = "Reduce (factor 4)"; break;
-            case 6:     ms = "Implode"; break;
+        case 1:
+            ms = "Shrink";
+            break;
+        case 2:
+            ms = "Reduce (factor 1)";
+            break;
+        case 3:
+            ms = "Reduce (factor 2)";
+            break;
+        case 4:
+            ms = "Reduce (factor 3)";
+            break;
+        case 5:
+            ms = "Reduce (factor 4)";
+            break;
+        case 6:
+            ms = "Implode";
+            break;
 
-            case 9:     ms = "Deflate64"; break;
-            case 10:    ms = "TERSE (old)"; break;
+        case 9:
+            ms = "Deflate64";
+            break;
+        case 10:
+            ms = "TERSE (old)";
+            break;
 
-            case 12:    ms = "Bzip2"; break;
-            case 14:    ms = "LZMA"; break;
+        case 12:
+            ms = "Bzip2";
+            break;
+        case 14:
+            ms = "LZMA";
+            break;
 
-            case 18:    ms = "TERSE (new)"; break;
-            case 19:    ms = "LZ77"; break;
+        case 18:
+            ms = "TERSE (new)";
+            break;
+        case 19:
+            ms = "LZ77";
+            break;
 
-            case 97:    ms = "WavPack"; break;
-            case 98:    ms = "PPMd"; break;
+        case 97:
+            ms = "WavPack";
+            break;
+        case 98:
+            ms = "PPMd";
+            break;
 
-            default:    ms = "неизвестно";
+        default:
+            ms = "неизвестно";
         }
 
         thisT(ms ~ " метод сжатия");
@@ -1741,7 +1829,7 @@ private:
     zw.метод = метод;
 
     foreach( файл ; файлы )
-        zw.поместиФайл(ИнфоОЗаписиЗип(файл), файл);
+    zw.поместиФайл(ИнфоОЗаписиЗип(файл), файл);
 
     zw.финиш;
 }
@@ -1754,7 +1842,7 @@ private:
     {
         // SkИП directories
         if( Запись.инфо.имя[$-1] == '/' ||
-            Запись.инфо.имя[$-1] == '\\') continue;
+                Запись.инфо.имя[$-1] == '\\') continue;
 
         auto путь = Путь.объедини(приёмник, Запись.инфо.имя);
         путь = Путь.исконный(путь);
@@ -1927,7 +2015,7 @@ private:
 проц своп(T)(inout T данные)
 {
     static if( T.sizeof == 1 )
-        {}
+    {}
     else static if( T.sizeof == 2 )
         ПерестановкаБайт.своп16(&данные, 2);
     else static if( T.sizeof == 4 )
@@ -1947,57 +2035,57 @@ private:
 //
 
 const ткст[] cp437_to_utf8_map_low = [
-    "\u0000"[], "\u263a",   "\u263b",   "\u2665",
-    "\u2666",   "\u2663",   "\u2660",   "\u2022",
-    "\u25d8",   "\u25cb",   "\u25d9",   "\u2642",
-    "\u2640",   "\u266a",   "\u266b",   "\u263c",
+            "\u0000"[], "\u263a",   "\u263b",   "\u2665",
+            "\u2666",   "\u2663",   "\u2660",   "\u2022",
+            "\u25d8",   "\u25cb",   "\u25d9",   "\u2642",
+            "\u2640",   "\u266a",   "\u266b",   "\u263c",
 
-    "\u25b6",   "\u25c0",   "\u2195",   "\u203c",
-    "\u00b6",   "\u00a7",   "\u25ac",   "\u21a8",
-    "\u2191",   "\u2193",   "\u2192",   "\u2190",
-    "\u221f",   "\u2194",   "\u25b2",   "\u25bc"
-];
+            "\u25b6",   "\u25c0",   "\u2195",   "\u203c",
+            "\u00b6",   "\u00a7",   "\u25ac",   "\u21a8",
+            "\u2191",   "\u2193",   "\u2192",   "\u2190",
+            "\u221f",   "\u2194",   "\u25b2",   "\u25bc"
+        ];
 
 const ткст[] cp437_to_utf8_map_high = [
-    "\u00c7"[], "\u00fc",   "\u00e9",   "\u00e2",
-    "\u00e4",   "\u00e0",   "\u00e5",   "\u00e7",
-    "\u00ea",   "\u00eb",   "\u00e8",   "\u00ef",
-    "\u00ee",   "\u00ec",   "\u00c4",   "\u00c5",
+            "\u00c7"[], "\u00fc",   "\u00e9",   "\u00e2",
+            "\u00e4",   "\u00e0",   "\u00e5",   "\u00e7",
+            "\u00ea",   "\u00eb",   "\u00e8",   "\u00ef",
+            "\u00ee",   "\u00ec",   "\u00c4",   "\u00c5",
 
-    "\u00c9",   "\u00e6",   "\u00c6",   "\u00f4",
-    "\u00f6",   "\u00f2",   "\u00fb",   "\u00f9",
-    "\u00ff",   "\u00d6",   "\u00dc",   "\u00f8",
-    "\u00a3",   "\u00a5",   "\u20a7",   "\u0192",
+            "\u00c9",   "\u00e6",   "\u00c6",   "\u00f4",
+            "\u00f6",   "\u00f2",   "\u00fb",   "\u00f9",
+            "\u00ff",   "\u00d6",   "\u00dc",   "\u00f8",
+            "\u00a3",   "\u00a5",   "\u20a7",   "\u0192",
 
-    "\u00e1",   "\u00ed",   "\u00f3",   "\u00fa",
-    "\u00f1",   "\u00d1",   "\u00aa",   "\u00ba",
-    "\u00bf",   "\u2310",   "\u00ac",   "\u00bd",
-    "\u00bc",   "\u00a1",   "\u00ab",   "\u00bb",
+            "\u00e1",   "\u00ed",   "\u00f3",   "\u00fa",
+            "\u00f1",   "\u00d1",   "\u00aa",   "\u00ba",
+            "\u00bf",   "\u2310",   "\u00ac",   "\u00bd",
+            "\u00bc",   "\u00a1",   "\u00ab",   "\u00bb",
 
-    "\u2591",   "\u2592",   "\u2593",   "\u2502",
-    "\u2524",   "\u2561",   "\u2562",   "\u2556",
-    "\u2555",   "\u2563",   "\u2551",   "\u2557",
-    "\u255d",   "\u255c",   "\u255b",   "\u2510",
+            "\u2591",   "\u2592",   "\u2593",   "\u2502",
+            "\u2524",   "\u2561",   "\u2562",   "\u2556",
+            "\u2555",   "\u2563",   "\u2551",   "\u2557",
+            "\u255d",   "\u255c",   "\u255b",   "\u2510",
 
-    "\u2514",   "\u2534",   "\u252c",   "\u251c",
-    "\u2500",   "\u253c",   "\u255e",   "\u255f",
-    "\u255a",   "\u2554",   "\u2569",   "\u2566",
-    "\u2560",   "\u2550",   "\u256c",   "\u2567",
+            "\u2514",   "\u2534",   "\u252c",   "\u251c",
+            "\u2500",   "\u253c",   "\u255e",   "\u255f",
+            "\u255a",   "\u2554",   "\u2569",   "\u2566",
+            "\u2560",   "\u2550",   "\u256c",   "\u2567",
 
-    "\u2568",   "\u2564",   "\u2565",   "\u2559",
-    "\u2558",   "\u2552",   "\u2553",   "\u256b",
-    "\u256a",   "\u2518",   "\u250c",   "\u2588",
-    "\u2584",   "\u258c",   "\u2590",   "\u2580",
-    "\u03b1",   "\u00df",   "\u0393",   "\u03c0",
-    "\u03a3",   "\u03c3",   "\u00b5",   "\u03c4",
-    "\u03a6",   "\u0398",   "\u03a9",   "\u03b4",
-    "\u221e",   "\u03c6",   "\u03b5",   "\u2229",
+            "\u2568",   "\u2564",   "\u2565",   "\u2559",
+            "\u2558",   "\u2552",   "\u2553",   "\u256b",
+            "\u256a",   "\u2518",   "\u250c",   "\u2588",
+            "\u2584",   "\u258c",   "\u2590",   "\u2580",
+            "\u03b1",   "\u00df",   "\u0393",   "\u03c0",
+            "\u03a3",   "\u03c3",   "\u00b5",   "\u03c4",
+            "\u03a6",   "\u0398",   "\u03a9",   "\u03b4",
+            "\u221e",   "\u03c6",   "\u03b5",   "\u2229",
 
-    "\u2261",   "\u00b1",   "\u2265",   "\u2264",
-    "\u2320",   "\u2321",   "\u00f7",   "\u2248",
-    "\u00b0",   "\u2219",   "\u00b7",   "\u221a",
-    "\u207f",   "\u00b2",   "\u25a0",   "\u00a0"
-];
+            "\u2261",   "\u00b1",   "\u2265",   "\u2264",
+            "\u2320",   "\u2321",   "\u00f7",   "\u2248",
+            "\u00b0",   "\u2219",   "\u00b7",   "\u221a",
+            "\u207f",   "\u00b2",   "\u25a0",   "\u00a0"
+        ];
 
 ткст кс437_в_утф8(ббайт[] s)
 {
@@ -2059,7 +2147,10 @@ debug( UnitTest )
 {
     unittest
     {
-        ткст c(ткст s) { return кс437_в_утф8(cast(ббайт[]) s); }
+        ткст c(ткст s)
+        {
+            return кс437_в_утф8(cast(ббайт[]) s);
+        }
 
         auto s = c("Hi there \x01 old \x0c!");
         assert( s == "Hi there \u263a old \u2640!", "\""~s~"\"" );
@@ -2073,60 +2164,60 @@ const сим[дим] utf8_to_cp437_map;
 static this()
 {
     utf8_to_cp437_map = [
-        '\u0000': '\x00', '\u263a': '\x01', '\u263b': '\x02', '\u2665': '\x03',
-        '\u2666': '\x04', '\u2663': '\x05', '\u2660': '\x06', '\u2022': '\x07',
-        '\u25d8': '\x08', '\u25cb': '\x09', '\u25d9': '\x0a', '\u2642': '\x0b',
-        '\u2640': '\x0c', '\u266a': '\x0d', '\u266b': '\x0e', '\u263c': '\x0f',
+                            '\u0000': '\x00', '\u263a': '\x01', '\u263b': '\x02', '\u2665': '\x03',
+                            '\u2666': '\x04', '\u2663': '\x05', '\u2660': '\x06', '\u2022': '\x07',
+                            '\u25d8': '\x08', '\u25cb': '\x09', '\u25d9': '\x0a', '\u2642': '\x0b',
+                            '\u2640': '\x0c', '\u266a': '\x0d', '\u266b': '\x0e', '\u263c': '\x0f',
 
-        '\u25b6': '\x10', '\u25c0': '\x11', '\u2195': '\x12', '\u203c': '\x13',
-        '\u00b6': '\x14', '\u00a7': '\x15', '\u25ac': '\x16', '\u21a8': '\x17',
-        '\u2191': '\x18', '\u2193': '\x19', '\u2192': '\x1a', '\u2190': '\x1b',
-        '\u221f': '\x1c', '\u2194': '\x1d', '\u25b2': '\x1e', '\u25bc': '\x1f',
+                            '\u25b6': '\x10', '\u25c0': '\x11', '\u2195': '\x12', '\u203c': '\x13',
+                            '\u00b6': '\x14', '\u00a7': '\x15', '\u25ac': '\x16', '\u21a8': '\x17',
+                            '\u2191': '\x18', '\u2193': '\x19', '\u2192': '\x1a', '\u2190': '\x1b',
+                            '\u221f': '\x1c', '\u2194': '\x1d', '\u25b2': '\x1e', '\u25bc': '\x1f',
 
-        /*
-         * Printable ASCII range (well, most of it) is handled specially.
-         */
+                            /*
+                             * Printable ASCII range (well, most of it) is handled specially.
+                             */
 
-        '\u00c7': '\x80', '\u00fc': '\x81', '\u00e9': '\x82', '\u00e2': '\x83',
-        '\u00e4': '\x84', '\u00e0': '\x85', '\u00e5': '\x86', '\u00e7': '\x87',
-        '\u00ea': '\x88', '\u00eb': '\x89', '\u00e8': '\x8a', '\u00ef': '\x8b',
-        '\u00ee': '\x8c', '\u00ec': '\x8d', '\u00c4': '\x8e', '\u00c5': '\x8f',
+                            '\u00c7': '\x80', '\u00fc': '\x81', '\u00e9': '\x82', '\u00e2': '\x83',
+                            '\u00e4': '\x84', '\u00e0': '\x85', '\u00e5': '\x86', '\u00e7': '\x87',
+                            '\u00ea': '\x88', '\u00eb': '\x89', '\u00e8': '\x8a', '\u00ef': '\x8b',
+                            '\u00ee': '\x8c', '\u00ec': '\x8d', '\u00c4': '\x8e', '\u00c5': '\x8f',
 
-        '\u00c9': '\x90', '\u00e6': '\x91', '\u00c6': '\x92', '\u00f4': '\x93',
-        '\u00f6': '\x94', '\u00f2': '\x95', '\u00fb': '\x96', '\u00f9': '\x97',
-        '\u00ff': '\x98', '\u00d6': '\x99', '\u00dc': '\x9a', '\u00f8': '\x9b',
-        '\u00a3': '\x9c', '\u00a5': '\x9d', '\u20a7': '\x9e', '\u0192': '\x9f',
+                            '\u00c9': '\x90', '\u00e6': '\x91', '\u00c6': '\x92', '\u00f4': '\x93',
+                            '\u00f6': '\x94', '\u00f2': '\x95', '\u00fb': '\x96', '\u00f9': '\x97',
+                            '\u00ff': '\x98', '\u00d6': '\x99', '\u00dc': '\x9a', '\u00f8': '\x9b',
+                            '\u00a3': '\x9c', '\u00a5': '\x9d', '\u20a7': '\x9e', '\u0192': '\x9f',
 
-        '\u00e1': '\xa0', '\u00ed': '\xa1', '\u00f3': '\xa2', '\u00fa': '\xa3',
-        '\u00f1': '\xa4', '\u00d1': '\xa5', '\u00aa': '\xa6', '\u00ba': '\xa7',
-        '\u00bf': '\xa8', '\u2310': '\xa9', '\u00ac': '\xaa', '\u00bd': '\xab',
-        '\u00bc': '\xac', '\u00a1': '\xad', '\u00ab': '\xae', '\u00bb': '\xaf',
+                            '\u00e1': '\xa0', '\u00ed': '\xa1', '\u00f3': '\xa2', '\u00fa': '\xa3',
+                            '\u00f1': '\xa4', '\u00d1': '\xa5', '\u00aa': '\xa6', '\u00ba': '\xa7',
+                            '\u00bf': '\xa8', '\u2310': '\xa9', '\u00ac': '\xaa', '\u00bd': '\xab',
+                            '\u00bc': '\xac', '\u00a1': '\xad', '\u00ab': '\xae', '\u00bb': '\xaf',
 
-        '\u2591': '\xb0', '\u2592': '\xb1', '\u2593': '\xb2', '\u2502': '\xb3',
-        '\u2524': '\xb4', '\u2561': '\xb5', '\u2562': '\xb6', '\u2556': '\xb7',
-        '\u2555': '\xb8', '\u2563': '\xb9', '\u2551': '\xba', '\u2557': '\xbb',
-        '\u255d': '\xbc', '\u255c': '\xbd', '\u255b': '\xbe', '\u2510': '\xbf',
+                            '\u2591': '\xb0', '\u2592': '\xb1', '\u2593': '\xb2', '\u2502': '\xb3',
+                            '\u2524': '\xb4', '\u2561': '\xb5', '\u2562': '\xb6', '\u2556': '\xb7',
+                            '\u2555': '\xb8', '\u2563': '\xb9', '\u2551': '\xba', '\u2557': '\xbb',
+                            '\u255d': '\xbc', '\u255c': '\xbd', '\u255b': '\xbe', '\u2510': '\xbf',
 
-        '\u2514': '\xc0', '\u2534': '\xc1', '\u252c': '\xc2', '\u251c': '\xc3',
-        '\u2500': '\xc4', '\u253c': '\xc5', '\u255e': '\xc6', '\u255f': '\xc7',
-        '\u255a': '\xc8', '\u2554': '\xc9', '\u2569': '\xca', '\u2566': '\xcb',
-        '\u2560': '\xcc', '\u2550': '\xcd', '\u256c': '\xce', '\u2567': '\xcf',
+                            '\u2514': '\xc0', '\u2534': '\xc1', '\u252c': '\xc2', '\u251c': '\xc3',
+                            '\u2500': '\xc4', '\u253c': '\xc5', '\u255e': '\xc6', '\u255f': '\xc7',
+                            '\u255a': '\xc8', '\u2554': '\xc9', '\u2569': '\xca', '\u2566': '\xcb',
+                            '\u2560': '\xcc', '\u2550': '\xcd', '\u256c': '\xce', '\u2567': '\xcf',
 
-        '\u2568': '\xd0', '\u2564': '\xd1', '\u2565': '\xd2', '\u2559': '\xd3',
-        '\u2558': '\xd4', '\u2552': '\xd5', '\u2553': '\xd6', '\u256b': '\xd7',
-        '\u256a': '\xd8', '\u2518': '\xd9', '\u250c': '\xda', '\u2588': '\xdb',
-        '\u2584': '\xdc', '\u258c': '\xdd', '\u2590': '\xde', '\u2580': '\xdf',
+                            '\u2568': '\xd0', '\u2564': '\xd1', '\u2565': '\xd2', '\u2559': '\xd3',
+                            '\u2558': '\xd4', '\u2552': '\xd5', '\u2553': '\xd6', '\u256b': '\xd7',
+                            '\u256a': '\xd8', '\u2518': '\xd9', '\u250c': '\xda', '\u2588': '\xdb',
+                            '\u2584': '\xdc', '\u258c': '\xdd', '\u2590': '\xde', '\u2580': '\xdf',
 
-        '\u03b1': '\xe0', '\u00df': '\xe1', '\u0393': '\xe2', '\u03c0': '\xe3',
-        '\u03a3': '\xe4', '\u03c3': '\xe5', '\u00b5': '\xe6', '\u03c4': '\xe7',
-        '\u03a6': '\xe8', '\u0398': '\xe9', '\u03a9': '\xea', '\u03b4': '\xeb',
-        '\u221e': '\xec', '\u03c6': '\xed', '\u03b5': '\xee', '\u2229': '\xef',
+                            '\u03b1': '\xe0', '\u00df': '\xe1', '\u0393': '\xe2', '\u03c0': '\xe3',
+                            '\u03a3': '\xe4', '\u03c3': '\xe5', '\u00b5': '\xe6', '\u03c4': '\xe7',
+                            '\u03a6': '\xe8', '\u0398': '\xe9', '\u03a9': '\xea', '\u03b4': '\xeb',
+                            '\u221e': '\xec', '\u03c6': '\xed', '\u03b5': '\xee', '\u2229': '\xef',
 
-        '\u2261': '\xf0', '\u00b1': '\xf1', '\u2265': '\xf2', '\u2264': '\xf3',
-        '\u2320': '\xf4', '\u2321': '\xf5', '\u00f7': '\xf6', '\u2248': '\xf7',
-        '\u00b0': '\xf8', '\u2219': '\xf9', '\u00b7': '\xfa', '\u221a': '\xfb',
-        '\u207f': '\xfc', '\u00b2': '\xfd', '\u25a0': '\xfe', '\u00a0': '\xff'
-    ];
+                            '\u2261': '\xf0', '\u00b1': '\xf1', '\u2265': '\xf2', '\u2264': '\xf3',
+                            '\u2320': '\xf4', '\u2321': '\xf5', '\u00f7': '\xf6', '\u2248': '\xf7',
+                            '\u00b0': '\xf8', '\u2219': '\xf9', '\u00b7': '\xfa', '\u221a': '\xfb',
+                            '\u207f': '\xfc', '\u00b2': '\xfd', '\u25a0': '\xfe', '\u00a0': '\xff'
+                        ];
 }
 
 ббайт[] utf8_to_cp437(ткст s)
@@ -2157,8 +2248,8 @@ static this()
                 else
                 {
                     throw new Исключение("не удаётся кодировать символ \""
-                            ~ Целое.вТкст(cast(бцел)d)
-                            ~ "\" в кодовой странице 437.");
+                                                   ~ Целое.вТкст(cast(бцел)d)
+                                                   ~ "\" в кодовой странице 437.");
                 }
             }
 
@@ -2180,7 +2271,7 @@ debug( UnitTest )
 
         ббайт[256] s;
         foreach( i,ref c ; s )
-            c = i;
+        c = i;
 
         auto a = x(s);
         auto b = y(a);
@@ -2212,8 +2303,14 @@ debug( UnitTest )
 /*
  * This is here в_ simplify the код elsewhere.
  */
-ткст utf8_to_utf8(ббайт[] s) { return cast(ткст) s; }
-ббайт[] utf8_to_utf8(ткст s) { return cast(ббайт[]) s; }
+ткст utf8_to_utf8(ббайт[] s)
+{
+    return cast(ткст) s;
+}
+ббайт[] utf8_to_utf8(ткст s)
+{
+    return cast(ббайт[]) s;
+}
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -2247,14 +2344,14 @@ debug( UnitTest )
 
     auto tod = время.время();
     dostime = cast(бкрат) (
-        (tod.сек / 2)
-      | (tod.минуты << 5)
-      | (tod.часы   << 11));
+                  (tod.сек / 2)
+                  | (tod.минуты << 5)
+                  | (tod.часы   << 11));
 
     dosdate = cast(бкрат) (
-        (дата.день)
-      | (дата.месяц << 5)
-      | ((дата.год - 1980) << 9));
+                  (дата.день)
+                  | (дата.месяц << 5)
+                  | ((дата.год - 1980) << 9));
 }
 
 // ************************************************************************** //
@@ -2264,7 +2361,8 @@ debug( UnitTest )
 // Dependencies
 private:
 
-import io.device.Conduit : Провод;
+import io.device.Conduit :
+Провод;
 
 /*******************************************************************************
 
@@ -2345,7 +2443,10 @@ class ВводСоСчётом : ИПотокВвода
     }
 
     ///
-    дол счёт() { return _count; }
+    дол счёт()
+    {
+        return _count;
+    }
 
 private:
     ИПотокВвода источник;
@@ -2407,8 +2508,11 @@ class ВыводСоСчётом : ИПотокВывода
         return this;
     }
 
-  ///
-    дол счёт() { return _count; }
+    ///
+    дол счёт()
+    {
+        return _count;
+    }
 
 private:
     ИПотокВывода сток;
@@ -2519,22 +2623,22 @@ class SliceSeekInputПоток : ИПотокВвода
     {
         switch( якорь )
         {
-            case Якорь.Нач:
-                _position = смещение;
-                break;
+        case Якорь.Нач:
+            _position = смещение;
+            break;
 
-            case Якорь.Тек:
-                _position += смещение;
-                if( _position < 0 ) _position = 0;
-                break;
+        case Якорь.Тек:
+            _position += смещение;
+            if( _position < 0 ) _position = 0;
+            break;
 
-            case Якорь.Кон:
-                _position = length+смещение;
-                if( _position < 0 ) _position = 0;
-                break;
+        case Якорь.Кон:
+            _position = length+смещение;
+            if( _position < 0 ) _position = 0;
+            break;
 
-            default:
-                assert(нет);
+        default:
+            assert(нет);
         }
 
         return _position;
@@ -2727,22 +2831,22 @@ class SliceSeekOutputПоток : ИПотокВывода
     {
         switch( якорь )
         {
-            case Якорь.Нач:
-                _position = смещение;
-                break;
+        case Якорь.Нач:
+            _position = смещение;
+            break;
 
-            case Якорь.Тек:
-                _position += смещение;
-                if( _position < 0 ) _position = 0;
-                break;
+        case Якорь.Тек:
+            _position += смещение;
+            if( _position < 0 ) _position = 0;
+            break;
 
-            case Якорь.Кон:
-                _position = length+смещение;
-                if( _position < 0 ) _position = 0;
-                break;
+        case Якорь.Кон:
+            _position = length+смещение;
+            if( _position < 0 ) _position = 0;
+            break;
 
-            default:
-                assert(нет);
+        default:
+            assert(нет);
         }
 
         return _position;

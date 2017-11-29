@@ -1,8 +1,8 @@
 ﻿/*
  Файл: Рюкзак.d
 
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+ Originally записано by Doug Lea и released преобр_в the public домен.
+ Thanks for the assistance и support of Sun Microsystems Labs, Agorics
  Inc, Loral, и everyone contributing, testing, и using this код.
 
  History:
@@ -15,8 +15,8 @@
 module util.collection.model.Bag;
 
 private import  util.collection.model.BagView,
-                util.collection.model.Iterator,
-                util.collection.model.Dispenser;
+        util.collection.model.Iterator,
+        util.collection.model.Dispenser;
 
 /**
  * Bags are собериions supporting multИПle occurrences of элементы.
@@ -25,16 +25,16 @@ private import  util.collection.model.BagView,
 
 public interface Рюкзак(V) : BagView!(V), Dispenser!(V)
 {
-        public override Рюкзак!(V) дубликат();
-        public alias дубликат dup;
+    public override Рюкзак!(V) дубликат();
+    public alias дубликат dup;
 
-        public alias добавь opCatAssign;
+    public alias добавь opCatAssign;
 
-        проц добавь (V);
+    проц добавь (V);
 
-        проц добавьЕсли (V);
+    проц добавьЕсли (V);
 
-        проц добавь (Обходчик!(V));
+    проц добавь (Обходчик!(V));
 }
 
 

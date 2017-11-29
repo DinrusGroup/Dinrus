@@ -232,7 +232,7 @@ const bit СГЛАЖИВАНИЕ_ВКЛ  = 1;
 
     // syswm.d
     version(Windows)
-        вяжи(сдлДайИнфОбОк)("SDL_GetWMInfo", биб);
+    вяжи(сдлДайИнфОбОк)("SDL_GetWMInfo", биб);
 }
 
 ЖанБибгр СДЛ;
@@ -240,16 +240,16 @@ const bit СГЛАЖИВАНИЕ_ВКЛ  = 1;
 extern(C)
 {
 
-цел зумПоверхностиКЗСА (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел smooth);
-цел зумПоверхностиВ (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst);
-проц трансформПоверхностиКЗСА (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел cx, цел cy, цел isin, цел icos, цел smooth);
-проц трансформПоверхностиВ (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел cx, цел cy, цел isin, цел icos);		 
-ПоверхностьСДЛ *ротозумПоверхности (ПоверхностьСДЛ * src, double angle, double zoom, int smooth);
-ПоверхностьСДЛ *зумПоверхности (ПоверхностьСДЛ * src, double zoomx, double zoomy, int smooth);
-проц ЗумКартинки (ПоверхностьСДЛ * экран, ПоверхностьСДЛ * картинка, int smooth);
-проц ВращайКартинку (ПоверхностьСДЛ * экран, ПоверхностьСДЛ * картинка, int rotate, int smooth);
-проц  ОчистиЭкран (ПоверхностьСДЛ * экран);
-проц ОбработайСобытие();
+    цел зумПоверхностиКЗСА (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел smooth);
+    цел зумПоверхностиВ (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst);
+    проц трансформПоверхностиКЗСА (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел cx, цел cy, цел isin, цел icos, цел smooth);
+    проц трансформПоверхностиВ (ПоверхностьСДЛ * src, ПоверхностьСДЛ * dst, цел cx, цел cy, цел isin, цел icos);
+    ПоверхностьСДЛ *ротозумПоверхности (ПоверхностьСДЛ * src, double angle, double zoom, int smooth);
+    ПоверхностьСДЛ *зумПоверхности (ПоверхностьСДЛ * src, double zoomx, double zoomy, int smooth);
+    проц ЗумКартинки (ПоверхностьСДЛ * экран, ПоверхностьСДЛ * картинка, int smooth);
+    проц ВращайКартинку (ПоверхностьСДЛ * экран, ПоверхностьСДЛ * картинка, int rotate, int smooth);
+    проц  ОчистиЭкран (ПоверхностьСДЛ * экран);
+    проц ОбработайСобытие();
 
     // SDL.h
     цел function(бцел) сдлВкл;
@@ -556,7 +556,7 @@ struct SDL_AudioSpec
     ук userdata;
 }
 
- // SDL_audio.h constants
+// SDL_audio.h constants
 enum : бкрат
 {
     AUDIO_U8           = 0x0008,// Unsigned 8-bit samples
@@ -620,7 +620,7 @@ enum : бцел
 }
 
 version(ЛитлЭндиан)
-    const бцел SDL_BYTEORDER = SDL_LIL_ENDIAN;
+const бцел SDL_BYTEORDER = SDL_LIL_ENDIAN;
 else
     const бцел SDL_BYTEORDER = SDL_BIG_ENDIAN;
 
@@ -812,8 +812,8 @@ enum
     SDL_EVENT_RESERVED6,
     SDL_EVENT_RESERVED7,
     SDL_USEREVENT = 24, // Events SDL_USEREVENT through SDL_MAXEVENTS-1 are for your use
-	// This last событие is only for bounding internal arrays
-  // It is the number of bits in the событие маска datatype -- UInt32
+    // This last событие is only for bounding internal arrays
+    // It is the number of bits in the событие маска datatype -- UInt32
     SDL_NUMEVENTS = 32
 }
 
@@ -1338,21 +1338,25 @@ enum { SDL_MUTEX_TIMEOUT = 1 }
 
 enum : бцел { SDL_MUTEX_MAXWAIT = (~(cast(бцел)0)) }
 
-struct SDL_mutex {//was empty!!!!
-	HANDLE id;
-	}
+struct SDL_mutex  //was empty!!!!
+{
+    HANDLE id;
+}
 
-struct SDL_sem {
-	HANDLE id;
-    бцел count;}
+struct SDL_sem
+{
+    HANDLE id;
+    бцел count;
+}
 
-struct SDL_cond {// Generic Cond structure ( was empty too!!!)
+struct SDL_cond  // Generic Cond structure ( was empty too!!!)
+{
     SDL_mutex* lock;
     цел waiting;
     цел signals;
     SDL_sem* wait_sem;
     SDL_sem* wait_done;
-	}
+}
 
 // SDL_rwops.h
 enum
@@ -1463,7 +1467,7 @@ struct SDL_version
 }
 
 const бцел SDL_COMPILEDVERSION =  SDL_MAJOR_VERSION * 1000 +
-                                  SDL_MINOR_VERSION * 100 + SDL_PATCHLEVEL;
+                                      SDL_MINOR_VERSION * 100 + SDL_PATCHLEVEL;
 
 бул SDL_VERSION_ATLEAST(ббайт major, ббайт minor, ббайт patch)
 {
@@ -1473,7 +1477,7 @@ const бцел SDL_COMPILEDVERSION =  SDL_MAJOR_VERSION * 1000 +
 // SDL_syswm.h
 version(Windows)
 {
-    
+
 
     struct SDL_SysWMmsg
     {
@@ -1516,8 +1520,8 @@ extern(C)
 {
     typedef бцел function(бцел) SDL_TimerCallback;
     typedef бцел function(бцел,ук) SDL_NewTimerCallback;
-	alias SDL_TimerCallback сдлОбрвызовТаймера;
-	alias SDL_NewTimerCallback сдлНовыйОбрвызовТаймера;
+    alias SDL_TimerCallback сдлОбрвызовТаймера;
+    alias SDL_NewTimerCallback сдлНовыйОбрвызовТаймера;
 }
 
 alias ук SDL_TimerID;
@@ -1685,32 +1689,34 @@ enum
 бул SDL_MUSTLOCK(ПоверхностьСДЛ* поверхность)
 {
     return cast(бул)(поверхность.offset ||
-        ((поверхность.flags & (SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_RLEACCEL)) != 0));
+                        ((поверхность.flags & (SDL_HWSURFACE|SDL_ASYNCBLIT|SDL_RLEACCEL)) != 0));
 }
 
 
-static this() {
+static this()
+{
     СДЛ.заряжай("SDL.dll", &грузи );
-	СДЛ.загружай();
+    СДЛ.загружай();
 }
 
-static ~this() {
-	СДЛ.выгружай();
+static ~this()
+{
+    СДЛ.выгружай();
 }
 
 debug(Sdl)
 {
-	void main()
-	{
-		auto дисп = сдлУстановиВидеоРежим(640,480,0,SDL_HWSURFACE|SDL_DOUBLEBUF);
-		auto r = ПрямоугСДЛ(0,190,100,100);
-		auto c = сдлКартируйКЗСА(дисп.формат,255,100,0,255);
-		while (r.x < дисп.w-100)
-		{
-			сдлЗаполниПрямоуг(дисп, пусто, 0);
-			сдлЗаполниПрямоуг(дисп, &r, c);
-			сдлФлип(дисп);
-			r.x++;
-		}
-	}
+    void main()
+    {
+        auto дисп = сдлУстановиВидеоРежим(640,480,0,SDL_HWSURFACE|SDL_DOUBLEBUF);
+        auto r = ПрямоугСДЛ(0,190,100,100);
+        auto c = сдлКартируйКЗСА(дисп.формат,255,100,0,255);
+        while (r.x < дисп.w-100)
+        {
+            сдлЗаполниПрямоуг(дисп, пусто, 0);
+            сдлЗаполниПрямоуг(дисп, &r, c);
+            сдлФлип(дисп);
+            r.x++;
+        }
+    }
 }

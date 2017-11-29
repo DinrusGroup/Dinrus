@@ -23,10 +23,12 @@ private import math.Math;
 private import math.IEEE;
 private import math.ErrorFunction;
 
-version(Windows) { // Some tests only пароль on DMD Windows
-    version(DigitalMars) {
-    version = FailsOnLinux;
-}
+version(Windows)   // Some tests only пароль on DMD Windows
+{
+    version(DigitalMars)
+    {
+        version = FailsOnLinux;
+    }
 }
 
 //------------------------------------------------------------------

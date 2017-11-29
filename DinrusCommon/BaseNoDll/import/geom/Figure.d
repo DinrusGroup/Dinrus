@@ -157,7 +157,7 @@ struct Размер
   Размер         opAdd(цел i);
   Размер         opAdd_r(цел i) ;
   Размер         opAdd(Размер s);
-  Размер         opSub(цел i) ;}
+  Размер         opSub(цел i) ;
   Размер         opSub_r(цел i) ;
   Размер         opSub(Размер s) ;
   Размер         opMul_r(цел i);

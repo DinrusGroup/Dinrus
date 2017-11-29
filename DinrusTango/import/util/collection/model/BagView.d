@@ -1,8 +1,8 @@
 ﻿/*
  Файл: BagView.d
 
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+ Originally записано by Doug Lea и released преобр_в the public домен.
+ Thanks for the assistance и support of Sun Microsystems Labs, Agorics
  Inc, Loral, и everyone contributing, testing, и using this код.
 
  History:
@@ -20,7 +20,7 @@ private import util.collection.model.View;
 /**
  *
  * Bags are собериions supporting multИПle occurrences of элементы.
- * 
+ *
         author: Doug Lea
  * @version 0.93
  *
@@ -30,11 +30,11 @@ private import util.collection.model.View;
 
 public interface BagView(V) : View!(V)
 {
-        public override BagView!(V) дубликат();
-        public alias дубликат dup;
+    public override BagView!(V) дубликат();
+    public alias дубликат dup;
 
-version (VERBOSE)
-{
+    version (VERBOSE)
+    {
         public alias добавим opCat;
 
         /**
@@ -45,7 +45,7 @@ version (VERBOSE)
          *
          * @param the элемент в_ добавь в_ the new Рюкзак
          * Возвращает: the new Рюкзак c, with the совпадает as this except that
-         * c.occurrencesOf(элемент) == occurrencesOf(элемент)+1 
+         * c.occurrencesOf(элемент) == occurrencesOf(элемент)+1
          * Throws: IllegalElementException if !canInclude(элемент)
         **/
 
@@ -64,6 +64,6 @@ version (VERBOSE)
         **/
 
         public Рюкзак добавимЕслиНет(V элемент);
-} // version
+    } // version
 
 }

@@ -23,7 +23,7 @@
  *           }
  *           if (арги[старт]=="--уровень"){
  *               ++старт;
- *               if (арги.length==старт || арги[старт].length!=1 || арги[старт][0]<'0' || 
+ *               if (арги.length==старт || арги[старт].length!=1 || арги[старт][0]<'0' ||
  *                   арги[старт][0]>'9') {
  *                   Стдвыв("не_годится уровень '")((арги.length==старт)?"*missing*":арги[старт])
  *                       ("' (must be 0-9)").нс;
@@ -51,47 +51,65 @@
 
 module util.Demangler;
 
-import core.Traits: ctfe_i2a;
-import cidrus: memmove,memcpy;
+import core.Traits:
+ctfe_i2a;
+import cidrus:
+memmove,memcpy;
 
 debug(traceDemangler) import io.Stdout;
 
 
 
-version(DigitalMars) version(Windows) {
-    бул isMD5Hashed(ткст имя) {
-        if (имя.length < 34 || (имя.length >= 2 && имя[0..2] != "_D")) {
+version(DigitalMars) version(Windows)
+{
+    бул isMD5Hashed(ткст имя)
+    {
+        if (имя.length < 34 || (имя.length >= 2 && имя[0..2] != "_D"))
+        {
             return нет;
         }
-        
-        foreach (c; имя[$-32..$]) {
-            if ((c < '0' || c > '9') && (c < 'A' || c > 'F')) {
+
+        foreach (c; имя[$-32..$])
+        {
+            if ((c < '0' || c > '9') && (c < 'A' || c > 'F'))
+            {
                 return нет;
             }
         }
-        
+
         return да;
     }
-    
 
-    ткст decompressOMFSymbol(ткст garbled, ткст* буф) {
+
+    ткст decompressOMFSymbol(ткст garbled, ткст* буф)
+    {
         цел ungarbledLength = 0;
         бул compressed = нет;
 
-        for (цел ci = 0; ci < garbled.length; ++ci) {
+        for (цел ci = 0; ci < garbled.length; ++ci)
+        {
             сим c = garbled[ci];
-            if (0 == (c & 0x80)) {
+            if (0 == (c & 0x80))
+            {
                 ++ungarbledLength;
-            } else {
+            }
+            else
+            {
                 compressed = да;
                 цел matchLen = void;
 
-                if (c & 0x40) {
+                if (c & 0x40)
+                {
                     matchLen = (c & 0b111) + 1;
-                } else {
-                    if (ci+2 >= garbled.length) {
+                }
+                else
+                {
+                    if (ci+2 >= garbled.length)
+                    {
                         return garbled;
-                    } else {
+                    }
+                    else
+                    {
                         matchLen = cast(цел)(c & 0x38) << 4;
                         matchLen += garbled[ci+1] & ~0x80;
                         ci += 2;
@@ -102,25 +120,35 @@ version(DigitalMars) version(Windows) {
             }
         }
 
-        if (!compressed || ungarbledLength > (*буф).length) {
+        if (!compressed || ungarbledLength > (*буф).length)
+        {
             return garbled;
-        } else {
+        }
+        else
+        {
             ткст ungarbled = (*буф)[$-ungarbledLength..$];
             *буф = (*буф)[0..$-ungarbledLength];
             цел ui = 0;
 
-            for (цел ci = 0; ci < garbled.length; ++ci) {
+            for (цел ci = 0; ci < garbled.length; ++ci)
+            {
                 сим c = garbled[ci];
-                if (0 == (c & 0x80)) {
+                if (0 == (c & 0x80))
+                {
                     ungarbled[ui++] = c;
-                } else {
+                }
+                else
+                {
                     цел matchOff = void;
                     цел matchLen = void;
 
-                    if (c & 0x40) {
+                    if (c & 0x40)
+                    {
                         matchOff = ((c >> 3) & 0b111) + 1;
                         matchLen = (c & 0b111) + 1;
-                    } else {
+                    }
+                    else
+                    {
                         matchOff = cast(цел)(c & 0b111) << 7;
                         matchLen = cast(цел)(c & 0x38) << 4;
                         matchLen += garbled[ci+1] & ~0x80;
@@ -129,7 +157,8 @@ version(DigitalMars) version(Windows) {
                     }
 
                     цел matchStart = ui - matchOff;
-                    if (matchStart + matchLen > ui) {
+                    if (matchStart + matchLen > ui)
+                    {
                         // краш
                         return garbled;
                     }
@@ -148,9 +177,12 @@ version(DigitalMars) version(Windows) {
 
 /// decompresses a symbol and returns the full symbol, and possibly a reduced буфер пространство
 /// (does something only on windows with DMD)
-ткст decompressSymbol(ткст func,ткст*буф){
-    version(DigitalMars) version(Windows){
-        if (isMD5Hashed(func)) {
+ткст decompressSymbol(ткст func,ткст*буф)
+{
+    version(DigitalMars) version(Windows)
+    {
+        if (isMD5Hashed(func))
+        {
             func = func[0..$-32];
         }
         func = decompressOMFSymbol(func, буф);
@@ -158,13 +190,18 @@ version(DigitalMars) version(Windows) {
     return func;
 }
 
-бцел toUint(ткст s){
+бцел toUint(ткст s)
+{
     бцел рез=0;
-    for (цел i=0;i<s.length;++i){
-        if (s[i]>='0'&& s[i]<='9'){
+    for (цел i=0; i<s.length; ++i)
+    {
+        if (s[i]>='0'&& s[i]<='9')
+        {
             рез*=10;
             рез+=s[i]-'0';
-        } else {
+        }
+        else
+        {
             assert(нет);
         }
     }
@@ -197,34 +234,34 @@ public class Demangler
     {
         switch (уровень)
         {
-            case 0:
-                templateExpansionDepth = 0;
-                expandFunctionTypes = нет;
-                printTypeKind = нет;
-                break;
+        case 0:
+            templateExpansionDepth = 0;
+            expandFunctionTypes = нет;
+            printTypeKind = нет;
+            break;
 
-            case 1:
-                templateExpansionDepth = 1;
-                expandFunctionTypes = нет;
-                printTypeKind = нет;
-                break;
+        case 1:
+            templateExpansionDepth = 1;
+            expandFunctionTypes = нет;
+            printTypeKind = нет;
+            break;
 
-            case 2:
-                templateExpansionDepth = 1;
-                expandFunctionTypes = нет;
-                printTypeKind = да;
-                break;
+        case 2:
+            templateExpansionDepth = 1;
+            expandFunctionTypes = нет;
+            printTypeKind = да;
+            break;
 
-            case 3:
-                templateExpansionDepth = 1;
-                expandFunctionTypes = да;
-                printTypeKind = да;
-                break;
+        case 3:
+            templateExpansionDepth = 1;
+            expandFunctionTypes = да;
+            printTypeKind = да;
+            break;
 
-            default:
-                templateExpansionDepth = уровень - 2;
-                expandFunctionTypes = да;
-                printTypeKind = да;
+        default:
+            templateExpansionDepth = уровень - 2;
+            expandFunctionTypes = да;
+            printTypeKind = да;
         }
     }
 
@@ -239,19 +276,25 @@ public class Demangler
     {
         verbosity (уровеньПодробности);
     }
-    
+
     /** demangles the given ткст */
     public ткст demangle (ткст ввод)
     {
         сим[4096] буф= void;
         auto рез=DemangleInstance(this,ввод,буф);
-        if (рез.mangledName() && рез.ввод.length==0){
+        if (рез.mangledName() && рез.ввод.length==0)
+        {
             return рез.срез.dup;
-        } else {
+        }
+        else
+        {
             if (рез.срез.length) рез.вывод.добавь(" ");
-            if (рез.тип() && рез.ввод.length==0){
+            if (рез.тип() && рез.ввод.length==0)
+            {
                 return рез.срез.dup;
-            } else {
+            }
+            else
+            {
                 return ввод;
             }
         }
@@ -261,13 +304,19 @@ public class Demangler
     public ткст demangle (ткст ввод, ткст вывод)
     {
         auto рез=DemangleInstance(this,ввод,вывод);
-        if (рез.mangledName () && рез.ввод.length==0) {
+        if (рез.mangledName () && рез.ввод.length==0)
+        {
             return рез.срез;
-        } else {
+        }
+        else
+        {
             if (рез.срез.length) рез.вывод.добавь(" ");
-            if (рез.тип() && рез.ввод.length==0) {
+            if (рез.тип() && рез.ввод.length==0)
+            {
                 return рез.срез;
-            } else {
+            }
+            else
+            {
                 return ввод;
             }
         }
@@ -275,18 +324,21 @@ public class Demangler
 
     /// this represents a single demangling request, and is the place where the реал work is готово
     /// some ещё cleanup would probably be in order (maybe удали Буфер)
-    struct DemangleInstance{
+    struct DemangleInstance
+    {
         debug(traceDemangler) private ткст[] _trace;
         private ткст ввод;
         private бцел _templateDepth;
         Буфер вывод;
         Demangler prefs;
-        
-        struct BufState{
+
+        struct BufState
+        {
             DemangleInstance* dem;
             ткст ввод;
             т_мера длин;
-            static BufState opCall(DemangleInstance* dem){
+            static BufState opCall(DemangleInstance* dem)
+            {
                 BufState рез;
                 рез.dem=dem;
                 рез.длин=dem.вывод.length;
@@ -294,26 +346,31 @@ public class Demangler
                 return рез;
             }
             // resets ввод and вывод buffers and returns нет
-            бул сбрось(){
+            бул сбрось()
+            {
                 dem.вывод.length=длин;
                 dem.ввод=ввод;
                 return нет;
             }
             // resets only the вывод буфер and returns нет
-            бул resetOutput(){
+            бул resetOutput()
+            {
                 dem.вывод.length=длин;
                 return нет;
             }
-            ткст sliceFrom(){
+            ткст sliceFrom()
+            {
                 return dem.вывод.данные[длин..dem.вывод.length];
             }
         }
-        
-        BufState checkpoint(){
+
+        BufState checkpoint()
+        {
             return BufState(this);
         }
 
-        static DemangleInstance opCall(Demangler prefs,ткст ввод,ткст вывод){
+        static DemangleInstance opCall(Demangler prefs,ткст ввод,ткст вывод)
+        {
             ввод = decompressSymbol(ввод, &вывод);
 
             DemangleInstance рез;
@@ -331,7 +388,7 @@ public class Demangler
             {
                 if (_trace.length > 500)
                     throw new Исключение ("Infinite recursion");
-                
+
                 цел длин=_trace.length;
                 ткст пробелы = "            ";
                 пробелы=пробелы[0 .. ((длин<пробелы.length)?длин:пробелы.length)];
@@ -366,7 +423,8 @@ public class Demangler
             }
         }
 
-        ткст срез(){
+        ткст срез()
+        {
             return вывод.срез;
         }
 
@@ -385,28 +443,36 @@ public class Demangler
         body
         {
             debug(traceDemangler) след ("mangledName");
-            
+
             if (ввод.length<2)
                 return нет;
-            if (ввод[0]=='D'){
+            if (ввод[0]=='D')
+            {
                 используй(1);
-            } else if (ввод[0..2] == "_D") {
+            }
+            else if (ввод[0..2] == "_D")
+            {
                 используй(2);
-            } else {
+            }
+            else {
                 return нет;
             }
 
             if (! typedqualifiedName ())
                 return нет;
 
-            if (ввод.length > 0) {
+            if (ввод.length > 0)
+            {
                 auto pos1=checkpoint();
                 вывод.добавь("<");
                 if (! тип ())
                     pos1.сбрось(); // return нет??
-                else if (prefs.printTypeKind){
+                else if (prefs.printTypeKind)
+                {
                     вывод.добавь(">");
-                } else {
+                }
+                else
+                {
                     pos1.resetOutput();
                 }
             }
@@ -429,17 +495,22 @@ public class Demangler
             if (! symbolName ())
                 return нет;
             ткст car=posCar.sliceFrom();
-            
+
             // undocumented
             auto поз=checkpoint();
             вывод.добавь ("{");
-            if (typeFunction ()){
-                if (!prefs. expandFunctionTypes){
+            if (typeFunction ())
+            {
+                if (!prefs. expandFunctionTypes)
+                {
                     поз.resetOutput();
-                } else {
+                }
+                else
+                {
                     вывод.добавь ("}");
                 }
-            } else {
+            }
+            else {
                 поз.сбрось();
             }
 
@@ -448,11 +519,13 @@ public class Demangler
             if (typedqualifiedName ())
             {
                 if (prefs.foldDefaults && car.length<поз.sliceFrom().length &&
-                    car==поз.sliceFrom()[1..car.length+1]){
+                car==поз.sliceFrom()[1..car.length+1])
+                {
                     memmove(&вывод.данные[posCar.длин],&вывод.данные[поз.длин+1],вывод.length-поз.длин);
                     вывод.length+=posCar.длин-поз.длин-1;
                 }
-            } else {
+            }
+            else {
                 поз.сбрось();
             }
 
@@ -478,11 +551,13 @@ public class Demangler
             if (typedqualifiedName ())
             {
                 ткст cdr=pos1.sliceFrom()[1..$];
-                if (prefs.foldDefaults && cdr.length>=car.length && cdr[0..car.length]==car){
+                if (prefs.foldDefaults && cdr.length>=car.length && cdr[0..car.length]==car)
+                {
                     memmove(&вывод.данные[поз.длин],&вывод.данные[pos1.длин+1],вывод.length-pos1.длин);
                     вывод.length+=поз.длин-pos1.длин-1;
                 }
-            } else {
+            }
+            else {
                 pos1.сбрось();
             }
 
@@ -498,10 +573,11 @@ public class Demangler
         {
             debug(traceDemangler) след (aliasHack ? "symbolNameAH" : "symbolName");
 
-    //      if (templateInstanceName (вывод))
-    //          return да;
+            //      if (templateInstanceName (вывод))
+            //          return да;
 
-            if (aliasHack){
+            if (aliasHack)
+            {
                 if (lNameAliasHack ())
                     return да;
             }
@@ -528,14 +604,16 @@ public class Demangler
                 return нет;
 
             ткст original = ввод;
-            version(все){
-                if (ввод.length < симвы) {
+            version(все)
+            {
+                if (ввод.length < симвы)
+                {
                     // this may happen when the symbol gets hashed by MD5
                     ввод = пусто;
                     return да;        // try в_ continue
                 }
             }
-            
+
             ввод = ввод[0 .. симвы];
             бцел длин = ввод.length;
             if (templateInstanceName())
@@ -545,7 +623,8 @@ public class Demangler
             }
             ввод = original;
 
-            if(!имя (симвы)){
+            if(!имя (симвы))
+            {
                 return поз.сбрось();
             }
             return да;
@@ -566,9 +645,9 @@ public class Demangler
         {
             debug(traceDemangler) след ("lNameAH");
 
-    //      бцел симвы;
-    //      if (! число (симвы))
-    //          return нет;
+            //      бцел симвы;
+            //      if (! число (симвы))
+            //          return нет;
 
             бцел симвы;
             auto поз=checkpoint();
@@ -576,13 +655,14 @@ public class Demangler
                 return нет;
             сим[10] numberBuf;
             ткст ткт = поз.sliceFrom();
-            if (ткт.length>numberBuf.length){
+            if (ткт.length>numberBuf.length)
+            {
                 return поз.сбрось();
             }
             numberBuf[0..ткт.length]=ткт;
             ткт=numberBuf[0..ткт.length];
             поз.resetOutput();
-            
+
             цел i = 0;
 
             бул готово = нет;
@@ -720,179 +800,191 @@ public class Demangler
             auto поз=checkpoint();
             switch (ввод[0])
             {
-                case 'x':
-                    используй (1);
-                    вывод.добавь ("const ");
-                    if (!тип ()) return поз.сбрось();
+            case 'x':
+                используй (1);
+                вывод.добавь ("const ");
+                if (!тип ()) return поз.сбрось();
+                return да;
+
+            case 'y':
+                используй (1);
+                вывод.добавь ("invariant ");
+                if (!тип ()) return поз.сбрось();
+                return да;
+
+            case 'A':
+                используй (1);
+                if (тип ())
+                {
+                    вывод.добавь ("[]");
                     return да;
+                }
+                return поз.сбрось();
 
-                case 'y':
-                    используй (1);
-                    вывод.добавь ("invariant ");
-                    if (!тип ()) return поз.сбрось();
-                    return да;
-
-                case 'A':
-                    используй (1);
-                    if (тип ())
-                    {
-                        вывод.добавь ("[]");
-                        return да;
-                    }
-                    return поз.сбрось();
-
-                case 'G':
-                    используй (1);
-                    бцел размер;
-                    if (! число (размер))
-                        return нет;
-                    if (тип ()) {
-                        вывод.добавь ("[" ~ ctfe_i2a(размер) ~ "]");
-                        return да;
-                    }
-                    return поз.сбрось();
-
-                case 'H':
-                    используй (1);
-                    auto pos2=checkpoint();
-                    if (! тип ())
-                        return нет;
-                    ткст keytype=pos2.sliceFrom();
-                    вывод.добавь ("[");
-                    auto pos3=checkpoint();
-                    if (тип ())
-                    {
-                        ткст subtype=pos3.sliceFrom();
-                        вывод.добавь ("]");
-                        if (subtype.length<=keytype.length){
-                            auto pos4=checkpoint();
-                            вывод.добавь (keytype);
-                            memmove(&вывод.данные[pos2.длин],&вывод.данные[pos3.длин],subtype.length);
-                            вывод.данные[pos2.длин+keytype.length]='[';
-                            memcpy(&вывод.данные[pos2.длин],&вывод.данные[pos4.длин],keytype.length);
-                            pos4.сбрось();
-                        }
-                        return да;
-                    }
-                    return поз.сбрось();
-
-                case 'P':
-                    используй (1);
-                    if (тип ())
-                    {
-                        вывод.добавь ("*");
-                        return да;
-                    }
+            case 'G':
+                используй (1);
+                бцел размер;
+                if (! число (размер))
                     return нет;
-                case 'F': case 'U': case 'W': case 'V': case 'R': case 'D': case 'M':
-                    return typeFunction ();
-                case 'I': case 'C': case 'S': case 'E': case 'T':
-                    return typeNamed ();
-                case 'n':
-                    используй (1);
-                    вывод.добавь ("Неук");
+                if (тип ())
+                {
+                    вывод.добавь ("[" ~ ctfe_i2a(размер) ~ "]");
                     return да;
-                case 'v':
-                    используй (1);
-                    вывод.добавь ("проц");
-                    return да;
-                case 'g':
-                    используй (1);
-                    вывод.добавь ("байт");
-                    return да;
-                case 'h':
-                    используй (1);
-                    вывод.добавь ("ббайт");
-                    return да;
-                case 's':
-                    используй (1);
-                    вывод.добавь ("крат");
-                    return да;
-                case 't':
-                    используй (1);
-                    вывод.добавь ("бкрат");
-                    return да;
-                case 'i':
-                    используй (1);
-                    вывод.добавь ("цел");
-                    return да;
-                case 'k':
-                    используй (1);
-                    вывод.добавь ("бцел");
-                    return да;
-                case 'l':
-                    используй (1);
-                    вывод.добавь ("дол");
-                    return да;
-                case 'm':
-                    используй (1);
-                    вывод.добавь ("бдол");
-                    return да;
-                case 'f':
-                    используй (1);
-                    вывод.добавь ("плав");
-                    return да;
-                case 'd':
-                    используй (1);
-                    вывод.добавь ("дво");
-                    return да;
-                case 'e':
-                    используй (1);
-                    вывод.добавь ("реал");
-                    return да;
-                case 'q':
-                    используй(1);
-                    вывод.добавь ("кплав");
-                    return да;
-                case 'r':
-                    используй(1);
-                    вывод.добавь ("кдво");
-                    return да;
-                case 'c':
-                    используй(1);
-                    вывод.добавь ("креал");
-                    return да;
-                case 'o':
-                    используй(1);
-                    вывод.добавь ("вплав");
-                    return да;
-                case 'p':
-                    используй(1);
-                    вывод.добавь ("вдво");
-                    return да;
-                case 'j':
-                    используй(1);
-                    вывод.добавь ("вреал");
-                    return да;
-                case 'b':
-                    используй (1);
-                    вывод.добавь ("бул");
-                    return да;
-                case 'a':
-                    используй (1);
-                    вывод.добавь ("сим");
-                    return да;
-                case 'u':
-                    используй (1);
-                    вывод.добавь ("шим");
-                    return да;
-                case 'w':
-                    используй (1);
-                    вывод.добавь ("дим");
-                    return да;
-                case 'B':
-                    используй (1);
-                    бцел счёт;
-                    if (! число (счёт))
-                        return поз.сбрось();
-                    вывод.добавь ('(');
-                    if (! аргументы ())
-                        return поз.сбрось();
-                    вывод.добавь (')');
-                    return да;
+                }
+                return поз.сбрось();
 
-                default:
+            case 'H':
+                используй (1);
+                auto pos2=checkpoint();
+                if (! тип ())
+                    return нет;
+                ткст keytype=pos2.sliceFrom();
+                вывод.добавь ("[");
+                auto pos3=checkpoint();
+                if (тип ())
+                {
+                    ткст subtype=pos3.sliceFrom();
+                    вывод.добавь ("]");
+                    if (subtype.length<=keytype.length)
+                    {
+                        auto pos4=checkpoint();
+                        вывод.добавь (keytype);
+                        memmove(&вывод.данные[pos2.длин],&вывод.данные[pos3.длин],subtype.length);
+                        вывод.данные[pos2.длин+keytype.length]='[';
+                        memcpy(&вывод.данные[pos2.длин],&вывод.данные[pos4.длин],keytype.length);
+                        pos4.сбрось();
+                    }
+                    return да;
+                }
+                return поз.сбрось();
+
+            case 'P':
+                используй (1);
+                if (тип ())
+                {
+                    вывод.добавь ("*");
+                    return да;
+                }
+                return нет;
+            case 'F':
+            case 'U':
+            case 'W':
+            case 'V':
+            case 'R':
+            case 'D':
+            case 'M':
+                return typeFunction ();
+            case 'I':
+            case 'C':
+            case 'S':
+            case 'E':
+            case 'T':
+                return typeNamed ();
+            case 'n':
+                используй (1);
+                вывод.добавь ("Неук");
+                return да;
+            case 'v':
+                используй (1);
+                вывод.добавь ("проц");
+                return да;
+            case 'g':
+                используй (1);
+                вывод.добавь ("байт");
+                return да;
+            case 'h':
+                используй (1);
+                вывод.добавь ("ббайт");
+                return да;
+            case 's':
+                используй (1);
+                вывод.добавь ("крат");
+                return да;
+            case 't':
+                используй (1);
+                вывод.добавь ("бкрат");
+                return да;
+            case 'i':
+                используй (1);
+                вывод.добавь ("цел");
+                return да;
+            case 'k':
+                используй (1);
+                вывод.добавь ("бцел");
+                return да;
+            case 'l':
+                используй (1);
+                вывод.добавь ("дол");
+                return да;
+            case 'm':
+                используй (1);
+                вывод.добавь ("бдол");
+                return да;
+            case 'f':
+                используй (1);
+                вывод.добавь ("плав");
+                return да;
+            case 'd':
+                используй (1);
+                вывод.добавь ("дво");
+                return да;
+            case 'e':
+                используй (1);
+                вывод.добавь ("реал");
+                return да;
+            case 'q':
+                используй(1);
+                вывод.добавь ("кплав");
+                return да;
+            case 'r':
+                используй(1);
+                вывод.добавь ("кдво");
+                return да;
+            case 'c':
+                используй(1);
+                вывод.добавь ("креал");
+                return да;
+            case 'o':
+                используй(1);
+                вывод.добавь ("вплав");
+                return да;
+            case 'p':
+                используй(1);
+                вывод.добавь ("вдво");
+                return да;
+            case 'j':
+                используй(1);
+                вывод.добавь ("вреал");
+                return да;
+            case 'b':
+                используй (1);
+                вывод.добавь ("бул");
+                return да;
+            case 'a':
+                используй (1);
+                вывод.добавь ("сим");
+                return да;
+            case 'u':
+                используй (1);
+                вывод.добавь ("шим");
+                return да;
+            case 'w':
+                используй (1);
+                вывод.добавь ("дим");
+                return да;
+            case 'B':
+                используй (1);
+                бцел счёт;
+                if (! число (счёт))
                     return поз.сбрось();
+                вывод.добавь ('(');
+                if (! аргументы ())
+                    return поз.сбрось();
+                вывод.добавь (')');
+                return да;
+
+            default:
+                return поз.сбрось();
             }
 
             //return да;
@@ -906,7 +998,7 @@ public class Demangler
         body
         {
             debug(traceDemangler) след ("typeFunction");
-            
+
             auto поз=checkpoint();
             бул isMethod = нет;
             бул isDelegate = нет;
@@ -928,34 +1020,34 @@ public class Demangler
 
             switch (ввод[0])
             {
-                case 'F':
-                    используй (1);
-                    break;
+            case 'F':
+                используй (1);
+                break;
 
-                case 'U':
-                    используй (1);
-                    вывод.добавь ("extern(C) ");
-                    break;
+            case 'U':
+                используй (1);
+                вывод.добавь ("extern(C) ");
+                break;
 
-                case 'W':
-                    используй (1);
-                    вывод.добавь ("extern(Windows) ");
-                    break;
+            case 'W':
+                используй (1);
+                вывод.добавь ("extern(Windows) ");
+                break;
 
-                case 'V':
-                    используй (1);
-                    вывод.добавь ("extern(Pascal) ");
-                    break;
+            case 'V':
+                используй (1);
+                вывод.добавь ("extern(Pascal) ");
+                break;
 
-                case 'R':
-                    используй (1);
-                    вывод.добавь ("extern(C++) ");
-                    break;
+            case 'R':
+                используй (1);
+                вывод.добавь ("extern(C++) ");
+                break;
 
-                default:
-                    return поз.сбрось();
+            default:
+                return поз.сбрось();
             }
-            
+
             auto pos2=checkpoint();
             if (isMethod)
                 вывод.добавь (" метод (");
@@ -963,24 +1055,28 @@ public class Demangler
                 вывод.добавь (" delegate (");
             else
                 вывод.добавь (" function (");
-            
+
             аргументы ();
-            version (все){
-                if (0 == ввод.length) {
+            version (все)
+            {
+                if (0 == ввод.length)
+                {
                     // probably MD5 symbol hashing. try в_ continue
                     return да;
                 }
             }
             switch (ввод[0])
             {
-                case 'X': case 'Y': case 'Z':
-                    используй (1);
-                    break;
-                default:
-                    return поз.сбрось();
+            case 'X':
+            case 'Y':
+            case 'Z':
+                используй (1);
+                break;
+            default:
+                return поз.сбрось();
             }
             вывод.добавь (")");
-            
+
             auto pos3=checkpoint();
             if (! тип ())
                 return поз.сбрось();
@@ -1007,7 +1103,8 @@ public class Demangler
 
             auto поз=checkpoint();
             вывод.добавь (", ");
-            if (!аргументы ()){
+            if (!аргументы ())
+            {
                 поз.сбрось;
             }
 
@@ -1028,22 +1125,22 @@ public class Demangler
             auto поз=checkpoint();
             switch (ввод[0])
             {
-                case 'K':
-                    используй (1);
-                    вывод.добавь ("ref ");
-                    break;
+            case 'K':
+                используй (1);
+                вывод.добавь ("ref ");
+                break;
 
-                case 'J':
-                    используй (1);
-                    вывод.добавь ("out ");
-                    break;
+            case 'J':
+                используй (1);
+                вывод.добавь ("out ");
+                break;
 
-                case 'L':
-                    используй (1);
-                    вывод.добавь ("lazy ");
-                    break;
+            case 'L':
+                используй (1);
+                вывод.добавь ("lazy ");
+                break;
 
-                default:
+            default:
             }
 
             if (! тип ())
@@ -1064,33 +1161,33 @@ public class Demangler
             ткст kind;
             switch (ввод[0])
             {
-                case 'I':
-                    используй (1);
-                    kind = "interface";
-                    break;
+            case 'I':
+                используй (1);
+                kind = "interface";
+                break;
 
-                case 'S':
-                    используй (1);
-                    kind = "struct";
-                    break;
+            case 'S':
+                используй (1);
+                kind = "struct";
+                break;
 
-                case 'C':
-                    используй (1);
-                    kind = "class";
-                    break;
+            case 'C':
+                используй (1);
+                kind = "class";
+                break;
 
-                case 'E':
-                    используй (1);
-                    kind = "enum";
-                    break;
+            case 'E':
+                используй (1);
+                kind = "enum";
+                break;
 
-                case 'T':
-                    используй (1);
-                    kind = "typedef";
-                    break;
+            case 'T':
+                используй (1);
+                kind = "typedef";
+                break;
 
-                default:
-                    return нет;
+            default:
+                return нет;
             }
 
             //вывод.добавь (kind);
@@ -1129,9 +1226,11 @@ public class Demangler
             вывод.добавь ("!(");
 
             _templateDepth++;
-            if (_templateDepth <= prefs.templateExpansionDepth) {
+            if (_templateDepth <= prefs.templateExpansionDepth)
+            {
                 templateArgs ();
-            } else {
+            }
+            else {
                 auto pos2=checkpoint();
                 templateArgs ();
                 pos2.resetOutput();
@@ -1183,30 +1282,30 @@ public class Demangler
             auto поз=checkpoint();
             switch (ввод[0])
             {
-                case 'T':
-                    используй (1);
-                    if (! тип ())
-                        return поз.сбрось();
-                    return да;
-
-                case 'V':
-                    используй (1);
-                    auto pos2=checkpoint();
-                    if (! тип ())
-                        return поз.сбрось();
-                    pos2.resetOutput();
-                    if (! значение ())
-                        return поз.сбрось();
-                    return да;
-
-                case 'S':
-                    используй (1);
-                    if (! qualifiedName (да))
-                        return поз.сбрось();
-                    return да;
-
-                default:
+            case 'T':
+                используй (1);
+                if (! тип ())
                     return поз.сбрось();
+                return да;
+
+            case 'V':
+                используй (1);
+                auto pos2=checkpoint();
+                if (! тип ())
+                    return поз.сбрось();
+                pos2.resetOutput();
+                if (! значение ())
+                    return поз.сбрось();
+                return да;
+
+            case 'S':
+                используй (1);
+                if (! qualifiedName (да))
+                    return поз.сбрось();
+                return да;
+
+            default:
+                return поз.сбрось();
             }
 
             //return поз.сбрось;
@@ -1228,48 +1327,49 @@ public class Demangler
 
             switch (ввод[0])
             {
-                case 'n':
-                    используй (1);
-                    return да;
+            case 'n':
+                используй (1);
+                return да;
 
-                case 'N':
-                    используй (1);
-                    вывод.добавь ('-');
-                    if (! numberNoParse ())
-                        return поз.сбрось();
-                    return да;
+            case 'N':
+                используй (1);
+                вывод.добавь ('-');
+                if (! numberNoParse ())
+                    return поз.сбрось();
+                return да;
 
-                case 'e':
-                    используй (1);
-                    if (! hexFloat ())
-                        return поз.сбрось();
-                    return да;
+            case 'e':
+                используй (1);
+                if (! hexFloat ())
+                    return поз.сбрось();
+                return да;
 
-                case 'c': //TODO
+            case 'c': //TODO
 
-                case 'A':
-                    используй (1);
-                    бцел счёт;
-                    if (! число (счёт))
-                        return поз.сбрось();
-                    if (счёт>0) {
-                        вывод.добавь ("[");
-                        for (бцел i = 0; i < счёт-1; i++)
-                        {
-                            if (! значение ())
-                                return поз.сбрось();
-                            вывод.добавь (", ");
-                        }
+            case 'A':
+                используй (1);
+                бцел счёт;
+                if (! число (счёт))
+                    return поз.сбрось();
+                if (счёт>0)
+                {
+                    вывод.добавь ("[");
+                    for (бцел i = 0; i < счёт-1; i++)
+                    {
                         if (! значение ())
                             return поз.сбрось();
+                        вывод.добавь (", ");
                     }
-                    вывод.добавь ("]");
-                    return да;
-
-                default:
-                    if (! numberNoParse ())
+                    if (! значение ())
                         return поз.сбрось();
-                    return да;
+                }
+                вывод.добавь ("]");
+                return да;
+
+            default:
+                if (! numberNoParse ())
+                    return поз.сбрось();
+                return да;
             }
 
             //return поз.сбрось();
@@ -1398,6 +1498,7 @@ private struct Буфер
 /// the default demangler
 static Demangler demangler;
 
-static this(){
+static this()
+{
     demangler=new Demangler(1);
 }

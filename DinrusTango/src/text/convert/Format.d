@@ -3,7 +3,7 @@
         copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
 
         license:        BSD стиль: $(LICENSE)
-        
+
         version:        Sep 2007: Initial release
         version:        Nov 2007: добавьed поток wrappers
 
@@ -25,6 +25,6 @@ public Выкладка!(сим) Формат;
 
 static this()
 {
-        Формат = Выкладка!(сим).экземпляр;
+    Формат = Выкладка!(сим).экземпляр;
 }
 

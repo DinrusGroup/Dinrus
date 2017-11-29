@@ -172,14 +172,15 @@ debug (UnitTest)
             "4162436445664768496A4B6C4D6E4F7051725374557658795A",
         ];
 
-        for (т_мера i; i < testНеобр.length; i++) {
+        for (т_мера i; i < testНеобр.length; i++)
+        {
             auto resultChars = кодируй(cast(ббайт[])testНеобр[i]);
             assert(resultChars == testEnc[i],
-                    testНеобр[i]~": ("~resultChars~") != ("~testEnc[i]~")");
+            testНеобр[i]~": ("~resultChars~") != ("~testEnc[i]~")");
 
             auto resultBytes = раскодируй(testEnc[i]);
             assert(resultBytes == cast(ббайт[])testНеобр[i],
-                    testEnc[i]~": ("~cast(ткст)resultBytes~") != ("~testНеобр[i]~")");
+            testEnc[i]~": ("~cast(ткст)resultBytes~") != ("~testНеобр[i]~")");
         }
     }
 }

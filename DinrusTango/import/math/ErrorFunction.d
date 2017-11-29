@@ -27,10 +27,12 @@ module math.ErrorFunction;
 import math.Math;
 import math.IEEE;  // only требуется for unit tests
 
-version(Windows) { // Some tests only пароль on DMD Windows
-    version(DigitalMars) {
-    version = FailsOnLinux;
-}
+version(Windows)   // Some tests only пароль on DMD Windows
+{
+    version(DigitalMars)
+    {
+        version = FailsOnLinux;
+    }
 }
 
 const реал КВКОР2ПИ = 0x1.40d931ff62705966p+1L;    // 2.5066282746310005024
@@ -95,44 +97,45 @@ const реал ЭКСП_2  = 0.13533528323661269189L; /* эксп(-2) */
 
 
 
-package {
-/*
-Computes the нормаль ни в каком дистрибутиве function.
+package
+{
+    /*
+    Computes the нормаль ни в каком дистрибутиве function.
 
-The нормаль (or Gaussian, or bell-shaped) ни в каком дистрибутиве is
-defined as:
+    The нормаль (or Gaussian, or bell-shaped) ни в каком дистрибутиве is
+    defined as:
 
-normalDist(x) = 1/$(SQRT) &pi; $(INTEGRAL -$(INFINITY), x) эксп( - $(POWER t, 2)/2) dt
-    = 0.5 + 0.5 * матош(x/квкор(2))
-    = 0.5 * матошфунк(- x/квкор(2))
+    normalDist(x) = 1/$(SQRT) &pi; $(INTEGRAL -$(INFINITY), x) эксп( - $(POWER t, 2)/2) dt
+        = 0.5 + 0.5 * матош(x/квкор(2))
+        = 0.5 * матошфунк(- x/квкор(2))
 
-To maintain accuracy at high значения of x, use
-normalDistribution(x) = 1 - normalDistribution(-x).
+    To maintain accuracy at high значения of x, use
+    normalDistribution(x) = 1 - normalDistribution(-x).
 
-Accuracy:
-Within a few биты of machine resolution over the entire
-range.
+    Accuracy:
+    Within a few биты of machine resolution over the entire
+    range.
 
-References:
-$(LINK http://www.netlib.org/cephes/ldoubdoc.html),
-G. Marsaglia, "Evaluating the Нормальный Distribution",
-Journal of Statistical Software <b>11</b>, (July 2004).
-*/
-реал normalDistributionImpl(реал a);
+    References:
+    $(LINK http://www.netlib.org/cephes/ldoubdoc.html),
+    G. Marsaglia, "Evaluating the Нормальный Distribution",
+    Journal of Statistical Software <b>11</b>, (July 2004).
+    */
+    реал normalDistributionImpl(реал a);
 
 
-/*
- * Inverse of Нормальный ни в каком дистрибутиве function
- *
- * Returns the аргумент, x, for which the area under the
- * Нормальный probability density function (integrated из_
- * minus infinity в_ x) is equal в_ p.
- *
- * For small аргументы 0 < p < эксп(-2), the program computes
- * z = квкор( -2 лог(p) );  then the approximation is
- * x = z - лог(z)/z  - (1/z) P(1/z) / Q(1/z) .
- * For larger аргументы,  x/квкор(2 pi) = w + w^3 R(w^2)/S(w^2)) ,
- * where w = p - 0.5 .
- */
-реал normalDistributionInvImpl(реал p);
+    /*
+     * Inverse of Нормальный ни в каком дистрибутиве function
+     *
+     * Returns the аргумент, x, for which the area under the
+     * Нормальный probability density function (integrated из_
+     * minus infinity в_ x) is equal в_ p.
+     *
+     * For small аргументы 0 < p < эксп(-2), the program computes
+     * z = квкор( -2 лог(p) );  then the approximation is
+     * x = z - лог(z)/z  - (1/z) P(1/z) / Q(1/z) .
+     * For larger аргументы,  x/квкор(2 pi) = w + w^3 R(w^2)/S(w^2)) ,
+     * where w = p - 0.5 .
+     */
+    реал normalDistributionInvImpl(реал p);
 }

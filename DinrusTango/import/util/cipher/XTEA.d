@@ -15,24 +15,24 @@ class XTEA : ШифрБлок
     private
     {
         static const бцел ROUNDS = 32,
-                          KEY_SIZE = 16,
-                          BLOCK_SIZE = 8,
-                          DELTA = 0x9e3779b9u;
+        KEY_SIZE = 16,
+        BLOCK_SIZE = 8,
+        DELTA = 0x9e3779b9u;
         бцел[] subkeys,
-               sum0,
-               sum1;
+        sum0,
+        sum1;
     }
-    
+
     final override проц сбрось();
-    
+
     final override ткст имя();
-    
+
     final override бцел размерБлока();
-    
+
     final проц init(бул зашифруй, СимметричныйКлюч keyParams);
-    
+
     final override бцел обнови(проц[] input_, проц[] output_);
-    
+
     /** Some XTEA тест vectors. */
     debug (UnitTest)
     {
@@ -50,7 +50,7 @@ class XTEA : ШифрБлок
                 "00000000000000000000000000000000",
                 "00000000000000000000000000000000"
             ];
-                 
+
             static ткст[] test_plaintexts = [
                 "0000000000000000",
                 "0102030405060708",
@@ -63,7 +63,7 @@ class XTEA : ШифрБлок
                 "0123456789abcdef",
                 "4141414141414141"
             ];
-                
+
             static ткст[] test_ciphertexts = [
                 "dee9d4d8f7131ed9",
                 "065c1b8975c6a816",
@@ -76,27 +76,27 @@ class XTEA : ШифрБлок
                 "7e66c71c88897221",
                 "ed23375a821a8c2d"
             ];
-                
+
             XTEA t = new XTEA();
             foreach (бцел i, ткст test_key; test_keys)
             {
                 ббайт[] буфер = new ббайт[t.размерБлока];
                 ткст результат;
                 СимметричныйКлюч ключ = new СимметричныйКлюч(БайтКонвертер.hexDecode(test_key));
-                
+
                 // Encryption
                 t.init(да, ключ);
                 t.обнови(БайтКонвертер.hexDecode(test_plaintexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
                 assert(результат == test_ciphertexts[i],
-                        t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
-    
+                t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
+
                 // Decryption
                 t.init(нет, ключ);
                 t.обнови(БайтКонвертер.hexDecode(test_ciphertexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
                 assert(результат == test_plaintexts[i],
-                        t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
+                t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
             }
         }
     }

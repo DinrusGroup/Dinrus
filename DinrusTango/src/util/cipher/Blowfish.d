@@ -59,7 +59,7 @@ class Blowfish : ШифрБлок
             0xd60f573fu, 0xbc9bc6e4u, 0x2b60a476u, 0x81e67400u, 0x08ba6fb5u, 0x571be91fu,
             0xf296ec6bu, 0x2a0dd915u, 0xb6636521u, 0xe7b9f9b6u, 0xff34052eu, 0xc5855664u,
             0x53b02d5du, 0xa99f8fa1u, 0x08ba4799u, 0x6e85076au,
-            
+
             0x4b7a70e9u, 0xb5b32944u, 0xdb75092eu, 0xc4192623u, 0xad6ea6b0u, 0x49a7df7du,
             0x9cee60b8u, 0x8fedb266u, 0xecaa8c71u, 0x699a17ffu, 0x5664526cu, 0xc2b19ee1u,
             0x193602a5u, 0x75094c29u, 0xa0591340u, 0xe4183a3eu, 0x3f54989au, 0x5b429d65u,
@@ -103,7 +103,7 @@ class Blowfish : ШифрБлок
             0x9e447a2eu, 0xc3453484u, 0xfdd56705u, 0x0e1e9ec9u, 0xdb73dbd3u, 0x105588cdu,
             0x675fda79u, 0xe3674340u, 0xc5c43465u, 0x713e38d8u, 0x3d28f89eu, 0xf16dff20u,
             0x153e21e7u, 0x8fb03d4au, 0xe6e39f2bu, 0xdb83adf7u,
-            
+
             0xe93d5a68u, 0x948140f7u, 0xf64c261cu, 0x94692934u, 0x411520f7u, 0x7602d4f7u,
             0xbcf46b2eu, 0xd4a20068u, 0xd4082471u, 0x3320f46au, 0x43b7d4b7u, 0x500061afu,
             0x1e39f62eu, 0x97244546u, 0x14214f74u, 0xbf8b8840u, 0x4d95fc1du, 0x96b591afu,
@@ -147,7 +147,7 @@ class Blowfish : ШифрБлок
             0xed545578u, 0x08fca5b5u, 0xd83d7cd3u, 0x4dad0fc4u, 0x1e50ef5eu, 0xb161e6f8u,
             0xa28514d9u, 0x6c51133cu, 0x6fd5c7e7u, 0x56e14ec4u, 0x362abfceu, 0xddc6c837u,
             0xd79a3234u, 0x92638212u, 0x670efa8eu, 0x406000e0u,
-            
+
             0x3a39ce37u, 0xd3faf5cfu, 0xabc27737u, 0x5ac52d1bu, 0x5cb0679eu, 0x4fa33742u,
             0xd3822740u, 0x99bc9bbeu, 0xd5118e9du, 0xbf0f7315u, 0xd62d1c7eu, 0xc700c47bu,
             0xb78c1b6bu, 0x21a19045u, 0xb26eb1beu, 0x6a366eb4u, 0x5748ab2fu, 0xbc946e79u,
@@ -192,79 +192,79 @@ class Blowfish : ШифрБлок
             0x01c36ae4u, 0xd6ebe1f9u, 0x90d4f869u, 0xa65cdea0u, 0x3f09252du, 0xc208e69fu,
             0xb74e6132u, 0xce77e25bu, 0x578fdfe3u, 0x3ac372e6u
         ];
-        
+
         static const бцел[18] P_INIT = [
             0x243f6a88u, 0x85a308d3u, 0x13198a2eu, 0x03707344u, 0xa4093822u, 0x299f31d0u,
             0x082efa98u, 0xec4e6c89u, 0x452821e6u, 0x38d01377u, 0xbe5466cfu, 0x34e90c6cu,
             0xc0ac29b7u, 0xc97c50ddu, 0x3f84d5b5u, 0xb5470917u, 0x9216d5d9u, 0x8979fb1bu
         ];
-        
+
         static const бцел BLOCK_SIZE = 8,
-                          ROUNDS = 16,
-                          SBOX_SIZE = 256,
-                          PBOX_SIZE = 18,
-                          MAX_KEY_SIZE = 56, // 448 биты
-                          MIN_KEY_SIZE = 4; // 32 биты
+        ROUNDS = 16,
+        SBOX_SIZE = 256,
+        PBOX_SIZE = 18,
+        MAX_KEY_SIZE = 56, // 448 биты
+        MIN_KEY_SIZE = 4; // 32 биты
         бцел[18] P;
         бцел[256] S0, S1, S2, S3;
         ббайт[] workingKey;
     } // конец private
-    
+
     final override ткст имя()
     {
         return "Blowfish";
     }
-    
+
     final override бцел размерБлока()
     {
         return BLOCK_SIZE;
     }
-    
+
     final проц init(бул зашифруй, СимметричныйКлюч keyParams)
     {
         _encrypt = зашифруй;
-        
+
         бцел длин = keyParams.ключ.length;
         if (длин < MIN_KEY_SIZE || длин > MAX_KEY_SIZE)
             не_годится(имя()~": Неверный ключ length (требует 4-56 байты)");
-        
+
         workingKey = keyParams.ключ;
-        
+
         // Yes, this is ghetto. I know.
         _initialized = да;
-        
+
         установи(workingKey);
-        
+
         if (!_encrypt)
             P.reverse; // Oh да I dопр.
     }
-    
+
     private бцел F(бцел x)
     {
-        return (((S0[(x >> 24)] 
-                + S1[cast(ббайт)(x >> 16)])
-                ^ S2[cast(ббайт)(x >> 8)]) 
+        return (((S0[(x >> 24)]
+                  + S1[cast(ббайт)(x >> 16)])
+                 ^ S2[cast(ббайт)(x >> 8)])
                 + S3[cast(ббайт)x]);
     }
-    
+
     final override бцел обнови(проц[] input_, проц[] output_)
     {
         if (!_initialized)
             не_годится(имя()~": Шифр not инициализован.");
-        
+
         ббайт[] ввод = cast(ббайт[]) input_,
-                вывод = cast(ббайт[]) output_;
-                    
+        вывод = cast(ббайт[]) output_;
+
         if (ввод.length < BLOCK_SIZE)
             не_годится (имя()~": Ввод буфер too крат");
-            
+
         if (вывод.length < BLOCK_SIZE)
             не_годится (имя()~": Вывод буфер too крат");
-        
+
         бцел xl = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[0..4]),
-             xr = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[4..8]),
-             i = 0;
-        
+                 xr = БайтКонвертер.БигЭндиан.в_!(бцел)(ввод[4..8]),
+                 i = 0;
+
         xl ^= P[i++];
         for (; i < ROUNDS;)
         {
@@ -272,18 +272,18 @@ class Blowfish : ШифрБлок
             xl ^= F(xr) ^ P[i++];
         }
         xr ^= P[i];
-  
+
         вывод[0..4] = БайтКонвертер.БигЭндиан.из_!(бцел)(xr);
         вывод[4..8] = БайтКонвертер.БигЭндиан.из_!(бцел)(xl);
-        
+
         return BLOCK_SIZE;
     }
-    
+
     final override проц сбрось()
     {
         установи(workingKey);
     }
-    
+
     private проц установи(ббайт[] ключ)
     {
         S0[] = S_INIT[0..256];
@@ -291,7 +291,7 @@ class Blowfish : ШифрБлок
         S2[] = S_INIT[512..768];
         S3[] = S_INIT[768..1024];
         P[] = P_INIT[];
-        
+
         бцел индекс = 0;
 
         for (цел i = 0; i < PBOX_SIZE; i++)
@@ -303,10 +303,10 @@ class Blowfish : ШифрБлок
                 if (индекс == ключ.length)
                     индекс = 0;
             }
-            
+
             P[i] ^= x;
         }
-        
+
         ббайт[] t = new ббайт[BLOCK_SIZE]; // Initialized в_ 0's
         for (цел i = 0; i < PBOX_SIZE;)
         {
@@ -314,28 +314,28 @@ class Blowfish : ШифрБлок
             P[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[0..4]);
             P[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[4..8]);
         }
-        
+
         for (цел i = 0; i < SBOX_SIZE;)
         {
             обнови(t, t);
             S0[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[0..4]);
             S0[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[4..8]);
         }
-        
+
         for (цел i = 0; i < SBOX_SIZE;)
         {
             обнови(t, t);
             S1[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[0..4]);
             S1[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[4..8]);
         }
-        
+
         for (цел i = 0; i < SBOX_SIZE;)
         {
             обнови(t, t);
             S2[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[0..4]);
             S2[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[4..8]);
         }
-        
+
         for (цел i = 0; i < SBOX_SIZE;)
         {
             обнови(t, t);
@@ -343,7 +343,7 @@ class Blowfish : ШифрБлок
             S3[i++] = БайтКонвертер.БигЭндиан.в_!(бцел)(t[4..8]);
         }
     }
-    
+
 
 }
 
@@ -361,7 +361,7 @@ debug (UnitTest)
             "1111111111111111",
             "fedcba9876543210"
         ];
-             
+
         static ткст[] test_plaintexts = [
             "0000000000000000",
             "ffffffffffffffff",
@@ -371,7 +371,7 @@ debug (UnitTest)
             "0123456789abcdef",
             "0123456789abcdef"
         ];
-            
+
         static ткст[] test_ciphertexts = [
             "4ef997456198dd78",
             "51866fd5b85ecb8a",
@@ -381,27 +381,27 @@ debug (UnitTest)
             "7d0cc630afda1ec7",
             "0aceab0fc6a0a28d"
         ];
-            
+
         Blowfish t = new Blowfish();
         foreach (бцел i, ткст test_key; test_keys)
         {
             ббайт[] буфер = new ббайт[t.размерБлока];
             ткст результат;
             СимметричныйКлюч ключ = new СимметричныйКлюч(БайтКонвертер.hexDecode(test_key));
-            
+
             // Encryption
             t.init(да, ключ);
             t.обнови(БайтКонвертер.hexDecode(test_plaintexts[i]), буфер);
             результат = БайтКонвертер.hexEncode(буфер);
             assert(результат == test_ciphertexts[i],
-                    t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
-        
+            t.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
+
             // Decryption
             t.init(нет, ключ);
             t.обнови(БайтКонвертер.hexDecode(test_ciphertexts[i]), буфер);
             результат = БайтКонвертер.hexEncode(буфер);
             assert(результат == test_plaintexts[i],
-                    t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
+            t.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
         }
     }
 }

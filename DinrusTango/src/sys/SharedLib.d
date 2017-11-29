@@ -10,27 +10,35 @@
 module sys.SharedLib;
 
 
-private {
-    import stringz : изТкст0;
+private
+{
+import stringz :
+    изТкст0;
 
-    version (Windows) {
-        import sys.Common : СисОш;
-        import base : HINSTANCE, HMODULE, BOOL;
+    version (Windows)
+    {
+import sys.Common :
+        СисОш;
+import base :
+        HINSTANCE, HMODULE, BOOL;
 
-        extern (Windows) {
+        extern (Windows)
+        {
             ук  GetProcAddress(HINSTANCE, сим*);
             BOOL FreeLibrary(HMODULE);
 
             version (Win32SansUnicode)
-                     HINSTANCE LoadLibraryA(сим*);
-                else {
-                   enum {CP_UTF8 = 65001}
-                   HINSTANCE LoadLibraryW(шим*);
-                   цел MultiByteToWideChar(бцел, бцел, сим*, цел, шим*, цел);
-                }
+            HINSTANCE LoadLibraryA(сим*);
+            else
+            {
+                enum {CP_UTF8 = 65001}
+                HINSTANCE LoadLibraryW(шим*);
+                цел MultiByteToWideChar(бцел, бцел, сим*, цел, шим*, цел);
+            }
         }
     }
-    else version (Posix) {
+    else version (Posix)
+    {
         import rt.core.stdc.posix.dlfcn;
     }
     else {
@@ -40,8 +48,12 @@ private {
     version (SharedLibVerbose) import util.log.Trace;
 }
 
-version (Posix) {
-    version (freebsd) { } else { pragma (lib, "dl"); }
+version (Posix)
+{
+    version (freebsd) { } else
+    {
+        pragma (lib, "dl");
+    }
 }
 
 
@@ -84,13 +96,15 @@ version (Posix) {
     Note:
     Длл is нить-safe.
   */
- 
-final class Длл {
+
+final class Длл
+{
 
 
 
     /// Mapped из_ RTLD_NOW, RTLD_LAZY, RTLD_GLOBAL and RTLD_LOCAL
-    enum ПРежимЗагрузки {
+    enum ПРежимЗагрузки
+    {
         Сейчас = 0b1,
         Отложенный = 0b10,
         Глобальный = 0b100,
@@ -112,8 +126,9 @@ final class Длл {
             A Длл экземпляр being a укз в_ the library, or throws
             ИсклДлл if it could not be загружен
       */
-    static Длл загрузи(ткст путь, ПРежимЗагрузки режим = ПРежимЗагрузки.Сейчас | ПРежимЗагрузки.Глобальный) {
-    	return loadImpl(путь, режим, да);
+    static Длл загрузи(ткст путь, ПРежимЗагрузки режим = ПРежимЗагрузки.Сейчас | ПРежимЗагрузки.Глобальный)
+    {
+        return loadImpl(путь, режим, да);
     }
 
 
@@ -132,21 +147,26 @@ final class Длл {
             A Длл экземпляр being a укз в_ the library, or пусто if it
             could not be загружен
       */
-    static Длл загрузиБезИскл(ткст путь, ПРежимЗагрузки режим = ПРежимЗагрузки.Сейчас | ПРежимЗагрузки.Глобальный) {
-    	return loadImpl(путь, режим, нет);
+    static Длл загрузиБезИскл(ткст путь, ПРежимЗагрузки режим = ПРежимЗагрузки.Сейчас | ПРежимЗагрузки.Глобальный)
+    {
+        return loadImpl(путь, режим, нет);
     }
 
 
-    private static Длл loadImpl(ткст путь, ПРежимЗагрузки режим, бул выводИсключений) {
+    private static Длл loadImpl(ткст путь, ПРежимЗагрузки режим, бул выводИсключений)
+    {
         Длл рез;
 
-        synchronized (стопор) {
+        synchronized (стопор)
+        {
             auto lib = путь in loadedLibs;
-            if (lib) {
+            if (lib)
+            {
                 version (SharedLibVerbose) След.форматнс("Длл найдено in the hashmap");
                 рез = *lib;
             }
-            else {
+            else
+            {
                 version (SharedLibVerbose) След.форматнс("Creating a new экземпляр of Длл");
                 рез = new Длл(путь);
                 loadedLibs[путь] = рез;
@@ -158,22 +178,32 @@ final class Длл {
         бул delRes = нет;
         Исключение exc;
 
-        synchronized (рез) {
-            if (!рез.загружен) {
+        synchronized (рез)
+        {
+            if (!рез.загружен)
+            {
                 version (SharedLibVerbose) След.форматнс("Loading the Длл");
-                try {
+                try
+                {
                     рез.load_(режим, выводИсключений);
-                } catch (Исключение e) {
+                }
+                catch (Исключение e)
+                {
                     exc = e;
                 }
             }
 
-            if (рез.загружен) {
+            if (рез.загружен)
+            {
                 version (SharedLibVerbose) След.форматнс("Длл successfully загружен, returning");
                 return рез;
-            } else {
-                synchronized (стопор) {
-                    if (путь in loadedLibs) {
+            }
+            else
+            {
+                synchronized (стопор)
+                {
+                    if (путь in loadedLibs)
+                    {
                         version (SharedLibVerbose) След.форматнс("Removing the Длл из_ the hashmap");
                         loadedLibs.remove(путь);
                     }
@@ -181,17 +211,20 @@ final class Длл {
             }
 
             // сделай sure that only one нить will delete the объект
-            if (0 == --рез.refCnt) {
+            if (0 == --рез.refCnt)
+            {
                 delRes = да;
             }
         }
 
-        if (delRes) {
+        if (delRes)
+        {
             version (SharedLibVerbose) След.форматнс("Deleting the Длл");
             delete рез;
         }
 
-        if (exc !is пусто) {
+        if (exc !is пусто)
+        {
             throw exc;
         }
 
@@ -209,8 +242,9 @@ final class Длл {
 
         Throws ИсклДлл on failure. In this case, the Длл объект is not deleted.
       */
-    проц выгрузи() {
-    	return unloadImpl(да);
+    проц выгрузи()
+    {
+        return unloadImpl(да);
     }
 
 
@@ -221,24 +255,32 @@ final class Длл {
         It's не_годится в_ use the объект after выгрузи() есть been called, as выгрузи()
         will delete it if it's not referenced any ещё.
       */
-    проц выгрузиБезИскл() {
-    	return unloadImpl(нет);
+    проц выгрузиБезИскл()
+    {
+        return unloadImpl(нет);
     }
 
 
-    private проц unloadImpl(бул выводИсключений) {
+    private проц unloadImpl(бул выводИсключений)
+    {
         бул deleteThis = нет;
 
-        synchronized (this) {
+        synchronized (this)
+        {
             assert (загружен);
             assert (refCnt > 0);
 
-            synchronized (стопор) {
-                if (--refCnt <= 0) {
+            synchronized (стопор)
+            {
+                if (--refCnt <= 0)
+                {
                     version (SharedLibVerbose) След.форматнс("Unloading the Длл");
-                    try {
+                    try
+                    {
                         unload_(выводИсключений);
-                    } catch (Исключение e) {
+                    }
+                    catch (Исключение e)
+                    {
                         ++refCnt;
                         throw e;
                     }
@@ -250,7 +292,8 @@ final class Длл {
                 }
             }
         }
-        if (deleteThis) {
+        if (deleteThis)
+        {
             version (SharedLibVerbose) След.форматнс("Deleting the Длл");
             delete this;
         }
@@ -260,7 +303,8 @@ final class Длл {
     /**
         Returns the путь в_ the OS-specific shared library associated with this объект.
       */
-    ткст путь() {
+    ткст путь()
+    {
         return this.path_;
     }
 
@@ -275,8 +319,9 @@ final class Длл {
             A pointer в_ the symbol or throws ИсклДлл if it's
             not present in the library.
       */
-    ук  дайСимвол(сим* имя) {
-    	return getSymbolImpl(имя, да);
+    ук  дайСимвол(сим* имя)
+    {
+        return getSymbolImpl(имя, да);
     }
 
 
@@ -289,12 +334,14 @@ final class Длл {
         Возвращает:
             A pointer в_ the symbol or пусто if it's not present in the library.
       */
-    ук  дайСимволБезИскл(сим* имя) {
-    	return getSymbolImpl(имя, нет);
+    ук  дайСимволБезИскл(сим* имя)
+    {
+        return getSymbolImpl(имя, нет);
     }
 
 
-    private ук  getSymbolImpl(сим* имя, бул выводИсключений) {
+    private ук  getSymbolImpl(сим* имя, бул выводИсключений)
+    {
         assert (загружен);
         return getSymbol_(имя, выводИсключений);
     }
@@ -304,54 +351,68 @@ final class Длл {
     /**
         Returns the total число of libraries currently загружен by Длл
       */
-    static бцел члоЗагруженыхБибл() {
+    static бцел члоЗагруженыхБибл()
+    {
         return loadedLibs.keys.length;
     }
 
 
-    private {
-        version (Windows) {
+    private
+    {
+        version (Windows)
+        {
             HMODULE укз;
 
-            проц load_(ПРежимЗагрузки режим, бул выводИсключений) {
+            проц load_(ПРежимЗагрузки режим, бул выводИсключений)
+            {
                 version (Win32SansUnicode)
-                         укз = LoadLibraryA((this.path_ ~ \0).ptr);
-                    else {
-                         шим[1024] врем =void;
-                         auto i = MultiByteToWideChar (CP_UTF8, 0,
-                                                       путь.ptr, путь.length,
-                                                       врем.ptr, врем.length-1);
-                         if (i > 0)
-                            {
-                            врем[i] = 0;
-                            укз = LoadLibraryW (врем.ptr);
-                            }
+                укз = LoadLibraryA((this.path_ ~ \0).ptr);
+                else
+                {
+                    шим[1024] врем =void;
+                    auto i = MultiByteToWideChar (CP_UTF8, 0,
+                    путь.ptr, путь.length,
+                    врем.ptr, врем.length-1);
+                    if (i > 0)
+                    {
+                        врем[i] = 0;
+                        укз = LoadLibraryW (врем.ptr);
                     }
-                if (укз is пусто && выводИсключений) {
+                }
+                if (укз is пусто && выводИсключений)
+                {
                     throw new ИсклДлл("Не удаётся загрузить динамическую библиотеку '" ~ this.path_ ~ "' : " ~ СисОш.последнСооб);
                 }
             }
 
-            ук  getSymbol_(сим* имя, бул выводИсключений) {
+            ук  getSymbol_(сим* имя, бул выводИсключений)
+            {
                 // MSDN: "MultИПle threads do not overwrite each другой's последний-ошибка код."
                 auto рез = GetProcAddress(укз, имя);
-                if (рез is пусто && выводИсключений) {
+                if (рез is пусто && выводИсключений)
+                {
                     throw new ИсклДлл("Не удалось загрузить символ '" ~ изТкст0(имя) ~ "' из динамической библиотеки '" ~ this.path_ ~ "' : " ~ СисОш.последнСооб);
-                } else {
+                }
+                else
+                {
                     return рез;
                 }
             }
 
-            проц unload_(бул выводИсключений) {
-                if (0 == FreeLibrary(укз) && выводИсключений) {
+            проц unload_(бул выводИсключений)
+            {
+                if (0 == FreeLibrary(укз) && выводИсключений)
+                {
                     throw new ИсклДлл("Не удалось выгрузить динамическую библиотеку '" ~ this.path_ ~ "' : " ~ СисОш.последнСооб);
                 }
             }
         }
-        else version (Posix) {
+        else version (Posix)
+        {
             ук  укз;
 
-            проц load_(ПРежимЗагрузки режим, бул выводИсключений) {
+            проц load_(ПРежимЗагрузки режим, бул выводИсключений)
+            {
                 цел mode_;
                 if (режим & ПРежимЗагрузки.Сейчас) mode_ |= RTLD_NOW;
                 if (режим & ПРежимЗагрузки.Отложенный) mode_ |= RTLD_LAZY;
@@ -359,31 +420,42 @@ final class Длл {
                 if (режим & ПРежимЗагрузки.Локальный) mode_ |= RTLD_LOCAL;
 
                 укз = dlopen((this.path_ ~ \0).ptr, mode_);
-                if (укз is пусто && выводИсключений) {
+                if (укз is пусто && выводИсключений)
+                {
                     throw new ИсклДлл("Не удалось загрузить динамическую библиотеку: " ~ изТкст0(dlerror()));
                 }
             }
 
-            ук  getSymbol_(сим* имя, бул выводИсключений) {
-                if (выводИсключений) {
-                    synchronized (typeof(this).classinfo) { // dlerror need not be reentrant
+            ук  getSymbol_(сим* имя, бул выводИсключений)
+            {
+                if (выводИсключений)
+                {
+                    synchronized (typeof(this).classinfo)   // dlerror need not be reentrant
+                    {
                         auto err = dlerror();               // сотри previous ошибка condition
                         auto рез = dlsym(укз, имя);     // результат of пусто does NOT indicate ошибка
-                        
+
                         err = dlerror();                    // check for ошибка condition
-                        if (err !is пусто) {
+                        if (err !is пусто)
+                        {
                             throw new ИсклДлл("Не удалось загрузить символ: " ~ изТкст0(err));
-                        } else {
+                        }
+                        else
+                        {
                             return рез;
                         }
                     }
-                } else {
+                }
+                else
+                {
                     return dlsym(укз, имя);
                 }
             }
 
-            проц unload_(бул выводИсключений) {
-                if (0 != dlclose(укз) && выводИсключений) {
+            проц unload_(бул выводИсключений)
+            {
+                if (0 != dlclose(укз) && выводИсключений)
+                {
                     throw new ИсклДлл("Не удалось выгрузить динамическую библиотеку: " ~ изТкст0(dlerror()));
                 }
             }
@@ -397,33 +469,39 @@ final class Длл {
         цел refCnt = 0;
 
 
-        бул загружен() {
+        бул загружен()
+        {
             return укз !is пусто;
         }
 
 
-        this(ткст путь) {
+        this(ткст путь)
+        {
             this.path_ = путь.dup;
         }
     }
 
 
-    private static {
+    private static
+    {
         Длл[ткст] loadedLibs;
         Объект стопор;
     }
 
 
-    static this() {
+    static this()
+    {
         стопор = new Объект;
     }
 }
 
 
-class ИсклДлл : Исключение {
+class ИсклДлл : Исключение
+{
 
 
-    this (ткст сооб) {
+    this (ткст сооб)
+    {
         super(сооб);
     }
 }
@@ -433,8 +511,8 @@ class ИсклДлл : Исключение {
 
 debug (Длл)
 {
-        проц main()
-        {       
-                auto lib = new Длл("foo");
-        }
+    проц main()
+    {
+        auto lib = new Длл("foo");
+    }
 }

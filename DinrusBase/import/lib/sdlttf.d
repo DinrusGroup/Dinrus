@@ -2,8 +2,8 @@
 
 private
 {
- import stdrus, lib.sdl;
-pragma(lib,"dinrus.lib");;
+    import stdrus, lib.sdl;
+    pragma(lib,"dinrus.lib");;
 }
 
 private проц грузи(Биб биб)
@@ -48,9 +48,10 @@ private проц грузи(Биб биб)
 
 
 ЖанБибгр СДЛттф;
-static this() {
+static this()
+{
     СДЛттф.заряжай("SDL_ttf.dll", &грузи);
-	СДЛттф.загружай();
+    СДЛттф.загружай();
 }
 
 enum : Uint8
@@ -86,7 +87,10 @@ void SDL_TTF_VERSION(SDL_version* X)
     X.patch = SDL_TTF_PATCHLEVEL;
 }
 
-void TTF_VERSION(SDL_version* X) { SDL_TTF_VERSION(X); }
+void TTF_VERSION(SDL_version* X)
+{
+    SDL_TTF_VERSION(X);
+}
 
 extern (C)
 {

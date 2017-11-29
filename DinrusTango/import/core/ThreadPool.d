@@ -148,39 +148,42 @@ private:
 
 debug (Катушка)
 {
-        import util.log.Trace;
-        import Целое = text.convert.Integer;
+    import util.log.Trace;
+    import Целое = text.convert.Integer;
 
-        проц main(ткст[] арги)
+    проц main(ткст[] арги)
+    {
+        дол дело(дол знач)
         {
-                дол дело(дол знач)
-                {
-                        // a 'big дело'
-                        Нить.сон (3.0/знач);
-                        return знач;
-                }
-
-                проц hashJob(ткст файл)
-                {
-                        // If we don't catch exceptions the нить-обойма will still
-                        // work, but the дело will краш silently
-                        try {
-                            дол n = Целое.разбор(файл);
-                            След.форматнс("дело({}) = {}", n, дело(n));
-                            } catch (Исключение ex) {
-                                    След.форматнс("Исключение: {}", ex.сооб);
-                                    }
-                }
-
-                // Create new нить обойма with one трудяга нить per файл given
-                auto катушка = new Катушка!(ткст)(арги.length - 1);
-
-                Нить.сон(1);
-                След.форматнс ("стартуем");
-
-                foreach (файл; арги[1 .. арги.length])
-                         катушка.присвой(&hashJob, файл);
-
-                катушка.финиш();
+            // a 'big дело'
+            Нить.сон (3.0/знач);
+            return знач;
         }
+
+        проц hashJob(ткст файл)
+        {
+            // If we don't catch exceptions the нить-обойма will still
+            // work, but the дело will краш silently
+            try
+            {
+                дол n = Целое.разбор(файл);
+                След.форматнс("дело({}) = {}", n, дело(n));
+            }
+            catch (Исключение ex)
+            {
+                След.форматнс("Исключение: {}", ex.сооб);
+            }
+        }
+
+        // Create new нить обойма with one трудяга нить per файл given
+        auto катушка = new Катушка!(ткст)(арги.length - 1);
+
+        Нить.сон(1);
+        След.форматнс ("стартуем");
+
+        foreach (файл; арги[1 .. арги.length])
+        катушка.присвой(&hashJob, файл);
+
+        катушка.финиш();
+    }
 }

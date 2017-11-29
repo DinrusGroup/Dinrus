@@ -14,7 +14,8 @@
 
 module core.Version;
 
-public enum Dinrus {
+public enum Dinrus
+{
     Major = 1,
     Minor = 0
 }

@@ -88,11 +88,13 @@ Journal of Statistical Software <b>11</b>, (July 2004).
     return -math.ErrorFunction.normalDistributionInvImpl(-p);
 }
 
-debug(UnitTest) {
-unittest {
-    assert(отнравх(normalDistributionInv(normalDistribution(0.1)),0.1L)>=реал.mant_dig-4);
-    assert(отнравх(normalDistributionComplInv(normalDistributionCompl(0.1)),0.1L)>=реал.mant_dig-4);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        assert(отнравх(normalDistributionInv(normalDistribution(0.1)),0.1L)>=реал.mant_dig-4);
+        assert(отнравх(normalDistributionComplInv(normalDistributionCompl(0.1)),0.1L)>=реал.mant_dig-4);
+    }
 }
 
 /** Student's t cumulative ни в каком дистрибутиве function
@@ -118,20 +120,23 @@ unittest {
  * with -t instead of t.
  */
 реал studentsTDistribution(цел nu, реал t)
-in{
-   assert(nu>0);
+in
+{
+    assert(nu>0);
 }
-body{
-  /* Based on код из_ Cephes Math Library Release 2.3:  January, 1995
-     Copyright 1984, 1995 by Stephen L. Moshier
- */
+body
+{
+    /* Based on код из_ Cephes Math Library Release 2.3:  January, 1995
+       Copyright 1984, 1995 by Stephen L. Moshier
+    */
 
     if ( nu <= 0 ) return НЧ(ДИНРУС_НЧ.STUDENTSDDISTRIBUTION_DOMAIN); // домен ошибка -- or should it return 0?
     if ( t == 0.0 )  return 0.5;
 
     реал rk, z, p;
 
-    if ( t < -1.6 ) {
+    if ( t < -1.6 )
+    {
         rk = nu;
         z = rk / (rk + t * t);
         return 0.5L * бетаНеполная( 0.5L*rk, 0.5L, z );
@@ -142,35 +147,41 @@ body{
     rk = nu;    /* degrees of freedom */
 
     реал x;
-    if (t < 0) x = -t; else x = t;
+    if (t < 0) x = -t;
+    else x = t;
     z = 1.0L + ( x * x )/rk;
 
     реал f, tz;
     цел j;
 
-    if ( nu & 1)    {
+    if ( nu & 1)
+    {
         /*  computation for odd nu  */
         реал xsqk = x/квкор(rk);
         p = атан( xsqk );
-        if ( nu > 1 )   {
+        if ( nu > 1 )
+        {
             f = 1.0L;
             tz = 1.0L;
             j = 3;
-            while(  (j<=(nu-2)) && ( (tz/f) > реал.epsilon )  ) {
+            while(  (j<=(nu-2)) && ( (tz/f) > реал.epsilon )  )
+            {
                 tz *= (j-1)/( z * j );
                 f += tz;
                 j += 2;
             }
             p += f * xsqk/z;
-            }
+        }
         p *= 2.0L/ПИ;
-    } else {
+    }
+    else {
         /*  computation for even nu */
         f = 1.0L;
         tz = 1.0L;
         j = 2;
 
-        while ( ( j <= (nu-2) ) && ( (tz/f) > реал.epsilon )  ) {
+        while ( ( j <= (nu-2) ) && ( (tz/f) > реал.epsilon )  )
+        {
             tz *= (j - 1)/( z * j );
             f += tz;
             j += 2;
@@ -195,9 +206,10 @@ body{
  * p  = probability. 0 < p < 1
  */
 реал studentsTDistributionInv(цел nu, реал p )
-in {
-   assert(nu>0);
-   assert(p>=0.0L && p<=1.0L);
+in
+{
+    assert(nu>0);
+    assert(p>=0.0L && p<=1.0L);
 }
 body
 {
@@ -207,7 +219,8 @@ body
     реал rk, z;
     rk =  nu;
 
-    if ( p > 0.25L && p < 0.75L ) {
+    if ( p > 0.25L && p < 0.75L )
+    {
         if ( p == 0.5L ) return 0;
         z = 1.0L - 2.0L * p;
         z = бетаНеполнаяИнв( 0.5L, 0.5L*rk, фабс(z) );
@@ -217,7 +230,8 @@ body
         return t;
     }
     цел rflg = -1; // знак of the результат
-    if (p >= 0.5L) {
+    if (p >= 0.5L)
+    {
         p = 1.0L - p;
         rflg = 1;
     }
@@ -227,8 +241,10 @@ body
     return rflg * квкор( rk/z - rk );
 }
 
-debug(UnitTest) {
-unittest {
+debug(UnitTest)
+{
+    unittest
+    {
 
 // There are simple forms for nu = 1 и nu = 2.
 
@@ -236,15 +252,15 @@ unittest {
 //              so tDistributionInv(p) = тан( ПИ * (p-0.5) );
 // nu==2: tDistribution(x) = 0.5 * (1 + x/ квкор(2+x*x) )
 
-assert(studentsTDistribution(1, -0.4)== 0.5 + атан(-0.4)/ПИ);
-assert(studentsTDistribution(2, 0.9) == 0.5L * (1 + 0.9L/квкор(2.0L + 0.9*0.9)) );
-assert(studentsTDistribution(2, -5.4) == 0.5L * (1 - 5.4L/квкор(2.0L + 5.4*5.4)) );
+        assert(studentsTDistribution(1, -0.4)== 0.5 + атан(-0.4)/ПИ);
+        assert(studentsTDistribution(2, 0.9) == 0.5L * (1 + 0.9L/квкор(2.0L + 0.9*0.9)) );
+        assert(studentsTDistribution(2, -5.4) == 0.5L * (1 - 5.4L/квкор(2.0L + 5.4*5.4)) );
 
 // return да if a==b в_ given число of places.
-бул isfeqabs(реал a, реал b, реал diff)
-{
-  return фабс(a-b) < diff;
-}
+        бул isfeqabs(реал a, реал b, реал diff)
+        {
+            return фабс(a-b) < diff;
+        }
 
 // Check a few spot значения with statsoft.com (Mathworld значения are wrong!!)
 // According в_ statsoft.com, studentsDistributionInv(10, 0.995)= 3.16927.
@@ -253,18 +269,18 @@ assert(studentsTDistribution(2, -5.4) == 0.5L * (1 - 5.4L/квкор(2.0L + 5.4*
 // in the последний decimal places. However, they are helpful as a sanity проверь.
 
 //  Microsoft Excel 2003 gives TINV(2*(1-0.995), 10) == 3.16927267160917
-assert(isfeqabs(studentsTDistributionInv(10, 0.995), 3.169_272_67L, 0.000_000_005L));
+        assert(isfeqabs(studentsTDistributionInv(10, 0.995), 3.169_272_67L, 0.000_000_005L));
 
 
-assert(isfeqabs(studentsTDistributionInv(8, 0.6), 0.261_921_096_769_043L,0.000_000_000_05L));
+        assert(isfeqabs(studentsTDistributionInv(8, 0.6), 0.261_921_096_769_043L,0.000_000_000_05L));
 // -TINV(2*0.4, 18) ==  -0.257123042655869
 
-assert(isfeqabs(studentsTDistributionInv(18, 0.4), -0.257_123_042_655_869L, 0.000_000_000_05L));
-assert( отнравх(studentsTDistribution(18, studentsTDistributionInv(18, 0.4L)),0.4L)
- > реал.mant_dig-5 );
-assert( отнравх(studentsTDistribution(11, studentsTDistributionInv(11, 0.9L)),0.9L)
-  > реал.mant_dig-2);
-}
+        assert(isfeqabs(studentsTDistributionInv(18, 0.4), -0.257_123_042_655_869L, 0.000_000_000_05L));
+        assert( отнравх(studentsTDistribution(18, studentsTDistributionInv(18, 0.4L)),0.4L)
+        > реал.mant_dig-5 );
+        assert( отнравх(studentsTDistribution(11, studentsTDistributionInv(11, 0.9L)),0.9L)
+        > реал.mant_dig-2);
+    }
 }
 
 /** The F ни в каком дистрибутиве, its complement, и inverse.
@@ -294,11 +310,13 @@ assert( отнравх(studentsTDistribution(11, studentsTDistributionInv(11, 0.
  *  x  = Must be >= 0
  */
 реал fDistribution(цел df1, цел df2, реал x)
-in {
- assert(df1>=1 && df2>=1);
- assert(x>=0);
+in
+{
+    assert(df1>=1 && df2>=1);
+    assert(x>=0);
 }
-body{
+body
+{
     реал a = cast(реал)(df1);
     реал b = cast(реал)(df2);
     реал w = a * x;
@@ -308,11 +326,13 @@ body{
 
 /** ditto */
 реал fDistributionCompl(цел df1, цел df2, реал x)
-in {
- assert(df1>=1 && df2>=1);
- assert(x>=0);
+in
+{
+    assert(df1>=1 && df2>=1);
+    assert(x>=0);
 }
-body{
+body
+{
     реал a = cast(реал)(df1);
     реал b = cast(реал)(df2);
     реал w = b / (b + a * x);
@@ -341,36 +361,42 @@ body{
 
 /** ditto */
 реал fDistributionComplInv(цел df1, цел df2, реал p )
-in {
- assert(df1>=1 && df2>=1);
- assert(p>=0 && p<=1.0);
+in
+{
+    assert(df1>=1 && df2>=1);
+    assert(p>=0 && p<=1.0);
 }
-body{
+body
+{
     реал a = df1;
     реал b = df2;
     /* Compute probability for x = 0.5.  */
     реал w = бетаНеполная( 0.5L*b, 0.5L*a, 0.5L );
     /* If that is greater than p, then the solution w < .5.
        Otherwise, solve at 1-p в_ удали cancellation in (b - b*w).  */
-    if ( w > p || p < 0.001L) {
+    if ( w > p || p < 0.001L)
+    {
         w = бетаНеполнаяИнв( 0.5L*b, 0.5L*a, p );
         return (b - b*w)/(a*w);
-    } else {
+    }
+    else {
         w = бетаНеполнаяИнв( 0.5L*a, 0.5L*b, 1.0L - p );
         return b*w/(a*(1.0L-w));
     }
 }
 
-debug(UnitTest) {
-unittest {
+debug(UnitTest)
+{
+    unittest
+    {
 // fDistCompl(df1, df2, x) = Excel's FDIST(x, df1, df2)
-  assert(фабс(fDistributionCompl(6, 4, 16.5) - 0.00858719177897249L)< 0.0000000000005L);
-  assert(фабс((1-fDistribution(12, 23, 0.1)) - 0.99990562845505L)< 0.0000000000005L);
-  assert(фабс(fDistributionComplInv(8, 34, 0.2) - 1.48267037661408L)< 0.0000000005L);
-  assert(фабс(fDistributionComplInv(4, 16, 0.008) - 5.043_537_593_48596L)< 0.0000000005L);
-  // Regression тест: This one использован в_ краш because of a bug in the definition of МИНЛОГ.
-  assert(отнравх(fDistributionCompl(4, 16, fDistributionComplInv(4,16, 0.008)), 0.008L)>=реал.mant_dig-3);
-}
+        assert(фабс(fDistributionCompl(6, 4, 16.5) - 0.00858719177897249L)< 0.0000000000005L);
+        assert(фабс((1-fDistribution(12, 23, 0.1)) - 0.99990562845505L)< 0.0000000000005L);
+        assert(фабс(fDistributionComplInv(8, 34, 0.2) - 1.48267037661408L)< 0.0000000005L);
+        assert(фабс(fDistributionComplInv(4, 16, 0.008) - 5.043_537_593_48596L)< 0.0000000005L);
+        // Regression тест: This one использован в_ краш because of a bug in the definition of МИНЛОГ.
+        assert(отнравх(fDistributionCompl(4, 16, fDistributionComplInv(4,16, 0.008)), 0.008L)>=реал.mant_dig-3);
+    }
 }
 
 /** $(POWER &chi;,2) cumulative ни в каком дистрибутиве function и its complement.
@@ -394,21 +420,25 @@ unittest {
  *
  */
 реал chiSqrDistribution(реал v, реал x)
-in {
- assert(x>=0);
- assert(v>=1.0);
+in
+{
+    assert(x>=0);
+    assert(v>=1.0);
 }
-body{
-   return гаммаНеполная( 0.5*v, 0.5*x);
+body
+{
+    return гаммаНеполная( 0.5*v, 0.5*x);
 }
 
 /** ditto */
 реал chiSqrDistributionCompl(реал v, реал x)
-in {
- assert(x>=0);
- assert(v>=1.0);
+in
+{
+    assert(x>=0);
+    assert(v>=1.0);
 }
-body{
+body
+{
     return gammaIncompleteCompl( 0.5L*v, 0.5L*x );
 }
 
@@ -425,20 +455,23 @@ body{
  *
  */
 реал chiSqrDistributionComplInv(реал v, реал p)
-in {
-  assert(p>=0 && p<=1.0L);
-  assert(v>=1.0L);
+in
+{
+    assert(p>=0 && p<=1.0L);
+    assert(v>=1.0L);
 }
 body
 {
-   return  2.0 * gammaIncompleteComplInv( 0.5*v, p);
+    return  2.0 * gammaIncompleteComplInv( 0.5*v, p);
 }
 
-debug(UnitTest) {
-unittest {
-  assert(отнравх(chiSqrDistributionCompl(3.5L, chiSqrDistributionComplInv(3.5L, 0.1L)), 0.1L)>=реал.mant_dig-5);
-  assert(chiSqrDistribution(19.02L, 0.4L) + chiSqrDistributionCompl(19.02L, 0.4L) ==1.0L);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        assert(отнравх(chiSqrDistributionCompl(3.5L, chiSqrDistributionComplInv(3.5L, 0.1L)), 0.1L)>=реал.mant_dig-5);
+        assert(chiSqrDistribution(19.02L, 0.4L) + chiSqrDistributionCompl(19.02L, 0.4L) ==1.0L);
+    }
 }
 
 /**
@@ -453,26 +486,32 @@ unittest {
  * x must be greater than 0.
  */
 реал gammaDistribution(реал a, реал b, реал x)
-in {
-   assert(x>=0);
+in
+{
+    assert(x>=0);
 }
-body {
-   return гаммаНеполная(b, a*x);
+body
+{
+    return гаммаНеполная(b, a*x);
 }
 
 /** ditto */
 реал gammaDistributionCompl(реал a, реал b, реал x )
-in {
-   assert(x>=0);
+in
+{
+    assert(x>=0);
 }
-body {
-   return gammaIncompleteCompl( b, a * x );
+body
+{
+    return gammaIncompleteCompl( b, a * x );
 }
 
-debug(UnitTest) {
-unittest {
-    assert(gammaDistribution(7,3,0.18)+gammaDistributionCompl(7,3,0.18)==1);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        assert(gammaDistribution(7,3,0.18)+gammaDistributionCompl(7,3,0.18)==1);
+    }
 }
 
 /**********************
@@ -498,7 +537,7 @@ unittest {
  */
 реал betaDistribution(реал a, реал b, реал x )
 {
-   return бетаНеполная(a, b, x );
+    return бетаНеполная(a, b, x );
 }
 
 /** ditto */
@@ -519,11 +558,13 @@ unittest {
     return 1-бетаНеполнаяИнв(b, a, y);
 }
 
-debug(UnitTest) {
-unittest {
-    assert(отнравх(betaDistributionInv(2, 6, betaDistribution(2,6, 0.7L)),0.7L)>=реал.mant_dig-3);
-    assert(отнравх(betaDistributionComplInv(1.3, 8, betaDistributionCompl(1.3,8, 0.01L)),0.01L)>=реал.mant_dig-4);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        assert(отнравх(betaDistributionInv(2, 6, betaDistribution(2,6, 0.7L)),0.7L)>=реал.mant_dig-3);
+        assert(отнравх(betaDistributionComplInv(1.3, 8, betaDistributionCompl(1.3,8, 0.01L)),0.01L)>=реал.mant_dig-4);
+    }
 }
 
 /**
@@ -546,42 +587,50 @@ unittest {
  * The аргументы must Всё be positive.
  */
 реал poissonDistribution(цел k, реал m )
-in {
-  assert(k>=0);
-  assert(m>0);
+in
+{
+    assert(k>=0);
+    assert(m>0);
 }
-body {
+body
+{
     return gammaIncompleteCompl( k+1.0, m );
 }
 
 /** ditto */
 реал poissonDistributionCompl(цел k, реал m )
-in {
-  assert(k>=0);
-  assert(m>0);
+in
+{
+    assert(k>=0);
+    assert(m>0);
 }
-body {
-  return гаммаНеполная( k+1.0, m );
+body
+{
+    return гаммаНеполная( k+1.0, m );
 }
 
 /** ditto */
 реал poissonDistributionInv( цел k, реал p )
-in {
-  assert(k>=0);
-  assert(p>=0.0 && p<=1.0);
+in
+{
+    assert(k>=0);
+    assert(p>=0.0 && p<=1.0);
 }
-body {
+body
+{
     return gammaIncompleteComplInv(k+1, p);
 }
 
-debug(UnitTest) {
-unittest {
+debug(UnitTest)
+{
+    unittest
+    {
 // = Excel's POISSON(k, m, TRUE)
-    assert( фабс(poissonDistribution(5, 6.3)
-                - 0.398771730072867L) < 0.000000000000005L);
-    assert( отнравх(poissonDistributionInv(8, poissonDistribution(8, 2.7e3L)), 2.7e3L)>=реал.mant_dig-2);
-    assert( poissonDistribution(2, 8.4e-5) + poissonDistributionCompl(2, 8.4e-5) == 1.0L);
-}
+        assert( фабс(poissonDistribution(5, 6.3)
+        - 0.398771730072867L) < 0.000000000000005L);
+        assert( отнравх(poissonDistributionInv(8, poissonDistribution(8, 2.7e3L)), 2.7e3L)>=реал.mant_dig-2);
+        assert( poissonDistribution(2, 8.4e-5) + poissonDistributionCompl(2, 8.4e-5) == 1.0L);
+    }
 }
 
 /***********************************
@@ -603,67 +652,80 @@ unittest {
  * The аргументы must be positive, with p ranging из_ 0 в_ 1, и k<=n.
  */
 реал binomialDistribution(цел k, цел n, реал p )
-in {
-   assert(p>=0 && p<=1.0); // домен ошибка
-   assert(k>=0 && k<=n);
+in
+{
+    assert(p>=0 && p<=1.0); // домен ошибка
+    assert(k>=0 && k<=n);
 }
-body{
+body
+{
     реал dk, dn, q;
     if( k == n )
         return 1.0L;
 
     q = 1.0L - p;
     dn = n - k;
-    if ( k == 0 ) {
+    if ( k == 0 )
+    {
         return степень( q, dn );
-    } else {
+    }
+    else {
         return бетаНеполная( dn, k + 1, q );
     }
 }
 
-debug(UnitTest) {
-unittest {
-    // = Excel's BINOMDIST(k, n, p, TRUE)
-    assert( фабс(binomialDistribution(8, 12, 0.5)
-                - 0.927001953125L) < 0.0000000000005L);
-    assert( фабс(binomialDistribution(0, 3, 0.008L)
-                - 0.976191488L) < 0.00000000005L);
-    assert(binomialDistribution(7,7, 0.3)==1.0);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        // = Excel's BINOMDIST(k, n, p, TRUE)
+        assert( фабс(binomialDistribution(8, 12, 0.5)
+        - 0.927001953125L) < 0.0000000000005L);
+        assert( фабс(binomialDistribution(0, 3, 0.008L)
+        - 0.976191488L) < 0.00000000005L);
+        assert(binomialDistribution(7,7, 0.3)==1.0);
+    }
 }
 
- /** ditto */
+/** ditto */
 реал binomialDistributionCompl(цел k, цел n, реал p )
-in {
-   assert(p>=0 && p<=1.0); // домен ошибка
-   assert(k>=0 && k<=n);
+in
+{
+    assert(p>=0 && p<=1.0); // домен ошибка
+    assert(k>=0 && k<=n);
 }
-body{
-    if ( k == n ) {
+body
+{
+    if ( k == n )
+    {
         return 0;
     }
     реал dn = n - k;
-    if ( k == 0 ) {
+    if ( k == 0 )
+    {
         if ( p < .01L )
             return -экспм1( dn * лог1п(-p) );
         else
             return 1.0L - степень( 1.0L-p, dn );
-    } else {
+    }
+    else {
         return бетаНеполная( k+1, dn, p );
     }
 }
 
-debug(UnitTest){
-unittest {
-    // = Excel's (1 - BINOMDIST(k, n, p, TRUE))
-    assert( фабс(1.0L-binomialDistributionCompl(0, 15, 0.003)
-                - 0.955932824838906L) < 0.0000000000000005L);
-    assert( фабс(1.0L-binomialDistributionCompl(0, 25, 0.2)
-                - 0.00377789318629572L) < 0.000000000000000005L);
-    assert( фабс(1.0L-binomialDistributionCompl(8, 12, 0.5)
-                - 0.927001953125L) < 0.00000000000005L);
-    assert(binomialDistributionCompl(7,7, 0.3)==0.0);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        // = Excel's (1 - BINOMDIST(k, n, p, TRUE))
+        assert( фабс(1.0L-binomialDistributionCompl(0, 15, 0.003)
+        - 0.955932824838906L) < 0.0000000000000005L);
+        assert( фабс(1.0L-binomialDistributionCompl(0, 25, 0.2)
+        - 0.00377789318629572L) < 0.000000000000000005L);
+        assert( фабс(1.0L-binomialDistributionCompl(8, 12, 0.5)
+        - 0.927001953125L) < 0.00000000000005L);
+        assert(binomialDistributionCompl(7,7, 0.3)==0.0);
+    }
 }
 
 /** Inverse binomial ни в каком дистрибутиве
@@ -680,19 +742,23 @@ unittest {
  * The аргументы must be positive, with 0 <= y <= 1, и k <= n.
  */
 реал binomialDistributionInv( цел k, цел n, реал y )
-in {
-   assert(y>=0 && y<=1.0); // домен ошибка
-   assert(k>=0 && k<=n);
+in
+{
+    assert(y>=0 && y<=1.0); // домен ошибка
+    assert(k>=0 && k<=n);
 }
-body{
+body
+{
     реал dk, p;
     реал dn = n - k;
-    if ( k == 0 ) {
+    if ( k == 0 )
+    {
         if( y > 0.8L )
             p = -экспм1( лог1п(y-1.0L) / dn );
         else
             p = 1.0L - степень( y, 1.0L/dn );
-    } else {
+    }
+    else {
         dk = k + 1;
         p = бетаНеполная( dn, dk, y );
         if( p > 0.5 )
@@ -703,17 +769,19 @@ body{
     return p;
 }
 
-debug(UnitTest){
-unittest {
-    реал w = binomialDistribution(9, 15, 0.318L);
-    assert(отнравх(binomialDistributionInv(9, 15, w), 0.318L)>=реал.mant_dig-3);
-    w = binomialDistribution(5, 35, 0.718L);
-    assert(отнравх(binomialDistributionInv(5, 35, w), 0.718L)>=реал.mant_dig-3);
-    w = binomialDistribution(0, 24, 0.637L);
-    assert(отнравх(binomialDistributionInv(0, 24, w), 0.637L)>=реал.mant_dig-3);
-    w = binomialDistributionInv(0, 59, 0.962L);
-    assert(отнравх(binomialDistribution(0, 59, w), 0.962L)>=реал.mant_dig-5);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        реал w = binomialDistribution(9, 15, 0.318L);
+        assert(отнравх(binomialDistributionInv(9, 15, w), 0.318L)>=реал.mant_dig-3);
+        w = binomialDistribution(5, 35, 0.718L);
+        assert(отнравх(binomialDistributionInv(5, 35, w), 0.718L)>=реал.mant_dig-3);
+        w = binomialDistribution(0, 24, 0.637L);
+        assert(отнравх(binomialDistributionInv(0, 24, w), 0.637L)>=реал.mant_dig-3);
+        w = binomialDistributionInv(0, 59, 0.962L);
+        assert(отнравх(binomialDistribution(0, 59, w), 0.962L)>=реал.mant_dig-5);
+    }
 }
 
 /** Negative binomial ни в каком дистрибутиве и its inverse
@@ -741,29 +809,35 @@ unittest {
  */
 
 реал negativeBinomialDistribution(цел k, цел n, реал p )
-in {
-   assert(p>=0 && p<=1.0); // домен ошибка
-   assert(k>=0);
+in
+{
+    assert(p>=0 && p<=1.0); // домен ошибка
+    assert(k>=0);
 }
-body{
+body
+{
     if ( k == 0 ) return степень( p, n );
     return бетаНеполная( n, k + 1, p );
 }
 
 /** ditto */
 реал negativeBinomialDistributionInv(цел k, цел n, реал p )
-in {
-   assert(p>=0 && p<=1.0); // домен ошибка
-   assert(k>=0);
+in
+{
+    assert(p>=0 && p<=1.0); // домен ошибка
+    assert(k>=0);
 }
-body{
+body
+{
     return бетаНеполнаяИнв(n, k + 1, p);
 }
 
-debug(UnitTest) {
-unittest {
-  // Значение obtained by sum of terms of MS Excel 2003's NEGBINOMDIST.
-  assert( фабс(negativeBinomialDistribution(10, 20, 0.2) - 3.830_52E-08)< 0.000_005e-08);
-  assert(отнравх(negativeBinomialDistributionInv(14, 208, negativeBinomialDistribution(14, 208, 1e-4L)), 1e-4L)>=реал.mant_dig-3);
-}
+debug(UnitTest)
+{
+    unittest
+    {
+        // Значение obtained by sum of terms of MS Excel 2003's NEGBINOMDIST.
+        assert( фабс(negativeBinomialDistribution(10, 20, 0.2) - 3.830_52E-08)< 0.000_005e-08);
+        assert(отнравх(negativeBinomialDistributionInv(14, 208, negativeBinomialDistribution(14, 208, 1e-4L)), 1e-4L)>=реал.mant_dig-3);
+    }
 }

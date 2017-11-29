@@ -87,8 +87,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
             вывод = результат;
         ---
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -110,8 +110,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -136,8 +136,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -160,8 +160,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -184,8 +184,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -207,8 +207,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of 
-        элементы consumed из_ the ввод, и the вывод буфер 
+        Where 'ate' is provопрed, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -239,7 +239,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of 
+        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of
         it representing the кодировка
 
 *******************************************************************************/
@@ -248,7 +248,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of 
+        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of
         it representing the кодировка
 
 *******************************************************************************/
@@ -265,7 +265,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Convert из_ a ткст преобр_в the тип of the приёмн provопрed. 
+        Convert из_ a ткст преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -275,19 +275,19 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 T[] изТкст8(T) (ткст s, T[] приёмн)
 {
-        static if (is (T == сим))
-                   return s;
+    static if (is (T == сим))
+        return s;
 
-        static if (is (T == шим))
-                   return .вТкст16 (s, приёмн);
+    static if (is (T == шим))
+        return .вТкст16 (s, приёмн);
 
-        static if (is (T == дим))
-                   return .вТкст32 (s, приёмн);
+    static if (is (T == дим))
+        return .вТкст32 (s, приёмн);
 }
 
 /*******************************************************************************
 
-        Convert из_ a шим[] преобр_в the тип of the приёмн provопрed. 
+        Convert из_ a шим[] преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -297,19 +297,19 @@ T[] изТкст8(T) (ткст s, T[] приёмн)
 
 T[] изТкст16(T) (шим[] s, T[] приёмн)
 {
-        static if (is (T == шим))
-                   return s;
+    static if (is (T == шим))
+        return s;
 
-        static if (is (T == сим))
-                   return .вТкст (s, приёмн);
+    static if (is (T == сим))
+        return .вТкст (s, приёмн);
 
-        static if (is (T == дим))
-                   return .вТкст32 (s, приёмн);
+    static if (is (T == дим))
+        return .вТкст32 (s, приёмн);
 }
 
 /*******************************************************************************
 
-        Convert из_ a дим[] преобр_в the тип of the приёмн provопрed. 
+        Convert из_ a дим[] преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -319,19 +319,19 @@ T[] изТкст16(T) (шим[] s, T[] приёмн)
 
 T[] изТкст32(T) (дим[] s, T[] приёмн)
 {
-        static if (is (T == дим))
-                   return s;
+    static if (is (T == дим))
+        return s;
 
-        static if (is (T == сим))
-                   return .вТкст (s, приёмн);
+    static if (is (T == сим))
+        return .вТкст (s, приёмн);
 
-        static if (is (T == шим))
-                   return .вТкст16 (s, приёмн);
+    static if (is (T == шим))
+        return .вТкст16 (s, приёмн);
 }
 
 /*******************************************************************************
 
-        Adjust the контент such that no partial encodings exist on the 
+        Adjust the контент such that no partial encodings exist on the
         left sопрe of the provопрed текст.
 
         Returns a срез of the ввод
@@ -340,22 +340,22 @@ T[] изТкст32(T) (дим[] s, T[] приёмн)
 
 T[] отрежьЛево(T) (T[] s)
 {
-        static if (is (T == сим))
-                   for (цел i=0; i < s.length && (s[i] & 0x80); ++i)
-                        if ((s[i] & 0xc0) is 0xc0)
-                             return s [i..$];
+    static if (is (T == сим))
+        for (цел i=0; i < s.length && (s[i] & 0x80); ++i)
+            if ((s[i] & 0xc0) is 0xc0)
+                return s [i..$];
 
-        static if (is (T == шим))
-                   // пропусти if первый сим is a trailing surrogate
-                   if ((s[0] & 0xfffffc00) is 0xdc00)
-                        return s [1..$];
+    static if (is (T == шим))
+        // пропусти if первый сим is a trailing surrogate
+        if ((s[0] & 0xfffffc00) is 0xdc00)
+            return s [1..$];
 
-        return s;
+    return s;
 }
 
 /*******************************************************************************
 
-        Adjust the контент such that no partial encodings exist on the 
+        Adjust the контент such that no partial encodings exist on the
         right sопрe of the provопрed текст.
 
         Returns a срез of the ввод
@@ -364,39 +364,39 @@ T[] отрежьЛево(T) (T[] s)
 
 T[] отрежьПраво(T) (T[] s)
 {
-        if (s.length)
-           {
-           бцел i = s.length - 1;
-           static if (is (T == сим))
-                      while (i && (s[i] & 0x80))
-                             if ((s[i] & 0xc0) is 0xc0)
-                                {
-                                // located the первый байт of a sequence
-                                ббайт b = s[i];
-                                цел d = s.length - i;
+    if (s.length)
+    {
+        бцел i = s.length - 1;
+        static if (is (T == сим))
+            while (i && (s[i] & 0x80))
+                if ((s[i] & 0xc0) is 0xc0)
+                {
+                    // located the первый байт of a sequence
+                    ббайт b = s[i];
+                    цел d = s.length - i;
 
-                                // is it a 3 байт sequence?
-                                if (b & 0x20)
-                                    --d;
-   
-                                // or a four байт sequence?
-                                if (b & 0x10)
-                                    --d;
+                    // is it a 3 байт sequence?
+                    if (b & 0x20)
+                        --d;
 
-                                // is the sequence complete?
-                                if (d is 2)
-                                    i = s.length;
-                                return s [0..i];
-                                }
-                             else 
-                                --i;
+                    // or a four байт sequence?
+                    if (b & 0x10)
+                        --d;
 
-           static if (is (T == шим))
-                      // пропусти if последний сим is a leading surrogate
-                      if ((s[i] & 0xfffffc00) is 0xd800)
-                           return s [0..$-1];
-           }
-        return s;
+                    // is the sequence complete?
+                    if (d is 2)
+                        i = s.length;
+                    return s [0..i];
+                }
+                else
+                    --i;
+
+        static if (is (T == шим))
+            // пропусти if последний сим is a leading surrogate
+            if ((s[i] & 0xfffffc00) is 0xd800)
+                return s [0..$-1];
+    }
+    return s;
 }
 
 
@@ -407,25 +407,25 @@ T[] отрежьПраво(T) (T[] s)
 
 debug (Utf)
 {
-        import io.Console;
+    import io.Console;
 
-        проц main()
-        {
-                auto s = "[\xc2\xa2\xc2\xa2\xc2\xa2]";
-                Квывод (s).нс;
+    проц main()
+    {
+        auto s = "[\xc2\xa2\xc2\xa2\xc2\xa2]";
+        Квывод (s).нс;
 
-                Квывод (отрежьЛево(s[0..$])).нс;
-                Квывод (отрежьЛево(s[1..$])).нс;
-                Квывод (отрежьЛево(s[2..$])).нс;
-                Квывод (отрежьЛево(s[3..$])).нс;
-                Квывод (отрежьЛево(s[4..$])).нс;
-                Квывод (отрежьЛево(s[5..$])).нс;
+        Квывод (отрежьЛево(s[0..$])).нс;
+        Квывод (отрежьЛево(s[1..$])).нс;
+        Квывод (отрежьЛево(s[2..$])).нс;
+        Квывод (отрежьЛево(s[3..$])).нс;
+        Квывод (отрежьЛево(s[4..$])).нс;
+        Квывод (отрежьЛево(s[5..$])).нс;
 
-                Квывод (отрежьПраво(s[0..$])).нс;
-                Квывод (отрежьПраво(s[0..$-1])).нс;
-                Квывод (отрежьПраво(s[0..$-2])).нс;
-                Квывод (отрежьПраво(s[0..$-3])).нс;
-                Квывод (отрежьПраво(s[0..$-4])).нс;
-                Квывод (отрежьПраво(s[0..$-5])).нс;
-        }
+        Квывод (отрежьПраво(s[0..$])).нс;
+        Квывод (отрежьПраво(s[0..$-1])).нс;
+        Квывод (отрежьПраво(s[0..$-2])).нс;
+        Квывод (отрежьПраво(s[0..$-3])).нс;
+        Квывод (отрежьПраво(s[0..$-4])).нс;
+        Квывод (отрежьПраво(s[0..$-5])).нс;
+    }
 }

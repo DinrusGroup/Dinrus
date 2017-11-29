@@ -1,8 +1,8 @@
 ﻿module conc.takable;
 
-interface Извлекаемое(T) 
+interface Извлекаемое(T)
 {
-  public T возьми();
-  public T запроси(дол мсек);
+    public T возьми();
+    public T запроси(дол мсек);
 
 }

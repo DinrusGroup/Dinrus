@@ -2,8 +2,8 @@
 
         Файл: Коллекция.d
 
-        Originally записано by Doug Lea и released преобр_в the public домен. 
-        Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+        Originally записано by Doug Lea и released преобр_в the public домен.
+        Thanks for the assistance и support of Sun Microsystems Labs, Agorics
         Inc, Loral, и everyone contributing, testing, и using this код.
 
         History:
@@ -13,7 +13,7 @@
         22Oct95  dl                 Добавь excludeElements, removeElements
         28jan97  dl                 сделай class public; isolate version changes
         14Dec06  kb                 Adapted for Dinrus usage
-        
+
 ********************************************************************************/
 
 module util.collection.impl.Collection;
@@ -21,14 +21,14 @@ module util.collection.impl.Collection;
 private import  exception;
 
 private import  util.collection.model.View,
-                util.collection.model.Iterator,
-                util.collection.model.Dispenser;
+        util.collection.model.Iterator,
+        util.collection.model.Dispenser;
 
 /*******************************************************************************
 
         Коллекция serves as a convenient основа class for most implementations
         of изменяемый containers. It maintains a version число и элемент счёт.
-        It also provопрes default implementations of many collection operations. 
+        It also provопрes default implementations of many collection operations.
 
         Authors: Doug Lea
 
@@ -36,596 +36,598 @@ private import  util.collection.model.View,
 
 public abstract class Коллекция(T) : Dispenser!(T)
 {
-        alias View!(T)          ViewT;
+    alias View!(T)          ViewT;
 
-        alias бул delegate(T)  Предикат;
+    alias бул delegate(T)  Предикат;
 
 
-        // экземпляр variables
+    // экземпляр variables
 
-        /***********************************************************************
+    /***********************************************************************
 
-                version represents the текущ version число
+            version represents the текущ version число
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected бцел vershion;
+    protected бцел vershion;
 
-        /***********************************************************************
+    /***********************************************************************
 
-                скринер hold the supplied элемент скринер
+            скринер hold the supplied элемент скринер
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected Предикат скринер;
+    protected Предикат скринер;
 
-        /***********************************************************************
+    /***********************************************************************
 
-                счёт holds the число of элементы.
+            счёт holds the число of элементы.
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected бцел счёт;
+    protected бцел счёт;
 
-        // constructors
+    // constructors
 
-        /***********************************************************************
+    /***********************************************************************
 
-                Initialize at version 0, an пустой счёт, и supplied скринер
+            Initialize at version 0, an пустой счёт, и supplied скринер
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected this (Предикат скринер = пусто)
+    protected this (Предикат скринер = пусто)
+    {
+        this.скринер = скринер;
+    }
+
+
+    /***********************************************************************
+
+    ************************************************************************/
+
+    protected final static бул действительныйАргумент (T элемент)
+    {
+        static if (is (T : Объект))
         {
-                this.скринер = скринер;
+            if (элемент is пусто)
+                return нет;
         }
+        return да;
+    }
+
+    // Default implementations of Коллекция methods
+
+    /***********************************************************************
+
+            expose collection контент as an Массив
+
+    ************************************************************************/
+
+    public T[] вМассив ()
+    {
+        auto результат = new T[this.размер];
+
+        цел i = 0;
+        foreach (e; this)
+        результат[i++] = e;
+
+        return результат;
+    }
+
+    /***********************************************************************
+
+            Время complexity: O(1).
+            See_Also: util.collection.impl.Collection.Коллекция.drained
+
+    ************************************************************************/
+
+    public final бул drained()
+    {
+        return счёт is 0;
+    }
+
+    /***********************************************************************
+
+            Время complexity: O(1).
+            Возвращает: the счёт of элементы currently in the collection
+            See_Also: util.collection.impl.Collection.Коллекция.размер
+
+    ************************************************************************/
+
+    public final бцел размер()
+    {
+        return счёт;
+    }
+
+    /***********************************************************************
+
+            Checks if элемент is an allowed элемент for this collection.
+            This will not throw an исключение, but any другой attemp в_ добавь an
+            не_годится элемент will do.
+
+            Время complexity: O(1) + время of скринер, if present
+
+            See_Also: util.collection.impl.Collection.Коллекция.allows
+
+    ************************************************************************/
+
+    public final бул allows (T элемент)
+    {
+        return действительныйАргумент(элемент) &&
+               (скринер is пусто || скринер(элемент));
+    }
 
 
-        /***********************************************************************
+    /***********************************************************************
 
-        ************************************************************************/
+            Время complexity: O(n).
+            Default implementation. Fairly sleazy approach.
+            (Defensible only when you remember that it is just a default impl.)
+            It tries в_ cast в_ one of the known collection interface типы
+            и then applies the corresponding сравнение rules.
+            This suffices for все currently supported collection типы,
+            but must be overrопрden if you define new Коллекция subinterfaces
+            и/or implementations.
 
-        protected final static бул действительныйАргумент (T элемент)
+            See_Also: util.collection.impl.Collection.Коллекция.совпадает
+
+    ************************************************************************/
+
+    public бул совпадает(ViewT другой)
+    {
+        /+
+        if (другой is пусто)
+            return нет;
+        else if (другой is this)
+            return да;
+        else if (cast(SortedKeys) this)
         {
-                static if (is (T : Объект))
-                          {
-                          if (элемент is пусто)
-                              return нет;
-                          }
-                return да;
+            if (!(cast(Карта) другой))
+                return нет;
+            else
+                return sameOrderedPairs(cast(Карта)this, cast(Карта)другой);
         }
-
-        // Default implementations of Коллекция methods
-
-        /***********************************************************************
-
-                expose collection контент as an Массив
-
-        ************************************************************************/
-
-        public T[] вМассив ()
+        else if (cast(Карта) this)
         {
-                auto результат = new T[this.размер];
-        
-                цел i = 0;
-                foreach (e; this)
-                         результат[i++] = e;
-
-                return результат;
+            if (!(cast(Карта) другой))
+                return нет;
+            else
+                return samePairs(cast(Карта)(this), cast(Карта)(другой));
         }
+        else if ((cast(Seq) this) || (cast(SortedValues) this))
+            return sameOrderedElements(this, другой);
+        else if (cast(Рюкзак) this)
+            return sameOccurrences(this, другой);
+        else if (cast(Набор) this)
+            return sameInclusions(this, cast(View)(другой));
+        else
+            return нет;
+        +/
+        return нет;
+    }
 
-        /***********************************************************************
+    // Default implementations of MutableCollection methods
 
-                Время complexity: O(1).
-                See_Also: util.collection.impl.Collection.Коллекция.drained
+    /***********************************************************************
 
-        ************************************************************************/
+            Время complexity: O(1).
+            See_Also: util.collection.impl.Collection.Коллекция.version
 
-        public final бул drained()
+    ************************************************************************/
+
+    public final бцел мутация()
+    {
+        return vershion;
+    }
+
+    // Объект methods
+
+    /***********************************************************************
+
+            Default implementation of вТкст for Collections. Not
+            very pretty, but parenthesizing each элемент means that
+            for most kinds of элементы, it's conceivable that the
+            strings could be разобрано и использован в_ build другой util.collection.
+
+            Not a very pretty implementation either. Casts are использован
+            в_ получи at элементы/ключи
+
+    ************************************************************************/
+
+    public override ткст вТкст()
+    {
+        сим[16] врем;
+
+        return "<" ~ this.classinfo.имя ~ ", размер:" ~ itoa(врем, размер()) ~ ">";
+    }
+
+
+    /***********************************************************************
+
+    ************************************************************************/
+
+    protected final ткст itoa(ткст буф, бцел i)
+    {
+        auto j = буф.length;
+
+        do
         {
-                return счёт is 0;
+            буф[--j] = cast(сим) (i % 10 + '0');
         }
+        while (i /= 10);
+        return буф [j..$];
+    }
 
-        /***********************************************************************
+    // protected operations on version и счёт
 
-                Время complexity: O(1).
-                Возвращает: the счёт of элементы currently in the collection
-                See_Also: util.collection.impl.Collection.Коллекция.размер
+    /***********************************************************************
 
-        ************************************************************************/
+            change the version число
 
-        public final бцел размер()
+    ************************************************************************/
+
+    protected final проц incVersion()
+    {
+        ++vershion;
+    }
+
+
+    /***********************************************************************
+
+            Increment the элемент счёт и обнови version
+
+    ************************************************************************/
+
+    protected final проц incCount()
+    {
+        счёт++;
+        incVersion();
+    }
+
+    /***********************************************************************
+
+            Decrement the элемент счёт и обнови version
+
+    ************************************************************************/
+
+    protected final проц decCount()
+    {
+        счёт--;
+        incVersion();
+    }
+
+
+    /***********************************************************************
+
+            добавь в_ the элемент счёт и обнови version if изменён
+
+    ************************************************************************/
+
+    protected final проц добавьToCount(бцел c)
+    {
+        if (c !is 0)
         {
-                return счёт;
+            счёт += c;
+            incVersion();
         }
+    }
 
-        /***********************************************************************
 
-                Checks if элемент is an allowed элемент for this collection.
-                This will not throw an исключение, but any другой attemp в_ добавь an
-                не_годится элемент will do.
+    /***********************************************************************
 
-                Время complexity: O(1) + время of скринер, if present
+            установи the элемент счёт и обнови version if изменён
 
-                See_Also: util.collection.impl.Collection.Коллекция.allows
+    ************************************************************************/
 
-        ************************************************************************/
-
-        public final бул allows (T элемент)
+    protected final проц устСчёт(бцел c)
+    {
+        if (c !is счёт)
         {
-                return действительныйАргумент(элемент) &&
-                                 (скринер is пусто || скринер(элемент));
+            счёт = c;
+            incVersion();
         }
+    }
 
 
-        /***********************************************************************
+    /***********************************************************************
 
-                Время complexity: O(n).
-                Default implementation. Fairly sleazy approach.
-                (Defensible only when you remember that it is just a default impl.)
-                It tries в_ cast в_ one of the known collection interface типы
-                и then applies the corresponding сравнение rules.
-                This suffices for все currently supported collection типы,
-                but must be overrопрden if you define new Коллекция subinterfaces
-                и/or implementations.
+            Helper метод left public since it might be useful
 
-                See_Also: util.collection.impl.Collection.Коллекция.совпадает
+    ************************************************************************/
 
-        ************************************************************************/
+    public final static бул sameInclusions(ViewT s, ViewT t)
+    {
+        if (s.размер !is t.размер)
+            return нет;
 
-        public бул совпадает(ViewT другой)
+        try   // установи up в_ return нет on collection exceptions
         {
-/+
-                if (другой is пусто)
+            auto ts = t.элементы();
+            while (ts.ещё)
+            {
+                if (!s.содержит(ts.получи))
                     return нет;
-                else
-                   if (другой is this)
-                       return да;
-                   else
-                      if (cast(SortedKeys) this)
-                         {
-                         if (!(cast(Карта) другой))
-                               return нет;
-                         else
-                            return sameOrderedPairs(cast(Карта)this, cast(Карта)другой);
-                         }
-                      else
-                         if (cast(Карта) this)
-                            {
-                            if (!(cast(Карта) другой))
-                                  return нет;
-                            else
-                               return samePairs(cast(Карта)(this), cast(Карта)(другой));
-                            }
-                         else
-                            if ((cast(Seq) this) || (cast(SortedValues) this))
-                                 return sameOrderedElements(this, другой);
-                            else
-                               if (cast(Рюкзак) this)
-                                   return sameOccurrences(this, другой);
-                               else
-                                  if (cast(Набор) this)
-                                      return sameInclusions(this, cast(View)(другой));
-                                  else
-                                     return нет;
-+/
-                   return нет;
+            }
+            return да;
         }
-
-        // Default implementations of MutableCollection methods
-
-        /***********************************************************************
-
-                Время complexity: O(1).
-                See_Also: util.collection.impl.Collection.Коллекция.version
-
-        ************************************************************************/
-
-        public final бцел мутация()
+        catch (НетЭлементаИскл ex)
         {
-                return vershion;
+            return нет;
         }
+    }
 
-        // Объект methods
+    /***********************************************************************
 
-        /***********************************************************************
+            Helper метод left public since it might be useful
 
-                Default implementation of вТкст for Collections. Not
-                very pretty, but parenthesizing each элемент means that
-                for most kinds of элементы, it's conceivable that the
-                strings could be разобрано и использован в_ build другой util.collection.
+    ************************************************************************/
 
-                Not a very pretty implementation either. Casts are использован
-                в_ получи at элементы/ключи
+    public final static бул sameOccurrences(ViewT s, ViewT t)
+    {
+        if (s.размер !is t.размер)
+            return нет;
 
-        ************************************************************************/
+        auto ts = t.элементы();
+        T последний = T.init; // minor optimization -- пропусти two successive if same
 
-        public override ткст вТкст()
+        try   // установи up в_ return нет on collection exceptions
         {
-                сим[16] врем;
-                
-                return "<" ~ this.classinfo.имя ~ ", размер:" ~ itoa(врем, размер()) ~ ">";
+            while (ts.ещё)
+            {
+                T m = ts.получи;
+                if (m !is последний)
+                {
+                    if (s.экземпляры(m) !is t.экземпляры(m))
+                        return нет;
+                }
+                последний = m;
+            }
+            return да;
         }
-
-
-        /***********************************************************************
-
-        ************************************************************************/
-
-        protected final ткст itoa(ткст буф, бцел i)
+        catch (НетЭлементаИскл ex)
         {
-                auto j = буф.length;
-                
-                do {
-                   буф[--j] = cast(сим) (i % 10 + '0');
-                   } while (i /= 10);
-                return буф [j..$];
+            return нет;
         }
-        
-        // protected operations on version и счёт
+    }
 
-        /***********************************************************************
 
-                change the version число
+    /***********************************************************************
 
-        ************************************************************************/
+            Helper метод left public since it might be useful
 
-        protected final проц incVersion()
+    ************************************************************************/
+
+    public final static бул sameOrderedElements(ViewT s, ViewT t)
+    {
+        if (s.размер !is t.размер)
+            return нет;
+
+        auto ts = t.элементы();
+        auto ss = s.элементы();
+
+        try   // установи up в_ return нет on collection exceptions
         {
-                ++vershion;
-        }
-
-
-        /***********************************************************************
-
-                Increment the элемент счёт и обнови version
-
-        ************************************************************************/
-
-        protected final проц incCount()
-        {
-                счёт++;
-                incVersion();
-        }
-
-        /***********************************************************************
-
-                Decrement the элемент счёт и обнови version
-
-        ************************************************************************/
-
-        protected final проц decCount()
-        {
-                счёт--;
-                incVersion();
-        }
-
-
-        /***********************************************************************
-
-                добавь в_ the элемент счёт и обнови version if изменён
-
-        ************************************************************************/
-
-        protected final проц добавьToCount(бцел c)
-        {
-                if (c !is 0)
-                   {
-                   счёт += c;
-                   incVersion();
-                   }
-        }
-        
-
-        /***********************************************************************
-
-                установи the элемент счёт и обнови version if изменён
-
-        ************************************************************************/
-
-        protected final проц устСчёт(бцел c)
-        {
-                if (c !is счёт)
-                   {
-                   счёт = c;
-                   incVersion();
-                   }
-        }
-
-
-        /***********************************************************************
-
-                Helper метод left public since it might be useful
-
-        ************************************************************************/
-
-        public final static бул sameInclusions(ViewT s, ViewT t)
-        {
-                if (s.размер !is t.размер)
+            while (ts.ещё)
+            {
+                T m = ts.получи;
+                T o = ss.получи;
+                if (m != o)
                     return нет;
-
-                try { // установи up в_ return нет on collection exceptions
-                    auto ts = t.элементы();
-                    while (ts.ещё)
-                          {
-                          if (!s.содержит(ts.получи))
-                              return нет;
-                          }
-                    return да;
-                    } catch (НетЭлементаИскл ex)
-                            {
-                            return нет;
-                            }
+            }
+            return да;
         }
-
-        /***********************************************************************
-
-                Helper метод left public since it might be useful
-
-        ************************************************************************/
-
-        public final static бул sameOccurrences(ViewT s, ViewT t)
+        catch (НетЭлементаИскл ex)
         {
-                if (s.размер !is t.размер)
-                    return нет;
-
-                auto ts = t.элементы();
-                T последний = T.init; // minor optimization -- пропусти two successive if same
-
-                try { // установи up в_ return нет on collection exceptions
-                    while (ts.ещё)
-                          {
-                          T m = ts.получи;
-                          if (m !is последний)
-                             {
-                             if (s.экземпляры(m) !is t.экземпляры(m))
-                                 return нет;
-                             }
-                          последний = m;
-                          }
-                    return да;
-                    } catch (НетЭлементаИскл ex)
-                            {
-                            return нет;
-                            }
+            return нет;
         }
-        
+    }
 
-        /***********************************************************************
+    // misc common helper methods
 
-                Helper метод left public since it might be useful
+    /***********************************************************************
 
-        ************************************************************************/
+            PrincИПal метод в_ throw a НетЭлементаИскл.
+            Besопрes индекс проверьs in Seqs, you can use it в_ проверь for
+            operations on пустой собериions via проверьИндекс(0)
 
-        public final static бул sameOrderedElements(ViewT s, ViewT t)
+    ************************************************************************/
+
+    protected final проц проверьИндекс(цел индекс)
+    {
+        if (индекс < 0 || индекс >= счёт)
         {
-                if (s.размер !is t.размер)
-                    return нет;
+            ткст сооб;
 
-                auto ts = t.элементы();
-                auto ss = s.элементы();
-
-                try { // установи up в_ return нет on collection exceptions
-                    while (ts.ещё)
-                          {
-                          T m = ts.получи;
-                          T o = ss.получи;
-                          if (m != o)
-                              return нет;
-                          }
-                    return да;
-                    } catch (НетЭлементаИскл ex)
-                            {       
-                            return нет;
-                            }
+            if (счёт is 0)
+                сооб = "Элемент доступ on пустой collection";
+            else
+            {
+                сим[16] индкс, cnt;
+                сооб = "Index " ~ itoa (индкс, индекс) ~ " out of range for collection of размер " ~ itoa (cnt, счёт);
+            }
+            throw new НетЭлементаИскл(сооб);
         }
+    }
 
-        // misc common helper methods
 
-        /***********************************************************************
+    /***********************************************************************
 
-                PrincИПal метод в_ throw a НетЭлементаИскл.
-                Besопрes индекс проверьs in Seqs, you can use it в_ проверь for
-                operations on пустой собериions via проверьИндекс(0)
+            PrincИПal метод в_ throw a IllegalElementException
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected final проц проверьИндекс(цел индекс)
+    protected final проц проверьЭлемент(T элемент)
+    {
+        if (! allows(элемент))
         {
-                if (индекс < 0 || индекс >= счёт)
-                   {
-                   ткст сооб;
-
-                   if (счёт is 0)
-                       сооб = "Элемент доступ on пустой collection";
-                   else
-                      {
-                      сим[16] индкс, cnt;
-                      сооб = "Index " ~ itoa (индкс, индекс) ~ " out of range for collection of размер " ~ itoa (cnt, счёт);
-                      }
-                   throw new НетЭлементаИскл(сооб);
-                   }
+            throw new IllegalElementException("Attempt в_ include не_годится элемент _in Коллекция");
         }
+    }
 
-        
-        /***********************************************************************
+    /***********************************************************************
 
-                PrincИПal метод в_ throw a IllegalElementException
+            See_Also: util.collection.model.View.View.проверьРеализацию
 
-        ************************************************************************/
+    ************************************************************************/
 
-        protected final проц проверьЭлемент(T элемент)
-        {
-                if (! allows(элемент))
-                   {
-                   throw new IllegalElementException("Attempt в_ include не_годится элемент _in Коллекция");
-                   }
-        }
+    public проц проверьРеализацию()
+    {
+        assert(счёт >= 0);
+    }
+    //public override проц проверьРеализацию() //Doesn't компилируй with the override attribute
 
-        /***********************************************************************
+    /***********************************************************************
 
-                See_Also: util.collection.model.View.View.проверьРеализацию
+            Cause the collection в_ become пустой.
 
-        ************************************************************************/
+    ************************************************************************/
 
-        public проц проверьРеализацию()
-        {
-                assert(счёт >= 0);
-        }
-        //public override проц проверьРеализацию() //Doesn't компилируй with the override attribute
+    abstract проц очисть();
 
-        /***********************************************************************
+    /***********************************************************************
 
-                Cause the collection в_ become пустой. 
+            Exclude все occurrences of the indicated элемент из_ the collection.
+            No effect if элемент not present.
+            Параметры:
+                элемент = the элемент в_ exclude.
+            ---
+            !имеется(элемент) &&
+            размер() == PREV(this).размер() - PREV(this).экземпляры(элемент) &&
+            no другой элемент changes &&
+            Версия change iff PREV(this).имеется(элемент)
+            ---
 
-        ************************************************************************/
+    ************************************************************************/
 
-        abstract проц очисть();
+    abstract проц удалиВсе(T элемент);
 
-        /***********************************************************************
+    /***********************************************************************
 
-                Exclude все occurrences of the indicated элемент из_ the collection. 
-                No effect if элемент not present.
-                Параметры:
-                    элемент = the элемент в_ exclude.
-                ---
-                !имеется(элемент) &&
-                размер() == PREV(this).размер() - PREV(this).экземпляры(элемент) &&
-                no другой элемент changes &&
-                Версия change iff PREV(this).имеется(элемент)
-                ---
+            Удали an экземпляр of the indicated элемент из_ the collection.
+            No effect if !имеется(элемент)
+            Параметры:
+                элемент = the элемент в_ удали
+            ---
+            let occ = max(1, экземпляры(элемент)) in
+             размер() == PREV(this).размер() - occ &&
+             экземпляры(элемент) == PREV(this).экземпляры(элемент) - occ &&
+             no другой элемент changes &&
+             version change iff occ == 1
+            ---
 
-        ************************************************************************/
+    ************************************************************************/
 
-        abstract проц удалиВсе(T элемент);
+    abstract проц удали (T элемент);
 
-        /***********************************************************************
+    /***********************************************************************
 
-                Удали an экземпляр of the indicated элемент из_ the collection. 
-                No effect if !имеется(элемент)
-                Параметры:
-                    элемент = the элемент в_ удали
-                ---
-                let occ = max(1, экземпляры(элемент)) in
-                 размер() == PREV(this).размер() - occ &&
-                 экземпляры(элемент) == PREV(this).экземпляры(элемент) - occ &&
-                 no другой элемент changes &&
-                 version change iff occ == 1
-                ---
+            Замени an occurrence of старЭлемент with новЭлемент.
+            No effect if does not hold старЭлемент or if старЭлемент.равно(новЭлемент).
+            The operation имеется a consistent, but slightly special interpretation
+            when applied в_ Sets. For Sets, because элементы occur at
+            most once, if новЭлемент is already included, replacing старЭлемент with
+            with новЭлемент имеется the same effect as just removing старЭлемент.
+            ---
+            let цел delta = старЭлемент.равно(новЭлемент)? 0 :
+                          max(1, PREV(this).экземпляры(старЭлемент) in
+             экземпляры(старЭлемент) == PREV(this).экземпляры(старЭлемент) - delta &&
+             экземпляры(новЭлемент) ==  (this instanceof Набор) ?
+                    max(1, PREV(this).экземпляры(старЭлемент) + delta):
+                           PREV(this).экземпляры(старЭлемент) + delta) &&
+             no другой элемент changes &&
+             Версия change iff delta != 0
+            ---
+            Throws: IllegalElementException if имеется(старЭлемент) и !allows(новЭлемент)
 
-        ************************************************************************/
+    ************************************************************************/
 
-        abstract проц удали (T элемент);
-        
-        /***********************************************************************
+    abstract проц замени (T старЭлемент, T новЭлемент);
 
-                Замени an occurrence of старЭлемент with новЭлемент.
-                No effect if does not hold старЭлемент or if старЭлемент.равно(новЭлемент).
-                The operation имеется a consistent, but slightly special interpretation
-                when applied в_ Sets. For Sets, because элементы occur at
-                most once, if новЭлемент is already included, replacing старЭлемент with
-                with новЭлемент имеется the same effect as just removing старЭлемент.
-                ---
-                let цел delta = старЭлемент.равно(новЭлемент)? 0 : 
-                              max(1, PREV(this).экземпляры(старЭлемент) in
-                 экземпляры(старЭлемент) == PREV(this).экземпляры(старЭлемент) - delta &&
-                 экземпляры(новЭлемент) ==  (this instanceof Набор) ? 
-                        max(1, PREV(this).экземпляры(старЭлемент) + delta):
-                               PREV(this).экземпляры(старЭлемент) + delta) &&
-                 no другой элемент changes &&
-                 Версия change iff delta != 0
-                ---
-                Throws: IllegalElementException if имеется(старЭлемент) и !allows(новЭлемент)
+    /***********************************************************************
 
-        ************************************************************************/
+            Замени все occurrences of старЭлемент with новЭлемент.
+            No effect if does not hold старЭлемент or if старЭлемент.равно(новЭлемент).
+            The operation имеется a consistent, but slightly special interpretation
+            when applied в_ Sets. For Sets, because элементы occur at
+            most once, if новЭлемент is already included, replacing старЭлемент with
+            with новЭлемент имеется the same effect as just removing старЭлемент.
+            ---
+            let цел delta = старЭлемент.равно(новЭлемент)? 0 :
+                       PREV(this).экземпляры(старЭлемент) in
+             экземпляры(старЭлемент) == PREV(this).экземпляры(старЭлемент) - delta &&
+             экземпляры(новЭлемент) ==  (this instanceof Набор) ?
+                    max(1, PREV(this).экземпляры(старЭлемент) + delta):
+                           PREV(this).экземпляры(старЭлемент) + delta) &&
+             no другой элемент changes &&
+             Версия change iff delta != 0
+            ---
+            Throws: IllegalElementException if имеется(старЭлемент) и !allows(новЭлемент)
 
-        abstract проц замени (T старЭлемент, T новЭлемент);
+    ************************************************************************/
 
-        /***********************************************************************
+    abstract проц замениВсе(T старЭлемент, T новЭлемент);
 
-                Замени все occurrences of старЭлемент with новЭлемент.
-                No effect if does not hold старЭлемент or if старЭлемент.равно(новЭлемент).
-                The operation имеется a consistent, but slightly special interpretation
-                when applied в_ Sets. For Sets, because элементы occur at
-                most once, if новЭлемент is already included, replacing старЭлемент with
-                with новЭлемент имеется the same effect as just removing старЭлемент.
-                ---
-                let цел delta = старЭлемент.равно(новЭлемент)? 0 : 
-                           PREV(this).экземпляры(старЭлемент) in
-                 экземпляры(старЭлемент) == PREV(this).экземпляры(старЭлемент) - delta &&
-                 экземпляры(новЭлемент) ==  (this instanceof Набор) ? 
-                        max(1, PREV(this).экземпляры(старЭлемент) + delta):
-                               PREV(this).экземпляры(старЭлемент) + delta) &&
-                 no другой элемент changes &&
-                 Версия change iff delta != 0
-                ---
-                Throws: IllegalElementException if имеется(старЭлемент) и !allows(новЭлемент)
+    /***********************************************************************
 
-        ************************************************************************/
+            Exclude все occurrences of each элемент of the Обходчик.
+            Behaviorally equivalent в_
+            ---
+            while (e.ещё())
+              удалиВсе(e.получи());
+            ---
+            Param :
+                e = the enumeration of элементы в_ exclude.
 
-        abstract проц замениВсе(T старЭлемент, T новЭлемент);
+            Throws: CorruptedIteratorException is propagated if thrown
 
-        /***********************************************************************
+            See_Also: util.collection.impl.Collection.Коллекция.удалиВсе
 
-                Exclude все occurrences of each элемент of the Обходчик.
-                Behaviorally equivalent в_
-                ---
-                while (e.ещё())
-                  удалиВсе(e.получи());
-                ---
-                Param :
-                    e = the enumeration of элементы в_ exclude.
+    ************************************************************************/
 
-                Throws: CorruptedIteratorException is propagated if thrown
+    abstract проц удалиВсе (Обходчик!(T) e);
 
-                See_Also: util.collection.impl.Collection.Коллекция.удалиВсе
+    /***********************************************************************
 
-        ************************************************************************/
+             Удали an occurrence of each элемент of the Обходчик.
+             Behaviorally equivalent в_
 
-        abstract проц удалиВсе (Обходчик!(T) e);
+             ---
+             while (e.ещё())
+                удали (e.получи());
+             ---
 
-        /***********************************************************************
+             Param:
+                e = the enumeration of элементы в_ удали.
 
-                 Удали an occurrence of each элемент of the Обходчик.
-                 Behaviorally equivalent в_
+             Throws: CorruptedIteratorException is propagated if thrown
 
-                 ---
-                 while (e.ещё())
-                    удали (e.получи());
-                 ---
+    ************************************************************************/
 
-                 Param:
-                    e = the enumeration of элементы в_ удали.
+    abstract проц удали (Обходчик!(T) e);
 
-                 Throws: CorruptedIteratorException is propagated if thrown
+    /***********************************************************************
 
-        ************************************************************************/
+            Удали и return an элемент.  Implementations
+            may strengthen the guarantee about the nature of this элемент.
+            but in general it is the most convenient or efficient элемент в_ удали.
 
-        abstract проц удали (Обходчик!(T) e);
+            Examples:
+            One way в_ перемести все элементы из_
+            MutableCollection a в_ MutableBag b is:
+            ---
+            while (!a.пустой())
+                b.добавь(a.возьми());
+            ---
 
-        /***********************************************************************
+            Возвращает:
+                an элемент v such that PREV(this).имеется(v)
+                и the postconditions of removeOneOf(v) hold.
 
-                Удали и return an элемент.  Implementations
-                may strengthen the guarantee about the nature of this элемент.
-                but in general it is the most convenient or efficient элемент в_ удали.
+            Throws: НетЭлементаИскл iff drained.
 
-                Examples:
-                One way в_ перемести все элементы из_ 
-                MutableCollection a в_ MutableBag b is:
-                ---
-                while (!a.пустой())
-                    b.добавь(a.возьми());
-                ---
+    ************************************************************************/
 
-                Возвращает:
-                    an элемент v such that PREV(this).имеется(v) 
-                    и the postconditions of removeOneOf(v) hold.
-
-                Throws: НетЭлементаИскл iff drained.
-
-        ************************************************************************/
-
-        abstract T возьми();
+    abstract T возьми();
 }
 
 

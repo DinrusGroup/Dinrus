@@ -6,7 +6,7 @@ private import util.collection.model.View;
 /**
  *
  * Рюкзак (Bag) - это коллекция, поззрерживающая множество одинаковых элементов.
- * 
+ *
         author: Doug Lea
  * @version 0.93
  *
@@ -16,11 +16,11 @@ private import util.collection.model.View;
 
 public interface BagView(V) : View!(V)
 {
-        public override BagView!(V) дубликат();
-        public alias дубликат dup;
+    public override BagView!(V) дубликат();
+    public alias дубликат dup;
 
-version (VERBOSE)
-{
+    version (VERBOSE)
+    {
         public alias добавим opCat;
 
         /**
@@ -31,7 +31,7 @@ version (VERBOSE)
          *
          * @param the элемент в_ добавь в_ the new Рюкзак
          * Возвращает: the new Рюкзак c, with the совпадает as this except that
-         * c.occurrencesOf(элемент) == occurrencesOf(элемент)+1 
+         * c.occurrencesOf(элемент) == occurrencesOf(элемент)+1
          * Throws: IllegalElementException if !canInclude(элемент)
         **/
 
@@ -50,6 +50,6 @@ version (VERBOSE)
         **/
 
         public Рюкзак добавимЕслиНет(V элемент);
-} // version
+    } // version
 
 }

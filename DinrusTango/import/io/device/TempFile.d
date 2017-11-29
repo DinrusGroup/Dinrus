@@ -1,15 +1,17 @@
 ﻿module io.device.TempFile;
 
 import Путь = io.Path;
-import math.random.Kiss : Kiss;
-import io.device.Device : Устройство;
+import math.random.Kiss :
+Kiss;
+import io.device.Device :
+Устройство;
 import io.device.File;
 
 
 
 class ВремФайл : Файл
 {
-    
+
     enum ОпцУдаления : ббайт
     {
         ВКорзину,
@@ -41,8 +43,8 @@ class ВремФайл : Файл
     version( Win32 )
     {
 
-    public static ткст времфлПуть();
-    private бул окройВремфл(ткст путь, СтильВремфл стиль)    ;
+        public static ткст времфлПуть();
+        private бул окройВремфл(ткст путь, СтильВремфл стиль)    ;
     }
     else version( Posix )
     {
@@ -55,9 +57,9 @@ class ВремФайл : Файл
         static assert(нет, "Unsupported platform");
     }
 
-   // private ткст randomName(бцел length=DEFAULT_LENGTH,
-         //   ткст префикс=DEFAULT_PREFIX,
-          //  ткст суффикс=DEFAULT_SUFFIX);
-    
+    // private ткст randomName(бцел length=DEFAULT_LENGTH,
+    //   ткст префикс=DEFAULT_PREFIX,
+    //  ткст суффикс=DEFAULT_SUFFIX);
+
     override проц открепи();
 }

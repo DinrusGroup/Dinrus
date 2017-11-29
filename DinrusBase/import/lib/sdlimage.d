@@ -2,8 +2,8 @@
 
 private
 {
-import stdrus, lib.sdl;
-pragma(lib,"dinrus.lib");
+    import stdrus, lib.sdl;
+    pragma(lib,"dinrus.lib");
 }
 
 private проц грузи(Биб биб)
@@ -41,9 +41,10 @@ private проц грузи(Биб биб)
 
 
 ЖанБибгр СДЛИмидж;
-static this() {
+static this()
+{
     СДЛИмидж.заряжай("SDL_image.dll", &грузи);
-	СДЛИмидж.загружай();
+    СДЛИмидж.загружай();
 }
 
 alias сдлУстановиОш IMG_SetError;

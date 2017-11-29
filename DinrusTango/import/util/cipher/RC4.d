@@ -14,25 +14,25 @@ class RC4 : ШифрПоток
     private
     {
         ббайт[] состояние,
-                workingKey;
+        workingKey;
         ббайт x, y;
     }
-    
+
     this();
-    
+
     final проц init(бул зашифруй, СимметричныйКлюч keyParams);
-    
+
     final override ткст имя();
-    
+
     ббайт returnByte(ббайт ввод);
-    
+
     final override бцел обнови(проц[] input_, проц[] output_);
-    
+
     final override проц сбрось();
-    
+
     // Do RC4's ключ установи in a separate метод в_ ease resetting
     private проц установи(ббайт[] ключ);
-    
+
     /** Some RC4 тест vectors. */
     debug (UnitTest)
     {
@@ -45,7 +45,7 @@ class RC4 : ШифрПоток
                 "ef012345",
                 "0123456789abcdef"
             ];
-                 
+
             static ткст[] test_plaintexts = [
                 "0123456789abcdef",
                 "0000000000000000",
@@ -84,7 +84,7 @@ class RC4 : ШифрПоток
                 "01010101010101010101010101010101"~
                 "01010101010101010101010101010101"
             ];
-                 
+
             static ткст[] test_ciphertexts = [
                 "75b7878099e0c596",
                 "7494c2e7104b0879",
@@ -107,9 +107,9 @@ class RC4 : ШифрПоток
                 "d43df9b42e446e358e9c11a9b2184ecb"~
                 "ef0cd8e7a877ef968f1390ec9b3d35a5"~
                 "585cb009290e2fcde7b5ec66d9084be4"~
-                "4055a619d9dd7fc3166f9487f7cb2729"~ 
-                "12426445998514c15d53a18c864ce3a2"~ 
-                "b7555793988126520eacf2e3066e230c"~  
+                "4055a619d9dd7fc3166f9487f7cb2729"~
+                "12426445998514c15d53a18c864ce3a2"~
+                "b7555793988126520eacf2e3066e230c"~
                 "91bee4dd5304f5fd0405b35bd99c7313"~
                 "5d3d9bc335ee049ef69b3867bf2d7bd1"~
                 "eaa595d8bfc0066ff8d31509eb0c6caa"~
@@ -123,28 +123,28 @@ class RC4 : ШифрПоток
                 "12129a284deacc4cdefe58be7137541c"~
                 "047126c8d49e2755ab181ab7e940b0c0"
             ];
-    
+
             RC4 r = new RC4();
             foreach (бцел i, ткст test_key; test_keys)
             {
                 ббайт[] буфер = new ббайт[test_plaintexts[i].length>>1];
                 ткст результат;
-                
+
                 r.init(да, new СимметричныйКлюч(БайтКонвертер.hexDecode(test_key)));
-                
+
                 // Encryption
                 r.обнови(БайтКонвертер.hexDecode(test_plaintexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
                 assert(результат == test_ciphertexts[i],
-                        r.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
-                        
+                r.имя~": ("~результат~") != ("~test_ciphertexts[i]~")");
+
                 r.сбрось();
-                
+
                 // Decryption
                 r.обнови(БайтКонвертер.hexDecode(test_ciphertexts[i]), буфер);
                 результат = БайтКонвертер.hexEncode(буфер);
                 assert(результат == test_plaintexts[i],
-                        r.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
+                r.имя~": ("~результат~") != ("~test_plaintexts[i]~")");
             }
         }
     }

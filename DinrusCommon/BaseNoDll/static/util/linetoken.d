@@ -37,22 +37,23 @@
 **************************************************************************/
 module util.linetoken;
 
-private {
-   import stdrus;
+private
+{
+    import stdrus;
 
 }
 ткст[] разбериСтроку(ткст pSource,
-                      ткст pDelim = ",",
-                      ткст pComment = "//",
-                      ткст pEscape = "\\")
+                                      ткст pDelim = ",",
+                                      ткст pComment = "//",
+                                      ткст pEscape = "\\")
 {
     дим[][] lTemp;
     ткст[] lResult;
 
     lTemp= разбериСтроку( вЮ32(pSource),
-                         вЮ32(pDelim),
-                         вЮ32(pComment),
-                         вЮ32(pEscape) );
+                                       вЮ32(pDelim),
+                                       вЮ32(pComment),
+                                       вЮ32(pEscape) );
     foreach( юткст lLine; lTemp )
     {
         lResult ~= вЮ8( lLine );
@@ -62,9 +63,9 @@ private {
 }
 
 юткст[] разбериСтроку(юткст pSource,
-                       юткст pDelim = ",",
-                       юткст pComment = "//",
-                       юткст pEscape = "\\")
+                                        юткст pDelim = ",",
+                                        юткст pComment = "//",
+                                        юткст pEscape = "\\")
 {
     юткст[] lResult;
     дим lOpenBracket;
@@ -90,7 +91,8 @@ private {
     foreach(цел i, дим c; pSource)
     {
         if (lNestLevel == 0)
-        {   // Check for comment string.
+        {
+            // Check for comment string.
             if (pComment.length > 0)
             {
                 if (c == pComment[0])
@@ -117,7 +119,8 @@ private {
         }
 
         if (lLitMode)
-        {   // In literal character mode, so just accept the сим
+        {
+            // In literal character mode, so just accept the сим
             // without examining it.
             lResult[lInToken] ~= c;
             lLitMode = false;
@@ -126,13 +129,15 @@ private {
         }
 
         if (pEscape.length > 0 && (c == pEscape[0]))
-        {   // Slip into literal character mode
+        {
+            // Slip into literal character mode
             lLitMode = true;
             continue;
         }
 
         if (lNestLevel == 0)
-        {   // Only проверь for разграничители if not in 'bracket'-mode.
+        {
+            // Only проверь for разграничители if not in 'bracket'-mode.
             if (lDelim.length == 0)
             {
                 if (межбукв_ли(c))
@@ -201,7 +206,8 @@ private {
                     // Go fetch next character
                     continue;
                 }
-            } else if (c == lOpenBracket)
+            }
+            else if (c == lOpenBracket)
             {
                 // Note that the сим is added to the токен too.
                 lNestLevel++;
@@ -221,7 +227,7 @@ private {
                     lTrimSpot = lResult[lInToken].length;
             }
             else
-               lTrimSpot = -1;
+                lTrimSpot = -1;
 
     }
 

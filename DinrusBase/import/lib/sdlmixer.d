@@ -2,8 +2,8 @@
 
 private
 {
-import stdrus, lib.sdl;
-pragma(lib,"dinrus.lib");
+    import stdrus, lib.sdl;
+    pragma(lib,"dinrus.lib");
 }
 
 private проц грузи(Биб биб)
@@ -75,9 +75,10 @@ private проц грузи(Биб биб)
 }
 
 ЖанБибгр СДЛМиксер;
-static this() {
+static this()
+{
     СДЛМиксер.заряжай("SDL_mixer.dll", &грузи);
-	СДЛМиксер.загружай();
+    СДЛМиксер.загружай();
 }
 
 enum : Uint8
@@ -95,29 +96,29 @@ alias сдлДайОш Mix_GetError;
 
 struct Mix_Chunk
 {
-   int allocated;
-   Uint8* abuf;
-   Uint32 alen;
-   Uint8 volume;
+    int allocated;
+    Uint8* abuf;
+    Uint32 alen;
+    Uint8 volume;
 };
 
 enum Mix_Fading
 {
-   MIX_NO_FADING,
-   MIX_FADING_OUT,
-   MIX_FADING_IN
+    MIX_NO_FADING,
+    MIX_FADING_OUT,
+    MIX_FADING_IN
 };
 
 enum Mix_MusicType
 {
-   MUS_NONE,
-   MUS_CMD,
-   MUS_WAV,
-   MUS_MOD,
-   MUS_MID,
-   MUS_OGG,
-   MUS_MP3,
-   MUS_MP3_MAD,
+    MUS_NONE,
+    MUS_CMD,
+    MUS_WAV,
+    MUS_MOD,
+    MUS_MID,
+    MUS_OGG,
+    MUS_MP3,
+    MUS_MP3_MAD,
 };
 
 struct _Mix_Music {}
@@ -132,9 +133,12 @@ enum
     MIX_CHANNEL_POST          = -2,
 }
 
-version (LittleEndian) {
+version (LittleEndian)
+{
     enum { MIX_DEFAULT_FORMAT = AUDIO_S16LSB }
-} else {
+}
+else
+{
     enum { MIX_DEFAULT_FORMAT = AUDIO_S16MSB }
 }
 

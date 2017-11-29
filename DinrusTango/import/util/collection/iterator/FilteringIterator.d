@@ -1,8 +1,8 @@
 ﻿/*
  Файл: FilteringIterator.d
 
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+ Originally записано by Doug Lea и released преобр_в the public домен.
+ Thanks for the assistance и support of Sun Microsystems Labs, Agorics
  Inc, Loral, и everyone contributing, testing, и using this код.
 
  History:
@@ -27,7 +27,7 @@ private import util.collection.model.Iterator;
  * FilteringIterators work as wrappers around другой Iterators.
  * To build one, you need an existing Обходчик (perhaps one
  * из_ coll.элементы(), for some Коллекция coll), и a Предикат
- * объект (i.e., implementing interface Предикат). 
+ * объект (i.e., implementing interface Предикат).
  * For example, if you want в_ screen out everything but Panel
  * objects из_ a collection coll that might hold things другой than Panels,
  * пиши something of the form:
@@ -50,130 +50,132 @@ private import util.collection.model.Iterator;
 
 public class FilteringIterator(T) : Обходчик!(T)
 {
-        alias бул delegate(T) Предикат;
-        
-        // экземпляр variables
+    alias бул delegate(T) Предикат;
 
-        /**
-         * The enumeration we are wrapping
-        **/
+    // экземпляр variables
 
-        private Обходчик!(T) src_;
+    /**
+     * The enumeration we are wrapping
+    **/
 
-        /**
-         * The screening predicate
-        **/
+    private Обходчик!(T) src_;
 
-        private Предикат pred_;
+    /**
+     * The screening predicate
+    **/
 
-        /**
-         * The sense of the predicate. Нет means в_ invert
-        **/
+    private Предикат pred_;
 
-        private бул sign_;
+    /**
+     * The sense of the predicate. Нет means в_ invert
+    **/
 
-        /**
-         * The следщ элемент в_ hand out
-        **/
+    private бул sign_;
 
-        private T get_;
+    /**
+     * The следщ элемент в_ hand out
+    **/
 
-        /**
-         * Да if we have a следщ элемент 
-        **/
+    private T get_;
 
-        private бул haveNext_;
+    /**
+     * Да if we have a следщ элемент
+    **/
 
-        /**
-         * Make a Фильтр using ист for the элементы, и p as the скринер,
-         * selecting only those элементы of ист for which p is да
-        **/
+    private бул haveNext_;
 
-        public this (Обходчик!(T) ист, Предикат p)
+    /**
+     * Make a Фильтр using ист for the элементы, и p as the скринер,
+     * selecting only those элементы of ист for which p is да
+    **/
+
+    public this (Обходчик!(T) ист, Предикат p)
+    {
+        this(ист, p, да);
+    }
+
+    /**
+     * Make a Фильтр using ист for the элементы, и p as the скринер,
+     * selecting only those элементы of ист for which p.predicate(v) == sense.
+     * A значение of да for sense selects only значения for which p.predicate
+     * is да. A значение of нет selects only those for which it is нет.
+    **/
+    public this (Обходчик!(T) ист, Предикат p, бул sense)
+    {
+        src_ = ист;
+        pred_ = p;
+        sign_ = sense;
+        findNext();
+    }
+
+    /**
+     * Implements util.collection.model.Iterator.ещё
+    **/
+
+    public final бул ещё()
+    {
+        return haveNext_;
+    }
+
+    /**
+     * Implements util.collection.model.Iterator.получи.
+    **/
+    public final T получи()
+    {
+        if (! haveNext_)
+            throw new НетЭлементаИскл("exhausted enumeration");
+        else
         {
-                this(ист, p, да);
+            auto результат = get_;
+            findNext();
+            return результат;
         }
+    }
 
-        /**
-         * Make a Фильтр using ист for the элементы, и p as the скринер,
-         * selecting only those элементы of ист for which p.predicate(v) == sense.
-         * A значение of да for sense selects only значения for which p.predicate
-         * is да. A значение of нет selects only those for which it is нет.
-        **/
-        public this (Обходчик!(T) ист, Предикат p, бул sense)
+
+    цел opApply (цел delegate (inout T значение) дг)
+    {
+        цел результат;
+
+        while (haveNext_)
         {
-                src_ = ист;
-                pred_ = p;
-                sign_ = sense;
-                findNext();
+            auto значение = получи();
+            if ((результат = дг(значение)) != 0)
+                break;
         }
+        return результат;
+    }
 
-        /**
-         * Implements util.collection.model.Iterator.ещё
-        **/
 
-        public final бул ещё()
+    /**
+     * Traverse through src_ элементы finding one passing predicate
+    **/
+    private final проц findNext()
+    {
+        haveNext_ = нет;
+
+        for (;;)
         {
-                return haveNext_;
-        }
-
-        /**
-         * Implements util.collection.model.Iterator.получи.
-        **/
-        public final T получи()
-        {
-                if (! haveNext_)
-                      throw new НетЭлементаИскл("exhausted enumeration");
-                else
-                   {
-                   auto результат = get_;
-                   findNext();
-                   return результат;
-                   }
-        }
-
-
-        цел opApply (цел delegate (inout T значение) дг)
-        {
-                цел результат;
-
-                while (haveNext_)
-                      {
-                      auto значение = получи();
-                      if ((результат = дг(значение)) != 0)
-                           break;
-                      }
-                return результат;
-        }
-
-
-        /**
-         * Traverse through src_ элементы finding one passing predicate
-        **/
-        private final проц findNext()
-        {
-                haveNext_ = нет;
-
-                for (;;)
+            if (! src_.ещё())
+                return ;
+            else
+            {
+                try
+                {
+                    auto v = src_.получи();
+                    if (pred_(v) is sign_)
                     {
-                    if (! src_.ещё())
-                          return ;
-                    else
-                       {
-                       try {
-                           auto v = src_.получи();
-                           if (pred_(v) is sign_)
-                              {
-                              haveNext_ = да;
-                              get_ = v;
-                              return;
-                              }
-                           } catch (НетЭлементаИскл ex)
-                                   {
-                                   return;
-                                   }
-                       }
+                        haveNext_ = да;
+                        get_ = v;
+                        return;
                     }
+                }
+                catch (НетЭлементаИскл ex)
+                {
+                    return;
+                }
+            }
         }
+    }
 }
 

@@ -50,7 +50,7 @@ class ТрансформОбходчик(V, U=V) : Обходчик!(V)
     {
         return _ист.length;
     }
-	alias длина length;
+    alias длина length;
     /**
      * Iterate through the исток обходчик, working with temporary copies of a
      * transformed V элемент.
@@ -116,7 +116,7 @@ class ТрансформКлючник(K, V, J=K, U=V) : Ключник!(K, V)
     {
         return _ист.length;
     }
-	alias длина length;
+    alias длина length;
 
     /**
      * Iterate through the исток обходчик, working with temporary copies of a
@@ -196,11 +196,11 @@ class ОбходчикЦепи(V) : Обходчик!(V)
         _цепь = цепь.dup;
         _поддержкаДлины = true;
         foreach(обх; _цепь)
-            if(обх.length == ~0)
-            {
-                _поддержкаДлины = false;
-                break;
-            }
+        if(обх.length == ~0)
+        {
+            _поддержкаДлины = false;
+            break;
+        }
     }
 
     /**
@@ -215,12 +215,12 @@ class ОбходчикЦепи(V) : Обходчик!(V)
         {
             бцел рез = 0;
             foreach(обх; _цепь)
-                рез += обх.length;
+            рез += обх.length;
             return рез;
         }
         return ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ;
     }
-	alias длина length;
+    alias длина length;
     /**
      * Iterate through the цепь of iterators.
      */
@@ -256,11 +256,11 @@ class КлючникЦепи(K, V) : Ключник!(K, V)
         _цепь = цепь.dup;
         _поддержкаДлины = true;
         foreach(обх; _цепь)
-            if(обх.length == ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ)
-            {
-                _поддержкаДлины = false;
-                break;
-            }
+        if(обх.length == ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ)
+        {
+            _поддержкаДлины = false;
+            break;
+        }
     }
 
     /**
@@ -274,12 +274,12 @@ class КлючникЦепи(K, V) : Ключник!(K, V)
         {
             бцел рез = 0;
             foreach(обх; _цепь)
-                рез += обх.length;
+            рез += обх.length;
             return рез;
         }
         return ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ;
     }
-	alias длина length;
+    alias длина length;
     /**
      * Iterate through the цепь of iterators using значения only.
      */
@@ -353,7 +353,7 @@ class ФильтрОбходчик(V) : Обходчик!(V)
         //
         return ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ;
     }
-	alias длина length;
+    alias длина length;
     /**
      * Iterate through the исток обходчик, only accepting элементы where the
      * delegate/function returns true.
@@ -425,7 +425,7 @@ class ФильтрКлючник(K, V) : Ключник!(K, V)
         //
         return ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ;
     }
-	alias длина length;
+    alias длина length;
     /**
      * Iterate through the исток обходчик, only iterating элементы where the
      * delegate/function returns true.
@@ -493,7 +493,7 @@ class ОбходчикМассива(V) : Обходчик!(V)
     {
         _массив = массив;
     }
-	
+
     /**
      * Returns the массив длина
      */
@@ -501,8 +501,8 @@ class ОбходчикМассива(V) : Обходчик!(V)
     {
         return _массив.length;
     }
-	alias длина length;
-	
+    alias длина length;
+
     /**
      * Iterate over the массив.
      */
@@ -510,8 +510,8 @@ class ОбходчикМассива(V) : Обходчик!(V)
     {
         цел возврзнач = 0;
         foreach(ref x; _массив)
-            if((возврзнач = дг(x)) != 0)
-                break;
+        if((возврзнач = дг(x)) != 0)
+            break;
         return возврзнач;
     }
 }
@@ -539,7 +539,7 @@ class ОбходчикАМ(K, V) : Ключник!(K, V)
         return _массив.length;// || _массив.length;
     }
 
-	alias длина length;
+    alias длина length;
     /**
      * Iterate over the AA
      */
@@ -547,8 +547,8 @@ class ОбходчикАМ(K, V) : Ключник!(K, V)
     {
         цел возврзнач;
         foreach(k, ref v; _массив)
-            if((возврзнач = дг(k, v)) != 0)
-                break;
+        if((возврзнач = дг(k, v)) != 0)
+            break;
         return возврзнач;
     }
 }
@@ -570,12 +570,12 @@ V[] вМассив(V)(Обходчик!(V) обх)
         рез.length = длин;
         цел i = 0;
         foreach(v; обх)
-            рез[i++] = v;
+        рез[i++] = v;
     }
     else
     {
         foreach(v; обх)
-            рез ~= v;
+        рез ~= v;
     }
     return рез;
 }
@@ -587,6 +587,6 @@ V[K] вАМ(K, V)(Ключник!(K, V) обх)
 {
     V[K] рез;
     foreach(k, v; обх)
-        рез[k] = v;
+    рез[k] = v;
     return рез;
 }

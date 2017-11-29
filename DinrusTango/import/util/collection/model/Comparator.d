@@ -1,8 +1,8 @@
 ﻿/*
  Файл: Сравнитель.d
 
- Originally записано by Doug Lea и released преобр_в the public домен. 
- Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+ Originally записано by Doug Lea и released преобр_в the public домен.
+ Thanks for the assistance и support of Sun Microsystems Labs, Agorics
  Inc, Loral, и everyone contributing, testing, и using this код.
 
  History:
@@ -19,7 +19,7 @@ module util.collection.model.Сравнитель;
  *
  * Сравнитель is an interface for any class possessing an элемент
  * сравнение метод.
- * 
+ *
         author: Doug Lea
  * @version 0.93
  *
@@ -29,18 +29,18 @@ module util.collection.model.Сравнитель;
 
 template Сравнитель(T)
 {
-        alias цел delegate(T, T) Сравнитель;
+    alias цел delegate(T, T) Сравнитель;
 }
 
 /+
 public interface Сравнитель(T)
 {
-        /**
-         * @param fst первый аргумент
-         * @param snd секунда аргумент
-         * Возвращает: a негатив число if fst is less than snd; a
-         * positive число if fst is greater than snd; else 0
-        **/
-        public цел сравни(T fst, T snd);
+    /**
+     * @param fst первый аргумент
+     * @param snd секунда аргумент
+     * Возвращает: a негатив число if fst is less than snd; a
+     * positive число if fst is greater than snd; else 0
+    **/
+    public цел сравни(T fst, T snd);
 }
 +/

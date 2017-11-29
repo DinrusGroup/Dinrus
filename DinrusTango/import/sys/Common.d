@@ -13,33 +13,33 @@
 module sys.Common;
 
 version (Win32)
-        {
-        public import sys.win32.UserGdi;
-		public import exception;
-		//pragma(lib,"DinrusTango.lib");
-        }
+{
+    public import sys.win32.UserGdi;
+    public import exception;
+    //pragma(lib,"DinrusTango.lib");
+}
 
 version (linux)
-        {
-        public import sys.linux.linux;
-        alias sys.linux.linux posix;
-        }
+{
+    public import sys.linux.linux;
+    alias sys.linux.linux posix;
+}
 
 version (darwin)
-        {
-        public import sys.darwin.darwin;
-        alias sys.darwin.darwin posix;
-        }
+{
+    public import sys.darwin.darwin;
+    alias sys.darwin.darwin posix;
+}
 version (freebsd)
-        {
-        public import sys.freebsd.freebsd;
-        alias sys.freebsd.freebsd posix;
-        }
+{
+    public import sys.freebsd.freebsd;
+    alias sys.freebsd.freebsd posix;
+}
 version (solaris)
-        {
-        public import sys.solaris.solaris;
-        alias sys.solaris.solaris posix;
-        }
+{
+    public import sys.solaris.solaris;
+    alias sys.solaris.solaris posix;
+}
 
 /*******************************************************************************
 
@@ -48,19 +48,19 @@ version (solaris)
 *******************************************************************************/
 
 version (Win32)
-        {
+{
 
-        }
+}
 else
-version (Posix)
-        {
-        private import cidrus;
-        private import cidrus;
-        }
+    version (Posix)
+{
+    private import cidrus;
+    private import cidrus;
+}
 else
-   {
-   pragma (msg, "Unsupported environment; neither Win32 or Posix is declared");
-   static assert(0);
-   }
+{
+    pragma (msg, "Unsupported environment; neither Win32 or Posix is declared");
+    static assert(0);
+}
 
-   
+

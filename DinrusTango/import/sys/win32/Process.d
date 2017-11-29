@@ -10,11 +10,11 @@ module sys.win32.Process;
 private
 {
     import cidrus;
-  }
+}
 
 extern (C):
 
-enum
+    enum
 {
     P_WAIT,
     P_NOWAIT,

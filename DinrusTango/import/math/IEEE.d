@@ -14,7 +14,7 @@
  *  www.digitalmars.com
  * License:
  * Данное программное обеспечение предоставляется "как есть",
- * без какой-либо явной или косвенной гарантии. 
+ * без какой-либо явной или косвенной гарантии.
  * Авторы ни в коем случае не несут ответственность за ущерб,
  * причинённый от использования данного ПО.
  *
@@ -58,28 +58,34 @@
  */
 module math.IEEE;
 
-version(D_InlineAsm_X86) {
+version(D_InlineAsm_X86)
+{
     version = Naked_D_InlineAsm_X86;
 }
 
-version (X86){
+version (X86)
+{
     version = X86_Any;
 }
 
-version (X86_64){
+version (X86_64)
+{
     version = X86_Any;
 }
 
-version (Naked_D_InlineAsm_X86) {
+version (Naked_D_InlineAsm_X86)
+{
     import cidrus;
 }
 
 
-version(Windows) { 
-    version(DigitalMars) { 
- 	    version = DMDWindows; 
-    } 
-	version = ЛитлЭндиан;
+version(Windows)
+{
+    version(DigitalMars)
+    {
+        version = DMDWindows;
+    }
+    version = ЛитлЭндиан;
 }
 
 version (X86)
@@ -87,12 +93,14 @@ version (X86)
     const цел FP_ILOGB0        = -цел.max-1;
     const цел FP_ILOGBNAN      = -цел.max-1;
     const цел FP_ILOGBINFINITY = -цел.max-1;
-} else {
+}
+else
+{
     alias cidrus.FP_ILOGB0   FP_ILOGB0;
     alias cidrus.FP_ILOGBNAN FP_ILOGBNAN;
     const цел FP_ILOGBINFINITY = цел.max;
 }
- 	
+
 // Стандартные НЧ payloads.
 // Три младших бита указывают причину НЧ:
 // 0 = ошибка, иная чем указанные ниже:
@@ -100,7 +108,8 @@ version (X86)
 // 2 = сингулярность
 // 3 = диапазон
 // 4-7 = резерв.
-enum ДИНРУС_НЧ {
+enum ДИНРУС_НЧ
+{
     // Общие ошибки
     ОШИБКА_ДОМЕНА = 0x0101,
     СИНГУЛЯРНОСТЬ  = 0x0102,
@@ -136,91 +145,124 @@ private:
 
 // Константы используются для удаления из представления компонентов.
 // Они обеспечиваются работой встроенных свойств плавающей запятой.
-template плавТрэтсИ3Е(T) {
- // МАСКА_ЭКСП - бкрат маска для выделения экспонентной части (без знака)
- // МАСКА_ЗНАКА - бкрат маска для выделения значного бита.
- // БКРАТ_ПОЗ_ЭКСП - индекс экспоненты, представленной как бкрат Массив.
- // ББАЙТ_ПОЗ_ЗНАКА - индекс знака, представленного как ббайт Массив.
- // РЕЦИП_ЭПСИЛОН - значение, когда (smallest_denormal) * РЕЦИП_ЭПСИЛОН == T.min
- const T РЕЦИП_ЭПСИЛОН = (1/T.epsilon);
+template плавТрэтсИ3Е(T)
+{
+// МАСКА_ЭКСП - бкрат маска для выделения экспонентной части (без знака)
+// МАСКА_ЗНАКА - бкрат маска для выделения значного бита.
+// БКРАТ_ПОЗ_ЭКСП - индекс экспоненты, представленной как бкрат Массив.
+// ББАЙТ_ПОЗ_ЗНАКА - индекс знака, представленного как ббайт Массив.
+// РЕЦИП_ЭПСИЛОН - значение, когда (smallest_denormal) * РЕЦИП_ЭПСИЛОН == T.min
+    const T РЕЦИП_ЭПСИЛОН = (1/T.epsilon);
 
- static if (T.mant_dig == 24) { // плав
-    enum : бкрат {
-        МАСКА_ЭКСП = 0x7F80,
-        МАСКА_ЗНАКА = 0x8000,
-        ЭКСПБИАС = 0x3F00
+    static if (T.mant_dig == 24)   // плав
+    {
+        enum : бкрат
+        {
+            МАСКА_ЭКСП = 0x7F80,
+            МАСКА_ЗНАКА = 0x8000,
+            ЭКСПБИАС = 0x3F00
+        }
+        const бцел МАСКА_ЭКСП_INT = 0x7F80_0000;
+        const бцел MANTISSAMASK_INT = 0x007F_FFFF;
+        version(ЛитлЭндиан)
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 1;
+        }
+        else
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 0;
+        }
     }
-    const бцел МАСКА_ЭКСП_INT = 0x7F80_0000;
-    const бцел MANTISSAMASK_INT = 0x007F_FFFF;
-    version(ЛитлЭндиан) {        
-      const БКРАТ_ПОЗ_ЭКСП = 1;
-    } else {
-      const БКРАТ_ПОЗ_ЭКСП = 0;
+    else static if (T.mant_dig==53)     // дво, or реал==дво
+    {
+        enum : бкрат
+        {
+            МАСКА_ЭКСП = 0x7FF0,
+            МАСКА_ЗНАКА = 0x8000,
+            ЭКСПБИАС = 0x3FE0
+        }
+        const бцел МАСКА_ЭКСП_INT = 0x7FF0_0000;
+        const бцел MANTISSAMASK_INT = 0x000F_FFFF; // for the MSB only
+        version(ЛитлЭндиан)
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 3;
+            const ББАЙТ_ПОЗ_ЗНАКА = 7;
+        }
+        else
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 0;
+            const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        }
     }
- } else static if (T.mant_dig==53) { // дво, or реал==дво
-     enum : бкрат {
-         МАСКА_ЭКСП = 0x7FF0,
-         МАСКА_ЗНАКА = 0x8000,
-         ЭКСПБИАС = 0x3FE0
-    }
-    const бцел МАСКА_ЭКСП_INT = 0x7FF0_0000;
-    const бцел MANTISSAMASK_INT = 0x000F_FFFF; // for the MSB only
-    version(ЛитлЭндиан) {
-      const БКРАТ_ПОЗ_ЭКСП = 3;
-      const ББАЙТ_ПОЗ_ЗНАКА = 7;
-    } else {
-      const БКРАТ_ПОЗ_ЭКСП = 0;
-      const ББАЙТ_ПОЗ_ЗНАКА = 0;
-    }
- } else static if (T.mant_dig==64) { // real80
-     enum : бкрат {
-         МАСКА_ЭКСП = 0x7FFF,
-         МАСКА_ЗНАКА = 0x8000,
-         ЭКСПБИАС = 0x3FFE
-     }
+    else static if (T.mant_dig==64)     // real80
+    {
+        enum : бкрат
+        {
+            МАСКА_ЭКСП = 0x7FFF,
+            МАСКА_ЗНАКА = 0x8000,
+            ЭКСПБИАС = 0x3FFE
+        }
 //    const бдол QUIETNANMASK = 0xC000_0000_0000_0000; // Преобразует сигнализирующмй НЧ в тихий НЧ.
-    version(ЛитлЭндиан) {
-      const БКРАТ_ПОЗ_ЭКСП = 4;
-      const ББАЙТ_ПОЗ_ЗНАКА = 9;
-    } else {
-      const БКРАТ_ПОЗ_ЭКСП = 0;
-      const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        version(ЛитлЭндиан)
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 4;
+            const ББАЙТ_ПОЗ_ЗНАКА = 9;
+        }
+        else
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 0;
+            const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        }
     }
- } else static if (реал.mant_dig==113){ // квадрупл
-     enum : бкрат {
-         МАСКА_ЭКСП = 0x7FFF,
-         МАСКА_ЗНАКА = 0x8000,
-         ЭКСПБИАС = 0x3FFE
-     }
-    version(ЛитлЭндиан) {
-      const БКРАТ_ПОЗ_ЭКСП = 7;
-      const ББАЙТ_ПОЗ_ЗНАКА = 15;
-    } else {
-      const БКРАТ_ПОЗ_ЭКСП = 0;
-      const ББАЙТ_ПОЗ_ЗНАКА = 0;
+    else static if (реал.mant_dig==113)    // квадрупл
+    {
+        enum : бкрат
+        {
+            МАСКА_ЭКСП = 0x7FFF,
+            МАСКА_ЗНАКА = 0x8000,
+            ЭКСПБИАС = 0x3FFE
+        }
+        version(ЛитлЭндиан)
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 7;
+            const ББАЙТ_ПОЗ_ЗНАКА = 15;
+        }
+        else
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 0;
+            const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        }
     }
- } else static if (реал.mant_dig==106) { // дводво
-     enum : бкрат {
-         МАСКА_ЭКСП = 0x7FF0,
-         МАСКА_ЗНАКА = 0x8000
+    else static if (реал.mant_dig==106)     // дводво
+    {
+        enum : бкрат
+        {
+            МАСКА_ЭКСП = 0x7FF0,
+            МАСКА_ЗНАКА = 0x8000
 //         ЭКСПБИАС = 0x3FE0
-     }
-    // байт экспоненты не уникален
-    version(ЛитлЭндиан) {
-      const БКРАТ_ПОЗ_ЭКСП = 7; // 3 также эксп крат
-      const ББАЙТ_ПОЗ_ЗНАКА = 15;
-    } else {
-      const БКРАТ_ПОЗ_ЭКСП = 0; // 4 также эксп крат
-      const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        }
+        // байт экспоненты не уникален
+        version(ЛитлЭндиан)
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 7; // 3 также эксп крат
+            const ББАЙТ_ПОЗ_ЗНАКА = 15;
+        }
+        else
+        {
+            const БКРАТ_ПОЗ_ЭКСП = 0; // 4 также эксп крат
+            const ББАЙТ_ПОЗ_ЗНАКА = 0;
+        }
     }
- }
 }
 
 // относятся к типам с плавающей точкой
-version(ЛитлЭндиан) {
+version(ЛитлЭндиан)
+{
     const МАНТИССА_ЛСБ = 0;
-    const МАНТИССА_МСБ = 1;    
-} else {
+    const МАНТИССА_МСБ = 1;
+}
+else
+{
     const МАНТИССА_ЛСБ = 1;
     const МАНТИССА_МСБ = 0;
 }
@@ -283,7 +325,8 @@ public:
 /** IEEE rounding modes.
  * The default режим is НАИБЛИЖАЙШИЙ.
  */
-enum РежимОкругления : крат {
+enum РежимОкругления : крат
+{
     НАИБЛИЖАЙШИЙ = 0x0000,
     ВВЕРХ      = 0x0400,
     ВНИЗ        = 0x0800,
@@ -309,7 +352,8 @@ enum РежимОкругления : крат {
 РежимОкругления дайИ3еОкругление();
 
 // Note: Itanium supports ещё точность опции than this. SSE/SSE2 does not support any.
-enum КонтрольТочности : крат {
+enum КонтрольТочности : крат
+{
     ТОЧНОСТЬ80 = 0x300,
     ТОЧНОСТЬ64 = 0x200,
     ТОЧНОСТЬ32 = 0x000
@@ -329,7 +373,7 @@ enum КонтрольТочности : крат {
  *      Calculate и return $(I x) и $(I эксп) such that
  *      значение =$(I x)*2$(SUP эксп) и
  *      .5 $(LT)= |$(I x)| $(LT) 1.0
- *      
+ *
  *      $(I x) имеется same знак as значение.
  *
  *      $(TABLE_SV
@@ -353,7 +397,7 @@ enum КонтрольТочности : крат {
  *
  * If x is not a special значение, the результат is the same as
  * $(D cast(цел)логб(x)).
- * 
+ *
  * Remarks: This function is consistent with IEEE754R, but it
  * differs из_ the C function of the same имя
  * in the return значение of infinity. (in C, илогб(реал.infinity)== цел.max).
@@ -454,11 +498,14 @@ enum КонтрольТочности : крат {
 цел норм_ли(X)(X x)
 {
     alias плавТрэтсИ3Е!(X) F;
-    
-    static if(реал.mant_dig==106) { // дводво
-    // дводво is нормаль if the least significant часть is нормаль.
+
+    static if(реал.mant_dig==106)   // дводво
+    {
+        // дводво is нормаль if the least significant часть is нормаль.
         return норм_ли((cast(дво*)&x)[МАНТИССА_ЛСБ]);
-    } else {
+    }
+    else
+    {
         бкрат e = F.МАСКА_ЭКСП & (cast(бкрат *)&x)[F.БКРАТ_ПОЗ_ЭКСП];
         return (e != F.МАСКА_ЭКСП && e!=0);
     }
@@ -529,7 +576,7 @@ enum КонтрольТочности : крат {
  *
  * Remarks:
  * This function is included in the IEEE 754-2008 стандарт.
- * 
+ *
  * следщДвоВыше и следщПлавВыше are the corresponding functions for
  * the IEEE дво и IEEE плав число строки.
  */
@@ -550,19 +597,26 @@ X разбейЗначимое(X)(ref X x)
 {
     if (фабс(x) !< X.infinity) return 0; // don't change НЧ or infinity
     X y = x; // копируй the original значение
-    static if (X.mant_dig == плав.mant_dig) {
+    static if (X.mant_dig == плав.mant_dig)
+    {
         бцел *ps = cast(бцел *)&x;
         (*ps) &= 0xFFFF_FC00;
-    } else static if (X.mant_dig == 53) {
+    }
+    else static if (X.mant_dig == 53)
+    {
         бдол *ps = cast(бдол *)&x;
         (*ps) &= 0xFFFF_FFFF_FC00_0000L;
-    } else static if (X.mant_dig == 64){ // 80-битные реал
+    }
+    else static if (X.mant_dig == 64)    // 80-битные реал
+    {
         // An x87 real80 имеется 63 биты, because the 'implied' bit is stored explicitly.
         // This is annoying, because it means the significand cannot be
         // precisely halved. Instead, we разбей it преобр_в 31+32 биты.
         бдол *ps = cast(бдол *)&x;
         (*ps) &= 0xFFFF_FFFF_0000_0000L;
-    } else static if (X.mant_dig==113) { // квадрупл
+    }
+    else static if (X.mant_dig==113)     // квадрупл
+    {
         бдол *ps = cast(бдол *)&x;
         ps[МАНТИССА_ЛСБ] &= 0xFF00_0000_0000_0000L;
     }
@@ -588,7 +642,7 @@ X разбейЗначимое(X)(ref X x)
  *
  * Remarks:
  * This function is included in the IEEE 754-2008 стандарт.
- * 
+ *
  * следщДвоНиже и следщПлавНиже are the corresponding functions for
  * the IEEE дво и IEEE плав число строки.
  */
@@ -641,71 +695,85 @@ X разбейЗначимое(X)(ref X x)
 {
     /* Public Domain. Author: Don Clugston, 18 Aug 2005.
      */
-  static assert(is(X==реал) || is(X==дво) || is(X==плав), "Only плав, дво, и реал are supported by отнравх");
-  
-  static if (X.mant_dig == 106) { // дводво.
-     цел a = отнравх(cast(дво*)(&x)[МАНТИССА_МСБ], cast(дво*)(&y)[МАНТИССА_МСБ]);
-     if (a != дво.mant_dig) return a;
-     return дво.mant_dig + отнравх(cast(дво*)(&x)[МАНТИССА_ЛСБ], cast(дво*)(&y)[МАНТИССА_ЛСБ]);     
-  } else static if (X.mant_dig==64 || X.mant_dig==113 
-                 || X.mant_dig==53 || X.mant_dig == 24) {
-    if (x == y) return X.mant_dig; // ensure diff!=0, cope with INF.
+    static assert(is(X==реал) || is(X==дво) || is(X==плав), "Only плав, дво, и реал are supported by отнравх");
 
-    X diff = фабс(x - y);
-
-    бкрат *pa = cast(бкрат *)(&x);
-    бкрат *pb = cast(бкрат *)(&y);
-    бкрат *pd = cast(бкрат *)(&diff);
-
-    alias плавТрэтсИ3Е!(X) F;
-
-    // The difference in абс(exponent) between x or y и абс(x-y)
-    // is equal в_ the число of significand биты of x which are
-    // equal в_ y. If негатив, x и y have different exponents.
-    // If positive, x и y are equal в_ 'bitsdiff' биты.
-    // AND with 0x7FFF в_ form the абсолютный значение.
-    // To avoопр out-by-1 ошибки, we вычти 1 so it rounds down
-    // if the exponents were different. This means 'bitsdiff' is
-    // always 1 lower than we want, except that if bitsdiff==0,
-    // they could have 0 or 1 биты in common.
-
- static if (X.mant_dig==64 || X.mant_dig==113) { // real80 or квадрупл
-    цел bitsdiff = ( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП) 
-                     + (pb[F.БКРАТ_ПОЗ_ЭКСП]& F.МАСКА_ЭКСП)
-                     - (0x8000-F.МАСКА_ЭКСП))>>1) 
-                - pd[F.БКРАТ_ПОЗ_ЭКСП];
- } else static if (X.mant_dig==53) { // дво
-    цел bitsdiff = (( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
-                     + (pb[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
-                     - (0x8000-F.МАСКА_ЭКСП))>>1) 
-                 - (pd[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП))>>4;
- } else static if (X.mant_dig == 24) { // плав
-     цел bitsdiff = (( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
-                      + (pb[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
-                      - (0x8000-F.МАСКА_ЭКСП))>>1) 
-             - (pd[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП))>>7;     
- }
-    if (pd[F.БКРАТ_ПОЗ_ЭКСП] == 0)
-    {   // Difference is denormal
-        // For denormals, we need в_ добавь the число of zeros that
-        // lie at the старт of diff's significand.
-        // We do this by multИПlying by 2^реал.mant_dig
-        diff *= F.РЕЦИП_ЭПСИЛОН;
-        return bitsdiff + X.mant_dig - pd[F.БКРАТ_ПОЗ_ЭКСП];
+    static if (X.mant_dig == 106)   // дводво.
+    {
+        цел a = отнравх(cast(дво*)(&x)[МАНТИССА_МСБ], cast(дво*)(&y)[МАНТИССА_МСБ]);
+        if (a != дво.mant_dig) return a;
+        return дво.mant_dig + отнравх(cast(дво*)(&x)[МАНТИССА_ЛСБ], cast(дво*)(&y)[МАНТИССА_ЛСБ]);
     }
+    else static if (X.mant_dig==64 || X.mant_dig==113
+                    || X.mant_dig==53 || X.mant_dig == 24)
+    {
+        if (x == y) return X.mant_dig; // ensure diff!=0, cope with INF.
 
-    if (bitsdiff > 0)
-        return bitsdiff + 1; // добавь the 1 we subtracted before
-        
-    // Avoопр out-by-1 ошибки when factor is almost 2.    
-     static if (X.mant_dig==64 || X.mant_dig==113) { // real80 or квадрупл    
-        return (bitsdiff == 0) ? (pa[F.БКРАТ_ПОЗ_ЭКСП] == pb[F.БКРАТ_ПОЗ_ЭКСП]) : 0;
-     } else static if (X.mant_dig == 53 || X.mant_dig == 24) { // дво or плав
-        return (bitsdiff == 0 && !((pa[F.БКРАТ_ПОЗ_ЭКСП] ^ pb[F.БКРАТ_ПОЗ_ЭКСП])& F.МАСКА_ЭКСП)) ? 1 : 0;
-     }
- } else {
-    assert(0, "Unsupported");
- }
+        X diff = фабс(x - y);
+
+        бкрат *pa = cast(бкрат *)(&x);
+        бкрат *pb = cast(бкрат *)(&y);
+        бкрат *pd = cast(бкрат *)(&diff);
+
+        alias плавТрэтсИ3Е!(X) F;
+
+        // The difference in абс(exponent) between x or y и абс(x-y)
+        // is equal в_ the число of significand биты of x which are
+        // equal в_ y. If негатив, x и y have different exponents.
+        // If positive, x и y are equal в_ 'bitsdiff' биты.
+        // AND with 0x7FFF в_ form the абсолютный значение.
+        // To avoопр out-by-1 ошибки, we вычти 1 so it rounds down
+        // if the exponents were different. This means 'bitsdiff' is
+        // always 1 lower than we want, except that if bitsdiff==0,
+        // they could have 0 or 1 биты in common.
+
+        static if (X.mant_dig==64 || X.mant_dig==113)   // real80 or квадрупл
+        {
+            цел bitsdiff = ( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
+                                 + (pb[F.БКРАТ_ПОЗ_ЭКСП]& F.МАСКА_ЭКСП)
+                                 - (0x8000-F.МАСКА_ЭКСП))>>1)
+            - pd[F.БКРАТ_ПОЗ_ЭКСП];
+        }
+        else static if (X.mant_dig==53)     // дво
+        {
+            цел bitsdiff = (( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
+                                  + (pb[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
+                                  - (0x8000-F.МАСКА_ЭКСП))>>1)
+                               - (pd[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП))>>4;
+        }
+        else static if (X.mant_dig == 24)     // плав
+        {
+            цел bitsdiff = (( ((pa[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
+                                  + (pb[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП)
+                                  - (0x8000-F.МАСКА_ЭКСП))>>1)
+                               - (pd[F.БКРАТ_ПОЗ_ЭКСП] & F.МАСКА_ЭКСП))>>7;
+        }
+        if (pd[F.БКРАТ_ПОЗ_ЭКСП] == 0)
+        {
+            // Difference is denormal
+            // For denormals, we need в_ добавь the число of zeros that
+            // lie at the старт of diff's significand.
+            // We do this by multИПlying by 2^реал.mant_dig
+            diff *= F.РЕЦИП_ЭПСИЛОН;
+            return bitsdiff + X.mant_dig - pd[F.БКРАТ_ПОЗ_ЭКСП];
+        }
+
+        if (bitsdiff > 0)
+            return bitsdiff + 1; // добавь the 1 we subtracted before
+
+        // Avoопр out-by-1 ошибки when factor is almost 2.
+        static if (X.mant_dig==64 || X.mant_dig==113)   // real80 or квадрупл
+        {
+            return (bitsdiff == 0) ? (pa[F.БКРАТ_ПОЗ_ЭКСП] == pb[F.БКРАТ_ПОЗ_ЭКСП]) : 0;
+        }
+        else static if (X.mant_dig == 53 || X.mant_dig == 24)     // дво or плав
+        {
+            return (bitsdiff == 0 && !((pa[F.БКРАТ_ПОЗ_ЭКСП] ^ pb[F.БКРАТ_ПОЗ_ЭКСП])& F.МАСКА_ЭКСП)) ? 1 : 0;
+        }
+    }
+    else
+    {
+        assert(0, "Unsupported");
+    }
 }
 
 /*********************************
@@ -737,12 +805,14 @@ X разбейЗначимое(X)(ref X x)
  *
  */
 T и3еСреднее(T)(T x, T y)
-in {
+in
+{
     // Всё x и y must have the same знак, и must not be НЧ.
-    assert(битзнака(x) == битзнака(y)); 
+    assert(битзнака(x) == битзнака(y));
     assert(x<>=0 && y<>=0);
 }
-body {
+body
+{
     // Runtime behaviour for contract violation:
     // If signs are opposite, or one is a НЧ, return 0.
     if (!((x>=0 && y>=0) || (x<=0 && y<=0))) return 0.0;
@@ -752,7 +822,8 @@ body {
 
     alias плавТрэтсИ3Е!(реал) F;
     T u;
-    static if (T.mant_dig==64) { // real80
+    static if (T.mant_dig==64)   // real80
+    {
         // There's slight добавьitional complexity because they are actually
         // 79-битные reals...
         бкрат *ue = cast(бкрат *)&u;
@@ -765,7 +836,8 @@ body {
         бдол m = ((*xl) & 0x7FFF_FFFF_FFFF_FFFFL) + ((*yl) & 0x7FFF_FFFF_FFFF_FFFFL);
 
         бкрат e = cast(бкрат)((xe[F.БКРАТ_ПОЗ_ЭКСП] & 0x7FFF) + (ye[F.БКРАТ_ПОЗ_ЭКСП] & 0x7FFF));
-        if (m & 0x8000_0000_0000_0000L) {
+        if (m & 0x8000_0000_0000_0000L)
+        {
             ++e;
             m &= 0x7FFF_FFFF_FFFF_FFFFL;
         }
@@ -777,39 +849,47 @@ body {
         if (e) *ul = m | 0x8000_0000_0000_0000L; // установи implicit bit...
         else *ul = m; // ... unless exponent is 0 (denormal or zero).
         ue[4]=  e | (xe[F.БКРАТ_ПОЗ_ЭКСП]& F.МАСКА_ЗНАКА); // restore знак bit
-    } else static if(T.mant_dig == 113) { //квадрупл
+    }
+    else static if(T.mant_dig == 113)     //квадрупл
+    {
         // This would be trivial if 'ucent' were implemented...
         бдол *ul = cast(бдол *)&u;
         бдол *xl = cast(бдол *)&x;
         бдол *yl = cast(бдол *)&y;
-        // Multi-байт добавь, then multi-байт right shift.        
-        бдол mh = ((xl[МАНТИССА_МСБ] & 0x7FFF_FFFF_FFFF_FFFFL) 
-                  + (yl[МАНТИССА_МСБ] & 0x7FFF_FFFF_FFFF_FFFFL));
+        // Multi-байт добавь, then multi-байт right shift.
+        бдол mh = ((xl[МАНТИССА_МСБ] & 0x7FFF_FFFF_FFFF_FFFFL)
+                       + (yl[МАНТИССА_МСБ] & 0x7FFF_FFFF_FFFF_FFFFL));
         // Discard the lowest bit (в_ avoопр перебор)
         бдол ml = (xl[МАНТИССА_ЛСБ]>>>1) + (yl[МАНТИССА_ЛСБ]>>>1);
         // добавь the lowest bit back in, if necessary.
-        if (xl[МАНТИССА_ЛСБ] & yl[МАНТИССА_ЛСБ] & 1) {
+        if (xl[МАНТИССА_ЛСБ] & yl[МАНТИССА_ЛСБ] & 1)
+        {
             ++ml;
             if (ml==0) ++mh;
         }
         mh >>>=1;
         ul[МАНТИССА_МСБ] = mh | (xl[МАНТИССА_МСБ] & 0x8000_0000_0000_0000);
         ul[МАНТИССА_ЛСБ] = ml;
-    } else static if (T.mant_dig == дво.mant_dig) {
+    }
+    else static if (T.mant_dig == дво.mant_dig)
+    {
         бдол *ul = cast(бдол *)&u;
         бдол *xl = cast(бдол *)&x;
         бдол *yl = cast(бдол *)&y;
         бдол m = (((*xl) & 0x7FFF_FFFF_FFFF_FFFFL) + ((*yl) & 0x7FFF_FFFF_FFFF_FFFFL)) >>> 1;
         m |= ((*xl) & 0x8000_0000_0000_0000L);
         *ul = m;
-    } else static if (T.mant_dig == плав.mant_dig) {
+    }
+    else static if (T.mant_dig == плав.mant_dig)
+    {
         бцел *ul = cast(бцел *)&u;
         бцел *xl = cast(бцел *)&x;
         бцел *yl = cast(бцел *)&y;
         бцел m = (((*xl) & 0x7FFF_FFFF) + ((*yl) & 0x7FFF_FFFF)) >>> 1;
         m |= ((*xl) & 0x8000_0000);
         *ul = m;
-    } else {
+    }
+    else {
         assert(0, "Not implemented");
     }
     return u;

@@ -18,8 +18,8 @@ module core.Traits;
 template типТкст_ли( T )
 {
     const бул типТкст_ли = is( T : ткст )  ||
-                              is( T : шим[] ) ||
-                              is( T : дим[] );
+    is( T : шим[] ) ||
+    is( T : дим[] );
 }
 
 /**
@@ -28,8 +28,8 @@ template типТкст_ли( T )
 template типСим_ли( T )
 {
     const бул типСим_ли = is( T == сим )  ||
-                            is( T == шим ) ||
-                            is( T == дим );
+    is( T == шим ) ||
+    is( T == дим );
 }
 
 
@@ -39,10 +39,10 @@ template типСим_ли( T )
 template типЦел_ли( T )
 {
     const бул типЦел_ли = is( T == байт )  ||
-                                     is( T == крат ) ||
-                                     is( T == цел )   ||
-                                     is( T == дол )/+||
-                                     is( T == cent  )+/;
+    is( T == крат ) ||
+    is( T == цел )   ||
+    is( T == дол )/+||
+    is( T == cent  )+/;
 }
 
 
@@ -52,10 +52,10 @@ template типЦел_ли( T )
 template типБЦел_ли( T )
 {
     const бул типБЦел_ли = is( T == ббайт )  ||
-                                       is( T == бкрат ) ||
-                                       is( T == бцел )   ||
-                                       is( T == бдол )/+||
-                                       is( T == ucent  )+/;
+    is( T == бкрат ) ||
+    is( T == бцел )   ||
+    is( T == бдол )/+||
+    is( T == ucent  )+/;
 }
 
 
@@ -65,7 +65,7 @@ template типБЦел_ли( T )
 template типЦелЧис_ли( T )
 {
     const бул типЦелЧис_ли = типЦел_ли!(T) ||
-                               типБЦел_ли!(T);
+    типБЦел_ли!(T);
 }
 
 
@@ -75,8 +75,8 @@ template типЦелЧис_ли( T )
 template типРеал_ли( T )
 {
     const бул типРеал_ли = is( T == плав )  ||
-                            is( T == дво ) ||
-                            is( T == реал );
+    is( T == дво ) ||
+    is( T == реал );
 }
 
 
@@ -86,8 +86,8 @@ template типРеал_ли( T )
 template типКомплекс_ли( T )
 {
     const бул типКомплекс_ли = is( T == кплав )  ||
-                               is( T == кдво ) ||
-                               is( T == креал );
+    is( T == кдво ) ||
+    is( T == креал );
 }
 
 
@@ -97,8 +97,8 @@ template типКомплекс_ли( T )
 template типМнимое_ли( T )
 {
     const бул типМнимое_ли = is( T == вплав )  ||
-                                 is( T == вдво ) ||
-                                 is( T == вреал );
+    is( T == вдво ) ||
+    is( T == вреал );
 }
 
 
@@ -109,31 +109,31 @@ template типМнимое_ли( T )
 template типДробь_ли( T )
 {
     const бул типДробь_ли = типРеал_ли!(T)    ||
-                                     типКомплекс_ли!(T) ||
-                                     типМнимое_ли!(T);
+    типКомплекс_ли!(T) ||
+    типМнимое_ли!(T);
 }
 
 /// да if T is an atomic тип
 template типАтом_ли(T)
 {
     static if( is( T == бул )
-            || is( T == сим )
-            || is( T == шим )
-            || is( T == дим )
-            || is( T == байт )
-            || is( T == крат )
-            || is( T == цел )
-            || is( T == дол )
-            || is( T == ббайт )
-            || is( T == бкрат )
-            || is( T == бцел )
-            || is( T == бдол )
-            || is( T == плав )
-            || is( T == дво )
-            || is( T == реал )
-            || is( T == вплав )
-            || is( T == вдво )
-            || is( T == вреал ) )
+               || is( T == сим )
+               || is( T == шим )
+               || is( T == дим )
+               || is( T == байт )
+               || is( T == крат )
+               || is( T == цел )
+               || is( T == дол )
+               || is( T == ббайт )
+               || is( T == бкрат )
+               || is( T == бцел )
+               || is( T == бдол )
+               || is( T == плав )
+               || is( T == дво )
+               || is( T == реал )
+               || is( T == вплав )
+               || is( T == вдво )
+               || is( T == вреал ) )
         const типАтом_ли = да;
     else
         const типАтом_ли = нет;
@@ -142,49 +142,76 @@ template типАтом_ли(T)
 /**
  * комплексное тип for the given тип
  */
-template КомплексныйТипИз(T){
-    static if(is(T==плав)||is(T==вплав)||is(T==кплав)){
+template КомплексныйТипИз(T)
+{
+    static if(is(T==плав)||is(T==вплав)||is(T==кплав))
+    {
         alias кплав КомплексныйТипИз;
-    } else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво)){
+    }
+    else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво))
+    {
         alias кдво КомплексныйТипИз;
-    } else static if(is(T==реал)|| is(T==вреал)|| is(T==креал)){
+    }
+    else static if(is(T==реал)|| is(T==вреал)|| is(T==креал))
+    {
         alias креал КомплексныйТипИз;
-    } else static assert(0,"unsupported тип in КомплексныйТипИз "~T.stringof);
+    }
+    else static assert(0,"unsupported тип in КомплексныйТипИз "~T.stringof);
 }
 
 /**
  * реал тип for the given тип
  */
-template РеальныйТипИз(T){
-    static if(is(T==плав)|| is(T==вплав)|| is(T==кплав)){
+template РеальныйТипИз(T)
+{
+    static if(is(T==плав)|| is(T==вплав)|| is(T==кплав))
+    {
         alias плав РеальныйТипИз;
-    } else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво)){
+    }
+    else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво))
+    {
         alias дво РеальныйТипИз;
-    } else static if(is(T==реал)|| is(T==вреал)|| is(T==креал)){
+    }
+    else static if(is(T==реал)|| is(T==вреал)|| is(T==креал))
+    {
         alias реал РеальныйТипИз;
-    } else static assert(0,"unsupported тип in РеальныйТипИз "~T.stringof);
+    }
+    else static assert(0,"unsupported тип in РеальныйТипИз "~T.stringof);
 }
 
 /**
  * мнимое тип for the given тип
  */
-template МнимыйТипИз(T){
-    static if(is(T==плав)|| is(T==вплав)|| is(T==кплав)){
+template МнимыйТипИз(T)
+{
+    static if(is(T==плав)|| is(T==вплав)|| is(T==кплав))
+    {
         alias вплав МнимыйТипИз;
-    } else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво)){
+    }
+    else static if(is(T==дво)|| is(T==вдво)|| is(T==кдво))
+    {
         alias вдво МнимыйТипИз;
-    } else static if(is(T==реал)|| is(T==вреал)|| is(T==креал)){
+    }
+    else static if(is(T==реал)|| is(T==вреал)|| is(T==креал))
+    {
         alias вреал МнимыйТипИз;
-    } else static assert(0,"unsupported тип in МнимыйТипИз "~T.stringof);
+    }
+    else static assert(0,"unsupported тип in МнимыйТипИз "~T.stringof);
 }
 
 /// тип with maximum точность
-template МаксПрецТипИз(T){
-    static if (типКомплекс_ли!(T)){
+template МаксПрецТипИз(T)
+{
+    static if (типКомплекс_ли!(T))
+    {
         alias креал МаксПрецТипИз;
-    } else static if (типМнимое_ли!(T)){
+    }
+    else static if (типМнимое_ли!(T))
+    {
         alias вреал МаксПрецТипИз;
-    } else {
+    }
+    else
+    {
         alias реал МаксПрецТипИз;
     }
 }
@@ -195,12 +222,12 @@ template МаксПрецТипИз(T){
  */
 template типУк_ли(T)
 {
-        const типУк_ли = нет;
+    const типУк_ли = нет;
 }
 
 template типУк_ли(T : T*)
 {
-        const типУк_ли = да;
+    const типУк_ли = да;
 }
 
 debug( UnitTest )
@@ -247,9 +274,9 @@ template типСсылка_ли( T )
 {
 
     const бул типСсылка_ли = типУк_ли!(T)  ||
-                               is( T == class )     ||
-                               is( T == interface ) ||
-                               is( T == delegate );
+    is( T == class )     ||
+    is( T == interface ) ||
+    is( T == delegate );
 }
 
 
@@ -344,9 +371,9 @@ template типАссоцМассив_ли( T )
 template ВызываемыйТип_ли( T )
 {
     const бул ВызываемыйТип_ли = is( T == function )             ||
-                                is( typeof(*T) == function )    ||
-                                is( T == delegate )             ||
-                                is( typeof(T.opCall) == function );
+    is( typeof(*T) == function )    ||
+    is( T == delegate )             ||
+    is( typeof(T.opCall) == function );
 }
 
 
@@ -361,10 +388,10 @@ template ВозвратныйТипИз( Фн )
         static assert( нет, "Аргумент есть no return тип." );
 }
 
-/** 
+/**
  * Returns the тип that a T would evaluate в_ in an expression.
  * Выраж is not required в_ be a callable тип
- */ 
+ */
 template ТипВыражениеИз( Выраж )
 {
     static if(ВызываемыйТип_ли!( Выраж ))
@@ -433,10 +460,12 @@ template КортежБазовыхТиповИз( T )
  */
 template БазТипМассивов(T)
 {
-    static if( is( T S : S[]) ) {
+    static if( is( T S : S[]) )
+    {
         alias БазТипМассивов!(S)  БазТипМассивов;
     }
-    else {
+    else
+    {
         alias T БазТипМассивов;
     }
 }
@@ -452,21 +481,27 @@ template ЭлементТипаМассив(T:T[])
 /**
  * Count the []'s on an Массив тип
  */
-template рангМассива(T) {
-    static if(is(T S : S[])) {
+template рангМассива(T)
+{
+    static if(is(T S : S[]))
+    {
         const бцел рангМассива = 1 + рангМассива!(S);
-    } else {
+    }
+    else
+    {
         const бцел рангМассива = 0;
     }
 }
 
 /// тип of the ключи of an AA
-template ТипКлючАМ(T){
+template ТипКлючАМ(T)
+{
     alias typeof(T.init.ключи[0]) ТипКлючАМ;
 }
 
 /// тип of the values of an AA
-template ТипЗначениеАМ(T){
+template ТипЗначениеАМ(T)
+{
     alias typeof(T.init.values[0]) ТипЗначениеАМ;
 }
 
@@ -511,18 +546,22 @@ debug( UnitTest )
 // ------- CTFE -------
 
 /// компилируй время целое в_ ткст
-сим [] ctfe_i2a(цел i){
+сим [] ctfe_i2a(цел i)
+{
     ткст цифра="0123456789";
     ткст рез="";
-    if (i==0){
+    if (i==0)
+    {
         return "0";
     }
     бул neg=нет;
-    if (i<0){
+    if (i<0)
+    {
         neg=да;
         i=-i;
     }
-    while (i>0) {
+    while (i>0)
+    {
         рез=цифра[i%10]~рез;
         i/=10;
     }
@@ -532,18 +571,22 @@ debug( UnitTest )
         return рез;
 }
 /// ditto
-сим [] ctfe_i2a(дол i){
+сим [] ctfe_i2a(дол i)
+{
     ткст цифра="0123456789";
     ткст рез="";
-    if (i==0){
+    if (i==0)
+    {
         return "0";
     }
     бул neg=нет;
-    if (i<0){
+    if (i<0)
+    {
         neg=да;
         i=-i;
     }
-    while (i>0) {
+    while (i>0)
+    {
         рез=цифра[cast(т_мера)(i%10)]~рез;
         i/=10;
     }
@@ -553,28 +596,34 @@ debug( UnitTest )
         return рез;
 }
 /// ditto
-сим [] ctfe_i2a(бцел i){
+сим [] ctfe_i2a(бцел i)
+{
     ткст цифра="0123456789";
     ткст рез="";
-    if (i==0){
+    if (i==0)
+    {
         return "0";
     }
     бул neg=нет;
-    while (i>0) {
+    while (i>0)
+    {
         рез=цифра[i%10]~рез;
         i/=10;
     }
     return рез;
 }
 /// ditto
-сим [] ctfe_i2a(бдол i){
+сим [] ctfe_i2a(бдол i)
+{
     ткст цифра="0123456789";
     ткст рез="";
-    if (i==0){
+    if (i==0)
+    {
         return "0";
     }
     бул neg=нет;
-    while (i>0) {
+    while (i>0)
+    {
         рез=цифра[cast(т_мера)(i%10)]~рез;
         i/=10;
     }
@@ -583,11 +632,12 @@ debug( UnitTest )
 
 debug( UnitTest )
 {
-    unittest {
-    static assert( ctfe_i2a(31)=="31" );
-    static assert( ctfe_i2a(-31)=="-31" );
-    static assert( ctfe_i2a(14u)=="14" );
-    static assert( ctfe_i2a(14L)=="14" );
-    static assert( ctfe_i2a(14UL)=="14" );
+    unittest
+    {
+        static assert( ctfe_i2a(31)=="31" );
+        static assert( ctfe_i2a(-31)=="-31" );
+        static assert( ctfe_i2a(14u)=="14" );
+        static assert( ctfe_i2a(14L)=="14" );
+        static assert( ctfe_i2a(14UL)=="14" );
     }
 }

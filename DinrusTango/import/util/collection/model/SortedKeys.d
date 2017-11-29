@@ -15,7 +15,7 @@
 module util.collection.model.SortedKeys;
 
 private import  util.collection.model.View,
-                util.collection.model.Comparator;
+        util.collection.model.Comparator;
 
 
 /**
@@ -41,9 +41,9 @@ private import  util.collection.model.View,
 public interface SortedKeys(K, V) : View!(V)
 {
 
-        /**
-         * Report the Сравнитель использован for ordering
-        **/
+    /**
+     * Report the Сравнитель использован for ordering
+    **/
 
-        public Сравнитель!(K) сравнитель();
+    public Сравнитель!(K) сравнитель();
 }

@@ -1,5 +1,6 @@
 ﻿module tpl.alloc;
-import cidrus: освободи;
+import cidrus:
+освободи;
 
 template Аллокатор()
 {

@@ -295,7 +295,7 @@ Journal of Statistical Software <b>11</b>, (July 2004).
  */
 реал binomialDistribution(цел k, цел n, реал p );
 
- /** ditto */
+/** ditto */
 реал binomialDistributionCompl(цел k, цел n, реал p );
 
 /** Inverse binomial ни в каком дистрибутиве

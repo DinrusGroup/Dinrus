@@ -2,8 +2,8 @@
 
 private
 {
- import stdrus, lib.sdl;
-pragma(lib,"dinrus.lib");
+    import stdrus, lib.sdl;
+    pragma(lib,"dinrus.lib");
 }
 
 
@@ -42,9 +42,10 @@ private проц грузи(Биб биб)
 }
 
 ЖанБибгр СДЛНет;
-static this() {
+static this()
+{
     СДЛНет.заряжай( "SDL_net.dll", &грузи  );
-	СДЛНет.загружай();
+    СДЛНет.загружай();
 }
 
 enum : Uint8

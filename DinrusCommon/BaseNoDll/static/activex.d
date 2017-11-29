@@ -16,7 +16,10 @@ import win32.oaidl, win32.objbase; /* for VARIANTARG */
 
 class ИсклАктивОбъ: Исключение
 {
-this(ткст сооб){super(сооб);}
+    this(ткст сооб)
+    {
+        super(сооб);
+    }
 }
 
 class АктивОбъ
@@ -49,7 +52,7 @@ export:
     private MemberDef [] allMembers;
     private ткст [ DISPID ] methods;
     private ткст [ DISPID ] getters;
-        private SHORT [ DISPID ] returns;
+    private SHORT [ DISPID ] returns;
     private ткст [ DISPID ] setters;
     private ткст [ DISPID ] settersbyref;
 
@@ -65,7 +68,7 @@ export:
     ~this()
     {
         foreach (FUNCDESC* pFuncDesc, win32.oaidl.ITypeInfo иот; allFuncDescs)
-            иот.ReleaseFuncDesc(cast(FUNCDESC *)pFuncDesc);
+        иот.ReleaseFuncDesc(cast(FUNCDESC *)pFuncDesc);
     }
 
     void загрузиСостав()
@@ -79,7 +82,7 @@ export:
         TYPEATTR * pTypeAttr;
         HRESULT hr = pTypeInfo.GetTypeAttr(&pTypeAttr);
 
-        for(бцел i;i<pTypeAttr.cImplTypes;++i)
+        for(бцел i; i<pTypeAttr.cImplTypes; ++i)
         {
             HREFTYPE pRefType;
             hr = pTypeInfo.GetRefTypeOfImplType(i,&pRefType);
@@ -88,7 +91,7 @@ export:
             загрузиСостав(ppTInfo);
         }
 
-        for(бцел i;i<pTypeAttr.cFuncs;++i)
+        for(бцел i; i<pTypeAttr.cFuncs; ++i)
         {
             MemberDef mem;
             hr = pTypeInfo.GetFuncDesc(i,& mem.pFuncDesc);
@@ -102,7 +105,7 @@ export:
             шим [] tmp;
             бцел l=wcslen(methodName);
             tmp.length=l;
-            for (бцел j;j<l;++j)
+            for (бцел j; j<l; ++j)
                 tmp[j]=methodName[j];
             ткст theName_i=вЮ8(tmp);
             ткст theName = theName_i.dup;
@@ -120,57 +123,57 @@ export:
 
             switch (mem.invkind)
             {
-                case INVOKE_FUNC:
-					methods[dispid] = theName;
-                    break;
-                case INVOKE_PROPERTYGET:
-                    getters[dispid] = theName;
-                    returns[dispid] = cast(SHORT) pFuncDesc.lprgelemdescParam[0].tdesc.vt;
-                    break;
-                case INVOKE_PROPERTYPUT:
-                    setters[dispid] = theName;
-                    break;
-                case INVOKE_PROPERTYPUTREF:
-                    settersbyref[dispid] = theName;
-                    break;
-                default:
+            case INVOKE_FUNC:
+                methods[dispid] = theName;
+                break;
+            case INVOKE_PROPERTYGET:
+                getters[dispid] = theName;
+                returns[dispid] = cast(SHORT) pFuncDesc.lprgelemdescParam[0].tdesc.vt;
+                break;
+            case INVOKE_PROPERTYPUT:
+                setters[dispid] = theName;
+                break;
+            case INVOKE_PROPERTYPUTREF:
+                settersbyref[dispid] = theName;
+                break;
+            default:
             }
         }
 
         pTypeInfo.ReleaseTypeAttr(pTypeAttr);
     }
 
-	public void покажиСостав()
-	{
+    public void покажиСостав()
+    {
 
-		скажинс("Методы:");
-		foreach(ткст ключ; methods)
-			скажинс(фм("\t%s", ключ));
+        скажинс("Методы:");
+        foreach(ткст ключ; methods)
+        скажинс(фм("\t%s", ключ));
 
-		скажинс("Получатели:");
-		foreach(DISPID value, ткст ключ; getters)
-			скажинс(фм("\t%s", ключ));
+        скажинс("Получатели:");
+        foreach(DISPID value, ткст ключ; getters)
+        скажинс(фм("\t%s", ключ));
 
-		скажинс("Установщики:");
-		foreach(DISPID value, ткст ключ; setters)
-			скажинс(фм("\t%s", ключ));
+        скажинс("Установщики:");
+        foreach(DISPID value, ткст ключ; setters)
+        скажинс(фм("\t%s", ключ));
 
-		скажинс("Установщики по ссылке:");
-		foreach(DISPID value, ткст ключ; settersbyref)
-			скажинс(фм("\t%s", ключ));
+        скажинс("Установщики по ссылке:");
+        foreach(DISPID value, ткст ключ; settersbyref)
+        скажинс(фм("\t%s", ключ));
 
-/+
-    private SHORT [ DISPID ] returns;
-+/
+        /+
+        private SHORT [ DISPID ] returns;
+        +/
 
-	}
+    }
 
     VARIANTARG [] делайМассив(TypeInfo [] args, ук ptr)
     {
         VARIANTARG [] массив;
         массив.length = args.length;
 
-        for (бцел i;i<args.length;++i)
+        for (бцел i; i<args.length; ++i)
         {
             if (args[i] == typeid(VARIANTARG))
                 массив [i] = va_arg!(VARIANTARG)(ptr);
@@ -185,16 +188,16 @@ export:
     {
         INVOKEKIND tmp=0xffff;
         foreach(inout MemberDef mem; allMembers)
-            if (mem.имя==member)
-                if (mem.invkind==ik)
-                    return mem.dispid;
-                else
-                    tmp=mem.invkind;
+        if (mem.имя==member)
+            if (mem.invkind==ik)
+                return mem.dispid;
+            else
+                tmp=mem.invkind;
 
         if (tmp==0xffff)
             throw new ИсклАктивОбъ(фм("отсутствует член '%s'",member));
         else
-		    throw new ИсклАктивОбъ(фм("член '%s' найден с ПТипВызова %s",member,tmp));
+            throw new ИсклАктивОбъ(фм("член '%s' найден с ПТипВызова %s",member,tmp));
     }
 
     VARIANT дай(ткст member)
@@ -275,7 +278,7 @@ export:
         param.cArgs=myArgs.length;
         param.rgvarg=myArgs.ptr;
 
-		debug пишиф("Calling %s...", member);
+        debug пишиф("Calling %s...", member);
 
         VARIANT result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
@@ -398,14 +401,14 @@ export extern(D) VARIANTARG вар(...)
 
         /* objects */
 
-		else if (_arguments[0] == typeid(Object))
-			/* need to be an AXO to work right now */
-		{
+        else if (_arguments[0] == typeid(Object))
+            /* need to be an AXO to work right now */
+        {
             debug пишиф("object\t");
-			variant.vt = VARENUM.VT_BYREF; //VARENUM.VT_STORED_OBJECT; /* I doubt this is right. */
-			variant.byref = cast(void*)( va_arg!(Object)(_argptr) );
-				/* need to дай some kind of pointer from the AXO object */
-		}
+            variant.vt = VARENUM.VT_BYREF; //VARENUM.VT_STORED_OBJECT; /* I doubt this is right. */
+            variant.byref = cast(void*)( va_arg!(Object)(_argptr) );
+            /* need to дай some kind of pointer from the AXO object */
+        }
 
 
         else
@@ -418,7 +421,10 @@ export extern(D) VARIANTARG вар(...)
     return variant;
 }
 
-export extern(D) АктивОбъ объАктив(ткст арг){return new АктивОбъ(арг);}
+export extern(D) АктивОбъ объАктив(ткст арг)
+{
+    return new АктивОбъ(арг);
+}
 
 
 extern(C)

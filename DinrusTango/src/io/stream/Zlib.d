@@ -8,9 +8,9 @@
 
     version:    Feb 08: добавьed support for different поток encodings, removed
                         old "window биты" ctors.
-                        
+
                 Dec 07: добавьed support for "window биты", needed for ZIP support.
-                
+
                 Jul 07: Initial release.
 
 *******************************************************************************/
@@ -19,15 +19,20 @@ module io.stream.Zlib;
 
 private import lib.zlib;
 
-private import stringz : изТкст0;
+private import stringz :
+изТкст0;
 
-private import exception : ВВИскл;
+private import exception :
+ВВИскл;
 
-private import io.device.Conduit : ФильтрВвода, ФильтрВывода;
+private import io.device.Conduit :
+ФильтрВвода, ФильтрВывода;
 
-private import io.model : ИПотокВвода, ИПотокВывода, ИПровод;
+private import io.model :
+ИПотокВвода, ИПотокВывода, ИПровод;
 
-private import text.convert.Integer : вТкст;
+private import text.convert.Integer :
+вТкст;
 
 
 /* This constant controls the размер of the ввод/вывод buffers we use
@@ -50,7 +55,7 @@ private enum { РАЗМЕР_ЧАНКА = 256 * 1024 };
 private enum { ОКНОБИТЫ_ДЕФОЛТ = 15 };
 
 /*******************************************************************************
-  
+
     This ввод фильтр can be used в_ perform decompression of zlib Потокs.
 
 *******************************************************************************/
@@ -58,10 +63,10 @@ private enum { ОКНОБИТЫ_ДЕФОЛТ = 15 };
 class ВводЗлиб : ФильтрВвода
 {
     /***************************************************************************
-    
+
         This enumeration allows you в_ specify the кодировка of the compressed
         поток.
-    
+
     ***************************************************************************/
 
     enum Кодировка : цел
@@ -95,7 +100,7 @@ class ВводЗлиб : ФильтрВвода
         z_stream zs;
         ббайт[] in_chunk;
     }
-    
+
     /***************************************************************************
 
         Constructs a new zlib decompression фильтр.  You need в_ пароль in the
@@ -112,16 +117,16 @@ class ВводЗлиб : ФильтрВвода
         specified.  добавьitionally, the окноБиты parameter may be негатив в_
         indicate that zlib should omit the стандарт zlib заголовок and trailer,
         with the window размер being -окноБиты.
-        
+
       Параметры:
         поток = compressed ввод поток.
-        
+
         кодировка =
             поток кодировка.  Defaults в_ Кодировка.Guess, which
             should be sufficient unless the поток was compressed with
             no кодировка; in this case, you must manually specify
             Кодировка.Нет.
-            
+
         окноБиты =
             the основа two logarithm of the window размер, and should be in the
             range 8-15, defaulting в_ 15 if not specified.
@@ -129,7 +134,7 @@ class ВводЗлиб : ФильтрВвода
     ***************************************************************************/
 
     this(ИПотокВвода поток, Кодировка кодировка,
-            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
+         цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         init(поток, кодировка, окноБиты);
         scope(failure) туши_зп();
@@ -137,7 +142,7 @@ class ВводЗлиб : ФильтрВвода
         super(поток);
         in_chunk = new ббайт[РАЗМЕР_ЧАНКА];
     }
-    
+
     /// ditto
     this(ИПотокВвода поток)
     {
@@ -162,19 +167,19 @@ class ВводЗлиб : ФильтрВвода
     {
         /*
          * Here's как окноБиты works, according в_ zlib.h:
-         * 
+         *
          * 8 .. 15
          *      zlib кодировка.
-         *      
+         *
          * (8 .. 15) + 16
          *      gzip кодировка.
-         *      
+         *
          * (8 .. 15) + 32
          *      auto-detect кодировка.
-         *      
+         *
          * (8 .. 15) * -1
          *      необр/no кодировка.
-         *      
+         *
          * Since we're going в_ be playing with the значение, we DO care whether
          * окноБиты is in the ожидалось range, so we'll check it.
          */
@@ -182,15 +187,15 @@ class ВводЗлиб : ФильтрВвода
         {
             // No compression for you!
             throw new ИсклЗлиб("негожий окноБиты аргумент"
-                ~ .вТкст(окноБиты));
+                                       ~ .вТкст(окноБиты));
         }
-        
+
         switch( кодировка )
         {
         case Кодировка.Zlib:
             // no-op
             break;
-            
+
         case Кодировка.Gzip:
             окноБиты += 16;
             break;
@@ -198,7 +203,7 @@ class ВводЗлиб : ФильтрВвода
         case Кодировка.Guess:
             окноБиты += 32;
             break;
-            
+
         case Кодировка.Нет:
             окноБиты *= -1;
             break;
@@ -206,7 +211,7 @@ class ВводЗлиб : ФильтрВвода
         default:
             assert (нет);
         }
-        
+
         // Размести inflate состояние
         with( zs )
         {
@@ -233,7 +238,7 @@ class ВводЗлиб : ФильтрВвода
         // See ticket #1837
         this.источник = поток;
     }
-    
+
     ~this()
     {
         if( zs_valid )
@@ -241,7 +246,7 @@ class ВводЗлиб : ФильтрВвода
     }
 
     /***************************************************************************
-        
+
         Resets and re-initialises this экземпляр.
 
         If you are creating compression Потокs insопрe a loop, you may wish в_
@@ -250,15 +255,15 @@ class ВводЗлиб : ФильтрВвода
 
         The поток must have already been закрыт before calling сбрось.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     проц сбрось(ИПотокВвода поток, Кодировка кодировка,
-            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
+                          цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         // If the поток is still valid, bail.
         if( zs_valid )
             throw new ИсклЗлибЕщёНеЗакрыт;
-        
+
         init(поток, кодировка, окноБиты);
     }
 
@@ -276,7 +281,7 @@ class ВводЗлиб : ФильтрВвода
         Returns the число of байты stored преобр_в приёмн, which may be less than
         requested.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     override т_мера читай(проц[] приёмн)
     {
@@ -302,21 +307,21 @@ class ВводЗлиб : ФильтрВвода
 
         switch( возвр )
         {
-            case Z_NEED_DICT:
-                // Whilst not technically an ошибка, this should never happen
-                // for general-use код, so treat it as an ошибка.
-            case Z_DATA_ERROR:
-            case Z_MEM_ERROR:
-                туши_зп();
-                throw new ИсклЗлиб(возвр);
+        case Z_NEED_DICT:
+        // Whilst not technically an ошибка, this should never happen
+        // for general-use код, so treat it as an ошибка.
+        case Z_DATA_ERROR:
+        case Z_MEM_ERROR:
+            туши_зп();
+            throw new ИсклЗлиб(возвр);
 
-            case Z_STREAM_END:
-                // zlib поток is завершено; затуши the поток so we don't try в_
-                // читай из_ it again.
-                туши_зп();
-                break;
+        case Z_STREAM_END:
+            // zlib поток is завершено; затуши the поток so we don't try в_
+            // читай из_ it again.
+            туши_зп();
+            break;
 
-            default:
+        default:
         }
 
         return приёмн.length - zs.avail_out;
@@ -326,7 +331,7 @@ class ВводЗлиб : ФильтрВвода
 
         Closes the compression поток.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     override проц закрой()
     {
@@ -364,7 +369,7 @@ class ВводЗлиб : ФильтрВвода
 }
 
 /*******************************************************************************
-  
+
     This вывод фильтр can be used в_ perform compression of данные преобр_в a zlib
     поток.
 
@@ -408,10 +413,10 @@ class ВыводЗлиб : ФильтрВывода
     }
 
     /***************************************************************************
-    
+
         This enumeration allows you в_ specify what the кодировка of the
         compressed поток should be.
-    
+
     ***************************************************************************/
 
     enum Кодировка : цел
@@ -458,7 +463,7 @@ class ВыводЗлиб : ФильтрВывода
     ***************************************************************************/
 
     this(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
-            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
+         цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         init(поток, уровень, кодировка, окноБиты);
         scope(failure) туши_зп();
@@ -466,7 +471,7 @@ class ВыводЗлиб : ФильтрВывода
         super(поток);
         out_chunk = new ббайт[РАЗМЕР_ЧАНКА];
     }
-    
+
     /// ditto
     this(ИПотокВывода поток, Уровень уровень = Уровень.Нормальный)
     {
@@ -482,26 +487,26 @@ class ВыводЗлиб : ФильтрВывода
      * either new or as часть of a вызов в_ сбрось.
      */
     private проц init(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
-            цел окноБиты)
+                          цел окноБиты)
     {
         /*
          * Here's как окноБиты works, according в_ zlib.h:
-         * 
+         *
          * 8 .. 15
          *      zlib кодировка.
-         *      
+         *
          * (8 .. 15) + 16
          *      gzip кодировка.
-         *      
+         *
          * (8 .. 15) + 32
          *      auto-detect кодировка.
-         *      
+         *
          * (8 .. 15) * -1
          *      необр/no кодировка.
-         *      
+         *
          * Since we're going в_ be playing with the значение, we DO care whether
          * окноБиты is in the ожидалось range, so we'll check it.
-         * 
+         *
          * Also, note that OUR Кодировка enum doesn't contain the 'Guess'
          * member.  I'm still waiting on io.psychic...
          */
@@ -509,19 +514,19 @@ class ВыводЗлиб : ФильтрВывода
         {
             // No compression for you!
             throw new ИсклЗлиб("не_годится окноБиты аргумент"
-                ~ .вТкст(окноБиты));
+                                       ~ .вТкст(окноБиты));
         }
-        
+
         switch( кодировка )
         {
         case Кодировка.Zlib:
             // no-op
             break;
-            
+
         case Кодировка.Gzip:
             окноБиты += 16;
             break;
-            
+
         case Кодировка.Нет:
             окноБиты *= -1;
             break;
@@ -529,7 +534,7 @@ class ВыводЗлиб : ФильтрВывода
         default:
             assert (нет);
         }
-        
+
         // Размести deflate состояние
         with( zs )
         {
@@ -539,7 +544,7 @@ class ВыводЗлиб : ФильтрВывода
         }
 
         auto возвр = deflateInit2(&zs, уровень, Z_DEFLATED, окноБиты, 8,
-                Z_DEFAULT_STRATEGY);
+                                       Z_DEFAULT_STRATEGY);
         if( возвр != Z_OK )
             throw new ИсклЗлиб(возвр);
 
@@ -556,7 +561,7 @@ class ВыводЗлиб : ФильтрВывода
     }
 
     /***************************************************************************
-        
+
         Resets and re-initialises this экземпляр.
 
         If you are creating compression Потокs insопрe a loop, you may wish в_
@@ -566,10 +571,10 @@ class ВыводЗлиб : ФильтрВывода
         The поток must have already been закрыт or committed before calling
         сбрось.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     проц сбрось(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
-            цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
+                          цел окноБиты = ОКНОБИТЫ_ДЕФОЛТ)
     {
         // If the поток is still valid, bail.
         if( zs_valid )
@@ -693,17 +698,17 @@ class ВыводЗлиб : ФильтрВывода
             auto возвр = deflate(&zs, Z_FINISH);
             switch( возвр )
             {
-                case Z_OK:
-                    // Keep going
-                    break;
+            case Z_OK:
+                // Keep going
+                break;
 
-                case Z_STREAM_END:
-                    // We're готово!
-                    завершено = да;
-                    break;
+            case Z_STREAM_END:
+                // We're готово!
+                завершено = да;
+                break;
 
-                default:
-                    throw new ИсклЗлиб(возвр);
+            default:
+                throw new ИсклЗлиб(возвр);
             }
 
             auto have = out_chunk.length - zs.avail_out;
@@ -753,7 +758,7 @@ class ВыводЗлиб : ФильтрВывода
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown if you attempt в_ perform a читай, пиши or слей
     operation on a закрыт zlib фильтр поток.  This can occur if the ввод
     поток есть завершено, or an вывод поток was flushed.
@@ -769,7 +774,7 @@ class ИсклЗлибЗакрыт : ВВИскл
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown if you attempt в_ сбрось a compression поток that
     is still открой.  You must either закрой or подай a поток before it can be
     сбрось.
@@ -785,7 +790,7 @@ class ИсклЗлибЕщёНеЗакрыт : ВВИскл
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown when an ошибка occurs in the underlying zlib
     library.  Where possible, it will indicate Всё the имя of the ошибка, and
     any textural сообщение zlib есть provопрed.
@@ -802,7 +807,7 @@ class ИсклЗлиб : ВВИскл
     {
         super(сооб);
     }
-    
+
     /*
      * код is the ошибка код returned by zlib.  The исключение сообщение will
      * be the имя of the ошибка код.
@@ -826,16 +831,35 @@ class ИсклЗлиб : ВВИскл
 
         switch( код )
         {
-            case Z_OK:              имя = "Z_OK";              break;
-            case Z_STREAM_END:      имя = "Z_STREAM_END";      break;
-            case Z_NEED_DICT:       имя = "Z_NEED_DICT";       break;
-            case Z_ERRNO:           имя = "Z_ERRNO";           break;
-            case Z_STREAM_ERROR:    имя = "Z_STREAM_ERROR";    break;
-            case Z_DATA_ERROR:      имя = "Z_DATA_ERROR";      break;
-            case Z_MEM_ERROR:       имя = "Z_MEM_ERROR";       break;
-            case Z_BUF_ERROR:       имя = "Z_BUF_ERROR";       break;
-            case Z_VERSION_ERROR:   имя = "Z_VERSION_ERROR";   break;
-            default:                имя = "Z_UNKNOWN";
+        case Z_OK:
+            имя = "Z_OK";
+            break;
+        case Z_STREAM_END:
+            имя = "Z_STREAM_END";
+            break;
+        case Z_NEED_DICT:
+            имя = "Z_NEED_DICT";
+            break;
+        case Z_ERRNO:
+            имя = "Z_ERRNO";
+            break;
+        case Z_STREAM_ERROR:
+            имя = "Z_STREAM_ERROR";
+            break;
+        case Z_DATA_ERROR:
+            имя = "Z_DATA_ERROR";
+            break;
+        case Z_MEM_ERROR:
+            имя = "Z_MEM_ERROR";
+            break;
+        case Z_BUF_ERROR:
+            имя = "Z_BUF_ERROR";
+            break;
+        case Z_VERSION_ERROR:
+            имя = "Z_VERSION_ERROR";
+            break;
+        default:
+            имя = "Z_UNKNOWN";
         }
 
         return имя;
@@ -849,123 +873,125 @@ class ИсклЗлиб : ВВИскл
 
 ***************************************************************************** */
 
-debug(UnitTest) {
+debug(UnitTest)
+{
 
-import io.device.Array : Массив;
+import io.device.Array :
+    Массив;
 
-проц check_array(ткст FILE=__FILE__, цел LINE=__LINE__)(
+    проц check_array(ткст FILE=__FILE__, цел LINE=__LINE__)(
         ббайт[] as, ббайт[] bs, lazy ткст сооб)
-{
-    assert( as.length == bs.length,
-        FILE ~":"~ вТкст(LINE) ~ ": " ~ сооб()
-        ~ "Массив lengths differ (" ~ вТкст(as.length)
-        ~ " vs " ~ вТкст(bs.length) ~ ")" );
-    
-    foreach( i, a ; as )
     {
-        auto b = bs[i];
-        
-        assert( a == b,
-            FILE ~":"~ вТкст(LINE) ~ ": " ~ сооб()
-            ~ "массивы differ at " ~ вТкст(i)
-            ~ " (" ~ вТкст(cast(цел) a)
-            ~ " vs " ~ вТкст(cast(цел) b) ~ ")" );
-    }
-}
+        assert( as.length == bs.length,
+                FILE ~":"~ вТкст(LINE) ~ ": " ~ сооб()
+                ~ "Массив lengths differ (" ~ вТкст(as.length)
+                ~ " vs " ~ вТкст(bs.length) ~ ")" );
 
-unittest
-{
-    // One ring в_ правило them все, one ring в_ найди them,
-    // One ring в_ bring them все and in the darkness свяжи them.
-    const ткст сообщение = 
+        foreach( i, a ; as )
+        {
+            auto b = bs[i];
+
+            assert( a == b,
+                    FILE ~":"~ вТкст(LINE) ~ ": " ~ сооб()
+                    ~ "массивы differ at " ~ вТкст(i)
+                    ~ " (" ~ вТкст(cast(цел) a)
+                    ~ " vs " ~ вТкст(cast(цел) b) ~ ")" );
+        }
+    }
+
+    unittest
+    {
+        // One ring в_ правило them все, one ring в_ найди them,
+        // One ring в_ bring them все and in the darkness свяжи them.
+        const ткст сообщение =
         "Ash nazg durbatulûk, ash nazg gimbatul, "
         "ash nazg thrakatulûk, agh burzum-ishi krimpatul.";
-    
-    static assert( сообщение.length == 90 );
 
-    // This compressed данные was создан using Python 2.5's built in zlib
-    // module, with the default compression уровень.
-    {
-        const ббайт[] message_z = [
-            0x78,0x9c,0x73,0x2c,0xce,0x50,0xc8,0x4b,
-            0xac,0x4a,0x57,0x48,0x29,0x2d,0x4a,0x4a,
-            0x2c,0x29,0xcd,0x39,0xbc,0x3b,0x5b,0x47,
-            0x21,0x11,0x26,0x9a,0x9e,0x99,0x0b,0x16,
-            0x45,0x12,0x2a,0xc9,0x28,0x4a,0xcc,0x46,
-            0xa8,0x4c,0xcf,0x50,0x48,0x2a,0x2d,0xaa,
-            0x2a,0xcd,0xd5,0xcd,0x2c,0xce,0xc8,0x54,
-            0xc8,0x2e,0xca,0xcc,0x2d,0x00,0xc9,0xea,
-            0x01,0x00,0x1f,0xe3,0x22,0x99];
-    
-        scope cond_z = new Массив(2048);
-        scope comp = new ВыводЗлиб(cond_z);
-        comp.пиши (сообщение);
-        comp.закрой;
-    
-        assert( comp.записано == message_z.length );
-        
-        /+
-        Стдвыв("message_z:").нс;
-        foreach( b ; cast(ббайт[]) cond_z.срез )
+        static assert( сообщение.length == 90 );
+
+        // This compressed данные was создан using Python 2.5's built in zlib
+        // module, with the default compression уровень.
+        {
+            const ббайт[] message_z = [
+                0x78,0x9c,0x73,0x2c,0xce,0x50,0xc8,0x4b,
+                0xac,0x4a,0x57,0x48,0x29,0x2d,0x4a,0x4a,
+                0x2c,0x29,0xcd,0x39,0xbc,0x3b,0x5b,0x47,
+                0x21,0x11,0x26,0x9a,0x9e,0x99,0x0b,0x16,
+                0x45,0x12,0x2a,0xc9,0x28,0x4a,0xcc,0x46,
+                0xa8,0x4c,0xcf,0x50,0x48,0x2a,0x2d,0xaa,
+                0x2a,0xcd,0xd5,0xcd,0x2c,0xce,0xc8,0x54,
+                0xc8,0x2e,0xca,0xcc,0x2d,0x00,0xc9,0xea,
+                0x01,0x00,0x1f,0xe3,0x22,0x99];
+
+            scope cond_z = new Массив(2048);
+            scope comp = new ВыводЗлиб(cond_z);
+            comp.пиши (сообщение);
+            comp.закрой;
+
+            assert( comp.записано == message_z.length );
+
+            /+
+            Стдвыв("message_z:").нс;
+            foreach( b ; cast(ббайт[]) cond_z.срез )
             Стдвыв.форматируй("0x{0:x2},", b);
-        Стдвыв.нс.нс;
-        +/
-    
-        //assert( message_z == cast(ббайт[])(cond_z.срез) );
-        check_array!(__FILE__,__LINE__)
+            Стдвыв.нс.нс;
+            +/
+
+            //assert( message_z == cast(ббайт[])(cond_z.срез) );
+            check_array!(__FILE__,__LINE__)
             ( message_z, cast(ббайт[]) cond_z.срез, "message_z " );
-    
-        scope decomp = new ВводЗлиб(cond_z);
-        auto буфер = new ббайт[256];
-        буфер = буфер[0 .. decomp.читай(буфер)];
-    
-        //assert( cast(ббайт[])сообщение == буфер );
-        check_array!(__FILE__,__LINE__)
+
+            scope decomp = new ВводЗлиб(cond_z);
+            auto буфер = new ббайт[256];
+            буфер = буфер[0 .. decomp.читай(буфер)];
+
+            //assert( cast(ббайт[])сообщение == буфер );
+            check_array!(__FILE__,__LINE__)
             ( cast(ббайт[]) сообщение, буфер, "сообщение (zlib) " );
-    }
-    
-    // This compressed данные was создан using the Cygwin gzip program
-    // with default options.  The original файл was called "testdata.txt".
-    {
-        const ббайт[] message_gz = [
-            0x1f,0x8b,0x08,0x00,0x80,0x70,0x6f,0x45,
-            0x00,0x03,0x73,0x2c,0xce,0x50,0xc8,0x4b,
-            0xac,0x4a,0x57,0x48,0x29,0x2d,0x4a,0x4a,
-            0x2c,0x29,0xcd,0x39,0xbc,0x3b,0x5b,0x47,
-            0x21,0x11,0x26,0x9a,0x9e,0x99,0x0b,0x16,
-            0x45,0x12,0x2a,0xc9,0x28,0x4a,0xcc,0x46,
-            0xa8,0x4c,0xcf,0x50,0x48,0x2a,0x2d,0xaa,
-            0x2a,0xcd,0xd5,0xcd,0x2c,0xce,0xc8,0x54,
-            0xc8,0x2e,0xca,0xcc,0x2d,0x00,0xc9,0xea,
-            0x01,0x00,0x45,0x38,0xbc,0x58,0x5a,0x00,
-            0x00,0x00];
-        
-        // Compresses the original сообщение, and outputs the байты.  You can use
-        // this в_ тест the вывод of ВыводЗлиб with gzip.  If you use this,
-        // don't forget в_ import Стдвыв somewhere.
-        /+
-        scope comp_gz = new Массив(2048);
-        scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, ОКНОБИТЫ_ДЕФОЛТ);
-        comp.пиши(сообщение);
-        comp.закрой;
-        
-        Стдвыв.форматируй("message_gz ({0} байты):", comp_gz.срез.length).нс;
-        foreach( b ; cast(ббайт[]) comp_gz.срез )
+        }
+
+        // This compressed данные was создан using the Cygwin gzip program
+        // with default options.  The original файл was called "testdata.txt".
+        {
+            const ббайт[] message_gz = [
+                0x1f,0x8b,0x08,0x00,0x80,0x70,0x6f,0x45,
+                0x00,0x03,0x73,0x2c,0xce,0x50,0xc8,0x4b,
+                0xac,0x4a,0x57,0x48,0x29,0x2d,0x4a,0x4a,
+                0x2c,0x29,0xcd,0x39,0xbc,0x3b,0x5b,0x47,
+                0x21,0x11,0x26,0x9a,0x9e,0x99,0x0b,0x16,
+                0x45,0x12,0x2a,0xc9,0x28,0x4a,0xcc,0x46,
+                0xa8,0x4c,0xcf,0x50,0x48,0x2a,0x2d,0xaa,
+                0x2a,0xcd,0xd5,0xcd,0x2c,0xce,0xc8,0x54,
+                0xc8,0x2e,0xca,0xcc,0x2d,0x00,0xc9,0xea,
+                0x01,0x00,0x45,0x38,0xbc,0x58,0x5a,0x00,
+                0x00,0x00];
+
+            // Compresses the original сообщение, and outputs the байты.  You can use
+            // this в_ тест the вывод of ВыводЗлиб with gzip.  If you use this,
+            // don't forget в_ import Стдвыв somewhere.
+            /+
+            scope comp_gz = new Массив(2048);
+            scope comp = new ВыводЗлиб(comp_gz, ВыводЗлиб.Уровень.Нормальный, ВыводЗлиб.Кодировка.Gzip, ОКНОБИТЫ_ДЕФОЛТ);
+            comp.пиши(сообщение);
+            comp.закрой;
+
+            Стдвыв.форматируй("message_gz ({0} байты):", comp_gz.срез.length).нс;
+            foreach( b ; cast(ббайт[]) comp_gz.срез )
             Стдвыв.форматируй("0x{0:x2},", b);
-        Стдвыв.нс;
-        +/
-        
-        // We aren't going в_ тест that we can сожми в_ a gzip поток
-        // since gzip itself always добавьs stuff like the имяф, timestamps,
-        // etc.  We'll just сделай sure we can DECOMPRESS gzip Потокs.
-        scope decomp_gz = new Массив(message_gz.dup);
-        scope decomp = new ВводЗлиб(decomp_gz);
-        auto буфер = new ббайт[256];
-        буфер = буфер[0 .. decomp.читай(буфер)];
-        
-        //assert( cast(ббайт[]) сообщение == буфер );
-        check_array!(__FILE__,__LINE__)
+            Стдвыв.нс;
+            +/
+
+            // We aren't going в_ тест that we can сожми в_ a gzip поток
+            // since gzip itself always добавьs stuff like the имяф, timestamps,
+            // etc.  We'll just сделай sure we can DECOMPRESS gzip Потокs.
+            scope decomp_gz = new Массив(message_gz.dup);
+            scope decomp = new ВводЗлиб(decomp_gz);
+            auto буфер = new ббайт[256];
+            буфер = буфер[0 .. decomp.читай(буфер)];
+
+            //assert( cast(ббайт[]) сообщение == буфер );
+            check_array!(__FILE__,__LINE__)
             ( cast(ббайт[]) сообщение, буфер, "сообщение (gzip) ");
+        }
     }
-}
 }

@@ -8,13 +8,14 @@
 
         author:         Regan Heath, Oskar Linde
 
-        This module defines the Дайджест interface. 
+        This module defines the Дайджест interface.
 
 ******************************************************************************/
 
 module util.digest.Digest;
 
-private import cidrus : alloca;
+private import cidrus :
+alloca;
 
 /*******************************************************************************
 
@@ -32,7 +33,7 @@ private import cidrus : alloca;
         метод имеется been called, the algorithm is сбрось в_ its начальное
         состояние.
 
-        Using the обнови метод, данные may be processed piece by piece, 
+        Using the обнови метод, данные may be processed piece by piece,
         which is useful for cases involving Потокs of данные.
 
         For example:
@@ -52,93 +53,96 @@ private import cidrus : alloca;
 
 ******************************************************************************/
 
-abstract class Дайджест 
+abstract class Дайджест
 {
-        /*********************************************************************
-     
-               Processes данные
-               
-               Remarks:
-                     Updates the хэш algorithm состояние with new данные
-                 
-        *********************************************************************/
-    
-        abstract Дайджест обнови (проц[] данные);
-    
-        /********************************************************************
+    /*********************************************************************
 
-               Computes the дайджест и resets the состояние
+           Processes данные
 
-               Параметры:
-                   буфер = a буфер can be supplied for the дайджест в_ be
-                            записано в_
+           Remarks:
+                 Updates the хэш algorithm состояние with new данные
 
-               Remarks:
-                   If the буфер is not large enough в_ hold the
-                   дайджест, a new буфер is allocated и returned.
-                   The algorithm состояние is always сбрось after a вызов в_
-                   двоичныйДайджест. Use the размерДайджеста метод в_ найди out как
-                   large the буфер имеется в_ be.
-                   
-        *********************************************************************/
-    
-        abstract ббайт[] двоичныйДайджест(ббайт[] буфер = пусто);
-    
-        /********************************************************************
-     
-               Returns the размер in байты of the дайджест
-               
-               Возвращает:
-                 the размер of the дайджест in байты
+    *********************************************************************/
 
-               Remarks:
-                 Returns the размер of the дайджест.
-                 
-        *********************************************************************/
-    
-        abstract бцел размерДайджеста();
-        
-        /*********************************************************************
-               
-               Computes the дайджест as a hex ткст и resets the состояние
-               
-               Параметры:
-                   буфер = a буфер can be supplied in which the дайджест
-                            will be записано. It needs в_ be able в_ hold
-                            2 * размерДайджеста симвы
-            
-               Remarks:
-                    If the буфер is not large enough в_ hold the hex дайджест,
-                    a new буфер is allocated и returned. The algorithm
-                    состояние is always сбрось after a вызов в_ гексДайджест.
-                    
-        *********************************************************************/
-        
-        ткст гексДайджест (ткст буфер = пусто) 
+    abstract Дайджест обнови (проц[] данные);
+
+    /********************************************************************
+
+           Computes the дайджест и resets the состояние
+
+           Параметры:
+               буфер = a буфер can be supplied for the дайджест в_ be
+                        записано в_
+
+           Remarks:
+               If the буфер is not large enough в_ hold the
+               дайджест, a new буфер is allocated и returned.
+               The algorithm состояние is always сбрось after a вызов в_
+               двоичныйДайджест. Use the размерДайджеста метод в_ найди out как
+               large the буфер имеется в_ be.
+
+    *********************************************************************/
+
+    abstract ббайт[] двоичныйДайджест(ббайт[] буфер = пусто);
+
+    /********************************************************************
+
+           Returns the размер in байты of the дайджест
+
+           Возвращает:
+             the размер of the дайджест in байты
+
+           Remarks:
+             Returns the размер of the дайджест.
+
+    *********************************************************************/
+
+    abstract бцел размерДайджеста();
+
+    /*********************************************************************
+
+           Computes the дайджест as a hex ткст и resets the состояние
+
+           Параметры:
+               буфер = a буфер can be supplied in which the дайджест
+                        will be записано. It needs в_ be able в_ hold
+                        2 * размерДайджеста симвы
+
+           Remarks:
+                If the буфер is not large enough в_ hold the hex дайджест,
+                a new буфер is allocated и returned. The algorithm
+                состояние is always сбрось after a вызов в_ гексДайджест.
+
+    *********************************************************************/
+
+    ткст гексДайджест (ткст буфер = пусто)
+    {
+        бцел ds = размерДайджеста();
+
+        if (буфер.length < ds * 2)
+            буфер.length = ds * 2;
+
+        version(darwin)
         {
-                бцел ds = размерДайджеста();
-            
-                if (буфер.length < ds * 2)
-                    буфер.length = ds * 2;
-                
-                version(darwin){
-                    ббайт[] буф = new ббайт[ds]; // the whole alloca mess needs в_ be adressed better
-                } else {
-                    ббайт[] буф = (cast(ббайт *) alloca(ds))[0..ds];
-                }
-                ббайт[] возвр = двоичныйДайджест(буф);
-                assert(возвр.ptr == буф.ptr);
-            
-                static ткст hexdigits = "0123456789abcdef";
-                цел i = 0;
-            
-                foreach (b; буф) 
-                        {
-                        буфер[i++] = hexdigits[b >> 4];
-                        буфер[i++] = hexdigits[b & 0xf];
-                        }
-            
-                return буфер;
+            ббайт[] буф = new ббайт[ds]; // the whole alloca mess needs в_ be adressed better
         }
+        else
+        {
+            ббайт[] буф = (cast(ббайт *) alloca(ds))[0..ds];
+        }
+        ббайт[] возвр = двоичныйДайджест(буф);
+        assert(возвр.ptr == буф.ptr);
+
+        static ткст hexdigits = "0123456789abcdef";
+        цел i = 0;
+
+        foreach (b; буф)
+        {
+            буфер[i++] = hexdigits[b >> 4];
+            буфер[i++] = hexdigits[b & 0xf];
+        }
+
+        return буфер;
+    }
 }
 

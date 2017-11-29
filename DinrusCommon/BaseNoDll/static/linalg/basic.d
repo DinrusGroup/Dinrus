@@ -91,7 +91,8 @@ Params:
     цел bitsdiff = ( ((pa[4]&0x7FFF) + (pb[4]&0x7FFF)-1)>>1) - pd[4];
 
     if (pd[4] == 0)
-    {   // Difference is denormal
+    {
+        // Difference is denormal
         // For denormals, we need to add the number of zeros that
         // lie at the start of diff's mantissa.
         // We do this by multiplying by 2^реал.mant_dig

@@ -42,7 +42,7 @@ struct МассивБит
 
         temp.длина = биты.length;
         foreach( поз, знач; биты )
-            temp[поз] = знач;
+        temp[поз] = знач;
         return temp;
     }
 
@@ -121,20 +121,22 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a;
-        МассивБит b;
-
-        a.длина = 3;
-        a[0] = 1; a[1] = 0; a[2] = 1;
-        b = a.dup;
-        assert( b.длина == 3 );
-        for( цел i = 0; i < 3; ++i )
+        unittest
         {
-            assert( b[i] == (((i ^ 1) & 1) ? да : нет) );
+            МассивБит a;
+            МассивБит b;
+
+            a.длина = 3;
+            a[0] = 1;
+            a[1] = 0;
+            a[2] = 1;
+            b = a.dup;
+            assert( b.длина == 3 );
+            for( цел i = 0; i < 3; ++i )
+            {
+                assert( b[i] == (((i ^ 1) & 1) ? да : нет) );
+            }
         }
-      }
     }
 
 
@@ -175,22 +177,23 @@ struct МассивБит
      *  ba[0] = да;
      *  assert(ba2[0] == нет);
      */
-     МассивБит opSliceAssign(МассивБит rhs)
-     in
-     {
-         assert(rhs.длин == длин);
-     }
-     body
-     {
-         т_мера mDim=длин/32;
-         ptr[0..mDim] = rhs.ptr[0..mDim];
-         цел rest=cast(цел)(длин & cast(т_мера)31u);
-         if (rest){
-             бцел маска=(~0u)<<rest;
-             ptr[mDim]=(rhs.ptr[mDim] & (~маска))|(ptr[mDim] & маска);
-         }
-         return *this;
-     }
+    МассивБит opSliceAssign(МассивБит rhs)
+    in
+    {
+        assert(rhs.длин == длин);
+    }
+    body
+    {
+        т_мера mDim=длин/32;
+        ptr[0..mDim] = rhs.ptr[0..mDim];
+        цел rest=cast(цел)(длин & cast(т_мера)31u);
+        if (rest)
+        {
+            бцел маска=(~0u)<<rest;
+            ptr[mDim]=(rhs.ptr[mDim] & (~маска))|(ptr[mDim] & маска);
+        }
+        return *this;
+    }
 
 
     /**
@@ -216,34 +219,34 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b;
-        проц[] буф;
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b;
+            проц[] буф;
 
-        буф = cast(проц[])a;
-        b.иниц( буф, a.длина );
+            буф = cast(проц[])a;
+            b.иниц( буф, a.длина );
 
-        assert( b[0] == 1 );
-        assert( b[1] == 0 );
-        assert( b[2] == 1 );
-        assert( b[3] == 0 );
-        assert( b[4] == 1 );
+            assert( b[0] == 1 );
+            assert( b[1] == 0 );
+            assert( b[2] == 1 );
+            assert( b[3] == 0 );
+            assert( b[4] == 1 );
 
-        a[0] = 0;
-        assert( b[0] == 0 );
+            a[0] = 0;
+            assert( b[0] == 0 );
 
-        assert( a == b );
+            assert( a == b );
 
-        // тест opSliceAssign
-        МассивБит c;
-        c.длина = a.длина;
-        c[] = a;
-        assert( c == a );
-        a[0] = 1;
-        assert( c != a );
-      }
+            // тест opSliceAssign
+            МассивБит c;
+            c.длина = a.длина;
+            c[] = a;
+            assert( c == a );
+            a[0] = 1;
+            assert( c != a );
+        }
     }
 
 
@@ -281,17 +284,17 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        static бул[5] данные = [1,0,1,1,0];
-        МассивБит b = данные;
-        b.реверс;
-
-        for( т_мера i = 0; i < данные.длина; ++i )
+        unittest
         {
-            assert( b[i] == данные[4 - i] );
+            static бул[5] данные = [1,0,1,1,0];
+            МассивБит b = данные;
+            b.реверс;
+
+            for( т_мера i = 0; i < данные.длина; ++i )
+            {
+                assert( b[i] == данные[4 - i] );
+            }
         }
-      }
     }
 
 
@@ -341,7 +344,7 @@ struct МассивБит
                 ++lo;
                 --hi;
             }
-            Ldone:
+Ldone:
             ;
         }
         return *this;
@@ -350,17 +353,17 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        static бцел x = 0b1100011000;
-        static МассивБит ba = { 10, &x };
+        unittest
+        {
+            static бцел x = 0b1100011000;
+            static МассивБит ba = { 10, &x };
 
-        ba.сортируй;
-        for( т_мера i = 0; i < 6; ++i )
-            assert( ba[i] == нет );
-        for( т_мера i = 6; i < 10; ++i )
-            assert( ba[i] == да );
-      }
+            ba.сортируй;
+            for( т_мера i = 0; i < 6; ++i )
+                assert( ba[i] == нет );
+            for( т_мера i = 6; i < 10; ++i )
+                assert( ba[i] == да );
+        }
     }
 
 
@@ -405,34 +408,48 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1];
-
-        цел i;
-        foreach( b; a )
+        unittest
         {
-            switch( i )
-            {
-            case 0: assert( b == да );  break;
-            case 1: assert( b == нет ); break;
-            case 2: assert( b == да );  break;
-            default: assert( нет );
-            }
-            i++;
-        }
+            МассивБит a = [1,0,1];
 
-        foreach( j, b; a )
-        {
-            switch( j )
+            цел i;
+            foreach( b; a )
             {
-            case 0: assert( b == да );  break;
-            case 1: assert( b == нет ); break;
-            case 2: assert( b == да );  break;
-            default: assert( нет );
+                switch( i )
+                {
+                case 0:
+                    assert( b == да );
+                    break;
+                case 1:
+                    assert( b == нет );
+                    break;
+                case 2:
+                    assert( b == да );
+                    break;
+                default:
+                    assert( нет );
+                }
+                i++;
+            }
+
+            foreach( j, b; a )
+            {
+                switch( j )
+                {
+                case 0:
+                    assert( b == да );
+                    break;
+                case 1:
+                    assert( b == нет );
+                    break;
+                case 2:
+                    assert( b == да );
+                    break;
+                default:
+                    assert( нет );
+                }
             }
         }
-      }
     }
 
 
@@ -457,7 +474,7 @@ struct МассивБит
         for( i = 0; i < n; ++i )
         {
             if( p1[i] != p2[i] )
-            return 0; // not equal
+                return 0; // not equal
         }
         цел rest = cast(цел)(this.длина & cast(т_мера)31u);
         бцел маска = ~((~0u)<<rest);
@@ -466,19 +483,19 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1];
-        МассивБит c = [1,0,1,0,1,0,1];
-        МассивБит d = [1,0,1,1,1];
-        МассивБит e = [1,0,1,0,1];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1];
+            МассивБит c = [1,0,1,0,1,0,1];
+            МассивБит d = [1,0,1,1,1];
+            МассивБит e = [1,0,1,0,1];
 
-        assert(a != b);
-        assert(a != c);
-        assert(a != d);
-        assert(a == e);
-      }
+            assert(a != b);
+            assert(a != c);
+            assert(a != d);
+            assert(a == e);
+        }
     }
 
 
@@ -505,12 +522,14 @@ struct МассивБит
         т_мера i;
         for( i = 0; i < n; ++i )
         {
-            if( p1[i] != p2[i] ){
+            if( p1[i] != p2[i] )
+            {
                 return ((p1[i] < p2[i])?-1:1);
             }
         }
         цел rest=cast(цел)(длин & cast(т_мера) 31u);
-        if (rest>0) {
+        if (rest>0)
+        {
             бцел маска=~((~0u)<<rest);
             бцел v1=p1[i] & маска;
             бцел v2=p2[i] & маска;
@@ -521,26 +540,26 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1];
-        МассивБит c = [1,0,1,0,1,0,1];
-        МассивБит d = [1,0,1,1,1];
-        МассивБит e = [1,0,1,0,1];
-        МассивБит f = [1,0,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1];
+            МассивБит c = [1,0,1,0,1,0,1];
+            МассивБит d = [1,0,1,1,1];
+            МассивБит e = [1,0,1,0,1];
+            МассивБит f = [1,0,1,0];
 
-        assert( a >  b );
-        assert( a >= b );
-        assert( a <  c );
-        assert( a <= c );
-        assert( a <  d );
-        assert( a <= d );
-        assert( a == e );
-        assert( a <= e );
-        assert( a >= e );
-        assert( f >  b );
-      }
+            assert( a >  b );
+            assert( a >= b );
+            assert( a <  c );
+            assert( a <= c );
+            assert( a <  d );
+            assert( a <= d );
+            assert( a == e );
+            assert( a <= e );
+            assert( a >= e );
+            assert( f >  b );
+        }
     }
 
 
@@ -558,13 +577,13 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        проц[] v = cast(проц[])a;
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            проц[] v = cast(проц[])a;
 
-        assert( v.длина == a.цразм * бцел.sizeof );
-      }
+            assert( v.длина == a.цразм * бцел.sizeof );
+        }
     }
 
 
@@ -615,17 +634,17 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = ~a;
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = ~a;
 
-        assert(b[0] == 0);
-        assert(b[1] == 1);
-        assert(b[2] == 0);
-        assert(b[3] == 1);
-        assert(b[4] == 0);
-      }
+            assert(b[0] == 0);
+            assert(b[1] == 1);
+            assert(b[2] == 0);
+            assert(b[3] == 1);
+            assert(b[4] == 0);
+        }
     }
 
 
@@ -663,19 +682,19 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        МассивБит c = a & b;
+            МассивБит c = a & b;
 
-        assert(c[0] == 1);
-        assert(c[1] == 0);
-        assert(c[2] == 1);
-        assert(c[3] == 0);
-        assert(c[4] == 0);
-      }
+            assert(c[0] == 1);
+            assert(c[1] == 0);
+            assert(c[2] == 1);
+            assert(c[3] == 0);
+            assert(c[4] == 0);
+        }
     }
 
 
@@ -713,19 +732,19 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        МассивБит c = a | b;
+            МассивБит c = a | b;
 
-        assert(c[0] == 1);
-        assert(c[1] == 0);
-        assert(c[2] == 1);
-        assert(c[3] == 1);
-        assert(c[4] == 1);
-      }
+            assert(c[0] == 1);
+            assert(c[1] == 0);
+            assert(c[2] == 1);
+            assert(c[3] == 1);
+            assert(c[4] == 1);
+        }
     }
 
 
@@ -763,19 +782,19 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        МассивБит c = a ^ b;
+            МассивБит c = a ^ b;
 
-        assert(c[0] == 0);
-        assert(c[1] == 0);
-        assert(c[2] == 0);
-        assert(c[3] == 1);
-        assert(c[4] == 1);
-      }
+            assert(c[0] == 0);
+            assert(c[1] == 0);
+            assert(c[2] == 0);
+            assert(c[3] == 1);
+            assert(c[4] == 1);
+        }
     }
 
 
@@ -813,19 +832,19 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        МассивБит c = a - b;
+            МассивБит c = a - b;
 
-        assert( c[0] == 0 );
-        assert( c[1] == 0 );
-        assert( c[2] == 0 );
-        assert( c[3] == 0 );
-        assert( c[4] == 1 );
-      }
+            assert( c[0] == 0 );
+            assert( c[1] == 0 );
+            assert( c[2] == 0 );
+            assert( c[3] == 0 );
+            assert( c[4] == 1 );
+        }
     }
 
 
@@ -877,32 +896,32 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0];
-        МассивБит b = [0,1,0];
-        МассивБит c;
+        unittest
+        {
+            МассивБит a = [1,0];
+            МассивБит b = [0,1,0];
+            МассивБит c;
 
-        c = (a ~ b);
-        assert( c.длина == 5 );
-        assert( c[0] == 1 );
-        assert( c[1] == 0 );
-        assert( c[2] == 0 );
-        assert( c[3] == 1 );
-        assert( c[4] == 0 );
+            c = (a ~ b);
+            assert( c.длина == 5 );
+            assert( c[0] == 1 );
+            assert( c[1] == 0 );
+            assert( c[2] == 0 );
+            assert( c[3] == 1 );
+            assert( c[4] == 0 );
 
-        c = (a ~ да);
-        assert( c.длина == 3 );
-        assert( c[0] == 1 );
-        assert( c[1] == 0 );
-        assert( c[2] == 1 );
+            c = (a ~ да);
+            assert( c.длина == 3 );
+            assert( c[0] == 1 );
+            assert( c[1] == 0 );
+            assert( c[2] == 1 );
 
-        c = (нет ~ a);
-        assert( c.длина == 3 );
-        assert( c[0] == 0 );
-        assert( c[1] == 1 );
-        assert( c[2] == 0 );
-      }
+            c = (нет ~ a);
+            assert( c.длина == 3 );
+            assert( c[0] == 0 );
+            assert( c[1] == 1 );
+            assert( c[2] == 0 );
+        }
     }
 
 
@@ -964,18 +983,18 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        a &= b;
-        assert( a[0] == 1 );
-        assert( a[1] == 0 );
-        assert( a[2] == 1 );
-        assert( a[3] == 0 );
-        assert( a[4] == 0 );
-      }
+            a &= b;
+            assert( a[0] == 1 );
+            assert( a[1] == 0 );
+            assert( a[2] == 1 );
+            assert( a[3] == 0 );
+            assert( a[4] == 0 );
+        }
     }
 
 
@@ -1009,18 +1028,18 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        a |= b;
-        assert( a[0] == 1 );
-        assert( a[1] == 0 );
-        assert( a[2] == 1 );
-        assert( a[3] == 1 );
-        assert( a[4] == 1 );
-      }
+            a |= b;
+            assert( a[0] == 1 );
+            assert( a[1] == 0 );
+            assert( a[2] == 1 );
+            assert( a[3] == 1 );
+            assert( a[4] == 1 );
+        }
     }
 
 
@@ -1054,18 +1073,18 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        a ^= b;
-        assert( a[0] == 0 );
-        assert( a[1] == 0 );
-        assert( a[2] == 0 );
-        assert( a[3] == 1 );
-        assert( a[4] == 1 );
-      }
+            a ^= b;
+            assert( a[0] == 0 );
+            assert( a[1] == 0 );
+            assert( a[2] == 0 );
+            assert( a[3] == 1 );
+            assert( a[4] == 1 );
+        }
     }
 
 
@@ -1100,18 +1119,18 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b = [1,0,1,1,0];
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b = [1,0,1,1,0];
 
-        a -= b;
-        assert( a[0] == 0 );
-        assert( a[1] == 0 );
-        assert( a[2] == 0 );
-        assert( a[3] == 0 );
-        assert( a[4] == 1 );
-      }
+            a -= b;
+            assert( a[0] == 0 );
+            assert( a[1] == 0 );
+            assert( a[2] == 0 );
+            assert( a[3] == 0 );
+            assert( a[4] == 1 );
+        }
     }
 
 
@@ -1135,21 +1154,21 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0,1,0,1];
-        МассивБит b;
+        unittest
+        {
+            МассивБит a = [1,0,1,0,1];
+            МассивБит b;
 
-        b = (a ~= да);
-        assert( a[0] == 1 );
-        assert( a[1] == 0 );
-        assert( a[2] == 1 );
-        assert( a[3] == 0 );
-        assert( a[4] == 1 );
-        assert( a[5] == 1 );
+            b = (a ~= да);
+            assert( a[0] == 1 );
+            assert( a[1] == 0 );
+            assert( a[2] == 1 );
+            assert( a[3] == 0 );
+            assert( a[4] == 1 );
+            assert( a[5] == 1 );
 
-        assert( b == a );
-      }
+            assert( b == a );
+        }
     }
 
 
@@ -1166,21 +1185,21 @@ struct МассивБит
 
     debug( UnitTest )
     {
-      unittest
-      {
-        МассивБит a = [1,0];
-        МассивБит b = [0,1,0];
-        МассивБит c;
+        unittest
+        {
+            МассивБит a = [1,0];
+            МассивБит b = [0,1,0];
+            МассивБит c;
 
-        c = (a ~= b);
-        assert( a.длина == 5 );
-        assert( a[0] == 1 );
-        assert( a[1] == 0 );
-        assert( a[2] == 0 );
-        assert( a[3] == 1 );
-        assert( a[4] == 0 );
+            c = (a ~= b);
+            assert( a.длина == 5 );
+            assert( a[0] == 1 );
+            assert( a[1] == 0 );
+            assert( a[2] == 0 );
+            assert( a[3] == 1 );
+            assert( a[4] == 0 );
 
-        assert( c == a );
-      }
+            assert( c == a );
+        }
     }
 }

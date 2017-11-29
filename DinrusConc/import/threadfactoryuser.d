@@ -1,21 +1,22 @@
 ﻿module conc.threadfactoryuser;
 
-import conc.threadfactory, stdrus:Нить;
+import conc.threadfactory, stdrus:
+Нить;
 
-public class ПользовательФабрикиНитей 
+public class ПользовательФабрикиНитей
 {
 
-	protected:
-		ФабрикаНитей фабрикаНитей_;
+protected:
+    ФабрикаНитей фабрикаНитей_;
 
-				class ДефолтнаяФабрикаНитей : ФабрикаНитей 
-				{
-					public Нить новаяНить(цел delegate() команда);
-				}
+    class ДефолтнаяФабрикаНитей : ФабрикаНитей
+    {
+        public Нить новаяНить(цел delegate() команда);
+    }
 
-	public:
+public:
 
-		this();
-		synchronized ФабрикаНитей установиФабрикуНитей(ФабрикаНитей фабрика) ;
-		synchronized ФабрикаНитей дайФабрикуНитей();
+    this();
+    synchronized ФабрикаНитей установиФабрикуНитей(ФабрикаНитей фабрика) ;
+    synchronized ФабрикаНитей дайФабрикуНитей();
 }

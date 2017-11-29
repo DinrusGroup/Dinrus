@@ -2,11 +2,12 @@
 import conc.sync;
 private import conc.waitnotify;
 
-class Мютекс : ОбъектЖдиУведоми,Синх  {
+class Мютекс : ОбъектЖдиУведоми,Синх
+{
 
-  protected бул inuse_ = нет; ///< Статус замка
+    protected бул inuse_ = нет; ///< Статус замка
 
-  synchronized проц обрети() ;
-  synchronized проц отпусти();
-  synchronized бул пытайся(дол мсек);
-  }
+    synchronized проц обрети() ;
+    synchronized проц отпусти();
+    synchronized бул пытайся(дол мсек);
+}

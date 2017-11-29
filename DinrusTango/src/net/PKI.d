@@ -18,7 +18,7 @@ private import lib.OpenSSL;
 
 /*******************************************************************************
 
-  PKI предоставляет инфраструктуру Public Key. 
+  PKI предоставляет инфраструктуру Public Key.
 
   Он предоставляет особые возможности:
 
@@ -41,7 +41,7 @@ private import lib.OpenSSL;
 
 /*******************************************************************************
 
-  Do not проверь the peer сертификат. Nor краш if it's not provопрed (сервер 
+  Do not проверь the peer сертификат. Nor краш if it's not provопрed (сервер
   only).
 
 *******************************************************************************/
@@ -142,7 +142,7 @@ class КонтекстССЛ
         Assigns a X509 Сертификат в_ the КонтекстССЛ.
 
         This is required for SSL
-        
+
     *******************************************************************************/
 
     КонтекстССЛ сертификат(Сертификат серт)
@@ -159,7 +159,7 @@ class КонтекстССЛ
         Assigns a ЧастныйКлюч (public/private keypair в_ the КонтекстССЛ.
 
         This is required for SSL.
-                
+
     *******************************************************************************/
 
 
@@ -176,7 +176,7 @@ class КонтекстССЛ
 
         Valопрates that the X509 сертификат was signed with the provопрed
         public/private keypair. Throws an исключение if this is not the case.
-                
+
     *******************************************************************************/
 
     КонтекстССЛ проверьКлюч()
@@ -190,7 +190,7 @@ class КонтекстССЛ
 
         Sets a SSLVerifyCallback function using the SSL_VERIFY_(Неук|PEER|etc) флаги
         в_ control как verification is handled.
-                
+
     *******************************************************************************/
 
     КонтекстССЛ настройВерификацию(цел флаги, SSLVerifyCallback ов)
@@ -203,7 +203,7 @@ class КонтекстССЛ
 
         Sets a ХранилищеСертификатов of certs that are valid and trust Сертификат
         Authorities during verification.
-                
+
     *******************************************************************************/
 
 
@@ -223,10 +223,10 @@ class КонтекстССЛ
         Each файл must contain only one CA сертификат. Also, the файлы are
         looked up by the CA субъект имя hash значение, which must be available. If
         ещё than one CA сертификат with the same имя hash значение есть_ли, the
-        extension must be different. (ie: 9d66eef0.0, 9d66eef0.1, etc). The search 
+        extension must be different. (ie: 9d66eef0.0, 9d66eef0.1, etc). The search
         is performed in the ordering of the extension, regardless of другой свойства
         of the certificates. Use the c_rehash utility в_ создай the necessary symlinks
-                
+
     *******************************************************************************/
 
     КонтекстССЛ путьКСертСА(ткст путь)
@@ -237,20 +237,20 @@ class КонтекстССЛ
     }
 
     // TODO need в_ финиш добавим Session handling functionality
-/*    проц sessionCacheMode(цел режим)
-    {
-        if (!SSL_CTX_set_session_cache_mode(_ctx, режим))
-            выдайОшибкуОпенССЛ();
-    }
+    /*    проц sessionCacheMode(цел режим)
+        {
+            if (!SSL_CTX_set_session_cache_mode(_ctx, режим))
+                выдайОшибкуОпенССЛ();
+        }
 
-    проц sessionId(ббайт[] опр)
+        проц sessionId(ббайт[] опр)
+        {
+            if (!SSL_CTX_set_session_опр_context(_ctx, опр.ptr, опр.length))
+                выдайОшибкуОпенССЛ();
+        } */
+
+    SSL_CTX* исконный()
     {
-        if (!SSL_CTX_set_session_опр_context(_ctx, опр.ptr, опр.length))
-            выдайОшибкуОпенССЛ();
-    } */
-	
-	    SSL_CTX* исконный()
-    {   
         return _ctx;
     }
 }
@@ -290,7 +290,7 @@ class КонтекстХраненияСертификатов
 
         This constructor takes a X509_STORE_CTX as provопрed by the SSLVerifyCallback
         function.
-                
+
     *******************************************************************************/
 
     this(X509_STORE_CTX *ctx)
@@ -301,7 +301,7 @@ class КонтекстХраненияСертификатов
     /*******************************************************************************
 
         Returns the peer сертификат.
-                
+
     *******************************************************************************/
 
     Сертификат серт()
@@ -342,7 +342,7 @@ class КонтекстХраненияСертификатов
     else
         Стдвыв("The untrusted серт was expired, or not signed by the caCert").нс;
     ---
-            
+
 *******************************************************************************/
 
 class ХранилищеСертификатов
@@ -369,7 +369,7 @@ class ХранилищеСертификатов
     /*******************************************************************************
 
         Добавь a Сертификат в_ the сохрани.
-            
+
     *******************************************************************************/
 
     ХранилищеСертификатов добавь(Сертификат серт)
@@ -410,8 +410,8 @@ class ПубличныйКлюч
         Generate a ПубличныйКлюч объект из_ the passed PEM formatted данные
 
         Параметры:
-            publicPemData = pem кодирован данные containing the public ключ 
-            
+            publicPemData = pem кодирован данные containing the public ключ
+
     *******************************************************************************/
     this (ткст publicPemData)
     {
@@ -425,8 +425,8 @@ class ПубличныйКлюч
         if (_evpKey is пусто)
             выдайОшибкуОпенССЛ();
     }
-    package this(ЧастныйКлюч ключ) 
-    {        
+    package this(ЧастныйКлюч ключ)
+    {
         this._evpKey = cast(RSA *)ключ._evpKey.pkey;
         this._existingKey = ключ;
     }
@@ -448,7 +448,7 @@ class ПубличныйКлюч
     /*******************************************************************************
 
         Возвращает ПубличныйКлюч в PEM формате.
-            
+
     *******************************************************************************/
 
     ткст вФорматПЕМ()
@@ -486,7 +486,7 @@ class ПубличныйКлюч
         MD5_Init(&c);
         MD5_Update(&c, данные.ptr, данные.length);
         MD5_Final(дайджест.ptr, &c);
-        
+
         if (RSA_verify(NID_md5, дайджест.ptr, MD5_DIGEST_LENGTH, сигнатура.ptr, сигнатура.length, _evpKey))
             return да;
         return нет;
@@ -494,16 +494,16 @@ class ПубличныйКлюч
 
     /*******************************************************************************
 
-        Encrypt the passed данные using the ПубличныйКлюч 
-        
+        Encrypt the passed данные using the ПубличныйКлюч
+
         Notes:
         This is размер limited based off the ключ
-        Not recommended for general encryption, use RSA for encrypting a 
+        Not recommended for general encryption, use RSA for encrypting a
         random ключ instead and switch в_ a block cipher.
 
         Параметры:
         данные = the данные в_ зашифруй
-            
+
     *******************************************************************************/
 
     ббайт[] зашифруй(ббайт[] данные)
@@ -522,17 +522,17 @@ class ПубличныйКлюч
         return rtn;
     }
 
-     /*******************************************************************************
+    /*******************************************************************************
 
-        Decrypts данные previously encrypted with the совпадают ЧастныйКлюч
+       Decrypts данные previously encrypted with the совпадают ЧастныйКлюч
 
-        Please see the зашифруй notes.
+       Please see the зашифруй notes.
 
-        Parmas:
-            данные = the данные в_ зашифруй
+       Parmas:
+           данные = the данные в_ зашифруй
 
     *******************************************************************************/
-       
+
     ббайт[] расшифруй(ббайт[] данные)
     {
         ббайт[] rtn;
@@ -577,7 +577,7 @@ class ЧастныйКлюч
         Параметры:
             privatePemData = the PEM кодирован данные of the private ключ
             certPass = an optional пароль в_ расшифруй the ключ.
-        
+
     *******************************************************************************/
 
     this (ткст privatePemData, ткст certPass = пусто)
@@ -599,7 +599,7 @@ class ЧастныйКлюч
 
         Параметры:
             биты = Число of биты в_ use, 2048 is a good число for this.
-        
+
     *******************************************************************************/
 
 
@@ -617,7 +617,7 @@ class ЧастныйКлюч
         if (_evpKey is пусто)
             выдайОшибкуОпенССЛ();
     }
-    
+
     ~this()
     {
         if (_evpKey)
@@ -629,9 +629,9 @@ class ЧастныйКлюч
 
     /*******************************************************************************
 
-        Compares two ЧастныйКлюч classes в_ see if the internal structures are 
+        Compares two ЧастныйКлюч classes в_ see if the internal structures are
         the same.
-        
+
     *******************************************************************************/
     override цел opEquals(Объект об)
     {
@@ -648,7 +648,7 @@ class ЧастныйКлюч
         Параметры:
             пароль = If this is provопрed, the private ключ will be encrypted using
             AES 256bit encryption, with this as the ключ.
-        
+
     *******************************************************************************/
     ткст вФорматПЕМ(ткст пароль = пусто)
     {
@@ -687,7 +687,7 @@ class ЧастныйКлюч
         Параметры:
         данные = the данные в_ подпиши
         sigbuf = the буфер в_ сохрани the сигнатура in
-        
+
         Returns a срез of the сигнатура or пусто
 
     *******************************************************************************/
@@ -715,15 +715,15 @@ class ЧастныйКлюч
     /*******************************************************************************
 
         Encrypt the passed данные using the ЧастныйКлюч
-        
+
         Notes:
         This is размер limited based off the ключ
-        Not recommended for general encryption, use RSA for encrypting a 
+        Not recommended for general encryption, use RSA for encrypting a
         random ключ instead and switch в_ a block cipher.
 
         Параметры:
         данные = the данные в_ зашифруй
-            
+
     *******************************************************************************/
 
     ббайт[] зашифруй(ббайт[] данные)
@@ -742,17 +742,17 @@ class ЧастныйКлюч
         return rtn;
     }
 
-     /*******************************************************************************
+    /*******************************************************************************
 
-        Decrypts данные previously encrypted with the совпадают ПубличныйКлюч
+       Decrypts данные previously encrypted with the совпадают ПубличныйКлюч
 
-        Please see the зашифруй notes.
+       Please see the зашифруй notes.
 
-        Parmas:
-            данные = the данные в_ зашифруй
+       Parmas:
+           данные = the данные в_ зашифруй
 
     *******************************************************************************/
-       
+
     ббайт[] расшифруй(ббайт[] данные)
     {
         ббайт[] rtn;
@@ -771,7 +771,7 @@ class ЧастныйКлюч
 
 /*******************************************************************************
 
-    Сертификат provопрes necessary functionality в_ создай and читай X509 
+    Сертификат provопрes necessary functionality в_ создай and читай X509
     Certificates.
 
     Note, once a Сертификат есть been signed, it is immutable, and cannot
@@ -811,7 +811,7 @@ class Сертификат
     /*******************************************************************************
 
         Parses a X509 Сертификат из_ the provопрed PEM кодирован данные.
-            
+
     *******************************************************************************/
     this(ткст publicPemData)
     {
@@ -829,7 +829,7 @@ class Сертификат
 
         Creates a new and un-signed (пустой) X509 сертификат. Useful for generating
         X509 certificates programatically.
-            
+
     *******************************************************************************/
     this()
     {
@@ -864,7 +864,7 @@ class Сертификат
         by the provопрed сертификат authority. Having two Certificates with the
         same serial число can cause problems with web browsers and другой apps
         because they will be different certificates.
-            
+
     *******************************************************************************/
 
     Сертификат серийныйНомер(бцел serial)
@@ -877,7 +877,7 @@ class Сертификат
     /*******************************************************************************
 
         Returns the serial число of the Сертификат
-            
+
     *******************************************************************************/
 
     бцел серийныйНомер()
@@ -897,7 +897,7 @@ class Сертификат
 
         Example:
             серт.смещениеКДатеДо = ИнтервалВремени.сек(-86400); // Сертификат is не_годится before yesterday
-            
+
     *******************************************************************************/
 
     Сертификат смещениеКДатеДо(ИнтервалВремени t)
@@ -919,7 +919,7 @@ class Сертификат
 
         Example:
             серт.смещениеКДатеПосле = ИнтервалВремени.сек(86400 * 365); // Сертификат is valid up в_ one год из_ сейчас
-            
+
     *******************************************************************************/
 
     Сертификат смещениеКДатеПосле(ИнтервалВремени t)
@@ -930,13 +930,13 @@ class Сертификат
         return this;
     }
 
-    
+
     /*******************************************************************************
 
         Returns the датаПосле field of the сертификат in ASN1_GENERALIZEDTIME.
 
         Note, this will eventually befome a ДатаВремя struct.
-            
+
     *******************************************************************************/
 
     ткст датаПосле()
@@ -957,10 +957,10 @@ class Сертификат
         Returns the датаДо field of the сертификат in ASN1_GENERALIZEDTIME.
 
         Note, this will eventually befome a ДатаВремя struct.
-            
+
     *******************************************************************************/
 
-    ткст датаДо()    
+    ткст датаДо()
     {
         ткст rtn;
         ASN1_GENERALIZEDTIME *genTime = ASN1_TIME_to_generalizedtime(X509_get_notBefore(_cert), пусто);
@@ -975,7 +975,7 @@ class Сертификат
     /*******************************************************************************
 
         Sets the public/private keypair of an unsigned сертификат.
-            
+
     *******************************************************************************/
 
     Сертификат частныйКлюч(ЧастныйКлюч ключ)
@@ -1040,7 +1040,7 @@ class Сертификат
     /*******************************************************************************
 
         Returns the Сертификат субъект in a multi-строка ткст.
-            
+
     *******************************************************************************/
 
     ткст субъект() // currently multi-строка, could be single-строка..
@@ -1072,7 +1072,7 @@ class Сертификат
         it's corresponding public/private keypair.
 
         Once the Сертификат is signed, it can no longer be изменён.
-            
+
     *******************************************************************************/
 
     Сертификат подпиши(Сертификат caCert, ЧастныйКлюч caKey)
@@ -1102,7 +1102,7 @@ class Сертификат
     /*******************************************************************************
 
         Checks if the underlying данные structur of the Сертификат is equal
-            
+
     *******************************************************************************/
 
     override цел opEquals(Объект об)
@@ -1115,12 +1115,12 @@ class Сертификат
 
     /*******************************************************************************
 
-        Verifies that the Сертификат was signed and issues by a CACert in the 
+        Verifies that the Сертификат was signed and issues by a CACert in the
         passed ХранилищеСертификатов.
 
         This will also проверь the датаДо and датаПосле fields в_ see if the
         current дата falls between them.
-            
+
     *******************************************************************************/
 
     бул проверь(ХранилищеСертификатов сохрани)
@@ -1143,7 +1143,7 @@ class Сертификат
     /*******************************************************************************
 
         Returns the Сертификат in a PEM кодирован ткст.
-            
+
     *******************************************************************************/
 
     ткст вФорматПЕМ()
@@ -1162,7 +1162,7 @@ class Сертификат
         }
         if (rtn is пусто)
             выдайОшибкуОпенССЛ();
-        return rtn;    
+        return rtn;
     }
 
     private проц добавьЗаписьИмени(X509_NAME *имя, сим *тип, ткст значение)
@@ -1186,128 +1186,128 @@ version (Test)
 
     auto t1 = ИнтервалВремени.zero;
     auto t2 = ИнтервалВремени.изДней(365); // can't установи this up in delegate ..??
-	
-  
-        Test.Status _pkeyGenTest(inout ткст[] messages)
-        {
-            auto pkey = new ЧастныйКлюч(2048);
-            ткст pem = pkey.вФорматПЕМ;
-            auto pkey2 = new ЧастныйКлюч(pem);
-            if (pkey == pkey2)
-            {
-                auto pkey3 = new ЧастныйКлюч(2048);
-                ткст pem2 = pkey3.вФорматПЕМ("hello");
-                try
-                    auto pkey4 = new ЧастныйКлюч(pem2, "badpass");
-                catch (Исключение ex)
-                {
-                    auto pkey4 = new ЧастныйКлюч(pem2, "hello");
-                    return Test.Status.Success;
-                }
-            }
-                
-            return Test.Status.Failure;
-        }
-
-        Test.Status _certGenTest(inout ткст[] messages)
-        {
-            auto серт = new Сертификат();
-            auto pkey = new ЧастныйКлюч(2048);
-            серт.частныйКлюч(pkey).серийныйНомер(123).смещениеКДатеДо(t1).смещениеКДатеПосле(t2);
-            серт.установиСубъект("CA", "Alberta", "Place", "Нет", "First Last", "no unit", "email@example.com").подпиши(серт, pkey);
-            ткст pemData = серт.вФорматПЕМ;
-            auto cert2 = new Сертификат(pemData);
-//            Стдвыв.форматнс("{}\n{}\n{}\n{}", cert2.серийныйНомер, cert2.субъект, cert2.датаДо, cert2.датаПосле);
-            if (cert2 == серт)
-                return Test.Status.Success;
-            return Test.Status.Failure;
-        }
-
-        Test.Status _chainValопрation(inout ткст[] messages)
-        {
-            auto caCert = new Сертификат();
-            auto caPkey = new ЧастныйКлюч(2048);
-            caCert.серийныйНомер = 1;
-            caCert.частныйКлюч = caPkey;
-            caCert.смещениеКДатеДо = t1;
-            caCert.смещениеКДатеПосле = t2;
-            caCert.установиСубъект("CA", "Alberta", "CA Place", "Super CACerts Anon", "CA Manager");
-            caCert.подпиши(caCert, caPkey);
-            auto сохрани = new ХранилищеСертификатов();
-            сохрани.добавь(caCert);
-
-            auto subCert = new Сертификат();
-            auto subPkey = new ЧастныйКлюч(2048);
-            subCert.серийныйНомер = 2;
-            subCert.частныйКлюч = subPkey;
-            subCert.смещениеКДатеДо = t1;
-            subCert.смещениеКДатеПосле = t2;
-            subCert.установиСубъект("US", "California", "Customer Place", "Penny-Pincher", "IT Director");
-            subCert.подпиши(caCert, caPkey);
-
-            if (subCert.проверь(сохрани))
-            {
-                auto fakeCert = new Сертификат();
-                auto fakePkey = new ЧастныйКлюч(2048);
-                fakeCert.серийныйНомер = 1;
-                fakeCert.частныйКлюч = fakePkey;
-                fakeCert.смещениеКДатеДо = t1;
-                fakeCert.смещениеКДатеПосле = t2;
-                fakeCert.установиСубъект("CA", "Alberta", "CA Place", "Super CACerts Anon", "CA Manager");
-                fakeCert.подпиши(caCert, caPkey);
-                auto store2 = new ХранилищеСертификатов();
-                if (!subCert.проверь(store2))
-                    return Test.Status.Success;
-            }
-
-            return Test.Status.Failure;
-        }   
-
-        Test.Status _rsaCrypto(inout ткст[] messages)
-        {
-            auto ключ = new ЧастныйКлюч(2048);
-            ткст pemData = ключ.публичныйКлюч.вФорматПЕМ;
-            auto pub = new ПубличныйКлюч(pemData);
-            auto encrypted = pub.зашифруй(cast(ббайт[])"Hello, как are you today?");
-            auto decrypted = ключ.расшифруй(encrypted);
-            if (cast(ткст)decrypted == "Hello, как are you today?")
-            {
-                encrypted = ключ.зашифруй(cast(ббайт[])"Hello, как are you today, mister?");
-                decrypted = pub.расшифруй(encrypted);
-                if (cast(ткст)decrypted == "Hello, как are you today, mister?")
-                    return Test.Status.Success;
-            }
-            return Test.Status.Failure;
-        }
-
-        Test.Status _rsaSignVerify(inout ткст[] messages)
-        {
-            auto ключ = new ЧастныйКлюч(1024);
-            auto key2 = new ЧастныйКлюч(1024);
-            ббайт[] данные = cast(ббайт[])"I am some special данные, да I am.";
-            ббайт[512] sigBuf;
-            ббайт[512] sigBuf2;
-            auto sig1 = ключ.подпиши(данные, sigBuf);
-            auto sig2 = key2.подпиши(данные, sigBuf2);
-            if (ключ.публичныйКлюч.проверь(данные, sig1))
-            {
-                if (!ключ.публичныйКлюч.проверь(данные, sig2))
-                {
-                    if (key2.публичныйКлюч.проверь(данные, sig2))
-                    {
-                        if (!key2.публичныйКлюч.проверь(данные, sig1))
-                            return Test.Status.Success;
-                    }
-                }
-            }
-
-            return Test.Status.Failure;
-        }
 
 
- void main()
+    Test.Status _pkeyGenTest(inout ткст[] messages)
     {
-	
+        auto pkey = new ЧастныйКлюч(2048);
+        ткст pem = pkey.вФорматПЕМ;
+        auto pkey2 = new ЧастныйКлюч(pem);
+        if (pkey == pkey2)
+        {
+            auto pkey3 = new ЧастныйКлюч(2048);
+            ткст pem2 = pkey3.вФорматПЕМ("hello");
+            try
+                auto pkey4 = new ЧастныйКлюч(pem2, "badpass");
+            catch (Исключение ex)
+            {
+                auto pkey4 = new ЧастныйКлюч(pem2, "hello");
+                return Test.Status.Success;
+            }
+        }
+
+        return Test.Status.Failure;
+    }
+
+    Test.Status _certGenTest(inout ткст[] messages)
+    {
+        auto серт = new Сертификат();
+        auto pkey = new ЧастныйКлюч(2048);
+        серт.частныйКлюч(pkey).серийныйНомер(123).смещениеКДатеДо(t1).смещениеКДатеПосле(t2);
+        серт.установиСубъект("CA", "Alberta", "Place", "Нет", "First Last", "no unit", "email@example.com").подпиши(серт, pkey);
+        ткст pemData = серт.вФорматПЕМ;
+        auto cert2 = new Сертификат(pemData);
+//            Стдвыв.форматнс("{}\n{}\n{}\n{}", cert2.серийныйНомер, cert2.субъект, cert2.датаДо, cert2.датаПосле);
+        if (cert2 == серт)
+            return Test.Status.Success;
+        return Test.Status.Failure;
+    }
+
+    Test.Status _chainValопрation(inout ткст[] messages)
+    {
+        auto caCert = new Сертификат();
+        auto caPkey = new ЧастныйКлюч(2048);
+        caCert.серийныйНомер = 1;
+        caCert.частныйКлюч = caPkey;
+        caCert.смещениеКДатеДо = t1;
+        caCert.смещениеКДатеПосле = t2;
+        caCert.установиСубъект("CA", "Alberta", "CA Place", "Super CACerts Anon", "CA Manager");
+        caCert.подпиши(caCert, caPkey);
+        auto сохрани = new ХранилищеСертификатов();
+        сохрани.добавь(caCert);
+
+        auto subCert = new Сертификат();
+        auto subPkey = new ЧастныйКлюч(2048);
+        subCert.серийныйНомер = 2;
+        subCert.частныйКлюч = subPkey;
+        subCert.смещениеКДатеДо = t1;
+        subCert.смещениеКДатеПосле = t2;
+        subCert.установиСубъект("US", "California", "Customer Place", "Penny-Pincher", "IT Director");
+        subCert.подпиши(caCert, caPkey);
+
+        if (subCert.проверь(сохрани))
+        {
+            auto fakeCert = new Сертификат();
+            auto fakePkey = new ЧастныйКлюч(2048);
+            fakeCert.серийныйНомер = 1;
+            fakeCert.частныйКлюч = fakePkey;
+            fakeCert.смещениеКДатеДо = t1;
+            fakeCert.смещениеКДатеПосле = t2;
+            fakeCert.установиСубъект("CA", "Alberta", "CA Place", "Super CACerts Anon", "CA Manager");
+            fakeCert.подпиши(caCert, caPkey);
+            auto store2 = new ХранилищеСертификатов();
+            if (!subCert.проверь(store2))
+                return Test.Status.Success;
+        }
+
+        return Test.Status.Failure;
+    }
+
+    Test.Status _rsaCrypto(inout ткст[] messages)
+    {
+        auto ключ = new ЧастныйКлюч(2048);
+        ткст pemData = ключ.публичныйКлюч.вФорматПЕМ;
+        auto pub = new ПубличныйКлюч(pemData);
+        auto encrypted = pub.зашифруй(cast(ббайт[])"Hello, как are you today?");
+        auto decrypted = ключ.расшифруй(encrypted);
+        if (cast(ткст)decrypted == "Hello, как are you today?")
+        {
+            encrypted = ключ.зашифруй(cast(ббайт[])"Hello, как are you today, mister?");
+            decrypted = pub.расшифруй(encrypted);
+            if (cast(ткст)decrypted == "Hello, как are you today, mister?")
+                return Test.Status.Success;
+        }
+        return Test.Status.Failure;
+    }
+
+    Test.Status _rsaSignVerify(inout ткст[] messages)
+    {
+        auto ключ = new ЧастныйКлюч(1024);
+        auto key2 = new ЧастныйКлюч(1024);
+        ббайт[] данные = cast(ббайт[])"I am some special данные, да I am.";
+        ббайт[512] sigBuf;
+        ббайт[512] sigBuf2;
+        auto sig1 = ключ.подпиши(данные, sigBuf);
+        auto sig2 = key2.подпиши(данные, sigBuf2);
+        if (ключ.публичныйКлюч.проверь(данные, sig1))
+        {
+            if (!ключ.публичныйКлюч.проверь(данные, sig2))
+            {
+                if (key2.публичныйКлюч.проверь(данные, sig2))
+                {
+                    if (!key2.публичныйКлюч.проверь(данные, sig1))
+                        return Test.Status.Success;
+                }
+            }
+        }
+
+        return Test.Status.Failure;
+    }
+
+
+    void main()
+    {
+
         auto t = new Test("tetra.net.PKI");
         t["Public/Private Keypair"] = &_pkeyGenTest;
         t["Self-Signed Сертификат"] = &_certGenTest;

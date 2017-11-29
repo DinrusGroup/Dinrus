@@ -13,7 +13,8 @@ module util.Convert;
 
 private import exception;
 private import core.Traits;
-private import core.Tuple : Кортеж;
+private import core.Tuple :
+Кортеж;
 
 private import math.Math;
 private import text.convert.Utf;
@@ -133,7 +134,7 @@ version( TangoDoc )
      *
      * Note: This module содержит imports в_ другой Dinrus modules that needs
      * semantic analysis в_ be discovered. If your build tool doesn't do this
-     * properly, causing компилируй or link время problems, import the relevant 
+     * properly, causing компилируй or link время problems, import the relevant
      * module explicitly.
      */
     D в_(D,S)(S значение);
@@ -155,7 +156,7 @@ else
                     return toImpl!(D,S)(значение);
                 }
                 catch( ИсклПреобразования e )
-                    {}
+                {}
 
                 return def;
             }
@@ -204,12 +205,12 @@ typedef цел Missing;
 сим ctfe_upper(сим c)
 {
     if( 'a' <= c && c <= 'z' )
-        return cast(сим)((c - 'a') + 'A');
-    else
-        return c;
+                 return cast(сим)((c - 'a') + 'A');
+            else
+                return c;
 }
 
-ткст ctfe_camelCase(ткст s)
+        ткст ctfe_camelCase(ткст s)
 {
     ткст результат;
 
@@ -243,11 +244,11 @@ typedef цел Missing;
 {
     static if (T.sizeof is 1)
         return (c <= 32 && (c is ' ' | c is '\t' | c is '\r'
-                    | c is '\n' | c is '\v' | c is '\f'));
+                            | c is '\n' | c is '\v' | c is '\f'));
     else
         return (c <= 32 && (c is ' ' | c is '\t' | c is '\r'
-                    | c is '\n' | c is '\v' | c is '\f'))
-            || (c is '\u2028' | c is '\u2029');
+                            | c is '\n' | c is '\v' | c is '\f'))
+                || (c is '\u2028' | c is '\u2029');
 }
 
 T[] ctfe_triml(T)(T[] источник)
@@ -256,8 +257,8 @@ T[] ctfe_triml(T)(T[] источник)
         return пусто;
 
     foreach( i,c ; источник )
-        if( !ctfe_isSpace(c) )
-            return источник[i..$];
+    if( !ctfe_isSpace(c) )
+        return источник[i..$];
 
     return пусто;
 }
@@ -268,8 +269,8 @@ T[] ctfe_trimr(T)(T[] источник)
         return пусто;
 
     foreach_reverse( i,c ; источник )
-        if( !ctfe_isSpace(c) )
-            return источник[0..i+1];
+    if( !ctfe_isSpace(c) )
+        return источник[0..i+1];
 
     return пусто;
 }
@@ -303,8 +304,8 @@ template isUDT(T)
 template ткст_ли(T)
 {
     static if( is( typeof(T[]) == ткст )
-            || is( typeof(T[]) == шим[] )
-            || is( typeof(T[]) == дим[] ) )
+               || is( typeof(T[]) == шим[] )
+               || is( typeof(T[]) == дим[] ) )
         const ткст_ли = да;
     else
         const ткст_ли = нет;
@@ -384,7 +385,7 @@ template бцелOfSize(бцел байты)
         static if( типЦел_ли!(T) )
         {
             if( lhs < 0 )
-                return -1;
+                        return -1;
             else
             {
                 static if( U.sizeof >= T.sizeof )
@@ -407,7 +408,7 @@ template бцелOfSize(бцел байты)
         else static if( типЦел_ли!(U) )
         {
             if( rhs < 0 )
-                return 1;
+                        return 1;
             else
             {
                 static if( T.sizeof >= U.sizeof )
@@ -433,15 +434,15 @@ template бцелOfSize(бцел байты)
 template unsupported(ткст desc="")
 {
     static assert(нет, "Unsupported conversion: cannot преобразуй в_ "
-            ~ctfe_trim(D.stringof)~" из_ "
-            ~(desc!="" ? desc~" " : "")~ctfe_trim(S.stringof)~".");
+                  ~ctfe_trim(D.stringof)~" из_ "
+                  ~(desc!="" ? desc~" " : "")~ctfe_trim(S.stringof)~".");
 }
 
 template unsupported_backwards(ткст desc="")
 {
     static assert(нет, "Unsupported conversion: cannot преобразуй в_ "
-            ~(desc!="" ? desc~" " : "")~ctfe_trim(D.stringof)
-            ~" из_ "~ctfe_trim(S.stringof)~".");
+                  ~(desc!="" ? desc~" " : "")~ctfe_trim(D.stringof)
+                  ~" из_ "~ctfe_trim(S.stringof)~".");
 }
 
 // TN works out the c_case имя of the given тип.
@@ -468,7 +469,7 @@ template TN(T)
 {
     static if( типАссоцМассив_ли!(T) )
         const TN = TN!(typeof(T.ключи[0]))~"_to_"
-            ~TN!(typeof(T.values[0]))~"_map";
+        ~TN!(typeof(T.values[0]))~"_map";
     else
         const TN = ctfe_trim(T.stringof);
 }
@@ -489,13 +490,13 @@ template toString_(T)
 template UtfNum(T)
 {
     const UtfNum = is(typeof(T[0])==сим) ? "8" : (
-            is(typeof(T[0])==шим) ? "16" : "32");
+        is(typeof(T[0])==шим) ? "16" : "32");
 }
 
 template StringNum(T)
 {
     const StringNum = is(typeof(T[0])==сим) ? "" : (
-            is(typeof(T[0])==шим) ? "16" : "32");
+        is(typeof(T[0])==шим) ? "16" : "32");
 }
 
 // Decodes a single дим character из_ a ткст.  Yes, I know they're
@@ -522,7 +523,7 @@ template toUDT()
         static if( ткст_ли!(S) )
         {
             static if( is( typeof(mixin("D.fromUtf"
-                                ~UtfNum!(S)~"(значение)")) : D ) )
+                                        ~UtfNum!(S)~"(значение)")) : D ) )
                 return mixin("D.fromUtf"~UtfNum!(S)~"(значение)");
 
             else static if( is( typeof(D.fromUtf8(""c)) : D ) )
@@ -559,7 +560,7 @@ template toUDT()
                 return mixin("D.from_"~TN!(S)~"()");
 
             else static if( is( typeof(mixin("D.из_"
-                                ~ctfe_camelCase(TN!(S))~"()")) : D ) )
+                                             ~ctfe_camelCase(TN!(S))~"()")) : D ) )
                 return mixin("D.из_"~ctfe_camelCase(TN!(S))~"()");
 
             else static if( is( typeof(D.из_!(S)(значение)) : D ) )
@@ -579,7 +580,7 @@ template fromUDT(ткст fallthrough="")
         static if( ткст_ли!(D) )
         {
             static if( is( typeof(mixin("значение.вТкст"
-                                ~StringNum!(D)~"()")) == D ) )
+                                        ~StringNum!(D)~"()")) == D ) )
                 return mixin("значение.вТкст"~StringNum!(D)~"()");
 
             else static if( is( typeof(значение.вТкст()) == ткст ) )
@@ -621,7 +622,7 @@ template fromUDT(ткст fallthrough="")
                 return mixin("значение.to_"~TN!(D)~"()");
 
             else static if( is( typeof(mixin("значение.в_"
-                                ~ctfe_camelCase(TN!(D))~"()")) : D ) )
+                                             ~ctfe_camelCase(TN!(D))~"()")) : D ) )
                 return mixin("значение.в_"~ctfe_camelCase(TN!(D))~"()");
 
             else static if( is( typeof(значение.в_!(D)()) : D ) )
@@ -661,7 +662,7 @@ D вБул(D,S)(S значение)
     static assert(is(D==бул));
 
     static if( типЦелЧис_ли!(S) /+|| типРеал_ли!(S) || типМнимое_ли!(S)
-                || типКомплекс_ли!(S)+/ )
+               || типКомплекс_ли!(S)+/ )
         // The weird сравнение is в_ support НЧ as да
         return !(значение == 0);
 
@@ -669,15 +670,17 @@ D вБул(D,S)(S значение)
     {
         switch( значение )
         {
-            case 'F': case 'f':
-                return нет;
+        case 'F':
+        case 'f':
+            return нет;
 
-            case 'T': case 't':
-                return да;
+        case 'T':
+        case 't':
+            return да;
 
-            default:
-                mixin convError;
-                throwConvError;
+        default:
+            mixin convError;
+            throwConvError;
         }
     }
 
@@ -685,15 +688,15 @@ D вБул(D,S)(S значение)
     {
         switch( Ascii.toLower(значение) )
         {
-            case "нет":
-                return нет;
+        case "нет":
+            return нет;
 
-            case "да":
-                return да;
+        case "да":
+            return да;
 
-            default:
-                mixin convError;
-                throwConvError;
+        default:
+            mixin convError;
+            throwConvError;
         }
     }
     /+
@@ -728,7 +731,7 @@ D вБул(D,S)(S значение)
 D toIntegerFromInteger(D,S)(S значение)
 {
     static if( (cast(бдол) D.max) < (cast(бдол) S.max)
-            || (cast(дол) D.min) > (cast(дол) S.min) )
+                                        || (cast(дол) D.min) > (cast(дол) S.min) )
     {
         mixin convError; // TODO: Overflow ошибка
 
@@ -778,7 +781,7 @@ D toIntegerFromString(D,S)(S значение)
             auto результат = text.convert.Integer.преобразуй(s, 10, &длин);
 
             if( длин < s.length || длин == 0 )
-                throwConvError;
+                        throwConvError;
 
             return результат;
         }
@@ -788,7 +791,7 @@ D toIntegerFromString(D,S)(S значение)
             auto результат = text.convert.Integer.разбор(значение, 10, &длин);
 
             if( длин < значение.length || длин == 0 )
-                throwConvError;
+                        throwConvError;
 
             return toIntegerFromInteger!(D,дол)(результат);
         }
@@ -842,7 +845,8 @@ D вРеал(D,S)(S значение)
         return cast(D) значение;
 
     /+else static if( типСим_ли!(S) )
-        return cast(D) в_!(бцел)(значение);+/
+        return cast(D) в_!(бцел)(значение);
+    +/
 
     else static if( ткст_ли!(S) )
     {
@@ -863,7 +867,7 @@ D вРеал(D,S)(S значение)
         бцел длин;
         auto r = text.convert.Float.разбор(значение, &длин);
         if( длин < значение.length || длин == 0 )
-            throwConvError;
+                    throwConvError;
 
         return r;
     }
@@ -905,11 +909,12 @@ D toImaginary(D,S)(S значение)
 D toComplex(D,S)(S значение)
 {
     static if( типЦелЧис_ли!(S) || типРеал_ли!(S) || типМнимое_ли!(S)
-            || типКомплекс_ли!(S) )
+               || типКомплекс_ли!(S) )
         return cast(D) значение;
 
     /+else static if( типСим_ли!(S) )
-        return cast(D) в_!(бцел)(значение);+/
+        return cast(D) в_!(бцел)(значение);
+    +/
 
     else static if( isPOD!(S) || объект_ли!(S) )
     {
@@ -928,7 +933,7 @@ D toChar(D,S)(S значение)
     else static if( типЦелЧис_ли!(S) )
     {
         if( значение >= 0 && значение <= 9 )
-            return cast(D) значение+'0';
+                    return cast(D) значение+'0';
 
         else
         {
@@ -989,7 +994,7 @@ D toStringFromString(D,S)(S значение)
     }
 }
 
-const ткст CHARS = 
+const ткст CHARS =
 "\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f"
 "\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f"
 "\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f"
@@ -1004,9 +1009,9 @@ D toStringFromChar(D,S)(S значение)
         static if( is( S == сим ) )
         {
             if( 0x20 <= значение && значение <= 0x7e )
-                return (&CHARS[значение-0x20])[0..1];
+                          return (&CHARS[значение-0x20])[0..1];
         }
-        auto r = new S[1];
+                auto r = new S[1];
         r[0] = значение;
         return r;
     }
@@ -1069,11 +1074,12 @@ D toArrayFromArray(D,S)(S значение)
 {
     alias typeof(D[0]) De;
 
-    D результат; результат.length = значение.length;
+    D результат;
+    результат.length = значение.length;
     scope(failure) delete результат;
 
     foreach( i,e ; значение )
-        результат[i] = в_!(De)(e);
+    результат[i] = в_!(De)(e);
 
     return результат;
 }
@@ -1086,7 +1092,7 @@ D toMapFromMap(D,S)(S значение)
     D результат;
 
     foreach( k,v ; значение )
-        результат[ в_!(Dk)(k) ] = в_!(Dv)(v);
+    результат[ в_!(Dk)(k) ] = в_!(Dv)(v);
 
     return результат;
 }
@@ -1098,7 +1104,7 @@ D toFromUDT(D,S)(S значение)
         return mixin("значение.to_"~TN!(D)~"()");
 
     else static if( is( typeof(mixin("значение.в_"
-                        ~ctfe_camelCase(TN!(D))~"()")) : D ) )
+                                     ~ctfe_camelCase(TN!(D))~"()")) : D ) )
         return mixin("значение.в_"~ctfe_camelCase(TN!(D))~"()");
 
     else static if( is( typeof(значение.в_!(D)()) : D ) )
@@ -1109,7 +1115,7 @@ D toFromUDT(D,S)(S значение)
         return mixin("D.from_"~TN!(S)~"(значение)");
 
     else static if( is( typeof(mixin("D.из_"
-                        ~ctfe_camelCase(TN!(S))~"(значение)")) : D ) )
+                                     ~ctfe_camelCase(TN!(S))~"(значение)")) : D ) )
         return mixin("D.из_"~ctfe_camelCase(TN!(S))~"(значение)");
 
     else static if( is( typeof(D.из_!(S)(значение)) : D ) )
@@ -1132,7 +1138,7 @@ D toImpl(D,S)(S значение)
         return toImpl!(D,BaseType)(значение);
 
     else static if( типМассив_ли!(D) && типМассив_ли!(S)
-            && is( typeof(D[0]) == typeof(S[0]) ) )
+                    && is( typeof(D[0]) == typeof(S[0]) ) )
         // Special-case which catches в_!(T[])!(T[n]).
         return значение;
 
@@ -1182,7 +1188,7 @@ debug ( ConvertTest ):
 debug( UnitTest ):
 
 
-бул ex(T)(lazy T v)
+    бул ex(T)(lazy T v)
 {
     бул результат = нет;
     try
@@ -1212,15 +1218,25 @@ debug( UnitTest ):
 
 struct Foo
 {
-    цел вЦел() { return 42; }
+    цел вЦел()
+    {
+        return 42;
+    }
 
-    ткст вТкст() { return "ткст foo"; }
+    ткст вТкст()
+    {
+        return "ткст foo";
+    }
 
-    цел[] вЦелМас() { return [1,2,3]; }
+    цел[] вЦелМас()
+    {
+        return [1,2,3];
+    }
 
     Bar toBar()
     {
-        Bar результат; return результат;
+        Bar результат;
+        return результат;
     }
 
     T в_(T)()
@@ -1249,12 +1265,14 @@ struct Baz
 {
     static Baz fromFoo(Foo foo)
     {
-        Baz результат; return результат;
+        Baz результат;
+        return результат;
     }
 
     Bar toBar()
     {
-        Bar результат; return результат;
+        Bar результат;
+        return результат;
     }
 }
 
@@ -1423,11 +1441,11 @@ unittest
      */
     {
         assert( в_!(цел)("123", 456) == 123,
-                `в_!(цел)("123", 456) == "` ~ в_!(ткст)(
-                    в_!(цел)("123", 456)) ~ `"` );
+        `в_!(цел)("123", 456) == "` ~ в_!(ткст)(
+        в_!(цел)("123", 456)) ~ `"` );
         assert( в_!(цел)("abc", 456) == 456,
-                `в_!(цел)("abc", 456) == "` ~ в_!(ткст)(
-                    в_!(цел)("abc", 456)) ~ `"` );
+        `в_!(цел)("abc", 456) == "` ~ в_!(ткст)(
+        в_!(цел)("abc", 456)) ~ `"` );
     }
 
     /*

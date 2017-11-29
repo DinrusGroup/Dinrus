@@ -1,7 +1,7 @@
-﻿/** Most people who want UUIDs will generate small numbers of them (maybe a 
+﻿/** Most people who want UUIDs will generate small numbers of them (maybe a
   * few hundred thousand) и not require a huge amount of uniqueness (just
   * for this one application). This module provопрes a convenient way в_ obtain
-  * that behavior. 
+  * that behavior.
   *
   * To Потокline your usage, this module publicly imports Ууид, so you can
   * import this module alone.
@@ -39,8 +39,8 @@ import math.random.Twister;
 
 static this ()
 {
-        Твистер случ;
-        случ.сей;
-        randUuопр = new СлучГен!(Твистер)(случ);
+    Твистер случ;
+    случ.сей;
+    randUuопр = new СлучГен!(Твистер)(случ);
 }
 

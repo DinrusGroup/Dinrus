@@ -2,12 +2,12 @@
 import conc.sync;
 private import conc.waitnotify;
 
-class Щеколда : ОбъектЖдиУведомиВсех, Синх 
+class Щеколда : ОбъектЖдиУведомиВсех, Синх
 {
-  protected бул защёлкнут_ = нет;
+    protected бул защёлкнут_ = нет;
 
-  synchronized проц обрети() ;
-  synchronized бул пытайся(дол мсек) ;
-  synchronized проц отпусти();
+    synchronized проц обрети() ;
+    synchronized бул пытайся(дол мсек) ;
+    synchronized проц отпусти();
 }
 

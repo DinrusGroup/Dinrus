@@ -17,7 +17,7 @@ private import net.device.Socket;
 private import lib.OpenSSL;
 
 /*******************************************************************************
-    
+
     СокетССЛ is a подст-class of Сокет. It's purpose is в_
     provопрe SSL encryption at the сокет уровень as well as easily fit преобр_в
     existing Dinrus network applications that may already be using Сокет.
@@ -29,11 +29,11 @@ private import lib.OpenSSL;
     SSLСОКЕТs have two modes:
 
     1. Client режим, useful for connecting в_ existing servers, but not
-    accepting new connections. Accepting a new connection will cause 
+    accepting new connections. Accepting a new connection will cause
     the library в_ stall on a пиши on connection.
 
     2. Сервер режим, useful for creating an SSL сервер, but not connecting
-    в_ an existing сервер. Подключение will cause the library в_ stall on a 
+    в_ an existing сервер. Подключение will cause the library в_ stall on a
     читай on connection.
 
     Example SSL клиент
@@ -56,11 +56,11 @@ class СокетССЛ : Сокет
 {
     protected BIO *сокетССЛ = пусто;
     protected КонтекстССЛ кнткстССЛ = пусто;
-/+
+    /+
     private бул таймаут;
     private НаборСокетов readSet;
     private НаборСокетов writeSet;
-+/
+    +/
     /*******************************************************************************
 
         Созд a default Client Mode СокетССЛ.
@@ -75,12 +75,12 @@ class СокетССЛ : Сокет
             установиКонтекст (new КонтекстССЛ, да);
     }
 
-/+
+    /+
     /*******************************************************************************
 
         Creates a Client Mode СокетССЛ
 
-        This is overrопрing the Сокет ctor in order в_ emulate the 
+        This is overrопрing the Сокет ctor in order в_ emulate the
         existing free-список frameowrk.
 
         Specifying anything другой than ППротокол.ПУТ or ПТипСок.Поток will
@@ -107,7 +107,7 @@ class СокетССЛ : Сокет
         Creates a СокетССЛ
 
         This class allows the ability в_ turn a regular Сокет преобр_в an
-        СокетССЛ. It also gives the ability в_ change an СокетССЛ 
+        СокетССЛ. It also gives the ability в_ change an СокетССЛ
         преобр_в Сервер Mode or ClientMode.
 
         Параметры:
@@ -135,12 +135,12 @@ class СокетССЛ : Сокет
             сокетССЛ = пусто;
         }
     }
-+/
+    +/
 
     /*******************************************************************************
 
-        Release this СокетССЛ. 
-        
+        Release this СокетССЛ.
+
         As per Сокет.открепи.
 
     *******************************************************************************/
@@ -154,7 +154,7 @@ class СокетССЛ : Сокет
             сокетССЛ = пусто;
         }
         super.открепи();
-    }    
+    }
 
     /*******************************************************************************
 
@@ -178,7 +178,7 @@ class СокетССЛ : Сокет
 
     /*******************************************************************************
 
-         Reads из_ the underlying сокет поток. If needed, установиТаймаут will 
+         Reads из_ the underlying сокет поток. If needed, установиТаймаут will
         установи the max length of время the читай will возьми before returning.
 
         As per Сокет.читай
@@ -188,7 +188,7 @@ class СокетССЛ : Сокет
 
     override т_мера читай(проц[] приёмн)
     {
-/+
+        /+
         таймаут = нет;
         if (tv.микросек | tv.сек)
         {
@@ -235,20 +235,21 @@ class СокетССЛ : Сокет
                         }
                     }
                     else if (BIO_should_io_special(сокетССЛ)) // wasn't пиши, wasn't читай.. something "special" just жди for the сокет в_ become ready...
-                        Нить.сон(.05); 
+                        Нить.сон(.05);
                     else
                         break;
                 }
                 else
-                {                    
+                {
                     rtn = bytesRead;
                     break;
                 }
-            } while(BIO_should_retry(сокетССЛ));
+            }
+            while(BIO_should_retry(сокетССЛ));
             if (блокируется) сокет_.блокируется = блокируется;
             return rtn;
         }
-+/
+        +/
         цел байты = BIO_read(сокетССЛ, приёмн.ptr, приёмн.length);
         if (байты <= 0)
             return Кф;
@@ -280,7 +281,7 @@ class СокетССЛ : Сокет
         Used in conjuction with the above ctor with the создай флаг disabled. It is
         useful for accepting a new сокет преобр_в a СокетССЛ, и then re-using
         the Сервер's existing КонтекстССЛ.
-    
+
         Параметры:
             ctx = КонтекстССЛ class as provопрed by PKI
             режимКлиента = if да, the сокет will be in Client Mode, Сервер otherwise.
@@ -310,7 +311,7 @@ class СокетССЛ : Сокет
             if (rtn)
                 rtn = BIO_push(rtn, socketBio);
             if (!rtn)
-                BIO_free_all(socketBio);            
+                BIO_free_all(socketBio);
         }
 
         if (rtn is пусто)
@@ -323,7 +324,7 @@ class СокетССЛ : Сокет
 /*******************************************************************************
 
     СерверСокетССЛ is a подст-class of СерверСокет. It's purpose is в_ provопрe
-    SSL encryption at the сокет уровень as well as easily tie преобр_в existing 
+    SSL encryption at the сокет уровень as well as easily tie преобр_в existing
     Dinrus applications that may already be using СерверСокет.
 
     СерверСокетССЛ требует the OpenSSL library, и uses a dynamic binding
@@ -363,7 +364,7 @@ class СерверСокетССЛ : СерверСокет
 
     /*******************************************************************************
 
-        Constructs a new СерверСокетССЛ. This constructor is similar в_ 
+        Constructs a new СерверСокетССЛ. This constructor is similar в_
         СерверСокет, except it takes a КонтекстССЛ as provопрed by PKI.
 
         Параметры:
@@ -404,7 +405,7 @@ class СерверСокетССЛ : СерверСокет
 
 version(Test)
 {
-    import tetra.util.Test; 
+    import tetra.util.Test;
     import io.Stdout;
     import io.device.File;
     import io.FilePath;
@@ -444,16 +445,16 @@ version(Test)
                         ЧастныйКлюч частныйКлюч;
                         try
                         {
-                            publicCertificate = new Сертификат(cast(ткст)Файл.получи ("public.pem")); 
+                            publicCertificate = new Сертификат(cast(ткст)Файл.получи ("public.pem"));
                             частныйКлюч = new ЧастныйКлюч(cast(ткст)Файл.получи ("private.pem"));
-                        }                        
+                        }
                         catch (Исключение ex)
                         {
                             частныйКлюч = new ЧастныйКлюч(2048);
                             publicCertificate = new Сертификат();
                             publicCertificate.частныйКлюч(частныйКлюч).серийныйНомер(123).смещениеКДатеДо(t1).смещениеКДатеПосле(t2);
                             publicCertificate.установиСубъект("CA", "Alberta", "Place", "Нет", "First Last", "no unit", "email@example.com").знак(publicCertificate, частныйКлюч);
-                        }                        
+                        }
                         auto кнткстССЛ = new КонтекстССЛ();
                         кнткстССЛ.сертификат(publicCertificate).частныйКлюч(частныйКлюч).проверьКлюч();
                         auto s3 = new СокетССЛ(mySock, кнткстССЛ);
@@ -498,7 +499,7 @@ version(Test)
                 {
                     s1.установиТаймаут(t2);
                     while (bytesRead != s1.Кф)
-                        bytesRead = s1.читай(результат);                
+                        bytesRead = s1.читай(результат);
                     if (s1.былТаймаут)
                         return Test.Status.Success;
                     else
@@ -507,13 +508,13 @@ version(Test)
                 else
                     messages ~= Стдвыв.выкладка()("Приёмd wrong results: (bytesRead: {}), (результат: {})", bytesRead, результат[0..bytesRead]);
             }
-            return Test.Status.Failure;    
+            return Test.Status.Failure;
         }
 
         auto t = new Test("tetra.net.СокетССЛ");
         t["SSL_CTX"] = &sslCTXTest;
         t["Чит/Зап"] = &sslReadWriteTest;
-        t["Чит/Зап Timeout"] = &sslReadWriteTestWithTimeout; 
+        t["Чит/Зап Timeout"] = &sslReadWriteTestWithTimeout;
         t.run();
     }
 }

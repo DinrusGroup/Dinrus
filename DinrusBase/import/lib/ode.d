@@ -1,5 +1,6 @@
 ﻿module lib.ode;
-import stdrus, cidrus: фук;
+import stdrus, cidrus:
+фук;
 
 // odeconfig.h
 alias цел int32;
@@ -36,12 +37,18 @@ else
     return (a > 1) ? (((a - 1)|3)+1) : a;
 }
 
-typedef dReal dVector3[4]; alias dVector3 дВектор3;
-typedef dReal dVector4[4]; alias dVector4 дВектор4;
-typedef dReal dMatrix3[4*3]; alias dMatrix3 дМатрица3;
-typedef dReal dMatrix4[4*4]; alias dMatrix4 дМатрица4;
-typedef dReal dMatrix6[8*6]; alias dMatrix6 дМатрица6;
-typedef dReal dQuaternion[4]; alias dQuaternion дКватернион;
+typedef dReal dVector3[4];
+alias dVector3 дВектор3;
+typedef dReal dVector4[4];
+alias dVector4 дВектор4;
+typedef dReal dMatrix3[4*3];
+alias dMatrix3 дМатрица3;
+typedef dReal dMatrix4[4*4];
+alias dMatrix4 дМатрица4;
+typedef dReal dMatrix6[8*6];
+alias dMatrix6 дМатрица6;
+typedef dReal dQuaternion[4];
+alias dQuaternion дКватернион;
 
 дРеал dRecip(дРеал x)
 {
@@ -919,7 +926,8 @@ private проц грузи(Биб биб)
 }
 
 ЖанБибгр ОДЕ;
-static this() {
+static this()
+{
     version(ДвойнаяТочность)
     {
         char[] winlib = "ode_double.dll";
@@ -931,7 +939,7 @@ static this() {
         char[] linlib = "ode_double.dll";
     }
     ОДЕ.заряжай( winlib,  &грузи );
-	ОДЕ.загружай();
+    ОДЕ.загружай();
 }
 
 extern(C)

@@ -2,6 +2,6 @@
 
 
 interface Исполнитель
- {
-  public проц выполни(цел delegate() команда);
+{
+    public проц выполни(цел delegate() команда);
 }

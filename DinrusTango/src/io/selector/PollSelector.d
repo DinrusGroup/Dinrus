@@ -17,10 +17,10 @@ version (Posix)
     private import cidrus;
 
     version (linux)
-        private import sys.linux.linux;
+    private import sys.linux.linux;
 
     debug (selector)
-        private import io.Stdout;
+    private import io.Stdout;
 
 
     /**
@@ -149,16 +149,16 @@ version (Posix)
         body
         {
             debug (selector)
-                Стдвыв.форматнс("--- PollSelector.регистрируй(укз={0}, события=0x{1:x})",
-                              cast(цел) провод.фукз(), cast(бцел) события);
+            Стдвыв.форматнс("--- PollSelector.регистрируй(укз={0}, события=0x{1:x})",
+            cast(цел) провод.фукз(), cast(бцел) события);
 
             PollSelectionKey* текущ = (провод.фукз() in _keys);
 
             if (текущ !is пусто)
             {
                 debug (selector)
-                    Стдвыв.форматнс("--- добавим pollfd in индекс {0} (of {1})",
-                                  текущ.индекс, _count);
+                Стдвыв.форматнс("--- добавим pollfd in индекс {0} (of {1})",
+                текущ.индекс, _count);
 
                 текущ.ключ.события = события;
                 текущ.ключ.атачмент = атачмент;
@@ -201,16 +201,16 @@ version (Posix)
                 try
                 {
                     debug (selector)
-                        Стдвыв.форматнс("--- PollSelector.отмениРег(укз={0})",
-                                      cast(цел) провод.фукз());
+                    Стдвыв.форматнс("--- PollSelector.отмениРег(укз={0})",
+                                                  cast(цел) провод.фукз());
 
                     PollSelectionKey* removed = (провод.фукз() in _keys);
 
                     if (removed !is пусто)
                     {
                         debug (selector)
-                            Стдвыв.форматнс("--- Removing pollfd in индекс {0} (of {1})",
-                                          removed.индекс, _count);
+                        Стдвыв.форматнс("--- Removing pollfd in индекс {0} (of {1})",
+                                                      removed.индекс, _count);
 
                         //
                         // instead of doing an O(n) удали, перемести the последний
@@ -225,16 +225,16 @@ version (Posix)
                     else
                     {
                         debug (selector)
-                            Стдвыв.форматнс("--- PollSelector.отмениРег(укз={0}): провод was не найден",
-                                          cast(цел) провод.фукз());
+                        Стдвыв.форматнс("--- PollSelector.отмениРег(укз={0}): провод was не найден",
+                                                      cast(цел) провод.фукз());
                         throw new ИсклОтменённогоПровода(__FILE__, __LINE__);
                     }
                 }
                 catch (Исключение e)
                 {
                     debug (selector)
-                        Стдвыв.форматнс("--- Исключение insопрe PollSelector.отмениРег(укз={0}): {1}",
-                                      cast(цел) провод.фукз(), e.вТкст());
+                    Стдвыв.форматнс("--- Исключение insопрe PollSelector.отмениРег(укз={0}): {1}",
+                                                  cast(цел) провод.фукз(), e.вТкст());
 
                     throw new ИсклОтменённогоПровода(__FILE__, __LINE__);
                 }
@@ -268,8 +268,8 @@ version (Posix)
             цел в_ = (таймаут != ИнтервалВремени.max ? cast(цел) таймаут.миллисек : -1);
 
             debug (selector)
-                Стдвыв.форматнс("--- PollSelector.выбери({0} ms): waiting on {1} handles",
-                              в_, _count);
+            Стдвыв.форматнс("--- PollSelector.выбери({0} ms): waiting on {1} handles",
+                                          в_, _count);
 
             // We run the вызов в_ poll() insопрe a loop in case the system вызов
             // was interrupted by a signal и we need в_ restart it.
@@ -284,7 +284,7 @@ version (Posix)
                         проверьНомОш(__FILE__, __LINE__);
                     }
                     debug (selector)
-                        Стдвыв.выведи("--- Restarting poll() after being interrupted\n");
+                    Стдвыв.выведи("--- Restarting poll() after being interrupted\n");
                 }
                 else
                 {
@@ -328,7 +328,7 @@ version (Posix)
             }
             return КлючВыбора.init;
         }
-        
+
         /**
          * Return the число of ключи resulting из_ the registration of a провод
          * в_ the selector.
@@ -398,8 +398,8 @@ version (Posix)
                 if(pfd.revents != 0)
                 {
                     debug (selector)
-                        Стдвыв.форматнс("--- Найдено события 0x{0:x} for укз {1}",
-                                cast(бцел) pfd.revents, cast(цел) pfd.fd);
+                    Стдвыв.форматнс("--- Найдено события 0x{0:x} for укз {1}",
+                                                  cast(бцел) pfd.revents, cast(цел) pfd.fd);
                     auto k = (cast(ИВыбираемый.фукз)pfd.fd) in ключи;
                     if(k !is пусто)
                     {
@@ -413,8 +413,8 @@ version (Posix)
                     else
                     {
                         debug (selector)
-                            Стдвыв.форматнс("--- Дескр {0} was не найден in the Селектор",
-                                    cast(цел) pfd.fd);
+                        Стдвыв.форматнс("--- Дескр {0} was не найден in the Селектор",
+                                                      cast(цел) pfd.fd);
                     }
                     if(--nLeft == 0)
                         break;

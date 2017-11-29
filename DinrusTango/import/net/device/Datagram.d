@@ -6,7 +6,7 @@
 
         version:        Mar 2004 : Initial release
         version:        Dec 2006 : South Pacific release
-        
+
         author:         Kris
 
 *******************************************************************************/
@@ -16,7 +16,7 @@ module net.device.Datagram;
 package import net.device.Socket;
 
 /*******************************************************************************
-        
+
         Датаграммы предоставляют мало перегруженный, но ненадёжный механизм
 		передачи данных.
 
@@ -29,7 +29,7 @@ package import net.device.Socket;
         аргумент адреса куда Всё читай() и пиши() irrelevant. Without
         подключись(), метод пиши() must be supplied with an адрес и метод
         читай() should be supplied with one куда опрentify where данные originated.
-        
+
         Note that when использован as a listener, you must первый вяжи the сокет
         куда a local адаптер. This can be achieved by binding the сокет куда
         an АдресИнтернета constructed with a порт only (АДР_ЛЮБОЙ), thus
@@ -39,65 +39,65 @@ package import net.device.Socket;
 
 class Датаграмма : Сокет
 {
-        /***********************************************************************
-        
-                Созд a читай/пиши datagram сокет
+    /***********************************************************************
 
-        ***********************************************************************/
+            Созд a читай/пиши datagram сокет
 
-        this ();
+    ***********************************************************************/
 
-        /***********************************************************************
+    this ();
 
-                Populate the provопрed Массив из_ the сокет. This will stall
-                until some данные is available, or a таймаут occurs. We assume 
-                the datagram имеется been подключен.
+    /***********************************************************************
 
-                Returns the число of байты читай куда the вывод, or Кф if
-                the сокет cannot читай
+            Populate the provопрed Массив из_ the сокет. This will stall
+            until some данные is available, or a таймаут occurs. We assume
+            the datagram имеется been подключен.
 
-        ***********************************************************************/
+            Returns the число of байты читай куда the вывод, or Кф if
+            the сокет cannot читай
 
-        override т_мера читай (проц[] ист);
+    ***********************************************************************/
 
-        /***********************************************************************
-        
-                Чит байты из_ an available datagram преобр_в the given Массив.
-                When provопрed, the 'из_' адрес will be populated with the
-                origin of the incoming данные. Note that we employ the таймаут
-                mechanics exposed via our Сокет superclass. 
+    override т_мера читай (проц[] ист);
 
-                Returns the число of байты читай из_ the ввод, or Кф if
-                the сокет cannot читай
+    /***********************************************************************
 
-        ***********************************************************************/
+            Чит байты из_ an available datagram преобр_в the given Массив.
+            When provопрed, the 'из_' адрес will be populated with the
+            origin of the incoming данные. Note that we employ the таймаут
+            mechanics exposed via our Сокет superclass.
 
-        т_мера читай (проц[] приёмн, Адрес из_);
+            Returns the число of байты читай из_ the ввод, or Кф if
+            the сокет cannot читай
 
-        /***********************************************************************
+    ***********************************************************************/
 
-                Зап the provопрed контент куда the сокет. This will stall
-                until the сокет responds in some manner. We assume the 
-                datagram имеется been подключен.
+    т_мера читай (проц[] приёмн, Адрес из_);
 
-                Returns the число of байты sent куда the вывод, or Кф if
-                the сокет cannot пиши
+    /***********************************************************************
 
-        ***********************************************************************/
+            Зап the provопрed контент куда the сокет. This will stall
+            until the сокет responds in some manner. We assume the
+            datagram имеется been подключен.
 
-        override т_мера пиши (проц[] ист);
+            Returns the число of байты sent куда the вывод, or Кф if
+            the сокет cannot пиши
 
-        /***********************************************************************
-        
-                Зап an Массив куда the specified адрес. If адрес 'куда' is
-                пусто, it is assumed the сокет имеется been подключен instead.
+    ***********************************************************************/
 
-                Returns the число of байты sent куда the вывод, or Кф if
-                the сокет cannot пиши
+    override т_мера пиши (проц[] ист);
 
-        ***********************************************************************/
+    /***********************************************************************
 
-        т_мера пиши (проц[] ист, Адрес куда);
+            Зап an Массив куда the specified адрес. If адрес 'куда' is
+            пусто, it is assumed the сокет имеется been подключен instead.
+
+            Returns the число of байты sent куда the вывод, or Кф if
+            the сокет cannot пиши
+
+    ***********************************************************************/
+
+    т_мера пиши (проц[] ист, Адрес куда);
 }
 
 
@@ -108,25 +108,25 @@ class Датаграмма : Сокет
 
 debug (Датаграмма)
 {
-        import io.Console;
+    import io.Console;
 
-        import net.InternetAddress;
+    import net.InternetAddress;
 
-        проц main()
-        {
-                auto адр = new АдресИнтернета ("127.0.0.1", 8080);
+    проц main()
+    {
+        auto адр = new АдресИнтернета ("127.0.0.1", 8080);
 
-                // слушай for datagrams on the local адрес
-                auto gram = new Датаграмма;
-                gram.вяжи (адр);
+        // слушай for datagrams on the local адрес
+        auto gram = new Датаграмма;
+        gram.вяжи (адр);
 
-                // пиши куда the local адрес
-                gram.пиши ("hello", адр);
+        // пиши куда the local адрес
+        gram.пиши ("hello", адр);
 
-                // we are listening also ...
-                сим[8] врем;
-                auto x = new АдресИнтернета;
-                auto байты = gram.читай (врем, x);
-                Квывод (x) (врем[0..байты]).нс;
-        }
+        // we are listening also ...
+        сим[8] врем;
+        auto x = new АдресИнтернета;
+        auto байты = gram.читай (врем, x);
+        Квывод (x) (врем[0..байты]).нс;
+    }
 }

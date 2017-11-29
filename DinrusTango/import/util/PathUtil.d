@@ -83,139 +83,140 @@ debug (UnitTest)
         assert (возвр.ptr == буф.ptr);
         assert (возвр == "foo/bar/baz");
 
-version (Windows) {
-        assert (нормализуй ("\\foo\\..\\john") == "/john");
-        assert (нормализуй ("foo\\..\\john") == "john");
-        assert (нормализуй ("foo\\bar\\..") == "foo/");
-        assert (нормализуй ("foo\\bar\\..\\john") == "foo/john");
-        assert (нормализуй ("foo\\bar\\doe\\..\\..\\john") == "foo/john");
-        assert (нормализуй ("foo\\bar\\doe\\..\\..\\john\\..\\bar") == "foo/bar");
-        assert (нормализуй (".\\foo\\bar\\doe") == "foo/bar/doe");
-        assert (нормализуй (".\\foo\\bar\\doe\\..\\..\\john\\..\\bar") == "foo/bar");
-        assert (нормализуй (".\\foo\\bar\\..\\..\\john\\..\\bar") == "bar");
-        assert (нормализуй ("foo\\bar\\.\\doe\\..\\..\\john") == "foo/john");
-        assert (нормализуй ("..\\..\\foo\\bar") == "../../foo/bar");
-        assert (нормализуй ("..\\..\\..\\foo\\bar") == "../../../foo/bar");
-        assert (нормализуй(r"C:") == "C:");
-        assert (нормализуй(r"C") == "C");
-        assert (нормализуй(r"c:\") == "C:/");
-        assert (нормализуй(r"C:\..\.\..\..\") == "C:/");
-        assert (нормализуй(r"c:..\.\boo\") == "C:../boo/");
-        assert (нормализуй(r"C:..\..\boo\foo\..\.\..\..\bar") == "C:../../../bar");
-        assert (нормализуй(r"C:boo\..") == "C:");
-}
-    }
-}
+        version (Windows)
+        {
+            assert (нормализуй ("\\foo\\..\\john") == "/john");
+            assert (нормализуй ("foo\\..\\john") == "john");
+            assert (нормализуй ("foo\\bar\\..") == "foo/");
+            assert (нормализуй ("foo\\bar\\..\\john") == "foo/john");
+            assert (нормализуй ("foo\\bar\\doe\\..\\..\\john") == "foo/john");
+            assert (нормализуй ("foo\\bar\\doe\\..\\..\\john\\..\\bar") == "foo/bar");
+            assert (нормализуй (".\\foo\\bar\\doe") == "foo/bar/doe");
+            assert (нормализуй (".\\foo\\bar\\doe\\..\\..\\john\\..\\bar") == "foo/bar");
+            assert (нормализуй (".\\foo\\bar\\..\\..\\john\\..\\bar") == "bar");
+            assert (нормализуй ("foo\\bar\\.\\doe\\..\\..\\john") == "foo/john");
+            assert (нормализуй ("..\\..\\foo\\bar") == "../../foo/bar");
+            assert (нормализуй ("..\\..\\..\\foo\\bar") == "../../../foo/bar");
+            assert (нормализуй(r"C:") == "C:");
+            assert (нормализуй(r"C") == "C");
+            assert (нормализуй(r"c:\") == "C:/");
+            assert (нормализуй(r"C:\..\.\..\..\") == "C:/");
+            assert (нормализуй(r"c:..\.\boo\") == "C:../boo/");
+            assert (нормализуй(r"C:..\..\boo\foo\..\.\..\..\bar") == "C:../../../bar");
+            assert (нормализуй(r"C:boo\..") == "C:");
+        }
+        }
+        }
 
 
-/******************************************************************************
+            /******************************************************************************
 
-    Matches a образец against a имяф.
+            Matches a образец against a имяф.
 
-    Some characters of образец have special a meaning (they are
-    <i>meta-characters</i>) and <b>can't</b> be escaped. These are:
-    <p><table>
-    <tr><td><b>*</b></td>
-        <td>Matches 0 or ещё instances of any character.</td></tr>
-    <tr><td><b>?</b></td>
-        <td>Matches exactly one instances of any character.</td></tr>
-    <tr><td><b>[</b><i>симвы</i><b>]</b></td>
-        <td>Matches one экземпляр of any character that appears
-        between the brackets.</td></tr>
-    <tr><td><b>[!</b><i>симвы</i><b>]</b></td>
-        <td>Matches one экземпляр of any character that does not appear
-        between the brackets after the exclamation метка.</td></tr>
-    </table><p>
-    Internally indivопрual character comparisons are готово calling
-    charMatch(), so its rules apply here too. Note that путь
-    разделители and dots don't stop a meta-character из_ совпадают
-    further portions of the имяф.
+            Some characters of образец have special a meaning (they are
+            <i>meta-characters</i>) and <b>can't</b> be escaped. These are:
+            <p><table>
+            <tr><td><b>*</b></td>
+            <td>Matches 0 or ещё instances of any character.</td></tr>
+            <tr><td><b>?</b></td>
+            <td>Matches exactly one instances of any character.</td></tr>
+            <tr><td><b>[</b><i>симвы</i><b>]</b></td>
+            <td>Matches one экземпляр of any character that appears
+            between the brackets.</td></tr>
+            <tr><td><b>[!</b><i>симвы</i><b>]</b></td>
+            <td>Matches one экземпляр of any character that does not appear
+            between the brackets after the exclamation метка.</td></tr>
+            </table><p>
+            Internally indivопрual character comparisons are готово calling
+            charMatch(), so its rules apply here too. Note that путь
+            разделители and dots don't stop a meta-character из_ совпадают
+            further portions of the имяф.
 
-    Возвращает: да if образец matches имяф, нет otherwise.
+            Возвращает: да if образец matches имяф, нет otherwise.
 
-    See_Also: charMatch().
+            See_Also: charMatch().
 
-    Throws: Nothing.
+            Throws: Nothing.
 
-    Examples:
-    -----
-    version(Win32)
-    {
-        совпадение("foo.bar", "*") // => да
-        совпадение(r"foo/foo\bar", "f*b*r") // => да
-        совпадение("foo.bar", "f?bar") // => нет
-        совпадение("Goo.bar", "[fg]???bar") // => да
-        совпадение(r"d:\foo\bar", "d*foo?bar") // => да
-    }
-    version(Posix)
-    {
-        совпадение("Go*.bar", "[fg]???bar") // => нет
-        совпадение("/foo*home/bar", "?foo*bar") // => да
-        совпадение("fСПДar", "foo?bar") // => да
-    }
-    -----
-    
-******************************************************************************/
+            Examples:
+            -----
+            version(Win32)
+            {
+            совпадение("foo.bar", "*") // => да
+            совпадение(r"foo/foo\bar", "f*b*r") // => да
+            совпадение("foo.bar", "f?bar") // => нет
+            совпадение("Goo.bar", "[fg]???bar") // => да
+            совпадение(r"d:\foo\bar", "d*foo?bar") // => да
+        }
+            version(Posix)
+            {
+            совпадение("Go*.bar", "[fg]???bar") // => нет
+            совпадение("/foo*home/bar", "?foo*bar") // => да
+            совпадение("fСПДar", "foo?bar") // => да
+        }
+            -----
 
-бул совпадение(ткст имяф, ткст образец);
+            ******************************************************************************/
 
-
-debug (UnitTest)
-{
-    unittest
-    {
-    version (Win32)
-        assert(совпадение("foo", "Foo"));
-    version (Posix)
-        assert(!совпадение("foo", "Foo"));
-    
-    assert(совпадение("foo", "*"));
-    assert(совпадение("foo.bar", "*"));
-    assert(совпадение("foo.bar", "*.*"));
-    assert(совпадение("foo.bar", "foo*"));
-    assert(совпадение("foo.bar", "f*bar"));
-    assert(совпадение("foo.bar", "f*b*r"));
-    assert(совпадение("foo.bar", "f???bar"));
-    assert(совпадение("foo.bar", "[fg]???bar"));
-    assert(совпадение("foo.bar", "[!gh]*bar"));
-
-    assert(!совпадение("foo", "bar"));
-    assert(!совпадение("foo", "*.*"));
-    assert(!совпадение("foo.bar", "f*baz"));
-    assert(!совпадение("foo.bar", "f*b*x"));
-    assert(!совпадение("foo.bar", "[gh]???bar"));
-    assert(!совпадение("foo.bar", "[!fg]*bar"));
-    assert(!совпадение("foo.bar", "[fg]???baz"));
-
-    }
-}
+            бул совпадение(ткст имяф, ткст образец);
 
 
-/******************************************************************************
+            debug (UnitTest)
+            {
+            unittest
+            {
+            version (Win32)
+            assert(совпадение("foo", "Foo"));
+            version (Posix)
+            assert(!совпадение("foo", "Foo"));
 
-     Matches имяф characters.
+            assert(совпадение("foo", "*"));
+            assert(совпадение("foo.bar", "*"));
+            assert(совпадение("foo.bar", "*.*"));
+            assert(совпадение("foo.bar", "foo*"));
+            assert(совпадение("foo.bar", "f*bar"));
+            assert(совпадение("foo.bar", "f*b*r"));
+            assert(совпадение("foo.bar", "f???bar"));
+            assert(совпадение("foo.bar", "[fg]???bar"));
+            assert(совпадение("foo.bar", "[!gh]*bar"));
 
-     Under Windows, the сравнение is готово ignoring case. Under Linux
-     an exact match is performed.
+            assert(!совпадение("foo", "bar"));
+            assert(!совпадение("foo", "*.*"));
+            assert(!совпадение("foo.bar", "f*baz"));
+            assert(!совпадение("foo.bar", "f*b*x"));
+            assert(!совпадение("foo.bar", "[gh]???bar"));
+            assert(!совпадение("foo.bar", "[!fg]*bar"));
+            assert(!совпадение("foo.bar", "[fg]???baz"));
 
-     Возвращает: да if c1 matches c2, нет otherwise.
+        }
+        }
 
-     Throws: Nothing.
 
-     Examples:
-     -----
-     version(Win32)
-     {
-         charMatch('a', 'b') // => нет
-         charMatch('A', 'a') // => да
-     }
-     version(Posix)
-     {
-         charMatch('a', 'b') // => нет
-         charMatch('A', 'a') // => нет
-     }
-     -----
-******************************************************************************/
+            /******************************************************************************
 
-private бул charMatch(сим c1, сим c2);
+            Matches имяф characters.
+
+            Under Windows, the сравнение is готово ignoring case. Under Linux
+            an exact match is performed.
+
+            Возвращает: да if c1 matches c2, нет otherwise.
+
+            Throws: Nothing.
+
+            Examples:
+            -----
+            version(Win32)
+            {
+            charMatch('a', 'b') // => нет
+            charMatch('A', 'a') // => да
+        }
+            version(Posix)
+            {
+            charMatch('a', 'b') // => нет
+            charMatch('A', 'a') // => нет
+        }
+            -----
+            ******************************************************************************/
+
+            private бул charMatch(сим c1, сим c2);
 

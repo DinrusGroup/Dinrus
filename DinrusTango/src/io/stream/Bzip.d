@@ -14,11 +14,14 @@ module io.stream.Bzip;
 
 private import lib.bzlib;
 
-private import exception : ВВИскл;
+private import exception :
+ВВИскл;
 
-private import io.device.Conduit : ФильтрВвода, ФильтрВывода;
+private import io.device.Conduit :
+ФильтрВвода, ФильтрВывода;
 
-private import io.model : ИПотокВвода, ИПотокВывода, ИПровод;
+private import io.model :
+ИПотокВвода, ИПотокВывода, ИПровод;
 
 private
 {
@@ -33,7 +36,7 @@ private
 }
 
 /*******************************************************************************
-  
+
     This вывод фильтр can be used в_ perform compression of данные преобр_в a bzip2
     поток.
 
@@ -81,7 +84,7 @@ class БзипВывод : ФильтрВывода
         размерБлока relates в_ the размер of the window bzip2 uses when
         compressing данные and determines как much память is required в_
         decompress a поток.  It is measured in hundreds of kilobytes.
-        
+
         ccording в_ the bzip2 documentation, there is no dramatic difference
         between the various block sizes, so the default should suffice in most
         cases.
@@ -109,7 +112,7 @@ class БзипВывод : ФильтрВывода
     {
         if( размерБлока < 1 || размерБлока > 9 )
             throw new ИсключениеБзип("размер блока bzip2 должен быть между"
-                    " 1 и 9");
+                                                   " 1 и 9");
 
         auto возвр = BZ2_bzCompressInit(&bzs, размерБлока, 0, DEFAULT_WORKFACTOR);
         if( возвр != BZ_OK )
@@ -125,7 +128,7 @@ class БзипВывод : ФильтрВывода
     }
 
     /***************************************************************************
-        
+
         Resets and re-initialises this экземпляр.
 
         If you are creating compression Потокs insопрe a loop, you may wish в_
@@ -134,7 +137,7 @@ class БзипВывод : ФильтрВывода
 
         The поток must have already been закрыт before calling сбрось.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     проц сбрось(ИПотокВывода поток, цел размерБлока = РазмерБлока.Нормальный)
     {
@@ -251,15 +254,15 @@ class БзипВывод : ФильтрВывода
             auto возвр = BZ2_bzCompress(&bzs, BZ_FINISH);
             switch( возвр )
             {
-                case BZ_FINISH_OK:
-                    break;
+            case BZ_FINISH_OK:
+                break;
 
-                case BZ_STREAM_END:
-                    завершено = да;
-                    break;
+            case BZ_STREAM_END:
+                завершено = да;
+                break;
 
-                default:
-                    throw new ИсключениеБзип(возвр);
+            default:
+                throw new ИсключениеБзип(возвр);
             }
 
             auto have = out_chunk.length - bzs.avail_out;
@@ -309,7 +312,7 @@ class БзипВывод : ФильтрВывода
 }
 
 /*******************************************************************************
-  
+
     This ввод фильтр can be used в_ perform decompression of bzip2 Потокs.
 
 *******************************************************************************/
@@ -372,7 +375,7 @@ class БзипВвод : ФильтрВвода
     }
 
     /***************************************************************************
-        
+
         Resets and re-initialises this экземпляр.
 
         If you are creating compression Потокs insопрe a loop, you may wish в_
@@ -381,7 +384,7 @@ class БзипВвод : ФильтрВвода
 
         The поток must have already been закрыт before calling сбрось.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     проц сбрось(ИПотокВвода поток, бул small=нет)
     {
@@ -399,7 +402,7 @@ class БзипВвод : ФильтрВвода
         Returns the число of байты stored преобр_в приёмн, which may be less than
         requested.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     т_мера читай(проц[] приёмн)
     {
@@ -443,7 +446,7 @@ class БзипВвод : ФильтрВвода
 
         Closes the compression поток.
 
-    ***************************************************************************/ 
+    ***************************************************************************/
 
     override проц закрой()
     {
@@ -481,7 +484,7 @@ class БзипВвод : ФильтрВвода
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown when an ошибка occurs in the underlying bzip2
     library.
 
@@ -507,20 +510,47 @@ class ИсключениеБзип : ВВИскл
 
         switch( код )
         {
-            case BZ_OK:                 имя = "BZ_OK";                 break;
-            case BZ_RUN_OK:             имя = "BZ_RUN_OK";             break;
-            case BZ_FLUSH_OK:           имя = "BZ_FLUSH_OK";           break;
-            case BZ_STREAM_END:         имя = "BZ_STREAM_END";         break;
-            case BZ_SEQUENCE_ERROR:     имя = "BZ_SEQUENCE_ERROR";     break;
-            case BZ_PARAM_ERROR:        имя = "BZ_PARAM_ERROR";        break;
-            case BZ_MEM_ERROR:          имя = "BZ_MEM_ERROR";          break;
-            case BZ_DATA_ERROR:         имя = "BZ_DATA_ERROR";         break;
-            case BZ_DATA_ERROR_MAGIC:   имя = "BZ_DATA_ERROR_MAGIC";   break;
-            case BZ_IO_ERROR:           имя = "BZ_IO_ERROR";           break;
-            case BZ_UNEXPECTED_EOF:     имя = "BZ_UNEXPECTED_EOF";     break;
-            case BZ_OUTBUFF_FULL:       имя = "BZ_OUTBUFF_FULL";       break;
-            case BZ_CONFIG_ERROR:       имя = "BZ_CONFIG_ERROR";       break;
-            default:                    имя = "BZ_UNKNOWN";
+        case BZ_OK:
+            имя = "BZ_OK";
+            break;
+        case BZ_RUN_OK:
+            имя = "BZ_RUN_OK";
+            break;
+        case BZ_FLUSH_OK:
+            имя = "BZ_FLUSH_OK";
+            break;
+        case BZ_STREAM_END:
+            имя = "BZ_STREAM_END";
+            break;
+        case BZ_SEQUENCE_ERROR:
+            имя = "BZ_SEQUENCE_ERROR";
+            break;
+        case BZ_PARAM_ERROR:
+            имя = "BZ_PARAM_ERROR";
+            break;
+        case BZ_MEM_ERROR:
+            имя = "BZ_MEM_ERROR";
+            break;
+        case BZ_DATA_ERROR:
+            имя = "BZ_DATA_ERROR";
+            break;
+        case BZ_DATA_ERROR_MAGIC:
+            имя = "BZ_DATA_ERROR_MAGIC";
+            break;
+        case BZ_IO_ERROR:
+            имя = "BZ_IO_ERROR";
+            break;
+        case BZ_UNEXPECTED_EOF:
+            имя = "BZ_UNEXPECTED_EOF";
+            break;
+        case BZ_OUTBUFF_FULL:
+            имя = "BZ_OUTBUFF_FULL";
+            break;
+        case BZ_CONFIG_ERROR:
+            имя = "BZ_CONFIG_ERROR";
+            break;
+        default:
+            имя = "BZ_UNKNOWN";
         }
 
         return имя;
@@ -528,7 +558,7 @@ class ИсключениеБзип : ВВИскл
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown if you attempt в_ perform a читай, пиши or слей
     operation on a закрыт bzip2 фильтр поток.  This can occur if the ввод
     поток есть завершено, or an вывод поток was flushed.
@@ -546,7 +576,7 @@ class ИсклЗакрытБзип : ВВИскл
 }
 
 /*******************************************************************************
-  
+
     This исключение is thrown if you attempt в_ сбрось a compression поток that
     is still открой.  You must either закрой or подай a поток before it can be
     сбрось.
@@ -572,15 +602,16 @@ class ИсклБзипЕщёНеЗакрыт : ВВИскл
 
 debug(UnitTest):
 
-import io.device.Array : Массив;
+import io.device.Array :
+    Массив;
 
-unittest
+    unittest
 {
     const ткст сообщение =
-        "all dwarfs are by nature dutiful, serious, literate, obedient "
-        "and thoughtful people whose only minor failing is a tendency, "
-        "after one drink, to rush at enemies screaming \"Arrrrrrgh!\" and "
-        "axing their legs off at the knee.";
+    "all dwarfs are by nature dutiful, serious, literate, obedient "
+    "and thoughtful people whose only minor failing is a tendency, "
+    "after one drink, to rush at enemies screaming \"Arrrrrrgh!\" and "
+    "axing their legs off at the knee.";
 
     const ббайт[] message_z = [
         0x42, 0x5a, 0x68, 0x39, 0x31, 0x41, 0x59, 0x26,

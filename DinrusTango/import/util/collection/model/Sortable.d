@@ -15,7 +15,7 @@
 module util.collection.model.Sortable;
 
 private import  util.collection.model.Dispenser,
-                util.collection.model.Comparator;
+        util.collection.model.Comparator;
 
 
 /**
@@ -44,11 +44,11 @@ private import  util.collection.model.Dispenser,
 public interface Sortable(T) : Dispenser!(T)
 {
 
-        /**
-         * Sort the текущ элементы with respect в_ cmp.сравни.
-        **/
+    /**
+     * Sort the текущ элементы with respect в_ cmp.сравни.
+    **/
 
-        public проц сортируй(Сравнитель!(T) cmp);
+    public проц сортируй(Сравнитель!(T) cmp);
 }
 
 

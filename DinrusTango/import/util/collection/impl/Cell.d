@@ -1,8 +1,8 @@
 ﻿/*
 Файл: Cell.d
 
-Originally записано by Doug Lea и released преобр_в the public домен. 
-Thanks for the assistance и support of Sun Microsystems Labs, Agorics 
+Originally записано by Doug Lea и released преобр_в the public домен.
+Thanks for the assistance и support of Sun Microsystems Labs, Agorics
 Inc, Loral, и everyone contributing, testing, и using this код.
 
 History:
@@ -21,7 +21,7 @@ module util.collection.impl.Cell;
  * Cell is the основа of a bunch of implementation classes
  * for списки и the like.
  * The основа version just holds an Объект as its элемент значение
- * 
+ *
         author: Doug Lea
  * @version 0.93
  *
@@ -30,52 +30,52 @@ module util.collection.impl.Cell;
 
 public class Cell (T)
 {
-        // экземпляр variables
-        private T element_;
+    // экземпляр variables
+    private T element_;
 
-        /**
-         * Make a ячейка with элемент значение v
-        **/
+    /**
+     * Make a ячейка with элемент значение v
+    **/
 
-        public this (T v)
-        {
-                element_ = v;
-        }
+    public this (T v)
+    {
+        element_ = v;
+    }
 
-        /**
-         * Make A ячейка with пусто элемент значение
-        **/
+    /**
+     * Make A ячейка with пусто элемент значение
+    **/
 
-        public this ()
-        {
+    public this ()
+    {
 //                element_ = пусто;
-        }
+    }
 
-        /**
-         * return the элемент значение
-        **/
+    /**
+     * return the элемент значение
+    **/
 
-        public final T элемент()
-        {
-                return element_;
-        }
+    public final T элемент()
+    {
+        return element_;
+    }
 
-        /**
-         * установи the элемент значение
-        **/
+    /**
+     * установи the элемент значение
+    **/
 
-        public final проц элемент (T v)
-        {
-                element_ = v;
-        }
+    public final проц элемент (T v)
+    {
+        element_ = v;
+    }
 
-        public final цел elementХэш ()
-        {
-                return typeid(T).дайХэш(&element_);
-        }
+    public final цел elementХэш ()
+    {
+        return typeid(T).дайХэш(&element_);
+    }
 
-        protected Cell дубликат()
-        {
-                return new Cell (element_);
-        }
+    protected Cell дубликат()
+    {
+        return new Cell (element_);
+    }
 }

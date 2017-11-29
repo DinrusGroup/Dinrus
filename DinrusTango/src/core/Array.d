@@ -10,7 +10,8 @@
 module core.Array;
 
 private import core.Traits;
-private import cidrus : alloca, случ;
+private import cidrus :
+alloca, случ;
 
 version( TangoDoc )
 {
@@ -61,16 +62,17 @@ private
                 static if( т_мера.sizeof == 4 )
                 {
                     знач = (((cast(т_мера)случ()) << 16) & 0xffff0000u) |
-                          (((cast(т_мера)случ()))       & 0x0000ffffu);
+                               (((cast(т_мера)случ()))       & 0x0000ffffu);
                 }
                 else // assume т_мера.sizeof == 8
                 {
                     знач = (((cast(т_мера)случ()) << 48) & 0xffff000000000000uL) |
-                          (((cast(т_мера)случ()) << 32) & 0x0000ffff00000000uL) |
-                          (((cast(т_мера)случ()) << 16) & 0x00000000ffff0000uL) |
-                          (((cast(т_мера)случ()))       & 0x000000000000ffffuL);
+                               (((cast(т_мера)случ()) << 32) & 0x0000ffff00000000uL) |
+                               (((cast(т_мера)случ()) << 16) & 0x00000000ffff0000uL) |
+                               (((cast(т_мера)случ()))       & 0x000000000000ffffuL);
                 }
-            } while( знач > max );
+            }
+            while( знач > max );
             return знач % lim;
         }
     }
@@ -149,8 +151,8 @@ else
         т_мера фн( Элем[] буф, Элем[] pat, Пред пред = Пред.init )
         {
             if( буф.length == 0 ||
-                pat.length == 0 ||
-                буф.length < pat.length )
+                    pat.length == 0 ||
+                    буф.length < pat.length )
             {
                 return буф.length;
             }
@@ -169,7 +171,8 @@ else
                             return поз - pat.length + 1;
                         if( ++поз >= буф.length )
                             return буф.length;
-                    } while( пред( буф[поз], pat[mat] ) );
+                    }
+                    while( пред( буф[поз], pat[mat] ) );
                     поз -= mat;
                 }
             }
@@ -198,37 +201,37 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        // найди element
-        assert( найди( "", 'a' ) == 0 );
-        assert( найди( "abc", 'a' ) == 0 );
-        assert( найди( "abc", 'b' ) == 1 );
-        assert( найди( "abc", 'c' ) == 2 );
-        assert( найди( "abc", 'd' ) == 3 );
+        unittest
+        {
+            // найди element
+            assert( найди( "", 'a' ) == 0 );
+            assert( найди( "abc", 'a' ) == 0 );
+            assert( найди( "abc", 'b' ) == 1 );
+            assert( найди( "abc", 'c' ) == 2 );
+            assert( найди( "abc", 'd' ) == 3 );
 
-        // пусто параметры
-        assert( найди( "", "" ) == 0 );
-        assert( найди( "a", "" ) == 1 );
-        assert( найди( "", "a" ) == 0 );
+            // пусто параметры
+            assert( найди( "", "" ) == 0 );
+            assert( найди( "a", "" ) == 1 );
+            assert( найди( "", "a" ) == 0 );
 
-        // exact match
-        assert( найди( "abc", "abc" ) == 0 );
+            // exact match
+            assert( найди( "abc", "abc" ) == 0 );
 
-        // simple substring match
-        assert( найди( "abc", "a" ) == 0 );
-        assert( найди( "abca", "a" ) == 0 );
-        assert( найди( "abc", "b" ) == 1 );
-        assert( найди( "abc", "c" ) == 2 );
-        assert( найди( "abc", "d" ) == 3 );
+            // simple substring match
+            assert( найди( "abc", "a" ) == 0 );
+            assert( найди( "abca", "a" ) == 0 );
+            assert( найди( "abc", "b" ) == 1 );
+            assert( найди( "abc", "c" ) == 2 );
+            assert( найди( "abc", "d" ) == 3 );
 
-        // multi-сим substring match
-        assert( найди( "abc", "ab" ) == 0 );
-        assert( найди( "abcab", "ab" ) == 0 );
-        assert( найди( "abc", "bc" ) == 1 );
-        assert( найди( "abc", "ac" ) == 3 );
-        assert( найди( "abrabracadabra", "abracadabra" ) == 3 );
-      }
+            // multi-сим substring match
+            assert( найди( "abc", "ab" ) == 0 );
+            assert( найди( "abcab", "ab" ) == 0 );
+            assert( найди( "abc", "bc" ) == 1 );
+            assert( найди( "abc", "ac" ) == 3 );
+            assert( найди( "abrabracadabra", "abracadabra" ) == 3 );
+        }
     }
 }
 
@@ -295,7 +298,8 @@ else
             {
                 if( пред( буф[--поз], pat ) )
                     return поз;
-            } while( поз > 0 );
+            }
+            while( поз > 0 );
             return буф.length;
         }
 
@@ -303,8 +307,8 @@ else
         т_мера фн( Элем[] буф, Элем[] pat, Пред пред = Пред.init )
         {
             if( буф.length == 0 ||
-                pat.length == 0 ||
-                буф.length < pat.length )
+                    pat.length == 0 ||
+                    буф.length < pat.length )
             {
                 return буф.length;
             }
@@ -323,10 +327,12 @@ else
                             return поз - pat.length + 1;
                         if( ++поз >= буф.length )
                             return буф.length;
-                    } while( пред( буф[поз], pat[mat] ) );
+                    }
+                    while( пред( буф[поз], pat[mat] ) );
                     поз -= mat;
                 }
-            } while( поз > 0 );
+            }
+            while( поз > 0 );
             return буф.length;
         }
     }
@@ -352,37 +358,37 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        // найдрек element
-        assert( найдрек( "", 'a' ) == 0 );
-        assert( найдрек( "abc", 'a' ) == 0 );
-        assert( найдрек( "abc", 'b' ) == 1 );
-        assert( найдрек( "abc", 'c' ) == 2 );
-        assert( найдрек( "abc", 'd' ) == 3 );
+        unittest
+        {
+            // найдрек element
+            assert( найдрек( "", 'a' ) == 0 );
+            assert( найдрек( "abc", 'a' ) == 0 );
+            assert( найдрек( "abc", 'b' ) == 1 );
+            assert( найдрек( "abc", 'c' ) == 2 );
+            assert( найдрек( "abc", 'd' ) == 3 );
 
-        // пусто параметры
-        assert( найдрек( "", "" ) == 0 );
-        assert( найдрек( "a", "" ) == 1 );
-        assert( найдрек( "", "a" ) == 0 );
+            // пусто параметры
+            assert( найдрек( "", "" ) == 0 );
+            assert( найдрек( "a", "" ) == 1 );
+            assert( найдрек( "", "a" ) == 0 );
 
-        // exact match
-        assert( найдрек( "abc", "abc" ) == 0 );
+            // exact match
+            assert( найдрек( "abc", "abc" ) == 0 );
 
-        // simple substring match
-        assert( найдрек( "abc", "a" ) == 0 );
-        assert( найдрек( "abca", "a" ) == 3 );
-        assert( найдрек( "abc", "b" ) == 1 );
-        assert( найдрек( "abc", "c" ) == 2 );
-        assert( найдрек( "abc", "d" ) == 3 );
+            // simple substring match
+            assert( найдрек( "abc", "a" ) == 0 );
+            assert( найдрек( "abca", "a" ) == 3 );
+            assert( найдрек( "abc", "b" ) == 1 );
+            assert( найдрек( "abc", "c" ) == 2 );
+            assert( найдрек( "abc", "d" ) == 3 );
 
-        // multi-сим substring match
-        assert( найдрек( "abc", "ab" ) == 0 );
-        assert( найдрек( "abcab", "ab" ) == 3 );
-        assert( найдрек( "abc", "bc" ) == 1 );
-        assert( найдрек( "abc", "ac" ) == 3 );
-        assert( найдрек( "abracadabrabra", "abracadabra" ) == 0 );
-      }
+            // multi-сим substring match
+            assert( найдрек( "abc", "ab" ) == 0 );
+            assert( найдрек( "abcab", "ab" ) == 3 );
+            assert( найдрек( "abc", "bc" ) == 1 );
+            assert( найдрек( "abc", "ac" ) == 3 );
+            assert( найдрек( "abracadabrabra", "abracadabra" ) == 0 );
+        }
     }
 }
 
@@ -462,8 +468,8 @@ else
         т_мера фн( Элем[] буф, Элем[] pat, Пред пред = Пред.init )
         {
             if( буф.length == 0 ||
-                pat.length == 0 ||
-                буф.length < pat.length )
+                    pat.length == 0 ||
+                    буф.length < pat.length )
             {
                 return буф.length;
             }
@@ -534,37 +540,37 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        // найди element
-        assert( кнайди( "", 'a' ) == 0 );
-        assert( кнайди( "abc", 'a' ) == 0 );
-        assert( кнайди( "abc", 'b' ) == 1 );
-        assert( кнайди( "abc", 'c' ) == 2 );
-        assert( кнайди( "abc", 'd' ) == 3 );
+        unittest
+        {
+            // найди element
+            assert( кнайди( "", 'a' ) == 0 );
+            assert( кнайди( "abc", 'a' ) == 0 );
+            assert( кнайди( "abc", 'b' ) == 1 );
+            assert( кнайди( "abc", 'c' ) == 2 );
+            assert( кнайди( "abc", 'd' ) == 3 );
 
-        // пусто параметры
-        assert( кнайди( "", "" ) == 0 );
-        assert( кнайди( "a", "" ) == 1 );
-        assert( кнайди( "", "a" ) == 0 );
+            // пусто параметры
+            assert( кнайди( "", "" ) == 0 );
+            assert( кнайди( "a", "" ) == 1 );
+            assert( кнайди( "", "a" ) == 0 );
 
-        // exact match
-        assert( кнайди( "abc", "abc" ) == 0 );
+            // exact match
+            assert( кнайди( "abc", "abc" ) == 0 );
 
-        // simple substring match
-        assert( кнайди( "abc", "a" ) == 0 );
-        assert( кнайди( "abca", "a" ) == 0 );
-        assert( кнайди( "abc", "b" ) == 1 );
-        assert( кнайди( "abc", "c" ) == 2 );
-        assert( кнайди( "abc", "d" ) == 3 );
+            // simple substring match
+            assert( кнайди( "abc", "a" ) == 0 );
+            assert( кнайди( "abca", "a" ) == 0 );
+            assert( кнайди( "abc", "b" ) == 1 );
+            assert( кнайди( "abc", "c" ) == 2 );
+            assert( кнайди( "abc", "d" ) == 3 );
 
-        // multi-сим substring match
-        assert( кнайди( "abc", "ab" ) == 0 );
-        assert( кнайди( "abcab", "ab" ) == 0 );
-        assert( кнайди( "abc", "bc" ) == 1 );
-        assert( кнайди( "abc", "ac" ) == 3 );
-        assert( кнайди( "abrabracadabra", "abracadabra" ) == 3 );
-      }
+            // multi-сим substring match
+            assert( кнайди( "abc", "ab" ) == 0 );
+            assert( кнайди( "abcab", "ab" ) == 0 );
+            assert( кнайди( "abc", "bc" ) == 1 );
+            assert( кнайди( "abc", "ac" ) == 3 );
+            assert( кнайди( "abrabracadabra", "abracadabra" ) == 3 );
+        }
     }
 }
 
@@ -641,7 +647,8 @@ else
             {
                 if( пред( буф[--поз], pat ) )
                     return поз;
-            } while( поз > 0 );
+            }
+            while( поз > 0 );
             return буф.length;
         }
 
@@ -649,8 +656,8 @@ else
         т_мера фн( Элем[] буф, Элем[] pat, Пред пред = Пред.init )
         {
             if( буф.length == 0 ||
-                pat.length == 0 ||
-                буф.length < pat.length )
+                    pat.length == 0 ||
+                    буф.length < pat.length )
             {
                 return буф.length;
             }
@@ -697,7 +704,8 @@ else
                         return i;
                     }
                 }
-            } while( i > 0 );
+            }
+            while( i > 0 );
 
             return буф.length;
         }
@@ -724,37 +732,37 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        // найдрек element
-        assert( кнайдрек( "", 'a' ) == 0 );
-        assert( кнайдрек( "abc", 'a' ) == 0 );
-        assert( кнайдрек( "abc", 'b' ) == 1 );
-        assert( кнайдрек( "abc", 'c' ) == 2 );
-        assert( кнайдрек( "abc", 'd' ) == 3 );
+        unittest
+        {
+            // найдрек element
+            assert( кнайдрек( "", 'a' ) == 0 );
+            assert( кнайдрек( "abc", 'a' ) == 0 );
+            assert( кнайдрек( "abc", 'b' ) == 1 );
+            assert( кнайдрек( "abc", 'c' ) == 2 );
+            assert( кнайдрек( "abc", 'd' ) == 3 );
 
-        // пусто параметры
-        assert( кнайдрек( "", "" ) == 0 );
-        assert( кнайдрек( "a", "" ) == 1 );
-        assert( кнайдрек( "", "a" ) == 0 );
+            // пусто параметры
+            assert( кнайдрек( "", "" ) == 0 );
+            assert( кнайдрек( "a", "" ) == 1 );
+            assert( кнайдрек( "", "a" ) == 0 );
 
-        // exact match
-        assert( кнайдрек( "abc", "abc" ) == 0 );
+            // exact match
+            assert( кнайдрек( "abc", "abc" ) == 0 );
 
-        // simple substring match
-        assert( кнайдрек( "abc", "a" ) == 0 );
-        assert( кнайдрек( "abca", "a" ) == 3 );
-        assert( кнайдрек( "abc", "b" ) == 1 );
-        assert( кнайдрек( "abc", "c" ) == 2 );
-        assert( кнайдрек( "abc", "d" ) == 3 );
+            // simple substring match
+            assert( кнайдрек( "abc", "a" ) == 0 );
+            assert( кнайдрек( "abca", "a" ) == 3 );
+            assert( кнайдрек( "abc", "b" ) == 1 );
+            assert( кнайдрек( "abc", "c" ) == 2 );
+            assert( кнайдрек( "abc", "d" ) == 3 );
 
-        // multi-сим substring match
-        assert( кнайдрек( "abc", "ab" ) == 0 );
-        assert( кнайдрек( "abcab", "ab" ) == 3 );
-        assert( кнайдрек( "abc", "bc" ) == 1 );
-        assert( кнайдрек( "abc", "ac" ) == 3 );
-        assert( кнайдрек( "abracadabrabra", "abracadabra" ) == 0 );
-      }
+            // multi-сим substring match
+            assert( кнайдрек( "abc", "ab" ) == 0 );
+            assert( кнайдрек( "abcab", "ab" ) == 3 );
+            assert( кнайдрек( "abc", "bc" ) == 1 );
+            assert( кнайдрек( "abc", "ac" ) == 3 );
+            assert( кнайдрек( "abracadabrabra", "abracadabra" ) == 0 );
+        }
     }
 }
 
@@ -811,15 +819,33 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'a'; } ) == 5 );
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'b'; } ) == 0 );
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'c'; } ) == 1 );
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'd'; } ) == 5 );
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'g'; } ) == 4 );
-        assert( найдиЕсли( "bcecg", ( сим c ) { return c == 'h'; } ) == 5 );
-      }
+        unittest
+        {
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'a';
+            } ) == 5 );
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'b';
+            } ) == 0 );
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'c';
+            } ) == 1 );
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'd';
+            } ) == 5 );
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'g';
+            } ) == 4 );
+            assert( найдиЕсли( "bcecg", ( сим c )
+            {
+                return c == 'h';
+            } ) == 5 );
+        }
     }
 }
 
@@ -864,7 +890,8 @@ else
             {
                 if( пред( буф[--поз] ) )
                     return поз;
-            } while( поз > 0 );
+            }
+            while( поз > 0 );
             return буф.length;
         }
     }
@@ -881,15 +908,33 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'a'; } ) == 5 );
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'b'; } ) == 0 );
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'c'; } ) == 3 );
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'd'; } ) == 5 );
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'g'; } ) == 4 );
-        assert( найдрекЕсли( "bcecg", ( сим c ) { return c == 'h'; } ) == 5 );
-      }
+        unittest
+        {
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'a';
+            } ) == 5 );
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'b';
+            } ) == 0 );
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'c';
+            } ) == 3 );
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'd';
+            } ) == 5 );
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'g';
+            } ) == 4 );
+            assert( найдрекЕсли( "bcecg", ( сим c )
+            {
+                return c == 'h';
+            } ) == 5 );
+        }
     }
 }
 
@@ -929,7 +974,7 @@ else
         т_мера фн( Элем[] буф, Пред пред = Пред.init )
         {
             if( буф.length < 2 )
-                return буф.length;
+                        return буф.length;
 
             Элем sav = буф[0];
 
@@ -964,13 +1009,13 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( findAdj( "aabcdef" ) == 0 );
-        assert( findAdj( "abcddef" ) == 3 );
-        assert( findAdj( "abcdeff" ) == 5 );
-        assert( findAdj( "abcdefg" ) == 7 );
-      }
+        unittest
+        {
+            assert( findAdj( "aabcdef" ) == 0 );
+            assert( findAdj( "abcddef" ) == 3 );
+            assert( findAdj( "abcdeff" ) == 5 );
+            assert( findAdj( "abcdefg" ) == 7 );
+        }
     }
 }
 
@@ -1039,37 +1084,37 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        // найди element
-        assert( !содержит( "", 'a' ) );
-        assert(  содержит( "abc", 'a' ) );
-        assert(  содержит( "abc", 'b' ) );
-        assert(  содержит( "abc", 'c' ) );
-        assert( !содержит( "abc", 'd' ) );
+        unittest
+        {
+            // найди element
+            assert( !содержит( "", 'a' ) );
+            assert(  содержит( "abc", 'a' ) );
+            assert(  содержит( "abc", 'b' ) );
+            assert(  содержит( "abc", 'c' ) );
+            assert( !содержит( "abc", 'd' ) );
 
-        // пусто параметры
-        assert( !содержит( "", "" ) );
-        assert( !содержит( "a", "" ) );
-        assert( !содержит( "", "a" ) );
+            // пусто параметры
+            assert( !содержит( "", "" ) );
+            assert( !содержит( "a", "" ) );
+            assert( !содержит( "", "a" ) );
 
-        // exact match
-        assert(  содержит( "abc", "abc" ) );
+            // exact match
+            assert(  содержит( "abc", "abc" ) );
 
-        // simple substring match
-        assert(  содержит( "abc", "a" ) );
-        assert(  содержит( "abca", "a" ) );
-        assert(  содержит( "abc", "b" ) );
-        assert(  содержит( "abc", "c" ) );
-        assert( !содержит( "abc", "d" ) );
+            // simple substring match
+            assert(  содержит( "abc", "a" ) );
+            assert(  содержит( "abca", "a" ) );
+            assert(  содержит( "abc", "b" ) );
+            assert(  содержит( "abc", "c" ) );
+            assert( !содержит( "abc", "d" ) );
 
-        // multi-сим substring match
-        assert(  содержит( "abc", "ab" ) );
-        assert(  содержит( "abcab", "ab" ) );
-        assert(  содержит( "abc", "bc" ) );
-        assert( !содержит( "abc", "ac" ) );
-        assert(  содержит( "abrabracadabra", "abracadabra" ) );
-      }
+            // multi-сим substring match
+            assert(  содержит( "abc", "ab" ) );
+            assert(  содержит( "abcab", "ab" ) );
+            assert(  содержит( "abc", "bc" ) );
+            assert( !содержит( "abc", "ac" ) );
+            assert(  содержит( "abrabracadabra", "abracadabra" ) );
+        }
     }
 }
 
@@ -1112,7 +1157,7 @@ else
         т_мера фн( Элем[] bufA, Элем[] bufB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
 
             while( posA < bufA.length && posB < bufB.length )
             {
@@ -1144,23 +1189,23 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( не_совпадают( "a", "abcdefg" ) == 1 );
-        assert( не_совпадают( "abcdefg", "a" ) == 1 );
+        unittest
+        {
+            assert( не_совпадают( "a", "abcdefg" ) == 1 );
+            assert( не_совпадают( "abcdefg", "a" ) == 1 );
 
-        assert( не_совпадают( "x", "abcdefg" ) == 0 );
-        assert( не_совпадают( "abcdefg", "x" ) == 0 );
+            assert( не_совпадают( "x", "abcdefg" ) == 0 );
+            assert( не_совпадают( "abcdefg", "x" ) == 0 );
 
-        assert( не_совпадают( "xbcdefg", "abcdefg" ) == 0 );
-        assert( не_совпадают( "abcdefg", "xbcdefg" ) == 0 );
+            assert( не_совпадают( "xbcdefg", "abcdefg" ) == 0 );
+            assert( не_совпадают( "abcdefg", "xbcdefg" ) == 0 );
 
-        assert( не_совпадают( "abcxefg", "abcdefg" ) == 3 );
-        assert( не_совпадают( "abcdefg", "abcxefg" ) == 3 );
+            assert( не_совпадают( "abcxefg", "abcdefg" ) == 3 );
+            assert( не_совпадают( "abcdefg", "abcxefg" ) == 3 );
 
-        assert( не_совпадают( "abcdefx", "abcdefg" ) == 6 );
-        assert( не_совпадают( "abcdefg", "abcdefx" ) == 6 );
-      }
+            assert( не_совпадают( "abcdefx", "abcdefg" ) == 6 );
+            assert( не_совпадают( "abcdefg", "abcdefx" ) == 6 );
+        }
     }
 }
 
@@ -1231,14 +1276,14 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( счёт( "gbbbi", 'a' ) == 0 );
-        assert( счёт( "gbbbi", 'g' ) == 1 );
-        assert( счёт( "gbbbi", 'b' ) == 3 );
-        assert( счёт( "gbbbi", 'i' ) == 1 );
-        assert( счёт( "gbbbi", 'd' ) == 0 );
-      }
+        unittest
+        {
+            assert( счёт( "gbbbi", 'a' ) == 0 );
+            assert( счёт( "gbbbi", 'g' ) == 1 );
+            assert( счёт( "gbbbi", 'b' ) == 3 );
+            assert( счёт( "gbbbi", 'i' ) == 1 );
+            assert( счёт( "gbbbi", 'd' ) == 0 );
+        }
     }
 }
 
@@ -1298,14 +1343,29 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( countIf( "gbbbi", ( сим c ) { return c == 'a'; } ) == 0 );
-        assert( countIf( "gbbbi", ( сим c ) { return c == 'g'; } ) == 1 );
-        assert( countIf( "gbbbi", ( сим c ) { return c == 'b'; } ) == 3 );
-        assert( countIf( "gbbbi", ( сим c ) { return c == 'i'; } ) == 1 );
-        assert( countIf( "gbbbi", ( сим c ) { return c == 'd'; } ) == 0 );
-      }
+        unittest
+        {
+            assert( countIf( "gbbbi", ( сим c )
+            {
+                return c == 'a';
+            } ) == 0 );
+            assert( countIf( "gbbbi", ( сим c )
+            {
+                return c == 'g';
+            } ) == 1 );
+            assert( countIf( "gbbbi", ( сим c )
+            {
+                return c == 'b';
+            } ) == 3 );
+            assert( countIf( "gbbbi", ( сим c )
+            {
+                return c == 'i';
+            } ) == 1 );
+            assert( countIf( "gbbbi", ( сим c )
+            {
+                return c == 'd';
+            } ) == 0 );
+        }
     }
 }
 
@@ -1380,14 +1440,14 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( замени( "gbbbi".dup, 'a', 'b' ) == 0 );
-        assert( замени( "gbbbi".dup, 'g', 'h' ) == 1 );
-        assert( замени( "gbbbi".dup, 'b', 'c' ) == 3 );
-        assert( замени( "gbbbi".dup, 'i', 'j' ) == 1 );
-        assert( замени( "gbbbi".dup, 'd', 'e' ) == 0 );
-      }
+        unittest
+        {
+            assert( замени( "gbbbi".dup, 'a', 'b' ) == 0 );
+            assert( замени( "gbbbi".dup, 'g', 'h' ) == 1 );
+            assert( замени( "gbbbi".dup, 'b', 'c' ) == 3 );
+            assert( замени( "gbbbi".dup, 'i', 'j' ) == 1 );
+            assert( замени( "gbbbi".dup, 'd', 'e' ) == 0 );
+        }
     }
 }
 
@@ -1451,14 +1511,29 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( замениЕсли( "gbbbi".dup, 'b', ( сим c ) { return c == 'a'; } ) == 0 );
-        assert( замениЕсли( "gbbbi".dup, 'h', ( сим c ) { return c == 'g'; } ) == 1 );
-        assert( замениЕсли( "gbbbi".dup, 'c', ( сим c ) { return c == 'b'; } ) == 3 );
-        assert( замениЕсли( "gbbbi".dup, 'j', ( сим c ) { return c == 'i'; } ) == 1 );
-        assert( замениЕсли( "gbbbi".dup, 'e', ( сим c ) { return c == 'd'; } ) == 0 );
-      }
+        unittest
+        {
+            assert( замениЕсли( "gbbbi".dup, 'b', ( сим c )
+            {
+                return c == 'a';
+            } ) == 0 );
+            assert( замениЕсли( "gbbbi".dup, 'h', ( сим c )
+            {
+                return c == 'g';
+            } ) == 1 );
+            assert( замениЕсли( "gbbbi".dup, 'c', ( сим c )
+            {
+                return c == 'b';
+            } ) == 3 );
+            assert( замениЕсли( "gbbbi".dup, 'j', ( сим c )
+            {
+                return c == 'i';
+            } ) == 1 );
+            assert( замениЕсли( "gbbbi".dup, 'e', ( сим c )
+            {
+                return c == 'd';
+            } ) == 0 );
+        }
     }
 }
 
@@ -1563,23 +1638,23 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф, сим pat, т_мера num )
+        unittest
         {
-            assert( удали( буф, pat ) == num );
-            foreach( поз, тек; буф )
+            проц тест( ткст буф, сим pat, т_мера num )
             {
-                assert( поз < num ? тек != pat : тек == pat );
+                assert( удали( буф, pat ) == num );
+                foreach( поз, тек; буф )
+                {
+                    assert( поз < num ? тек != pat : тек == pat );
+                }
             }
-        }
 
-        тест( "abcdefghij".dup, 'x', 10 );
-        тест( "xabcdefghi".dup, 'x',  9 );
-        тест( "abcdefghix".dup, 'x',  9 );
-        тест( "abxxcdefgh".dup, 'x',  8 );
-        тест( "xaxbcdxxex".dup, 'x',  5 );
-      }
+            тест( "abcdefghij".dup, 'x', 10 );
+            тест( "xabcdefghi".dup, 'x',  9 );
+            тест( "abcdefghix".dup, 'x',  9 );
+            тест( "abxxcdefgh".dup, 'x',  8 );
+            тест( "xaxbcdxxex".dup, 'x',  5 );
+        }
     }
 }
 
@@ -1654,23 +1729,38 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф, бул delegate( сим ) дг, т_мера num )
+        unittest
         {
-            assert( удалиЕсли( буф, дг ) == num );
-            foreach( поз, тек; буф )
+            проц тест( ткст буф, бул delegate( сим ) дг, т_мера num )
             {
-                assert( поз < num ? !дг( тек ) : дг( тек ) );
+                assert( удалиЕсли( буф, дг ) == num );
+                foreach( поз, тек; буф )
+                {
+                    assert( поз < num ? !дг( тек ) : дг( тек ) );
+                }
             }
-        }
 
-        тест( "abcdefghij".dup, ( сим c ) { return c == 'x'; }, 10 );
-        тест( "xabcdefghi".dup, ( сим c ) { return c == 'x'; },  9 );
-        тест( "abcdefghix".dup, ( сим c ) { return c == 'x'; },  9 );
-        тест( "abxxcdefgh".dup, ( сим c ) { return c == 'x'; },  8 );
-        тест( "xaxbcdxxex".dup, ( сим c ) { return c == 'x'; },  5 );
-      }
+            тест( "abcdefghij".dup, ( сим c )
+            {
+                return c == 'x';
+            }, 10 );
+            тест( "xabcdefghi".dup, ( сим c )
+            {
+                return c == 'x';
+            },  9 );
+            тест( "abcdefghix".dup, ( сим c )
+            {
+                return c == 'x';
+            },  9 );
+            тест( "abxxcdefgh".dup, ( сим c )
+            {
+                return c == 'x';
+            },  8 );
+            тест( "xaxbcdxxex".dup, ( сим c )
+            {
+                return c == 'x';
+            },  5 );
+        }
     }
 }
 
@@ -1723,7 +1813,7 @@ else
             }
 
             if( буф.length < 2 )
-                return буф.length;
+                        return буф.length;
 
             т_мера cnt = 0;
             Элем   pat = буф[0];
@@ -1763,23 +1853,23 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф, ткст pat )
+        unittest
         {
-            assert( distinct( буф ) == pat.length );
-            foreach( поз, тек; pat )
+            проц тест( ткст буф, ткст pat )
             {
-                assert( буф[поз] == тек );
+                assert( distinct( буф ) == pat.length );
+                foreach( поз, тек; pat )
+                {
+                    assert( буф[поз] == тек );
+                }
             }
-        }
 
-        тест( "abcdefghij".dup, "abcdefghij" );
-        тест( "aabcdefghi".dup, "abcdefghi" );
-        тест( "bcdefghijj".dup, "bcdefghij" );
-        тест( "abccdefghi".dup, "abcdefghi" );
-        тест( "abccdddefg".dup, "abcdefg" );
-      }
+            тест( "abcdefghij".dup, "abcdefghij" );
+            тест( "aabcdefghi".dup, "abcdefghi" );
+            тест( "bcdefghijj".dup, "bcdefghij" );
+            тест( "abccdefghi".dup, "abcdefghi" );
+            тест( "abccdddefg".dup, "abcdefg" );
+        }
     }
 }
 
@@ -1842,15 +1932,15 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        ткст буф = "abcdefghijklmnopqrstuvwxyz";
-        ткст врем = буф.dup;
+        unittest
+        {
+            ткст буф = "abcdefghijklmnopqrstuvwxyz";
+            ткст врем = буф.dup;
 
-        assert( врем == буф );
-        shuffle( врем );
-        assert( врем != буф );
-      }
+            assert( врем == буф );
+            shuffle( врем );
+            assert( врем != буф );
+        }
     }
 }
 
@@ -1901,17 +1991,17 @@ else
             }
 
             if( буф.length < 2 )
-                return 0;
+                        return 0;
 
             т_мера  l = 0,
-                    r = буф.length,
-                    i = l,
-                    j = r - 1;
+            r = буф.length,
+            i = l,
+            j = r - 1;
 
             while( да )
             {
                 while( i < r && пред( буф[i] ) )
-                    ++i;
+                            ++i;
                 while( j > l && !пред( буф[j] ) )
                     --j;
                 if( i >= j )
@@ -1934,25 +2024,46 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф, бул delegate( сим ) дг, т_мера num )
+        unittest
         {
-            assert( partition( буф, дг ) == num );
-            for( т_мера поз = 0; поз < буф.length; ++поз )
+            проц тест( ткст буф, бул delegate( сим ) дг, т_мера num )
             {
-                assert( поз < num ? дг( буф[поз] ) : !дг( буф[поз] ) );
+                assert( partition( буф, дг ) == num );
+                for( т_мера поз = 0; поз < буф.length; ++поз )
+                {
+                    assert( поз < num ? дг( буф[поз] ) : !дг( буф[поз] ) );
+                }
             }
-        }
 
-        тест( "abcdefg".dup, ( сим c ) { return c < 'a'; }, 0 );
-        тест( "gfedcba".dup, ( сим c ) { return c < 'a'; }, 0 );
-        тест( "abcdefg".dup, ( сим c ) { return c < 'h'; }, 7 );
-        тест( "gfedcba".dup, ( сим c ) { return c < 'h'; }, 7 );
-        тест( "abcdefg".dup, ( сим c ) { return c < 'd'; }, 3 );
-        тест( "gfedcba".dup, ( сим c ) { return c < 'd'; }, 3 );
-        тест( "bbdaabc".dup, ( сим c ) { return c < 'c'; }, 5 );
-      }
+            тест( "abcdefg".dup, ( сим c )
+            {
+                return c < 'a';
+            }, 0 );
+            тест( "gfedcba".dup, ( сим c )
+            {
+                return c < 'a';
+            }, 0 );
+            тест( "abcdefg".dup, ( сим c )
+            {
+                return c < 'h';
+            }, 7 );
+            тест( "gfedcba".dup, ( сим c )
+            {
+                return c < 'h';
+            }, 7 );
+            тест( "abcdefg".dup, ( сим c )
+            {
+                return c < 'd';
+            }, 3 );
+            тест( "gfedcba".dup, ( сим c )
+            {
+                return c < 'd';
+            }, 3 );
+            тест( "bbdaabc".dup, ( сим c )
+            {
+                return c < 'c';
+            }, 5 );
+        }
     }
 }
 
@@ -2012,22 +2123,22 @@ else
             }
 
             if( буф.length < 2 )
-                return буф.length;
+                        return буф.length;
 
             т_мера  l = 0,
-                    r = буф.length - 1,
-                    k = num;
+            r = буф.length - 1,
+            k = num;
 
             while( r > l )
             {
                 т_мера  i = l,
-                        j = r - 1;
+                j = r - 1;
                 Элем    v = буф[r];
 
                 while( да )
                 {
                     while( i < r && пред( буф[i], v ) )
-                        ++i;
+                                ++i;
                     while( j > l && пред( v, буф[j] ) )
                         --j;
                     if( i >= j )
@@ -2038,7 +2149,7 @@ else
                 if( i >= k )
                     r = i - 1;
                 if( i <= k )
-                    l = i + 1;
+                            l = i + 1;
             }
             return num - 1;
         }
@@ -2065,18 +2176,18 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        ткст буф = "efedcaabca".dup;
-        т_мера num = буф.length / 2;
-        т_мера поз = выбери( буф, num );
+        unittest
+        {
+            ткст буф = "efedcaabca".dup;
+            т_мера num = буф.length / 2;
+            т_мера поз = выбери( буф, num );
 
-        assert( поз == num - 1 );
-        foreach( тек; буф[0 .. поз] )
+            assert( поз == num - 1 );
+            foreach( тек; буф[0 .. поз] )
             assert( тек <= буф[поз] );
-        foreach( тек; буф[поз .. $] )
+            foreach( тек; буф[поз .. $] )
             assert( тек >= буф[поз] );
-      }
+        }
     }
 }
 
@@ -2186,12 +2297,12 @@ else
             проц быстросорт( т_мера l, т_мера r, т_мера d )
             {
                 if( r <= l )
-                    return;
+                            return;
 
                 // HEURISTIC: Use insertion сортируй for sufficiently small массивы.
                 enum { MIN_LENGTH = 80 }
                 if( r - l < MIN_LENGTH )
-                    return insertionSort( l, r );
+                            return insertionSort( l, r );
 
                 // HEURISTIC: If the recursion depth is too great, assume this
                 //            is a worst-case Массив and краш в_ куча сортируй.
@@ -2227,9 +2338,9 @@ else
 
                 Элем    v = буф[r];
                 т_мера  i = l,
-                        j = r,
-                        p = l,
-                        q = r;
+                j = r,
+                p = l,
+                q = r;
 
                 while( да )
                 {
@@ -2251,7 +2362,7 @@ else
                 {
                     j = i - 1;
                     for( т_мера k = l; k < p; k++, j-- )
-                        exch( k, j );
+                                exch( k, j );
                     быстросорт( l, j, d );
                 }
                 if( ++i < q )
@@ -2270,7 +2381,8 @@ else
                 {
                     ++d;
                     x /= 2;
-                } while( x > 1 );
+                }
+                while( x > 1 );
                 return d * 2; // same as "пол( лог( x ) / лог( 2 ) ) * 2"
             }
 
@@ -2302,25 +2414,25 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф )
+        unittest
         {
-            сортируй( буф );
-            сим sav = буф[0];
-            foreach( тек; буф )
+            проц тест( ткст буф )
             {
-                assert( тек >= sav );
-                sav = тек;
+                сортируй( буф );
+                сим sav = буф[0];
+                foreach( тек; буф )
+                {
+                    assert( тек >= sav );
+                    sav = тек;
+                }
             }
-        }
 
-        тест( "mkcvalsопрivjoaisjdvmzlksvdjioawmdsvmsdfefewv".dup );
-        тест( "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf".dup );
-        тест( "the быстро brown fox jumped over the lazy dog".dup );
-        тест( "abcdefghijklmnopqrstuvwxyz".dup );
-        тест( "zyxwvutsrqponmlkjihgfedcba".dup );
-      }
+            тест( "mkcvalsопрivjoaisjdvmzlksvdjioawmdsvmsdfefewv".dup );
+            тест( "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf".dup );
+            тест( "the быстро brown fox jumped over the lazy dog".dup );
+            тест( "abcdefghijklmnopqrstuvwxyz".dup );
+            тест( "zyxwvutsrqponmlkjihgfedcba".dup );
+        }
     }
 }
 
@@ -2362,8 +2474,8 @@ else
         т_мера фн( Элем[] буф, Элем pat, Пред пред = Пред.init )
         {
             т_мера  beg   = 0,
-                    конец   = буф.length,
-                    mопр   = конец / 2;
+            конец   = буф.length,
+            mопр   = конец / 2;
 
             while( beg < конец )
             {
@@ -2398,13 +2510,13 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( lbound( "bcefg", 'a' ) == 0 );
-        assert( lbound( "bcefg", 'h' ) == 5 );
-        assert( lbound( "bcefg", 'd' ) == 2 );
-        assert( lbound( "bcefg", 'e' ) == 2 );
-      }
+        unittest
+        {
+            assert( lbound( "bcefg", 'a' ) == 0 );
+            assert( lbound( "bcefg", 'h' ) == 5 );
+            assert( lbound( "bcefg", 'd' ) == 2 );
+            assert( lbound( "bcefg", 'e' ) == 2 );
+        }
     }
 }
 
@@ -2446,8 +2558,8 @@ else
         т_мера фн( Элем[] буф, Элем pat, Пред пред = Пред.init )
         {
             т_мера  beg   = 0,
-                    конец   = буф.length,
-                    mопр   = конец / 2;
+            конец   = буф.length,
+            mопр   = конец / 2;
 
             while( beg < конец )
             {
@@ -2482,13 +2594,13 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( ubound( "bcefg", 'a' ) == 0 );
-        assert( ubound( "bcefg", 'h' ) == 5 );
-        assert( ubound( "bcefg", 'd' ) == 2 );
-        assert( ubound( "bcefg", 'e' ) == 3 );
-      }
+        unittest
+        {
+            assert( ubound( "bcefg", 'a' ) == 0 );
+            assert( ubound( "bcefg", 'h' ) == 5 );
+            assert( ubound( "bcefg", 'd' ) == 2 );
+            assert( ubound( "bcefg", 'e' ) == 3 );
+        }
     }
 }
 
@@ -2552,17 +2664,17 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( !бпоиск( "bcefg", 'a' ) );
-        assert(  бпоиск( "bcefg", 'b' ) );
-        assert(  бпоиск( "bcefg", 'c' ) );
-        assert( !бпоиск( "bcefg", 'd' ) );
-        assert(  бпоиск( "bcefg", 'e' ) );
-        assert(  бпоиск( "bcefg", 'f' ) );
-        assert(  бпоиск( "bcefg", 'g' ) );
-        assert( !бпоиск( "bcefg", 'h' ) );
-      }
+        unittest
+        {
+            assert( !бпоиск( "bcefg", 'a' ) );
+            assert(  бпоиск( "bcefg", 'b' ) );
+            assert(  бпоиск( "bcefg", 'c' ) );
+            assert( !бпоиск( "bcefg", 'd' ) );
+            assert(  бпоиск( "bcefg", 'e' ) );
+            assert(  бпоиск( "bcefg", 'f' ) );
+            assert(  бпоиск( "bcefg", 'g' ) );
+            assert( !бпоиск( "bcefg", 'h' ) );
+        }
     }
 }
 
@@ -2604,7 +2716,7 @@ else
         бул фн( Элем[] setA, Элем[] setB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
 
             while( posA < setA.length && posB < setB.length )
             {
@@ -2640,18 +2752,18 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( включает( "abcdefg", "a" ) );
-        assert( включает( "abcdefg", "g" ) );
-        assert( включает( "abcdefg", "d" ) );
-        assert( включает( "abcdefg", "abcdefg" ) );
-        assert( включает( "aaaabbbcdddefgg", "abbbcdefg" ) );
+        unittest
+        {
+            assert( включает( "abcdefg", "a" ) );
+            assert( включает( "abcdefg", "g" ) );
+            assert( включает( "abcdefg", "d" ) );
+            assert( включает( "abcdefg", "abcdefg" ) );
+            assert( включает( "aaaabbbcdddefgg", "abbbcdefg" ) );
 
-        assert( !включает( "abcdefg", "aaabcdefg" ) );
-        assert( !включает( "abcdefg", "abcdefggg" ) );
-        assert( !включает( "abbbcdefg", "abbbbcdefg" ) );
-      }
+            assert( !включает( "abcdefg", "aaabcdefg" ) );
+            assert( !включает( "abcdefg", "abcdefggg" ) );
+            assert( !включает( "abbbcdefg", "abbbbcdefg" ) );
+        }
     }
 }
 
@@ -2693,7 +2805,7 @@ else
         Элем[] фн( Элем[] setA, Элем[] setB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
             Элем[]  setU;
 
             while( posA < setA.length && posB < setB.length )
@@ -2732,12 +2844,12 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( союзИз( "", "" ) == "" );
-        assert( союзИз( "abc", "def" ) == "abcdef" );
-        assert( союзИз( "abbbcd", "aadeefg" ) == "aabbbcdeefg" );
-      }
+        unittest
+        {
+            assert( союзИз( "", "" ) == "" );
+            assert( союзИз( "abc", "def" ) == "abcdef" );
+            assert( союзИз( "abbbcd", "aadeefg" ) == "aabbbcdeefg" );
+        }
     }
 }
 
@@ -2779,7 +2891,7 @@ else
         Элем[] фн( Элем[] setA, Элем[] setB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
             Элем[]  setI;
 
             while( posA < setA.length && posB < setB.length )
@@ -2816,12 +2928,12 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( пересечениеИз( "", "" ) == "" );
-        assert( пересечениеИз( "abc", "def" ) == "" );
-        assert( пересечениеИз( "abbbcd", "aabdddeefg" ) == "abd" );
-      }
+        unittest
+        {
+            assert( пересечениеИз( "", "" ) == "" );
+            assert( пересечениеИз( "abc", "def" ) == "" );
+            assert( пересечениеИз( "abbbcd", "aabdddeefg" ) == "abd" );
+        }
     }
 }
 
@@ -2861,7 +2973,7 @@ else
         Элем[] фн( Элем[] setA, Элем[] setB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
             Элем[]  setM;
 
             while( posA < setA.length && posB < setB.length )
@@ -2899,16 +3011,16 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( отсутствуютВ2( "", "" ) == "" );
-        assert( отсутствуютВ2( "", "abc" ) == "" );
-        assert( отсутствуютВ2( "abc", "" ) == "abc" );
-        assert( отсутствуютВ2( "abc", "abc" ) == "" );
-        assert( отсутствуютВ2( "abc", "def" ) == "abc" );
-        assert( отсутствуютВ2( "abbbcd", "abd" ) == "bbc" );
-        assert( отсутствуютВ2( "abcdef", "bc" ) == "adef" );
-      }
+        unittest
+        {
+            assert( отсутствуютВ2( "", "" ) == "" );
+            assert( отсутствуютВ2( "", "abc" ) == "" );
+            assert( отсутствуютВ2( "abc", "" ) == "abc" );
+            assert( отсутствуютВ2( "abc", "abc" ) == "" );
+            assert( отсутствуютВ2( "abc", "def" ) == "abc" );
+            assert( отсутствуютВ2( "abbbcd", "abd" ) == "bbc" );
+            assert( отсутствуютВ2( "abcdef", "bc" ) == "adef" );
+        }
     }
 }
 
@@ -2920,24 +3032,24 @@ else
 
 version( TangoDoc )
 {
-   /**
-     * Returns a new Массив containing все elements in setA which are not
-     * present in setB and the elements in setB which are not present in
-     * setA.  Всё setA and setB are required в_ be sorted.  Comparisons
-     * will be performed using the supplied predicate or '<' if Неук is
-     * supplied.
-     *
-     * Параметры:
-     *  setA = The first sorted Массив в_ evaluate.
-     *  setB = The сукунда sorted Массив в_ evaluate.
-     *  пред = The evaluation predicate, which should return да if e1 is
-     *         less than e2 and нет if not.  This predicate may be any
-     *         callable тип.
-     *
-     * Возвращает:
-     *  A new Массив containing the elements in setA that are not in setB
-     *  and the elements in setB that are not in setA.
-     */
+    /**
+      * Returns a new Массив containing все elements in setA which are not
+      * present in setB and the elements in setB which are not present in
+      * setA.  Всё setA and setB are required в_ be sorted.  Comparisons
+      * will be performed using the supplied predicate or '<' if Неук is
+      * supplied.
+      *
+      * Параметры:
+      *  setA = The first sorted Массив в_ evaluate.
+      *  setB = The сукунда sorted Массив в_ evaluate.
+      *  пред = The evaluation predicate, which should return да if e1 is
+      *         less than e2 and нет if not.  This predicate may be any
+      *         callable тип.
+      *
+      * Возвращает:
+      *  A new Массив containing the elements in setA that are not in setB
+      *  and the elements in setB that are not in setA.
+      */
     Элем[] разницаИз( Элем[] setA, Элем[] setB, Pred2E пред = Pred2E.init );
 }
 else
@@ -2950,7 +3062,7 @@ else
         Элем[] фн( Элем[] setA, Элем[] setB, Пред пред = Пред.init )
         {
             т_мера  posA = 0,
-                    posB = 0;
+            posB = 0;
             Элем[]  setD;
 
             while( posA < setA.length && posB < setB.length )
@@ -2989,16 +3101,16 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        assert( разницаИз( "", "" ) == "" );
-        assert( разницаИз( "", "abc" ) == "abc" );
-        assert( разницаИз( "abc", "" ) == "abc" );
-        assert( разницаИз( "abc", "abc" ) == "" );
-        assert( разницаИз( "abc", "def" ) == "abcdef" );
-        assert( разницаИз( "abbbcd", "abd" ) == "bbc" );
-        assert( разницаИз( "abd", "abbbcd" ) == "bbc" );
-      }
+        unittest
+        {
+            assert( разницаИз( "", "" ) == "" );
+            assert( разницаИз( "", "abc" ) == "abc" );
+            assert( разницаИз( "abc", "" ) == "abc" );
+            assert( разницаИз( "abc", "abc" ) == "" );
+            assert( разницаИз( "abc", "def" ) == "abcdef" );
+            assert( разницаИз( "abbbcd", "abd" ) == "bbc" );
+            assert( разницаИз( "abd", "abbbcd" ) == "bbc" );
+        }
     }
 }
 
@@ -3047,13 +3159,13 @@ else
             проц fixDown( т_мера поз, т_мера конец )
             {
                 if( конец <= поз )
-                    return;
+                            return;
                 while( поз <= ( конец - 1 ) / 2 )
                 {
                     т_мера nxt = 2 * поз + 1;
 
                     if( nxt < конец && пред( буф[nxt], буф[nxt + 1] ) )
-                        ++nxt;
+                                ++nxt;
                     if( !пред( буф[поз], буф[nxt] ) )
                         break;
                     exch( поз, nxt );
@@ -3062,15 +3174,16 @@ else
             }
 
             if( буф.length < 2 )
-                return;
+                        return;
 
             т_мера  конец = буф.length - 1,
-                    поз = конец / 2 + 2;
+            поз = конец / 2 + 2;
 
             do
             {
                 fixDown( --поз, конец );
-            } while( поз > 0 );
+            }
+            while( поз > 0 );
         }
     }
 
@@ -3095,42 +3208,42 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц basic( ткст буф )
+        unittest
         {
-            if( буф.length < 2 )
-                return;
-
-            т_мера  поз = 0,
-                    конец = буф.length - 1;
-
-            while( поз <= ( конец - 1 ) / 2 )
+            проц basic( ткст буф )
             {
-                assert( буф[поз] >= буф[2 * поз + 1] );
-                if( 2 * поз + 1 < конец )
+                if( буф.length < 2 )
+                    return;
+
+                т_мера  поз = 0,
+                конец = буф.length - 1;
+
+                while( поз <= ( конец - 1 ) / 2 )
                 {
-                    assert( буф[поз] >= буф[2 * поз + 2] );
+                    assert( буф[поз] >= буф[2 * поз + 1] );
+                    if( 2 * поз + 1 < конец )
+                    {
+                        assert( буф[поз] >= буф[2 * поз + 2] );
+                    }
+                    ++поз;
                 }
-                ++поз;
             }
-        }
 
-        проц тест( ткст буф )
-        {
-            сделайКучу( буф );
-            basic( буф );
-        }
+            проц тест( ткст буф )
+            {
+                сделайКучу( буф );
+                basic( буф );
+            }
 
-        тест( "mkcvalsопрivjoaisjdvmzlksvdjioawmdsvmsdfefewv".dup );
-        тест( "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf".dup );
-        тест( "the быстро brown fox jumped over the lazy dog".dup );
-        тест( "abcdefghijklmnopqrstuvwxyz".dup );
-        тест( "zyxwvutsrqponmlkjihgfedcba".dup );
-        тест( "ba".dup );
-        тест( "a".dup );
-        тест( "".dup );
-      }
+            тест( "mkcvalsопрivjoaisjdvmzlksvdjioawmdsvmsdfefewv".dup );
+            тест( "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf".dup );
+            тест( "the быстро brown fox jumped over the lazy dog".dup );
+            тест( "abcdefghijklmnopqrstuvwxyz".dup );
+            тест( "zyxwvutsrqponmlkjihgfedcba".dup );
+            тест( "ba".dup );
+            тест( "a".dup );
+            тест( "".dup );
+        }
     }
 }
 
@@ -3176,7 +3289,7 @@ else
             проц fixUp( т_мера поз )
             {
                 if( поз < 1 )
-                    return;
+                            return;
                 т_мера par = ( поз - 1 ) / 2;
                 while( поз > 0 && пред( буф[par], буф[поз] ) )
                 {
@@ -3215,43 +3328,43 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц basic( ткст буф )
+        unittest
         {
-            if( буф.length < 2 )
-                return;
-
-            т_мера  поз = 0,
-                    конец = буф.length - 1;
-
-            while( поз <= ( конец - 1 ) / 2 )
+            проц basic( ткст буф )
             {
-                assert( буф[поз] >= буф[2 * поз + 1] );
-                if( 2 * поз + 1 < конец )
+                if( буф.length < 2 )
+                    return;
+
+                т_мера  поз = 0,
+                конец = буф.length - 1;
+
+                while( поз <= ( конец - 1 ) / 2 )
                 {
-                    assert( буф[поз] >= буф[2 * поз + 2] );
+                    assert( буф[поз] >= буф[2 * поз + 1] );
+                    if( 2 * поз + 1 < конец )
+                    {
+                        assert( буф[поз] >= буф[2 * поз + 2] );
+                    }
+                    ++поз;
                 }
-                ++поз;
+            }
+
+            ткст буф;
+
+            foreach( тек; "abcdefghijklmnopqrstuvwxyz" )
+            {
+                суньВКучу( буф, тек );
+                basic( буф );
+            }
+
+            буф.length = 0;
+
+            foreach( тек; "zyxwvutsrqponmlkjihgfedcba" )
+            {
+                суньВКучу( буф, тек );
+                basic( буф );
             }
         }
-
-        ткст буф;
-
-        foreach( тек; "abcdefghijklmnopqrstuvwxyz" )
-        {
-            суньВКучу( буф, тек );
-            basic( буф );
-        }
-
-        буф.length = 0;
-
-        foreach( тек; "zyxwvutsrqponmlkjihgfedcba" )
-        {
-            суньВКучу( буф, тек );
-            basic( буф );
-        }
-      }
     }
 }
 
@@ -3297,13 +3410,13 @@ else
             проц fixDown( т_мера поз, т_мера конец )
             {
                 if( конец <= поз )
-                    return;
+                            return;
                 while( поз <= ( конец - 1 ) / 2 )
                 {
                     т_мера nxt = 2 * поз + 1;
 
                     if( nxt < конец && пред( буф[nxt], буф[nxt + 1] ) )
-                        ++nxt;
+                                ++nxt;
                     if( !пред( буф[поз], буф[nxt] ) )
                         break;
                     exch( поз, nxt );
@@ -3344,35 +3457,35 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        проц тест( ткст буф )
+        unittest
         {
-            if( буф.length < 2 )
-                return;
-
-            т_мера  поз = 0,
-                    конец = буф.length - 1;
-
-            while( поз <= ( конец - 1 ) / 2 )
+            проц тест( ткст буф )
             {
-                assert( буф[поз] >= буф[2 * поз + 1] );
-                if( 2 * поз + 1 < конец )
+                if( буф.length < 2 )
+                    return;
+
+                т_мера  поз = 0,
+                конец = буф.length - 1;
+
+                while( поз <= ( конец - 1 ) / 2 )
                 {
-                    assert( буф[поз] >= буф[2 * поз + 2] );
+                    assert( буф[поз] >= буф[2 * поз + 1] );
+                    if( 2 * поз + 1 < конец )
+                    {
+                        assert( буф[поз] >= буф[2 * поз + 2] );
+                    }
+                    ++поз;
                 }
-                ++поз;
+            }
+
+            ткст буф = "zyxwvutsrqponmlkjihgfedcba".dup;
+
+            while( буф.length > 0 )
+            {
+                выньИзКучи( буф );
+                тест( буф );
             }
         }
-
-        ткст буф = "zyxwvutsrqponmlkjihgfedcba".dup;
-
-        while( буф.length > 0 )
-        {
-            выньИзКучи( буф );
-            тест( буф );
-        }
-      }
     }
 }
 
@@ -3422,13 +3535,13 @@ else
             проц fixDown( т_мера поз, т_мера конец )
             {
                 if( конец <= поз )
-                    return;
+                            return;
                 while( поз <= ( конец - 1 ) / 2 )
                 {
                     т_мера nxt = 2 * поз + 1;
 
                     if( nxt < конец && пред( буф[nxt], буф[nxt + 1] ) )
-                        ++nxt;
+                                ++nxt;
                     if( !пред( буф[поз], буф[nxt] ) )
                         break;
                     exch( поз, nxt );
@@ -3437,7 +3550,7 @@ else
             }
 
             if( буф.length < 2 )
-                return;
+                        return;
 
             т_мера  поз = буф.length - 1;
 
@@ -3470,17 +3583,17 @@ else
 
     debug( UnitTest )
     {
-      unittest
-      {
-        ткст буф = "zyxwvutsrqponmlkjihgfedcba".dup;
-
-        сортируйКучу( буф );
-        сим sav = буф[0];
-        foreach( тек; буф )
+        unittest
         {
-            assert( тек >= sav );
-            sav = тек;
+            ткст буф = "zyxwvutsrqponmlkjihgfedcba".dup;
+
+            сортируйКучу( буф );
+            сим sav = буф[0];
+            foreach( тек; буф )
+            {
+                assert( тек >= sav );
+                sav = тек;
+            }
         }
-      }
     }
 }

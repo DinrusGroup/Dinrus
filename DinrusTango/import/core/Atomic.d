@@ -57,34 +57,34 @@ private
         template реальноАтомныйТип_ли( T )
         {
             const бул реальноАтомныйТип_ли = T.sizeof == байт.sizeof  ||
-                                           T.sizeof == крат.sizeof ||
-                                           T.sizeof == цел.sizeof   ||
-                                           T.sizeof == дол.sizeof;
+            T.sizeof == крат.sizeof ||
+            T.sizeof == цел.sizeof   ||
+            T.sizeof == дол.sizeof;
         }
 
 
         template реальноЧисловойТип_ли( T )
         {
             const бул реальноЧисловойТип_ли = типЦелЧис_ли!( T ) ||
-                                            типУк_ли!( T );
+            типУк_ли!( T );
         }
 
 
         template isHoistOp( псинх ms )
         {
             const бул isHoistOp = ms == псинх.hlb ||
-                                   ms == псинх.hsb ||
-                                   ms == псинх.acq ||
-                                   ms == псинх.пследвтн;
+            ms == псинх.hsb ||
+            ms == псинх.acq ||
+            ms == псинх.пследвтн;
         }
 
 
         template isSinkOp( псинх ms )
         {
             const бул isSinkOp = ms == псинх.slb ||
-                                  ms == псинх.ssb ||
-                                  ms == псинх.относитн ||
-                                  ms == псинх.пследвтн;
+            ms == псинх.ssb ||
+            ms == псинх.относитн ||
+            ms == псинх.пследвтн;
         }
     }
 }
@@ -376,8 +376,8 @@ else version( LDC )
             return oldval == равноС;
         }
     }
-    
-    
+
+
     ////////////////////////////////////////////////////////////////////////////
     // Атомный Increment
     ////////////////////////////////////////////////////////////////////////////
@@ -404,8 +404,8 @@ else version( LDC )
             return знач;
         }
     }
-    
-    
+
+
     ////////////////////////////////////////////////////////////////////////////
     // Атомный Decrement
     ////////////////////////////////////////////////////////////////////////////
@@ -448,7 +448,8 @@ else version( D_InlineAsm_X86 )
             pragma( msg, "core.Atomic: using IA-32 inline asm" );
         }
 
-        version(darwin){
+        version(darwin)
+        {
             extern(C) бул OSAtomicCompareAndSwap64(дол oldValue, дол newValue, дол *theValue);
             extern(C) бул OSAtomicCompareAndSwap64Barrier(дол oldValue, дол newValue, дол *theValue);
         }
@@ -921,13 +922,19 @@ else version( D_InlineAsm_X86 )
                     ////////////////////////////////////////////////////////////
                     // 8 Byte StoreIf on 32-Bit Processor
                     ////////////////////////////////////////////////////////////
-                    version(darwin){
-                        static if(ms==псинх.необр){
+                    version(darwin)
+                    {
+                        static if(ms==псинх.необр)
+                        {
                             return OSAtomicCompareAndSwap64(cast(дол)равноС, cast(дол)новзнач,  cast(дол*)&знач);
-                        } else {
+                        }
+                        else
+                        {
                             return OSAtomicCompareAndSwap64Barrier(cast(дол)равноС, cast(дол)новзнач,  cast(дол*)&знач);
                         }
-                    } else {
+                    }
+                    else
+                    {
                         volatile asm
                         {
                             push EDI;
@@ -1567,108 +1574,108 @@ struct Атомный( T )
     // Numeric Functions
     ////////////////////////////////////////////////////////////////////////////
 
-	version( TangoDoc )
-	{
-		/**
-		 * The following добавьitional functions are available for целое типы.
-		 */
-		////////////////////////////////////////////////////////////////////////
-		// Атомный Increment
-		////////////////////////////////////////////////////////////////////////
+    version( TangoDoc )
+    {
+        /**
+         * The following добавьitional functions are available for целое типы.
+         */
+        ////////////////////////////////////////////////////////////////////////
+        // Атомный Increment
+        ////////////////////////////////////////////////////////////////////////
 
 
-		template инкремент( псинх ms = псинх.пследвтн )
-		{
-			/**
-			 * This operation is only legal for built-in значение and pointer
-			 * типы, and is equivalent в_ an atomic "знач = знач + 1" operation.
-			 * This function есть_ли в_ facilitate use of the optimized
-			 * инкремент instructions provопрed by some architecures.  If no
-			 * such instruction есть_ли on the мишень platform then the
-			 * behavior will perform the operation using ещё traditional
-			 * means.  This operation is Всё lock-free and atomic.
-			 *
-			 * Возвращает:
-			 *  The результат of an атомнаяЗагрузка of знач immediately following the
-			 *  инкремент operation.  This значение is not required в_ be equal в_
-			 *  the newly stored значение.  Thus, competing writes are allowed в_
-			 *  occur between the инкремент and successive загрузи operation.
-			 */
-			T инкремент()
-			{
-				return m_val;
-			}
-		}
+        template инкремент( псинх ms = псинх.пследвтн )
+        {
+            /**
+             * This operation is only legal for built-in значение and pointer
+             * типы, and is equivalent в_ an atomic "знач = знач + 1" operation.
+             * This function есть_ли в_ facilitate use of the optimized
+             * инкремент instructions provопрed by some architecures.  If no
+             * such instruction есть_ли on the мишень platform then the
+             * behavior will perform the operation using ещё traditional
+             * means.  This operation is Всё lock-free and atomic.
+             *
+             * Возвращает:
+             *  The результат of an атомнаяЗагрузка of знач immediately following the
+             *  инкремент operation.  This значение is not required в_ be equal в_
+             *  the newly stored значение.  Thus, competing writes are allowed в_
+             *  occur between the инкремент and successive загрузи operation.
+             */
+            T инкремент()
+            {
+                return m_val;
+            }
+        }
 
 
-		////////////////////////////////////////////////////////////////////////
-		// Атомный Decrement
-		////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        // Атомный Decrement
+        ////////////////////////////////////////////////////////////////////////
 
 
-		template декремент( псинх ms = псинх.пследвтн )
-		{
-			/**
-			 * This operation is only legal for built-in значение and pointer
-			 * типы, and is equivalent в_ an atomic "знач = знач - 1" operation.
-			 * This function есть_ли в_ facilitate use of the optimized
-			 * декремент instructions provопрed by some architecures.  If no
-			 * such instruction есть_ли on the мишень platform then the behavior
-			 * will perform the operation using ещё traditional means.  This
-			 * operation is Всё lock-free and atomic.
-			 *
-			 * Возвращает:
-			 *  The результат of an атомнаяЗагрузка of знач immediately following the
-			 *  инкремент operation.  This значение is not required в_ be equal в_
-			 *  the newly stored значение.  Thus, competing writes are allowed в_
-			 *  occur between the инкремент and successive загрузи operation.
-			 */
-			T декремент()
-			{
-				return m_val;
-			}
-		}
-	}
-	else
-	{
-		static if( реальноЧисловойТип_ли!(T) )
-		{
-			////////////////////////////////////////////////////////////////////////
-			// Атомный Increment
-			////////////////////////////////////////////////////////////////////////
+        template декремент( псинх ms = псинх.пследвтн )
+        {
+            /**
+             * This operation is only legal for built-in значение and pointer
+             * типы, and is equivalent в_ an atomic "знач = знач - 1" operation.
+             * This function есть_ли в_ facilitate use of the optimized
+             * декремент instructions provопрed by some architecures.  If no
+             * such instruction есть_ли on the мишень platform then the behavior
+             * will perform the operation using ещё traditional means.  This
+             * operation is Всё lock-free and atomic.
+             *
+             * Возвращает:
+             *  The результат of an атомнаяЗагрузка of знач immediately following the
+             *  инкремент operation.  This значение is not required в_ be equal в_
+             *  the newly stored значение.  Thus, competing writes are allowed в_
+             *  occur between the инкремент and successive загрузи operation.
+             */
+            T декремент()
+            {
+                return m_val;
+            }
+        }
+    }
+    else
+    {
+        static if( реальноЧисловойТип_ли!(T) )
+        {
+            ////////////////////////////////////////////////////////////////////////
+            // Атомный Increment
+            ////////////////////////////////////////////////////////////////////////
 
 
-			template инкремент( псинх ms = псинх.пследвтн )
-			{
-				static assert( ms == псинх.необр || ms == псинх.ssb ||
-							   ms == псинх.acq || ms == псинх.относитн ||
-							   ms == псинх.пследвтн,
-							   "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-				T инкремент()
-				{
-					return атомныйИнкремент!(ms,T)( m_val );
-				}
-			}
+            template инкремент( псинх ms = псинх.пследвтн )
+            {
+                static assert( ms == псинх.необр || ms == псинх.ssb ||
+                               ms == псинх.acq || ms == псинх.относитн ||
+                               ms == псинх.пследвтн,
+                               "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
+                T инкремент()
+                {
+                    return атомныйИнкремент!(ms,T)( m_val );
+                }
+            }
 
 
-			////////////////////////////////////////////////////////////////////////
-			// Атомный Decrement
-			////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////
+            // Атомный Decrement
+            ////////////////////////////////////////////////////////////////////////
 
 
-			template декремент( псинх ms = псинх.пследвтн )
-			{
-				static assert( ms == псинх.необр || ms == псинх.ssb ||
-							   ms == псинх.acq || ms == псинх.относитн ||
-							   ms == псинх.пследвтн,
-							   "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-				T декремент()
-				{
-					return атомныйДекремент!(ms,T)( m_val );
-				}
-			}
-		}
-	}
+            template декремент( псинх ms = псинх.пследвтн )
+            {
+                static assert( ms == псинх.необр || ms == псинх.ssb ||
+                               ms == псинх.acq || ms == псинх.относитн ||
+                               ms == псинх.пследвтн,
+                               "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
+                T декремент()
+                {
+                    return атомныйДекремент!(ms,T)( m_val );
+                }
+            }
+        }
+    }
 
 private:
     T   m_val;
@@ -1856,17 +1863,17 @@ debug( UnitTest )
 
 debug(Atom)
 {
-        проц main()
-        {
-                Атомный!(цел) i;
+    проц main()
+    {
+        Атомный!(цел) i;
 
-                i.сохрани (1);
-                i.инкремент;
-                i.декремент;
-                auto x = i.загрузи;
-                i.сохрани (2);
+        i.сохрани (1);
+        i.инкремент;
+        i.декремент;
+        auto x = i.загрузи;
+        i.сохрани (2);
 
-                x = атомнаяЗагрузка (x);
-        }
+        x = атомнаяЗагрузка (x);
+    }
 }
 

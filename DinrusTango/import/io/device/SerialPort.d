@@ -11,11 +11,13 @@ class СерийныйПорт : Устройство
     СерийныйПорт скорость (бцел скорость);
     static ткст[] порты ();
 
-    version(Win32) {
+    version(Win32)
+    {
         private проц создай (ткст порт);
     }
 
-    version(Posix) {
+    version(Posix)
+    {
         private static speed_t[бцел] baudRates;
 
         static this()

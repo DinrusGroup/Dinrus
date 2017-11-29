@@ -104,7 +104,7 @@ static this()
     sched_st = пусто;
 
     version(Win32)
-        QueryPerformanceFrequency(&sched_perf_freq);
+    QueryPerformanceFrequency(&sched_perf_freq);
 }
 
 
@@ -202,46 +202,46 @@ class СтэкНить
         debug(PQueue)
         {
             return фм("ST[t:%8x,p:%8x,l:%8x,r:%8x]",
-                cast(ук)this,
-                cast(ук)parent,
-                cast(ук)left,
-                cast(ук)right);
+                        cast(ук)this,
+                        cast(ук)parent,
+                        cast(ук)left,
+                        cast(ук)right);
         }
         else
         {
-        static ткст[] названия_состояний =
-        [
-            "RDY",
-            "RUN",
-            "XXX",
-            "PAU",
-        ];
+            static ткст[] названия_состояний =
+                [
+                    "RDY",
+                    "RUN",
+                    "XXX",
+                    "PAU",
+                ];
 
-        //horrid hack for getting the address of a delegate
-        union hack
-        {
-            struct dele
+            //horrid hack for getting the address of a delegate
+            union hack
             {
-                ук frame;
-                ук fptr;
+                struct dele
+                {
+                    ук frame;
+                    ук fptr;
+                }
+
+                dele d;
+                проц delegate () dg;
             }
+            hack h;
+            if(m_function !is пусто)
+                h.d.fptr = cast(ук) m_function;
+            else if(m_delegate !is пусто)
+                h.dg = m_delegate;
+            else
+                h.dg = &пуск;
 
-            dele d;
-            проц delegate () dg;
-        }
-        hack h;
-        if(m_function !is пусто)
-            h.d.fptr = cast(ук) m_function;
-        else if(m_delegate !is пусто)
-            h.dg = m_delegate;
-        else
-            h.dg = &пуск;
-
-        return фм(
-            "Нить[pr=%d,st=%s,fn=%8x]",
-            приоритет,
-            названия_состояний[cast(бцел)состояние],
-            h.d.fptr);
+            return фм(
+                       "Нить[pr=%d,st=%s,fn=%8x]",
+                       приоритет,
+                       названия_состояний[cast(бцел)состояние],
+                       h.d.fptr);
         }
     }
 
@@ -251,23 +251,24 @@ class СтэкНить
 
         switch(состояние)
         {
-            case ПСостояниеНити.Готов:
-                assert(контекст.готов);
+        case ПСостояниеНити.Готов:
+            assert(контекст.готов);
             break;
 
-            case ПСостояниеНити.Выполняется:
-                assert(контекст.выполняется);
+        case ПСостояниеНити.Выполняется:
+            assert(контекст.выполняется);
             break;
 
-            case ПСостояниеНити.Завершён:
-                assert(!контекст.выполняется);
+        case ПСостояниеНити.Завершён:
+            assert(!контекст.выполняется);
             break;
 
-            case ПСостояниеНити.Подвешен:
-                assert(контекст.готов);
+        case ПСостояниеНити.Подвешен:
+            assert(контекст.готов);
             break;
 
-			default: assert(false);
+        default:
+            assert(false);
         }
 
         if(left !is пусто)
@@ -292,22 +293,23 @@ class СтэкНить
 
         switch(состояние)
         {
-            case ПСостояниеНити.Готов:
-                сн_отмени(this);
-                состояние = ПСостояниеНити.Подвешен;
+        case ПСостояниеНити.Готов:
+            сн_отмени(this);
+            состояние = ПСостояниеНити.Подвешен;
             break;
 
-            case ПСостояниеНити.Выполняется:
-                transition(ПСостояниеНити.Подвешен);
+        case ПСостояниеНити.Выполняется:
+            transition(ПСостояниеНити.Подвешен);
             break;
 
-            case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot пауза a завершён thread");
+        case ПСостояниеНити.Завершён:
+            throw new ИсклСтэкНити(this, "Cannot пауза a завершён thread");
 
-            case ПСостояниеНити.Подвешен:
-                throw new ИсклСтэкНити(this, "Cannot пауза a на_паузе thread");
+        case ПСостояниеНити.Подвешен:
+            throw new ИсклСтэкНити(this, "Cannot пауза a на_паузе thread");
 
-			default: assert(false);
+        default:
+            assert(false);
         }
     }
 
@@ -343,28 +345,29 @@ class СтэкНить
 
         switch(состояние)
         {
-            case ПСостояниеНити.Готов:
-                //Kill thread и удали from планировщик
-                сн_отмени(this);
-                состояние = ПСостояниеНити.Завершён;
-                контекст.души();
+        case ПСостояниеНити.Готов:
+            //Kill thread и удали from планировщик
+            сн_отмени(this);
+            состояние = ПСостояниеНити.Завершён;
+            контекст.души();
             break;
 
-            case ПСостояниеНити.Выполняется:
-                //Transition to завершён
-                transition(ПСостояниеНити.Завершён);
+        case ПСостояниеНити.Выполняется:
+            //Transition to завершён
+            transition(ПСостояниеНити.Завершён);
             break;
 
-            case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Уже потушенную нить удушить нельзя");
+        case ПСостояниеНити.Завершён:
+            throw new ИсклСтэкНити(this, "Уже потушенную нить удушить нельзя");
 
-            case ПСостояниеНити.Подвешен:
-                //We need to души the стэк, no need to touch планировщик
-                состояние = ПСостояниеНити.Завершён;
-                контекст.души();
+        case ПСостояниеНити.Подвешен:
+            //We need to души the стэк, no need to touch планировщик
+            состояние = ПСостояниеНити.Завершён;
+            контекст.души();
             break;
 
-			default: assert(false);
+        default:
+            assert(false);
         }
     }
 
@@ -395,19 +398,20 @@ class СтэкНить
         //And make sure we are joining with a действителен thread
         switch(состояние)
         {
-            case ПСостояниеНити.Готов:
-                break;
+        case ПСостояниеНити.Готов:
+            break;
 
-            case ПСостояниеНити.Выполняется:
-                throw new ИсклСтэкНити(this, "A thread cannot объедини with itself!");
+        case ПСостояниеНити.Выполняется:
+            throw new ИсклСтэкНити(this, "A thread cannot объедини with itself!");
 
-            case ПСостояниеНити.Завершён:
-                throw new ИсклСтэкНити(this, "Cannot объедини with a завершён thread");
+        case ПСостояниеНити.Завершён:
+            throw new ИсклСтэкНити(this, "Cannot объедини with a завершён thread");
 
-            case ПСостояниеНити.Подвешен:
-                throw new ИсклСтэкНити(this, "Cannot объедини with a на_паузе thread");
+        case ПСостояниеНити.Подвешен:
+            throw new ИсклСтэкНити(this, "Cannot объедини with a на_паузе thread");
 
-			default: assert(false);
+        default:
+            assert(false);
         }
 
         //Do busy waiting until the thread dies or the
@@ -437,28 +441,29 @@ class СтэкНить
         //Each состояние needs to be handled carefully
         switch(состояние)
         {
-            case ПСостояниеНити.Готов:
-                //If we are готов,
-                контекст.перезапуск();
+        case ПСостояниеНити.Готов:
+            //If we are готов,
+            контекст.перезапуск();
             break;
 
-            case ПСостояниеНити.Выполняется:
-                //Reset the threaauxd.
-                transition(ПСостояниеНити.Готов);
+        case ПСостояниеНити.Выполняется:
+            //Reset the threaauxd.
+            transition(ПСостояниеНити.Готов);
             break;
 
-            case ПСостояниеНити.Завершён:
-                //Dead threads become suspended
-                контекст.перезапуск();
-                состояние = ПСостояниеНити.Подвешен;
+        case ПСостояниеНити.Завершён:
+            //Dead threads become suspended
+            контекст.перезапуск();
+            состояние = ПСостояниеНити.Подвешен;
             break;
 
-            case ПСостояниеНити.Подвешен:
-                //Suspended threads stay suspended
-                контекст.перезапуск();
+        case ПСостояниеНити.Подвешен:
+            //Suspended threads stay suspended
+            контекст.перезапуск();
             break;
 
-			default: assert(false);
+        default:
+            assert(false);
         }
     }
 
@@ -488,7 +493,7 @@ class СтэкНить
     {
         //Update приоритет
         if(сост_планировщ == ПСостояниеПланировщика.Готов &&
-            состояние == ПСостояниеНити.Готов)
+                состояние == ПСостояниеНити.Готов)
         {
             следующий_срез.удали(this);
             m_priority = p;
@@ -595,7 +600,10 @@ class СтэкНить
     //Delegate handler
     private проц function() m_function;
     private проц delegate() m_delegate;
-    private проц delegator() { m_function(); }
+    private проц delegator()
+    {
+        m_function();
+    }
 
     //My procedure
     private final проц m_proc()
@@ -809,8 +817,8 @@ public:
 
         //Unlink st
         st.parent =
-        st.left =
-        st.right = пусто;
+            st.left =
+                st.right = пусто;
 
 
         //Bubble up
@@ -929,8 +937,8 @@ public:
                 стэк ~= tmp.left;
 
                 tmp.parent =
-                tmp.right =
-                tmp.left = пусто;
+                    tmp.right =
+                        tmp.left = пусто;
 
                 добавь(tmp);
             }
@@ -1087,7 +1095,7 @@ public:
             assert(st);
 
             if(st.right is пусто ||
-                st.left.m_priority >= st.right.m_priority)
+                    st.left.m_priority >= st.right.m_priority)
             {
                 if(st.left.m_priority > st.m_priority)
                 {
@@ -1103,7 +1111,8 @@ public:
                     a.right = tp;
 
                     if(a.right !is пусто) a.right.parent = a;
-                } else break;
+                }
+                else break;
             }
             else if(st.right.m_priority > st.m_priority)
             {
@@ -1153,7 +1162,7 @@ public:
 }
 
 debug (PQueue)
- unittest
+unittest
 {
     скажифнс("Testing приоритет queue");
 
@@ -1349,7 +1358,7 @@ debug (PQueue)
 version(Win32)
 {
     private extern(Windows) цел
-        QueryPerformanceCounter(бдол * cnt);
+    QueryPerformanceCounter(бдол * cnt);
 
     private бдол getSysMillis()
     {
@@ -1357,13 +1366,13 @@ version(Win32)
         QueryPerformanceCounter(&result);
 
         if(result < 0x20C49BA5E353F7L)
-	    {
+        {
             result = (result * 1000) / sched_perf_freq;
-	    }
-	    else
-	    {
+        }
+        else
+        {
             result = (result / sched_perf_freq) * 1000;
-	    }
+        }
 
         return result;
     }
@@ -1417,7 +1426,10 @@ in
 }
 body
 {
-    debug(PQueue) { return; }
+    debug(PQueue)
+    {
+        return;
+    }
 
     debug (СтэкНить) скажифнс("Scheduling %s", st.вТкст);
     следующий_срез.добавь(st);
@@ -1505,8 +1517,8 @@ body
     сост_планировщ = ПСостояниеПланировщика.Выполняется;
 
     while(активный_срез.размер > 0 &&
-        (getSysMillis() - sched_t0) < stop_time &&
-        сост_планировщ == ПСостояниеПланировщика.Выполняется)
+            (getSysMillis() - sched_t0) < stop_time &&
+            сост_планировщ == ПСостояниеПланировщика.Выполняется)
     {
 
         sched_st = активный_срез.верх();
@@ -1530,28 +1542,29 @@ body
             //Process any состояние transition
             switch(sched_st.состояние)
             {
-                case ПСостояниеНити.Готов:
-                    //Нить wants to be restarted
-                    sched_st.контекст.перезапуск();
-                    следующий_срез.добавь(sched_st);
+            case ПСостояниеНити.Готов:
+                //Нить wants to be restarted
+                sched_st.контекст.перезапуск();
+                следующий_срез.добавь(sched_st);
                 break;
 
-                case ПСостояниеНити.Выполняется:
-                    //Nothing unusual, pass it to next состояние
-                    sched_st.состояние = ПСостояниеНити.Готов;
-                    следующий_срез.добавь(sched_st);
+            case ПСостояниеНити.Выполняется:
+                //Nothing unusual, pass it to next состояние
+                sched_st.состояние = ПСостояниеНити.Готов;
+                следующий_срез.добавь(sched_st);
                 break;
 
-                case ПСостояниеНити.Подвешен:
-                    //Don't reschedule
+            case ПСостояниеНити.Подвешен:
+                //Don't reschedule
                 break;
 
-                case ПСостояниеНити.Завершён:
-                    //Kill thread's контекст
-                    sched_st.контекст.души();
+            case ПСостояниеНити.Завершён:
+                //Kill thread's контекст
+                sched_st.контекст.души();
                 break;
 
-				default: assert(false);
+            default:
+                assert(false);
             }
 
             sched_st = пусто;
@@ -1698,755 +1711,758 @@ body
 debug (PQueue) {}
 else
 {
-unittest
-{
-    скажифнс("Testing стэк thread creation & basic scheduling");
-
-    static цел q0 = 0;
-    static цел q1 = 0;
-    static цел q2 = 0;
-
-    //Run one empty slice
-    сн_запустиСрез();
-
-    СтэкНить st0 = new СтэкНить(
-    delegate проц()
+    unittest
     {
-        while(true)
+        скажифнс("Testing стэк thread creation & basic scheduling");
+
+        static цел q0 = 0;
+        static цел q1 = 0;
+        static цел q2 = 0;
+
+        //Run one empty slice
+        сн_запустиСрез();
+
+        СтэкНить st0 = new СтэкНить(
+            delegate проц()
+        {
+            while(true)
+            {
+                q0++;
+                сн_жни();
+            }
+        });
+
+        СтэкНить st1 = new СтэкНить(
+            function проц()
+        {
+            while(true)
+            {
+                q1++;
+                сн_жни();
+            }
+        });
+
+        class TestThread : СтэкНить
+        {
+            this()
+            {
+                super();
+            }
+
+            override проц пуск()
+            {
+                while(true)
+                {
+                    q2++;
+                    сн_жни();
+                }
+            }
+        }
+
+        СтэкНить st2 = new TestThread();
+
+        assert(st0);
+        assert(st1);
+        assert(st2);
+
+        сн_запустиСрез();
+
+        assert(q0 == 1);
+        assert(q1 == 1);
+        assert(q2 == 1);
+
+        st1.пауза();
+        сн_запустиСрез();
+
+        assert(st0);
+        assert(st1);
+        assert(st2);
+
+        assert(st1.на_паузе);
+        assert(q0 == 2);
+        assert(q1 == 1);
+        assert(q2 == 2);
+
+        st2.души();
+        сн_запустиСрез();
+
+        assert(st2.завершён);
+        assert(q0 == 3);
+        assert(q1 == 1);
+        assert(q2 == 2);
+
+        st0.души();
+        сн_запустиСрез();
+
+        assert(st0.завершён);
+        assert(q0 == 3);
+        assert(q1 == 1);
+        assert(q2 == 2);
+
+        st1.возобнови();
+        сн_запустиСрез();
+
+        assert(st1.готов);
+        assert(q0 == 3);
+        assert(q1 == 2);
+        assert(q2 == 2);
+
+        st1.души();
+        сн_запустиСрез();
+
+        assert(st1.завершён);
+        assert(q0 == 3);
+        assert(q1 == 2);
+        assert(q2 == 2);
+
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Нить creation passed!");
+    }
+
+    unittest
+    {
+        скажифнс("Testing priorities");
+
+        //Test приоритет based scheduling
+        цел a = 0;
+        цел b = 0;
+        цел c = 0;
+
+
+        СтэкНить st0 = new СтэкНить(
+            delegate проц()
+        {
+            a++;
+            assert(a == 1);
+            assert(b == 0);
+            assert(c == 0);
+
+            сн_жни;
+
+            a++;
+            assert(a == 2);
+            assert(b == 2);
+            assert(c == 2);
+
+            сн_жни;
+
+            a++;
+
+            скажифнс("a=%d, b=%d, c=%d", a, b, c);
+            assert(a == 3);
+            скажифнс("b=%d : ", b, (b==2));
+            assert(b == 2);
+            assert(c == 2);
+
+
+        }, 10);
+
+        СтэкНить st1 = new СтэкНить(
+            delegate проц()
+        {
+            b++;
+            assert(a == 1);
+            assert(b == 1);
+            assert(c == 0);
+
+            сн_жни;
+
+            b++;
+            assert(a == 1);
+            assert(b == 2);
+            assert(c == 2);
+
+        }, 5);
+
+        СтэкНить st2 = new СтэкНить(
+            delegate проц()
+        {
+            c++;
+            assert(a == 1);
+            assert(b == 1);
+            assert(c == 1);
+
+            сн_жни;
+
+            c++;
+            assert(a == 1);
+            assert(b == 1);
+            assert(c == 2);
+
+            st0.приоритет = 100;
+
+            сн_жни;
+
+            c++;
+            assert(a == 3);
+            assert(b == 2);
+            assert(c == 3);
+
+        }, 1);
+
+        сн_запустиСрез();
+
+        assert(st0);
+        assert(st1);
+        assert(st2);
+
+        assert(a == 1);
+        assert(b == 1);
+        assert(c == 1);
+
+        st0.приоритет = -10;
+        st1.приоритет = -5;
+
+        сн_запустиСрез();
+
+        assert(a == 2);
+        assert(b == 2);
+        assert(c == 2);
+
+        сн_запустиСрез();
+
+        assert(st0.завершён);
+        assert(st1.завершён);
+        assert(st2.завершён);
+
+        assert(a == 3);
+        assert(b == 2);
+        assert(c == 3);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Priorities pass");
+    }
+
+    version(Win32)
+    unittest
+    {
+        скажифнс("Testing exception handling");
+
+        цел q0 = 0;
+        цел q1 = 0;
+        цел q2 = 0;
+        цел q3 = 0;
+
+        СтэкНить st0, st1;
+
+        st0 = new СтэкНить(
+            delegate проц()
         {
             q0++;
-            сн_жни();
-        }
-    });
+            throw new Исключение("Test exception");
+            q0++;
+        });
 
-    СтэкНить st1 = new СтэкНить(
-    function проц()
+        try
+        {
+            q3++;
+            сн_запустиСрез();
+            q3++;
+        }
+        catch(Исключение e)
+        {
+            e.print;
+        }
+
+        assert(st0.завершён);
+        assert(q0 == 1);
+        assert(q1 == 0);
+        assert(q2 == 0);
+        assert(q3 == 1);
+
+        st1 = new СтэкНить(
+            delegate проц()
+        {
+            try
+            {
+                q1++;
+                throw new Исключение("Testing");
+                q1++;
+            }
+            catch(Исключение e)
+            {
+                e.print();
+            }
+
+            while(true)
+            {
+                q2++;
+                сн_жни();
+            }
+        });
+
+        сн_запустиСрез();
+        assert(st1.готов);
+        assert(q0 == 1);
+        assert(q1 == 1);
+        assert(q2 == 1);
+        assert(q3 == 1);
+
+        st1.души;
+        assert(st1.завершён);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Исключение handling passed!");
+    }
+
+    unittest
     {
-        while(true)
+        скажифнс("Testing thread pausing");
+
+        //Test пауза
+        цел q = 0;
+        цел r = 0;
+        цел s = 0;
+
+        СтэкНить st0;
+
+        st0 = new СтэкНить(
+            delegate проц()
+        {
+            s++;
+            st0.пауза();
+            q++;
+        });
+
+        try
+        {
+            st0.возобнови();
+        }
+        catch(Исключение e)
+        {
+            e.print;
+            r ++;
+        }
+
+        assert(st0);
+        assert(q == 0);
+        assert(r == 1);
+        assert(s == 0);
+
+        st0.пауза();
+        assert(st0.на_паузе);
+
+        try
+        {
+            st0.пауза();
+        }
+        catch(Исключение e)
+        {
+            e.print;
+            r ++;
+        }
+
+        сн_запустиСрез();
+
+        assert(q == 0);
+        assert(r == 2);
+        assert(s == 0);
+
+        st0.возобнови();
+        assert(st0.готов);
+
+        сн_запустиСрез();
+
+        assert(st0.на_паузе);
+        assert(q == 0);
+        assert(r == 2);
+        assert(s == 1);
+
+        st0.возобнови();
+        сн_запустиСрез();
+
+        assert(st0.завершён);
+        assert(q == 1);
+        assert(r == 2);
+        assert(s == 1);
+
+        try
+        {
+            st0.пауза();
+        }
+        catch(Исключение e)
+        {
+            e.print;
+            r ++;
+        }
+
+        сн_запустиСрез();
+
+        assert(st0.завершён);
+        assert(q == 1);
+        assert(r == 3);
+        assert(s == 1);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Pause passed!");
+    }
+
+
+    unittest
+    {
+        скажифнс("Testing души");
+
+        цел q0 = 0;
+        цел q1 = 0;
+        цел q2 = 0;
+
+        СтэкНить st0, st1, st2;
+
+        st0 = new СтэкНить(
+            delegate проц()
+        {
+            while(true)
+            {
+                q0++;
+                сн_жни();
+            }
+        });
+
+        st1 = new СтэкНить(
+            delegate проц()
         {
             q1++;
-            сн_жни();
-        }
-    });
+            st1.души();
+            q1++;
+        });
 
-    class TestThread : СтэкНить
-    {
-        this() { super(); }
-
-        override проц пуск()
+        st2 = new СтэкНить(
+            delegate проц()
         {
             while(true)
             {
                 q2++;
                 сн_жни();
             }
-        }
-    }
+        });
 
-    СтэкНить st2 = new TestThread();
+        assert(st1.готов);
 
-    assert(st0);
-    assert(st1);
-    assert(st2);
-
-    сн_запустиСрез();
-
-    assert(q0 == 1);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    st1.пауза();
-    сн_запустиСрез();
-
-    assert(st0);
-    assert(st1);
-    assert(st2);
-
-    assert(st1.на_паузе);
-    assert(q0 == 2);
-    assert(q1 == 1);
-    assert(q2 == 2);
-
-    st2.души();
-    сн_запустиСрез();
-
-    assert(st2.завершён);
-    assert(q0 == 3);
-    assert(q1 == 1);
-    assert(q2 == 2);
-
-    st0.души();
-    сн_запустиСрез();
-
-    assert(st0.завершён);
-    assert(q0 == 3);
-    assert(q1 == 1);
-    assert(q2 == 2);
-
-    st1.возобнови();
-    сн_запустиСрез();
-
-    assert(st1.готов);
-    assert(q0 == 3);
-    assert(q1 == 2);
-    assert(q2 == 2);
-
-    st1.души();
-    сн_запустиСрез();
-
-    assert(st1.завершён);
-    assert(q0 == 3);
-    assert(q1 == 2);
-    assert(q2 == 2);
-
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Нить creation passed!");
-}
-
-unittest
-{
-    скажифнс("Testing priorities");
-
-    //Test приоритет based scheduling
-    цел a = 0;
-    цел b = 0;
-    цел c = 0;
-
-
-    СтэкНить st0 = new СтэкНить(
-    delegate проц()
-    {
-        a++;
-        assert(a == 1);
-        assert(b == 0);
-        assert(c == 0);
-
-        сн_жни;
-
-        a++;
-        assert(a == 2);
-        assert(b == 2);
-        assert(c == 2);
-
-        сн_жни;
-
-        a++;
-
-        скажифнс("a=%d, b=%d, c=%d", a, b, c);
-        assert(a == 3);
-        скажифнс("b=%d : ", b, (b==2));
-        assert(b == 2);
-        assert(c == 2);
-
-
-    }, 10);
-
-    СтэкНить st1 = new СтэкНить(
-    delegate проц()
-    {
-        b++;
-        assert(a == 1);
-        assert(b == 1);
-        assert(c == 0);
-
-        сн_жни;
-
-        b++;
-        assert(a == 1);
-        assert(b == 2);
-        assert(c == 2);
-
-    }, 5);
-
-    СтэкНить st2 = new СтэкНить(
-    delegate проц()
-    {
-        c++;
-        assert(a == 1);
-        assert(b == 1);
-        assert(c == 1);
-
-        сн_жни;
-
-        c++;
-        assert(a == 1);
-        assert(b == 1);
-        assert(c == 2);
-
-        st0.приоритет = 100;
-
-        сн_жни;
-
-        c++;
-        assert(a == 3);
-        assert(b == 2);
-        assert(c == 3);
-
-    }, 1);
-
-    сн_запустиСрез();
-
-    assert(st0);
-    assert(st1);
-    assert(st2);
-
-    assert(a == 1);
-    assert(b == 1);
-    assert(c == 1);
-
-    st0.приоритет = -10;
-    st1.приоритет = -5;
-
-    сн_запустиСрез();
-
-    assert(a == 2);
-    assert(b == 2);
-    assert(c == 2);
-
-    сн_запустиСрез();
-
-    assert(st0.завершён);
-    assert(st1.завершён);
-    assert(st2.завершён);
-
-    assert(a == 3);
-    assert(b == 2);
-    assert(c == 3);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Priorities pass");
-}
-
-version(Win32)
-unittest
-{
-    скажифнс("Testing exception handling");
-
-    цел q0 = 0;
-    цел q1 = 0;
-    цел q2 = 0;
-    цел q3 = 0;
-
-    СтэкНить st0, st1;
-
-    st0 = new СтэкНить(
-    delegate проц()
-    {
-        q0++;
-        throw new Исключение("Test exception");
-        q0++;
-    });
-
-    try
-    {
-        q3++;
         сн_запустиСрез();
-        q3++;
-    }
-    catch(Исключение e)
-    {
-        e.print;
-    }
 
-    assert(st0.завершён);
-    assert(q0 == 1);
-    assert(q1 == 0);
-    assert(q2 == 0);
-    assert(q3 == 1);
+        assert(st1.завершён);
+        assert(q0 == 1);
+        assert(q1 == 1);
+        assert(q2 == 1);
 
-    st1 = new СтэкНить(
-    delegate проц()
-    {
+        сн_запустиСрез();
+        assert(q0 == 2);
+        assert(q1 == 1);
+        assert(q2 == 2);
+
+        st0.души();
+        сн_запустиСрез();
+        assert(st0.завершён);
+        assert(q0 == 2);
+        assert(q1 == 1);
+        assert(q2 == 3);
+
+        st2.пауза();
+        assert(st2.на_паузе);
+        st2.души();
+        assert(st2.завершён);
+
+        цел r = 0;
+
         try
         {
+            r++;
+            st2.души();
+            r++;
+        }
+        catch(ИсклСтэкНити e)
+        {
+            e.print;
+        }
+
+        assert(st2.завершён);
+        assert(r == 1);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Kill passed");
+    }
+
+    unittest
+    {
+        скажифнс("Testing объедини");
+
+        цел q0 = 0;
+        цел q1 = 0;
+
+        СтэкНить st0, st1;
+
+        st0 = new СтэкНить(
+            delegate проц()
+        {
+            q0++;
+            st1.объедини();
+            q0++;
+        }, 10);
+
+        st1 = new СтэкНить(
+            delegate проц()
+        {
             q1++;
-            throw new Исключение("Testing");
+            сн_жни();
             q1++;
+            st1.объедини();
+            q1++;
+        }, 0);
+
+        try
+        {
+            st0.объедини();
+            assert(false);
+        }
+        catch(ИсклСтэкНити e)
+        {
+            e.print();
+        }
+
+        сн_запустиСрез();
+
+        assert(st0.жив);
+        assert(st1.жив);
+        assert(q0 == 1);
+        assert(q1 == 1);
+
+        try
+        {
+            сн_запустиСрез();
+            assert(false);
+        }
+        catch(Исключение e)
+        {
+            e.print;
+        }
+
+        assert(st0.жив);
+        assert(st1.завершён);
+        assert(q0 == 1);
+        assert(q1 == 2);
+
+        сн_запустиСрез();
+        assert(st0.завершён);
+        assert(q0 == 2);
+        assert(q1 == 2);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Join passed");
+    }
+
+    unittest
+    {
+        скажифнс("Testing перезапуск");
+        assert(сн_члоНитей == 0);
+
+        цел q0 = 0;
+        цел q1 = 0;
+
+        СтэкНить st0, st1;
+
+        st0 = new СтэкНить(
+            delegate проц()
+        {
+            q0++;
+            сн_жни();
+            st0.перезапуск();
+        });
+
+        сн_запустиСрез();
+        assert(st0.готов);
+        assert(q0 == 1);
+
+        сн_запустиСрез();
+        assert(st0.готов);
+        assert(q0 == 1);
+
+        сн_запустиСрез();
+        assert(st0.готов);
+        assert(q0 == 2);
+
+        st0.души();
+        assert(st0.завершён);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Testing the other перезапуск");
+
+        st1 = new СтэкНить(
+            delegate проц()
+        {
+            q1++;
+            while(true)
+            {
+                сн_жни();
+            }
+        });
+
+        assert(st1.готов);
+
+        сн_запустиСрез();
+        assert(q1 == 1);
+
+        сн_запустиСрез();
+        assert(q1 == 1);
+
+        st1.перезапуск();
+        сн_запустиСрез();
+        assert(st1.готов);
+        assert(q1 == 2);
+
+        st1.пауза();
+        сн_запустиСрез();
+        assert(st1.на_паузе);
+        assert(q1 == 2);
+
+        st1.перезапуск();
+        st1.возобнови();
+        сн_запустиСрез();
+        assert(st1.готов);
+        assert(q1 == 3);
+
+        st1.души();
+        st1.перезапуск();
+        assert(st1.на_паузе);
+        st1.возобнови();
+
+        сн_запустиСрез();
+        assert(st1.готов);
+        assert(q1 == 4);
+
+        st1.души();
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Restart passed");
+    }
+
+    unittest
+    {
+        скажифнс("Testing abort / reset");
+        assert(сн_члоНитей == 0);
+
+        try
+        {
+            сн_прекратиСрез();
+            assert(false);
+        }
+        catch(ИсклСтэкНити e)
+        {
+            e.print;
+        }
+
+
+        цел q0 = 0;
+        цел q1 = 0;
+        цел q2 = 0;
+
+        СтэкНить st0 = new СтэкНить(
+            delegate проц()
+        {
+            while(true)
+            {
+                скажифнс("st0");
+                q0++;
+                сн_прекратиСрез();
+                сн_жни();
+            }
+        }, 10);
+
+        СтэкНить st1 = new СтэкНить(
+            delegate проц()
+        {
+            while(true)
+            {
+                скажифнс("st1");
+                q1++;
+                сн_прекратиСрез();
+                сн_жни();
+            }
+        }, 5);
+
+        СтэкНить st2 = new СтэкНить(
+            delegate проц()
+        {
+            while(true)
+            {
+                скажифнс("st2");
+                q2++;
+                сн_прекратиСрез();
+                сн_жни();
+            }
+        }, 0);
+
+        сн_запустиСрез();
+        assert(q0 == 1);
+        assert(q1 == 0);
+        assert(q2 == 0);
+
+        сн_запустиСрез();
+        assert(q0 == 1);
+        assert(q1 == 1);
+        assert(q2 == 0);
+
+        сн_запустиСрез();
+        assert(q0 == 1);
+        assert(q1 == 1);
+        assert(q2 == 1);
+
+        сн_запустиСрез();
+        assert(q0 == 2);
+        assert(q1 == 1);
+        assert(q2 == 1);
+
+        сн_перезапустиСрез();
+        сн_запустиСрез();
+        assert(q0 == 3);
+        assert(q1 == 1);
+        assert(q2 == 1);
+
+        st0.души();
+        st1.души();
+        st2.души();
+
+        сн_запустиСрез();
+        assert(q0 == 3);
+        assert(q1 == 1);
+        assert(q2 == 1);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("Abort slice passed");
+    }
+
+    unittest
+    {
+        скажифнс("Testing бросьЖни");
+
+        цел q0 = 0;
+
+        СтэкНить st0 = new СтэкНить(
+            delegate проц()
+        {
+            q0++;
+            сн_бросайЖни(new Исключение("testing сн_бросайЖни"));
+            q0++;
+        });
+
+        try
+        {
+            сн_запустиСрез();
+            assert(false);
         }
         catch(Исключение e)
         {
             e.print();
         }
 
-        while(true)
-        {
-            q2++;
-            сн_жни();
-        }
-    });
+        assert(q0 == 1);
+        assert(st0.готов);
 
-    сн_запустиСрез();
-    assert(st1.готов);
-    assert(q0 == 1);
-    assert(q1 == 1);
-    assert(q2 == 1);
-    assert(q3 == 1);
-
-    st1.души;
-    assert(st1.завершён);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Исключение handling passed!");
-}
-
-unittest
-{
-    скажифнс("Testing thread pausing");
-
-    //Test пауза
-    цел q = 0;
-    цел r = 0;
-    цел s = 0;
-
-    СтэкНить st0;
-
-    st0 = new СтэкНить(
-    delegate проц()
-    {
-        s++;
-        st0.пауза();
-        q++;
-    });
-
-    try
-    {
-        st0.возобнови();
-    }
-    catch(Исключение e)
-    {
-        e.print;
-        r ++;
-    }
-
-    assert(st0);
-    assert(q == 0);
-    assert(r == 1);
-    assert(s == 0);
-
-    st0.пауза();
-    assert(st0.на_паузе);
-
-    try
-    {
-        st0.пауза();
-    }
-    catch(Исключение e)
-    {
-        e.print;
-        r ++;
-    }
-
-    сн_запустиСрез();
-
-    assert(q == 0);
-    assert(r == 2);
-    assert(s == 0);
-
-    st0.возобнови();
-    assert(st0.готов);
-
-    сн_запустиСрез();
-
-    assert(st0.на_паузе);
-    assert(q == 0);
-    assert(r == 2);
-    assert(s == 1);
-
-    st0.возобнови();
-    сн_запустиСрез();
-
-    assert(st0.завершён);
-    assert(q == 1);
-    assert(r == 2);
-    assert(s == 1);
-
-    try
-    {
-        st0.пауза();
-    }
-    catch(Исключение e)
-    {
-        e.print;
-        r ++;
-    }
-
-    сн_запустиСрез();
-
-    assert(st0.завершён);
-    assert(q == 1);
-    assert(r == 3);
-    assert(s == 1);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Pause passed!");
-}
-
-
-unittest
-{
-    скажифнс("Testing души");
-
-    цел q0 = 0;
-    цел q1 = 0;
-    цел q2 = 0;
-
-    СтэкНить st0, st1, st2;
-
-    st0 = new СтэкНить(
-    delegate проц()
-    {
-        while(true)
-        {
-            q0++;
-            сн_жни();
-        }
-    });
-
-    st1 = new СтэкНить(
-    delegate проц()
-    {
-        q1++;
-        st1.души();
-        q1++;
-    });
-
-    st2 = new СтэкНить(
-    delegate проц()
-    {
-        while(true)
-        {
-            q2++;
-            сн_жни();
-        }
-    });
-
-    assert(st1.готов);
-
-    сн_запустиСрез();
-
-    assert(st1.завершён);
-    assert(q0 == 1);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    сн_запустиСрез();
-    assert(q0 == 2);
-    assert(q1 == 1);
-    assert(q2 == 2);
-
-    st0.души();
-    сн_запустиСрез();
-    assert(st0.завершён);
-    assert(q0 == 2);
-    assert(q1 == 1);
-    assert(q2 == 3);
-
-    st2.пауза();
-    assert(st2.на_паузе);
-    st2.души();
-    assert(st2.завершён);
-
-    цел r = 0;
-
-    try
-    {
-        r++;
-        st2.души();
-        r++;
-    }
-    catch(ИсклСтэкНити e)
-    {
-        e.print;
-    }
-
-    assert(st2.завершён);
-    assert(r == 1);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Kill passed");
-}
-
-unittest
-{
-    скажифнс("Testing объедини");
-
-    цел q0 = 0;
-    цел q1 = 0;
-
-    СтэкНить st0, st1;
-
-    st0 = new СтэкНить(
-    delegate проц()
-    {
-        q0++;
-        st1.объедини();
-        q0++;
-    }, 10);
-
-    st1 = new СтэкНить(
-    delegate проц()
-    {
-        q1++;
-        сн_жни();
-        q1++;
-        st1.объедини();
-        q1++;
-    }, 0);
-
-    try
-    {
-        st0.объедини();
-        assert(false);
-    }
-    catch(ИсклСтэкНити e)
-    {
-        e.print();
-    }
-
-    сн_запустиСрез();
-
-    assert(st0.жив);
-    assert(st1.жив);
-    assert(q0 == 1);
-    assert(q1 == 1);
-
-    try
-    {
         сн_запустиСрез();
-        assert(false);
+        assert(q0 == 2);
+        assert(st0.завершён);
+
+        assert(сн_члоНитей == 0);
+        скажифнс("бросьЖни passed");
     }
-    catch(Исключение e)
-    {
-        e.print;
-    }
-
-    assert(st0.жив);
-    assert(st1.завершён);
-    assert(q0 == 1);
-    assert(q1 == 2);
-
-    сн_запустиСрез();
-    assert(st0.завершён);
-    assert(q0 == 2);
-    assert(q1 == 2);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Join passed");
-}
-
-unittest
-{
-    скажифнс("Testing перезапуск");
-    assert(сн_члоНитей == 0);
-
-    цел q0 = 0;
-    цел q1 = 0;
-
-    СтэкНить st0, st1;
-
-    st0 = new СтэкНить(
-    delegate проц()
-    {
-        q0++;
-        сн_жни();
-        st0.перезапуск();
-    });
-
-    сн_запустиСрез();
-    assert(st0.готов);
-    assert(q0 == 1);
-
-    сн_запустиСрез();
-    assert(st0.готов);
-    assert(q0 == 1);
-
-    сн_запустиСрез();
-    assert(st0.готов);
-    assert(q0 == 2);
-
-    st0.души();
-    assert(st0.завершён);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Testing the other перезапуск");
-
-    st1 = new СтэкНить(
-    delegate проц()
-    {
-        q1++;
-        while(true)
-        {
-            сн_жни();
-        }
-    });
-
-    assert(st1.готов);
-
-    сн_запустиСрез();
-    assert(q1 == 1);
-
-    сн_запустиСрез();
-    assert(q1 == 1);
-
-    st1.перезапуск();
-    сн_запустиСрез();
-    assert(st1.готов);
-    assert(q1 == 2);
-
-    st1.пауза();
-    сн_запустиСрез();
-    assert(st1.на_паузе);
-    assert(q1 == 2);
-
-    st1.перезапуск();
-    st1.возобнови();
-    сн_запустиСрез();
-    assert(st1.готов);
-    assert(q1 == 3);
-
-    st1.души();
-    st1.перезапуск();
-    assert(st1.на_паузе);
-    st1.возобнови();
-
-    сн_запустиСрез();
-    assert(st1.готов);
-    assert(q1 == 4);
-
-    st1.души();
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Restart passed");
-}
-
-unittest
-{
-    скажифнс("Testing abort / reset");
-    assert(сн_члоНитей == 0);
-
-    try
-    {
-        сн_прекратиСрез();
-        assert(false);
-    }
-    catch(ИсклСтэкНити e)
-    {
-        e.print;
-    }
-
-
-    цел q0 = 0;
-    цел q1 = 0;
-    цел q2 = 0;
-
-    СтэкНить st0 = new СтэкНить(
-    delegate проц()
-    {
-        while(true)
-        {
-            скажифнс("st0");
-            q0++;
-            сн_прекратиСрез();
-            сн_жни();
-        }
-    }, 10);
-
-    СтэкНить st1 = new СтэкНить(
-    delegate проц()
-    {
-        while(true)
-        {
-            скажифнс("st1");
-            q1++;
-            сн_прекратиСрез();
-            сн_жни();
-        }
-    }, 5);
-
-    СтэкНить st2 = new СтэкНить(
-    delegate проц()
-    {
-        while(true)
-        {
-            скажифнс("st2");
-            q2++;
-            сн_прекратиСрез();
-            сн_жни();
-        }
-    }, 0);
-
-    сн_запустиСрез();
-    assert(q0 == 1);
-    assert(q1 == 0);
-    assert(q2 == 0);
-
-    сн_запустиСрез();
-    assert(q0 == 1);
-    assert(q1 == 1);
-    assert(q2 == 0);
-
-    сн_запустиСрез();
-    assert(q0 == 1);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    сн_запустиСрез();
-    assert(q0 == 2);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    сн_перезапустиСрез();
-    сн_запустиСрез();
-    assert(q0 == 3);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    st0.души();
-    st1.души();
-    st2.души();
-
-    сн_запустиСрез();
-    assert(q0 == 3);
-    assert(q1 == 1);
-    assert(q2 == 1);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("Abort slice passed");
-}
-
-unittest
-{
-    скажифнс("Testing бросьЖни");
-
-    цел q0 = 0;
-
-    СтэкНить st0 = new СтэкНить(
-    delegate проц()
-    {
-        q0++;
-        сн_бросайЖни(new Исключение("testing сн_бросайЖни"));
-        q0++;
-    });
-
-    try
-    {
-        сн_запустиСрез();
-        assert(false);
-    }
-    catch(Исключение e)
-    {
-        e.print();
-    }
-
-    assert(q0 == 1);
-    assert(st0.готов);
-
-    сн_запустиСрез();
-    assert(q0 == 2);
-    assert(st0.завершён);
-
-    assert(сн_члоНитей == 0);
-    скажифнс("бросьЖни passed");
-}
 }

@@ -12,19 +12,19 @@
 
         With gratitude в_ Dr Jurgen A Doornik. See his paper entitled
         "Conversion of high-период random numbers в_ floating точка"
-        
+
 *******************************************************************************/
 
 module math.random.Kiss;
 import base;
 
 version (Win32)
-         private extern(Windows) цел QueryPerformanceCounter (бдол *);
+private extern(Windows) цел QueryPerformanceCounter (бдол *);
 
 version (Posix)
-        {
-        private import rt.core.stdc.posix.sys.time;
-        }
+{
+    private import rt.core.stdc.posix.sys.time;
+}
 
 
 /******************************************************************************
@@ -50,163 +50,163 @@ version (Posix)
 
         Note that this should be passed by reference, unless you really
         intend в_ provопрe a local копируй в_ a callee
-        
+
 ******************************************************************************/
 
 struct Kiss
 {
-        ///
-        public alias натурал  вЦел;
-        ///
-        public alias дво вРеал;
-        
-        private бцел kiss_k;
-        private бцел kiss_m;
-        private бцел kiss_x = 1;
-        private бцел kiss_y = 2;
-        private бцел kiss_z = 4;
-        private бцел kiss_w = 8;
-        private бцел kiss_carry = 0;
-        
-        private const дво M_RAN_INVM32 = 2.32830643653869628906e-010,
-                             M_RAN_INVM52 = 2.22044604925031308085e-016;
-      
-        /**********************************************************************
+    ///
+    public alias натурал  вЦел;
+    ///
+    public alias дво вРеал;
 
-                A global, shared экземпляр, seeded via startup время
+    private бцел kiss_k;
+    private бцел kiss_m;
+    private бцел kiss_x = 1;
+    private бцел kiss_y = 2;
+    private бцел kiss_z = 4;
+    private бцел kiss_w = 8;
+    private бцел kiss_carry = 0;
 
-        **********************************************************************/
+    private const дво M_RAN_INVM32 = 2.32830643653869628906e-010,
+                         M_RAN_INVM52 = 2.22044604925031308085e-016;
 
-        public static Kiss экземпляр; 
+    /**********************************************************************
 
-        static this ()
+            A global, shared экземпляр, seeded via startup время
+
+    **********************************************************************/
+
+    public static Kiss экземпляр;
+
+    static this ()
+    {
+        экземпляр.сей;
+    }
+
+    /**********************************************************************
+
+            Creates и seeds a new generator with the текущ время
+
+    **********************************************************************/
+
+    static Kiss opCall ()
+    {
+        Kiss случ;
+        случ.сей;
+        return случ;
+    }
+
+    /**********************************************************************
+
+            Seed the generator with текущ время
+
+    **********************************************************************/
+
+    проц сей ()
+    {
+        бдол s;
+
+        version (Posix)
         {
-                экземпляр.сей;
+            значврем tv;
+
+            gettimeofday (&tv, пусто);
+            s = tv.микросек;
         }
+        version (Win32)
+        QueryPerformanceCounter (&s);
 
-        /**********************************************************************
+        return сей (cast(бцел) s);
+    }
 
-                Creates и seeds a new generator with the текущ время
+    /**********************************************************************
 
-        **********************************************************************/
+            Seed the generator with a provопрed значение
 
-        static Kiss opCall ()
-        {
-                Kiss случ;
-                случ.сей;
-                return случ;
-        }
+    **********************************************************************/
 
-        /**********************************************************************
+    проц сей (бцел сей)
+    {
+        kiss_x = сей | 1;
+        kiss_y = сей | 2;
+        kiss_z = сей | 4;
+        kiss_w = сей | 8;
+        kiss_carry = 0;
+    }
 
-                Seed the generator with текущ время
+    /**********************************************************************
 
-        **********************************************************************/
+            Returns X such that 0 <= X <= бцел.max
 
-        проц сей ()
-        {
-                бдол s;
+    **********************************************************************/
 
-                version (Posix)
-                        {
-                        значврем tv;
+    бцел натурал ()
+    {
+        kiss_x = kiss_x * 69069 + 1;
+        kiss_y ^= kiss_y << 13;
+        kiss_y ^= kiss_y >> 17;
+        kiss_y ^= kiss_y << 5;
+        kiss_k = (kiss_z >> 2) + (kiss_w >> 3) + (kiss_carry >> 2);
+        kiss_m = kiss_w + kiss_w + kiss_z + kiss_carry;
+        kiss_z = kiss_w;
+        kiss_w = kiss_m;
+        kiss_carry = kiss_k >> 30;
+        return kiss_x + kiss_y + kiss_w;
+    }
 
-                        gettimeofday (&tv, пусто);
-                        s = tv.микросек;
-                        }
-                version (Win32)
-                         QueryPerformanceCounter (&s);
+    /**********************************************************************
 
-                return сей (cast(бцел) s);
-        }
+            Returns X such that 0 <= X < max
 
-        /**********************************************************************
+            Note that max is исключительно, making it compatible with
+            Массив indexing
 
-                Seed the generator with a provопрed значение
+    **********************************************************************/
 
-        **********************************************************************/
+    бцел натурал (бцел max)
+    {
+        return натурал % max;
+    }
 
-        проц сей (бцел сей)
-        {
-                kiss_x = сей | 1;
-                kiss_y = сей | 2;
-                kiss_z = сей | 4;
-                kiss_w = сей | 8;
-                kiss_carry = 0;
-        }
+    /**********************************************************************
 
-        /**********************************************************************
+            Returns X such that min <= X < max
 
-                Returns X such that 0 <= X <= бцел.max
+            Note that max is исключительно, making it compatible with
+            Массив indexing
 
-        **********************************************************************/
+    **********************************************************************/
 
-        бцел натурал ()
-        {
-                kiss_x = kiss_x * 69069 + 1;
-                kiss_y ^= kiss_y << 13;
-                kiss_y ^= kiss_y >> 17;
-                kiss_y ^= kiss_y << 5;
-                kiss_k = (kiss_z >> 2) + (kiss_w >> 3) + (kiss_carry >> 2);
-                kiss_m = kiss_w + kiss_w + kiss_z + kiss_carry;
-                kiss_z = kiss_w;
-                kiss_w = kiss_m;
-                kiss_carry = kiss_k >> 30;
-                return kiss_x + kiss_y + kiss_w;
-        }
+    бцел натурал (бцел min, бцел max)
+    {
+        return (натурал % (max-min)) + min;
+    }
 
-        /**********************************************************************
+    /**********************************************************************
 
-                Returns X such that 0 <= X < max
+            Returns a значение in the range [0, 1) using 32 биты
+            of точность (with thanks в_ Dr Jurgen A Doornik)
 
-                Note that max is исключительно, making it compatible with
-                Массив indexing
+    **********************************************************************/
 
-        **********************************************************************/
+    дво дробь ()
+    {
+        return ((cast(цел) натурал) * M_RAN_INVM32 + (0.5 + M_RAN_INVM32 / 2));
+    }
 
-        бцел натурал (бцел max)
-        {
-                return натурал % max;
-        }
+    /**********************************************************************
 
-        /**********************************************************************
+            Returns a значение in the range [0, 1) using 52 биты
+            of точность (with thanks в_ Dr Jurgen A Doornik)
 
-                Returns X such that min <= X < max
+    **********************************************************************/
 
-                Note that max is исключительно, making it compatible with
-                Массив indexing
-
-        **********************************************************************/
-
-        бцел натурал (бцел min, бцел max)
-        {
-                return (натурал % (max-min)) + min;
-        }
-        
-        /**********************************************************************
-        
-                Returns a значение in the range [0, 1) using 32 биты
-                of точность (with thanks в_ Dr Jurgen A Doornik)
-
-        **********************************************************************/
-
-        дво дробь ()
-        {
-                return ((cast(цел) натурал) * M_RAN_INVM32 + (0.5 + M_RAN_INVM32 / 2));
-        }
-
-        /**********************************************************************
-
-                Returns a значение in the range [0, 1) using 52 биты
-                of точность (with thanks в_ Dr Jurgen A Doornik)
-
-        **********************************************************************/
-
-        дво дробьДоп ()
-        {
-                return ((cast(цел) натурал) * M_RAN_INVM32 + (0.5 + M_RAN_INVM52 / 2) + 
-                       ((cast(цел) натурал) & 0x000FFFFF) * M_RAN_INVM52);
-        }
+    дво дробьДоп ()
+    {
+        return ((cast(цел) натурал) * M_RAN_INVM32 + (0.5 + M_RAN_INVM52 / 2) +
+                ((cast(цел) натурал) & 0x000FFFFF) * M_RAN_INVM52);
+    }
 }
 
 
@@ -218,40 +218,40 @@ struct Kiss
 
 debug (Kiss)
 {
-        import io.Stdout;
-        import time.StopWatch;
+    import io.Stdout;
+    import time.StopWatch;
 
-        проц main()
+    проц main()
+    {
+        auto dbl = Kiss();
+        auto счёт = 100_000_000;
+        Секундомер w;
+
+        w.старт;
+        дво v1;
+        for (цел i=счёт; --i;)
+            v1 = dbl.дво;
+        Стдвыв.форматнс ("{} дво, {}/s, {:f10}", счёт, счёт/w.stop, v1);
+
+        w.старт;
+        for (цел i=счёт; --i;)
+            v1 = dbl.дробьДоп;
+        Стдвыв.форматнс ("{} дробьДоп, {}/s, {:f10}", счёт, счёт/w.stop, v1);
+
+        for (цел i=счёт; --i;)
         {
-                auto dbl = Kiss();
-                auto счёт = 100_000_000;
-                Секундомер w;
-
-                w.старт;
-                дво v1;
-                for (цел i=счёт; --i;)
-                     v1 = dbl.дво;
-                Стдвыв.форматнс ("{} дво, {}/s, {:f10}", счёт, счёт/w.stop, v1);
-
-                w.старт;
-                for (цел i=счёт; --i;)
-                     v1 = dbl.дробьДоп;
-                Стдвыв.форматнс ("{} дробьДоп, {}/s, {:f10}", счёт, счёт/w.stop, v1);
-
-                for (цел i=счёт; --i;)
-                    {
-                    auto v = dbl.дво;
-                    if (v <= 0.0 || v >= 1.0)
-                       {
-                       Стдвыв.форматнс ("дво {:f10}", v);
-                       break;
-                       }
-                    v = dbl.дробьДоп;
-                    if (v <= 0.0 || v >= 1.0)
-                       {
-                       Стдвыв.форматнс ("дробьДоп {:f10}", v);
-                       break;
-                       }
-                    }
+            auto v = dbl.дво;
+            if (v <= 0.0 || v >= 1.0)
+            {
+                Стдвыв.форматнс ("дво {:f10}", v);
+                break;
+            }
+            v = dbl.дробьДоп;
+            if (v <= 0.0 || v >= 1.0)
+            {
+                Стдвыв.форматнс ("дробьДоп {:f10}", v);
+                break;
+            }
         }
+    }
 }

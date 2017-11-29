@@ -1,16 +1,23 @@
 ﻿module io.vfs.ZipFolder;
 
 import Путь = io.Path;
-import io.device.File : Файл;
-import io.FilePath : ФПуть;
-import io.device.TempFile : ВремФайл;
-import util.compress.Zip : ЧитательЗип, ЧитательБлокаЗип,
-       ПисательЗип, ПисательБлокаЗип, ЗаписьЗип, ИнфоОЗаписиЗип, Метод;
-import io.model : ИПровод, ИПотокВвода, ИПотокВывода;
-import io.vfs.model : ПапкаВфс, ЗаписьПапкиВфс, ФайлВфс,
-       ПапкиВфс, ФайлыВфс, ФильтрВфс, СтатсВфс, ИнфОФильтреВфс,
-       ИнфОВфс, СинхВфс;
-import time.Time : Время;
+import io.device.File :
+Файл;
+import io.FilePath :
+ФПуть;
+import io.device.TempFile :
+ВремФайл;
+import util.compress.Zip :
+ЧитательЗип, ЧитательБлокаЗип,
+ПисательЗип, ПисательБлокаЗип, ЗаписьЗип, ИнфоОЗаписиЗип, Метод;
+import io.model :
+ИПровод, ИПотокВвода, ИПотокВывода;
+import io.vfs.model :
+ПапкаВфс, ЗаписьПапкиВфс, ФайлВфс,
+ПапкиВфс, ФайлыВфс, ФильтрВфс, СтатсВфс, ИнфОФильтреВфс,
+ИнфОВфс, СинхВфс;
+import time.Time :
+Время;
 
 
 
@@ -130,7 +137,7 @@ class ФайлЗип : ФайлВфс
     final ФайлВфс dup();
     final Время изменён();
 
-    private:
+private:
     ПапкаЗип архив;
     Запись* запись;
 
@@ -229,7 +236,8 @@ private:
 
 // Dependencies
 private:
-import io.device.Conduit : Провод;
+import io.device.Conduit :
+Провод;
 
 /*******************************************************************************
 

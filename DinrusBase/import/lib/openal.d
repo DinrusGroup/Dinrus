@@ -35,7 +35,7 @@ import dinrus;
 private
 {
 //import stdrus;
-pragma(lib,"dinrus.lib");
+    pragma(lib,"dinrus.lib");
 }
 
 const bool AL_VERSION_1_0 = true;
@@ -231,53 +231,53 @@ enum : ALCenum
 
 enum : ALenum
 {
-	// AL_LOKI_IMA_ADPCM_format
-	AL_FORMAT_IMA_ADPCM_MONO16_EXT			= 0x10000,
-	AL_FORMAT_IMA_ADPCM_STEREO16_EXT		= 0x10001,
-	
-	// AL_LOKI_WAVE_format
-	AL_FORMAT_WAVE_EXT						= 0x10002,
-	
-	// AL_EXT_vorbis
-	AL_FORMAT_VORBIS_EXT					= 0x10003,
-	
-	// AL_LOKI_quadriphonic
-	AL_FORMAT_QUAD8_LOKI					= 0x10004,
-	AL_FORMAT_QUAD16_LOKI					= 0x10005,
-	
-	// AL_EXT_float32
-	AL_FORMAT_MONO_FLOAT32					= 0x10010,
-	AL_FORMAT_STEREO_FLOAT32				= 0x10011,
-	
-	// ALC_LOKI_audio_channel
-	ALC_CHAN_MAIN_LOKI						= 0x500001,
-	ALC_CHAN_PCM_LOKI						= 0x500002,
-	ALC_CHAN_CD_LOKI						= 0x500003,
-	
-	// ALC_ENUMERATE_ALL_EXT
-	ALC_DEFAULT_ALL_DEVICES_SPECIFIER		= 0x1012,
-	ALC_ALL_DEVICES_SPECIFIER				= 0x1013,
-	
-	// AL_EXT_MCFORMATS
-	AL_FORMAT_QUAD8							= 0x1204,
-	AL_FORMAT_QUAD16                   		= 0x1205,
-	AL_FORMAT_QUAD32                   		= 0x1206,
-	AL_FORMAT_REAR8                    		= 0x1207,
-	AL_FORMAT_REAR16                   		= 0x1208,
-	AL_FORMAT_REAR32                   		= 0x1209,
-	AL_FORMAT_51CHN8                   		= 0x120A,
-	AL_FORMAT_51CHN16                  		= 0x120B,
-	AL_FORMAT_51CHN32                  		= 0x120C,
-	AL_FORMAT_61CHN8                   		= 0x120D,
-	AL_FORMAT_61CHN16                  		= 0x120E,
-	AL_FORMAT_61CHN32                  		= 0x120F,
-	AL_FORMAT_71CHN8                   		= 0x1210,
-	AL_FORMAT_71CHN16                  		= 0x1211,
-	AL_FORMAT_71CHN32                  		= 0x1212,
-	
-	// AL_EXT_IMA4
-	AL_FORMAT_MONO_IMA4						= 0x1300,
-	AL_FORMAT_STEREO_IMA4					= 0x1301,
+    // AL_LOKI_IMA_ADPCM_format
+    AL_FORMAT_IMA_ADPCM_MONO16_EXT			= 0x10000,
+    AL_FORMAT_IMA_ADPCM_STEREO16_EXT		= 0x10001,
+
+    // AL_LOKI_WAVE_format
+    AL_FORMAT_WAVE_EXT						= 0x10002,
+
+    // AL_EXT_vorbis
+    AL_FORMAT_VORBIS_EXT					= 0x10003,
+
+    // AL_LOKI_quadriphonic
+    AL_FORMAT_QUAD8_LOKI					= 0x10004,
+    AL_FORMAT_QUAD16_LOKI					= 0x10005,
+
+    // AL_EXT_float32
+    AL_FORMAT_MONO_FLOAT32					= 0x10010,
+    AL_FORMAT_STEREO_FLOAT32				= 0x10011,
+
+    // ALC_LOKI_audio_channel
+    ALC_CHAN_MAIN_LOKI						= 0x500001,
+    ALC_CHAN_PCM_LOKI						= 0x500002,
+    ALC_CHAN_CD_LOKI						= 0x500003,
+
+    // ALC_ENUMERATE_ALL_EXT
+    ALC_DEFAULT_ALL_DEVICES_SPECIFIER		= 0x1012,
+    ALC_ALL_DEVICES_SPECIFIER				= 0x1013,
+
+    // AL_EXT_MCFORMATS
+    AL_FORMAT_QUAD8							= 0x1204,
+    AL_FORMAT_QUAD16                   		= 0x1205,
+    AL_FORMAT_QUAD32                   		= 0x1206,
+    AL_FORMAT_REAR8                    		= 0x1207,
+    AL_FORMAT_REAR16                   		= 0x1208,
+    AL_FORMAT_REAR32                   		= 0x1209,
+    AL_FORMAT_51CHN8                   		= 0x120A,
+    AL_FORMAT_51CHN16                  		= 0x120B,
+    AL_FORMAT_51CHN32                  		= 0x120C,
+    AL_FORMAT_61CHN8                   		= 0x120D,
+    AL_FORMAT_61CHN16                  		= 0x120E,
+    AL_FORMAT_61CHN32                  		= 0x120F,
+    AL_FORMAT_71CHN8                   		= 0x1210,
+    AL_FORMAT_71CHN16                  		= 0x1211,
+    AL_FORMAT_71CHN32                  		= 0x1212,
+
+    // AL_EXT_IMA4
+    AL_FORMAT_MONO_IMA4						= 0x1300,
+    AL_FORMAT_STEREO_IMA4					= 0x1301,
 }
 
 private проц грузиАЛ(Биб биб)
@@ -372,120 +372,121 @@ private проц грузиАЛ(Биб биб)
 
 
 ЖанБибгр      АЛ;
-static this() {
+static this()
+{
     АЛ.заряжай("OpenAL32.dll", &грузиАЛ);
-	АЛ.загружай();
+    АЛ.загружай();
 }
 
 
 extern(C):
 
-void function(ALenum) alEnable;
-void function(ALenum) alDisable;
-ALboolean function(ALenum) alIsEnabled;
+    void function(ALenum) alEnable;
+    void function(ALenum) alDisable;
+    ALboolean function(ALenum) alIsEnabled;
 
-char* function(ALenum) alGetString;
-void function(ALenum, ALboolean*) alGetBooleanv;
-void function(ALenum, ALint*) alGetIntegerv;
-void function(ALenum, ALfloat*) alGetFloatv;
-void function(ALenum, ALdouble*) alGetDoublev;
-ALboolean function(ALenum) alGetBoolean;
-ALint function(ALenum) alGetInteger;
-ALfloat function(ALenum) alGetFloat;
-ALdouble function(ALenum) alGetDouble;
-ALenum function() alGetError;
+    char* function(ALenum) alGetString;
+    void function(ALenum, ALboolean*) alGetBooleanv;
+    void function(ALenum, ALint*) alGetIntegerv;
+    void function(ALenum, ALfloat*) alGetFloatv;
+    void function(ALenum, ALdouble*) alGetDoublev;
+    ALboolean function(ALenum) alGetBoolean;
+    ALint function(ALenum) alGetInteger;
+    ALfloat function(ALenum) alGetFloat;
+    ALdouble function(ALenum) alGetDouble;
+    ALenum function() alGetError;
 
-ALboolean function(in char*) alIsExtensionPresent;
-ALboolean function(in char*) alGetProcAddress;
-ALenum function(in char*) alGetEnumValue;
+    ALboolean function(in char*) alIsExtensionPresent;
+    ALboolean function(in char*) alGetProcAddress;
+    ALenum function(in char*) alGetEnumValue;
 
-void function(ALenum, ALfloat) alListenerf;
-void function(ALenum, ALfloat, ALfloat, ALfloat) alListener3f;
-void function(ALenum, in ALfloat*) alListenerfv;
-void function(ALenum, ALint) alListeneri;
-void function(ALenum, ALint, ALint, ALint) alListener3i;
-void function(ALenum, in ALint*) alListeneriv;
+    void function(ALenum, ALfloat) alListenerf;
+    void function(ALenum, ALfloat, ALfloat, ALfloat) alListener3f;
+    void function(ALenum, in ALfloat*) alListenerfv;
+    void function(ALenum, ALint) alListeneri;
+    void function(ALenum, ALint, ALint, ALint) alListener3i;
+    void function(ALenum, in ALint*) alListeneriv;
 
-void function(ALenum, ALfloat*) alGetListenerf;
-void function(ALenum, ALfloat*, ALfloat*, ALfloat*) alGetListener3f;
-void function(ALenum, ALfloat*) alGetListenerfv;
-void function(ALenum, ALint*) alGetListeneri;
-void function(ALenum, ALint*, ALint*, ALint*) alGetListener3i;
-void function(ALenum, ALint*) alGetListeneriv;
+    void function(ALenum, ALfloat*) alGetListenerf;
+    void function(ALenum, ALfloat*, ALfloat*, ALfloat*) alGetListener3f;
+    void function(ALenum, ALfloat*) alGetListenerfv;
+    void function(ALenum, ALint*) alGetListeneri;
+    void function(ALenum, ALint*, ALint*, ALint*) alGetListener3i;
+    void function(ALenum, ALint*) alGetListeneriv;
 
-void function(ALsizei, ALuint*) alGenSources;
-void function(ALsizei, in ALuint*) alDeleteSources;
-ALboolean function(ALuint) alIsSource;
+    void function(ALsizei, ALuint*) alGenSources;
+    void function(ALsizei, in ALuint*) alDeleteSources;
+    ALboolean function(ALuint) alIsSource;
 
-void function(ALuint, ALenum, ALfloat) alSourcef;
-void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) alSource3f;
-void function(ALuint, ALenum, in ALfloat*) alSourcefv;
-void function(ALuint, ALenum, ALint) alSourcei;
-void function(ALuint, ALenum, ALint, ALint, ALint) alSource3i;
-void function(ALuint, ALenum, in ALint*) alSourceiv;
-
-
-void function(ALuint, ALenum, ALfloat*) alGetSourcef;
-void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) alGetSource3f;
-void function(ALuint, ALenum, ALfloat*) alGetSourcefv;
-void function(ALuint, ALenum, ALint*) alGetSourcei;
-void function(ALuint, ALenum, ALint*, ALint*, ALint*) alGetSource3i;
-void function(ALuint, ALenum, ALint*) alGetSourceiv;
-
-void function(ALsizei, in ALuint*) alSourcePlayv;
-void function(ALsizei, in ALuint*) alSourceStopv;
-void function(ALsizei, in ALuint*) alSourceRewindv;
-void function(ALsizei, in ALuint*) alSourcePausev;
-void function(ALuint) alSourcePlay;
-void function(ALuint) alSourcePause;
-void function(ALuint) alSourceRewind;
-void function(ALuint) alSourceStop;
-
-void function(ALuint, ALsizei, ALuint*) alSourceQueueBuffers;
-void function(ALuint, ALsizei, ALuint*) alSourceUnqueueBuffers;
-
-void function(ALsizei, ALuint*) alGenBuffers;
-void function(ALsizei, in ALuint*) alDeleteBuffers;
-ALboolean function(ALuint) alIsBuffer;
-void function(ALuint, ALenum, in ALvoid*, ALsizei, ALsizei) alBufferData;
-
-void function(ALuint, ALenum, ALfloat) alBufferf;
-void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) alBuffer3f;
-void function(ALuint, ALenum, in ALfloat*) alBufferfv;
-void function(ALuint, ALenum, ALint) alBufferi;
-void function(ALuint, ALenum, ALint, ALint, ALint) alBuffer3i;
-void function(ALuint, ALenum, in ALint*) alBufferiv;
-
-void function(ALuint, ALenum, ALfloat*) alGetBufferf;
-void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) alGetBuffer3f;
-void function(ALuint, ALenum, ALfloat*) alGetBufferfv;
-void function(ALuint, ALenum, ALint*) alGetBufferi;
-void function(ALuint, ALenum, ALint*, ALint*, ALint*) alGetBuffer3i;
-void function(ALuint, ALenum, ALint*) alGetBufferiv;
-
-void function(ALfloat) alDopplerFactor;
-void function(ALfloat) alDopplerVelocity;
-void function(ALfloat) alSpeedOfSound;
-void function(ALenum) alDistanceModel;
+    void function(ALuint, ALenum, ALfloat) alSourcef;
+    void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) alSource3f;
+    void function(ALuint, ALenum, in ALfloat*) alSourcefv;
+    void function(ALuint, ALenum, ALint) alSourcei;
+    void function(ALuint, ALenum, ALint, ALint, ALint) alSource3i;
+    void function(ALuint, ALenum, in ALint*) alSourceiv;
 
 
-ALCcontext* function(ALCdevice*, in ALCint*) alcCreateContext;
-ALCboolean function(ALCcontext*) alcMakeContextCurrent;
-void function(ALCcontext*) alcProcessContext;
-void function(ALCcontext*) alcSuspendContext;
-void function(ALCcontext*) alcDestroyContext;
-ALCcontext* function() alcGetCurrentContext;
-ALCdevice* function(ALCcontext*) alcGetContextsDevice;
-ALCdevice* function(in ALCchar*) alcOpenDevice;
-ALCboolean function(ALCdevice*) alcCloseDevice;
-ALCenum function(ALCdevice*) alcGetError;
-ALCboolean function(ALCdevice*, in char*) alcIsExtensionPresent;
-void* function(ALCdevice*, in char*) alcGetProcAddress;
-ALCenum function(ALCdevice*, in char*) alcGetEnumValue;
-char* function(ALCdevice*, ALCenum) alcGetString;
-void function(ALCdevice*, ALCenum, ALCsizei, ALCint*) alcGetIntegerv;
-ALCdevice* function(in char*, ALCuint, ALCenum, ALCsizei) alcCaptureOpenDevice;
-ALCboolean function(ALCdevice*) alcCaptureCloseDevice;
-void function(ALCdevice*) alcCaptureStart;
-void function(ALCdevice*) alcCaptureStop;
-void function(ALCdevice*, ALCvoid*, ALCsizei) alcCaptureSamples;
+    void function(ALuint, ALenum, ALfloat*) alGetSourcef;
+    void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) alGetSource3f;
+    void function(ALuint, ALenum, ALfloat*) alGetSourcefv;
+    void function(ALuint, ALenum, ALint*) alGetSourcei;
+    void function(ALuint, ALenum, ALint*, ALint*, ALint*) alGetSource3i;
+    void function(ALuint, ALenum, ALint*) alGetSourceiv;
+
+    void function(ALsizei, in ALuint*) alSourcePlayv;
+    void function(ALsizei, in ALuint*) alSourceStopv;
+    void function(ALsizei, in ALuint*) alSourceRewindv;
+    void function(ALsizei, in ALuint*) alSourcePausev;
+    void function(ALuint) alSourcePlay;
+    void function(ALuint) alSourcePause;
+    void function(ALuint) alSourceRewind;
+    void function(ALuint) alSourceStop;
+
+    void function(ALuint, ALsizei, ALuint*) alSourceQueueBuffers;
+    void function(ALuint, ALsizei, ALuint*) alSourceUnqueueBuffers;
+
+    void function(ALsizei, ALuint*) alGenBuffers;
+    void function(ALsizei, in ALuint*) alDeleteBuffers;
+    ALboolean function(ALuint) alIsBuffer;
+    void function(ALuint, ALenum, in ALvoid*, ALsizei, ALsizei) alBufferData;
+
+    void function(ALuint, ALenum, ALfloat) alBufferf;
+    void function(ALuint, ALenum, ALfloat, ALfloat, ALfloat) alBuffer3f;
+    void function(ALuint, ALenum, in ALfloat*) alBufferfv;
+    void function(ALuint, ALenum, ALint) alBufferi;
+    void function(ALuint, ALenum, ALint, ALint, ALint) alBuffer3i;
+    void function(ALuint, ALenum, in ALint*) alBufferiv;
+
+    void function(ALuint, ALenum, ALfloat*) alGetBufferf;
+    void function(ALuint, ALenum, ALfloat*, ALfloat*, ALfloat*) alGetBuffer3f;
+    void function(ALuint, ALenum, ALfloat*) alGetBufferfv;
+    void function(ALuint, ALenum, ALint*) alGetBufferi;
+    void function(ALuint, ALenum, ALint*, ALint*, ALint*) alGetBuffer3i;
+    void function(ALuint, ALenum, ALint*) alGetBufferiv;
+
+    void function(ALfloat) alDopplerFactor;
+    void function(ALfloat) alDopplerVelocity;
+    void function(ALfloat) alSpeedOfSound;
+    void function(ALenum) alDistanceModel;
+
+
+    ALCcontext* function(ALCdevice*, in ALCint*) alcCreateContext;
+    ALCboolean function(ALCcontext*) alcMakeContextCurrent;
+    void function(ALCcontext*) alcProcessContext;
+    void function(ALCcontext*) alcSuspendContext;
+    void function(ALCcontext*) alcDestroyContext;
+    ALCcontext* function() alcGetCurrentContext;
+    ALCdevice* function(ALCcontext*) alcGetContextsDevice;
+    ALCdevice* function(in ALCchar*) alcOpenDevice;
+    ALCboolean function(ALCdevice*) alcCloseDevice;
+    ALCenum function(ALCdevice*) alcGetError;
+    ALCboolean function(ALCdevice*, in char*) alcIsExtensionPresent;
+    void* function(ALCdevice*, in char*) alcGetProcAddress;
+    ALCenum function(ALCdevice*, in char*) alcGetEnumValue;
+    char* function(ALCdevice*, ALCenum) alcGetString;
+    void function(ALCdevice*, ALCenum, ALCsizei, ALCint*) alcGetIntegerv;
+    ALCdevice* function(in char*, ALCuint, ALCenum, ALCsizei) alcCaptureOpenDevice;
+    ALCboolean function(ALCdevice*) alcCaptureCloseDevice;
+    void function(ALCdevice*) alcCaptureStart;
+    void function(ALCdevice*) alcCaptureStop;
+    void function(ALCdevice*, ALCvoid*, ALCsizei) alcCaptureSamples;

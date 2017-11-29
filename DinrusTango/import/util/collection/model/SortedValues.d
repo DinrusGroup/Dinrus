@@ -16,7 +16,7 @@
 module util.collection.model.SortedValues;
 
 private import  util.collection.model.View,
-                util.collection.model.Comparator;
+        util.collection.model.Comparator;
 
 
 /**
@@ -42,10 +42,10 @@ private import  util.collection.model.View,
 public interface SortedValues(T) : View!(T)
 {
 
-        /**
-         * Report the Сравнитель использован for ordering
-        **/
+    /**
+     * Report the Сравнитель использован for ordering
+    **/
 
-        public Сравнитель!(T) сравнитель();
+    public Сравнитель!(T) сравнитель();
 }
 

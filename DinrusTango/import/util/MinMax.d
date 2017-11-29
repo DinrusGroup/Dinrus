@@ -3,11 +3,11 @@
         copyright:      Copyright (c) 2010 Kris. все rights reserved.
 
         license:        BSD стиль: $(LICENSE)
-        
+
         version:        Jan 2010: Initial release
-        
+
         author:         Kris
-    
+
 *******************************************************************************/
 
 module util.MinMax;
@@ -20,7 +20,7 @@ module util.MinMax;
 
 T min(T)(T a, T b)
 {
-        return a < b ? a : b;
+    return a < b ? a : b;
 }
 
 /*******************************************************************************
@@ -31,7 +31,7 @@ T min(T)(T a, T b)
 
 T max(T)(T a, T b)
 {
-        return a > b ? a : b;
+    return a > b ? a : b;
 }
 
 

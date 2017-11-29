@@ -32,5 +32,5 @@ import util.digest.Md5;
 /** Generates a UUID as described above. */
 Ууид новУуид(Ууид namespace, ткст имя)
 {
-        return Ууид.поИмени(namespace, имя, new Md5, 3);
+    return Ууид.поИмени(namespace, имя, new Md5, 3);
 }

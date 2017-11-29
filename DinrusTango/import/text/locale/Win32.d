@@ -3,10 +3,10 @@
 version (Windows)
 {
 
-цел дайКультуруПользователя();
+    цел дайКультуруПользователя();
 
-проц установиКультуруПользователя(цел lcid);
+    проц установиКультуруПользователя(цел lcid);
 
-цел сравниСтроку(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase);
+    цел сравниСтроку(цел lcid, ткст stringA, бцел offsetA, бцел lengthA, ткст stringB, бцел offsetB, бцел lengthB, бул ignoreCase);
 
 }

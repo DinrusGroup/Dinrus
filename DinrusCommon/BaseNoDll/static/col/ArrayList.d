@@ -29,7 +29,7 @@ private extern (C) дол _adSort(Array arr, ИнфОТипе иот);
  * Копии массива не делается, поэтому можно продолжать использовать
  * массив в обеих формах.
  */
-class МассивСписок(V) : СКлючом!(бцел, V), Список!(V) 
+class МассивСписок(V) : СКлючом!(бцел, V), Список!(V)
 {
     private V[] _массив;
     private бцел _изменение;
@@ -93,8 +93,9 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
      */
     struct курсор
     {
-        private V *укз;		alias укз ptr;
-        
+        private V *укз;
+        alias укз ptr;
+
         /**
          * дай the значение pointed to
          */
@@ -257,7 +258,7 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
         return _массив.length;
     }
 
-	alias длина length;
+    alias длина length;
     /**
      * return a курсор that points to the первый элемент in the list.
      */
@@ -573,7 +574,7 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
     {
         проверьИзменение();
         //
-        // does not change мутация because 
+        // does not change мутация because
         return _массив[ключ] = значение;
     }
 
@@ -724,7 +725,7 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
 
                 }
                 foreach(v; колл)
-                    _массив [i++] = v;
+                _массив [i++] = v;
                 _изменение++;
             }
         }
@@ -834,8 +835,8 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
     {
         бцел экземпляры = 0;
         foreach(x; this)
-            if(v == x)
-                экземпляры++;
+        if(v == x)
+            экземпляры++;
         return экземпляры;
     }
 
@@ -1026,10 +1027,16 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
         }
 
         /// Returns a хэш of the instance of a type.
-        override hash_t дайХэш(ук p) { return производныйОт.дайХэш(p); }
+        override hash_t дайХэш(ук p)
+        {
+            return производныйОт.дайХэш(p);
+        }
 
         /// Compares two экземпляры for equality.
-        override цел equals(ук p1, ук p2) { return производныйОт.equals(p1, p2); }
+        override цел equals(ук p1, ук p2)
+        {
+            return производныйОт.equals(p1, p2);
+        }
 
         /// Compares two экземпляры for &lt;, ==, or &gt;.
         override цел сравни(ук p1, ук p2)
@@ -1038,7 +1045,10 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
         }
 
         /// Returns размер of the type.
-        override size_t tsize() { return производныйОт.tsize(); }
+        override size_t tsize()
+        {
+            return производныйОт.tsize();
+        }
 
         /// Swaps two экземпляры of the type.
         override проц swap(ук p1, ук p2)
@@ -1048,16 +1058,28 @@ class МассивСписок(V) : СКлючом!(бцел, V), Список!(
 
         /// Get ИнфОТипе for 'следщ' type, as defined by что kind of type this is,
         /// пусто if none.
-        override ИнфОТипе следщ() { return производныйОт; }
+        override ИнфОТипе следщ()
+        {
+            return производныйОт;
+        }
 
         /// Return default initializer, пусто if default initialize to 0
-        override проц[] init() { return производныйОт.init(); }
+        override проц[] init()
+        {
+            return производныйОт.init();
+        }
 
         /// Get flags for type: 1 means GC should scan for pointers
-        override бцел flags() { return производныйОт.flags(); }
+        override бцел flags()
+        {
+            return производныйОт.flags();
+        }
 
         /// Get type information on the contents of the type; пусто if not available
-        override OffsetTypeInfo[] offTi() { return производныйОт.offTi(); }
+        override OffsetTypeInfo[] offTi()
+        {
+            return производныйОт.offTi();
+        }
     }
 
     /**
@@ -1126,7 +1148,7 @@ version(UnitTest)
         al.добавь(al[0..3]);
         assert(al.length == 9);
         foreach(ref dp, бцел инд, бцел знач; &al.чисть_ключ)
-            dp = (знач % 2 == 1);
+        dp = (знач % 2 == 1);
         assert(al.length == 5);
         assert(al == [0U, 2, 4, 0, 2]);
         assert(al == new МассивСписок!(бцел)([0U, 2, 4, 0, 2].dup));

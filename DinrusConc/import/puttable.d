@@ -1,8 +1,8 @@
-﻿
-module conc.puttable;
+﻿module conc.puttable;
 
-interface Помещаемое(T) {
+interface Помещаемое(T)
+{
 
-  public проц помести(T элт);
-  public бул предложи(T элт, дол мсек);
+    public проц помести(T элт);
+    public бул предложи(T элт, дол мсек);
 }

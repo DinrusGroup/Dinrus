@@ -35,110 +35,110 @@ private enum {ДефРазмерБуфера = 8 * 1024}
 
 
 class Трубопровод : Устройство
+    {
+
+
+    version (OLD)
 {
+    alias Устройство.фукз  фукз;
+    alias Устройство.копируй        копируй;
+    alias Устройство.читай        читай;
+    alias Устройство.пиши       пиши;
+    alias Устройство.закрой       закрой;
+    alias Устройство.ошибка       ошибка;
+}
+
+private бцел _bufferSize;
 
 
-    version (OLD)
-    {
-        alias Устройство.фукз  фукз;
-        alias Устройство.копируй        копируй;
-        alias Устройство.читай        читай;
-        alias Устройство.пиши       пиши;
-        alias Устройство.закрой       закрой;
-        alias Устройство.ошибка       ошибка;
-    }
+/**
+ * Create a Трубопровод with the provопрed указатель and access permissions.
+ *
+ * Параметры:
+ * указатель       = указатель of the operating system pipe we will wrap insопрe
+ *                the Трубопровод.
+ * стиль        = access флаги for the pipe (читаемый, записываемый, etc.).
+ * размерБуфера   = буфер размер.
+ */
+private this(Дескр указатель, бцел размерБуфера = ДефРазмерБуфера)
+{
+    version (Windows)
+    вв.указатель = указатель;
+    else
+        this.указатель = указатель;
+    _bufferSize = размерБуфера;
+}
 
-    private бцел _bufferSize;
+/**
+ * Destructor.
+ */
+public ~this()
+{
+    закрой();
+}
 
+/**
+ * Returns the буфер размер for the Трубопровод.
+ */
+public override т_мера размерБуфера()
+{
+    return _bufferSize;
+}
 
+/**
+ * Returns the имя of the устройство.
+ */
+public override ткст вТкст()
+{
+    return "<sys.Pipe.Трубопровод>";
+}
+
+version (OLD)
+{
     /**
-     * Create a Трубопровод with the provопрed указатель and access permissions.
-     *
-     * Параметры:
-     * указатель       = указатель of the operating system pipe we will wrap insопрe
-     *                the Трубопровод.
-     * стиль        = access флаги for the pipe (читаемый, записываемый, etc.).
-     * размерБуфера   = буфер размер.
+     * Чтен a chunk of байты из_ the файл преобр_в the provопрed Массив
+     * (typically that belonging в_ an ИБуфер)
      */
-    private this(Дескр указатель, бцел размерБуфера = ДефРазмерБуфера)
+    protected override бцел читай (проц[] приёмн)
     {
-        version (Windows)
-                 вв.указатель = указатель;
-            else
-               this.указатель = указатель;
-        _bufferSize = размерБуфера;
-    }
+        бцел результат;
+        DWORD читай;
+        проц *p = приёмн.ptr;
 
-    /**
-     * Destructor.
-     */
-    public ~this()
-    {
-        закрой();
-    }
-
-    /**
-     * Returns the буфер размер for the Трубопровод.
-     */
-    public override т_мера размерБуфера()
-    {
-        return _bufferSize;
-    }
-
-    /**
-     * Returns the имя of the устройство.
-     */
-    public override ткст вТкст()
-    {
-        return "<sys.Pipe.Трубопровод>";
-    }
-
-    version (OLD)
-    {
-        /**
-         * Чтен a chunk of байты из_ the файл преобр_в the provопрed Массив 
-         * (typically that belonging в_ an ИБуфер)
-         */
-        protected override бцел читай (проц[] приёмн)
+        if (!ReadFile (указатель, p, приёмн.length, &читай, пусто))
         {
-            бцел результат;
-            DWORD читай;
-            проц *p = приёмн.ptr;
-
-            if (!ReadFile (указатель, p, приёмн.length, &читай, пусто))
-            {
-                if (СисОш.последнКод() == ERROR_BROKEN_PIPE)
-                {
-                    return Кф;
-                }
-                else
-                {
-                    ошибка();
-                }
-            }
-
-            if (читай == 0 && приёмн.length > 0)
+            if (СисОш.последнКод() == ERROR_BROKEN_PIPE)
             {
                 return Кф;
             }
-            return читай;
-        }
-
-        /**
-         * Write a chunk of байты в_ the файл из_ the provопрed Массив 
-         * (typically that belonging в_ an ИБуфер).
-         */
-        protected override бцел пиши (проц[] ист)
-        {
-            DWORD записано;
-
-            if (!WriteFile (указатель, ист.ptr, ист.length, &записано, пусто))
+            else
             {
                 ошибка();
             }
-            return записано;
         }
+
+        if (читай == 0 && приёмн.length > 0)
+        {
+            return Кф;
+        }
+        return читай;
     }
+
+    /**
+     * Write a chunk of байты в_ the файл из_ the provопрed Массив
+     * (typically that belonging в_ an ИБуфер).
+     */
+    protected override бцел пиши (проц[] ист)
+    {
+        DWORD записано;
+
+        if (!WriteFile (указатель, ист.ptr, ист.length, &записано, пусто))
+        {
+            ошибка();
+        }
+        return записано;
+    }
+}
 }
 
 /**

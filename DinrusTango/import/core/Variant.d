@@ -7,7 +7,8 @@
  */
 module core.Variant;
 
-private import core.Vararg : спис_ва;
+private import core.Vararg :
+спис_ва;
 private import core.Traits;
 private import core.Tuple;
 
@@ -63,9 +64,9 @@ else version( DDoc )
 version( РазрешитьВарарг ) {} else
 {
     pragma(msg, "Note: Вариант vararg functionality not supported for this "
-            "compiler/platform combination.");
+           "compiler/platform combination.");
     pragma(msg, "To override and enable vararg support anyway, компилируй with "
-            "the РазрешитьВарарг version.");
+           "the РазрешитьВарарг version.");
 }
 
 private
@@ -142,11 +143,11 @@ private
 
     // A список of все basic типы
     alias Кортеж!(бул, сим, шим, дим,
-            байт, крат, цел, дол, //cent,
-            ббайт, бкрат, бцел, бдол, //ucent,
-            плав, дво, реал,
-            вплав, вдво, вреал,
-            кплав, кдво, креал) ОсновныеТипы;
+    байт, крат, цел, дол, //cent,
+    ббайт, бкрат, бцел, бдол, //ucent,
+    плав, дво, реал,
+    вплав, вдво, вреал,
+    кплав, кдво, креал) ОсновныеТипы;
 
     // see основнойТип_ли
     template isBasicTypeImpl(T, U)
@@ -207,12 +208,12 @@ private
                         // ... if that тип is smaller than ...
                         U.sizeof < T.sizeof
 
-                        // ... or the same размер and signed-ness ...
-                        || ( U.sizeof == T.sizeof &&
-                            ((типСим_ли!(T) || типБЦел_ли!(T))
-                             ^ !(типСим_ли!(U) || типБЦел_ли!(U)))
-                        )
-                    )
+                                   // ... or the same размер and signed-ness ...
+                                   || ( U.sizeof == T.sizeof &&
+                                        ((типСим_ли!(T) || типБЦел_ли!(T))
+                                         ^ !(типСим_ли!(U) || типБЦел_ли!(U)))
+                                      )
+                                 )
                     {
                         // ... тест.
                         if( типист is typeid(U) )
@@ -251,7 +252,7 @@ private
          */
         static if( is( dsttypeT == void[] ) )
             return ((cast(TypeInfo_Array) типист) !is пусто)
-                || ((cast(TypeInfo_StaticArray) типист) !is пусто);
+            || ((cast(TypeInfo_StaticArray) типист) !is пусто);
 
         return нет;
     }
@@ -277,8 +278,8 @@ private
     бул иофБазовый_ли(ИнфОТипе ti)
     {
         foreach( T ; ОсновныеТипы )
-            if( ti is typeid(T) )
-                return да;
+        if( ti is typeid(T) )
+            return да;
         return нет;
     }
 
@@ -298,7 +299,7 @@ class ИсклНесовпаденияВариантногоТипа : Искл�
     this(ИнфОТипе ожидалось, ИнфОТипе got)
     {
         super("не удаётся преобразовать "~ожидалось.вТкст
-                    ~" значение в "~got.вТкст);
+              ~" значение в "~got.вТкст);
     }
 }
 
@@ -336,7 +337,7 @@ struct Вариант
      *
      * Возвращает:
      *  The new Вариант.
-     * 
+     *
      * Example:
      * -----
      *  auto v = Вариант(42);
@@ -365,7 +366,7 @@ struct Вариант
      *
      * Возвращает:
      *  The new Вариант.
-     * 
+     *
      * Example:
      * -----
      *  цел life = 42;
@@ -388,7 +389,7 @@ struct Вариант
      *
      * Возвращает:
      *  The new значение of the assigned-в_ variant.
-     * 
+     *
      * Example:
      * -----
      *  Вариант v;
@@ -426,7 +427,7 @@ struct Вариант
                 static if( T.sizeof <= this.значение.данные.length )
                 {
                     this.значение.данные[0..T.sizeof] =
-                        (cast(ббайт*)&значение)[0..T.sizeof];
+                    (cast(ббайт*)&значение)[0..T.sizeof];
                 }
                 else
                 {
@@ -445,7 +446,7 @@ struct Вариант
      *
      * Возвращает:
      *  да if the Вариант содержит a значение of тип T, нет otherwise.
-     * 
+     *
      * Example:
      * -----
      *  auto v = Вариант(cast(цел) 42);
@@ -467,7 +468,7 @@ struct Вариант
      *  да if the Вариант содержит a значение of тип T, or if the Вариант
      *  содержит a значение that can be implicitly cast в_ тип T; нет
      *  otherwise.
-     * 
+     *
      * Example:
      * -----
      *  auto v = Вариант(cast(цел) 42);
@@ -493,7 +494,7 @@ struct Вариант
             // Test for basic типы (oh, and dynamic->static массивы and
             // pointers.)
             return ( cast(бул)(typeid(T) is тип)
-                    || неявноВТипПривестиМожно_ли!(T)(тип) );
+                     || неявноВТипПривестиМожно_ли!(T)(тип) );
         }
     }
 
@@ -571,7 +572,7 @@ struct Вариант
                     // small, grab it out of хранилище; otherwise, копируй it это
                     // the куча.
                     static if( T.sizeof <= значение.sizeof )
-                        return *cast(T*)(&значение);
+                                   return *cast(T*)(&значение);
 
                     else
                         return *cast(T*)(значение.куча.ptr);
@@ -590,7 +591,7 @@ struct Вариант
                         if( тип is typeid(U) )
                         {
                             static if( U.sizeof <= значение.sizeof )
-                                return cast(T) *cast(U*)(&значение);
+                                           return cast(T) *cast(U*)(&значение);
 
                             else
                                 return cast(T) *cast(U*)(значение.куча.ptr);
@@ -602,7 +603,7 @@ struct Вариант
             else static if( типДинМас_ли!(T) )
             {
                 return (cast(typeof(T.ptr)) значение.Массив.ptr)
-                    [0..значение.Массив.length];
+                [0..значение.Массив.length];
             }
             else static if( объект_ли!(T) || интерфейс_ли!(T) )
             {
@@ -614,14 +615,14 @@ struct Вариант
                 {
                     T результат;
                     (cast(ббайт*)&результат)[0..T.sizeof] =
-                        this.значение.данные[0..T.sizeof];
+                    this.значение.данные[0..T.sizeof];
                     return результат;
                 }
                 else
                 {
                     T результат;
                     (cast(ббайт*)&результат)[0..T.sizeof] =
-                        (cast(ббайт[])this.значение.куча)[0..T.sizeof];
+                    (cast(ббайт[])this.значение.куча)[0..T.sizeof];
                     return результат;
                 }
             }
@@ -635,43 +636,151 @@ struct Вариант
      * expression.  One sопрe of the operator must be a concrete тип in order
      * for the Вариант в_ know what код в_ generate.
      */
-    typeof(T+T) opAdd(T)(T rhs)     { return получи!(T) + rhs; }
-    typeof(T+T) opAdd_r(T)(T lhs)   { return lhs + получи!(T); } /// ditto
-    typeof(T-T) opSub(T)(T rhs)     { return получи!(T) - rhs; } /// ditto
-    typeof(T-T) opSub_r(T)(T lhs)   { return lhs - получи!(T); } /// ditto
-    typeof(T*T) opMul(T)(T rhs)     { return получи!(T) * rhs; } /// ditto
-    typeof(T*T) opMul_r(T)(T lhs)   { return lhs * получи!(T); } /// ditto
-    typeof(T/T) opDiv(T)(T rhs)     { return получи!(T) / rhs; } /// ditto
-    typeof(T/T) opDiv_r(T)(T lhs)   { return lhs / получи!(T); } /// ditto
-    typeof(T%T) opMod(T)(T rhs)     { return получи!(T) % rhs; } /// ditto
-    typeof(T%T) opMod_r(T)(T lhs)   { return lhs % получи!(T); } /// ditto
-    typeof(T&T) opAnd(T)(T rhs)     { return получи!(T) & rhs; } /// ditto
-    typeof(T&T) opAnd_r(T)(T lhs)   { return lhs & получи!(T); } /// ditto
-    typeof(T|T) opOr(T)(T rhs)      { return получи!(T) | rhs; } /// ditto
-    typeof(T|T) opOr_r(T)(T lhs)    { return lhs | получи!(T); } /// ditto
-    typeof(T^T) opXor(T)(T rhs)     { return получи!(T) ^ rhs; } /// ditto
-    typeof(T^T) opXor_r(T)(T lhs)   { return lhs ^ получи!(T); } /// ditto
-    typeof(T<<T) opShl(T)(T rhs)    { return получи!(T) << rhs; } /// ditto
-    typeof(T<<T) opShl_r(T)(T lhs)  { return lhs << получи!(T); } /// ditto
-    typeof(T>>T) opShr(T)(T rhs)    { return получи!(T) >> rhs; } /// ditto
-    typeof(T>>T) opShr_r(T)(T lhs)  { return lhs >> получи!(T); } /// ditto
-    typeof(T>>>T) opUShr(T)(T rhs)  { return получи!(T) >>> rhs; } /// ditto
-    typeof(T>>>T) opUShr_r(T)(T lhs){ return lhs >>> получи!(T); } /// ditto
-    typeof(T~T) opCat(T)(T rhs)     { return получи!(T) ~ rhs; } /// ditto
-    typeof(T~T) opCat_r(T)(T lhs)   { return lhs ~ получи!(T); } /// ditto
+    typeof(T+T) opAdd(T)(T rhs)
+    {
+        return получи!(T) + rhs;
+    }
+    typeof(T+T) opAdd_r(T)(T lhs)
+    {
+        return lhs + получи!(T);    /// ditto
+    }
+    typeof(T-T) opSub(T)(T rhs)
+    {
+        return получи!(T) - rhs;    /// ditto
+    }
+    typeof(T-T) opSub_r(T)(T lhs)
+    {
+        return lhs - получи!(T);    /// ditto
+    }
+    typeof(T*T) opMul(T)(T rhs)
+    {
+        return получи!(T) * rhs;    /// ditto
+    }
+    typeof(T*T) opMul_r(T)(T lhs)
+    {
+        return lhs * получи!(T);    /// ditto
+    }
+    typeof(T/T) opDiv(T)(T rhs)
+    {
+        return получи!(T) / rhs;    /// ditto
+    }
+    typeof(T/T) opDiv_r(T)(T lhs)
+    {
+        return lhs / получи!(T);    /// ditto
+    }
+    typeof(T%T) opMod(T)(T rhs)
+    {
+        return получи!(T) % rhs;    /// ditto
+    }
+    typeof(T%T) opMod_r(T)(T lhs)
+    {
+        return lhs % получи!(T);    /// ditto
+    }
+    typeof(T&T) opAnd(T)(T rhs)
+    {
+        return получи!(T) & rhs;    /// ditto
+    }
+    typeof(T&T) opAnd_r(T)(T lhs)
+    {
+        return lhs & получи!(T);    /// ditto
+    }
+    typeof(T|T) opOr(T)(T rhs)
+    {
+        return получи!(T) | rhs;    /// ditto
+    }
+    typeof(T|T) opOr_r(T)(T lhs)
+    {
+        return lhs | получи!(T);    /// ditto
+    }
+    typeof(T^T) opXor(T)(T rhs)
+    {
+        return получи!(T) ^ rhs;    /// ditto
+    }
+    typeof(T^T) opXor_r(T)(T lhs)
+    {
+        return lhs ^ получи!(T);    /// ditto
+    }
+    typeof(T<<T) opShl(T)(T rhs)
+    {
+        return получи!(T) << rhs;    /// ditto
+    }
+    typeof(T<<T) opShl_r(T)(T lhs)
+    {
+        return lhs << получи!(T);    /// ditto
+    }
+    typeof(T>>T) opShr(T)(T rhs)
+    {
+        return получи!(T) >> rhs;    /// ditto
+    }
+    typeof(T>>T) opShr_r(T)(T lhs)
+    {
+        return lhs >> получи!(T);    /// ditto
+    }
+    typeof(T>>>T) opUShr(T)(T rhs)
+    {
+        return получи!(T) >>> rhs;    /// ditto
+    }
+    typeof(T>>>T) opUShr_r(T)(T lhs)
+    {
+        return lhs >>> получи!(T);    /// ditto
+    }
+    typeof(T~T) opCat(T)(T rhs)
+    {
+        return получи!(T) ~ rhs;    /// ditto
+    }
+    typeof(T~T) opCat_r(T)(T lhs)
+    {
+        return lhs ~ получи!(T);    /// ditto
+    }
 
-    Вариант opAddAssign(T)(T значение) { return (*this = получи!(T) + значение); } /// ditto
-    Вариант opSubAssign(T)(T значение) { return (*this = получи!(T) - значение); } /// ditto
-    Вариант opMulAssign(T)(T значение) { return (*this = получи!(T) * значение); } /// ditto
-    Вариант opDivAssign(T)(T значение) { return (*this = получи!(T) / значение); } /// ditto
-    Вариант opModAssign(T)(T значение) { return (*this = получи!(T) % значение); } /// ditto
-    Вариант opAndAssign(T)(T значение) { return (*this = получи!(T) & значение); } /// ditto
-    Вариант opOrAssign(T)(T значение)  { return (*this = получи!(T) | значение); } /// ditto
-    Вариант opXorAssign(T)(T значение) { return (*this = получи!(T) ^ значение); } /// ditto
-    Вариант opShlAssign(T)(T значение) { return (*this = получи!(T) << значение); } /// ditto
-    Вариант opShrAssign(T)(T значение) { return (*this = получи!(T) >> значение); } /// ditto
-    Вариант opUShrAssign(T)(T значение){ return (*this = получи!(T) >>> значение); } /// ditto
-    Вариант opCatAssign(T)(T значение) { return (*this = получи!(T) ~ значение); } /// ditto
+    Вариант opAddAssign(T)(T значение)
+    {
+        return (*this = получи!(T) + значение);    /// ditto
+    }
+    Вариант opSubAssign(T)(T значение)
+    {
+        return (*this = получи!(T) - значение);    /// ditto
+    }
+    Вариант opMulAssign(T)(T значение)
+    {
+        return (*this = получи!(T) * значение);    /// ditto
+    }
+    Вариант opDivAssign(T)(T значение)
+    {
+        return (*this = получи!(T) / значение);    /// ditto
+    }
+    Вариант opModAssign(T)(T значение)
+    {
+        return (*this = получи!(T) % значение);    /// ditto
+    }
+    Вариант opAndAssign(T)(T значение)
+    {
+        return (*this = получи!(T) & значение);    /// ditto
+    }
+    Вариант opOrAssign(T)(T значение)
+    {
+        return (*this = получи!(T) | значение);    /// ditto
+    }
+    Вариант opXorAssign(T)(T значение)
+    {
+        return (*this = получи!(T) ^ значение);    /// ditto
+    }
+    Вариант opShlAssign(T)(T значение)
+    {
+        return (*this = получи!(T) << значение);    /// ditto
+    }
+    Вариант opShrAssign(T)(T значение)
+    {
+        return (*this = получи!(T) >> значение);    /// ditto
+    }
+    Вариант opUShrAssign(T)(T значение)
+    {
+        return (*this = получи!(T) >>> значение);    /// ditto
+    }
+    Вариант opCatAssign(T)(T значение)
+    {
+        return (*this = получи!(T) ~ значение);    /// ditto
+    }
 
     /**
      * The following operators can be used with Вариантs on Всё sопрes.  Note
@@ -738,7 +847,7 @@ struct Вариант
         else
             return значение.куча.ptr;
     }
-    
+
     version( РазрешитьВарарг )
     {
         /**
@@ -749,17 +858,17 @@ struct Вариант
             auto vs = new Вариант[](типы.length);
 
             foreach( i, ref v ; vs )
-                арги = Вариант.изУк(типы[i], арги, v);
-            
+            арги = Вариант.изУк(типы[i], арги, v);
+
             return vs;
         }
-        
+
         /// ditto
         static Вариант[] изВарарг(...)
         {
             return Вариант.изВарарг(_arguments, _argptr);
         }
-        
+
         /**
          * Converts an Массив of Вариантs преобр_в a vararg function аргумент список.
          *
@@ -779,13 +888,13 @@ struct Вариант
                 размер += (ti.tsize + т_мера.sizeof-1) & ~(т_мера.sizeof-1);
                 noptr = noptr && (ti.флаги & 2);
             }
-            
+
             // Create the хранилище, and tell the СМ whether it needs в_ be scanned
             // or not.
             auto хранилище = new ббайт[размер];
             смУстАтр(cast(ук)хранилище.ptr, cast(ПАтрБлока)(
-                (смДайАтр(хранилище.ptr) & ~ПАтрБлока.НеСканировать)
-                | (noptr ? ПАтрБлока.НеСканировать : 0)));
+                                 (смДайАтр(хранилище.ptr) & ~ПАтрБлока.НеСканировать)
+                                 | (noptr ? ПАтрБлока.НеСканировать : 0)));
 
             // Dump the variants преобр_в the хранилище.
             арги = хранилище.ptr;
@@ -809,7 +918,7 @@ private:
     {
         return (_type = v);
     }
-    
+
     /*
      * Creates a Вариант using a given ИнфОТипе and a проц*.  Returns the
      * given pointer adjusted for the следщ vararg.
@@ -847,7 +956,7 @@ private:
         else
         {
             if( иофОбъект_ли(тип)
-                || иофИнтерфейс_ли(тип) )
+                    || иофИнтерфейс_ли(тип) )
             {
                 /*
                  * We have в_ вызов преобр_в the core рантайм в_ turn this pointer
@@ -860,7 +969,7 @@ private:
                 if( тип.tsize <= this.значение.данные.length )
                 {
                     // Copy преобр_в хранилище
-                    r.значение.данные[0 .. тип.tsize] = 
+                    r.значение.данные[0 .. тип.tsize] =
                         (cast(ббайт*)ptr)[0 .. тип.tsize];
                 }
                 else
@@ -890,12 +999,12 @@ private:
             version( GNU )
             {
                 pragma(msg, "WARNING: core.Variant's vararg support есть "
-                        "not been tested with this compiler." );
+                       "not been tested with this compiler." );
             }
             version( LDC )
             {
                 pragma(msg, "WARNING: core.Variant's vararg support есть "
-                        "not been tested with this compiler." );
+                       "not been tested with this compiler." );
             }
 
             if( тип is typeid(проц) )
@@ -939,7 +1048,7 @@ private:
                         }
                     }
                     assert(найдено,"Could not преобразуй Объект в_ interface; "
-                            "bad things have happened.");
+                           "bad things have happened.");
                 }
                 else
                 {
@@ -1072,7 +1181,8 @@ debug( UnitTest )
         // Test interface support
         {
             interface A {}
-            interface B : A {}
+interface B :
+            A {}
             class C : B {}
             class D : C {}
 
@@ -1155,18 +1265,40 @@ debug( UnitTest )
         assert( "abc" ~ Вариант("def") == "abcdef" );
 
         // Test op= operators
-        v = 38; v += 4; assert( v == 42 );
-        v = 38; v -= 4; assert( v == 34 );
-        v = 38; v *= 2; assert( v == 76 );
-        v = 38; v /= 2; assert( v == 19 );
-        v = 38; v %= 2; assert( v == 0 );
-        v = 38; v &= 6; assert( v == 6 );
-        v = 38; v |= 9; assert( v == 47 );
-        v = 38; v ^= 5; assert( v == 35 );
-        v = 38; v <<= 1; assert( v == 76 );
-        v = 38; v >>= 1; assert( v == 19 );
+        v = 38;
+        v += 4;
+        assert( v == 42 );
+        v = 38;
+        v -= 4;
+        assert( v == 34 );
+        v = 38;
+        v *= 2;
+        assert( v == 76 );
+        v = 38;
+        v /= 2;
+        assert( v == 19 );
+        v = 38;
+        v %= 2;
+        assert( v == 0 );
+        v = 38;
+        v &= 6;
+        assert( v == 6 );
+        v = 38;
+        v |= 9;
+        assert( v == 47 );
+        v = 38;
+        v ^= 5;
+        assert( v == 35 );
+        v = 38;
+        v <<= 1;
+        assert( v == 76 );
+        v = 38;
+        v >>= 1;
+        assert( v == 19 );
 
-        v = "abc"; v ~= "def"; assert( v == "abcdef" );
+        v = "abc";
+        v ~= "def";
+        assert( v == "abcdef" );
 
         // Test сравнение
         assert( Вариант(0) < Вариант(42) );
@@ -1218,11 +1350,17 @@ debug( UnitTest )
         {
             class A
             {
-                ткст сооб() { return "A"; }
+                ткст сооб()
+                {
+                    return "A";
+                }
             }
             class B : A
             {
-                override ткст сооб() { return "B"; }
+                override ткст сооб()
+                {
+                    return "B";
+                }
             }
             interface C
             {
@@ -1230,8 +1368,14 @@ debug( UnitTest )
             }
             class D : B, C
             {
-                override ткст сооб() { return "D"; }
-                override ткст имя() { return "phil"; }
+                override ткст сооб()
+                {
+                    return "D";
+                }
+                override ткст имя()
+                {
+                    return "phil";
+                }
             }
 
             struct S { цел a, b, c, d; }
@@ -1254,7 +1398,7 @@ debug( UnitTest )
             B    va_a = new B;
             C    va_b = new D;
             D    va_c = new D;
-            
+
             auto vs = scoop(va_0, va_1, va_2, va_3,
                             va_4, va_5, va_6, va_7,
                             va_8, va_9, va_a, va_b, va_c);
@@ -1276,7 +1420,7 @@ debug( UnitTest )
             assert( vs[0x9].получи!(typeof(va_9)).сооб == "A" );
             assert( vs[0xa].получи!(typeof(va_a)).сооб == "B" );
             assert( vs[0xc].получи!(typeof(va_c)).сооб == "D" );
-            
+
             assert( vs[0xb].получи!(typeof(va_b)).имя == "phil" );
             assert( vs[0xc].получи!(typeof(va_c)).имя == "phil" );
 

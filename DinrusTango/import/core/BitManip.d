@@ -220,13 +220,13 @@ debug( UnitTest )
 {
     unittest
     {
-      assert( popcnt( 0 ) == 0 );
-      assert( popcnt( 7 ) == 3 );
-      assert( popcnt( 0xAA )== 4 );
-      assert( popcnt( 0x8421_1248 ) == 8 );
-      assert( popcnt( 0xFFFF_FFFF ) == 32 );
-      assert( popcnt( 0xCCCC_CCCC ) == 16 );
-      assert( popcnt( 0x7777_7777 ) == 24 );
+        assert( popcnt( 0 ) == 0 );
+        assert( popcnt( 7 ) == 3 );
+        assert( popcnt( 0xAA )== 4 );
+        assert( popcnt( 0x8421_1248 ) == 8 );
+        assert( popcnt( 0xFFFF_FFFF ) == 32 );
+        assert( popcnt( 0xCCCC_CCCC ) == 16 );
+        assert( popcnt( 0x7777_7777 ) == 24 );
     }
 }
 

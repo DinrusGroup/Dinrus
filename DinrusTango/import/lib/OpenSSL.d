@@ -15,7 +15,7 @@ private import stdrus, stringz, cidrus, thread, sync, sys.SharedLib, io.FileSyst
 /*******************************************************************************
 
     This module contains all of the dynamic bindings needed to the
-    OpenSSL libraries (libssl.so/libssl32.dll and libcrypto.so/libeay32.dll) 
+    OpenSSL libraries (libssl.so/libssl32.dll and libcrypto.so/libeay32.dll)
 
 *******************************************************************************/
 
@@ -75,8 +75,8 @@ extern (C)
     const цел XN_FLAG_MULTILINE = ASN1_STRFLGS_ESC_CTRL | ASN1_STRFLGS_ESC_MSB | XN_FLAG_SEP_MULTILINE | XN_FLAG_SPC_EQ | XN_FLAG_FN_LN | XN_FLAG_FN_ALIGN;
 
     const сим* PEM_STRING_EVP_PKEY = "ANY PRIVATE KEY";
-    const сим* PEM_STRING_X509 = "CERTIFICATE";   
-    const сим* PEM_STRING_RSA_PUBLIC = "RSA PUBLIC KEY";    
+    const сим* PEM_STRING_X509 = "CERTIFICATE";
+    const сим* PEM_STRING_RSA_PUBLIC = "RSA PUBLIC KEY";
 
     const цел SSL_CTRL_OPTIONS = 32;
 
@@ -129,13 +129,14 @@ extern (C)
         цел block_mask;
         ббайт[EVP_MAX_BLOCK_LENGTH] finalv;
     };
-    
+
     // fallback for OpenSSL 0.9.7l 28 Sep 2006 that defines only macros
-    цел EVP_CIPHER_CTX_block_size_097l(EVP_CIPHER_CTX *e){
+    цел EVP_CIPHER_CTX_block_size_097l(EVP_CIPHER_CTX *e)
+    {
         return *((cast(цел*)e.cipher)+1);
     }
 
-    struct BIO 
+    struct BIO
     {
         BIO_METHOD *метод;
         цел function(BIO *b, цел a, сим *c, цел d, цел e, цел f) callback;
@@ -154,13 +155,13 @@ extern (C)
     struct SSL_CTX {};
     struct SSL {};
     struct SSL_METHOD {};
-    struct EVP_PKEY 
+    struct EVP_PKEY
     {
         цел тип;
         цел save_type;
         цел references;
         ук pkey;
-        // yadda yadda ...        
+        // yadda yadda ...
     };
     struct X509_STORE_CTX {};
     struct EVP_CIPHER {};
@@ -197,7 +198,7 @@ extern (C)
 
     struct X509  // ditto X509_CINF
     {
-        X509_CINF *cert_info; 
+        X509_CINF *cert_info;
         // yadda yadda
     };
     struct X509_NAME {};
@@ -223,7 +224,7 @@ extern (C)
     typedef цел function() tCRYPTO_num_locks;
     typedef проц function(бцел function() cb) tCRYPTO_set_id_callback;
     typedef проц function(проц function(цел mode, цел тип, сим *файл, цел строка) cb) tCRYPTO_set_locking_callback;
-    typedef проц function(CRYPTO_dynlock_value *function(сим *файл, цел строка) cb) tCRYPTO_set_dynlock_create_callback;    
+    typedef проц function(CRYPTO_dynlock_value *function(сим *файл, цел строка) cb) tCRYPTO_set_dynlock_create_callback;
     typedef проц function(проц function(цел mode, CRYPTO_dynlock_value *lock, сим *файл, цел lineNo) cb) tCRYPTO_set_dynlock_lock_callback;
     typedef проц function(проц function(CRYPTO_dynlock_value *lock, сим *файл, цел строка) cb) tCRYPTO_set_dynlock_destroy_callback;
     typedef бцел function(сим **файл, цел *строка, сим **data, цел *flags) tERR_get_error_line_data;
@@ -241,7 +242,7 @@ extern (C)
     typedef BIO* function(сим *filename, сим *mode) tBIO_new_file;
     typedef цел function() tERR_peek_error;
     typedef цел function(BIO *b, цел flags) tBIO_test_flags;
-    typedef цел function(BIO *b, цел cmd, цел larg, ук parg) tBIO_ctrl; 
+    typedef цел function(BIO *b, цел cmd, цел larg, ук parg) tBIO_ctrl;
     typedef проц function(SSL *ssl, цел mode) tSSL_set_shutdown;
     typedef цел function(SSL *ssl) tSSL_get_shutdown;
     typedef цел function(SSL_CTX *ctx, X509 *x) tSSL_CTX_use_certificate;
@@ -321,7 +322,7 @@ extern (C)
     {
         return cast(бцел)cast(проц*)thread.Нить.дайЭту;
     }
-	
+
     проц статичЗамокССЛ(цел mode, цел index, сим *sourceFile, цел lineNo)
     {
         if (_locks)
@@ -341,7 +342,7 @@ extern (C)
                     _locks[index].писатель.unlock();
             }
 
-        } 
+        }
     }
     бцел ablah = 0;
     CRYPTO_dynlock_value *создайДинамичЗамокССЛ(сим *sourceFile, цел lineNo)
@@ -357,9 +358,9 @@ extern (C)
                 rtn.prev = last;
                 last.next = rtn;
                 last = rtn;
-            }        
+            }
         }
-        return rtn; 
+        return rtn;
     }
 
     проц закройДинамичЗамокССЛ(цел mode, CRYPTO_dynlock_value *lock, сим *sourceFile, цел lineNo)
@@ -380,7 +381,7 @@ extern (C)
                 else
                     lock.lock.писатель.unlock();
             }
-        } 
+        }
     }
 
     проц удалиДинамичЗамокССЛ(CRYPTO_dynlock_value *lock, сим *sourceFile, цел lineNo)
@@ -390,7 +391,7 @@ extern (C)
             if (lock.prev)
                 lock.prev.next = lock.next;
             if (lock.next)
-                lock.next.prev = lock.prev;    
+                lock.next.prev = lock.prev;
             if (lock is last)
                 last = lock.prev;
             lock = lock.next = lock.prev = null;
@@ -621,7 +622,8 @@ version(Win32)
 {
     static Длл eaylib = null;
 }
-version(darwin){
+version(darwin)
+{
     static Длл cryptolib = null;
 }
 static ЧЗМютекс[] _locks = null;
@@ -644,7 +646,7 @@ static ЧЗМютекс[] _locks = null;
             if (данные && (flags & ERR_TXT_STRING))
                 строкаИскл ~= фм("код ошибки ssl: %s %s:%s - %s\r\n", код, stringz.изТкст0(файл), строка, stringz.изТкст0(данные));
             else
-                строкаИскл ~= фм("код ошибки ssl: %s %s:%s\r\n", код, stringz.изТкст0(файл), строка); 
+                строкаИскл ~= фм("код ошибки ssl: %s %s:%s\r\n", код, stringz.изТкст0(файл), строка);
             код = ERR_get_error_line_data(&файл, &строка, &данные, &flags);
         }
         throw new Исключение(строкаИскл);
@@ -659,7 +661,7 @@ static ЧЗМютекс[] _locks = null;
     SSL_library_init();
     OPENSSL_add_all_algorithms_noconf();
     version(Posix)
-        RAND_load_file("/dev/urandom", BYTES_ENTROPY);
+    RAND_load_file("/dev/urandom", BYTES_ENTROPY);
     version(Win32)
     {
         RAND_poll();
@@ -684,13 +686,13 @@ static ЧЗМютекс[] _locks = null;
             CRYPTO_set_dynlock_destroy_callback(&удалиДинамичЗамокССЛ);
 
         }
-    } 
+    }
 }
 
 static this()
 {
     version(Win32)
-        loadEAY32();
+    loadEAY32();
     загрузиОпенССЛ();
 }
 // Though it would be nice to do this, it can't be закрыт until all the СОКЕТs and etc have been collected.. not sure how to do that.
@@ -726,7 +728,7 @@ version (Win32)
         ткст[] путьЗагрузки = [ "libeay32.dll" ];
         if ((eaylib = грузиБиб(путьЗагрузки)) !is null)
         {
-            вяжиКрипто(eaylib);    
+            вяжиКрипто(eaylib);
         }
     }
 
@@ -808,9 +810,9 @@ version (Win32)
         вяжиФ(BIO_read, "BIO_read", ssllib);
         вяжиФ(BIO_write, "BIO_write", ssllib);
         вяжиФ(EVP_PKEY_free, "EVP_PKEY_free", ssllib);
-        вяжиФ(d2i_PrivateKey, "d2i_PrivateKey", ssllib);    
+        вяжиФ(d2i_PrivateKey, "d2i_PrivateKey", ssllib);
         вяжиФ(BIO_free_all, "BIO_free_all", ssllib);
-        вяжиФ(BIO_push, "BIO_push", ssllib);    
+        вяжиФ(BIO_push, "BIO_push", ssllib);
         вяжиФ(BIO_new_socket, "BIO_new_socket", ssllib);
         вяжиФ(RAND_poll, "RAND_poll", ssllib);
         вяжиФ(RSA_size, "RSA_size", ssllib);
@@ -830,9 +832,12 @@ version (Win32)
         вяжиФ(EVP_EncryptFinal_ex, "EVP_EncryptFinal_ex", ssllib);
         вяжиФ(EVP_DecryptFinal_ex, "EVP_DecryptFinal_ex", ssllib);
         вяжиФ(EVP_aes_128_cbc, "EVP_aes_128_cbc", ssllib);
-        try {
+        try
+        {
             вяжиФ(EVP_CIPHER_CTX_block_size, "EVP_CIPHER_CTX_block_size", ssllib);
-        } catch (Исключение e){
+        }
+        catch (Исключение e)
+        {
             // openSSL 0.9.7l defines only macros, not the function
             EVP_CIPHER_CTX_block_size=&EVP_CIPHER_CTX_block_size_097l;
         }
@@ -884,11 +889,14 @@ version (Win32)
         вяжиФ(SSL_CTX_set_session_id_context, "SSL_CTX_set_session_id_context", ssllib);
         version(Posix)
         {
-            version(darwin){
+            version(darwin)
+            {
                 ткст[] loadPathCrypto = [ "/usr/lib/libcrypto.dylib", "libcrypto.dylib" ];
                 cryptolib = грузиБиб(loadPathCrypto);
                 if (cryptolib !is null) вяжиКрипто(cryptolib);
-            } else {
+            }
+            else
+            {
                 вяжиКрипто(ssllib);
             }
         }
@@ -915,7 +923,8 @@ version (Win32)
     CRYPTO_cleanup_all_ex_data();
     if (ssllib)
         ssllib.выгрузи();
-    version(darwin){
+    version(darwin)
+    {
         if (cryptolib)
             cryptolib.выгрузи();
     }

@@ -3,17 +3,20 @@
  */
 module math.Math;
 
-public import stdrus: абс, конъюнк, кос, син, тан, акос, асин, атан, атан2, гкос, гсин, гтан, гакос, гасин, гатан, округливдол, округливближдол, квкор, эксп, экспм1, эксп2, прэксп, лдэксп, лог, лог10, лог1п, лог2,модф, кубкор, гипот, фцош, лгамма, тгамма, потолок, пол, ближцел, окрвцел, окрвдол, округли, докругли, упрости, остаток, конечен_ли, нч, следщБольш, следщМеньш,пдельта, пбольш_из, пменьш_из, степень, правны, квадрат, дво, знак, цикл8градус, цикл8радиан, цикл8градиент, градус8цикл, градус8радиан, градус8градиент, радиан8градус, радиан8цикл, радиан8градиент, градиент8градус, градиент8цикл, градиент8радиан, сариф, сумма, меньш_из, больш_из, акот, асек, акосек, кот, сек, косек, гкот, гсек, гкосек, гакот, гасек, гакосек, ткст8реал;
+public import stdrus:
+абс, конъюнк, кос, син, тан, акос, асин, атан, атан2, гкос, гсин, гтан, гакос, гасин, гатан, округливдол, округливближдол, квкор, эксп, экспм1, эксп2, прэксп, лдэксп, лог, лог10, лог1п, лог2,модф, кубкор, гипот, фцош, лгамма, тгамма, потолок, пол, ближцел, окрвцел, окрвдол, округли, докругли, упрости, остаток, конечен_ли, нч, следщБольш, следщМеньш,пдельта, пбольш_из, пменьш_из, степень, правны, квадрат, дво, знак, цикл8градус, цикл8радиан, цикл8градиент, градус8цикл, градус8радиан, градус8градиент, радиан8градус, радиан8цикл, радиан8градиент, градиент8градус, градиент8цикл, градиент8радиан, сариф, сумма, меньш_из, больш_из, акот, асек, акосек, кот, сек, косек, гкот, гсек, гкосек, гакот, гасек, гакосек, ткст8реал;
 
 private import math.IEEE;
 
-private {
-template минмакстип(T...){
-    static if(T.length == 1) alias T[0] минмакстип;
-    else static if(T.length > 2)
-        alias минмакстип!(минмакстип!(T[0..2]), T[2..$]) минмакстип;
-    else alias typeof (T[1] > T[0] ? T[1] : T[0]) минмакстип;
-}
+private
+{
+    template минмакстип(T...)
+    {
+        static if(T.length == 1) alias T[0] минмакстип;
+        else static if(T.length > 2)
+            alias минмакстип!(минмакстип!(T[0..2]), T[2..$]) минмакстип;
+        else alias typeof (T[1] > T[0] ? T[1] : T[0]) минмакстип;
+    }
 }
 
 /** Возвращает минимальный из предложенных аргументов.
@@ -21,7 +24,8 @@ template минмакстип(T...){
  * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
-минмакстип!(T) мин(T...)(T арг){
+минмакстип!(T) мин(T...)(T арг)
+{
     static if(арг.length == 1) return арг[0];
     else static if(арг.length == 2) return арг[1] < арг[0] ? арг[1] : арг[0];
     static if(арг.length > 2) return мин(арг[1] < арг[0] ? арг[1] : арг[0], арг[2..$]);
@@ -32,7 +36,8 @@ template минмакстип(T...){
  * Note: If the аргументы are floating-точка numbers, и at least one is a НЧ,
  * the результат is undefined.
  */
-минмакстип!(T) макс(T...)(T арг){
+минмакстип!(T) макс(T...)(T арг)
+{
     static if(арг.length == 1) return арг[0];
     else static if(арг.length == 2) return арг[1] > арг[0] ? арг[1] : арг[0];
     static if(арг.length > 2) return макс(арг[1] > арг[0] ? арг[1] : арг[0], арг[2..$]);
@@ -174,7 +179,7 @@ template минмакстип(T...){
  * Evaluate polynomial A(x) = $(SUB a, 0) + $(SUB a, 1)x + $(SUB a, 2)$(POWER x,2)
  *                          + $(SUB a,3)$(POWER x,3); ...
  *
- * Uses Horner's правило A(x) = $(SUB a, 0) + x($(SUB a, 1) + x($(SUB a, 2) 
+ * Uses Horner's правило A(x) = $(SUB a, 0) + x($(SUB a, 1) + x($(SUB a, 2)
  *                         + x($(SUB a, 3) + ...)))
  * Параметры:
  *      A =     Массив of coefficients $(SUB a, 0), $(SUB a, 1), etc.
@@ -186,65 +191,75 @@ in
 }
 body
 {
-  version (Naked_D_InlineAsm_X86) {
-      const бул Use_D_InlineAsm_X86 = да;
-  } else const бул Use_D_InlineAsm_X86 = нет;
-  
-  // BUG (Inherited из_ Phobos): This код assumes a frame pointer in EBP.
-  // This is not in the spec.
-  static if (Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof == 10) {
-    asm // assembler by W. Bright
+    version (Naked_D_InlineAsm_X86)
     {
-        // EDX = (A.length - 1) * реал.sizeof
-        mov     ECX,A[EBP]          ; // ECX = A.length
-        dec     ECX                 ;
-        lea     EDX,[ECX][ECX*8]    ;
-        add     EDX,ECX             ;
-        add     EDX,A+4[EBP]        ;
-        fld     real ptr [EDX]      ; // ST0 = coeff[ECX]
-        jecxz   return_ST           ;
-        fld     x[EBP]              ; // ST0 = x
-        fxch    ST(1)               ; // ST1 = x, ST0 = r
-        align   4                   ;
-    L2:  fmul    ST,ST(1)           ; // r *= x
-        fld     real ptr -10[EDX]   ;
-        sub     EDX,10              ; // deg--
-        faddp   ST(1),ST            ;
-        dec     ECX                 ;
-        jne     L2                  ;
-        fxch    ST(1)               ; // ST1 = r, ST0 = x
-        fstp    ST(0)               ; // dump x
-        align   4                   ;
-    return_ST:                      ;
-        ;
+        const бул Use_D_InlineAsm_X86 = да;
     }
-  } else static if ( Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof==12){
-    asm // assembler by W. Bright
+    else const бул Use_D_InlineAsm_X86 = нет;
+
+    // BUG (Inherited из_ Phobos): This код assumes a frame pointer in EBP.
+    // This is not in the spec.
+    static if (Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof == 10)
     {
-        // EDX = (A.length - 1) * реал.sizeof
-        mov     ECX,A[EBP]          ; // ECX = A.length
-        dec     ECX                 ;
-        lea     EDX,[ECX*8]         ;
-        lea     EDX,[EDX][ECX*4]    ;
-        add     EDX,A+4[EBP]        ;
-        fld     real ptr [EDX]      ; // ST0 = coeff[ECX]
-        jecxz   return_ST           ;
-        fld     x                   ; // ST0 = x
-        fxch    ST(1)               ; // ST1 = x, ST0 = r
-        align   4                   ;
-    L2: fmul    ST,ST(1)            ; // r *= x
-        fld     real ptr -12[EDX]   ;
-        sub     EDX,12              ; // deg--
-        faddp   ST(1),ST            ;
-        dec     ECX                 ;
-        jne     L2                  ;
-        fxch    ST(1)               ; // ST1 = r, ST0 = x
-        fstp    ST(0)               ; // dump x
-        align   4                   ;
-    return_ST:                      ;
-        ;
+        asm // assembler by W. Bright
+        {
+            // EDX = (A.length - 1) * реал.sizeof
+            mov     ECX,A[EBP]          ; // ECX = A.length
+            dec     ECX                 ;
+            lea     EDX,[ECX][ECX*8]    ;
+            add     EDX,ECX             ;
+            add     EDX,A+4[EBP]        ;
+            fld     real ptr [EDX]      ; // ST0 = coeff[ECX]
+            jecxz   return_ST           ;
+            fld     x[EBP]              ; // ST0 = x
+            fxch    ST(1)               ; // ST1 = x, ST0 = r
+            align   4                   ;
+L2:
+            fmul    ST,ST(1)           ; // r *= x
+            fld     real ptr -10[EDX]   ;
+            sub     EDX,10              ; // deg--
+            faddp   ST(1),ST            ;
+            dec     ECX                 ;
+            jne     L2                  ;
+            fxch    ST(1)               ; // ST1 = r, ST0 = x
+            fstp    ST(0)               ; // dump x
+            align   4                   ;
+return_ST:
+            ;
+            ;
         }
-  } else {
+    }
+    else static if ( Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof==12)
+    {
+        asm // assembler by W. Bright
+        {
+            // EDX = (A.length - 1) * реал.sizeof
+            mov     ECX,A[EBP]          ; // ECX = A.length
+            dec     ECX                 ;
+            lea     EDX,[ECX*8]         ;
+            lea     EDX,[EDX][ECX*4]    ;
+            add     EDX,A+4[EBP]        ;
+            fld     real ptr [EDX]      ; // ST0 = coeff[ECX]
+            jecxz   return_ST           ;
+            fld     x                   ; // ST0 = x
+            fxch    ST(1)               ; // ST1 = x, ST0 = r
+            align   4                   ;
+L2:
+            fmul    ST,ST(1)            ; // r *= x
+            fld     real ptr -12[EDX]   ;
+            sub     EDX,12              ; // deg--
+            faddp   ST(1),ST            ;
+            dec     ECX                 ;
+            jne     L2                  ;
+            fxch    ST(1)               ; // ST1 = r, ST0 = x
+            fstp    ST(0)               ; // dump x
+            align   4                   ;
+return_ST:
+            ;
+            ;
+        }
+    }
+    else {
         т_дельтаук i = A.length - 1;
         реал r = A[i];
         while (--i >= 0)
@@ -253,12 +268,13 @@ body
             r += A[i];
         }
         return r;
-  }
+    }
 }
 
-package {
-T рационалПоли(T)(T x, T [] numerator, T [] denominator)
+package
 {
-    return поли(x, numerator)/поли(x, denominator);
-}
+    T рационалПоли(T)(T x, T [] numerator, T [] denominator)
+    {
+        return поли(x, numerator)/поли(x, denominator);
+    }
 }
