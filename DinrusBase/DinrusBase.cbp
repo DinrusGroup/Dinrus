@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DinrusBase" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DinrusBaseDbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DinrusBase" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="import/base.d" />
+		<Unit filename="import/cidrus.d" />
+		<Unit filename="import/com.d" />
+		<Unit filename="import/dinrus.d" />
+		<Unit filename="import/exception.d" />
+		<Unit filename="import/gc.d" />
+		<Unit filename="import/global.d" />
+		<Unit filename="import/lib/DinrusGlu.d" />
+		<Unit filename="import/lib/DinrusGluDLL.d" />
+		<Unit filename="import/lib/DinrusWinDLL.d" />
+		<Unit filename="import/lib/arc.d" />
+		<Unit filename="import/lib/cosyne.d" />
+		<Unit filename="import/lib/freeimage.d" />
+		<Unit filename="import/lib/ode.d" />
+		<Unit filename="import/lib/ogg.d" />
+		<Unit filename="import/lib/openal.d" />
+		<Unit filename="import/lib/sdl.d" />
+		<Unit filename="import/lib/sdlimage.d" />
+		<Unit filename="import/lib/sdlmixer.d" />
+		<Unit filename="import/lib/sdlnet.d" />
+		<Unit filename="import/lib/sdlttf.d" />
+		<Unit filename="import/lib/zlib.d" />
+		<Unit filename="import/object.d" />
+		<Unit filename="import/runtime.d" />
+		<Unit filename="import/std/intrinsic.d" />
+		<Unit filename="import/stdrus.d" />
+		<Unit filename="import/stringz.d" />
+		<Unit filename="import/sync.d" />
+		<Unit filename="import/sys/COM/all.d" />
+		<Unit filename="import/sys/COM/msscriptcontrol.d" />
+		<Unit filename="import/sys/COM/shell32.d" />
+		<Unit filename="import/sys/WinConsts.d" />
+		<Unit filename="import/sys/WinFuncs.d" />
+		<Unit filename="import/sys/WinIfaces.d" />
+		<Unit filename="import/sys/WinProcess.d" />
+		<Unit filename="import/sys/WinStructs.d" />
+		<Unit filename="import/sys/activex.d" />
+		<Unit filename="import/sys/com.d" />
+		<Unit filename="import/sys/inc/kernel32.d" />
+		<Unit filename="import/sys/memory.d" />
+		<Unit filename="import/sys/msscript.d" />
+		<Unit filename="import/sys/registry.d" />
+		<Unit filename="import/sys/uuid.d" />
+		<Unit filename="import/thread.d" />
+		<Unit filename="import/tpl/all.d" />
+		<Unit filename="import/tpl/alloc.d" />
+		<Unit filename="import/tpl/args.d" />
+		<Unit filename="import/tpl/bind.d" />
+		<Unit filename="import/tpl/box.d" />
+		<Unit filename="import/tpl/collection.d" />
+		<Unit filename="import/tpl/com.d" />
+		<Unit filename="import/tpl/handles.d" />
+		<Unit filename="import/tpl/metastrings.d" />
+		<Unit filename="import/tpl/minmax.d" />
+		<Unit filename="import/tpl/signal.d" />
+		<Unit filename="import/tpl/singleton.d" />
+		<Unit filename="import/tpl/std.d" />
+		<Unit filename="import/tpl/stream.d" />
+		<Unit filename="import/tpl/traits.d" />
+		<Unit filename="import/tpl/typetuple.d" />
+		<Unit filename="import/tpl/weakref.d" />
+		<Unit filename="import/typestruct.d" />
+		<Unit filename="import/win.d" />
+		<Unit filename="import/winapi.d" />
+		<Unit filename="import/winthread.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

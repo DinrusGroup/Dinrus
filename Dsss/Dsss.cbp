@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Dsss" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Dsss" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="dmd" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Dsss" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="dmd" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="src/build.d" />
+		<Unit filename="src/clean.d" />
+		<Unit filename="src/conf.d" />
+		<Unit filename="src/genconfig.d" />
+		<Unit filename="src/install.d" />
+		<Unit filename="src/main.d" />
+		<Unit filename="src/net.d" />
+		<Unit filename="src/platform.d" />
+		<Unit filename="src/system.d" />
+		<Unit filename="src/uninstall.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

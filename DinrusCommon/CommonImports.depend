@@ -1,0 +1,98 @@
+# depslib dependency file v1.0
+1482180050 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\arraylist.d
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\arraymultiset.d
+	<col/model/Multiset.d>
+	<col/Link.d>
+	<col/DefaultAllocator.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\defaultallocator.d
+	<cidrus.d>
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\functions.d
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\hash.d
+	<col/Link.d>
+	<col/model/Iterator.d>
+	<col/DefaultAllocator.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\hashmap.d
+	<col/model/Map.d>
+	<col/Functions.d>
+	<col/Hash.d>
+	<col/Iterators.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\hashmultiset.d
+	<col/model/Multiset.d>
+	<col/Functions.d>
+	<col/Hash.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\hashset.d
+	<col/model/Set.d>
+	<col/Functions.d>
+	<col/Hash.d>
+
+1482169454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\heap.d
+	<tpl/Std.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\iterators.d
+	<col/model/Iterator.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\link.d
+	<col/DefaultAllocator.d>
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\linklist.d
+	<col/model/List.d>
+	<col/Link.d>
+	<col/Functions.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\list.d
+	<stdrus.d>
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\addable.d
+	<col/model/Collection.d>
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\collection.d
+	<col/model/Iterator.d>
+
+1482178499 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\iterator.d
+
+1482178482 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\keyed.d
+	<col/model/Iterator.d>
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\list.d
+
+1482178482 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\map.d
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\multi.d
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\multiset.d
+
+1482178454 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\model\set.d
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\rbtree.d
+	<col/model/Iterator.d>
+	<col/DefaultAllocator.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\treemap.d
+	<col/model/Map.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+	<col/Iterators.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\treemultiset.d
+	<col/model/Multiset.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+
+1482178556 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\col\treeset.d
+	<col/model/Set.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+
+1482256251 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\core\type\boolean.d
+
+1424201123 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\dllmain.d
+
+1439662746 source:d:\dinrus\dev\dinrus\dinruscommon\basenodll\import\exemain.d
+

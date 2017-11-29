@@ -1,0 +1,80 @@
+# depslib dependency file v1.0
+1511901564 source:d:\dinrus\dev\dinrus\dinrusbase\import\base.d
+
+1511901564 source:d:\dinrus\dev\dinrus\dinrusbase\import\cidrus.d
+
+1511901566 source:d:\dinrus\dev\dinrus\dinrusbase\import\com.d
+
+1511966240 source:d:\dinrus\dev\dinrus\dinrusbase\import\dinrus.d
+	<cidrus.d>
+	<com.d>
+
+1511901566 source:d:\dinrus\dev\dinrus\dinrusbase\import\exception.d
+
+1511901566 source:d:\dinrus\dev\dinrus\dinrusbase\import\gc.d
+	<dinrus.d>
+
+1511965270 source:d:\dinrus\dev\dinrus\dinrusbase\import\global.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\arc.d
+	<cidrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\cosyne.d
+	<dinrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\dinrusglu.d
+	<stdrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\dinrusgludll.d
+	<stdrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\dinruswindll.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\freeimage.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\ode.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\ogg.d
+	<dinrus.d>
+	<stdrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\openal.d
+	<dinrus.d>
+	<stdrus.d>
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdl.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlimage.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlmixer.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlnet.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlttf.d
+
+1511901582 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\zlib.d
+
+1511901584 source:d:\dinrus\dev\dinrus\dinrusbase\import\object.d
+	<base.d>
+
+1511901584 source:d:\dinrus\dev\dinrus\dinrusbase\import\runtime.d
+
+1511901584 source:d:\dinrus\dev\dinrus\dinrusbase\import\std\intrinsic.d
+	<std/stdio.d>
+	<std/intrinsic.d>
+	<std/stdio.d>
+	<std/intrinsic.d>
+
+1511965308 source:d:\dinrus\dev\dinrus\dinrusbase\import\stdrus.d
+	<exception.d>
+
+1511901588 source:d:\dinrus\dev\dinrus\dinrusbase\import\stringz.d
+
+1511901588 source:d:\dinrus\dev\dinrus\dinrusbase\import\sync.d
+
+1511901594 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\activex.d
+
+1511965333 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\com.d
+
+1511901588 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\com\all.d
+

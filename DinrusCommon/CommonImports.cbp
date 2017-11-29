@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CommonImports" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/CommonImportsDbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/CommonImports" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="BaseNoDll/import/col/ArrayList.d" />
+		<Unit filename="BaseNoDll/import/col/ArrayMultiset.d" />
+		<Unit filename="BaseNoDll/import/col/DefaultAllocator.d" />
+		<Unit filename="BaseNoDll/import/col/Functions.d" />
+		<Unit filename="BaseNoDll/import/col/Hash.d" />
+		<Unit filename="BaseNoDll/import/col/HashMap.d" />
+		<Unit filename="BaseNoDll/import/col/HashMultiset.d" />
+		<Unit filename="BaseNoDll/import/col/HashSet.d" />
+		<Unit filename="BaseNoDll/import/col/Heap.d" />
+		<Unit filename="BaseNoDll/import/col/Iterators.d" />
+		<Unit filename="BaseNoDll/import/col/Link.d" />
+		<Unit filename="BaseNoDll/import/col/LinkList.d" />
+		<Unit filename="BaseNoDll/import/col/List.d" />
+		<Unit filename="BaseNoDll/import/col/RBTree.d" />
+		<Unit filename="BaseNoDll/import/col/TreeMap.d" />
+		<Unit filename="BaseNoDll/import/col/TreeMultiset.d" />
+		<Unit filename="BaseNoDll/import/col/TreeSet.d" />
+		<Unit filename="BaseNoDll/import/col/model/Addable.d" />
+		<Unit filename="BaseNoDll/import/col/model/Collection.d" />
+		<Unit filename="BaseNoDll/import/col/model/Iterator.d" />
+		<Unit filename="BaseNoDll/import/col/model/Keyed.d" />
+		<Unit filename="BaseNoDll/import/col/model/List.d" />
+		<Unit filename="BaseNoDll/import/col/model/Map.d" />
+		<Unit filename="BaseNoDll/import/col/model/Multi.d" />
+		<Unit filename="BaseNoDll/import/col/model/Multiset.d" />
+		<Unit filename="BaseNoDll/import/col/model/Set.d" />
+		<Unit filename="BaseNoDll/import/core/Type/Boolean.d" />
+		<Unit filename="BaseNoDll/import/dllMain.d" />
+		<Unit filename="BaseNoDll/import/exeMain.d" />
+		<Unit filename="BaseNoDll/import/geom/Figure.d" />
+		<Unit filename="BaseNoDll/import/geom/LoopSchemeMask.d" />
+		<Unit filename="BaseNoDll/import/geom/MathDefs.d" />
+		<Unit filename="BaseNoDll/import/geom/Plane3d.d" />
+		<Unit filename="BaseNoDll/import/lib/DinrusGluDLL.d" />
+		<Unit filename="BaseNoDll/import/lib/DinrusWinDLL.d" />
+		<Unit filename="BaseNoDll/import/lib/arc.d" />
+		<Unit filename="BaseNoDll/import/lib/cosyne.d" />
+		<Unit filename="BaseNoDll/import/lib/freeimage.d" />
+		<Unit filename="BaseNoDll/import/lib/jni.d" />
+		<Unit filename="BaseNoDll/import/lib/ode.d" />
+		<Unit filename="BaseNoDll/import/lib/ogg.d" />
+		<Unit filename="BaseNoDll/import/lib/openal.d" />
+		<Unit filename="BaseNoDll/import/lib/sdl.d" />
+		<Unit filename="BaseNoDll/import/lib/sdlimage.d" />
+		<Unit filename="BaseNoDll/import/lib/sdlmixer.d" />
+		<Unit filename="BaseNoDll/import/lib/sdlnet.d" />
+		<Unit filename="BaseNoDll/import/lib/sdlttf.d" />
+		<Unit filename="BaseNoDll/import/lib/zlib.d" />
+		<Unit filename="BaseNoDll/import/linalg/Matrix.d" />
+		<Unit filename="BaseNoDll/import/linalg/Quadric.d" />
+		<Unit filename="BaseNoDll/import/linalg/Vector.d" />
+		<Unit filename="BaseNoDll/import/linalg/VectorTypes.d" />
+		<Unit filename="BaseNoDll/import/linalg/basic.d" />
+		<Unit filename="BaseNoDll/import/linalg/color.d" />
+		<Unit filename="BaseNoDll/import/linalg/config.d" />
+		<Unit filename="BaseNoDll/import/linalg/random.d" />
+		<Unit filename="BaseNoDll/import/mesh/Attributes.d" />
+		<Unit filename="BaseNoDll/import/mesh/Geometry.d" />
+		<Unit filename="BaseNoDll/import/mesh/Handles.d" />
+		<Unit filename="BaseNoDll/import/mesh/Status.d" />
+		<Unit filename="BaseNoDll/import/mesh/Traits.d" />
+		<Unit filename="BaseNoDll/import/mesh/Utils.d" />
+		<Unit filename="BaseNoDll/import/st/coroutine.d" />
+		<Unit filename="BaseNoDll/import/st/stackcontext.d" />
+		<Unit filename="BaseNoDll/import/st/stackthread.d" />
+		<Unit filename="BaseNoDll/import/st/tls.d" />
+		<Unit filename="BaseNoDll/import/util/booltype.d" />
+		<Unit filename="BaseNoDll/import/util/demangler.d" />
+		<Unit filename="BaseNoDll/import/util/fdt.d" />
+		<Unit filename="BaseNoDll/import/util/fileex.d" />
+		<Unit filename="BaseNoDll/import/util/linetoken.d" />
+		<Unit filename="BaseNoDll/import/util/pathex.d" />
+		<Unit filename="BaseNoDll/import/util/series.d" />
+		<Unit filename="BaseNoDll/import/util/str.d" />
+		<Unit filename="BaseNoDll/import/util/worktools.d" />
+		<Unit filename="BaseNoDll/import/winMain.d" />
+		<Unit filename="BaseNoDll/import/winMain2.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

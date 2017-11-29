@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DinrusConc" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DinrusConcDbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DinrusConc" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="src/all.d" />
+		<Unit filename="src/barrier.d" />
+		<Unit filename="src/boundedchannel.d" />
+		<Unit filename="src/boundedlinkedqueue.d" />
+		<Unit filename="src/channel.d" />
+		<Unit filename="src/countdown.d" />
+		<Unit filename="src/cyclicbarrier.d" />
+		<Unit filename="src/defaultchannelcapacity.d" />
+		<Unit filename="src/directexecutor.d" />
+		<Unit filename="src/executor.d" />
+		<Unit filename="src/fairsemaphore.d" />
+		<Unit filename="src/fifosemaphore.d" />
+		<Unit filename="src/latch.d" />
+		<Unit filename="src/linkednode.d" />
+		<Unit filename="src/linkedqueue.d" />
+		<Unit filename="src/lockedexecutor.d" />
+		<Unit filename="src/mutex.d" />
+		<Unit filename="src/pooledexecutor.d" />
+		<Unit filename="src/puttable.d" />
+		<Unit filename="src/queuedexecutor.d" />
+		<Unit filename="src/queuedsemaphore.d" />
+		<Unit filename="src/readwritelock.d" />
+		<Unit filename="src/readwritelockutils.d" />
+		<Unit filename="src/reentrantlock.d" />
+		<Unit filename="src/rendezvous.d" />
+		<Unit filename="src/semaphore.d" />
+		<Unit filename="src/sync.d" />
+		<Unit filename="src/synchronizedint.d" />
+		<Unit filename="src/synchronizedvariable.d" />
+		<Unit filename="src/synchronouschannel.d" />
+		<Unit filename="src/syncutils.d" />
+		<Unit filename="src/takable.d" />
+		<Unit filename="src/threadedexecutor.d" />
+		<Unit filename="src/threadfactory.d" />
+		<Unit filename="src/threadfactoryuser.d" />
+		<Unit filename="src/waitnotify.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

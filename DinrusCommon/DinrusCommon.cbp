@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DinrusCommon" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DinrusCommonDbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DinrusCommon" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="../../../imp/dinrus" />
+		</Compiler>
+		<Unit filename="BaseNoDll/static/activex.d" />
+		<Unit filename="BaseNoDll/static/base.d" />
+		<Unit filename="BaseNoDll/static/col/ArrayList.d" />
+		<Unit filename="BaseNoDll/static/col/ArrayMultiset.d" />
+		<Unit filename="BaseNoDll/static/col/DefaultAllocator.d" />
+		<Unit filename="BaseNoDll/static/col/Functions.d" />
+		<Unit filename="BaseNoDll/static/col/Hash.d" />
+		<Unit filename="BaseNoDll/static/col/HashMap.d" />
+		<Unit filename="BaseNoDll/static/col/HashMultiset.d" />
+		<Unit filename="BaseNoDll/static/col/HashSet.d" />
+		<Unit filename="BaseNoDll/static/col/Heap.d" />
+		<Unit filename="BaseNoDll/static/col/Iterators.d" />
+		<Unit filename="BaseNoDll/static/col/Link.d" />
+		<Unit filename="BaseNoDll/static/col/LinkList.d" />
+		<Unit filename="BaseNoDll/static/col/List.d" />
+		<Unit filename="BaseNoDll/static/col/RBTree.d" />
+		<Unit filename="BaseNoDll/static/col/TreeMap.d" />
+		<Unit filename="BaseNoDll/static/col/TreeMultiset.d" />
+		<Unit filename="BaseNoDll/static/col/TreeSet.d" />
+		<Unit filename="BaseNoDll/static/col/model/Addable.d" />
+		<Unit filename="BaseNoDll/static/col/model/Collection.d" />
+		<Unit filename="BaseNoDll/static/col/model/Iterator.d" />
+		<Unit filename="BaseNoDll/static/col/model/Keyed.d" />
+		<Unit filename="BaseNoDll/static/col/model/List.d" />
+		<Unit filename="BaseNoDll/static/col/model/Map.d" />
+		<Unit filename="BaseNoDll/static/col/model/Multi.d" />
+		<Unit filename="BaseNoDll/static/col/model/Multiset.d" />
+		<Unit filename="BaseNoDll/static/col/model/Set.d" />
+		<Unit filename="BaseNoDll/static/com.d" />
+		<Unit filename="BaseNoDll/static/core/Type/Boolean.d" />
+		<Unit filename="BaseNoDll/static/gcEmbeded.d" />
+		<Unit filename="BaseNoDll/static/geom/Figure.d" />
+		<Unit filename="BaseNoDll/static/geom/LoopSchemeMask.d" />
+		<Unit filename="BaseNoDll/static/geom/MathDefs.d" />
+		<Unit filename="BaseNoDll/static/geom/Plane3d.d" />
+		<Unit filename="BaseNoDll/static/ini.d" />
+		<Unit filename="BaseNoDll/static/json.d" />
+		<Unit filename="BaseNoDll/static/lib/jni.d" />
+		<Unit filename="BaseNoDll/static/linalg/Matrix.d" />
+		<Unit filename="BaseNoDll/static/linalg/Quadric.d" />
+		<Unit filename="BaseNoDll/static/linalg/Vector.d" />
+		<Unit filename="BaseNoDll/static/linalg/VectorTypes.d" />
+		<Unit filename="BaseNoDll/static/linalg/basic.d" />
+		<Unit filename="BaseNoDll/static/linalg/color.d" />
+		<Unit filename="BaseNoDll/static/linalg/config.d" />
+		<Unit filename="BaseNoDll/static/linalg/linalgebra.d" />
+		<Unit filename="BaseNoDll/static/linalg/random.d" />
+		<Unit filename="BaseNoDll/static/mesh/Attributes.d" />
+		<Unit filename="BaseNoDll/static/mesh/Geometry.d" />
+		<Unit filename="BaseNoDll/static/mesh/Handles.d" />
+		<Unit filename="BaseNoDll/static/mesh/Status.d" />
+		<Unit filename="BaseNoDll/static/mesh/Traits.d" />
+		<Unit filename="BaseNoDll/static/mesh/Utils.d" />
+		<Unit filename="BaseNoDll/static/msscript.d" />
+		<Unit filename="BaseNoDll/static/openrj.d" />
+		<Unit filename="BaseNoDll/static/rotozoom.d" />
+		<Unit filename="BaseNoDll/static/scrshot.d" />
+		<Unit filename="BaseNoDll/static/st/coroutine.d" />
+		<Unit filename="BaseNoDll/static/st/stackcontext.d" />
+		<Unit filename="BaseNoDll/static/st/stackthread.d" />
+		<Unit filename="BaseNoDll/static/st/tls.d" />
+		<Unit filename="BaseNoDll/static/util/booltype.d" />
+		<Unit filename="BaseNoDll/static/util/fdt.d" />
+		<Unit filename="BaseNoDll/static/util/fileex.d" />
+		<Unit filename="BaseNoDll/static/util/linetoken.d" />
+		<Unit filename="BaseNoDll/static/util/pathex.d" />
+		<Unit filename="BaseNoDll/static/util/series.d" />
+		<Unit filename="BaseNoDll/static/util/str.d" />
+		<Unit filename="BaseNoDll/static/util/worktools.d" />
+		<Unit filename="BaseNoDll/static/winthread.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
