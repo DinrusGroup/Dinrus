@@ -7,10 +7,11 @@
  */
 module dbi.pg.all;
 
-version (build) {
-	pragma (ignore);
+version (build)
+{
+    pragma (ignore);
 }
 
 public import	dbi.pg.PgDatabase,
-		dbi.pg.PgResult,
-		dbi.all;
+         dbi.pg.PgResult,
+         dbi.all;

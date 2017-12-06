@@ -19,87 +19,93 @@ private import dbi.msql.imp, dbi.msql.MsqlResult;
  * See_Also:
  *	БазаДанных is the interface that this provides an implementation of.
  */
-class MsqlDatabase : БазаДанных {
-	public:
-	/**
-	 * Create a new instance of MsqlDatabase, but don't подключись.
-	 */
-	this () {
-	}
+class MsqlDatabase : БазаДанных
+{
+public:
+    /**
+     * Create a new instance of MsqlDatabase, but don't подключись.
+     */
+    this ()
+    {
+    }
 
-	/**
-	 * Create a new instance of MsqlDatabase and подключись to a server.
-	 *
-	 * See_Also:
-	 *	подключись
-	 */
-	this (ткст парамы, ткст имя_пользователя = пусто, ткст пароль = пусто) {
-		this();
-		подключись(парамы, имя_пользователя, пароль);
-	}
+    /**
+     * Create a new instance of MsqlDatabase and подключись to a server.
+     *
+     * See_Also:
+     *	подключись
+     */
+    this (ткст парамы, ткст имя_пользователя = пусто, ткст пароль = пусто)
+    {
+        this();
+        подключись(парамы, имя_пользователя, пароль);
+    }
 
-	/**
-	 *
-	 */
-	override проц подключись (ткст парамы, ткст имя_пользователя = пусто, ткст пароль = пусто) {
-	}
+    /**
+     *
+     */
+    override проц подключись (ткст парамы, ткст имя_пользователя = пусто, ткст пароль = пусто)
+    {
+    }
 
-	/**
-	 * Close the current подключение to the бд.
-	 */
-	override проц закрой () {
-	}
+    /**
+     * Close the current подключение to the бд.
+     */
+    override проц закрой ()
+    {
+    }
 
-	/**
-	 * Execute a SQL statement that returns no результаты.
-	 *
-	 * Params:
-	 *	эскюэл = The SQL statement to выполни.
-	 */
-	override проц выполни (ткст эскюэл) {
-	}
+    /**
+     * Execute a SQL statement that returns no результаты.
+     *
+     * Params:
+     *	эскюэл = The SQL statement to выполни.
+     */
+    override проц выполни (ткст эскюэл)
+    {
+    }
 
-	/**
-	 * Query the бд.
-	 *
-	 * Params:
-	 *	эскюэл = The SQL statement to выполни.
-	 *
-	 * Returns:
-	 *	A Результат object with the queried information.
-	 */
-	override РезультатМЭсКюЭл запрос (ткст эскюэл) {
-		return пусто;
-	}
+    /**
+     * Query the бд.
+     *
+     * Params:
+     *	эскюэл = The SQL statement to выполни.
+     *
+     * Returns:
+     *	A Результат object with the queried information.
+     */
+    override РезультатМЭсКюЭл запрос (ткст эскюэл)
+    {
+        return пусто;
+    }
 
-	/**
-	 * Get the ошибка code.
-	 *
-	 * Deprecated:
-	 *	This functionality now есть in ИсклДБИ.  This will be
-	 *	removed in version 0.3.0.
-	 *
-	 * Returns:
-	 *	The бд specific ошибка code.
-	 */
-	deprecated override цел дайКодОшибки () {
-		return 0;
-	}
+    /**
+     * Get the ошибка code.
+     *
+     * Deprecated:
+     *	This functionality now есть in ИсклДБИ.  This will be
+     *	removed in version 0.3.0.
+     *
+     * Returns:
+     *	The бд specific ошибка code.
+     */
+    deprecated override цел дайКодОшибки ()
+    {
+        return 0;
+    }
 
-	/**
-	 * Get the ошибка message.
-	 *
-	 * Deprecated:
-	 *	This functionality now есть in ИсклДБИ.  This will be
-	 *	removed in version 0.3.0.
-	 *
-	 * Returns:
-	 *	The бд specific ошибка message.
-	 */
-	deprecated override ткст дайСообОшибки () {
-		return "";
-	}
+    /**
+     * Get the ошибка message.
+     *
+     * Deprecated:
+     *	This functionality now есть in ИсклДБИ.  This will be
+     *	removed in version 0.3.0.
+     *
+     * Returns:
+     *	The бд specific ошибка message.
+     */
+    deprecated override ткст дайСообОшибки ();
 
-	private:
+private:
 
 }

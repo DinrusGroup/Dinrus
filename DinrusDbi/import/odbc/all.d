@@ -7,10 +7,11 @@
  */
 module dbi.odbc.all;
 
-version (build) {
-	pragma (ignore);
+version (build)
+{
+    pragma (ignore);
 }
 
 public import	dbi.odbc.OdbcDatabase,
-		dbi.odbc.OdbcResult,
-		dbi.all;
+         dbi.odbc.OdbcResult,
+         dbi.all;

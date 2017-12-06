@@ -168,14 +168,14 @@ class ПгБД : БазаДанных {
 	 * Thряды:
 	 *	ИсклДБИ if the SQL code couldn't be выполниd.
 	 */
-	override PgРезультат запрос (ткст эскюэл) {
+	override dbi.pg.PgResult.ПгРезультат запрос (ткст эскюэл) {
 		PGresult* рез = PQexec(подключение, toCString(эскюэл));
 		ExecStatusType status = PQresultStatus(рез);
 		кодОш = cast(цел)PQresultStatus(рез);
 		if (кодОш != ExecStatusType.PGRES_COMMAND_OK && кодОш != ExecStatusType.PGRES_TUPLES_OK) {
 			throw new ИсклДБИ(toDString(PQerrorMessage(подключение)), кодОш, спецВОбщ(PQresultErrorField(рез, PG_DIAG_SQLSTATE)));
 		}
-		return new PgРезультат(подключение, рез);
+		return new ПгРезультат(подключение, рез);
 	}
 
 	/**

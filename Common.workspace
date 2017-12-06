@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
-	<Workspace title="Рабочее пространство языка Динрус">
+	<Workspace title="Рабочее пространство Динрус">
+		<Project filename="DinrusBase/DinrusBase.cbp" />
+		<Project filename="DinrusCommon/DinrusCommon.cbp" />
 		<Project filename="DinrusTango/DinrusTango.cbp" />
 		<Project filename="DinrusWin32/DinrusWin32.cbp" />
 		<Project filename="DinrusConc/DinrusConc.cbp" />
 		<Project filename="DinrusDbi/DinrusDbi.cbp" />
-		<Project filename="Dsss/Dsss.cbp" />
-		<Project filename="DRC/DRC.cbp" />
+		<Project filename="DinrusCommon/CommonImports.cbp" />
 		<Project filename="DinrusTango/TangoImports.cbp" />
 		<Project filename="DinrusConc/ConcImports.cbp" />
-		<Project filename="DinrusCommon/DinrusCommon.cbp" />
-		<Project filename="DinrusCommon/CommonImports.cbp" />
-		<Project filename="DinrusBase/DinrusBase.cbp" />
+		<Project filename="DinrusDbi/DbiImports.cbp" />
+		<Project filename="DRC/DRC.cbp" />
+		<Project filename="Dsss/Dsss.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

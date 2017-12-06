@@ -4,7 +4,7 @@ private import dbi.model.Result;
 
 private import util.log.Log;
 private import time.Time,
-               time.Clock;
+        time.Clock;
 
 abstract class АбстрактныйРезультат : ПолныйРезультат
 {

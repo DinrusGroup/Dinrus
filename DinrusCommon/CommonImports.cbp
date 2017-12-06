@@ -26,11 +26,7 @@
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-O" />
-					<Add option="-O2" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Unit filename="BaseNoDll/import/col/ArrayList.d" />
@@ -66,7 +62,6 @@
 		<Unit filename="BaseNoDll/import/geom/LoopSchemeMask.d" />
 		<Unit filename="BaseNoDll/import/geom/MathDefs.d" />
 		<Unit filename="BaseNoDll/import/geom/Plane3d.d" />
-		<Unit filename="BaseNoDll/import/lib/DinrusGluDLL.d" />
 		<Unit filename="BaseNoDll/import/lib/DinrusWinDLL.d" />
 		<Unit filename="BaseNoDll/import/lib/arc.d" />
 		<Unit filename="BaseNoDll/import/lib/cosyne.d" />

@@ -6,12 +6,13 @@
 module dbi.model.Statement;
 
 private import dbi.model.Result,
-               dbi.model.Constants;
+        dbi.model.Constants;
 
 // TODO : Consider if Инструкция should stop inheriting Результат, the original
 // reasoning being that the concepts are difficult to split in for instance
 // Mysql.
-interface Инструкция : Результат
+interface Инструкция :
+Результат
 {
     проц типыПарамов(ТипДби[] типыПарамов ...);
     проц типыРезультата(ТипДби[] типыРез ...);

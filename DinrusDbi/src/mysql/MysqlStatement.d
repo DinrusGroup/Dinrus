@@ -32,10 +32,10 @@ private:
     MYSQL * подключение;
     MYSQL_STMT * инстр;
 	MYSQL_BIND[] paramBind;
-	BindingHelper paramHelper;
+	ПомощникПодвязки paramHelper;
 	MYSQL_BIND[] resBind;
     ИнфОСтолбце[] _метаданные;
-	BindingHelper resHelper;
+	ПомощникПодвязки resHelper;
     Логгер лог;
 
     Размест _размест;
@@ -344,7 +344,7 @@ private:
 		}
     }
    	
-	static struct BindingHelper
+	static struct ПомощникПодвязки
 	{	
 		проц установиДлину(т_мера l)
 		{
@@ -377,7 +377,7 @@ private:
 	}
 
     static проц иницПодвязку(ТипДби[] types, inout MYSQL_BIND[] вяжи, 
-                             inout BindingHelper helper)
+                             inout ПомощникПодвязки helper)
 	{
 		т_мера l = types.length;
 		вяжи.length = l;

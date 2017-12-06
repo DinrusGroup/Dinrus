@@ -14,16 +14,25 @@
  */
 module dbi.msql.imp;
 
-version (Windows) {
-	pragma (msg, "You will need to manually link in the mSQL library.");
-} else version (linux) {
-	pragma (lib, "libmsql.a");
-} else version (Posix) {
-	pragma (lib, "libmsql.a");
-} else version (darwin) {
-	pragma (msg, "You will need to manually link in the mSQL library.");
-} else {
-	pragma (msg, "You will need to manually link in the mSQL library.");
+version (Windows)
+{
+    pragma (msg, "You will need to manually link in the mSQL library.");
+}
+else version (linux)
+{
+    pragma (lib, "libmsql.a");
+}
+else version (Posix)
+{
+    pragma (lib, "libmsql.a");
+}
+else version (darwin)
+{
+    pragma (msg, "You will need to manually link in the mSQL library.");
+}
+else
+{
+    pragma (msg, "You will need to manually link in the mSQL library.");
 }
 
 private import cidrus;
@@ -62,7 +71,7 @@ const uint UNIQUE_FLAG		= 2;		///
 
 const uint MSQL_PKT_LEN		= 131072;	///
 
-const char[12][] msqlTypeNames	= ["???", "int", "char", "real", "ident", "null", "text", "date", "uint", "money","время","ip","int64","uint64","int8","int16","cidr4", "cidr6", "???"]; ///
+const char[12][] msqlTypeNames	= ["???", "int", "char", "real", "ident", "null", "text", "date", "uint", "money","time","ip","int64","uint64","int8","int16","cidr4", "cidr6", "???"]; ///
 
 /**
  *
@@ -72,46 +81,51 @@ alias char** m_row;
 /**
  *
  */
-struct field_s {
-	char*имя, таблица;
-	int тип, length, flags;
+struct field_s
+{
+    char*имя, таблица;
+    int тип, length, flags;
 }
 alias field_s m_field;
 
 /**
  *
  */
-struct m_seq_s {
-	int step, value;
+struct m_seq_s
+{
+    int step, value;
 }
 alias m_seq_s m_seq;
 
 /**
  *
  */
-struct m_data_s {
-	int width;
-	m_row data;
-	m_data_s* next;
+struct m_data_s
+{
+    int width;
+    m_row data;
+    m_data_s* next;
 }
 alias m_data_s m_data;
 
 /**
  *
  */
-struct m_fdata_s {
-	m_field	field;
-	m_fdata_s* next;
+struct m_fdata_s
+{
+    m_field	field;
+    m_fdata_s* next;
 }
 alias m_fdata_s m_fdata;
 
 /**
  *
  */
-struct result_s {
-        m_data* queryData, cursor;
-	m_fdata* fieldData, fieldCursor;
-	int numRows, numFields;
+struct result_s
+{
+    m_data* queryData, cursor;
+    m_fdata* fieldData, fieldCursor;
+    int numRows, numFields;
 }
 alias result_s m_result;
 
@@ -119,8 +133,9 @@ alias result_s m_result;
  * Deprecated:
  *	Use msqlGetErrMsg directly.
  */
-deprecated char* msqlErrMsg () {
-	return msqlGetErrMsg(null);
+deprecated char* msqlErrMsg ()
+{
+    return msqlGetErrMsg(null);
 }
 
 /**
@@ -132,8 +147,9 @@ deprecated char* msqlErrMsg () {
  * Returns:
  *	The number of rows.
  */
-int msqlNumRows (m_result result) {
-	return result.numRows;
+int msqlNumRows (m_result result)
+{
+    return result.numRows;
 }
 
 /**
@@ -145,36 +161,40 @@ int msqlNumRows (m_result result) {
  * Returns:
  *	The number of поля.
  */
-int mysqlNumFields (m_result result) {
-	return result.numFields;
+int mysqlNumFields (m_result result)
+{
+    return result.numFields;
 }
 
 /**
  *
  */
-bool IS_NOT_NULL (uint n) {
-	return (n && NOT_NULL_FLAG);
+bool IS_NOT_NULL (uint n)
+{
+    return (n && NOT_NULL_FLAG);
 }
 
 /**
  *
  */
-bool IS_UNIQUE (uint n) {
-	return (n && UNIQUE_FLAG);
+bool IS_UNIQUE (uint n)
+{
+    return (n && UNIQUE_FLAG);
 }
 
 extern (C):
 
-version (Windows) {
-	/**
-	 *
-	 */
-	int msqlUserConnect (char*, char*);
+    version (Windows)
+{
+    /**
+     *
+     */
+    int msqlUserConnect (char*, char*);
 
-	/**
-	 *
-	 */
-	char* msqlGetWinRegistryEntry (char*, char*, int);
+    /**
+     *
+     */
+    char* msqlGetWinRegistryEntry (char*, char*, int);
 }
 
 /**
@@ -482,7 +502,7 @@ m_result* msqlListTables (int sock);
  * Returns:
  *	A result set with a single field containing the field names.
  */
-m_result* msqlListFields (int sock , char* tableName);
+m_result* msqlListFields (int sock, char* tableName);
 
 /**
  * Get the structure of a таблица index.

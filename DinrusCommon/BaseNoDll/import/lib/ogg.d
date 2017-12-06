@@ -30,7 +30,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 module lib.ogg;
-import std.loader;
+import stdrus;
 
 
 alias long      ogg_int64_t;

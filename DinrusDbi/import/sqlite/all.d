@@ -7,10 +7,11 @@
  */
 module dbi.sqlite.all;
 
-version (build) {
-	pragma (ignore);
+version (build)
+{
+    pragma (ignore);
 }
 
 public import	dbi.sqlite.SqliteDatabase,
-		dbi.sqlite.SqliteResult,
-		dbi.all;
+         dbi.sqlite.SqliteResult,
+         dbi.all;

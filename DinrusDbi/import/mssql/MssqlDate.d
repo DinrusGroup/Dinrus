@@ -7,39 +7,28 @@
  */
 module dbi.mssql.MssqlDate;
 
-version(Rulada) {
-	private import stdrus : toDString = вТкст, toCString = вТкст0;
-} else {
-	private import stdrus : toCString = вТкст0;
-	private import stdrus : toDString = вТкст;
-}
 private import dbi.DBIException;
 private import dbi.mssql.imp;
 
-class MssqlDate {
-	public:
-	this () {
-	}
+class MssqlDate
+{
+public:
+    this ();
+    this (CS_DATETIME dt) ;
+    this (CS_DATETIME4 dt4) ;
+    ткст getString () ;
 
-	this (CS_DATETIME dt) ;
+private:
+    CS_DATEREC dr;
 
-	this (CS_DATETIME4 dt4) ;
+    цел dt_days;
+    бцел dt_time;
 
-	ткст getString () ;
-	
-	private:
-	CS_DATEREC dr;
+    цел years, months, days, ydays, wday, часы, mins, secs, ms;
+    цел l, n, i, j;
 
-	цел dt_days;
-	бцел dt_time;
+    CS_DATEREC convert(CS_DATETIME dt) ;
+    CS_DATEREC convert(CS_DATETIME4 dt4) ;
+    CS_DATEREC convert2() ;
 
-	цел years, months, days, ydays, wday, часы, mins, secs, ms;
-	цел l, n, i, j;
-
-	CS_DATEREC convert(CS_DATETIME dt) ;
-
-	CS_DATEREC convert(CS_DATETIME4 dt4) ;
-
-	CS_DATEREC convert2() ;
-	
 }

@@ -7,16 +7,16 @@ module dbi.mysql.MysqlResult;
 
 private import dbi.DBIException;
 private import dbi.model.Result,
-               dbi.model.Constants;
+        dbi.model.Constants;
 private import dbi.AbstractResult,
-               dbi.ValidityToken;
+        dbi.ValidityToken;
 
 private import lib.mysql, dbi.mysql.imp;
 
 private import core.Variant;
 private import util.log.Log;
 private import time.Time,
-               time.Clock;
+        time.Clock;
 
 debug private import io.Stdout;
 
@@ -35,9 +35,9 @@ public:
     alias АбстрактныйРезультат.метаданные метаданные;
 
     this(MYSQL* дбаза, ТокеноДерж токен);
-	
+
     this(MYSQL_RES* рез, MYSQL* дбаза, ТокеноДерж токен);
-	
+
     ~this();
 
     проц установи(MYSQL_RES* рез);
@@ -50,11 +50,11 @@ public:
     бдол члоПолей();
 
     проц закрой();
-	
+
     бул ещё();
-	
+
     РезультатМайЭсКюЭл следщ();
-	
+
     бул действителен() ;
 
 private:
@@ -72,7 +72,7 @@ private:
 public:
 
     this (РезультатМайЭсКюЭл результаты);
-	
+
     ИнфОСтолбце[] метаданные();
 
     цел opApply (цел delegate(inout Ряд) дг);

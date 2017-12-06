@@ -7,13 +7,6 @@
  */
 module dbi.mssql.MssqlResult;
 
-version(Rulada) {
-	private import stdrus : toDString = вТкст, toCString = вТкст0, местоположение = найди;
-} else {
-	private import stdrus : toDString = вТкст, toCString = вТкст0;
-	private import text.Util : местоположение;
-	private static import text.convert.Float, text.convert.Integer;
-}
 import dbi.DBIException, dbi.Result, dbi.Row;
 import dbi.mssql.imp, dbi.mssql.MssqlDate;
 
@@ -23,39 +16,39 @@ import dbi.mssql.imp, dbi.mssql.MssqlDate;
  * See_Also:
  *	Результат is the interface of which this provides an implementation.
  */
-class MssqlResult : Результат ;
+class MssqlResult : Результат
+{
 
-	/**
-	 * Get the следщ ряд from a результат установи.
-	 *
-	 * Returns:
-	 *	A Ряд object with the queried information or пусто for an empty установи.
-	 */
-	override Ряд получиРяд ();
+    /**
+    	 * Get the следщ ряд from a результат установи.
+    	 *
+    	 * Returns:
+    	 *	A Ряд object with the queried information or пусто for an empty установи.
+    	 */
+    override Ряд получиРяд ();
 
-	/**
-	 * Free all бд resources used by a результат установи.
-	 */
-	override проц финиш () ;
+    /**
+     * Free all бд resources used by a результат установи.
+     */
+    override проц финиш () ;
 
-	private:
-	CS_COMMAND* cmd;
-	CS_RETCODE restype;
+private:
+    CS_COMMAND* cmd;
+    CS_RETCODE restype;
 
-	цел numРяды = -1;
-	цел numFields = -1;
+    цел numРяды = -1;
+    цел numFields = -1;
 
-	CS_DATAFMT[] поля;
-	ткст[] strings;
-	CS_FLOAT[] floats;
-	CS_INT[] ints;
-	CS_DATETIME[] dts;
-	CS_DATETIME4[] dt4s;
-	цел[] lengths;
-	крат[] inds;
+    CS_DATAFMT[] поля;
+    ткст[] strings;
+    CS_FLOAT[] floats;
+    CS_INT[] ints;
+    CS_DATETIME[] dts;
+    CS_DATETIME4[] dt4s;
+    цел[] lengths;
+    крат[] inds;
 
-	проц установиЧлоПолей() ;
+    проц установиЧлоПолей() ;
+    проц установиПоля() ;
 
-	проц установиПоля() ;
-	
 }

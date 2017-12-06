@@ -16,16 +16,25 @@ module dbi.pg.imp;
 
 private import cidrus;
 
-version (Windows) {
-	pragma (lib, "libpq.lib");
-} else version (linux) {
-	pragma (lib, "libpq.a");
-} else version (Posix) {
-	pragma (lib, "libpq.a");
-} else version (darwin) {
-	pragma (lib, "libpq.a");
-} else {
-	pragma (msg, "You will need to manually link in the PostgreSQL library.");
+version (Windows)
+{
+    pragma (lib, "libpq.lib");
+}
+else version (linux)
+{
+    pragma (lib, "libpq.a");
+}
+else version (Posix)
+{
+    pragma (lib, "libpq.a");
+}
+else version (darwin)
+{
+    pragma (lib, "libpq.a");
+}
+else
+{
+    pragma (msg, "You will need to manually link in the PostgreSQL library.");
 }
 
 /**
@@ -88,82 +97,88 @@ const ткст PQnoPasswordSupplied	= "fe_sendauth: no пароль supplied\n";
 /**
  * This is actually from std.c.stdio, but it is used with the large objects.
  */
-enum {
-	SEEK_SET,	/// Start seeking from the start.
-	SEEK_CUR,	/// Start seeking from the current position.
-	SEEK_END	/// Start seeking from the end.
+enum
+{
+    SEEK_SET,	/// Start seeking from the start.
+    SEEK_CUR,	/// Start seeking from the current position.
+    SEEK_END	/// Start seeking from the end.
 }
 
 /**
  * ConnStatusType is the structure that describes the current status of the
  * подключение to the server.
  */
-enum ConnStatusType {
-	/*
-	 * Although it is okay to add to this list, значения which become unused
-	 * should never be removed, nor should constants be redefined - that would
-	 * break compatibility with existing code.
-	 */
-	CONNECTION_OK,			/// Everything is working.
-	CONNECTION_BAD,			/// Error in the подключение.
-	/* Non-blocking mode only below here. */
+enum ConnStatusType
+{
+    /*
+     * Although it is okay to add to this list, значения which become unused
+     * should never be removed, nor should constants be redefined - that would
+     * break compatibility with existing code.
+     */
+    CONNECTION_OK,			/// Everything is working.
+    CONNECTION_BAD,			/// Error in the подключение.
+    /* Non-blocking mode only below here. */
 
-	/*
-	 * The existence of these should never be relied upon - they should only
-	 * be used for пользователь feedback or similar purposes.
-	 */
-	CONNECTION_STARTED,		/// Waiting for подключение to be made.
-	CONNECTION_MADE,		/// Connection OK; waiting to send.
-	CONNECTION_AWAITING_RESPONSE,	/// Waiting for a response from the postmaster.
-	CONNECTION_AUTH_OK,		/// Received authentication; waiting for backend startup.
-	CONNECTION_SETENV,		/// Negotiating environment.
-	CONNECTION_SSL_STARTUP,		/// Negotiating SSL.
-	CONNECTION_NEEDED		/// Internal state: подключись() needed.
+    /*
+     * The existence of these should never be relied upon - they should only
+     * be used for пользователь feedback or similar purposes.
+     */
+    CONNECTION_STARTED,		/// Waiting for подключение to be made.
+    CONNECTION_MADE,		/// Connection OK; waiting to send.
+    CONNECTION_AWAITING_RESPONSE,	/// Waiting for a response from the postmaster.
+    CONNECTION_AUTH_OK,		/// Received authentication; waiting for backend startup.
+    CONNECTION_SETENV,		/// Negotiating environment.
+    CONNECTION_SSL_STARTUP,		/// Negotiating SSL.
+    CONNECTION_NEEDED		/// Internal state: подключись() needed.
 }
 
 /**
  * PostgresPollingStatusType is the structure that describes the current status of a non-blocking command.
  */
-enum PostgresPollingStatusType {
-	PGRES_POLLING_FAILED = 0,	/// Something went wrong.
-	PGRES_POLLING_READING,		/// You may use select before polling again.
-	PGRES_POLLING_WRITING,		/// You may use select before polling again.
-	PGRES_POLLING_OK,		/// The work has been completed.
-	PGRES_POLLING_ACTIVE		/// Unused; keep for awhile for backwards compatibility.
+enum PostgresPollingStatusType
+{
+    PGRES_POLLING_FAILED = 0,	/// Something went wrong.
+    PGRES_POLLING_READING,		/// You may use select before polling again.
+    PGRES_POLLING_WRITING,		/// You may use select before polling again.
+    PGRES_POLLING_OK,		/// The work has been completed.
+    PGRES_POLLING_ACTIVE		/// Unused; keep for awhile for backwards compatibility.
 }
 
 /**
  * ExecStatusType is the structure that describes the результаты.
  */
-enum ExecStatusType {
-	PGRES_EMPTY_QUERY = 0,		/// Empty запрос текст was выполниd.
-	PGRES_COMMAND_OK,		/// A запрос command that doesn't return anything was выполниd properly by the backend.
-	PGRES_TUPLES_OK,		/// A запрос command that returns tuples was выполниd properly by the backend, PGresult contains the результат tuples.
-	PGRES_COPY_OUT,			/// Copy Out data transfer in progress.
-	PGRES_COPY_IN,			/// Copy In data transfer in progress.
-	PGRES_BAD_RESPONSE,		/// An unexpected response was received from the backend.
-	PGRES_NONFATAL_ERROR,		/// Notice or warning message.
-	PGRES_FATAL_ERROR		/// Query failed.
+enum ExecStatusType
+{
+    PGRES_EMPTY_QUERY = 0,		/// Empty запрос текст was выполниd.
+    PGRES_COMMAND_OK,		/// A запрос command that doesn't return anything was выполниd properly by the backend.
+    PGRES_TUPLES_OK,		/// A запрос command that returns tuples was выполниd properly by the backend, PGresult contains the результат tuples.
+    PGRES_COPY_OUT,			/// Copy Out data transfer in progress.
+    PGRES_COPY_IN,			/// Copy In data transfer in progress.
+    PGRES_BAD_RESPONSE,		/// An unexpected response was received from the backend.
+    PGRES_NONFATAL_ERROR,		/// Notice or warning message.
+    PGRES_FATAL_ERROR		/// Query failed.
 }
 
 /**
  * PGTransactionStatusType is the structure that describes the current status of the transaction.
  */
-enum PGTransactionStatusType {
-	PQTRANS_IDLE,			/// Connection idle.
-	PQTRANS_ACTIVE,			/// Command in progress.
-	PQTRANS_INTRANS,		/// Idle, within transaction block.
-	PQTRANS_INERROR,		/// Idle, within failed transaction.
-	PQTRANS_UNKNOWN			/// Cannot determine status.
+enum PGTransactionStatusType
+{
+    PQTRANS_IDLE,			/// Connection idle.
+    PQTRANS_ACTIVE,			/// Command in progress.
+    PQTRANS_INTRANS,		/// Idle, within transaction block.
+    PQTRANS_INERROR,		/// Idle, within failed transaction.
+    PQTRANS_UNKNOWN			/// Cannot determine status.
 }
 
 /**
  * PGVerbosity is the structure that describes how verbose ошибка message should be.
  */
-enum PGVerbosity {
-	PQERRORS_TERSE,			/// Single-line ошибка messages.
-	PQERRORS_DEFAULT,		/// Recommended style.
-	PQERRORS_VERBOSE		/// All the facts.
+enum PGVerbosity
+{
+    PQERRORS_TERSE,			/// Single-line ошибка messages.
+    PQERRORS_DEFAULT,		/// Recommended style.
+    PQERRORS_VERBOSE		/// All the facts.
 }
 
 /**
@@ -171,7 +186,8 @@ enum PGVerbosity {
  *
  * The contents of this struct are not supposed to be known to applications.
  */
-struct PGconn {
+struct PGconn
+{
 }
 
 /**
@@ -181,7 +197,8 @@ struct PGconn {
  *
  * The contents of this struct are not supposed to be known to applications.
  */
-struct PGresult {
+struct PGresult
+{
 }
 
 /**
@@ -190,7 +207,8 @@ struct PGresult {
  *
  * The contents of this struct are not supposed to be known to applications.
  */
-struct PGcancel {
+struct PGcancel
+{
 }
 
 /**
@@ -203,12 +221,13 @@ struct PGcancel {
  *	In Postgres 6.4 and later, the be_pid is the notifying backend's,
  * whereas in earlier versions it was always your own backend's PID.
  */
-struct pgNotify {
-	char* relимя;			/// Notification condition имя.
-	цел be_pid;			/// Process ID of notifying server process.
-	char* extra;			/// Notification parameter.
-	/* Fields below here are private to libpq; apps should not use 'em */
-	pgNotify* следщ;			/// List link.
+struct pgNotify
+{
+    char* relимя;			/// Notification condition имя.
+    цел be_pid;			/// Process ID of notifying server process.
+    char* extra;			/// Notification parameter.
+    /* Fields below here are private to libpq; apps should not use 'em */
+    pgNotify* следщ;			/// List link.
 }
 alias pgNotify PGnotify;
 
@@ -221,17 +240,18 @@ alias проц function(ук arg, char* message) PQnoticeProcessor;
 /**
  * Print options for PQprint().
  */
-struct _PQprintOpt {
-	pqbool header;			/// Print output field headings and ряд счёт.
-	pqbool alignment;		/// Fill align the поля.
-	pqbool standard;		/// Old brain dead format.
-	pqbool html3;			/// Output html таблицы.
-	pqbool expanded;		/// Expand таблицы.
-	pqbool pager;			/// Use pager for output if needed.
-	char* fieldSep;			/// Field separator.
-	char* tableOpt;			/// Insert a таблица in HTML.
-	char* caption;			/// Insert a caption in HTML.
-	char** fieldName;		/// Пусто terminated array of replacement field имяs.
+struct _PQprintOpt
+{
+    pqbool header;			/// Print output field headings and ряд счёт.
+    pqbool alignment;		/// Fill align the поля.
+    pqbool standard;		/// Old brain dead format.
+    pqbool html3;			/// Output html таблицы.
+    pqbool expanded;		/// Expand таблицы.
+    pqbool pager;			/// Use pager for output if needed.
+    char* fieldSep;			/// Field separator.
+    char* tableOpt;			/// Insert a таблица in HTML.
+    char* caption;			/// Insert a caption in HTML.
+    char** fieldName;		/// Пусто terminated array of replacement field имяs.
 }
 alias _PQprintOpt PQprintOpt;
 
@@ -242,14 +262,15 @@ alias _PQprintOpt PQprintOpt;
  * "val" is either NULL or a malloc'd current-значение текст.  PQconninfoFree()
  * will release both the val strings and the PQconninfoOption array itself.
  */
-struct _PQconninfoOption {
-	char* keyword;			/// The keyword of the option.
-	char* envvar;			/// Fallback environment variable имя.
-	char* compiled;			/// Fallback compiled in default значение.
-	char* val;			/// Option's current значение, or пусто.
-	char* label;			/// Label for field in подключись dialog.
-	char* dispchar;			/// Character to display for this field in a подключись dialog. Values are: "" Display entered значение as is "*" Password field - hide значение "D"  Debug option - don't show by default.
-	цел dispsize;			/// Field size in characters for dialog.
+struct _PQconninfoOption
+{
+    char* keyword;			/// The keyword of the option.
+    char* envvar;			/// Fallback environment variable имя.
+    char* compiled;			/// Fallback compiled in default значение.
+    char* val;			/// Option's current значение, or пусто.
+    char* label;			/// Label for field in подключись dialog.
+    char* dispchar;			/// Character to display for this field in a подключись dialog. Values are: "" Display entered значение as is "*" Password field - hide значение "D"  Debug option - don't show by default.
+    цел dispsize;			/// Field size in characters for dialog.
 }
 alias _PQconninfoOption PQconninfoOption;
 
@@ -259,94 +280,97 @@ alias _PQconninfoOption PQconninfoOption;
  * Deprecated:
  *	This is only used for PQfn and that is deprecated.
  */
-deprecated struct PQArgBlock {
-	цел len;
-	цел isint;
-	union u {
-		ук ptr;
-		цел integer;
-	}
+deprecated struct PQArgBlock
+{
+    цел len;
+    цел isint;
+    union u
+    {
+        ук ptr;
+        цел integer;
+    }
 }
 
 extern (C):
 
-/**
- * Make a new подключение to the бд server in a nonblocking manner.
- *
- * Params:
- *	conninfo = Parameters to use when подключисьing.
- *
- * Returns:
- *	A PostgreSQL подключение that is inactive.
- *
- * See_Also:
- *	The online PostgreSQL documentation describes what you can use in conninfo.
- */
-PGconn* PQподключисьStart (char* conninfo);
+    /**
+     * Make a new подключение to the бд server in a nonblocking manner.
+     *
+     * Params:
+     *	conninfo = Parameters to use when подключисьing.
+     *
+     * Returns:
+     *	A PostgreSQL подключение that is inactive.
+     *
+     * See_Also:
+     *	The online PostgreSQL documentation describes what you can use in conninfo.
+     */
+    PGconn* PQподключисьStart (char* conninfo);
 
-/**
- * Get the current status of the nonblocking PostgreSQL подключение.
- *
- * Params:
- *	conn = The nonblocking PostgreSQL подключение.
- *
- * Returns:
- *	A PostgrePollingStatusType describing the current condition of the подключение.
- */
-PostgresPollingStatusType PQподключисьPoll (PGconn* conn);
+    /**
+     * Get the current status of the nonblocking PostgreSQL подключение.
+     *
+     * Params:
+     *	conn = The nonblocking PostgreSQL подключение.
+     *
+     * Returns:
+     *	A PostgrePollingStatusType describing the current condition of the подключение.
+     */
+    PostgresPollingStatusType PQподключисьPoll (PGconn* conn);
 
-/**
- * Make a new подключение to the бд server in a blocking manner.
- *
- * Params:
- *	conninfo = Parameters to use when подключисьing.
- *
- * Returns:
- *	The PostgreSQL подключение.
- *
- * See_Also:
- *	The online PostgreSQL documentation describes what you can use in conninfo.
- */
-PGconn* PQподключисьdb (char* conninfo);
+    /**
+     * Make a new подключение to the бд server in a blocking manner.
+     *
+     * Params:
+     *	conninfo = Parameters to use when подключисьing.
+     *
+     * Returns:
+     *	The PostgreSQL подключение.
+     *
+     * See_Also:
+     *	The online PostgreSQL documentation describes what you can use in conninfo.
+     */
+    PGconn* PQподключисьdb (char* conninfo);
 
-/**
- * Make a new подключение to the бд server in a blocking manner.
- *
- * Deprecated:
- *	Although this isn't actually deprecated, it is preferred that you use PQподключисьdb.
- *
- * Params:
- *	pghost = Name of the host to подключись to.  Defaults to either a Unix socket or localhost.
- *	pgport = Port number to подключись to the server with.  Defaults to nothing.
- *	pgoptions = Command line options to send to the server.  Defaults to nothing.
- *	pgtty = Currently ignored.
- *	dbName = The имя of the бд to use.  Defaults to login.
- *	login = Userимя to authenticate with.  Defaults to the current OS имя_пользователя.
- *	pwd = Password to authenticate with.
- *
- * Returns:
- *	The PostgreSQL подключение.
- */
-PGconn* PQустановиdbLogin (char* pghost, char* pgport, char* pgoptions, char* pgtty, char* dbName, char* login, char* pwd);
+    /**
+     * Make a new подключение to the бд server in a blocking manner.
+     *
+     * Deprecated:
+     *	Although this isn't actually deprecated, it is preferred that you use PQподключисьdb.
+     *
+     * Params:
+     *	pghost = Name of the host to подключись to.  Defaults to either a Unix socket or localhost.
+     *	pgport = Port number to подключись to the server with.  Defaults to nothing.
+     *	pgoptions = Command line options to send to the server.  Defaults to nothing.
+     *	pgtty = Currently ignored.
+     *	dbName = The имя of the бд to use.  Defaults to login.
+     *	login = Userимя to authenticate with.  Defaults to the current OS имя_пользователя.
+     *	pwd = Password to authenticate with.
+     *
+     * Returns:
+     *	The PostgreSQL подключение.
+     */
+    PGconn* PQустановиdbLogin (char* pghost, char* pgport, char* pgoptions, char* pgtty, char* dbName, char* login, char* pwd);
 
-/**
- * Make a new подключение to the бд server in a blocking manner.
- *
- * Deprecated:
- *	This is deprecated in favor of PQустановиdbLogin, but PQподключисьdb is an even better choice.
- *
- * Params:
- *	pghost = Name of the host to подключись to.  Defaults to either a Unix socket or localhost.
- *	pgport = Port number to подключись to the server with.  Defaults to nothing.
- *	pgoptions = Command line options to send to the server.  Defaults to nothing.
- *	pgtty = Currently ignored.
- *	dbName = The имя of the бд to use.  Defaults to the login имя_пользователя.
- *
- * Returns:
- *	The PostgreSQL подключение.
- */
-deprecated проц PQустановиdb (char* M_PGHOST, char* M_PGPORT, char* M_PGOPT, char* M_PGTTY, char* M_DBNAME) {
-	PQустановиdbLogin(M_PGHOST, M_PGPORT, M_PGOPT, M_PGTTY, M_DBNAME, пусто, пусто);
+    /**
+     * Make a new подключение to the бд server in a blocking manner.
+     *
+     * Deprecated:
+     *	This is deprecated in favor of PQустановиdbLogin, but PQподключисьdb is an even better choice.
+     *
+     * Params:
+     *	pghost = Name of the host to подключись to.  Defaults to either a Unix socket or localhost.
+     *	pgport = Port number to подключись to the server with.  Defaults to nothing.
+     *	pgoptions = Command line options to send to the server.  Defaults to nothing.
+     *	pgtty = Currently ignored.
+     *	dbName = The имя of the бд to use.  Defaults to the login имя_пользователя.
+     *
+     * Returns:
+     *	The PostgreSQL подключение.
+     */
+    deprecated проц PQустановиdb (char* M_PGHOST, char* M_PGPORT, char* M_PGOPT, char* M_PGTTY, char* M_DBNAME)
+{
+    PQустановиdbLogin(M_PGHOST, M_PGPORT, M_PGOPT, M_PGTTY, M_DBNAME, пусто, пусто);
 }
 
 /**
@@ -763,7 +787,7 @@ PGresult* PQexecParams (PGconn* conn, char* command, цел nParams, Oid* тип
  * Результатs:
  *	A PGresult structure containing the результаты or пусто on a serious ошибка.
  */
-PGresult* PQподготовь (PGconn* conn, char* stmtName, char* запрос, цел nParams, Oid* типыПарамов);
+PGresult* PQprepare (PGconn* conn, char* stmtName, char* запрос, цел nParams, Oid* типыПарамов);
 
 /**
  * Execute a подготовьd statement and wait for the результаты.
@@ -1474,7 +1498,7 @@ deprecated проц PQprintTuples (PGresult* рез, FILE* fout, цел printAtt
  * Returns:
  *	0 on success or -1 on failure.
  */
-цел lo_закрой (PGconn* conn, цел fd);
+цел lo_close (PGconn* conn, цел fd);
 
 /**
  * Read from an open large object.

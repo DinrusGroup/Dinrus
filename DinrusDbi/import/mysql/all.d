@@ -7,10 +7,11 @@
  */
 module dbi.mysql.all;
 
-version (build) {
-	pragma (ignore);
+version (build)
+{
+    pragma (ignore);
 }
 
 public import	dbi.mysql.MysqlDatabase,
-		dbi.mysql.MysqlResult,
-		dbi.all;
+         dbi.mysql.MysqlResult,
+         dbi.all;

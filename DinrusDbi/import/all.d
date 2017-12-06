@@ -8,8 +8,8 @@
 module dbi.all;
 
 public import	dbi.DataBase,
-		dbi.DBIException,
-		dbi.ErrorCode,
-		dbi.Result,
-		dbi.Row,
-		dbi.Statement;
+         dbi.DBIException,
+         dbi.ErrorCode,
+         dbi.Result,
+         dbi.Row,
+         dbi.Statement;

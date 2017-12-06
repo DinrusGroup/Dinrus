@@ -1,34 +1,37 @@
 <html>
 <head>
-<title>Рабочее пространство языка Динрус build log</title>
+<title>Рабочее пространство Динрус build log</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>29-11-2017 at 19:16.15</u><br />
-Build ended on: <u>29-11-2017 at 19:16.18</u><p />
-<b>-------------- Build: Debug in DinrusTango (compiler: Digital Mars D Compiler)---------------</b><br />
+Build started on: <u>30-11-2017 at 01:37.49</u><br />
+Build ended on: <u>30-11-2017 at 01:37.53</u><p />
+<b>-------------- Build: Release in DinrusBase (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in DinrusWin32 (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in DinrusCommon (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in DinrusConc (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in DinrusTango (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in DinrusDbi (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in DinrusWin32 (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in Dsss (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in DinrusConc (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in DRC (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in DinrusDbi (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in ConcImports (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in CommonImports (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in DinrusCommon (compiler: Digital Mars D Compiler)---------------</b><br />
+<b>-------------- Build: Release in TangoImports (compiler: Digital Mars D Compiler)---------------</b><br />
 Target is up to date.<br />
-<b>-------------- Build: Debug in CommonImports (compiler: Digital Mars D Compiler)---------------</b><br />
-dmd.exe  -g    -Id:\dinrus\imp\dinrus -ID:\dinrus\dev\DINRUS\DinrusCommon -c BaseNoDll\import\geom\Figure.d -ofobj\Debug\BaseNoDll\import\geom\Figure.obj<br />
-<font color="#ff0000">BaseNoDll\import\geom\Figure.d(139): semicolon expected to close declaration, not 'РўРєСЃС‚'</font><br />
-<font color="#ff0000">BaseNoDll\import\geom\Figure.d(139): no identifier for declarator РўРєСЃС‚</font><br />
-<font color="#ff0000">BaseNoDll\import\geom\Figure.d(178): unrecognized declaration</font><br />
-<font color="#a00000">Process terminated with status 1 (0 minute(s), 2 second(s))</font><br />
-<font color="#a00000">3 error(s), 0 warning(s) (0 minute(s), 2 second(s))</font><br />
+<b>-------------- Build: Release in ConcImports (compiler: Digital Mars D Compiler)---------------</b><br />
+Target is up to date.<br />
+<b>-------------- Build: Release in DbiImports (compiler: Digital Mars D Compiler)---------------</b><br />
+dmd.exe  -O    -Id:\dinrus\imp\dinrus -ID:\dinrus\dev\DINRUS\DinrusDbi -c import\pg\all.d -ofobj\Release\import\pg\all.obj<br />
+<font color="#ff0000">d:\dinrus\imp\dinrus\dbi\pg\PgDatabase.d(128): Error: identifier 'PgР РµР·СѓР»СЊС‚Р°С‚' is not defined</font><br />
+<font color="#ff0000">d:\dinrus\imp\dinrus\dbi\pg\PgDatabase.d(128): Error: PgР РµР·СѓР»СЊС‚Р°С‚ is used as a type</font><br />
+<font color="#ff0000">d:\dinrus\imp\dinrus\dbi\pg\PgDatabase.d(128): Error: function dbi.pg.PgDatabase.РџРіР‘Р”.Р·Р°РїСЂРѕСЃ of type void(char[] СЌСЃРєСЋСЌР») overrides but is not covariant with dbi.DataBase.Р‘Р°Р·Р°Р”Р°РЅРЅС‹С….Р·Р°РїСЂРѕСЃ of type Р РµР·СѓР»СЊС‚Р°С‚(char[] СЌСЃРєСЋСЌР»)</font><br />
+<font color="#ff0000">d:\dinrus\imp\dinrus\dbi\pg\PgDatabase.d(128): Error: function dbi.pg.PgDatabase.РџРіР‘Р”.Р·Р°РїСЂРѕСЃ does not override any function</font><br />
+<font color="#a00000">Process terminated with status 1 (0 minute(s), 3 second(s))</font><br />
+<font color="#a00000">4 error(s), 0 warning(s) (0 minute(s), 3 second(s))</font><br />
 </tt>
 </body>
 </html>

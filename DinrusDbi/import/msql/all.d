@@ -7,10 +7,11 @@
  */
 module dbi.msql.all;
 
-version (build) {
-	pragma (ignore);
+version (build)
+{
+    pragma (ignore);
 }
 
 public import	dbi.msql.MsqlDatabase,
-		dbi.msql.MsqlResult,
-		dbi.all;
+         dbi.msql.MsqlResult,
+         dbi.all;

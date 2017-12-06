@@ -2,8 +2,8 @@
 
 private
 {
- import lib.sdl, std.loader;
-pragma(lib,"dinrus.lib");
+ import lib.sdl, stdrus;
+
 }
 
 

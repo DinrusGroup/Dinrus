@@ -1,12 +1,12 @@
 ﻿module dbi.AbstractDatabase;
 
 private import dbi.model.Database,
-               dbi.model.Result;
+        dbi.model.Result;
 
 class АбстрактнаяТаблица : Таблица
 {
 
-protected:    
+protected:
 
     ткст _имя = пусто;
     бдол _члоРядов;

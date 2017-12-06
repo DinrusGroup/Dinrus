@@ -1,1 +1,135 @@
 # depslib dependency file v1.0
+1421208114 source:d:\dinrus\dev\dinrus\dinrusdbi\src\abstractdatabase.d
+
+1421221019 source:d:\dinrus\dev\dinrus\dinrusdbi\src\abstractresult.d
+	<dbi/model/Result.d>
+	<util/log/Log.d>
+
+1421209825 source:d:\dinrus\dev\dinrus\dinrusdbi\src\all.d
+
+1511872932 source:d:\dinrus\dev\dinrus\dinrusdbi\src\connect.d
+	<dbi/sqlite/all.d>
+	<dbi/odbc/all.d>
+	<dbi/msql/all.d>
+	<dbi/mssql/all.d>
+	<dbi/mysql/all.d>
+	<dbi/pg/all.d>
+
+1422377206 source:d:\dinrus\dev\dinrus\dinrusdbi\src\database.d
+	<stdrus.d>
+
+1511909551 source:d:\dinrus\dev\dinrus\dinrusdbi\src\dbiexception.d
+	<dinrus.d>
+	<dbi/ErrorCode.d>
+
+1421208084 source:d:\dinrus\dev\dinrus\dinrusdbi\src\errorcode.d
+
+1511873608 source:d:\dinrus\dev\dinrus\dinrusdbi\src\lib\mysql.d
+
+1511873708 source:d:\dinrus\dev\dinrus\dinrusdbi\src\lib\sqlite3.d
+	<tango/stdc/stdarg.d>
+	<tango/stdc/inttypes.d>
+	<std/c.d>
+	<cidrus.d>
+	<std/c/stdarg.d>
+	<std/stdint.d>
+
+1421208164 source:d:\dinrus\dev\dinrus\dinrusdbi\src\model\constants.d
+
+1421208182 source:d:\dinrus\dev\dinrus\dinrusdbi\src\model\database.d
+
+1482217234 source:d:\dinrus\dev\dinrus\dinrusdbi\src\model\result.d
+	<dbi/model/Constants.d>
+	<time/Time.d>
+
+1421208175 source:d:\dinrus\dev\dinrus\dinrusdbi\src\model\statement.d
+
+1421217479 source:d:\dinrus\dev\dinrus\dinrusdbi\src\msql\all.d
+
+1484245593 source:d:\dinrus\dev\dinrus\dinrusdbi\src\msql\imp.d
+	<cidrus.d>
+
+1450986275 source:d:\dinrus\dev\dinrus\dinrusdbi\src\msql\msqldatabase.d
+
+1421217580 source:d:\dinrus\dev\dinrus\dinrusdbi\src\msql\msqlresult.d
+	<dbi/msql/imp.d>
+
+1421218019 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\all.d
+
+1421939797 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\imp.d
+
+1421943054 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\mysqldatabase.d
+	<lib/mysql.d>
+	<core/Variant.d>
+	<text/convert/Integer.d>
+	<text/convert/Format.d>
+	<stringz.d>
+
+1421217989 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\mysqlerror.d
+	<dbi/ErrorCode.d>
+
+1421943054 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\mysqlresult.d
+	<dbi/DBIException.d>
+	<core/Variant.d>
+	<util/log/Log.d>
+	<io/Stdout.d>
+
+1511984190 source:d:\dinrus\dev\dinrus\dinrusdbi\src\mysql\mysqlstatement.d
+	<dbi/DBIException.d>
+	<lib/mysql.d>
+	<util/log/Log.d>
+
+1450986181 source:d:\dinrus\dev\dinrus\dinrusdbi\src\odbc\all.d
+
+1511939160 source:d:\dinrus\dev\dinrus\dinrusdbi\src\odbc\odbcdatabase.d
+	<stdrus.d>
+	<std/io.d>
+	<text/Util.d>
+	<io/Stdout.d>
+	<dbi/odbc/OdbcResult.d>
+
+1421940763 source:d:\dinrus\dev\dinrus\dinrusdbi\src\odbc\odbcresult.d
+
+1450985583 source:d:\dinrus\dev\dinrus\dinrusdbi\src\pg\all.d
+
+1457881676 source:d:\dinrus\dev\dinrus\dinrusdbi\src\pg\imp.d
+	<cidrus.d>
+
+1511994810 source:d:\dinrus\dev\dinrus\dinrusdbi\src\pg\pgdatabase.d
+	<std/io.d>
+	<io/Stdout.d>
+
+1421217890 source:d:\dinrus\dev\dinrus\dinrusdbi\src\pg\pgerror.d
+	<dbi/ErrorCode.d>
+
+1511982735 source:d:\dinrus\dev\dinrus\dinrusdbi\src\pg\pgresult.d
+
+1421208100 source:d:\dinrus\dev\dinrus\dinrusdbi\src\result.d
+	<dbi/Row.d>
+
+1421204537 source:d:\dinrus\dev\dinrus\dinrusdbi\src\row.d
+	<std/io.d>
+	<io/Stdout.d>
+	<dbi/DBIException.d>
+
+1421217683 source:d:\dinrus\dev\dinrus\dinrusdbi\src\sqlite\all.d
+
+1482217234 source:d:\dinrus\dev\dinrus\dinrusdbi\src\sqlite\imp.d
+	<std/c.d>
+	<cidrus.d>
+
+1511939560 source:d:\dinrus\dev\dinrus\dinrusdbi\src\sqlite\sqlitedatabase.d
+	<std/io.d>
+
+1421217647 source:d:\dinrus\dev\dinrus\dinrusdbi\src\sqlite\sqliteerror.d
+	<dbi/ErrorCode.d>
+	<dbi/sqlite/imp.d>
+
+1421219397 source:d:\dinrus\dev\dinrus\dinrusdbi\src\sqlite\sqliteresult.d
+	<dbi/sqlite/imp.d>
+
+1482183195 source:d:\dinrus\dev\dinrus\dinrusdbi\src\statement.d
+	<stdrus.d>
+
+1421208155 source:d:\dinrus\dev\dinrus\dinrusdbi\src\validitytoken.d
+

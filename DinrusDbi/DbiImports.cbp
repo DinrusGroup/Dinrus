@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DbiImports" />
+		<Option pch_mode="2" />
+		<Option compiler="dmd" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DbiImportsDbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-debug" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DbiImports" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="dmd" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="import/AbstractDatabase.d" />
+		<Unit filename="import/AbstractResult.d" />
+		<Unit filename="import/DBIException.d" />
+		<Unit filename="import/Database.d" />
+		<Unit filename="import/ErrorCode.d" />
+		<Unit filename="import/Result.d" />
+		<Unit filename="import/Row.d" />
+		<Unit filename="import/Statement.d" />
+		<Unit filename="import/ValidityToken.d" />
+		<Unit filename="import/all.d" />
+		<Unit filename="import/connect.d" />
+		<Unit filename="import/model/Constants.d" />
+		<Unit filename="import/model/Database.d" />
+		<Unit filename="import/model/Result.d" />
+		<Unit filename="import/model/Statement.d" />
+		<Unit filename="import/msql/MsqlDatabase.d" />
+		<Unit filename="import/msql/MsqlResult.d" />
+		<Unit filename="import/msql/all.d" />
+		<Unit filename="import/msql/imp.d" />
+		<Unit filename="import/mssql/MssqlDatabase.d" />
+		<Unit filename="import/mssql/MssqlDate.d" />
+		<Unit filename="import/mssql/MssqlResult.d" />
+		<Unit filename="import/mssql/all.d" />
+		<Unit filename="import/mssql/imp.d" />
+		<Unit filename="import/mysql/MysqlDatabase.d" />
+		<Unit filename="import/mysql/MysqlError.d" />
+		<Unit filename="import/mysql/MysqlResult.d" />
+		<Unit filename="import/mysql/MysqlStatement.d" />
+		<Unit filename="import/mysql/all.d" />
+		<Unit filename="import/mysql/imp.d" />
+		<Unit filename="import/odbc/OdbcDatabase.d" />
+		<Unit filename="import/odbc/OdbcResult.d" />
+		<Unit filename="import/odbc/all.d" />
+		<Unit filename="import/pg/PgDatabase.d" />
+		<Unit filename="import/pg/PgError.d" />
+		<Unit filename="import/pg/PgResult.d" />
+		<Unit filename="import/pg/all.d" />
+		<Unit filename="import/pg/imp.d" />
+		<Unit filename="import/sqlite/SqliteDatabase.d" />
+		<Unit filename="import/sqlite/SqliteError.d" />
+		<Unit filename="import/sqlite/SqliteResult.d" />
+		<Unit filename="import/sqlite/all.d" />
+		<Unit filename="import/sqlite/imp.d" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

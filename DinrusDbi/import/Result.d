@@ -18,34 +18,35 @@ private import dbi.Row;
  * See_Also:
  *	The результат class for the DBD you are using.
  */
-abstract class Результат {
-	/**
-	 * A destructor that attempts to force the the release of of all
-	 * statements handles and similar things.
-	 *
-	 * The current D garbage collector doesn't always call destructors,
-	 * so it is HIGHLY recommended that you закрой подключисьions manually.
-	 */
-	~this () ;
+abstract class Результат
+{
+    /**
+     * A destructor that attempts to force the the release of of all
+     * statements handles and similar things.
+     *
+     * The current D garbage collector doesn't always call destructors,
+     * so it is HIGHLY recommended that you закрой подключисьions manually.
+     */
+    ~this () ;
 
-	/**
-	 * Get the следщ ряд from a результат установи.
-	 *
-	 * Returns:
-	 *	A Ряд object with the queried information or пусто for an empty установи.
-	 */
-	abstract Ряд получиРяд ();
+    /**
+     * Get the следщ ряд from a результат установи.
+     *
+     * Returns:
+     *	A Ряд object with the queried information or пусто for an empty установи.
+     */
+    abstract Ряд получиРяд ();
 
-	/**
-	 * Get all of the remaining ряды from a результат установи.
-	 *
-	 * Returns:
-	 *	An array of Ряд objects with the queried information.
-	 */
-	Ряд[] получиВсе ();
+    /**
+     * Get all of the remaining ряды from a результат установи.
+     *
+     * Returns:
+     *	An array of Ряд objects with the queried information.
+     */
+    Ряд[] получиВсе ();
 
-	/**
-	 * Free all бд resources used by a результат установи.
-	 */
-	abstract проц финиш ();
+    /**
+     * Free all бд resources used by a результат установи.
+     */
+    abstract проц финиш ();
 }

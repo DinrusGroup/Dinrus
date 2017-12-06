@@ -9,21 +9,21 @@ module dbi.mysql.MysqlStatement;
 version = dbi_mysql;
 
 private import dbi.model.Statement,
-               dbi.model.Result, dbi.mysql.MysqlError,
-               dbi.model.Constants, lib.mysql, dbi.mysql.imp;
+        dbi.model.Result, dbi.mysql.MysqlError,
+        dbi.model.Constants, lib.mysql, dbi.mysql.imp;
 
 private import dbi.DBIException;
 
 private import dbi.mysql.MysqlResult,
-               dbi.mysql.MysqlError;
+        dbi.mysql.MysqlError;
 
 private import lib.mysql;
 
 private import util.log.Log;
 private import cidrus,
-               stringz;
+        stringz;
 private import time.Time,
-               time.Clock;
+        time.Clock;
 
 class ИнструкцияМайЭсКюЭл : Инструкция, Преддоб
 {
@@ -31,20 +31,20 @@ class ИнструкцияМайЭсКюЭл : Инструкция, Предд�
 private:
     MYSQL * подключение;
     MYSQL_STMT * инстр;
-	MYSQL_BIND[] paramBind;
-	BindingHelper paramHelper;
-	MYSQL_BIND[] resBind;
+    MYSQL_BIND[] paramBind;
+    ПомощникПодвязки paramHelper;
+    MYSQL_BIND[] resBind;
     ИнфОСтолбце[] _метаданные;
-	BindingHelper resHelper;
+    ПомощникПодвязки resHelper;
     Логгер лог;
 
     Размест _размест;
 
     бул преддобудьed = false;
     Время _штампврем;
-	
+
 package:
-    
+
     this(MYSQL_STMT * инстр, MYSQL * подключение);
 
 public:
@@ -60,12 +60,12 @@ public:
     override проц разместитель(Размест размест);
 
     override проц выполни(ук[] вяжи ...);
-	
+
     бул добудь(ук[] вяжи ...);
-	
+
     override проц закрой();
-	
-	override проц сбрось();
+
+    override проц сбрось();
 
     override бдол идПоследнейВставки();
 
@@ -84,9 +84,9 @@ public:
     override бдол члоПолей();
 
     override бдол задействованныеРяды();
-	
-	override ИнфОСтолбце[] метаданные();
-	
+
+    override ИнфОСтолбце[] метаданные();
+
     override ИнфОСтолбце метаданные(т_мера инд);
 
     override Время штампВремени() ;
@@ -94,21 +94,21 @@ public:
     override бул действителен() ;
 
 private:
- 
-    override проц exec();
-	
-	static struct BindingHelper
-	{	
-		проц установиДлину(т_мера l);
-		
-		my_bool[] ошибка;
-		my_bool[] is_null;
-		т_мера[] len;
-		MYSQL_TIME[бцел] время;
-		ббайт[][бцел] буфер;
-		ТипДби[] types;
-	}
 
-    static проц иницПодвязку(ТипДби[] types, inout MYSQL_BIND[] вяжи, 
-                             inout BindingHelper helper);
+    override проц exec();
+
+    static struct ПомощникПодвязки
+    {
+        проц установиДлину(т_мера l);
+
+        my_bool[] ошибка;
+        my_bool[] is_null;
+        т_мера[] len;
+        MYSQL_TIME[бцел] время;
+        ббайт[][бцел] буфер;
+        ТипДби[] types;
+    }
+
+    static проц иницПодвязку(ТипДби[] types, inout MYSQL_BIND[] вяжи,
+            inout ПомощникПодвязки helper);
 }
