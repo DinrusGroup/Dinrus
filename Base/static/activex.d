@@ -12,7 +12,7 @@ pragma(lib, "DinrusWin32.lib");
 //pragma(lib, "import.lib");
 
 import win32.winnt, win32.winnls, win32.uuid, win32.wtypes, win32.basetyps;
-import win32.oaidl, win32.objbase; /* for VARIANTARG */
+import win32.oaidl, win32.objbase; /* for win32.oaidl.VARIANTARG */
 
 class ИсклАктивОбъ: Исключение
 {
@@ -59,7 +59,7 @@ export:
     this(ткст имяПриложения)
     {
         шим* prog = вЮ16н(имяПриложения);
-        CLSID clsid;
+        win32.oaidl.CLSID clsid;
         HRESULT hr = CLSIDFromProgID(cast(шим*)prog, &clsid);
         hr = CoCreateInstance(&clsid, пусто, win32.objbase.CLSCTX_SERVER, &win32.uuid.IID_IDispatch, cast(void**)&pIDispatch);
         загрузиСостав();
@@ -168,15 +168,15 @@ export:
 
     }
 
-    VARIANTARG [] делайМассив(TypeInfo [] args, ук ptr)
+    win32.oaidl.VARIANTARG [] делайМассив(TypeInfo [] args, ук ptr)
     {
-        VARIANTARG [] массив;
+        win32.oaidl.VARIANTARG [] массив;
         массив.length = args.length;
 
         for (бцел i; i<args.length; ++i)
         {
-            if (args[i] == typeid(VARIANTARG))
-                массив [i] = va_arg!(VARIANTARG)(ptr);
+            if (args[i] == typeid(win32.oaidl.VARIANTARG))
+                массив [i] = va_arg!(win32.oaidl.VARIANTARG)(ptr);
             else
                 throw new ИсклАктивОбъ( "Ожидались аргументы типа Варарг" );
         }
@@ -200,7 +200,7 @@ export:
             throw new ИсклАктивОбъ(фм("член '%s' найден с ПТипВызова %s",member,tmp));
     }
 
-    VARIANT дай(ткст member)
+    win32.oaidl.VARIANT дай(ткст member)
     {
         INVOKEKIND ik=INVOKE_PROPERTYGET;
         DISPID dispid = найдиЧлен(member,ik);
@@ -209,13 +209,13 @@ export:
             throw new ИсклАктивОбъ("можно получить только свойства");
 
         DISPPARAMS param;
-        VARIANT result;
+        win32.oaidl.VARIANT result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, &result, пусто, пусто);
         return result;
     }
 
-    void установи(ткст member,VARIANTARG арг)
+    void установи(ткст member,win32.oaidl.VARIANTARG арг)
     {
         INVOKEKIND ik=INVOKE_PROPERTYPUT;
         DISPID dispid = найдиЧлен(member,ik);
@@ -223,7 +223,7 @@ export:
         if (!(dispid in setters))
             throw new ИсклАктивОбъ("можно только установить свойства");
 
-        VARIANTARG [] myArgs = (&арг)[0..1];
+        win32.oaidl.VARIANTARG [] myArgs = (&арг)[0..1];
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
@@ -237,7 +237,7 @@ export:
                                        ik, &param, пусто, пусто, пусто);
     }
 
-    void установиПоСсыл(ткст member,VARIANTARG арг)
+    void установиПоСсыл(ткст member,win32.oaidl.VARIANTARG арг)
     {
         INVOKEKIND ik=INVOKE_PROPERTYPUTREF;
         DISPID dispid = найдиЧлен(member,ik);
@@ -245,7 +245,7 @@ export:
         if (!(dispid in settersbyref))
             throw new ИсклАктивОбъ("можно только установить свойства");
 
-        VARIANTARG [] myArgs = (&арг)[0..1];
+        win32.oaidl.VARIANTARG [] myArgs = (&арг)[0..1];
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
@@ -255,12 +255,12 @@ export:
         param.cNamedArgs = 1;
         param.rgdispidNamedArgs = &dispidNamed;
 
-        VARIANT * result;
+        win32.oaidl.VARIANT * result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, result, пусто, пусто);
     }
 
-    VARIANT вызови(ткст member,...)
+    win32.oaidl.VARIANT вызови(ткст member,...)
     {
 
         /* Can I change the ткст into a variant? */
@@ -272,7 +272,7 @@ export:
         if (!(dispid in methods))
             throw new ИсклАктивОбъ("можно только вызывать методы");
 
-        VARIANTARG [] myArgs = делайМассив(_arguments,_argptr);
+        win32.oaidl.VARIANTARG [] myArgs = делайМассив(_arguments,_argptr);
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
@@ -280,7 +280,7 @@ export:
 
         debug пишиф("Calling %s...", member);
 
-        VARIANT result;
+        win32.oaidl.VARIANT result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, &result, пусто, пусто);
         return result;
@@ -290,12 +290,12 @@ export:
 
 
 
-export extern(D) VARIANTARG вар(...)
+export extern(D) win32.oaidl.VARIANTARG вар(...)
 {
-    VARIANTARG variant;
+    win32.oaidl.VARIANTARG variant;
 
     if (_arguments.length < 1)
-        return VARIANT.init;
+        return win32.oaidl.VARIANT.init;
 
     if(_arguments.length == 1)
     {
@@ -448,7 +448,7 @@ extern(Windows)
     const WORD DISPATCH_PROPERTYPUTREF = 0x8;
     alias win32.uuid.GUID_NULL IID_NULL;
 
-    HRESULT CLSIDFromProgID (LPCOLESTR lpszProgID, CLSID * lpclsid);
+    HRESULT CLSIDFromProgID (LPCOLESTR lpszProgID, win32.basetyps.CLSID * lpclsid);
     LCID GetUserDefaultLCID();
     BSTR SysAllocString(OLECHAR *);
     void SysFreeString(шим*);

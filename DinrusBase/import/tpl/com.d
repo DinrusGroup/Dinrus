@@ -433,7 +433,7 @@ template создайКоДоп(T, ППолитикаИсключений пол
 template Интерфейсы(ТСписок...)
 {
 
-    static T создайКо(T, ППолитикаИсключений политика = cast(ППолитикаИсключений) 1)(ПКонтекстВып контекст = cast(ПКонтекстВып) 0x1)
+    static T создайКо(T, sys.WinConsts.ППолитикаИсключений политика = cast(sys.WinConsts.ППолитикаИсключений) 1)(sys.WinConsts.ПКонтекстВып контекст = cast(sys.WinConsts.ПКонтекстВып) 0x1)
     {
         static if (tpl.typetuple.Индекс_у!(T, ТСписок) == -1)
             static assert(нет, stdrus.вЮ8(cast(ткст)"'" ~ typeof(this).stringof ~ "' не поддерживает '" ~ T.stringof ~ "'."));

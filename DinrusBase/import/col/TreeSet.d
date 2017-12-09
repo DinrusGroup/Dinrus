@@ -82,7 +82,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  *   обновлФункц -> используемая функция обновления (должна быть вроде
  *                     ФункцОбновления!(З))
  * 
- * проц установка(parameters p) -> initializes the tree with the given parameters.
+ * проц установка(параметры p) -> initializes the tree with the given параметры.
  *
  * бцел счёт -> счёт of the elements in the tree
  *
@@ -95,7 +95,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  *                function.
  *
  * бул добавь(З з) -> добавь the given значение to the tree according to the order
- * defined by the compare function.  If the элемент already exists in the
+ * defined by the compare function.  If the элемент уже существует in the
  * tree, the 
  *
  * Узел начало -> must be a Узел that points to the very первый valid
@@ -104,11 +104,11 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  * Узел конец -> must be a Узел that points to just past the very последн
  *валидного элемента.
  *
- * Узел найди(З з) -> returns a Узел that points to the элемент that
+ * Узел найди(З з) -> возвращает a Узел that points to the элемент that
  * содержит з, или на конец , если его не существует.
  *
  * Узел удали(Узел p) -> removes the given элемент from the tree,
- * returns the следщ valid элемент or конец if p was последн in the tree.
+ * возвращает the следщ valid элемент or конец if p was последн in the tree.
  *
  * проц очисти() -> removes all elements from the tree, sets счёт to 0.
  */

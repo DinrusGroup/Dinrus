@@ -79,7 +79,7 @@ class ДеревоМультинабор(З, alias ШаблРеализац = К
  *   функцСравнения -> the compare function to use (should be a
  *                      ФункцСравнения!(З))
  * 
- * проц установка(parameters p) -> initializes the tree with the given parameters.
+ * проц установка(параметры p) -> initializes the tree with the given параметры.
  *
  * бцел счёт -> счёт of the elements in the tree
  *
@@ -92,7 +92,7 @@ class ДеревоМультинабор(З, alias ШаблРеализац = К
  *                function.
  *
  * бул добавь(З з) -> добавь the given значение to the tree according to the order
- * defined by the compare function.  If the элемент already exists in the
+ * defined by the compare function.  If the элемент уже существует in the
  * tree, the function should добавь обх after all equivalent elements.
  *
  * Узел начало -> must be a Узел that points to the very первый valid
@@ -105,7 +105,7 @@ class ДеревоМультинабор(З, alias ШаблРеализац = К
  * tree that содержит з, or конец if the элемент doesn'т exist.
  *
  * Узел удали(Узел p) -> removes the given элемент from the tree,
- * returns the следщ valid элемент or конец if p was последн in the tree.
+ * возвращает the следщ valid элемент or конец if p was последн in the tree.
  *
  * проц очисти() -> removes all elements from the tree, sets счёт to 0.
  *

@@ -5,7 +5,7 @@
 */
 module object;
 public import base;
-
+pragma(lib, "DinrusBaseDll.lib");
 
 extern (D) class Object
 

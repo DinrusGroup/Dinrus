@@ -1,4 +1,5 @@
 module win;
+pragma(lib, "DinrusBaseDll.lib");
 public  import sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs, sys.uuid;
 /+
 public static

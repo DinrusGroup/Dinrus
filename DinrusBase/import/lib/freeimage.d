@@ -31,14 +31,14 @@
 //
 // This file is part of FreeImage 3
 //
-// COVERED CODE IS PROVIDED UNDER THIS LICENSE ON AN "AS IS" BASIS, WITHOUT WARRANTY
+// COVERED CODE IS PROVIDED UNDER THIS ЛИЦЕНЗИЯ ON AN "AS IS" BASIS, WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES
 // THAT THE COVERED CODE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE
 // OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE COVERED
 // CODE IS WITH YOU. SHOULD ANY COVERED CODE PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT
 // THE INITIAL DEVELOPER OR ANY OTHER CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY
 // SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL
-// PART OF THIS LICENSE. NO USE OF ANY COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT UNDER
+// PART OF THIS ЛИЦЕНЗИЯ. NO USE OF ANY COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT UNDER
 // THIS DISCLAIMER.
 //
 // Use at your own risk!
@@ -48,7 +48,7 @@ module lib.freeimage;
 
 pragma(lib, "freeimage.lib");
 
-// Version information ------------------------------------------------------
+// Информация о версии ------------------------------------------------------
 
 const uint  FREEIMAGE_MAJOR_VERSION = 3,
             FREEIMAGE_MINOR_VERSION = 9,
@@ -67,9 +67,9 @@ struct FIMULTIBITMAP
 
 // Types used in the library (directly copied from Windows) -----------------
 
-const uint FALSE = 0,
-           TRUE = 1;
-const void* NULL = null;
+const uint НЕТ = 0,
+           ДА = 1;
+const void* ПУСТО = пусто;
 
 const uint  SEEK_SET = 0,
             SEEK_CUR = 1,

@@ -79,7 +79,7 @@ int btr(uint *p, uint bitnum);
 
 /**
  * Tests and sets the bit.
- * Params:
+ * Параметры:
  * p = a non-NULL pointer to an array of uints.
  * index = a bit number, starting with bit 0 of p[0],
  * and progressing. It addresses bits like the expression:

@@ -1,4 +1,5 @@
 module stdrus;
+pragma(lib, "DinrusBaseDll.lib");
 
 private import sys.WinStructs, sys.WinConsts,sys.WinFuncs;
 private import tpl.args, tpl.stream;

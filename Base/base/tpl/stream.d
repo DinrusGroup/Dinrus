@@ -28,9 +28,10 @@ protected бул цифра16(сим c) {
 }
 
 
-abstract class Поток :  win.ПотокВвода, win.ПотокВывода
+export extern (D) abstract class Поток :  win.ПотокВвода, win.ПотокВывода
  {
-
+extern(C) extern
+{
       шим[] возврат;
 	  бул читаем;	
 	  бул записываем;
@@ -38,7 +39,10 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 	  бул открыт;	
 	  бул читайдоКФ;
 	  бул предВкар;
-  
+ }
+	  
+export:
+	  
 	  бул читаемый(){return this.читаем;}
 	  бул записываемый(){return this.записываем;}
 	  бул сканируемый(){return this.сканируем;}
@@ -75,10 +79,10 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 	  проц читайРовно(ук буфер, т_мера размер) {
 		for(;;) {
 		  if (!размер) return;
-		  т_мера размерСчитывания = читайБлок(буфер, размер); // return 0 on кф
-		  if (размерСчитывания == 0) break;
-		  буфер += размерСчитывания;
-		  размер -= размерСчитывания;
+		  т_мера readsize = читайБлок(буфер, размер); // return 0 on кф
+		  if (readsize == 0) break;
+		  буфер += readsize;
+		  размер -= readsize;
 		}
 		if (размер != 0)
 		  ошибка("Поток.читайБлок: Недостаточно данных в потоке",__FILE__,__LINE__);
@@ -349,60 +353,60 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		return c;
 	  }
 
-	  цел вчитайф(ИнфОТипе[] аргументы, ук арги) {
-		ткст фмт;
+	  цел вчитайф(ИнфОТипе[] arguments, ук args) {
+		ткст fmt;
 		цел j = 0;
 		цел count = 0, i = 0;
 		сим c = берис();
-		while ((j < аргументы.length || i < фмт.length) && !кф()) {
-		  if (фмт.length == 0 || i == фмт.length) {
+		while ((j < arguments.length || i < fmt.length) && !кф()) {
+		  if (fmt.length == 0 || i == fmt.length) {
 		i = 0;
-		if (аргументы[j] is typeid(сим[])) {
-		  фмт = ва_арг!(ткст)(арги);
+		if (arguments[j] is typeid(сим[])) {
+		  fmt = ва_арг!(ткст)(args);
 		  j++;
 		  continue;
-		} else if (аргументы[j] is typeid(цел*) ||
-			   аргументы[j] is typeid(байт*) ||
-			   аргументы[j] is typeid(крат*) ||
-			   аргументы[j] is typeid(дол*)) {
-		  фмт = "%d";
-		} else if (аргументы[j] is typeid(бцел*) ||
-			   аргументы[j] is typeid(ббайт*) ||
-			   аргументы[j] is typeid(бкрат*) ||
-			   аргументы[j] is typeid(бдол*)) {
-		  фмт = "%d";
-		} else if (аргументы[j] is typeid(плав*) ||
-			   аргументы[j] is typeid(дво*) ||
-			   аргументы[j] is typeid(реал*)) {
-		  фмт = "%f";
-		} else if (аргументы[j] is typeid(сим[]*) ||
-			   аргументы[j] is typeid(шим[]*) ||
-			   аргументы[j] is typeid(дим[]*)) {
-		  фмт = "%s";
-		} else if (аргументы[j] is typeid(сим*)) {
-		  фмт = "%c";
+		} else if (arguments[j] is typeid(цел*) ||
+			   arguments[j] is typeid(байт*) ||
+			   arguments[j] is typeid(крат*) ||
+			   arguments[j] is typeid(дол*)) {
+		  fmt = "%d";
+		} else if (arguments[j] is typeid(бцел*) ||
+			   arguments[j] is typeid(ббайт*) ||
+			   arguments[j] is typeid(бкрат*) ||
+			   arguments[j] is typeid(бдол*)) {
+		  fmt = "%d";
+		} else if (arguments[j] is typeid(плав*) ||
+			   arguments[j] is typeid(дво*) ||
+			   arguments[j] is typeid(реал*)) {
+		  fmt = "%f";
+		} else if (arguments[j] is typeid(сим[]*) ||
+			   arguments[j] is typeid(шим[]*) ||
+			   arguments[j] is typeid(дим[]*)) {
+		  fmt = "%s";
+		} else if (arguments[j] is typeid(сим*)) {
+		  fmt = "%c";
 		}
 		  }
-		  if (фмт[i] == '%') {	// a field
+		  if (fmt[i] == '%') {	// a field
 		i++;
 		бул suppress = false;
-		if (фмт[i] == '*') {	// suppress assignment
+		if (fmt[i] == '*') {	// suppress assignment
 		  suppress = true;
 		  i++;
 		}
 		// читай field width
 		цел width = 0;
-		while (цифра(фмт[i])) {
-		  width = width * 10 + (фмт[i] - '0');
+		while (цифра(fmt[i])) {
+		  width = width * 10 + (fmt[i] - '0');
 		  i++;
 		}
 		if (width == 0)
 		  width = -1;
 		// skip any modifier if present
-		if (фмт[i] == 'h' || фмт[i] == 'l' || фмт[i] == 'L')
+		if (fmt[i] == 'h' || fmt[i] == 'l' || fmt[i] == 'L')
 		  i++;
 		// check the typeсим and act accordingly
-		switch (фмт[i]) {
+		switch (fmt[i]) {
 		case 'd':	// decimal/hexadecimal/octal целeger
 		case 'D':
 		case 'u':
@@ -427,24 +431,24 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 			  c = берис();
 			  count++;
 			}
-			сим iфмт = cast(сим)(фмт[i] | 0x20);
-			if (iфмт == 'i')	{ // undetermined base
+			сим ifmt = cast(сим)(fmt[i] | 0x20);
+			if (ifmt == 'i')	{ // undetermined base
 			  if (c == '0')	{ // octal or hex
 			c = берис();
 			count++;
 			if (c == 'x' || c == 'X')	{ // hex
-			  iфмт = 'x';
+			  ifmt = 'x';
 			  c = берис();
 			  count++;
 			} else {	// octal
-			  iфмт = 'o';
+			  ifmt = 'o';
 			}
 			  }
 			  else	// decimal
-			iфмт = 'd';
+			ifmt = 'd';
 			}
 			дол n = 0;
-			switch (iфмт)
+			switch (ifmt)
 			{
 			case 'd':	// decimal
 			case 'u': {
@@ -483,29 +487,29 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 			}
 			if (neg)
 			  n = -n;
-			if (аргументы[j] is typeid(цел*)) {
-			  цел* p = ва_арг!(цел*)(арги);
+			if (arguments[j] is typeid(цел*)) {
+			  цел* p = ва_арг!(цел*)(args);
 			  *p = cast(цел)n;
-			} else if (аргументы[j] is typeid(крат*)) {
-			  крат* p = ва_арг!(крат*)(арги);
+			} else if (arguments[j] is typeid(крат*)) {
+			  крат* p = ва_арг!(крат*)(args);
 			  *p = cast(крат)n;
-			} else if (аргументы[j] is typeid(байт*)) {
-			  байт* p = ва_арг!(байт*)(арги);
+			} else if (arguments[j] is typeid(байт*)) {
+			  байт* p = ва_арг!(байт*)(args);
 			  *p = cast(байт)n;
-			} else if (аргументы[j] is typeid(дол*)) {
-			  дол* p = ва_арг!(дол*)(арги);
+			} else if (arguments[j] is typeid(дол*)) {
+			  дол* p = ва_арг!(дол*)(args);
 			  *p = n;
-			} else if (аргументы[j] is typeid(бцел*)) {
-			  бцел* p = ва_арг!(бцел*)(арги);
+			} else if (arguments[j] is typeid(бцел*)) {
+			  бцел* p = ва_арг!(бцел*)(args);
 			  *p = cast(бцел)n;
-			} else if (аргументы[j] is typeid(бкрат*)) {
-			  бкрат* p = ва_арг!(бкрат*)(арги);
+			} else if (arguments[j] is typeid(бкрат*)) {
+			  бкрат* p = ва_арг!(бкрат*)(args);
 			  *p = cast(бкрат)n;
-			} else if (аргументы[j] is typeid(ббайт*)) {
-			  ббайт* p = ва_арг!(ббайт*)(арги);
+			} else if (arguments[j] is typeid(ббайт*)) {
+			  ббайт* p = ва_арг!(ббайт*)(args);
 			  *p = cast(ббайт)n;
-			} else if (аргументы[j] is typeid(бдол*)) {
-			  бдол* p = ва_арг!(бдол*)(арги);
+			} else if (arguments[j] is typeid(бдол*)) {
+			  бдол* p = ва_арг!(бдол*)(args);
 			  *p = cast(бдол)n;
 			}
 			j++;
@@ -587,14 +591,14 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 			}
 			if (neg)
 			  n = -n;
-			if (аргументы[j] is typeid(плав*)) {
-			  плав* p = ва_арг!(плав*)(арги);
+			if (arguments[j] is typeid(плав*)) {
+			  плав* p = ва_арг!(плав*)(args);
 			  *p = n;
-			} else if (аргументы[j] is typeid(дво*)) {
-			  дво* p = ва_арг!(дво*)(арги);
+			} else if (arguments[j] is typeid(дво*)) {
+			  дво* p = ва_арг!(дво*)(args);
 			  *p = n;
-			} else if (аргументы[j] is typeid(реал*)) {
-			  реал* p = ва_арг!(реал*)(арги);
+			} else if (arguments[j] is typeid(реал*)) {
+			  реал* p = ва_арг!(реал*)(args);
 			  *p = n;
 			}
 			j++;
@@ -609,8 +613,8 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		  ткст s;
 		  сим[]* p;
 		  т_мера strlen;
-		  if (аргументы[j] is typeid(сим[]*)) {
-			p = ва_арг!(сим[]*)(арги);
+		  if (arguments[j] is typeid(сим[]*)) {
+			p = ва_арг!(сим[]*)(args);
 			s = *p;
 		  }
 		  while (!пробел(c) && c != сим.init) {
@@ -624,17 +628,17 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 			count++;
 		  }
 		  s = s[0 .. strlen];
-		  if (аргументы[j] is typeid(сим[]*)) {
+		  if (arguments[j] is typeid(сим[]*)) {
 			*p = s;
-		  } else if (аргументы[j] is typeid(сим*)) {
+		  } else if (arguments[j] is typeid(сим*)) {
 			s ~= 0;
-			auto q = ва_арг!(сим*)(арги);
+			auto q = ва_арг!(сим*)(args);
 			q[0 .. s.length] = s[];
-		  } else if (аргументы[j] is typeid(шим[]*)) {
-			auto q = ва_арг!(шим[]*)(арги);
+		  } else if (arguments[j] is typeid(шим[]*)) {
+			auto q = ва_арг!(шим[]*)(args);
 			*q = вЮ16(s);
-		  } else if (аргументы[j] is typeid(дим[]*)) {
-			auto q = ва_арг!(дим[]*)(арги);
+		  } else if (arguments[j] is typeid(дим[]*)) {
+			auto q = ва_арг!(дим[]*)(args);
 			*q = вЮ32(s);
 		  }
 		  j++;
@@ -642,7 +646,7 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		} break;
 
 		case 'c': {	// симacter(s)
-		  сим* s = ва_арг!(сим*)(арги);
+		  сим* s = ва_арг!(сим*)(args);
 		  if (width < 0)
 			width = 1;
 		  else
@@ -660,7 +664,7 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		} break;
 
 		case 'n': {	// number of симs читай so far
-		  цел* p = ва_арг!(цел*)(арги);
+		  цел* p = ва_арг!(цел*)(args);
 		  *p = count;
 		  j++;
 		  i++;
@@ -669,13 +673,13 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		default:	// читай симacter as is
 		  goto nws;
 		}
-		  } else if (пробел(фмт[i])) {	// skip whitespace
+		  } else if (пробел(fmt[i])) {	// skip whitespace
 		while (пробел(c))
 		  c = берис();
 		i++;
 		  } else {	// читай симacter as is
 		  nws:
-		if (фмт[i] != c)
+		if (fmt[i] != c)
 		  break;
 		c = берис();
 		i++;
@@ -774,7 +778,7 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 
 	  // writes данные to stream using ввыводф() syntax,
 	  // returns number of bytes written
-	  т_мера ввыводф(ткст format, спис_ва арги) {
+	  т_мера ввыводф(ткст format, спис_ва args) {
 		// shamelessly stolen from OutBuffer,
 		// by Walter's permission
 		сим[1024] буфер;
@@ -784,13 +788,13 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 		т_мера count;
 		while (true) {
 		  version (Win32) {
-		count = вснвыводф(stdrus.вТкст(p), psize, f, арги);
+		count = вснвыводф(stdrus.вТкст(p), psize, f, args);
 		if (count != -1)
 		  break;
 		psize *= 2;
 		p = cast(сим*) разместа(psize);
 		  } else version (Posix) {
-		count = вснвыводф(stdrus.вТкст(p), psize, f, арги);
+		count = вснвыводф(stdrus.вТкст(p), psize, f, args);
 		if (count == -1)
 		  psize *= 2;
 		else if (count >= psize)
@@ -831,8 +835,8 @@ abstract class Поток :  win.ПотокВвода, win.ПотокВывод�
 	  }
 
 	  // writes данные with optional trailing newline
-	  win.ПотокВывода пишификс(ИнфОТипе[] аргументы, ук argptr, цел newline=0) {
-		doFormat(&doFormatCallback,аргументы,argptr);
+	  win.ПотокВывода пишификс(ИнфОТипе[] arguments, ук argptr, цел newline=0) {
+		doFormat(&doFormatCallback,arguments,argptr);
 		if (newline) 
 		  пишиСтр("");
 		return this;

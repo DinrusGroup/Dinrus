@@ -6,11 +6,24 @@
 module base;
 
 version = Dinrus;
-version = Unicode;
-version = ЛитлЭндиан;
 
-int useWfuncs = 1;
-alias useWfuncs __ЮНИКОД__;
+extern(C) бул использоватьЮникод();
+
+const бул ЮНИКОД;
+
+static this()
+{
+    // Win 95, 98, ME do not implement the W functions
+    ЮНИКОД = использоватьЮникод();
+}
+
+
+version(Windows)
+    {
+    version = ЛитлЭндиан;
+}else version = БигЭндиан;
+
+
 
 //Константы
 const бул нет = false;

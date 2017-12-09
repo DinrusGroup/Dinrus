@@ -1,5 +1,5 @@
 module cidrus;
-//сиэф = экспортируемая си-функция
+pragma(lib, "DinrusBaseDll.lib");
 
 alias проц function(ук) _У;
 

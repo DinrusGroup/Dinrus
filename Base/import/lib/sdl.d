@@ -1,5 +1,5 @@
 module lib.sdl;
-import cidrus, stdrus, std.intrinsic;
+import cidrus, stdrus, stdrus;
 
 alias char* CCPTR;
 alias шим* CWCPTR;

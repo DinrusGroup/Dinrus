@@ -20,6 +20,11 @@ extern (Windows) int WideCharToMultiByte(uint, uint, wchar_t*, int, char*, int, 
 
 alias extern(C) проц function() МодИниц;
 
+export extern(C) бул использоватьЮникод()
+{
+return GetVersion() < 0x80000000;
+}
+
 //======================================================================
 //Получение аргументов командной строки
 

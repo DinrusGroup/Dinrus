@@ -120,7 +120,7 @@ class ДеревоКарта(К, З, alias ШаблРеализац=КЧДере
  *   обновлФункц -> используемая функция обновления (должна быть вроде
  *                     ФункцОбновления!(З))
  * 
- * проц установка(parameters p) -> initializes the tree with the given parameters.
+ * проц установка(параметры p) -> initializes the tree with the given параметры.
  *
  * бцел счёт -> счёт of the elements in the tree
  *
@@ -133,9 +133,9 @@ class ДеревоКарта(К, З, alias ШаблРеализац=КЧДере
  *                function.
  *
  * бул добавь(З з) -> добавь the given значение to the tree according to the order
- * defined by the compare function.  If the элемент already exists in the
+ * defined by the compare function.  If the элемент уже существует in the
  * tree, the update function should be called, and the function should return
- * false.
+ * нет.
  *
  * Узел начало -> must be a Узел that points to the very первый valid
  * элемент in the tree, or конец if no elements exist.
@@ -143,18 +143,18 @@ class ДеревоКарта(К, З, alias ШаблРеализац=КЧДере
  * Узел конец -> must be a Узел that points to just past the very последн
  *валидного элемента.
  *
- * Узел найди(З з) -> returns a Узел that points to the элемент that
+ * Узел найди(З з) -> возвращает a Узел that points to the элемент that
  * содержит з, или на конец , если его не существует.
  *
  * Узел удали(Узел p) -> removes the given элемент from the tree,
- * returns the следщ valid элемент or конец if p was последн in the tree.
+ * возвращает the следщ valid элемент or конец if p was последн in the tree.
  *
  * проц очисти() -> removes all elements from the tree, sets счёт to 0.
  */
 class ДеревоКарта(К, З, alias ШаблРеализац=КЧДерево, alias функСравнить=ДефСравнить) : Карта!(К, З)
 {
     /**
-     * the elements that are passed to the tree.  Note that if you define a
+     * the elements that are passed to the tree.  Прим.: if you define a
      * custom update or compare function, обх should изыми элемент structs, not
      * К or З.
      */
@@ -368,7 +368,7 @@ class ДеревоКарта(К, З, alias ШаблРеализац=КЧДере
     }
 
     /**
-     * Instantiate the tree map using the implementation parameters given.
+     * Instantiate the tree map using the implementation параметры given.
      *
      * Набор members of p to their initializer values in order to use the
      * default values defined by ДеревоКарта.

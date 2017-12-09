@@ -226,16 +226,17 @@ template тестРазбокс(T)
     {
         T результат;
         бул разбоксОбъ = значение.разбоксОбъ(typeid(T));
-        
+        debug скажинс("вход в тестРазбокс");
+
         try результат = изБокса!(T) (значение);
-        catch (РазбоксИскл error)
+        catch (РазбоксИскл ошиб)
         {
             if (разбоксОбъ)
                 ошибка ("Не удалось разбоксировать " ~ значение.тип.вТкст ~ " как " ~ typeid(T).вТкст ~ "; однако разбоксОбъ должен бы работать...");
             assert (!разбоксОбъ);
-            throw error;
+            throw ошиб;
         }
-        
+
         if (!разбоксОбъ)
             ошибка ("Разбоксирован " ~ значение.тип.вТкст ~ " как " ~ typeid(T).вТкст ~ "; однако, он должен был вызвать ошибку.");
         return результат;
@@ -247,27 +248,27 @@ protected enum КлассТипа
 {
     Бул, /**< бул */
     Бит = Бул,	// for backwards compatibility
-    Целое, /**< byte, ббайт, крат, ushort, цел, бцел, дол, ulong */
-    Плав, /**< float, double, real */
-    Комплекс, /**< cfloat, cdouble, creal */
-    Мнимое, /**< ifloat, idouble, ireal */
+    Целое, /**< byte, ббайт, крат, ushort, цел, бцел, long, ulong */
+    Плав, /**< плав, double, real */
+    Комплекс, /**< cплав, cdouble, creal */
+    Мнимое, /**< iплав, idouble, ireal */
     Класс, /**< Inherits from Объект */
     Указатель, /**< Указатель type (T *) */
     Массив, /**< Массив type (T []) */
-    Другой, /**< Any other type, such as delegates, function pointers, struct, проц... */
+    Другой, /**< Any второй type, such as delegates, function укзs, struct, проц... */
 }
 
 
 struct Бокс
 {
-    ИнфОТипе п_тип; /**< The type of the contained object. */
-    
+    ИнфОТипе п_тип; /**< The type of the contained объект. */
+
     union
     {
-        ук п_долДанные; /**< An массив of the contained object. */
-        проц[8] п_кратДанные; /**< Data used when the object is small. */
+        ук п_долДанные; /**< An массив of the contained объект. */
+        проц[8] п_кратДанные; /**< Data used when the объект is small. */
     }
-    
+
     protected static КлассТипа выявиКлассТипа(ИнфОТипе тип)
     {
         if (cast(TypeInfo_Class) тип)
@@ -297,16 +298,22 @@ struct Бокс
             /* Use the имя returned from toString, which might (but hopefully doesn't) include an allocation. */
             switch (тип.вТкст)
             {
-                case "бул", "bool": return КлассТипа.Бул;
-                case "byte", "ббайт", "крат", "ushort", "бцел", "дол", "ulong", "uint", "ubyte": return КлассТипа.Целое;
-                case "float", "real", "double": return КлассТипа.Плав;
-                case "cfloat", "cdouble", "creal": return КлассТипа.Комплекс;
-                case "ifloat", "idouble", "ireal": return КлассТипа.Мнимое;
-                default: return КлассТипа.Другой;
+            case "бул", "bool":
+                return КлассТипа.Бул;
+            case "byte", "байт", "ubyte", "ббайт", "short","крат", "ushort", "бкрат", "uint","бцел", "long", "дол", "ulong", "бдол":
+                return КлассТипа.Целое;
+            case "float", "плав", "real", "реал", "double","дво":
+                return КлассТипа.Плав;
+            case "cfloat", "кплав", "cdouble", "кдво", "creal", "креал":
+                return КлассТипа.Комплекс;
+            case "ifloat", "вплав","idouble","вдво", "ireal", "вреал":
+                return КлассТипа.Мнимое;
+            default:
+                return КлассТипа.Другой;
             }
         }
     }
-     static проц opCall(){}
+    static проц opCall() {}
     /** Return whether this value could be unboxed as the given тип without throwing. */
     бул разбоксОбъ(ИнфОТипе тест)
     {
@@ -344,26 +351,26 @@ struct Бокс
         return нет;
     }
     
-    /**
-     * Property for the тип contained by the box.
-     * This is initially пусто and cannot be assigned directly.
-     * возвращает: the тип of the contained object.
-     */
-     ИнфОТипе тип()
+            /**
+             * Property for the тип contained by the box.
+             * This is initially пусто and cannot be assigned directly.
+             * возвращает: the тип of the contained объект.
+             */
+            ИнфОТипе тип()
     {
         return п_тип;
     }
-    
+
     /**
-     * Property for the data pointer to the value of the box.
+     * Property for the data укз to the value of the box.
      * This is initially пусто and cannot be assigned directly.
      * возвращает: the data массив.
      */
-     проц[] данные()
+    проц[] данные()
     {
-        т_мера size = тип.tsize();
-        
-        return size <= п_кратДанные.length ? п_кратДанные[0..size] : п_долДанные[0..size];
+        т_мера размер = тип.тразм();
+
+        return размер <= п_кратДанные.length ? п_кратДанные[0..размер] : п_долДанные[0..размер];
     }
 
     /**
@@ -399,94 +406,94 @@ struct Бокс
         return string;
     }
     
-    protected бул opEqualsInternal(Бокс other, бул inverted)
+    protected бул opEqualsInternal(Бокс второй, бул инвертирован)
     {
-        if (тип != other.тип)
+        if (тип != второй.тип)
         {
-            if (!разбоксОбъ(other.тип))
+            if (!разбоксОбъ(второй.тип))
             {
-                if (inverted)
+                if (инвертирован)
                     return нет;
-                return other.opEqualsInternal(*this, да);
+                return второй.opEqualsInternal(*this, да);
             }
-            
-            КлассТипа ta = выявиКлассТипа(тип), tb = выявиКлассТипа(other.тип);
-            
+
+            КлассТипа ta = выявиКлассТипа(тип), tb = выявиКлассТипа(второй.тип);
+
             if (ta <= КлассТипа.Целое && tb <= КлассТипа.Целое)
             {
-                ткст na = тип.вТкст, nb = other.тип.вТкст;
-                
-                if (na == "ulong" || nb == "ulong")
-                    return изБокса!(ulong)(*this) == изБокса!(ulong)(other);
-                return изБокса!(дол)(*this) == изБокса!(дол)(other);
+                char[] na = тип.вТкст, nb = второй.тип.вТкст;
+
+                if (na == "ulong"||na == "бдол" || nb == "ulong" || nb == "бдол")
+                    return изБокса!(бдол)(*this) == изБокса!(бдол)(второй);
+                return изБокса!(дол)(*this) == изБокса!(дол)(второй);
             }
             else if (tb == КлассТипа.Плав)
-                return изБокса!(real)(*this) == изБокса!(real)(other);
+                return изБокса!(реал)(*this) == изБокса!(реал)(второй);
             else if (tb == КлассТипа.Комплекс)
-                return изБокса!(creal)(*this) == изБокса!(creal)(other);
+                return изБокса!(креал)(*this) == изБокса!(креал)(второй);
             else if (tb == КлассТипа.Мнимое)
-                return изБокса!(ireal)(*this) == изБокса!(ireal)(other);
-            
+                return изБокса!(вреал)(*this) == изБокса!(вреал)(второй);
+
             assert (0);
         }
-        
-        return cast(бул)тип.equals(данные.ptr, other.данные.ptr);
+
+        return cast(бул)тип.equals(данные.ptr, второй.данные.ptr);
     }
 
-    /**
+  /**
      * Compare this box's value with another box. This implicitly casts if the
-     * types are different, identical to the regular тип system.    
+     * types are different, identical to the regular тип system.
      */
     бул opEquals(Бокс другой)
     {
-	//скажинс("пошло сравнение");
+        //скажинс("пошло сравнение");
         return opEqualsInternal(другой, нет);
     }
-    
-    protected float opCmpInternal(Бокс other, бул inverted)
+
+    protected плав opCmpInternal(Бокс второй, бул инвертирован)
     {
-        if (тип != other.тип)
+        if (тип != второй.тип)
         {
-            if (!разбоксОбъ(other.тип))
+            if (!разбоксОбъ(второй.тип))
             {
-                if (inverted)
+                if (инвертирован)
                     return 0;
-                return other.opCmpInternal(*this, да);
+                return второй.opCmpInternal(*this, да);
             }
-            
-            КлассТипа ta = выявиКлассТипа(тип), tb = выявиКлассТипа(other.тип);
-            
+
+            КлассТипа ta = выявиКлассТипа(тип), tb = выявиКлассТипа(второй.тип);
+
             if (ta <= КлассТипа.Целое && tb == КлассТипа.Целое)
             {
-                if (тип == typeid(ulong) || other.тип == typeid(ulong))
+                if (тип == typeid(бдол) || второй.тип == typeid(бдол))
                 {
-                    ulong va = изБокса!(ulong)(*this), vb = изБокса!(ulong)(other);
+                    ulong va = изБокса!(бдол)(*this), vb = изБокса!(бдол)(второй);
                     return va > vb ? 1 : va < vb ? -1 : 0;
                 }
-                
-                дол va = изБокса!(дол)(*this), vb = изБокса!(дол)(other);
+
+                long va = изБокса!(дол)(*this), vb = изБокса!(дол)(второй);
                 return va > vb ? 1 : va < vb ? -1 : 0;
             }
             else if (tb == КлассТипа.Плав)
             {
-                real va = изБокса!(real)(*this), vb = изБокса!(real)(other);
-                return va > vb ? 1 : va < vb ? -1 : va == vb ? 0 : float.nan;
+                real va = изБокса!(реал)(*this), vb = изБокса!(реал)(второй);
+                return va > vb ? 1 : va < vb ? -1 : va == vb ? 0 : плав.nan;
             }
             else if (tb == КлассТипа.Комплекс)
             {
-                creal va = изБокса!(creal)(*this), vb = изБокса!(creal)(other);
-                return va == vb ? 0 : float.nan;
+                creal va = изБокса!(креал)(*this), vb = изБокса!(креал)(второй);
+                return va == vb ? 0 : плав.nan;
             }
             else if (tb == КлассТипа.Мнимое)
             {
-                ireal va = изБокса!(ireal)(*this), vb = изБокса!(ireal)(other);
-                return va > vb ? 1 : va < vb ? -1 : va == vb ? 0 : float.nan;
+                ireal va = изБокса!(вреал)(*this), vb = изБокса!(вреал)(второй);
+                return va > vb ? 1 : va < vb ? -1 : va == vb ? 0 : плав.nan;
             }
-            
+
             assert (0);
         }
-        
-        return тип.compare(данные.ptr, other.данные.ptr);
+
+        return тип.compare(данные.ptr, второй.данные.ptr);
     }
 
     /**
@@ -509,7 +516,19 @@ struct Бокс
 
 //////////////////////////////
 
- Бокс бокс(ИнфОТипе тип, ук данные)
+Бокс вБокс(...)
+in
+{
+    assert (_arguments.length == 1);
+}
+body
+{
+
+    return вБокс(_arguments[0], _argptr);
+}
+
+
+Бокс вБокс(ИнфОТипе тип, ук данные)
 in
 {
     assert(тип !is пусто);
@@ -518,23 +537,24 @@ body
 {
 //скажинс("начинаю работать...");
     Бокс результат;
-	//скажинс("вхожу в первое присваивание...");
-    т_мера size = тип.tsize();
+    //скажинс("вхожу в первое присваивание...");
+    т_мера размер = тип.tsize();
     //скажинс("первое присваивание...");
     результат.п_тип = тип;
-	//скажинс("второе присваивание...");
-    if (size <= результат.п_кратДанные.length){
-        результат.п_кратДанные[0..size] = данные[0..size];
-		//скажинс("условное присваивание...");
-		}
+    //скажинс("второе присваивание...");
+    if (размер <= результат.п_кратДанные.length)
+    {
+        результат.п_кратДанные[0..размер] = данные[0..размер];
+        //скажинс("условное присваивание...");
+    }
     else
-	{
-        результат.п_долДанные = данные[0..size].dup.ptr;
-		//скажинс("безусловное присваивание...");
-		}
-        //скажинс(форматируй("выдаю рез...%s", результат.вТкст));
-		//скажинс(форматируй("входный тип...%s", тип.вТкст));
-		//скажинс(форматируй("размер входных данных...%s", данные.sizeof));
+    {
+        результат.п_долДанные = данные[0..размер].dup.ptr;
+        //скажинс("безусловное присваивание...");
+    }
+    //скажинс(форматируй("выдаю рез...%s", результат.вТкст));
+    //скажинс(форматируй("входный тип...%s", тип.вТкст));
+    //скажинс(форматируй("размер входных данных...%s", данные.sizeof));
     return результат;
 }
 
@@ -543,52 +563,40 @@ protected т_мера длинаАргумента(т_мера baseLength)
 {
     return (baseLength + цел.sizeof - 1) & ~(цел.sizeof - 1);
 }
-  
- Бокс[] масБокс(ИнфОТипе[] типы, ук данные)
+
+Бокс[] масБокс(ИнфОТипе[] типы, ук данные)
 {
 //скажинс("вызываю фцию222...");
     Бокс[] массив = new Бокс[типы.length];
-    
-    foreach(т_мера index, ИнфОТипе тип; типы)
+
+    foreach(т_мера индекс, ИнфОТипе тип; типы)
     {
-        массив[index] = бокс(тип, данные);
+        массив[индекс] = вБокс(тип, данные);
         данные += длинаАргумента(тип.tsize());
     }
-       return массив;
+    return массив;
 }
 
 проц массивБоксВАргументы(Бокс[] аргументы, out ИнфОТипе[] типы, out ук данные)
-	{
-		т_мера dataLength;
-		ук pointer;
-	// скажинс("вызываю фцию111...");
-		foreach (Бокс item; аргументы)
-		
-			dataLength += длинаАргумента(item.данные.length);
-			
-		типы = new ИнфОТипе[аргументы.length];
-		pointer = данные = (new проц[dataLength]).ptr;
+{
+    т_мера длинаДанных;
+    ук укз;
+    // скажинс("вызываю фцию111...");
+    foreach (Бокс элемент; аргументы)
 
-		foreach (т_мера index, Бокс item; аргументы)
-		{
-			типы[index] = item.тип;
-			pointer[0..item.данные.length] = item.данные;
-			pointer += длинаАргумента(item.данные.length);
-		}    
-	}
-	
-Бокс вБокс(...)
-	in
-	{
-		assert (_arguments.length == 1);
-	}
-	body
-	{
-	
-		return бокс(_arguments[0], _argptr);
-	}
-  
+    длинаДанных += длинаАргумента(элемент.данные.length);
 
+    типы = new ИнфОТипе[аргументы.length];
+    укз = данные = (new проц[длинаДанных]).ptr;
+
+    foreach (т_мера индекс, Бокс элемент; аргументы)
+    {
+        типы[индекс] = элемент.тип;
+        укз[0..элемент.данные.length] = элемент.данные;
+        укз += длинаАргумента(элемент.данные.length);
+    }
+}
+	
    
 Бокс[] массивБокс(...)
 	{

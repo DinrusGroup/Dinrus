@@ -7,22 +7,6 @@ module sys.WinFuncs;
 protected import cidrus, sys.WinConsts, sys.WinIfaces, sys.WinStructs;
 public import sys.inc.kernel32;
 
-pragma(lib, "dinrus.lib");
-
-static this()
-{
-    // Win 95, 98, ME do not implement the W functions
-    __ЮНИКОД__ = (ДайВерсию() < 0x80000000);
-}
-/+
-static if( __ЮНИКОД__) version = Юникод;
-version(Windows)
-{
-    version = ЛитлЭндиан;
-}
-else version = БигЭндиан;
-
-+/
 extern(C)
 {
 

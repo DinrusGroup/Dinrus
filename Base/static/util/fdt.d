@@ -328,7 +328,7 @@ public
                     return "не записано";
 
                 // Convert the файл's time into the user's local timezone.
-                if (useWfuncs)
+                if (ЮНИКОД)
                 {
                     opsys.FileTimeToSystemTime(&mDT, &lSystemTime);
                     opsys.GetTimeZoneInformation(&lTimeZone);
@@ -366,7 +366,7 @@ public
                 opsys.HANDLE lFH;
 
 
-                if (useWfuncs)
+                if (ЮНИКОД)
                 {
                     lFH = opsys.FindFirstFileW (cast(шим *)&(util.str.замениСим(pFileName ~ cast(шим[])"\0", '/', '\\')[0]), &lFileInfoW);
                     if(lFH != opsys.INVALID_HANDLE_VALUE)

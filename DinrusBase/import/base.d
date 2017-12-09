@@ -6,11 +6,24 @@
 module base;
 
 version = Dinrus;
-version = Unicode;
-version = ЛитлЭндиан;
 
-int useWfuncs = 1;
-alias useWfuncs __ЮНИКОД__;
+extern(C) бул использоватьЮникод();
+
+const бул ЮНИКОД;
+
+static this()
+{
+    // Win 95, 98, ME do not implement the W functions
+    ЮНИКОД = использоватьЮникод();
+}
+
+
+version(Windows)
+    {
+    version = ЛитлЭндиан;
+}else version = БигЭндиан;
+
+
 
 //Константы
 const бул нет = false;
@@ -103,9 +116,9 @@ const
     enum Эндиан
     {
         Неизвестно =   0,                   //!< Неизвестно эндиан-ness. Indicates an ошиб
-        Литл  =   1,                   //!< Литтл эндиан architecture
-        Биг     =   2,                   //!< Биг эндиан architecture
-        Мидл  =   3,                   //!< Миддл эндиан architecture
+        Литл  =   1,                   //!< архитектура Литтл Эндиан
+        Биг     =   2,                   //!<архитектура  Биг Эндиан
+        Мидл  =   3,                   //!<архитектура  Миддл Эндиан
         БайтСекс =   4,
         Амбьент =   Эндиан_Амбьент
     }
@@ -162,10 +175,10 @@ else
 template плавТрэтс(T)
 {
 // МАСКАВЫР - это бкрат маска для выделения экспонентной части (без знака)
-// СТП2ЧИСМАНТ = pow(2, реал.mant_dig): ЭТО ЗНАЧЕНИЕis the value such that
+// СТП2ЧИСМАНТ = pow(2, реал.mant_dig): это значение, таково что
 //  (smallest_denormal)*СТП2ЧИСМАНТ == реал.min
-// ПОЗВЫР_КРАТ is the index of the exponent when represented as а ushort array.
-// ПОЗЗНАКА_БАЙТ is the index of the sign when represented as а ббайт array.
+// ПОЗВЫР_КРАТ - индекс экспоненты при представлении в виде массива бкрат.
+// ПОЗЗНАКА_БАЙТ является индексом знака, при представлении в виде массива ббайт.
     static if (T.mant_dig == 24)   // float
     {
         const бкрат МАСКАВЫР = 0x7F80;

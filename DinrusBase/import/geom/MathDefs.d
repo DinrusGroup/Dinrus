@@ -51,7 +51,7 @@ import stdrus;
 бул меньшравн_ли(T1, T2)(T1 a, T2 b)
 { return (a < b) || равн_ли(a,b); }
 
-/// Trigonometry/angles - related
+/// Тригонометрия/углы - относительные
 
 T рабоч_уарг(T)(T _уарг)
 {
@@ -66,12 +66,12 @@ T рабоч_уарг(T)(T _уарг)
   return _уарг;
 }
 
-/** returns the угол determined by its _кос and the sign of its _син
-    result is positive if the угол is in [0:pi]
-    and negative if it is in [pi:2pi]
+/** возвращает угол, определённый его _кос и знаком его _син
+    результат полложителен, если угол в [0:pi]
+    и отрицательный если он возвращает [pi:2pi]
 */
 T угол(T)(T _кос_угла, T _син_угла)
-{//sanity checks - otherwise acos will return nan
+{//санитарные проверки - иначе acos вернёт nan
   _кос_угла = рабоч_уарг(_кос_угла);
   return cast(T) _син_угла >= 0 ? _акос(_кос_угла) : -_акос(_кос_угла);
 }
