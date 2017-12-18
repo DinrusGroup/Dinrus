@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DinrusWX</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(MSBuildProjectDirectory)\wxWidgets-2.8.12\include\;$(MSBuildProjectDirectory)\wxWidgets-2.8.12\lib\vc_lib\mswuniu;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\wxWidgets-2.8.12\lib\vc_lib\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>.\wxWidgets-2.8.12\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\wxWidgets-2.8.12\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>F:\DinrusWX_28\wxWidgets-2.8.12\lib\vc_lib\mswu;F:\DinrusWX_28\wxWidgets-2.8.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Program Files\Windows Kits\8.1\Lib\winv6.3\um\x86\;F:\DinrusWX_28\wxWidgets-2.8.12\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <TargetName>DinrusWX_28_12_17</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DINRUSWX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib;D:\dinrus\dev\DINRUS\wx\wxWidgets-2.8.12\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxbase28ud.lib;wxmswuniv28ud_core.lib;wxscintillad.lib;wxmswuniv28ud_adv.lib;wxmswuniv28ud_gl.lib;wxmswuniv28ud_html.lib;wxmswuniv28ud_media.lib;wxmswuniv28ud_dbgrid.lib;wxmswuniv28ud_qa.lib;wxmswuniv28ud_ribbon.lib;wxmswuniv28ud_richtext.lib;wxmswuniv28ud_stc.lib;wxmswuniv28ud_webview.lib;wxmswuniv28ud_xrc.lib;wxbase28ud_net.lib;wxbase28ud_xml.lib;wxmswuniv28ud_aui.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxjpegd.lib;wxzlibd.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;DINRUSWX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DINRUSWX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib;F:\REPOSITORII\GitHubRepo\DinrusWX\trunk\DinrusWX\wxWidgets-2.8.12\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxbase28u.lib;wxmsw28u_core.lib;wxmsw28u_adv.lib;wxmsw28u_gl.lib;wxmsw28u_html.lib;wxmsw28u_media.lib;wxmsw28u_dbgrid.lib;wxmsw28u_qa.lib;wxmsw28u_richtext.lib;wxmsw28u_xrc.lib;wxbase28u_net.lib;wxbase28u_xml.lib;wxmsw28u_aui.lib;wxpng.lib;wxregexu.lib;wxtiff.lib;wxjpeg.lib;wxzlib.lib;wxexpat.lib;c:\Program Files\Windows Kits\8.1\Lib\winv6.3\um\x86\ComCtl32.Lib;rpcrt4.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;DINRUSWX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="accel.cpp" />
+    <ClCompile Include="activateevent.cpp" />
+    <ClCompile Include="app.cpp" />
+    <ClCompile Include="artprovider.cpp" />
+    <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="bitmapbutton.cpp" />
+    <ClCompile Include="boxsizer.cpp" />
+    <ClCompile Include="brush.cpp" />
+    <ClCompile Include="button.cpp" />
+    <ClCompile Include="calendarctrl.cpp" />
+    <ClCompile Include="caret.cpp" />
+    <ClCompile Include="checkbox.cpp" />
+    <ClCompile Include="childfocusevent.cpp" />
+    <ClCompile Include="choice.cpp" />
+    <ClCompile Include="choicedialog.cpp" />
+    <ClCompile Include="clientdata.cpp" />
+    <ClCompile Include="clipboard.cpp" />
+    <ClCompile Include="closeevent.cpp" />
+    <ClCompile Include="colour.cpp" />
+    <ClCompile Include="colourdialog.cpp" />
+    <ClCompile Include="combobox.cpp" />
+    <ClCompile Include="commandevent.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="contextmenuevent.cpp" />
+    <ClCompile Include="control.cpp" />
+    <ClCompile Include="cursor.cpp" />
+    <ClCompile Include="dataformat.cpp" />
+    <ClCompile Include="dataobject.cpp" />
+    <ClCompile Include="dc.cpp" />
+    <ClCompile Include="dialog.cpp" />
+    <ClCompile Include="DinrusWX.cpp" />
+    <ClCompile Include="dirdialog.cpp" />
+    <ClCompile Include="display.cpp" />
+    <ClCompile Include="displaychangedevent.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="dnd.cpp" />
+    <ClCompile Include="document.cpp" />
+    <ClCompile Include="eraseevent.cpp" />
+    <ClCompile Include="event.cpp" />
+    <ClCompile Include="evthandler.cpp" />
+    <ClCompile Include="filedialog.cpp" />
+    <ClCompile Include="findreplacedialog.cpp" />
+    <ClCompile Include="flexgridsizer.cpp" />
+    <ClCompile Include="focusevent.cpp" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="fontdialog.cpp" />
+    <ClCompile Include="fontmisc.cpp" />
+    <ClCompile Include="frame.cpp" />
+    <ClCompile Include="gauge.cpp" />
+    <ClCompile Include="gdicmn.cpp" />
+    <ClCompile Include="gdiobject.cpp" />
+    <ClCompile Include="glcanvas.cpp" />
+    <ClCompile Include="global.cpp" />
+    <ClCompile Include="grid.cpp" />
+    <ClCompile Include="gridbagsizer.cpp" />
+    <ClCompile Include="gridctrl.cpp" />
+    <ClCompile Include="gridsizer.cpp" />
+    <ClCompile Include="helpevent.cpp" />
+    <ClCompile Include="html.cpp" />
+    <ClCompile Include="htmlhelpctrl.cpp" />
+    <ClCompile Include="htmllbox.cpp" />
+    <ClCompile Include="icon.cpp" />
+    <ClCompile Include="iconizeevent.cpp" />
+    <ClCompile Include="idleevent.cpp" />
+    <ClCompile Include="image.cpp" />
+    <ClCompile Include="imagelist.cpp" />
+    <ClCompile Include="imghandler.cpp" />
+    <ClCompile Include="initdialogevent.cpp" />
+    <ClCompile Include="keyevent.cpp" />
+    <ClCompile Include="laywin.cpp" />
+    <ClCompile Include="listbook.cpp" />
+    <ClCompile Include="listbox.cpp" />
+    <ClCompile Include="listctrl.cpp" />
+    <ClCompile Include="locale.cpp" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="manager.cpp" />
+    <ClCompile Include="maximizeevent.cpp" />
+    <ClCompile Include="mdi.cpp" />
+    <ClCompile Include="memorydc.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menubar.cpp" />
+    <ClCompile Include="menuitem.cpp" />
+    <ClCompile Include="messagedialog.cpp" />
+    <ClCompile Include="miniframe.cpp" />
+    <ClCompile Include="mousecapturechangedevent.cpp" />
+    <ClCompile Include="mouseevent.cpp" />
+    <ClCompile Include="moveevent.cpp" />
+    <ClCompile Include="navigationkeyevent.cpp" />
+    <ClCompile Include="ncpaintevent.cpp" />
+    <ClCompile Include="notebook.cpp" />
+    <ClCompile Include="notebooksizer.cpp" />
+    <ClCompile Include="notifyevent.cpp" />
+    <ClCompile Include="numdialog.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="paintevent.cpp" />
+    <ClCompile Include="palette.cpp" />
+    <ClCompile Include="palettechangedevent.cpp" />
+    <ClCompile Include="panel.cpp" />
+    <ClCompile Include="pen.cpp" />
+    <ClCompile Include="printdata.cpp" />
+    <ClCompile Include="printdialog.cpp" />
+    <ClCompile Include="printer.cpp" />
+    <ClCompile Include="printpreview.cpp" />
+    <ClCompile Include="progdlg.cpp" />
+    <ClCompile Include="querynewpaletteevent.cpp" />
+    <ClCompile Include="radiobox.cpp" />
+    <ClCompile Include="radiobutton.cpp" />
+    <ClCompile Include="region.cpp" />
+    <ClCompile Include="sashwindow.cpp" />
+    <ClCompile Include="scrollbar.cpp" />
+    <ClCompile Include="scrolledwindow.cpp" />
+    <ClCompile Include="setcursorevent.cpp" />
+    <ClCompile Include="showevent.cpp" />
+    <ClCompile Include="sizeevent.cpp" />
+    <ClCompile Include="sizer.cpp" />
+    <ClCompile Include="sizeritem.cpp" />
+    <ClCompile Include="slider.cpp" />
+    <ClCompile Include="sound.cpp" />
+    <ClCompile Include="spinbutton.cpp" />
+    <ClCompile Include="spinctrl.cpp" />
+    <ClCompile Include="splashscreen.cpp" />
+    <ClCompile Include="splitterwindow.cpp" />
+    <ClCompile Include="staticbitmap.cpp" />
+    <ClCompile Include="staticbox.cpp" />
+    <ClCompile Include="staticboxsizer.cpp" />
+    <ClCompile Include="staticline.cpp" />
+    <ClCompile Include="statictext.cpp" />
+    <ClCompile Include="statusbar.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="syscolourchangedevent.cpp" />
+    <ClCompile Include="systemsettings.cpp" />
+    <ClCompile Include="tabctrl.cpp" />
+    <ClCompile Include="taskbaricon.cpp" />
+    <ClCompile Include="textctrl.cpp" />
+    <ClCompile Include="textdialog.cpp" />
+    <ClCompile Include="thread.cpp" />
+    <ClCompile Include="timer.cpp" />
+    <ClCompile Include="tipdialog.cpp" />
+    <ClCompile Include="tipwindow.cpp" />
+    <ClCompile Include="togglebutton.cpp" />
+    <ClCompile Include="toolbar.cpp" />
+    <ClCompile Include="tooltip.cpp" />
+    <ClCompile Include="treectrl.cpp" />
+    <ClCompile Include="updateuievent.cpp" />
+    <ClCompile Include="validator.cpp" />
+    <ClCompile Include="vlbox.cpp" />
+    <ClCompile Include="vscroll.cpp" />
+    <ClCompile Include="window.cpp" />
+    <ClCompile Include="windowcreateevent.cpp" />
+    <ClCompile Include="windowdestroyevent.cpp" />
+    <ClCompile Include="wizard.cpp" />
+    <ClCompile Include="wxaui.cpp" />
+    <ClCompile Include="wxdatetime.cpp" />
+    <ClCompile Include="wxplatform.cpp" />
+    <ClCompile Include="wxstring.cpp" />
+    <ClCompile Include="wxversion.cpp" />
+    <ClCompile Include="xmlresource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="control.inc" />
+    <None Include="panel.inc" />
+    <None Include="window.inc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

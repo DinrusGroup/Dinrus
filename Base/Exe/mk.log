@@ -1,0 +1,1431 @@
+
+d:\dinrus\dev\DINRUS\Base\Exe>dinrus
+
+d:\dinrus\dev\DINRUS\Base\Exe>set this=d:\dinrus\bin\..\dev\DINRUS\Base\Exe 
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dinrus.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+dinrus.obj(dinrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx dinrus.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dinrusex.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+dinrusex.obj(dinrusex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx dinrusex.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dgui.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+dgui.obj(dgui) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx dgui.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\rulada.d  d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+rulada.obj(rulada) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx rulada.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\ruladaex.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+ruladaex.obj(ruladaex) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx ruladaex.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\drbuild.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\scConfig.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx drbuild.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 0 files.
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\dmd -release d:\dinrus\bin\..\dev\DINRUS\Base\Exe\libproc.d d:\dinrus\bin\..\dev\DINRUS\Base\Exe\Resources\dinrus.res 
+OPTLINK (R) for Win32  Release 8.00.8
+Copyright (C) Digital Mars 1989-2010  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DinrusStd.lib
+ Warning 2: File Not Found DinrusStd.lib
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток17открыт_лиMFZb
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток4кфMFZb
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12читайфMFYi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14вчитайфMFAC8TypeInfoPvZi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайшMFuZu
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12отдайсMFaZa
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10беришMFZu
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10берисMFZa
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайТкстШMFkZAu
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайТкстMFkZAa
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAuZiZi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAuZiZi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKmKAaZiZi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток7opApplyMFDFKAaZiZi
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFAuZAu
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18читайСтрШMFZAu
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFAaZAa
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читайСтрMFZAa
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAuZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJAaZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJwZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJuZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJaZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJcZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJrZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJqZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJjZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJpZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJoZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJeZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJdZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJfZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJmZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJlZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJkZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJiZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJtZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJsZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJhZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFJgZv
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10читайMFAhZk
+libproc.obj(libproc) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читайРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток40проверьСканируемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток42проверьЗаписываемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток34проверьЧитаемостьMFAaAalZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10удалиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12закройMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8слейMFZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12размерMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14позицияMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозКонMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозТекMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18измпозУстMFlZm
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток19копируй_изMFC3tpl6stream10ПотокZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишификсMFAC8TypeInfoPviZC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишифнсMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10пишифMFYC3sys9WinIfaces22ПотокВывода
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16doFormatCallbackMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток12выводфMFAaYk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14ввыводфMFAaPvZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиСтрШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток14пишиСтрMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиТкстШMFAuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16пишиТкстMFAaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFwZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFuZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFaZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFcZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFrZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFqZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFjZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFpZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFoZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFeZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFdZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFfZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFmZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFlZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFiZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFtZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFsZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFhZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFgZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8пишиMFAhZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток18пишиРовноMFPvkZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24верниЧтоЕстьMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток28возвратКареткиMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток20читатьдоКФMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16открытыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFbZv
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток22сканируемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток24записываемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16читаемыйMFZb
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток8вХэшMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(exeMain) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_ctorMFZC3tpl6stream10Поток
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток16доступноMFZk
+d:\dinrus\bin\..\lib\Dinrus.lib(stdrus) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток10вТкстMFZAa
+d:\dinrus\bin\..\lib\Dinrus.lib(stream) 
+ Error 42: Symbol Undefined _D3tpl6stream10Поток5_dtorMFZv
+--- errorlevel 108
+
+d:\dinrus\dev\DINRUS\Base\Exe>d:\dinrus\bin\upx libproc.exe 
+                       Ultimate Packer for eXecutables
+                          Copyright (C) 1996 - 2008
+UPX 3.03w       Markus Oberhumer, Laszlo Molnar & John Reiser   Apr 27th 2008
+
+        File size         Ratio      Format      Name
+   --------------------   ------   -----------   -----------
+
+Packed 1 file: 0 ok, 1 error.
+
+d:\dinrus\dev\DINRUS\Base\Exe>copy d:\dinrus\bin\..\dev\DINRUS\Base\Exe\*.exe d:\dinrus\bin 
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dgui.exe
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dinrus.exe
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\dinrusex.exe
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\libproc.exe
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\rulada.exe
+d:\dinrus\bin\..\dev\DINRUS\Base\Exe\ruladaex.exe
+�����஢��� 䠩���:         6.
+
+d:\dinrus\dev\DINRUS\Base\Exe>del d:\dinrus\bin\..\dev\DINRUS\Base\Exe\*.map d:\dinrus\bin\..\dev\DINRUS\Base\Exe\*.obj d:\dinrus\bin\..\dev\DINRUS\Base\Exe\*.exe 

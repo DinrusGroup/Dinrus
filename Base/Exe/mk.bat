@@ -10,8 +10,8 @@ set this=%DINRUS%\..\dev\DINRUS\Base\Exe
 %DINRUS%\upx rulada.exe
 %DINRUS%\dmd -release %this%\ruladaex.d %this%\scConfig.d %this%\Resources\dinrus.res
 %DINRUS%\upx ruladaex.exe
-%DINRUS%\dmd -release %this%\drbuild.d %this%\scConfig.d %this%\Resources\dinrus.res
-%DINRUS%\upx drbuild.exe
+%DINRUS%\dmd -release %this%\rgui.d %this%\scConfig.d %this%\Resources\dinrus.res
+%DINRUS%\upx rgui.exe
 %DINRUS%\dmd -release %this%\libproc.d %this%\Resources\dinrus.res
 %DINRUS%\upx libproc.exe
 copy %this%\*.exe %DINRUS%
