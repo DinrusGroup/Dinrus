@@ -12,9 +12,8 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.stream;
-private import std.string;
-alias std.string.find indexOf;
+private import stdrus;
+alias stdrus.найди indexOf;
 
 	public class MyCanvas : Window
 	{
@@ -57,8 +56,8 @@ alias std.string.find indexOf;
 			int x = 5;
 			int y = 5;
 			
-			string fontinfo = "Font size is " ~ .toString(m_font.PointSize) ~ " points, family: " ~
-				.toString(m_font.FamilyString.ptr) ~ ", encoding: " ~ FontMapper.GetEncodingDescription( m_font.Encoding );
+			string fontinfo = "Font size is " ~ .вТкст(m_font.PointSize) ~ " points, family: " ~
+				.вТкст(m_font.FamilyString.ptr) ~ ", encoding: " ~ FontMapper.GetEncodingDescription( m_font.Encoding );
 				
 			dc.DrawText( fontinfo, x, y );
 			y += hLine;
@@ -104,7 +103,7 @@ alias std.string.find indexOf;
 					int charWidth;
 					int charHeight;
 					
-					string s = .toString(cast(сим*) c);
+					string s = .вТкст(cast(сим*) c);
 					dc.GetTextExtent( s, charWidth, charHeight );
 					dc.DrawText( 
 						s, 
@@ -263,7 +262,7 @@ alias std.string.find indexOf;
 
 			try
 			{
-				message = cast(string)std.file.read(filename);
+				message = cast(string)читайФайл(filename);
 			}
 			catch (Exception ex)
 			{
@@ -437,7 +436,7 @@ alias std.string.find indexOf;
 			{
 				Font font = Font.New( fontinfo );
 				if ( fontinfo != font.NativeFontInfoDesc )
-					Log.LogError( "wxNativeFontInfo toString()/FromString() broken!" );
+					Log.LogError( "wxNativeFontInfo вТкст()/FromString() broken!" );
 				else
 					Log.LogMessage( "wxNativeFontInfo works: " ~ fontinfo );
 			}
@@ -700,7 +699,7 @@ alias std.string.find indexOf;
 		public override bool OnFontEncoding( string facename, 
 			string encoding )
 		{
-			string text = "Encoding " ~ .toString(++m_n) ~ ": " ~ encoding ~ " (available in facename '" ~ facename ~ "')\n";
+			string text = "Encoding " ~ .вТкст(++m_n) ~ ": " ~ encoding ~ " (available in facename '" ~ facename ~ "')\n";
 			
 			m_text ~= text;
 			return true;

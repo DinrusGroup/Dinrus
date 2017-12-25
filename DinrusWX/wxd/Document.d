@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// 
+//
 // $Id: Document.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
@@ -18,51 +18,54 @@ public import wx.common;
 public import wx.EvtHandler;
 
 //! \cond VERSION
-version(NOT_READY_YET){
+version(NOT_READY_YET)
+{
 
-		//! \cond EXTERN
-        static extern (C) IntPtr wxDocument_ctor(IntPtr parent);
-        static extern (C) void   wxDocument_SetFilename(IntPtr self, string filename, bool notifyViews);
-        static extern (C) IntPtr wxDocument_GetFilename(IntPtr self);
-        static extern (C) void   wxDocument_SetTitle(IntPtr self, string title);
-        static extern (C) IntPtr wxDocument_GetTitle(IntPtr self);
-        static extern (C) void   wxDocument_SetDocumentName(IntPtr self, string name);
-        static extern (C) IntPtr wxDocument_GetDocumentName(IntPtr self);
-        static extern (C) bool   wxDocument_GetDocumentSaved(IntPtr self);
-        static extern (C) void   wxDocument_SetDocumentSaved(IntPtr self, bool saved);
-        static extern (C) bool   wxDocument_Close(IntPtr self);
-        static extern (C) bool   wxDocument_Save(IntPtr self);
-        static extern (C) bool   wxDocument_SaveAs(IntPtr self);
-        static extern (C) bool   wxDocument_Revert(IntPtr self);
-        //static extern (C) IntPtr wxDocument_SaveObject(IntPtr self, IntPtr stream);
-        //static extern (C) IntPtr wxDocument_LoadObject(IntPtr self, IntPtr stream);
-        static extern (C) IntPtr wxDocument_GetCommandProcessor(IntPtr self);
-        static extern (C) void   wxDocument_SetCommandProcessor(IntPtr self, IntPtr proc);
-        static extern (C) bool   wxDocument_DeleteContents(IntPtr self);
-        static extern (C) bool   wxDocument_Draw(IntPtr self, IntPtr wxDC);
-        static extern (C) bool   wxDocument_IsModified(IntPtr self);
-        static extern (C) void   wxDocument_Modify(IntPtr self, bool mod);
-        static extern (C) bool   wxDocument_AddView(IntPtr self, IntPtr view);
-        static extern (C) bool   wxDocument_RemoveView(IntPtr self, IntPtr view);
-        static extern (C) IntPtr wxDocument_GetViews(IntPtr self);
-        static extern (C) IntPtr wxDocument_GetFirstView(IntPtr self);
-        static extern (C) void   wxDocument_UpdateAllViews(IntPtr self, IntPtr sender, IntPtr hint);
-        static extern (C) void   wxDocument_NotifyClosing(IntPtr self);
-        static extern (C) bool   wxDocument_DeleteAllViews(IntPtr self);
-        static extern (C) IntPtr wxDocument_GetDocumentManager(IntPtr self);
-        static extern (C) IntPtr wxDocument_GetDocumentTemplate(IntPtr self);
-        static extern (C) void   wxDocument_SetDocumentTemplate(IntPtr self, IntPtr temp);
-        static extern (C) bool   wxDocument_GetPrintableName(IntPtr self, IntPtr buf);
-        static extern (C) IntPtr wxDocument_GetDocumentWindow(IntPtr self);
-		//! \endcond
+    //! \cond EXTERN
+    static extern (C) IntPtr wxDocument_ctor(IntPtr parent);
+    static extern (C) void   wxDocument_SetFilename(IntPtr self, string filename, bool notifyViews);
+    static extern (C) IntPtr wxDocument_GetFilename(IntPtr self);
+    static extern (C) void   wxDocument_SetTitle(IntPtr self, string title);
+    static extern (C) IntPtr wxDocument_GetTitle(IntPtr self);
+    static extern (C) void   wxDocument_SetDocumentName(IntPtr self, string name);
+    static extern (C) IntPtr wxDocument_GetDocumentName(IntPtr self);
+    static extern (C) bool   wxDocument_GetDocumentSaved(IntPtr self);
+    static extern (C) void   wxDocument_SetDocumentSaved(IntPtr self, bool saved);
+    static extern (C) bool   wxDocument_Close(IntPtr self);
+    static extern (C) bool   wxDocument_Save(IntPtr self);
+    static extern (C) bool   wxDocument_SaveAs(IntPtr self);
+    static extern (C) bool   wxDocument_Revert(IntPtr self);
+    //static extern (C) IntPtr wxDocument_SaveObject(IntPtr self, IntPtr stream);
+    //static extern (C) IntPtr wxDocument_LoadObject(IntPtr self, IntPtr stream);
+    static extern (C) IntPtr wxDocument_GetCommandProcessor(IntPtr self);
+    static extern (C) void   wxDocument_SetCommandProcessor(IntPtr self, IntPtr proc);
+    static extern (C) bool   wxDocument_DeleteContents(IntPtr self);
+    static extern (C) bool   wxDocument_Draw(IntPtr self, IntPtr wxDC);
+    static extern (C) bool   wxDocument_IsModified(IntPtr self);
+    static extern (C) void   wxDocument_Modify(IntPtr self, bool mod);
+    static extern (C) bool   wxDocument_AddView(IntPtr self, IntPtr view);
+    static extern (C) bool   wxDocument_RemoveView(IntPtr self, IntPtr view);
+    static extern (C) IntPtr wxDocument_GetViews(IntPtr self);
+    static extern (C) IntPtr wxDocument_GetFirstView(IntPtr self);
+    static extern (C) void   wxDocument_UpdateAllViews(IntPtr self, IntPtr sender, IntPtr hint);
+    static extern (C) void   wxDocument_NotifyClosing(IntPtr self);
+    static extern (C) bool   wxDocument_DeleteAllViews(IntPtr self);
+    static extern (C) IntPtr wxDocument_GetDocumentManager(IntPtr self);
+    static extern (C) IntPtr wxDocument_GetDocumentTemplate(IntPtr self);
+    static extern (C) void   wxDocument_SetDocumentTemplate(IntPtr self, IntPtr temp);
+    static extern (C) bool   wxDocument_GetPrintableName(IntPtr self, IntPtr buf);
+    static extern (C) IntPtr wxDocument_GetDocumentWindow(IntPtr self);
+    //! \endcond
 
-        //-----------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
 
     alias Document wxDocument;
     public class Document : EvtHandler
     {
         public  this(Document parent)
-            { super(wxDocument_ctor(wxObject.SafePtr(parent))); }
+        {
+            super(wxDocument_ctor(wxObject.SafePtr(parent)));
+        }
 
         //-----------------------------------------------------------------------------
 
@@ -71,21 +74,45 @@ version(NOT_READY_YET){
             wxDocument_SetFilename(wxobj, filename, notifyViews);
         }
 
-        public void Filename(string value) { SetFilename(value, true); }
-        public string Filename() { return cast(string) new wxString(wxDocument_GetFilename(wxobj), true); }
+        public void Filename(string value)
+        {
+            SetFilename(value, true);
+        }
+        public string Filename()
+        {
+            return cast(string) new wxString(wxDocument_GetFilename(wxobj), true);
+        }
 
         //-----------------------------------------------------------------------------
 
-        public void Title(string value) { wxDocument_SetTitle(wxobj, value); }
-        public string Title() { return cast(string) new wxString(wxDocument_GetTitle(wxobj), true); }
+        public void Title(string value)
+        {
+            wxDocument_SetTitle(wxobj, value);
+        }
+        public string Title()
+        {
+            return cast(string) new wxString(wxDocument_GetTitle(wxobj), true);
+        }
 
-        public void DocumentName(string value) { wxDocument_SetDocumentName(wxobj, value); }
-        public string DocumentName() { return cast(string) new wxString(wxDocument_GetDocumentName(wxobj), true); }
+        public void DocumentName(string value)
+        {
+            wxDocument_SetDocumentName(wxobj, value);
+        }
+        public string DocumentName()
+        {
+            return cast(string) new wxString(wxDocument_GetDocumentName(wxobj), true);
+        }
 
         //-----------------------------------------------------------------------------
 
-        public bool DocumentSaved() { return wxDocument_GetDocumentSaved(wxobj); }
-        public void DocumentSaved(bool value) { wxDocument_SetDocumentSaved(wxobj, value); }
+        public bool DocumentSaved()
+        {
+            return wxDocument_GetDocumentSaved(wxobj);
+        }
+        public void DocumentSaved(bool value)
+        {
+            wxDocument_SetDocumentSaved(wxobj, value);
+        }
 
         //-----------------------------------------------------------------------------
 
@@ -146,8 +173,14 @@ version(NOT_READY_YET){
 
         //-----------------------------------------------------------------------------
 
-        public bool IsModified() { return wxDocument_IsModified(wxobj); }
-        public void IsModified(bool value) { Modify(value); }
+        public bool IsModified()
+        {
+            return wxDocument_IsModified(wxobj);
+        }
+        public void IsModified(bool value)
+        {
+            Modify(value);
+        }
 
         public void Modify(bool mod)
         {
@@ -207,7 +240,7 @@ version(NOT_READY_YET){
         }*/
 
         //-----------------------------------------------------------------------------
-/+
+        /+
         public bool GetPrintableName(out string buf)
         {
             wxString name = "";
@@ -216,10 +249,13 @@ version(NOT_READY_YET){
 
             return ret;
         }
-+/
+        +/
         //-----------------------------------------------------------------------------
 
-        public Window DocumentWindow() { return cast(Window)FindObject(wxDocument_GetDocumentWindow(wxobj)); }
+        public Window DocumentWindow()
+        {
+            return cast(Window)FindObject(wxDocument_GetDocumentWindow(wxobj));
+        }
     }
 } // version(NOT_READY_YET)
 //! \endcond

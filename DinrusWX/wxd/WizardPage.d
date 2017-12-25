@@ -16,17 +16,20 @@
 module wx.WizardPage;
 public import wx.Panel;
 
-	alias WizardPage wxWizardPage;
-	public class WizardPage : Panel
-	{
-		//---------------------------------------------------------------------
+alias WizardPage wxWizardPage;
+public class WizardPage : Panel
+{
+    //---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-		{
-			super(wxobj);
-		}
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		static wxObject New(IntPtr ptr) { return new WizardPage(ptr); }
-		//---------------------------------------------------------------------
-	}
+    static wxObject New(IntPtr ptr)
+    {
+        return new WizardPage(ptr);
+    }
+    //---------------------------------------------------------------------
+}
 

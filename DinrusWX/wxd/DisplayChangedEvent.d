@@ -18,25 +18,32 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxDisplayChangedEvent_ctor();
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxDisplayChangedEvent_ctor();
+//! \endcond
 
-	alias DisplayChangedEvent wxDisplayChangedEvent;
-	public class DisplayChangedEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this()
-			{ this(wxDisplayChangedEvent_ctor()); }
+alias DisplayChangedEvent wxDisplayChangedEvent;
+public class DisplayChangedEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		private static Event New(IntPtr obj) { return new DisplayChangedEvent(obj); }
+    public this()
+    {
+        this(wxDisplayChangedEvent_ctor());
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_DISPLAY_CHANGED,			&DisplayChangedEvent.New);
-		}
-	}
+    private static Event New(IntPtr obj)
+    {
+        return new DisplayChangedEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_DISPLAY_CHANGED,			&DisplayChangedEvent.New);
+    }
+}

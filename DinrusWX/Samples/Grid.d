@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
 	public class GridFrame : Frame
 	{
@@ -794,11 +794,11 @@ private import std.string;
 			
 			if ( ge.Row != -1 )
 			{
-				logBuf = "Left click on row label " ~ .toString(ge.Row);
+				logBuf = "Left click on row label " ~ .вТкст(ge.Row);
 			}
 			else if ( ge.Col != -1 )
 			{
-				logBuf = "Left click on col label " ~ .toString(ge.Col);
+				logBuf = "Left click on col label " ~ .вТкст(ge.Col);
 			}
 			else
 			{
@@ -817,7 +817,7 @@ private import std.string;
 		public void OnCellLeftClick( Object sender, Event e )
 		{
 			GridEvent ge = cast(GridEvent) e;
-			logBuf = "Left click at row " ~ .toString(ge.Row) ~ " col " ~ .toString(ge.Col);
+			logBuf = "Left click at row " ~ .вТкст(ge.Row) ~ " col " ~ .вТкст(ge.Col);
 			Log.LogMessage( logBuf );
 
 			// you must call event skip if you want default grid processing
@@ -829,7 +829,7 @@ private import std.string;
 		public void OnRowSize( Object sender, Event e )
 		{
 			GridSizeEvent ge = cast(GridSizeEvent) e;
-			logBuf = "Resized row " ~ .toString(ge.RowOrCol);
+			logBuf = "Resized row " ~ .вТкст(ge.RowOrCol);
 			Log.LogMessage( logBuf );
 
 			ge.Skip();			
@@ -838,7 +838,7 @@ private import std.string;
 		public void OnColSize( Object sender, Event e )
 		{
 			GridSizeEvent ge = cast(GridSizeEvent) e;
-			logBuf = "Resized col " ~ .toString(ge.RowOrCol);
+			logBuf = "Resized col " ~ .вТкст(ge.RowOrCol);
 			Log.LogMessage( logBuf );
 
 			ge.Skip();			
@@ -852,8 +852,8 @@ private import std.string;
 			else
 				logBuf = "Deselected ";
 				
-			logBuf ~= "cell at row " ~ .toString(ge.Row) ~
-				" col " ~ .toString(ge.Col) ~
+			logBuf ~= "cell at row " ~ .вТкст(ge.Row) ~
+				" col " ~ .вТкст(ge.Col) ~
 				" ( ControlDown: " ~ ( ge.ControlDown ? "T":"F" ) ~
 				", ShiftDown: " ~ (ge.ShiftDown ? "T":"F") ~
 				", AltDown: " ~ (ge.AltDown ? "T":"F") ~
@@ -875,10 +875,10 @@ private import std.string;
 			else
 				logBuf = "Deselected ";
 				
-			logBuf ~= "cells from row " ~ .toString(ge.TopRow) ~
-				" col " ~ .toString(ge.LeftCol) ~
-				" to row " ~ .toString(ge.BottomRow) ~
-				" col " ~ .toString(ge.RightCol) ~
+			logBuf ~= "cells from row " ~ .вТкст(ge.TopRow) ~
+				" col " ~ .вТкст(ge.LeftCol) ~
+				" to row " ~ .вТкст(ge.BottomRow) ~
+				" col " ~ .вТкст(ge.RightCol) ~
 				" ( ControlDown: " ~ (ge.ControlDown ? "T":"F") ~
 				", ShiftDown: " ~ (ge.ShiftDown ? "T":"F") ~
 				", AltDown: " ~ (ge.AltDown ? "T":"F") ~
@@ -894,8 +894,8 @@ private import std.string;
 			GridEvent ge = cast(GridEvent) e;
 			
 			logBuf = "Value changed for cell at" ~
-				" row " ~ .toString(ge.Row) ~
-				" col " ~ .toString(ge.Col);
+				" row " ~ .вТкст(ge.Row) ~
+				" col " ~ .вТкст(ge.Col);
 
 				Log.LogMessage( logBuf );
 
@@ -1367,7 +1367,7 @@ private import std.string;
 		
 		public override string GetValue( int row, int col )
 		{
-			string ret = "(" ~ .toString(row) ~ ", " ~ .toString(col) ~ ")";
+			string ret = "(" ~ .вТкст(row) ~ ", " ~ .вТкст(col) ~ ")";
 			return ret;
 		}
 		

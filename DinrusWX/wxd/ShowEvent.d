@@ -18,32 +18,45 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxShowEvent_ctor(int winid, bool show);
-		static extern (C) bool wxShowEvent_GetShow(IntPtr self);
-		static extern (C) void wxShowEvent_SetShow(IntPtr self, bool show);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxShowEvent_ctor(int winid, bool show);
+static extern (C) bool wxShowEvent_GetShow(IntPtr self);
+static extern (C) void wxShowEvent_SetShow(IntPtr self, bool show);
+//! \endcond
 
-	alias ShowEvent wxShowEvent;
-	public class ShowEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int winid = 0, bool show = false)
-			{ this(wxShowEvent_ctor(winid,show)); }
+alias ShowEvent wxShowEvent;
+public class ShowEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public bool Show() { return wxShowEvent_GetShow(wxobj); }
-		public void Show(bool value) { wxShowEvent_SetShow(wxobj, value); }
+    public this(int winid = 0, bool show = false)
+    {
+        this(wxShowEvent_ctor(winid,show));
+    }
 
-		private static Event New(IntPtr obj) { return new ShowEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_SHOW,				&ShowEvent.New);
-		}
-	}
+    public bool Show()
+    {
+        return wxShowEvent_GetShow(wxobj);
+    }
+    public void Show(bool value)
+    {
+        wxShowEvent_SetShow(wxobj, value);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new ShowEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_SHOW,				&ShowEvent.New);
+    }
+}

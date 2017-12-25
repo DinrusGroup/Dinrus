@@ -18,24 +18,32 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxMaximizeEvent_ctor(int Id);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxMaximizeEvent_ctor(int Id);
+//! \endcond
 
-	alias MaximizeEvent wxMaximizeEvent;
-	public class MaximizeEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
-			
-		public this(int Id = 0)
-			{ this(wxMaximizeEvent_ctor(Id)); }
+//-----------------------------------------------------------------------------
 
-		private static Event New(IntPtr obj) { return new MaximizeEvent(obj); }
+alias MaximizeEvent wxMaximizeEvent;
+public class MaximizeEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_MAXIMIZE,				&MaximizeEvent.New);		}
-	}
+    public this(int Id = 0)
+    {
+        this(wxMaximizeEvent_ctor(Id));
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new MaximizeEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_MAXIMIZE,				&MaximizeEvent.New);
+    }
+}

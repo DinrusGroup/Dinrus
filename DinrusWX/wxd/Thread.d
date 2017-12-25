@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 // wxD - Thread.d
 // (C) 2006 afb <afb@users.sourceforge.net>
-// 
+//
 /// The wxThread wrapper classes. (Optional, requires threads)
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
@@ -93,144 +93,150 @@ enum wxMutexType
     wxMUTEX_RECURSIVE
 }
 
-	//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxMutex_ctor(int mutexType);
-		static extern (C) void wxMutex_dtor(IntPtr self);
-		static extern (C) bool wxMutex_IsOk(IntPtr self);
-		//! \endcond
+//! \cond EXTERN
+static extern (C) IntPtr wxMutex_ctor(int mutexType);
+static extern (C) void wxMutex_dtor(IntPtr self);
+static extern (C) bool wxMutex_IsOk(IntPtr self);
+//! \endcond
 
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-	alias Mutex wxMutex;
+alias Mutex wxMutex;
 //! A mutex object is a synchronization object whose state is set to signaled
 //! when it is not owned by any thread, and nonsignaled when it is owned. Its
 //! name comes from its usefulness in coordinating mutually-exclusive access to
 //! a shared resource. Only one thread at a time can own a mutex object.
-	public class Mutex : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-		
-		public bool IsOk()
-		{
-			return wxMutex_IsOk(wxobj);
-		}
+public class Mutex : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		override protected void dtor() { wxMutex_dtor(wxobj); }
-	}
+    public bool IsOk()
+    {
+        return wxMutex_IsOk(wxobj);
+    }
 
-	alias MutexLocker wxMutexLocker;
-	public class MutexLocker : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+    override protected void dtor()
+    {
+        wxMutex_dtor(wxobj);
+    }
+}
 
-		//-----------------------------------------------------------------------------
+alias MutexLocker wxMutexLocker;
+public class MutexLocker : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxCriticalSection_ctor(int mutexType);
-		static extern (C) void wxCriticalSection_dtor(IntPtr self);
-		static extern (C) void wxCriticalSection_Enter(IntPtr self);
-		static extern (C) void wxCriticalSection_Leave(IntPtr self);
-		//! \endcond
+//-----------------------------------------------------------------------------
 
-	alias CriticalSection wxCriticalSection;
+//! \cond EXTERN
+static extern (C) IntPtr wxCriticalSection_ctor(int mutexType);
+static extern (C) void wxCriticalSection_dtor(IntPtr self);
+static extern (C) void wxCriticalSection_Enter(IntPtr self);
+static extern (C) void wxCriticalSection_Leave(IntPtr self);
+//! \endcond
+
+alias CriticalSection wxCriticalSection;
 //! Critical section: this is the same as mutex but is only visible to the
 //! threads of the same process. For the platforms which don't have native
 //! support for critical sections, they're implemented entirely in terms of
 //! mutexes.
-	public class CriticalSection : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-		
-		public void Enter()
-		{
-			wxCriticalSection_Enter(wxobj);
-		}
+public class CriticalSection : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		public void Leave()
-		{
-			wxCriticalSection_Leave(wxobj);
-		}
+    public void Enter()
+    {
+        wxCriticalSection_Enter(wxobj);
+    }
 
-		override protected void dtor() { wxCriticalSection_dtor(wxobj); }
-	}
+    public void Leave()
+    {
+        wxCriticalSection_Leave(wxobj);
+    }
 
-	alias CriticalSectionLocker wxCriticalSectionLocker;
-	public class CriticalSectionLocker : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+    override protected void dtor()
+    {
+        wxCriticalSection_dtor(wxobj);
+    }
+}
 
-		//-----------------------------------------------------------------------------
+alias CriticalSectionLocker wxCriticalSectionLocker;
+public class CriticalSectionLocker : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-	alias Condition wxCondition;
+//-----------------------------------------------------------------------------
+
+alias Condition wxCondition;
 //! wxCondition models a POSIX condition variable which allows one (or more)
 //! thread(s) to wait until some condition is fulfilled
-	public class Condition : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+public class Condition : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-	alias Semaphore wxSemaphore;
+alias Semaphore wxSemaphore;
 //! wxSemaphore: a counter limiting the number of threads concurrently accessing
 //!              a shared resource
-	public class Semaphore : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+public class Semaphore : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-	alias Thread wxThread;
+alias Thread wxThread;
 //! wxThread: class encapsulating a thread of execution
-	public class Thread : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+public class Thread : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-	alias ThreadHelperThread wxThreadHelperThread;
-	public class ThreadHelperThread : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+alias ThreadHelperThread wxThreadHelperThread;
+public class ThreadHelperThread : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 
-	alias ThreadHelper wxThreadHelper;
+alias ThreadHelper wxThreadHelper;
 //! wxThreadHelper: this class implements the threading logic to run a
 //! background task in another object (such as a window).  It is a mix-in: just
 //! derive from it to implement a threading background task in your class.
-	public class ThreadHelper : wxObject
-	{
-		public this(IntPtr wxobj)
-		{ 
-			super(wxobj);
-		}
-	}
+public class ThreadHelper : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+}
 

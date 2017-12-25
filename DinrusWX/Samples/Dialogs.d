@@ -13,31 +13,14 @@
 
 import wx.wx;
 pragma(lib, "wxd.lib");
-version (Tango)
-{
-import tango.core.Version;
-private import tango.text.convert.Integer;
-static if (Tango.Major == 0 && Tango.Minor < 994)
-alias tango.text.convert.Integer.toUtf8 toString;
-else
-alias tango.text.convert.Integer.toString toString;
-private import tango.text.Util;
-ptrdiff_t indexOf(string a, string b) { return 0 /*TODO*/; }
-ptrdiff_t LastIndexOf(string a, string b) { return 0 /*TODO*/; }
-private import tango.math.Random;
-private import tango.io.FileSystem;
-alias FileSystem.getDirectory GETCWD;
-uint RAND() { return 0 /*Random.shared.next*/; }
-}
-else // Phobos
-{
-private import std.string;
-private import std.random;
-alias std.string.find indexOf;
-alias std.string.rfind LastIndexOf;
-alias std.file.getcwd GETCWD;
-alias std.random.rand RAND;
-}
+
+private import stdrus;
+
+alias stdrus.найди indexOf;
+alias stdrus.найдирек LastIndexOf;
+alias stdrus.дайтекпап GETCWD;
+alias stdrus.случ RAND;
+
 
 	public class MyFrame : Frame
 	{
@@ -297,7 +280,7 @@ alias std.random.rand RAND;
 			}
 			else
 			{
-				msg = "You've entered " ~ .toString(res);
+				msg = "You've entered " ~ .вТкст(res);
 				icon = Dialog.wxICON_INFORMATION;
 			}
 
@@ -339,10 +322,10 @@ alias std.random.rand RAND;
 				int[] selections = mcd.GetSelections();
 				int count = selections.length;
 				string msg;
-				msg = "You selected " ~ .toString(count) ~ " items:\n";
+				msg = "You selected " ~ .вТкст(count) ~ " items:\n";
 				for (int n = 0; n < count; n++)
 				{
-					msg ~= "\t" ~ .toString(n) ~ ": " ~ .toString(selections[n]) ~ " (" ~ choices[selections[n]] ~ ")\n";
+					msg ~= "\t" ~ .вТкст(n) ~ ": " ~ .вТкст(selections[n]) ~ " (" ~ choices[selections[n]] ~ ")\n";
 				}
 
 				MessageDialog md = new MessageDialog(this, msg, "Information");
@@ -422,7 +405,7 @@ alias std.random.rand RAND;
 				string msg = "";
 				for (int n = 0; n < paths.length; n++)
 				{
-					msg ~= "File " ~ .toString(n) ~ ": " ~ paths[n] ~ " " ~
+					msg ~= "File " ~ .вТкст(n) ~ ": " ~ paths[n] ~ " " ~
 						" (" ~ filenames[n] ~ ")\n";
 				}
 
@@ -444,7 +427,7 @@ alias std.random.rand RAND;
 
 			if (fd.ShowModal() == wxID_OK)
 			{
-				MessageDialog md = new MessageDialog(this, fd.Path ~ ", filter " ~ .toString(fd.FilterIndex), "FileSave");
+				MessageDialog md = new MessageDialog(this, fd.Path ~ ", filter " ~ .вТкст(fd.FilterIndex()), "FileSave");
 				md.ShowModal();
 			}
 		}

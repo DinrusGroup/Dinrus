@@ -17,39 +17,39 @@ public import wx.common;
 public import wx.BoxSizer;
 public import wx.StaticBox;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticBoxSizer_ctor(IntPtr box, int orient);
-		static extern (C) IntPtr wxStaticBoxSizer_GetStaticBox(IntPtr self);
-		//! \endcond
+//! \cond EXTERN
+static extern (C) IntPtr wxStaticBoxSizer_ctor(IntPtr box, int orient);
+static extern (C) IntPtr wxStaticBoxSizer_GetStaticBox(IntPtr self);
+//! \endcond
 
-		//---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
-	alias StaticBoxSizer wxStaticBoxSizer;
-	public class StaticBoxSizer : BoxSizer
-	{
-		public this(IntPtr wxobj)
-		{
-			super(wxobj);
-		}
+alias StaticBoxSizer wxStaticBoxSizer;
+public class StaticBoxSizer : BoxSizer
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		public this(StaticBox box, int orient)
-		{
-			super(wxStaticBoxSizer_ctor(wxObject.SafePtr(box), orient));
-		}
+    public this(StaticBox box, int orient)
+    {
+        super(wxStaticBoxSizer_ctor(wxObject.SafePtr(box), orient));
+    }
 
-		public this(int orient, Window parent, string label)
-		{
-			this(new StaticBox(parent, -1, label), orient);
-		}
+    public this(int orient, Window parent, string label)
+    {
+        this(new StaticBox(parent, -1, label), orient);
+    }
 
-		//---------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-		public StaticBox staticBox() 
-			{
-				return cast(StaticBox)FindObject(
-                                    wxStaticBoxSizer_GetStaticBox(wxobj)
-                                );
-			}
+    public StaticBox staticBox()
+    {
+        return cast(StaticBox)FindObject(
+                   wxStaticBoxSizer_GetStaticBox(wxobj)
+               );
+    }
 
-		//---------------------------------------------------------------------
-	}
+    //---------------------------------------------------------------------
+}

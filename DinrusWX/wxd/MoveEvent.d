@@ -17,34 +17,42 @@ module wx.MoveEvent;
 public import wx.common;
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxMoveEvent_ctor();
-		static extern (C) IntPtr wxMoveEvent_GetPosition(IntPtr self, out Point point);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxMoveEvent_ctor();
+static extern (C) IntPtr wxMoveEvent_GetPosition(IntPtr self, out Point point);
+//! \endcond
 
-	alias MoveEvent wxMoveEvent;
-	public class MoveEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this()
-			{ this(wxMoveEvent_ctor()); }
+alias MoveEvent wxMoveEvent;
+public class MoveEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public Point Position() {
-				Point point;
-				wxMoveEvent_GetPosition(wxobj, point);
-				return point;
-			}
+    public this()
+    {
+        this(wxMoveEvent_ctor());
+    }
 
-		private static Event New(IntPtr obj) { return new MoveEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_MOVE,                            &MoveEvent.New);
-		}
-	}
+    public Point Position()
+    {
+        Point point;
+        wxMoveEvent_GetPosition(wxobj, point);
+        return point;
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new MoveEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_MOVE,                            &MoveEvent.New);
+    }
+}

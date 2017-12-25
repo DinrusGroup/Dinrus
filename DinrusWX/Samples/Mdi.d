@@ -12,8 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.stdio;
-private import std.string;
+private import stdrus;
 
 struct ArrayList /* for .NET compatibility */
 {
@@ -109,7 +108,7 @@ struct ArrayList /* for .NET compatibility */
 		
 		public void OnNewWindow( Object sender, Event e )
 		{
-			writefln( "MyFrame: OnNewWindow");
+			пишифнс( "MyFrame: OnNewWindow");
 			MyChild subframe = new MyChild( this, "Canvas Frame", Point( -1, -1 ),
 					Size( -1, -1 ), wxDEFAULT_FRAME_STYLE );
 
@@ -120,7 +119,7 @@ struct ArrayList /* for .NET compatibility */
 
 		public void OnQuit( Object sender, Event e )
 		{
-			writefln( "MyFrame: OnQuit" );
+			пишифнс( "MyFrame: OnQuit" );
 			Close();
 		}
 
@@ -128,12 +127,12 @@ struct ArrayList /* for .NET compatibility */
 
 		public void OnClose( Object sender, Event e )
 		{
-			writefln( "MyFrame: OnClose" );
+			пишифнс( "MyFrame: OnClose" );
 			CloseEvent ce = cast(CloseEvent) e;
 			
 			if ( ce.CanVeto && MyFrame.gs_nFrames > 0 )
 			{
-				string msg = .toString(gs_nFrames) ~ " windows still open, close anyhow?";
+				string msg = .вТкст(gs_nFrames) ~ " windows still open, close anyhow?";
 				MessageDialog md = new MessageDialog( this, msg, "Please confirm", Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
 				if ( md.ShowModal() != wxID_YES )
 				{
@@ -160,14 +159,14 @@ struct ArrayList /* for .NET compatibility */
 		{
 			Bitmap[] bitmaps = new Bitmap[8];
 			
-			bitmaps[0] = new Bitmap( "../Samples/Mdi/bitmaps/new.xpm" );
-			bitmaps[1] = new Bitmap( "../Samples/Mdi/bitmaps/open.xpm" );
-			bitmaps[2] = new Bitmap( "../Samples/Mdi/bitmaps/save.xpm" );
-			bitmaps[3] = new Bitmap( "../Samples/Mdi/bitmaps/copy.xpm" );
-			bitmaps[4] = new Bitmap( "../Samples/Mdi/bitmaps/cut.xpm" );
-			bitmaps[5] = new Bitmap( "../Samples/Mdi/bitmaps/paste.xpm" );
-			bitmaps[6] = new Bitmap( "../Samples/Mdi/bitmaps/print.xpm" );
-			bitmaps[7] = new Bitmap( "../Samples/Mdi/bitmaps/help.xpm" );
+			bitmaps[0] = new Bitmap( "./data/bitmaps/new.xpm" );
+			bitmaps[1] = new Bitmap( "./data/bitmaps/open.xpm" );
+			bitmaps[2] = new Bitmap( "./data/bitmaps/save.xpm" );
+			bitmaps[3] = new Bitmap( "./data/bitmaps/copy.xpm" );
+			bitmaps[4] = new Bitmap( "./data/bitmaps/cut.xpm" );
+			bitmaps[5] = new Bitmap( "./data/bitmaps/paste.xpm" );
+			bitmaps[6] = new Bitmap( "./data/bitmaps/print.xpm" );
+			bitmaps[7] = new Bitmap( "./data/bitmaps/help.xpm" );
 			
 			int width = 24;
 			int currentX = 5;
@@ -206,7 +205,7 @@ struct ArrayList /* for .NET compatibility */
 			super( parent, -1, pos, size,  /*Border.*/wxSUNKEN_BORDER | wxNO_FULL_REPAINT_ON_RESIZE | wxVSCROLL | wxHSCROLL );
 			BackgroundColour = new Colour( "WHITE" );
 			
-			this.EVT_MOUSE_EVENTS( & OnEvent ) ;
+			//this.EVT_MOUSE_EVENTS( & OnEvent ) ;
 		}
 		
 		//---------------------------------------------------------------------
@@ -301,11 +300,11 @@ struct ArrayList /* for .NET compatibility */
 			super( parent, -1, title, pos, size, style | wxNO_FULL_REPAINT_ON_RESIZE );
 			MyFrame.my_children.Add( this );
 
-			icon = new Icon( "../Samples/Mdi/mondrian.png" );
+			icon = new Icon( "./data/mondrian.png" );
 			
 			SetSizeHints( 100, 100 );
 			
-			string atitle = "Canvas Frame " ~ .toString( ++MyFrame.gs_nFrames );
+			string atitle = "Canvas Frame " ~ .вТкст( ++MyFrame.gs_nFrames );
 			
 			Title = atitle;
 			
@@ -363,7 +362,7 @@ struct ArrayList /* for .NET compatibility */
 		
 		public void OnQuit( Object sender, Event e )
 		{
-			writefln( "MyChild: OnQuit" );
+			пишифнс( "MyChild: OnQuit" );
 			MyFrame.my_children.Remove( this );
 			Close( true );
 		}
@@ -435,7 +434,7 @@ struct ArrayList /* for .NET compatibility */
 		
 		public void OnClose( Object sender, Event e )
 		{
-			writefln( "MyChild: OnClose" );
+			пишифнс( "MyChild: OnClose" );
 			CloseEvent ce = cast(CloseEvent) e;
 
 			if ( canvas && canvas.IsDirty )

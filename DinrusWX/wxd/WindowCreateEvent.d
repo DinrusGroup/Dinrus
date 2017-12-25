@@ -20,30 +20,40 @@ public import wx.CommandEvent;
 
 public import wx.Window;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowCreateEvent_ctor(IntPtr type);
-		static extern (C) IntPtr wxWindowCreateEvent_GetWindow(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxWindowCreateEvent_ctor(IntPtr type);
+static extern (C) IntPtr wxWindowCreateEvent_GetWindow(IntPtr self);
+//! \endcond
 
-	alias WindowCreateEvent wxWindowCreateEvent;
-	public class WindowCreateEvent : CommandEvent
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(Window win = null)
-			{ this(wxWindowCreateEvent_ctor(wxObject.SafePtr(win))); }
+alias WindowCreateEvent wxWindowCreateEvent;
+public class WindowCreateEvent : CommandEvent
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public Window Active() { return cast(Window)FindObject(wxWindowCreateEvent_GetWindow(wxobj), &Window.New); }
+    public this(Window win = null)
+    {
+        this(wxWindowCreateEvent_ctor(wxObject.SafePtr(win)));
+    }
 
-		private static Event New(IntPtr obj) { return new WindowCreateEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_CREATE,				&WindowCreateEvent.New);
-		}
-	}
+    public Window Active()
+    {
+        return cast(Window)FindObject(wxWindowCreateEvent_GetWindow(wxobj), &Window.New);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new WindowCreateEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_CREATE,				&WindowCreateEvent.New);
+    }
+}

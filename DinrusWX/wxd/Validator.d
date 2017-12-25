@@ -17,27 +17,31 @@ module wx.Validator;
 public import wx.common;
 public import wx.EvtHandler;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxValidator_ctor();
-		static extern (C) IntPtr wxDefaultValidator_Get();
-		//! \endcond
-		
-		//---------------------------------------------------------------------
-		
-	alias Validator wxValidator;
-	public class Validator : EvtHandler
-	{
-		static Validator wxDefaultValidator;
-		static this()
-		{
-			wxDefaultValidator = new Validator(wxDefaultValidator_Get());
-		}
-	
-		public this()
-			{ super(wxValidator_ctor());}
+//! \cond EXTERN
+static extern (C) IntPtr wxValidator_ctor();
+static extern (C) IntPtr wxDefaultValidator_Get();
+//! \endcond
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+//---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
-	}
+alias Validator wxValidator;
+public class Validator : EvtHandler
+{
+    static Validator wxDefaultValidator;
+    static this()
+    {
+        wxDefaultValidator = new Validator(wxDefaultValidator_Get());
+    }
+
+    public this()
+    {
+        super(wxValidator_ctor());
+    }
+
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+
+    //---------------------------------------------------------------------
+}

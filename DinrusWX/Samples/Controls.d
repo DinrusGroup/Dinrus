@@ -1,40 +1,7 @@
-//-----------------------------------------------------------------------------
-// D/Samples - Controls.d
-//
-// A D version of the wxWidgets "controls" sample.
-//
-// TODO: update to use sizers more (this is a straight port of the wxWidgets
-// original, which also used absolute positioning in many places for unknown
-// reasons). [t9mike]
-//
-// Written by Bryan Bulten (bryan@bulten.ca)
-// Modified by BERO <berobero@users.sourceforge.net>
-// (C) 2003 Bryan Bulten
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: Controls.d,v 1.11 2009/01/13 10:13:35 afb Exp $
-//-----------------------------------------------------------------------------
-
 import wx.wx;
-//pragma(lib, "wxd.lib");
-//pragma(lib, "wxc.lib");
-version (Tango)
-{
-import tango.core.Version;
-private import tango.text.convert.Integer;
-static if (Tango.Major == 0 && Tango.Minor < 994)
-alias tango.text.convert.Integer.toUtf8 toString;
-else
-alias tango.text.convert.Integer.toString toString;
-private import tango.io.Console;
-void PRINT(string s) { Cout(s).newline; }
-}
-else // Phobos
-{
-private import std.string;
-private import std.stdio;
-alias writefln PRINT;
-}
+
+private import stdrus;
+
 
     //-------------------------------------------------------------------------
     // Application entry class
@@ -516,7 +483,7 @@ alias writefln PRINT;
             spinctrl.Value = 15;
 
             initialSpinValue = -5;
-            spintext = new TextCtrl(panel, -1, "" ~ .toString(initialSpinValue),
+            spintext = new TextCtrl(panel, -1, "" ~ .вТкст(initialSpinValue),
                                     Point(20, 160), Size(80, -1));
             spinbutton = new SpinButton(panel, ID_SPIN, 
                                         Point(103, 160), Size(80, -1));
@@ -693,7 +660,7 @@ alias writefln PRINT;
 	
 	public void OnClicked2( Object sender, Event e )
 	{
-		PRINT( "OnClicked2");
+		скажифнс( "OnClicked2");
 	}
 
         //---------------------------------------------------------------------
@@ -738,7 +705,7 @@ alias writefln PRINT;
             switch(e.ID)
             {
             case ID_LISTBOX_SEL_NUM:
-	    	PRINT( "OnListBoxButtons");
+	    	скажифнс( "OnListBoxButtons");
                 listbox.Selection = 2;
                 listboxSorted.Selection = 2;
                 break;
@@ -931,7 +898,7 @@ alias writefln PRINT;
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-	    	PRINT( ce.String );
+	    	скажифнс( ce.String );
 
             Log.LogMessage( "Text in the combobox changed: now is '{0}'", ce.String);
         }
@@ -1037,45 +1004,45 @@ alias writefln PRINT;
         public void OnSpinCtrl(Object sender, Event e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl changed: now " ~ .toString(spinctrl.Value) ~ 
-                            " (from event: " ~ .toString(ce.Int) ~ ")\n");
+            text.AppendText("SpinCtrl changed: now " ~ .вТкст(spinctrl.Value) ~ 
+                            " (from event: " ~ .вТкст(ce.Int) ~ ")\n");
         }
 
         public void OnSpinCtrlUp(Object sender, Event e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl up: now " ~ .toString(spinctrl.Value) ~ 
-                            " (from event: " ~ .toString(ce.Int) ~ ")\n");
+            text.AppendText("SpinCtrl up: now " ~ .вТкст(spinctrl.Value) ~ 
+                            " (from event: " ~ .вТкст(ce.Int) ~ ")\n");
         }
 
         public void OnSpinCtrlDown(Object sender, Event e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl down: now " ~ .toString(spinctrl.Value) ~ 
-                            " (from event: " ~ .toString(ce.Int) ~ ")\n");
+            text.AppendText("SpinCtrl down: now " ~ .вТкст(spinctrl.Value) ~ 
+                            " (from event: " ~ .вТкст(ce.Int) ~ ")\n");
         }
 
         public void OnSpinCtrlText(Object sender, Event e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl text changed: now " ~ .toString(spinctrl.Value) ~ 
+            text.AppendText("SpinCtrl text changed: now " ~ .вТкст(spinctrl.Value) ~ 
                             " (from event: " ~ ce.String ~ ")\n");
         } 
 
         public void OnSpinUpdate(Object sender, Event e) 
         {
 			SpinEvent se = cast(SpinEvent) e;
-            spintext.Value = "" ~ .toString(se.Position);
+            spintext.Value = "" ~ .вТкст(se.Position);
 
-            text.AppendText("Spin conntrol range: (" ~ .toString(spinbutton.Min) ~ ", " ~ 
-					.toString(spinbutton.Max) ~ "), current = " ~ .toString(spinbutton.Value) ~ "\n");
+            text.AppendText("Spin conntrol range: (" ~ .вТкст(spinbutton.Min) ~ ", " ~ 
+					.вТкст(spinbutton.Max) ~ "), current = " ~ .вТкст(spinbutton.Value) ~ "\n");
 
         }
 
         public void OnSpinUp(Object sender, Event e)
         {
 			SpinEvent se = cast(SpinEvent) e;
-            string str = "Spin button up: current = " ~ .toString(spinbutton.Value) ~ "\n";
+            string str = "Spin button up: current = " ~ .вТкст(spinbutton.Value) ~ "\n";
 
             if (se.Position > 17) {
                 str ~= "Preventing spin button from going above 17.\n";
@@ -1089,7 +1056,7 @@ alias writefln PRINT;
         public void OnSpinDown(Object sender, Event e)
         {
             SpinEvent se = cast(SpinEvent) e;
-            string str = "Spin button down: current = " ~ .toString(spinbutton.Value) ~ "\n";
+            string str = "Spin button down: current = " ~ .вТкст(spinbutton.Value) ~ "\n";
 
             if (se.Position < -17) {
                 str ~= "Preventing spin button from going below -17.\n";
@@ -1156,7 +1123,7 @@ alias writefln PRINT;
 			}
 			else
 			{
-				text.AppendText("Countdown from " ~ .toString(max) ~ " finished.\n");
+				text.AppendText("Countdown from " ~ .вТкст(max) ~ " finished.\n");
 			}
         }
 		
@@ -1178,17 +1145,17 @@ alias writefln PRINT;
 				}	
 			}
 			
-			text.AppendText("Notebook selection is being changed from " ~ .toString(selOld) ~
-							" to " ~  .toString(ne.Selection) ~
+			text.AppendText("Notebook selection is being changed from " ~ .вТкст(selOld) ~
+							" to " ~  .вТкст(ne.Selection) ~
 							" (current page from notebook is " ~
-							.toString(notebook.Selection) ~ ")\n");
+							.вТкст(notebook.Selection) ~ ")\n");
 		}
 		
 		public void OnPageChanged(Object sender, Event e)
 		{
 			NotebookEvent ne = cast(NotebookEvent) e;
-			text.AppendText("Notebook selection is now " ~ .toString(ne.Selection) ~
-							" (from notebook: " ~ .toString(notebook.Selection) ~ ")\n");
+			text.AppendText("Notebook selection is now " ~ .вТкст(ne.Selection) ~
+							" (from notebook: " ~ .вТкст(notebook.Selection) ~ ")\n");
 		}
 
         //---------------------------------------------------------------------

@@ -16,7 +16,29 @@
 module wx.DbGrid;
 public import wx.common;
 public import wx.Grid;
-import dcollections.ArrayList;
+
+
+struct ArrayList /* for .NET compatibility */
+{
+	Object[] array;
+
+	void Add(Object o)
+	{
+		array ~= o;
+	}
+	void Remove(Object o)
+	{
+		uint i;
+		for(i=0;i<array.length;i++) {
+			if (array[i] is o) break;
+		}
+		if (i==array.length) return;
+		for(i++;i<array.length;i++) {
+			array[i-1] = array[i];
+		}
+		array.length = array.length-1;
+	}
+}
 
 	alias Column wxColumn;
 	public class Column
@@ -58,7 +80,7 @@ import dcollections.ArrayList;
 
 		public this()
 		{
-			//cols = new ArrayList();
+			cols = new ArrayList();
 		}
 
 		//-----------------------------------------------------------------------------

@@ -16,7 +16,6 @@
  
 import wx.wx;
 
-pragma(lib,"wxd.lib");
 
 	public class EventDemoApp : App 
 	{

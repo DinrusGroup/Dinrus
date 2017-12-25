@@ -17,25 +17,32 @@ module wx.InitDialogEvent;
 public import wx.common;
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxInitDialogEvent_ctor(int Id);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxInitDialogEvent_ctor(int Id);
+//! \endcond
 
-	alias InitDialogEvent wxInitDialogEvent;
-	public class InitDialogEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
-			
-		public this(int Id = 0)
-			{ this(wxInitDialogEvent_ctor(Id)); }
+//-----------------------------------------------------------------------------
 
-		private static Event New(IntPtr obj) { return new InitDialogEvent(obj); }
+alias InitDialogEvent wxInitDialogEvent;
+public class InitDialogEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_INIT_DIALOG,				&InitDialogEvent.New);
-		}
-	}
+    public this(int Id = 0)
+    {
+        this(wxInitDialogEvent_ctor(Id));
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new InitDialogEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_INIT_DIALOG,				&InitDialogEvent.New);
+    }
+}

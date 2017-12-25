@@ -45,13 +45,13 @@ import wx.wx;
 			
 			help.TempDir = "." ;
 			
-			bool ret = help.AddBook( "../Samples/HtmlHelp/helpfiles/testing.hhp" );
+			bool ret = help.AddBook( "./helpfiles/testing.hhp" );
 			if ( !ret )
-				MessageBox( "Failed adding book ../Samples/HtmlHelp/helpfiles/testing.hhp" );
+				MessageBox( "Failed adding book ./helpfiles/testing.hhp" );
 				
-			ret = help.AddBook( "../Samples/HtmlHelp/helpfiles/another.hhp" );
+			ret = help.AddBook( "./helpfiles/another.hhp" );
 			if ( !ret )
-				MessageBox( "Failed adding book ../Samples/HtmlHelp/helpfiles/another.hhp" );
+				MessageBox( "Failed adding book ./helpfiles/another.hhp" );
 				
 			this.Closing_Add(&OnClosing);
 		}

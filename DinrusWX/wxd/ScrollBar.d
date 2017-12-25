@@ -17,86 +17,114 @@ module wx.ScrollBar;
 public import wx.common;
 public import wx.Control;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxScrollBar_ctor();
-		static extern (C) bool   wxScrollBar_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) int    wxScrollBar_GetThumbPosition(IntPtr self);
-		static extern (C) int    wxScrollBar_GetThumbSize(IntPtr self);
-		static extern (C) int    wxScrollBar_GetPageSize(IntPtr self);
-		static extern (C) int    wxScrollBar_GetRange(IntPtr self);
-		static extern (C) bool   wxScrollBar_IsVertical(IntPtr self);
-		static extern (C) void   wxScrollBar_SetThumbPosition(IntPtr self, int viewStart);
-		static extern (C) void   wxScrollBar_SetScrollbar(IntPtr self, int position, int thumbSize, int range, int pageSize, bool refresh);
-		//! \endcond
+//! \cond EXTERN
+static extern (C) IntPtr wxScrollBar_ctor();
+static extern (C) bool   wxScrollBar_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
+static extern (C) int    wxScrollBar_GetThumbPosition(IntPtr self);
+static extern (C) int    wxScrollBar_GetThumbSize(IntPtr self);
+static extern (C) int    wxScrollBar_GetPageSize(IntPtr self);
+static extern (C) int    wxScrollBar_GetRange(IntPtr self);
+static extern (C) bool   wxScrollBar_IsVertical(IntPtr self);
+static extern (C) void   wxScrollBar_SetThumbPosition(IntPtr self, int viewStart);
+static extern (C) void   wxScrollBar_SetScrollbar(IntPtr self, int position, int thumbSize, int range, int pageSize, bool refresh);
+//! \endcond
 
-		//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
-	alias ScrollBar wxScrollBar;
-	public class ScrollBar : Control
-	{
-		enum {
-			wxSB_HORIZONTAL   = Orientation.wxHORIZONTAL,
-			wxSB_VERTICAL     = Orientation.wxVERTICAL,
-		}
+alias ScrollBar wxScrollBar;
+public class ScrollBar : Control
+{
+    enum
+    {
+        wxSB_HORIZONTAL   = Orientation.wxHORIZONTAL,
+        wxSB_VERTICAL     = Orientation.wxVERTICAL,
+    }
 
-		public const string wxScrollBarNameStr = "scrollBar";
-		//-----------------------------------------------------------------------------
+    public const string wxScrollBarNameStr = "scrollBar";
+    //-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		public this()
-			{ super(wxScrollBar_ctor()); }
-	    
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
-		{
-			super (wxScrollBar_ctor() );
-			if (!Create(parent, id, pos, size, style, validator, name)) 
-			{
-				throw new InvalidOperationException("Failed to create ScrollBar");
-			}
-		}
-		
-		public static wxObject New(IntPtr wxobj) { return new ScrollBar(wxobj); }
-	
-		//---------------------------------------------------------------------
-		// ctors with self created id
-		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, validator, name); }
-		
-		//-----------------------------------------------------------------------------
+    public this()
+    {
+        super(wxScrollBar_ctor());
+    }
 
-		public bool Create(Window parent, int id, Point pos, Size size, int style, Validator validator, string name)
-		{
-			return wxScrollBar_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, wxObject.SafePtr(validator), name);
-		}
+    public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
+    {
+        super (wxScrollBar_ctor() );
+        if (!Create(parent, id, pos, size, style, validator, name))
+        {
+            throw new InvalidOperationException("Не удалось создать ScrollBar");
+        }
+    }
 
-		//-----------------------------------------------------------------------------
+    public static wxObject New(IntPtr wxobj)
+    {
+        return new ScrollBar(wxobj);
+    }
 
-		public int ThumbPosition() { return wxScrollBar_GetThumbPosition(wxobj); }
-		public void ThumbPosition(int value) { wxScrollBar_SetThumbPosition(wxobj, value); }
+    //---------------------------------------------------------------------
+    // ctors with self created id
 
-		//-----------------------------------------------------------------------------
+    public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
+    {
+        this(parent, Window.UniqueID, pos, size, style, validator, name);
+    }
 
-		public int ThumbSize() { return wxScrollBar_GetThumbSize(wxobj); }
+    //-----------------------------------------------------------------------------
 
-		//-----------------------------------------------------------------------------
+    public bool Create(Window parent, int id, Point pos, Size size, int style, Validator validator, string name)
+    {
+        return wxScrollBar_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, wxObject.SafePtr(validator), name);
+    }
 
-		public int PageSize() { return wxScrollBar_GetPageSize(wxobj); }
+    //-----------------------------------------------------------------------------
 
-		//-----------------------------------------------------------------------------
+    public int ThumbPosition()
+    {
+        return wxScrollBar_GetThumbPosition(wxobj);
+    }
+    public void ThumbPosition(int value)
+    {
+        wxScrollBar_SetThumbPosition(wxobj, value);
+    }
 
-		public int Range() { return wxScrollBar_GetRange(wxobj); }
+    //-----------------------------------------------------------------------------
 
-		//-----------------------------------------------------------------------------
+    public int ThumbSize()
+    {
+        return wxScrollBar_GetThumbSize(wxobj);
+    }
 
-		public bool IsVertical() { return wxScrollBar_IsVertical(wxobj); }
+    //-----------------------------------------------------------------------------
 
-		//-----------------------------------------------------------------------------
+    public int PageSize()
+    {
+        return wxScrollBar_GetPageSize(wxobj);
+    }
 
-		public override void SetScrollbar(int position, int thumbSize, int range, int pageSize, bool refresh)
-		{
-			wxScrollBar_SetScrollbar(wxobj, position, thumbSize, range, pageSize, refresh);
-		}
-	}
+    //-----------------------------------------------------------------------------
+
+    public int Range()
+    {
+        return wxScrollBar_GetRange(wxobj);
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public bool IsVertical()
+    {
+        return wxScrollBar_IsVertical(wxobj);
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public override void SetScrollbar(int position, int thumbSize, int range, int pageSize, bool refresh)
+    {
+        wxScrollBar_SetScrollbar(wxobj, position, thumbSize, range, pageSize, refresh);
+    }
+}

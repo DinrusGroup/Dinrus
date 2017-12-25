@@ -17,141 +17,147 @@ module wx.ScrolledWindow;
 public import wx.common;
 public import wx.Panel;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxScrollWnd_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void   wxScrollWnd_PrepareDC(IntPtr self, IntPtr dc);
-		static extern (C) void   wxScrollWnd_SetScrollbars(IntPtr self, int pixX, int pixY, int numX, int numY, int x, int y, bool noRefresh);
-		static extern (C) void   wxScrollWnd_GetViewStart(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxScrollWnd_GetScrollPixelsPerUnit(IntPtr self, inout int xUnit, inout int yUnit);
-		
-		static extern (C) void   wxScrollWnd_CalcScrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
-		static extern (C) void   wxScrollWnd_CalcUnscrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
-		static extern (C) void   wxScrollWnd_GetVirtualSize(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxScrollWnd_Scroll(IntPtr self, int x, int y);
-		static extern (C) void   wxScrollWnd_SetScrollRate(IntPtr self, int xstep, int ystep);
-		static extern (C) void   wxScrollWnd_SetTargetWindow(IntPtr self, IntPtr window);
-		//! \endcond
+//! \cond EXTERN
+static extern (C) IntPtr wxScrollWnd_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
+static extern (C) void   wxScrollWnd_PrepareDC(IntPtr self, IntPtr dc);
+static extern (C) void   wxScrollWnd_SetScrollbars(IntPtr self, int pixX, int pixY, int numX, int numY, int x, int y, bool noRefresh);
+static extern (C) void   wxScrollWnd_GetViewStart(IntPtr self, inout int x, inout int y);
+static extern (C) void   wxScrollWnd_GetScrollPixelsPerUnit(IntPtr self, inout int xUnit, inout int yUnit);
 
-		//---------------------------------------------------------------------
+static extern (C) void   wxScrollWnd_CalcScrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
+static extern (C) void   wxScrollWnd_CalcUnscrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
+static extern (C) void   wxScrollWnd_GetVirtualSize(IntPtr self, inout int x, inout int y);
+static extern (C) void   wxScrollWnd_Scroll(IntPtr self, int x, int y);
+static extern (C) void   wxScrollWnd_SetScrollRate(IntPtr self, int xstep, int ystep);
+static extern (C) void   wxScrollWnd_SetTargetWindow(IntPtr self, IntPtr window);
+//! \endcond
 
-	alias ScrolledWindow wxScrolledWindow;
-	public class ScrolledWindow : Panel
-	{
-		enum {
-			wxScrolledWindowStyle = (wxHSCROLL | wxVSCROLL),
-		}
-	
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//---------------------------------------------------------------------
 
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
-		{
-			super(wxScrollWnd_ctor(wxObject.SafePtr(parent), id, pos, size, style, name));
-			EVT_PAINT(&OnPaint);
-		}
+alias ScrolledWindow wxScrolledWindow;
+public class ScrolledWindow : Panel
+{
+    enum
+    {
+        wxScrolledWindowStyle = (wxHSCROLL | wxVSCROLL),
+    }
 
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
-		{
-			this(parent,Window.UniqueID,pos,size,style,name);
-		}
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//---------------------------------------------------------------------
+    public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
+    {
+        super(wxScrollWnd_ctor(wxObject.SafePtr(parent), id, pos, size, style, name));
+        EVT_PAINT(&OnPaint);
+    }
 
-		public /+virtual+/ void OnDraw(DC dc)
-		{
-		}
+    public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
+    {
+        this(parent,Window.UniqueID,pos,size,style,name);
+    }
 
-		//---------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-		public override void PrepareDC(DC dc)
-		{
-			wxScrollWnd_PrepareDC(wxobj, dc.wxobj);
-		}
+    public /+virtual+/ void OnDraw(DC dc)
+    {
+    }
 
-		//---------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY)
-		{ 
-			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, 0, 0, false); 
-		}
-		
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y)
-		{ 
-			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, x, y, false); 
-		}
-		
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y, bool noRefresh)
-		{
-			wxScrollWnd_SetScrollbars(wxobj, pixelsPerUnitX, pixelsPerUnitY, noUnitsX, noUnitsY, x, y, noRefresh);
-		}
+    public override void PrepareDC(DC dc)
+    {
+        wxScrollWnd_PrepareDC(wxobj, dc.wxobj);
+    }
 
-		//---------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-		private void OnPaint(Object sender, Event e)
-		{
-			PaintDC dc = new PaintDC(this);
-			PrepareDC(dc);
-			OnDraw(dc);
-			dc.Dispose();
-		}
+    public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY)
+    {
+        SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, 0, 0, false);
+    }
 
-		//---------------------------------------------------------------------
+    public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y)
+    {
+        SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, x, y, false);
+    }
 
-		public Point ViewStart()
-		{
-			Point pt;
-			GetViewStart(pt.X, pt.Y);
-			return pt;
-		}
+    public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y, bool noRefresh)
+    {
+        wxScrollWnd_SetScrollbars(wxobj, pixelsPerUnitX, pixelsPerUnitY, noUnitsX, noUnitsY, x, y, noRefresh);
+    }
 
-		public void GetViewStart(inout int x, inout int y)
-		{
-			wxScrollWnd_GetViewStart(wxobj, x, y);
-		}
+    //---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
+    private void OnPaint(Object sender, Event e)
+    {
+        PaintDC dc = new PaintDC(this);
+        PrepareDC(dc);
+        OnDraw(dc);
+        dc.Dispose();
+    }
 
-		public void GetScrollPixelsPerUnit(inout int xUnit, inout int yUnit)
-		{
-			wxScrollWnd_GetScrollPixelsPerUnit(wxobj, xUnit, yUnit);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void CalcScrolledPosition(int x, int y, inout int xx, inout int yy)
-		{
-			wxScrollWnd_CalcScrolledPosition(wxobj, x, y, xx, yy);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void CalcUnscrolledPosition(int x, int y, inout int xx, inout int yy)
-		{
-			wxScrollWnd_CalcUnscrolledPosition(wxobj, x, y, xx, yy);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void GetVirtualSize(inout int x, inout int y)
-		{
-			wxScrollWnd_GetVirtualSize(wxobj, x, y);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void Scroll(int x, int y)
-		{
-			wxScrollWnd_Scroll(wxobj, x, y);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void SetScrollRate(int xstep, int ystep)
-		{
-			wxScrollWnd_SetScrollRate(wxobj, xstep, ystep);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void TargetWindow(Window value) { wxScrollWnd_SetTargetWindow(wxobj, wxObject.SafePtr(value)); }
-	}
+    //---------------------------------------------------------------------
+
+    public Point ViewStart()
+    {
+        Point pt;
+        GetViewStart(pt.X, pt.Y);
+        return pt;
+    }
+
+    public void GetViewStart(inout int x, inout int y)
+    {
+        wxScrollWnd_GetViewStart(wxobj, x, y);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void GetScrollPixelsPerUnit(inout int xUnit, inout int yUnit)
+    {
+        wxScrollWnd_GetScrollPixelsPerUnit(wxobj, xUnit, yUnit);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void CalcScrolledPosition(int x, int y, inout int xx, inout int yy)
+    {
+        wxScrollWnd_CalcScrolledPosition(wxobj, x, y, xx, yy);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void CalcUnscrolledPosition(int x, int y, inout int xx, inout int yy)
+    {
+        wxScrollWnd_CalcUnscrolledPosition(wxobj, x, y, xx, yy);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void GetVirtualSize(inout int x, inout int y)
+    {
+        wxScrollWnd_GetVirtualSize(wxobj, x, y);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void Scroll(int x, int y)
+    {
+        wxScrollWnd_Scroll(wxobj, x, y);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void SetScrollRate(int xstep, int ystep)
+    {
+        wxScrollWnd_SetScrollRate(wxobj, xstep, ystep);
+    }
+
+    //---------------------------------------------------------------------
+
+    public void TargetWindow(Window value)
+    {
+        wxScrollWnd_SetTargetWindow(wxobj, wxObject.SafePtr(value));
+    }
+}

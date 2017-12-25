@@ -19,30 +19,40 @@ public import wx.common;
 public import wx.CommandEvent;
 public import wx.Window;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxChildFocusEvent_ctor(IntPtr win);
-		static extern (C) IntPtr wxChildFocusEvent_GetWindow(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxChildFocusEvent_ctor(IntPtr win);
+static extern (C) IntPtr wxChildFocusEvent_GetWindow(IntPtr self);
+//! \endcond
 
-	alias ChildFocusEvent wxChildFocusEvent;
-	public class ChildFocusEvent : CommandEvent
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
-			
-		public this(Window win)
-			{ super(wxChildFocusEvent_ctor(wxObject.SafePtr(win))); }
+//-----------------------------------------------------------------------------
 
-		//-----------------------------------------------------------------------------	
-		
-		public Window window() { return cast(Window)FindObject(wxChildFocusEvent_GetWindow(wxobj), &Window.New); }
+alias ChildFocusEvent wxChildFocusEvent;
+public class ChildFocusEvent : CommandEvent
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		private static Event New(IntPtr obj) { return new ChildFocusEvent(obj); }
+    public this(Window win)
+    {
+        super(wxChildFocusEvent_ctor(wxObject.SafePtr(win)));
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_CHILD_FOCUS,				&ChildFocusEvent.New);
-		}
-	}
+    //-----------------------------------------------------------------------------
+
+    public Window window()
+    {
+        return cast(Window)FindObject(wxChildFocusEvent_GetWindow(wxobj), &Window.New);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new ChildFocusEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_CHILD_FOCUS,				&ChildFocusEvent.New);
+    }
+}

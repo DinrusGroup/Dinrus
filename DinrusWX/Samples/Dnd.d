@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
     public class DNDText : TextDropTarget
     {
@@ -53,7 +53,7 @@ private import std.string;
 
         public override bool OnDropFiles(int x, int y, string[] filenames)
         {
-	    	string str = .toString(filenames.length) ~ " files dropped";
+	    	string str = stdrus.вТкст(filenames.length) ~ " files dropped";
 		myOwner.Append(str);
 
 	    	for ( int i = 0; i < filenames.length; i++ )

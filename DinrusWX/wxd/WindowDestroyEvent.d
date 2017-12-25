@@ -20,30 +20,40 @@ public import wx.CommandEvent;
 
 public import wx.Window;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowDestroyEvent_ctor(IntPtr type);
-		static extern (C) IntPtr wxWindowDestroyEvent_GetWindow(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxWindowDestroyEvent_ctor(IntPtr type);
+static extern (C) IntPtr wxWindowDestroyEvent_GetWindow(IntPtr self);
+//! \endcond
 
-	alias WindowDestroyEvent wxWindowDestroyEvent;
-	public class WindowDestroyEvent : CommandEvent
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(Window win = null)
-			{ this(wxWindowDestroyEvent_ctor(wxObject.SafePtr(win))); }
+alias WindowDestroyEvent wxWindowDestroyEvent;
+public class WindowDestroyEvent : CommandEvent
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public Window Active() { return cast(Window)FindObject(wxWindowDestroyEvent_GetWindow(wxobj), &Window.New); }
+    public this(Window win = null)
+    {
+        this(wxWindowDestroyEvent_ctor(wxObject.SafePtr(win)));
+    }
 
-		private static Event New(IntPtr obj) { return new WindowDestroyEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_DESTROY,				&WindowDestroyEvent.New);
-		}
-	}
+    public Window Active()
+    {
+        return cast(Window)FindObject(wxWindowDestroyEvent_GetWindow(wxobj), &Window.New);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new WindowDestroyEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_DESTROY,				&WindowDestroyEvent.New);
+    }
+}

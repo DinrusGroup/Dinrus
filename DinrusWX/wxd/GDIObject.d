@@ -16,23 +16,25 @@
 module wx.GDIObject;
 public import wx.common;
 
-		//! \cond EXTERN
-		static extern (C) void wxGDIObj_dtor(IntPtr self);
-		//! \endcond
+//! \cond EXTERN
+static extern (C) void wxGDIObj_dtor(IntPtr self);
+//! \endcond
 
-		//---------------------------------------------------------------------
+//---------------------------------------------------------------------
 
-	alias GDIObject wxGDIObject;
-	public class GDIObject : wxObject
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+alias GDIObject wxGDIObject;
+public class GDIObject : wxObject
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		/*public override void Dispose()
-		{
-			wxobj = IntPtr.init;
-			Dispose(false);
-		}*/		
+    /*public override void Dispose()
+    {
+    	wxobj = IntPtr.init;
+    	Dispose(false);
+    }*/
 
-		//---------------------------------------------------------------------
-	}
+    //---------------------------------------------------------------------
+}

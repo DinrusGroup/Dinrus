@@ -18,25 +18,32 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxNcPaintEvent_ctor(int Id);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxNcPaintEvent_ctor(int Id);
+//! \endcond
 
-	alias NCPaintEvent wxNCPaintEvent;
-	public class NCPaintEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int Id=0)
-			{ this(wxNcPaintEvent_ctor(Id)); }
+alias NCPaintEvent wxNCPaintEvent;
+public class NCPaintEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		private static Event New(IntPtr obj) { return new NCPaintEvent(obj); }
+    public this(int Id=0)
+    {
+        this(wxNcPaintEvent_ctor(Id));
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_NC_PAINT,				&NCPaintEvent.New);
-		}
-	}
+    private static Event New(IntPtr obj)
+    {
+        return new NCPaintEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_NC_PAINT,				&NCPaintEvent.New);
+    }
+}

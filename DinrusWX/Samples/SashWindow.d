@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
 	//---------------------------------------------------------------------	
 
@@ -127,8 +127,8 @@ private import std.string;
 			SashEvent se = cast(SashEvent) e;
 
 			Log.LogMessage("OnSashDraggedRange:" );
-			Log.LogMessage("DragStatus: " ~ .toString(cast(int)se.DragStatus) );
-			Log.LogMessage("Event ID: " ~ .toString(cast(int)se.ID) );
+			Log.LogMessage("DragStatus: " ~ .вТкст(cast(int)se.DragStatus) );
+			Log.LogMessage("Event ID: " ~ .вТкст(cast(int)se.ID) );
 
 			if ( se.DragStatus == SashDragStatus.wxSASH_STATUS_OUT_OF_RANGE )
 				return;

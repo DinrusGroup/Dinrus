@@ -18,25 +18,32 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxSysColourChangedEvent_ctor();
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxSysColourChangedEvent_ctor();
+//! \endcond
 
-	alias SysColourChangedEvent wxSysColourChangedEvent;
-	public class SysColourChangedEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this()
-			{ this(wxSysColourChangedEvent_ctor()); }
+alias SysColourChangedEvent wxSysColourChangedEvent;
+public class SysColourChangedEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		private static Event New(IntPtr obj) { return new SysColourChangedEvent(obj); }
+    public this()
+    {
+        this(wxSysColourChangedEvent_ctor());
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_SYS_COLOUR_CHANGED,			&SysColourChangedEvent.New);
-		}
-	}
+    private static Event New(IntPtr obj)
+    {
+        return new SysColourChangedEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_SYS_COLOUR_CHANGED,			&SysColourChangedEvent.New);
+    }
+}

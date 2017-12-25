@@ -18,32 +18,45 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxQueryNewPaletteEvent_ctor(int winid);
-		static extern (C) bool wxQueryNewPaletteEvent_GetPaletteRealized(IntPtr self);
-		static extern (C) void wxQueryNewPaletteEvent_SetPaletteRealized(IntPtr self, bool realized);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxQueryNewPaletteEvent_ctor(int winid);
+static extern (C) bool wxQueryNewPaletteEvent_GetPaletteRealized(IntPtr self);
+static extern (C) void wxQueryNewPaletteEvent_SetPaletteRealized(IntPtr self, bool realized);
+//! \endcond
 
-	alias QueryNewPaletteEvent wxQueryNewPaletteEvent;
-	public class QueryNewPaletteEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int winid=0)
-			{ this(wxQueryNewPaletteEvent_ctor(winid)); }
+alias QueryNewPaletteEvent wxQueryNewPaletteEvent;
+public class QueryNewPaletteEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public bool Realized() { return wxQueryNewPaletteEvent_GetPaletteRealized(wxobj); }
-		public void Realized(bool value) { wxQueryNewPaletteEvent_SetPaletteRealized(wxobj, value); }
+    public this(int winid=0)
+    {
+        this(wxQueryNewPaletteEvent_ctor(winid));
+    }
 
-		private static Event New(IntPtr obj) { return new QueryNewPaletteEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_QUERY_NEW_PALETTE,			&QueryNewPaletteEvent.New);
-		}
-	}
+    public bool Realized()
+    {
+        return wxQueryNewPaletteEvent_GetPaletteRealized(wxobj);
+    }
+    public void Realized(bool value)
+    {
+        wxQueryNewPaletteEvent_SetPaletteRealized(wxobj, value);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new QueryNewPaletteEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_QUERY_NEW_PALETTE,			&QueryNewPaletteEvent.New);
+    }
+}

@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
 
 	public class MyHtmlListBox : HtmlListBox
@@ -49,8 +49,8 @@ private import std.string;
 		
 		private static char[] tohex(ubyte value) {
 			char buf[2];
-			buf[0] = hexdigits[value/16];
-			buf[1] = hexdigits[value%16];
+			buf[0] = ЦИФРЫ16[value/16];
+			buf[1] = ЦИФРЫ16[value%16];
 			return buf.dup;
 		}
 		
@@ -60,7 +60,7 @@ private import std.string;
 		{
 			int level = ( n % 6 ) + 1;
 		
-			return std.string.format("<h%d><font color=#%02x%02x%02x>Item</font> <b>%d</b></h%d>",
+			return фм("<h%d><font color=#%02x%02x%02x>Item</font> <b>%d</b></h%d>",
 				level,
 				abs(n - 192) % 256,
 				abs(n - 256) % 256,
@@ -341,7 +341,7 @@ private import std.string;
 						s ~= ", ";
 					}
 					
-					s ~= std.string.toString(item);
+					s ~= stdrus.вТкст(item);
 					
 				}
 				
@@ -349,7 +349,7 @@ private import std.string;
 					Log.LogMessage( "Selected items: {0}", s );
 			}
 			
-			StatusText = "# items selected = " ~ .toString(m_hlbox.SelectedCount);
+			StatusText = "# items selected = " ~ .вТкст(m_hlbox.SelectedCount);
 		}
 		
 		//---------------------------------------------------------------------

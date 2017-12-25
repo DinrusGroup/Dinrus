@@ -18,18 +18,22 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxPaintEvent_ctor(int Id);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxPaintEvent_ctor(int Id);
+//! \endcond
 
-	alias PaintEvent wxPaintEvent;
-	public class PaintEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int Id=0)
-			{ this(wxPaintEvent_ctor(Id)); }
-	}
+alias PaintEvent wxPaintEvent;
+public class PaintEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
+
+    public this(int Id=0)
+    {
+        this(wxPaintEvent_ctor(Id));
+    }
+}

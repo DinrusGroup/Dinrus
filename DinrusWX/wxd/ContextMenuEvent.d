@@ -19,37 +19,48 @@ public import wx.common;
 public import wx.CommandEvent;
 public import wx.Window;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxContextMenuEvent_ctor(int type,int winid, inout Point pos);
-		static extern (C) void   wxContextMenuEvent_GetPosition(IntPtr self, inout Point pos);
-		static extern (C) void   wxContextMenuEvent_SetPosition(IntPtr self, inout Point pos);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxContextMenuEvent_ctor(int type,int winid, inout Point pos);
+static extern (C) void   wxContextMenuEvent_GetPosition(IntPtr self, inout Point pos);
+static extern (C) void   wxContextMenuEvent_SetPosition(IntPtr self, inout Point pos);
+//! \endcond
 
-	alias ContextMenuEvent wxContextMenuEvent;
-	public class ContextMenuEvent : CommandEvent
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(EventType type = wxEVT_NULL, int winid = 0,Point pt = Window.wxDefaultPosition)
-			{ this(wxContextMenuEvent_ctor(type,winid,pt)); }
+alias ContextMenuEvent wxContextMenuEvent;
+public class ContextMenuEvent : CommandEvent
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public Point Position() { 
-				Point p;
-				wxContextMenuEvent_GetPosition(wxobj, p); 
-				return p;
-			}
-			
-		public void Position(Point value) { wxContextMenuEvent_SetPosition(wxobj, value); }
+    public this(EventType type = wxEVT_NULL, int winid = 0,Point pt = Window.wxDefaultPosition)
+    {
+        this(wxContextMenuEvent_ctor(type,winid,pt));
+    }
 
-		private static Event New(IntPtr obj) { return new ContextMenuEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_CONTEXT_MENU,			&ContextMenuEvent.New);
-		}
-	}
+    public Point Position()
+    {
+        Point p;
+        wxContextMenuEvent_GetPosition(wxobj, p);
+        return p;
+    }
+
+    public void Position(Point value)
+    {
+        wxContextMenuEvent_SetPosition(wxobj, value);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new ContextMenuEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_CONTEXT_MENU,			&ContextMenuEvent.New);
+    }
+}

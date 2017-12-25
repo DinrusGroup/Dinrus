@@ -19,30 +19,40 @@ public import wx.common;
 public import wx.Event;
 public import wx.DC;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxEraseEvent_ctor(int id, IntPtr dc);
-		static extern (C) IntPtr wxEraseEvent_GetDC(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxEraseEvent_ctor(int id, IntPtr dc);
+static extern (C) IntPtr wxEraseEvent_GetDC(IntPtr self);
+//! \endcond
 
-	alias EraseEvent wxEraseEvent;
-	public class EraseEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int id=0, DC dc = null)
-			{ this(wxEraseEvent_ctor(id,wxObject.SafePtr(dc))); }
+alias EraseEvent wxEraseEvent;
+public class EraseEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public DC GetDC() { return cast(DC)FindObject(wxEraseEvent_GetDC(wxobj), &DC.New); }
+    public this(int id=0, DC dc = null)
+    {
+        this(wxEraseEvent_ctor(id,wxObject.SafePtr(dc)));
+    }
 
-		private static Event New(IntPtr obj) { return new EraseEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_ERASE_BACKGROUND,			&EraseEvent.New);
-		}
-	}
+    public DC GetDC()
+    {
+        return cast(DC)FindObject(wxEraseEvent_GetDC(wxobj), &DC.New);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new EraseEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_ERASE_BACKGROUND,			&EraseEvent.New);
+    }
+}

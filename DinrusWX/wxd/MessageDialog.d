@@ -17,52 +17,56 @@ module wx.MessageDialog;
 public import wx.common;
 public import wx.Dialog;
 
-	// The MessageDialog class implements the interface for wxWidgets' 
-	// wxMessageDialog class and wxMessageBox.
+// The MessageDialog class implements the interface for wxWidgets'
+// wxMessageDialog class and wxMessageBox.
 
-		//! \cond EXTERN
+//! \cond EXTERN
 
-		// MessageBox function
-		static extern (C) int    wxMsgBox(IntPtr parent, string msg, string cap, uint style, inout Point pos);
+// MessageBox function
+static extern (C) int    wxMsgBox(IntPtr parent, string msg, string cap, uint style, inout Point pos);
 
-		// Message dialog methods
-		static extern (C) IntPtr wxMessageDialog_ctor(IntPtr parent, string message, string caption, uint style, inout Point pos);
-		static extern (C) int    wxMessageDialog_ShowModal(IntPtr self);
+// Message dialog methods
+static extern (C) IntPtr wxMessageDialog_ctor(IntPtr parent, string message, string caption, uint style, inout Point pos);
+static extern (C) int    wxMessageDialog_ShowModal(IntPtr self);
 
-		//! \endcond
+//! \endcond
 
-	alias MessageDialog wxMessageDialog;
-	public class MessageDialog : Dialog
-	{
-		public const string wxMessageBoxCaptionStr = "Message";
-		//---------------------------------------------------------------------
-	
-		private this(IntPtr wxobj) 
-			{ super(wxobj); }
+alias MessageDialog wxMessageDialog;
+public class MessageDialog : Dialog
+{
+    public const string wxMessageBoxCaptionStr = "Message";
+    //---------------------------------------------------------------------
 
-		public this(Window parent, string msg, string caption=wxMessageBoxCaptionStr, int style=wxOK | wxCENTRE, Point pos = wxDefaultPosition)
-			{ this(wxMessageDialog_ctor(wxObject.SafePtr(parent), msg, caption, cast(uint)style, pos)); }
+    private this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//---------------------------------------------------------------------
+    public this(Window parent, string msg, string caption=wxMessageBoxCaptionStr, int style=wxOK | wxCENTRE, Point pos = wxDefaultPosition)
+    {
+        this(wxMessageDialog_ctor(wxObject.SafePtr(parent), msg, caption, cast(uint)style, pos));
+    }
 
-		public override int ShowModal()
-		{
-			return wxMessageDialog_ShowModal(wxobj);
-		}
+    //---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
+    public override int ShowModal()
+    {
+        return wxMessageDialog_ShowModal(wxobj);
+    }
 
-	}
+    //---------------------------------------------------------------------
 
-		static extern(C) int wxMessageBox_func(string msg, string cap, int style, IntPtr parent,int x, int y);
+}
 
-		static int MessageBox(string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE , Window parent=null, int x=-1, int y=-1)
-		{
-			return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),x,y);
-		}
+static extern(C) int wxMessageBox_func(string msg, string cap, int style, IntPtr parent,int x, int y);
 
-		/* wx.NET compat */
-		static int MessageBox(Window parent,string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE , Point pos=Dialog.wxDefaultPosition)
-		{
-			return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),pos.X,pos.Y);
-		}
+static int MessageBox(string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE, Window parent=null, int x=-1, int y=-1)
+{
+    return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),x,y);
+}
+
+/* wx.NET compat */
+static int MessageBox(Window parent,string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE, Point pos=Dialog.wxDefaultPosition)
+{
+    return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),pos.X,pos.Y);
+}

@@ -15,7 +15,7 @@
 
 import wx.wx;
 
-import std.math;
+import stdrus;
 
 typedef int wxCoord;
 typedef byte wxDash;
@@ -685,7 +685,7 @@ class MyCanvas: public ScrolledWindow
         long x = dc.DeviceToLogicalX( pos.X );
         long y = dc.DeviceToLogicalY( pos.Y );
 
-        string str = "Current mouse position: " ~ std.string.toString(x) ~ ", " ~ std.string.toString(y );
+        string str = "Current mouse position: " ~ stdrus.вТкст(x) ~ ", " ~ stdrus.вТкст(y );
         m_owner.StatusText = str;
 
 //        wxUnusedVar(event);
@@ -706,7 +706,7 @@ class MyCanvas: public ScrolledWindow
     {
         dc.pen( new Pen( "black", width, FillStyle.wxSOLID) );
         dc.brush( Brush.wxRED_BRUSH );
-        dc.DrawText(("Testing lines of width " ~ std.string.toString(width)), x + 10, y - 10);
+        dc.DrawText(("Testing lines of width " ~ stdrus.вТкст(width)), x + 10, y - 10);
         dc.DrawRectangle( x+10, y+10, 100, 190 );
 
         dc.DrawText(("Solid/dot/short dash/long dash/dot dash"), x + 150, y + 10);
@@ -1100,8 +1100,8 @@ class MyCanvas: public ScrolledWindow
         {
             angle += angles[ angle_pos ];
             int r = R * radii[ radius_pos ] / 100;
-            pts[ i ].X = center.X + cast(wxCoord)( r * std.math.cos( PI * angle / 180.0) );
-            pts[ i ].Y = center.Y + cast(wxCoord)( r * std.math.sin( PI * angle / 180.0) );
+            pts[ i ].X = center.X + cast(wxCoord)( r * кос( ПИ * angle / 180.0) );
+            pts[ i ].Y = center.Y + cast(wxCoord)( r * син( ПИ * angle / 180.0) );
 
             angle_pos++;
             if ( angle_pos >= angles.length ) angle_pos = 0;

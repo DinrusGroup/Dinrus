@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
 	public class ListViewFrame : Frame
 	{
@@ -96,11 +96,11 @@ private import std.string;
 		
 			for ( int i = 0; i < 200; ++i )
 			{
-				string buf = "Col 1 Item " ~ .toString(i);
+				string buf = "Col 1 Item " ~ .вТкст(i);
 				int tmp = InsertItem( i, buf, 0);
 				SetItemData( tmp, i );
 				
-				buf = "Col 2 Item " ~ .toString(i);
+				buf = "Col 2 Item " ~ .вТкст(i);
 				SetItem( i, 1, buf );
 			}
 				
@@ -117,7 +117,7 @@ private import std.string;
 		{
 			ListEvent le = cast(ListEvent)e;
 			
-			Log.LogMessage( "Clicked column header " ~ .toString(le.Column) );
+			Log.LogMessage( "Clicked column header " ~ .вТкст(le.Column) );
 		}
 		
 		//---------------------------------------------------------------------	
@@ -144,7 +144,7 @@ private import std.string;
 		{
 			ListEvent le = cast(ListEvent)e;
 			
-			Log.LogMessage( "Right clicked column header " ~ .toString(le.Column) );
+			Log.LogMessage( "Right clicked column header " ~ .вТкст(le.Column) );
 		}
 	}
 	

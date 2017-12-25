@@ -12,8 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.stdio;
-private import std.string;
+private import stdrus;
 
 	public enum Cmd
 	{
@@ -361,7 +360,7 @@ private import std.string;
 				break;
 
 				default:
-					writefln("unknown listctrl mode");
+					пишифнс("unknown listctrl mode");
 				break;
 			}
 
@@ -383,7 +382,7 @@ private import std.string;
 		{
 			for ( int i = 0; i < NUM_ITEMS; i++ )
 			{
-				m_listCtrl.InsertItem(i, "Item " ~ .toString(i));
+				m_listCtrl.InsertItem(i, "Item " ~ .вТкст(i));
 			}
 		}
 		
@@ -420,7 +419,7 @@ private import std.string;
 				m_listCtrl.InsertItemInReportView(i);
 			}
 			
-			m_logWindow.WriteText(.toString(NUM_ITEMS) ~ " items inserted");
+			m_logWindow.WriteText(.вТкст(NUM_ITEMS) ~ " items inserted");
 			m_listCtrl.Show();
 			
 			ListItem item = new ListItem();
@@ -463,7 +462,7 @@ private import std.string;
 
 				if ( withText )
 				{
-					m_listCtrl.InsertItem(i, "Label " ~ .toString(i), image);
+					m_listCtrl.InsertItem(i, "Label " ~ .вТкст(i), image);
 				}
 				else
 				{
@@ -540,7 +539,7 @@ private import std.string;
 		{
 			m_listCtrl.SortItems(&MyCompareFunction,0);
  
-			m_logWindow.WriteText("Sorting " ~ .toString(m_listCtrl.ItemCount) ~ " items");
+			m_logWindow.WriteText("Sorting " ~ .вТкст(m_listCtrl.ItemCount) ~ " items");
 		}
 		
 		//---------------------------------------------------------------------	
@@ -548,7 +547,7 @@ private import std.string;
 		public void OnShowSelInfo(Object sender, Event e)
 		{
 			int selCount = m_listCtrl.SelectedItemCount;
-			Log.LogMessage(.toString(selCount) ~" items selected:");
+			Log.LogMessage(.вТкст(selCount) ~" items selected:");
 
 			int shownCount = 0;
 
@@ -556,7 +555,7 @@ private import std.string;
 						ListCtrl.wxLIST_STATE_SELECTED);
 			while ( item != -1 )
 			{
-				Log.LogMessage("\t" ~ .toString(item) ~ "d (" ~ m_listCtrl.GetItemText(item) ~ ")");
+				Log.LogMessage("\t" ~ .вТкст(item) ~ "d (" ~ m_listCtrl.GetItemText(item) ~ ")");
 
 				if ( ++shownCount > 10 )
 				{
@@ -574,10 +573,10 @@ private import std.string;
 		public void OnShowColInfo(Object sender, Event e)
 		{
 			int count = m_listCtrl.ColumnCount;
-			Log.LogMessage(.toString(count) ~ " columns:");
+			Log.LogMessage(.вТкст(count) ~ " columns:");
 			for ( int c = 0; c < count; c++ )
 			{
-				Log.LogMessage("\tcolumn " ~ .toString(c) ~ " has width " ~ .toString(m_listCtrl.GetColumnWidth(c)));
+				Log.LogMessage("\tcolumn " ~ .вТкст(c) ~ " has width " ~ .вТкст(m_listCtrl.GetColumnWidth(c)));
 			}
 		}
 		
@@ -676,7 +675,7 @@ private import std.string;
 
 			m_listCtrl.DeleteAllItems();
 
-			m_logWindow.WriteText("Deleted " ~ .toString(m_listCtrl.ItemCount) ~ " items\n");
+			m_logWindow.WriteText("Deleted " ~ .вТкст(m_listCtrl.ItemCount) ~ " items\n");
 		}
 	}   
 	
@@ -720,7 +719,7 @@ private import std.string;
 		{
 			ListEvent le = cast(ListEvent)e;
 			
-			Log.LogMessage( "OnCacheHint: cache items " ~ .toString(le.CacheFrom) ~ ".." ~ .toString(le.CacheTo) );
+			Log.LogMessage( "OnCacheHint: cache items " ~ .вТкст(le.CacheFrom) ~ ".." ~ .вТкст(le.CacheTo) );
 		}
 		
 		//---------------------------------------------------------------------	
@@ -742,7 +741,7 @@ private import std.string;
 			int col = le.Column;
 			SetColumnImage(col, 0);
 
-			Log.LogMessage( "OnColumnClick at " ~ .toString(col) ~ "." );
+			Log.LogMessage( "OnColumnClick at " ~ .вТкст(col) ~ "." );
 		}
 		
 		//---------------------------------------------------------------------	
@@ -761,7 +760,7 @@ private import std.string;
 			menu.Append(Cmd.LIST_ABOUT, _("&About"));
 			PopupMenu(menu, le.point); 
 
-			Log.LogMessage( "OnColumnRightClick at " ~ .toString(le.Column) ~ "." );
+			Log.LogMessage( "OnColumnRightClick at " ~ .вТкст(le.Column) ~ "." );
 		}
 		
 		//---------------------------------------------------------------------	
@@ -773,9 +772,9 @@ private import std.string;
 			int col = le.Column;
 			
 			string msg = name ~ ": column ";
-			msg ~= .toString(col) ~ "(width = ";
-			msg ~= .toString(le.Item.Width) ~ " or ";
-			msg ~= .toString(GetColumnWidth(col)) ~ ".";
+			msg ~= .вТкст(col) ~ "(width = ";
+			msg ~= .вТкст(le.Item.Width) ~ " or ";
+			msg ~= .вТкст(GetColumnWidth(col)) ~ ".";
 
 			Log.LogMessage( msg );
 		}
@@ -819,7 +818,7 @@ private import std.string;
 			Point pt = le.point;
 
 			int flags = 0;
-			Log.LogMessage( "OnBeginDrag at (" ~ .toString(pt.X) ~ ", " ~ .toString(pt.Y) ~ "), item " ~ .toString(HitTest(pt, flags)) ~ ".");
+			Log.LogMessage( "OnBeginDrag at (" ~ .вТкст(pt.X) ~ ", " ~ .вТкст(pt.Y) ~ "), item " ~ .вТкст(HitTest(pt, flags)) ~ ".");
 		}
 		
 		//---------------------------------------------------------------------	
@@ -828,7 +827,7 @@ private import std.string;
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			Log.LogMessage( "OnBeginRDrag at " ~ .toString(le.point.X) ~ "," ~ .toString(le.point.Y) ~ ".");
+			Log.LogMessage( "OnBeginRDrag at " ~ .вТкст(le.point.X) ~ "," ~ .вТкст(le.point.Y) ~ ".");
 		}
 		
 		//---------------------------------------------------------------------	
@@ -885,7 +884,7 @@ private import std.string;
 				}
 				else
 				{
-					writefln("wxListCtrl::GetItem() failed");
+					пишифнс("wxListCtrl::GetItem() failed");
 				}
 			}
 		}
@@ -950,7 +949,7 @@ private import std.string;
 						item = 0;
 					}
 
-					Log.LogMessage("Focusing item " ~ .toString(item));
+					Log.LogMessage("Focusing item " ~ .вТкст(item));
 
 					SetItemState(item, ListCtrl.wxLIST_STATE_FOCUSED, ListCtrl.wxLIST_STATE_FOCUSED);
 					EnsureVisible(item);
@@ -965,7 +964,7 @@ private import std.string;
 					{
 						DeleteItem(item);
 
-						Log.LogMessage("Item " ~ .toString(item) ~ " deleted");
+						Log.LogMessage("Item " ~ .вТкст(item) ~ " deleted");
 
 						// -1 because the indices were shifted by DeleteItem()
 						item = GetNextItem(item - 1,
@@ -1026,15 +1025,15 @@ private import std.string;
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			Log.LogMessage("Item " ~ .toString(le.Index) ~ ": " ~ eventName ~ " (item text = " ~ le.Text ~
-				 ", data = " ~ .toString(le.Data) ~ ")");
+			Log.LogMessage("Item " ~ .вТкст(le.Index) ~ ": " ~ eventName ~ " (item text = " ~ le.Text ~
+				 ", data = " ~ .вТкст(le.Data) ~ ")");
 		}
 		
 		//---------------------------------------------------------------------	
 
 		public string OnGetItemText(long item, long column)
 		{
-			string s = "Column " ~ .toString(column) ~ " of item " ~ .toString(item);
+			string s = "Column " ~ .вТкст(column) ~ " of item " ~ .вТкст(item);
 			return s;
 		}
 		
@@ -1056,14 +1055,14 @@ private import std.string;
 		
 		public void InsertItemInReportView(int i)
 		{
-			string buf = "This is item " ~ .toString(i);
+			string buf = "This is item " ~ .вТкст(i);
 			int tmp = InsertItem(i, buf, 0);
 			SetItemData(tmp, i);
 
-			buf = "Col 1, item " ~ .toString(i);
+			buf = "Col 1, item " ~ .вТкст(i);
 			SetItem(i, 1, buf);
 
-			buf = "Item " ~ .toString(i) ~ " in column 2";
+			buf = "Item " ~ .вТкст(i) ~ " in column 2";
 			SetItem(i, 2, buf);
 		}
 	}

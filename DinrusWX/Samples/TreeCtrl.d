@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import stdrus;
 
 	public class TreeTestApp : App
 	{
@@ -380,7 +380,7 @@ private import std.string;
 
 			int i = m_treeCtrl.GetChildrenCount( item, false );
 
-			Log.LogMessage(.toString(i) ~ " children");
+			Log.LogMessage(.вТкст(i) ~ " children");
 		}
 		
 		//---------------------------------------------------------------------
@@ -393,7 +393,7 @@ private import std.string;
 
 			int i = m_treeCtrl.GetChildrenCount( item );
 
-			Log.LogMessage(.toString(i) ~ " children");
+			Log.LogMessage(.вТкст(i) ~ " children");
 		}
 		
 		//---------------------------------------------------------------------
@@ -422,7 +422,7 @@ private import std.string;
 
 			int count = array.length;
 			
-			Log.LogMessage(.toString(count) ~ " items selected");
+			Log.LogMessage(.вТкст(count) ~ " items selected");
 
 			for ( int n = 0; n < count; n++ )
 			{
@@ -586,7 +586,7 @@ private import std.string;
 
 		public void OnAddItem(Object sender, Event e)
 		{
-			string text = "Item #" ~ .toString(++s_num);
+			string text = "Item #" ~ .вТкст(++s_num);
 
 			m_treeCtrl.AppendItem(m_treeCtrl.RootItem, text);
 		}
@@ -764,7 +764,7 @@ private import std.string;
 
 			for (int i = 0; i < 5; ++i)
 			{
-				Image image = new Image("./data/icon" ~ .toString(i) ~ ".png");
+				Image image = new Image("./data/icon" ~ .вТкст(i) ~ ".png");
 				images.Add(new Bitmap(image.Rescale(size, size)));
 			}
 
@@ -785,9 +785,9 @@ private import std.string;
 
 					// at depth 1 elements won't have any more children
 					if (hasChildren)
-						str ~= format("%s child %d", "Folder", n + 1);
+						str ~= фм("%s child %d", "Folder", n + 1);
 					else
-						str ~= format("%s child %d.%d", "File", folder, n + 1);
+						str ~= фм("%s child %d.%d", "File", folder, n + 1);
 
 					// here we pass to AppendItem() normal and selected item images (we
 					// suppose that selected image follows the normal one in the enum)
@@ -1054,7 +1054,7 @@ private import std.string;
 		
 			Point pt = ce.Position;
 			TreeItemId item = Selection;
-			Log.LogMessage("OnContextMenu at screen coords (" ~ .toString(pt.X) ~ ", " ~ .toString(pt.Y) ~ ")");
+			Log.LogMessage("OnContextMenu at screen coords (" ~ .вТкст(pt.X) ~ ", " ~ .вТкст(pt.Y) ~ ")");
 
 			if (pt.X==-1 && pt.Y==-1) 
 			{
@@ -1226,8 +1226,8 @@ private import std.string;
 			msg ~= Bool2String(tree.IsSelected(Id)) ~ "selected, ";
 			msg ~= Bool2String(tree.IsExpanded(Id)) ~ "expanded, ";
 			msg ~= Bool2String(tree.IsBold(Id)) ~ "bold,\n";
-			msg ~= .toString(tree.GetChildrenCount(Id)) ~ " children (";
-			msg ~= .toString(tree.GetChildrenCount(Id, false)) ~ " immediately under this item).";
+			msg ~= .вТкст(tree.GetChildrenCount(Id)) ~ " children (";
+			msg ~= .вТкст(tree.GetChildrenCount(Id, false)) ~ " immediately under this item).";
 		
 			Log.LogMessage(msg);
 		}

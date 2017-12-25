@@ -16,71 +16,57 @@
 module wx.Icon;
 public import wx.common;
 public import wx.Bitmap;
+private import stdrus;
 
-//! \cond STD
-version (Tango)
-{
-import tango.core.Version;
-import tango.text.convert.Utf;
-static if (Tango.Major == 0 && Tango.Minor >= 994)
-alias tango.text.convert.Utf.toString toUtf8;
-char[] toUTF8( char[] str) { return str; }
-char[] toUTF8(wchar[] str) { return toUtf8(str); }
-char[] toUTF8(dchar[] str) { return toUtf8(str); }
-}
-else // Phobos
-{
-private import std.string;
-private import std.utf;
-}
+
+//! \cond EXTERN
+static extern (C) IntPtr wxIcon_ctor();
+static extern (C) void   wxIcon_CopyFromBitmap(IntPtr self, IntPtr bitmap);
+static extern (C) bool   wxIcon_LoadFile(IntPtr self, string name, BitmapType type);
 //! \endcond
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxIcon_ctor();
-		static extern (C) void   wxIcon_CopyFromBitmap(IntPtr self, IntPtr bitmap);
-		static extern (C) bool   wxIcon_LoadFile(IntPtr self, string name, BitmapType type);
-		//! \endcond
+//---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
+alias Icon wxIcon;
+public class Icon : Bitmap
+{
+    public static Icon wxNullIcon;
+    public this(string name)
+    {
+        this();
+        Image img = new Image();
+        if (!img.LoadFile(name))
+            throw new ArgumentException("файл '" ~ вЮ8(name) ~ "' не найден");
 
-	alias Icon wxIcon;
-	public class Icon : Bitmap
-	{
-		public static Icon wxNullIcon;
-		public this(string name)
-		{
-			this();
-			Image img = new Image();
-			if (!img.LoadFile(name))
-				throw new ArgumentException("file '" ~ toUTF8(name) ~ "' not found");
+        Bitmap bmp = new Bitmap(img);
+        wxIcon_CopyFromBitmap(wxobj, bmp.wxobj);
+    }
 
-			Bitmap bmp = new Bitmap(img);
-			wxIcon_CopyFromBitmap(wxobj, bmp.wxobj);
-		}
-
-		public this(string name, BitmapType type)
-		{
-			this();
+    public this(string name, BitmapType type)
+    {
+        this();
 //			if (type == BitmapType.wxBITMAP_TYPE_RESOURCE)
 //			else
-			if (!wxIcon_LoadFile(wxobj, name, type))
-				throw new ArgumentException("file '" ~ toUTF8(name) ~ "' can't load");
-		}
+        if (!wxIcon_LoadFile(wxobj, name, type))
+            throw new ArgumentException("файл '" ~ вЮ8(name) ~ "' не загружается");
+    }
 
-		public this()
-		{
-			super(wxIcon_ctor());
-		}
-		
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+    public this()
+    {
+        super(wxIcon_ctor());
+    }
 
-		//---------------------------------------------------------------------
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		public void CopyFromBitmap(Bitmap bitmap)
-		{
-			wxIcon_CopyFromBitmap(wxobj, wxObject.SafePtr(bitmap));
-		}
+    //---------------------------------------------------------------------
 
-		//---------------------------------------------------------------------
-	}
+    public void CopyFromBitmap(Bitmap bitmap)
+    {
+        wxIcon_CopyFromBitmap(wxobj, wxObject.SafePtr(bitmap));
+    }
+
+    //---------------------------------------------------------------------
+}

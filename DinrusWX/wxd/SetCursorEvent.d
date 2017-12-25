@@ -20,47 +20,69 @@ public import wx.Event;
 
 public import wx.Cursor;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr	wxSetCursorEvent_ctor(int x,int y);
-		static extern (C) int		wxSetCursorEvent_GetX(IntPtr self);
-		static extern (C) int		wxSetCursorEvent_GetY(IntPtr self);
-		static extern (C) void		wxSetCursorEvent_SetCursor(IntPtr self, IntPtr cursor);
-		static extern (C) IntPtr	wxSetCursorEvent_GetCursor(IntPtr self);
-		static extern (C) bool		wxSetCursorEvent_HasCursor(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr	wxSetCursorEvent_ctor(int x,int y);
+static extern (C) int		wxSetCursorEvent_GetX(IntPtr self);
+static extern (C) int		wxSetCursorEvent_GetY(IntPtr self);
+static extern (C) void		wxSetCursorEvent_SetCursor(IntPtr self, IntPtr cursor);
+static extern (C) IntPtr	wxSetCursorEvent_GetCursor(IntPtr self);
+static extern (C) bool		wxSetCursorEvent_HasCursor(IntPtr self);
+//! \endcond
 
-	alias SetCursorEvent wxSetCursorEvent;
-	public class SetCursorEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int x=0,int y=0)
-			{ this(wxSetCursorEvent_ctor(x,y)); }
+alias SetCursorEvent wxSetCursorEvent;
+public class SetCursorEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public int X() { return wxSetCursorEvent_GetX(wxobj); }
-		
-		//-----------------------------------------------------------------------------	
-		
-		public int Y() { return wxSetCursorEvent_GetY(wxobj); }
-		
-		//-----------------------------------------------------------------------------	
-		
-		public Cursor cursor() { return cast(Cursor)FindObject(wxSetCursorEvent_GetCursor(wxobj), &Cursor.New); }
-		public void cursor(Cursor value) { wxSetCursorEvent_SetCursor(wxobj, wxObject.SafePtr(value)); }
-		
-		//-----------------------------------------------------------------------------	
-		
-		public bool HasCursor() { return wxSetCursorEvent_HasCursor(wxobj); }
+    public this(int x=0,int y=0)
+    {
+        this(wxSetCursorEvent_ctor(x,y));
+    }
 
-		private static Event New(IntPtr obj) { return new SetCursorEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_SET_CURSOR,				&SetCursorEvent.New);
-		}
-	}
+    public int X()
+    {
+        return wxSetCursorEvent_GetX(wxobj);
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public int Y()
+    {
+        return wxSetCursorEvent_GetY(wxobj);
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public Cursor cursor()
+    {
+        return cast(Cursor)FindObject(wxSetCursorEvent_GetCursor(wxobj), &Cursor.New);
+    }
+    public void cursor(Cursor value)
+    {
+        wxSetCursorEvent_SetCursor(wxobj, wxObject.SafePtr(value));
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public bool HasCursor()
+    {
+        return wxSetCursorEvent_HasCursor(wxobj);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new SetCursorEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_SET_CURSOR,				&SetCursorEvent.New);
+    }
+}

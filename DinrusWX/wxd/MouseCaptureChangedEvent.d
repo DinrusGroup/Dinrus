@@ -20,30 +20,40 @@ public import wx.Event;
 
 public import wx.Window;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxMouseCaptureChangedEvent_ctor(int winid,IntPtr gainedCapture);
-		static extern (C) IntPtr wxMouseCaptureChangedEvent_GetCapturedWindow(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxMouseCaptureChangedEvent_ctor(int winid,IntPtr gainedCapture);
+static extern (C) IntPtr wxMouseCaptureChangedEvent_GetCapturedWindow(IntPtr self);
+//! \endcond
 
-	alias MouseCaptureChangedEvent wxMouseCaptureChangedEvent;
-	public class MouseCaptureChangedEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int winid = 0, Window gainedCapture = null)
-			{ this(wxMouseCaptureChangedEvent_ctor(winid,wxObject.SafePtr(gainedCapture))); }
+alias MouseCaptureChangedEvent wxMouseCaptureChangedEvent;
+public class MouseCaptureChangedEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public Window CapturedWindow() { return cast(Window)FindObject(wxMouseCaptureChangedEvent_GetCapturedWindow(wxobj), &Window.New); }
+    public this(int winid = 0, Window gainedCapture = null)
+    {
+        this(wxMouseCaptureChangedEvent_ctor(winid,wxObject.SafePtr(gainedCapture)));
+    }
 
-		private static Event New(IntPtr obj) { return new MouseCaptureChangedEvent(obj); }
+    //-----------------------------------------------------------------------------
 
-		static this()
-		{
-			AddEventType(wxEVT_MOUSE_CAPTURE_CHANGED,		&MouseCaptureChangedEvent.New);
-		}
-	}
+    public Window CapturedWindow()
+    {
+        return cast(Window)FindObject(wxMouseCaptureChangedEvent_GetCapturedWindow(wxobj), &Window.New);
+    }
+
+    private static Event New(IntPtr obj)
+    {
+        return new MouseCaptureChangedEvent(obj);
+    }
+
+    static this()
+    {
+        AddEventType(wxEVT_MOUSE_CAPTURE_CHANGED,		&MouseCaptureChangedEvent.New);
+    }
+}

@@ -18,31 +18,41 @@ public import wx.common;
 
 public import wx.Event;
 
-		//! \cond EXTERN
-		static extern (C) IntPtr wxIconizeEvent_ctor(int winid,bool iconized);
-		static extern (C) bool wxIconizeEvent_Iconized(IntPtr self);
-		//! \endcond
-		
-		//-----------------------------------------------------------------------------
+//! \cond EXTERN
+static extern (C) IntPtr wxIconizeEvent_ctor(int winid,bool iconized);
+static extern (C) bool wxIconizeEvent_Iconized(IntPtr self);
+//! \endcond
 
-	alias IconizeEvent wxIconizeEvent;
-	public class IconizeEvent : Event
-	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+//-----------------------------------------------------------------------------
 
-		public this(int winid = 0, bool iconized = true)
-			{ this(wxIconizeEvent_ctor(winid,iconized)); }
+alias IconizeEvent wxIconizeEvent;
+public class IconizeEvent : Event
+{
+    public this(IntPtr wxobj)
+    {
+        super(wxobj);
+    }
 
-		//-----------------------------------------------------------------------------	
-		
-		public bool Iconized() { return wxIconizeEvent_Iconized(wxobj); }
+    public this(int winid = 0, bool iconized = true)
+    {
+        this(wxIconizeEvent_ctor(winid,iconized));
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public bool Iconized()
+    {
+        return wxIconizeEvent_Iconized(wxobj);
+    }
 
 
-		private static Event New(IntPtr obj) { return new IconizeEvent(obj); }
+    private static Event New(IntPtr obj)
+    {
+        return new IconizeEvent(obj);
+    }
 
-		static this()
-		{
-			AddEventType(wxEVT_ICONIZE,				&IconizeEvent.New);
-		}
-	}
+    static this()
+    {
+        AddEventType(wxEVT_ICONIZE,				&IconizeEvent.New);
+    }
+}
