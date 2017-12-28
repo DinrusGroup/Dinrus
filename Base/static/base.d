@@ -10,7 +10,7 @@ version = Unicode;
 version = ЛитлЭндиан;
 
 int useWfuncs = 1;
-alias useWfuncs __ЮНИКОД__;
+alias useWfuncs ЮНИКОД;
 
 //Константы
 const бул нет = false;

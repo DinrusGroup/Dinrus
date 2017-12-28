@@ -513,50 +513,33 @@ return cast(сим[]) rt.charset.fromMBSz(cast(char*) с, cast(int) кодСтр
 ////////////////////////////////////////////////////////////
 	ткст читайстр()
 	{
+	
+		
+		
 		ткст buf;
 		std.io.readln(cidrus.стдвхо, buf);
 		 return buf;
-		/+
-	бцел  mode, get;
-	ткст input[8];
-	
-	GetConsoleMode( ДайСтдДескр(ПСтд.Ввод), &mode );
-	SetConsoleMode( ДайСтдДескр(ПСтд.Ввод), 0 );
-	ReadConsoleA( ДайСтдДескр(ПСтд.Ввод), input, 1, &get, NULL );
-	SetConsoleMode( ДайСтдДескр(ПСтд.Ввод), mode );
-	return input[0];
-	+/
+		
+	/+
+  DWORD mode, cc;
+  HANDLE h = ДайСтдДескр(ПСтд.Ввод);
+  if (h == NULL) {
+        return "@"; // console not found
+  }
+  GetConsoleMode( h, &mode );
+  SetConsoleMode( h, mode & ~(ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT) );
+  TCHAR c = 0;
+  ReadConsoleW( h, &c, 1, &cc, NULL );
+  SetConsoleMode( h, mode );
+  return c;
++/
 	}
 
 	т_мера читайстр(inout ткст буф)
 	{
-	/+
-		DWORD i = буф.length / 4;
-		const Кф = -1;
-		шим[] ввод = new шим [1024 * 1];
-
-                                   assert (i);
-
-                                   if (i > ввод.length)
-                                       i = ввод.length;
-                                       
-                                   // читай a chunk of wchars из_ the console
-                                   if (! ReadConsoleW (ДайСтдДескр(ПСтд.Ввод), ввод.ptr, i, &i, null))
-                                         exception.ошибка("Неудачное чтение консоли");
-
-                                   // no ввод ~ go home
-                                   if (i is 0)
-                                       return Кф;
-
-                                   // translate в_ utf8, directly преобр_в приёмн
-                                   i = sys.WinFuncs.WideCharToMultiByte (65001, 0, ввод.ptr, i, 
-                                                            cast(PCHAR) буф.ptr, буф.length, null, 0);
-                                   if (i is 0)
-                                       exception.ошибка ("Неудачное преобразование консольного вввода");
-
-                                   return i;
-								   +/
-		return читайстр(cidrus.стдвхо, буф);
+	
+						   
+		return читайстр(cidrus.стдвхо, буф);		
 								   
 	}
 	

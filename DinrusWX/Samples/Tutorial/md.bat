@@ -1,0 +1,3 @@
+dmmake clean
+dmmake
+pause
