@@ -1,1 +1,0 @@
-%DINRUS%\dsss build -full>>build.log

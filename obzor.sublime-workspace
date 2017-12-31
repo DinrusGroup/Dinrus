@@ -8,11 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "DinrusCommon/BaseNoDll/import/col/model/Collection.d",
+			"file": "DinrusGTK/gtkD/atk/Document.d",
 			"settings":
 			{
-				"buffer_size": 1780,
-				"encoding": "UTF-8 with BOM",
+				"buffer_size": 9304,
 				"line_ending": "Unix"
 			}
 		}
@@ -50,15 +49,64 @@
 	"expanded_folders":
 	[
 		"/D/dinrus/dev/DINRUS",
-		"/D/dinrus/dev/DINRUS/BaseDLL",
-		"/D/dinrus/dev/DINRUS/DinrusCommon",
-		"/D/dinrus/dev/DINRUS/DinrusCommon/BaseNoDll",
-		"/D/dinrus/dev/DINRUS/DinrusCommon/BaseNoDll/import",
-		"/D/dinrus/dev/DINRUS/DinrusCommon/BaseNoDll/import/col",
-		"/D/dinrus/dev/DINRUS/DinrusCommon/BaseNoDll/import/col/model"
+		"/D/dinrus/dev/DINRUS/DinrusGTK",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/gtkD",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/gtkD/atk"
 	],
 	"file_history":
 	[
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DND.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DC.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Dialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DirDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Display.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DisplayChangedEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/gtkD/atk/Action.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Document.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/EraseEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Event.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DbGrid.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Clipboard.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/CloseEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Colour.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ColourDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ComboBox.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/CommandEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/common.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Config.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ContextMenuEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Control.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Cursor.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DataFormat.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/DataObject.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/CalendarCtrl.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Caret.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/CheckBox.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ChildFocusEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Choice.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ChoiceDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ClientData.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/BitmapButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/BoxSizer.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Brush.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Button.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ActivateEvent.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/App.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ArrayInt.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ArrayString.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/ArtProvider.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Bitmap.d",
+		"/D/dinrus/dev/DINRUS/Base/Exe/drbuild.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/Accelerator.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/aui/DockArt.d",
+		"/D/dinrus/dev/DINRUS/DinrusWX/import/wxd/aui/FrameManager.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/src/atk/Action.d",
+		"/D/dinrus/dev/DINRUS/DinrusCommon/DinrusCommon.cbp",
+		"/D/dinrus/dev/DINRUS/DinrusConc/DinrusConc.cbp",
+		"/D/dinrus/dev/DINRUS/DinrusDbi/DinrusDbi.cbp",
+		"/D/dinrus/dev/DINRUS/DinrusTango/DinrusTango.cbp",
+		"/D/dinrus/dev/DINRUS/DinrusWin32/DinrusWin32.cbp",
+		"/D/dinrus/dev/DINRUS/postbuild.bat",
 		"/E/LLVM/LDC/ddmd/access.d",
 		"/E/LLVM/LDC/ddmd/aggregate.d",
 		"/E/LLVM/LDC/ddmd/root/aav.d",
@@ -67,7 +115,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -81,6 +129,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"();\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -103,26 +152,25 @@
 			[
 				{
 					"buffer": 0,
-					"file": "DinrusCommon/BaseNoDll/import/col/model/Collection.d",
+					"file": "DinrusGTK/gtkD/atk/Document.d",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1780,
+						"buffer_size": 9304,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								989,
+								989
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/D/D.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -136,7 +184,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -177,7 +225,7 @@
 	"project": "obzor.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -215,7 +263,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 243.0,
+	"side_bar_width": 210.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

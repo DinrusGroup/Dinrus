@@ -13,5 +13,6 @@
 		<Project filename="DinrusDbi/DbiImports.cbp" />
 		<Project filename="DRC/DRC.cbp" />
 		<Project filename="Dsss/Dsss.cbp" />
+		<Project filename="DinrusGTK/DinrusGTK.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
