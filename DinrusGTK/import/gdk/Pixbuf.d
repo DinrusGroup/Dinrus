@@ -1,75 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-Pixbufs.html
- * outPack = gdk
- * outFile = Pixbuf
- * strct   = GdkPixbuf
- * realStrct=
- * ctorStrct=
- * clss    = Pixbuf
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_pixbuf_
- * omit structs:
- * omit prefixes:
- * 	- gdk_pixbuf_ref
- * 	- gdk_pixbuf_unref
- * omit code:
- * 	- gdk_pixbuf_get_from_drawable
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gdkpixbuf.PixbufFormat
- * 	- gtkD.gdk.Drawable
- * 	- gtkD.gdk.Bitmap
- * 	- gtkD.gdk.GC
- * 	- gtkD.gdk.Colormap
- * 	- gtkD.gdk.ImageGdk
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.InputStream
- * structWrap:
- * 	- GCancellable* -> Cancellable
- * 	- GInputStream* -> InputStream
- * 	- GdkBitmap* -> Bitmap
- * 	- GdkColormap* -> Colormap
- * 	- GdkDrawable* -> Drawable
- * 	- GdkGC* -> GC
- * 	- GdkImage* -> ImageGdk
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkPixbufFormat* -> PixbufFormat
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.Pixbuf;
 
@@ -107,30 +35,16 @@ public class Pixbuf
 	protected GdkPixbuf* gdkPixbuf;
 	
 	
-	public GdkPixbuf* getPixbufStruct()
-	{
-		return gdkPixbuf;
-	}
+	public GdkPixbuf* getPixbufStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkPixbuf;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixbuf* gdkPixbuf)
-	{
-		if(gdkPixbuf is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkPixbuf = gdkPixbuf;
-	}
+	public this (GdkPixbuf* gdkPixbuf);
 	
 	/**
 	 * Transfers image data from a GdkDrawable and converts it to an RGB(A)
@@ -189,41 +103,18 @@ public class Pixbuf
 	 *  The same pixbuf as dest if it was non-NULL, or a newly-created
 	 *  pixbuf with a reference count of 1 if no destination pixbuf was specified, or NULL on error
 	 */
-	public static Pixbuf getFromDrawable(Drawable src, Colormap cmap, int srcX, int srcY, int destX, int destY, int width, int height)
-	{
-		// GdkPixbuf* gdk_pixbuf_get_from_drawable (GdkPixbuf *dest,  GdkDrawable *src,  GdkColormap *cmap,  int src_x,  int src_y,  int dest_x,  int dest_y,  int width,  int height);
-		return new Pixbuf( gdk_pixbuf_get_from_drawable(null, (src is null) ? null : src.getDrawableStruct(), (cmap is null) ? null : cmap.getColormapStruct(), srcX, srcY, destX, destY, width, height) );
-	}
+	public static Pixbuf getFromDrawable(Drawable src, Colormap cmap, int srcX, int srcY, int destX, int destY, int width, int height);
 	
 	/**
 	 * SetFromDrawable is different from GetFrom Drawable as it doesn't create a new pixbuf
 	 */
-	public void setFromDrawable(Drawable src, int srcX, int srcY, int width, int height)
-	{
-		gdk_pixbuf_get_from_drawable(
-		gdkPixbuf,	// gdkPixbuf
-		src.getDrawableStruct(),
-		null, // colormap
-		srcX, srcY,
-		0, 0,		// destination x and y
-		width, height);
-	}
+	public void setFromDrawable(Drawable src, int srcX, int srcY, int width, int height);
 	
 	/**
 	 * Creates a new Pixbuf from a drawable.
 	 * this is a simplyfied GetFromDrawable
 	 */
-	this(Drawable src, int srcX, int srcY, int width, int height)
-	{
-		GdkPixbuf* pb = gdk_pixbuf_get_from_drawable(
-		null,	// gdkPixbuf
-		src.getDrawableStruct(),
-		null, // colormap
-		srcX, srcY,
-		0, 0,		// destination x and y
-		width, height);
-		this(pb);
-	}
+	this(Drawable src, int srcX, int srcY, int width, int height);
 	
 	/**
 	 * Saves pixbuf to a new buffer in format type, which is currently "jpeg",
@@ -237,23 +128,7 @@ public class Pixbuf
 	 * Returns: whether an error was set
 	 * Throws: GException on failure.
 	 */
-	public int saveToBufferv(out char[] buffer, string type, string[] optionKeys, string[] optionValues)
-	{
-		gchar* outbuffer = null;
-		uint bufferSize;
-		GError* err = null;
-		
-		// gboolean gdk_pixbuf_save_to_bufferv (GdkPixbuf *pixbuf,  gchar **buffer,  gsize *buffer_size,  const char *type,  char **option_keys,  char **option_values,  GError **error);
-		auto p = gdk_pixbuf_save_to_bufferv(gdkPixbuf, &outbuffer, &bufferSize, Str.toStringz(type), Str.toStringzArray(optionKeys), Str.toStringzArray(optionValues), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		buffer = outbuffer[0 .. bufferSize];
-		return p;
-	}
+	public int saveToBufferv(out char[] buffer, string type, string[] optionKeys, string[] optionValues);
 	
 	/**
 	 * Description
@@ -456,11 +331,7 @@ public class Pixbuf
 	 * alphaThreshold =  Opacity values below this will be painted as zero; all
 	 * other values will be painted as one.
 	 */
-	public void renderThresholdAlpha(Bitmap bitmap, int srcX, int srcY, int destX, int destY, int width, int height, int alphaThreshold)
-	{
-		// void gdk_pixbuf_render_threshold_alpha (GdkPixbuf *pixbuf,  GdkBitmap *bitmap,  int src_x,  int src_y,  int dest_x,  int dest_y,  int width,  int height,  int alpha_threshold);
-		gdk_pixbuf_render_threshold_alpha(gdkPixbuf, (bitmap is null) ? null : bitmap.getBitmapStruct(), srcX, srcY, destX, destY, width, height, alphaThreshold);
-	}
+	public void renderThresholdAlpha(Bitmap bitmap, int srcX, int srcY, int destX, int destY, int width, int height, int alphaThreshold);
 	
 	/**
 	 * Warning
@@ -489,11 +360,7 @@ public class Pixbuf
 	 * xDither =  X offset for dither.
 	 * yDither =  Y offset for dither.
 	 */
-	public void renderToDrawable(Drawable drawable, GC gc, int srcX, int srcY, int destX, int destY, int width, int height, GdkRgbDither dither, int xDither, int yDither)
-	{
-		// void gdk_pixbuf_render_to_drawable (GdkPixbuf *pixbuf,  GdkDrawable *drawable,  GdkGC *gc,  int src_x,  int src_y,  int dest_x,  int dest_y,  int width,  int height,  GdkRgbDither dither,  int x_dither,  int y_dither);
-		gdk_pixbuf_render_to_drawable(gdkPixbuf, (drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), srcX, srcY, destX, destY, width, height, dither, xDither, yDither);
-	}
+	public void renderToDrawable(Drawable drawable, GC gc, int srcX, int srcY, int destX, int destY, int width, int height, GdkRgbDither dither, int xDither, int yDither);
 	
 	/**
 	 * Warning
@@ -518,11 +385,7 @@ public class Pixbuf
 	 * xDither =  X offset for dither.
 	 * yDither =  Y offset for dither.
 	 */
-	public void renderToDrawableAlpha(Drawable drawable, int srcX, int srcY, int destX, int destY, int width, int height, GdkPixbufAlphaMode alphaMode, int alphaThreshold, GdkRgbDither dither, int xDither, int yDither)
-	{
-		// void gdk_pixbuf_render_to_drawable_alpha (GdkPixbuf *pixbuf,  GdkDrawable *drawable,  int src_x,  int src_y,  int dest_x,  int dest_y,  int width,  int height,  GdkPixbufAlphaMode alpha_mode,  int alpha_threshold,  GdkRgbDither dither,  int x_dither,  int y_dither);
-		gdk_pixbuf_render_to_drawable_alpha(gdkPixbuf, (drawable is null) ? null : drawable.getDrawableStruct(), srcX, srcY, destX, destY, width, height, alphaMode, alphaThreshold, dither, xDither, yDither);
-	}
+	public void renderToDrawableAlpha(Drawable drawable, int srcX, int srcY, int destX, int destY, int width, int height, GdkPixbufAlphaMode alphaMode, int alphaThreshold, GdkRgbDither dither, int xDither, int yDither);
 	
 	/**
 	 * Creates a pixmap and a mask bitmap which are returned in the pixmap_return
@@ -543,15 +406,7 @@ public class Pixbuf
 	 *  or NULL if the mask is not needed.
 	 * alphaThreshold =  Threshold value for opacity values.
 	 */
-	public void renderPixmapAndMask(out GdkPixmap* pixmapReturn, out Bitmap maskReturn, int alphaThreshold)
-	{
-		// void gdk_pixbuf_render_pixmap_and_mask (GdkPixbuf *pixbuf,  GdkPixmap **pixmap_return,  GdkBitmap **mask_return,  int alpha_threshold);
-		GdkBitmap* outmaskReturn = null;
-		
-		gdk_pixbuf_render_pixmap_and_mask(gdkPixbuf, &pixmapReturn, &outmaskReturn, alphaThreshold);
-		
-		maskReturn = new Bitmap(outmaskReturn);
-	}
+	public void renderPixmapAndMask(out GdkPixmap* pixmapReturn, out Bitmap maskReturn, int alphaThreshold);
 	
 	/**
 	 * Creates a pixmap and a mask bitmap which are returned in the pixmap_return
@@ -572,15 +427,7 @@ public class Pixbuf
 	 *  or NULL if the mask is not needed.
 	 * alphaThreshold =  Threshold value for opacity values.
 	 */
-	public void renderPixmapAndMaskForColormap(Colormap colormap, out GdkPixmap* pixmapReturn, out Bitmap maskReturn, int alphaThreshold)
-	{
-		// void gdk_pixbuf_render_pixmap_and_mask_for_colormap  (GdkPixbuf *pixbuf,  GdkColormap *colormap,  GdkPixmap **pixmap_return,  GdkBitmap **mask_return,  int alpha_threshold);
-		GdkBitmap* outmaskReturn = null;
-		
-		gdk_pixbuf_render_pixmap_and_mask_for_colormap(gdkPixbuf, (colormap is null) ? null : colormap.getColormapStruct(), &pixmapReturn, &outmaskReturn, alphaThreshold);
-		
-		maskReturn = new Bitmap(outmaskReturn);
-	}
+	public void renderPixmapAndMaskForColormap(Colormap colormap, out GdkPixmap* pixmapReturn, out Bitmap maskReturn, int alphaThreshold);
 	
 	/**
 	 * Same as gdk_pixbuf_get_from_drawable() but gets the pixbuf from
@@ -597,16 +444,7 @@ public class Pixbuf
 	 * height =  Height in pixels of region to get.
 	 * Returns: dest, newly-created pixbuf if dest was NULL, NULL on error
 	 */
-	public Pixbuf getFromImage(ImageGdk src, Colormap cmap, int srcX, int srcY, int destX, int destY, int width, int height)
-	{
-		// GdkPixbuf * gdk_pixbuf_get_from_image (GdkPixbuf *dest,  GdkImage *src,  GdkColormap *cmap,  int src_x,  int src_y,  int dest_x,  int dest_y,  int width,  int height);
-		auto p = gdk_pixbuf_get_from_image(gdkPixbuf, (src is null) ? null : src.getImageGdkStruct(), (cmap is null) ? null : cmap.getColormapStruct(), srcX, srcY, destX, destY, width, height);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getFromImage(ImageGdk src, Colormap cmap, int srcX, int srcY, int destX, int destY, int width, int height);
 	
 	/**
 	 * <hr>
@@ -621,11 +459,7 @@ public class Pixbuf
 	 * you will have to fill it completely yourself.
 	 * Returns: A newly-created GdkPixbuf with a reference count of 1, or NULL if not enough memory could be allocated for the image buffer.
 	 */
-	public static GType getType()
-	{
-		//  GType         gdk_pixbuf_get_type           ();
-		return gdk_pixbuf_get_type();
-	}
+	public static GType getType();
 	
 	/**
 	 * Creates a new GdkPixbuf out of in-memory image data. Currently only RGB
@@ -643,16 +477,7 @@ public class Pixbuf
 	 * destroyFnData =  Closure data to pass to the destroy notification function
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (char* data, GdkColorspace colorspace, int hasAlpha, int bitsPerSample, int width, int height, int rowstride, GdkPixbufDestroyNotify destroyFn, void* destroyFnData)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_data (const guchar *data,  GdkColorspace colorspace,  gboolean has_alpha,  int bits_per_sample,  int width,  int height,  int rowstride,  GdkPixbufDestroyNotify destroy_fn,  gpointer destroy_fn_data);
-		auto p = gdk_pixbuf_new_from_data(data, colorspace, hasAlpha, bitsPerSample, width, height, rowstride, destroyFn, destroyFnData);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_data(data, colorspace, hasAlpha, bitsPerSample, width, height, rowstride, destroyFn, destroyFnData)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (char* data, GdkColorspace colorspace, int hasAlpha, int bitsPerSample, int width, int height, int rowstride, GdkPixbufDestroyNotify destroyFn, void* destroyFnData);
 	
 	/**
 	 * Creates a new pixbuf by parsing XPM data in memory. This data is commonly
@@ -661,16 +486,7 @@ public class Pixbuf
 	 * data =  Pointer to inline XPM data.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string[] data)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_xpm_data (const char **data);
-		auto p = gdk_pixbuf_new_from_xpm_data(Str.toStringzArray(data));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_xpm_data(Str.toStringzArray(data))");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (string[] data);
 	
 	/**
 	 * Create a GdkPixbuf from a flat representation that is suitable for
@@ -687,24 +503,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ubyte[] data, int copyPixels)
-	{
-		// GdkPixbuf* gdk_pixbuf_new_from_inline (gint data_length,  const guint8 *data,  gboolean copy_pixels,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_inline(data.length, data.ptr, copyPixels, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_inline(data.length, data.ptr, copyPixels, &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (ubyte[] data, int copyPixels);
 	
 	/**
 	 * Creates a new pixbuf which represents a sub-region of
@@ -720,113 +519,63 @@ public class Pixbuf
 	 * height =  height of region in src_pixbuf
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int srcX, int srcY, int width, int height)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_subpixbuf (GdkPixbuf *src_pixbuf,  int src_x,  int src_y,  int width,  int height);
-		auto p = gdk_pixbuf_new_subpixbuf(gdkPixbuf, srcX, srcY, width, height);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_subpixbuf(gdkPixbuf, srcX, srcY, width, height)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (int srcX, int srcY, int width, int height);
 	
 	/**
 	 * Creates a new GdkPixbuf with a copy of the information in the specified
 	 * pixbuf.
 	 * Returns: A newly-created pixbuf with a reference count of 1, or NULL ifnot enough memory could be allocated.
 	 */
-	public Pixbuf copy()
-	{
-		// GdkPixbuf * gdk_pixbuf_copy (const GdkPixbuf *pixbuf);
-		auto p = gdk_pixbuf_copy(gdkPixbuf);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf copy();
 	
 	/**
 	 * Queries the color space of a pixbuf.
 	 * Returns: Color space.
 	 */
-	public GdkColorspace getColorspace()
-	{
-		// GdkColorspace gdk_pixbuf_get_colorspace (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_colorspace(gdkPixbuf);
-	}
+	public GdkColorspace getColorspace();
 	
 	/**
 	 * Queries the number of channels of a pixbuf.
 	 * Returns: Number of channels.
 	 */
-	public int getNChannels()
-	{
-		// int gdk_pixbuf_get_n_channels (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_n_channels(gdkPixbuf);
-	}
+	public int getNChannels();
 	
 	/**
 	 * Queries whether a pixbuf has an alpha channel (opacity information).
 	 * Returns: TRUE if it has an alpha channel, FALSE otherwise.
 	 */
-	public int getHasAlpha()
-	{
-		// gboolean gdk_pixbuf_get_has_alpha (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_has_alpha(gdkPixbuf);
-	}
+	public int getHasAlpha();
 	
 	/**
 	 * Queries the number of bits per color sample in a pixbuf.
 	 * Returns: Number of bits per color sample.
 	 */
-	public int getBitsPerSample()
-	{
-		// int gdk_pixbuf_get_bits_per_sample (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_bits_per_sample(gdkPixbuf);
-	}
+	public int getBitsPerSample();
 	
 	/**
 	 * Queries a pointer to the pixel data of a pixbuf.
 	 * Returns: A pointer to the pixbuf's pixel data. Please see the section called “Image Data”for information about how the pixel data is stored inmemory.
 	 */
-	public char* getPixels()
-	{
-		// guchar * gdk_pixbuf_get_pixels (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_pixels(gdkPixbuf);
-	}
+	public char* getPixels();
 	
 	/**
 	 * Queries the width of a pixbuf.
 	 * Returns: Width in pixels.
 	 */
-	public int getWidth()
-	{
-		// int gdk_pixbuf_get_width (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_width(gdkPixbuf);
-	}
+	public int getWidth();
 	
 	/**
 	 * Queries the height of a pixbuf.
 	 * Returns: Height in pixels.
 	 */
-	public int getHeight()
-	{
-		// int gdk_pixbuf_get_height (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_height(gdkPixbuf);
-	}
+	public int getHeight();
 	
 	/**
 	 * Queries the rowstride of a pixbuf, which is the number of bytes between the start of a row
 	 * and the start of the next row.
 	 * Returns: Distance between row starts.
 	 */
-	public int getRowstride()
-	{
-		// int gdk_pixbuf_get_rowstride (const GdkPixbuf *pixbuf);
-		return gdk_pixbuf_get_rowstride(gdkPixbuf);
-	}
+	public int getRowstride();
 	
 	/**
 	 * Looks up key in the list of options that may have been attached to the
@@ -842,11 +591,7 @@ public class Pixbuf
 	 * key =  a nul-terminated string.
 	 * Returns: the value associated with key. This is a nul-terminated string that should not be freed or NULL if key was not found.
 	 */
-	public string getOption(string key)
-	{
-		// const gchar * gdk_pixbuf_get_option (GdkPixbuf *pixbuf,  const gchar *key);
-		return Str.toString(gdk_pixbuf_get_option(gdkPixbuf, Str.toStringz(key)));
-	}
+	public string getOption(string key);
 	
 	/**
 	 * Creates a new pixbuf by loading an image from a file. The file format is
@@ -857,24 +602,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string filename)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_file (const char *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_file(Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_file(Str.toStringz(filename), &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (string filename);
 	
 	/**
 	 * Creates a new pixbuf by loading an image from a file.
@@ -894,24 +622,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string filename, int width, int height)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_file_at_size (const char *filename,  int width,  int height,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_file_at_size(Str.toStringz(filename), width, height, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_file_at_size(Str.toStringz(filename), width, height, &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (string filename, int width, int height);
 	
 	/**
 	 * Creates a new pixbuf by loading an image from a file. The file format is
@@ -934,24 +645,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string filename, int width, int height, int preserveAspectRatio)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_file_at_scale (const char *filename,  int width,  int height,  gboolean preserve_aspect_ratio,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_file_at_scale(Str.toStringz(filename), width, height, preserveAspectRatio, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_file_at_scale(Str.toStringz(filename), width, height, preserveAspectRatio, &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (string filename, int width, int height, int preserveAspectRatio);
 	
 	/**
 	 * Creates a new pixbuf by loading an image from an input stream.
@@ -968,24 +662,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (InputStream stream, Cancellable cancellable)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_stream (GInputStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_stream((stream is null) ? null : stream.getInputStreamStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_stream((stream is null) ? null : stream.getInputStreamStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (InputStream stream, Cancellable cancellable);
 	
 	/**
 	 * Creates a new pixbuf by loading an image from an input stream.
@@ -1011,24 +688,7 @@ public class Pixbuf
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (InputStream stream, int width, int height, int preserveAspectRatio, Cancellable cancellable)
-	{
-		// GdkPixbuf * gdk_pixbuf_new_from_stream_at_scale (GInputStream *stream,  gint width,  gint height,  gboolean preserve_aspect_ratio,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_new_from_stream_at_scale((stream is null) ? null : stream.getInputStreamStruct(), width, height, preserveAspectRatio, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_new_from_stream_at_scale((stream is null) ? null : stream.getInputStreamStruct(), width, height, preserveAspectRatio, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err)");
-		}
-		this(cast(GdkPixbuf*) p);
-	}
+	public this (InputStream stream, int width, int height, int preserveAspectRatio, Cancellable cancellable);
 	
 	/**
 	 * Saves pixbuf to a file in type, which is currently "jpeg", "png", "tiff", "ico" or "bmp".
@@ -1042,20 +702,7 @@ public class Pixbuf
 	 * Returns: whether an error was set
 	 * Throws: GException on failure.
 	 */
-	public int savev(string filename, string type, string[] optionKeys, string[] optionValues)
-	{
-		// gboolean gdk_pixbuf_savev (GdkPixbuf *pixbuf,  const char *filename,  const char *type,  char **option_keys,  char **option_values,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_savev(gdkPixbuf, Str.toStringz(filename), Str.toStringz(type), Str.toStringzArray(optionKeys), Str.toStringzArray(optionValues), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int savev(string filename, string type, string[] optionKeys, string[] optionValues);
 	
 	/**
 	 * Saves pixbuf to a callback in format type, which is currently "jpeg",
@@ -1072,20 +719,7 @@ public class Pixbuf
 	 * Returns: whether an error was set
 	 * Throws: GException on failure.
 	 */
-	public int saveToCallbackv(GdkPixbufSaveFunc saveFunc, void* userData, string type, string[] optionKeys, string[] optionValues)
-	{
-		// gboolean gdk_pixbuf_save_to_callbackv (GdkPixbuf *pixbuf,  GdkPixbufSaveFunc save_func,  gpointer user_data,  const char *type,  char **option_keys,  char **option_values,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_save_to_callbackv(gdkPixbuf, saveFunc, userData, Str.toStringz(type), Str.toStringzArray(optionKeys), Str.toStringzArray(optionValues), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int saveToCallbackv(GdkPixbufSaveFunc saveFunc, void* userData, string type, string[] optionKeys, string[] optionValues);
 	
 	/**
 	 * Create a new GdkPixbuf containing a copy of src scaled to
@@ -1104,16 +738,7 @@ public class Pixbuf
 	 * interpType =  the interpolation type for the transformation.
 	 * Returns: the new GdkPixbuf, or NULL if not enough memory could beallocated for it.
 	 */
-	public Pixbuf scaleSimple(int destWidth, int destHeight, GdkInterpType interpType)
-	{
-		// GdkPixbuf * gdk_pixbuf_scale_simple (const GdkPixbuf *src,  int dest_width,  int dest_height,  GdkInterpType interp_type);
-		auto p = gdk_pixbuf_scale_simple(gdkPixbuf, destWidth, destHeight, interpType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf scaleSimple(int destWidth, int destHeight, GdkInterpType interpType);
 	
 	/**
 	 * Creates a transformation of the source image src by scaling by
@@ -1139,11 +764,7 @@ public class Pixbuf
 	 * scaleY =  the scale factor in the Y direction
 	 * interpType =  the interpolation type for the transformation.
 	 */
-	public void scale(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType)
-	{
-		// void gdk_pixbuf_scale (const GdkPixbuf *src,  GdkPixbuf *dest,  int dest_x,  int dest_y,  int dest_width,  int dest_height,  double offset_x,  double offset_y,  double scale_x,  double scale_y,  GdkInterpType interp_type);
-		gdk_pixbuf_scale(gdkPixbuf, (dest is null) ? null : dest.getPixbufStruct(), destX, destY, destWidth, destHeight, offsetX, offsetY, scaleX, scaleY, interpType);
-	}
+	public void scale(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType);
 	
 	/**
 	 * Creates a new GdkPixbuf by scaling src to dest_width x
@@ -1159,16 +780,7 @@ public class Pixbuf
 	 * color2 =  the color of the other check
 	 * Returns: the new GdkPixbuf, or NULL if not enough memory could beallocated for it.
 	 */
-	public Pixbuf compositeColorSimple(int destWidth, int destHeight, GdkInterpType interpType, int overallAlpha, int checkSize, uint color1, uint color2)
-	{
-		// GdkPixbuf * gdk_pixbuf_composite_color_simple (const GdkPixbuf *src,  int dest_width,  int dest_height,  GdkInterpType interp_type,  int overall_alpha,  int check_size,  guint32 color1,  guint32 color2);
-		auto p = gdk_pixbuf_composite_color_simple(gdkPixbuf, destWidth, destHeight, interpType, overallAlpha, checkSize, color1, color2);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf compositeColorSimple(int destWidth, int destHeight, GdkInterpType interpType, int overallAlpha, int checkSize, uint color1, uint color2);
 	
 	/**
 	 * Creates a transformation of the source image src by scaling by
@@ -1194,11 +806,7 @@ public class Pixbuf
 	 * interpType =  the interpolation type for the transformation.
 	 * overallAlpha =  overall alpha for source image (0..255)
 	 */
-	public void composite(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType, int overallAlpha)
-	{
-		// void gdk_pixbuf_composite (const GdkPixbuf *src,  GdkPixbuf *dest,  int dest_x,  int dest_y,  int dest_width,  int dest_height,  double offset_x,  double offset_y,  double scale_x,  double scale_y,  GdkInterpType interp_type,  int overall_alpha);
-		gdk_pixbuf_composite(gdkPixbuf, (dest is null) ? null : dest.getPixbufStruct(), destX, destY, destWidth, destHeight, offsetX, offsetY, scaleX, scaleY, interpType, overallAlpha);
-	}
+	public void composite(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType, int overallAlpha);
 	
 	/**
 	 * Creates a transformation of the source image src by scaling by
@@ -1227,11 +835,7 @@ public class Pixbuf
 	 * color1 =  the color of check at upper left
 	 * color2 =  the color of the other check
 	 */
-	public void compositeColor(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType, int overallAlpha, int checkX, int checkY, int checkSize, uint color1, uint color2)
-	{
-		// void gdk_pixbuf_composite_color (const GdkPixbuf *src,  GdkPixbuf *dest,  int dest_x,  int dest_y,  int dest_width,  int dest_height,  double offset_x,  double offset_y,  double scale_x,  double scale_y,  GdkInterpType interp_type,  int overall_alpha,  int check_x,  int check_y,  int check_size,  guint32 color1,  guint32 color2);
-		gdk_pixbuf_composite_color(gdkPixbuf, (dest is null) ? null : dest.getPixbufStruct(), destX, destY, destWidth, destHeight, offsetX, offsetY, scaleX, scaleY, interpType, overallAlpha, checkX, checkY, checkSize, color1, color2);
-	}
+	public void compositeColor(Pixbuf dest, int destX, int destY, int destWidth, int destHeight, double offsetX, double offsetY, double scaleX, double scaleY, GdkInterpType interpType, int overallAlpha, int checkX, int checkY, int checkSize, uint color1, uint color2);
 	
 	/**
 	 * Rotates a pixbuf by a multiple of 90 degrees, and returns the
@@ -1241,16 +845,7 @@ public class Pixbuf
 	 * angle =  the angle to rotate by
 	 * Returns: the new GdkPixbuf, or NULL if not enough memory could beallocated for it.
 	 */
-	public Pixbuf rotateSimple(GdkPixbufRotation angle)
-	{
-		// GdkPixbuf * gdk_pixbuf_rotate_simple (const GdkPixbuf *src,  GdkPixbufRotation angle);
-		auto p = gdk_pixbuf_rotate_simple(gdkPixbuf, angle);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf rotateSimple(GdkPixbufRotation angle);
 	
 	/**
 	 * Flips a pixbuf horizontally or vertically and returns the
@@ -1260,16 +855,7 @@ public class Pixbuf
 	 * horizontal =  TRUE to flip horizontally, FALSE to flip vertically
 	 * Returns: the new GdkPixbuf, or NULL if not enough memory could beallocated for it.
 	 */
-	public Pixbuf flip(int horizontal)
-	{
-		// GdkPixbuf * gdk_pixbuf_flip (const GdkPixbuf *src,  gboolean horizontal);
-		auto p = gdk_pixbuf_flip(gdkPixbuf, horizontal);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf flip(int horizontal);
 	
 	/**
 	 * Takes an existing pixbuf and adds an alpha channel to it.
@@ -1287,16 +873,7 @@ public class Pixbuf
 	 * b =  Blue value to substitute.
 	 * Returns: A newly-created pixbuf with a reference count of 1.
 	 */
-	public Pixbuf addAlpha(int substituteColor, char r, char g, char b)
-	{
-		// GdkPixbuf * gdk_pixbuf_add_alpha (const GdkPixbuf *pixbuf,  gboolean substitute_color,  guchar r,  guchar g,  guchar b);
-		auto p = gdk_pixbuf_add_alpha(gdkPixbuf, substituteColor, r, g, b);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf addAlpha(int substituteColor, char r, char g, char b);
 	
 	/**
 	 * Copies a rectangular area from src_pixbuf to dest_pixbuf. Conversion of
@@ -1313,11 +890,7 @@ public class Pixbuf
 	 * destX =  X coordinate within dest_pixbuf.
 	 * destY =  Y coordinate within dest_pixbuf.
 	 */
-	public void copyArea(int srcX, int srcY, int width, int height, Pixbuf destPixbuf, int destX, int destY)
-	{
-		// void gdk_pixbuf_copy_area (const GdkPixbuf *src_pixbuf,  int src_x,  int src_y,  int width,  int height,  GdkPixbuf *dest_pixbuf,  int dest_x,  int dest_y);
-		gdk_pixbuf_copy_area(gdkPixbuf, srcX, srcY, width, height, (destPixbuf is null) ? null : destPixbuf.getPixbufStruct(), destX, destY);
-	}
+	public void copyArea(int srcX, int srcY, int width, int height, Pixbuf destPixbuf, int destX, int destY);
 	
 	/**
 	 * Modifies saturation and optionally pixelates src, placing the result in
@@ -1333,11 +906,7 @@ public class Pixbuf
 	 * saturation =  saturation factor
 	 * pixelate =  whether to pixelate
 	 */
-	public void saturateAndPixelate(Pixbuf dest, float saturation, int pixelate)
-	{
-		// void gdk_pixbuf_saturate_and_pixelate (const GdkPixbuf *src,  GdkPixbuf *dest,  gfloat saturation,  gboolean pixelate);
-		gdk_pixbuf_saturate_and_pixelate(gdkPixbuf, (dest is null) ? null : dest.getPixbufStruct(), saturation, pixelate);
-	}
+	public void saturateAndPixelate(Pixbuf dest, float saturation, int pixelate);
 	
 	/**
 	 * Takes an existing pixbuf and checks for the presence of an
@@ -1351,16 +920,7 @@ public class Pixbuf
 	 * Since 2.12
 	 * Returns: A newly-created pixbuf, or a reference to theinput pixbuf (with an increased reference count).
 	 */
-	public Pixbuf applyEmbeddedOrientation()
-	{
-		// GdkPixbuf * gdk_pixbuf_apply_embedded_orientation  (GdkPixbuf *src);
-		auto p = gdk_pixbuf_apply_embedded_orientation(gdkPixbuf);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf applyEmbeddedOrientation();
 	
 	/**
 	 * Clears a pixbuf to the given RGBA value, converting the RGBA value into
@@ -1370,9 +930,5 @@ public class Pixbuf
 	 * pixel =  RGBA pixel to clear to
 	 *  (0xffffffff is opaque white, 0x00000000 transparent black)
 	 */
-	public void fill(uint pixel)
-	{
-		// void gdk_pixbuf_fill (GdkPixbuf *pixbuf,  guint32 pixel);
-		gdk_pixbuf_fill(gdkPixbuf, pixel);
-	}
+	public void fill(uint pixel);
 }

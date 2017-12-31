@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GIOStream.html
- * outPack = gio
- * outFile = IOStream
- * strct   = GIOStream
- * realStrct=
- * ctorStrct=
- * clss    = IOStream
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_io_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.InputStream
- * 	- gtkD.gio.OutputStream
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GInputStream* -> InputStream
- * 	- GOutputStream* -> OutputStream
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.IOStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -107,38 +47,16 @@ public class IOStream : ObjectG
 	protected GIOStream* gIOStream;
 	
 	
-	public GIOStream* getIOStreamStruct()
-	{
-		return gIOStream;
-	}
+	public GIOStream* getIOStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gIOStream;
-	}
+	protected override void* getStruct;
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GIOStream* gIOStream)
-	{
-		if(gIOStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gIOStream);
-		if( ptr !is null )
-		{
-			this = cast(IOStream)ptr;
-			return;
-		}
-		super(cast(GObject*)gIOStream);
-		this.gIOStream = gIOStream;
-	}
+	public this (GIOStream* gIOStream);
 	
 	/**
 	 */
@@ -149,16 +67,7 @@ public class IOStream : ObjectG
 	 * Since 2.22
 	 * Returns: a GInputStream, owned by the GIOStream. Do not free.
 	 */
-	public InputStream getInputStream()
-	{
-		// GInputStream * g_io_stream_get_input_stream (GIOStream *stream);
-		auto p = g_io_stream_get_input_stream(gIOStream);
-		if(p is null)
-		{
-			return null;
-		}
-		return new InputStream(cast(GInputStream*) p);
-	}
+	public InputStream getInputStream();
 	
 	/**
 	 * Gets the output stream for this object. This is used for
@@ -166,16 +75,7 @@ public class IOStream : ObjectG
 	 * Since 2.22
 	 * Returns: a GOutputStream, owned by the GIOStream. Do not free.
 	 */
-	public OutputStream getOutputStream()
-	{
-		// GOutputStream * g_io_stream_get_output_stream (GIOStream *stream);
-		auto p = g_io_stream_get_output_stream(gIOStream);
-		if(p is null)
-		{
-			return null;
-		}
-		return new OutputStream(cast(GOutputStream*) p);
-	}
+	public OutputStream getOutputStream();
 	
 	/**
 	 * Closes the stream, releasing resources related to it. This will also
@@ -210,20 +110,7 @@ public class IOStream : ObjectG
 	 * Returns: TRUE on success, FALSE on failure
 	 * Throws: GException on failure.
 	 */
-	public int close(Cancellable cancellable)
-	{
-		// gboolean g_io_stream_close (GIOStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_close(gIOStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close(Cancellable cancellable);
 	
 	/**
 	 * Requests an asynchronous close of the stream, releasing resources
@@ -241,11 +128,7 @@ public class IOStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_io_stream_close_async (GIOStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_io_stream_close_async(gIOStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Closes a stream.
@@ -255,42 +138,21 @@ public class IOStream : ObjectG
 	 * Returns: TRUE if stream was successfully closed, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int closeFinish(AsyncResultIF result)
-	{
-		// gboolean g_io_stream_close_finish (GIOStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_close_finish(gIOStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int closeFinish(AsyncResultIF result);
 	
 	/**
 	 * Checks if a stream is closed.
 	 * Since 2.22
 	 * Returns: TRUE if the stream is closed.
 	 */
-	public int isClosed()
-	{
-		// gboolean g_io_stream_is_closed (GIOStream *stream);
-		return g_io_stream_is_closed(gIOStream);
-	}
+	public int isClosed();
 	
 	/**
 	 * Checks if a stream has pending actions.
 	 * Since 2.22
 	 * Returns: TRUE if stream has pending actions.
 	 */
-	public int hasPending()
-	{
-		// gboolean g_io_stream_has_pending (GIOStream *stream);
-		return g_io_stream_has_pending(gIOStream);
-	}
+	public int hasPending();
 	
 	/**
 	 * Sets stream to have actions pending. If the pending flag is
@@ -300,28 +162,11 @@ public class IOStream : ObjectG
 	 * Returns: TRUE if pending was previously unset and is now set.
 	 * Throws: GException on failure.
 	 */
-	public int setPending()
-	{
-		// gboolean g_io_stream_set_pending (GIOStream *stream,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_set_pending(gIOStream, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setPending();
 	
 	/**
 	 * Clears the pending flag on stream.
 	 * Since 2.22
 	 */
-	public void clearPending()
-	{
-		// void g_io_stream_clear_pending (GIOStream *stream);
-		g_io_stream_clear_pending(gIOStream);
-	}
+	public void clearPending();
 }

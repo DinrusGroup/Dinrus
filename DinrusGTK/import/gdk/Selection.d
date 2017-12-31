@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-Selections.html
- * outPack = gdk
- * outFile = Selection
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Selection
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_selection_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Window
- * 	- gtkD.gdk.Display
- * structWrap:
- * 	- GdkDisplay* -> Display
- * 	- GdkWindow* -> Window
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.Selection;
 
@@ -120,11 +67,7 @@ public class Selection
 	 *  will be sent a SelectionClear event.
 	 * Returns:%TRUE if the selection owner was successfully changed to owner, otherwise FALSE.
 	 */
-	public static int ownerSet(Window owner, GdkAtom selection, uint time, int sendEvent)
-	{
-		// gboolean gdk_selection_owner_set (GdkWindow *owner,  GdkAtom selection,  guint32 time_,  gboolean send_event);
-		return gdk_selection_owner_set((owner is null) ? null : owner.getWindowStruct(), selection, time, sendEvent);
-	}
+	public static int ownerSet(Window owner, GdkAtom selection, uint time, int sendEvent);
 	
 	/**
 	 * Sets the GdkWindow owner as the current owner of the selection selection.
@@ -141,11 +84,7 @@ public class Selection
 	 *  owner, the current owner will be sent a SelectionClear event.
 	 * Returns: TRUE if the selection owner was successfully changed to owner, otherwise FALSE.
 	 */
-	public static int ownerSetForDisplay(Display display, Window owner, GdkAtom selection, uint time, int sendEvent)
-	{
-		// gboolean gdk_selection_owner_set_for_display (GdkDisplay *display,  GdkWindow *owner,  GdkAtom selection,  guint32 time_,  gboolean send_event);
-		return gdk_selection_owner_set_for_display((display is null) ? null : display.getDisplayStruct(), (owner is null) ? null : owner.getWindowStruct(), selection, time, sendEvent);
-	}
+	public static int ownerSetForDisplay(Display display, Window owner, GdkAtom selection, uint time, int sendEvent);
 	
 	/**
 	 * Determines the owner of the given selection.
@@ -153,16 +92,7 @@ public class Selection
 	 * selection = an atom indentifying a selection.
 	 * Returns:if there is a selection owner for this window, and it is a window known to the current process, the GdkWindow that owns the selection, otherwise NULL. Note that the return value may be owned by a different process if a foreign window was previously created for that window, but a new foreign window will never be created by this call.
 	 */
-	public static Window ownerGet(GdkAtom selection)
-	{
-		// GdkWindow* gdk_selection_owner_get (GdkAtom selection);
-		auto p = gdk_selection_owner_get(selection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Window(cast(GdkWindow*) p);
-	}
+	public static Window ownerGet(GdkAtom selection);
 	
 	/**
 	 * Determine the owner of the given selection.
@@ -175,16 +105,7 @@ public class Selection
 	 * selection =  an atom indentifying a selection.
 	 * Returns: if there is a selection owner for this window, and it is a  window known to the current process, the GdkWindow that owns the  selection, otherwise NULL.
 	 */
-	public static Window ownerGetForDisplay(Display display, GdkAtom selection)
-	{
-		// GdkWindow * gdk_selection_owner_get_for_display (GdkDisplay *display,  GdkAtom selection);
-		auto p = gdk_selection_owner_get_for_display((display is null) ? null : display.getDisplayStruct(), selection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Window(cast(GdkWindow*) p);
-	}
+	public static Window ownerGetForDisplay(Display display, GdkAtom selection);
 	
 	/**
 	 * Retrieves the contents of a selection in a given
@@ -199,11 +120,7 @@ public class Selection
 	 *  request if it did not own the selection at
 	 *  the time indicated by the timestamp.
 	 */
-	public static void convert(Window requestor, GdkAtom selection, GdkAtom target, uint time)
-	{
-		// void gdk_selection_convert (GdkWindow *requestor,  GdkAtom selection,  GdkAtom target,  guint32 time_);
-		gdk_selection_convert((requestor is null) ? null : requestor.getWindowStruct(), selection, target, time);
-	}
+	public static void convert(Window requestor, GdkAtom selection, GdkAtom target, uint time);
 	
 	/**
 	 * Retrieves selection data that was stored by the selection
@@ -223,11 +140,7 @@ public class Selection
 	 * propFormat =  location to store the format of the property.
 	 * Returns: the length of the retrieved data.
 	 */
-	public static int propertyGet(Window requestor, char** data, GdkAtom* propType, int* propFormat)
-	{
-		// gint gdk_selection_property_get (GdkWindow *requestor,  guchar **data,  GdkAtom *prop_type,  gint *prop_format);
-		return gdk_selection_property_get((requestor is null) ? null : requestor.getWindowStruct(), data, propType, propFormat);
-	}
+	public static int propertyGet(Window requestor, char** data, GdkAtom* propType, int* propFormat);
 	
 	/**
 	 * Sends a response to SelectionRequest event.
@@ -240,11 +153,7 @@ public class Selection
 	 *  was rejected.
 	 * time = timestamp.
 	 */
-	public static void sendNotify(GdkNativeWindow requestor, GdkAtom selection, GdkAtom target, GdkAtom property, uint time)
-	{
-		// void gdk_selection_send_notify (GdkNativeWindow requestor,  GdkAtom selection,  GdkAtom target,  GdkAtom property,  guint32 time_);
-		gdk_selection_send_notify(requestor, selection, target, property, time);
-	}
+	public static void sendNotify(GdkNativeWindow requestor, GdkAtom selection, GdkAtom target, GdkAtom property, uint time);
 	
 	/**
 	 * Send a response to SelectionRequest event.
@@ -258,9 +167,5 @@ public class Selection
 	 *  or GDK_NONE to indicate that the request was rejected.
 	 * time =  timestamp.
 	 */
-	public static void sendNotifyForDisplay(Display display, GdkNativeWindow requestor, GdkAtom selection, GdkAtom target, GdkAtom property, uint time)
-	{
-		// void gdk_selection_send_notify_for_display  (GdkDisplay *display,  GdkNativeWindow requestor,  GdkAtom selection,  GdkAtom target,  GdkAtom property,  guint32 time_);
-		gdk_selection_send_notify_for_display((display is null) ? null : display.getDisplayStruct(), requestor, selection, target, property, time);
-	}
+	public static void sendNotifyForDisplay(Display display, GdkNativeWindow requestor, GdkAtom selection, GdkAtom target, GdkAtom property, uint time);
 }

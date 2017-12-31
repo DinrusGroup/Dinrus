@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocketConnection.html
- * outPack = gio
- * outFile = SocketConnection
- * strct   = GSocketConnection
- * realStrct=
- * ctorStrct=
- * clss    = SocketConnection
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_connection_
- * omit structs:
- * omit prefixes:
- * 	- g_tcp_connection_
- * 	- g_unix_connection_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.Socket
- * 	- gtkD.gio.SocketAddress
- * structWrap:
- * 	- GSocket* -> Socket
- * 	- GSocketAddress* -> SocketAddress
- * 	- GSocketConnection* -> SocketConnection
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.SocketConnection;
 
 public  import gtkD.gtkc.giotypes;
@@ -94,38 +35,16 @@ public class SocketConnection : IOStream
 	protected GSocketConnection* gSocketConnection;
 	
 	
-	public GSocketConnection* getSocketConnectionStruct()
-	{
-		return gSocketConnection;
-	}
+	public GSocketConnection* getSocketConnectionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocketConnection;
-	}
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketConnection* gSocketConnection)
-	{
-		if(gSocketConnection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocketConnection);
-		if( ptr !is null )
-		{
-			this = cast(SocketConnection)ptr;
-			return;
-		}
-		super(cast(GIOStream*)gSocketConnection);
-		this.gSocketConnection = gSocketConnection;
-	}
+	public this (GSocketConnection* gSocketConnection);
 	
 	/**
 	 */
@@ -136,24 +55,7 @@ public class SocketConnection : IOStream
 	 * Returns: a GSocketAddress or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress getLocalAddress()
-	{
-		// GSocketAddress * g_socket_connection_get_local_address  (GSocketConnection *connection,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_connection_get_local_address(gSocketConnection, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress getLocalAddress();
 	
 	/**
 	 * Try to get the remote address of a socket connection.
@@ -161,24 +63,7 @@ public class SocketConnection : IOStream
 	 * Returns: a GSocketAddress or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress getRemoteAddress()
-	{
-		// GSocketAddress * g_socket_connection_get_remote_address  (GSocketConnection *connection,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_connection_get_remote_address(gSocketConnection, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress getRemoteAddress();
 	
 	/**
 	 * Gets the underlying GSocket object of the connection.
@@ -187,16 +72,7 @@ public class SocketConnection : IOStream
 	 * Since 2.22
 	 * Returns: a GSocketAddress or NULL on error.
 	 */
-	public Socket getSocket()
-	{
-		// GSocket * g_socket_connection_get_socket (GSocketConnection *connection);
-		auto p = g_socket_connection_get_socket(gSocketConnection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Socket(cast(GSocket*) p);
-	}
+	public Socket getSocket();
 	
 	/**
 	 * Creates a GSocketConnection subclass of the right type for
@@ -206,16 +82,7 @@ public class SocketConnection : IOStream
 	 * socket =  a GSocket
 	 * Returns: a GSocketConnection
 	 */
-	public static SocketConnection factoryCreateConnection(Socket socket)
-	{
-		// GSocketConnection * g_socket_connection_factory_create_connection  (GSocket *socket);
-		auto p = g_socket_connection_factory_create_connection((socket is null) ? null : socket.getSocketStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public static SocketConnection factoryCreateConnection(Socket socket);
 	
 	/**
 	 * Looks up the GType to be used when creating socket connections on
@@ -228,11 +95,7 @@ public class SocketConnection : IOStream
 	 * protocolId =  a protocol id
 	 * Returns: a GType
 	 */
-	public static GType factoryLookupType(GSocketFamily family, GSocketType type, int protocolId)
-	{
-		// GType g_socket_connection_factory_lookup_type  (GSocketFamily family,  GSocketType type,  gint protocol_id);
-		return g_socket_connection_factory_lookup_type(family, type, protocolId);
-	}
+	public static GType factoryLookupType(GSocketFamily family, GSocketType type, int protocolId);
 	
 	/**
 	 * Looks up the GType to be used when creating socket connections on
@@ -245,9 +108,5 @@ public class SocketConnection : IOStream
 	 * type =  a GSocketType
 	 * protocol =  a protocol id
 	 */
-	public static void factoryRegisterType(GType gType, GSocketFamily family, GSocketType type, int protocol)
-	{
-		// void g_socket_connection_factory_register_type  (GType g_type,  GSocketFamily family,  GSocketType type,  gint protocol);
-		g_socket_connection_factory_register_type(gType, family, type, protocol);
-	}
+	public static void factoryRegisterType(GType gType, GSocketFamily family, GSocketType type, int protocol);
 }

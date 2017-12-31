@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GFileIOStream.html
- * outPack = gio
- * outFile = FileIOStream
- * strct   = GFileIOStream
- * realStrct=
- * ctorStrct=
- * clss    = FileIOStream
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- SeekableIF
- * prefixes:
- * 	- g_file_io_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.FileInfo
- * 	- gtkD.gio.SeekableT
- * 	- gtkD.gio.SeekableIF
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GFileInfo* -> FileInfo
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.FileIOStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -107,38 +45,16 @@ public class FileIOStream : IOStream, SeekableIF
 	protected GFileIOStream* gFileIOStream;
 	
 	
-	public GFileIOStream* getFileIOStreamStruct()
-	{
-		return gFileIOStream;
-	}
+	public GFileIOStream* getFileIOStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gFileIOStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GFileIOStream* gFileIOStream)
-	{
-		if(gFileIOStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gFileIOStream);
-		if( ptr !is null )
-		{
-			this = cast(FileIOStream)ptr;
-			return;
-		}
-		super(cast(GIOStream*)gFileIOStream);
-		this.gFileIOStream = gFileIOStream;
-	}
+	public this (GFileIOStream* gFileIOStream);
 	
 	// add the Seekable capabilities
 	mixin SeekableT!(GFileIOStream);
@@ -153,11 +69,7 @@ public class FileIOStream : IOStream, SeekableIF
 	 * Since 2.22
 	 * Returns: the entity tag for the stream.
 	 */
-	public string getEtag()
-	{
-		// char * g_file_io_stream_get_etag (GFileIOStream *stream);
-		return Str.toString(g_file_io_stream_get_etag(gFileIOStream));
-	}
+	public string getEtag();
 	
 	/**
 	 * Queries a file io stream for the given attributes.
@@ -182,24 +94,7 @@ public class FileIOStream : IOStream, SeekableIF
 	 * Returns: a GFileInfo for the stream, or NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryInfo(string attributes, Cancellable cancellable)
-	{
-		// GFileInfo * g_file_io_stream_query_info (GFileIOStream *stream,  const char *attributes,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_io_stream_query_info(gFileIOStream, Str.toStringz(attributes), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryInfo(string attributes, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously queries the stream for a GFileInfo. When completed,
@@ -216,11 +111,7 @@ public class FileIOStream : IOStream, SeekableIF
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void queryInfoAsync(string attributes, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_io_stream_query_info_async (GFileIOStream *stream,  const char *attributes,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_io_stream_query_info_async(gFileIOStream, Str.toStringz(attributes), ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void queryInfoAsync(string attributes, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finalizes the asynchronous query started
@@ -231,22 +122,5 @@ public class FileIOStream : IOStream, SeekableIF
 	 * Returns: A GFileInfo for the finished query.
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryInfoFinish(AsyncResultIF result)
-	{
-		// GFileInfo * g_file_io_stream_query_info_finish (GFileIOStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_io_stream_query_info_finish(gFileIOStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryInfoFinish(AsyncResultIF result);
 }

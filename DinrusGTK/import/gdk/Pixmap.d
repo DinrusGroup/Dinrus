@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-Bitmaps-and-Pixmaps.html
- * outPack = gdk
- * outFile = Pixmap
- * strct   = GdkPixmap
- * realStrct=
- * ctorStrct=
- * clss    = Pixmap
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_pixmap_
- * omit structs:
- * omit prefixes:
- * 	- gdk_bitmap_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Drawable
- * 	- gtkD.gdk.Color
- * 	- gtkD.gdk.Bitmap
- * 	- gtkD.gdk.Colormap
- * structWrap:
- * 	- GdkBitmap* -> Bitmap
- * 	- GdkColor* -> Color
- * 	- GdkColormap* -> Colormap
- * 	- GdkDrawable* -> Drawable
- * 	- GdkPixmap* -> Pixmap
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gdk.Pixmap;
 
 public  import gtkD.gtkc.gdktypes;
@@ -93,38 +32,16 @@ public class Pixmap : Drawable
 	protected GdkPixmap* gdkPixmap;
 	
 	
-	public GdkPixmap* getPixmapStruct()
-	{
-		return gdkPixmap;
-	}
+	public GdkPixmap* getPixmapStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkPixmap;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixmap* gdkPixmap)
-	{
-		if(gdkPixmap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkPixmap);
-		if( ptr !is null )
-		{
-			this = cast(Pixmap)ptr;
-			return;
-		}
-		super(cast(GdkDrawable*)gdkPixmap);
-		this.gdkPixmap = gdkPixmap;
-	}
+	public this (GdkPixmap* gdkPixmap);
 	
 	/**
 	 */
@@ -141,16 +58,7 @@ public class Pixmap : Drawable
 	 *  pixmap will be equal to that of drawable.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Drawable drawable, int width, int height, int depth)
-	{
-		// GdkPixmap* gdk_pixmap_new (GdkDrawable *drawable,  gint width,  gint height,  gint depth);
-		auto p = gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth)");
-		}
-		this(cast(GdkPixmap*) p);
-	}
+	public this (Drawable drawable, int width, int height, int depth);
 	
 	/**
 	 * Create a two-color pixmap from data in XBM data.
@@ -165,16 +73,7 @@ public class Pixmap : Drawable
 	 * bg = the background color.
 	 * Returns:the GdkPixmap
 	 */
-	public static Pixmap createFromData(Drawable drawable, string data, int width, int height, int depth, Color fg, Color bg)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_data (GdkDrawable *drawable,  const gchar *data,  gint width,  gint height,  gint depth,  const GdkColor *fg,  const GdkColor *bg);
-		auto p = gdk_pixmap_create_from_data((drawable is null) ? null : drawable.getDrawableStruct(), Str.toStringz(data), width, height, depth, (fg is null) ? null : fg.getColorStruct(), (bg is null) ? null : bg.getColorStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+	public static Pixmap createFromData(Drawable drawable, string data, int width, int height, int depth, Color fg, Color bg);
 	
 	/**
 	 * Create a pixmap from a XPM file.
@@ -190,20 +89,7 @@ public class Pixmap : Drawable
 	 * filename = the filename of a file containing XPM data.
 	 * Returns:the GdkPixmap
 	 */
-	public static Pixmap createFromXpm(Drawable drawable, out Bitmap mask, Color transparentColor, string filename)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_xpm (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+	public static Pixmap createFromXpm(Drawable drawable, out Bitmap mask, Color transparentColor, string filename);
 	
 	/**
 	 * Create a pixmap from a XPM file using a particular colormap.
@@ -221,20 +107,7 @@ public class Pixmap : Drawable
 	 * filename = the filename of a file containing XPM data.
 	 * Returns:the GdkPixmap.
 	 */
-	public static Pixmap colormapCreateFromXpm(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string filename)
-	{
-		// GdkPixmap* gdk_pixmap_colormap_create_from_xpm (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_colormap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+	public static Pixmap colormapCreateFromXpm(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string filename);
 	
 	/**
 	 * Create a pixmap from data in XPM format.
@@ -250,20 +123,7 @@ public class Pixmap : Drawable
 	 * data = Pointer to a string containing the XPM data.
 	 * Returns:the GdkPixmap
 	 */
-	public static Pixmap createFromXpmD(Drawable drawable, out Bitmap mask, Color transparentColor, string[] data)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_xpm_d (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+	public static Pixmap createFromXpmD(Drawable drawable, out Bitmap mask, Color transparentColor, string[] data);
 	
 	/**
 	 * Create a pixmap from data in XPM format using a particular
@@ -282,18 +142,5 @@ public class Pixmap : Drawable
 	 * data = Pointer to a string containing the XPM data.
 	 * Returns:the GdkPixmap.
 	 */
-	public static Pixmap colormapCreateFromXpmD(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string[] data)
-	{
-		// GdkPixmap* gdk_pixmap_colormap_create_from_xpm_d  (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_colormap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+	public static Pixmap colormapCreateFromXpmD(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string[] data);
 }

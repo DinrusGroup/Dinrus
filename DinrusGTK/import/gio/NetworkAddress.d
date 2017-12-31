@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GNetworkAddress.html
- * outPack = gio
- * outFile = NetworkAddress
- * strct   = GNetworkAddress
- * realStrct=
- * ctorStrct=GSocketConnectable
- * clss    = NetworkAddress
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- SocketConnectableIF
- * prefixes:
- * 	- g_network_address_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- g_network_address_parse
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.SocketConnectableIF
- * 	- gtkD.gio.SocketConnectableT
- * structWrap:
- * 	- GSocketConnectable* -> SocketConnectableIF
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.NetworkAddress;
 
 public  import gtkD.gtkc.giotypes;
@@ -89,38 +31,16 @@ public class NetworkAddress : ObjectG, SocketConnectableIF
 	protected GNetworkAddress* gNetworkAddress;
 	
 	
-	public GNetworkAddress* getNetworkAddressStruct()
-	{
-		return gNetworkAddress;
-	}
+	public GNetworkAddress* getNetworkAddressStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gNetworkAddress;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GNetworkAddress* gNetworkAddress)
-	{
-		if(gNetworkAddress is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gNetworkAddress);
-		if( ptr !is null )
-		{
-			this = cast(NetworkAddress)ptr;
-			return;
-		}
-		super(cast(GObject*)gNetworkAddress);
-		this.gNetworkAddress = gNetworkAddress;
-	}
+	public this (GNetworkAddress* gNetworkAddress);
 	
 	// add the SocketConnectable capabilities
 	mixin SocketConnectableT!(GNetworkAddress);
@@ -147,24 +67,7 @@ public class NetworkAddress : ObjectG, SocketConnectableIF
 	 * Returns: the new GNetworkAddress, or NULL on error
 	 * Throws: GException on failure.
 	 */
-	public static SocketConnectableIF parse(string hostAndPort, ushort defaultPort)
-	{
-		// GSocketConnectable * g_network_address_parse (const gchar *host_and_port,  guint16 default_port,  GError **error);
-		GError* err = null;
-		
-		auto p = g_network_address_parse(Str.toStringz(hostAndPort), defaultPort, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new NetworkAddress(cast(GNetworkAddress*) p);
-	}
+	public static SocketConnectableIF parse(string hostAndPort, ushort defaultPort);
 	
 	/**
 	 */
@@ -178,16 +81,7 @@ public class NetworkAddress : ObjectG, SocketConnectableIF
 	 * port =  the port
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string hostname, ushort port)
-	{
-		// GSocketConnectable * g_network_address_new (const gchar *hostname,  guint16 port);
-		auto p = g_network_address_new(Str.toStringz(hostname), port);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_network_address_new(Str.toStringz(hostname), port)");
-		}
-		this(cast(GNetworkAddress*) p);
-	}
+	public this (string hostname, ushort port);
 	
 	/**
 	 * Gets addr's hostname. This might be either UTF-8 or ASCII-encoded,
@@ -195,20 +89,12 @@ public class NetworkAddress : ObjectG, SocketConnectableIF
 	 * Since 2.22
 	 * Returns: addr's hostname
 	 */
-	public string getHostname()
-	{
-		// const gchar * g_network_address_get_hostname (GNetworkAddress *addr);
-		return Str.toString(g_network_address_get_hostname(gNetworkAddress));
-	}
+	public string getHostname();
 	
 	/**
 	 * Gets addr's port number
 	 * Since 2.22
 	 * Returns: addr's port (which may be 0)
 	 */
-	public ushort getPort()
-	{
-		// guint16 g_network_address_get_port (GNetworkAddress *addr);
-		return g_network_address_get_port(gNetworkAddress);
-	}
+	public ushort getPort();
 }

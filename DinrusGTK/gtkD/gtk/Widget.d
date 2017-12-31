@@ -167,11 +167,13 @@ private import gtkD.gtk.BuildableT;
 
 version(Rulada)
 {
-    private import tango.text.convert.Integer;
+    private import tango.text.convert.Integer, std.string;
 }
-else
+version(Dinrus)
 {
     private import stdrus;
+    alias stdrus.вТкст toString;
+
 }
 
 
@@ -415,7 +417,7 @@ public class Widget : ObjectGtk, BuildableIF
         {
             modifyFont(
                 PgFontDescription.fromString(
-                    family ~ " " ~ std.string.toString(size)
+                    family ~ " " ~ .toString(size)
                 )
             );
         }

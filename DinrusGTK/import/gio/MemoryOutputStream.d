@@ -78,38 +78,16 @@ public class MemoryOutputStream : OutputStream, SeekableIF
 	protected GMemoryOutputStream* gMemoryOutputStream;
 	
 	
-	public GMemoryOutputStream* getMemoryOutputStreamStruct()
-	{
-		return gMemoryOutputStream;
-	}
+	public GMemoryOutputStream* getMemoryOutputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gMemoryOutputStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMemoryOutputStream* gMemoryOutputStream)
-	{
-		if(gMemoryOutputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gMemoryOutputStream);
-		if( ptr !is null )
-		{
-			this = cast(MemoryOutputStream)ptr;
-			return;
-		}
-		super(cast(GOutputStream*)gMemoryOutputStream);
-		this.gMemoryOutputStream = gMemoryOutputStream;
-	}
+	public this (GMemoryOutputStream* gMemoryOutputStream);
 	
 	// add the Seekable capabilities
 	mixin SeekableT!(GMemoryOutputStream);
@@ -137,16 +115,7 @@ public class MemoryOutputStream : OutputStream, SeekableIF
 	 *  or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (void* data, uint len, GReallocFunc reallocFn, GDestroyNotify destroy)
-	{
-		// GOutputStream * g_memory_output_stream_new (gpointer data,  gsize len,  GReallocFunc realloc_fn,  GDestroyNotify destroy);
-		auto p = g_memory_output_stream_new(data, len, reallocFn, destroy);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_memory_output_stream_new(data, len, reallocFn, destroy)");
-		}
-		this(cast(GMemoryOutputStream*) p);
-	}
+	public this (void* data, uint len, GReallocFunc reallocFn, GDestroyNotify destroy);
 	
 	/**
 	 * Gets any loaded data from the ostream.
@@ -154,11 +123,7 @@ public class MemoryOutputStream : OutputStream, SeekableIF
 	 * write or truncate operation on the stream.
 	 * Returns: pointer to the stream's data
 	 */
-	public void* getData()
-	{
-		// gpointer g_memory_output_stream_get_data (GMemoryOutputStream *ostream);
-		return g_memory_output_stream_get_data(gMemoryOutputStream);
-	}
+	public void* getData();
 	
 	/**
 	 * Gets the size of the currently allocated data area (availible from
@@ -172,12 +137,8 @@ public class MemoryOutputStream : OutputStream, SeekableIF
 	 * g_memory_output_stream_get_data_size().
 	 * Returns: the number of bytes allocated for the data buffer
 	 */
-	public uint getSize()
-	{
-		// gsize g_memory_output_stream_get_size (GMemoryOutputStream *ostream);
-		return g_memory_output_stream_get_size(gMemoryOutputStream);
-	}
-	
+	public uint getSize();
+
 	/**
 	 * Returns the number of bytes from the start up
 	 * to including the last byte written in the stream
@@ -185,9 +146,5 @@ public class MemoryOutputStream : OutputStream, SeekableIF
 	 * Since 2.18
 	 * Returns: the number of bytes written to the stream
 	 */
-	public uint getDataSize()
-	{
-		// gsize g_memory_output_stream_get_data_size  (GMemoryOutputStream *ostream);
-		return g_memory_output_stream_get_data_size(gMemoryOutputStream);
-	}
+	public uint getDataSize();
 }

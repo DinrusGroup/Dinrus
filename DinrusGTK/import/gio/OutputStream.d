@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GOutputStream.html
- * outPack = gio
- * outFile = OutputStream
- * strct   = GOutputStream
- * realStrct=
- * ctorStrct=
- * clss    = OutputStream
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_output_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.InputStream
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GInputStream* -> InputStream
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.OutputStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -90,38 +32,16 @@ public class OutputStream : ObjectG
 	protected GOutputStream* gOutputStream;
 	
 	
-	public GOutputStream* getOutputStreamStruct()
-	{
-		return gOutputStream;
-	}
+	public GOutputStream* getOutputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gOutputStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GOutputStream* gOutputStream)
-	{
-		if(gOutputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gOutputStream);
-		if( ptr !is null )
-		{
-			this = cast(OutputStream)ptr;
-			return;
-		}
-		super(cast(GObject*)gOutputStream);
-		this.gOutputStream = gOutputStream;
-	}
+	public this (GOutputStream* gOutputStream);
 	
 	/**
 	 */
@@ -149,20 +69,7 @@ public class OutputStream : ObjectG
 	 * Returns: Number of bytes written, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int write(void* buffer, uint count, Cancellable cancellable)
-	{
-		// gssize g_output_stream_write (GOutputStream *stream,  const void *buffer,  gsize count,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_write(gOutputStream, buffer, count, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int write(void* buffer, uint count, Cancellable cancellable);
 	
 	/**
 	 * Tries to write count bytes from buffer into the stream. Will block
@@ -183,20 +90,7 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE on success, FALSE if there was an error
 	 * Throws: GException on failure.
 	 */
-	public int writeAll(void* buffer, uint count, uint* bytesWritten, Cancellable cancellable)
-	{
-		// gboolean g_output_stream_write_all (GOutputStream *stream,  const void *buffer,  gsize count,  gsize *bytes_written,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_write_all(gOutputStream, buffer, count, bytesWritten, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int writeAll(void* buffer, uint count, uint* bytesWritten, Cancellable cancellable);
 	
 	/**
 	 * Splices an input stream into an output stream.
@@ -207,20 +101,7 @@ public class OutputStream : ObjectG
 	 * Returns: a gssize containing the size of the data spliced, or -1 if an error occurred.
 	 * Throws: GException on failure.
 	 */
-	public int splice(InputStream source, GOutputStreamSpliceFlags flags, Cancellable cancellable)
-	{
-		// gssize g_output_stream_splice (GOutputStream *stream,  GInputStream *source,  GOutputStreamSpliceFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_splice(gOutputStream, (source is null) ? null : source.getInputStreamStruct(), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int splice(InputStream source, GOutputStreamSpliceFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Flushed any outstanding buffers in the stream. Will block during
@@ -234,20 +115,7 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE on success, FALSE on error
 	 * Throws: GException on failure.
 	 */
-	public int flush(Cancellable cancellable)
-	{
-		// gboolean g_output_stream_flush (GOutputStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_flush(gOutputStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int flush(Cancellable cancellable);
 	
 	/**
 	 * Closes the stream, releasing resources related to it.
@@ -278,20 +146,7 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE on success, FALSE on failure
 	 * Throws: GException on failure.
 	 */
-	public int close(Cancellable cancellable)
-	{
-		// gboolean g_output_stream_close (GOutputStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_close(gOutputStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close(Cancellable cancellable);
 	
 	/**
 	 * Request an asynchronous write of count bytes from buffer into
@@ -322,11 +177,7 @@ public class OutputStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void writeAsync(void* buffer, uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_output_stream_write_async (GOutputStream *stream,  const void *buffer,  gsize count,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_output_stream_write_async(gOutputStream, buffer, count, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void writeAsync(void* buffer, uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a stream write operation.
@@ -335,20 +186,7 @@ public class OutputStream : ObjectG
 	 * Returns: a gssize containing the number of bytes written to the stream.
 	 * Throws: GException on failure.
 	 */
-	public int writeFinish(AsyncResultIF result)
-	{
-		// gssize g_output_stream_write_finish (GOutputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_write_finish(gOutputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int writeFinish(AsyncResultIF result);
 	
 	/**
 	 * Splices a stream asynchronously.
@@ -365,11 +203,7 @@ public class OutputStream : ObjectG
 	 * callback =  a GAsyncReadyCallback.
 	 * userData =  user data passed to callback.
 	 */
-	public void spliceAsync(InputStream source, GOutputStreamSpliceFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_output_stream_splice_async (GOutputStream *stream,  GInputStream *source,  GOutputStreamSpliceFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_output_stream_splice_async(gOutputStream, (source is null) ? null : source.getInputStreamStruct(), flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void spliceAsync(InputStream source, GOutputStreamSpliceFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous stream splice operation.
@@ -378,20 +212,7 @@ public class OutputStream : ObjectG
 	 * Returns: a gssize of the number of bytes spliced.
 	 * Throws: GException on failure.
 	 */
-	public int spliceFinish(AsyncResultIF result)
-	{
-		// gssize g_output_stream_splice_finish (GOutputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_splice_finish(gOutputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int spliceFinish(AsyncResultIF result);
 	
 	/**
 	 * Flushes a stream asynchronously.
@@ -405,11 +226,7 @@ public class OutputStream : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void flushAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_output_stream_flush_async (GOutputStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_output_stream_flush_async(gOutputStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void flushAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes flushing an output stream.
@@ -418,20 +235,7 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE if flush operation suceeded, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int flushFinish(AsyncResultIF result)
-	{
-		// gboolean g_output_stream_flush_finish (GOutputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_flush_finish(gOutputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int flushFinish(AsyncResultIF result);
 	
 	/**
 	 * Requests an asynchronous close of the stream, releasing resources
@@ -448,11 +252,7 @@ public class OutputStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_output_stream_close_async (GOutputStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_output_stream_close_async(gOutputStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Closes an output stream.
@@ -461,40 +261,19 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE if stream was successfully closed, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int closeFinish(AsyncResultIF result)
-	{
-		// gboolean g_output_stream_close_finish (GOutputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_close_finish(gOutputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int closeFinish(AsyncResultIF result);
 	
 	/**
 	 * Checks if an output stream has already been closed.
 	 * Returns: TRUE if stream is closed. FALSE otherwise.
 	 */
-	public int isClosed()
-	{
-		// gboolean g_output_stream_is_closed (GOutputStream *stream);
-		return g_output_stream_is_closed(gOutputStream);
-	}
+	public int isClosed();
 	
 	/**
 	 * Checks if an ouput stream has pending actions.
 	 * Returns: TRUE if stream has pending actions.
 	 */
-	public int hasPending()
-	{
-		// gboolean g_output_stream_has_pending (GOutputStream *stream);
-		return g_output_stream_has_pending(gOutputStream);
-	}
+	public int hasPending();
 	
 	/**
 	 * Sets stream to have actions pending. If the pending flag is
@@ -503,27 +282,10 @@ public class OutputStream : ObjectG
 	 * Returns: TRUE if pending was previously unset and is now set.
 	 * Throws: GException on failure.
 	 */
-	public int setPending()
-	{
-		// gboolean g_output_stream_set_pending (GOutputStream *stream,  GError **error);
-		GError* err = null;
-		
-		auto p = g_output_stream_set_pending(gOutputStream, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setPending();
 	
 	/**
 	 * Clears the pending flag on stream.
 	 */
-	public void clearPending()
-	{
-		// void g_output_stream_clear_pending (GOutputStream *stream);
-		g_output_stream_clear_pending(gOutputStream);
-	}
+	public void clearPending();
 }

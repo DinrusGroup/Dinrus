@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GMountOperation.html
- * outPack = gio
- * outFile = MountOperation
- * strct   = GMountOperation
- * realStrct=
- * ctorStrct=
- * clss    = MountOperation
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_mount_operation_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ArrayG
- * structWrap:
- * 	- GArray* -> ArrayG
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.MountOperation;
 
@@ -91,38 +39,16 @@ public class MountOperation : ObjectG
 	protected GMountOperation* gMountOperation;
 	
 	
-	public GMountOperation* getMountOperationStruct()
-	{
-		return gMountOperation;
-	}
+	public GMountOperation* getMountOperationStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gMountOperation;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMountOperation* gMountOperation)
-	{
-		if(gMountOperation is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gMountOperation);
-		if( ptr !is null )
-		{
-			this = cast(MountOperation)ptr;
-			return;
-		}
-		super(cast(GObject*)gMountOperation);
-		this.gMountOperation = gMountOperation;
-	}
+	public this (GMountOperation* gMountOperation);
 	
 	/**
 	 */
@@ -136,28 +62,8 @@ public class MountOperation : ObjectG
 	 * by dismissing open password dialogs.
 	 * Since 2.20
 	 */
-	void addOnAborted(void delegate(MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("aborted" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"aborted",
-			cast(GCallback)&callBackAborted,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["aborted"] = 1;
-		}
-		onAbortedListeners ~= dlg;
-	}
-	extern(C) static void callBackAborted(GMountOperation* arg0Struct, MountOperation mountOperation)
-	{
-		foreach ( void delegate(MountOperation) dlg ; mountOperation.onAbortedListeners )
-		{
-			dlg(mountOperation);
-		}
-	}
+	void addOnAborted(void delegate(MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAborted(GMountOperation* arg0Struct, MountOperation mountOperation);
 	
 	void delegate(string, string, string, GAskPasswordFlags, MountOperation)[] onAskPasswordListeners;
 	/**
@@ -166,28 +72,8 @@ public class MountOperation : ObjectG
 	 * presented as a heading. For example, it may be used as the
 	 * primary text in a GtkMessageDialog.
 	 */
-	void addOnAskPassword(void delegate(string, string, string, GAskPasswordFlags, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("ask-password" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"ask-password",
-			cast(GCallback)&callBackAskPassword,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["ask-password"] = 1;
-		}
-		onAskPasswordListeners ~= dlg;
-	}
-	extern(C) static void callBackAskPassword(GMountOperation* opStruct, gchar* message, gchar* defaultUser, gchar* defaultDomain, GAskPasswordFlags flags, MountOperation mountOperation)
-	{
-		foreach ( void delegate(string, string, string, GAskPasswordFlags, MountOperation) dlg ; mountOperation.onAskPasswordListeners )
-		{
-			dlg(Str.toString(message), Str.toString(defaultUser), Str.toString(defaultDomain), flags, mountOperation);
-		}
-	}
+	void addOnAskPassword(void delegate(string, string, string, GAskPasswordFlags, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAskPassword(GMountOperation* opStruct, gchar* message, gchar* defaultUser, gchar* defaultDomain, GAskPasswordFlags flags, MountOperation mountOperation);
 	
 	void delegate(string, GStrv*, MountOperation)[] onAskQuestionListeners;
 	/**
@@ -197,55 +83,15 @@ public class MountOperation : ObjectG
 	 * presented as a heading. For example, it may be used as the
 	 * primary text in a GtkMessageDialog.
 	 */
-	void addOnAskQuestion(void delegate(string, GStrv*, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("ask-question" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"ask-question",
-			cast(GCallback)&callBackAskQuestion,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["ask-question"] = 1;
-		}
-		onAskQuestionListeners ~= dlg;
-	}
-	extern(C) static void callBackAskQuestion(GMountOperation* opStruct, gchar* message, GStrv* choices, MountOperation mountOperation)
-	{
-		foreach ( void delegate(string, GStrv*, MountOperation) dlg ; mountOperation.onAskQuestionListeners )
-		{
-			dlg(Str.toString(message), choices, mountOperation);
-		}
-	}
+	void addOnAskQuestion(void delegate(string, GStrv*, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAskQuestion(GMountOperation* opStruct, gchar* message, GStrv* choices, MountOperation mountOperation);
 	
 	void delegate(GMountOperationResult, MountOperation)[] onReplyListeners;
 	/**
 	 * Emitted when the user has replied to the mount operation.
 	 */
-	void addOnReply(void delegate(GMountOperationResult, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("reply" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"reply",
-			cast(GCallback)&callBackReply,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["reply"] = 1;
-		}
-		onReplyListeners ~= dlg;
-	}
-	extern(C) static void callBackReply(GMountOperation* opStruct, GMountOperationResult result, MountOperation mountOperation)
-	{
-		foreach ( void delegate(GMountOperationResult, MountOperation) dlg ; mountOperation.onReplyListeners )
-		{
-			dlg(result, mountOperation);
-		}
-	}
+	void addOnReply(void delegate(GMountOperationResult, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackReply(GMountOperation* opStruct, GMountOperationResult result, MountOperation mountOperation);
 	
 	void delegate(string, ArrayG, GStrv*, MountOperation)[] onShowProcessesListeners;
 	/**
@@ -261,180 +107,99 @@ public class MountOperation : ObjectG
 	 * primary text in a GtkMessageDialog.
 	 * Since 2.22
 	 */
-	void addOnShowProcesses(void delegate(string, ArrayG, GStrv*, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("show-processes" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"show-processes",
-			cast(GCallback)&callBackShowProcesses,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["show-processes"] = 1;
-		}
-		onShowProcessesListeners ~= dlg;
-	}
-	extern(C) static void callBackShowProcesses(GMountOperation* opStruct, gchar* message, GArray* processes, GStrv* choices, MountOperation mountOperation)
-	{
-		foreach ( void delegate(string, ArrayG, GStrv*, MountOperation) dlg ; mountOperation.onShowProcessesListeners )
-		{
-			dlg(Str.toString(message), new ArrayG(processes), choices, mountOperation);
-		}
-	}
+	void addOnShowProcesses(void delegate(string, ArrayG, GStrv*, MountOperation) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackShowProcesses(GMountOperation* opStruct, gchar* message, GArray* processes, GStrv* choices, MountOperation mountOperation);
 	
 	
 	/**
 	 * Creates a new mount operation.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GMountOperation * g_mount_operation_new (void);
-		auto p = g_mount_operation_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mount_operation_new()");
-		}
-		this(cast(GMountOperation*) p);
-	}
+	public this ();
 	
 	/**
 	 * Get the user name from the mount operation.
 	 * Returns: a string containing the user name.
 	 */
-	public string getUsername()
-	{
-		// const char * g_mount_operation_get_username (GMountOperation *op);
-		return Str.toString(g_mount_operation_get_username(gMountOperation));
-	}
+	public string getUsername();
 	
 	/**
 	 * Sets the user name within op to username.
 	 * Params:
 	 * username =  input username.
 	 */
-	public void setUsername(string username)
-	{
-		// void g_mount_operation_set_username (GMountOperation *op,  const char *username);
-		g_mount_operation_set_username(gMountOperation, Str.toStringz(username));
-	}
+	public void setUsername(string username);
 	
 	/**
 	 * Gets a password from the mount operation.
 	 * Returns: a string containing the password within op.
 	 */
-	public string getPassword()
-	{
-		// const char * g_mount_operation_get_password (GMountOperation *op);
-		return Str.toString(g_mount_operation_get_password(gMountOperation));
-	}
+	public string getPassword();
 	
 	/**
 	 * Sets the mount operation's password to password.
 	 * Params:
 	 * password =  password to set.
 	 */
-	public void setPassword(string password)
-	{
-		// void g_mount_operation_set_password (GMountOperation *op,  const char *password);
-		g_mount_operation_set_password(gMountOperation, Str.toStringz(password));
-	}
+	public void setPassword(string password);
 	
 	/**
 	 * Check to see whether the mount operation is being used
 	 * for an anonymous user.
 	 * Returns: TRUE if mount operation is anonymous.
 	 */
-	public int getAnonymous()
-	{
-		// gboolean g_mount_operation_get_anonymous (GMountOperation *op);
-		return g_mount_operation_get_anonymous(gMountOperation);
-	}
+	public int getAnonymous();
 	
 	/**
 	 * Sets the mount operation to use an anonymous user if anonymous is TRUE.
 	 * Params:
 	 * anonymous =  boolean value.
 	 */
-	public void setAnonymous(int anonymous)
-	{
-		// void g_mount_operation_set_anonymous (GMountOperation *op,  gboolean anonymous);
-		g_mount_operation_set_anonymous(gMountOperation, anonymous);
-	}
+	public void setAnonymous(int anonymous);
 	
 	/**
 	 * Gets the domain of the mount operation.
 	 * Returns: a string set to the domain.
 	 */
-	public string getDomain()
-	{
-		// const char * g_mount_operation_get_domain (GMountOperation *op);
-		return Str.toString(g_mount_operation_get_domain(gMountOperation));
-	}
+	public string getDomain();
 	
 	/**
 	 * Sets the mount operation's domain.
 	 * Params:
 	 * domain =  the domain to set.
 	 */
-	public void setDomain(string domain)
-	{
-		// void g_mount_operation_set_domain (GMountOperation *op,  const char *domain);
-		g_mount_operation_set_domain(gMountOperation, Str.toStringz(domain));
-	}
+	public void setDomain(string domain);
 	
 	/**
 	 * Gets the state of saving passwords for the mount operation.
 	 * Returns: a GPasswordSave flag.
 	 */
-	public GPasswordSave getPasswordSave()
-	{
-		// GPasswordSave g_mount_operation_get_password_save (GMountOperation *op);
-		return g_mount_operation_get_password_save(gMountOperation);
-	}
+	public GPasswordSave getPasswordSave();
 	
 	/**
 	 * Sets the state of saving passwords for the mount operation.
 	 * Params:
 	 * save =  a set of GPasswordSave flags.
 	 */
-	public void setPasswordSave(GPasswordSave save)
-	{
-		// void g_mount_operation_set_password_save (GMountOperation *op,  GPasswordSave save);
-		g_mount_operation_set_password_save(gMountOperation, save);
-	}
+	public void setPasswordSave(GPasswordSave save);
 	
 	/**
 	 * Gets a choice from the mount operation.
 	 * Returns: an integer containing an index of the user's choice from the choice's list, or 0.
 	 */
-	public int getChoice()
-	{
-		// int g_mount_operation_get_choice (GMountOperation *op);
-		return g_mount_operation_get_choice(gMountOperation);
-	}
+	public int getChoice();
 	
 	/**
 	 * Sets a default choice for the mount operation.
 	 * Params:
 	 * choice =  an integer.
 	 */
-	public void setChoice(int choice)
-	{
-		// void g_mount_operation_set_choice (GMountOperation *op,  int choice);
-		g_mount_operation_set_choice(gMountOperation, choice);
-	}
+	public void setChoice(int choice);
 	
 	/**
 	 * Emits the "reply" signal.
 	 * Params:
 	 * result =  a GMountOperationResult
 	 */
-	public void reply(GMountOperationResult result)
-	{
-		// void g_mount_operation_reply (GMountOperation *op,  GMountOperationResult result);
-		g_mount_operation_reply(gMountOperation, result);
-	}
+	public void reply(GMountOperationResult result);
 }

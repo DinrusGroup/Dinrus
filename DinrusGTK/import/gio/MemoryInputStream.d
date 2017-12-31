@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GMemoryInputStream.html
- * outPack = gio
- * outFile = MemoryInputStream
- * strct   = GMemoryInputStream
- * realStrct=
- * ctorStrct=GInputStream
- * clss    = MemoryInputStream
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- SeekableIF
- * prefixes:
- * 	- g_memory_input_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gio.SeekableT
- * 	- gtkD.gio.SeekableIF
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.MemoryInputStream;
 
@@ -78,38 +26,16 @@ public class MemoryInputStream : InputStream, SeekableIF
 	protected GMemoryInputStream* gMemoryInputStream;
 	
 	
-	public GMemoryInputStream* getMemoryInputStreamStruct()
-	{
-		return gMemoryInputStream;
-	}
+	public GMemoryInputStream* getMemoryInputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gMemoryInputStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMemoryInputStream* gMemoryInputStream)
-	{
-		if(gMemoryInputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gMemoryInputStream);
-		if( ptr !is null )
-		{
-			this = cast(MemoryInputStream)ptr;
-			return;
-		}
-		super(cast(GInputStream*)gMemoryInputStream);
-		this.gMemoryInputStream = gMemoryInputStream;
-	}
+	public this (GMemoryInputStream* gMemoryInputStream);
 	
 	// add the Seekable capabilities
 	mixin SeekableT!(GMemoryInputStream);
@@ -121,16 +47,7 @@ public class MemoryInputStream : InputStream, SeekableIF
 	 * Creates a new empty GMemoryInputStream.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GInputStream * g_memory_input_stream_new (void);
-		auto p = g_memory_input_stream_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_memory_input_stream_new()");
-		}
-		this(cast(GMemoryInputStream*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a new GMemoryInputStream with data in memory of a given size.
@@ -140,16 +57,7 @@ public class MemoryInputStream : InputStream, SeekableIF
 	 * destroy =  function that is called to free data, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (void* data, int len, GDestroyNotify destroy)
-	{
-		// GInputStream * g_memory_input_stream_new_from_data (const void *data,  gssize len,  GDestroyNotify destroy);
-		auto p = g_memory_input_stream_new_from_data(data, len, destroy);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_memory_input_stream_new_from_data(data, len, destroy)");
-		}
-		this(cast(GMemoryInputStream*) p);
-	}
+	public this (void* data, int len, GDestroyNotify destroy);
 	
 	/**
 	 * Appends data to data that can be read from the input stream
@@ -158,9 +66,5 @@ public class MemoryInputStream : InputStream, SeekableIF
 	 * len =  length of the data, may be -1 if data is a nul-terminated string
 	 * destroy =  function that is called to free data, or NULL
 	 */
-	public void addData(void* data, int len, GDestroyNotify destroy)
-	{
-		// void g_memory_input_stream_add_data (GMemoryInputStream *stream,  const void *data,  gssize len,  GDestroyNotify destroy);
-		g_memory_input_stream_add_data(gMemoryInputStream, data, len, destroy);
-	}
+	public void addData(void* data, int len, GDestroyNotify destroy);
 }

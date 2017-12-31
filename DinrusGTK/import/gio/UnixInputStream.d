@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GUnixInputStream.html
- * outPack = gio
- * outFile = UnixInputStream
- * strct   = GUnixInputStream
- * realStrct=
- * ctorStrct=GInputStream
- * clss    = UnixInputStream
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_unix_input_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.UnixInputStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -77,38 +27,16 @@ public class UnixInputStream : InputStream
 	protected GUnixInputStream* gUnixInputStream;
 	
 	
-	public GUnixInputStream* getUnixInputStreamStruct()
-	{
-		return gUnixInputStream;
-	}
+	public GUnixInputStream* getUnixInputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gUnixInputStream;
-	}
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GUnixInputStream* gUnixInputStream)
-	{
-		if(gUnixInputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gUnixInputStream);
-		if( ptr !is null )
-		{
-			this = cast(UnixInputStream)ptr;
-			return;
-		}
-		super(cast(GInputStream*)gUnixInputStream);
-		this.gUnixInputStream = gUnixInputStream;
-	}
+	public this (GUnixInputStream* gUnixInputStream);
 	
 	/**
 	 */
@@ -122,16 +50,7 @@ public class UnixInputStream : InputStream
 	 * closeFd =  TRUE to close the file descriptor when done
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int fd, int closeFd)
-	{
-		// GInputStream * g_unix_input_stream_new (gint fd,  gboolean close_fd);
-		auto p = g_unix_input_stream_new(fd, closeFd);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_unix_input_stream_new(fd, closeFd)");
-		}
-		this(cast(GUnixInputStream*) p);
-	}
+	public this (int fd, int closeFd);
 	
 	/**
 	 * Sets whether the file descriptor of stream shall be closed
@@ -140,11 +59,7 @@ public class UnixInputStream : InputStream
 	 * Params:
 	 * closeFd =  TRUE to close the file descriptor when done
 	 */
-	public void setCloseFd(int closeFd)
-	{
-		// void g_unix_input_stream_set_close_fd (GUnixInputStream *stream,  gboolean close_fd);
-		g_unix_input_stream_set_close_fd(gUnixInputStream, closeFd);
-	}
+	public void setCloseFd(int closeFd);
 	
 	/**
 	 * Returns whether the file descriptor of stream will be
@@ -152,20 +67,12 @@ public class UnixInputStream : InputStream
 	 * Since 2.20
 	 * Returns: TRUE if the file descriptor is closed when done
 	 */
-	public int getCloseFd()
-	{
-		// gboolean g_unix_input_stream_get_close_fd (GUnixInputStream *stream);
-		return g_unix_input_stream_get_close_fd(gUnixInputStream);
-	}
+	public int getCloseFd();
 	
 	/**
 	 * Return the UNIX file descriptor that the stream reads from.
 	 * Since 2.20
 	 * Returns: The file descriptor of stream
 	 */
-	public int getFd()
-	{
-		// gint g_unix_input_stream_get_fd (GUnixInputStream *stream);
-		return g_unix_input_stream_get_fd(gUnixInputStream);
-	}
+	public int getFd();
 }

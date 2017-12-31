@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GResolver.html
- * outPack = gio
- * outFile = Resolver
- * strct   = GResolver
- * realStrct=
- * ctorStrct=
- * clss    = Resolver
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_resolver_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.ListG
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GList* -> ListG
- * 	- GResolver* -> Resolver
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.Resolver;
 
 public  import gtkD.gtkc.giotypes;
@@ -96,38 +36,16 @@ public class Resolver : ObjectG
 	protected GResolver* gResolver;
 	
 	
-	public GResolver* getResolverStruct()
-	{
-		return gResolver;
-	}
+	public GResolver* getResolverStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gResolver;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GResolver* gResolver)
-	{
-		if(gResolver is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gResolver);
-		if( ptr !is null )
-		{
-			this = cast(Resolver)ptr;
-			return;
-		}
-		super(cast(GObject*)gResolver);
-		this.gResolver = gResolver;
-	}
+	public this (GResolver* gResolver);
 	
 	/**
 	 */
@@ -138,28 +56,8 @@ public class Resolver : ObjectG
 	 * Emitted when the resolver notices that the system resolver
 	 * configuration has changed.
 	 */
-	void addOnReload(void delegate(Resolver) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("reload" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"reload",
-			cast(GCallback)&callBackReload,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["reload"] = 1;
-		}
-		onReloadListeners ~= dlg;
-	}
-	extern(C) static void callBackReload(GResolver* resolverStruct, Resolver resolver)
-	{
-		foreach ( void delegate(Resolver) dlg ; resolver.onReloadListeners )
-		{
-			dlg(resolver);
-		}
-	}
+	void addOnReload(void delegate(Resolver) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackReload(GResolver* resolverStruct, Resolver resolver);
 	
 	
 	/**
@@ -170,16 +68,7 @@ public class Resolver : ObjectG
 	 * Since 2.22
 	 * Returns: the default GResolver.
 	 */
-	public static Resolver getDefault()
-	{
-		// GResolver * g_resolver_get_default (void);
-		auto p = g_resolver_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Resolver(cast(GResolver*) p);
-	}
+	public static Resolver getDefault();
 	
 	/**
 	 * Sets resolver to be the application's default resolver (reffing
@@ -192,11 +81,7 @@ public class Resolver : ObjectG
 	 * itself as the default resolver for all later code to use.
 	 * Since 2.22
 	 */
-	public void setDefault()
-	{
-		// void g_resolver_set_default (GResolver *resolver);
-		g_resolver_set_default(gResolver);
-	}
+	public void setDefault();
 	
 	/**
 	 * Synchronously resolves hostname to determine its associated IP
@@ -222,24 +107,7 @@ public class Resolver : ObjectG
 	 * Returns: a GList of GInetAddress, or NULL on error. Youmust unref each of the addresses and free the list when you aredone with it. (You can use g_resolver_free_addresses() to do this.)
 	 * Throws: GException on failure.
 	 */
-	public ListG lookupByName(string hostname, Cancellable cancellable)
-	{
-		// GList * g_resolver_lookup_by_name (GResolver *resolver,  const gchar *hostname,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_resolver_lookup_by_name(gResolver, Str.toStringz(hostname), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG lookupByName(string hostname, Cancellable cancellable);
 	
 	/**
 	 * Begins asynchronously resolving hostname to determine its
@@ -253,11 +121,7 @@ public class Resolver : ObjectG
 	 * callback =  callback to call after resolution completes
 	 * userData =  data for callback
 	 */
-	public void lookupByNameAsync(string hostname, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_resolver_lookup_by_name_async (GResolver *resolver,  const gchar *hostname,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_resolver_lookup_by_name_async(gResolver, Str.toStringz(hostname), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void lookupByNameAsync(string hostname, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Retrieves the result of a call to
@@ -271,24 +135,7 @@ public class Resolver : ObjectG
 	 * Returns: a GList of GInetAddress, or NULL on error. Seeg_resolver_lookup_by_name() for more details.
 	 * Throws: GException on failure.
 	 */
-	public ListG lookupByNameFinish(AsyncResultIF result)
-	{
-		// GList * g_resolver_lookup_by_name_finish (GResolver *resolver,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_resolver_lookup_by_name_finish(gResolver, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG lookupByNameFinish(AsyncResultIF result);
 	
 	/**
 	 * Frees addresses (which should be the return value from
@@ -299,11 +146,7 @@ public class Resolver : ObjectG
 	 * Params:
 	 * addresses =  a GList of GInetAddress
 	 */
-	public static void freeAddresses(ListG addresses)
-	{
-		// void g_resolver_free_addresses (GList *addresses);
-		g_resolver_free_addresses((addresses is null) ? null : addresses.getListGStruct());
-	}
+	public static void freeAddresses(ListG addresses);
 	
 	/**
 	 * Synchronously reverse-resolves address to determine its
@@ -320,20 +163,7 @@ public class Resolver : ObjectG
 	 * Returns: a hostname (either ASCII-only, or in ASCII-encoded form), or NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public string lookupByAddress(GInetAddress* address, Cancellable cancellable)
-	{
-		// gchar * g_resolver_lookup_by_address (GResolver *resolver,  GInetAddress *address,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_resolver_lookup_by_address(gResolver, address, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string lookupByAddress(GInetAddress* address, Cancellable cancellable);
 	
 	/**
 	 * Begins asynchronously reverse-resolving address to determine its
@@ -346,11 +176,7 @@ public class Resolver : ObjectG
 	 * callback =  callback to call after resolution completes
 	 * userData =  data for callback
 	 */
-	public void lookupByAddressAsync(GInetAddress* address, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_resolver_lookup_by_address_async (GResolver *resolver,  GInetAddress *address,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_resolver_lookup_by_address_async(gResolver, address, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void lookupByAddressAsync(GInetAddress* address, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Retrieves the result of a previous call to
@@ -364,20 +190,7 @@ public class Resolver : ObjectG
 	 * Returns: a hostname (either ASCII-only, or in ASCII-encodedform), or NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public string lookupByAddressFinish(AsyncResultIF result)
-	{
-		// gchar * g_resolver_lookup_by_address_finish (GResolver *resolver,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_resolver_lookup_by_address_finish(gResolver, (result is null) ? null : result.getAsyncResultTStruct(), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string lookupByAddressFinish(AsyncResultIF result);
 	
 	/**
 	 * Synchronously performs a DNS SRV lookup for the given service and
@@ -407,24 +220,7 @@ public class Resolver : ObjectG
 	 * Returns: a GList of GSrvTarget, or NULL on error. You mustfree each of the targets and the list when you are done with it.(You can use g_resolver_free_targets() to do this.)
 	 * Throws: GException on failure.
 	 */
-	public ListG lookupService(string service, string protocol, string domain, Cancellable cancellable)
-	{
-		// GList * g_resolver_lookup_service (GResolver *resolver,  const gchar *service,  const gchar *protocol,  const gchar *domain,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_resolver_lookup_service(gResolver, Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG lookupService(string service, string protocol, string domain, Cancellable cancellable);
 	
 	/**
 	 * Begins asynchronously performing a DNS SRV lookup for the given
@@ -441,11 +237,7 @@ public class Resolver : ObjectG
 	 * callback =  callback to call after resolution completes
 	 * userData =  data for callback
 	 */
-	public void lookupServiceAsync(string service, string protocol, string domain, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_resolver_lookup_service_async (GResolver *resolver,  const gchar *service,  const gchar *protocol,  const gchar *domain,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_resolver_lookup_service_async(gResolver, Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void lookupServiceAsync(string service, string protocol, string domain, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Retrieves the result of a previous call to
@@ -459,24 +251,7 @@ public class Resolver : ObjectG
 	 * Returns: a GList of GSrvTarget, or NULL on error. Seeg_resolver_lookup_service() for more details.
 	 * Throws: GException on failure.
 	 */
-	public ListG lookupServiceFinish(AsyncResultIF result)
-	{
-		// GList * g_resolver_lookup_service_finish (GResolver *resolver,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_resolver_lookup_service_finish(gResolver, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG lookupServiceFinish(AsyncResultIF result);
 	
 	/**
 	 * Frees targets (which should be the return value from
@@ -487,9 +262,5 @@ public class Resolver : ObjectG
 	 * Params:
 	 * targets =  a GList of GSrvTarget
 	 */
-	public static void freeTargets(ListG targets)
-	{
-		// void g_resolver_free_targets (GList *targets);
-		g_resolver_free_targets((targets is null) ? null : targets.getListGStruct());
-	}
+	public static void freeTargets(ListG targets);
 }

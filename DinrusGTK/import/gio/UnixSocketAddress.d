@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GUnixSocketAddress.html
- * outPack = gio
- * outFile = UnixSocketAddress
- * strct   = GUnixSocketAddress
- * realStrct=
- * ctorStrct=GSocketAddress
- * clss    = UnixSocketAddress
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_unix_socket_address_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.UnixSocketAddress;
 
@@ -74,38 +24,16 @@ public class UnixSocketAddress : SocketAddress
 	protected GUnixSocketAddress* gUnixSocketAddress;
 	
 	
-	public GUnixSocketAddress* getUnixSocketAddressStruct()
-	{
-		return gUnixSocketAddress;
-	}
+	public GUnixSocketAddress* getUnixSocketAddressStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gUnixSocketAddress;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GUnixSocketAddress* gUnixSocketAddress)
-	{
-		if(gUnixSocketAddress is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gUnixSocketAddress);
-		if( ptr !is null )
-		{
-			this = cast(UnixSocketAddress)ptr;
-			return;
-		}
-		super(cast(GSocketAddress*)gUnixSocketAddress);
-		this.gUnixSocketAddress = gUnixSocketAddress;
-	}
+	public this (GUnixSocketAddress* gUnixSocketAddress);
 	
 	/**
 	 */
@@ -119,16 +47,7 @@ public class UnixSocketAddress : SocketAddress
 	 * path =  the socket path
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string path)
-	{
-		// GSocketAddress * g_unix_socket_address_new (const gchar *path);
-		auto p = g_unix_socket_address_new(Str.toStringz(path));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_unix_socket_address_new(Str.toStringz(path))");
-		}
-		this(cast(GUnixSocketAddress*) p);
-	}
+	public this (string path);
 	
 	/**
 	 * Creates a new abstract GUnixSocketAddress for path.
@@ -150,27 +69,14 @@ public class UnixSocketAddress : SocketAddress
 	 * pathLen =  the length of path, or -1
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string path, int pathLen)
-	{
-		// GSocketAddress * g_unix_socket_address_new_abstract (const gchar *path,  int path_len);
-		auto p = g_unix_socket_address_new_abstract(Str.toStringz(path), pathLen);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_unix_socket_address_new_abstract(Str.toStringz(path), pathLen)");
-		}
-		this(cast(GUnixSocketAddress*) p);
-	}
+	public this (string path, int pathLen);
 	
 	/**
 	 * Gets address's path.
 	 * Since 2.22
 	 * Returns: TRUE if the address is abstract, FALSE otherwise
 	 */
-	public int getIsAbstract()
-	{
-		// gboolean g_unix_socket_address_get_is_abstract  (GUnixSocketAddress *address);
-		return g_unix_socket_address_get_is_abstract(gUnixSocketAddress);
-	}
+	public int getIsAbstract();
 	
 	/**
 	 * Gets address's path, or for abstract sockets the "name".
@@ -181,11 +87,7 @@ public class UnixSocketAddress : SocketAddress
 	 * Since 2.22
 	 * Returns: the path for address
 	 */
-	public string getPath()
-	{
-		// const char * g_unix_socket_address_get_path (GUnixSocketAddress *address);
-		return Str.toString(g_unix_socket_address_get_path(gUnixSocketAddress));
-	}
+	public string getPath();
 	
 	/**
 	 * Gets the length of address's path.
@@ -193,20 +95,12 @@ public class UnixSocketAddress : SocketAddress
 	 * Since 2.22
 	 * Returns: the length of the path
 	 */
-	public uint getPathLen()
-	{
-		// gsize g_unix_socket_address_get_path_len (GUnixSocketAddress *address);
-		return g_unix_socket_address_get_path_len(gUnixSocketAddress);
-	}
+	public uint getPathLen();
 	
 	/**
 	 * Checks if abstract unix domain socket names are supported.
 	 * Since 2.22
 	 * Returns: TRUE if supported, FALSE otherwise
 	 */
-	public static int abstractNamesSupported()
-	{
-		// gboolean g_unix_socket_address_abstract_names_supported  (void);
-		return g_unix_socket_address_abstract_names_supported();
-	}
+	public static int abstractNamesSupported();
 }

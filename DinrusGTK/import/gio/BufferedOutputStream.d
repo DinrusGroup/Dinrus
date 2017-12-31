@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GBufferedOutputStream.html
- * outPack = gio
- * outFile = BufferedOutputStream
- * strct   = GBufferedOutputStream
- * realStrct=
- * ctorStrct=GOutputStream
- * clss    = BufferedOutputStream
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_buffered_output_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gio.OutputStream
- * structWrap:
- * 	- GOutputStream* -> OutputStream
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.BufferedOutputStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -85,38 +33,16 @@ public class BufferedOutputStream : FilterOutputStream
 	protected GBufferedOutputStream* gBufferedOutputStream;
 	
 	
-	public GBufferedOutputStream* getBufferedOutputStreamStruct()
-	{
-		return gBufferedOutputStream;
-	}
+	public GBufferedOutputStream* getBufferedOutputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gBufferedOutputStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GBufferedOutputStream* gBufferedOutputStream)
-	{
-		if(gBufferedOutputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gBufferedOutputStream);
-		if( ptr !is null )
-		{
-			this = cast(BufferedOutputStream)ptr;
-			return;
-		}
-		super(cast(GFilterOutputStream*)gBufferedOutputStream);
-		this.gBufferedOutputStream = gBufferedOutputStream;
-	}
+	public this (GBufferedOutputStream* gBufferedOutputStream);
 	
 	/**
 	 */
@@ -127,16 +53,7 @@ public class BufferedOutputStream : FilterOutputStream
 	 * baseStream =  a GOutputStream.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (OutputStream baseStream)
-	{
-		// GOutputStream* g_buffered_output_stream_new (GOutputStream *base_stream);
-		auto p = g_buffered_output_stream_new((baseStream is null) ? null : baseStream.getOutputStreamStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_buffered_output_stream_new((baseStream is null) ? null : baseStream.getOutputStreamStruct())");
-		}
-		this(cast(GBufferedOutputStream*) p);
-	}
+	public this (OutputStream baseStream);
 	
 	/**
 	 * Creates a new buffered output stream with a given buffer size.
@@ -145,47 +62,26 @@ public class BufferedOutputStream : FilterOutputStream
 	 * size =  a gsize.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (OutputStream baseStream, uint size)
-	{
-		// GOutputStream* g_buffered_output_stream_new_sized (GOutputStream *base_stream,  gsize size);
-		auto p = g_buffered_output_stream_new_sized((baseStream is null) ? null : baseStream.getOutputStreamStruct(), size);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_buffered_output_stream_new_sized((baseStream is null) ? null : baseStream.getOutputStreamStruct(), size)");
-		}
-		this(cast(GBufferedOutputStream*) p);
-	}
+	public this (OutputStream baseStream, uint size);
 	
 	/**
 	 * Gets the size of the buffer in the stream.
 	 * Returns: the current size of the buffer.
 	 */
-	public uint getBufferSize()
-	{
-		// gsize g_buffered_output_stream_get_buffer_size  (GBufferedOutputStream *stream);
-		return g_buffered_output_stream_get_buffer_size(gBufferedOutputStream);
-	}
+	public uint getBufferSize();
 	
 	/**
 	 * Sets the size of the internal buffer to size.
 	 * Params:
 	 * size =  a gsize.
 	 */
-	public void setBufferSize(uint size)
-	{
-		// void g_buffered_output_stream_set_buffer_size  (GBufferedOutputStream *stream,  gsize size);
-		g_buffered_output_stream_set_buffer_size(gBufferedOutputStream, size);
-	}
-	
+	public void setBufferSize(uint size);
+
 	/**
 	 * Checks if the buffer automatically grows as data is added.
 	 * Returns: TRUE if the stream's buffer automatically grows,FALSE otherwise.
 	 */
-	public int getAutoGrow()
-	{
-		// gboolean g_buffered_output_stream_get_auto_grow  (GBufferedOutputStream *stream);
-		return g_buffered_output_stream_get_auto_grow(gBufferedOutputStream);
-	}
+	public int getAutoGrow();
 	
 	/**
 	 * Sets whether or not the stream's buffer should automatically grow.
@@ -195,9 +91,5 @@ public class BufferedOutputStream : FilterOutputStream
 	 * Params:
 	 * autoGrow =  a gboolean.
 	 */
-	public void setAutoGrow(int autoGrow)
-	{
-		// void g_buffered_output_stream_set_auto_grow  (GBufferedOutputStream *stream,  gboolean auto_grow);
-		g_buffered_output_stream_set_auto_grow(gBufferedOutputStream, autoGrow);
-	}
+	public void setAutoGrow(int autoGrow);
 }

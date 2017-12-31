@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocketListener.html
- * outPack = gio
- * outFile = SocketListener
- * strct   = GSocketListener
- * realStrct=
- * ctorStrct=
- * clss    = SocketListener
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_listener_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.Socket
- * 	- gtkD.gio.SocketAddress
- * 	- gtkD.gio.SocketConnection
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GObject* -> ObjectG
- * 	- GSocket* -> Socket
- * 	- GSocketAddress* -> SocketAddress
- * 	- GSocketConnection* -> SocketConnection
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.SocketListener;
 
@@ -97,38 +35,16 @@ public class SocketListener : ObjectG
 	protected GSocketListener* gSocketListener;
 	
 	
-	public GSocketListener* getSocketListenerStruct()
-	{
-		return gSocketListener;
-	}
+	public GSocketListener* getSocketListenerStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocketListener;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketListener* gSocketListener)
-	{
-		if(gSocketListener is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocketListener);
-		if( ptr !is null )
-		{
-			this = cast(SocketListener)ptr;
-			return;
-		}
-		super(cast(GObject*)gSocketListener);
-		this.gSocketListener = gSocketListener;
-	}
+	public this (GSocketListener* gSocketListener);
 	
 	/**
 	 */
@@ -140,16 +56,7 @@ public class SocketListener : ObjectG
 	 * Since 2.22
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GSocketListener * g_socket_listener_new (void);
-		auto p = g_socket_listener_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_socket_listener_new()");
-		}
-		this(cast(GSocketListener*) p);
-	}
+	public this ();
 	
 	/**
 	 * Adds socket to the set of sockets that we try to accept
@@ -166,20 +73,7 @@ public class SocketListener : ObjectG
 	 * Returns: TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int addSocket(Socket socket, ObjectG sourceObject)
-	{
-		// gboolean g_socket_listener_add_socket (GSocketListener *listener,  GSocket *socket,  GObject *source_object,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_listener_add_socket(gSocketListener, (socket is null) ? null : socket.getSocketStruct(), (sourceObject is null) ? null : sourceObject.getObjectGStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int addSocket(Socket socket, ObjectG sourceObject);
 	
 	/**
 	 * Creates a socket of type type and protocol protocol, binds
@@ -208,22 +102,7 @@ public class SocketListener : ObjectG
 	 * Returns: TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int addAddress(SocketAddress address, GSocketType type, GSocketProtocol protocol, ObjectG sourceObject, out SocketAddress effectiveAddress)
-	{
-		// gboolean g_socket_listener_add_address (GSocketListener *listener,  GSocketAddress *address,  GSocketType type,  GSocketProtocol protocol,  GObject *source_object,  GSocketAddress **effective_address,  GError **error);
-		GSocketAddress* outeffectiveAddress = null;
-		GError* err = null;
-		
-		auto p = g_socket_listener_add_address(gSocketListener, (address is null) ? null : address.getSocketAddressStruct(), type, protocol, (sourceObject is null) ? null : sourceObject.getObjectGStruct(), &outeffectiveAddress, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		effectiveAddress = new SocketAddress(outeffectiveAddress);
-		return p;
-	}
+	public int addAddress(SocketAddress address, GSocketType type, GSocketProtocol protocol, ObjectG sourceObject, out SocketAddress effectiveAddress);
 	
 	/**
 	 * Helper function for g_socket_listener_add_address() that
@@ -240,20 +119,7 @@ public class SocketListener : ObjectG
 	 * Returns: TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int addInetPort(ushort port, ObjectG sourceObject)
-	{
-		// gboolean g_socket_listener_add_inet_port (GSocketListener *listener,  guint16 port,  GObject *source_object,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_listener_add_inet_port(gSocketListener, port, (sourceObject is null) ? null : sourceObject.getObjectGStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int addInetPort(ushort port, ObjectG sourceObject);
 	
 	/**
 	 * Blocks waiting for a client to connect to any of the sockets added
@@ -272,26 +138,7 @@ public class SocketListener : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection accept(out ObjectG sourceObject, Cancellable cancellable)
-	{
-		// GSocketConnection * g_socket_listener_accept (GSocketListener *listener,  GObject **source_object,  GCancellable *cancellable,  GError **error);
-		GObject* outsourceObject = null;
-		GError* err = null;
-		
-		auto p = g_socket_listener_accept(gSocketListener, &outsourceObject, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		sourceObject = new ObjectG(outsourceObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection accept(out ObjectG sourceObject, Cancellable cancellable);
 	
 	/**
 	 * This is the asynchronous version of g_socket_listener_accept().
@@ -304,11 +151,7 @@ public class SocketListener : ObjectG
 	 * callback =  a GAsyncReadyCallback
 	 * userData =  user data for the callback
 	 */
-	public void acceptAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_listener_accept_async (GSocketListener *listener,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_listener_accept_async(gSocketListener, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void acceptAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async accept operation. See g_socket_listener_accept_async()
@@ -319,26 +162,7 @@ public class SocketListener : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection acceptFinish(AsyncResultIF result, inout ObjectG sourceObject)
-	{
-		// GSocketConnection * g_socket_listener_accept_finish (GSocketListener *listener,  GAsyncResult *result,  GObject **source_object,  GError **error);
-		GObject* outsourceObject = (sourceObject is null) ? null : sourceObject.getObjectGStruct();
-		GError* err = null;
-		
-		auto p = g_socket_listener_accept_finish(gSocketListener, (result is null) ? null : result.getAsyncResultTStruct(), &outsourceObject, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		sourceObject = new ObjectG(outsourceObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection acceptFinish(AsyncResultIF result, inout ObjectG sourceObject);
 	
 	/**
 	 * Blocks waiting for a client to connect to any of the sockets added
@@ -359,26 +183,7 @@ public class SocketListener : ObjectG
 	 * Returns: a GSocket on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public Socket acceptSocket(out ObjectG sourceObject, Cancellable cancellable)
-	{
-		// GSocket * g_socket_listener_accept_socket (GSocketListener *listener,  GObject **source_object,  GCancellable *cancellable,  GError **error);
-		GObject* outsourceObject = null;
-		GError* err = null;
-		
-		auto p = g_socket_listener_accept_socket(gSocketListener, &outsourceObject, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		sourceObject = new ObjectG(outsourceObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Socket(cast(GSocket*) p);
-	}
+	public Socket acceptSocket(out ObjectG sourceObject, Cancellable cancellable);
 	
 	/**
 	 * This is the asynchronous version of g_socket_listener_accept_socket().
@@ -391,11 +196,7 @@ public class SocketListener : ObjectG
 	 * callback =  a GAsyncReadyCallback
 	 * userData =  user data for the callback
 	 */
-	public void acceptSocketAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_listener_accept_socket_async  (GSocketListener *listener,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_listener_accept_socket_async(gSocketListener, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void acceptSocketAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async accept operation. See g_socket_listener_accept_socket_async()
@@ -406,36 +207,13 @@ public class SocketListener : ObjectG
 	 * Returns: a GSocket on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public Socket acceptSocketFinish(AsyncResultIF result, inout ObjectG sourceObject)
-	{
-		// GSocket * g_socket_listener_accept_socket_finish  (GSocketListener *listener,  GAsyncResult *result,  GObject **source_object,  GError **error);
-		GObject* outsourceObject = (sourceObject is null) ? null : sourceObject.getObjectGStruct();
-		GError* err = null;
-		
-		auto p = g_socket_listener_accept_socket_finish(gSocketListener, (result is null) ? null : result.getAsyncResultTStruct(), &outsourceObject, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		sourceObject = new ObjectG(outsourceObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Socket(cast(GSocket*) p);
-	}
+	public Socket acceptSocketFinish(AsyncResultIF result, inout ObjectG sourceObject);
 	
 	/**
 	 * Closes all the sockets in the listener.
 	 * Since 2.22
 	 */
-	public void close()
-	{
-		// void g_socket_listener_close (GSocketListener *listener);
-		g_socket_listener_close(gSocketListener);
-	}
+	public void close();
 	
 	/**
 	 * Sets the listen backlog on the sockets in the listener.
@@ -444,9 +222,5 @@ public class SocketListener : ObjectG
 	 * Params:
 	 * listenBacklog =  an integer
 	 */
-	public void setBacklog(int listenBacklog)
-	{
-		// void g_socket_listener_set_backlog (GSocketListener *listener,  int listen_backlog);
-		g_socket_listener_set_backlog(gSocketListener, listenBacklog);
-	}
+	public void setBacklog(int listenBacklog);
 }

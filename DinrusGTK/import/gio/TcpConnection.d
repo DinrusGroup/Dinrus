@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gio
- * outFile = TcpConnection
- * strct   = GTcpConnection
- * realStrct=
- * ctorStrct=
- * clss    = TcpConnection
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_tcp_connection_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.TcpConnection;
 
 public  import gtkD.gtkc.giotypes;
@@ -88,31 +38,12 @@ public class TcpConnection : SocketConnection
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gTcpConnection;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GTcpConnection* gTcpConnection)
-	{
-		if(gTcpConnection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gTcpConnection);
-		if( ptr !is null )
-		{
-			this = cast(TcpConnection)ptr;
-			return;
-		}
-		super(cast(GSocketConnection*)gTcpConnection);
-		this.gTcpConnection = gTcpConnection;
-	}
+	public this (GTcpConnection* gTcpConnection);
 	
 	/**
 	 */
@@ -130,11 +61,7 @@ public class TcpConnection : SocketConnection
 	 * Params:
 	 * gracefulDisconnect =  Whether to do graceful disconnects or not
 	 */
-	public void setGracefulDisconnect(int gracefulDisconnect)
-	{
-		// void g_tcp_connection_set_graceful_disconnect  (GTcpConnection *connection,  gboolean graceful_disconnect);
-		g_tcp_connection_set_graceful_disconnect(gTcpConnection, gracefulDisconnect);
-	}
+	public void setGracefulDisconnect(int gracefulDisconnect);
 	
 	/**
 	 * Checks if graceful disconnects are used. See
@@ -142,9 +69,5 @@ public class TcpConnection : SocketConnection
 	 * Since 2.22
 	 * Returns: TRUE if graceful disconnect is used on close, FALSE otherwise
 	 */
-	public int getGracefulDisconnect()
-	{
-		// gboolean g_tcp_connection_get_graceful_disconnect  (GTcpConnection *connection);
-		return g_tcp_connection_get_graceful_disconnect(gTcpConnection);
-	}
+	public int getGracefulDisconnect();
 }

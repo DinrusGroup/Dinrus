@@ -28,7 +28,9 @@ version(Rulada)
 }
 version(Dinrus)
 {
-    import dinrus;
+    import stdrus, stringz;
+    alias stdrus.скажифнс writefln;
+    alias stringz.вТкст0 toStringz;
 }
 
 import gtkD.gtkc.paths;

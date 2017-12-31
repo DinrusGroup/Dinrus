@@ -1,85 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GFile.html
- * outPack = gio
- * outFile = File
- * strct   = GFile
- * realStrct=
- * ctorStrct=
- * clss    = File
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = GObject
- * implements:
- * prefixes:
- * 	- g_file_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- g_file_new_for_path
- * 	- g_file_new_for_uri
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AppInfo
- * 	- gtkD.gio.AppInfoIF
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.FileAttributeInfoList
- * 	- gtkD.gio.FileEnumerator
- * 	- gtkD.gio.FileInfo
- * 	- gtkD.gio.FileInputStream
- * 	- gtkD.gio.FileIOStream
- * 	- gtkD.gio.FileMonitor
- * 	- gtkD.gio.FileOutputStream
- * 	- gtkD.gio.Mount
- * 	- gtkD.gio.MountIF
- * 	- gtkD.gio.MountOperation
- * structWrap:
- * 	- GAppInfo* -> AppInfoIF
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GFile* -> File
- * 	- GFileAttributeInfoList* -> FileAttributeInfoList
- * 	- GFileEnumerator* -> FileEnumerator
- * 	- GFileIOStream* -> FileIOStream
- * 	- GFileInfo* -> FileInfo
- * 	- GFileInputStream* -> FileInputStream
- * 	- GFileMonitor* -> FileMonitor
- * 	- GFileOutputStream* -> FileOutputStream
- * 	- GMount* -> MountIF
- * 	- GMountOperation* -> MountOperation
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.File;
 
 public  import gtkD.gtkc.giotypes;
@@ -179,39 +97,16 @@ public class File : ObjectG
 	protected GFile* gFile;
 	
 	
-	public GFile* getFileStruct()
-	{
-		return gFile;
-	}
+	public GFile* getFileStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gFile;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GFile* gFile)
-	{
-		if(gFile is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gFile);
-		if( ptr !is null )
-		{
-			this = cast(File)ptr;
-			return;
-		}
-		super(cast(GObject*)gFile);
-		this.gFile = gFile;
-	}
-	
+	public this (GFile* gFile);
 	/**
 	 */
 	
@@ -225,16 +120,7 @@ public class File : ObjectG
 	 * arg =  a command line string.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string arg)
-	{
-		// GFile * g_file_new_for_commandline_arg (const char *arg);
-		auto p = g_file_new_for_commandline_arg(Str.toStringz(arg));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_file_new_for_commandline_arg(Str.toStringz(arg))");
-		}
-		this(cast(GFile*) p);
-	}
+	public this (string arg);
 	
 	/**
 	 * Constructs a GFile with the given parse_name (i.e. something given by g_file_get_parse_name()).
@@ -244,16 +130,7 @@ public class File : ObjectG
 	 * parseName =  a file name or path to be parsed.
 	 * Returns: a new GFile.
 	 */
-	public static File parseName(string parseName)
-	{
-		// GFile * g_file_parse_name (const char *parse_name);
-		auto p = g_file_parse_name(Str.toStringz(parseName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public static File parseName(string parseName);
 	
 	/**
 	 * Duplicates a GFile handle. This operation does not duplicate
@@ -262,16 +139,7 @@ public class File : ObjectG
 	 * This call does no blocking i/o.
 	 * Returns: a new GFile that is a duplicate of the given GFile.
 	 */
-	public File dup()
-	{
-		// GFile * g_file_dup (GFile *file);
-		auto p = g_file_dup(gFile);
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File dup();
 	
 	/**
 	 * Creates a hash value for a GFile.
@@ -280,11 +148,7 @@ public class File : ObjectG
 	 * file =  gconstpointer to a GFile.
 	 * Returns: 0 if file is not a valid GFile, otherwise an  integer that can be used as hash value for the GFile.  This function is intended for easily hashing a GFile to  add to a GHashTable or similar data structure.
 	 */
-	public static uint hash(void* file)
-	{
-		// guint g_file_hash (gconstpointer file);
-		return g_file_hash(file);
-	}
+	public static uint hash(void* file);
 	
 	/**
 	 * Checks equality of two given GFiles. Note that two
@@ -296,11 +160,7 @@ public class File : ObjectG
 	 * file2 =  the second GFile.
 	 * Returns: TRUE if file1 and file2 are equal. FALSE if either is not a GFile.
 	 */
-	public int equal(File file2)
-	{
-		// gboolean g_file_equal (GFile *file1,  GFile *file2);
-		return g_file_equal(gFile, (file2 is null) ? null : file2.getFileStruct());
-	}
+	public int equal(File file2);
 	
 	/**
 	 * Gets the base name (the last component of the path) for a given GFile.
@@ -315,33 +175,21 @@ public class File : ObjectG
 	 * This call does no blocking i/o.
 	 * Returns: string containing the GFile's base name, or NULL  if given GFile is invalid. The returned string should be  freed with g_free() when no longer needed.
 	 */
-	public string getBasename()
-	{
-		// char * g_file_get_basename (GFile *file);
-		return Str.toString(g_file_get_basename(gFile));
-	}
+	public string getBasename();
 	
 	/**
 	 * Gets the local pathname for GFile, if one exists.
 	 * This call does no blocking i/o.
 	 * Returns: string containing the GFile's path, or NULL if  no such path exists. The returned string should be  freed with g_free() when no longer needed.
 	 */
-	public string getPath()
-	{
-		// char * g_file_get_path (GFile *file);
-		return Str.toString(g_file_get_path(gFile));
-	}
+	public string getPath();
 	
 	/**
 	 * Gets the URI for the file.
 	 * This call does no blocking i/o.
 	 * Returns: a string containing the GFile's URI. The returned string should be freed with g_free() when no longer needed.
 	 */
-	public string getUri()
-	{
-		// char * g_file_get_uri (GFile *file);
-		return Str.toString(g_file_get_uri(gFile));
-	}
+	public string getUri();
 	
 	/**
 	 * Gets the parse name of the file.
@@ -357,11 +205,7 @@ public class File : ObjectG
 	 * This call does no blocking i/o.
 	 * Returns: a string containing the GFile's parse name. The returned  string should be freed with g_free() when no longer needed.
 	 */
-	public string getParseName()
-	{
-		// char * g_file_get_parse_name (GFile *file);
-		return Str.toString(g_file_get_parse_name(gFile));
-	}
+	public string getParseName();
 	
 	/**
 	 * Gets the parent directory for the file.
@@ -370,16 +214,7 @@ public class File : ObjectG
 	 * This call does no blocking i/o.
 	 * Returns: a GFile structure to the parent of the given GFile or NULL if there is no parent.  Free the returned object with g_object_unref().
 	 */
-	public File getParent()
-	{
-		// GFile * g_file_get_parent (GFile *file);
-		auto p = g_file_get_parent(gFile);
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File getParent();
 	
 	/**
 	 * Gets a child of file with basename equal to name.
@@ -391,16 +226,7 @@ public class File : ObjectG
 	 * name =  string containing the child's basename.
 	 * Returns: a GFile to a child specified by name. Free the returned object with g_object_unref().
 	 */
-	public File getChild(string name)
-	{
-		// GFile * g_file_get_child (GFile *file,  const char *name);
-		auto p = g_file_get_child(gFile, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File getChild(string name);
 	
 	/**
 	 * Gets the child of file for a given display_name (i.e. a UTF8
@@ -414,24 +240,7 @@ public class File : ObjectG
 	 * Returns: a GFile to the specified child, or  NULL if the display name couldn't be converted.  Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public File getChildForDisplayName(string displayName)
-	{
-		// GFile * g_file_get_child_for_display_name (GFile *file,  const char *display_name,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_get_child_for_display_name(gFile, Str.toStringz(displayName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File getChildForDisplayName(string displayName);
 	
 	/**
 	 * Checks whether file has the prefix specified by prefix. In other word,
@@ -446,11 +255,7 @@ public class File : ObjectG
 	 * prefix =  input GFile.
 	 * Returns: TRUE if the files's parent, grandparent, etc is prefix.  FALSE otherwise.
 	 */
-	public int hasPrefix(File prefix)
-	{
-		// gboolean g_file_has_prefix (GFile *file,  GFile *prefix);
-		return g_file_has_prefix(gFile, (prefix is null) ? null : prefix.getFileStruct());
-	}
+	public int hasPrefix(File prefix);
 	
 	/**
 	 * Gets the path for descendant relative to parent.
@@ -459,11 +264,7 @@ public class File : ObjectG
 	 * descendant =  input GFile.
 	 * Returns: string with the relative path from descendant  to parent, or NULL if descendant doesn't have parent as prefix.  The returned string should be freed with g_free() when no longer needed.
 	 */
-	public string getRelativePath(File descendant)
-	{
-		// char * g_file_get_relative_path (GFile *parent,  GFile *descendant);
-		return Str.toString(g_file_get_relative_path(gFile, (descendant is null) ? null : descendant.getFileStruct()));
-	}
+	public string getRelativePath(File descendant);
 	
 	/**
 	 * Resolves a relative path for file to an absolute path.
@@ -472,16 +273,7 @@ public class File : ObjectG
 	 * relativePath =  a given relative path string.
 	 * Returns: GFile to the resolved path. NULL if relative_path  is NULL or if file is invalid. Free the returned object with g_object_unref().
 	 */
-	public File resolveRelativePath(string relativePath)
-	{
-		// GFile * g_file_resolve_relative_path (GFile *file,  const char *relative_path);
-		auto p = g_file_resolve_relative_path(gFile, Str.toStringz(relativePath));
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File resolveRelativePath(string relativePath);
 	
 	/**
 	 * Checks to see if a file is native to the platform.
@@ -495,11 +287,7 @@ public class File : ObjectG
 	 * This call does no blocking i/o.
 	 * Returns: TRUE if file is native.
 	 */
-	public int isNative()
-	{
-		// gboolean g_file_is_native (GFile *file);
-		return g_file_is_native(gFile);
-	}
+	public int isNative();
 	
 	/**
 	 * Checks to see if a GFile has a given URI scheme.
@@ -508,21 +296,13 @@ public class File : ObjectG
 	 * uriScheme =  a string containing a URI scheme.
 	 * Returns: TRUE if GFile's backend supports the given URI scheme, FALSE if URI scheme is NULL, not supported, or GFile is invalid.
 	 */
-	public int hasUriScheme(string uriScheme)
-	{
-		// gboolean g_file_has_uri_scheme (GFile *file,  const char *uri_scheme);
-		return g_file_has_uri_scheme(gFile, Str.toStringz(uriScheme));
-	}
+	public int hasUriScheme(string uriScheme);
 	
 	/**
 	 * Gets the URI scheme for a GFile.
 	 * Returns: a string containing the URI scheme for the given  GFile. The returned string should be freed with g_free()  when no longer needed.
 	 */
-	public string getUriScheme()
-	{
-		// char * g_file_get_uri_scheme (GFile *file);
-		return Str.toString(g_file_get_uri_scheme(gFile));
-	}
+	public string getUriScheme();
 	
 	/**
 	 * Opens a file for reading. The result is a GFileInputStream that
@@ -538,24 +318,7 @@ public class File : ObjectG
 	 * Returns: GFileInputStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInputStream read(Cancellable cancellable)
-	{
-		// GFileInputStream * g_file_read (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_read(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInputStream(cast(GFileInputStream*) p);
-	}
+	public FileInputStream read(Cancellable cancellable);
 	
 	/**
 	 * Asynchronously opens file for reading.
@@ -570,11 +333,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void readAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_read_async (GFile *file,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_read_async(gFile, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void readAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file read operation started with
@@ -584,24 +343,7 @@ public class File : ObjectG
 	 * Returns: a GFileInputStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInputStream readFinish(AsyncResultIF res)
-	{
-		// GFileInputStream * g_file_read_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_read_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInputStream(cast(GFileInputStream*) p);
-	}
+	public FileInputStream readFinish(AsyncResultIF res);
 	
 	/**
 	 * Gets an output stream for appending data to the file. If
@@ -624,24 +366,7 @@ public class File : ObjectG
 	 * Returns: a GFileOutputStream, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream appendTo(GFileCreateFlags flags, Cancellable cancellable)
-	{
-		// GFileOutputStream * g_file_append_to (GFile *file,  GFileCreateFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_append_to(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream appendTo(GFileCreateFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Creates a new file and returns an output stream for writing to it.
@@ -666,24 +391,7 @@ public class File : ObjectG
 	 * Returns: a GFileOutputStream for the newly created file, or  NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream create(GFileCreateFlags flags, Cancellable cancellable)
-	{
-		// GFileOutputStream * g_file_create (GFile *file,  GFileCreateFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_create(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream create(GFileCreateFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Returns an output stream for overwriting the file, possibly
@@ -730,24 +438,7 @@ public class File : ObjectG
 	 * Returns: a GFileOutputStream or NULL on error.  Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream replace(string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable)
-	{
-		// GFileOutputStream * g_file_replace (GFile *file,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_replace(gFile, Str.toStringz(etag), makeBackup, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream replace(string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously opens file for appending.
@@ -763,11 +454,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void appendToAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_append_to_async (GFile *file,  GFileCreateFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_append_to_async(gFile, flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void appendToAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file append operation started with
@@ -777,24 +464,7 @@ public class File : ObjectG
 	 * Returns: a valid GFileOutputStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream appendToFinish(AsyncResultIF res)
-	{
-		// GFileOutputStream * g_file_append_to_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_append_to_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream appendToFinish(AsyncResultIF res);
 	
 	/**
 	 * Asynchronously creates a new file and returns an output stream for writing to it.
@@ -811,12 +481,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void createAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_create_async (GFile *file,  GFileCreateFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_create_async(gFile, flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
-	
+	public void createAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	/**
 	 * Finishes an asynchronous file create operation started with
 	 * g_file_create_async().
@@ -825,24 +490,7 @@ public class File : ObjectG
 	 * Returns: a GFileOutputStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream createFinish(AsyncResultIF res)
-	{
-		// GFileOutputStream * g_file_create_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_create_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream createFinish(AsyncResultIF res);
 	
 	/**
 	 * Asynchronously overwrites the file, replacing the contents, possibly
@@ -862,11 +510,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void replaceAsync(string etag, int makeBackup, GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_replace_async (GFile *file,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_replace_async(gFile, Str.toStringz(etag), makeBackup, flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void replaceAsync(string etag, int makeBackup, GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file replace operation started with
@@ -876,24 +520,7 @@ public class File : ObjectG
 	 * Returns: a GFileOutputStream, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileOutputStream replaceFinish(AsyncResultIF res)
-	{
-		// GFileOutputStream * g_file_replace_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_replace_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileOutputStream(cast(GFileOutputStream*) p);
-	}
+	public FileOutputStream replaceFinish(AsyncResultIF res);
 	
 	/**
 	 * Gets the requested information about specified file. The result
@@ -924,24 +551,7 @@ public class File : ObjectG
 	 * Returns: a GFileInfo for the given file, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryInfo(string attributes, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// GFileInfo * g_file_query_info (GFile *file,  const char *attributes,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_info(gFile, Str.toStringz(attributes), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryInfo(string attributes, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously gets the requested information about specified file. The result
@@ -960,11 +570,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void queryInfoAsync(string attributes, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_query_info_async (GFile *file,  const char *attributes,  GFileQueryInfoFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_query_info_async(gFile, Str.toStringz(attributes), flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void queryInfoAsync(string attributes, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file info query.
@@ -974,24 +580,7 @@ public class File : ObjectG
 	 * Returns: GFileInfo for given file or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryInfoFinish(AsyncResultIF res)
-	{
-		// GFileInfo * g_file_query_info_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_info_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryInfoFinish(AsyncResultIF res);
 	
 	/**
 	 * Utility function to check if a particular file exists. This is
@@ -1017,11 +606,7 @@ public class File : ObjectG
 	 * cancellable =  optional GCancellable object, NULL to ignore.
 	 * Returns: TRUE if the file exists (and can be detected without error), FALSE otherwise (or if cancelled).
 	 */
-	public int queryExists(Cancellable cancellable)
-	{
-		// gboolean g_file_query_exists (GFile *file,  GCancellable *cancellable);
-		return g_file_query_exists(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct());
-	}
+	public int queryExists(Cancellable cancellable);
 	
 	/**
 	 * Utility function to inspect the GFileType of a file. This is
@@ -1034,11 +619,7 @@ public class File : ObjectG
 	 * cancellable =  optional GCancellable object, NULL to ignore.
 	 * Returns: The GFileType of the file and G_FILE_TYPE_UNKNOWN if the file does not exist
 	 */
-	public GFileType queryFileType(GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// GFileType g_file_query_file_type (GFile *file,  GFileQueryInfoFlags flags,  GCancellable *cancellable);
-		return g_file_query_file_type(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct());
-	}
+	public GFileType queryFileType(GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Similar to g_file_query_info(), but obtains information
@@ -1065,24 +646,7 @@ public class File : ObjectG
 	 * Returns: a GFileInfo or NULL if there was an error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryFilesystemInfo(string attributes, Cancellable cancellable)
-	{
-		// GFileInfo * g_file_query_filesystem_info (GFile *file,  const char *attributes,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_filesystem_info(gFile, Str.toStringz(attributes), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryFilesystemInfo(string attributes, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously gets the requested information about the filesystem
@@ -1102,11 +666,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void queryFilesystemInfoAsync(string attributes, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_query_filesystem_info_async (GFile *file,  const char *attributes,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_query_filesystem_info_async(gFile, Str.toStringz(attributes), ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void queryFilesystemInfoAsync(string attributes, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous filesystem info query. See
@@ -1116,24 +676,7 @@ public class File : ObjectG
 	 * Returns: GFileInfo for given file or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileInfo queryFilesystemInfoFinish(AsyncResultIF res)
-	{
-		// GFileInfo * g_file_query_filesystem_info_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_filesystem_info_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileInfo(cast(GFileInfo*) p);
-	}
+	public FileInfo queryFilesystemInfoFinish(AsyncResultIF res);
 	
 	/**
 	 * Returns the GAppInfo that is registered as the default
@@ -1146,24 +689,7 @@ public class File : ObjectG
 	 * Returns: a GAppInfo if the handle was found, NULL if there were errors.When you are done with it, release it with g_object_unref()
 	 * Throws: GException on failure.
 	 */
-	public AppInfoIF queryDefaultHandler(Cancellable cancellable)
-	{
-		// GAppInfo * g_file_query_default_handler (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_default_handler(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new AppInfo(cast(GAppInfo*) p);
-	}
+	public AppInfoIF queryDefaultHandler(Cancellable cancellable);
 	
 	/**
 	 * Gets a GMount for the GFile.
@@ -1178,24 +704,7 @@ public class File : ObjectG
 	 * Returns: a GMount where the file is located or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public MountIF findEnclosingMount(Cancellable cancellable)
-	{
-		// GMount * g_file_find_enclosing_mount (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_find_enclosing_mount(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Mount(cast(GMount*) p);
-	}
+	public MountIF findEnclosingMount(Cancellable cancellable);
 	
 	/**
 	 * Asynchronously gets the mount for the file.
@@ -1210,11 +719,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void findEnclosingMountAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_find_enclosing_mount_async (GFile *file,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_find_enclosing_mount_async(gFile, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void findEnclosingMountAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous find mount request.
@@ -1224,24 +729,7 @@ public class File : ObjectG
 	 * Returns: GMount for given file or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public MountIF findEnclosingMountFinish(AsyncResultIF res)
-	{
-		// GMount * g_file_find_enclosing_mount_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_find_enclosing_mount_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Mount(cast(GMount*) p);
-	}
+	public MountIF findEnclosingMountFinish(AsyncResultIF res);
 	
 	/**
 	 * Gets the requested information about the files in a directory. The result
@@ -1267,24 +755,7 @@ public class File : ObjectG
 	 * Returns: A GFileEnumerator if successful, NULL on error.  Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileEnumerator enumerateChildren(string attributes, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// GFileEnumerator * g_file_enumerate_children (GFile *file,  const char *attributes,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerate_children(gFile, Str.toStringz(attributes), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileEnumerator(cast(GFileEnumerator*) p);
-	}
+	public FileEnumerator enumerateChildren(string attributes, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously gets the requested information about the files in a directory. The result
@@ -1303,11 +774,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void enumerateChildrenAsync(string attributes, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_enumerate_children_async (GFile *file,  const char *attributes,  GFileQueryInfoFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_enumerate_children_async(gFile, Str.toStringz(attributes), flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void enumerateChildrenAsync(string attributes, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async enumerate children operation.
@@ -1317,23 +784,7 @@ public class File : ObjectG
 	 * Returns: a GFileEnumerator or NULL if an error occurred. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileEnumerator enumerateChildrenFinish(AsyncResultIF res)
-	{
-		// GFileEnumerator * g_file_enumerate_children_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerate_children_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileEnumerator(cast(GFileEnumerator*) p);
+	public FileEnumerator enumerateChildrenFinish(AsyncResultIF res);
 	}
 	
 	/**
@@ -1353,24 +804,7 @@ public class File : ObjectG
 	 * Returns: a GFile specifying what file was renamed to, or NULL  if there was an error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public File setDisplayName(string displayName, Cancellable cancellable)
-	{
-		// GFile * g_file_set_display_name (GFile *file,  const char *display_name,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_display_name(gFile, Str.toStringz(displayName), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File setDisplayName(string displayName, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously sets the display name for a given GFile.
@@ -1386,11 +820,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void setDisplayNameAsync(string displayName, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_set_display_name_async (GFile *file,  const char *display_name,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_set_display_name_async(gFile, Str.toStringz(displayName), ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void setDisplayNameAsync(string displayName, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes setting a display name started with
@@ -1400,24 +830,7 @@ public class File : ObjectG
 	 * Returns: a GFile or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public File setDisplayNameFinish(AsyncResultIF res)
-	{
-		// GFile * g_file_set_display_name_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_display_name_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File setDisplayNameFinish(AsyncResultIF res);
 	
 	/**
 	 * Deletes a file. If the file is a directory, it will only be deleted if it
@@ -1430,20 +843,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the file was deleted. FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int delet(Cancellable cancellable)
-	{
-		// gboolean g_file_delete (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_delete(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int delet(Cancellable cancellable);
 	
 	/**
 	 * Sends file to the "Trashcan", if possible. This is similar to
@@ -1458,20 +858,7 @@ public class File : ObjectG
 	 * Returns: TRUE on successful trash, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int trash(Cancellable cancellable)
-	{
-		// gboolean g_file_trash (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_trash(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int trash(Cancellable cancellable);
 	
 	/**
 	 * Copies the file source to the location specified by destination.
@@ -1510,20 +897,7 @@ public class File : ObjectG
 	 * Returns: TRUE on success, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int copy(File destination, GFileCopyFlags flags, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData)
-	{
-		// gboolean g_file_copy (GFile *source,  GFile *destination,  GFileCopyFlags flags,  GCancellable *cancellable,  GFileProgressCallback progress_callback,  gpointer progress_callback_data,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_copy(gFile, (destination is null) ? null : destination.getFileStruct(), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), progressCallback, progressCallbackData, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int copy(File destination, GFileCopyFlags flags, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData);
 	
 	/**
 	 * Copies the file source to the location specified by destination
@@ -1544,11 +918,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void copyAsync(File destination, GFileCopyFlags flags, int ioPriority, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_copy_async (GFile *source,  GFile *destination,  GFileCopyFlags flags,  int io_priority,  GCancellable *cancellable,  GFileProgressCallback progress_callback,  gpointer progress_callback_data,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_copy_async(gFile, (destination is null) ? null : destination.getFileStruct(), flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), progressCallback, progressCallbackData, callback, userData);
-	}
+	public void copyAsync(File destination, GFileCopyFlags flags, int ioPriority, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes copying the file started with
@@ -1558,20 +928,7 @@ public class File : ObjectG
 	 * Returns: a TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int copyFinish(AsyncResultIF res)
-	{
-		// gboolean g_file_copy_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_copy_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int copyFinish(AsyncResultIF res);
 	
 	/**
 	 * Tries to move the file or directory source to the location specified by destination.
@@ -1610,20 +967,7 @@ public class File : ObjectG
 	 * Returns: TRUE on successful move, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int move(File destination, GFileCopyFlags flags, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData)
-	{
-		// gboolean g_file_move (GFile *source,  GFile *destination,  GFileCopyFlags flags,  GCancellable *cancellable,  GFileProgressCallback progress_callback,  gpointer progress_callback_data,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_move(gFile, (destination is null) ? null : destination.getFileStruct(), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), progressCallback, progressCallbackData, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int move(File destination, GFileCopyFlags flags, Cancellable cancellable, GFileProgressCallback progressCallback, void* progressCallbackData);
 	
 	/**
 	 * Creates a directory. Note that this will only create a child directory of
@@ -1643,20 +987,7 @@ public class File : ObjectG
 	 * Returns: TRUE on successful creation, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int makeDirectory(Cancellable cancellable)
-	{
-		// gboolean g_file_make_directory (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_make_directory(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int makeDirectory(Cancellable cancellable);
 	
 	/**
 	 * Creates a directory and any parent directories that may not exist similar to
@@ -1673,20 +1004,7 @@ public class File : ObjectG
 	 * Returns: TRUE if all directories have been successfully created, FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int makeDirectoryWithParents(Cancellable cancellable)
-	{
-		// gboolean g_file_make_directory_with_parents (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_make_directory_with_parents(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int makeDirectoryWithParents(Cancellable cancellable);
 	
 	/**
 	 * Creates a symbolic link.
@@ -1699,20 +1017,7 @@ public class File : ObjectG
 	 * Returns: TRUE on the creation of a new symlink, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int makeSymbolicLink(string symlinkValue, Cancellable cancellable)
-	{
-		// gboolean g_file_make_symbolic_link (GFile *file,  const char *symlink_value,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_make_symbolic_link(gFile, Str.toStringz(symlinkValue), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int makeSymbolicLink(string symlinkValue, Cancellable cancellable);
 	
 	/**
 	 * Obtain the list of settable attributes for the file.
@@ -1728,24 +1033,7 @@ public class File : ObjectG
 	 * Returns: a GFileAttributeInfoList describing the settable attributes.When you are done with it, release it with g_file_attribute_info_list_unref()
 	 * Throws: GException on failure.
 	 */
-	public FileAttributeInfoList querySettableAttributes(Cancellable cancellable)
-	{
-		// GFileAttributeInfoList * g_file_query_settable_attributes  (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_settable_attributes(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
-	}
+	public FileAttributeInfoList querySettableAttributes(Cancellable cancellable);
 	
 	/**
 	 * Obtain the list of attribute namespaces where new attributes
@@ -1759,24 +1047,7 @@ public class File : ObjectG
 	 * Returns: a GFileAttributeInfoList describing the writable namespaces.When you are done with it, release it with g_file_attribute_info_list_unref()
 	 * Throws: GException on failure.
 	 */
-	public FileAttributeInfoList queryWritableNamespaces(Cancellable cancellable)
-	{
-		// GFileAttributeInfoList * g_file_query_writable_namespaces  (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_query_writable_namespaces(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
-	}
+	public FileAttributeInfoList queryWritableNamespaces(Cancellable cancellable);
 	
 	/**
 	 * Sets an attribute in the file with attribute name attribute to value.
@@ -1792,20 +1063,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was set, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttribute(string attribute, GFileAttributeType type, void* valueP, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute (GFile *file,  const char *attribute,  GFileAttributeType type,  gpointer value_p,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute(gFile, Str.toStringz(attribute), type, valueP, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttribute(string attribute, GFileAttributeType type, void* valueP, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Tries to set all attributes in the GFileInfo on the target values,
@@ -1825,20 +1083,7 @@ public class File : ObjectG
 	 * Returns: TRUE if there was any error, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributesFromInfo(FileInfo info, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attributes_from_info (GFile *file,  GFileInfo *info,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attributes_from_info(gFile, (info is null) ? null : info.getFileInfoStruct(), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributesFromInfo(FileInfo info, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously sets the attributes of file with info.
@@ -1855,11 +1100,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback.
 	 * userData =  a gpointer.
 	 */
-	public void setAttributesAsync(FileInfo info, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_set_attributes_async (GFile *file,  GFileInfo *info,  GFileQueryInfoFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_set_attributes_async(gFile, (info is null) ? null : info.getFileInfoStruct(), flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void setAttributesAsync(FileInfo info, GFileQueryInfoFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes setting an attribute started in g_file_set_attributes_async().
@@ -1869,22 +1110,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attributes were set correctly, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributesFinish(AsyncResultIF result, out FileInfo info)
-	{
-		// gboolean g_file_set_attributes_finish (GFile *file,  GAsyncResult *result,  GFileInfo **info,  GError **error);
-		GFileInfo* outinfo = null;
-		GError* err = null;
-		
-		auto p = g_file_set_attributes_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &outinfo, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		info = new FileInfo(outinfo);
-		return p;
-	}
+	public int setAttributesFinish(AsyncResultIF result, out FileInfo info);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_STRING to value.
@@ -1900,20 +1126,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeString(string attribute, string value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_string (GFile *file,  const char *attribute,  const char *value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_string(gFile, Str.toStringz(attribute), Str.toStringz(value), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeString(string attribute, string value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_BYTE_STRING to value.
@@ -1930,20 +1143,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set to value in the file, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeByteString(string attribute, string value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_byte_string (GFile *file,  const char *attribute,  const char *value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_byte_string(gFile, Str.toStringz(attribute), Str.toStringz(value), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeByteString(string attribute, string value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_UINT32 to value.
@@ -1959,20 +1159,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set to value in the file, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeUint32(string attribute, uint value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_uint32 (GFile *file,  const char *attribute,  guint32 value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_uint32(gFile, Str.toStringz(attribute), value, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeUint32(string attribute, uint value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_INT32 to value.
@@ -1988,20 +1175,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set to value in the file, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeInt32(string attribute, int value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_int32 (GFile *file,  const char *attribute,  gint32 value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_int32(gFile, Str.toStringz(attribute), value, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeInt32(string attribute, int value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_UINT64 to value.
@@ -2017,20 +1191,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set to value in the file, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeUint64(string attribute, ulong value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_uint64 (GFile *file,  const char *attribute,  guint64 value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_uint64(gFile, Str.toStringz(attribute), value, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeUint64(string attribute, ulong value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Sets attribute of type G_FILE_ATTRIBUTE_TYPE_INT64 to value.
@@ -2046,20 +1207,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attribute was successfully set, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int setAttributeInt64(string attribute, long value, GFileQueryInfoFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_set_attribute_int64 (GFile *file,  const char *attribute,  gint64 value,  GFileQueryInfoFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_set_attribute_int64(gFile, Str.toStringz(attribute), value, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAttributeInt64(string attribute, long value, GFileQueryInfoFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
@@ -2077,11 +1225,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void mountMountable(GMountMountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_mount_mountable (GFile *file,  GMountMountFlags flags,  GMountOperation *mount_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_mount_mountable(gFile, flags, (mountOperation is null) ? null : mountOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void mountMountable(GMountMountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a mount operation. See g_file_mount_mountable() for details.
@@ -2092,24 +1236,7 @@ public class File : ObjectG
 	 * Returns: a GFile or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public File mountMountableFinish(AsyncResultIF result)
-	{
-		// GFile * g_file_mount_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_mount_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File mountMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Warning
@@ -2126,12 +1253,8 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void unmountMountable(GMountUnmountFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_unmount_mountable (GFile *file,  GMountUnmountFlags flags,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_unmount_mountable(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
-	
+	public void unmountMountable(GMountUnmountFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
+
 	/**
 	 * Warning
 	 * g_file_unmount_mountable_finish has been deprecated since version 2.22 and should not be used in newly-written code. Use g_file_unmount_mountable_with_operation_finish() instead.
@@ -2143,20 +1266,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the operation finished successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int unmountMountableFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_unmount_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_unmount_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int unmountMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
@@ -2173,11 +1283,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void unmountMountableWithOperation(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_unmount_mountable_with_operation  (GFile *file,  GMountUnmountFlags flags,  GMountOperation *mount_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_unmount_mountable_with_operation(gFile, flags, (mountOperation is null) ? null : mountOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void unmountMountableWithOperation(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an unmount operation, see g_file_unmount_mountable_with_operation() for details.
@@ -2189,20 +1295,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the operation finished successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int unmountMountableWithOperationFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_unmount_mountable_with_operation_finish  (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_unmount_mountable_with_operation_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int unmountMountableWithOperationFinish(AsyncResultIF result);
 	
 	/**
 	 * Warning
@@ -2220,11 +1313,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void ejectMountable(GMountUnmountFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_eject_mountable (GFile *file,  GMountUnmountFlags flags,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_eject_mountable(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void ejectMountable(GMountUnmountFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Warning
@@ -2236,20 +1325,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the file was ejected successfully. FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int ejectMountableFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_eject_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_eject_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int ejectMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Starts an asynchronous eject on a mountable.
@@ -2267,11 +1343,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void ejectMountableWithOperation(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_eject_mountable_with_operation  (GFile *file,  GMountUnmountFlags flags,  GMountOperation *mount_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_eject_mountable_with_operation(gFile, flags, (mountOperation is null) ? null : mountOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void ejectMountableWithOperation(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous eject operation started by
@@ -2282,20 +1354,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the file was ejected successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int ejectMountableWithOperationFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_eject_mountable_with_operation_finish  (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_eject_mountable_with_operation_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int ejectMountableWithOperationFinish(AsyncResultIF result);
 	
 	/**
 	 * Starts a file of type G_FILE_TYPE_MOUNTABLE.
@@ -2314,11 +1373,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void startMountable(GDriveStartFlags flags, MountOperation startOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_start_mountable (GFile *file,  GDriveStartFlags flags,  GMountOperation *start_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_start_mountable(gFile, flags, (startOperation is null) ? null : startOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void startMountable(GDriveStartFlags flags, MountOperation startOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a start operation. See g_file_start_mountable() for details.
@@ -2330,20 +1385,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the operation finished successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int startMountableFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_start_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_start_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int startMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Stops a file of type G_FILE_TYPE_MOUNTABLE.
@@ -2360,11 +1402,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void stopMountable(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_stop_mountable (GFile *file,  GMountUnmountFlags flags,  GMountOperation *mount_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_stop_mountable(gFile, flags, (mountOperation is null) ? null : mountOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void stopMountable(GMountUnmountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an stop operation, see g_file_stop_mountable() for details.
@@ -2376,20 +1414,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the operation finished successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int stopMountableFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_stop_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_stop_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int stopMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Polls a file of type G_FILE_TYPE_MOUNTABLE.
@@ -2404,11 +1429,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void pollMountable(Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_poll_mountable (GFile *file,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_poll_mountable(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void pollMountable(Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a poll operation. See g_file_poll_mountable() for details.
@@ -2420,20 +1441,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the operation finished successfully. FALSEotherwise.
 	 * Throws: GException on failure.
 	 */
-	public int pollMountableFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_poll_mountable_finish (GFile *file,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_poll_mountable_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int pollMountableFinish(AsyncResultIF result);
 	
 	/**
 	 * Starts a mount_operation, mounting the volume that contains the file location.
@@ -2450,11 +1458,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied, or NULL.
 	 * userData =  the data to pass to callback function
 	 */
-	public void mountEnclosingVolume(GMountMountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_mount_enclosing_volume (GFile *location,  GMountMountFlags flags,  GMountOperation *mount_operation,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_mount_enclosing_volume(gFile, flags, (mountOperation is null) ? null : mountOperation.getMountOperationStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void mountEnclosingVolume(GMountMountFlags flags, MountOperation mountOperation, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a mount operation started by g_file_mount_enclosing_volume().
@@ -2463,20 +1467,7 @@ public class File : ObjectG
 	 * Returns: TRUE if successful. If an errorhas occurred, this function will return FALSE and set errorappropriately if present.
 	 * Throws: GException on failure.
 	 */
-	public int mountEnclosingVolumeFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_mount_enclosing_volume_finish  (GFile *location,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_mount_enclosing_volume_finish(gFile, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int mountEnclosingVolumeFinish(AsyncResultIF result);
 	
 	/**
 	 * Obtains a directory monitor for the given file.
@@ -2490,24 +1481,7 @@ public class File : ObjectG
 	 * Returns: a GFileMonitor for the given file, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileMonitor monitorDirectory(GFileMonitorFlags flags, Cancellable cancellable)
-	{
-		// GFileMonitor* g_file_monitor_directory (GFile *file,  GFileMonitorFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_monitor_directory(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileMonitor(cast(GFileMonitor*) p);
-	}
+	public FileMonitor monitorDirectory(GFileMonitorFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Obtains a file monitor for the given file. If no file notification
@@ -2521,24 +1495,7 @@ public class File : ObjectG
 	 * Returns: a GFileMonitor for the given file, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileMonitor monitorFile(GFileMonitorFlags flags, Cancellable cancellable)
-	{
-		// GFileMonitor* g_file_monitor_file (GFile *file,  GFileMonitorFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_monitor_file(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileMonitor(cast(GFileMonitor*) p);
-	}
+	public FileMonitor monitorFile(GFileMonitorFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Obtains a file or directory monitor for the given file, depending
@@ -2553,24 +1510,7 @@ public class File : ObjectG
 	 * Returns: a GFileMonitor for the given file, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileMonitor monitor(GFileMonitorFlags flags, Cancellable cancellable)
-	{
-		// GFileMonitor* g_file_monitor (GFile *file,  GFileMonitorFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_monitor(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileMonitor(cast(GFileMonitor*) p);
-	}
+	public FileMonitor monitor(GFileMonitorFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Loads the content of the file into memory. The data is always
@@ -2590,24 +1530,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the file's contents were successfully loaded.FALSE if there were errors.
 	 * Throws: GException on failure.
 	 */
-	public int loadContents(Cancellable cancellable, out string contents, out uint length, out string etagOut)
-	{
-		// gboolean g_file_load_contents (GFile *file,  GCancellable *cancellable,  char **contents,  gsize *length,  char **etag_out,  GError **error);
-		char* outcontents = null;
-		char* outetagOut = null;
-		GError* err = null;
-		
-		auto p = g_file_load_contents(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &outcontents, &length, &outetagOut, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		contents = Str.toString(outcontents);
-		etagOut = Str.toString(outetagOut);
-		return p;
-	}
+	public int loadContents(Cancellable cancellable, out string contents, out uint length, out string etagOut);
 	
 	/**
 	 * Starts an asynchronous load of the file's contents.
@@ -2625,11 +1548,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void loadContentsAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_load_contents_async (GFile *file,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_load_contents_async(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void loadContentsAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous load of the file's contents.
@@ -2647,24 +1566,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the load was successful. If FALSE and error is present, it will be set appropriately.
 	 * Throws: GException on failure.
 	 */
-	public int loadContentsFinish(AsyncResultIF res, out string contents, out uint length, out string etagOut)
-	{
-		// gboolean g_file_load_contents_finish (GFile *file,  GAsyncResult *res,  char **contents,  gsize *length,  char **etag_out,  GError **error);
-		char* outcontents = null;
-		char* outetagOut = null;
-		GError* err = null;
-		
-		auto p = g_file_load_contents_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &outcontents, &length, &outetagOut, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		contents = Str.toString(outcontents);
-		etagOut = Str.toString(outetagOut);
-		return p;
-	}
+	public int loadContentsFinish(AsyncResultIF res, out string contents, out uint length, out string etagOut);
 	
 	/**
 	 * Reads the partial contents of a file. A GFileReadMoreCallback should be
@@ -2682,11 +1584,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to the callback functions.
 	 */
-	public void loadPartialContentsAsync(Cancellable cancellable, GFileReadMoreCallback readMoreCallback, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_load_partial_contents_async (GFile *file,  GCancellable *cancellable,  GFileReadMoreCallback read_more_callback,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_load_partial_contents_async(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), readMoreCallback, callback, userData);
-	}
+	public void loadPartialContentsAsync(Cancellable cancellable, GFileReadMoreCallback readMoreCallback, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous partial load operation that was started
@@ -2704,24 +1602,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the load was successful. If FALSE and error is present, it will be set appropriately.
 	 * Throws: GException on failure.
 	 */
-	public int loadPartialContentsFinish(AsyncResultIF res, out string contents, out uint length, out string etagOut)
-	{
-		// gboolean g_file_load_partial_contents_finish (GFile *file,  GAsyncResult *res,  char **contents,  gsize *length,  char **etag_out,  GError **error);
-		char* outcontents = null;
-		char* outetagOut = null;
-		GError* err = null;
-		
-		auto p = g_file_load_partial_contents_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &outcontents, &length, &outetagOut, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		contents = Str.toString(outcontents);
-		etagOut = Str.toString(outetagOut);
-		return p;
-	}
+	public int loadPartialContentsFinish(AsyncResultIF res, out string contents, out uint length, out string etagOut);
 	
 	/**
 	 * Replaces the contents of file with contents of length bytes.
@@ -2747,22 +1628,7 @@ public class File : ObjectG
 	 * Returns: TRUE if successful. If an errorhas occurred, this function will return FALSE and set errorappropriately if present.
 	 * Throws: GException on failure.
 	 */
-	public int replaceContents(string contents, uint length, string etag, int makeBackup, GFileCreateFlags flags, out string newEtag, Cancellable cancellable)
-	{
-		// gboolean g_file_replace_contents (GFile *file,  const char *contents,  gsize length,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  char **new_etag,  GCancellable *cancellable,  GError **error);
-		char* outnewEtag = null;
-		GError* err = null;
-		
-		auto p = g_file_replace_contents(gFile, Str.toStringz(contents), length, Str.toStringz(etag), makeBackup, flags, &outnewEtag, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		newEtag = Str.toString(outnewEtag);
-		return p;
-	}
+	public int replaceContents(string contents, uint length, string etag, int makeBackup, GFileCreateFlags flags, out string newEtag, Cancellable cancellable);
 	
 	/**
 	 * Starts an asynchronous replacement of file with the given
@@ -2786,11 +1652,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void replaceContentsAsync(string contents, uint length, string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_replace_contents_async (GFile *file,  const char *contents,  gsize length,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_replace_contents_async(gFile, Str.toStringz(contents), length, Str.toStringz(etag), makeBackup, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void replaceContentsAsync(string contents, uint length, string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous replace of the given file. See
@@ -2804,22 +1666,7 @@ public class File : ObjectG
 	 * Returns: TRUE on success, FALSE on failure.
 	 * Throws: GException on failure.
 	 */
-	public int replaceContentsFinish(AsyncResultIF res, out string newEtag)
-	{
-		// gboolean g_file_replace_contents_finish (GFile *file,  GAsyncResult *res,  char **new_etag,  GError **error);
-		char* outnewEtag = null;
-		GError* err = null;
-		
-		auto p = g_file_replace_contents_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &outnewEtag, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		newEtag = Str.toString(outnewEtag);
-		return p;
-	}
+	public int replaceContentsFinish(AsyncResultIF res, out string newEtag);
 	
 	/**
 	 * Copies the file attributes from source to destination.
@@ -2836,20 +1683,7 @@ public class File : ObjectG
 	 * Returns: TRUE if the attributes were copied successfully, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int copyAttributes(File destination, GFileCopyFlags flags, Cancellable cancellable)
-	{
-		// gboolean g_file_copy_attributes (GFile *source,  GFile *destination,  GFileCopyFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_copy_attributes(gFile, (destination is null) ? null : destination.getFileStruct(), flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int copyAttributes(File destination, GFileCopyFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Creates a new file and returns a stream for reading and writing to it.
@@ -2876,24 +1710,7 @@ public class File : ObjectG
 	 * Returns: a GFileIOStream for the newly created file, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream createReadwrite(GFileCreateFlags flags, Cancellable cancellable)
-	{
-		// GFileIOStream * g_file_create_readwrite (GFile *file,  GFileCreateFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_create_readwrite(gFile, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream createReadwrite(GFileCreateFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously creates a new file and returns a stream for reading and
@@ -2911,11 +1728,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void createReadwriteAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_create_readwrite_async (GFile *file,  GFileCreateFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_create_readwrite_async(gFile, flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void createReadwriteAsync(GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file create operation started with
@@ -2926,24 +1739,7 @@ public class File : ObjectG
 	 * Returns: a GFileIOStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream createReadwriteFinish(AsyncResultIF res)
-	{
-		// GFileIOStream * g_file_create_readwrite_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_create_readwrite_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream createReadwriteFinish(AsyncResultIF res);
 	
 	/**
 	 * Opens an existing file for reading and writing. The result is
@@ -2963,24 +1759,7 @@ public class File : ObjectG
 	 * Returns: GFileIOStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream openReadwrite(Cancellable cancellable)
-	{
-		// GFileIOStream * g_file_open_readwrite (GFile *file,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_open_readwrite(gFile, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream openReadwrite(Cancellable cancellable);
 	
 	/**
 	 * Asynchronously opens file for reading and writing.
@@ -2996,11 +1775,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void openReadwriteAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_open_readwrite_async (GFile *file,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_open_readwrite_async(gFile, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void openReadwriteAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file read operation started with
@@ -3011,24 +1786,7 @@ public class File : ObjectG
 	 * Returns: a GFileIOStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream openReadwriteFinish(AsyncResultIF res)
-	{
-		// GFileIOStream * g_file_open_readwrite_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_open_readwrite_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream openReadwriteFinish(AsyncResultIF res);
 	
 	/**
 	 * Returns an output stream for overwriting the file in readwrite mode,
@@ -3049,24 +1807,7 @@ public class File : ObjectG
 	 * Returns: a GFileIOStream or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream replaceReadwrite(string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable)
-	{
-		// GFileIOStream * g_file_replace_readwrite (GFile *file,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_replace_readwrite(gFile, Str.toStringz(etag), makeBackup, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream replaceReadwrite(string etag, int makeBackup, GFileCreateFlags flags, Cancellable cancellable);
 	
 	/**
 	 * Asynchronously overwrites the file in read-write mode, replacing the
@@ -3087,11 +1828,7 @@ public class File : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void replaceReadwriteAsync(string etag, int makeBackup, GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_replace_readwrite_async (GFile *file,  const char *etag,  gboolean make_backup,  GFileCreateFlags flags,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_replace_readwrite_async(gFile, Str.toStringz(etag), makeBackup, flags, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void replaceReadwriteAsync(string etag, int makeBackup, GFileCreateFlags flags, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous file replace operation started with
@@ -3102,24 +1839,7 @@ public class File : ObjectG
 	 * Returns: a GFileIOStream, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public FileIOStream replaceReadwriteFinish(AsyncResultIF res)
-	{
-		// GFileIOStream * g_file_replace_readwrite_finish (GFile *file,  GAsyncResult *res,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_replace_readwrite_finish(gFile, (res is null) ? null : res.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileIOStream(cast(GFileIOStream*) p);
-	}
+	public FileIOStream replaceReadwriteFinish(AsyncResultIF res);
 	
 	/**
 	 * Checks if file supports thread-default
@@ -3129,9 +1849,5 @@ public class File : ObjectG
 	 * Since 2.22
 	 * Returns: Whether or not file supports thread-default contexts.
 	 */
-	public int supportsThreadContexts()
-	{
-		// gboolean g_file_supports_thread_contexts (GFile *file);
-		return g_file_supports_thread_contexts(gFile);
-	}
+	public int supportsThreadContexts();
 }

@@ -116,7 +116,10 @@ private import gtkD.gdk.Bitmap;
 private import gtkD.gtk.TargetList;
 
 version(Rulada)	private import tango.core.Vararg;
-version(Dinrus) private import core.Vararg;
+version(Dinrus){
+ private import core.Vararg;
+ alias core.Vararg.ва_арг va_arg;
+}
 
 
 

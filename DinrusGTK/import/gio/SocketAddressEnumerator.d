@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gio
- * outFile = SocketAddressEnumerator
- * strct   = GSocketAddressEnumerator
- * realStrct=
- * ctorStrct=
- * clss    = SocketAddressEnumerator
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_address_enumerator_
- * omit structs:
- * omit prefixes:
- * 	- g_socket_connectable_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.SocketAddress
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GSocketAddress* -> SocketAddress
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.SocketAddressEnumerator;
 
@@ -139,30 +81,16 @@ public class SocketAddressEnumerator
 	protected GSocketAddressEnumerator* gSocketAddressEnumerator;
 	
 	
-	public GSocketAddressEnumerator* getSocketAddressEnumeratorStruct()
-	{
-		return gSocketAddressEnumerator;
-	}
+	public GSocketAddressEnumerator* getSocketAddressEnumeratorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gSocketAddressEnumerator;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketAddressEnumerator* gSocketAddressEnumerator)
-	{
-		if(gSocketAddressEnumerator is null)
-		{
-			this = null;
-			return;
-		}
-		this.gSocketAddressEnumerator = gSocketAddressEnumerator;
-	}
+	public this (GSocketAddressEnumerator* gSocketAddressEnumerator);
 	
 	/**
 	 */
@@ -185,24 +113,7 @@ public class SocketAddressEnumerator
 	 * Returns: a GSocketAddress (owned by the caller), or NULL on error (in which case *error will be set) or if there are no more addresses.
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress next(Cancellable cancellable)
-	{
-		// GSocketAddress * g_socket_address_enumerator_next (GSocketAddressEnumerator *enumerator,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_address_enumerator_next(gSocketAddressEnumerator, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress next(Cancellable cancellable);
 	
 	/**
 	 * Asynchronously retrieves the next GSocketAddress from enumerator
@@ -213,11 +124,7 @@ public class SocketAddressEnumerator
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void nextAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_address_enumerator_next_async  (GSocketAddressEnumerator *enumerator,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_address_enumerator_next_async(gSocketAddressEnumerator, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void nextAsync(Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Retrieves the result of a completed call to
@@ -229,22 +136,5 @@ public class SocketAddressEnumerator
 	 * Returns: a GSocketAddress (owned by the caller), or NULL on error (in which case *error will be set) or if there are no more addresses.
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress nextFinish(AsyncResultIF result)
-	{
-		// GSocketAddress * g_socket_address_enumerator_next_finish  (GSocketAddressEnumerator *enumerator,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_address_enumerator_next_finish(gSocketAddressEnumerator, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress nextFinish(AsyncResultIF result);
 }

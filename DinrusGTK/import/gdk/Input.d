@@ -1,52 +1,4 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
 
-/*
- * Conversion parameters:
- * inFile  = gdk-Input.html
- * outPack = gdk
- * outFile = Input
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Input
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_input_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.Input;
 
@@ -87,11 +39,7 @@ public class Input
 	 * handler is removed.
 	 * Returns: a tag that can later be used as an argument togdk_input_remove().
 	 */
-	public static int addFull(int source, GdkInputCondition condition, GdkInputFunction funct, void* data, GDestroyNotify destroy)
-	{
-		// gint gdk_input_add_full (gint source,  GdkInputCondition condition,  GdkInputFunction function,  gpointer data,  GDestroyNotify destroy);
-		return gdk_input_add_full(source, condition, funct, data, destroy);
-	}
+	public static int addFull(int source, GdkInputCondition condition, GdkInputFunction funct, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Warning
@@ -104,11 +52,7 @@ public class Input
 	 * data =  callback data passed to function.
 	 * Returns: a tag that can later be used as an argument togdk_input_remove().
 	 */
-	public static int add(int source, GdkInputCondition condition, GdkInputFunction funct, void* data)
-	{
-		// gint gdk_input_add (gint source,  GdkInputCondition condition,  GdkInputFunction function,  gpointer data);
-		return gdk_input_add(source, condition, funct, data);
-	}
+	public static int add(int source, GdkInputCondition condition, GdkInputFunction funct, void* data);
 	
 	/**
 	 * Warning
@@ -118,9 +62,5 @@ public class Input
 	 * Params:
 	 * tag = the tag returned when the callback was set up.
 	 */
-	public static void remove(int tag)
-	{
-		// void gdk_input_remove (gint tag);
-		gdk_input_remove(tag);
-	}
+	public static void remove(int tag);
 }

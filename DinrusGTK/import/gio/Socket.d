@@ -1,70 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocket.html
- * outPack = gio
- * outFile = Socket
- * strct   = GSocket
- * realStrct=
- * ctorStrct=
- * clss    = Socket
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- InitableIF
- * prefixes:
- * 	- g_socket_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.Source
- * 	- gtkD.gio.SocketAddress
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.SocketControlMessage
- * 	- gtkD.gio.InitableT
- * 	- gtkD.gio.InitableIF
- * structWrap:
- * 	- GCancellable* -> Cancellable
- * 	- GSocketAddress* -> SocketAddress
- * 	- GSocketControlMessage* -> SocketControlMessage
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * 	- GLIB_SYSDEF_MSG_DONTROUTE -> 4
- * 	- GLIB_SYSDEF_MSG_OOB -> 1
- * 	- GLIB_SYSDEF_MSG_PEEK -> 2
- * overrides:
- */
-
 module gtkD.gio.Socket;
 
 public  import gtkD.gtkc.giotypes;
@@ -136,38 +69,16 @@ public class Socket : ObjectG, InitableIF
 	protected GSocket* gSocket;
 	
 	
-	public GSocket* getSocketStruct()
-	{
-		return gSocket;
-	}
+	public GSocket* getSocketStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocket;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocket* gSocket)
-	{
-		if(gSocket is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocket);
-		if( ptr !is null )
-		{
-			this = cast(Socket)ptr;
-			return;
-		}
-		super(cast(GObject*)gSocket);
-		this.gSocket = gSocket;
-	}
+	public this (GSocket* gSocket);
 	
 	// add the Initable capabilities
 	mixin InitableT!(GSocket);
@@ -195,24 +106,7 @@ public class Socket : ObjectG, InitableIF
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GSocketFamily family, GSocketType type, GSocketProtocol protocol)
-	{
-		// GSocket * g_socket_new (GSocketFamily family,  GSocketType type,  GSocketProtocol protocol,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_new(family, type, protocol, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_socket_new(family, type, protocol, &err)");
-		}
-		this(cast(GSocket*) p);
-	}
+	public this (GSocketFamily family, GSocketType type, GSocketProtocol protocol);
 	
 	/**
 	 * Creates a new GSocket from a native file descriptor
@@ -227,24 +121,7 @@ public class Socket : ObjectG, InitableIF
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int fd)
-	{
-		// GSocket * g_socket_new_from_fd (gint fd,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_new_from_fd(fd, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_socket_new_from_fd(fd, &err)");
-		}
-		this(cast(GSocket*) p);
-	}
+	public this (int fd);
 	
 	/**
 	 * When a socket is created it is attached to an address family, but it
@@ -269,20 +146,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int bind(SocketAddress address, int allowReuse)
-	{
-		// gboolean g_socket_bind (GSocket *socket,  GSocketAddress *address,  gboolean allow_reuse,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_bind(gSocket, (address is null) ? null : address.getSocketAddressStruct(), allowReuse, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int bind(SocketAddress address, int allowReuse);
 	
 	/**
 	 * Marks the socket as a server socket, i.e. a socket that is used
@@ -295,20 +159,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE on success, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int listen()
-	{
-		// gboolean g_socket_listen (GSocket *socket,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_listen(gSocket, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int listen();
 	
 	/**
 	 * Accept incoming connections on a connection-based socket. This removes
@@ -325,20 +176,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: a new GSocket, or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public GSocket* accept(Cancellable cancellable)
-	{
-		// GSocket * g_socket_accept (GSocket *socket,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_accept(gSocket, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public GSocket* accept(Cancellable cancellable);
 	
 	/**
 	 * Connect the socket to the specified remote address.
@@ -361,20 +199,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE if connected, FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int connect(SocketAddress address, Cancellable cancellable)
-	{
-		// gboolean g_socket_connect (GSocket *socket,  GSocketAddress *address,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_connect(gSocket, (address is null) ? null : address.getSocketAddressStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int connect(SocketAddress address, Cancellable cancellable);
 	
 	/**
 	 * Checks and resets the pending connect error for the socket.
@@ -384,20 +209,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE if no error, FALSE otherwise, setting error to the error
 	 * Throws: GException on failure.
 	 */
-	public int checkConnectResult()
-	{
-		// gboolean g_socket_check_connect_result (GSocket *socket,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_check_connect_result(gSocket, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int checkConnectResult();
 	
 	/**
 	 * Receive data (up to size bytes) from a socket. This is mainly used by
@@ -427,20 +239,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes read, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int receive(string buffer, uint size, Cancellable cancellable)
-	{
-		// gssize g_socket_receive (GSocket *socket,  gchar *buffer,  gsize size,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_receive(gSocket, Str.toStringz(buffer), size, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int receive(string buffer, uint size, Cancellable cancellable);
 	
 	/**
 	 * Receive data (up to size bytes) from a socket.
@@ -458,22 +257,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes read, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int receiveFrom(inout SocketAddress address, char[] buffer, Cancellable cancellable)
-	{
-		// gssize g_socket_receive_from (GSocket *socket,  GSocketAddress **address,  gchar *buffer,  gsize size,  GCancellable *cancellable,  GError **error);
-		GSocketAddress* outaddress = (address is null) ? null : address.getSocketAddressStruct();
-		GError* err = null;
-		
-		auto p = g_socket_receive_from(gSocket, &outaddress, buffer.ptr, buffer.length, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		address = new SocketAddress(outaddress);
-		return p;
-	}
+	public int receiveFrom(inout SocketAddress address, char[] buffer, Cancellable cancellable);
 	
 	/**
 	 * Receive data from a socket. This is the most complicated and
@@ -532,37 +316,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes read, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int receiveMessage(inout SocketAddress address, GInputVector[] vectors, inout SocketControlMessage[] messages, inout int flags, Cancellable cancellable)
-	{
-		// gssize g_socket_receive_message (GSocket *socket,  GSocketAddress **address,  GInputVector *vectors,  gint num_vectors,  GSocketControlMessage ***messages,  gint *num_messages,  gint *flags,  GCancellable *cancellable,  GError **error);
-		GSocketAddress* outaddress = (address is null) ? null : address.getSocketAddressStruct();
-		
-		GSocketControlMessage*[] inoutmessages = new GSocketControlMessage*[messages.length];
-		for ( int i = 0; i < messages.length ; i++ )
-		{
-			inoutmessages[i] = messages[i].getSocketControlMessageStruct();
-		}
-		
-		GSocketControlMessage** outmessages = inoutmessages.ptr;
-		int numMessages = messages.length;
-		GError* err = null;
-		
-		auto p = g_socket_receive_message(gSocket, &outaddress, vectors.ptr, vectors.length, &outmessages, &numMessages, &flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		address = new SocketAddress(outaddress);
-		
-		messages = new SocketControlMessage[numMessages];
-		for(int i = 0; i < numMessages; i++)
-		{
-			messages[i] = new SocketControlMessage(cast(GSocketControlMessage*) outmessages[i]);
-		}
-		return p;
-	}
+	public int receiveMessage(inout SocketAddress address, GInputVector[] vectors, inout SocketControlMessage[] messages, inout int flags, Cancellable cancellable);
 	
 	/**
 	 * Tries to send size bytes from buffer on the socket. This is
@@ -585,20 +339,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes written (which may be less than size), or -1on error
 	 * Throws: GException on failure.
 	 */
-	public int send(string buffer, uint size, Cancellable cancellable)
-	{
-		// gssize g_socket_send (GSocket *socket,  const gchar *buffer,  gsize size,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_send(gSocket, Str.toStringz(buffer), size, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int send(string buffer, uint size, Cancellable cancellable);
 	
 	/**
 	 * Tries to send size bytes from buffer to address. If address is
@@ -614,20 +355,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes written (which may be less than size), or -1on error
 	 * Throws: GException on failure.
 	 */
-	public int sendTo(SocketAddress address, string buffer, uint size, Cancellable cancellable)
-	{
-		// gssize g_socket_send_to (GSocket *socket,  GSocketAddress *address,  const gchar *buffer,  gsize size,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_send_to(gSocket, (address is null) ? null : address.getSocketAddressStruct(), Str.toStringz(buffer), size, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int sendTo(SocketAddress address, string buffer, uint size, Cancellable cancellable);
 	
 	/**
 	 * Send data to address on socket. This is the most complicated and
@@ -672,23 +400,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: Number of bytes written (which may be less than size), or -1on error
 	 * Throws: GException on failure.
 	 */
-	public int sendMessage(SocketAddress address, GOutputVector[] vectors, inout GSocketControlMessage[] messages, int flags, Cancellable cancellable)
-	{
-		// gssize g_socket_send_message (GSocket *socket,  GSocketAddress *address,  GOutputVector *vectors,  gint num_vectors,  GSocketControlMessage **messages,  gint num_messages,  gint flags,  GCancellable *cancellable,  GError **error);
-		GSocketControlMessage* outmessages = messages.ptr;
-		int numMessages = messages.length;
-		GError* err = null;
-		
-		auto p = g_socket_send_message(gSocket, (address is null) ? null : address.getSocketAddressStruct(), vectors.ptr, vectors.length, &outmessages, numMessages, flags, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		messages = outmessages[0 .. numMessages];
-		return p;
-	}
+	public int sendMessage(SocketAddress address, GOutputVector[] vectors, inout GSocketControlMessage[] messages, int flags, Cancellable cancellable);
 	
 	/**
 	 * Closes the socket, shutting down any active connection.
@@ -720,31 +432,14 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE on success, FALSE on error
 	 * Throws: GException on failure.
 	 */
-	public int close()
-	{
-		// gboolean g_socket_close (GSocket *socket,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_close(gSocket, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close();
 	
 	/**
 	 * Checks whether a socket is closed.
 	 * Since 2.22
 	 * Returns: TRUE if socket is closed, FALSE otherwise
 	 */
-	public int isClosed()
-	{
-		// gboolean g_socket_is_closed (GSocket *socket);
-		return g_socket_is_closed(gSocket);
-	}
+	public int isClosed();
 	
 	/**
 	 * Shut down part of a full-duplex connection.
@@ -763,20 +458,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE on success, FALSE on error
 	 * Throws: GException on failure.
 	 */
-	public int shutdown(int shutdownRead, int shutdownWrite)
-	{
-		// gboolean g_socket_shutdown (GSocket *socket,  gboolean shutdown_read,  gboolean shutdown_write,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_shutdown(gSocket, shutdownRead, shutdownWrite, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int shutdown(int shutdownRead, int shutdownWrite);
 	
 	/**
 	 * Check whether the socket is connected. This is only useful for
@@ -784,11 +466,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: TRUE if socket is connected, FALSE otherwise.
 	 */
-	public int isConnected()
-	{
-		// gboolean g_socket_is_connected (GSocket *socket);
-		return g_socket_is_connected(gSocket);
-	}
+	public int isConnected();
 	
 	/**
 	 * Creates a GSource that can be attached to a GMainContext to monitor
@@ -807,16 +485,7 @@ public class Socket : ObjectG, InitableIF
 	 * cancellable =  a GCancellable or NULL
 	 * Returns: a newly allocated GSource, free with g_source_unref().
 	 */
-	public Source createSource(GIOCondition condition, Cancellable cancellable)
-	{
-		// GSource * g_socket_create_source (GSocket *socket,  GIOCondition condition,  GCancellable *cancellable);
-		auto p = g_socket_create_source(gSocket, condition, (cancellable is null) ? null : cancellable.getCancellableStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source createSource(GIOCondition condition, Cancellable cancellable);
 	
 	/**
 	 * Checks on the readiness of socket to perform operations.
@@ -831,11 +500,7 @@ public class Socket : ObjectG, InitableIF
 	 * condition =  a GIOCondition mask to check
 	 * Returns: the GIOCondition mask of the current state
 	 */
-	public GIOCondition conditionCheck(GIOCondition condition)
-	{
-		// GIOCondition g_socket_condition_check (GSocket *socket,  GIOCondition condition);
-		return g_socket_condition_check(gSocket, condition);
-	}
+	public GIOCondition conditionCheck(GIOCondition condition);
 	
 	/**
 	 * Waits for condition to become true on socket. When the condition
@@ -849,20 +514,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: TRUE if the condition was met, FALSE otherwise
 	 * Throws: GException on failure.
 	 */
-	public int conditionWait(GIOCondition condition, Cancellable cancellable)
-	{
-		// gboolean g_socket_condition_wait (GSocket *socket,  GIOCondition condition,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_condition_wait(gSocket, condition, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int conditionWait(GIOCondition condition, Cancellable cancellable);
 	
 	/**
 	 * Sets the maximum number of outstanding connections allowed
@@ -875,11 +527,7 @@ public class Socket : ObjectG, InitableIF
 	 * Params:
 	 * backlog =  the maximum number of pending connections.
 	 */
-	public void setListenBacklog(int backlog)
-	{
-		// void g_socket_set_listen_backlog (GSocket *socket,  gint backlog);
-		g_socket_set_listen_backlog(gSocket, backlog);
-	}
+	public void setListenBacklog(int backlog);
 	
 	/**
 	 * Gets the listen backlog setting of the socket. For details on this,
@@ -887,11 +535,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: the maximum number of pending connections.
 	 */
-	public int getListenBacklog()
-	{
-		// gint g_socket_get_listen_backlog (GSocket *socket);
-		return g_socket_get_listen_backlog(gSocket);
-	}
+	public int getListenBacklog();
 	
 	/**
 	 * Gets the blocking mode of the socket. For details on blocking I/O,
@@ -899,11 +543,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: TRUE if blocking I/O is used, FALSE otherwise.
 	 */
-	public int getBlocking()
-	{
-		// gboolean g_socket_get_blocking (GSocket *socket);
-		return g_socket_get_blocking(gSocket);
-	}
+	public int getBlocking();
 	
 	/**
 	 * Sets the blocking mode of the socket. In blocking mode
@@ -917,11 +557,7 @@ public class Socket : ObjectG, InitableIF
 	 * Params:
 	 * blocking =  Whether to use blocking I/O or not.
 	 */
-	public void setBlocking(int blocking)
-	{
-		// void g_socket_set_blocking (GSocket *socket,  gboolean blocking);
-		g_socket_set_blocking(gSocket, blocking);
-	}
+	public void setBlocking(int blocking);
 	
 	/**
 	 * Gets the keepalive mode of the socket. For details on this,
@@ -929,11 +565,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: TRUE if keepalive is active, FALSE otherwise.
 	 */
-	public int getKeepalive()
-	{
-		// gboolean g_socket_get_keepalive (GSocket *socket);
-		return g_socket_get_keepalive(gSocket);
-	}
+	public int getKeepalive();
 	
 	/**
 	 * Sets or unsets the SO_KEEPALIVE flag on the underlying socket. When
@@ -953,22 +585,14 @@ public class Socket : ObjectG, InitableIF
 	 * Params:
 	 * keepalive =  Value for the keepalive flag
 	 */
-	public void setKeepalive(int keepalive)
-	{
-		// void g_socket_set_keepalive (GSocket *socket,  gboolean keepalive);
-		g_socket_set_keepalive(gSocket, keepalive);
-	}
+	public void setKeepalive(int keepalive);
 	
 	/**
 	 * Gets the socket family of the socket.
 	 * Since 2.22
 	 * Returns: a GSocketFamily
 	 */
-	public GSocketFamily getFamily()
-	{
-		// GSocketFamily g_socket_get_family (GSocket *socket);
-		return g_socket_get_family(gSocket);
-	}
+	public GSocketFamily getFamily();
 	
 	/**
 	 * Returns the underlying OS socket object. On unix this
@@ -979,11 +603,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: the file descriptor of the socket.
 	 */
-	public int getFd()
-	{
-		// int g_socket_get_fd (GSocket *socket);
-		return g_socket_get_fd(gSocket);
-	}
+	public int getFd();
 	
 	/**
 	 * Try to get the local address of a bound socket. This is only
@@ -993,24 +613,7 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: a GSocketAddress or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress getLocalAddress()
-	{
-		// GSocketAddress * g_socket_get_local_address (GSocket *socket,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_get_local_address(gSocket, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress getLocalAddress();
 	
 	/**
 	 * Gets the socket protocol id the socket was created with.
@@ -1018,11 +621,7 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22
 	 * Returns: a protocol id, or -1 if unknown
 	 */
-	public GSocketProtocol getProtocol()
-	{
-		// GSocketProtocol g_socket_get_protocol (GSocket *socket);
-		return g_socket_get_protocol(gSocket);
-	}
+	public GSocketProtocol getProtocol();
 	
 	/**
 	 * Try to get the remove address of a connected socket. This is only
@@ -1031,35 +630,14 @@ public class Socket : ObjectG, InitableIF
 	 * Returns: a GSocketAddress or NULL on error. Free the returned object with g_object_unref().
 	 * Throws: GException on failure.
 	 */
-	public SocketAddress getRemoteAddress()
-	{
-		// GSocketAddress * g_socket_get_remote_address (GSocket *socket,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_get_remote_address(gSocket, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress getRemoteAddress();
 	
 	/**
 	 * Gets the socket type of the socket.
 	 * Since 2.22
 	 * Returns: a GSocketType
 	 */
-	public GSocketType getSocketType()
-	{
-		// GSocketType g_socket_get_socket_type (GSocket *socket);
-		return g_socket_get_socket_type(gSocket);
-	}
+	public GSocketType getSocketType();
 	
 	/**
 	 * Checks if a socket is capable of speaking IPv4.
@@ -1072,9 +650,5 @@ public class Socket : ObjectG, InitableIF
 	 * Since 2.22.
 	 * Returns: TRUE if this socket can be used with IPv4.
 	 */
-	public int speaksIpv4()
-	{
-		// gboolean g_socket_speaks_ipv4 (GSocket *socket);
-		return g_socket_speaks_ipv4(gSocket);
-	}
+	public int speaksIpv4();
 }

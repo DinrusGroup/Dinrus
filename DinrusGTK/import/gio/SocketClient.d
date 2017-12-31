@@ -1,66 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocketClient.html
- * outPack = gio
- * outFile = SocketClient
- * strct   = GSocketClient
- * realStrct=
- * ctorStrct=
- * clss    = SocketClient
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_client_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.SocketAddress
- * 	- gtkD.gio.SocketConnection
- * 	- gtkD.gio.SocketConnectableIF
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GSocketAddress* -> SocketAddress
- * 	- GSocketConnectable* -> SocketConnectableIF
- * 	- GSocketConnection* -> SocketConnection
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.SocketClient;
 
 public  import gtkD.gtkc.giotypes;
@@ -100,38 +37,16 @@ public class SocketClient : ObjectG
 	protected GSocketClient* gSocketClient;
 	
 	
-	public GSocketClient* getSocketClientStruct()
-	{
-		return gSocketClient;
-	}
+	public GSocketClient* getSocketClientStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocketClient;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketClient* gSocketClient)
-	{
-		if(gSocketClient is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocketClient);
-		if( ptr !is null )
-		{
-			this = cast(SocketClient)ptr;
-			return;
-		}
-		super(cast(GObject*)gSocketClient);
-		this.gSocketClient = gSocketClient;
-	}
+	public this (GSocketClient* gSocketClient);
 	
 	/**
 	 */
@@ -141,16 +56,7 @@ public class SocketClient : ObjectG
 	 * Since 2.22
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GSocketClient * g_socket_client_new (void);
-		auto p = g_socket_client_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_socket_client_new()");
-		}
-		this(cast(GSocketClient*) p);
-	}
+	public this ();
 	
 	/**
 	 * Tries to resolve the connectable and make a network connection to it..
@@ -174,24 +80,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connect(SocketConnectableIF connectable, Cancellable cancellable)
-	{
-		// GSocketConnection * g_socket_client_connect (GSocketClient *client,  GSocketConnectable *connectable,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect(gSocketClient, (connectable is null) ? null : connectable.getSocketConnectableTStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connect(SocketConnectableIF connectable, Cancellable cancellable);
 	
 	/**
 	 * This is the asynchronous version of g_socket_client_connect().
@@ -205,11 +94,7 @@ public class SocketClient : ObjectG
 	 * callback =  a GAsyncReadyCallback
 	 * userData =  user data for the callback
 	 */
-	public void connectAsync(SocketConnectableIF connectable, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_client_connect_async (GSocketClient *client,  GSocketConnectable *connectable,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_client_connect_async(gSocketClient, (connectable is null) ? null : connectable.getSocketConnectableTStruct(), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void connectAsync(SocketConnectableIF connectable, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async connect operation. See g_socket_client_connect_async()
@@ -219,24 +104,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connectFinish(AsyncResultIF result)
-	{
-		// GSocketConnection * g_socket_client_connect_finish (GSocketClient *client,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect_finish(gSocketClient, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connectFinish(AsyncResultIF result);
 	
 	/**
 	 * This is a helper function for g_socket_client_connect().
@@ -270,24 +138,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connectToHost(string hostAndPort, ushort defaultPort, Cancellable cancellable)
-	{
-		// GSocketConnection * g_socket_client_connect_to_host (GSocketClient *client,  const gchar *host_and_port,  guint16 default_port,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect_to_host(gSocketClient, Str.toStringz(hostAndPort), defaultPort, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connectToHost(string hostAndPort, ushort defaultPort, Cancellable cancellable);
 	
 	/**
 	 * This is the asynchronous version of g_socket_client_connect_to_host().
@@ -302,11 +153,7 @@ public class SocketClient : ObjectG
 	 * callback =  a GAsyncReadyCallback
 	 * userData =  user data for the callback
 	 */
-	public void connectToHostAsync(string hostAndPort, ushort defaultPort, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_client_connect_to_host_async  (GSocketClient *client,  const gchar *host_and_port,  guint16 default_port,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_client_connect_to_host_async(gSocketClient, Str.toStringz(hostAndPort), defaultPort, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void connectToHostAsync(string hostAndPort, ushort defaultPort, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async connect operation. See g_socket_client_connect_to_host_async()
@@ -316,24 +163,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connectToHostFinish(AsyncResultIF result)
-	{
-		// GSocketConnection * g_socket_client_connect_to_host_finish  (GSocketClient *client,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect_to_host_finish(gSocketClient, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connectToHostFinish(AsyncResultIF result);
 	
 	/**
 	 * Attempts to create a TCP connection to a service.
@@ -354,24 +184,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection if successful, or NULL on error
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connectToService(string domain, string service, Cancellable cancellable)
-	{
-		// GSocketConnection * g_socket_client_connect_to_service (GSocketClient *client,  const gchar *domain,  const gchar *service,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect_to_service(gSocketClient, Str.toStringz(domain), Str.toStringz(service), (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connectToService(string domain, string service, Cancellable cancellable);
 	
 	/**
 	 * This is the asynchronous version of
@@ -384,11 +197,7 @@ public class SocketClient : ObjectG
 	 * callback =  a GAsyncReadyCallback
 	 * userData =  user data for the callback
 	 */
-	public void connectToServiceAsync(string domain, string service, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_socket_client_connect_to_service_async  (GSocketClient *client,  const gchar *domain,  const gchar *service,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_socket_client_connect_to_service_async(gSocketClient, Str.toStringz(domain), Str.toStringz(service), (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void connectToServiceAsync(string domain, string service, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an async connect operation. See g_socket_client_connect_to_service_async()
@@ -398,24 +207,7 @@ public class SocketClient : ObjectG
 	 * Returns: a GSocketConnection on success, NULL on error.
 	 * Throws: GException on failure.
 	 */
-	public SocketConnection connectToServiceFinish(AsyncResultIF result)
-	{
-		// GSocketConnection * g_socket_client_connect_to_service_finish  (GSocketClient *client,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_socket_client_connect_to_service_finish(gSocketClient, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketConnection(cast(GSocketConnection*) p);
-	}
+	public SocketConnection connectToServiceFinish(AsyncResultIF result);
 	
 	/**
 	 * Sets the socket family of the socket client.
@@ -429,11 +221,7 @@ public class SocketClient : ObjectG
 	 * Params:
 	 * family =  a GSocketFamily
 	 */
-	public void setFamily(GSocketFamily family)
-	{
-		// void g_socket_client_set_family (GSocketClient *client,  GSocketFamily family);
-		g_socket_client_set_family(gSocketClient, family);
-	}
+	public void setFamily(GSocketFamily family);
 	
 	/**
 	 * Sets the local address of the socket client.
@@ -446,11 +234,7 @@ public class SocketClient : ObjectG
 	 * Params:
 	 * address =  a GSocketAddress, or NULL
 	 */
-	public void setLocalAddress(SocketAddress address)
-	{
-		// void g_socket_client_set_local_address (GSocketClient *client,  GSocketAddress *address);
-		g_socket_client_set_local_address(gSocketClient, (address is null) ? null : address.getSocketAddressStruct());
-	}
+	public void setLocalAddress(SocketAddress address);
 	
 	/**
 	 * Sets the protocol of the socket client.
@@ -462,11 +246,7 @@ public class SocketClient : ObjectG
 	 * Params:
 	 * protocol =  a GSocketProtocol
 	 */
-	public void setProtocol(GSocketProtocol protocol)
-	{
-		// void g_socket_client_set_protocol (GSocketClient *client,  GSocketProtocol protocol);
-		g_socket_client_set_protocol(gSocketClient, protocol);
-	}
+	public void setProtocol(GSocketProtocol protocol);
 	
 	/**
 	 * Sets the socket type of the socket client.
@@ -478,11 +258,7 @@ public class SocketClient : ObjectG
 	 * Params:
 	 * type =  a GSocketType
 	 */
-	public void setSocketType(GSocketType type)
-	{
-		// void g_socket_client_set_socket_type (GSocketClient *client,  GSocketType type);
-		g_socket_client_set_socket_type(gSocketClient, type);
-	}
+	public void setSocketType(GSocketType type);
 	
 	/**
 	 * Gets the socket family of the socket client.
@@ -490,11 +266,7 @@ public class SocketClient : ObjectG
 	 * Since 2.22
 	 * Returns: a GSocketFamily
 	 */
-	public GSocketFamily getFamily()
-	{
-		// GSocketFamily g_socket_client_get_family (GSocketClient *client);
-		return g_socket_client_get_family(gSocketClient);
-	}
+	public GSocketFamily getFamily();
 	
 	/**
 	 * Gets the local address of the socket client.
@@ -502,16 +274,7 @@ public class SocketClient : ObjectG
 	 * Since 2.22
 	 * Returns: a GSocketAddres or NULL. don't free
 	 */
-	public SocketAddress getLocalAddress()
-	{
-		// GSocketAddress * g_socket_client_get_local_address (GSocketClient *client);
-		auto p = g_socket_client_get_local_address(gSocketClient);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddress(cast(GSocketAddress*) p);
-	}
+	public SocketAddress getLocalAddress();
 	
 	/**
 	 * Gets the protocol name type of the socket client.
@@ -519,11 +282,7 @@ public class SocketClient : ObjectG
 	 * Since 2.22
 	 * Returns: a GSocketProtocol
 	 */
-	public GSocketProtocol getProtocol()
-	{
-		// GSocketProtocol g_socket_client_get_protocol (GSocketClient *client);
-		return g_socket_client_get_protocol(gSocketClient);
-	}
+	public GSocketProtocol getProtocol();
 	
 	/**
 	 * Gets the socket type of the socket client.
@@ -531,9 +290,5 @@ public class SocketClient : ObjectG
 	 * Since 2.22
 	 * Returns: a GSocketFamily
 	 */
-	public GSocketType getSocketType()
-	{
-		// GSocketType g_socket_client_get_socket_type (GSocketClient *client);
-		return g_socket_client_get_socket_type(gSocketClient);
-	}
+	public GSocketType getSocketType();
 }

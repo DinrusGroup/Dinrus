@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gio
- * outFile = FileAttributeMatcher
- * strct   = GFileAttributeMatcher
- * realStrct=
- * ctorStrct=
- * clss    = FileAttributeMatcher
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_file_attribute_matcher_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GFileAttributeMatcher* -> FileAttributeMatcher
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.FileAttributeMatcher;
 
 public  import gtkD.gtkc.giotypes;
@@ -92,30 +40,16 @@ public class FileAttributeMatcher
 	protected GFileAttributeMatcher* gFileAttributeMatcher;
 	
 	
-	public GFileAttributeMatcher* getFileAttributeMatcherStruct()
-	{
-		return gFileAttributeMatcher;
-	}
+	public GFileAttributeMatcher* getFileAttributeMatcherStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gFileAttributeMatcher;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GFileAttributeMatcher* gFileAttributeMatcher)
-	{
-		if(gFileAttributeMatcher is null)
-		{
-			this = null;
-			return;
-		}
-		this.gFileAttributeMatcher = gFileAttributeMatcher;
-	}
+	public this (GFileAttributeMatcher* gFileAttributeMatcher);
 	
 	/**
 	 */
@@ -135,41 +69,18 @@ public class FileAttributeMatcher
 	 * attributes =  an attribute string to match.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string attributes)
-	{
-		// GFileAttributeMatcher * g_file_attribute_matcher_new (const char *attributes);
-		auto p = g_file_attribute_matcher_new(Str.toStringz(attributes));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_file_attribute_matcher_new(Str.toStringz(attributes))");
-		}
-		this(cast(GFileAttributeMatcher*) p);
-	}
+	public this (string attributes);
 	
 	/**
 	 * References a file attribute matcher.
 	 * Returns: a GFileAttributeMatcher.
 	 */
-	public FileAttributeMatcher doref()
-	{
-		// GFileAttributeMatcher * g_file_attribute_matcher_ref (GFileAttributeMatcher *matcher);
-		auto p = g_file_attribute_matcher_ref(gFileAttributeMatcher);
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileAttributeMatcher(cast(GFileAttributeMatcher*) p);
-	}
-	
+	public FileAttributeMatcher doref();
 	/**
 	 * Unreferences matcher. If the reference count falls below 1,
 	 * the matcher is automatically freed.
 	 */
-	public void unref()
-	{
-		// void g_file_attribute_matcher_unref (GFileAttributeMatcher *matcher);
-		g_file_attribute_matcher_unref(gFileAttributeMatcher);
-	}
+	public void unref();
 	
 	/**
 	 * Checks if an attribute will be matched by an attribute matcher. If
@@ -179,11 +90,7 @@ public class FileAttributeMatcher
 	 * attribute =  a file attribute key.
 	 * Returns: TRUE if attribute matches matcher. FALSE otherwise.
 	 */
-	public int matches(string attribute)
-	{
-		// gboolean g_file_attribute_matcher_matches (GFileAttributeMatcher *matcher,  const char *attribute);
-		return g_file_attribute_matcher_matches(gFileAttributeMatcher, Str.toStringz(attribute));
-	}
+	public int matches(string attribute);
 	
 	/**
 	 * Checks if a attribute matcher only matches a given attribute. Always
@@ -192,11 +99,7 @@ public class FileAttributeMatcher
 	 * attribute =  a file attribute key.
 	 * Returns: TRUE if the matcher only matches attribute. FALSE otherwise.
 	 */
-	public int matchesOnly(string attribute)
-	{
-		// gboolean g_file_attribute_matcher_matches_only  (GFileAttributeMatcher *matcher,  const char *attribute);
-		return g_file_attribute_matcher_matches_only(gFileAttributeMatcher, Str.toStringz(attribute));
-	}
+	public int matchesOnly(string attribute);
 	
 	/**
 	 * Checks if the matcher will match all of the keys in a given namespace.
@@ -208,19 +111,11 @@ public class FileAttributeMatcher
 	 * ns =  a string containing a file attribute namespace.
 	 * Returns: TRUE if the matcher matches all of the entriesin the given ns, FALSE otherwise.
 	 */
-	public int enumerateNamespace(string ns)
-	{
-		// gboolean g_file_attribute_matcher_enumerate_namespace  (GFileAttributeMatcher *matcher,  const char *ns);
-		return g_file_attribute_matcher_enumerate_namespace(gFileAttributeMatcher, Str.toStringz(ns));
-	}
+	public int enumerateNamespace(string ns);
 	
 	/**
 	 * Gets the next matched attribute from a GFileAttributeMatcher.
 	 * Returns: a string containing the next attribute or NULL if no more attribute exist.
 	 */
-	public string enumerateNext()
-	{
-		// const char * g_file_attribute_matcher_enumerate_next  (GFileAttributeMatcher *matcher);
-		return Str.toString(g_file_attribute_matcher_enumerate_next(gFileAttributeMatcher));
-	}
+	public string enumerateNext();
 }

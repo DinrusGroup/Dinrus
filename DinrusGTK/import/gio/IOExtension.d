@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gio-Extension-Points.html
- * outPack = gio
- * outFile = IOExtension
- * strct   = GIOExtension
- * realStrct=
- * ctorStrct=
- * clss    = IOExtension
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_io_extension_
- * omit structs:
- * omit prefixes:
- * 	- g_io_extension_point_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GIOExtension* -> IOExtension
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.IOExtension;
 
 public  import gtkD.gtkc.giotypes;
@@ -101,30 +48,16 @@ public class IOExtension
 	protected GIOExtension* gIOExtension;
 	
 	
-	public GIOExtension* getIOExtensionStruct()
-	{
-		return gIOExtension;
-	}
+	public GIOExtension* getIOExtensionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gIOExtension;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GIOExtension* gIOExtension)
-	{
-		if(gIOExtension is null)
-		{
-			this = null;
-			return;
-		}
-		this.gIOExtension = gIOExtension;
-	}
+	public this (GIOExtension* gIOExtension);
 	
 	/**
 	 */
@@ -135,40 +68,24 @@ public class IOExtension
 	 * for multiple extension points, under different names.
 	 * Returns: the name of extension.
 	 */
-	public string getName()
-	{
-		// const char * g_io_extension_get_name (GIOExtension *extension);
-		return Str.toString(g_io_extension_get_name(gIOExtension));
-	}
+	public string getName();
 	
 	/**
 	 * Gets the priority with which extension was registered.
 	 * Returns: the priority of extension
 	 */
-	public int getPriority()
-	{
-		// gint g_io_extension_get_priority (GIOExtension *extension);
-		return g_io_extension_get_priority(gIOExtension);
-	}
+	public int getPriority();
 	
 	/**
 	 * Gets the type associated with extension.
 	 * Returns: the type of extension
 	 */
-	public GType getType()
-	{
-		// GType g_io_extension_get_type (GIOExtension *extension);
-		return g_io_extension_get_type(gIOExtension);
-	}
+	public GType getType();
 	
 	/**
 	 * Gets a reference to the class for the type that is
 	 * associated with extension.
 	 * Returns: the GTypeClass for the type of extension
 	 */
-	public GTypeClass* refClass()
-	{
-		// GTypeClass* g_io_extension_ref_class (GIOExtension *extension);
-		return g_io_extension_ref_class(gIOExtension);
-	}
+	public GTypeClass* refClass();
 }

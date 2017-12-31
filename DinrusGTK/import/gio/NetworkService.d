@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GNetworkService.html
- * outPack = gio
- * outFile = NetworkService
- * strct   = GNetworkService
- * realStrct=
- * ctorStrct=GSocketConnectable
- * clss    = NetworkService
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- SocketConnectableIF
- * prefixes:
- * 	- g_network_service_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gio.SocketConnectableT
- * 	- gtkD.gio.SocketConnectableIF
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.NetworkService;
 
@@ -86,38 +33,16 @@ public class NetworkService : ObjectG, SocketConnectableIF
 	protected GNetworkService* gNetworkService;
 	
 	
-	public GNetworkService* getNetworkServiceStruct()
-	{
-		return gNetworkService;
-	}
+	public GNetworkService* getNetworkServiceStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gNetworkService;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GNetworkService* gNetworkService)
-	{
-		if(gNetworkService is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gNetworkService);
-		if( ptr !is null )
-		{
-			this = cast(NetworkService)ptr;
-			return;
-		}
-		super(cast(GObject*)gNetworkService);
-		this.gNetworkService = gNetworkService;
-	}
+	public this (GNetworkService* gNetworkService);
 	
 	// add the SocketConnectable capabilities
 	mixin SocketConnectableT!(GNetworkService);
@@ -136,38 +61,21 @@ public class NetworkService : ObjectG, SocketConnectableIF
 	 * domain =  the DNS domain to look up the service in
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string service, string protocol, string domain)
-	{
-		// GSocketConnectable * g_network_service_new (const gchar *service,  const gchar *protocol,  const gchar *domain);
-		auto p = g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain))");
-		}
-		this(cast(GNetworkService*) p);
-	}
+	public this (string service, string protocol, string domain);
 	
 	/**
 	 * Gets srv's service name (eg, "ldap").
 	 * Since 2.22
 	 * Returns: srv's service name
 	 */
-	public string getService()
-	{
-		// const gchar * g_network_service_get_service (GNetworkService *srv);
-		return Str.toString(g_network_service_get_service(gNetworkService));
-	}
+	public string getService();
 	
 	/**
 	 * Gets srv's protocol name (eg, "tcp").
 	 * Since 2.22
 	 * Returns: srv's protocol name
 	 */
-	public string getProtocol()
-	{
-		// const gchar * g_network_service_get_protocol (GNetworkService *srv);
-		return Str.toString(g_network_service_get_protocol(gNetworkService));
-	}
+	public string getProtocol();
 	
 	/**
 	 * Gets the domain that srv serves. This might be either UTF-8 or
@@ -175,9 +83,5 @@ public class NetworkService : ObjectG, SocketConnectableIF
 	 * Since 2.22
 	 * Returns: srv's domain name
 	 */
-	public string getDomain()
-	{
-		// const gchar * g_network_service_get_domain (GNetworkService *srv);
-		return Str.toString(g_network_service_get_domain(gNetworkService));
-	}
+	public string getDomain();
 }

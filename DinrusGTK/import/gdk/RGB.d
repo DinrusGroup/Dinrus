@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-GdkRGB.html
- * outPack = gdk
- * outFile = RGB
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = RGB
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_
- * omit structs:
- * omit prefixes:
- * 	- gdk_rgb_cmap_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Drawable
- * 	- gtkD.gdk.GC
- * 	- gtkD.gdk.RgbCmap
- * 	- gtkD.gdk.Colormap
- * 	- gtkD.gdk.Color
- * 	- gtkD.gdk.Visual
- * structWrap:
- * 	- GdkColor* -> Color
- * 	- GdkColormap* -> Colormap
- * 	- GdkDrawable* -> Drawable
- * 	- GdkGC* -> GC
- * 	- GdkRgbCmap* -> RgbCmap
- * 	- GdkVisual* -> Visual
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.RGB;
 
@@ -166,11 +104,7 @@ public class RGB
 	 * This function no longer does anything at all. It's completely useless
 	 * (and harmless).
 	 */
-	public static void rgbInit()
-	{
-		// void gdk_rgb_init (void);
-		gdk_rgb_init();
-	}
+	public static void rgbInit();
 	
 	/**
 	 * Draws an RGB image in the drawable. This is the core GdkRGB
@@ -198,11 +132,7 @@ public class RGB
 	 * rowstride = The number of bytes from the start of one row in rgb_buf to the
 	 * start of the next.
 	 */
-	public static void drawRgbImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* rgbBuf, int rowstride)
-	{
-		// void gdk_draw_rgb_image (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *rgb_buf,  gint rowstride);
-		gdk_draw_rgb_image((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, rgbBuf, rowstride);
-	}
+	public static void drawRgbImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* rgbBuf, int rowstride);
 	
 	/**
 	 * Draws an RGB image in the drawable, with an adjustment for dither alignment.
@@ -228,11 +158,7 @@ public class RGB
 	 * xdith = An x offset for dither alignment.
 	 * ydith = A y offset for dither alignment.
 	 */
-	public static void drawRgbImageDithalign(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* rgbBuf, int rowstride, int xdith, int ydith)
-	{
-		// void gdk_draw_rgb_image_dithalign (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *rgb_buf,  gint rowstride,  gint xdith,  gint ydith);
-		gdk_draw_rgb_image_dithalign((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, rgbBuf, rowstride, xdith, ydith);
-	}
+	public static void drawRgbImageDithalign(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* rgbBuf, int rowstride, int xdith, int ydith);
 	
 	/**
 	 * Draws an indexed image in the drawable, using a GdkRgbCmap to assign
@@ -250,11 +176,7 @@ public class RGB
 	 * start of the next.
 	 * cmap = The GdkRgbCmap used to assign colors to the color indices.
 	 */
-	public static void drawIndexedImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride, RgbCmap cmap)
-	{
-		// void gdk_draw_indexed_image (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *buf,  gint rowstride,  GdkRgbCmap *cmap);
-		gdk_draw_indexed_image((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, buf, rowstride, (cmap is null) ? null : cmap.getRgbCmapStruct());
-	}
+	public static void drawIndexedImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride, RgbCmap cmap);
 	
 	/**
 	 * Draws a grayscale image in the drawable.
@@ -270,11 +192,7 @@ public class RGB
 	 * rowstride = The number of bytes from the start of one row in buf to the
 	 * start of the next.
 	 */
-	public static void drawGrayImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride)
-	{
-		// void gdk_draw_gray_image (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *buf,  gint rowstride);
-		gdk_draw_gray_image((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, buf, rowstride);
-	}
+	public static void drawGrayImage(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride);
 	
 	/**
 	 * Draws a padded RGB image in the drawable. The image is stored as one
@@ -296,11 +214,7 @@ public class RGB
 	 * rowstride = The number of bytes from the start of one row in buf to the
 	 * start of the next.
 	 */
-	public static void drawRgb32_Image(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride)
-	{
-		// void gdk_draw_rgb_32_image (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *buf,  gint rowstride);
-		gdk_draw_rgb_32_image((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, buf, rowstride);
-	}
+	public static void drawRgb32_Image(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride);
 	
 	/**
 	 * Like gdk_draw_rgb_32_image(), but allows you to specify the dither
@@ -318,11 +232,7 @@ public class RGB
 	 * xdith =  X dither offset
 	 * ydith =  Y dither offset
 	 */
-	public static void drawRgb32_ImageDithalign(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride, int xdith, int ydith)
-	{
-		// void gdk_draw_rgb_32_image_dithalign (GdkDrawable *drawable,  GdkGC *gc,  gint x,  gint y,  gint width,  gint height,  GdkRgbDither dith,  const guchar *buf,  gint rowstride,  gint xdith,  gint ydith);
-		gdk_draw_rgb_32_image_dithalign((drawable is null) ? null : drawable.getDrawableStruct(), (gc is null) ? null : gc.getGCStruct(), x, y, width, height, dith, buf, rowstride, xdith, ydith);
-	}
+	public static void drawRgb32_ImageDithalign(Drawable drawable, GC gc, int x, int y, int width, int height, GdkRgbDither dith, char* buf, int rowstride, int xdith, int ydith);
 	
 	/**
 	 * Warning
@@ -333,11 +243,7 @@ public class RGB
 	 * gc = The GdkGC to modify.
 	 * rgb = The color, represented as a 0xRRGGBB integer value.
 	 */
-	public static void rgbGcSetForeground(GC gc, uint rgb)
-	{
-		// void gdk_rgb_gc_set_foreground (GdkGC *gc,  guint32 rgb);
-		gdk_rgb_gc_set_foreground((gc is null) ? null : gc.getGCStruct(), rgb);
-	}
+	public static void rgbGcSetForeground(GC gc, uint rgb);
 	
 	/**
 	 * Warning
@@ -348,11 +254,7 @@ public class RGB
 	 * gc = The GdkGC to modify.
 	 * rgb = The color, represented as a 0xRRGGBB integer value.
 	 */
-	public static void rgbGcSetBackground(GC gc, uint rgb)
-	{
-		// void gdk_rgb_gc_set_background (GdkGC *gc,  guint32 rgb);
-		gdk_rgb_gc_set_background((gc is null) ? null : gc.getGCStruct(), rgb);
-	}
+	public static void rgbGcSetBackground(GC gc, uint rgb);
 	
 	/**
 	 * Warning
@@ -364,11 +266,7 @@ public class RGB
 	 * rgb = The color, represented as a 0xRRGGBB integer value.
 	 * Returns:The X pixel value.
 	 */
-	public static uint rgbXpixelFromRgb(uint rgb)
-	{
-		// gulong gdk_rgb_xpixel_from_rgb (guint32 rgb);
-		return gdk_rgb_xpixel_from_rgb(rgb);
-	}
+	public static uint rgbXpixelFromRgb(uint rgb);
 	
 	/**
 	 * colormap should be the colormap for the graphics context and
@@ -387,11 +285,7 @@ public class RGB
 	 * colormap =  a GdkColormap
 	 * color =  a GdkColor
 	 */
-	public static void rgbFindColor(Colormap colormap, Color color)
-	{
-		// void gdk_rgb_find_color (GdkColormap *colormap,  GdkColor *color);
-		gdk_rgb_find_color((colormap is null) ? null : colormap.getColormapStruct(), (color is null) ? null : color.getColorStruct());
-	}
+	public static void rgbFindColor(Colormap colormap, Color color);
 	
 	/**
 	 * If install is TRUE, directs GdkRGB to always install a new "private"
@@ -403,11 +297,7 @@ public class RGB
 	 * Params:
 	 * install = %TRUE to set install mode.
 	 */
-	public static void rgbSetInstall(int install)
-	{
-		// void gdk_rgb_set_install (gboolean install);
-		gdk_rgb_set_install(install);
-	}
+	public static void rgbSetInstall(int install);
 	
 	/**
 	 * Sets the minimum number of colors for the color cube. Generally,
@@ -417,11 +307,7 @@ public class RGB
 	 * Params:
 	 * minColors = The minimum number of colors accepted.
 	 */
-	public static void rgbSetMinColors(int minColors)
-	{
-		// void gdk_rgb_set_min_colors (gint min_colors);
-		gdk_rgb_set_min_colors(minColors);
-	}
+	public static void rgbSetMinColors(int minColors);
 	
 	/**
 	 * Gets a "preferred visual" chosen by GdkRGB for rendering image data
@@ -432,16 +318,7 @@ public class RGB
 	 * any visual.
 	 * Returns: The GdkVisual chosen by GdkRGB.
 	 */
-	public static Visual rgbGetVisual()
-	{
-		// GdkVisual * gdk_rgb_get_visual (void);
-		auto p = gdk_rgb_get_visual();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
+	public static Visual rgbGetVisual();
 	
 	/**
 	 * Get the preferred colormap for rendering image data. Not a
@@ -451,16 +328,7 @@ public class RGB
 	 * function.
 	 * Returns: the preferred colormap
 	 */
-	public static Colormap rgbGetColormap()
-	{
-		// GdkColormap * gdk_rgb_get_colormap (void);
-		auto p = gdk_rgb_get_colormap();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Colormap(cast(GdkColormap*) p);
-	}
+	public static Colormap rgbGetColormap();
 	
 	/**
 	 * Determines whether the preferred visual is ditherable. This function may be
@@ -469,11 +337,7 @@ public class RGB
 	 * sense to gray out or hide the corresponding UI widget.
 	 * Returns:%TRUE if the preferred visual is ditherable.
 	 */
-	public static int rgbDitherable()
-	{
-		// gboolean gdk_rgb_ditherable (void);
-		return gdk_rgb_ditherable();
-	}
+	public static int rgbDitherable();
 	
 	/**
 	 * Determines whether the visual associated with cmap is ditherable. This
@@ -484,20 +348,12 @@ public class RGB
 	 * cmap = a GdkColormap
 	 * Returns:%TRUE if the visual associated with cmap is ditherable.
 	 */
-	public static int rgbColormapDitherable(Colormap cmap)
-	{
-		// gboolean gdk_rgb_colormap_ditherable (GdkColormap *cmap);
-		return gdk_rgb_colormap_ditherable((cmap is null) ? null : cmap.getColormapStruct());
-	}
+	public static int rgbColormapDitherable(Colormap cmap);
 	
 	/**
 	 * Sets the "verbose" flag. This is generally only useful for debugging.
 	 * Params:
 	 * verbose = %TRUE if verbose messages are desired.
 	 */
-	public static void rgbSetVerbose(int verbose)
-	{
-		// void gdk_rgb_set_verbose (gboolean verbose);
-		gdk_rgb_set_verbose(verbose);
-	}
+	public static void rgbSetVerbose(int verbose);
 }

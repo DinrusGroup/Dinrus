@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-Points-Rectangles-and-Regions.html
- * outPack = gdk
- * outFile = Rectangle
- * strct   = GdkRectangle
- * realStrct=
- * ctorStrct=
- * clss    = Rectangle
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_rectangle_
- * omit structs:
- * omit prefixes:
- * 	- gdk_region_
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- GdkRectangle* -> Rectangle
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.Rectangle;
 
@@ -84,30 +33,16 @@ public class Rectangle
 	protected GdkRectangle* gdkRectangle;
 	
 	
-	public GdkRectangle* getRectangleStruct()
-	{
-		return gdkRectangle;
-	}
+	public GdkRectangle* getRectangleStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkRectangle;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkRectangle* gdkRectangle)
-	{
-		if(gdkRectangle is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkRectangle = gdkRectangle;
-	}
+	public this (GdkRectangle* gdkRectangle);
 	
 	/**
 	 */
@@ -124,12 +59,8 @@ public class Rectangle
 	 * dest =  return location for the intersection of src1 and src2, or NULL
 	 * Returns: TRUE if the rectangles intersect.
 	 */
-	public int intersect(Rectangle src2, Rectangle dest)
-	{
-		// gboolean gdk_rectangle_intersect (const GdkRectangle *src1,  const GdkRectangle *src2,  GdkRectangle *dest);
-		return gdk_rectangle_intersect(gdkRectangle, (src2 is null) ? null : src2.getRectangleStruct(), (dest is null) ? null : dest.getRectangleStruct());
-	}
-	
+	public int intersect(Rectangle src2, Rectangle dest);
+
 	/**
 	 * Calculates the union of two rectangles.
 	 * The union of rectangles src1 and src2 is the smallest rectangle which
@@ -139,9 +70,5 @@ public class Rectangle
 	 * src2 =  a GdkRectangle
 	 * dest =  return location for the union of src1 and src2
 	 */
-	public void unio(Rectangle src2, Rectangle dest)
-	{
-		// void gdk_rectangle_union (const GdkRectangle *src1,  const GdkRectangle *src2,  GdkRectangle *dest);
-		gdk_rectangle_union(gdkRectangle, (src2 is null) ? null : src2.getRectangleStruct(), (dest is null) ? null : dest.getRectangleStruct());
-	}
+	public void unio(Rectangle src2, Rectangle dest);
 }

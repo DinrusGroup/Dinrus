@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GdkPixbufLoader.html
- * outPack = gdkpixbuf
- * outFile = PixbufLoader
- * strct   = GdkPixbufLoader
- * realStrct=
- * ctorStrct=
- * clss    = PixbufLoader
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_pixbuf_loader_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gdk_pixbuf_loader_new_with_type
- * 	- gdk_pixbuf_loader_new_with_mime_type
- * omit signals:
- * imports:
- * 	- gtkD.gdkpixbuf.PixbufFormat
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.gdkpixbuf.PixbufAnimation
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkPixbufAnimation* -> PixbufAnimation
- * 	- GdkPixbufFormat* -> PixbufFormat
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gdkpixbuf.PixbufLoader;
 
 public  import gtkD.gtkc.gdkpixbuftypes;
@@ -128,38 +67,16 @@ public class PixbufLoader : ObjectG
 	protected GdkPixbufLoader* gdkPixbufLoader;
 	
 	
-	public GdkPixbufLoader* getPixbufLoaderStruct()
-	{
-		return gdkPixbufLoader;
-	}
+	public GdkPixbufLoader* getPixbufLoaderStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkPixbufLoader;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixbufLoader* gdkPixbufLoader)
-	{
-		if(gdkPixbufLoader is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkPixbufLoader);
-		if( ptr !is null )
-		{
-			this = cast(PixbufLoader)ptr;
-			return;
-		}
-		super(cast(GObject*)gdkPixbufLoader);
-		this.gdkPixbufLoader = gdkPixbufLoader;
-	}
+	public this (GdkPixbufLoader* gdkPixbufLoader);
 	
 	/**
 	 * Creates a new pixbuf loader object that always attempts to parse
@@ -171,34 +88,7 @@ public class PixbufLoader : ObjectG
 	 * Params:
 	 *  type = name of the image format or mime to be loaded with the image
 	 */
-	public this (string type, bool isMimeType=false)
-	{
-		GdkPixbufLoader* p;
-		GError* err = null;
-		
-		if ( isMimeType )
-		{
-			// GdkPixbufLoader* gdk_pixbuf_loader_new_with_mime_type  (const char *mime_type,  GError **error);
-			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_mime_type(Str.toStringz(type), &err);
-		}
-		else
-		{
-			// GdkPixbufLoader* gdk_pixbuf_loader_new_with_type  (const char *image_type,  GError **error);
-			p = cast(GdkPixbufLoader*)gdk_pixbuf_loader_new_with_type(Str.toStringz(type), &err);
-		}
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_button_new()");
-		}
-		
-		this(p);
-	}
+	public this (string type, bool isMimeType=false);
 	
 	/**
 	 */
@@ -212,28 +102,8 @@ public class PixbufLoader : ObjectG
 	 * the partially-loaded pixbuf.
 	 *
 	 */
-	void addOnAreaPrepared(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("area-prepared" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"area-prepared",
-			cast(GCallback)&callBackAreaPrepared,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["area-prepared"] = 1;
-		}
-		onAreaPreparedListeners ~= dlg;
-	}
-	extern(C) static void callBackAreaPrepared(GdkPixbufLoader* loaderStruct, PixbufLoader pixbufLoader)
-	{
-		foreach ( void delegate(PixbufLoader) dlg ; pixbufLoader.onAreaPreparedListeners )
-		{
-			dlg(pixbufLoader);
-		}
-	}
+	void addOnAreaPrepared(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAreaPrepared(GdkPixbufLoader* loaderStruct, PixbufLoader pixbufLoader);
 	
 	void delegate(gint, gint, gint, gint, PixbufLoader)[] onAreaUpdatedListeners;
 	/**
@@ -244,28 +114,8 @@ public class PixbufLoader : ObjectG
 	 * areas of an image that is being loaded.
 	 *
 	 */
-	void addOnAreaUpdated(void delegate(gint, gint, gint, gint, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("area-updated" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"area-updated",
-			cast(GCallback)&callBackAreaUpdated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["area-updated"] = 1;
-		}
-		onAreaUpdatedListeners ~= dlg;
-	}
-	extern(C) static void callBackAreaUpdated(GdkPixbufLoader* loaderStruct, gint x, gint y, gint width, gint height, PixbufLoader pixbufLoader)
-	{
-		foreach ( void delegate(gint, gint, gint, gint, PixbufLoader) dlg ; pixbufLoader.onAreaUpdatedListeners )
-		{
-			dlg(x, y, width, height, pixbufLoader);
-		}
-	}
+	void addOnAreaUpdated(void delegate(gint, gint, gint, gint, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAreaUpdated(GdkPixbufLoader* loaderStruct, gint x, gint y, gint width, gint height, PixbufLoader pixbufLoader);
 	
 	void delegate(PixbufLoader)[] onClosedListeners;
 	/**
@@ -275,28 +125,8 @@ public class PixbufLoader : ObjectG
 	 * drives it.
 	 *
 	 */
-	void addOnClosed(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("closed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"closed",
-			cast(GCallback)&callBackClosed,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["closed"] = 1;
-		}
-		onClosedListeners ~= dlg;
-	}
-	extern(C) static void callBackClosed(GdkPixbufLoader* loaderStruct, PixbufLoader pixbufLoader)
-	{
-		foreach ( void delegate(PixbufLoader) dlg ; pixbufLoader.onClosedListeners )
-		{
-			dlg(pixbufLoader);
-		}
-	}
+	void addOnClosed(void delegate(PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackClosed(GdkPixbufLoader* loaderStruct, PixbufLoader pixbufLoader);
 	
 	void delegate(gint, gint, PixbufLoader)[] onSizePreparedListeners;
 	/**
@@ -310,44 +140,15 @@ public class PixbufLoader : ObjectG
 	 *  gdk_pixbuf_new_from_file(), gdk_pixbuf_animation_new_from_file()
 	 *
 	 */
-	void addOnSizePrepared(void delegate(gint, gint, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("size-prepared" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"size-prepared",
-			cast(GCallback)&callBackSizePrepared,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["size-prepared"] = 1;
-		}
-		onSizePreparedListeners ~= dlg;
-	}
-	extern(C) static void callBackSizePrepared(GdkPixbufLoader* loaderStruct, gint width, gint height, PixbufLoader pixbufLoader)
-	{
-		foreach ( void delegate(gint, gint, PixbufLoader) dlg ; pixbufLoader.onSizePreparedListeners )
-		{
-			dlg(width, height, pixbufLoader);
-		}
-	}
+	void addOnSizePrepared(void delegate(gint, gint, PixbufLoader) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSizePrepared(GdkPixbufLoader* loaderStruct, gint width, gint height, PixbufLoader pixbufLoader);
 	
 	
 	/**
 	 * Creates a new pixbuf loader object.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GdkPixbufLoader * gdk_pixbuf_loader_new (void);
-		auto p = gdk_pixbuf_loader_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_loader_new()");
-		}
-		this(cast(GdkPixbufLoader*) p);
-	}
+	public this ();
 	
 	/**
 	 * Obtains the available information about the format of the
@@ -355,16 +156,7 @@ public class PixbufLoader : ObjectG
 	 * Since 2.2
 	 * Returns: A GdkPixbufFormat or NULL. The return value is owned by GdkPixbuf and should not be freed.
 	 */
-	public PixbufFormat getFormat()
-	{
-		// GdkPixbufFormat * gdk_pixbuf_loader_get_format (GdkPixbufLoader *loader);
-		auto p = gdk_pixbuf_loader_get_format(gdkPixbufLoader);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PixbufFormat(cast(GdkPixbufFormat*) p);
-	}
+	public PixbufFormat getFormat();
 	
 	/**
 	 * This will cause a pixbuf loader to parse the next count bytes of
@@ -378,20 +170,7 @@ public class PixbufLoader : ObjectG
 	 * Returns: TRUE if the write was successful, or FALSE if the loadercannot parse the buffer.
 	 * Throws: GException on failure.
 	 */
-	public int write(char[] buf)
-	{
-		// gboolean gdk_pixbuf_loader_write (GdkPixbufLoader *loader,  const guchar *buf,  gsize count,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_loader_write(gdkPixbufLoader, buf.ptr, buf.length, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int write(char[] buf);
 	
 	/**
 	 * Causes the image to be scaled while it is loaded. The desired
@@ -405,11 +184,7 @@ public class PixbufLoader : ObjectG
 	 * width =  The desired width of the image being loaded.
 	 * height =  The desired height of the image being loaded.
 	 */
-	public void setSize(int width, int height)
-	{
-		// void gdk_pixbuf_loader_set_size (GdkPixbufLoader *loader,  int width,  int height);
-		gdk_pixbuf_loader_set_size(gdkPixbufLoader, width, height);
-	}
+	public void setSize(int width, int height);
 	
 	/**
 	 * Queries the GdkPixbuf that a pixbuf loader is currently creating.
@@ -425,16 +200,7 @@ public class PixbufLoader : ObjectG
 	 * (see gdk_pixbuf_animation_get_static_image()).
 	 * Returns: The GdkPixbuf that the loader is creating, or NULL if notenough data has been read to determine how to create the image buffer.
 	 */
-	public Pixbuf getPixbuf()
-	{
-		// GdkPixbuf * gdk_pixbuf_loader_get_pixbuf (GdkPixbufLoader *loader);
-		auto p = gdk_pixbuf_loader_get_pixbuf(gdkPixbufLoader);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getPixbuf();
 	
 	/**
 	 * Queries the GdkPixbufAnimation that a pixbuf loader is currently creating.
@@ -444,16 +210,7 @@ public class PixbufLoader : ObjectG
 	 * return NULL.
 	 * Returns: The GdkPixbufAnimation that the loader is loading, or NULL if not enough data has been read to determine the information.
 	 */
-	public PixbufAnimation getAnimation()
-	{
-		// GdkPixbufAnimation * gdk_pixbuf_loader_get_animation (GdkPixbufLoader *loader);
-		auto p = gdk_pixbuf_loader_get_animation(gdkPixbufLoader);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PixbufAnimation(cast(GdkPixbufAnimation*) p);
-	}
+	public PixbufAnimation getAnimation();
 	
 	/**
 	 * Informs a pixbuf loader that no further writes with
@@ -468,18 +225,5 @@ public class PixbufLoader : ObjectG
 	 * Returns: TRUE if all image data written so far was successfully passed out via the update_area signalSignal DetailsThe "area-prepared" signalvoid user_function (GdkPixbufLoader *loader, gpointer user_data) : Run LastThis signal is emitted when the pixbuf loader has allocated thepixbuf in the desired size. After this signal is emitted, applications can call gdk_pixbuf_loader_get_pixbuf() to fetch the partially-loaded pixbuf.
 	 * Throws: GException on failure.
 	 */
-	public int close()
-	{
-		// gboolean gdk_pixbuf_loader_close (GdkPixbufLoader *loader,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_loader_close(gdkPixbufLoader, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close();
 }

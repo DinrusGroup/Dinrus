@@ -1,52 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocketService.html
- * outPack = gio
- * outFile = SocketService
- * strct   = GSocketService
- * realStrct=
- * ctorStrct=
- * clss    = SocketService
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_service_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.SocketService;
 
@@ -93,38 +44,16 @@ public class SocketService : SocketListener
 	protected GSocketService* gSocketService;
 	
 	
-	public GSocketService* getSocketServiceStruct()
-	{
-		return gSocketService;
-	}
+	public GSocketService* getSocketServiceStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocketService;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketService* gSocketService)
-	{
-		if(gSocketService is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocketService);
-		if( ptr !is null )
-		{
-			this = cast(SocketService)ptr;
-			return;
-		}
-		super(cast(GSocketListener*)gSocketService);
-		this.gSocketService = gSocketService;
-	}
+	public this (GSocketService* gSocketService);
 	
 	/**
 	 */
@@ -140,33 +69,8 @@ public class SocketService : SocketListener
 	 * See Also
 	 * #GThreadedSocketService, GSocketListener.
 	 */
-	void addOnIncoming(bool delegate(GSocketConnection*, GObject*, SocketService) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("incoming" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"incoming",
-			cast(GCallback)&callBackIncoming,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["incoming"] = 1;
-		}
-		onIncomingListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackIncoming(GSocketService* serviceStruct, GSocketConnection* connection, GObject* sourceObject, SocketService socketService)
-	{
-		foreach ( bool delegate(GSocketConnection*, GObject*, SocketService) dlg ; socketService.onIncomingListeners )
-		{
-			if ( dlg(connection, sourceObject, socketService) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnIncoming(bool delegate(GSocketConnection*, GObject*, SocketService) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackIncoming(GSocketService* serviceStruct, GSocketConnection* connection, GObject* sourceObject, SocketService socketService);
 	
 	
 	/**
@@ -176,16 +80,7 @@ public class SocketService : SocketListener
 	 * Since 2.22
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GSocketService * g_socket_service_new (void);
-		auto p = g_socket_service_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_socket_service_new()");
-		}
-		this(cast(GSocketService*) p);
-	}
+	public this ();
 	
 	/**
 	 * Starts the service, i.e. start accepting connections
@@ -194,11 +89,7 @@ public class SocketService : SocketListener
 	 * handling an incomming client request.
 	 * Since 2.22
 	 */
-	public void start()
-	{
-		// void g_socket_service_start (GSocketService *service);
-		g_socket_service_start(gSocketService);
-	}
+	public void start();
 	
 	/**
 	 * Stops the service, i.e. stops accepting connections
@@ -207,11 +98,7 @@ public class SocketService : SocketListener
 	 * handling an incomming client request.
 	 * Since 2.22
 	 */
-	public void stop()
-	{
-		// void g_socket_service_stop (GSocketService *service);
-		g_socket_service_stop(gSocketService);
-	}
+	public void stop();
 	
 	/**
 	 * Check whether the service is active or not. An active
@@ -232,9 +119,5 @@ public class SocketService : SocketListener
 	 * Since 2.22
 	 * Returns: TRUE if the service is active, FALSE otherwiseReturns: TRUE to stop other handlers from being called
 	 */
-	public int isActive()
-	{
-		// gboolean g_socket_service_is_active (GSocketService *service);
-		return g_socket_service_is_active(gSocketService);
-	}
+	public int isActive();
 }

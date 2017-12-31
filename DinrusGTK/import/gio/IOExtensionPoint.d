@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gio
- * outFile = IOExtensionPoint
- * strct   = GIOExtensionPoint
- * realStrct=
- * ctorStrct=
- * clss    = IOExtensionPoint
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_io_extension_point_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ListG
- * 	- gtkD.gio.IOExtension
- * structWrap:
- * 	- GIOExtension* -> IOExtension
- * 	- GIOExtensionPoint* -> IOExtensionPoint
- * 	- GList* -> ListG
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.IOExtensionPoint;
 
@@ -106,30 +51,16 @@ public class IOExtensionPoint
 	protected GIOExtensionPoint* gIOExtensionPoint;
 	
 	
-	public GIOExtensionPoint* getIOExtensionPointStruct()
-	{
-		return gIOExtensionPoint;
-	}
+	public GIOExtensionPoint* getIOExtensionPointStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gIOExtensionPoint;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GIOExtensionPoint* gIOExtensionPoint)
-	{
-		if(gIOExtensionPoint is null)
-		{
-			this = null;
-			return;
-		}
-		this.gIOExtensionPoint = gIOExtensionPoint;
-	}
+	public this (GIOExtensionPoint* gIOExtensionPoint);
 	
 	/**
 	 */
@@ -140,42 +71,20 @@ public class IOExtensionPoint
 	 * name =  the name of the extension to get
 	 * Returns: the GIOExtension for extension_point that has the given name, or NULL if there is no extension with that name
 	 */
-	public IOExtension getExtensionByName(string name)
-	{
-		// GIOExtension * g_io_extension_point_get_extension_by_name  (GIOExtensionPoint *extension_point,  const char *name);
-		auto p = g_io_extension_point_get_extension_by_name(gIOExtensionPoint, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IOExtension(cast(GIOExtension*) p);
-	}
+	public IOExtension getExtensionByName(string name);
 	
 	/**
 	 * Gets a list of all extensions that implement this extension point.
 	 * The list is sorted by priority, beginning with the highest priority.
 	 * Returns: a GList of GIOExtensions. The list is owned by GIO and should not be modified
 	 */
-	public ListG getExtensions()
-	{
-		// GList * g_io_extension_point_get_extensions (GIOExtensionPoint *extension_point);
-		auto p = g_io_extension_point_get_extensions(gIOExtensionPoint);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getExtensions();
 	
 	/**
 	 * Gets the required type for extension_point.
 	 * Returns: the GType that all implementations must have,  or G_TYPE_INVALID if the extension point has no required type
 	 */
-	public GType getRequiredType()
-	{
-		// GType g_io_extension_point_get_required_type  (GIOExtensionPoint *extension_point);
-		return g_io_extension_point_get_required_type(gIOExtensionPoint);
-	}
+	public GType getRequiredType();
 	
 	/**
 	 * Registers type as extension for the extension point with name
@@ -189,16 +98,7 @@ public class IOExtensionPoint
 	 * priority =  the priority for the extension
 	 * Returns: a GIOExtension object for GType
 	 */
-	public static IOExtension implement(string extensionPointName, GType type, string extensionName, int priority)
-	{
-		// GIOExtension * g_io_extension_point_implement (const char *extension_point_name,  GType type,  const char *extension_name,  gint priority);
-		auto p = g_io_extension_point_implement(Str.toStringz(extensionPointName), type, Str.toStringz(extensionName), priority);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IOExtension(cast(GIOExtension*) p);
-	}
+	public static IOExtension implement(string extensionPointName, GType type, string extensionName, int priority);
 	
 	/**
 	 * Looks up an existing extension point.
@@ -206,16 +106,7 @@ public class IOExtensionPoint
 	 * name =  the name of the extension point
 	 * Returns: the GIOExtensionPoint, or NULL if there is no registered extension point with the given name
 	 */
-	public static IOExtensionPoint lookup(string name)
-	{
-		// GIOExtensionPoint * g_io_extension_point_lookup (const char *name);
-		auto p = g_io_extension_point_lookup(Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IOExtensionPoint(cast(GIOExtensionPoint*) p);
-	}
+	public static IOExtensionPoint lookup(string name);
 	
 	/**
 	 * Registers an extension point.
@@ -223,16 +114,7 @@ public class IOExtensionPoint
 	 * name =  The name of the extension point
 	 * Returns: the new GIOExtensionPoint. This object is owned by GIO and should not be freed
 	 */
-	public static IOExtensionPoint register(string name)
-	{
-		// GIOExtensionPoint * g_io_extension_point_register (const char *name);
-		auto p = g_io_extension_point_register(Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IOExtensionPoint(cast(GIOExtensionPoint*) p);
-	}
+	public static IOExtensionPoint register(string name);
 	
 	/**
 	 * Sets the required type for extension_point to type.
@@ -240,9 +122,5 @@ public class IOExtensionPoint
 	 * Params:
 	 * type =  the GType to require
 	 */
-	public void setRequiredType(GType type)
-	{
-		// void g_io_extension_point_set_required_type  (GIOExtensionPoint *extension_point,  GType type);
-		g_io_extension_point_set_required_type(gIOExtensionPoint, type);
-	}
+	public void setRequiredType(GType type);
 }

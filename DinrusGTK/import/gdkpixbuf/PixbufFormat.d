@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-pixbuf-Module-Interface.html
- * outPack = gdkpixbuf
- * outFile = PixbufFormat
- * strct   = GdkPixbufFormat
- * realStrct=
- * ctorStrct=
- * clss    = PixbufFormat
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_pixbuf_format_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.glib.ListSG
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkPixbufFormat* -> PixbufFormat
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gdkpixbuf.PixbufFormat;
 
 public  import gtkD.gtkc.gdkpixbuftypes;
@@ -115,30 +59,16 @@ public class PixbufFormat
 	protected GdkPixbufFormat* gdkPixbufFormat;
 	
 	
-	public GdkPixbufFormat* getPixbufFormatStruct()
-	{
-		return gdkPixbufFormat;
-	}
+	public GdkPixbufFormat* getPixbufFormatStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkPixbufFormat;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixbufFormat* gdkPixbufFormat)
-	{
-		if(gdkPixbufFormat is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkPixbufFormat = gdkPixbufFormat;
-	}
+	public this (GdkPixbufFormat* gdkPixbufFormat);
 	
 	/**
 	 * Description
@@ -164,11 +94,7 @@ public class PixbufFormat
 	 * value =  a nul-terminated string.
 	 * Returns: TRUE on success.
 	 */
-	public static int gdkPixbufSetOption(Pixbuf pixbuf, string key, string value)
-	{
-		// gboolean gdk_pixbuf_set_option (GdkPixbuf *pixbuf,  const gchar *key,  const gchar *value);
-		return gdk_pixbuf_set_option((pixbuf is null) ? null : pixbuf.getPixbufStruct(), Str.toStringz(key), Str.toStringz(value));
-	}
+	public static int gdkPixbufSetOption(Pixbuf pixbuf, string key, string value);
 	
 	/**
 	 * Obtains the available information about the image formats supported
@@ -176,49 +102,28 @@ public class PixbufFormat
 	 * Since 2.2
 	 * Returns: A list of GdkPixbufFormats describing the supported image formats. The list should be freed when it is no longer needed, but the structures themselves are owned by GdkPixbuf and should not be freed.
 	 */
-	public static ListSG gdkPixbufGetFormats()
-	{
-		// GSList * gdk_pixbuf_get_formats (void);
-		auto p = gdk_pixbuf_get_formats();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public static ListSG gdkPixbufGetFormats();
 	
 	/**
 	 * Returns the name of the format.
 	 * Since 2.2
 	 * Returns: the name of the format.
 	 */
-	public string getName()
-	{
-		// gchar * gdk_pixbuf_format_get_name (GdkPixbufFormat *format);
-		return Str.toString(gdk_pixbuf_format_get_name(gdkPixbufFormat));
-	}
+	public string getName();
 	
 	/**
 	 * Returns a description of the format.
 	 * Since 2.2
 	 * Returns: a description of the format.
 	 */
-	public string getDescription()
-	{
-		// gchar * gdk_pixbuf_format_get_description (GdkPixbufFormat *format);
-		return Str.toString(gdk_pixbuf_format_get_description(gdkPixbufFormat));
-	}
+	public string getDescription();
 	
 	/**
 	 * Returns the mime types supported by the format.
 	 * Since 2.2
 	 * Returns: a NULL-terminated array of mime types which must be freed with g_strfreev() when it is no longer needed.
 	 */
-	public string[] getMimeTypes()
-	{
-		// gchar ** gdk_pixbuf_format_get_mime_types (GdkPixbufFormat *format);
-		return Str.toStringArray(gdk_pixbuf_format_get_mime_types(gdkPixbufFormat));
-	}
+	public string[] getMimeTypes();
 	
 	/**
 	 * Returns the filename extensions typically used for files in the
@@ -226,22 +131,14 @@ public class PixbufFormat
 	 * Since 2.2
 	 * Returns: a NULL-terminated array of filename extensions which must befreed with g_strfreev() when it is no longer needed.
 	 */
-	public string[] getExtensions()
-	{
-		// gchar ** gdk_pixbuf_format_get_extensions (GdkPixbufFormat *format);
-		return Str.toStringArray(gdk_pixbuf_format_get_extensions(gdkPixbufFormat));
-	}
+	public string[] getExtensions();
 	
 	/**
 	 * Returns whether pixbufs can be saved in the given format.
 	 * Since 2.2
 	 * Returns: whether pixbufs can be saved in the given format.
 	 */
-	public int isWritable()
-	{
-		// gboolean gdk_pixbuf_format_is_writable (GdkPixbufFormat *format);
-		return gdk_pixbuf_format_is_writable(gdkPixbufFormat);
-	}
+	public int isWritable();
 	
 	/**
 	 * Returns whether this image format is scalable. If a file is in a
@@ -251,11 +148,7 @@ public class PixbufFormat
 	 * Since 2.6
 	 * Returns: whether this image format is scalable.
 	 */
-	public int isScalable()
-	{
-		// gboolean gdk_pixbuf_format_is_scalable (GdkPixbufFormat *format);
-		return gdk_pixbuf_format_is_scalable(gdkPixbufFormat);
-	}
+	public int isScalable();
 	
 	/**
 	 * Returns whether this image format is disabled. See
@@ -263,11 +156,7 @@ public class PixbufFormat
 	 * Since 2.6
 	 * Returns: whether this image format is disabled.
 	 */
-	public int isDisabled()
-	{
-		// gboolean gdk_pixbuf_format_is_disabled (GdkPixbufFormat *format);
-		return gdk_pixbuf_format_is_disabled(gdkPixbufFormat);
-	}
+	public int isDisabled();
 	
 	/**
 	 * Disables or enables an image format. If a format is disabled,
@@ -278,11 +167,7 @@ public class PixbufFormat
 	 * Params:
 	 * disabled =  TRUE to disable the format format
 	 */
-	public void setDisabled(int disabled)
-	{
-		// void gdk_pixbuf_format_set_disabled (GdkPixbufFormat *format,  gboolean disabled);
-		gdk_pixbuf_format_set_disabled(gdkPixbufFormat, disabled);
-	}
+	public void setDisabled(int disabled);
 	
 	/**
 	 * Returns information about the license of the image loader for the format. The
@@ -292,11 +177,7 @@ public class PixbufFormat
 	 * Since 2.6
 	 * Returns: a string describing the license of format.
 	 */
-	public string getLicense()
-	{
-		// gchar * gdk_pixbuf_format_get_license (GdkPixbufFormat *format);
-		return Str.toString(gdk_pixbuf_format_get_license(gdkPixbufFormat));
-	}
+	public string getLicense();
 	
 	/**
 	 * Parses an image file far enough to determine its format and size.
@@ -307,14 +188,5 @@ public class PixbufFormat
 	 * height =  Return location for the height of the image, or NULL
 	 * Returns: A GdkPixbufFormat describing the image format of the file  or NULL if the image format wasn't recognized. The return value  is owned by GdkPixbuf and should not be freed.
 	 */
-	public static PixbufFormat getFileInfo(string filename, out int width, out int height)
-	{
-		// GdkPixbufFormat * gdk_pixbuf_get_file_info (const gchar *filename,  gint *width,  gint *height);
-		auto p = gdk_pixbuf_get_file_info(Str.toStringz(filename), &width, &height);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PixbufFormat(cast(GdkPixbufFormat*) p);
-	}
+	public static PixbufFormat getFileInfo(string filename, out int width, out int height);
 }

@@ -1,52 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gio
- * outFile = UnixMountMonitor
- * strct   = GUnixMountMonitor
- * realStrct=
- * ctorStrct=
- * clss    = UnixMountMonitor
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_unix_mount_monitor_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gio.UnixMountMonitor;
 
@@ -77,38 +28,16 @@ public class UnixMountMonitor : ObjectG
 	protected GUnixMountMonitor* gUnixMountMonitor;
 	
 	
-	public GUnixMountMonitor* getUnixMountMonitorStruct()
-	{
-		return gUnixMountMonitor;
-	}
+	public GUnixMountMonitor* getUnixMountMonitorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gUnixMountMonitor;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GUnixMountMonitor* gUnixMountMonitor)
-	{
-		if(gUnixMountMonitor is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gUnixMountMonitor);
-		if( ptr !is null )
-		{
-			this = cast(UnixMountMonitor)ptr;
-			return;
-		}
-		super(cast(GObject*)gUnixMountMonitor);
-		this.gUnixMountMonitor = gUnixMountMonitor;
-	}
+	public this (GUnixMountMonitor* gUnixMountMonitor);
 	
 	/**
 	 */
@@ -118,55 +47,15 @@ public class UnixMountMonitor : ObjectG
 	/**
 	 * Emitted when the unix mount points have changed.
 	 */
-	void addOnMountpointsChanged(void delegate(UnixMountMonitor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("mountpoints-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"mountpoints-changed",
-			cast(GCallback)&callBackMountpointsChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["mountpoints-changed"] = 1;
-		}
-		onMountpointsChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackMountpointsChanged(GUnixMountMonitor* monitorStruct, UnixMountMonitor unixMountMonitor)
-	{
-		foreach ( void delegate(UnixMountMonitor) dlg ; unixMountMonitor.onMountpointsChangedListeners )
-		{
-			dlg(unixMountMonitor);
-		}
-	}
+	void addOnMountpointsChanged(void delegate(UnixMountMonitor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMountpointsChanged(GUnixMountMonitor* monitorStruct, UnixMountMonitor unixMountMonitor);
 	
 	void delegate(UnixMountMonitor)[] onMountsChangedListeners;
 	/**
 	 * Emitted when the unix mounts have changed.
 	 */
-	void addOnMountsChanged(void delegate(UnixMountMonitor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("mounts-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"mounts-changed",
-			cast(GCallback)&callBackMountsChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["mounts-changed"] = 1;
-		}
-		onMountsChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackMountsChanged(GUnixMountMonitor* monitorStruct, UnixMountMonitor unixMountMonitor)
-	{
-		foreach ( void delegate(UnixMountMonitor) dlg ; unixMountMonitor.onMountsChangedListeners )
-		{
-			dlg(unixMountMonitor);
-		}
-	}
+	void addOnMountsChanged(void delegate(UnixMountMonitor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMountsChanged(GUnixMountMonitor* monitorStruct, UnixMountMonitor unixMountMonitor);
 	
 	
 	/**
@@ -176,16 +65,7 @@ public class UnixMountMonitor : ObjectG
 	 * g_unix_mount_monitor_set_rate_limit() to change this.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GUnixMountMonitor * g_unix_mount_monitor_new (void);
-		auto p = g_unix_mount_monitor_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_unix_mount_monitor_new()");
-		}
-		this(cast(GUnixMountMonitor*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the rate limit to which the mount_monitor will report
@@ -195,9 +75,5 @@ public class UnixMountMonitor : ObjectG
 	 * limitMsec =  a integer with the limit in milliseconds to
 	 *  poll for changes.
 	 */
-	public void setRateLimit(int limitMsec)
-	{
-		// void g_unix_mount_monitor_set_rate_limit (GUnixMountMonitor *mount_monitor,  int limit_msec);
-		g_unix_mount_monitor_set_rate_limit(gUnixMountMonitor, limitMsec);
-	}
+	public void setRateLimit(int limitMsec);
 }

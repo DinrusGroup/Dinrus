@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gdkpixbuf
- * outFile = PixbufAnimationIter
- * strct   = GdkPixbufAnimationIter
- * realStrct=
- * ctorStrct=
- * clss    = PixbufAnimationIter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = GObject
- * implements:
- * prefixes:
- * 	- gdk_pixbuf_animation_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.glib.TimeVal
- * structWrap:
- * 	- GTimeVal* -> TimeVal
- * 	- GdkPixbuf* -> Pixbuf
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gdkpixbuf.PixbufAnimationIter;
 
 public  import gtkD.gtkc.gdkpixbuftypes;
@@ -84,38 +30,16 @@ public class PixbufAnimationIter : ObjectG
 	protected GdkPixbufAnimationIter* gdkPixbufAnimationIter;
 	
 	
-	public GdkPixbufAnimationIter* getPixbufAnimationIterStruct()
-	{
-		return gdkPixbufAnimationIter;
-	}
+	public GdkPixbufAnimationIter* getPixbufAnimationIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkPixbufAnimationIter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixbufAnimationIter* gdkPixbufAnimationIter)
-	{
-		if(gdkPixbufAnimationIter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkPixbufAnimationIter);
-		if( ptr !is null )
-		{
-			this = cast(PixbufAnimationIter)ptr;
-			return;
-		}
-		super(cast(GObject*)gdkPixbufAnimationIter);
-		this.gdkPixbufAnimationIter = gdkPixbufAnimationIter;
-	}
+	public this (GdkPixbufAnimationIter* gdkPixbufAnimationIter);
 	
 	/**
 	 */
@@ -141,11 +65,7 @@ public class PixbufAnimationIter : ObjectG
 	 * currentTime =  current time
 	 * Returns: TRUE if the image may need updating
 	 */
-	public int advance(TimeVal currentTime)
-	{
-		// gboolean gdk_pixbuf_animation_iter_advance (GdkPixbufAnimationIter *iter,  const GTimeVal *current_time);
-		return gdk_pixbuf_animation_iter_advance(gdkPixbufAnimationIter, (currentTime is null) ? null : currentTime.getTimeValStruct());
-	}
+	public int advance(TimeVal currentTime);
 	
 	/**
 	 * Gets the number of milliseconds the current pixbuf should be displayed,
@@ -154,11 +74,7 @@ public class PixbufAnimationIter : ObjectG
 	 * to schedule the next update.
 	 * Returns: delay time in milliseconds (thousandths of a second)
 	 */
-	public int getDelayTime()
-	{
-		// int gdk_pixbuf_animation_iter_get_delay_time  (GdkPixbufAnimationIter *iter);
-		return gdk_pixbuf_animation_iter_get_delay_time(gdkPixbufAnimationIter);
-	}
+	public int getDelayTime();
 	
 	/**
 	 * Used to determine how to respond to the area_updated signal on
@@ -168,11 +84,7 @@ public class PixbufAnimationIter : ObjectG
 	 * the updated area.
 	 * Returns: TRUE if the frame we're on is partially loaded, or the last frame
 	 */
-	public int onCurrentlyLoadingFrame()
-	{
-		// gboolean gdk_pixbuf_animation_iter_on_currently_loading_frame  (GdkPixbufAnimationIter *iter);
-		return gdk_pixbuf_animation_iter_on_currently_loading_frame(gdkPixbufAnimationIter);
-	}
+	public int onCurrentlyLoadingFrame();
 	
 	/**
 	 * Gets the current pixbuf which should be displayed; the pixbuf will
@@ -188,14 +100,5 @@ public class PixbufAnimationIter : ObjectG
 	 * the iterator.
 	 * Returns: the pixbuf to be displayed
 	 */
-	public Pixbuf getPixbuf()
-	{
-		// GdkPixbuf * gdk_pixbuf_animation_iter_get_pixbuf  (GdkPixbufAnimationIter *iter);
-		auto p = gdk_pixbuf_animation_iter_get_pixbuf(gdkPixbufAnimationIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getPixbuf();
 }

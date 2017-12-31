@@ -1,51 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-Threads.html
- * outPack = gdk
- * outFile = Threads
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = 
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gdk.Threads;
 
@@ -69,11 +21,7 @@ private import gtkD.glib.ConstructionException;
  * This call must be made before any use of the main loop from
  * GTK+; to be safe, call it before gtk_init().
  */
-public static void gdkThreadsInit()
-{
-	// void gdk_threads_init (void);
-	gdk_threads_init();
-}
+public static void gdkThreadsInit();
 
 /**
  * This macro marks the beginning of a critical section in which GDK and
@@ -81,20 +29,12 @@ public static void gdkThreadsInit()
  * conditions. Only one thread at a time can be in such a critial
  * section.
  */
-public static void gdkThreadsEnter()
-{
-	// void gdk_threads_enter (void);
-	gdk_threads_enter();
-}
+public static void gdkThreadsEnter();
 
 /**
  * Leaves a critical region begun with gdk_threads_enter().
  */
-public static void gdkThreadsLeave()
-{
-	// void gdk_threads_leave (void);
-	gdk_threads_leave();
-}
+public static void gdkThreadsLeave();
 
 /**
  * Allows the application to replace the standard method that
@@ -119,11 +59,7 @@ public static void gdkThreadsLeave()
  * enterFn =  function called to guard GDK
  * leaveFn =  function called to release the guard
  */
-public static void gdkThreadsSetLockFunctions(GCallback enterFn, GCallback leaveFn)
-{
-	// void gdk_threads_set_lock_functions (GCallback enter_fn,  GCallback leave_fn);
-	gdk_threads_set_lock_functions(enterFn, leaveFn);
-}
+public static void gdkThreadsSetLockFunctions(GCallback enterFn, GCallback leaveFn);
 
 /**
  * A wrapper for the common usage of gdk_threads_add_idle_full()
@@ -134,11 +70,7 @@ public static void gdkThreadsSetLockFunctions(GCallback enterFn, GCallback leave
  * data =  data to pass to function
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddIdle(GSourceFunc funct, void* data)
-{
-	// guint gdk_threads_add_idle (GSourceFunc function,  gpointer data);
-	return gdk_threads_add_idle(funct, data);
-}
+public static uint gdkThreadsAddIdle(GSourceFunc funct, void* data);
 
 /**
  * Adds a function to be called whenever there are no higher priority
@@ -156,11 +88,7 @@ public static uint gdkThreadsAddIdle(GSourceFunc funct, void* data)
  * notify =  function to call when the idle is removed, or NULL
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddIdleFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify)
-{
-	// guint gdk_threads_add_idle_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_idle_full(priority, funct, data, notify);
-}
+public static uint gdkThreadsAddIdleFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify);
 
 /**
  * A wrapper for the common usage of gdk_threads_add_timeout_full()
@@ -173,11 +101,7 @@ public static uint gdkThreadsAddIdleFull(int priority, GSourceFunc funct, void* 
  * data =  data to pass to function
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddTimeout(uint interval, GSourceFunc funct, void* data)
-{
-	// guint gdk_threads_add_timeout (guint interval,  GSourceFunc function,  gpointer data);
-	return gdk_threads_add_timeout(interval, funct, data);
-}
+public static uint gdkThreadsAddTimeout(uint interval, GSourceFunc funct, void* data);
 
 /**
  * Sets a function to be called at regular intervals holding the GDK lock,
@@ -202,11 +126,7 @@ public static uint gdkThreadsAddTimeout(uint interval, GSourceFunc funct, void* 
  * notify =  function to call when the timeout is removed, or NULL
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddTimeoutFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
-{
-	// guint gdk_threads_add_timeout_full (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_timeout_full(priority, interval, funct, data, notify);
-}
+public static uint gdkThreadsAddTimeoutFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify);
 
 /**
  * A wrapper for the common usage of gdk_threads_add_timeout_seconds_full()
@@ -218,11 +138,7 @@ public static uint gdkThreadsAddTimeoutFull(int priority, uint interval, GSource
  * data =  data to pass to function
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddTimeoutSeconds(uint interval, GSourceFunc funct, void* data)
-{
-	// guint gdk_threads_add_timeout_seconds (guint interval,  GSourceFunc function,  gpointer data);
-	return gdk_threads_add_timeout_seconds(interval, funct, data);
-}
+public static uint gdkThreadsAddTimeoutSeconds(uint interval, GSourceFunc funct, void* data);
 
 /**
  * A variant of gdk_threads_add_timout_full() with second-granularity.
@@ -237,9 +153,5 @@ public static uint gdkThreadsAddTimeoutSeconds(uint interval, GSourceFunc funct,
  * notify =  function to call when the timeout is removed, or NULL
  * Returns: the ID (greater than 0) of the event source.
  */
-public static uint gdkThreadsAddTimeoutSecondsFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
-{
-	// guint gdk_threads_add_timeout_seconds_full  (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_timeout_seconds_full(priority, interval, funct, data, notify);
-}
+public static uint gdkThreadsAddTimeoutSecondsFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify);
 

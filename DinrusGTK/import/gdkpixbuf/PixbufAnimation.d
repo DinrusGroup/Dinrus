@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gdk-pixbuf-animation.html
- * outPack = gdkpixbuf
- * outFile = PixbufAnimation
- * strct   = GdkPixbufAnimation
- * realStrct=
- * ctorStrct=
- * clss    = PixbufAnimation
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_pixbuf_animation_
- * omit structs:
- * omit prefixes:
- * 	- gdk_pixbuf_animation_iter_
- * 	- gdk_pixbuf_simple_anim_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gdkpixbuf.PixbufAnimationIter
- * 	- gtkD.glib.TimeVal
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GTimeVal* -> TimeVal
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkPixbufAnimation* -> PixbufAnimation
- * 	- GdkPixbufAnimationIter* -> PixbufAnimationIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gdkpixbuf.PixbufAnimation;
 
 public  import gtkD.gtkc.gdkpixbuftypes;
@@ -96,38 +34,16 @@ public class PixbufAnimation : ObjectG
 	protected GdkPixbufAnimation* gdkPixbufAnimation;
 	
 	
-	public GdkPixbufAnimation* getPixbufAnimationStruct()
-	{
-		return gdkPixbufAnimation;
-	}
+	public GdkPixbufAnimation* getPixbufAnimationStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkPixbufAnimation;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkPixbufAnimation* gdkPixbufAnimation)
-	{
-		if(gdkPixbufAnimation is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkPixbufAnimation);
-		if( ptr !is null )
-		{
-			this = cast(PixbufAnimation)ptr;
-			return;
-		}
-		super(cast(GObject*)gdkPixbufAnimation);
-		this.gdkPixbufAnimation = gdkPixbufAnimation;
-	}
+	public this (GdkPixbufAnimation* gdkPixbufAnimation);
 	
 	/**
 	 */
@@ -142,24 +58,7 @@ public class PixbufAnimation : ObjectG
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string filename)
-	{
-		// GdkPixbufAnimation * gdk_pixbuf_animation_new_from_file (const char *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = gdk_pixbuf_animation_new_from_file(Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixbuf_animation_new_from_file(Str.toStringz(filename), &err)");
-		}
-		this(cast(GdkPixbufAnimation*) p);
-	}
+	public this (string filename);
 	
 	/**
 	 * Warning
@@ -167,27 +66,14 @@ public class PixbufAnimation : ObjectG
 	 * Adds a reference to an animation.
 	 * Returns: The same as the animation argument.
 	 */
-	public PixbufAnimation doref()
-	{
-		// GdkPixbufAnimation * gdk_pixbuf_animation_ref (GdkPixbufAnimation *animation);
-		auto p = gdk_pixbuf_animation_ref(gdkPixbufAnimation);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PixbufAnimation(cast(GdkPixbufAnimation*) p);
-	}
+	public PixbufAnimation doref();
 	
 	/**
 	 * Warning
 	 * gdk_pixbuf_animation_unref is deprecated and should not be used in newly-written code. Use g_object_unref().
 	 * Removes a reference from an animation.
 	 */
-	public void unref()
-	{
-		// void gdk_pixbuf_animation_unref (GdkPixbufAnimation *animation);
-		gdk_pixbuf_animation_unref(gdkPixbufAnimation);
-	}
+	public void unref();
 	
 	/**
 	 * Queries the width of the bounding box of a pixbuf animation.
@@ -203,11 +89,7 @@ public class PixbufAnimation : ObjectG
 	 * Queries the height of the bounding box of a pixbuf animation.
 	 * Returns: Height of the bounding box of the animation.
 	 */
-	public int getHeight()
-	{
-		// int gdk_pixbuf_animation_get_height (GdkPixbufAnimation *animation);
-		return gdk_pixbuf_animation_get_height(gdkPixbufAnimation);
-	}
+	public int getHeight();
 	
 	/**
 	 * Get an iterator for displaying an animation. The iterator provides
@@ -242,16 +124,7 @@ public class PixbufAnimation : ObjectG
 	 * startTime =  time when the animation starts playing
 	 * Returns: an iterator to move over the animation
 	 */
-	public PixbufAnimationIter getIter(TimeVal startTime)
-	{
-		// GdkPixbufAnimationIter * gdk_pixbuf_animation_get_iter (GdkPixbufAnimation *animation,  const GTimeVal *start_time);
-		auto p = gdk_pixbuf_animation_get_iter(gdkPixbufAnimation, (startTime is null) ? null : startTime.getTimeValStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PixbufAnimationIter(cast(GdkPixbufAnimationIter*) p);
-	}
+	public PixbufAnimationIter getIter(TimeVal startTime);
 	
 	/**
 	 * If you load a file with gdk_pixbuf_animation_new_from_file() and it turns
@@ -260,11 +133,7 @@ public class PixbufAnimation : ObjectG
 	 * the image.
 	 * Returns: TRUE if the "animation" was really just an image
 	 */
-	public int isStaticImage()
-	{
-		// gboolean gdk_pixbuf_animation_is_static_image  (GdkPixbufAnimation *animation);
-		return gdk_pixbuf_animation_is_static_image(gdkPixbufAnimation);
-	}
+	public int isStaticImage();
 	
 	/**
 	 * If an animation is really just a plain image (has only one frame),
@@ -275,14 +144,5 @@ public class PixbufAnimation : ObjectG
 	 * function will return NULL.
 	 * Returns: unanimated image representing the animation
 	 */
-	public Pixbuf getStaticImage()
-	{
-		// GdkPixbuf * gdk_pixbuf_animation_get_static_image  (GdkPixbufAnimation *animation);
-		auto p = gdk_pixbuf_animation_get_static_image(gdkPixbufAnimation);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getStaticImage();
 }

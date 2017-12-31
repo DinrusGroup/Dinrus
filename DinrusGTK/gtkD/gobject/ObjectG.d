@@ -119,7 +119,7 @@ public class ObjectG
     public void objectGSetDataFull(string key, gpointer data)
     {
         version(Rulada) std.gc.addRoot(data);
-        version(Dinrus) добавьКорень(data);
+        version(Dinrus) смДобавьКорень(data);
         g_object_set_data_full(gObject, Str.toStringz(key), data, cast(GDestroyNotify)&destroyNotify);
     }
 
@@ -128,7 +128,7 @@ public class ObjectG
         static void destroyNotify(gpointer* data)
         {
             version(Rulada)	std.gc.removeRoot(data);
-            version(Dinrus) удалиКорень(data);
+            version(Dinrus) смУдалиКорень(data);
         }
     }
 

@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GInputStream.html
- * outPack = gio
- * outFile = InputStream
- * strct   = GInputStream
- * realStrct=
- * ctorStrct=
- * clss    = InputStream
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_input_stream_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.InputStream;
 
 public  import gtkD.gtkc.giotypes;
@@ -87,38 +31,16 @@ public class InputStream : ObjectG
 	protected GInputStream* gInputStream;
 	
 	
-	public GInputStream* getInputStreamStruct()
-	{
-		return gInputStream;
-	}
+	public GInputStream* getInputStreamStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gInputStream;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GInputStream* gInputStream)
-	{
-		if(gInputStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gInputStream);
-		if( ptr !is null )
-		{
-			this = cast(InputStream)ptr;
-			return;
-		}
-		super(cast(GObject*)gInputStream);
-		this.gInputStream = gInputStream;
-	}
+	public this (GInputStream* gInputStream);
 	
 	/**
 	 */
@@ -145,20 +67,7 @@ public class InputStream : ObjectG
 	 * Returns: Number of bytes read, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int read(void* buffer, uint count, Cancellable cancellable)
-	{
-		// gssize g_input_stream_read (GInputStream *stream,  void *buffer,  gsize count,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_read(gInputStream, buffer, count, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int read(void* buffer, uint count, Cancellable cancellable);
 	
 	/**
 	 * Tries to read count bytes from the stream into the buffer starting at
@@ -179,21 +88,8 @@ public class InputStream : ObjectG
 	 * Returns: TRUE on success, FALSE if there was an error
 	 * Throws: GException on failure.
 	 */
-	public int readAll(void* buffer, uint count, out uint bytesRead, Cancellable cancellable)
-	{
-		// gboolean g_input_stream_read_all (GInputStream *stream,  void *buffer,  gsize count,  gsize *bytes_read,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_read_all(gInputStream, buffer, count, &bytesRead, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
+	public int readAll(void* buffer, uint count, out uint bytesRead, Cancellable cancellable);
+
 	/**
 	 * Tries to skip count bytes from the stream. Will block during the operation.
 	 * This is identical to g_input_stream_read(), from a behaviour standpoint,
@@ -212,20 +108,7 @@ public class InputStream : ObjectG
 	 * Returns: Number of bytes skipped, or -1 on error
 	 * Throws: GException on failure.
 	 */
-	public int skip(uint count, Cancellable cancellable)
-	{
-		// gssize g_input_stream_skip (GInputStream *stream,  gsize count,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_skip(gInputStream, count, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int skip(uint count, Cancellable cancellable);
 	
 	/**
 	 * Closes the stream, releasing resources related to it.
@@ -251,20 +134,7 @@ public class InputStream : ObjectG
 	 * Returns: TRUE on success, FALSE on failure
 	 * Throws: GException on failure.
 	 */
-	public int close(Cancellable cancellable)
-	{
-		// gboolean g_input_stream_close (GInputStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_close(gInputStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close(Cancellable cancellable);
 	
 	/**
 	 * Request an asynchronous read of count bytes from the stream into the buffer
@@ -294,11 +164,7 @@ public class InputStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void readAsync(void* buffer, uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_input_stream_read_async (GInputStream *stream,  void *buffer,  gsize count,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_input_stream_read_async(gInputStream, buffer, count, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void readAsync(void* buffer, uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes an asynchronous stream read operation.
@@ -307,20 +173,7 @@ public class InputStream : ObjectG
 	 * Returns: number of bytes read in, or -1 on error.
 	 * Throws: GException on failure.
 	 */
-	public int readFinish(AsyncResultIF result)
-	{
-		// gssize g_input_stream_read_finish (GInputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_read_finish(gInputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int readFinish(AsyncResultIF result);
 	
 	/**
 	 * Request an asynchronous skip of count bytes from the stream.
@@ -349,11 +202,7 @@ public class InputStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void skipAsync(uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_input_stream_skip_async (GInputStream *stream,  gsize count,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_input_stream_skip_async(gInputStream, count, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void skipAsync(uint count, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes a stream skip operation.
@@ -362,20 +211,7 @@ public class InputStream : ObjectG
 	 * Returns: the size of the bytes skipped, or -1 on error.
 	 * Throws: GException on failure.
 	 */
-	public int skipFinish(AsyncResultIF result)
-	{
-		// gssize g_input_stream_skip_finish (GInputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_skip_finish(gInputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int skipFinish(AsyncResultIF result);
 	
 	/**
 	 * Requests an asynchronous closes of the stream, releasing resources related to it.
@@ -393,11 +229,7 @@ public class InputStream : ObjectG
 	 * callback =  callback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_input_stream_close_async (GInputStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_input_stream_close_async(gInputStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes closing a stream asynchronously, started from g_input_stream_close_async().
@@ -406,40 +238,19 @@ public class InputStream : ObjectG
 	 * Returns: TRUE if the stream was closed successfully.
 	 * Throws: GException on failure.
 	 */
-	public int closeFinish(AsyncResultIF result)
-	{
-		// gboolean g_input_stream_close_finish (GInputStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_close_finish(gInputStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int closeFinish(AsyncResultIF result);
 	
 	/**
 	 * Checks if an input stream is closed.
 	 * Returns: TRUE if the stream is closed.
 	 */
-	public int isClosed()
-	{
-		// gboolean g_input_stream_is_closed (GInputStream *stream);
-		return g_input_stream_is_closed(gInputStream);
-	}
+	public int isClosed();
 	
 	/**
 	 * Checks if an input stream has pending actions.
 	 * Returns: TRUE if stream has pending actions.
 	 */
-	public int hasPending()
-	{
-		// gboolean g_input_stream_has_pending (GInputStream *stream);
-		return g_input_stream_has_pending(gInputStream);
-	}
+	public int hasPending();
 	
 	/**
 	 * Sets stream to have actions pending. If the pending flag is
@@ -448,27 +259,10 @@ public class InputStream : ObjectG
 	 * Returns: TRUE if pending was previously unset and is now set.
 	 * Throws: GException on failure.
 	 */
-	public int setPending()
-	{
-		// gboolean g_input_stream_set_pending (GInputStream *stream,  GError **error);
-		GError* err = null;
-		
-		auto p = g_input_stream_set_pending(gInputStream, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setPending();
 	
 	/**
 	 * Clears the pending flag on stream.
 	 */
-	public void clearPending()
-	{
-		// void g_input_stream_clear_pending (GInputStream *stream);
-		g_input_stream_clear_pending(gInputStream);
-	}
+	public void clearPending();
 }

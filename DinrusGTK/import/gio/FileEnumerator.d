@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GFileEnumerator.html
- * outPack = gio
- * outFile = FileEnumerator
- * strct   = GFileEnumerator
- * realStrct=
- * ctorStrct=
- * clss    = FileEnumerator
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_file_enumerator_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.ListG
- * 	- gtkD.gio.AsyncResultIF
- * 	- gtkD.gio.Cancellable
- * 	- gtkD.gio.File
- * structWrap:
- * 	- GAsyncResult* -> AsyncResultIF
- * 	- GCancellable* -> Cancellable
- * 	- GFile* -> File
- * 	- GList* -> ListG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.FileEnumerator;
 
 public  import gtkD.gtkc.giotypes;
@@ -102,38 +41,16 @@ public class FileEnumerator : ObjectG
 	protected GFileEnumerator* gFileEnumerator;
 	
 	
-	public GFileEnumerator* getFileEnumeratorStruct()
-	{
-		return gFileEnumerator;
-	}
+	public GFileEnumerator* getFileEnumeratorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gFileEnumerator;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GFileEnumerator* gFileEnumerator)
-	{
-		if(gFileEnumerator is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gFileEnumerator);
-		if( ptr !is null )
-		{
-			this = cast(FileEnumerator)ptr;
-			return;
-		}
-		super(cast(GObject*)gFileEnumerator);
-		this.gFileEnumerator = gFileEnumerator;
-	}
+	public this (GFileEnumerator* gFileEnumerator);
 	
 	/**
 	 */
@@ -151,20 +68,7 @@ public class FileEnumerator : ObjectG
 	 * Returns: A GFileInfo or NULL on error or end of enumerator. Free the returned object with g_object_unref() when no longer needed.
 	 * Throws: GException on failure.
 	 */
-	public GFileInfo* nextFile(Cancellable cancellable)
-	{
-		// GFileInfo * g_file_enumerator_next_file (GFileEnumerator *enumerator,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerator_next_file(gFileEnumerator, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public GFileInfo* nextFile(Cancellable cancellable);
 	
 	/**
 	 * Releases all resources used by this enumerator, making the
@@ -177,20 +81,7 @@ public class FileEnumerator : ObjectG
 	 * Returns: TRUE on success or FALSE on error.
 	 * Throws: GException on failure.
 	 */
-	public int close(Cancellable cancellable)
-	{
-		// gboolean g_file_enumerator_close (GFileEnumerator *enumerator,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerator_close(gFileEnumerator, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int close(Cancellable cancellable);
 	
 	/**
 	 * Request information for a number of files from the enumerator asynchronously.
@@ -214,11 +105,7 @@ public class FileEnumerator : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void nextFilesAsync(int numFiles, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_enumerator_next_files_async (GFileEnumerator *enumerator,  int num_files,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_enumerator_next_files_async(gFileEnumerator, numFiles, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void nextFilesAsync(int numFiles, int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
@@ -227,24 +114,7 @@ public class FileEnumerator : ObjectG
 	 * Returns: a GList of GFileInfos. You must free the list with  g_list_free() and unref the infos with g_object_unref() when you're  done with them.
 	 * Throws: GException on failure.
 	 */
-	public ListG nextFilesFinish(AsyncResultIF result)
-	{
-		// GList * g_file_enumerator_next_files_finish (GFileEnumerator *enumerator,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerator_next_files_finish(gFileEnumerator, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG nextFilesFinish(AsyncResultIF result);
 	
 	/**
 	 * Asynchronously closes the file enumerator.
@@ -259,11 +129,7 @@ public class FileEnumerator : ObjectG
 	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
 	 * userData =  the data to pass to callback function
 	 */
-	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_file_enumerator_close_async (GFileEnumerator *enumerator,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_file_enumerator_close_async(gFileEnumerator, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
+	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
 	
 	/**
 	 * Finishes closing a file enumerator, started from g_file_enumerator_close_async().
@@ -280,65 +146,31 @@ public class FileEnumerator : ObjectG
 	 * Returns: TRUE if the close operation has finished successfully.
 	 * Throws: GException on failure.
 	 */
-	public int closeFinish(AsyncResultIF result)
-	{
-		// gboolean g_file_enumerator_close_finish (GFileEnumerator *enumerator,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_file_enumerator_close_finish(gFileEnumerator, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int closeFinish(AsyncResultIF result);
 	
 	/**
 	 * Checks if the file enumerator has been closed.
 	 * Returns: TRUE if the enumerator is closed.
 	 */
-	public int isClosed()
-	{
-		// gboolean g_file_enumerator_is_closed (GFileEnumerator *enumerator);
-		return g_file_enumerator_is_closed(gFileEnumerator);
-	}
+	public int isClosed();
 	
 	/**
 	 * Checks if the file enumerator has pending operations.
 	 * Returns: TRUE if the enumerator has pending operations.
 	 */
-	public int hasPending()
-	{
-		// gboolean g_file_enumerator_has_pending (GFileEnumerator *enumerator);
-		return g_file_enumerator_has_pending(gFileEnumerator);
-	}
+	public int hasPending();
 	
 	/**
 	 * Sets the file enumerator as having pending operations.
 	 * Params:
 	 * pending =  a boolean value.
 	 */
-	public void setPending(int pending)
-	{
-		// void g_file_enumerator_set_pending (GFileEnumerator *enumerator,  gboolean pending);
-		g_file_enumerator_set_pending(gFileEnumerator, pending);
-	}
+	public void setPending(int pending);
 	
 	/**
 	 * Get the GFile container which is being enumerated.
 	 * Since 2.18
 	 * Returns: the GFile which is being enumerated.
 	 */
-	public File getContainer()
-	{
-		// GFile * g_file_enumerator_get_container (GFileEnumerator *enumerator);
-		auto p = g_file_enumerator_get_container(gFileEnumerator);
-		if(p is null)
-		{
-			return null;
-		}
-		return new File(cast(GFile*) p);
-	}
+	public File getContainer();
 }

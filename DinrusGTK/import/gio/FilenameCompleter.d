@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GFilenameCompleter.html
- * outPack = gio
- * outFile = FilenameCompleter
- * strct   = GFilenameCompleter
- * realStrct=
- * ctorStrct=
- * clss    = FilenameCompleter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_filename_completer_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.FilenameCompleter;
 
 public  import gtkD.gtkc.giotypes;
@@ -78,38 +27,16 @@ public class FilenameCompleter : ObjectG
 	protected GFilenameCompleter* gFilenameCompleter;
 	
 	
-	public GFilenameCompleter* getFilenameCompleterStruct()
-	{
-		return gFilenameCompleter;
-	}
+	public GFilenameCompleter* getFilenameCompleterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gFilenameCompleter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GFilenameCompleter* gFilenameCompleter)
-	{
-		if(gFilenameCompleter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gFilenameCompleter);
-		if( ptr !is null )
-		{
-			this = cast(FilenameCompleter)ptr;
-			return;
-		}
-		super(cast(GObject*)gFilenameCompleter);
-		this.gFilenameCompleter = gFilenameCompleter;
-	}
+	public this (GFilenameCompleter* gFilenameCompleter);
 	
 	/**
 	 */
@@ -119,44 +46,15 @@ public class FilenameCompleter : ObjectG
 	/**
 	 * Emitted when the file name completion information comes available.
 	 */
-	void addOnGotCompletionData(void delegate(FilenameCompleter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("got-completion-data" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"got-completion-data",
-			cast(GCallback)&callBackGotCompletionData,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["got-completion-data"] = 1;
-		}
-		onGotCompletionDataListeners ~= dlg;
-	}
-	extern(C) static void callBackGotCompletionData(GFilenameCompleter* arg0Struct, FilenameCompleter filenameCompleter)
-	{
-		foreach ( void delegate(FilenameCompleter) dlg ; filenameCompleter.onGotCompletionDataListeners )
-		{
-			dlg(filenameCompleter);
-		}
-	}
+	void addOnGotCompletionData(void delegate(FilenameCompleter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackGotCompletionData(GFilenameCompleter* arg0Struct, FilenameCompleter filenameCompleter);
 	
 	
 	/**
 	 * Creates a new filename completer.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GFilenameCompleter * g_filename_completer_new (void);
-		auto p = g_filename_completer_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_filename_completer_new()");
-		}
-		this(cast(GFilenameCompleter*) p);
-	}
+	public this ();
 	
 	/**
 	 * Obtains a completion for initial_text from completer.
@@ -164,11 +62,7 @@ public class FilenameCompleter : ObjectG
 	 * initialText =  text to be completed.
 	 * Returns: a completed string, or NULL if no completion exists.  This string is not owned by GIO, so remember to g_free() it  when finished.
 	 */
-	public string getCompletionSuffix(string initialText)
-	{
-		// char * g_filename_completer_get_completion_suffix  (GFilenameCompleter *completer,  const char *initial_text);
-		return Str.toString(g_filename_completer_get_completion_suffix(gFilenameCompleter, Str.toStringz(initialText)));
-	}
+	public string getCompletionSuffix(string initialText);
 	
 	/**
 	 * Gets an array of completion strings for a given initial text.
@@ -176,11 +70,7 @@ public class FilenameCompleter : ObjectG
 	 * initialText =  text to be completed.
 	 * Returns: array of strings with possible completions for initial_text.This array must be freed by g_strfreev() when finished.
 	 */
-	public string[] getCompletions(string initialText)
-	{
-		// char ** g_filename_completer_get_completions  (GFilenameCompleter *completer,  const char *initial_text);
-		return Str.toStringArray(g_filename_completer_get_completions(gFilenameCompleter, Str.toStringz(initialText)));
-	}
+	public string[] getCompletions(string initialText);
 	
 	/**
 	 * If dirs_only is TRUE, completer will only
@@ -193,9 +83,5 @@ public class FilenameCompleter : ObjectG
 	 *  gpointer user_data) : Run Last
 	 * Emitted when the file name completion information comes available.
 	 */
-	public void setDirsOnly(int dirsOnly)
-	{
-		// void g_filename_completer_set_dirs_only (GFilenameCompleter *completer,  gboolean dirs_only);
-		g_filename_completer_set_dirs_only(gFilenameCompleter, dirsOnly);
-	}
+	public void setDirsOnly(int dirsOnly);
 }

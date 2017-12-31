@@ -282,7 +282,7 @@ public class RecentInfo
         // gboolean gtk_recent_info_get_application_info  (GtkRecentInfo *info,  const gchar *app_name,  const gchar **app_exec,  guint *count,  time_t *time_);
         char* outappExec = null;
 
-        auto p = gtk_recent_info_get_application_info(gtkRecentInfo, Str.toStringz(appName), &outappExec, &count, &time);
+        auto p = gtk_recent_info_get_application_info(gtkRecentInfo, Str.toStringz(appName), &outappExec, &count, cast(int*) &time);
 
         appExec = Str.toString(outappExec);
         return p;

@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GSocketControlMessage.html
- * outPack = gio
- * outFile = SocketControlMessage
- * strct   = GSocketControlMessage
- * realStrct=
- * ctorStrct=
- * clss    = SocketControlMessage
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_socket_control_message_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- GSocketControlMessage* -> SocketControlMessage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gio.SocketControlMessage;
 
 public  import gtkD.gtkc.giotypes;
@@ -88,38 +37,16 @@ public class SocketControlMessage : ObjectG
 	protected GSocketControlMessage* gSocketControlMessage;
 	
 	
-	public GSocketControlMessage* getSocketControlMessageStruct()
-	{
-		return gSocketControlMessage;
-	}
+	public GSocketControlMessage* getSocketControlMessageStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSocketControlMessage;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSocketControlMessage* gSocketControlMessage)
-	{
-		if(gSocketControlMessage is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSocketControlMessage);
-		if( ptr !is null )
-		{
-			this = cast(SocketControlMessage)ptr;
-			return;
-		}
-		super(cast(GObject*)gSocketControlMessage);
-		this.gSocketControlMessage = gSocketControlMessage;
-	}
+	public this (GSocketControlMessage* gSocketControlMessage);
 	
 	/**
 	 */
@@ -139,16 +66,7 @@ public class SocketControlMessage : ObjectG
 	 * data =  pointer to the message data
 	 * Returns: the deserialized message or NULL
 	 */
-	public static SocketControlMessage deserialize(int level, int type, uint size, void* data)
-	{
-		// GSocketControlMessage * g_socket_control_message_deserialize  (int level,  int type,  gsize size,  gpointer data);
-		auto p = g_socket_control_message_deserialize(level, type, size, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketControlMessage(cast(GSocketControlMessage*) p);
-	}
+	public static SocketControlMessage deserialize(int level, int type, uint size, void* data);
 	
 	/**
 	 * Returns the "level" (i.e. the originating protocol) of the control message.
@@ -156,11 +74,7 @@ public class SocketControlMessage : ObjectG
 	 * Since 2.22
 	 * Returns: an integer describing the level
 	 */
-	public int getLevel()
-	{
-		// int g_socket_control_message_get_level (GSocketControlMessage *message);
-		return g_socket_control_message_get_level(gSocketControlMessage);
-	}
+	public int getLevel();
 	
 	/**
 	 * Returns the protocol specific type of the control message.
@@ -168,23 +82,15 @@ public class SocketControlMessage : ObjectG
 	 * Since 2.22
 	 * Returns: an integer describing the type of control message
 	 */
-	public int getMsgType()
-	{
-		// int g_socket_control_message_get_msg_type  (GSocketControlMessage *message);
-		return g_socket_control_message_get_msg_type(gSocketControlMessage);
-	}
-	
+	public int getMsgType();
+
 	/**
 	 * Returns the space required for the control message, not including
 	 * headers or alignment.
 	 * Since 2.22
 	 * Returns: The number of bytes required.
 	 */
-	public uint getSize()
-	{
-		// gsize g_socket_control_message_get_size (GSocketControlMessage *message);
-		return g_socket_control_message_get_size(gSocketControlMessage);
-	}
+	public uint getSize();
 	
 	/**
 	 * Converts the data in the message to bytes placed in the
@@ -196,9 +102,5 @@ public class SocketControlMessage : ObjectG
 	 * Params:
 	 * data =  A buffer to write data to
 	 */
-	public void serialize(void* data)
-	{
-		// void g_socket_control_message_serialize (GSocketControlMessage *message,  gpointer data);
-		g_socket_control_message_serialize(gSocketControlMessage, data);
-	}
+	public void serialize(void* data);
 }
