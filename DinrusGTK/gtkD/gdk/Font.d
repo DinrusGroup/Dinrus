@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Font
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_font_
@@ -207,529 +207,529 @@ private import gtkD.pango.PgFontDescription;
  */
 public class Font
 {
-	
-	/** the main Gtk struct */
-	protected GdkFont* gdkFont;
-	
-	
-	public GdkFont* getFontStruct()
-	{
-		return gdkFont;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkFont;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkFont* gdkFont)
-	{
-		if(gdkFont is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkFont = gdkFont;
-	}
-	
-	/**
-	 * Create and loads a font
-	 */
-	public this(string fontName)
-	{
-		this(gdk_font_load(Str.toStringz(fontName)));
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Warning
-	 * gdk_font_load is deprecated and should not be used in newly-written code.
-	 * Loads a font.
-	 * The font may be newly loaded or looked up the font in a cache.
-	 * You should make no assumptions about the initial reference count.
-	 * Params:
-	 * fontName =  a XLFD describing the font to load.
-	 * Returns: a GdkFont, or NULL if the font could not be loaded.
-	 */
-	public static Font load(string fontName)
-	{
-		// GdkFont* gdk_font_load (const gchar *font_name);
-		auto p = gdk_font_load(Str.toStringz(fontName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_load_for_display is deprecated and should not be used in newly-written code.
-	 * Loads a font for use on display.
-	 * The font may be newly loaded or looked up the font in a cache.
-	 * You should make no assumptions about the initial reference count.
-	 * Since 2.2
-	 * Params:
-	 * display =  a GdkDisplay
-	 * fontName =  a XLFD describing the font to load.
-	 * Returns: a GdkFont, or NULL if the font could not be loaded.
-	 */
-	public static Font loadForDisplay(Display display, string fontName)
-	{
-		// GdkFont * gdk_font_load_for_display (GdkDisplay *display,  const gchar *font_name);
-		auto p = gdk_font_load_for_display((display is null) ? null : display.getDisplayStruct(), Str.toStringz(fontName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_fontset_load is deprecated and should not be used in newly-written code.
-	 * Loads a fontset.
-	 * The fontset may be newly loaded or looked up in a cache.
-	 * You should make no assumptions about the initial reference count.
-	 * Params:
-	 * fontsetName =  a comma-separated list of XLFDs describing
-	 *  the component fonts of the fontset to load.
-	 * Returns: a GdkFont, or NULL if the fontset could not be loaded.
-	 */
-	public static Font fontsetLoad(string fontsetName)
-	{
-		// GdkFont* gdk_fontset_load (const gchar *fontset_name);
-		auto p = gdk_fontset_load(Str.toStringz(fontsetName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_fontset_load_for_display is deprecated and should not be used in newly-written code.
-	 * Loads a fontset for use on display.
-	 * The fontset may be newly loaded or looked up in a cache.
-	 * You should make no assumptions about the initial reference count.
-	 * Since 2.2
-	 * Params:
-	 * display =  a GdkDisplay
-	 * fontsetName =  a comma-separated list of XLFDs describing
-	 *  the component fonts of the fontset to load.
-	 * Returns: a GdkFont, or NULL if the fontset could not be loaded.
-	 */
-	public static Font fontsetLoadForDisplay(Display display, string fontsetName)
-	{
-		// GdkFont * gdk_fontset_load_for_display (GdkDisplay *display,  const gchar *fontset_name);
-		auto p = gdk_fontset_load_for_display((display is null) ? null : display.getDisplayStruct(), Str.toStringz(fontsetName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_from_description is deprecated and should not be used in newly-written code.
-	 * Load a GdkFont based on a Pango font description. This font will
-	 * only be an approximation of the Pango font, and
-	 * internationalization will not be handled correctly. This function
-	 * should only be used for legacy code that cannot be easily converted
-	 * to use Pango. Using Pango directly will produce better results.
-	 * Params:
-	 * fontDesc =  a PangoFontDescription.
-	 * Returns: the newly loaded font, or NULL if the fontcannot be loaded.
-	 */
-	public static Font fromDescription(PgFontDescription fontDesc)
-	{
-		// GdkFont* gdk_font_from_description (PangoFontDescription *font_desc);
-		auto p = gdk_font_from_description((fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_from_description_for_display is deprecated and should not be used in newly-written code.
-	 * Loads a GdkFont based on a Pango font description for use on display.
-	 * This font will only be an approximation of the Pango font, and
-	 * internationalization will not be handled correctly. This function
-	 * should only be used for legacy code that cannot be easily converted
-	 * to use Pango. Using Pango directly will produce better results.
-	 * Since 2.2
-	 * Params:
-	 * display =  a GdkDisplay
-	 * fontDesc =  a PangoFontDescription.
-	 * Returns: the newly loaded font, or NULL if the fontcannot be loaded.
-	 */
-	public static Font fromDescriptionForDisplay(Display display, PgFontDescription fontDesc)
-	{
-		// GdkFont * gdk_font_from_description_for_display  (GdkDisplay *display,  PangoFontDescription *font_desc);
-		auto p = gdk_font_from_description_for_display((display is null) ? null : display.getDisplayStruct(), (fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_get_display is deprecated and should not be used in newly-written code.
-	 * Returns the GdkDisplay for font.
-	 * Since 2.2
-	 * Returns: the corresponding GdkDisplay.
-	 */
-	public Display getDisplay()
-	{
-		// GdkDisplay * gdk_font_get_display (GdkFont *font);
-		auto p = gdk_font_get_display(gdkFont);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Display(cast(GdkDisplay*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_ref is deprecated and should not be used in newly-written code.
-	 * Increases the reference count of a font by one.
-	 * Returns: font
-	 */
-	public Font doref()
-	{
-		// GdkFont* gdk_font_ref (GdkFont *font);
-		auto p = gdk_font_ref(gdkFont);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Font(cast(GdkFont*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_unref is deprecated and should not be used in newly-written code.
-	 * Decreases the reference count of a font by one.
-	 * If the result is zero, destroys the font.
-	 */
-	public void unref()
-	{
-		// void gdk_font_unref (GdkFont *font);
-		gdk_font_unref(gdkFont);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_id is deprecated and should not be used in newly-written code.
-	 * Returns the X Font ID for the given font.
-	 * Returns: the numeric X Font ID
-	 */
-	public int id()
-	{
-		// gint gdk_font_id (const GdkFont *font);
-		return gdk_font_id(gdkFont);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_font_equal is deprecated and should not be used in newly-written code.
-	 * Compares two fonts for equality. Single fonts compare equal
-	 * if they have the same X font ID. This operation does
-	 * not currently work correctly for fontsets.
-	 * Params:
-	 * fontb =  another GdkFont.
-	 * Returns: TRUE if the fonts are equal.
-	 */
-	public int equal(Font fontb)
-	{
-		// gboolean gdk_font_equal (const GdkFont *fonta,  const GdkFont *fontb);
-		return gdk_font_equal(gdkFont, (fontb is null) ? null : fontb.getFontStruct());
-	}
-	
-	/**
-	 * Warning
-	 * gdk_string_extents is deprecated and should not be used in newly-written code.
-	 * Gets the metrics of a nul-terminated string.
-	 * Params:
-	 * string =  the nul-terminated string to measure.
-	 * lbearing =  the left bearing of the string.
-	 * rbearing =  the right bearing of the string.
-	 * width =  the width of the string.
-	 * ascent =  the ascent of the string.
-	 * descent =  the descent of the string.
-	 */
-	public void stringExtents(string string, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
-	{
-		// void gdk_string_extents (GdkFont *font,  const gchar *string,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
-		gdk_string_extents(gdkFont, Str.toStringz(string), &lbearing, &rbearing, &width, &ascent, &descent);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_extents is deprecated and should not be used in newly-written code.
-	 * Gets the metrics of a string.
-	 * Params:
-	 * text =  the text to measure
-	 * textLength =  the length of the text in bytes. (If the
-	 *  font is a 16-bit font, this is twice the length
-	 *  of the text in characters.)
-	 * lbearing =  the left bearing of the string.
-	 * rbearing =  the right bearing of the string.
-	 * width =  the width of the string.
-	 * ascent =  the ascent of the string.
-	 * descent =  the descent of the string.
-	 */
-	public void textExtents(string text, int textLength, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
-	{
-		// void gdk_text_extents (GdkFont *font,  const gchar *text,  gint text_length,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
-		gdk_text_extents(gdkFont, Str.toStringz(text), textLength, &lbearing, &rbearing, &width, &ascent, &descent);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_extents_wc is deprecated and should not be used in newly-written code.
-	 * Gets the metrics of a string of wide characters.
-	 * Params:
-	 * text =  the text to measure.
-	 * lbearing =  the left bearing of the string.
-	 * rbearing =  the right bearing of the string.
-	 * width =  the width of the string.
-	 * ascent =  the ascent of the string.
-	 * descent =  the descent of the string.
-	 */
-	public void textExtentsWc(GdkWChar[] text, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
-	{
-		// void gdk_text_extents_wc (GdkFont *font,  const GdkWChar *text,  gint text_length,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
-		gdk_text_extents_wc(gdkFont, text.ptr, text.length, &lbearing, &rbearing, &width, &ascent, &descent);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_string_width is deprecated and should not be used in newly-written code.
-	 * Determines the width of a nul-terminated string.
-	 * (The distance from the origin of the string to the
-	 * point where the next string in a sequence of strings
-	 * should be drawn)
-	 * Params:
-	 * string =  the nul-terminated string to measure
-	 * Returns: the width of the string in pixels.
-	 */
-	public int stringWidth(string string)
-	{
-		// gint gdk_string_width (GdkFont *font,  const gchar *string);
-		return gdk_string_width(gdkFont, Str.toStringz(string));
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_width is deprecated and should not be used in newly-written code.
-	 * Determines the width of a given string.
-	 * Params:
-	 * text =  the text to measure.
-	 * textLength =  the length of the text in bytes.
-	 * Returns: the width of the string in pixels.
-	 */
-	public int textWidth(string text, int textLength)
-	{
-		// gint gdk_text_width (GdkFont *font,  const gchar *text,  gint text_length);
-		return gdk_text_width(gdkFont, Str.toStringz(text), textLength);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_width_wc is deprecated and should not be used in newly-written code.
-	 * Determines the width of a given wide-character string.
-	 * Params:
-	 * text =  the text to measure.
-	 * Returns: the width of the string in pixels.
-	 */
-	public int textWidthWc(GdkWChar[] text)
-	{
-		// gint gdk_text_width_wc (GdkFont *font,  const GdkWChar *text,  gint text_length);
-		return gdk_text_width_wc(gdkFont, text.ptr, text.length);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_char_width is deprecated and should not be used in newly-written code. Use gdk_text_extents() instead.
-	 * Determines the width of a given character.
-	 * Params:
-	 * character =  the character to measure.
-	 * Returns: the width of the character in pixels.
-	 */
-	public int charWidth(char character)
-	{
-		// gint gdk_char_width (GdkFont *font,  gchar character);
-		return gdk_char_width(gdkFont, character);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_char_width_wc is deprecated and should not be used in newly-written code.
-	 * Determines the width of a given wide character. (Encoded
-	 * in the wide-character encoding of the current locale).
-	 * Params:
-	 * character =  the character to measure.
-	 * Returns: the width of the character in pixels.
-	 */
-	public int charWidthWc(GdkWChar character)
-	{
-		// gint gdk_char_width_wc (GdkFont *font,  GdkWChar character);
-		return gdk_char_width_wc(gdkFont, character);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_string_measure is deprecated and should not be used in newly-written code.
-	 * Determines the distance from the origin to the rightmost
-	 * portion of a nul-terminated string when drawn. This is not the
-	 * correct value for determining the origin of the next
-	 * portion when drawing text in multiple pieces.
-	 * See gdk_string_width().
-	 * Params:
-	 * string =  the nul-terminated string to measure.
-	 * Returns: the right bearing of the string in pixels.
-	 */
-	public int stringMeasure(string string)
-	{
-		// gint gdk_string_measure (GdkFont *font,  const gchar *string);
-		return gdk_string_measure(gdkFont, Str.toStringz(string));
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_measure is deprecated and should not be used in newly-written code.
-	 * Determines the distance from the origin to the rightmost
-	 * portion of a string when drawn. This is not the
-	 * correct value for determining the origin of the next
-	 * portion when drawing text in multiple pieces.
-	 * See gdk_text_width().
-	 * Params:
-	 * text =  the text to measure.
-	 * textLength =  the length of the text in bytes.
-	 * Returns: the right bearing of the string in pixels.
-	 */
-	public int textMeasure(string text, int textLength)
-	{
-		// gint gdk_text_measure (GdkFont *font,  const gchar *text,  gint text_length);
-		return gdk_text_measure(gdkFont, Str.toStringz(text), textLength);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_char_measure is deprecated and should not be used in newly-written code.
-	 * Determines the distance from the origin to the rightmost
-	 * portion of a character when drawn. This is not the
-	 * correct value for determining the origin of the next
-	 * portion when drawing text in multiple pieces.
-	 * Params:
-	 * character =  the character to measure.
-	 * Returns: the right bearing of the character in pixels.
-	 */
-	public int charMeasure(char character)
-	{
-		// gint gdk_char_measure (GdkFont *font,  gchar character);
-		return gdk_char_measure(gdkFont, character);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_string_height is deprecated and should not be used in newly-written code.
-	 * Determines the total height of a given nul-terminated
-	 * string. This value is not generally useful, because you
-	 * cannot determine how this total height will be drawn in
-	 * relation to the baseline. See gdk_string_extents().
-	 * Params:
-	 * string =  the nul-terminated string to measure.
-	 * Returns: the height of the string in pixels.
-	 */
-	public int stringHeight(string string)
-	{
-		// gint gdk_string_height (GdkFont *font,  const gchar *string);
-		return gdk_string_height(gdkFont, Str.toStringz(string));
-	}
-	
-	/**
-	 * Warning
-	 * gdk_text_height is deprecated and should not be used in newly-written code.
-	 * Determines the total height of a given string.
-	 * This value is not generally useful, because you cannot
-	 * determine how this total height will be drawn in
-	 * relation to the baseline. See gdk_text_extents().
-	 * Params:
-	 * text =  the text to measure.
-	 * textLength =  the length of the text in bytes.
-	 * Returns: the height of the string in pixels.
-	 */
-	public int textHeight(string text, int textLength)
-	{
-		// gint gdk_text_height (GdkFont *font,  const gchar *text,  gint text_length);
-		return gdk_text_height(gdkFont, Str.toStringz(text), textLength);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_char_height is deprecated and should not be used in newly-written code. Use gdk_text_extents() instead.
-	 * Determines the total height of a given character.
-	 * This value is not generally useful, because you cannot
-	 * determine how this total height will be drawn in
-	 * relation to the baseline. See gdk_text_extents().
-	 * Params:
-	 * character =  the character to measure.
-	 * Returns: the height of the character in pixels.
-	 */
-	public int charHeight(char character)
-	{
-		// gint gdk_char_height (GdkFont *font,  gchar character);
-		return gdk_char_height(gdkFont, character);
-	}
-	
-	/**
-	 * Warning
-	 * gdk_wcstombs is deprecated and should not be used in newly-written code.
-	 * Converts a wide character string to a multi-byte string.
-	 * (The function name comes from an acronym of 'Wide Character String TO
-	 * Multi-Byte String').
-	 * Params:
-	 * src =  a wide character string.
-	 * Returns: the multi-byte string corresponding to src, or NULL if theconversion failed. The returned string should be freed with g_free() when nolonger needed.
-	 */
-	public static string wcstombs(GdkWChar* src)
-	{
-		// gchar * gdk_wcstombs (const GdkWChar *src);
-		return Str.toString(gdk_wcstombs(src));
-	}
-	
-	/**
-	 * Warning
-	 * gdk_mbstowcs is deprecated and should not be used in newly-written code.
-	 * Converts a multi-byte string to a wide character string.
-	 * (The function name comes from an acronym of 'Multi-Byte String TO Wide
-	 * Character String').
-	 * Params:
-	 * dest =  the space to place the converted wide character string into.
-	 * src =  the multi-byte string to convert, which must be nul-terminated.
-	 * destMax =  the maximum number of wide characters to place in dest.
-	 * Returns: the number of wide characters written into dest, or -1 if  the conversion failed.
-	 */
-	public static int mbstowcs(GdkWChar* dest, string src, int destMax)
-	{
-		// gint gdk_mbstowcs (GdkWChar *dest,  const gchar *src,  gint dest_max);
-		return gdk_mbstowcs(dest, Str.toStringz(src), destMax);
-	}
+
+    /** the main Gtk struct */
+    protected GdkFont* gdkFont;
+
+
+    public GdkFont* getFontStruct()
+    {
+        return gdkFont;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdkFont;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkFont* gdkFont)
+    {
+        if(gdkFont is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdkFont = gdkFont;
+    }
+
+    /**
+     * Create and loads a font
+     */
+    public this(string fontName)
+    {
+        this(gdk_font_load(Str.toStringz(fontName)));
+    }
+
+    /**
+     */
+
+    /**
+     * Warning
+     * gdk_font_load is deprecated and should not be used in newly-written code.
+     * Loads a font.
+     * The font may be newly loaded or looked up the font in a cache.
+     * You should make no assumptions about the initial reference count.
+     * Params:
+     * fontName =  a XLFD describing the font to load.
+     * Returns: a GdkFont, or NULL if the font could not be loaded.
+     */
+    public static Font load(string fontName)
+    {
+        // GdkFont* gdk_font_load (const gchar *font_name);
+        auto p = gdk_font_load(Str.toStringz(fontName));
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_load_for_display is deprecated and should not be used in newly-written code.
+     * Loads a font for use on display.
+     * The font may be newly loaded or looked up the font in a cache.
+     * You should make no assumptions about the initial reference count.
+     * Since 2.2
+     * Params:
+     * display =  a GdkDisplay
+     * fontName =  a XLFD describing the font to load.
+     * Returns: a GdkFont, or NULL if the font could not be loaded.
+     */
+    public static Font loadForDisplay(Display display, string fontName)
+    {
+        // GdkFont * gdk_font_load_for_display (GdkDisplay *display,  const gchar *font_name);
+        auto p = gdk_font_load_for_display((display is null) ? null : display.getDisplayStruct(), Str.toStringz(fontName));
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_fontset_load is deprecated and should not be used in newly-written code.
+     * Loads a fontset.
+     * The fontset may be newly loaded or looked up in a cache.
+     * You should make no assumptions about the initial reference count.
+     * Params:
+     * fontsetName =  a comma-separated list of XLFDs describing
+     *  the component fonts of the fontset to load.
+     * Returns: a GdkFont, or NULL if the fontset could not be loaded.
+     */
+    public static Font fontsetLoad(string fontsetName)
+    {
+        // GdkFont* gdk_fontset_load (const gchar *fontset_name);
+        auto p = gdk_fontset_load(Str.toStringz(fontsetName));
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_fontset_load_for_display is deprecated and should not be used in newly-written code.
+     * Loads a fontset for use on display.
+     * The fontset may be newly loaded or looked up in a cache.
+     * You should make no assumptions about the initial reference count.
+     * Since 2.2
+     * Params:
+     * display =  a GdkDisplay
+     * fontsetName =  a comma-separated list of XLFDs describing
+     *  the component fonts of the fontset to load.
+     * Returns: a GdkFont, or NULL if the fontset could not be loaded.
+     */
+    public static Font fontsetLoadForDisplay(Display display, string fontsetName)
+    {
+        // GdkFont * gdk_fontset_load_for_display (GdkDisplay *display,  const gchar *fontset_name);
+        auto p = gdk_fontset_load_for_display((display is null) ? null : display.getDisplayStruct(), Str.toStringz(fontsetName));
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_from_description is deprecated and should not be used in newly-written code.
+     * Load a GdkFont based on a Pango font description. This font will
+     * only be an approximation of the Pango font, and
+     * internationalization will not be handled correctly. This function
+     * should only be used for legacy code that cannot be easily converted
+     * to use Pango. Using Pango directly will produce better results.
+     * Params:
+     * fontDesc =  a PangoFontDescription.
+     * Returns: the newly loaded font, or NULL if the fontcannot be loaded.
+     */
+    public static Font fromDescription(PgFontDescription fontDesc)
+    {
+        // GdkFont* gdk_font_from_description (PangoFontDescription *font_desc);
+        auto p = gdk_font_from_description((fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_from_description_for_display is deprecated and should not be used in newly-written code.
+     * Loads a GdkFont based on a Pango font description for use on display.
+     * This font will only be an approximation of the Pango font, and
+     * internationalization will not be handled correctly. This function
+     * should only be used for legacy code that cannot be easily converted
+     * to use Pango. Using Pango directly will produce better results.
+     * Since 2.2
+     * Params:
+     * display =  a GdkDisplay
+     * fontDesc =  a PangoFontDescription.
+     * Returns: the newly loaded font, or NULL if the fontcannot be loaded.
+     */
+    public static Font fromDescriptionForDisplay(Display display, PgFontDescription fontDesc)
+    {
+        // GdkFont * gdk_font_from_description_for_display  (GdkDisplay *display,  PangoFontDescription *font_desc);
+        auto p = gdk_font_from_description_for_display((display is null) ? null : display.getDisplayStruct(), (fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_get_display is deprecated and should not be used in newly-written code.
+     * Returns the GdkDisplay for font.
+     * Since 2.2
+     * Returns: the corresponding GdkDisplay.
+     */
+    public Display getDisplay()
+    {
+        // GdkDisplay * gdk_font_get_display (GdkFont *font);
+        auto p = gdk_font_get_display(gdkFont);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Display(cast(GdkDisplay*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_ref is deprecated and should not be used in newly-written code.
+     * Increases the reference count of a font by one.
+     * Returns: font
+     */
+    public Font doref()
+    {
+        // GdkFont* gdk_font_ref (GdkFont *font);
+        auto p = gdk_font_ref(gdkFont);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Font(cast(GdkFont*) p);
+    }
+
+    /**
+     * Warning
+     * gdk_font_unref is deprecated and should not be used in newly-written code.
+     * Decreases the reference count of a font by one.
+     * If the result is zero, destroys the font.
+     */
+    public void unref()
+    {
+        // void gdk_font_unref (GdkFont *font);
+        gdk_font_unref(gdkFont);
+    }
+
+    /**
+     * Warning
+     * gdk_font_id is deprecated and should not be used in newly-written code.
+     * Returns the X Font ID for the given font.
+     * Returns: the numeric X Font ID
+     */
+    public int id()
+    {
+        // gint gdk_font_id (const GdkFont *font);
+        return gdk_font_id(gdkFont);
+    }
+
+    /**
+     * Warning
+     * gdk_font_equal is deprecated and should not be used in newly-written code.
+     * Compares two fonts for equality. Single fonts compare equal
+     * if they have the same X font ID. This operation does
+     * not currently work correctly for fontsets.
+     * Params:
+     * fontb =  another GdkFont.
+     * Returns: TRUE if the fonts are equal.
+     */
+    public int equal(Font fontb)
+    {
+        // gboolean gdk_font_equal (const GdkFont *fonta,  const GdkFont *fontb);
+        return gdk_font_equal(gdkFont, (fontb is null) ? null : fontb.getFontStruct());
+    }
+
+    /**
+     * Warning
+     * gdk_string_extents is deprecated and should not be used in newly-written code.
+     * Gets the metrics of a nul-terminated string.
+     * Params:
+     * string =  the nul-terminated string to measure.
+     * lbearing =  the left bearing of the string.
+     * rbearing =  the right bearing of the string.
+     * width =  the width of the string.
+     * ascent =  the ascent of the string.
+     * descent =  the descent of the string.
+     */
+    public void stringExtents(string string, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
+    {
+        // void gdk_string_extents (GdkFont *font,  const gchar *string,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
+        gdk_string_extents(gdkFont, Str.toStringz(string), &lbearing, &rbearing, &width, &ascent, &descent);
+    }
+
+    /**
+     * Warning
+     * gdk_text_extents is deprecated and should not be used in newly-written code.
+     * Gets the metrics of a string.
+     * Params:
+     * text =  the text to measure
+     * textLength =  the length of the text in bytes. (If the
+     *  font is a 16-bit font, this is twice the length
+     *  of the text in characters.)
+     * lbearing =  the left bearing of the string.
+     * rbearing =  the right bearing of the string.
+     * width =  the width of the string.
+     * ascent =  the ascent of the string.
+     * descent =  the descent of the string.
+     */
+    public void textExtents(string text, int textLength, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
+    {
+        // void gdk_text_extents (GdkFont *font,  const gchar *text,  gint text_length,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
+        gdk_text_extents(gdkFont, Str.toStringz(text), textLength, &lbearing, &rbearing, &width, &ascent, &descent);
+    }
+
+    /**
+     * Warning
+     * gdk_text_extents_wc is deprecated and should not be used in newly-written code.
+     * Gets the metrics of a string of wide characters.
+     * Params:
+     * text =  the text to measure.
+     * lbearing =  the left bearing of the string.
+     * rbearing =  the right bearing of the string.
+     * width =  the width of the string.
+     * ascent =  the ascent of the string.
+     * descent =  the descent of the string.
+     */
+    public void textExtentsWc(GdkWChar[] text, out int lbearing, out int rbearing, out int width, out int ascent, out int descent)
+    {
+        // void gdk_text_extents_wc (GdkFont *font,  const GdkWChar *text,  gint text_length,  gint *lbearing,  gint *rbearing,  gint *width,  gint *ascent,  gint *descent);
+        gdk_text_extents_wc(gdkFont, text.ptr, text.length, &lbearing, &rbearing, &width, &ascent, &descent);
+    }
+
+    /**
+     * Warning
+     * gdk_string_width is deprecated and should not be used in newly-written code.
+     * Determines the width of a nul-terminated string.
+     * (The distance from the origin of the string to the
+     * point where the next string in a sequence of strings
+     * should be drawn)
+     * Params:
+     * string =  the nul-terminated string to measure
+     * Returns: the width of the string in pixels.
+     */
+    public int stringWidth(string string)
+    {
+        // gint gdk_string_width (GdkFont *font,  const gchar *string);
+        return gdk_string_width(gdkFont, Str.toStringz(string));
+    }
+
+    /**
+     * Warning
+     * gdk_text_width is deprecated and should not be used in newly-written code.
+     * Determines the width of a given string.
+     * Params:
+     * text =  the text to measure.
+     * textLength =  the length of the text in bytes.
+     * Returns: the width of the string in pixels.
+     */
+    public int textWidth(string text, int textLength)
+    {
+        // gint gdk_text_width (GdkFont *font,  const gchar *text,  gint text_length);
+        return gdk_text_width(gdkFont, Str.toStringz(text), textLength);
+    }
+
+    /**
+     * Warning
+     * gdk_text_width_wc is deprecated and should not be used in newly-written code.
+     * Determines the width of a given wide-character string.
+     * Params:
+     * text =  the text to measure.
+     * Returns: the width of the string in pixels.
+     */
+    public int textWidthWc(GdkWChar[] text)
+    {
+        // gint gdk_text_width_wc (GdkFont *font,  const GdkWChar *text,  gint text_length);
+        return gdk_text_width_wc(gdkFont, text.ptr, text.length);
+    }
+
+    /**
+     * Warning
+     * gdk_char_width is deprecated and should not be used in newly-written code. Use gdk_text_extents() instead.
+     * Determines the width of a given character.
+     * Params:
+     * character =  the character to measure.
+     * Returns: the width of the character in pixels.
+     */
+    public int charWidth(char character)
+    {
+        // gint gdk_char_width (GdkFont *font,  gchar character);
+        return gdk_char_width(gdkFont, character);
+    }
+
+    /**
+     * Warning
+     * gdk_char_width_wc is deprecated and should not be used in newly-written code.
+     * Determines the width of a given wide character. (Encoded
+     * in the wide-character encoding of the current locale).
+     * Params:
+     * character =  the character to measure.
+     * Returns: the width of the character in pixels.
+     */
+    public int charWidthWc(GdkWChar character)
+    {
+        // gint gdk_char_width_wc (GdkFont *font,  GdkWChar character);
+        return gdk_char_width_wc(gdkFont, character);
+    }
+
+    /**
+     * Warning
+     * gdk_string_measure is deprecated and should not be used in newly-written code.
+     * Determines the distance from the origin to the rightmost
+     * portion of a nul-terminated string when drawn. This is not the
+     * correct value for determining the origin of the next
+     * portion when drawing text in multiple pieces.
+     * See gdk_string_width().
+     * Params:
+     * string =  the nul-terminated string to measure.
+     * Returns: the right bearing of the string in pixels.
+     */
+    public int stringMeasure(string string)
+    {
+        // gint gdk_string_measure (GdkFont *font,  const gchar *string);
+        return gdk_string_measure(gdkFont, Str.toStringz(string));
+    }
+
+    /**
+     * Warning
+     * gdk_text_measure is deprecated and should not be used in newly-written code.
+     * Determines the distance from the origin to the rightmost
+     * portion of a string when drawn. This is not the
+     * correct value for determining the origin of the next
+     * portion when drawing text in multiple pieces.
+     * See gdk_text_width().
+     * Params:
+     * text =  the text to measure.
+     * textLength =  the length of the text in bytes.
+     * Returns: the right bearing of the string in pixels.
+     */
+    public int textMeasure(string text, int textLength)
+    {
+        // gint gdk_text_measure (GdkFont *font,  const gchar *text,  gint text_length);
+        return gdk_text_measure(gdkFont, Str.toStringz(text), textLength);
+    }
+
+    /**
+     * Warning
+     * gdk_char_measure is deprecated and should not be used in newly-written code.
+     * Determines the distance from the origin to the rightmost
+     * portion of a character when drawn. This is not the
+     * correct value for determining the origin of the next
+     * portion when drawing text in multiple pieces.
+     * Params:
+     * character =  the character to measure.
+     * Returns: the right bearing of the character in pixels.
+     */
+    public int charMeasure(char character)
+    {
+        // gint gdk_char_measure (GdkFont *font,  gchar character);
+        return gdk_char_measure(gdkFont, character);
+    }
+
+    /**
+     * Warning
+     * gdk_string_height is deprecated and should not be used in newly-written code.
+     * Determines the total height of a given nul-terminated
+     * string. This value is not generally useful, because you
+     * cannot determine how this total height will be drawn in
+     * relation to the baseline. See gdk_string_extents().
+     * Params:
+     * string =  the nul-terminated string to measure.
+     * Returns: the height of the string in pixels.
+     */
+    public int stringHeight(string string)
+    {
+        // gint gdk_string_height (GdkFont *font,  const gchar *string);
+        return gdk_string_height(gdkFont, Str.toStringz(string));
+    }
+
+    /**
+     * Warning
+     * gdk_text_height is deprecated and should not be used in newly-written code.
+     * Determines the total height of a given string.
+     * This value is not generally useful, because you cannot
+     * determine how this total height will be drawn in
+     * relation to the baseline. See gdk_text_extents().
+     * Params:
+     * text =  the text to measure.
+     * textLength =  the length of the text in bytes.
+     * Returns: the height of the string in pixels.
+     */
+    public int textHeight(string text, int textLength)
+    {
+        // gint gdk_text_height (GdkFont *font,  const gchar *text,  gint text_length);
+        return gdk_text_height(gdkFont, Str.toStringz(text), textLength);
+    }
+
+    /**
+     * Warning
+     * gdk_char_height is deprecated and should not be used in newly-written code. Use gdk_text_extents() instead.
+     * Determines the total height of a given character.
+     * This value is not generally useful, because you cannot
+     * determine how this total height will be drawn in
+     * relation to the baseline. See gdk_text_extents().
+     * Params:
+     * character =  the character to measure.
+     * Returns: the height of the character in pixels.
+     */
+    public int charHeight(char character)
+    {
+        // gint gdk_char_height (GdkFont *font,  gchar character);
+        return gdk_char_height(gdkFont, character);
+    }
+
+    /**
+     * Warning
+     * gdk_wcstombs is deprecated and should not be used in newly-written code.
+     * Converts a wide character string to a multi-byte string.
+     * (The function name comes from an acronym of 'Wide Character String TO
+     * Multi-Byte String').
+     * Params:
+     * src =  a wide character string.
+     * Returns: the multi-byte string corresponding to src, or NULL if theconversion failed. The returned string should be freed with g_free() when nolonger needed.
+     */
+    public static string wcstombs(GdkWChar* src)
+    {
+        // gchar * gdk_wcstombs (const GdkWChar *src);
+        return Str.toString(gdk_wcstombs(src));
+    }
+
+    /**
+     * Warning
+     * gdk_mbstowcs is deprecated and should not be used in newly-written code.
+     * Converts a multi-byte string to a wide character string.
+     * (The function name comes from an acronym of 'Multi-Byte String TO Wide
+     * Character String').
+     * Params:
+     * dest =  the space to place the converted wide character string into.
+     * src =  the multi-byte string to convert, which must be nul-terminated.
+     * destMax =  the maximum number of wide characters to place in dest.
+     * Returns: the number of wide characters written into dest, or -1 if  the conversion failed.
+     */
+    public static int mbstowcs(GdkWChar* dest, string src, int destMax)
+    {
+        // gint gdk_mbstowcs (GdkWChar *dest,  const gchar *src,  gint dest_max);
+        return gdk_mbstowcs(dest, Str.toStringz(src), destMax);
+    }
 }

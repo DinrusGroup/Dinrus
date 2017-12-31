@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = cairo-error-status.html
  * outPack = cairo
  * outFile = Status
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Status
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- cairo_status_t
@@ -77,42 +77,42 @@ private import gtkD.glib.Str;
  */
 public class Status
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Provides a human-readable description of a cairo_status_t.
-	 * Params:
-	 * status =  a cairo status
-	 * Returns: a string representation of the status
-	 */
-	public static string oString(cairo_status_t status)
-	{
-		// const char* cairo_status_to_string (cairo_status_t status);
-		return Str.toString(cairo_status_to_string(status));
-	}
-	
-	/**
-	 * Resets all static data within cairo to its original state,
-	 * (ie. identical to the state at the time of program invocation). For
-	 * example, all caches within cairo will be flushed empty.
-	 * This function is intended to be useful when using memory-checking
-	 * tools such as valgrind. When valgrind's memcheck analyzes a
-	 * cairo-using program without a call to cairo_debug_reset_static_data(),
-	 * it will report all data reachable via cairo's static objects as
-	 * "still reachable". Calling cairo_debug_reset_static_data() just prior
-	 * to program termination will make it easier to get squeaky clean
-	 * reports from valgrind.
-	 * WARNING: It is only safe to call this function when there are no
-	 * active cairo objects remaining, (ie. the appropriate destroy
-	 * functions have been called as necessary). If there are active cairo
-	 * objects, this call is likely to cause a crash, (eg. an assertion
-	 * failure due to a hash table being destroyed when non-empty).
-	 */
-	public static void debugResetStaticData()
-	{
-		// void cairo_debug_reset_static_data (void);
-		cairo_debug_reset_static_data();
-	}
+
+    /**
+     */
+
+    /**
+     * Provides a human-readable description of a cairo_status_t.
+     * Params:
+     * status =  a cairo status
+     * Returns: a string representation of the status
+     */
+    public static string oString(cairo_status_t status)
+    {
+        // const char* cairo_status_to_string (cairo_status_t status);
+        return Str.toString(cairo_status_to_string(status));
+    }
+
+    /**
+     * Resets all static data within cairo to its original state,
+     * (ie. identical to the state at the time of program invocation). For
+     * example, all caches within cairo will be flushed empty.
+     * This function is intended to be useful when using memory-checking
+     * tools such as valgrind. When valgrind's memcheck analyzes a
+     * cairo-using program without a call to cairo_debug_reset_static_data(),
+     * it will report all data reachable via cairo's static objects as
+     * "still reachable". Calling cairo_debug_reset_static_data() just prior
+     * to program termination will make it easier to get squeaky clean
+     * reports from valgrind.
+     * WARNING: It is only safe to call this function when there are no
+     * active cairo objects remaining, (ie. the appropriate destroy
+     * functions have been called as necessary). If there are active cairo
+     * objects, this call is likely to cause a crash, (eg. an assertion
+     * failure due to a hash table being destroyed when non-empty).
+     */
+    public static void debugResetStaticData()
+    {
+        // void cairo_debug_reset_static_data (void);
+        cairo_debug_reset_static_data();
+    }
 }

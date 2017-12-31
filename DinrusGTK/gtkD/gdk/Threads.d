@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gdk-Threads.html
  * outPack = gdk
  * outFile = Threads
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * omit structs:
@@ -71,8 +71,8 @@ private import gtkD.glib.ConstructionException;
  */
 public static void gdkThreadsInit()
 {
-	// void gdk_threads_init (void);
-	gdk_threads_init();
+    // void gdk_threads_init (void);
+    gdk_threads_init();
 }
 
 /**
@@ -83,8 +83,8 @@ public static void gdkThreadsInit()
  */
 public static void gdkThreadsEnter()
 {
-	// void gdk_threads_enter (void);
-	gdk_threads_enter();
+    // void gdk_threads_enter (void);
+    gdk_threads_enter();
 }
 
 /**
@@ -92,8 +92,8 @@ public static void gdkThreadsEnter()
  */
 public static void gdkThreadsLeave()
 {
-	// void gdk_threads_leave (void);
-	gdk_threads_leave();
+    // void gdk_threads_leave (void);
+    gdk_threads_leave();
 }
 
 /**
@@ -121,8 +121,8 @@ public static void gdkThreadsLeave()
  */
 public static void gdkThreadsSetLockFunctions(GCallback enterFn, GCallback leaveFn)
 {
-	// void gdk_threads_set_lock_functions (GCallback enter_fn,  GCallback leave_fn);
-	gdk_threads_set_lock_functions(enterFn, leaveFn);
+    // void gdk_threads_set_lock_functions (GCallback enter_fn,  GCallback leave_fn);
+    gdk_threads_set_lock_functions(enterFn, leaveFn);
 }
 
 /**
@@ -136,8 +136,8 @@ public static void gdkThreadsSetLockFunctions(GCallback enterFn, GCallback leave
  */
 public static uint gdkThreadsAddIdle(GSourceFunc funct, void* data)
 {
-	// guint gdk_threads_add_idle (GSourceFunc function,  gpointer data);
-	return gdk_threads_add_idle(funct, data);
+    // guint gdk_threads_add_idle (GSourceFunc function,  gpointer data);
+    return gdk_threads_add_idle(funct, data);
 }
 
 /**
@@ -158,8 +158,8 @@ public static uint gdkThreadsAddIdle(GSourceFunc funct, void* data)
  */
 public static uint gdkThreadsAddIdleFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify)
 {
-	// guint gdk_threads_add_idle_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_idle_full(priority, funct, data, notify);
+    // guint gdk_threads_add_idle_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
+    return gdk_threads_add_idle_full(priority, funct, data, notify);
 }
 
 /**
@@ -175,8 +175,8 @@ public static uint gdkThreadsAddIdleFull(int priority, GSourceFunc funct, void* 
  */
 public static uint gdkThreadsAddTimeout(uint interval, GSourceFunc funct, void* data)
 {
-	// guint gdk_threads_add_timeout (guint interval,  GSourceFunc function,  gpointer data);
-	return gdk_threads_add_timeout(interval, funct, data);
+    // guint gdk_threads_add_timeout (guint interval,  GSourceFunc function,  gpointer data);
+    return gdk_threads_add_timeout(interval, funct, data);
 }
 
 /**
@@ -204,8 +204,8 @@ public static uint gdkThreadsAddTimeout(uint interval, GSourceFunc funct, void* 
  */
 public static uint gdkThreadsAddTimeoutFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
 {
-	// guint gdk_threads_add_timeout_full (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_timeout_full(priority, interval, funct, data, notify);
+    // guint gdk_threads_add_timeout_full (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
+    return gdk_threads_add_timeout_full(priority, interval, funct, data, notify);
 }
 
 /**
@@ -220,8 +220,8 @@ public static uint gdkThreadsAddTimeoutFull(int priority, uint interval, GSource
  */
 public static uint gdkThreadsAddTimeoutSeconds(uint interval, GSourceFunc funct, void* data)
 {
-	// guint gdk_threads_add_timeout_seconds (guint interval,  GSourceFunc function,  gpointer data);
-	return gdk_threads_add_timeout_seconds(interval, funct, data);
+    // guint gdk_threads_add_timeout_seconds (guint interval,  GSourceFunc function,  gpointer data);
+    return gdk_threads_add_timeout_seconds(interval, funct, data);
 }
 
 /**
@@ -239,7 +239,7 @@ public static uint gdkThreadsAddTimeoutSeconds(uint interval, GSourceFunc funct,
  */
 public static uint gdkThreadsAddTimeoutSecondsFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
 {
-	// guint gdk_threads_add_timeout_seconds_full  (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-	return gdk_threads_add_timeout_seconds_full(priority, interval, funct, data, notify);
+    // guint gdk_threads_add_timeout_seconds_full  (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
+    return gdk_threads_add_timeout_seconds_full(priority, interval, funct, data, notify);
 }
 

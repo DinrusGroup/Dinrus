@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,7 +29,7 @@
  * realStrct=
  * ctorStrct=GdaDataModel
  * clss    = DataModelList
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -75,91 +75,91 @@ private import gtkD.gda.DataModel;
  */
 public class DataModelList : DataModel
 {
-	
-	/** the main Gtk struct */
-	protected GdaDataModelList* gdaDataModelList;
-	
-	
-	public GdaDataModelList* getDataModelListStruct()
-	{
-		return gdaDataModelList;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdaDataModelList;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdaDataModelList* gdaDataModelList)
-	{
-		if(gdaDataModelList is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdaDataModelList);
-		if( ptr !is null )
-		{
-			this = cast(DataModelList)ptr;
-			return;
-		}
-		super(cast(GdaDataModel*)gdaDataModelList);
-		this.gdaDataModelList = gdaDataModelList;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GdaDataModel* gda_data_model_list_new (void);
-		auto p = gda_data_model_list_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gda_data_model_list_new()");
-		}
-		this(cast(GdaDataModelList*) p);
-	}
-	
-	/**
-	 * Params:
-	 * list =  a list of strings.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (ListG list)
-	{
-		// GdaDataModel* gda_data_model_list_new_from_string_list  (const GList *list);
-		auto p = gda_data_model_list_new_from_string_list((list is null) ? null : list.getListGStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gda_data_model_list_new_from_string_list((list is null) ? null : list.getListGStruct())");
-		}
-		this(cast(GdaDataModelList*) p);
-	}
-	
-	/**
-	 * Inserts a row in the model, using value.
-	 * Params:
-	 * value =  a GdaValue which will be used to fill the row.
-	 * Returns: the GdaRow which has been inserted, or NULL on failure.
-	 */
-	public Row appendValue(Value value)
-	{
-		// const GdaRow* gda_data_model_list_append_value (GdaDataModelList *model,  const GdaValue *value);
-		auto p = gda_data_model_list_append_value(gdaDataModelList, (value is null) ? null : value.getValueStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Row(cast(GdaRow*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GdaDataModelList* gdaDataModelList;
+
+
+    public GdaDataModelList* getDataModelListStruct()
+    {
+        return gdaDataModelList;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gdaDataModelList;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdaDataModelList* gdaDataModelList)
+    {
+        if(gdaDataModelList is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gdaDataModelList);
+        if( ptr !is null )
+        {
+            this = cast(DataModelList)ptr;
+            return;
+        }
+        super(cast(GdaDataModel*)gdaDataModelList);
+        this.gdaDataModelList = gdaDataModelList;
+    }
+
+    /**
+     */
+
+    /**
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GdaDataModel* gda_data_model_list_new (void);
+        auto p = gda_data_model_list_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gda_data_model_list_new()");
+        }
+        this(cast(GdaDataModelList*) p);
+    }
+
+    /**
+     * Params:
+     * list =  a list of strings.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (ListG list)
+    {
+        // GdaDataModel* gda_data_model_list_new_from_string_list  (const GList *list);
+        auto p = gda_data_model_list_new_from_string_list((list is null) ? null : list.getListGStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gda_data_model_list_new_from_string_list((list is null) ? null : list.getListGStruct())");
+        }
+        this(cast(GdaDataModelList*) p);
+    }
+
+    /**
+     * Inserts a row in the model, using value.
+     * Params:
+     * value =  a GdaValue which will be used to fill the row.
+     * Returns: the GdaRow which has been inserted, or NULL on failure.
+     */
+    public Row appendValue(Value value)
+    {
+        // const GdaRow* gda_data_model_list_append_value (GdaDataModelList *model,  const GdaValue *value);
+        auto p = gda_data_model_list_append_value(gdaDataModelList, (value is null) ? null : value.getValueStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Row(cast(GdaRow*) p);
+    }
 }

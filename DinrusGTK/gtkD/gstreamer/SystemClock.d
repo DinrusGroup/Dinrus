@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SystemClock
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_system_clock_
@@ -80,61 +80,61 @@ private import gtkD.gstreamer.Clock;
  */
 public class SystemClock : Clock
 {
-	
-	/** the main Gtk struct */
-	protected GstSystemClock* gstSystemClock;
-	
-	
-	public GstSystemClock* getSystemClockStruct()
-	{
-		return gstSystemClock;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstSystemClock;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstSystemClock* gstSystemClock)
-	{
-		if(gstSystemClock is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstSystemClock);
-		if( ptr !is null )
-		{
-			this = cast(SystemClock)ptr;
-			return;
-		}
-		super(cast(GstClock*)gstSystemClock);
-		this.gstSystemClock = gstSystemClock;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Get a handle to the default system clock. The refcount of the
-	 * clock will be increased so you need to unref the clock after
-	 * usage.
-	 * Returns: the default clock.MT safe.
-	 */
-	public static Clock obtain()
-	{
-		// GstClock* gst_system_clock_obtain (void);
-		auto p = gst_system_clock_obtain();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Clock(cast(GstClock*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GstSystemClock* gstSystemClock;
+
+
+    public GstSystemClock* getSystemClockStruct()
+    {
+        return gstSystemClock;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gstSystemClock;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstSystemClock* gstSystemClock)
+    {
+        if(gstSystemClock is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gstSystemClock);
+        if( ptr !is null )
+        {
+            this = cast(SystemClock)ptr;
+            return;
+        }
+        super(cast(GstClock*)gstSystemClock);
+        this.gstSystemClock = gstSystemClock;
+    }
+
+    /**
+     */
+
+    /**
+     * Get a handle to the default system clock. The refcount of the
+     * clock will be increased so you need to unref the clock after
+     * usage.
+     * Returns: the default clock.MT safe.
+     */
+    public static Clock obtain()
+    {
+        // GstClock* gst_system_clock_obtain (void);
+        auto p = gst_system_clock_obtain();
+        if(p is null)
+        {
+            return null;
+        }
+        return new Clock(cast(GstClock*) p);
+    }
 }

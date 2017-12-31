@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -34,7 +34,7 @@
  * interface Code: No
  * template for:
  * 	- TStruct
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_async_result_
@@ -127,42 +127,42 @@ public import gtkD.gobject.ObjectG;
  */
 public template AsyncResultT(TStruct)
 {
-	
-	/** the main Gtk struct */
-	protected GAsyncResult* gAsyncResult;
-	
-	
-	public GAsyncResult* getAsyncResultTStruct()
-	{
-		return cast(GAsyncResult*)getStruct();
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the user data from a GAsyncResult.
-	 * Returns: the user data for res.
-	 */
-	public void* getUserData()
-	{
-		// gpointer g_async_result_get_user_data (GAsyncResult *res);
-		return g_async_result_get_user_data(getAsyncResultTStruct());
-	}
-	
-	/**
-	 * Gets the source object from a GAsyncResult.
-	 * Returns: a new reference to the source object for the res, or NULL if there is none.
-	 */
-	public ObjectG getSourceObject()
-	{
-		// GObject * g_async_result_get_source_object (GAsyncResult *res);
-		auto p = g_async_result_get_source_object(getAsyncResultTStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectG(cast(GObject*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GAsyncResult* gAsyncResult;
+
+
+    public GAsyncResult* getAsyncResultTStruct()
+    {
+        return cast(GAsyncResult*)getStruct();
+    }
+
+
+    /**
+     */
+
+    /**
+     * Gets the user data from a GAsyncResult.
+     * Returns: the user data for res.
+     */
+    public void* getUserData()
+    {
+        // gpointer g_async_result_get_user_data (GAsyncResult *res);
+        return g_async_result_get_user_data(getAsyncResultTStruct());
+    }
+
+    /**
+     * Gets the source object from a GAsyncResult.
+     * Returns: a new reference to the source object for the res, or NULL if there is none.
+     */
+    public ObjectG getSourceObject()
+    {
+        // GObject * g_async_result_get_source_object (GAsyncResult *res);
+        auto p = g_async_result_get_source_object(getAsyncResultTStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new ObjectG(cast(GObject*) p);
+    }
 }

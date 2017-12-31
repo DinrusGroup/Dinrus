@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = Idle
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Idle
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_idle_
@@ -130,195 +130,195 @@ private import gtkD.glib.Source;
  */
 public class Idle
 {
-	
-	/** Holds all idle delegates */
-	bool delegate()[] idleListeners;
-	/** our idle ID */
-	uint idleID;
-	
-	/**
-	 * Creates a new idle cycle.
-	 * Params:
-	 *    	interval = the idle in milieconds
-	 *    	dlg = the delegate to be executed
-	 *    	fireNow = When true the delegate will be executed emmidiatly
-	 */
-	this(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		idleID = g_idle_add(cast(GSourceFunc)&idleCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = 0;
-			}
-		}
-	}
-	
-	/**
-	 * Creates a new idle cycle.
-	 * Params:
-	 *    	dlg = the delegate to be executed
-	 *      priority = Priority for the idle function
-	 *    	fireNow = When true the delegate will be executed emmidiatly
-	 */
-	this(bool delegate() dlg, GPriority priority, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		idleID = g_idle_add_full(priority, cast(GSourceFunc)&idleCallback, cast(void*)this, null);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = 0;
-			}
-		}
-	}
-	
-	/** */
-	public void stop()
-	{
-		if ( idleID > 0 )
-		{
-			g_source_remove(idleID);
-		}
-		idleListeners.length = 0;
-	}
-	
-	/**
-	 * Removes the idle from gtk
-	 */
-	~this()
-	{
-		stop();
-	}
-	
-	/**
-	 * Adds a new delegate to this idle cycle
-	 * Params:
-	 *    	dlg =
-	 *    	fireNow =
-	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = idleListeners.length - 1;
-			}
-		}
-	}
-	
-	/**
-	 * The callback execution from glib
-	 * Params:
-	 *    	idle =
-	 * Returns:
-	 */
-	extern(C) static bool idleCallback(Idle idle)
-	{
-		return idle.callAllListeners();
-	}
-	
-	/**
-	 * Executes all delegates on the execution list
-	 * Returns:
-	 */
-	private bool callAllListeners()
-	{
-		bool runAgain = false;
-		
-		int i = 0;
-		
-		while ( i<idleListeners.length )
-		{
-			if ( !idleListeners[i]() )
-			{
-				idleListeners = idleListeners[0..i] ~ idleListeners[i+1..idleListeners.length];
-			}
-			else
-			{
-				runAgain = true;
-				++i;
-			}
-		}
-		return runAgain;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new idle source.
-	 * The source will not initially be associated with any GMainContext
-	 * and must be added to one with g_source_attach() before it will be
-	 * executed. Note that the default priority for idle sources is
-	 * G_PRIORITY_DEFAULT_IDLE, as compared to other sources which
-	 * have a default priority of G_PRIORITY_DEFAULT.
-	 * Returns: the newly-created idle source
-	 */
-	public static Source sourceNew()
-	{
-		// GSource * g_idle_source_new (void);
-		auto p = g_idle_source_new();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
-	
-	/**
-	 * Adds a function to be called whenever there are no higher priority
-	 * events pending to the default main loop. The function is given the
-	 * default idle priority, G_PRIORITY_DEFAULT_IDLE. If the function
-	 * returns FALSE it is automatically removed from the list of event
-	 * sources and will not be called again.
-	 * This internally creates a main loop source using g_idle_source_new()
-	 * and attaches it to the main loop context using g_source_attach().
-	 * You can do these steps manually if you need greater control.
-	 * Params:
-	 * data =  data to pass to function.
-	 * Returns: the ID (greater than 0) of the event source.
-	 */
-	public static uint add(GSourceFunc funct, void* data)
-	{
-		// guint g_idle_add (GSourceFunc function,  gpointer data);
-		return g_idle_add(funct, data);
-	}
-	
-	/**
-	 * Adds a function to be called whenever there are no higher priority
-	 * events pending. If the function returns FALSE it is automatically
-	 * removed from the list of event sources and will not be called again.
-	 * This internally creates a main loop source using g_idle_source_new()
-	 * and attaches it to the main loop context using g_source_attach().
-	 * You can do these steps manually if you need greater control.
-	 * Params:
-	 * priority =  the priority of the idle source. Typically this will be in the
-	 *  range between G_PRIORITY_DEFAULT_IDLE and G_PRIORITY_HIGH_IDLE.
-	 * data =  data to pass to function
-	 * notify =  function to call when the idle is removed, or NULL
-	 * Returns: the ID (greater than 0) of the event source.
-	 */
-	public static uint addFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_idle_add_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_idle_add_full(priority, funct, data, notify);
-	}
-	
-	/**
-	 * Removes the idle function with the given data.
-	 * Params:
-	 * data =  the data for the idle source's callback.
-	 * Returns: TRUE if an idle source was found and removed.
-	 */
-	public static int removeByData(void* data)
-	{
-		// gboolean g_idle_remove_by_data (gpointer data);
-		return g_idle_remove_by_data(data);
-	}
+
+    /** Holds all idle delegates */
+    bool delegate()[] idleListeners;
+    /** our idle ID */
+    uint idleID;
+
+    /**
+     * Creates a new idle cycle.
+     * Params:
+     *    	interval = the idle in milieconds
+     *    	dlg = the delegate to be executed
+     *    	fireNow = When true the delegate will be executed emmidiatly
+     */
+    this(bool delegate() dlg, bool fireNow=false)
+    {
+        idleListeners ~= dlg;
+        idleID = g_idle_add(cast(GSourceFunc)&idleCallback, cast(void*)this);
+        if ( fireNow )
+        {
+            if ( !dlg() )
+            {
+                idleListeners.length = 0;
+            }
+        }
+    }
+
+    /**
+     * Creates a new idle cycle.
+     * Params:
+     *    	dlg = the delegate to be executed
+     *      priority = Priority for the idle function
+     *    	fireNow = When true the delegate will be executed emmidiatly
+     */
+    this(bool delegate() dlg, GPriority priority, bool fireNow=false)
+    {
+        idleListeners ~= dlg;
+        idleID = g_idle_add_full(priority, cast(GSourceFunc)&idleCallback, cast(void*)this, null);
+        if ( fireNow )
+        {
+            if ( !dlg() )
+            {
+                idleListeners.length = 0;
+            }
+        }
+    }
+
+    /** */
+    public void stop()
+    {
+        if ( idleID > 0 )
+        {
+            g_source_remove(idleID);
+        }
+        idleListeners.length = 0;
+    }
+
+    /**
+     * Removes the idle from gtk
+     */
+    ~this()
+    {
+        stop();
+    }
+
+    /**
+     * Adds a new delegate to this idle cycle
+     * Params:
+     *    	dlg =
+     *    	fireNow =
+     */
+    public void addListener(bool delegate() dlg, bool fireNow=false)
+    {
+        idleListeners ~= dlg;
+        if ( fireNow )
+        {
+            if ( !dlg() )
+            {
+                idleListeners.length = idleListeners.length - 1;
+            }
+        }
+    }
+
+    /**
+     * The callback execution from glib
+     * Params:
+     *    	idle =
+     * Returns:
+     */
+    extern(C) static bool idleCallback(Idle idle)
+    {
+        return idle.callAllListeners();
+    }
+
+    /**
+     * Executes all delegates on the execution list
+     * Returns:
+     */
+    private bool callAllListeners()
+    {
+        bool runAgain = false;
+
+        int i = 0;
+
+        while ( i<idleListeners.length )
+        {
+            if ( !idleListeners[i]() )
+            {
+                idleListeners = idleListeners[0..i] ~ idleListeners[i+1..idleListeners.length];
+            }
+            else
+            {
+                runAgain = true;
+                ++i;
+            }
+        }
+        return runAgain;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new idle source.
+     * The source will not initially be associated with any GMainContext
+     * and must be added to one with g_source_attach() before it will be
+     * executed. Note that the default priority for idle sources is
+     * G_PRIORITY_DEFAULT_IDLE, as compared to other sources which
+     * have a default priority of G_PRIORITY_DEFAULT.
+     * Returns: the newly-created idle source
+     */
+    public static Source sourceNew()
+    {
+        // GSource * g_idle_source_new (void);
+        auto p = g_idle_source_new();
+        if(p is null)
+        {
+            return null;
+        }
+        return new Source(cast(GSource*) p);
+    }
+
+    /**
+     * Adds a function to be called whenever there are no higher priority
+     * events pending to the default main loop. The function is given the
+     * default idle priority, G_PRIORITY_DEFAULT_IDLE. If the function
+     * returns FALSE it is automatically removed from the list of event
+     * sources and will not be called again.
+     * This internally creates a main loop source using g_idle_source_new()
+     * and attaches it to the main loop context using g_source_attach().
+     * You can do these steps manually if you need greater control.
+     * Params:
+     * data =  data to pass to function.
+     * Returns: the ID (greater than 0) of the event source.
+     */
+    public static uint add(GSourceFunc funct, void* data)
+    {
+        // guint g_idle_add (GSourceFunc function,  gpointer data);
+        return g_idle_add(funct, data);
+    }
+
+    /**
+     * Adds a function to be called whenever there are no higher priority
+     * events pending. If the function returns FALSE it is automatically
+     * removed from the list of event sources and will not be called again.
+     * This internally creates a main loop source using g_idle_source_new()
+     * and attaches it to the main loop context using g_source_attach().
+     * You can do these steps manually if you need greater control.
+     * Params:
+     * priority =  the priority of the idle source. Typically this will be in the
+     *  range between G_PRIORITY_DEFAULT_IDLE and G_PRIORITY_HIGH_IDLE.
+     * data =  data to pass to function
+     * notify =  function to call when the idle is removed, or NULL
+     * Returns: the ID (greater than 0) of the event source.
+     */
+    public static uint addFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify)
+    {
+        // guint g_idle_add_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
+        return g_idle_add_full(priority, funct, data, notify);
+    }
+
+    /**
+     * Removes the idle function with the given data.
+     * Params:
+     * data =  the data for the idle source's callback.
+     * Returns: TRUE if an idle source was found and removed.
+     */
+    public static int removeByData(void* data)
+    {
+        // gboolean g_idle_remove_by_data (gpointer data);
+        return g_idle_remove_by_data(data);
+    }
 }

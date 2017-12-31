@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = Tuples
  * strct   = GTuples
  * realStrct=
  * ctorStrct=
  * clss    = Tuples
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_tuples_
@@ -88,63 +88,63 @@ private import gtkD.glib.ConstructionException;
  */
 public class Tuples
 {
-	
-	/** the main Gtk struct */
-	protected GTuples* gTuples;
-	
-	
-	public GTuples* getTuplesStruct()
-	{
-		return gTuples;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTuples;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GTuples* gTuples)
-	{
-		if(gTuples is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTuples = gTuples;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Frees the records which were returned by g_relation_select().
-	 * This should always be called after g_relation_select() when you are
-	 * finished with the records.
-	 * The records are not removed from the GRelation.
-	 */
-	public void destroy()
-	{
-		// void g_tuples_destroy (GTuples *tuples);
-		g_tuples_destroy(gTuples);
-	}
-	
-	/**
-	 * Gets a field from the records returned by g_relation_select().
-	 * It returns the given field of the record at the given index.
-	 * The returned value should not be changed.
-	 * Params:
-	 * index = the index of the record.
-	 * field = the field to return.
-	 * Returns:the field of the record.
-	 */
-	public void* index(int index, int field)
-	{
-		// gpointer g_tuples_index (GTuples *tuples,  gint index_,  gint field);
-		return g_tuples_index(gTuples, index, field);
-	}
+
+    /** the main Gtk struct */
+    protected GTuples* gTuples;
+
+
+    public GTuples* getTuplesStruct()
+    {
+        return gTuples;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gTuples;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GTuples* gTuples)
+    {
+        if(gTuples is null)
+        {
+            this = null;
+            return;
+        }
+        this.gTuples = gTuples;
+    }
+
+    /**
+     */
+
+    /**
+     * Frees the records which were returned by g_relation_select().
+     * This should always be called after g_relation_select() when you are
+     * finished with the records.
+     * The records are not removed from the GRelation.
+     */
+    public void destroy()
+    {
+        // void g_tuples_destroy (GTuples *tuples);
+        g_tuples_destroy(gTuples);
+    }
+
+    /**
+     * Gets a field from the records returned by g_relation_select().
+     * It returns the given field of the record at the given index.
+     * The returned value should not be changed.
+     * Params:
+     * index = the index of the record.
+     * field = the field to return.
+     * Returns:the field of the record.
+     */
+    public void* index(int index, int field)
+    {
+        // gpointer g_tuples_index (GTuples *tuples,  gint index_,  gint field);
+        return g_tuples_index(gTuples, index, field);
+    }
 }

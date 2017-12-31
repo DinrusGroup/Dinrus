@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = HRuler
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_hruler_
@@ -81,59 +81,59 @@ private import gtkD.gtk.Ruler;
  */
 public class HRuler : Ruler
 {
-	
-	/** the main Gtk struct */
-	protected GtkHRuler* gtkHRuler;
-	
-	
-	public GtkHRuler* getHRulerStruct()
-	{
-		return gtkHRuler;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkHRuler;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkHRuler* gtkHRuler)
-	{
-		if(gtkHRuler is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkHRuler);
-		if( ptr !is null )
-		{
-			this = cast(HRuler)ptr;
-			return;
-		}
-		super(cast(GtkRuler*)gtkHRuler);
-		this.gtkHRuler = gtkHRuler;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new horizontal ruler.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_hruler_new (void);
-		auto p = gtk_hruler_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_hruler_new()");
-		}
-		this(cast(GtkHRuler*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkHRuler* gtkHRuler;
+
+
+    public GtkHRuler* getHRulerStruct()
+    {
+        return gtkHRuler;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkHRuler;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkHRuler* gtkHRuler)
+    {
+        if(gtkHRuler is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkHRuler);
+        if( ptr !is null )
+        {
+            this = cast(HRuler)ptr;
+            return;
+        }
+        super(cast(GtkRuler*)gtkHRuler);
+        this.gtkHRuler = gtkHRuler;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new horizontal ruler.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_hruler_new (void);
+        auto p = gtk_hruler_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_hruler_new()");
+        }
+        this(cast(GtkHRuler*) p);
+    }
 }

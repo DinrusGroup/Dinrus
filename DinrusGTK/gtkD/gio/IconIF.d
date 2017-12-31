@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,7 +33,7 @@
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_icon_
@@ -85,49 +85,49 @@ private import gtkD.glib.GException;
  */
 public interface IconIF
 {
-	
-	
-	public GIcon* getIconTStruct();
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct();
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Gets a hash for an icon.
-	 * Params:
-	 * icon =  gconstpointer to an icon object.
-	 * Returns: a guint containing a hash for the icon, suitable for use in a GHashTable or similar data structure.
-	 */
-	public static uint hash(void* icon);
-	
-	/**
-	 * Checks if two icons are equal.
-	 * Params:
-	 * icon2 =  pointer to the second GIcon.
-	 * Returns: TRUE if icon1 is equal to icon2. FALSE otherwise.
-	 */
-	public int equal(GIcon* icon2);
-	
-	/**
-	 * Generates a textual representation of icon that can be used for
-	 * serialization such as when passing icon to a different process or
-	 * saving it to persistent storage. Use g_icon_new_for_string() to
-	 * get icon back from the returned string.
-	 * The encoding of the returned string is proprietary to GIcon except
-	 * in the following two cases
-	 *  If icon is a GFileIcon, the returned string is a native path
-	 *  (such as /path/to/my icon.png) without escaping
-	 *  if the GFile for icon is a native file. If the file is not
-	 *  native, the returned string is the result of g_file_get_uri()
-	 *  (such as sftp://path/to/my%20icon.png).
-	 *  If icon is a GThemedIcon with exactly one name, the encoding is
-	 *  simply the name (such as network-server).
-	 * Since 2.20
-	 * Returns: An allocated NUL-terminated UTF8 string or NULL if icon can'tbe serialized. Use g_free() to free.
-	 */
-	public string toString();
+
+
+    public GIcon* getIconTStruct();
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct();
+
+
+    /**
+     */
+
+    /**
+     * Gets a hash for an icon.
+     * Params:
+     * icon =  gconstpointer to an icon object.
+     * Returns: a guint containing a hash for the icon, suitable for use in a GHashTable or similar data structure.
+     */
+    public static uint hash(void* icon);
+
+    /**
+     * Checks if two icons are equal.
+     * Params:
+     * icon2 =  pointer to the second GIcon.
+     * Returns: TRUE if icon1 is equal to icon2. FALSE otherwise.
+     */
+    public int equal(GIcon* icon2);
+
+    /**
+     * Generates a textual representation of icon that can be used for
+     * serialization such as when passing icon to a different process or
+     * saving it to persistent storage. Use g_icon_new_for_string() to
+     * get icon back from the returned string.
+     * The encoding of the returned string is proprietary to GIcon except
+     * in the following two cases
+     *  If icon is a GFileIcon, the returned string is a native path
+     *  (such as /path/to/my icon.png) without escaping
+     *  if the GFile for icon is a native file. If the file is not
+     *  native, the returned string is the result of g_file_get_uri()
+     *  (such as sftp://path/to/my%20icon.png).
+     *  If icon is a GThemedIcon with exactly one name, the encoding is
+     *  simply the name (such as network-server).
+     * Since 2.20
+     * Returns: An allocated NUL-terminated UTF8 string or NULL if icon can'tbe serialized. Use g_free() to free.
+     */
+    public string toString();
 }

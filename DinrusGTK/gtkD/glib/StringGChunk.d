@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = StringGChunk
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_string_chunk_
@@ -82,143 +82,143 @@ private import gtkD.glib.Str;
  */
 public class StringGChunk
 {
-	
-	/** the main Gtk struct */
-	protected GStringChunk* gStringChunk;
-	
-	
-	public GStringChunk* getStringGChunkStruct()
-	{
-		return gStringChunk;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStringChunk;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GStringChunk* gStringChunk)
-	{
-		if(gStringChunk is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStringChunk = gStringChunk;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GStringChunk.
-	 * Params:
-	 * size =  the default size of the blocks of memory which are
-	 *  allocated to store the strings. If a particular string
-	 *  is larger than this default size, a larger block of
-	 *  memory will be allocated for it.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (uint size)
-	{
-		// GStringChunk* g_string_chunk_new (gsize size);
-		auto p = g_string_chunk_new(size);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_string_chunk_new(size)");
-		}
-		this(cast(GStringChunk*) p);
-	}
-	
-	/**
-	 * Adds a copy of string to the GStringChunk.
-	 * It returns a pointer to the new copy of the string
-	 * in the GStringChunk. The characters in the string
-	 * can be changed, if necessary, though you should not
-	 * change anything after the end of the string.
-	 * Unlike g_string_chunk_insert_const(), this function
-	 * does not check for duplicates. Also strings added
-	 * with g_string_chunk_insert() will not be searched
-	 * by g_string_chunk_insert_const() when looking for
-	 * duplicates.
-	 * Params:
-	 * string =  the string to add
-	 * Returns: a pointer to the copy of string within  the GStringChunk
-	 */
-	public string insert(string string)
-	{
-		// gchar* g_string_chunk_insert (GStringChunk *chunk,  const gchar *string);
-		return Str.toString(g_string_chunk_insert(gStringChunk, Str.toStringz(string)));
-	}
-	
-	/**
-	 * Adds a copy of string to the GStringChunk, unless the same
-	 * string has already been added to the GStringChunk with
-	 * g_string_chunk_insert_const().
-	 * This function is useful if you need to copy a large number
-	 * of strings but do not want to waste space storing duplicates.
-	 * But you must remember that there may be several pointers to
-	 * the same string, and so any changes made to the strings
-	 * should be done very carefully.
-	 * Note that g_string_chunk_insert_const() will not return a
-	 * pointer to a string added with g_string_chunk_insert(), even
-	 * if they do match.
-	 * Params:
-	 * string =  the string to add
-	 * Returns: a pointer to the new or existing copy of string within the GStringChunk
-	 */
-	public string insertConst(string string)
-	{
-		// gchar* g_string_chunk_insert_const (GStringChunk *chunk,  const gchar *string);
-		return Str.toString(g_string_chunk_insert_const(gStringChunk, Str.toStringz(string)));
-	}
-	
-	/**
-	 * Adds a copy of the first len bytes of string to the GStringChunk.
-	 * The copy is nul-terminated.
-	 * Since this function does not stop at nul bytes, it is the caller's
-	 * responsibility to ensure that string has at least len addressable
-	 * bytes.
-	 * The characters in the returned string can be changed, if necessary,
-	 * though you should not change anything after the end of the string.
-	 * Since 2.4
-	 * Params:
-	 * string =  bytes to insert
-	 * len =  number of bytes of string to insert, or -1 to insert a
-	 *  nul-terminated string
-	 * Returns: a pointer to the copy of string within the GStringChunk
-	 */
-	public string insertLen(string string, int len)
-	{
-		// gchar* g_string_chunk_insert_len (GStringChunk *chunk,  const gchar *string,  gssize len);
-		return Str.toString(g_string_chunk_insert_len(gStringChunk, Str.toStringz(string), len));
-	}
-	
-	/**
-	 * Frees all strings contained within the GStringChunk.
-	 * After calling g_string_chunk_clear() it is not safe to
-	 * access any of the strings which were contained within it.
-	 * Since 2.14
-	 */
-	public void clear()
-	{
-		// void g_string_chunk_clear (GStringChunk *chunk);
-		g_string_chunk_clear(gStringChunk);
-	}
-	
-	/**
-	 * Frees all memory allocated by the GStringChunk.
-	 * After calling g_string_chunk_free() it is not safe to
-	 * access any of the strings which were contained within it.
-	 */
-	public void free()
-	{
-		// void g_string_chunk_free (GStringChunk *chunk);
-		g_string_chunk_free(gStringChunk);
-	}
+
+    /** the main Gtk struct */
+    protected GStringChunk* gStringChunk;
+
+
+    public GStringChunk* getStringGChunkStruct()
+    {
+        return gStringChunk;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gStringChunk;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GStringChunk* gStringChunk)
+    {
+        if(gStringChunk is null)
+        {
+            this = null;
+            return;
+        }
+        this.gStringChunk = gStringChunk;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GStringChunk.
+     * Params:
+     * size =  the default size of the blocks of memory which are
+     *  allocated to store the strings. If a particular string
+     *  is larger than this default size, a larger block of
+     *  memory will be allocated for it.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (uint size)
+    {
+        // GStringChunk* g_string_chunk_new (gsize size);
+        auto p = g_string_chunk_new(size);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_string_chunk_new(size)");
+        }
+        this(cast(GStringChunk*) p);
+    }
+
+    /**
+     * Adds a copy of string to the GStringChunk.
+     * It returns a pointer to the new copy of the string
+     * in the GStringChunk. The characters in the string
+     * can be changed, if necessary, though you should not
+     * change anything after the end of the string.
+     * Unlike g_string_chunk_insert_const(), this function
+     * does not check for duplicates. Also strings added
+     * with g_string_chunk_insert() will not be searched
+     * by g_string_chunk_insert_const() when looking for
+     * duplicates.
+     * Params:
+     * string =  the string to add
+     * Returns: a pointer to the copy of string within  the GStringChunk
+     */
+    public string insert(string string)
+    {
+        // gchar* g_string_chunk_insert (GStringChunk *chunk,  const gchar *string);
+        return Str.toString(g_string_chunk_insert(gStringChunk, Str.toStringz(string)));
+    }
+
+    /**
+     * Adds a copy of string to the GStringChunk, unless the same
+     * string has already been added to the GStringChunk with
+     * g_string_chunk_insert_const().
+     * This function is useful if you need to copy a large number
+     * of strings but do not want to waste space storing duplicates.
+     * But you must remember that there may be several pointers to
+     * the same string, and so any changes made to the strings
+     * should be done very carefully.
+     * Note that g_string_chunk_insert_const() will not return a
+     * pointer to a string added with g_string_chunk_insert(), even
+     * if they do match.
+     * Params:
+     * string =  the string to add
+     * Returns: a pointer to the new or existing copy of string within the GStringChunk
+     */
+    public string insertConst(string string)
+    {
+        // gchar* g_string_chunk_insert_const (GStringChunk *chunk,  const gchar *string);
+        return Str.toString(g_string_chunk_insert_const(gStringChunk, Str.toStringz(string)));
+    }
+
+    /**
+     * Adds a copy of the first len bytes of string to the GStringChunk.
+     * The copy is nul-terminated.
+     * Since this function does not stop at nul bytes, it is the caller's
+     * responsibility to ensure that string has at least len addressable
+     * bytes.
+     * The characters in the returned string can be changed, if necessary,
+     * though you should not change anything after the end of the string.
+     * Since 2.4
+     * Params:
+     * string =  bytes to insert
+     * len =  number of bytes of string to insert, or -1 to insert a
+     *  nul-terminated string
+     * Returns: a pointer to the copy of string within the GStringChunk
+     */
+    public string insertLen(string string, int len)
+    {
+        // gchar* g_string_chunk_insert_len (GStringChunk *chunk,  const gchar *string,  gssize len);
+        return Str.toString(g_string_chunk_insert_len(gStringChunk, Str.toStringz(string), len));
+    }
+
+    /**
+     * Frees all strings contained within the GStringChunk.
+     * After calling g_string_chunk_clear() it is not safe to
+     * access any of the strings which were contained within it.
+     * Since 2.14
+     */
+    public void clear()
+    {
+        // void g_string_chunk_clear (GStringChunk *chunk);
+        g_string_chunk_clear(gStringChunk);
+    }
+
+    /**
+     * Frees all memory allocated by the GStringChunk.
+     * After calling g_string_chunk_free() it is not safe to
+     * access any of the strings which were contained within it.
+     */
+    public void free()
+    {
+        // void g_string_chunk_free (GStringChunk *chunk);
+        g_string_chunk_free(gStringChunk);
+    }
 }

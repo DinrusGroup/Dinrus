@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -34,7 +34,7 @@
  * interface Code: No
  * template for:
  * 	- TStruct
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_socket_connectable_
@@ -124,33 +124,33 @@ public import gtkD.gio.SocketAddressEnumerator;
  */
 public template SocketConnectableT(TStruct)
 {
-	
-	/** the main Gtk struct */
-	protected GSocketConnectable* gSocketConnectable;
-	
-	
-	public GSocketConnectable* getSocketConnectableTStruct()
-	{
-		return cast(GSocketConnectable*)getStruct();
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a GSocketAddressEnumerator for connectable.
-	 * Since 2.22
-	 * Returns: a new GSocketAddressEnumerator.
-	 */
-	public SocketAddressEnumerator enumerate()
-	{
-		// GSocketAddressEnumerator * g_socket_connectable_enumerate  (GSocketConnectable *connectable);
-		auto p = g_socket_connectable_enumerate(getSocketConnectableTStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new SocketAddressEnumerator(cast(GSocketAddressEnumerator*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GSocketConnectable* gSocketConnectable;
+
+
+    public GSocketConnectable* getSocketConnectableTStruct()
+    {
+        return cast(GSocketConnectable*)getStruct();
+    }
+
+
+    /**
+     */
+
+    /**
+     * Creates a GSocketAddressEnumerator for connectable.
+     * Since 2.22
+     * Returns: a new GSocketAddressEnumerator.
+     */
+    public SocketAddressEnumerator enumerate()
+    {
+        // GSocketAddressEnumerator * g_socket_connectable_enumerate  (GSocketConnectable *connectable);
+        auto p = g_socket_connectable_enumerate(getSocketConnectableTStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new SocketAddressEnumerator(cast(GSocketAddressEnumerator*) p);
+    }
 }

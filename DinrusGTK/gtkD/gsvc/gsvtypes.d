@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -30,10 +30,10 @@ public import gtkD.gtkc.gtktypes;
  */
 public enum GtkSourceSmartHomeEndType
 {
-	DISABLED,
-	BEFORE,
-	AFTER,
-	ALWAYS
+    DISABLED,
+    BEFORE,
+    AFTER,
+    ALWAYS
 }
 alias GtkSourceSmartHomeEndType SourceSmartHomeEndType;
 
@@ -43,85 +43,86 @@ alias GtkSourceSmartHomeEndType SourceSmartHomeEndType;
  */
 public enum GtkSourceDrawSpacesFlags
 {
-	SPACE = 1 << 0,
-	TAB = 1 << 1,
-	NEWLINE = 1 << 2,
-	NBSP = 1 << 3,
-	ALL = (SPACE |
-	TAB |
-	NEWLINE |
-	NBSP)
+    SPACE = 1 << 0,
+    TAB = 1 << 1,
+    NEWLINE = 1 << 2,
+    NBSP = 1 << 3,
+    ALL = (SPACE |
+           TAB |
+           NEWLINE |
+           NBSP)
 }
 alias GtkSourceDrawSpacesFlags SourceDrawSpacesFlags;
 
 public enum GtkSourceViewGutterPosition
 {
-	LINES = -30,
-	MARKS = -20
+    LINES = -30,
+    MARKS = -20
 }
 alias GtkSourceViewGutterPosition SourceViewGutterPosition;
 
 public enum GtkSourceSearchFlags
 {
-	VISIBLE_ONLY = 1 << 0,
-	TEXT_ONLY = 1 << 1,
-	CASE_INSENSITIVE = 1 << 2
-	/+* Possible future plans: SEARCH_REGEXP +/
-}
-alias GtkSourceSearchFlags SourceSearchFlags;
+    VISIBLE_ONLY = 1 << 0,
+    TEXT_ONLY = 1 << 1,
+    CASE_INSENSITIVE = 1 << 2
+                       /+* Possible future plans:
+                           SEARCH_REGEXP +/
+    }
+    alias GtkSourceSearchFlags SourceSearchFlags;
 
-public struct GtkTextViewClass{}
+    public struct GtkTextViewClass {}
 
-public struct GtkTextBufferClass{}
+public struct GtkTextBufferClass {}
 
 /**
  * Main Gtk struct.
  */
-public struct GtkSourceView{}
+public struct GtkSourceView {}
 
 
 public struct GtkSourceViewClass
 {
-	GtkTextViewClass parentClass;
-	extern(C) void  function(GtkSourceView *view) undo;
-	extern(C) void  function(GtkSourceView *view) redo;
-	extern(C) void  function(GtkSourceView *view, GtkTextIter *iter,GdkEvent *event) lineMarkActivated;
-	/+* Padding for future expansion +/
-	extern(C) void  function() _GtkSourceReserved1;
-	extern(C) void  function() _GtkSourceReserved2;
-	extern(C) void  function() _GtkSourceReserved3;
+    GtkTextViewClass parentClass;
+    extern(C) void  function(GtkSourceView *view) undo;
+    extern(C) void  function(GtkSourceView *view) redo;
+    extern(C) void  function(GtkSourceView *view, GtkTextIter *iter,GdkEvent *event) lineMarkActivated;
+    /+* Padding for future expansion +/
+    extern(C) void  function() _GtkSourceReserved1;
+    extern(C) void  function() _GtkSourceReserved2;
+    extern(C) void  function() _GtkSourceReserved3;
 }
 
 
 /**
  * Main Gtk struct.
  */
-public struct GtkSourceBuffer{}
+public struct GtkSourceBuffer {}
 
 
 public struct GtkSourceBufferClass
 {
-	GtkTextBufferClass parentClass;
-	/+* Padding for future expansion +/
-	extern(C) void  function() _GtkSourceReserved1;
-	extern(C) void  function() _GtkSourceReserved2;
-	extern(C) void  function() _GtkSourceReserved3;
-	extern(C) void  function() _GtkSourceReserved4;
-	extern(C) void  function() _GtkSourceReserved5;
-	extern(C) void  function() _GtkSourceReserved6;
+    GtkTextBufferClass parentClass;
+    /+* Padding for future expansion +/
+    extern(C) void  function() _GtkSourceReserved1;
+    extern(C) void  function() _GtkSourceReserved2;
+    extern(C) void  function() _GtkSourceReserved3;
+    extern(C) void  function() _GtkSourceReserved4;
+    extern(C) void  function() _GtkSourceReserved5;
+    extern(C) void  function() _GtkSourceReserved6;
 }
 
 
 /**
  * Main Gtk struct.
  */
-public struct GtkSourceGutter{}
+public struct GtkSourceGutter {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct GtkSourceMark{}
+public struct GtkSourceMark {}
 
 
 /**
@@ -129,7 +130,7 @@ public struct GtkSourceMark{}
  * GtkSourceLanguage structure contains only
  * private members and should not be accessed directly.
  */
-public struct GtkSourceLanguage{}
+public struct GtkSourceLanguage {}
 
 
 /**
@@ -137,13 +138,13 @@ public struct GtkSourceLanguage{}
  * GtkSourceLanguageManager structure contains only
  * private members and should not be accessed directly.
  */
-public struct GtkSourceLanguageManager{}
+public struct GtkSourceLanguageManager {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct GtkSourcePrintCompositor{}
+public struct GtkSourcePrintCompositor {}
 
 
 /**
@@ -151,7 +152,7 @@ public struct GtkSourcePrintCompositor{}
  * The GtkSourceStyle structure is used to describe text attributes
  * which are set when given style is used.
  */
-public struct GtkSourceStyle{}
+public struct GtkSourceStyle {}
 
 
 /**
@@ -159,7 +160,7 @@ public struct GtkSourceStyle{}
  * GtkSourceStyleScheme structure contains only
  * private members and should not be accessed directly.
  */
-public struct GtkSourceStyleScheme{}
+public struct GtkSourceStyleScheme {}
 
 
 /**
@@ -167,7 +168,7 @@ public struct GtkSourceStyleScheme{}
  * GtkSourceStyleSchemeManager structure contains only
  * private members and should not be accessed directly.
  */
-public struct GtkSourceStyleSchemeManager{}
+public struct GtkSourceStyleSchemeManager {}
 
 
 /*

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -34,7 +34,7 @@
  * interface Code: No
  * template for:
  * 	- TStruct
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_activatable_
@@ -248,117 +248,117 @@ public import gtkD.gtk.Action;
  */
 public template ActivatableT(TStruct)
 {
-	
-	/** the main Gtk struct */
-	protected GtkActivatable* gtkActivatable;
-	
-	
-	public GtkActivatable* getActivatableTStruct()
-	{
-		return cast(GtkActivatable*)getStruct();
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * This is a utility function for GtkActivatable implementors.
-	 * When implementing GtkActivatable you must call this when
-	 * handling changes of the "related-action", and
-	 * you must also use this to break references in GObject->dispose().
-	 * This function adds a reference to the currently set related
-	 * action for you, it also makes sure the GtkActivatable->update()
-	 * method is called when the related GtkAction properties change
-	 * and registers to the action's proxy list.
-	 * Note
-	 * Be careful to call this before setting the local
-	 * copy of the GtkAction property, since this function uses
-	 * gtk_activatable_get_action() to retrieve the previous action
-	 * Since 2.16
-	 * Params:
-	 * action =  the GtkAction to set
-	 */
-	public void doSetRelatedAction(Action action)
-	{
-		// void gtk_activatable_do_set_related_action  (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_do_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
-	
-	/**
-	 * Gets the related GtkAction for activatable.
-	 * Since 2.16
-	 * Returns: the related GtkAction if one is set.
-	 */
-	public Action getRelatedAction()
-	{
-		// GtkAction * gtk_activatable_get_related_action (GtkActivatable *activatable);
-		auto p = gtk_activatable_get_related_action(getActivatableTStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Action(cast(GtkAction*) p);
-	}
-	
-	/**
-	 * Gets whether this activatable should reset its layout
-	 * and appearance when setting the related action or when
-	 * the action changes appearance.
-	 * Since 2.16
-	 * Returns: whether activatable uses its actions appearance.
-	 */
-	public int getUseActionAppearance()
-	{
-		// gboolean gtk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
-		return gtk_activatable_get_use_action_appearance(getActivatableTStruct());
-	}
-	
-	/**
-	 * This is called to update the activatable completely, this is called
-	 * internally when the "related-action" property is set
-	 * or unset and by the implementing class when
-	 * "use-action-appearance" changes.
-	 * Since 2.16
-	 * Params:
-	 * action =  the related GtkAction or NULL
-	 */
-	public void syncActionProperties(Action action)
-	{
-		// void gtk_activatable_sync_action_properties  (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_sync_action_properties(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
-	
-	/**
-	 * Sets the related action on the activatable object.
-	 * Note
-	 * GtkActivatable implementors need to handle the "related-action"
-	 * property and call gtk_activatable_do_set_related_action() when it changes.
-	 * Since 2.16
-	 * Params:
-	 * action =  the GtkAction to set
-	 */
-	public void setRelatedAction(Action action)
-	{
-		// void gtk_activatable_set_related_action (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
-	
-	/**
-	 * Sets whether this activatable should reset its layout and appearance
-	 * when setting the related action or when the action changes appearance
-	 * Note
-	 * GtkActivatable implementors need to handle the
-	 * "use-action-appearance" property and call
-	 * gtk_activatable_sync_action_properties() to update activatable
-	 * if needed.
-	 * Since 2.16
-	 * Params:
-	 * useAppearance =  whether to use the actions appearance
-	 */
-	public void setUseActionAppearance(int useAppearance)
-	{
-		// void gtk_activatable_set_use_action_appearance  (GtkActivatable *activatable,  gboolean use_appearance);
-		gtk_activatable_set_use_action_appearance(getActivatableTStruct(), useAppearance);
-	}
+
+    /** the main Gtk struct */
+    protected GtkActivatable* gtkActivatable;
+
+
+    public GtkActivatable* getActivatableTStruct()
+    {
+        return cast(GtkActivatable*)getStruct();
+    }
+
+
+    /**
+     */
+
+    /**
+     * This is a utility function for GtkActivatable implementors.
+     * When implementing GtkActivatable you must call this when
+     * handling changes of the "related-action", and
+     * you must also use this to break references in GObject->dispose().
+     * This function adds a reference to the currently set related
+     * action for you, it also makes sure the GtkActivatable->update()
+     * method is called when the related GtkAction properties change
+     * and registers to the action's proxy list.
+     * Note
+     * Be careful to call this before setting the local
+     * copy of the GtkAction property, since this function uses
+     * gtk_activatable_get_action() to retrieve the previous action
+     * Since 2.16
+     * Params:
+     * action =  the GtkAction to set
+     */
+    public void doSetRelatedAction(Action action)
+    {
+        // void gtk_activatable_do_set_related_action  (GtkActivatable *activatable,  GtkAction *action);
+        gtk_activatable_do_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
+    }
+
+    /**
+     * Gets the related GtkAction for activatable.
+     * Since 2.16
+     * Returns: the related GtkAction if one is set.
+     */
+    public Action getRelatedAction()
+    {
+        // GtkAction * gtk_activatable_get_related_action (GtkActivatable *activatable);
+        auto p = gtk_activatable_get_related_action(getActivatableTStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Action(cast(GtkAction*) p);
+    }
+
+    /**
+     * Gets whether this activatable should reset its layout
+     * and appearance when setting the related action or when
+     * the action changes appearance.
+     * Since 2.16
+     * Returns: whether activatable uses its actions appearance.
+     */
+    public int getUseActionAppearance()
+    {
+        // gboolean gtk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
+        return gtk_activatable_get_use_action_appearance(getActivatableTStruct());
+    }
+
+    /**
+     * This is called to update the activatable completely, this is called
+     * internally when the "related-action" property is set
+     * or unset and by the implementing class when
+     * "use-action-appearance" changes.
+     * Since 2.16
+     * Params:
+     * action =  the related GtkAction or NULL
+     */
+    public void syncActionProperties(Action action)
+    {
+        // void gtk_activatable_sync_action_properties  (GtkActivatable *activatable,  GtkAction *action);
+        gtk_activatable_sync_action_properties(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
+    }
+
+    /**
+     * Sets the related action on the activatable object.
+     * Note
+     * GtkActivatable implementors need to handle the "related-action"
+     * property and call gtk_activatable_do_set_related_action() when it changes.
+     * Since 2.16
+     * Params:
+     * action =  the GtkAction to set
+     */
+    public void setRelatedAction(Action action)
+    {
+        // void gtk_activatable_set_related_action (GtkActivatable *activatable,  GtkAction *action);
+        gtk_activatable_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
+    }
+
+    /**
+     * Sets whether this activatable should reset its layout and appearance
+     * when setting the related action or when the action changes appearance
+     * Note
+     * GtkActivatable implementors need to handle the
+     * "use-action-appearance" property and call
+     * gtk_activatable_sync_action_properties() to update activatable
+     * if needed.
+     * Since 2.16
+     * Params:
+     * useAppearance =  whether to use the actions appearance
+     */
+    public void setUseActionAppearance(int useAppearance)
+    {
+        // void gtk_activatable_set_use_action_appearance  (GtkActivatable *activatable,  gboolean use_appearance);
+        gtk_activatable_set_use_action_appearance(getActivatableTStruct(), useAppearance);
+    }
 }

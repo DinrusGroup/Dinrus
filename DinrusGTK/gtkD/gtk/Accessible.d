@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Accessible
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_accessible_
@@ -67,54 +67,54 @@ private import gtkD.atk.ObjectAtk;
  */
 public class Accessible : ObjectAtk
 {
-	
-	/** the main Gtk struct */
-	protected GtkAccessible* gtkAccessible;
-	
-	
-	public GtkAccessible* getAccessibleStruct()
-	{
-		return gtkAccessible;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkAccessible;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkAccessible* gtkAccessible)
-	{
-		if(gtkAccessible is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkAccessible);
-		if( ptr !is null )
-		{
-			this = cast(Accessible)ptr;
-			return;
-		}
-		super(cast(AtkObject*)gtkAccessible);
-		this.gtkAccessible = gtkAccessible;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * This function specifies the callback function to be called when the widget
-	 * corresponding to a GtkAccessible is destroyed.
-	 */
-	public void connectWidgetDestroyed()
-	{
-		// void gtk_accessible_connect_widget_destroyed  (GtkAccessible *accessible);
-		gtk_accessible_connect_widget_destroyed(gtkAccessible);
-	}
+
+    /** the main Gtk struct */
+    protected GtkAccessible* gtkAccessible;
+
+
+    public GtkAccessible* getAccessibleStruct()
+    {
+        return gtkAccessible;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkAccessible;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkAccessible* gtkAccessible)
+    {
+        if(gtkAccessible is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkAccessible);
+        if( ptr !is null )
+        {
+            this = cast(Accessible)ptr;
+            return;
+        }
+        super(cast(AtkObject*)gtkAccessible);
+        this.gtkAccessible = gtkAccessible;
+    }
+
+    /**
+     */
+
+    /**
+     * This function specifies the callback function to be called when the widget
+     * corresponding to a GtkAccessible is destroyed.
+     */
+    public void connectWidgetDestroyed()
+    {
+        // void gtk_accessible_connect_widget_destroyed  (GtkAccessible *accessible);
+        gtk_accessible_connect_widget_destroyed(gtkAccessible);
+    }
 }

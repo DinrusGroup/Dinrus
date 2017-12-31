@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Mutex
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_mutex_
@@ -111,113 +111,113 @@ private import gtkD.glib.ConstructionException;
  */
 public class Mutex
 {
-	
-	/** the main Gtk struct */
-	protected GMutex* gMutex;
-	
-	
-	public GMutex* getMutexStruct()
-	{
-		return gMutex;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMutex;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GMutex* gMutex)
-	{
-		if(gMutex is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMutex = gMutex;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GMutex.
-	 * Note
-	 * This function will abort if g_thread_init() has not been called yet.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GMutex * g_mutex_new ();
-		auto p = g_mutex_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mutex_new()");
-		}
-		this(cast(GMutex*) p);
-	}
-	
-	/**
-	 * Locks mutex. If mutex is already locked by another thread, the
-	 * current thread will block until mutex is unlocked by the other
-	 * thread.
-	 * This function can be used even if g_thread_init() has not yet been
-	 * called, and, in that case, will do nothing.
-	 * Note
-	 * GMutex is neither guaranteed to be recursive nor to be non-recursive,
-	 * i.e. a thread could deadlock while calling g_mutex_lock(), if it
-	 * already has locked mutex. Use GStaticRecMutex, if you need recursive
-	 * mutexes.
-	 */
-	public void lock()
-	{
-		// void g_mutex_lock (GMutex *mutex);
-		g_mutex_lock(gMutex);
-	}
-	
-	/**
-	 * Tries to lock mutex. If mutex is already locked by another
-	 * thread, it immediately returns FALSE. Otherwise it locks mutex
-	 * and returns TRUE.
-	 * This function can be used even if g_thread_init() has not yet been
-	 * called, and, in that case, will immediately return TRUE.
-	 * Note
-	 * GMutex is neither guaranteed to be recursive nor to be non-recursive,
-	 * i.e. the return value of g_mutex_trylock() could be both FALSE or
-	 * TRUE, if the current thread already has locked mutex. Use
-	 * GStaticRecMutex, if you need recursive mutexes.
-	 * Returns:%TRUE, if mutex could be locked.
-	 */
-	public int trylock()
-	{
-		// gboolean g_mutex_trylock (GMutex *mutex);
-		return g_mutex_trylock(gMutex);
-	}
-	
-	/**
-	 * Unlocks mutex. If another thread is blocked in a g_mutex_lock() call
-	 * for mutex, it will be woken and can lock mutex itself.
-	 * This function can be used even if g_thread_init() has not yet been
-	 * called, and, in that case, will do nothing.
-	 */
-	public void unlock()
-	{
-		// void g_mutex_unlock (GMutex *mutex);
-		g_mutex_unlock(gMutex);
-	}
-	
-	/**
-	 * Destroys mutex.
-	 * Note
-	 * Calling g_mutex_free() on a locked mutex may result in undefined behaviour.
-	 */
-	public void free()
-	{
-		// void g_mutex_free (GMutex *mutex);
-		g_mutex_free(gMutex);
-	}
+
+    /** the main Gtk struct */
+    protected GMutex* gMutex;
+
+
+    public GMutex* getMutexStruct()
+    {
+        return gMutex;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gMutex;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GMutex* gMutex)
+    {
+        if(gMutex is null)
+        {
+            this = null;
+            return;
+        }
+        this.gMutex = gMutex;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GMutex.
+     * Note
+     * This function will abort if g_thread_init() has not been called yet.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GMutex * g_mutex_new ();
+        auto p = g_mutex_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_mutex_new()");
+        }
+        this(cast(GMutex*) p);
+    }
+
+    /**
+     * Locks mutex. If mutex is already locked by another thread, the
+     * current thread will block until mutex is unlocked by the other
+     * thread.
+     * This function can be used even if g_thread_init() has not yet been
+     * called, and, in that case, will do nothing.
+     * Note
+     * GMutex is neither guaranteed to be recursive nor to be non-recursive,
+     * i.e. a thread could deadlock while calling g_mutex_lock(), if it
+     * already has locked mutex. Use GStaticRecMutex, if you need recursive
+     * mutexes.
+     */
+    public void lock()
+    {
+        // void g_mutex_lock (GMutex *mutex);
+        g_mutex_lock(gMutex);
+    }
+
+    /**
+     * Tries to lock mutex. If mutex is already locked by another
+     * thread, it immediately returns FALSE. Otherwise it locks mutex
+     * and returns TRUE.
+     * This function can be used even if g_thread_init() has not yet been
+     * called, and, in that case, will immediately return TRUE.
+     * Note
+     * GMutex is neither guaranteed to be recursive nor to be non-recursive,
+     * i.e. the return value of g_mutex_trylock() could be both FALSE or
+     * TRUE, if the current thread already has locked mutex. Use
+     * GStaticRecMutex, if you need recursive mutexes.
+     * Returns:%TRUE, if mutex could be locked.
+     */
+    public int trylock()
+    {
+        // gboolean g_mutex_trylock (GMutex *mutex);
+        return g_mutex_trylock(gMutex);
+    }
+
+    /**
+     * Unlocks mutex. If another thread is blocked in a g_mutex_lock() call
+     * for mutex, it will be woken and can lock mutex itself.
+     * This function can be used even if g_thread_init() has not yet been
+     * called, and, in that case, will do nothing.
+     */
+    public void unlock()
+    {
+        // void g_mutex_unlock (GMutex *mutex);
+        g_mutex_unlock(gMutex);
+    }
+
+    /**
+     * Destroys mutex.
+     * Note
+     * Calling g_mutex_free() on a locked mutex may result in undefined behaviour.
+     */
+    public void free()
+    {
+        // void g_mutex_free (GMutex *mutex);
+        g_mutex_free(gMutex);
+    }
 }

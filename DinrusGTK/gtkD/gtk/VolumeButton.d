@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = VolumeButton
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_volume_button_
@@ -75,62 +75,62 @@ private import gtkD.gtk.ScaleButton;
  */
 public class VolumeButton : ScaleButton
 {
-	
-	/** the main Gtk struct */
-	protected GtkVolumeButton* gtkVolumeButton;
-	
-	
-	public GtkVolumeButton* getVolumeButtonStruct()
-	{
-		return gtkVolumeButton;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVolumeButton;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkVolumeButton* gtkVolumeButton)
-	{
-		if(gtkVolumeButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVolumeButton);
-		if( ptr !is null )
-		{
-			this = cast(VolumeButton)ptr;
-			return;
-		}
-		super(cast(GtkScaleButton*)gtkVolumeButton);
-		this.gtkVolumeButton = gtkVolumeButton;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a GtkVolumeButton, with a range between 0.0 and 1.0, with
-	 * a stepping of 0.02. Volume values can be obtained and modified using
-	 * the functions from GtkScaleButton.
-	 * Since 2.12
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_volume_button_new (void);
-		auto p = gtk_volume_button_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_volume_button_new()");
-		}
-		this(cast(GtkVolumeButton*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkVolumeButton* gtkVolumeButton;
+
+
+    public GtkVolumeButton* getVolumeButtonStruct()
+    {
+        return gtkVolumeButton;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkVolumeButton;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkVolumeButton* gtkVolumeButton)
+    {
+        if(gtkVolumeButton is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkVolumeButton);
+        if( ptr !is null )
+        {
+            this = cast(VolumeButton)ptr;
+            return;
+        }
+        super(cast(GtkScaleButton*)gtkVolumeButton);
+        this.gtkVolumeButton = gtkVolumeButton;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a GtkVolumeButton, with a range between 0.0 and 1.0, with
+     * a stepping of 0.02. Volume values can be obtained and modified using
+     * the functions from GtkScaleButton.
+     * Since 2.12
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_volume_button_new (void);
+        auto p = gtk_volume_button_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_volume_button_new()");
+        }
+        this(cast(GtkVolumeButton*) p);
+    }
 }

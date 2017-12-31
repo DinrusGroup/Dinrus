@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = atk-AtkState.html
  * outPack = atk
  * outFile = State
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = State
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_state_
@@ -69,43 +69,43 @@ private import gtkD.glib.Str;
  */
 public class State
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Register a new object state.
-	 * Params:
-	 * name =  a character string describing the new state.
-	 * Returns: an AtkState value for the new state.
-	 */
-	public static AtkStateType typeRegister(string name)
-	{
-		// AtkStateType atk_state_type_register (const gchar *name);
-		return atk_state_type_register(Str.toStringz(name));
-	}
-	
-	/**
-	 * Gets the description string describing the AtkStateType type.
-	 * Params:
-	 * type =  The AtkStateType whose name is required
-	 * Returns: the string describing the AtkStateType
-	 */
-	public static string typeGetName(AtkStateType type)
-	{
-		// const gchar* atk_state_type_get_name (AtkStateType type);
-		return Str.toString(atk_state_type_get_name(type));
-	}
-	
-	/**
-	 * Gets the AtkStateType corresponding to the description string name.
-	 * Params:
-	 * name =  a character string state name
-	 * Returns: an AtkStateType corresponding to name
-	 */
-	public static AtkStateType typeForName(string name)
-	{
-		// AtkStateType atk_state_type_for_name (const gchar *name);
-		return atk_state_type_for_name(Str.toStringz(name));
-	}
+
+    /**
+     */
+
+    /**
+     * Register a new object state.
+     * Params:
+     * name =  a character string describing the new state.
+     * Returns: an AtkState value for the new state.
+     */
+    public static AtkStateType typeRegister(string name)
+    {
+        // AtkStateType atk_state_type_register (const gchar *name);
+        return atk_state_type_register(Str.toStringz(name));
+    }
+
+    /**
+     * Gets the description string describing the AtkStateType type.
+     * Params:
+     * type =  The AtkStateType whose name is required
+     * Returns: the string describing the AtkStateType
+     */
+    public static string typeGetName(AtkStateType type)
+    {
+        // const gchar* atk_state_type_get_name (AtkStateType type);
+        return Str.toString(atk_state_type_get_name(type));
+    }
+
+    /**
+     * Gets the AtkStateType corresponding to the description string name.
+     * Params:
+     * name =  a character string state name
+     * Returns: an AtkStateType corresponding to name
+     */
+    public static AtkStateType typeForName(string name)
+    {
+        // AtkStateType atk_state_type_for_name (const gchar *name);
+        return atk_state_type_for_name(Str.toStringz(name));
+    }
 }

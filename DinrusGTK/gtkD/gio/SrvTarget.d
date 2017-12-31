@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SrvTarget
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_srv_target_
@@ -84,154 +84,154 @@ private import gtkD.glib.ListG;
  */
 public class SrvTarget
 {
-	
-	/** the main Gtk struct */
-	protected GSrvTarget* gSrvTarget;
-	
-	
-	public GSrvTarget* getSrvTargetStruct()
-	{
-		return gSrvTarget;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gSrvTarget;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GSrvTarget* gSrvTarget)
-	{
-		if(gSrvTarget is null)
-		{
-			this = null;
-			return;
-		}
-		this.gSrvTarget = gSrvTarget;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GSrvTarget with the given parameters.
-	 * You should not need to use this; normally GSrvTargets are
-	 * created by GResolver.
-	 * Since 2.22
-	 * Params:
-	 * hostname =  the host that the service is running on
-	 * port =  the port that the service is running on
-	 * priority =  the target's priority
-	 * weight =  the target's weight
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string hostname, ushort port, ushort priority, ushort weight)
-	{
-		// GSrvTarget * g_srv_target_new (const gchar *hostname,  guint16 port,  guint16 priority,  guint16 weight);
-		auto p = g_srv_target_new(Str.toStringz(hostname), port, priority, weight);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_srv_target_new(Str.toStringz(hostname), port, priority, weight)");
-		}
-		this(cast(GSrvTarget*) p);
-	}
-	
-	/**
-	 * Copies target
-	 * Since 2.22
-	 * Returns: a copy of target
-	 */
-	public SrvTarget copy()
-	{
-		// GSrvTarget * g_srv_target_copy (GSrvTarget *target);
-		auto p = g_srv_target_copy(gSrvTarget);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SrvTarget(cast(GSrvTarget*) p);
-	}
-	
-	/**
-	 * Frees target
-	 * Since 2.22
-	 */
-	public void free()
-	{
-		// void g_srv_target_free (GSrvTarget *target);
-		g_srv_target_free(gSrvTarget);
-	}
-	
-	/**
-	 * Gets target's hostname (in ASCII form; if you are going to present
-	 * this to the user, you should use g_hostname_is_ascii_encoded() to
-	 * check if it contains encoded Unicode segments, and use
-	 * g_hostname_to_unicode() to convert it if it does.)
-	 * Since 2.22
-	 * Returns: target's hostname
-	 */
-	public string getHostname()
-	{
-		// const gchar * g_srv_target_get_hostname (GSrvTarget *target);
-		return Str.toString(g_srv_target_get_hostname(gSrvTarget));
-	}
-	
-	/**
-	 * Gets target's port
-	 * Since 2.22
-	 * Returns: target's port
-	 */
-	public ushort getPort()
-	{
-		// guint16 g_srv_target_get_port (GSrvTarget *target);
-		return g_srv_target_get_port(gSrvTarget);
-	}
-	
-	/**
-	 * Gets target's priority. You should not need to look at this;
-	 * GResolver already sorts the targets according to the algorithm in
-	 * RFC 2782.
-	 * Since 2.22
-	 * Returns: target's priority
-	 */
-	public ushort getPriority()
-	{
-		// guint16 g_srv_target_get_priority (GSrvTarget *target);
-		return g_srv_target_get_priority(gSrvTarget);
-	}
-	
-	/**
-	 * Gets target's weight. You should not need to look at this;
-	 * GResolver already sorts the targets according to the algorithm in
-	 * RFC 2782.
-	 * Since 2.22
-	 * Returns: target's weight
-	 */
-	public ushort getWeight()
-	{
-		// guint16 g_srv_target_get_weight (GSrvTarget *target);
-		return g_srv_target_get_weight(gSrvTarget);
-	}
-	
-	/**
-	 * Sorts targets in place according to the algorithm in RFC 2782.
-	 * Since 2.22
-	 * Params:
-	 * targets =  a GList of GSrvTarget
-	 * Returns: the head of the sorted list.
-	 */
-	public static ListG listSort(ListG targets)
-	{
-		// GList * g_srv_target_list_sort (GList *targets);
-		auto p = g_srv_target_list_sort((targets is null) ? null : targets.getListGStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GSrvTarget* gSrvTarget;
+
+
+    public GSrvTarget* getSrvTargetStruct()
+    {
+        return gSrvTarget;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gSrvTarget;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GSrvTarget* gSrvTarget)
+    {
+        if(gSrvTarget is null)
+        {
+            this = null;
+            return;
+        }
+        this.gSrvTarget = gSrvTarget;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GSrvTarget with the given parameters.
+     * You should not need to use this; normally GSrvTargets are
+     * created by GResolver.
+     * Since 2.22
+     * Params:
+     * hostname =  the host that the service is running on
+     * port =  the port that the service is running on
+     * priority =  the target's priority
+     * weight =  the target's weight
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string hostname, ushort port, ushort priority, ushort weight)
+    {
+        // GSrvTarget * g_srv_target_new (const gchar *hostname,  guint16 port,  guint16 priority,  guint16 weight);
+        auto p = g_srv_target_new(Str.toStringz(hostname), port, priority, weight);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_srv_target_new(Str.toStringz(hostname), port, priority, weight)");
+        }
+        this(cast(GSrvTarget*) p);
+    }
+
+    /**
+     * Copies target
+     * Since 2.22
+     * Returns: a copy of target
+     */
+    public SrvTarget copy()
+    {
+        // GSrvTarget * g_srv_target_copy (GSrvTarget *target);
+        auto p = g_srv_target_copy(gSrvTarget);
+        if(p is null)
+        {
+            return null;
+        }
+        return new SrvTarget(cast(GSrvTarget*) p);
+    }
+
+    /**
+     * Frees target
+     * Since 2.22
+     */
+    public void free()
+    {
+        // void g_srv_target_free (GSrvTarget *target);
+        g_srv_target_free(gSrvTarget);
+    }
+
+    /**
+     * Gets target's hostname (in ASCII form; if you are going to present
+     * this to the user, you should use g_hostname_is_ascii_encoded() to
+     * check if it contains encoded Unicode segments, and use
+     * g_hostname_to_unicode() to convert it if it does.)
+     * Since 2.22
+     * Returns: target's hostname
+     */
+    public string getHostname()
+    {
+        // const gchar * g_srv_target_get_hostname (GSrvTarget *target);
+        return Str.toString(g_srv_target_get_hostname(gSrvTarget));
+    }
+
+    /**
+     * Gets target's port
+     * Since 2.22
+     * Returns: target's port
+     */
+    public ushort getPort()
+    {
+        // guint16 g_srv_target_get_port (GSrvTarget *target);
+        return g_srv_target_get_port(gSrvTarget);
+    }
+
+    /**
+     * Gets target's priority. You should not need to look at this;
+     * GResolver already sorts the targets according to the algorithm in
+     * RFC 2782.
+     * Since 2.22
+     * Returns: target's priority
+     */
+    public ushort getPriority()
+    {
+        // guint16 g_srv_target_get_priority (GSrvTarget *target);
+        return g_srv_target_get_priority(gSrvTarget);
+    }
+
+    /**
+     * Gets target's weight. You should not need to look at this;
+     * GResolver already sorts the targets according to the algorithm in
+     * RFC 2782.
+     * Since 2.22
+     * Returns: target's weight
+     */
+    public ushort getWeight()
+    {
+        // guint16 g_srv_target_get_weight (GSrvTarget *target);
+        return g_srv_target_get_weight(gSrvTarget);
+    }
+
+    /**
+     * Sorts targets in place according to the algorithm in RFC 2782.
+     * Since 2.22
+     * Params:
+     * targets =  a GList of GSrvTarget
+     * Returns: the head of the sorted list.
+     */
+    public static ListG listSort(ListG targets)
+    {
+        // GList * g_srv_target_list_sort (GList *targets);
+        auto p = g_srv_target_list_sort((targets is null) ? null : targets.getListGStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListG(cast(GList*) p);
+    }
 }

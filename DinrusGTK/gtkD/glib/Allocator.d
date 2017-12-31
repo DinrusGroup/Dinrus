@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Allocator
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_allocator_
@@ -71,73 +71,73 @@ private import gtkD.glib.Str;
  */
 public class Allocator
 {
-	
-	/** the main Gtk struct */
-	protected GAllocator* gAllocator;
-	
-	
-	public GAllocator* getAllocatorStruct()
-	{
-		return gAllocator;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gAllocator;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GAllocator* gAllocator)
-	{
-		if(gAllocator is null)
-		{
-			this = null;
-			return;
-		}
-		this.gAllocator = gAllocator;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Warning
-	 * g_allocator_new has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
-	 * instead
-	 * Creates a new GAllocator.
-	 * Params:
-	 * name = the name of the GAllocator. This name is used to set the name of the
-	 * GMemChunk used by the GAllocator, and is only used for debugging.
-	 * nPreallocs = the number of elements in each block of memory allocated.
-	 * Larger blocks mean less calls to g_malloc(), but some memory may be wasted.
-	 * (GLib uses 128 elements per block by default.) The value must be between 1
-	 * and 65535.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string name, uint nPreallocs)
-	{
-		// GAllocator* g_allocator_new (const gchar *name,  guint n_preallocs);
-		auto p = g_allocator_new(Str.toStringz(name), nPreallocs);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_allocator_new(Str.toStringz(name), nPreallocs)");
-		}
-		this(cast(GAllocator*) p);
-	}
-	
-	/**
-	 * Warning
-	 * g_allocator_free has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
-	 * instead
-	 * Frees all of the memory allocated by the GAllocator.
-	 */
-	public void free()
-	{
-		// void g_allocator_free (GAllocator *allocator);
-		g_allocator_free(gAllocator);
-	}
+
+    /** the main Gtk struct */
+    protected GAllocator* gAllocator;
+
+
+    public GAllocator* getAllocatorStruct()
+    {
+        return gAllocator;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gAllocator;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GAllocator* gAllocator)
+    {
+        if(gAllocator is null)
+        {
+            this = null;
+            return;
+        }
+        this.gAllocator = gAllocator;
+    }
+
+    /**
+     */
+
+    /**
+     * Warning
+     * g_allocator_new has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
+     * instead
+     * Creates a new GAllocator.
+     * Params:
+     * name = the name of the GAllocator. This name is used to set the name of the
+     * GMemChunk used by the GAllocator, and is only used for debugging.
+     * nPreallocs = the number of elements in each block of memory allocated.
+     * Larger blocks mean less calls to g_malloc(), but some memory may be wasted.
+     * (GLib uses 128 elements per block by default.) The value must be between 1
+     * and 65535.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string name, uint nPreallocs)
+    {
+        // GAllocator* g_allocator_new (const gchar *name,  guint n_preallocs);
+        auto p = g_allocator_new(Str.toStringz(name), nPreallocs);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_allocator_new(Str.toStringz(name), nPreallocs)");
+        }
+        this(cast(GAllocator*) p);
+    }
+
+    /**
+     * Warning
+     * g_allocator_free has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
+     * instead
+     * Frees all of the memory allocated by the GAllocator.
+     */
+    public void free()
+    {
+        // void g_allocator_free (GAllocator *allocator);
+        g_allocator_free(gAllocator);
+    }
 }

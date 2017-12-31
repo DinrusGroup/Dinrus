@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gtkglext-gdkglfont.html
  * outPack = glgdk
  * outFile = GLFont
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = GLFont
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_gl_font_
@@ -74,48 +74,48 @@ private import gtkD.pango.PgFontDescription;
  */
 public class GLFont
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Creates bitmap display lists from a PangoFont.
-	 * Params:
-	 * fontDesc =  a PangoFontDescription describing the font to use.
-	 * first =  the index of the first glyph to be taken.
-	 * count =  the number of glyphs to be taken.
-	 * listBase =  the index of the first display list to be generated.
-	 * Returns: the PangoFont used, or NULL if no font matched.
-	 */
-	public static PgFont usePangoFont(PgFontDescription fontDesc, int first, int count, int listBase)
-	{
-		// PangoFont* gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,  int first,  int count,  int list_base);
-		auto p = gdk_gl_font_use_pango_font((fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct(), first, count, listBase);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFont(cast(PangoFont*) p);
-	}
-	
-	/**
-	 * Creates bitmap display lists from a PangoFont.
-	 * Params:
-	 * display =  a GdkDisplay.
-	 * fontDesc =  a PangoFontDescription describing the font to use.
-	 * first =  the index of the first glyph to be taken.
-	 * count =  the number of glyphs to be taken.
-	 * listBase =  the index of the first display list to be generated.
-	 * Returns: the PangoFont used, or NULL if no font matched.<<OpenGL WindowGeometric Object Rendering>>
-	 */
-	public static PgFont usePangoFontForDisplay(Display display, PgFontDescription fontDesc, int first, int count, int listBase)
-	{
-		// PangoFont* gdk_gl_font_use_pango_font_for_display  (GdkDisplay *display,  const PangoFontDescription *font_desc,  int first,  int count,  int list_base);
-		auto p = gdk_gl_font_use_pango_font_for_display((display is null) ? null : display.getDisplayStruct(), (fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct(), first, count, listBase);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFont(cast(PangoFont*) p);
-	}
+
+    /**
+     */
+
+    /**
+     * Creates bitmap display lists from a PangoFont.
+     * Params:
+     * fontDesc =  a PangoFontDescription describing the font to use.
+     * first =  the index of the first glyph to be taken.
+     * count =  the number of glyphs to be taken.
+     * listBase =  the index of the first display list to be generated.
+     * Returns: the PangoFont used, or NULL if no font matched.
+     */
+    public static PgFont usePangoFont(PgFontDescription fontDesc, int first, int count, int listBase)
+    {
+        // PangoFont* gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,  int first,  int count,  int list_base);
+        auto p = gdk_gl_font_use_pango_font((fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct(), first, count, listBase);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgFont(cast(PangoFont*) p);
+    }
+
+    /**
+     * Creates bitmap display lists from a PangoFont.
+     * Params:
+     * display =  a GdkDisplay.
+     * fontDesc =  a PangoFontDescription describing the font to use.
+     * first =  the index of the first glyph to be taken.
+     * count =  the number of glyphs to be taken.
+     * listBase =  the index of the first display list to be generated.
+     * Returns: the PangoFont used, or NULL if no font matched.<<OpenGL WindowGeometric Object Rendering>>
+     */
+    public static PgFont usePangoFontForDisplay(Display display, PgFontDescription fontDesc, int first, int count, int listBase)
+    {
+        // PangoFont* gdk_gl_font_use_pango_font_for_display  (GdkDisplay *display,  const PangoFontDescription *font_desc,  int first,  int count,  int list_base);
+        auto p = gdk_gl_font_use_pango_font_for_display((display is null) ? null : display.getDisplayStruct(), (fontDesc is null) ? null : fontDesc.getPgFontDescriptionStruct(), first, count, listBase);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgFont(cast(PangoFont*) p);
+    }
 }

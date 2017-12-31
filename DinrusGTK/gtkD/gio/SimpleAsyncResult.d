@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SimpleAsyncResult
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- AsyncResultIF
  * prefixes:
@@ -139,295 +139,295 @@ private import gtkD.gobject.ObjectG;
  */
 public class SimpleAsyncResult : ObjectG, AsyncResultIF
 {
-	
-	/** the main Gtk struct */
-	protected GSimpleAsyncResult* gSimpleAsyncResult;
-	
-	
-	public GSimpleAsyncResult* getSimpleAsyncResultStruct()
-	{
-		return gSimpleAsyncResult;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gSimpleAsyncResult;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GSimpleAsyncResult* gSimpleAsyncResult)
-	{
-		if(gSimpleAsyncResult is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gSimpleAsyncResult);
-		if( ptr !is null )
-		{
-			this = cast(SimpleAsyncResult)ptr;
-			return;
-		}
-		super(cast(GObject*)gSimpleAsyncResult);
-		this.gSimpleAsyncResult = gSimpleAsyncResult;
-	}
-	
-	// add the AsyncResult capabilities
-	mixin AsyncResultT!(GSimpleAsyncResult);
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a GSimpleAsyncResult.
-	 * Params:
-	 * sourceObject =  a GObject the asynchronous function was called with,
-	 * or NULL.
-	 * callback =  a GAsyncReadyCallback.
-	 * userData =  user data passed to callback.
-	 * sourceTag =  the asynchronous function.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (ObjectG sourceObject, GAsyncReadyCallback callback, void* userData, void* sourceTag)
-	{
-		// GSimpleAsyncResult * g_simple_async_result_new (GObject *source_object,  GAsyncReadyCallback callback,  gpointer user_data,  gpointer source_tag);
-		auto p = g_simple_async_result_new((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, sourceTag);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_simple_async_result_new((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, sourceTag)");
-		}
-		this(cast(GSimpleAsyncResult*) p);
-	}
-	
-	/**
-	 * Creates a GSimpleAsyncResult from an error condition.
-	 * Params:
-	 * sourceObject =  a GObject, or NULL.
-	 * callback =  a GAsyncReadyCallback.
-	 * userData =  user data passed to callback.
-	 * error =  a GError location.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (ObjectG sourceObject, GAsyncReadyCallback callback, void* userData, ErrorG error)
-	{
-		// GSimpleAsyncResult * g_simple_async_result_new_from_error  (GObject *source_object,  GAsyncReadyCallback callback,  gpointer user_data,  GError *error);
-		auto p = g_simple_async_result_new_from_error((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_simple_async_result_new_from_error((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct())");
-		}
-		this(cast(GSimpleAsyncResult*) p);
-	}
-	
-	/**
-	 * Sets the operation result within the asynchronous result to a pointer.
-	 * Params:
-	 * opRes =  a pointer result from an asynchronous function.
-	 * destroyOpRes =  a GDestroyNotify function.
-	 */
-	public void setOpResGpointer(void* opRes, GDestroyNotify destroyOpRes)
-	{
-		// void g_simple_async_result_set_op_res_gpointer  (GSimpleAsyncResult *simple,  gpointer op_res,  GDestroyNotify destroy_op_res);
-		g_simple_async_result_set_op_res_gpointer(gSimpleAsyncResult, opRes, destroyOpRes);
-	}
-	
-	/**
-	 * Gets a pointer result as returned by the asynchronous function.
-	 * Returns: a pointer from the result.
-	 */
-	public void* getOpResGpointer()
-	{
-		// gpointer g_simple_async_result_get_op_res_gpointer  (GSimpleAsyncResult *simple);
-		return g_simple_async_result_get_op_res_gpointer(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Sets the operation result within the asynchronous result to
-	 * the given op_res.
-	 * Params:
-	 * opRes =  a gssize.
-	 */
-	public void setOpResGssize(int opRes)
-	{
-		// void g_simple_async_result_set_op_res_gssize  (GSimpleAsyncResult *simple,  gssize op_res);
-		g_simple_async_result_set_op_res_gssize(gSimpleAsyncResult, opRes);
-	}
-	
-	/**
-	 * Gets a gssize from the asynchronous result.
-	 * Returns: a gssize returned from the asynchronous function.
-	 */
-	public int getOpResGssize()
-	{
-		// gssize g_simple_async_result_get_op_res_gssize  (GSimpleAsyncResult *simple);
-		return g_simple_async_result_get_op_res_gssize(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Sets the operation result to a boolean within the asynchronous result.
-	 * Params:
-	 * opRes =  a gboolean.
-	 */
-	public void setOpResGboolean(int opRes)
-	{
-		// void g_simple_async_result_set_op_res_gboolean  (GSimpleAsyncResult *simple,  gboolean op_res);
-		g_simple_async_result_set_op_res_gboolean(gSimpleAsyncResult, opRes);
-	}
-	
-	/**
-	 * Gets the operation result boolean from within the asynchronous result.
-	 * Returns: TRUE if the operation's result was TRUE, FALSE  if the operation's result was FALSE.
-	 */
-	public int getOpResGboolean()
-	{
-		// gboolean g_simple_async_result_get_op_res_gboolean  (GSimpleAsyncResult *simple);
-		return g_simple_async_result_get_op_res_gboolean(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Gets the source tag for the GSimpleAsyncResult.
-	 * Returns: a gpointer to the source object for the GSimpleAsyncResult.
-	 */
-	public void* getSourceTag()
-	{
-		// gpointer g_simple_async_result_get_source_tag  (GSimpleAsyncResult *simple);
-		return g_simple_async_result_get_source_tag(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Ensures that the data passed to the _finish function of an async
-	 * operation is consistent. Three checks are performed.
-	 * First, result is checked to ensure that it is really a
-	 * GSimpleAsyncResult. Second, source is checked to ensure that it
-	 * matches the source object of result. Third, source_tag is
-	 * checked to ensure that it is equal to the source_tag argument given
-	 * to g_simple_async_result_new() (which, by convention, is a pointer
-	 * to the _async function corresponding to the _finish function from
-	 * which this function is called).
-	 * Params:
-	 * result =  the GAsyncResult passed to the _finish function.
-	 * source =  the GObject passed to the _finish function.
-	 * sourceTag =  the asynchronous function.
-	 * Returns: TRUE if all checks passed or FALSE if any failed.
-	 */
-	public static int isValid(GAsyncResult* result, ObjectG source, void* sourceTag)
-	{
-		// gboolean g_simple_async_result_is_valid (GAsyncResult *result,  GObject *source,  gpointer source_tag);
-		return g_simple_async_result_is_valid(result, (source is null) ? null : source.getObjectGStruct(), sourceTag);
-	}
-	
-	/**
-	 * Sets whether to handle cancellation within the asynchronous operation.
-	 * Params:
-	 * handleCancellation =  a gboolean.
-	 */
-	public void setHandleCancellation(int handleCancellation)
-	{
-		// void g_simple_async_result_set_handle_cancellation  (GSimpleAsyncResult *simple,  gboolean handle_cancellation);
-		g_simple_async_result_set_handle_cancellation(gSimpleAsyncResult, handleCancellation);
-	}
-	
-	/**
-	 * Completes an asynchronous I/O job immediately. Must be called in
-	 * the thread where the asynchronous result was to be delivered, as it
-	 * invokes the callback directly. If you are in a different thread use
-	 * g_simple_async_result_complete_in_idle().
-	 */
-	public void complete()
-	{
-		// void g_simple_async_result_complete (GSimpleAsyncResult *simple);
-		g_simple_async_result_complete(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Completes an asynchronous function in an idle handler in the thread-default main
-	 * loop of the thread that simple was initially created in.
-	 */
-	public void completeInIdle()
-	{
-		// void g_simple_async_result_complete_in_idle  (GSimpleAsyncResult *simple);
-		g_simple_async_result_complete_in_idle(gSimpleAsyncResult);
-	}
-	
-	/**
-	 * Runs the asynchronous job in a separate thread and then calls
-	 * g_simple_async_result_complete_in_idle() on simple to return
-	 * the result to the appropriate main loop.
-	 * Params:
-	 * func =  a GSimpleAsyncThreadFunc.
-	 * ioPriority =  the io priority of the request.
-	 * cancellable =  optional GCancellable object, NULL to ignore.
-	 */
-	public void runInThread(GSimpleAsyncThreadFunc func, int ioPriority, Cancellable cancellable)
-	{
-		// void g_simple_async_result_run_in_thread (GSimpleAsyncResult *simple,  GSimpleAsyncThreadFunc func,  int io_priority,  GCancellable *cancellable);
-		g_simple_async_result_run_in_thread(gSimpleAsyncResult, func, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct());
-	}
-	
-	/**
-	 * Sets the result from a GError.
-	 * Params:
-	 * error =  GError.
-	 */
-	public void setFromError(ErrorG error)
-	{
-		// void g_simple_async_result_set_from_error  (GSimpleAsyncResult *simple,  const GError *error);
-		g_simple_async_result_set_from_error(gSimpleAsyncResult, (error is null) ? null : error.getErrorGStruct());
-	}
-	
-	/**
-	 * Propagates an error from within the simple asynchronous result to
-	 * a given destination.
-	 * Returns: TRUE if the error was propegated to dest. FALSE otherwise.
-	 */
-	public int propagateError()
-	{
-		// gboolean g_simple_async_result_propagate_error  (GSimpleAsyncResult *simple,  GError **dest);
-		GError* err = null;
-		
-		auto p = g_simple_async_result_propagate_error(gSimpleAsyncResult, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Sets an error within the asynchronous result without a GError.
-	 * Unless writing a binding, see g_simple_async_result_set_error().
-	 * Params:
-	 * domain =  a GQuark (usually G_IO_ERROR).
-	 * code =  an error code.
-	 * format =  a formatted error reporting string.
-	 * args =  va_list of arguments.
-	 */
-	public void setErrorVa(GQuark domain, int code, string format, void* args)
-	{
-		// void g_simple_async_result_set_error_va (GSimpleAsyncResult *simple,  GQuark domain,  gint code,  const char *format,  va_list args);
-		g_simple_async_result_set_error_va(gSimpleAsyncResult, domain, code, Str.toStringz(format), args);
-	}
-	
-	/**
-	 * Reports an error in an idle function. Similar to
-	 * g_simple_async_report_error_in_idle(), but takes a GError rather
-	 * than building a new one.
-	 * Params:
-	 * object =  a GObject.
-	 * callback =  a GAsyncReadyCallback.
-	 * userData =  user data passed to callback.
-	 * error =  the GError to report
-	 */
-	public static void gSimpleAsyncReportGerrorInIdle(ObjectG object, GAsyncReadyCallback callback, void* userData, ErrorG error)
-	{
-		// void g_simple_async_report_gerror_in_idle  (GObject *object,  GAsyncReadyCallback callback,  gpointer user_data,  GError *error);
-		g_simple_async_report_gerror_in_idle((object is null) ? null : object.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct());
-	}
+
+    /** the main Gtk struct */
+    protected GSimpleAsyncResult* gSimpleAsyncResult;
+
+
+    public GSimpleAsyncResult* getSimpleAsyncResultStruct()
+    {
+        return gSimpleAsyncResult;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gSimpleAsyncResult;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GSimpleAsyncResult* gSimpleAsyncResult)
+    {
+        if(gSimpleAsyncResult is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gSimpleAsyncResult);
+        if( ptr !is null )
+        {
+            this = cast(SimpleAsyncResult)ptr;
+            return;
+        }
+        super(cast(GObject*)gSimpleAsyncResult);
+        this.gSimpleAsyncResult = gSimpleAsyncResult;
+    }
+
+    // add the AsyncResult capabilities
+    mixin AsyncResultT!(GSimpleAsyncResult);
+
+    /**
+     */
+
+    /**
+     * Creates a GSimpleAsyncResult.
+     * Params:
+     * sourceObject =  a GObject the asynchronous function was called with,
+     * or NULL.
+     * callback =  a GAsyncReadyCallback.
+     * userData =  user data passed to callback.
+     * sourceTag =  the asynchronous function.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (ObjectG sourceObject, GAsyncReadyCallback callback, void* userData, void* sourceTag)
+    {
+        // GSimpleAsyncResult * g_simple_async_result_new (GObject *source_object,  GAsyncReadyCallback callback,  gpointer user_data,  gpointer source_tag);
+        auto p = g_simple_async_result_new((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, sourceTag);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_simple_async_result_new((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, sourceTag)");
+        }
+        this(cast(GSimpleAsyncResult*) p);
+    }
+
+    /**
+     * Creates a GSimpleAsyncResult from an error condition.
+     * Params:
+     * sourceObject =  a GObject, or NULL.
+     * callback =  a GAsyncReadyCallback.
+     * userData =  user data passed to callback.
+     * error =  a GError location.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (ObjectG sourceObject, GAsyncReadyCallback callback, void* userData, ErrorG error)
+    {
+        // GSimpleAsyncResult * g_simple_async_result_new_from_error  (GObject *source_object,  GAsyncReadyCallback callback,  gpointer user_data,  GError *error);
+        auto p = g_simple_async_result_new_from_error((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_simple_async_result_new_from_error((sourceObject is null) ? null : sourceObject.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct())");
+        }
+        this(cast(GSimpleAsyncResult*) p);
+    }
+
+    /**
+     * Sets the operation result within the asynchronous result to a pointer.
+     * Params:
+     * opRes =  a pointer result from an asynchronous function.
+     * destroyOpRes =  a GDestroyNotify function.
+     */
+    public void setOpResGpointer(void* opRes, GDestroyNotify destroyOpRes)
+    {
+        // void g_simple_async_result_set_op_res_gpointer  (GSimpleAsyncResult *simple,  gpointer op_res,  GDestroyNotify destroy_op_res);
+        g_simple_async_result_set_op_res_gpointer(gSimpleAsyncResult, opRes, destroyOpRes);
+    }
+
+    /**
+     * Gets a pointer result as returned by the asynchronous function.
+     * Returns: a pointer from the result.
+     */
+    public void* getOpResGpointer()
+    {
+        // gpointer g_simple_async_result_get_op_res_gpointer  (GSimpleAsyncResult *simple);
+        return g_simple_async_result_get_op_res_gpointer(gSimpleAsyncResult);
+    }
+
+    /**
+     * Sets the operation result within the asynchronous result to
+     * the given op_res.
+     * Params:
+     * opRes =  a gssize.
+     */
+    public void setOpResGssize(int opRes)
+    {
+        // void g_simple_async_result_set_op_res_gssize  (GSimpleAsyncResult *simple,  gssize op_res);
+        g_simple_async_result_set_op_res_gssize(gSimpleAsyncResult, opRes);
+    }
+
+    /**
+     * Gets a gssize from the asynchronous result.
+     * Returns: a gssize returned from the asynchronous function.
+     */
+    public int getOpResGssize()
+    {
+        // gssize g_simple_async_result_get_op_res_gssize  (GSimpleAsyncResult *simple);
+        return g_simple_async_result_get_op_res_gssize(gSimpleAsyncResult);
+    }
+
+    /**
+     * Sets the operation result to a boolean within the asynchronous result.
+     * Params:
+     * opRes =  a gboolean.
+     */
+    public void setOpResGboolean(int opRes)
+    {
+        // void g_simple_async_result_set_op_res_gboolean  (GSimpleAsyncResult *simple,  gboolean op_res);
+        g_simple_async_result_set_op_res_gboolean(gSimpleAsyncResult, opRes);
+    }
+
+    /**
+     * Gets the operation result boolean from within the asynchronous result.
+     * Returns: TRUE if the operation's result was TRUE, FALSE  if the operation's result was FALSE.
+     */
+    public int getOpResGboolean()
+    {
+        // gboolean g_simple_async_result_get_op_res_gboolean  (GSimpleAsyncResult *simple);
+        return g_simple_async_result_get_op_res_gboolean(gSimpleAsyncResult);
+    }
+
+    /**
+     * Gets the source tag for the GSimpleAsyncResult.
+     * Returns: a gpointer to the source object for the GSimpleAsyncResult.
+     */
+    public void* getSourceTag()
+    {
+        // gpointer g_simple_async_result_get_source_tag  (GSimpleAsyncResult *simple);
+        return g_simple_async_result_get_source_tag(gSimpleAsyncResult);
+    }
+
+    /**
+     * Ensures that the data passed to the _finish function of an async
+     * operation is consistent. Three checks are performed.
+     * First, result is checked to ensure that it is really a
+     * GSimpleAsyncResult. Second, source is checked to ensure that it
+     * matches the source object of result. Third, source_tag is
+     * checked to ensure that it is equal to the source_tag argument given
+     * to g_simple_async_result_new() (which, by convention, is a pointer
+     * to the _async function corresponding to the _finish function from
+     * which this function is called).
+     * Params:
+     * result =  the GAsyncResult passed to the _finish function.
+     * source =  the GObject passed to the _finish function.
+     * sourceTag =  the asynchronous function.
+     * Returns: TRUE if all checks passed or FALSE if any failed.
+     */
+    public static int isValid(GAsyncResult* result, ObjectG source, void* sourceTag)
+    {
+        // gboolean g_simple_async_result_is_valid (GAsyncResult *result,  GObject *source,  gpointer source_tag);
+        return g_simple_async_result_is_valid(result, (source is null) ? null : source.getObjectGStruct(), sourceTag);
+    }
+
+    /**
+     * Sets whether to handle cancellation within the asynchronous operation.
+     * Params:
+     * handleCancellation =  a gboolean.
+     */
+    public void setHandleCancellation(int handleCancellation)
+    {
+        // void g_simple_async_result_set_handle_cancellation  (GSimpleAsyncResult *simple,  gboolean handle_cancellation);
+        g_simple_async_result_set_handle_cancellation(gSimpleAsyncResult, handleCancellation);
+    }
+
+    /**
+     * Completes an asynchronous I/O job immediately. Must be called in
+     * the thread where the asynchronous result was to be delivered, as it
+     * invokes the callback directly. If you are in a different thread use
+     * g_simple_async_result_complete_in_idle().
+     */
+    public void complete()
+    {
+        // void g_simple_async_result_complete (GSimpleAsyncResult *simple);
+        g_simple_async_result_complete(gSimpleAsyncResult);
+    }
+
+    /**
+     * Completes an asynchronous function in an idle handler in the thread-default main
+     * loop of the thread that simple was initially created in.
+     */
+    public void completeInIdle()
+    {
+        // void g_simple_async_result_complete_in_idle  (GSimpleAsyncResult *simple);
+        g_simple_async_result_complete_in_idle(gSimpleAsyncResult);
+    }
+
+    /**
+     * Runs the asynchronous job in a separate thread and then calls
+     * g_simple_async_result_complete_in_idle() on simple to return
+     * the result to the appropriate main loop.
+     * Params:
+     * func =  a GSimpleAsyncThreadFunc.
+     * ioPriority =  the io priority of the request.
+     * cancellable =  optional GCancellable object, NULL to ignore.
+     */
+    public void runInThread(GSimpleAsyncThreadFunc func, int ioPriority, Cancellable cancellable)
+    {
+        // void g_simple_async_result_run_in_thread (GSimpleAsyncResult *simple,  GSimpleAsyncThreadFunc func,  int io_priority,  GCancellable *cancellable);
+        g_simple_async_result_run_in_thread(gSimpleAsyncResult, func, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct());
+    }
+
+    /**
+     * Sets the result from a GError.
+     * Params:
+     * error =  GError.
+     */
+    public void setFromError(ErrorG error)
+    {
+        // void g_simple_async_result_set_from_error  (GSimpleAsyncResult *simple,  const GError *error);
+        g_simple_async_result_set_from_error(gSimpleAsyncResult, (error is null) ? null : error.getErrorGStruct());
+    }
+
+    /**
+     * Propagates an error from within the simple asynchronous result to
+     * a given destination.
+     * Returns: TRUE if the error was propegated to dest. FALSE otherwise.
+     */
+    public int propagateError()
+    {
+        // gboolean g_simple_async_result_propagate_error  (GSimpleAsyncResult *simple,  GError **dest);
+        GError* err = null;
+
+        auto p = g_simple_async_result_propagate_error(gSimpleAsyncResult, &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Sets an error within the asynchronous result without a GError.
+     * Unless writing a binding, see g_simple_async_result_set_error().
+     * Params:
+     * domain =  a GQuark (usually G_IO_ERROR).
+     * code =  an error code.
+     * format =  a formatted error reporting string.
+     * args =  va_list of arguments.
+     */
+    public void setErrorVa(GQuark domain, int code, string format, void* args)
+    {
+        // void g_simple_async_result_set_error_va (GSimpleAsyncResult *simple,  GQuark domain,  gint code,  const char *format,  va_list args);
+        g_simple_async_result_set_error_va(gSimpleAsyncResult, domain, code, Str.toStringz(format), args);
+    }
+
+    /**
+     * Reports an error in an idle function. Similar to
+     * g_simple_async_report_error_in_idle(), but takes a GError rather
+     * than building a new one.
+     * Params:
+     * object =  a GObject.
+     * callback =  a GAsyncReadyCallback.
+     * userData =  user data passed to callback.
+     * error =  the GError to report
+     */
+    public static void gSimpleAsyncReportGerrorInIdle(ObjectG object, GAsyncReadyCallback callback, void* userData, ErrorG error)
+    {
+        // void g_simple_async_report_gerror_in_idle  (GObject *object,  GAsyncReadyCallback callback,  gpointer user_data,  GError *error);
+        g_simple_async_report_gerror_in_idle((object is null) ? null : object.getObjectGStruct(), callback, userData, (error is null) ? null : error.getErrorGStruct());
+    }
 }

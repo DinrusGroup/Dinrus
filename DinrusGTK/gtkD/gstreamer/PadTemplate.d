@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = PadTemplate
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_pad_template_
@@ -129,146 +129,146 @@ private import gtkD.gstreamer.ObjectGst;
  */
 public class PadTemplate : ObjectGst
 {
-	
-	/** the main Gtk struct */
-	protected GstPadTemplate* gstPadTemplate;
-	
-	
-	public GstPadTemplate* getPadTemplateStruct()
-	{
-		return gstPadTemplate;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstPadTemplate;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstPadTemplate* gstPadTemplate)
-	{
-		if(gstPadTemplate is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstPadTemplate);
-		if( ptr !is null )
-		{
-			this = cast(PadTemplate)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstPadTemplate);
-		this.gstPadTemplate = gstPadTemplate;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(Pad, PadTemplate)[] onPadCreatedListeners;
-	/**
-	 * This signal is fired when an element creates a pad from this template.
-	 * See Also
-	 * GstPad, GstElementFactory
-	 */
-	void addOnPadCreated(void delegate(Pad, PadTemplate) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("pad-created" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"pad-created",
-			cast(GCallback)&callBackPadCreated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["pad-created"] = 1;
-		}
-		onPadCreatedListeners ~= dlg;
-	}
-	extern(C) static void callBackPadCreated(GstPadTemplate* padTemplateStruct, GstPad* pad, PadTemplate padTemplate)
-	{
-		foreach ( void delegate(Pad, PadTemplate) dlg ; padTemplate.onPadCreatedListeners )
-		{
-			dlg(new Pad(pad), padTemplate);
-		}
-	}
-	
-	
-	/**
-	 * Converts a GstStaticPadTemplate into a GstPadTemplate.
-	 * Params:
-	 * padTemplate =  the static pad template
-	 * Returns: a new GstPadTemplate.
-	 */
-	public static PadTemplate staticPadTemplateGet(GstStaticPadTemplate* padTemplate)
-	{
-		// GstPadTemplate* gst_static_pad_template_get (GstStaticPadTemplate *pad_template);
-		auto p = gst_static_pad_template_get(padTemplate);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PadTemplate(cast(GstPadTemplate*) p);
-	}
-	
-	/**
-	 * Gets the capabilities of the static pad template.
-	 * Params:
-	 * templ =  a GstStaticPadTemplate to get capabilities of.
-	 * Returns: the GstCaps of the static pad template. If you need to keep areference to the caps, take a ref (see gst_caps_ref()).
-	 */
-	public static Caps staticPadTemplateGetCaps(GstStaticPadTemplate* templ)
-	{
-		// GstCaps* gst_static_pad_template_get_caps  (GstStaticPadTemplate *templ);
-		auto p = gst_static_pad_template_get_caps(templ);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Caps(cast(GstCaps*) p);
-	}
-	
-	/**
-	 * Creates a new pad template with a name according to the given template
-	 * and with the given arguments. This functions takes ownership of the provided
-	 * caps, so be sure to not use them afterwards.
-	 * Params:
-	 * nameTemplate =  the name template.
-	 * direction =  the GstPadDirection of the template.
-	 * presence =  the GstPadPresence of the pad.
-	 * caps =  a GstCaps set for the template. The caps are taken ownership of.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string nameTemplate, GstPadDirection direction, GstPadPresence presence, Caps caps)
-	{
-		// GstPadTemplate* gst_pad_template_new (const gchar *name_template,  GstPadDirection direction,  GstPadPresence presence,  GstCaps *caps);
-		auto p = gst_pad_template_new(Str.toStringz(nameTemplate), direction, presence, (caps is null) ? null : caps.getCapsStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_pad_template_new(Str.toStringz(nameTemplate), direction, presence, (caps is null) ? null : caps.getCapsStruct())");
-		}
-		this(cast(GstPadTemplate*) p);
-	}
-	
-	/**
-	 * Gets the capabilities of the pad template.
-	 * Returns: the GstCaps of the pad template. If you need to keep a reference tothe caps, take a ref (see gst_caps_ref()).Signal DetailsThe "pad-created" signalvoid user_function (GstPadTemplate *pad_template, GstPad *pad, gpointer user_data) : Run lastThis signal is fired when an element creates a pad from this template.
-	 */
-	public Caps getCaps()
-	{
-		// GstCaps* gst_pad_template_get_caps (GstPadTemplate *templ);
-		auto p = gst_pad_template_get_caps(gstPadTemplate);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Caps(cast(GstCaps*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GstPadTemplate* gstPadTemplate;
+
+
+    public GstPadTemplate* getPadTemplateStruct()
+    {
+        return gstPadTemplate;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gstPadTemplate;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstPadTemplate* gstPadTemplate)
+    {
+        if(gstPadTemplate is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gstPadTemplate);
+        if( ptr !is null )
+        {
+            this = cast(PadTemplate)ptr;
+            return;
+        }
+        super(cast(GstObject*)gstPadTemplate);
+        this.gstPadTemplate = gstPadTemplate;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(Pad, PadTemplate)[] onPadCreatedListeners;
+    /**
+     * This signal is fired when an element creates a pad from this template.
+     * See Also
+     * GstPad, GstElementFactory
+     */
+    void addOnPadCreated(void delegate(Pad, PadTemplate) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("pad-created" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "pad-created",
+                cast(GCallback)&callBackPadCreated,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["pad-created"] = 1;
+        }
+        onPadCreatedListeners ~= dlg;
+    }
+    extern(C) static void callBackPadCreated(GstPadTemplate* padTemplateStruct, GstPad* pad, PadTemplate padTemplate)
+    {
+        foreach ( void delegate(Pad, PadTemplate) dlg ; padTemplate.onPadCreatedListeners )
+        {
+            dlg(new Pad(pad), padTemplate);
+        }
+    }
+
+
+    /**
+     * Converts a GstStaticPadTemplate into a GstPadTemplate.
+     * Params:
+     * padTemplate =  the static pad template
+     * Returns: a new GstPadTemplate.
+     */
+    public static PadTemplate staticPadTemplateGet(GstStaticPadTemplate* padTemplate)
+    {
+        // GstPadTemplate* gst_static_pad_template_get (GstStaticPadTemplate *pad_template);
+        auto p = gst_static_pad_template_get(padTemplate);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PadTemplate(cast(GstPadTemplate*) p);
+    }
+
+    /**
+     * Gets the capabilities of the static pad template.
+     * Params:
+     * templ =  a GstStaticPadTemplate to get capabilities of.
+     * Returns: the GstCaps of the static pad template. If you need to keep areference to the caps, take a ref (see gst_caps_ref()).
+     */
+    public static Caps staticPadTemplateGetCaps(GstStaticPadTemplate* templ)
+    {
+        // GstCaps* gst_static_pad_template_get_caps  (GstStaticPadTemplate *templ);
+        auto p = gst_static_pad_template_get_caps(templ);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Caps(cast(GstCaps*) p);
+    }
+
+    /**
+     * Creates a new pad template with a name according to the given template
+     * and with the given arguments. This functions takes ownership of the provided
+     * caps, so be sure to not use them afterwards.
+     * Params:
+     * nameTemplate =  the name template.
+     * direction =  the GstPadDirection of the template.
+     * presence =  the GstPadPresence of the pad.
+     * caps =  a GstCaps set for the template. The caps are taken ownership of.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string nameTemplate, GstPadDirection direction, GstPadPresence presence, Caps caps)
+    {
+        // GstPadTemplate* gst_pad_template_new (const gchar *name_template,  GstPadDirection direction,  GstPadPresence presence,  GstCaps *caps);
+        auto p = gst_pad_template_new(Str.toStringz(nameTemplate), direction, presence, (caps is null) ? null : caps.getCapsStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gst_pad_template_new(Str.toStringz(nameTemplate), direction, presence, (caps is null) ? null : caps.getCapsStruct())");
+        }
+        this(cast(GstPadTemplate*) p);
+    }
+
+    /**
+     * Gets the capabilities of the pad template.
+     * Returns: the GstCaps of the pad template. If you need to keep a reference tothe caps, take a ref (see gst_caps_ref()).Signal DetailsThe "pad-created" signalvoid user_function (GstPadTemplate *pad_template, GstPad *pad, gpointer user_data) : Run lastThis signal is fired when an element creates a pad from this template.
+     */
+    public Caps getCaps()
+    {
+        // GstCaps* gst_pad_template_get_caps (GstPadTemplate *templ);
+        auto p = gst_pad_template_get_caps(gstPadTemplate);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Caps(cast(GstCaps*) p);
+    }
 }

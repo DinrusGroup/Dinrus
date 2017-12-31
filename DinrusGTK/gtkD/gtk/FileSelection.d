@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = FileSelection
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_file_selection_
@@ -111,181 +111,181 @@ private import gtkD.gtk.Dialog;
  */
 public class FileSelection : Dialog
 {
-	
-	/** the main Gtk struct */
-	protected GtkFileSelection* gtkFileSelection;
-	
-	
-	public GtkFileSelection* getFileSelectionStruct()
-	{
-		return gtkFileSelection;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFileSelection;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkFileSelection* gtkFileSelection)
-	{
-		if(gtkFileSelection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFileSelection);
-		if( ptr !is null )
-		{
-			this = cast(FileSelection)ptr;
-			return;
-		}
-		super(cast(GtkDialog*)gtkFileSelection);
-		this.gtkFileSelection = gtkFileSelection;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_new is deprecated and should not be used in newly-written code. Use gtk_file_chooser_dialog_new() instead
-	 * Creates a new file selection dialog box. By default it will contain a GtkTreeView of the application's current working directory, and a file listing. Operation buttons that allow the user to create a directory, delete files and rename files, are also present.
-	 * Params:
-	 * title = a message that will be placed in the file requestor's titlebar.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string title)
-	{
-		// GtkWidget* gtk_file_selection_new (const gchar *title);
-		auto p = gtk_file_selection_new(Str.toStringz(title));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_selection_new(Str.toStringz(title))");
-		}
-		this(cast(GtkFileSelection*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_set_filename is deprecated and should not be used in newly-written code.
-	 * Sets a default path for the file requestor. If filename includes a
-	 * directory path, then the requestor will open with that path as its
-	 * current working directory.
-	 * This has the consequence that in order to open the requestor with a
-	 * working directory and an empty filename, filename must have a trailing
-	 * directory separator.
-	 * The encoding of filename is preferred GLib file name encoding, which
-	 * may not be UTF-8. See g_filename_from_utf8().
-	 * Params:
-	 * filename =  a string to set as the default file name.
-	 */
-	public void setFilename(string filename)
-	{
-		// void gtk_file_selection_set_filename (GtkFileSelection *filesel,  const gchar *filename);
-		gtk_file_selection_set_filename(gtkFileSelection, Str.toStringz(filename));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_get_filename is deprecated and should not be used in newly-written code.
-	 * This function returns the selected filename in the GLib file name
-	 * encoding. To convert to UTF-8, call g_filename_to_utf8(). The
-	 * returned string points to a statically allocated buffer and should
-	 * be copied if you plan to keep it around.
-	 * If no file is selected then the selected directory path is returned.
-	 * Returns: currently-selected filename in the on-disk encoding.
-	 */
-	public string getFilename()
-	{
-		// const gchar* gtk_file_selection_get_filename (GtkFileSelection *filesel);
-		return Str.toString(gtk_file_selection_get_filename(gtkFileSelection));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_complete is deprecated and should not be used in newly-written code.
-	 * Will attempt to match pattern to a valid filenames or subdirectories in the current directory. If a match can be made, the matched filename will appear in the text entry field of the file selection dialog.
-	 * If a partial match can be made, the "Files" list will contain those
-	 * file names which have been partially matched, and the "Folders"
-	 * list those directories which have been partially matched.
-	 * Params:
-	 * pattern = a string of characters which may or may not match any filenames in the current directory.
-	 */
-	public void complete(string pattern)
-	{
-		// void gtk_file_selection_complete (GtkFileSelection *filesel,  const gchar *pattern);
-		gtk_file_selection_complete(gtkFileSelection, Str.toStringz(pattern));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_show_fileop_buttons is deprecated and should not be used in newly-written code.
-	 * Shows the file operation buttons, if they have previously been hidden. The rest of the widgets in the dialog will be resized accordingly.
-	 */
-	public void showFileopButtons()
-	{
-		// void gtk_file_selection_show_fileop_buttons  (GtkFileSelection *filesel);
-		gtk_file_selection_show_fileop_buttons(gtkFileSelection);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_hide_fileop_buttons is deprecated and should not be used in newly-written code.
-	 * Hides the file operation buttons that normally appear at the top of the dialog. Useful if you wish to create a custom file selector, based on GtkFileSelection.
-	 */
-	public void hideFileopButtons()
-	{
-		// void gtk_file_selection_hide_fileop_buttons  (GtkFileSelection *filesel);
-		gtk_file_selection_hide_fileop_buttons(gtkFileSelection);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_get_selections is deprecated and should not be used in newly-written code.
-	 * Retrieves the list of file selections the user has made in the dialog box.
-	 * This function is intended for use when the user can select multiple files
-	 * in the file list.
-	 * The filenames are in the GLib file name encoding. To convert to
-	 * UTF-8, call g_filename_to_utf8() on each string.
-	 * Returns: a newly-allocated NULL-terminated array of strings. Useg_strfreev() to free it.
-	 */
-	public string[] getSelections()
-	{
-		// gchar** gtk_file_selection_get_selections (GtkFileSelection *filesel);
-		return Str.toStringArray(gtk_file_selection_get_selections(gtkFileSelection));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_set_select_multiple is deprecated and should not be used in newly-written code.
-	 * Sets whether the user is allowed to select multiple files in the file list.
-	 * Use gtk_file_selection_get_selections() to get the list of selected files.
-	 * Params:
-	 * selectMultiple =  whether or not the user is allowed to select multiple
-	 * files in the file list.
-	 */
-	public void setSelectMultiple(int selectMultiple)
-	{
-		// void gtk_file_selection_set_select_multiple  (GtkFileSelection *filesel,  gboolean select_multiple);
-		gtk_file_selection_set_select_multiple(gtkFileSelection, selectMultiple);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_file_selection_get_select_multiple is deprecated and should not be used in newly-written code.
-	 * Determines whether or not the user is allowed to select multiple files in
-	 * the file list. See gtk_file_selection_set_select_multiple().
-	 * Returns: TRUE if the user is allowed to select multiple files in thefile list
-	 */
-	public int getSelectMultiple()
-	{
-		// gboolean gtk_file_selection_get_select_multiple  (GtkFileSelection *filesel);
-		return gtk_file_selection_get_select_multiple(gtkFileSelection);
-	}
+
+    /** the main Gtk struct */
+    protected GtkFileSelection* gtkFileSelection;
+
+
+    public GtkFileSelection* getFileSelectionStruct()
+    {
+        return gtkFileSelection;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkFileSelection;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkFileSelection* gtkFileSelection)
+    {
+        if(gtkFileSelection is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkFileSelection);
+        if( ptr !is null )
+        {
+            this = cast(FileSelection)ptr;
+            return;
+        }
+        super(cast(GtkDialog*)gtkFileSelection);
+        this.gtkFileSelection = gtkFileSelection;
+    }
+
+    /**
+     */
+
+    /**
+     * Warning
+     * gtk_file_selection_new is deprecated and should not be used in newly-written code. Use gtk_file_chooser_dialog_new() instead
+     * Creates a new file selection dialog box. By default it will contain a GtkTreeView of the application's current working directory, and a file listing. Operation buttons that allow the user to create a directory, delete files and rename files, are also present.
+     * Params:
+     * title = a message that will be placed in the file requestor's titlebar.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string title)
+    {
+        // GtkWidget* gtk_file_selection_new (const gchar *title);
+        auto p = gtk_file_selection_new(Str.toStringz(title));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_file_selection_new(Str.toStringz(title))");
+        }
+        this(cast(GtkFileSelection*) p);
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_set_filename is deprecated and should not be used in newly-written code.
+     * Sets a default path for the file requestor. If filename includes a
+     * directory path, then the requestor will open with that path as its
+     * current working directory.
+     * This has the consequence that in order to open the requestor with a
+     * working directory and an empty filename, filename must have a trailing
+     * directory separator.
+     * The encoding of filename is preferred GLib file name encoding, which
+     * may not be UTF-8. See g_filename_from_utf8().
+     * Params:
+     * filename =  a string to set as the default file name.
+     */
+    public void setFilename(string filename)
+    {
+        // void gtk_file_selection_set_filename (GtkFileSelection *filesel,  const gchar *filename);
+        gtk_file_selection_set_filename(gtkFileSelection, Str.toStringz(filename));
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_get_filename is deprecated and should not be used in newly-written code.
+     * This function returns the selected filename in the GLib file name
+     * encoding. To convert to UTF-8, call g_filename_to_utf8(). The
+     * returned string points to a statically allocated buffer and should
+     * be copied if you plan to keep it around.
+     * If no file is selected then the selected directory path is returned.
+     * Returns: currently-selected filename in the on-disk encoding.
+     */
+    public string getFilename()
+    {
+        // const gchar* gtk_file_selection_get_filename (GtkFileSelection *filesel);
+        return Str.toString(gtk_file_selection_get_filename(gtkFileSelection));
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_complete is deprecated and should not be used in newly-written code.
+     * Will attempt to match pattern to a valid filenames or subdirectories in the current directory. If a match can be made, the matched filename will appear in the text entry field of the file selection dialog.
+     * If a partial match can be made, the "Files" list will contain those
+     * file names which have been partially matched, and the "Folders"
+     * list those directories which have been partially matched.
+     * Params:
+     * pattern = a string of characters which may or may not match any filenames in the current directory.
+     */
+    public void complete(string pattern)
+    {
+        // void gtk_file_selection_complete (GtkFileSelection *filesel,  const gchar *pattern);
+        gtk_file_selection_complete(gtkFileSelection, Str.toStringz(pattern));
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_show_fileop_buttons is deprecated and should not be used in newly-written code.
+     * Shows the file operation buttons, if they have previously been hidden. The rest of the widgets in the dialog will be resized accordingly.
+     */
+    public void showFileopButtons()
+    {
+        // void gtk_file_selection_show_fileop_buttons  (GtkFileSelection *filesel);
+        gtk_file_selection_show_fileop_buttons(gtkFileSelection);
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_hide_fileop_buttons is deprecated and should not be used in newly-written code.
+     * Hides the file operation buttons that normally appear at the top of the dialog. Useful if you wish to create a custom file selector, based on GtkFileSelection.
+     */
+    public void hideFileopButtons()
+    {
+        // void gtk_file_selection_hide_fileop_buttons  (GtkFileSelection *filesel);
+        gtk_file_selection_hide_fileop_buttons(gtkFileSelection);
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_get_selections is deprecated and should not be used in newly-written code.
+     * Retrieves the list of file selections the user has made in the dialog box.
+     * This function is intended for use when the user can select multiple files
+     * in the file list.
+     * The filenames are in the GLib file name encoding. To convert to
+     * UTF-8, call g_filename_to_utf8() on each string.
+     * Returns: a newly-allocated NULL-terminated array of strings. Useg_strfreev() to free it.
+     */
+    public string[] getSelections()
+    {
+        // gchar** gtk_file_selection_get_selections (GtkFileSelection *filesel);
+        return Str.toStringArray(gtk_file_selection_get_selections(gtkFileSelection));
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_set_select_multiple is deprecated and should not be used in newly-written code.
+     * Sets whether the user is allowed to select multiple files in the file list.
+     * Use gtk_file_selection_get_selections() to get the list of selected files.
+     * Params:
+     * selectMultiple =  whether or not the user is allowed to select multiple
+     * files in the file list.
+     */
+    public void setSelectMultiple(int selectMultiple)
+    {
+        // void gtk_file_selection_set_select_multiple  (GtkFileSelection *filesel,  gboolean select_multiple);
+        gtk_file_selection_set_select_multiple(gtkFileSelection, selectMultiple);
+    }
+
+    /**
+     * Warning
+     * gtk_file_selection_get_select_multiple is deprecated and should not be used in newly-written code.
+     * Determines whether or not the user is allowed to select multiple files in
+     * the file list. See gtk_file_selection_set_select_multiple().
+     * Returns: TRUE if the user is allowed to select multiple files in thefile list
+     */
+    public int getSelectMultiple()
+    {
+        // gboolean gtk_file_selection_get_select_multiple  (GtkFileSelection *filesel);
+        return gtk_file_selection_get_select_multiple(gtkFileSelection);
+    }
 }

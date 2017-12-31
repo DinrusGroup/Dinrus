@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Tooltip
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_tooltip_
@@ -114,164 +114,164 @@ private import gtkD.gobject.ObjectG;
  */
 public class Tooltip : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkTooltip* gtkTooltip;
-	
-	
-	public GtkTooltip* getTooltipStruct()
-	{
-		return gtkTooltip;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTooltip;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkTooltip* gtkTooltip)
-	{
-		if(gtkTooltip is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTooltip);
-		if( ptr !is null )
-		{
-			this = cast(Tooltip)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTooltip);
-		this.gtkTooltip = gtkTooltip;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Sets the text of the tooltip to be markup, which is marked up
-	 * with the Pango text markup language.
-	 * If markup is NULL, the label will be hidden.
-	 * Since 2.12
-	 * Params:
-	 * markup =  a markup string (see Pango markup format) or NULL
-	 */
-	public void setMarkup(string markup)
-	{
-		// void gtk_tooltip_set_markup (GtkTooltip *tooltip,  const gchar *markup);
-		gtk_tooltip_set_markup(gtkTooltip, Str.toStringz(markup));
-	}
-	
-	/**
-	 * Sets the text of the tooltip to be text. If text is NULL, the label
-	 * will be hidden. See also gtk_tooltip_set_markup().
-	 * Since 2.12
-	 * Params:
-	 * text =  a text string or NULL
-	 */
-	public void setText(string text)
-	{
-		// void gtk_tooltip_set_text (GtkTooltip *tooltip,  const gchar *text);
-		gtk_tooltip_set_text(gtkTooltip, Str.toStringz(text));
-	}
-	
-	/**
-	 * Sets the icon of the tooltip (which is in front of the text) to be
-	 * pixbuf. If pixbuf is NULL, the image will be hidden.
-	 * Since 2.12
-	 * Params:
-	 * pixbuf =  a GdkPixbuf, or NULL
-	 */
-	public void setIcon(Pixbuf pixbuf)
-	{
-		// void gtk_tooltip_set_icon (GtkTooltip *tooltip,  GdkPixbuf *pixbuf);
-		gtk_tooltip_set_icon(gtkTooltip, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
-	
-	/**
-	 * Sets the icon of the tooltip (which is in front of the text) to be
-	 * the stock item indicated by stock_id with the size indicated
-	 * by size. If stock_id is NULL, the image will be hidden.
-	 * Since 2.12
-	 * Params:
-	 * stockId =  a stock id, or NULL
-	 * size =  a stock icon size
-	 */
-	public void setIconFromStock(string stockId, GtkIconSize size)
-	{
-		// void gtk_tooltip_set_icon_from_stock (GtkTooltip *tooltip,  const gchar *stock_id,  GtkIconSize size);
-		gtk_tooltip_set_icon_from_stock(gtkTooltip, Str.toStringz(stockId), size);
-	}
-	
-	/**
-	 * Sets the icon of the tooltip (which is in front of the text) to be
-	 * the icon indicated by icon_name with the size indicated
-	 * by size. If icon_name is NULL, the image will be hidden.
-	 * Since 2.14
-	 * Params:
-	 * iconName =  an icon name, or NULL
-	 * size =  a stock icon size
-	 */
-	public void setIconFromIconName(string iconName, GtkIconSize size)
-	{
-		// void gtk_tooltip_set_icon_from_icon_name (GtkTooltip *tooltip,  const gchar *icon_name,  GtkIconSize size);
-		gtk_tooltip_set_icon_from_icon_name(gtkTooltip, Str.toStringz(iconName), size);
-	}
-	
-	/**
-	 * Replaces the widget packed into the tooltip with
-	 * custom_widget. custom_widget does not get destroyed when the tooltip goes
-	 * away.
-	 * By default a box with a GtkImage and GtkLabel is embedded in
-	 * the tooltip, which can be configured using gtk_tooltip_set_markup()
-	 * and gtk_tooltip_set_icon().
-	 * Since 2.12
-	 * Params:
-	 * customWidget =  a GtkWidget, or NULL to unset the old custom widget.
-	 */
-	public void setCustom(Widget customWidget)
-	{
-		// void gtk_tooltip_set_custom (GtkTooltip *tooltip,  GtkWidget *custom_widget);
-		gtk_tooltip_set_custom(gtkTooltip, (customWidget is null) ? null : customWidget.getWidgetStruct());
-	}
-	
-	/**
-	 * Triggers a new tooltip query on display, in order to update the current
-	 * visible tooltip, or to show/hide the current tooltip. This function is
-	 * useful to call when, for example, the state of the widget changed by a
-	 * key press.
-	 * Since 2.12
-	 * Params:
-	 * display =  a GdkDisplay
-	 */
-	public static void triggerTooltipQuery(Display display)
-	{
-		// void gtk_tooltip_trigger_tooltip_query (GdkDisplay *display);
-		gtk_tooltip_trigger_tooltip_query((display is null) ? null : display.getDisplayStruct());
-	}
-	
-	/**
-	 * Sets the area of the widget, where the contents of this tooltip apply,
-	 * to be rect (in widget coordinates). This is especially useful for
-	 * properly setting tooltips on GtkTreeView rows and cells, GtkIconViews,
-	 * etc.
-	 * For setting tooltips on GtkTreeView, please refer to the convenience
-	 * functions for this: gtk_tree_view_set_tooltip_row() and
-	 * gtk_tree_view_set_tooltip_cell().
-	 * Since 2.12
-	 * Params:
-	 * rect =  a GdkRectangle
-	 */
-	public void setTipArea(Rectangle rect)
-	{
-		// void gtk_tooltip_set_tip_area (GtkTooltip *tooltip,  const GdkRectangle *rect);
-		gtk_tooltip_set_tip_area(gtkTooltip, (rect is null) ? null : rect.getRectangleStruct());
-	}
+
+    /** the main Gtk struct */
+    protected GtkTooltip* gtkTooltip;
+
+
+    public GtkTooltip* getTooltipStruct()
+    {
+        return gtkTooltip;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkTooltip;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkTooltip* gtkTooltip)
+    {
+        if(gtkTooltip is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkTooltip);
+        if( ptr !is null )
+        {
+            this = cast(Tooltip)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkTooltip);
+        this.gtkTooltip = gtkTooltip;
+    }
+
+    /**
+     */
+
+    /**
+     * Sets the text of the tooltip to be markup, which is marked up
+     * with the Pango text markup language.
+     * If markup is NULL, the label will be hidden.
+     * Since 2.12
+     * Params:
+     * markup =  a markup string (see Pango markup format) or NULL
+     */
+    public void setMarkup(string markup)
+    {
+        // void gtk_tooltip_set_markup (GtkTooltip *tooltip,  const gchar *markup);
+        gtk_tooltip_set_markup(gtkTooltip, Str.toStringz(markup));
+    }
+
+    /**
+     * Sets the text of the tooltip to be text. If text is NULL, the label
+     * will be hidden. See also gtk_tooltip_set_markup().
+     * Since 2.12
+     * Params:
+     * text =  a text string or NULL
+     */
+    public void setText(string text)
+    {
+        // void gtk_tooltip_set_text (GtkTooltip *tooltip,  const gchar *text);
+        gtk_tooltip_set_text(gtkTooltip, Str.toStringz(text));
+    }
+
+    /**
+     * Sets the icon of the tooltip (which is in front of the text) to be
+     * pixbuf. If pixbuf is NULL, the image will be hidden.
+     * Since 2.12
+     * Params:
+     * pixbuf =  a GdkPixbuf, or NULL
+     */
+    public void setIcon(Pixbuf pixbuf)
+    {
+        // void gtk_tooltip_set_icon (GtkTooltip *tooltip,  GdkPixbuf *pixbuf);
+        gtk_tooltip_set_icon(gtkTooltip, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
+    }
+
+    /**
+     * Sets the icon of the tooltip (which is in front of the text) to be
+     * the stock item indicated by stock_id with the size indicated
+     * by size. If stock_id is NULL, the image will be hidden.
+     * Since 2.12
+     * Params:
+     * stockId =  a stock id, or NULL
+     * size =  a stock icon size
+     */
+    public void setIconFromStock(string stockId, GtkIconSize size)
+    {
+        // void gtk_tooltip_set_icon_from_stock (GtkTooltip *tooltip,  const gchar *stock_id,  GtkIconSize size);
+        gtk_tooltip_set_icon_from_stock(gtkTooltip, Str.toStringz(stockId), size);
+    }
+
+    /**
+     * Sets the icon of the tooltip (which is in front of the text) to be
+     * the icon indicated by icon_name with the size indicated
+     * by size. If icon_name is NULL, the image will be hidden.
+     * Since 2.14
+     * Params:
+     * iconName =  an icon name, or NULL
+     * size =  a stock icon size
+     */
+    public void setIconFromIconName(string iconName, GtkIconSize size)
+    {
+        // void gtk_tooltip_set_icon_from_icon_name (GtkTooltip *tooltip,  const gchar *icon_name,  GtkIconSize size);
+        gtk_tooltip_set_icon_from_icon_name(gtkTooltip, Str.toStringz(iconName), size);
+    }
+
+    /**
+     * Replaces the widget packed into the tooltip with
+     * custom_widget. custom_widget does not get destroyed when the tooltip goes
+     * away.
+     * By default a box with a GtkImage and GtkLabel is embedded in
+     * the tooltip, which can be configured using gtk_tooltip_set_markup()
+     * and gtk_tooltip_set_icon().
+     * Since 2.12
+     * Params:
+     * customWidget =  a GtkWidget, or NULL to unset the old custom widget.
+     */
+    public void setCustom(Widget customWidget)
+    {
+        // void gtk_tooltip_set_custom (GtkTooltip *tooltip,  GtkWidget *custom_widget);
+        gtk_tooltip_set_custom(gtkTooltip, (customWidget is null) ? null : customWidget.getWidgetStruct());
+    }
+
+    /**
+     * Triggers a new tooltip query on display, in order to update the current
+     * visible tooltip, or to show/hide the current tooltip. This function is
+     * useful to call when, for example, the state of the widget changed by a
+     * key press.
+     * Since 2.12
+     * Params:
+     * display =  a GdkDisplay
+     */
+    public static void triggerTooltipQuery(Display display)
+    {
+        // void gtk_tooltip_trigger_tooltip_query (GdkDisplay *display);
+        gtk_tooltip_trigger_tooltip_query((display is null) ? null : display.getDisplayStruct());
+    }
+
+    /**
+     * Sets the area of the widget, where the contents of this tooltip apply,
+     * to be rect (in widget coordinates). This is especially useful for
+     * properly setting tooltips on GtkTreeView rows and cells, GtkIconViews,
+     * etc.
+     * For setting tooltips on GtkTreeView, please refer to the convenience
+     * functions for this: gtk_tree_view_set_tooltip_row() and
+     * gtk_tree_view_set_tooltip_cell().
+     * Since 2.12
+     * Params:
+     * rect =  a GdkRectangle
+     */
+    public void setTipArea(Rectangle rect)
+    {
+        // void gtk_tooltip_set_tip_area (GtkTooltip *tooltip,  const GdkRectangle *rect);
+        gtk_tooltip_set_tip_area(gtkTooltip, (rect is null) ? null : rect.getRectangleStruct());
+    }
 }

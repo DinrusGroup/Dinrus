@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = HSeparator
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_hseparator_
@@ -75,59 +75,59 @@ private import gtkD.gtk.Separator;
  */
 public class HSeparator : Separator
 {
-	
-	/** the main Gtk struct */
-	protected GtkHSeparator* gtkHSeparator;
-	
-	
-	public GtkHSeparator* getHSeparatorStruct()
-	{
-		return gtkHSeparator;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkHSeparator;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkHSeparator* gtkHSeparator)
-	{
-		if(gtkHSeparator is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkHSeparator);
-		if( ptr !is null )
-		{
-			this = cast(HSeparator)ptr;
-			return;
-		}
-		super(cast(GtkSeparator*)gtkHSeparator);
-		this.gtkHSeparator = gtkHSeparator;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkHSeparator.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_hseparator_new (void);
-		auto p = gtk_hseparator_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_hseparator_new()");
-		}
-		this(cast(GtkHSeparator*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkHSeparator* gtkHSeparator;
+
+
+    public GtkHSeparator* getHSeparatorStruct()
+    {
+        return gtkHSeparator;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkHSeparator;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkHSeparator* gtkHSeparator)
+    {
+        if(gtkHSeparator is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkHSeparator);
+        if( ptr !is null )
+        {
+            this = cast(HSeparator)ptr;
+            return;
+        }
+        super(cast(GtkSeparator*)gtkHSeparator);
+        this.gtkHSeparator = gtkHSeparator;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkHSeparator.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_hseparator_new (void);
+        auto p = gtk_hseparator_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_hseparator_new()");
+        }
+        this(cast(GtkHSeparator*) p);
+    }
 }

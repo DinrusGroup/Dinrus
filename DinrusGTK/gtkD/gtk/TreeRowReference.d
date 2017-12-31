@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = TreeRowReference
  * strct   = GtkTreeRowReference
  * realStrct=
  * ctorStrct=
  * clss    = TreeRowReference
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_tree_row_reference_
@@ -214,202 +214,202 @@ private import gtkD.gtk.TreeIter;
  */
 public class TreeRowReference
 {
-	
-	/** the main Gtk struct */
-	protected GtkTreeRowReference* gtkTreeRowReference;
-	
-	
-	public GtkTreeRowReference* getTreeRowReferenceStruct()
-	{
-		return gtkTreeRowReference;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkTreeRowReference;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkTreeRowReference* gtkTreeRowReference)
-	{
-		if(gtkTreeRowReference is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkTreeRowReference = gtkTreeRowReference;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a row reference based on path. This reference will keep pointing
-	 * to the node pointed to by path, so long as it exists. It listens to all
-	 * signals emitted by model, and updates its path appropriately. If path
-	 * isn't a valid path in model, then NULL is returned.
-	 * Params:
-	 * model =  A GtkTreeModel
-	 * path =  A valid GtkTreePath to monitor
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (TreeModelIF model, TreePath path)
-	{
-		// GtkTreeRowReference * gtk_tree_row_reference_new (GtkTreeModel *model,  GtkTreePath *path);
-		auto p = gtk_tree_row_reference_new((model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tree_row_reference_new((model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct())");
-		}
-		this(cast(GtkTreeRowReference*) p);
-	}
-	
-	/**
-	 * You do not need to use this function. Creates a row reference based on
-	 * path. This reference will keep pointing to the node pointed to by path,
-	 * so long as it exists. If path isn't a valid path in model, then NULL is
-	 * returned. However, unlike references created with
-	 * gtk_tree_row_reference_new(), it does not listen to the model for changes.
-	 * The creator of the row reference must do this explicitly using
-	 * gtk_tree_row_reference_inserted(), gtk_tree_row_reference_deleted(),
-	 * gtk_tree_row_reference_reordered().
-	 * These functions must be called exactly once per proxy when the
-	 * corresponding signal on the model is emitted. This single call
-	 * updates all row references for that proxy. Since built-in GTK+
-	 * objects like GtkTreeView already use this mechanism internally,
-	 * using them as the proxy object will produce unpredictable results.
-	 * Further more, passing the same object as model and proxy
-	 * doesn't work for reasons of internal implementation.
-	 * This type of row reference is primarily meant by structures that need to
-	 * carefully monitor exactly when a row reference updates itself, and is not
-	 * generally needed by most applications.
-	 * Params:
-	 * proxy =  A proxy GObject
-	 * model =  A GtkTreeModel
-	 * path =  A valid GtkTreePath to monitor
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (ObjectG proxy, TreeModelIF model, TreePath path)
-	{
-		// GtkTreeRowReference * gtk_tree_row_reference_new_proxy (GObject *proxy,  GtkTreeModel *model,  GtkTreePath *path);
-		auto p = gtk_tree_row_reference_new_proxy((proxy is null) ? null : proxy.getObjectGStruct(), (model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tree_row_reference_new_proxy((proxy is null) ? null : proxy.getObjectGStruct(), (model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct())");
-		}
-		this(cast(GtkTreeRowReference*) p);
-	}
-	
-	/**
-	 * Returns the model that the row reference is monitoring.
-	 * Since 2.8
-	 * Returns: the model
-	 */
-	public TreeModelIF getModel()
-	{
-		// GtkTreeModel * gtk_tree_row_reference_get_model (GtkTreeRowReference *reference);
-		auto p = gtk_tree_row_reference_get_model(gtkTreeRowReference);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
-	
-	/**
-	 * Returns a path that the row reference currently points to, or NULL if the
-	 * path pointed to is no longer valid.
-	 * Returns: A current path, or NULL.
-	 */
-	public TreePath getPath()
-	{
-		// GtkTreePath * gtk_tree_row_reference_get_path (GtkTreeRowReference *reference);
-		auto p = gtk_tree_row_reference_get_path(gtkTreeRowReference);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
-	
-	/**
-	 * Returns TRUE if the reference is non-NULL and refers to a current valid
-	 * path.
-	 * Returns: TRUE if reference points to a valid path.
-	 */
-	public int valid()
-	{
-		// gboolean gtk_tree_row_reference_valid (GtkTreeRowReference *reference);
-		return gtk_tree_row_reference_valid(gtkTreeRowReference);
-	}
-	
-	/**
-	 * Free's reference. reference may be NULL.
-	 */
-	public void free()
-	{
-		// void gtk_tree_row_reference_free (GtkTreeRowReference *reference);
-		gtk_tree_row_reference_free(gtkTreeRowReference);
-	}
-	
-	/**
-	 * Copies a GtkTreeRowReference.
-	 * Since 2.2
-	 * Returns: a copy of reference.
-	 */
-	public TreeRowReference copy()
-	{
-		// GtkTreeRowReference * gtk_tree_row_reference_copy (GtkTreeRowReference *reference);
-		auto p = gtk_tree_row_reference_copy(gtkTreeRowReference);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeRowReference(cast(GtkTreeRowReference*) p);
-	}
-	
-	/**
-	 * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-	 * know that the model emitted the "row_inserted" signal.
-	 * Params:
-	 * proxy =  A GObject
-	 * path =  The row position that was inserted
-	 */
-	public static void inserted(ObjectG proxy, TreePath path)
-	{
-		// void gtk_tree_row_reference_inserted (GObject *proxy,  GtkTreePath *path);
-		gtk_tree_row_reference_inserted((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct());
-	}
-	
-	/**
-	 * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-	 * know that the model emitted the "row_deleted" signal.
-	 * Params:
-	 * proxy =  A GObject
-	 * path =  The path position that was deleted
-	 */
-	public static void deleted(ObjectG proxy, TreePath path)
-	{
-		// void gtk_tree_row_reference_deleted (GObject *proxy,  GtkTreePath *path);
-		gtk_tree_row_reference_deleted((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct());
-	}
-	
-	/**
-	 * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-	 * know that the model emitted the "rows_reordered" signal.
-	 * Params:
-	 * proxy =  A GObject
-	 * path =  The parent path of the reordered signal
-	 * iter =  The iter pointing to the parent of the reordered
-	 * newOrder =  The new order of rows
-	 */
-	public static void reordered(ObjectG proxy, TreePath path, TreeIter iter, int[] newOrder)
-	{
-		// void gtk_tree_row_reference_reordered (GObject *proxy,  GtkTreePath *path,  GtkTreeIter *iter,  gint *new_order);
-		gtk_tree_row_reference_reordered((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct(), (iter is null) ? null : iter.getTreeIterStruct(), newOrder.ptr);
-	}
+
+    /** the main Gtk struct */
+    protected GtkTreeRowReference* gtkTreeRowReference;
+
+
+    public GtkTreeRowReference* getTreeRowReferenceStruct()
+    {
+        return gtkTreeRowReference;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gtkTreeRowReference;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkTreeRowReference* gtkTreeRowReference)
+    {
+        if(gtkTreeRowReference is null)
+        {
+            this = null;
+            return;
+        }
+        this.gtkTreeRowReference = gtkTreeRowReference;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a row reference based on path. This reference will keep pointing
+     * to the node pointed to by path, so long as it exists. It listens to all
+     * signals emitted by model, and updates its path appropriately. If path
+     * isn't a valid path in model, then NULL is returned.
+     * Params:
+     * model =  A GtkTreeModel
+     * path =  A valid GtkTreePath to monitor
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (TreeModelIF model, TreePath path)
+    {
+        // GtkTreeRowReference * gtk_tree_row_reference_new (GtkTreeModel *model,  GtkTreePath *path);
+        auto p = gtk_tree_row_reference_new((model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_tree_row_reference_new((model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct())");
+        }
+        this(cast(GtkTreeRowReference*) p);
+    }
+
+    /**
+     * You do not need to use this function. Creates a row reference based on
+     * path. This reference will keep pointing to the node pointed to by path,
+     * so long as it exists. If path isn't a valid path in model, then NULL is
+     * returned. However, unlike references created with
+     * gtk_tree_row_reference_new(), it does not listen to the model for changes.
+     * The creator of the row reference must do this explicitly using
+     * gtk_tree_row_reference_inserted(), gtk_tree_row_reference_deleted(),
+     * gtk_tree_row_reference_reordered().
+     * These functions must be called exactly once per proxy when the
+     * corresponding signal on the model is emitted. This single call
+     * updates all row references for that proxy. Since built-in GTK+
+     * objects like GtkTreeView already use this mechanism internally,
+     * using them as the proxy object will produce unpredictable results.
+     * Further more, passing the same object as model and proxy
+     * doesn't work for reasons of internal implementation.
+     * This type of row reference is primarily meant by structures that need to
+     * carefully monitor exactly when a row reference updates itself, and is not
+     * generally needed by most applications.
+     * Params:
+     * proxy =  A proxy GObject
+     * model =  A GtkTreeModel
+     * path =  A valid GtkTreePath to monitor
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (ObjectG proxy, TreeModelIF model, TreePath path)
+    {
+        // GtkTreeRowReference * gtk_tree_row_reference_new_proxy (GObject *proxy,  GtkTreeModel *model,  GtkTreePath *path);
+        auto p = gtk_tree_row_reference_new_proxy((proxy is null) ? null : proxy.getObjectGStruct(), (model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_tree_row_reference_new_proxy((proxy is null) ? null : proxy.getObjectGStruct(), (model is null) ? null : model.getTreeModelTStruct(), (path is null) ? null : path.getTreePathStruct())");
+        }
+        this(cast(GtkTreeRowReference*) p);
+    }
+
+    /**
+     * Returns the model that the row reference is monitoring.
+     * Since 2.8
+     * Returns: the model
+     */
+    public TreeModelIF getModel()
+    {
+        // GtkTreeModel * gtk_tree_row_reference_get_model (GtkTreeRowReference *reference);
+        auto p = gtk_tree_row_reference_get_model(gtkTreeRowReference);
+        if(p is null)
+        {
+            return null;
+        }
+        return new TreeModel(cast(GtkTreeModel*) p);
+    }
+
+    /**
+     * Returns a path that the row reference currently points to, or NULL if the
+     * path pointed to is no longer valid.
+     * Returns: A current path, or NULL.
+     */
+    public TreePath getPath()
+    {
+        // GtkTreePath * gtk_tree_row_reference_get_path (GtkTreeRowReference *reference);
+        auto p = gtk_tree_row_reference_get_path(gtkTreeRowReference);
+        if(p is null)
+        {
+            return null;
+        }
+        return new TreePath(cast(GtkTreePath*) p);
+    }
+
+    /**
+     * Returns TRUE if the reference is non-NULL and refers to a current valid
+     * path.
+     * Returns: TRUE if reference points to a valid path.
+     */
+    public int valid()
+    {
+        // gboolean gtk_tree_row_reference_valid (GtkTreeRowReference *reference);
+        return gtk_tree_row_reference_valid(gtkTreeRowReference);
+    }
+
+    /**
+     * Free's reference. reference may be NULL.
+     */
+    public void free()
+    {
+        // void gtk_tree_row_reference_free (GtkTreeRowReference *reference);
+        gtk_tree_row_reference_free(gtkTreeRowReference);
+    }
+
+    /**
+     * Copies a GtkTreeRowReference.
+     * Since 2.2
+     * Returns: a copy of reference.
+     */
+    public TreeRowReference copy()
+    {
+        // GtkTreeRowReference * gtk_tree_row_reference_copy (GtkTreeRowReference *reference);
+        auto p = gtk_tree_row_reference_copy(gtkTreeRowReference);
+        if(p is null)
+        {
+            return null;
+        }
+        return new TreeRowReference(cast(GtkTreeRowReference*) p);
+    }
+
+    /**
+     * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
+     * know that the model emitted the "row_inserted" signal.
+     * Params:
+     * proxy =  A GObject
+     * path =  The row position that was inserted
+     */
+    public static void inserted(ObjectG proxy, TreePath path)
+    {
+        // void gtk_tree_row_reference_inserted (GObject *proxy,  GtkTreePath *path);
+        gtk_tree_row_reference_inserted((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct());
+    }
+
+    /**
+     * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
+     * know that the model emitted the "row_deleted" signal.
+     * Params:
+     * proxy =  A GObject
+     * path =  The path position that was deleted
+     */
+    public static void deleted(ObjectG proxy, TreePath path)
+    {
+        // void gtk_tree_row_reference_deleted (GObject *proxy,  GtkTreePath *path);
+        gtk_tree_row_reference_deleted((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct());
+    }
+
+    /**
+     * Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
+     * know that the model emitted the "rows_reordered" signal.
+     * Params:
+     * proxy =  A GObject
+     * path =  The parent path of the reordered signal
+     * iter =  The iter pointing to the parent of the reordered
+     * newOrder =  The new order of rows
+     */
+    public static void reordered(ObjectG proxy, TreePath path, TreeIter iter, int[] newOrder)
+    {
+        // void gtk_tree_row_reference_reordered (GObject *proxy,  GtkTreePath *path,  GtkTreeIter *iter,  gint *new_order);
+        gtk_tree_row_reference_reordered((proxy is null) ? null : proxy.getObjectGStruct(), (path is null) ? null : path.getTreePathStruct(), (iter is null) ? null : iter.getTreeIterStruct(), newOrder.ptr);
+    }
 }

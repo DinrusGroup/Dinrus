@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -32,8 +32,8 @@ public import gtkD.gtkc.gobjecttypes;
  */
 public enum GFileQueryInfoFlags
 {
-	NONE = 0,
-	NOFOLLOW_SYMLINKS = (1 << 0) /+*< nick=nofollow-symlinks >+/
+    NONE = 0,
+    NOFOLLOW_SYMLINKS = (1 << 0) /+*< nick=nofollow-symlinks >+/
 }
 alias GFileQueryInfoFlags FileQueryInfoFlags;
 
@@ -43,9 +43,9 @@ alias GFileQueryInfoFlags FileQueryInfoFlags;
  */
 public enum GFileCreateFlags
 {
-	NONE = 0,
-	PRIVATE = (1 << 0),
-	REPLACE_DESTINATION = (1 << 1)
+    NONE = 0,
+    PRIVATE = (1 << 0),
+    REPLACE_DESTINATION = (1 << 1)
 }
 alias GFileCreateFlags FileCreateFlags;
 
@@ -55,13 +55,13 @@ alias GFileCreateFlags FileCreateFlags;
  */
 public enum GFileCopyFlags
 {
-	NONE = 0, /+*< nick=none >+/
-	OVERWRITE = (1 << 0),
-	BACKUP = (1 << 1),
-	NOFOLLOW_SYMLINKS = (1 << 2),
-	ALL_METADATA = (1 << 3),
-	NO_FALLBACK_FOR_MOVE = (1 << 4),
-	TARGET_DEFAULT_PERMS = (1 << 5)
+    NONE = 0, /+*< nick=none >+/
+                        OVERWRITE = (1 << 0),
+                        BACKUP = (1 << 1),
+                        NOFOLLOW_SYMLINKS = (1 << 2),
+                        ALL_METADATA = (1 << 3),
+                        NO_FALLBACK_FOR_MOVE = (1 << 4),
+                        TARGET_DEFAULT_PERMS = (1 << 5)
 }
 alias GFileCopyFlags FileCopyFlags;
 
@@ -71,8 +71,8 @@ alias GFileCopyFlags FileCopyFlags;
  */
 public enum GFileMonitorFlags
 {
-	NONE = 0,
-	WATCH_MOUNTS = (1 << 0)
+    NONE = 0,
+    WATCH_MOUNTS = (1 << 0)
 }
 alias GFileMonitorFlags FileMonitorFlags;
 
@@ -84,9 +84,9 @@ alias GFileMonitorFlags FileMonitorFlags;
  */
 public enum GFilesystemPreviewType
 {
-	TYPE_IF_ALWAYS = 0,
-	TYPE_IF_LOCAL,
-	TYPE_NEVER
+    TYPE_IF_ALWAYS = 0,
+    TYPE_IF_LOCAL,
+    TYPE_NEVER
 }
 alias GFilesystemPreviewType FilesystemPreviewType;
 
@@ -96,16 +96,16 @@ alias GFilesystemPreviewType FilesystemPreviewType;
  */
 public enum GFileAttributeType
 {
-	TYPE_INVALID = 0,
-	TYPE_STRING,
-	TYPE_BYTE_STRING, /+* zero terminated string of non-zero bytes +/
-	TYPE_BOOLEAN,
-	TYPE_UINT32,
-	TYPE_INT32,
-	TYPE_UINT64,
-	TYPE_INT64,
-	TYPE_OBJECT,
-	TYPE_STRINGV
+    TYPE_INVALID = 0,
+    TYPE_STRING,
+    TYPE_BYTE_STRING, /+* zero terminated string of non-zero bytes +/
+    TYPE_BOOLEAN,
+    TYPE_UINT32,
+    TYPE_INT32,
+    TYPE_UINT64,
+    TYPE_INT64,
+    TYPE_OBJECT,
+    TYPE_STRINGV
 }
 alias GFileAttributeType FileAttributeType;
 
@@ -115,9 +115,9 @@ alias GFileAttributeType FileAttributeType;
  */
 public enum GFileAttributeInfoFlags
 {
-	NONE = 0,
-	COPY_WITH_FILE = (1 << 0),
-	COPY_WHEN_MOVED = (1 << 1)
+    NONE = 0,
+    COPY_WITH_FILE = (1 << 0),
+    COPY_WHEN_MOVED = (1 << 1)
 }
 alias GFileAttributeInfoFlags FileAttributeInfoFlags;
 
@@ -127,9 +127,9 @@ alias GFileAttributeInfoFlags FileAttributeInfoFlags;
  */
 public enum GFileAttributeStatus
 {
-	UNSET = 0,
-	SET,
-	ERROR_SETTING
+    UNSET = 0,
+    SET,
+    ERROR_SETTING
 }
 alias GFileAttributeStatus FileAttributeStatus;
 
@@ -139,13 +139,13 @@ alias GFileAttributeStatus FileAttributeStatus;
  */
 public enum GFileType
 {
-	TYPE_UNKNOWN = 0,
-	TYPE_REGULAR,
-	TYPE_DIRECTORY,
-	TYPE_SYMBOLIC_LINK,
-	TYPE_SPECIAL, /+* socket, fifo, blockdev, chardev +/
-	TYPE_SHORTCUT,
-	TYPE_MOUNTABLE
+    TYPE_UNKNOWN = 0,
+    TYPE_REGULAR,
+    TYPE_DIRECTORY,
+    TYPE_SYMBOLIC_LINK,
+    TYPE_SPECIAL, /+* socket, fifo, blockdev, chardev +/
+    TYPE_SHORTCUT,
+    TYPE_MOUNTABLE
 }
 alias GFileType FileType;
 
@@ -155,40 +155,40 @@ alias GFileType FileType;
  */
 public enum GIOErrorEnum
 {
-	FAILED,
-	NOT_FOUND,
-	EXISTS,
-	IS_DIRECTORY,
-	NOT_DIRECTORY,
-	NOT_EMPTY,
-	NOT_REGULAR_FILE,
-	NOT_SYMBOLIC_LINK,
-	NOT_MOUNTABLE_FILE,
-	FILENAME_TOO_LONG,
-	INVALID_FILENAME,
-	TOO_MANY_LINKS,
-	NO_SPACE,
-	INVALID_ARGUMENT,
-	PERMISSION_DENIED,
-	NOT_SUPPORTED,
-	NOT_MOUNTED,
-	ALREADY_MOUNTED,
-	CLOSED,
-	CANCELLED,
-	PENDING,
-	READ_ONLY,
-	CANT_CREATE_BACKUP,
-	WRONG_ETAG,
-	TIMED_OUT,
-	WOULD_RECURSE,
-	BUSY,
-	WOULD_BLOCK,
-	HOST_NOT_FOUND,
-	WOULD_MERGE,
-	FAILED_HANDLED,
-	TOO_MANY_OPEN_FILES,
-	NOT_INITIALIZED,
-	ADDRESS_IN_USE
+    FAILED,
+    NOT_FOUND,
+    EXISTS,
+    IS_DIRECTORY,
+    NOT_DIRECTORY,
+    NOT_EMPTY,
+    NOT_REGULAR_FILE,
+    NOT_SYMBOLIC_LINK,
+    NOT_MOUNTABLE_FILE,
+    FILENAME_TOO_LONG,
+    INVALID_FILENAME,
+    TOO_MANY_LINKS,
+    NO_SPACE,
+    INVALID_ARGUMENT,
+    PERMISSION_DENIED,
+    NOT_SUPPORTED,
+    NOT_MOUNTED,
+    ALREADY_MOUNTED,
+    CLOSED,
+    CANCELLED,
+    PENDING,
+    READ_ONLY,
+    CANT_CREATE_BACKUP,
+    WRONG_ETAG,
+    TIMED_OUT,
+    WOULD_RECURSE,
+    BUSY,
+    WOULD_BLOCK,
+    HOST_NOT_FOUND,
+    WOULD_MERGE,
+    FAILED_HANDLED,
+    TOO_MANY_OPEN_FILES,
+    NOT_INITIALIZED,
+    ADDRESS_IN_USE
 }
 alias GIOErrorEnum IOErrorEnum;
 
@@ -200,11 +200,11 @@ alias GIOErrorEnum IOErrorEnum;
  */
 public enum GAskPasswordFlags
 {
-	NEED_PASSWORD = (1 << 0),
-	NEED_USERNAME = (1 << 1),
-	NEED_DOMAIN = (1 << 2),
-	SAVING_SUPPORTED = (1 << 3),
-	ANONYMOUS_SUPPORTED = (1 << 4)
+    NEED_PASSWORD = (1 << 0),
+    NEED_USERNAME = (1 << 1),
+    NEED_DOMAIN = (1 << 2),
+    SAVING_SUPPORTED = (1 << 3),
+    ANONYMOUS_SUPPORTED = (1 << 4)
 }
 alias GAskPasswordFlags AskPasswordFlags;
 
@@ -216,9 +216,9 @@ alias GAskPasswordFlags AskPasswordFlags;
  */
 public enum GPasswordSave
 {
-	NEVER,
-	FOR_SESSION,
-	PERMANENTLY
+    NEVER,
+    FOR_SESSION,
+    PERMANENTLY
 }
 alias GPasswordSave PasswordSave;
 
@@ -229,9 +229,9 @@ alias GPasswordSave PasswordSave;
  */
 public enum GMountOperationResult
 {
-	HANDLED,
-	ABORTED,
-	UNHANDLED
+    HANDLED,
+    ABORTED,
+    UNHANDLED
 }
 alias GMountOperationResult MountOperationResult;
 
@@ -241,13 +241,13 @@ alias GMountOperationResult MountOperationResult;
  */
 public enum GFileMonitorEvent
 {
-	CHANGED,
-	CHANGES_DONE_HINT,
-	DELETED,
-	CREATED,
-	ATTRIBUTE_CHANGED,
-	PRE_UNMOUNT,
-	UNMOUNTED
+    CHANGED,
+    CHANGES_DONE_HINT,
+    DELETED,
+    CREATED,
+    ATTRIBUTE_CHANGED,
+    PRE_UNMOUNT,
+    UNMOUNTED
 }
 alias GFileMonitorEvent FileMonitorEvent;
 
@@ -257,9 +257,9 @@ alias GFileMonitorEvent FileMonitorEvent;
  */
 public enum GOutputStreamSpliceFlags
 {
-	NONE = 0,
-	CLOSE_SOURCE = (1 << 0),
-	CLOSE_TARGET = (1 << 1)
+    NONE = 0,
+    CLOSE_SOURCE = (1 << 0),
+    CLOSE_TARGET = (1 << 1)
 }
 alias GOutputStreamSpliceFlags OutputStreamSpliceFlags;
 
@@ -270,9 +270,9 @@ alias GOutputStreamSpliceFlags OutputStreamSpliceFlags;
  */
 public enum GDataStreamByteOrder
 {
-	BIG_ENDIAN,
-	LITTLE_ENDIAN,
-	HOST_ENDIAN
+    BIG_ENDIAN,
+    LITTLE_ENDIAN,
+    HOST_ENDIAN
 }
 alias GDataStreamByteOrder DataStreamByteOrder;
 
@@ -282,10 +282,10 @@ alias GDataStreamByteOrder DataStreamByteOrder;
  */
 public enum GDataStreamNewlineType
 {
-	TYPE_LF,
-	TYPE_CR,
-	TYPE_CR_LF,
-	TYPE_ANY
+    TYPE_LF,
+    TYPE_CR,
+    TYPE_CR_LF,
+    TYPE_ANY
 }
 alias GDataStreamNewlineType DataStreamNewlineType;
 
@@ -295,9 +295,9 @@ alias GDataStreamNewlineType DataStreamNewlineType;
  */
 public enum GAppInfoCreateFlags
 {
-	NONE = 0, /+*< nick=none >+/
-	NEEDS_TERMINAL = (1 << 0), /+*< nick=needs-terminal >+/
-	SUPPORTS_URIS = (1 << 1) /+*< nick=supports-uris >+/
+    NONE = 0, /+*< nick=none >+/
+                        NEEDS_TERMINAL = (1 << 0), /+*< nick=needs-terminal >+/
+                                SUPPORTS_URIS = (1 << 1) /+*< nick=supports-uris >+/
 }
 alias GAppInfoCreateFlags AppInfoCreateFlags;
 
@@ -307,7 +307,7 @@ alias GAppInfoCreateFlags AppInfoCreateFlags;
  */
 public enum GMountMountFlags
 {
-	NONE = 0
+    NONE = 0
 }
 alias GMountMountFlags MountMountFlags;
 
@@ -317,8 +317,8 @@ alias GMountMountFlags MountMountFlags;
  */
 public enum GMountUnmountFlags
 {
-	NONE = 0,
-	FORCE = (1 << 0)
+    NONE = 0,
+    FORCE = (1 << 0)
 }
 alias GMountUnmountFlags MountUnmountFlags;
 
@@ -328,7 +328,7 @@ alias GMountUnmountFlags MountUnmountFlags;
  */
 public enum GDriveStartFlags
 {
-	NONE = 0
+    NONE = 0
 }
 alias GDriveStartFlags DriveStartFlags;
 
@@ -338,11 +338,11 @@ alias GDriveStartFlags DriveStartFlags;
  */
 public enum GDriveStartStopType
 {
-	TYPE_UNKNOWN,
-	TYPE_SHUTDOWN,
-	TYPE_NETWORK,
-	TYPE_MULTIDISK,
-	TYPE_PASSWORD
+    TYPE_UNKNOWN,
+    TYPE_SHUTDOWN,
+    TYPE_NETWORK,
+    TYPE_MULTIDISK,
+    TYPE_PASSWORD
 }
 alias GDriveStartStopType DriveStartStopType;
 
@@ -353,10 +353,10 @@ alias GDriveStartStopType DriveStartStopType;
  */
 public enum GEmblemOrigin
 {
-	UNKNOWN,
-	DEVICE,
-	LIVEMETADATA,
-	TAG
+    UNKNOWN,
+    DEVICE,
+    LIVEMETADATA,
+    TAG
 }
 alias GEmblemOrigin EmblemOrigin;
 
@@ -367,10 +367,10 @@ alias GEmblemOrigin EmblemOrigin;
  */
 public enum GSocketType
 {
-	TYPE_INVALID,
-	TYPE_STREAM,
-	TYPE_DATAGRAM,
-	TYPE_SEQPACKET
+    TYPE_INVALID,
+    TYPE_STREAM,
+    TYPE_DATAGRAM,
+    TYPE_SEQPACKET
 }
 alias GSocketType SocketType;
 
@@ -385,11 +385,11 @@ alias GSocketType SocketType;
  */
 public enum GSocketProtocol
 {
-	UNKNOWN = -1,
-	DEFAULT = 0,
-	TCP = 6,
-	UDP = 17,
-	SCTP = 132
+    UNKNOWN = -1,
+    DEFAULT = 0,
+    TCP = 6,
+    UDP = 17,
+    SCTP = 132
 }
 alias GSocketProtocol SocketProtocol;
 
@@ -403,10 +403,10 @@ alias GSocketProtocol SocketProtocol;
  */
 public enum GSocketMsgFlags
 {
-	NONE,
-	OOB = 1,
-	PEEK = 2,
-	DONTROUTE = 4
+    NONE,
+    OOB = 1,
+    PEEK = 2,
+    DONTROUTE = 4
 }
 alias GSocketMsgFlags SocketMsgFlags;
 
@@ -418,10 +418,10 @@ alias GSocketMsgFlags SocketMsgFlags;
  */
 public enum GSocketFamily
 {
-	INVALID,
-	UNIX = 1,
-	IPV4 = 2,
-	IPV6 = 23
+    INVALID,
+    UNIX = 1,
+    IPV4 = 2,
+    IPV6 = 23
 }
 alias GSocketFamily SocketFamily;
 
@@ -432,9 +432,9 @@ alias GSocketFamily SocketFamily;
  */
 public enum GResolverError
 {
-	NOT_FOUND,
-	TEMPORARY_FAILURE,
-	INTERNAL
+    NOT_FOUND,
+    TEMPORARY_FAILURE,
+    INTERNAL
 }
 alias GResolverError ResolverError;
 
@@ -445,7 +445,7 @@ alias GResolverError ResolverError;
  * Generally stores a location within the file system. Handles do not
  * necessarily represent files or directories that currently exist.
  */
-public struct GFile{}
+public struct GFile {}
 
 
 /**
@@ -454,108 +454,108 @@ public struct GFile{}
  */
 public struct GFileIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) GFile *  function(GFile *file)  dup;
-	extern(C) uint  function(GFile *file)  hash;
-	extern(C) int  function(GFile *file1,GFile *file2)  equal;
-	extern(C) int  function(GFile *file)  isNative;
-	extern(C) int  function(GFile *file,char *uriScheme)  hasUriScheme;
-	extern(C) char *  function(GFile *file)  getUriScheme;
-	extern(C) char *  function(GFile *file)  getBasename;
-	extern(C) char *  function(GFile *file)  getPath;
-	extern(C) char *  function(GFile *file)  getUri;
-	extern(C) char *  function(GFile *file)  getParseName;
-	extern(C) GFile *  function(GFile *file)  getParent;
-	extern(C) int  function(GFile *prefix,GFile *file)  prefixMatches;
-	extern(C) char *  function(GFile *parent,GFile *descendant)  getRelativePath;
-	extern(C) GFile *  function(GFile *file,char *relativePath)  resolveRelativePath;
-	extern(C) GFile *  function(GFile *file,char *displayName,GError **error)  getChildForDisplayName;
-	extern(C) GFileEnumerator *  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  enumerateChildren;
-	extern(C) void  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  enumerateChildrenAsync;
-	extern(C) GFileEnumerator *  function(GFile *file,GAsyncResult *res,GError **error)  enumerateChildrenFinish;
-	extern(C) GFileInfo *  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  queryInfo;
-	extern(C) void  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  queryInfoAsync;
-	extern(C) GFileInfo *  function(GFile *file,GAsyncResult *res,GError **error)  queryInfoFinish;
-	extern(C) GFileInfo *  function(GFile *file,char *attributes,GCancellable *cancellable,GError **error)  queryFilesystemInfo;
-	extern(C) void  function(GFile *file,char *attributes,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  queryFilesystemInfoAsync;
-	extern(C) GFileInfo *  function(GFile *file,GAsyncResult *res,GError **error)  queryFilesystemInfoFinis;
-	extern(C) GMount *  function(GFile *file,GCancellable *cancellable,GError **error)  findEnclosingMount;
-	extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  findEnclosingMountAsync;
-	extern(C) GMount *  function(GFile *file,GAsyncResult *res,GError **error)  findEnclosingMountFinish;
-	extern(C) GFile *  function(GFile *file,char *displayName,GCancellable *cancellable,GError **error)  setDisplayName;
-	extern(C) void  function(GFile *file,char *displayName,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  setDisplayNameAsync;
-	extern(C) GFile *  function(GFile *file,GAsyncResult *res,GError **error)  setDisplayNameFinish;
-	extern(C) GFileAttributeInfoList *  function(GFile *file,GCancellable *cancellable,GError **error)  querySettableAttributes;
-	extern(C) void  function()  _QuerySettableAttributesAsync;
-	extern(C) void  function()  _QuerySettableAttributesFinish;
-	extern(C) GFileAttributeInfoList *  function(GFile *file,GCancellable *cancellable,GError **error)  queryWritableNamespaces;
-	extern(C) void  function()  _QueryWritableNamespacesAsync;
-	extern(C) void  function()  _QueryWritableNamespacesFinish;
-	extern(C) int  function(GFile *file,char *attribute,GFileAttributeType type,void* valueP,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  setAttribute;
-	extern(C) int  function(GFile *file,GFileInfo *info,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  setAttributesFromInfo;
-	extern(C) void  function(GFile *file,GFileInfo *info,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  setAttributesAsync;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GFileInfo **info,GError **error)  setAttributesFinish;
-	extern(C) GFileInputStream *  function(GFile *file,GCancellable *cancellable,GError **error)  readFn;
-	extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  readAsync;
-	extern(C) GFileInputStream *  function(GFile *file,GAsyncResult *res,GError **error)  readFinish;
-	extern(C) GFileOutputStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  appendTo;
-	extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  appendToAsync;
-	extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  appendToFinish;
-	extern(C) GFileOutputStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  create;
-	extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  createAsync;
-	extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  createFinish;
-	extern(C) GFileOutputStream *  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  replace;
-	extern(C) void  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  replaceAsync;
-	extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  replaceFinish;
-	extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  deleteFile;
-	extern(C) void  function()  _DeleteFileAsync;
-	extern(C) void  function()  _DeleteFileFinish;
-	extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  trash;
-	extern(C) void  function()  _TrashAsync;
-	extern(C) void  function()  _TrashFinish;
-	extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  makeDirectory;
-	extern(C) void  function()  _MakeDirectoryAsync;
-	extern(C) void  function()  _MakeDirectoryFinish;
-	extern(C) int  function(GFile *file,char *symlinkValue,GCancellable *cancellable,GError **error)  makeSymbolicLink;
-	extern(C) void  function()  _MakeSymbolicLinkAsync;
-	extern(C) void  function()  _MakeSymbolicLinkFinish;
-	extern(C) int  function(GFile *source,GFile *destination,GFileCopyFlags flags,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GError **error)  copy;
-	extern(C) void  function(GFile *source,GFile *destination,GFileCopyFlags flags,int ioPriority,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GAsyncReadyCallback callback,void* userData)  copyAsync;
-	extern(C) int  function(GFile *file,GAsyncResult *res,GError **error)  copyFinish;
-	extern(C) int  function(GFile *source,GFile *destination,GFileCopyFlags flags,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GError **error)  move;
-	extern(C) void  function()  _MoveAsync;
-	extern(C) void  function()  _MoveFinish;
-	extern(C) void  function(GFile *file,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountMountable;
-	extern(C) GFile *  function(GFile *file,GAsyncResult *result,GError **error)  mountMountableFinish;
-	extern(C) void  function(GFile *file,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountMountable;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  unmountMountableFinish;
-	extern(C) void  function(GFile *file,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectMountable;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  ejectMountableFinish;
-	extern(C) void  function(GFile *location,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountEnclosingVolume;
-	extern(C) int  function(GFile *location,GAsyncResult *result,GError **error)  mountEnclosingVolumeFinish;
-	extern(C) GFileMonitor *  function(GFile *file,GFileMonitorFlags flags,GCancellable *cancellable,GError **error)  monitorDir;
-	extern(C) GFileMonitor *  function(GFile *file,GFileMonitorFlags flags,GCancellable *cancellable,GError **error)  monitorFile;
-	extern(C) GFileIOStream *  function(GFile *file,GCancellable *cancellable,GError **error)  openReadwrite;
-	extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  openReadwriteAsync;
-	extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  openReadwriteFinish;
-	extern(C) GFileIOStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  createReadwrite;
-	extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  createReadwriteAsync;
-	extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  createReadwriteFinish;
-	extern(C) GFileIOStream *  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  replaceReadwrite;
-	extern(C) void  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  replaceReadwriteAsync;
-	extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  replaceReadwriteFinish;
-	extern(C) void  function(GFile *file,GDriveStartFlags flags,GMountOperation *startOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  startMountable;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  startMountableFinish;
-	extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  stopMountable;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  stopMountableFinish;
-	int supportsThreadContexts;
-	extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountMountableWithOperation;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  unmountMountableWithOperationFinish;
-	extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectMountableWithOperation;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  ejectMountableWithOperationFinish;
-	extern(C) void  function(GFile *file,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  pollMountable;
-	extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  pollMountableFinish;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) GFile *  function(GFile *file)  dup;
+    extern(C) uint  function(GFile *file)  hash;
+    extern(C) int  function(GFile *file1,GFile *file2)  equal;
+    extern(C) int  function(GFile *file)  isNative;
+    extern(C) int  function(GFile *file,char *uriScheme)  hasUriScheme;
+    extern(C) char *  function(GFile *file)  getUriScheme;
+    extern(C) char *  function(GFile *file)  getBasename;
+    extern(C) char *  function(GFile *file)  getPath;
+    extern(C) char *  function(GFile *file)  getUri;
+    extern(C) char *  function(GFile *file)  getParseName;
+    extern(C) GFile *  function(GFile *file)  getParent;
+    extern(C) int  function(GFile *prefix,GFile *file)  prefixMatches;
+    extern(C) char *  function(GFile *parent,GFile *descendant)  getRelativePath;
+    extern(C) GFile *  function(GFile *file,char *relativePath)  resolveRelativePath;
+    extern(C) GFile *  function(GFile *file,char *displayName,GError **error)  getChildForDisplayName;
+    extern(C) GFileEnumerator *  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  enumerateChildren;
+    extern(C) void  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  enumerateChildrenAsync;
+    extern(C) GFileEnumerator *  function(GFile *file,GAsyncResult *res,GError **error)  enumerateChildrenFinish;
+    extern(C) GFileInfo *  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  queryInfo;
+    extern(C) void  function(GFile *file,char *attributes,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  queryInfoAsync;
+    extern(C) GFileInfo *  function(GFile *file,GAsyncResult *res,GError **error)  queryInfoFinish;
+    extern(C) GFileInfo *  function(GFile *file,char *attributes,GCancellable *cancellable,GError **error)  queryFilesystemInfo;
+    extern(C) void  function(GFile *file,char *attributes,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  queryFilesystemInfoAsync;
+    extern(C) GFileInfo *  function(GFile *file,GAsyncResult *res,GError **error)  queryFilesystemInfoFinis;
+    extern(C) GMount *  function(GFile *file,GCancellable *cancellable,GError **error)  findEnclosingMount;
+    extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  findEnclosingMountAsync;
+    extern(C) GMount *  function(GFile *file,GAsyncResult *res,GError **error)  findEnclosingMountFinish;
+    extern(C) GFile *  function(GFile *file,char *displayName,GCancellable *cancellable,GError **error)  setDisplayName;
+    extern(C) void  function(GFile *file,char *displayName,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  setDisplayNameAsync;
+    extern(C) GFile *  function(GFile *file,GAsyncResult *res,GError **error)  setDisplayNameFinish;
+    extern(C) GFileAttributeInfoList *  function(GFile *file,GCancellable *cancellable,GError **error)  querySettableAttributes;
+    extern(C) void  function()  _QuerySettableAttributesAsync;
+    extern(C) void  function()  _QuerySettableAttributesFinish;
+    extern(C) GFileAttributeInfoList *  function(GFile *file,GCancellable *cancellable,GError **error)  queryWritableNamespaces;
+    extern(C) void  function()  _QueryWritableNamespacesAsync;
+    extern(C) void  function()  _QueryWritableNamespacesFinish;
+    extern(C) int  function(GFile *file,char *attribute,GFileAttributeType type,void* valueP,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  setAttribute;
+    extern(C) int  function(GFile *file,GFileInfo *info,GFileQueryInfoFlags flags,GCancellable *cancellable,GError **error)  setAttributesFromInfo;
+    extern(C) void  function(GFile *file,GFileInfo *info,GFileQueryInfoFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  setAttributesAsync;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GFileInfo **info,GError **error)  setAttributesFinish;
+    extern(C) GFileInputStream *  function(GFile *file,GCancellable *cancellable,GError **error)  readFn;
+    extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  readAsync;
+    extern(C) GFileInputStream *  function(GFile *file,GAsyncResult *res,GError **error)  readFinish;
+    extern(C) GFileOutputStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  appendTo;
+    extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  appendToAsync;
+    extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  appendToFinish;
+    extern(C) GFileOutputStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  create;
+    extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  createAsync;
+    extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  createFinish;
+    extern(C) GFileOutputStream *  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  replace;
+    extern(C) void  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  replaceAsync;
+    extern(C) GFileOutputStream *  function(GFile *file,GAsyncResult *res,GError **error)  replaceFinish;
+    extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  deleteFile;
+    extern(C) void  function()  _DeleteFileAsync;
+    extern(C) void  function()  _DeleteFileFinish;
+    extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  trash;
+    extern(C) void  function()  _TrashAsync;
+    extern(C) void  function()  _TrashFinish;
+    extern(C) int  function(GFile *file,GCancellable *cancellable,GError **error)  makeDirectory;
+    extern(C) void  function()  _MakeDirectoryAsync;
+    extern(C) void  function()  _MakeDirectoryFinish;
+    extern(C) int  function(GFile *file,char *symlinkValue,GCancellable *cancellable,GError **error)  makeSymbolicLink;
+    extern(C) void  function()  _MakeSymbolicLinkAsync;
+    extern(C) void  function()  _MakeSymbolicLinkFinish;
+    extern(C) int  function(GFile *source,GFile *destination,GFileCopyFlags flags,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GError **error)  copy;
+    extern(C) void  function(GFile *source,GFile *destination,GFileCopyFlags flags,int ioPriority,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GAsyncReadyCallback callback,void* userData)  copyAsync;
+    extern(C) int  function(GFile *file,GAsyncResult *res,GError **error)  copyFinish;
+    extern(C) int  function(GFile *source,GFile *destination,GFileCopyFlags flags,GCancellable *cancellable,GFileProgressCallback progressCallback,void* progressCallbackData,GError **error)  move;
+    extern(C) void  function()  _MoveAsync;
+    extern(C) void  function()  _MoveFinish;
+    extern(C) void  function(GFile *file,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountMountable;
+    extern(C) GFile *  function(GFile *file,GAsyncResult *result,GError **error)  mountMountableFinish;
+    extern(C) void  function(GFile *file,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountMountable;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  unmountMountableFinish;
+    extern(C) void  function(GFile *file,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectMountable;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  ejectMountableFinish;
+    extern(C) void  function(GFile *location,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountEnclosingVolume;
+    extern(C) int  function(GFile *location,GAsyncResult *result,GError **error)  mountEnclosingVolumeFinish;
+    extern(C) GFileMonitor *  function(GFile *file,GFileMonitorFlags flags,GCancellable *cancellable,GError **error)  monitorDir;
+    extern(C) GFileMonitor *  function(GFile *file,GFileMonitorFlags flags,GCancellable *cancellable,GError **error)  monitorFile;
+    extern(C) GFileIOStream *  function(GFile *file,GCancellable *cancellable,GError **error)  openReadwrite;
+    extern(C) void  function(GFile *file,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  openReadwriteAsync;
+    extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  openReadwriteFinish;
+    extern(C) GFileIOStream *  function(GFile *file,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  createReadwrite;
+    extern(C) void  function(GFile *file,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  createReadwriteAsync;
+    extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  createReadwriteFinish;
+    extern(C) GFileIOStream *  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,GCancellable *cancellable,GError **error)  replaceReadwrite;
+    extern(C) void  function(GFile *file,char *etag,int makeBackup,GFileCreateFlags flags,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  replaceReadwriteAsync;
+    extern(C) GFileIOStream *  function(GFile *file,GAsyncResult *res,GError **error)  replaceReadwriteFinish;
+    extern(C) void  function(GFile *file,GDriveStartFlags flags,GMountOperation *startOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  startMountable;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  startMountableFinish;
+    extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  stopMountable;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  stopMountableFinish;
+    int supportsThreadContexts;
+    extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountMountableWithOperation;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  unmountMountableWithOperationFinish;
+    extern(C) void  function(GFile *file,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectMountableWithOperation;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  ejectMountableWithOperationFinish;
+    extern(C) void  function(GFile *file,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  pollMountable;
+    extern(C) int  function(GFile *file,GAsyncResult *result,GError **error)  pollMountableFinish;
 }
 
 
@@ -565,9 +565,9 @@ public struct GFileIface
  */
 public struct GFileAttributeInfo
 {
-	char *name;
-	GFileAttributeType type;
-	GFileAttributeInfoFlags flags;
+    char *name;
+    GFileAttributeType type;
+    GFileAttributeInfoFlags flags;
 }
 
 
@@ -579,29 +579,29 @@ public struct GFileAttributeInfo
  */
 public struct GFileAttributeInfoList
 {
-	GFileAttributeInfo *infos;
-	int nInfos;
+    GFileAttributeInfo *infos;
+    int nInfos;
 }
 
 
 /**
  * Determines if a string matches a file attribute.
  */
-public struct GFileAttributeMatcher{}
+public struct GFileAttributeMatcher {}
 
 
 /**
  * Main Gtk struct.
  * Stores information about a file system object referenced by a GFile.
  */
-public struct GFileInfo{}
+public struct GFileInfo {}
 
 
 /**
  * Main Gtk struct.
  * A per matched file iterator.
  */
-public struct GFileEnumerator{}
+public struct GFileEnumerator {}
 
 
 /**
@@ -609,21 +609,21 @@ public struct GFileEnumerator{}
  * Class for providing authentication methods for mounting operations,
  * such as mounting a file locally, or authenticating with a server.
  */
-public struct GMountOperation{}
+public struct GMountOperation {}
 
 
 /**
  * Main Gtk struct.
  * Watches for changes to a file.
  */
-public struct GFileMonitor{}
+public struct GFileMonitor {}
 
 
 /**
  * Main Gtk struct.
  * Allows actions to be cancelled.
  */
-public struct GCancellable{}
+public struct GCancellable {}
 
 
 /**
@@ -631,7 +631,7 @@ public struct GCancellable{}
  * Holds results information for an asynchronous operation,
  * usually passed directly to a asynchronous _finish() operation.
  */
-public struct GAsyncResult{}
+public struct GAsyncResult {}
 
 
 /**
@@ -640,10 +640,10 @@ public struct GAsyncResult{}
  */
 public struct GAsyncResultIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) void*  function(GAsyncResult *asyncResult)  getUserData;
-	extern(C) GObject *  function(GAsyncResult *asyncResult)  getSourceObject;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) void*  function(GAsyncResult *asyncResult)  getUserData;
+    extern(C) GObject *  function(GAsyncResult *asyncResult)  getSourceObject;
 }
 
 
@@ -651,21 +651,21 @@ public struct GAsyncResultIface
  * Main Gtk struct.
  * Opaque class for definining and scheduling IO jobs.
  */
-public struct GIOSchedulerJob{}
+public struct GIOSchedulerJob {}
 
 
 /**
  * Main Gtk struct.
  * A simple implementation of GAsyncResult.
  */
-public struct GSimpleAsyncResult{}
+public struct GSimpleAsyncResult {}
 
 
 /**
  * Main Gtk struct.
  * Seek object for streaming operations.
  */
-public struct GSeekable{}
+public struct GSeekable {}
 
 
 /**
@@ -674,14 +674,15 @@ public struct GSeekable{}
  */
 public struct GSeekableIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) long  function(GSeekable *seekable)  tell;
-	extern(C) int  function(GSeekable *seekable)  canSeek;
-	extern(C) int  function(GSeekable *seekable,long offset,GSeekType type,GCancellable *cancellable,GError **error)  seek;
-	extern(C) int  function(GSeekable *seekable)  canTruncate;
-	extern(C) int  function(GSeekable *seekable,long offset,GCancellable *cancellable,GError **error)  truncateFn;
-	/+* TODO: Async seek/truncate +/
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) long  function(GSeekable *seekable)  tell;
+    extern(C) int  function(GSeekable *seekable)  canSeek;
+    extern(C) int  function(GSeekable *seekable,long offset,GSeekType type,GCancellable *cancellable,GError **error)  seek;
+    extern(C) int  function(GSeekable *seekable)  canTruncate;
+    extern(C) int  function(GSeekable *seekable,long offset,GCancellable *cancellable,GError **error)  truncateFn;
+/+* TODO:
+    Async seek/truncate +/
 }
 
 
@@ -689,7 +690,7 @@ public struct GSeekableIface
  * Main Gtk struct.
  * Base class for streaming input operations.
  */
-public struct GInputStream{}
+public struct GInputStream {}
 
 
 /**
@@ -699,14 +700,14 @@ public struct GInputStream{}
  * writing, splicing, flushing and closing streams, but may implement
  * asynchronous versions.
  */
-public struct GOutputStream{}
+public struct GOutputStream {}
 
 
 /**
  * Main Gtk struct.
  * Base class for read-write streams.
  */
-public struct GIOStream{}
+public struct GIOStream {}
 
 
 /**
@@ -715,7 +716,7 @@ public struct GIOStream{}
  * a few file-specific operations and seeking.
  * GFileInputStream implements GSeekable.
  */
-public struct GFileInputStream{}
+public struct GFileInputStream {}
 
 
 /**
@@ -724,7 +725,7 @@ public struct GFileInputStream{}
  * a few file-specific operations and seeking and truncating.
  * GFileOutputStream implements GSeekable.
  */
-public struct GFileOutputStream{}
+public struct GFileOutputStream {}
 
 
 /**
@@ -733,49 +734,49 @@ public struct GFileOutputStream{}
  * a few file-specific operations and seeking and truncating.
  * GFileIOStream implements GSeekable.
  */
-public struct GFileIOStream{}
+public struct GFileIOStream {}
 
 
 /**
  * Main Gtk struct.
  * A base class for all input streams that work on an underlying stream.
  */
-public struct GFilterInputStream{}
+public struct GFilterInputStream {}
 
 
 /**
  * Main Gtk struct.
  * A base class for all output streams that work on an underlying stream.
  */
-public struct GFilterOutputStream{}
+public struct GFilterOutputStream {}
 
 
 /**
  * Main Gtk struct.
  * Implements GInputStream for arbitrary memory chunks.
  */
-public struct GMemoryInputStream{}
+public struct GMemoryInputStream {}
 
 
 /**
  * Main Gtk struct.
  * Implements GOutputStream for arbitrary memory chunks.
  */
-public struct GMemoryOutputStream{}
+public struct GMemoryOutputStream {}
 
 
 /**
  * Main Gtk struct.
  * Implements GFilterInputStream with a sized input buffer.
  */
-public struct GBufferedInputStream{}
+public struct GBufferedInputStream {}
 
 
 /**
  * Main Gtk struct.
  * An implementation of GFilterOutputStream with a sized buffer.
  */
-public struct GBufferedOutputStream{}
+public struct GBufferedOutputStream {}
 
 
 /**
@@ -783,7 +784,7 @@ public struct GBufferedOutputStream{}
  * An implementation of GBufferedInputStream that allows for high-level
  * data manipulation of arbitrary data (including binary operations).
  */
-public struct GDataInputStream{}
+public struct GDataInputStream {}
 
 
 /**
@@ -791,21 +792,21 @@ public struct GDataInputStream{}
  * An implementation of GBufferedOutputStream that allows for high-level
  * data manipulation of arbitrary data (including binary operations).
  */
-public struct GDataOutputStream{}
+public struct GDataOutputStream {}
 
 
 /**
  * Main Gtk struct.
  * Implements GInputStream for reading from selectable unix file descriptors
  */
-public struct GUnixInputStream{}
+public struct GUnixInputStream {}
 
 
 /**
  * Main Gtk struct.
  * Implements GOutputStream for outputting to selectable unix file descriptors
  */
-public struct GUnixOutputStream{}
+public struct GUnixOutputStream {}
 
 
 /**
@@ -813,7 +814,7 @@ public struct GUnixOutputStream{}
  * Information about an installed application and methods to launch
  * it (with file arguments).
  */
-public struct GAppInfo{}
+public struct GAppInfo {}
 
 
 /**
@@ -822,29 +823,29 @@ public struct GAppInfo{}
  */
 public struct GAppInfoIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) GAppInfo *  function(GAppInfo *appinfo)  dup;
-	extern(C) int  function(GAppInfo *appinfo1,GAppInfo *appinfo2)  equal;
-	extern(C) char *  function(GAppInfo *appinfo)  getId;
-	extern(C) char *  function(GAppInfo *appinfo)  getName;
-	extern(C) char *  function(GAppInfo *appinfo)  getDescription;
-	extern(C) char *  function(GAppInfo *appinfo)  getExecutable;
-	extern(C) GIcon *  function(GAppInfo *appinfo)  getIcon;
-	extern(C) int  function(GAppInfo *appinfo,GList *filenames,GAppLaunchContext *launchContext,GError **error)  launch;
-	extern(C) int  function(GAppInfo *appinfo)  supportsUris;
-	extern(C) int  function(GAppInfo *appinfo)  supportsFiles;
-	extern(C) int  function(GAppInfo *appinfo,GList *uris,GAppLaunchContext *launchContext,GError **error)  launchUris;
-	extern(C) int  function(GAppInfo *appinfo)  shouldShow;
-	/+* For changing associations +/
-	extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  setAsDefaultForType;
-	extern(C) int  function(GAppInfo *appinfo,char *extension,GError **error)  setAsDefaultForExtension;
-	extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  addSupportsType;
-	extern(C) int  function(GAppInfo *appinfo)  canRemoveSupportsType;
-	extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  removeSupportsType;
-	extern(C) int  function(GAppInfo *appinfo)  canDelete;
-	extern(C) int  function(GAppInfo *appinfo)  doDelete;
-	extern(C) char *  function(GAppInfo *appinfo)  getCommandline;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) GAppInfo *  function(GAppInfo *appinfo)  dup;
+    extern(C) int  function(GAppInfo *appinfo1,GAppInfo *appinfo2)  equal;
+    extern(C) char *  function(GAppInfo *appinfo)  getId;
+    extern(C) char *  function(GAppInfo *appinfo)  getName;
+    extern(C) char *  function(GAppInfo *appinfo)  getDescription;
+    extern(C) char *  function(GAppInfo *appinfo)  getExecutable;
+    extern(C) GIcon *  function(GAppInfo *appinfo)  getIcon;
+    extern(C) int  function(GAppInfo *appinfo,GList *filenames,GAppLaunchContext *launchContext,GError **error)  launch;
+    extern(C) int  function(GAppInfo *appinfo)  supportsUris;
+    extern(C) int  function(GAppInfo *appinfo)  supportsFiles;
+    extern(C) int  function(GAppInfo *appinfo,GList *uris,GAppLaunchContext *launchContext,GError **error)  launchUris;
+    extern(C) int  function(GAppInfo *appinfo)  shouldShow;
+    /+* For changing associations +/
+    extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  setAsDefaultForType;
+    extern(C) int  function(GAppInfo *appinfo,char *extension,GError **error)  setAsDefaultForExtension;
+    extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  addSupportsType;
+    extern(C) int  function(GAppInfo *appinfo)  canRemoveSupportsType;
+    extern(C) int  function(GAppInfo *appinfo,char *contentType,GError **error)  removeSupportsType;
+    extern(C) int  function(GAppInfo *appinfo)  canDelete;
+    extern(C) int  function(GAppInfo *appinfo)  doDelete;
+    extern(C) char *  function(GAppInfo *appinfo)  getCommandline;
 }
 
 
@@ -853,35 +854,35 @@ public struct GAppInfoIface
  * handle for instance startup notification and launching the new application
  * on the same screen as the launching window.
  */
-public struct GAppLaunchContext{}
+public struct GAppLaunchContext {}
 
 
 /**
  * Main Gtk struct.
  * Information about an installed application from a desktop file.
  */
-public struct GDesktopAppInfo{}
+public struct GDesktopAppInfo {}
 
 
 /**
  * Interface that is used by backends to associate default
  * handlers with URI schemes.
  */
-public struct GDesktopAppInfoLookup{}
+public struct GDesktopAppInfoLookup {}
 
 
 /**
  * Main Gtk struct.
  * A Volume Monitor that watches for volume events.
  */
-public struct GVolumeMonitor{}
+public struct GVolumeMonitor {}
 
 
 /**
  * Main Gtk struct.
  * Opaque mountable volume object.
  */
-public struct GVolume{}
+public struct GVolume {}
 
 
 /**
@@ -890,28 +891,28 @@ public struct GVolume{}
  */
 public struct GVolumeIface
 {
-	GTypeInterface gIface;
-	/+* signals +/
-	extern(C) void  function(GVolume *volume)  changed;
-	extern(C) void  function(GVolume *volume)  removed;
-	/+* Virtual Table +/
-	extern(C) char *  function(GVolume *volume)  getName;
-	extern(C) GIcon *  function(GVolume *volume)  getIcon;
-	extern(C) char *  function(GVolume *volume)  getUuid;
-	extern(C) GDrive *  function(GVolume *volume)  getDrive;
-	extern(C) GMount *  function(GVolume *volume)  getMount;
-	extern(C) int  function(GVolume *volume)  canMount;
-	extern(C) int  function(GVolume *volume)  canEject;
-	extern(C) void  function(GVolume *volume,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountFn;
-	extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  mountFinish;
-	extern(C) void  function(GVolume *volume,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
-	extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  ejectFinish;
-	extern(C) char *  function(GVolume *volume,char *kind)  getIdentifier;
-	extern(C) char **  function(GVolume *volume)  enumerateIdentifiers;
-	extern(C) int  function(GVolume *volume)  shouldAutomount;
-	extern(C) GFile *  function(GVolume *volume)  getActivationRoot;
-	extern(C) void  function(GVolume *volume,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
-	extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
+    GTypeInterface gIface;
+    /+* signals +/
+    extern(C) void  function(GVolume *volume)  changed;
+    extern(C) void  function(GVolume *volume)  removed;
+    /+* Virtual Table +/
+    extern(C) char *  function(GVolume *volume)  getName;
+    extern(C) GIcon *  function(GVolume *volume)  getIcon;
+    extern(C) char *  function(GVolume *volume)  getUuid;
+    extern(C) GDrive *  function(GVolume *volume)  getDrive;
+    extern(C) GMount *  function(GVolume *volume)  getMount;
+    extern(C) int  function(GVolume *volume)  canMount;
+    extern(C) int  function(GVolume *volume)  canEject;
+    extern(C) void  function(GVolume *volume,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  mountFn;
+    extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  mountFinish;
+    extern(C) void  function(GVolume *volume,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
+    extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  ejectFinish;
+    extern(C) char *  function(GVolume *volume,char *kind)  getIdentifier;
+    extern(C) char **  function(GVolume *volume)  enumerateIdentifiers;
+    extern(C) int  function(GVolume *volume)  shouldAutomount;
+    extern(C) GFile *  function(GVolume *volume)  getActivationRoot;
+    extern(C) void  function(GVolume *volume,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
+    extern(C) int  function(GVolume *volume,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
 }
 
 
@@ -919,7 +920,7 @@ public struct GVolumeIface
  * Main Gtk struct.
  * A handle to an object implementing the GMountIface interface.
  */
-public struct GMount{}
+public struct GMount {}
 
 
 /**
@@ -928,34 +929,34 @@ public struct GMount{}
  */
 public struct GMountIface
 {
-	GTypeInterface gIface;
-	/+* signals +/
-	extern(C) void  function(GMount *mount)  changed;
-	extern(C) void  function(GMount *mount)  unmounted;
-	/+* Virtual Table +/
-	extern(C) GFile *  function(GMount *mount)  getRoot;
-	extern(C) char *  function(GMount *mount)  getName;
-	extern(C) GIcon *  function(GMount *mount)  getIcon;
-	extern(C) char *  function(GMount *mount)  getUuid;
-	extern(C) GVolume *  function(GMount *mount)  getVolume;
-	extern(C) GDrive *  function(GMount *mount)  getDrive;
-	extern(C) int  function(GMount *mount)  canUnmount;
-	extern(C) int  function(GMount *mount)  canEject;
-	extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmount;
-	extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  unmountFinish;
-	extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
-	extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  ejectFinish;
-	extern(C) void  function(GMount *mount,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  remount;
-	extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  remountFinish;
-	extern(C) void  function(GMount *mount,int forceRescan,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  guessContentType;
-	extern(C) char **  function(GMount *mount,GAsyncResult *result,GError **error)  guessContentTypeFinish;
-	extern(C) char **  function(GMount *mount,int forceRescan,GCancellable *cancellable,GError **error)  guessContentTypeSync;
-	/+* Signal, not VFunc +/
-	extern(C) void  function(GMount *mount)  preUnmount;
-	extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountWithOperation;
-	extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  unmountWithOperationFinish;
-	extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
-	extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
+    GTypeInterface gIface;
+    /+* signals +/
+    extern(C) void  function(GMount *mount)  changed;
+    extern(C) void  function(GMount *mount)  unmounted;
+    /+* Virtual Table +/
+    extern(C) GFile *  function(GMount *mount)  getRoot;
+    extern(C) char *  function(GMount *mount)  getName;
+    extern(C) GIcon *  function(GMount *mount)  getIcon;
+    extern(C) char *  function(GMount *mount)  getUuid;
+    extern(C) GVolume *  function(GMount *mount)  getVolume;
+    extern(C) GDrive *  function(GMount *mount)  getDrive;
+    extern(C) int  function(GMount *mount)  canUnmount;
+    extern(C) int  function(GMount *mount)  canEject;
+    extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmount;
+    extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  unmountFinish;
+    extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
+    extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  ejectFinish;
+    extern(C) void  function(GMount *mount,GMountMountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  remount;
+    extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  remountFinish;
+    extern(C) void  function(GMount *mount,int forceRescan,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  guessContentType;
+    extern(C) char **  function(GMount *mount,GAsyncResult *result,GError **error)  guessContentTypeFinish;
+    extern(C) char **  function(GMount *mount,int forceRescan,GCancellable *cancellable,GError **error)  guessContentTypeSync;
+    /+* Signal, not VFunc +/
+    extern(C) void  function(GMount *mount)  preUnmount;
+    extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  unmountWithOperation;
+    extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  unmountWithOperationFinish;
+    extern(C) void  function(GMount *mount,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
+    extern(C) int  function(GMount *mount,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
 }
 
 
@@ -963,7 +964,7 @@ public struct GMountIface
  * Main Gtk struct.
  * Opaque drive object.
  */
-public struct GDrive{}
+public struct GDrive {}
 
 
 /**
@@ -972,53 +973,53 @@ public struct GDrive{}
  */
 public struct GDriveIface
 {
-	GTypeInterface gIface;
-	/+* signals +/
-	extern(C) void  function(GDrive *drive)  changed;
-	extern(C) void  function(GDrive *drive)  disconnected;
-	extern(C) void  function(GDrive *drive)  ejectButton;
-	/+* Virtual Table +/
-	extern(C) char *  function(GDrive *drive)  getName;
-	extern(C) GIcon *  function(GDrive *drive)  getIcon;
-	extern(C) int  function(GDrive *drive)  hasVolumes;
-	extern(C) GList *  function(GDrive *drive)  getVolumes;
-	extern(C) int  function(GDrive *drive)  isMediaRemovable;
-	extern(C) int  function(GDrive *drive)  hasMedia;
-	extern(C) int  function(GDrive *drive)  isMediaCheckAutomatic;
-	extern(C) int  function(GDrive *drive)  canEject;
-	extern(C) int  function(GDrive *drive)  canPollForMedia;
-	extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
-	extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  ejectFinish;
-	extern(C) void  function(GDrive *drive,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  pollForMedia;
-	extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  pollForMediaFinish;
-	extern(C) char *  function(GDrive *drive,char *kind)  getIdentifier;
-	extern(C) char **  function(GDrive *drive)  enumerateIdentifiers;
-	extern(C) GDriveStartStopType  function(GDrive *drive)  getStartStopType;
-	extern(C) int  function(GDrive *drive)  canStart;
-	extern(C) int  function(GDrive *drive)  canStartDegraded;
-	extern(C) void  function(GDrive *drive,GDriveStartFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  start;
-	extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  startFinish;
-	extern(C) int  function(GDrive *drive)  canStop;
-	extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  stop;
-	extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  stopFinish;
-	/+* signal, not VFunc +/
-	extern(C) void  function(GDrive *drive)  stopButton;
-	extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
-	extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
+    GTypeInterface gIface;
+    /+* signals +/
+    extern(C) void  function(GDrive *drive)  changed;
+    extern(C) void  function(GDrive *drive)  disconnected;
+    extern(C) void  function(GDrive *drive)  ejectButton;
+    /+* Virtual Table +/
+    extern(C) char *  function(GDrive *drive)  getName;
+    extern(C) GIcon *  function(GDrive *drive)  getIcon;
+    extern(C) int  function(GDrive *drive)  hasVolumes;
+    extern(C) GList *  function(GDrive *drive)  getVolumes;
+    extern(C) int  function(GDrive *drive)  isMediaRemovable;
+    extern(C) int  function(GDrive *drive)  hasMedia;
+    extern(C) int  function(GDrive *drive)  isMediaCheckAutomatic;
+    extern(C) int  function(GDrive *drive)  canEject;
+    extern(C) int  function(GDrive *drive)  canPollForMedia;
+    extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  eject;
+    extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  ejectFinish;
+    extern(C) void  function(GDrive *drive,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  pollForMedia;
+    extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  pollForMediaFinish;
+    extern(C) char *  function(GDrive *drive,char *kind)  getIdentifier;
+    extern(C) char **  function(GDrive *drive)  enumerateIdentifiers;
+    extern(C) GDriveStartStopType  function(GDrive *drive)  getStartStopType;
+    extern(C) int  function(GDrive *drive)  canStart;
+    extern(C) int  function(GDrive *drive)  canStartDegraded;
+    extern(C) void  function(GDrive *drive,GDriveStartFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  start;
+    extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  startFinish;
+    extern(C) int  function(GDrive *drive)  canStop;
+    extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  stop;
+    extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  stopFinish;
+    /+* signal, not VFunc +/
+    extern(C) void  function(GDrive *drive)  stopButton;
+    extern(C) void  function(GDrive *drive,GMountUnmountFlags flags,GMountOperation *mountOperation,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  ejectWithOperation;
+    extern(C) int  function(GDrive *drive,GAsyncResult *result,GError **error)  ejectWithOperationFinish;
 }
 
 
 /**
  * Implementation of the GMount interface for Unix systems.
  */
-public struct GUnixMount{}
+public struct GUnixMount {}
 
 
 /**
  * Defines a Unix mount point (e.g. /dev).
  * This corresponds roughly to a fstab entry.
  */
-public struct GUnixMountPoint{}
+public struct GUnixMountPoint {}
 
 
 /**
@@ -1026,20 +1027,20 @@ public struct GUnixMountPoint{}
  * Defines a Unix mount entry (e.g. /media/cdrom).
  * This corresponds roughly to a mtab entry.
  */
-public struct GUnixMountEntry{}
+public struct GUnixMountEntry {}
 
 
 /**
  * Watches GUnixMounts for changes.
  */
-public struct GUnixMountMonitor{}
+public struct GUnixMountMonitor {}
 
 
 /**
  * Main Gtk struct.
  * An abstract type that specifies an icon.
  */
-public struct GIcon{}
+public struct GIcon {}
 
 
 /**
@@ -1050,12 +1051,12 @@ public struct GIcon{}
  */
 public struct GIconIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) uint  function(GIcon *icon)  hash;
-	extern(C) int  function(GIcon *icon1,GIcon *icon2)  equal;
-	extern(C) int  function(GIcon *icon,GPtrArray *tokens,int *outVersion)  toTokens;
-	extern(C) GIcon *  function(char **tokens,int numTokens,int versio,GError **error)  fromTokens;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) uint  function(GIcon *icon)  hash;
+    extern(C) int  function(GIcon *icon1,GIcon *icon2)  equal;
+    extern(C) int  function(GIcon *icon,GPtrArray *tokens,int *outVersion)  toTokens;
+    extern(C) GIcon *  function(char **tokens,int numTokens,int versio,GError **error)  fromTokens;
 }
 
 
@@ -1063,7 +1064,7 @@ public struct GIconIface
  * Main Gtk struct.
  * Gets an icon for a GFile. Implements GLoadableIcon.
  */
-public struct GFileIcon{}
+public struct GFileIcon {}
 
 
 /**
@@ -1071,7 +1072,7 @@ public struct GFileIcon{}
  * Generic type for all kinds of icons that can be loaded
  * as a stream.
  */
-public struct GLoadableIcon{}
+public struct GLoadableIcon {}
 
 
 /**
@@ -1080,11 +1081,11 @@ public struct GLoadableIcon{}
  */
 public struct GLoadableIconIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) GInputStream *  function(GLoadableIcon *icon,int size,char **type,GCancellable *cancellable,GError **error)  load;
-	extern(C) void  function(GLoadableIcon *icon,int size,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  loadAsync;
-	extern(C) GInputStream *  function(GLoadableIcon *icon,GAsyncResult *res,char **type,GError **error)  loadFinish;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) GInputStream *  function(GLoadableIcon *icon,int size,char **type,GCancellable *cancellable,GError **error)  load;
+    extern(C) void  function(GLoadableIcon *icon,int size,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  loadAsync;
+    extern(C) GInputStream *  function(GLoadableIcon *icon,GAsyncResult *res,char **type,GError **error)  loadFinish;
 }
 
 
@@ -1092,21 +1093,21 @@ public struct GLoadableIconIface
  * Main Gtk struct.
  * An implementation of GIcon for themed icons.
  */
-public struct GThemedIcon{}
+public struct GThemedIcon {}
 
 
 /**
  * Main Gtk struct.
  * An implementation of GIcon for icons with emblems.
  */
-public struct GEmblemedIcon{}
+public struct GEmblemedIcon {}
 
 
 /**
  * Main Gtk struct.
  * An object for Emblems
  */
-public struct GEmblem{}
+public struct GEmblem {}
 
 
 /**
@@ -1114,7 +1115,7 @@ public struct GEmblem{}
  * Interface for initializable objects.
  * Since 2.22
  */
-public struct GInitable{}
+public struct GInitable {}
 
 
 /**
@@ -1124,9 +1125,9 @@ public struct GInitable{}
  */
 public struct GInitableIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) int  function(GInitable *initable,GCancellable *cancellable,GError **error)  init;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) int  function(GInitable *initable,GCancellable *cancellable,GError **error)  init;
 }
 
 
@@ -1135,7 +1136,7 @@ public struct GInitableIface
  * Interface for asynchronously initializable objects.
  * Since 2.22
  */
-public struct GAsyncInitable{}
+public struct GAsyncInitable {}
 
 
 /**
@@ -1145,10 +1146,10 @@ public struct GAsyncInitable{}
  */
 public struct GAsyncInitableIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) void  function(GAsyncInitable *initable,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  initAsync;
-	extern(C) int  function(GAsyncInitable *initable,GAsyncResult *res,GError **error)  initFinish;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) void  function(GAsyncInitable *initable,int ioPriority,GCancellable *cancellable,GAsyncReadyCallback callback,void* userData)  initAsync;
+    extern(C) int  function(GAsyncInitable *initable,GAsyncResult *res,GError **error)  initFinish;
 }
 
 
@@ -1157,7 +1158,7 @@ public struct GAsyncInitableIface
  * A lowlevel network socket object.
  * Since 2.22
  */
-public struct GSocket{}
+public struct GSocket {}
 
 
 /**
@@ -1169,8 +1170,8 @@ public struct GSocket{}
  */
 public struct GInputVector
 {
-	void* buffer;
-	uint size;
+    void* buffer;
+    uint size;
 }
 
 
@@ -1183,8 +1184,8 @@ public struct GInputVector
  */
 public struct GOutputVector
 {
-	void* buffer;
-	uint size;
+    void* buffer;
+    uint size;
 }
 
 
@@ -1192,7 +1193,7 @@ public struct GOutputVector
  * Main Gtk struct.
  * An IPv4 or IPv6 internet address.
  */
-public struct GInetAddress{}
+public struct GInetAddress {}
 
 
 /**
@@ -1200,7 +1201,7 @@ public struct GInetAddress{}
  * A socket endpoint address, corresponding to struct sockaddr
  * or one of its subtypes.
  */
-public struct GSocketAddress{}
+public struct GSocketAddress {}
 
 
 /**
@@ -1208,7 +1209,7 @@ public struct GSocketAddress{}
  * An IPv4 or IPv6 socket address, corresponding to a struct
  * sockaddr_in or struct sockaddr_in6.
  */
-public struct GInetSocketAddress{}
+public struct GInetSocketAddress {}
 
 
 /**
@@ -1216,7 +1217,7 @@ public struct GInetSocketAddress{}
  * A UNIX-domain (local) socket address, corresponding to a
  * struct sockaddr_un.
  */
-public struct GUnixSocketAddress{}
+public struct GUnixSocketAddress {}
 
 
 /**
@@ -1224,13 +1225,13 @@ public struct GUnixSocketAddress{}
  * Base class for socket-type specific control messages that can be sent and
  * received over GSocket.
  */
-public struct GSocketControlMessage{}
+public struct GSocketControlMessage {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct GUnixFDMessage{}
+public struct GUnixFDMessage {}
 
 
 /**
@@ -1238,13 +1239,13 @@ public struct GUnixFDMessage{}
  * The object that handles DNS resolution. Use g_resolver_get_default()
  * to get the default resolver.
  */
-public struct GResolver{}
+public struct GResolver {}
 
 
 /**
  * Interface for objects that contain or generate GSocketAddresses.
  */
-public struct GSocketConnectable{}
+public struct GSocketConnectable {}
 
 
 /**
@@ -1253,9 +1254,9 @@ public struct GSocketConnectable{}
  */
 public struct GSocketConnectableIface
 {
-	GTypeInterface gIface;
-	/+* Virtual Table +/
-	extern(C) GSocketAddressEnumerator *  function(GSocketConnectable *connectable)  enumerate;
+    GTypeInterface gIface;
+    /+* Virtual Table +/
+    extern(C) GSocketAddressEnumerator *  function(GSocketConnectable *connectable)  enumerate;
 }
 
 
@@ -1264,7 +1265,7 @@ public struct GSocketConnectableIface
  * Enumerator type for objects that contain or generate
  * GSocketAddresses.
  */
-public struct GSocketAddressEnumerator{}
+public struct GSocketAddressEnumerator {}
 
 
 /**
@@ -1272,7 +1273,7 @@ public struct GSocketAddressEnumerator{}
  * A GSocketConnectable for resolving a hostname and connecting to
  * that host.
  */
-public struct GNetworkAddress{}
+public struct GNetworkAddress {}
 
 
 /**
@@ -1280,14 +1281,14 @@ public struct GNetworkAddress{}
  * A GSocketConnectable for resolving a SRV record and connecting to
  * that service.
  */
-public struct GNetworkService{}
+public struct GNetworkService {}
 
 
 /**
  * Main Gtk struct.
  * A single target host/port that a network service is running on.
  */
-public struct GSrvTarget{}
+public struct GSrvTarget {}
 
 
 /**
@@ -1295,7 +1296,7 @@ public struct GSrvTarget{}
  * A helper class for network servers to listen for and accept connections.
  * Since 2.22
  */
-public struct GSocketClient{}
+public struct GSocketClient {}
 
 
 /**
@@ -1303,23 +1304,23 @@ public struct GSocketClient{}
  * A socket connection GIOStream object for connection-oriented sockets.
  * Since 2.22
  */
-public struct GSocketConnection{}
+public struct GSocketConnection {}
 
 
 /**
  * A GSocketConnection for UNIX domain socket connections.
  * Since 2.22
  */
-public struct GTcpConnection{}
+public struct GTcpConnection {}
 
 
-public struct GUnixConnection{}
+public struct GUnixConnection {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct GSocketListener{}
+public struct GSocketListener {}
 
 
 /**
@@ -1328,7 +1329,7 @@ public struct GSocketListener{}
  * glib mainloop.
  * Since 2.22
  */
-public struct GSocketService{}
+public struct GSocketService {}
 
 
 /**
@@ -1337,37 +1338,37 @@ public struct GSocketService{}
  * glib mainloop and handling them in a thread.
  * Since 2.22
  */
-public struct GThreadedSocketService{}
+public struct GThreadedSocketService {}
 
 
 /**
  * Main Gtk struct.
  * Completes filenames based on files that exist within the file system.
  */
-public struct GFilenameCompleter{}
+public struct GFilenameCompleter {}
 
 
 /**
  * Main Gtk struct.
  * Virtual File System object.
  */
-public struct GVfs{}
+public struct GVfs {}
 
 
 /**
  * Main Gtk struct.
  * Opaque module base class for extending GIO.
  */
-public struct GIOModule{}
+public struct GIOModule {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct GIOExtension{}
+public struct GIOExtension {}
 
 
-public struct GIOExtensionPoint{}
+public struct GIOExtensionPoint {}
 
 
 /*

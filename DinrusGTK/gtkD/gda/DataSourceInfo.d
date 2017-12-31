@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gda
  * outFile = DataSourceInfo
  * strct   = GdaDataSourceInfo
  * realStrct=
  * ctorStrct=
  * clss    = DataSourceInfo
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gda_data_source_
@@ -72,63 +72,82 @@ private import gtkD.glib.Str;
  */
 public class DataSourceInfo
 {
-	
-	/** the main Gtk struct */
-	protected GdaDataSourceInfo* gdaDataSourceInfo;
-	
-	
-	public GdaDataSourceInfo* getDataSourceInfoStruct()
-	{
-		return gdaDataSourceInfo;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdaDataSourceInfo;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdaDataSourceInfo* gdaDataSourceInfo)
-	{
-		if(gdaDataSourceInfo is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdaDataSourceInfo = gdaDataSourceInfo;
-	}
-	
-	/** */
-	this (ListG glist) {
-		this.gdaDataSourceInfo = cast(GdaDataSourceInfo *) glist.data;
-	}
-	/** */
-string name() { return Str.toString(this.gdaDataSourceInfo.name); }
-/** */
-string provider() { return Str.toString(this.gdaDataSourceInfo.provider); }
-/** */
-string cncString() { return Str.toString(this.gdaDataSourceInfo.cncString); }
-/** */
-string description() { return Str.toString(this.gdaDataSourceInfo.description); }
-/** */
-string username() { return Str.toString(this.gdaDataSourceInfo.username); }
-/** */
-string password() { return Str.toString(this.gdaDataSourceInfo.password); }
+
+    /** the main Gtk struct */
+    protected GdaDataSourceInfo* gdaDataSourceInfo;
 
 
-/**
- */
+    public GdaDataSourceInfo* getDataSourceInfoStruct()
+    {
+        return gdaDataSourceInfo;
+    }
 
-/**
- * Returns:
- */
-public static GType infoGetType()
-{
-	// GType gda_data_source_info_get_type (void);
-	return gda_data_source_info_get_type();
-}
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdaDataSourceInfo;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdaDataSourceInfo* gdaDataSourceInfo)
+    {
+        if(gdaDataSourceInfo is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdaDataSourceInfo = gdaDataSourceInfo;
+    }
+
+    /** */
+    this (ListG glist)
+    {
+        this.gdaDataSourceInfo = cast(GdaDataSourceInfo *) glist.data;
+    }
+    /** */
+    string name()
+    {
+        return Str.toString(this.gdaDataSourceInfo.name);
+    }
+    /** */
+    string provider()
+    {
+        return Str.toString(this.gdaDataSourceInfo.provider);
+    }
+    /** */
+    string cncString()
+    {
+        return Str.toString(this.gdaDataSourceInfo.cncString);
+    }
+    /** */
+    string description()
+    {
+        return Str.toString(this.gdaDataSourceInfo.description);
+    }
+    /** */
+    string username()
+    {
+        return Str.toString(this.gdaDataSourceInfo.username);
+    }
+    /** */
+    string password()
+    {
+        return Str.toString(this.gdaDataSourceInfo.password);
+    }
+
+
+    /**
+     */
+
+    /**
+     * Returns:
+     */
+    public static GType infoGetType()
+    {
+        // GType gda_data_source_info_get_type (void);
+        return gda_data_source_info_get_type();
+    }
 }

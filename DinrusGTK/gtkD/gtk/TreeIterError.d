@@ -15,21 +15,21 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = TreeIterError
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = TreeIterError
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
@@ -63,17 +63,17 @@ private import gtkD.glib.ConstructionException;
  */
 public class TreeIterError : Exception
 {
-	
-	/**
-	 * A TreeIter error.
-	 * thrown<br>
-	 * - trying to access a method that requires a tree model and the tree model was never set
-	 */
-	public this(string method, string message)
-	{
-		super("TreeIter."~method~" : "~message);
-	}
-	
-	/**
-	 */
+
+    /**
+     * A TreeIter error.
+     * thrown<br>
+     * - trying to access a method that requires a tree model and the tree model was never set
+     */
+    public this(string method, string message)
+    {
+        super("TreeIter."~method~" : "~message);
+    }
+
+    /**
+     */
 }

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Task
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_task_
@@ -93,153 +93,153 @@ private import gtkD.gstreamer.ObjectGst;
  */
 public class Task : ObjectGst
 {
-	
-	/** the main Gtk struct */
-	protected GstTask* gstTask;
-	
-	
-	public GstTask* getTaskStruct()
-	{
-		return gstTask;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstTask;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstTask* gstTask)
-	{
-		if(gstTask is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstTask);
-		if( ptr !is null )
-		{
-			this = cast(Task)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstTask);
-		this.gstTask = gstTask;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Wait for all tasks to be stopped. This is mainly used internally
-	 * to ensure proper cleanup of internal datastructures in testsuites.
-	 * MT safe.
-	 */
-	public static void cleanupAll()
-	{
-		// void gst_task_cleanup_all (void);
-		gst_task_cleanup_all();
-	}
-	
-	/**
-	 * Create a new Task that will repeadedly call the provided func
-	 * with data as a parameter. Typically the task will run in
-	 * a new thread.
-	 * The function cannot be changed after the task has been created. You
-	 * must create a new GstTask to change the function.
-	 * Params:
-	 * func =  The GstTaskFunction to use
-	 * data =  User data to pass to func
-	 * Returns: A new GstTask.MT safe.
-	 */
-	public static Task create(GstTaskFunction func, void* data)
-	{
-		// GstTask* gst_task_create (GstTaskFunction func,  gpointer data);
-		auto p = gst_task_create(func, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Task(cast(GstTask*) p);
-	}
-	
-	/**
-	 * Get the current state of the task.
-	 * Returns: The GstTaskState of the taskMT safe.
-	 */
-	public GstTaskState getState()
-	{
-		// GstTaskState gst_task_get_state (GstTask *task);
-		return gst_task_get_state(gstTask);
-	}
-	
-	/**
-	 * Joins task. After this call, it is safe to unref the task
-	 * and clean up the lock set with gst_task_set_lock().
-	 * The task will automatically be stopped with this call.
-	 * This function cannot be called from within a task function as this
-	 * would cause a deadlock. The function will detect this and print a
-	 * g_warning.
-	 * Returns: TRUE if the task could be joined.MT safe.
-	 */
-	public int join()
-	{
-		// gboolean gst_task_join (GstTask *task);
-		return gst_task_join(gstTask);
-	}
-	
-	/**
-	 * Pauses task. This method can also be called on a task in the
-	 * stopped state, in which case a thread will be started and will remain
-	 * in the paused state. This function does not wait for the task to complete
-	 * the paused state.
-	 * Returns: TRUE if the task could be paused.MT safe.
-	 */
-	public int pause()
-	{
-		// gboolean gst_task_pause (GstTask *task);
-		return gst_task_pause(gstTask);
-	}
-	
-	/**
-	 * Set the mutex used by the task. The mutex will be acquired before
-	 * calling the GstTaskFunction.
-	 * This function has to be called before calling gst_task_pause() or
-	 * gst_task_start().
-	 * MT safe.
-	 * Params:
-	 * mutex =  The GMutex to use
-	 */
-	public void setLock(GStaticRecMutex* mutex)
-	{
-		// void gst_task_set_lock (GstTask *task,  GStaticRecMutex *mutex);
-		gst_task_set_lock(gstTask, mutex);
-	}
-	
-	/**
-	 * Starts task. The task must have a lock associated with it using
-	 * gst_task_set_lock() or thsi function will return FALSE.
-	 * Returns: TRUE if the task could be started.MT safe.
-	 */
-	public int start()
-	{
-		// gboolean gst_task_start (GstTask *task);
-		return gst_task_start(gstTask);
-	}
-	
-	/**
-	 * Stops task. This method merely schedules the task to stop and
-	 * will not wait for the task to have completely stopped. Use
-	 * gst_task_join() to stop and wait for completion.
-	 * Returns: TRUE if the task could be stopped.MT safe.
-	 */
-	public int stop()
-	{
-		// gboolean gst_task_stop (GstTask *task);
-		return gst_task_stop(gstTask);
-	}
+
+    /** the main Gtk struct */
+    protected GstTask* gstTask;
+
+
+    public GstTask* getTaskStruct()
+    {
+        return gstTask;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gstTask;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstTask* gstTask)
+    {
+        if(gstTask is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gstTask);
+        if( ptr !is null )
+        {
+            this = cast(Task)ptr;
+            return;
+        }
+        super(cast(GstObject*)gstTask);
+        this.gstTask = gstTask;
+    }
+
+    /**
+     */
+
+    /**
+     * Wait for all tasks to be stopped. This is mainly used internally
+     * to ensure proper cleanup of internal datastructures in testsuites.
+     * MT safe.
+     */
+    public static void cleanupAll()
+    {
+        // void gst_task_cleanup_all (void);
+        gst_task_cleanup_all();
+    }
+
+    /**
+     * Create a new Task that will repeadedly call the provided func
+     * with data as a parameter. Typically the task will run in
+     * a new thread.
+     * The function cannot be changed after the task has been created. You
+     * must create a new GstTask to change the function.
+     * Params:
+     * func =  The GstTaskFunction to use
+     * data =  User data to pass to func
+     * Returns: A new GstTask.MT safe.
+     */
+    public static Task create(GstTaskFunction func, void* data)
+    {
+        // GstTask* gst_task_create (GstTaskFunction func,  gpointer data);
+        auto p = gst_task_create(func, data);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Task(cast(GstTask*) p);
+    }
+
+    /**
+     * Get the current state of the task.
+     * Returns: The GstTaskState of the taskMT safe.
+     */
+    public GstTaskState getState()
+    {
+        // GstTaskState gst_task_get_state (GstTask *task);
+        return gst_task_get_state(gstTask);
+    }
+
+    /**
+     * Joins task. After this call, it is safe to unref the task
+     * and clean up the lock set with gst_task_set_lock().
+     * The task will automatically be stopped with this call.
+     * This function cannot be called from within a task function as this
+     * would cause a deadlock. The function will detect this and print a
+     * g_warning.
+     * Returns: TRUE if the task could be joined.MT safe.
+     */
+    public int join()
+    {
+        // gboolean gst_task_join (GstTask *task);
+        return gst_task_join(gstTask);
+    }
+
+    /**
+     * Pauses task. This method can also be called on a task in the
+     * stopped state, in which case a thread will be started and will remain
+     * in the paused state. This function does not wait for the task to complete
+     * the paused state.
+     * Returns: TRUE if the task could be paused.MT safe.
+     */
+    public int pause()
+    {
+        // gboolean gst_task_pause (GstTask *task);
+        return gst_task_pause(gstTask);
+    }
+
+    /**
+     * Set the mutex used by the task. The mutex will be acquired before
+     * calling the GstTaskFunction.
+     * This function has to be called before calling gst_task_pause() or
+     * gst_task_start().
+     * MT safe.
+     * Params:
+     * mutex =  The GMutex to use
+     */
+    public void setLock(GStaticRecMutex* mutex)
+    {
+        // void gst_task_set_lock (GstTask *task,  GStaticRecMutex *mutex);
+        gst_task_set_lock(gstTask, mutex);
+    }
+
+    /**
+     * Starts task. The task must have a lock associated with it using
+     * gst_task_set_lock() or thsi function will return FALSE.
+     * Returns: TRUE if the task could be started.MT safe.
+     */
+    public int start()
+    {
+        // gboolean gst_task_start (GstTask *task);
+        return gst_task_start(gstTask);
+    }
+
+    /**
+     * Stops task. This method merely schedules the task to stop and
+     * will not wait for the task to have completely stopped. Use
+     * gst_task_join() to stop and wait for completion.
+     * Returns: TRUE if the task could be stopped.MT safe.
+     */
+    public int stop()
+    {
+        // gboolean gst_task_stop (GstTask *task);
+        return gst_task_stop(gstTask);
+    }
 }

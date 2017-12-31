@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GSocketAddress
  * clss    = InetSocketAddress
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_inet_socket_address_
@@ -71,90 +71,90 @@ private import gtkD.gio.SocketAddress;
  */
 public class InetSocketAddress : SocketAddress
 {
-	
-	/** the main Gtk struct */
-	protected GInetSocketAddress* gInetSocketAddress;
-	
-	
-	public GInetSocketAddress* getInetSocketAddressStruct()
-	{
-		return gInetSocketAddress;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gInetSocketAddress;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GInetSocketAddress* gInetSocketAddress)
-	{
-		if(gInetSocketAddress is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gInetSocketAddress);
-		if( ptr !is null )
-		{
-			this = cast(InetSocketAddress)ptr;
-			return;
-		}
-		super(cast(GSocketAddress*)gInetSocketAddress);
-		this.gInetSocketAddress = gInetSocketAddress;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GInetSocketAddress for address and port.
-	 * Since 2.22
-	 * Params:
-	 * address =  a GInetAddress
-	 * port =  a port number
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (InetAddress address, ushort port)
-	{
-		// GSocketAddress * g_inet_socket_address_new (GInetAddress *address,  guint16 port);
-		auto p = g_inet_socket_address_new((address is null) ? null : address.getInetAddressStruct(), port);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_inet_socket_address_new((address is null) ? null : address.getInetAddressStruct(), port)");
-		}
-		this(cast(GInetSocketAddress*) p);
-	}
-	
-	/**
-	 * Gets address's GInetAddress.
-	 * Since 2.22
-	 * Returns: the GInetAddress for address, which must beg_object_ref()'d if it will be stored
-	 */
-	public InetAddress getAddress()
-	{
-		// GInetAddress * g_inet_socket_address_get_address (GInetSocketAddress *address);
-		auto p = g_inet_socket_address_get_address(gInetSocketAddress);
-		if(p is null)
-		{
-			return null;
-		}
-		return new InetAddress(cast(GInetAddress*) p);
-	}
-	
-	/**
-	 * Gets address's port.
-	 * Since 2.22
-	 * Returns: the port for address
-	 */
-	public ushort getPort()
-	{
-		// guint16 g_inet_socket_address_get_port (GInetSocketAddress *address);
-		return g_inet_socket_address_get_port(gInetSocketAddress);
-	}
+
+    /** the main Gtk struct */
+    protected GInetSocketAddress* gInetSocketAddress;
+
+
+    public GInetSocketAddress* getInetSocketAddressStruct()
+    {
+        return gInetSocketAddress;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gInetSocketAddress;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GInetSocketAddress* gInetSocketAddress)
+    {
+        if(gInetSocketAddress is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gInetSocketAddress);
+        if( ptr !is null )
+        {
+            this = cast(InetSocketAddress)ptr;
+            return;
+        }
+        super(cast(GSocketAddress*)gInetSocketAddress);
+        this.gInetSocketAddress = gInetSocketAddress;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GInetSocketAddress for address and port.
+     * Since 2.22
+     * Params:
+     * address =  a GInetAddress
+     * port =  a port number
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (InetAddress address, ushort port)
+    {
+        // GSocketAddress * g_inet_socket_address_new (GInetAddress *address,  guint16 port);
+        auto p = g_inet_socket_address_new((address is null) ? null : address.getInetAddressStruct(), port);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_inet_socket_address_new((address is null) ? null : address.getInetAddressStruct(), port)");
+        }
+        this(cast(GInetSocketAddress*) p);
+    }
+
+    /**
+     * Gets address's GInetAddress.
+     * Since 2.22
+     * Returns: the GInetAddress for address, which must beg_object_ref()'d if it will be stored
+     */
+    public InetAddress getAddress()
+    {
+        // GInetAddress * g_inet_socket_address_get_address (GInetSocketAddress *address);
+        auto p = g_inet_socket_address_get_address(gInetSocketAddress);
+        if(p is null)
+        {
+            return null;
+        }
+        return new InetAddress(cast(GInetAddress*) p);
+    }
+
+    /**
+     * Gets address's port.
+     * Since 2.22
+     * Returns: the port for address
+     */
+    public ushort getPort()
+    {
+        // guint16 g_inet_socket_address_get_port (GInetSocketAddress *address);
+        return g_inet_socket_address_get_port(gInetSocketAddress);
+    }
 }

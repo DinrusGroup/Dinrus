@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TreePath
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_tree_path_
@@ -205,245 +205,245 @@ private import gtkD.glib.Str;
  */
 public class TreePath
 {
-	
-	/** the main Gtk struct */
-	protected GtkTreePath* gtkTreePath;
-	
-	
-	public GtkTreePath* getTreePathStruct()
-	{
-		return gtkTreePath;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkTreePath;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkTreePath* gtkTreePath)
-	{
-		if(gtkTreePath is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkTreePath = gtkTreePath;
-	}
-	
-	/**
-	 * Creates a new GtkTreePath. This structure refers to a row.
-	 * Params:
-	 * firstRow = if true this is the string representation of this path is "0"
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (bool firstRow=false)
-	{
-		GtkTreePath* p;
-		
-		if ( firstRow )
-		{
-			// GtkTreePath* gtk_tree_path_new_first (void);
-			p = cast(GtkTreePath*)gtk_tree_path_new_first();
-		}
-		else
-		{
-			// GtkTreePath* gtk_tree_path_new (void);
-			p = cast(GtkTreePath*)gtk_tree_path_new();
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tree_path_new()");
-		}
-		
-		this(p);
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkTreePath initialized to path. path is expected to be a
-	 * colon separated list of numbers. For example, the string "10:4:0" would
-	 * create a path of depth 3 pointing to the 11th child of the root node, the 5th
-	 * child of that 11th child, and the 1st child of that 5th child. If an invalid
-	 * path string is passed in, NULL is returned.
-	 * Params:
-	 * path =  The string representation of a path.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string path)
-	{
-		// GtkTreePath * gtk_tree_path_new_from_string (const gchar *path);
-		auto p = gtk_tree_path_new_from_string(Str.toStringz(path));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tree_path_new_from_string(Str.toStringz(path))");
-		}
-		this(cast(GtkTreePath*) p);
-	}
-	
-	/**
-	 * Generates a string representation of the path. This string is a ':'
-	 * separated list of numbers. For example, "4:10:0:3" would be an acceptable return value for this string.
-	 * Returns: A newly-allocated string. Must be freed with g_free().
-	 */
-	public override string toString()
-	{
-		// gchar * gtk_tree_path_to_string (GtkTreePath *path);
-		return Str.toString(gtk_tree_path_to_string(gtkTreePath));
-	}
-	
-	/**
-	 * Appends a new index to a path. As a result, the depth of the path is
-	 * increased.
-	 * Params:
-	 * index =  The index.
-	 */
-	public void appendIndex(int index)
-	{
-		// void gtk_tree_path_append_index (GtkTreePath *path,  gint index_);
-		gtk_tree_path_append_index(gtkTreePath, index);
-	}
-	
-	/**
-	 * Prepends a new index to a path. As a result, the depth of the path is
-	 * increased.
-	 * Params:
-	 * index =  The index.
-	 */
-	public void prependIndex(int index)
-	{
-		// void gtk_tree_path_prepend_index (GtkTreePath *path,  gint index_);
-		gtk_tree_path_prepend_index(gtkTreePath, index);
-	}
-	
-	/**
-	 * Returns the current depth of path.
-	 * Returns: The depth of path
-	 */
-	public int getDepth()
-	{
-		// gint gtk_tree_path_get_depth (GtkTreePath *path);
-		return gtk_tree_path_get_depth(gtkTreePath);
-	}
-	
-	/**
-	 * Returns the current indices of path. This is an array of integers, each
-	 * representing a node in a tree. This value should not be freed.
-	 * Returns: The current indices, or NULL.
-	 */
-	public int[] getIndices()
-	{
-		// gint * gtk_tree_path_get_indices (GtkTreePath *path);
-		auto p = gtk_tree_path_get_indices(gtkTreePath);
-		return p[0 .. getDepth()];
-	}
-	
-	/**
-	 * Frees path.
-	 */
-	public void free()
-	{
-		// void gtk_tree_path_free (GtkTreePath *path);
-		gtk_tree_path_free(gtkTreePath);
-	}
-	
-	/**
-	 * Creates a new GtkTreePath as a copy of path.
-	 * Returns: A new GtkTreePath.
-	 */
-	public TreePath copy()
-	{
-		// GtkTreePath * gtk_tree_path_copy (const GtkTreePath *path);
-		auto p = gtk_tree_path_copy(gtkTreePath);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
-	
-	/**
-	 * Compares two paths. If a appears before b in a tree, then -1 is returned.
-	 * If b appears before a, then 1 is returned. If the two nodes are equal,
-	 * then 0 is returned.
-	 * Params:
-	 * a =  A GtkTreePath.
-	 * b =  A GtkTreePath to compare with.
-	 * Returns: The relative positions of a and b
-	 */
-	public int compare(TreePath b)
-	{
-		// gint gtk_tree_path_compare (const GtkTreePath *a,  const GtkTreePath *b);
-		return gtk_tree_path_compare(gtkTreePath, (b is null) ? null : b.getTreePathStruct());
-	}
-	
-	/**
-	 * Moves the path to point to the next node at the current depth.
-	 */
-	public void next()
-	{
-		// void gtk_tree_path_next (GtkTreePath *path);
-		gtk_tree_path_next(gtkTreePath);
-	}
-	
-	/**
-	 * Moves the path to point to the previous node at the current depth,
-	 * if it exists.
-	 * Returns: TRUE if path has a previous node, and the move was made.
-	 */
-	public int prev()
-	{
-		// gboolean gtk_tree_path_prev (GtkTreePath *path);
-		return gtk_tree_path_prev(gtkTreePath);
-	}
-	
-	/**
-	 * Moves the path to point to its parent node, if it has a parent.
-	 * Returns: TRUE if path has a parent, and the move was made.
-	 */
-	public int up()
-	{
-		// gboolean gtk_tree_path_up (GtkTreePath *path);
-		return gtk_tree_path_up(gtkTreePath);
-	}
-	
-	/**
-	 * Moves path to point to the first child of the current path.
-	 */
-	public void down()
-	{
-		// void gtk_tree_path_down (GtkTreePath *path);
-		gtk_tree_path_down(gtkTreePath);
-	}
-	
-	/**
-	 * Returns TRUE if descendant is a descendant of path.
-	 * Params:
-	 * descendant =  another GtkTreePath
-	 * Returns: TRUE if descendant is contained inside path
-	 */
-	public int isAncestor(TreePath descendant)
-	{
-		// gboolean gtk_tree_path_is_ancestor (GtkTreePath *path,  GtkTreePath *descendant);
-		return gtk_tree_path_is_ancestor(gtkTreePath, (descendant is null) ? null : descendant.getTreePathStruct());
-	}
-	
-	/**
-	 * Returns TRUE if path is a descendant of ancestor.
-	 * Params:
-	 * ancestor =  another GtkTreePath
-	 * Returns: TRUE if ancestor contains path somewhere below it
-	 */
-	public int isDescendant(TreePath ancestor)
-	{
-		// gboolean gtk_tree_path_is_descendant (GtkTreePath *path,  GtkTreePath *ancestor);
-		return gtk_tree_path_is_descendant(gtkTreePath, (ancestor is null) ? null : ancestor.getTreePathStruct());
-	}
+
+    /** the main Gtk struct */
+    protected GtkTreePath* gtkTreePath;
+
+
+    public GtkTreePath* getTreePathStruct()
+    {
+        return gtkTreePath;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gtkTreePath;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkTreePath* gtkTreePath)
+    {
+        if(gtkTreePath is null)
+        {
+            this = null;
+            return;
+        }
+        this.gtkTreePath = gtkTreePath;
+    }
+
+    /**
+     * Creates a new GtkTreePath. This structure refers to a row.
+     * Params:
+     * firstRow = if true this is the string representation of this path is "0"
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (bool firstRow=false)
+    {
+        GtkTreePath* p;
+
+        if ( firstRow )
+        {
+            // GtkTreePath* gtk_tree_path_new_first (void);
+            p = cast(GtkTreePath*)gtk_tree_path_new_first();
+        }
+        else
+        {
+            // GtkTreePath* gtk_tree_path_new (void);
+            p = cast(GtkTreePath*)gtk_tree_path_new();
+        }
+
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_tree_path_new()");
+        }
+
+        this(p);
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkTreePath initialized to path. path is expected to be a
+     * colon separated list of numbers. For example, the string "10:4:0" would
+     * create a path of depth 3 pointing to the 11th child of the root node, the 5th
+     * child of that 11th child, and the 1st child of that 5th child. If an invalid
+     * path string is passed in, NULL is returned.
+     * Params:
+     * path =  The string representation of a path.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string path)
+    {
+        // GtkTreePath * gtk_tree_path_new_from_string (const gchar *path);
+        auto p = gtk_tree_path_new_from_string(Str.toStringz(path));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_tree_path_new_from_string(Str.toStringz(path))");
+        }
+        this(cast(GtkTreePath*) p);
+    }
+
+    /**
+     * Generates a string representation of the path. This string is a ':'
+     * separated list of numbers. For example, "4:10:0:3" would be an acceptable return value for this string.
+     * Returns: A newly-allocated string. Must be freed with g_free().
+     */
+    public override string toString()
+    {
+        // gchar * gtk_tree_path_to_string (GtkTreePath *path);
+        return Str.toString(gtk_tree_path_to_string(gtkTreePath));
+    }
+
+    /**
+     * Appends a new index to a path. As a result, the depth of the path is
+     * increased.
+     * Params:
+     * index =  The index.
+     */
+    public void appendIndex(int index)
+    {
+        // void gtk_tree_path_append_index (GtkTreePath *path,  gint index_);
+        gtk_tree_path_append_index(gtkTreePath, index);
+    }
+
+    /**
+     * Prepends a new index to a path. As a result, the depth of the path is
+     * increased.
+     * Params:
+     * index =  The index.
+     */
+    public void prependIndex(int index)
+    {
+        // void gtk_tree_path_prepend_index (GtkTreePath *path,  gint index_);
+        gtk_tree_path_prepend_index(gtkTreePath, index);
+    }
+
+    /**
+     * Returns the current depth of path.
+     * Returns: The depth of path
+     */
+    public int getDepth()
+    {
+        // gint gtk_tree_path_get_depth (GtkTreePath *path);
+        return gtk_tree_path_get_depth(gtkTreePath);
+    }
+
+    /**
+     * Returns the current indices of path. This is an array of integers, each
+     * representing a node in a tree. This value should not be freed.
+     * Returns: The current indices, or NULL.
+     */
+    public int[] getIndices()
+    {
+        // gint * gtk_tree_path_get_indices (GtkTreePath *path);
+        auto p = gtk_tree_path_get_indices(gtkTreePath);
+        return p[0 .. getDepth()];
+    }
+
+    /**
+     * Frees path.
+     */
+    public void free()
+    {
+        // void gtk_tree_path_free (GtkTreePath *path);
+        gtk_tree_path_free(gtkTreePath);
+    }
+
+    /**
+     * Creates a new GtkTreePath as a copy of path.
+     * Returns: A new GtkTreePath.
+     */
+    public TreePath copy()
+    {
+        // GtkTreePath * gtk_tree_path_copy (const GtkTreePath *path);
+        auto p = gtk_tree_path_copy(gtkTreePath);
+        if(p is null)
+        {
+            return null;
+        }
+        return new TreePath(cast(GtkTreePath*) p);
+    }
+
+    /**
+     * Compares two paths. If a appears before b in a tree, then -1 is returned.
+     * If b appears before a, then 1 is returned. If the two nodes are equal,
+     * then 0 is returned.
+     * Params:
+     * a =  A GtkTreePath.
+     * b =  A GtkTreePath to compare with.
+     * Returns: The relative positions of a and b
+     */
+    public int compare(TreePath b)
+    {
+        // gint gtk_tree_path_compare (const GtkTreePath *a,  const GtkTreePath *b);
+        return gtk_tree_path_compare(gtkTreePath, (b is null) ? null : b.getTreePathStruct());
+    }
+
+    /**
+     * Moves the path to point to the next node at the current depth.
+     */
+    public void next()
+    {
+        // void gtk_tree_path_next (GtkTreePath *path);
+        gtk_tree_path_next(gtkTreePath);
+    }
+
+    /**
+     * Moves the path to point to the previous node at the current depth,
+     * if it exists.
+     * Returns: TRUE if path has a previous node, and the move was made.
+     */
+    public int prev()
+    {
+        // gboolean gtk_tree_path_prev (GtkTreePath *path);
+        return gtk_tree_path_prev(gtkTreePath);
+    }
+
+    /**
+     * Moves the path to point to its parent node, if it has a parent.
+     * Returns: TRUE if path has a parent, and the move was made.
+     */
+    public int up()
+    {
+        // gboolean gtk_tree_path_up (GtkTreePath *path);
+        return gtk_tree_path_up(gtkTreePath);
+    }
+
+    /**
+     * Moves path to point to the first child of the current path.
+     */
+    public void down()
+    {
+        // void gtk_tree_path_down (GtkTreePath *path);
+        gtk_tree_path_down(gtkTreePath);
+    }
+
+    /**
+     * Returns TRUE if descendant is a descendant of path.
+     * Params:
+     * descendant =  another GtkTreePath
+     * Returns: TRUE if descendant is contained inside path
+     */
+    public int isAncestor(TreePath descendant)
+    {
+        // gboolean gtk_tree_path_is_ancestor (GtkTreePath *path,  GtkTreePath *descendant);
+        return gtk_tree_path_is_ancestor(gtkTreePath, (descendant is null) ? null : descendant.getTreePathStruct());
+    }
+
+    /**
+     * Returns TRUE if path is a descendant of ancestor.
+     * Params:
+     * ancestor =  another GtkTreePath
+     * Returns: TRUE if ancestor contains path somewhere below it
+     */
+    public int isDescendant(TreePath ancestor)
+    {
+        // gboolean gtk_tree_path_is_descendant (GtkTreePath *path,  GtkTreePath *ancestor);
+        return gtk_tree_path_is_descendant(gtkTreePath, (ancestor is null) ? null : ancestor.getTreePathStruct());
+    }
 }

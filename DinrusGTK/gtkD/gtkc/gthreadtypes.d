@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,7 +33,7 @@ public import gtkD.gtkc.glibtypes;
  */
 public enum GThreadError
 {
-	AGAIN /+* Resource temporarily unavailable +/
+    AGAIN /+* Resource temporarily unavailable +/
 }
 alias GThreadError ThreadError;
 
@@ -56,10 +56,10 @@ alias GThreadError ThreadError;
  */
 public enum GThreadPriority
 {
-	LOW,
-	NORMAL,
-	HIGH,
-	URGENT
+    LOW,
+    NORMAL,
+    HIGH,
+    URGENT
 }
 alias GThreadPriority ThreadPriority;
 
@@ -75,9 +75,9 @@ alias GThreadPriority ThreadPriority;
  */
 public enum GOnceStatus
 {
-	NOTCALLED,
-	PROGRESS,
-	READY
+    NOTCALLED,
+    PROGRESS,
+    READY
 }
 alias GOnceStatus OnceStatus;
 
@@ -93,27 +93,27 @@ alias GOnceStatus OnceStatus;
  */
 public struct GThreadFunctions
 {
-	extern(C) GMutex*  function() mutexNew;
-	extern(C) void  function(GMutex *mutex) mutexLock;
-	extern(C) int  function(GMutex *mutex) mutexTrylock;
-	extern(C) void  function(GMutex *mutex) mutexUnlock;
-	extern(C) void  function(GMutex *mutex) mutexFree;
-	extern(C) GCond*  function() condNew;
-	extern(C) void  function(GCond *cond) condSignal;
-	extern(C) void  function(GCond *cond) condBroadcast;
-	extern(C) void  function(GCond *cond,GMutex *mutex) condWait;
-	extern(C) int  function(GCond *cond,GMutex *mutex,GTimeVal *endTime) condTimedWait;
-	extern(C) void  function(GCond *cond) condFree;
-	extern(C) GPrivate*  function(GDestroyNotify destructor) privateNew;
-	extern(C) void*  function(GPrivate *privateKey) privateGet;
-	extern(C) void  function(GPrivate *privateKey,void* data) privateSet;
-	extern(C) void  function(GThreadFunc func,void* data,uint stackSize,int joinable,int bound,GThreadPriority priority,void* thread,GError **error) threadCreate;
-	extern(C) void  function() threadYield;
-	extern(C) void  function(void* thread) threadJoin;
-	extern(C) void  function() threadExit;
-	extern(C) void  function(void* thread,GThreadPriority priority) threadSetPriorit;
-	extern(C) void  function(void* thread) threadSelf;
-	extern(C) int  function(void* thread1,void* thread2) threadEqual;
+    extern(C) GMutex*  function() mutexNew;
+    extern(C) void  function(GMutex *mutex) mutexLock;
+    extern(C) int  function(GMutex *mutex) mutexTrylock;
+    extern(C) void  function(GMutex *mutex) mutexUnlock;
+    extern(C) void  function(GMutex *mutex) mutexFree;
+    extern(C) GCond*  function() condNew;
+    extern(C) void  function(GCond *cond) condSignal;
+    extern(C) void  function(GCond *cond) condBroadcast;
+    extern(C) void  function(GCond *cond,GMutex *mutex) condWait;
+    extern(C) int  function(GCond *cond,GMutex *mutex,GTimeVal *endTime) condTimedWait;
+    extern(C) void  function(GCond *cond) condFree;
+    extern(C) GPrivate*  function(GDestroyNotify destructor) privateNew;
+    extern(C) void*  function(GPrivate *privateKey) privateGet;
+    extern(C) void  function(GPrivate *privateKey,void* data) privateSet;
+    extern(C) void  function(GThreadFunc func,void* data,uint stackSize,int joinable,int bound,GThreadPriority priority,void* thread,GError **error) threadCreate;
+    extern(C) void  function() threadYield;
+    extern(C) void  function(void* thread) threadJoin;
+    extern(C) void  function() threadExit;
+    extern(C) void  function(void* thread,GThreadPriority priority) threadSetPriorit;
+    extern(C) void  function(void* thread) threadSelf;
+    extern(C) int  function(void* thread1,void* thread2) threadEqual;
 }
 
 
@@ -126,7 +126,7 @@ public struct GThreadFunctions
  * Resources for a joinable thread are not fully released until
  * g_thread_join() is called for that thread.
  */
-public struct GThread{}
+public struct GThread {}
 
 
 /**
@@ -135,7 +135,7 @@ public struct GThread{}
  * access. Take for example the following function:
  * Example 2. A function which will not work in a threaded environment
  */
-public struct GMutex{}
+public struct GMutex {}
 
 
 /**
@@ -145,7 +145,7 @@ public struct GMutex{}
  * safer version of our give_me_next_number() example:
  * Example 5. Using GStaticMutex to simplify thread-safe programming
  */
-public struct GStaticMutex{}
+public struct GStaticMutex {}
 
 
 /**
@@ -164,7 +164,7 @@ public struct GStaticMutex{}
  * nothing, apart from g_static_rec_mutex_trylock,
  * which does nothing but returning TRUE.
  */
-public struct GStaticRecMutex{}
+public struct GStaticRecMutex {}
 
 
 /**
@@ -176,7 +176,7 @@ public struct GStaticRecMutex{}
  * example:
  * Example 7. An array with access functions
  */
-public struct GStaticRWLock{}
+public struct GStaticRWLock {}
 
 
 /**
@@ -192,7 +192,7 @@ public struct GStaticRWLock{}
  * void push_data (gpointer data)
  * {
 	 */
-public struct GCond{}
+public struct GCond {}
 
 
 /**
@@ -205,7 +205,7 @@ public struct GCond{}
  * done as follows:
  * Example 9. Using GPrivate for per-thread data
  */
-public struct GPrivate{}
+public struct GPrivate {}
 
 
 /**
@@ -216,7 +216,7 @@ public struct GPrivate{}
  * give_me_next_number() example with ""
  * Example 10. Using GStaticPrivate for per-thread data
  */
-public struct GStaticPrivate{}
+public struct GStaticPrivate {}
 
 
 /**
@@ -230,8 +230,8 @@ public struct GStaticPrivate{}
  */
 public struct GOnce
 {
-	GOnceStatus status;
-	void* retval;
+    GOnceStatus status;
+    void* retval;
 }
 
 

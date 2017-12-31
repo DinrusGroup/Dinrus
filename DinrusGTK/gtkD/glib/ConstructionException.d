@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = ConstructionException
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * omit structs:
@@ -61,15 +61,15 @@ private import gtkD.glib.ConstructionException;
 
 class ConstructionException : Exception
 {
-	this(string message)
-	{
-		super(message);
-	}
-	
-	string toString()
-	{
-		return "Construction failure, " ~ msg;
-	}
+    this(string message)
+    {
+        super(message);
+    }
+
+    string toString()
+    {
+        return "Construction failure, " ~ msg;
+    }
 }
 
 /**

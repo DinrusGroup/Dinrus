@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TypeModule
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_type_module_
@@ -99,157 +99,157 @@ private import gtkD.gobject.ObjectG;
  */
 public class TypeModule : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GTypeModule* gTypeModule;
-	
-	
-	public GTypeModule* getTypeModuleStruct()
-	{
-		return gTypeModule;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gTypeModule;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GTypeModule* gTypeModule)
-	{
-		if(gTypeModule is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gTypeModule);
-		if( ptr !is null )
-		{
-			this = cast(TypeModule)ptr;
-			return;
-		}
-		super(cast(GObject*)gTypeModule);
-		this.gTypeModule = gTypeModule;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Increases the use count of a GTypeModule by one. If the
-	 * use count was zero before, the plugin will be loaded.
-	 * If loading the plugin fails, the use count is reset to
-	 * its prior value.
-	 * Returns: FALSE if the plugin needed to be loaded and loading the plugin failed.
-	 */
-	public int use()
-	{
-		// gboolean g_type_module_use (GTypeModule *module);
-		return g_type_module_use(gTypeModule);
-	}
-	
-	/**
-	 * Decreases the use count of a GTypeModule by one. If the
-	 * result is zero, the module will be unloaded. (However, the
-	 * GTypeModule will not be freed, and types associated with the
-	 * GTypeModule are not unregistered. Once a GTypeModule is
-	 * initialized, it must exist forever.)
-	 */
-	public void unuse()
-	{
-		// void g_type_module_unuse (GTypeModule *module);
-		g_type_module_unuse(gTypeModule);
-	}
-	
-	/**
-	 * Sets the name for a GTypeModule
-	 * Params:
-	 * name =  a human-readable name to use in error messages.
-	 */
-	public void setName(string name)
-	{
-		// void g_type_module_set_name (GTypeModule *module,  const gchar *name);
-		g_type_module_set_name(gTypeModule, Str.toStringz(name));
-	}
-	
-	/**
-	 * Looks up or registers a type that is implemented with a particular
-	 * type plugin. If a type with name type_name was previously registered,
-	 * the GType identifier for the type is returned, otherwise the type
-	 * is newly registered, and the resulting GType identifier returned.
-	 * When reregistering a type (typically because a module is unloaded
-	 * then reloaded, and reinitialized), module and parent_type must
-	 * be the same as they were previously.
-	 * As long as any instances of the type exist, the type plugin will
-	 * not be unloaded.
-	 * Params:
-	 * parentType =  the type for the parent class
-	 * typeName =  name for the type
-	 * typeInfo =  type information structure
-	 * flags =  flags field providing details about the type
-	 * Returns: the new or existing type ID
-	 */
-	public GType registerType(GType parentType, string typeName, GTypeInfo* typeInfo, GTypeFlags flags)
-	{
-		// GType g_type_module_register_type (GTypeModule *module,  GType parent_type,  const gchar *type_name,  const GTypeInfo *type_info,  GTypeFlags flags);
-		return g_type_module_register_type(gTypeModule, parentType, Str.toStringz(typeName), typeInfo, flags);
-	}
-	
-	/**
-	 * Registers an additional interface for a type, whose interface lives
-	 * in the given type plugin. If the interface was already registered
-	 * for the type in this plugin, nothing will be done.
-	 * As long as any instances of the type exist, the type plugin will
-	 * not be unloaded.
-	 * Params:
-	 * instanceType =  type to which to add the interface.
-	 * interfaceType =  interface type to add
-	 * interfaceInfo =  type information structure
-	 */
-	public void addInterface(GType instanceType, GType interfaceType, GInterfaceInfo* interfaceInfo)
-	{
-		// void g_type_module_add_interface (GTypeModule *module,  GType instance_type,  GType interface_type,  const GInterfaceInfo *interface_info);
-		g_type_module_add_interface(gTypeModule, instanceType, interfaceType, interfaceInfo);
-	}
-	
-	/**
-	 * Looks up or registers an enumeration that is implemented with a particular
-	 * type plugin. If a type with name type_name was previously registered,
-	 * the GType identifier for the type is returned, otherwise the type
-	 * is newly registered, and the resulting GType identifier returned.
-	 * As long as any instances of the type exist, the type plugin will
-	 * not be unloaded.
-	 * Since 2.6
-	 * Params:
-	 * name =  name for the type
-	 * Returns: the new or existing type ID
-	 */
-	public GType registerEnum(string name, Enums _StaticValues)
-	{
-		// GType g_type_module_register_enum (GTypeModule *module,  const gchar *name,  const GEnumValue *const_static_values);
-		return g_type_module_register_enum(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getEnumsStruct());
-	}
-	
-	/**
-	 * Looks up or registers a flags type that is implemented with a particular
-	 * type plugin. If a type with name type_name was previously registered,
-	 * the GType identifier for the type is returned, otherwise the type
-	 * is newly registered, and the resulting GType identifier returned.
-	 * As long as any instances of the type exist, the type plugin will
-	 * not be unloaded.
-	 * Since 2.6
-	 * Params:
-	 * name =  name for the type
-	 * Returns: the new or existing type ID
-	 */
-	public GType registerFlags(string name, Flags _StaticValues)
-	{
-		// GType g_type_module_register_flags (GTypeModule *module,  const gchar *name,  const GFlagsValue *const_static_values);
-		return g_type_module_register_flags(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getFlagsStruct());
-	}
+
+    /** the main Gtk struct */
+    protected GTypeModule* gTypeModule;
+
+
+    public GTypeModule* getTypeModuleStruct()
+    {
+        return gTypeModule;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gTypeModule;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GTypeModule* gTypeModule)
+    {
+        if(gTypeModule is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gTypeModule);
+        if( ptr !is null )
+        {
+            this = cast(TypeModule)ptr;
+            return;
+        }
+        super(cast(GObject*)gTypeModule);
+        this.gTypeModule = gTypeModule;
+    }
+
+    /**
+     */
+
+    /**
+     * Increases the use count of a GTypeModule by one. If the
+     * use count was zero before, the plugin will be loaded.
+     * If loading the plugin fails, the use count is reset to
+     * its prior value.
+     * Returns: FALSE if the plugin needed to be loaded and loading the plugin failed.
+     */
+    public int use()
+    {
+        // gboolean g_type_module_use (GTypeModule *module);
+        return g_type_module_use(gTypeModule);
+    }
+
+    /**
+     * Decreases the use count of a GTypeModule by one. If the
+     * result is zero, the module will be unloaded. (However, the
+     * GTypeModule will not be freed, and types associated with the
+     * GTypeModule are not unregistered. Once a GTypeModule is
+     * initialized, it must exist forever.)
+     */
+    public void unuse()
+    {
+        // void g_type_module_unuse (GTypeModule *module);
+        g_type_module_unuse(gTypeModule);
+    }
+
+    /**
+     * Sets the name for a GTypeModule
+     * Params:
+     * name =  a human-readable name to use in error messages.
+     */
+    public void setName(string name)
+    {
+        // void g_type_module_set_name (GTypeModule *module,  const gchar *name);
+        g_type_module_set_name(gTypeModule, Str.toStringz(name));
+    }
+
+    /**
+     * Looks up or registers a type that is implemented with a particular
+     * type plugin. If a type with name type_name was previously registered,
+     * the GType identifier for the type is returned, otherwise the type
+     * is newly registered, and the resulting GType identifier returned.
+     * When reregistering a type (typically because a module is unloaded
+     * then reloaded, and reinitialized), module and parent_type must
+     * be the same as they were previously.
+     * As long as any instances of the type exist, the type plugin will
+     * not be unloaded.
+     * Params:
+     * parentType =  the type for the parent class
+     * typeName =  name for the type
+     * typeInfo =  type information structure
+     * flags =  flags field providing details about the type
+     * Returns: the new or existing type ID
+     */
+    public GType registerType(GType parentType, string typeName, GTypeInfo* typeInfo, GTypeFlags flags)
+    {
+        // GType g_type_module_register_type (GTypeModule *module,  GType parent_type,  const gchar *type_name,  const GTypeInfo *type_info,  GTypeFlags flags);
+        return g_type_module_register_type(gTypeModule, parentType, Str.toStringz(typeName), typeInfo, flags);
+    }
+
+    /**
+     * Registers an additional interface for a type, whose interface lives
+     * in the given type plugin. If the interface was already registered
+     * for the type in this plugin, nothing will be done.
+     * As long as any instances of the type exist, the type plugin will
+     * not be unloaded.
+     * Params:
+     * instanceType =  type to which to add the interface.
+     * interfaceType =  interface type to add
+     * interfaceInfo =  type information structure
+     */
+    public void addInterface(GType instanceType, GType interfaceType, GInterfaceInfo* interfaceInfo)
+    {
+        // void g_type_module_add_interface (GTypeModule *module,  GType instance_type,  GType interface_type,  const GInterfaceInfo *interface_info);
+        g_type_module_add_interface(gTypeModule, instanceType, interfaceType, interfaceInfo);
+    }
+
+    /**
+     * Looks up or registers an enumeration that is implemented with a particular
+     * type plugin. If a type with name type_name was previously registered,
+     * the GType identifier for the type is returned, otherwise the type
+     * is newly registered, and the resulting GType identifier returned.
+     * As long as any instances of the type exist, the type plugin will
+     * not be unloaded.
+     * Since 2.6
+     * Params:
+     * name =  name for the type
+     * Returns: the new or existing type ID
+     */
+    public GType registerEnum(string name, Enums _StaticValues)
+    {
+        // GType g_type_module_register_enum (GTypeModule *module,  const gchar *name,  const GEnumValue *const_static_values);
+        return g_type_module_register_enum(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getEnumsStruct());
+    }
+
+    /**
+     * Looks up or registers a flags type that is implemented with a particular
+     * type plugin. If a type with name type_name was previously registered,
+     * the GType identifier for the type is returned, otherwise the type
+     * is newly registered, and the resulting GType identifier returned.
+     * As long as any instances of the type exist, the type plugin will
+     * not be unloaded.
+     * Since 2.6
+     * Params:
+     * name =  name for the type
+     * Returns: the new or existing type ID
+     */
+    public GType registerFlags(string name, Flags _StaticValues)
+    {
+        // GType g_type_module_register_flags (GTypeModule *module,  const gchar *name,  const GFlagsValue *const_static_values);
+        return g_type_module_register_flags(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getFlagsStruct());
+    }
 }

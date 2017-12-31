@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = IOStream
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_io_stream_
@@ -102,226 +102,226 @@ private import gtkD.gobject.ObjectG;
  */
 public class IOStream : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GIOStream* gIOStream;
-	
-	
-	public GIOStream* getIOStreamStruct()
-	{
-		return gIOStream;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gIOStream;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GIOStream* gIOStream)
-	{
-		if(gIOStream is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gIOStream);
-		if( ptr !is null )
-		{
-			this = cast(IOStream)ptr;
-			return;
-		}
-		super(cast(GObject*)gIOStream);
-		this.gIOStream = gIOStream;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the input stream for this object. This is used
-	 * for reading.
-	 * Since 2.22
-	 * Returns: a GInputStream, owned by the GIOStream. Do not free.
-	 */
-	public InputStream getInputStream()
-	{
-		// GInputStream * g_io_stream_get_input_stream (GIOStream *stream);
-		auto p = g_io_stream_get_input_stream(gIOStream);
-		if(p is null)
-		{
-			return null;
-		}
-		return new InputStream(cast(GInputStream*) p);
-	}
-	
-	/**
-	 * Gets the output stream for this object. This is used for
-	 * writing.
-	 * Since 2.22
-	 * Returns: a GOutputStream, owned by the GIOStream. Do not free.
-	 */
-	public OutputStream getOutputStream()
-	{
-		// GOutputStream * g_io_stream_get_output_stream (GIOStream *stream);
-		auto p = g_io_stream_get_output_stream(gIOStream);
-		if(p is null)
-		{
-			return null;
-		}
-		return new OutputStream(cast(GOutputStream*) p);
-	}
-	
-	/**
-	 * Closes the stream, releasing resources related to it. This will also
-	 * closes the individual input and output streams, if they are not already
-	 * closed.
-	 * Once the stream is closed, all other operations will return
-	 * G_IO_ERROR_CLOSED. Closing a stream multiple times will not
-	 * return an error.
-	 * Closing a stream will automatically flush any outstanding buffers
-	 * in the stream.
-	 * Streams will be automatically closed when the last reference
-	 * is dropped, but you might want to call this function to make sure
-	 * resources are released as early as possible.
-	 * Some streams might keep the backing store of the stream (e.g. a file
-	 * descriptor) open after the stream is closed. See the documentation for
-	 * the individual stream for details.
-	 * On failure the first error that happened will be reported, but the
-	 * close operation will finish as much as possible. A stream that failed
-	 * to close will still return G_IO_ERROR_CLOSED for all operations.
-	 * Still, it is important to check and report the error to the user,
-	 * otherwise there might be a loss of data as all data might not be written.
-	 * If cancellable is not NULL, then the operation can be cancelled by
-	 * triggering the cancellable object from another thread. If the operation
-	 * was cancelled, the error G_IO_ERROR_CANCELLED will be returned.
-	 * Cancelling a close will still leave the stream closed, but some streams
-	 * can use a faster close that doesn't block to e.g. check errors.
-	 * The default implementation of this method just calls close on the
-	 * individual input/output streams.
-	 * Since 2.22
-	 * Params:
-	 * cancellable =  optional GCancellable object, NULL to ignore
-	 * Returns: TRUE on success, FALSE on failure
-	 * Throws: GException on failure.
-	 */
-	public int close(Cancellable cancellable)
-	{
-		// gboolean g_io_stream_close (GIOStream *stream,  GCancellable *cancellable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_close(gIOStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Requests an asynchronous close of the stream, releasing resources
-	 * related to it. When the operation is finished callback will be
-	 * called. You can then call g_io_stream_close_finish() to get
-	 * the result of the operation.
-	 * For behaviour details see g_io_stream_close().
-	 * The asynchronous methods have a default fallback that uses threads
-	 * to implement asynchronicity, so they are optional for inheriting
-	 * classes. However, if you override one you must override all.
-	 * Since 2.22
-	 * Params:
-	 * ioPriority =  the io priority of the request
-	 * cancellable =  optional cancellable object
-	 * callback =  callback to call when the request is satisfied
-	 * userData =  the data to pass to callback function
-	 */
-	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
-	{
-		// void g_io_stream_close_async (GIOStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
-		g_io_stream_close_async(gIOStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
-	}
-	
-	/**
-	 * Closes a stream.
-	 * Since 2.22
-	 * Params:
-	 * result =  a GAsyncResult
-	 * Returns: TRUE if stream was successfully closed, FALSE otherwise.
-	 * Throws: GException on failure.
-	 */
-	public int closeFinish(AsyncResultIF result)
-	{
-		// gboolean g_io_stream_close_finish (GIOStream *stream,  GAsyncResult *result,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_close_finish(gIOStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Checks if a stream is closed.
-	 * Since 2.22
-	 * Returns: TRUE if the stream is closed.
-	 */
-	public int isClosed()
-	{
-		// gboolean g_io_stream_is_closed (GIOStream *stream);
-		return g_io_stream_is_closed(gIOStream);
-	}
-	
-	/**
-	 * Checks if a stream has pending actions.
-	 * Since 2.22
-	 * Returns: TRUE if stream has pending actions.
-	 */
-	public int hasPending()
-	{
-		// gboolean g_io_stream_has_pending (GIOStream *stream);
-		return g_io_stream_has_pending(gIOStream);
-	}
-	
-	/**
-	 * Sets stream to have actions pending. If the pending flag is
-	 * already set or stream is closed, it will return FALSE and set
-	 * error.
-	 * Since 2.22
-	 * Returns: TRUE if pending was previously unset and is now set.
-	 * Throws: GException on failure.
-	 */
-	public int setPending()
-	{
-		// gboolean g_io_stream_set_pending (GIOStream *stream,  GError **error);
-		GError* err = null;
-		
-		auto p = g_io_stream_set_pending(gIOStream, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Clears the pending flag on stream.
-	 * Since 2.22
-	 */
-	public void clearPending()
-	{
-		// void g_io_stream_clear_pending (GIOStream *stream);
-		g_io_stream_clear_pending(gIOStream);
-	}
+
+    /** the main Gtk struct */
+    protected GIOStream* gIOStream;
+
+
+    public GIOStream* getIOStreamStruct()
+    {
+        return gIOStream;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gIOStream;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GIOStream* gIOStream)
+    {
+        if(gIOStream is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gIOStream);
+        if( ptr !is null )
+        {
+            this = cast(IOStream)ptr;
+            return;
+        }
+        super(cast(GObject*)gIOStream);
+        this.gIOStream = gIOStream;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the input stream for this object. This is used
+     * for reading.
+     * Since 2.22
+     * Returns: a GInputStream, owned by the GIOStream. Do not free.
+     */
+    public InputStream getInputStream()
+    {
+        // GInputStream * g_io_stream_get_input_stream (GIOStream *stream);
+        auto p = g_io_stream_get_input_stream(gIOStream);
+        if(p is null)
+        {
+            return null;
+        }
+        return new InputStream(cast(GInputStream*) p);
+    }
+
+    /**
+     * Gets the output stream for this object. This is used for
+     * writing.
+     * Since 2.22
+     * Returns: a GOutputStream, owned by the GIOStream. Do not free.
+     */
+    public OutputStream getOutputStream()
+    {
+        // GOutputStream * g_io_stream_get_output_stream (GIOStream *stream);
+        auto p = g_io_stream_get_output_stream(gIOStream);
+        if(p is null)
+        {
+            return null;
+        }
+        return new OutputStream(cast(GOutputStream*) p);
+    }
+
+    /**
+     * Closes the stream, releasing resources related to it. This will also
+     * closes the individual input and output streams, if they are not already
+     * closed.
+     * Once the stream is closed, all other operations will return
+     * G_IO_ERROR_CLOSED. Closing a stream multiple times will not
+     * return an error.
+     * Closing a stream will automatically flush any outstanding buffers
+     * in the stream.
+     * Streams will be automatically closed when the last reference
+     * is dropped, but you might want to call this function to make sure
+     * resources are released as early as possible.
+     * Some streams might keep the backing store of the stream (e.g. a file
+     * descriptor) open after the stream is closed. See the documentation for
+     * the individual stream for details.
+     * On failure the first error that happened will be reported, but the
+     * close operation will finish as much as possible. A stream that failed
+     * to close will still return G_IO_ERROR_CLOSED for all operations.
+     * Still, it is important to check and report the error to the user,
+     * otherwise there might be a loss of data as all data might not be written.
+     * If cancellable is not NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error G_IO_ERROR_CANCELLED will be returned.
+     * Cancelling a close will still leave the stream closed, but some streams
+     * can use a faster close that doesn't block to e.g. check errors.
+     * The default implementation of this method just calls close on the
+     * individual input/output streams.
+     * Since 2.22
+     * Params:
+     * cancellable =  optional GCancellable object, NULL to ignore
+     * Returns: TRUE on success, FALSE on failure
+     * Throws: GException on failure.
+     */
+    public int close(Cancellable cancellable)
+    {
+        // gboolean g_io_stream_close (GIOStream *stream,  GCancellable *cancellable,  GError **error);
+        GError* err = null;
+
+        auto p = g_io_stream_close(gIOStream, (cancellable is null) ? null : cancellable.getCancellableStruct(), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Requests an asynchronous close of the stream, releasing resources
+     * related to it. When the operation is finished callback will be
+     * called. You can then call g_io_stream_close_finish() to get
+     * the result of the operation.
+     * For behaviour details see g_io_stream_close().
+     * The asynchronous methods have a default fallback that uses threads
+     * to implement asynchronicity, so they are optional for inheriting
+     * classes. However, if you override one you must override all.
+     * Since 2.22
+     * Params:
+     * ioPriority =  the io priority of the request
+     * cancellable =  optional cancellable object
+     * callback =  callback to call when the request is satisfied
+     * userData =  the data to pass to callback function
+     */
+    public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData)
+    {
+        // void g_io_stream_close_async (GIOStream *stream,  int io_priority,  GCancellable *cancellable,  GAsyncReadyCallback callback,  gpointer user_data);
+        g_io_stream_close_async(gIOStream, ioPriority, (cancellable is null) ? null : cancellable.getCancellableStruct(), callback, userData);
+    }
+
+    /**
+     * Closes a stream.
+     * Since 2.22
+     * Params:
+     * result =  a GAsyncResult
+     * Returns: TRUE if stream was successfully closed, FALSE otherwise.
+     * Throws: GException on failure.
+     */
+    public int closeFinish(AsyncResultIF result)
+    {
+        // gboolean g_io_stream_close_finish (GIOStream *stream,  GAsyncResult *result,  GError **error);
+        GError* err = null;
+
+        auto p = g_io_stream_close_finish(gIOStream, (result is null) ? null : result.getAsyncResultTStruct(), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Checks if a stream is closed.
+     * Since 2.22
+     * Returns: TRUE if the stream is closed.
+     */
+    public int isClosed()
+    {
+        // gboolean g_io_stream_is_closed (GIOStream *stream);
+        return g_io_stream_is_closed(gIOStream);
+    }
+
+    /**
+     * Checks if a stream has pending actions.
+     * Since 2.22
+     * Returns: TRUE if stream has pending actions.
+     */
+    public int hasPending()
+    {
+        // gboolean g_io_stream_has_pending (GIOStream *stream);
+        return g_io_stream_has_pending(gIOStream);
+    }
+
+    /**
+     * Sets stream to have actions pending. If the pending flag is
+     * already set or stream is closed, it will return FALSE and set
+     * error.
+     * Since 2.22
+     * Returns: TRUE if pending was previously unset and is now set.
+     * Throws: GException on failure.
+     */
+    public int setPending()
+    {
+        // gboolean g_io_stream_set_pending (GIOStream *stream,  GError **error);
+        GError* err = null;
+
+        auto p = g_io_stream_set_pending(gIOStream, &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Clears the pending flag on stream.
+     * Since 2.22
+     */
+    public void clearPending()
+    {
+        // void g_io_stream_clear_pending (GIOStream *stream);
+        g_io_stream_clear_pending(gIOStream);
+    }
 }

@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gthread
  * outFile = Private
  * strct   = GPrivate
  * realStrct=
  * ctorStrct=
  * clss    = Private
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_private_
@@ -111,97 +111,97 @@ private import gtkD.glib.ConstructionException;
  */
 public class Private
 {
-	
-	/** the main Gtk struct */
-	protected GPrivate* gPrivate;
-	
-	
-	public GPrivate* getPrivateStruct()
-	{
-		return gPrivate;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gPrivate;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GPrivate* gPrivate)
-	{
-		if(gPrivate is null)
-		{
-			this = null;
-			return;
-		}
-		this.gPrivate = gPrivate;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GPrivate. If destructor is non-NULL, it is a pointer
-	 * to a destructor function. Whenever a thread ends and the corresponding
-	 * pointer keyed to this instance of GPrivate is non-NULL, the
-	 * destructor is called with this pointer as the argument.
-	 * Note
-	 * destructor is used quite differently from notify in
-	 * g_static_private_set().
-	 * Note
-	 * A GPrivate can not be freed. Reuse it instead, if you can, to avoid
-	 * shortage, or use GStaticPrivate.
-	 * Note
-	 * This function will abort if g_thread_init() has not been called yet.
-	 * Params:
-	 * destructor = a function to destroy the data keyed to GPrivate when a
-	 * thread ends.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GDestroyNotify destructor)
-	{
-		// GPrivate* g_private_new (GDestroyNotify destructor);
-		auto p = g_private_new(destructor);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_private_new(destructor)");
-		}
-		this(cast(GPrivate*) p);
-	}
-	
-	/**
-	 * Returns the pointer keyed to private_key for the current thread.
-	 * If g_private_set() hasn't been called for the
-	 * current private_key and thread yet, this pointer will be NULL.
-	 * This function can be used even if g_thread_init() has not yet been called, and,
-	 * in that case, will return the value of private_key casted to gpointer.
-	 * Note however, that private data set before g_thread_init() will
-	 * not be retained after the call. Instead, NULL
-	 * will be returned in all threads directly after g_thread_init(), regardless of
-	 * any g_private_set() calls issued before threading system intialization.
-	 * Returns:the corresponding pointer.
-	 */
-	public void* get()
-	{
-		// gpointer g_private_get (GPrivate *private_key);
-		return g_private_get(gPrivate);
-	}
-	
-	/**
-	 * Sets the pointer keyed to private_key for the current thread.
-	 * This function can be used even if g_thread_init() has not yet been
-	 * called, and, in that case, will set private_key to data casted to GPrivate*.
-	 * See g_private_get() for resulting caveats.
-	 * Params:
-	 * data = the new pointer.
-	 */
-	public void set(void* data)
-	{
-		// void g_private_set (GPrivate *private_key,  gpointer data);
-		g_private_set(gPrivate, data);
-	}
+
+    /** the main Gtk struct */
+    protected GPrivate* gPrivate;
+
+
+    public GPrivate* getPrivateStruct()
+    {
+        return gPrivate;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gPrivate;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GPrivate* gPrivate)
+    {
+        if(gPrivate is null)
+        {
+            this = null;
+            return;
+        }
+        this.gPrivate = gPrivate;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GPrivate. If destructor is non-NULL, it is a pointer
+     * to a destructor function. Whenever a thread ends and the corresponding
+     * pointer keyed to this instance of GPrivate is non-NULL, the
+     * destructor is called with this pointer as the argument.
+     * Note
+     * destructor is used quite differently from notify in
+     * g_static_private_set().
+     * Note
+     * A GPrivate can not be freed. Reuse it instead, if you can, to avoid
+     * shortage, or use GStaticPrivate.
+     * Note
+     * This function will abort if g_thread_init() has not been called yet.
+     * Params:
+     * destructor = a function to destroy the data keyed to GPrivate when a
+     * thread ends.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GDestroyNotify destructor)
+    {
+        // GPrivate* g_private_new (GDestroyNotify destructor);
+        auto p = g_private_new(destructor);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_private_new(destructor)");
+        }
+        this(cast(GPrivate*) p);
+    }
+
+    /**
+     * Returns the pointer keyed to private_key for the current thread.
+     * If g_private_set() hasn't been called for the
+     * current private_key and thread yet, this pointer will be NULL.
+     * This function can be used even if g_thread_init() has not yet been called, and,
+     * in that case, will return the value of private_key casted to gpointer.
+     * Note however, that private data set before g_thread_init() will
+     * not be retained after the call. Instead, NULL
+     * will be returned in all threads directly after g_thread_init(), regardless of
+     * any g_private_set() calls issued before threading system intialization.
+     * Returns:the corresponding pointer.
+     */
+    public void* get()
+    {
+        // gpointer g_private_get (GPrivate *private_key);
+        return g_private_get(gPrivate);
+    }
+
+    /**
+     * Sets the pointer keyed to private_key for the current thread.
+     * This function can be used even if g_thread_init() has not yet been
+     * called, and, in that case, will set private_key to data casted to GPrivate*.
+     * See g_private_get() for resulting caveats.
+     * Params:
+     * data = the new pointer.
+     */
+    public void set(void* data)
+    {
+        // void g_private_set (GPrivate *private_key,  gpointer data);
+        g_private_set(gPrivate, data);
+    }
 }

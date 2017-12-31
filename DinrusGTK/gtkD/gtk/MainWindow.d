@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = MainWindow
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * omit structs:
@@ -73,47 +73,47 @@ private import gtkD.gdk.Event;
  */
 public class MainWindow : Window
 {
-	
-	private static int countTotalMainWindows = 0;
-	
-	/**
-	 * Creates a new MainWindow with a title
-	 */
-	public this(string title)
-	{
-		super(title);
-		countTotalMainWindows++;
-		//printf("MainWindows.this count = %d\n", countTotalMainWindows);
-		addOnDelete(&windowDelete);
-	}
-	
-	/**
-	 * Executed when the user tries to close the window
-	 * Returns: true to refuse to close the window
-	 */
-	protected bool windowDelete(Event event, Widget widget)
-	{
-		--countTotalMainWindows;
-		//printf("MainWindows.windowDelete count = %d\n", countTotalMainWindows);
-		if ( exit(0, false) || countTotalMainWindows==0 )
-		{
-			Main.quit();
-			return false;
-		}
-		return false;
-	}
-	
-	/**
-	 * Allows the application to close and decide if it can exit
-	 * Params:
-	 *  code = the code reason to exit
-	 *  force = if true the application must expect to be closed even against it's will
-	 * Returns: false to refuse to exit
-	 */
-	protected bool exit(int code, bool force)
-	{
-		return force;
-	}
+
+    private static int countTotalMainWindows = 0;
+
+    /**
+     * Creates a new MainWindow with a title
+     */
+    public this(string title)
+    {
+        super(title);
+        countTotalMainWindows++;
+        //printf("MainWindows.this count = %d\n", countTotalMainWindows);
+        addOnDelete(&windowDelete);
+    }
+
+    /**
+     * Executed when the user tries to close the window
+     * Returns: true to refuse to close the window
+     */
+    protected bool windowDelete(Event event, Widget widget)
+    {
+        --countTotalMainWindows;
+        //printf("MainWindows.windowDelete count = %d\n", countTotalMainWindows);
+        if ( exit(0, false) || countTotalMainWindows==0 )
+        {
+            Main.quit();
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Allows the application to close and decide if it can exit
+     * Params:
+     *  code = the code reason to exit
+     *  force = if true the application must expect to be closed even against it's will
+     * Returns: false to refuse to exit
+     */
+    protected bool exit(int code, bool force)
+    {
+        return force;
+    }
 }
 
 /**

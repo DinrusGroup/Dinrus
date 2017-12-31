@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TrashStack
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_trash_stack_
@@ -71,86 +71,86 @@ private import gtkD.glib.ConstructionException;
  */
 public class TrashStack
 {
-	
-	/** the main Gtk struct */
-	protected GTrashStack* gTrashStack;
-	
-	
-	public GTrashStack* getTrashStackStruct()
-	{
-		return gTrashStack;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTrashStack;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GTrashStack* gTrashStack)
-	{
-		if(gTrashStack is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTrashStack = gTrashStack;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Pushes a piece of memory onto a GTrashStack.
-	 * Params:
-	 * stackP = a pointer to a GTrashStack.
-	 * dataP = the piece of memory to push on the stack.
-	 */
-	public static void push(GTrashStack** stackP, void* dataP)
-	{
-		// void g_trash_stack_push (GTrashStack **stack_p,  gpointer data_p);
-		g_trash_stack_push(stackP, dataP);
-	}
-	
-	/**
-	 * Pops a piece of memory off a GTrashStack.
-	 * Params:
-	 * stackP = a pointer to a GTrashStack.
-	 * Returns:the element at the top of the stack.
-	 */
-	public static void* pop(GTrashStack** stackP)
-	{
-		// gpointer g_trash_stack_pop (GTrashStack **stack_p);
-		return g_trash_stack_pop(stackP);
-	}
-	
-	/**
-	 * Returns the element at the top of a GTrashStack which may be NULL.
-	 * Params:
-	 * stackP = a pointer to a GTrashStack.
-	 * Returns:the element at the top of the stack.
-	 */
-	public static void* peek(GTrashStack** stackP)
-	{
-		// gpointer g_trash_stack_peek (GTrashStack **stack_p);
-		return g_trash_stack_peek(stackP);
-	}
-	
-	/**
-	 * Returns the height of a GTrashStack.
-	 * Note that execution of this function is of O(N) complexity
-	 * where N denotes the number of items on the stack.
-	 * Params:
-	 * stackP = a pointer to a GTrashStack.
-	 * Returns:the height of the stack.
-	 */
-	public static uint height(GTrashStack** stackP)
-	{
-		// guint g_trash_stack_height (GTrashStack **stack_p);
-		return g_trash_stack_height(stackP);
-	}
+
+    /** the main Gtk struct */
+    protected GTrashStack* gTrashStack;
+
+
+    public GTrashStack* getTrashStackStruct()
+    {
+        return gTrashStack;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gTrashStack;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GTrashStack* gTrashStack)
+    {
+        if(gTrashStack is null)
+        {
+            this = null;
+            return;
+        }
+        this.gTrashStack = gTrashStack;
+    }
+
+    /**
+     */
+
+    /**
+     * Pushes a piece of memory onto a GTrashStack.
+     * Params:
+     * stackP = a pointer to a GTrashStack.
+     * dataP = the piece of memory to push on the stack.
+     */
+    public static void push(GTrashStack** stackP, void* dataP)
+    {
+        // void g_trash_stack_push (GTrashStack **stack_p,  gpointer data_p);
+        g_trash_stack_push(stackP, dataP);
+    }
+
+    /**
+     * Pops a piece of memory off a GTrashStack.
+     * Params:
+     * stackP = a pointer to a GTrashStack.
+     * Returns:the element at the top of the stack.
+     */
+    public static void* pop(GTrashStack** stackP)
+    {
+        // gpointer g_trash_stack_pop (GTrashStack **stack_p);
+        return g_trash_stack_pop(stackP);
+    }
+
+    /**
+     * Returns the element at the top of a GTrashStack which may be NULL.
+     * Params:
+     * stackP = a pointer to a GTrashStack.
+     * Returns:the element at the top of the stack.
+     */
+    public static void* peek(GTrashStack** stackP)
+    {
+        // gpointer g_trash_stack_peek (GTrashStack **stack_p);
+        return g_trash_stack_peek(stackP);
+    }
+
+    /**
+     * Returns the height of a GTrashStack.
+     * Note that execution of this function is of O(N) complexity
+     * where N denotes the number of items on the stack.
+     * Params:
+     * stackP = a pointer to a GTrashStack.
+     * Returns:the height of the stack.
+     */
+    public static uint height(GTrashStack** stackP)
+    {
+        // guint g_trash_stack_height (GTrashStack **stack_p);
+        return g_trash_stack_height(stackP);
+    }
 }

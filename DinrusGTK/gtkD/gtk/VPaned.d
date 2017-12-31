@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = VPaned
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_vpaned_
@@ -73,73 +73,73 @@ private import gtkD.gtk.Paned;
  */
 public class VPaned : Paned
 {
-	
-	/** the main Gtk struct */
-	protected GtkVPaned* gtkVPaned;
-	
-	
-	public GtkVPaned* getVPanedStruct()
-	{
-		return gtkVPaned;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVPaned;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkVPaned* gtkVPaned)
-	{
-		if(gtkVPaned is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVPaned);
-		if( ptr !is null )
-		{
-			this = cast(VPaned)ptr;
-			return;
-		}
-		super(cast(GtkPaned*)gtkVPaned);
-		this.gtkVPaned = gtkVPaned;
-	}
-	
-	/**
-	 * Creates a new HPaned and adds two widgets as it's children
-	 * Params:
-	 *  child1 =
-	 *  child2 =
-	 */
-	this(Widget child1, Widget child2)
-	{
-		this();
-		add1(child1);
-		add2(child2);
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Create a new GtkVPaned
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget * gtk_vpaned_new (void);
-		auto p = gtk_vpaned_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_vpaned_new()");
-		}
-		this(cast(GtkVPaned*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkVPaned* gtkVPaned;
+
+
+    public GtkVPaned* getVPanedStruct()
+    {
+        return gtkVPaned;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkVPaned;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkVPaned* gtkVPaned)
+    {
+        if(gtkVPaned is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkVPaned);
+        if( ptr !is null )
+        {
+            this = cast(VPaned)ptr;
+            return;
+        }
+        super(cast(GtkPaned*)gtkVPaned);
+        this.gtkVPaned = gtkVPaned;
+    }
+
+    /**
+     * Creates a new HPaned and adds two widgets as it's children
+     * Params:
+     *  child1 =
+     *  child2 =
+     */
+    this(Widget child1, Widget child2)
+    {
+        this();
+        add1(child1);
+        add2(child2);
+    }
+
+
+    /**
+     */
+
+    /**
+     * Create a new GtkVPaned
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget * gtk_vpaned_new (void);
+        auto p = gtk_vpaned_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_vpaned_new()");
+        }
+        this(cast(GtkVPaned*) p);
+    }
 }

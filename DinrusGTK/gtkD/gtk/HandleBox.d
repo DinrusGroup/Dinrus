@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = HandleBox
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_handle_box_
@@ -88,208 +88,208 @@ private import gtkD.gtk.Bin;
  */
 public class HandleBox : Bin
 {
-	
-	/** the main Gtk struct */
-	protected GtkHandleBox* gtkHandleBox;
-	
-	
-	public GtkHandleBox* getHandleBoxStruct()
-	{
-		return gtkHandleBox;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkHandleBox;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkHandleBox* gtkHandleBox)
-	{
-		if(gtkHandleBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkHandleBox);
-		if( ptr !is null )
-		{
-			this = cast(HandleBox)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkHandleBox);
-		this.gtkHandleBox = gtkHandleBox;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(GtkWidget*, HandleBox)[] onChildAttachedListeners;
-	/**
-	 * This signal is emitted when the contents of the
-	 * handlebox are reattached to the main window.
-	 */
-	void addOnChildAttached(void delegate(GtkWidget*, HandleBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("child-attached" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"child-attached",
-			cast(GCallback)&callBackChildAttached,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["child-attached"] = 1;
-		}
-		onChildAttachedListeners ~= dlg;
-	}
-	extern(C) static void callBackChildAttached(GtkHandleBox* handleboxStruct, GtkWidget* widget, HandleBox handleBox)
-	{
-		foreach ( void delegate(GtkWidget*, HandleBox) dlg ; handleBox.onChildAttachedListeners )
-		{
-			dlg(widget, handleBox);
-		}
-	}
-	
-	void delegate(GtkWidget*, HandleBox)[] onChildDetachedListeners;
-	/**
-	 * This signal is emitted when the contents of the
-	 * handlebox are detached from the main window.
-	 */
-	void addOnChildDetached(void delegate(GtkWidget*, HandleBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("child-detached" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"child-detached",
-			cast(GCallback)&callBackChildDetached,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["child-detached"] = 1;
-		}
-		onChildDetachedListeners ~= dlg;
-	}
-	extern(C) static void callBackChildDetached(GtkHandleBox* handleboxStruct, GtkWidget* widget, HandleBox handleBox)
-	{
-		foreach ( void delegate(GtkWidget*, HandleBox) dlg ; handleBox.onChildDetachedListeners )
-		{
-			dlg(widget, handleBox);
-		}
-	}
-	
-	
-	/**
-	 * Create a new handle box.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_handle_box_new (void);
-		auto p = gtk_handle_box_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_handle_box_new()");
-		}
-		this(cast(GtkHandleBox*) p);
-	}
-	
-	/**
-	 * Sets the type of shadow to be drawn around the border
-	 * of the handle box.
-	 * Params:
-	 * type = the shadow type.
-	 */
-	public void setShadowType(GtkShadowType type)
-	{
-		// void gtk_handle_box_set_shadow_type (GtkHandleBox *handle_box,  GtkShadowType type);
-		gtk_handle_box_set_shadow_type(gtkHandleBox, type);
-	}
-	
-	/**
-	 * Sets the side of the handlebox where the handle is drawn.
-	 * Params:
-	 * position = the side of the handlebox where the handle should be drawn.
-	 */
-	public void setHandlePosition(GtkPositionType position)
-	{
-		// void gtk_handle_box_set_handle_position (GtkHandleBox *handle_box,  GtkPositionType position);
-		gtk_handle_box_set_handle_position(gtkHandleBox, position);
-	}
-	
-	/**
-	 * Sets the snap edge of a handlebox. The snap edge is
-	 * the edge of the detached child that must be aligned
-	 * with the corresponding edge of the "ghost" left
-	 * behind when the child was detached to reattach
-	 * the torn-off window. Usually, the snap edge should
-	 * be chosen so that it stays in the same place on
-	 * the screen when the handlebox is torn off.
-	 * If the snap edge is not set, then an appropriate value
-	 * will be guessed from the handle position. If the
-	 * handle position is GTK_POS_RIGHT or GTK_POS_LEFT,
-	 * then the snap edge will be GTK_POS_TOP, otherwise
-	 * it will be GTK_POS_LEFT.
-	 * Params:
-	 * edge = the snap edge, or -1 to unset the value; in which
-	 * case GTK+ will try to guess an appropriate value
-	 * in the future.
-	 */
-	public void setSnapEdge(GtkPositionType edge)
-	{
-		// void gtk_handle_box_set_snap_edge (GtkHandleBox *handle_box,  GtkPositionType edge);
-		gtk_handle_box_set_snap_edge(gtkHandleBox, edge);
-	}
-	
-	/**
-	 * Gets the handle position of the handle box. See
-	 * gtk_handle_box_set_handle_position().
-	 * Returns: the current handle position.
-	 */
-	public GtkPositionType getHandlePosition()
-	{
-		// GtkPositionType gtk_handle_box_get_handle_position (GtkHandleBox *handle_box);
-		return gtk_handle_box_get_handle_position(gtkHandleBox);
-	}
-	
-	/**
-	 * Gets the type of shadow drawn around the handle box. See
-	 * gtk_handle_box_set_shadow_type().
-	 * Returns: the type of shadow currently drawn around the handle box.
-	 */
-	public GtkShadowType getShadowType()
-	{
-		// GtkShadowType gtk_handle_box_get_shadow_type (GtkHandleBox *handle_box);
-		return gtk_handle_box_get_shadow_type(gtkHandleBox);
-	}
-	
-	/**
-	 * Gets the edge used for determining reattachment of the handle box. See
-	 * gtk_handle_box_set_snap_edge().
-	 * Returns: the edge used for determining reattachment, or (GtkPositionType)-1 if this is determined (as per default) from the handle position.
-	 */
-	public GtkPositionType getSnapEdge()
-	{
-		// GtkPositionType gtk_handle_box_get_snap_edge (GtkHandleBox *handle_box);
-		return gtk_handle_box_get_snap_edge(gtkHandleBox);
-	}
-	
-	/**
-	 * Whether the handlebox's child is currently detached.
-	 * Since 2.14
-	 * Returns: TRUE if the child is currently detached, otherwise FALSE
-	 */
-	public int getChildDetached()
-	{
-		// gboolean gtk_handle_box_get_child_detached (GtkHandleBox *handle_box);
-		return gtk_handle_box_get_child_detached(gtkHandleBox);
-	}
+
+    /** the main Gtk struct */
+    protected GtkHandleBox* gtkHandleBox;
+
+
+    public GtkHandleBox* getHandleBoxStruct()
+    {
+        return gtkHandleBox;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkHandleBox;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkHandleBox* gtkHandleBox)
+    {
+        if(gtkHandleBox is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkHandleBox);
+        if( ptr !is null )
+        {
+            this = cast(HandleBox)ptr;
+            return;
+        }
+        super(cast(GtkBin*)gtkHandleBox);
+        this.gtkHandleBox = gtkHandleBox;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(GtkWidget*, HandleBox)[] onChildAttachedListeners;
+    /**
+     * This signal is emitted when the contents of the
+     * handlebox are reattached to the main window.
+     */
+    void addOnChildAttached(void delegate(GtkWidget*, HandleBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("child-attached" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "child-attached",
+                cast(GCallback)&callBackChildAttached,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["child-attached"] = 1;
+        }
+        onChildAttachedListeners ~= dlg;
+    }
+    extern(C) static void callBackChildAttached(GtkHandleBox* handleboxStruct, GtkWidget* widget, HandleBox handleBox)
+    {
+        foreach ( void delegate(GtkWidget*, HandleBox) dlg ; handleBox.onChildAttachedListeners )
+        {
+            dlg(widget, handleBox);
+        }
+    }
+
+    void delegate(GtkWidget*, HandleBox)[] onChildDetachedListeners;
+    /**
+     * This signal is emitted when the contents of the
+     * handlebox are detached from the main window.
+     */
+    void addOnChildDetached(void delegate(GtkWidget*, HandleBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("child-detached" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "child-detached",
+                cast(GCallback)&callBackChildDetached,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["child-detached"] = 1;
+        }
+        onChildDetachedListeners ~= dlg;
+    }
+    extern(C) static void callBackChildDetached(GtkHandleBox* handleboxStruct, GtkWidget* widget, HandleBox handleBox)
+    {
+        foreach ( void delegate(GtkWidget*, HandleBox) dlg ; handleBox.onChildDetachedListeners )
+        {
+            dlg(widget, handleBox);
+        }
+    }
+
+
+    /**
+     * Create a new handle box.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_handle_box_new (void);
+        auto p = gtk_handle_box_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_handle_box_new()");
+        }
+        this(cast(GtkHandleBox*) p);
+    }
+
+    /**
+     * Sets the type of shadow to be drawn around the border
+     * of the handle box.
+     * Params:
+     * type = the shadow type.
+     */
+    public void setShadowType(GtkShadowType type)
+    {
+        // void gtk_handle_box_set_shadow_type (GtkHandleBox *handle_box,  GtkShadowType type);
+        gtk_handle_box_set_shadow_type(gtkHandleBox, type);
+    }
+
+    /**
+     * Sets the side of the handlebox where the handle is drawn.
+     * Params:
+     * position = the side of the handlebox where the handle should be drawn.
+     */
+    public void setHandlePosition(GtkPositionType position)
+    {
+        // void gtk_handle_box_set_handle_position (GtkHandleBox *handle_box,  GtkPositionType position);
+        gtk_handle_box_set_handle_position(gtkHandleBox, position);
+    }
+
+    /**
+     * Sets the snap edge of a handlebox. The snap edge is
+     * the edge of the detached child that must be aligned
+     * with the corresponding edge of the "ghost" left
+     * behind when the child was detached to reattach
+     * the torn-off window. Usually, the snap edge should
+     * be chosen so that it stays in the same place on
+     * the screen when the handlebox is torn off.
+     * If the snap edge is not set, then an appropriate value
+     * will be guessed from the handle position. If the
+     * handle position is GTK_POS_RIGHT or GTK_POS_LEFT,
+     * then the snap edge will be GTK_POS_TOP, otherwise
+     * it will be GTK_POS_LEFT.
+     * Params:
+     * edge = the snap edge, or -1 to unset the value; in which
+     * case GTK+ will try to guess an appropriate value
+     * in the future.
+     */
+    public void setSnapEdge(GtkPositionType edge)
+    {
+        // void gtk_handle_box_set_snap_edge (GtkHandleBox *handle_box,  GtkPositionType edge);
+        gtk_handle_box_set_snap_edge(gtkHandleBox, edge);
+    }
+
+    /**
+     * Gets the handle position of the handle box. See
+     * gtk_handle_box_set_handle_position().
+     * Returns: the current handle position.
+     */
+    public GtkPositionType getHandlePosition()
+    {
+        // GtkPositionType gtk_handle_box_get_handle_position (GtkHandleBox *handle_box);
+        return gtk_handle_box_get_handle_position(gtkHandleBox);
+    }
+
+    /**
+     * Gets the type of shadow drawn around the handle box. See
+     * gtk_handle_box_set_shadow_type().
+     * Returns: the type of shadow currently drawn around the handle box.
+     */
+    public GtkShadowType getShadowType()
+    {
+        // GtkShadowType gtk_handle_box_get_shadow_type (GtkHandleBox *handle_box);
+        return gtk_handle_box_get_shadow_type(gtkHandleBox);
+    }
+
+    /**
+     * Gets the edge used for determining reattachment of the handle box. See
+     * gtk_handle_box_set_snap_edge().
+     * Returns: the edge used for determining reattachment, or (GtkPositionType)-1 if this is determined (as per default) from the handle position.
+     */
+    public GtkPositionType getSnapEdge()
+    {
+        // GtkPositionType gtk_handle_box_get_snap_edge (GtkHandleBox *handle_box);
+        return gtk_handle_box_get_snap_edge(gtkHandleBox);
+    }
+
+    /**
+     * Whether the handlebox's child is currently detached.
+     * Since 2.14
+     * Returns: TRUE if the child is currently detached, otherwise FALSE
+     */
+    public int getChildDetached()
+    {
+        // gboolean gtk_handle_box_get_child_detached (GtkHandleBox *handle_box);
+        return gtk_handle_box_get_child_detached(gtkHandleBox);
+    }
 }

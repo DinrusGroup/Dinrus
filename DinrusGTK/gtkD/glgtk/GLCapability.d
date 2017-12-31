@@ -72,339 +72,340 @@ public import gtkD.glgtk.GLWidget;
 private import gtkD.glgdk.GLDrawable;
 public import gtkD.gdk.Event;
 
-	private import gc;
+version(Dinrus)	private import gc;
+version(Rulada) private import std.gc;
 
 
 
 template GLCapability()
 {
 
-	GLfloat width = 0;
-	GLfloat height = 0;
+    GLfloat width = 0;
+    GLfloat height = 0;
 
-	GLfloat getGLWidth()
-	{
-		return width;
-	}
-	GLfloat getGLHeight()
-	{
-		return height;
-	}
+    GLfloat getGLWidth()
+    {
+        return width;
+    }
+    GLfloat getGLHeight()
+    {
+        return height;
+    }
 
 
-	/**
-	 * Sets the GL capabilities for the widget
-	 */
-	bool setGLCapability(GLConfig glConfig = null, int renderType = GLRenderType.RGBA_TYPE)
-	{
-		if ( glConfig is null )
-		{
-			glConfig = new GLConfig(
-			GLConfigMode.MODE_RGB
-			| GLConfigMode.MODE_DEPTH
-			| GLConfigMode.MODE_DOUBLE,
-			GLConfigMode.MODE_RGB
-			| GLConfigMode.MODE_DEPTH
-			);
-		}
-		bool ok = setGLCapability(this, glConfig, null, true, renderType);
+    /**
+     * Sets the GL capabilities for the widget
+     */
+    bool setGLCapability(GLConfig glConfig = null, int renderType = GLRenderType.RGBA_TYPE)
+    {
+        if ( glConfig is null )
+        {
+            glConfig = new GLConfig(
+                GLConfigMode.MODE_RGB
+                | GLConfigMode.MODE_DEPTH
+                | GLConfigMode.MODE_DOUBLE,
+                GLConfigMode.MODE_RGB
+                | GLConfigMode.MODE_DEPTH
+            );
+        }
+        bool ok = setGLCapability(this, glConfig, null, true, renderType);
 
-		return ok;
-	}
+        return ok;
+    }
 
-	/**
-	 * Set the GL capabilities for the widget
-	 */
-	bool setGLCapability(Widget widget, GLConfig glConfig, GLContext shareList, bool direct, int renderType)
-	{
-		GLWidget.setGLCapability(widget, glConfig, shareList, direct, renderType);
+    /**
+     * Set the GL capabilities for the widget
+     */
+    bool setGLCapability(Widget widget, GLConfig glConfig, GLContext shareList, bool direct, int renderType)
+    {
+        GLWidget.setGLCapability(widget, glConfig, shareList, direct, renderType);
 
-		addOnRealize(&realizeFrame);
-		addOnUnrealize(&realizeFrame);
-		addOnExpose(&exposeFrame);
-		addOnConfigure(&configureFrame);
-		addOnMap(&mapFrame);
-		addOnUnmap(&unmapFrame);
-		addOnVisibilityNotify(&visibilityFrame);
-		return true;
-	}
+        addOnRealize(&realizeFrame);
+        addOnUnrealize(&realizeFrame);
+        addOnExpose(&exposeFrame);
+        addOnConfigure(&configureFrame);
+        addOnMap(&mapFrame);
+        addOnUnmap(&unmapFrame);
+        addOnVisibilityNotify(&visibilityFrame);
+        return true;
+    }
 
-	/**
-	 * The widget should use this method to redraw it self at any time
-	 */
-	public bool glDrawFrame()
-	{
-		return glDrawFrame(this);
-	}
+    /**
+     * The widget should use this method to redraw it self at any time
+     */
+    public bool glDrawFrame()
+    {
+        return glDrawFrame(this);
+    }
 
-	/**
-	 * The application should use this method to redraw the scene at any time
-	 */
-	bool glDrawFrame(Widget widget)
-	{
-		//printf("GLCapabilityT.realizeFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    /**
+     * The application should use this method to redraw the scene at any time
+     */
+    bool glDrawFrame(Widget widget)
+    {
+        //printf("GLCapabilityT.realizeFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return false;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return false;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).drawGL(null);
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).drawGL(null);
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
-		return true;
+        drawable.glEnd();
+        /*** OpenGL END ***/
+        return true;
 
-	}
+    }
 
-	bool alreadyRealized;
+    bool alreadyRealized;
 
-	bool getAlreadyRealized()
-	{
-		return alreadyRealized;
-	}
+    bool getAlreadyRealized()
+    {
+        return alreadyRealized;
+    }
 
-	void realizeFrame(Widget widget)
-	{
-		alreadyRealized = true;
+    void realizeFrame(Widget widget)
+    {
+        alreadyRealized = true;
 
-		//printf("GLCapabilityT.realizeFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+        //printf("GLCapabilityT.realizeFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).initGL();
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).initGL();
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
+        drawable.glEnd();
+        /*** OpenGL END ***/
 
-		//return consumeEvent;
-	}
+        //return consumeEvent;
+    }
 
-	bool exposeFrame(GdkEventExpose* event, Widget widget)
-	{
-		//printf("GLCapabilityT.exposeFrame exposeFrame\n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    bool exposeFrame(GdkEventExpose* event, Widget widget)
+    {
+        //printf("GLCapabilityT.exposeFrame exposeFrame\n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return false;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return false;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).drawGL(event);
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).drawGL(event);
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
+        drawable.glEnd();
+        /*** OpenGL END ***/
 
-		return consumeEvent;
-	}
+        return consumeEvent;
+    }
 
-	bool configureFrame(GdkEventConfigure* event, Widget widget)
-	{
-		if ( event != null )
-		{
-			width = event.width;
-			height = event.height;
-		}
-		version(Rulada) tango.core.Memory.GC.disable();
-		else version(D_Version2) core.memory.GC.disable();
-		else std.gc.disable();
-		//writefln("configureFrame 1");
-		//printf("GLCapabilityT.configureFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    bool configureFrame(GdkEventConfigure* event, Widget widget)
+    {
+        if ( event != null )
+        {
+            width = event.width;
+            height = event.height;
+        }
+        version(Rulada) tango.core.Memory.GC.disable();
+        else version(D_Version2) core.memory.GC.disable();
+        else std.gc.disable();
+        //writefln("configureFrame 1");
+        //printf("GLCapabilityT.configureFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return false;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return false;
+        }
 
-		//writefln("configureFrame 2");
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).resizeGL(event);
-		//printf("here\n");
-		//writefln("configureFrame 3");
+        //writefln("configureFrame 2");
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).resizeGL(event);
+        //printf("here\n");
+        //writefln("configureFrame 3");
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			//writefln("configureFrame 4");
-			drawable.swapBuffers();
-			//writefln("configureFrame 5");
-		}
-		else
-		{
-			//writefln("configureFrame 6");
-			glFlush ();
-			//writefln("configureFrame 7");
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            //writefln("configureFrame 4");
+            drawable.swapBuffers();
+            //writefln("configureFrame 5");
+        }
+        else
+        {
+            //writefln("configureFrame 6");
+            glFlush ();
+            //writefln("configureFrame 7");
+        }
 
-		//writefln("configureFrame 8");
-		drawable.glEnd();
-		//writefln("configureFrame 9");
-		/*** OpenGL END ***/
+        //writefln("configureFrame 8");
+        drawable.glEnd();
+        //writefln("configureFrame 9");
+        /*** OpenGL END ***/
 
-		version(Rulada) tango.core.Memory.GC.enable();
-		else version(D_Version2) core.memory.GC.enable();
-		else std.gc.enable();
+        version(Rulada) tango.core.Memory.GC.enable();
+        else version(D_Version2) core.memory.GC.enable();
+        else std.gc.enable();
 
-		return consumeEvent;
-	}
+        return consumeEvent;
+    }
 
-	void mapFrame(Widget widget)
-	{
-		//printf("GLCapabilityT.mapFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    void mapFrame(Widget widget)
+    {
+        //printf("GLCapabilityT.mapFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).onMap();
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).onMap();
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
+        drawable.glEnd();
+        /*** OpenGL END ***/
 
-		//return consumeEvent;
-	}
+        //return consumeEvent;
+    }
 
-	void unmapFrame(Widget widget)
-	{
-		//printf("GLCapabilityT.unmapFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    void unmapFrame(Widget widget)
+    {
+        //printf("GLCapabilityT.unmapFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).onUnmap();
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).onUnmap();
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
+        drawable.glEnd();
+        /*** OpenGL END ***/
 
-		//return consumeEvent;
-	}
+        //return consumeEvent;
+    }
 
-	bool visibilityFrame(GdkEventVisibility* event, Widget widget)
-	{
-		//printf("GLCapabilityT.visibilityFrame \n" );
-		GLContext context = GLWidget.getGLContext(widget);
-		GLDrawable drawable = GLWidget.getGLDrawable(widget);
+    bool visibilityFrame(GdkEventVisibility* event, Widget widget)
+    {
+        //printf("GLCapabilityT.visibilityFrame \n" );
+        GLContext context = GLWidget.getGLContext(widget);
+        GLDrawable drawable = GLWidget.getGLDrawable(widget);
 
-		/*** OpenGL BEGIN ***/
-		if ( !drawable.glBegin(context) )
-		{
-			return false;
-		}
+        /*** OpenGL BEGIN ***/
+        if ( !drawable.glBegin(context) )
+        {
+            return false;
+        }
 
-		/*** do user actions ***/
-		bool consumeEvent = typeof(this).onVisibility(event);
+        /*** do user actions ***/
+        bool consumeEvent = typeof(this).onVisibility(event);
 
-		/*** flush ***/
-		if ( drawable.isDoubleBuffered() )
-		{
-			drawable.swapBuffers();
-		}
-		else
-		{
-			glFlush ();
-		}
+        /*** flush ***/
+        if ( drawable.isDoubleBuffered() )
+        {
+            drawable.swapBuffers();
+        }
+        else
+        {
+            glFlush ();
+        }
 
-		drawable.glEnd();
-		/*** OpenGL END ***/
+        drawable.glEnd();
+        /*** OpenGL END ***/
 
-		return consumeEvent;
-	}
+        return consumeEvent;
+    }
 
-	bool onMap()
-	{
-		//printf("GLCapabilityT.map \n" );
-		return true;
-	}
+    bool onMap()
+    {
+        //printf("GLCapabilityT.map \n" );
+        return true;
+    }
 
-	bool onUnmap()
-	{
-		//printf("GLCapabilityT.unmap \n" );
-		return true;
-	}
+    bool onUnmap()
+    {
+        //printf("GLCapabilityT.unmap \n" );
+        return true;
+    }
 
-	bool onVisibility(GdkEventVisibility* event)
-	{
-		//printf("GLCapabilityT.visibility \n" );
-		return true;
-	}
+    bool onVisibility(GdkEventVisibility* event)
+    {
+        //printf("GLCapabilityT.visibility \n" );
+        return true;
+    }
 }
 
 /**

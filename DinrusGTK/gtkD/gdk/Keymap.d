@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Keymap
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_keymap_
@@ -128,432 +128,432 @@ private import gtkD.gobject.ObjectG;
  */
 public class Keymap : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GdkKeymap* gdkKeymap;
-	
-	
-	public GdkKeymap* getKeymapStruct()
-	{
-		return gdkKeymap;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkKeymap;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkKeymap* gdkKeymap)
-	{
-		if(gdkKeymap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkKeymap);
-		if( ptr !is null )
-		{
-			this = cast(Keymap)ptr;
-			return;
-		}
-		super(cast(GObject*)gdkKeymap);
-		this.gdkKeymap = gdkKeymap;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(Keymap)[] onDirectionChangedListeners;
-	/**
-	 * The ::direction-changed signal gets emitted when the direction of
-	 * the keymap changes.
-	 * Since 2.0
-	 */
-	void addOnDirectionChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("direction-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"direction-changed",
-			cast(GCallback)&callBackDirectionChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["direction-changed"] = 1;
-		}
-		onDirectionChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackDirectionChanged(GdkKeymap* keymapStruct, Keymap keymap)
-	{
-		foreach ( void delegate(Keymap) dlg ; keymap.onDirectionChangedListeners )
-		{
-			dlg(keymap);
-		}
-	}
-	
-	void delegate(Keymap)[] onKeysChangedListeners;
-	/**
-	 * The ::keys-changed signal is emitted when the mapping represented by
-	 * keymap changes.
-	 * Since 2.2
-	 */
-	void addOnKeysChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("keys-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"keys-changed",
-			cast(GCallback)&callBackKeysChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["keys-changed"] = 1;
-		}
-		onKeysChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackKeysChanged(GdkKeymap* keymapStruct, Keymap keymap)
-	{
-		foreach ( void delegate(Keymap) dlg ; keymap.onKeysChangedListeners )
-		{
-			dlg(keymap);
-		}
-	}
-	
-	void delegate(Keymap)[] onStateChangedListeners;
-	/**
-	 * The ::state-changed signal is emitted when the state of the
-	 * keyboard changes, e.g when Caps Lock is turned on or off.
-	 * See gdk_keymap_get_caps_lock_state().
-	 * Since 2.16
-	 */
-	void addOnStateChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("state-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"state-changed",
-			cast(GCallback)&callBackStateChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["state-changed"] = 1;
-		}
-		onStateChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackStateChanged(GdkKeymap* keymapStruct, Keymap keymap)
-	{
-		foreach ( void delegate(Keymap) dlg ; keymap.onStateChangedListeners )
-		{
-			dlg(keymap);
-		}
-	}
-	
-	
-	/**
-	 * Returns the GdkKeymap attached to the default display.
-	 * Returns: the GdkKeymap attached to the default display.
-	 */
-	public static Keymap getDefault()
-	{
-		// GdkKeymap* gdk_keymap_get_default (void);
-		auto p = gdk_keymap_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Keymap(cast(GdkKeymap*) p);
-	}
-	
-	/**
-	 * Returns the GdkKeymap attached to display.
-	 * Since 2.2
-	 * Params:
-	 * display =  the GdkDisplay.
-	 * Returns: the GdkKeymap attached to display.
-	 */
-	public static Keymap getForDisplay(Display display)
-	{
-		// GdkKeymap* gdk_keymap_get_for_display (GdkDisplay *display);
-		auto p = gdk_keymap_get_for_display((display is null) ? null : display.getDisplayStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Keymap(cast(GdkKeymap*) p);
-	}
-	
-	/**
-	 * Looks up the keyval mapped to a keycode/group/level triplet.
-	 * If no keyval is bound to key, returns 0. For normal user input,
-	 * you want to use gdk_keymap_translate_keyboard_state() instead of
-	 * this function, since the effective group/level may not be
-	 * the same as the current keyboard state.
-	 * Params:
-	 * key =  a GdkKeymapKey with keycode, group, and level initialized
-	 * Returns: a keyval, or 0 if none was mapped to the given key
-	 */
-	public uint lookupKey(out GdkKeymapKey key)
-	{
-		// guint gdk_keymap_lookup_key (GdkKeymap *keymap,  const GdkKeymapKey *key);
-		return gdk_keymap_lookup_key(gdkKeymap, &key);
-	}
-	
-	/**
-	 * Translates the contents of a GdkEventKey into a keyval, effective
-	 * group, and level. Modifiers that affected the translation and
-	 * are thus unavailable for application use are returned in
-	 * consumed_modifiers. See gdk_keyval_get_keys() for an explanation of
-	 * groups and levels. The effective_group is the group that was
-	 * actually used for the translation; some keys such as Enter are not
-	 * affected by the active keyboard group. The level is derived from
-	 * state. For convenience, GdkEventKey already contains the translated
-	 * keyval, so this function isn't as useful as you might think.
-	 * Note
-	 * consumed_modifiers gives modifiers that should be masked out
-	 * from state when comparing this key press to a hot key. For
-	 * instance, on a US keyboard, the plus
-	 * symbol is shifted, so when comparing a key press to a
-	 * <Control>plus accelerator <Shift> should
-	 * be masked out.
-	 * /+* We want to ignore irrelevant modifiers like ScrollLock +/
-	 * #define ALL_ACCELS_MASK (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK)
-	 * gdk_keymap_translate_keyboard_state (keymap, event->hardware_keycode,
-	 *  event->state, event->group,
-	 *  keyval, NULL, NULL, consumed);
-	 * if (keyval == GDK_PLUS
-	 *  (event->state  ~consumed  ALL_ACCELS_MASK) == GDK_CONTROL_MASK)
-	 *  /+* Control was pressed +/
-	 * An older interpretation consumed_modifiers was that it contained
-	 * all modifiers that might affect the translation of the key;
-	 * this allowed accelerators to be stored with irrelevant consumed
-	 * Params:
-	 * hardwareKeycode =  a keycode
-	 * state =  a modifier state
-	 * group =  active keyboard group
-	 * keyval =  return location for keyval, or NULL
-	 * effectiveGroup =  return location for effective group, or NULL
-	 * level =  return location for level, or NULL
-	 * consumedModifiers =  return location for modifiers that were used to
-	 *  determine the group or level, or NULL
-	 * Returns: TRUE if there was a keyval bound to the keycode/state/group
-	 */
-	public int translateKeyboardState(uint hardwareKeycode, GdkModifierType state, int group, out uint keyval, out int effectiveGroup, out int level, out GdkModifierType consumedModifiers)
-	{
-		// gboolean gdk_keymap_translate_keyboard_state (GdkKeymap *keymap,  guint hardware_keycode,  GdkModifierType state,  gint group,  guint *keyval,  gint *effective_group,  gint *level,  GdkModifierType *consumed_modifiers);
-		return gdk_keymap_translate_keyboard_state(gdkKeymap, hardwareKeycode, state, group, &keyval, &effectiveGroup, &level, &consumedModifiers);
-	}
-	
-	/**
-	 * Obtains a list of keycode/group/level combinations that will
-	 * generate keyval. Groups and levels are two kinds of keyboard mode;
-	 * in general, the level determines whether the top or bottom symbol
-	 * on a key is used, and the group determines whether the left or
-	 * right symbol is used. On US keyboards, the shift key changes the
-	 * keyboard level, and there are no groups. A group switch key might
-	 * convert a keyboard between Hebrew to English modes, for example.
-	 * GdkEventKey contains a group field that indicates the active
-	 * keyboard group. The level is computed from the modifier mask.
-	 * The returned array should be freed
-	 * with g_free().
-	 * Params:
-	 * keyval =  a keyval, such as GDK_a, GDK_Up, GDK_Return, etc.
-	 * keys =  return location for an array of GdkKeymapKey
-	 * Returns: TRUE if keys were found and returned
-	 */
-	public int getEntriesForKeyval(uint keyval, out GdkKeymapKey[] keys)
-	{
-		// gboolean gdk_keymap_get_entries_for_keyval (GdkKeymap *keymap,  guint keyval,  GdkKeymapKey **keys,  gint *n_keys);
-		GdkKeymapKey* outkeys = null;
-		int nKeys;
-		
-		auto p = gdk_keymap_get_entries_for_keyval(gdkKeymap, keyval, &outkeys, &nKeys);
-		
-		keys = outkeys[0 .. nKeys];
-		return p;
-	}
-	
-	/**
-	 * Returns the keyvals bound to hardware_keycode.
-	 * The Nth GdkKeymapKey in keys is bound to the Nth
-	 * keyval in keyvals. Free the returned arrays with g_free().
-	 * When a keycode is pressed by the user, the keyval from
-	 * this list of entries is selected by considering the effective
-	 * keyboard group and level. See gdk_keymap_translate_keyboard_state().
-	 * Params:
-	 * hardwareKeycode =  a keycode
-	 * keys =  return location for array of GdkKeymapKey, or NULL
-	 * keyvals =  return location for array of keyvals, or NULL
-	 * Returns: TRUE if there were any entries
-	 */
-	public int getEntriesForKeycode(uint hardwareKeycode, out GdkKeymapKey[] keys, out uint[] keyvals)
-	{
-		// gboolean gdk_keymap_get_entries_for_keycode (GdkKeymap *keymap,  guint hardware_keycode,  GdkKeymapKey **keys,  guint **keyvals,  gint *n_entries);
-		GdkKeymapKey* outkeys = null;
-		guint* outkeyvals = null;
-		int nEntries;
-		
-		auto p = gdk_keymap_get_entries_for_keycode(gdkKeymap, hardwareKeycode, &outkeys, &outkeyvals, &nEntries);
-		
-		keys = outkeys[0 .. nEntries];
-		keyvals = outkeyvals[0 .. nEntries];
-		return p;
-	}
-	
-	/**
-	 * Returns the direction of effective layout of the keymap.
-	 * Returns the direction of the keymap.
-	 * Returns: PANGO_DIRECTION_LTR or PANGO_DIRECTION_RTL  if it can determine the direction. PANGO_DIRECTION_NEUTRAL  otherwise.
-	 */
-	public PangoDirection getDirection()
-	{
-		// PangoDirection gdk_keymap_get_direction (GdkKeymap *keymap);
-		return gdk_keymap_get_direction(gdkKeymap);
-	}
-	
-	/**
-	 * Determines if keyboard layouts for both right-to-left and left-to-right
-	 * languages are in use.
-	 * Since 2.12
-	 * Returns: TRUE if there are layouts in both directions, FALSE otherwise
-	 */
-	public int haveBidiLayouts()
-	{
-		// gboolean gdk_keymap_have_bidi_layouts (GdkKeymap *keymap);
-		return gdk_keymap_have_bidi_layouts(gdkKeymap);
-	}
-	
-	/**
-	 * Returns whether the Caps Lock modifer is locked.
-	 * Since 2.16
-	 * Returns: TRUE if Caps Lock is on
-	 */
-	public int getCapsLockState()
-	{
-		// gboolean gdk_keymap_get_caps_lock_state (GdkKeymap *keymap);
-		return gdk_keymap_get_caps_lock_state(gdkKeymap);
-	}
-	
-	/**
-	 * Converts a key value into a symbolic name.
-	 * The names are the same as those in the <gdk/gdkkeysyms.h> header file
-	 * but without the leading "GDK_".
-	 * Params:
-	 * keyval = a key value.
-	 * Returns:a string containing the name of the key, or NULL if keyval is nota valid key. The string should not be modified.
-	 */
-	public static string gdkKeyvalName(uint keyval)
-	{
-		// gchar* gdk_keyval_name (guint keyval);
-		return Str.toString(gdk_keyval_name(keyval));
-	}
-	
-	/**
-	 * Converts a key name to a key value.
-	 * Params:
-	 * keyvalName = a key name.
-	 * Returns:the corresponding key value, or GDK_VoidSymbol if the key name isnot a valid key.
-	 */
-	public static uint gdkKeyvalFromName(string keyvalName)
-	{
-		// guint gdk_keyval_from_name (const gchar *keyval_name);
-		return gdk_keyval_from_name(Str.toStringz(keyvalName));
-	}
-	
-	/**
-	 * Obtains the upper- and lower-case versions of the keyval symbol.
-	 * Examples of keyvals are GDK_a, GDK_Enter, GDK_F1, etc.
-	 * Params:
-	 * symbol =  a keyval
-	 * lower =  return location for lowercase version of symbol
-	 * upper =  return location for uppercase version of symbol
-	 */
-	public static void gdkKeyvalConvertCase(uint symbol, out uint lower, out uint upper)
-	{
-		// void gdk_keyval_convert_case (guint symbol,  guint *lower,  guint *upper);
-		gdk_keyval_convert_case(symbol, &lower, &upper);
-	}
-	
-	/**
-	 * Converts a key value to upper case, if applicable.
-	 * Params:
-	 * keyval = a key value.
-	 * Returns:the upper case form of keyval, or keyval itself if it is alreadyin upper case or it is not subject to case conversion.
-	 */
-	public static uint gdkKeyvalToUpper(uint keyval)
-	{
-		// guint gdk_keyval_to_upper (guint keyval);
-		return gdk_keyval_to_upper(keyval);
-	}
-	
-	/**
-	 * Converts a key value to lower case, if applicable.
-	 * Params:
-	 * keyval = a key value.
-	 * Returns:the lower case form of keyval, or keyval itself if it is alreadyin lower case or it is not subject to case conversion.
-	 */
-	public static uint gdkKeyvalToLower(uint keyval)
-	{
-		// guint gdk_keyval_to_lower (guint keyval);
-		return gdk_keyval_to_lower(keyval);
-	}
-	
-	/**
-	 * Returns TRUE if the given key value is in upper case.
-	 * Params:
-	 * keyval = a key value.
-	 * Returns:%TRUE if keyval is in upper case, or if keyval is not subject tocase conversion.
-	 */
-	public static int gdkKeyvalIsUpper(uint keyval)
-	{
-		// gboolean gdk_keyval_is_upper (guint keyval);
-		return gdk_keyval_is_upper(keyval);
-	}
-	
-	/**
-	 * Returns TRUE if the given key value is in lower case.
-	 * Params:
-	 * keyval = a key value.
-	 * Returns:%TRUE if keyval is in lower case, or if keyval is not subject tocase conversion.
-	 */
-	public static int gdkKeyvalIsLower(uint keyval)
-	{
-		// gboolean gdk_keyval_is_lower (guint keyval);
-		return gdk_keyval_is_lower(keyval);
-	}
-	
-	/**
-	 * Convert from a GDK key symbol to the corresponding ISO10646 (Unicode)
-	 * character.
-	 * Params:
-	 * keyval =  a GDK key symbol
-	 * Returns: the corresponding unicode character, or 0 if there is no corresponding character.
-	 */
-	public static uint gdkKeyvalToUnicode(uint keyval)
-	{
-		// guint32 gdk_keyval_to_unicode (guint keyval);
-		return gdk_keyval_to_unicode(keyval);
-	}
-	
-	/**
-	 * Convert from a ISO10646 character to a key symbol.
-	 * Since 2.0
-	 * Params:
-	 * wc =  a ISO10646 encoded character
-	 * Returns: the corresponding GDK key symbol, if one exists. or, if there is no corresponding symbol,  wc | 0x01000000Signal DetailsThe "direction-changed" signalvoid user_function (GdkKeymap *keymap, gpointer user_data) : Run LastThe ::direction-changed signal gets emitted when the direction ofthe keymap changes.
-	 */
-	public static uint gdkUnicodeToKeyval(uint wc)
-	{
-		// guint gdk_unicode_to_keyval (guint32 wc);
-		return gdk_unicode_to_keyval(wc);
-	}
+
+    /** the main Gtk struct */
+    protected GdkKeymap* gdkKeymap;
+
+
+    public GdkKeymap* getKeymapStruct()
+    {
+        return gdkKeymap;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gdkKeymap;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkKeymap* gdkKeymap)
+    {
+        if(gdkKeymap is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gdkKeymap);
+        if( ptr !is null )
+        {
+            this = cast(Keymap)ptr;
+            return;
+        }
+        super(cast(GObject*)gdkKeymap);
+        this.gdkKeymap = gdkKeymap;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(Keymap)[] onDirectionChangedListeners;
+    /**
+     * The ::direction-changed signal gets emitted when the direction of
+     * the keymap changes.
+     * Since 2.0
+     */
+    void addOnDirectionChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("direction-changed" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "direction-changed",
+                cast(GCallback)&callBackDirectionChanged,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["direction-changed"] = 1;
+        }
+        onDirectionChangedListeners ~= dlg;
+    }
+    extern(C) static void callBackDirectionChanged(GdkKeymap* keymapStruct, Keymap keymap)
+    {
+        foreach ( void delegate(Keymap) dlg ; keymap.onDirectionChangedListeners )
+        {
+            dlg(keymap);
+        }
+    }
+
+    void delegate(Keymap)[] onKeysChangedListeners;
+    /**
+     * The ::keys-changed signal is emitted when the mapping represented by
+     * keymap changes.
+     * Since 2.2
+     */
+    void addOnKeysChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("keys-changed" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "keys-changed",
+                cast(GCallback)&callBackKeysChanged,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["keys-changed"] = 1;
+        }
+        onKeysChangedListeners ~= dlg;
+    }
+    extern(C) static void callBackKeysChanged(GdkKeymap* keymapStruct, Keymap keymap)
+    {
+        foreach ( void delegate(Keymap) dlg ; keymap.onKeysChangedListeners )
+        {
+            dlg(keymap);
+        }
+    }
+
+    void delegate(Keymap)[] onStateChangedListeners;
+    /**
+     * The ::state-changed signal is emitted when the state of the
+     * keyboard changes, e.g when Caps Lock is turned on or off.
+     * See gdk_keymap_get_caps_lock_state().
+     * Since 2.16
+     */
+    void addOnStateChanged(void delegate(Keymap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("state-changed" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "state-changed",
+                cast(GCallback)&callBackStateChanged,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["state-changed"] = 1;
+        }
+        onStateChangedListeners ~= dlg;
+    }
+    extern(C) static void callBackStateChanged(GdkKeymap* keymapStruct, Keymap keymap)
+    {
+        foreach ( void delegate(Keymap) dlg ; keymap.onStateChangedListeners )
+        {
+            dlg(keymap);
+        }
+    }
+
+
+    /**
+     * Returns the GdkKeymap attached to the default display.
+     * Returns: the GdkKeymap attached to the default display.
+     */
+    public static Keymap getDefault()
+    {
+        // GdkKeymap* gdk_keymap_get_default (void);
+        auto p = gdk_keymap_get_default();
+        if(p is null)
+        {
+            return null;
+        }
+        return new Keymap(cast(GdkKeymap*) p);
+    }
+
+    /**
+     * Returns the GdkKeymap attached to display.
+     * Since 2.2
+     * Params:
+     * display =  the GdkDisplay.
+     * Returns: the GdkKeymap attached to display.
+     */
+    public static Keymap getForDisplay(Display display)
+    {
+        // GdkKeymap* gdk_keymap_get_for_display (GdkDisplay *display);
+        auto p = gdk_keymap_get_for_display((display is null) ? null : display.getDisplayStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Keymap(cast(GdkKeymap*) p);
+    }
+
+    /**
+     * Looks up the keyval mapped to a keycode/group/level triplet.
+     * If no keyval is bound to key, returns 0. For normal user input,
+     * you want to use gdk_keymap_translate_keyboard_state() instead of
+     * this function, since the effective group/level may not be
+     * the same as the current keyboard state.
+     * Params:
+     * key =  a GdkKeymapKey with keycode, group, and level initialized
+     * Returns: a keyval, or 0 if none was mapped to the given key
+     */
+    public uint lookupKey(out GdkKeymapKey key)
+    {
+        // guint gdk_keymap_lookup_key (GdkKeymap *keymap,  const GdkKeymapKey *key);
+        return gdk_keymap_lookup_key(gdkKeymap, &key);
+    }
+
+    /**
+     * Translates the contents of a GdkEventKey into a keyval, effective
+     * group, and level. Modifiers that affected the translation and
+     * are thus unavailable for application use are returned in
+     * consumed_modifiers. See gdk_keyval_get_keys() for an explanation of
+     * groups and levels. The effective_group is the group that was
+     * actually used for the translation; some keys such as Enter are not
+     * affected by the active keyboard group. The level is derived from
+     * state. For convenience, GdkEventKey already contains the translated
+     * keyval, so this function isn't as useful as you might think.
+     * Note
+     * consumed_modifiers gives modifiers that should be masked out
+     * from state when comparing this key press to a hot key. For
+     * instance, on a US keyboard, the plus
+     * symbol is shifted, so when comparing a key press to a
+     * <Control>plus accelerator <Shift> should
+     * be masked out.
+     * /+* We want to ignore irrelevant modifiers like ScrollLock +/
+     * #define ALL_ACCELS_MASK (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK)
+     * gdk_keymap_translate_keyboard_state (keymap, event->hardware_keycode,
+     *  event->state, event->group,
+     *  keyval, NULL, NULL, consumed);
+     * if (keyval == GDK_PLUS
+     *  (event->state  ~consumed  ALL_ACCELS_MASK) == GDK_CONTROL_MASK)
+     *  /+* Control was pressed +/
+     * An older interpretation consumed_modifiers was that it contained
+     * all modifiers that might affect the translation of the key;
+     * this allowed accelerators to be stored with irrelevant consumed
+     * Params:
+     * hardwareKeycode =  a keycode
+     * state =  a modifier state
+     * group =  active keyboard group
+     * keyval =  return location for keyval, or NULL
+     * effectiveGroup =  return location for effective group, or NULL
+     * level =  return location for level, or NULL
+     * consumedModifiers =  return location for modifiers that were used to
+     *  determine the group or level, or NULL
+     * Returns: TRUE if there was a keyval bound to the keycode/state/group
+     */
+    public int translateKeyboardState(uint hardwareKeycode, GdkModifierType state, int group, out uint keyval, out int effectiveGroup, out int level, out GdkModifierType consumedModifiers)
+    {
+        // gboolean gdk_keymap_translate_keyboard_state (GdkKeymap *keymap,  guint hardware_keycode,  GdkModifierType state,  gint group,  guint *keyval,  gint *effective_group,  gint *level,  GdkModifierType *consumed_modifiers);
+        return gdk_keymap_translate_keyboard_state(gdkKeymap, hardwareKeycode, state, group, &keyval, &effectiveGroup, &level, &consumedModifiers);
+    }
+
+    /**
+     * Obtains a list of keycode/group/level combinations that will
+     * generate keyval. Groups and levels are two kinds of keyboard mode;
+     * in general, the level determines whether the top or bottom symbol
+     * on a key is used, and the group determines whether the left or
+     * right symbol is used. On US keyboards, the shift key changes the
+     * keyboard level, and there are no groups. A group switch key might
+     * convert a keyboard between Hebrew to English modes, for example.
+     * GdkEventKey contains a group field that indicates the active
+     * keyboard group. The level is computed from the modifier mask.
+     * The returned array should be freed
+     * with g_free().
+     * Params:
+     * keyval =  a keyval, such as GDK_a, GDK_Up, GDK_Return, etc.
+     * keys =  return location for an array of GdkKeymapKey
+     * Returns: TRUE if keys were found and returned
+     */
+    public int getEntriesForKeyval(uint keyval, out GdkKeymapKey[] keys)
+    {
+        // gboolean gdk_keymap_get_entries_for_keyval (GdkKeymap *keymap,  guint keyval,  GdkKeymapKey **keys,  gint *n_keys);
+        GdkKeymapKey* outkeys = null;
+        int nKeys;
+
+        auto p = gdk_keymap_get_entries_for_keyval(gdkKeymap, keyval, &outkeys, &nKeys);
+
+        keys = outkeys[0 .. nKeys];
+        return p;
+    }
+
+    /**
+     * Returns the keyvals bound to hardware_keycode.
+     * The Nth GdkKeymapKey in keys is bound to the Nth
+     * keyval in keyvals. Free the returned arrays with g_free().
+     * When a keycode is pressed by the user, the keyval from
+     * this list of entries is selected by considering the effective
+     * keyboard group and level. See gdk_keymap_translate_keyboard_state().
+     * Params:
+     * hardwareKeycode =  a keycode
+     * keys =  return location for array of GdkKeymapKey, or NULL
+     * keyvals =  return location for array of keyvals, or NULL
+     * Returns: TRUE if there were any entries
+     */
+    public int getEntriesForKeycode(uint hardwareKeycode, out GdkKeymapKey[] keys, out uint[] keyvals)
+    {
+        // gboolean gdk_keymap_get_entries_for_keycode (GdkKeymap *keymap,  guint hardware_keycode,  GdkKeymapKey **keys,  guint **keyvals,  gint *n_entries);
+        GdkKeymapKey* outkeys = null;
+        guint* outkeyvals = null;
+        int nEntries;
+
+        auto p = gdk_keymap_get_entries_for_keycode(gdkKeymap, hardwareKeycode, &outkeys, &outkeyvals, &nEntries);
+
+        keys = outkeys[0 .. nEntries];
+        keyvals = outkeyvals[0 .. nEntries];
+        return p;
+    }
+
+    /**
+     * Returns the direction of effective layout of the keymap.
+     * Returns the direction of the keymap.
+     * Returns: PANGO_DIRECTION_LTR or PANGO_DIRECTION_RTL  if it can determine the direction. PANGO_DIRECTION_NEUTRAL  otherwise.
+     */
+    public PangoDirection getDirection()
+    {
+        // PangoDirection gdk_keymap_get_direction (GdkKeymap *keymap);
+        return gdk_keymap_get_direction(gdkKeymap);
+    }
+
+    /**
+     * Determines if keyboard layouts for both right-to-left and left-to-right
+     * languages are in use.
+     * Since 2.12
+     * Returns: TRUE if there are layouts in both directions, FALSE otherwise
+     */
+    public int haveBidiLayouts()
+    {
+        // gboolean gdk_keymap_have_bidi_layouts (GdkKeymap *keymap);
+        return gdk_keymap_have_bidi_layouts(gdkKeymap);
+    }
+
+    /**
+     * Returns whether the Caps Lock modifer is locked.
+     * Since 2.16
+     * Returns: TRUE if Caps Lock is on
+     */
+    public int getCapsLockState()
+    {
+        // gboolean gdk_keymap_get_caps_lock_state (GdkKeymap *keymap);
+        return gdk_keymap_get_caps_lock_state(gdkKeymap);
+    }
+
+    /**
+     * Converts a key value into a symbolic name.
+     * The names are the same as those in the <gdk/gdkkeysyms.h> header file
+     * but without the leading "GDK_".
+     * Params:
+     * keyval = a key value.
+     * Returns:a string containing the name of the key, or NULL if keyval is nota valid key. The string should not be modified.
+     */
+    public static string gdkKeyvalName(uint keyval)
+    {
+        // gchar* gdk_keyval_name (guint keyval);
+        return Str.toString(gdk_keyval_name(keyval));
+    }
+
+    /**
+     * Converts a key name to a key value.
+     * Params:
+     * keyvalName = a key name.
+     * Returns:the corresponding key value, or GDK_VoidSymbol if the key name isnot a valid key.
+     */
+    public static uint gdkKeyvalFromName(string keyvalName)
+    {
+        // guint gdk_keyval_from_name (const gchar *keyval_name);
+        return gdk_keyval_from_name(Str.toStringz(keyvalName));
+    }
+
+    /**
+     * Obtains the upper- and lower-case versions of the keyval symbol.
+     * Examples of keyvals are GDK_a, GDK_Enter, GDK_F1, etc.
+     * Params:
+     * symbol =  a keyval
+     * lower =  return location for lowercase version of symbol
+     * upper =  return location for uppercase version of symbol
+     */
+    public static void gdkKeyvalConvertCase(uint symbol, out uint lower, out uint upper)
+    {
+        // void gdk_keyval_convert_case (guint symbol,  guint *lower,  guint *upper);
+        gdk_keyval_convert_case(symbol, &lower, &upper);
+    }
+
+    /**
+     * Converts a key value to upper case, if applicable.
+     * Params:
+     * keyval = a key value.
+     * Returns:the upper case form of keyval, or keyval itself if it is alreadyin upper case or it is not subject to case conversion.
+     */
+    public static uint gdkKeyvalToUpper(uint keyval)
+    {
+        // guint gdk_keyval_to_upper (guint keyval);
+        return gdk_keyval_to_upper(keyval);
+    }
+
+    /**
+     * Converts a key value to lower case, if applicable.
+     * Params:
+     * keyval = a key value.
+     * Returns:the lower case form of keyval, or keyval itself if it is alreadyin lower case or it is not subject to case conversion.
+     */
+    public static uint gdkKeyvalToLower(uint keyval)
+    {
+        // guint gdk_keyval_to_lower (guint keyval);
+        return gdk_keyval_to_lower(keyval);
+    }
+
+    /**
+     * Returns TRUE if the given key value is in upper case.
+     * Params:
+     * keyval = a key value.
+     * Returns:%TRUE if keyval is in upper case, or if keyval is not subject tocase conversion.
+     */
+    public static int gdkKeyvalIsUpper(uint keyval)
+    {
+        // gboolean gdk_keyval_is_upper (guint keyval);
+        return gdk_keyval_is_upper(keyval);
+    }
+
+    /**
+     * Returns TRUE if the given key value is in lower case.
+     * Params:
+     * keyval = a key value.
+     * Returns:%TRUE if keyval is in lower case, or if keyval is not subject tocase conversion.
+     */
+    public static int gdkKeyvalIsLower(uint keyval)
+    {
+        // gboolean gdk_keyval_is_lower (guint keyval);
+        return gdk_keyval_is_lower(keyval);
+    }
+
+    /**
+     * Convert from a GDK key symbol to the corresponding ISO10646 (Unicode)
+     * character.
+     * Params:
+     * keyval =  a GDK key symbol
+     * Returns: the corresponding unicode character, or 0 if there is no corresponding character.
+     */
+    public static uint gdkKeyvalToUnicode(uint keyval)
+    {
+        // guint32 gdk_keyval_to_unicode (guint keyval);
+        return gdk_keyval_to_unicode(keyval);
+    }
+
+    /**
+     * Convert from a ISO10646 character to a key symbol.
+     * Since 2.0
+     * Params:
+     * wc =  a ISO10646 encoded character
+     * Returns: the corresponding GDK key symbol, if one exists. or, if there is no corresponding symbol,  wc | 0x01000000Signal DetailsThe "direction-changed" signalvoid user_function (GdkKeymap *keymap, gpointer user_data) : Run LastThe ::direction-changed signal gets emitted when the direction ofthe keymap changes.
+     */
+    public static uint gdkUnicodeToKeyval(uint wc)
+    {
+        // guint gdk_unicode_to_keyval (guint32 wc);
+        return gdk_unicode_to_keyval(wc);
+    }
 }

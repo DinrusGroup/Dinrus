@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Scrollbar
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_scrollbar_
@@ -77,44 +77,44 @@ private import gtkD.gtk.Range;
  */
 public class Scrollbar : Range
 {
-	
-	/** the main Gtk struct */
-	protected GtkScrollbar* gtkScrollbar;
-	
-	
-	public GtkScrollbar* getScrollbarStruct()
-	{
-		return gtkScrollbar;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkScrollbar;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkScrollbar* gtkScrollbar)
-	{
-		if(gtkScrollbar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkScrollbar);
-		if( ptr !is null )
-		{
-			this = cast(Scrollbar)ptr;
-			return;
-		}
-		super(cast(GtkRange*)gtkScrollbar);
-		this.gtkScrollbar = gtkScrollbar;
-	}
-	
-	/**
-	 */
+
+    /** the main Gtk struct */
+    protected GtkScrollbar* gtkScrollbar;
+
+
+    public GtkScrollbar* getScrollbarStruct()
+    {
+        return gtkScrollbar;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkScrollbar;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkScrollbar* gtkScrollbar)
+    {
+        if(gtkScrollbar is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkScrollbar);
+        if( ptr !is null )
+        {
+            this = cast(Scrollbar)ptr;
+            return;
+        }
+        super(cast(GtkRange*)gtkScrollbar);
+        this.gtkScrollbar = gtkScrollbar;
+    }
+
+    /**
+     */
 }

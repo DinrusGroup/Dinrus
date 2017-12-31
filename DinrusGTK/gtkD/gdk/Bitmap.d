@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gdk
  * outFile = Bitmap
  * strct   = GdkBitmap
  * realStrct=
  * ctorStrct=
  * clss    = Bitmap
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_bitmap_
@@ -77,58 +77,58 @@ private import gtkD.gdk.Drawable;
  */
 public class Bitmap
 {
-	
-	/** the main Gtk struct */
-	protected GdkBitmap* gdkBitmap;
-	
-	
-	public GdkBitmap* getBitmapStruct()
-	{
-		return gdkBitmap;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkBitmap;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkBitmap* gdkBitmap)
-	{
-		if(gdkBitmap is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkBitmap = gdkBitmap;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new bitmap from data in XBM format.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap. Can be NULL, in which case the root
-	 * window is used.
-	 * data = a pointer to the XBM data.
-	 * width = the width of the new pixmap in pixels.
-	 * height = the height of the new pixmap in pixels.
-	 * Returns:the GdkBitmap
-	 */
-	public static Bitmap createFromData(Drawable drawable, string data, int width, int height)
-	{
-		// GdkBitmap* gdk_bitmap_create_from_data (GdkDrawable *drawable,  const gchar *data,  gint width,  gint height);
-		auto p = gdk_bitmap_create_from_data((drawable is null) ? null : drawable.getDrawableStruct(), Str.toStringz(data), width, height);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Bitmap(cast(GdkBitmap*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GdkBitmap* gdkBitmap;
+
+
+    public GdkBitmap* getBitmapStruct()
+    {
+        return gdkBitmap;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdkBitmap;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkBitmap* gdkBitmap)
+    {
+        if(gdkBitmap is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdkBitmap = gdkBitmap;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new bitmap from data in XBM format.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap. Can be NULL, in which case the root
+     * window is used.
+     * data = a pointer to the XBM data.
+     * width = the width of the new pixmap in pixels.
+     * height = the height of the new pixmap in pixels.
+     * Returns:the GdkBitmap
+     */
+    public static Bitmap createFromData(Drawable drawable, string data, int width, int height)
+    {
+        // GdkBitmap* gdk_bitmap_create_from_data (GdkDrawable *drawable,  const gchar *data,  gint width,  gint height);
+        auto p = gdk_bitmap_create_from_data((drawable is null) ? null : drawable.getDrawableStruct(), Str.toStringz(data), width, height);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Bitmap(cast(GdkBitmap*) p);
+    }
 }

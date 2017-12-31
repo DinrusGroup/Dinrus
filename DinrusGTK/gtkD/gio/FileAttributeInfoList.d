@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = FileAttributeInfoList
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_file_attribute_info_list_
@@ -357,117 +357,117 @@ private import gtkD.glib.Str;
  */
 public class FileAttributeInfoList
 {
-	
-	/** the main Gtk struct */
-	protected GFileAttributeInfoList* gFileAttributeInfoList;
-	
-	
-	public GFileAttributeInfoList* getFileAttributeInfoListStruct()
-	{
-		return gFileAttributeInfoList;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gFileAttributeInfoList;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GFileAttributeInfoList* gFileAttributeInfoList)
-	{
-		if(gFileAttributeInfoList is null)
-		{
-			this = null;
-			return;
-		}
-		this.gFileAttributeInfoList = gFileAttributeInfoList;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new file attribute info list.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GFileAttributeInfoList * g_file_attribute_info_list_new (void);
-		auto p = g_file_attribute_info_list_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_file_attribute_info_list_new()");
-		}
-		this(cast(GFileAttributeInfoList*) p);
-	}
-	
-	/**
-	 * References a file attribute info list.
-	 * Returns: GFileAttributeInfoList or NULL on error.
-	 */
-	public FileAttributeInfoList doref()
-	{
-		// GFileAttributeInfoList * g_file_attribute_info_list_ref (GFileAttributeInfoList *list);
-		auto p = g_file_attribute_info_list_ref(gFileAttributeInfoList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
-	}
-	
-	/**
-	 * Removes a reference from the given list. If the reference count
-	 * falls to zero, the list is deleted.
-	 */
-	public void unref()
-	{
-		// void g_file_attribute_info_list_unref (GFileAttributeInfoList *list);
-		g_file_attribute_info_list_unref(gFileAttributeInfoList);
-	}
-	
-	/**
-	 * Makes a duplicate of a file attribute info list.
-	 * Returns: a copy of the given list.
-	 */
-	public FileAttributeInfoList dup()
-	{
-		// GFileAttributeInfoList * g_file_attribute_info_list_dup (GFileAttributeInfoList *list);
-		auto p = g_file_attribute_info_list_dup(gFileAttributeInfoList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
-	}
-	
-	/**
-	 * Gets the file attribute with the name name from list.
-	 * Params:
-	 * name =  the name of the attribute to lookup.
-	 * Returns: a GFileAttributeInfo for the name, or NULL if anattribute isn't found.
-	 */
-	public GFileAttributeInfo* lookup(string name)
-	{
-		// const GFileAttributeInfo * g_file_attribute_info_list_lookup  (GFileAttributeInfoList *list,  const char *name);
-		return g_file_attribute_info_list_lookup(gFileAttributeInfoList, Str.toStringz(name));
-	}
-	
-	/**
-	 * Adds a new attribute with name to the list, setting
-	 * its type and flags.
-	 * Params:
-	 * name =  the name of the attribute to add.
-	 * type =  the GFileAttributeType for the attribute.
-	 * flags =  GFileAttributeInfoFlags for the attribute.
-	 */
-	public void add(string name, GFileAttributeType type, GFileAttributeInfoFlags flags)
-	{
-		// void g_file_attribute_info_list_add (GFileAttributeInfoList *list,  const char *name,  GFileAttributeType type,  GFileAttributeInfoFlags flags);
-		g_file_attribute_info_list_add(gFileAttributeInfoList, Str.toStringz(name), type, flags);
-	}
+
+    /** the main Gtk struct */
+    protected GFileAttributeInfoList* gFileAttributeInfoList;
+
+
+    public GFileAttributeInfoList* getFileAttributeInfoListStruct()
+    {
+        return gFileAttributeInfoList;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gFileAttributeInfoList;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GFileAttributeInfoList* gFileAttributeInfoList)
+    {
+        if(gFileAttributeInfoList is null)
+        {
+            this = null;
+            return;
+        }
+        this.gFileAttributeInfoList = gFileAttributeInfoList;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new file attribute info list.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GFileAttributeInfoList * g_file_attribute_info_list_new (void);
+        auto p = g_file_attribute_info_list_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_file_attribute_info_list_new()");
+        }
+        this(cast(GFileAttributeInfoList*) p);
+    }
+
+    /**
+     * References a file attribute info list.
+     * Returns: GFileAttributeInfoList or NULL on error.
+     */
+    public FileAttributeInfoList doref()
+    {
+        // GFileAttributeInfoList * g_file_attribute_info_list_ref (GFileAttributeInfoList *list);
+        auto p = g_file_attribute_info_list_ref(gFileAttributeInfoList);
+        if(p is null)
+        {
+            return null;
+        }
+        return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
+    }
+
+    /**
+     * Removes a reference from the given list. If the reference count
+     * falls to zero, the list is deleted.
+     */
+    public void unref()
+    {
+        // void g_file_attribute_info_list_unref (GFileAttributeInfoList *list);
+        g_file_attribute_info_list_unref(gFileAttributeInfoList);
+    }
+
+    /**
+     * Makes a duplicate of a file attribute info list.
+     * Returns: a copy of the given list.
+     */
+    public FileAttributeInfoList dup()
+    {
+        // GFileAttributeInfoList * g_file_attribute_info_list_dup (GFileAttributeInfoList *list);
+        auto p = g_file_attribute_info_list_dup(gFileAttributeInfoList);
+        if(p is null)
+        {
+            return null;
+        }
+        return new FileAttributeInfoList(cast(GFileAttributeInfoList*) p);
+    }
+
+    /**
+     * Gets the file attribute with the name name from list.
+     * Params:
+     * name =  the name of the attribute to lookup.
+     * Returns: a GFileAttributeInfo for the name, or NULL if anattribute isn't found.
+     */
+    public GFileAttributeInfo* lookup(string name)
+    {
+        // const GFileAttributeInfo * g_file_attribute_info_list_lookup  (GFileAttributeInfoList *list,  const char *name);
+        return g_file_attribute_info_list_lookup(gFileAttributeInfoList, Str.toStringz(name));
+    }
+
+    /**
+     * Adds a new attribute with name to the list, setting
+     * its type and flags.
+     * Params:
+     * name =  the name of the attribute to add.
+     * type =  the GFileAttributeType for the attribute.
+     * flags =  GFileAttributeInfoFlags for the attribute.
+     */
+    public void add(string name, GFileAttributeType type, GFileAttributeInfoFlags flags)
+    {
+        // void g_file_attribute_info_list_add (GFileAttributeInfoList *list,  const char *name,  GFileAttributeType type,  GFileAttributeInfoFlags flags);
+        g_file_attribute_info_list_add(gFileAttributeInfoList, Str.toStringz(name), type, flags);
+    }
 }

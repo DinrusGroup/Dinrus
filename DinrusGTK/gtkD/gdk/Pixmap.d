@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Pixmap
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_pixmap_
@@ -88,212 +88,212 @@ private import gtkD.gdk.Drawable;
  */
 public class Pixmap : Drawable
 {
-	
-	/** the main Gtk struct */
-	protected GdkPixmap* gdkPixmap;
-	
-	
-	public GdkPixmap* getPixmapStruct()
-	{
-		return gdkPixmap;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdkPixmap;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkPixmap* gdkPixmap)
-	{
-		if(gdkPixmap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdkPixmap);
-		if( ptr !is null )
-		{
-			this = cast(Pixmap)ptr;
-			return;
-		}
-		super(cast(GdkDrawable*)gdkPixmap);
-		this.gdkPixmap = gdkPixmap;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Create a new pixmap with a given size and depth.
-	 * Params:
-	 * drawable = A GdkDrawable, used to determine default values
-	 * for the new pixmap. Can be NULL if depth is specified,
-	 * width = The width of the new pixmap in pixels.
-	 * height = The height of the new pixmap in pixels.
-	 * depth = The depth (number of bits per pixel) of the new pixmap.
-	 *  If -1, and drawable is not NULL, the depth of the new
-	 *  pixmap will be equal to that of drawable.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (Drawable drawable, int width, int height, int depth)
-	{
-		// GdkPixmap* gdk_pixmap_new (GdkDrawable *drawable,  gint width,  gint height,  gint depth);
-		auto p = gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth)");
-		}
-		this(cast(GdkPixmap*) p);
-	}
-	
-	/**
-	 * Create a two-color pixmap from data in XBM data.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap. Can be NULL, if the depth is given.
-	 * data = a pointer to the data.
-	 * width = the width of the new pixmap in pixels.
-	 * height = the height of the new pixmap in pixels.
-	 * depth = the depth (number of bits per pixel) of the new pixmap.
-	 * fg = the foreground color.
-	 * bg = the background color.
-	 * Returns:the GdkPixmap
-	 */
-	public static Pixmap createFromData(Drawable drawable, string data, int width, int height, int depth, Color fg, Color bg)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_data (GdkDrawable *drawable,  const gchar *data,  gint width,  gint height,  gint depth,  const GdkColor *fg,  const GdkColor *bg);
-		auto p = gdk_pixmap_create_from_data((drawable is null) ? null : drawable.getDrawableStruct(), Str.toStringz(data), width, height, depth, (fg is null) ? null : fg.getColorStruct(), (bg is null) ? null : bg.getColorStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
-	
-	/**
-	 * Create a pixmap from a XPM file.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap.
-	 * mask = a pointer to a place to store a bitmap representing
-	 * the transparency mask of the XPM file. Can be NULL,
-	 * in which case transparency will be ignored.
-	 * transparentColor = the color to be used for the pixels
-	 * that are transparent in the input file. Can be NULL,
-	 * in which case a default color will be used.
-	 * filename = the filename of a file containing XPM data.
-	 * Returns:the GdkPixmap
-	 */
-	public static Pixmap createFromXpm(Drawable drawable, out Bitmap mask, Color transparentColor, string filename)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_xpm (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
-	
-	/**
-	 * Create a pixmap from a XPM file using a particular colormap.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap. Can be NULL if colormap is given.
-	 * colormap = the GdkColormap that the new pixmap will be use.
-	 *  If omitted, the colormap for window will be used.
-	 * mask = a pointer to a place to store a bitmap representing
-	 * the transparency mask of the XPM file. Can be NULL,
-	 * in which case transparency will be ignored.
-	 * transparentColor = the color to be used for the pixels
-	 * that are transparent in the input file. Can be NULL,
-	 * in which case a default color will be used.
-	 * filename = the filename of a file containing XPM data.
-	 * Returns:the GdkPixmap.
-	 */
-	public static Pixmap colormapCreateFromXpm(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string filename)
-	{
-		// GdkPixmap* gdk_pixmap_colormap_create_from_xpm (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_colormap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
-	
-	/**
-	 * Create a pixmap from data in XPM format.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap.
-	 * mask = Pointer to a place to store a bitmap representing
-	 * the transparency mask of the XPM file. Can be NULL,
-	 * in which case transparency will be ignored.
-	 * transparentColor = This color will be used for the pixels
-	 * that are transparent in the input file. Can be NULL
-	 * in which case a default color will be used.
-	 * data = Pointer to a string containing the XPM data.
-	 * Returns:the GdkPixmap
-	 */
-	public static Pixmap createFromXpmD(Drawable drawable, out Bitmap mask, Color transparentColor, string[] data)
-	{
-		// GdkPixmap* gdk_pixmap_create_from_xpm_d (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
-	
-	/**
-	 * Create a pixmap from data in XPM format using a particular
-	 * colormap.
-	 * Params:
-	 * drawable = a GdkDrawable, used to determine default values
-	 * for the new pixmap. Can be NULL if colormap is given.
-	 * colormap = the GdkColormap that the new pixmap will be use.
-	 *  If omitted, the colormap for window will be used.
-	 * mask = a pointer to a place to store a bitmap representing
-	 * the transparency mask of the XPM file. Can be NULL,
-	 * in which case transparency will be ignored.
-	 * transparentColor = the color to be used for the pixels
-	 * that are transparent in the input file. Can be NULL,
-	 * in which case a default color will be used.
-	 * data = Pointer to a string containing the XPM data.
-	 * Returns:the GdkPixmap.
-	 */
-	public static Pixmap colormapCreateFromXpmD(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string[] data)
-	{
-		// GdkPixmap* gdk_pixmap_colormap_create_from_xpm_d  (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
-		GdkBitmap* outmask = null;
-		
-		auto p = gdk_pixmap_colormap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
-		
-		mask = new Bitmap(outmask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixmap(cast(GdkPixmap*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GdkPixmap* gdkPixmap;
+
+
+    public GdkPixmap* getPixmapStruct()
+    {
+        return gdkPixmap;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gdkPixmap;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkPixmap* gdkPixmap)
+    {
+        if(gdkPixmap is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gdkPixmap);
+        if( ptr !is null )
+        {
+            this = cast(Pixmap)ptr;
+            return;
+        }
+        super(cast(GdkDrawable*)gdkPixmap);
+        this.gdkPixmap = gdkPixmap;
+    }
+
+    /**
+     */
+
+    /**
+     * Create a new pixmap with a given size and depth.
+     * Params:
+     * drawable = A GdkDrawable, used to determine default values
+     * for the new pixmap. Can be NULL if depth is specified,
+     * width = The width of the new pixmap in pixels.
+     * height = The height of the new pixmap in pixels.
+     * depth = The depth (number of bits per pixel) of the new pixmap.
+     *  If -1, and drawable is not NULL, the depth of the new
+     *  pixmap will be equal to that of drawable.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (Drawable drawable, int width, int height, int depth)
+    {
+        // GdkPixmap* gdk_pixmap_new (GdkDrawable *drawable,  gint width,  gint height,  gint depth);
+        auto p = gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gdk_pixmap_new((drawable is null) ? null : drawable.getDrawableStruct(), width, height, depth)");
+        }
+        this(cast(GdkPixmap*) p);
+    }
+
+    /**
+     * Create a two-color pixmap from data in XBM data.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap. Can be NULL, if the depth is given.
+     * data = a pointer to the data.
+     * width = the width of the new pixmap in pixels.
+     * height = the height of the new pixmap in pixels.
+     * depth = the depth (number of bits per pixel) of the new pixmap.
+     * fg = the foreground color.
+     * bg = the background color.
+     * Returns:the GdkPixmap
+     */
+    public static Pixmap createFromData(Drawable drawable, string data, int width, int height, int depth, Color fg, Color bg)
+    {
+        // GdkPixmap* gdk_pixmap_create_from_data (GdkDrawable *drawable,  const gchar *data,  gint width,  gint height,  gint depth,  const GdkColor *fg,  const GdkColor *bg);
+        auto p = gdk_pixmap_create_from_data((drawable is null) ? null : drawable.getDrawableStruct(), Str.toStringz(data), width, height, depth, (fg is null) ? null : fg.getColorStruct(), (bg is null) ? null : bg.getColorStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Pixmap(cast(GdkPixmap*) p);
+    }
+
+    /**
+     * Create a pixmap from a XPM file.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap.
+     * mask = a pointer to a place to store a bitmap representing
+     * the transparency mask of the XPM file. Can be NULL,
+     * in which case transparency will be ignored.
+     * transparentColor = the color to be used for the pixels
+     * that are transparent in the input file. Can be NULL,
+     * in which case a default color will be used.
+     * filename = the filename of a file containing XPM data.
+     * Returns:the GdkPixmap
+     */
+    public static Pixmap createFromXpm(Drawable drawable, out Bitmap mask, Color transparentColor, string filename)
+    {
+        // GdkPixmap* gdk_pixmap_create_from_xpm (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
+        GdkBitmap* outmask = null;
+
+        auto p = gdk_pixmap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
+
+        mask = new Bitmap(outmask);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Pixmap(cast(GdkPixmap*) p);
+    }
+
+    /**
+     * Create a pixmap from a XPM file using a particular colormap.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap. Can be NULL if colormap is given.
+     * colormap = the GdkColormap that the new pixmap will be use.
+     *  If omitted, the colormap for window will be used.
+     * mask = a pointer to a place to store a bitmap representing
+     * the transparency mask of the XPM file. Can be NULL,
+     * in which case transparency will be ignored.
+     * transparentColor = the color to be used for the pixels
+     * that are transparent in the input file. Can be NULL,
+     * in which case a default color will be used.
+     * filename = the filename of a file containing XPM data.
+     * Returns:the GdkPixmap.
+     */
+    public static Pixmap colormapCreateFromXpm(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string filename)
+    {
+        // GdkPixmap* gdk_pixmap_colormap_create_from_xpm (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  const gchar *filename);
+        GdkBitmap* outmask = null;
+
+        auto p = gdk_pixmap_colormap_create_from_xpm((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringz(filename));
+
+        mask = new Bitmap(outmask);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Pixmap(cast(GdkPixmap*) p);
+    }
+
+    /**
+     * Create a pixmap from data in XPM format.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap.
+     * mask = Pointer to a place to store a bitmap representing
+     * the transparency mask of the XPM file. Can be NULL,
+     * in which case transparency will be ignored.
+     * transparentColor = This color will be used for the pixels
+     * that are transparent in the input file. Can be NULL
+     * in which case a default color will be used.
+     * data = Pointer to a string containing the XPM data.
+     * Returns:the GdkPixmap
+     */
+    public static Pixmap createFromXpmD(Drawable drawable, out Bitmap mask, Color transparentColor, string[] data)
+    {
+        // GdkPixmap* gdk_pixmap_create_from_xpm_d (GdkDrawable *drawable,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
+        GdkBitmap* outmask = null;
+
+        auto p = gdk_pixmap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
+
+        mask = new Bitmap(outmask);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Pixmap(cast(GdkPixmap*) p);
+    }
+
+    /**
+     * Create a pixmap from data in XPM format using a particular
+     * colormap.
+     * Params:
+     * drawable = a GdkDrawable, used to determine default values
+     * for the new pixmap. Can be NULL if colormap is given.
+     * colormap = the GdkColormap that the new pixmap will be use.
+     *  If omitted, the colormap for window will be used.
+     * mask = a pointer to a place to store a bitmap representing
+     * the transparency mask of the XPM file. Can be NULL,
+     * in which case transparency will be ignored.
+     * transparentColor = the color to be used for the pixels
+     * that are transparent in the input file. Can be NULL,
+     * in which case a default color will be used.
+     * data = Pointer to a string containing the XPM data.
+     * Returns:the GdkPixmap.
+     */
+    public static Pixmap colormapCreateFromXpmD(Drawable drawable, Colormap colormap, out Bitmap mask, Color transparentColor, string[] data)
+    {
+        // GdkPixmap* gdk_pixmap_colormap_create_from_xpm_d  (GdkDrawable *drawable,  GdkColormap *colormap,  GdkBitmap **mask,  const GdkColor *transparent_color,  gchar **data);
+        GdkBitmap* outmask = null;
+
+        auto p = gdk_pixmap_colormap_create_from_xpm_d((drawable is null) ? null : drawable.getDrawableStruct(), (colormap is null) ? null : colormap.getColormapStruct(), &outmask, (transparentColor is null) ? null : transparentColor.getColorStruct(), Str.toStringzArray(data));
+
+        mask = new Bitmap(outmask);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Pixmap(cast(GdkPixmap*) p);
+    }
 }

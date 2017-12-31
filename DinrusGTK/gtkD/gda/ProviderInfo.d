@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gda
  * outFile = ProviderInfo
  * strct   = GdaProviderInfo
  * realStrct=
  * ctorStrct=
  * clss    = ProviderInfo
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gda_provider_
@@ -73,82 +73,95 @@ private import gtkD.glib.ListG;
  */
 public class ProviderInfo
 {
-	
-	/** the main Gtk struct */
-	protected GdaProviderInfo* gdaProviderInfo;
-	
-	
-	public GdaProviderInfo* getProviderInfoStruct()
-	{
-		return gdaProviderInfo;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdaProviderInfo;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdaProviderInfo* gdaProviderInfo)
-	{
-		if(gdaProviderInfo is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdaProviderInfo = gdaProviderInfo;
-	}
-	
-	/** */
-	this (ListG glist) {
-		this.gdaProviderInfo = cast(GdaProviderInfo *) glist.data;
-	}
-	/** */
-string id() { return Str.toString(this.gdaProviderInfo.id); }
-/** */
-string location() { return Str.toString(this.gdaProviderInfo.location); }
-/** */
-string description() { return Str.toString(this.gdaProviderInfo.description); }
-/** */
-ListG gda_params() { return new ListG(this.gdaProviderInfo.gdaParams); }
 
-/**
- */
+    /** the main Gtk struct */
+    protected GdaProviderInfo* gdaProviderInfo;
 
-/**
- * Returns:
- */
-public static GType infoGetType()
-{
-	// GType gda_provider_info_get_type (void);
-	return gda_provider_info_get_type();
-}
 
-/**
- * Creates a new GdaProviderInfo structure from an existing one.
- * Returns: a newly allocated GdaProviderInfo with contains a copy of information in src.
- */
-public ProviderInfo infoCopy()
-{
-	// GdaProviderInfo* gda_provider_info_copy (GdaProviderInfo *src);
-	auto p = gda_provider_info_copy(gdaProviderInfo);
-	if(p is null)
-	{
-		return null;
-	}
-	return new ProviderInfo(cast(GdaProviderInfo*) p);
-}
+    public GdaProviderInfo* getProviderInfoStruct()
+    {
+        return gdaProviderInfo;
+    }
 
-/**
- * Deallocates all memory associated to the given GdaProviderInfo.
- */
-public void infoFree()
-{
-	// void gda_provider_info_free (GdaProviderInfo *provider_info);
-	gda_provider_info_free(gdaProviderInfo);
-}
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdaProviderInfo;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdaProviderInfo* gdaProviderInfo)
+    {
+        if(gdaProviderInfo is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdaProviderInfo = gdaProviderInfo;
+    }
+
+    /** */
+    this (ListG glist)
+    {
+        this.gdaProviderInfo = cast(GdaProviderInfo *) glist.data;
+    }
+    /** */
+    string id()
+    {
+        return Str.toString(this.gdaProviderInfo.id);
+    }
+    /** */
+    string location()
+    {
+        return Str.toString(this.gdaProviderInfo.location);
+    }
+    /** */
+    string description()
+    {
+        return Str.toString(this.gdaProviderInfo.description);
+    }
+    /** */
+    ListG gda_params()
+    {
+        return new ListG(this.gdaProviderInfo.gdaParams);
+    }
+
+    /**
+     */
+
+    /**
+     * Returns:
+     */
+    public static GType infoGetType()
+    {
+        // GType gda_provider_info_get_type (void);
+        return gda_provider_info_get_type();
+    }
+
+    /**
+     * Creates a new GdaProviderInfo structure from an existing one.
+     * Returns: a newly allocated GdaProviderInfo with contains a copy of information in src.
+     */
+    public ProviderInfo infoCopy()
+    {
+        // GdaProviderInfo* gda_provider_info_copy (GdaProviderInfo *src);
+        auto p = gda_provider_info_copy(gdaProviderInfo);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ProviderInfo(cast(GdaProviderInfo*) p);
+    }
+
+    /**
+     * Deallocates all memory associated to the given GdaProviderInfo.
+     */
+    public void infoFree()
+    {
+        // void gda_provider_info_free (GdaProviderInfo *provider_info);
+        gda_provider_info_free(gdaProviderInfo);
+    }
 }

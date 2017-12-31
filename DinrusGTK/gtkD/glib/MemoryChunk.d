@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = MemoryChunk
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_mem_chunk_
@@ -140,201 +140,201 @@ private import gtkD.glib.Str;
  */
 public class MemoryChunk
 {
-	
-	/** the main Gtk struct */
-	protected GMemChunk* gMemChunk;
-	
-	
-	public GMemChunk* getMemoryChunkStruct()
-	{
-		return gMemChunk;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMemChunk;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GMemChunk* gMemChunk)
-	{
-		if(gMemChunk is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMemChunk = gMemChunk;
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_print has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Outputs debugging information for a GMemChunk.
-	 * It outputs the name of the GMemChunk (set with g_mem_chunk_new()),
-	 * the number of bytes used, and the number of blocks of memory allocated.
-	 */
-	version(Rulada)
-	{
-		public void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
-	}
-	else version(D_Version2)
-	{
-		public void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
-	}
-	else
-	{
-		public override void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_new has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
-	 *  instead
-	 * Creates a new GMemChunk.
-	 * Params:
-	 * name = a string to identify the GMemChunk. It is not copied so it
-	 * should be valid for the lifetime of the GMemChunk. It is only used in
-	 * g_mem_chunk_print(), which is used for debugging.
-	 * atomSize = the size, in bytes, of each element in the GMemChunk.
-	 * areaSize = the size, in bytes, of each block of memory allocated to contain
-	 * the atoms.
-	 * type = the type of the GMemChunk.
-	 * G_ALLOC_AND_FREE is used if the atoms will be freed individually.
-	 * G_ALLOC_ONLY should be used if atoms will never be freed individually.
-	 * G_ALLOC_ONLY is quicker, since it does not need to track free atoms,
-	 * but it obviously wastes memory if you no longer need many of the atoms.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string name, int atomSize, uint areaSize, int type)
-	{
-		// GMemChunk* g_mem_chunk_new (const gchar *name,  gint atom_size,  gsize area_size,  gint type);
-		auto p = g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type)");
-		}
-		this(cast(GMemChunk*) p);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_alloc has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_alloc() instead
-	 * Allocates an atom of memory from a GMemChunk.
-	 * Returns:a pointer to the allocated atom.
-	 */
-	public void* alloc()
-	{
-		// gpointer g_mem_chunk_alloc (GMemChunk *mem_chunk);
-		return g_mem_chunk_alloc(gMemChunk);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_alloc0 has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_alloc0() instead
-	 * Allocates an atom of memory from a GMemChunk, setting the memory to 0.
-	 * Returns:a pointer to the allocated atom.
-	 */
-	public void* alloc0()
-	{
-		// gpointer g_mem_chunk_alloc0 (GMemChunk *mem_chunk);
-		return g_mem_chunk_alloc0(gMemChunk);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_free has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_free1() instead
-	 * Frees an atom in a GMemChunk.
-	 * This should only be called if the GMemChunk was created with
-	 * G_ALLOC_AND_FREE. Otherwise it will simply return.
-	 * Params:
-	 * mem = a pointer to the atom to free.
-	 */
-	public void free(void* mem)
-	{
-		// void g_mem_chunk_free (GMemChunk *mem_chunk,  gpointer mem);
-		g_mem_chunk_free(gMemChunk, mem);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_destroy has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Frees all of the memory allocated for a GMemChunk.
-	 */
-	public void destroy()
-	{
-		// void g_mem_chunk_destroy (GMemChunk *mem_chunk);
-		g_mem_chunk_destroy(gMemChunk);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_reset has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Resets a GMemChunk to its initial state.
-	 * It frees all of the currently allocated blocks of memory.
-	 */
-	public void reset()
-	{
-		// void g_mem_chunk_reset (GMemChunk *mem_chunk);
-		g_mem_chunk_reset(gMemChunk);
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_clean has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Frees any blocks in a GMemChunk which are no longer being used.
-	 */
-	public void clean()
-	{
-		// void g_mem_chunk_clean (GMemChunk *mem_chunk);
-		g_mem_chunk_clean(gMemChunk);
-	}
-	
-	/**
-	 * Warning
-	 * g_blow_chunks has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Calls g_mem_chunk_clean() on all GMemChunk objects.
-	 */
-	public static void blowChunks()
-	{
-		// void g_blow_chunks (void);
-		g_blow_chunks();
-	}
-	
-	/**
-	 * Warning
-	 * g_mem_chunk_info has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
-	 *  allocator instead
-	 * Outputs debugging information for all GMemChunk objects currently in use.
-	 * It outputs the number of GMemChunk objects currently allocated,
-	 * and calls g_mem_chunk_print() to output information on each one.
-	 */
-	public static void info()
-	{
-		// void g_mem_chunk_info (void);
-		g_mem_chunk_info();
-	}
+
+    /** the main Gtk struct */
+    protected GMemChunk* gMemChunk;
+
+
+    public GMemChunk* getMemoryChunkStruct()
+    {
+        return gMemChunk;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gMemChunk;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GMemChunk* gMemChunk)
+    {
+        if(gMemChunk is null)
+        {
+            this = null;
+            return;
+        }
+        this.gMemChunk = gMemChunk;
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_print has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Outputs debugging information for a GMemChunk.
+     * It outputs the name of the GMemChunk (set with g_mem_chunk_new()),
+     * the number of bytes used, and the number of blocks of memory allocated.
+     */
+    version(Rulada)
+    {
+        public void print()
+        {
+            // void g_mem_chunk_print (GMemChunk *mem_chunk);
+            g_mem_chunk_print(gMemChunk);
+        }
+    }
+    else version(D_Version2)
+    {
+        public void print()
+        {
+            // void g_mem_chunk_print (GMemChunk *mem_chunk);
+            g_mem_chunk_print(gMemChunk);
+        }
+    }
+    else
+    {
+        public override void print()
+        {
+            // void g_mem_chunk_print (GMemChunk *mem_chunk);
+            g_mem_chunk_print(gMemChunk);
+        }
+    }
+
+    /**
+     */
+
+    /**
+     * Warning
+     * g_mem_chunk_new has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice allocator
+     *  instead
+     * Creates a new GMemChunk.
+     * Params:
+     * name = a string to identify the GMemChunk. It is not copied so it
+     * should be valid for the lifetime of the GMemChunk. It is only used in
+     * g_mem_chunk_print(), which is used for debugging.
+     * atomSize = the size, in bytes, of each element in the GMemChunk.
+     * areaSize = the size, in bytes, of each block of memory allocated to contain
+     * the atoms.
+     * type = the type of the GMemChunk.
+     * G_ALLOC_AND_FREE is used if the atoms will be freed individually.
+     * G_ALLOC_ONLY should be used if atoms will never be freed individually.
+     * G_ALLOC_ONLY is quicker, since it does not need to track free atoms,
+     * but it obviously wastes memory if you no longer need many of the atoms.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string name, int atomSize, uint areaSize, int type)
+    {
+        // GMemChunk* g_mem_chunk_new (const gchar *name,  gint atom_size,  gsize area_size,  gint type);
+        auto p = g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type)");
+        }
+        this(cast(GMemChunk*) p);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_alloc has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_alloc() instead
+     * Allocates an atom of memory from a GMemChunk.
+     * Returns:a pointer to the allocated atom.
+     */
+    public void* alloc()
+    {
+        // gpointer g_mem_chunk_alloc (GMemChunk *mem_chunk);
+        return g_mem_chunk_alloc(gMemChunk);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_alloc0 has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_alloc0() instead
+     * Allocates an atom of memory from a GMemChunk, setting the memory to 0.
+     * Returns:a pointer to the allocated atom.
+     */
+    public void* alloc0()
+    {
+        // gpointer g_mem_chunk_alloc0 (GMemChunk *mem_chunk);
+        return g_mem_chunk_alloc0(gMemChunk);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_free has been deprecated since version 2.10 and should not be used in newly-written code. Use g_slice_free1() instead
+     * Frees an atom in a GMemChunk.
+     * This should only be called if the GMemChunk was created with
+     * G_ALLOC_AND_FREE. Otherwise it will simply return.
+     * Params:
+     * mem = a pointer to the atom to free.
+     */
+    public void free(void* mem)
+    {
+        // void g_mem_chunk_free (GMemChunk *mem_chunk,  gpointer mem);
+        g_mem_chunk_free(gMemChunk, mem);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_destroy has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Frees all of the memory allocated for a GMemChunk.
+     */
+    public void destroy()
+    {
+        // void g_mem_chunk_destroy (GMemChunk *mem_chunk);
+        g_mem_chunk_destroy(gMemChunk);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_reset has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Resets a GMemChunk to its initial state.
+     * It frees all of the currently allocated blocks of memory.
+     */
+    public void reset()
+    {
+        // void g_mem_chunk_reset (GMemChunk *mem_chunk);
+        g_mem_chunk_reset(gMemChunk);
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_clean has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Frees any blocks in a GMemChunk which are no longer being used.
+     */
+    public void clean()
+    {
+        // void g_mem_chunk_clean (GMemChunk *mem_chunk);
+        g_mem_chunk_clean(gMemChunk);
+    }
+
+    /**
+     * Warning
+     * g_blow_chunks has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Calls g_mem_chunk_clean() on all GMemChunk objects.
+     */
+    public static void blowChunks()
+    {
+        // void g_blow_chunks (void);
+        g_blow_chunks();
+    }
+
+    /**
+     * Warning
+     * g_mem_chunk_info has been deprecated since version 2.10 and should not be used in newly-written code. Use the slice
+     *  allocator instead
+     * Outputs debugging information for all GMemChunk objects currently in use.
+     * It outputs the number of GMemChunk objects currently allocated,
+     * and calls g_mem_chunk_print() to output information on each one.
+     */
+    public static void info()
+    {
+        // void g_mem_chunk_info (void);
+        g_mem_chunk_info();
+    }
 }

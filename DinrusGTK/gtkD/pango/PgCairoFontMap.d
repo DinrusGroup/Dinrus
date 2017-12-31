@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,7 +29,7 @@
  * realStrct=
  * ctorStrct=PangoFontMap
  * clss    = PgCairoFontMap
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -170,186 +170,186 @@ private import gtkD.pango.PgFontMap;
  */
 public class PgCairoFontMap : PgFontMap
 {
-	
-	/** the main Gtk struct */
-	protected PangoCairoFontMap* pangoCairoFontMap;
-	
-	
-	public PangoCairoFontMap* getPgCairoFontMapStruct()
-	{
-		return pangoCairoFontMap;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoCairoFontMap;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (PangoCairoFontMap* pangoCairoFontMap)
-	{
-		if(pangoCairoFontMap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoCairoFontMap);
-		if( ptr !is null )
-		{
-			this = cast(PgCairoFontMap)ptr;
-			return;
-		}
-		super(cast(PangoFontMap*)pangoCairoFontMap);
-		this.pangoCairoFontMap = pangoCairoFontMap;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets a default PangoCairoFontMap to use with Cairo.
-	 * Note that the type of the returned object will depend
-	 * on the particular font backend Cairo was compiled to use;
-	 * You generally should only use the PangoFontMap and
-	 * PangoCairoFontMap interfaces on the returned object.
-	 * The default Cairo fontmap can be changed by using
-	 * pango_cairo_font_map_set_default(). This can be used to
-	 * change the Cairo font backend that the default fontmap
-	 * uses for example.
-	 * Since 1.10
-	 * Returns: the default Cairo fontmap for Pango. This object is owned by Pango and must not be freed.
-	 */
-	public static PgFontMap getDefault()
-	{
-		// PangoFontMap * pango_cairo_font_map_get_default (void);
-		auto p = pango_cairo_font_map_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMap(cast(PangoFontMap*) p);
-	}
-	
-	/**
-	 * Sets a default PangoCairoFontMap to use with Cairo.
-	 * This can be used to change the Cairo font backend that the
-	 * default fontmap uses for example. The old default font map
-	 * is unreffed and the new font map referenced.
-	 * A value of NULL for fontmap will cause the current default
-	 * font map to be released and a new default font
-	 * map to be created on demand, using pango_cairo_font_map_new().
-	 * Since 1.22
-	 */
-	public void setDefault()
-	{
-		// void pango_cairo_font_map_set_default (PangoCairoFontMap *fontmap);
-		pango_cairo_font_map_set_default(pangoCairoFontMap);
-	}
-	
-	/**
-	 * Creates a new PangoCairoFontMap object; a fontmap is used
-	 * to cache information about available fonts, and holds
-	 * certain global parameters such as the resolution.
-	 * In most cases, you can use pango_cairo_font_map_get_default()
-	 * instead.
-	 * Note that the type of the returned object will depend
-	 * on the particular font backend Cairo was compiled to use;
-	 * You generally should only use the PangoFontMap and
-	 * PangoCairoFontMap interfaces on the returned object.
-	 * Since 1.10
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// PangoFontMap * pango_cairo_font_map_new (void);
-		auto p = pango_cairo_font_map_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_cairo_font_map_new()");
-		}
-		this(cast(PangoCairoFontMap*) p);
-	}
-	
-	/**
-	 * Creates a new PangoCairoFontMap object of the type suitable
-	 * to be used with cairo font backend of type fonttype.
-	 * In most cases one should simply use @pango_cairo_font_map_new(),
-	 * or in fact in most of those cases, just use
-	 * @pango_cairo_font_map_get_default().
-	 * Since 1.18
-	 * Params:
-	 * fonttype =  desired cairo_font_type_t
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (cairo_font_type_t fonttype)
-	{
-		// PangoFontMap * pango_cairo_font_map_new_for_font_type  (cairo_font_type_t fonttype);
-		auto p = pango_cairo_font_map_new_for_font_type(fonttype);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_cairo_font_map_new_for_font_type(fonttype)");
-		}
-		this(cast(PangoCairoFontMap*) p);
-	}
-	
-	/**
-	 * Gets the type of Cairo font backend that fontmap uses.
-	 * Since 1.18
-	 * Returns: the cairo_font_type_t cairo font backend type
-	 */
-	public cairo_font_type_t getFontType()
-	{
-		// cairo_font_type_t pango_cairo_font_map_get_font_type (PangoCairoFontMap *fontmap);
-		return pango_cairo_font_map_get_font_type(pangoCairoFontMap);
-	}
-	
-	/**
-	 * Sets the resolution for the fontmap. This is a scale factor between
-	 * points specified in a PangoFontDescription and Cairo units. The
-	 * default value is 96, meaning that a 10 point font will be 13
-	 * units high. (10 * 96. / 72. = 13.3).
-	 * Since 1.10
-	 * Params:
-	 * dpi =  the resolution in "dots per inch". (Physical inches aren't actually
-	 *  involved; the terminology is conventional.)
-	 */
-	public void setResolution(double dpi)
-	{
-		// void pango_cairo_font_map_set_resolution (PangoCairoFontMap *fontmap,  double dpi);
-		pango_cairo_font_map_set_resolution(pangoCairoFontMap, dpi);
-	}
-	
-	/**
-	 * Gets the resolution for the fontmap. See pango_cairo_font_map_set_resolution()
-	 * Since 1.10
-	 * Returns: the resolution in "dots per inch"
-	 */
-	public double getResolution()
-	{
-		// double pango_cairo_font_map_get_resolution (PangoCairoFontMap *fontmap);
-		return pango_cairo_font_map_get_resolution(pangoCairoFontMap);
-	}
-	
-	/**
-	 * Warning
-	 * pango_cairo_font_map_create_context has been deprecated since version 1.22 and should not be used in newly-written code. Use pango_font_map_create_context() instead.
-	 * Create a PangoContext for the given fontmap.
-	 * Since 1.10
-	 * Returns: the newly created context; free with g_object_unref().
-	 */
-	public PgContext createContext()
-	{
-		// PangoContext * pango_cairo_font_map_create_context (PangoCairoFontMap *fontmap);
-		auto p = pango_cairo_font_map_create_context(pangoCairoFontMap);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
+
+    /** the main Gtk struct */
+    protected PangoCairoFontMap* pangoCairoFontMap;
+
+
+    public PangoCairoFontMap* getPgCairoFontMapStruct()
+    {
+        return pangoCairoFontMap;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)pangoCairoFontMap;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (PangoCairoFontMap* pangoCairoFontMap)
+    {
+        if(pangoCairoFontMap is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)pangoCairoFontMap);
+        if( ptr !is null )
+        {
+            this = cast(PgCairoFontMap)ptr;
+            return;
+        }
+        super(cast(PangoFontMap*)pangoCairoFontMap);
+        this.pangoCairoFontMap = pangoCairoFontMap;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets a default PangoCairoFontMap to use with Cairo.
+     * Note that the type of the returned object will depend
+     * on the particular font backend Cairo was compiled to use;
+     * You generally should only use the PangoFontMap and
+     * PangoCairoFontMap interfaces on the returned object.
+     * The default Cairo fontmap can be changed by using
+     * pango_cairo_font_map_set_default(). This can be used to
+     * change the Cairo font backend that the default fontmap
+     * uses for example.
+     * Since 1.10
+     * Returns: the default Cairo fontmap for Pango. This object is owned by Pango and must not be freed.
+     */
+    public static PgFontMap getDefault()
+    {
+        // PangoFontMap * pango_cairo_font_map_get_default (void);
+        auto p = pango_cairo_font_map_get_default();
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgFontMap(cast(PangoFontMap*) p);
+    }
+
+    /**
+     * Sets a default PangoCairoFontMap to use with Cairo.
+     * This can be used to change the Cairo font backend that the
+     * default fontmap uses for example. The old default font map
+     * is unreffed and the new font map referenced.
+     * A value of NULL for fontmap will cause the current default
+     * font map to be released and a new default font
+     * map to be created on demand, using pango_cairo_font_map_new().
+     * Since 1.22
+     */
+    public void setDefault()
+    {
+        // void pango_cairo_font_map_set_default (PangoCairoFontMap *fontmap);
+        pango_cairo_font_map_set_default(pangoCairoFontMap);
+    }
+
+    /**
+     * Creates a new PangoCairoFontMap object; a fontmap is used
+     * to cache information about available fonts, and holds
+     * certain global parameters such as the resolution.
+     * In most cases, you can use pango_cairo_font_map_get_default()
+     * instead.
+     * Note that the type of the returned object will depend
+     * on the particular font backend Cairo was compiled to use;
+     * You generally should only use the PangoFontMap and
+     * PangoCairoFontMap interfaces on the returned object.
+     * Since 1.10
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // PangoFontMap * pango_cairo_font_map_new (void);
+        auto p = pango_cairo_font_map_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by pango_cairo_font_map_new()");
+        }
+        this(cast(PangoCairoFontMap*) p);
+    }
+
+    /**
+     * Creates a new PangoCairoFontMap object of the type suitable
+     * to be used with cairo font backend of type fonttype.
+     * In most cases one should simply use @pango_cairo_font_map_new(),
+     * or in fact in most of those cases, just use
+     * @pango_cairo_font_map_get_default().
+     * Since 1.18
+     * Params:
+     * fonttype =  desired cairo_font_type_t
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (cairo_font_type_t fonttype)
+    {
+        // PangoFontMap * pango_cairo_font_map_new_for_font_type  (cairo_font_type_t fonttype);
+        auto p = pango_cairo_font_map_new_for_font_type(fonttype);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by pango_cairo_font_map_new_for_font_type(fonttype)");
+        }
+        this(cast(PangoCairoFontMap*) p);
+    }
+
+    /**
+     * Gets the type of Cairo font backend that fontmap uses.
+     * Since 1.18
+     * Returns: the cairo_font_type_t cairo font backend type
+     */
+    public cairo_font_type_t getFontType()
+    {
+        // cairo_font_type_t pango_cairo_font_map_get_font_type (PangoCairoFontMap *fontmap);
+        return pango_cairo_font_map_get_font_type(pangoCairoFontMap);
+    }
+
+    /**
+     * Sets the resolution for the fontmap. This is a scale factor between
+     * points specified in a PangoFontDescription and Cairo units. The
+     * default value is 96, meaning that a 10 point font will be 13
+     * units high. (10 * 96. / 72. = 13.3).
+     * Since 1.10
+     * Params:
+     * dpi =  the resolution in "dots per inch". (Physical inches aren't actually
+     *  involved; the terminology is conventional.)
+     */
+    public void setResolution(double dpi)
+    {
+        // void pango_cairo_font_map_set_resolution (PangoCairoFontMap *fontmap,  double dpi);
+        pango_cairo_font_map_set_resolution(pangoCairoFontMap, dpi);
+    }
+
+    /**
+     * Gets the resolution for the fontmap. See pango_cairo_font_map_set_resolution()
+     * Since 1.10
+     * Returns: the resolution in "dots per inch"
+     */
+    public double getResolution()
+    {
+        // double pango_cairo_font_map_get_resolution (PangoCairoFontMap *fontmap);
+        return pango_cairo_font_map_get_resolution(pangoCairoFontMap);
+    }
+
+    /**
+     * Warning
+     * pango_cairo_font_map_create_context has been deprecated since version 1.22 and should not be used in newly-written code. Use pango_font_map_create_context() instead.
+     * Create a PangoContext for the given fontmap.
+     * Since 1.10
+     * Returns: the newly created context; free with g_object_unref().
+     */
+    public PgContext createContext()
+    {
+        // PangoContext * pango_cairo_font_map_create_context (PangoCairoFontMap *fontmap);
+        auto p = pango_cairo_font_map_create_context(pangoCairoFontMap);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgContext(cast(PangoContext*) p);
+    }
 }

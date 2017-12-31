@@ -15,14 +15,14 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = PrintOperationPreviewIF
  * strct   = GtkPrintOperationPreview
@@ -33,7 +33,7 @@
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_print_operation_preview_
@@ -132,72 +132,72 @@ private import gtkD.gtk.PrintSettings;
  */
 public interface PrintOperationPreviewIF
 {
-	
-	
-	public GtkPrintOperationPreview* getPrintOperationPreviewTStruct();
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct();
-	
-	
-	/**
-	 */
-	
-	void delegate(Widget, PageSetup, PrintSettings, PrintOperationPreviewIF)[] onUpdateCustomWidgetListeners();
-	/**
-	 * Emitted after change of selected printer. The actual page setup and
-	 * print settings are passed to the custom widget, which can actualize
-	 * itself according to this change.
-	 * Since 2.18
-	 */
-	void addOnUpdateCustomWidget(void delegate(Widget, PageSetup, PrintSettings, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
-	void delegate(GtkPrintContext*, PageSetup, PrintOperationPreviewIF)[] onGotPageSizeListeners();
-	/**
-	 * The ::got-page-size signal is emitted once for each page
-	 * that gets rendered to the preview.
-	 * A handler for this signal should update the context
-	 * according to page_setup and set up a suitable cairo
-	 * context, using gtk_print_context_set_cairo_context().
-	 */
-	void addOnGotPageSize(void delegate(GtkPrintContext*, PageSetup, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
-	void delegate(GtkPrintContext*, PrintOperationPreviewIF)[] onReadyListeners();
-	/**
-	 * The ::ready signal gets emitted once per preview operation,
-	 * before the first page is rendered.
-	 * A handler for this signal can be used for setup tasks.
-	 * See Also
-	 * GtkPrintContext, GtkPrintUnixDialog
-	 */
-	void addOnReady(void delegate(GtkPrintContext*, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
-	
-	/**
-	 * Ends a preview.
-	 * This function must be called to finish a custom print preview.
-	 * Since 2.10
-	 */
-	public void endPreview();
-	
-	/**
-	 * Returns whether the given page is included in the set of pages that
-	 * have been selected for printing.
-	 * Since 2.10
-	 * Params:
-	 * pageNr =  a page number
-	 * Returns: TRUE if the page has been selected for printing
-	 */
-	public int isSelected(int pageNr);
-	
-	/**
-	 * Renders a page to the preview, using the print context that
-	 * was passed to the "preview" handler together
-	 * with preview.
-	 * A custom iprint preview should use this function in its ::expose
-	 * handler to render the currently selected page.
-	 * Note that this function requires a suitable cairo context to
-	 * be associated with the print context.
-	 * Since 2.10
-	 * Params:
-	 * pageNr =  the page to render
-	 */
-	public void renderPage(int pageNr);
+
+
+    public GtkPrintOperationPreview* getPrintOperationPreviewTStruct();
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct();
+
+
+    /**
+     */
+
+    void delegate(Widget, PageSetup, PrintSettings, PrintOperationPreviewIF)[] onUpdateCustomWidgetListeners();
+    /**
+     * Emitted after change of selected printer. The actual page setup and
+     * print settings are passed to the custom widget, which can actualize
+     * itself according to this change.
+     * Since 2.18
+     */
+    void addOnUpdateCustomWidget(void delegate(Widget, PageSetup, PrintSettings, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+    void delegate(GtkPrintContext*, PageSetup, PrintOperationPreviewIF)[] onGotPageSizeListeners();
+    /**
+     * The ::got-page-size signal is emitted once for each page
+     * that gets rendered to the preview.
+     * A handler for this signal should update the context
+     * according to page_setup and set up a suitable cairo
+     * context, using gtk_print_context_set_cairo_context().
+     */
+    void addOnGotPageSize(void delegate(GtkPrintContext*, PageSetup, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+    void delegate(GtkPrintContext*, PrintOperationPreviewIF)[] onReadyListeners();
+    /**
+     * The ::ready signal gets emitted once per preview operation,
+     * before the first page is rendered.
+     * A handler for this signal can be used for setup tasks.
+     * See Also
+     * GtkPrintContext, GtkPrintUnixDialog
+     */
+    void addOnReady(void delegate(GtkPrintContext*, PrintOperationPreviewIF) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+
+    /**
+     * Ends a preview.
+     * This function must be called to finish a custom print preview.
+     * Since 2.10
+     */
+    public void endPreview();
+
+    /**
+     * Returns whether the given page is included in the set of pages that
+     * have been selected for printing.
+     * Since 2.10
+     * Params:
+     * pageNr =  a page number
+     * Returns: TRUE if the page has been selected for printing
+     */
+    public int isSelected(int pageNr);
+
+    /**
+     * Renders a page to the preview, using the print context that
+     * was passed to the "preview" handler together
+     * with preview.
+     * A custom iprint preview should use this function in its ::expose
+     * handler to render the currently selected page.
+     * Note that this function requires a suitable cairo context to
+     * be associated with the print context.
+     * Since 2.10
+     * Params:
+     * pageNr =  the page to render
+     */
+    public void renderPage(int pageNr);
 }

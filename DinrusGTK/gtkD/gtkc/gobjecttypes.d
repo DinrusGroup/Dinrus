@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -32,27 +32,27 @@ alias void GTypeCValue;
 // G_TYPE_*
 enum GType : size_t
 {
-	INVALID = 0<<2,
-	NONE = 1<<2,
-	INTERFACE = 2<<2,
-	CHAR = 3<<2,
-	UCHAR = 4<<2,
-	BOOLEAN = 5<<2,
-	INT = 6<<2,
-	UINT = 7<<2,
-	LONG = 8<<2,
-	ULONG = 9<<2,
-	INT64 = 10<<2,
-	UINT64 = 11<<2,
-	ENUM = 12<<2,
-	FLAGS = 13<<2,
-	FLOAT = 14<<2,
-	DOUBLE = 15<<2,
-	STRING = 16<<2,
-	POINTER = 17<<2,
-	BOXED = 18<<2,
-	PARAM = 19<<2,
-	OBJECT = 20<<2,
+    INVALID = 0<<2,
+    NONE = 1<<2,
+    INTERFACE = 2<<2,
+    CHAR = 3<<2,
+    UCHAR = 4<<2,
+    BOOLEAN = 5<<2,
+    INT = 6<<2,
+    UINT = 7<<2,
+    LONG = 8<<2,
+    ULONG = 9<<2,
+    INT64 = 10<<2,
+    UINT64 = 11<<2,
+    ENUM = 12<<2,
+    FLAGS = 13<<2,
+    FLOAT = 14<<2,
+    DOUBLE = 15<<2,
+    STRING = 16<<2,
+    POINTER = 17<<2,
+    BOXED = 18<<2,
+    PARAM = 19<<2,
+    OBJECT = 20<<2,
 
 }
 
@@ -89,10 +89,10 @@ public alias GClosureMarshal GSignalCMarshaller;
  */
 public enum GTypeDebugFlags
 {
-	NONE = 0,
-	OBJECTS = 1 << 0,
-	SIGNALS = 1 << 1,
-	MASK = 0x03
+    NONE = 0,
+    OBJECTS = 1 << 0,
+    SIGNALS = 1 << 1,
+    MASK = 0x03
 }
 alias GTypeDebugFlags TypeDebugFlags;
 
@@ -101,8 +101,8 @@ alias GTypeDebugFlags TypeDebugFlags;
  */
 public enum GTypeFlags
 {
-	ABSTRACT = (1 << 4),
-	VALUE_ABSTRACT = (1 << 5)
+    ABSTRACT = (1 << 4),
+    VALUE_ABSTRACT = (1 << 5)
 }
 alias GTypeFlags TypeFlags;
 
@@ -112,10 +112,10 @@ alias GTypeFlags TypeFlags;
  */
 public enum GTypeFundamentalFlags
 {
-	FLAG_CLASSED = (1 << 0),
-	FLAG_INSTANTIATABLE = (1 << 1),
-	FLAG_DERIVABLE = (1 << 2),
-	FLAG_DEEP_DERIVABLE = (1 << 3)
+    FLAG_CLASSED = (1 << 0),
+    FLAG_INSTANTIATABLE = (1 << 1),
+    FLAG_DERIVABLE = (1 << 2),
+    FLAG_DEEP_DERIVABLE = (1 << 3)
 }
 alias GTypeFundamentalFlags TypeFundamentalFlags;
 
@@ -126,15 +126,15 @@ alias GTypeFundamentalFlags TypeFundamentalFlags;
  */
 public enum GParamFlags
 {
-	READABLE = 1 << 0,
-	WRITABLE = 1 << 1,
-	CONSTRUCT = 1 << 2,
-	CONSTRUCT_ONLY = 1 << 3,
-	LAX_VALIDATION = 1 << 4,
-	STATIC_NAME = 1 << 5,
-	PRIVATE = STATIC_NAME,
-	STATIC_NICK = 1 << 6,
-	STATIC_BLURB = 1 << 7
+    READABLE = 1 << 0,
+    WRITABLE = 1 << 1,
+    CONSTRUCT = 1 << 2,
+    CONSTRUCT_ONLY = 1 << 3,
+    LAX_VALIDATION = 1 << 4,
+    STATIC_NAME = 1 << 5,
+    PRIVATE = STATIC_NAME,
+    STATIC_NICK = 1 << 6,
+    STATIC_BLURB = 1 << 7
 }
 alias GParamFlags ParamFlags;
 
@@ -146,13 +146,13 @@ alias GParamFlags ParamFlags;
  */
 public enum GSignalFlags
 {
-	RUN_FIRST = 1 << 0,
-	RUN_LAST = 1 << 1,
-	RUN_CLEANUP = 1 << 2,
-	NO_RECURSE = 1 << 3,
-	DETAILED = 1 << 4,
-	ACTION = 1 << 5,
-	NO_HOOKS = 1 << 6
+    RUN_FIRST = 1 << 0,
+    RUN_LAST = 1 << 1,
+    RUN_CLEANUP = 1 << 2,
+    NO_RECURSE = 1 << 3,
+    DETAILED = 1 << 4,
+    ACTION = 1 << 5,
+    NO_HOOKS = 1 << 6
 }
 alias GSignalFlags SignalFlags;
 
@@ -164,12 +164,12 @@ alias GSignalFlags SignalFlags;
  */
 public enum GSignalMatchType
 {
-	ID = 1 << 0,
-	DETAIL = 1 << 1,
-	CLOSURE = 1 << 2,
-	FUNC = 1 << 3,
-	DATA = 1 << 4,
-	UNBLOCKED = 1 << 5
+    ID = 1 << 0,
+    DETAIL = 1 << 1,
+    CLOSURE = 1 << 2,
+    FUNC = 1 << 3,
+    DATA = 1 << 4,
+    UNBLOCKED = 1 << 5
 }
 alias GSignalMatchType SignalMatchType;
 
@@ -180,8 +180,8 @@ alias GSignalMatchType SignalMatchType;
  */
 public enum GConnectFlags
 {
-	AFTER = 1 << 0,
-	SWAPPED = 1 << 1
+    AFTER = 1 << 0,
+    SWAPPED = 1 << 1
 }
 alias GConnectFlags ConnectFlags;
 
@@ -191,8 +191,8 @@ alias GConnectFlags ConnectFlags;
  */
 struct GTypeInstance
 {
-	/*< private >*/
-	GTypeClass* gClass;
+    /*< private >*/
+    GTypeClass* gClass;
 }
 
 /**
@@ -200,8 +200,8 @@ struct GTypeInstance
  */
 struct GTypeClass
 {
-	/*< private >*/
-	GType gType;
+    /*< private >*/
+    GType gType;
 }
 
 /**
@@ -209,8 +209,8 @@ struct GTypeClass
  */
 public struct GTypeInterface
 {
-	GType gType;         /* iface type */
-	GType gInstanceType;
+    GType gType;         /* iface type */
+    GType gInstanceType;
 }
 
 /**
@@ -222,65 +222,65 @@ public struct GTypeInterface
  */
 public struct GObjectClass
 {
-	GTypeClass gTypeClass;
-	/*< private >*/
-	GSList* constructProperties;
-	/* seldomly overidden */
-	extern(C) GObject*  function(GType type,uint nConstructProperties,GObjectConstructParam *constructProperties) constructor;
-	/* overridable methods */
-	extern(C) void  function(GObject *object,uint propertyId,GValue *value,GParamSpec *pspec) setProperty;
-	extern(C) void  function(GObject *object,uint propertyId,GValue *value,GParamSpec *pspec) getProperty;
-	extern(C) void  function(GObject *object) dispose;
-	extern(C) void  function(GObject *object) finalize;
-	/* seldomly overidden */
-	extern(C) void  function(GObject *object,uint nPspecs,GParamSpec **pspecs) dispatchPropertiesChanged;
-	/* signals */
-	extern(C) void  function(GObject *object,GParamSpec *pspec) notify;
-	/* called when done constructing */
-	extern(C) void  function(GObject *object) constructed;
-	/* padding */
-	gpointer dummy[7];
+    GTypeClass gTypeClass;
+    /*< private >*/
+    GSList* constructProperties;
+    /* seldomly overidden */
+    extern(C) GObject*  function(GType type,uint nConstructProperties,GObjectConstructParam *constructProperties) constructor;
+    /* overridable methods */
+    extern(C) void  function(GObject *object,uint propertyId,GValue *value,GParamSpec *pspec) setProperty;
+    extern(C) void  function(GObject *object,uint propertyId,GValue *value,GParamSpec *pspec) getProperty;
+    extern(C) void  function(GObject *object) dispose;
+    extern(C) void  function(GObject *object) finalize;
+    /* seldomly overidden */
+    extern(C) void  function(GObject *object,uint nPspecs,GParamSpec **pspecs) dispatchPropertiesChanged;
+    /* signals */
+    extern(C) void  function(GObject *object,GParamSpec *pspec) notify;
+    /* called when done constructing */
+    extern(C) void  function(GObject *object) constructed;
+    /* padding */
+    gpointer dummy[7];
 }
 
 struct GValue
 {
-	version(Windows)
-	{
-		GType		g_type;
-		union Data
-		{
-			gint     v_int;
-			guint    v_uint;
-			glong    v_long;
-			gulong   v_ulong;
-			gint64   v_int64;
-			guint64  v_uint64;
-			gfloat   v_float;
-			gdouble  v_double;
-			gpointer v_pointer;
-		};
-	}
-	else
-	{
-		align(4)
-		{
-			GType		g_type;
-			union Data
-			{
-				gint     v_int;
-				guint    v_uint;
-				glong    v_long;
-				gulong   v_ulong;
-				gint64   v_int64;
-				guint64  v_uint64;
-				gfloat   v_float;
-				gdouble  v_double;
-				gpointer v_pointer;
-			};
-		}
-	}
-	Data data1;
-	Data data2;
+    version(Windows)
+    {
+        GType		g_type;
+        union Data
+        {
+            gint     v_int;
+            guint    v_uint;
+            glong    v_long;
+            gulong   v_ulong;
+            gint64   v_int64;
+            guint64  v_uint64;
+            gfloat   v_float;
+            gdouble  v_double;
+            gpointer v_pointer;
+        };
+    }
+    else
+    {
+        align(4)
+        {
+            GType		g_type;
+            union Data
+            {
+                gint     v_int;
+                guint    v_uint;
+                glong    v_long;
+                gulong   v_ulong;
+                gint64   v_int64;
+                guint64  v_uint64;
+                gfloat   v_float;
+                gdouble  v_double;
+                gpointer v_pointer;
+            };
+        }
+    }
+    Data data1;
+    Data data2;
 }
 
 /**
@@ -296,20 +296,20 @@ struct GValue
  */
 public struct GTypeInfo
 {
-	/+* interface types, classed types, instantiated types +/
-	ushort classSize;
-	GBaseInitFunc baseInit;
-	GBaseFinalizeFunc baseFinalize;
-	/+* interface types, classed types, instantiated types +/
-	GClassInitFunc classInit;
-	GClassFinalizeFunc classFinalize;
-	void* classData;
-	/+* instantiated types +/
-	ushort instanceSize;
-	ushort nPreallocs;
-	GInstanceInitFunc instanceInit;
-	/+* value handling +/
-	GTypeValueTable *valueTable;
+    /+* interface types, classed types, instantiated types +/
+    ushort classSize;
+    GBaseInitFunc baseInit;
+    GBaseFinalizeFunc baseFinalize;
+    /+* interface types, classed types, instantiated types +/
+    GClassInitFunc classInit;
+    GClassFinalizeFunc classFinalize;
+    void* classData;
+    /+* instantiated types +/
+    ushort instanceSize;
+    ushort nPreallocs;
+    GInstanceInitFunc instanceInit;
+    /+* value handling +/
+    GTypeValueTable *valueTable;
 }
 
 
@@ -320,7 +320,7 @@ public struct GTypeInfo
  */
 public struct GTypeFundamentalInfo
 {
-	GTypeFundamentalFlags typeFlags;
+    GTypeFundamentalFlags typeFlags;
 }
 
 
@@ -331,9 +331,9 @@ public struct GTypeFundamentalInfo
  */
 public struct GInterfaceInfo
 {
-	GInterfaceInitFunc interfaceInit;
-	GInterfaceFinalizeFunc interfaceFinalize;
-	void* interfaceData;
+    GInterfaceInitFunc interfaceInit;
+    GInterfaceFinalizeFunc interfaceFinalize;
+    void* interfaceData;
 }
 
 
@@ -344,15 +344,15 @@ public struct GInterfaceInfo
  */
 public struct GTypeValueTable
 {
-	extern(C) void  function(GValue *value) valueInit;
-	extern(C) void  function(GValue *value) valueFree;
-	extern(C) void  function( GValue *srcValue,GValue *destValue) valueCopy;
-	/+* varargs functionality (optional) +/
-	extern(C) void*  function( GValue *value) valuePeekPointer;
-	char *collectFormat;
-	extern(C) char*  function(GValue *value,uint nCollectValues,GTypeCValue *collectValues,uint collectFlags) collectValue;
-	char *lcopyFormat;
-	extern(C) char*  function( GValue *value,uint nCollectValues,GTypeCValue *collectValues,uint collectFlags) lcopyValue;
+    extern(C) void  function(GValue *value) valueInit;
+    extern(C) void  function(GValue *value) valueFree;
+    extern(C) void  function( GValue *srcValue,GValue *destValue) valueCopy;
+    /+* varargs functionality (optional) +/
+    extern(C) void*  function( GValue *value) valuePeekPointer;
+    char *collectFormat;
+    extern(C) char*  function(GValue *value,uint nCollectValues,GTypeCValue *collectValues,uint collectFlags) collectValue;
+    char *lcopyFormat;
+    extern(C) char*  function( GValue *value,uint nCollectValues,GTypeCValue *collectValues,uint collectFlags) lcopyValue;
 }
 
 
@@ -363,10 +363,10 @@ public struct GTypeValueTable
  */
 public struct GTypeQuery
 {
-	GType type;
-	char *typeName;
-	uint classSize;
-	uint instanceSize;
+    GType type;
+    char *typeName;
+    uint classSize;
+    uint instanceSize;
 }
 
 
@@ -376,7 +376,7 @@ public struct GTypeQuery
  * for objects that implement the GTypePlugin
  * interface.
  */
-public struct GTypePlugin{}
+public struct GTypePlugin {}
 
 
 /**
@@ -386,10 +386,10 @@ public struct GTypePlugin{}
  */
 public struct GTypePluginClass
 {
-	GTypePluginUse usePlugin;
-	GTypePluginUnuse unusePlugin;
-	GTypePluginCompleteTypeInfo completeTypeInfo;
-	GTypePluginCompleteInterfaceInfo completeInterfaceInfo;
+    GTypePluginUse usePlugin;
+    GTypePluginUnuse unusePlugin;
+    GTypePluginCompleteTypeInfo completeTypeInfo;
+    GTypePluginCompleteInterfaceInfo completeInterfaceInfo;
 }
 
 
@@ -401,7 +401,7 @@ public struct GTypePluginClass
  */
 public struct GTypeModule
 {
-	char *name;
+    char *name;
 }
 
 
@@ -412,9 +412,9 @@ public struct GTypeModule
  */
 public struct GTypeModuleClass
 {
-	GObjectClass parentClass;
-	extern(C) int  function(GTypeModule *modul)  load;
-	extern(C) void  function(GTypeModule *modul)  unload;
+    GObjectClass parentClass;
+    extern(C) int  function(GTypeModule *modul)  load;
+    extern(C) void  function(GTypeModule *modul)  unload;
 }
 
 
@@ -423,7 +423,7 @@ public struct GTypeModuleClass
  * All the fields in the GObject structure are private
  * to the GObject implementation and should never be accessed directly.
  */
-public struct GObject{}
+public struct GObject {}
 
 
 /**
@@ -434,8 +434,8 @@ public struct GObject{}
  */
 public struct GObjectConstructParam
 {
-	GParamSpec *pspec;
-	GValue *value;
+    GParamSpec *pspec;
+    GValue *value;
 }
 
 
@@ -446,8 +446,8 @@ public struct GObjectConstructParam
  */
 public struct GParameter
 {
-	char *name;
-	GValue value;
+    char *name;
+    GValue value;
 }
 
 
@@ -456,13 +456,13 @@ public struct GParameter
  * are private to the GInitiallyUnowned implementation and should never be
  * accessed directly.
  */
-public struct GInitiallyUnowned{}
+public struct GInitiallyUnowned {}
 
 
 /**
  * The class structure for the GInitiallyUnowned type.
  */
-public struct GInitiallyUnownedClass{}
+public struct GInitiallyUnownedClass {}
 
 
 /**
@@ -472,11 +472,11 @@ public struct GInitiallyUnownedClass{}
  */
 public struct GEnumClass
 {
-	GTypeClass gTypeClass;
-	int minimum;
-	int maximum;
-	uint nValues;
-	GEnumValue *values;
+    GTypeClass gTypeClass;
+    int minimum;
+    int maximum;
+    uint nValues;
+    GEnumValue *values;
 }
 
 
@@ -487,10 +487,10 @@ public struct GEnumClass
  */
 public struct GFlagsClass
 {
-	GTypeClass gTypeClass;
-	uint mask;
-	uint nValues;
-	GFlagsValue *values;
+    GTypeClass gTypeClass;
+    uint mask;
+    uint nValues;
+    GFlagsValue *values;
 }
 
 
@@ -502,9 +502,9 @@ public struct GFlagsClass
  */
 public struct GEnumValue
 {
-	int value;
-	char *valueName;
-	char *valueNick;
+    int value;
+    char *valueName;
+    char *valueNick;
 }
 
 
@@ -515,9 +515,9 @@ public struct GEnumValue
  */
 public struct GFlagsValue
 {
-	uint value;
-	char *valueName;
-	char *valueNick;
+    uint value;
+    char *valueName;
+    char *valueNick;
 }
 
 
@@ -527,8 +527,8 @@ public struct GFlagsValue
  */
 public struct GParamSpecBoolean
 {
-	GParamSpec parentInstance;
-	int defaultValue;
+    GParamSpec parentInstance;
+    int defaultValue;
 }
 
 
@@ -538,10 +538,10 @@ public struct GParamSpecBoolean
  */
 public struct GParamSpecChar
 {
-	GParamSpec parentInstance;
-	byte minimum;
-	byte maximum;
-	byte defaultValue;
+    GParamSpec parentInstance;
+    byte minimum;
+    byte maximum;
+    byte defaultValue;
 }
 
 
@@ -551,10 +551,10 @@ public struct GParamSpecChar
  */
 public struct GParamSpecUChar
 {
-	GParamSpec parentInstance;
-	ubyte minimum;
-	ubyte maximum;
-	ubyte defaultValue;
+    GParamSpec parentInstance;
+    ubyte minimum;
+    ubyte maximum;
+    ubyte defaultValue;
 }
 
 
@@ -564,10 +564,10 @@ public struct GParamSpecUChar
  */
 public struct GParamSpecInt
 {
-	GParamSpec parentInstance;
-	int minimum;
-	int maximum;
-	int defaultValue;
+    GParamSpec parentInstance;
+    int minimum;
+    int maximum;
+    int defaultValue;
 }
 
 
@@ -577,10 +577,10 @@ public struct GParamSpecInt
  */
 public struct GParamSpecUInt
 {
-	GParamSpec parentInstance;
-	uint minimum;
-	uint maximum;
-	uint defaultValue;
+    GParamSpec parentInstance;
+    uint minimum;
+    uint maximum;
+    uint defaultValue;
 }
 
 
@@ -590,10 +590,10 @@ public struct GParamSpecUInt
  */
 public struct GParamSpecLong
 {
-	GParamSpec parentInstance;
-	int minimum;
-	int maximum;
-	int defaultValue;
+    GParamSpec parentInstance;
+    int minimum;
+    int maximum;
+    int defaultValue;
 }
 
 
@@ -603,10 +603,10 @@ public struct GParamSpecLong
  */
 public struct GParamSpecULong
 {
-	GParamSpec parentInstance;
-	uint minimum;
-	uint maximum;
-	uint defaultValue;
+    GParamSpec parentInstance;
+    uint minimum;
+    uint maximum;
+    uint defaultValue;
 }
 
 
@@ -616,10 +616,10 @@ public struct GParamSpecULong
  */
 public struct GParamSpecInt64
 {
-	GParamSpec parentInstance;
-	long minimum;
-	long maximum;
-	long defaultValue;
+    GParamSpec parentInstance;
+    long minimum;
+    long maximum;
+    long defaultValue;
 }
 
 
@@ -629,10 +629,10 @@ public struct GParamSpecInt64
  */
 public struct GParamSpecUInt64
 {
-	GParamSpec parentInstance;
-	ulong minimum;
-	ulong maximum;
-	ulong defaultValue;
+    GParamSpec parentInstance;
+    ulong minimum;
+    ulong maximum;
+    ulong defaultValue;
 }
 
 
@@ -642,11 +642,11 @@ public struct GParamSpecUInt64
  */
 public struct GParamSpecFloat
 {
-	GParamSpec parentInstance;
-	float minimum;
-	float maximum;
-	float defaultValue;
-	float epsilon;
+    GParamSpec parentInstance;
+    float minimum;
+    float maximum;
+    float defaultValue;
+    float epsilon;
 }
 
 
@@ -656,11 +656,11 @@ public struct GParamSpecFloat
  */
 public struct GParamSpecDouble
 {
-	GParamSpec parentInstance;
-	double minimum;
-	double maximum;
-	double defaultValue;
-	double epsilon;
+    GParamSpec parentInstance;
+    double minimum;
+    double maximum;
+    double defaultValue;
+    double epsilon;
 }
 
 
@@ -671,9 +671,9 @@ public struct GParamSpecDouble
  */
 public struct GParamSpecEnum
 {
-	GParamSpec parentInstance;
-	GEnumClass *enumClass;
-	int defaultValue;
+    GParamSpec parentInstance;
+    GEnumClass *enumClass;
+    int defaultValue;
 }
 
 
@@ -684,9 +684,9 @@ public struct GParamSpecEnum
  */
 public struct GParamSpecFlags
 {
-	GParamSpec parentInstance;
-	GFlagsClass *flagsClass;
-	uint defaultValue;
+    GParamSpec parentInstance;
+    GFlagsClass *flagsClass;
+    uint defaultValue;
 }
 
 
@@ -697,14 +697,14 @@ public struct GParamSpecFlags
  */
 public struct GParamSpecString
 {
-	GParamSpec parentInstance;
-	char *defaultValue;
-	char *csetFirst;
-	char *csetNth;
-	char substitutor;
-	uint bitfield0;
-	//uint nullFoldIfEmpty : 1;
-	//uint ensureNonNull : 1;
+    GParamSpec parentInstance;
+    char *defaultValue;
+    char *csetFirst;
+    char *csetNth;
+    char substitutor;
+    uint bitfield0;
+    //uint nullFoldIfEmpty : 1;
+    //uint ensureNonNull : 1;
 }
 
 
@@ -715,7 +715,7 @@ public struct GParamSpecString
  */
 public struct GParamSpecParam
 {
-	GParamSpec parentInstance;
+    GParamSpec parentInstance;
 }
 
 
@@ -725,7 +725,7 @@ public struct GParamSpecParam
  */
 public struct GParamSpecBoxed
 {
-	GParamSpec parentInstance;
+    GParamSpec parentInstance;
 }
 
 
@@ -735,7 +735,7 @@ public struct GParamSpecBoxed
  */
 public struct GParamSpecPointer
 {
-	GParamSpec parentInstance;
+    GParamSpec parentInstance;
 }
 
 
@@ -745,7 +745,7 @@ public struct GParamSpecPointer
  */
 public struct GParamSpecObject
 {
-	GParamSpec parentInstance;
+    GParamSpec parentInstance;
 }
 
 
@@ -755,8 +755,8 @@ public struct GParamSpecObject
  */
 public struct GParamSpecUnichar
 {
-	GParamSpec parentInstance;
-	gunichar defaultValue;
+    GParamSpec parentInstance;
+    gunichar defaultValue;
 }
 
 
@@ -766,9 +766,9 @@ public struct GParamSpecUnichar
  */
 public struct GParamSpecValueArray
 {
-	GParamSpec parentInstance;
-	GParamSpec *elementSpec;
-	uint fixedNElements;
+    GParamSpec parentInstance;
+    GParamSpec *elementSpec;
+    uint fixedNElements;
 }
 
 
@@ -783,7 +783,7 @@ public struct GParamSpecValueArray
  * unless you are implementing a new base type similar to GObject.
  * Since 2.4
  */
-public struct GParamSpecOverride{}
+public struct GParamSpecOverride {}
 
 
 /**
@@ -792,8 +792,8 @@ public struct GParamSpecOverride{}
  */
 public struct GParamSpecGType
 {
-	GParamSpec parentInstance;
-	GType isAType;
+    GParamSpec parentInstance;
+    GType isAType;
 }
 
 
@@ -805,12 +805,13 @@ public struct GParamSpecGType
  */
 public struct GParamSpec
 {
-	GTypeInstance gTypeInstance;
-	char *name;
-	GParamFlags flags;
-	GType valueType;
-	GType ownerType; /+* class or interface using this property +/
-}
+    GTypeInstance gTypeInstance;
+    char *name;
+    GParamFlags flags;
+    GType valueType;
+    GType ownerType;
+    /+* class or interface using this property +/
+    }
 
 
 /**
@@ -821,13 +822,13 @@ public struct GParamSpec
  */
 public struct GParamSpecClass
 {
-	GTypeClass gTypeClass;
-	GType valueType;
-	extern(C) void  function(GParamSpec *pspec) finalize;
-	/+* GParam methods +/
-	extern(C) void  function(GParamSpec *pspec,GValue *value) valueSetDefault;
-	extern(C) int  function(GParamSpec *pspec,GValue *value) valueValidate;
-	extern(C) int  function(GParamSpec *pspec,GValue *value1,GValue *value2) valuesCmp;
+    GTypeClass gTypeClass;
+    GType valueType;
+    extern(C) void  function(GParamSpec *pspec) finalize;
+    /+* GParam methods +/
+    extern(C) void  function(GParamSpec *pspec,GValue *value) valueSetDefault;
+    extern(C) int  function(GParamSpec *pspec,GValue *value) valueValidate;
+    extern(C) int  function(GParamSpec *pspec,GValue *value1,GValue *value2) valuesCmp;
 }
 
 
@@ -843,16 +844,21 @@ public struct GParamSpecClass
  */
 public struct GParamSpecTypeInfo
 {
-	/+* type system portion +/
-	ushort instanceSize; /+* obligatory +/
-	ushort nPreallocs; /+* optional +/
-	extern(C) void  function(GParamSpec *pspec) instanceInit; /+* optional +/
-	/+* class portion +/
-	GType valueType; /+* obligatory +/
-	extern(C) void  function(GParamSpec *pspec) finalize; /+* optional +/
-	extern(C) void  function(GParamSpec *pspec, /+* recommended +/GValue *value) valueSetDefault;
-	extern(C) int  function(GParamSpec *pspec, /+* optional +/GValue *value) valueValidate;
-	extern(C) int  function(GParamSpec *pspec, /+* recommended +/GValue *value1,GValue *value2) valuesCmp;
+    /+* type system portion +/
+    ushort instanceSize;
+    /+* obligatory +/
+    ushort nPreallocs;
+    /+* optional +/
+    extern(C) void  function(GParamSpec *pspec) instanceInit;
+    /+* optional +/
+    /+* class portion +/
+        GType valueType;
+    /+* obligatory +/
+    extern(C) void  function(GParamSpec *pspec) finalize;
+    /+* optional +/
+    extern(C) void  function(GParamSpec *pspec, /+* recommended +/GValue *value) valueSetDefault;
+    extern(C) int  function(GParamSpec *pspec, /+* optional +/GValue *value) valueValidate;
+    extern(C) int  function(GParamSpec *pspec, /+* recommended +/GValue *value1,GValue *value2) valuesCmp;
 }
 
 
@@ -862,7 +868,7 @@ public struct GParamSpecTypeInfo
  * system uses such a pool to store the GParamSpecs of the properties all object
  * types.
  */
-public struct GParamSpecPool{}
+public struct GParamSpecPool {}
 
 
 /**
@@ -872,9 +878,9 @@ public struct GParamSpecPool{}
  */
 public struct GSignalInvocationHint
 {
-	uint signalId;
-	GQuark detail;
-	GSignalFlags runType;
+    uint signalId;
+    GQuark detail;
+    GSignalFlags runType;
 }
 
 
@@ -885,13 +891,15 @@ public struct GSignalInvocationHint
  */
 public struct GSignalQuery
 {
-	uint signalId;
-	char *signalName;
-	GType itype;
-	GSignalFlags signalFlags;
-	GType returnType; /+* mangled with G_SIGNAL_TYPE_STATIC_SCOPE flag +/
-	uint nParams;
-	GType *paramTypes; /+* mangled with G_SIGNAL_TYPE_STATIC_SCOPE flag +/
+    uint signalId;
+    char *signalName;
+    GType itype;
+    GSignalFlags signalFlags;
+    GType returnType;
+    /+* mangled with G_SIGNAL_TYPE_STATIC_SCOPE flag +/
+    uint nParams;
+    GType *paramTypes;
+    /+* mangled with G_SIGNAL_TYPE_STATIC_SCOPE flag +/
 }
 
 
@@ -902,9 +910,9 @@ public struct GSignalQuery
  */
 public struct GClosure
 {
-	uint bitfield0;
-	//uint inMarshal : 1;
-	//uint isInvalid : 1;
+    uint bitfield0;
+    //uint inMarshal : 1;
+    //uint isInvalid : 1;
 }
 
 
@@ -914,8 +922,8 @@ public struct GClosure
  */
 public struct GCClosure
 {
-	GClosure closure;
-	void* callback;
+    GClosure closure;
+    void* callback;
 }
 
 
@@ -926,8 +934,8 @@ public struct GCClosure
  */
 public struct GValueArray
 {
-	uint nValues;
-	GValue *values;
+    uint nValues;
+    GValue *values;
 }
 
 

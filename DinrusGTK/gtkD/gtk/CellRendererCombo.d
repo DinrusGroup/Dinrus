@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkCellRenderer
  * clss    = CellRendererCombo
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_cell_renderer_combo_
@@ -89,105 +89,105 @@ private import gtkD.gtk.CellRendererText;
  */
 public class CellRendererCombo : CellRendererText
 {
-	
-	/** the main Gtk struct */
-	protected GtkCellRendererCombo* gtkCellRendererCombo;
-	
-	
-	public GtkCellRendererCombo* getCellRendererComboStruct()
-	{
-		return gtkCellRendererCombo;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererCombo;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkCellRendererCombo* gtkCellRendererCombo)
-	{
-		if(gtkCellRendererCombo is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererCombo);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererCombo)ptr;
-			return;
-		}
-		super(cast(GtkCellRendererText*)gtkCellRendererCombo);
-		this.gtkCellRendererCombo = gtkCellRendererCombo;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(string, TreeIter, CellRendererCombo)[] onChangedListeners;
-	/**
-	 * This signal is emitted each time after the user selected an item in
-	 * the combo box, either by using the mouse or the arrow keys. Contrary
-	 * to GtkComboBox, GtkCellRendererCombo::changed is not emitted for
-	 * changes made to a selected item in the entry. The argument new_iter
-	 * corresponds to the newly selected item in the combo box and it is relative
-	 * to the GtkTreeModel set via the model property on GtkCellRendererCombo.
-	 * Note that as soon as you change the model displayed in the tree view,
-	 * the tree view will immediately cease the editing operating. This
-	 * means that you most probably want to refrain from changing the model
-	 * until the combo cell renderer emits the edited or editing_canceled signal.
-	 * Since 2.14
-	 */
-	void addOnChanged(void delegate(string, TreeIter, CellRendererCombo) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkCellRendererCombo* comboStruct, gchar* pathString, GtkTreeIter* newIter, CellRendererCombo cellRendererCombo)
-	{
-		foreach ( void delegate(string, TreeIter, CellRendererCombo) dlg ; cellRendererCombo.onChangedListeners )
-		{
-			dlg(Str.toString(pathString), new TreeIter(newIter), cellRendererCombo);
-		}
-	}
-	
-	
-	/**
-	 * Creates a new GtkCellRendererCombo.
-	 * Adjust how text is drawn using object properties.
-	 * Object properties can be set globally (with g_object_set()).
-	 * Also, with GtkTreeViewColumn, you can bind a property to a value
-	 * in a GtkTreeModel. For example, you can bind the "text" property
-	 * on the cell renderer to a string value in the model, thus rendering
-	 * a different string in each row of the GtkTreeView.
-	 * Since 2.6
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_combo_new (void);
-		auto p = gtk_cell_renderer_combo_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_combo_new()");
-		}
-		this(cast(GtkCellRendererCombo*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkCellRendererCombo* gtkCellRendererCombo;
+
+
+    public GtkCellRendererCombo* getCellRendererComboStruct()
+    {
+        return gtkCellRendererCombo;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkCellRendererCombo;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkCellRendererCombo* gtkCellRendererCombo)
+    {
+        if(gtkCellRendererCombo is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkCellRendererCombo);
+        if( ptr !is null )
+        {
+            this = cast(CellRendererCombo)ptr;
+            return;
+        }
+        super(cast(GtkCellRendererText*)gtkCellRendererCombo);
+        this.gtkCellRendererCombo = gtkCellRendererCombo;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(string, TreeIter, CellRendererCombo)[] onChangedListeners;
+    /**
+     * This signal is emitted each time after the user selected an item in
+     * the combo box, either by using the mouse or the arrow keys. Contrary
+     * to GtkComboBox, GtkCellRendererCombo::changed is not emitted for
+     * changes made to a selected item in the entry. The argument new_iter
+     * corresponds to the newly selected item in the combo box and it is relative
+     * to the GtkTreeModel set via the model property on GtkCellRendererCombo.
+     * Note that as soon as you change the model displayed in the tree view,
+     * the tree view will immediately cease the editing operating. This
+     * means that you most probably want to refrain from changing the model
+     * until the combo cell renderer emits the edited or editing_canceled signal.
+     * Since 2.14
+     */
+    void addOnChanged(void delegate(string, TreeIter, CellRendererCombo) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("changed" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "changed",
+                cast(GCallback)&callBackChanged,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["changed"] = 1;
+        }
+        onChangedListeners ~= dlg;
+    }
+    extern(C) static void callBackChanged(GtkCellRendererCombo* comboStruct, gchar* pathString, GtkTreeIter* newIter, CellRendererCombo cellRendererCombo)
+    {
+        foreach ( void delegate(string, TreeIter, CellRendererCombo) dlg ; cellRendererCombo.onChangedListeners )
+        {
+            dlg(Str.toString(pathString), new TreeIter(newIter), cellRendererCombo);
+        }
+    }
+
+
+    /**
+     * Creates a new GtkCellRendererCombo.
+     * Adjust how text is drawn using object properties.
+     * Object properties can be set globally (with g_object_set()).
+     * Also, with GtkTreeViewColumn, you can bind a property to a value
+     * in a GtkTreeModel. For example, you can bind the "text" property
+     * on the cell renderer to a string value in the model, thus rendering
+     * a different string in each row of the GtkTreeView.
+     * Since 2.6
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkCellRenderer * gtk_cell_renderer_combo_new (void);
+        auto p = gtk_cell_renderer_combo_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_cell_renderer_combo_new()");
+        }
+        this(cast(GtkCellRendererCombo*) p);
+    }
 }

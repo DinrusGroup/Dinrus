@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = IconSize
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = IconSize
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_icon_size_
@@ -123,110 +123,110 @@ private import gtkD.gtk.Settings;
  */
 public class IconSize
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Obtains the pixel size of a semantic icon size, possibly
-	 * modified by user preferences for the default GtkSettings.
-	 * (See gtk_icon_size_lookup_for_settings().)
-	 * Normally size would be
-	 * GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function
-	 * isn't normally needed, gtk_widget_render_icon() is the usual
-	 * way to get an icon for rendering, then just look at the size of
-	 * the rendered pixbuf. The rendered pixbuf may not even correspond to
-	 * the width/height returned by gtk_icon_size_lookup(), because themes
-	 * are free to render the pixbuf however they like, including changing
-	 * the usual size.
-	 * Params:
-	 * size =  an icon size
-	 * width =  location to store icon width
-	 * height =  location to store icon height
-	 * Returns: TRUE if size was a valid size
-	 */
-	public static int lookup(GtkIconSize size, out int width, out int height)
-	{
-		// gboolean gtk_icon_size_lookup (GtkIconSize size,  gint *width,  gint *height);
-		return gtk_icon_size_lookup(size, &width, &height);
-	}
-	
-	/**
-	 * Obtains the pixel size of a semantic icon size, possibly
-	 * modified by user preferences for a particular
-	 * GtkSettings. Normally size would be
-	 * GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function
-	 * isn't normally needed, gtk_widget_render_icon() is the usual
-	 * way to get an icon for rendering, then just look at the size of
-	 * the rendered pixbuf. The rendered pixbuf may not even correspond to
-	 * the width/height returned by gtk_icon_size_lookup(), because themes
-	 * are free to render the pixbuf however they like, including changing
-	 * the usual size.
-	 * Since 2.2
-	 * Params:
-	 * settings =  a GtkSettings object, used to determine
-	 *  which set of user preferences to used.
-	 * size =  an icon size
-	 * width =  location to store icon width
-	 * height =  location to store icon height
-	 * Returns: TRUE if size was a valid size
-	 */
-	public static int lookupForSettings(Settings settings, GtkIconSize size, out int width, out int height)
-	{
-		// gboolean gtk_icon_size_lookup_for_settings (GtkSettings *settings,  GtkIconSize size,  gint *width,  gint *height);
-		return gtk_icon_size_lookup_for_settings((settings is null) ? null : settings.getSettingsStruct(), size, &width, &height);
-	}
-	
-	/**
-	 * Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU,
-	 * etc. Returns the integer value for the size.
-	 * Params:
-	 * name =  name of the icon size
-	 * width =  the icon width
-	 * height =  the icon height
-	 * Returns: integer value representing the size
-	 */
-	public static GtkIconSize register(string name, int width, int height)
-	{
-		// GtkIconSize gtk_icon_size_register (const gchar *name,  gint width,  gint height);
-		return gtk_icon_size_register(Str.toStringz(name), width, height);
-	}
-	
-	/**
-	 * Registers alias as another name for target.
-	 * So calling gtk_icon_size_from_name() with alias as argument
-	 * will return target.
-	 * Params:
-	 * target =  an existing icon size
-	 */
-	public static void registerAlias(string alia, GtkIconSize target)
-	{
-		// void gtk_icon_size_register_alias (const gchar *alias,  GtkIconSize target);
-		gtk_icon_size_register_alias(Str.toStringz(alia), target);
-	}
-	
-	/**
-	 * Looks up the icon size associated with name.
-	 * Params:
-	 * name =  the name to look up.
-	 * Returns: the icon size with the given name.
-	 */
-	public static GtkIconSize fromName(string name)
-	{
-		// GtkIconSize gtk_icon_size_from_name (const gchar *name);
-		return gtk_icon_size_from_name(Str.toStringz(name));
-	}
-	
-	/**
-	 * Gets the canonical name of the given icon size. The returned string
-	 * is statically allocated and should not be freed.
-	 * Params:
-	 * size =  a GtkIconSize.
-	 * Returns: the name of the given icon size.
-	 */
-	public static string getName(GtkIconSize size)
-	{
-		// const gchar* gtk_icon_size_get_name (GtkIconSize size);
-		return Str.toString(gtk_icon_size_get_name(size));
-	}
+
+    /**
+     */
+
+    /**
+     * Obtains the pixel size of a semantic icon size, possibly
+     * modified by user preferences for the default GtkSettings.
+     * (See gtk_icon_size_lookup_for_settings().)
+     * Normally size would be
+     * GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function
+     * isn't normally needed, gtk_widget_render_icon() is the usual
+     * way to get an icon for rendering, then just look at the size of
+     * the rendered pixbuf. The rendered pixbuf may not even correspond to
+     * the width/height returned by gtk_icon_size_lookup(), because themes
+     * are free to render the pixbuf however they like, including changing
+     * the usual size.
+     * Params:
+     * size =  an icon size
+     * width =  location to store icon width
+     * height =  location to store icon height
+     * Returns: TRUE if size was a valid size
+     */
+    public static int lookup(GtkIconSize size, out int width, out int height)
+    {
+        // gboolean gtk_icon_size_lookup (GtkIconSize size,  gint *width,  gint *height);
+        return gtk_icon_size_lookup(size, &width, &height);
+    }
+
+    /**
+     * Obtains the pixel size of a semantic icon size, possibly
+     * modified by user preferences for a particular
+     * GtkSettings. Normally size would be
+     * GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function
+     * isn't normally needed, gtk_widget_render_icon() is the usual
+     * way to get an icon for rendering, then just look at the size of
+     * the rendered pixbuf. The rendered pixbuf may not even correspond to
+     * the width/height returned by gtk_icon_size_lookup(), because themes
+     * are free to render the pixbuf however they like, including changing
+     * the usual size.
+     * Since 2.2
+     * Params:
+     * settings =  a GtkSettings object, used to determine
+     *  which set of user preferences to used.
+     * size =  an icon size
+     * width =  location to store icon width
+     * height =  location to store icon height
+     * Returns: TRUE if size was a valid size
+     */
+    public static int lookupForSettings(Settings settings, GtkIconSize size, out int width, out int height)
+    {
+        // gboolean gtk_icon_size_lookup_for_settings (GtkSettings *settings,  GtkIconSize size,  gint *width,  gint *height);
+        return gtk_icon_size_lookup_for_settings((settings is null) ? null : settings.getSettingsStruct(), size, &width, &height);
+    }
+
+    /**
+     * Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU,
+     * etc. Returns the integer value for the size.
+     * Params:
+     * name =  name of the icon size
+     * width =  the icon width
+     * height =  the icon height
+     * Returns: integer value representing the size
+     */
+    public static GtkIconSize register(string name, int width, int height)
+    {
+        // GtkIconSize gtk_icon_size_register (const gchar *name,  gint width,  gint height);
+        return gtk_icon_size_register(Str.toStringz(name), width, height);
+    }
+
+    /**
+     * Registers alias as another name for target.
+     * So calling gtk_icon_size_from_name() with alias as argument
+     * will return target.
+     * Params:
+     * target =  an existing icon size
+     */
+    public static void registerAlias(string alia, GtkIconSize target)
+    {
+        // void gtk_icon_size_register_alias (const gchar *alias,  GtkIconSize target);
+        gtk_icon_size_register_alias(Str.toStringz(alia), target);
+    }
+
+    /**
+     * Looks up the icon size associated with name.
+     * Params:
+     * name =  the name to look up.
+     * Returns: the icon size with the given name.
+     */
+    public static GtkIconSize fromName(string name)
+    {
+        // GtkIconSize gtk_icon_size_from_name (const gchar *name);
+        return gtk_icon_size_from_name(Str.toStringz(name));
+    }
+
+    /**
+     * Gets the canonical name of the given icon size. The returned string
+     * is statically allocated and should not be freed.
+     * Params:
+     * size =  a GtkIconSize.
+     * Returns: the name of the given icon size.
+     */
+    public static string getName(GtkIconSize size)
+    {
+        // const gchar* gtk_icon_size_get_name (GtkIconSize size);
+        return Str.toString(gtk_icon_size_get_name(size));
+    }
 }

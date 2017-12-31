@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = MappedFile
  * strct   = GMappedFile
  * realStrct=
  * ctorStrct=
  * clss    = MappedFile
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_mapped_file_
@@ -90,138 +90,138 @@ private import gtkD.glib.GException;
  */
 public class MappedFile
 {
-	
-	/** the main Gtk struct */
-	protected GMappedFile* gMappedFile;
-	
-	
-	public GMappedFile* getMappedFileStruct()
-	{
-		return gMappedFile;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMappedFile;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GMappedFile* gMappedFile)
-	{
-		if(gMappedFile is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMappedFile = gMappedFile;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Maps a file into memory. On UNIX, this is using the mmap() function.
-	 * If writable is TRUE, the mapped buffer may be modified, otherwise
-	 * it is an error to modify the mapped buffer. Modifications to the buffer
-	 * are not visible to other processes mapping the same file, and are not
-	 * written back to the file.
-	 * Note that modifications of the underlying file might affect the contents
-	 * of the GMappedFile. Therefore, mapping should only be used if the file
-	 * will not be modified, or if all modifications of the file are done
-	 * atomically (e.g. using g_file_set_contents()).
-	 * Since 2.8
-	 * Params:
-	 * filename =  The path of the file to load, in the GLib filename encoding
-	 * writable =  whether the mapping should be writable
-	 * Throws: GException on failure.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string filename, int writable)
-	{
-		// GMappedFile * g_mapped_file_new (const gchar *filename,  gboolean writable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_mapped_file_new(Str.toStringz(filename), writable, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mapped_file_new(Str.toStringz(filename), writable, &err)");
-		}
-		this(cast(GMappedFile*) p);
-	}
-	
-	/**
-	 * Increments the reference count of file by one. It is safe to call
-	 * this function from any thread.
-	 * Since 2.22
-	 * Returns: the passed in GMappedFile.
-	 */
-	public MappedFile doref()
-	{
-		// GMappedFile * g_mapped_file_ref (GMappedFile *file);
-		auto p = g_mapped_file_ref(gMappedFile);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MappedFile(cast(GMappedFile*) p);
-	}
-	
-	/**
-	 * Decrements the reference count of file by one. If the reference count
-	 * drops to 0, unmaps the buffer of file and frees it.
-	 * It is safe to call this function from any thread.
-	 * Since 2.22
-	 */
-	public void unref()
-	{
-		// void g_mapped_file_unref (GMappedFile *file);
-		g_mapped_file_unref(gMappedFile);
-	}
-	
-	/**
-	 * Warning
-	 * g_mapped_file_free has been deprecated since version 2.22 and should not be used in newly-written code. Use g_mapped_file_unref() instead.
-	 * This call existed before GMappedFile had refcounting and is currently
-	 * exactly the same as g_mapped_file_unref().
-	 * Since 2.8
-	 */
-	public void free()
-	{
-		// void g_mapped_file_free (GMappedFile *file);
-		g_mapped_file_free(gMappedFile);
-	}
-	
-	/**
-	 * Returns the length of the contents of a GMappedFile.
-	 * Since 2.8
-	 * Returns: the length of the contents of file.
-	 */
-	public uint getLength()
-	{
-		// gsize g_mapped_file_get_length (GMappedFile *file);
-		return g_mapped_file_get_length(gMappedFile);
-	}
-	
-	/**
-	 * Returns the contents of a GMappedFile.
-	 * Note that the contents may not be zero-terminated,
-	 * even if the GMappedFile is backed by a text file.
-	 * Since 2.8
-	 * Returns: the contents of file.
-	 */
-	public string getContents()
-	{
-		// gchar * g_mapped_file_get_contents (GMappedFile *file);
-		return Str.toString(g_mapped_file_get_contents(gMappedFile));
-	}
+
+    /** the main Gtk struct */
+    protected GMappedFile* gMappedFile;
+
+
+    public GMappedFile* getMappedFileStruct()
+    {
+        return gMappedFile;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gMappedFile;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GMappedFile* gMappedFile)
+    {
+        if(gMappedFile is null)
+        {
+            this = null;
+            return;
+        }
+        this.gMappedFile = gMappedFile;
+    }
+
+    /**
+     */
+
+    /**
+     * Maps a file into memory. On UNIX, this is using the mmap() function.
+     * If writable is TRUE, the mapped buffer may be modified, otherwise
+     * it is an error to modify the mapped buffer. Modifications to the buffer
+     * are not visible to other processes mapping the same file, and are not
+     * written back to the file.
+     * Note that modifications of the underlying file might affect the contents
+     * of the GMappedFile. Therefore, mapping should only be used if the file
+     * will not be modified, or if all modifications of the file are done
+     * atomically (e.g. using g_file_set_contents()).
+     * Since 2.8
+     * Params:
+     * filename =  The path of the file to load, in the GLib filename encoding
+     * writable =  whether the mapping should be writable
+     * Throws: GException on failure.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string filename, int writable)
+    {
+        // GMappedFile * g_mapped_file_new (const gchar *filename,  gboolean writable,  GError **error);
+        GError* err = null;
+
+        auto p = g_mapped_file_new(Str.toStringz(filename), writable, &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_mapped_file_new(Str.toStringz(filename), writable, &err)");
+        }
+        this(cast(GMappedFile*) p);
+    }
+
+    /**
+     * Increments the reference count of file by one. It is safe to call
+     * this function from any thread.
+     * Since 2.22
+     * Returns: the passed in GMappedFile.
+     */
+    public MappedFile doref()
+    {
+        // GMappedFile * g_mapped_file_ref (GMappedFile *file);
+        auto p = g_mapped_file_ref(gMappedFile);
+        if(p is null)
+        {
+            return null;
+        }
+        return new MappedFile(cast(GMappedFile*) p);
+    }
+
+    /**
+     * Decrements the reference count of file by one. If the reference count
+     * drops to 0, unmaps the buffer of file and frees it.
+     * It is safe to call this function from any thread.
+     * Since 2.22
+     */
+    public void unref()
+    {
+        // void g_mapped_file_unref (GMappedFile *file);
+        g_mapped_file_unref(gMappedFile);
+    }
+
+    /**
+     * Warning
+     * g_mapped_file_free has been deprecated since version 2.22 and should not be used in newly-written code. Use g_mapped_file_unref() instead.
+     * This call existed before GMappedFile had refcounting and is currently
+     * exactly the same as g_mapped_file_unref().
+     * Since 2.8
+     */
+    public void free()
+    {
+        // void g_mapped_file_free (GMappedFile *file);
+        g_mapped_file_free(gMappedFile);
+    }
+
+    /**
+     * Returns the length of the contents of a GMappedFile.
+     * Since 2.8
+     * Returns: the length of the contents of file.
+     */
+    public uint getLength()
+    {
+        // gsize g_mapped_file_get_length (GMappedFile *file);
+        return g_mapped_file_get_length(gMappedFile);
+    }
+
+    /**
+     * Returns the contents of a GMappedFile.
+     * Note that the contents may not be zero-terminated,
+     * even if the GMappedFile is backed by a text file.
+     * Since 2.8
+     * Returns: the contents of file.
+     */
+    public string getContents()
+    {
+        // gchar * g_mapped_file_get_contents (GMappedFile *file);
+        return Str.toString(g_mapped_file_get_contents(gMappedFile));
+    }
 }

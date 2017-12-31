@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = StreamableContent
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_streamable_content_
@@ -82,96 +82,96 @@ private import gtkD.glib.Str;
  */
 public class StreamableContent
 {
-	
-	/** the main Gtk struct */
-	protected AtkStreamableContent* atkStreamableContent;
-	
-	
-	public AtkStreamableContent* getStreamableContentStruct()
-	{
-		return atkStreamableContent;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)atkStreamableContent;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkStreamableContent* atkStreamableContent)
-	{
-		if(atkStreamableContent is null)
-		{
-			this = null;
-			return;
-		}
-		this.atkStreamableContent = atkStreamableContent;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the number of mime types supported by this object.
-	 * Returns: a gint which is the number of mime types supported by the object.
-	 */
-	public int getNMimeTypes()
-	{
-		// gint atk_streamable_content_get_n_mime_types  (AtkStreamableContent *streamable);
-		return atk_streamable_content_get_n_mime_types(atkStreamableContent);
-	}
-	
-	/**
-	 * Gets the character string of the specified mime type. The first mime
-	 * type is at position 0, the second at position 1, and so on.
-	 * Params:
-	 * i =  a gint representing the position of the mime type starting from 0
-	 * Returns:: a gchar* representing the specified mime type; the callershould not free the character string.
-	 */
-	public string getMimeType(int i)
-	{
-		// const gchar* atk_streamable_content_get_mime_type  (AtkStreamableContent *streamable,  gint i);
-		return Str.toString(atk_streamable_content_get_mime_type(atkStreamableContent, i));
-	}
-	
-	/**
-	 * Gets the content in the specified mime type.
-	 * Params:
-	 * mimeType =  a gchar* representing the mime type
-	 * Returns: A GIOChannel which contains the content in the specified mimetype.
-	 */
-	public IOChannel getStream(string mimeType)
-	{
-		// GIOChannel* atk_streamable_content_get_stream (AtkStreamableContent *streamable,  const gchar *mime_type);
-		auto p = atk_streamable_content_get_stream(atkStreamableContent, Str.toStringz(mimeType));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IOChannel(cast(GIOChannel*) p);
-	}
-	
-	/**
-	 * Get a string representing a URI in IETF standard format
-	 * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
-	 * may be streamed in the specified mime-type, if one is available.
-	 * If mime_type is NULL, the URI for the default (and possibly only) mime-type is
-	 * returned.
-	 * Note that it is possible for get_uri to return NULL but for
-	 * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
-	 * Since 1.12
-	 * Params:
-	 * mimeType =  a gchar* representing the mime type, or NULL to request a URI
-	 * for the default mime type.
-	 * Returns: Returns a string representing a URI, or NULL if no corresponding URIcan be constructed.
-	 */
-	public string getUri(string mimeType)
-	{
-		// gchar* atk_streamable_content_get_uri (AtkStreamableContent *streamable,  const gchar *mime_type);
-		return Str.toString(atk_streamable_content_get_uri(atkStreamableContent, Str.toStringz(mimeType)));
-	}
+
+    /** the main Gtk struct */
+    protected AtkStreamableContent* atkStreamableContent;
+
+
+    public AtkStreamableContent* getStreamableContentStruct()
+    {
+        return atkStreamableContent;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)atkStreamableContent;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkStreamableContent* atkStreamableContent)
+    {
+        if(atkStreamableContent is null)
+        {
+            this = null;
+            return;
+        }
+        this.atkStreamableContent = atkStreamableContent;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the number of mime types supported by this object.
+     * Returns: a gint which is the number of mime types supported by the object.
+     */
+    public int getNMimeTypes()
+    {
+        // gint atk_streamable_content_get_n_mime_types  (AtkStreamableContent *streamable);
+        return atk_streamable_content_get_n_mime_types(atkStreamableContent);
+    }
+
+    /**
+     * Gets the character string of the specified mime type. The first mime
+     * type is at position 0, the second at position 1, and so on.
+     * Params:
+     * i =  a gint representing the position of the mime type starting from 0
+     * Returns:: a gchar* representing the specified mime type; the callershould not free the character string.
+     */
+    public string getMimeType(int i)
+    {
+        // const gchar* atk_streamable_content_get_mime_type  (AtkStreamableContent *streamable,  gint i);
+        return Str.toString(atk_streamable_content_get_mime_type(atkStreamableContent, i));
+    }
+
+    /**
+     * Gets the content in the specified mime type.
+     * Params:
+     * mimeType =  a gchar* representing the mime type
+     * Returns: A GIOChannel which contains the content in the specified mimetype.
+     */
+    public IOChannel getStream(string mimeType)
+    {
+        // GIOChannel* atk_streamable_content_get_stream (AtkStreamableContent *streamable,  const gchar *mime_type);
+        auto p = atk_streamable_content_get_stream(atkStreamableContent, Str.toStringz(mimeType));
+        if(p is null)
+        {
+            return null;
+        }
+        return new IOChannel(cast(GIOChannel*) p);
+    }
+
+    /**
+     * Get a string representing a URI in IETF standard format
+     * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
+     * may be streamed in the specified mime-type, if one is available.
+     * If mime_type is NULL, the URI for the default (and possibly only) mime-type is
+     * returned.
+     * Note that it is possible for get_uri to return NULL but for
+     * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
+     * Since 1.12
+     * Params:
+     * mimeType =  a gchar* representing the mime type, or NULL to request a URI
+     * for the default mime type.
+     * Returns: Returns a string representing a URI, or NULL if no corresponding URIcan be constructed.
+     */
+    public string getUri(string mimeType)
+    {
+        // gchar* atk_streamable_content_get_uri (AtkStreamableContent *streamable,  const gchar *mime_type);
+        return Str.toString(atk_streamable_content_get_uri(atkStreamableContent, Str.toStringz(mimeType)));
+    }
 }

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TimeVal
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_time_val_
@@ -107,99 +107,99 @@ private import gtkD.glib.Str;
  */
 public class TimeVal
 {
-	
-	/** the main Gtk struct */
-	protected GTimeVal* gTimeVal;
-	
-	
-	public GTimeVal* getTimeValStruct()
-	{
-		return gTimeVal;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTimeVal;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GTimeVal* gTimeVal)
-	{
-		if(gTimeVal is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTimeVal = gTimeVal;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Equivalent to the UNIX gettimeofday() function, but portable.
-	 */
-	public void getCurrentTime()
-	{
-		// void g_get_current_time (GTimeVal *result);
-		g_get_current_time(gTimeVal);
-	}
-	
-	/**
-	 * Pauses the current thread for the given number of microseconds. There
-	 * are 1 million microseconds per second (represented by the
-	 * G_USEC_PER_SEC macro). g_usleep() may have limited precision,
-	 * depending on hardware and operating system; don't rely on the exact
-	 * length of the sleep.
-	 * Params:
-	 * microseconds = number of microseconds to pause
-	 */
-	public static void usleep(uint microseconds)
-	{
-		// void g_usleep (gulong microseconds);
-		g_usleep(microseconds);
-	}
-	
-	/**
-	 * Adds the given number of microseconds to time_. microseconds can
-	 * also be negative to decrease the value of time_.
-	 * Params:
-	 * microseconds =  number of microseconds to add to time
-	 */
-	public void add(int microseconds)
-	{
-		// void g_time_val_add (GTimeVal *time_,  glong microseconds);
-		g_time_val_add(gTimeVal, microseconds);
-	}
-	
-	/**
-	 * Converts a string containing an ISO 8601 encoded date and time
-	 * to a GTimeVal and puts it into time_.
-	 * Since 2.12
-	 * Params:
-	 * isoDate =  an ISO 8601 encoded date string
-	 * time =  a GTimeVal
-	 * Returns: TRUE if the conversion was successful.
-	 */
-	public static int fromIso8601(string isoDate, GTimeVal* time)
-	{
-		// gboolean g_time_val_from_iso8601 (const gchar *iso_date,  GTimeVal *time_);
-		return g_time_val_from_iso8601(Str.toStringz(isoDate), time);
-	}
-	
-	/**
-	 * Converts time_ into an ISO 8601 encoded string, relative to the
-	 * Coordinated Universal Time (UTC).
-	 * Since 2.12
-	 * Returns: a newly allocated string containing an ISO 8601 date
-	 */
-	public string toIso8601()
-	{
-		// gchar* g_time_val_to_iso8601 (GTimeVal *time_);
-		return Str.toString(g_time_val_to_iso8601(gTimeVal));
-	}
+
+    /** the main Gtk struct */
+    protected GTimeVal* gTimeVal;
+
+
+    public GTimeVal* getTimeValStruct()
+    {
+        return gTimeVal;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gTimeVal;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GTimeVal* gTimeVal)
+    {
+        if(gTimeVal is null)
+        {
+            this = null;
+            return;
+        }
+        this.gTimeVal = gTimeVal;
+    }
+
+    /**
+     */
+
+    /**
+     * Equivalent to the UNIX gettimeofday() function, but portable.
+     */
+    public void getCurrentTime()
+    {
+        // void g_get_current_time (GTimeVal *result);
+        g_get_current_time(gTimeVal);
+    }
+
+    /**
+     * Pauses the current thread for the given number of microseconds. There
+     * are 1 million microseconds per second (represented by the
+     * G_USEC_PER_SEC macro). g_usleep() may have limited precision,
+     * depending on hardware and operating system; don't rely on the exact
+     * length of the sleep.
+     * Params:
+     * microseconds = number of microseconds to pause
+     */
+    public static void usleep(uint microseconds)
+    {
+        // void g_usleep (gulong microseconds);
+        g_usleep(microseconds);
+    }
+
+    /**
+     * Adds the given number of microseconds to time_. microseconds can
+     * also be negative to decrease the value of time_.
+     * Params:
+     * microseconds =  number of microseconds to add to time
+     */
+    public void add(int microseconds)
+    {
+        // void g_time_val_add (GTimeVal *time_,  glong microseconds);
+        g_time_val_add(gTimeVal, microseconds);
+    }
+
+    /**
+     * Converts a string containing an ISO 8601 encoded date and time
+     * to a GTimeVal and puts it into time_.
+     * Since 2.12
+     * Params:
+     * isoDate =  an ISO 8601 encoded date string
+     * time =  a GTimeVal
+     * Returns: TRUE if the conversion was successful.
+     */
+    public static int fromIso8601(string isoDate, GTimeVal* time)
+    {
+        // gboolean g_time_val_from_iso8601 (const gchar *iso_date,  GTimeVal *time_);
+        return g_time_val_from_iso8601(Str.toStringz(isoDate), time);
+    }
+
+    /**
+     * Converts time_ into an ISO 8601 encoded string, relative to the
+     * Coordinated Universal Time (UTC).
+     * Since 2.12
+     * Returns: a newly allocated string containing an ISO 8601 date
+     */
+    public string toIso8601()
+    {
+        // gchar* g_time_val_to_iso8601 (GTimeVal *time_);
+        return Str.toString(g_time_val_to_iso8601(gTimeVal));
+    }
 }

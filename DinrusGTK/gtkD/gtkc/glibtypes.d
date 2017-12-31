@@ -47,36 +47,48 @@ public alias double gdouble;
 public alias uint gsize;
 public alias int gssize;
 public alias long goffset;
-version(Dinrus){}
-else {public alias void* va_list;}
+version(Dinrus) {}
+else
+{
+    public alias void* va_list;
+}
 
 public alias dchar unichar;
 public alias wchar unichar2;
-version(Dinrus){}
-else{public alias uint time_t;}
+version(Dinrus) {}
+else
+{
+    public alias uint time_t;
+}
 public alias uint XID;
 
 version(Rulada)
 {
-	//avoid some conflicts with other string aliases.
-	static if( !is(string) )
-	private alias char[] string;
+    //avoid some conflicts with other string aliases.
+    static if( !is(string) )
+        private alias char[] string;
 }
 version(Dinrus)
 {
-	//avoid some conflicts with other string aliases.
-	static if( !is(ткст) )
-	private alias char[] ткст;
+    //avoid some conflicts with other string aliases.
+    static if( !is(ткст) )
+        private alias char[] ткст;
 }
 
 version(D_Version2)
 {
-	//string/enum in version doesn't work with mixin?
-string gshared() { return "__gshared "; }
+    //string/enum in version doesn't work with mixin?
+    string gshared()
+    {
+        return "__gshared ";
+    }
 }
 else
 {
-char[] gshared() { return ""; }
+    char[] gshared()
+    {
+        return "";
+    }
 }
 
 const uint G_MAXUINT = 4294967295;
@@ -166,11 +178,11 @@ public alias uint GQuark;
 
 enum GPriority
 {
-	HIGH = -100,
-	DEFAULT = 0,
-	HIGH_IDLE = 100,
-	DEFAULT_IDLE = 200,
-	LOW = 300
+    HIGH = -100,
+    DEFAULT = 0,
+    HIGH_IDLE = 100,
+    DEFAULT_IDLE = 200,
+    LOW = 300
 }
 
 /**
@@ -181,9 +193,9 @@ enum GPriority
  */
 public enum GModuleFlags
 {
-	BIND_LAZY = 1 << 0,
-	BIND_LOCAL = 1 << 1,
-	BIND_MASK = 0x03
+    BIND_LAZY = 1 << 0,
+    BIND_LOCAL = 1 << 1,
+    BIND_MASK = 0x03
 }
 alias GModuleFlags ModuleFlags;
 
@@ -199,9 +211,9 @@ alias GModuleFlags ModuleFlags;
  */
 public enum GSeekType
 {
-	CUR,
-	SET,
-	END
+    CUR,
+    SET,
+    END
 }
 alias GSeekType SeekType;
 
@@ -218,10 +230,10 @@ alias GSeekType SeekType;
  */
 public enum GIOStatus
 {
-	ERROR,
-	NORMAL,
-	EOF,
-	AGAIN
+    ERROR,
+    NORMAL,
+    EOF,
+    AGAIN
 }
 alias GIOStatus IOStatus;
 
@@ -248,17 +260,17 @@ alias GIOStatus IOStatus;
  */
 public enum GIOChannelError
 {
-	/+* Derived from errno +/
-	G_IO_CHANNEL_ERROR_FBIG,
-	G_IO_CHANNEL_ERROR_INVAL,
-	G_IO_CHANNEL_ERROR_IO,
-	G_IO_CHANNEL_ERROR_ISDIR,
-	G_IO_CHANNEL_ERROR_NOSPC,
-	G_IO_CHANNEL_ERROR_NXIO,
-	G_IO_CHANNEL_ERROR_OVERFLOW,
-	G_IO_CHANNEL_ERROR_PIPE,
-	/+* Other +/
-	G_IO_CHANNEL_ERROR_FAILED
+    /+* Derived from errno +/
+    G_IO_CHANNEL_ERROR_FBIG,
+    G_IO_CHANNEL_ERROR_INVAL,
+    G_IO_CHANNEL_ERROR_IO,
+    G_IO_CHANNEL_ERROR_ISDIR,
+    G_IO_CHANNEL_ERROR_NOSPC,
+    G_IO_CHANNEL_ERROR_NXIO,
+    G_IO_CHANNEL_ERROR_OVERFLOW,
+    G_IO_CHANNEL_ERROR_PIPE,
+    /+* Other +/
+    G_IO_CHANNEL_ERROR_FAILED
 }
 alias GIOChannelError IOChannelError;
 
@@ -278,12 +290,12 @@ alias GIOChannelError IOChannelError;
  */
 public enum GIOCondition
 {
-	IN =1,
-	OUT =4,
-	PRI =2,
-	ERR =8,
-	HUP =16,
-	NVAL =32
+    IN =1,
+    OUT =4,
+    PRI =2,
+    ERR =8,
+    HUP =16,
+    NVAL =32
 }
 alias GIOCondition IOCondition;
 
@@ -296,14 +308,14 @@ alias GIOCondition IOCondition;
  */
 public enum GIOFlags
 {
-	APPEND = 1 << 0,
-	NONBLOCK = 1 << 1,
-	IS_READABLE = 1 << 2, /+* Read only flag +/
-	IS_WRITEABLE = 1 << 3, /+* Read only flag +/
-	IS_SEEKABLE = 1 << 4, /+* Read only flag +/
-	MASK = (1 << 5) - 1,
-	GET_MASK = MASK,
-	SET_MASK = APPEND | NONBLOCK
+    APPEND = 1 << 0,
+    NONBLOCK = 1 << 1,
+    IS_READABLE = 1 << 2, /+* Read only flag +/
+    IS_WRITEABLE = 1 << 3, /+* Read only flag +/
+    IS_SEEKABLE = 1 << 4, /+* Read only flag +/
+    MASK = (1 << 5) - 1,
+    GET_MASK = MASK,
+    SET_MASK = APPEND | NONBLOCK
 }
 alias GIOFlags IOFlags;
 
@@ -321,10 +333,10 @@ alias GIOFlags IOFlags;
  */
 public enum GIOError
 {
-	NONE,
-	AGAIN,
-	INVAL,
-	UNKNOWN
+    NONE,
+    AGAIN,
+    INVAL,
+    UNKNOWN
 }
 alias GIOError IOError;
 
@@ -341,17 +353,17 @@ alias GIOError IOError;
  */
 public enum GLogLevelFlags
 {
-	/+* log flags +/
-	G_LOG_FLAG_RECURSION = 1 << 0,
-	G_LOG_FLAG_FATAL = 1 << 1,
-	/+* GLib log levels +/
-	G_LOG_LEVEL_ERROR = 1 << 2, /+* always fatal +/
-	G_LOG_LEVEL_CRITICAL = 1 << 3,
-	G_LOG_LEVEL_WARNING = 1 << 4,
-	G_LOG_LEVEL_MESSAGE = 1 << 5,
-	G_LOG_LEVEL_INFO = 1 << 6,
-	G_LOG_LEVEL_DEBUG = 1 << 7,
-	G_LOG_LEVEL_MASK = ~(G_LOG_FLAG_RECURSION | G_LOG_FLAG_FATAL)
+    /+* log flags +/
+    G_LOG_FLAG_RECURSION = 1 << 0,
+    G_LOG_FLAG_FATAL = 1 << 1,
+    /+* GLib log levels +/
+    G_LOG_LEVEL_ERROR = 1 << 2, /+* always fatal +/
+    G_LOG_LEVEL_CRITICAL = 1 << 3,
+    G_LOG_LEVEL_WARNING = 1 << 4,
+    G_LOG_LEVEL_MESSAGE = 1 << 5,
+    G_LOG_LEVEL_INFO = 1 << 6,
+    G_LOG_LEVEL_DEBUG = 1 << 7,
+    G_LOG_LEVEL_MASK = ~(G_LOG_FLAG_RECURSION | G_LOG_FLAG_FATAL)
 }
 alias GLogLevelFlags LogLevelFlags;
 
@@ -373,12 +385,12 @@ alias GLogLevelFlags LogLevelFlags;
  */
 public enum GConvertError
 {
-	NO_CONVERSION,
-	ILLEGAL_SEQUENCE,
-	FAILED,
-	PARTIAL_INPUT,
-	BAD_URI,
-	NOT_ABSOLUTE_PATH
+    NO_CONVERSION,
+    ILLEGAL_SEQUENCE,
+    FAILED,
+    PARTIAL_INPUT,
+    BAD_URI,
+    NOT_ABSOLUTE_PATH
 }
 alias GConvertError ConvertError;
 
@@ -449,36 +461,36 @@ alias GConvertError ConvertError;
  */
 public enum GUnicodeType
 {
-	CONTROL,
-	FORMAT,
-	UNASSIGNED,
-	PRIVATE_USE,
-	SURROGATE,
-	LOWERCASE_LETTER,
-	MODIFIER_LETTER,
-	OTHER_LETTER,
-	TITLECASE_LETTER,
-	UPPERCASE_LETTER,
-	COMBINING_MARK,
-	ENCLOSING_MARK,
-	NON_SPACING_MARK,
-	DECIMAL_NUMBER,
-	LETTER_NUMBER,
-	OTHER_NUMBER,
-	CONNECT_PUNCTUATION,
-	DASH_PUNCTUATION,
-	CLOSE_PUNCTUATION,
-	FINAL_PUNCTUATION,
-	INITIAL_PUNCTUATION,
-	OTHER_PUNCTUATION,
-	OPEN_PUNCTUATION,
-	CURRENCY_SYMBOL,
-	MODIFIER_SYMBOL,
-	MATH_SYMBOL,
-	OTHER_SYMBOL,
-	LINE_SEPARATOR,
-	PARAGRAPH_SEPARATOR,
-	SPACE_SEPARATOR
+    CONTROL,
+    FORMAT,
+    UNASSIGNED,
+    PRIVATE_USE,
+    SURROGATE,
+    LOWERCASE_LETTER,
+    MODIFIER_LETTER,
+    OTHER_LETTER,
+    TITLECASE_LETTER,
+    UPPERCASE_LETTER,
+    COMBINING_MARK,
+    ENCLOSING_MARK,
+    NON_SPACING_MARK,
+    DECIMAL_NUMBER,
+    LETTER_NUMBER,
+    OTHER_NUMBER,
+    CONNECT_PUNCTUATION,
+    DASH_PUNCTUATION,
+    CLOSE_PUNCTUATION,
+    FINAL_PUNCTUATION,
+    INITIAL_PUNCTUATION,
+    OTHER_PUNCTUATION,
+    OPEN_PUNCTUATION,
+    CURRENCY_SYMBOL,
+    MODIFIER_SYMBOL,
+    MATH_SYMBOL,
+    OTHER_SYMBOL,
+    LINE_SEPARATOR,
+    PARAGRAPH_SEPARATOR,
+    SPACE_SEPARATOR
 }
 alias GUnicodeType UnicodeType;
 
@@ -564,42 +576,42 @@ alias GUnicodeType UnicodeType;
  */
 public enum GUnicodeBreakType
 {
-	MANDATORY,
-	CARRIAGE_RETURN,
-	LINE_FEED,
-	COMBINING_MARK,
-	SURROGATE,
-	ZERO_WIDTH_SPACE,
-	INSEPARABLE,
-	NON_BREAKING_GLUE,
-	CONTINGENT,
-	SPACE,
-	AFTER,
-	BEFORE,
-	BEFORE_AND_AFTER,
-	HYPHEN,
-	NON_STARTER,
-	OPEN_PUNCTUATION,
-	CLOSE_PUNCTUATION,
-	QUOTATION,
-	EXCLAMATION,
-	IDEOGRAPHIC,
-	NUMERIC,
-	INFIX_SEPARATOR,
-	SYMBOL,
-	ALPHABETIC,
-	PREFIX,
-	POSTFIX,
-	COMPLEX_CONTEXT,
-	AMBIGUOUS,
-	UNKNOWN,
-	NEXT_LINE,
-	WORD_JOINER,
-	HANGUL_L_JAMO,
-	HANGUL_V_JAMO,
-	HANGUL_T_JAMO,
-	HANGUL_LV_SYLLABLE,
-	HANGUL_LVT_SYLLABLE
+    MANDATORY,
+    CARRIAGE_RETURN,
+    LINE_FEED,
+    COMBINING_MARK,
+    SURROGATE,
+    ZERO_WIDTH_SPACE,
+    INSEPARABLE,
+    NON_BREAKING_GLUE,
+    CONTINGENT,
+    SPACE,
+    AFTER,
+    BEFORE,
+    BEFORE_AND_AFTER,
+    HYPHEN,
+    NON_STARTER,
+    OPEN_PUNCTUATION,
+    CLOSE_PUNCTUATION,
+    QUOTATION,
+    EXCLAMATION,
+    IDEOGRAPHIC,
+    NUMERIC,
+    INFIX_SEPARATOR,
+    SYMBOL,
+    ALPHABETIC,
+    PREFIX,
+    POSTFIX,
+    COMPLEX_CONTEXT,
+    AMBIGUOUS,
+    UNKNOWN,
+    NEXT_LINE,
+    WORD_JOINER,
+    HANGUL_L_JAMO,
+    HANGUL_V_JAMO,
+    HANGUL_T_JAMO,
+    HANGUL_LV_SYLLABLE,
+    HANGUL_LVT_SYLLABLE
 }
 alias GUnicodeBreakType UnicodeBreakType;
 
@@ -618,89 +630,89 @@ alias GUnicodeBreakType UnicodeBreakType;
  */
 public enum GUnicodeScript
 {
-	INVALID_CODE = -1,
-	COMMON = 0, /+* Zyyy +/
-	INHERITED, /+* Qaai +/
-	ARABIC, /+* Arab +/
-	ARMENIAN, /+* Armn +/
-	BENGALI, /+* Beng +/
-	BOPOMOFO, /+* Bopo +/
-	CHEROKEE, /+* Cher +/
-	COPTIC, /+* Qaac +/
-	CYRILLIC, /+* Cyrl (Cyrs) +/
-	DESERET, /+* Dsrt +/
-	DEVANAGARI, /+* Deva +/
-	ETHIOPIC, /+* Ethi +/
-	GEORGIAN, /+* Geor (Geon, Geoa) +/
-	GOTHIC, /+* Goth +/
-	GREEK, /+* Grek +/
-	GUJARATI, /+* Gujr +/
-	GURMUKHI, /+* Guru +/
-	HAN, /+* Hani +/
-	HANGUL, /+* Hang +/
-	HEBREW, /+* Hebr +/
-	HIRAGANA, /+* Hira +/
-	KANNADA, /+* Knda +/
-	KATAKANA, /+* Kana +/
-	KHMER, /+* Khmr +/
-	LAO, /+* Laoo +/
-	LATIN, /+* Latn (Latf, Latg) +/
-	MALAYALAM, /+* Mlym +/
-	MONGOLIAN, /+* Mong +/
-	MYANMAR, /+* Mymr +/
-	OGHAM, /+* Ogam +/
-	OLD_ITALIC, /+* Ital +/
-	ORIYA, /+* Orya +/
-	RUNIC, /+* Runr +/
-	SINHALA, /+* Sinh +/
-	SYRIAC, /+* Syrc (Syrj, Syrn, Syre) +/
-	TAMIL, /+* Taml +/
-	TELUGU, /+* Telu +/
-	THAANA, /+* Thaa +/
-	THAI, /+* Thai +/
-	TIBETAN, /+* Tibt +/
-	CANADIAN_ABORIGINAL, /+* Cans +/
-	YI, /+* Yiii +/
-	TAGALOG, /+* Tglg +/
-	HANUNOO, /+* Hano +/
-	BUHID, /+* Buhd +/
-	TAGBANWA, /+* Tagb +/
-	/+* Unicode-4.0 additions +/
-	BRAILLE, /+* Brai +/
-	CYPRIOT, /+* Cprt +/
-	LIMBU, /+* Limb +/
-	OSMANYA, /+* Osma +/
-	SHAVIAN, /+* Shaw +/
-	LINEAR_B, /+* Linb +/
-	TAI_LE, /+* Tale +/
-	UGARITIC, /+* Ugar +/
-	/+* Unicode-4.1 additions +/
-	NEW_TAI_LUE, /+* Talu +/
-	BUGINESE, /+* Bugi +/
-	GLAGOLITIC, /+* Glag +/
-	TIFINAGH, /+* Tfng +/
-	SYLOTI_NAGRI, /+* Sylo +/
-	OLD_PERSIAN, /+* Xpeo +/
-	KHAROSHTHI, /+* Khar +/
-	/+* Unicode-5.0 additions +/
-	UNKNOWN, /+* Zzzz +/
-	BALINESE, /+* Bali +/
-	CUNEIFORM, /+* Xsux +/
-	PHOENICIAN, /+* Phnx +/
-	PHAGS_PA, /+* Phag +/
-	NKO, /+* Nkoo +/
-	/+* Unicode-5.1 additions +/
-	KAYAH_LI, /+* Kali +/
-	LEPCHA, /+* Lepc +/
-	REJANG, /+* Rjng +/
-	SUNDANESE, /+* Sund +/
-	SAURASHTRA, /+* Saur +/
-	CHAM, /+* Cham +/
-	OL_CHIKI, /+* Olck +/
-	VAI, /+* Vaii +/
-	CARIAN, /+* Cari +/
-	LYCIAN, /+* Lyci +/
-	LYDIAN /+* Lydi +/
+    INVALID_CODE = -1,
+    COMMON = 0, /+* Zyyy +/
+    INHERITED, /+* Qaai +/
+    ARABIC, /+* Arab +/
+    ARMENIAN, /+* Armn +/
+    BENGALI, /+* Beng +/
+    BOPOMOFO, /+* Bopo +/
+    CHEROKEE, /+* Cher +/
+    COPTIC, /+* Qaac +/
+    CYRILLIC, /+* Cyrl (Cyrs) +/
+    DESERET, /+* Dsrt +/
+    DEVANAGARI, /+* Deva +/
+    ETHIOPIC, /+* Ethi +/
+    GEORGIAN, /+* Geor (Geon, Geoa) +/
+    GOTHIC, /+* Goth +/
+    GREEK, /+* Grek +/
+    GUJARATI, /+* Gujr +/
+    GURMUKHI, /+* Guru +/
+    HAN, /+* Hani +/
+    HANGUL, /+* Hang +/
+    HEBREW, /+* Hebr +/
+    HIRAGANA, /+* Hira +/
+    KANNADA, /+* Knda +/
+    KATAKANA, /+* Kana +/
+    KHMER, /+* Khmr +/
+    LAO, /+* Laoo +/
+    LATIN, /+* Latn (Latf, Latg) +/
+    MALAYALAM, /+* Mlym +/
+    MONGOLIAN, /+* Mong +/
+    MYANMAR, /+* Mymr +/
+    OGHAM, /+* Ogam +/
+    OLD_ITALIC, /+* Ital +/
+    ORIYA, /+* Orya +/
+    RUNIC, /+* Runr +/
+    SINHALA, /+* Sinh +/
+    SYRIAC, /+* Syrc (Syrj, Syrn, Syre) +/
+    TAMIL, /+* Taml +/
+    TELUGU, /+* Telu +/
+    THAANA, /+* Thaa +/
+    THAI, /+* Thai +/
+    TIBETAN, /+* Tibt +/
+    CANADIAN_ABORIGINAL, /+* Cans +/
+    YI, /+* Yiii +/
+    TAGALOG, /+* Tglg +/
+    HANUNOO, /+* Hano +/
+    BUHID, /+* Buhd +/
+    TAGBANWA, /+* Tagb +/
+    /+* Unicode-4.0 additions +/
+    BRAILLE, /+* Brai +/
+    CYPRIOT, /+* Cprt +/
+    LIMBU, /+* Limb +/
+    OSMANYA, /+* Osma +/
+    SHAVIAN, /+* Shaw +/
+    LINEAR_B, /+* Linb +/
+    TAI_LE, /+* Tale +/
+    UGARITIC, /+* Ugar +/
+    /+* Unicode-4.1 additions +/
+    NEW_TAI_LUE, /+* Talu +/
+    BUGINESE, /+* Bugi +/
+    GLAGOLITIC, /+* Glag +/
+    TIFINAGH, /+* Tfng +/
+    SYLOTI_NAGRI, /+* Sylo +/
+    OLD_PERSIAN, /+* Xpeo +/
+    KHAROSHTHI, /+* Khar +/
+    /+* Unicode-5.0 additions +/
+    UNKNOWN, /+* Zzzz +/
+    BALINESE, /+* Bali +/
+    CUNEIFORM, /+* Xsux +/
+    PHOENICIAN, /+* Phnx +/
+    PHAGS_PA, /+* Phag +/
+    NKO, /+* Nkoo +/
+    /+* Unicode-5.1 additions +/
+    KAYAH_LI, /+* Kali +/
+    LEPCHA, /+* Lepc +/
+    REJANG, /+* Rjng +/
+    SUNDANESE, /+* Sund +/
+    SAURASHTRA, /+* Saur +/
+    CHAM, /+* Cham +/
+    OL_CHIKI, /+* Olck +/
+    VAI, /+* Vaii +/
+    CARIAN, /+* Cari +/
+    LYCIAN, /+* Lyci +/
+    LYDIAN /+* Lydi +/
 }
 alias GUnicodeScript UnicodeScript;
 
@@ -714,14 +726,14 @@ alias GUnicodeScript UnicodeScript;
  */
 public enum GNormalizeMode
 {
-	DEFAULT,
-	NFD = DEFAULT,
-	DEFAULT_COMPOSE,
-	NFC = DEFAULT_COMPOSE,
-	ALL,
-	NFKD = ALL,
-	ALL_COMPOSE,
-	NFKC = ALL_COMPOSE
+    DEFAULT,
+    NFD = DEFAULT,
+    DEFAULT_COMPOSE,
+    NFC = DEFAULT_COMPOSE,
+    ALL,
+    NFKD = ALL,
+    ALL_COMPOSE,
+    NFKC = ALL_COMPOSE
 }
 alias GNormalizeMode NormalizeMode;
 
@@ -734,9 +746,9 @@ alias GNormalizeMode NormalizeMode;
  */
 public enum GChecksumType
 {
-	MD5,
-	SHA1,
-	SHA256
+    MD5,
+    SHA1,
+    SHA256
 }
 alias GChecksumType ChecksumType;
 
@@ -752,9 +764,9 @@ alias GChecksumType ChecksumType;
  */
 public enum GDateDMY
 {
-	DAY = 0,
-	MONTH = 1,
-	YEAR = 2
+    DAY = 0,
+    MONTH = 1,
+    YEAR = 2
 }
 alias GDateDMY DateDMY;
 
@@ -790,19 +802,19 @@ alias GDateDMY DateDMY;
  */
 public enum GDateMonth
 {
-	BAD_MONTH = 0,
-	JANUARY = 1,
-	FEBRUARY = 2,
-	MARCH = 3,
-	APRIL = 4,
-	MAY = 5,
-	JUNE = 6,
-	JULY = 7,
-	AUGUST = 8,
-	SEPTEMBER = 9,
-	OCTOBER = 10,
-	NOVEMBER = 11,
-	DECEMBER = 12
+    BAD_MONTH = 0,
+    JANUARY = 1,
+    FEBRUARY = 2,
+    MARCH = 3,
+    APRIL = 4,
+    MAY = 5,
+    JUNE = 6,
+    JULY = 7,
+    AUGUST = 8,
+    SEPTEMBER = 9,
+    OCTOBER = 10,
+    NOVEMBER = 11,
+    DECEMBER = 12
 }
 alias GDateMonth DateMonth;
 
@@ -828,14 +840,14 @@ alias GDateMonth DateMonth;
  */
 public enum GDateWeekday
 {
-	BAD_WEEKDAY = 0,
-	MONDAY = 1,
-	TUESDAY = 2,
-	WEDNESDAY = 3,
-	THURSDAY = 4,
-	FRIDAY = 5,
-	SATURDAY = 6,
-	SUNDAY = 7
+    BAD_WEEKDAY = 0,
+    MONDAY = 1,
+    TUESDAY = 2,
+    WEDNESDAY = 3,
+    THURSDAY = 4,
+    FRIDAY = 5,
+    SATURDAY = 6,
+    SUNDAY = 7
 }
 alias GDateWeekday DateWeekday;
 
@@ -850,15 +862,15 @@ alias GDateWeekday DateWeekday;
  */
 public enum GUserDirectory
 {
-	DESKTOP,
-	DOCUMENTS,
-	DOWNLOAD,
-	MUSIC,
-	PICTURES,
-	PUBLIC_SHARE,
-	TEMPLATES,
-	VIDEOS,
-	G_USER_N_DIRECTORIES
+    DESKTOP,
+    DOCUMENTS,
+    DOWNLOAD,
+    MUSIC,
+    PICTURES,
+    PUBLIC_SHARE,
+    TEMPLATES,
+    VIDEOS,
+    G_USER_N_DIRECTORIES
 }
 alias GUserDirectory UserDirectory;
 
@@ -875,30 +887,30 @@ alias GUserDirectory UserDirectory;
  */
 public enum GTokenType
 {
-	EOF = 0,
-	LEFT_PAREN = '(',
-	RIGHT_PAREN = ')',
-	LEFT_CURLY = '{',
-	RIGHT_CURLY = '}',
-	LEFT_BRACE = '[',
-	RIGHT_BRACE = ']',
-	EQUAL_SIGN = '=',
-	COMMA = ',',
-	NONE = 256,
-	ERROR,
-	CHAR,
-	BINARY,
-	OCTAL,
-	INT,
-	HEX,
-	FLOAT,
-	STRING,
-	SYMBOL,
-	IDENTIFIER,
-	IDENTIFIER_NULL,
-	COMMENT_SINGLE,
-	COMMENT_MULTI,
-	LAST
+    EOF = 0,
+    LEFT_PAREN = '(',
+    RIGHT_PAREN = ')',
+    LEFT_CURLY = '{',
+    RIGHT_CURLY = '}',
+    LEFT_BRACE = '[',
+    RIGHT_BRACE = ']',
+    EQUAL_SIGN = '=',
+    COMMA = ',',
+    NONE = 256,
+    ERROR,
+    CHAR,
+    BINARY,
+    OCTAL,
+    INT,
+    HEX,
+    FLOAT,
+    STRING,
+    SYMBOL,
+    IDENTIFIER,
+    IDENTIFIER_NULL,
+    COMMENT_SINGLE,
+    COMMENT_MULTI,
+    LAST
 }
 alias GTokenType TokenType;
 
@@ -924,14 +936,14 @@ alias GTokenType TokenType;
  */
 public enum GErrorType
 {
-	UNKNOWN,
-	UNEXP_EOF,
-	UNEXP_EOF_IN_STRING,
-	UNEXP_EOF_IN_COMMENT,
-	NON_DIGIT_IN_CONST,
-	DIGIT_RADIX,
-	FLOAT_RADIX,
-	FLOAT_MALFORMED
+    UNKNOWN,
+    UNEXP_EOF,
+    UNEXP_EOF_IN_STRING,
+    UNEXP_EOF_IN_COMMENT,
+    NON_DIGIT_IN_CONST,
+    DIGIT_RADIX,
+    FLOAT_RADIX,
+    FLOAT_MALFORMED
 }
 alias GErrorType ErrorType;
 
@@ -980,28 +992,28 @@ alias GErrorType ErrorType;
  */
 public enum GSpawnError
 {
-	FORK, /+* fork failed due to lack of memory +/
-	READ, /+* read or select on pipes failed +/
-	CHDIR, /+* changing to working dir failed +/
-	ACCES, /+* execv() returned EACCES +/
-	PERM, /+* execv() returned EPERM +/
-	TOO_BIG, /+* execv() returned E2BIG +/
-	NOEXEC, /+* execv() returned ENOEXEC +/
-	NAMETOOLONG, /+* "" "" ENAMETOOLONG +/
-	NOENT, /+* "" "" ENOENT +/
-	NOMEM, /+* "" "" ENOMEM +/
-	NOTDIR, /+* "" "" ENOTDIR +/
-	LOOP, /+* "" "" ELOOP +/
-	TXTBUSY, /+* "" "" ETXTBUSY +/
-	IO, /+* "" "" EIO +/
-	NFILE, /+* "" "" ENFILE +/
-	MFILE, /+* "" "" EMFLE +/
-	INVAL, /+* "" "" EINVAL +/
-	ISDIR, /+* "" "" EISDIR +/
-	LIBBAD, /+* "" "" ELIBBAD +/
-	FAILED /+* other fatal failure, error->message
-	 * should explain
-	+/
+    FORK, /+* fork failed due to lack of memory +/
+    READ, /+* read or select on pipes failed +/
+    CHDIR, /+* changing to working dir failed +/
+    ACCES, /+* execv() returned EACCES +/
+    PERM, /+* execv() returned EPERM +/
+    TOO_BIG, /+* execv() returned E2BIG +/
+    NOEXEC, /+* execv() returned ENOEXEC +/
+    NAMETOOLONG, /+* "" "" ENAMETOOLONG +/
+    NOENT, /+* "" "" ENOENT +/
+    NOMEM, /+* "" "" ENOMEM +/
+    NOTDIR, /+* "" "" ENOTDIR +/
+    LOOP, /+* "" "" ELOOP +/
+    TXTBUSY, /+* "" "" ETXTBUSY +/
+    IO, /+* "" "" EIO +/
+    NFILE, /+* "" "" ENFILE +/
+    MFILE, /+* "" "" EMFLE +/
+    INVAL, /+* "" "" EINVAL +/
+    ISDIR, /+* "" "" EISDIR +/
+    LIBBAD, /+* "" "" ELIBBAD +/
+    FAILED /+* other fatal failure, error->message
+    * should explain
+    +/
 }
 alias GSpawnError SpawnError;
 
@@ -1012,16 +1024,16 @@ alias GSpawnError SpawnError;
  */
 public enum GSpawnFlags
 {
-	LEAVE_DESCRIPTORS_OPEN = 1 << 0,
-	DO_NOT_REAP_CHILD = 1 << 1,
-	/+* look for argv[0] inn the path i.e. use execvp() +/
-	SEARCH_PATH = 1 << 2,
-	/+* Dump output to /dev/null +/
-	STDOUT_TO_DEV_NULL = 1 << 3,
-	STDERR_TO_DEV_NULL = 1 << 4,
-	CHILD_INHERITS_STDIN = 1 << 5,
-	FILE_AND_ARGV_ZERO = 1 << 6
-}
+    LEAVE_DESCRIPTORS_OPEN = 1 << 0,
+    DO_NOT_REAP_CHILD = 1 << 1,
+    /+* look for argv[0] inn the path i.e. use execvp() +/
+        SEARCH_PATH = 1 << 2,
+        /+* Dump output to /dev/null +/
+        STDOUT_TO_DEV_NULL = 1 << 3,
+        STDERR_TO_DEV_NULL = 1 << 4,
+        CHILD_INHERITS_STDIN = 1 << 5,
+        FILE_AND_ARGV_ZERO = 1 << 6
+    }
 alias GSpawnFlags SpawnFlags;
 
 /**
@@ -1041,31 +1053,31 @@ alias GSpawnFlags SpawnFlags;
  */
 public enum GFileError
 {
-	EXIST,
-	ISDIR,
-	ACCES,
-	NAMETOOLONG,
-	NOENT,
-	NOTDIR,
-	NXIO,
-	NODEV,
-	ROFS,
-	TXTBSY,
-	FAULT,
-	LOOP,
-	NOSPC,
-	NOMEM,
-	MFILE,
-	NFILE,
-	BADF,
-	INVAL,
-	PIPE,
-	AGAIN,
-	INTR,
-	IO,
-	PERM,
-	NOSYS,
-	FAILED
+    EXIST,
+    ISDIR,
+    ACCES,
+    NAMETOOLONG,
+    NOENT,
+    NOTDIR,
+    NXIO,
+    NODEV,
+    ROFS,
+    TXTBSY,
+    FAULT,
+    LOOP,
+    NOSPC,
+    NOMEM,
+    MFILE,
+    NFILE,
+    BADF,
+    INVAL,
+    PIPE,
+    AGAIN,
+    INTR,
+    IO,
+    PERM,
+    NOSYS,
+    FAILED
 }
 alias GFileError FileError;
 
@@ -1076,11 +1088,11 @@ alias GFileError FileError;
  */
 public enum GFileTest
 {
-	IS_REGULAR = 1 << 0,
-	IS_SYMLINK = 1 << 1,
-	IS_DIR = 1 << 2,
-	IS_EXECUTABLE = 1 << 3,
-	EXISTS = 1 << 4
+    IS_REGULAR = 1 << 0,
+    IS_SYMLINK = 1 << 1,
+    IS_DIR = 1 << 2,
+    IS_EXECUTABLE = 1 << 3,
+    EXISTS = 1 << 4
 }
 alias GFileTest FileTest;
 
@@ -1095,11 +1107,11 @@ alias GFileTest FileTest;
  */
 public enum GShellError
 {
-	/+* mismatched or otherwise mangled quoting +/
-	G_SHELL_ERROR_BAD_QUOTING,
-	/+* string to be parsed was empty +/
-	G_SHELL_ERROR_EMPTY_STRING,
-	G_SHELL_ERROR_FAILED
+    /+* mismatched or otherwise mangled quoting +/
+    G_SHELL_ERROR_BAD_QUOTING,
+    /+* string to be parsed was empty +/
+    G_SHELL_ERROR_EMPTY_STRING,
+    G_SHELL_ERROR_FAILED
 }
 alias GShellError ShellError;
 
@@ -1109,9 +1121,9 @@ alias GShellError ShellError;
  */
 public enum GOptionError
 {
-	UNKNOWN_OPTION,
-	BAD_VALUE,
-	FAILED
+    UNKNOWN_OPTION,
+    BAD_VALUE,
+    FAILED
 }
 alias GOptionError OptionError;
 
@@ -1125,15 +1137,15 @@ alias GOptionError OptionError;
  */
 public enum GOptionArg
 {
-	NONE,
-	STRING,
-	INT,
-	CALLBACK,
-	FILENAME,
-	STRING_ARRAY,
-	FILENAME_ARRAY,
-	DOUBLE,
-	INT64
+    NONE,
+    STRING,
+    INT,
+    CALLBACK,
+    FILENAME,
+    STRING_ARRAY,
+    FILENAME_ARRAY,
+    DOUBLE,
+    INT64
 }
 alias GOptionArg OptionArg;
 
@@ -1143,13 +1155,13 @@ alias GOptionArg OptionArg;
  */
 public enum GOptionFlags
 {
-	HIDDEN = 1 << 0,
-	IN_MAIN = 1 << 1,
-	REVERSE = 1 << 2,
-	NO_ARG = 1 << 3,
-	FILENAME = 1 << 4,
-	OPTIONAL_ARG = 1 << 5,
-	NOALIAS = 1 << 6
+    HIDDEN = 1 << 0,
+    IN_MAIN = 1 << 1,
+    REVERSE = 1 << 2,
+    NO_ARG = 1 << 3,
+    FILENAME = 1 << 4,
+    OPTIONAL_ARG = 1 << 5,
+    NOALIAS = 1 << 6
 }
 alias GOptionFlags OptionFlags;
 
@@ -1244,49 +1256,49 @@ alias GOptionFlags OptionFlags;
  */
 public enum GRegexError
 {
-	COMPILE,
-	OPTIMIZE,
-	REPLACE,
-	MATCH,
-	INTERNAL,
-	/+* These are the error codes from PCRE + 100 +/
-	STRAY_BACKSLASH = 101,
-	MISSING_CONTROL_CHAR = 102,
-	UNRECOGNIZED_ESCAPE = 103,
-	QUANTIFIERS_OUT_OF_ORDER = 104,
-	QUANTIFIER_TOO_BIG = 105,
-	UNTERMINATED_CHARACTER_CLASS = 106,
-	INVALID_ESCAPE_IN_CHARACTER_CLASS = 107,
-	RANGE_OUT_OF_ORDER = 108,
-	NOTHING_TO_REPEAT = 109,
-	UNRECOGNIZED_CHARACTER = 112,
-	POSIX_NAMED_CLASS_OUTSIDE_CLASS = 113,
-	UNMATCHED_PARENTHESIS = 114,
-	INEXISTENT_SUBPATTERN_REFERENCE = 115,
-	UNTERMINATED_COMMENT = 118,
-	EXPRESSION_TOO_LARGE = 120,
-	MEMORY_ERROR = 121,
-	VARIABLE_LENGTH_LOOKBEHIND = 125,
-	MALFORMED_CONDITION = 126,
-	TOO_MANY_CONDITIONAL_BRANCHES = 127,
-	ASSERTION_EXPECTED = 128,
-	UNKNOWN_POSIX_CLASS_NAME = 130,
-	POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED = 131,
-	HEX_CODE_TOO_LARGE = 134,
-	INVALID_CONDITION = 135,
-	SINGLE_BYTE_MATCH_IN_LOOKBEHIND = 136,
-	INFINITE_LOOP = 140,
-	MISSING_SUBPATTERN_NAME_TERMINATOR = 142,
-	DUPLICATE_SUBPATTERN_NAME = 143,
-	MALFORMED_PROPERTY = 146,
-	UNKNOWN_PROPERTY = 147,
-	SUBPATTERN_NAME_TOO_LONG = 148,
-	TOO_MANY_SUBPATTERNS = 149,
-	INVALID_OCTAL_VALUE = 151,
-	TOO_MANY_BRANCHES_IN_DEFINE = 154,
-	DEFINE_REPETION = 155,
-	INCONSISTENT_NEWLINE_OPTIONS = 156,
-	MISSING_BACK_REFERENCE = 157
+    COMPILE,
+    OPTIMIZE,
+    REPLACE,
+    MATCH,
+    INTERNAL,
+    /+* These are the error codes from PCRE + 100 +/
+    STRAY_BACKSLASH = 101,
+    MISSING_CONTROL_CHAR = 102,
+    UNRECOGNIZED_ESCAPE = 103,
+    QUANTIFIERS_OUT_OF_ORDER = 104,
+    QUANTIFIER_TOO_BIG = 105,
+    UNTERMINATED_CHARACTER_CLASS = 106,
+    INVALID_ESCAPE_IN_CHARACTER_CLASS = 107,
+    RANGE_OUT_OF_ORDER = 108,
+    NOTHING_TO_REPEAT = 109,
+    UNRECOGNIZED_CHARACTER = 112,
+    POSIX_NAMED_CLASS_OUTSIDE_CLASS = 113,
+    UNMATCHED_PARENTHESIS = 114,
+    INEXISTENT_SUBPATTERN_REFERENCE = 115,
+    UNTERMINATED_COMMENT = 118,
+    EXPRESSION_TOO_LARGE = 120,
+    MEMORY_ERROR = 121,
+    VARIABLE_LENGTH_LOOKBEHIND = 125,
+    MALFORMED_CONDITION = 126,
+    TOO_MANY_CONDITIONAL_BRANCHES = 127,
+    ASSERTION_EXPECTED = 128,
+    UNKNOWN_POSIX_CLASS_NAME = 130,
+    POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED = 131,
+    HEX_CODE_TOO_LARGE = 134,
+    INVALID_CONDITION = 135,
+    SINGLE_BYTE_MATCH_IN_LOOKBEHIND = 136,
+    INFINITE_LOOP = 140,
+    MISSING_SUBPATTERN_NAME_TERMINATOR = 142,
+    DUPLICATE_SUBPATTERN_NAME = 143,
+    MALFORMED_PROPERTY = 146,
+    UNKNOWN_PROPERTY = 147,
+    SUBPATTERN_NAME_TOO_LONG = 148,
+    TOO_MANY_SUBPATTERNS = 149,
+    INVALID_OCTAL_VALUE = 151,
+    TOO_MANY_BRANCHES_IN_DEFINE = 154,
+    DEFINE_REPETION = 155,
+    INCONSISTENT_NEWLINE_OPTIONS = 156,
+    MISSING_BACK_REFERENCE = 157
 }
 alias GRegexError RegexError;
 
@@ -1363,20 +1375,20 @@ alias GRegexError RegexError;
  */
 public enum GRegexCompileFlags
 {
-	CASELESS = 1 << 0,
-	MULTILINE = 1 << 1,
-	DOTALL = 1 << 2,
-	EXTENDED = 1 << 3,
-	ANCHORED = 1 << 4,
-	DOLLAR_ENDONLY = 1 << 5,
-	UNGREEDY = 1 << 9,
-	RAW = 1 << 11,
-	NO_AUTO_CAPTURE = 1 << 12,
-	OPTIMIZE = 1 << 13,
-	DUPNAMES = 1 << 19,
-	NEWLINE_CR = 1 << 20,
-	NEWLINE_LF = 1 << 21,
-	NEWLINE_CRLF = NEWLINE_CR | NEWLINE_LF
+    CASELESS = 1 << 0,
+    MULTILINE = 1 << 1,
+    DOTALL = 1 << 2,
+    EXTENDED = 1 << 3,
+    ANCHORED = 1 << 4,
+    DOLLAR_ENDONLY = 1 << 5,
+    UNGREEDY = 1 << 9,
+    RAW = 1 << 11,
+    NO_AUTO_CAPTURE = 1 << 12,
+    OPTIMIZE = 1 << 13,
+    DUPNAMES = 1 << 19,
+    NEWLINE_CR = 1 << 20,
+    NEWLINE_LF = 1 << 21,
+    NEWLINE_CRLF = NEWLINE_CR | NEWLINE_LF
 }
 alias GRegexCompileFlags RegexCompileFlags;
 
@@ -1427,15 +1439,15 @@ alias GRegexCompileFlags RegexCompileFlags;
  */
 public enum GRegexMatchFlags
 {
-	ANCHORED = 1 << 4,
-	NOTBOL = 1 << 7,
-	NOTEOL = 1 << 8,
-	NOTEMPTY = 1 << 10,
-	PARTIAL = 1 << 15,
-	NEWLINE_CR = 1 << 20,
-	NEWLINE_LF = 1 << 21,
-	NEWLINE_CRLF = NEWLINE_CR | NEWLINE_LF,
-	NEWLINE_ANY = 1 << 22
+    ANCHORED = 1 << 4,
+    NOTBOL = 1 << 7,
+    NOTEOL = 1 << 8,
+    NOTEMPTY = 1 << 10,
+    PARTIAL = 1 << 15,
+    NEWLINE_CR = 1 << 20,
+    NEWLINE_LF = 1 << 21,
+    NEWLINE_CRLF = NEWLINE_CR | NEWLINE_LF,
+    NEWLINE_ANY = 1 << 22
 }
 alias GRegexMatchFlags RegexMatchFlags;
 
@@ -1458,16 +1470,16 @@ alias GRegexMatchFlags RegexMatchFlags;
  */
 public enum GMarkupError
 {
-	BAD_UTF8,
-	EMPTY,
-	PARSE,
-	/+* The following are primarily intended for specific GMarkupParser
-	 * implementations to set.
-	+/
-	UNKNOWN_ELEMENT,
-	UNKNOWN_ATTRIBUTE,
-	INVALID_CONTENT,
-	MISSING_ATTRIBUTE
+    BAD_UTF8,
+    EMPTY,
+    PARSE,
+    /+* The following are primarily intended for specific GMarkupParser
+    * implementations to set.
+    +/
+    UNKNOWN_ELEMENT,
+    UNKNOWN_ATTRIBUTE,
+    INVALID_CONTENT,
+    MISSING_ATTRIBUTE
 }
 alias GMarkupError MarkupError;
 
@@ -1480,9 +1492,9 @@ alias GMarkupError MarkupError;
  */
 public enum GMarkupParseFlags
 {
-	DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1 << 0,
-	TREAT_CDATA_AS_TEXT = 1 << 1,
-	PREFIX_ERROR_POSITION = 1 << 2
+DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1 << 0,
+TREAT_CDATA_AS_TEXT = 1 << 1,
+PREFIX_ERROR_POSITION = 1 << 2
 }
 alias GMarkupParseFlags MarkupParseFlags;
 
@@ -1497,12 +1509,12 @@ alias GMarkupParseFlags MarkupParseFlags;
  */
 public enum GMarkupCollectType
 {
-	INVALID,
-	STRING,
-	STRDUP,
-	BOOLEAN,
-	TRISTATE,
-	OPTIONAL = (1 << 16)
+INVALID,
+STRING,
+STRDUP,
+BOOLEAN,
+TRISTATE,
+OPTIONAL = (1 << 16)
 }
 alias GMarkupCollectType MarkupCollectType;
 
@@ -1523,12 +1535,12 @@ alias GMarkupCollectType MarkupCollectType;
  */
 public enum GKeyFileError
 {
-	UNKNOWN_ENCODING,
-	PARSE,
-	NOT_FOUND,
-	KEY_NOT_FOUND,
-	GROUP_NOT_FOUND,
-	INVALID_VALUE
+    UNKNOWN_ENCODING,
+    PARSE,
+    NOT_FOUND,
+    KEY_NOT_FOUND,
+    GROUP_NOT_FOUND,
+    INVALID_VALUE
 }
 alias GKeyFileError KeyFileError;
 
@@ -1541,9 +1553,9 @@ alias GKeyFileError KeyFileError;
  */
 public enum GKeyFileFlags
 {
-	NONE = 0,
-	KEEP_COMMENTS = 1 << 0,
-	KEEP_TRANSLATIONS = 1 << 1
+    NONE = 0,
+    KEEP_COMMENTS = 1 << 0,
+    KEEP_TRANSLATIONS = 1 << 1
 }
 alias GKeyFileFlags KeyFileFlags;
 
@@ -1570,14 +1582,14 @@ alias GKeyFileFlags KeyFileFlags;
  */
 public enum GBookmarkFileError
 {
-	INVALID_URI,
-	INVALID_VALUE,
-	APP_NOT_REGISTERED,
-	URI_NOT_FOUND,
-	READ,
-	UNKNOWN_ENCODING,
-	WRITE,
-	FILE_NOT_FOUND
+    INVALID_URI,
+    INVALID_VALUE,
+    APP_NOT_REGISTERED,
+    URI_NOT_FOUND,
+    READ,
+    UNKNOWN_ENCODING,
+    WRITE,
+    FILE_NOT_FOUND
 }
 alias GBookmarkFileError BookmarkFileError;
 
@@ -1589,10 +1601,10 @@ alias GBookmarkFileError BookmarkFileError;
  */
 public enum GTraverseType
 {
-	IN_ORDER,
-	PRE_ORDER,
-	POST_ORDER,
-	LEVEL_ORDER
+    IN_ORDER,
+    PRE_ORDER,
+    POST_ORDER,
+    LEVEL_ORDER
 }
 alias GTraverseType TraverseType;
 
@@ -1604,12 +1616,12 @@ alias GTraverseType TraverseType;
  */
 public enum GTraverseFlags
 {
-	LEAVES = 1 << 0,
-	NON_LEAVES = 1 << 1,
-	ALL = LEAVES | NON_LEAVES,
-	MASK = 0x03,
-	LEAFS = LEAVES,
-	NON_LEAFS = NON_LEAVES
+    LEAVES = 1 << 0,
+    NON_LEAVES = 1 << 1,
+    ALL = LEAVES | NON_LEAVES,
+    MASK = 0x03,
+    LEAFS = LEAVES,
+    NON_LEAFS = NON_LEAVES
 }
 alias GTraverseFlags TraverseFlags;
 
@@ -1619,14 +1631,14 @@ alias GTraverseFlags TraverseFlags;
  * The GMainLoop struct is an opaque data type
  * representing the main event loop of a GLib or GTK+ application.
  */
-public struct GMainLoop{}
+public struct GMainLoop {}
 
 
 /**
  * The GMainContext struct is an opaque data type
  * representing a set of sources to be handled in a main loop.
  */
-public struct GMainContext{}
+public struct GMainContext {}
 
 
 /**
@@ -1643,16 +1655,16 @@ public struct GMainContext{}
  */
 public struct GPollFD
 {
-	version(Win64)
-	{
-		long fd;
-	}
-	else
-	{
-		int fd;
-	}
-	ushort events;
-	ushort revents;
+    version(Win64)
+    {
+        long fd;
+    }
+    else
+    {
+        int fd;
+    }
+    ushort events;
+    ushort revents;
 }
 
 
@@ -1660,7 +1672,7 @@ public struct GPollFD
  * The GSource struct is an opaque data type representing
  * an event source.
  */
-public struct GSource{}
+public struct GSource {}
 
 
 /**
@@ -1710,13 +1722,15 @@ public struct GSource{}
  */
 public struct GSourceFuncs
 {
-	extern(C) int  function(GSource *source,int *timeout) prepare;
-	extern(C) int  function(GSource *source) check;
-	extern(C) int  function(GSource *source,GSourceFunc callback,void* userData) dispatch;
-	extern(C) void  function(GSource *source) finalize; /+* Can be NULL +/
-	/+* For use by sourceSetClosure +/
-	GSourceFunc closureCallback;
-	GSourceDummyMarshal closureMarshal; /+* Really is of type GClosureMarshal +/
+    extern(C) int  function(GSource *source,int *timeout) prepare;
+    extern(C) int  function(GSource *source) check;
+    extern(C) int  function(GSource *source,GSourceFunc callback,void* userData) dispatch;
+    extern(C) void  function(GSource *source) finalize;
+    /+* Can be NULL +/
+    /+* For use by sourceSetClosure +/
+    GSourceFunc closureCallback;
+    GSourceDummyMarshal closureMarshal;
+    /+* Really is of type GClosureMarshal +/
 }
 
 
@@ -1732,9 +1746,9 @@ public struct GSourceFuncs
  */
 public struct GSourceCallbackFuncs
 {
-	extern(C) void  function(void* cbData) doref;
-	extern(C) void  function(void* cbData) unref;
-	extern(C) void  function(void* cbData,GSource *source, GSourceFunc *func,void* *data) get;
+    extern(C) void  function(void* cbData) doref;
+    extern(C) void  function(void* cbData) unref;
+    extern(C) void  function(void* cbData,GSource *source, GSourceFunc *func,void* *data) get;
 }
 
 
@@ -1752,9 +1766,9 @@ public struct GSourceCallbackFuncs
  */
 public struct GThreadPool
 {
-	GFunc func;
-	void* userData;
-	int exclusive;
+    GFunc func;
+    void* userData;
+    int exclusive;
 }
 
 
@@ -1764,7 +1778,7 @@ public struct GThreadPool
  * an asynchronous queue. It should only be accessed through the
  * g_async_queue_* functions.
  */
-public struct GAsyncQueue{}
+public struct GAsyncQueue {}
 
 
 /**
@@ -1773,7 +1787,7 @@ public struct GAsyncQueue{}
  * Dynamically-Loaded Module.
  * It should only be accessed via the following functions.
  */
-public struct GModule{}
+public struct GModule {}
 
 
 /**
@@ -1795,13 +1809,14 @@ public struct GModule{}
  */
 public struct GMemVTable
 {
-	extern(C) void*  function(uint nBytes) malloc;
-	extern(C) void*  function(void* mem,uint nBytes) realloc;
-	extern(C) void  function(void* mem) free;
-	/+* optional; set to NULL if not used ! +/
-	extern(C) void*  function(uint nBlocks,uint nBlockBytes) calloc;
-	extern(C) void*  function(uint nBytes) tryMalloc;
-	extern(C) void*  function(void* mem,uint nBytes) tryRealloc;
+    extern(C) void*  function(uint nBytes) malloc;
+    extern(C) void*  function(void* mem,uint nBytes) realloc;
+    extern(C) void  function(void* mem) free;
+    /+* optional;
+    set to NULL if not used ! +/
+    extern(C) void*  function(uint nBlocks,uint nBlockBytes) calloc;
+    extern(C) void*  function(uint nBytes) tryMalloc;
+    extern(C) void*  function(void* mem,uint nBytes) tryRealloc;
 }
 
 
@@ -1810,7 +1825,7 @@ public struct GMemVTable
  * A data structure representing an IO Channel. The fields should be considered
  * private and should only be accessed with the following functions.
  */
-public struct GIOChannel{}
+public struct GIOChannel {}
 
 
 /**
@@ -1819,14 +1834,14 @@ public struct GIOChannel{}
  */
 public struct GIOFuncs
 {
-	extern(C) GIOStatus  function(GIOChannel *channel, char *buf, uint count,uint *bytesRead,GError **err) ioRead;
-	extern(C) GIOStatus  function(GIOChannel *channel, char *buf, uint count,uint *bytesWritten,GError **err) ioWrite;
-	extern(C) GIOStatus  function(GIOChannel *channel, long offset, GSeekType type,GError **err) ioSeek;
-	extern(C) GIOStatus  function(GIOChannel *channel,GError **err) ioClose;
-	extern(C) GSource*  function(GIOChannel *channel,GIOCondition condition) ioCreateWatch;
-	extern(C) void  function(GIOChannel *channel) ioFree;
-	extern(C) GIOStatus  function(GIOChannel *channel,GIOFlags flags,GError **err) ioSetFlags;
-	extern(C) GIOFlags  function(GIOChannel *channel) ioGetFlags;
+    extern(C) GIOStatus  function(GIOChannel *channel, char *buf, uint count,uint *bytesRead,GError **err) ioRead;
+    extern(C) GIOStatus  function(GIOChannel *channel, char *buf, uint count,uint *bytesWritten,GError **err) ioWrite;
+    extern(C) GIOStatus  function(GIOChannel *channel, long offset, GSeekType type,GError **err) ioSeek;
+    extern(C) GIOStatus  function(GIOChannel *channel,GError **err) ioClose;
+    extern(C) GSource*  function(GIOChannel *channel,GIOCondition condition) ioCreateWatch;
+    extern(C) void  function(GIOChannel *channel) ioFree;
+    extern(C) GIOStatus  function(GIOChannel *channel,GIOFlags flags,GError **err) ioSetFlags;
+    extern(C) GIOFlags  function(GIOChannel *channel) ioGetFlags;
 }
 
 
@@ -1843,9 +1858,9 @@ public struct GIOFuncs
  */
 public struct GError
 {
-	GQuark domain;
-	int code;
-	char *message;
+    GQuark domain;
+    int code;
+    char *message;
 }
 
 
@@ -1854,7 +1869,7 @@ public struct GError
  * iconv() conversion descriptor. It contains private data
  * and should only be accessed using the following functions.
  */
-public struct GIConv{}
+public struct GIConv {}
 
 
 /**
@@ -1864,7 +1879,7 @@ public struct GIConv{}
  * a GChecksum, use g_checksum_free().
  * Since 2.16
  */
-public struct GChecksum{}
+public struct GChecksum {}
 
 
 /**
@@ -1879,8 +1894,8 @@ public struct GChecksum{}
  */
 public struct GTimeVal
 {
-	int tvSec;
-	int tvUsec;
+    int tvSec;
+    int tvUsec;
 }
 
 
@@ -1905,20 +1920,20 @@ public struct GTimeVal
  */
 public struct GDate
 {
-	uint bitfield0;
-	//uint julianDays : 32;
-	/+* julian days representation - we use a
-	 * bitfield hoping that 64 bit platforms
-	 * will pack this whole struct inn one big
-	 * int
-	+/
-	uint bitfield1;
-	//uint julian : 1; /+* julian is valid +/
-	//uint dmy : 1; /+* dmy is valid +/
-	/+* DMY representation +/
-	//uint day : 6;
-	//uint month : 4;
-	//uint year : 16;
+    uint bitfield0;
+    //uint julianDays : 32;
+    /+* julian days representation - we use a
+    * bitfield hoping that 64 bit platforms
+    * will pack this whole struct inn one big
+        * int
+        +/
+        uint bitfield1;
+    //uint julian : 1; /+* julian is valid +/
+    //uint dmy : 1; /+* dmy is valid +/
+    /+* DMY representation +/
+    //uint day : 6;
+    //uint month : 4;
+    //uint year : 16;
 }
 
 
@@ -1927,7 +1942,7 @@ public struct GDate
  * The GRand struct is an opaque data structure. It should only be
  * accessed through the g_rand_* functions.
  */
-public struct GRand{}
+public struct GRand {}
 
 
 /**
@@ -1940,8 +1955,8 @@ public struct GRand{}
  */
 public struct GDebugKey
 {
-	char *key;
-	uint value;
+    char *key;
+    uint value;
 }
 
 
@@ -1968,36 +1983,36 @@ public struct GDebugKey
  */
 public struct GScanner
 {
-	/+* unused fields +/
-	void* userData;
-	uint maxParseErrors;
-	/+* error() increments this field +/
-	uint parseErrors;
-	/+* name of input stream, featured by the defaulx message handler +/
-	char *inputName;
-	/+* quarked data +/
-	GData *qdata;
-	/+* link into the scanner configuration +/
-	GScannerConfig *config;
-	/+* fields filled inn after getNextToken() +/
-	GTokenType token;
-	GTokenValue value;
-	uint line;
-	uint position;
-	/+* fields filled inn after peekNextToken() +/
-	GTokenType nextToken;
-	GTokenValue nextValue;
-	uint nextLine;
-	uint nextPosition;
-	/+* to be considered private +/
-	GHashTable *symbolTable;
-	int inputFd;
-	char *text;
-	char *textEnd;
-	char *buffer;
-	uint scopeId;
-	/+* handler funct for _Warn and _Error +/
-	GScannerMsgFunc msgHandler;
+    /+* unused fields +/
+    void* userData;
+    uint maxParseErrors;
+    /+* error() increments this field +/
+    uint parseErrors;
+    /+* name of input stream, featured by the defaulx message handler +/
+    char *inputName;
+    /+* quarked data +/
+    GData *qdata;
+    /+* link into the scanner configuration +/
+    GScannerConfig *config;
+    /+* fields filled inn after getNextToken() +/
+    GTokenType token;
+    GTokenValue value;
+    uint line;
+    uint position;
+    /+* fields filled inn after peekNextToken() +/
+    GTokenType nextToken;
+    GTokenValue nextValue;
+    uint nextLine;
+    uint nextPosition;
+    /+* to be considered private +/
+    GHashTable *symbolTable;
+    int inputFd;
+    char *text;
+    char *textEnd;
+    char *buffer;
+    uint scopeId;
+    /+* handler funct for _Warn and _Error +/
+    GScannerMsgFunc msgHandler;
 }
 
 
@@ -2067,41 +2082,45 @@ public struct GScanner
  */
 public struct GScannerConfig
 {
-	/+* Character sets
-	+/
-	char *csetSkipCharacters; /+* default: " \t\n" +/
-	char *csetIdentifierFirst;
-	char *csetIdentifierNth;
-	char *cpairCommentSingle; /+* default: "#\n" +/
-	/+* Should symbol lookup work case sensitive?
-	+/
-	uint bitfield0;
-	//uint caseSensitive : 1;
-	/+* Boolean values to be adjusted "on the fly"
-	 * to configure scanning behaviour.
-	+/
-	//uint skipCommentMulti : 1; /+* C like comment +/
-	//uint skipCommentSingle : 1; /+* single line comment +/
-	//uint scanCommentMulti : 1; /+* scan multi line comments? +/
-	//uint scanIdentifier : 1;
-	//uint scanIdentifier1char : 1;
-	//uint scanIdentifierNULL : 1;
-	//uint scanSymbols : 1;
-	//uint scanBinary : 1;
-	//uint scanOctal : 1;
-	//uint scanFloat : 1;
-	//uint scanHex : 1; /+* `0x0ff0' +/
-	//uint scanHexDollar : 1; /+* `$0ff0' +/
-	//uint scanStringSq : 1; /+* string: 'anything' +/
-	//uint scanStringDq : 1; /+* string: "\\-escapes!\n" +/
-	//uint numbers2_Int : 1; /+* bin, octal, hex => int +/
-	//uint int2_Float : 1; /+* int => G_TOKEN_FLOAT? +/
-	//uint identifier2_String : 1;
-	//uint char2_Token : 1; /+* return G_TOKEN_CHAR? +/
-	//uint symbol2_Token : 1;
-	//uint scope0_Fallback : 1; /+* try scope 0 on lookups? +/
-	//uint storeInt64 : 1; /+* use value.vInt64 rather than vInt +/
-	uint paddingDummy;
+/+* Character sets
++/
+char *csetSkipCharacters;
+/+* default: " \t\n"
++/
+char *csetIdentifierFirst;
+char *csetIdentifierNth;
+char *cpairCommentSingle;
+/+* default: "#\n"
++/
+/+* Should symbol lookup work case sensitive?
+    +/
+    uint bitfield0;
+//uint caseSensitive : 1;
+/+* Boolean values to be adjusted "on the fly"
+* to configure scanning behaviour.
++/
+//uint skipCommentMulti : 1; /+* C like comment +/
+//uint skipCommentSingle : 1; /+* single line comment +/
+//uint scanCommentMulti : 1; /+* scan multi line comments? +/
+//uint scanIdentifier : 1;
+//uint scanIdentifier1char : 1;
+//uint scanIdentifierNULL : 1;
+//uint scanSymbols : 1;
+//uint scanBinary : 1;
+//uint scanOctal : 1;
+//uint scanFloat : 1;
+//uint scanHex : 1; /+* `0x0ff0' +/
+//uint scanHexDollar : 1; /+* `$0ff0' +/
+//uint scanStringSq : 1; /+* string: 'anything' +/
+//uint scanStringDq : 1; /+* string: "\\-escapes!\n" +/
+//uint numbers2_Int : 1; /+* bin, octal, hex => int +/
+//uint int2_Float : 1; /+* int => G_TOKEN_FLOAT? +/
+//uint identifier2_String : 1;
+//uint char2_Token : 1; /+* return G_TOKEN_CHAR? +/
+//uint symbol2_Token : 1;
+//uint scope0_Fallback : 1; /+* try scope 0 on lookups? +/
+//uint storeInt64 : 1; /+* use value.vInt64 rather than vInt +/
+uint paddingDummy;
 }
 
 
@@ -2115,11 +2134,11 @@ public struct GScannerConfig
  */
 public struct GCompletion
 {
-	GList* items;
-	GCompletionFunc func;
-	char* prefix;
-	GList* cache;
-	GCompletionStrncmpFunc strncmpFunc;
+GList* items;
+GCompletionFunc func;
+char* prefix;
+GList* cache;
+GCompletionStrncmpFunc strncmpFunc;
 }
 
 
@@ -2127,13 +2146,13 @@ public struct GCompletion
  * Main Gtk struct.
  * Opaque datatype that records a start time.
  */
-public struct GTimer{}
+public struct GTimer {}
 
 
 /**
  * An opaque structure representing an opened directory.
  */
-public struct GDir{}
+public struct GDir {}
 
 
 /**
@@ -2141,7 +2160,7 @@ public struct GDir{}
  * g_mapped_file_new(). It has only private members and should
  * not be accessed directly.
  */
-public struct GMappedFile{}
+public struct GMappedFile {}
 
 
 /**
@@ -2150,7 +2169,7 @@ public struct GMappedFile{}
  * are accepted by the commandline option parser. The struct has only private
  * fields and should not be directly accessed.
  */
-public struct GOptionContext{}
+public struct GOptionContext {}
 
 
 /**
@@ -2161,13 +2180,13 @@ public struct GOptionContext{}
  */
 public struct GOptionEntry
 {
-	char *longName;
-	char shortName;
-	int flags;
-	GOptionArg arg;
-	void* argData;
-	char *description;
-	char *argDescription;
+char *longName;
+char shortName;
+int flags;
+GOptionArg arg;
+void* argData;
+char *description;
+char *argDescription;
 }
 
 
@@ -2179,7 +2198,7 @@ public struct GOptionEntry
  * getting a GOptionGroup holding their options, which
  * the application can then add to its GOptionContext.
  */
-public struct GOptionGroup{}
+public struct GOptionGroup {}
 
 
 /**
@@ -2187,7 +2206,7 @@ public struct GOptionGroup{}
  * A GPatternSpec is the 'compiled' form of a pattern.
  * This structure is opaque and its fields cannot be accessed directly.
  */
-public struct GPatternSpec{}
+public struct GPatternSpec {}
 
 
 /**
@@ -2196,7 +2215,7 @@ public struct GPatternSpec{}
  * structure is opaque and its fields cannot be accessed directly.
  * Since 2.14
  */
-public struct GRegex{}
+public struct GRegex {}
 
 
 /**
@@ -2205,7 +2224,7 @@ public struct GRegex{}
  * This structure is opaque and its fields cannot be accessed directly.
  * Since 2.14
  */
-public struct GMatchInfo{}
+public struct GMatchInfo {}
 
 
 /**
@@ -2214,7 +2233,7 @@ public struct GMatchInfo{}
  * contain marked-up text. See g_markup_parse_context_new(),
  * GMarkupParser, and so on for more details.
  */
-public struct GMarkupParseContext{}
+public struct GMarkupParseContext {}
 
 
 /**
@@ -2230,23 +2249,23 @@ public struct GMarkupParseContext{}
  */
 public struct GMarkupParser
 {
-	/+* Called for open tags <foo bar="baz"> +/
-	extern(C) void  function(GMarkupParseContext *context,char *elementName,char **attributeNames,char **attributeValues,void* userData,GError **error) startElement;
-	/+* Called for close tags </foo> +/
-	extern(C) void  function(GMarkupParseContext *context,char *elementName,void* userData,GError **error) endElement;
-	/+* Called for character data +/
-	/+* text is not nul-terminated +/
-	extern(C) void  function(GMarkupParseContext *context,char *text,uint textLen, void* userData,GError **error) text;
-	/+* Called for strings that should be re-saved verbatim inn this same
-	 * position, but are not otherwise interpretable. At the moment
-	 * this includes comments and processing instructions.
-	+/
-	/+* text is not nul-terminated. +/
-	extern(C) void  function(GMarkupParseContext *context,char *passthroughText,uint textLen, void* userData,GError **error) passthrough;
-	/+* Called on error, including one set by other
-	 * methods inn the vtable. The GError should not be freed.
-	+/
-	extern(C) void  function(GMarkupParseContext *context,GError *error,void* userData) error;
+/+* Called for open tags <foo bar="baz"> +/
+                                      extern(C) void  function(GMarkupParseContext *context,char *elementName,char **attributeNames,char **attributeValues,void* userData,GError **error) startElement;
+    /+* Called for close tags </foo> +/
+    extern(C) void  function(GMarkupParseContext *context,char *elementName,void* userData,GError **error) endElement;
+    /+* Called for character data +/
+    /+* text is not nul-terminated +/
+    extern(C) void  function(GMarkupParseContext *context,char *text,uint textLen, void* userData,GError **error) text;
+    /+* Called for strings that should be re-saved verbatim inn this same
+    * position, but are not otherwise interpretable. At the moment
+    * this includes comments and processing instructions.
+    +/
+    /+* text is not nul-terminated. +/
+    extern(C) void  function(GMarkupParseContext *context,char *passthroughText,uint textLen, void* userData,GError **error) passthrough;
+    /+* Called on error, including one set by other
+    * methods inn the vtable. The GError should not be freed.
+    +/
+    extern(C) void  function(GMarkupParseContext *context,GError *error,void* userData) error;
 }
 
 
@@ -2255,7 +2274,7 @@ public struct GMarkupParser
  * The GKeyFile struct contains only private fields
  * and should not be used directly.
  */
-public struct GKeyFile{}
+public struct GKeyFile {}
 
 
 /**
@@ -2263,7 +2282,7 @@ public struct GKeyFile{}
  * The GBookmarkFile struct contains only private data
  * and should not be used directly.
  */
-public struct GBookmarkFile{}
+public struct GBookmarkFile {}
 
 
 /**
@@ -2273,7 +2292,7 @@ public struct GBookmarkFile{}
  * The GMemChunk struct is an opaque data structure representing a memory
  * chunk. It should be accessed only through the use of the following functions.
  */
-public struct GMemChunk{}
+public struct GMemChunk {}
 
 
 /**
@@ -2284,9 +2303,9 @@ public struct GMemChunk{}
  */
 public struct GList
 {
-	void* data;
-	GList *next;
-	GList *prev;
+    void* data;
+    GList *next;
+    GList *prev;
 }
 
 
@@ -2298,8 +2317,8 @@ public struct GList
  */
 public struct GSList
 {
-	void* data;
-	GSList *next;
+    void* data;
+    GSList *next;
 }
 
 
@@ -2315,9 +2334,9 @@ public struct GSList
  */
 public struct GQueue
 {
-	GList *head;
-	GList *tail;
-	uint length;
+    GList *head;
+    GList *tail;
+    uint length;
 }
 
 
@@ -2326,14 +2345,14 @@ public struct GQueue
  * The GSequence struct is an opaque data type
  * representing a Sequence data type.
  */
-public struct GSequence{}
+public struct GSequence {}
 
 
 /**
  * The GSequenceIter struct is an opaque data
  * type representing an iterator pointing into a GSequence.
  */
-public struct GSequenceIter{}
+public struct GSequenceIter {}
 
 
 /**
@@ -2347,7 +2366,7 @@ public struct GSequenceIter{}
  */
 public struct GTrashStack
 {
-	GTrashStack *next;
+    GTrashStack *next;
 }
 
 
@@ -2357,7 +2376,7 @@ public struct GTrashStack
  * Hash Table.
  * It should only be accessed via the following functions.
  */
-public struct GHashTable{}
+public struct GHashTable {}
 
 
 /**
@@ -2366,7 +2385,7 @@ public struct GHashTable{}
  * structures are typically allocated on the stack and then initialized
  * with g_hash_table_iter_init().
  */
-public struct GHashTableIter{}
+public struct GHashTableIter {}
 
 
 /**
@@ -2377,9 +2396,9 @@ public struct GHashTableIter{}
  */
 public struct GString
 {
-	char *str;
-	uint len;
-	uint allocatedLen;
+    char *str;
+    uint len;
+    uint allocatedLen;
 }
 
 
@@ -2388,7 +2407,7 @@ public struct GString
  * An opaque data structure representing String Chunks.
  * It should only be accessed by using the following functions.
  */
-public struct GStringChunk{}
+public struct GStringChunk {}
 
 
 /**
@@ -2402,8 +2421,8 @@ public struct GStringChunk{}
  */
 public struct GArray
 {
-	char *data;
-	uint len;
+    char *data;
+    uint len;
 }
 
 
@@ -2417,8 +2436,8 @@ public struct GArray
  */
 public struct GPtrArray
 {
-	void* *pdata;
-	uint len;
+    void* *pdata;
+    uint len;
 }
 
 
@@ -2433,8 +2452,8 @@ public struct GPtrArray
  */
 public struct GByteArray
 {
-	ubyte *data;
-	uint len;
+    ubyte *data;
+    uint len;
 }
 
 
@@ -2444,7 +2463,7 @@ public struct GByteArray
  * Balanced Binary Tree.
  * It should be accessed only by using the following functions.
  */
-public struct GTree{}
+public struct GTree {}
 
 
 /**
@@ -2459,11 +2478,11 @@ public struct GTree{}
  */
 public struct GNode
 {
-	void* data;
-	GNode *next;
-	GNode *prev;
-	GNode *parent;
-	GNode *children;
+    void* data;
+    GNode *next;
+    GNode *prev;
+    GNode *parent;
+    GNode *children;
 }
 
 
@@ -2473,7 +2492,7 @@ public struct GNode
  * Keyed Data List.
  * It should only be accessed via the following functions.
  */
-public struct GData{}
+public struct GData {}
 
 
 /**
@@ -2482,7 +2501,7 @@ public struct GData{}
  * Relation.
  * It should only be accessed via the following functions.
  */
-public struct GRelation{}
+public struct GRelation {}
 
 
 /**
@@ -2495,7 +2514,7 @@ public struct GRelation{}
  */
 public struct GTuples
 {
-	uint len;
+    uint len;
 }
 
 
@@ -2504,7 +2523,7 @@ public struct GTuples
  * The GCache struct is an opaque data structure containing information about
  * a GCache. It should only be accessed via the following functions.
  */
-public struct GCache{}
+public struct GCache {}
 
 
 /**
@@ -2514,7 +2533,7 @@ public struct GCache{}
  * The GAllocator struct contains private data. and
  * should only be accessed using the following functions.
  */
-public struct GAllocator{}
+public struct GAllocator {}
 
 
 /*
@@ -4286,19 +4305,19 @@ public typedef extern(C) void*  function (void*) GCacheNewFunc;
  */
 public struct GTokenValue
 {
-	union
-	{
-		void* vSymbol;
-		char *vIdentifier;
-		uint vBinary;
-		uint vOctal;
-		uint vInt;
-		ulong vInt64;
-		double vFloat;
-		uint vHex;
-		char *vString;
-		char *vComment;
-		char vChar;
-		uint vError;
-	}
+    union
+    {
+        void* vSymbol;
+        char *vIdentifier;
+        uint vBinary;
+        uint vOctal;
+        uint vInt;
+        ulong vInt64;
+        double vFloat;
+        uint vHex;
+        char *vString;
+        char *vComment;
+        char vChar;
+        uint vError;
+    }
 }

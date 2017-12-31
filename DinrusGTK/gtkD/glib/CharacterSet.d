@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = glib-Character-Set-Conversion.html
  * outPack = glib
  * outFile = CharacterSet
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = CharacterSet
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_
@@ -162,412 +162,412 @@ private import gtkD.glib.GException;
  */
 public class CharacterSet
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Converts a string from one character set to another.
-	 * Note that you should use g_iconv() for streaming
-	 * conversions[2].
-	 * Params:
-	 * str =  the string to convert
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated[1].
-	 * toCodeset =  name of character set into which to convert str
-	 * fromCodeset =  character set of str.
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input. If the error
-	 *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
-	 *  stored will the byte offset after the last valid
-	 *  input sequence.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
-	 * Throws: GException on failure.
-	 */
-	public static string convert(string str, int len, string toCodeset, string fromCodeset, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_convert (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_convert(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Converts a string from one character set to another, possibly
-	 * including fallback sequences for characters not representable
-	 * in the output. Note that it is not guaranteed that the specification
-	 * for the fallback sequences in fallback will be honored. Some
-	 * systems may do an approximate conversion from from_codeset
-	 * to to_codeset in their iconv() functions,
-	 * in which case GLib will simply return that approximate conversion.
-	 * Note that you should use g_iconv() for streaming
-	 * conversions[2].
-	 * Params:
-	 * str =  the string to convert
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated[1].
-	 * toCodeset =  name of character set into which to convert str
-	 * fromCodeset =  character set of str.
-	 * fallback =  UTF-8 string to use in place of character not
-	 *  present in the target encoding. (The string must be
-	 *  representable in the target encoding).
-	 *  If NULL, characters not in the target encoding will
-	 *  be represented as Unicode escapes \uxxxx or \Uxxxxyyyy.
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
-	 * Throws: GException on failure.
-	 */
-	public static string convertWithFallback(string str, int len, string toCodeset, string fromCodeset, string fallback, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_convert_with_fallback (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gchar *fallback,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_convert_with_fallback(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), Str.toStringz(fallback), &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Converts a string which is in the encoding used for strings by
-	 * the C runtime (usually the same as that used by the operating
-	 * system) in the current locale into a
-	 * UTF-8 string.
-	 * Params:
-	 * opsysstring =  a string in the encoding of the current locale. On Windows
-	 *  this means the system codepage.
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated[1].
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input. If the error
-	 *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
-	 *  stored will the byte offset after the last valid
-	 *  input sequence.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: The converted string, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string localeToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_locale_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_locale_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Converts a string which is in the encoding used by GLib for
-	 * filenames into a UTF-8 string. Note that on Windows GLib uses UTF-8
-	 * for filenames; on other platforms, this function indirectly depends on
-	 * the current locale.
-	 * Params:
-	 * opsysstring =  a string in the encoding for filenames
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated[1].
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input. If the error
-	 *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
-	 *  stored will the byte offset after the last valid
-	 *  input sequence.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: The converted string, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string filenameToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_filename_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Converts a string from UTF-8 to the encoding GLib uses for
-	 * filenames. Note that on Windows GLib uses UTF-8 for filenames;
-	 * on other platforms, this function indirectly depends on the
-	 * current locale.
-	 * Params:
-	 * utf8string =  a UTF-8 encoded string.
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated.
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input. If the error
-	 *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
-	 *  stored will the byte offset after the last valid
-	 *  input sequence.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: The converted string, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string filenameFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_filename_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Converts an escaped ASCII-encoded URI to a local filename in the
-	 * encoding used for filenames.
-	 * Params:
-	 * uri =  a uri describing a filename (escaped, encoded in ASCII).
-	 * hostname =  Location to store hostname for the URI, or NULL.
-	 *  If there is no hostname in the URI, NULL will be
-	 *  stored in this location.
-	 * Returns: a newly-allocated string holding the resulting filename, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string filenameFromUri(string uri, out string hostname)
-	{
-		// gchar * g_filename_from_uri (const gchar *uri,  gchar **hostname,  GError **error);
-		char* outhostname = null;
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_from_uri(Str.toStringz(uri), &outhostname, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		hostname = Str.toString(outhostname);
-		return p;
-	}
-	
-	/**
-	 * Converts an absolute filename to an escaped ASCII-encoded URI, with the path
-	 * component following Section 3.3. of RFC 2396.
-	 * Params:
-	 * filename =  an absolute filename specified in the GLib file name encoding,
-	 *  which is the on-disk file name bytes on Unix, and UTF-8 on
-	 *  Windows
-	 * hostname =  A UTF-8 encoded hostname, or NULL for none.
-	 * Returns: a newly-allocated string holding the resulting URI, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string filenameToUri(string filename, string hostname)
-	{
-		// gchar * g_filename_to_uri (const gchar *filename,  const gchar *hostname,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_to_uri(Str.toStringz(filename), Str.toStringz(hostname), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Determines the preferred character sets used for filenames.
-	 * The first character set from the charsets is the filename encoding, the
-	 * subsequent character sets are used when trying to generate a displayable
-	 * representation of a filename, see g_filename_display_name().
-	 * On Unix, the character sets are determined by consulting the
-	 * environment variables G_FILENAME_ENCODING and
-	 * G_BROKEN_FILENAMES. On Windows, the character set
-	 * used in the GLib API is always UTF-8 and said environment variables
-	 * have no effect.
-	 * G_FILENAME_ENCODING may be set to a comma-separated list
-	 * of character set names. The special token "@locale" is taken to
-	 * mean the character set for the current
-	 * locale. If G_FILENAME_ENCODING is not set, but
-	 * G_BROKEN_FILENAMES is, the character set of the current
-	 * locale is taken as the filename encoding. If neither environment variable
-	 * is set, UTF-8 is taken as the filename encoding, but the character
-	 * set of the current locale is also put in the list of encodings.
-	 * The returned charsets belong to GLib and must not be freed.
-	 * Note that on Unix, regardless of the locale character set or
-	 * G_FILENAME_ENCODING value, the actual file names present
-	 * on a system might be in any random encoding or just gibberish.
-	 * Since 2.6
-	 * Params:
-	 * charsets =  return location for the NULL-terminated list of encoding names
-	 * Returns: TRUE if the filename encoding is UTF-8.
-	 */
-	public static int getFilenameCharsets(out string[] charsets)
-	{
-		// gboolean g_get_filename_charsets (G_CONST_RETURN gchar ***charsets);
-		char** outcharsets = null;
-		
-		auto p = g_get_filename_charsets(&outcharsets);
-		
-		charsets = Str.toStringArray(outcharsets);
-		return p;
-	}
-	
-	/**
-	 * Converts a filename into a valid UTF-8 string. The conversion is
-	 * not necessarily reversible, so you should keep the original around
-	 * and use the return value of this function only for display purposes.
-	 * Unlike g_filename_to_utf8(), the result is guaranteed to be non-NULL
-	 * even if the filename actually isn't in the GLib file name encoding.
-	 * If GLib can not make sense of the encoding of filename, as a last resort it
-	 * replaces unknown characters with U+FFFD, the Unicode replacement character.
-	 * You can search the result for the UTF-8 encoding of this character (which is
-	 * "\357\277\275" in octal notation) to find out if filename was in an invalid
-	 * encoding.
-	 * If you know the whole pathname of the file you should use
-	 * g_filename_display_basename(), since that allows location-based
-	 * translation of filenames.
-	 * Since 2.6
-	 * Params:
-	 * filename =  a pathname hopefully in the GLib file name encoding
-	 * Returns: a newly allocated string containing a rendition of the filename in valid UTF-8
-	 */
-	public static string filenameDisplayName(string filename)
-	{
-		// gchar * g_filename_display_name (const gchar *filename);
-		return Str.toString(g_filename_display_name(Str.toStringz(filename)));
-	}
-	
-	/**
-	 * Returns the display basename for the particular filename, guaranteed
-	 * to be valid UTF-8. The display name might not be identical to the filename,
-	 * for instance there might be problems converting it to UTF-8, and some files
-	 * can be translated in the display.
-	 * If GLib can not make sense of the encoding of filename, as a last resort it
-	 * replaces unknown characters with U+FFFD, the Unicode replacement character.
-	 * You can search the result for the UTF-8 encoding of this character (which is
-	 * "\357\277\275" in octal notation) to find out if filename was in an invalid
-	 * encoding.
-	 * You must pass the whole absolute pathname to this functions so that
-	 * translation of well known locations can be done.
-	 * This function is preferred over g_filename_display_name() if you know the
-	 * whole path, as it allows translation.
-	 * Since 2.6
-	 * Params:
-	 * filename =  an absolute pathname in the GLib file name encoding
-	 * Returns: a newly allocated string containing a rendition of the basename of the filename in valid UTF-8
-	 */
-	public static string filenameDisplayBasename(string filename)
-	{
-		// gchar * g_filename_display_basename (const gchar *filename);
-		return Str.toString(g_filename_display_basename(Str.toStringz(filename)));
-	}
-	
-	/**
-	 * Converts a string from UTF-8 to the encoding used for strings by
-	 * the C runtime (usually the same as that used by the operating
-	 * system) in the current locale. On
-	 * Windows this means the system codepage.
-	 * Params:
-	 * utf8string =  a UTF-8 encoded string
-	 * len =  the length of the string, or -1 if the string is
-	 *  nul-terminated[1].
-	 * bytesRead =  location to store the number of bytes in the
-	 *  input string that were successfully converted, or NULL.
-	 *  Even if the conversion was successful, this may be
-	 *  less than len if there were partial characters
-	 *  at the end of the input. If the error
-	 *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
-	 *  stored will the byte offset after the last valid
-	 *  input sequence.
-	 * bytesWritten =  the number of bytes stored in the output buffer (not
-	 *  including the terminating nul).
-	 * Returns: The converted string, or NULL on an error.
-	 * Throws: GException on failure.
-	 */
-	public static string localeFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_locale_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_locale_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Obtains the character set for the current
-	 * locale; you might use this character set as an argument to
-	 * g_convert(), to convert from the current locale's encoding to some
-	 * other encoding. (Frequently g_locale_to_utf8() and g_locale_from_utf8()
-	 * are nice shortcuts, though.)
-	 * On Windows the character set returned by this function is the
-	 * so-called system default ANSI code-page. That is the character set
-	 * used by the "narrow" versions of C library and Win32 functions that
-	 * handle file names. It might be different from the character set
-	 * used by the C library's current locale.
-	 * The return value is TRUE if the locale's encoding is UTF-8, in that
-	 * case you can perhaps avoid calling g_convert().
-	 * The string returned in charset is not allocated, and should not be
-	 * freed.
-	 * Params:
-	 * charset =  return location for character set name
-	 * Returns: TRUE if the returned charset is UTF-8[1]  Note that some encodings may allow nul bytes to  occur inside strings. In that case, using -1 for  the len parameter is unsafe.[2] Despite the fact that byes_read can return information about partial characters, the g_convert_... functionsare not generally suitable for streaming. If the underlying converter being used maintains internal state, then this won't be preserved across successive calls to g_convert(), g_convert_with_iconv() or g_convert_with_fallback(). (An example of this is the GNU C converter for CP1255 which does not emit a base character until it knows that the next character is not a mark that could combine with the base character.)
-	 */
-	public static int getCharset(out string charset)
-	{
-		// gboolean g_get_charset (G_CONST_RETURN char **charset);
-		char* outcharset = null;
-		
-		auto p = g_get_charset(&outcharset);
-		
-		charset = Str.toString(outcharset);
-		return p;
-	}
+
+    /**
+     */
+
+    /**
+     * Converts a string from one character set to another.
+     * Note that you should use g_iconv() for streaming
+     * conversions[2].
+     * Params:
+     * str =  the string to convert
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated[1].
+     * toCodeset =  name of character set into which to convert str
+     * fromCodeset =  character set of str.
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input. If the error
+     *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
+     *  stored will the byte offset after the last valid
+     *  input sequence.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
+     * Throws: GException on failure.
+     */
+    public static string convert(string str, int len, string toCodeset, string fromCodeset, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_convert (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_convert(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Converts a string from one character set to another, possibly
+     * including fallback sequences for characters not representable
+     * in the output. Note that it is not guaranteed that the specification
+     * for the fallback sequences in fallback will be honored. Some
+     * systems may do an approximate conversion from from_codeset
+     * to to_codeset in their iconv() functions,
+     * in which case GLib will simply return that approximate conversion.
+     * Note that you should use g_iconv() for streaming
+     * conversions[2].
+     * Params:
+     * str =  the string to convert
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated[1].
+     * toCodeset =  name of character set into which to convert str
+     * fromCodeset =  character set of str.
+     * fallback =  UTF-8 string to use in place of character not
+     *  present in the target encoding. (The string must be
+     *  representable in the target encoding).
+     *  If NULL, characters not in the target encoding will
+     *  be represented as Unicode escapes \uxxxx or \Uxxxxyyyy.
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
+     * Throws: GException on failure.
+     */
+    public static string convertWithFallback(string str, int len, string toCodeset, string fromCodeset, string fallback, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_convert_with_fallback (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gchar *fallback,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_convert_with_fallback(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), Str.toStringz(fallback), &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Converts a string which is in the encoding used for strings by
+     * the C runtime (usually the same as that used by the operating
+     * system) in the current locale into a
+     * UTF-8 string.
+     * Params:
+     * opsysstring =  a string in the encoding of the current locale. On Windows
+     *  this means the system codepage.
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated[1].
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input. If the error
+     *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
+     *  stored will the byte offset after the last valid
+     *  input sequence.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: The converted string, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string localeToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_locale_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_locale_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Converts a string which is in the encoding used by GLib for
+     * filenames into a UTF-8 string. Note that on Windows GLib uses UTF-8
+     * for filenames; on other platforms, this function indirectly depends on
+     * the current locale.
+     * Params:
+     * opsysstring =  a string in the encoding for filenames
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated[1].
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input. If the error
+     *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
+     *  stored will the byte offset after the last valid
+     *  input sequence.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: The converted string, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string filenameToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_filename_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_filename_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Converts a string from UTF-8 to the encoding GLib uses for
+     * filenames. Note that on Windows GLib uses UTF-8 for filenames;
+     * on other platforms, this function indirectly depends on the
+     * current locale.
+     * Params:
+     * utf8string =  a UTF-8 encoded string.
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated.
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input. If the error
+     *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
+     *  stored will the byte offset after the last valid
+     *  input sequence.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: The converted string, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string filenameFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_filename_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_filename_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Converts an escaped ASCII-encoded URI to a local filename in the
+     * encoding used for filenames.
+     * Params:
+     * uri =  a uri describing a filename (escaped, encoded in ASCII).
+     * hostname =  Location to store hostname for the URI, or NULL.
+     *  If there is no hostname in the URI, NULL will be
+     *  stored in this location.
+     * Returns: a newly-allocated string holding the resulting filename, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string filenameFromUri(string uri, out string hostname)
+    {
+        // gchar * g_filename_from_uri (const gchar *uri,  gchar **hostname,  GError **error);
+        char* outhostname = null;
+        GError* err = null;
+
+        auto p = Str.toString(g_filename_from_uri(Str.toStringz(uri), &outhostname, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        hostname = Str.toString(outhostname);
+        return p;
+    }
+
+    /**
+     * Converts an absolute filename to an escaped ASCII-encoded URI, with the path
+     * component following Section 3.3. of RFC 2396.
+     * Params:
+     * filename =  an absolute filename specified in the GLib file name encoding,
+     *  which is the on-disk file name bytes on Unix, and UTF-8 on
+     *  Windows
+     * hostname =  A UTF-8 encoded hostname, or NULL for none.
+     * Returns: a newly-allocated string holding the resulting URI, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string filenameToUri(string filename, string hostname)
+    {
+        // gchar * g_filename_to_uri (const gchar *filename,  const gchar *hostname,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_filename_to_uri(Str.toStringz(filename), Str.toStringz(hostname), &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Determines the preferred character sets used for filenames.
+     * The first character set from the charsets is the filename encoding, the
+     * subsequent character sets are used when trying to generate a displayable
+     * representation of a filename, see g_filename_display_name().
+     * On Unix, the character sets are determined by consulting the
+     * environment variables G_FILENAME_ENCODING and
+     * G_BROKEN_FILENAMES. On Windows, the character set
+     * used in the GLib API is always UTF-8 and said environment variables
+     * have no effect.
+     * G_FILENAME_ENCODING may be set to a comma-separated list
+     * of character set names. The special token "@locale" is taken to
+     * mean the character set for the current
+     * locale. If G_FILENAME_ENCODING is not set, but
+     * G_BROKEN_FILENAMES is, the character set of the current
+     * locale is taken as the filename encoding. If neither environment variable
+     * is set, UTF-8 is taken as the filename encoding, but the character
+     * set of the current locale is also put in the list of encodings.
+     * The returned charsets belong to GLib and must not be freed.
+     * Note that on Unix, regardless of the locale character set or
+     * G_FILENAME_ENCODING value, the actual file names present
+     * on a system might be in any random encoding or just gibberish.
+     * Since 2.6
+     * Params:
+     * charsets =  return location for the NULL-terminated list of encoding names
+     * Returns: TRUE if the filename encoding is UTF-8.
+     */
+    public static int getFilenameCharsets(out string[] charsets)
+    {
+        // gboolean g_get_filename_charsets (G_CONST_RETURN gchar ***charsets);
+        char** outcharsets = null;
+
+        auto p = g_get_filename_charsets(&outcharsets);
+
+        charsets = Str.toStringArray(outcharsets);
+        return p;
+    }
+
+    /**
+     * Converts a filename into a valid UTF-8 string. The conversion is
+     * not necessarily reversible, so you should keep the original around
+     * and use the return value of this function only for display purposes.
+     * Unlike g_filename_to_utf8(), the result is guaranteed to be non-NULL
+     * even if the filename actually isn't in the GLib file name encoding.
+     * If GLib can not make sense of the encoding of filename, as a last resort it
+     * replaces unknown characters with U+FFFD, the Unicode replacement character.
+     * You can search the result for the UTF-8 encoding of this character (which is
+     * "\357\277\275" in octal notation) to find out if filename was in an invalid
+     * encoding.
+     * If you know the whole pathname of the file you should use
+     * g_filename_display_basename(), since that allows location-based
+     * translation of filenames.
+     * Since 2.6
+     * Params:
+     * filename =  a pathname hopefully in the GLib file name encoding
+     * Returns: a newly allocated string containing a rendition of the filename in valid UTF-8
+     */
+    public static string filenameDisplayName(string filename)
+    {
+        // gchar * g_filename_display_name (const gchar *filename);
+        return Str.toString(g_filename_display_name(Str.toStringz(filename)));
+    }
+
+    /**
+     * Returns the display basename for the particular filename, guaranteed
+     * to be valid UTF-8. The display name might not be identical to the filename,
+     * for instance there might be problems converting it to UTF-8, and some files
+     * can be translated in the display.
+     * If GLib can not make sense of the encoding of filename, as a last resort it
+     * replaces unknown characters with U+FFFD, the Unicode replacement character.
+     * You can search the result for the UTF-8 encoding of this character (which is
+     * "\357\277\275" in octal notation) to find out if filename was in an invalid
+     * encoding.
+     * You must pass the whole absolute pathname to this functions so that
+     * translation of well known locations can be done.
+     * This function is preferred over g_filename_display_name() if you know the
+     * whole path, as it allows translation.
+     * Since 2.6
+     * Params:
+     * filename =  an absolute pathname in the GLib file name encoding
+     * Returns: a newly allocated string containing a rendition of the basename of the filename in valid UTF-8
+     */
+    public static string filenameDisplayBasename(string filename)
+    {
+        // gchar * g_filename_display_basename (const gchar *filename);
+        return Str.toString(g_filename_display_basename(Str.toStringz(filename)));
+    }
+
+    /**
+     * Converts a string from UTF-8 to the encoding used for strings by
+     * the C runtime (usually the same as that used by the operating
+     * system) in the current locale. On
+     * Windows this means the system codepage.
+     * Params:
+     * utf8string =  a UTF-8 encoded string
+     * len =  the length of the string, or -1 if the string is
+     *  nul-terminated[1].
+     * bytesRead =  location to store the number of bytes in the
+     *  input string that were successfully converted, or NULL.
+     *  Even if the conversion was successful, this may be
+     *  less than len if there were partial characters
+     *  at the end of the input. If the error
+     *  G_CONVERT_ERROR_ILLEGAL_SEQUENCE occurs, the value
+     *  stored will the byte offset after the last valid
+     *  input sequence.
+     * bytesWritten =  the number of bytes stored in the output buffer (not
+     *  including the terminating nul).
+     * Returns: The converted string, or NULL on an error.
+     * Throws: GException on failure.
+     */
+    public static string localeFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
+    {
+        // gchar* g_locale_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
+        GError* err = null;
+
+        auto p = Str.toString(g_locale_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Obtains the character set for the current
+     * locale; you might use this character set as an argument to
+     * g_convert(), to convert from the current locale's encoding to some
+     * other encoding. (Frequently g_locale_to_utf8() and g_locale_from_utf8()
+     * are nice shortcuts, though.)
+     * On Windows the character set returned by this function is the
+     * so-called system default ANSI code-page. That is the character set
+     * used by the "narrow" versions of C library and Win32 functions that
+     * handle file names. It might be different from the character set
+     * used by the C library's current locale.
+     * The return value is TRUE if the locale's encoding is UTF-8, in that
+     * case you can perhaps avoid calling g_convert().
+     * The string returned in charset is not allocated, and should not be
+     * freed.
+     * Params:
+     * charset =  return location for character set name
+     * Returns: TRUE if the returned charset is UTF-8[1]  Note that some encodings may allow nul bytes to  occur inside strings. In that case, using -1 for  the len parameter is unsafe.[2] Despite the fact that byes_read can return information about partial characters, the g_convert_... functionsare not generally suitable for streaming. If the underlying converter being used maintains internal state, then this won't be preserved across successive calls to g_convert(), g_convert_with_iconv() or g_convert_with_fallback(). (An example of this is the GNU C converter for CP1255 which does not emit a base character until it knows that the next character is not a mark that could combine with the base character.)
+     */
+    public static int getCharset(out string charset)
+    {
+        // gboolean g_get_charset (G_CONST_RETURN char **charset);
+        char* outcharset = null;
+
+        auto p = g_get_charset(&outcharset);
+
+        charset = Str.toString(outcharset);
+        return p;
+    }
 }

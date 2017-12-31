@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,7 +29,7 @@
  * realStrct=
  * ctorStrct=GdaDataModel
  * clss    = DataModelHash
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -79,132 +79,132 @@ private import gtkD.gda.DataModel;
  */
 public class DataModelHash : DataModel
 {
-	
-	/** the main Gtk struct */
-	protected GdaDataModelHash* gdaDataModelHash;
-	
-	
-	public GdaDataModelHash* getDataModelHashStruct()
-	{
-		return gdaDataModelHash;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdaDataModelHash;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdaDataModelHash* gdaDataModelHash)
-	{
-		if(gdaDataModelHash is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdaDataModelHash);
-		if( ptr !is null )
-		{
-			this = cast(DataModelHash)ptr;
-			return;
-		}
-		super(cast(GdaDataModel*)gdaDataModelHash);
-		this.gdaDataModelHash = gdaDataModelHash;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Params:
-	 * cols =  number of columns for rows in this data model.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (int cols)
-	{
-		// GdaDataModel* gda_data_model_hash_new (gint cols);
-		auto p = gda_data_model_hash_new(cols);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gda_data_model_hash_new(cols)");
-		}
-		this(cast(GdaDataModelHash*) p);
-	}
-	
-	/**
-	 * Retrieves the value at a specified column and row.
-	 * Params:
-	 * model =  the GdaDataModelHash to retrieve the value from.
-	 * col =  column number (starting from 0).
-	 * row =  row number (starting from 0).
-	 * Returns: a pointer to a GdaValue.
-	 */
-	public static Value getValueAt(DataModel model, int col, int row)
-	{
-		// const GdaValue* gda_data_model_hash_get_value_at (GdaDataModel *model,  gint col,  gint row);
-		auto p = gda_data_model_hash_get_value_at((model is null) ? null : model.getDataModelStruct(), col, row);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Value(cast(GdaValue*) p);
-	}
-	
-	/**
-	 * Frees all the rows inserted in model.
-	 */
-	public void clear()
-	{
-		// void gda_data_model_hash_clear (GdaDataModelHash *model);
-		gda_data_model_hash_clear(gdaDataModelHash);
-	}
-	
-	/**
-	 * Sets the number of columns for rows inserted in this model.
-	 * cols must be greater than or equal to 0.
-	 * This function calls gda_data_model_hash_clear to free the
-	 * existing rows if any.
-	 * Params:
-	 * cols =  the number of columns for rows inserted in model.
-	 */
-	public void setNColumns(int cols)
-	{
-		// void gda_data_model_hash_set_n_columns (GdaDataModelHash *model,  gint cols);
-		gda_data_model_hash_set_n_columns(gdaDataModelHash, cols);
-	}
-	
-	/**
-	 * Inserts a row in the model.
-	 * Params:
-	 * rownum =  the number of the row.
-	 * row =  the row to insert. The model is responsible of freeing it!
-	 */
-	public void insertRow(int rownum, Row row)
-	{
-		// void gda_data_model_hash_insert_row (GdaDataModelHash *model,  gint rownum,  GdaRow *row);
-		gda_data_model_hash_insert_row(gdaDataModelHash, rownum, (row is null) ? null : row.getRowStruct());
-	}
-	
-	/**
-	 * Retrieves a row from the underlying hash table.
-	 * Params:
-	 * model =  the GdaDataModelHash
-	 * row =  row number
-	 * Returns: a GdaRow or NULL if the requested row is not in the hash table.
-	 */
-	public static Row getRow(DataModel model, int row)
-	{
-		// const GdaRow* gda_data_model_hash_get_row (GdaDataModel *model,  gint row);
-		auto p = gda_data_model_hash_get_row((model is null) ? null : model.getDataModelStruct(), row);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Row(cast(GdaRow*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GdaDataModelHash* gdaDataModelHash;
+
+
+    public GdaDataModelHash* getDataModelHashStruct()
+    {
+        return gdaDataModelHash;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gdaDataModelHash;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdaDataModelHash* gdaDataModelHash)
+    {
+        if(gdaDataModelHash is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gdaDataModelHash);
+        if( ptr !is null )
+        {
+            this = cast(DataModelHash)ptr;
+            return;
+        }
+        super(cast(GdaDataModel*)gdaDataModelHash);
+        this.gdaDataModelHash = gdaDataModelHash;
+    }
+
+    /**
+     */
+
+    /**
+     * Params:
+     * cols =  number of columns for rows in this data model.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (int cols)
+    {
+        // GdaDataModel* gda_data_model_hash_new (gint cols);
+        auto p = gda_data_model_hash_new(cols);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gda_data_model_hash_new(cols)");
+        }
+        this(cast(GdaDataModelHash*) p);
+    }
+
+    /**
+     * Retrieves the value at a specified column and row.
+     * Params:
+     * model =  the GdaDataModelHash to retrieve the value from.
+     * col =  column number (starting from 0).
+     * row =  row number (starting from 0).
+     * Returns: a pointer to a GdaValue.
+     */
+    public static Value getValueAt(DataModel model, int col, int row)
+    {
+        // const GdaValue* gda_data_model_hash_get_value_at (GdaDataModel *model,  gint col,  gint row);
+        auto p = gda_data_model_hash_get_value_at((model is null) ? null : model.getDataModelStruct(), col, row);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Value(cast(GdaValue*) p);
+    }
+
+    /**
+     * Frees all the rows inserted in model.
+     */
+    public void clear()
+    {
+        // void gda_data_model_hash_clear (GdaDataModelHash *model);
+        gda_data_model_hash_clear(gdaDataModelHash);
+    }
+
+    /**
+     * Sets the number of columns for rows inserted in this model.
+     * cols must be greater than or equal to 0.
+     * This function calls gda_data_model_hash_clear to free the
+     * existing rows if any.
+     * Params:
+     * cols =  the number of columns for rows inserted in model.
+     */
+    public void setNColumns(int cols)
+    {
+        // void gda_data_model_hash_set_n_columns (GdaDataModelHash *model,  gint cols);
+        gda_data_model_hash_set_n_columns(gdaDataModelHash, cols);
+    }
+
+    /**
+     * Inserts a row in the model.
+     * Params:
+     * rownum =  the number of the row.
+     * row =  the row to insert. The model is responsible of freeing it!
+     */
+    public void insertRow(int rownum, Row row)
+    {
+        // void gda_data_model_hash_insert_row (GdaDataModelHash *model,  gint rownum,  GdaRow *row);
+        gda_data_model_hash_insert_row(gdaDataModelHash, rownum, (row is null) ? null : row.getRowStruct());
+    }
+
+    /**
+     * Retrieves a row from the underlying hash table.
+     * Params:
+     * model =  the GdaDataModelHash
+     * row =  row number
+     * Returns: a GdaRow or NULL if the requested row is not in the hash table.
+     */
+    public static Row getRow(DataModel model, int row)
+    {
+        // const GdaRow* gda_data_model_hash_get_row (GdaDataModel *model,  gint row);
+        auto p = gda_data_model_hash_get_row((model is null) ? null : model.getDataModelStruct(), row);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Row(cast(GdaRow*) p);
+    }
 }

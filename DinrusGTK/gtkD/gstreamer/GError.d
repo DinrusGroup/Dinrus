@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gstreamer-GstGError.html
  * outPack = gstreamer
  * outFile = GError
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_
@@ -74,7 +74,7 @@ private import gtkD.glib.Str;
  */
 public static string errorGetMessage(GQuark domain, int code)
 {
-	// gchar* gst_error_get_message (GQuark domain,  gint code);
-	return Str.toString(gst_error_get_message(domain, code));
+    // gchar* gst_error_get_message (GQuark domain,  gint code);
+    return Str.toString(gst_error_get_message(domain, code));
 }
 

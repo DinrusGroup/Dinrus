@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Module
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_module_
@@ -125,155 +125,155 @@ private import gtkD.glib.Str;
  */
 public class Module
 {
-	
-	/** the main Gtk struct */
-	protected GModule* gModule;
-	
-	
-	public GModule* getModuleStruct()
-	{
-		return gModule;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gModule;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GModule* gModule)
-	{
-		if(gModule is null)
-		{
-			this = null;
-			return;
-		}
-		this.gModule = gModule;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Checks if modules are supported on the current platform.
-	 * Returns:%TRUE if modules are supported.
-	 */
-	public static int supported()
-	{
-		// gboolean g_module_supported (void);
-		return g_module_supported();
-	}
-	
-	/**
-	 * A portable way to build the filename of a module. The platform-specific
-	 * prefix and suffix are added to the filename, if needed, and the result is
-	 * added to the directory, using the correct separator character.
-	 * The directory should specify the directory where the module can be found.
-	 * It can be NULL or an empty string to indicate that the module is in a standard
-	 * platform-specific directory, though this is not recommended since the
-	 * wrong module may be found.
-	 * For example, calling g_module_build_path() on a Linux system with a directory
-	 * of /lib and a module_name of "mylibrary" will return
-	 * /lib/libmylibrary.so. On a Windows system, using
-	 * \Windows as the directory it will return
-	 * \Windows\mylibrary.dll.
-	 * Params:
-	 * directory = the directory where the module is. This can be NULL or the empty
-	 * string to indicate that the standard platform-specific directories will be
-	 * used, though that is not recommended.
-	 * moduleName = the name of the module.
-	 * Returns:the complete path of the module, including the standard libraryprefix and suffix. This should be freed when no longer needed.
-	 */
-	public static string buildPath(string directory, string moduleName)
-	{
-		// gchar* g_module_build_path (const gchar *directory,  const gchar *module_name);
-		return Str.toString(g_module_build_path(Str.toStringz(directory), Str.toStringz(moduleName)));
-	}
-	
-	/**
-	 * Opens a module. If the module has already been opened, its reference
-	 * count is incremented.
-	 * First of all g_module_open() tries to open file_name as a module. If
-	 * that fails and file_name has the ".la"-suffix (and is a libtool archive)
-	 * it tries to open the corresponding module. If that fails and it doesn't
-	 * have the proper module suffix for the platform (G_MODULE_SUFFIX), this
-	 * suffix will be appended and the corresponding module will be opended. If
-	 * that fails and file_name doesn't have the ".la"-suffix, this suffix is
-	 * appended and g_module_open() tries to open the corresponding module. If
-	 * eventually that fails as well, NULL is returned.
-	 * Params:
-	 * fileName = the name of the file containing the module, or NULL to obtain
-	 *  a GModule representing the main program itself.
-	 * flags = the flags used for opening the module. This can be the logical
-	 * OR of any of the GModuleFlags.
-	 * Returns:a GModule on success, or NULL on failure.
-	 */
-	public static Module open(string fileName, GModuleFlags flags)
-	{
-		// GModule* g_module_open (const gchar *file_name,  GModuleFlags flags);
-		auto p = g_module_open(Str.toStringz(fileName), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Module(cast(GModule*) p);
-	}
-	
-	/**
-	 * Gets a symbol pointer from a module, such as one exported by G_MODULE_EXPORT.
-	 * Note that a valid symbol can be NULL.
-	 * Params:
-	 * symbolName = the name of the symbol to find.
-	 * symbol = returns the pointer to the symbol value.
-	 * Returns:%TRUE on success.
-	 */
-	public int symbol(string symbolName, void** symbol)
-	{
-		// gboolean g_module_symbol (GModule *module,  const gchar *symbol_name,  gpointer *symbol);
-		return g_module_symbol(gModule, Str.toStringz(symbolName), symbol);
-	}
-	
-	/**
-	 * Gets the filename from a GModule.
-	 * Returns:the filename of the module, or "main" if the module is the mainprogram itself.
-	 */
-	public string name()
-	{
-		// const gchar* g_module_name (GModule *module);
-		return Str.toString(g_module_name(gModule));
-	}
-	
-	/**
-	 * Ensures that a module will never be unloaded.
-	 * Any future g_module_close() calls on the module will be ignored.
-	 */
-	public void makeResident()
-	{
-		// void g_module_make_resident (GModule *module);
-		g_module_make_resident(gModule);
-	}
-	
-	/**
-	 * Closes a module.
-	 * Returns:%TRUE on success.
-	 */
-	public int close()
-	{
-		// gboolean g_module_close (GModule *module);
-		return g_module_close(gModule);
-	}
-	
-	/**
-	 * Gets a string describing the last module error.
-	 * Returns:a string describing the last module error.
-	 */
-	public static string error()
-	{
-		// const gchar* g_module_error (void);
-		return Str.toString(g_module_error());
-	}
+
+    /** the main Gtk struct */
+    protected GModule* gModule;
+
+
+    public GModule* getModuleStruct()
+    {
+        return gModule;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gModule;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GModule* gModule)
+    {
+        if(gModule is null)
+        {
+            this = null;
+            return;
+        }
+        this.gModule = gModule;
+    }
+
+    /**
+     */
+
+    /**
+     * Checks if modules are supported on the current platform.
+     * Returns:%TRUE if modules are supported.
+     */
+    public static int supported()
+    {
+        // gboolean g_module_supported (void);
+        return g_module_supported();
+    }
+
+    /**
+     * A portable way to build the filename of a module. The platform-specific
+     * prefix and suffix are added to the filename, if needed, and the result is
+     * added to the directory, using the correct separator character.
+     * The directory should specify the directory where the module can be found.
+     * It can be NULL or an empty string to indicate that the module is in a standard
+     * platform-specific directory, though this is not recommended since the
+     * wrong module may be found.
+     * For example, calling g_module_build_path() on a Linux system with a directory
+     * of /lib and a module_name of "mylibrary" will return
+     * /lib/libmylibrary.so. On a Windows system, using
+     * \Windows as the directory it will return
+     * \Windows\mylibrary.dll.
+     * Params:
+     * directory = the directory where the module is. This can be NULL or the empty
+     * string to indicate that the standard platform-specific directories will be
+     * used, though that is not recommended.
+     * moduleName = the name of the module.
+     * Returns:the complete path of the module, including the standard libraryprefix and suffix. This should be freed when no longer needed.
+     */
+    public static string buildPath(string directory, string moduleName)
+    {
+        // gchar* g_module_build_path (const gchar *directory,  const gchar *module_name);
+        return Str.toString(g_module_build_path(Str.toStringz(directory), Str.toStringz(moduleName)));
+    }
+
+    /**
+     * Opens a module. If the module has already been opened, its reference
+     * count is incremented.
+     * First of all g_module_open() tries to open file_name as a module. If
+     * that fails and file_name has the ".la"-suffix (and is a libtool archive)
+     * it tries to open the corresponding module. If that fails and it doesn't
+     * have the proper module suffix for the platform (G_MODULE_SUFFIX), this
+     * suffix will be appended and the corresponding module will be opended. If
+     * that fails and file_name doesn't have the ".la"-suffix, this suffix is
+     * appended and g_module_open() tries to open the corresponding module. If
+     * eventually that fails as well, NULL is returned.
+     * Params:
+     * fileName = the name of the file containing the module, or NULL to obtain
+     *  a GModule representing the main program itself.
+     * flags = the flags used for opening the module. This can be the logical
+     * OR of any of the GModuleFlags.
+     * Returns:a GModule on success, or NULL on failure.
+     */
+    public static Module open(string fileName, GModuleFlags flags)
+    {
+        // GModule* g_module_open (const gchar *file_name,  GModuleFlags flags);
+        auto p = g_module_open(Str.toStringz(fileName), flags);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Module(cast(GModule*) p);
+    }
+
+    /**
+     * Gets a symbol pointer from a module, such as one exported by G_MODULE_EXPORT.
+     * Note that a valid symbol can be NULL.
+     * Params:
+     * symbolName = the name of the symbol to find.
+     * symbol = returns the pointer to the symbol value.
+     * Returns:%TRUE on success.
+     */
+    public int symbol(string symbolName, void** symbol)
+    {
+        // gboolean g_module_symbol (GModule *module,  const gchar *symbol_name,  gpointer *symbol);
+        return g_module_symbol(gModule, Str.toStringz(symbolName), symbol);
+    }
+
+    /**
+     * Gets the filename from a GModule.
+     * Returns:the filename of the module, or "main" if the module is the mainprogram itself.
+     */
+    public string name()
+    {
+        // const gchar* g_module_name (GModule *module);
+        return Str.toString(g_module_name(gModule));
+    }
+
+    /**
+     * Ensures that a module will never be unloaded.
+     * Any future g_module_close() calls on the module will be ignored.
+     */
+    public void makeResident()
+    {
+        // void g_module_make_resident (GModule *module);
+        g_module_make_resident(gModule);
+    }
+
+    /**
+     * Closes a module.
+     * Returns:%TRUE on success.
+     */
+    public int close()
+    {
+        // gboolean g_module_close (GModule *module);
+        return g_module_close(gModule);
+    }
+
+    /**
+     * Gets a string describing the last module error.
+     * Returns:a string describing the last module error.
+     */
+    public static string error()
+    {
+        // const gchar* g_module_error (void);
+        return Str.toString(g_module_error());
+    }
 }

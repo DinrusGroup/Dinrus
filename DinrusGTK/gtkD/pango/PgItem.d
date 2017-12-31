@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = pango
  * outFile = PgItem
  * strct   = PangoItem
  * realStrct=
  * ctorStrct=
  * clss    = PgItem
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- pango_item_
@@ -65,36 +65,36 @@ private import gtkD.glib.ConstructionException;
  */
 public class PgItem
 {
-	
-	/** the main Gtk struct */
-	protected PangoItem* pangoItem;
-	
-	
-	public PangoItem* getPgItemStruct()
-	{
-		return pangoItem;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoItem;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (PangoItem* pangoItem)
-	{
-		if(pangoItem is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoItem = pangoItem;
-	}
-	
-	/**
-	 */
+
+    /** the main Gtk struct */
+    protected PangoItem* pangoItem;
+
+
+    public PangoItem* getPgItemStruct()
+    {
+        return pangoItem;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)pangoItem;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (PangoItem* pangoItem)
+    {
+        if(pangoItem is null)
+        {
+            this = null;
+            return;
+        }
+        this.pangoItem = pangoItem;
+    }
+
+    /**
+     */
 }

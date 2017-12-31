@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,7 +33,7 @@
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_async_result_
@@ -126,26 +126,26 @@ private import gtkD.gobject.ObjectG;
  */
 public interface AsyncResultIF
 {
-	
-	
-	public GAsyncResult* getAsyncResultTStruct();
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct();
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the user data from a GAsyncResult.
-	 * Returns: the user data for res.
-	 */
-	public void* getUserData();
-	
-	/**
-	 * Gets the source object from a GAsyncResult.
-	 * Returns: a new reference to the source object for the res, or NULL if there is none.
-	 */
-	public ObjectG getSourceObject();
+
+
+    public GAsyncResult* getAsyncResultTStruct();
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct();
+
+
+    /**
+     */
+
+    /**
+     * Gets the user data from a GAsyncResult.
+     * Returns: the user data for res.
+     */
+    public void* getUserData();
+
+    /**
+     * Gets the source object from a GAsyncResult.
+     * Returns: a new reference to the source object for the res, or NULL if there is none.
+     */
+    public ObjectG getSourceObject();
 }

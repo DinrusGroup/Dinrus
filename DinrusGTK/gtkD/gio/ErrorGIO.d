@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gio-GIOError.html
  * outPack = gio
  * outFile = ErrorGIO
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = ErrorGIO
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_io_error_
@@ -66,19 +66,19 @@ private import gtkD.glib.ConstructionException;
  */
 public class ErrorGIO
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Converts errno.h error codes into GIO error codes.
-	 * Params:
-	 * errNo =  Error number as defined in errno.h.
-	 * Returns: GIOErrorEnum value for the given errno.h error number.
-	 */
-	public static GIOErrorEnum fromErrno(int errNo)
-	{
-		// GIOErrorEnum g_io_error_from_errno (gint err_no);
-		return g_io_error_from_errno(errNo);
-	}
+
+    /**
+     */
+
+    /**
+     * Converts errno.h error codes into GIO error codes.
+     * Params:
+     * errNo =  Error number as defined in errno.h.
+     * Returns: GIOErrorEnum value for the given errno.h error number.
+     */
+    public static GIOErrorEnum fromErrno(int errNo)
+    {
+        // GIOErrorEnum g_io_error_from_errno (gint err_no);
+        return g_io_error_from_errno(errNo);
+    }
 }

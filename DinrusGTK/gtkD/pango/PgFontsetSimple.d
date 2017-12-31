@@ -15,21 +15,21 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = pango
  * outFile = PgFontsetSimple
  * strct   = PangoFontsetSimple
  * realStrct=
  * ctorStrct=
  * clss    = PgFontsetSimple
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -80,82 +80,82 @@ private import gtkD.pango.PgFontset;
  */
 public class PgFontsetSimple : PgFontset
 {
-	
-	/** the main Gtk struct */
-	protected PangoFontsetSimple* pangoFontsetSimple;
-	
-	
-	public PangoFontsetSimple* getPgFontsetSimpleStruct()
-	{
-		return pangoFontsetSimple;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoFontsetSimple;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (PangoFontsetSimple* pangoFontsetSimple)
-	{
-		if(pangoFontsetSimple is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoFontsetSimple);
-		if( ptr !is null )
-		{
-			this = cast(PgFontsetSimple)ptr;
-			return;
-		}
-		super(cast(PangoFontset*)pangoFontsetSimple);
-		this.pangoFontsetSimple = pangoFontsetSimple;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new PangoFontsetSimple for the given language.
-	 * Params:
-	 * language =  a PangoLanguage tag
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (PgLanguage language)
-	{
-		// PangoFontsetSimple * pango_fontset_simple_new (PangoLanguage *language);
-		auto p = pango_fontset_simple_new((language is null) ? null : language.getPgLanguageStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_fontset_simple_new((language is null) ? null : language.getPgLanguageStruct())");
-		}
-		this(cast(PangoFontsetSimple*) p);
-	}
-	
-	/**
-	 * Adds a font to the fontset.
-	 * Params:
-	 * font =  a PangoFont.
-	 */
-	public void append(PgFont font)
-	{
-		// void pango_fontset_simple_append (PangoFontsetSimple *fontset,  PangoFont *font);
-		pango_fontset_simple_append(pangoFontsetSimple, (font is null) ? null : font.getPgFontStruct());
-	}
-	
-	/**
-	 * Returns the number of fonts in the fontset.
-	 * Returns: the size of fontset.
-	 */
-	public int size()
-	{
-		// int pango_fontset_simple_size (PangoFontsetSimple *fontset);
-		return pango_fontset_simple_size(pangoFontsetSimple);
-	}
+
+    /** the main Gtk struct */
+    protected PangoFontsetSimple* pangoFontsetSimple;
+
+
+    public PangoFontsetSimple* getPgFontsetSimpleStruct()
+    {
+        return pangoFontsetSimple;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)pangoFontsetSimple;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (PangoFontsetSimple* pangoFontsetSimple)
+    {
+        if(pangoFontsetSimple is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)pangoFontsetSimple);
+        if( ptr !is null )
+        {
+            this = cast(PgFontsetSimple)ptr;
+            return;
+        }
+        super(cast(PangoFontset*)pangoFontsetSimple);
+        this.pangoFontsetSimple = pangoFontsetSimple;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new PangoFontsetSimple for the given language.
+     * Params:
+     * language =  a PangoLanguage tag
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (PgLanguage language)
+    {
+        // PangoFontsetSimple * pango_fontset_simple_new (PangoLanguage *language);
+        auto p = pango_fontset_simple_new((language is null) ? null : language.getPgLanguageStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by pango_fontset_simple_new((language is null) ? null : language.getPgLanguageStruct())");
+        }
+        this(cast(PangoFontsetSimple*) p);
+    }
+
+    /**
+     * Adds a font to the fontset.
+     * Params:
+     * font =  a PangoFont.
+     */
+    public void append(PgFont font)
+    {
+        // void pango_fontset_simple_append (PangoFontsetSimple *fontset,  PangoFont *font);
+        pango_fontset_simple_append(pangoFontsetSimple, (font is null) ? null : font.getPgFontStruct());
+    }
+
+    /**
+     * Returns the number of fonts in the fontset.
+     * Returns: the size of fontset.
+     */
+    public int size()
+    {
+        // int pango_fontset_simple_size (PangoFontsetSimple *fontset);
+        return pango_fontset_simple_size(pangoFontsetSimple);
+    }
 }

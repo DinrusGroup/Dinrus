@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = pango-Vertical-Text.html
  * outPack = pango
  * outFile = PgVertical
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = PgVertical
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- pango_
@@ -105,83 +105,83 @@ private import gtkD.pango.PgMatrix;
  */
 public class PgVertical
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Finds the gravity that best matches the rotation component
-	 * in a PangoMatrix.
-	 * Since 1.16
-	 * Params:
-	 * matrix =  a PangoMatrix
-	 * Returns: the gravity of matrix, which will never bePANGO_GRAVITY_AUTO, or PANGO_GRAVITY_SOUTH if matrix is NULL
-	 */
-	public static PangoGravity gravityGetForMatrix(PgMatrix matrix)
-	{
-		// PangoGravity pango_gravity_get_for_matrix (const PangoMatrix *matrix);
-		return pango_gravity_get_for_matrix((matrix is null) ? null : matrix.getPgMatrixStruct());
-	}
-	
-	/**
-	 * Based on the script, base gravity, and hint, returns actual gravity
-	 * to use in laying out a single PangoItem.
-	 * If base_gravity is PANGO_GRAVITY_AUTO, it is first replaced with the
-	 * preferred gravity of script. To get the preferred gravity of a script,
-	 * pass PANGO_GRAVITY_AUTO and PANGO_GRAVITY_HINT_STRONG in.
-	 * Since 1.16
-	 * Params:
-	 * script =  PangoScript to query
-	 * baseGravity =  base gravity of the paragraph
-	 * hint =  orientation hint
-	 * Returns: resolved gravity suitable to use for a run of textwith script.
-	 */
-	public static PangoGravity gravityGetForScript(PangoScript script, PangoGravity baseGravity, PangoGravityHint hint)
-	{
-		// PangoGravity pango_gravity_get_for_script (PangoScript script,  PangoGravity base_gravity,  PangoGravityHint hint);
-		return pango_gravity_get_for_script(script, baseGravity, hint);
-	}
-	
-	/**
-	 * Based on the script, East Asian width, base gravity, and hint,
-	 * returns actual gravity to use in laying out a single character
-	 * or PangoItem.
-	 * This function is similar to pango_gravity_get_for_script() except
-	 * that this function makes a distinction between narrow/half-width and
-	 * wide/full-width characters also. Wide/full-width characters always
-	 * stand <emph>upright</emph>, that is, they always take the base gravity,
-	 * whereas narrow/full-width characters are always rotated in vertical
-	 * context.
-	 * If base_gravity is PANGO_GRAVITY_AUTO, it is first replaced with the
-	 * preferred gravity of script.
-	 * Since 1.26
-	 * Params:
-	 * script =  PangoScript to query
-	 * wide =  TRUE for wide characters as returned by g_unichar_iswide()
-	 * baseGravity =  base gravity of the paragraph
-	 * hint =  orientation hint
-	 * Returns: resolved gravity suitable to use for a run of textwith script and wide.
-	 */
-	public static PangoGravity gravityGetForScriptAndWidth(PangoScript script, int wide, PangoGravity baseGravity, PangoGravityHint hint)
-	{
-		// PangoGravity pango_gravity_get_for_script_and_width  (PangoScript script,  gboolean wide,  PangoGravity base_gravity,  PangoGravityHint hint);
-		return pango_gravity_get_for_script_and_width(script, wide, baseGravity, hint);
-	}
-	
-	/**
-	 * Converts a PangoGravity value to its natural rotation in radians.
-	 * gravity should not be PANGO_GRAVITY_AUTO.
-	 * Note that pango_matrix_rotate() takes angle in degrees, not radians.
-	 * So, to call pango_matrix_rotate() with the output of this function
-	 * you should multiply it by (180. / G_PI).
-	 * Since 1.16
-	 * Params:
-	 * gravity =  gravity to query
-	 * Returns: the rotation value corresponding to gravity.
-	 */
-	public static double gravityToRotation(PangoGravity gravity)
-	{
-		// double pango_gravity_to_rotation (PangoGravity gravity);
-		return pango_gravity_to_rotation(gravity);
-	}
+
+    /**
+     */
+
+    /**
+     * Finds the gravity that best matches the rotation component
+     * in a PangoMatrix.
+     * Since 1.16
+     * Params:
+     * matrix =  a PangoMatrix
+     * Returns: the gravity of matrix, which will never bePANGO_GRAVITY_AUTO, or PANGO_GRAVITY_SOUTH if matrix is NULL
+     */
+    public static PangoGravity gravityGetForMatrix(PgMatrix matrix)
+    {
+        // PangoGravity pango_gravity_get_for_matrix (const PangoMatrix *matrix);
+        return pango_gravity_get_for_matrix((matrix is null) ? null : matrix.getPgMatrixStruct());
+    }
+
+    /**
+     * Based on the script, base gravity, and hint, returns actual gravity
+     * to use in laying out a single PangoItem.
+     * If base_gravity is PANGO_GRAVITY_AUTO, it is first replaced with the
+     * preferred gravity of script. To get the preferred gravity of a script,
+     * pass PANGO_GRAVITY_AUTO and PANGO_GRAVITY_HINT_STRONG in.
+     * Since 1.16
+     * Params:
+     * script =  PangoScript to query
+     * baseGravity =  base gravity of the paragraph
+     * hint =  orientation hint
+     * Returns: resolved gravity suitable to use for a run of textwith script.
+     */
+    public static PangoGravity gravityGetForScript(PangoScript script, PangoGravity baseGravity, PangoGravityHint hint)
+    {
+        // PangoGravity pango_gravity_get_for_script (PangoScript script,  PangoGravity base_gravity,  PangoGravityHint hint);
+        return pango_gravity_get_for_script(script, baseGravity, hint);
+    }
+
+    /**
+     * Based on the script, East Asian width, base gravity, and hint,
+     * returns actual gravity to use in laying out a single character
+     * or PangoItem.
+     * This function is similar to pango_gravity_get_for_script() except
+     * that this function makes a distinction between narrow/half-width and
+     * wide/full-width characters also. Wide/full-width characters always
+     * stand <emph>upright</emph>, that is, they always take the base gravity,
+     * whereas narrow/full-width characters are always rotated in vertical
+     * context.
+     * If base_gravity is PANGO_GRAVITY_AUTO, it is first replaced with the
+     * preferred gravity of script.
+     * Since 1.26
+     * Params:
+     * script =  PangoScript to query
+     * wide =  TRUE for wide characters as returned by g_unichar_iswide()
+     * baseGravity =  base gravity of the paragraph
+     * hint =  orientation hint
+     * Returns: resolved gravity suitable to use for a run of textwith script and wide.
+     */
+    public static PangoGravity gravityGetForScriptAndWidth(PangoScript script, int wide, PangoGravity baseGravity, PangoGravityHint hint)
+    {
+        // PangoGravity pango_gravity_get_for_script_and_width  (PangoScript script,  gboolean wide,  PangoGravity base_gravity,  PangoGravityHint hint);
+        return pango_gravity_get_for_script_and_width(script, wide, baseGravity, hint);
+    }
+
+    /**
+     * Converts a PangoGravity value to its natural rotation in radians.
+     * gravity should not be PANGO_GRAVITY_AUTO.
+     * Note that pango_matrix_rotate() takes angle in degrees, not radians.
+     * So, to call pango_matrix_rotate() with the output of this function
+     * you should multiply it by (180. / G_PI).
+     * Since 1.16
+     * Params:
+     * gravity =  gravity to query
+     * Returns: the rotation value corresponding to gravity.
+     */
+    public static double gravityToRotation(PangoGravity gravity)
+    {
+        // double pango_gravity_to_rotation (PangoGravity gravity);
+        return pango_gravity_to_rotation(gravity);
+    }
 }

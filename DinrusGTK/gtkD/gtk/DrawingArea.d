@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = DrawingArea
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_drawing_area_
@@ -118,90 +118,90 @@ private import gtkD.gtk.Widget;
  */
 public class DrawingArea : Widget
 {
-	
-	/** the main Gtk struct */
-	protected GtkDrawingArea* gtkDrawingArea;
-	
-	
-	public GtkDrawingArea* getDrawingAreaStruct()
-	{
-		return gtkDrawingArea;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkDrawingArea;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkDrawingArea* gtkDrawingArea)
-	{
-		if(gtkDrawingArea is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkDrawingArea);
-		if( ptr !is null )
-		{
-			this = cast(DrawingArea)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkDrawingArea);
-		this.gtkDrawingArea = gtkDrawingArea;
-	}
-	
-	/**
-	 * Create a new DrawingArea and sets the SizeRequest
-	 * Params:
-	 *    	width =
-	 *    	height =
-	 */
-	this(int width, int height)
-	{
-		this();
-		setSizeRequest(width, height);
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new drawing area.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_drawing_area_new (void);
-		auto p = gtk_drawing_area_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_drawing_area_new()");
-		}
-		this(cast(GtkDrawingArea*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_drawing_area_size is deprecated and should not be used in newly-written code. Use gtk_widget_set_size_request() instead.
-	 * Sets the size that the drawing area will request
-	 * in response to a "size_request" signal. The
-	 * drawing area may actually be allocated a size
-	 * larger than this depending on how it is packed
-	 * within the enclosing containers.
-	 * Params:
-	 * width = the width to request
-	 * height = the height to request
-	 */
-	public void size(int width, int height)
-	{
-		// void gtk_drawing_area_size (GtkDrawingArea *darea,  gint width,  gint height);
-		gtk_drawing_area_size(gtkDrawingArea, width, height);
-	}
+
+    /** the main Gtk struct */
+    protected GtkDrawingArea* gtkDrawingArea;
+
+
+    public GtkDrawingArea* getDrawingAreaStruct()
+    {
+        return gtkDrawingArea;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkDrawingArea;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkDrawingArea* gtkDrawingArea)
+    {
+        if(gtkDrawingArea is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkDrawingArea);
+        if( ptr !is null )
+        {
+            this = cast(DrawingArea)ptr;
+            return;
+        }
+        super(cast(GtkWidget*)gtkDrawingArea);
+        this.gtkDrawingArea = gtkDrawingArea;
+    }
+
+    /**
+     * Create a new DrawingArea and sets the SizeRequest
+     * Params:
+     *    	width =
+     *    	height =
+     */
+    this(int width, int height)
+    {
+        this();
+        setSizeRequest(width, height);
+    }
+
+
+    /**
+     */
+
+    /**
+     * Creates a new drawing area.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_drawing_area_new (void);
+        auto p = gtk_drawing_area_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_drawing_area_new()");
+        }
+        this(cast(GtkDrawingArea*) p);
+    }
+
+    /**
+     * Warning
+     * gtk_drawing_area_size is deprecated and should not be used in newly-written code. Use gtk_widget_set_size_request() instead.
+     * Sets the size that the drawing area will request
+     * in response to a "size_request" signal. The
+     * drawing area may actually be allocated a size
+     * larger than this depending on how it is packed
+     * within the enclosing containers.
+     * Params:
+     * width = the width to request
+     * height = the height to request
+     */
+    public void size(int width, int height)
+    {
+        // void gtk_drawing_area_size (GtkDrawingArea *darea,  gint width,  gint height);
+        gtk_drawing_area_size(gtkDrawingArea, width, height);
+    }
 }

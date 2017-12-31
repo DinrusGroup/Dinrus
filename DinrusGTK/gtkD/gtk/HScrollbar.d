@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = HScrollbar
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_hscrollbar_
@@ -76,61 +76,61 @@ private import gtkD.gtk.Scrollbar;
  */
 public class HScrollbar : Scrollbar
 {
-	
-	/** the main Gtk struct */
-	protected GtkHScrollbar* gtkHScrollbar;
-	
-	
-	public GtkHScrollbar* getHScrollbarStruct()
-	{
-		return gtkHScrollbar;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkHScrollbar;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkHScrollbar* gtkHScrollbar)
-	{
-		if(gtkHScrollbar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkHScrollbar);
-		if( ptr !is null )
-		{
-			this = cast(HScrollbar)ptr;
-			return;
-		}
-		super(cast(GtkScrollbar*)gtkHScrollbar);
-		this.gtkHScrollbar = gtkHScrollbar;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new horizontal scrollbar.
-	 * Params:
-	 * adjustment =  the GtkAdjustment to use, or NULL to create a new adjustment
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (Adjustment adjustment)
-	{
-		// GtkWidget* gtk_hscrollbar_new (GtkAdjustment *adjustment);
-		auto p = gtk_hscrollbar_new((adjustment is null) ? null : adjustment.getAdjustmentStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_hscrollbar_new((adjustment is null) ? null : adjustment.getAdjustmentStruct())");
-		}
-		this(cast(GtkHScrollbar*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkHScrollbar* gtkHScrollbar;
+
+
+    public GtkHScrollbar* getHScrollbarStruct()
+    {
+        return gtkHScrollbar;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkHScrollbar;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkHScrollbar* gtkHScrollbar)
+    {
+        if(gtkHScrollbar is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkHScrollbar);
+        if( ptr !is null )
+        {
+            this = cast(HScrollbar)ptr;
+            return;
+        }
+        super(cast(GtkScrollbar*)gtkHScrollbar);
+        this.gtkHScrollbar = gtkHScrollbar;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new horizontal scrollbar.
+     * Params:
+     * adjustment =  the GtkAdjustment to use, or NULL to create a new adjustment
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (Adjustment adjustment)
+    {
+        // GtkWidget* gtk_hscrollbar_new (GtkAdjustment *adjustment);
+        auto p = gtk_hscrollbar_new((adjustment is null) ? null : adjustment.getAdjustmentStruct());
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_hscrollbar_new((adjustment is null) ? null : adjustment.getAdjustmentStruct())");
+        }
+        this(cast(GtkHScrollbar*) p);
+    }
 }

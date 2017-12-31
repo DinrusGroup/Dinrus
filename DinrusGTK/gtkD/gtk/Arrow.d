@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Arrow
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_arrow_
@@ -77,75 +77,75 @@ private import gtkD.gtk.Misc;
  */
 public class Arrow : Misc
 {
-	
-	/** the main Gtk struct */
-	protected GtkArrow* gtkArrow;
-	
-	
-	public GtkArrow* getArrowStruct()
-	{
-		return gtkArrow;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkArrow;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkArrow* gtkArrow)
-	{
-		if(gtkArrow is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkArrow);
-		if( ptr !is null )
-		{
-			this = cast(Arrow)ptr;
-			return;
-		}
-		super(cast(GtkMisc*)gtkArrow);
-		this.gtkArrow = gtkArrow;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new arrow widget.
-	 * Params:
-	 * arrowType = a valid GtkArrowType.
-	 * shadowType = a valid GtkShadowType.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GtkArrowType arrowType, GtkShadowType shadowType)
-	{
-		// GtkWidget* gtk_arrow_new (GtkArrowType arrow_type,  GtkShadowType shadow_type);
-		auto p = gtk_arrow_new(arrowType, shadowType);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_arrow_new(arrowType, shadowType)");
-		}
-		this(cast(GtkArrow*) p);
-	}
-	
-	/**
-	 * Sets the direction and style of the GtkArrow, arrow.
-	 * Params:
-	 * arrow = a widget of type GtkArrow.
-	 * arrowType = a valid GtkArrowType.
-	 * shadowType = a valid GtkShadowType.
-	 */
-	public void set(GtkArrowType arrowType, GtkShadowType shadowType)
-	{
-		// void gtk_arrow_set (GtkArrow *arrow,  GtkArrowType arrow_type,  GtkShadowType shadow_type);
-		gtk_arrow_set(gtkArrow, arrowType, shadowType);
-	}
+
+    /** the main Gtk struct */
+    protected GtkArrow* gtkArrow;
+
+
+    public GtkArrow* getArrowStruct()
+    {
+        return gtkArrow;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkArrow;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkArrow* gtkArrow)
+    {
+        if(gtkArrow is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkArrow);
+        if( ptr !is null )
+        {
+            this = cast(Arrow)ptr;
+            return;
+        }
+        super(cast(GtkMisc*)gtkArrow);
+        this.gtkArrow = gtkArrow;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new arrow widget.
+     * Params:
+     * arrowType = a valid GtkArrowType.
+     * shadowType = a valid GtkShadowType.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GtkArrowType arrowType, GtkShadowType shadowType)
+    {
+        // GtkWidget* gtk_arrow_new (GtkArrowType arrow_type,  GtkShadowType shadow_type);
+        auto p = gtk_arrow_new(arrowType, shadowType);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_arrow_new(arrowType, shadowType)");
+        }
+        this(cast(GtkArrow*) p);
+    }
+
+    /**
+     * Sets the direction and style of the GtkArrow, arrow.
+     * Params:
+     * arrow = a widget of type GtkArrow.
+     * arrowType = a valid GtkArrowType.
+     * shadowType = a valid GtkShadowType.
+     */
+    public void set(GtkArrowType arrowType, GtkShadowType shadowType)
+    {
+        // void gtk_arrow_set (GtkArrow *arrow,  GtkArrowType arrow_type,  GtkShadowType shadow_type);
+        gtk_arrow_set(gtkArrow, arrowType, shadowType);
+    }
 }

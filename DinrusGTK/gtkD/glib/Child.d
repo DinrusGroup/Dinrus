@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = Child
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Child
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_child_
@@ -130,99 +130,99 @@ private import gtkD.glib.Source;
  */
 public class Child
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new child_watch source.
-	 * The source will not initially be associated with any GMainContext
-	 * and must be added to one with g_source_attach() before it will be
-	 * executed.
-	 * Note that child watch sources can only be used in conjunction with
-	 * g_spawn... when the G_SPAWN_DO_NOT_REAP_CHILD
-	 * flag is used.
-	 * Note that on platforms where GPid must be explicitly closed
-	 * (see g_spawn_close_pid()) pid must not be closed while the
-	 * source is still active. Typically, you will want to call
-	 * g_spawn_close_pid() in the callback function for the source.
-	 * Note further that using g_child_watch_source_new() is not
-	 * compatible with calling waitpid(-1) in
-	 * the application. Calling waitpid() for individual pids will
-	 * still work fine.
-	 * Since 2.4
-	 * Params:
-	 * pid =  process to watch. On POSIX the pid of a child process. On
-	 * Windows a handle for a process (which doesn't have to be a child).
-	 * Returns: the newly-created child watch source
-	 */
-	public static Source watchSourceNew(GPid pid)
-	{
-		// GSource * g_child_watch_source_new (GPid pid);
-		auto p = g_child_watch_source_new(pid);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
-	
-	/**
-	 * Sets a function to be called when the child indicated by pid
-	 * exits, at a default priority, G_PRIORITY_DEFAULT.
-	 * If you obtain pid from g_spawn_async() or g_spawn_async_with_pipes()
-	 * you will need to pass G_SPAWN_DO_NOT_REAP_CHILD as flag to
-	 * the spawn function for the child watching to work.
-	 * Note that on platforms where GPid must be explicitly closed
-	 * (see g_spawn_close_pid()) pid must not be closed while the
-	 * source is still active. Typically, you will want to call
-	 * g_spawn_close_pid() in the callback function for the source.
-	 * GLib supports only a single callback per process id.
-	 * This internally creates a main loop source using
-	 * g_child_watch_source_new() and attaches it to the main loop context
-	 * using g_source_attach(). You can do these steps manually if you
-	 * need greater control.
-	 * Since 2.4
-	 * Params:
-	 * pid =  process id to watch. On POSIX the pid of a child process. On
-	 * Windows a handle for a process (which doesn't have to be a child).
-	 * data =  data to pass to function
-	 * Returns: the ID (greater than 0) of the event source.
-	 */
-	public static uint watchAdd(GPid pid, GChildWatchFunc funct, void* data)
-	{
-		// guint g_child_watch_add (GPid pid,  GChildWatchFunc function,  gpointer data);
-		return g_child_watch_add(pid, funct, data);
-	}
-	
-	/**
-	 * Sets a function to be called when the child indicated by pid
-	 * exits, at the priority priority.
-	 * If you obtain pid from g_spawn_async() or g_spawn_async_with_pipes()
-	 * you will need to pass G_SPAWN_DO_NOT_REAP_CHILD as flag to
-	 * the spawn function for the child watching to work.
-	 * Note that on platforms where GPid must be explicitly closed
-	 * (see g_spawn_close_pid()) pid must not be closed while the
-	 * source is still active. Typically, you will want to call
-	 * g_spawn_close_pid() in the callback function for the source.
-	 * GLib supports only a single callback per process id.
-	 * This internally creates a main loop source using
-	 * g_child_watch_source_new() and attaches it to the main loop context
-	 * using g_source_attach(). You can do these steps manually if you
-	 * need greater control.
-	 * Since 2.4
-	 * Params:
-	 * priority =  the priority of the idle source. Typically this will be in the
-	 *  range between G_PRIORITY_DEFAULT_IDLE and G_PRIORITY_HIGH_IDLE.
-	 * pid =  process to watch. On POSIX the pid of a child process. On
-	 * Windows a handle for a process (which doesn't have to be a child).
-	 * data =  data to pass to function
-	 * notify =  function to call when the idle is removed, or NULL
-	 * Returns: the ID (greater than 0) of the event source.
-	 */
-	public static uint watchAddFull(int priority, GPid pid, GChildWatchFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_child_watch_add_full (gint priority,  GPid pid,  GChildWatchFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_child_watch_add_full(priority, pid, funct, data, notify);
-	}
+
+    /**
+     */
+
+    /**
+     * Creates a new child_watch source.
+     * The source will not initially be associated with any GMainContext
+     * and must be added to one with g_source_attach() before it will be
+     * executed.
+     * Note that child watch sources can only be used in conjunction with
+     * g_spawn... when the G_SPAWN_DO_NOT_REAP_CHILD
+     * flag is used.
+     * Note that on platforms where GPid must be explicitly closed
+     * (see g_spawn_close_pid()) pid must not be closed while the
+     * source is still active. Typically, you will want to call
+     * g_spawn_close_pid() in the callback function for the source.
+     * Note further that using g_child_watch_source_new() is not
+     * compatible with calling waitpid(-1) in
+     * the application. Calling waitpid() for individual pids will
+     * still work fine.
+     * Since 2.4
+     * Params:
+     * pid =  process to watch. On POSIX the pid of a child process. On
+     * Windows a handle for a process (which doesn't have to be a child).
+     * Returns: the newly-created child watch source
+     */
+    public static Source watchSourceNew(GPid pid)
+    {
+        // GSource * g_child_watch_source_new (GPid pid);
+        auto p = g_child_watch_source_new(pid);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Source(cast(GSource*) p);
+    }
+
+    /**
+     * Sets a function to be called when the child indicated by pid
+     * exits, at a default priority, G_PRIORITY_DEFAULT.
+     * If you obtain pid from g_spawn_async() or g_spawn_async_with_pipes()
+     * you will need to pass G_SPAWN_DO_NOT_REAP_CHILD as flag to
+     * the spawn function for the child watching to work.
+     * Note that on platforms where GPid must be explicitly closed
+     * (see g_spawn_close_pid()) pid must not be closed while the
+     * source is still active. Typically, you will want to call
+     * g_spawn_close_pid() in the callback function for the source.
+     * GLib supports only a single callback per process id.
+     * This internally creates a main loop source using
+     * g_child_watch_source_new() and attaches it to the main loop context
+     * using g_source_attach(). You can do these steps manually if you
+     * need greater control.
+     * Since 2.4
+     * Params:
+     * pid =  process id to watch. On POSIX the pid of a child process. On
+     * Windows a handle for a process (which doesn't have to be a child).
+     * data =  data to pass to function
+     * Returns: the ID (greater than 0) of the event source.
+     */
+    public static uint watchAdd(GPid pid, GChildWatchFunc funct, void* data)
+    {
+        // guint g_child_watch_add (GPid pid,  GChildWatchFunc function,  gpointer data);
+        return g_child_watch_add(pid, funct, data);
+    }
+
+    /**
+     * Sets a function to be called when the child indicated by pid
+     * exits, at the priority priority.
+     * If you obtain pid from g_spawn_async() or g_spawn_async_with_pipes()
+     * you will need to pass G_SPAWN_DO_NOT_REAP_CHILD as flag to
+     * the spawn function for the child watching to work.
+     * Note that on platforms where GPid must be explicitly closed
+     * (see g_spawn_close_pid()) pid must not be closed while the
+     * source is still active. Typically, you will want to call
+     * g_spawn_close_pid() in the callback function for the source.
+     * GLib supports only a single callback per process id.
+     * This internally creates a main loop source using
+     * g_child_watch_source_new() and attaches it to the main loop context
+     * using g_source_attach(). You can do these steps manually if you
+     * need greater control.
+     * Since 2.4
+     * Params:
+     * priority =  the priority of the idle source. Typically this will be in the
+     *  range between G_PRIORITY_DEFAULT_IDLE and G_PRIORITY_HIGH_IDLE.
+     * pid =  process to watch. On POSIX the pid of a child process. On
+     * Windows a handle for a process (which doesn't have to be a child).
+     * data =  data to pass to function
+     * notify =  function to call when the idle is removed, or NULL
+     * Returns: the ID (greater than 0) of the event source.
+     */
+    public static uint watchAddFull(int priority, GPid pid, GChildWatchFunc funct, void* data, GDestroyNotify notify)
+    {
+        // guint g_child_watch_add_full (gint priority,  GPid pid,  GChildWatchFunc function,  gpointer data,  GDestroyNotify notify);
+        return g_child_watch_add_full(priority, pid, funct, data, notify);
+    }
 }

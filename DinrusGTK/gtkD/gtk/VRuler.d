@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = VRuler
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_vruler_
@@ -81,59 +81,59 @@ private import gtkD.gtk.Ruler;
  */
 public class VRuler : Ruler
 {
-	
-	/** the main Gtk struct */
-	protected GtkVRuler* gtkVRuler;
-	
-	
-	public GtkVRuler* getVRulerStruct()
-	{
-		return gtkVRuler;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVRuler;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkVRuler* gtkVRuler)
-	{
-		if(gtkVRuler is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVRuler);
-		if( ptr !is null )
-		{
-			this = cast(VRuler)ptr;
-			return;
-		}
-		super(cast(GtkRuler*)gtkVRuler);
-		this.gtkVRuler = gtkVRuler;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new vertical ruler
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_vruler_new (void);
-		auto p = gtk_vruler_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_vruler_new()");
-		}
-		this(cast(GtkVRuler*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkVRuler* gtkVRuler;
+
+
+    public GtkVRuler* getVRulerStruct()
+    {
+        return gtkVRuler;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkVRuler;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkVRuler* gtkVRuler)
+    {
+        if(gtkVRuler is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkVRuler);
+        if( ptr !is null )
+        {
+            this = cast(VRuler)ptr;
+            return;
+        }
+        super(cast(GtkRuler*)gtkVRuler);
+        this.gtkVRuler = gtkVRuler;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new vertical ruler
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_vruler_new (void);
+        auto p = gtk_vruler_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_vruler_new()");
+        }
+        this(cast(GtkVRuler*) p);
+    }
 }

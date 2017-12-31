@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -116,11 +116,11 @@ public alias GdkAtom GdkTarget;
  */
 public enum GdkGrabStatus
 {
-	SUCCESS = 0,
-	ALREADY_GRABBED = 1,
-	INVALID_TIME = 2,
-	NOT_VIEWABLE = 3,
-	FROZEN = 4
+    SUCCESS = 0,
+    ALREADY_GRABBED = 1,
+    INVALID_TIME = 2,
+    NOT_VIEWABLE = 3,
+    FROZEN = 4
 }
 alias GdkGrabStatus GrabStatus;
 
@@ -136,8 +136,8 @@ alias GdkGrabStatus GrabStatus;
  */
 public enum GdkFillRule
 {
-	EVEN_ODD_RULE,
-	WINDING_RULE
+    EVEN_ODD_RULE,
+    WINDING_RULE
 }
 alias GdkFillRule FillRule;
 
@@ -152,9 +152,9 @@ alias GdkFillRule FillRule;
  */
 public enum GdkOverlapType
 {
-	RECTANGLE_IN,
-	RECTANGLE_OUT,
-	RECTANGLE_PART
+    RECTANGLE_IN,
+    RECTANGLE_OUT,
+    RECTANGLE_PART
 }
 alias GdkOverlapType OverlapType;
 
@@ -200,24 +200,24 @@ alias GdkOverlapType OverlapType;
  */
 public enum GdkGCValuesMask
 {
-	FOREGROUND = 1 << 0,
-	BACKGROUND = 1 << 1,
-	FONT = 1 << 2,
-	FUNCTION = 1 << 3,
-	FILL = 1 << 4,
-	TILE = 1 << 5,
-	STIPPLE = 1 << 6,
-	CLIP_MASK = 1 << 7,
-	SUBWINDOW = 1 << 8,
-	TS_X_ORIGIN = 1 << 9,
-	TS_Y_ORIGIN = 1 << 10,
-	CLIP_X_ORIGIN = 1 << 11,
-	CLIP_Y_ORIGIN = 1 << 12,
-	EXPOSURES = 1 << 13,
-	LINE_WIDTH = 1 << 14,
-	LINE_STYLE = 1 << 15,
-	CAP_STYLE = 1 << 16,
-	JOIN_STYLE = 1 << 17
+    FOREGROUND = 1 << 0,
+    BACKGROUND = 1 << 1,
+    FONT = 1 << 2,
+    FUNCTION = 1 << 3,
+    FILL = 1 << 4,
+    TILE = 1 << 5,
+    STIPPLE = 1 << 6,
+    CLIP_MASK = 1 << 7,
+    SUBWINDOW = 1 << 8,
+    TS_X_ORIGIN = 1 << 9,
+    TS_Y_ORIGIN = 1 << 10,
+    CLIP_X_ORIGIN = 1 << 11,
+    CLIP_Y_ORIGIN = 1 << 12,
+    EXPOSURES = 1 << 13,
+    LINE_WIDTH = 1 << 14,
+    LINE_STYLE = 1 << 15,
+    CAP_STYLE = 1 << 16,
+    JOIN_STYLE = 1 << 17
 }
 alias GdkGCValuesMask GCValuesMask;
 
@@ -263,22 +263,22 @@ alias GdkGCValuesMask GCValuesMask;
  */
 public enum GdkFunction
 {
-	COPY,
-	INVERT,
-	XOR,
-	CLEAR,
-	AND,
-	AND_REVERSE,
-	AND_INVERT,
-	NOOP,
-	OR,
-	EQUIV,
-	OR_REVERSE,
-	COPY_INVERT,
-	OR_INVERT,
-	NAND,
-	NOR,
-	SET
+    COPY,
+    INVERT,
+    XOR,
+    CLEAR,
+    AND,
+    AND_REVERSE,
+    AND_INVERT,
+    NOOP,
+    OR,
+    EQUIV,
+    OR_REVERSE,
+    COPY_INVERT,
+    OR_INVERT,
+    NAND,
+    NOR,
+    SET
 }
 alias GdkFunction Funct;
 
@@ -293,10 +293,10 @@ alias GdkFunction Funct;
  */
 public enum GdkFill
 {
-	SOLID,
-	TILED,
-	STIPPLED,
-	OPAQUE_STIPPLED
+    SOLID,
+    TILED,
+    STIPPLED,
+    OPAQUE_STIPPLED
 }
 alias GdkFill Fill;
 
@@ -310,8 +310,8 @@ alias GdkFill Fill;
  */
 public enum GdkSubwindowMode
 {
-	CLIP_BY_CHILDREN = 0,
-	INCLUDE_INFERIORS = 1
+    CLIP_BY_CHILDREN = 0,
+    INCLUDE_INFERIORS = 1
 }
 alias GdkSubwindowMode SubwindowMode;
 
@@ -326,9 +326,9 @@ alias GdkSubwindowMode SubwindowMode;
  */
 public enum GdkLineStyle
 {
-	SOLID,
-	ON_OFF_DASH,
-	DOUBLE_DASH
+    SOLID,
+    ON_OFF_DASH,
+    DOUBLE_DASH
 }
 alias GdkLineStyle LineStyle;
 
@@ -339,10 +339,10 @@ alias GdkLineStyle LineStyle;
  */
 public enum GdkCapStyle
 {
-	NOT_LAST,
-	BUTT,
-	ROUND,
-	PROJECTING
+    NOT_LAST,
+    BUTT,
+    ROUND,
+    PROJECTING
 }
 alias GdkCapStyle CapStyle;
 
@@ -357,9 +357,9 @@ alias GdkCapStyle CapStyle;
  */
 public enum GdkJoinStyle
 {
-	MITER,
-	ROUND,
-	BEVEL
+    MITER,
+    ROUND,
+    BEVEL
 }
 alias GdkJoinStyle JoinStyle;
 
@@ -378,9 +378,9 @@ alias GdkJoinStyle JoinStyle;
  */
 public enum GdkRgbDither
 {
-	NONE,
-	NORMAL,
-	MAX
+    NONE,
+    NORMAL,
+    MAX
 }
 alias GdkRgbDither RgbDither;
 
@@ -400,9 +400,9 @@ alias GdkRgbDither RgbDither;
  */
 public enum GdkImageType
 {
-	NORMAL,
-	SHARED,
-	FASTEST
+    NORMAL,
+    SHARED,
+    FASTEST
 }
 alias GdkImageType ImageType;
 
@@ -426,17 +426,17 @@ alias GdkImageType ImageType;
  */
 public enum GdkPixbufError
 {
-	/+* image data hosed +/
-	GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
-	/+* no mem to load image +/
-	GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY,
-	/+* bad option passed to save routine +/
-	GDK_PIXBUF_ERROR_BAD_OPTION,
-	/+* unsupported image type (sort of an ENOSYS) +/
-	GDK_PIXBUF_ERROR_UNKNOWN_TYPE,
-	/+* unsupported operation (load, save) for image type +/
-	GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION,
-	GDK_PIXBUF_ERROR_FAILED
+    /+* image data hosed +/
+    GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
+    /+* no mem to load image +/
+    GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY,
+    /+* bad option passed to save routine +/
+    GDK_PIXBUF_ERROR_BAD_OPTION,
+    /+* unsupported image type (sort of an ENOSYS) +/
+    GDK_PIXBUF_ERROR_UNKNOWN_TYPE,
+    /+* unsupported operation (load, save) for image type +/
+    GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION,
+    GDK_PIXBUF_ERROR_FAILED
 }
 alias GdkPixbufError PixbufError;
 
@@ -444,7 +444,7 @@ alias GdkPixbufError PixbufError;
  */
 public enum GdkColorspace
 {
-	RGB
+RGB
 }
 alias GdkColorspace Colorspace;
 
@@ -452,8 +452,8 @@ alias GdkColorspace Colorspace;
  */
 public enum GdkPixbufAlphaMode
 {
-	BILEVEL,
-	FULL
+BILEVEL,
+FULL
 }
 alias GdkPixbufAlphaMode PixbufAlphaMode;
 
@@ -461,10 +461,10 @@ alias GdkPixbufAlphaMode PixbufAlphaMode;
  */
 public enum GdkInterpType
 {
-	NEAREST,
-	TILES,
-	BILINEAR,
-	HYPER
+NEAREST,
+TILES,
+BILINEAR,
+HYPER
 }
 alias GdkInterpType InterpType;
 
@@ -482,10 +482,10 @@ alias GdkInterpType InterpType;
  */
 public enum GdkPixbufRotation
 {
-	ROTATE_NONE = 0,
-	ROTATE_COUNTERCLOCKWISE = 90,
-	ROTATE_UPSIDEDOWN = 180,
-	ROTATE_CLOCKWISE = 270
+ROTATE_NONE = 0,
+ROTATE_COUNTERCLOCKWISE = 90,
+ROTATE_UPSIDEDOWN = 180,
+ROTATE_CLOCKWISE = 270
 }
 alias GdkPixbufRotation PixbufRotation;
 
@@ -500,12 +500,12 @@ alias GdkPixbufRotation PixbufRotation;
  */
 public enum GdkVisualType
 {
-	STATIC_GRAY,
-	GRAYSCALE,
-	STATIC_COLOR,
-	PSEUDO_COLOR,
-	TRUE_COLOR,
-	DIRECT_COLOR
+STATIC_GRAY,
+GRAYSCALE,
+STATIC_COLOR,
+PSEUDO_COLOR,
+TRUE_COLOR,
+DIRECT_COLOR
 }
 alias GdkVisualType VisualType;
 
@@ -517,8 +517,8 @@ alias GdkVisualType VisualType;
  */
 public enum GdkByteOrder
 {
-	LSB_FIRST,
-	MSB_FIRST
+LSB_FIRST,
+MSB_FIRST
 }
 alias GdkByteOrder ByteOrder;
 
@@ -534,8 +534,8 @@ alias GdkByteOrder ByteOrder;
  */
 public enum GdkFontType
 {
-	FONT,
-	FONTSET
+FONT,
+FONTSET
 }
 alias GdkFontType FontType;
 
@@ -627,86 +627,86 @@ alias GdkFontType FontType;
  */
 public enum GdkCursorType
 {
-	X_CURSOR = 0,
-	ARROW = 2,
-	BASED_ARROW_DOWN = 4,
-	BASED_ARROW_UP = 6,
-	BOAT = 8,
-	BOGOSITY = 10,
-	BOTTOM_LEFT_CORNER = 12,
-	BOTTOM_RIGHT_CORNER = 14,
-	BOTTOM_SIDE = 16,
-	BOTTOM_TEE = 18,
-	BOX_SPIRAL = 20,
-	CENTER_PTR = 22,
-	CIRCLE = 24,
-	CLOCK = 26,
-	COFFEE_MUG = 28,
-	CROSS = 30,
-	CROSS_REVERSE = 32,
-	CROSSHAIR = 34,
-	DIAMOND_CROSS = 36,
-	DOT = 38,
-	DOTBOX = 40,
-	DOUBLE_ARROW = 42,
-	DRAFT_LARGE = 44,
-	DRAFT_SMALL = 46,
-	DRAPED_BOX = 48,
-	EXCHANGE = 50,
-	FLEUR = 52,
-	GOBBLER = 54,
-	GUMBY = 56,
-	HAND1 = 58,
-	HAND2 = 60,
-	HEART = 62,
-	ICON = 64,
-	IRON_CROSS = 66,
-	LEFT_PTR = 68,
-	LEFT_SIDE = 70,
-	LEFT_TEE = 72,
-	LEFTBUTTON = 74,
-	LL_ANGLE = 76,
-	LR_ANGLE = 78,
-	MAN = 80,
-	MIDDLEBUTTON = 82,
-	MOUSE = 84,
-	PENCIL = 86,
-	PIRATE = 88,
-	PLUS = 90,
-	QUESTION_ARROW = 92,
-	RIGHT_PTR = 94,
-	RIGHT_SIDE = 96,
-	RIGHT_TEE = 98,
-	RIGHTBUTTON = 100,
-	RTL_LOGO = 102,
-	SAILBOAT = 104,
-	SB_DOWN_ARROW = 106,
-	SB_H_DOUBLE_ARROW = 108,
-	SB_LEFT_ARROW = 110,
-	SB_RIGHT_ARROW = 112,
-	SB_UP_ARROW = 114,
-	SB_V_DOUBLE_ARROW = 116,
-	SHUTTLE = 118,
-	SIZING = 120,
-	SPIDER = 122,
-	SPRAYCAN = 124,
-	STAR = 126,
-	TARGET = 128,
-	TCROSS = 130,
-	TOP_LEFT_ARROW = 132,
-	TOP_LEFT_CORNER = 134,
-	TOP_RIGHT_CORNER = 136,
-	TOP_SIDE = 138,
-	TOP_TEE = 140,
-	TREK = 142,
-	UL_ANGLE = 144,
-	UMBRELLA = 146,
-	UR_ANGLE = 148,
-	WATCH = 150,
-	XTERM = 152,
-	LAST_CURSOR,
-	BLANK_CURSOR = -2,
-	CURSOR_IS_PIXMAP = -1
+X_CURSOR = 0,
+ARROW = 2,
+BASED_ARROW_DOWN = 4,
+BASED_ARROW_UP = 6,
+BOAT = 8,
+BOGOSITY = 10,
+BOTTOM_LEFT_CORNER = 12,
+BOTTOM_RIGHT_CORNER = 14,
+BOTTOM_SIDE = 16,
+BOTTOM_TEE = 18,
+BOX_SPIRAL = 20,
+CENTER_PTR = 22,
+CIRCLE = 24,
+CLOCK = 26,
+COFFEE_MUG = 28,
+CROSS = 30,
+CROSS_REVERSE = 32,
+CROSSHAIR = 34,
+DIAMOND_CROSS = 36,
+DOT = 38,
+DOTBOX = 40,
+DOUBLE_ARROW = 42,
+DRAFT_LARGE = 44,
+DRAFT_SMALL = 46,
+DRAPED_BOX = 48,
+EXCHANGE = 50,
+FLEUR = 52,
+GOBBLER = 54,
+GUMBY = 56,
+HAND1 = 58,
+HAND2 = 60,
+HEART = 62,
+ICON = 64,
+IRON_CROSS = 66,
+LEFT_PTR = 68,
+LEFT_SIDE = 70,
+LEFT_TEE = 72,
+LEFTBUTTON = 74,
+LL_ANGLE = 76,
+LR_ANGLE = 78,
+MAN = 80,
+MIDDLEBUTTON = 82,
+MOUSE = 84,
+PENCIL = 86,
+PIRATE = 88,
+PLUS = 90,
+QUESTION_ARROW = 92,
+RIGHT_PTR = 94,
+RIGHT_SIDE = 96,
+RIGHT_TEE = 98,
+RIGHTBUTTON = 100,
+RTL_LOGO = 102,
+SAILBOAT = 104,
+SB_DOWN_ARROW = 106,
+SB_H_DOUBLE_ARROW = 108,
+SB_LEFT_ARROW = 110,
+SB_RIGHT_ARROW = 112,
+SB_UP_ARROW = 114,
+SB_V_DOUBLE_ARROW = 116,
+SHUTTLE = 118,
+SIZING = 120,
+SPIDER = 122,
+SPRAYCAN = 124,
+STAR = 126,
+TARGET = 128,
+TCROSS = 130,
+TOP_LEFT_ARROW = 132,
+TOP_LEFT_CORNER = 134,
+TOP_RIGHT_CORNER = 136,
+TOP_SIDE = 138,
+TOP_TEE = 140,
+TREK = 142,
+UL_ANGLE = 144,
+UMBRELLA = 146,
+UR_ANGLE = 148,
+WATCH = 150,
+XTERM = 152,
+LAST_CURSOR,
+BLANK_CURSOR = -2,
+CURSOR_IS_PIXMAP = -1
 }
 alias GdkCursorType CursorType;
 
@@ -729,13 +729,13 @@ alias GdkCursorType CursorType;
  */
 public enum GdkWindowType
 {
-	ROOT,
-	TOPLEVEL,
-	CHILD,
-	DIALOG,
-	TEMP,
-	FOREIGN,
-	OFFSCREEN
+ROOT,
+TOPLEVEL,
+CHILD,
+DIALOG,
+TEMP,
+FOREIGN,
+OFFSCREEN
 }
 alias GdkWindowType WindowType;
 
@@ -750,8 +750,8 @@ alias GdkWindowType WindowType;
  */
 public enum GdkWindowClass
 {
-	INPUT_OUTPUT,
-	INPUT_ONLY
+INPUT_OUTPUT,
+INPUT_ONLY
 }
 alias GdkWindowClass WindowClass;
 
@@ -785,15 +785,15 @@ alias GdkWindowClass WindowClass;
  */
 public enum GdkWindowHints
 {
-	HINT_POS = 1 << 0,
-	HINT_MIN_SIZE = 1 << 1,
-	HINT_MAX_SIZE = 1 << 2,
-	HINT_BASE_SIZE = 1 << 3,
-	HINT_ASPECT = 1 << 4,
-	HINT_RESIZE_INC = 1 << 5,
-	HINT_WIN_GRAVITY = 1 << 6,
-	HINT_USER_POS = 1 << 7,
-	HINT_USER_SIZE = 1 << 8
+HINT_POS = 1 << 0,
+HINT_MIN_SIZE = 1 << 1,
+HINT_MAX_SIZE = 1 << 2,
+HINT_BASE_SIZE = 1 << 3,
+HINT_ASPECT = 1 << 4,
+HINT_RESIZE_INC = 1 << 5,
+HINT_WIN_GRAVITY = 1 << 6,
+HINT_USER_POS = 1 << 7,
+HINT_USER_SIZE = 1 << 8
 }
 alias GdkWindowHints WindowHints;
 
@@ -826,16 +826,16 @@ alias GdkWindowHints WindowHints;
  */
 public enum GdkGravity
 {
-	NORTH_WEST = 1,
-	NORTH,
-	NORTH_EAST,
-	WEST,
-	CENTER,
-	EAST,
-	SOUTH_WEST,
-	SOUTH,
-	SOUTH_EAST,
-	STATIC
+NORTH_WEST = 1,
+NORTH,
+NORTH_EAST,
+WEST,
+CENTER,
+EAST,
+SOUTH_WEST,
+SOUTH,
+SOUTH_EAST,
+STATIC
 }
 alias GdkGravity Gravity;
 
@@ -860,14 +860,14 @@ alias GdkGravity Gravity;
  */
 public enum GdkWindowEdge
 {
-	NORTH_WEST,
-	NORTH,
-	NORTH_EAST,
-	WEST,
-	EAST,
-	SOUTH_WEST,
-	SOUTH,
-	SOUTH_EAST
+NORTH_WEST,
+NORTH,
+NORTH_EAST,
+WEST,
+EAST,
+SOUTH_WEST,
+SOUTH,
+SOUTH_EAST
 }
 alias GdkWindowEdge WindowEdge;
 
@@ -888,20 +888,20 @@ alias GdkWindowEdge WindowEdge;
  */
 public enum GdkWindowTypeHint
 {
-	NORMAL,
-	DIALOG,
-	MENU, /+* Torn off menu +/
-	TOOLBAR,
-	SPLASHSCREEN,
-	UTILITY,
-	DOCK,
-	DESKTOP,
-	DROPDOWN_MENU, /+* A drop down menu (from a menubar) +/
-	POPUP_MENU, /+* A popup menu (from right-click) +/
-	TOOLTIP,
-	NOTIFICATION,
-	COMBO,
-	DND
+NORMAL,
+DIALOG,
+MENU, /+* Torn off menu +/
+TOOLBAR,
+SPLASHSCREEN,
+UTILITY,
+DOCK,
+DESKTOP,
+DROPDOWN_MENU, /+* A drop down menu (from a menubar) +/
+    POPUP_MENU, /+* A popup menu (from right-click) +/
+    TOOLTIP,
+    NOTIFICATION,
+    COMBO,
+    DND
 }
 alias GdkWindowTypeHint WindowTypeHint;
 
@@ -933,15 +933,15 @@ alias GdkWindowTypeHint WindowTypeHint;
  */
 public enum GdkWindowAttributesType
 {
-	WA_TITLE = 1 << 1,
-	WA_X = 1 << 2,
-	WA_Y = 1 << 3,
-	WA_CURSOR = 1 << 4,
-	WA_COLORMAP = 1 << 5,
-	WA_VISUAL = 1 << 6,
-	WA_WMCLASS = 1 << 7,
-	WA_NOREDIR = 1 << 8,
-	WA_TYPE_HINT = 1 << 9
+    WA_TITLE = 1 << 1,
+    WA_X = 1 << 2,
+    WA_Y = 1 << 3,
+    WA_CURSOR = 1 << 4,
+    WA_COLORMAP = 1 << 5,
+    WA_VISUAL = 1 << 6,
+    WA_WMCLASS = 1 << 7,
+    WA_NOREDIR = 1 << 8,
+    WA_TYPE_HINT = 1 << 9
 }
 alias GdkWindowAttributesType WindowAttributesType;
 
@@ -954,11 +954,11 @@ alias GdkWindowAttributesType WindowAttributesType;
  */
 public enum GdkFilterReturn
 {
-	CONTINUE, /+* Event not handled, continu processesing +/
-	TRANSLATE, /+* Native event translated into a GDK event and
-	stored inn the "event" structure that was
-	passed inn +/
-	REMOVE /+* Terminate processing, removing event +/
+    CONTINUE, /+* Event not handled, continu processesing +/
+    TRANSLATE, /+* Native event translated into a GDK event and
+    stored inn the "event" structure that was
+    passed inn +/
+    REMOVE /+* Terminate processing, removing event +/
 }
 alias GdkFilterReturn FilterReturn;
 
@@ -977,27 +977,27 @@ alias GdkFilterReturn FilterReturn;
  */
 public enum GdkModifierType
 {
-	SHIFT_MASK = 1 << 0,
-	LOCK_MASK = 1 << 1,
-	CONTROL_MASK = 1 << 2,
-	MOD1_MASK = 1 << 3,
-	MOD2_MASK = 1 << 4,
-	MOD3_MASK = 1 << 5,
-	MOD4_MASK = 1 << 6,
-	MOD5_MASK = 1 << 7,
-	BUTTON1_MASK = 1 << 8,
-	BUTTON2_MASK = 1 << 9,
-	BUTTON3_MASK = 1 << 10,
-	BUTTON4_MASK = 1 << 11,
-	BUTTON5_MASK = 1 << 12,
-	/+* The next few modifiers are used by XKB, so we skip to the end.
-	 * Bits 15 - 25 are currently unused. Bit 29 is used internally.
-	+/
-	SUPER_MASK = 1 << 26,
-	HYPER_MASK = 1 << 27,
-	META_MASK = 1 << 28,
-	RELEASE_MASK = 1 << 30,
-	MODIFIER_MASK = 0x5c001fff
+    SHIFT_MASK = 1 << 0,
+    LOCK_MASK = 1 << 1,
+    CONTROL_MASK = 1 << 2,
+    MOD1_MASK = 1 << 3,
+    MOD2_MASK = 1 << 4,
+    MOD3_MASK = 1 << 5,
+    MOD4_MASK = 1 << 6,
+    MOD5_MASK = 1 << 7,
+    BUTTON1_MASK = 1 << 8,
+    BUTTON2_MASK = 1 << 9,
+    BUTTON3_MASK = 1 << 10,
+    BUTTON4_MASK = 1 << 11,
+    BUTTON5_MASK = 1 << 12,
+    /+* The next few modifiers are used by XKB, so we skip to the end.
+    * Bits 15 - 25 are currently unused. Bit 29 is used internally.
+    +/
+    SUPER_MASK = 1 << 26,
+    HYPER_MASK = 1 << 27,
+    META_MASK = 1 << 28,
+    RELEASE_MASK = 1 << 30,
+    MODIFIER_MASK = 0x5c001fff
 }
 alias GdkModifierType ModifierType;
 
@@ -1022,13 +1022,13 @@ alias GdkModifierType ModifierType;
  */
 public enum GdkWMDecoration
 {
-	DECOR_ALL = 1 << 0,
-	DECOR_BORDER = 1 << 1,
-	DECOR_RESIZEH = 1 << 2,
-	DECOR_TITLE = 1 << 3,
-	DECOR_MENU = 1 << 4,
-	DECOR_MINIMIZE = 1 << 5,
-	DECOR_MAXIMIZE = 1 << 6
+    DECOR_ALL = 1 << 0,
+    DECOR_BORDER = 1 << 1,
+    DECOR_RESIZEH = 1 << 2,
+    DECOR_TITLE = 1 << 3,
+    DECOR_MENU = 1 << 4,
+    DECOR_MINIMIZE = 1 << 5,
+    DECOR_MAXIMIZE = 1 << 6
 }
 alias GdkWMDecoration WMDecoration;
 
@@ -1052,12 +1052,12 @@ alias GdkWMDecoration WMDecoration;
  */
 public enum GdkWMFunction
 {
-	FUNC_ALL = 1 << 0,
-	FUNC_RESIZE = 1 << 1,
-	FUNC_MOVE = 1 << 2,
-	FUNC_MINIMIZE = 1 << 3,
-	FUNC_MAXIMIZE = 1 << 4,
-	FUNC_CLOSE = 1 << 5
+    FUNC_ALL = 1 << 0,
+    FUNC_RESIZE = 1 << 1,
+    FUNC_MOVE = 1 << 2,
+    FUNC_MINIMIZE = 1 << 3,
+    FUNC_MAXIMIZE = 1 << 4,
+    FUNC_CLOSE = 1 << 5
 }
 alias GdkWMFunction WMFunction;
 
@@ -1154,45 +1154,45 @@ alias GdkWMFunction WMFunction;
  */
 public enum GdkEventType
 {
-	NOTHING = -1,
-	DELETE = 0,
-	DESTROY = 1,
-	EXPOSE = 2,
-	MOTION_NOTIFY = 3,
-	BUTTON_PRESS = 4,
-	DOUBLE_BUTTON_PRESS = 5,
-	TRIPLE_BUTTON_PRESS = 6,
-	BUTTON_RELEASE = 7,
-	KEY_PRESS = 8,
-	KEY_RELEASE = 9,
-	ENTER_NOTIFY = 10,
-	LEAVE_NOTIFY = 11,
-	FOCUS_CHANGE = 12,
-	CONFIGURE = 13,
-	MAP = 14,
-	UNMAP = 15,
-	PROPERTY_NOTIFY = 16,
-	SELECTION_CLEAR = 17,
-	SELECTION_REQUEST = 18,
-	SELECTION_NOTIFY = 19,
-	PROXIMITY_IN = 20,
-	PROXIMITY_OUT = 21,
-	DRAG_ENTER = 22,
-	DRAG_LEAVE = 23,
-	DRAG_MOTION = 24,
-	DRAG_STATUS = 25,
-	DROP_START = 26,
-	DROP_FINISHED = 27,
-	CLIENT_EVENT = 28,
-	VISIBILITY_NOTIFY = 29,
-	NO_EXPOSE = 30,
-	SCROLL = 31,
-	WINDOW_STATE = 32,
-	SETTING = 33,
-	OWNER_CHANGE = 34,
-	GRAB_BROKEN = 35,
-	DAMAGE = 36,
-	EVENT_LAST /+* helper variable for decls +/
+    NOTHING = -1,
+    DELETE = 0,
+    DESTROY = 1,
+    EXPOSE = 2,
+    MOTION_NOTIFY = 3,
+    BUTTON_PRESS = 4,
+    DOUBLE_BUTTON_PRESS = 5,
+    TRIPLE_BUTTON_PRESS = 6,
+    BUTTON_RELEASE = 7,
+    KEY_PRESS = 8,
+    KEY_RELEASE = 9,
+    ENTER_NOTIFY = 10,
+    LEAVE_NOTIFY = 11,
+    FOCUS_CHANGE = 12,
+    CONFIGURE = 13,
+    MAP = 14,
+    UNMAP = 15,
+    PROPERTY_NOTIFY = 16,
+    SELECTION_CLEAR = 17,
+    SELECTION_REQUEST = 18,
+    SELECTION_NOTIFY = 19,
+    PROXIMITY_IN = 20,
+    PROXIMITY_OUT = 21,
+    DRAG_ENTER = 22,
+    DRAG_LEAVE = 23,
+    DRAG_MOTION = 24,
+    DRAG_STATUS = 25,
+    DROP_START = 26,
+    DROP_FINISHED = 27,
+    CLIENT_EVENT = 28,
+    VISIBILITY_NOTIFY = 29,
+    NO_EXPOSE = 30,
+    SCROLL = 31,
+    WINDOW_STATE = 32,
+    SETTING = 33,
+    OWNER_CHANGE = 34,
+    GRAB_BROKEN = 35,
+    DAMAGE = 36,
+    EVENT_LAST /+* helper variable for decls +/
 }
 alias GdkEventType EventType;
 
@@ -1252,28 +1252,28 @@ alias GdkEventType EventType;
  */
 public enum GdkEventMask
 {
-	EXPOSURE_MASK = 1 << 1,
-	POINTER_MOTION_MASK = 1 << 2,
-	POINTER_MOTION_HINT_MASK = 1 << 3,
-	BUTTON_MOTION_MASK = 1 << 4,
-	BUTTON1_MOTION_MASK = 1 << 5,
-	BUTTON2_MOTION_MASK = 1 << 6,
-	BUTTON3_MOTION_MASK = 1 << 7,
-	BUTTON_PRESS_MASK = 1 << 8,
-	BUTTON_RELEASE_MASK = 1 << 9,
-	KEY_PRESS_MASK = 1 << 10,
-	KEY_RELEASE_MASK = 1 << 11,
-	ENTER_NOTIFY_MASK = 1 << 12,
-	LEAVE_NOTIFY_MASK = 1 << 13,
-	FOCUS_CHANGE_MASK = 1 << 14,
-	STRUCTURE_MASK = 1 << 15,
-	PROPERTY_CHANGE_MASK = 1 << 16,
-	VISIBILITY_NOTIFY_MASK = 1 << 17,
-	PROXIMITY_IN_MASK = 1 << 18,
-	PROXIMITY_OUT_MASK = 1 << 19,
-	SUBSTRUCTURE_MASK = 1 << 20,
-	SCROLL_MASK = 1 << 21,
-	ALL_EVENTS_MASK = 0x3FFFFE
+EXPOSURE_MASK = 1 << 1,
+POINTER_MOTION_MASK = 1 << 2,
+POINTER_MOTION_HINT_MASK = 1 << 3,
+BUTTON_MOTION_MASK = 1 << 4,
+BUTTON1_MOTION_MASK = 1 << 5,
+BUTTON2_MOTION_MASK = 1 << 6,
+BUTTON3_MOTION_MASK = 1 << 7,
+BUTTON_PRESS_MASK = 1 << 8,
+BUTTON_RELEASE_MASK = 1 << 9,
+KEY_PRESS_MASK = 1 << 10,
+KEY_RELEASE_MASK = 1 << 11,
+ENTER_NOTIFY_MASK = 1 << 12,
+LEAVE_NOTIFY_MASK = 1 << 13,
+FOCUS_CHANGE_MASK = 1 << 14,
+STRUCTURE_MASK = 1 << 15,
+PROPERTY_CHANGE_MASK = 1 << 16,
+VISIBILITY_NOTIFY_MASK = 1 << 17,
+PROXIMITY_IN_MASK = 1 << 18,
+PROXIMITY_OUT_MASK = 1 << 19,
+SUBSTRUCTURE_MASK = 1 << 20,
+SCROLL_MASK = 1 << 21,
+ALL_EVENTS_MASK = 0x3FFFFE
 }
 alias GdkEventMask EventMask;
 
@@ -1290,10 +1290,10 @@ alias GdkEventMask EventMask;
  */
 public enum GdkScrollDirection
 {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
+UP,
+DOWN,
+LEFT,
+RIGHT
 }
 alias GdkScrollDirection ScrollDirection;
 
@@ -1308,9 +1308,9 @@ alias GdkScrollDirection ScrollDirection;
  */
 public enum GdkVisibilityState
 {
-	UNOBSCURED,
-	PARTIAL,
-	FULLY_OBSCURED
+UNOBSCURED,
+PARTIAL,
+FULLY_OBSCURED
 }
 alias GdkVisibilityState VisibilityState;
 
@@ -1331,12 +1331,12 @@ alias GdkVisibilityState VisibilityState;
  */
 public enum GdkCrossingMode
 {
-	NORMAL,
-	GRAB,
-	UNGRAB,
-	GTK_GRAB,
-	GTK_UNGRAB,
-	STATE_CHANGED
+NORMAL,
+GRAB,
+UNGRAB,
+GTK_GRAB,
+GTK_UNGRAB,
+STATE_CHANGED
 }
 alias GdkCrossingMode CrossingMode;
 
@@ -1349,12 +1349,12 @@ alias GdkCrossingMode CrossingMode;
  */
 public enum GdkNotifyType
 {
-	ANCESTOR = 0,
-	VIRTUAL = 1,
-	INFERIOR = 2,
-	NONLINEAR = 3,
-	NONLINEAR_VIRTUAL = 4,
-	UNKNOWN = 5
+ANCESTOR = 0,
+VIRTUAL = 1,
+INFERIOR = 2,
+NONLINEAR = 3,
+NONLINEAR_VIRTUAL = 4,
+UNKNOWN = 5
 }
 alias GdkNotifyType NotifyType;
 
@@ -1367,8 +1367,8 @@ alias GdkNotifyType NotifyType;
  */
 public enum GdkPropertyState
 {
-	NEW_VALUE,
-	DELETE
+NEW_VALUE,
+DELETE
 }
 alias GdkPropertyState PropertyState;
 
@@ -1391,13 +1391,13 @@ alias GdkPropertyState PropertyState;
  */
 public enum GdkWindowState
 {
-	WITHDRAWN = 1 << 0,
-	ICONIFIED = 1 << 1,
-	MAXIMIZED = 1 << 2,
-	STICKY = 1 << 3,
-	FULLSCREEN = 1 << 4,
-	ABOVE = 1 << 5,
-	BELOW = 1 << 6
+WITHDRAWN = 1 << 0,
+ICONIFIED = 1 << 1,
+MAXIMIZED = 1 << 2,
+STICKY = 1 << 3,
+FULLSCREEN = 1 << 4,
+ABOVE = 1 << 5,
+BELOW = 1 << 6
 }
 alias GdkWindowState WindowState;
 
@@ -1412,9 +1412,9 @@ alias GdkWindowState WindowState;
  */
 public enum GdkSettingAction
 {
-	NEW,
-	CHANGED,
-	DELETED
+NEW,
+CHANGED,
+DELETED
 }
 alias GdkSettingAction SettingAction;
 
@@ -1429,9 +1429,9 @@ alias GdkSettingAction SettingAction;
  */
 public enum GdkOwnerChange
 {
-	NEW_OWNER,
-	DESTROY,
-	CLOSE
+NEW_OWNER,
+DESTROY,
+CLOSE
 }
 alias GdkOwnerChange OwnerChange;
 
@@ -1447,14 +1447,14 @@ alias GdkOwnerChange OwnerChange;
  */
 public enum GdkDragProtocol
 {
-	MOTIF,
-	XDND,
-	ROOTWIN, /+* A root window with nobody claiming
-	 * drags +/
-	NONE, /+* Not a valid drag window +/
-	WIN32_DROPFILES, /+* The simple WM_DROPFILES dnd +/
-	OLE2, /+* The complex OLE2 dnd (not implemented) +/
-	LOCAL /+* Intra-app +/
+MOTIF,
+XDND,
+ROOTWIN, /+* A root window with nobody claiming
+* drags +/
+NONE, /+* Not a valid drag window +/
+WIN32_DROPFILES, /+* The simple WM_DROPFILES dnd +/
+OLE2, /+* The complex OLE2 dnd (not implemented) +/
+    LOCAL /+* Intra-app +/
 }
 alias GdkDragProtocol DragProtocol;
 
@@ -1470,12 +1470,12 @@ alias GdkDragProtocol DragProtocol;
  */
 public enum GdkDragAction
 {
-	ACTION_DEFAULT = 1 << 0,
-	ACTION_COPY = 1 << 1,
-	ACTION_MOVE = 1 << 2,
-	ACTION_LINK = 1 << 3,
-	ACTION_PRIVATE = 1 << 4,
-	ACTION_ASK = 1 << 5
+    ACTION_DEFAULT = 1 << 0,
+    ACTION_COPY = 1 << 1,
+    ACTION_MOVE = 1 << 2,
+    ACTION_LINK = 1 << 3,
+    ACTION_PRIVATE = 1 << 4,
+    ACTION_ASK = 1 << 5
 }
 alias GdkDragAction DragAction;
 
@@ -1497,9 +1497,9 @@ alias GdkDragAction DragAction;
  */
 public enum GdkInputCondition
 {
-	READ = 1 << 0,
-	WRITE = 1 << 1,
-	EXCEPTION = 1 << 2
+    READ = 1 << 0,
+    WRITE = 1 << 1,
+    EXCEPTION = 1 << 2
 }
 alias GdkInputCondition InputCondition;
 
@@ -1511,10 +1511,10 @@ alias GdkInputCondition InputCondition;
  */
 public enum GdkInputSource
 {
-	SOURCE_MOUSE,
-	SOURCE_PEN,
-	SOURCE_ERASER,
-	SOURCE_CURSOR
+    SOURCE_MOUSE,
+    SOURCE_PEN,
+    SOURCE_ERASER,
+    SOURCE_CURSOR
 }
 alias GdkInputSource InputSource;
 
@@ -1527,9 +1527,9 @@ alias GdkInputSource InputSource;
  */
 public enum GdkInputMode
 {
-	MODE_DISABLED,
-	MODE_SCREEN,
-	MODE_WINDOW
+    MODE_DISABLED,
+    MODE_SCREEN,
+    MODE_WINDOW
 }
 alias GdkInputMode InputMode;
 
@@ -1556,14 +1556,14 @@ alias GdkInputMode InputMode;
  */
 public enum GdkAxisUse
 {
-	IGNORE,
-	X,
-	Y,
-	PRESSURE,
-	XTILT,
-	YTILT,
-	WHEEL,
-	LAST
+    IGNORE,
+    X,
+    Y,
+    PRESSURE,
+    XTILT,
+    YTILT,
+    WHEEL,
+    LAST
 }
 alias GdkAxisUse AxisUse;
 
@@ -1579,9 +1579,9 @@ alias GdkAxisUse AxisUse;
  */
 public enum GdkExtensionMode
 {
-	EVENTS_NONE,
-	EVENTS_ALL,
-	EVENTS_CURSOR
+    EVENTS_NONE,
+    EVENTS_ALL,
+    EVENTS_CURSOR
 }
 alias GdkExtensionMode ExtensionMode;
 
@@ -1592,7 +1592,7 @@ alias GdkExtensionMode ExtensionMode;
  * of an X display. All its fields are private and should not be accessed directly.
  * Since 2.2
  */
-public struct GdkDisplay{}
+public struct GdkDisplay {}
 
 
 /**
@@ -1606,9 +1606,9 @@ public struct GdkDisplay{}
  */
 public struct GdkDisplayPointerHooks
 {
-	extern(C) void  function(GdkDisplay *display,GdkScreen **screen,int *x,int *y,GdkModifierType *mask) getPointer;
-	extern(C) GdkWindow*  function(GdkDisplay *display,GdkWindow *window,int *x,int *y,GdkModifierType *mask) windowGetPointer;
-	extern(C) GdkWindow*  function(GdkDisplay *display,int *winX,int *winY) windowAtPointer;
+    extern(C) void  function(GdkDisplay *display,GdkScreen **screen,int *x,int *y,GdkModifierType *mask) getPointer;
+    extern(C) GdkWindow*  function(GdkDisplay *display,GdkWindow *window,int *x,int *y,GdkModifierType *mask) windowGetPointer;
+    extern(C) GdkWindow*  function(GdkDisplay *display,int *winX,int *winY) windowAtPointer;
 }
 
 
@@ -1618,7 +1618,7 @@ public struct GdkDisplayPointerHooks
  * fields.
  * Since 2.2
  */
-public struct GdkDisplayManager{}
+public struct GdkDisplayManager {}
 
 
 /**
@@ -1628,7 +1628,7 @@ public struct GdkDisplayManager{}
  * when GDK gets multihead support.
  * Since 2.2
  */
-public struct GdkScreen{}
+public struct GdkScreen {}
 
 
 /**
@@ -1640,8 +1640,8 @@ public struct GdkScreen{}
  */
 public struct GdkPoint
 {
-	int x;
-	int y;
+    int x;
+    int y;
 }
 
 
@@ -1659,17 +1659,17 @@ public struct GdkPoint
  */
 public struct GdkRectangle
 {
-	int x;
-	int y;
-	int width;
-	int height;
+    int x;
+    int y;
+    int width;
+    int height;
 }
 
 
 /**
  * A GdkRegion represents a set of pixels on the screen.
  */
-public struct GdkRegion{}
+public struct GdkRegion {}
 
 
 /**
@@ -1684,9 +1684,9 @@ public struct GdkRegion{}
  */
 public struct GdkSpan
 {
-	int x;
-	int y;
-	int width;
+    int x;
+    int y;
+    int width;
 }
 
 
@@ -1696,7 +1696,7 @@ public struct GdkSpan
  * It is an opaque structure with no user-visible
  * elements.
  */
-public struct GdkGC{}
+public struct GdkGC {}
 
 
 /**
@@ -1707,24 +1707,24 @@ public struct GdkGC{}
  */
 public struct GdkGCValues
 {
-	GdkColor foreground;
-	GdkColor background;
-	GdkFont *font;
-	GdkFunction funct;
-	GdkFill fill;
-	GdkPixmap *tile;
-	GdkPixmap *stipple;
-	GdkPixmap *clipMask;
-	GdkSubwindowMode subwindowMode;
-	int tsXOrigin;
-	int tsYOrigin;
-	int clipXOrigin;
-	int clipYOrigin;
-	int graphicsExposures;
-	int lineWidth;
-	GdkLineStyle lineStyle;
-	GdkCapStyle capStyle;
-	GdkJoinStyle joinStyle;
+    GdkColor foreground;
+    GdkColor background;
+    GdkFont *font;
+    GdkFunction funct;
+    GdkFill fill;
+    GdkPixmap *tile;
+    GdkPixmap *stipple;
+    GdkPixmap *clipMask;
+    GdkSubwindowMode subwindowMode;
+    int tsXOrigin;
+    int tsYOrigin;
+    int clipXOrigin;
+    int clipYOrigin;
+    int graphicsExposures;
+    int lineWidth;
+    GdkLineStyle lineStyle;
+    GdkCapStyle capStyle;
+    GdkJoinStyle joinStyle;
 }
 
 
@@ -1734,7 +1734,7 @@ public struct GdkGCValues
  * drawn onto. This can be a GdkPixmap, a GdkBitmap,
  * or a GdkWindow.
  */
-public struct GdkDrawable{}
+public struct GdkDrawable {}
 
 
 /**
@@ -1751,10 +1751,10 @@ public struct GdkDrawable{}
  */
 public struct GdkSegment
 {
-	int x1;
-	int y1;
-	int x2;
-	int y2;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
 }
 
 
@@ -1777,7 +1777,7 @@ public struct GdkSegment
  */
 public struct GdkTrapezoid
 {
-	double y1, x11, x21, y2, x12, x22;
+    double y1, x11, x21, y2, x12, x22;
 }
 
 
@@ -1789,7 +1789,7 @@ public struct GdkTrapezoid
  * The type GdkDrawable refers generically to any of
  * these types.
  */
-public struct GdkPixmap{}
+public struct GdkPixmap {}
 
 
 /**
@@ -1798,7 +1798,7 @@ public struct GdkPixmap{}
  * GdkWindow, can often be used interchangeably. The type GdkDrawable
  * refers generically to any of these types.
  */
-public struct GdkBitmap{}
+public struct GdkBitmap {}
 
 
 /**
@@ -1811,8 +1811,8 @@ public struct GdkBitmap{}
  */
 public struct GdkRgbCmap
 {
-	uint colors[256];
-	int nColors;
+    uint colors[256];
+    int nColors;
 }
 
 
@@ -1846,25 +1846,35 @@ public struct GdkRgbCmap
  */
 public struct GdkImage
 {
-	GObject parentInstance;
-	GdkImageType type; /+* read only. +/
-	GdkVisual *visual; /+* read only. visual used to create the image +/
-	GdkByteOrder byteOrder; /+* read only. +/
-	int width; /+* read only. +/
-	int height; /+* read only. +/
-	ushort depth; /+* read only. +/
-	ushort bpp; /+* read only. bytes per pixel +/
-	ushort bpl; /+* read only. bytes per line +/
-	ushort bitsPerPixel; /+* read only. bits per pixel +/
-	void* mem;
-	GdkColormap *colormap; /+* read only. +/
+    GObject parentInstance;
+    GdkImageType type;
+    /+* read only. +/
+    GdkVisual *visual;
+    /+* read only. visual used to create the image +/
+    GdkByteOrder byteOrder;
+    /+* read only. +/
+    int width;
+    /+* read only. +/
+    int height;
+    /+* read only. +/
+    ushort depth;
+    /+* read only. +/
+    ushort bpp;
+    /+* read only. bytes per pixel +/
+    ushort bpl;
+    /+* read only. bytes per line +/
+    ushort bitsPerPixel;
+    /+* read only. bits per pixel +/
+    void* mem;
+    GdkColormap *colormap;
+    /+* read only. +/
 }
 
 
 /**
  * Main Gtk struct.
  */
-public struct GdkPixbuf{}
+public struct GdkPixbuf {}
 
 
 /**
@@ -1875,10 +1885,10 @@ public struct GdkPixbuf{}
  */
 public struct GdkColor
 {
-	uint pixel;
-	ushort red;
-	ushort green;
-	ushort blue;
+    uint pixel;
+    ushort red;
+    ushort green;
+    ushort blue;
 }
 
 
@@ -1890,8 +1900,8 @@ public struct GdkColor
  */
 public struct GdkColormap
 {
-	int size;
-	GdkColor *colors;
+    int size;
+    GdkColor *colors;
 }
 
 
@@ -1905,21 +1915,21 @@ public struct GdkColormap
  */
 public struct GdkVisual
 {
-	GObject parentInstance;
-	GdkVisualType type;
-	int depth;
-	GdkByteOrder byteOrder;
-	int colormapSize;
-	int bitsPerRgb;
-	uint redMask;
-	int redShift;
-	int redPrec;
-	uint greenMask;
-	int greenShift;
-	int greenPrec;
-	uint blueMask;
-	int blueShift;
-	int bluePrec;
+    GObject parentInstance;
+    GdkVisualType type;
+    int depth;
+    GdkByteOrder byteOrder;
+    int colormapSize;
+    int bitsPerRgb;
+    uint redMask;
+    int redShift;
+    int redPrec;
+    uint greenMask;
+    int greenShift;
+    int greenPrec;
+    uint blueMask;
+    int blueShift;
+    int bluePrec;
 }
 
 
@@ -1936,9 +1946,9 @@ public struct GdkVisual
  */
 public struct GdkFont
 {
-	GdkFontType type;
-	int ascent;
-	int descent;
+    GdkFontType type;
+    int ascent;
+    int descent;
 }
 
 
@@ -1950,7 +1960,7 @@ public struct GdkFont
  */
 public struct GdkCursor
 {
-	GdkCursorType type;
+    GdkCursorType type;
 }
 
 
@@ -1962,7 +1972,7 @@ public struct GdkCursor
  * The type GdkDrawable refers generically to any of
  * these types.
  */
-public struct GdkWindow{}
+public struct GdkWindow {}
 
 
 /**
@@ -1995,17 +2005,17 @@ public struct GdkWindow{}
  */
 public struct GdkGeometry
 {
-	int minWidth;
-	int minHeight;
-	int maxWidth;
-	int maxHeight;
-	int baseWidth;
-	int baseHeight;
-	int widthInc;
-	int heightInc;
-	double minAspect;
-	double maxAspect;
-	GdkGravity winGravity;
+    int minWidth;
+    int minHeight;
+    int maxWidth;
+    int maxHeight;
+    int baseWidth;
+    int baseHeight;
+    int widthInc;
+    int heightInc;
+    double minAspect;
+    double maxAspect;
+    GdkGravity winGravity;
 }
 
 
@@ -2044,20 +2054,20 @@ public struct GdkGeometry
  */
 public struct GdkWindowAttr
 {
-	char *title;
-	int eventMask;
-	int x, y;
-	int width;
-	int height;
-	GdkWindowClass wclass;
-	GdkVisual *visual;
-	GdkColormap *colormap;
-	GdkWindowType windowType;
-	GdkCursor *cursor;
-	char *wmclassName;
-	char *wmclassClass;
-	int overrideRedirect;
-	GdkWindowTypeHint typeHint;
+    char *title;
+    int eventMask;
+    int x, y;
+    int width;
+    int height;
+    GdkWindowClass wclass;
+    GdkVisual *visual;
+    GdkColormap *colormap;
+    GdkWindowType windowType;
+    GdkCursor *cursor;
+    char *wmclassName;
+    char *wmclassClass;
+    int overrideRedirect;
+    GdkWindowTypeHint typeHint;
 }
 
 
@@ -2072,8 +2082,8 @@ public struct GdkWindowAttr
  */
 public struct GdkPointerHooks
 {
-	extern(C) GdkWindow*  function(GdkWindow *window,int *x,int *y,GdkModifierType *mask) getPointer;
-	extern(C) GdkWindow*  function(GdkScreen *screen, /+* unused +/int *winX,int *winY) windowAtPointer;
+    extern(C) GdkWindow*  function(GdkWindow *window,int *x,int *y,GdkModifierType *mask) getPointer;
+    extern(C) GdkWindow*  function(GdkScreen *screen, /+* unused +/int *winX,int *winY) windowAtPointer;
 }
 
 
@@ -2091,9 +2101,9 @@ public struct GdkPointerHooks
  */
 public struct GdkEventAny
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
 }
 
 
@@ -2138,18 +2148,18 @@ public struct GdkEventAny
  */
 public struct GdkEventKey
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	uint time;
-	uint state;
-	uint keyval;
-	int length;
-	char *string;
-	ushort hardwareKeycode;
-	ubyte group;
-	uint bitfield0;
-	//uint isModifier : 1;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    uint time;
+    uint state;
+    uint keyval;
+    int length;
+    char *string;
+    ushort hardwareKeycode;
+    ubyte group;
+    uint bitfield0;
+    //uint isModifier : 1;
 }
 
 
@@ -2199,17 +2209,17 @@ public struct GdkEventKey
  */
 public struct GdkEventButton
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	uint time;
-	double x;
-	double y;
-	double *axes;
-	uint state;
-	uint button;
-	GdkDevice *device;
-	double xRoot, yRoot;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    uint time;
+    double x;
+    double y;
+    double *axes;
+    uint state;
+    uint button;
+    GdkDevice *device;
+    double xRoot, yRoot;
 }
 
 
@@ -2238,16 +2248,16 @@ public struct GdkEventButton
  */
 public struct GdkEventScroll
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	uint time;
-	double x;
-	double y;
-	uint state;
-	GdkScrollDirection direction;
-	GdkDevice *device;
-	double xRoot, yRoot;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    uint time;
+    double x;
+    double y;
+    uint state;
+    GdkScrollDirection direction;
+    GdkDevice *device;
+    double xRoot, yRoot;
 }
 
 
@@ -2271,17 +2281,17 @@ public struct GdkEventScroll
  */
 public struct GdkEventMotion
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	uint time;
-	double x;
-	double y;
-	double *axes;
-	uint state;
-	short isHint;
-	GdkDevice *device;
-	double xRoot, yRoot;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    uint time;
+    double x;
+    double y;
+    double *axes;
+    uint state;
+    short isHint;
+    GdkDevice *device;
+    double xRoot, yRoot;
 }
 
 
@@ -2307,12 +2317,13 @@ public struct GdkEventMotion
  */
 public struct GdkEventExpose
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkRectangle area;
-	GdkRegion *region;
-	int count; /+* If non-zero, how many more events follow. +/
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkRectangle area;
+    GdkRegion *region;
+    int count;
+    /+* If non-zero, how many more events follow. +/
 }
 
 
@@ -2331,10 +2342,10 @@ public struct GdkEventExpose
  */
 public struct GdkEventVisibility
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkVisibilityState state;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkVisibilityState state;
 }
 
 
@@ -2364,19 +2375,19 @@ public struct GdkEventVisibility
  */
 public struct GdkEventCrossing
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkWindow *subwindow;
-	uint time;
-	double x;
-	double y;
-	double xRoot;
-	double yRoot;
-	GdkCrossingMode mode;
-	GdkNotifyType detail;
-	int focus;
-	uint state;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkWindow *subwindow;
+    uint time;
+    double x;
+    double y;
+    double xRoot;
+    double yRoot;
+    GdkCrossingMode mode;
+    GdkNotifyType detail;
+    int focus;
+    uint state;
 }
 
 
@@ -2394,10 +2405,10 @@ public struct GdkEventCrossing
  */
 public struct GdkEventFocus
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	short inn;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    short inn;
 }
 
 
@@ -2420,12 +2431,12 @@ public struct GdkEventFocus
  */
 public struct GdkEventConfigure
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	int x, y;
-	int width;
-	int height;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    int x, y;
+    int width;
+    int height;
 }
 
 
@@ -2447,12 +2458,12 @@ public struct GdkEventConfigure
  */
 public struct GdkEventProperty
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkAtom atom;
-	uint time;
-	uint state;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkAtom atom;
+    uint time;
+    uint state;
 }
 
 
@@ -2479,14 +2490,14 @@ public struct GdkEventProperty
  */
 public struct GdkEventSelection
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkAtom selection;
-	GdkAtom target;
-	GdkAtom property;
-	uint time;
-	GdkNativeWindow requestor;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkAtom selection;
+    GdkAtom target;
+    GdkAtom property;
+    uint time;
+    GdkNativeWindow requestor;
 }
 
 
@@ -2497,12 +2508,12 @@ public struct GdkEventSelection
  */
 public struct GdkEventDND
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkDragContext *context;
-	uint time;
-	short xRoot, yRoot;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkDragContext *context;
+    uint time;
+    short xRoot, yRoot;
 }
 
 
@@ -2526,11 +2537,11 @@ public struct GdkEventDND
  */
 public struct GdkEventProximity
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	uint time;
-	GdkDevice *device;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    uint time;
+    GdkDevice *device;
 }
 
 
@@ -2552,18 +2563,18 @@ public struct GdkEventProximity
  */
 public struct GdkEventClient
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkAtom messageType;
-	ushort dataFormat;
-	union Data
-	{
-		char b[20];
-		short s[10];
-		long l[5];
-	}
-	Data data;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkAtom messageType;
+    ushort dataFormat;
+    union Data
+    {
+        char b[20];
+        short s[10];
+        long l[5];
+    }
+    Data data;
 }
 
 
@@ -2580,9 +2591,9 @@ public struct GdkEventClient
  */
 public struct GdkEventNoExpose
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
 }
 
 
@@ -2601,11 +2612,11 @@ public struct GdkEventNoExpose
  */
 public struct GdkEventWindowState
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkWindowState changedMask;
-	GdkWindowState newWindowState;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkWindowState changedMask;
+    GdkWindowState newWindowState;
 }
 
 
@@ -2622,11 +2633,11 @@ public struct GdkEventWindowState
  */
 public struct GdkEventSetting
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkSettingAction action;
-	char *name;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkSettingAction action;
+    char *name;
 }
 
 
@@ -2653,14 +2664,14 @@ public struct GdkEventSetting
  */
 public struct GdkEventOwnerChange
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	GdkNativeWindow owner;
-	GdkOwnerChange reason;
-	GdkAtom selection;
-	uint time;
-	uint selectionTime;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    GdkNativeWindow owner;
+    GdkOwnerChange reason;
+    GdkAtom selection;
+    uint time;
+    uint selectionTime;
 }
 
 
@@ -2677,12 +2688,12 @@ public struct GdkEventOwnerChange
  */
 public struct GdkEventGrabBroken
 {
-	GdkEventType type;
-	GdkWindow *window;
-	byte sendEvent;
-	int keyboard;
-	int implicit;
-	GdkWindow *grabWindow;
+    GdkEventType type;
+    GdkWindow *window;
+    byte sendEvent;
+    int keyboard;
+    int implicit;
+    GdkWindow *grabWindow;
 }
 
 
@@ -2695,7 +2706,7 @@ public struct GdkEventGrabBroken
  * state; the second phase is to look up the keycode/group/level triplet
  * in the keymap and see what keyval it corresponds to.
  */
-public struct GdkKeymap{}
+public struct GdkKeymap {}
 
 
 /**
@@ -2706,9 +2717,9 @@ public struct GdkKeymap{}
  */
 public struct GdkKeymapKey
 {
-	uint keycode;
-	int group;
-	int level;
+    uint keycode;
+    int group;
+    int level;
 }
 
 
@@ -2733,16 +2744,16 @@ public struct GdkKeymapKey
  */
 public struct GdkDragContext
 {
-	GObject parentInstance;
-	GdkDragProtocol protocol;
-	int isSource;
-	GdkWindow *sourceWindow;
-	GdkWindow *destWindow;
-	GList *targets;
-	GdkDragAction actions;
-	GdkDragAction suggestedAction;
-	GdkDragAction action;
-	uint startTime;
+    GObject parentInstance;
+    GdkDragProtocol protocol;
+    int isSource;
+    GdkWindow *sourceWindow;
+    GdkWindow *destWindow;
+    GList *targets;
+    GdkDragAction actions;
+    GdkDragAction suggestedAction;
+    GdkDragAction action;
+    uint startTime;
 }
 
 
@@ -2774,16 +2785,17 @@ public struct GdkDragContext
  */
 public struct GdkDevice
 {
-	GObject parentInstance;
-	/+* All fields are read-only +/
-	char *name;
-	GdkInputSource source;
-	GdkInputMode mode;
-	int hasCursor; /+* TRUE if the X pointer follows device motion +/
-	int numAxes;
-	GdkDeviceAxis *axes;
-	int numKeys;
-	GdkDeviceKey *keys;
+    GObject parentInstance;
+    /+* All fields are read-only +/
+    char *name;
+    GdkInputSource source;
+    GdkInputMode mode;
+    int hasCursor;
+    /+* TRUE if the X pointer follows device motion +/
+    int numAxes;
+GdkDeviceAxis *axes;
+int numKeys;
+GdkDeviceKey *keys;
 }
 
 
@@ -2796,8 +2808,8 @@ public struct GdkDevice
  */
 public struct GdkDeviceKey
 {
-	uint keyval;
-	GdkModifierType modifiers;
+uint keyval;
+GdkModifierType modifiers;
 }
 
 
@@ -2813,9 +2825,9 @@ public struct GdkDeviceKey
  */
 public struct GdkDeviceAxis
 {
-	GdkAxisUse use;
-	double min;
-	double max;
+GdkAxisUse use;
+double min;
+double max;
 }
 
 
@@ -2829,8 +2841,8 @@ public struct GdkDeviceAxis
  */
 public struct GdkTimeCoord
 {
-	uint time;
-	double axes[GDK_MAX_TIMECOORD_AXES];
+uint time;
+double axes[GDK_MAX_TIMECOORD_AXES];
 }
 
 
@@ -2838,7 +2850,7 @@ public struct GdkTimeCoord
  * Main Gtk struct.
  * An opaque structure representing an application launch context.
  */
-public struct GdkAppLaunchContext{}
+public struct GdkAppLaunchContext {}
 
 
 /*
@@ -3292,28 +3304,28 @@ public typedef extern(C) void  function (void*) GdkDestroyNotify;
  */
 public struct GdkEvent
 {
-	union
-	{
-		GdkEventType type;
-		GdkEventAny any;
-		GdkEventExpose expose;
-		GdkEventNoExpose noExpose;
-		GdkEventVisibility visibility;
-		GdkEventMotion motion;
-		GdkEventButton button;
-		GdkEventScroll scroll;
-		GdkEventKey key;
-		GdkEventCrossing crossing;
-		GdkEventFocus focusChange;
-		GdkEventConfigure configure;
-		GdkEventProperty property;
-		GdkEventSelection selection;
-		GdkEventOwnerChange ownerChange;
-		GdkEventProximity proximity;
-		GdkEventClient client;
-		GdkEventDND dnd;
-		GdkEventWindowState windowState;
-		GdkEventSetting setting;
-		GdkEventGrabBroken grabBroken;
-	}
+    union
+    {
+        GdkEventType type;
+        GdkEventAny any;
+        GdkEventExpose expose;
+        GdkEventNoExpose noExpose;
+        GdkEventVisibility visibility;
+        GdkEventMotion motion;
+        GdkEventButton button;
+        GdkEventScroll scroll;
+        GdkEventKey key;
+        GdkEventCrossing crossing;
+        GdkEventFocus focusChange;
+        GdkEventConfigure configure;
+        GdkEventProperty property;
+        GdkEventSelection selection;
+        GdkEventOwnerChange ownerChange;
+        GdkEventProximity proximity;
+        GdkEventClient client;
+        GdkEventDND dnd;
+        GdkEventWindowState windowState;
+        GdkEventSetting setting;
+        GdkEventGrabBroken grabBroken;
+    }
 }

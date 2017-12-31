@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkCellRenderer
  * clss    = CellRendererPixbuf
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_cell_renderer_pixbuf_
@@ -84,65 +84,65 @@ private import gtkD.gtk.CellRenderer;
  */
 public class CellRendererPixbuf : CellRenderer
 {
-	
-	/** the main Gtk struct */
-	protected GtkCellRendererPixbuf* gtkCellRendererPixbuf;
-	
-	
-	public GtkCellRendererPixbuf* getCellRendererPixbufStruct()
-	{
-		return gtkCellRendererPixbuf;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererPixbuf;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkCellRendererPixbuf* gtkCellRendererPixbuf)
-	{
-		if(gtkCellRendererPixbuf is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererPixbuf);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererPixbuf)ptr;
-			return;
-		}
-		super(cast(GtkCellRenderer*)gtkCellRendererPixbuf);
-		this.gtkCellRendererPixbuf = gtkCellRendererPixbuf;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkCellRendererPixbuf. Adjust rendering
-	 * parameters using object properties. Object properties can be set
-	 * globally (with g_object_set()). Also, with GtkTreeViewColumn, you
-	 * can bind a property to a value in a GtkTreeModel. For example, you
-	 * can bind the "pixbuf" property on the cell renderer to a pixbuf value
-	 * in the model, thus rendering a different image in each row of the
-	 * GtkTreeView.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_pixbuf_new (void);
-		auto p = gtk_cell_renderer_pixbuf_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_pixbuf_new()");
-		}
-		this(cast(GtkCellRendererPixbuf*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkCellRendererPixbuf* gtkCellRendererPixbuf;
+
+
+    public GtkCellRendererPixbuf* getCellRendererPixbufStruct()
+    {
+        return gtkCellRendererPixbuf;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkCellRendererPixbuf;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkCellRendererPixbuf* gtkCellRendererPixbuf)
+    {
+        if(gtkCellRendererPixbuf is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkCellRendererPixbuf);
+        if( ptr !is null )
+        {
+            this = cast(CellRendererPixbuf)ptr;
+            return;
+        }
+        super(cast(GtkCellRenderer*)gtkCellRendererPixbuf);
+        this.gtkCellRendererPixbuf = gtkCellRendererPixbuf;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkCellRendererPixbuf. Adjust rendering
+     * parameters using object properties. Object properties can be set
+     * globally (with g_object_set()). Also, with GtkTreeViewColumn, you
+     * can bind a property to a value in a GtkTreeModel. For example, you
+     * can bind the "pixbuf" property on the cell renderer to a pixbuf value
+     * in the model, thus rendering a different image in each row of the
+     * GtkTreeView.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkCellRenderer * gtk_cell_renderer_pixbuf_new (void);
+        auto p = gtk_cell_renderer_pixbuf_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_cell_renderer_pixbuf_new()");
+        }
+        this(cast(GtkCellRendererPixbuf*) p);
+    }
 }

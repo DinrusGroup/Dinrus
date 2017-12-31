@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -28,12 +28,12 @@
  * strct   = GstFormat
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_format_
@@ -81,8 +81,8 @@ protected GstFormat* gstFormat;
  */
 public static string getName(GstFormat format)
 {
-	// const gchar* gst_format_get_name (GstFormat format);
-	return Str.toString(gst_format_get_name(format));
+    // const gchar* gst_format_get_name (GstFormat format);
+    return Str.toString(gst_format_get_name(format));
 }
 
 /**
@@ -93,8 +93,8 @@ public static string getName(GstFormat format)
  */
 public static GQuark toQuark(GstFormat format)
 {
-	// GQuark gst_format_to_quark (GstFormat format);
-	return gst_format_to_quark(format);
+    // GQuark gst_format_to_quark (GstFormat format);
+    return gst_format_to_quark(format);
 }
 
 /**
@@ -107,8 +107,8 @@ public static GQuark toQuark(GstFormat format)
  */
 public static GstFormat register(string nick, string description)
 {
-	// GstFormat gst_format_register (const gchar *nick,  const gchar *description);
-	return gst_format_register(Str.toStringz(nick), Str.toStringz(description));
+    // GstFormat gst_format_register (const gchar *nick,  const gchar *description);
+    return gst_format_register(Str.toStringz(nick), Str.toStringz(description));
 }
 
 /**
@@ -119,8 +119,8 @@ public static GstFormat register(string nick, string description)
  */
 public static GstFormat getByNick(string nick)
 {
-	// GstFormat gst_format_get_by_nick (const gchar *nick);
-	return gst_format_get_by_nick(Str.toStringz(nick));
+    // GstFormat gst_format_get_by_nick (const gchar *nick);
+    return gst_format_get_by_nick(Str.toStringz(nick));
 }
 
 /**
@@ -132,8 +132,8 @@ public static GstFormat getByNick(string nick)
  */
 public int formatsContains(GstFormat format)
 {
-	// gboolean gst_formats_contains (const GstFormat *formats,  GstFormat format);
-	return gst_formats_contains(gstFormat, format);
+    // gboolean gst_formats_contains (const GstFormat *formats,  GstFormat format);
+    return gst_formats_contains(gstFormat, format);
 }
 
 /**
@@ -144,8 +144,8 @@ public int formatsContains(GstFormat format)
  */
 public static GstFormatDefinition* getDetails(GstFormat format)
 {
-	// const GstFormatDefinition* gst_format_get_details  (GstFormat format);
-	return gst_format_get_details(format);
+    // const GstFormatDefinition* gst_format_get_details  (GstFormat format);
+    return gst_format_get_details(format);
 }
 
 /**
@@ -155,12 +155,12 @@ public static GstFormatDefinition* getDetails(GstFormat format)
  */
 public static Iterator iterateDefinitions()
 {
-	// GstIterator* gst_format_iterate_definitions (void);
-	auto p = gst_format_iterate_definitions();
-	if(p is null)
-	{
-		return null;
-	}
-	return new Iterator(cast(GstIterator*) p);
+    // GstIterator* gst_format_iterate_definitions (void);
+    auto p = gst_format_iterate_definitions();
+    if(p is null)
+    {
+        return null;
+    }
+    return new Iterator(cast(GstIterator*) p);
 }
 

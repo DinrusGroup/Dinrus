@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = NoOpObjectFactory
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_no_op_object_factory_
@@ -69,55 +69,55 @@ private import gtkD.atk.ObjectFactory;
  */
 public class NoOpObjectFactory : ObjectFactory
 {
-	
-	/** the main Gtk struct */
-	protected AtkNoOpObjectFactory* atkNoOpObjectFactory;
-	
-	
-	public AtkNoOpObjectFactory* getNoOpObjectFactoryStruct()
-	{
-		return atkNoOpObjectFactory;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)atkNoOpObjectFactory;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkNoOpObjectFactory* atkNoOpObjectFactory)
-	{
-		if(atkNoOpObjectFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)atkNoOpObjectFactory);
-		if( ptr !is null )
-		{
-			this = cast(NoOpObjectFactory)ptr;
-			return;
-		}
-		super(cast(AtkObjectFactory*)atkNoOpObjectFactory);
-		this.atkNoOpObjectFactory = atkNoOpObjectFactory;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates an instance of an AtkObjectFactory which generates primitive
-	 * (non-functioning) AtkObjects.
-	 * Returns: an instance of an AtkObjectFactory
-	 */
-	public static AtkObjectFactory* newNoOpObjectFactory()
-	{
-		// AtkObjectFactory * atk_no_op_object_factory_new (void);
-		return atk_no_op_object_factory_new();
-	}
+
+    /** the main Gtk struct */
+    protected AtkNoOpObjectFactory* atkNoOpObjectFactory;
+
+
+    public AtkNoOpObjectFactory* getNoOpObjectFactoryStruct()
+    {
+        return atkNoOpObjectFactory;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)atkNoOpObjectFactory;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkNoOpObjectFactory* atkNoOpObjectFactory)
+    {
+        if(atkNoOpObjectFactory is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)atkNoOpObjectFactory);
+        if( ptr !is null )
+        {
+            this = cast(NoOpObjectFactory)ptr;
+            return;
+        }
+        super(cast(AtkObjectFactory*)atkNoOpObjectFactory);
+        this.atkNoOpObjectFactory = atkNoOpObjectFactory;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates an instance of an AtkObjectFactory which generates primitive
+     * (non-functioning) AtkObjects.
+     * Returns: an instance of an AtkObjectFactory
+     */
+    public static AtkObjectFactory* newNoOpObjectFactory()
+    {
+        // AtkObjectFactory * atk_no_op_object_factory_new (void);
+        return atk_no_op_object_factory_new();
+    }
 }

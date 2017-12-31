@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = VBox
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_vbox_
@@ -71,62 +71,62 @@ private import gtkD.gtk.Box;
  */
 public class VBox : Box
 {
-	
-	/** the main Gtk struct */
-	protected GtkVBox* gtkVBox;
-	
-	
-	public GtkVBox* getVBoxStruct()
-	{
-		return gtkVBox;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVBox;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkVBox* gtkVBox)
-	{
-		if(gtkVBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVBox);
-		if( ptr !is null )
-		{
-			this = cast(VBox)ptr;
-			return;
-		}
-		super(cast(GtkBox*)gtkVBox);
-		this.gtkVBox = gtkVBox;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkVBox.
-	 * Params:
-	 * homogeneous = %TRUE if all children are to be given equal space allotments.
-	 * spacing = the number of pixels to place by default between children.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (int homogeneous, int spacing)
-	{
-		// GtkWidget * gtk_vbox_new (gboolean homogeneous,  gint spacing);
-		auto p = gtk_vbox_new(homogeneous, spacing);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_vbox_new(homogeneous, spacing)");
-		}
-		this(cast(GtkVBox*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkVBox* gtkVBox;
+
+
+    public GtkVBox* getVBoxStruct()
+    {
+        return gtkVBox;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkVBox;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkVBox* gtkVBox)
+    {
+        if(gtkVBox is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkVBox);
+        if( ptr !is null )
+        {
+            this = cast(VBox)ptr;
+            return;
+        }
+        super(cast(GtkBox*)gtkVBox);
+        this.gtkVBox = gtkVBox;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkVBox.
+     * Params:
+     * homogeneous = %TRUE if all children are to be given equal space allotments.
+     * spacing = the number of pixels to place by default between children.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (int homogeneous, int spacing)
+    {
+        // GtkWidget * gtk_vbox_new (gboolean homogeneous,  gint spacing);
+        auto p = gtk_vbox_new(homogeneous, spacing);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_vbox_new(homogeneous, spacing)");
+        }
+        this(cast(GtkVBox*) p);
+    }
 }

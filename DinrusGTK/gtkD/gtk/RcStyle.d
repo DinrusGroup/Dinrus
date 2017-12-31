@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = RcStyle
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_rc_
@@ -481,453 +481,453 @@ private import gtkD.gobject.ObjectG;
  */
 public class RcStyle : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkRcStyle* gtkRcStyle;
-	
-	
-	public GtkRcStyle* getRcStyleStruct()
-	{
-		return gtkRcStyle;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRcStyle;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkRcStyle* gtkRcStyle)
-	{
-		if(gtkRcStyle is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRcStyle);
-		if( ptr !is null )
-		{
-			this = cast(RcStyle)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkRcStyle);
-		this.gtkRcStyle = gtkRcStyle;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Returns:
-	 */
-	public static ScannerG scannerNew()
-	{
-		// GScanner* gtk_rc_scanner_new (void);
-		auto p = gtk_rc_scanner_new();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ScannerG(cast(GScanner*) p);
-	}
-	
-	/**
-	 * Finds all matching RC styles for a given widget,
-	 * composites them together, and then creates a
-	 * GtkStyle representing the composite appearance.
-	 * (GTK+ actually keeps a cache of previously
-	 * created styles, so a new style may not be
-	 * created.)
-	 * Params:
-	 * widget =  a GtkWidget
-	 * Returns: the resulting style. No refcount is added to the returned style, so if you want to save this style around, you should add a reference yourself.
-	 */
-	public static Style getStyle(Widget widget)
-	{
-		// GtkStyle* gtk_rc_get_style (GtkWidget *widget);
-		auto p = gtk_rc_get_style((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Style(cast(GtkStyle*) p);
-	}
-	
-	/**
-	 * Creates up a GtkStyle from styles defined in a RC file by providing
-	 * the raw components used in matching. This function may be useful
-	 * when creating pseudo-widgets that should be themed like widgets but
-	 * don't actually have corresponding GTK+ widgets. An example of this
-	 * would be items inside a GNOME canvas widget.
-	 * Params:
-	 * settings =  a GtkSettings object
-	 * widgetPath =  the widget path to use when looking up the style, or NULL
-	 *  if no matching against the widget path should be done
-	 * classPath =  the class path to use when looking up the style, or NULL
-	 *  if no matching against the class path should be done.
-	 * type =  a type that will be used along with parent types of this type
-	 *  when matching against class styles, or G_TYPE_NONE
-	 * Returns: A style created by matching with the supplied paths, or NULL if nothing matching was specified and the default style should be used. The returned value is owned by GTK+ as part of an internal cache, so you must call g_object_ref() on the returned value if you want to keep a reference to it.
-	 */
-	public static Style getStyleByPaths(Settings settings, string widgetPath, string classPath, GType type)
-	{
-		// GtkStyle* gtk_rc_get_style_by_paths (GtkSettings *settings,  const char *widget_path,  const char *class_path,  GType type);
-		auto p = gtk_rc_get_style_by_paths((settings is null) ? null : settings.getSettingsStruct(), Str.toStringz(widgetPath), Str.toStringz(classPath), type);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Style(cast(GtkStyle*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_rc_add_widget_name_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
-	 * Adds a GtkRcStyle that will be looked up by a match against
-	 * Params:
-	 * pattern = the pattern
-	 */
-	public void addWidgetNameStyle(string pattern)
-	{
-		// void gtk_rc_add_widget_name_style (GtkRcStyle *rc_style,  const gchar *pattern);
-		gtk_rc_add_widget_name_style(gtkRcStyle, Str.toStringz(pattern));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_rc_add_widget_class_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
-	 * Adds a GtkRcStyle that will be looked up by a match against
-	 * Params:
-	 * pattern = the pattern
-	 */
-	public void addWidgetClassStyle(string pattern)
-	{
-		// void gtk_rc_add_widget_class_style (GtkRcStyle *rc_style,  const gchar *pattern);
-		gtk_rc_add_widget_class_style(gtkRcStyle, Str.toStringz(pattern));
-	}
-	
-	/**
-	 * Warning
-	 * gtk_rc_add_class_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
-	 * Adds a GtkRcStyle that will be looked up by a matching against
-	 * Params:
-	 * pattern = the pattern
-	 */
-	public void addClassStyle(string pattern)
-	{
-		// void gtk_rc_add_class_style (GtkRcStyle *rc_style,  const gchar *pattern);
-		gtk_rc_add_class_style(gtkRcStyle, Str.toStringz(pattern));
-	}
-	
-	/**
-	 * Parses a given resource file.
-	 * Params:
-	 * filename = the filename of a file to parse. If filename is not absolute, it
-	 *  is searched in the current directory.
-	 */
-	public static void parse(string filename)
-	{
-		// void gtk_rc_parse (const gchar *filename);
-		gtk_rc_parse(Str.toStringz(filename));
-	}
-	
-	/**
-	 * Parses resource information directly from a string.
-	 * Params:
-	 * rcString = a string to parse.
-	 */
-	public static void parseString(string rcString)
-	{
-		// void gtk_rc_parse_string (const gchar *rc_string);
-		gtk_rc_parse_string(Str.toStringz(rcString));
-	}
-	
-	/**
-	 * If the modification time on any previously read file for the
-	 * default GtkSettings has changed, discard all style information
-	 * and then reread all previously read RC files.
-	 * Returns: TRUE if the files were reread.
-	 */
-	public static int reparseAll()
-	{
-		// gboolean gtk_rc_reparse_all (void);
-		return gtk_rc_reparse_all();
-	}
-	
-	/**
-	 * If the modification time on any previously read file
-	 * for the given GtkSettings has changed, discard all style information
-	 * and then reread all previously read RC files.
-	 * Params:
-	 * settings =  a GtkSettings
-	 * forceLoad =  load whether or not anything changed
-	 * Returns: TRUE if the files were reread.
-	 */
-	public static int reparseAllForSettings(Settings settings, int forceLoad)
-	{
-		// gboolean gtk_rc_reparse_all_for_settings (GtkSettings *settings,  gboolean force_load);
-		return gtk_rc_reparse_all_for_settings((settings is null) ? null : settings.getSettingsStruct(), forceLoad);
-	}
-	
-	/**
-	 * This function recomputes the styles for all widgets that use a
-	 * particular GtkSettings object. (There is one GtkSettings object
-	 * per GdkScreen, see gtk_settings_get_for_screen()); It is useful
-	 * when some global parameter has changed that affects the appearance
-	 * of all widgets, because when a widget gets a new style, it will
-	 * both redraw and recompute any cached information about its
-	 * appearance. As an example, it is used when the default font size
-	 * set by the operating system changes. Note that this function
-	 * doesn't affect widgets that have a style set explicitely on them
-	 * with gtk_widget_set_style().
-	 * Since 2.4
-	 * Params:
-	 * settings =  a GtkSettings
-	 */
-	public static void resetStyles(Settings settings)
-	{
-		// void gtk_rc_reset_styles (GtkSettings *settings);
-		gtk_rc_reset_styles((settings is null) ? null : settings.getSettingsStruct());
-	}
-	
-	/**
-	 * Adds a file to the list of files to be parsed at the
-	 * end of gtk_init().
-	 * Params:
-	 * filename =  the pathname to the file. If filename is not absolute, it
-	 *  is searched in the current directory.
-	 */
-	public static void addDefaultFile(string filename)
-	{
-		// void gtk_rc_add_default_file (const gchar *filename);
-		gtk_rc_add_default_file(Str.toStringz(filename));
-	}
-	
-	/**
-	 * Retrieves the current list of RC files that will be parsed
-	 * at the end of gtk_init().
-	 * Returns: A NULL-terminated array of filenames. This memoryis owned by GTK+ and must not be freed by the application.If you want to store this information, you should make a copy.
-	 */
-	public static string[] getDefaultFiles()
-	{
-		// gchar** gtk_rc_get_default_files (void);
-		return Str.toStringArray(gtk_rc_get_default_files());
-	}
-	
-	/**
-	 * Sets the list of files that GTK+ will read at the
-	 * end of gtk_init().
-	 * Params:
-	 * filenames =  A NULL-terminated list of filenames.
-	 */
-	public static void setDefaultFiles(string[] filenames)
-	{
-		// void gtk_rc_set_default_files (gchar **filenames);
-		gtk_rc_set_default_files(Str.toStringzArray(filenames));
-	}
-	
-	/**
-	 * Parses a color in the format expected
-	 * in a RC file.
-	 * Note that theme engines should use gtk_rc_parse_color_full() in
-	 * order to support symbolic colors.
-	 * Params:
-	 * scanner =  a GScanner
-	 * color =  a pointer to a GdkColor structure in which to store the result
-	 * Returns: G_TOKEN_NONE if parsing succeeded, otherwise the token that was expected but not found
-	 */
-	public static uint parseColor(ScannerG scanner, Color color)
-	{
-		// guint gtk_rc_parse_color (GScanner *scanner,  GdkColor *color);
-		return gtk_rc_parse_color((scanner is null) ? null : scanner.getScannerGStruct(), (color is null) ? null : color.getColorStruct());
-	}
-	
-	/**
-	 * Parses a color in the format expected
-	 * in a RC file. If style is not NULL, it will be consulted to resolve
-	 * references to symbolic colors.
-	 * Since 2.12
-	 * Params:
-	 * scanner =  a GScanner
-	 * style =  a GtkRcStyle, or NULL
-	 * color =  a pointer to a GdkColor structure in which to store the result
-	 * Returns: G_TOKEN_NONE if parsing succeeded, otherwise the token that was expected but not found
-	 */
-	public static uint parseColorFull(ScannerG scanner, RcStyle style, Color color)
-	{
-		// guint gtk_rc_parse_color_full (GScanner *scanner,  GtkRcStyle *style,  GdkColor *color);
-		return gtk_rc_parse_color_full((scanner is null) ? null : scanner.getScannerGStruct(), (style is null) ? null : style.getRcStyleStruct(), (color is null) ? null : color.getColorStruct());
-	}
-	
-	/**
-	 * Parses a GtkStateType variable from the format expected
-	 * in a RC file.
-	 * Params:
-	 * scanner = a GtkScanner (must be initialized for parsing an RC file)
-	 * state = A pointer to a GtkStateType variable in which to
-	 * store the result.
-	 * Returns:%G_TOKEN_NONE if parsing succeeded, otherwise the tokenthat was expected but not found.
-	 */
-	public static uint parseState(ScannerG scanner, out GtkStateType state)
-	{
-		// guint gtk_rc_parse_state (GScanner *scanner,  GtkStateType *state);
-		return gtk_rc_parse_state((scanner is null) ? null : scanner.getScannerGStruct(), &state);
-	}
-	
-	/**
-	 * Parses a GtkPathPriorityType variable from the format expected
-	 * in a RC file.
-	 * Params:
-	 * scanner = a GtkScanner (must be initialized for parsing an RC file)
-	 * priority = A pointer to GtkPathPriorityType variable in which
-	 * to store the result.
-	 * Returns:%G_TOKEN_NONE if parsing succeeded, otherwise the tokenthat was expected but not found.
-	 */
-	public static uint parsePriority(ScannerG scanner, out GtkPathPriorityType priority)
-	{
-		// guint gtk_rc_parse_priority (GScanner *scanner,  GtkPathPriorityType *priority);
-		return gtk_rc_parse_priority((scanner is null) ? null : scanner.getScannerGStruct(), &priority);
-	}
-	
-	/**
-	 * Searches for a theme engine in the GTK+ search path. This function
-	 * is not useful for applications and should not be used.
-	 * Params:
-	 * moduleFile =  name of a theme engine
-	 * Returns: The filename, if found (must be freed with g_free()), otherwise NULL.
-	 */
-	public static string findModuleInPath(string moduleFile)
-	{
-		// gchar* gtk_rc_find_module_in_path (const gchar *module_file);
-		return Str.toString(gtk_rc_find_module_in_path(Str.toStringz(moduleFile)));
-	}
-	
-	/**
-	 * Looks up a file in pixmap path for the specified GtkSettings.
-	 * If the file is not found, it outputs a warning message using
-	 * g_warning() and returns NULL.
-	 * Params:
-	 * settings =  a GtkSettings
-	 * scanner =  Scanner used to get line number information for the
-	 *  warning message, or NULL
-	 * pixmapFile =  name of the pixmap file to locate.
-	 * Returns: the filename.
-	 */
-	public static string findPixmapInPath(Settings settings, ScannerG scanner, string pixmapFile)
-	{
-		// gchar* gtk_rc_find_pixmap_in_path (GtkSettings *settings,  GScanner *scanner,  const gchar *pixmap_file);
-		return Str.toString(gtk_rc_find_pixmap_in_path((settings is null) ? null : settings.getSettingsStruct(), (scanner is null) ? null : scanner.getScannerGStruct(), Str.toStringz(pixmapFile)));
-	}
-	
-	/**
-	 * Returns a directory in which GTK+ looks for theme engines.
-	 * For full information about the search for theme engines,
-	 * see the docs for GTK_PATH in
-	 * Running GTK+ Applications(3).
-	 * Returns: the directory. (Must be freed with g_free())
-	 */
-	public static string getModuleDir()
-	{
-		// gchar* gtk_rc_get_module_dir (void);
-		return Str.toString(gtk_rc_get_module_dir());
-	}
-	
-	/**
-	 * Obtains the path in which to look for IM modules. See the documentation
-	 * of the GTK_PATH
-	 * environment variable for more details about looking up modules. This
-	 * function is useful solely for utilities supplied with GTK+ and should
-	 * not be used by applications under normal circumstances.
-	 * Returns: a newly-allocated string containing the path in which to  look for IM modules.
-	 */
-	public static string getImModulePath()
-	{
-		// gchar* gtk_rc_get_im_module_path (void);
-		return Str.toString(gtk_rc_get_im_module_path());
-	}
-	
-	/**
-	 * Obtains the path to the IM modules file. See the documentation
-	 * of the GTK_IM_MODULE_FILE
-	 * environment variable for more details.
-	 * Returns: a newly-allocated string containing the name of the filelisting the IM modules available for loading
-	 */
-	public static string getImModuleFile()
-	{
-		// gchar* gtk_rc_get_im_module_file (void);
-		return Str.toString(gtk_rc_get_im_module_file());
-	}
-	
-	/**
-	 * Returns the standard directory in which themes should
-	 * be installed. (GTK+ does not actually use this directory
-	 * itself.)
-	 * Returns:The directory (must be freed with g_free()).
-	 */
-	public static string getThemeDir()
-	{
-		// gchar* gtk_rc_get_theme_dir (void);
-		return Str.toString(gtk_rc_get_theme_dir());
-	}
-	
-	/**
-	 * Creates a new GtkRcStyle with no fields set and
-	 * a reference count of 1.
-	 * Returns:the newly-created GtkRcStyle
-	 */
-	public static RcStyle styleNew()
-	{
-		// GtkRcStyle* gtk_rc_style_new (void);
-		auto p = gtk_rc_style_new();
-		if(p is null)
-		{
-			return null;
-		}
-		return new RcStyle(cast(GtkRcStyle*) p);
-	}
-	
-	/**
-	 * Makes a copy of the specified GtkRcStyle. This function
-	 * will correctly copy an RC style that is a member of a class
-	 * derived from GtkRcStyle.
-	 * Returns: the resulting GtkRcStyle
-	 */
-	public RcStyle styleCopy()
-	{
-		// GtkRcStyle* gtk_rc_style_copy (GtkRcStyle *orig);
-		auto p = gtk_rc_style_copy(gtkRcStyle);
-		if(p is null)
-		{
-			return null;
-		}
-		return new RcStyle(cast(GtkRcStyle*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_rc_style_ref is deprecated and should not be used in newly-written code. Use g_object_ref() instead
-	 * Increments the reference count of a GtkRcStyle.
-	 */
-	public void styleRef()
-	{
-		// void gtk_rc_style_ref (GtkRcStyle *rc_style);
-		gtk_rc_style_ref(gtkRcStyle);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_rc_style_unref is deprecated and should not be used in newly-written code. Use g_object_unref() instead
-	 * Decrements the reference count of a GtkRcStyle and
-	 * frees if the result is 0.
-	 */
-	public void styleUnref()
-	{
-		// void gtk_rc_style_unref (GtkRcStyle *rc_style);
-		gtk_rc_style_unref(gtkRcStyle);
-	}
+
+    /** the main Gtk struct */
+    protected GtkRcStyle* gtkRcStyle;
+
+
+    public GtkRcStyle* getRcStyleStruct()
+    {
+        return gtkRcStyle;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkRcStyle;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkRcStyle* gtkRcStyle)
+    {
+        if(gtkRcStyle is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkRcStyle);
+        if( ptr !is null )
+        {
+            this = cast(RcStyle)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkRcStyle);
+        this.gtkRcStyle = gtkRcStyle;
+    }
+
+    /**
+     */
+
+    /**
+     * Returns:
+     */
+    public static ScannerG scannerNew()
+    {
+        // GScanner* gtk_rc_scanner_new (void);
+        auto p = gtk_rc_scanner_new();
+        if(p is null)
+        {
+            return null;
+        }
+        return new ScannerG(cast(GScanner*) p);
+    }
+
+    /**
+     * Finds all matching RC styles for a given widget,
+     * composites them together, and then creates a
+     * GtkStyle representing the composite appearance.
+     * (GTK+ actually keeps a cache of previously
+     * created styles, so a new style may not be
+     * created.)
+     * Params:
+     * widget =  a GtkWidget
+     * Returns: the resulting style. No refcount is added to the returned style, so if you want to save this style around, you should add a reference yourself.
+     */
+    public static Style getStyle(Widget widget)
+    {
+        // GtkStyle* gtk_rc_get_style (GtkWidget *widget);
+        auto p = gtk_rc_get_style((widget is null) ? null : widget.getWidgetStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Style(cast(GtkStyle*) p);
+    }
+
+    /**
+     * Creates up a GtkStyle from styles defined in a RC file by providing
+     * the raw components used in matching. This function may be useful
+     * when creating pseudo-widgets that should be themed like widgets but
+     * don't actually have corresponding GTK+ widgets. An example of this
+     * would be items inside a GNOME canvas widget.
+     * Params:
+     * settings =  a GtkSettings object
+     * widgetPath =  the widget path to use when looking up the style, or NULL
+     *  if no matching against the widget path should be done
+     * classPath =  the class path to use when looking up the style, or NULL
+     *  if no matching against the class path should be done.
+     * type =  a type that will be used along with parent types of this type
+     *  when matching against class styles, or G_TYPE_NONE
+     * Returns: A style created by matching with the supplied paths, or NULL if nothing matching was specified and the default style should be used. The returned value is owned by GTK+ as part of an internal cache, so you must call g_object_ref() on the returned value if you want to keep a reference to it.
+     */
+    public static Style getStyleByPaths(Settings settings, string widgetPath, string classPath, GType type)
+    {
+        // GtkStyle* gtk_rc_get_style_by_paths (GtkSettings *settings,  const char *widget_path,  const char *class_path,  GType type);
+        auto p = gtk_rc_get_style_by_paths((settings is null) ? null : settings.getSettingsStruct(), Str.toStringz(widgetPath), Str.toStringz(classPath), type);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Style(cast(GtkStyle*) p);
+    }
+
+    /**
+     * Warning
+     * gtk_rc_add_widget_name_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
+     * Adds a GtkRcStyle that will be looked up by a match against
+     * Params:
+     * pattern = the pattern
+     */
+    public void addWidgetNameStyle(string pattern)
+    {
+        // void gtk_rc_add_widget_name_style (GtkRcStyle *rc_style,  const gchar *pattern);
+        gtk_rc_add_widget_name_style(gtkRcStyle, Str.toStringz(pattern));
+    }
+
+    /**
+     * Warning
+     * gtk_rc_add_widget_class_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
+     * Adds a GtkRcStyle that will be looked up by a match against
+     * Params:
+     * pattern = the pattern
+     */
+    public void addWidgetClassStyle(string pattern)
+    {
+        // void gtk_rc_add_widget_class_style (GtkRcStyle *rc_style,  const gchar *pattern);
+        gtk_rc_add_widget_class_style(gtkRcStyle, Str.toStringz(pattern));
+    }
+
+    /**
+     * Warning
+     * gtk_rc_add_class_style is deprecated and should not be used in newly-written code. Use gtk_rc_parse_string() with a suitable string instead.
+     * Adds a GtkRcStyle that will be looked up by a matching against
+     * Params:
+     * pattern = the pattern
+     */
+    public void addClassStyle(string pattern)
+    {
+        // void gtk_rc_add_class_style (GtkRcStyle *rc_style,  const gchar *pattern);
+        gtk_rc_add_class_style(gtkRcStyle, Str.toStringz(pattern));
+    }
+
+    /**
+     * Parses a given resource file.
+     * Params:
+     * filename = the filename of a file to parse. If filename is not absolute, it
+     *  is searched in the current directory.
+     */
+    public static void parse(string filename)
+    {
+        // void gtk_rc_parse (const gchar *filename);
+        gtk_rc_parse(Str.toStringz(filename));
+    }
+
+    /**
+     * Parses resource information directly from a string.
+     * Params:
+     * rcString = a string to parse.
+     */
+    public static void parseString(string rcString)
+    {
+        // void gtk_rc_parse_string (const gchar *rc_string);
+        gtk_rc_parse_string(Str.toStringz(rcString));
+    }
+
+    /**
+     * If the modification time on any previously read file for the
+     * default GtkSettings has changed, discard all style information
+     * and then reread all previously read RC files.
+     * Returns: TRUE if the files were reread.
+     */
+    public static int reparseAll()
+    {
+        // gboolean gtk_rc_reparse_all (void);
+        return gtk_rc_reparse_all();
+    }
+
+    /**
+     * If the modification time on any previously read file
+     * for the given GtkSettings has changed, discard all style information
+     * and then reread all previously read RC files.
+     * Params:
+     * settings =  a GtkSettings
+     * forceLoad =  load whether or not anything changed
+     * Returns: TRUE if the files were reread.
+     */
+    public static int reparseAllForSettings(Settings settings, int forceLoad)
+    {
+        // gboolean gtk_rc_reparse_all_for_settings (GtkSettings *settings,  gboolean force_load);
+        return gtk_rc_reparse_all_for_settings((settings is null) ? null : settings.getSettingsStruct(), forceLoad);
+    }
+
+    /**
+     * This function recomputes the styles for all widgets that use a
+     * particular GtkSettings object. (There is one GtkSettings object
+     * per GdkScreen, see gtk_settings_get_for_screen()); It is useful
+     * when some global parameter has changed that affects the appearance
+     * of all widgets, because when a widget gets a new style, it will
+     * both redraw and recompute any cached information about its
+     * appearance. As an example, it is used when the default font size
+     * set by the operating system changes. Note that this function
+     * doesn't affect widgets that have a style set explicitely on them
+     * with gtk_widget_set_style().
+     * Since 2.4
+     * Params:
+     * settings =  a GtkSettings
+     */
+    public static void resetStyles(Settings settings)
+    {
+        // void gtk_rc_reset_styles (GtkSettings *settings);
+        gtk_rc_reset_styles((settings is null) ? null : settings.getSettingsStruct());
+    }
+
+    /**
+     * Adds a file to the list of files to be parsed at the
+     * end of gtk_init().
+     * Params:
+     * filename =  the pathname to the file. If filename is not absolute, it
+     *  is searched in the current directory.
+     */
+    public static void addDefaultFile(string filename)
+    {
+        // void gtk_rc_add_default_file (const gchar *filename);
+        gtk_rc_add_default_file(Str.toStringz(filename));
+    }
+
+    /**
+     * Retrieves the current list of RC files that will be parsed
+     * at the end of gtk_init().
+     * Returns: A NULL-terminated array of filenames. This memoryis owned by GTK+ and must not be freed by the application.If you want to store this information, you should make a copy.
+     */
+    public static string[] getDefaultFiles()
+    {
+        // gchar** gtk_rc_get_default_files (void);
+        return Str.toStringArray(gtk_rc_get_default_files());
+    }
+
+    /**
+     * Sets the list of files that GTK+ will read at the
+     * end of gtk_init().
+     * Params:
+     * filenames =  A NULL-terminated list of filenames.
+     */
+    public static void setDefaultFiles(string[] filenames)
+    {
+        // void gtk_rc_set_default_files (gchar **filenames);
+        gtk_rc_set_default_files(Str.toStringzArray(filenames));
+    }
+
+    /**
+     * Parses a color in the format expected
+     * in a RC file.
+     * Note that theme engines should use gtk_rc_parse_color_full() in
+     * order to support symbolic colors.
+     * Params:
+     * scanner =  a GScanner
+     * color =  a pointer to a GdkColor structure in which to store the result
+     * Returns: G_TOKEN_NONE if parsing succeeded, otherwise the token that was expected but not found
+     */
+    public static uint parseColor(ScannerG scanner, Color color)
+    {
+        // guint gtk_rc_parse_color (GScanner *scanner,  GdkColor *color);
+        return gtk_rc_parse_color((scanner is null) ? null : scanner.getScannerGStruct(), (color is null) ? null : color.getColorStruct());
+    }
+
+    /**
+     * Parses a color in the format expected
+     * in a RC file. If style is not NULL, it will be consulted to resolve
+     * references to symbolic colors.
+     * Since 2.12
+     * Params:
+     * scanner =  a GScanner
+     * style =  a GtkRcStyle, or NULL
+     * color =  a pointer to a GdkColor structure in which to store the result
+     * Returns: G_TOKEN_NONE if parsing succeeded, otherwise the token that was expected but not found
+     */
+    public static uint parseColorFull(ScannerG scanner, RcStyle style, Color color)
+    {
+        // guint gtk_rc_parse_color_full (GScanner *scanner,  GtkRcStyle *style,  GdkColor *color);
+        return gtk_rc_parse_color_full((scanner is null) ? null : scanner.getScannerGStruct(), (style is null) ? null : style.getRcStyleStruct(), (color is null) ? null : color.getColorStruct());
+    }
+
+    /**
+     * Parses a GtkStateType variable from the format expected
+     * in a RC file.
+     * Params:
+     * scanner = a GtkScanner (must be initialized for parsing an RC file)
+     * state = A pointer to a GtkStateType variable in which to
+     * store the result.
+     * Returns:%G_TOKEN_NONE if parsing succeeded, otherwise the tokenthat was expected but not found.
+     */
+    public static uint parseState(ScannerG scanner, out GtkStateType state)
+    {
+        // guint gtk_rc_parse_state (GScanner *scanner,  GtkStateType *state);
+        return gtk_rc_parse_state((scanner is null) ? null : scanner.getScannerGStruct(), &state);
+    }
+
+    /**
+     * Parses a GtkPathPriorityType variable from the format expected
+     * in a RC file.
+     * Params:
+     * scanner = a GtkScanner (must be initialized for parsing an RC file)
+     * priority = A pointer to GtkPathPriorityType variable in which
+     * to store the result.
+     * Returns:%G_TOKEN_NONE if parsing succeeded, otherwise the tokenthat was expected but not found.
+     */
+    public static uint parsePriority(ScannerG scanner, out GtkPathPriorityType priority)
+    {
+        // guint gtk_rc_parse_priority (GScanner *scanner,  GtkPathPriorityType *priority);
+        return gtk_rc_parse_priority((scanner is null) ? null : scanner.getScannerGStruct(), &priority);
+    }
+
+    /**
+     * Searches for a theme engine in the GTK+ search path. This function
+     * is not useful for applications and should not be used.
+     * Params:
+     * moduleFile =  name of a theme engine
+     * Returns: The filename, if found (must be freed with g_free()), otherwise NULL.
+     */
+    public static string findModuleInPath(string moduleFile)
+    {
+        // gchar* gtk_rc_find_module_in_path (const gchar *module_file);
+        return Str.toString(gtk_rc_find_module_in_path(Str.toStringz(moduleFile)));
+    }
+
+    /**
+     * Looks up a file in pixmap path for the specified GtkSettings.
+     * If the file is not found, it outputs a warning message using
+     * g_warning() and returns NULL.
+     * Params:
+     * settings =  a GtkSettings
+     * scanner =  Scanner used to get line number information for the
+     *  warning message, or NULL
+     * pixmapFile =  name of the pixmap file to locate.
+     * Returns: the filename.
+     */
+    public static string findPixmapInPath(Settings settings, ScannerG scanner, string pixmapFile)
+    {
+        // gchar* gtk_rc_find_pixmap_in_path (GtkSettings *settings,  GScanner *scanner,  const gchar *pixmap_file);
+        return Str.toString(gtk_rc_find_pixmap_in_path((settings is null) ? null : settings.getSettingsStruct(), (scanner is null) ? null : scanner.getScannerGStruct(), Str.toStringz(pixmapFile)));
+    }
+
+    /**
+     * Returns a directory in which GTK+ looks for theme engines.
+     * For full information about the search for theme engines,
+     * see the docs for GTK_PATH in
+     * Running GTK+ Applications(3).
+     * Returns: the directory. (Must be freed with g_free())
+     */
+    public static string getModuleDir()
+    {
+        // gchar* gtk_rc_get_module_dir (void);
+        return Str.toString(gtk_rc_get_module_dir());
+    }
+
+    /**
+     * Obtains the path in which to look for IM modules. See the documentation
+     * of the GTK_PATH
+     * environment variable for more details about looking up modules. This
+     * function is useful solely for utilities supplied with GTK+ and should
+     * not be used by applications under normal circumstances.
+     * Returns: a newly-allocated string containing the path in which to  look for IM modules.
+     */
+    public static string getImModulePath()
+    {
+        // gchar* gtk_rc_get_im_module_path (void);
+        return Str.toString(gtk_rc_get_im_module_path());
+    }
+
+    /**
+     * Obtains the path to the IM modules file. See the documentation
+     * of the GTK_IM_MODULE_FILE
+     * environment variable for more details.
+     * Returns: a newly-allocated string containing the name of the filelisting the IM modules available for loading
+     */
+    public static string getImModuleFile()
+    {
+        // gchar* gtk_rc_get_im_module_file (void);
+        return Str.toString(gtk_rc_get_im_module_file());
+    }
+
+    /**
+     * Returns the standard directory in which themes should
+     * be installed. (GTK+ does not actually use this directory
+     * itself.)
+     * Returns:The directory (must be freed with g_free()).
+     */
+    public static string getThemeDir()
+    {
+        // gchar* gtk_rc_get_theme_dir (void);
+        return Str.toString(gtk_rc_get_theme_dir());
+    }
+
+    /**
+     * Creates a new GtkRcStyle with no fields set and
+     * a reference count of 1.
+     * Returns:the newly-created GtkRcStyle
+     */
+    public static RcStyle styleNew()
+    {
+        // GtkRcStyle* gtk_rc_style_new (void);
+        auto p = gtk_rc_style_new();
+        if(p is null)
+        {
+            return null;
+        }
+        return new RcStyle(cast(GtkRcStyle*) p);
+    }
+
+    /**
+     * Makes a copy of the specified GtkRcStyle. This function
+     * will correctly copy an RC style that is a member of a class
+     * derived from GtkRcStyle.
+     * Returns: the resulting GtkRcStyle
+     */
+    public RcStyle styleCopy()
+    {
+        // GtkRcStyle* gtk_rc_style_copy (GtkRcStyle *orig);
+        auto p = gtk_rc_style_copy(gtkRcStyle);
+        if(p is null)
+        {
+            return null;
+        }
+        return new RcStyle(cast(GtkRcStyle*) p);
+    }
+
+    /**
+     * Warning
+     * gtk_rc_style_ref is deprecated and should not be used in newly-written code. Use g_object_ref() instead
+     * Increments the reference count of a GtkRcStyle.
+     */
+    public void styleRef()
+    {
+        // void gtk_rc_style_ref (GtkRcStyle *rc_style);
+        gtk_rc_style_ref(gtkRcStyle);
+    }
+
+    /**
+     * Warning
+     * gtk_rc_style_unref is deprecated and should not be used in newly-written code. Use g_object_unref() instead
+     * Decrements the reference count of a GtkRcStyle and
+     * frees if the result is 0.
+     */
+    public void styleUnref()
+    {
+        // void gtk_rc_style_unref (GtkRcStyle *rc_style);
+        gtk_rc_style_unref(gtkRcStyle);
+    }
 }

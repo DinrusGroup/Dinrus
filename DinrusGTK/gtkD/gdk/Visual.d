@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Visual
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_visual_
@@ -104,225 +104,225 @@ private import gtkD.gdk.Screen;
  */
 public class Visual
 {
-	
-	/** the main Gtk struct */
-	protected GdkVisual* gdkVisual;
-	
-	
-	public GdkVisual* getVisualStruct()
-	{
-		return gdkVisual;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkVisual;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkVisual* gdkVisual)
-	{
-		if(gdkVisual is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkVisual = gdkVisual;
-	}
-	
-	/**
-	 * This function returns the available bit depths for the default
-	 * screen. It's equivalent to listing the visuals
-	 * (gdk_list_visuals()) and then looking at the depth field in each
-	 * visual, removing duplicates.
-	 * The array returned by this function should not be freed.
-	 * Params:
-	 * depths =  return location for available depths
-	 */
-	public static void gdkQueryDepths(out int[] depths)
-	{
-		int* dep = null;
-		int count;
-		
-		// void gdk_query_depths (gint **depths,  gint *count);
-		gdk_query_depths(&dep, &count);
-		
-		depths = dep[0 .. count];
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * This function returns the available visual types for the default
-	 * screen. It's equivalent to listing the visuals
-	 * (gdk_list_visuals()) and then looking at the type field in each
-	 * visual, removing duplicates.
-	 * The array returned by this function should not be freed.
-	 * Params:
-	 * visualTypes =  return location for the available visual types
-	 */
-	public static void gdkQueryVisualTypes(out GdkVisualType[] visualTypes)
-	{
-		// void gdk_query_visual_types (GdkVisualType **visual_types,  gint *count);
-		GdkVisualType* outvisualTypes = null;
-		int count;
-		
-		gdk_query_visual_types(&outvisualTypes, &count);
-		
-		visualTypes = outvisualTypes[0 .. count];
-	}
-	
-	/**
-	 * Lists the available visuals for the default screen.
-	 * (See gdk_screen_list_visuals())
-	 * A visual describes a hardware image data format.
-	 * For example, a visual might support 24-bit color, or 8-bit color,
-	 * and might expect pixels to be in a certain format.
-	 * Call g_list_free() on the return value when you're finished with it.
-	 * Returns: a list of visuals; the list must be freed, but not its contents
-	 */
-	public static ListG gdkListVisuals()
-	{
-		// GList* gdk_list_visuals (void);
-		auto p = gdk_list_visuals();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
-	
-	/**
-	 * Get the best available depth for the default GDK screen. "Best"
-	 * means "largest," i.e. 32 preferred over 24 preferred over 8 bits
-	 * per pixel.
-	 * Returns: best available depth
-	 */
-	public static int getBestDepth()
-	{
-		// gint gdk_visual_get_best_depth (void);
-		return gdk_visual_get_best_depth();
-	}
-	
-	/**
-	 * Return the best available visual type for the default GDK screen.
-	 * Returns: best visual type
-	 */
-	public static GdkVisualType getBestType()
-	{
-		// GdkVisualType gdk_visual_get_best_type (void);
-		return gdk_visual_get_best_type();
-	}
-	
-	/**
-	 * Get the system'sdefault visual for the default GDK screen.
-	 * This is the visual for the root window of the display.
-	 * The return value should not be freed.
-	 * Returns: system visual
-	 */
-	public static Visual getSystem()
-	{
-		// GdkVisual* gdk_visual_get_system (void);
-		auto p = gdk_visual_get_system();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
-	
-	/**
-	 * Get the visual with the most available colors for the default
-	 * GDK screen. The return value should not be freed.
-	 * Returns: best visual
-	 */
-	public static Visual getBest()
-	{
-		// GdkVisual* gdk_visual_get_best (void);
-		auto p = gdk_visual_get_best();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
-	
-	/**
-	 * Get the best visual with depth depth for the default GDK screen.
-	 * Color visuals and visuals with mutable colormaps are preferred
-	 * over grayscale or fixed-colormap visuals. The return value should not
-	 * be freed. NULL may be returned if no visual supports depth.
-	 * Params:
-	 * depth =  a bit depth
-	 * Returns: best visual for the given depth
-	 */
-	public static Visual getBestWithDepth(int depth)
-	{
-		// GdkVisual* gdk_visual_get_best_with_depth (gint depth);
-		auto p = gdk_visual_get_best_with_depth(depth);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
-	
-	/**
-	 * Get the best visual of the given visual_type for the default GDK screen.
-	 * Visuals with higher color depths are considered better. The return value
-	 * should not be freed. NULL may be returned if no visual has type
-	 * visual_type.
-	 * Params:
-	 * visualType =  a visual type
-	 * Returns: best visual of the given type
-	 */
-	public static Visual getBestWithType(GdkVisualType visualType)
-	{
-		// GdkVisual* gdk_visual_get_best_with_type (GdkVisualType visual_type);
-		auto p = gdk_visual_get_best_with_type(visualType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
-	
-	/**
-	 * Combines gdk_visual_get_best_with_depth() and gdk_visual_get_best_with_type().
-	 * Params:
-	 * depth =  a bit depth
-	 * visualType =  a visual type
-	 * Returns: best visual with both depth and visual_type, or NULL if none
-	 */
-	public static Visual getBestWithBoth(int depth, GdkVisualType visualType)
-	{
-		// GdkVisual* gdk_visual_get_best_with_both (gint depth,  GdkVisualType visual_type);
-		auto p = gdk_visual_get_best_with_both(depth, visualType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Visual(cast(GdkVisual*) p);
-	}
-	
-	/**
-	 * Gets the screen to which this visual belongs
-	 * Since 2.2
-	 * Returns: the screen to which this visual belongs.
-	 */
-	public Screen getScreen()
-	{
-		// GdkScreen * gdk_visual_get_screen (GdkVisual *visual);
-		auto p = gdk_visual_get_screen(gdkVisual);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Screen(cast(GdkScreen*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GdkVisual* gdkVisual;
+
+
+    public GdkVisual* getVisualStruct()
+    {
+        return gdkVisual;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdkVisual;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkVisual* gdkVisual)
+    {
+        if(gdkVisual is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdkVisual = gdkVisual;
+    }
+
+    /**
+     * This function returns the available bit depths for the default
+     * screen. It's equivalent to listing the visuals
+     * (gdk_list_visuals()) and then looking at the depth field in each
+     * visual, removing duplicates.
+     * The array returned by this function should not be freed.
+     * Params:
+     * depths =  return location for available depths
+     */
+    public static void gdkQueryDepths(out int[] depths)
+    {
+        int* dep = null;
+        int count;
+
+        // void gdk_query_depths (gint **depths,  gint *count);
+        gdk_query_depths(&dep, &count);
+
+        depths = dep[0 .. count];
+    }
+
+    /**
+     */
+
+    /**
+     * This function returns the available visual types for the default
+     * screen. It's equivalent to listing the visuals
+     * (gdk_list_visuals()) and then looking at the type field in each
+     * visual, removing duplicates.
+     * The array returned by this function should not be freed.
+     * Params:
+     * visualTypes =  return location for the available visual types
+     */
+    public static void gdkQueryVisualTypes(out GdkVisualType[] visualTypes)
+    {
+        // void gdk_query_visual_types (GdkVisualType **visual_types,  gint *count);
+        GdkVisualType* outvisualTypes = null;
+        int count;
+
+        gdk_query_visual_types(&outvisualTypes, &count);
+
+        visualTypes = outvisualTypes[0 .. count];
+    }
+
+    /**
+     * Lists the available visuals for the default screen.
+     * (See gdk_screen_list_visuals())
+     * A visual describes a hardware image data format.
+     * For example, a visual might support 24-bit color, or 8-bit color,
+     * and might expect pixels to be in a certain format.
+     * Call g_list_free() on the return value when you're finished with it.
+     * Returns: a list of visuals; the list must be freed, but not its contents
+     */
+    public static ListG gdkListVisuals()
+    {
+        // GList* gdk_list_visuals (void);
+        auto p = gdk_list_visuals();
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListG(cast(GList*) p);
+    }
+
+    /**
+     * Get the best available depth for the default GDK screen. "Best"
+     * means "largest," i.e. 32 preferred over 24 preferred over 8 bits
+     * per pixel.
+     * Returns: best available depth
+     */
+    public static int getBestDepth()
+    {
+        // gint gdk_visual_get_best_depth (void);
+        return gdk_visual_get_best_depth();
+    }
+
+    /**
+     * Return the best available visual type for the default GDK screen.
+     * Returns: best visual type
+     */
+    public static GdkVisualType getBestType()
+    {
+        // GdkVisualType gdk_visual_get_best_type (void);
+        return gdk_visual_get_best_type();
+    }
+
+    /**
+     * Get the system'sdefault visual for the default GDK screen.
+     * This is the visual for the root window of the display.
+     * The return value should not be freed.
+     * Returns: system visual
+     */
+    public static Visual getSystem()
+    {
+        // GdkVisual* gdk_visual_get_system (void);
+        auto p = gdk_visual_get_system();
+        if(p is null)
+        {
+            return null;
+        }
+        return new Visual(cast(GdkVisual*) p);
+    }
+
+    /**
+     * Get the visual with the most available colors for the default
+     * GDK screen. The return value should not be freed.
+     * Returns: best visual
+     */
+    public static Visual getBest()
+    {
+        // GdkVisual* gdk_visual_get_best (void);
+        auto p = gdk_visual_get_best();
+        if(p is null)
+        {
+            return null;
+        }
+        return new Visual(cast(GdkVisual*) p);
+    }
+
+    /**
+     * Get the best visual with depth depth for the default GDK screen.
+     * Color visuals and visuals with mutable colormaps are preferred
+     * over grayscale or fixed-colormap visuals. The return value should not
+     * be freed. NULL may be returned if no visual supports depth.
+     * Params:
+     * depth =  a bit depth
+     * Returns: best visual for the given depth
+     */
+    public static Visual getBestWithDepth(int depth)
+    {
+        // GdkVisual* gdk_visual_get_best_with_depth (gint depth);
+        auto p = gdk_visual_get_best_with_depth(depth);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Visual(cast(GdkVisual*) p);
+    }
+
+    /**
+     * Get the best visual of the given visual_type for the default GDK screen.
+     * Visuals with higher color depths are considered better. The return value
+     * should not be freed. NULL may be returned if no visual has type
+     * visual_type.
+     * Params:
+     * visualType =  a visual type
+     * Returns: best visual of the given type
+     */
+    public static Visual getBestWithType(GdkVisualType visualType)
+    {
+        // GdkVisual* gdk_visual_get_best_with_type (GdkVisualType visual_type);
+        auto p = gdk_visual_get_best_with_type(visualType);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Visual(cast(GdkVisual*) p);
+    }
+
+    /**
+     * Combines gdk_visual_get_best_with_depth() and gdk_visual_get_best_with_type().
+     * Params:
+     * depth =  a bit depth
+     * visualType =  a visual type
+     * Returns: best visual with both depth and visual_type, or NULL if none
+     */
+    public static Visual getBestWithBoth(int depth, GdkVisualType visualType)
+    {
+        // GdkVisual* gdk_visual_get_best_with_both (gint depth,  GdkVisualType visual_type);
+        auto p = gdk_visual_get_best_with_both(depth, visualType);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Visual(cast(GdkVisual*) p);
+    }
+
+    /**
+     * Gets the screen to which this visual belongs
+     * Since 2.2
+     * Returns: the screen to which this visual belongs.
+     */
+    public Screen getScreen()
+    {
+        // GdkScreen * gdk_visual_get_screen (GdkVisual *visual);
+        auto p = gdk_visual_get_screen(gdkVisual);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Screen(cast(GdkScreen*) p);
+    }
 }

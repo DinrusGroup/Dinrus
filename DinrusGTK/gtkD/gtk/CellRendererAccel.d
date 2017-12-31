@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkCellRenderer
  * clss    = CellRendererAccel
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_cell_renderer_accel_
@@ -78,118 +78,118 @@ private import gtkD.gtk.CellRendererText;
  */
 public class CellRendererAccel : CellRendererText
 {
-	
-	/** the main Gtk struct */
-	protected GtkCellRendererAccel* gtkCellRendererAccel;
-	
-	
-	public GtkCellRendererAccel* getCellRendererAccelStruct()
-	{
-		return gtkCellRendererAccel;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererAccel;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkCellRendererAccel* gtkCellRendererAccel)
-	{
-		if(gtkCellRendererAccel is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererAccel);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererAccel)ptr;
-			return;
-		}
-		super(cast(GtkCellRendererText*)gtkCellRendererAccel);
-		this.gtkCellRendererAccel = gtkCellRendererAccel;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(string, CellRendererAccel)[] onAccelClearedListeners;
-	/**
-	 * Gets emitted when the user has removed the accelerator.
-	 * Since 2.10
-	 */
-	void addOnAccelCleared(void delegate(string, CellRendererAccel) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("accel-cleared" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"accel-cleared",
-			cast(GCallback)&callBackAccelCleared,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["accel-cleared"] = 1;
-		}
-		onAccelClearedListeners ~= dlg;
-	}
-	extern(C) static void callBackAccelCleared(GtkCellRendererAccel* accelStruct, gchar* pathString, CellRendererAccel cellRendererAccel)
-	{
-		foreach ( void delegate(string, CellRendererAccel) dlg ; cellRendererAccel.onAccelClearedListeners )
-		{
-			dlg(Str.toString(pathString), cellRendererAccel);
-		}
-	}
-	
-	void delegate(string, guint, GdkModifierType, guint, CellRendererAccel)[] onAccelEditedListeners;
-	/**
-	 * Gets emitted when the user has selected a new accelerator.
-	 * Since 2.10
-	 */
-	void addOnAccelEdited(void delegate(string, guint, GdkModifierType, guint, CellRendererAccel) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("accel-edited" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"accel-edited",
-			cast(GCallback)&callBackAccelEdited,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["accel-edited"] = 1;
-		}
-		onAccelEditedListeners ~= dlg;
-	}
-	extern(C) static void callBackAccelEdited(GtkCellRendererAccel* accelStruct, gchar* pathString, guint accelKey, GdkModifierType accelMods, guint hardwareKeycode, CellRendererAccel cellRendererAccel)
-	{
-		foreach ( void delegate(string, guint, GdkModifierType, guint, CellRendererAccel) dlg ; cellRendererAccel.onAccelEditedListeners )
-		{
-			dlg(Str.toString(pathString), accelKey, accelMods, hardwareKeycode, cellRendererAccel);
-		}
-	}
-	
-	
-	/**
-	 * Creates a new GtkCellRendererAccel.
-	 * Since 2.10
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_accel_new (void);
-		auto p = gtk_cell_renderer_accel_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_accel_new()");
-		}
-		this(cast(GtkCellRendererAccel*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkCellRendererAccel* gtkCellRendererAccel;
+
+
+    public GtkCellRendererAccel* getCellRendererAccelStruct()
+    {
+        return gtkCellRendererAccel;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkCellRendererAccel;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkCellRendererAccel* gtkCellRendererAccel)
+    {
+        if(gtkCellRendererAccel is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkCellRendererAccel);
+        if( ptr !is null )
+        {
+            this = cast(CellRendererAccel)ptr;
+            return;
+        }
+        super(cast(GtkCellRendererText*)gtkCellRendererAccel);
+        this.gtkCellRendererAccel = gtkCellRendererAccel;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(string, CellRendererAccel)[] onAccelClearedListeners;
+    /**
+     * Gets emitted when the user has removed the accelerator.
+     * Since 2.10
+     */
+    void addOnAccelCleared(void delegate(string, CellRendererAccel) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("accel-cleared" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "accel-cleared",
+                cast(GCallback)&callBackAccelCleared,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["accel-cleared"] = 1;
+        }
+        onAccelClearedListeners ~= dlg;
+    }
+    extern(C) static void callBackAccelCleared(GtkCellRendererAccel* accelStruct, gchar* pathString, CellRendererAccel cellRendererAccel)
+    {
+        foreach ( void delegate(string, CellRendererAccel) dlg ; cellRendererAccel.onAccelClearedListeners )
+        {
+            dlg(Str.toString(pathString), cellRendererAccel);
+        }
+    }
+
+    void delegate(string, guint, GdkModifierType, guint, CellRendererAccel)[] onAccelEditedListeners;
+    /**
+     * Gets emitted when the user has selected a new accelerator.
+     * Since 2.10
+     */
+    void addOnAccelEdited(void delegate(string, guint, GdkModifierType, guint, CellRendererAccel) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("accel-edited" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "accel-edited",
+                cast(GCallback)&callBackAccelEdited,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["accel-edited"] = 1;
+        }
+        onAccelEditedListeners ~= dlg;
+    }
+    extern(C) static void callBackAccelEdited(GtkCellRendererAccel* accelStruct, gchar* pathString, guint accelKey, GdkModifierType accelMods, guint hardwareKeycode, CellRendererAccel cellRendererAccel)
+    {
+        foreach ( void delegate(string, guint, GdkModifierType, guint, CellRendererAccel) dlg ; cellRendererAccel.onAccelEditedListeners )
+        {
+            dlg(Str.toString(pathString), accelKey, accelMods, hardwareKeycode, cellRendererAccel);
+        }
+    }
+
+
+    /**
+     * Creates a new GtkCellRendererAccel.
+     * Since 2.10
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkCellRenderer * gtk_cell_renderer_accel_new (void);
+        auto p = gtk_cell_renderer_accel_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_cell_renderer_accel_new()");
+        }
+        this(cast(GtkCellRendererAccel*) p);
+    }
 }

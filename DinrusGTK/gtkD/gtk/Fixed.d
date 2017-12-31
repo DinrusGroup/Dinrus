@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Fixed
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_fixed_
@@ -97,118 +97,118 @@ private import gtkD.gtk.Container;
  */
 public class Fixed : Container
 {
-	
-	/** the main Gtk struct */
-	protected GtkFixed* gtkFixed;
-	
-	
-	public GtkFixed* getFixedStruct()
-	{
-		return gtkFixed;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFixed;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkFixed* gtkFixed)
-	{
-		if(gtkFixed is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFixed);
-		if( ptr !is null )
-		{
-			this = cast(Fixed)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkFixed);
-		this.gtkFixed = gtkFixed;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkFixed.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget* gtk_fixed_new (void);
-		auto p = gtk_fixed_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_fixed_new()");
-		}
-		this(cast(GtkFixed*) p);
-	}
-	
-	/**
-	 * Adds a widget to a GtkFixed container at the given position.
-	 * Params:
-	 * widget = the widget to add.
-	 * x = the horizontal position to place the widget at.
-	 * y = the vertical position to place the widget at.
-	 */
-	public void put(Widget widget, int x, int y)
-	{
-		// void gtk_fixed_put (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
-		gtk_fixed_put(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
-	}
-	
-	/**
-	 * Moves a child of a GtkFixed container to the given position.
-	 * Params:
-	 * widget = the child widget.
-	 * x = the horizontal position to move the widget to.
-	 * y = the vertical position to move the widget to.
-	 */
-	public void move(Widget widget, int x, int y)
-	{
-		// void gtk_fixed_move (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
-		gtk_fixed_move(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
-	}
-	
-	/**
-	 * Gets whether the GtkFixed has its own GdkWindow.
-	 * See gtk_fixed_set_has_window().
-	 * Returns: TRUE if fixed has its own window.
-	 */
-	public int getHasWindow()
-	{
-		// gboolean gtk_fixed_get_has_window (GtkFixed *fixed);
-		return gtk_fixed_get_has_window(gtkFixed);
-	}
-	
-	/**
-	 * Sets whether a GtkFixed widget is created with a separate
-	 * GdkWindow for widget->window or not. (By default, it will be
-	 * created with no separate GdkWindow). This function must be called
-	 * while the GtkFixed is not realized, for instance, immediately after the
-	 * window is created.
-	 * This function was added to provide an easy migration path for
-	 * older applications which may expect GtkFixed to have a separate window.
-	 * Params:
-	 * hasWindow =  TRUE if a separate window should be created
-	 * Child Property Details
-	 * The "x" child property
-	 *  "x" gint : Read / Write
-	 * X position of child widget.
-	 * Default value: 0
-	 */
-	public void setHasWindow(int hasWindow)
-	{
-		// void gtk_fixed_set_has_window (GtkFixed *fixed,  gboolean has_window);
-		gtk_fixed_set_has_window(gtkFixed, hasWindow);
-	}
+
+    /** the main Gtk struct */
+    protected GtkFixed* gtkFixed;
+
+
+    public GtkFixed* getFixedStruct()
+    {
+        return gtkFixed;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkFixed;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkFixed* gtkFixed)
+    {
+        if(gtkFixed is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkFixed);
+        if( ptr !is null )
+        {
+            this = cast(Fixed)ptr;
+            return;
+        }
+        super(cast(GtkContainer*)gtkFixed);
+        this.gtkFixed = gtkFixed;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkFixed.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget* gtk_fixed_new (void);
+        auto p = gtk_fixed_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_fixed_new()");
+        }
+        this(cast(GtkFixed*) p);
+    }
+
+    /**
+     * Adds a widget to a GtkFixed container at the given position.
+     * Params:
+     * widget = the widget to add.
+     * x = the horizontal position to place the widget at.
+     * y = the vertical position to place the widget at.
+     */
+    public void put(Widget widget, int x, int y)
+    {
+        // void gtk_fixed_put (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
+        gtk_fixed_put(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
+    }
+
+    /**
+     * Moves a child of a GtkFixed container to the given position.
+     * Params:
+     * widget = the child widget.
+     * x = the horizontal position to move the widget to.
+     * y = the vertical position to move the widget to.
+     */
+    public void move(Widget widget, int x, int y)
+    {
+        // void gtk_fixed_move (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
+        gtk_fixed_move(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
+    }
+
+    /**
+     * Gets whether the GtkFixed has its own GdkWindow.
+     * See gtk_fixed_set_has_window().
+     * Returns: TRUE if fixed has its own window.
+     */
+    public int getHasWindow()
+    {
+        // gboolean gtk_fixed_get_has_window (GtkFixed *fixed);
+        return gtk_fixed_get_has_window(gtkFixed);
+    }
+
+    /**
+     * Sets whether a GtkFixed widget is created with a separate
+     * GdkWindow for widget->window or not. (By default, it will be
+     * created with no separate GdkWindow). This function must be called
+     * while the GtkFixed is not realized, for instance, immediately after the
+     * window is created.
+     * This function was added to provide an easy migration path for
+     * older applications which may expect GtkFixed to have a separate window.
+     * Params:
+     * hasWindow =  TRUE if a separate window should be created
+     * Child Property Details
+     * The "x" child property
+     *  "x" gint : Read / Write
+     * X position of child widget.
+     * Default value: 0
+     */
+    public void setHasWindow(int hasWindow)
+    {
+        // void gtk_fixed_set_has_window (GtkFixed *fixed,  gboolean has_window);
+        gtk_fixed_set_has_window(gtkFixed, hasWindow);
+    }
 }

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -34,7 +34,7 @@
  * interface Code: No
  * template for:
  * 	- TStruct
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_orientable_
@@ -73,40 +73,40 @@ public import gtkD.glib.ConstructionException;
  */
 public template OrientableT(TStruct)
 {
-	
-	/** the main Gtk struct */
-	protected GtkOrientable* gtkOrientable;
-	
-	
-	public GtkOrientable* getOrientableTStruct()
-	{
-		return cast(GtkOrientable*)getStruct();
-	}
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Retrieves the orientation of the orientable.
-	 * Since 2.16
-	 * Returns: the orientation of the orientable.
-	 */
-	public GtkOrientation getOrientation()
-	{
-		// GtkOrientation gtk_orientable_get_orientation (GtkOrientable *orientable);
-		return gtk_orientable_get_orientation(getOrientableTStruct());
-	}
-	
-	/**
-	 * Sets the orientation of the orientable.
-	 * Since 2.16
-	 * Params:
-	 * orientation =  the orientable's new orientation.
-	 */
-	public void setOrientation(GtkOrientation orientation)
-	{
-		// void gtk_orientable_set_orientation (GtkOrientable *orientable,  GtkOrientation orientation);
-		gtk_orientable_set_orientation(getOrientableTStruct(), orientation);
-	}
+
+    /** the main Gtk struct */
+    protected GtkOrientable* gtkOrientable;
+
+
+    public GtkOrientable* getOrientableTStruct()
+    {
+        return cast(GtkOrientable*)getStruct();
+    }
+
+
+    /**
+     */
+
+    /**
+     * Retrieves the orientation of the orientable.
+     * Since 2.16
+     * Returns: the orientation of the orientable.
+     */
+    public GtkOrientation getOrientation()
+    {
+        // GtkOrientation gtk_orientable_get_orientation (GtkOrientable *orientable);
+        return gtk_orientable_get_orientation(getOrientableTStruct());
+    }
+
+    /**
+     * Sets the orientation of the orientable.
+     * Since 2.16
+     * Params:
+     * orientation =  the orientable's new orientation.
+     */
+    public void setOrientation(GtkOrientation orientation)
+    {
+        // void gtk_orientable_set_orientation (GtkOrientable *orientable,  GtkOrientation orientation);
+        gtk_orientable_set_orientation(getOrientableTStruct(), orientation);
+    }
 }

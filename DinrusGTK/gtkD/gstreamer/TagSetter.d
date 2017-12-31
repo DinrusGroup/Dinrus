@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TagSetter
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_tag_setter_
@@ -100,116 +100,116 @@ private import gtkD.gstreamer.TagList;
  */
 public class TagSetter
 {
-	
-	/** the main Gtk struct */
-	protected GstTagSetter* gstTagSetter;
-	
-	
-	public GstTagSetter* getTagSetterStruct()
-	{
-		return gstTagSetter;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstTagSetter;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstTagSetter* gstTagSetter)
-	{
-		if(gstTagSetter is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstTagSetter = gstTagSetter;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Merges the given list into the setter's list using the given mode.
-	 * Params:
-	 * list =  a tag list to merge from
-	 * mode =  the mode to merge with
-	 */
-	public void mergeTags(TagList list, GstTagMergeMode mode)
-	{
-		// void gst_tag_setter_merge_tags (GstTagSetter *setter,  const GstTagList *list,  GstTagMergeMode mode);
-		gst_tag_setter_merge_tags(gstTagSetter, (list is null) ? null : list.getTagListStruct(), mode);
-	}
-	
-	/**
-	 * Adds the given tag / value pairs on the setter using the given merge mode.
-	 * The list must be terminated with NULL.
-	 * Params:
-	 * mode =  the mode to use
-	 * tag =  tag to set
-	 * varArgs =  tag / value pairs to set
-	 */
-	public void addTagValist(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_setter_add_tag_valist (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_setter_add_tag_valist(gstTagSetter, mode, Str.toStringz(tag), varArgs);
-	}
-	
-	/**
-	 * Adds the given tag / GValue pairs on the setter using the given merge mode.
-	 * The list must be terminated with NULL.
-	 * Params:
-	 * mode =  the mode to use
-	 * tag =  tag to set
-	 * varArgs =  tag / GValue pairs to set
-	 */
-	public void addTagValistValues(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_setter_add_tag_valist_values  (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_setter_add_tag_valist_values(gstTagSetter, mode, Str.toStringz(tag), varArgs);
-	}
-	
-	/**
-	 * Returns the current list of tags the setter uses. The list should not be
-	 * modified or freed.
-	 * Returns: a current snapshot of the taglist used in the setter or NULL if none is used.
-	 */
-	public TagList getTagList()
-	{
-		// const GstTagList* gst_tag_setter_get_tag_list  (GstTagSetter *setter);
-		auto p = gst_tag_setter_get_tag_list(gstTagSetter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TagList(cast(GstTagList*) p);
-	}
-	
-	/**
-	 * Sets the given merge mode that is used for adding tags from events to tags
-	 * specified by this interface. The default is GST_TAG_MERGE_KEEP, which keeps
-	 * the tags set with this interface and discards tags from events.
-	 * Params:
-	 * mode =  The mode with which tags are added
-	 */
-	public void setTagMergeMode(GstTagMergeMode mode)
-	{
-		// void gst_tag_setter_set_tag_merge_mode  (GstTagSetter *setter,  GstTagMergeMode mode);
-		gst_tag_setter_set_tag_merge_mode(gstTagSetter, mode);
-	}
-	
-	/**
-	 * Queries the mode by which tags inside the setter are overwritten by tags
-	 * from events
-	 * Returns: the merge mode used inside the element.
-	 */
-	public GstTagMergeMode getTagMergeMode()
-	{
-		// GstTagMergeMode gst_tag_setter_get_tag_merge_mode  (GstTagSetter *setter);
-		return gst_tag_setter_get_tag_merge_mode(gstTagSetter);
-	}
+
+    /** the main Gtk struct */
+    protected GstTagSetter* gstTagSetter;
+
+
+    public GstTagSetter* getTagSetterStruct()
+    {
+        return gstTagSetter;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gstTagSetter;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstTagSetter* gstTagSetter)
+    {
+        if(gstTagSetter is null)
+        {
+            this = null;
+            return;
+        }
+        this.gstTagSetter = gstTagSetter;
+    }
+
+    /**
+     */
+
+    /**
+     * Merges the given list into the setter's list using the given mode.
+     * Params:
+     * list =  a tag list to merge from
+     * mode =  the mode to merge with
+     */
+    public void mergeTags(TagList list, GstTagMergeMode mode)
+    {
+        // void gst_tag_setter_merge_tags (GstTagSetter *setter,  const GstTagList *list,  GstTagMergeMode mode);
+        gst_tag_setter_merge_tags(gstTagSetter, (list is null) ? null : list.getTagListStruct(), mode);
+    }
+
+    /**
+     * Adds the given tag / value pairs on the setter using the given merge mode.
+     * The list must be terminated with NULL.
+     * Params:
+     * mode =  the mode to use
+     * tag =  tag to set
+     * varArgs =  tag / value pairs to set
+     */
+    public void addTagValist(GstTagMergeMode mode, string tag, void* varArgs)
+    {
+        // void gst_tag_setter_add_tag_valist (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
+        gst_tag_setter_add_tag_valist(gstTagSetter, mode, Str.toStringz(tag), varArgs);
+    }
+
+    /**
+     * Adds the given tag / GValue pairs on the setter using the given merge mode.
+     * The list must be terminated with NULL.
+     * Params:
+     * mode =  the mode to use
+     * tag =  tag to set
+     * varArgs =  tag / GValue pairs to set
+     */
+    public void addTagValistValues(GstTagMergeMode mode, string tag, void* varArgs)
+    {
+        // void gst_tag_setter_add_tag_valist_values  (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
+        gst_tag_setter_add_tag_valist_values(gstTagSetter, mode, Str.toStringz(tag), varArgs);
+    }
+
+    /**
+     * Returns the current list of tags the setter uses. The list should not be
+     * modified or freed.
+     * Returns: a current snapshot of the taglist used in the setter or NULL if none is used.
+     */
+    public TagList getTagList()
+    {
+        // const GstTagList* gst_tag_setter_get_tag_list  (GstTagSetter *setter);
+        auto p = gst_tag_setter_get_tag_list(gstTagSetter);
+        if(p is null)
+        {
+            return null;
+        }
+        return new TagList(cast(GstTagList*) p);
+    }
+
+    /**
+     * Sets the given merge mode that is used for adding tags from events to tags
+     * specified by this interface. The default is GST_TAG_MERGE_KEEP, which keeps
+     * the tags set with this interface and discards tags from events.
+     * Params:
+     * mode =  The mode with which tags are added
+     */
+    public void setTagMergeMode(GstTagMergeMode mode)
+    {
+        // void gst_tag_setter_set_tag_merge_mode  (GstTagSetter *setter,  GstTagMergeMode mode);
+        gst_tag_setter_set_tag_merge_mode(gstTagSetter, mode);
+    }
+
+    /**
+     * Queries the mode by which tags inside the setter are overwritten by tags
+     * from events
+     * Returns: the merge mode used inside the element.
+     */
+    public GstTagMergeMode getTagMergeMode()
+    {
+        // GstTagMergeMode gst_tag_setter_get_tag_merge_mode  (GstTagSetter *setter);
+        return gst_tag_setter_get_tag_merge_mode(gstTagSetter);
+    }
 }

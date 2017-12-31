@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -45,10 +45,10 @@ public alias int cairo_bool_t;
  */
 public enum cairo_antialias_t
 {
-	DEFAULT,
-	NONE,
-	GRAY,
-	SUBPIXEL
+    DEFAULT,
+    NONE,
+    GRAY,
+    SUBPIXEL
 }
 alias cairo_antialias_t CairoAntialias;
 
@@ -67,8 +67,8 @@ alias cairo_antialias_t CairoAntialias;
  */
 public enum cairo_fill_rule_t
 {
-	WINDING,
-	EVEN_ODD
+    WINDING,
+    EVEN_ODD
 }
 alias cairo_fill_rule_t CairoFillRule;
 
@@ -79,9 +79,9 @@ alias cairo_fill_rule_t CairoFillRule;
  */
 public enum cairo_line_cap_t
 {
-	BUTT,
-	ROUND,
-	SQUARE
+    BUTT,
+    ROUND,
+    SQUARE
 }
 alias cairo_line_cap_t CairoLineCap;
 
@@ -92,9 +92,9 @@ alias cairo_line_cap_t CairoLineCap;
  */
 public enum cairo_line_join_t
 {
-	MITER,
-	ROUND,
-	BEVEL
+    MITER,
+    ROUND,
+    BEVEL
 }
 alias cairo_line_join_t CairoLineJoin;
 
@@ -117,20 +117,20 @@ alias cairo_line_join_t CairoLineJoin;
  */
 public enum cairo_operator_t
 {
-	CLEAR,
-	SOURCE,
-	OVER,
-	IN,
-	OUT,
-	ATOP,
-	DEST,
-	DEST_OVER,
-	DEST_IN,
-	DEST_OUT,
-	DEST_ATOP,
-	XOR,
-	ADD,
-	SATURATE
+    CLEAR,
+    SOURCE,
+    OVER,
+    IN,
+    OUT,
+    ATOP,
+    DEST,
+    DEST_OVER,
+    DEST_IN,
+    DEST_OUT,
+    DEST_ATOP,
+    XOR,
+    ADD,
+    SATURATE
 }
 alias cairo_operator_t CairoOperator;
 
@@ -142,10 +142,10 @@ alias cairo_operator_t CairoOperator;
  */
 public enum cairo_path_data_type_t
 {
-	MOVE_TO,
-	LINE_TO,
-	CURVE_TO,
-	CLOSE_PATH
+    MOVE_TO,
+    LINE_TO,
+    CURVE_TO,
+    CLOSE_PATH
 }
 alias cairo_path_data_type_t CairoPathDataType;
 
@@ -155,9 +155,9 @@ alias cairo_path_data_type_t CairoPathDataType;
  */
 public enum cairo_font_slant_t
 {
-	NORMAL,
-	ITALIC,
-	OBLIQUE
+    NORMAL,
+    ITALIC,
+    OBLIQUE
 }
 alias cairo_font_slant_t CairoFontSlant;
 
@@ -167,8 +167,8 @@ alias cairo_font_slant_t CairoFontSlant;
  */
 public enum cairo_font_weight_t
 {
-	NORMAL,
-	BOLD
+    NORMAL,
+    BOLD
 }
 alias cairo_font_weight_t CairoFontWeight;
 
@@ -178,7 +178,7 @@ alias cairo_font_weight_t CairoFontWeight;
  */
 public enum cairo_text_cluster_flags_t
 {
-	BACKWARD = 0x00000001
+    BACKWARD = 0x00000001
 }
 alias cairo_text_cluster_flags_t CairoTextClusterFlags;
 
@@ -194,10 +194,10 @@ alias cairo_text_cluster_flags_t CairoTextClusterFlags;
  */
 public enum cairo_extend_t
 {
-	NONE,
-	REPEAT,
-	REFLECT,
-	PAD
+    NONE,
+    REPEAT,
+    REFLECT,
+    PAD
 }
 alias cairo_extend_t CairoExtend;
 
@@ -210,12 +210,12 @@ alias cairo_extend_t CairoExtend;
  */
 public enum cairo_filter_t
 {
-	FAST,
-	GOOD,
-	BEST,
-	NEAREST,
-	BILINEAR,
-	GAUSSIAN
+    FAST,
+    GOOD,
+    BEST,
+    NEAREST,
+    BILINEAR,
+    GAUSSIAN
 }
 alias cairo_filter_t CairoFilter;
 
@@ -239,10 +239,10 @@ alias cairo_filter_t CairoFilter;
  */
 public enum cairo_pattern_type_t
 {
-	SOLID,
-	SURFACE,
-	LINEAR,
-	RADIAL
+    SOLID,
+    SURFACE,
+    LINEAR,
+    RADIAL
 }
 alias cairo_pattern_type_t CairoPatternType;
 
@@ -271,11 +271,11 @@ alias cairo_pattern_type_t CairoPatternType;
  */
 public enum cairo_font_type_t
 {
-	TOY,
-	FT,
-	WIN32,
-	QUARTZ,
-	USER
+    TOY,
+    FT,
+    WIN32,
+    QUARTZ,
+    USER
 }
 alias cairo_font_type_t CairoFontType;
 
@@ -287,11 +287,11 @@ alias cairo_font_type_t CairoFontType;
  */
 public enum cairo_subpixel_order_t
 {
-	DEFAULT,
-	RGB,
-	BGR,
-	VRGB,
-	VBGR
+    DEFAULT,
+    RGB,
+    BGR,
+    VRGB,
+    VBGR
 }
 alias cairo_subpixel_order_t CairoSubpixelOrder;
 
@@ -307,11 +307,11 @@ alias cairo_subpixel_order_t CairoSubpixelOrder;
  */
 public enum cairo_hint_style_t
 {
-	DEFAULT,
-	NONE,
-	SLIGHT,
-	MEDIUM,
-	FULL
+    DEFAULT,
+    NONE,
+    SLIGHT,
+    MEDIUM,
+    FULL
 }
 alias cairo_hint_style_t CairoHintStyle;
 
@@ -325,9 +325,9 @@ alias cairo_hint_style_t CairoHintStyle;
  */
 public enum cairo_hint_metrics_t
 {
-	DEFAULT,
-	OFF,
-	ON
+    DEFAULT,
+    OFF,
+    ON
 }
 alias cairo_hint_metrics_t CairoHintMetrics;
 
@@ -342,9 +342,9 @@ alias cairo_hint_metrics_t CairoHintMetrics;
  */
 public enum cairo_content_t
 {
-	COLOR = 0x1000,
-	ALPHA = 0x2000,
-	COLOR_ALPHA = 0x3000
+    COLOR = 0x1000,
+    ALPHA = 0x2000,
+    COLOR_ALPHA = 0x3000
 }
 alias cairo_content_t CairoContent;
 
@@ -368,20 +368,20 @@ alias cairo_content_t CairoContent;
  */
 public enum cairo_surface_type_t
 {
-	IMAGE,
-	PDF,
-	PS,
-	XLIB,
-	XCB,
-	GLITZ,
-	QUARTZ,
-	WIN32,
-	BEOS,
-	DIRECTFB,
-	SVG,
-	OS2,
-	WIN32_PRINTING,
-	QUARTZ_IMAGE
+    IMAGE,
+    PDF,
+    PS,
+    XLIB,
+    XCB,
+    GLITZ,
+    QUARTZ,
+    WIN32,
+    BEOS,
+    DIRECTFB,
+    SVG,
+    OS2,
+    WIN32_PRINTING,
+    QUARTZ_IMAGE
 }
 alias cairo_surface_type_t CairoSurfaceType;
 
@@ -393,14 +393,14 @@ alias cairo_surface_type_t CairoSurfaceType;
  */
 public enum cairo_format_t
 {
-	ARGB32,
-	RGB24,
-	A8,
-	A1
-	/+* The value of 4 is reserved by a deprecated enum value.
-	 * The next format added must have an explicit value of 5.
-	RGB16_565 = 4,
-	+/
+    ARGB32,
+    RGB24,
+    A8,
+    A1
+    /+* The value of 4 is reserved by a deprecated enum value.
+    * The next format added must have an explicit value of 5.
+    RGB16_565 = 4,
+    +/
 }
 alias cairo_format_t CairoFormat;
 
@@ -412,8 +412,8 @@ alias cairo_format_t CairoFormat;
  */
 public enum cairo_ps_level_t
 {
-	LEVEL_2,
-	LEVEL_3
+    LEVEL_2,
+    LEVEL_3
 }
 alias cairo_ps_level_t CairoPsLevel;
 
@@ -424,8 +424,8 @@ alias cairo_ps_level_t CairoPsLevel;
  */
 public enum cairo_svg_version_t
 {
-	VERSION_1_1,
-	VERSION_1_2
+    VERSION_1_1,
+    VERSION_1_2
 }
 alias cairo_svg_version_t CairoSvgVersion;
 
@@ -440,54 +440,55 @@ alias cairo_svg_version_t CairoSvgVersion;
  */
 public enum cairo_status_t
 {
-	SUCCESS = 0,
-	NO_MEMORY,
-	INVALID_RESTORE,
-	INVALID_POP_GROUP,
-	NO_CURRENT_POINT,
-	INVALID_MATRIX,
-	INVALID_STATUS,
-	NULL_POINTER,
-	INVALID_STRING,
-	INVALID_PATH_DATA,
-	READ_ERROR,
-	WRITE_ERROR,
-	SURFACE_FINISHED,
-	SURFACE_TYPE_MISMATCH,
-	PATTERN_TYPE_MISMATCH,
-	INVALID_CONTENT,
-	INVALID_FORMAT,
-	INVALID_VISUAL,
-	FILE_NOT_FOUND,
-	INVALID_DASH,
-	INVALID_DSC_COMMENT,
-	INVALID_INDEX,
-	CLIP_NOT_REPRESENTABLE,
-	TEMP_FILE_ERROR,
-	INVALID_STRIDE,
-	FONT_TYPE_MISMATCH,
-	USER_FONT_IMMUTABLE,
-	USER_FONT_ERROR,
-	NEGATIVE_COUNT,
-	INVALID_CLUSTERS,
-	INVALID_SLANT,
-	INVALID_WEIGHT
-	/+* after adding a new error: update LAST_STATUS inn cairoint.h +/
-}
-alias cairo_status_t CairoStatus;
+    SUCCESS = 0,
+    NO_MEMORY,
+    INVALID_RESTORE,
+    INVALID_POP_GROUP,
+    NO_CURRENT_POINT,
+    INVALID_MATRIX,
+    INVALID_STATUS,
+    NULL_POINTER,
+    INVALID_STRING,
+    INVALID_PATH_DATA,
+    READ_ERROR,
+    WRITE_ERROR,
+    SURFACE_FINISHED,
+    SURFACE_TYPE_MISMATCH,
+    PATTERN_TYPE_MISMATCH,
+    INVALID_CONTENT,
+    INVALID_FORMAT,
+    INVALID_VISUAL,
+    FILE_NOT_FOUND,
+    INVALID_DASH,
+    INVALID_DSC_COMMENT,
+    INVALID_INDEX,
+    CLIP_NOT_REPRESENTABLE,
+    TEMP_FILE_ERROR,
+    INVALID_STRIDE,
+    FONT_TYPE_MISMATCH,
+    USER_FONT_IMMUTABLE,
+    USER_FONT_ERROR,
+    NEGATIVE_COUNT,
+    INVALID_CLUSTERS,
+    INVALID_SLANT,
+    INVALID_WEIGHT
+    /+* after adding a new error:
+        update LAST_STATUS inn cairoint.h +/
+    }
+    alias cairo_status_t CairoStatus;
 
 
-/**
- * Main Gtk struct.
- * A cairo_t contains the current state of the rendering device,
- * including coordinates of yet to be drawn shapes.
- * Cairo contexts, as cairo_t objects are named, are central to
- * cairo and all drawing with cairo is always done to a cairo_t
- * object.
- * Memory management of cairo_t is done with
- * cairo_reference() and cairo_destroy().
- */
-public struct cairo_t{}
+    /**
+     * Main Gtk struct.
+     * A cairo_t contains the current state of the rendering device,
+     * including coordinates of yet to be drawn shapes.
+     * Cairo contexts, as cairo_t objects are named, are central to
+     * cairo and all drawing with cairo is always done to a cairo_t
+     * object.
+     * Memory management of cairo_t is done with
+     * cairo_reference() and cairo_destroy().
+     */
+    public struct cairo_t {}
 
 
 /**
@@ -496,7 +497,7 @@ public struct cairo_t{}
  */
 public struct cairo_rectangle_t
 {
-	double x, y, width, height;
+    double x, y, width, height;
 }
 
 
@@ -507,9 +508,9 @@ public struct cairo_rectangle_t
  */
 public struct cairo_rectangle_list_t
 {
-	cairo_status_t status;
-	cairo_rectangle_t *rectangles;
-	int numRectangles;
+    cairo_status_t status;
+    cairo_rectangle_t *rectangles;
+    int numRectangles;
 }
 
 
@@ -528,9 +529,9 @@ public struct cairo_rectangle_list_t
  */
 public struct cairo_path_t
 {
-	cairo_status_t status;
-	cairo_path_data_t *data;
-	int numData;
+    cairo_status_t status;
+    cairo_path_data_t *data;
+    int numData;
 }
 
 
@@ -552,9 +553,9 @@ public struct cairo_path_t
  */
 public struct cairo_glyph_t
 {
-	ulong index;
-	double x;
-	double y;
+    ulong index;
+    double x;
+    double y;
 }
 
 
@@ -573,8 +574,8 @@ public struct cairo_glyph_t
  */
 public struct cairo_text_cluster_t
 {
-	int numBytes;
-	int numGlyphs;
+    int numBytes;
+    int numGlyphs;
 }
 
 
@@ -593,7 +594,7 @@ public struct cairo_text_cluster_t
  * Memory management of cairo_pattern_t is done with
  * cairo_pattern_reference() and cairo_pattern_destroy().
  */
-public struct cairo_pattern_t{}
+public struct cairo_pattern_t {}
 
 
 /**
@@ -610,7 +611,7 @@ public struct cairo_pattern_t{}
  * Memory management of cairo_font_face_t is done with
  * cairo_font_face_reference() and cairo_font_face_destroy().
  */
-public struct cairo_font_face_t{}
+public struct cairo_font_face_t {}
 
 
 /**
@@ -625,7 +626,7 @@ public struct cairo_font_face_t{}
  * Memory management of cairo_scaled_font_t is done with
  * cairo_scaled_font_reference() and cairo_scaled_font_destroy().
  */
-public struct cairo_scaled_font_t{}
+public struct cairo_scaled_font_t {}
 
 
 /**
@@ -643,11 +644,11 @@ public struct cairo_scaled_font_t{}
  */
 public struct cairo_font_extents_t
 {
-	double ascent;
-	double descent;
-	double height;
-	double maxXAdvance;
-	double maxYAdvance;
+    double ascent;
+    double descent;
+    double height;
+    double maxXAdvance;
+    double maxYAdvance;
 }
 
 
@@ -665,12 +666,12 @@ public struct cairo_font_extents_t
  */
 public struct cairo_text_extents_t
 {
-	double xBearing;
-	double yBearing;
-	double width;
-	double height;
-	double xAdvance;
-	double yAdvance;
+    double xBearing;
+    double yBearing;
+    double width;
+    double height;
+    double xAdvance;
+    double yAdvance;
 }
 
 
@@ -691,7 +692,7 @@ public struct cairo_text_extents_t
  * for equality, merge, or compute a hash value of
  * cairo_font_options_t objects.
  */
-public struct cairo_font_options_t{}
+public struct cairo_font_options_t {}
 
 
 /**
@@ -707,7 +708,7 @@ public struct cairo_font_options_t{}
  * Memory management of cairo_surface_t is done with
  * cairo_surface_reference() and cairo_surface_destroy().
  */
-public struct cairo_surface_t{}
+public struct cairo_surface_t {}
 
 
 /**
@@ -718,9 +719,12 @@ public struct cairo_surface_t{}
  */
 public struct cairo_matrix_t
 {
-	double xx; double yx;
-	double xy; double yy;
-	double x0; double y0;
+    double xx;
+    double yx;
+    double xy;
+    double yy;
+    double x0;
+    double y0;
 }
 
 
@@ -734,7 +738,7 @@ public struct cairo_matrix_t
  */
 public struct cairo_user_data_key_t
 {
-	int unused;
+    int unused;
 }
 
 

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,7 +33,7 @@
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_seekable_
@@ -74,61 +74,61 @@ private import gtkD.gio.Cancellable;
  */
 public interface SeekableIF
 {
-	
-	
-	public GSeekable* getSeekableTStruct();
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct();
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Tells the current position within the stream.
-	 * Returns: the offset from the beginning of the buffer.
-	 */
-	public long tell();
-	
-	/**
-	 * Tests if the stream supports the GSeekableIface.
-	 * Returns: TRUE if seekable can be seeked. FALSE otherwise.
-	 */
-	public int canSeek();
-	
-	/**
-	 * Seeks in the stream by the given offset, modified by type.
-	 * If cancellable is not NULL, then the operation can be cancelled by
-	 * triggering the cancellable object from another thread. If the operation
-	 * was cancelled, the error G_IO_ERROR_CANCELLED will be returned.
-	 * Params:
-	 * offset =  a goffset.
-	 * type =  a GSeekType.
-	 * cancellable =  optional GCancellable object, NULL to ignore.
-	 * Returns: TRUE if successful. If an error has occurred, this function will return FALSE and set error appropriately if present.
-	 * Throws: GException on failure.
-	 */
-	public int seek(long offset, GSeekType type, Cancellable cancellable);
-	
-	/**
-	 * Tests if the stream can be truncated.
-	 * Returns: TRUE if the stream can be truncated, FALSE otherwise.
-	 */
-	public int canTruncate();
-	
-	/**
-	 * Truncates a stream with a given offset.
-	 * If cancellable is not NULL, then the operation can be cancelled by
-	 * triggering the cancellable object from another thread. If the operation
-	 * was cancelled, the error G_IO_ERROR_CANCELLED will be returned. If an
-	 * operation was partially finished when the operation was cancelled the
-	 * partial result will be returned, without an error.
-	 * Params:
-	 * offset =  a goffset.
-	 * cancellable =  optional GCancellable object, NULL to ignore.
-	 * Returns: TRUE if successful. If an error has occurred, this function will return FALSE and set error appropriately if present.
-	 * Throws: GException on failure.
-	 */
-	public int truncate(long offset, Cancellable cancellable);
+
+
+    public GSeekable* getSeekableTStruct();
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct();
+
+
+    /**
+     */
+
+    /**
+     * Tells the current position within the stream.
+     * Returns: the offset from the beginning of the buffer.
+     */
+    public long tell();
+
+    /**
+     * Tests if the stream supports the GSeekableIface.
+     * Returns: TRUE if seekable can be seeked. FALSE otherwise.
+     */
+    public int canSeek();
+
+    /**
+     * Seeks in the stream by the given offset, modified by type.
+     * If cancellable is not NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error G_IO_ERROR_CANCELLED will be returned.
+     * Params:
+     * offset =  a goffset.
+     * type =  a GSeekType.
+     * cancellable =  optional GCancellable object, NULL to ignore.
+     * Returns: TRUE if successful. If an error has occurred, this function will return FALSE and set error appropriately if present.
+     * Throws: GException on failure.
+     */
+    public int seek(long offset, GSeekType type, Cancellable cancellable);
+
+    /**
+     * Tests if the stream can be truncated.
+     * Returns: TRUE if the stream can be truncated, FALSE otherwise.
+     */
+    public int canTruncate();
+
+    /**
+     * Truncates a stream with a given offset.
+     * If cancellable is not NULL, then the operation can be cancelled by
+     * triggering the cancellable object from another thread. If the operation
+     * was cancelled, the error G_IO_ERROR_CANCELLED will be returned. If an
+     * operation was partially finished when the operation was cancelled the
+     * partial result will be returned, without an error.
+     * Params:
+     * offset =  a goffset.
+     * cancellable =  optional GCancellable object, NULL to ignore.
+     * Returns: TRUE if successful. If an error has occurred, this function will return FALSE and set error appropriately if present.
+     * Throws: GException on failure.
+     */
+    public int truncate(long offset, Cancellable cancellable);
 }

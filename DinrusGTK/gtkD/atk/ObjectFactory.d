@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = ObjectFactory
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_object_factory_
@@ -77,85 +77,85 @@ private import gtkD.gobject.ObjectG;
  */
 public class ObjectFactory : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected AtkObjectFactory* atkObjectFactory;
-	
-	
-	public AtkObjectFactory* getObjectFactoryStruct()
-	{
-		return atkObjectFactory;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)atkObjectFactory;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkObjectFactory* atkObjectFactory)
-	{
-		if(atkObjectFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)atkObjectFactory);
-		if( ptr !is null )
-		{
-			this = cast(ObjectFactory)ptr;
-			return;
-		}
-		super(cast(GObject*)atkObjectFactory);
-		this.atkObjectFactory = atkObjectFactory;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Provides an AtkObject that implements an accessibility interface
-	 * on behalf of obj
-	 * Params:
-	 * obj =  a GObject
-	 * Returns: an AtkObject that implements an accessibility interfaceon behalf of obj
-	 */
-	public ObjectAtk createAccessible(ObjectG obj)
-	{
-		// AtkObject* atk_object_factory_create_accessible  (AtkObjectFactory *factory,  GObject *obj);
-		auto p = atk_object_factory_create_accessible(atkObjectFactory, (obj is null) ? null : obj.getObjectGStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectAtk(cast(AtkObject*) p);
-	}
-	
-	/**
-	 * Gets the GType of the accessible which is created by the factory.
-	 * Returns: the type of the accessible which is created by the factory.The value G_TYPE_INVALID is returned if no type if found.
-	 */
-	public GType getAccessibleType()
-	{
-		// GType atk_object_factory_get_accessible_type  (AtkObjectFactory *factory);
-		return atk_object_factory_get_accessible_type(atkObjectFactory);
-	}
-	
-	/**
-	 * Inform factory that it is no longer being used to create
-	 * accessibles. When called, factory may need to inform
-	 * AtkObjects which it has created that they need to be re-instantiated.
-	 * Note: primarily used for runtime replacement of AtkObjectFactorys
-	 * in object registries.
-	 */
-	public void invalidate()
-	{
-		// void atk_object_factory_invalidate (AtkObjectFactory *factory);
-		atk_object_factory_invalidate(atkObjectFactory);
-	}
+
+    /** the main Gtk struct */
+    protected AtkObjectFactory* atkObjectFactory;
+
+
+    public AtkObjectFactory* getObjectFactoryStruct()
+    {
+        return atkObjectFactory;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)atkObjectFactory;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkObjectFactory* atkObjectFactory)
+    {
+        if(atkObjectFactory is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)atkObjectFactory);
+        if( ptr !is null )
+        {
+            this = cast(ObjectFactory)ptr;
+            return;
+        }
+        super(cast(GObject*)atkObjectFactory);
+        this.atkObjectFactory = atkObjectFactory;
+    }
+
+    /**
+     */
+
+    /**
+     * Provides an AtkObject that implements an accessibility interface
+     * on behalf of obj
+     * Params:
+     * obj =  a GObject
+     * Returns: an AtkObject that implements an accessibility interfaceon behalf of obj
+     */
+    public ObjectAtk createAccessible(ObjectG obj)
+    {
+        // AtkObject* atk_object_factory_create_accessible  (AtkObjectFactory *factory,  GObject *obj);
+        auto p = atk_object_factory_create_accessible(atkObjectFactory, (obj is null) ? null : obj.getObjectGStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new ObjectAtk(cast(AtkObject*) p);
+    }
+
+    /**
+     * Gets the GType of the accessible which is created by the factory.
+     * Returns: the type of the accessible which is created by the factory.The value G_TYPE_INVALID is returned if no type if found.
+     */
+    public GType getAccessibleType()
+    {
+        // GType atk_object_factory_get_accessible_type  (AtkObjectFactory *factory);
+        return atk_object_factory_get_accessible_type(atkObjectFactory);
+    }
+
+    /**
+     * Inform factory that it is no longer being used to create
+     * accessibles. When called, factory may need to inform
+     * AtkObjects which it has created that they need to be re-instantiated.
+     * Note: primarily used for runtime replacement of AtkObjectFactorys
+     * in object registries.
+     */
+    public void invalidate()
+    {
+        // void atk_object_factory_invalidate (AtkObjectFactory *factory);
+        atk_object_factory_invalidate(atkObjectFactory);
+    }
 }

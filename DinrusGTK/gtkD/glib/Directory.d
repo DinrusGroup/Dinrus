@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = Directory
  * strct   = GDir
  * realStrct=
  * ctorStrct=
  * clss    = Directory
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_dir_
@@ -90,96 +90,96 @@ private import gtkD.glib.GException;
  */
 public class Directory
 {
-	
-	/** the main Gtk struct */
-	protected GDir* gDir;
-	
-	
-	public GDir* getDirectoryStruct()
-	{
-		return gDir;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gDir;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GDir* gDir)
-	{
-		if(gDir is null)
-		{
-			this = null;
-			return;
-		}
-		this.gDir = gDir;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Opens a directory for reading. The names of the files in the
-	 * directory can then be retrieved using g_dir_read_name().
-	 * Params:
-	 * path =  the path to the directory you are interested in. On Unix
-	 *  in the on-disk encoding. On Windows in UTF-8
-	 * flags =  Currently must be set to 0. Reserved for future use.
-	 * Returns: a newly allocated GDir on success, NULL on failure. If non-NULL, you must free the result with g_dir_close() when you are finished with it.
-	 * Throws: GException on failure.
-	 */
-	public static Directory open(string path, uint flags)
-	{
-		// GDir * g_dir_open (const gchar *path,  guint flags,  GError **error);
-		GError* err = null;
-		
-		auto p = g_dir_open(Str.toStringz(path), flags, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Directory(cast(GDir*) p);
-	}
-	
-	/**
-	 * Retrieves the name of the next entry in the directory. The '.' and
-	 * '..' entries are omitted. On Windows, the returned name is in
-	 * UTF-8. On Unix, it is in the on-disk encoding.
-	 * Returns: The entry's name or NULL if there are no  more entries. The return value is owned by GLib and must not be modified or freed.
-	 */
-	public string readName()
-	{
-		// const gchar * g_dir_read_name (GDir *dir);
-		return Str.toString(g_dir_read_name(gDir));
-	}
-	
-	/**
-	 * Resets the given directory. The next call to g_dir_read_name()
-	 * will return the first entry again.
-	 */
-	public void rewind()
-	{
-		// void g_dir_rewind (GDir *dir);
-		g_dir_rewind(gDir);
-	}
-	
-	/**
-	 * Closes the directory and deallocates all related resources.
-	 */
-	public void close()
-	{
-		// void g_dir_close (GDir *dir);
-		g_dir_close(gDir);
-	}
+
+    /** the main Gtk struct */
+    protected GDir* gDir;
+
+
+    public GDir* getDirectoryStruct()
+    {
+        return gDir;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gDir;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GDir* gDir)
+    {
+        if(gDir is null)
+        {
+            this = null;
+            return;
+        }
+        this.gDir = gDir;
+    }
+
+    /**
+     */
+
+    /**
+     * Opens a directory for reading. The names of the files in the
+     * directory can then be retrieved using g_dir_read_name().
+     * Params:
+     * path =  the path to the directory you are interested in. On Unix
+     *  in the on-disk encoding. On Windows in UTF-8
+     * flags =  Currently must be set to 0. Reserved for future use.
+     * Returns: a newly allocated GDir on success, NULL on failure. If non-NULL, you must free the result with g_dir_close() when you are finished with it.
+     * Throws: GException on failure.
+     */
+    public static Directory open(string path, uint flags)
+    {
+        // GDir * g_dir_open (const gchar *path,  guint flags,  GError **error);
+        GError* err = null;
+
+        auto p = g_dir_open(Str.toStringz(path), flags, &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        if(p is null)
+        {
+            return null;
+        }
+        return new Directory(cast(GDir*) p);
+    }
+
+    /**
+     * Retrieves the name of the next entry in the directory. The '.' and
+     * '..' entries are omitted. On Windows, the returned name is in
+     * UTF-8. On Unix, it is in the on-disk encoding.
+     * Returns: The entry's name or NULL if there are no  more entries. The return value is owned by GLib and must not be modified or freed.
+     */
+    public string readName()
+    {
+        // const gchar * g_dir_read_name (GDir *dir);
+        return Str.toString(g_dir_read_name(gDir));
+    }
+
+    /**
+     * Resets the given directory. The next call to g_dir_read_name()
+     * will return the first entry again.
+     */
+    public void rewind()
+    {
+        // void g_dir_rewind (GDir *dir);
+        g_dir_rewind(gDir);
+    }
+
+    /**
+     * Closes the directory and deallocates all related resources.
+     */
+    public void close()
+    {
+        // void g_dir_close (GDir *dir);
+        g_dir_close(gDir);
+    }
 }

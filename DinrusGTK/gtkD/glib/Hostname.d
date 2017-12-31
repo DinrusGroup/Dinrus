@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = glib-Hostname-Utilities.html
  * outPack = glib
  * outFile = Hostname
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Hostname
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_hostname_
@@ -77,91 +77,91 @@ private import gtkD.glib.Str;
  */
 public class Hostname
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Converts hostname to its canonical ASCII form; an ASCII-only
-	 * string containing no uppercase letters and not ending with a
-	 * trailing dot.
-	 * Since 2.22
-	 * Params:
-	 * hostname =  a valid UTF-8 or ASCII hostname
-	 * Returns: an ASCII hostname, which must be freed, or NULL ifhostname is in some way invalid.
-	 */
-	public static string toAscii(string hostname)
-	{
-		// gchar * g_hostname_to_ascii (const gchar *hostname);
-		return Str.toString(g_hostname_to_ascii(Str.toStringz(hostname)));
-	}
-	
-	/**
-	 * Converts hostname to its canonical presentation form; a UTF-8
-	 * string in Unicode normalization form C, containing no uppercase
-	 * letters, no forbidden characters, and no ASCII-encoded segments,
-	 * and not ending with a trailing dot.
-	 * Of course if hostname is not an internationalized hostname, then
-	 * the canonical presentation form will be entirely ASCII.
-	 * Since 2.22
-	 * Params:
-	 * hostname =  a valid UTF-8 or ASCII hostname
-	 * Returns: a UTF-8 hostname, which must be freed, or NULL ifhostname is in some way invalid.
-	 */
-	public static string toUnicode(string hostname)
-	{
-		// gchar * g_hostname_to_unicode (const gchar *hostname);
-		return Str.toString(g_hostname_to_unicode(Str.toStringz(hostname)));
-	}
-	
-	/**
-	 * Tests if hostname contains Unicode characters. If this returns
-	 * TRUE, you need to encode the hostname with g_hostname_to_ascii()
-	 * before using it in non-IDN-aware contexts.
-	 * Note that a hostname might contain a mix of encoded and unencoded
-	 * segments, and so it is possible for g_hostname_is_non_ascii() and
-	 * g_hostname_is_ascii_encoded() to both return TRUE for a name.
-	 * Since 2.22
-	 * Params:
-	 * hostname =  a hostname
-	 * Returns: TRUE if hostname contains any non-ASCII characters
-	 */
-	public static int isNonAscii(string hostname)
-	{
-		// gboolean g_hostname_is_non_ascii (const gchar *hostname);
-		return g_hostname_is_non_ascii(Str.toStringz(hostname));
-	}
-	
-	/**
-	 * Tests if hostname contains segments with an ASCII-compatible
-	 * encoding of an Internationalized Domain Name. If this returns
-	 * TRUE, you should decode the hostname with g_hostname_to_unicode()
-	 * before displaying it to the user.
-	 * Note that a hostname might contain a mix of encoded and unencoded
-	 * segments, and so it is possible for g_hostname_is_non_ascii() and
-	 * g_hostname_is_ascii_encoded() to both return TRUE for a name.
-	 * Since 2.22
-	 * Params:
-	 * hostname =  a hostname
-	 * Returns: TRUE if hostname contains any ASCII-encodedsegments.
-	 */
-	public static int isAsciiEncoded(string hostname)
-	{
-		// gboolean g_hostname_is_ascii_encoded (const gchar *hostname);
-		return g_hostname_is_ascii_encoded(Str.toStringz(hostname));
-	}
-	
-	/**
-	 * Tests if hostname is the string form of an IPv4 or IPv6 address.
-	 * (Eg, "192.168.0.1".)
-	 * Since 2.22
-	 * Params:
-	 * hostname =  a hostname (or IP address in string form)
-	 * Returns: TRUE if hostname is an IP address
-	 */
-	public static int isIpAddress(string hostname)
-	{
-		// gboolean g_hostname_is_ip_address (const gchar *hostname);
-		return g_hostname_is_ip_address(Str.toStringz(hostname));
-	}
+
+    /**
+     */
+
+    /**
+     * Converts hostname to its canonical ASCII form; an ASCII-only
+     * string containing no uppercase letters and not ending with a
+     * trailing dot.
+     * Since 2.22
+     * Params:
+     * hostname =  a valid UTF-8 or ASCII hostname
+     * Returns: an ASCII hostname, which must be freed, or NULL ifhostname is in some way invalid.
+     */
+    public static string toAscii(string hostname)
+    {
+        // gchar * g_hostname_to_ascii (const gchar *hostname);
+        return Str.toString(g_hostname_to_ascii(Str.toStringz(hostname)));
+    }
+
+    /**
+     * Converts hostname to its canonical presentation form; a UTF-8
+     * string in Unicode normalization form C, containing no uppercase
+     * letters, no forbidden characters, and no ASCII-encoded segments,
+     * and not ending with a trailing dot.
+     * Of course if hostname is not an internationalized hostname, then
+     * the canonical presentation form will be entirely ASCII.
+     * Since 2.22
+     * Params:
+     * hostname =  a valid UTF-8 or ASCII hostname
+     * Returns: a UTF-8 hostname, which must be freed, or NULL ifhostname is in some way invalid.
+     */
+    public static string toUnicode(string hostname)
+    {
+        // gchar * g_hostname_to_unicode (const gchar *hostname);
+        return Str.toString(g_hostname_to_unicode(Str.toStringz(hostname)));
+    }
+
+    /**
+     * Tests if hostname contains Unicode characters. If this returns
+     * TRUE, you need to encode the hostname with g_hostname_to_ascii()
+     * before using it in non-IDN-aware contexts.
+     * Note that a hostname might contain a mix of encoded and unencoded
+     * segments, and so it is possible for g_hostname_is_non_ascii() and
+     * g_hostname_is_ascii_encoded() to both return TRUE for a name.
+     * Since 2.22
+     * Params:
+     * hostname =  a hostname
+     * Returns: TRUE if hostname contains any non-ASCII characters
+     */
+    public static int isNonAscii(string hostname)
+    {
+        // gboolean g_hostname_is_non_ascii (const gchar *hostname);
+        return g_hostname_is_non_ascii(Str.toStringz(hostname));
+    }
+
+    /**
+     * Tests if hostname contains segments with an ASCII-compatible
+     * encoding of an Internationalized Domain Name. If this returns
+     * TRUE, you should decode the hostname with g_hostname_to_unicode()
+     * before displaying it to the user.
+     * Note that a hostname might contain a mix of encoded and unencoded
+     * segments, and so it is possible for g_hostname_is_non_ascii() and
+     * g_hostname_is_ascii_encoded() to both return TRUE for a name.
+     * Since 2.22
+     * Params:
+     * hostname =  a hostname
+     * Returns: TRUE if hostname contains any ASCII-encodedsegments.
+     */
+    public static int isAsciiEncoded(string hostname)
+    {
+        // gboolean g_hostname_is_ascii_encoded (const gchar *hostname);
+        return g_hostname_is_ascii_encoded(Str.toStringz(hostname));
+    }
+
+    /**
+     * Tests if hostname is the string form of an IPv4 or IPv6 address.
+     * (Eg, "192.168.0.1".)
+     * Since 2.22
+     * Params:
+     * hostname =  a hostname (or IP address in string form)
+     * Returns: TRUE if hostname is an IP address
+     */
+    public static int isIpAddress(string hostname)
+    {
+        // gboolean g_hostname_is_ip_address (const gchar *hostname);
+        return g_hostname_is_ip_address(Str.toStringz(hostname));
+    }
 }

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Hypertext
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_hypertext_
@@ -75,109 +75,109 @@ private import gtkD.atk.Hyperlink;
  */
 public class Hypertext
 {
-	
-	/** the main Gtk struct */
-	protected AtkHypertext* atkHypertext;
-	
-	
-	public AtkHypertext* getHypertextStruct()
-	{
-		return atkHypertext;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)atkHypertext;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkHypertext* atkHypertext)
-	{
-		if(atkHypertext is null)
-		{
-			this = null;
-			return;
-		}
-		this.atkHypertext = atkHypertext;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(gint, Hypertext)[] onLinkSelectedListeners;
-	/**
-	 * The "link-selected" signal is emitted by an AtkHyperText object when one of
-	 * the hyperlinks associated with the object is selected.
-	 * See Also
-	 * AtkHyperlink
-	 */
-	void addOnLinkSelected(void delegate(gint, Hypertext) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("link-selected" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"link-selected",
-			cast(GCallback)&callBackLinkSelected,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["link-selected"] = 1;
-		}
-		onLinkSelectedListeners ~= dlg;
-	}
-	extern(C) static void callBackLinkSelected(AtkHypertext* atkhypertextStruct, gint arg1, Hypertext hypertext)
-	{
-		foreach ( void delegate(gint, Hypertext) dlg ; hypertext.onLinkSelectedListeners )
-		{
-			dlg(arg1, hypertext);
-		}
-	}
-	
-	
-	/**
-	 * Gets the link in this hypertext document at index
-	 * link_index
-	 * Params:
-	 * linkIndex =  an integer specifying the desired link
-	 * Returns: the link in this hypertext document atindex link_index
-	 */
-	public Hyperlink getLink(int linkIndex)
-	{
-		// AtkHyperlink* atk_hypertext_get_link (AtkHypertext *hypertext,  gint link_index);
-		auto p = atk_hypertext_get_link(atkHypertext, linkIndex);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Hyperlink(cast(AtkHyperlink*) p);
-	}
-	
-	/**
-	 * Gets the number of links within this hypertext document.
-	 * Returns: the number of links within this hypertext document
-	 */
-	public int getNLinks()
-	{
-		// gint atk_hypertext_get_n_links (AtkHypertext *hypertext);
-		return atk_hypertext_get_n_links(atkHypertext);
-	}
-	
-	/**
-	 * Gets the index into the array of hyperlinks that is associated with
-	 * the character specified by char_index.
-	 * Params:
-	 * charIndex =  a character index
-	 * Returns: an index into the array of hyperlinks in hypertext,or -1 if there is no hyperlink associated with this character.Signal DetailsThe "link-selected" signalvoid user_function (AtkHypertext *atkhypertext, gint arg1, gpointer user_data) : Run LastThe "link-selected" signal is emitted by an AtkHyperText object when one ofthe hyperlinks associated with the object is selected.
-	 */
-	public int getLinkIndex(int charIndex)
-	{
-		// gint atk_hypertext_get_link_index (AtkHypertext *hypertext,  gint char_index);
-		return atk_hypertext_get_link_index(atkHypertext, charIndex);
-	}
+
+    /** the main Gtk struct */
+    protected AtkHypertext* atkHypertext;
+
+
+    public AtkHypertext* getHypertextStruct()
+    {
+        return atkHypertext;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)atkHypertext;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkHypertext* atkHypertext)
+    {
+        if(atkHypertext is null)
+        {
+            this = null;
+            return;
+        }
+        this.atkHypertext = atkHypertext;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(gint, Hypertext)[] onLinkSelectedListeners;
+    /**
+     * The "link-selected" signal is emitted by an AtkHyperText object when one of
+     * the hyperlinks associated with the object is selected.
+     * See Also
+     * AtkHyperlink
+     */
+    void addOnLinkSelected(void delegate(gint, Hypertext) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("link-selected" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "link-selected",
+                cast(GCallback)&callBackLinkSelected,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["link-selected"] = 1;
+        }
+        onLinkSelectedListeners ~= dlg;
+    }
+    extern(C) static void callBackLinkSelected(AtkHypertext* atkhypertextStruct, gint arg1, Hypertext hypertext)
+    {
+        foreach ( void delegate(gint, Hypertext) dlg ; hypertext.onLinkSelectedListeners )
+        {
+            dlg(arg1, hypertext);
+        }
+    }
+
+
+    /**
+     * Gets the link in this hypertext document at index
+     * link_index
+     * Params:
+     * linkIndex =  an integer specifying the desired link
+     * Returns: the link in this hypertext document atindex link_index
+     */
+    public Hyperlink getLink(int linkIndex)
+    {
+        // AtkHyperlink* atk_hypertext_get_link (AtkHypertext *hypertext,  gint link_index);
+        auto p = atk_hypertext_get_link(atkHypertext, linkIndex);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Hyperlink(cast(AtkHyperlink*) p);
+    }
+
+    /**
+     * Gets the number of links within this hypertext document.
+     * Returns: the number of links within this hypertext document
+     */
+    public int getNLinks()
+    {
+        // gint atk_hypertext_get_n_links (AtkHypertext *hypertext);
+        return atk_hypertext_get_n_links(atkHypertext);
+    }
+
+    /**
+     * Gets the index into the array of hyperlinks that is associated with
+     * the character specified by char_index.
+     * Params:
+     * charIndex =  a character index
+     * Returns: an index into the array of hyperlinks in hypertext,or -1 if there is no hyperlink associated with this character.Signal DetailsThe "link-selected" signalvoid user_function (AtkHypertext *atkhypertext, gint arg1, gpointer user_data) : Run LastThe "link-selected" signal is emitted by an AtkHyperText object when one ofthe hyperlinks associated with the object is selected.
+     */
+    public int getLinkIndex(int charIndex)
+    {
+        // gint atk_hypertext_get_link_index (AtkHypertext *hypertext,  gint char_index);
+        return atk_hypertext_get_link_index(atkHypertext, charIndex);
+    }
 }

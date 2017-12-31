@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gtk-Graphics-Contexts.html
  * outPack = gtk
  * outFile = GCs
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = GCs
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_gc_
@@ -77,43 +77,43 @@ private import gtkD.gdk.Colormap;
  */
 public class GCs
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Gets a GdkGC with the given depth, colormap and GdkGCValues.
-	 * If a GdkGC with the given properties already exists then it is returned,
-	 * otherwise a new GdkGC is created.
-	 * The returned GdkGC should be released with gtk_gc_release() when it is no
-	 * longer needed.
-	 * Params:
-	 * depth = the depth of the GdkGC to create.
-	 * colormap = the GdkColormap (FIXME: I don't know why this is needed).
-	 * values = a GdkGCValues struct containing settings for the GdkGC.
-	 * valuesMask = a set of flags indicating which of the fields in values has
-	 * been set.
-	 * Returns:a GdkGC.
-	 */
-	public static GC get(int depth, Colormap colormap, GdkGCValues* values, GdkGCValuesMask valuesMask)
-	{
-		// GdkGC* gtk_gc_get (gint depth,  GdkColormap *colormap,  GdkGCValues *values,  GdkGCValuesMask values_mask);
-		auto p = gtk_gc_get(depth, (colormap is null) ? null : colormap.getColormapStruct(), values, valuesMask);
-		if(p is null)
-		{
-			return null;
-		}
-		return new GC(cast(GdkGC*) p);
-	}
-	
-	/**
-	 * Releases a GdkGC allocated using gtk_gc_get().
-	 * Params:
-	 * gc = a GdkGC.
-	 */
-	public static void release(GC gc)
-	{
-		// void gtk_gc_release (GdkGC *gc);
-		gtk_gc_release((gc is null) ? null : gc.getGCStruct());
-	}
+
+    /**
+     */
+
+    /**
+     * Gets a GdkGC with the given depth, colormap and GdkGCValues.
+     * If a GdkGC with the given properties already exists then it is returned,
+     * otherwise a new GdkGC is created.
+     * The returned GdkGC should be released with gtk_gc_release() when it is no
+     * longer needed.
+     * Params:
+     * depth = the depth of the GdkGC to create.
+     * colormap = the GdkColormap (FIXME: I don't know why this is needed).
+     * values = a GdkGCValues struct containing settings for the GdkGC.
+     * valuesMask = a set of flags indicating which of the fields in values has
+     * been set.
+     * Returns:a GdkGC.
+     */
+    public static GC get(int depth, Colormap colormap, GdkGCValues* values, GdkGCValuesMask valuesMask)
+    {
+        // GdkGC* gtk_gc_get (gint depth,  GdkColormap *colormap,  GdkGCValues *values,  GdkGCValuesMask values_mask);
+        auto p = gtk_gc_get(depth, (colormap is null) ? null : colormap.getColormapStruct(), values, valuesMask);
+        if(p is null)
+        {
+            return null;
+        }
+        return new GC(cast(GdkGC*) p);
+    }
+
+    /**
+     * Releases a GdkGC allocated using gtk_gc_get().
+     * Params:
+     * gc = a GdkGC.
+     */
+    public static void release(GC gc)
+    {
+        // void gtk_gc_release (GdkGC *gc);
+        gtk_gc_release((gc is null) ? null : gc.getGCStruct());
+    }
 }

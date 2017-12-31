@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = glib
  * outFile = OptionGroup
  * strct   = GOptionGroup
  * realStrct=
  * ctorStrct=
  * clss    = OptionGroup
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_option_group_
@@ -142,152 +142,152 @@ private import gtkD.glib.Str;
  */
 public class OptionGroup
 {
-	
-	/** the main Gtk struct */
-	protected GOptionGroup* gOptionGroup;
-	
-	
-	public GOptionGroup* getOptionGroupStruct()
-	{
-		return gOptionGroup;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gOptionGroup;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GOptionGroup* gOptionGroup)
-	{
-		if(gOptionGroup is null)
-		{
-			this = null;
-			return;
-		}
-		this.gOptionGroup = gOptionGroup;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GOptionGroup.
-	 * Since 2.6
-	 * Params:
-	 * name =  the name for the option group, this is used to provide
-	 *  help for the options in this group with --help-name
-	 * description =  a description for this group to be shown in
-	 *  --help. This string is translated using the translation
-	 *  domain or translation function of the group
-	 * helpDescription =  a description for the --help-name option.
-	 *  This string is translated using the translation domain or translation function
-	 *  of the group
-	 * userData =  user data that will be passed to the pre- and post-parse hooks,
-	 *  the error hook and to callbacks of G_OPTION_ARG_CALLBACK options, or NULL
-	 * destroy =  a function that will be called to free user_data, or NULL
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string name, string description, string helpDescription, void* userData, GDestroyNotify destroy)
-	{
-		// GOptionGroup * g_option_group_new (const gchar *name,  const gchar *description,  const gchar *help_description,  gpointer user_data,  GDestroyNotify destroy);
-		auto p = g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy)");
-		}
-		this(cast(GOptionGroup*) p);
-	}
-	
-	/**
-	 * Frees a GOptionGroup. Note that you must not
-	 * free groups which have been added to a GOptionContext.
-	 * Since 2.6
-	 */
-	public void free()
-	{
-		// void g_option_group_free (GOptionGroup *group);
-		g_option_group_free(gOptionGroup);
-	}
-	
-	/**
-	 * Adds the options specified in entries to group.
-	 * Since 2.6
-	 * Params:
-	 * entries =  a NULL-terminated array of GOptionEntrys
-	 */
-	public void addEntries(GOptionEntry* entries)
-	{
-		// void g_option_group_add_entries (GOptionGroup *group,  const GOptionEntry *entries);
-		g_option_group_add_entries(gOptionGroup, entries);
-	}
-	
-	/**
-	 * Associates two functions with group which will be called
-	 * from g_option_context_parse() before the first option is parsed
-	 * and after the last option has been parsed, respectively.
-	 * Note that the user data to be passed to pre_parse_func and
-	 * post_parse_func can be specified when constructing the group
-	 * with g_option_group_new().
-	 * Since 2.6
-	 * Params:
-	 * preParseFunc =  a function to call before parsing, or NULL
-	 * postParseFunc =  a function to call after parsing, or NULL
-	 */
-	public void setParseHooks(GOptionParseFunc preParseFunc, GOptionParseFunc postParseFunc)
-	{
-		// void g_option_group_set_parse_hooks (GOptionGroup *group,  GOptionParseFunc pre_parse_func,  GOptionParseFunc post_parse_func);
-		g_option_group_set_parse_hooks(gOptionGroup, preParseFunc, postParseFunc);
-	}
-	
-	/**
-	 * Associates a function with group which will be called
-	 * from g_option_context_parse() when an error occurs.
-	 * Note that the user data to be passed to error_func can be
-	 * specified when constructing the group with g_option_group_new().
-	 * Since 2.6
-	 * Params:
-	 * errorFunc =  a function to call when an error occurs
-	 */
-	public void setErrorHook(GOptionErrorFunc errorFunc)
-	{
-		// void g_option_group_set_error_hook (GOptionGroup *group,  GOptionErrorFunc error_func);
-		g_option_group_set_error_hook(gOptionGroup, errorFunc);
-	}
-	
-	/**
-	 * Sets the function which is used to translate user-visible
-	 * strings, for --help output. Different
-	 * groups can use different GTranslateFuncs. If func
-	 * is NULL, strings are not translated.
-	 * If you are using gettext(), you only need to set the translation
-	 * domain, see g_option_group_set_translation_domain().
-	 * Since 2.6
-	 * Params:
-	 * func =  the GTranslateFunc, or NULL
-	 * data =  user data to pass to func, or NULL
-	 * destroyNotify =  a function which gets called to free data, or NULL
-	 */
-	public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify)
-	{
-		// void g_option_group_set_translate_func (GOptionGroup *group,  GTranslateFunc func,  gpointer data,  GDestroyNotify destroy_notify);
-		g_option_group_set_translate_func(gOptionGroup, func, data, destroyNotify);
-	}
-	
-	/**
-	 * A convenience function to use gettext() for translating
-	 * user-visible strings.
-	 * Since 2.6
-	 * Params:
-	 * domain =  the domain to use
-	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void g_option_group_set_translation_domain  (GOptionGroup *group,  const gchar *domain);
-		g_option_group_set_translation_domain(gOptionGroup, Str.toStringz(domain));
-	}
+
+    /** the main Gtk struct */
+    protected GOptionGroup* gOptionGroup;
+
+
+    public GOptionGroup* getOptionGroupStruct()
+    {
+        return gOptionGroup;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gOptionGroup;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GOptionGroup* gOptionGroup)
+    {
+        if(gOptionGroup is null)
+        {
+            this = null;
+            return;
+        }
+        this.gOptionGroup = gOptionGroup;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GOptionGroup.
+     * Since 2.6
+     * Params:
+     * name =  the name for the option group, this is used to provide
+     *  help for the options in this group with --help-name
+     * description =  a description for this group to be shown in
+     *  --help. This string is translated using the translation
+     *  domain or translation function of the group
+     * helpDescription =  a description for the --help-name option.
+     *  This string is translated using the translation domain or translation function
+     *  of the group
+     * userData =  user data that will be passed to the pre- and post-parse hooks,
+     *  the error hook and to callbacks of G_OPTION_ARG_CALLBACK options, or NULL
+     * destroy =  a function that will be called to free user_data, or NULL
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string name, string description, string helpDescription, void* userData, GDestroyNotify destroy)
+    {
+        // GOptionGroup * g_option_group_new (const gchar *name,  const gchar *description,  const gchar *help_description,  gpointer user_data,  GDestroyNotify destroy);
+        auto p = g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy)");
+        }
+        this(cast(GOptionGroup*) p);
+    }
+
+    /**
+     * Frees a GOptionGroup. Note that you must not
+     * free groups which have been added to a GOptionContext.
+     * Since 2.6
+     */
+    public void free()
+    {
+        // void g_option_group_free (GOptionGroup *group);
+        g_option_group_free(gOptionGroup);
+    }
+
+    /**
+     * Adds the options specified in entries to group.
+     * Since 2.6
+     * Params:
+     * entries =  a NULL-terminated array of GOptionEntrys
+     */
+    public void addEntries(GOptionEntry* entries)
+    {
+        // void g_option_group_add_entries (GOptionGroup *group,  const GOptionEntry *entries);
+        g_option_group_add_entries(gOptionGroup, entries);
+    }
+
+    /**
+     * Associates two functions with group which will be called
+     * from g_option_context_parse() before the first option is parsed
+     * and after the last option has been parsed, respectively.
+     * Note that the user data to be passed to pre_parse_func and
+     * post_parse_func can be specified when constructing the group
+     * with g_option_group_new().
+     * Since 2.6
+     * Params:
+     * preParseFunc =  a function to call before parsing, or NULL
+     * postParseFunc =  a function to call after parsing, or NULL
+     */
+    public void setParseHooks(GOptionParseFunc preParseFunc, GOptionParseFunc postParseFunc)
+    {
+        // void g_option_group_set_parse_hooks (GOptionGroup *group,  GOptionParseFunc pre_parse_func,  GOptionParseFunc post_parse_func);
+        g_option_group_set_parse_hooks(gOptionGroup, preParseFunc, postParseFunc);
+    }
+
+    /**
+     * Associates a function with group which will be called
+     * from g_option_context_parse() when an error occurs.
+     * Note that the user data to be passed to error_func can be
+     * specified when constructing the group with g_option_group_new().
+     * Since 2.6
+     * Params:
+     * errorFunc =  a function to call when an error occurs
+     */
+    public void setErrorHook(GOptionErrorFunc errorFunc)
+    {
+        // void g_option_group_set_error_hook (GOptionGroup *group,  GOptionErrorFunc error_func);
+        g_option_group_set_error_hook(gOptionGroup, errorFunc);
+    }
+
+    /**
+     * Sets the function which is used to translate user-visible
+     * strings, for --help output. Different
+     * groups can use different GTranslateFuncs. If func
+     * is NULL, strings are not translated.
+     * If you are using gettext(), you only need to set the translation
+     * domain, see g_option_group_set_translation_domain().
+     * Since 2.6
+     * Params:
+     * func =  the GTranslateFunc, or NULL
+     * data =  user data to pass to func, or NULL
+     * destroyNotify =  a function which gets called to free data, or NULL
+     */
+    public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify)
+    {
+        // void g_option_group_set_translate_func (GOptionGroup *group,  GTranslateFunc func,  gpointer data,  GDestroyNotify destroy_notify);
+        g_option_group_set_translate_func(gOptionGroup, func, data, destroyNotify);
+    }
+
+    /**
+     * A convenience function to use gettext() for translating
+     * user-visible strings.
+     * Since 2.6
+     * Params:
+     * domain =  the domain to use
+     */
+    public void setTranslationDomain(string domain)
+    {
+        // void g_option_group_set_translation_domain  (GOptionGroup *group,  const gchar *domain);
+        g_option_group_set_translation_domain(gOptionGroup, Str.toStringz(domain));
+    }
 }

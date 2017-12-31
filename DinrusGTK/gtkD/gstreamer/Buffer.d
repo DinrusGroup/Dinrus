@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Buffer
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_buffer_
@@ -139,279 +139,279 @@ private import gtkD.gstreamer.Caps;
  */
 public class Buffer
 {
-	
-	/** the main Gtk struct */
-	protected GstBuffer* gstBuffer;
-	
-	
-	public GstBuffer* getBufferStruct()
-	{
-		return gstBuffer;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstBuffer;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstBuffer* gstBuffer)
-	{
-		if(gstBuffer is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstBuffer = gstBuffer;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a newly allocated buffer without any data.
-	 * MT safe.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GstBuffer* gst_buffer_new (void);
-		auto p = gst_buffer_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_buffer_new()");
-		}
-		this(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Creates a newly allocated buffer with data of the given size.
-	 * The buffer memory is not cleared.
-	 * Note that when size == 0, the buffer data pointer will be NULL.
-	 * MT safe.
-	 * Params:
-	 * size =  the size of the new buffer's data.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (uint size)
-	{
-		// GstBuffer* gst_buffer_new_and_alloc (guint size);
-		auto p = gst_buffer_new_and_alloc(size);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_buffer_new_and_alloc(size)");
-		}
-		this(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Increases the refcount of the given buffer by one.
-	 * Note that the refcount affects the writeability
-	 * of buf and its metadata, see gst_buffer_is_writable() and
-	 * gst_buffer_is_metadata_writable(). It is
-	 * important to note that keeping additional references to
-	 * GstBuffer instances can potentially increase the number
-	 * of memcpy operations in a pipeline.
-	 * Returns: buf
-	 */
-	public Buffer doref()
-	{
-		// GstBuffer* gst_buffer_ref (GstBuffer *buf);
-		auto p = gst_buffer_ref(gstBuffer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Similar to gst_buffer_is_writable, but this only ensures that the
-	 * refcount of the buffer is 1, indicating that the caller is the sole
-	 * owner and can change the buffer metadata, such as caps and timestamps.
-	 * Returns: TRUE if the metadata is writable.
-	 */
-	public int isMetadataWritable()
-	{
-		// gboolean gst_buffer_is_metadata_writable (GstBuffer *buf);
-		return gst_buffer_is_metadata_writable(gstBuffer);
-	}
-	
-	/**
-	 * Similar to gst_buffer_make_writable, but does not ensure that the buffer
-	 * data array is writable. Instead, this just ensures that the returned buffer
-	 * is solely owned by the caller, by creating a subbuffer of the original
-	 * buffer if necessary.
-	 * After calling this function, buf should not be referenced anymore. The
-	 * result of this function has guaranteed writable metadata.
-	 * Returns: A new GstBuffer with writable metadata.
-	 */
-	public Buffer makeMetadataWritable()
-	{
-		// GstBuffer* gst_buffer_make_metadata_writable  (GstBuffer *buf);
-		auto p = gst_buffer_make_metadata_writable(gstBuffer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Gets the media type of the buffer. This can be NULL if there
-	 * is no media type attached to this buffer.
-	 * Returns:Returns:NULL if there were no caps on this buffer.
-	 */
-	public Caps getCaps()
-	{
-		// GstCaps* gst_buffer_get_caps (GstBuffer *buffer);
-		auto p = gst_buffer_get_caps(gstBuffer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Caps(cast(GstCaps*) p);
-	}
-	
-	/**
-	 * Sets the media type on the buffer. The refcount of the caps will
-	 * be increased and any previous caps on the buffer will be
-	 * unreffed.
-	 * Params:
-	 * caps =  a GstCaps.
-	 */
-	public void setCaps(Caps caps)
-	{
-		// void gst_buffer_set_caps (GstBuffer *buffer,  GstCaps *caps);
-		gst_buffer_set_caps(gstBuffer, (caps is null) ? null : caps.getCapsStruct());
-	}
-	
-	/**
-	 * Creates a sub-buffer from parent at offset and size.
-	 * This sub-buffer uses the actual memory space of the parent buffer.
-	 * This function will copy the offset and timestamp fields when the
-	 * offset is 0. If not, they will be set to GST_CLOCK_TIME_NONE and
-	 * GST_BUFFER_OFFSET_NONE.
-	 * If offset equals 0 and size equals the total size of buffer, the
-	 * duration and offset end fields are also copied. If not they will be set
-	 * to GST_CLOCK_TIME_NONE and GST_BUFFER_OFFSET_NONE.
-	 * MT safe.
-	 * Params:
-	 * offset =  the offset into parent GstBuffer at which the new sub-buffer
-	 *  begins.
-	 * size =  the size of the new GstBuffer sub-buffer, in bytes.
-	 * Returns:Returns:NULL if the arguments were invalid.
-	 */
-	public Buffer createSub(uint offset, uint size)
-	{
-		// GstBuffer* gst_buffer_create_sub (GstBuffer *parent,  guint offset,  guint size);
-		auto p = gst_buffer_create_sub(gstBuffer, offset, size);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Determines whether a gst_buffer_span() can be done without copying
-	 * the contents, that is, whether the data areas are contiguous sub-buffers of
-	 * the same buffer.
-	 * MT safe.
-	 * Params:
-	 * buf2 =  the second GstBuffer.
-	 * Returns: TRUE if the buffers are contiguous,FALSE if a copy would be required.
-	 */
-	public int isSpanFast(Buffer buf2)
-	{
-		// gboolean gst_buffer_is_span_fast (GstBuffer *buf1,  GstBuffer *buf2);
-		return gst_buffer_is_span_fast(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
-	}
-	
-	/**
-	 * Creates a new buffer that consists of part of buf1 and buf2.
-	 * Logically, buf1 and buf2 are concatenated into a single larger
-	 * buffer, and a new buffer is created at the given offset inside
-	 * this space, with a given length.
-	 * If the two source buffers are children of the same larger buffer,
-	 * and are contiguous, the new buffer will be a child of the shared
-	 * parent, and thus no copying is necessary. you can use
-	 * gst_buffer_is_span_fast() to determine if a memcpy will be needed.
-	 * MT safe.
-	 * Params:
-	 * offset =  the offset in the first buffer from where the new
-	 * buffer should start.
-	 * buf2 =  the second source GstBuffer to merge.
-	 * len =  the total length of the new buffer.
-	 * Returns:Returns:NULL if the arguments are invalid.
-	 */
-	public Buffer span(uint offset, Buffer buf2, uint len)
-	{
-		// GstBuffer* gst_buffer_span (GstBuffer *buf1,  guint32 offset,  GstBuffer *buf2,  guint32 len);
-		auto p = gst_buffer_span(gstBuffer, offset, (buf2 is null) ? null : buf2.getBufferStruct(), len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Copies additional information (the timestamp, duration, and offset start
-	 * and end) from one buffer to the other.
-	 * This function does not copy any buffer flags or caps.
-	 * Params:
-	 * src =  buffer to stamp from
-	 */
-	public void stamp(Buffer src)
-	{
-		// void gst_buffer_stamp (GstBuffer *dest,  const GstBuffer *src);
-		gst_buffer_stamp(gstBuffer, (src is null) ? null : src.getBufferStruct());
-	}
-	
-	/**
-	 * Create a new buffer that is the concatenation of the two source
-	 * buffers, and unrefs the original source buffers.
-	 * If the buffers point to contiguous areas of memory, the buffer
-	 * is created without copying the data.
-	 * Params:
-	 * buf2 =  the second source GstBuffer.
-	 * Returns: the new GstBuffer which is the concatenation of the source buffers.
-	 */
-	public Buffer join(Buffer buf2)
-	{
-		// GstBuffer* gst_buffer_join (GstBuffer *buf1,  GstBuffer *buf2);
-		auto p = gst_buffer_join(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
-	
-	/**
-	 * Create a new buffer that is the concatenation of the two source
-	 * buffers. The original source buffers will not be modified or
-	 * unref'd. Make sure you unref the source buffers if they are not used
-	 * anymore afterwards.
-	 * If the buffers point to contiguous areas of memory, the buffer
-	 * is created without copying the data.
-	 * Params:
-	 * buf2 =  the second source GstBuffer to merge.
-	 * Returns: the new GstBuffer which is the concatenation of the source buffers.
-	 */
-	public Buffer merge(Buffer buf2)
-	{
-		// GstBuffer* gst_buffer_merge (GstBuffer *buf1,  GstBuffer *buf2);
-		auto p = gst_buffer_merge(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Buffer(cast(GstBuffer*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GstBuffer* gstBuffer;
+
+
+    public GstBuffer* getBufferStruct()
+    {
+        return gstBuffer;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gstBuffer;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstBuffer* gstBuffer)
+    {
+        if(gstBuffer is null)
+        {
+            this = null;
+            return;
+        }
+        this.gstBuffer = gstBuffer;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a newly allocated buffer without any data.
+     * MT safe.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GstBuffer* gst_buffer_new (void);
+        auto p = gst_buffer_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gst_buffer_new()");
+        }
+        this(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Creates a newly allocated buffer with data of the given size.
+     * The buffer memory is not cleared.
+     * Note that when size == 0, the buffer data pointer will be NULL.
+     * MT safe.
+     * Params:
+     * size =  the size of the new buffer's data.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (uint size)
+    {
+        // GstBuffer* gst_buffer_new_and_alloc (guint size);
+        auto p = gst_buffer_new_and_alloc(size);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gst_buffer_new_and_alloc(size)");
+        }
+        this(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Increases the refcount of the given buffer by one.
+     * Note that the refcount affects the writeability
+     * of buf and its metadata, see gst_buffer_is_writable() and
+     * gst_buffer_is_metadata_writable(). It is
+     * important to note that keeping additional references to
+     * GstBuffer instances can potentially increase the number
+     * of memcpy operations in a pipeline.
+     * Returns: buf
+     */
+    public Buffer doref()
+    {
+        // GstBuffer* gst_buffer_ref (GstBuffer *buf);
+        auto p = gst_buffer_ref(gstBuffer);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Similar to gst_buffer_is_writable, but this only ensures that the
+     * refcount of the buffer is 1, indicating that the caller is the sole
+     * owner and can change the buffer metadata, such as caps and timestamps.
+     * Returns: TRUE if the metadata is writable.
+     */
+    public int isMetadataWritable()
+    {
+        // gboolean gst_buffer_is_metadata_writable (GstBuffer *buf);
+        return gst_buffer_is_metadata_writable(gstBuffer);
+    }
+
+    /**
+     * Similar to gst_buffer_make_writable, but does not ensure that the buffer
+     * data array is writable. Instead, this just ensures that the returned buffer
+     * is solely owned by the caller, by creating a subbuffer of the original
+     * buffer if necessary.
+     * After calling this function, buf should not be referenced anymore. The
+     * result of this function has guaranteed writable metadata.
+     * Returns: A new GstBuffer with writable metadata.
+     */
+    public Buffer makeMetadataWritable()
+    {
+        // GstBuffer* gst_buffer_make_metadata_writable  (GstBuffer *buf);
+        auto p = gst_buffer_make_metadata_writable(gstBuffer);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Gets the media type of the buffer. This can be NULL if there
+     * is no media type attached to this buffer.
+     * Returns:Returns:NULL if there were no caps on this buffer.
+     */
+    public Caps getCaps()
+    {
+        // GstCaps* gst_buffer_get_caps (GstBuffer *buffer);
+        auto p = gst_buffer_get_caps(gstBuffer);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Caps(cast(GstCaps*) p);
+    }
+
+    /**
+     * Sets the media type on the buffer. The refcount of the caps will
+     * be increased and any previous caps on the buffer will be
+     * unreffed.
+     * Params:
+     * caps =  a GstCaps.
+     */
+    public void setCaps(Caps caps)
+    {
+        // void gst_buffer_set_caps (GstBuffer *buffer,  GstCaps *caps);
+        gst_buffer_set_caps(gstBuffer, (caps is null) ? null : caps.getCapsStruct());
+    }
+
+    /**
+     * Creates a sub-buffer from parent at offset and size.
+     * This sub-buffer uses the actual memory space of the parent buffer.
+     * This function will copy the offset and timestamp fields when the
+     * offset is 0. If not, they will be set to GST_CLOCK_TIME_NONE and
+     * GST_BUFFER_OFFSET_NONE.
+     * If offset equals 0 and size equals the total size of buffer, the
+     * duration and offset end fields are also copied. If not they will be set
+     * to GST_CLOCK_TIME_NONE and GST_BUFFER_OFFSET_NONE.
+     * MT safe.
+     * Params:
+     * offset =  the offset into parent GstBuffer at which the new sub-buffer
+     *  begins.
+     * size =  the size of the new GstBuffer sub-buffer, in bytes.
+     * Returns:Returns:NULL if the arguments were invalid.
+     */
+    public Buffer createSub(uint offset, uint size)
+    {
+        // GstBuffer* gst_buffer_create_sub (GstBuffer *parent,  guint offset,  guint size);
+        auto p = gst_buffer_create_sub(gstBuffer, offset, size);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Determines whether a gst_buffer_span() can be done without copying
+     * the contents, that is, whether the data areas are contiguous sub-buffers of
+     * the same buffer.
+     * MT safe.
+     * Params:
+     * buf2 =  the second GstBuffer.
+     * Returns: TRUE if the buffers are contiguous,FALSE if a copy would be required.
+     */
+    public int isSpanFast(Buffer buf2)
+    {
+        // gboolean gst_buffer_is_span_fast (GstBuffer *buf1,  GstBuffer *buf2);
+        return gst_buffer_is_span_fast(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
+    }
+
+    /**
+     * Creates a new buffer that consists of part of buf1 and buf2.
+     * Logically, buf1 and buf2 are concatenated into a single larger
+     * buffer, and a new buffer is created at the given offset inside
+     * this space, with a given length.
+     * If the two source buffers are children of the same larger buffer,
+     * and are contiguous, the new buffer will be a child of the shared
+     * parent, and thus no copying is necessary. you can use
+     * gst_buffer_is_span_fast() to determine if a memcpy will be needed.
+     * MT safe.
+     * Params:
+     * offset =  the offset in the first buffer from where the new
+     * buffer should start.
+     * buf2 =  the second source GstBuffer to merge.
+     * len =  the total length of the new buffer.
+     * Returns:Returns:NULL if the arguments are invalid.
+     */
+    public Buffer span(uint offset, Buffer buf2, uint len)
+    {
+        // GstBuffer* gst_buffer_span (GstBuffer *buf1,  guint32 offset,  GstBuffer *buf2,  guint32 len);
+        auto p = gst_buffer_span(gstBuffer, offset, (buf2 is null) ? null : buf2.getBufferStruct(), len);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Copies additional information (the timestamp, duration, and offset start
+     * and end) from one buffer to the other.
+     * This function does not copy any buffer flags or caps.
+     * Params:
+     * src =  buffer to stamp from
+     */
+    public void stamp(Buffer src)
+    {
+        // void gst_buffer_stamp (GstBuffer *dest,  const GstBuffer *src);
+        gst_buffer_stamp(gstBuffer, (src is null) ? null : src.getBufferStruct());
+    }
+
+    /**
+     * Create a new buffer that is the concatenation of the two source
+     * buffers, and unrefs the original source buffers.
+     * If the buffers point to contiguous areas of memory, the buffer
+     * is created without copying the data.
+     * Params:
+     * buf2 =  the second source GstBuffer.
+     * Returns: the new GstBuffer which is the concatenation of the source buffers.
+     */
+    public Buffer join(Buffer buf2)
+    {
+        // GstBuffer* gst_buffer_join (GstBuffer *buf1,  GstBuffer *buf2);
+        auto p = gst_buffer_join(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
+
+    /**
+     * Create a new buffer that is the concatenation of the two source
+     * buffers. The original source buffers will not be modified or
+     * unref'd. Make sure you unref the source buffers if they are not used
+     * anymore afterwards.
+     * If the buffers point to contiguous areas of memory, the buffer
+     * is created without copying the data.
+     * Params:
+     * buf2 =  the second source GstBuffer to merge.
+     * Returns: the new GstBuffer which is the concatenation of the source buffers.
+     */
+    public Buffer merge(Buffer buf2)
+    {
+        // GstBuffer* gst_buffer_merge (GstBuffer *buf1,  GstBuffer *buf2);
+        auto p = gst_buffer_merge(gstBuffer, (buf2 is null) ? null : buf2.getBufferStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new Buffer(cast(GstBuffer*) p);
+    }
 }

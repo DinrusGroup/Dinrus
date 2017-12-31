@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,7 +33,7 @@
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_loadable_icon_
@@ -82,48 +82,48 @@ private import gtkD.gio.InputStream;
  */
 public interface LoadableIconIF
 {
-	
-	
-	public GLoadableIcon* getLoadableIconTStruct();
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct();
-	
-	
-	/**
-	 */
-	
-	/**
-	 * Loads a loadable icon. For the asynchronous version of this function,
-	 * see g_loadable_icon_load_async().
-	 * Params:
-	 * size =  an integer.
-	 * type =  a location to store the type of the loaded icon, NULL to ignore.
-	 * cancellable =  optional GCancellable object, NULL to ignore.
-	 * Returns: a GInputStream to read the icon from.
-	 * Throws: GException on failure.
-	 */
-	public InputStream load(int size, out string type, Cancellable cancellable);
-	
-	/**
-	 * Loads an icon asynchronously. To finish this function, see
-	 * g_loadable_icon_load_finish(). For the synchronous, blocking
-	 * version of this function, see g_loadable_icon_load().
-	 * Params:
-	 * size =  an integer.
-	 * cancellable =  optional GCancellable object, NULL to ignore.
-	 * callback =  a GAsyncReadyCallback to call when the request is satisfied
-	 * userData =  the data to pass to callback function
-	 */
-	public void loadAsync(int size, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
-	
-	/**
-	 * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-	 * Params:
-	 * res =  a GAsyncResult.
-	 * type =  a location to store the type of the loaded icon, NULL to ignore.
-	 * Returns: a GInputStream to read the icon from.
-	 * Throws: GException on failure.
-	 */
-	public InputStream loadFinish(AsyncResultIF res, out string type);
+
+
+    public GLoadableIcon* getLoadableIconTStruct();
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct();
+
+
+    /**
+     */
+
+    /**
+     * Loads a loadable icon. For the asynchronous version of this function,
+     * see g_loadable_icon_load_async().
+     * Params:
+     * size =  an integer.
+     * type =  a location to store the type of the loaded icon, NULL to ignore.
+     * cancellable =  optional GCancellable object, NULL to ignore.
+     * Returns: a GInputStream to read the icon from.
+     * Throws: GException on failure.
+     */
+    public InputStream load(int size, out string type, Cancellable cancellable);
+
+    /**
+     * Loads an icon asynchronously. To finish this function, see
+     * g_loadable_icon_load_finish(). For the synchronous, blocking
+     * version of this function, see g_loadable_icon_load().
+     * Params:
+     * size =  an integer.
+     * cancellable =  optional GCancellable object, NULL to ignore.
+     * callback =  a GAsyncReadyCallback to call when the request is satisfied
+     * userData =  the data to pass to callback function
+     */
+    public void loadAsync(int size, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
+
+    /**
+     * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
+     * Params:
+     * res =  a GAsyncResult.
+     * type =  a location to store the type of the loaded icon, NULL to ignore.
+     * Returns: a GInputStream to read the icon from.
+     * Throws: GException on failure.
+     */
+    public InputStream loadFinish(AsyncResultIF res, out string type);
 }

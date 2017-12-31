@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = PrintContext
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_print_context_
@@ -131,193 +131,193 @@ private import gtkD.gobject.ObjectG;
  */
 public class PrintContext : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkPrintContext* gtkPrintContext;
-	
-	
-	public GtkPrintContext* getPrintContextStruct()
-	{
-		return gtkPrintContext;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkPrintContext;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkPrintContext* gtkPrintContext)
-	{
-		if(gtkPrintContext is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkPrintContext);
-		if( ptr !is null )
-		{
-			this = cast(PrintContext)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkPrintContext);
-		this.gtkPrintContext = gtkPrintContext;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Obtains the cairo context that is associated with the
-	 * GtkPrintContext.
-	 * Since 2.10
-	 * Returns: the cairo context of context
-	 */
-	public Context getCairoContext()
-	{
-		// cairo_t * gtk_print_context_get_cairo_context (GtkPrintContext *context);
-		auto p = gtk_print_context_get_cairo_context(gtkPrintContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Context(cast(cairo_t*) p);
-	}
-	
-	/**
-	 * Sets a new cairo context on a print context.
-	 * This function is intended to be used when implementing
-	 * an internal print preview, it is not needed for printing,
-	 * since GTK+ itself creates a suitable cairo context in that
-	 * case.
-	 * Since 2.10
-	 * Params:
-	 * cr =  the cairo context
-	 * dpiX =  the horizontal resolution to use with cr
-	 * dpiY =  the vertical resolution to use with cr
-	 */
-	public void setCairoContext(Context cr, double dpiX, double dpiY)
-	{
-		// void gtk_print_context_set_cairo_context (GtkPrintContext *context,  cairo_t *cr,  double dpi_x,  double dpi_y);
-		gtk_print_context_set_cairo_context(gtkPrintContext, (cr is null) ? null : cr.getContextStruct(), dpiX, dpiY);
-	}
-	
-	/**
-	 * Obtains the GtkPageSetup that determines the page
-	 * dimensions of the GtkPrintContext.
-	 * Since 2.10
-	 * Returns: the page setup of context
-	 */
-	public PageSetup getPageSetup()
-	{
-		// GtkPageSetup * gtk_print_context_get_page_setup (GtkPrintContext *context);
-		auto p = gtk_print_context_get_page_setup(gtkPrintContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PageSetup(cast(GtkPageSetup*) p);
-	}
-	
-	/**
-	 * Obtains the width of the GtkPrintContext, in pixels.
-	 * Since 2.10
-	 * Returns: the width of context
-	 */
-	public double getWidth()
-	{
-		// gdouble gtk_print_context_get_width (GtkPrintContext *context);
-		return gtk_print_context_get_width(gtkPrintContext);
-	}
-	
-	/**
-	 * Obtains the height of the GtkPrintContext, in pixels.
-	 * Since 2.10
-	 * Returns: the height of context
-	 */
-	public double getHeight()
-	{
-		// gdouble gtk_print_context_get_height (GtkPrintContext *context);
-		return gtk_print_context_get_height(gtkPrintContext);
-	}
-	
-	/**
-	 * Obtains the horizontal resolution of the GtkPrintContext,
-	 * in dots per inch.
-	 * Since 2.10
-	 * Returns: the horizontal resolution of context
-	 */
-	public double getDpiX()
-	{
-		// gdouble gtk_print_context_get_dpi_x (GtkPrintContext *context);
-		return gtk_print_context_get_dpi_x(gtkPrintContext);
-	}
-	
-	/**
-	 * Obtains the vertical resolution of the GtkPrintContext,
-	 * in dots per inch.
-	 * Since 2.10
-	 * Returns: the vertical resolution of context
-	 */
-	public double getDpiY()
-	{
-		// gdouble gtk_print_context_get_dpi_y (GtkPrintContext *context);
-		return gtk_print_context_get_dpi_y(gtkPrintContext);
-	}
-	
-	/**
-	 * Returns a PangoFontMap that is suitable for use
-	 * with the GtkPrintContext.
-	 * Since 2.10
-	 * Returns: the font map of context
-	 */
-	public PgFontMap getPangoFontmap()
-	{
-		// PangoFontMap * gtk_print_context_get_pango_fontmap (GtkPrintContext *context);
-		auto p = gtk_print_context_get_pango_fontmap(gtkPrintContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMap(cast(PangoFontMap*) p);
-	}
-	
-	/**
-	 * Creates a new PangoContext that can be used with the
-	 * GtkPrintContext.
-	 * Since 2.10
-	 * Returns: a new Pango context for context
-	 */
-	public PgContext createPangoContext()
-	{
-		// PangoContext * gtk_print_context_create_pango_context  (GtkPrintContext *context);
-		auto p = gtk_print_context_create_pango_context(gtkPrintContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
-	
-	/**
-	 * Creates a new PangoLayout that is suitable for use
-	 * with the GtkPrintContext.
-	 * Since 2.10
-	 * Returns: a new Pango layout for context
-	 */
-	public PgLayout createPangoLayout()
-	{
-		// PangoLayout * gtk_print_context_create_pango_layout  (GtkPrintContext *context);
-		auto p = gtk_print_context_create_pango_layout(gtkPrintContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkPrintContext* gtkPrintContext;
+
+
+    public GtkPrintContext* getPrintContextStruct()
+    {
+        return gtkPrintContext;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkPrintContext;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkPrintContext* gtkPrintContext)
+    {
+        if(gtkPrintContext is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkPrintContext);
+        if( ptr !is null )
+        {
+            this = cast(PrintContext)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkPrintContext);
+        this.gtkPrintContext = gtkPrintContext;
+    }
+
+    /**
+     */
+
+    /**
+     * Obtains the cairo context that is associated with the
+     * GtkPrintContext.
+     * Since 2.10
+     * Returns: the cairo context of context
+     */
+    public Context getCairoContext()
+    {
+        // cairo_t * gtk_print_context_get_cairo_context (GtkPrintContext *context);
+        auto p = gtk_print_context_get_cairo_context(gtkPrintContext);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Context(cast(cairo_t*) p);
+    }
+
+    /**
+     * Sets a new cairo context on a print context.
+     * This function is intended to be used when implementing
+     * an internal print preview, it is not needed for printing,
+     * since GTK+ itself creates a suitable cairo context in that
+     * case.
+     * Since 2.10
+     * Params:
+     * cr =  the cairo context
+     * dpiX =  the horizontal resolution to use with cr
+     * dpiY =  the vertical resolution to use with cr
+     */
+    public void setCairoContext(Context cr, double dpiX, double dpiY)
+    {
+        // void gtk_print_context_set_cairo_context (GtkPrintContext *context,  cairo_t *cr,  double dpi_x,  double dpi_y);
+        gtk_print_context_set_cairo_context(gtkPrintContext, (cr is null) ? null : cr.getContextStruct(), dpiX, dpiY);
+    }
+
+    /**
+     * Obtains the GtkPageSetup that determines the page
+     * dimensions of the GtkPrintContext.
+     * Since 2.10
+     * Returns: the page setup of context
+     */
+    public PageSetup getPageSetup()
+    {
+        // GtkPageSetup * gtk_print_context_get_page_setup (GtkPrintContext *context);
+        auto p = gtk_print_context_get_page_setup(gtkPrintContext);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PageSetup(cast(GtkPageSetup*) p);
+    }
+
+    /**
+     * Obtains the width of the GtkPrintContext, in pixels.
+     * Since 2.10
+     * Returns: the width of context
+     */
+    public double getWidth()
+    {
+        // gdouble gtk_print_context_get_width (GtkPrintContext *context);
+        return gtk_print_context_get_width(gtkPrintContext);
+    }
+
+    /**
+     * Obtains the height of the GtkPrintContext, in pixels.
+     * Since 2.10
+     * Returns: the height of context
+     */
+    public double getHeight()
+    {
+        // gdouble gtk_print_context_get_height (GtkPrintContext *context);
+        return gtk_print_context_get_height(gtkPrintContext);
+    }
+
+    /**
+     * Obtains the horizontal resolution of the GtkPrintContext,
+     * in dots per inch.
+     * Since 2.10
+     * Returns: the horizontal resolution of context
+     */
+    public double getDpiX()
+    {
+        // gdouble gtk_print_context_get_dpi_x (GtkPrintContext *context);
+        return gtk_print_context_get_dpi_x(gtkPrintContext);
+    }
+
+    /**
+     * Obtains the vertical resolution of the GtkPrintContext,
+     * in dots per inch.
+     * Since 2.10
+     * Returns: the vertical resolution of context
+     */
+    public double getDpiY()
+    {
+        // gdouble gtk_print_context_get_dpi_y (GtkPrintContext *context);
+        return gtk_print_context_get_dpi_y(gtkPrintContext);
+    }
+
+    /**
+     * Returns a PangoFontMap that is suitable for use
+     * with the GtkPrintContext.
+     * Since 2.10
+     * Returns: the font map of context
+     */
+    public PgFontMap getPangoFontmap()
+    {
+        // PangoFontMap * gtk_print_context_get_pango_fontmap (GtkPrintContext *context);
+        auto p = gtk_print_context_get_pango_fontmap(gtkPrintContext);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgFontMap(cast(PangoFontMap*) p);
+    }
+
+    /**
+     * Creates a new PangoContext that can be used with the
+     * GtkPrintContext.
+     * Since 2.10
+     * Returns: a new Pango context for context
+     */
+    public PgContext createPangoContext()
+    {
+        // PangoContext * gtk_print_context_create_pango_context  (GtkPrintContext *context);
+        auto p = gtk_print_context_create_pango_context(gtkPrintContext);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgContext(cast(PangoContext*) p);
+    }
+
+    /**
+     * Creates a new PangoLayout that is suitable for use
+     * with the GtkPrintContext.
+     * Since 2.10
+     * Returns: a new Pango layout for context
+     */
+    public PgLayout createPangoLayout()
+    {
+        // PangoLayout * gtk_print_context_create_pango_layout  (GtkPrintContext *context);
+        auto p = gtk_print_context_create_pango_layout(gtkPrintContext);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgLayout(cast(PangoLayout*) p);
+    }
 }

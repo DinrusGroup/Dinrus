@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Quark
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_quark_
@@ -82,129 +82,129 @@ private import gtkD.glib.Str;
  */
 public class Quark
 {
-	
-	/** the main Gtk struct */
-	protected GQuark* gQuark;
-	
-	
-	public GQuark* getQuarkStruct()
-	{
-		return gQuark;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gQuark;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GQuark* gQuark)
-	{
-		if(gQuark is null)
-		{
-			this = null;
-			return;
-		}
-		this.gQuark = gQuark;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the GQuark identifying the given string.
-	 * If the string does not currently have an associated GQuark, a new
-	 * GQuark is created, using a copy of the string.
-	 * Params:
-	 * string = a string.
-	 * Returns:the GQuark identifying the string, or 0 if string is NULL.
-	 */
-	public static GQuark fromString(string string)
-	{
-		// GQuark g_quark_from_string (const gchar *string);
-		return g_quark_from_string(Str.toStringz(string));
-	}
-	
-	/**
-	 * Gets the GQuark identifying the given (static) string.
-	 * If the string does not currently have an associated GQuark, a new
-	 * GQuark is created, linked to the given string.
-	 * Note that this function is identical to g_quark_from_string() except
-	 * that if a new GQuark is created the string itself is used rather than
-	 * a copy. This saves memory, but can only be used if the string will
-	 * always exist. It can be used with statically
-	 * allocated strings in the main program, but not with statically
-	 * allocated memory in dynamically loaded modules, if you expect to
-	 * ever unload the module again (e.g. do not use this function in
-	 * GTK+ theme engines).
-	 * Params:
-	 * string = a string.
-	 * Returns:the GQuark identifying the string, or 0 if string is NULL.
-	 */
-	public static GQuark fromStaticString(string string)
-	{
-		// GQuark g_quark_from_static_string (const gchar *string);
-		return g_quark_from_static_string(Str.toStringz(string));
-	}
-	
-	/**
-	 * Gets the string associated with the given GQuark.
-	 * Params:
-	 * quark = a GQuark.
-	 * Returns:the string associated with the GQuark.
-	 */
-	public static string toString(GQuark quark)
-	{
-		// const gchar* g_quark_to_string (GQuark quark);
-		return Str.toString(g_quark_to_string(quark));
-	}
-	
-	/**
-	 * Gets the GQuark associated with the given string, or 0 if string is
-	 * NULL or it has no associated GQuark.
-	 * If you want the GQuark to be created if it doesn't already exist, use
-	 * g_quark_from_string() or g_quark_from_static_string().
-	 * Params:
-	 * string = a string.
-	 * Returns:the GQuark associated with the string, or 0 if string isNULL or there is no GQuark associated with it.
-	 */
-	public static GQuark tryString(string string)
-	{
-		// GQuark g_quark_try_string (const gchar *string);
-		return g_quark_try_string(Str.toStringz(string));
-	}
-	
-	/**
-	 * Returns a canonical representation for string. Interned strings can
-	 * be compared for equality by comparing the pointers, instead of using strcmp().
-	 * Since 2.10
-	 * Params:
-	 * string =  a string
-	 * Returns: a canonical representation for the string
-	 */
-	public static string gInternString(string string)
-	{
-		// const gchar* g_intern_string (const gchar *string);
-		return Str.toString(g_intern_string(Str.toStringz(string)));
-	}
-	
-	/**
-	 * Returns a canonical representation for string. Interned strings can
-	 * be compared for equality by comparing the pointers, instead of using strcmp().
-	 * g_intern_static_string() does not copy the string, therefore string must
-	 * not be freed or modified.
-	 * Since 2.10
-	 * Params:
-	 * string =  a static string
-	 * Returns: a canonical representation for the string
-	 */
-	public static string gInternStaticString(string string)
-	{
-		// const gchar* g_intern_static_string (const gchar *string);
-		return Str.toString(g_intern_static_string(Str.toStringz(string)));
-	}
+
+    /** the main Gtk struct */
+    protected GQuark* gQuark;
+
+
+    public GQuark* getQuarkStruct()
+    {
+        return gQuark;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gQuark;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GQuark* gQuark)
+    {
+        if(gQuark is null)
+        {
+            this = null;
+            return;
+        }
+        this.gQuark = gQuark;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the GQuark identifying the given string.
+     * If the string does not currently have an associated GQuark, a new
+     * GQuark is created, using a copy of the string.
+     * Params:
+     * string = a string.
+     * Returns:the GQuark identifying the string, or 0 if string is NULL.
+     */
+    public static GQuark fromString(string string)
+    {
+        // GQuark g_quark_from_string (const gchar *string);
+        return g_quark_from_string(Str.toStringz(string));
+    }
+
+    /**
+     * Gets the GQuark identifying the given (static) string.
+     * If the string does not currently have an associated GQuark, a new
+     * GQuark is created, linked to the given string.
+     * Note that this function is identical to g_quark_from_string() except
+     * that if a new GQuark is created the string itself is used rather than
+     * a copy. This saves memory, but can only be used if the string will
+     * always exist. It can be used with statically
+     * allocated strings in the main program, but not with statically
+     * allocated memory in dynamically loaded modules, if you expect to
+     * ever unload the module again (e.g. do not use this function in
+     * GTK+ theme engines).
+     * Params:
+     * string = a string.
+     * Returns:the GQuark identifying the string, or 0 if string is NULL.
+     */
+    public static GQuark fromStaticString(string string)
+    {
+        // GQuark g_quark_from_static_string (const gchar *string);
+        return g_quark_from_static_string(Str.toStringz(string));
+    }
+
+    /**
+     * Gets the string associated with the given GQuark.
+     * Params:
+     * quark = a GQuark.
+     * Returns:the string associated with the GQuark.
+     */
+    public static string toString(GQuark quark)
+    {
+        // const gchar* g_quark_to_string (GQuark quark);
+        return Str.toString(g_quark_to_string(quark));
+    }
+
+    /**
+     * Gets the GQuark associated with the given string, or 0 if string is
+     * NULL or it has no associated GQuark.
+     * If you want the GQuark to be created if it doesn't already exist, use
+     * g_quark_from_string() or g_quark_from_static_string().
+     * Params:
+     * string = a string.
+     * Returns:the GQuark associated with the string, or 0 if string isNULL or there is no GQuark associated with it.
+     */
+    public static GQuark tryString(string string)
+    {
+        // GQuark g_quark_try_string (const gchar *string);
+        return g_quark_try_string(Str.toStringz(string));
+    }
+
+    /**
+     * Returns a canonical representation for string. Interned strings can
+     * be compared for equality by comparing the pointers, instead of using strcmp().
+     * Since 2.10
+     * Params:
+     * string =  a string
+     * Returns: a canonical representation for the string
+     */
+    public static string gInternString(string string)
+    {
+        // const gchar* g_intern_string (const gchar *string);
+        return Str.toString(g_intern_string(Str.toStringz(string)));
+    }
+
+    /**
+     * Returns a canonical representation for string. Interned strings can
+     * be compared for equality by comparing the pointers, instead of using strcmp().
+     * g_intern_static_string() does not copy the string, therefore string must
+     * not be freed or modified.
+     * Since 2.10
+     * Params:
+     * string =  a static string
+     * Returns: a canonical representation for the string
+     */
+    public static string gInternStaticString(string string)
+    {
+        // const gchar* g_intern_static_string (const gchar *string);
+        return Str.toString(g_intern_static_string(Str.toStringz(string)));
+    }
 }

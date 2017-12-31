@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Builder
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_builder_
@@ -281,423 +281,424 @@ private import gtkD.gobject.ObjectG;
  */
 public class Builder : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkBuilder* gtkBuilder;
-	
-	
-	public GtkBuilder* getBuilderStruct()
-	{
-		return gtkBuilder;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkBuilder;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkBuilder* gtkBuilder)
-	{
-		if(gtkBuilder is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkBuilder);
-		if( ptr !is null )
-		{
-			this = cast(Builder)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkBuilder);
-		this.gtkBuilder = gtkBuilder;
-	}
-	
-	private struct GtkBuilderClass
-	{
-		GObjectClass parentClass;
-		extern(C) GType function( GtkBuilder*, char* ) get_type_from_name;
-		
-		/* Padding for future expansion */
-		extern(C) void  function()  _gtk_reserved1;
-		extern(C) void  function()  _gtk_reserved2;
-		extern(C) void  function()  _gtk_reserved3;
-		extern(C) void  function()  _gtk_reserved4;
-		extern(C) void  function()  _gtk_reserved5;
-		extern(C) void  function()  _gtk_reserved6;
-		extern(C) void  function()  _gtk_reserved7;
-		extern(C) void  function()  _gtk_reserved8;
-	}
-	
-	/**
-	 * Creates a new builder object.
-	 * Since 2.12
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkBuilder* gtk_builder_new (void);
-		auto p = gtk_builder_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_builder_new()");
-		}
-		this(cast(GtkBuilder*) p);
-		
-		GtkBuilderClass* klass = Type.getInstanceClass!(GtkBuilderClass)( this );
-		klass.get_type_from_name = &gtk_builder_real_get_type_from_name_override;
-	}
-	
-	/**
-	 * This function is a modification of _gtk_builder_resolve_type_lazily from "gtk/gtkbuilder.c".
-	 * It is needed because it assumes we are linking at compile time to the gtk libs.
-	 * specifically the NULL in g_module_open( NULL, 0 );
-	 * It replaces the default function pointer "get_type_from_name" in GtkBuilderClass.
-	 */
-	extern(C) private static GType gtk_builder_real_get_type_from_name_override ( GtkBuilder* builder, char *name )
-	{
-		GType gtype;
-		gtype = g_type_from_name( name );
-		if (gtype != GType.INVALID)
-		{
-			return gtype;
-		}
-		
-		/*
-		 * Try to map a type name to a _get_type function
-		 * and call it, eg:
-		 *
-		 * GtkWindow -> gtk_window_get_type
-		 * GtkHBox -> gtk_hbox_get_type
-		 * GtkUIManager -> gtk_ui_manager_get_type
-		 *
-		 */
-		char   c;
-		string symbol_name;
-		
-		for (int i = 0; name[i] != '\0'; i++)
-		{
-			c = name[i];
-			/* skip if uppercase, first or previous is uppercase */
-			if ((c == Str.asciiToupper (c) &&
-			i > 0 && name[i-1] != Str.asciiToupper (name[i-1])) ||
-			(i > 2 && name[i]   == Str.asciiToupper (name[i]) &&
-			name[i-1] == Str.asciiToupper (name[i-1]) &&
-			name[i-2] == Str.asciiToupper (name[i-2]))
-			)
-			
-			symbol_name ~= '_';
-			symbol_name ~= Str.asciiTolower (c);
-		}
-		symbol_name ~=  "_get_type" ;
-		
-		/* scan linked librarys for function symbol */
-		foreach ( lib; importLibs )
-		{
-			GType function() func;
-			Module mod = Module.open( libPath ~ lib, GModuleFlags.BIND_LAZY );
-			if( mod is null )
-			continue;
-			
-			scope(exit) mod.close();
-			
-			if ( mod.symbol( symbol_name, cast(void**) &func ) ) {
-				return func();
-			}
-		}
-		
-		return GType.INVALID;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Parses a file containing a GtkBuilder
-	 * UI definition and merges it with the current contents of builder.
-	 * Since 2.12
-	 * Params:
-	 * filename =  the name of the file to parse
-	 * Returns: A positive value on success, 0 if an error occurred
-	 * Throws: GException on failure.
-	 */
-	public uint addFromFile(string filename)
-	{
-		// guint gtk_builder_add_from_file (GtkBuilder *builder,  const gchar *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_from_file(gtkBuilder, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Parses a string containing a GtkBuilder
-	 * UI definition and merges it with the current contents of builder.
-	 * Since 2.12
-	 * Params:
-	 * buffer =  the string to parse
-	 * length =  the length of buffer (may be -1 if buffer is nul-terminated)
-	 * Returns: A positive value on success, 0 if an error occurred
-	 * Throws: GException on failure.
-	 */
-	public uint addFromString(string buffer, uint length)
-	{
-		// guint gtk_builder_add_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_from_string(gtkBuilder, Str.toStringz(buffer), length, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Parses a file containing a GtkBuilder
-	 * UI definition building only the requested objects and merges
-	 * them with the current contents of builder.
-	 * Note
-	 * If you are adding an object that depends on an object that is not
-	 * its child (for instance a GtkTreeView that depends on its
-	 * GtkTreeModel), you have to explicitely list all of them in object_ids.
-	 * Since 2.14
-	 * Params:
-	 * filename =  the name of the file to parse
-	 * objectIds =  nul-terminated array of objects to build
-	 * Returns: A positive value on success, 0 if an error occurred
-	 * Throws: GException on failure.
-	 */
-	public uint addObjectsFromFile(string filename, string[] objectIds)
-	{
-		// guint gtk_builder_add_objects_from_file (GtkBuilder *builder,  const gchar *filename,  gchar **object_ids,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_objects_from_file(gtkBuilder, Str.toStringz(filename), Str.toStringzArray(objectIds), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Parses a string containing a GtkBuilder
-	 * UI definition building only the requested objects and merges
-	 * them with the current contents of builder.
-	 * Note
-	 * If you are adding an object that depends on an object that is not
-	 * its child (for instance a GtkTreeView that depends on its
-	 * GtkTreeModel), you have to explicitely list all of them in object_ids.
-	 * Since 2.14
-	 * Params:
-	 * buffer =  the string to parse
-	 * length =  the length of buffer (may be -1 if buffer is nul-terminated)
-	 * objectIds =  nul-terminated array of objects to build
-	 * Returns: A positive value on success, 0 if an error occurred
-	 * Throws: GException on failure.
-	 */
-	public uint addObjectsFromString(string buffer, uint length, string[] objectIds)
-	{
-		// guint gtk_builder_add_objects_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  gchar **object_ids,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_objects_from_string(gtkBuilder, Str.toStringz(buffer), length, Str.toStringzArray(objectIds), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Gets the object named name. Note that this function does not
-	 * increment the reference count of the returned object.
-	 * Since 2.12
-	 * Params:
-	 * name =  name of object to get
-	 * Returns: the object named name or NULL if it could not be  found in the object tree.
-	 */
-	public ObjectG getObject(string name)
-	{
-		// GObject* gtk_builder_get_object (GtkBuilder *builder,  const gchar *name);
-		auto p = gtk_builder_get_object(gtkBuilder, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectG(cast(GObject*) p);
-	}
-	
-	/**
-	 * Gets all objects that have been constructed by builder. Note that
-	 * this function does not increment the reference counts of the returned
-	 * objects.
-	 * Since 2.12
-	 * Returns: a newly-allocated GSList containing all the objects constructed by the GtkBuilder instance. It should be freed by g_slist_free()
-	 */
-	public ListSG getObjects()
-	{
-		// GSList* gtk_builder_get_objects (GtkBuilder *builder);
-		auto p = gtk_builder_get_objects(gtkBuilder);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
-	
-	/**
-	 * This method is a simpler variation of gtk_builder_connect_signals_full().
-	 * It uses GModule's introspective features (by opening the module NULL)
-	 * to look at the application's symbol table. From here it tries to match
-	 * the signal handler names given in the interface description with
-	 * symbols in the application and connects the signals.
-	 * Note that this function will not work correctly if GModule is not
-	 * supported on the platform.
-	 * When compiling applications for Windows, you must declare signal callbacks
-	 * with G_MODULE_EXPORT, or they will not be put in the symbol table.
-	 * On Linux and Unices, this is not necessary; applications should instead
-	 * be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
-	 * gmodule-export-2.0.
-	 * Since 2.12
-	 * Params:
-	 * userData =  a pointer to a structure sent in as user data to all signals
-	 */
-	public void connectSignals(void* userData)
-	{
-		// void gtk_builder_connect_signals (GtkBuilder *builder,  gpointer user_data);
-		gtk_builder_connect_signals(gtkBuilder, userData);
-	}
-	
-	/**
-	 * This function can be thought of the interpreted language binding
-	 * version of gtk_builder_connect_signals(), except that it does not
-	 * require GModule to function correctly.
-	 * Since 2.12
-	 * Params:
-	 * func =  the function used to connect the signals
-	 * userData =  arbitrary data that will be passed to the connection function
-	 */
-	public void connectSignalsFull(GtkBuilderConnectFunc func, void* userData)
-	{
-		// void gtk_builder_connect_signals_full (GtkBuilder *builder,  GtkBuilderConnectFunc func,  gpointer user_data);
-		gtk_builder_connect_signals_full(gtkBuilder, func, userData);
-	}
-	
-	/**
-	 * Sets the translation domain of builder.
-	 * See "translation-domain".
-	 * Since 2.12
-	 * Params:
-	 * domain =  the translation domain or NULL
-	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void gtk_builder_set_translation_domain (GtkBuilder *builder,  const gchar *domain);
-		gtk_builder_set_translation_domain(gtkBuilder, Str.toStringz(domain));
-	}
-	
-	/**
-	 * Gets the translation domain of builder.
-	 * Since 2.12
-	 * Returns: the translation domain. This string is ownedby the builder object and must not be modified or freed.
-	 */
-	public string getTranslationDomain()
-	{
-		// const gchar* gtk_builder_get_translation_domain (GtkBuilder *builder);
-		return Str.toString(gtk_builder_get_translation_domain(gtkBuilder));
-	}
-	
-	/**
-	 * Looks up a type by name, using the virtual function that
-	 * GtkBuilder has for that purpose. This is mainly used when
-	 * implementing the GtkBuildable interface on a type.
-	 * Since 2.12
-	 * Params:
-	 * typeName =  type name to lookup
-	 * Returns: the GType found for type_name or G_TYPE_INVALID  if no type was found
-	 */
-	public GType getTypeFromName(string typeName)
-	{
-		// GType gtk_builder_get_type_from_name (GtkBuilder *builder,  const char *type_name);
-		return gtk_builder_get_type_from_name(gtkBuilder, Str.toStringz(typeName));
-	}
-	
-	/**
-	 * This function demarshals a value from a string. This function
-	 * calls g_value_init() on the value argument, so it need not be
-	 * initialised beforehand.
-	 * This function can handle char, uchar, boolean, int, uint, long,
-	 * ulong, enum, flags, float, double, string, GdkColor and
-	 * GtkAdjustment type values. Support for GtkWidget type values is
-	 * still to come.
-	 * Since 2.12
-	 * Params:
-	 * pspec =  the GParamSpec for the property
-	 * string =  the string representation of the value
-	 * value =  the GValue to store the result in
-	 * Returns: TRUE on success
-	 * Throws: GException on failure.
-	 */
-	public int valueFromString(ParamSpec pspec, string string, Value value)
-	{
-		// gboolean gtk_builder_value_from_string (GtkBuilder *builder,  GParamSpec *pspec,  const gchar *string,  GValue *value,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_value_from_string(gtkBuilder, (pspec is null) ? null : pspec.getParamSpecStruct(), Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
-	
-	/**
-	 * Like gtk_builder_value_from_string(), this function demarshals
-	 * a value from a string, but takes a GType instead of GParamSpec.
-	 * This function calls g_value_init() on the value argument, so it
-	 * need not be initialised beforehand.
-	 * Since 2.12
-	 * Params:
-	 * type =  the GType of the value
-	 * string =  the string representation of the value
-	 * value =  the GValue to store the result in
-	 * Returns: TRUE on success
-	 * Throws: GException on failure.
-	 */
-	public int valueFromStringType(GType type, string string, Value value)
-	{
-		// gboolean gtk_builder_value_from_string_type (GtkBuilder *builder,  GType type,  const gchar *string,  GValue *value,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_value_from_string_type(gtkBuilder, type, Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+
+    /** the main Gtk struct */
+    protected GtkBuilder* gtkBuilder;
+
+
+    public GtkBuilder* getBuilderStruct()
+    {
+        return gtkBuilder;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkBuilder;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkBuilder* gtkBuilder)
+    {
+        if(gtkBuilder is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkBuilder);
+        if( ptr !is null )
+        {
+            this = cast(Builder)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkBuilder);
+        this.gtkBuilder = gtkBuilder;
+    }
+
+    private struct GtkBuilderClass
+    {
+        GObjectClass parentClass;
+        extern(C) GType function( GtkBuilder*, char* ) get_type_from_name;
+
+        /* Padding for future expansion */
+        extern(C) void  function()  _gtk_reserved1;
+        extern(C) void  function()  _gtk_reserved2;
+        extern(C) void  function()  _gtk_reserved3;
+        extern(C) void  function()  _gtk_reserved4;
+        extern(C) void  function()  _gtk_reserved5;
+        extern(C) void  function()  _gtk_reserved6;
+        extern(C) void  function()  _gtk_reserved7;
+        extern(C) void  function()  _gtk_reserved8;
+    }
+
+    /**
+     * Creates a new builder object.
+     * Since 2.12
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkBuilder* gtk_builder_new (void);
+        auto p = gtk_builder_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_builder_new()");
+        }
+        this(cast(GtkBuilder*) p);
+
+        GtkBuilderClass* klass = Type.getInstanceClass!(GtkBuilderClass)( this );
+        klass.get_type_from_name = &gtk_builder_real_get_type_from_name_override;
+    }
+
+    /**
+     * This function is a modification of _gtk_builder_resolve_type_lazily from "gtk/gtkbuilder.c".
+     * It is needed because it assumes we are linking at compile time to the gtk libs.
+     * specifically the NULL in g_module_open( NULL, 0 );
+     * It replaces the default function pointer "get_type_from_name" in GtkBuilderClass.
+     */
+    extern(C) private static GType gtk_builder_real_get_type_from_name_override ( GtkBuilder* builder, char *name )
+    {
+        GType gtype;
+        gtype = g_type_from_name( name );
+        if (gtype != GType.INVALID)
+        {
+            return gtype;
+        }
+
+        /*
+         * Try to map a type name to a _get_type function
+         * and call it, eg:
+         *
+         * GtkWindow -> gtk_window_get_type
+         * GtkHBox -> gtk_hbox_get_type
+         * GtkUIManager -> gtk_ui_manager_get_type
+         *
+         */
+        char   c;
+        string symbol_name;
+
+        for (int i = 0; name[i] != '\0'; i++)
+        {
+            c = name[i];
+            /* skip if uppercase, first or previous is uppercase */
+            if ((c == Str.asciiToupper (c) &&
+                    i > 0 && name[i-1] != Str.asciiToupper (name[i-1])) ||
+                    (i > 2 && name[i]   == Str.asciiToupper (name[i]) &&
+                     name[i-1] == Str.asciiToupper (name[i-1]) &&
+                     name[i-2] == Str.asciiToupper (name[i-2]))
+               )
+
+                symbol_name ~= '_';
+            symbol_name ~= Str.asciiTolower (c);
+        }
+        symbol_name ~=  "_get_type" ;
+
+        /* scan linked librarys for function symbol */
+        foreach ( lib; importLibs )
+        {
+            GType function() func;
+            Module mod = Module.open( libPath ~ lib, GModuleFlags.BIND_LAZY );
+            if( mod is null )
+                continue;
+
+            scope(exit) mod.close();
+
+            if ( mod.symbol( symbol_name, cast(void**) &func ) )
+            {
+                return func();
+            }
+        }
+
+        return GType.INVALID;
+    }
+
+    /**
+     */
+
+    /**
+     * Parses a file containing a GtkBuilder
+     * UI definition and merges it with the current contents of builder.
+     * Since 2.12
+     * Params:
+     * filename =  the name of the file to parse
+     * Returns: A positive value on success, 0 if an error occurred
+     * Throws: GException on failure.
+     */
+    public uint addFromFile(string filename)
+    {
+        // guint gtk_builder_add_from_file (GtkBuilder *builder,  const gchar *filename,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_add_from_file(gtkBuilder, Str.toStringz(filename), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Parses a string containing a GtkBuilder
+     * UI definition and merges it with the current contents of builder.
+     * Since 2.12
+     * Params:
+     * buffer =  the string to parse
+     * length =  the length of buffer (may be -1 if buffer is nul-terminated)
+     * Returns: A positive value on success, 0 if an error occurred
+     * Throws: GException on failure.
+     */
+    public uint addFromString(string buffer, uint length)
+    {
+        // guint gtk_builder_add_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_add_from_string(gtkBuilder, Str.toStringz(buffer), length, &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Parses a file containing a GtkBuilder
+     * UI definition building only the requested objects and merges
+     * them with the current contents of builder.
+     * Note
+     * If you are adding an object that depends on an object that is not
+     * its child (for instance a GtkTreeView that depends on its
+     * GtkTreeModel), you have to explicitely list all of them in object_ids.
+     * Since 2.14
+     * Params:
+     * filename =  the name of the file to parse
+     * objectIds =  nul-terminated array of objects to build
+     * Returns: A positive value on success, 0 if an error occurred
+     * Throws: GException on failure.
+     */
+    public uint addObjectsFromFile(string filename, string[] objectIds)
+    {
+        // guint gtk_builder_add_objects_from_file (GtkBuilder *builder,  const gchar *filename,  gchar **object_ids,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_add_objects_from_file(gtkBuilder, Str.toStringz(filename), Str.toStringzArray(objectIds), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Parses a string containing a GtkBuilder
+     * UI definition building only the requested objects and merges
+     * them with the current contents of builder.
+     * Note
+     * If you are adding an object that depends on an object that is not
+     * its child (for instance a GtkTreeView that depends on its
+     * GtkTreeModel), you have to explicitely list all of them in object_ids.
+     * Since 2.14
+     * Params:
+     * buffer =  the string to parse
+     * length =  the length of buffer (may be -1 if buffer is nul-terminated)
+     * objectIds =  nul-terminated array of objects to build
+     * Returns: A positive value on success, 0 if an error occurred
+     * Throws: GException on failure.
+     */
+    public uint addObjectsFromString(string buffer, uint length, string[] objectIds)
+    {
+        // guint gtk_builder_add_objects_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  gchar **object_ids,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_add_objects_from_string(gtkBuilder, Str.toStringz(buffer), length, Str.toStringzArray(objectIds), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Gets the object named name. Note that this function does not
+     * increment the reference count of the returned object.
+     * Since 2.12
+     * Params:
+     * name =  name of object to get
+     * Returns: the object named name or NULL if it could not be  found in the object tree.
+     */
+    public ObjectG getObject(string name)
+    {
+        // GObject* gtk_builder_get_object (GtkBuilder *builder,  const gchar *name);
+        auto p = gtk_builder_get_object(gtkBuilder, Str.toStringz(name));
+        if(p is null)
+        {
+            return null;
+        }
+        return new ObjectG(cast(GObject*) p);
+    }
+
+    /**
+     * Gets all objects that have been constructed by builder. Note that
+     * this function does not increment the reference counts of the returned
+     * objects.
+     * Since 2.12
+     * Returns: a newly-allocated GSList containing all the objects constructed by the GtkBuilder instance. It should be freed by g_slist_free()
+     */
+    public ListSG getObjects()
+    {
+        // GSList* gtk_builder_get_objects (GtkBuilder *builder);
+        auto p = gtk_builder_get_objects(gtkBuilder);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListSG(cast(GSList*) p);
+    }
+
+    /**
+     * This method is a simpler variation of gtk_builder_connect_signals_full().
+     * It uses GModule's introspective features (by opening the module NULL)
+     * to look at the application's symbol table. From here it tries to match
+     * the signal handler names given in the interface description with
+     * symbols in the application and connects the signals.
+     * Note that this function will not work correctly if GModule is not
+     * supported on the platform.
+     * When compiling applications for Windows, you must declare signal callbacks
+     * with G_MODULE_EXPORT, or they will not be put in the symbol table.
+     * On Linux and Unices, this is not necessary; applications should instead
+     * be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
+     * gmodule-export-2.0.
+     * Since 2.12
+     * Params:
+     * userData =  a pointer to a structure sent in as user data to all signals
+     */
+    public void connectSignals(void* userData)
+    {
+        // void gtk_builder_connect_signals (GtkBuilder *builder,  gpointer user_data);
+        gtk_builder_connect_signals(gtkBuilder, userData);
+    }
+
+    /**
+     * This function can be thought of the interpreted language binding
+     * version of gtk_builder_connect_signals(), except that it does not
+     * require GModule to function correctly.
+     * Since 2.12
+     * Params:
+     * func =  the function used to connect the signals
+     * userData =  arbitrary data that will be passed to the connection function
+     */
+    public void connectSignalsFull(GtkBuilderConnectFunc func, void* userData)
+    {
+        // void gtk_builder_connect_signals_full (GtkBuilder *builder,  GtkBuilderConnectFunc func,  gpointer user_data);
+        gtk_builder_connect_signals_full(gtkBuilder, func, userData);
+    }
+
+    /**
+     * Sets the translation domain of builder.
+     * See "translation-domain".
+     * Since 2.12
+     * Params:
+     * domain =  the translation domain or NULL
+     */
+    public void setTranslationDomain(string domain)
+    {
+        // void gtk_builder_set_translation_domain (GtkBuilder *builder,  const gchar *domain);
+        gtk_builder_set_translation_domain(gtkBuilder, Str.toStringz(domain));
+    }
+
+    /**
+     * Gets the translation domain of builder.
+     * Since 2.12
+     * Returns: the translation domain. This string is ownedby the builder object and must not be modified or freed.
+     */
+    public string getTranslationDomain()
+    {
+        // const gchar* gtk_builder_get_translation_domain (GtkBuilder *builder);
+        return Str.toString(gtk_builder_get_translation_domain(gtkBuilder));
+    }
+
+    /**
+     * Looks up a type by name, using the virtual function that
+     * GtkBuilder has for that purpose. This is mainly used when
+     * implementing the GtkBuildable interface on a type.
+     * Since 2.12
+     * Params:
+     * typeName =  type name to lookup
+     * Returns: the GType found for type_name or G_TYPE_INVALID  if no type was found
+     */
+    public GType getTypeFromName(string typeName)
+    {
+        // GType gtk_builder_get_type_from_name (GtkBuilder *builder,  const char *type_name);
+        return gtk_builder_get_type_from_name(gtkBuilder, Str.toStringz(typeName));
+    }
+
+    /**
+     * This function demarshals a value from a string. This function
+     * calls g_value_init() on the value argument, so it need not be
+     * initialised beforehand.
+     * This function can handle char, uchar, boolean, int, uint, long,
+     * ulong, enum, flags, float, double, string, GdkColor and
+     * GtkAdjustment type values. Support for GtkWidget type values is
+     * still to come.
+     * Since 2.12
+     * Params:
+     * pspec =  the GParamSpec for the property
+     * string =  the string representation of the value
+     * value =  the GValue to store the result in
+     * Returns: TRUE on success
+     * Throws: GException on failure.
+     */
+    public int valueFromString(ParamSpec pspec, string string, Value value)
+    {
+        // gboolean gtk_builder_value_from_string (GtkBuilder *builder,  GParamSpec *pspec,  const gchar *string,  GValue *value,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_value_from_string(gtkBuilder, (pspec is null) ? null : pspec.getParamSpecStruct(), Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
+
+    /**
+     * Like gtk_builder_value_from_string(), this function demarshals
+     * a value from a string, but takes a GType instead of GParamSpec.
+     * This function calls g_value_init() on the value argument, so it
+     * need not be initialised beforehand.
+     * Since 2.12
+     * Params:
+     * type =  the GType of the value
+     * string =  the string representation of the value
+     * value =  the GValue to store the result in
+     * Returns: TRUE on success
+     * Throws: GException on failure.
+     */
+    public int valueFromStringType(GType type, string string, Value value)
+    {
+        // gboolean gtk_builder_value_from_string_type (GtkBuilder *builder,  GType type,  const gchar *string,  GValue *value,  GError **error);
+        GError* err = null;
+
+        auto p = gtk_builder_value_from_string_type(gtkBuilder, type, Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
+
+        if (err !is null)
+        {
+            throw new GException( new ErrorG(err) );
+        }
+
+        return p;
+    }
 }

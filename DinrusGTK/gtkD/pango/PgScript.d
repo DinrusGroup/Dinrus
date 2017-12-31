@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = pango-Scripts-and-Languages.html
  * outPack = pango
  * outFile = PgScript
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = PgScript
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- pango_
@@ -74,44 +74,44 @@ private import gtkD.pango.PgLanguage;
  */
 public class PgScript
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Looks up the PangoScript for a particular character (as defined by
-	 * Unicode Standard Annex 24). No check is made for ch being a
-	 * valid Unicode character; if you pass in invalid character, the
-	 * result is undefined.
-	 * As of Pango 1.18, this function simply returns the return value of
-	 * g_unichar_get_script().
-	 * Since 1.4
-	 * Params:
-	 * ch =  a Unicode character
-	 * Returns: the PangoScript for the character.
-	 */
-	public static PangoScript scriptForUnichar(gunichar ch)
-	{
-		// PangoScript pango_script_for_unichar (gunichar ch);
-		return pango_script_for_unichar(ch);
-	}
-	
-	/**
-	 * Given a script, finds a language tag that is reasonably
-	 * representative of that script. This will usually be the
-	 * Since 1.4
-	 * Params:
-	 * script =  a PangoScript
-	 * Returns: a PangoLanguage that is representativeof the script, or NULL if no such language exists.
-	 */
-	public static PgLanguage scriptGetSampleLanguage(PangoScript script)
-	{
-		// PangoLanguage * pango_script_get_sample_language (PangoScript script);
-		auto p = pango_script_get_sample_language(script);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLanguage(cast(PangoLanguage*) p);
-	}
+
+    /**
+     */
+
+    /**
+     * Looks up the PangoScript for a particular character (as defined by
+     * Unicode Standard Annex 24). No check is made for ch being a
+     * valid Unicode character; if you pass in invalid character, the
+     * result is undefined.
+     * As of Pango 1.18, this function simply returns the return value of
+     * g_unichar_get_script().
+     * Since 1.4
+     * Params:
+     * ch =  a Unicode character
+     * Returns: the PangoScript for the character.
+     */
+    public static PangoScript scriptForUnichar(gunichar ch)
+    {
+        // PangoScript pango_script_for_unichar (gunichar ch);
+        return pango_script_for_unichar(ch);
+    }
+
+    /**
+     * Given a script, finds a language tag that is reasonably
+     * representative of that script. This will usually be the
+     * Since 1.4
+     * Params:
+     * script =  a PangoScript
+     * Returns: a PangoLanguage that is representativeof the script, or NULL if no such language exists.
+     */
+    public static PgLanguage scriptGetSampleLanguage(PangoScript script)
+    {
+        // PangoLanguage * pango_script_get_sample_language (PangoScript script);
+        auto p = pango_script_get_sample_language(script);
+        if(p is null)
+        {
+            return null;
+        }
+        return new PgLanguage(cast(PangoLanguage*) p);
+    }
 }

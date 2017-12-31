@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SizeGroup
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- BuildableIF
  * prefixes:
@@ -122,159 +122,159 @@ private import gtkD.gobject.ObjectG;
  */
 public class SizeGroup : ObjectG, BuildableIF
 {
-	
-	/** the main Gtk struct */
-	protected GtkSizeGroup* gtkSizeGroup;
-	
-	
-	public GtkSizeGroup* getSizeGroupStruct()
-	{
-		return gtkSizeGroup;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSizeGroup;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkSizeGroup* gtkSizeGroup)
-	{
-		if(gtkSizeGroup is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSizeGroup);
-		if( ptr !is null )
-		{
-			this = cast(SizeGroup)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSizeGroup);
-		this.gtkSizeGroup = gtkSizeGroup;
-	}
-	
-	// add the Buildable capabilities
-	mixin BuildableT!(GtkSizeGroup);
-	
-	/**
-	 */
-	
-	/**
-	 * Create a new GtkSizeGroup.
-	 * Params:
-	 * mode =  the mode for the new size group.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GtkSizeGroupMode mode)
-	{
-		// GtkSizeGroup * gtk_size_group_new (GtkSizeGroupMode mode);
-		auto p = gtk_size_group_new(mode);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_size_group_new(mode)");
-		}
-		this(cast(GtkSizeGroup*) p);
-	}
-	
-	/**
-	 * Sets the GtkSizeGroupMode of the size group. The mode of the size
-	 * group determines whether the widgets in the size group should
-	 * all have the same horizontal requisition (GTK_SIZE_GROUP_MODE_HORIZONTAL)
-	 * all have the same vertical requisition (GTK_SIZE_GROUP_MODE_VERTICAL),
-	 * or should all have the same requisition in both directions
-	 * (GTK_SIZE_GROUP_MODE_BOTH).
-	 * Params:
-	 * mode =  the mode to set for the size group.
-	 */
-	public void setMode(GtkSizeGroupMode mode)
-	{
-		// void gtk_size_group_set_mode (GtkSizeGroup *size_group,  GtkSizeGroupMode mode);
-		gtk_size_group_set_mode(gtkSizeGroup, mode);
-	}
-	
-	/**
-	 * Gets the current mode of the size group. See gtk_size_group_set_mode().
-	 * Returns: the current mode of the size group.
-	 */
-	public GtkSizeGroupMode getMode()
-	{
-		// GtkSizeGroupMode gtk_size_group_get_mode (GtkSizeGroup *size_group);
-		return gtk_size_group_get_mode(gtkSizeGroup);
-	}
-	
-	/**
-	 * Sets whether unmapped widgets should be ignored when
-	 * calculating the size.
-	 * Since 2.8
-	 * Params:
-	 * ignoreHidden =  whether unmapped widgets should be ignored
-	 *  when calculating the size
-	 */
-	public void setIgnoreHidden(int ignoreHidden)
-	{
-		// void gtk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,  gboolean ignore_hidden);
-		gtk_size_group_set_ignore_hidden(gtkSizeGroup, ignoreHidden);
-	}
-	
-	/**
-	 * Returns if invisible widgets are ignored when calculating the size.
-	 * Since 2.8
-	 * Returns: TRUE if invisible widgets are ignored.
-	 */
-	public int getIgnoreHidden()
-	{
-		// gboolean gtk_size_group_get_ignore_hidden (GtkSizeGroup *size_group);
-		return gtk_size_group_get_ignore_hidden(gtkSizeGroup);
-	}
-	
-	/**
-	 * Adds a widget to a GtkSizeGroup. In the future, the requisition
-	 * of the widget will be determined as the maximum of its requisition
-	 * and the requisition of the other widgets in the size group.
-	 * Whether this applies horizontally, vertically, or in both directions
-	 * depends on the mode of the size group. See gtk_size_group_set_mode().
-	 * When the widget is destroyed or no longer referenced elsewhere, it will
-	 * be removed from the size group.
-	 * Params:
-	 * widget =  the GtkWidget to add
-	 */
-	public void addWidget(Widget widget)
-	{
-		// void gtk_size_group_add_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
-		gtk_size_group_add_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
-	}
-	
-	/**
-	 * Removes a widget from a GtkSizeGroup.
-	 * Params:
-	 * widget =  the GtkWidget to remove
-	 */
-	public void removeWidget(Widget widget)
-	{
-		// void gtk_size_group_remove_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
-		gtk_size_group_remove_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
-	}
-	
-	/**
-	 * Returns the list of widgets associated with size_group.
-	 * Since 2.10
-	 * Returns: a GSList of widgets. The list is owned by GTK+  and should not be modified.
-	 */
-	public ListSG getWidgets()
-	{
-		// GSList * gtk_size_group_get_widgets (GtkSizeGroup *size_group);
-		auto p = gtk_size_group_get_widgets(gtkSizeGroup);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkSizeGroup* gtkSizeGroup;
+
+
+    public GtkSizeGroup* getSizeGroupStruct()
+    {
+        return gtkSizeGroup;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkSizeGroup;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkSizeGroup* gtkSizeGroup)
+    {
+        if(gtkSizeGroup is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkSizeGroup);
+        if( ptr !is null )
+        {
+            this = cast(SizeGroup)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkSizeGroup);
+        this.gtkSizeGroup = gtkSizeGroup;
+    }
+
+    // add the Buildable capabilities
+    mixin BuildableT!(GtkSizeGroup);
+
+    /**
+     */
+
+    /**
+     * Create a new GtkSizeGroup.
+     * Params:
+     * mode =  the mode for the new size group.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GtkSizeGroupMode mode)
+    {
+        // GtkSizeGroup * gtk_size_group_new (GtkSizeGroupMode mode);
+        auto p = gtk_size_group_new(mode);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_size_group_new(mode)");
+        }
+        this(cast(GtkSizeGroup*) p);
+    }
+
+    /**
+     * Sets the GtkSizeGroupMode of the size group. The mode of the size
+     * group determines whether the widgets in the size group should
+     * all have the same horizontal requisition (GTK_SIZE_GROUP_MODE_HORIZONTAL)
+     * all have the same vertical requisition (GTK_SIZE_GROUP_MODE_VERTICAL),
+     * or should all have the same requisition in both directions
+     * (GTK_SIZE_GROUP_MODE_BOTH).
+     * Params:
+     * mode =  the mode to set for the size group.
+     */
+    public void setMode(GtkSizeGroupMode mode)
+    {
+        // void gtk_size_group_set_mode (GtkSizeGroup *size_group,  GtkSizeGroupMode mode);
+        gtk_size_group_set_mode(gtkSizeGroup, mode);
+    }
+
+    /**
+     * Gets the current mode of the size group. See gtk_size_group_set_mode().
+     * Returns: the current mode of the size group.
+     */
+    public GtkSizeGroupMode getMode()
+    {
+        // GtkSizeGroupMode gtk_size_group_get_mode (GtkSizeGroup *size_group);
+        return gtk_size_group_get_mode(gtkSizeGroup);
+    }
+
+    /**
+     * Sets whether unmapped widgets should be ignored when
+     * calculating the size.
+     * Since 2.8
+     * Params:
+     * ignoreHidden =  whether unmapped widgets should be ignored
+     *  when calculating the size
+     */
+    public void setIgnoreHidden(int ignoreHidden)
+    {
+        // void gtk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,  gboolean ignore_hidden);
+        gtk_size_group_set_ignore_hidden(gtkSizeGroup, ignoreHidden);
+    }
+
+    /**
+     * Returns if invisible widgets are ignored when calculating the size.
+     * Since 2.8
+     * Returns: TRUE if invisible widgets are ignored.
+     */
+    public int getIgnoreHidden()
+    {
+        // gboolean gtk_size_group_get_ignore_hidden (GtkSizeGroup *size_group);
+        return gtk_size_group_get_ignore_hidden(gtkSizeGroup);
+    }
+
+    /**
+     * Adds a widget to a GtkSizeGroup. In the future, the requisition
+     * of the widget will be determined as the maximum of its requisition
+     * and the requisition of the other widgets in the size group.
+     * Whether this applies horizontally, vertically, or in both directions
+     * depends on the mode of the size group. See gtk_size_group_set_mode().
+     * When the widget is destroyed or no longer referenced elsewhere, it will
+     * be removed from the size group.
+     * Params:
+     * widget =  the GtkWidget to add
+     */
+    public void addWidget(Widget widget)
+    {
+        // void gtk_size_group_add_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
+        gtk_size_group_add_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
+    }
+
+    /**
+     * Removes a widget from a GtkSizeGroup.
+     * Params:
+     * widget =  the GtkWidget to remove
+     */
+    public void removeWidget(Widget widget)
+    {
+        // void gtk_size_group_remove_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
+        gtk_size_group_remove_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
+    }
+
+    /**
+     * Returns the list of widgets associated with size_group.
+     * Since 2.10
+     * Returns: a GSList of widgets. The list is owned by GTK+  and should not be modified.
+     */
+    public ListSG getWidgets()
+    {
+        // GSList * gtk_size_group_get_widgets (GtkSizeGroup *size_group);
+        auto p = gtk_size_group_get_widgets(gtkSizeGroup);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListSG(cast(GSList*) p);
+    }
 }

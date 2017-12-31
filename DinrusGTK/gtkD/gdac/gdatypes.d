@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -33,25 +33,25 @@ public import gtkD.gtkc.gobjecttypes;
 public alias GList GdaValueList;
 public enum GdaBlobMode
 {
-	MODE_READ = 1,
-	MODE_WRITE = 1 << 1,
-	MODE_RDWR = 0x03
+    MODE_READ = 1,
+    MODE_WRITE = 1 << 1,
+    MODE_RDWR = 0x03
 }
 alias GdaBlobMode daBlobMode;
 
 public enum GdaClientEvent
 {
-	INVALID,
-	/+* events usually notified by the library itself, and which the providers
-	should notify on very special cases (like a transaction being started
-	or committed via a BEGIN/COMMIT command directly sent to the
-	executeCommand method on the provider +/
-	ERROR, /+* params: "error" +/
-	CONNECTION_OPENED, /+* params: +/
-	CONNECTION_CLOSED, /+* params: +/
-	TRANSACTION_STARTED, /+* params: "transaction" +/
-	TRANSACTION_COMMITTED, /+* params: "transaction" +/
-	TRANSACTION_CANCELLED /+* params: "transaction" +/
+    INVALID,
+    /+* events usually notified by the library itself, and which the providers
+    should notify on very special cases (like a transaction being started
+                                         or committed via a BEGIN/COMMIT command directly sent to the
+                                         executeCommand method on the provider +/
+                                         ERROR, /+* params: "error" +/
+                                         CONNECTION_OPENED, /+* params: +/
+                                         CONNECTION_CLOSED, /+* params: +/
+                                         TRANSACTION_STARTED, /+* params: "transaction" +/
+                                         TRANSACTION_COMMITTED, /+* params: "transaction" +/
+                                         TRANSACTION_CANCELLED /+* params: "transaction" +/
 }
 alias GdaClientEvent daClientEvent;
 
@@ -60,9 +60,9 @@ alias GdaClientEvent daClientEvent;
  */
 public enum GdaCommandOptions
 {
-	IGNORE_ERRORS = 1,
-	STOP_ON_ERRORS = 1 << 1,
-	BAD_OPTION = 1 << 2
+    IGNORE_ERRORS = 1,
+    STOP_ON_ERRORS = 1 << 1,
+    BAD_OPTION = 1 << 2
 }
 alias GdaCommandOptions daCommandOptions;
 
@@ -80,103 +80,103 @@ alias GdaCommandOptions daCommandOptions;
  */
 public enum GdaCommandType
 {
-	TYPE_SQL,
-	TYPE_XML,
-	TYPE_PROCEDURE,
-	TYPE_TABLE,
-	TYPE_SCHEMA,
-	TYPE_INVALID
+    TYPE_SQL,
+    TYPE_XML,
+    TYPE_PROCEDURE,
+    TYPE_TABLE,
+    TYPE_SCHEMA,
+    TYPE_INVALID
 }
 alias GdaCommandType daCommandType;
 
 public enum GdaConnectionOptions
 {
-	READ_ONLY = 1 << 0,
-	DONT_SHARE = 2 << 0
+    READ_ONLY = 1 << 0,
+    DONT_SHARE = 2 << 0
 }
 alias GdaConnectionOptions daConnectionOptions;
 
 public enum GdaConnectionFeature
 {
-	AGGREGATES,
-	BLOBS,
-	INDEXES,
-	INHERITANCE,
-	NAMESPACES,
-	PROCEDURES,
-	SEQUENCES,
-	SQL,
-	TRANSACTIONS,
-	TRIGGERS,
-	UPDATABLE_CURSOR,
-	USERS,
-	VIEWS,
-	XML_QUERIES
+    AGGREGATES,
+    BLOBS,
+    INDEXES,
+    INHERITANCE,
+    NAMESPACES,
+    PROCEDURES,
+    SEQUENCES,
+    SQL,
+    TRANSACTIONS,
+    TRIGGERS,
+    UPDATABLE_CURSOR,
+    USERS,
+    VIEWS,
+    XML_QUERIES
 }
 alias GdaConnectionFeature daConnectionFeature;
 
 public enum GdaConnectionSchema
 {
-	AGGREGATES,
-	DATABASES,
-	FIELDS,
-	INDEXES,
-	LANGUAGES,
-	NAMESPACES,
-	PARENT_TABLES,
-	PROCEDURES,
-	SEQUENCES,
-	TABLES,
-	TRIGGERS,
-	TYPES,
-	USERS,
-	VIEWS
+    AGGREGATES,
+    DATABASES,
+    FIELDS,
+    INDEXES,
+    LANGUAGES,
+    NAMESPACES,
+    PARENT_TABLES,
+    PROCEDURES,
+    SEQUENCES,
+    TABLES,
+    TRIGGERS,
+    TYPES,
+    USERS,
+    VIEWS
 }
 alias GdaConnectionSchema daConnectionSchema;
 
 public enum GdaExportFlags
 {
-	TABLE_DATA = 1
+    TABLE_DATA = 1
 }
 alias GdaExportFlags daExportFlags;
 
 public enum GdaTransactionIsolation
 {
-	UNKNOWN,
-	READ_COMMITTED,
-	READ_UNCOMMITTED,
-	REPEATABLE_READ,
-	SERIALIZABLE
+    UNKNOWN,
+    READ_COMMITTED,
+    READ_UNCOMMITTED,
+    REPEATABLE_READ,
+    SERIALIZABLE
 }
 alias GdaTransactionIsolation daTransactionIsolation;
 
 public enum GdaValueType
 {
-	TYPE_NULL,
-	TYPE_BIGINT,
-	TYPE_BIGUINT,
-	TYPE_BINARY,
-	TYPE_BLOB,
-	TYPE_BOOLEAN,
-	TYPE_DATE,
-	TYPE_DOUBLE,
-	TYPE_GEOMETRIC_POINT,
-	TYPE_GOBJECT,
-	TYPE_INTEGER,
-	TYPE_LIST,
-	TYPE_MONEY,
-	TYPE_NUMERIC,
-	TYPE_SINGLE,
-	TYPE_SMALLINT,
-	TYPE_SMALLUINT,
-	TYPE_STRING,
-	TYPE_TIME,
-	TYPE_TIMESTAMP,
-	TYPE_TINYINT,
-	TYPE_TINYUINT,
-	TYPE_TYPE,
-	TYPE_UINTEGER,
-	TYPE_UNKNOWN
+    TYPE_NULL,
+    TYPE_BIGINT,
+    TYPE_BIGUINT,
+    TYPE_BINARY,
+    TYPE_BLOB,
+    TYPE_BOOLEAN,
+    TYPE_DATE,
+    TYPE_DOUBLE,
+    TYPE_GEOMETRIC_POINT,
+    TYPE_GOBJECT,
+    TYPE_INTEGER,
+    TYPE_LIST,
+    TYPE_MONEY,
+    TYPE_NUMERIC,
+    TYPE_SINGLE,
+    TYPE_SMALLINT,
+    TYPE_SMALLUINT,
+    TYPE_STRING,
+    TYPE_TIME,
+    TYPE_TIMESTAMP,
+    TYPE_TINYINT,
+    TYPE_TINYUINT,
+    TYPE_TYPE,
+    TYPE_UINTEGER,
+    TYPE_UNKNOWN
 }
 alias GdaValueType daValueType;
 
@@ -204,19 +204,19 @@ public struct GdaServerProviderPrivate{}
  */
 public struct GdaBlob
 {
-	/+* Private +/
-	extern(C) int  function(GdaBlob *blob, GdaBlobMode mode)  open;
-	extern(C) int  function(GdaBlob *blob, void* buf, int size,int *bytesRead)  read;
-	extern(C) int  function(GdaBlob *blob, void* buf, int size,int *bytesWritten)  write;
-	extern(C) int  function(GdaBlob *blob, int offset, int whence)  lseek;
-	extern(C) int  function(GdaBlob *blob)  close;
-	extern(C) int  function(GdaBlob *blob)  remove;
-	extern(C) char *  function(GdaBlob *blob)  stringify;
-	extern(C) void  function(GdaBlob *blob)  freeData;
-	void* privData;
-	/+* +/
-	/+* Public +/
-	void* userData;
+    /+* Private +/
+    extern(C) int  function(GdaBlob *blob, GdaBlobMode mode)  open;
+    extern(C) int  function(GdaBlob *blob, void* buf, int size,int *bytesRead)  read;
+    extern(C) int  function(GdaBlob *blob, void* buf, int size,int *bytesWritten)  write;
+    extern(C) int  function(GdaBlob *blob, int offset, int whence)  lseek;
+    extern(C) int  function(GdaBlob *blob)  close;
+    extern(C) int  function(GdaBlob *blob)  remove;
+    extern(C) char *  function(GdaBlob *blob)  stringify;
+    extern(C) void  function(GdaBlob *blob)  freeData;
+    void* privData;
+    /+* +/
+    /+* Public +/
+    void* userData;
 }
 
 
@@ -228,30 +228,30 @@ public struct GdaClientPrivate{}
  */
 public struct GdaCommand
 {
-	char *text;
-	GdaCommandType type;
-	GdaCommandOptions options;
-	GdaTransaction *xaction;
+    char *text;
+    GdaCommandType type;
+    GdaCommandOptions options;
+    GdaTransaction *xaction;
 }
 
 
 public struct GdaProviderInfo
 {
-	char *id;
-	char *location;
-	char *description;
-	GList *gdaParams; /+* A list of GdaProviderParameterInfo pointers +/
+    char *id;
+    char *location;
+    char *description;
+    GList *gdaParams; /+* A list of GdaProviderParameterInfo pointers +/
 }
 
 
 public struct GdaDataSourceInfo
 {
-	char *name;
-	char *provider;
-	char *cncString;
-	char *description;
-	char *username;
-	char *password;
+    char *name;
+    char *provider;
+    char *cncString;
+    char *description;
+    char *username;
+    char *password;
 }
 
 
@@ -260,15 +260,15 @@ public struct GdaConnectionPrivate{}
 
 public struct GdaServerProvider
 {
-	GObject object;
-	GdaServerProviderPrivate *priv;
+    GObject object;
+    GdaServerProviderPrivate *priv;
 }
 
 
 public struct GdaClient
 {
-	GObject object;
-	GdaClientPrivate *priv;
+    GObject object;
+    GdaClientPrivate *priv;
 }
 
 
@@ -295,29 +295,29 @@ public struct GdaExportPrivate{}
  */
 public struct GdaFieldAttributes
 {
-	int definedSize;
-	char *name;
-	char *table;
-	char *caption;
-	int scale;
-	GdaValueType gdaType;
-	int allowNull;
-	int primaryKey;
-	int uniqueKey;
-	char *references;
-	int autoIncrement;
-	int autoIncrementStart;
-	int autoIncrementStep;
-	int position;
-	GdaValue *defaultValue;
+    int definedSize;
+    char *name;
+    char *table;
+    char *caption;
+    int scale;
+    GdaValueType gdaType;
+    int allowNull;
+    int primaryKey;
+    int uniqueKey;
+    char *references;
+    int autoIncrement;
+    int autoIncrementStart;
+    int autoIncrementStep;
+    int position;
+    GdaValue *defaultValue;
 }
 
 
 public struct GdaField
 {
-	int actualSize;
-	GdaValue *value;
-	GdaFieldAttributes *attributes;
+    int actualSize;
+    GdaValue *value;
+    GdaFieldAttributes *attributes;
 }
 
 
@@ -326,8 +326,8 @@ public struct GdaField
  */
 public struct GdaParameter
 {
-	char *name;
-	GdaValue *value;
+    char *name;
+    GdaValue *value;
 }
 
 
@@ -342,8 +342,8 @@ public struct GdaQuarkList{}
 
 public struct GdaDataModel
 {
-	GObject object;
-	GdaDataModelPrivate *priv;
+    GObject object;
+    GdaDataModelPrivate *priv;
 }
 
 
@@ -364,53 +364,53 @@ public struct GdaTransactionPrivate{}
 
 public struct GdaDate
 {
-	short year;
-	ushort month;
-	ushort day;
+    short year;
+    ushort month;
+    ushort day;
 }
 
 
 public struct GdaGeometricPoint
 {
-	double x;
-	double y;
+    double x;
+    double y;
 }
 
 
 public struct GdaMoney
 {
-	char *currency;
-	double amount;
+    char *currency;
+    double amount;
 }
 
 
 public struct GdaNumeric
 {
-	char *number;
-	int precision;
-	int width;
+    char *number;
+    int precision;
+    int width;
 }
 
 
 public struct GdaTime
 {
-	ushort hour;
-	ushort minute;
-	ushort second;
-	int timezone; /+* # of seconds to the east UTC +/
+    ushort hour;
+    ushort minute;
+    ushort second;
+    int timezone; /+* # of seconds to the east UTC +/
 }
 
 
 public struct GdaTimestamp
 {
-	short year;
-	ushort month;
-	ushort day;
-	ushort hour;
-	ushort minute;
-	ushort second;
-	uint fraction;
-	int timezone; /+* # of seconds to the east UTC +/
+    short year;
+    ushort month;
+    ushort day;
+    ushort hour;
+    ushort minute;
+    ushort second;
+    uint fraction;
+    int timezone; /+* # of seconds to the east UTC +/
 }
 
 
@@ -419,35 +419,35 @@ public struct GdaTimestamp
  */
 public struct GdaValue
 {
-	GdaValueType type;
-	union Value
-	{
-		long vBigint;
-		ulong vBiguint;
-		void* vBinary;
-		GdaBlob vBlob;
-		int vBoolean;
-		GdaDate vDate;
-		double vDouble;
-		GdaGeometricPoint vPoint;
-		GObject *vGobj;
-		int vInteger;
-		GdaValueList *vList;
-		GdaMoney vMoney;
-		GdaNumeric vNumeric;
-		float vSingle;
-		short vSmallint;
-		ushort vSmalluint;
-		char *vString;
-		GdaTime vTime;
-		GdaTimestamp vTimestamp;
-		char vTinyint;
-		char vTinyuint;
-		GdaValueType vType;
-		uint vUinteger;
-	}
-	Value value;
-	int binaryLength;
+    GdaValueType type;
+    union Value
+    {
+        long vBigint;
+        ulong vBiguint;
+        void* vBinary;
+        GdaBlob vBlob;
+        int vBoolean;
+        GdaDate vDate;
+        double vDouble;
+        GdaGeometricPoint vPoint;
+        GObject *vGobj;
+        int vInteger;
+        GdaValueList *vList;
+        GdaMoney vMoney;
+        GdaNumeric vNumeric;
+        float vSingle;
+        short vSmallint;
+        ushort vSmalluint;
+        char *vString;
+        GdaTime vTime;
+        GdaTimestamp vTimestamp;
+        char vTinyint;
+        char vTinyuint;
+        GdaValueType vType;
+        uint vUinteger;
+    }
+    Value value;
+    int binaryLength;
 }
 
 

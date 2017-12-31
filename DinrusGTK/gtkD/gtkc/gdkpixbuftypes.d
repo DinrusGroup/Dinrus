@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -30,7 +30,7 @@ public import gtkD.gtkc.atktypes;
 
 version(Rulada)
 private import tango.stdc.stdio;
-else
+version(Dinrus)
 private import dinrus;
 
 /**
@@ -41,17 +41,17 @@ private import dinrus;
  */
 public enum GdkPixdataType
 {
-	/+* colorspace + alpha +/
-	GDK_PIXDATA_COLOR_TYPE_RGB = 0x01,
-	GDK_PIXDATA_COLOR_TYPE_RGBA = 0x02,
-	GDK_PIXDATA_COLOR_TYPE_MASK = 0xff,
-	/+* width, support 8bits only currently +/
-	GDK_PIXDATA_SAMPLE_WIDTH_8 = 0x01 << 16,
-	GDK_PIXDATA_SAMPLE_WIDTH_MASK = 0x0f << 16,
-	/+* encoding +/
-	GDK_PIXDATA_ENCODING_RAW = 0x01 << 24,
-	GDK_PIXDATA_ENCODING_RLE = 0x02 << 24,
-	GDK_PIXDATA_ENCODING_MASK = 0x0f << 24
+    /+* colorspace + alpha +/
+    GDK_PIXDATA_COLOR_TYPE_RGB = 0x01,
+    GDK_PIXDATA_COLOR_TYPE_RGBA = 0x02,
+    GDK_PIXDATA_COLOR_TYPE_MASK = 0xff,
+    /+* width, support 8bits only currently +/
+    GDK_PIXDATA_SAMPLE_WIDTH_8 = 0x01 << 16,
+    GDK_PIXDATA_SAMPLE_WIDTH_MASK = 0x0f << 16,
+    /+* encoding +/
+    GDK_PIXDATA_ENCODING_RAW = 0x01 << 24,
+    GDK_PIXDATA_ENCODING_RLE = 0x02 << 24,
+    GDK_PIXDATA_ENCODING_MASK = 0x0f << 24
 }
 alias GdkPixdataType PixdataType;
 
@@ -66,17 +66,17 @@ alias GdkPixdataType PixdataType;
  */
 public enum GdkPixdataDumpType
 {
-	/+* type of source to save +/
-	GDK_PIXDATA_DUMP_PIXDATA_STREAM = 0,
-	GDK_PIXDATA_DUMP_PIXDATA_STRUCT = 1,
-	GDK_PIXDATA_DUMP_MACROS = 2,
-	/+* type of variables to use +/
-	GDK_PIXDATA_DUMP_GTYPES = 0,
-	GDK_PIXDATA_DUMP_CTYPES = 1 << 8,
-	GDK_PIXDATA_DUMP_STATIC = 1 << 9,
-	GDK_PIXDATA_DUMP_CONST = 1 << 10,
-	/+* save RLE decoder macro? +/
-	GDK_PIXDATA_DUMP_RLE_DECODER = 1 << 16
+    /+* type of source to save +/
+    GDK_PIXDATA_DUMP_PIXDATA_STREAM = 0,
+    GDK_PIXDATA_DUMP_PIXDATA_STRUCT = 1,
+    GDK_PIXDATA_DUMP_MACROS = 2,
+    /+* type of variables to use +/
+    GDK_PIXDATA_DUMP_GTYPES = 0,
+    GDK_PIXDATA_DUMP_CTYPES = 1 << 8,
+    GDK_PIXDATA_DUMP_STATIC = 1 << 9,
+    GDK_PIXDATA_DUMP_CONST = 1 << 10,
+    /+* save RLE decoder macro? +/
+    GDK_PIXDATA_DUMP_RLE_DECODER = 1 << 16
 }
 alias GdkPixdataDumpType PixdataDumpType;
 
@@ -87,9 +87,9 @@ alias GdkPixdataDumpType PixdataDumpType;
  */
 public enum GdkPixbufFormatFlags
 {
-	WRITABLE = 1 << 0,
-	SCALABLE = 1 << 1,
-	THREADSAFE = 1 << 2
+    WRITABLE = 1 << 0,
+    SCALABLE = 1 << 1,
+    THREADSAFE = 1 << 2
 }
 alias GdkPixbufFormatFlags PixbufFormatFlags;
 
@@ -102,15 +102,18 @@ alias GdkPixbufFormatFlags PixbufFormatFlags;
  */
 public struct GdkPixdata
 {
-	uint magic; /+* GDK_PIXBUF_MAGIC_NUMBER +/
-	int length; /+* <1 to disable length checks, otherwise:
-	 * GDK_PIXDATA_HEADER_LENGTH + pixelData length
-	+/
-	uint pixdataType; /+* GdkPixdataType +/
-	uint rowstride;
-	uint width;
-	uint height;
-	ubyte *pixelData;
+    uint magic;
+    /+* GDK_PIXBUF_MAGIC_NUMBER +/
+    int length;
+/+* <1 to disable length checks, otherwise:
+    * GDK_PIXDATA_HEADER_LENGTH + pixelData length
+    +/
+    uint pixdataType;
+    /+* GdkPixdataType +/
+    uint rowstride;
+    uint width;
+    uint height;
+    ubyte *pixelData;
 }
 
 
@@ -118,20 +121,20 @@ public struct GdkPixdata
  * Main Gtk struct.
  * An opaque struct representing an animation.
  */
-public struct GdkPixbufAnimation{}
+public struct GdkPixbufAnimation {}
 
 
 /**
  * An opaque struct representing an iterator which points to a
  * certain position in an animation.
  */
-public struct GdkPixbufAnimationIter{}
+public struct GdkPixbufAnimationIter {}
 
 
 /**
  * An opaque struct representing a simple animation.
  */
-public struct GdkPixbufSimpleAnim{}
+public struct GdkPixbufSimpleAnim {}
 
 
 /**
@@ -139,7 +142,7 @@ public struct GdkPixbufSimpleAnim{}
  * The GdkPixbufLoader struct contains only private
  * fields.
  */
-public struct GdkPixbufLoader{}
+public struct GdkPixbufLoader {}
 
 
 /**
@@ -169,15 +172,15 @@ public struct GdkPixbufLoader{}
  */
 public struct GdkPixbufFormat
 {
-	char *name;
-	GdkPixbufModulePattern *signature;
-	char *domain;
-	char *description;
-	char **mimeTypes;
-	char **extensions;
-	uint flags;
-	int disabled;
-	char *license;
+    char *name;
+    GdkPixbufModulePattern *signature;
+    char *domain;
+    char *description;
+    char **mimeTypes;
+    char **extensions;
+    uint flags;
+    int disabled;
+    char *license;
 }
 
 
@@ -198,87 +201,87 @@ public struct GdkPixbufFormat
  * where the prefix is NULL.
  * GdkPixbufModulePattern *signature[] = {
 	 */
-	public struct GdkPixbufModulePattern
+public struct GdkPixbufModulePattern
 {
-		char *prefix;
-		char *mask;
-		int relevance;
-	}
-	
-	
-	/**
-	 * A GdkPixbufModule contains the necessary functions to load and save
-	 * images in a certain file format.
-	 * A GdkPixbufModule can be loaded dynamically from a GModule.
-	 * Each loadable module must contain a GdkPixbufModuleFillVtableFunc function
-	 * named fill_vtable, which will get called when the module
-	 * is loaded and must set the function pointers of the GdkPixbufModule.
-	 * char *module_name;
-	 * the name of the module, usually the same as the
-	 */
-	public struct GdkPixbufModule
+    char *prefix;
+    char *mask;
+    int relevance;
+}
+
+
+/**
+ * A GdkPixbufModule contains the necessary functions to load and save
+ * images in a certain file format.
+ * A GdkPixbufModule can be loaded dynamically from a GModule.
+ * Each loadable module must contain a GdkPixbufModuleFillVtableFunc function
+ * named fill_vtable, which will get called when the module
+ * is loaded and must set the function pointers of the GdkPixbufModule.
+ * char *module_name;
+ * the name of the module, usually the same as the
+ */
+public struct GdkPixbufModule
 {
-		char *moduleName;
-		char *modulePath;
-		GModule *modul;
-		GdkPixbufFormat *info;
-		extern(C) GdkPixbuf * function(FILE *f,GError **error)  load;
-		extern(C) GdkPixbuf * function( char **data)  loadXpmData;
-		/+* Incremental loading +/
-		extern(C) void*  function(GdkPixbufModuleSizeFunc sizeFunc,GdkPixbufModulePreparedFunc prepareFunc,GdkPixbufModuleUpdatedFunc updateFunc,void* userData,GError **error)  beginLoad;
-		extern(C) int  function(void* context,GError **error)  stopLoad;
-		extern(C) int  function(void* context,char *buf,uint size,GError **error)  loadIncrement;
-		/+* Animation loading +/
-		extern(C) GdkPixbufAnimation * function(FILE *f,GError **error)  loadAnimation;
-		/+* Saving +/
-		extern(C) int  function(FILE *f,GdkPixbuf *pixbuf,char **paramKeys,char **paramValues,GError **error)  save;
-		extern(C) int  function(GdkPixbufSaveFunc saveFunc,void* userData,GdkPixbuf *pixbuf,char **optionKeys,char **optionValues,GError **error) saveToCallback;
-	}
-	
-	
-	/**
-	 * Modules supporting animations must derive a type from
-	 * GdkPixbufAnimation, providing suitable implementations of the
-	 * virtual functions.
-	 * GObjectClass parent_class;
-	 * the parent class
-	 * is_static_image ()
-	 * returns whether the given animation is just a static image.
-	 * get_static_image ()
-	 * returns a static image representing the given animation.
-	 * get_size ()
-	 * fills width and height with the frame size of the animation.
-	 * get_iter ()
-	 * returns an iterator for the given animation.
-	 */
-	public struct GdkPixbufAnimationClass
+    char *moduleName;
+    char *modulePath;
+    GModule *modul;
+    GdkPixbufFormat *info;
+    extern(C) GdkPixbuf * function(FILE *f,GError **error)  load;
+    extern(C) GdkPixbuf * function( char **data)  loadXpmData;
+    /+* Incremental loading +/
+    extern(C) void*  function(GdkPixbufModuleSizeFunc sizeFunc,GdkPixbufModulePreparedFunc prepareFunc,GdkPixbufModuleUpdatedFunc updateFunc,void* userData,GError **error)  beginLoad;
+    extern(C) int  function(void* context,GError **error)  stopLoad;
+    extern(C) int  function(void* context,char *buf,uint size,GError **error)  loadIncrement;
+    /+* Animation loading +/
+    extern(C) GdkPixbufAnimation * function(FILE *f,GError **error)  loadAnimation;
+    /+* Saving +/
+    extern(C) int  function(FILE *f,GdkPixbuf *pixbuf,char **paramKeys,char **paramValues,GError **error)  save;
+    extern(C) int  function(GdkPixbufSaveFunc saveFunc,void* userData,GdkPixbuf *pixbuf,char **optionKeys,char **optionValues,GError **error) saveToCallback;
+}
+
+
+/**
+ * Modules supporting animations must derive a type from
+ * GdkPixbufAnimation, providing suitable implementations of the
+ * virtual functions.
+ * GObjectClass parent_class;
+ * the parent class
+ * is_static_image ()
+ * returns whether the given animation is just a static image.
+ * get_static_image ()
+ * returns a static image representing the given animation.
+ * get_size ()
+ * fills width and height with the frame size of the animation.
+ * get_iter ()
+ * returns an iterator for the given animation.
+ */
+public struct GdkPixbufAnimationClass
 {
-		GObjectClass parentClass;
-		extern(C) int  function(GdkPixbufAnimation *anim) isStaticImage;
-		extern(C) GdkPixbuf*  function(GdkPixbufAnimation *anim) getStaticImage;
-		extern(C) void  function(GdkPixbufAnimation *anim,int *width,int *height) getSize;
-		extern(C) GdkPixbufAnimationIter*  function(GdkPixbufAnimation *anim,GTimeVal *startTime) getIter;
-	}
-	
-	
-	/**
-	 * Modules supporting animations must derive a type from
-	 * GdkPixbufAnimationIter, providing suitable implementations of the
-	 * virtual functions.
-	 * GObjectClass parent_class;
-	 * the parent class
-	 * get_delay_time ()
-	 * returns the time in milliseconds that the current frame
-	 */
-	public struct GdkPixbufAnimationIterClass
+    GObjectClass parentClass;
+    extern(C) int  function(GdkPixbufAnimation *anim) isStaticImage;
+    extern(C) GdkPixbuf*  function(GdkPixbufAnimation *anim) getStaticImage;
+    extern(C) void  function(GdkPixbufAnimation *anim,int *width,int *height) getSize;
+    extern(C) GdkPixbufAnimationIter*  function(GdkPixbufAnimation *anim,GTimeVal *startTime) getIter;
+}
+
+
+/**
+ * Modules supporting animations must derive a type from
+ * GdkPixbufAnimationIter, providing suitable implementations of the
+ * virtual functions.
+ * GObjectClass parent_class;
+ * the parent class
+ * get_delay_time ()
+ * returns the time in milliseconds that the current frame
+ */
+public struct GdkPixbufAnimationIterClass
 {
-		GObjectClass parentClass;
-		extern(C) int  function(GdkPixbufAnimationIter *iter) getDelayTime;
-		extern(C) GdkPixbuf*  function(GdkPixbufAnimationIter *iter) getPixbuf;
-		extern(C) int  function(GdkPixbufAnimationIter *iter) onCurrentlyLoadingFrame;
-		extern(C) int  function(GdkPixbufAnimationIter *iter,GTimeVal *currentTime) advance;
-	}
-	
+    GObjectClass parentClass;
+    extern(C) int  function(GdkPixbufAnimationIter *iter) getDelayTime;
+    extern(C) GdkPixbuf*  function(GdkPixbufAnimationIter *iter) getPixbuf;
+    extern(C) int  function(GdkPixbufAnimationIter *iter) onCurrentlyLoadingFrame;
+    extern(C) int  function(GdkPixbufAnimationIter *iter,GTimeVal *currentTime) advance;
+}
+
 
 /*
  * Defines the type of the function used to set the vtable of a

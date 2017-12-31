@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Separator
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- OrientableIF
  * prefixes:
@@ -74,47 +74,47 @@ private import gtkD.gtk.Widget;
  */
 public class Separator : Widget, OrientableIF
 {
-	
-	/** the main Gtk struct */
-	protected GtkSeparator* gtkSeparator;
-	
-	
-	public GtkSeparator* getSeparatorStruct()
-	{
-		return gtkSeparator;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSeparator;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkSeparator* gtkSeparator)
-	{
-		if(gtkSeparator is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSeparator);
-		if( ptr !is null )
-		{
-			this = cast(Separator)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkSeparator);
-		this.gtkSeparator = gtkSeparator;
-	}
-	
-	// add the Orientable capabilities
-	mixin OrientableT!(GtkSeparator);
-	
-	/**
-	 */
+
+    /** the main Gtk struct */
+    protected GtkSeparator* gtkSeparator;
+
+
+    public GtkSeparator* getSeparatorStruct()
+    {
+        return gtkSeparator;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkSeparator;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkSeparator* gtkSeparator)
+    {
+        if(gtkSeparator is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkSeparator);
+        if( ptr !is null )
+        {
+            this = cast(Separator)ptr;
+            return;
+        }
+        super(cast(GtkWidget*)gtkSeparator);
+        this.gtkSeparator = gtkSeparator;
+    }
+
+    // add the Orientable capabilities
+    mixin OrientableT!(GtkSeparator);
+
+    /**
+     */
 }

@@ -15,21 +15,21 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gio
  * outFile = Mount
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Mount
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
@@ -70,31 +70,31 @@ private import gtkD.gio.MountIF;
  */
 public class Mount : ObjectG, MountIF
 {
-	
-	// Minimal implementation.
-	mixin MountT!(GMount);
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gMount;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GMount* gMount)
-	{
-		if(gMount is null)
-		{
-			this = null;
-			return;
-		}
-		
-		super(cast(GObject*)gMount);
-		this.gMount = gMount;
-	}
-	
-	/**
-	 */
+
+    // Minimal implementation.
+    mixin MountT!(GMount);
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gMount;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GMount* gMount)
+    {
+        if(gMount is null)
+        {
+            this = null;
+            return;
+        }
+
+        super(cast(GObject*)gMount);
+        this.gMount = gMount;
+    }
+
+    /**
+     */
 }

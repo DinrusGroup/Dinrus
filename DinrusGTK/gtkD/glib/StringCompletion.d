@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = StringCompletion
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_completion_
@@ -86,164 +86,164 @@ private import gtkD.glib.Str;
  */
 public class StringCompletion
 {
-	
-	/** the main Gtk struct */
-	protected GCompletion* gCompletion;
-	
-	
-	public GCompletion* getStringCompletionStruct()
-	{
-		return gCompletion;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gCompletion;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GCompletion* gCompletion)
-	{
-		if(gCompletion is null)
-		{
-			this = null;
-			return;
-		}
-		this.gCompletion = gCompletion;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GCompletion.
-	 * Params:
-	 * func = the function to be called to return the string representing an item
-	 * in the GCompletion, or NULL if strings are going to be used as the
-	 * GCompletion items.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GCompletionFunc func)
-	{
-		// GCompletion* g_completion_new (GCompletionFunc func);
-		auto p = g_completion_new(func);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_completion_new(func)");
-		}
-		this(cast(GCompletion*) p);
-	}
-	
-	/**
-	 * Adds items to the GCompletion.
-	 * Params:
-	 * items = the list of items to add.
-	 */
-	public void addItems(ListG items)
-	{
-		// void g_completion_add_items (GCompletion *cmp,  GList *items);
-		g_completion_add_items(gCompletion, (items is null) ? null : items.getListGStruct());
-	}
-	
-	/**
-	 * Removes items from a GCompletion.
-	 * Params:
-	 * items = the items to remove.
-	 */
-	public void removeItems(ListG items)
-	{
-		// void g_completion_remove_items (GCompletion *cmp,  GList *items);
-		g_completion_remove_items(gCompletion, (items is null) ? null : items.getListGStruct());
-	}
-	
-	/**
-	 * Removes all items from the GCompletion.
-	 */
-	public void clearItems()
-	{
-		// void g_completion_clear_items (GCompletion *cmp);
-		g_completion_clear_items(gCompletion);
-	}
-	
-	/**
-	 * Attempts to complete the string prefix using the GCompletion target items.
-	 * Params:
-	 * prefix = the prefix string, typically typed by the user, which is compared
-	 * with each of the items.
-	 * newPrefix = if non-NULL, returns the longest prefix which is common to all
-	 * items that matched prefix, or NULL if no items matched prefix.
-	 * This string should be freed when no longer needed.
-	 * Returns:the list of items whose strings begin with prefix. This shouldnot be changed.
-	 */
-	public ListG complete(string prefix, out string newPrefix)
-	{
-		// GList* g_completion_complete (GCompletion *cmp,  const gchar *prefix,  gchar **new_prefix);
-		char* outnewPrefix = null;
-		
-		auto p = g_completion_complete(gCompletion, Str.toStringz(prefix), &outnewPrefix);
-		
-		newPrefix = Str.toString(outnewPrefix);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
-	
-	/**
-	 * Attempts to complete the string prefix using the GCompletion target items.
-	 * In contrast to g_completion_complete(), this function returns the largest common
-	 * prefix that is a valid UTF-8 string, omitting a possible common partial
-	 * character.
-	 * You should use this function instead of g_completion_complete() if your
-	 * items are UTF-8 strings.
-	 * Since 2.4
-	 * Params:
-	 * prefix =  the prefix string, typically used by the user, which is compared
-	 *  with each of the items
-	 * newPrefix =  if non-NULL, returns the longest prefix which is common to all
-	 *  items that matched prefix, or NULL if no items matched prefix.
-	 *  This string should be freed when no longer needed.
-	 * Returns: the list of items whose strings begin with prefix. This shouldnot be changed.
-	 */
-	public ListG completeUtf8(string prefix, out string newPrefix)
-	{
-		// GList* g_completion_complete_utf8 (GCompletion *cmp,  const gchar *prefix,  gchar **new_prefix);
-		char* outnewPrefix = null;
-		
-		auto p = g_completion_complete_utf8(gCompletion, Str.toStringz(prefix), &outnewPrefix);
-		
-		newPrefix = Str.toString(outnewPrefix);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
-	
-	/**
-	 * Sets the function to use for string comparisons. The default
-	 * string comparison function is strncmp().
-	 * Params:
-	 * cmp = a GCompletion.
-	 * strncmpFunc = the string comparison function.
-	 */
-	public void setCompare(GCompletionStrncmpFunc strncmpFunc)
-	{
-		// void g_completion_set_compare (GCompletion *cmp,  GCompletionStrncmpFunc strncmp_func);
-		g_completion_set_compare(gCompletion, strncmpFunc);
-	}
-	
-	/**
-	 * Frees all memory used by the GCompletion.
-	 */
-	public void free()
-	{
-		// void g_completion_free (GCompletion *cmp);
-		g_completion_free(gCompletion);
-	}
+
+    /** the main Gtk struct */
+    protected GCompletion* gCompletion;
+
+
+    public GCompletion* getStringCompletionStruct()
+    {
+        return gCompletion;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gCompletion;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GCompletion* gCompletion)
+    {
+        if(gCompletion is null)
+        {
+            this = null;
+            return;
+        }
+        this.gCompletion = gCompletion;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GCompletion.
+     * Params:
+     * func = the function to be called to return the string representing an item
+     * in the GCompletion, or NULL if strings are going to be used as the
+     * GCompletion items.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GCompletionFunc func)
+    {
+        // GCompletion* g_completion_new (GCompletionFunc func);
+        auto p = g_completion_new(func);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_completion_new(func)");
+        }
+        this(cast(GCompletion*) p);
+    }
+
+    /**
+     * Adds items to the GCompletion.
+     * Params:
+     * items = the list of items to add.
+     */
+    public void addItems(ListG items)
+    {
+        // void g_completion_add_items (GCompletion *cmp,  GList *items);
+        g_completion_add_items(gCompletion, (items is null) ? null : items.getListGStruct());
+    }
+
+    /**
+     * Removes items from a GCompletion.
+     * Params:
+     * items = the items to remove.
+     */
+    public void removeItems(ListG items)
+    {
+        // void g_completion_remove_items (GCompletion *cmp,  GList *items);
+        g_completion_remove_items(gCompletion, (items is null) ? null : items.getListGStruct());
+    }
+
+    /**
+     * Removes all items from the GCompletion.
+     */
+    public void clearItems()
+    {
+        // void g_completion_clear_items (GCompletion *cmp);
+        g_completion_clear_items(gCompletion);
+    }
+
+    /**
+     * Attempts to complete the string prefix using the GCompletion target items.
+     * Params:
+     * prefix = the prefix string, typically typed by the user, which is compared
+     * with each of the items.
+     * newPrefix = if non-NULL, returns the longest prefix which is common to all
+     * items that matched prefix, or NULL if no items matched prefix.
+     * This string should be freed when no longer needed.
+     * Returns:the list of items whose strings begin with prefix. This shouldnot be changed.
+     */
+    public ListG complete(string prefix, out string newPrefix)
+    {
+        // GList* g_completion_complete (GCompletion *cmp,  const gchar *prefix,  gchar **new_prefix);
+        char* outnewPrefix = null;
+
+        auto p = g_completion_complete(gCompletion, Str.toStringz(prefix), &outnewPrefix);
+
+        newPrefix = Str.toString(outnewPrefix);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListG(cast(GList*) p);
+    }
+
+    /**
+     * Attempts to complete the string prefix using the GCompletion target items.
+     * In contrast to g_completion_complete(), this function returns the largest common
+     * prefix that is a valid UTF-8 string, omitting a possible common partial
+     * character.
+     * You should use this function instead of g_completion_complete() if your
+     * items are UTF-8 strings.
+     * Since 2.4
+     * Params:
+     * prefix =  the prefix string, typically used by the user, which is compared
+     *  with each of the items
+     * newPrefix =  if non-NULL, returns the longest prefix which is common to all
+     *  items that matched prefix, or NULL if no items matched prefix.
+     *  This string should be freed when no longer needed.
+     * Returns: the list of items whose strings begin with prefix. This shouldnot be changed.
+     */
+    public ListG completeUtf8(string prefix, out string newPrefix)
+    {
+        // GList* g_completion_complete_utf8 (GCompletion *cmp,  const gchar *prefix,  gchar **new_prefix);
+        char* outnewPrefix = null;
+
+        auto p = g_completion_complete_utf8(gCompletion, Str.toStringz(prefix), &outnewPrefix);
+
+        newPrefix = Str.toString(outnewPrefix);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListG(cast(GList*) p);
+    }
+
+    /**
+     * Sets the function to use for string comparisons. The default
+     * string comparison function is strncmp().
+     * Params:
+     * cmp = a GCompletion.
+     * strncmpFunc = the string comparison function.
+     */
+    public void setCompare(GCompletionStrncmpFunc strncmpFunc)
+    {
+        // void g_completion_set_compare (GCompletion *cmp,  GCompletionStrncmpFunc strncmp_func);
+        g_completion_set_compare(gCompletion, strncmpFunc);
+    }
+
+    /**
+     * Frees all memory used by the GCompletion.
+     */
+    public void free()
+    {
+        // void g_completion_free (GCompletion *cmp);
+        g_completion_free(gCompletion);
+    }
 }

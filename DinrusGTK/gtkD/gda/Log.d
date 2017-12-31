@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = libgda-gda-log.html
  * outPack = gda
  * outFile = Log
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Log
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gda_log_
@@ -67,50 +67,50 @@ private import gtkD.glib.Str;
  */
 public class Log
 {
-	
-	/*
-	 * Logs the given message in the GDA log file.
-	 */
-	void message(string msg)
-	{
-		gda_log_message(Str.toStringz(msg));
-	}
-	
-	/*
-	 * Logs the given error in the GDA log file.
-	 */
-	void error(string err)
-	{
-		gda_log_message(Str.toStringz(err));
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Enables GDA logs.
-	 */
-	public static void enable()
-	{
-		// void gda_log_enable (void);
-		gda_log_enable();
-	}
-	
-	/**
-	 * Disables GDA logs.
-	 */
-	public static void disable()
-	{
-		// void gda_log_disable (void);
-		gda_log_disable();
-	}
-	
-	/**
-	 * Returns: whether GDA logs are enabled (TRUE or FALSE).
-	 */
-	public static int isEnabled()
-	{
-		// gboolean gda_log_is_enabled (void);
-		return gda_log_is_enabled();
-	}
+
+    /*
+     * Logs the given message in the GDA log file.
+     */
+    void message(string msg)
+    {
+        gda_log_message(Str.toStringz(msg));
+    }
+
+    /*
+     * Logs the given error in the GDA log file.
+     */
+    void error(string err)
+    {
+        gda_log_message(Str.toStringz(err));
+    }
+
+    /**
+     */
+
+    /**
+     * Enables GDA logs.
+     */
+    public static void enable()
+    {
+        // void gda_log_enable (void);
+        gda_log_enable();
+    }
+
+    /**
+     * Disables GDA logs.
+     */
+    public static void disable()
+    {
+        // void gda_log_disable (void);
+        gda_log_disable();
+    }
+
+    /**
+     * Returns: whether GDA logs are enabled (TRUE or FALSE).
+     */
+    public static int isEnabled()
+    {
+        // gboolean gda_log_is_enabled (void);
+        return gda_log_is_enabled();
+    }
 }

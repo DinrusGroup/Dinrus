@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = gtk-Standard-Enumerations.html
  * outPack = gtk
  * outFile = StandardEnumerations
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = StandardEnumerations
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * omit structs:
@@ -64,7 +64,7 @@ private import gtkD.glib.ConstructionException;
  */
 public class StandardEnumerations
 {
-	
-	/**
-	 */
+
+    /**
+     */
 }

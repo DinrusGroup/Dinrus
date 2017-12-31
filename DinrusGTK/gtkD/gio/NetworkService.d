@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GSocketConnectable
  * clss    = NetworkService
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- SocketConnectableIF
  * prefixes:
@@ -81,103 +81,103 @@ private import gtkD.gobject.ObjectG;
  */
 public class NetworkService : ObjectG, SocketConnectableIF
 {
-	
-	/** the main Gtk struct */
-	protected GNetworkService* gNetworkService;
-	
-	
-	public GNetworkService* getNetworkServiceStruct()
-	{
-		return gNetworkService;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gNetworkService;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GNetworkService* gNetworkService)
-	{
-		if(gNetworkService is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gNetworkService);
-		if( ptr !is null )
-		{
-			this = cast(NetworkService)ptr;
-			return;
-		}
-		super(cast(GObject*)gNetworkService);
-		this.gNetworkService = gNetworkService;
-	}
-	
-	// add the SocketConnectable capabilities
-	mixin SocketConnectableT!(GNetworkService);
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GNetworkService representing the given service,
-	 * protocol, and domain. This will initially be unresolved; use the
-	 * GSocketConnectable interface to resolve it.
-	 * Since 2.22
-	 * Params:
-	 * service =  the service type to look up (eg, "ldap")
-	 * protocol =  the networking protocol to use for service (eg, "tcp")
-	 * domain =  the DNS domain to look up the service in
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string service, string protocol, string domain)
-	{
-		// GSocketConnectable * g_network_service_new (const gchar *service,  const gchar *protocol,  const gchar *domain);
-		auto p = g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain))");
-		}
-		this(cast(GNetworkService*) p);
-	}
-	
-	/**
-	 * Gets srv's service name (eg, "ldap").
-	 * Since 2.22
-	 * Returns: srv's service name
-	 */
-	public string getService()
-	{
-		// const gchar * g_network_service_get_service (GNetworkService *srv);
-		return Str.toString(g_network_service_get_service(gNetworkService));
-	}
-	
-	/**
-	 * Gets srv's protocol name (eg, "tcp").
-	 * Since 2.22
-	 * Returns: srv's protocol name
-	 */
-	public string getProtocol()
-	{
-		// const gchar * g_network_service_get_protocol (GNetworkService *srv);
-		return Str.toString(g_network_service_get_protocol(gNetworkService));
-	}
-	
-	/**
-	 * Gets the domain that srv serves. This might be either UTF-8 or
-	 * ASCII-encoded, depending on what srv was created with.
-	 * Since 2.22
-	 * Returns: srv's domain name
-	 */
-	public string getDomain()
-	{
-		// const gchar * g_network_service_get_domain (GNetworkService *srv);
-		return Str.toString(g_network_service_get_domain(gNetworkService));
-	}
+
+    /** the main Gtk struct */
+    protected GNetworkService* gNetworkService;
+
+
+    public GNetworkService* getNetworkServiceStruct()
+    {
+        return gNetworkService;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gNetworkService;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GNetworkService* gNetworkService)
+    {
+        if(gNetworkService is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gNetworkService);
+        if( ptr !is null )
+        {
+            this = cast(NetworkService)ptr;
+            return;
+        }
+        super(cast(GObject*)gNetworkService);
+        this.gNetworkService = gNetworkService;
+    }
+
+    // add the SocketConnectable capabilities
+    mixin SocketConnectableT!(GNetworkService);
+
+    /**
+     */
+
+    /**
+     * Creates a new GNetworkService representing the given service,
+     * protocol, and domain. This will initially be unresolved; use the
+     * GSocketConnectable interface to resolve it.
+     * Since 2.22
+     * Params:
+     * service =  the service type to look up (eg, "ldap")
+     * protocol =  the networking protocol to use for service (eg, "tcp")
+     * domain =  the DNS domain to look up the service in
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string service, string protocol, string domain)
+    {
+        // GSocketConnectable * g_network_service_new (const gchar *service,  const gchar *protocol,  const gchar *domain);
+        auto p = g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_network_service_new(Str.toStringz(service), Str.toStringz(protocol), Str.toStringz(domain))");
+        }
+        this(cast(GNetworkService*) p);
+    }
+
+    /**
+     * Gets srv's service name (eg, "ldap").
+     * Since 2.22
+     * Returns: srv's service name
+     */
+    public string getService()
+    {
+        // const gchar * g_network_service_get_service (GNetworkService *srv);
+        return Str.toString(g_network_service_get_service(gNetworkService));
+    }
+
+    /**
+     * Gets srv's protocol name (eg, "tcp").
+     * Since 2.22
+     * Returns: srv's protocol name
+     */
+    public string getProtocol()
+    {
+        // const gchar * g_network_service_get_protocol (GNetworkService *srv);
+        return Str.toString(g_network_service_get_protocol(gNetworkService));
+    }
+
+    /**
+     * Gets the domain that srv serves. This might be either UTF-8 or
+     * ASCII-encoded, depending on what srv was created with.
+     * Since 2.22
+     * Returns: srv's domain name
+     */
+    public string getDomain()
+    {
+        // const gchar * g_network_service_get_domain (GNetworkService *srv);
+        return Str.toString(g_network_service_get_domain(gNetworkService));
+    }
 }

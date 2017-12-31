@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SourceStyleScheme
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_source_style_scheme_
@@ -153,111 +153,111 @@ private import gtkD.gobject.ObjectG;
  */
 public class SourceStyleScheme : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkSourceStyleScheme* gtkSourceStyleScheme;
-	
-	
-	public GtkSourceStyleScheme* getSourceStyleSchemeStruct()
-	{
-		return gtkSourceStyleScheme;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourceStyleScheme;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkSourceStyleScheme* gtkSourceStyleScheme)
-	{
-		if(gtkSourceStyleScheme is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourceStyleScheme);
-		if( ptr !is null )
-		{
-			this = cast(SourceStyleScheme)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSourceStyleScheme);
-		this.gtkSourceStyleScheme = gtkSourceStyleScheme;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Since 2.0
-	 * Returns: scheme id.
-	 */
-	public string getId()
-	{
-		// const gchar * gtk_source_style_scheme_get_id (GtkSourceStyleScheme *scheme);
-		return Str.toString(gtk_source_style_scheme_get_id(gtkSourceStyleScheme));
-	}
-	
-	/**
-	 * Since 2.0
-	 * Returns: scheme name.
-	 */
-	public string getName()
-	{
-		// const gchar * gtk_source_style_scheme_get_name (GtkSourceStyleScheme *scheme);
-		return Str.toString(gtk_source_style_scheme_get_name(gtkSourceStyleScheme));
-	}
-	
-	/**
-	 * Since 2.0
-	 * Returns: scheme description (if defined) or NULL.
-	 */
-	public string getDescription()
-	{
-		// const gchar * gtk_source_style_scheme_get_description  (GtkSourceStyleScheme *scheme);
-		return Str.toString(gtk_source_style_scheme_get_description(gtkSourceStyleScheme));
-	}
-	
-	/**
-	 * Since 2.0
-	 * Returns: a NULL-terminated array containing the scheme authors orNULL if no author is specified by the stylescheme.
-	 */
-	public string[] getAuthors()
-	{
-		// const gchar * const * gtk_source_style_scheme_get_authors  (GtkSourceStyleScheme *scheme);
-		return Str.toStringArray(gtk_source_style_scheme_get_authors(gtkSourceStyleScheme));
-	}
-	
-	/**
-	 * Since 2.0
-	 * Returns: scheme file name if the scheme was created parsing astyle scheme file or NULL in the other cases.
-	 */
-	public string getFilename()
-	{
-		// const gchar * gtk_source_style_scheme_get_filename  (GtkSourceStyleScheme *scheme);
-		return Str.toString(gtk_source_style_scheme_get_filename(gtkSourceStyleScheme));
-	}
-	
-	/**
-	 * Since 2.0
-	 * Params:
-	 * styleId =  id of the style to retrieve.
-	 * Returns: style which corresponds to style_id in the scheme,or NULL when no style with this name found. It is owned by schemeand may not be unref'ed.
-	 */
-	public SourceStyle getStyle(string styleId)
-	{
-		// GtkSourceStyle * gtk_source_style_scheme_get_style (GtkSourceStyleScheme *scheme,  const gchar *style_id);
-		auto p = gtk_source_style_scheme_get_style(gtkSourceStyleScheme, Str.toStringz(styleId));
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceStyle(cast(GtkSourceStyle*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkSourceStyleScheme* gtkSourceStyleScheme;
+
+
+    public GtkSourceStyleScheme* getSourceStyleSchemeStruct()
+    {
+        return gtkSourceStyleScheme;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkSourceStyleScheme;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkSourceStyleScheme* gtkSourceStyleScheme)
+    {
+        if(gtkSourceStyleScheme is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkSourceStyleScheme);
+        if( ptr !is null )
+        {
+            this = cast(SourceStyleScheme)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkSourceStyleScheme);
+        this.gtkSourceStyleScheme = gtkSourceStyleScheme;
+    }
+
+    /**
+     */
+
+    /**
+     * Since 2.0
+     * Returns: scheme id.
+     */
+    public string getId()
+    {
+        // const gchar * gtk_source_style_scheme_get_id (GtkSourceStyleScheme *scheme);
+        return Str.toString(gtk_source_style_scheme_get_id(gtkSourceStyleScheme));
+    }
+
+    /**
+     * Since 2.0
+     * Returns: scheme name.
+     */
+    public string getName()
+    {
+        // const gchar * gtk_source_style_scheme_get_name (GtkSourceStyleScheme *scheme);
+        return Str.toString(gtk_source_style_scheme_get_name(gtkSourceStyleScheme));
+    }
+
+    /**
+     * Since 2.0
+     * Returns: scheme description (if defined) or NULL.
+     */
+    public string getDescription()
+    {
+        // const gchar * gtk_source_style_scheme_get_description  (GtkSourceStyleScheme *scheme);
+        return Str.toString(gtk_source_style_scheme_get_description(gtkSourceStyleScheme));
+    }
+
+    /**
+     * Since 2.0
+     * Returns: a NULL-terminated array containing the scheme authors orNULL if no author is specified by the stylescheme.
+     */
+    public string[] getAuthors()
+    {
+        // const gchar * const * gtk_source_style_scheme_get_authors  (GtkSourceStyleScheme *scheme);
+        return Str.toStringArray(gtk_source_style_scheme_get_authors(gtkSourceStyleScheme));
+    }
+
+    /**
+     * Since 2.0
+     * Returns: scheme file name if the scheme was created parsing astyle scheme file or NULL in the other cases.
+     */
+    public string getFilename()
+    {
+        // const gchar * gtk_source_style_scheme_get_filename  (GtkSourceStyleScheme *scheme);
+        return Str.toString(gtk_source_style_scheme_get_filename(gtkSourceStyleScheme));
+    }
+
+    /**
+     * Since 2.0
+     * Params:
+     * styleId =  id of the style to retrieve.
+     * Returns: style which corresponds to style_id in the scheme,or NULL when no style with this name found. It is owned by schemeand may not be unref'ed.
+     */
+    public SourceStyle getStyle(string styleId)
+    {
+        // GtkSourceStyle * gtk_source_style_scheme_get_style (GtkSourceStyleScheme *scheme,  const gchar *style_id);
+        auto p = gtk_source_style_scheme_get_style(gtkSourceStyleScheme, Str.toStringz(styleId));
+        if(p is null)
+        {
+            return null;
+        }
+        return new SourceStyle(cast(GtkSourceStyle*) p);
+    }
 }

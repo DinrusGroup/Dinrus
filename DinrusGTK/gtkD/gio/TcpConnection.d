@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gio
  * outFile = TcpConnection
  * strct   = GTcpConnection
  * realStrct=
  * ctorStrct=
  * clss    = TcpConnection
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_tcp_connection_
@@ -76,75 +76,75 @@ private import gtkD.gio.SocketConnection;
  */
 public class TcpConnection : SocketConnection
 {
-	
-	/** the main Gtk struct */
-	protected GTcpConnection* gTcpConnection;
-	
-	
-	public GTcpConnection* getTcpConnectionStruct()
-	{
-		return gTcpConnection;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gTcpConnection;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GTcpConnection* gTcpConnection)
-	{
-		if(gTcpConnection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gTcpConnection);
-		if( ptr !is null )
-		{
-			this = cast(TcpConnection)ptr;
-			return;
-		}
-		super(cast(GSocketConnection*)gTcpConnection);
-		this.gTcpConnection = gTcpConnection;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * This enabled graceful disconnects on close. A graceful disconnect
-	 * means that we signal the recieving end that the connection is terminated
-	 * and wait for it to close the connection before closing the connection.
-	 * A graceful disconnect means that we can be sure that we successfully sent
-	 * all the outstanding data to the other end, or get an error reported.
-	 * However, it also means we have to wait for all the data to reach the
-	 * other side and for it to acknowledge this by closing the socket, which may
-	 * take a while. For this reason it is disabled by default.
-	 * Since 2.22
-	 * Params:
-	 * gracefulDisconnect =  Whether to do graceful disconnects or not
-	 */
-	public void setGracefulDisconnect(int gracefulDisconnect)
-	{
-		// void g_tcp_connection_set_graceful_disconnect  (GTcpConnection *connection,  gboolean graceful_disconnect);
-		g_tcp_connection_set_graceful_disconnect(gTcpConnection, gracefulDisconnect);
-	}
-	
-	/**
-	 * Checks if graceful disconnects are used. See
-	 * g_tcp_connection_set_graceful_disconnect().
-	 * Since 2.22
-	 * Returns: TRUE if graceful disconnect is used on close, FALSE otherwise
-	 */
-	public int getGracefulDisconnect()
-	{
-		// gboolean g_tcp_connection_get_graceful_disconnect  (GTcpConnection *connection);
-		return g_tcp_connection_get_graceful_disconnect(gTcpConnection);
-	}
+
+    /** the main Gtk struct */
+    protected GTcpConnection* gTcpConnection;
+
+
+    public GTcpConnection* getTcpConnectionStruct()
+    {
+        return gTcpConnection;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gTcpConnection;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GTcpConnection* gTcpConnection)
+    {
+        if(gTcpConnection is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gTcpConnection);
+        if( ptr !is null )
+        {
+            this = cast(TcpConnection)ptr;
+            return;
+        }
+        super(cast(GSocketConnection*)gTcpConnection);
+        this.gTcpConnection = gTcpConnection;
+    }
+
+    /**
+     */
+
+    /**
+     * This enabled graceful disconnects on close. A graceful disconnect
+     * means that we signal the recieving end that the connection is terminated
+     * and wait for it to close the connection before closing the connection.
+     * A graceful disconnect means that we can be sure that we successfully sent
+     * all the outstanding data to the other end, or get an error reported.
+     * However, it also means we have to wait for all the data to reach the
+     * other side and for it to acknowledge this by closing the socket, which may
+     * take a while. For this reason it is disabled by default.
+     * Since 2.22
+     * Params:
+     * gracefulDisconnect =  Whether to do graceful disconnects or not
+     */
+    public void setGracefulDisconnect(int gracefulDisconnect)
+    {
+        // void g_tcp_connection_set_graceful_disconnect  (GTcpConnection *connection,  gboolean graceful_disconnect);
+        g_tcp_connection_set_graceful_disconnect(gTcpConnection, gracefulDisconnect);
+    }
+
+    /**
+     * Checks if graceful disconnects are used. See
+     * g_tcp_connection_set_graceful_disconnect().
+     * Since 2.22
+     * Returns: TRUE if graceful disconnect is used on close, FALSE otherwise
+     */
+    public int getGracefulDisconnect()
+    {
+        // gboolean g_tcp_connection_get_graceful_disconnect  (GTcpConnection *connection);
+        return g_tcp_connection_get_graceful_disconnect(gTcpConnection);
+    }
 }

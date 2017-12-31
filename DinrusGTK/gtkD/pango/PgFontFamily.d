@@ -15,21 +15,21 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = pango
  * outFile = PgFontFamily
  * strct   = PangoFontFamily
  * realStrct=
  * ctorStrct=
  * clss    = PgFontFamily
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -77,102 +77,102 @@ private import gtkD.gobject.ObjectG;
  */
 public class PgFontFamily : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected PangoFontFamily* pangoFontFamily;
-	
-	
-	public PangoFontFamily* getPgFontFamilyStruct()
-	{
-		return pangoFontFamily;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoFontFamily;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (PangoFontFamily* pangoFontFamily)
-	{
-		if(pangoFontFamily is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoFontFamily);
-		if( ptr !is null )
-		{
-			this = cast(PgFontFamily)ptr;
-			return;
-		}
-		super(cast(GObject*)pangoFontFamily);
-		this.pangoFontFamily = pangoFontFamily;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the name of the family. The name is unique among all
-	 * fonts for the font backend and can be used in a PangoFontDescription
-	 * to specify that a face from this family is desired.
-	 * Returns: the name of the family. This string is owned by the family object and must not be modified or freed.
-	 */
-	public string getName()
-	{
-		// const char * pango_font_family_get_name (PangoFontFamily *family);
-		return Str.toString(pango_font_family_get_name(pangoFontFamily));
-	}
-	
-	/**
-	 * A monospace font is a font designed for text display where the the
-	 * characters form a regular grid. For Western languages this would
-	 * mean that the advance width of all characters are the same, but
-	 * this categorization also includes Asian fonts which include
-	 * double-width characters: characters that occupy two grid cells.
-	 * g_unichar_iswide() returns a result that indicates whether a
-	 * character is typically double-width in a monospace font.
-	 * The best way to find out the grid-cell size is to call
-	 * pango_font_metrics_get_approximate_digit_width(), since the results
-	 * of pango_font_metrics_get_approximate_char_width() may be affected
-	 * by double-width characters.
-	 * Since 1.4
-	 * Returns: TRUE if the family is monospace.
-	 */
-	public int isMonospace()
-	{
-		// gboolean pango_font_family_is_monospace (PangoFontFamily *family);
-		return pango_font_family_is_monospace(pangoFontFamily);
-	}
-	
-	/**
-	 * Lists the different font faces that make up family. The faces
-	 * in a family share a common design, but differ in slant, weight,
-	 * width and other aspects.
-	 * Params:
-	 * faces =  location to store an array of pointers to PangoFontFace
-	 *  objects, or NULL. This array should be freed with g_free()
-	 *  when it is no longer needed.
-	 */
-	public void listFaces(out PgFontFace[] faces)
-	{
-		// void pango_font_family_list_faces (PangoFontFamily *family,  PangoFontFace ***faces,  int *n_faces);
-		PangoFontFace** outfaces = null;
-		int nFaces;
-		
-		pango_font_family_list_faces(pangoFontFamily, &outfaces, &nFaces);
-		
-		
-		faces = new PgFontFace[nFaces];
-		for(int i = 0; i < nFaces; i++)
-		{
-			faces[i] = new PgFontFace(cast(PangoFontFace*) outfaces[i]);
-		}
-	}
+
+    /** the main Gtk struct */
+    protected PangoFontFamily* pangoFontFamily;
+
+
+    public PangoFontFamily* getPgFontFamilyStruct()
+    {
+        return pangoFontFamily;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)pangoFontFamily;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (PangoFontFamily* pangoFontFamily)
+    {
+        if(pangoFontFamily is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)pangoFontFamily);
+        if( ptr !is null )
+        {
+            this = cast(PgFontFamily)ptr;
+            return;
+        }
+        super(cast(GObject*)pangoFontFamily);
+        this.pangoFontFamily = pangoFontFamily;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the name of the family. The name is unique among all
+     * fonts for the font backend and can be used in a PangoFontDescription
+     * to specify that a face from this family is desired.
+     * Returns: the name of the family. This string is owned by the family object and must not be modified or freed.
+     */
+    public string getName()
+    {
+        // const char * pango_font_family_get_name (PangoFontFamily *family);
+        return Str.toString(pango_font_family_get_name(pangoFontFamily));
+    }
+
+    /**
+     * A monospace font is a font designed for text display where the the
+     * characters form a regular grid. For Western languages this would
+     * mean that the advance width of all characters are the same, but
+     * this categorization also includes Asian fonts which include
+     * double-width characters: characters that occupy two grid cells.
+     * g_unichar_iswide() returns a result that indicates whether a
+     * character is typically double-width in a monospace font.
+     * The best way to find out the grid-cell size is to call
+     * pango_font_metrics_get_approximate_digit_width(), since the results
+     * of pango_font_metrics_get_approximate_char_width() may be affected
+     * by double-width characters.
+     * Since 1.4
+     * Returns: TRUE if the family is monospace.
+     */
+    public int isMonospace()
+    {
+        // gboolean pango_font_family_is_monospace (PangoFontFamily *family);
+        return pango_font_family_is_monospace(pangoFontFamily);
+    }
+
+    /**
+     * Lists the different font faces that make up family. The faces
+     * in a family share a common design, but differ in slant, weight,
+     * width and other aspects.
+     * Params:
+     * faces =  location to store an array of pointers to PangoFontFace
+     *  objects, or NULL. This array should be freed with g_free()
+     *  when it is no longer needed.
+     */
+    public void listFaces(out PgFontFace[] faces)
+    {
+        // void pango_font_family_list_faces (PangoFontFamily *family,  PangoFontFace ***faces,  int *n_faces);
+        PangoFontFace** outfaces = null;
+        int nFaces;
+
+        pango_font_family_list_faces(pangoFontFamily, &outfaces, &nFaces);
+
+
+        faces = new PgFontFace[nFaces];
+        for(int i = 0; i < nFaces; i++)
+        {
+            faces[i] = new PgFontFace(cast(PangoFontFace*) outfaces[i]);
+        }
+    }
 }

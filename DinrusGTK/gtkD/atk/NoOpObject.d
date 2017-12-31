@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = NoOpObject
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_no_op_object_
@@ -75,62 +75,62 @@ private import gtkD.atk.ObjectAtk;
  */
 public class NoOpObject : ObjectAtk
 {
-	
-	/** the main Gtk struct */
-	protected AtkNoOpObject* atkNoOpObject;
-	
-	
-	public AtkNoOpObject* getNoOpObjectStruct()
-	{
-		return atkNoOpObject;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)atkNoOpObject;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkNoOpObject* atkNoOpObject)
-	{
-		if(atkNoOpObject is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)atkNoOpObject);
-		if( ptr !is null )
-		{
-			this = cast(NoOpObject)ptr;
-			return;
-		}
-		super(cast(AtkObject*)atkNoOpObject);
-		this.atkNoOpObject = atkNoOpObject;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Provides a default (non-functioning stub) AtkObject.
-	 * Application maintainers should not use this method.
-	 * Params:
-	 * obj =  a GObject
-	 * Returns: a default (non-functioning stub) AtkObject
-	 */
-	public static ObjectAtk newNoOpObject(ObjectG obj)
-	{
-		// AtkObject * atk_no_op_object_new (GObject *obj);
-		auto p = atk_no_op_object_new((obj is null) ? null : obj.getObjectGStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectAtk(cast(AtkObject*) p);
-	}
+
+    /** the main Gtk struct */
+    protected AtkNoOpObject* atkNoOpObject;
+
+
+    public AtkNoOpObject* getNoOpObjectStruct()
+    {
+        return atkNoOpObject;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)atkNoOpObject;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkNoOpObject* atkNoOpObject)
+    {
+        if(atkNoOpObject is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)atkNoOpObject);
+        if( ptr !is null )
+        {
+            this = cast(NoOpObject)ptr;
+            return;
+        }
+        super(cast(AtkObject*)atkNoOpObject);
+        this.atkNoOpObject = atkNoOpObject;
+    }
+
+    /**
+     */
+
+    /**
+     * Provides a default (non-functioning stub) AtkObject.
+     * Application maintainers should not use this method.
+     * Params:
+     * obj =  a GObject
+     * Returns: a default (non-functioning stub) AtkObject
+     */
+    public static ObjectAtk newNoOpObject(ObjectG obj)
+    {
+        // AtkObject * atk_no_op_object_new (GObject *obj);
+        auto p = atk_no_op_object_new((obj is null) ? null : obj.getObjectGStruct());
+        if(p is null)
+        {
+            return null;
+        }
+        return new ObjectAtk(cast(AtkObject*) p);
+    }
 }

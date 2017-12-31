@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,7 +29,7 @@
  * realStrct=
  * ctorStrct=GdaDataModel
  * clss    = DataModelArray
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
@@ -66,81 +66,81 @@ private import gtkD.gda.DataModel;
  */
 public class DataModelArray : DataModel
 {
-	
-	/** the main Gtk struct */
-	protected GdaDataModelArray* gdaDataModelArray;
-	
-	
-	public GdaDataModelArray* getDataModelArrayStruct()
-	{
-		return gdaDataModelArray;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gdaDataModelArray;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdaDataModelArray* gdaDataModelArray)
-	{
-		if(gdaDataModelArray is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gdaDataModelArray);
-		if( ptr !is null )
-		{
-			this = cast(DataModelArray)ptr;
-			return;
-		}
-		super(cast(GdaDataModel*)gdaDataModelArray);
-		this.gdaDataModelArray = gdaDataModelArray;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Params:
-	 * cols =  number of columns for rows in this data model.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (int cols)
-	{
-		// GdaDataModel* gda_data_model_array_new (gint cols);
-		auto p = gda_data_model_array_new(cols);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gda_data_model_array_new(cols)");
-		}
-		this(cast(GdaDataModelArray*) p);
-	}
-	
-	/**
-	 * Sets the number of columns for rows inserted in this model.
-	 * cols must be greated than or equal to 0.
-	 * Params:
-	 * cols =  number of columns for rows this data model should use.
-	 */
-	public void setNColumns(int cols)
-	{
-		// void gda_data_model_array_set_n_columns (GdaDataModelArray *model,  gint cols);
-		gda_data_model_array_set_n_columns(gdaDataModelArray, cols);
-	}
-	
-	/**
-	 * Frees all the rows inserted in model.
-	 */
-	public void clear()
-	{
-		// void gda_data_model_array_clear (GdaDataModelArray *model);
-		gda_data_model_array_clear(gdaDataModelArray);
-	}
+
+    /** the main Gtk struct */
+    protected GdaDataModelArray* gdaDataModelArray;
+
+
+    public GdaDataModelArray* getDataModelArrayStruct()
+    {
+        return gdaDataModelArray;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gdaDataModelArray;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdaDataModelArray* gdaDataModelArray)
+    {
+        if(gdaDataModelArray is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gdaDataModelArray);
+        if( ptr !is null )
+        {
+            this = cast(DataModelArray)ptr;
+            return;
+        }
+        super(cast(GdaDataModel*)gdaDataModelArray);
+        this.gdaDataModelArray = gdaDataModelArray;
+    }
+
+    /**
+     */
+
+    /**
+     * Params:
+     * cols =  number of columns for rows in this data model.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (int cols)
+    {
+        // GdaDataModel* gda_data_model_array_new (gint cols);
+        auto p = gda_data_model_array_new(cols);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gda_data_model_array_new(cols)");
+        }
+        this(cast(GdaDataModelArray*) p);
+    }
+
+    /**
+     * Sets the number of columns for rows inserted in this model.
+     * cols must be greated than or equal to 0.
+     * Params:
+     * cols =  number of columns for rows this data model should use.
+     */
+    public void setNColumns(int cols)
+    {
+        // void gda_data_model_array_set_n_columns (GdaDataModelArray *model,  gint cols);
+        gda_data_model_array_set_n_columns(gdaDataModelArray, cols);
+    }
+
+    /**
+     * Frees all the rows inserted in model.
+     */
+    public void clear()
+    {
+        // void gda_data_model_array_clear (GdaDataModelArray *model);
+        gda_data_model_array_clear(gdaDataModelArray);
+    }
 }

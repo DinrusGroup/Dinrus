@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = TypeFindFactory
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gst_type_find_factory_
@@ -127,100 +127,100 @@ private import gtkD.gstreamer.PluginFeature;
  */
 public class TypeFindFactory : PluginFeature
 {
-	
-	/** the main Gtk struct */
-	protected GstTypeFindFactory* gstTypeFindFactory;
-	
-	
-	public GstTypeFindFactory* getTypeFindFactoryStruct()
-	{
-		return gstTypeFindFactory;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstTypeFindFactory;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GstTypeFindFactory* gstTypeFindFactory)
-	{
-		if(gstTypeFindFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstTypeFindFactory);
-		if( ptr !is null )
-		{
-			this = cast(TypeFindFactory)ptr;
-			return;
-		}
-		super(cast(GstPluginFeature*)gstTypeFindFactory);
-		this.gstTypeFindFactory = gstTypeFindFactory;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the list of all registered typefind factories. You must free the
-	 * list using g_list_free.
-	 * Returns: the list of all registered GstTypeFindFactory.
-	 */
-	public static ListG getList()
-	{
-		// GList* gst_type_find_factory_get_list (void);
-		auto p = gst_type_find_factory_get_list();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
-	
-	/**
-	 * Gets the extensions associated with a GstTypeFindFactory. The returned
-	 * array should not be changed. If you need to change stuff in it, you should
-	 * copy it using g_stdupv(). This function may return NULL to indicate
-	 * a 0-length list.
-	 * Returns: a NULL-terminated array of extensions associated with this factory
-	 */
-	public string[] getExtensions()
-	{
-		// gchar** gst_type_find_factory_get_extensions  (GstTypeFindFactory *factory);
-		return Str.toStringArray(gst_type_find_factory_get_extensions(gstTypeFindFactory));
-	}
-	
-	/**
-	 * Gets the GstCaps associated with a typefind factory.
-	 * Returns: The GstCaps associated with this factory
-	 */
-	public Caps getCaps()
-	{
-		// GstCaps* gst_type_find_factory_get_caps (GstTypeFindFactory *factory);
-		auto p = gst_type_find_factory_get_caps(gstTypeFindFactory);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Caps(cast(GstCaps*) p);
-	}
-	
-	/**
-	 * Calls the GstTypeFindFunction associated with this factory.
-	 * Params:
-	 * find =  A properly setup GstTypeFind entry. The get_data and suggest_type
-	 *  members must be set.
-	 */
-	public void callFunction(TypeFind find)
-	{
-		// void gst_type_find_factory_call_function  (GstTypeFindFactory *factory,  GstTypeFind *find);
-		gst_type_find_factory_call_function(gstTypeFindFactory, (find is null) ? null : find.getTypeFindStruct());
-	}
+
+    /** the main Gtk struct */
+    protected GstTypeFindFactory* gstTypeFindFactory;
+
+
+    public GstTypeFindFactory* getTypeFindFactoryStruct()
+    {
+        return gstTypeFindFactory;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gstTypeFindFactory;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GstTypeFindFactory* gstTypeFindFactory)
+    {
+        if(gstTypeFindFactory is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gstTypeFindFactory);
+        if( ptr !is null )
+        {
+            this = cast(TypeFindFactory)ptr;
+            return;
+        }
+        super(cast(GstPluginFeature*)gstTypeFindFactory);
+        this.gstTypeFindFactory = gstTypeFindFactory;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the list of all registered typefind factories. You must free the
+     * list using g_list_free.
+     * Returns: the list of all registered GstTypeFindFactory.
+     */
+    public static ListG getList()
+    {
+        // GList* gst_type_find_factory_get_list (void);
+        auto p = gst_type_find_factory_get_list();
+        if(p is null)
+        {
+            return null;
+        }
+        return new ListG(cast(GList*) p);
+    }
+
+    /**
+     * Gets the extensions associated with a GstTypeFindFactory. The returned
+     * array should not be changed. If you need to change stuff in it, you should
+     * copy it using g_stdupv(). This function may return NULL to indicate
+     * a 0-length list.
+     * Returns: a NULL-terminated array of extensions associated with this factory
+     */
+    public string[] getExtensions()
+    {
+        // gchar** gst_type_find_factory_get_extensions  (GstTypeFindFactory *factory);
+        return Str.toStringArray(gst_type_find_factory_get_extensions(gstTypeFindFactory));
+    }
+
+    /**
+     * Gets the GstCaps associated with a typefind factory.
+     * Returns: The GstCaps associated with this factory
+     */
+    public Caps getCaps()
+    {
+        // GstCaps* gst_type_find_factory_get_caps (GstTypeFindFactory *factory);
+        auto p = gst_type_find_factory_get_caps(gstTypeFindFactory);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Caps(cast(GstCaps*) p);
+    }
+
+    /**
+     * Calls the GstTypeFindFunction associated with this factory.
+     * Params:
+     * find =  A properly setup GstTypeFind entry. The get_data and suggest_type
+     *  members must be set.
+     */
+    public void callFunction(TypeFind find)
+    {
+        // void gst_type_find_factory_call_function  (GstTypeFindFactory *factory,  GstTypeFind *find);
+        gst_type_find_factory_call_function(gstTypeFindFactory, (find is null) ? null : find.getTypeFindStruct());
+    }
 }

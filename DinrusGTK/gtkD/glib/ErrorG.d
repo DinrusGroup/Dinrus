@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = ErrorG
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_error_
@@ -290,175 +290,175 @@ private import gtkD.glib.Str;
  */
 public class ErrorG
 {
-	
-	/** the main Gtk struct */
-	protected GError* gError;
-	
-	
-	public GError* getErrorGStruct()
-	{
-		return gError;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gError;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GError* gError)
-	{
-		if(gError is null)
-		{
-			this = null;
-			return;
-		}
-		this.gError = gError;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GError; unlike g_error_new(), message is
-	 * not a printf()-style format string. Use this function if
-	 * message contains text you don't have control over,
-	 * that could include printf() escape sequences.
-	 * Params:
-	 * domain =  error domain
-	 * code =  error code
-	 * message =  error message
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GQuark domain, int code, string message)
-	{
-		// GError* g_error_new_literal (GQuark domain,  gint code,  const gchar *message);
-		auto p = g_error_new_literal(domain, code, Str.toStringz(message));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_error_new_literal(domain, code, Str.toStringz(message))");
-		}
-		this(cast(GError*) p);
-	}
-	
-	/**
-	 * Creates a new GError with the given domain and code,
-	 * and a message formatted with format.
-	 * Since 2.22
-	 * Params:
-	 * domain =  error domain
-	 * code =  error code
-	 * format =  printf()-style format for error message
-	 * args =  va_list of parameters for the message format
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (GQuark domain, int code, string format, void* args)
-	{
-		// GError* g_error_new_valist (GQuark domain,  gint code,  const gchar *format,  va_list args);
-		auto p = g_error_new_valist(domain, code, Str.toStringz(format), args);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_error_new_valist(domain, code, Str.toStringz(format), args)");
-		}
-		this(cast(GError*) p);
-	}
-	
-	/**
-	 * Frees a GError and associated resources.
-	 */
-	public void free()
-	{
-		// void g_error_free (GError *error);
-		g_error_free(gError);
-	}
-	
-	/**
-	 * Makes a copy of error.
-	 * Returns: a new GError
-	 */
-	public ErrorG copy()
-	{
-		// GError* g_error_copy (const GError *error);
-		auto p = g_error_copy(gError);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ErrorG(cast(GError*) p);
-	}
-	
-	/**
-	 * Returns TRUE if error matches domain and code, FALSE
-	 * otherwise. In particular, when error is NULL, FALSE will
-	 * be returned.
-	 * Params:
-	 * domain =  an error domain
-	 * code =  an error code
-	 * Returns: whether error has domain and code
-	 */
-	public int matches(GQuark domain, int code)
-	{
-		// gboolean g_error_matches (const GError *error,  GQuark domain,  gint code);
-		return g_error_matches(gError, domain, code);
-	}
-	
-	/**
-	 * Does nothing if err is NULL; if err is non-NULL, then *err
-	 * must be NULL. A new GError is created and assigned to *err.
-	 * Unlike g_set_error(), message is not a printf()-style format string.
-	 * Use this function if message contains text you don't have control over,
-	 * that could include printf() escape sequences.
-	 * Since 2.18
-	 * Params:
-	 * err =  a return location for a GError, or NULL
-	 * domain =  error domain
-	 * code =  error code
-	 * message =  error message
-	 */
-	public static void gSetErrorLiteral(out ErrorG err, GQuark domain, int code, string message)
-	{
-		// void g_set_error_literal (GError **err,  GQuark domain,  gint code,  const gchar *message);
-		GError* outerr = null;
-		
-		g_set_error_literal(&outerr, domain, code, Str.toStringz(message));
-		
-		err = new ErrorG(outerr);
-	}
-	
-	/**
-	 * If dest is NULL, free src; otherwise, moves src into *dest.
-	 * The error variable dest points to must be NULL.
-	 * Params:
-	 * dest =  error return location
-	 * src =  error to move into the return location
-	 */
-	public static void gPropagateError(out ErrorG dest, ErrorG src)
-	{
-		// void g_propagate_error (GError **dest,  GError *src);
-		GError* outdest = null;
-		
-		g_propagate_error(&outdest, (src is null) ? null : src.getErrorGStruct());
-		
-		dest = new ErrorG(outdest);
-	}
-	
-	/**
-	 * If err is NULL, does nothing. If err is non-NULL,
-	 * calls g_error_free() on *err and sets *err to NULL.
-	 * Params:
-	 * err =  a GError return location
-	 */
-	public static void gClearError(inout ErrorG err)
-	{
-		// void g_clear_error (GError **err);
-		GError* outerr = (err is null) ? null : err.getErrorGStruct();
-		
-		g_clear_error(&outerr);
-		
-		err = new ErrorG(outerr);
-	}
+
+    /** the main Gtk struct */
+    protected GError* gError;
+
+
+    public GError* getErrorGStruct()
+    {
+        return gError;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gError;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GError* gError)
+    {
+        if(gError is null)
+        {
+            this = null;
+            return;
+        }
+        this.gError = gError;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GError; unlike g_error_new(), message is
+     * not a printf()-style format string. Use this function if
+     * message contains text you don't have control over,
+     * that could include printf() escape sequences.
+     * Params:
+     * domain =  error domain
+     * code =  error code
+     * message =  error message
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GQuark domain, int code, string message)
+    {
+        // GError* g_error_new_literal (GQuark domain,  gint code,  const gchar *message);
+        auto p = g_error_new_literal(domain, code, Str.toStringz(message));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_error_new_literal(domain, code, Str.toStringz(message))");
+        }
+        this(cast(GError*) p);
+    }
+
+    /**
+     * Creates a new GError with the given domain and code,
+     * and a message formatted with format.
+     * Since 2.22
+     * Params:
+     * domain =  error domain
+     * code =  error code
+     * format =  printf()-style format for error message
+     * args =  va_list of parameters for the message format
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (GQuark domain, int code, string format, void* args)
+    {
+        // GError* g_error_new_valist (GQuark domain,  gint code,  const gchar *format,  va_list args);
+        auto p = g_error_new_valist(domain, code, Str.toStringz(format), args);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_error_new_valist(domain, code, Str.toStringz(format), args)");
+        }
+        this(cast(GError*) p);
+    }
+
+    /**
+     * Frees a GError and associated resources.
+     */
+    public void free()
+    {
+        // void g_error_free (GError *error);
+        g_error_free(gError);
+    }
+
+    /**
+     * Makes a copy of error.
+     * Returns: a new GError
+     */
+    public ErrorG copy()
+    {
+        // GError* g_error_copy (const GError *error);
+        auto p = g_error_copy(gError);
+        if(p is null)
+        {
+            return null;
+        }
+        return new ErrorG(cast(GError*) p);
+    }
+
+    /**
+     * Returns TRUE if error matches domain and code, FALSE
+     * otherwise. In particular, when error is NULL, FALSE will
+     * be returned.
+     * Params:
+     * domain =  an error domain
+     * code =  an error code
+     * Returns: whether error has domain and code
+     */
+    public int matches(GQuark domain, int code)
+    {
+        // gboolean g_error_matches (const GError *error,  GQuark domain,  gint code);
+        return g_error_matches(gError, domain, code);
+    }
+
+    /**
+     * Does nothing if err is NULL; if err is non-NULL, then *err
+     * must be NULL. A new GError is created and assigned to *err.
+     * Unlike g_set_error(), message is not a printf()-style format string.
+     * Use this function if message contains text you don't have control over,
+     * that could include printf() escape sequences.
+     * Since 2.18
+     * Params:
+     * err =  a return location for a GError, or NULL
+     * domain =  error domain
+     * code =  error code
+     * message =  error message
+     */
+    public static void gSetErrorLiteral(out ErrorG err, GQuark domain, int code, string message)
+    {
+        // void g_set_error_literal (GError **err,  GQuark domain,  gint code,  const gchar *message);
+        GError* outerr = null;
+
+        g_set_error_literal(&outerr, domain, code, Str.toStringz(message));
+
+        err = new ErrorG(outerr);
+    }
+
+    /**
+     * If dest is NULL, free src; otherwise, moves src into *dest.
+     * The error variable dest points to must be NULL.
+     * Params:
+     * dest =  error return location
+     * src =  error to move into the return location
+     */
+    public static void gPropagateError(out ErrorG dest, ErrorG src)
+    {
+        // void g_propagate_error (GError **dest,  GError *src);
+        GError* outdest = null;
+
+        g_propagate_error(&outdest, (src is null) ? null : src.getErrorGStruct());
+
+        dest = new ErrorG(outdest);
+    }
+
+    /**
+     * If err is NULL, does nothing. If err is non-NULL,
+     * calls g_error_free() on *err and sets *err to NULL.
+     * Params:
+     * err =  a GError return location
+     */
+    public static void gClearError(inout ErrorG err)
+    {
+        // void g_clear_error (GError **err);
+        GError* outerr = (err is null) ? null : err.getErrorGStruct();
+
+        g_clear_error(&outerr);
+
+        err = new ErrorG(outerr);
+    }
 }

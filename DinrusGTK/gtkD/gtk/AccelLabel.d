@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = AccelLabel
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_accel_label_
@@ -117,124 +117,124 @@ private import gtkD.gtk.Label;
  */
 public class AccelLabel : Label
 {
-	
-	/** the main Gtk struct */
-	protected GtkAccelLabel* gtkAccelLabel;
-	
-	
-	public GtkAccelLabel* getAccelLabelStruct()
-	{
-		return gtkAccelLabel;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkAccelLabel;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkAccelLabel* gtkAccelLabel)
-	{
-		if(gtkAccelLabel is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkAccelLabel);
-		if( ptr !is null )
-		{
-			this = cast(AccelLabel)ptr;
-			return;
-		}
-		super(cast(GtkLabel*)gtkAccelLabel);
-		this.gtkAccelLabel = gtkAccelLabel;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkAccelLabel.
-	 * Params:
-	 * string = the label string. Must be non-NULL.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string string)
-	{
-		// GtkWidget* gtk_accel_label_new (const gchar *string);
-		auto p = gtk_accel_label_new(Str.toStringz(string));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_accel_label_new(Str.toStringz(string))");
-		}
-		this(cast(GtkAccelLabel*) p);
-	}
-	
-	/**
-	 * Sets the closure to be monitored by this accelerator label. The closure
-	 * must be connected to an accelerator group; see gtk_accel_group_connect().
-	 * Params:
-	 * accelClosure =  the closure to monitor for accelerator changes.
-	 */
-	public void setAccelClosure(Closure accelClosure)
-	{
-		// void gtk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,  GClosure *accel_closure);
-		gtk_accel_label_set_accel_closure(gtkAccelLabel, (accelClosure is null) ? null : accelClosure.getClosureStruct());
-	}
-	
-	/**
-	 * Fetches the widget monitored by this accelerator label. See
-	 * gtk_accel_label_set_accel_widget().
-	 * Returns: the object monitored by the accelerator label, or NULL.
-	 */
-	public Widget getAccelWidget()
-	{
-		// GtkWidget* gtk_accel_label_get_accel_widget (GtkAccelLabel *accel_label);
-		auto p = gtk_accel_label_get_accel_widget(gtkAccelLabel);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
-	
-	/**
-	 * Sets the widget to be monitored by this accelerator label.
-	 * Params:
-	 * accelWidget =  the widget to be monitored.
-	 */
-	public void setAccelWidget(Widget accelWidget)
-	{
-		// void gtk_accel_label_set_accel_widget (GtkAccelLabel *accel_label,  GtkWidget *accel_widget);
-		gtk_accel_label_set_accel_widget(gtkAccelLabel, (accelWidget is null) ? null : accelWidget.getWidgetStruct());
-	}
-	
-	/**
-	 * Returns the width needed to display the accelerator key(s).
-	 * This is used by menus to align all of the GtkMenuItem widgets, and shouldn't
-	 * be needed by applications.
-	 * Returns:the width needed to display the accelerator key(s).
-	 */
-	public uint getAccelWidth()
-	{
-		// guint gtk_accel_label_get_accel_width (GtkAccelLabel *accel_label);
-		return gtk_accel_label_get_accel_width(gtkAccelLabel);
-	}
-	
-	/**
-	 * Recreates the string representing the accelerator keys.
-	 * This should not be needed since the string is automatically updated whenever
-	 * accelerators are added or removed from the associated widget.
-	 * Returns:always returns FALSE.
-	 */
-	public int refetch()
-	{
-		// gboolean gtk_accel_label_refetch (GtkAccelLabel *accel_label);
-		return gtk_accel_label_refetch(gtkAccelLabel);
-	}
+
+    /** the main Gtk struct */
+    protected GtkAccelLabel* gtkAccelLabel;
+
+
+    public GtkAccelLabel* getAccelLabelStruct()
+    {
+        return gtkAccelLabel;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkAccelLabel;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkAccelLabel* gtkAccelLabel)
+    {
+        if(gtkAccelLabel is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkAccelLabel);
+        if( ptr !is null )
+        {
+            this = cast(AccelLabel)ptr;
+            return;
+        }
+        super(cast(GtkLabel*)gtkAccelLabel);
+        this.gtkAccelLabel = gtkAccelLabel;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkAccelLabel.
+     * Params:
+     * string = the label string. Must be non-NULL.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string string)
+    {
+        // GtkWidget* gtk_accel_label_new (const gchar *string);
+        auto p = gtk_accel_label_new(Str.toStringz(string));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_accel_label_new(Str.toStringz(string))");
+        }
+        this(cast(GtkAccelLabel*) p);
+    }
+
+    /**
+     * Sets the closure to be monitored by this accelerator label. The closure
+     * must be connected to an accelerator group; see gtk_accel_group_connect().
+     * Params:
+     * accelClosure =  the closure to monitor for accelerator changes.
+     */
+    public void setAccelClosure(Closure accelClosure)
+    {
+        // void gtk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,  GClosure *accel_closure);
+        gtk_accel_label_set_accel_closure(gtkAccelLabel, (accelClosure is null) ? null : accelClosure.getClosureStruct());
+    }
+
+    /**
+     * Fetches the widget monitored by this accelerator label. See
+     * gtk_accel_label_set_accel_widget().
+     * Returns: the object monitored by the accelerator label, or NULL.
+     */
+    public Widget getAccelWidget()
+    {
+        // GtkWidget* gtk_accel_label_get_accel_widget (GtkAccelLabel *accel_label);
+        auto p = gtk_accel_label_get_accel_widget(gtkAccelLabel);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Widget(cast(GtkWidget*) p);
+    }
+
+    /**
+     * Sets the widget to be monitored by this accelerator label.
+     * Params:
+     * accelWidget =  the widget to be monitored.
+     */
+    public void setAccelWidget(Widget accelWidget)
+    {
+        // void gtk_accel_label_set_accel_widget (GtkAccelLabel *accel_label,  GtkWidget *accel_widget);
+        gtk_accel_label_set_accel_widget(gtkAccelLabel, (accelWidget is null) ? null : accelWidget.getWidgetStruct());
+    }
+
+    /**
+     * Returns the width needed to display the accelerator key(s).
+     * This is used by menus to align all of the GtkMenuItem widgets, and shouldn't
+     * be needed by applications.
+     * Returns:the width needed to display the accelerator key(s).
+     */
+    public uint getAccelWidth()
+    {
+        // guint gtk_accel_label_get_accel_width (GtkAccelLabel *accel_label);
+        return gtk_accel_label_get_accel_width(gtkAccelLabel);
+    }
+
+    /**
+     * Recreates the string representing the accelerator keys.
+     * This should not be needed since the string is automatically updated whenever
+     * accelerators are added or removed from the associated widget.
+     * Returns:always returns FALSE.
+     */
+    public int refetch()
+    {
+        // gboolean gtk_accel_label_refetch (GtkAccelLabel *accel_label);
+        return gtk_accel_label_refetch(gtkAccelLabel);
+    }
 }

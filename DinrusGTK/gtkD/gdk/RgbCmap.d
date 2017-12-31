@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gdk
  * outFile = RgbCmap
  * strct   = GdkRgbCmap
  * realStrct=
  * ctorStrct=
  * clss    = RgbCmap
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gdk_rgb_cmap_
@@ -137,65 +137,65 @@ private import gtkD.glib.ConstructionException;
  */
 public class RgbCmap
 {
-	
-	/** the main Gtk struct */
-	protected GdkRgbCmap* gdkRgbCmap;
-	
-	
-	public GdkRgbCmap* getRgbCmapStruct()
-	{
-		return gdkRgbCmap;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkRgbCmap;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GdkRgbCmap* gdkRgbCmap)
-	{
-		if(gdkRgbCmap is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkRgbCmap = gdkRgbCmap;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GdkRgbCmap structure. The cmap maps color indexes to
-	 * RGB colors. If n_colors is less than 256, then images containing
-	 * color values greater than or equal to n_colors will produce undefined
-	 * results, including possibly segfaults.
-	 * Params:
-	 * colors = The colors, represented as 0xRRGGBB integer values.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (uint[] colors)
-	{
-		// GdkRgbCmap * gdk_rgb_cmap_new (guint32 *colors,  gint n_colors);
-		auto p = gdk_rgb_cmap_new(colors.ptr, colors.length);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gdk_rgb_cmap_new(colors.ptr, colors.length)");
-		}
-		this(cast(GdkRgbCmap*) p);
-	}
-	
-	/**
-	 * Frees the memory associated with a GdkRgbCmap created by gdk_rgb_cmap_new().
-	 */
-	public void free()
-	{
-		// void gdk_rgb_cmap_free (GdkRgbCmap *cmap);
-		gdk_rgb_cmap_free(gdkRgbCmap);
-	}
+
+    /** the main Gtk struct */
+    protected GdkRgbCmap* gdkRgbCmap;
+
+
+    public GdkRgbCmap* getRgbCmapStruct()
+    {
+        return gdkRgbCmap;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gdkRgbCmap;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GdkRgbCmap* gdkRgbCmap)
+    {
+        if(gdkRgbCmap is null)
+        {
+            this = null;
+            return;
+        }
+        this.gdkRgbCmap = gdkRgbCmap;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GdkRgbCmap structure. The cmap maps color indexes to
+     * RGB colors. If n_colors is less than 256, then images containing
+     * color values greater than or equal to n_colors will produce undefined
+     * results, including possibly segfaults.
+     * Params:
+     * colors = The colors, represented as 0xRRGGBB integer values.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (uint[] colors)
+    {
+        // GdkRgbCmap * gdk_rgb_cmap_new (guint32 *colors,  gint n_colors);
+        auto p = gdk_rgb_cmap_new(colors.ptr, colors.length);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gdk_rgb_cmap_new(colors.ptr, colors.length)");
+        }
+        this(cast(GdkRgbCmap*) p);
+    }
+
+    /**
+     * Frees the memory associated with a GdkRgbCmap created by gdk_rgb_cmap_new().
+     */
+    public void free()
+    {
+        // void gdk_rgb_cmap_free (GdkRgbCmap *cmap);
+        gdk_rgb_cmap_free(gdkRgbCmap);
+    }
 }

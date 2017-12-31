@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -24,9 +24,9 @@
 module gtkD.gtkglc.glgtk;
 
 version(Rulada)
-	private import tango.stdc.stdio;
-else
-	private import dinrus;
+private import tango.stdc.stdio;
+version(Dinrus)
+private import dinrus;
 
 private import gtkD.gtkglc.glgtktypes;
 private import gtkD.gtkc.Loader;
@@ -34,52 +34,52 @@ private import gtkD.gtkc.paths;
 
 static this()
 {
-	// gtkD.glgtk.GLtInit
+    // gtkD.glgtk.GLtInit
 
-	Linker.link(gtk_gl_init, "gtk_gl_init", LIBRARY.GLGTK);
-	Linker.link(gtk_gl_init_check, "gtk_gl_init_check", LIBRARY.GLGTK);
-	Linker.link(gtk_gl_parse_args, "gtk_gl_parse_args", LIBRARY.GLGTK);
+    Linker.link(gtk_gl_init, "gtk_gl_init", LIBRARY.GLGTK);
+    Linker.link(gtk_gl_init_check, "gtk_gl_init_check", LIBRARY.GLGTK);
+    Linker.link(gtk_gl_parse_args, "gtk_gl_parse_args", LIBRARY.GLGTK);
 
-	// gtkD.glgtk.GLWidget
+    // gtkD.glgtk.GLWidget
 
-	Linker.link(gtk_widget_set_gl_capability, "gtk_widget_set_gl_capability", LIBRARY.GLGTK);
-	Linker.link(gtk_widget_is_gl_capable, "gtk_widget_is_gl_capable", LIBRARY.GLGTK);
-	Linker.link(gtk_widget_get_gl_config, "gtk_widget_get_gl_config", LIBRARY.GLGTK);
-	Linker.link(gtk_widget_create_gl_context, "gtk_widget_create_gl_context", LIBRARY.GLGTK);
-	Linker.link(gtk_widget_get_gl_context, "gtk_widget_get_gl_context", LIBRARY.GLGTK);
-	Linker.link(gtk_widget_get_gl_window, "gtk_widget_get_gl_window", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_set_gl_capability, "gtk_widget_set_gl_capability", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_is_gl_capable, "gtk_widget_is_gl_capable", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_get_gl_config, "gtk_widget_get_gl_config", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_create_gl_context, "gtk_widget_create_gl_context", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_get_gl_context, "gtk_widget_get_gl_context", LIBRARY.GLGTK);
+    Linker.link(gtk_widget_get_gl_window, "gtk_widget_get_gl_window", LIBRARY.GLGTK);
 
-	// gtkD.glgtk.GLtVersion
+    // gtkD.glgtk.GLtVersion
 
 
-	// gtkD.glgtk.
+    // gtkD.glgtk.
 
 }
 
 mixin( gshared ~"extern(C)
-{
-	
-	// gtkD.glgtk.GLtInit
-	
-	void function(int* argc, char*** argv) c_gtk_gl_init;
-	gboolean function(int* argc, char*** argv) c_gtk_gl_init_check;
-	gboolean function(int* argc, char*** argv) c_gtk_gl_parse_args;
-	
-	// gtkD.glgtk.GLWidget
-	
-	gboolean function(GtkWidget* widget, GdkGLConfig* glconfig, GdkGLContext* shareList, gboolean direct, int renderType) c_gtk_widget_set_gl_capability;
-	gboolean function(GtkWidget* widget) c_gtk_widget_is_gl_capable;
-	GdkGLConfig* function(GtkWidget* widget) c_gtk_widget_get_gl_config;
-	GdkGLContext* function(GtkWidget* widget, GdkGLContext* shareList, gboolean direct, int renderType) c_gtk_widget_create_gl_context;
-	GdkGLContext* function(GtkWidget* widget) c_gtk_widget_get_gl_context;
-	GdkGLWindow* function(GtkWidget* widget) c_gtk_widget_get_gl_window;
-	
-	// gtkD.glgtk.GLtVersion
-	
-	
-	// gtkD.glgtk.
-	
-}");
+       {
+
+       // gtkD.glgtk.GLtInit
+
+       void function(int* argc, char*** argv) c_gtk_gl_init;
+       gboolean function(int* argc, char*** argv) c_gtk_gl_init_check;
+       gboolean function(int* argc, char*** argv) c_gtk_gl_parse_args;
+
+       // gtkD.glgtk.GLWidget
+
+       gboolean function(GtkWidget* widget, GdkGLConfig* glconfig, GdkGLContext* shareList, gboolean direct, int renderType) c_gtk_widget_set_gl_capability;
+       gboolean function(GtkWidget* widget) c_gtk_widget_is_gl_capable;
+       GdkGLConfig* function(GtkWidget* widget) c_gtk_widget_get_gl_config;
+       GdkGLContext* function(GtkWidget* widget, GdkGLContext* shareList, gboolean direct, int renderType) c_gtk_widget_create_gl_context;
+       GdkGLContext* function(GtkWidget* widget) c_gtk_widget_get_gl_context;
+       GdkGLWindow* function(GtkWidget* widget) c_gtk_widget_get_gl_window;
+
+       // gtkD.glgtk.GLtVersion
+
+
+       // gtkD.glgtk.
+
+       }");
 
 // gtkD.glgtk.GLtInit
 

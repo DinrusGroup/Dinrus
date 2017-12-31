@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gtk
  * outFile = TreeNode
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
- * clss    = 
- * interf  = 
+ * clss    =
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * omit structs:
@@ -64,8 +64,8 @@ private import gtkD.glib.ConstructionException;
  */
 public interface TreeNode
 {
-	string getNodeValue(int column);
-	int columnCount();
+    string getNodeValue(int column);
+    int columnCount();
 }
 
 /**

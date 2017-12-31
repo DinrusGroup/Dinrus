@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = ValueAtk
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- atk_value_
@@ -75,95 +75,95 @@ private import gtkD.gobject.Value;
  */
 public class ValueAtk
 {
-	
-	/** the main Gtk struct */
-	protected AtkValue* atkValue;
-	
-	
-	public AtkValue* getValueAtkStruct()
-	{
-		return atkValue;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)atkValue;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (AtkValue* atkValue)
-	{
-		if(atkValue is null)
-		{
-			this = null;
-			return;
-		}
-		this.atkValue = atkValue;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the value of this object.
-	 * Params:
-	 * value =  a GValue representing the current accessible value
-	 */
-	public void getCurrentValue(Value value)
-	{
-		// void atk_value_get_current_value (AtkValue *obj,  GValue *value);
-		atk_value_get_current_value(atkValue, (value is null) ? null : value.getValueStruct());
-	}
-	
-	/**
-	 * Gets the maximum value of this object.
-	 * Params:
-	 * value =  a GValue representing the maximum accessible value
-	 */
-	public void getMaximumValue(Value value)
-	{
-		// void atk_value_get_maximum_value (AtkValue *obj,  GValue *value);
-		atk_value_get_maximum_value(atkValue, (value is null) ? null : value.getValueStruct());
-	}
-	
-	/**
-	 * Gets the minimum value of this object.
-	 * Params:
-	 * value =  a GValue representing the minimum accessible value
-	 */
-	public void getMinimumValue(Value value)
-	{
-		// void atk_value_get_minimum_value (AtkValue *obj,  GValue *value);
-		atk_value_get_minimum_value(atkValue, (value is null) ? null : value.getValueStruct());
-	}
-	
-	/**
-	 * Sets the value of this object.
-	 * Params:
-	 * value =  a GValue which is the desired new accessible value.
-	 * Returns: TRUE if new value is successfully set, FALSE otherwise.
-	 */
-	public int setCurrentValue(Value value)
-	{
-		// gboolean atk_value_set_current_value (AtkValue *obj,  const GValue *value);
-		return atk_value_set_current_value(atkValue, (value is null) ? null : value.getValueStruct());
-	}
-	
-	/**
-	 * Gets the minimum increment by which the value of this object may be changed. If zero,
-	 * the minimum increment is undefined, which may mean that it is limited only by the
-	 * floating point precision of the platform.
-	 * Since 1.12
-	 * Params:
-	 * value =  a GValue representing the minimum increment by which the accessible value may be changed
-	 */
-	public void getMinimumIncrement(Value value)
-	{
-		// void atk_value_get_minimum_increment (AtkValue *obj,  GValue *value);
-		atk_value_get_minimum_increment(atkValue, (value is null) ? null : value.getValueStruct());
-	}
+
+    /** the main Gtk struct */
+    protected AtkValue* atkValue;
+
+
+    public AtkValue* getValueAtkStruct()
+    {
+        return atkValue;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)atkValue;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (AtkValue* atkValue)
+    {
+        if(atkValue is null)
+        {
+            this = null;
+            return;
+        }
+        this.atkValue = atkValue;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the value of this object.
+     * Params:
+     * value =  a GValue representing the current accessible value
+     */
+    public void getCurrentValue(Value value)
+    {
+        // void atk_value_get_current_value (AtkValue *obj,  GValue *value);
+        atk_value_get_current_value(atkValue, (value is null) ? null : value.getValueStruct());
+    }
+
+    /**
+     * Gets the maximum value of this object.
+     * Params:
+     * value =  a GValue representing the maximum accessible value
+     */
+    public void getMaximumValue(Value value)
+    {
+        // void atk_value_get_maximum_value (AtkValue *obj,  GValue *value);
+        atk_value_get_maximum_value(atkValue, (value is null) ? null : value.getValueStruct());
+    }
+
+    /**
+     * Gets the minimum value of this object.
+     * Params:
+     * value =  a GValue representing the minimum accessible value
+     */
+    public void getMinimumValue(Value value)
+    {
+        // void atk_value_get_minimum_value (AtkValue *obj,  GValue *value);
+        atk_value_get_minimum_value(atkValue, (value is null) ? null : value.getValueStruct());
+    }
+
+    /**
+     * Sets the value of this object.
+     * Params:
+     * value =  a GValue which is the desired new accessible value.
+     * Returns: TRUE if new value is successfully set, FALSE otherwise.
+     */
+    public int setCurrentValue(Value value)
+    {
+        // gboolean atk_value_set_current_value (AtkValue *obj,  const GValue *value);
+        return atk_value_set_current_value(atkValue, (value is null) ? null : value.getValueStruct());
+    }
+
+    /**
+     * Gets the minimum increment by which the value of this object may be changed. If zero,
+     * the minimum increment is undefined, which may mean that it is limited only by the
+     * floating point precision of the platform.
+     * Since 1.12
+     * Params:
+     * value =  a GValue representing the minimum increment by which the accessible value may be changed
+     */
+    public void getMinimumIncrement(Value value)
+    {
+        // void atk_value_get_minimum_increment (AtkValue *obj,  GValue *value);
+        atk_value_get_minimum_increment(atkValue, (value is null) ? null : value.getValueStruct());
+    }
 }

@@ -15,25 +15,25 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gthread
  * outFile = StaticRecMutex
  * strct   = GStaticRecMutex
  * realStrct=
  * ctorStrct=
  * clss    = StaticRecMutex
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_static_rec_mutex_
@@ -111,135 +111,135 @@ private import gtkD.glib.ConstructionException;
  */
 public class StaticRecMutex
 {
-	
-	/** the main Gtk struct */
-	protected GStaticRecMutex* gStaticRecMutex;
-	
-	
-	public GStaticRecMutex* getStaticRecMutexStruct()
-	{
-		return gStaticRecMutex;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStaticRecMutex;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GStaticRecMutex* gStaticRecMutex)
-	{
-		if(gStaticRecMutex is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStaticRecMutex = gStaticRecMutex;
-	}
-	
-	/**
-	 * Creates a new initialized StaticRecMutex.
-	 */
-	public this ()
-	{
-		this(new GStaticRecMutex);
-		
-		init();
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * A GStaticRecMutex must be initialized with this function before it
-	 * can be used. Alternatively you can initialize it with
-	 * G_STATIC_REC_MUTEX_INIT.
-	 */
-	public void init()
-	{
-		// void g_static_rec_mutex_init (GStaticRecMutex *mutex);
-		g_static_rec_mutex_init(gStaticRecMutex);
-	}
-	
-	/**
-	 * Locks mutex. If mutex is already locked by another thread, the
-	 * current thread will block until mutex is unlocked by the other
-	 * thread. If mutex is already locked by the calling thread, this
-	 * functions increases the depth of mutex and returns immediately.
-	 */
-	public void lock()
-	{
-		// void g_static_rec_mutex_lock (GStaticRecMutex *mutex);
-		g_static_rec_mutex_lock(gStaticRecMutex);
-	}
-	
-	/**
-	 * Tries to lock mutex. If mutex is already locked by another thread,
-	 * it immediately returns FALSE. Otherwise it locks mutex and returns
-	 * TRUE. If mutex is already locked by the calling thread, this
-	 * functions increases the depth of mutex and immediately returns TRUE.
-	 * Returns:%TRUE, if mutex could be locked.
-	 */
-	public int trylock()
-	{
-		// gboolean g_static_rec_mutex_trylock (GStaticRecMutex *mutex);
-		return g_static_rec_mutex_trylock(gStaticRecMutex);
-	}
-	
-	/**
-	 * Unlocks mutex. Another thread will be allowed to lock mutex only
-	 * when it has been unlocked as many times as it had been locked
-	 * before. If mutex is completely unlocked and another thread is blocked
-	 * in a g_static_rec_mutex_lock() call for mutex, it will be woken and
-	 * can lock mutex itself.
-	 */
-	public void unlock()
-	{
-		// void g_static_rec_mutex_unlock (GStaticRecMutex *mutex);
-		g_static_rec_mutex_unlock(gStaticRecMutex);
-	}
-	
-	/**
-	 * Works like calling g_static_rec_mutex_lock() for mutex depth times.
-	 * Params:
-	 * depth = number of times this mutex has to be unlocked to be completely unlocked.
-	 */
-	public void lockFull(uint depth)
-	{
-		// void g_static_rec_mutex_lock_full (GStaticRecMutex *mutex,  guint depth);
-		g_static_rec_mutex_lock_full(gStaticRecMutex, depth);
-	}
-	
-	/**
-	 * Completely unlocks mutex. If another thread is blocked in a
-	 * g_static_rec_mutex_lock() call for mutex, it will be woken and can
-	 * lock mutex itself. This function returns the number of times that
-	 * mutex has been locked by the current thread. To restore the state
-	 * before the call to g_static_rec_mutex_unlock_full() you can call
-	 * g_static_rec_mutex_lock_full() with the depth returned by this
-	 * function.
-	 * Returns:number of times mutex has been locked by the current thread.
-	 */
-	public uint unlockFull()
-	{
-		// guint g_static_rec_mutex_unlock_full (GStaticRecMutex *mutex);
-		return g_static_rec_mutex_unlock_full(gStaticRecMutex);
-	}
-	
-	/**
-	 * Releases all resources allocated to a GStaticRecMutex.
-	 * You don't have to call this functions for a GStaticRecMutex with an
-	 * unbounded lifetime, i.e. objects declared 'static', but if you have a
-	 * GStaticRecMutex as a member of a structure and the structure is
-	 * freed, you should also free the GStaticRecMutex.
-	 */
-	public void free()
-	{
-		// void g_static_rec_mutex_free (GStaticRecMutex *mutex);
-		g_static_rec_mutex_free(gStaticRecMutex);
-	}
+
+    /** the main Gtk struct */
+    protected GStaticRecMutex* gStaticRecMutex;
+
+
+    public GStaticRecMutex* getStaticRecMutexStruct()
+    {
+        return gStaticRecMutex;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gStaticRecMutex;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GStaticRecMutex* gStaticRecMutex)
+    {
+        if(gStaticRecMutex is null)
+        {
+            this = null;
+            return;
+        }
+        this.gStaticRecMutex = gStaticRecMutex;
+    }
+
+    /**
+     * Creates a new initialized StaticRecMutex.
+     */
+    public this ()
+    {
+        this(new GStaticRecMutex);
+
+        init();
+    }
+
+    /**
+     */
+
+    /**
+     * A GStaticRecMutex must be initialized with this function before it
+     * can be used. Alternatively you can initialize it with
+     * G_STATIC_REC_MUTEX_INIT.
+     */
+    public void init()
+    {
+        // void g_static_rec_mutex_init (GStaticRecMutex *mutex);
+        g_static_rec_mutex_init(gStaticRecMutex);
+    }
+
+    /**
+     * Locks mutex. If mutex is already locked by another thread, the
+     * current thread will block until mutex is unlocked by the other
+     * thread. If mutex is already locked by the calling thread, this
+     * functions increases the depth of mutex and returns immediately.
+     */
+    public void lock()
+    {
+        // void g_static_rec_mutex_lock (GStaticRecMutex *mutex);
+        g_static_rec_mutex_lock(gStaticRecMutex);
+    }
+
+    /**
+     * Tries to lock mutex. If mutex is already locked by another thread,
+     * it immediately returns FALSE. Otherwise it locks mutex and returns
+     * TRUE. If mutex is already locked by the calling thread, this
+     * functions increases the depth of mutex and immediately returns TRUE.
+     * Returns:%TRUE, if mutex could be locked.
+     */
+    public int trylock()
+    {
+        // gboolean g_static_rec_mutex_trylock (GStaticRecMutex *mutex);
+        return g_static_rec_mutex_trylock(gStaticRecMutex);
+    }
+
+    /**
+     * Unlocks mutex. Another thread will be allowed to lock mutex only
+     * when it has been unlocked as many times as it had been locked
+     * before. If mutex is completely unlocked and another thread is blocked
+     * in a g_static_rec_mutex_lock() call for mutex, it will be woken and
+     * can lock mutex itself.
+     */
+    public void unlock()
+    {
+        // void g_static_rec_mutex_unlock (GStaticRecMutex *mutex);
+        g_static_rec_mutex_unlock(gStaticRecMutex);
+    }
+
+    /**
+     * Works like calling g_static_rec_mutex_lock() for mutex depth times.
+     * Params:
+     * depth = number of times this mutex has to be unlocked to be completely unlocked.
+     */
+    public void lockFull(uint depth)
+    {
+        // void g_static_rec_mutex_lock_full (GStaticRecMutex *mutex,  guint depth);
+        g_static_rec_mutex_lock_full(gStaticRecMutex, depth);
+    }
+
+    /**
+     * Completely unlocks mutex. If another thread is blocked in a
+     * g_static_rec_mutex_lock() call for mutex, it will be woken and can
+     * lock mutex itself. This function returns the number of times that
+     * mutex has been locked by the current thread. To restore the state
+     * before the call to g_static_rec_mutex_unlock_full() you can call
+     * g_static_rec_mutex_lock_full() with the depth returned by this
+     * function.
+     * Returns:number of times mutex has been locked by the current thread.
+     */
+    public uint unlockFull()
+    {
+        // guint g_static_rec_mutex_unlock_full (GStaticRecMutex *mutex);
+        return g_static_rec_mutex_unlock_full(gStaticRecMutex);
+    }
+
+    /**
+     * Releases all resources allocated to a GStaticRecMutex.
+     * You don't have to call this functions for a GStaticRecMutex with an
+     * unbounded lifetime, i.e. objects declared 'static', but if you have a
+     * GStaticRecMutex as a member of a structure and the structure is
+     * freed, you should also free the GStaticRecMutex.
+     */
+    public void free()
+    {
+        // void g_static_rec_mutex_free (GStaticRecMutex *mutex);
+        g_static_rec_mutex_free(gStaticRecMutex);
+    }
 }

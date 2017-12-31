@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = IOExtension
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_io_extension_
@@ -96,79 +96,79 @@ private import gtkD.glib.Str;
  */
 public class IOExtension
 {
-	
-	/** the main Gtk struct */
-	protected GIOExtension* gIOExtension;
-	
-	
-	public GIOExtension* getIOExtensionStruct()
-	{
-		return gIOExtension;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gIOExtension;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GIOExtension* gIOExtension)
-	{
-		if(gIOExtension is null)
-		{
-			this = null;
-			return;
-		}
-		this.gIOExtension = gIOExtension;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Gets the name under which extension was registered.
-	 * Note that the same type may be registered as extension
-	 * for multiple extension points, under different names.
-	 * Returns: the name of extension.
-	 */
-	public string getName()
-	{
-		// const char * g_io_extension_get_name (GIOExtension *extension);
-		return Str.toString(g_io_extension_get_name(gIOExtension));
-	}
-	
-	/**
-	 * Gets the priority with which extension was registered.
-	 * Returns: the priority of extension
-	 */
-	public int getPriority()
-	{
-		// gint g_io_extension_get_priority (GIOExtension *extension);
-		return g_io_extension_get_priority(gIOExtension);
-	}
-	
-	/**
-	 * Gets the type associated with extension.
-	 * Returns: the type of extension
-	 */
-	public GType getType()
-	{
-		// GType g_io_extension_get_type (GIOExtension *extension);
-		return g_io_extension_get_type(gIOExtension);
-	}
-	
-	/**
-	 * Gets a reference to the class for the type that is
-	 * associated with extension.
-	 * Returns: the GTypeClass for the type of extension
-	 */
-	public GTypeClass* refClass()
-	{
-		// GTypeClass* g_io_extension_ref_class (GIOExtension *extension);
-		return g_io_extension_ref_class(gIOExtension);
-	}
+
+    /** the main Gtk struct */
+    protected GIOExtension* gIOExtension;
+
+
+    public GIOExtension* getIOExtensionStruct()
+    {
+        return gIOExtension;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gIOExtension;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GIOExtension* gIOExtension)
+    {
+        if(gIOExtension is null)
+        {
+            this = null;
+            return;
+        }
+        this.gIOExtension = gIOExtension;
+    }
+
+    /**
+     */
+
+    /**
+     * Gets the name under which extension was registered.
+     * Note that the same type may be registered as extension
+     * for multiple extension points, under different names.
+     * Returns: the name of extension.
+     */
+    public string getName()
+    {
+        // const char * g_io_extension_get_name (GIOExtension *extension);
+        return Str.toString(g_io_extension_get_name(gIOExtension));
+    }
+
+    /**
+     * Gets the priority with which extension was registered.
+     * Returns: the priority of extension
+     */
+    public int getPriority()
+    {
+        // gint g_io_extension_get_priority (GIOExtension *extension);
+        return g_io_extension_get_priority(gIOExtension);
+    }
+
+    /**
+     * Gets the type associated with extension.
+     * Returns: the type of extension
+     */
+    public GType getType()
+    {
+        // GType g_io_extension_get_type (GIOExtension *extension);
+        return g_io_extension_get_type(gIOExtension);
+    }
+
+    /**
+     * Gets a reference to the class for the type that is
+     * associated with extension.
+     * Returns: the GTypeClass for the type of extension
+     */
+    public GTypeClass* refClass()
+    {
+        // GTypeClass* g_io_extension_ref_class (GIOExtension *extension);
+        return g_io_extension_ref_class(gIOExtension);
+    }
 }

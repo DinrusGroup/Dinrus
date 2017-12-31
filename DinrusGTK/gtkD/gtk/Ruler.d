@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Ruler
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- OrientableIF
  * prefixes:
@@ -86,101 +86,101 @@ private import gtkD.gtk.Widget;
  */
 public class Ruler : Widget, OrientableIF
 {
-	
-	/** the main Gtk struct */
-	protected GtkRuler* gtkRuler;
-	
-	
-	public GtkRuler* getRulerStruct()
-	{
-		return gtkRuler;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRuler;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkRuler* gtkRuler)
-	{
-		if(gtkRuler is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRuler);
-		if( ptr !is null )
-		{
-			this = cast(Ruler)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkRuler);
-		this.gtkRuler = gtkRuler;
-	}
-	
-	// add the Orientable capabilities
-	mixin OrientableT!(GtkRuler);
-	
-	/**
-	 */
-	
-	/**
-	 * This calls the GTKMetricType to set the ruler to units defined. Available units
-	 * are GTK_PIXELS, GTK_INCHES, or GTK_CENTIMETERS. The default unit of measurement
-	 * is GTK_PIXELS.
-	 * Params:
-	 * metric = the unit of measurement
-	 */
-	public void setMetric(GtkMetricType metric)
-	{
-		// void gtk_ruler_set_metric (GtkRuler *ruler,  GtkMetricType metric);
-		gtk_ruler_set_metric(gtkRuler, metric);
-	}
-	
-	/**
-	 * This sets the range of the ruler.
-	 * Params:
-	 * lower =  the lower limit of the ruler
-	 * upper =  the upper limit of the ruler
-	 * position =  the mark on the ruler
-	 * maxSize =  the maximum size of the ruler used when calculating the space to
-	 * leave for the text
-	 */
-	public void setRange(double lower, double upper, double position, double maxSize)
-	{
-		// void gtk_ruler_set_range (GtkRuler *ruler,  gdouble lower,  gdouble upper,  gdouble position,  gdouble max_size);
-		gtk_ruler_set_range(gtkRuler, lower, upper, position, maxSize);
-	}
-	
-	/**
-	 * Gets the units used for a GtkRuler. See gtk_ruler_set_metric().
-	 * Returns: the units currently used for ruler
-	 */
-	public GtkMetricType getMetric()
-	{
-		// GtkMetricType gtk_ruler_get_metric (GtkRuler *ruler);
-		return gtk_ruler_get_metric(gtkRuler);
-	}
-	
-	/**
-	 * Retrieves values indicating the range and current position of a GtkRuler.
-	 * See gtk_ruler_set_range().
-	 * Params:
-	 * lower =  location to store lower limit of the ruler, or NULL
-	 * upper =  location to store upper limit of the ruler, or NULL
-	 * position =  location to store the current position of the mark on the ruler, or NULL
-	 * maxSize =  location to store the maximum size of the ruler used when calculating
-	 *  the space to leave for the text, or NULL.
-	 */
-	public void getRange(out double lower, out double upper, out double position, out double maxSize)
-	{
-		// void gtk_ruler_get_range (GtkRuler *ruler,  gdouble *lower,  gdouble *upper,  gdouble *position,  gdouble *max_size);
-		gtk_ruler_get_range(gtkRuler, &lower, &upper, &position, &maxSize);
-	}
+
+    /** the main Gtk struct */
+    protected GtkRuler* gtkRuler;
+
+
+    public GtkRuler* getRulerStruct()
+    {
+        return gtkRuler;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkRuler;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkRuler* gtkRuler)
+    {
+        if(gtkRuler is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkRuler);
+        if( ptr !is null )
+        {
+            this = cast(Ruler)ptr;
+            return;
+        }
+        super(cast(GtkWidget*)gtkRuler);
+        this.gtkRuler = gtkRuler;
+    }
+
+    // add the Orientable capabilities
+    mixin OrientableT!(GtkRuler);
+
+    /**
+     */
+
+    /**
+     * This calls the GTKMetricType to set the ruler to units defined. Available units
+     * are GTK_PIXELS, GTK_INCHES, or GTK_CENTIMETERS. The default unit of measurement
+     * is GTK_PIXELS.
+     * Params:
+     * metric = the unit of measurement
+     */
+    public void setMetric(GtkMetricType metric)
+    {
+        // void gtk_ruler_set_metric (GtkRuler *ruler,  GtkMetricType metric);
+        gtk_ruler_set_metric(gtkRuler, metric);
+    }
+
+    /**
+     * This sets the range of the ruler.
+     * Params:
+     * lower =  the lower limit of the ruler
+     * upper =  the upper limit of the ruler
+     * position =  the mark on the ruler
+     * maxSize =  the maximum size of the ruler used when calculating the space to
+     * leave for the text
+     */
+    public void setRange(double lower, double upper, double position, double maxSize)
+    {
+        // void gtk_ruler_set_range (GtkRuler *ruler,  gdouble lower,  gdouble upper,  gdouble position,  gdouble max_size);
+        gtk_ruler_set_range(gtkRuler, lower, upper, position, maxSize);
+    }
+
+    /**
+     * Gets the units used for a GtkRuler. See gtk_ruler_set_metric().
+     * Returns: the units currently used for ruler
+     */
+    public GtkMetricType getMetric()
+    {
+        // GtkMetricType gtk_ruler_get_metric (GtkRuler *ruler);
+        return gtk_ruler_get_metric(gtkRuler);
+    }
+
+    /**
+     * Retrieves values indicating the range and current position of a GtkRuler.
+     * See gtk_ruler_set_range().
+     * Params:
+     * lower =  location to store lower limit of the ruler, or NULL
+     * upper =  location to store upper limit of the ruler, or NULL
+     * position =  location to store the current position of the mark on the ruler, or NULL
+     * maxSize =  location to store the maximum size of the ruler used when calculating
+     *  the space to leave for the text, or NULL.
+     */
+    public void getRange(out double lower, out double upper, out double position, out double maxSize)
+    {
+        // void gtk_ruler_get_range (GtkRuler *ruler,  gdouble *lower,  gdouble *upper,  gdouble *position,  gdouble *max_size);
+        gtk_ruler_get_range(gtkRuler, &lower, &upper, &position, &maxSize);
+    }
 }

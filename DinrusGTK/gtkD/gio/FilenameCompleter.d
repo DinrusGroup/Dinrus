@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = FilenameCompleter
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_filename_completer_
@@ -73,129 +73,129 @@ private import gtkD.gobject.ObjectG;
  */
 public class FilenameCompleter : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GFilenameCompleter* gFilenameCompleter;
-	
-	
-	public GFilenameCompleter* getFilenameCompleterStruct()
-	{
-		return gFilenameCompleter;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gFilenameCompleter;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GFilenameCompleter* gFilenameCompleter)
-	{
-		if(gFilenameCompleter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gFilenameCompleter);
-		if( ptr !is null )
-		{
-			this = cast(FilenameCompleter)ptr;
-			return;
-		}
-		super(cast(GObject*)gFilenameCompleter);
-		this.gFilenameCompleter = gFilenameCompleter;
-	}
-	
-	/**
-	 */
-	int[char[]] connectedSignals;
-	
-	void delegate(FilenameCompleter)[] onGotCompletionDataListeners;
-	/**
-	 * Emitted when the file name completion information comes available.
-	 */
-	void addOnGotCompletionData(void delegate(FilenameCompleter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("got-completion-data" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"got-completion-data",
-			cast(GCallback)&callBackGotCompletionData,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["got-completion-data"] = 1;
-		}
-		onGotCompletionDataListeners ~= dlg;
-	}
-	extern(C) static void callBackGotCompletionData(GFilenameCompleter* arg0Struct, FilenameCompleter filenameCompleter)
-	{
-		foreach ( void delegate(FilenameCompleter) dlg ; filenameCompleter.onGotCompletionDataListeners )
-		{
-			dlg(filenameCompleter);
-		}
-	}
-	
-	
-	/**
-	 * Creates a new filename completer.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GFilenameCompleter * g_filename_completer_new (void);
-		auto p = g_filename_completer_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_filename_completer_new()");
-		}
-		this(cast(GFilenameCompleter*) p);
-	}
-	
-	/**
-	 * Obtains a completion for initial_text from completer.
-	 * Params:
-	 * initialText =  text to be completed.
-	 * Returns: a completed string, or NULL if no completion exists.  This string is not owned by GIO, so remember to g_free() it  when finished.
-	 */
-	public string getCompletionSuffix(string initialText)
-	{
-		// char * g_filename_completer_get_completion_suffix  (GFilenameCompleter *completer,  const char *initial_text);
-		return Str.toString(g_filename_completer_get_completion_suffix(gFilenameCompleter, Str.toStringz(initialText)));
-	}
-	
-	/**
-	 * Gets an array of completion strings for a given initial text.
-	 * Params:
-	 * initialText =  text to be completed.
-	 * Returns: array of strings with possible completions for initial_text.This array must be freed by g_strfreev() when finished.
-	 */
-	public string[] getCompletions(string initialText)
-	{
-		// char ** g_filename_completer_get_completions  (GFilenameCompleter *completer,  const char *initial_text);
-		return Str.toStringArray(g_filename_completer_get_completions(gFilenameCompleter, Str.toStringz(initialText)));
-	}
-	
-	/**
-	 * If dirs_only is TRUE, completer will only
-	 * complete directory names, and not file names.
-	 * Params:
-	 * dirsOnly =  a gboolean.
-	 * Signal Details
-	 * The "got-completion-data" signal
-	 * void user_function (GFilenameCompleter *arg0,
-	 *  gpointer user_data) : Run Last
-	 * Emitted when the file name completion information comes available.
-	 */
-	public void setDirsOnly(int dirsOnly)
-	{
-		// void g_filename_completer_set_dirs_only (GFilenameCompleter *completer,  gboolean dirs_only);
-		g_filename_completer_set_dirs_only(gFilenameCompleter, dirsOnly);
-	}
+
+    /** the main Gtk struct */
+    protected GFilenameCompleter* gFilenameCompleter;
+
+
+    public GFilenameCompleter* getFilenameCompleterStruct()
+    {
+        return gFilenameCompleter;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gFilenameCompleter;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GFilenameCompleter* gFilenameCompleter)
+    {
+        if(gFilenameCompleter is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gFilenameCompleter);
+        if( ptr !is null )
+        {
+            this = cast(FilenameCompleter)ptr;
+            return;
+        }
+        super(cast(GObject*)gFilenameCompleter);
+        this.gFilenameCompleter = gFilenameCompleter;
+    }
+
+    /**
+     */
+    int[char[]] connectedSignals;
+
+    void delegate(FilenameCompleter)[] onGotCompletionDataListeners;
+    /**
+     * Emitted when the file name completion information comes available.
+     */
+    void addOnGotCompletionData(void delegate(FilenameCompleter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+    {
+        if ( !("got-completion-data" in connectedSignals) )
+        {
+            Signals.connectData(
+                getStruct(),
+                "got-completion-data",
+                cast(GCallback)&callBackGotCompletionData,
+                cast(void*)this,
+                null,
+                connectFlags);
+            connectedSignals["got-completion-data"] = 1;
+        }
+        onGotCompletionDataListeners ~= dlg;
+    }
+    extern(C) static void callBackGotCompletionData(GFilenameCompleter* arg0Struct, FilenameCompleter filenameCompleter)
+    {
+        foreach ( void delegate(FilenameCompleter) dlg ; filenameCompleter.onGotCompletionDataListeners )
+        {
+            dlg(filenameCompleter);
+        }
+    }
+
+
+    /**
+     * Creates a new filename completer.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GFilenameCompleter * g_filename_completer_new (void);
+        auto p = g_filename_completer_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_filename_completer_new()");
+        }
+        this(cast(GFilenameCompleter*) p);
+    }
+
+    /**
+     * Obtains a completion for initial_text from completer.
+     * Params:
+     * initialText =  text to be completed.
+     * Returns: a completed string, or NULL if no completion exists.  This string is not owned by GIO, so remember to g_free() it  when finished.
+     */
+    public string getCompletionSuffix(string initialText)
+    {
+        // char * g_filename_completer_get_completion_suffix  (GFilenameCompleter *completer,  const char *initial_text);
+        return Str.toString(g_filename_completer_get_completion_suffix(gFilenameCompleter, Str.toStringz(initialText)));
+    }
+
+    /**
+     * Gets an array of completion strings for a given initial text.
+     * Params:
+     * initialText =  text to be completed.
+     * Returns: array of strings with possible completions for initial_text.This array must be freed by g_strfreev() when finished.
+     */
+    public string[] getCompletions(string initialText)
+    {
+        // char ** g_filename_completer_get_completions  (GFilenameCompleter *completer,  const char *initial_text);
+        return Str.toStringArray(g_filename_completer_get_completions(gFilenameCompleter, Str.toStringz(initialText)));
+    }
+
+    /**
+     * If dirs_only is TRUE, completer will only
+     * complete directory names, and not file names.
+     * Params:
+     * dirsOnly =  a gboolean.
+     * Signal Details
+     * The "got-completion-data" signal
+     * void user_function (GFilenameCompleter *arg0,
+     *  gpointer user_data) : Run Last
+     * Emitted when the file name completion information comes available.
+     */
+    public void setDirsOnly(int dirsOnly)
+    {
+        // void g_filename_completer_set_dirs_only (GFilenameCompleter *completer,  gboolean dirs_only);
+        g_filename_completer_set_dirs_only(gFilenameCompleter, dirsOnly);
+    }
 }

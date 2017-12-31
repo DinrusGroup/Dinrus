@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -48,7 +48,7 @@ public alias GSList AtkAttributeSet;
  */
 public enum AtkHyperlinkStateFlags
 {
-	IS_INLINE = 1 << 0
+    IS_INLINE = 1 << 0
 }
 /**
  * Describes the role of an object
@@ -59,95 +59,95 @@ public enum AtkHyperlinkStateFlags
  */
 public enum AtkRole
 {
-	INVALID = 0,
-	ACCEL_LABEL,
-	ALERT,
-	ANIMATION,
-	ARROW,
-	CALENDAR,
-	CANVAS,
-	CHECK_BOX,
-	CHECK_MENU_ITEM,
-	COLOR_CHOOSER,
-	COLUMN_HEADER,
-	COMBO_BOX,
-	DATE_EDITOR,
-	DESKTOP_ICON,
-	DESKTOP_FRAME,
-	DIAL,
-	DIALOG,
-	DIRECTORY_PANE,
-	DRAWING_AREA,
-	FILE_CHOOSER,
-	FILLER,
-	FONT_CHOOSER,
-	FRAME,
-	GLASS_PANE,
-	HTML_CONTAINER,
-	ICON,
-	IMAGE,
-	INTERNAL_FRAME,
-	LABEL,
-	LAYERED_PANE,
-	LIST,
-	LIST_ITEM,
-	MENU,
-	MENU_BAR,
-	MENU_ITEM,
-	OPTION_PANE,
-	PAGE_TAB,
-	PAGE_TAB_LIST,
-	PANEL,
-	PASSWORD_TEXT,
-	POPUP_MENU,
-	PROGRESS_BAR,
-	PUSH_BUTTON,
-	RADIO_BUTTON,
-	RADIO_MENU_ITEM,
-	ROOT_PANE,
-	ROW_HEADER,
-	SCROLL_BAR,
-	SCROLL_PANE,
-	SEPARATOR,
-	SLIDER,
-	SPLIT_PANE,
-	SPIN_BUTTON,
-	STATUSBAR,
-	TABLE,
-	TABLE_CELL,
-	TABLE_COLUMN_HEADER,
-	TABLE_ROW_HEADER,
-	TEAR_OFF_MENU_ITEM,
-	TERMINAL,
-	TEXT,
-	TOGGLE_BUTTON,
-	TOOL_BAR,
-	TOOL_TIP,
-	TREE,
-	TREE_TABLE,
-	UNKNOWN,
-	VIEWPORT,
-	WINDOW,
-	HEADER,
-	FOOTER,
-	PARAGRAPH,
-	RULER,
-	APPLICATION,
-	AUTOCOMPLETE,
-	EDITBAR,
-	EMBEDDED,
-	ENTRY,
-	CHART,
-	CAPTION,
-	DOCUMENT_FRAME,
-	HEADING,
-	PAGE,
-	SECTION,
-	REDUNDANT_OBJECT,
-	FORM,
-	LINK,
-	INPUT_METHOD_WINDOW,
-	LAST_DEFINED
+    INVALID = 0,
+    ACCEL_LABEL,
+    ALERT,
+    ANIMATION,
+    ARROW,
+    CALENDAR,
+    CANVAS,
+    CHECK_BOX,
+    CHECK_MENU_ITEM,
+    COLOR_CHOOSER,
+    COLUMN_HEADER,
+    COMBO_BOX,
+    DATE_EDITOR,
+    DESKTOP_ICON,
+    DESKTOP_FRAME,
+    DIAL,
+    DIALOG,
+    DIRECTORY_PANE,
+    DRAWING_AREA,
+    FILE_CHOOSER,
+    FILLER,
+    FONT_CHOOSER,
+    FRAME,
+    GLASS_PANE,
+    HTML_CONTAINER,
+    ICON,
+    IMAGE,
+    INTERNAL_FRAME,
+    LABEL,
+    LAYERED_PANE,
+    LIST,
+    LIST_ITEM,
+    MENU,
+    MENU_BAR,
+    MENU_ITEM,
+    OPTION_PANE,
+    PAGE_TAB,
+    PAGE_TAB_LIST,
+    PANEL,
+    PASSWORD_TEXT,
+    POPUP_MENU,
+    PROGRESS_BAR,
+    PUSH_BUTTON,
+    RADIO_BUTTON,
+    RADIO_MENU_ITEM,
+    ROOT_PANE,
+    ROW_HEADER,
+    SCROLL_BAR,
+    SCROLL_PANE,
+    SEPARATOR,
+    SLIDER,
+    SPLIT_PANE,
+    SPIN_BUTTON,
+    STATUSBAR,
+    TABLE,
+    TABLE_CELL,
+    TABLE_COLUMN_HEADER,
+    TABLE_ROW_HEADER,
+    TEAR_OFF_MENU_ITEM,
+    TERMINAL,
+    TEXT,
+    TOGGLE_BUTTON,
+    TOOL_BAR,
+    TOOL_TIP,
+    TREE,
+    TREE_TABLE,
+    UNKNOWN,
+    VIEWPORT,
+    WINDOW,
+    HEADER,
+    FOOTER,
+    PARAGRAPH,
+    RULER,
+    APPLICATION,
+    AUTOCOMPLETE,
+    EDITBAR,
+    EMBEDDED,
+    ENTRY,
+    CHART,
+    CAPTION,
+    DOCUMENT_FRAME,
+    HEADING,
+    PAGE,
+    SECTION,
+    REDUNDANT_OBJECT,
+    FORM,
+    LINK,
+    INPUT_METHOD_WINDOW,
+    LAST_DEFINED
 }
 /**
  * Describes the layer of a component
@@ -158,14 +158,14 @@ public enum AtkRole
  */
 public enum AtkLayer
 {
-	INVALID,
-	BACKGROUND,
-	CANVAS,
-	WIDGET,
-	MDI,
-	POPUP,
-	OVERLAY,
-	WINDOW
+    INVALID,
+    BACKGROUND,
+    CANVAS,
+    WIDGET,
+    MDI,
+    POPUP,
+    OVERLAY,
+    WINDOW
 }
 /**
  * Describes the type of the relation
@@ -173,23 +173,23 @@ public enum AtkLayer
  */
 public enum AtkRelationType
 {
-	NULL = 0,
-	CONTROLLED_BY,
-	CONTROLLER_FOR,
-	LABEL_FOR,
-	LABELLED_BY,
-	MEMBER_OF,
-	NODE_CHILD_OF,
-	FLOWS_TO,
-	FLOWS_FROM,
-	SUBWINDOW_OF,
-	EMBEDS,
-	EMBEDDED_BY,
-	POPUP_FOR,
-	PARENT_WINDOW_OF,
-	DESCRIBED_BY,
-	DESCRIPTION_FOR,
-	LAST_DEFINED
+    NULL = 0,
+    CONTROLLED_BY,
+    CONTROLLER_FOR,
+    LABEL_FOR,
+    LABELLED_BY,
+    MEMBER_OF,
+    NODE_CHILD_OF,
+    FLOWS_TO,
+    FLOWS_FROM,
+    SUBWINDOW_OF,
+    EMBEDS,
+    EMBEDDED_BY,
+    POPUP_FOR,
+    PARENT_WINDOW_OF,
+    DESCRIBED_BY,
+    DESCRIPTION_FOR,
+    LAST_DEFINED
 }
 /**
  * The possible types of states of an object
@@ -197,46 +197,46 @@ public enum AtkRelationType
  */
 public enum AtkStateType
 {
-	INVALID,
-	ACTIVE,
-	ARMED,
-	BUSY,
-	CHECKED,
-	DEFUNCT,
-	EDITABLE,
-	ENABLED,
-	EXPANDABLE,
-	EXPANDED,
-	FOCUSABLE,
-	FOCUSED,
-	HORIZONTAL,
-	ICONIFIED,
-	MODAL,
-	MULTI_LINE,
-	MULTISELECTABLE,
-	OPAQUE,
-	PRESSED,
-	RESIZABLE,
-	SELECTABLE,
-	SELECTED,
-	SENSITIVE,
-	SHOWING,
-	SINGLE_LINE,
-	STALE,
-	TRANSIENT,
-	VERTICAL,
-	VISIBLE,
-	MANAGES_DESCENDANTS,
-	INDETERMINATE,
-	TRUNCATED,
-	REQUIRED,
-	INVALID_ENTRY,
-	SUPPORTS_AUTOCOMPLETION,
-	SELECTABLE_TEXT,
-	DEFAULT,
-	ANIMATED,
-	VISITED,
-	LAST_DEFINED
+    INVALID,
+    ACTIVE,
+    ARMED,
+    BUSY,
+    CHECKED,
+    DEFUNCT,
+    EDITABLE,
+    ENABLED,
+    EXPANDABLE,
+    EXPANDED,
+    FOCUSABLE,
+    FOCUSED,
+    HORIZONTAL,
+    ICONIFIED,
+    MODAL,
+    MULTI_LINE,
+    MULTISELECTABLE,
+    OPAQUE,
+    PRESSED,
+    RESIZABLE,
+    SELECTABLE,
+    SELECTED,
+    SENSITIVE,
+    SHOWING,
+    SINGLE_LINE,
+    STALE,
+    TRANSIENT,
+    VERTICAL,
+    VISIBLE,
+    MANAGES_DESCENDANTS,
+    INDETERMINATE,
+    TRUNCATED,
+    REQUIRED,
+    INVALID_ENTRY,
+    SUPPORTS_AUTOCOMPLETION,
+    SELECTABLE_TEXT,
+    DEFAULT,
+    ANIMATED,
+    VISITED,
+    LAST_DEFINED
 }
 /**
  * Text boundary types used for specifying boundaries for regions of text
@@ -244,13 +244,13 @@ public enum AtkStateType
  */
 public enum AtkTextBoundary
 {
-	CHAR,
-	WORD_START,
-	WORD_END,
-	SENTENCE_START,
-	SENTENCE_END,
-	LINE_START,
-	LINE_END
+    CHAR,
+    WORD_START,
+    WORD_END,
+    SENTENCE_START,
+    SENTENCE_END,
+    LINE_START,
+    LINE_END
 }
 /**
  * Describes the type of clipping required.
@@ -258,10 +258,10 @@ public enum AtkTextBoundary
  */
 public enum AtkTextClipType
 {
-	NONE,
-	MIN,
-	MAX,
-	BOTH
+    NONE,
+    MIN,
+    MAX,
+    BOTH
 }
 /**
  * Describes the text attributes supported
@@ -269,35 +269,35 @@ public enum AtkTextClipType
  */
 public enum AtkTextAttribute
 {
-	INVALID = 0,
-	LEFT_MARGIN,
-	RIGHT_MARGIN,
-	INDENT,
-	INVISIBLE,
-	EDITABLE,
-	PIXELS_ABOVE_LINES,
-	PIXELS_BELOW_LINES,
-	PIXELS_INSIDE_WRAP,
-	BG_FULL_HEIGHT,
-	RISE,
-	UNDERLINE,
-	STRIKETHROUGH,
-	SIZE,
-	SCALE,
-	WEIGHT,
-	LANGUAGE,
-	FAMILY_NAME,
-	BG_COLOR,
-	FG_COLOR,
-	BG_STIPPLE,
-	FG_STIPPLE,
-	WRAP_MODE,
-	DIRECTION,
-	JUSTIFICATION,
-	STRETCH,
-	VARIANT,
-	STYLE,
-	LAST_DEFINED
+    INVALID = 0,
+    LEFT_MARGIN,
+    RIGHT_MARGIN,
+    INDENT,
+    INVISIBLE,
+    EDITABLE,
+    PIXELS_ABOVE_LINES,
+    PIXELS_BELOW_LINES,
+    PIXELS_INSIDE_WRAP,
+    BG_FULL_HEIGHT,
+    RISE,
+    UNDERLINE,
+    STRIKETHROUGH,
+    SIZE,
+    SCALE,
+    WEIGHT,
+    LANGUAGE,
+    FAMILY_NAME,
+    BG_COLOR,
+    FG_COLOR,
+    BG_STIPPLE,
+    FG_STIPPLE,
+    WRAP_MODE,
+    DIRECTION,
+    JUSTIFICATION,
+    STRETCH,
+    VARIANT,
+    STYLE,
+    LAST_DEFINED
 }
 /**
  * Specifies how xy coordinates are to be interpreted. Used by functions such
@@ -306,8 +306,8 @@ public enum AtkTextAttribute
  */
 public enum AtkCoordType
 {
-	XY_SCREEN,
-	XY_WINDOW
+    XY_SCREEN,
+    XY_WINDOW
 }
 /**
  * Specifies the type of a keyboard evemt.
@@ -315,92 +315,92 @@ public enum AtkCoordType
  */
 public enum AtkKeyEventType
 {
-	PRESS,
-	RELEASE,
-	LAST_DEFINED
+    PRESS,
+    RELEASE,
+    LAST_DEFINED
 }
 
 /**
  * Main Gtk struct.
  * The AtkAction structure does not contain any fields.
  */
-public struct AtkAction{}
+public struct AtkAction {}
 
 
 /**
  * Main Gtk struct.
  * The AtkComponent structure does not contain any fields.
  */
-public struct AtkComponent{}
+public struct AtkComponent {}
 
 
 /**
  * Main Gtk struct.
  * The AtkDocument structure does not contain any fields.
  */
-public struct AtkDocument{}
+public struct AtkDocument {}
 
 
 /**
  * Main Gtk struct.
  * The AtkEditableText structure does not contain any fields.
  */
-public struct AtkEditableText{}
+public struct AtkEditableText {}
 
 
 /**
  * Main Gtk struct.
  * The AtkGObjectAccessible structure should not be accessed directly.
  */
-public struct AtkGObjectAccessible{}
+public struct AtkGObjectAccessible {}
 
 
 /**
  * Main Gtk struct.
  * The AtkHyperlink structure should not be accessed directly.
  */
-public struct AtkHyperlink{}
+public struct AtkHyperlink {}
 
 
 /**
  * Main Gtk struct.
  * The AtkHypertext structure does not contain any fields.
  */
-public struct AtkHypertext{}
+public struct AtkHypertext {}
 
 
 /**
  * Main Gtk struct.
  * The AtkImage structure does not contain any fields.
  */
-public struct AtkImage{}
+public struct AtkImage {}
 
 
 /**
  * Main Gtk struct.
  * The AtkNoOpObject structure should not be accessed directly.
  */
-public struct AtkNoOpObject{}
+public struct AtkNoOpObject {}
 
 
 /**
  * Main Gtk struct.
  * The AtkNoOpObjectFactory structure should not be accessed directly.
  */
-public struct AtkNoOpObjectFactory{}
+public struct AtkNoOpObjectFactory {}
 
 
 /**
  * Main Gtk struct.
  * The AtkObject structure should not be accessed directly.
  */
-public struct AtkObject{}
+public struct AtkObject {}
 
 
 /**
  * The AtkImplementor interface is implemented by objects for which AtkObject peers may be obtained via calls to iface->(ref_accessible)(implementor);
  */
-public struct AtkImplementor{}
+public struct AtkImplementor {}
 
 
 /**
@@ -425,9 +425,9 @@ public struct AtkImplementor{}
  */
 public struct AtkPropertyValues
 {
-	char *propertyName;
-	GValue oldValue;
-	GValue newValue;
+    char *propertyName;
+    GValue oldValue;
+    GValue newValue;
 }
 
 
@@ -435,62 +435,62 @@ public struct AtkPropertyValues
  * Main Gtk struct.
  * The AtkObjectFactory structure should not be accessed directly.
  */
-public struct AtkObjectFactory{}
+public struct AtkObjectFactory {}
 
 
 /**
  * Main Gtk struct.
  * The AtkRegistry structure should not be accessed directly.
  */
-public struct AtkRegistry{}
+public struct AtkRegistry {}
 
 
 /**
  * Main Gtk struct.
  * The AtkRelation structure should not be accessed directly.
  */
-public struct AtkRelation{}
+public struct AtkRelation {}
 
 
 /**
  * Main Gtk struct.
  * The AtkRelationSet structure should not be accessed directly.
  */
-public struct AtkRelationSet{}
+public struct AtkRelationSet {}
 
 
 /**
  * Main Gtk struct.
  * The AtkAction structure does not contain any fields.
  */
-public struct AtkSelection{}
+public struct AtkSelection {}
 
 
 /**
  * Main Gtk struct.
  */
-public struct AtkStateSet{}
+public struct AtkStateSet {}
 
 
 /**
  * Main Gtk struct.
  * The AtkStreamableContent structure does not contain any fields.
  */
-public struct AtkStreamableContent{}
+public struct AtkStreamableContent {}
 
 
 /**
  * Main Gtk struct.
  * The AtkTable structure does not contain any fields.
  */
-public struct AtkTable{}
+public struct AtkTable {}
 
 
 /**
  * Main Gtk struct.
  * The AtkText structure does not contain any fields.
  */
-public struct AtkText{}
+public struct AtkText {}
 
 
 /**
@@ -499,10 +499,10 @@ public struct AtkText{}
  */
 public struct AtkTextRange
 {
-	AtkTextRectangle bounds;
-	int startOffset;
-	int endOffset;
-	char* content;
+    AtkTextRectangle bounds;
+    int startOffset;
+    int endOffset;
+    char* content;
 }
 
 
@@ -512,10 +512,10 @@ public struct AtkTextRange
  */
 public struct AtkTextRectangle
 {
-	int x;
-	int y;
-	int width;
-	int height;
+    int x;
+    int y;
+    int width;
+    int height;
 }
 
 
@@ -525,15 +525,15 @@ public struct AtkTextRectangle
  */
 public struct AtkAttribute
 {
-	char* name;
-	char* value;
+    char* name;
+    char* value;
 }
 
 
 /**
  * The AtkUtil struct does not contain any fields.
  */
-public struct AtkUtil{}
+public struct AtkUtil {}
 
 
 /**
@@ -542,13 +542,13 @@ public struct AtkUtil{}
  */
 public struct AtkKeyEventStruct
 {
-	int type;
-	uint state;
-	uint keyval;
-	int length;
-	char *string;
-	ushort keycode;
-	uint timestamp;
+    int type;
+    uint state;
+    uint keyval;
+    int length;
+    char *string;
+    ushort keycode;
+    uint timestamp;
 }
 
 
@@ -556,7 +556,7 @@ public struct AtkKeyEventStruct
  * Main Gtk struct.
  * The AtkValue structure does not contain any fields.
  */
-public struct AtkValue{}
+public struct AtkValue {}
 
 
 /*

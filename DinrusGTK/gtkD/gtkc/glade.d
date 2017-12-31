@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -24,9 +24,9 @@
 module gtkD.gtkc.glade;
 
 version(Rulada)
-	private import tango.stdc.stdio;
-else
-	private import dinrus;
+private import tango.stdc.stdio;
+version(Dinrus)
+private import dinrus;
 
 private import gtkD.gtkc.gladetypes;
 private import gtkD.gtkc.Loader;
@@ -34,48 +34,48 @@ private import gtkD.gtkc.paths;
 
 static this()
 {
-	// gtkD.glade.Glade
+    // gtkD.glade.Glade
 
-	Linker.link(glade_xml_new, "glade_xml_new", LIBRARY.GLADE);
-	Linker.link(glade_xml_new_from_buffer, "glade_xml_new_from_buffer", LIBRARY.GLADE);
-	Linker.link(glade_xml_construct, "glade_xml_construct", LIBRARY.GLADE);
-	Linker.link(glade_xml_signal_connect, "glade_xml_signal_connect", LIBRARY.GLADE);
-	Linker.link(glade_xml_signal_connect_data, "glade_xml_signal_connect_data", LIBRARY.GLADE);
-	Linker.link(glade_xml_signal_autoconnect, "glade_xml_signal_autoconnect", LIBRARY.GLADE);
-	Linker.link(glade_xml_get_widget, "glade_xml_get_widget", LIBRARY.GLADE);
-	Linker.link(glade_xml_get_widget_prefix, "glade_xml_get_widget_prefix", LIBRARY.GLADE);
-	Linker.link(glade_get_widget_name, "glade_get_widget_name", LIBRARY.GLADE);
-	Linker.link(glade_get_widget_tree, "glade_get_widget_tree", LIBRARY.GLADE);
-	Linker.link(glade_xml_signal_connect_full, "glade_xml_signal_connect_full", LIBRARY.GLADE);
-	Linker.link(glade_xml_signal_autoconnect_full, "glade_xml_signal_autoconnect_full", LIBRARY.GLADE);
-	Linker.link(glade_set_custom_handler, "glade_set_custom_handler", LIBRARY.GLADE);
-	Linker.link(glade_init, "glade_init", LIBRARY.GLADE);
-	Linker.link(glade_require, "glade_require", LIBRARY.GLADE);
-	Linker.link(glade_provide, "glade_provide", LIBRARY.GLADE);
+    Linker.link(glade_xml_new, "glade_xml_new", LIBRARY.GLADE);
+    Linker.link(glade_xml_new_from_buffer, "glade_xml_new_from_buffer", LIBRARY.GLADE);
+    Linker.link(glade_xml_construct, "glade_xml_construct", LIBRARY.GLADE);
+    Linker.link(glade_xml_signal_connect, "glade_xml_signal_connect", LIBRARY.GLADE);
+    Linker.link(glade_xml_signal_connect_data, "glade_xml_signal_connect_data", LIBRARY.GLADE);
+    Linker.link(glade_xml_signal_autoconnect, "glade_xml_signal_autoconnect", LIBRARY.GLADE);
+    Linker.link(glade_xml_get_widget, "glade_xml_get_widget", LIBRARY.GLADE);
+    Linker.link(glade_xml_get_widget_prefix, "glade_xml_get_widget_prefix", LIBRARY.GLADE);
+    Linker.link(glade_get_widget_name, "glade_get_widget_name", LIBRARY.GLADE);
+    Linker.link(glade_get_widget_tree, "glade_get_widget_tree", LIBRARY.GLADE);
+    Linker.link(glade_xml_signal_connect_full, "glade_xml_signal_connect_full", LIBRARY.GLADE);
+    Linker.link(glade_xml_signal_autoconnect_full, "glade_xml_signal_autoconnect_full", LIBRARY.GLADE);
+    Linker.link(glade_set_custom_handler, "glade_set_custom_handler", LIBRARY.GLADE);
+    Linker.link(glade_init, "glade_init", LIBRARY.GLADE);
+    Linker.link(glade_require, "glade_require", LIBRARY.GLADE);
+    Linker.link(glade_provide, "glade_provide", LIBRARY.GLADE);
 }
 
 mixin( gshared ~"extern(C)
-{
-	
-	// gtkD.glade.Glade
-	
-	GladeXML* function(char* fname, char* root, char* domain) c_glade_xml_new;
-	GladeXML* function(char* buffer, int size, char* root, char* domain) c_glade_xml_new_from_buffer;
-	gboolean function(GladeXML* self, char* fname, char* root, char* domain) c_glade_xml_construct;
-	void function(GladeXML* self, char* handlername, GCallback func) c_glade_xml_signal_connect;
-	void function(GladeXML* self, char* handlername, GCallback func, gpointer userData) c_glade_xml_signal_connect_data;
-	void function(GladeXML* self) c_glade_xml_signal_autoconnect;
-	GtkWidget* function(GladeXML* self, char* name) c_glade_xml_get_widget;
-	GList* function(GladeXML* self, char* name) c_glade_xml_get_widget_prefix;
-	char* function(GtkWidget* widget) c_glade_get_widget_name;
-	GladeXML* function(GtkWidget* widget) c_glade_get_widget_tree;
-	void function(GladeXML* self, gchar* handlerName, GladeXMLConnectFunc func, gpointer userData) c_glade_xml_signal_connect_full;
-	void function(GladeXML* self, GladeXMLConnectFunc func, gpointer userData) c_glade_xml_signal_autoconnect_full;
-	void function(GladeXMLCustomWidgetHandler handler, gpointer userData) c_glade_set_custom_handler;
-	void function() c_glade_init;
-	void function(gchar* library) c_glade_require;
-	void function(gchar* library) c_glade_provide;
-}");
+       {
+
+       // gtkD.glade.Glade
+
+       GladeXML* function(char* fname, char* root, char* domain) c_glade_xml_new;
+       GladeXML* function(char* buffer, int size, char* root, char* domain) c_glade_xml_new_from_buffer;
+       gboolean function(GladeXML* self, char* fname, char* root, char* domain) c_glade_xml_construct;
+       void function(GladeXML* self, char* handlername, GCallback func) c_glade_xml_signal_connect;
+       void function(GladeXML* self, char* handlername, GCallback func, gpointer userData) c_glade_xml_signal_connect_data;
+       void function(GladeXML* self) c_glade_xml_signal_autoconnect;
+       GtkWidget* function(GladeXML* self, char* name) c_glade_xml_get_widget;
+       GList* function(GladeXML* self, char* name) c_glade_xml_get_widget_prefix;
+       char* function(GtkWidget* widget) c_glade_get_widget_name;
+       GladeXML* function(GtkWidget* widget) c_glade_get_widget_tree;
+       void function(GladeXML* self, gchar* handlerName, GladeXMLConnectFunc func, gpointer userData) c_glade_xml_signal_connect_full;
+       void function(GladeXML* self, GladeXMLConnectFunc func, gpointer userData) c_glade_xml_signal_autoconnect_full;
+       void function(GladeXMLCustomWidgetHandler handler, gpointer userData) c_glade_set_custom_handler;
+       void function() c_glade_init;
+       void function(gchar* library) c_glade_require;
+       void function(gchar* library) c_glade_provide;
+       }");
 
 // gtkD.glade.Glade
 

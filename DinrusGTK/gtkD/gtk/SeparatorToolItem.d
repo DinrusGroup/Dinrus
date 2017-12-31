@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkToolItem
  * clss    = SeparatorToolItem
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_separator_tool_item_
@@ -77,86 +77,86 @@ private import gtkD.gtk.ToolItem;
  */
 public class SeparatorToolItem : ToolItem
 {
-	
-	/** the main Gtk struct */
-	protected GtkSeparatorToolItem* gtkSeparatorToolItem;
-	
-	
-	public GtkSeparatorToolItem* getSeparatorToolItemStruct()
-	{
-		return gtkSeparatorToolItem;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSeparatorToolItem;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkSeparatorToolItem* gtkSeparatorToolItem)
-	{
-		if(gtkSeparatorToolItem is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSeparatorToolItem);
-		if( ptr !is null )
-		{
-			this = cast(SeparatorToolItem)ptr;
-			return;
-		}
-		super(cast(GtkToolItem*)gtkSeparatorToolItem);
-		this.gtkSeparatorToolItem = gtkSeparatorToolItem;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Create a new GtkSeparatorToolItem
-	 * Since 2.4
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkToolItem * gtk_separator_tool_item_new (void);
-		auto p = gtk_separator_tool_item_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_separator_tool_item_new()");
-		}
-		this(cast(GtkSeparatorToolItem*) p);
-	}
-	
-	/**
-	 * Whether item is drawn as a vertical line, or just blank.
-	 * Setting this to FALSE along with gtk_tool_item_set_expand() is useful
-	 * to create an item that forces following items to the end of the toolbar.
-	 * Since 2.4
-	 * Params:
-	 * draw =  whether item is drawn as a vertical line
-	 */
-	public void setDraw(int draw)
-	{
-		// void gtk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,  gboolean draw);
-		gtk_separator_tool_item_set_draw(gtkSeparatorToolItem, draw);
-	}
-	
-	/**
-	 * Returns whether item is drawn as a line, or just blank.
-	 * See gtk_separator_tool_item_set_draw().
-	 * Since 2.4
-	 * Returns: TRUE if item is drawn as a line, or just blank.
-	 */
-	public int getDraw()
-	{
-		// gboolean gtk_separator_tool_item_get_draw (GtkSeparatorToolItem *item);
-		return gtk_separator_tool_item_get_draw(gtkSeparatorToolItem);
-	}
+
+    /** the main Gtk struct */
+    protected GtkSeparatorToolItem* gtkSeparatorToolItem;
+
+
+    public GtkSeparatorToolItem* getSeparatorToolItemStruct()
+    {
+        return gtkSeparatorToolItem;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkSeparatorToolItem;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkSeparatorToolItem* gtkSeparatorToolItem)
+    {
+        if(gtkSeparatorToolItem is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkSeparatorToolItem);
+        if( ptr !is null )
+        {
+            this = cast(SeparatorToolItem)ptr;
+            return;
+        }
+        super(cast(GtkToolItem*)gtkSeparatorToolItem);
+        this.gtkSeparatorToolItem = gtkSeparatorToolItem;
+    }
+
+    /**
+     */
+
+    /**
+     * Create a new GtkSeparatorToolItem
+     * Since 2.4
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkToolItem * gtk_separator_tool_item_new (void);
+        auto p = gtk_separator_tool_item_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_separator_tool_item_new()");
+        }
+        this(cast(GtkSeparatorToolItem*) p);
+    }
+
+    /**
+     * Whether item is drawn as a vertical line, or just blank.
+     * Setting this to FALSE along with gtk_tool_item_set_expand() is useful
+     * to create an item that forces following items to the end of the toolbar.
+     * Since 2.4
+     * Params:
+     * draw =  whether item is drawn as a vertical line
+     */
+    public void setDraw(int draw)
+    {
+        // void gtk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,  gboolean draw);
+        gtk_separator_tool_item_set_draw(gtkSeparatorToolItem, draw);
+    }
+
+    /**
+     * Returns whether item is drawn as a line, or just blank.
+     * See gtk_separator_tool_item_set_draw().
+     * Since 2.4
+     * Returns: TRUE if item is drawn as a line, or just blank.
+     */
+    public int getDraw()
+    {
+        // gboolean gtk_separator_tool_item_get_draw (GtkSeparatorToolItem *item);
+        return gtk_separator_tool_item_get_draw(gtkSeparatorToolItem);
+    }
 }

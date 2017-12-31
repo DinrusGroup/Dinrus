@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = FileChooserDialog
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * 	- FileChooserIF
  * prefixes:
@@ -161,139 +161,139 @@ private import gtkD.gtk.Dialog;
  */
 public class FileChooserDialog : Dialog, FileChooserIF
 {
-	
-	/** the main Gtk struct */
-	protected GtkFileChooserDialog* gtkFileChooserDialog;
-	
-	
-	public GtkFileChooserDialog* getFileChooserDialogStruct()
-	{
-		return gtkFileChooserDialog;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFileChooserDialog;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkFileChooserDialog* gtkFileChooserDialog)
-	{
-		if(gtkFileChooserDialog is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFileChooserDialog);
-		if( ptr !is null )
-		{
-			this = cast(FileChooserDialog)ptr;
-			return;
-		}
-		super(cast(GtkDialog*)gtkFileChooserDialog);
-		this.gtkFileChooserDialog = gtkFileChooserDialog;
-	}
-	
-	// add the FileChooser capabilities
-	mixin FileChooserT!(GtkFileChooserDialog);
-	
-	/**
-	 * Creates a new GtkFileChooserDialog. This function is analogous to
-	 * gtk_dialog_new_with_buttons().
-	 * Since 2.4
-	 * Params:
-	 *  title = Title of the dialog, or NULL
-	 *  parent = Transient parent of the dialog, or NULL
-	 *  action = Open or save mode for the dialog
-	 *  buttonsText = text to go in the buttons
-	 *  responses = response ID's for the buttons
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	this(string title, Window parent, FileChooserAction action,  string[] buttonsText=null, ResponseType[] responses=null)
-	{
-		if ( buttonsText  is  null )
-		{
-			buttonsText ~= "OK";
-			buttonsText ~= "Cancel";
-		}
-		if ( responses  is  null )
-		{
-			responses ~= ResponseType.GTK_RESPONSE_OK;
-			responses ~= ResponseType.GTK_RESPONSE_CANCEL;
-		}
-		
-		auto p = gtk_file_chooser_dialog_new(
-		Str.toStringz(title),
-		parent.getWindowStruct(),
-		action,
-		null,
-		0);
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_chooser_dialog_new");
-		}
-		
-		this(cast(GtkFileChooserDialog*) p);
-		
-		addButtons(buttonsText, responses);
-	}
-	
-	/**
-	 * Creates a new GtkFileChooserDialog with a specified backend. This is
-	 * especially useful if you use gtk_file_chooser_set_local_only() to allow
-	 * non-local files and you use a more expressive vfs, such as gnome-vfs,
-	 * to load files.
-	 * Since 2.4
-	 * Params:
-	 *  title = Title of the dialog, or NULL
-	 *  parent = Transient parent of the dialog, or NULL
-	 *  action = Open or save mode for the dialog
-	 *  backend = The name of the specific filesystem backend to use.
-	 *  buttonsText = text to go in the buttons
-	 *  responses = response ID's for the buttons
-	 * See_Also:
-	 *  GtkFileChooser, GtkDialog
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string title, Window parent, GtkFileChooserAction action, string backend,  string[] buttonsText=null, ResponseType[] responses=null)
-	{
-		// GtkWidget* gtk_file_chooser_dialog_new_with_backend  (const gchar *title,  GtkWindow *parent,  GtkFileChooserAction action,  const gchar *backend,  const gchar *first_button_text,  ...);
-		auto p = gtk_file_chooser_dialog_new_with_backend(
-		Str.toStringz(title),
-		parent.getWindowStruct(),
-		action,
-		Str.toStringz(backend),
-		null,
-		0
-		);
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_chooser_dialog_new_with_backend");
-		}
-		
-		this(cast(GtkFileChooserDialog*) p);
-		
-		if ( buttonsText  is  null )
-		{
-			buttonsText ~= "OK";
-			buttonsText ~= "Cancel";
-		}
-		if ( responses  is  null )
-		{
-			responses ~= ResponseType.GTK_RESPONSE_OK;
-			responses ~= ResponseType.GTK_RESPONSE_CANCEL;
-		}
-		
-		addButtons(buttonsText, responses);
-	}
-	
-	/**
-	 */
+
+    /** the main Gtk struct */
+    protected GtkFileChooserDialog* gtkFileChooserDialog;
+
+
+    public GtkFileChooserDialog* getFileChooserDialogStruct()
+    {
+        return gtkFileChooserDialog;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkFileChooserDialog;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkFileChooserDialog* gtkFileChooserDialog)
+    {
+        if(gtkFileChooserDialog is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkFileChooserDialog);
+        if( ptr !is null )
+        {
+            this = cast(FileChooserDialog)ptr;
+            return;
+        }
+        super(cast(GtkDialog*)gtkFileChooserDialog);
+        this.gtkFileChooserDialog = gtkFileChooserDialog;
+    }
+
+    // add the FileChooser capabilities
+    mixin FileChooserT!(GtkFileChooserDialog);
+
+    /**
+     * Creates a new GtkFileChooserDialog. This function is analogous to
+     * gtk_dialog_new_with_buttons().
+     * Since 2.4
+     * Params:
+     *  title = Title of the dialog, or NULL
+     *  parent = Transient parent of the dialog, or NULL
+     *  action = Open or save mode for the dialog
+     *  buttonsText = text to go in the buttons
+     *  responses = response ID's for the buttons
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    this(string title, Window parent, FileChooserAction action,  string[] buttonsText=null, ResponseType[] responses=null)
+    {
+        if ( buttonsText  is  null )
+        {
+            buttonsText ~= "OK";
+            buttonsText ~= "Cancel";
+        }
+        if ( responses  is  null )
+        {
+            responses ~= ResponseType.GTK_RESPONSE_OK;
+            responses ~= ResponseType.GTK_RESPONSE_CANCEL;
+        }
+
+        auto p = gtk_file_chooser_dialog_new(
+                     Str.toStringz(title),
+                     parent.getWindowStruct(),
+                     action,
+                     null,
+                     0);
+
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_file_chooser_dialog_new");
+        }
+
+        this(cast(GtkFileChooserDialog*) p);
+
+        addButtons(buttonsText, responses);
+    }
+
+    /**
+     * Creates a new GtkFileChooserDialog with a specified backend. This is
+     * especially useful if you use gtk_file_chooser_set_local_only() to allow
+     * non-local files and you use a more expressive vfs, such as gnome-vfs,
+     * to load files.
+     * Since 2.4
+     * Params:
+     *  title = Title of the dialog, or NULL
+     *  parent = Transient parent of the dialog, or NULL
+     *  action = Open or save mode for the dialog
+     *  backend = The name of the specific filesystem backend to use.
+     *  buttonsText = text to go in the buttons
+     *  responses = response ID's for the buttons
+     * See_Also:
+     *  GtkFileChooser, GtkDialog
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string title, Window parent, GtkFileChooserAction action, string backend,  string[] buttonsText=null, ResponseType[] responses=null)
+    {
+        // GtkWidget* gtk_file_chooser_dialog_new_with_backend  (const gchar *title,  GtkWindow *parent,  GtkFileChooserAction action,  const gchar *backend,  const gchar *first_button_text,  ...);
+        auto p = gtk_file_chooser_dialog_new_with_backend(
+                     Str.toStringz(title),
+                     parent.getWindowStruct(),
+                     action,
+                     Str.toStringz(backend),
+                     null,
+                     0
+                 );
+
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_file_chooser_dialog_new_with_backend");
+        }
+
+        this(cast(GtkFileChooserDialog*) p);
+
+        if ( buttonsText  is  null )
+        {
+            buttonsText ~= "OK";
+            buttonsText ~= "Cancel";
+        }
+        if ( responses  is  null )
+        {
+            responses ~= ResponseType.GTK_RESPONSE_OK;
+            responses ~= ResponseType.GTK_RESPONSE_CANCEL;
+        }
+
+        addButtons(buttonsText, responses);
+    }
+
+    /**
+     */
 }

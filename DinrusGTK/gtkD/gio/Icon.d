@@ -15,21 +15,21 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
 
 /*
  * Conversion parameters:
- * inFile  = 
+ * inFile  =
  * outPack = gio
  * outFile = Icon
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Icon
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
@@ -70,31 +70,31 @@ private import gtkD.gio.IconIF;
  */
 public class Icon : ObjectG, IconIF
 {
-	
-	// Minimal implementation.
-	mixin IconT!(GIcon);
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gIcon;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GIcon* gIcon)
-	{
-		if(gIcon is null)
-		{
-			this = null;
-			return;
-		}
-		
-		super(cast(GObject*)gIcon);
-		this.gIcon = gIcon;
-	}
-	
-	/**
-	 */
+
+    // Minimal implementation.
+    mixin IconT!(GIcon);
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gIcon;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GIcon* gIcon)
+    {
+        if(gIcon is null)
+        {
+            this = null;
+            return;
+        }
+
+        super(cast(GObject*)gIcon);
+        this.gIcon = gIcon;
+    }
+
+    /**
+     */
 }

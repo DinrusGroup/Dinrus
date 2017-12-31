@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = Relation
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_relation_
@@ -93,156 +93,156 @@ private import gtkD.glib.Tuples;
  */
 public class Relation
 {
-	
-	/** the main Gtk struct */
-	protected GRelation* gRelation;
-	
-	
-	public GRelation* getRelationStruct()
-	{
-		return gRelation;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gRelation;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GRelation* gRelation)
-	{
-		if(gRelation is null)
-		{
-			this = null;
-			return;
-		}
-		this.gRelation = gRelation;
-	}
-	
-	/**
-	 * Outputs information about all records in a GRelation, as well as the indexes.
-	 * It is for debugging.
-	 */
-	version(Rulada)
-	{
-		public void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
-	}
-	else version(D_Version2)
-	{
-		public void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
-	}
-	else
-	{
-		public override void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GRelation with the given number of fields.
-	 * Note that currently the number of fields must be 2.
-	 * Params:
-	 * fields = the number of fields.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (int fields)
-	{
-		// GRelation* g_relation_new (gint fields);
-		auto p = g_relation_new(fields);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_relation_new(fields)");
-		}
-		this(cast(GRelation*) p);
-	}
-	
-	/**
-	 * Creates an index on the given field.
-	 * Note that this must be called before any records are added to the GRelation.
-	 * Params:
-	 * field = the field to index, counting from 0.
-	 * hashFunc = a function to produce a hash value from the field data.
-	 * keyEqualFunc = a function to compare two values of the given field.
-	 */
-	public void index(int field, GHashFunc hashFunc, GEqualFunc keyEqualFunc)
-	{
-		// void g_relation_index (GRelation *relation,  gint field,  GHashFunc hash_func,  GEqualFunc key_equal_func);
-		g_relation_index(gRelation, field, hashFunc, keyEqualFunc);
-	}
-	
-	/**
-	 * Returns the number of tuples in a GRelation that have the given value
-	 * in the given field.
-	 * Params:
-	 * key = the value to compare with.
-	 * field = the field of each record to match.
-	 * Returns:the number of matches.
-	 */
-	public int count(void* key, int field)
-	{
-		// gint g_relation_count (GRelation *relation,  gconstpointer key,  gint field);
-		return g_relation_count(gRelation, key, field);
-	}
-	
-	/**
-	 * Returns all of the tuples which have the given key in the given field.
-	 * Use g_tuples_index() to access the returned records.
-	 * The returned records should be freed with g_tuples_destroy().
-	 * Params:
-	 * key = the value to compare with.
-	 * field = the field of each record to match.
-	 * Returns:the records (tuples) that matched.
-	 */
-	public Tuples select(void* key, int field)
-	{
-		// GTuples* g_relation_select (GRelation *relation,  gconstpointer key,  gint field);
-		auto p = g_relation_select(gRelation, key, field);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Tuples(cast(GTuples*) p);
-	}
-	
-	/**
-	 * Deletes any records from a GRelation that have the given key value in
-	 * the given field.
-	 * Params:
-	 * key = the value to compare with.
-	 * field = the field of each record to match.
-	 * Returns:the number of records deleted.
-	 */
-	public int delet(void* key, int field)
-	{
-		// gint g_relation_delete (GRelation *relation,  gconstpointer key,  gint field);
-		return g_relation_delete(gRelation, key, field);
-	}
-	
-	/**
-	 * Destroys the GRelation, freeing all memory allocated.
-	 * However, it does not free memory allocated for the
-	 * tuple data, so you should free that first if appropriate.
-	 */
-	public void destroy()
-	{
-		// void g_relation_destroy (GRelation *relation);
-		g_relation_destroy(gRelation);
-	}
+
+    /** the main Gtk struct */
+    protected GRelation* gRelation;
+
+
+    public GRelation* getRelationStruct()
+    {
+        return gRelation;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected void* getStruct()
+    {
+        return cast(void*)gRelation;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GRelation* gRelation)
+    {
+        if(gRelation is null)
+        {
+            this = null;
+            return;
+        }
+        this.gRelation = gRelation;
+    }
+
+    /**
+     * Outputs information about all records in a GRelation, as well as the indexes.
+     * It is for debugging.
+     */
+    version(Rulada)
+    {
+        public void print()
+        {
+            // void g_relation_print (GRelation *relation);
+            g_relation_print(gRelation);
+        }
+    }
+    else version(D_Version2)
+    {
+        public void print()
+        {
+            // void g_relation_print (GRelation *relation);
+            g_relation_print(gRelation);
+        }
+    }
+    else
+    {
+        public override void print()
+        {
+            // void g_relation_print (GRelation *relation);
+            g_relation_print(gRelation);
+        }
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GRelation with the given number of fields.
+     * Note that currently the number of fields must be 2.
+     * Params:
+     * fields = the number of fields.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (int fields)
+    {
+        // GRelation* g_relation_new (gint fields);
+        auto p = g_relation_new(fields);
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by g_relation_new(fields)");
+        }
+        this(cast(GRelation*) p);
+    }
+
+    /**
+     * Creates an index on the given field.
+     * Note that this must be called before any records are added to the GRelation.
+     * Params:
+     * field = the field to index, counting from 0.
+     * hashFunc = a function to produce a hash value from the field data.
+     * keyEqualFunc = a function to compare two values of the given field.
+     */
+    public void index(int field, GHashFunc hashFunc, GEqualFunc keyEqualFunc)
+    {
+        // void g_relation_index (GRelation *relation,  gint field,  GHashFunc hash_func,  GEqualFunc key_equal_func);
+        g_relation_index(gRelation, field, hashFunc, keyEqualFunc);
+    }
+
+    /**
+     * Returns the number of tuples in a GRelation that have the given value
+     * in the given field.
+     * Params:
+     * key = the value to compare with.
+     * field = the field of each record to match.
+     * Returns:the number of matches.
+     */
+    public int count(void* key, int field)
+    {
+        // gint g_relation_count (GRelation *relation,  gconstpointer key,  gint field);
+        return g_relation_count(gRelation, key, field);
+    }
+
+    /**
+     * Returns all of the tuples which have the given key in the given field.
+     * Use g_tuples_index() to access the returned records.
+     * The returned records should be freed with g_tuples_destroy().
+     * Params:
+     * key = the value to compare with.
+     * field = the field of each record to match.
+     * Returns:the records (tuples) that matched.
+     */
+    public Tuples select(void* key, int field)
+    {
+        // GTuples* g_relation_select (GRelation *relation,  gconstpointer key,  gint field);
+        auto p = g_relation_select(gRelation, key, field);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Tuples(cast(GTuples*) p);
+    }
+
+    /**
+     * Deletes any records from a GRelation that have the given key value in
+     * the given field.
+     * Params:
+     * key = the value to compare with.
+     * field = the field of each record to match.
+     * Returns:the number of records deleted.
+     */
+    public int delet(void* key, int field)
+    {
+        // gint g_relation_delete (GRelation *relation,  gconstpointer key,  gint field);
+        return g_relation_delete(gRelation, key, field);
+    }
+
+    /**
+     * Destroys the GRelation, freeing all memory allocated.
+     * However, it does not free memory allocated for the
+     * tuple data, so you should free that first if appropriate.
+     */
+    public void destroy()
+    {
+        // void g_relation_destroy (GRelation *relation);
+        g_relation_destroy(gRelation);
+    }
 }

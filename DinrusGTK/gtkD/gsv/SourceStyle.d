@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = SourceStyle
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_source_style_
@@ -67,61 +67,61 @@ private import gtkD.gobject.ObjectG;
  */
 public class SourceStyle : ObjectG
 {
-	
-	/** the main Gtk struct */
-	protected GtkSourceStyle* gtkSourceStyle;
-	
-	
-	public GtkSourceStyle* getSourceStyleStruct()
-	{
-		return gtkSourceStyle;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourceStyle;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkSourceStyle* gtkSourceStyle)
-	{
-		if(gtkSourceStyle is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourceStyle);
-		if( ptr !is null )
-		{
-			this = cast(SourceStyle)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSourceStyle);
-		this.gtkSourceStyle = gtkSourceStyle;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a copy of style, that is a new GtkSourceStyle instance which
-	 * has the same attributes set.
-	 * Since 2.0
-	 * Returns: copy of style, call g_object_unref() when you are done with it.
-	 */
-	public SourceStyle copy()
-	{
-		// GtkSourceStyle * gtk_source_style_copy (const GtkSourceStyle *style);
-		auto p = gtk_source_style_copy(gtkSourceStyle);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceStyle(cast(GtkSourceStyle*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkSourceStyle* gtkSourceStyle;
+
+
+    public GtkSourceStyle* getSourceStyleStruct()
+    {
+        return gtkSourceStyle;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkSourceStyle;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkSourceStyle* gtkSourceStyle)
+    {
+        if(gtkSourceStyle is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkSourceStyle);
+        if( ptr !is null )
+        {
+            this = cast(SourceStyle)ptr;
+            return;
+        }
+        super(cast(GObject*)gtkSourceStyle);
+        this.gtkSourceStyle = gtkSourceStyle;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a copy of style, that is a new GtkSourceStyle instance which
+     * has the same attributes set.
+     * Since 2.0
+     * Returns: copy of style, call g_object_unref() when you are done with it.
+     */
+    public SourceStyle copy()
+    {
+        // GtkSourceStyle * gtk_source_style_copy (const GtkSourceStyle *style);
+        auto p = gtk_source_style_copy(gtkSourceStyle);
+        if(p is null)
+        {
+            return null;
+        }
+        return new SourceStyle(cast(GtkSourceStyle*) p);
+    }
 }

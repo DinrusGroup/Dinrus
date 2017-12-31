@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkCellRenderer
  * clss    = CellRendererProgress
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_cell_renderer_progress_
@@ -73,60 +73,60 @@ private import gtkD.gtk.CellRenderer;
  */
 public class CellRendererProgress : CellRenderer
 {
-	
-	/** the main Gtk struct */
-	protected GtkCellRendererProgress* gtkCellRendererProgress;
-	
-	
-	public GtkCellRendererProgress* getCellRendererProgressStruct()
-	{
-		return gtkCellRendererProgress;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererProgress;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkCellRendererProgress* gtkCellRendererProgress)
-	{
-		if(gtkCellRendererProgress is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererProgress);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererProgress)ptr;
-			return;
-		}
-		super(cast(GtkCellRenderer*)gtkCellRendererProgress);
-		this.gtkCellRendererProgress = gtkCellRendererProgress;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkCellRendererProgress.
-	 * Since 2.6
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkCellRenderer* gtk_cell_renderer_progress_new (void);
-		auto p = gtk_cell_renderer_progress_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_progress_new()");
-		}
-		this(cast(GtkCellRendererProgress*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkCellRendererProgress* gtkCellRendererProgress;
+
+
+    public GtkCellRendererProgress* getCellRendererProgressStruct()
+    {
+        return gtkCellRendererProgress;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkCellRendererProgress;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkCellRendererProgress* gtkCellRendererProgress)
+    {
+        if(gtkCellRendererProgress is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkCellRendererProgress);
+        if( ptr !is null )
+        {
+            this = cast(CellRendererProgress)ptr;
+            return;
+        }
+        super(cast(GtkCellRenderer*)gtkCellRendererProgress);
+        this.gtkCellRendererProgress = gtkCellRendererProgress;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkCellRendererProgress.
+     * Since 2.6
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkCellRenderer* gtk_cell_renderer_progress_new (void);
+        auto p = gtk_cell_renderer_progress_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_cell_renderer_progress_new()");
+        }
+        this(cast(GtkCellRendererProgress*) p);
+    }
 }

@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -40,16 +40,17 @@ alias void* GladeXMLCustomWidgetHandler;
  */
 public struct GladeXML
 {
-	GObject parent;
-	char *filename;
+    GObject parent;
+    char *filename;
 }
 
 
 public struct GladeXMLClass
 {
-	GObjectClass parentClass;
-	/+* Virtual function: gets the appropriate gtype for the typename.+/
-	extern(C) GType  function(GladeXML*self, char *gtypename)  lookupType;
+    GObjectClass parentClass;
+/+* Virtual function:
+    gets the appropriate gtype for the typename.+/
+    extern(C) GType  function(GladeXML*self, char *gtypename)  lookupType;
 }
 
 

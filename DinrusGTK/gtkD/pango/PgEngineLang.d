@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = PgEngineLang
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- script_engine_lang_
@@ -69,44 +69,44 @@ private import gtkD.pango.PgEngine;
  */
 public class PgEngineLang : PgEngine
 {
-	
-	/** the main Gtk struct */
-	protected PangoEngineLang* pangoEngineLang;
-	
-	
-	public PangoEngineLang* getPgEngineLangStruct()
-	{
-		return pangoEngineLang;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoEngineLang;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (PangoEngineLang* pangoEngineLang)
-	{
-		if(pangoEngineLang is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoEngineLang);
-		if( ptr !is null )
-		{
-			this = cast(PgEngineLang)ptr;
-			return;
-		}
-		super(cast(PangoEngine*)pangoEngineLang);
-		this.pangoEngineLang = pangoEngineLang;
-	}
-	
-	/**
-	 */
+
+    /** the main Gtk struct */
+    protected PangoEngineLang* pangoEngineLang;
+
+
+    public PangoEngineLang* getPgEngineLangStruct()
+    {
+        return pangoEngineLang;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)pangoEngineLang;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (PangoEngineLang* pangoEngineLang)
+    {
+        if(pangoEngineLang is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)pangoEngineLang);
+        if( ptr !is null )
+        {
+            this = cast(PgEngineLang)ptr;
+            return;
+        }
+        super(cast(PangoEngine*)pangoEngineLang);
+        this.pangoEngineLang = pangoEngineLang;
+    }
+
+    /**
+     */
 }

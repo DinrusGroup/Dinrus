@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = VButtonBox
- * interf  = 
+ * interf  =
  * class Code: Yes
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_vbutton_box_
@@ -82,124 +82,124 @@ private import gtkD.gtk.ButtonBox;
  */
 public class VButtonBox : ButtonBox
 {
-	
-	/** the main Gtk struct */
-	protected GtkVButtonBox* gtkVButtonBox;
-	
-	
-	public GtkVButtonBox* getVButtonBoxStruct()
-	{
-		return gtkVButtonBox;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVButtonBox;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkVButtonBox* gtkVButtonBox)
-	{
-		if(gtkVButtonBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVButtonBox);
-		if( ptr !is null )
-		{
-			this = cast(VButtonBox)ptr;
-			return;
-		}
-		super(cast(GtkButtonBox*)gtkVButtonBox);
-		this.gtkVButtonBox = gtkVButtonBox;
-	}
-	
-	/**
-	 * Creates a new vertical button box and sets standart values for it's comon parameters
-	 * Returns: a new vertical button box
-	 */
-	static ButtonBox createActionBox()
-	{
-		ButtonBox bBox = new VButtonBox();
-		bBox.setLayout(ButtonBoxStyle.START);
-		bBox.setBorderWidth(5);
-		bBox.setSpacing(7);
-		return bBox;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new vertical button box.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkWidget * gtk_vbutton_box_new (void);
-		auto p = gtk_vbutton_box_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_vbutton_box_new()");
-		}
-		this(cast(GtkVButtonBox*) p);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_vbutton_box_get_spacing_default is deprecated and should not be used in newly-written code.
-	 * Retrieves the current default spacing for vertical button boxes. This is the number of pixels
-	 * to be placed between the buttons when they are arranged.
-	 * Returns:the default number of pixels between buttons.
-	 */
-	public static int getSpacingDefault()
-	{
-		// gint gtk_vbutton_box_get_spacing_default (void);
-		return gtk_vbutton_box_get_spacing_default();
-	}
-	
-	/**
-	 * Warning
-	 * gtk_vbutton_box_set_spacing_default is deprecated and should not be used in newly-written code.
-	 * Changes the default spacing that is placed between widgets in an
-	 * vertical button box.
-	 * Params:
-	 * spacing = an integer value.
-	 */
-	public static void setSpacingDefault(int spacing)
-	{
-		// void gtk_vbutton_box_set_spacing_default (gint spacing);
-		gtk_vbutton_box_set_spacing_default(spacing);
-	}
-	
-	/**
-	 * Warning
-	 * gtk_vbutton_box_get_layout_default is deprecated and should not be used in newly-written code.
-	 * Retrieves the current layout used to arrange buttons in button box widgets.
-	 * Returns:the current GtkButtonBoxStyle.
-	 */
-	public static GtkButtonBoxStyle getLayoutDefault()
-	{
-		// GtkButtonBoxStyle gtk_vbutton_box_get_layout_default (void);
-		return gtk_vbutton_box_get_layout_default();
-	}
-	
-	/**
-	 * Warning
-	 * gtk_vbutton_box_set_layout_default is deprecated and should not be used in newly-written code.
-	 * Sets a new layout mode that will be used by all button boxes.
-	 * Params:
-	 * layout = a new GtkButtonBoxStyle.
-	 */
-	public static void setLayoutDefault(GtkButtonBoxStyle layout)
-	{
-		// void gtk_vbutton_box_set_layout_default (GtkButtonBoxStyle layout);
-		gtk_vbutton_box_set_layout_default(layout);
-	}
+
+    /** the main Gtk struct */
+    protected GtkVButtonBox* gtkVButtonBox;
+
+
+    public GtkVButtonBox* getVButtonBoxStruct()
+    {
+        return gtkVButtonBox;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkVButtonBox;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkVButtonBox* gtkVButtonBox)
+    {
+        if(gtkVButtonBox is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkVButtonBox);
+        if( ptr !is null )
+        {
+            this = cast(VButtonBox)ptr;
+            return;
+        }
+        super(cast(GtkButtonBox*)gtkVButtonBox);
+        this.gtkVButtonBox = gtkVButtonBox;
+    }
+
+    /**
+     * Creates a new vertical button box and sets standart values for it's comon parameters
+     * Returns: a new vertical button box
+     */
+    static ButtonBox createActionBox()
+    {
+        ButtonBox bBox = new VButtonBox();
+        bBox.setLayout(ButtonBoxStyle.START);
+        bBox.setBorderWidth(5);
+        bBox.setSpacing(7);
+        return bBox;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new vertical button box.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkWidget * gtk_vbutton_box_new (void);
+        auto p = gtk_vbutton_box_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_vbutton_box_new()");
+        }
+        this(cast(GtkVButtonBox*) p);
+    }
+
+    /**
+     * Warning
+     * gtk_vbutton_box_get_spacing_default is deprecated and should not be used in newly-written code.
+     * Retrieves the current default spacing for vertical button boxes. This is the number of pixels
+     * to be placed between the buttons when they are arranged.
+     * Returns:the default number of pixels between buttons.
+     */
+    public static int getSpacingDefault()
+    {
+        // gint gtk_vbutton_box_get_spacing_default (void);
+        return gtk_vbutton_box_get_spacing_default();
+    }
+
+    /**
+     * Warning
+     * gtk_vbutton_box_set_spacing_default is deprecated and should not be used in newly-written code.
+     * Changes the default spacing that is placed between widgets in an
+     * vertical button box.
+     * Params:
+     * spacing = an integer value.
+     */
+    public static void setSpacingDefault(int spacing)
+    {
+        // void gtk_vbutton_box_set_spacing_default (gint spacing);
+        gtk_vbutton_box_set_spacing_default(spacing);
+    }
+
+    /**
+     * Warning
+     * gtk_vbutton_box_get_layout_default is deprecated and should not be used in newly-written code.
+     * Retrieves the current layout used to arrange buttons in button box widgets.
+     * Returns:the current GtkButtonBoxStyle.
+     */
+    public static GtkButtonBoxStyle getLayoutDefault()
+    {
+        // GtkButtonBoxStyle gtk_vbutton_box_get_layout_default (void);
+        return gtk_vbutton_box_get_layout_default();
+    }
+
+    /**
+     * Warning
+     * gtk_vbutton_box_set_layout_default is deprecated and should not be used in newly-written code.
+     * Sets a new layout mode that will be used by all button boxes.
+     * Params:
+     * layout = a new GtkButtonBoxStyle.
+     */
+    public static void setLayoutDefault(GtkButtonBoxStyle layout)
+    {
+        // void gtk_vbutton_box_set_layout_default (GtkButtonBoxStyle layout);
+        gtk_vbutton_box_set_layout_default(layout);
+    }
 }

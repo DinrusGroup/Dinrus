@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=
  * clss    = ColorSelectionDialog
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_color_selection_dialog_
@@ -80,77 +80,77 @@ private import gtkD.gtk.Dialog;
  */
 public class ColorSelectionDialog : Dialog
 {
-	
-	/** the main Gtk struct */
-	protected GtkColorSelectionDialog* gtkColorSelectionDialog;
-	
-	
-	public GtkColorSelectionDialog* getColorSelectionDialogStruct()
-	{
-		return gtkColorSelectionDialog;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkColorSelectionDialog;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkColorSelectionDialog* gtkColorSelectionDialog)
-	{
-		if(gtkColorSelectionDialog is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkColorSelectionDialog);
-		if( ptr !is null )
-		{
-			this = cast(ColorSelectionDialog)ptr;
-			return;
-		}
-		super(cast(GtkDialog*)gtkColorSelectionDialog);
-		this.gtkColorSelectionDialog = gtkColorSelectionDialog;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkColorSelectionDialog.
-	 * Params:
-	 * title = a string containing the title text for the dialog.
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this (string title)
-	{
-		// GtkWidget* gtk_color_selection_dialog_new (const gchar *title);
-		auto p = gtk_color_selection_dialog_new(Str.toStringz(title));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_color_selection_dialog_new(Str.toStringz(title))");
-		}
-		this(cast(GtkColorSelectionDialog*) p);
-	}
-	
-	/**
-	 * Retrieves the GtkColorSelection widget embedded in the dialog.
-	 * Since 2.14
-	 * Returns: the embedded GtkColorSelection
-	 */
-	public Widget getColorSelection()
-	{
-		// GtkWidget* gtk_color_selection_dialog_get_color_selection  (GtkColorSelectionDialog *colorsel);
-		auto p = gtk_color_selection_dialog_get_color_selection(gtkColorSelectionDialog);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkColorSelectionDialog* gtkColorSelectionDialog;
+
+
+    public GtkColorSelectionDialog* getColorSelectionDialogStruct()
+    {
+        return gtkColorSelectionDialog;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkColorSelectionDialog;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkColorSelectionDialog* gtkColorSelectionDialog)
+    {
+        if(gtkColorSelectionDialog is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkColorSelectionDialog);
+        if( ptr !is null )
+        {
+            this = cast(ColorSelectionDialog)ptr;
+            return;
+        }
+        super(cast(GtkDialog*)gtkColorSelectionDialog);
+        this.gtkColorSelectionDialog = gtkColorSelectionDialog;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkColorSelectionDialog.
+     * Params:
+     * title = a string containing the title text for the dialog.
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this (string title)
+    {
+        // GtkWidget* gtk_color_selection_dialog_new (const gchar *title);
+        auto p = gtk_color_selection_dialog_new(Str.toStringz(title));
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_color_selection_dialog_new(Str.toStringz(title))");
+        }
+        this(cast(GtkColorSelectionDialog*) p);
+    }
+
+    /**
+     * Retrieves the GtkColorSelection widget embedded in the dialog.
+     * Since 2.14
+     * Returns: the embedded GtkColorSelection
+     */
+    public Widget getColorSelection()
+    {
+        // GtkWidget* gtk_color_selection_dialog_get_color_selection  (GtkColorSelectionDialog *colorsel);
+        auto p = gtk_color_selection_dialog_get_color_selection(gtkColorSelectionDialog);
+        if(p is null)
+        {
+            return null;
+        }
+        return new Widget(cast(GtkWidget*) p);
+    }
 }

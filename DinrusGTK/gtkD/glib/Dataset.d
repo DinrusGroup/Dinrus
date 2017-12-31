@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -25,15 +25,15 @@
  * inFile  = glib-Datasets.html
  * outPack = glib
  * outFile = Dataset
- * strct   = 
+ * strct   =
  * realStrct=
  * ctorStrct=
  * clss    = Dataset
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- g_dataset_
@@ -87,81 +87,81 @@ private import gtkD.glib.ConstructionException;
  */
 public class Dataset
 {
-	
-	/**
-	 */
-	
-	/**
-	 * Sets the data element associated with the given GQuark id, and also the
-	 * function to call when the data element is destroyed.
-	 * Any previous data with the same key is removed, and its
-	 * destroy function is called.
-	 * Params:
-	 * datasetLocation = the location identifying the dataset.
-	 * keyId = the GQuark id to identify the data element.
-	 * data = the data element.
-	 * destroyFunc = the function to call when the data element is removed. This
-	 * function will be called with the data element and can be used to free any
-	 * memory allocated for it.
-	 */
-	public static void idSetDataFull(void* datasetLocation, GQuark keyId, void* data, GDestroyNotify destroyFunc)
-	{
-		// void g_dataset_id_set_data_full (gconstpointer dataset_location,  GQuark key_id,  gpointer data,  GDestroyNotify destroy_func);
-		g_dataset_id_set_data_full(datasetLocation, keyId, data, destroyFunc);
-	}
-	
-	/**
-	 * Gets the data element corresponding to a GQuark.
-	 * Params:
-	 * datasetLocation = the location identifying the dataset.
-	 * keyId = the GQuark id to identify the data element.
-	 * Returns:the data element corresponding to the GQuark, or NULL if it isnot found.
-	 */
-	public static void* idGetData(void* datasetLocation, GQuark keyId)
-	{
-		// gpointer g_dataset_id_get_data (gconstpointer dataset_location,  GQuark key_id);
-		return g_dataset_id_get_data(datasetLocation, keyId);
-	}
-	
-	/**
-	 * Removes an element, without calling its destroy notification function.
-	 * Params:
-	 * datasetLocation = the location identifying the dataset.
-	 * keyId = the GQuark ID identifying the data element.
-	 * Returns:the data previously stored at key_id, or NULL if none.
-	 */
-	public static void* idRemoveNoNotify(void* datasetLocation, GQuark keyId)
-	{
-		// gpointer g_dataset_id_remove_no_notify (gconstpointer dataset_location,  GQuark key_id);
-		return g_dataset_id_remove_no_notify(datasetLocation, keyId);
-	}
-	
-	/**
-	 * Calls the given function for each data element which is associated with the
-	 * given location.
-	 * Note that this function is NOT thread-safe. So unless datalist
-	 * can be protected from any modifications during invocation of this
-	 * function, it should not be called.
-	 * Params:
-	 * datasetLocation = the location identifying the dataset.
-	 * func = the function to call for each data element.
-	 * userData = user data to pass to the function.
-	 */
-	public static void foreac(void* datasetLocation, GDataForeachFunc func, void* userData)
-	{
-		// void g_dataset_foreach (gconstpointer dataset_location,  GDataForeachFunc func,  gpointer user_data);
-		g_dataset_foreach(datasetLocation, func, userData);
-	}
-	
-	/**
-	 * Destroys the dataset, freeing all memory allocated, and calling any
-	 * destroy functions set for data elements.
-	 * Params:
-	 * datasetLocation = the location identifying the dataset.
-	 */
-	public static void destroy(void* datasetLocation)
-	{
-		// void g_dataset_destroy (gconstpointer dataset_location);
-		g_dataset_destroy(datasetLocation);
-	}
+
+    /**
+     */
+
+    /**
+     * Sets the data element associated with the given GQuark id, and also the
+     * function to call when the data element is destroyed.
+     * Any previous data with the same key is removed, and its
+     * destroy function is called.
+     * Params:
+     * datasetLocation = the location identifying the dataset.
+     * keyId = the GQuark id to identify the data element.
+     * data = the data element.
+     * destroyFunc = the function to call when the data element is removed. This
+     * function will be called with the data element and can be used to free any
+     * memory allocated for it.
+     */
+    public static void idSetDataFull(void* datasetLocation, GQuark keyId, void* data, GDestroyNotify destroyFunc)
+    {
+        // void g_dataset_id_set_data_full (gconstpointer dataset_location,  GQuark key_id,  gpointer data,  GDestroyNotify destroy_func);
+        g_dataset_id_set_data_full(datasetLocation, keyId, data, destroyFunc);
+    }
+
+    /**
+     * Gets the data element corresponding to a GQuark.
+     * Params:
+     * datasetLocation = the location identifying the dataset.
+     * keyId = the GQuark id to identify the data element.
+     * Returns:the data element corresponding to the GQuark, or NULL if it isnot found.
+     */
+    public static void* idGetData(void* datasetLocation, GQuark keyId)
+    {
+        // gpointer g_dataset_id_get_data (gconstpointer dataset_location,  GQuark key_id);
+        return g_dataset_id_get_data(datasetLocation, keyId);
+    }
+
+    /**
+     * Removes an element, without calling its destroy notification function.
+     * Params:
+     * datasetLocation = the location identifying the dataset.
+     * keyId = the GQuark ID identifying the data element.
+     * Returns:the data previously stored at key_id, or NULL if none.
+     */
+    public static void* idRemoveNoNotify(void* datasetLocation, GQuark keyId)
+    {
+        // gpointer g_dataset_id_remove_no_notify (gconstpointer dataset_location,  GQuark key_id);
+        return g_dataset_id_remove_no_notify(datasetLocation, keyId);
+    }
+
+    /**
+     * Calls the given function for each data element which is associated with the
+     * given location.
+     * Note that this function is NOT thread-safe. So unless datalist
+     * can be protected from any modifications during invocation of this
+     * function, it should not be called.
+     * Params:
+     * datasetLocation = the location identifying the dataset.
+     * func = the function to call for each data element.
+     * userData = user data to pass to the function.
+     */
+    public static void foreac(void* datasetLocation, GDataForeachFunc func, void* userData)
+    {
+        // void g_dataset_foreach (gconstpointer dataset_location,  GDataForeachFunc func,  gpointer user_data);
+        g_dataset_foreach(datasetLocation, func, userData);
+    }
+
+    /**
+     * Destroys the dataset, freeing all memory allocated, and calling any
+     * destroy functions set for data elements.
+     * Params:
+     * datasetLocation = the location identifying the dataset.
+     */
+    public static void destroy(void* datasetLocation)
+    {
+        // void g_dataset_destroy (gconstpointer dataset_location);
+        g_dataset_destroy(datasetLocation);
+    }
 }

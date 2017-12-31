@@ -15,7 +15,7 @@
  * along with gtkD; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
- 
+
 // generated automatically - do not change
 // find conversion definition on APILookup.txt
 // implement new conversion functionalities on the wrap.utils pakage
@@ -29,11 +29,11 @@
  * realStrct=
  * ctorStrct=GtkCellRenderer
  * clss    = CellRendererSpin
- * interf  = 
+ * interf  =
  * class Code: No
  * interface Code: No
  * template for:
- * extend  = 
+ * extend  =
  * implements:
  * prefixes:
  * 	- gtk_cell_renderer_spin_
@@ -81,60 +81,60 @@ private import gtkD.gtk.CellRendererText;
  */
 public class CellRendererSpin : CellRendererText
 {
-	
-	/** the main Gtk struct */
-	protected GtkCellRendererSpin* gtkCellRendererSpin;
-	
-	
-	public GtkCellRendererSpin* getCellRendererSpinStruct()
-	{
-		return gtkCellRendererSpin;
-	}
-	
-	
-	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererSpin;
-	}
-	
-	/**
-	 * Sets our main struct and passes it to the parent class
-	 */
-	public this (GtkCellRendererSpin* gtkCellRendererSpin)
-	{
-		if(gtkCellRendererSpin is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererSpin);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererSpin)ptr;
-			return;
-		}
-		super(cast(GtkCellRendererText*)gtkCellRendererSpin);
-		this.gtkCellRendererSpin = gtkCellRendererSpin;
-	}
-	
-	/**
-	 */
-	
-	/**
-	 * Creates a new GtkCellRendererSpin.
-	 * Since 2.10
-	 * Throws: ConstructionException GTK+ fails to create the object.
-	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_spin_new (void);
-		auto p = gtk_cell_renderer_spin_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_spin_new()");
-		}
-		this(cast(GtkCellRendererSpin*) p);
-	}
+
+    /** the main Gtk struct */
+    protected GtkCellRendererSpin* gtkCellRendererSpin;
+
+
+    public GtkCellRendererSpin* getCellRendererSpinStruct()
+    {
+        return gtkCellRendererSpin;
+    }
+
+
+    /** the main Gtk struct as a void* */
+    protected override void* getStruct()
+    {
+        return cast(void*)gtkCellRendererSpin;
+    }
+
+    /**
+     * Sets our main struct and passes it to the parent class
+     */
+    public this (GtkCellRendererSpin* gtkCellRendererSpin)
+    {
+        if(gtkCellRendererSpin is null)
+        {
+            this = null;
+            return;
+        }
+        //Check if there already is a D object for this gtk struct
+        void* ptr = getDObject(cast(GObject*)gtkCellRendererSpin);
+        if( ptr !is null )
+        {
+            this = cast(CellRendererSpin)ptr;
+            return;
+        }
+        super(cast(GtkCellRendererText*)gtkCellRendererSpin);
+        this.gtkCellRendererSpin = gtkCellRendererSpin;
+    }
+
+    /**
+     */
+
+    /**
+     * Creates a new GtkCellRendererSpin.
+     * Since 2.10
+     * Throws: ConstructionException GTK+ fails to create the object.
+     */
+    public this ()
+    {
+        // GtkCellRenderer * gtk_cell_renderer_spin_new (void);
+        auto p = gtk_cell_renderer_spin_new();
+        if(p is null)
+        {
+            throw new ConstructionException("null returned by gtk_cell_renderer_spin_new()");
+        }
+        this(cast(GtkCellRendererSpin*) p);
+    }
 }
