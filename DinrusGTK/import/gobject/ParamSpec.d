@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-GParamSpec.html
- * outPack = gobject
- * outFile = ParamSpec
- * strct   = GParamSpec
- * realStrct=
- * ctorStrct=
- * clss    = ParamSpec
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_param_spec_
- * omit structs:
- * omit prefixes:
- * 	- g_param_spec_pool_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.Value
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * 	- GParamSpec* -> ParamSpec
- * 	- GValue* -> Value
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gobject.ParamSpec;
 
@@ -87,30 +31,16 @@ public class ParamSpec
 	protected GParamSpec* gParamSpec;
 	
 	
-	public GParamSpec* getParamSpecStruct()
-	{
-		return gParamSpec;
-	}
+	public GParamSpec* getParamSpecStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gParamSpec;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GParamSpec* gParamSpec)
-	{
-		if(gParamSpec is null)
-		{
-			this = null;
-			return;
-		}
-		this.gParamSpec = gParamSpec;
-	}
+	public this (GParamSpec* gParamSpec);
 	
 	/**
 	 */
@@ -119,25 +49,12 @@ public class ParamSpec
 	 * Increments the reference count of pspec.
 	 * Returns: the GParamSpec that was passed into this function
 	 */
-	public ParamSpec doref()
-	{
-		// GParamSpec* g_param_spec_ref (GParamSpec *pspec);
-		auto p = g_param_spec_ref(gParamSpec);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec doref();
 	
 	/**
 	 * Decrements the reference count of a pspec.
 	 */
-	public void unref()
-	{
-		// void g_param_spec_unref (GParamSpec *pspec);
-		g_param_spec_unref(gParamSpec);
-	}
+	public void unref();
 	
 	/**
 	 * The initial reference count of a newly created GParamSpec is 1,
@@ -148,50 +65,29 @@ public class ParamSpec
 	 * reference count (thus ending up with a pspec that has a reference
 	 * count of 1 still, but is not flagged "floating" anymore).
 	 */
-	public void sink()
-	{
-		// void g_param_spec_sink (GParamSpec *pspec);
-		g_param_spec_sink(gParamSpec);
-	}
+	public void sink();
 	
 	/**
 	 * Convenience function to ref and sink a GParamSpec.
 	 * Since 2.10
 	 * Returns: the GParamSpec that was passed into this function
 	 */
-	public ParamSpec refSink()
-	{
-		// GParamSpec* g_param_spec_ref_sink (GParamSpec *pspec);
-		auto p = g_param_spec_ref_sink(gParamSpec);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec refSink();
 	
 	/**
 	 * Sets value to its default value as specified in pspec.
 	 * Params:
 	 * value =  a GValue of correct type for pspec
 	 */
-	public void gParamValueSetDefault(Value value)
-	{
-		// void g_param_value_set_default (GParamSpec *pspec,  GValue *value);
-		g_param_value_set_default(gParamSpec, (value is null) ? null : value.getValueStruct());
-	}
-	
+	public void gParamValueSetDefault(Value value);
+
 	/**
 	 * Checks whether value contains the default value as specified in pspec.
 	 * Params:
 	 * value =  a GValue of correct type for pspec
 	 * Returns: whether value contains the canonical default for this pspec
 	 */
-	public int gParamValueDefaults(Value value)
-	{
-		// gboolean g_param_value_defaults (GParamSpec *pspec,  GValue *value);
-		return g_param_value_defaults(gParamSpec, (value is null) ? null : value.getValueStruct());
-	}
+	public int gParamValueDefaults(Value value);
 	
 	/**
 	 * Ensures that the contents of value comply with the specifications
@@ -204,11 +100,7 @@ public class ParamSpec
 	 * value =  a GValue of correct type for pspec
 	 * Returns: whether modifying value was necessary to ensure validity
 	 */
-	public int gParamValueValidate(Value value)
-	{
-		// gboolean g_param_value_validate (GParamSpec *pspec,  GValue *value);
-		return g_param_value_validate(gParamSpec, (value is null) ? null : value.getValueStruct());
-	}
+	public int gParamValueValidate(Value value);
 	
 	/**
 	 * Transforms src_value into dest_value if possible, and then
@@ -224,11 +116,7 @@ public class ParamSpec
 	 * without modifications
 	 * Returns: TRUE if transformation and validation were successful, FALSE otherwise and dest_value is left untouched.
 	 */
-	public int gParamValueConvert(Value srcValue, Value destValue, int strictValidation)
-	{
-		// gboolean g_param_value_convert (GParamSpec *pspec,  const GValue *src_value,  GValue *dest_value,  gboolean strict_validation);
-		return g_param_value_convert(gParamSpec, (srcValue is null) ? null : srcValue.getValueStruct(), (destValue is null) ? null : destValue.getValueStruct(), strictValidation);
-	}
+	public int gParamValueConvert(Value srcValue, Value destValue, int strictValidation);
 	
 	/**
 	 * Compares value1 with value2 according to pspec, and return -1, 0 or +1,
@@ -239,41 +127,25 @@ public class ParamSpec
 	 * value2 =  a GValue of correct type for pspec
 	 * Returns: -1, 0 or +1, for a less than, equal to or greater than result
 	 */
-	public int gParamValuesCmp(Value value1, Value value2)
-	{
-		// gint g_param_values_cmp (GParamSpec *pspec,  const GValue *value1,  const GValue *value2);
-		return g_param_values_cmp(gParamSpec, (value1 is null) ? null : value1.getValueStruct(), (value2 is null) ? null : value2.getValueStruct());
-	}
+	public int gParamValuesCmp(Value value1, Value value2);
 	
 	/**
 	 * Get the name of a GParamSpec.
 	 * Returns: the name of pspec.
 	 */
-	public string getName()
-	{
-		// const gchar* g_param_spec_get_name (GParamSpec *pspec);
-		return Str.toString(g_param_spec_get_name(gParamSpec));
-	}
+	public string getName();
 	
 	/**
 	 * Get the nickname of a GParamSpec.
 	 * Returns: the nickname of pspec.
 	 */
-	public string getNick()
-	{
-		// const gchar* g_param_spec_get_nick (GParamSpec *pspec);
-		return Str.toString(g_param_spec_get_nick(gParamSpec));
-	}
+	public string getNick();
 	
 	/**
 	 * Get the short description of a GParamSpec.
 	 * Returns: the short description of pspec.
 	 */
-	public string getBlurb()
-	{
-		// const gchar* g_param_spec_get_blurb (GParamSpec *pspec);
-		return Str.toString(g_param_spec_get_blurb(gParamSpec));
-	}
+	public string getBlurb();
 	
 	/**
 	 * Gets back user data pointers stored via g_param_spec_set_qdata().
@@ -281,11 +153,7 @@ public class ParamSpec
 	 * quark =  a GQuark, naming the user data pointer
 	 * Returns: the user data pointer set, or NULL
 	 */
-	public void* getQdata(GQuark quark)
-	{
-		// gpointer g_param_spec_get_qdata (GParamSpec *pspec,  GQuark quark);
-		return g_param_spec_get_qdata(gParamSpec, quark);
-	}
+	public void* getQdata(GQuark quark);
 	
 	/**
 	 * Sets an opaque, named pointer on a GParamSpec. The name is
@@ -298,11 +166,7 @@ public class ParamSpec
 	 * quark =  a GQuark, naming the user data pointer
 	 * data =  an opaque user data pointer
 	 */
-	public void setQdata(GQuark quark, void* data)
-	{
-		// void g_param_spec_set_qdata (GParamSpec *pspec,  GQuark quark,  gpointer data);
-		g_param_spec_set_qdata(gParamSpec, quark, data);
-	}
+	public void setQdata(GQuark quark, void* data);
 	
 	/**
 	 * This function works like g_param_spec_set_qdata(), but in addition,
@@ -316,11 +180,7 @@ public class ParamSpec
 	 * destroy =  function to invoke with data as argument, when data needs to
 	 *  be freed
 	 */
-	public void setQdataFull(GQuark quark, void* data, GDestroyNotify destroy)
-	{
-		// void g_param_spec_set_qdata_full (GParamSpec *pspec,  GQuark quark,  gpointer data,  GDestroyNotify destroy);
-		g_param_spec_set_qdata_full(gParamSpec, quark, data, destroy);
-	}
+	public void setQdataFull(GQuark quark, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Gets back user data pointers stored via g_param_spec_set_qdata()
@@ -331,11 +191,7 @@ public class ParamSpec
 	 * quark =  a GQuark, naming the user data pointer
 	 * Returns: the user data pointer set, or NULL
 	 */
-	public void* stealQdata(GQuark quark)
-	{
-		// gpointer g_param_spec_steal_qdata (GParamSpec *pspec,  GQuark quark);
-		return g_param_spec_steal_qdata(gParamSpec, quark);
-	}
+	public void* stealQdata(GQuark quark);
 	
 	/**
 	 * If the paramspec redirects operations to another paramspec,
@@ -348,16 +204,7 @@ public class ParamSpec
 	 * Since 2.4
 	 * Returns: paramspec to which requests on this paramspec should be redirected, or NULL if none.
 	 */
-	public ParamSpec getRedirectTarget()
-	{
-		// GParamSpec* g_param_spec_get_redirect_target (GParamSpec *pspec);
-		auto p = g_param_spec_get_redirect_target(gParamSpec);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec getRedirectTarget();
 	
 	/**
 	 * Creates a new GParamSpec instance.
@@ -382,11 +229,7 @@ public class ParamSpec
 	 * flags =  a combination of GParamFlags
 	 * Returns: a newly allocated GParamSpec instance
 	 */
-	public static void* internal(GType paramType, string name, string nick, string blurb, GParamFlags flags)
-	{
-		// gpointer g_param_spec_internal (GType param_type,  const gchar *name,  const gchar *nick,  const gchar *blurb,  GParamFlags flags);
-		return g_param_spec_internal(paramType, Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), flags);
-	}
+	public static void* internal(GType paramType, string name, string nick, string blurb, GParamFlags flags);
 	
 	/**
 	 * Registers name as the name of a new static type derived from
@@ -399,8 +242,4 @@ public class ParamSpec
 	 * Returns: The new type identifier.
 	 */
 	public static GType gParamTypeRegisterStatic(string name, GParamSpecTypeInfo* pspecInfo)
-	{
-		// GType g_param_type_register_static (const gchar *name,  const GParamSpecTypeInfo *pspec_info);
-		return g_param_type_register_static(Str.toStringz(name), pspecInfo);
-	}
 }

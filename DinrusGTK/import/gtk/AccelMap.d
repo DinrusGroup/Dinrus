@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Accelerator-Maps.html
- * outPack = gtk
- * outFile = AccelMap
- * strct   = GtkAccelMap
- * realStrct=
- * ctorStrct=
- * clss    = AccelMap
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_accel_map_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ScannerG
- * 	- gtkD.gtk.AccelMap
- * structWrap:
- * 	- GScanner* -> ScannerG
- * 	- GtkAccelMap* -> AccelMap
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.AccelMap;
 
 public  import gtkD.gtkc.gtktypes;
@@ -82,38 +26,16 @@ public class AccelMap : ObjectG
 	protected GtkAccelMap* gtkAccelMap;
 	
 	
-	public GtkAccelMap* getAccelMapStruct()
-	{
-		return gtkAccelMap;
-	}
+	public GtkAccelMap* getAccelMapStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkAccelMap;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkAccelMap* gtkAccelMap)
-	{
-		if(gtkAccelMap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkAccelMap);
-		if( ptr !is null )
-		{
-			this = cast(AccelMap)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkAccelMap);
-		this.gtkAccelMap = gtkAccelMap;
-	}
+	public this (GtkAccelMap* gtkAccelMap);
 	
 	/**
 	 */
@@ -127,28 +49,8 @@ public class AccelMap : ObjectG
 	 * changed::accel_path.
 	 * Since 2.4
 	 */
-	void addOnChanged(void delegate(string, guint, GdkModifierType, AccelMap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkAccelMap* objectStruct, gchar* accelPath, guint accelKey, GdkModifierType accelMods, AccelMap accelMap)
-	{
-		foreach ( void delegate(string, guint, GdkModifierType, AccelMap) dlg ; accelMap.onChangedListeners )
-		{
-			dlg(Str.toString(accelPath), accelKey, accelMods, accelMap);
-		}
-	}
+	void addOnChanged(void delegate(string, guint, GdkModifierType, AccelMap) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkAccelMap* objectStruct, gchar* accelPath, guint accelKey, GdkModifierType accelMods, AccelMap accelMap);
 	
 	
 	/**
@@ -169,11 +71,7 @@ public class AccelMap : ObjectG
 	 * accelKey =  the accelerator key
 	 * accelMods =  the accelerator modifiers
 	 */
-	public static void addEntry(string accelPath, uint accelKey, GdkModifierType accelMods)
-	{
-		// void gtk_accel_map_add_entry (const gchar *accel_path,  guint accel_key,  GdkModifierType accel_mods);
-		gtk_accel_map_add_entry(Str.toStringz(accelPath), accelKey, accelMods);
-	}
+	public static void addEntry(string accelPath, uint accelKey, GdkModifierType accelMods);
 	
 	/**
 	 * Looks up the accelerator entry for accel_path and fills in key.
@@ -182,11 +80,7 @@ public class AccelMap : ObjectG
 	 * key =  the accelerator key to be filled in (optional)
 	 * Returns: TRUE if accel_path is known, FALSE otherwise
 	 */
-	public static int lookupEntry(string accelPath, out GtkAccelKey key)
-	{
-		// gboolean gtk_accel_map_lookup_entry (const gchar *accel_path,  GtkAccelKey *key);
-		return gtk_accel_map_lookup_entry(Str.toStringz(accelPath), &key);
-	}
+	public static int lookupEntry(string accelPath, out GtkAccelKey key);
 	
 	/**
 	 * Changes the accel_key and accel_mods currently associated with accel_path.
@@ -205,11 +99,7 @@ public class AccelMap : ObjectG
 	 * replace =  TRUE if other accelerators may be deleted upon conflicts
 	 * Returns: TRUE if the accelerator could be changed, FALSE otherwise
 	 */
-	public static int changeEntry(string accelPath, uint accelKey, GdkModifierType accelMods, int replace)
-	{
-		// gboolean gtk_accel_map_change_entry (const gchar *accel_path,  guint accel_key,  GdkModifierType accel_mods,  gboolean replace);
-		return gtk_accel_map_change_entry(Str.toStringz(accelPath), accelKey, accelMods, replace);
-	}
+	public static int changeEntry(string accelPath, uint accelKey, GdkModifierType accelMods, int replace);
 	
 	/**
 	 * Parses a file previously saved with gtk_accel_map_save() for
@@ -218,11 +108,7 @@ public class AccelMap : ObjectG
 	 * fileName =  a file containing accelerator specifications,
 	 *  in the GLib file name encoding
 	 */
-	public static void load(string fileName)
-	{
-		// void gtk_accel_map_load (const gchar *file_name);
-		gtk_accel_map_load(Str.toStringz(fileName));
-	}
+	public static void load(string fileName);
 	
 	/**
 	 * Saves current accelerator specifications (accelerator path, key
@@ -233,11 +119,7 @@ public class AccelMap : ObjectG
 	 * fileName =  the name of the file to contain accelerator specifications,
 	 *  in the GLib file name encoding
 	 */
-	public static void save(string fileName)
-	{
-		// void gtk_accel_map_save (const gchar *file_name);
-		gtk_accel_map_save(Str.toStringz(fileName));
-	}
+	public static void save(string fileName);
 	
 	/**
 	 * Loops over the entries in the accelerator map whose accel path
@@ -251,11 +133,7 @@ public class AccelMap : ObjectG
 	 * foreachFunc =  function to be executed for each accel map entry which
 	 *  is not filtered out
 	 */
-	public static void foreac(void* data, GtkAccelMapForeach foreachFunc)
-	{
-		// void gtk_accel_map_foreach (gpointer data,  GtkAccelMapForeach foreach_func);
-		gtk_accel_map_foreach(data, foreachFunc);
-	}
+	public static void foreac(void* data, GtkAccelMapForeach foreachFunc);
 	
 	/**
 	 * Filedescriptor variant of gtk_accel_map_load().
@@ -263,11 +141,7 @@ public class AccelMap : ObjectG
 	 * Params:
 	 * fd =  a valid readable file descriptor
 	 */
-	public static void loadFd(int fd)
-	{
-		// void gtk_accel_map_load_fd (gint fd);
-		gtk_accel_map_load_fd(fd);
-	}
+	public static void loadFd(int fd);
 	
 	/**
 	 * Filedescriptor variant of gtk_accel_map_save().
@@ -275,22 +149,14 @@ public class AccelMap : ObjectG
 	 * Params:
 	 * fd =  a valid writable file descriptor
 	 */
-	public static void saveFd(int fd)
-	{
-		// void gtk_accel_map_save_fd (gint fd);
-		gtk_accel_map_save_fd(fd);
-	}
+	public static void saveFd(int fd);
 	
 	/**
 	 * GScanner variant of gtk_accel_map_load().
 	 * Params:
 	 * scanner =  a GScanner which has already been provided with an input file
 	 */
-	public static void loadScanner(ScannerG scanner)
-	{
-		// void gtk_accel_map_load_scanner (GScanner *scanner);
-		gtk_accel_map_load_scanner((scanner is null) ? null : scanner.getScannerGStruct());
-	}
+	public static void loadScanner(ScannerG scanner);
 	
 	/**
 	 * Adds a filter to the global list of accel path filters.
@@ -302,11 +168,7 @@ public class AccelMap : ObjectG
 	 * Params:
 	 * filterPattern =  a pattern (see GPatternSpec)
 	 */
-	public static void addFilter(string filterPattern)
-	{
-		// void gtk_accel_map_add_filter (const gchar *filter_pattern);
-		gtk_accel_map_add_filter(Str.toStringz(filterPattern));
-	}
+	public static void addFilter(string filterPattern);
 	
 	/**
 	 * Loops over all entries in the accelerator map, and execute
@@ -318,11 +180,7 @@ public class AccelMap : ObjectG
 	 * data =  data to be passed into foreach_func
 	 * foreachFunc =  function to be executed for each accel map entry
 	 */
-	public static void foreachUnfiltered(void* data, GtkAccelMapForeach foreachFunc)
-	{
-		// void gtk_accel_map_foreach_unfiltered (gpointer data,  GtkAccelMapForeach foreach_func);
-		gtk_accel_map_foreach_unfiltered(data, foreachFunc);
-	}
+	public static void foreachUnfiltered(void* data, GtkAccelMapForeach foreachFunc);
 	
 	/**
 	 * Gets the singleton global GtkAccelMap object. This object
@@ -332,16 +190,7 @@ public class AccelMap : ObjectG
 	 * Since 2.4
 	 * Returns: the global GtkAccelMap object
 	 */
-	public static AccelMap get()
-	{
-		// GtkAccelMap * gtk_accel_map_get (void);
-		auto p = gtk_accel_map_get();
-		if(p is null)
-		{
-			return null;
-		}
-		return new AccelMap(cast(GtkAccelMap*) p);
-	}
+	public static AccelMap get();
 	
 	/**
 	 * Locks the given accelerator path. If the accelerator map doesn't yet contain
@@ -361,11 +210,7 @@ public class AccelMap : ObjectG
 	 * Params:
 	 * accelPath =  a valid accelerator path
 	 */
-	public static void lockPath(string accelPath)
-	{
-		// void gtk_accel_map_lock_path (const gchar *accel_path);
-		gtk_accel_map_lock_path(Str.toStringz(accelPath));
-	}
+	public static void lockPath(string accelPath);
 	
 	/**
 	 * Undoes the last call to gtk_accel_map_lock_path() on this accel_path.
@@ -387,9 +232,5 @@ public class AccelMap : ObjectG
 	 * accelPath =  a valid accelerator path
 	 * accelPath =  the path of the accelerator that changed
 	 */
-	public static void unlockPath(string accelPath)
-	{
-		// void gtk_accel_map_unlock_path (const gchar *accel_path);
-		gtk_accel_map_unlock_path(Str.toStringz(accelPath));
-	}
+	public static void unlockPath(string accelPath);
 }

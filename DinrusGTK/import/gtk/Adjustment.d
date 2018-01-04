@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkAdjustment.html
- * outPack = gtk
- * outFile = Adjustment
- * strct   = GtkAdjustment
- * realStrct=
- * ctorStrct=
- * clss    = Adjustment
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_adjustment_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.ObjectGtk
- * structWrap:
- * 	- GtkObject* -> ObjectGtk
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Adjustment;
 
 public  import gtkD.gtkc.gtktypes;
@@ -88,38 +35,16 @@ public class Adjustment : ObjectGtk
 	protected GtkAdjustment* gtkAdjustment;
 	
 	
-	public GtkAdjustment* getAdjustmentStruct()
-	{
-		return gtkAdjustment;
-	}
+	public GtkAdjustment* getAdjustmentStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkAdjustment;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkAdjustment* gtkAdjustment)
-	{
-		if(gtkAdjustment is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkAdjustment);
-		if( ptr !is null )
-		{
-			this = cast(Adjustment)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkAdjustment);
-		this.gtkAdjustment = gtkAdjustment;
-	}
+	public this (GtkAdjustment* gtkAdjustment);
 	
 	/**
 	 */
@@ -130,55 +55,15 @@ public class Adjustment : ObjectGtk
 	 * Emitted when one or more of the GtkAdjustment fields have been changed,
 	 * other than the value field.
 	 */
-	void addOnChanged(void delegate(Adjustment) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkAdjustment* adjustmentStruct, Adjustment adjustment)
-	{
-		foreach ( void delegate(Adjustment) dlg ; adjustment.onChangedListeners )
-		{
-			dlg(adjustment);
-		}
-	}
-	
+	void addOnChanged(void delegate(Adjustment) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkAdjustment* adjustmentStruct, Adjustment adjustment);
+		
 	void delegate(Adjustment)[] onValueChangedListeners;
 	/**
 	 * Emitted when the GtkAdjustment value field has been changed.
 	 */
-	void addOnValueChanged(void delegate(Adjustment) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("value-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"value-changed",
-			cast(GCallback)&callBackValueChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["value-changed"] = 1;
-		}
-		onValueChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackValueChanged(GtkAdjustment* adjustmentStruct, Adjustment adjustment)
-	{
-		foreach ( void delegate(Adjustment) dlg ; adjustment.onValueChangedListeners )
-		{
-			dlg(adjustment);
-		}
-	}
+	void addOnValueChanged(void delegate(Adjustment) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackValueChanged(GtkAdjustment* adjustmentStruct, Adjustment adjustment);
 	
 	
 	/**
@@ -192,27 +77,13 @@ public class Adjustment : ObjectGtk
 	 * pageSize = the page size.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (double value, double lower, double upper, double stepIncrement, double pageIncrement, double pageSize)
-	{
-		// GtkObject* gtk_adjustment_new (gdouble value,  gdouble lower,  gdouble upper,  gdouble step_increment,  gdouble page_increment,  gdouble page_size);
-		auto p = gtk_adjustment_new(value, lower, upper, stepIncrement, pageIncrement, pageSize);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_adjustment_new(value, lower, upper, stepIncrement, pageIncrement, pageSize)");
-		}
-		this(cast(GtkAdjustment*) p);
-	}
-	
+	public this (double value, double lower, double upper, double stepIncrement, double pageIncrement, double pageSize);
 	/**
 	 * Gets the current value of the adjustment. See
 	 * gtk_adjustment_set_value().
 	 * Returns: The current value of the adjustment.
 	 */
-	public double getValue()
-	{
-		// gdouble gtk_adjustment_get_value (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_value(gtkAdjustment);
-	}
+	public double getValue();
 	
 	/**
 	 * Sets the GtkAdjustment value. The value is clamped to lie between
@@ -224,11 +95,7 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * value = the new value.
 	 */
-	public void setValue(double value)
-	{
-		// void gtk_adjustment_set_value (GtkAdjustment *adjustment,  gdouble value);
-		gtk_adjustment_set_value(gtkAdjustment, value);
-	}
+	public void setValue(double value);
 	
 	/**
 	 * Updates the GtkAdjustment value to ensure that the range between lower
@@ -241,33 +108,21 @@ public class Adjustment : ObjectGtk
 	 * lower = the lower value.
 	 * upper = the upper value.
 	 */
-	public void clampPage(double lower, double upper)
-	{
-		// void gtk_adjustment_clamp_page (GtkAdjustment *adjustment,  gdouble lower,  gdouble upper);
-		gtk_adjustment_clamp_page(gtkAdjustment, lower, upper);
-	}
+	public void clampPage(double lower, double upper);
 	
 	/**
 	 * Emits a "changed" signal from the GtkAdjustment.
 	 * This is typically called by the owner of the GtkAdjustment after it has
 	 * changed any of the GtkAdjustment fields other than the value.
 	 */
-	public void changed()
-	{
-		// void gtk_adjustment_changed (GtkAdjustment *adjustment);
-		gtk_adjustment_changed(gtkAdjustment);
-	}
+	public void changed();
 	
 	/**
 	 * Emits a "value_changed" signal from the GtkAdjustment.
 	 * This is typically called by the owner of the GtkAdjustment after it has
 	 * changed the GtkAdjustment value field.
 	 */
-	public void valueChanged()
-	{
-		// void gtk_adjustment_value_changed (GtkAdjustment *adjustment);
-		gtk_adjustment_value_changed(gtkAdjustment);
-	}
+	public void valueChanged();
 	
 	/**
 	 * Sets all properties of the adjustment at once.
@@ -283,66 +138,42 @@ public class Adjustment : ObjectGtk
 	 * pageIncrement =  the new page increment
 	 * pageSize =  the new page size
 	 */
-	public void configure(double value, double lower, double upper, double stepIncrement, double pageIncrement, double pageSize)
-	{
-		// void gtk_adjustment_configure (GtkAdjustment *adjustment,  gdouble value,  gdouble lower,  gdouble upper,  gdouble step_increment,  gdouble page_increment,  gdouble page_size);
-		gtk_adjustment_configure(gtkAdjustment, value, lower, upper, stepIncrement, pageIncrement, pageSize);
-	}
+	public void configure(double value, double lower, double upper, double stepIncrement, double pageIncrement, double pageSize);
 	
 	/**
 	 * Retrieves the minimum value of the adjustment.
 	 * Since 2.14
 	 * Returns: The current minimum value of the adjustment.
 	 */
-	public double getLower()
-	{
-		// gdouble gtk_adjustment_get_lower (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_lower(gtkAdjustment);
-	}
+	public double getLower();
 	
 	/**
 	 * Retrieves the page increment of the adjustment.
 	 * Since 2.14
 	 * Returns: The current page increment of the adjustment.
 	 */
-	public double getPageIncrement()
-	{
-		// gdouble gtk_adjustment_get_page_increment (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_page_increment(gtkAdjustment);
-	}
+	public double getPageIncrement();
 	
 	/**
 	 * Retrieves the page size of the adjustment.
 	 * Since 2.14
 	 * Returns: The current page size of the adjustment.
 	 */
-	public double getPageSize()
-	{
-		// gdouble gtk_adjustment_get_page_size (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_page_size(gtkAdjustment);
-	}
+	public double getPageSize();
 	
 	/**
 	 * Retrieves the step increment of the adjustment.
 	 * Since 2.14
 	 * Returns: The current step increment of the adjustment.
 	 */
-	public double getStepIncrement()
-	{
-		// gdouble gtk_adjustment_get_step_increment (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_step_increment(gtkAdjustment);
-	}
+	public double getStepIncrement();
 	
 	/**
 	 * Retrieves the maximum value of the adjustment.
 	 * Since 2.14
 	 * Returns: The current maximum value of the adjustment.
 	 */
-	public double getUpper()
-	{
-		// gdouble gtk_adjustment_get_upper (GtkAdjustment *adjustment);
-		return gtk_adjustment_get_upper(gtkAdjustment);
-	}
+	public double getUpper();
 	
 	/**
 	 * Sets the minimum value of the adjustment.
@@ -360,11 +191,7 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * lower =  the new minimum value
 	 */
-	public void setLower(double lower)
-	{
-		// void gtk_adjustment_set_lower (GtkAdjustment *adjustment,  gdouble lower);
-		gtk_adjustment_set_lower(gtkAdjustment, lower);
-	}
+	public void setLower(double lower);
 	
 	/**
 	 * Sets the page increment of the adjustment.
@@ -375,11 +202,7 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * pageIncrement =  the new page increment
 	 */
-	public void setPageIncrement(double pageIncrement)
-	{
-		// void gtk_adjustment_set_page_increment (GtkAdjustment *adjustment,  gdouble page_increment);
-		gtk_adjustment_set_page_increment(gtkAdjustment, pageIncrement);
-	}
+	public void setPageIncrement(double pageIncrement);
 	
 	/**
 	 * Sets the page size of the adjustment.
@@ -390,11 +213,7 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * pageSize =  the new page size
 	 */
-	public void setPageSize(double pageSize)
-	{
-		// void gtk_adjustment_set_page_size (GtkAdjustment *adjustment,  gdouble page_size);
-		gtk_adjustment_set_page_size(gtkAdjustment, pageSize);
-	}
+	public void setPageSize(double pageSize);
 	
 	/**
 	 * Sets the step increment of the adjustment.
@@ -405,11 +224,7 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * stepIncrement =  the new step increment
 	 */
-	public void setStepIncrement(double stepIncrement)
-	{
-		// void gtk_adjustment_set_step_increment (GtkAdjustment *adjustment,  gdouble step_increment);
-		gtk_adjustment_set_step_increment(gtkAdjustment, stepIncrement);
-	}
+	public void setStepIncrement(double stepIncrement);
 	
 	/**
 	 * Sets the maximum value of the adjustment.
@@ -423,9 +238,5 @@ public class Adjustment : ObjectGtk
 	 * Params:
 	 * upper =  the new maximum value
 	 */
-	public void setUpper(double upper)
-	{
-		// void gtk_adjustment_set_upper (GtkAdjustment *adjustment,  gdouble upper);
-		gtk_adjustment_set_upper(gtkAdjustment, upper);
-	}
+	public void setUpper(double upper);
 }

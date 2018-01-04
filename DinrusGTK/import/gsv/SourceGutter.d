@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSourceGutter.html
- * outPack = gsv
- * outFile = SourceGutter
- * strct   = GtkSourceGutter
- * realStrct=
- * ctorStrct=
- * clss    = SourceGutter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_source_gutter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Window
- * 	- gtkD.gtk.CellRenderer
- * structWrap:
- * 	- GdkWindow* -> Window
- * 	- GtkCellRenderer* -> CellRenderer
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gsv.SourceGutter;
 
 public  import gtkD.gsvc.gsvtypes;
@@ -99,38 +45,16 @@ public class SourceGutter : ObjectG
 	protected GtkSourceGutter* gtkSourceGutter;
 	
 	
-	public GtkSourceGutter* getSourceGutterStruct()
-	{
-		return gtkSourceGutter;
-	}
+	public GtkSourceGutter* getSourceGutterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourceGutter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSourceGutter* gtkSourceGutter)
-	{
-		if(gtkSourceGutter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourceGutter);
-		if( ptr !is null )
-		{
-			this = cast(SourceGutter)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSourceGutter);
-		this.gtkSourceGutter = gtkSourceGutter;
-	}
+	public this (GtkSourceGutter* gtkSourceGutter);
 	
 	/**
 	 */
@@ -142,61 +66,16 @@ public class SourceGutter : ObjectG
 	 * a button press on the cell). The signal is only emitted for cells
 	 * that have the activatable property set to TRUE.
 	 */
-	void addOnCellActivated(void delegate(CellRenderer, GtkTextIter*, gpointer, SourceGutter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("cell-activated" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"cell-activated",
-			cast(GCallback)&callBackCellActivated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["cell-activated"] = 1;
-		}
-		onCellActivatedListeners ~= dlg;
-	}
-	extern(C) static void callBackCellActivated(GtkSourceGutter* gutterStruct, GtkCellRenderer* renderer, GtkTextIter* iter, gpointer event, SourceGutter sourceGutter)
-	{
-		foreach ( void delegate(CellRenderer, GtkTextIter*, gpointer, SourceGutter) dlg ; sourceGutter.onCellActivatedListeners )
-		{
-			dlg(new CellRenderer(renderer), iter, event, sourceGutter);
-		}
-	}
+	void addOnCellActivated(void delegate(CellRenderer, GtkTextIter*, gpointer, SourceGutter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCellActivated(GtkSourceGutter* gutterStruct, GtkCellRenderer* renderer, GtkTextIter* iter, gpointer event, SourceGutter sourceGutter);
 	
 	bool delegate(CellRenderer, GtkTextIter*, GtkTooltip*, SourceGutter)[] onQueryTooltipListeners;
 	/**
 	 * Emitted when a tooltip is requested for a specific cell. Signal
 	 * handlers can return TRUE to notify the tooltip has been handled.
 	 */
-	void addOnQueryTooltip(bool delegate(CellRenderer, GtkTextIter*, GtkTooltip*, SourceGutter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("query-tooltip" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"query-tooltip",
-			cast(GCallback)&callBackQueryTooltip,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["query-tooltip"] = 1;
-		}
-		onQueryTooltipListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackQueryTooltip(GtkSourceGutter* gutterStruct, GtkCellRenderer* renderer, GtkTextIter* iter, GtkTooltip* tooltip, SourceGutter sourceGutter)
-	{
-		foreach ( bool delegate(CellRenderer, GtkTextIter*, GtkTooltip*, SourceGutter) dlg ; sourceGutter.onQueryTooltipListeners )
-		{
-			if ( dlg(new CellRenderer(renderer), iter, tooltip, sourceGutter) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnQueryTooltip(bool delegate(CellRenderer, GtkTextIter*, GtkTooltip*, SourceGutter) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackQueryTooltip(GtkSourceGutter* gutterStruct, GtkCellRenderer* renderer, GtkTextIter* iter, GtkTooltip* tooltip, SourceGutter sourceGutter);
 	
 	
 	/**
@@ -205,16 +84,7 @@ public class SourceGutter : ObjectG
 	 * Since 2.8
 	 * Returns: the GdkWindow of the gutter, or NULL if the gutter has no window.
 	 */
-	public Window getWindow()
-	{
-		// GdkWindow * gtk_source_gutter_get_window (GtkSourceGutter *gutter);
-		auto p = gtk_source_gutter_get_window(gtkSourceGutter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Window(cast(GdkWindow*) p);
-	}
+	public Window getWindow();
 	
 	/**
 	 * Inserts renderer into gutter at position.
@@ -223,11 +93,7 @@ public class SourceGutter : ObjectG
 	 * renderer =  a GtkCellRenderer
 	 * position =  the renderers position
 	 */
-	public void insert(CellRenderer renderer, int position)
-	{
-		// void gtk_source_gutter_insert (GtkSourceGutter *gutter,  GtkCellRenderer *renderer,  gint position);
-		gtk_source_gutter_insert(gtkSourceGutter, (renderer is null) ? null : renderer.getCellRendererStruct(), position);
-	}
+	public void insert(CellRenderer renderer, int position);
 	
 	/**
 	 * Reorders renderer in gutter to new position.
@@ -236,11 +102,7 @@ public class SourceGutter : ObjectG
 	 * renderer =  a GtkCellRenderer
 	 * position =  the new renderer position
 	 */
-	public void reorder(CellRenderer renderer, int position)
-	{
-		// void gtk_source_gutter_reorder (GtkSourceGutter *gutter,  GtkCellRenderer *renderer,  gint position);
-		gtk_source_gutter_reorder(gtkSourceGutter, (renderer is null) ? null : renderer.getCellRendererStruct(), position);
-	}
+	public void reorder(CellRenderer renderer, int position);
 	
 	/**
 	 * Removes renderer from gutter.
@@ -248,11 +110,7 @@ public class SourceGutter : ObjectG
 	 * Params:
 	 * renderer =  a GtkCellRenderer
 	 */
-	public void remove(CellRenderer renderer)
-	{
-		// void gtk_source_gutter_remove (GtkSourceGutter *gutter,  GtkCellRenderer *renderer);
-		gtk_source_gutter_remove(gtkSourceGutter, (renderer is null) ? null : renderer.getCellRendererStruct());
-	}
+	public void remove(CellRenderer renderer);
 	
 	/**
 	 * Sets the GtkSourceGutterDataFunc to use for renderer. This function is
@@ -264,11 +122,7 @@ public class SourceGutter : ObjectG
 	 * funcData =  the user data for func
 	 * destroy =  the destroy notification for func_data
 	 */
-	public void setCellDataFunc(CellRenderer renderer, GtkSourceGutterDataFunc func, void* funcData, GDestroyNotify destroy)
-	{
-		// void gtk_source_gutter_set_cell_data_func  (GtkSourceGutter *gutter,  GtkCellRenderer *renderer,  GtkSourceGutterDataFunc func,  gpointer func_data,  GDestroyNotify destroy);
-		gtk_source_gutter_set_cell_data_func(gtkSourceGutter, (renderer is null) ? null : renderer.getCellRendererStruct(), func, funcData, destroy);
-	}
+	public void setCellDataFunc(CellRenderer renderer, GtkSourceGutterDataFunc func, void* funcData, GDestroyNotify destroy);
 	
 	/**
 	 * Sets the GtkSourceGutterSizeFunc to use for renderer. This function is
@@ -281,20 +135,12 @@ public class SourceGutter : ObjectG
 	 * funcData =  the user data for func
 	 * destroy =  the destroy notification for func_data
 	 */
-	public void setCellSizeFunc(CellRenderer renderer, GtkSourceGutterSizeFunc func, void* funcData, GDestroyNotify destroy)
-	{
-		// void gtk_source_gutter_set_cell_size_func  (GtkSourceGutter *gutter,  GtkCellRenderer *renderer,  GtkSourceGutterSizeFunc func,  gpointer func_data,  GDestroyNotify destroy);
-		gtk_source_gutter_set_cell_size_func(gtkSourceGutter, (renderer is null) ? null : renderer.getCellRendererStruct(), func, funcData, destroy);
-	}
+	public void setCellSizeFunc(CellRenderer renderer, GtkSourceGutterSizeFunc func, void* funcData, GDestroyNotify destroy);
 	
 	/**
 	 * Invalidates the drawable area of the gutter. You can use this to force a
 	 * redraw of the gutter if something has changed and needs to be redrawn.
 	 * Since 2.8
 	 */
-	public void queueDraw()
-	{
-		// void gtk_source_gutter_queue_draw (GtkSourceGutter *gutter);
-		gtk_source_gutter_queue_draw(gtkSourceGutter);
-	}
+	public void queueDraw();
 }

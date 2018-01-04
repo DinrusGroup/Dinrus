@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Bookmark-file-parser.html
- * outPack = glib
- * outFile = BookmarkFile
- * strct   = GBookmarkFile
- * realStrct=
- * ctorStrct=
- * clss    = BookmarkFile
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_bookmark_file_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- g_bookmark_file_set_groups
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.BookmarkFile;
 
 public  import gtkD.gtkc.glibtypes;
@@ -132,30 +78,16 @@ public class BookmarkFile
 	protected GBookmarkFile* gBookmarkFile;
 	
 	
-	public GBookmarkFile* getBookmarkFileStruct()
-	{
-		return gBookmarkFile;
-	}
+	public GBookmarkFile* getBookmarkFileStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gBookmarkFile;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GBookmarkFile* gBookmarkFile)
-	{
-		if(gBookmarkFile is null)
-		{
-			this = null;
-			return;
-		}
-		this.gBookmarkFile = gBookmarkFile;
-	}
+	public this (GBookmarkFile* gBookmarkFile);
 	
 	/**
 	 * Sets a list of group names for the item with URI uri. Each previously
@@ -167,11 +99,7 @@ public class BookmarkFile
 	 * groups =  an array of group names, or NULL to remove all groups
 	 * length =  number of group name values in groups
 	 */
-	public void setGroups(string uri, string[] groups, uint length)
-	{
-		// void g_bookmark_file_set_groups (GBookmarkFile *bookmark,  const gchar *uri,  const gchar **groups,  gsize length);
-		g_bookmark_file_set_groups(gBookmarkFile, Str.toStringz(uri), Str.toStringzArray(groups), length);
-	}
+	public void setGroups(string uri, string[] groups, uint length);
 	
 	/**
 	 */
@@ -184,26 +112,13 @@ public class BookmarkFile
 	 * Since 2.12
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GBookmarkFile * g_bookmark_file_new (void);
-		auto p = g_bookmark_file_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_bookmark_file_new()");
-		}
-		this(cast(GBookmarkFile*) p);
-	}
+	public this ();
 	
 	/**
 	 * Frees a GBookmarkFile.
 	 * Since 2.12
 	 */
-	public void free()
-	{
-		// void g_bookmark_file_free (GBookmarkFile *bookmark);
-		g_bookmark_file_free(gBookmarkFile);
-	}
+	public void free();
 	
 	/**
 	 * Loads a desktop bookmark file into an empty GBookmarkFile structure.
@@ -215,20 +130,7 @@ public class BookmarkFile
 	 * Returns: TRUE if a desktop bookmark file could be loaded
 	 * Throws: GException on failure.
 	 */
-	public int loadFromFile(string filename)
-	{
-		// gboolean g_bookmark_file_load_from_file (GBookmarkFile *bookmark,  const gchar *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_load_from_file(gBookmarkFile, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int loadFromFile(string filename);
 	
 	/**
 	 * Loads a bookmark file from memory into an empty GBookmarkFile
@@ -241,20 +143,7 @@ public class BookmarkFile
 	 * Returns: TRUE if a desktop bookmark could be loaded.
 	 * Throws: GException on failure.
 	 */
-	public int loadFromData(string data, uint length)
-	{
-		// gboolean g_bookmark_file_load_from_data (GBookmarkFile *bookmark,  const gchar *data,  gsize length,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_load_from_data(gBookmarkFile, Str.toStringz(data), length, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int loadFromData(string data, uint length);
 	
 	/**
 	 * This function looks for a desktop bookmark file named file in the
@@ -270,22 +159,7 @@ public class BookmarkFile
 	 * Returns: TRUE if a key file could be loaded, FALSE othewise
 	 * Throws: GException on failure.
 	 */
-	public int loadFromDataDirs(string file, out string fullPath)
-	{
-		// gboolean g_bookmark_file_load_from_data_dirs (GBookmarkFile *bookmark,  const gchar *file,  gchar **full_path,  GError **error);
-		char* outfullPath = null;
-		GError* err = null;
-		
-		auto p = g_bookmark_file_load_from_data_dirs(gBookmarkFile, Str.toStringz(file), &outfullPath, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		fullPath = Str.toString(outfullPath);
-		return p;
-	}
+	public int loadFromDataDirs(string file, out string fullPath);
 	
 	/**
 	 * This function outputs bookmark as a string.
@@ -295,20 +169,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated string holding the contents of the GBookmarkFile
 	 * Throws: GException on failure.
 	 */
-	public string toData(out uint length)
-	{
-		// gchar * g_bookmark_file_to_data (GBookmarkFile *bookmark,  gsize *length,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_bookmark_file_to_data(gBookmarkFile, &length, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string toData(out uint length);
 	
 	/**
 	 * This function outputs bookmark into a file. The write process is
@@ -319,20 +180,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the file was successfully written.
 	 * Throws: GException on failure.
 	 */
-	public int toFile(string filename)
-	{
-		// gboolean g_bookmark_file_to_file (GBookmarkFile *bookmark,  const gchar *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_to_file(gBookmarkFile, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int toFile(string filename);
 	
 	/**
 	 * Looks whether the desktop bookmark has an item with its URI set to uri.
@@ -341,11 +189,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * Returns: TRUE if uri is inside bookmark, FALSE otherwise
 	 */
-	public int hasItem(string uri)
-	{
-		// gboolean g_bookmark_file_has_item (GBookmarkFile *bookmark,  const gchar *uri);
-		return g_bookmark_file_has_item(gBookmarkFile, Str.toStringz(uri));
-	}
+	public int hasItem(string uri);
 	
 	/**
 	 * Checks whether group appears in the list of groups to which
@@ -359,20 +203,7 @@ public class BookmarkFile
 	 * Returns: TRUE if group was found.
 	 * Throws: GException on failure.
 	 */
-	public int hasGroup(string uri, string group)
-	{
-		// gboolean g_bookmark_file_has_group (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *group,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_has_group(gBookmarkFile, Str.toStringz(uri), Str.toStringz(group), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int hasGroup(string uri, string group);
 	
 	/**
 	 * Checks whether the bookmark for uri inside bookmark has been
@@ -386,31 +217,14 @@ public class BookmarkFile
 	 * Returns: TRUE if the application name was found
 	 * Throws: GException on failure.
 	 */
-	public int hasApplication(string uri, string name)
-	{
-		// gboolean g_bookmark_file_has_application (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *name,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_has_application(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int hasApplication(string uri, string name);
 	
 	/**
 	 * Gets the number of bookmarks inside bookmark.
 	 * Since 2.12
 	 * Returns: the number of bookmarks
 	 */
-	public int getSize()
-	{
-		// gint g_bookmark_file_get_size (GBookmarkFile *bookmark);
-		return g_bookmark_file_get_size(gBookmarkFile);
-	}
+	public int getSize();
 	
 	/**
 	 * Returns all URIs of the bookmarks in the bookmark file bookmark.
@@ -421,11 +235,7 @@ public class BookmarkFile
 	 * length =  return location for the number of returned URIs, or NULL
 	 * Returns: a newly allocated NULL-terminated array of strings. Use g_strfreev() to free it.
 	 */
-	public string[] getUris(out uint length)
-	{
-		// gchar ** g_bookmark_file_get_uris (GBookmarkFile *bookmark,  gsize *length);
-		return Str.toStringArray(g_bookmark_file_get_uris(gBookmarkFile, &length));
-	}
+	public string[] getUris(out uint length);
 	
 	/**
 	 * Returns the title of the bookmark for uri.
@@ -438,20 +248,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated string or NULL if the specified URI cannot be found.
 	 * Throws: GException on failure.
 	 */
-	public string getTitle(string uri)
-	{
-		// gchar * g_bookmark_file_get_title (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_bookmark_file_get_title(gBookmarkFile, Str.toStringz(uri), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string getTitle(string uri);
 	
 	/**
 	 * Retrieves the description of the bookmark for uri.
@@ -463,20 +260,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated string or NULL if the specified URI cannot be found.
 	 * Throws: GException on failure.
 	 */
-	public string getDescription(string uri)
-	{
-		// gchar * g_bookmark_file_get_description (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_bookmark_file_get_description(gBookmarkFile, Str.toStringz(uri), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string getDescription(string uri);
 	
 	/**
 	 * Retrieves the MIME type of the resource pointed by uri.
@@ -490,20 +274,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated string or NULL if the specified URI cannot be found.
 	 * Throws: GException on failure.
 	 */
-	public string getMimeType(string uri)
-	{
-		// gchar * g_bookmark_file_get_mime_type (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_bookmark_file_get_mime_type(gBookmarkFile, Str.toStringz(uri), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string getMimeType(string uri);
 	
 	/**
 	 * Gets whether the private flag of the bookmark for uri is set.
@@ -517,20 +288,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the private flag is set, FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int getIsPrivate(string uri)
-	{
-		// gboolean g_bookmark_file_get_is_private (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_is_private(gBookmarkFile, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int getIsPrivate(string uri);
 	
 	/**
 	 * Gets the icon of the bookmark for uri.
@@ -544,24 +302,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the icon for the bookmark for the URI was found. You should free the returned strings.
 	 * Throws: GException on failure.
 	 */
-	public int getIcon(string uri, out string href, out string mimeType)
-	{
-		// gboolean g_bookmark_file_get_icon (GBookmarkFile *bookmark,  const gchar *uri,  gchar **href,  gchar **mime_type,  GError **error);
-		char* outhref = null;
-		char* outmimeType = null;
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_icon(gBookmarkFile, Str.toStringz(uri), &outhref, &outmimeType, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		href = Str.toString(outhref);
-		mimeType = Str.toString(outmimeType);
-		return p;
-	}
+	public int getIcon(string uri, out string href, out string mimeType);
 	
 	/**
 	 * Gets the time the bookmark for uri was added to bookmark
@@ -573,20 +314,7 @@ public class BookmarkFile
 	 * Returns: a timestamp
 	 * Throws: GException on failure.
 	 */
-	public uint getAdded(string uri)
-	{
-		// time_t g_bookmark_file_get_added (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_added(gBookmarkFile, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint getAdded(string uri);
 	
 	/**
 	 * Gets the time when the bookmark for uri was last modified.
@@ -598,20 +326,7 @@ public class BookmarkFile
 	 * Returns: a timestamp
 	 * Throws: GException on failure.
 	 */
-	public uint getModified(string uri)
-	{
-		// time_t g_bookmark_file_get_modified (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_modified(gBookmarkFile, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint getModified(string uri);
 	
 	/**
 	 * Gets the time the bookmark for uri was last visited.
@@ -623,20 +338,7 @@ public class BookmarkFile
 	 * Returns: a timestamp.
 	 * Throws: GException on failure.
 	 */
-	public uint getVisited(string uri)
-	{
-		// time_t g_bookmark_file_get_visited (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_visited(gBookmarkFile, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint getVisited(string uri);
 	
 	/**
 	 * Retrieves the list of group names of the bookmark for uri.
@@ -651,20 +353,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated NULL-terminated array of group names. Use g_strfreev() to free it.
 	 * Throws: GException on failure.
 	 */
-	public string[] getGroups(string uri, out uint length)
-	{
-		// gchar ** g_bookmark_file_get_groups (GBookmarkFile *bookmark,  const gchar *uri,  gsize *length,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toStringArray(g_bookmark_file_get_groups(gBookmarkFile, Str.toStringz(uri), &length, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string[] getGroups(string uri, out uint length);
 	
 	/**
 	 * Retrieves the names of the applications that have registered the
@@ -678,20 +367,7 @@ public class BookmarkFile
 	 * Returns: a newly allocated NULL-terminated array of strings. Use g_strfreev() to free it.
 	 * Throws: GException on failure.
 	 */
-	public string[] getApplications(string uri, out uint length)
-	{
-		// gchar ** g_bookmark_file_get_applications (GBookmarkFile *bookmark,  const gchar *uri,  gsize *length,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toStringArray(g_bookmark_file_get_applications(gBookmarkFile, Str.toStringz(uri), &length, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string[] getApplications(string uri, out uint length);
 	
 	/**
 	 * Gets the registration informations of app_name for the bookmark for
@@ -715,22 +391,7 @@ public class BookmarkFile
 	 * Returns: TRUE on success.
 	 * Throws: GException on failure.
 	 */
-	public int getAppInfo(string uri, string name, out string exec, out uint count, out uint stamp)
-	{
-		// gboolean g_bookmark_file_get_app_info (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *name,  gchar **exec,  guint *count,  time_t *stamp,  GError **error);
-		char* outexec = null;
-		GError* err = null;
-		
-		auto p = g_bookmark_file_get_app_info(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), &outexec, &count, &stamp, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		exec = Str.toString(outexec);
-		return p;
-	}
+	public int getAppInfo(string uri, string name, out string exec, out uint count, out uint stamp);
 	
 	/**
 	 * Sets title as the title of the bookmark for uri inside the
@@ -742,11 +403,7 @@ public class BookmarkFile
 	 * uri =  a valid URI or NULL
 	 * title =  a UTF-8 encoded string
 	 */
-	public void setTitle(string uri, string title)
-	{
-		// void g_bookmark_file_set_title (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *title);
-		g_bookmark_file_set_title(gBookmarkFile, Str.toStringz(uri), Str.toStringz(title));
-	}
+	public void setTitle(string uri, string title);
 	
 	/**
 	 * Sets description as the description of the bookmark for uri.
@@ -757,11 +414,7 @@ public class BookmarkFile
 	 * uri =  a valid URI or NULL
 	 * description =  a string
 	 */
-	public void setDescription(string uri, string description)
-	{
-		// void g_bookmark_file_set_description (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *description);
-		g_bookmark_file_set_description(gBookmarkFile, Str.toStringz(uri), Str.toStringz(description));
-	}
+	public void setDescription(string uri, string description);
 	
 	/**
 	 * Sets mime_type as the MIME type of the bookmark for uri.
@@ -771,11 +424,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * mimeType =  a MIME type
 	 */
-	public void setMimeType(string uri, string mimeType)
-	{
-		// void g_bookmark_file_set_mime_type (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *mime_type);
-		g_bookmark_file_set_mime_type(gBookmarkFile, Str.toStringz(uri), Str.toStringz(mimeType));
-	}
+	public void setMimeType(string uri, string mimeType);
 	
 	/**
 	 * Sets the private flag of the bookmark for uri.
@@ -785,11 +434,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * isPrivate =  TRUE if the bookmark should be marked as private
 	 */
-	public void setIsPrivate(string uri, int isPrivate)
-	{
-		// void g_bookmark_file_set_is_private (GBookmarkFile *bookmark,  const gchar *uri,  gboolean is_private);
-		g_bookmark_file_set_is_private(gBookmarkFile, Str.toStringz(uri), isPrivate);
-	}
+	public void setIsPrivate(string uri, int isPrivate);
 	
 	/**
 	 * Sets the icon for the bookmark for uri. If href is NULL, unsets
@@ -802,11 +447,7 @@ public class BookmarkFile
 	 * href =  the URI of the icon for the bookmark, or NULL
 	 * mimeType =  the MIME type of the icon for the bookmark
 	 */
-	public void setIcon(string uri, string href, string mimeType)
-	{
-		// void g_bookmark_file_set_icon (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *href,  const gchar *mime_type);
-		g_bookmark_file_set_icon(gBookmarkFile, Str.toStringz(uri), Str.toStringz(href), Str.toStringz(mimeType));
-	}
+	public void setIcon(string uri, string href, string mimeType);
 	
 	/**
 	 * Sets the time the bookmark for uri was added into bookmark.
@@ -816,11 +457,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * added =  a timestamp or -1 to use the current time
 	 */
-	public void setAdded(string uri, uint added)
-	{
-		// void g_bookmark_file_set_added (GBookmarkFile *bookmark,  const gchar *uri,  time_t added);
-		g_bookmark_file_set_added(gBookmarkFile, Str.toStringz(uri), added);
-	}
+	public void setAdded(string uri, uint added);
 	
 	/**
 	 * Sets the last time the bookmark for uri was last modified.
@@ -834,12 +471,8 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * modified =  a timestamp or -1 to use the current time
 	 */
-	public void setModified(string uri, uint modified)
-	{
-		// void g_bookmark_file_set_modified (GBookmarkFile *bookmark,  const gchar *uri,  time_t modified);
-		g_bookmark_file_set_modified(gBookmarkFile, Str.toStringz(uri), modified);
-	}
-	
+	public void setModified(string uri, uint modified);
+
 	/**
 	 * Sets the time the bookmark for uri was last visited.
 	 * If no bookmark for uri is found then it is created.
@@ -853,11 +486,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * visited =  a timestamp or -1 to use the current time
 	 */
-	public void setVisited(string uri, uint visited)
-	{
-		// void g_bookmark_file_set_visited (GBookmarkFile *bookmark,  const gchar *uri,  time_t visited);
-		g_bookmark_file_set_visited(gBookmarkFile, Str.toStringz(uri), visited);
-	}
+	public void setVisited(string uri, uint visited);
 	
 	/**
 	 * Sets the meta-data of application name inside the list of
@@ -895,20 +524,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the application's meta-data was successfully changed.
 	 * Throws: GException on failure.
 	 */
-	public int setAppInfo(string uri, string name, string exec, int count, uint stamp)
-	{
-		// gboolean g_bookmark_file_set_app_info (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *name,  const gchar *exec,  gint count,  time_t stamp,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_set_app_info(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), Str.toStringz(exec), count, stamp, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setAppInfo(string uri, string name, string exec, int count, uint stamp);
 	
 	/**
 	 * Adds group to the list of groups to which the bookmark for uri
@@ -919,11 +535,7 @@ public class BookmarkFile
 	 * uri =  a valid URI
 	 * group =  the group name to be added
 	 */
-	public void addGroup(string uri, string group)
-	{
-		// void g_bookmark_file_add_group (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *group);
-		g_bookmark_file_add_group(gBookmarkFile, Str.toStringz(uri), Str.toStringz(group));
-	}
+	public void addGroup(string uri, string group);
 	
 	/**
 	 * Adds the application with name and exec to the list of
@@ -951,11 +563,7 @@ public class BookmarkFile
 	 *  or NULL
 	 * exec =  command line to be used to launch the bookmark or NULL
 	 */
-	public void addApplication(string uri, string name, string exec)
-	{
-		// void g_bookmark_file_add_application (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *name,  const gchar *exec);
-		g_bookmark_file_add_application(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), Str.toStringz(exec));
-	}
+	public void addApplication(string uri, string name, string exec);
 	
 	/**
 	 * Removes group from the list of groups to which the bookmark
@@ -971,20 +579,7 @@ public class BookmarkFile
 	 * Returns: TRUE if group was successfully removed.
 	 * Throws: GException on failure.
 	 */
-	public int removeGroup(string uri, string group)
-	{
-		// gboolean g_bookmark_file_remove_group (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *group,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_remove_group(gBookmarkFile, Str.toStringz(uri), Str.toStringz(group), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int removeGroup(string uri, string group);
 	
 	/**
 	 * Removes application registered with name from the list of applications
@@ -1001,20 +596,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the application was successfully removed.
 	 * Throws: GException on failure.
 	 */
-	public int removeApplication(string uri, string name)
-	{
-		// gboolean g_bookmark_file_remove_application (GBookmarkFile *bookmark,  const gchar *uri,  const gchar *name,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_remove_application(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int removeApplication(string uri, string name);
 	
 	/**
 	 * Removes the bookmark for uri from the bookmark file bookmark.
@@ -1024,20 +606,7 @@ public class BookmarkFile
 	 * Returns: TRUE if the bookmark was removed successfully.
 	 * Throws: GException on failure.
 	 */
-	public int removeItem(string uri)
-	{
-		// gboolean g_bookmark_file_remove_item (GBookmarkFile *bookmark,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_remove_item(gBookmarkFile, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int removeItem(string uri);
 	
 	/**
 	 * Changes the URI of a bookmark item from old_uri to new_uri. Any
@@ -1052,18 +621,5 @@ public class BookmarkFile
 	 * Returns: TRUE if the URI was successfully changed
 	 * Throws: GException on failure.
 	 */
-	public int moveItem(string oldUri, string newUri)
-	{
-		// gboolean g_bookmark_file_move_item (GBookmarkFile *bookmark,  const gchar *old_uri,  const gchar *new_uri,  GError **error);
-		GError* err = null;
-		
-		auto p = g_bookmark_file_move_item(gBookmarkFile, Str.toStringz(oldUri), Str.toStringz(newUri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int moveItem(string oldUri, string newUri);
 }

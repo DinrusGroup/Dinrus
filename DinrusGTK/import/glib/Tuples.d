@@ -1,52 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Tuples
- * strct   = GTuples
- * realStrct=
- * ctorStrct=
- * clss    = Tuples
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_tuples_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Tuples;
 
@@ -93,30 +44,16 @@ public class Tuples
 	protected GTuples* gTuples;
 	
 	
-	public GTuples* getTuplesStruct()
-	{
-		return gTuples;
-	}
+	public GTuples* getTuplesStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTuples;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GTuples* gTuples)
-	{
-		if(gTuples is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTuples = gTuples;
-	}
+	public this (GTuples* gTuples);
 	
 	/**
 	 */
@@ -127,11 +64,7 @@ public class Tuples
 	 * finished with the records.
 	 * The records are not removed from the GRelation.
 	 */
-	public void destroy()
-	{
-		// void g_tuples_destroy (GTuples *tuples);
-		g_tuples_destroy(gTuples);
-	}
+	public void destroy();
 	
 	/**
 	 * Gets a field from the records returned by g_relation_select().
@@ -142,9 +75,5 @@ public class Tuples
 	 * field = the field to return.
 	 * Returns:the field of the record.
 	 */
-	public void* index(int index, int field)
-	{
-		// gpointer g_tuples_index (GTuples *tuples,  gint index_,  gint field);
-		return g_tuples_index(gTuples, index, field);
-	}
+	public void* index(int index, int field);
 }

@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gthread
- * outFile = StaticPrivate
- * strct   = GStaticPrivate
- * realStrct=
- * ctorStrct=
- * clss    = StaticPrivate
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_static_private_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.StaticPrivate;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -116,30 +66,16 @@ public class StaticPrivate
 	protected GStaticPrivate* gStaticPrivate;
 	
 	
-	public GStaticPrivate* getStaticPrivateStruct()
-	{
-		return gStaticPrivate;
-	}
+	public GStaticPrivate* getStaticPrivateStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStaticPrivate;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GStaticPrivate* gStaticPrivate)
-	{
-		if(gStaticPrivate is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStaticPrivate = gStaticPrivate;
-	}
+	public this (GStaticPrivate* gStaticPrivate);
 	
 	/**
 	 */
@@ -148,22 +84,14 @@ public class StaticPrivate
 	 * Initializes private_key. Alternatively you can initialize it with
 	 * G_STATIC_PRIVATE_INIT.
 	 */
-	public void init()
-	{
-		// void g_static_private_init (GStaticPrivate *private_key);
-		g_static_private_init(gStaticPrivate);
-	}
+	public void init();
 	
 	/**
 	 * Works like g_private_get() only for a GStaticPrivate.
 	 * This function works even if g_thread_init() has not yet been called.
 	 * Returns:the corresponding pointer.
 	 */
-	public void* get()
-	{
-		// gpointer g_static_private_get (GStaticPrivate *private_key);
-		return g_static_private_get(gStaticPrivate);
-	}
+	public void* get();
 	
 	/**
 	 * Sets the pointer keyed to private_key for the current thread and the
@@ -181,11 +109,7 @@ public class StaticPrivate
 	 * notify = a function to be called with the pointer whenever the
 	 * current thread ends or sets this pointer again.
 	 */
-	public void set(void* data, GDestroyNotify notify)
-	{
-		// void g_static_private_set (GStaticPrivate *private_key,  gpointer data,  GDestroyNotify notify);
-		g_static_private_set(gStaticPrivate, data, notify);
-	}
+	public void set(void* data, GDestroyNotify notify);
 	
 	/**
 	 * Releases all resources allocated to private_key.
@@ -194,9 +118,5 @@ public class StaticPrivate
 	 * GStaticPrivate as a member of a structure and the structure is freed,
 	 * you should also free the GStaticPrivate.
 	 */
-	public void free()
-	{
-		// void g_static_private_free (GStaticPrivate *private_key);
-		g_static_private_free(gStaticPrivate);
-	}
+	public void free();
 }

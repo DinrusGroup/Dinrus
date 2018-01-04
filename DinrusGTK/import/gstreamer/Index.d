@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstIndex.html
- * outPack = gstreamer
- * outFile = Index
- * strct   = GstIndex
- * realStrct=
- * ctorStrct=
- * clss    = Index
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_index_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.ObjectGst
- * structWrap:
- * 	- GstIndex* -> Index
- * 	- GstObject* -> ObjectGst
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Index;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -82,38 +27,16 @@ public class Index : ObjectGst
 	protected GstIndex* gstIndex;
 	
 	
-	public GstIndex* getIndexStruct()
-	{
-		return gstIndex;
-	}
+	public GstIndex* getIndexStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstIndex;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstIndex* gstIndex)
-	{
-		if(gstIndex is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstIndex);
-		if( ptr !is null )
-		{
-			this = cast(Index)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstIndex);
-		this.gstIndex = gstIndex;
-	}
+	public this (GstIndex* gstIndex);
 	
 	/**
 	 */
@@ -125,44 +48,15 @@ public class Index : ObjectGst
 	 * See Also
 	 * GstIndexFactory
 	 */
-	void addOnEntryAdded(void delegate(GstIndexEntry*, Index) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("entry-added" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"entry-added",
-			cast(GCallback)&callBackEntryAdded,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["entry-added"] = 1;
-		}
-		onEntryAddedListeners ~= dlg;
-	}
-	extern(C) static void callBackEntryAdded(GstIndex* gstindexStruct, GstIndexEntry* arg1, Index index)
-	{
-		foreach ( void delegate(GstIndexEntry*, Index) dlg ; index.onEntryAddedListeners )
-		{
-			dlg(arg1, index);
-		}
-	}
+	void addOnEntryAdded(void delegate(GstIndexEntry*, Index) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackEntryAdded(GstIndex* gstindexStruct, GstIndexEntry* arg1, Index index);
 	
 	
 	/**
 	 * Create a new tileindex object
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GstIndex* gst_index_new (void);
-		auto p = gst_index_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_index_new()");
-		}
-		this(cast(GstIndex*) p);
-	}
+	public this ();
 	
 	/**
 	 * Tell the index that the writer with the given id is done
@@ -171,32 +65,20 @@ public class Index : ObjectGst
 	 * Params:
 	 * id =  the writer that commited the index
 	 */
-	public void commit(int id)
-	{
-		// void gst_index_commit (GstIndex *index,  gint id);
-		gst_index_commit(gstIndex, id);
-	}
+	public void commit(int id);
 	
 	/**
 	 * Get the id of the current group.
 	 * Returns: the id of the current group.
 	 */
-	public int getGroup()
-	{
-		// gint gst_index_get_group (GstIndex *index);
-		return gst_index_get_group(gstIndex);
-	}
+	public int getGroup();
 	
 	/**
 	 * Create a new group for the given index. It will be
 	 * set as the current group.
 	 * Returns: the id of the newly created group.
 	 */
-	public int newGroup()
-	{
-		// gint gst_index_new_group (GstIndex *index);
-		return gst_index_new_group(gstIndex);
-	}
+	public int newGroup();
 	
 	/**
 	 * Set the current groupnumber to the given argument.
@@ -204,32 +86,20 @@ public class Index : ObjectGst
 	 * groupnum =  the groupnumber to set
 	 * Returns: TRUE if the operation succeeded, FALSE if the groupdid not exist.
 	 */
-	public int setGroup(int groupnum)
-	{
-		// gboolean gst_index_set_group (GstIndex *index,  gint groupnum);
-		return gst_index_set_group(gstIndex, groupnum);
-	}
+	public int setGroup(int groupnum);
 	
 	/**
 	 * Set the certainty of the given index.
 	 * Params:
 	 * certainty =  the certainty to set
 	 */
-	public void setCertainty(GstIndexCertainty certainty)
-	{
-		// void gst_index_set_certainty (GstIndex *index,  GstIndexCertainty certainty);
-		gst_index_set_certainty(gstIndex, certainty);
-	}
+	public void setCertainty(GstIndexCertainty certainty);
 	
 	/**
 	 * Get the certainty of the given index.
 	 * Returns: the certainty of the index.
 	 */
-	public GstIndexCertainty getCertainty()
-	{
-		// GstIndexCertainty gst_index_get_certainty (GstIndex *index);
-		return gst_index_get_certainty(gstIndex);
-	}
+	public GstIndexCertainty getCertainty();
 	
 	/**
 	 * Lets the app register a custom filter function so that
@@ -238,11 +108,7 @@ public class Index : ObjectGst
 	 * filter =  the filter to register
 	 * userData =  data passed to the filter function
 	 */
-	public void setFilter(GstIndexFilter filter, void* userData)
-	{
-		// void gst_index_set_filter (GstIndex *index,  GstIndexFilter filter,  gpointer user_data);
-		gst_index_set_filter(gstIndex, filter, userData);
-	}
+	public void setFilter(GstIndexFilter filter, void* userData);
 	
 	/**
 	 * Lets the app register a custom filter function so that
@@ -252,11 +118,7 @@ public class Index : ObjectGst
 	 * userData =  data passed to the filter function
 	 * userDataDestroy =  function to call when user_data is unset
 	 */
-	public void setFilterFull(GstIndexFilter filter, void* userData, GDestroyNotify userDataDestroy)
-	{
-		// void gst_index_set_filter_full (GstIndex *index,  GstIndexFilter filter,  gpointer user_data,  GDestroyNotify user_data_destroy);
-		gst_index_set_filter_full(gstIndex, filter, userData, userDataDestroy);
-	}
+	public void setFilterFull(GstIndexFilter filter, void* userData, GDestroyNotify userDataDestroy);
 	
 	/**
 	 * Lets the app register a custom function to map index
@@ -265,11 +127,7 @@ public class Index : ObjectGst
 	 * resolver =  the resolver to register
 	 * userData =  data passed to the resolver function
 	 */
-	public void setResolver(GstIndexResolver resolver, void* userData)
-	{
-		// void gst_index_set_resolver (GstIndex *index,  GstIndexResolver resolver,  gpointer user_data);
-		gst_index_set_resolver(gstIndex, resolver, userData);
-	}
+	public void setResolver(GstIndexResolver resolver, void* userData);
 	
 	/**
 	 * Before entries can be added to the index, a writer
@@ -283,11 +141,7 @@ public class Index : ObjectGst
 	 * id =  a pointer to a gint to hold the id
 	 * Returns: TRUE if the writer would be mapped to an id.
 	 */
-	public int getWriterId(ObjectGst writer, int* id)
-	{
-		// gboolean gst_index_get_writer_id (GstIndex *index,  GstObject *writer,  gint *id);
-		return gst_index_get_writer_id(gstIndex, (writer is null) ? null : writer.getObjectGstStruct(), id);
-	}
+	public int getWriterId(ObjectGst writer, int* id);
 	
 	/**
 	 * Adds a format entry into the index. This function is
@@ -298,11 +152,7 @@ public class Index : ObjectGst
 	 * format =  the format to add to the index
 	 * Returns: a pointer to the newly added entry in the index.
 	 */
-	public GstIndexEntry* addFormat(int id, GstFormat format)
-	{
-		// GstIndexEntry* gst_index_add_format (GstIndex *index,  gint id,  GstFormat format);
-		return gst_index_add_format(gstIndex, id, format);
-	}
+	public GstIndexEntry* addFormat(int id, GstFormat format);
 	
 	/**
 	 * Associate given format/value pairs with each other.
@@ -313,11 +163,7 @@ public class Index : ObjectGst
 	 * list =  list of associations
 	 * Returns: a pointer to the newly added entry in the index.
 	 */
-	public GstIndexEntry* addAssociationv(int id, GstAssocFlags flags, int n, GstIndexAssociation* list)
-	{
-		// GstIndexEntry* gst_index_add_associationv (GstIndex *index,  gint id,  GstAssocFlags flags,  gint n,  const GstIndexAssociation *list);
-		return gst_index_add_associationv(gstIndex, id, flags, n, list);
-	}
+	public GstIndexEntry* addAssociationv(int id, GstAssocFlags flags, int n, GstIndexAssociation* list);
 	
 	/**
 	 * Add the given object to the index with the given key.
@@ -329,11 +175,7 @@ public class Index : ObjectGst
 	 * object =  a pointer to the object to add
 	 * Returns: a pointer to the newly added entry in the index.
 	 */
-	public GstIndexEntry* addObject(int id, string key, GType type, void* object)
-	{
-		// GstIndexEntry* gst_index_add_object (GstIndex *index,  gint id,  gchar *key,  GType type,  gpointer object);
-		return gst_index_add_object(gstIndex, id, Str.toStringz(key), type, object);
-	}
+	public GstIndexEntry* addObject(int id, string key, GType type, void* object);
 	
 	/**
 	 * Add an id entry into the index.
@@ -342,11 +184,7 @@ public class Index : ObjectGst
 	 * description =  the description of the index writer
 	 * Returns: a pointer to the newly added entry in the index.
 	 */
-	public GstIndexEntry* addId(int id, string description)
-	{
-		// GstIndexEntry* gst_index_add_id (GstIndex *index,  gint id,  gchar *description);
-		return gst_index_add_id(gstIndex, id, Str.toStringz(description));
-	}
+	public GstIndexEntry* addId(int id, string description);
 	
 	/**
 	 * Finds the given format/value in the index
@@ -358,11 +196,7 @@ public class Index : ObjectGst
 	 * value =  the value to find
 	 * Returns: the entry associated with the value or NULL if the value was not found.
 	 */
-	public GstIndexEntry* getAssocEntry(int id, GstIndexLookupMethod method, GstAssocFlags flags, GstFormat format, long value)
-	{
-		// GstIndexEntry* gst_index_get_assoc_entry (GstIndex *index,  gint id,  GstIndexLookupMethod method,  GstAssocFlags flags,  GstFormat format,  gint64 value);
-		return gst_index_get_assoc_entry(gstIndex, id, method, flags, format, value);
-	}
+	public GstIndexEntry* getAssocEntry(int id, GstIndexLookupMethod method, GstAssocFlags flags, GstFormat format, long value);
 	
 	/**
 	 * Finds the given format/value in the index with the given
@@ -377,11 +211,7 @@ public class Index : ObjectGst
 	 * userData =  user data passed to the compare function
 	 * Returns: the entry associated with the value or NULL if the value was not found.
 	 */
-	public GstIndexEntry* getAssocEntryFull(int id, GstIndexLookupMethod method, GstAssocFlags flags, GstFormat format, long value, GCompareDataFunc func, void* userData)
-	{
-		// GstIndexEntry* gst_index_get_assoc_entry_full  (GstIndex *index,  gint id,  GstIndexLookupMethod method,  GstAssocFlags flags,  GstFormat format,  gint64 value,  GCompareDataFunc func,  gpointer user_data);
-		return gst_index_get_assoc_entry_full(gstIndex, id, method, flags, format, value, func, userData);
-	}
+	public GstIndexEntry* getAssocEntryFull(int id, GstIndexLookupMethod method, GstAssocFlags flags, GstFormat format, long value, GCompareDataFunc func, void* userData);
 	
 	/**
 	 * Copies an entry and returns the result.
@@ -389,22 +219,14 @@ public class Index : ObjectGst
 	 * entry =  the entry to copy
 	 * Returns: a newly allocated GstIndexEntry.
 	 */
-	public static GstIndexEntry* entryCopy(GstIndexEntry* entry)
-	{
-		// GstIndexEntry* gst_index_entry_copy (GstIndexEntry *entry);
-		return gst_index_entry_copy(entry);
-	}
+	public static GstIndexEntry* entryCopy(GstIndexEntry* entry);
 	
 	/**
 	 * Free the memory used by the given entry.
 	 * Params:
 	 * entry =  the entry to free
 	 */
-	public static void entryFree(GstIndexEntry* entry)
-	{
-		// void gst_index_entry_free (GstIndexEntry *entry);
-		gst_index_entry_free(entry);
-	}
+	public static void entryFree(GstIndexEntry* entry);
 	
 	/**
 	 * Gets alternative formats associated with the indexentry.
@@ -414,9 +236,5 @@ public class Index : ObjectGst
 	 * value =  a pointer to store the value
 	 * Returns: TRUE if there was a value associated with the givenformat.
 	 */
-	public static int entryAssocMap(GstIndexEntry* entry, GstFormat format, long* value)
-	{
-		// gboolean gst_index_entry_assoc_map (GstIndexEntry *entry,  GstFormat format,  gint64 *value);
-		return gst_index_entry_assoc_map(entry, format, value);
-	}
+	public static int entryAssocMap(GstIndexEntry* entry, GstFormat format, long* value);
 }

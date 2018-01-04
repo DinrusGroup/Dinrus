@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Perl-compatible-regular-expressions.html
- * outPack = glib
- * outFile = Regex
- * strct   = GRegex
- * realStrct=
- * ctorStrct=
- * clss    = Regex
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_regex_
- * omit structs:
- * omit prefixes:
- * 	- g_match_info_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.MatchInfo
- * structWrap:
- * 	- GMatchInfo* -> MatchInfo
- * 	- GRegex* -> Regex
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Regex;
 
@@ -128,30 +72,16 @@ public class Regex
 	protected GRegex* gRegex;
 	
 	
-	public GRegex* getRegexStruct()
-	{
-		return gRegex;
-	}
+	public GRegex* getRegexStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gRegex;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GRegex* gRegex)
-	{
-		if(gRegex is null)
-		{
-			this = null;
-			return;
-		}
-		this.gRegex = gRegex;
-	}
+	public this (GRegex* gRegex);
 	
 	/**
 	 */
@@ -167,63 +97,29 @@ public class Regex
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string pattern, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions)
-	{
-		// GRegex * g_regex_new (const gchar *pattern,  GRegexCompileFlags compile_options,  GRegexMatchFlags match_options,  GError **error);
-		GError* err = null;
-		
-		auto p = g_regex_new(Str.toStringz(pattern), compileOptions, matchOptions, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_regex_new(Str.toStringz(pattern), compileOptions, matchOptions, &err)");
-		}
-		this(cast(GRegex*) p);
-	}
+	public this (string pattern, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Increases reference count of regex by 1.
 	 * Since 2.14
 	 * Returns: regex
 	 */
-	public Regex doref()
-	{
-		// GRegex * g_regex_ref (GRegex *regex);
-		auto p = g_regex_ref(gRegex);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Regex(cast(GRegex*) p);
-	}
+	public Regex doref();
 	
 	/**
 	 * Decreases reference count of regex by 1. When reference count drops
 	 * to zero, it frees all the memory associated with the regex structure.
 	 * Since 2.14
 	 */
-	public void unref()
-	{
-		// void g_regex_unref (GRegex *regex);
-		g_regex_unref(gRegex);
-	}
-	
+	public void unref();
+
 	/**
 	 * Gets the pattern string associated with regex, i.e. a copy of
 	 * the string passed to g_regex_new().
 	 * Since 2.14
 	 * Returns: the pattern of regex
 	 */
-	public string getPattern()
-	{
-		// const gchar * g_regex_get_pattern (const GRegex *regex);
-		return Str.toString(g_regex_get_pattern(gRegex));
-	}
+	public string getPattern();
 	
 	/**
 	 * Returns the number of the highest back reference
@@ -232,22 +128,14 @@ public class Regex
 	 * Since 2.14
 	 * Returns: the number of the highest back reference
 	 */
-	public int getMaxBackref()
-	{
-		// gint g_regex_get_max_backref (const GRegex *regex);
-		return g_regex_get_max_backref(gRegex);
-	}
+	public int getMaxBackref();
 	
 	/**
 	 * Returns the number of capturing subpatterns in the pattern.
 	 * Since 2.14
 	 * Returns: the number of capturing subpatterns
 	 */
-	public int getCaptureCount()
-	{
-		// gint g_regex_get_capture_count (const GRegex *regex);
-		return g_regex_get_capture_count(gRegex);
-	}
+	public int getCaptureCount();
 	
 	/**
 	 * Retrieves the number of the subexpression named name.
@@ -256,11 +144,7 @@ public class Regex
 	 * name =  name of the subexpression
 	 * Returns: The number of the subexpression or -1 if name  does not exists
 	 */
-	public int getStringNumber(string name)
-	{
-		// gint g_regex_get_string_number (const GRegex *regex,  const gchar *name);
-		return g_regex_get_string_number(gRegex, Str.toStringz(name));
-	}
+	public int getStringNumber(string name);
 	
 	/**
 	 * Escapes the special characters used for regular expressions
@@ -275,11 +159,7 @@ public class Regex
 	 * length =  the length of string, or -1 if string is nul-terminated
 	 * Returns: a newly-allocated escaped string
 	 */
-	public static string escapeString(string string, int length)
-	{
-		// gchar * g_regex_escape_string (const gchar *string,  gint length);
-		return Str.toString(g_regex_escape_string(Str.toStringz(string), length));
-	}
+	public static string escapeString(string string, int length);
 	
 	/**
 	 * Scans for a match in string for pattern.
@@ -298,11 +178,7 @@ public class Regex
 	 * matchOptions =  match options, or 0
 	 * Returns: TRUE if the string matched, FALSE otherwise
 	 */
-	public static int matchSimple(string pattern, string string, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions)
-	{
-		// gboolean g_regex_match_simple (const gchar *pattern,  const gchar *string,  GRegexCompileFlags compile_options,  GRegexMatchFlags match_options);
-		return g_regex_match_simple(Str.toStringz(pattern), Str.toStringz(string), compileOptions, matchOptions);
-	}
+	public static int matchSimple(string pattern, string string, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Scans for a match in string for the pattern in regex.
@@ -345,16 +221,7 @@ public class Regex
 	 *  or NULL if you do not need it
 	 * Returns: TRUE is the string matched, FALSE otherwise
 	 */
-	public int match(string string, GRegexMatchFlags matchOptions, out MatchInfo matchInfo)
-	{
-		// gboolean g_regex_match (const GRegex *regex,  const gchar *string,  GRegexMatchFlags match_options,  GMatchInfo **match_info);
-		GMatchInfo* outmatchInfo = null;
-		
-		auto p = g_regex_match(gRegex, Str.toStringz(string), matchOptions, &outmatchInfo);
-		
-		matchInfo = new MatchInfo(outmatchInfo);
-		return p;
-	}
+	public int match(string string, GRegexMatchFlags matchOptions, out MatchInfo matchInfo);
 	
 	/**
 	 * Scans for a match in string for the pattern in regex.
@@ -410,22 +277,7 @@ public class Regex
 	 * Returns: TRUE is the string matched, FALSE otherwise
 	 * Throws: GException on failure.
 	 */
-	public int matchFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, out MatchInfo matchInfo)
-	{
-		// gboolean g_regex_match_full (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  GRegexMatchFlags match_options,  GMatchInfo **match_info,  GError **error);
-		GMatchInfo* outmatchInfo = null;
-		GError* err = null;
-		
-		auto p = g_regex_match_full(gRegex, Str.toStringz(string), stringLen, startPosition, matchOptions, &outmatchInfo, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		matchInfo = new MatchInfo(outmatchInfo);
-		return p;
-	}
+	public int matchFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, out MatchInfo matchInfo);
 	
 	/**
 	 * Using the standard algorithm for regular expression matching only
@@ -448,16 +300,7 @@ public class Regex
 	 *  or NULL if you do not need it
 	 * Returns: TRUE is the string matched, FALSE otherwise
 	 */
-	public int matchAll(string string, GRegexMatchFlags matchOptions, out MatchInfo matchInfo)
-	{
-		// gboolean g_regex_match_all (const GRegex *regex,  const gchar *string,  GRegexMatchFlags match_options,  GMatchInfo **match_info);
-		GMatchInfo* outmatchInfo = null;
-		
-		auto p = g_regex_match_all(gRegex, Str.toStringz(string), matchOptions, &outmatchInfo);
-		
-		matchInfo = new MatchInfo(outmatchInfo);
-		return p;
-	}
+	public int matchAll(string string, GRegexMatchFlags matchOptions, out MatchInfo matchInfo);
 	
 	/**
 	 * Using the standard algorithm for regular expression matching only
@@ -501,22 +344,7 @@ public class Regex
 	 * Returns: TRUE is the string matched, FALSE otherwise
 	 * Throws: GException on failure.
 	 */
-	public int matchAllFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, out MatchInfo matchInfo)
-	{
-		// gboolean g_regex_match_all_full (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  GRegexMatchFlags match_options,  GMatchInfo **match_info,  GError **error);
-		GMatchInfo* outmatchInfo = null;
-		GError* err = null;
-		
-		auto p = g_regex_match_all_full(gRegex, Str.toStringz(string), stringLen, startPosition, matchOptions, &outmatchInfo, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		matchInfo = new MatchInfo(outmatchInfo);
-		return p;
-	}
+	public int matchAllFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, out MatchInfo matchInfo);
 	
 	/**
 	 * Breaks the string on the pattern, and returns an array of
@@ -550,11 +378,7 @@ public class Regex
 	 * matchOptions =  match options, or 0
 	 * Returns: a NULL-terminated array of strings. Free it using g_strfreev()
 	 */
-	public static string[] splitSimple(string pattern, string string, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions)
-	{
-		// gchar ** g_regex_split_simple (const gchar *pattern,  const gchar *string,  GRegexCompileFlags compile_options,  GRegexMatchFlags match_options);
-		return Str.toStringArray(g_regex_split_simple(Str.toStringz(pattern), Str.toStringz(string), compileOptions, matchOptions));
-	}
+	public static string[] splitSimple(string pattern, string string, GRegexCompileFlags compileOptions, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Breaks the string on the pattern, and returns an array of the tokens.
@@ -578,11 +402,7 @@ public class Regex
 	 * matchOptions =  match time option flags
 	 * Returns: a NULL-terminated gchar ** array. Free it using g_strfreev()
 	 */
-	public string[] split(string string, GRegexMatchFlags matchOptions)
-	{
-		// gchar ** g_regex_split (const GRegex *regex,  const gchar *string,  GRegexMatchFlags match_options);
-		return Str.toStringArray(g_regex_split(gRegex, Str.toStringz(string), matchOptions));
-	}
+	public string[] split(string string, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Breaks the string on the pattern, and returns an array of the tokens.
@@ -614,20 +434,7 @@ public class Regex
 	 * Returns: a NULL-terminated gchar ** array. Free it using g_strfreev()
 	 * Throws: GException on failure.
 	 */
-	public string[] splitFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, int maxTokens)
-	{
-		// gchar ** g_regex_split_full (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  GRegexMatchFlags match_options,  gint max_tokens,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toStringArray(g_regex_split_full(gRegex, Str.toStringz(string), stringLen, startPosition, matchOptions, maxTokens, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string[] splitFull(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, int maxTokens);
 	
 	/**
 	 * Replaces all occurrences of the pattern in regex with the
@@ -647,20 +454,7 @@ public class Regex
 	 * Returns: a newly allocated string containing the replacements
 	 * Throws: GException on failure.
 	 */
-	public string replace(string string, int stringLen, int startPosition, string replacement, GRegexMatchFlags matchOptions)
-	{
-		// gchar * g_regex_replace (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  const gchar *replacement,  GRegexMatchFlags match_options,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_regex_replace(gRegex, Str.toStringz(string), stringLen, startPosition, Str.toStringz(replacement), matchOptions, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string replace(string string, int stringLen, int startPosition, string replacement, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Replaces all occurrences of the pattern in regex with the
@@ -680,20 +474,7 @@ public class Regex
 	 * Returns: a newly allocated string containing the replacements
 	 * Throws: GException on failure.
 	 */
-	public string replaceLiteral(string string, int stringLen, int startPosition, string replacement, GRegexMatchFlags matchOptions)
-	{
-		// gchar * g_regex_replace_literal (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  const gchar *replacement,  GRegexMatchFlags match_options,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_regex_replace_literal(gRegex, Str.toStringz(string), stringLen, startPosition, Str.toStringz(replacement), matchOptions, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string replaceLiteral(string string, int stringLen, int startPosition, string replacement, GRegexMatchFlags matchOptions);
 	
 	/**
 	 * Replaces occurrences of the pattern in regex with the output of
@@ -713,20 +494,7 @@ public class Regex
 	 * Returns: a newly allocated string containing the replacements
 	 * Throws: GException on failure.
 	 */
-	public string replaceEval(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, GRegexEvalCallback eval, void* userData)
-	{
-		// gchar * g_regex_replace_eval (const GRegex *regex,  const gchar *string,  gssize string_len,  gint start_position,  GRegexMatchFlags match_options,  GRegexEvalCallback eval,  gpointer user_data,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_regex_replace_eval(gRegex, Str.toStringz(string), stringLen, startPosition, matchOptions, eval, userData, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string replaceEval(string string, int stringLen, int startPosition, GRegexMatchFlags matchOptions, GRegexEvalCallback eval, void* userData);
 	
 	/**
 	 * Checks whether replacement is a valid replacement string
@@ -745,18 +513,5 @@ public class Regex
 	 * Returns: whether replacement is a valid replacement string
 	 * Throws: GException on failure.
 	 */
-	public static int checkReplacement(string replacement, out int hasReferences)
-	{
-		// gboolean g_regex_check_replacement (const gchar *replacement,  gboolean *has_references,  GError **error);
-		GError* err = null;
-		
-		auto p = g_regex_check_replacement(Str.toStringz(replacement), &hasReferences, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static int checkReplacement(string replacement, out int hasReferences);
 }

@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstTask.html
- * outPack = gstreamer
- * outFile = Task
- * strct   = GstTask
- * realStrct=
- * ctorStrct=
- * clss    = Task
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_task_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GstTask* -> Task
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Task;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -98,38 +45,16 @@ public class Task : ObjectGst
 	protected GstTask* gstTask;
 	
 	
-	public GstTask* getTaskStruct()
-	{
-		return gstTask;
-	}
+	public GstTask* getTaskStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstTask;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstTask* gstTask)
-	{
-		if(gstTask is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstTask);
-		if( ptr !is null )
-		{
-			this = cast(Task)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstTask);
-		this.gstTask = gstTask;
-	}
+	public this (GstTask* gstTask);
 	
 	/**
 	 */
@@ -139,11 +64,7 @@ public class Task : ObjectGst
 	 * to ensure proper cleanup of internal datastructures in testsuites.
 	 * MT safe.
 	 */
-	public static void cleanupAll()
-	{
-		// void gst_task_cleanup_all (void);
-		gst_task_cleanup_all();
-	}
+	public static void cleanupAll();
 	
 	/**
 	 * Create a new Task that will repeadedly call the provided func
@@ -156,26 +77,13 @@ public class Task : ObjectGst
 	 * data =  User data to pass to func
 	 * Returns: A new GstTask.MT safe.
 	 */
-	public static Task create(GstTaskFunction func, void* data)
-	{
-		// GstTask* gst_task_create (GstTaskFunction func,  gpointer data);
-		auto p = gst_task_create(func, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Task(cast(GstTask*) p);
-	}
+	public static Task create(GstTaskFunction func, void* data);
 	
 	/**
 	 * Get the current state of the task.
 	 * Returns: The GstTaskState of the taskMT safe.
 	 */
-	public GstTaskState getState()
-	{
-		// GstTaskState gst_task_get_state (GstTask *task);
-		return gst_task_get_state(gstTask);
-	}
+	public GstTaskState getState();
 	
 	/**
 	 * Joins task. After this call, it is safe to unref the task
@@ -186,11 +94,7 @@ public class Task : ObjectGst
 	 * g_warning.
 	 * Returns: TRUE if the task could be joined.MT safe.
 	 */
-	public int join()
-	{
-		// gboolean gst_task_join (GstTask *task);
-		return gst_task_join(gstTask);
-	}
+	public int join();
 	
 	/**
 	 * Pauses task. This method can also be called on a task in the
@@ -199,11 +103,7 @@ public class Task : ObjectGst
 	 * the paused state.
 	 * Returns: TRUE if the task could be paused.MT safe.
 	 */
-	public int pause()
-	{
-		// gboolean gst_task_pause (GstTask *task);
-		return gst_task_pause(gstTask);
-	}
+	public int pause();
 	
 	/**
 	 * Set the mutex used by the task. The mutex will be acquired before
@@ -214,22 +114,14 @@ public class Task : ObjectGst
 	 * Params:
 	 * mutex =  The GMutex to use
 	 */
-	public void setLock(GStaticRecMutex* mutex)
-	{
-		// void gst_task_set_lock (GstTask *task,  GStaticRecMutex *mutex);
-		gst_task_set_lock(gstTask, mutex);
-	}
+	public void setLock(GStaticRecMutex* mutex);
 	
 	/**
 	 * Starts task. The task must have a lock associated with it using
 	 * gst_task_set_lock() or thsi function will return FALSE.
 	 * Returns: TRUE if the task could be started.MT safe.
 	 */
-	public int start()
-	{
-		// gboolean gst_task_start (GstTask *task);
-		return gst_task_start(gstTask);
-	}
+	public int start();
 	
 	/**
 	 * Stops task. This method merely schedules the task to stop and
@@ -237,9 +129,5 @@ public class Task : ObjectGst
 	 * gst_task_join() to stop and wait for completion.
 	 * Returns: TRUE if the task could be stopped.MT safe.
 	 */
-	public int stop()
-	{
-		// gboolean gst_task_stop (GstTask *task);
-		return gst_task_stop(gstTask);
-	}
+	public int stop();
 }

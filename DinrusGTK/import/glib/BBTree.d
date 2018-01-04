@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Balanced-Binary-Trees.html
- * outPack = glib
- * outFile = BBTree
- * strct   = GTree
- * realStrct=
- * ctorStrct=
- * clss    = BBTree
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_tree_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- GTree* -> BBTree
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.BBTree;
 
@@ -83,30 +33,16 @@ public class BBTree
 	protected GTree* gTree;
 	
 	
-	public GTree* getBBTreeStruct()
-	{
-		return gTree;
-	}
+	public GTree* getBBTreeStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTree;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GTree* gTree)
-	{
-		if(gTree is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTree = gTree;
-	}
+	public this (GTree* gTree);
 	
 	/**
 	 */
@@ -121,16 +57,7 @@ public class BBTree
 	 *  after the second.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GCompareFunc keyCompareFunc)
-	{
-		// GTree* g_tree_new (GCompareFunc key_compare_func);
-		auto p = g_tree_new(keyCompareFunc);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_tree_new(keyCompareFunc)");
-		}
-		this(cast(GTree*) p);
-	}
+	public this (GCompareFunc keyCompareFunc);
 	
 	/**
 	 * Increments the reference count of tree by one. It is safe to call
@@ -138,16 +65,7 @@ public class BBTree
 	 * Since 2.22
 	 * Returns: the passed in GTree.
 	 */
-	public BBTree doref()
-	{
-		// GTree* g_tree_ref (GTree *tree);
-		auto p = g_tree_ref(gTree);
-		if(p is null)
-		{
-			return null;
-		}
-		return new BBTree(cast(GTree*) p);
-	}
+	public BBTree doref();
 	
 	/**
 	 * Decrements the reference count of tree by one. If the reference count
@@ -157,11 +75,7 @@ public class BBTree
 	 * It is safe to call this function from any thread.
 	 * Since 2.22
 	 */
-	public void unref()
-	{
-		// void g_tree_unref (GTree *tree);
-		g_tree_unref(gTree);
-	}
+	public void unref();
 	
 	/**
 	 * Creates a new GTree with a comparison function that accepts user data.
@@ -171,16 +85,7 @@ public class BBTree
 	 * keyCompareData =  data to pass to comparison function.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GCompareDataFunc keyCompareFunc, void* keyCompareData)
-	{
-		// GTree* g_tree_new_with_data (GCompareDataFunc key_compare_func,  gpointer key_compare_data);
-		auto p = g_tree_new_with_data(keyCompareFunc, keyCompareData);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_tree_new_with_data(keyCompareFunc, keyCompareData)");
-		}
-		this(cast(GTree*) p);
-	}
+	public this (GCompareDataFunc keyCompareFunc, void* keyCompareData);
 	
 	/**
 	 * Creates a new GTree like g_tree_new() and allows to specify functions
@@ -197,16 +102,7 @@ public class BBTree
 	 *  don't want to supply such a function.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GCompareDataFunc keyCompareFunc, void* keyCompareData, GDestroyNotify keyDestroyFunc, GDestroyNotify valueDestroyFunc)
-	{
-		// GTree* g_tree_new_full (GCompareDataFunc key_compare_func,  gpointer key_compare_data,  GDestroyNotify key_destroy_func,  GDestroyNotify value_destroy_func);
-		auto p = g_tree_new_full(keyCompareFunc, keyCompareData, keyDestroyFunc, valueDestroyFunc);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_tree_new_full(keyCompareFunc, keyCompareData, keyDestroyFunc, valueDestroyFunc)");
-		}
-		this(cast(GTree*) p);
-	}
+	public this (GCompareDataFunc keyCompareFunc, void* keyCompareData, GDestroyNotify keyDestroyFunc, GDestroyNotify valueDestroyFunc);
 	
 	/**
 	 * Inserts a key/value pair into a GTree. If the given key already exists
@@ -220,11 +116,7 @@ public class BBTree
 	 * key =  the key to insert.
 	 * value =  the value corresponding to the key.
 	 */
-	public void insert(void* key, void* value)
-	{
-		// void g_tree_insert (GTree *tree,  gpointer key,  gpointer value);
-		g_tree_insert(gTree, key, value);
-	}
+	public void insert(void* key, void* value);
 	
 	/**
 	 * Inserts a new key and value into a GTree similar to g_tree_insert().
@@ -239,21 +131,13 @@ public class BBTree
 	 * key =  the key to insert.
 	 * value =  the value corresponding to the key.
 	 */
-	public void replace(void* key, void* value)
-	{
-		// void g_tree_replace (GTree *tree,  gpointer key,  gpointer value);
-		g_tree_replace(gTree, key, value);
-	}
+	public void replace(void* key, void* value);
 	
 	/**
 	 * Gets the number of nodes in a GTree.
 	 * Returns: the number of nodes in the GTree.
 	 */
-	public int nnodes()
-	{
-		// gint g_tree_nnodes (GTree *tree);
-		return g_tree_nnodes(gTree);
-	}
+	public int nnodes();
 	
 	/**
 	 * Gets the height of a GTree.
@@ -262,11 +146,7 @@ public class BBTree
 	 * If the root node has children the height is 2, etc.
 	 * Returns: the height of the GTree.
 	 */
-	public int height()
-	{
-		// gint g_tree_height (GTree *tree);
-		return g_tree_height(gTree);
-	}
+	public int height();
 	
 	/**
 	 * Gets the value corresponding to the given key. Since a GTree is
@@ -276,11 +156,7 @@ public class BBTree
 	 * key =  the key to look up.
 	 * Returns: the value corresponding to the key, or NULL if the key wasnot found.
 	 */
-	public void* lookup(void* key)
-	{
-		// gpointer g_tree_lookup (GTree *tree,  gconstpointer key);
-		return g_tree_lookup(gTree, key);
-	}
+	public void* lookup(void* key);
 	
 	/**
 	 * Looks up a key in the GTree, returning the original key and the
@@ -293,11 +169,7 @@ public class BBTree
 	 * value =  returns the value associated with the key.
 	 * Returns: TRUE if the key was found in the GTree.
 	 */
-	public int lookupExtended(void* lookupKey, void** origKey, void** value)
-	{
-		// gboolean g_tree_lookup_extended (GTree *tree,  gconstpointer lookup_key,  gpointer *orig_key,  gpointer *value);
-		return g_tree_lookup_extended(gTree, lookupKey, origKey, value);
-	}
+	public int lookupExtended(void* lookupKey, void** origKey, void** value);
 	
 	/**
 	 * Calls the given function for each of the key/value pairs in the GTree.
@@ -312,11 +184,7 @@ public class BBTree
 	 *  returns TRUE, the traversal is stopped.
 	 * userData =  user data to pass to the function.
 	 */
-	public void foreac(GTraverseFunc func, void* userData)
-	{
-		// void g_tree_foreach (GTree *tree,  GTraverseFunc func,  gpointer user_data);
-		g_tree_foreach(gTree, func, userData);
-	}
+	public void foreac(GTraverseFunc func, void* userData);
 	
 	/**
 	 * Warning
@@ -332,11 +200,7 @@ public class BBTree
 	 *  G_PRE_ORDER and G_POST_ORDER.
 	 * userData =  user data to pass to the function.
 	 */
-	public void traverse(GTraverseFunc traverseFunc, GTraverseType traverseType, void* userData)
-	{
-		// void g_tree_traverse (GTree *tree,  GTraverseFunc traverse_func,  GTraverseType traverse_type,  gpointer user_data);
-		g_tree_traverse(gTree, traverseFunc, traverseType, userData);
-	}
+	public void traverse(GTraverseFunc traverseFunc, GTraverseType traverseType, void* userData);
 	
 	/**
 	 * Searches a GTree using search_func.
@@ -352,11 +216,7 @@ public class BBTree
 	 * function.
 	 * Returns: the value corresponding to the found key, or NULL if the key was not found.
 	 */
-	public void* search(GCompareFunc searchFunc, void* userData)
-	{
-		// gpointer g_tree_search (GTree *tree,  GCompareFunc search_func,  gconstpointer user_data);
-		return g_tree_search(gTree, searchFunc, userData);
-	}
+	public void* search(GCompareFunc searchFunc, void* userData);
 	
 	/**
 	 * Removes a key/value pair from a GTree.
@@ -368,11 +228,7 @@ public class BBTree
 	 * key =  the key to remove.
 	 * Returns: TRUE if the key was found (prior to 2.8, this function returned  nothing)
 	 */
-	public int remove(void* key)
-	{
-		// gboolean g_tree_remove (GTree *tree,  gconstpointer key);
-		return g_tree_remove(gTree, key);
-	}
+	public int remove(void* key);
 	
 	/**
 	 * Removes a key and its associated value from a GTree without calling
@@ -382,11 +238,7 @@ public class BBTree
 	 * key =  the key to remove.
 	 * Returns: TRUE if the key was found (prior to 2.8, this function returned  nothing)
 	 */
-	public int steal(void* key)
-	{
-		// gboolean g_tree_steal (GTree *tree,  gconstpointer key);
-		return g_tree_steal(gTree, key);
-	}
+	public int steal(void* key);
 	
 	/**
 	 * Removes all keys and values from the GTree and decreases its
@@ -396,9 +248,5 @@ public class BBTree
 	 * you supplied will be called on all keys and values before destroying
 	 * the GTree.
 	 */
-	public void destroy()
-	{
-		// void g_tree_destroy (GTree *tree);
-		g_tree_destroy(gTree);
-	}
+	public void destroy();
 }

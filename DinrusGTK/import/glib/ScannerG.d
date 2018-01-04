@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Lexical-Scanner.html
- * outPack = glib
- * outFile = ScannerG
- * strct   = GScanner
- * realStrct=
- * ctorStrct=
- * clss    = ScannerG
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_scanner_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GScanner* -> ScannerG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.ScannerG;
 
 public  import gtkD.gtkc.glibtypes;
@@ -75,30 +23,16 @@ public class ScannerG
 	protected GScanner* gScanner;
 	
 	
-	public GScanner* getScannerGStruct()
-	{
-		return gScanner;
-	}
+	public GScanner* getScannerGStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gScanner;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GScanner* gScanner)
-	{
-		if(gScanner is null)
-		{
-			this = null;
-			return;
-		}
-		this.gScanner = gScanner;
-	}
+	public this (GScanner* gScanner);
 	
 	/**
 	 */
@@ -112,36 +46,19 @@ public class ScannerG
 	 * configTempl = the initial scanner settings.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GScannerConfig* configTempl)
-	{
-		// GScanner* g_scanner_new (const GScannerConfig *config_templ);
-		auto p = g_scanner_new(configTempl);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_scanner_new(configTempl)");
-		}
-		this(cast(GScanner*) p);
-	}
+	public this (GScannerConfig* configTempl);
 	
 	/**
 	 * Frees all memory used by the GScanner.
 	 */
-	public void destroy()
-	{
-		// void g_scanner_destroy (GScanner *scanner);
-		g_scanner_destroy(gScanner);
-	}
+	public void destroy();
 	
 	/**
 	 * Prepares to scan a file.
 	 * Params:
 	 * inputFd = a file descriptor.
 	 */
-	public void inputFile(int inputFd)
-	{
-		// void g_scanner_input_file (GScanner *scanner,  gint input_fd);
-		g_scanner_input_file(gScanner, inputFd);
-	}
+	public void inputFile(int inputFd);
 	
 	/**
 	 * Rewinds the filedescriptor to the current buffer position and blows
@@ -149,11 +66,7 @@ public class ScannerG
 	 * the scanners filedescriptor, which hooks onto the current scanning
 	 * position.
 	 */
-	public void syncFileOffset()
-	{
-		// void g_scanner_sync_file_offset (GScanner *scanner);
-		g_scanner_sync_file_offset(gScanner);
-	}
+	public void syncFileOffset();
 	
 	/**
 	 * Prepares to scan a text buffer.
@@ -161,11 +74,7 @@ public class ScannerG
 	 * text = the text buffer to scan.
 	 * textLen = the length of the text buffer.
 	 */
-	public void inputText(string text, uint textLen)
-	{
-		// void g_scanner_input_text (GScanner *scanner,  const gchar *text,  guint text_len);
-		g_scanner_input_text(gScanner, Str.toStringz(text), textLen);
-	}
+	public void inputText(string text, uint textLen);
 	
 	/**
 	 * Parses the next token, without removing it from the input stream.
@@ -183,11 +92,7 @@ public class ScannerG
 	 * have been added or removed in the new scope.
 	 * Returns:the type of the token.
 	 */
-	public GTokenType peekNextToken()
-	{
-		// GTokenType g_scanner_peek_next_token (GScanner *scanner);
-		return g_scanner_peek_next_token(gScanner);
-	}
+	public GTokenType peekNextToken();
 	
 	/**
 	 * Parses the next token just like g_scanner_peek_next_token() and also
@@ -199,43 +104,27 @@ public class ScannerG
 	 * position fields of the GScanner structure.
 	 * Returns:the type of the token.
 	 */
-	public GTokenType getNextToken()
-	{
-		// GTokenType g_scanner_get_next_token (GScanner *scanner);
-		return g_scanner_get_next_token(gScanner);
-	}
+	public GTokenType getNextToken();
 	
 	/**
 	 * Returns TRUE if the scanner has reached the end of the file or text buffer.
 	 * Returns:%TRUE if the scanner has reached the end of the file or text buffer.
 	 */
-	public int eof()
-	{
-		// gboolean g_scanner_eof (GScanner *scanner);
-		return g_scanner_eof(gScanner);
-	}
+	public int eof();
 	
 	/**
 	 * Returns the current line in the input stream (counting from 1).
 	 * This is the line of the last token parsed via g_scanner_get_next_token().
 	 * Returns:the current line.
 	 */
-	public uint curLine()
-	{
-		// guint g_scanner_cur_line (GScanner *scanner);
-		return g_scanner_cur_line(gScanner);
-	}
+	public uint curLine();
 	
 	/**
 	 * Returns the current position in the current line (counting from 0).
 	 * This is the position of the last token parsed via g_scanner_get_next_token().
 	 * Returns:the current position on the line.
 	 */
-	public uint curPosition()
-	{
-		// guint g_scanner_cur_position (GScanner *scanner);
-		return g_scanner_cur_position(gScanner);
-	}
+	public uint curPosition();
 	
 	/**
 	 * Gets the current token type.
@@ -243,11 +132,7 @@ public class ScannerG
 	 * structure.
 	 * Returns:the current token type.
 	 */
-	public GTokenType curToken()
-	{
-		// GTokenType g_scanner_cur_token (GScanner *scanner);
-		return g_scanner_cur_token(gScanner);
-	}
+	public GTokenType curToken();
 	
 	/**
 	 * Gets the current token value.
@@ -255,11 +140,7 @@ public class ScannerG
 	 * structure.
 	 * Returns:the current token value.
 	 */
-	public GTokenValue curValue()
-	{
-		// GTokenValue g_scanner_cur_value (GScanner *scanner);
-		return g_scanner_cur_value(gScanner);
-	}
+	public GTokenValue curValue();
 	
 	/**
 	 * Sets the current scope.
@@ -267,11 +148,7 @@ public class ScannerG
 	 * scopeId = the new scope id.
 	 * Returns:the old scope id.
 	 */
-	public uint setScope(uint scopeId)
-	{
-		// guint g_scanner_set_scope (GScanner *scanner,  guint scope_id);
-		return g_scanner_set_scope(gScanner, scopeId);
-	}
+	public uint setScope(uint scopeId);
 	
 	/**
 	 * Adds a symbol to the given scope.
@@ -280,11 +157,7 @@ public class ScannerG
 	 * symbol = the symbol to add.
 	 * value = the value of the symbol.
 	 */
-	public void scopeAddSymbol(uint scopeId, string symbol, void* value)
-	{
-		// void g_scanner_scope_add_symbol (GScanner *scanner,  guint scope_id,  const gchar *symbol,  gpointer value);
-		g_scanner_scope_add_symbol(gScanner, scopeId, Str.toStringz(symbol), value);
-	}
+	public void scopeAddSymbol(uint scopeId, string symbol, void* value);
 	
 	/**
 	 * Calls the given function for each of the symbol/value pairs in the
@@ -295,11 +168,7 @@ public class ScannerG
 	 * func = the function to call for each symbol/value pair.
 	 * userData = user data to pass to the function.
 	 */
-	public void scopeForeachSymbol(uint scopeId, GHFunc func, void* userData)
-	{
-		// void g_scanner_scope_foreach_symbol (GScanner *scanner,  guint scope_id,  GHFunc func,  gpointer user_data);
-		g_scanner_scope_foreach_symbol(gScanner, scopeId, func, userData);
-	}
+	public void scopeForeachSymbol(uint scopeId, GHFunc func, void* userData);
 	
 	/**
 	 * Looks up a symbol in a scope and return its value. If the
@@ -309,11 +178,7 @@ public class ScannerG
 	 * symbol = the symbol to look up.
 	 * Returns:the value of symbol in the given scope, or NULLif symbol is not bound in the given scope.
 	 */
-	public void* scopeLookupSymbol(uint scopeId, string symbol)
-	{
-		// gpointer g_scanner_scope_lookup_symbol (GScanner *scanner,  guint scope_id,  const gchar *symbol);
-		return g_scanner_scope_lookup_symbol(gScanner, scopeId, Str.toStringz(symbol));
-	}
+	public void* scopeLookupSymbol(uint scopeId, string symbol);
 	
 	/**
 	 * Removes a symbol from a scope.
@@ -321,11 +186,7 @@ public class ScannerG
 	 * scopeId = the scope id.
 	 * symbol = the symbol to remove.
 	 */
-	public void scopeRemoveSymbol(uint scopeId, string symbol)
-	{
-		// void g_scanner_scope_remove_symbol (GScanner *scanner,  guint scope_id,  const gchar *symbol);
-		g_scanner_scope_remove_symbol(gScanner, scopeId, Str.toStringz(symbol));
-	}
+	public void scopeRemoveSymbol(uint scopeId, string symbol);
 	
 	/**
 	 * Looks up a symbol in the current scope and return its value. If the
@@ -334,11 +195,7 @@ public class ScannerG
 	 * symbol = the symbol to look up.
 	 * Returns:the value of symbol in the current scope, or NULLif symbol is not bound in the current scope.
 	 */
-	public void* lookupSymbol(string symbol)
-	{
-		// gpointer g_scanner_lookup_symbol (GScanner *scanner,  const gchar *symbol);
-		return g_scanner_lookup_symbol(gScanner, Str.toStringz(symbol));
-	}
+	public void* lookupSymbol(string symbol);
 	
 	/**
 	 * Outputs a message through the scanner's msg_handler, resulting from an
@@ -364,9 +221,5 @@ public class ScannerG
 	 * isError = if TRUE it is output as an error. If FALSE it is output as a
 	 *  warning.
 	 */
-	public void unexpToken(GTokenType expectedToken, string identifierSpec, string symbolSpec, string symbolName, string message, int isError)
-	{
-		// void g_scanner_unexp_token (GScanner *scanner,  GTokenType expected_token,  const gchar *identifier_spec,  const gchar *symbol_spec,  const gchar *symbol_name,  const gchar *message,  gint is_error);
-		g_scanner_unexp_token(gScanner, expectedToken, Str.toStringz(identifierSpec), Str.toStringz(symbolSpec), Str.toStringz(symbolName), Str.toStringz(message), isError);
-	}
+	public void unexpToken(GTokenType expectedToken, string identifierSpec, string symbolSpec, string symbolName, string message, int isError);
 }

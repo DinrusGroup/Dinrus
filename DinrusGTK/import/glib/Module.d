@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Dynamic-Loading-of-Modules.html
- * outPack = glib
- * outFile = Module
- * strct   = GModule
- * realStrct=
- * ctorStrct=
- * clss    = Module
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_module_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GModule* -> Module
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Module;
 
@@ -130,30 +79,16 @@ public class Module
 	protected GModule* gModule;
 	
 	
-	public GModule* getModuleStruct()
-	{
-		return gModule;
-	}
+	public GModule* getModuleStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gModule;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GModule* gModule)
-	{
-		if(gModule is null)
-		{
-			this = null;
-			return;
-		}
-		this.gModule = gModule;
-	}
+	public this (GModule* gModule);
 	
 	/**
 	 */
@@ -162,11 +97,7 @@ public class Module
 	 * Checks if modules are supported on the current platform.
 	 * Returns:%TRUE if modules are supported.
 	 */
-	public static int supported()
-	{
-		// gboolean g_module_supported (void);
-		return g_module_supported();
-	}
+	public static int supported();
 	
 	/**
 	 * A portable way to build the filename of a module. The platform-specific
@@ -188,12 +119,8 @@ public class Module
 	 * moduleName = the name of the module.
 	 * Returns:the complete path of the module, including the standard libraryprefix and suffix. This should be freed when no longer needed.
 	 */
-	public static string buildPath(string directory, string moduleName)
-	{
-		// gchar* g_module_build_path (const gchar *directory,  const gchar *module_name);
-		return Str.toString(g_module_build_path(Str.toStringz(directory), Str.toStringz(moduleName)));
-	}
-	
+	public static string buildPath(string directory, string moduleName);
+
 	/**
 	 * Opens a module. If the module has already been opened, its reference
 	 * count is incremented.
@@ -212,16 +139,7 @@ public class Module
 	 * OR of any of the GModuleFlags.
 	 * Returns:a GModule on success, or NULL on failure.
 	 */
-	public static Module open(string fileName, GModuleFlags flags)
-	{
-		// GModule* g_module_open (const gchar *file_name,  GModuleFlags flags);
-		auto p = g_module_open(Str.toStringz(fileName), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Module(cast(GModule*) p);
-	}
+	public static Module open(string fileName, GModuleFlags flags);
 	
 	/**
 	 * Gets a symbol pointer from a module, such as one exported by G_MODULE_EXPORT.
@@ -231,49 +149,29 @@ public class Module
 	 * symbol = returns the pointer to the symbol value.
 	 * Returns:%TRUE on success.
 	 */
-	public int symbol(string symbolName, void** symbol)
-	{
-		// gboolean g_module_symbol (GModule *module,  const gchar *symbol_name,  gpointer *symbol);
-		return g_module_symbol(gModule, Str.toStringz(symbolName), symbol);
-	}
+	public int symbol(string symbolName, void** symbol);
 	
 	/**
 	 * Gets the filename from a GModule.
 	 * Returns:the filename of the module, or "main" if the module is the mainprogram itself.
 	 */
-	public string name()
-	{
-		// const gchar* g_module_name (GModule *module);
-		return Str.toString(g_module_name(gModule));
-	}
+	public string name();
 	
 	/**
 	 * Ensures that a module will never be unloaded.
 	 * Any future g_module_close() calls on the module will be ignored.
 	 */
-	public void makeResident()
-	{
-		// void g_module_make_resident (GModule *module);
-		g_module_make_resident(gModule);
-	}
+	public void makeResident();
 	
 	/**
 	 * Closes a module.
 	 * Returns:%TRUE on success.
 	 */
-	public int close()
-	{
-		// gboolean g_module_close (GModule *module);
-		return g_module_close(gModule);
-	}
+	public int close();
 	
 	/**
 	 * Gets a string describing the last module error.
 	 * Returns:a string describing the last module error.
 	 */
-	public static string error()
-	{
-		// const gchar* g_module_error (void);
-		return Str.toString(g_module_error());
-	}
+	public static string error();
 }

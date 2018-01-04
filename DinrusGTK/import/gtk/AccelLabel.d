@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkAccelLabel.html
- * outPack = gtk
- * outFile = AccelLabel
- * strct   = GtkAccelLabel
- * realStrct=
- * ctorStrct=
- * clss    = AccelLabel
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_accel_label_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.Closure
- * 	- gtkD.gtk.Widget
- * 	- gtkD.pango.PgAttributeList
- * 	- gtkD.pango.PgLayout
- * structWrap:
- * 	- GClosure* -> Closure
- * 	- GtkWidget* -> Widget
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoLayout* -> PgLayout
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.AccelLabel;
 
 public  import gtkD.gtkc.gtktypes;
@@ -122,38 +62,16 @@ public class AccelLabel : Label
 	protected GtkAccelLabel* gtkAccelLabel;
 	
 	
-	public GtkAccelLabel* getAccelLabelStruct()
-	{
-		return gtkAccelLabel;
-	}
+	public GtkAccelLabel* getAccelLabelStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkAccelLabel;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkAccelLabel* gtkAccelLabel)
-	{
-		if(gtkAccelLabel is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkAccelLabel);
-		if( ptr !is null )
-		{
-			this = cast(AccelLabel)ptr;
-			return;
-		}
-		super(cast(GtkLabel*)gtkAccelLabel);
-		this.gtkAccelLabel = gtkAccelLabel;
-	}
+	public this (GtkAccelLabel* gtkAccelLabel);
 	
 	/**
 	 */
@@ -164,16 +82,7 @@ public class AccelLabel : Label
 	 * string = the label string. Must be non-NULL.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string string)
-	{
-		// GtkWidget* gtk_accel_label_new (const gchar *string);
-		auto p = gtk_accel_label_new(Str.toStringz(string));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_accel_label_new(Str.toStringz(string))");
-		}
-		this(cast(GtkAccelLabel*) p);
-	}
+	public this (string string);
 	
 	/**
 	 * Sets the closure to be monitored by this accelerator label. The closure
@@ -181,38 +90,21 @@ public class AccelLabel : Label
 	 * Params:
 	 * accelClosure =  the closure to monitor for accelerator changes.
 	 */
-	public void setAccelClosure(Closure accelClosure)
-	{
-		// void gtk_accel_label_set_accel_closure (GtkAccelLabel *accel_label,  GClosure *accel_closure);
-		gtk_accel_label_set_accel_closure(gtkAccelLabel, (accelClosure is null) ? null : accelClosure.getClosureStruct());
-	}
+	public void setAccelClosure(Closure accelClosure);
 	
 	/**
 	 * Fetches the widget monitored by this accelerator label. See
 	 * gtk_accel_label_set_accel_widget().
 	 * Returns: the object monitored by the accelerator label, or NULL.
 	 */
-	public Widget getAccelWidget()
-	{
-		// GtkWidget* gtk_accel_label_get_accel_widget (GtkAccelLabel *accel_label);
-		auto p = gtk_accel_label_get_accel_widget(gtkAccelLabel);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getAccelWidget();
 	
 	/**
 	 * Sets the widget to be monitored by this accelerator label.
 	 * Params:
 	 * accelWidget =  the widget to be monitored.
 	 */
-	public void setAccelWidget(Widget accelWidget)
-	{
-		// void gtk_accel_label_set_accel_widget (GtkAccelLabel *accel_label,  GtkWidget *accel_widget);
-		gtk_accel_label_set_accel_widget(gtkAccelLabel, (accelWidget is null) ? null : accelWidget.getWidgetStruct());
-	}
+	public void setAccelWidget(Widget accelWidget);
 	
 	/**
 	 * Returns the width needed to display the accelerator key(s).
@@ -220,11 +112,7 @@ public class AccelLabel : Label
 	 * be needed by applications.
 	 * Returns:the width needed to display the accelerator key(s).
 	 */
-	public uint getAccelWidth()
-	{
-		// guint gtk_accel_label_get_accel_width (GtkAccelLabel *accel_label);
-		return gtk_accel_label_get_accel_width(gtkAccelLabel);
-	}
+	public uint getAccelWidth();
 	
 	/**
 	 * Recreates the string representing the accelerator keys.
@@ -232,9 +120,5 @@ public class AccelLabel : Label
 	 * accelerators are added or removed from the associated widget.
 	 * Returns:always returns FALSE.
 	 */
-	public int refetch()
-	{
-		// gboolean gtk_accel_label_refetch (GtkAccelLabel *accel_label);
-		return gtk_accel_label_refetch(gtkAccelLabel);
-	}
+	public int refetch();
 }

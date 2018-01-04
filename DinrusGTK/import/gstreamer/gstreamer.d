@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-Gst.html
- * outPack = gstreamer
- * outFile = gstreamer
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = GStreamer
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_init
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.gstreamer;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -131,17 +79,7 @@ public class GStreamer
 	/**
 	 * Call this function before using any other GStreamer functions in your applications.
 	 */
-	public static void init(string[] args) //public static void init(int* argc, char**[] argv)
-	{
-		char** argv = cast(char**) new char*[args.length];
-		int argc = 0;
-		foreach (string p; args)
-		{
-			argv[argc++] = cast(char*)p;
-		}
-		
-		gst_init(&argc, null);//cast(char**[])&argv);
-	}
+	public static void init(string[] args) ;
 	
 	/**
 	 */
@@ -161,20 +99,7 @@ public class GStreamer
 	 * Returns: TRUE if GStreamer could be initialized.
 	 * Throws: GException on failure.
 	 */
-	public static int initCheck(int* argc, char**[] argv)
-	{
-		// gboolean gst_init_check (int *argc,  char **argv[],  GError **err);
-		GError* err = null;
-		
-		auto p = gst_init_check(argc, argv, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static int initCheck(int* argc, char**[] argv);
 	
 	/**
 	 * Returns a GOptionGroup with GStreamer's argument specifications. The
@@ -188,11 +113,7 @@ public class GStreamer
 	 * (see the example at the beginning of this section).
 	 * Returns: a pointer to GStreamer's option group.
 	 */
-	public static GOptionGroup* initGetOptionGroup()
-	{
-		// GOptionGroup* gst_init_get_option_group (void);
-		return gst_init_get_option_group();
-	}
+	public static GOptionGroup* initGetOptionGroup();
 	
 	/**
 	 * Clean up any resources created by GStreamer in gst_init().
@@ -202,11 +123,7 @@ public class GStreamer
 	 * profiling tools.
 	 * After this call GStreamer (including this method) should not be used anymore.
 	 */
-	public static void deinit()
-	{
-		// void gst_deinit (void);
-		gst_deinit();
-	}
+	public static void deinit();
 	
 	/**
 	 * Gets the version number of the GStreamer library.
@@ -216,22 +133,14 @@ public class GStreamer
 	 * micro =  pointer to a guint to store the micro version number
 	 * nano =  pointer to a guint to store the nano version number
 	 */
-	public static void versio(uint* major, uint* minor, uint* micro, uint* nano)
-	{
-		// void gst_version (guint *major,  guint *minor,  guint *micro,  guint *nano);
-		gst_version(major, minor, micro, nano);
-	}
+	public static void versio(uint* major, uint* minor, uint* micro, uint* nano);
 	
 	/**
 	 * This function returns a string that is useful for describing this version
 	 * of GStreamer to the outside world: user agent strings, logging, ...
 	 * Returns: a newly allocated string describing this version of GStreamer.
 	 */
-	public static string versionString()
-	{
-		// gchar* gst_version_string (void);
-		return Str.toString(gst_version_string());
-	}
+	public static string versionString();
 	
 	/**
 	 * Some functions in the GStreamer core might install a custom SIGSEGV handler
@@ -242,11 +151,7 @@ public class GStreamer
 	 * wants to install its own handler without GStreamer interfering.
 	 * Returns: TRUE if GStreamer is allowed to install a custom SIGSEGV handler.Since 0.10.10
 	 */
-	public static int segtrapIsEnabled()
-	{
-		// gboolean gst_segtrap_is_enabled (void);
-		return gst_segtrap_is_enabled();
-	}
+	public static int segtrapIsEnabled();
 	
 	/**
 	 * Applications might want to disable/enable the SIGSEGV handling of
@@ -255,11 +160,7 @@ public class GStreamer
 	 * enabled =  whether a custom SIGSEGV handler should be installed.
 	 * Since 0.10.10
 	 */
-	public static void segtrapSetEnabled(int enabled)
-	{
-		// void gst_segtrap_set_enabled (gboolean enabled);
-		gst_segtrap_set_enabled(enabled);
-	}
+	public static void segtrapSetEnabled(int enabled);
 	
 	/**
 	 * By default GStreamer will perform a fork() when scanning and rebuilding the
@@ -268,11 +169,7 @@ public class GStreamer
 	 * gst_registry_fork_set_enabled() function.
 	 * Returns: TRUE if GStreamer will use fork() when rebuilding the registry. Onplatforms without fork(), this function will always return FALSE.Since 0.10.10
 	 */
-	public static int registryForkIsEnabled()
-	{
-		// gboolean gst_registry_fork_is_enabled (void);
-		return gst_registry_fork_is_enabled();
-	}
+	public static int registryForkIsEnabled();
 	
 	/**
 	 * Applications might want to disable/enable the usage of fork() when rebuilding
@@ -283,11 +180,7 @@ public class GStreamer
 	 * enabled =  whether rebuilding the registry may fork
 	 * Since 0.10.10
 	 */
-	public static void registryForkSetEnabled(int enabled)
-	{
-		// void gst_registry_fork_set_enabled (gboolean enabled);
-		gst_registry_fork_set_enabled(enabled);
-	}
+	public static void registryForkSetEnabled(int enabled);
 	
 	/**
 	 * Forces GStreamer to re-scan its plugin paths and update the default
@@ -305,9 +198,5 @@ public class GStreamer
 	 * Note that this function may block for a significant amount of time.
 	 * Returns: TRUE if the registry has been updated successfully (does not imply that there were changes), otherwise FALSE.Since 0.10.12
 	 */
-	public static int updateRegistry()
-	{
-		// gboolean gst_update_registry (void);
-		return gst_update_registry();
-	}
+	public static int updateRegistry();
 }

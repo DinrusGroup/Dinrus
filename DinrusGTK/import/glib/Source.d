@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Source
- * strct   = GSource
- * realStrct=
- * ctorStrct=
- * clss    = Source
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_source_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.MainContext
- * 	- gtkD.glib.TimeVal
- * structWrap:
- * 	- GMainContext* -> MainContext
- * 	- GSource* -> Source
- * 	- GTimeVal* -> TimeVal
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Source;
 
 public  import gtkD.gtkc.glibtypes;
@@ -139,30 +84,16 @@ public class Source
 	protected GSource* gSource;
 	
 	
-	public GSource* getSourceStruct()
-	{
-		return gSource;
-	}
+	public GSource* getSourceStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gSource;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSource* gSource)
-	{
-		if(gSource is null)
-		{
-			this = null;
-			return;
-		}
-		this.gSource = gSource;
-	}
+	public this (GSource* gSource);
 	
 	/**
 	 */
@@ -181,42 +112,20 @@ public class Source
 	 * structSize =  size of the GSource structure to create.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GSourceFuncs* sourceFuncs, uint structSize)
-	{
-		// GSource * g_source_new (GSourceFuncs *source_funcs,  guint struct_size);
-		auto p = g_source_new(sourceFuncs, structSize);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_source_new(sourceFuncs, structSize)");
-		}
-		this(cast(GSource*) p);
-	}
+	public this (GSourceFuncs* sourceFuncs, uint structSize);
 	
 	/**
 	 * Increases the reference count on a source by one.
 	 * Returns: source
 	 */
-	public Source doref()
-	{
-		// GSource * g_source_ref (GSource *source);
-		auto p = g_source_ref(gSource);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source doref();
 	
 	/**
 	 * Decreases the reference count of a source by one. If the
 	 * resulting reference count is zero the source and associated
 	 * memory will be destroyed.
 	 */
-	public void unref()
-	{
-		// void g_source_unref (GSource *source);
-		g_source_unref(gSource);
-	}
+	public void unref();
 	
 	/**
 	 * Sets the source functions (can be used to override
@@ -225,11 +134,7 @@ public class Source
 	 * Params:
 	 * funcs =  the new GSourceFuncs
 	 */
-	public void setFuncs(GSourceFuncs* funcs)
-	{
-		// void g_source_set_funcs (GSource *source,  GSourceFuncs *funcs);
-		g_source_set_funcs(gSource, funcs);
-	}
+	public void setFuncs(GSourceFuncs* funcs);
 	
 	/**
 	 * Adds a GSource to a context so that it will be executed within
@@ -238,22 +143,14 @@ public class Source
 	 * context =  a GMainContext (if NULL, the default context will be used)
 	 * Returns: the ID (greater than 0) for the source within the  GMainContext.
 	 */
-	public uint attach(MainContext context)
-	{
-		// guint g_source_attach (GSource *source,  GMainContext *context);
-		return g_source_attach(gSource, (context is null) ? null : context.getMainContextStruct());
-	}
+	public uint attach(MainContext context);
 	
 	/**
 	 * Removes a source from its GMainContext, if any, and mark it as
 	 * destroyed. The source cannot be subsequently added to another
 	 * context.
 	 */
-	public void destroy()
-	{
-		// void g_source_destroy (GSource *source);
-		g_source_destroy(gSource);
-	}
+	public void destroy();
 	
 	/**
 	 * Returns whether source has been destroyed.
@@ -303,11 +200,7 @@ public class Source
 	 * Since 2.12
 	 * Returns: TRUE if the source has been destroyed
 	 */
-	public int isDestroyed()
-	{
-		// gboolean g_source_is_destroyed (GSource *source);
-		return g_source_is_destroyed(gSource);
-	}
+	public int isDestroyed();
 	
 	/**
 	 * Sets the priority of a source. While the main loop is being
@@ -316,22 +209,14 @@ public class Source
 	 * Params:
 	 * priority =  the new priority.
 	 */
-	public void setPriority(int priority)
-	{
-		// void g_source_set_priority (GSource *source,  gint priority);
-		g_source_set_priority(gSource, priority);
-	}
+	public void setPriority(int priority);
 	
 	/**
 	 * Gets the priority of a source.
 	 * Returns: the priority of the source
 	 */
-	public int getPriority()
-	{
-		// gint g_source_get_priority (GSource *source);
-		return g_source_get_priority(gSource);
-	}
-	
+	public int getPriority();
+
 	/**
 	 * Sets whether a source can be called recursively. If can_recurse is
 	 * TRUE, then while the source is being dispatched then this source
@@ -340,22 +225,14 @@ public class Source
 	 * Params:
 	 * canRecurse =  whether recursion is allowed for this source
 	 */
-	public void setCanRecurse(int canRecurse)
-	{
-		// void g_source_set_can_recurse (GSource *source,  gboolean can_recurse);
-		g_source_set_can_recurse(gSource, canRecurse);
-	}
+	public void setCanRecurse(int canRecurse);
 	
 	/**
 	 * Checks whether a source is allowed to be called recursively.
 	 * see g_source_set_can_recurse().
 	 * Returns: whether recursion is allowed.
 	 */
-	public int getCanRecurse()
-	{
-		// gboolean g_source_get_can_recurse (GSource *source);
-		return g_source_get_can_recurse(gSource);
-	}
+	public int getCanRecurse();
 	
 	/**
 	 * Returns the numeric ID for a particular source. The ID of a source
@@ -364,27 +241,14 @@ public class Source
 	 * mapping from ID to source is done by g_main_context_find_source_by_id().
 	 * Returns: the ID (greater than 0) for the source
 	 */
-	public uint getId()
-	{
-		// guint g_source_get_id (GSource *source);
-		return g_source_get_id(gSource);
-	}
+	public uint getId();
 	
 	/**
 	 * Gets the GMainContext with which the source is associated.
 	 * Calling this function on a destroyed source is an error.
 	 * Returns: the GMainContext with which the source is associated, or NULL if the context has not yet been added to a source.
 	 */
-	public MainContext getContext()
-	{
-		// GMainContext * g_source_get_context (GSource *source);
-		auto p = g_source_get_context(gSource);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainContext(cast(GMainContext*) p);
-	}
+	public MainContext getContext();
 	
 	/**
 	 * Sets the callback function for a source. The callback for a source is
@@ -399,11 +263,7 @@ public class Source
 	 * data =  the data to pass to callback function
 	 * notify =  a function to call when data is no longer in use, or NULL.
 	 */
-	public void setCallback(GSourceFunc func, void* data, GDestroyNotify notify)
-	{
-		// void g_source_set_callback (GSource *source,  GSourceFunc func,  gpointer data,  GDestroyNotify notify);
-		g_source_set_callback(gSource, func, data, notify);
-	}
+	public void setCallback(GSourceFunc func, void* data, GDestroyNotify notify);
 	
 	/**
 	 * Sets the callback function storing the data as a refcounted callback
@@ -417,11 +277,7 @@ public class Source
 	 * callbackFuncs =  functions for reference counting callback_data
 	 *  and getting the callback and data
 	 */
-	public void setCallbackIndirect(void* callbackData, GSourceCallbackFuncs* callbackFuncs)
-	{
-		// void g_source_set_callback_indirect (GSource *source,  gpointer callback_data,  GSourceCallbackFuncs *callback_funcs);
-		g_source_set_callback_indirect(gSource, callbackData, callbackFuncs);
-	}
+	public void setCallbackIndirect(void* callbackData, GSourceCallbackFuncs* callbackFuncs);
 	
 	/**
 	 * Adds a file descriptor to the set of file descriptors polled for
@@ -433,11 +289,7 @@ public class Source
 	 * fd =  a GPollFD structure holding information about a file
 	 *  descriptor to watch.
 	 */
-	public void addPoll(GPollFD* fd)
-	{
-		// void g_source_add_poll (GSource *source,  GPollFD *fd);
-		g_source_add_poll(gSource, fd);
-	}
+	public void addPoll(GPollFD* fd);
 	
 	/**
 	 * Removes a file descriptor from the set of file descriptors polled for
@@ -445,11 +297,7 @@ public class Source
 	 * Params:
 	 * fd =  a GPollFD structure previously passed to g_source_add_poll().
 	 */
-	public void removePoll(GPollFD* fd)
-	{
-		// void g_source_remove_poll (GSource *source,  GPollFD *fd);
-		g_source_remove_poll(gSource, fd);
-	}
+	public void removePoll(GPollFD* fd);
 	
 	/**
 	 * Gets the "current time" to be used when checking
@@ -460,11 +308,7 @@ public class Source
 	 * Params:
 	 * timeval =  GTimeVal structure in which to store current time.
 	 */
-	public void getCurrentTime(TimeVal timeval)
-	{
-		// void g_source_get_current_time (GSource *source,  GTimeVal *timeval);
-		g_source_get_current_time(gSource, (timeval is null) ? null : timeval.getTimeValStruct());
-	}
+	public void getCurrentTime(TimeVal timeval);
 	
 	/**
 	 * Removes the source with the given id from the default main context.
@@ -479,11 +323,7 @@ public class Source
 	 * tag =  the ID of the source to remove.
 	 * Returns: TRUE if the source was found and removed.
 	 */
-	public static int remove(uint tag)
-	{
-		// gboolean g_source_remove (guint tag);
-		return g_source_remove(tag);
-	}
+	public static int remove(uint tag);
 	
 	/**
 	 * Removes a source from the default main loop context given the
@@ -494,11 +334,7 @@ public class Source
 	 * userData =  the user data for the callback
 	 * Returns: TRUE if a source was found and removed.
 	 */
-	public static int removeByFuncsUserData(GSourceFuncs* funcs, void* userData)
-	{
-		// gboolean g_source_remove_by_funcs_user_data (GSourceFuncs *funcs,  gpointer user_data);
-		return g_source_remove_by_funcs_user_data(funcs, userData);
-	}
+	public static int removeByFuncsUserData(GSourceFuncs* funcs, void* userData);
 	
 	/**
 	 * Removes a source from the default main loop context given the user
@@ -508,9 +344,5 @@ public class Source
 	 * userData =  the user_data for the callback.
 	 * Returns: TRUE if a source was found and removed.
 	 */
-	public static int removeByUserData(void* userData)
-	{
-		// gboolean g_source_remove_by_user_data (gpointer user_data);
-		return g_source_remove_by_user_data(userData);
-	}
+	public static int removeByUserData(void* userData);
 }

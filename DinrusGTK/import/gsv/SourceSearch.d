@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtksourceview-20-Searching-in-a-GtkSourceBuffer.html
- * outPack = gsv
- * outFile = SourceSearch
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = SourceSearch
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_source_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.TextIter
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GtkTextIter* -> TextIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gsv.SourceSearch;
 
 public  import gtkD.gsvc.gsvtypes;
@@ -86,11 +33,7 @@ public class SourceSearch
 	 * limit =  location of last possible match_start, or %NULL for start of buffer.
 	 * Returns: whether a match was found.
 	 */
-	public static int backwardSearch(TextIter iter, string str, GtkSourceSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit)
-	{
-		// gboolean gtk_source_iter_backward_search (const GtkTextIter *iter,  const gchar *str,  GtkSourceSearchFlags flags,  GtkTextIter *match_start,  GtkTextIter *match_end,  const GtkTextIter *limit);
-		return gtk_source_iter_backward_search((iter is null) ? null : iter.getTextIterStruct(), Str.toStringz(str), flags, (matchStart is null) ? null : matchStart.getTextIterStruct(), (matchEnd is null) ? null : matchEnd.getTextIterStruct(), (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public static int backwardSearch(TextIter iter, string str, GtkSourceSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit);
 	
 	/**
 	 * Searches forward for str. Any match is returned by setting
@@ -119,9 +62,5 @@ public class SourceSearch
 	 * limit =  bound for the search, or %NULL for the end of the buffer.
 	 * Returns: whether a match was found.
 	 */
-	public static int forwardSearch(TextIter iter, string str, GtkSourceSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit)
-	{
-		// gboolean gtk_source_iter_forward_search (const GtkTextIter *iter,  const gchar *str,  GtkSourceSearchFlags flags,  GtkTextIter *match_start,  GtkTextIter *match_end,  const GtkTextIter *limit);
-		return gtk_source_iter_forward_search((iter is null) ? null : iter.getTextIterStruct(), Str.toStringz(str), flags, (matchStart is null) ? null : matchStart.getTextIterStruct(), (matchEnd is null) ? null : matchEnd.getTextIterStruct(), (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public static int forwardSearch(TextIter iter, string str, GtkSourceSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit);
 }

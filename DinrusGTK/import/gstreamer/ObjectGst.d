@@ -1,67 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstObject.html
- * outPack = gstreamer
- * outFile = ObjectGst
- * strct   = GstObject
- * realStrct=
- * ctorStrct=
- * clss    = ObjectGst
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_object_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_object_save_thyself
- * 	- gst_object_restore_thyself
- * 	- gst_class_signal_emit_by_name
- * 	- gst_class_signal_connect
- * 	- gst_object_ref
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.ObjectG
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GError* -> ErrorG
- * 	- GList* -> ListG
- * 	- GObject* -> ObjectG
- * 	- GstObject* -> ObjectGst
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.ObjectGst;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -131,38 +67,16 @@ public class ObjectGst : ObjectG
 	protected GstObject* gstObject;
 	
 	
-	public GstObject* getObjectGstStruct()
-	{
-		return gstObject;
-	}
+	public GstObject* getObjectGstStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstObject;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstObject* gstObject)
-	{
-		if(gstObject is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstObject);
-		if( ptr !is null )
-		{
-			this = cast(ObjectGst)ptr;
-			return;
-		}
-		super(cast(GObject*)gstObject);
-		this.gstObject = gstObject;
-	}
+	public this (GstObject* gstObject);
 	
 	/**
 	 * Increments the refence count on object. This function
@@ -174,11 +88,7 @@ public class ObjectGst : ObjectG
 	 * Returns:
 	 *  A pointer to object
 	 */
-	public void* reference()
-	{
-		// gpointer gst_object_ref (gpointer object);
-		return gst_object_ref( gstObject );
-	}
+	public void* reference();
 	/*public static void* ref(void* object)
 	{
 		// gpointer gst_object_ref (gpointer object);
@@ -195,110 +105,30 @@ public class ObjectGst : ObjectG
 	 * typically attached to the toplevel bin to receive notifications from all
 	 * the elements contained in that bin.
 	 */
-	void addOnDeepNotify(void delegate(ObjectG, GParamSpec*, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("deep-notify" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"deep-notify",
-			cast(GCallback)&callBackDeepNotify,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["deep-notify"] = 1;
-		}
-		onDeepNotifyListeners ~= dlg;
-	}
-	extern(C) static void callBackDeepNotify(GstObject* gstobjectStruct, GObject* propObject, GParamSpec* prop, ObjectGst objectGst)
-	{
-		foreach ( void delegate(ObjectG, GParamSpec*, ObjectGst) dlg ; objectGst.onDeepNotifyListeners )
-		{
-			dlg(new ObjectG(propObject), prop, objectGst);
-		}
-	}
+	void addOnDeepNotify(void delegate(ObjectG, GParamSpec*, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDeepNotify(GstObject* gstobjectStruct, GObject* propObject, GParamSpec* prop, ObjectGst objectGst);
 	
 	void delegate(gpointer, ObjectGst)[] onObjectSavedListeners;
 	/**
 	 * Trigered whenever a new object is saved to XML. You can connect to this
 	 * signal to insert custom XML tags into the core XML.
 	 */
-	void addOnObjectSaved(void delegate(gpointer, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("object-saved" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"object-saved",
-			cast(GCallback)&callBackObjectSaved,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["object-saved"] = 1;
-		}
-		onObjectSavedListeners ~= dlg;
-	}
-	extern(C) static void callBackObjectSaved(GstObject* gstobjectStruct, gpointer xmlNode, ObjectGst objectGst)
-	{
-		foreach ( void delegate(gpointer, ObjectGst) dlg ; objectGst.onObjectSavedListeners )
-		{
-			dlg(xmlNode, objectGst);
-		}
-	}
+	void addOnObjectSaved(void delegate(gpointer, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackObjectSaved(GstObject* gstobjectStruct, gpointer xmlNode, ObjectGst objectGst);
 	
 	void delegate(ObjectG, ObjectGst)[] onParentSetListeners;
 	/**
 	 * Emitted when the parent of an object is set.
 	 */
-	void addOnParentSet(void delegate(ObjectG, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("parent-set" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"parent-set",
-			cast(GCallback)&callBackParentSet,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["parent-set"] = 1;
-		}
-		onParentSetListeners ~= dlg;
-	}
-	extern(C) static void callBackParentSet(GstObject* gstobjectStruct, GObject* parent, ObjectGst objectGst)
-	{
-		foreach ( void delegate(ObjectG, ObjectGst) dlg ; objectGst.onParentSetListeners )
-		{
-			dlg(new ObjectG(parent), objectGst);
-		}
-	}
+	void addOnParentSet(void delegate(ObjectG, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackParentSet(GstObject* gstobjectStruct, GObject* parent, ObjectGst objectGst);
 	
 	void delegate(ObjectG, ObjectGst)[] onParentUnsetListeners;
 	/**
 	 * Emitted when the parent of an object is unset.
 	 */
-	void addOnParentUnset(void delegate(ObjectG, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("parent-unset" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"parent-unset",
-			cast(GCallback)&callBackParentUnset,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["parent-unset"] = 1;
-		}
-		onParentUnsetListeners ~= dlg;
-	}
-	extern(C) static void callBackParentUnset(GstObject* gstobjectStruct, GObject* parent, ObjectGst objectGst)
-	{
-		foreach ( void delegate(ObjectG, ObjectGst) dlg ; objectGst.onParentUnsetListeners )
-		{
-			dlg(new ObjectG(parent), objectGst);
-		}
-	}
+	void addOnParentUnset(void delegate(ObjectG, ObjectGst) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackParentUnset(GstObject* gstobjectStruct, GObject* parent, ObjectGst objectGst);
 	
 	
 	/**
@@ -310,11 +140,7 @@ public class ObjectGst : ObjectG
 	 * name =  new name of object
 	 * Returns: TRUE if the name could be set. Since Objects that havea parent cannot be renamed, this function returns FALSE in thosecases.MT safe. This function grabs and releases object's LOCK.
 	 */
-	public int setName(string name)
-	{
-		// gboolean gst_object_set_name (GstObject *object,  const gchar *name);
-		return gst_object_set_name(gstObject, Str.toStringz(name));
-	}
+	public int setName(string name);
 	
 	/**
 	 * Returns a copy of the name of object.
@@ -323,11 +149,7 @@ public class ObjectGst : ObjectG
 	 * as well.
 	 * Returns: the name of object. g_free() after usage.MT safe. This function grabs and releases object's LOCK.
 	 */
-	public string getName()
-	{
-		// gchar* gst_object_get_name (GstObject *object);
-		return Str.toString(gst_object_get_name(gstObject));
-	}
+	public string getName();
 	
 	/**
 	 * Sets the parent of object to parent. The object's reference count will
@@ -338,38 +160,21 @@ public class ObjectGst : ObjectG
 	 * parent =  new parent of object
 	 * Returns: TRUE if parent could be set or FALSE when objectalready had a parent or object and parent are the same.MT safe. Grabs and releases object's LOCK.
 	 */
-	public int setParent(ObjectGst parent)
-	{
-		// gboolean gst_object_set_parent (GstObject *object,  GstObject *parent);
-		return gst_object_set_parent(gstObject, (parent is null) ? null : parent.getObjectGstStruct());
-	}
+	public int setParent(ObjectGst parent);
 	
 	/**
 	 * Returns the parent of object. This function increases the refcount
 	 * of the parent object so you should gst_object_unref() it after usage.
 	 * Returns: parent of object, this can be NULL if object has no parent. unref after usage.MT safe. Grabs and releases object's LOCK.
 	 */
-	public ObjectGst getParent()
-	{
-		// GstObject* gst_object_get_parent (GstObject *object);
-		auto p = gst_object_get_parent(gstObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectGst(cast(GstObject*) p);
-	}
+	public ObjectGst getParent();
 	
 	/**
 	 * Clear the parent of object, removing the associated reference.
 	 * This function decreases the refcount of object.
 	 * MT safe. Grabs and releases object's lock.
 	 */
-	public void unparent()
-	{
-		// void gst_object_unparent (GstObject *object);
-		gst_object_unparent(gstObject);
-	}
+	public void unparent();
 	
 	/**
 	 * Returns a copy of the name prefix of object.
@@ -378,11 +183,7 @@ public class ObjectGst : ObjectG
 	 * as well.
 	 * Returns: the name prefix of object. g_free() after usage.MT safe. This function grabs and releases object's LOCK.
 	 */
-	public string getNamePrefix()
-	{
-		// gchar* gst_object_get_name_prefix (GstObject *object);
-		return Str.toString(gst_object_get_name_prefix(gstObject));
-	}
+	public string getNamePrefix();
 	
 	/**
 	 * Sets the name prefix of object to name_prefix.
@@ -392,11 +193,7 @@ public class ObjectGst : ObjectG
 	 * Params:
 	 * namePrefix =  new name prefix of object
 	 */
-	public void setNamePrefix(string namePrefix)
-	{
-		// void gst_object_set_name_prefix (GstObject *object,  const gchar *name_prefix);
-		gst_object_set_name_prefix(gstObject, Str.toStringz(namePrefix));
-	}
+	public void setNamePrefix(string namePrefix);
 	
 	/**
 	 * A default deep_notify signal callback for an object. The user data
@@ -412,11 +209,7 @@ public class ObjectGst : ObjectG
 	 * excludedProps =  a set of user-specified properties to exclude or
 	 *  NULL to show all changes.
 	 */
-	public static void defaultDeepNotify(ObjectG object, ObjectGst orig, GParamSpec* pspec, char** excludedProps)
-	{
-		// void gst_object_default_deep_notify (GObject *object,  GstObject *orig,  GParamSpec *pspec,  gchar **excluded_props);
-		gst_object_default_deep_notify((object is null) ? null : object.getObjectGStruct(), (orig is null) ? null : orig.getObjectGstStruct(), pspec, excludedProps);
-	}
+	public static void defaultDeepNotify(ObjectG object, ObjectGst orig, GParamSpec* pspec, char** excludedProps);
 	
 	/**
 	 * A default error function.
@@ -425,11 +218,7 @@ public class ObjectGst : ObjectG
 	 * error =  the GError.
 	 * dbug =  an additional debug information string, or NULL.
 	 */
-	public void defaultError(ErrorG error, string dbug)
-	{
-		// void gst_object_default_error (GstObject *source,  GError *error,  gchar *debug);
-		gst_object_default_error(gstObject, (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug));
-	}
+	public void defaultError(ErrorG error, string dbug);
 	
 	/**
 	 * Checks to see if there is any object named name in list. This function
@@ -442,11 +231,7 @@ public class ObjectGst : ObjectG
 	 * name =  the name to search for
 	 * Returns: TRUE if a GstObject named name does not appear in list, FALSE if it does.MT safe. Grabs and releases the LOCK of each object in the list.
 	 */
-	public static int checkUniqueness(ListG list, string name)
-	{
-		// gboolean gst_object_check_uniqueness (GList *list,  const gchar *name);
-		return gst_object_check_uniqueness((list is null) ? null : list.getListGStruct(), Str.toStringz(name));
-	}
+	public static int checkUniqueness(ListG list, string name);
 	
 	/**
 	 * Check if object has an ancestor ancestor somewhere up in
@@ -455,11 +240,7 @@ public class ObjectGst : ObjectG
 	 * ancestor =  a GstObject to check as ancestor
 	 * Returns: TRUE if ancestor is an ancestor of object.MT safe. Grabs and releases object's locks.
 	 */
-	public int hasAncestor(ObjectGst ancestor)
-	{
-		// gboolean gst_object_has_ancestor (GstObject *object,  GstObject *ancestor);
-		return gst_object_has_ancestor(gstObject, (ancestor is null) ? null : ancestor.getObjectGstStruct());
-	}
+	public int hasAncestor(ObjectGst ancestor);
 	
 	/**
 	 * Decrements the refence count on object. If reference count hits
@@ -470,11 +251,7 @@ public class ObjectGst : ObjectG
 	 * Params:
 	 * object =  a GstObject to unreference
 	 */
-	public static void unref(void* object)
-	{
-		// void gst_object_unref (gpointer object);
-		gst_object_unref(object);
-	}
+	public static void unref(void* object);
 	
 	/**
 	 * If object was floating, the GST_OBJECT_FLOATING flag is removed
@@ -490,11 +267,7 @@ public class ObjectGst : ObjectG
 	 * Params:
 	 * object =  a GstObject to sink
 	 */
-	public static void sink(void* object)
-	{
-		// void gst_object_sink (gpointer object);
-		gst_object_sink(object);
-	}
+	public static void sink(void* object);
 	
 	/**
 	 * Unrefs the GstObject pointed to by oldobj, refs newobj and
@@ -508,20 +281,12 @@ public class ObjectGst : ObjectG
 	 * oldobj =  pointer to a place of a GstObject to replace
 	 * newobj =  a new GstObject
 	 */
-	public static void replace(GstObject** oldobj, ObjectGst newobj)
-	{
-		// void gst_object_replace (GstObject **oldobj,  GstObject *newobj);
-		gst_object_replace(oldobj, (newobj is null) ? null : newobj.getObjectGstStruct());
-	}
+	public static void replace(GstObject** oldobj, ObjectGst newobj);
 	
 	/**
 	 * Generates a string describing the path of object in
 	 * the object hierarchy. Only useful (or used) for debugging.
 	 * Returns: a string describing the path of object. You must g_free() the string after usage.MT safe. Grabs and releases the GstObject's LOCK for all objects in the hierarchy.
 	 */
-	public string getPathString()
-	{
-		// gchar* gst_object_get_path_string (GstObject *object);
-		return Str.toString(gst_object_get_path_string(gstObject));
-	}
+	public string getPathString();
 }

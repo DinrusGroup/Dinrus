@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-Generic-values.html
- * outPack = gobject
- * outFile = Value
- * strct   = GValue
- * realStrct=
- * ctorStrct=
- * clss    = Value
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_value_
- * omit structs:
- * 	- GValue
- * omit prefixes:
- * omit code:
- * 	- g_value_init
- * 	- g_value_reset
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.ParamSpec
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GParamSpec* -> ParamSpec
- * 	- GValue* -> Value
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gobject.Value;
 
 public  import gtkD.gtkc.gobjecttypes;
@@ -137,78 +79,34 @@ public class Value
 	protected GValue* gValue;
 	
 	
-	public GValue* getValueStruct()
-	{
-		return gValue;
-	}
+	public GValue* getValueStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gValue;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GValue* gValue)
-	{
-		if(gValue is null)
-		{
-			this = null;
-			return;
-		}
-		this.gValue = gValue;
-	}
+	public this (GValue* gValue);
 	
 	/** */
-	public this()
-	{
-		this(new GValue);
-	}
+	public this();
 	
 	/** */
-	this(Pixbuf pixbuf)
-	{
-		GValue* v = new GValue;
-		//v.g_type = DUIType.PIXBUF;
-		v.g_type = Pixbuf.getType();
-		v.data1.v_pointer = cast(void*)(pixbuf.getPixbufStruct());
-		this(v);
-	}
+	this(Pixbuf pixbuf);
 	
 	/** */
-	this(string value)
-	{
-		this();
-		init(GType.STRING);
-		setString(value);
-	}
+	this(string value);
 	
 	/** */
-	this(int value)
-	{
-		this();
-		init(GType.INT);
-		setInt(value);
-	}
+	this(int value);
 	
 	/** */
-	this(float value)
-	{
-		this();
-		init(GType.FLOAT);
-		setFloat(value);
-	}
+	this(float value);
 	
 	/** */
-	this(double value)
-	{
-		this();
-		init(GType.DOUBLE);
-		setDouble(value);
-	}
+	this(double value);
 	
 	/**
 	 * Initializes value with the default value of type.
@@ -218,12 +116,7 @@ public class Value
 	 * Returns:
 	 *  the GValue structure that has been passed in
 	 */
-	public Value init(GType gType)
-	{
-		// GValue* g_value_init (GValue *value,  GType g_type);
-		g_value_init(gValue, gType);
-		return this;
-	}
+	public Value init(GType gType);
 	
 	/**
 	 * Clears the current value in value and resets it to the default value
@@ -233,12 +126,7 @@ public class Value
 	 * Returns:
 	 *  the GValue structure that has been passed in
 	 */
-	public Value reset()
-	{
-		// GValue* g_value_reset (GValue *value);
-		g_value_reset(gValue);
-		return this;
-	}
+	public Value reset();
 	
 	
 	
@@ -261,11 +149,7 @@ public class Value
 	 * Params:
 	 * destValue =  An initialized GValue structure of the same type as src_value.
 	 */
-	public void copy(Value destValue)
-	{
-		// void g_value_copy (const GValue *src_value,  GValue *dest_value);
-		g_value_copy(gValue, (destValue is null) ? null : destValue.getValueStruct());
-	}
+	public void copy(Value destValue);
 	
 	/**
 	 * Clears the current value in value and "unsets" the type,
@@ -273,32 +157,20 @@ public class Value
 	 * An unset value is the same as an uninitialized (zero-filled)
 	 * GValue structure.
 	 */
-	public void unset()
-	{
-		// void g_value_unset (GValue *value);
-		g_value_unset(gValue);
-	}
+	public void unset();
 	
 	/**
 	 * Sets value from an instantiatable type via the
 	 * value_table's collect_value() function.
 	 */
-	public void setInstance(void* instanc)
-	{
-		// void g_value_set_instance (GValue *value,  gpointer instance);
-		g_value_set_instance(gValue, instanc);
-	}
+	public void setInstance(void* instanc);
 	
 	/**
 	 * Determines if value will fit inside the size of a pointer value.
 	 * This is an internal function introduced mainly for C marshallers.
 	 * Returns: TRUE if value will fit inside a pointer value.
 	 */
-	public int fitsPointer()
-	{
-		// gboolean g_value_fits_pointer (const GValue *value);
-		return g_value_fits_pointer(gValue);
-	}
+	public int fitsPointer();
 	
 	/**
 	 * Return the value contents as pointer. This function asserts that
@@ -306,11 +178,7 @@ public class Value
 	 * This is an internal function introduced mainly for C marshallers.
 	 * Returns: TRUE if value will fit inside a pointer value.
 	 */
-	public void* peekPointer()
-	{
-		// gpointer g_value_peek_pointer (const GValue *value);
-		return g_value_peek_pointer(gValue);
-	}
+	public void* peekPointer();
 	
 	/**
 	 * Returns whether a GValue of type src_type can be copied into
@@ -320,11 +188,7 @@ public class Value
 	 * destType =  destination type for copying.
 	 * Returns: TRUE if g_value_copy() is possible with src_type and dest_type.
 	 */
-	public static int typeCompatible(GType srcType, GType destType)
-	{
-		// gboolean g_value_type_compatible (GType src_type,  GType dest_type);
-		return g_value_type_compatible(srcType, destType);
-	}
+	public static int typeCompatible(GType srcType, GType destType);
 	
 	/**
 	 * Check whether g_value_transform() is able to transform values
@@ -334,11 +198,7 @@ public class Value
 	 * destType =  Target type.
 	 * Returns: TRUE if the transformation is possible, FALSE otherwise.
 	 */
-	public static int typeTransformable(GType srcType, GType destType)
-	{
-		// gboolean g_value_type_transformable (GType src_type,  GType dest_type);
-		return g_value_type_transformable(srcType, destType);
-	}
+	public static int typeTransformable(GType srcType, GType destType);
 	
 	/**
 	 * Tries to cast the contents of src_value into a type appropriate
@@ -352,11 +212,7 @@ public class Value
 	 * destValue =  Target value.
 	 * Returns: Whether a transformation rule was found and could be applied. Upon failing transformations, dest_value is left untouched.
 	 */
-	public int transform(Value destValue)
-	{
-		// gboolean g_value_transform (const GValue *src_value,  GValue *dest_value);
-		return g_value_transform(gValue, (destValue is null) ? null : destValue.getValueStruct());
-	}
+	public int transform(Value destValue);
 	
 	/**
 	 * Registers a value transformation function for use in g_value_transform().
@@ -368,11 +224,7 @@ public class Value
 	 * transformFunc =  a function which transforms values of type src_type
 	 *  into value of type dest_type
 	 */
-	public static void registerTransformFunc(GType srcType, GType destType, GValueTransform transformFunc)
-	{
-		// void g_value_register_transform_func (GType src_type,  GType dest_type,  GValueTransform transform_func);
-		g_value_register_transform_func(srcType, destType, transformFunc);
-	}
+	public static void registerTransformFunc(GType srcType, GType destType, GValueTransform transformFunc);
 	
 	/**
 	 * Return a newly allocated string, which describes the contents of a
@@ -381,11 +233,7 @@ public class Value
 	 * described may change between different GLib versions.
 	 * Returns: Newly allocated string.
 	 */
-	public string gStrdupValueContents()
-	{
-		// gchar* g_strdup_value_contents (const GValue *value);
-		return Str.toString(g_strdup_value_contents(gValue));
-	}
+	public string gStrdupValueContents();
 	
 	/**
 	 * Creates a new GParamSpecBoolean instance specifying a G_TYPE_BOOLEAN
@@ -399,37 +247,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecBoolean(string name, string nick, string blurb, int defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_boolean (const gchar *name,  const gchar *nick,  const gchar *blurb,  gboolean default_value,  GParamFlags flags);
-		auto p = g_param_spec_boolean(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecBoolean(string name, string nick, string blurb, int defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_BOOLEAN GValue to v_boolean.
 	 * Params:
 	 * vBoolean =  boolean value to be set
 	 */
-	public void setBoolean(int vBoolean)
-	{
-		// void g_value_set_boolean (GValue *value,  gboolean v_boolean);
-		g_value_set_boolean(gValue, vBoolean);
-	}
+	public void setBoolean(int vBoolean);
 	
 	/**
 	 * Get the contents of a G_TYPE_BOOLEAN GValue.
 	 * Returns: boolean contents of value
 	 */
-	public int getBoolean()
-	{
-		// gboolean g_value_get_boolean (const GValue *value);
-		return g_value_get_boolean(gValue);
-	}
+	public int getBoolean();
 	
 	/**
 	 * Creates a new GParamSpecChar instance specifying a G_TYPE_CHAR property.
@@ -443,37 +274,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecChar(string name, string nick, string blurb, byte minimum, byte maximum, byte defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_char (const gchar *name,  const gchar *nick,  const gchar *blurb,  gint8 minimum,  gint8 maximum,  gint8 default_value,  GParamFlags flags);
-		auto p = g_param_spec_char(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecChar(string name, string nick, string blurb, byte minimum, byte maximum, byte defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_CHAR GValue to v_char.
 	 * Params:
 	 * vChar =  character value to be set
 	 */
-	public void setChar(char vChar)
-	{
-		// void g_value_set_char (GValue *value,  gchar v_char);
-		g_value_set_char(gValue, vChar);
-	}
+	public void setChar(char vChar);
 	
 	/**
 	 * Get the contents of a G_TYPE_CHAR GValue.
 	 * Returns: character contents of value
 	 */
-	public char getChar()
-	{
-		// gchar g_value_get_char (const GValue *value);
-		return g_value_get_char(gValue);
-	}
+	public char getChar();
 	
 	/**
 	 * Creates a new GParamSpecUChar instance specifying a G_TYPE_UCHAR property.
@@ -487,37 +301,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecUchar(string name, string nick, string blurb, ubyte minimum, ubyte maximum, ubyte defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_uchar (const gchar *name,  const gchar *nick,  const gchar *blurb,  guint8 minimum,  guint8 maximum,  guint8 default_value,  GParamFlags flags);
-		auto p = g_param_spec_uchar(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecUchar(string name, string nick, string blurb, ubyte minimum, ubyte maximum, ubyte defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_UCHAR GValue to v_uchar.
 	 * Params:
 	 * vUchar =  unsigned character value to be set
 	 */
-	public void setUchar(char vUchar)
-	{
-		// void g_value_set_uchar (GValue *value,  guchar v_uchar);
-		g_value_set_uchar(gValue, vUchar);
-	}
+	public void setUchar(char vUchar);
 	
 	/**
 	 * Get the contents of a G_TYPE_UCHAR GValue.
 	 * Returns: unsigned character contents of value
 	 */
-	public char getUchar()
-	{
-		// guchar g_value_get_uchar (const GValue *value);
-		return g_value_get_uchar(gValue);
-	}
+	public char getUchar();
 	
 	/**
 	 * Creates a new GParamSpecInt instance specifying a G_TYPE_INT property.
@@ -532,37 +329,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecInt(string name, string nick, string blurb, int minimum, int maximum, int defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_int (const gchar *name,  const gchar *nick,  const gchar *blurb,  gint minimum,  gint maximum,  gint default_value,  GParamFlags flags);
-		auto p = g_param_spec_int(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecInt(string name, string nick, string blurb, int minimum, int maximum, int defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_INT GValue to v_int.
 	 * Params:
 	 * vInt =  integer value to be set
 	 */
-	public void setInt(int vInt)
-	{
-		// void g_value_set_int (GValue *value,  gint v_int);
-		g_value_set_int(gValue, vInt);
-	}
+	public void setInt(int vInt);
 	
 	/**
 	 * Get the contents of a G_TYPE_INT GValue.
 	 * Returns: integer contents of value
 	 */
-	public int getInt()
-	{
-		// gint g_value_get_int (const GValue *value);
-		return g_value_get_int(gValue);
-	}
+	public int getInt();
 	
 	/**
 	 * Creates a new GParamSpecUInt instance specifying a G_TYPE_UINT property.
@@ -577,37 +357,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecUint(string name, string nick, string blurb, uint minimum, uint maximum, uint defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_uint (const gchar *name,  const gchar *nick,  const gchar *blurb,  guint minimum,  guint maximum,  guint default_value,  GParamFlags flags);
-		auto p = g_param_spec_uint(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecUint(string name, string nick, string blurb, uint minimum, uint maximum, uint defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_UINT GValue to v_uint.
 	 * Params:
 	 * vUint =  unsigned integer value to be set
 	 */
-	public void setUint(uint vUint)
-	{
-		// void g_value_set_uint (GValue *value,  guint v_uint);
-		g_value_set_uint(gValue, vUint);
-	}
+	public void setUint(uint vUint);
 	
 	/**
 	 * Get the contents of a G_TYPE_UINT GValue.
 	 * Returns: unsigned integer contents of value
 	 */
-	public uint getUint()
-	{
-		// guint g_value_get_uint (const GValue *value);
-		return g_value_get_uint(gValue);
-	}
+	public uint getUint();
 	
 	/**
 	 * Creates a new GParamSpecLong instance specifying a G_TYPE_LONG property.
@@ -622,37 +385,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecLong(string name, string nick, string blurb, int minimum, int maximum, int defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_long (const gchar *name,  const gchar *nick,  const gchar *blurb,  glong minimum,  glong maximum,  glong default_value,  GParamFlags flags);
-		auto p = g_param_spec_long(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecLong(string name, string nick, string blurb, int minimum, int maximum, int defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_LONG GValue to v_long.
 	 * Params:
 	 * vLong =  long integer value to be set
 	 */
-	public void setLong(int vLong)
-	{
-		// void g_value_set_long (GValue *value,  glong v_long);
-		g_value_set_long(gValue, vLong);
-	}
+	public void setLong(int vLong);
 	
 	/**
 	 * Get the contents of a G_TYPE_LONG GValue.
 	 * Returns: long integer contents of value
 	 */
-	public int getLong()
-	{
-		// glong g_value_get_long (const GValue *value);
-		return g_value_get_long(gValue);
-	}
+	public int getLong();
 	
 	/**
 	 * Creates a new GParamSpecULong instance specifying a G_TYPE_ULONG
@@ -668,37 +414,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecUlong(string name, string nick, string blurb, uint minimum, uint maximum, uint defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_ulong (const gchar *name,  const gchar *nick,  const gchar *blurb,  gulong minimum,  gulong maximum,  gulong default_value,  GParamFlags flags);
-		auto p = g_param_spec_ulong(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecUlong(string name, string nick, string blurb, uint minimum, uint maximum, uint defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_ULONG GValue to v_ulong.
 	 * Params:
 	 * vUlong =  unsigned long integer value to be set
 	 */
-	public void setUlong(uint vUlong)
-	{
-		// void g_value_set_ulong (GValue *value,  gulong v_ulong);
-		g_value_set_ulong(gValue, vUlong);
-	}
+	public void setUlong(uint vUlong);
 	
 	/**
 	 * Get the contents of a G_TYPE_ULONG GValue.
 	 * Returns: unsigned long integer contents of value
 	 */
-	public uint getUlong()
-	{
-		// gulong g_value_get_ulong (const GValue *value);
-		return g_value_get_ulong(gValue);
-	}
+	public uint getUlong();
 	
 	/**
 	 * Creates a new GParamSpecInt64 instance specifying a G_TYPE_INT64 property.
@@ -713,37 +442,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecInt64(string name, string nick, string blurb, long minimum, long maximum, long defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_int64 (const gchar *name,  const gchar *nick,  const gchar *blurb,  gint64 minimum,  gint64 maximum,  gint64 default_value,  GParamFlags flags);
-		auto p = g_param_spec_int64(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecInt64(string name, string nick, string blurb, long minimum, long maximum, long defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_INT64 GValue to v_int64.
 	 * Params:
 	 * vInt64 =  64bit integer value to be set
 	 */
-	public void setInt64(long vInt64)
-	{
-		// void g_value_set_int64 (GValue *value,  gint64 v_int64);
-		g_value_set_int64(gValue, vInt64);
-	}
+	public void setInt64(long vInt64);
 	
 	/**
 	 * Get the contents of a G_TYPE_INT64 GValue.
 	 * Returns: 64bit integer contents of value
 	 */
-	public long getInt64()
-	{
-		// gint64 g_value_get_int64 (const GValue *value);
-		return g_value_get_int64(gValue);
-	}
+	public long getInt64();
 	
 	/**
 	 * Creates a new GParamSpecUInt64 instance specifying a G_TYPE_UINT64
@@ -759,37 +471,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecUint64(string name, string nick, string blurb, ulong minimum, ulong maximum, ulong defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_uint64 (const gchar *name,  const gchar *nick,  const gchar *blurb,  guint64 minimum,  guint64 maximum,  guint64 default_value,  GParamFlags flags);
-		auto p = g_param_spec_uint64(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecUint64(string name, string nick, string blurb, ulong minimum, ulong maximum, ulong defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_UINT64 GValue to v_uint64.
 	 * Params:
 	 * vUint64 =  unsigned 64bit integer value to be set
 	 */
-	public void setUint64(ulong vUint64)
-	{
-		// void g_value_set_uint64 (GValue *value,  guint64 v_uint64);
-		g_value_set_uint64(gValue, vUint64);
-	}
+	public void setUint64(ulong vUint64);
 	
 	/**
 	 * Get the contents of a G_TYPE_UINT64 GValue.
 	 * Returns: unsigned 64bit integer contents of value
 	 */
-	public ulong getUint64()
-	{
-		// guint64 g_value_get_uint64 (const GValue *value);
-		return g_value_get_uint64(gValue);
-	}
+	public ulong getUint64();
 	
 	/**
 	 * Creates a new GParamSpecFloat instance specifying a G_TYPE_FLOAT property.
@@ -804,37 +499,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecFloat(string name, string nick, string blurb, float minimum, float maximum, float defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_float (const gchar *name,  const gchar *nick,  const gchar *blurb,  gfloat minimum,  gfloat maximum,  gfloat default_value,  GParamFlags flags);
-		auto p = g_param_spec_float(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecFloat(string name, string nick, string blurb, float minimum, float maximum, float defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_FLOAT GValue to v_float.
 	 * Params:
 	 * vFloat =  float value to be set
 	 */
-	public void setFloat(float vFloat)
-	{
-		// void g_value_set_float (GValue *value,  gfloat v_float);
-		g_value_set_float(gValue, vFloat);
-	}
+	public void setFloat(float vFloat);
 	
 	/**
 	 * Get the contents of a G_TYPE_FLOAT GValue.
 	 * Returns: float contents of value
 	 */
-	public float getFloat()
-	{
-		// gfloat g_value_get_float (const GValue *value);
-		return g_value_get_float(gValue);
-	}
+	public float getFloat();
 	
 	/**
 	 * Creates a new GParamSpecDouble instance specifying a G_TYPE_DOUBLE
@@ -850,37 +528,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecDouble(string name, string nick, string blurb, double minimum, double maximum, double defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_double (const gchar *name,  const gchar *nick,  const gchar *blurb,  gdouble minimum,  gdouble maximum,  gdouble default_value,  GParamFlags flags);
-		auto p = g_param_spec_double(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), minimum, maximum, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecDouble(string name, string nick, string blurb, double minimum, double maximum, double defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_DOUBLE GValue to v_double.
 	 * Params:
 	 * vDouble =  double value to be set
 	 */
-	public void setDouble(double vDouble)
-	{
-		// void g_value_set_double (GValue *value,  gdouble v_double);
-		g_value_set_double(gValue, vDouble);
-	}
+	public void setDouble(double vDouble);
 	
 	/**
 	 * Get the contents of a G_TYPE_DOUBLE GValue.
 	 * Returns: double contents of value
 	 */
-	public double getDouble()
-	{
-		// gdouble g_value_get_double (const GValue *value);
-		return g_value_get_double(gValue);
-	}
+	public double getDouble();
 	
 	/**
 	 * Creates a new GParamSpecEnum instance specifying a G_TYPE_ENUM
@@ -895,37 +556,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecEnum(string name, string nick, string blurb, GType enumType, int defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_enum (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType enum_type,  gint default_value,  GParamFlags flags);
-		auto p = g_param_spec_enum(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), enumType, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecEnum(string name, string nick, string blurb, GType enumType, int defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_ENUM GValue to v_enum.
 	 * Params:
 	 * vEnum =  enum value to be set
 	 */
-	public void setEnum(int vEnum)
-	{
-		// void g_value_set_enum (GValue *value,  gint v_enum);
-		g_value_set_enum(gValue, vEnum);
-	}
+	public void setEnum(int vEnum);
 	
 	/**
 	 * Get the contents of a G_TYPE_ENUM GValue.
 	 * Returns: enum contents of value
 	 */
-	public int getEnum()
-	{
-		// gint g_value_get_enum (const GValue *value);
-		return g_value_get_enum(gValue);
-	}
+	public int getEnum();
 	
 	/**
 	 * Creates a new GParamSpecFlags instance specifying a G_TYPE_FLAGS
@@ -940,37 +584,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecFlags(string name, string nick, string blurb, GType flagsType, uint defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_flags (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType flags_type,  guint default_value,  GParamFlags flags);
-		auto p = g_param_spec_flags(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), flagsType, defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecFlags(string name, string nick, string blurb, GType flagsType, uint defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_FLAGS GValue to v_flags.
 	 * Params:
 	 * vFlags =  flags value to be set
 	 */
-	public void setFlags(uint vFlags)
-	{
-		// void g_value_set_flags (GValue *value,  guint v_flags);
-		g_value_set_flags(gValue, vFlags);
-	}
+	public void setFlags(uint vFlags);
 	
 	/**
 	 * Get the contents of a G_TYPE_FLAGS GValue.
 	 * Returns: flags contents of value
 	 */
-	public uint getFlags()
-	{
-		// guint g_value_get_flags (const GValue *value);
-		return g_value_get_flags(gValue);
-	}
+	public uint getFlags();
 	
 	/**
 	 * Creates a new GParamSpecString instance.
@@ -983,27 +610,14 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecString(string name, string nick, string blurb, string defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_string (const gchar *name,  const gchar *nick,  const gchar *blurb,  const gchar *default_value,  GParamFlags flags);
-		auto p = g_param_spec_string(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), Str.toStringz(defaultValue), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecString(string name, string nick, string blurb, string defaultValue, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_STRING GValue to v_string.
 	 * Params:
 	 * vString =  caller-owned string to be duplicated for the GValue
 	 */
-	public void setString(string vString)
-	{
-		// void g_value_set_string (GValue *value,  const gchar *v_string);
-		g_value_set_string(gValue, Str.toStringz(vString));
-	}
+	public void setString(string vString);
 	
 	/**
 	 * Set the contents of a G_TYPE_STRING GValue to v_string.
@@ -1012,11 +626,7 @@ public class Value
 	 * Params:
 	 * vString =  static string to be set
 	 */
-	public void setStaticString(string vString)
-	{
-		// void g_value_set_static_string (GValue *value,  const gchar *v_string);
-		g_value_set_static_string(gValue, Str.toStringz(vString));
-	}
+	public void setStaticString(string vString);
 	
 	/**
 	 * Sets the contents of a G_TYPE_STRING GValue to v_string.
@@ -1024,11 +634,7 @@ public class Value
 	 * Params:
 	 * vString =  string to take ownership of
 	 */
-	public void takeString(string vString)
-	{
-		// void g_value_take_string (GValue *value,  gchar *v_string);
-		g_value_take_string(gValue, Str.toStringz(vString));
-	}
+	public void takeString(string vString);
 	
 	/**
 	 * Warning
@@ -1037,31 +643,19 @@ public class Value
 	 * Params:
 	 * vString =  duplicated unowned string to be set
 	 */
-	public void setStringTakeOwnership(string vString)
-	{
-		// void g_value_set_string_take_ownership (GValue *value,  gchar *v_string);
-		g_value_set_string_take_ownership(gValue, Str.toStringz(vString));
-	}
+	public void setStringTakeOwnership(string vString);
 	
 	/**
 	 * Get the contents of a G_TYPE_STRING GValue.
 	 * Returns: string content of value
 	 */
-	public string getString()
-	{
-		// const gchar* g_value_get_string (const GValue *value);
-		return Str.toString(g_value_get_string(gValue));
-	}
+	public string getString();
 	
 	/**
 	 * Get a copy the contents of a G_TYPE_STRING GValue.
 	 * Returns: a newly allocated copy of the string content of value
 	 */
-	public string dupString()
-	{
-		// gchar* g_value_dup_string (const GValue *value);
-		return Str.toString(g_value_dup_string(gValue));
-	}
+	public string dupString();
 	
 	/**
 	 * Creates a new GParamSpecParam instance specifying a G_TYPE_PARAM
@@ -1075,27 +669,14 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecParam(string name, string nick, string blurb, GType paramType, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_param (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType param_type,  GParamFlags flags);
-		auto p = g_param_spec_param(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), paramType, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecParam(string name, string nick, string blurb, GType paramType, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_PARAM GValue to param.
 	 * Params:
 	 * param =  the GParamSpec to be set
 	 */
-	public void setParam(ParamSpec param)
-	{
-		// void g_value_set_param (GValue *value,  GParamSpec *param);
-		g_value_set_param(gValue, (param is null) ? null : param.getParamSpecStruct());
-	}
+	public void setParam(ParamSpec param);
 	
 	/**
 	 * Sets the contents of a G_TYPE_PARAM GValue to param and takes
@@ -1105,11 +686,7 @@ public class Value
 	 * Params:
 	 * param =  the GParamSpec to be set
 	 */
-	public void takeParam(ParamSpec param)
-	{
-		// void g_value_take_param (GValue *value,  GParamSpec *param);
-		g_value_take_param(gValue, (param is null) ? null : param.getParamSpecStruct());
-	}
+	public void takeParam(ParamSpec param);
 	
 	/**
 	 * Warning
@@ -1118,42 +695,20 @@ public class Value
 	 * Params:
 	 * param =  the GParamSpec to be set
 	 */
-	public void setParamTakeOwnership(ParamSpec param)
-	{
-		// void g_value_set_param_take_ownership (GValue *value,  GParamSpec *param);
-		g_value_set_param_take_ownership(gValue, (param is null) ? null : param.getParamSpecStruct());
-	}
+	public void setParamTakeOwnership(ParamSpec param);
 	
 	/**
 	 * Get the contents of a G_TYPE_PARAM GValue.
 	 * Returns: GParamSpec content of value
 	 */
-	public ParamSpec getParam()
-	{
-		// GParamSpec* g_value_get_param (const GValue *value);
-		auto p = g_value_get_param(gValue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec getParam();
 	
 	/**
 	 * Get the contents of a G_TYPE_PARAM GValue, increasing its
 	 * reference count.
 	 * Returns: GParamSpec content of value, should be unreferenced when no longer needed.
 	 */
-	public ParamSpec dupParam()
-	{
-		// GParamSpec* g_value_dup_param (const GValue *value);
-		auto p = g_value_dup_param(gValue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec dupParam();
 	
 	/**
 	 * Creates a new GParamSpecBoxed instance specifying a G_TYPE_BOXED
@@ -1167,27 +722,14 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecBoxed(string name, string nick, string blurb, GType boxedType, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_boxed (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType boxed_type,  GParamFlags flags);
-		auto p = g_param_spec_boxed(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), boxedType, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecBoxed(string name, string nick, string blurb, GType boxedType, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_BOXED derived GValue to v_boxed.
 	 * Params:
 	 * vBoxed =  boxed value to be set
 	 */
-	public void setBoxed(void* vBoxed)
-	{
-		// void g_value_set_boxed (GValue *value,  gconstpointer v_boxed);
-		g_value_set_boxed(gValue, vBoxed);
-	}
+	public void setBoxed(void* vBoxed);
 	
 	/**
 	 * Set the contents of a G_TYPE_BOXED derived GValue to v_boxed.
@@ -1196,11 +738,7 @@ public class Value
 	 * Params:
 	 * vBoxed =  static boxed value to be set
 	 */
-	public void setStaticBoxed(void* vBoxed)
-	{
-		// void g_value_set_static_boxed (GValue *value,  gconstpointer v_boxed);
-		g_value_set_static_boxed(gValue, vBoxed);
-	}
+	public void setStaticBoxed(void* vBoxed);
 	
 	/**
 	 * Sets the contents of a G_TYPE_BOXED derived GValue to v_boxed
@@ -1210,11 +748,7 @@ public class Value
 	 * Params:
 	 * vBoxed =  duplicated unowned boxed value to be set
 	 */
-	public void takeBoxed(void* vBoxed)
-	{
-		// void g_value_take_boxed (GValue *value,  gconstpointer v_boxed);
-		g_value_take_boxed(gValue, vBoxed);
-	}
+	public void takeBoxed(void* vBoxed);
 	
 	/**
 	 * Warning
@@ -1223,21 +757,13 @@ public class Value
 	 * Params:
 	 * vBoxed =  duplicated unowned boxed value to be set
 	 */
-	public void setBoxedTakeOwnership(void* vBoxed)
-	{
-		// void g_value_set_boxed_take_ownership (GValue *value,  gconstpointer v_boxed);
-		g_value_set_boxed_take_ownership(gValue, vBoxed);
-	}
+	public void setBoxedTakeOwnership(void* vBoxed);
 	
 	/**
 	 * Get the contents of a G_TYPE_BOXED derived GValue.
 	 * Returns: boxed contents of value
 	 */
-	public void* getBoxed()
-	{
-		// gpointer g_value_get_boxed (const GValue *value);
-		return g_value_get_boxed(gValue);
-	}
+	public void* getBoxed();
 	
 	/**
 	 * Get the contents of a G_TYPE_BOXED derived GValue. Upon getting,
@@ -1246,11 +772,7 @@ public class Value
 	 * return_value);
 	 * Returns: boxed contents of value
 	 */
-	public void* dupBoxed()
-	{
-		// gpointer g_value_dup_boxed (const GValue *value);
-		return g_value_dup_boxed(gValue);
-	}
+	public void* dupBoxed();
 	
 	/**
 	 * Creates a new GParamSpecPoiner instance specifying a pointer property.
@@ -1262,37 +784,20 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecPointer(string name, string nick, string blurb, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_pointer (const gchar *name,  const gchar *nick,  const gchar *blurb,  GParamFlags flags);
-		auto p = g_param_spec_pointer(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecPointer(string name, string nick, string blurb, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a pointer GValue to v_pointer.
 	 * Params:
 	 * vPointer =  pointer value to be set
 	 */
-	public void setPointer(void* vPointer)
-	{
-		// void g_value_set_pointer (GValue *value,  gpointer v_pointer);
-		g_value_set_pointer(gValue, vPointer);
-	}
+	public void setPointer(void* vPointer);
 	
 	/**
 	 * Get the contents of a pointer GValue.
 	 * Returns: pointer contents of value
 	 */
-	public void* getPointer()
-	{
-		// gpointer g_value_get_pointer (const GValue *value);
-		return g_value_get_pointer(gValue);
-	}
+	public void* getPointer();
 	
 	/**
 	 * Creates a new GParamSpecBoxed instance specifying a G_TYPE_OBJECT
@@ -1306,16 +811,7 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecObject(string name, string nick, string blurb, GType objectType, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_object (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType object_type,  GParamFlags flags);
-		auto p = g_param_spec_object(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), objectType, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecObject(string name, string nick, string blurb, GType objectType, GParamFlags flags);
 	
 	/**
 	 * Set the contents of a G_TYPE_OBJECT derived GValue to v_object.
@@ -1330,11 +826,7 @@ public class Value
 	 * Params:
 	 * vObject =  object value to be set
 	 */
-	public void setObject(void* vObject)
-	{
-		// void g_value_set_object (GValue *value,  gpointer v_object);
-		g_value_set_object(gValue, vObject);
-	}
+	public void setObject(void* vObject);
 	
 	/**
 	 * Sets the contents of a G_TYPE_OBJECT derived GValue to v_object
@@ -1347,11 +839,7 @@ public class Value
 	 * Params:
 	 * vObject =  object value to be set
 	 */
-	public void takeObject(void* vObject)
-	{
-		// void g_value_take_object (GValue *value,  gpointer v_object);
-		g_value_take_object(gValue, vObject);
-	}
+	public void takeObject(void* vObject);
 	
 	/**
 	 * Warning
@@ -1360,32 +848,20 @@ public class Value
 	 * Params:
 	 * vObject =  object value to be set
 	 */
-	public void setObjectTakeOwnership(void* vObject)
-	{
-		// void g_value_set_object_take_ownership (GValue *value,  gpointer v_object);
-		g_value_set_object_take_ownership(gValue, vObject);
-	}
+	public void setObjectTakeOwnership(void* vObject);
 	
 	/**
 	 * Get the contents of a G_TYPE_OBJECT derived GValue.
 	 * Returns: object contents of value
 	 */
-	public void* getObject()
-	{
-		// gpointer g_value_get_object (const GValue *value);
-		return g_value_get_object(gValue);
-	}
+	public void* getObject();
 	
 	/**
 	 * Get the contents of a G_TYPE_OBJECT derived GValue, increasing
 	 * its reference count.
 	 * Returns: object content of value, should be unreferenced when no longer needed.
 	 */
-	public void* dupObject()
-	{
-		// gpointer g_value_dup_object (const GValue *value);
-		return g_value_dup_object(gValue);
-	}
+	public void* dupObject();
 	
 	/**
 	 * Creates a new GParamSpecUnichar instance specifying a G_TYPE_UINT
@@ -1400,16 +876,7 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecUnichar(string name, string nick, string blurb, gunichar defaultValue, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_unichar (const gchar *name,  const gchar *nick,  const gchar *blurb,  gunichar default_value,  GParamFlags flags);
-		auto p = g_param_spec_unichar(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), defaultValue, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecUnichar(string name, string nick, string blurb, gunichar defaultValue, GParamFlags flags);
 	
 	/**
 	 * Creates a new GParamSpecValueArray instance specifying a
@@ -1426,16 +893,7 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecValueArray(string name, string nick, string blurb, ParamSpec elementSpec, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_value_array (const gchar *name,  const gchar *nick,  const gchar *blurb,  GParamSpec *element_spec,  GParamFlags flags);
-		auto p = g_param_spec_value_array(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), (elementSpec is null) ? null : elementSpec.getParamSpecStruct(), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecValueArray(string name, string nick, string blurb, ParamSpec elementSpec, GParamFlags flags);
 	
 	/**
 	 * Creates a new property of type GParamSpecOverride. This is used
@@ -1447,16 +905,7 @@ public class Value
 	 * overridden =  The property that is being overridden
 	 * Returns: the newly created GParamSpec
 	 */
-	public static ParamSpec gParamSpecOverride(string name, ParamSpec overridden)
-	{
-		// GParamSpec* g_param_spec_override (const gchar *name,  GParamSpec *overridden);
-		auto p = g_param_spec_override(Str.toStringz(name), (overridden is null) ? null : overridden.getParamSpecStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecOverride(string name, ParamSpec overridden);
 	
 	/**
 	 * Creates a new GParamSpecGType instance specifying a
@@ -1472,27 +921,14 @@ public class Value
 	 * flags =  flags for the property specified
 	 * Returns: a newly created parameter specification
 	 */
-	public static ParamSpec gParamSpecGtype(string name, string nick, string blurb, GType isAType, GParamFlags flags)
-	{
-		// GParamSpec* g_param_spec_gtype (const gchar *name,  const gchar *nick,  const gchar *blurb,  GType is_a_type,  GParamFlags flags);
-		auto p = g_param_spec_gtype(Str.toStringz(name), Str.toStringz(nick), Str.toStringz(blurb), isAType, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec gParamSpecGtype(string name, string nick, string blurb, GType isAType, GParamFlags flags);
 	
 	/**
 	 * Get the contents of a G_TYPE_GTYPE GValue.
 	 * Since 2.12
 	 * Returns: the GType stored in value
 	 */
-	public GType getGtype()
-	{
-		// GType g_value_get_gtype (const GValue *value);
-		return g_value_get_gtype(gValue);
-	}
+	public GType getGtype();
 	
 	/**
 	 * Set the contents of a G_TYPE_GTYPE GValue to v_gtype.
@@ -1500,9 +936,5 @@ public class Value
 	 * Params:
 	 * vGtype =  GType to be set
 	 */
-	public void setGtype(GType vGtype)
-	{
-		// void g_value_set_gtype (GValue *value,  GType v_gtype);
-		g_value_set_gtype(gValue, vGtype);
-	}
+	public void setGtype(GType vGtype);
 }

@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Sequences.html
- * outPack = glib
- * outFile = Sequence
- * strct   = GSequence
- * realStrct=
- * ctorStrct=
- * clss    = Sequence
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_sequence_
- * omit structs:
- * omit prefixes:
- * 	- g_sequence_iter_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.SequenceIter
- * structWrap:
- * 	- GSequence* -> Sequence
- * 	- GSequenceIter* -> SequenceIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Sequence;
 
 public  import gtkD.gtkc.glibtypes;
@@ -106,30 +52,16 @@ public class Sequence
 	protected GSequence* gSequence;
 	
 	
-	public GSequence* getSequenceStruct()
-	{
-		return gSequence;
-	}
+	public GSequence* getSequenceStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gSequence;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GSequence* gSequence)
-	{
-		if(gSequence is null)
-		{
-			this = null;
-			return;
-		}
-		this.gSequence = gSequence;
-	}
+	public this (GSequence* gSequence);
 	
 	/**
 	 */
@@ -143,16 +75,7 @@ public class Sequence
 	 * dataDestroy =  a GDestroyNotify function, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GDestroyNotify dataDestroy)
-	{
-		// GSequence * g_sequence_new (GDestroyNotify data_destroy);
-		auto p = g_sequence_new(dataDestroy);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_sequence_new(dataDestroy)");
-		}
-		this(cast(GSequence*) p);
-	}
+	public this (GDestroyNotify dataDestroy);
 	
 	/**
 	 * Frees the memory allocated for seq. If seq has a data destroy
@@ -160,22 +83,14 @@ public class Sequence
 	 * seq.
 	 * Since 2.14
 	 */
-	public void free()
-	{
-		// void g_sequence_free (GSequence *seq);
-		g_sequence_free(gSequence);
-	}
+	public void free();
 	
 	/**
 	 * Returns the length of seq
 	 * Since 2.14
 	 * Returns: the length of seq
 	 */
-	public int getLength()
-	{
-		// gint g_sequence_get_length (GSequence *seq);
-		return g_sequence_get_length(gSequence);
-	}
+	public int getLength();
 	
 	/**
 	 * Calls func for each item in the sequence passing user_data
@@ -185,11 +100,7 @@ public class Sequence
 	 * func =  the function to call for each item in seq
 	 * userData =  user data passed to func
 	 */
-	public void foreac(GFunc func, void* userData)
-	{
-		// void g_sequence_foreach (GSequence *seq,  GFunc func,  gpointer user_data);
-		g_sequence_foreach(gSequence, func, userData);
-	}
+	public void foreac(GFunc func, void* userData);
 	
 	/**
 	 * Calls func for each item in the range (begin, end) passing
@@ -201,11 +112,7 @@ public class Sequence
 	 * func =  a GFunc
 	 * userData =  user data passed to func
 	 */
-	public static void foreachRange(SequenceIter begin, SequenceIter end, GFunc func, void* userData)
-	{
-		// void g_sequence_foreach_range (GSequenceIter *begin,  GSequenceIter *end,  GFunc func,  gpointer user_data);
-		g_sequence_foreach_range((begin is null) ? null : begin.getSequenceIterStruct(), (end is null) ? null : end.getSequenceIterStruct(), func, userData);
-	}
+	public static void foreachRange(SequenceIter begin, SequenceIter end, GFunc func, void* userData);
 	
 	/**
 	 * Sorts seq using cmp_func.
@@ -217,11 +124,7 @@ public class Sequence
 	 *  positive value if the second comes before the first.
 	 * cmpData =  user data passed to cmp_func
 	 */
-	public void sort(GCompareDataFunc cmpFunc, void* cmpData)
-	{
-		// void g_sequence_sort (GSequence *seq,  GCompareDataFunc cmp_func,  gpointer cmp_data);
-		g_sequence_sort(gSequence, cmpFunc, cmpData);
-	}
+	public void sort(GCompareDataFunc cmpFunc, void* cmpData);
 	
 	/**
 	 * Like g_sequence_sort(), but uses a GSequenceIterCompareFunc instead
@@ -235,43 +138,21 @@ public class Sequence
 	 *  iterator comes before the first.
 	 * cmpData =  user data passed to cmp_func
 	 */
-	public void sortIter(GSequenceIterCompareFunc cmpFunc, void* cmpData)
-	{
-		// void g_sequence_sort_iter (GSequence *seq,  GSequenceIterCompareFunc cmp_func,  gpointer cmp_data);
-		g_sequence_sort_iter(gSequence, cmpFunc, cmpData);
-	}
+	public void sortIter(GSequenceIterCompareFunc cmpFunc, void* cmpData);
 	
 	/**
 	 * Returns the begin iterator for seq.
 	 * Since 2.14
 	 * Returns: the begin iterator for seq.
 	 */
-	public SequenceIter getBeginIter()
-	{
-		// GSequenceIter * g_sequence_get_begin_iter (GSequence *seq);
-		auto p = g_sequence_get_begin_iter(gSequence);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter getBeginIter();
 	
 	/**
 	 * Returns the end iterator for seg
 	 * Since 2.14
 	 * Returns: the end iterator for seq
 	 */
-	public SequenceIter getEndIter()
-	{
-		// GSequenceIter * g_sequence_get_end_iter (GSequence *seq);
-		auto p = g_sequence_get_end_iter(gSequence);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter getEndIter();
 	
 	/**
 	 * Returns the iterator at position pos. If pos is negative or larger
@@ -281,16 +162,7 @@ public class Sequence
 	 * pos =  a position in seq, or -1 for the end.
 	 * Returns: The GSequenceIter at position pos
 	 */
-	public SequenceIter getIterAtPos(int pos)
-	{
-		// GSequenceIter * g_sequence_get_iter_at_pos (GSequence *seq,  gint pos);
-		auto p = g_sequence_get_iter_at_pos(gSequence, pos);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter getIterAtPos(int pos);
 	
 	/**
 	 * Adds a new item to the end of seq.
@@ -299,16 +171,7 @@ public class Sequence
 	 * data =  the data for the new item
 	 * Returns: an iterator pointing to the new item
 	 */
-	public SequenceIter append(void* data)
-	{
-		// GSequenceIter * g_sequence_append (GSequence *seq,  gpointer data);
-		auto p = g_sequence_append(gSequence, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter append(void* data);
 	
 	/**
 	 * Adds a new item to the front of seq
@@ -317,16 +180,7 @@ public class Sequence
 	 * data =  the data for the new item
 	 * Returns: an iterator pointing to the new item
 	 */
-	public SequenceIter prepend(void* data)
-	{
-		// GSequenceIter * g_sequence_prepend (GSequence *seq,  gpointer data);
-		auto p = g_sequence_prepend(gSequence, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter prepend(void* data);
 	
 	/**
 	 * Inserts a new item just before the item pointed to by iter.
@@ -336,16 +190,7 @@ public class Sequence
 	 * data =  the data for the new item
 	 * Returns: an iterator pointing to the new item
 	 */
-	public static SequenceIter insertBefore(SequenceIter iter, void* data)
-	{
-		// GSequenceIter * g_sequence_insert_before (GSequenceIter *iter,  gpointer data);
-		auto p = g_sequence_insert_before((iter is null) ? null : iter.getSequenceIterStruct(), data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public static SequenceIter insertBefore(SequenceIter iter, void* data);
 	
 	/**
 	 * Moves the item pointed to by src to the position indicated by dest.
@@ -358,11 +203,7 @@ public class Sequence
 	 * dest =  a GSequenceIter pointing to the position to which
 	 *  the item is moved.
 	 */
-	public static void move(SequenceIter src, SequenceIter dest)
-	{
-		// void g_sequence_move (GSequenceIter *src,  GSequenceIter *dest);
-		g_sequence_move((src is null) ? null : src.getSequenceIterStruct(), (dest is null) ? null : dest.getSequenceIterStruct());
-	}
+	public static void move(SequenceIter src, SequenceIter dest);
 	
 	/**
 	 * Swaps the items pointed to by a and b. It is allowed for a and b
@@ -372,11 +213,7 @@ public class Sequence
 	 * a =  a GSequenceIter
 	 * b =  a GSequenceIter
 	 */
-	public static void swap(SequenceIter a, SequenceIter b)
-	{
-		// void g_sequence_swap (GSequenceIter *a,  GSequenceIter *b);
-		g_sequence_swap((a is null) ? null : a.getSequenceIterStruct(), (b is null) ? null : b.getSequenceIterStruct());
-	}
+	public static void swap(SequenceIter a, SequenceIter b);
 	
 	/**
 	 * Inserts data into sequence using func to determine the new position.
@@ -393,16 +230,7 @@ public class Sequence
 	 * cmpData =  user data passed to cmp_func.
 	 * Returns: a GSequenceIter pointing to the new item.
 	 */
-	public SequenceIter insertSorted(void* data, GCompareDataFunc cmpFunc, void* cmpData)
-	{
-		// GSequenceIter * g_sequence_insert_sorted (GSequence *seq,  gpointer data,  GCompareDataFunc cmp_func,  gpointer cmp_data);
-		auto p = g_sequence_insert_sorted(gSequence, data, cmpFunc, cmpData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter insertSorted(void* data, GCompareDataFunc cmpFunc, void* cmpData);
 	
 	/**
 	 * Like g_sequence_insert_sorted(), but uses
@@ -419,16 +247,7 @@ public class Sequence
 	 * cmpData =  user data passed to cmp_func
 	 * Returns: a GSequenceIter pointing to the new item
 	 */
-	public SequenceIter insertSortedIter(void* data, GSequenceIterCompareFunc iterCmp, void* cmpData)
-	{
-		// GSequenceIter * g_sequence_insert_sorted_iter (GSequence *seq,  gpointer data,  GSequenceIterCompareFunc iter_cmp,  gpointer cmp_data);
-		auto p = g_sequence_insert_sorted_iter(gSequence, data, iterCmp, cmpData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter insertSortedIter(void* data, GSequenceIterCompareFunc iterCmp, void* cmpData);
 	
 	/**
 	 * Moves the data pointed to a new position as indicated by cmp_func. This
@@ -445,11 +264,7 @@ public class Sequence
 	 *  item comes before the first.
 	 * cmpData =  user data passed to cmp_func.
 	 */
-	public static void sortChanged(SequenceIter iter, GCompareDataFunc cmpFunc, void* cmpData)
-	{
-		// void g_sequence_sort_changed (GSequenceIter *iter,  GCompareDataFunc cmp_func,  gpointer cmp_data);
-		g_sequence_sort_changed((iter is null) ? null : iter.getSequenceIterStruct(), cmpFunc, cmpData);
-	}
+	public static void sortChanged(SequenceIter iter, GCompareDataFunc cmpFunc, void* cmpData);
 	
 	/**
 	 * Like g_sequence_sort_changed(), but uses
@@ -465,11 +280,7 @@ public class Sequence
 	 *  iterator comes before the first.
 	 * cmpData =  user data passed to cmp_func
 	 */
-	public static void sortChangedIter(SequenceIter iter, GSequenceIterCompareFunc iterCmp, void* cmpData)
-	{
-		// void g_sequence_sort_changed_iter (GSequenceIter *iter,  GSequenceIterCompareFunc iter_cmp,  gpointer cmp_data);
-		g_sequence_sort_changed_iter((iter is null) ? null : iter.getSequenceIterStruct(), iterCmp, cmpData);
-	}
+	public static void sortChangedIter(SequenceIter iter, GSequenceIterCompareFunc iterCmp, void* cmpData);
 	
 	/**
 	 * Removes the item pointed to by iter. It is an error to pass the
@@ -480,11 +291,7 @@ public class Sequence
 	 * Params:
 	 * iter =  a GSequenceIter
 	 */
-	public static void remove(SequenceIter iter)
-	{
-		// void g_sequence_remove (GSequenceIter *iter);
-		g_sequence_remove((iter is null) ? null : iter.getSequenceIterStruct());
-	}
+	public static void remove(SequenceIter iter);
 	
 	/**
 	 * Removes all items in the (begin, end) range.
@@ -495,11 +302,7 @@ public class Sequence
 	 * begin =  a GSequenceIter
 	 * end =  a GSequenceIter
 	 */
-	public static void removeRange(SequenceIter begin, SequenceIter end)
-	{
-		// void g_sequence_remove_range (GSequenceIter *begin,  GSequenceIter *end);
-		g_sequence_remove_range((begin is null) ? null : begin.getSequenceIterStruct(), (end is null) ? null : end.getSequenceIterStruct());
-	}
+	public static void removeRange(SequenceIter begin, SequenceIter end);
 	
 	/**
 	 * Inserts the (begin, end) range at the destination pointed to by ptr.
@@ -515,11 +318,7 @@ public class Sequence
 	 * begin =  a GSequenceIter
 	 * end =  a GSequenceIter
 	 */
-	public static void moveRange(SequenceIter dest, SequenceIter begin, SequenceIter end)
-	{
-		// void g_sequence_move_range (GSequenceIter *dest,  GSequenceIter *begin,  GSequenceIter *end);
-		g_sequence_move_range((dest is null) ? null : dest.getSequenceIterStruct(), (begin is null) ? null : begin.getSequenceIterStruct(), (end is null) ? null : end.getSequenceIterStruct());
-	}
+	public static void moveRange(SequenceIter dest, SequenceIter begin, SequenceIter end);
 	
 	/**
 	 * Returns an iterator pointing to the position where data would
@@ -535,16 +334,7 @@ public class Sequence
 	 * cmpData =  user data passed to cmp_func.
 	 * Returns: an GSequenceIter pointing to the position where datawould have been inserted according to cmp_func and cmp_data.
 	 */
-	public SequenceIter search(void* data, GCompareDataFunc cmpFunc, void* cmpData)
-	{
-		// GSequenceIter * g_sequence_search (GSequence *seq,  gpointer data,  GCompareDataFunc cmp_func,  gpointer cmp_data);
-		auto p = g_sequence_search(gSequence, data, cmpFunc, cmpData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter search(void* data, GCompareDataFunc cmpFunc, void* cmpData);
 	
 	/**
 	 * Like g_sequence_search(), but uses
@@ -561,16 +351,7 @@ public class Sequence
 	 * cmpData =  user data passed to iter_cmp
 	 * Returns: a GSequenceIter pointing to the position in seqwhere data would have been inserted according to iter_cmp and cmp_data.
 	 */
-	public SequenceIter searchIter(void* data, GSequenceIterCompareFunc iterCmp, void* cmpData)
-	{
-		// GSequenceIter * g_sequence_search_iter (GSequence *seq,  gpointer data,  GSequenceIterCompareFunc iter_cmp,  gpointer cmp_data);
-		auto p = g_sequence_search_iter(gSequence, data, iterCmp, cmpData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public SequenceIter searchIter(void* data, GSequenceIterCompareFunc iterCmp, void* cmpData);
 	
 	/**
 	 * Returns the data that iter points to.
@@ -579,11 +360,7 @@ public class Sequence
 	 * iter =  a GSequenceIter
 	 * Returns: the data that iter points to
 	 */
-	public static void* get(SequenceIter iter)
-	{
-		// gpointer g_sequence_get (GSequenceIter *iter);
-		return g_sequence_get((iter is null) ? null : iter.getSequenceIterStruct());
-	}
+	public static void* get(SequenceIter iter);
 	
 	/**
 	 * Changes the data for the item pointed to by iter to be data. If
@@ -594,11 +371,7 @@ public class Sequence
 	 * iter =  a GSequenceIter
 	 * data =  new data for the item
 	 */
-	public static void set(SequenceIter iter, void* data)
-	{
-		// void g_sequence_set (GSequenceIter *iter,  gpointer data);
-		g_sequence_set((iter is null) ? null : iter.getSequenceIterStruct(), data);
-	}
+	public static void set(SequenceIter iter, void* data);
 	
 	/**
 	 * Finds an iterator somewhere in the range (begin, end). This
@@ -612,14 +385,5 @@ public class Sequence
 	 * end =  a GSequenceIter
 	 * Returns: A GSequenceIter pointing somewhere in the(begin, end) range.
 	 */
-	public static SequenceIter rangeGetMidpoint(SequenceIter begin, SequenceIter end)
-	{
-		// GSequenceIter * g_sequence_range_get_midpoint (GSequenceIter *begin,  GSequenceIter *end);
-		auto p = g_sequence_range_get_midpoint((begin is null) ? null : begin.getSequenceIterStruct(), (end is null) ? null : end.getSequenceIterStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new SequenceIter(cast(GSequenceIter*) p);
-	}
+	public static SequenceIter rangeGetMidpoint(SequenceIter begin, SequenceIter end);
 }

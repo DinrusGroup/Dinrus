@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Memory-Allocation.html
- * outPack = glib
- * outFile = Memory
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Memory
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Memory;
 
 public  import gtkD.gtkc.glibtypes;
@@ -86,11 +36,7 @@ public class Memory
 	 * nBytes = the number of bytes to allocate
 	 * Returns:a pointer to the allocated memory
 	 */
-	public static void* malloc(uint nBytes)
-	{
-		// gpointer g_malloc (gsize n_bytes);
-		return g_malloc(nBytes);
-	}
+	public static void* malloc(uint nBytes);
 	
 	/**
 	 * Allocates n_bytes bytes of memory, initialized to 0's.
@@ -99,12 +45,8 @@ public class Memory
 	 * nBytes = the number of bytes to allocate
 	 * Returns:a pointer to the allocated memory
 	 */
-	public static void* malloc0(uint nBytes)
-	{
-		// gpointer g_malloc0 (gsize n_bytes);
-		return g_malloc0(nBytes);
-	}
-	
+	public static void* malloc0(uint nBytes);
+
 	/**
 	 * Reallocates the memory pointed to by mem, so that it now has space for
 	 * n_bytes bytes of memory. It returns the new address of the memory, which may
@@ -116,11 +58,7 @@ public class Memory
 	 * nBytes = new size of the memory in bytes
 	 * Returns:the new address of the allocated memory
 	 */
-	public static void* realloc(void* mem, uint nBytes)
-	{
-		// gpointer g_realloc (gpointer mem,  gsize n_bytes);
-		return g_realloc(mem, nBytes);
-	}
+	public static void* realloc(void* mem, uint nBytes);
 	
 	/**
 	 * Attempts to allocate n_bytes, and returns NULL on failure.
@@ -129,11 +67,7 @@ public class Memory
 	 * nBytes = number of bytes to allocate.
 	 * Returns:the allocated memory, or NULL.
 	 */
-	public static void* tryMalloc(uint nBytes)
-	{
-		// gpointer g_try_malloc (gsize n_bytes);
-		return g_try_malloc(nBytes);
-	}
+	public static void* tryMalloc(uint nBytes);
 	
 	/**
 	 * Attempts to allocate n_bytes, initialized to 0's, and returns NULL on
@@ -143,11 +77,7 @@ public class Memory
 	 * nBytes = number of bytes to allocate
 	 * Returns:the allocated memory, or NULL
 	 */
-	public static void* tryMalloc0(uint nBytes)
-	{
-		// gpointer g_try_malloc0 (gsize n_bytes);
-		return g_try_malloc0(nBytes);
-	}
+	public static void* tryMalloc0(uint nBytes);
 	
 	/**
 	 * Attempts to realloc mem to a new size, n_bytes, and returns NULL
@@ -158,11 +88,8 @@ public class Memory
 	 * nBytes = number of bytes to allocate.
 	 * Returns:the allocated memory, or NULL.
 	 */
-	public static void* tryRealloc(void* mem, uint nBytes)
-	{
-		// gpointer g_try_realloc (gpointer mem,  gsize n_bytes);
-		return g_try_realloc(mem, nBytes);
-	}
+	public static void* tryRealloc(void* mem, uint nBytes);
+
 	
 	/**
 	 * Frees the memory pointed to by mem.
@@ -170,11 +97,7 @@ public class Memory
 	 * Params:
 	 * mem = the memory to free
 	 */
-	public static void free(void* mem)
-	{
-		// void g_free (gpointer mem);
-		g_free(mem);
-	}
+	public static void free(void* mem);
 	
 	/**
 	 * Allocates byte_size bytes of memory, and copies byte_size bytes into it
@@ -184,11 +107,7 @@ public class Memory
 	 * byteSize = the number of bytes to copy.
 	 * Returns:a pointer to the newly-allocated copy of the memory, or NULL if memis NULL.
 	 */
-	public static void* memdup(void* mem, uint byteSize)
-	{
-		// gpointer g_memdup (gconstpointer mem,  guint byte_size);
-		return g_memdup(mem, byteSize);
-	}
+	public static void* memdup(void* mem, uint byteSize);
 	
 	/**
 	 * Sets the GMemVTable to use for memory allocation. You can use this to provide
@@ -201,11 +120,7 @@ public class Memory
 	 * Params:
 	 * vtable = table of memory allocation routines.
 	 */
-	public static void memSetVtable(GMemVTable* vtable)
-	{
-		// void g_mem_set_vtable (GMemVTable *vtable);
-		g_mem_set_vtable(vtable);
-	}
+	public static void memSetVtable(GMemVTable* vtable);
 	
 	/**
 	 * Checks whether the allocator used by g_malloc() is the system's
@@ -216,11 +131,7 @@ public class Memory
 	 * A different allocator can be set using g_mem_set_vtable().
 	 * Returns: if TRUE, malloc() and g_malloc() can be mixed.
 	 */
-	public static int memIsSystemMalloc()
-	{
-		// gboolean g_mem_is_system_malloc (void);
-		return g_mem_is_system_malloc();
-	}
+	public static int memIsSystemMalloc();
 	
 	/**
 	 * Outputs a summary of memory usage.
@@ -232,9 +143,5 @@ public class Memory
 	 * Note that this function will not output anything unless you have
 	 * previously installed the glib_mem_profiler_table with g_mem_set_vtable().
 	 */
-	public static void memProfile()
-	{
-		// void g_mem_profile (void);
-		g_mem_profile();
-	}
+	public static void memProfile();
 }

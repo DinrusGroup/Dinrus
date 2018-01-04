@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Base64-Encoding.html
- * outPack = glib
- * outFile = Base64
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Base64
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_base64_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Base64;
 
 public  import gtkD.gtkc.glibtypes;
@@ -102,11 +51,7 @@ public class Base64
 	 * save =  Saved state between steps, initialize to 0
 	 * Returns: The number of bytes of output that was written
 	 */
-	public static uint encodeStep(char* inn, uint len, int breakLines, string f_out, inout int state, inout int save)
-	{
-		// gsize g_base64_encode_step (const guchar *in,  gsize len,  gboolean break_lines,  gchar *out,  gint *state,  gint *save);
-		return g_base64_encode_step(inn, len, breakLines, Str.toStringz(f_out), &state, &save);
-	}
+	public static uint encodeStep(char* inn, uint len, int breakLines, string f_out, inout int state, inout int save);
 	
 	/**
 	 * Flush the status from a sequence of calls to g_base64_encode_step().
@@ -118,11 +63,7 @@ public class Base64
 	 * save =  Saved state from g_base64_encode_step()
 	 * Returns: The number of bytes of output that was written
 	 */
-	public static uint encodeClose(int breakLines, string f_out, inout int state, inout int save)
-	{
-		// gsize g_base64_encode_close (gboolean break_lines,  gchar *out,  gint *state,  gint *save);
-		return g_base64_encode_close(breakLines, Str.toStringz(f_out), &state, &save);
-	}
+	public static uint encodeClose(int breakLines, string f_out, inout int state, inout int save);
 	
 	/**
 	 * Encode a sequence of binary data into its Base-64 stringified
@@ -133,11 +74,7 @@ public class Base64
 	 * len =  the length of data
 	 * Returns: a newly allocated, zero-terminated Base-64 encoded string representing data. The returned string must  be freed with g_free().
 	 */
-	public static string encode(char* data, uint len)
-	{
-		// gchar* g_base64_encode (const guchar *data,  gsize len);
-		return Str.toString(g_base64_encode(data, len));
-	}
+	public static string encode(char* data, uint len);
 	
 	/**
 	 * Incrementally decode a sequence of binary data from its Base-64 stringified
@@ -156,11 +93,7 @@ public class Base64
 	 * save =  Saved state between steps, initialize to 0
 	 * Returns: The number of bytes of output that was written
 	 */
-	public static uint decodeStep(string inn, uint len, char* f_out, inout int state, inout uint save)
-	{
-		// gsize g_base64_decode_step (const gchar *in,  gsize len,  guchar *out,  gint *state,  guint *save);
-		return g_base64_decode_step(Str.toStringz(inn), len, f_out, &state, &save);
-	}
+	public static uint decodeStep(string inn, uint len, char* f_out, inout int state, inout uint save);
 	
 	/**
 	 * Decode a sequence of Base-64 encoded text into binary data
@@ -169,13 +102,7 @@ public class Base64
 	 * text =  zero-terminated string with base64 text to decode
 	 * Returns: a newly allocated buffer containing the binary data that text represents. The returned buffer must be freed with g_free().
 	 */
-	public static char[] decode(string text)
-	{
-		// guchar * g_base64_decode (const gchar *text,  gsize *out_len);
-		uint outLen;
-		auto p = g_base64_decode(Str.toStringz(text), &outLen);
-		return p[0 .. outLen];
-	}
+	public static char[] decode(string text);
 	
 	/**
 	 * Decode a sequence of Base-64 encoded text into binary data
@@ -185,11 +112,5 @@ public class Base64
 	 * text =  zero-terminated string with base64 text to decode
 	 * Returns: The binary data that text responds. This pointer is the same as the input text.
 	 */
-	public static char[] decodeInplace(string text)
-	{
-		// guchar * g_base64_decode_inplace (gchar *text,  gsize *out_len);
-		uint outLen;
-		auto p = g_base64_decode_inplace(Str.toStringz(text), &outLen);
-		return p[0 .. outLen];
-	}
+	public static char[] decodeInplace(string text);
 }

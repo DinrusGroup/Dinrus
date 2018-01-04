@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-Enumeration-and-Flag-Types.html
- * outPack = gobject
- * outFile = Enums
- * strct   = GEnumValue
- * realStrct=
- * ctorStrct=
- * clss    = Enums
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_enum_
- * omit structs:
- * omit prefixes:
- * 	- g_flags_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GEnumValue* -> Enums
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gobject.Enums;
 
 public  import gtkD.gtkc.gobjecttypes;
@@ -89,30 +36,16 @@ public class Enums
 	protected GEnumValue* gEnumValue;
 	
 	
-	public GEnumValue* getEnumsStruct()
-	{
-		return gEnumValue;
-	}
+	public GEnumValue* getEnumsStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gEnumValue;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GEnumValue* gEnumValue)
-	{
-		if(gEnumValue is null)
-		{
-			this = null;
-			return;
-		}
-		this.gEnumValue = gEnumValue;
-	}
+	public this (GEnumValue* gEnumValue);
 	
 	/**
 	 */
@@ -124,16 +57,7 @@ public class Enums
 	 * value =  the value to look up
 	 * Returns: the GEnumValue for value, or NULL if value is not a member of the enumeration
 	 */
-	public static Enums getValue(GEnumClass* enumClass, int value)
-	{
-		// GEnumValue* g_enum_get_value (GEnumClass *enum_class,  gint value);
-		auto p = g_enum_get_value(enumClass, value);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Enums(cast(GEnumValue*) p);
-	}
+	public static Enums getValue(GEnumClass* enumClass, int value);
 	
 	/**
 	 * Looks up a GEnumValue by name.
@@ -142,16 +66,7 @@ public class Enums
 	 * name =  the name to look up
 	 * Returns: the GEnumValue with name name, or NULL if the enumeration doesn't have a member with that name
 	 */
-	public static Enums getValueByName(GEnumClass* enumClass, string name)
-	{
-		// GEnumValue* g_enum_get_value_by_name (GEnumClass *enum_class,  const gchar *name);
-		auto p = g_enum_get_value_by_name(enumClass, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Enums(cast(GEnumValue*) p);
-	}
+	public static Enums getValueByName(GEnumClass* enumClass, string name);
 	
 	/**
 	 * Looks up a GEnumValue by nickname.
@@ -160,16 +75,7 @@ public class Enums
 	 * nick =  the nickname to look up
 	 * Returns: the GEnumValue with nickname nick, or NULL if the enumeration doesn't have a member with that nickname
 	 */
-	public static Enums getValueByNick(GEnumClass* enumClass, string nick)
-	{
-		// GEnumValue* g_enum_get_value_by_nick (GEnumClass *enum_class,  const gchar *nick);
-		auto p = g_enum_get_value_by_nick(enumClass, Str.toStringz(nick));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Enums(cast(GEnumValue*) p);
-	}
+	public static Enums getValueByNick(GEnumClass* enumClass, string nick);
 	
 	/**
 	 * Registers a new static enumeration type with the name name.
@@ -180,11 +86,7 @@ public class Enums
 	 * name =  A nul-terminated string used as the name of the new type.
 	 * Returns: The new type identifier.
 	 */
-	public static GType registerStatic(string name, Enums _StaticValues)
-	{
-		// GType g_enum_register_static (const gchar *name,  const GEnumValue *const_static_values);
-		return g_enum_register_static(Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getEnumsStruct());
-	}
+	public static GType registerStatic(string name, Enums _StaticValues);
 	
 	/**
 	 * This function is meant to be called from the complete_type_info()
@@ -193,9 +95,6 @@ public class Enums
 	 * type =  the type identifier of the type being completed
 	 * info =  the GTypeInfo struct to be filled in
 	 */
-	public static void completeTypeInfo(GType type, out GTypeInfo info, Enums _Values)
-	{
-		// void g_enum_complete_type_info (GType g_enum_type,  GTypeInfo *info,  const GEnumValue *const_values);
-		g_enum_complete_type_info(type, &info, (_Values is null) ? null : _Values.getEnumsStruct());
+	public static void completeTypeInfo(GType type, out GTypeInfo info, Enums _Values);numsStruct());
 	}
 }

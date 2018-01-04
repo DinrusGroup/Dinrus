@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkActivatable.html
- * outPack = gtk
- * outFile = ActivatableT
- * strct   = GtkActivatable
- * realStrct=
- * ctorStrct=
- * clss    = ActivatableT
- * interf  = ActivatableIF
- * class Code: No
- * interface Code: No
- * template for:
- * 	- TStruct
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_activatable_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Action
- * structWrap:
- * 	- GtkAction* -> Action
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ActivatableT;
 
 public  import gtkD.gtkc.gtktypes;
@@ -253,10 +200,7 @@ public template ActivatableT(TStruct)
 	protected GtkActivatable* gtkActivatable;
 	
 	
-	public GtkActivatable* getActivatableTStruct()
-	{
-		return cast(GtkActivatable*)getStruct();
-	}
+	public GtkActivatable* getActivatableTStruct();
 	
 	
 	/**
@@ -279,27 +223,14 @@ public template ActivatableT(TStruct)
 	 * Params:
 	 * action =  the GtkAction to set
 	 */
-	public void doSetRelatedAction(Action action)
-	{
-		// void gtk_activatable_do_set_related_action  (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_do_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
+	public void doSetRelatedAction(Action action);
 	
 	/**
 	 * Gets the related GtkAction for activatable.
 	 * Since 2.16
 	 * Returns: the related GtkAction if one is set.
 	 */
-	public Action getRelatedAction()
-	{
-		// GtkAction * gtk_activatable_get_related_action (GtkActivatable *activatable);
-		auto p = gtk_activatable_get_related_action(getActivatableTStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Action(cast(GtkAction*) p);
-	}
+	public Action getRelatedAction();
 	
 	/**
 	 * Gets whether this activatable should reset its layout
@@ -308,12 +239,7 @@ public template ActivatableT(TStruct)
 	 * Since 2.16
 	 * Returns: whether activatable uses its actions appearance.
 	 */
-	public int getUseActionAppearance()
-	{
-		// gboolean gtk_activatable_get_use_action_appearance  (GtkActivatable *activatable);
-		return gtk_activatable_get_use_action_appearance(getActivatableTStruct());
-	}
-	
+	public int getUseActionAppearance();
 	/**
 	 * This is called to update the activatable completely, this is called
 	 * internally when the "related-action" property is set
@@ -323,11 +249,7 @@ public template ActivatableT(TStruct)
 	 * Params:
 	 * action =  the related GtkAction or NULL
 	 */
-	public void syncActionProperties(Action action)
-	{
-		// void gtk_activatable_sync_action_properties  (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_sync_action_properties(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
+	public void syncActionProperties(Action action);
 	
 	/**
 	 * Sets the related action on the activatable object.
@@ -338,11 +260,7 @@ public template ActivatableT(TStruct)
 	 * Params:
 	 * action =  the GtkAction to set
 	 */
-	public void setRelatedAction(Action action)
-	{
-		// void gtk_activatable_set_related_action (GtkActivatable *activatable,  GtkAction *action);
-		gtk_activatable_set_related_action(getActivatableTStruct(), (action is null) ? null : action.getActionStruct());
-	}
+	public void setRelatedAction(Action action);
 	
 	/**
 	 * Sets whether this activatable should reset its layout and appearance
@@ -356,9 +274,5 @@ public template ActivatableT(TStruct)
 	 * Params:
 	 * useAppearance =  whether to use the actions appearance
 	 */
-	public void setUseActionAppearance(int useAppearance)
-	{
-		// void gtk_activatable_set_use_action_appearance  (GtkActivatable *activatable,  gboolean use_appearance);
-		gtk_activatable_set_use_action_appearance(getActivatableTStruct(), useAppearance);
-	}
+	public void setUseActionAppearance(int useAppearance);
 }

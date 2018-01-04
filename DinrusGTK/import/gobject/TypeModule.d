@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GTypeModule.html
- * outPack = gobject
- * outFile = TypeModule
- * strct   = GTypeModule
- * realStrct=
- * ctorStrct=
- * clss    = TypeModule
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_type_module_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.Enums
- * 	- gtkD.gobject.Flags
- * structWrap:
- * 	- GEnumValue* -> Enums
- * 	- GFlagsValue* -> Flags
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gobject.TypeModule;
 
@@ -104,38 +50,16 @@ public class TypeModule : ObjectG
 	protected GTypeModule* gTypeModule;
 	
 	
-	public GTypeModule* getTypeModuleStruct()
-	{
-		return gTypeModule;
-	}
+	public GTypeModule* getTypeModuleStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gTypeModule;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GTypeModule* gTypeModule)
-	{
-		if(gTypeModule is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gTypeModule);
-		if( ptr !is null )
-		{
-			this = cast(TypeModule)ptr;
-			return;
-		}
-		super(cast(GObject*)gTypeModule);
-		this.gTypeModule = gTypeModule;
-	}
+	public this (GTypeModule* gTypeModule);
 	
 	/**
 	 */
@@ -147,11 +71,7 @@ public class TypeModule : ObjectG
 	 * its prior value.
 	 * Returns: FALSE if the plugin needed to be loaded and loading the plugin failed.
 	 */
-	public int use()
-	{
-		// gboolean g_type_module_use (GTypeModule *module);
-		return g_type_module_use(gTypeModule);
-	}
+	public int use();
 	
 	/**
 	 * Decreases the use count of a GTypeModule by one. If the
@@ -160,22 +80,14 @@ public class TypeModule : ObjectG
 	 * GTypeModule are not unregistered. Once a GTypeModule is
 	 * initialized, it must exist forever.)
 	 */
-	public void unuse()
-	{
-		// void g_type_module_unuse (GTypeModule *module);
-		g_type_module_unuse(gTypeModule);
-	}
+	public void unuse();
 	
 	/**
 	 * Sets the name for a GTypeModule
 	 * Params:
 	 * name =  a human-readable name to use in error messages.
 	 */
-	public void setName(string name)
-	{
-		// void g_type_module_set_name (GTypeModule *module,  const gchar *name);
-		g_type_module_set_name(gTypeModule, Str.toStringz(name));
-	}
+	public void setName(string name);
 	
 	/**
 	 * Looks up or registers a type that is implemented with a particular
@@ -194,11 +106,7 @@ public class TypeModule : ObjectG
 	 * flags =  flags field providing details about the type
 	 * Returns: the new or existing type ID
 	 */
-	public GType registerType(GType parentType, string typeName, GTypeInfo* typeInfo, GTypeFlags flags)
-	{
-		// GType g_type_module_register_type (GTypeModule *module,  GType parent_type,  const gchar *type_name,  const GTypeInfo *type_info,  GTypeFlags flags);
-		return g_type_module_register_type(gTypeModule, parentType, Str.toStringz(typeName), typeInfo, flags);
-	}
+	public GType registerType(GType parentType, string typeName, GTypeInfo* typeInfo, GTypeFlags flags);
 	
 	/**
 	 * Registers an additional interface for a type, whose interface lives
@@ -211,11 +119,7 @@ public class TypeModule : ObjectG
 	 * interfaceType =  interface type to add
 	 * interfaceInfo =  type information structure
 	 */
-	public void addInterface(GType instanceType, GType interfaceType, GInterfaceInfo* interfaceInfo)
-	{
-		// void g_type_module_add_interface (GTypeModule *module,  GType instance_type,  GType interface_type,  const GInterfaceInfo *interface_info);
-		g_type_module_add_interface(gTypeModule, instanceType, interfaceType, interfaceInfo);
-	}
+	public void addInterface(GType instanceType, GType interfaceType, GInterfaceInfo* interfaceInfo);
 	
 	/**
 	 * Looks up or registers an enumeration that is implemented with a particular
@@ -229,11 +133,7 @@ public class TypeModule : ObjectG
 	 * name =  name for the type
 	 * Returns: the new or existing type ID
 	 */
-	public GType registerEnum(string name, Enums _StaticValues)
-	{
-		// GType g_type_module_register_enum (GTypeModule *module,  const gchar *name,  const GEnumValue *const_static_values);
-		return g_type_module_register_enum(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getEnumsStruct());
-	}
+	public GType registerEnum(string name, Enums _StaticValues);
 	
 	/**
 	 * Looks up or registers a flags type that is implemented with a particular
@@ -247,9 +147,5 @@ public class TypeModule : ObjectG
 	 * name =  name for the type
 	 * Returns: the new or existing type ID
 	 */
-	public GType registerFlags(string name, Flags _StaticValues)
-	{
-		// GType g_type_module_register_flags (GTypeModule *module,  const gchar *name,  const GFlagsValue *const_static_values);
-		return g_type_module_register_flags(gTypeModule, Str.toStringz(name), (_StaticValues is null) ? null : _StaticValues.getFlagsStruct());
-	}
+	public GType registerFlags(string name, Flags _StaticValues);
 }

@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-N-ary-Trees.html
- * outPack = glib
- * outFile = Node
- * strct   = GNode
- * realStrct=
- * ctorStrct=
- * clss    = Node
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_node_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- GNode* -> Node
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Node;
 
@@ -91,30 +41,16 @@ public class Node
 	protected GNode* gNode;
 	
 	
-	public GNode* getNodeStruct()
-	{
-		return gNode;
-	}
+	public GNode* getNodeStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gNode;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GNode* gNode)
-	{
-		if(gNode is null)
-		{
-			this = null;
-			return;
-		}
-		this.gNode = gNode;
-	}
+	public this (GNode* gNode);
 	
 	/**
 	 */
@@ -126,32 +62,14 @@ public class Node
 	 * data =  the data of the new node
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (void* data)
-	{
-		// GNode* g_node_new (gpointer data);
-		auto p = g_node_new(data);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_node_new(data)");
-		}
-		this(cast(GNode*) p);
-	}
+	public this (void* data);
 	
 	/**
 	 * Recursively copies a GNode (but does not deep-copy the data inside the
 	 * nodes, see g_node_copy_deep() if you need that).
 	 * Returns: a new GNode containing the same data pointers
 	 */
-	public Node copy()
-	{
-		// GNode* g_node_copy (GNode *node);
-		auto p = g_node_copy(gNode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node copy();
 	
 	/**
 	 * Recursively copies a GNode and its data.
@@ -162,16 +80,7 @@ public class Node
 	 * data =  data to pass to copy_func
 	 * Returns: a new GNode containing copies of the data in node.
 	 */
-	public Node copyDeep(GCopyFunc copyFunc, void* data)
-	{
-		// GNode* g_node_copy_deep (GNode *node,  GCopyFunc copy_func,  gpointer data);
-		auto p = g_node_copy_deep(gNode, copyFunc, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node copyDeep(GCopyFunc copyFunc, void* data);
 	
 	/**
 	 * Inserts a GNode beneath the parent at the given position.
@@ -181,16 +90,7 @@ public class Node
 	 * node =  the GNode to insert
 	 * Returns: the inserted GNode
 	 */
-	public Node insert(int position, Node node)
-	{
-		// GNode* g_node_insert (GNode *parent,  gint position,  GNode *node);
-		auto p = g_node_insert(gNode, position, (node is null) ? null : node.getNodeStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node insert(int position, Node node);
 	
 	/**
 	 * Inserts a GNode beneath the parent before the given sibling.
@@ -200,16 +100,7 @@ public class Node
 	 * node =  the GNode to insert
 	 * Returns: the inserted GNode
 	 */
-	public Node insertBefore(Node sibling, Node node)
-	{
-		// GNode* g_node_insert_before (GNode *parent,  GNode *sibling,  GNode *node);
-		auto p = g_node_insert_before(gNode, (sibling is null) ? null : sibling.getNodeStruct(), (node is null) ? null : node.getNodeStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node insertBefore(Node sibling, Node node);
 	
 	/**
 	 * Inserts a GNode beneath the parent after the given sibling.
@@ -219,16 +110,7 @@ public class Node
 	 * node =  the GNode to insert
 	 * Returns: the inserted GNode
 	 */
-	public Node insertAfter(Node sibling, Node node)
-	{
-		// GNode* g_node_insert_after (GNode *parent,  GNode *sibling,  GNode *node);
-		auto p = g_node_insert_after(gNode, (sibling is null) ? null : sibling.getNodeStruct(), (node is null) ? null : node.getNodeStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node insertAfter(Node sibling, Node node);
 	
 	/**
 	 * Inserts a GNode as the first child of the given parent.
@@ -236,26 +118,13 @@ public class Node
 	 * node =  the GNode to insert
 	 * Returns: the inserted GNode
 	 */
-	public Node prepend(Node node)
-	{
-		// GNode* g_node_prepend (GNode *parent,  GNode *node);
-		auto p = g_node_prepend(gNode, (node is null) ? null : node.getNodeStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node prepend(Node node);
 	
 	/**
 	 * Reverses the order of the children of a GNode.
 	 * (It doesn't change the order of the grandchildren.)
 	 */
-	public void reverseChildren()
-	{
-		// void g_node_reverse_children (GNode *node);
-		g_node_reverse_children(gNode);
-	}
+	public void reverseChildren();
 	
 	/**
 	 * Traverses a tree starting at the given root GNode.
@@ -273,11 +142,7 @@ public class Node
 	 * func =  the function to call for each visited GNode
 	 * data =  user data to pass to the function
 	 */
-	public void traverse(GTraverseType order, GTraverseFlags flags, int maxDepth, GNodeTraverseFunc func, void* data)
-	{
-		// void g_node_traverse (GNode *root,  GTraverseType order,  GTraverseFlags flags,  gint max_depth,  GNodeTraverseFunc func,  gpointer data);
-		g_node_traverse(gNode, order, flags, maxDepth, func, data);
-	}
+	public void traverse(GTraverseType order, GTraverseFlags flags, int maxDepth, GNodeTraverseFunc func, void* data);
 	
 	/**
 	 * Calls a function for each of the children of a GNode.
@@ -288,26 +153,13 @@ public class Node
 	 * func =  the function to call for each visited node
 	 * data =  user data to pass to the function
 	 */
-	public void childrenForeach(GTraverseFlags flags, GNodeForeachFunc func, void* data)
-	{
-		// void g_node_children_foreach (GNode *node,  GTraverseFlags flags,  GNodeForeachFunc func,  gpointer data);
-		g_node_children_foreach(gNode, flags, func, data);
-	}
+	public void childrenForeach(GTraverseFlags flags, GNodeForeachFunc func, void* data);
 	
 	/**
 	 * Gets the root of a tree.
 	 * Returns: the root of the tree
 	 */
-	public Node getRoot()
-	{
-		// GNode* g_node_get_root (GNode *node);
-		auto p = g_node_get_root(gNode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node getRoot();
 	
 	/**
 	 * Finds a GNode in a tree.
@@ -319,16 +171,7 @@ public class Node
 	 * data =  the data to find
 	 * Returns: the found GNode, or NULL if the data is not found
 	 */
-	public Node find(GTraverseType order, GTraverseFlags flags, void* data)
-	{
-		// GNode* g_node_find (GNode *root,  GTraverseType order,  GTraverseFlags flags,  gpointer data);
-		auto p = g_node_find(gNode, order, flags, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node find(GTraverseType order, GTraverseFlags flags, void* data);
 	
 	/**
 	 * Finds the first child of a GNode with the given data.
@@ -338,16 +181,7 @@ public class Node
 	 * data =  the data to find
 	 * Returns: the found child GNode, or NULL if the data is not found
 	 */
-	public Node findChild(GTraverseFlags flags, void* data)
-	{
-		// GNode* g_node_find_child (GNode *node,  GTraverseFlags flags,  gpointer data);
-		auto p = g_node_find_child(gNode, flags, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node findChild(GTraverseFlags flags, void* data);
 	
 	/**
 	 * Gets the position of the first child of a GNode
@@ -356,11 +190,7 @@ public class Node
 	 * data =  the data to find
 	 * Returns: the index of the child of node which contains  data, or -1 if the data is not found
 	 */
-	public int childIndex(void* data)
-	{
-		// gint g_node_child_index (GNode *node,  gpointer data);
-		return g_node_child_index(gNode, data);
-	}
+	public int childIndex(void* data);
 	
 	/**
 	 * Gets the position of a GNode with respect to its siblings.
@@ -370,26 +200,13 @@ public class Node
 	 * child =  a child of node
 	 * Returns: the position of child with respect to its siblings
 	 */
-	public int childPosition(Node child)
-	{
-		// gint g_node_child_position (GNode *node,  GNode *child);
-		return g_node_child_position(gNode, (child is null) ? null : child.getNodeStruct());
-	}
+	public int childPosition(Node child);
 	
 	/**
 	 * Gets the last child of a GNode.
 	 * Returns: the last child of node, or NULL if node has no children
 	 */
-	public Node lastChild()
-	{
-		// GNode* g_node_last_child (GNode *node);
-		auto p = g_node_last_child(gNode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node lastChild();
 	
 	/**
 	 * Gets a child of a GNode, using the given index.
@@ -399,48 +216,21 @@ public class Node
 	 * n =  the index of the desired child
 	 * Returns: the child of node at index n
 	 */
-	public Node nthChild(uint n)
-	{
-		// GNode* g_node_nth_child (GNode *node,  guint n);
-		auto p = g_node_nth_child(gNode, n);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node nthChild(uint n);
 	
 	/**
 	 * Gets the first sibling of a GNode.
 	 * This could possibly be the node itself.
 	 * Returns: the first sibling of node
 	 */
-	public Node firstSibling()
-	{
-		// GNode* g_node_first_sibling (GNode *node);
-		auto p = g_node_first_sibling(gNode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node firstSibling();
 	
 	/**
 	 * Gets the last sibling of a GNode.
 	 * This could possibly be the node itself.
 	 * Returns: the last sibling of node
 	 */
-	public Node lastSibling()
-	{
-		// GNode* g_node_last_sibling (GNode *node);
-		auto p = g_node_last_sibling(gNode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Node(cast(GNode*) p);
-	}
+	public Node lastSibling();
 	
 	/**
 	 * Gets the depth of a GNode.
@@ -448,11 +238,7 @@ public class Node
 	 * For the children of the root node the depth is 2. And so on.
 	 * Returns: the depth of the GNode
 	 */
-	public uint depth()
-	{
-		// guint g_node_depth (GNode *node);
-		return g_node_depth(gNode);
-	}
+	public uint depth();
 	
 	/**
 	 * Gets the number of nodes in a tree.
@@ -461,21 +247,13 @@ public class Node
 	 *  G_TRAVERSE_ALL, G_TRAVERSE_LEAVES and G_TRAVERSE_NON_LEAVES
 	 * Returns: the number of nodes in the tree
 	 */
-	public uint nNodes(GTraverseFlags flags)
-	{
-		// guint g_node_n_nodes (GNode *root,  GTraverseFlags flags);
-		return g_node_n_nodes(gNode, flags);
-	}
+	public uint nNodes(GTraverseFlags flags);
 	
 	/**
 	 * Gets the number of children of a GNode.
 	 * Returns: the number of children of node
 	 */
-	public uint nChildren()
-	{
-		// guint g_node_n_children (GNode *node);
-		return g_node_n_children(gNode);
-	}
+	public uint nChildren();
 	
 	/**
 	 * Returns TRUE if node is an ancestor of descendant.
@@ -485,11 +263,7 @@ public class Node
 	 * descendant =  a GNode
 	 * Returns: TRUE if node is an ancestor of descendant
 	 */
-	public int isAncestor(Node descendant)
-	{
-		// gboolean g_node_is_ancestor (GNode *node,  GNode *descendant);
-		return g_node_is_ancestor(gNode, (descendant is null) ? null : descendant.getNodeStruct());
-	}
+	public int isAncestor(Node descendant);
 	
 	/**
 	 * Gets the maximum height of all branches beneath a GNode.
@@ -498,30 +272,18 @@ public class Node
 	 * 1 is returned. If root has children, 2 is returned. And so on.
 	 * Returns: the maximum height of the tree beneath root
 	 */
-	public uint maxHeight()
-	{
-		// guint g_node_max_height (GNode *root);
-		return g_node_max_height(gNode);
-	}
+	public uint maxHeight();
 	
 	/**
 	 * Unlinks a GNode from a tree, resulting in two separate trees.
 	 */
-	public void unlink()
-	{
-		// void g_node_unlink (GNode *node);
-		g_node_unlink(gNode);
-	}
+	public void unlink();
 	
 	/**
 	 * Removes root and its children from the tree, freeing any memory
 	 * allocated.
 	 */
-	public void destroy()
-	{
-		// void g_node_destroy (GNode *root);
-		g_node_destroy(gNode);
-	}
+	public void destroy();
 	
 	/**
 	 * Warning
@@ -534,11 +296,7 @@ public class Node
 	 * Params:
 	 * dummy = the GAllocator to use when allocating GNode elements.
 	 */
-	public static void pushAllocator(void* dummy)
-	{
-		// void g_node_push_allocator (gpointer dummy);
-		g_node_push_allocator(dummy);
-	}
+	public static void pushAllocator(void* dummy);
 	
 	/**
 	 * Warning
@@ -548,9 +306,5 @@ public class Node
 	 * Note that this function is not available if GLib has been compiled
 	 * with --disable-mem-pools
 	 */
-	public static void popAllocator()
-	{
-		// void g_node_pop_allocator (void);
-		g_node_pop_allocator();
-	}
+	public static void popAllocator();
 }

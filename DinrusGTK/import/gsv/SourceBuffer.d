@@ -1,66 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSourceBuffer.html
- * outPack = gsv
- * outFile = SourceBuffer
- * strct   = GtkSourceBuffer
- * realStrct=
- * ctorStrct=
- * clss    = SourceBuffer
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_source_buffer_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TextTagTable
- * 	- gtkD.gsv.SourceLanguage
- * 	- gtkD.gsv.SourceStyleScheme
- * 	- gtkD.gsv.SourceMark
- * 	- gtkD.glib.ListSG
- * 	- gtkD.gtk.TextIter
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GtkSourceLanguage* -> SourceLanguage
- * 	- GtkSourceMark* -> SourceMark
- * 	- GtkSourceStyleScheme* -> SourceStyleScheme
- * 	- GtkTextIter* -> TextIter
- * 	- GtkTextTagTable* -> TextTagTable
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gsv.SourceBuffer;
 
 public  import gtkD.gsvc.gsvtypes;
@@ -103,38 +40,16 @@ public class SourceBuffer : TextBuffer
 	protected GtkSourceBuffer* gtkSourceBuffer;
 	
 	
-	public GtkSourceBuffer* getSourceBufferStruct()
-	{
-		return gtkSourceBuffer;
-	}
+	public GtkSourceBuffer* getSourceBufferStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourceBuffer;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSourceBuffer* gtkSourceBuffer)
-	{
-		if(gtkSourceBuffer is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourceBuffer);
-		if( ptr !is null )
-		{
-			this = cast(SourceBuffer)ptr;
-			return;
-		}
-		super(cast(GtkTextBuffer*)gtkSourceBuffer);
-		this.gtkSourceBuffer = gtkSourceBuffer;
-	}
+	public this (GtkSourceBuffer* gtkSourceBuffer);
 	
 	/**
 	 */
@@ -143,27 +58,8 @@ public class SourceBuffer : TextBuffer
 	void delegate(TextIter, TextIter, SourceBuffer)[] onHighlightUpdatedListeners;
 	/**
 	 */
-	void addOnHighlightUpdated(void delegate(TextIter, TextIter, SourceBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("highlight-updated" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"highlight-updated",
-			cast(GCallback)&callBackHighlightUpdated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["highlight-updated"] = 1;
-		}
-		onHighlightUpdatedListeners ~= dlg;
-	}
-	extern(C) static void callBackHighlightUpdated(GtkSourceBuffer* sourcebufferStruct, GtkTextIter* arg1, GtkTextIter* arg2, SourceBuffer sourceBuffer)
-	{
-		foreach ( void delegate(TextIter, TextIter, SourceBuffer) dlg ; sourceBuffer.onHighlightUpdatedListeners )
-		{
-			dlg(new TextIter(arg1), new TextIter(arg2), sourceBuffer);
-		}
+	void addOnHighlightUpdated(void delegate(TextIter, TextIter, SourceBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackHighlightUpdated(GtkSourceBuffer* sourcebufferStruct, GtkTextIter* arg1, GtkTextIter* arg2, SourceBuffer sourceBuffer);
 	}
 	
 	void delegate(GtkTextMark*, SourceBuffer)[] onSourceMarkUpdatedListeners;
@@ -177,28 +73,8 @@ public class SourceBuffer : TextBuffer
 	 * GtkSourceView for examples on setting up the buffer to be displayed
 	 * in a view widget.
 	 */
-	void addOnSourceMarkUpdated(void delegate(GtkTextMark*, SourceBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("source-mark-updated" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"source-mark-updated",
-			cast(GCallback)&callBackSourceMarkUpdated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["source-mark-updated"] = 1;
-		}
-		onSourceMarkUpdatedListeners ~= dlg;
-	}
-	extern(C) static void callBackSourceMarkUpdated(GtkSourceBuffer* bufferStruct, GtkTextMark* arg1, SourceBuffer sourceBuffer)
-	{
-		foreach ( void delegate(GtkTextMark*, SourceBuffer) dlg ; sourceBuffer.onSourceMarkUpdatedListeners )
-		{
-			dlg(arg1, sourceBuffer);
-		}
-	}
+	void addOnSourceMarkUpdated(void delegate(GtkTextMark*, SourceBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSourceMarkUpdated(GtkSourceBuffer* bufferStruct, GtkTextMark* arg1, SourceBuffer sourceBuffer);
 	
 	
 	/**
@@ -207,16 +83,7 @@ public class SourceBuffer : TextBuffer
 	 * table =  a GtkTextTagTable, or NULL to create a new one.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (TextTagTable table)
-	{
-		// GtkSourceBuffer * gtk_source_buffer_new (GtkTextTagTable *table);
-		auto p = gtk_source_buffer_new((table is null) ? null : table.getTextTagTableStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_source_buffer_new((table is null) ? null : table.getTextTagTableStruct())");
-		}
-		this(cast(GtkSourceBuffer*) p);
-	}
+	public this (TextTagTable table);
 	
 	/**
 	 * Creates a new source buffer using the highlighting patterns in
@@ -226,16 +93,7 @@ public class SourceBuffer : TextBuffer
 	 * language =  a GtkSourceLanguage.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (SourceLanguage language)
-	{
-		// GtkSourceBuffer * gtk_source_buffer_new_with_language (GtkSourceLanguage *language);
-		auto p = gtk_source_buffer_new_with_language((language is null) ? null : language.getSourceLanguageStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_source_buffer_new_with_language((language is null) ? null : language.getSourceLanguageStruct())");
-		}
-		this(cast(GtkSourceBuffer*) p);
-	}
+	public this (SourceLanguage language);
 	
 	/**
 	 * Controls whether syntax is highlighted in the buffer. If highlight
@@ -247,22 +105,14 @@ public class SourceBuffer : TextBuffer
 	 * Params:
 	 * highlight =  TRUE to enable syntax highlighting, FALSE to disable it.
 	 */
-	public void setHighlightSyntax(int highlight)
-	{
-		// void gtk_source_buffer_set_highlight_syntax  (GtkSourceBuffer *buffer,  gboolean highlight);
-		gtk_source_buffer_set_highlight_syntax(gtkSourceBuffer, highlight);
-	}
+	public void setHighlightSyntax(int highlight);
 	
 	/**
 	 * Determines whether syntax highlighting is activated in the source
 	 * buffer.
 	 * Returns: TRUE if syntax highlighting is enabled, FALSE otherwise.
 	 */
-	public int getHighlightSyntax()
-	{
-		// gboolean gtk_source_buffer_get_highlight_syntax  (GtkSourceBuffer *buffer);
-		return gtk_source_buffer_get_highlight_syntax(gtkSourceBuffer);
-	}
+	public int getHighlightSyntax();
 	
 	/**
 	 * Associate a GtkSourceLanguage with the source buffer. If language is
@@ -274,11 +124,7 @@ public class SourceBuffer : TextBuffer
 	 * Params:
 	 * language =  a GtkSourceLanguage to set, or NULL.
 	 */
-	public void setLanguage(SourceLanguage language)
-	{
-		// void gtk_source_buffer_set_language (GtkSourceBuffer *buffer,  GtkSourceLanguage *language);
-		gtk_source_buffer_set_language(gtkSourceBuffer, (language is null) ? null : language.getSourceLanguageStruct());
-	}
+	public void setLanguage(SourceLanguage language);
 	
 	/**
 	 * Returns the GtkSourceLanguage associated with the buffer,
@@ -286,16 +132,7 @@ public class SourceBuffer : TextBuffer
 	 * unreferenced by the user.
 	 * Returns: GtkSourceLanguage associated with the buffer, or NULL.
 	 */
-	public SourceLanguage getLanguage()
-	{
-		// GtkSourceLanguage * gtk_source_buffer_get_language (GtkSourceBuffer *buffer);
-		auto p = gtk_source_buffer_get_language(gtkSourceBuffer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceLanguage(cast(GtkSourceLanguage*) p);
-	}
+	public SourceLanguage getLanguage();
 	
 	/**
 	 * Controls the bracket match highlighting function in the buffer. If
@@ -307,59 +144,34 @@ public class SourceBuffer : TextBuffer
 	 * Params:
 	 * highlight =  TRUE if you want matching brackets highlighted.
 	 */
-	public void setHighlightMatchingBrackets(int highlight)
-	{
-		// void gtk_source_buffer_set_highlight_matching_brackets  (GtkSourceBuffer *buffer,  gboolean highlight);
-		gtk_source_buffer_set_highlight_matching_brackets(gtkSourceBuffer, highlight);
-	}
+	public void setHighlightMatchingBrackets(int highlight);
 	
 	/**
 	 * Determines whether bracket match highlighting is activated for the
 	 * source buffer.
 	 * Returns: TRUE if the source buffer will highlight matchingbrackets.
 	 */
-	public int getHighlightMatchingBrackets()
-	{
-		// gboolean gtk_source_buffer_get_highlight_matching_brackets  (GtkSourceBuffer *buffer);
-		return gtk_source_buffer_get_highlight_matching_brackets(gtkSourceBuffer);
-	}
+	public int getHighlightMatchingBrackets();
 	
 	/**
 	 * Sets style scheme used by the buffer.
 	 * Params:
 	 * scheme =  style scheme.
 	 */
-	public void setStyleScheme(SourceStyleScheme scheme)
-	{
-		// void gtk_source_buffer_set_style_scheme (GtkSourceBuffer *buffer,  GtkSourceStyleScheme *scheme);
-		gtk_source_buffer_set_style_scheme(gtkSourceBuffer, (scheme is null) ? null : scheme.getSourceStyleSchemeStruct());
-	}
+	public void setStyleScheme(SourceStyleScheme scheme);
 	
 	/**
 	 * Returns the GtkSourceStyleScheme currently used in buffer.
 	 * Returns: the GtkSourceStyleScheme set bygtk_source_buffer_set_style_scheme(), or NULL.
 	 */
-	public SourceStyleScheme getStyleScheme()
-	{
-		// GtkSourceStyleScheme * gtk_source_buffer_get_style_scheme  (GtkSourceBuffer *buffer);
-		auto p = gtk_source_buffer_get_style_scheme(gtkSourceBuffer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceStyleScheme(cast(GtkSourceStyleScheme*) p);
-	}
+	public SourceStyleScheme getStyleScheme();
 	
 	/**
 	 * Determines the number of undo levels the buffer will track for
 	 * buffer edits.
 	 * Returns: the maximum number of possible undo levels or -1 if no limit is set.
 	 */
-	public int getMaxUndoLevels()
-	{
-		// gint gtk_source_buffer_get_max_undo_levels  (GtkSourceBuffer *buffer);
-		return gtk_source_buffer_get_max_undo_levels(gtkSourceBuffer);
-	}
+	public int getMaxUndoLevels();
 	
 	/**
 	 * Sets the number of undo levels for user actions the buffer will
@@ -375,21 +187,13 @@ public class SourceBuffer : TextBuffer
 	 * Params:
 	 * maxUndoLevels =  the desired maximum number of undo levels.
 	 */
-	public void setMaxUndoLevels(int maxUndoLevels)
-	{
-		// void gtk_source_buffer_set_max_undo_levels  (GtkSourceBuffer *buffer,  gint max_undo_levels);
-		gtk_source_buffer_set_max_undo_levels(gtkSourceBuffer, maxUndoLevels);
-	}
+	public void setMaxUndoLevels(int maxUndoLevels);
 	
 	/**
 	 * Redoes the last undo operation. Use gtk_source_buffer_can_redo()
 	 * to check whether a call to this function will have any effect.
 	 */
-	public void redo()
-	{
-		// void gtk_source_buffer_redo (GtkSourceBuffer *buffer);
-		gtk_source_buffer_redo(gtkSourceBuffer);
-	}
+	public void redo();
 	
 	/**
 	 * Undoes the last user action which modified the buffer. Use
@@ -400,32 +204,20 @@ public class SourceBuffer : TextBuffer
 	 * gtk_text_buffer_end_user_action(), or sequences of similar edits
 	 * (inserts or deletes) on the same line.
 	 */
-	public void undo()
-	{
-		// void gtk_source_buffer_undo (GtkSourceBuffer *buffer);
-		gtk_source_buffer_undo(gtkSourceBuffer);
-	}
+	public void undo();
 	
 	/**
 	 * Determines whether a source buffer can redo the last action
 	 * (i.e. if the last operation was an undo).
 	 * Returns: TRUE if a redo is possible.
 	 */
-	public int canRedo()
-	{
-		// gboolean gtk_source_buffer_can_redo (GtkSourceBuffer *buffer);
-		return gtk_source_buffer_can_redo(gtkSourceBuffer);
-	}
+	public int canRedo();
 	
 	/**
 	 * Determines whether a source buffer can undo the last action.
 	 * Returns: TRUE if it's possible to undo the last action.
 	 */
-	public int canUndo()
-	{
-		// gboolean gtk_source_buffer_can_undo (GtkSourceBuffer *buffer);
-		return gtk_source_buffer_can_undo(gtkSourceBuffer);
-	}
+	public int canUndo();
 	
 	/**
 	 * Marks the beginning of a not undoable action on the buffer,
@@ -435,11 +227,7 @@ public class SourceBuffer : TextBuffer
 	 * You may nest gtk_source_buffer_begin_not_undoable_action() /
 	 * gtk_source_buffer_end_not_undoable_action() blocks.
 	 */
-	public void beginNotUndoableAction()
-	{
-		// void gtk_source_buffer_begin_not_undoable_action  (GtkSourceBuffer *buffer);
-		gtk_source_buffer_begin_not_undoable_action(gtkSourceBuffer);
-	}
+	public void beginNotUndoableAction();
 	
 	/**
 	 * Marks the end of a not undoable action on the buffer. When the
@@ -447,11 +235,7 @@ public class SourceBuffer : TextBuffer
 	 * function, the list of undo actions is cleared and the undo manager
 	 * is re-enabled.
 	 */
-	public void endNotUndoableAction()
-	{
-		// void gtk_source_buffer_end_not_undoable_action  (GtkSourceBuffer *buffer);
-		gtk_source_buffer_end_not_undoable_action(gtkSourceBuffer);
-	}
+	public void endNotUndoableAction();
 	
 	/**
 	 * Creates a source mark in the buffer of category category. A source mark is
@@ -471,16 +255,7 @@ public class SourceBuffer : TextBuffer
 	 * where =  location to place the mark.
 	 * Returns: a new GtkSourceMark, owned by the buffer.
 	 */
-	public SourceMark createSourceMark(string name, string category, TextIter where)
-	{
-		// GtkSourceMark * gtk_source_buffer_create_source_mark  (GtkSourceBuffer *buffer,  const gchar *name,  const gchar *category,  const GtkTextIter *where);
-		auto p = gtk_source_buffer_create_source_mark(gtkSourceBuffer, Str.toStringz(name), Str.toStringz(category), (where is null) ? null : where.getTextIterStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceMark(cast(GtkSourceMark*) p);
-	}
+	public SourceMark createSourceMark(string name, string category, TextIter where);
 	
 	/**
 	 * Returns the list of marks of the given category at line.
@@ -491,16 +266,7 @@ public class SourceBuffer : TextBuffer
 	 * category =  category to search for or NULL
 	 * Returns: a newly allocated GSList.
 	 */
-	public ListSG getSourceMarksAtLine(int line, string category)
-	{
-		// GSList * gtk_source_buffer_get_source_marks_at_line  (GtkSourceBuffer *buffer,  gint line,  const gchar *category);
-		auto p = gtk_source_buffer_get_source_marks_at_line(gtkSourceBuffer, line, Str.toStringz(category));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getSourceMarksAtLine(int line, string category);
 	
 	/**
 	 * Returns the list of marks of the given category at iter. If category
@@ -511,16 +277,7 @@ public class SourceBuffer : TextBuffer
 	 * category =  category to search for or NULL
 	 * Returns: a newly allocated GSList.
 	 */
-	public ListSG getSourceMarksAtIter(TextIter iter, string category)
-	{
-		// GSList * gtk_source_buffer_get_source_marks_at_iter  (GtkSourceBuffer *buffer,  GtkTextIter *iter,  const gchar *category);
-		auto p = gtk_source_buffer_get_source_marks_at_iter(gtkSourceBuffer, (iter is null) ? null : iter.getTextIterStruct(), Str.toStringz(category));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getSourceMarksAtIter(TextIter iter, string category);
 	
 	/**
 	 * Remove all marks of category between start and end from the buffer.
@@ -531,11 +288,7 @@ public class SourceBuffer : TextBuffer
 	 * end =  a GtkTextIter
 	 * category =  category to search for or NULL
 	 */
-	public void removeSourceMarks(TextIter start, TextIter end, string category)
-	{
-		// void gtk_source_buffer_remove_source_marks  (GtkSourceBuffer *buffer,  const GtkTextIter *start,  const GtkTextIter *end,  const gchar *category);
-		gtk_source_buffer_remove_source_marks(gtkSourceBuffer, (start is null) ? null : start.getTextIterStruct(), (end is null) ? null : end.getTextIterStruct(), Str.toStringz(category));
-	}
+	public void removeSourceMarks(TextIter start, TextIter end, string category);
 	
 	/**
 	 * Moves iter to the position of the next GtkSourceMark of the given
@@ -547,11 +300,7 @@ public class SourceBuffer : TextBuffer
 	 * category =  category to search for or NULL
 	 * Returns: whether iter moved.
 	 */
-	public int forwardIterToSourceMark(TextIter iter, string category)
-	{
-		// gboolean gtk_source_buffer_forward_iter_to_source_mark  (GtkSourceBuffer *buffer,  GtkTextIter *iter,  const gchar *category);
-		return gtk_source_buffer_forward_iter_to_source_mark(gtkSourceBuffer, (iter is null) ? null : iter.getTextIterStruct(), Str.toStringz(category));
-	}
+	public int forwardIterToSourceMark(TextIter iter, string category);
 	
 	/**
 	 * Moves iter to the position of the previous GtkSourceMark of the given
@@ -563,11 +312,7 @@ public class SourceBuffer : TextBuffer
 	 * category =  category to search for or NULL
 	 * Returns: whether iter moved.
 	 */
-	public int backwardIterToSourceMark(TextIter iter, string category)
-	{
-		// gboolean gtk_source_buffer_backward_iter_to_source_mark  (GtkSourceBuffer *buffer,  GtkTextIter *iter,  const gchar *category);
-		return gtk_source_buffer_backward_iter_to_source_mark(gtkSourceBuffer, (iter is null) ? null : iter.getTextIterStruct(), Str.toStringz(category));
-	}
+	public int backwardIterToSourceMark(TextIter iter, string category);
 	
 	/**
 	 * Forces buffer to analyze and highlight the given area synchronously.
@@ -579,9 +324,5 @@ public class SourceBuffer : TextBuffer
 	 * start =  start of the area to highlight.
 	 * end =  end of the area to highlight.
 	 */
-	public void ensureHighlight(TextIter start, TextIter end)
-	{
-		// void gtk_source_buffer_ensure_highlight (GtkSourceBuffer *buffer,  const GtkTextIter *start,  const GtkTextIter *end);
-		gtk_source_buffer_ensure_highlight(gtkSourceBuffer, (start is null) ? null : start.getTextIterStruct(), (end is null) ? null : end.getTextIterStruct());
-	}
+	public void ensureHighlight(TextIter start, TextIter end);
 }

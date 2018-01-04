@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstTypeFindFactory.html
- * outPack = gstreamer
- * outFile = TypeFindFactory
- * strct   = GstTypeFindFactory
- * realStrct=
- * ctorStrct=
- * clss    = TypeFindFactory
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_type_find_factory_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ListG
- * 	- gtkD.gstreamer.TypeFind
- * 	- gtkD.gstreamer.Caps
- * structWrap:
- * 	- GList* -> ListG
- * 	- GstCaps* -> Caps
- * 	- GstTypeFind* -> TypeFind
- * 	- GstTypeFindFactory* -> TypeFindFactory
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.TypeFindFactory;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -132,38 +73,16 @@ public class TypeFindFactory : PluginFeature
 	protected GstTypeFindFactory* gstTypeFindFactory;
 	
 	
-	public GstTypeFindFactory* getTypeFindFactoryStruct()
-	{
-		return gstTypeFindFactory;
-	}
+	public GstTypeFindFactory* getTypeFindFactoryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstTypeFindFactory;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstTypeFindFactory* gstTypeFindFactory)
-	{
-		if(gstTypeFindFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstTypeFindFactory);
-		if( ptr !is null )
-		{
-			this = cast(TypeFindFactory)ptr;
-			return;
-		}
-		super(cast(GstPluginFeature*)gstTypeFindFactory);
-		this.gstTypeFindFactory = gstTypeFindFactory;
-	}
+	public this (GstTypeFindFactory* gstTypeFindFactory);
 	
 	/**
 	 */
@@ -173,16 +92,7 @@ public class TypeFindFactory : PluginFeature
 	 * list using g_list_free.
 	 * Returns: the list of all registered GstTypeFindFactory.
 	 */
-	public static ListG getList()
-	{
-		// GList* gst_type_find_factory_get_list (void);
-		auto p = gst_type_find_factory_get_list();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public static ListG getList();
 	
 	/**
 	 * Gets the extensions associated with a GstTypeFindFactory. The returned
@@ -191,26 +101,13 @@ public class TypeFindFactory : PluginFeature
 	 * a 0-length list.
 	 * Returns: a NULL-terminated array of extensions associated with this factory
 	 */
-	public string[] getExtensions()
-	{
-		// gchar** gst_type_find_factory_get_extensions  (GstTypeFindFactory *factory);
-		return Str.toStringArray(gst_type_find_factory_get_extensions(gstTypeFindFactory));
-	}
+	public string[] getExtensions();
 	
 	/**
 	 * Gets the GstCaps associated with a typefind factory.
 	 * Returns: The GstCaps associated with this factory
 	 */
-	public Caps getCaps()
-	{
-		// GstCaps* gst_type_find_factory_get_caps (GstTypeFindFactory *factory);
-		auto p = gst_type_find_factory_get_caps(gstTypeFindFactory);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Caps(cast(GstCaps*) p);
-	}
+	public Caps getCaps();
 	
 	/**
 	 * Calls the GstTypeFindFunction associated with this factory.
@@ -218,9 +115,5 @@ public class TypeFindFactory : PluginFeature
 	 * find =  A properly setup GstTypeFind entry. The get_data and suggest_type
 	 *  members must be set.
 	 */
-	public void callFunction(TypeFind find)
-	{
-		// void gst_type_find_factory_call_function  (GstTypeFindFactory *factory,  GstTypeFind *find);
-		gst_type_find_factory_call_function(gstTypeFindFactory, (find is null) ? null : find.getTypeFindStruct());
-	}
+	public void callFunction(TypeFind find);
 }

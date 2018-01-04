@@ -1,66 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkCellRenderer.html
- * outPack = gtk
- * outFile = CellRenderer
- * strct   = GtkCellRenderer
- * realStrct=
- * ctorStrct=
- * clss    = CellRenderer
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_cell_renderer_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gdk.Rectangle
- * 	- gtkD.gdk.Window
- * 	- gtkD.gdk.Event
- * 	- gtkD.gtk.CellEditable
- * 	- gtkD.gtk.CellEditableIF
- * structWrap:
- * 	- GdkEvent* -> Event
- * 	- GdkRectangle* -> Rectangle
- * 	- GdkWindow* -> Window
- * 	- GtkCellEditable* -> CellEditableIF
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.CellRenderer;
 
 public  import gtkD.gtkc.gtktypes;
@@ -119,38 +56,16 @@ public class CellRenderer : ObjectGtk
 	protected GtkCellRenderer* gtkCellRenderer;
 	
 	
-	public GtkCellRenderer* getCellRendererStruct()
-	{
-		return gtkCellRenderer;
-	}
+	public GtkCellRenderer* getCellRendererStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRenderer;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkCellRenderer* gtkCellRenderer)
-	{
-		if(gtkCellRenderer is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRenderer);
-		if( ptr !is null )
-		{
-			this = cast(CellRenderer)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkCellRenderer);
-		this.gtkCellRenderer = gtkCellRenderer;
-	}
+	public this (GtkCellRenderer* gtkCellRenderer);
 	
 	/**
 	 */
@@ -164,28 +79,8 @@ public class CellRenderer : ObjectGtk
 	 * See also: gtk_cell_renderer_stop_editing().
 	 * Since 2.4
 	 */
-	void addOnEditingCanceled(void delegate(CellRenderer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("editing-canceled" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"editing-canceled",
-			cast(GCallback)&callBackEditingCanceled,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["editing-canceled"] = 1;
-		}
-		onEditingCanceledListeners ~= dlg;
-	}
-	extern(C) static void callBackEditingCanceled(GtkCellRenderer* rendererStruct, CellRenderer cellRenderer)
-	{
-		foreach ( void delegate(CellRenderer) dlg ; cellRenderer.onEditingCanceledListeners )
-		{
-			dlg(cellRenderer);
-		}
-	}
+	void addOnEditingCanceled(void delegate(CellRenderer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackEditingCanceled(GtkCellRenderer* rendererStruct, CellRenderer cellRenderer);
 	
 	void delegate(CellEditableIF, string, CellRenderer)[] onEditingStartedListeners;
 	/**
@@ -215,28 +110,8 @@ public class CellRenderer : ObjectGtk
 	 * See Also
 	 * GtkCellRendererText,GtkCellRendererPixbuf,GtkCellRendererToggle
 	 */
-	void addOnEditingStarted(void delegate(CellEditableIF, string, CellRenderer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("editing-started" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"editing-started",
-			cast(GCallback)&callBackEditingStarted,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["editing-started"] = 1;
-		}
-		onEditingStartedListeners ~= dlg;
-	}
-	extern(C) static void callBackEditingStarted(GtkCellRenderer* rendererStruct, GtkCellEditable* editable, gchar* path, CellRenderer cellRenderer)
-	{
-		foreach ( void delegate(CellEditableIF, string, CellRenderer) dlg ; cellRenderer.onEditingStartedListeners )
-		{
-			dlg(new CellEditable(editable), Str.toString(path), cellRenderer);
-		}
-	}
+	void addOnEditingStarted(void delegate(CellEditableIF, string, CellRenderer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackEditingStarted(GtkCellRenderer* rendererStruct, GtkCellEditable* editable, gchar* path, CellRenderer cellRenderer);
 	
 	
 	/**
@@ -255,11 +130,7 @@ public class CellRenderer : ObjectGtk
 	 * width =  location to return width needed to render a cell, or NULL
 	 * height =  location to return height needed to render a cell, or NULL
 	 */
-	public void getSize(Widget widget, Rectangle cellArea, out int xOffset, out int yOffset, out int width, out int height)
-	{
-		// void gtk_cell_renderer_get_size (GtkCellRenderer *cell,  GtkWidget *widget,  const GdkRectangle *cell_area,  gint *x_offset,  gint *y_offset,  gint *width,  gint *height);
-		gtk_cell_renderer_get_size(gtkCellRenderer, (widget is null) ? null : widget.getWidgetStruct(), (cellArea is null) ? null : cellArea.getRectangleStruct(), &xOffset, &yOffset, &width, &height);
-	}
+	public void getSize(Widget widget, Rectangle cellArea, out int xOffset, out int yOffset, out int width, out int height);
 	
 	/**
 	 * Invokes the virtual render function of the GtkCellRenderer. The three
@@ -279,11 +150,7 @@ public class CellRenderer : ObjectGtk
 	 * exposeArea =  area that actually needs updating
 	 * flags =  flags that affect rendering
 	 */
-	public void render(Window window, Widget widget, Rectangle backgroundArea, Rectangle cellArea, Rectangle exposeArea, GtkCellRendererState flags)
-	{
-		// void gtk_cell_renderer_render (GtkCellRenderer *cell,  GdkWindow *window,  GtkWidget *widget,  const GdkRectangle *background_area,  const GdkRectangle *cell_area,  const GdkRectangle *expose_area,  GtkCellRendererState flags);
-		gtk_cell_renderer_render(gtkCellRenderer, (window is null) ? null : window.getWindowStruct(), (widget is null) ? null : widget.getWidgetStruct(), (backgroundArea is null) ? null : backgroundArea.getRectangleStruct(), (cellArea is null) ? null : cellArea.getRectangleStruct(), (exposeArea is null) ? null : exposeArea.getRectangleStruct(), flags);
-	}
+	public void render(Window window, Widget widget, Rectangle backgroundArea, Rectangle cellArea, Rectangle exposeArea, GtkCellRendererState flags);
 	
 	/**
 	 * Passes an activate event to the cell renderer for possible processing.
@@ -300,11 +167,7 @@ public class CellRenderer : ObjectGtk
 	 * flags =  render flags
 	 * Returns: TRUE if the event was consumed/handled
 	 */
-	public int activate(Event event, Widget widget, string path, Rectangle backgroundArea, Rectangle cellArea, GtkCellRendererState flags)
-	{
-		// gboolean gtk_cell_renderer_activate (GtkCellRenderer *cell,  GdkEvent *event,  GtkWidget *widget,  const gchar *path,  const GdkRectangle *background_area,  const GdkRectangle *cell_area,  GtkCellRendererState flags);
-		return gtk_cell_renderer_activate(gtkCellRenderer, (event is null) ? null : event.getEventStruct(), (widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(path), (backgroundArea is null) ? null : backgroundArea.getRectangleStruct(), (cellArea is null) ? null : cellArea.getRectangleStruct(), flags);
-	}
+	public int activate(Event event, Widget widget, string path, Rectangle backgroundArea, Rectangle cellArea, GtkCellRendererState flags);
 	
 	/**
 	 * Passes an activate event to the cell renderer for possible processing.
@@ -319,16 +182,7 @@ public class CellRenderer : ObjectGtk
 	 * flags =  render flags
 	 * Returns: A new GtkCellEditable, or NULL
 	 */
-	public CellEditableIF startEditing(Event event, Widget widget, string path, Rectangle backgroundArea, Rectangle cellArea, GtkCellRendererState flags)
-	{
-		// GtkCellEditable * gtk_cell_renderer_start_editing (GtkCellRenderer *cell,  GdkEvent *event,  GtkWidget *widget,  const gchar *path,  const GdkRectangle *background_area,  const GdkRectangle *cell_area,  GtkCellRendererState flags);
-		auto p = gtk_cell_renderer_start_editing(gtkCellRenderer, (event is null) ? null : event.getEventStruct(), (widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(path), (backgroundArea is null) ? null : backgroundArea.getRectangleStruct(), (cellArea is null) ? null : cellArea.getRectangleStruct(), flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new CellEditable(cast(GtkCellEditable*) p);
-	}
+	public CellEditableIF startEditing(Event event, Widget widget, string path, Rectangle backgroundArea, Rectangle cellArea, GtkCellRendererState flags);
 	
 	/**
 	 * Warning
@@ -340,11 +194,7 @@ public class CellRenderer : ObjectGtk
 	 * and the changes were not committed.
 	 * Since 2.4
 	 */
-	public void editingCanceled()
-	{
-		// void gtk_cell_renderer_editing_canceled (GtkCellRenderer *cell);
-		gtk_cell_renderer_editing_canceled(gtkCellRenderer);
-	}
+	public void editingCanceled();
 	
 	/**
 	 * Informs the cell renderer that the editing is stopped.
@@ -357,11 +207,7 @@ public class CellRenderer : ObjectGtk
 	 * Params:
 	 * canceled =  TRUE if the editing has been canceled
 	 */
-	public void stopEditing(int canceled)
-	{
-		// void gtk_cell_renderer_stop_editing (GtkCellRenderer *cell,  gboolean canceled);
-		gtk_cell_renderer_stop_editing(gtkCellRenderer, canceled);
-	}
+	public void stopEditing(int canceled);
 	
 	/**
 	 * Fills in width and height with the appropriate size of cell.
@@ -369,11 +215,7 @@ public class CellRenderer : ObjectGtk
 	 * width =  location to fill in with the fixed width of the cell, or NULL
 	 * height =  location to fill in with the fixed height of the cell, or NULL
 	 */
-	public void getFixedSize(out int width, out int height)
-	{
-		// void gtk_cell_renderer_get_fixed_size (GtkCellRenderer *cell,  gint *width,  gint *height);
-		gtk_cell_renderer_get_fixed_size(gtkCellRenderer, &width, &height);
-	}
+	public void getFixedSize(out int width, out int height);
 	
 	/**
 	 * Sets the renderer size to be explicit, independent of the properties set.
@@ -381,22 +223,14 @@ public class CellRenderer : ObjectGtk
 	 * width =  the width of the cell renderer, or -1
 	 * height =  the height of the cell renderer, or -1
 	 */
-	public void setFixedSize(int width, int height)
-	{
-		// void gtk_cell_renderer_set_fixed_size (GtkCellRenderer *cell,  gint width,  gint height);
-		gtk_cell_renderer_set_fixed_size(gtkCellRenderer, width, height);
-	}
+	public void setFixedSize(int width, int height);
 	
 	/**
 	 * Returns the cell renderer's visibility.
 	 * Since 2.18
 	 * Returns: TRUE if the cell renderer is visible
 	 */
-	public int getVisible()
-	{
-		// gboolean gtk_cell_renderer_get_visible (GtkCellRenderer *cell);
-		return gtk_cell_renderer_get_visible(gtkCellRenderer);
-	}
+	public int getVisible();
 	
 	/**
 	 * Sets the cell renderer's visibility.
@@ -404,22 +238,14 @@ public class CellRenderer : ObjectGtk
 	 * Params:
 	 * visible =  the visibility of the cell
 	 */
-	public void setVisible(int visible)
-	{
-		// void gtk_cell_renderer_set_visible (GtkCellRenderer *cell,  gboolean visible);
-		gtk_cell_renderer_set_visible(gtkCellRenderer, visible);
-	}
+	public void setVisible(int visible);
 	
 	/**
 	 * Returns the cell renderer's sensitivity.
 	 * Since 2.18
 	 * Returns: TRUE if the cell renderer is sensitive
 	 */
-	public int getSensitive()
-	{
-		// gboolean gtk_cell_renderer_get_sensitive (GtkCellRenderer *cell);
-		return gtk_cell_renderer_get_sensitive(gtkCellRenderer);
-	}
+	public int getSensitive();
 	
 	/**
 	 * Sets the cell renderer's sensitivity.
@@ -427,11 +253,7 @@ public class CellRenderer : ObjectGtk
 	 * Params:
 	 * sensitive =  the sensitivity of the cell
 	 */
-	public void setSensitive(int sensitive)
-	{
-		// void gtk_cell_renderer_set_sensitive (GtkCellRenderer *cell,  gboolean sensitive);
-		gtk_cell_renderer_set_sensitive(gtkCellRenderer, sensitive);
-	}
+	public void setSensitive(int sensitive);
 	
 	/**
 	 * Fills in xalign and yalign with the appropriate values of cell.
@@ -440,11 +262,7 @@ public class CellRenderer : ObjectGtk
 	 * xalign =  location to fill in with the x alignment of the cell, or NULL
 	 * yalign =  location to fill in with the y alignment of the cell, or NULL
 	 */
-	public void getAlignment(out float xalign, out float yalign)
-	{
-		// void gtk_cell_renderer_get_alignment (GtkCellRenderer *cell,  gfloat *xalign,  gfloat *yalign);
-		gtk_cell_renderer_get_alignment(gtkCellRenderer, &xalign, &yalign);
-	}
+	public void getAlignment(out float xalign, out float yalign);
 	
 	/**
 	 * Sets the renderer's alignment within its available space.
@@ -453,11 +271,7 @@ public class CellRenderer : ObjectGtk
 	 * xalign =  the x alignment of the cell renderer
 	 * yalign =  the y alignment of the cell renderer
 	 */
-	public void setAlignment(float xalign, float yalign)
-	{
-		// void gtk_cell_renderer_set_alignment (GtkCellRenderer *cell,  gfloat xalign,  gfloat yalign);
-		gtk_cell_renderer_set_alignment(gtkCellRenderer, xalign, yalign);
-	}
+	public void setAlignment(float xalign, float yalign);
 	
 	/**
 	 * Fills in xpad and ypad with the appropriate values of cell.
@@ -466,11 +280,7 @@ public class CellRenderer : ObjectGtk
 	 * xpad =  location to fill in with the x padding of the cell, or NULL
 	 * ypad =  location to fill in with the y padding of the cell, or NULL
 	 */
-	public void getPadding(out int xpad, out int ypad)
-	{
-		// void gtk_cell_renderer_get_padding (GtkCellRenderer *cell,  gint *xpad,  gint *ypad);
-		gtk_cell_renderer_get_padding(gtkCellRenderer, &xpad, &ypad);
-	}
+	public void getPadding(out int xpad, out int ypad);
 	
 	/**
 	 * Sets the renderer's padding.
@@ -479,9 +289,5 @@ public class CellRenderer : ObjectGtk
 	 * xpad =  the x padding of the cell renderer
 	 * ypad =  the y padding of the cell renderer
 	 */
-	public void setPadding(int xpad, int ypad)
-	{
-		// void gtk_cell_renderer_set_padding (GtkCellRenderer *cell,  gint xpad,  gint ypad);
-		gtk_cell_renderer_set_padding(gtkCellRenderer, xpad, ypad);
-	}
+	public void setPadding(int xpad, int ypad);
 }

@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstClock.html
- * outPack = gstreamer
- * outFile = Clock
- * strct   = GstClock
- * realStrct=
- * ctorStrct=
- * clss    = Clock
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_clock_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GstClock* -> Clock
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Clock;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -135,38 +82,16 @@ public class Clock : ObjectGst
 	protected GstClock* gstClock;
 	
 	
-	public GstClock* getClockStruct()
-	{
-		return gstClock;
-	}
+	public GstClock* getClockStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstClock;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstClock* gstClock)
-	{
-		if(gstClock is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstClock);
-		if( ptr !is null )
-		{
-			this = cast(Clock)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstClock);
-		this.gstClock = gstClock;
-	}
+	public this (GstClock* gstClock);
 	
 	/**
 	 */
@@ -187,11 +112,7 @@ public class Clock : ObjectGst
 	 * rSquared =  a pointer to hold the result
 	 * Returns: TRUE if enough observations were added to run the regression algorithm.MT safe.
 	 */
-	public int addObservation(GstClockTime slave, GstClockTime master, double* rSquared)
-	{
-		// gboolean gst_clock_add_observation (GstClock *clock,  GstClockTime slave,  GstClockTime master,  gdouble *r_squared);
-		return gst_clock_add_observation(gstClock, slave, master, rSquared);
-	}
+	public int addObservation(GstClockTime slave, GstClockTime master, double* rSquared);
 	
 	/**
 	 * Set master as the master clock for clock. clock will be automatically
@@ -206,27 +127,14 @@ public class Clock : ObjectGst
 	 * master =  a master GstClock
 	 * Returns: TRUE if the clock is capable of being slaved to a master clock. Trying to set a master on a clock without the GST_CLOCK_FLAG_CAN_SET_MASTER flag will make this function return FALSE.MT safe.
 	 */
-	public int setMaster(Clock master)
-	{
-		// gboolean gst_clock_set_master (GstClock *clock,  GstClock *master);
-		return gst_clock_set_master(gstClock, (master is null) ? null : master.getClockStruct());
-	}
+	public int setMaster(Clock master);
 	
 	/**
 	 * Get the master clock that clock is slaved to or NULL when the clock is
 	 * not slaved to any master clock.
 	 * Returns: a master GstClock or NULL when this clock is not slaved to a masterclock. Unref after usage.MT safe.
 	 */
-	public Clock getMaster()
-	{
-		// GstClock* gst_clock_get_master (GstClock *clock);
-		auto p = gst_clock_get_master(gstClock);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Clock(cast(GstClock*) p);
-	}
+	public Clock getMaster();
 	
 	/**
 	 * Set the accuracy of the clock. Some clocks have the possibility to operate
@@ -238,22 +146,14 @@ public class Clock : ObjectGst
 	 * resolution =  The resolution to set
 	 * Returns: the new resolution of the clock.
 	 */
-	public GstClockTime setResolution(GstClockTime resolution)
-	{
-		// GstClockTime gst_clock_set_resolution (GstClock *clock,  GstClockTime resolution);
-		return gst_clock_set_resolution(gstClock, resolution);
-	}
+	public GstClockTime setResolution(GstClockTime resolution);
 	
 	/**
 	 * Get the accuracy of the clock. The accuracy of the clock is the granularity
 	 * of the values returned by gst_clock_get_time().
 	 * Returns: the resolution of the clock in units of GstClockTime.MT safe.
 	 */
-	public GstClockTime getResolution()
-	{
-		// GstClockTime gst_clock_get_resolution (GstClock *clock);
-		return gst_clock_get_resolution(gstClock);
-	}
+	public GstClockTime getResolution();
 	
 	/**
 	 * Gets the current time of the given clock. The time is always
@@ -261,11 +161,7 @@ public class Clock : ObjectGst
 	 * offset and rate.
 	 * Returns: the time of the clock. Or GST_CLOCK_TIME_NONE whengiving wrong input.MT safe.
 	 */
-	public GstClockTime getTime()
-	{
-		// GstClockTime gst_clock_get_time (GstClock *clock);
-		return gst_clock_get_time(gstClock);
-	}
+	public GstClockTime getTime();
 	
 	/**
 	 * Get a GstClockID from clock to trigger a single shot
@@ -275,11 +171,7 @@ public class Clock : ObjectGst
 	 * time =  the requested time
 	 * Returns: A GstClockID that can be used to request the time notification.MT safe.
 	 */
-	public GstClockID newSingleShotId(GstClockTime time)
-	{
-		// GstClockID gst_clock_new_single_shot_id (GstClock *clock,  GstClockTime time);
-		return gst_clock_new_single_shot_id(gstClock, time);
-	}
+	public GstClockID newSingleShotId(GstClockTime time);
 	
 	/**
 	 * Get an ID from clock to trigger a periodic notification.
@@ -291,22 +183,14 @@ public class Clock : ObjectGst
 	 * interval =  the requested interval
 	 * Returns: A GstClockID that can be used to request the time notification.MT safe.
 	 */
-	public GstClockID newPeriodicId(GstClockTime startTime, GstClockTime interval)
-	{
-		// GstClockID gst_clock_new_periodic_id (GstClock *clock,  GstClockTime start_time,  GstClockTime interval);
-		return gst_clock_new_periodic_id(gstClock, startTime, interval);
-	}
+	public GstClockID newPeriodicId(GstClockTime startTime, GstClockTime interval);
 	
 	/**
 	 * Gets the current internal time of the given clock. The time is returned
 	 * unadjusted for the offset and the rate.
 	 * Returns: the internal time of the clock. Or GST_CLOCK_TIME_NONE whengiving wrong input.MT safe.
 	 */
-	public GstClockTime getInternalTime()
-	{
-		// GstClockTime gst_clock_get_internal_time (GstClock *clock);
-		return gst_clock_get_internal_time(gstClock);
-	}
+	public GstClockTime getInternalTime();
 	
 	/**
 	 * Converts the given internal clock time to the real time, adjusting for the
@@ -317,11 +201,7 @@ public class Clock : ObjectGst
 	 * internal =  a clock time
 	 * Returns: the converted time of the clock.MT safe.
 	 */
-	public GstClockTime adjustUnlocked(GstClockTime internal)
-	{
-		// GstClockTime gst_clock_adjust_unlocked (GstClock *clock,  GstClockTime internal);
-		return gst_clock_adjust_unlocked(gstClock, internal);
-	}
+	public GstClockTime adjustUnlocked(GstClockTime internal);
 	
 	/**
 	 * Gets the internal rate and reference time of clock. See
@@ -335,11 +215,7 @@ public class Clock : ObjectGst
 	 * rateNum =  a location to store the rate numerator
 	 * rateDenom =  a location to store the rate denominator
 	 */
-	public void getCalibration(GstClockTime* internal, GstClockTime* external, GstClockTime* rateNum, GstClockTime* rateDenom)
-	{
-		// void gst_clock_get_calibration (GstClock *clock,  GstClockTime *internal,  GstClockTime *external,  GstClockTime *rate_num,  GstClockTime *rate_denom);
-		gst_clock_get_calibration(gstClock, internal, external, rateNum, rateDenom);
-	}
+	public void getCalibration(GstClockTime* internal, GstClockTime* external, GstClockTime* rateNum, GstClockTime* rateDenom);
 	
 	/**
 	 * Adjusts the rate and time of clock. A rate of 1/1 is the normal speed of
@@ -356,11 +232,7 @@ public class Clock : ObjectGst
 	 *  internal time
 	 * rateDenom =  the denominator of the rate of the clock
 	 */
-	public void setCalibration(GstClockTime internal, GstClockTime external, GstClockTime rateNum, GstClockTime rateDenom)
-	{
-		// void gst_clock_set_calibration (GstClock *clock,  GstClockTime internal,  GstClockTime external,  GstClockTime rate_num,  GstClockTime rate_denom);
-		gst_clock_set_calibration(gstClock, internal, external, rateNum, rateDenom);
-	}
+	public void setCalibration(GstClockTime internal, GstClockTime external, GstClockTime rateNum, GstClockTime rateDenom);
 	
 	/**
 	 * Get the time of the clock ID
@@ -368,11 +240,7 @@ public class Clock : ObjectGst
 	 * id =  The GstClockID to query
 	 * Returns: the time of the given clock id.MT safe.
 	 */
-	public static GstClockTime idGetTime(GstClockID id)
-	{
-		// GstClockTime gst_clock_id_get_time (GstClockID id);
-		return gst_clock_id_get_time(id);
-	}
+	public static GstClockTime idGetTime(GstClockID id);
 	
 	/**
 	 * Perform a blocking wait on id.
@@ -392,11 +260,7 @@ public class Clock : ObjectGst
 	 * jitter =  A pointer that will contain the jitter, can be NULL.
 	 * Returns: the result of the blocking wait. GST_CLOCK_EARLY will be returnedif the current clock time is past the time of id, GST_CLOCK_OK if id was scheduled in time. GST_CLOCK_UNSCHEDULED if id was unscheduled with gst_clock_id_unschedule().MT safe.
 	 */
-	public static GstClockReturn idWait(GstClockID id, GstClockTimeDiff* jitter)
-	{
-		// GstClockReturn gst_clock_id_wait (GstClockID id,  GstClockTimeDiff *jitter);
-		return gst_clock_id_wait(id, jitter);
-	}
+	public static GstClockReturn idWait(GstClockID id, GstClockTimeDiff* jitter);
 	
 	/**
 	 * Register a callback on the given GstClockID id with the given
@@ -410,11 +274,7 @@ public class Clock : ObjectGst
 	 * userData =  User data passed in the calback
 	 * Returns: the result of the non blocking wait.MT safe.
 	 */
-	public static GstClockReturn idWaitAsync(GstClockID id, GstClockCallback func, void* userData)
-	{
-		// GstClockReturn gst_clock_id_wait_async (GstClockID id,  GstClockCallback func,  gpointer user_data);
-		return gst_clock_id_wait_async(id, func, userData);
-	}
+	public static GstClockReturn idWaitAsync(GstClockID id, GstClockCallback func, void* userData);
 	
 	/**
 	 * Cancel an outstanding request with id. This can either
@@ -425,11 +285,7 @@ public class Clock : ObjectGst
 	 * Params:
 	 * id =  The id to unschedule
 	 */
-	public static void idUnschedule(GstClockID id)
-	{
-		// void gst_clock_id_unschedule (GstClockID id);
-		gst_clock_id_unschedule(id);
-	}
+	public static void idUnschedule(GstClockID id);
 	
 	/**
 	 * Compares the two GstClockID instances. This function can be used
@@ -439,11 +295,7 @@ public class Clock : ObjectGst
 	 * id2 =  A GstClockID to compare with
 	 * Returns: negative value if a < b; zero if a = b; positive value if a > bMT safe.
 	 */
-	public static int idCompareFunc(void* id1, void* id2)
-	{
-		// gint gst_clock_id_compare_func (gconstpointer id1,  gconstpointer id2);
-		return gst_clock_id_compare_func(id1, id2);
-	}
+	public static int idCompareFunc(void* id1, void* id2);
 	
 	/**
 	 * Increase the refcount of given id.
@@ -451,11 +303,7 @@ public class Clock : ObjectGst
 	 * id =  The GstClockID to ref
 	 * Returns: The same GstClockID with increased refcount.MT safe.
 	 */
-	public static GstClockID idRef(GstClockID id)
-	{
-		// GstClockID gst_clock_id_ref (GstClockID id);
-		return gst_clock_id_ref(id);
-	}
+	public static GstClockID idRef(GstClockID id);
 	
 	/**
 	 * Unref given id. When the refcount reaches 0 the
@@ -464,9 +312,5 @@ public class Clock : ObjectGst
 	 * Params:
 	 * id =  The GstClockID to unref
 	 */
-	public static void idUnref(GstClockID id)
-	{
-		// void gst_clock_id_unref (GstClockID id);
-		gst_clock_id_unref(id);
-	}
+	public static void idUnref(GstClockID id);
 }

@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkCellRendererText.html
- * outPack = gtk
- * outFile = CellRendererText
- * strct   = GtkCellRendererText
- * realStrct=
- * ctorStrct=GtkCellRenderer
- * clss    = CellRendererText
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_cell_renderer_text_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.CellRenderer
- * structWrap:
- * 	- GtkCellRenderer* -> CellRenderer
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.CellRendererText;
 
 public  import gtkD.gtkc.gtktypes;
@@ -85,38 +31,16 @@ public class CellRendererText : CellRenderer
 	protected GtkCellRendererText* gtkCellRendererText;
 	
 	
-	public GtkCellRendererText* getCellRendererTextStruct()
-	{
-		return gtkCellRendererText;
-	}
+	public GtkCellRendererText* getCellRendererTextStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererText;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkCellRendererText* gtkCellRendererText)
-	{
-		if(gtkCellRendererText is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererText);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererText)ptr;
-			return;
-		}
-		super(cast(GtkCellRenderer*)gtkCellRendererText);
-		this.gtkCellRendererText = gtkCellRendererText;
-	}
+	public this (GtkCellRendererText* gtkCellRendererText);
 	
 	/**
 	 */
@@ -128,28 +52,8 @@ public class CellRendererText : CellRenderer
 	 * It is the responsibility of the application to update the model
 	 * and store new_text at the position indicated by path.
 	 */
-	void addOnEdited(void delegate(string, string, CellRendererText) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("edited" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"edited",
-			cast(GCallback)&callBackEdited,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["edited"] = 1;
-		}
-		onEditedListeners ~= dlg;
-	}
-	extern(C) static void callBackEdited(GtkCellRendererText* rendererStruct, gchar* path, gchar* newText, CellRendererText cellRendererText)
-	{
-		foreach ( void delegate(string, string, CellRendererText) dlg ; cellRendererText.onEditedListeners )
-		{
-			dlg(Str.toString(path), Str.toString(newText), cellRendererText);
-		}
-	}
+	void addOnEdited(void delegate(string, string, CellRendererText) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackEdited(GtkCellRendererText* rendererStruct, gchar* path, gchar* newText, CellRendererText cellRendererText);
 	
 	
 	/**
@@ -162,16 +66,7 @@ public class CellRendererText : CellRenderer
 	 * of the GtkTreeView
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_text_new (void);
-		auto p = gtk_cell_renderer_text_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_text_new()");
-		}
-		this(cast(GtkCellRendererText*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the height of a renderer to explicitly be determined by the "font" and
@@ -184,9 +79,5 @@ public class CellRendererText : CellRenderer
 	 * Params:
 	 * numberOfRows =  Number of rows of text each cell renderer is allocated, or -1
 	 */
-	public void setFixedHeightFromFont(int numberOfRows)
-	{
-		// void gtk_cell_renderer_text_set_fixed_height_from_font  (GtkCellRendererText *renderer,  gint number_of_rows);
-		gtk_cell_renderer_text_set_fixed_height_from_font(gtkCellRendererText, numberOfRows);
-	}
+	public void setFixedHeightFromFont(int numberOfRows);
 }

@@ -1,68 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstEvent.html
- * outPack = gstreamer
- * outFile = Event
- * strct   = GstEvent
- * realStrct=
- * ctorStrct=
- * clss    = Event
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_event_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_event_new_buffer_size
- * 	- gst_event_new_eos
- * 	- gst_event_new_flush_start
- * 	- gst_event_new_flush_stop
- * 	- gst_event_new_navigation
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Structure
- * 	- gtkD.gstreamer.TagList
- * 	- gtkD.gstreamer.MiniObject
- * structWrap:
- * 	- GstEvent* -> Event
- * 	- GstMiniObject -> MiniObject
- * 	- GstMiniObject* -> MiniObject
- * 	- GstStructure* -> Structure
- * 	- GstTagList* -> TagList
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Event;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -125,30 +60,16 @@ public class Event
 	protected GstEvent* gstEvent;
 	
 	
-	public GstEvent* getEventStruct()
-	{
-		return gstEvent;
-	}
+	public GstEvent* getEventStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstEvent;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstEvent* gstEvent)
-	{
-		if(gstEvent is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstEvent = gstEvent;
-	}
+	public this (GstEvent* gstEvent);
 	
 	/**
 	 * Create a new buffersize event. The event is sent downstream and notifies
@@ -162,11 +83,9 @@ public class Event
 	 * Returns:
 	 *  a new GstEvent
 	 */
-	public static Event newBufferSize(GstFormat format, long minsize, long maxsize, int async)
-	{
-		// GstEvent* gst_event_new_buffer_size (GstFormat format,  gint64 minsize,  gint64 maxsize,  gboolean async);
-		return new Event(cast(GstEvent*)gst_event_new_buffer_size(format, minsize, maxsize, async) );
-	}	/**
+	public static Event newBufferSize(GstFormat format, long minsize, long maxsize, int async);
+
+		/**
 	 * Create a new EOS event. The eos event can only travel downstream
 	 * synchronized with the buffer flow. Elements that receive the EOS
 	 * event on a pad can return UNEXPECTED as a GstFlowReturn when data
@@ -179,11 +98,9 @@ public class Event
 	 * Returns:
 	 *  The new EOS event.
 	 */
-	public static Event newEOS()
-	{
-		// GstEvent* gst_event_new_eos (void);
-		return new Event(cast(GstEvent*)gst_event_new_eos() );
-	}	/**
+	public static Event newEOS();
+
+		/**
 	 * Allocate a new flush start event. The flush start event can be send
 	 * upstream and downstream and travels out-of-bounds with the dataflow.
 	 * It marks pads as being in a WRONG_STATE to process more data.
@@ -194,11 +111,9 @@ public class Event
 	 * Returns:
 	 *  A new flush start event.
 	 */
-	public static Event newFlushStart()
-	{
-		// GstEvent* gst_event_new_flush_start (void);
-		return new Event(cast(GstEvent*)gst_event_new_flush_start() );
-	}	/**
+	public static Event newFlushStart();
+
+		/**
 	 * Allocate a new flush stop event. The flush start event can be send
 	 * upstream and downstream and travels out-of-bounds with the dataflow.
 	 * It is typically send after sending a FLUSH_START event to make the
@@ -221,11 +136,7 @@ public class Event
 	 * Returns:
 	 *  a new GstEvent
 	 */
-	public static Event newNavigation(Structure structure)
-	{
-		// GstEvent* gst_event_new_navigation (GstStructure *structure);
-		return new Event(cast(GstEvent*)gst_event_new_navigation((structure is null) ? null : structure.getStructureStruct()) );
-	}
+	public static Event newNavigation(Structure structure);
 	
 	/**
 	 */
@@ -234,16 +145,7 @@ public class Event
 	 * Access the structure of the event.
 	 * Returns: The structure of the event. The structure is stillowned by the event, which means that you should not free it andthat the pointer becomes invalid when you free the event.MT safe.
 	 */
-	public Structure getStructure()
-	{
-		// const GstStructure* gst_event_get_structure (GstEvent *event);
-		auto p = gst_event_get_structure(gstEvent);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Structure(cast(GstStructure*) p);
-	}
+	public Structure getStructure();
 	
 	/**
 	 * Create a new custom-typed event. This can be used for anything not
@@ -260,16 +162,7 @@ public class Event
 	 * the structure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GstEventType type, Structure structure)
-	{
-		// GstEvent* gst_event_new_custom (GstEventType type,  GstStructure *structure);
-		auto p = gst_event_new_custom(type, (structure is null) ? null : structure.getStructureStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_custom(type, (structure is null) ? null : structure.getStructureStruct())");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (GstEventType type, Structure structure);
 	
 	/**
 	 * Create a new latency event. The event is sent upstream from the sinks and
@@ -281,16 +174,7 @@ public class Event
 	 * latency =  the new latency value
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GstClockTime latency)
-	{
-		// GstEvent* gst_event_new_latency (GstClockTime latency);
-		auto p = gst_event_new_latency(latency);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_latency(latency)");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (GstClockTime latency);
 	
 	/**
 	 * Allocate a new newsegment event with the given format/values tripplets
@@ -305,16 +189,7 @@ public class Event
 	 * position =  stream position
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int update, double rate, GstFormat format, long start, long stop, long position)
-	{
-		// GstEvent* gst_event_new_new_segment (gboolean update,  gdouble rate,  GstFormat format,  gint64 start,  gint64 stop,  gint64 position);
-		auto p = gst_event_new_new_segment(update, rate, format, start, stop, position);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_new_segment(update, rate, format, start, stop, position)");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (int update, double rate, GstFormat format, long start, long stop, long position);
 	
 	/**
 	 * Allocate a new newsegment event with the given format/values triplets.
@@ -347,16 +222,7 @@ public class Event
 	 * position =  stream position
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int update, double rate, double appliedRate, GstFormat format, long start, long stop, long position)
-	{
-		// GstEvent* gst_event_new_new_segment_full (gboolean update,  gdouble rate,  gdouble applied_rate,  GstFormat format,  gint64 start,  gint64 stop,  gint64 position);
-		auto p = gst_event_new_new_segment_full(update, rate, appliedRate, format, start, stop, position);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_new_segment_full(update, rate, appliedRate, format, start, stop, position)");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (int update, double rate, double appliedRate, GstFormat format, long start, long stop, long position);
 	
 	/**
 	 * Allocate a new qos event with the given values.
@@ -392,16 +258,7 @@ public class Event
 	 * timestamp =  The timestamp of the buffer
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (double proportion, GstClockTimeDiff diff, GstClockTime timestamp)
-	{
-		// GstEvent* gst_event_new_qos (gdouble proportion,  GstClockTimeDiff diff,  GstClockTime timestamp);
-		auto p = gst_event_new_qos(proportion, diff, timestamp);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_qos(proportion, diff, timestamp)");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (double proportion, GstClockTimeDiff diff, GstClockTime timestamp);
 	
 	/**
 	 * Allocate a new seek event with the given parameters.
@@ -438,16 +295,7 @@ public class Event
 	 * stop =  The value of the new stop position
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (double rate, GstFormat format, GstSeekFlags flags, GstSeekType startType, long start, GstSeekType stopType, long stop)
-	{
-		// GstEvent* gst_event_new_seek (gdouble rate,  GstFormat format,  GstSeekFlags flags,  GstSeekType start_type,  gint64 start,  GstSeekType stop_type,  gint64 stop);
-		auto p = gst_event_new_seek(rate, format, flags, startType, start, stopType, stop);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_seek(rate, format, flags, startType, start, stopType, stop)");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (double rate, GstFormat format, GstSeekFlags flags, GstSeekType startType, long start, GstSeekType stopType, long stop);
 	
 	/**
 	 * Generates a metadata tag event from the given taglist.
@@ -455,16 +303,7 @@ public class Event
 	 * taglist =  metadata list
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (TagList taglist)
-	{
-		// GstEvent* gst_event_new_tag (GstTagList *taglist);
-		auto p = gst_event_new_tag((taglist is null) ? null : taglist.getTagListStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_event_new_tag((taglist is null) ? null : taglist.getTagListStruct())");
-		}
-		this(cast(GstEvent*) p);
-	}
+	public this (TagList taglist);
 	
 	/**
 	 * Get the format, minsize, maxsize and async-flag in the buffersize event.
@@ -474,11 +313,7 @@ public class Event
 	 * maxsize =  A pointer to store the maxsize in
 	 * async =  A pointer to store the async-flag in
 	 */
-	public void parseBufferSize(GstFormat* format, long* minsize, long* maxsize, int* async)
-	{
-		// void gst_event_parse_buffer_size (GstEvent *event,  GstFormat *format,  gint64 *minsize,  gint64 *maxsize,  gboolean *async);
-		gst_event_parse_buffer_size(gstEvent, format, minsize, maxsize, async);
-	}
+	public void parseBufferSize(GstFormat* format, long* minsize, long* maxsize, int* async);
 	
 	/**
 	 * Get the latency in the latency event.
@@ -486,11 +321,7 @@ public class Event
 	 * latency =  A pointer to store the latency in.
 	 * Since 0.10.12
 	 */
-	public void parseLatency(GstClockTime* latency)
-	{
-		// void gst_event_parse_latency (GstEvent *event,  GstClockTime *latency);
-		gst_event_parse_latency(gstEvent, latency);
-	}
+	public void parseLatency(GstClockTime* latency);
 	
 	/**
 	 * Get the update flag, rate, format, start, stop and position in the
@@ -506,11 +337,7 @@ public class Event
 	 * stop =  A pointer to store the stop value in
 	 * position =  A pointer to store the stream time in
 	 */
-	public void parseNewSegment(int* update, double* rate, GstFormat* format, long* start, long* stop, long* position)
-	{
-		// void gst_event_parse_new_segment (GstEvent *event,  gboolean *update,  gdouble *rate,  GstFormat *format,  gint64 *start,  gint64 *stop,  gint64 *position);
-		gst_event_parse_new_segment(gstEvent, update, rate, format, start, stop, position);
-	}
+	public void parseNewSegment(int* update, double* rate, GstFormat* format, long* start, long* stop, long* position);
 	
 	/**
 	 * Get the update, rate, applied_rate, format, start, stop and
@@ -526,11 +353,7 @@ public class Event
 	 * position =  A pointer to store the stream time in
 	 * Since 0.10.6
 	 */
-	public void parseNewSegmentFull(int* update, double* rate, double* appliedRate, GstFormat* format, long* start, long* stop, long* position)
-	{
-		// void gst_event_parse_new_segment_full  (GstEvent *event,  gboolean *update,  gdouble *rate,  gdouble *applied_rate,  GstFormat *format,  gint64 *start,  gint64 *stop,  gint64 *position);
-		gst_event_parse_new_segment_full(gstEvent, update, rate, appliedRate, format, start, stop, position);
-	}
+	public void parseNewSegmentFull(int* update, double* rate, double* appliedRate, GstFormat* format, long* start, long* stop, long* position);
 	
 	/**
 	 * Get the proportion, diff and timestamp in the qos event. See
@@ -540,11 +363,7 @@ public class Event
 	 * diff =  A pointer to store the diff in
 	 * timestamp =  A pointer to store the timestamp in
 	 */
-	public void parseQos(double* proportion, GstClockTimeDiff* diff, GstClockTime* timestamp)
-	{
-		// void gst_event_parse_qos (GstEvent *event,  gdouble *proportion,  GstClockTimeDiff *diff,  GstClockTime *timestamp);
-		gst_event_parse_qos(gstEvent, proportion, diff, timestamp);
-	}
+	public void parseQos(double* proportion, GstClockTimeDiff* diff, GstClockTime* timestamp);
 	
 	/**
 	 * Parses a seek event and stores the results in the given result locations.
@@ -557,37 +376,20 @@ public class Event
 	 * stopType =  result location for the GstSeekType of the stop position
 	 * stop =  result location for the stop postion expressed in format
 	 */
-	public void parseSeek(double* rate, GstFormat* format, GstSeekFlags* flags, GstSeekType* startType, long* start, GstSeekType* stopType, long* stop)
-	{
-		// void gst_event_parse_seek (GstEvent *event,  gdouble *rate,  GstFormat *format,  GstSeekFlags *flags,  GstSeekType *start_type,  gint64 *start,  GstSeekType *stop_type,  gint64 *stop);
-		gst_event_parse_seek(gstEvent, rate, format, flags, startType, start, stopType, stop);
-	}
+	public void parseSeek(double* rate, GstFormat* format, GstSeekFlags* flags, GstSeekType* startType, long* start, GstSeekType* stopType, long* stop);
 	
 	/**
 	 * Parses a tag event and stores the results in the given taglist location.
 	 * Params:
 	 * taglist =  pointer to metadata list
 	 */
-	public void parseTag(GstTagList** taglist)
-	{
-		// void gst_event_parse_tag (GstEvent *event,  GstTagList **taglist);
-		gst_event_parse_tag(gstEvent, taglist);
-	}
+	public void parseTag(GstTagList** taglist);
 	
 	/**
 	 * Increase the refcount of this event.
 	 * Returns: event (for convenience when doing assignments)
 	 */
-	public Event doref()
-	{
-		// GstEvent* gst_event_ref (GstEvent *event);
-		auto p = gst_event_ref(gstEvent);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Event(cast(GstEvent*) p);
-	}
+	public Event doref();
 	
 	/**
 	 * Gets the GstEventTypeFlags associated with type.
@@ -595,11 +397,7 @@ public class Event
 	 * type =  a GstEventType
 	 * Returns: a GstEventTypeFlags.
 	 */
-	public static GstEventTypeFlags typeGetFlags(GstEventType type)
-	{
-		// GstEventTypeFlags gst_event_type_get_flags (GstEventType type);
-		return gst_event_type_get_flags(type);
-	}
+	public static GstEventTypeFlags typeGetFlags(GstEventType type);
 	
 	/**
 	 * Get a printable name for the given event type. Do not modify or free.
@@ -607,11 +405,7 @@ public class Event
 	 * type =  the event type
 	 * Returns: a reference to the static name of the event.
 	 */
-	public static string typeGetName(GstEventType type)
-	{
-		// const gchar* gst_event_type_get_name (GstEventType type);
-		return Str.toString(gst_event_type_get_name(type));
-	}
+	public static string typeGetName(GstEventType type);
 	
 	/**
 	 * Get the unique quark for the given event type.
@@ -619,9 +413,5 @@ public class Event
 	 * type =  the event type
 	 * Returns: the quark associated with the event type
 	 */
-	public static GQuark typeToQuark(GstEventType type)
-	{
-		// GQuark gst_event_type_to_quark (GstEventType type);
-		return gst_event_type_to_quark(type);
-	}
+	public static GQuark typeToQuark(GstEventType type);
 }

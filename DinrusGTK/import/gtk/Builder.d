@@ -1,69 +1,4 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
 
-/*
- * Conversion parameters:
- * inFile  = GtkBuilder.html
- * outPack = gtk
- * outFile = Builder
- * strct   = GtkBuilder
- * realStrct=
- * ctorStrct=
- * clss    = Builder
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_builder_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_builder_new
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.ObjectG
- * 	- gtkD.gobject.ParamSpec
- * 	- gtkD.gobject.Value
- * 	- gtkD.glib.ListSG
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gtkc.gobject
- * 	- gtkD.gtkc.paths
- * 	- gtkD.glib.Module
- * 	- gtkD.gobject.Type
- * structWrap:
- * 	- GObject* -> ObjectG
- * 	- GParamSpec* -> ParamSpec
- * 	- GSList* -> ListSG
- * 	- GValue* -> Value
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gtk.Builder;
 
@@ -286,38 +221,16 @@ public class Builder : ObjectG
 	protected GtkBuilder* gtkBuilder;
 	
 	
-	public GtkBuilder* getBuilderStruct()
-	{
-		return gtkBuilder;
-	}
+	public GtkBuilder* getBuilderStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkBuilder;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkBuilder* gtkBuilder)
-	{
-		if(gtkBuilder is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkBuilder);
-		if( ptr !is null )
-		{
-			this = cast(Builder)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkBuilder);
-		this.gtkBuilder = gtkBuilder;
-	}
+	public this (GtkBuilder* gtkBuilder);
 	
 	private struct GtkBuilderClass
 	{
@@ -340,19 +253,7 @@ public class Builder : ObjectG
 	 * Since 2.12
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkBuilder* gtk_builder_new (void);
-		auto p = gtk_builder_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_builder_new()");
-		}
-		this(cast(GtkBuilder*) p);
-		
-		GtkBuilderClass* klass = Type.getInstanceClass!(GtkBuilderClass)( this );
-		klass.get_type_from_name = &gtk_builder_real_get_type_from_name_override;
-	}
+	public this ();
 	
 	/**
 	 * This function is a modification of _gtk_builder_resolve_type_lazily from "gtk/gtkbuilder.c".
@@ -360,60 +261,7 @@ public class Builder : ObjectG
 	 * specifically the NULL in g_module_open( NULL, 0 );
 	 * It replaces the default function pointer "get_type_from_name" in GtkBuilderClass.
 	 */
-	extern(C) private static GType gtk_builder_real_get_type_from_name_override ( GtkBuilder* builder, char *name )
-	{
-		GType gtype;
-		gtype = g_type_from_name( name );
-		if (gtype != GType.INVALID)
-		{
-			return gtype;
-		}
-		
-		/*
-		 * Try to map a type name to a _get_type function
-		 * and call it, eg:
-		 *
-		 * GtkWindow -> gtk_window_get_type
-		 * GtkHBox -> gtk_hbox_get_type
-		 * GtkUIManager -> gtk_ui_manager_get_type
-		 *
-		 */
-		char   c;
-		string symbol_name;
-		
-		for (int i = 0; name[i] != '\0'; i++)
-		{
-			c = name[i];
-			/* skip if uppercase, first or previous is uppercase */
-			if ((c == Str.asciiToupper (c) &&
-			i > 0 && name[i-1] != Str.asciiToupper (name[i-1])) ||
-			(i > 2 && name[i]   == Str.asciiToupper (name[i]) &&
-			name[i-1] == Str.asciiToupper (name[i-1]) &&
-			name[i-2] == Str.asciiToupper (name[i-2]))
-			)
-			
-			symbol_name ~= '_';
-			symbol_name ~= Str.asciiTolower (c);
-		}
-		symbol_name ~=  "_get_type" ;
-		
-		/* scan linked librarys for function symbol */
-		foreach ( lib; importLibs )
-		{
-			GType function() func;
-			Module mod = Module.open( libPath ~ lib, GModuleFlags.BIND_LAZY );
-			if( mod is null )
-			continue;
-			
-			scope(exit) mod.close();
-			
-			if ( mod.symbol( symbol_name, cast(void**) &func ) ) {
-				return func();
-			}
-		}
-		
-		return GType.INVALID;
-	}
+	extern(C) private static GType gtk_builder_real_get_type_from_name_override ( GtkBuilder* builder, char *name );
 	
 	/**
 	 */
@@ -427,20 +275,7 @@ public class Builder : ObjectG
 	 * Returns: A positive value on success, 0 if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public uint addFromFile(string filename)
-	{
-		// guint gtk_builder_add_from_file (GtkBuilder *builder,  const gchar *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_from_file(gtkBuilder, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addFromFile(string filename);
 	
 	/**
 	 * Parses a string containing a GtkBuilder
@@ -452,20 +287,7 @@ public class Builder : ObjectG
 	 * Returns: A positive value on success, 0 if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public uint addFromString(string buffer, uint length)
-	{
-		// guint gtk_builder_add_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_from_string(gtkBuilder, Str.toStringz(buffer), length, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addFromString(string buffer, uint length);
 	
 	/**
 	 * Parses a file containing a GtkBuilder
@@ -482,20 +304,7 @@ public class Builder : ObjectG
 	 * Returns: A positive value on success, 0 if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public uint addObjectsFromFile(string filename, string[] objectIds)
-	{
-		// guint gtk_builder_add_objects_from_file (GtkBuilder *builder,  const gchar *filename,  gchar **object_ids,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_objects_from_file(gtkBuilder, Str.toStringz(filename), Str.toStringzArray(objectIds), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addObjectsFromFile(string filename, string[] objectIds);
 	
 	/**
 	 * Parses a string containing a GtkBuilder
@@ -513,20 +322,7 @@ public class Builder : ObjectG
 	 * Returns: A positive value on success, 0 if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public uint addObjectsFromString(string buffer, uint length, string[] objectIds)
-	{
-		// guint gtk_builder_add_objects_from_string (GtkBuilder *builder,  const gchar *buffer,  gsize length,  gchar **object_ids,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_add_objects_from_string(gtkBuilder, Str.toStringz(buffer), length, Str.toStringzArray(objectIds), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addObjectsFromString(string buffer, uint length, string[] objectIds);
 	
 	/**
 	 * Gets the object named name. Note that this function does not
@@ -536,16 +332,7 @@ public class Builder : ObjectG
 	 * name =  name of object to get
 	 * Returns: the object named name or NULL if it could not be  found in the object tree.
 	 */
-	public ObjectG getObject(string name)
-	{
-		// GObject* gtk_builder_get_object (GtkBuilder *builder,  const gchar *name);
-		auto p = gtk_builder_get_object(gtkBuilder, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectG(cast(GObject*) p);
-	}
+	public ObjectG getObject(string name);
 	
 	/**
 	 * Gets all objects that have been constructed by builder. Note that
@@ -554,16 +341,7 @@ public class Builder : ObjectG
 	 * Since 2.12
 	 * Returns: a newly-allocated GSList containing all the objects constructed by the GtkBuilder instance. It should be freed by g_slist_free()
 	 */
-	public ListSG getObjects()
-	{
-		// GSList* gtk_builder_get_objects (GtkBuilder *builder);
-		auto p = gtk_builder_get_objects(gtkBuilder);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getObjects();
 	
 	/**
 	 * This method is a simpler variation of gtk_builder_connect_signals_full().
@@ -582,11 +360,7 @@ public class Builder : ObjectG
 	 * Params:
 	 * userData =  a pointer to a structure sent in as user data to all signals
 	 */
-	public void connectSignals(void* userData)
-	{
-		// void gtk_builder_connect_signals (GtkBuilder *builder,  gpointer user_data);
-		gtk_builder_connect_signals(gtkBuilder, userData);
-	}
+	public void connectSignals(void* userData);
 	
 	/**
 	 * This function can be thought of the interpreted language binding
@@ -597,11 +371,7 @@ public class Builder : ObjectG
 	 * func =  the function used to connect the signals
 	 * userData =  arbitrary data that will be passed to the connection function
 	 */
-	public void connectSignalsFull(GtkBuilderConnectFunc func, void* userData)
-	{
-		// void gtk_builder_connect_signals_full (GtkBuilder *builder,  GtkBuilderConnectFunc func,  gpointer user_data);
-		gtk_builder_connect_signals_full(gtkBuilder, func, userData);
-	}
+	public void connectSignalsFull(GtkBuilderConnectFunc func, void* userData);
 	
 	/**
 	 * Sets the translation domain of builder.
@@ -610,22 +380,14 @@ public class Builder : ObjectG
 	 * Params:
 	 * domain =  the translation domain or NULL
 	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void gtk_builder_set_translation_domain (GtkBuilder *builder,  const gchar *domain);
-		gtk_builder_set_translation_domain(gtkBuilder, Str.toStringz(domain));
-	}
+	public void setTranslationDomain(string domain);
 	
 	/**
 	 * Gets the translation domain of builder.
 	 * Since 2.12
 	 * Returns: the translation domain. This string is ownedby the builder object and must not be modified or freed.
 	 */
-	public string getTranslationDomain()
-	{
-		// const gchar* gtk_builder_get_translation_domain (GtkBuilder *builder);
-		return Str.toString(gtk_builder_get_translation_domain(gtkBuilder));
-	}
+	public string getTranslationDomain();
 	
 	/**
 	 * Looks up a type by name, using the virtual function that
@@ -636,11 +398,7 @@ public class Builder : ObjectG
 	 * typeName =  type name to lookup
 	 * Returns: the GType found for type_name or G_TYPE_INVALID  if no type was found
 	 */
-	public GType getTypeFromName(string typeName)
-	{
-		// GType gtk_builder_get_type_from_name (GtkBuilder *builder,  const char *type_name);
-		return gtk_builder_get_type_from_name(gtkBuilder, Str.toStringz(typeName));
-	}
+	public GType getTypeFromName(string typeName);
 	
 	/**
 	 * This function demarshals a value from a string. This function
@@ -658,20 +416,7 @@ public class Builder : ObjectG
 	 * Returns: TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int valueFromString(ParamSpec pspec, string string, Value value)
-	{
-		// gboolean gtk_builder_value_from_string (GtkBuilder *builder,  GParamSpec *pspec,  const gchar *string,  GValue *value,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_value_from_string(gtkBuilder, (pspec is null) ? null : pspec.getParamSpecStruct(), Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int valueFromString(ParamSpec pspec, string string, Value value);
 	
 	/**
 	 * Like gtk_builder_value_from_string(), this function demarshals
@@ -686,18 +431,5 @@ public class Builder : ObjectG
 	 * Returns: TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int valueFromStringType(GType type, string string, Value value)
-	{
-		// gboolean gtk_builder_value_from_string_type (GtkBuilder *builder,  GType type,  const gchar *string,  GValue *value,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_builder_value_from_string_type(gtkBuilder, type, Str.toStringz(string), (value is null) ? null : value.getValueStruct(), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int valueFromStringType(GType type, string string, Value value);
 }

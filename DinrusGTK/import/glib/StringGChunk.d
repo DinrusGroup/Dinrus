@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-String-Chunks.html
- * outPack = glib
- * outFile = StringGChunk
- * strct   = GStringChunk
- * realStrct=
- * ctorStrct=
- * clss    = StringGChunk
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_string_chunk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.StringGChunk;
 
 public  import gtkD.gtkc.glibtypes;
@@ -87,30 +36,16 @@ public class StringGChunk
 	protected GStringChunk* gStringChunk;
 	
 	
-	public GStringChunk* getStringGChunkStruct()
-	{
-		return gStringChunk;
-	}
+	public GStringChunk* getStringGChunkStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStringChunk;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GStringChunk* gStringChunk)
-	{
-		if(gStringChunk is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStringChunk = gStringChunk;
-	}
+	public this (GStringChunk* gStringChunk);
 	
 	/**
 	 */
@@ -124,16 +59,7 @@ public class StringGChunk
 	 *  memory will be allocated for it.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (uint size)
-	{
-		// GStringChunk* g_string_chunk_new (gsize size);
-		auto p = g_string_chunk_new(size);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_string_chunk_new(size)");
-		}
-		this(cast(GStringChunk*) p);
-	}
+	public this (uint size);
 	
 	/**
 	 * Adds a copy of string to the GStringChunk.
@@ -150,11 +76,7 @@ public class StringGChunk
 	 * string =  the string to add
 	 * Returns: a pointer to the copy of string within  the GStringChunk
 	 */
-	public string insert(string string)
-	{
-		// gchar* g_string_chunk_insert (GStringChunk *chunk,  const gchar *string);
-		return Str.toString(g_string_chunk_insert(gStringChunk, Str.toStringz(string)));
-	}
+	public string insert(string string);
 	
 	/**
 	 * Adds a copy of string to the GStringChunk, unless the same
@@ -172,11 +94,7 @@ public class StringGChunk
 	 * string =  the string to add
 	 * Returns: a pointer to the new or existing copy of string within the GStringChunk
 	 */
-	public string insertConst(string string)
-	{
-		// gchar* g_string_chunk_insert_const (GStringChunk *chunk,  const gchar *string);
-		return Str.toString(g_string_chunk_insert_const(gStringChunk, Str.toStringz(string)));
-	}
+	public string insertConst(string string);
 	
 	/**
 	 * Adds a copy of the first len bytes of string to the GStringChunk.
@@ -193,32 +111,20 @@ public class StringGChunk
 	 *  nul-terminated string
 	 * Returns: a pointer to the copy of string within the GStringChunk
 	 */
-	public string insertLen(string string, int len)
-	{
-		// gchar* g_string_chunk_insert_len (GStringChunk *chunk,  const gchar *string,  gssize len);
-		return Str.toString(g_string_chunk_insert_len(gStringChunk, Str.toStringz(string), len));
-	}
-	
+	public string insertLen(string string, int len);
+
 	/**
 	 * Frees all strings contained within the GStringChunk.
 	 * After calling g_string_chunk_clear() it is not safe to
 	 * access any of the strings which were contained within it.
 	 * Since 2.14
 	 */
-	public void clear()
-	{
-		// void g_string_chunk_clear (GStringChunk *chunk);
-		g_string_chunk_clear(gStringChunk);
-	}
+	public void clear();
 	
 	/**
 	 * Frees all memory allocated by the GStringChunk.
 	 * After calling g_string_chunk_free() it is not safe to
 	 * access any of the strings which were contained within it.
 	 */
-	public void free()
-	{
-		// void g_string_chunk_free (GStringChunk *chunk);
-		g_string_chunk_free(gStringChunk);
-	}
+	public void free();
 }

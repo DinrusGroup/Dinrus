@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Simple-XML-Subset-Parser.html
- * outPack = glib
- * outFile = SimpleXML
- * strct   = GMarkupParseContext
- * realStrct=
- * ctorStrct=
- * clss    = SimpleXML
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_markup_parse_context_
- * 	- g_markup_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ListSG
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GSList* -> ListSG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.SimpleXML;
 
 public  import gtkD.gtkc.glibtypes;
@@ -104,30 +48,16 @@ public class SimpleXML
 	protected GMarkupParseContext* gMarkupParseContext;
 	
 	
-	public GMarkupParseContext* getSimpleXMLStruct()
-	{
-		return gMarkupParseContext;
-	}
+	public GMarkupParseContext* getSimpleXMLStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMarkupParseContext;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMarkupParseContext* gMarkupParseContext)
-	{
-		if(gMarkupParseContext is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMarkupParseContext = gMarkupParseContext;
-	}
+	public this (GMarkupParseContext* gMarkupParseContext);
 	
 	/**
 	 */
@@ -151,11 +81,7 @@ public class SimpleXML
 	 * length =  length of text in bytes, or -1 if the text is nul-terminated
 	 * Returns: a newly allocated string with the escaped text
 	 */
-	public static string escapeText(string text, int length)
-	{
-		// gchar* g_markup_escape_text (const gchar *text,  gssize length);
-		return Str.toString(g_markup_escape_text(Str.toStringz(text), length));
-	}
+	public static string escapeText(string text, int length);
 	
 	/**
 	 * Formats the data in args according to format, escaping
@@ -167,11 +93,7 @@ public class SimpleXML
 	 * args =  variable argument list, similar to vprintf()
 	 * Returns: newly allocated result from formatting operation. Free with g_free().
 	 */
-	public static string vprintfEscaped(string format, void* args)
-	{
-		// gchar * g_markup_vprintf_escaped (const char *format,  va_list args);
-		return Str.toString(g_markup_vprintf_escaped(Str.toStringz(format), args));
-	}
+	public static string vprintfEscaped(string format, void* args);
 	
 	/**
 	 * Signals to the GMarkupParseContext that all data has been
@@ -181,31 +103,14 @@ public class SimpleXML
 	 * Returns: TRUE on success, FALSE if an error was set
 	 * Throws: GException on failure.
 	 */
-	public int endParse()
-	{
-		// gboolean g_markup_parse_context_end_parse (GMarkupParseContext *context,  GError **error);
-		GError* err = null;
-		
-		auto p = g_markup_parse_context_end_parse(gMarkupParseContext, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int endParse();
 	
 	/**
 	 * Frees a GMarkupParseContext. Can't be called from inside
 	 * one of the GMarkupParser functions. Can't be called while
 	 * a subparser is pushed.
 	 */
-	public void free()
-	{
-		// void g_markup_parse_context_free (GMarkupParseContext *context);
-		g_markup_parse_context_free(gMarkupParseContext);
-	}
+	public void free();
 	
 	/**
 	 * Retrieves the current line number and the number of the character on
@@ -216,11 +121,7 @@ public class SimpleXML
 	 * lineNumber =  return location for a line number, or NULL
 	 * charNumber =  return location for a char-on-line number, or NULL
 	 */
-	public void getPosition(out int lineNumber, out int charNumber)
-	{
-		// void g_markup_parse_context_get_position (GMarkupParseContext *context,  gint *line_number,  gint *char_number);
-		g_markup_parse_context_get_position(gMarkupParseContext, &lineNumber, &charNumber);
-	}
+	public void getPosition(out int lineNumber, out int charNumber);
 	
 	/**
 	 * Retrieves the name of the currently open element.
@@ -230,11 +131,7 @@ public class SimpleXML
 	 * Since 2.2
 	 * Returns: the name of the currently open element, or NULL
 	 */
-	public string getElement()
-	{
-		// const gchar * g_markup_parse_context_get_element (GMarkupParseContext *context);
-		return Str.toString(g_markup_parse_context_get_element(gMarkupParseContext));
-	}
+	public string getElement();
 	
 	/**
 	 * Retrieves the element stack from the internal state of the parser.
@@ -249,16 +146,7 @@ public class SimpleXML
 	 * Since 2.16
 	 * Returns: the element stack, which must not be modified
 	 */
-	public ListSG getElementStack()
-	{
-		// const GSList * g_markup_parse_context_get_element_stack  (GMarkupParseContext *context);
-		auto p = g_markup_parse_context_get_element_stack(gMarkupParseContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getElementStack();
 	
 	/**
 	 * Returns the user_data associated with context. This will either
@@ -267,11 +155,7 @@ public class SimpleXML
 	 * Since 2.18
 	 * Returns: the provided user_data. The returned data belongs to the markup context and will be freed when g_markup_context_free() is called.
 	 */
-	public void* getUserData()
-	{
-		// gpointer g_markup_parse_context_get_user_data  (GMarkupParseContext *context);
-		return g_markup_parse_context_get_user_data(gMarkupParseContext);
-	}
+	public void* getUserData();
 	
 	/**
 	 * Creates a new parse context. A parse context is used to parse
@@ -286,16 +170,7 @@ public class SimpleXML
 	 * userDataDnotify =  user data destroy notifier called when the parse context is freed
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GMarkupParser* parser, GMarkupParseFlags flags, void* userData, GDestroyNotify userDataDnotify)
-	{
-		// GMarkupParseContext * g_markup_parse_context_new (const GMarkupParser *parser,  GMarkupParseFlags flags,  gpointer user_data,  GDestroyNotify user_data_dnotify);
-		auto p = g_markup_parse_context_new(parser, flags, userData, userDataDnotify);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_markup_parse_context_new(parser, flags, userData, userDataDnotify)");
-		}
-		this(cast(GMarkupParseContext*) p);
-	}
+	public this (GMarkupParser* parser, GMarkupParseFlags flags, void* userData, GDestroyNotify userDataDnotify);
 	
 	/**
 	 * Feed some data to the GMarkupParseContext. The data need not
@@ -312,20 +187,7 @@ public class SimpleXML
 	 * Returns: FALSE if an error occurred, TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int parse(string text, int textLen)
-	{
-		// gboolean g_markup_parse_context_parse (GMarkupParseContext *context,  const gchar *text,  gssize text_len,  GError **error);
-		GError* err = null;
-		
-		auto p = g_markup_parse_context_parse(gMarkupParseContext, Str.toStringz(text), textLen, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int parse(string text, int textLen);
 	
 	/**
 	 * Temporarily redirects markup data to a sub-parser.
@@ -389,11 +251,7 @@ public class SimpleXML
 	 * parser =  a GMarkupParser
 	 * userData =  user data to pass to GMarkupParser functions
 	 */
-	public void push(GMarkupParser* parser, void* userData)
-	{
-		// void g_markup_parse_context_push (GMarkupParseContext *context,  GMarkupParser *parser,  gpointer user_data);
-		g_markup_parse_context_push(gMarkupParseContext, parser, userData);
-	}
+	public void push(GMarkupParser* parser, void* userData);
 	
 	/**
 	 * Completes the process of a temporary sub-parser redirection.
@@ -410,9 +268,5 @@ public class SimpleXML
 	 * Since 2.18
 	 * Returns: the user_data passed to g_markup_parse_context_push().
 	 */
-	public void* pop()
-	{
-		// gpointer g_markup_parse_context_pop (GMarkupParseContext *context);
-		return g_markup_parse_context_pop(gMarkupParseContext);
-	}
+	public void* pop();
 }

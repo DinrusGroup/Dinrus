@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gthread
- * outFile = Cond
- * strct   = GCond
- * realStrct=
- * ctorStrct=
- * clss    = Cond
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_cond_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gthread.Mutex
- * 	- gtkD.glib.TimeVal
- * structWrap:
- * 	- GMutex* -> Mutex
- * 	- GTimeVal* -> TimeVal
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.Cond;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -122,31 +68,17 @@ public class Cond
 	protected GCond* gCond;
 	
 	
-	public GCond* getCondStruct()
-	{
-		return gCond;
-	}
+	public GCond* getCondStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gCond;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GCond* gCond)
-	{
-		if(gCond is null)
-		{
-			this = null;
-			return;
-		}
-		this.gCond = gCond;
-	}
-	
+	public this (GCond* gCond);
+
 	/**
 	 */
 	
@@ -155,16 +87,7 @@ public class Cond
 	 * has not been called yet.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GCond* g_cond_new ();
-		auto p = g_cond_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_cond_new()");
-		}
-		this(cast(GCond*) p);
-	}
+	public this ();
 	
 	/**
 	 * If threads are waiting for cond, exactly one of them is woken up. It
@@ -173,11 +96,7 @@ public class Cond
 	 * This function can be used even if g_thread_init() has not yet been called,
 	 * and, in that case, will do nothing.
 	 */
-	public void signal()
-	{
-		// void g_cond_signal (GCond *cond);
-		g_cond_signal(gCond);
-	}
+	public void signal();
 	
 	/**
 	 * If threads are waiting for cond, all of them are woken up. It is good
@@ -186,11 +105,7 @@ public class Cond
 	 * This function can be used even if g_thread_init() has not yet been called,
 	 * and, in that case, will do nothing.
 	 */
-	public void broadcast()
-	{
-		// void g_cond_broadcast (GCond *cond);
-		g_cond_broadcast(gCond);
-	}
+	public void broadcast();
 	
 	/**
 	 * Waits until this thread is woken up on cond. The mutex is unlocked
@@ -200,11 +115,7 @@ public class Cond
 	 * Params:
 	 * mutex = a GMutex, that is currently locked.
 	 */
-	public void wait(Mutex mutex)
-	{
-		// void g_cond_wait (GCond *cond,  GMutex *mutex);
-		g_cond_wait(gCond, (mutex is null) ? null : mutex.getMutexStruct());
-	}
+	public void wait(Mutex mutex);
 	
 	/**
 	 * Waits until this thread is woken up on cond, but not longer than
@@ -220,18 +131,10 @@ public class Cond
 	 * absTime = a GTimeVal, determining the final time.
 	 * Returns:%TRUE if cond was signalled, or FALSE on timeout.
 	 */
-	public int timedWait(Mutex mutex, TimeVal absTime)
-	{
-		// gboolean g_cond_timed_wait (GCond *cond,  GMutex *mutex,  GTimeVal *abs_time);
-		return g_cond_timed_wait(gCond, (mutex is null) ? null : mutex.getMutexStruct(), (absTime is null) ? null : absTime.getTimeValStruct());
-	}
+	public int timedWait(Mutex mutex, TimeVal absTime);
 	
 	/**
 	 * Destroys the GCond.
 	 */
-	public void free()
-	{
-		// void g_cond_free (GCond *cond);
-		g_cond_free(gCond);
-	}
+	public void free();
 }

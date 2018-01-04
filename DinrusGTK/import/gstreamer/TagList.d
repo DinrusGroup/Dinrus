@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstTagList.html
- * outPack = gstreamer
- * outFile = TagList
- * strct   = GstTagList
- * realStrct=
- * ctorStrct=
- * clss    = TagList
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_tag_list_
- * 	- gst_tag_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.Value
- * structWrap:
- * 	- GValue* -> Value
- * 	- GstTagList* -> TagList
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.TagList;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -79,30 +24,16 @@ public class TagList
 	protected GstTagList* gstTagList;
 	
 	
-	public GstTagList* getTagListStruct()
-	{
-		return gstTagList;
-	}
+	public GstTagList* getTagListStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstTagList;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstTagList* gstTagList)
-	{
-		if(gstTagList is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstTagList = gstTagList;
-	}
+	public this (GstTagList* gstTagList);
 	
 	/**
 	 */
@@ -134,11 +65,7 @@ public class TagList
 	 * blurb =  a human-readable description about this tag
 	 * func =  function for merging multiple values of this tag, or NULL
 	 */
-	public static void register(string name, GstTagFlag flag, GType type, string nick, string blurb, GstTagMergeFunc func)
-	{
-		// void gst_tag_register (const gchar *name,  GstTagFlag flag,  GType type,  const gchar *nick,  const gchar *blurb,  GstTagMergeFunc func);
-		gst_tag_register(Str.toStringz(name), flag, type, Str.toStringz(nick), Str.toStringz(blurb), func);
-	}
+	public static void register(string name, GstTagFlag flag, GType type, string nick, string blurb, GstTagMergeFunc func);
 	
 	/**
 	 * This is a convenience function for the func argument of gst_tag_register().
@@ -147,11 +74,7 @@ public class TagList
 	 * dest =  uninitialized GValue to store result in
 	 * src =  GValue to copy from
 	 */
-	public static void mergeUseFirst(Value dest, Value src)
-	{
-		// void gst_tag_merge_use_first (GValue *dest,  const GValue *src);
-		gst_tag_merge_use_first((dest is null) ? null : dest.getValueStruct(), (src is null) ? null : src.getValueStruct());
-	}
+	public static void mergeUseFirst(Value dest, Value src);
 	
 	/**
 	 * This is a convenience function for the func argument of gst_tag_register().
@@ -161,11 +84,7 @@ public class TagList
 	 * dest =  uninitialized GValue to store result in
 	 * src =  GValue to copy from
 	 */
-	public static void mergeStringsWithComma(Value dest, Value src)
-	{
-		// void gst_tag_merge_strings_with_comma  (GValue *dest,  const GValue *src);
-		gst_tag_merge_strings_with_comma((dest is null) ? null : dest.getValueStruct(), (src is null) ? null : src.getValueStruct());
-	}
+	public static void mergeStringsWithComma(Value dest, Value src);
 	
 	/**
 	 * Checks if the given type is already registered.
@@ -173,11 +92,7 @@ public class TagList
 	 * tag =  name of the tag
 	 * Returns: TRUE if the type is already registered
 	 */
-	public static int exists(string tag)
-	{
-		// gboolean gst_tag_exists (const gchar *tag);
-		return gst_tag_exists(Str.toStringz(tag));
-	}
+	public static int exists(string tag);
 	
 	/**
 	 * Gets the GType used for this tag.
@@ -185,11 +100,7 @@ public class TagList
 	 * tag =  the tag
 	 * Returns: the GType of this tag
 	 */
-	public static GType getType(string tag)
-	{
-		// GType gst_tag_get_type (const gchar *tag);
-		return gst_tag_get_type(Str.toStringz(tag));
-	}
+	public static GType getType(string tag);
 	
 	/**
 	 * Returns the human-readable name of this tag, You must not change or free
@@ -198,11 +109,7 @@ public class TagList
 	 * tag =  the tag
 	 * Returns: the human-readable name of this tag
 	 */
-	public static string getNick(string tag)
-	{
-		// const gchar* gst_tag_get_nick (const gchar *tag);
-		return Str.toString(gst_tag_get_nick(Str.toStringz(tag)));
-	}
+	public static string getNick(string tag);
 	
 	/**
 	 * Returns the human-readable description of this tag, You must not change or
@@ -211,11 +118,7 @@ public class TagList
 	 * tag =  the tag
 	 * Returns: the human-readable description of this tag
 	 */
-	public static string getDescription(string tag)
-	{
-		// const gchar* gst_tag_get_description (const gchar *tag);
-		return Str.toString(gst_tag_get_description(Str.toStringz(tag)));
-	}
+	public static string getDescription(string tag);
 	
 	/**
 	 * Gets the flag of tag.
@@ -223,11 +126,7 @@ public class TagList
 	 * tag =  the tag
 	 * Returns:the flag of this tag.
 	 */
-	public static GstTagFlag getFlag(string tag)
-	{
-		// GstTagFlag gst_tag_get_flag (const gchar *tag);
-		return gst_tag_get_flag(Str.toStringz(tag));
-	}
+	public static GstTagFlag getFlag(string tag);
 	
 	/**
 	 * Checks if the given tag is fixed. A fixed tag can only contain one value.
@@ -236,26 +135,13 @@ public class TagList
 	 * tag =  tag to check
 	 * Returns: TRUE, if the given tag is fixed.
 	 */
-	public static int isFixed(string tag)
-	{
-		// gboolean gst_tag_is_fixed (const gchar *tag);
-		return gst_tag_is_fixed(Str.toStringz(tag));
-	}
+	public static int isFixed(string tag);
 	
 	/**
 	 * Creates a new empty GstTagList.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GstTagList* gst_tag_list_new (void);
-		auto p = gst_tag_list_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_tag_list_new()");
-		}
-		this(cast(GstTagList*) p);
-	}
+	public this ();
 	
 	/**
 	 * Checks if the given pointer is a taglist.
@@ -263,36 +149,19 @@ public class TagList
 	 * p =  Object that might be a taglist
 	 * Returns: TRUE, if the given pointer is a taglist
 	 */
-	public static int gstIsTagList(void* p)
-	{
-		// gboolean gst_is_tag_list (gconstpointer p);
-		return gst_is_tag_list(p);
-	}
+	public static int gstIsTagList(void* p);
 	
 	/**
 	 * Checks if the given taglist is empty.
 	 * Returns: TRUE if the taglist is empty, otherwise FALSE.Since 0.10.11
 	 */
-	public int isEmpty()
-	{
-		// gboolean gst_tag_list_is_empty (const GstTagList *list);
-		return gst_tag_list_is_empty(gstTagList);
-	}
+	public int isEmpty();
 	
 	/**
 	 * Copies a given GstTagList.
 	 * Returns: copy of the given list
 	 */
-	public TagList copy()
-	{
-		// GstTagList* gst_tag_list_copy (const GstTagList *list);
-		auto p = gst_tag_list_copy(gstTagList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TagList(cast(GstTagList*) p);
-	}
+	public TagList copy();
 	
 	/**
 	 * Inserts the tags of the second list into the first list using the given mode.
@@ -300,11 +169,7 @@ public class TagList
 	 * from =  list to merge from
 	 * mode =  the mode to use
 	 */
-	public void insert(TagList from, GstTagMergeMode mode)
-	{
-		// void gst_tag_list_insert (GstTagList *into,  const GstTagList *from,  GstTagMergeMode mode);
-		gst_tag_list_insert(gstTagList, (from is null) ? null : from.getTagListStruct(), mode);
-	}
+	public void insert(TagList from, GstTagMergeMode mode);
 	
 	/**
 	 * Merges the two given lists into a new list. If one of the lists is NULL, a
@@ -314,25 +179,12 @@ public class TagList
 	 * mode =  the mode to use
 	 * Returns: the new list
 	 */
-	public TagList merge(TagList list2, GstTagMergeMode mode)
-	{
-		// GstTagList* gst_tag_list_merge (const GstTagList *list1,  const GstTagList *list2,  GstTagMergeMode mode);
-		auto p = gst_tag_list_merge(gstTagList, (list2 is null) ? null : list2.getTagListStruct(), mode);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TagList(cast(GstTagList*) p);
-	}
+	public TagList merge(TagList list2, GstTagMergeMode mode);
 	
 	/**
 	 * Frees the given list and all associated values.
 	 */
-	public void free()
-	{
-		// void gst_tag_list_free (GstTagList *list);
-		gst_tag_list_free(gstTagList);
-	}
+	public void free();
 	
 	/**
 	 * Checks how many value are stored in this tag list for the given tag.
@@ -340,11 +192,7 @@ public class TagList
 	 * tag =  the tag to query
 	 * Returns: The number of tags stored
 	 */
-	public uint getTagSize(string tag)
-	{
-		// guint gst_tag_list_get_tag_size (const GstTagList *list,  const gchar *tag);
-		return gst_tag_list_get_tag_size(gstTagList, Str.toStringz(tag));
-	}
+	public uint getTagSize(string tag);
 	
 	/**
 	 * Sets the values for the given tags using the specified mode.
@@ -354,11 +202,7 @@ public class TagList
 	 * tag =  tag
 	 * varArgs =  tag / value pairs to set
 	 */
-	public void addValist(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_list_add_valist (GstTagList *list,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_list_add_valist(gstTagList, mode, Str.toStringz(tag), varArgs);
-	}
+	public void addValist(GstTagMergeMode mode, string tag, void* varArgs);
 	
 	/**
 	 * Sets the GValues for the given tags using the specified mode.
@@ -368,22 +212,14 @@ public class TagList
 	 * tag =  tag
 	 * varArgs =  tag / GValue pairs to set
 	 */
-	public void addValistValues(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_list_add_valist_values (GstTagList *list,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_list_add_valist_values(gstTagList, mode, Str.toStringz(tag), varArgs);
-	}
+	public void addValistValues(GstTagMergeMode mode, string tag, void* varArgs);
 	
 	/**
 	 * Removes the given tag from the taglist.
 	 * Params:
 	 * tag =  tag to remove
 	 */
-	public void removeTag(string tag)
-	{
-		// void gst_tag_list_remove_tag (GstTagList *list,  const gchar *tag);
-		gst_tag_list_remove_tag(gstTagList, Str.toStringz(tag));
-	}
+	public void removeTag(string tag);
 	
 	/**
 	 * Calls the given function for each tag inside the tag list. Note that if there
@@ -392,11 +228,7 @@ public class TagList
 	 * func =  function to be called for each tag
 	 * userData =  user specified data
 	 */
-	public void foreac(GstTagForeachFunc func, void* userData)
-	{
-		// void gst_tag_list_foreach (const GstTagList *list,  GstTagForeachFunc func,  gpointer user_data);
-		gst_tag_list_foreach(gstTagList, func, userData);
-	}
+	public void foreac(GstTagForeachFunc func, void* userData);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -406,16 +238,7 @@ public class TagList
 	 * index =  number of entry to read out
 	 * Returns: The GValue for the specified entry or NULL if the tag wasn't available or the tag doesn't have as many entries
 	 */
-	public Value getValueIndex(string tag, uint index)
-	{
-		// const GValue* gst_tag_list_get_value_index (const GstTagList *list,  const gchar *tag,  guint index);
-		auto p = gst_tag_list_get_value_index(gstTagList, Str.toStringz(tag), index);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Value(cast(GValue*) p);
-	}
+	public Value getValueIndex(string tag, uint index);
 	
 	/**
 	 * Copies the contents for the given tag into the value,
@@ -428,11 +251,7 @@ public class TagList
 	 * tag =  tag to read out
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public static int copyValue(Value dest, TagList list, string tag)
-	{
-		// gboolean gst_tag_list_copy_value (GValue *dest,  const GstTagList *list,  const gchar *tag);
-		return gst_tag_list_copy_value((dest is null) ? null : dest.getValueStruct(), (list is null) ? null : list.getTagListStruct(), Str.toStringz(tag));
-	}
+	public static int copyValue(Value dest, TagList list, string tag);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -442,11 +261,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getChar(string tag, string value)
-	{
-		// gboolean gst_tag_list_get_char (const GstTagList *list,  const gchar *tag,  gchar *value);
-		return gst_tag_list_get_char(gstTagList, Str.toStringz(tag), Str.toStringz(value));
-	}
+	public int getChar(string tag, string value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -457,11 +272,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getCharIndex(string tag, uint index, string value)
-	{
-		// gboolean gst_tag_list_get_char_index (const GstTagList *list,  const gchar *tag,  guint index,  gchar *value);
-		return gst_tag_list_get_char_index(gstTagList, Str.toStringz(tag), index, Str.toStringz(value));
-	}
+	public int getCharIndex(string tag, uint index, string value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -471,11 +282,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUchar(string tag, char* value)
-	{
-		// gboolean gst_tag_list_get_uchar (const GstTagList *list,  const gchar *tag,  guchar *value);
-		return gst_tag_list_get_uchar(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getUchar(string tag, char* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -486,11 +293,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUcharIndex(string tag, uint index, char* value)
-	{
-		// gboolean gst_tag_list_get_uchar_index (const GstTagList *list,  const gchar *tag,  guint index,  guchar *value);
-		return gst_tag_list_get_uchar_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getUcharIndex(string tag, uint index, char* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -500,11 +303,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getBoolean(string tag, int* value)
-	{
-		// gboolean gst_tag_list_get_boolean (const GstTagList *list,  const gchar *tag,  gboolean *value);
-		return gst_tag_list_get_boolean(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getBoolean(string tag, int* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -515,11 +314,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getBooleanIndex(string tag, uint index, int* value)
-	{
-		// gboolean gst_tag_list_get_boolean_index (const GstTagList *list,  const gchar *tag,  guint index,  gboolean *value);
-		return gst_tag_list_get_boolean_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getBooleanIndex(string tag, uint index, int* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -529,11 +324,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getInt(string tag, int* value)
-	{
-		// gboolean gst_tag_list_get_int (const GstTagList *list,  const gchar *tag,  gint *value);
-		return gst_tag_list_get_int(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getInt(string tag, int* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -544,11 +335,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getIntIndex(string tag, uint index, int* value)
-	{
-		// gboolean gst_tag_list_get_int_index (const GstTagList *list,  const gchar *tag,  guint index,  gint *value);
-		return gst_tag_list_get_int_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getIntIndex(string tag, uint index, int* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -558,11 +345,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUint(string tag, uint* value)
-	{
-		// gboolean gst_tag_list_get_uint (const GstTagList *list,  const gchar *tag,  guint *value);
-		return gst_tag_list_get_uint(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getUint(string tag, uint* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -573,11 +356,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUintIndex(string tag, uint index, uint* value)
-	{
-		// gboolean gst_tag_list_get_uint_index (const GstTagList *list,  const gchar *tag,  guint index,  guint *value);
-		return gst_tag_list_get_uint_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getUintIndex(string tag, uint index, uint* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -587,11 +366,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getLong(string tag, int* value)
-	{
-		// gboolean gst_tag_list_get_long (const GstTagList *list,  const gchar *tag,  glong *value);
-		return gst_tag_list_get_long(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getLong(string tag, int* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -602,11 +377,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getLongIndex(string tag, uint index, int* value)
-	{
-		// gboolean gst_tag_list_get_long_index (const GstTagList *list,  const gchar *tag,  guint index,  glong *value);
-		return gst_tag_list_get_long_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getLongIndex(string tag, uint index, int* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -616,11 +387,28 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUlong(string tag, uint* value)
-	{
-		// gboolean gst_tag_list_get_ulong (const GstTagList *list,  const gchar *tag,  gulong *value);
-		return gst_tag_list_get_ulong(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getUlong(string tag, uint* value);
+
+	/**
+	 * Gets the value that is at the given index for the given tag in the given
+	 * list.
+	 * Params:
+	 * tag =  tag to read out
+	 * index =  number of entry to read out
+	 * value =  location for the result
+	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
+	 */
+	public int getUlongIndex(string tag, uint index, uint* value);
+	
+	/**
+	 * Copies the contents for the given tag into the value, merging multiple values
+	 * into one if multiple values are associated with the tag.
+	 * Params:
+	 * tag =  tag to read out
+	 * value =  location for the result
+	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
+	 */
+	public int getInt64(string tag, long* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -631,11 +419,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUlongIndex(string tag, uint index, uint* value)
-	{
-		// gboolean gst_tag_list_get_ulong_index (const GstTagList *list,  const gchar *tag,  guint index,  gulong *value);
-		return gst_tag_list_get_ulong_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getInt64_Index(string tag, uint index, long* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -645,11 +429,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getInt64(string tag, long* value)
-	{
-		// gboolean gst_tag_list_get_int64 (const GstTagList *list,  const gchar *tag,  gint64 *value);
-		return gst_tag_list_get_int64(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getUint64(string tag, ulong* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -660,11 +440,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getInt64_Index(string tag, uint index, long* value)
-	{
-		// gboolean gst_tag_list_get_int64_index (const GstTagList *list,  const gchar *tag,  guint index,  gint64 *value);
-		return gst_tag_list_get_int64_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getUint64_Index(string tag, uint index, ulong* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -674,11 +450,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUint64(string tag, ulong* value)
-	{
-		// gboolean gst_tag_list_get_uint64 (const GstTagList *list,  const gchar *tag,  guint64 *value);
-		return gst_tag_list_get_uint64(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getFloat(string tag, float* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -689,11 +461,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getUint64_Index(string tag, uint index, ulong* value)
-	{
-		// gboolean gst_tag_list_get_uint64_index (const GstTagList *list,  const gchar *tag,  guint index,  guint64 *value);
-		return gst_tag_list_get_uint64_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getFloatIndex(string tag, uint index, float* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -703,11 +471,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getFloat(string tag, float* value)
-	{
-		// gboolean gst_tag_list_get_float (const GstTagList *list,  const gchar *tag,  gfloat *value);
-		return gst_tag_list_get_float(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getDouble(string tag, double* value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -718,40 +482,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getFloatIndex(string tag, uint index, float* value)
-	{
-		// gboolean gst_tag_list_get_float_index (const GstTagList *list,  const gchar *tag,  guint index,  gfloat *value);
-		return gst_tag_list_get_float_index(gstTagList, Str.toStringz(tag), index, value);
-	}
-	
-	/**
-	 * Copies the contents for the given tag into the value, merging multiple values
-	 * into one if multiple values are associated with the tag.
-	 * Params:
-	 * tag =  tag to read out
-	 * value =  location for the result
-	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
-	 */
-	public int getDouble(string tag, double* value)
-	{
-		// gboolean gst_tag_list_get_double (const GstTagList *list,  const gchar *tag,  gdouble *value);
-		return gst_tag_list_get_double(gstTagList, Str.toStringz(tag), value);
-	}
-	
-	/**
-	 * Gets the value that is at the given index for the given tag in the given
-	 * list.
-	 * Params:
-	 * tag =  tag to read out
-	 * index =  number of entry to read out
-	 * value =  location for the result
-	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
-	 */
-	public int getDoubleIndex(string tag, uint index, double* value)
-	{
-		// gboolean gst_tag_list_get_double_index (const GstTagList *list,  const gchar *tag,  guint index,  gdouble *value);
-		return gst_tag_list_get_double_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getDoubleIndex(string tag, uint index, double* value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, possibly merging
@@ -765,11 +496,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getString(string tag, char** value)
-	{
-		// gboolean gst_tag_list_get_string (const GstTagList *list,  const gchar *tag,  gchar **value);
-		return gst_tag_list_get_string(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getString(string tag, char** value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -782,11 +509,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getStringIndex(string tag, uint index, char** value)
-	{
-		// gboolean gst_tag_list_get_string_index (const GstTagList *list,  const gchar *tag,  guint index,  gchar **value);
-		return gst_tag_list_get_string_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getStringIndex(string tag, uint index, char** value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -796,11 +519,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getPointer(string tag, void** value)
-	{
-		// gboolean gst_tag_list_get_pointer (const GstTagList *list,  const gchar *tag,  gpointer *value);
-		return gst_tag_list_get_pointer(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getPointer(string tag, void** value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -811,11 +530,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list.
 	 */
-	public int getPointerIndex(string tag, uint index, void** value)
-	{
-		// gboolean gst_tag_list_get_pointer_index (const GstTagList *list,  const gchar *tag,  guint index,  gpointer *value);
-		return gst_tag_list_get_pointer_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getPointerIndex(string tag, uint index, void** value);
 	
 	/**
 	 * Copies the contents for the given tag into the value, merging multiple values
@@ -825,11 +540,7 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list or if it was NULL.
 	 */
-	public int getDate(string tag, GDate** value)
-	{
-		// gboolean gst_tag_list_get_date (const GstTagList *list,  const gchar *tag,  GDate **value);
-		return gst_tag_list_get_date(gstTagList, Str.toStringz(tag), value);
-	}
+	public int getDate(string tag, GDate** value);
 	
 	/**
 	 * Gets the value that is at the given index for the given tag in the given
@@ -840,9 +551,5 @@ public class TagList
 	 * value =  location for the result
 	 * Returns: TRUE, if a value was copied, FALSE if the tag didn't exist in the given list or if it was NULL.
 	 */
-	public int getDateIndex(string tag, uint index, GDate** value)
-	{
-		// gboolean gst_tag_list_get_date_index (const GstTagList *list,  const gchar *tag,  guint index,  GDate **value);
-		return gst_tag_list_get_date_index(gstTagList, Str.toStringz(tag), index, value);
-	}
+	public int getDateIndex(string tag, uint index, GDate** value);
 }

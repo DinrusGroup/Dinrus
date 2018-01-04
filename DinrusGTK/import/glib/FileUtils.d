@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-File-Utilities.html
- * outPack = glib
- * outFile = FileUtils
- * strct   =
- * realStrct=
- * ctorStrct=
- * clss    = FileUtils
- * interf  =
- * class Code: No
- * interface Code: No
- * template for:
- * extend  =
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * 	- g_dir_
- * 	- g_mapped_file_
- * omit code:
- * omit signals:
- * imports:
- * 	- std.c.stdio
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.FileUtils;
 
@@ -110,11 +55,7 @@ public class FileUtils
 	 * errNo =  an "errno" value
 	 * Returns: GFileError corresponding to the given errno
 	 */
-	public static GFileError fileErrorFromErrno(int errNo)
-	{
-		// GFileError g_file_error_from_errno (gint err_no);
-		return g_file_error_from_errno(errNo);
-	}
+	public static GFileError fileErrorFromErrno(int errNo);
 
 	/**
 	 * Reads an entire file into allocated memory, with good error
@@ -134,22 +75,7 @@ public class FileUtils
 	 * Returns: TRUE on success, FALSE if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public static int fileGetContents(string filename, out string contents, out uint length)
-	{
-		// gboolean g_file_get_contents (const gchar *filename,  gchar **contents,  gsize *length,  GError **error);
-		char* outcontents = null;
-		GError* err = null;
-
-		auto p = g_file_get_contents(Str.toStringz(filename), &outcontents, &length, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		contents = Str.toString(outcontents);
-		return p;
-	}
+	public static int fileGetContents(string filename, out string contents, out uint length);
 
 	/**
 	 * Writes all of contents to a file named filename, with good error checking.
@@ -164,20 +90,7 @@ public class FileUtils
 	 * Returns: TRUE on success, FALSE if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public static int fileSetContents(string filename, string contents, int length)
-	{
-		// gboolean g_file_set_contents (const gchar *filename,  const gchar *contents,  gssize length,  GError **error);
-		GError* err = null;
-
-		auto p = g_file_set_contents(Str.toStringz(filename), Str.toStringz(contents), length, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		return p;
-	}
+	public static int fileSetContents(string filename, string contents, int length);
 
 	/**
 	 * Returns TRUE if any of the tests in the bitfield test are
@@ -219,11 +132,7 @@ public class FileUtils
 	 * test =  bitfield of GFileTest flags
 	 * Returns: whether a test was TRUE
 	 */
-	public static int fileTest(string filename, GFileTest test)
-	{
-		// gboolean g_file_test (const gchar *filename,  GFileTest test);
-		return g_file_test(Str.toStringz(filename), test);
-	}
+	public static int fileTest(string filename, GFileTest test);
 
 	/**
 	 * Opens a temporary file. See the mkstemp() documentation
@@ -240,11 +149,7 @@ public class FileUtils
 	 * tmpl =  template filename
 	 * Returns: A file handle (as from open()) to the fileopened for reading and writing. The file is opened in binary modeon platforms where there is a difference. The file handle should beclosed with close(). In case of errors, -1 is returned.
 	 */
-	public static int mkstemp(string tmpl)
-	{
-		// gint g_mkstemp (gchar *tmpl);
-		return g_mkstemp(Str.toStringz(tmpl));
-	}
+	public static int mkstemp(string tmpl);
 
 	/**
 	 * Opens a temporary file. See the mkstemp() documentation
@@ -265,11 +170,7 @@ public class FileUtils
 	 * mode =  permissios to create the temporary file with
 	 * Returns: A file handle (as from open()) to the file opened for reading and writing. The file handle should be closed with close(). In case of errors, -1 is returned.
 	 */
-	public static int mkstempFull(string tmpl, int flags, int mode)
-	{
-		// gint g_mkstemp_full (gchar *tmpl,  int flags,  int mode);
-		return g_mkstemp_full(Str.toStringz(tmpl), flags, mode);
-	}
+	public static int mkstempFull(string tmpl, int flags, int mode);
 
 	/**
 	 * Opens a file for writing in the preferred directory for temporary
@@ -291,22 +192,7 @@ public class FileUtils
 	 * Returns: A file handle (as from open()) to the file opened for reading and writing. The file is opened in binary mode on platforms where there is a difference. The file handle should beclosed with close(). In case of errors, -1 is returned and error will be set.
 	 * Throws: GException on failure.
 	 */
-	public static int fileOpenTmp(string tmpl, out string nameUsed)
-	{
-		// gint g_file_open_tmp (const gchar *tmpl,  gchar **name_used,  GError **error);
-		char* outnameUsed = null;
-		GError* err = null;
-
-		auto p = g_file_open_tmp(Str.toStringz(tmpl), &outnameUsed, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		nameUsed = Str.toString(outnameUsed);
-		return p;
-	}
+	public static int fileOpenTmp(string tmpl, out string nameUsed);
 
 	/**
 	 * Reads the contents of the symbolic link filename like the POSIX
@@ -318,20 +204,7 @@ public class FileUtils
 	 * Returns: A newly-allocated string with the contents of the symbolic link,  or NULL if an error occurred.
 	 * Throws: GException on failure.
 	 */
-	public static string fileReadLink(string filename)
-	{
-		// gchar * g_file_read_link (const gchar *filename,  GError **error);
-		GError* err = null;
-
-		auto p = Str.toString(g_file_read_link(Str.toStringz(filename), &err));
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		return p;
-	}
+	public static string fileReadLink(string filename);
 
 	/**
 	 * Create a directory if it doesn't already exist. Create intermediate
@@ -342,11 +215,7 @@ public class FileUtils
 	 * mode =  permissions to use for newly created directories
 	 * Returns: 0 if the directory already exists, or was successfullycreated. Returns -1 if an error occurred, with errno set.
 	 */
-	public static int mkdirWithParents(string pathname, int mode)
-	{
-		// int g_mkdir_with_parents (const gchar *pathname,  int mode);
-		return g_mkdir_with_parents(Str.toStringz(pathname), mode);
-	}
+	public static int mkdirWithParents(string pathname, int mode);
 
 	/**
 	 * A wrapper for the POSIX open() function. The open() function is
@@ -371,11 +240,7 @@ public class FileUtils
 	 * mode =  as in open()
 	 * Returns: a new file descriptor, or -1 if an error occurred. Thereturn value can be used exactly like the return value from open().
 	 */
-	public static int open(string filename, int flags, int mode)
-	{
-		// int g_open (const gchar *filename,  int flags,  int mode);
-		return g_open(Str.toStringz(filename), flags, mode);
-	}
+	public static int open(string filename, int flags, int mode);
 
 	/**
 	 * A wrapper for the POSIX rename() function. The rename() function
@@ -389,11 +254,7 @@ public class FileUtils
 	 * newfilename =  a pathname in the GLib file name encoding
 	 * Returns: 0 if the renaming succeeded, -1 if an error occurred
 	 */
-	public static int rename(string oldfilename, string newfilename)
-	{
-		// int g_rename (const gchar *oldfilename,  const gchar *newfilename);
-		return g_rename(Str.toStringz(oldfilename), Str.toStringz(newfilename));
-	}
+	public static int rename(string oldfilename, string newfilename);
 
 	/**
 	 * A wrapper for the POSIX mkdir() function. The mkdir() function
@@ -406,11 +267,7 @@ public class FileUtils
 	 * mode =  permissions to use for the newly created directory
 	 * Returns: 0 if the directory was successfully created, -1 if an error  occurred
 	 */
-	public static int mkdir(string filename, int mode)
-	{
-		// int g_mkdir (const gchar *filename,  int mode);
-		return g_mkdir(Str.toStringz(filename), mode);
-	}
+	public static int mkdir(string filename, int mode);
 
 	/**
 	 * A wrapper for the POSIX stat() function. The stat() function
@@ -426,11 +283,7 @@ public class FileUtils
 	 *  will be filled with the file information
 	 * Returns: 0 if the information was successfully retrieved, -1 if an error  occurred
 	 */
-	public static int stat(string filename, void* buf)
-	{
-		// int g_stat (const gchar *filename,  struct stat *buf);
-		return g_stat(Str.toStringz(filename), buf);
-	}
+	public static int stat(string filename, void* buf);
 
 	/**
 	 * A wrapper for the POSIX lstat() function. The lstat() function is
@@ -446,11 +299,7 @@ public class FileUtils
 	 *  will be filled with the file information
 	 * Returns: 0 if the information was successfully retrieved, -1 if an error  occurred
 	 */
-	public static int lstat(string filename, void* buf)
-	{
-		// int g_lstat (const gchar *filename,  struct stat *buf);
-		return g_lstat(Str.toStringz(filename), buf);
-	}
+	public static int lstat(string filename, void* buf);
 
 	/**
 	 * A wrapper for the POSIX unlink() function. The unlink() function
@@ -465,11 +314,7 @@ public class FileUtils
 	 * filename =  a pathname in the GLib file name encoding (UTF-8 on Windows)
 	 * Returns: 0 if the name was successfully deleted, -1 if an error  occurred
 	 */
-	public static int unlink(string filename)
-	{
-		// int g_unlink (const gchar *filename);
-		return g_unlink(Str.toStringz(filename));
-	}
+	public static int unlink(string filename);
 
 	/**
 	 * A wrapper for the POSIX remove() function. The remove() function
@@ -491,11 +336,7 @@ public class FileUtils
 	 * filename =  a pathname in the GLib file name encoding (UTF-8 on Windows)
 	 * Returns: 0 if the file was successfully removed, -1 if an error  occurred
 	 */
-	public static int remove(string filename)
-	{
-		// int g_remove (const gchar *filename);
-		return g_remove(Str.toStringz(filename));
-	}
+	public static int remove(string filename);
 
 	/**
 	 * A wrapper for the POSIX rmdir() function. The rmdir() function
@@ -507,11 +348,7 @@ public class FileUtils
 	 * filename =  a pathname in the GLib file name encoding (UTF-8 on Windows)
 	 * Returns: 0 if the directory was successfully removed, -1 if an error  occurred
 	 */
-	public static int rmdir(string filename)
-	{
-		// int g_rmdir (const gchar *filename);
-		return g_rmdir(Str.toStringz(filename));
-	}
+	public static int rmdir(string filename);
 
 	/**
 	 * A wrapper for the stdio fopen() function. The fopen() function
@@ -531,11 +368,7 @@ public class FileUtils
 	 *  opened
 	 * Returns: A FILE pointer if the file was successfully opened, or NULL if an error occurred
 	 */
-	public static FILE* fopen(string filename, string mode)
-	{
-		// FILE * g_fopen (const gchar *filename,  const gchar *mode);
-		return cast(FILE*)g_fopen(Str.toStringz(filename), Str.toStringz(mode));
-	}
+	public static FILE* fopen(string filename, string mode);
 
 	/**
 	 * A wrapper for the POSIX freopen() function. The freopen() function
@@ -549,11 +382,7 @@ public class FileUtils
 	 * stream =  an existing stream which will be reused, or NULL
 	 * Returns: A FILE pointer if the file was successfully opened, or NULL if an error occurred.
 	 */
-	public static FILE* freopen(string filename, string mode, FILE* stream)
-	{
-		// FILE * g_freopen (const gchar *filename,  const gchar *mode,  FILE *stream);
-		return cast(FILE*)g_freopen(Str.toStringz(filename), Str.toStringz(mode), cast(void*)stream);
-	}
+	public static FILE* freopen(string filename, string mode, FILE* stream);
 
 	/**
 	 * A wrapper for the POSIX chmod() function. The chmod() function is
@@ -570,11 +399,7 @@ public class FileUtils
 	 * mode =  as in chmod()
 	 * Returns: zero if the operation succeeded, -1 on error.
 	 */
-	public static int chmod(string filename, int mode)
-	{
-		// int g_chmod (const gchar *filename,  int mode);
-		return g_chmod(Str.toStringz(filename), mode);
-	}
+	public static int chmod(string filename, int mode);
 
 	/**
 	 * A wrapper for the POSIX access() function. This function is used to
@@ -593,11 +418,7 @@ public class FileUtils
 	 * mode =  as in access()
 	 * Returns: zero if the pathname refers to an existing file systemobject that has all the tested permissions, or -1 otherwise or onerror.
 	 */
-	public static int access(string filename, int mode)
-	{
-		// int g_access (const gchar *filename,  int mode);
-		return g_access(Str.toStringz(filename), mode);
-	}
+	public static int access(string filename, int mode);
 
 	/**
 	 * A wrapper for the POSIX creat() function. The creat() function is
@@ -622,11 +443,7 @@ public class FileUtils
 	 * mode =  as in creat()
 	 * Returns: a new file descriptor, or -1 if an error occurred. Thereturn value can be used exactly like the return value from creat().
 	 */
-	public static int creat(string filename, int mode)
-	{
-		// int g_creat (const gchar *filename,  int mode);
-		return g_creat(Str.toStringz(filename), mode);
-	}
+	public static int creat(string filename, int mode);
 
 	/**
 	 * A wrapper for the POSIX chdir() function. The function changes the
@@ -637,11 +454,7 @@ public class FileUtils
 	 * path =  a pathname in the GLib file name encoding (UTF-8 on Windows)
 	 * Returns: 0 on success, -1 if an error occurred.
 	 */
-	public static int chdir(string path)
-	{
-		// int g_chdir (const gchar *path);
-		return g_chdir(Str.toStringz(path));
-	}
+	public static int chdir(string path);
 
 	/**
 	 * A wrapper for the POSIX utime() function. The utime() function
@@ -654,9 +467,5 @@ public class FileUtils
 	 * utb =  a pointer to a struct utimbuf.
 	 * Returns: 0 if the operation was successful, -1 if an error  occurred
 	 */
-	public static int utime(string filename, void* utb)
-	{
-		// int g_utime (const gchar *filename,  struct utimbuf *utb);
-		return g_utime(Str.toStringz(filename), utb);
-	}
+	public static int utime(string filename, void* utb);
 }

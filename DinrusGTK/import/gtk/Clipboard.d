@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Clipboards.html
- * outPack = gtk
- * outFile = Clipboard
- * strct   = GtkClipboard
- * realStrct=
- * ctorStrct=
- * clss    = Clipboard
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_clipboard_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Display
- * 	- gtkD.gtk.TextBuffer
- * 	- gtkD.gobject.ObjectG
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GObject* -> ObjectG
- * 	- GdkDisplay* -> Display
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkClipboard* -> Clipboard
- * 	- GtkTextBuffer* -> TextBuffer
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Clipboard;
 
 public  import gtkD.gtkc.gtktypes;
@@ -142,38 +81,16 @@ public class Clipboard : ObjectG
 	protected GtkClipboard* gtkClipboard;
 	
 	
-	public GtkClipboard* getClipboardStruct()
-	{
-		return gtkClipboard;
-	}
+	public GtkClipboard* getClipboardStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkClipboard;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkClipboard* gtkClipboard)
-	{
-		if(gtkClipboard is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkClipboard);
-		if( ptr !is null )
-		{
-			this = cast(Clipboard)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkClipboard);
-		this.gtkClipboard = gtkClipboard;
-	}
+	public this (GtkClipboard* gtkClipboard);
 	
 	/**
 	 */
@@ -192,28 +109,8 @@ public class Clipboard : ObjectG
 	 * 	 also possibly to directly manipulate the X selections,
 	 * 	 though it is seldom necessary to do so.
 	 */
-	void addOnOwnerChange(void delegate(GdkEvent*, Clipboard) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("owner-change" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"owner-change",
-			cast(GCallback)&callBackOwnerChange,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["owner-change"] = 1;
-		}
-		onOwnerChangeListeners ~= dlg;
-	}
-	extern(C) static void callBackOwnerChange(GtkClipboard* clipboardStruct, GdkEvent* event, Clipboard clipboard)
-	{
-		foreach ( void delegate(GdkEvent*, Clipboard) dlg ; clipboard.onOwnerChangeListeners )
-		{
-			dlg(event, clipboard);
-		}
-	}
+	void addOnOwnerChange(void delegate(GdkEvent*, Clipboard) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackOwnerChange(GtkClipboard* clipboardStruct, GdkEvent* event, Clipboard clipboard);
 	
 	
 	/**
@@ -224,16 +121,7 @@ public class Clipboard : ObjectG
 	 *  to use.
 	 * Returns: the appropriate clipboard object. If no clipboard already exists, a new one will be created. Once a clipboard object has been created, it is persistent and, since it is owned by GTK+, must not be freed or unrefd.
 	 */
-	public static Clipboard get(GdkAtom selection)
-	{
-		// GtkClipboard * gtk_clipboard_get (GdkAtom selection);
-		auto p = gtk_clipboard_get(selection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Clipboard(cast(GtkClipboard*) p);
-	}
+	public static Clipboard get(GdkAtom selection);
 	
 	/**
 	 * Returns the clipboard object for the given selection.
@@ -265,32 +153,14 @@ public class Clipboard : ObjectG
 	 *  to use.
 	 * Returns: the appropriate clipboard object. If no clipboard already exists, a new one will be created. Once a clipboard object has been created, it is persistent and, since it is owned by GTK+, must not be freed or unrefd.
 	 */
-	public static Clipboard getForDisplay(Display display, GdkAtom selection)
-	{
-		// GtkClipboard * gtk_clipboard_get_for_display (GdkDisplay *display,  GdkAtom selection);
-		auto p = gtk_clipboard_get_for_display((display is null) ? null : display.getDisplayStruct(), selection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Clipboard(cast(GtkClipboard*) p);
-	}
+	public static Clipboard getForDisplay(Display display, GdkAtom selection);
 	
 	/**
 	 * Gets the GdkDisplay associated with clipboard
 	 * Since 2.2
 	 * Returns: the GdkDisplay associated with clipboard
 	 */
-	public Display getDisplay()
-	{
-		// GdkDisplay * gtk_clipboard_get_display (GtkClipboard *clipboard);
-		auto p = gtk_clipboard_get_display(gtkClipboard);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Display(cast(GdkDisplay*) p);
-	}
+	public Display getDisplay();
 	
 	/**
 	 * Virtually sets the contents of the specified clipboard by providing
@@ -305,11 +175,7 @@ public class Clipboard : ObjectG
 	 * userData =  user data to pass to get_func and clear_func.
 	 * Returns: TRUE if setting the clipboard data succeeded. If setting the clipboard data failed the provided callback functions will be ignored.
 	 */
-	public int setWithData(GtkTargetEntry[] targets, GtkClipboardGetFunc getFunc, GtkClipboardClearFunc clearFunc, void* userData)
-	{
-		// gboolean gtk_clipboard_set_with_data (GtkClipboard *clipboard,  const GtkTargetEntry *targets,  guint n_targets,  GtkClipboardGetFunc get_func,  GtkClipboardClearFunc clear_func,  gpointer user_data);
-		return gtk_clipboard_set_with_data(gtkClipboard, targets.ptr, targets.length, getFunc, clearFunc, userData);
-	}
+	public int setWithData(GtkTargetEntry[] targets, GtkClipboardGetFunc getFunc, GtkClipboardClearFunc clearFunc, void* userData);
 	
 	/**
 	 * Virtually sets the contents of the specified clipboard by providing
@@ -328,11 +194,7 @@ public class Clipboard : ObjectG
 	 *  to the callbacks when called.
 	 * Returns: TRUE if setting the clipboard data succeeded. If setting the clipboard data failed the provided callback functions will be ignored.
 	 */
-	public int setWithOwner(GtkTargetEntry[] targets, GtkClipboardGetFunc getFunc, GtkClipboardClearFunc clearFunc, ObjectG owner)
-	{
-		// gboolean gtk_clipboard_set_with_owner (GtkClipboard *clipboard,  const GtkTargetEntry *targets,  guint n_targets,  GtkClipboardGetFunc get_func,  GtkClipboardClearFunc clear_func,  GObject *owner);
-		return gtk_clipboard_set_with_owner(gtkClipboard, targets.ptr, targets.length, getFunc, clearFunc, (owner is null) ? null : owner.getObjectGStruct());
-	}
+	public int setWithOwner(GtkTargetEntry[] targets, GtkClipboardGetFunc getFunc, GtkClipboardClearFunc clearFunc, ObjectG owner);
 	
 	/**
 	 * If the clipboard contents callbacks were set with
@@ -341,16 +203,7 @@ public class Clipboard : ObjectG
 	 * by gtk_clipboard_set_with_owner().
 	 * Returns: the owner of the clipboard, if any; otherwise NULL.
 	 */
-	public ObjectG getOwner()
-	{
-		// GObject * gtk_clipboard_get_owner (GtkClipboard *clipboard);
-		auto p = gtk_clipboard_get_owner(gtkClipboard);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectG(cast(GObject*) p);
-	}
+	public ObjectG getOwner();
 	
 	/**
 	 * Clears the contents of the clipboard. Generally this should only
@@ -359,11 +212,7 @@ public class Clipboard : ObjectG
 	 * and when the clear_func you supplied is called. Otherwise, the
 	 * clipboard may be owned by someone else.
 	 */
-	public void clear()
-	{
-		// void gtk_clipboard_clear (GtkClipboard *clipboard);
-		gtk_clipboard_clear(gtkClipboard);
-	}
+	public void clear();
 	
 	/**
 	 * Sets the contents of the clipboard to the given UTF-8 string. GTK+ will
@@ -375,11 +224,7 @@ public class Clipboard : ObjectG
 	 * len =  length of text, in bytes, or -1, in which case
 	 *  the length will be determined with strlen().
 	 */
-	public void setText(string text, int len)
-	{
-		// void gtk_clipboard_set_text (GtkClipboard *clipboard,  const gchar *text,  gint len);
-		gtk_clipboard_set_text(gtkClipboard, Str.toStringz(text), len);
-	}
+	public void setText(string text, int len);
 	
 	/**
 	 * Sets the contents of the clipboard to the given GdkPixbuf.
@@ -390,11 +235,7 @@ public class Clipboard : ObjectG
 	 * Params:
 	 * pixbuf =  a GdkPixbuf
 	 */
-	public void setImage(Pixbuf pixbuf)
-	{
-		// void gtk_clipboard_set_image (GtkClipboard *clipboard,  GdkPixbuf *pixbuf);
-		gtk_clipboard_set_image(gtkClipboard, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public void setImage(Pixbuf pixbuf);
 	
 	/**
 	 * Requests the contents of clipboard as the given target.
@@ -409,11 +250,7 @@ public class Clipboard : ObjectG
 	 *  negative.
 	 * userData =  user data to pass to callback
 	 */
-	public void requestContents(GdkAtom target, GtkClipboardReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_contents (GtkClipboard *clipboard,  GdkAtom target,  GtkClipboardReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_contents(gtkClipboard, target, callback, userData);
-	}
+	public void requestContents(GdkAtom target, GtkClipboardReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard as text. When the text is
@@ -429,11 +266,7 @@ public class Clipboard : ObjectG
 	 *  one way or the other.)
 	 * userData =  user data to pass to callback.
 	 */
-	public void requestText(GtkClipboardTextReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_text (GtkClipboard *clipboard,  GtkClipboardTextReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_text(gtkClipboard, callback, userData);
-	}
+	public void requestText(GtkClipboardTextReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard as image. When the image is
@@ -451,11 +284,7 @@ public class Clipboard : ObjectG
 	 *  one way or the other.)
 	 * userData =  user data to pass to callback.
 	 */
-	public void requestImage(GtkClipboardImageReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_image (GtkClipboard *clipboard,  GtkClipboardImageReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_image(gtkClipboard, callback, userData);
-	}
+	public void requestImage(GtkClipboardImageReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard as list of supported targets.
@@ -469,11 +298,7 @@ public class Clipboard : ObjectG
 	 *  one way or the other.)
 	 * userData =  user data to pass to callback.
 	 */
-	public void requestTargets(GtkClipboardTargetsReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_targets (GtkClipboard *clipboard,  GtkClipboardTargetsReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_targets(gtkClipboard, callback, userData);
-	}
+	public void requestTargets(GtkClipboardTargetsReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard as rich text. When the rich
@@ -491,11 +316,7 @@ public class Clipboard : ObjectG
 	 *  one way or the other.)
 	 * userData =  user data to pass to callback.
 	 */
-	public void requestRichText(TextBuffer buffer, GtkClipboardRichTextReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_rich_text (GtkClipboard *clipboard,  GtkTextBuffer *buffer,  GtkClipboardRichTextReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_rich_text(gtkClipboard, (buffer is null) ? null : buffer.getTextBufferStruct(), callback, userData);
-	}
+	public void requestRichText(TextBuffer buffer, GtkClipboardRichTextReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard as URIs. When the URIs are
@@ -511,11 +332,7 @@ public class Clipboard : ObjectG
 	 *  one way or the other.)
 	 * userData =  user data to pass to callback.
 	 */
-	public void requestUris(GtkClipboardURIReceivedFunc callback, void* userData)
-	{
-		// void gtk_clipboard_request_uris (GtkClipboard *clipboard,  GtkClipboardURIReceivedFunc callback,  gpointer user_data);
-		gtk_clipboard_request_uris(gtkClipboard, callback, userData);
-	}
+	public void requestUris(GtkClipboardURIReceivedFunc callback, void* userData);
 	
 	/**
 	 * Requests the contents of the clipboard using the given target.
@@ -526,11 +343,7 @@ public class Clipboard : ObjectG
 	 *  owner should convert the selection.
 	 * Returns: a newly-allocated GtkSelectionData object or NULL if retrieving the given target failed. If non-NULL, this value must be freed with gtk_selection_data_free()  when you are finished with it.
 	 */
-	public GtkSelectionData* waitForContents(GdkAtom target)
-	{
-		// GtkSelectionData * gtk_clipboard_wait_for_contents (GtkClipboard *clipboard,  GdkAtom target);
-		return gtk_clipboard_wait_for_contents(gtkClipboard, target);
-	}
+	public GtkSelectionData* waitForContents(GdkAtom target);
 	
 	/**
 	 * Requests the contents of the clipboard as text and converts
@@ -539,11 +352,7 @@ public class Clipboard : ObjectG
 	 * timeouts, etc, may be dispatched during the wait.
 	 * Returns: a newly-allocated UTF-8 string which must be freed with g_free(), or NULL if retrieving the selection data failed. (This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into text form.)
 	 */
-	public string waitForText()
-	{
-		// gchar * gtk_clipboard_wait_for_text (GtkClipboard *clipboard);
-		return Str.toString(gtk_clipboard_wait_for_text(gtkClipboard));
-	}
+	public string waitForText();
 	
 	/**
 	 * Requests the contents of the clipboard as image and converts
@@ -553,16 +362,7 @@ public class Clipboard : ObjectG
 	 * Since 2.6
 	 * Returns: a newly-allocated GdkPixbuf object which must be disposed with g_object_unref(), or NULL if  retrieving the selection data failed. (This  could happen for various reasons, in particular  if the clipboard was empty or if the contents of  the clipboard could not be converted into an image.)
 	 */
-	public Pixbuf waitForImage()
-	{
-		// GdkPixbuf * gtk_clipboard_wait_for_image (GtkClipboard *clipboard);
-		auto p = gtk_clipboard_wait_for_image(gtkClipboard);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf waitForImage();
 	
 	/**
 	 * Requests the contents of the clipboard as rich text. This function
@@ -574,14 +374,7 @@ public class Clipboard : ObjectG
 	 * format =  return location for the format of the returned data
 	 * Returns: a newly-allocated binary block of data which must be freed with g_free(), or NULL if retrieving the selection data failed. (This could happen for various reasons, in particular if the clipboard was empty or if the contents of the clipboard could not be converted into text form.)
 	 */
-	public ubyte[] waitForRichText(TextBuffer buffer, out GdkAtom format)
-	{
-		// guint8 * gtk_clipboard_wait_for_rich_text (GtkClipboard *clipboard,  GtkTextBuffer *buffer,  GdkAtom *format,  gsize *length);
-		uint length;
-		auto p = gtk_clipboard_wait_for_rich_text(gtkClipboard, (buffer is null) ? null : buffer.getTextBufferStruct(), &format, &length);
-		return p[0 .. length];
-	}
-	
+	public ubyte[] waitForRichText(TextBuffer buffer, out GdkAtom format);
 	/**
 	 * Requests the contents of the clipboard as URIs. This function waits
 	 * for the data to be received using the main loop, so events,
@@ -589,11 +382,7 @@ public class Clipboard : ObjectG
 	 * Since 2.14
 	 * Returns: a newly-allocated NULL-terminated array of strings which must be freed with g_strfreev(), or NULL if retrieving the selection data failed. (This  could happen for various reasons, in particular  if the clipboard was empty or if the contents of  the clipboard could not be converted into URI form.)
 	 */
-	public string[] waitForUris()
-	{
-		// gchar ** gtk_clipboard_wait_for_uris (GtkClipboard *clipboard);
-		return Str.toStringArray(gtk_clipboard_wait_for_uris(gtkClipboard));
-	}
+	public string[] waitForUris();
 	
 	/**
 	 * Test to see if there is text available to be pasted
@@ -606,11 +395,7 @@ public class Clipboard : ObjectG
 	 * the actual text.
 	 * Returns: TRUE is there is text available, FALSE otherwise.
 	 */
-	public int waitIsTextAvailable()
-	{
-		// gboolean gtk_clipboard_wait_is_text_available  (GtkClipboard *clipboard);
-		return gtk_clipboard_wait_is_text_available(gtkClipboard);
-	}
+	public int waitIsTextAvailable();
 	
 	/**
 	 * Test to see if there is an image available to be pasted
@@ -624,11 +409,7 @@ public class Clipboard : ObjectG
 	 * Since 2.6
 	 * Returns: TRUE is there is an image available, FALSE otherwise.
 	 */
-	public int waitIsImageAvailable()
-	{
-		// gboolean gtk_clipboard_wait_is_image_available  (GtkClipboard *clipboard);
-		return gtk_clipboard_wait_is_image_available(gtkClipboard);
-	}
+	public int waitIsImageAvailable();
 	
 	/**
 	 * Test to see if there is rich text available to be pasted
@@ -644,11 +425,7 @@ public class Clipboard : ObjectG
 	 * buffer =  a GtkTextBuffer
 	 * Returns: TRUE is there is rich text available, FALSE otherwise.
 	 */
-	public int waitIsRichTextAvailable(TextBuffer buffer)
-	{
-		// gboolean gtk_clipboard_wait_is_rich_text_available  (GtkClipboard *clipboard,  GtkTextBuffer *buffer);
-		return gtk_clipboard_wait_is_rich_text_available(gtkClipboard, (buffer is null) ? null : buffer.getTextBufferStruct());
-	}
+	public int waitIsRichTextAvailable(TextBuffer buffer);
 	
 	/**
 	 * Test to see if there is a list of URIs available to be pasted
@@ -662,11 +439,7 @@ public class Clipboard : ObjectG
 	 * Since 2.14
 	 * Returns: TRUE is there is an URI list available, FALSE otherwise.
 	 */
-	public int waitIsUrisAvailable()
-	{
-		// gboolean gtk_clipboard_wait_is_uris_available  (GtkClipboard *clipboard);
-		return gtk_clipboard_wait_is_uris_available(gtkClipboard);
-	}
+	public int waitIsUrisAvailable();
 	
 	/**
 	 * Returns a list of targets that are present on the clipboard, or NULL
@@ -680,17 +453,7 @@ public class Clipboard : ObjectG
 	 *  stored here must be freed with g_free().
 	 * Returns: TRUE if any targets are present on the clipboard, otherwise FALSE.
 	 */
-	public int waitForTargets(out GdkAtom[] targets)
-	{
-		// gboolean gtk_clipboard_wait_for_targets (GtkClipboard *clipboard,  GdkAtom **targets,  gint *n_targets);
-		GdkAtom* outtargets = null;
-		int nTargets;
-		
-		auto p = gtk_clipboard_wait_for_targets(gtkClipboard, &outtargets, &nTargets);
-		
-		targets = outtargets[0 .. nTargets];
-		return p;
-	}
+	public int waitForTargets(out GdkAtom[] targets);
 	
 	/**
 	 * Checks if a clipboard supports pasting data of a given type. This
@@ -703,11 +466,7 @@ public class Clipboard : ObjectG
 	 * target =  A GdkAtom indicating which target to look for.
 	 * Returns: TRUE if the target is available, FALSE otherwise.
 	 */
-	public int waitIsTargetAvailable(GdkAtom target)
-	{
-		// gboolean gtk_clipboard_wait_is_target_available  (GtkClipboard *clipboard,  GdkAtom target);
-		return gtk_clipboard_wait_is_target_available(gtkClipboard, target);
-	}
+	public int waitIsTargetAvailable(GdkAtom target);
 	
 	/**
 	 * Hints that the clipboard data should be stored somewhere when the
@@ -720,11 +479,7 @@ public class Clipboard : ObjectG
 	 * targets =  array containing information about which forms should be stored
 	 *  or NULL to indicate that all forms should be stored.
 	 */
-	public void setCanStore(GtkTargetEntry[] targets)
-	{
-		// void gtk_clipboard_set_can_store (GtkClipboard *clipboard,  const GtkTargetEntry *targets,  gint n_targets);
-		gtk_clipboard_set_can_store(gtkClipboard, targets.ptr, targets.length);
-	}
+	public void setCanStore(GtkTargetEntry[] targets);
 	
 	/**
 	 * Stores the current clipboard data somewhere so that it will stay
@@ -740,9 +495,5 @@ public class Clipboard : ObjectG
 	 * associated with clipboard has changed.
 	 * Since 2.6
 	 */
-	public void store()
-	{
-		// void gtk_clipboard_store (GtkClipboard *clipboard);
-		gtk_clipboard_store(gtkClipboard);
-	}
+	public void store();
 }

@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstIterator.html
- * outPack = gstreamer
- * outFile = Iterator
- * strct   = GstIterator
- * realStrct=
- * ctorStrct=
- * clss    = Iterator
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_iterator_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GstIterator* -> Iterator
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Iterator;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -103,30 +50,16 @@ public class Iterator
 	protected GstIterator* gstIterator;
 	
 	
-	public GstIterator* getIteratorStruct()
-	{
-		return gstIterator;
-	}
+	public GstIterator* getIteratorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstIterator;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstIterator* gstIterator)
-	{
-		if(gstIterator is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstIterator = gstIterator;
-	}
+	public this (GstIterator* gstIterator);
 	
 	/**
 	 */
@@ -147,16 +80,7 @@ public class Iterator
 	 * free =  function to free the iterator
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (uint size, GType type, GMutex* lock, uint* masterCookie, GstIteratorNextFunction next, GstIteratorItemFunction item, GstIteratorResyncFunction resync, GstIteratorFreeFunction free)
-	{
-		// GstIterator* gst_iterator_new (guint size,  GType type,  GMutex *lock,  guint32 *master_cookie,  GstIteratorNextFunction next,  GstIteratorItemFunction item,  GstIteratorResyncFunction resync,  GstIteratorFreeFunction free);
-		auto p = gst_iterator_new(size, type, lock, masterCookie, next, item, resync, free);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_iterator_new(size, type, lock, masterCookie, next, item, resync, free)");
-		}
-		this(cast(GstIterator*) p);
-	}
+	public this (uint size, GType type, GMutex* lock, uint* masterCookie, GstIteratorNextFunction next, GstIteratorItemFunction item, GstIteratorResyncFunction resync, GstIteratorFreeFunction free);
 	
 	/**
 	 * Create a new iterator designed for iterating list.
@@ -170,16 +94,7 @@ public class Iterator
 	 * free =  function to call when the iterator is freed
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GType type, GMutex* lock, uint* masterCookie, GList** list, void* owner, GstIteratorItemFunction item, GstIteratorDisposeFunction free)
-	{
-		// GstIterator* gst_iterator_new_list (GType type,  GMutex *lock,  guint32 *master_cookie,  GList **list,  gpointer owner,  GstIteratorItemFunction item,  GstIteratorDisposeFunction free);
-		auto p = gst_iterator_new_list(type, lock, masterCookie, list, owner, item, free);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_iterator_new_list(type, lock, masterCookie, list, owner, item, free)");
-		}
-		this(cast(GstIterator*) p);
-	}
+	public this (GType type, GMutex* lock, uint* masterCookie, GList** list, void* owner, GstIteratorItemFunction item, GstIteratorDisposeFunction free);
 	
 	/**
 	 * Get the next item from the iterator. For iterators that return
@@ -189,32 +104,20 @@ public class Iterator
 	 * elem =  pointer to hold next element
 	 * Returns: The result of the iteration. Unref after usage if this isa refcounted object.MT safe.
 	 */
-	public GstIteratorResult next(void** elem)
-	{
-		// GstIteratorResult gst_iterator_next (GstIterator *it,  gpointer *elem);
-		return gst_iterator_next(gstIterator, elem);
-	}
+	public GstIteratorResult next(void** elem);
 	
 	/**
 	 * Resync the iterator. this function is mostly called
 	 * after gst_iterator_next() returned GST_ITERATOR_RESYNC.
 	 * MT safe.
 	 */
-	public void resync()
-	{
-		// void gst_iterator_resync (GstIterator *it);
-		gst_iterator_resync(gstIterator);
-	}
+	public void resync();
 	
 	/**
 	 * Free the iterator.
 	 * MT safe.
 	 */
-	public void free()
-	{
-		// void gst_iterator_free (GstIterator *it);
-		gst_iterator_free(gstIterator);
-	}
+	public void free();
 	
 	/**
 	 * Pushes other iterator onto it. All calls performed on it are
@@ -226,11 +129,7 @@ public class Iterator
 	 * Params:
 	 * other =  The GstIterator to push
 	 */
-	public void push(Iterator other)
-	{
-		// void gst_iterator_push (GstIterator *it,  GstIterator *other);
-		gst_iterator_push(gstIterator, (other is null) ? null : other.getIteratorStruct());
-	}
+	public void push(Iterator other);
 	
 	/**
 	 * Create a new iterator from an existing iterator. The new iterator
@@ -243,16 +142,7 @@ public class Iterator
 	 * userData =  user data passed to the compare function
 	 * Returns: a new GstIterator.MT safe.
 	 */
-	public Iterator filter(GCompareFunc func, void* userData)
-	{
-		// GstIterator* gst_iterator_filter (GstIterator *it,  GCompareFunc func,  gpointer user_data);
-		auto p = gst_iterator_filter(gstIterator, func, userData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Iterator(cast(GstIterator*) p);
-	}
+	public Iterator filter(GCompareFunc func, void* userData);
 	
 	/**
 	 * Folds func over the elements of iter. That is to say, proc will be called
@@ -273,11 +163,7 @@ public class Iterator
 	 * userData =  user data passed to the fold function
 	 * Returns: A GstIteratorResult, as described above.MT safe.
 	 */
-	public GstIteratorResult fold(GstIteratorFoldFunction func, GValue* ret, void* userData)
-	{
-		// GstIteratorResult gst_iterator_fold (GstIterator *it,  GstIteratorFoldFunction func,  GValue *ret,  gpointer user_data);
-		return gst_iterator_fold(gstIterator, func, ret, userData);
-	}
+	public GstIteratorResult fold(GstIteratorFoldFunction func, GValue* ret, void* userData);
 	
 	/**
 	 * Iterate over all element of it and call the given function func for
@@ -287,11 +173,7 @@ public class Iterator
 	 * userData =  user data passed to the function
 	 * Returns: the result call to gst_iterator_fold(). The iterator will not befreed.MT safe.
 	 */
-	public GstIteratorResult foreac(GFunc func, void* userData)
-	{
-		// GstIteratorResult gst_iterator_foreach (GstIterator *it,  GFunc func,  gpointer user_data);
-		return gst_iterator_foreach(gstIterator, func, userData);
-	}
+	public GstIteratorResult foreac(GFunc func, void* userData);
 	
 	/**
 	 * Find the first element in it that matches the compare function func.
@@ -304,9 +186,5 @@ public class Iterator
 	 * userData =  user data passed to the compare function
 	 * Returns: The element in the iterator that matches the comparefunction or NULL when no element matched.MT safe.
 	 */
-	public void* findCustom(GCompareFunc func, void* userData)
-	{
-		// gpointer gst_iterator_find_custom (GstIterator *it,  GCompareFunc func,  gpointer user_data);
-		return gst_iterator_find_custom(gstIterator, func, userData);
-	}
+	public void* findCustom(GCompareFunc func, void* userData);
 }

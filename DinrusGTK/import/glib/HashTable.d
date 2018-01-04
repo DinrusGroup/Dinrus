@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Hash-Tables.html
- * outPack = glib
- * outFile = HashTable
- * strct   = GHashTable
- * realStrct=
- * ctorStrct=
- * clss    = HashTable
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_hash_table_
- * omit structs:
- * omit prefixes:
- * 	- g_hash_table_iter_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.HashTableIter
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GHashTable* -> HashTable
- * 	- GHashTableIter* -> HashTableIter
- * 	- GList* -> ListG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.HashTable;
 
 public  import gtkD.gtkc.glibtypes;
@@ -101,30 +45,16 @@ public class HashTable
 	protected GHashTable* gHashTable;
 	
 	
-	public GHashTable* getHashTableStruct()
-	{
-		return gHashTable;
-	}
+	public GHashTable* getHashTableStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gHashTable;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GHashTable* gHashTable)
-	{
-		if(gHashTable is null)
-		{
-			this = null;
-			return;
-		}
-		this.gHashTable = gHashTable;
-	}
+	public this (GHashTable* gHashTable);
 	
 	/**
 	 */
@@ -146,16 +76,7 @@ public class HashTable
 	 *  fashion to g_direct_equal(), but without the overhead of a function call.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GHashFunc hashFunc, GEqualFunc keyEqualFunc)
-	{
-		// GHashTable* g_hash_table_new (GHashFunc hash_func,  GEqualFunc key_equal_func);
-		auto p = g_hash_table_new(hashFunc, keyEqualFunc);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_hash_table_new(hashFunc, keyEqualFunc)");
-		}
-		this(cast(GHashTable*) p);
-	}
+	public this (GHashFunc hashFunc, GEqualFunc keyEqualFunc);
 	
 	/**
 	 * Creates a new GHashTable like g_hash_table_new() with a reference count
@@ -172,16 +93,7 @@ public class HashTable
 	 *  you don't want to supply such a function.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GHashFunc hashFunc, GEqualFunc keyEqualFunc, GDestroyNotify keyDestroyFunc, GDestroyNotify valueDestroyFunc)
-	{
-		// GHashTable* g_hash_table_new_full (GHashFunc hash_func,  GEqualFunc key_equal_func,  GDestroyNotify key_destroy_func,  GDestroyNotify value_destroy_func);
-		auto p = g_hash_table_new_full(hashFunc, keyEqualFunc, keyDestroyFunc, valueDestroyFunc);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_hash_table_new_full(hashFunc, keyEqualFunc, keyDestroyFunc, valueDestroyFunc)");
-		}
-		this(cast(GHashTable*) p);
-	}
+	public this (GHashFunc hashFunc, GEqualFunc keyEqualFunc, GDestroyNotify keyDestroyFunc, GDestroyNotify valueDestroyFunc);
 	
 	/**
 	 * Inserts a new key and value into a GHashTable.
@@ -194,11 +106,7 @@ public class HashTable
 	 * key =  a key to insert.
 	 * value =  the value to associate with the key.
 	 */
-	public void insert(void* key, void* value)
-	{
-		// void g_hash_table_insert (GHashTable *hash_table,  gpointer key,  gpointer value);
-		g_hash_table_insert(gHashTable, key, value);
-	}
+	public void insert(void* key, void* value);
 	
 	/**
 	 * Inserts a new key and value into a GHashTable similar to
@@ -211,21 +119,13 @@ public class HashTable
 	 * key =  a key to insert.
 	 * value =  the value to associate with the key.
 	 */
-	public void replace(void* key, void* value)
-	{
-		// void g_hash_table_replace (GHashTable *hash_table,  gpointer key,  gpointer value);
-		g_hash_table_replace(gHashTable, key, value);
-	}
+	public void replace(void* key, void* value);
 	
 	/**
 	 * Returns the number of elements contained in the GHashTable.
 	 * Returns: the number of key/value pairs in the GHashTable.
 	 */
-	public uint size()
-	{
-		// guint g_hash_table_size (GHashTable *hash_table);
-		return g_hash_table_size(gHashTable);
-	}
+	public uint size();
 	
 	/**
 	 * Looks up a key in a GHashTable. Note that this function cannot
@@ -236,11 +136,7 @@ public class HashTable
 	 * key =  the key to look up.
 	 * Returns: the associated value, or NULL if the key is not found.
 	 */
-	public void* lookup(void* key)
-	{
-		// gpointer g_hash_table_lookup (GHashTable *hash_table,  gconstpointer key);
-		return g_hash_table_lookup(gHashTable, key);
-	}
+	public void* lookup(void* key);
 	
 	/**
 	 * Looks up a key in the GHashTable, returning the original key and the
@@ -255,11 +151,7 @@ public class HashTable
 	 * value =  return location for the value associated with the key, or NULL
 	 * Returns: TRUE if the key was found in the GHashTable.
 	 */
-	public int lookupExtended(void* lookupKey, void** origKey, void** value)
-	{
-		// gboolean g_hash_table_lookup_extended (GHashTable *hash_table,  gconstpointer lookup_key,  gpointer *orig_key,  gpointer *value);
-		return g_hash_table_lookup_extended(gHashTable, lookupKey, origKey, value);
-	}
+	public int lookupExtended(void* lookupKey, void** origKey, void** value);
 	
 	/**
 	 * Calls the given function for each of the key/value pairs in the
@@ -274,11 +166,7 @@ public class HashTable
 	 * func =  the function to call for each key/value pair.
 	 * userData =  user data to pass to the function.
 	 */
-	public void foreac(GHFunc func, void* userData)
-	{
-		// void g_hash_table_foreach (GHashTable *hash_table,  GHFunc func,  gpointer user_data);
-		g_hash_table_foreach(gHashTable, func, userData);
-	}
+	public void foreac(GHFunc func, void* userData);
 	
 	/**
 	 * Calls the given function for key/value pairs in the GHashTable until
@@ -299,11 +187,7 @@ public class HashTable
 	 * userData =  user data to pass to the function.
 	 * Returns: The value of the first key/value pair is returned, for whichfunc evaluates to TRUE. If no pair with the requested property is found,NULL is returned.
 	 */
-	public void* find(GHRFunc predicate, void* userData)
-	{
-		// gpointer g_hash_table_find (GHashTable *hash_table,  GHRFunc predicate,  gpointer user_data);
-		return g_hash_table_find(gHashTable, predicate, userData);
-	}
+	public void* find(GHRFunc predicate, void* userData);
 	
 	/**
 	 * Removes a key and its associated value from a GHashTable.
@@ -315,11 +199,7 @@ public class HashTable
 	 * key =  the key to remove.
 	 * Returns: TRUE if the key was found and removed from the GHashTable.
 	 */
-	public int remove(void* key)
-	{
-		// gboolean g_hash_table_remove (GHashTable *hash_table,  gconstpointer key);
-		return g_hash_table_remove(gHashTable, key);
-	}
+	public int remove(void* key);
 	
 	/**
 	 * Removes a key and its associated value from a GHashTable without
@@ -328,11 +208,7 @@ public class HashTable
 	 * key =  the key to remove.
 	 * Returns: TRUE if the key was found and removed from the GHashTable.
 	 */
-	public int steal(void* key)
-	{
-		// gboolean g_hash_table_steal (GHashTable *hash_table,  gconstpointer key);
-		return g_hash_table_steal(gHashTable, key);
-	}
+	public int steal(void* key);
 	
 	/**
 	 * Calls the given function for each key/value pair in the GHashTable.
@@ -347,11 +223,7 @@ public class HashTable
 	 * userData =  user data to pass to the function.
 	 * Returns: the number of key/value pairs removed.
 	 */
-	public uint foreachRemove(GHRFunc func, void* userData)
-	{
-		// guint g_hash_table_foreach_remove (GHashTable *hash_table,  GHRFunc func,  gpointer user_data);
-		return g_hash_table_foreach_remove(gHashTable, func, userData);
-	}
+	public uint foreachRemove(GHRFunc func, void* userData);
 	
 	/**
 	 * Calls the given function for each key/value pair in the GHashTable.
@@ -364,11 +236,7 @@ public class HashTable
 	 * userData =  user data to pass to the function.
 	 * Returns: the number of key/value pairs removed.
 	 */
-	public uint foreachSteal(GHRFunc func, void* userData)
-	{
-		// guint g_hash_table_foreach_steal (GHashTable *hash_table,  GHRFunc func,  gpointer user_data);
-		return g_hash_table_foreach_steal(gHashTable, func, userData);
-	}
+	public uint foreachSteal(GHRFunc func, void* userData);
 	
 	/**
 	 * Removes all keys and their associated values from a GHashTable.
@@ -378,22 +246,14 @@ public class HashTable
 	 * yourself.
 	 * Since 2.12
 	 */
-	public void removeAll()
-	{
-		// void g_hash_table_remove_all (GHashTable *hash_table);
-		g_hash_table_remove_all(gHashTable);
-	}
+	public void removeAll();
 	
 	/**
 	 * Removes all keys and their associated values from a GHashTable
 	 * without calling the key and value destroy functions.
 	 * Since 2.12
 	 */
-	public void stealAll()
-	{
-		// void g_hash_table_steal_all (GHashTable *hash_table);
-		g_hash_table_steal_all(gHashTable);
-	}
+	public void stealAll();
 	
 	/**
 	 * Retrieves every key inside hash_table. The returned data is valid
@@ -401,16 +261,7 @@ public class HashTable
 	 * Since 2.14
 	 * Returns: a GList containing all the keys inside the hash table. The content of the list is owned by the hash table and should not be modified or freed. Use g_list_free() when done using the list.
 	 */
-	public ListG getKeys()
-	{
-		// GList * g_hash_table_get_keys (GHashTable *hash_table);
-		auto p = g_hash_table_get_keys(gHashTable);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getKeys();
 	
 	/**
 	 * Retrieves every value inside hash_table. The returned data is
@@ -418,16 +269,7 @@ public class HashTable
 	 * Since 2.14
 	 * Returns: a GList containing all the values inside the hash table. The content of the list is owned by the hash table and should not be modified or freed. Use g_list_free() when done using the list.
 	 */
-	public ListG getValues()
-	{
-		// GList * g_hash_table_get_values (GHashTable *hash_table);
-		auto p = g_hash_table_get_values(gHashTable);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getValues();
 	
 	/**
 	 * Destroys all keys and values in the GHashTable and decrements its
@@ -437,11 +279,7 @@ public class HashTable
 	 * functions you supplied will be called on all keys and values during the
 	 * destruction phase.
 	 */
-	public void destroy()
-	{
-		// void g_hash_table_destroy (GHashTable *hash_table);
-		g_hash_table_destroy(gHashTable);
-	}
+	public void destroy();
 	
 	/**
 	 * Atomically increments the reference count of hash_table by one.
@@ -449,16 +287,7 @@ public class HashTable
 	 * Since 2.10
 	 * Returns: the passed in GHashTable.
 	 */
-	public HashTable doref()
-	{
-		// GHashTable* g_hash_table_ref (GHashTable *hash_table);
-		auto p = g_hash_table_ref(gHashTable);
-		if(p is null)
-		{
-			return null;
-		}
-		return new HashTable(cast(GHashTable*) p);
-	}
+	public HashTable doref();
 	
 	/**
 	 * Atomically decrements the reference count of hash_table by one.
@@ -467,11 +296,7 @@ public class HashTable
 	 * This function is MT-safe and may be called from any thread.
 	 * Since 2.10
 	 */
-	public void unref()
-	{
-		// void g_hash_table_unref (GHashTable *hash_table);
-		g_hash_table_unref(gHashTable);
-	}
+	public void unref();
 	
 	/**
 	 * Compares two gpointer arguments and returns TRUE if they are equal.
@@ -482,11 +307,7 @@ public class HashTable
 	 * v2 =  a key to compare with v1.
 	 * Returns: TRUE if the two keys match.
 	 */
-	public static int gDirectEqual(void* v1, void* v2)
-	{
-		// gboolean g_direct_equal (gconstpointer v1,  gconstpointer v2);
-		return g_direct_equal(v1, v2);
-	}
+	public static int gDirectEqual(void* v1, void* v2);
 	
 	/**
 	 * Converts a gpointer to a hash value.
@@ -496,11 +317,7 @@ public class HashTable
 	 * v =  a gpointer key
 	 * Returns: a hash value corresponding to the key.
 	 */
-	public static uint gDirectHash(void* v)
-	{
-		// guint g_direct_hash (gconstpointer v);
-		return g_direct_hash(v);
-	}
+	public static uint gDirectHash(void* v);
 	
 	/**
 	 * Compares the two gint values being pointed to and returns
@@ -512,11 +329,7 @@ public class HashTable
 	 * v2 =  a pointer to a gint key to compare with v1.
 	 * Returns: TRUE if the two keys match.
 	 */
-	public static int gIntEqual(void* v1, void* v2)
-	{
-		// gboolean g_int_equal (gconstpointer v1,  gconstpointer v2);
-		return g_int_equal(v1, v2);
-	}
+	public static int gIntEqual(void* v1, void* v2);
 	
 	/**
 	 * Converts a pointer to a gint to a hash value.
@@ -526,11 +339,7 @@ public class HashTable
 	 * v =  a pointer to a gint key
 	 * Returns: a hash value corresponding to the key.
 	 */
-	public static uint gIntHash(void* v)
-	{
-		// guint g_int_hash (gconstpointer v);
-		return g_int_hash(v);
-	}
+	public static uint gIntHash(void* v);
 	
 	/**
 	 * Compares the two gint64 values being pointed to and returns
@@ -543,11 +352,7 @@ public class HashTable
 	 * v2 =  a pointer to a gint64 key to compare with v1.
 	 * Returns: TRUE if the two keys match.
 	 */
-	public static int gInt64_Equal(void* v1, void* v2)
-	{
-		// gboolean g_int64_equal (gconstpointer v1,  gconstpointer v2);
-		return g_int64_equal(v1, v2);
-	}
+	public static int gInt64_Equal(void* v1, void* v2);
 	
 	/**
 	 * Converts a pointer to a gint64 to a hash value.
@@ -558,11 +363,7 @@ public class HashTable
 	 * v =  a pointer to a gint64 key
 	 * Returns: a hash value corresponding to the key.
 	 */
-	public static uint gInt64_Hash(void* v)
-	{
-		// guint g_int64_hash (gconstpointer v);
-		return g_int64_hash(v);
-	}
+	public static uint gInt64_Hash(void* v);
 	
 	/**
 	 * Compares the two gdouble values being pointed to and returns
@@ -575,11 +376,7 @@ public class HashTable
 	 * v2 =  a pointer to a gdouble key to compare with v1.
 	 * Returns: TRUE if the two keys match.
 	 */
-	public static int gDoubleEqual(void* v1, void* v2)
-	{
-		// gboolean g_double_equal (gconstpointer v1,  gconstpointer v2);
-		return g_double_equal(v1, v2);
-	}
+	public static int gDoubleEqual(void* v1, void* v2);
 	
 	/**
 	 * Converts a pointer to a gdouble to a hash value.
@@ -590,11 +387,7 @@ public class HashTable
 	 * v =  a pointer to a gdouble key
 	 * Returns: a hash value corresponding to the key.
 	 */
-	public static uint gDoubleHash(void* v)
-	{
-		// guint g_double_hash (gconstpointer v);
-		return g_double_hash(v);
-	}
+	public static uint gDoubleHash(void* v);
 	
 	/**
 	 * Compares two strings for byte-by-byte equality and returns TRUE
@@ -608,11 +401,7 @@ public class HashTable
 	 * v2 =  a key to compare with v1
 	 * Returns: TRUE if the two keys match
 	 */
-	public static int gStrEqual(void* v1, void* v2)
-	{
-		// gboolean g_str_equal (gconstpointer v1,  gconstpointer v2);
-		return g_str_equal(v1, v2);
-	}
+	public static int gStrEqual(void* v1, void* v2);
 	
 	/**
 	 * Converts a string to a hash value.
@@ -622,9 +411,5 @@ public class HashTable
 	 * v =  a string key
 	 * Returns: a hash value corresponding to the key
 	 */
-	public static uint gStrHash(void* v)
-	{
-		// guint g_str_hash (gconstpointer v);
-		return g_str_hash(v);
-	}
+	public static uint gStrHash(void* v);
 }

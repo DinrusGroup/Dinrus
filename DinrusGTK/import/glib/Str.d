@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-String-Utility-Functions.html
- * outPack = glib
- * outFile = Str
- * strct   =
- * realStrct=
- * ctorStrct=
- * clss    = Str
- * interf  =
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  =
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- std.c.stdio
- * 	- gtkD.glib.StringG
- * 	- std.c.string
- * structWrap:
- * 	- GString* -> StringG
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Str;
 
@@ -113,222 +60,44 @@ public class Str
 	 * Convert C-style 0 terminated string s to char[] string.
 	 * copied from phobos
 	 */
-	public static string toString(char *s)
-	{
-		version(D_Version2)
-		return s ? s[0 .. strlen(s)].idup : cast(string)null;
-		else
-		return s ? s[0 .. strlen(s)].dup : cast(string)null;
-	}
+	public static string toString(char *s);
 
 	/*********************************
 	 * Convert array of chars s[] to a C-style 0 terminated string.
 	 * copied from phobos
 	 */
-	public static char* toStringz(string s)
-	in
-	{
-	}
-	out (result)
-	{
-		//	if (result)
-		//	{
-			//		// TODO this one fails in some case???
-			//		assert(strlen(result) == s.length);
-			//		assert(memcmp(result, s, s.length) == 0);
-		//	}
-	}
-	body
-	{
-		if ( s is null ) return null;
-		char[] copy;
-
-		if (s.length == 0)
-		{
-			copy = "\0".dup;
-		}
-		else
-		{
-			// Need to make a copy
-			copy = new char[s.length + 1];
-			copy[0..s.length] = s.dup;
-			copy[s.length] = 0;
-		}
-
-		return copy.ptr;
-	}
+	public static char* toStringz(string s);
 
 	/** */
-	public static char** toStringzArray(string[] args)
-	{
-		if ( args is null )
-		{
-			return null;
-		}
-		char** argv = (new char*[args.length]).ptr;
-		int argc = 0;
-		foreach (string p; args)
-		{
-			argv[argc++] = cast(char*)(p.dup~'\0');
-		}
-		argv[argc] = null;
-
-		return argv;
-	}
+	public static char** toStringzArray(string[] args);
 
 	/** */
-	public static string[] toStringArray(char** args)
-	{
-		if ( args is null )
-		{
-			return null;
-		}
-		string[] argv;
-
-		char* arg = args[0];
-		int i=0;
-		while( (arg) != null && i<10)
-		{
-			argv ~= toString(arg);
-			++i;
-			arg = args[i];
-		}
-
-		return argv;
-	}
+	public static string[] toStringArray(char** args);
 
 	/** */
-	public static string toString(bool b)
-	{
-		return b ? "true" : "false";
-	}
+	public static string toString(bool b);
 
 	/** */
-	public static char[] toString(char c)
-	{
-		char[] result = new char[2];
-		result[0] = c;
-		result[1] = 0;
-		return result[0 .. 1];
-	}
+	public static char[] toString(char c);
 
 	/** */
-	public static string toString(ubyte ub)  { return toString(cast(uint) ub); } /// ditto
+	public static string toString(ubyte ub) ;
 	/** */
-	public static string toString(ushort us) { return toString(cast(uint) us); } /// ditto
-
-	/** */
-	public static string toString(uint u)
-	{
-		char[uint.sizeof * 3] buffer = void;
-		int ndigits;
-		char c;
-		string result;
-
-		ndigits = 0;
-		if (u < 10)
-		{
-			version(D_Version2)
-			result = digits[u .. u + 1].idup;
-			else
-			// Avoid storage allocation for simple stuff
-			result = digits[u .. u + 1];
-		}
-		else
-		{
-			while (u)
-			{
-				c = cast(char)((u % 10) + '0');
-				u /= 10;
-				ndigits++;
-				buffer[buffer.length - ndigits] = c;
-			}
-
-			version(D_Version2)
-			{
-				//result = new char[ndigits];
-				result = buffer[buffer.length - ndigits .. buffer.length].idup;
-			}
-			else
-			{
-				result = new char[ndigits];
-				result[] = buffer[buffer.length - ndigits .. buffer.length];
-			}
-		}
-		return result;
-	}
+	public static string toString(ushort us);
 
 	/** */
-	public static string toString(ulong u)
-	{
-		char[ulong.sizeof * 3] buffer;
-		int ndigits;
-		char c;
-		string result;
-
-		if (u < 0x1_0000_0000)
-		return toString(cast(uint)u);
-
-		ndigits = 0;
-		while (u)
-		{
-			c = cast(char)((u % 10) + '0');
-			u /= 10;
-			ndigits++;
-			buffer[buffer.length - ndigits] = c;
-		}
-
-		version(D_Version2)
-		{
-			//result = new char[ndigits];
-			result = buffer[buffer.length - ndigits .. buffer.length].idup;
-		}
-		else
-		{
-			result = new char[ndigits];
-			result[] = buffer[buffer.length - ndigits .. buffer.length];
-		}
-		return result;
-	}
+	public static string toString(uint u);
 
 	/** */
-	public static string toString(byte b)  { return toString(cast(int) b); } /// ditto
-	/** */
-	public static string toString(short s) { return toString(cast(int) s); } /// ditto
+	public static string toString(ulong u);
 
 	/** */
-	public static string toString(int i)
-	{
-		char[1 + int.sizeof * 3] buffer;
-		char c;
-		string result;
+	public static string toString(byte b) ;
+	/** */
+	public static string toString(short s) ;
 
-		if (i >= 0)
-		return toString(cast(uint)i);
-
-		uint u = -i;
-		int ndigits = 1;
-		while (u)
-		{
-			c = cast(char)((u % 10) + '0');
-			u /= 10;
-			buffer[buffer.length - ndigits] = c;
-			ndigits++;
-		}
-		buffer[buffer.length - ndigits] = '-';
-
-		version(D_Version2)
-		{
-			//result = new char[ndigits];
-			result = buffer[buffer.length - ndigits .. buffer.length].idup;
-		}
-		else
-		{
-			result = new char[ndigits];
-			result[] = buffer[buffer.length - ndigits .. buffer.length];
-		}
-		return result;
-	}
+	/** */
+	public static string toString(int i);
 
 	/**
 	 */
@@ -341,11 +110,7 @@ public class Str
 	 * str =  the string to duplicate
 	 * Returns: a newly-allocated copy of str
 	 */
-	public static string strdup(string str)
-	{
-		// gchar* g_strdup (const gchar *str);
-		return Str.toString(g_strdup(Str.toStringz(str)));
-	}
+	public static string strdup(string str);
 
 	/**
 	 * Duplicates the first n bytes of a string, returning a newly-allocated
@@ -361,11 +126,7 @@ public class Str
 	 * n =  the maximum number of bytes to copy from str
 	 * Returns: a newly-allocated buffer containing the first n bytes  of str, nul-terminated
 	 */
-	public static string strndup(string str, uint n)
-	{
-		// gchar* g_strndup (const gchar *str,  gsize n);
-		return Str.toString(g_strndup(Str.toStringz(str), n));
-	}
+	public static string strndup(string str, uint n);
 
 	/**
 	 * Copies NULL-terminated array of strings. The copy is a deep copy;
@@ -376,11 +137,7 @@ public class Str
 	 * strArray =  NULL-terminated array of strings.
 	 * Returns: a new NULL-terminated array of strings.
 	 */
-	public static string[] strdupv(string[] strArray)
-	{
-		// gchar** g_strdupv (gchar **str_array);
-		return Str.toStringArray(g_strdupv(Str.toStringzArray(strArray)));
-	}
+	public static string[] strdupv(string[] strArray);
 
 	/**
 	 * Creates a new string length bytes long filled with fill_char.
@@ -390,11 +147,7 @@ public class Str
 	 * fillChar =  the byte to fill the string with
 	 * Returns: a newly-allocated string filled the fill_char
 	 */
-	public static string strnfill(uint length, char fillChar)
-	{
-		// gchar* g_strnfill (gsize length,  gchar fill_char);
-		return Str.toString(g_strnfill(length, fillChar));
-	}
+	public static string strnfill(uint length, char fillChar);
 
 	/**
 	 * Copies a nul-terminated string into the dest buffer, include the
@@ -406,11 +159,7 @@ public class Str
 	 * src =  source string.
 	 * Returns: a pointer to trailing nul byte.
 	 */
-	public static string stpcpy(string dest, string src)
-	{
-		// gchar* g_stpcpy (gchar *dest,  const char *src);
-		return Str.toString(g_stpcpy(Str.toStringz(dest), Str.toStringz(src)));
-	}
+	public static string stpcpy(string dest, string src);
 
 	/**
 	 * Searches the string haystack for the first occurrence
@@ -424,11 +173,7 @@ public class Str
 	 * needle =  the string to search for.
 	 * Returns: a pointer to the found occurrence, or NULL if not found.
 	 */
-	public static string strstrLen(string haystack, int haystackLen, string needle)
-	{
-		// gchar * g_strstr_len (const gchar *haystack,  gssize haystack_len,  const gchar *needle);
-		return Str.toString(g_strstr_len(Str.toStringz(haystack), haystackLen, Str.toStringz(needle)));
-	}
+	public static string strstrLen(string haystack, int haystackLen, string needle);
 
 	/**
 	 * Searches the string haystack for the last occurrence
@@ -438,11 +183,7 @@ public class Str
 	 * needle =  the nul-terminated string to search for.
 	 * Returns: a pointer to the found occurrence, or NULL if not found.
 	 */
-	public static string strrstr(string haystack, string needle)
-	{
-		// gchar * g_strrstr (const gchar *haystack,  const gchar *needle);
-		return Str.toString(g_strrstr(Str.toStringz(haystack), Str.toStringz(needle)));
-	}
+	public static string strrstr(string haystack, string needle);
 
 	/**
 	 * Searches the string haystack for the last occurrence
@@ -454,11 +195,7 @@ public class Str
 	 * needle =  the nul-terminated string to search for.
 	 * Returns: a pointer to the found occurrence, or NULL if not found.
 	 */
-	public static string strrstrLen(string haystack, int haystackLen, string needle)
-	{
-		// gchar * g_strrstr_len (const gchar *haystack,  gssize haystack_len,  const gchar *needle);
-		return Str.toString(g_strrstr_len(Str.toStringz(haystack), haystackLen, Str.toStringz(needle)));
-	}
+	public static string strrstrLen(string haystack, int haystackLen, string needle);
 
 	/**
 	 * Looks whether the string str begins with prefix.
@@ -468,11 +205,7 @@ public class Str
 	 * prefix =  the nul-terminated prefix to look for.
 	 * Returns: TRUE if str begins with prefix, FALSE otherwise.
 	 */
-	public static int strHasPrefix(string str, string prefix)
-	{
-		// gboolean g_str_has_prefix (const gchar *str,  const gchar *prefix);
-		return g_str_has_prefix(Str.toStringz(str), Str.toStringz(prefix));
-	}
+	public static int strHasPrefix(string str, string prefix);
 
 	/**
 	 * Looks whether the string str ends with suffix.
@@ -482,11 +215,7 @@ public class Str
 	 * suffix =  the nul-terminated suffix to look for.
 	 * Returns: TRUE if str end with suffix, FALSE otherwise.
 	 */
-	public static int strHasSuffix(string str, string suffix)
-	{
-		// gboolean g_str_has_suffix (const gchar *str,  const gchar *suffix);
-		return g_str_has_suffix(Str.toStringz(str), Str.toStringz(suffix));
-	}
+	public static int strHasSuffix(string str, string suffix);
 
 	/**
 	 * Compares str1 and str2 like strcmp(). Handles NULL
@@ -497,11 +226,7 @@ public class Str
 	 * str2 =  another C string or NULL
 	 * Returns: -1, 0 or 1, if str1 is <, == or > than str2.
 	 */
-	public static int strcmp0(string str1, string str2)
-	{
-		// int g_strcmp0 (const char *str1,  const char *str2);
-		return g_strcmp0(Str.toStringz(str1), Str.toStringz(str2));
-	}
+	public static int strcmp0(string str1, string str2);
 
 	/**
 	 * Portability wrapper that calls strlcpy() on systems which have it,
@@ -523,11 +248,7 @@ public class Str
 	 * destSize =  length of dest in bytes
 	 * Returns: length of src
 	 */
-	public static uint strlcpy(string dest, string src, uint destSize)
-	{
-		// gsize g_strlcpy (gchar *dest,  const gchar *src,  gsize dest_size);
-		return g_strlcpy(Str.toStringz(dest), Str.toStringz(src), destSize);
-	}
+	public static uint strlcpy(string dest, string src, uint destSize);
 
 	/**
 	 * Portability wrapper that calls strlcat() on systems which have it,
@@ -546,11 +267,7 @@ public class Str
 	 *  inside dest)
 	 * Returns:size of attempted result, which isMIN (dest_size, strlen (original dest)) + strlen (src),so if retval >= dest_size, truncation occurred.NoteCaveat: this is supposedly a more secure alternative to strcat() or strncat(), but for real security g_strconcat() is harder to mess up.
 	 */
-	public static uint strlcat(string dest, string src, uint destSize)
-	{
-		// gsize g_strlcat (gchar *dest,  const gchar *src,  gsize dest_size);
-		return g_strlcat(Str.toStringz(dest), Str.toStringz(src), destSize);
-	}
+	public static uint strlcat(string dest, string src, uint destSize);
 
 	/**
 	 * Similar to the standard C vsprintf() function but safer, since it
@@ -565,11 +282,7 @@ public class Str
 	 * args =  the list of parameters to insert into the format string
 	 * Returns: a newly-allocated string holding the result
 	 */
-	public static string strdupVprintf(string format, void* args)
-	{
-		// gchar* g_strdup_vprintf (const gchar *format,  va_list args);
-		return Str.toString(g_strdup_vprintf(Str.toStringz(format), args));
-	}
+	public static string strdupVprintf(string format, void* args);
 
 	/**
 	 * An implementation of the standard vprintf() function which supports
@@ -581,11 +294,7 @@ public class Str
 	 * args =  the list of arguments to insert in the output.
 	 * Returns: the number of bytes printed.
 	 */
-	public static int vprintf(string format, void* args)
-	{
-		// gint g_vprintf (gchar const *format,  va_list args);
-		return g_vprintf(Str.toStringz(format), args);
-	}
+	public static int vprintf(string format, void* args);
 
 	/**
 	 * An implementation of the standard fprintf() function which supports
@@ -598,11 +307,7 @@ public class Str
 	 * args =  the list of arguments to insert in the output.
 	 * Returns: the number of bytes printed.
 	 */
-	public static int vfprintf(FILE* file, string format, void* args)
-	{
-		// gint g_vfprintf (FILE *file,  gchar const *format,  va_list args);
-		return g_vfprintf(cast(void*)file, Str.toStringz(format), args);
-	}
+	public static int vfprintf(FILE* file, string format, void* args);
 
 	/**
 	 * An implementation of the standard vsprintf() function which supports
@@ -615,11 +320,7 @@ public class Str
 	 * args =  the list of arguments to insert in the output.
 	 * Returns: the number of bytes printed.
 	 */
-	public static int vsprintf(string string, string format, void* args)
-	{
-		// gint g_vsprintf (gchar *string,  gchar const *format,  va_list args);
-		return g_vsprintf(Str.toStringz(string), Str.toStringz(format), args);
-	}
+	public static int vsprintf(string string, string format, void* args);
 
 	/**
 	 * A safer form of the standard vsprintf() function. The output is guaranteed
@@ -644,11 +345,7 @@ public class Str
 	 * args =  the list of arguments to insert in the output.
 	 * Returns: the number of bytes which would be produced if the buffer  was large enough.
 	 */
-	public static int vsnprintf(string string, uint n, string format, void* args)
-	{
-		// gint g_vsnprintf (gchar *string,  gulong n,  gchar const *format,  va_list args);
-		return g_vsnprintf(Str.toStringz(string), n, Str.toStringz(format), args);
-	}
+	public static int vsnprintf(string string, uint n, string format, void* args);
 
 	/**
 	 * An implementation of the GNU vasprintf() function which supports
@@ -664,16 +361,7 @@ public class Str
 	 * args =  the list of arguments to insert in the output.
 	 * Returns: the number of bytes printed.
 	 */
-	public static int vasprintf(out string string, string format, void* args)
-	{
-		// gint g_vasprintf (gchar **string,  gchar const *format,  va_list args);
-		char* outstring = null;
-
-		auto p = g_vasprintf(&outstring, Str.toStringz(format), args);
-
-		string = Str.toString(outstring);
-		return p;
-	}
+	public static int vasprintf(out string string, string format, void* args);
 
 	/**
 	 * Calculates the maximum space needed to store the output of the sprintf()
@@ -683,11 +371,7 @@ public class Str
 	 * args = the parameters to be inserted into the format string.
 	 * Returns:the maximum space needed to store the formatted string.
 	 */
-	public static uint printfStringUpperBound(string format, void* args)
-	{
-		// gsize g_printf_string_upper_bound (const gchar *format,  va_list args);
-		return g_printf_string_upper_bound(Str.toStringz(format), args);
-	}
+	public static uint printfStringUpperBound(string format, void* args);
 
 	/**
 	 * Determines whether a character is alphanumeric.
@@ -701,11 +385,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII alphanumeric character
 	 */
-	public static int asciiIsalnum(char c)
-	{
-		// gboolean g_ascii_isalnum (gchar c);
-		return g_ascii_isalnum(c);
-	}
+	public static int asciiIsalnum(char c);
 
 	/**
 	 * Determines whether a character is alphabetic (i.e. a letter).
@@ -719,11 +399,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII alphabetic character
 	 */
-	public static int asciiIsalpha(char c)
-	{
-		// gboolean g_ascii_isalpha (gchar c);
-		return g_ascii_isalpha(c);
-	}
+	public static int asciiIsalpha(char c);
 
 	/**
 	 * Determines whether a character is a control character.
@@ -737,11 +413,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII control character.
 	 */
-	public static int asciiIscntrl(char c)
-	{
-		// gboolean g_ascii_iscntrl (gchar c);
-		return g_ascii_iscntrl(c);
-	}
+	public static int asciiIscntrl(char c);
 
 	/**
 	 * Determines whether a character is digit (0-9).
@@ -753,11 +425,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII digit.
 	 */
-	public static int asciiIsdigit(char c)
-	{
-		// gboolean g_ascii_isdigit (gchar c);
-		return g_ascii_isdigit(c);
-	}
+	public static int asciiIsdigit(char c);
 
 	/**
 	 * Determines whether a character is a printing character and not a space.
@@ -771,11 +439,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII printing character other than space.
 	 */
-	public static int asciiIsgraph(char c)
-	{
-		// gboolean g_ascii_isgraph (gchar c);
-		return g_ascii_isgraph(c);
-	}
+	public static int asciiIsgraph(char c);
 
 	/**
 	 * Determines whether a character is an ASCII lower case letter.
@@ -789,11 +453,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII lower case letter
 	 */
-	public static int asciiIslower(char c)
-	{
-		// gboolean g_ascii_islower (gchar c);
-		return g_ascii_islower(c);
-	}
+	public static int asciiIslower(char c);
 
 	/**
 	 * Determines whether a character is a printing character.
@@ -807,11 +467,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII printing character.
 	 */
-	public static int asciiIsprint(char c)
-	{
-		// gboolean g_ascii_isprint (gchar c);
-		return g_ascii_isprint(c);
-	}
+	public static int asciiIsprint(char c);
 
 	/**
 	 * Determines whether a character is a punctuation character.
@@ -825,11 +481,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII punctuation character.
 	 */
-	public static int asciiIspunct(char c)
-	{
-		// gboolean g_ascii_ispunct (gchar c);
-		return g_ascii_ispunct(c);
-	}
+	public static int asciiIspunct(char c);
 
 	/**
 	 * Determines whether a character is a white-space character.
@@ -843,11 +495,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII white-space character
 	 */
-	public static int asciiIsspace(char c)
-	{
-		// gboolean g_ascii_isspace (gchar c);
-		return g_ascii_isspace(c);
-	}
+	public static int asciiIsspace(char c);
 
 	/**
 	 * Determines whether a character is an ASCII upper case letter.
@@ -861,11 +509,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII upper case letter
 	 */
-	public static int asciiIsupper(char c)
-	{
-		// gboolean g_ascii_isupper (gchar c);
-		return g_ascii_isupper(c);
-	}
+	public static int asciiIsupper(char c);
 
 	/**
 	 * Determines whether a character is a hexadecimal-digit character.
@@ -877,11 +521,7 @@ public class Str
 	 * c = any character
 	 * Returns:%TRUE if c is an ASCII hexadecimal-digit character.
 	 */
-	public static int asciiIsxdigit(char c)
-	{
-		// gboolean g_ascii_isxdigit (gchar c);
-		return g_ascii_isxdigit(c);
-	}
+	public static int asciiIsxdigit(char c);
 
 	/**
 	 * Determines the numeric value of a character as a decimal
@@ -892,11 +532,7 @@ public class Str
 	 * c =  an ASCII character.
 	 * Returns: If c is a decimal digit (according tog_ascii_isdigit()), its numeric value. Otherwise, -1.
 	 */
-	public static int asciiDigitValue(char c)
-	{
-		// gint g_ascii_digit_value (gchar c);
-		return g_ascii_digit_value(c);
-	}
+	public static int asciiDigitValue(char c);
 
 	/**
 	 * Determines the numeric value of a character as a hexidecimal
@@ -907,11 +543,7 @@ public class Str
 	 * c =  an ASCII character.
 	 * Returns: If c is a hex digit (according tog_ascii_isxdigit()), its numeric value. Otherwise, -1.
 	 */
-	public static int asciiXdigitValue(char c)
-	{
-		// gint g_ascii_xdigit_value (gchar c);
-		return g_ascii_xdigit_value(c);
-	}
+	public static int asciiXdigitValue(char c);
 
 	/**
 	 * Compare two strings, ignoring the case of ASCII characters.
@@ -930,11 +562,7 @@ public class Str
 	 * s2 =  string to compare with s1.
 	 * Returns: 0 if the strings match, a negative value if s1 < s2,  or a positive value if s1 > s2.
 	 */
-	public static int asciiStrcasecmp(string s1, string s2)
-	{
-		// gint g_ascii_strcasecmp (const gchar *s1,  const gchar *s2);
-		return g_ascii_strcasecmp(Str.toStringz(s1), Str.toStringz(s2));
-	}
+	public static int asciiStrcasecmp(string s1, string s2);
 
 	/**
 	 * Compare s1 and s2, ignoring the case of ASCII characters and any
@@ -951,11 +579,7 @@ public class Str
 	 * n =  number of characters to compare.
 	 * Returns: 0 if the strings match, a negative value if s1 < s2,  or a positive value if s1 > s2.
 	 */
-	public static int asciiStrncasecmp(string s1, string s2, uint n)
-	{
-		// gint g_ascii_strncasecmp (const gchar *s1,  const gchar *s2,  gsize n);
-		return g_ascii_strncasecmp(Str.toStringz(s1), Str.toStringz(s2), n);
-	}
+	public static int asciiStrncasecmp(string s1, string s2, uint n);
 
 	/**
 	 * Converts all lower case ASCII letters to upper case ASCII letters.
@@ -964,11 +588,7 @@ public class Str
 	 * len =  length of str in bytes, or -1 if str is nul-terminated.
 	 * Returns: a newly allocated string, with all the lower case characters in str converted to upper case, with semantics that exactly match g_ascii_toupper(). (Note that this is unlike the old g_strup(), which modified the string in place.)
 	 */
-	public static string asciiStrup(string str, int len)
-	{
-		// gchar* g_ascii_strup (const gchar *str,  gssize len);
-		return Str.toString(g_ascii_strup(Str.toStringz(str), len));
-	}
+	public static string asciiStrup(string str, int len);
 
 	/**
 	 * Converts all upper case ASCII letters to lower case ASCII letters.
@@ -977,11 +597,7 @@ public class Str
 	 * len =  length of str in bytes, or -1 if str is nul-terminated.
 	 * Returns: a newly-allocated string, with all the upper case characters in str converted to lower case, with semantics that exactly match g_ascii_tolower(). (Note that this is unlike the old g_strdown(), which modified the string in place.)
 	 */
-	public static string asciiStrdown(string str, int len)
-	{
-		// gchar* g_ascii_strdown (const gchar *str,  gssize len);
-		return Str.toString(g_ascii_strdown(Str.toStringz(str), len));
-	}
+	public static string asciiStrdown(string str, int len);
 
 	/**
 	 * Convert a character to ASCII lower case.
@@ -996,11 +612,7 @@ public class Str
 	 * c =  any character.
 	 * Returns: the result of converting c to lower case. If c is not an ASCII upper case letter, c is returned unchanged.
 	 */
-	public static char asciiTolower(char c)
-	{
-		// gchar g_ascii_tolower (gchar c);
-		return g_ascii_tolower(c);
-	}
+	public static char asciiTolower(char c);
 
 	/**
 	 * Convert a character to ASCII upper case.
@@ -1015,10 +627,7 @@ public class Str
 	 * c =  any character.
 	 * Returns: the result of converting c to upper case. If c is not an ASCII lower case letter, c is returned unchanged.
 	 */
-	public static char asciiToupper(char c)
-	{
-		// gchar g_ascii_toupper (gchar c);
-		return g_ascii_toupper(c);
+	public static char asciiToupper(char c);
 	}
 
 	/**
@@ -1027,16 +636,7 @@ public class Str
 	 * string =  a GString
 	 * Returns: passed-in string pointer, with all the lower case characters converted to upper case in place, with semantics that exactly match g_ascii_toupper().
 	 */
-	public static StringG stringAsciiUp(StringG string)
-	{
-		// GString* g_string_ascii_up (GString *string);
-		auto p = g_string_ascii_up((string is null) ? null : string.getStringGStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public static StringG stringAsciiUp(StringG string);
 
 	/**
 	 * Converts all upper case ASCII letters to lower case ASCII letters.
@@ -1044,16 +644,7 @@ public class Str
 	 * string =  a GString
 	 * Returns: passed-in string pointer, with all the upper case characters converted to lower case in place, with semantics that exactly match g_ascii_tolower().
 	 */
-	public static StringG stringAsciiDown(StringG string)
-	{
-		// GString* g_string_ascii_down (GString *string);
-		auto p = g_string_ascii_down((string is null) ? null : string.getStringGStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public static StringG stringAsciiDown(StringG string);
 
 	/**
 	 * Warning
@@ -1064,11 +655,7 @@ public class Str
 	 * string =  the string to convert.
 	 * Returns: the string
 	 */
-	public static string strup(string string)
-	{
-		// gchar* g_strup (gchar *string);
-		return Str.toString(g_strup(Str.toStringz(string)));
-	}
+	public static string strup(string string);
 
 	/**
 	 * Warning
@@ -1080,11 +667,7 @@ public class Str
 	 * string =  the string to convert.
 	 * Returns: the string
 	 */
-	public static string strdown(string string)
-	{
-		// gchar* g_strdown (gchar *string);
-		return Str.toString(g_strdown(Str.toStringz(string)));
-	}
+	public static string strdown(string string);
 
 	/**
 	 * Warning
@@ -1097,11 +680,7 @@ public class Str
 	 * s2 =  a string to compare with s1.
 	 * Returns: 0 if the strings match, a negative value if s1 < s2,  or a positive value if s1 > s2.
 	 */
-	public static int strcasecmp(string s1, string s2)
-	{
-		// gint g_strcasecmp (const gchar *s1,  const gchar *s2);
-		return g_strcasecmp(Str.toStringz(s1), Str.toStringz(s2));
-	}
+	public static int strcasecmp(string s1, string s2);
 
 	/**
 	 * Warning
@@ -1127,11 +706,7 @@ public class Str
 	 * n =  the maximum number of characters to compare.
 	 * Returns: 0 if the strings match, a negative value if s1 < s2,  or a positive value if s1 > s2.
 	 */
-	public static int strncasecmp(string s1, string s2, uint n)
-	{
-		// gint g_strncasecmp (const gchar *s1,  const gchar *s2,  guint n);
-		return g_strncasecmp(Str.toStringz(s1), Str.toStringz(s2), n);
-	}
+	public static int strncasecmp(string s1, string s2, uint n);
 
 	/**
 	 * Reverses all of the bytes in a string. For example,
@@ -1144,11 +719,7 @@ public class Str
 	 * string =  the string to reverse
 	 * Returns: the same pointer passed in as string
 	 */
-	public static string strreverse(string string)
-	{
-		// gchar* g_strreverse (gchar *string);
-		return Str.toString(g_strreverse(Str.toStringz(string)));
-	}
+	public static string strreverse(string string);
 
 	/**
 	 * Converts a string to a gint64 value.
@@ -1173,16 +744,7 @@ public class Str
 	 * base =  to be used for the conversion, 2..36 or 0
 	 * Returns: the gint64 value or zero on error.
 	 */
-	public static long asciiStrtoll(string nptr, out string endptr, uint base)
-	{
-		// gint64 g_ascii_strtoll (const gchar *nptr,  gchar **endptr,  guint base);
-		char* outendptr = null;
-
-		auto p = g_ascii_strtoll(Str.toStringz(nptr), &outendptr, base);
-
-		endptr = Str.toString(outendptr);
-		return p;
-	}
+	public static long asciiStrtoll(string nptr, out string endptr, uint base);
 
 	/**
 	 * Converts a string to a guint64 value.
@@ -1207,16 +769,7 @@ public class Str
 	 * base =  to be used for the conversion, 2..36 or 0
 	 * Returns: the guint64 value or zero on error.
 	 */
-	public static ulong asciiStrtoull(string nptr, out string endptr, uint base)
-	{
-		// guint64 g_ascii_strtoull (const gchar *nptr,  gchar **endptr,  guint base);
-		char* outendptr = null;
-
-		auto p = g_ascii_strtoull(Str.toStringz(nptr), &outendptr, base);
-
-		endptr = Str.toString(outendptr);
-		return p;
-	}
+	public static ulong asciiStrtoull(string nptr, out string endptr, uint base);
 
 	/**
 	 * Converts a string to a gdouble value.
@@ -1243,16 +796,7 @@ public class Str
 	 *  the last character used in the conversion.
 	 * Returns: the gdouble value.
 	 */
-	public static double asciiStrtod(string nptr, out string endptr)
-	{
-		// gdouble g_ascii_strtod (const gchar *nptr,  gchar **endptr);
-		char* outendptr = null;
-
-		auto p = g_ascii_strtod(Str.toStringz(nptr), &outendptr);
-
-		endptr = Str.toString(outendptr);
-		return p;
-	}
+	public static double asciiStrtod(string nptr, out string endptr);
 
 	/**
 	 * Converts a gdouble to a string, using the '.' as
@@ -1268,11 +812,7 @@ public class Str
 	 * d =  The gdouble to convert
 	 * Returns: The pointer to the buffer with the converted string.
 	 */
-	public static string asciiDtostr(string buffer, int bufLen, double d)
-	{
-		// gchar * g_ascii_dtostr (gchar *buffer,  gint buf_len,  gdouble d);
-		return Str.toString(g_ascii_dtostr(Str.toStringz(buffer), bufLen, d));
-	}
+	public static string asciiDtostr(string buffer, int bufLen, double d);
 
 	/**
 	 * Converts a gdouble to a string, using the '.' as
@@ -1289,11 +829,7 @@ public class Str
 	 * d =  The gdouble to convert
 	 * Returns: The pointer to the buffer with the converted string.
 	 */
-	public static string asciiFormatd(string buffer, int bufLen, string format, double d)
-	{
-		// gchar * g_ascii_formatd (gchar *buffer,  gint buf_len,  const gchar *format,  gdouble d);
-		return Str.toString(g_ascii_formatd(Str.toStringz(buffer), bufLen, Str.toStringz(format), d));
-	}
+	public static string asciiFormatd(string buffer, int bufLen, string format, double d);
 
 	/**
 	 * Converts a string to a gdouble value.
@@ -1312,16 +848,7 @@ public class Str
 	 *  the last character used in the conversion.
 	 * Returns: the gdouble value.
 	 */
-	public static double strtod(string nptr, out string endptr)
-	{
-		// gdouble g_strtod (const gchar *nptr,  gchar **endptr);
-		char* outendptr = null;
-
-		auto p = g_strtod(Str.toStringz(nptr), &outendptr);
-
-		endptr = Str.toString(outendptr);
-		return p;
-	}
+	public static double strtod(string nptr, out string endptr);
 
 	/**
 	 * Removes leading whitespace from a string, by moving the rest of the
@@ -1333,11 +860,7 @@ public class Str
 	 * string = a string to remove the leading whitespace from.
 	 * Returns:@string.
 	 */
-	public static string strchug(string string)
-	{
-		// gchar* g_strchug (gchar *string);
-		return Str.toString(g_strchug(Str.toStringz(string)));
-	}
+	public static string strchug(string string);
 
 	/**
 	 * Removes trailing whitespace from a string.
@@ -1348,11 +871,7 @@ public class Str
 	 * string = a string to remove the trailing whitespace from.
 	 * Returns:@string.
 	 */
-	public static string strchomp(string string)
-	{
-		// gchar* g_strchomp (gchar *string);
-		return Str.toString(g_strchomp(Str.toStringz(string)));
-	}
+	public static string strchomp(string string);
 
 	/**
 	 * Converts any delimiter characters in string to new_delimiter.
@@ -1367,11 +886,7 @@ public class Str
 	 * newDelimiter = the new delimiter character.
 	 * Returns:@string.
 	 */
-	public static string strdelimit(string string, string delimiters, char newDelimiter)
-	{
-		// gchar* g_strdelimit (gchar *string,  const gchar *delimiters,  gchar new_delimiter);
-		return Str.toString(g_strdelimit(Str.toStringz(string), Str.toStringz(delimiters), newDelimiter));
-	}
+	public static string strdelimit(string string, string delimiters, char newDelimiter);
 
 	/**
 	 * Escapes the special characters '\b', '\f', '\n', '\r', '\t', '\' and
@@ -1386,11 +901,7 @@ public class Str
 	 * exceptions = a string of characters not to escape in source.
 	 * Returns:a newly-allocated copy of source with certaincharacters escaped. See above.
 	 */
-	public static string strescape(string source, string exceptions)
-	{
-		// gchar* g_strescape (const gchar *source,  const gchar *exceptions);
-		return Str.toString(g_strescape(Str.toStringz(source), Str.toStringz(exceptions)));
-	}
+	public static string strescape(string source, string exceptions);
 
 	/**
 	 * Replaces all escaped characters with their one byte equivalent. It
@@ -1399,11 +910,7 @@ public class Str
 	 * source = a string to compress.
 	 * Returns:a newly-allocated copy of source with all escaped character compressed.
 	 */
-	public static string strcompress(string source)
-	{
-		// gchar* g_strcompress (const gchar *source);
-		return Str.toString(g_strcompress(Str.toStringz(source)));
-	}
+	public static string strcompress(string source);
 
 	/**
 	 * For each character in string, if the character is not in valid_chars,
@@ -1416,11 +923,7 @@ public class Str
 	 * substitutor = replacement character for disallowed bytes.
 	 * Returns:@string.
 	 */
-	public static string strcanon(string string, string validChars, char substitutor)
-	{
-		// gchar* g_strcanon (gchar *string,  const gchar *valid_chars,  gchar substitutor);
-		return Str.toString(g_strcanon(Str.toStringz(string), Str.toStringz(validChars), substitutor));
-	}
+	public static string strcanon(string string, string validChars, char substitutor);
 
 	/**
 	 * Splits a string into a maximum of max_tokens pieces, using the given
@@ -1441,11 +944,7 @@ public class Str
 	 *  less than 1, the string is split completely.
 	 * Returns: a newly-allocated NULL-terminated array of strings. Use  g_strfreev() to free it.
 	 */
-	public static string[] strsplit(string string, string delimiter, int maxTokens)
-	{
-		// gchar** g_strsplit (const gchar *string,  const gchar *delimiter,  gint max_tokens);
-		return Str.toStringArray(g_strsplit(Str.toStringz(string), Str.toStringz(delimiter), maxTokens));
-	}
+	public static string[] strsplit(string string, string delimiter, int maxTokens);
 
 	/**
 	 * Splits string into a number of tokens not containing any of the characters
@@ -1474,11 +973,7 @@ public class Str
 	 *  If this is less than 1, the string is split completely
 	 * Returns: a newly-allocated NULL-terminated array of strings. Use  g_strfreev() to free it.
 	 */
-	public static string[] strsplitSet(string string, string delimiters, int maxTokens)
-	{
-		// gchar ** g_strsplit_set (const gchar *string,  const gchar *delimiters,  gint max_tokens);
-		return Str.toStringArray(g_strsplit_set(Str.toStringz(string), Str.toStringz(delimiters), maxTokens));
-	}
+	public static string[] strsplitSet(string string, string delimiters, int maxTokens);
 
 	/**
 	 * Frees a NULL-terminated array of strings, and the array itself.
@@ -1486,11 +981,7 @@ public class Str
 	 * Params:
 	 * strArray =  a NULL-terminated array of strings to free.
 	 */
-	public static void strfreev(string[] strArray)
-	{
-		// void g_strfreev (gchar **str_array);
-		g_strfreev(Str.toStringzArray(strArray));
-	}
+	public static void strfreev(string[] strArray);
 
 	/**
 	 * Joins a number of strings together to form one long string, with the
@@ -1501,11 +992,7 @@ public class Str
 	 * strArray =  a NULL-terminated array of strings to join
 	 * Returns: a newly-allocated string containing all of the strings joined together, with separator between them
 	 */
-	public static string strjoinv(string separator, string[] strArray)
-	{
-		// gchar* g_strjoinv (const gchar *separator,  gchar **str_array);
-		return Str.toString(g_strjoinv(Str.toStringz(separator), Str.toStringzArray(strArray)));
-	}
+	public static string strjoinv(string separator, string[] strArray);
 
 	/**
 	 * Returns the length of the given NULL-terminated
@@ -1515,11 +1002,7 @@ public class Str
 	 * strArray =  a NULL-terminated array of strings.
 	 * Returns: length of str_array.
 	 */
-	public static uint strvLength(string[] strArray)
-	{
-		// guint g_strv_length (gchar **str_array);
-		return g_strv_length(Str.toStringzArray(strArray));
-	}
+	public static uint strvLength(string[] strArray);
 
 	/**
 	 * Returns a string corresponding to the given error code, e.g.
@@ -1531,11 +1014,7 @@ public class Str
 	 *  documentation
 	 * Returns: a UTF-8 string describing the error code. If the error code  is unknown, it returns "unknown error (<code>)". The string  can only be used until the next call to g_strerror()
 	 */
-	public static string strerror(int errnum)
-	{
-		// const gchar* g_strerror (gint errnum);
-		return Str.toString(g_strerror(errnum));
-	}
+	public static string strerror(int errnum);
 
 	/**
 	 * Returns a string describing the given signal, e.g. "Segmentation fault".
@@ -1547,9 +1026,5 @@ public class Str
 	 *  documentation
 	 * Returns: a UTF-8 string describing the signal. If the signal is unknown, it returns "unknown signal (<signum>)". The string can only be  used until the next call to g_strsignal()
 	 */
-	public static string strsignal(int signum)
-	{
-		// const gchar* g_strsignal (gint signum);
-		return Str.toString(g_strsignal(signum));
-	}
+	public static string strsignal(int signum);
 }

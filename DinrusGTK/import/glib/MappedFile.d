@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = MappedFile
- * strct   = GMappedFile
- * realStrct=
- * ctorStrct=
- * clss    = MappedFile
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_mapped_file_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * 	- GMappedFile* -> MappedFile
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.MappedFile;
 
 public  import gtkD.gtkc.glibtypes;
@@ -95,30 +41,15 @@ public class MappedFile
 	protected GMappedFile* gMappedFile;
 	
 	
-	public GMappedFile* getMappedFileStruct()
-	{
-		return gMappedFile;
-	}
-	
+	public GMappedFile* getMappedFileStruct();
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMappedFile;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMappedFile* gMappedFile)
-	{
-		if(gMappedFile is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMappedFile = gMappedFile;
-	}
+	public this (GMappedFile* gMappedFile);
 	
 	/**
 	 */
@@ -140,24 +71,7 @@ public class MappedFile
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string filename, int writable)
-	{
-		// GMappedFile * g_mapped_file_new (const gchar *filename,  gboolean writable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_mapped_file_new(Str.toStringz(filename), writable, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mapped_file_new(Str.toStringz(filename), writable, &err)");
-		}
-		this(cast(GMappedFile*) p);
-	}
+	public this (string filename, int writable);
 	
 	/**
 	 * Increments the reference count of file by one. It is safe to call
@@ -165,16 +79,7 @@ public class MappedFile
 	 * Since 2.22
 	 * Returns: the passed in GMappedFile.
 	 */
-	public MappedFile doref()
-	{
-		// GMappedFile * g_mapped_file_ref (GMappedFile *file);
-		auto p = g_mapped_file_ref(gMappedFile);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MappedFile(cast(GMappedFile*) p);
-	}
+	public MappedFile doref();
 	
 	/**
 	 * Decrements the reference count of file by one. If the reference count
@@ -182,11 +87,7 @@ public class MappedFile
 	 * It is safe to call this function from any thread.
 	 * Since 2.22
 	 */
-	public void unref()
-	{
-		// void g_mapped_file_unref (GMappedFile *file);
-		g_mapped_file_unref(gMappedFile);
-	}
+	public void unref();
 	
 	/**
 	 * Warning
@@ -195,22 +96,14 @@ public class MappedFile
 	 * exactly the same as g_mapped_file_unref().
 	 * Since 2.8
 	 */
-	public void free()
-	{
-		// void g_mapped_file_free (GMappedFile *file);
-		g_mapped_file_free(gMappedFile);
-	}
+	public void free();
 	
 	/**
 	 * Returns the length of the contents of a GMappedFile.
 	 * Since 2.8
 	 * Returns: the length of the contents of file.
 	 */
-	public uint getLength()
-	{
-		// gsize g_mapped_file_get_length (GMappedFile *file);
-		return g_mapped_file_get_length(gMappedFile);
-	}
+	public uint getLength();
 	
 	/**
 	 * Returns the contents of a GMappedFile.
@@ -219,9 +112,5 @@ public class MappedFile
 	 * Since 2.8
 	 * Returns: the contents of file.
 	 */
-	public string getContents()
-	{
-		// gchar * g_mapped_file_get_contents (GMappedFile *file);
-		return Str.toString(g_mapped_file_get_contents(gMappedFile));
-	}
+	public string getContents();
 }

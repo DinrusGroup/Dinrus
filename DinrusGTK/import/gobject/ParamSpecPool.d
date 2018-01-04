@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gobject
- * outFile = ParamSpecPool
- * strct   = GParamSpecPool
- * realStrct=
- * ctorStrct=
- * clss    = ParamSpecPool
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_param_spec_pool_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.ParamSpec
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * 	- GParamSpec* -> ParamSpec
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gobject.ParamSpecPool;
 
 public  import gtkD.gtkc.gobjecttypes;
@@ -85,30 +30,16 @@ public class ParamSpecPool
 	protected GParamSpecPool* gParamSpecPool;
 	
 	
-	public GParamSpecPool* getParamSpecPoolStruct()
-	{
-		return gParamSpecPool;
-	}
+	public GParamSpecPool* getParamSpecPoolStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gParamSpecPool;
-	}
-	
+	protected void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GParamSpecPool* gParamSpecPool)
-	{
-		if(gParamSpecPool is null)
-		{
-			this = null;
-			return;
-		}
-		this.gParamSpecPool = gParamSpecPool;
-	}
+	public this (GParamSpecPool* gParamSpecPool);
 	
 	/**
 	 */
@@ -123,16 +54,7 @@ public class ParamSpecPool
 	 * typePrefixing =  Whether the pool will support type-prefixed property names.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int typePrefixing)
-	{
-		// GParamSpecPool* g_param_spec_pool_new (gboolean type_prefixing);
-		auto p = g_param_spec_pool_new(typePrefixing);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_param_spec_pool_new(typePrefixing)");
-		}
-		this(cast(GParamSpecPool*) p);
-	}
+	public this (int typePrefixing);
 	
 	/**
 	 * Inserts a GParamSpec in the pool.
@@ -140,22 +62,14 @@ public class ParamSpecPool
 	 * pspec =  the GParamSpec to insert
 	 * ownerType =  a GType identifying the owner of pspec
 	 */
-	public void insert(ParamSpec pspec, GType ownerType)
-	{
-		// void g_param_spec_pool_insert (GParamSpecPool *pool,  GParamSpec *pspec,  GType owner_type);
-		g_param_spec_pool_insert(gParamSpecPool, (pspec is null) ? null : pspec.getParamSpecStruct(), ownerType);
-	}
+	public void insert(ParamSpec pspec, GType ownerType);
 	
 	/**
 	 * Removes a GParamSpec from the pool.
 	 * Params:
 	 * pspec =  the GParamSpec to remove
 	 */
-	public void remove(ParamSpec pspec)
-	{
-		// void g_param_spec_pool_remove (GParamSpecPool *pool,  GParamSpec *pspec);
-		g_param_spec_pool_remove(gParamSpecPool, (pspec is null) ? null : pspec.getParamSpecStruct());
-	}
+	public void remove(ParamSpec pspec);
 	
 	/**
 	 * Looks up a GParamSpec in the pool.
@@ -166,16 +80,7 @@ public class ParamSpecPool
 	 *  owned by an ancestor of owner_type.
 	 * Returns: The found GParamSpec, or NULL if no matching GParamSpec was found.
 	 */
-	public ParamSpec lookup(string paramName, GType ownerType, int walkAncestors)
-	{
-		// GParamSpec* g_param_spec_pool_lookup (GParamSpecPool *pool,  const gchar *param_name,  GType owner_type,  gboolean walk_ancestors);
-		auto p = g_param_spec_pool_lookup(gParamSpecPool, Str.toStringz(paramName), ownerType, walkAncestors);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public ParamSpec lookup(string paramName, GType ownerType, int walkAncestors);
 	
 	/**
 	 * Gets an array of all GParamSpecs owned by owner_type in
@@ -184,24 +89,7 @@ public class ParamSpecPool
 	 * ownerType =  the owner to look for
 	 * Returns: a newly allocated array containing pointers to all GParamSpecs owned by owner_type in the pool
 	 */
-	public ParamSpec[] list(GType ownerType)
-	{
-		// GParamSpec** g_param_spec_pool_list (GParamSpecPool *pool,  GType owner_type,  guint *n_pspecs_p);
-		uint nPspecsP;
-		auto p = g_param_spec_pool_list(gParamSpecPool, ownerType, &nPspecsP);
-		if(p is null)
-		{
-			return null;
-		}
-		
-		ParamSpec[] arr = new ParamSpec[nPspecsP];
-		for(int i = 0; i < nPspecsP; i++)
-		{
-			arr[i] = new ParamSpec(cast(GParamSpec*) p[i]);
-		}
-		
-		return arr;
-	}
+	public ParamSpec[] list(GType ownerType);
 	
 	/**
 	 * Gets an GList of all GParamSpecs owned by owner_type in
@@ -210,14 +98,5 @@ public class ParamSpecPool
 	 * ownerType =  the owner to look for
 	 * Returns: a GList of all GParamSpecs owned by owner_type in the poolGParamSpecs.
 	 */
-	public ListG listOwned(GType ownerType)
-	{
-		// GList* g_param_spec_pool_list_owned (GParamSpecPool *pool,  GType owner_type);
-		auto p = g_param_spec_pool_list_owned(gParamSpecPool, ownerType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG listOwned(GType ownerType);
 }

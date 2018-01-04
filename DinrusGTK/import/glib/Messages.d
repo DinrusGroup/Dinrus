@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Warnings-and-Assertions.html
- * outPack = glib
- * outFile = Messages
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Messages
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Messages;
 
 public  import gtkD.gtkc.glibtypes;
@@ -91,11 +40,7 @@ public class Messages
 	 * func = the new print handler.
 	 * Returns:the old print handler.
 	 */
-	public static GPrintFunc setPrintHandler(GPrintFunc func)
-	{
-		// GPrintFunc g_set_print_handler (GPrintFunc func);
-		return g_set_print_handler(func);
-	}
+	public static GPrintFunc setPrintHandler(GPrintFunc func);
 	
 	/**
 	 * Sets the handler for printing error messages.
@@ -107,11 +52,7 @@ public class Messages
 	 * func = the new error message handler.
 	 * Returns:the old error message handler.
 	 */
-	public static GPrintFunc setPrinterrHandler(GPrintFunc func)
-	{
-		// GPrintFunc g_set_printerr_handler (GPrintFunc func);
-		return g_set_printerr_handler(func);
-	}
+	public static GPrintFunc setPrinterrHandler(GPrintFunc func);
 	
 	/**
 	 * Prompts the user with [E]xit, [H]alt, show [S]tack trace or [P]roceed.
@@ -151,11 +92,7 @@ public class Messages
 		 * If prg_name is NULL, g_get_prgname() is called to get the program name
 		 * (which will work correctly if gdk_init() or gtk_init() has been called).
 		 */
-		public static void onErrorQuery(string prgName)
-		{
-			// void g_on_error_query (const gchar *prg_name);
-			g_on_error_query(Str.toStringz(prgName));
-		}
+		public static void onErrorQuery(string prgName);
 		
 		/**
 		 * Invokes gdb, which attaches to the current process and shows a stack trace.
@@ -166,9 +103,5 @@ public class Messages
 		 * If prg_name is NULL, g_get_prgname() is called to get the program name
 		 * (which will work correctly if gdk_init() or gtk_init() has been called).
 		 */
-		public static void onErrorStackTrace(string prgName)
-		{
-			// void g_on_error_stack_trace (const gchar *prg_name);
-			g_on_error_stack_trace(Str.toStringz(prgName));
-		}
+		public static void onErrorStackTrace(string prgName);
 }

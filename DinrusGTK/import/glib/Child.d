@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Child
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Child
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_child_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Child;
 
 public  import gtkD.gtkc.glibtypes;
@@ -156,16 +104,7 @@ public class Child
 	 * Windows a handle for a process (which doesn't have to be a child).
 	 * Returns: the newly-created child watch source
 	 */
-	public static Source watchSourceNew(GPid pid)
-	{
-		// GSource * g_child_watch_source_new (GPid pid);
-		auto p = g_child_watch_source_new(pid);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public static Source watchSourceNew(GPid pid);
 	
 	/**
 	 * Sets a function to be called when the child indicated by pid
@@ -189,11 +128,7 @@ public class Child
 	 * data =  data to pass to function
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint watchAdd(GPid pid, GChildWatchFunc funct, void* data)
-	{
-		// guint g_child_watch_add (GPid pid,  GChildWatchFunc function,  gpointer data);
-		return g_child_watch_add(pid, funct, data);
-	}
+	public static uint watchAdd(GPid pid, GChildWatchFunc funct, void* data);
 	
 	/**
 	 * Sets a function to be called when the child indicated by pid
@@ -220,9 +155,5 @@ public class Child
 	 * notify =  function to call when the idle is removed, or NULL
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint watchAddFull(int priority, GPid pid, GChildWatchFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_child_watch_add_full (gint priority,  GPid pid,  GChildWatchFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_child_watch_add_full(priority, pid, funct, data, notify);
-	}
+	public static uint watchAddFull(int priority, GPid pid, GChildWatchFunc funct, void* data, GDestroyNotify notify);
 }

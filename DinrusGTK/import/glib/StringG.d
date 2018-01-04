@@ -77,30 +77,16 @@ public class StringG
 	protected GString* gString;
 	
 	
-	public GString* getStringGStruct()
-	{
-		return gString;
-	}
+	public GString* getStringGStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gString;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GString* gString)
-	{
-		if(gString is null)
-		{
-			this = null;
-			return;
-		}
-		this.gString = gString;
-	}
+	public this (GString* gString);
 	
 	/**
 	 */
@@ -111,16 +97,7 @@ public class StringG
 	 * init =  the initial text to copy into the string
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string init)
-	{
-		// GString* g_string_new (const gchar *init);
-		auto p = g_string_new(Str.toStringz(init));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_string_new(Str.toStringz(init))");
-		}
-		this(cast(GString*) p);
-	}
+	public this (string init);
 	
 	/**
 	 * Creates a new GString with len bytes of the init buffer.
@@ -134,16 +111,7 @@ public class StringG
 	 * len =  length of init to use
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string init, int len)
-	{
-		// GString* g_string_new_len (const gchar *init,  gssize len);
-		auto p = g_string_new_len(Str.toStringz(init), len);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_string_new_len(Str.toStringz(init), len)");
-		}
-		this(cast(GString*) p);
-	}
+	public this (string init, int len);
 	
 	/**
 	 * Creates a new GString, with enough space for dfl_size
@@ -155,16 +123,7 @@ public class StringG
 	 *  hold the string
 	 * Returns: the new GString
 	 */
-	public static StringG sizedNew(uint dflSize)
-	{
-		// GString* g_string_sized_new (gsize dfl_size);
-		auto p = g_string_sized_new(dflSize);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public static StringG sizedNew(uint dflSize);
 	
 	/**
 	 * Copies the bytes from a string into a GString,
@@ -177,16 +136,7 @@ public class StringG
 	 * rval =  the string to copy into string
 	 * Returns: string
 	 */
-	public StringG assign(string rval)
-	{
-		// GString* g_string_assign (GString *string,  const gchar *rval);
-		auto p = g_string_assign(gString, Str.toStringz(rval));
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG assign(string rval);
 	
 	/**
 	 * Writes a formatted string into a GString.
@@ -198,11 +148,7 @@ public class StringG
 	 * format =  the string format. See the printf() documentation
 	 * args =  the parameters to insert into the format string
 	 */
-	public void vprintf(string format, void* args)
-	{
-		// void g_string_vprintf (GString *string,  const gchar *format,  va_list args);
-		g_string_vprintf(gString, Str.toStringz(format), args);
-	}
+	public void vprintf(string format, void* args);
 	
 	/**
 	 * Appends a formatted string onto the end of a GString.
@@ -215,11 +161,7 @@ public class StringG
 	 * format =  the string format. See the printf() documentation
 	 * args =  the list of arguments to insert in the output
 	 */
-	public void appendVprintf(string format, void* args)
-	{
-		// void g_string_append_vprintf (GString *string,  const gchar *format,  va_list args);
-		g_string_append_vprintf(gString, Str.toStringz(format), args);
-	}
+	public void appendVprintf(string format, void* args);
 	
 	/**
 	 * Adds a string onto the end of a GString, expanding
@@ -229,16 +171,7 @@ public class StringG
 	 * val =  the string to append onto the end of string
 	 * Returns: string
 	 */
-	public StringG append(string val)
-	{
-		// GString* g_string_append (GString *string,  const gchar *val);
-		auto p = g_string_append(gString, Str.toStringz(val));
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG append(string val);
 	
 	/**
 	 * Adds a byte onto the end of a GString, expanding
@@ -247,16 +180,7 @@ public class StringG
 	 * c =  the byte to append onto the end of string
 	 * Returns: string
 	 */
-	public StringG appendC(char c)
-	{
-		// GString* g_string_append_c (GString *string,  gchar c);
-		auto p = g_string_append_c(gString, c);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG appendC(char c);
 	
 	/**
 	 * Converts a Unicode character into UTF-8, and appends it
@@ -265,16 +189,7 @@ public class StringG
 	 * wc =  a Unicode character
 	 * Returns: string
 	 */
-	public StringG appendUnichar(gunichar wc)
-	{
-		// GString* g_string_append_unichar (GString *string,  gunichar wc);
-		auto p = g_string_append_unichar(gString, wc);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG appendUnichar(gunichar wc);
 	
 	/**
 	 * Appends len bytes of val to string. Because len is
@@ -289,16 +204,7 @@ public class StringG
 	 * len =  number of bytes of val to use
 	 * Returns: string
 	 */
-	public StringG appendLen(string val, int len)
-	{
-		// GString* g_string_append_len (GString *string,  const gchar *val,  gssize len);
-		auto p = g_string_append_len(gString, Str.toStringz(val), len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG appendLen(string val, int len);
 	
 	/**
 	 * Appends unescaped to string, escaped any characters that
@@ -311,16 +217,7 @@ public class StringG
 	 * allowUtf8 =  set TRUE if the escaped string may include UTF8 characters
 	 * Returns: string
 	 */
-	public StringG appendUriEscaped(string unescaped, string reservedCharsAllowed, int allowUtf8)
-	{
-		// GString * g_string_append_uri_escaped (GString *string,  const char *unescaped,  const char *reserved_chars_allowed,  gboolean allow_utf8);
-		auto p = g_string_append_uri_escaped(gString, Str.toStringz(unescaped), Str.toStringz(reservedCharsAllowed), allowUtf8);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG appendUriEscaped(string unescaped, string reservedCharsAllowed, int allowUtf8);
 	
 	/**
 	 * Adds a string on to the start of a GString,
@@ -330,16 +227,7 @@ public class StringG
 	 * val =  the string to prepend on the start of string
 	 * Returns: string
 	 */
-	public StringG prepend(string val)
-	{
-		// GString* g_string_prepend (GString *string,  const gchar *val);
-		auto p = g_string_prepend(gString, Str.toStringz(val));
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG prepend(string val);
 	
 	/**
 	 * Adds a byte onto the start of a GString,
@@ -348,16 +236,7 @@ public class StringG
 	 * c =  the byte to prepend on the start of the GString
 	 * Returns: string
 	 */
-	public StringG prependC(char c)
-	{
-		// GString* g_string_prepend_c (GString *string,  gchar c);
-		auto p = g_string_prepend_c(gString, c);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG prependC(char c);
 	
 	/**
 	 * Converts a Unicode character into UTF-8, and prepends it
@@ -366,16 +245,7 @@ public class StringG
 	 * wc =  a Unicode character
 	 * Returns: string
 	 */
-	public StringG prependUnichar(gunichar wc)
-	{
-		// GString* g_string_prepend_unichar (GString *string,  gunichar wc);
-		auto p = g_string_prepend_unichar(gString, wc);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG prependUnichar(gunichar wc);
 	
 	/**
 	 * Prepends len bytes of val to string.
@@ -390,16 +260,7 @@ public class StringG
 	 * len =  number of bytes in val to prepend
 	 * Returns: string
 	 */
-	public StringG prependLen(string val, int len)
-	{
-		// GString* g_string_prepend_len (GString *string,  const gchar *val,  gssize len);
-		auto p = g_string_prepend_len(gString, Str.toStringz(val), len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG prependLen(string val, int len);
 	
 	/**
 	 * Inserts a copy of a string into a GString,
@@ -410,16 +271,7 @@ public class StringG
 	 * val =  the string to insert
 	 * Returns: string
 	 */
-	public StringG insert(int pos, string val)
-	{
-		// GString* g_string_insert (GString *string,  gssize pos,  const gchar *val);
-		auto p = g_string_insert(gString, pos, Str.toStringz(val));
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG insert(int pos, string val);
 	
 	/**
 	 * Inserts a byte into a GString, expanding it if necessary.
@@ -428,16 +280,7 @@ public class StringG
 	 * c =  the byte to insert
 	 * Returns: string
 	 */
-	public StringG insertC(int pos, char c)
-	{
-		// GString* g_string_insert_c (GString *string,  gssize pos,  gchar c);
-		auto p = g_string_insert_c(gString, pos, c);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG insertC(int pos, char c);
 	
 	/**
 	 * Converts a Unicode character into UTF-8, and insert it
@@ -448,16 +291,7 @@ public class StringG
 	 * wc =  a Unicode character
 	 * Returns: string
 	 */
-	public StringG insertUnichar(int pos, gunichar wc)
-	{
-		// GString* g_string_insert_unichar (GString *string,  gssize pos,  gunichar wc);
-		auto p = g_string_insert_unichar(gString, pos, wc);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG insertUnichar(int pos, gunichar wc);
 	
 	/**
 	 * Inserts len bytes of val into string at pos.
@@ -475,16 +309,7 @@ public class StringG
 	 * len =  number of bytes of val to insert
 	 * Returns: string
 	 */
-	public StringG insertLen(int pos, string val, int len)
-	{
-		// GString* g_string_insert_len (GString *string,  gssize pos,  const gchar *val,  gssize len);
-		auto p = g_string_insert_len(gString, pos, Str.toStringz(val), len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG insertLen(int pos, string val, int len);
 	
 	/**
 	 * Overwrites part of a string, lengthening it if necessary.
@@ -495,16 +320,7 @@ public class StringG
 	 * val =  the string that will overwrite the string starting at pos
 	 * Returns: string
 	 */
-	public StringG overwrite(uint pos, string val)
-	{
-		// GString* g_string_overwrite (GString *string,  gsize pos,  const gchar *val);
-		auto p = g_string_overwrite(gString, pos, Str.toStringz(val));
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG overwrite(uint pos, string val);
 	
 	/**
 	 * Overwrites part of a string, lengthening it if necessary.
@@ -517,16 +333,7 @@ public class StringG
 	 * len =  the number of bytes to write from val
 	 * Returns: string
 	 */
-	public StringG overwriteLen(uint pos, string val, int len)
-	{
-		// GString* g_string_overwrite_len (GString *string,  gsize pos,  const gchar *val,  gssize len);
-		auto p = g_string_overwrite_len(gString, pos, Str.toStringz(val), len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG overwriteLen(uint pos, string val, int len);
 	
 	/**
 	 * Removes len bytes from a GString, starting at position pos.
@@ -537,16 +344,7 @@ public class StringG
 	 *  following bytes
 	 * Returns: string
 	 */
-	public StringG erase(int pos, int len)
-	{
-		// GString* g_string_erase (GString *string,  gssize pos,  gssize len);
-		auto p = g_string_erase(gString, pos, len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG erase(int pos, int len);
 	
 	/**
 	 * Cuts off the end of the GString, leaving the first len bytes.
@@ -554,16 +352,7 @@ public class StringG
 	 * len =  the new size of string
 	 * Returns: string
 	 */
-	public StringG truncate(uint len)
-	{
-		// GString* g_string_truncate (GString *string,  gsize len);
-		auto p = g_string_truncate(gString, len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG truncate(uint len);
 	
 	/**
 	 * Sets the length of a GString. If the length is less than
@@ -575,16 +364,7 @@ public class StringG
 	 * len =  the new length
 	 * Returns: string
 	 */
-	public StringG setSize(uint len)
-	{
-		// GString* g_string_set_size (GString *string,  gsize len);
-		auto p = g_string_set_size(gString, len);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG setSize(uint len);
 	
 	/**
 	 * Frees the memory allocated for the GString.
@@ -594,11 +374,7 @@ public class StringG
 	 * freeSegment =  if TRUE the actual character data is freed as well
 	 * Returns: the character data of string  (i.e. NULL if free_segment is TRUE)
 	 */
-	public string free(int freeSegment)
-	{
-		// gchar* g_string_free (GString *string,  gboolean free_segment);
-		return Str.toString(g_string_free(gString, freeSegment));
-	}
+	public string free(int freeSegment);
 	
 	/**
 	 * Warning
@@ -608,16 +384,7 @@ public class StringG
 	 * Converts a GString to uppercase.
 	 * Returns: string
 	 */
-	public StringG up()
-	{
-		// GString* g_string_up (GString *string);
-		auto p = g_string_up(gString);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG up();
 	
 	/**
 	 * Warning
@@ -627,26 +394,13 @@ public class StringG
 	 * Converts a GString to lowercase.
 	 * Returns: the GString.
 	 */
-	public StringG down()
-	{
-		// GString* g_string_down (GString *string);
-		auto p = g_string_down(gString);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StringG(cast(GString*) p);
-	}
+	public StringG down();
 	
 	/**
 	 * Creates a hash code for str; for use with GHashTable.
 	 * Returns: hash code for str
 	 */
-	public uint hash()
-	{
-		// guint g_string_hash (const GString *str);
-		return g_string_hash(gString);
-	}
+	public uint hash();
 	
 	/**
 	 * Compares two strings for equality, returning TRUE if they are equal.
@@ -656,9 +410,5 @@ public class StringG
 	 * v2 =  another GString
 	 * Returns: TRUE if they strings are the same length and contain the  same bytes
 	 */
-	public int equal(StringG v2)
-	{
-		// gboolean g_string_equal (const GString *v,  const GString *v2);
-		return g_string_equal(gString, (v2 is null) ? null : v2.getStringGStruct());
-	}
+	public int equal(StringG v2);
 }

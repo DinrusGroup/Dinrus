@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-Signals.html
- * outPack = gobject
- * outFile = Signals
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Signals
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_signal_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gobject.Closure
- * 	- gtkD.gobject.Value
- * 	- gtkD.glib.Quark
- * structWrap:
- * 	- GClosure* -> Closure
- * 	- GQuark* -> Quark
- * 	- GValue* -> Value
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gobject.Signals;
 
@@ -118,11 +62,7 @@ public class Signals
 {
 	
 	/** */
-	public static uint connectData(void* instanc, string detailedSignal, GCallback cHandler, Object data, GClosureNotify destroyData, GConnectFlags connectFlags)
-	{
-		// gulong g_signal_connect_data (gpointer instance,  const gchar *detailed_signal,  GCallback c_handler,  gpointer data,  GClosureNotify destroy_data,  GConnectFlags connect_flags);
-		return g_signal_connect_data(instanc, Str.toStringz(detailedSignal), cHandler, cast(void*)data, destroyData, connectFlags);
-	}
+	public static uint connectData(void* instanc, string detailedSignal, GCallback cHandler, Object data, GClosureNotify destroyData, GConnectFlags connectFlags);
 	
 	
 	/**
@@ -148,11 +88,7 @@ public class Signals
 	 * paramTypes =  an array of types, one for each parameter
 	 * Returns: the signal id
 	 */
-	public static uint newv(string signalName, GType itype, GSignalFlags signalFlags, Closure classClosure, GSignalAccumulator accumulator, void* accuData, GSignalCMarshaller cMarshaller, GType returnType, GType[] paramTypes)
-	{
-		// guint g_signal_newv (const gchar *signal_name,  GType itype,  GSignalFlags signal_flags,  GClosure *class_closure,  GSignalAccumulator accumulator,  gpointer accu_data,  GSignalCMarshaller c_marshaller,  GType return_type,  guint n_params,  GType *param_types);
-		return g_signal_newv(Str.toStringz(signalName), itype, signalFlags, (classClosure is null) ? null : classClosure.getClosureStruct(), accumulator, accuData, cMarshaller, returnType, paramTypes.length, paramTypes.ptr);
-	}
+	public static uint newv(string signalName, GType itype, GSignalFlags signalFlags, Closure classClosure, GSignalAccumulator accumulator, void* accuData, GSignalCMarshaller cMarshaller, GType returnType, GType[] paramTypes);
 	
 	/**
 	 * Creates a new signal. (This is usually done in the class initializer.)
@@ -175,11 +111,7 @@ public class Signals
 	 * args =  va_list of GType, one for each parameter.
 	 * Returns: the signal id
 	 */
-	public static uint newValist(string signalName, GType itype, GSignalFlags signalFlags, Closure classClosure, GSignalAccumulator accumulator, void* accuData, GSignalCMarshaller cMarshaller, GType returnType, uint nParams, void* args)
-	{
-		// guint g_signal_new_valist (const gchar *signal_name,  GType itype,  GSignalFlags signal_flags,  GClosure *class_closure,  GSignalAccumulator accumulator,  gpointer accu_data,  GSignalCMarshaller c_marshaller,  GType return_type,  guint n_params,  va_list args);
-		return g_signal_new_valist(Str.toStringz(signalName), itype, signalFlags, (classClosure is null) ? null : classClosure.getClosureStruct(), accumulator, accuData, cMarshaller, returnType, nParams, args);
-	}
+	public static uint newValist(string signalName, GType itype, GSignalFlags signalFlags, Closure classClosure, GSignalAccumulator accumulator, void* accuData, GSignalCMarshaller cMarshaller, GType returnType, uint nParams, void* args);
 	
 	/**
 	 * Queries the signal system for in-depth information about a
@@ -193,11 +125,7 @@ public class Signals
 	 * query =  A user provided structure that is filled in with constant
 	 *  values upon success.
 	 */
-	public static void query(uint signalId, GSignalQuery* query)
-	{
-		// void g_signal_query (guint signal_id,  GSignalQuery *query);
-		g_signal_query(signalId, query);
-	}
+	public static void query(uint signalId, GSignalQuery* query);
 	
 	/**
 	 * Given the name of the signal and the type of object it connects to, gets
@@ -210,11 +138,7 @@ public class Signals
 	 * itype =  the type that the signal operates on.
 	 * Returns: the signal's identifying number, or 0 if no signal was found.
 	 */
-	public static uint lookup(string name, GType itype)
-	{
-		// guint g_signal_lookup (const gchar *name,  GType itype);
-		return g_signal_lookup(Str.toStringz(name), itype);
-	}
+	public static uint lookup(string name, GType itype);
 	
 	/**
 	 * Given the signal's identifier, finds its name.
@@ -223,11 +147,7 @@ public class Signals
 	 * signalId =  the signal's identifying number.
 	 * Returns: the signal name, or NULL if the signal number was invalid.
 	 */
-	public static string name(uint signalId)
-	{
-		// const gchar* g_signal_name (guint signal_id);
-		return Str.toString(g_signal_name(signalId));
-	}
+	public static string name(uint signalId);
 	
 	/**
 	 * Lists the signals by id that a certain instance or interface type
@@ -237,13 +157,7 @@ public class Signals
 	 * itype =  Instance or interface type.
 	 * Returns: Newly allocated array of signal IDs.
 	 */
-	public static uint[] listIds(GType itype)
-	{
-		// guint* g_signal_list_ids (GType itype,  guint *n_ids);
-		uint nIds;
-		auto p = g_signal_list_ids(itype, &nIds);
-		return p[0 .. nIds];
-	}
+	public static uint[] listIds(GType itype);
 	
 	/**
 	 * Emits a signal.
@@ -258,11 +172,7 @@ public class Signals
 	 * detail =  the detail
 	 * returnValue =  Location to store the return value of the signal emission.
 	 */
-	public static void emitv(Value instanceAndParams, uint signalId, GQuark detail, Value returnValue)
-	{
-		// void g_signal_emitv (const GValue *instance_and_params,  guint signal_id,  GQuark detail,  GValue *return_value);
-		g_signal_emitv((instanceAndParams is null) ? null : instanceAndParams.getValueStruct(), signalId, detail, (returnValue is null) ? null : returnValue.getValueStruct());
-	}
+	public static void emitv(Value instanceAndParams, uint signalId, GQuark detail, Value returnValue);
 	
 	/**
 	 * Emits a signal.
@@ -275,11 +185,7 @@ public class Signals
 	 *  location for the return value. If the return type of the signal
 	 *  is G_TYPE_NONE, the return value location can be omitted.
 	 */
-	public static void emitValist(void* instanc, uint signalId, GQuark detail, void* varArgs)
-	{
-		// void g_signal_emit_valist (gpointer instance,  guint signal_id,  GQuark detail,  va_list var_args);
-		g_signal_emit_valist(instanc, signalId, detail, varArgs);
-	}
+	public static void emitValist(void* instanc, uint signalId, GQuark detail, void* varArgs);
 	
 	/**
 	 * This is similar to g_signal_connect_data(), but uses a closure which
@@ -304,11 +210,7 @@ public class Signals
 	 * connectFlags =  a combination of GConnnectFlags.
 	 * Returns: the handler id.
 	 */
-	public static uint connectObject(void* instanc, string detailedSignal, GCallback cHandler, void* gobject, GConnectFlags connectFlags)
-	{
-		// gulong g_signal_connect_object (gpointer instance,  const gchar *detailed_signal,  GCallback c_handler,  gpointer gobject,  GConnectFlags connect_flags);
-		return g_signal_connect_object(instanc, Str.toStringz(detailedSignal), cHandler, gobject, connectFlags);
-	}
+	public static uint connectObject(void* instanc, string detailedSignal, GCallback cHandler, void* gobject, GConnectFlags connectFlags);
 	
 	/**
 	 * Connects a GCallback function to a signal for a particular object. Similar
@@ -324,11 +226,7 @@ public class Signals
 	 * connectFlags =  a combination of GConnectFlags.
 	 * Returns: the handler id
 	 */
-	public static uint connectData(void* instanc, string detailedSignal, GCallback cHandler, void* data, GClosureNotify destroyData, GConnectFlags connectFlags)
-	{
-		// gulong g_signal_connect_data (gpointer instance,  const gchar *detailed_signal,  GCallback c_handler,  gpointer data,  GClosureNotify destroy_data,  GConnectFlags connect_flags);
-		return g_signal_connect_data(instanc, Str.toStringz(detailedSignal), cHandler, data, destroyData, connectFlags);
-	}
+	public static uint connectData(void* instanc, string detailedSignal, GCallback cHandler, void* data, GClosureNotify destroyData, GConnectFlags connectFlags);
 	
 	/**
 	 * Connects a closure to a signal for a particular object.
@@ -339,11 +237,7 @@ public class Signals
 	 *  default handler of the signal.
 	 * Returns: the handler id
 	 */
-	public static uint connectClosure(void* instanc, string detailedSignal, Closure closure, int after)
-	{
-		// gulong g_signal_connect_closure (gpointer instance,  const gchar *detailed_signal,  GClosure *closure,  gboolean after);
-		return g_signal_connect_closure(instanc, Str.toStringz(detailedSignal), (closure is null) ? null : closure.getClosureStruct(), after);
-	}
+	public static uint connectClosure(void* instanc, string detailedSignal, Closure closure, int after);
 	
 	/**
 	 * Connects a closure to a signal for a particular object.
@@ -355,11 +249,7 @@ public class Signals
 	 *  default handler of the signal.
 	 * Returns: the handler id
 	 */
-	public static uint connectClosureById(void* instanc, uint signalId, GQuark detail, Closure closure, int after)
-	{
-		// gulong g_signal_connect_closure_by_id (gpointer instance,  guint signal_id,  GQuark detail,  GClosure *closure,  gboolean after);
-		return g_signal_connect_closure_by_id(instanc, signalId, detail, (closure is null) ? null : closure.getClosureStruct(), after);
-	}
+	public static uint connectClosureById(void* instanc, uint signalId, GQuark detail, Closure closure, int after);
 	
 	/**
 	 * Blocks a handler of an instance so it will not be called during any
@@ -372,11 +262,7 @@ public class Signals
 	 * Params:
 	 * handlerId =  Handler id of the handler to be blocked.
 	 */
-	public static void handlerBlock(void* instanc, uint handlerId)
-	{
-		// void g_signal_handler_block (gpointer instance,  gulong handler_id);
-		g_signal_handler_block(instanc, handlerId);
-	}
+	public static void handlerBlock(void* instanc, uint handlerId);
 	
 	/**
 	 * Undoes the effect of a previous g_signal_handler_block() call. A
@@ -394,11 +280,7 @@ public class Signals
 	 * Params:
 	 * handlerId =  Handler id of the handler to be unblocked.
 	 */
-	public static void handlerUnblock(void* instanc, uint handlerId)
-	{
-		// void g_signal_handler_unblock (gpointer instance,  gulong handler_id);
-		g_signal_handler_unblock(instanc, handlerId);
-	}
+	public static void handlerUnblock(void* instanc, uint handlerId);
 	
 	/**
 	 * Disconnects a handler from an instance so it will not be called during
@@ -409,11 +291,7 @@ public class Signals
 	 * Params:
 	 * handlerId =  Handler id of the handler to be disconnected.
 	 */
-	public static void handlerDisconnect(void* instanc, uint handlerId)
-	{
-		// void g_signal_handler_disconnect (gpointer instance,  gulong handler_id);
-		g_signal_handler_disconnect(instanc, handlerId);
-	}
+	public static void handlerDisconnect(void* instanc, uint handlerId);
 	
 	/**
 	 * Finds the first signal handler that matches certain selection criteria.
@@ -431,11 +309,7 @@ public class Signals
 	 * data =  The closure data of the handler's closure.
 	 * Returns: A valid non-0 signal handler id for a successful match.
 	 */
-	public static uint handlerFind(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data)
-	{
-		// gulong g_signal_handler_find (gpointer instance,  GSignalMatchType mask,  guint signal_id,  GQuark detail,  GClosure *closure,  gpointer func,  gpointer data);
-		return g_signal_handler_find(instanc, mask, signalId, detail, (closure is null) ? null : closure.getClosureStruct(), func, data);
-	}
+	public static uint handlerFind(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data);
 	
 	/**
 	 * Blocks all handlers on an instance that match a certain selection criteria.
@@ -455,11 +329,7 @@ public class Signals
 	 * data =  The closure data of the handlers' closures.
 	 * Returns: The number of handlers that matched.
 	 */
-	public static uint handlersBlockMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data)
-	{
-		// guint g_signal_handlers_block_matched (gpointer instance,  GSignalMatchType mask,  guint signal_id,  GQuark detail,  GClosure *closure,  gpointer func,  gpointer data);
-		return g_signal_handlers_block_matched(instanc, mask, signalId, detail, (closure is null) ? null : closure.getClosureStruct(), func, data);
-	}
+	public static uint handlersBlockMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data);
 	
 	/**
 	 * Unblocks all handlers on an instance that match a certain selection
@@ -480,11 +350,7 @@ public class Signals
 	 * data =  The closure data of the handlers' closures.
 	 * Returns: The number of handlers that matched.
 	 */
-	public static uint handlersUnblockMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data)
-	{
-		// guint g_signal_handlers_unblock_matched (gpointer instance,  GSignalMatchType mask,  guint signal_id,  GQuark detail,  GClosure *closure,  gpointer func,  gpointer data);
-		return g_signal_handlers_unblock_matched(instanc, mask, signalId, detail, (closure is null) ? null : closure.getClosureStruct(), func, data);
-	}
+	public static uint handlersUnblockMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data);
 	
 	/**
 	 * Disconnects all handlers on an instance that match a certain
@@ -505,11 +371,7 @@ public class Signals
 	 * data =  The closure data of the handlers' closures.
 	 * Returns: The number of handlers that matched.
 	 */
-	public static uint handlersDisconnectMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data)
-	{
-		// guint g_signal_handlers_disconnect_matched  (gpointer instance,  GSignalMatchType mask,  guint signal_id,  GQuark detail,  GClosure *closure,  gpointer func,  gpointer data);
-		return g_signal_handlers_disconnect_matched(instanc, mask, signalId, detail, (closure is null) ? null : closure.getClosureStruct(), func, data);
-	}
+	public static uint handlersDisconnectMatched(void* instanc, GSignalMatchType mask, uint signalId, GQuark detail, Closure closure, void* func, void* data);
 	
 	/**
 	 * Returns whether handler_id is the id of a handler connected to instance.
@@ -517,11 +379,7 @@ public class Signals
 	 * handlerId =  the handler id.
 	 * Returns: whether handler_id identifies a handler connected to instance.
 	 */
-	public static int handlerIsConnected(void* instanc, uint handlerId)
-	{
-		// gboolean g_signal_handler_is_connected (gpointer instance,  gulong handler_id);
-		return g_signal_handler_is_connected(instanc, handlerId);
-	}
+	public static int handlerIsConnected(void* instanc, uint handlerId);
 	
 	/**
 	 * Returns whether there are any handlers connected to instance for the
@@ -536,11 +394,7 @@ public class Signals
 	 * mayBeBlocked =  whether blocked handlers should count as match.
 	 * Returns: TRUE if a handler is connected to the signal, FALSE otherwise.
 	 */
-	public static int hasHandlerPending(void* instanc, uint signalId, GQuark detail, int mayBeBlocked)
-	{
-		// gboolean g_signal_has_handler_pending (gpointer instance,  guint signal_id,  GQuark detail,  gboolean may_be_blocked);
-		return g_signal_has_handler_pending(instanc, signalId, detail, mayBeBlocked);
-	}
+	public static int hasHandlerPending(void* instanc, uint signalId, GQuark detail, int mayBeBlocked);
 	
 	/**
 	 * Stops a signal's current emission.
@@ -552,11 +406,7 @@ public class Signals
 	 * signalId =  the signal identifier, as returned by g_signal_lookup().
 	 * detail =  the detail which the signal was emitted with.
 	 */
-	public static void stopEmission(void* instanc, uint signalId, GQuark detail)
-	{
-		// void g_signal_stop_emission (gpointer instance,  guint signal_id,  GQuark detail);
-		g_signal_stop_emission(instanc, signalId, detail);
-	}
+	public static void stopEmission(void* instanc, uint signalId, GQuark detail);
 	
 	/**
 	 * Stops a signal's current emission.
@@ -565,11 +415,7 @@ public class Signals
 	 * Params:
 	 * detailedSignal =  a string of the form "signal-name::detail".
 	 */
-	public static void stopEmissionByName(void* instanc, string detailedSignal)
-	{
-		// void g_signal_stop_emission_by_name (gpointer instance,  const gchar *detailed_signal);
-		g_signal_stop_emission_by_name(instanc, Str.toStringz(detailedSignal));
-	}
+	public static void stopEmissionByName(void* instanc, string detailedSignal);
 	
 	/**
 	 * Overrides the class closure (i.e. the default handler) for the given signal
@@ -584,11 +430,7 @@ public class Signals
 	 *  for the signal.
 	 * classClosure =  the closure.
 	 */
-	public static void overrideClassClosure(uint signalId, GType instanceType, Closure classClosure)
-	{
-		// void g_signal_override_class_closure (guint signal_id,  GType instance_type,  GClosure *class_closure);
-		g_signal_override_class_closure(signalId, instanceType, (classClosure is null) ? null : classClosure.getClosureStruct());
-	}
+	public static void overrideClassClosure(uint signalId, GType instanceType, Closure classClosure);
 	
 	/**
 	 * Calls the original class closure of a signal. This function should only
@@ -601,11 +443,7 @@ public class Signals
 	 *  emitted on. The rest are any arguments to be passed to the signal.
 	 * returnValue =  Location for the return value.
 	 */
-	public static void chainFromOverridden(Value instanceAndParams, Value returnValue)
-	{
-		// void g_signal_chain_from_overridden (const GValue *instance_and_params,  GValue *return_value);
-		g_signal_chain_from_overridden((instanceAndParams is null) ? null : instanceAndParams.getValueStruct(), (returnValue is null) ? null : returnValue.getValueStruct());
-	}
+	public static void chainFromOverridden(Value instanceAndParams, Value returnValue);
 	
 	/**
 	 * Overrides the class closure (i.e. the default handler) for the
@@ -622,11 +460,7 @@ public class Signals
 	 *  for the signal.
 	 * classHandler =  the handler.
 	 */
-	public static void overrideClassHandler(string signalName, GType instanceType, GCallback classHandler)
-	{
-		// void g_signal_override_class_handler (const gchar *signal_name,  GType instance_type,  GCallback class_handler);
-		g_signal_override_class_handler(Str.toStringz(signalName), instanceType, classHandler);
-	}
+	public static void overrideClassHandler(string signalName, GType instanceType, GCallback classHandler);
 	
 	/**
 	 * Adds an emission hook for a signal, which will get called for any emission
@@ -640,11 +474,7 @@ public class Signals
 	 * dataDestroy =  a GDestroyNotify for hook_data.
 	 * Returns: the hook id, for later use with g_signal_remove_emission_hook().
 	 */
-	public static uint addEmissionHook(uint signalId, GQuark detail, GSignalEmissionHook hookFunc, void* hookData, GDestroyNotify dataDestroy)
-	{
-		// gulong g_signal_add_emission_hook (guint signal_id,  GQuark detail,  GSignalEmissionHook hook_func,  gpointer hook_data,  GDestroyNotify data_destroy);
-		return g_signal_add_emission_hook(signalId, detail, hookFunc, hookData, dataDestroy);
-	}
+	public static uint addEmissionHook(uint signalId, GQuark detail, GSignalEmissionHook hookFunc, void* hookData, GDestroyNotify dataDestroy);
 	
 	/**
 	 * Deletes an emission hook.
@@ -653,11 +483,7 @@ public class Signals
 	 * hookId =  the id of the emission hook, as returned by
 	 *  g_signal_add_emission_hook()
 	 */
-	public static void removeEmissionHook(uint signalId, uint hookId)
-	{
-		// void g_signal_remove_emission_hook (guint signal_id,  gulong hook_id);
-		g_signal_remove_emission_hook(signalId, hookId);
-	}
+	public static void removeEmissionHook(uint signalId, uint hookId);
 	
 	/**
 	 * Internal function to parse a signal name into its signal_id
@@ -670,21 +496,13 @@ public class Signals
 	 * forceDetailQuark =  TRUE forces creation of a GQuark for the detail.
 	 * Returns: Whether the signal name could successfully be parsed and signal_id_p and detail_p contain valid return values.
 	 */
-	public static int parseName(string detailedSignal, GType itype, out uint signalIdP, Quark detailP, int forceDetailQuark)
-	{
-		// gboolean g_signal_parse_name (const gchar *detailed_signal,  GType itype,  guint *signal_id_p,  GQuark *detail_p,  gboolean force_detail_quark);
-		return g_signal_parse_name(Str.toStringz(detailedSignal), itype, &signalIdP, (detailP is null) ? null : detailP.getQuarkStruct(), forceDetailQuark);
-	}
+	public static int parseName(string detailedSignal, GType itype, out uint signalIdP, Quark detailP, int forceDetailQuark);
 	
 	/**
 	 * Returns the invocation hint of the innermost signal emission of instance.
 	 * Returns: the invocation hint of the innermost signal emission.
 	 */
-	public static GSignalInvocationHint* getInvocationHint(void* instanc)
-	{
-		// GSignalInvocationHint* g_signal_get_invocation_hint (gpointer instance);
-		return g_signal_get_invocation_hint(instanc);
-	}
+	public static GSignalInvocationHint* getInvocationHint(void* instanc);
 	
 	/**
 	 * Creates a new closure which invokes the function found at the offset
@@ -696,16 +514,7 @@ public class Signals
 	 *  structure which is to be invoked by the new closure
 	 * Returns: a new GCClosure
 	 */
-	public static Closure typeCclosureNew(GType itype, uint structOffset)
-	{
-		// GClosure* g_signal_type_cclosure_new (GType itype,  guint struct_offset);
-		auto p = g_signal_type_cclosure_new(itype, structOffset);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Closure(cast(GClosure*) p);
-	}
+	public static Closure typeCclosureNew(GType itype, uint structOffset);
 	
 	/**
 	 * A predefined GSignalAccumulator for signals that return a
@@ -726,9 +535,5 @@ public class Signals
 	 * dummy =  standard GSignalAccumulator parameter
 	 * Returns: standard GSignalAccumulator result
 	 */
-	public static int accumulatorTrueHandled(GSignalInvocationHint* ihint, Value returnAccu, Value handlerReturn, void* dummy)
-	{
-		// gboolean g_signal_accumulator_true_handled (GSignalInvocationHint *ihint,  GValue *return_accu,  const GValue *handler_return,  gpointer dummy);
-		return g_signal_accumulator_true_handled(ihint, (returnAccu is null) ? null : returnAccu.getValueStruct(), (handlerReturn is null) ? null : handlerReturn.getValueStruct(), dummy);
-	}
+	public static int accumulatorTrueHandled(GSignalInvocationHint* ihint, Value returnAccu, Value handlerReturn, void* dummy);
 }

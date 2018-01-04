@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstQuery.html
- * outPack = gstreamer
- * outFile = Query
- * strct   = GstQuery
- * realStrct=
- * ctorStrct=
- * clss    = Query
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_query_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_query_new_position
- * 	- gst_query_new_duration
- * 	- gst_query_new_seeking
- * 	- gst_query_new_formats
- * 	- gst_query_new_segment
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Structure
- * structWrap:
- * 	- GstQuery* -> Query
- * 	- GstStructure* -> Structure
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Query;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -104,30 +44,16 @@ public class Query
 	protected GstQuery* gstQuery;
 	
 	
-	public GstQuery* getQueryStruct()
-	{
-		return gstQuery;
-	}
+	public GstQuery* getQueryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstQuery;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstQuery* gstQuery)
-	{
-		if(gstQuery is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstQuery = gstQuery;
-	}
+	public this (GstQuery* gstQuery);
 	
 	/**
 	 * Constructs a new query stream position query object. Use gst_query_unref()
@@ -138,11 +64,9 @@ public class Query
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newPosition(GstFormat format)
-	{
-		// GstQuery* gst_query_new_position (GstFormat format);
-		return new Query( cast(GstQuery*)gst_query_new_position(format) );
-	}	/**
+	public static Query newPosition(GstFormat format);
+
+		/**
 	 * Constructs a new stream duration query object to query in the given format.
 	 * Use gst_query_unref() when done with it. A duration query will give the
 	 * total length of the stream.
@@ -151,11 +75,9 @@ public class Query
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newDuration(GstFormat format)
-	{
-		// GstQuery* gst_query_new_duration (GstFormat format);
-		return new Query( cast(GstQuery*)gst_query_new_duration(format) );
-	}	/**
+	public static Query newDuration(GstFormat format);
+
+		/**
 	 * Constructs a new query object for querying seeking properties of
 	 * the stream.
 	 * Params:
@@ -163,22 +85,18 @@ public class Query
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newSeeking(GstFormat format)
-	{
-		// GstQuery* gst_query_new_seeking (GstFormat format);
-		return new Query(cast(GstQuery*)gst_query_new_seeking(format) );
-	}	/**
+	public static Query newSeeking(GstFormat format);
+
+		/**
 	 * Constructs a new query object for querying formats of
 	 * the stream.
 	 * Since 0.10.4
 	 * Returns:
 	 *  A GstQuery
 	 */
-	public static Query newFormats()
-	{
-		// GstQuery* gst_query_new_formats (void);
-		return new Query(cast(GstQuery*)gst_query_new_formats() );
-	}	/**
+	public static Query newFormats();
+
+		/**
 	 * Constructs a new segment query object. Use gst_query_unref()
 	 * when done with it. A segment query is used to discover information about the
 	 * currently configured segment for playback.
@@ -187,11 +105,7 @@ public class Query
 	 * Returns:
 	 *  a GstQuery
 	 */
-	public static Query newSegment(GstFormat format)
-	{
-		// GstQuery* gst_query_new_segment (GstFormat format);
-		return new Query(cast(GstQuery*)gst_query_new_segment(format) );
-	}
+	public static Query newSegment(GstFormat format);
 	
 	/**
 	 */
@@ -202,11 +116,7 @@ public class Query
 	 * query =  the query type
 	 * Returns: a reference to the static name of the query.
 	 */
-	public static string typeGetName(GstQueryType query)
-	{
-		// const gchar* gst_query_type_get_name (GstQueryType query);
-		return Str.toString(gst_query_type_get_name(query));
-	}
+	public static string typeGetName(GstQueryType query);
 	
 	/**
 	 * Get the unique quark for the given query type.
@@ -214,11 +124,7 @@ public class Query
 	 * query =  the query type
 	 * Returns: the quark associated with the query type
 	 */
-	public static GQuark typeToQuark(GstQueryType query)
-	{
-		// GQuark gst_query_type_to_quark (GstQueryType query);
-		return gst_query_type_to_quark(query);
-	}
+	public static GQuark typeToQuark(GstQueryType query);
 	
 	/**
 	 * Create a new GstQueryType based on the nick or return an
@@ -228,11 +134,7 @@ public class Query
 	 * description =  The description of the new query
 	 * Returns: A new GstQueryType or an already registered querywith the same nick.
 	 */
-	public static GstQueryType typeRegister(string nick, string description)
-	{
-		// GstQueryType gst_query_type_register (const gchar *nick,  const gchar *description);
-		return gst_query_type_register(Str.toStringz(nick), Str.toStringz(description));
-	}
+	public static GstQueryType typeRegister(string nick, string description);
 	
 	/**
 	 * Get the query type registered with nick.
@@ -240,11 +142,7 @@ public class Query
 	 * nick =  The nick of the query
 	 * Returns: The query registered with nick or GST_QUERY_NONEif the query was not registered.
 	 */
-	public static GstQueryType typeGetByNick(string nick)
-	{
-		// GstQueryType gst_query_type_get_by_nick (const gchar *nick);
-		return gst_query_type_get_by_nick(Str.toStringz(nick));
-	}
+	public static GstQueryType typeGetByNick(string nick);
 	
 	/**
 	 * See if the given GstQueryType is inside the types query types array.
@@ -253,11 +151,7 @@ public class Query
 	 * type =  the GstQueryType to find
 	 * Returns: TRUE if the type is found inside the array
 	 */
-	public static int typesContains(GstQueryType* types, GstQueryType type)
-	{
-		// gboolean gst_query_types_contains (const GstQueryType *types,  GstQueryType type);
-		return gst_query_types_contains(types, type);
-	}
+	public static int typesContains(GstQueryType* types, GstQueryType type);
 	
 	/**
 	 * Get details about the given GstQueryType.
@@ -265,22 +159,14 @@ public class Query
 	 * type =  a GstQueryType
 	 * Returns: The GstQueryTypeDefinition for type or NULL on failure.
 	 */
-	public static GstQueryTypeDefinition* typeGetDetails(GstQueryType type)
-	{
-		// const GstQueryTypeDefinition* gst_query_type_get_details  (GstQueryType type);
-		return gst_query_type_get_details(type);
-	}
+	public static GstQueryTypeDefinition* typeGetDetails(GstQueryType type);
 	
 	/**
 	 * Get a GstIterator of all the registered query types. The definitions
 	 * iterated over are read only.
 	 * Returns: A GstIterator of GstQueryTypeDefinition.
 	 */
-	public static GstIterator* typeIterateDefinitions()
-	{
-		// GstIterator* gst_query_type_iterate_definitions  (void);
-		return gst_query_type_iterate_definitions();
-	}
+	public static GstIterator* typeIterateDefinitions();
 	
 	/**
 	 * Constructs a new custom application query object. Use gst_query_unref()
@@ -290,31 +176,13 @@ public class Query
 	 * structure =  a structure for the query
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GstQueryType type, Structure structure)
-	{
-		// GstQuery* gst_query_new_application (GstQueryType type,  GstStructure *structure);
-		auto p = gst_query_new_application(type, (structure is null) ? null : structure.getStructureStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_query_new_application(type, (structure is null) ? null : structure.getStructureStruct())");
-		}
-		this(cast(GstQuery*) p);
-	}
+	public this (GstQueryType type, Structure structure);
 	
 	/**
 	 * Get the structure of a query.
 	 * Returns: The GstStructure of the query. The structure is still ownedby the query and will therefore be freed when the query is unreffed.
 	 */
-	public Structure getStructure()
-	{
-		// GstStructure* gst_query_get_structure (GstQuery *query);
-		auto p = gst_query_get_structure(gstQuery);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Structure(cast(GstStructure*) p);
-	}
+	public Structure getStructure();
 	
 	/**
 	 * Constructs a new convert query object. Use gst_query_unref()
@@ -326,16 +194,7 @@ public class Query
 	 * destFormat =  the target GstFormat
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GstFormat srcFormat, long value, GstFormat destFormat)
-	{
-		// GstQuery* gst_query_new_convert (GstFormat src_format,  gint64 value,  GstFormat dest_format);
-		auto p = gst_query_new_convert(srcFormat, value, destFormat);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_query_new_convert(srcFormat, value, destFormat)");
-		}
-		this(cast(GstQuery*) p);
-	}
+	public this (GstFormat srcFormat, long value, GstFormat destFormat);
 	
 	/**
 	 * Answer a convert query by setting the requested values.
@@ -345,11 +204,7 @@ public class Query
 	 * destFormat =  the destination GstFormat
 	 * destValue =  the destination value
 	 */
-	public void setConvert(GstFormat srcFormat, long srcValue, GstFormat destFormat, long destValue)
-	{
-		// void gst_query_set_convert (GstQuery *query,  GstFormat src_format,  gint64 src_value,  GstFormat dest_format,  gint64 dest_value);
-		gst_query_set_convert(gstQuery, srcFormat, srcValue, destFormat, destValue);
-	}
+	public void setConvert(GstFormat srcFormat, long srcValue, GstFormat destFormat, long destValue);
 	
 	/**
 	 * Parse a convert query answer. Any of src_format, src_value, dest_format,
@@ -360,11 +215,7 @@ public class Query
 	 * destFormat =  the storage for the GstFormat of the destination value, or NULL
 	 * destValue =  the storage for the destination value, or NULL
 	 */
-	public void parseConvert(GstFormat* srcFormat, long* srcValue, GstFormat* destFormat, long* destValue)
-	{
-		// void gst_query_parse_convert (GstQuery *query,  GstFormat *src_format,  gint64 *src_value,  GstFormat *dest_format,  gint64 *dest_value);
-		gst_query_parse_convert(gstQuery, srcFormat, srcValue, destFormat, destValue);
-	}
+	public void parseConvert(GstFormat* srcFormat, long* srcValue, GstFormat* destFormat, long* destValue);
 	
 	/**
 	 * Answer a position query by setting the requested value in the given format.
@@ -372,11 +223,7 @@ public class Query
 	 * format =  the requested GstFormat
 	 * cur =  the position to set
 	 */
-	public void setPosition(GstFormat format, long cur)
-	{
-		// void gst_query_set_position (GstQuery *query,  GstFormat format,  gint64 cur);
-		gst_query_set_position(gstQuery, format, cur);
-	}
+	public void setPosition(GstFormat format, long cur);
 	
 	/**
 	 * Parse a position query, writing the format into format, and the position
@@ -385,11 +232,7 @@ public class Query
 	 * format =  the storage for the GstFormat of the position values (may be NULL)
 	 * cur =  the storage for the current position (may be NULL)
 	 */
-	public void parsePosition(GstFormat* format, long* cur)
-	{
-		// void gst_query_parse_position (GstQuery *query,  GstFormat *format,  gint64 *cur);
-		gst_query_parse_position(gstQuery, format, cur);
-	}
+	public void parsePosition(GstFormat* format, long* cur);
 	
 	/**
 	 * Answer a duration query by setting the requested value in the given format.
@@ -397,11 +240,7 @@ public class Query
 	 * format =  the GstFormat for the duration
 	 * duration =  the duration of the stream
 	 */
-	public void setDuration(GstFormat format, long duration)
-	{
-		// void gst_query_set_duration (GstQuery *query,  GstFormat format,  gint64 duration);
-		gst_query_set_duration(gstQuery, format, duration);
-	}
+	public void setDuration(GstFormat format, long duration);
 	
 	/**
 	 * Parse a duration query answer. Write the format of the duration into format,
@@ -410,11 +249,7 @@ public class Query
 	 * format =  the storage for the GstFormat of the duration value, or NULL.
 	 * duration =  the storage for the total duration, or NULL.
 	 */
-	public void parseDuration(GstFormat* format, long* duration)
-	{
-		// void gst_query_parse_duration (GstQuery *query,  GstFormat *format,  gint64 *duration);
-		gst_query_parse_duration(gstQuery, format, duration);
-	}
+	public void parseDuration(GstFormat* format, long* duration);
 	
 	/**
 	 * Constructs a new latency query object.
@@ -423,16 +258,7 @@ public class Query
 	 * pipeline.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GstQuery* gst_query_new_latency (void);
-		auto p = gst_query_new_latency();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_query_new_latency()");
-		}
-		this(cast(GstQuery*) p);
-	}
+	public this ();
 	
 	/**
 	 * Parse a latency query answer.
@@ -442,11 +268,7 @@ public class Query
 	 * maxLatency =  the storage for the max latency or NULL
 	 * Since 0.10.12
 	 */
-	public void parseLatency(int* live, GstClockTime* minLatency, GstClockTime* maxLatency)
-	{
-		// void gst_query_parse_latency (GstQuery *query,  gboolean *live,  GstClockTime *min_latency,  GstClockTime *max_latency);
-		gst_query_parse_latency(gstQuery, live, minLatency, maxLatency);
-	}
+	public void parseLatency(int* live, GstClockTime* minLatency, GstClockTime* maxLatency);
 	
 	/**
 	 * Answer a latency query by setting the requested values in the given format.
@@ -456,11 +278,7 @@ public class Query
 	 * maxLatency =  the maximal latency of the live element
 	 * Since 0.10.12
 	 */
-	public void setLatency(int live, GstClockTime minLatency, GstClockTime maxLatency)
-	{
-		// void gst_query_set_latency (GstQuery *query,  gboolean live,  GstClockTime min_latency,  GstClockTime max_latency);
-		gst_query_set_latency(gstQuery, live, minLatency, maxLatency);
-	}
+	public void setLatency(int live, GstClockTime minLatency, GstClockTime maxLatency);
 	
 	/**
 	 * Set the seeking query result fields in query.
@@ -470,11 +288,7 @@ public class Query
 	 * segmentStart =  the segment_start to set
 	 * segmentEnd =  the segment_end to set
 	 */
-	public void setSeeking(GstFormat format, int seekable, long segmentStart, long segmentEnd)
-	{
-		// void gst_query_set_seeking (GstQuery *query,  GstFormat format,  gboolean seekable,  gint64 segment_start,  gint64 segment_end);
-		gst_query_set_seeking(gstQuery, format, seekable, segmentStart, segmentEnd);
-	}
+	public void setSeeking(GstFormat format, int seekable, long segmentStart, long segmentEnd);
 	
 	/**
 	 * Parse a seeking query, writing the format into format, and
@@ -486,11 +300,7 @@ public class Query
 	 * segmentStart =  the segment_start to set
 	 * segmentEnd =  the segment_end to set
 	 */
-	public void parseSeeking(GstFormat* format, int* seekable, long* segmentStart, long* segmentEnd)
-	{
-		// void gst_query_parse_seeking (GstQuery *query,  GstFormat *format,  gboolean *seekable,  gint64 *segment_start,  gint64 *segment_end);
-		gst_query_parse_seeking(gstQuery, format, seekable, segmentStart, segmentEnd);
-	}
+	public void parseSeeking(GstFormat* format, int* seekable, long* segmentStart, long* segmentEnd);
 	
 	/**
 	 * Set the formats query result fields in query. The number of formats passed
@@ -500,11 +310,7 @@ public class Query
 	 * formats =  An array containing n_formats GstFormat values.
 	 * Since 0.10.4
 	 */
-	public void setFormatsv(int nFormats, GstFormat* formats)
-	{
-		// void gst_query_set_formatsv (GstQuery *query,  gint n_formats,  GstFormat *formats);
-		gst_query_set_formatsv(gstQuery, nFormats, formats);
-	}
+	public void setFormatsv(int nFormats, GstFormat* formats);
 	
 	/**
 	 * Parse the number of formats in the formats query.
@@ -512,11 +318,7 @@ public class Query
 	 * nFormats =  the number of formats in this query.
 	 * Since 0.10.4
 	 */
-	public void parseFormatsLength(uint* nFormats)
-	{
-		// void gst_query_parse_formats_length (GstQuery *query,  guint *n_formats);
-		gst_query_parse_formats_length(gstQuery, nFormats);
-	}
+	public void parseFormatsLength(uint* nFormats);
 	
 	/**
 	 * Parse the format query and retrieve the nth format from it into
@@ -527,11 +329,7 @@ public class Query
 	 * format =  a pointer to store the nth format
 	 * Since 0.10.4
 	 */
-	public void parseFormatsNth(uint nth, GstFormat* format)
-	{
-		// void gst_query_parse_formats_nth (GstQuery *query,  guint nth,  GstFormat *format);
-		gst_query_parse_formats_nth(gstQuery, nth, format);
-	}
+	public void parseFormatsNth(uint nth, GstFormat* format);
 	
 	/**
 	 * Answer a segment query by setting the requested values. The normal
@@ -550,11 +348,7 @@ public class Query
 	 * startValue =  the start value
 	 * stopValue =  the stop value
 	 */
-	public void setSegment(double rate, GstFormat format, long startValue, long stopValue)
-	{
-		// void gst_query_set_segment (GstQuery *query,  gdouble rate,  GstFormat format,  gint64 start_value,  gint64 stop_value);
-		gst_query_set_segment(gstQuery, rate, format, startValue, stopValue);
-	}
+	public void setSegment(double rate, GstFormat format, long startValue, long stopValue);
 	
 	/**
 	 * Parse a segment query answer. Any of rate, format, start_value, and
@@ -566,9 +360,5 @@ public class Query
 	 * startValue =  the storage for the start value, or NULL
 	 * stopValue =  the storage for the stop value, or NULL
 	 */
-	public void parseSegment(double* rate, GstFormat* format, long* startValue, long* stopValue)
-	{
-		// void gst_query_parse_segment (GstQuery *query,  gdouble *rate,  GstFormat *format,  gint64 *start_value,  gint64 *stop_value);
-		gst_query_parse_segment(gstQuery, rate, format, startValue, stopValue);
-	}
+	public void parseSegment(double* rate, GstFormat* format, long* startValue, long* stopValue);
 }

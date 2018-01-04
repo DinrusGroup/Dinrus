@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Error-Reporting.html
- * outPack = glib
- * outFile = ErrorG
- * strct   = GError
- * realStrct=
- * ctorStrct=
- * clss    = ErrorG
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_error_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GError* -> ErrorG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.ErrorG;
 
 public  import gtkD.gtkc.glibtypes;
@@ -295,30 +243,16 @@ public class ErrorG
 	protected GError* gError;
 	
 	
-	public GError* getErrorGStruct()
-	{
-		return gError;
-	}
+	public GError* getErrorGStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gError;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GError* gError)
-	{
-		if(gError is null)
-		{
-			this = null;
-			return;
-		}
-		this.gError = gError;
-	}
+	public this (GError* gError);
 	
 	/**
 	 */
@@ -334,16 +268,7 @@ public class ErrorG
 	 * message =  error message
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GQuark domain, int code, string message)
-	{
-		// GError* g_error_new_literal (GQuark domain,  gint code,  const gchar *message);
-		auto p = g_error_new_literal(domain, code, Str.toStringz(message));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_error_new_literal(domain, code, Str.toStringz(message))");
-		}
-		this(cast(GError*) p);
-	}
+	public this (GQuark domain, int code, string message);
 	
 	/**
 	 * Creates a new GError with the given domain and code,
@@ -356,40 +281,18 @@ public class ErrorG
 	 * args =  va_list of parameters for the message format
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GQuark domain, int code, string format, void* args)
-	{
-		// GError* g_error_new_valist (GQuark domain,  gint code,  const gchar *format,  va_list args);
-		auto p = g_error_new_valist(domain, code, Str.toStringz(format), args);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_error_new_valist(domain, code, Str.toStringz(format), args)");
-		}
-		this(cast(GError*) p);
-	}
+	public this (GQuark domain, int code, string format, void* args);
 	
 	/**
 	 * Frees a GError and associated resources.
 	 */
-	public void free()
-	{
-		// void g_error_free (GError *error);
-		g_error_free(gError);
-	}
+	public void free();
 	
 	/**
 	 * Makes a copy of error.
 	 * Returns: a new GError
 	 */
-	public ErrorG copy()
-	{
-		// GError* g_error_copy (const GError *error);
-		auto p = g_error_copy(gError);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ErrorG(cast(GError*) p);
-	}
+	public ErrorG copy();
 	
 	/**
 	 * Returns TRUE if error matches domain and code, FALSE
@@ -400,11 +303,7 @@ public class ErrorG
 	 * code =  an error code
 	 * Returns: whether error has domain and code
 	 */
-	public int matches(GQuark domain, int code)
-	{
-		// gboolean g_error_matches (const GError *error,  GQuark domain,  gint code);
-		return g_error_matches(gError, domain, code);
-	}
+	public int matches(GQuark domain, int code);
 	
 	/**
 	 * Does nothing if err is NULL; if err is non-NULL, then *err
@@ -419,15 +318,7 @@ public class ErrorG
 	 * code =  error code
 	 * message =  error message
 	 */
-	public static void gSetErrorLiteral(out ErrorG err, GQuark domain, int code, string message)
-	{
-		// void g_set_error_literal (GError **err,  GQuark domain,  gint code,  const gchar *message);
-		GError* outerr = null;
-		
-		g_set_error_literal(&outerr, domain, code, Str.toStringz(message));
-		
-		err = new ErrorG(outerr);
-	}
+	public static void gSetErrorLiteral(out ErrorG err, GQuark domain, int code, string message);
 	
 	/**
 	 * If dest is NULL, free src; otherwise, moves src into *dest.
@@ -436,15 +327,7 @@ public class ErrorG
 	 * dest =  error return location
 	 * src =  error to move into the return location
 	 */
-	public static void gPropagateError(out ErrorG dest, ErrorG src)
-	{
-		// void g_propagate_error (GError **dest,  GError *src);
-		GError* outdest = null;
-		
-		g_propagate_error(&outdest, (src is null) ? null : src.getErrorGStruct());
-		
-		dest = new ErrorG(outdest);
-	}
+	public static void gPropagateError(out ErrorG dest, ErrorG src);
 	
 	/**
 	 * If err is NULL, does nothing. If err is non-NULL,
@@ -452,13 +335,5 @@ public class ErrorG
 	 * Params:
 	 * err =  a GError return location
 	 */
-	public static void gClearError(inout ErrorG err)
-	{
-		// void g_clear_error (GError **err);
-		GError* outerr = (err is null) ? null : err.getErrorGStruct();
-		
-		g_clear_error(&outerr);
-		
-		err = new ErrorG(outerr);
-	}
+	public static void gClearError(inout ErrorG err);
 }

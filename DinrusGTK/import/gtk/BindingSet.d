@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Bindings.html
- * outPack = gtk
- * outFile = BindingSet
- * strct   = GtkBindingSet
- * realStrct=
- * ctorStrct=
- * clss    = BindingSet
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_binding_set_
- * 	- gtk_bindings_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.BindingSet
- * 	- gtkD.gtk.ObjectGtk
- * 	- gtkD.glib.ListSG
- * 	- gtkD.glib.ScannerG
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GScanner* -> ScannerG
- * 	- GtkBindingSet* -> BindingSet
- * 	- GtkObject* -> ObjectGtk
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.BindingSet;
 
 public  import gtkD.gtkc.gtktypes;
@@ -146,30 +85,16 @@ public class BindingSet
 	protected GtkBindingSet* gtkBindingSet;
 	
 	
-	public GtkBindingSet* getBindingSetStruct()
-	{
-		return gtkBindingSet;
-	}
+	public GtkBindingSet* getBindingSetStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkBindingSet;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkBindingSet* gtkBindingSet)
-	{
-		if(gtkBindingSet is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkBindingSet = gtkBindingSet;
-	}
+	public this (GtkBindingSet* gtkBindingSet);
 	
 	/**
 	 */
@@ -183,11 +108,7 @@ public class BindingSet
 	 * signalName =  signal name to be bound
 	 * bindingArgs =  list of GtkBindingArg signal arguments
 	 */
-	public void bindingEntryAddSignall(uint keyval, GdkModifierType modifiers, string signalName, ListSG bindingArgs)
-	{
-		// void gtk_binding_entry_add_signall (GtkBindingSet *binding_set,  guint keyval,  GdkModifierType modifiers,  const gchar *signal_name,  GSList *binding_args);
-		gtk_binding_entry_add_signall(gtkBindingSet, keyval, modifiers, Str.toStringz(signalName), (bindingArgs is null) ? null : bindingArgs.getListSGStruct());
-	}
+	public void bindingEntryAddSignall(uint keyval, GdkModifierType modifiers, string signalName, ListSG bindingArgs);
 	
 	/**
 	 * Warning
@@ -197,11 +118,7 @@ public class BindingSet
 	 * keyval =  key value of binding to clear
 	 * modifiers =  key modifier of binding to clear
 	 */
-	public void bindingEntryClear(uint keyval, GdkModifierType modifiers)
-	{
-		// void gtk_binding_entry_clear (GtkBindingSet *binding_set,  guint keyval,  GdkModifierType modifiers);
-		gtk_binding_entry_clear(gtkBindingSet, keyval, modifiers);
-	}
+	public void bindingEntryClear(uint keyval, GdkModifierType modifiers);
 	
 	/**
 	 * Warning
@@ -211,11 +128,7 @@ public class BindingSet
 	 * scanner =  GtkRC scanner
 	 * Returns: expected token upon errors, G_TOKEN_NONE on success.
 	 */
-	public static uint bindingParseBinding(ScannerG scanner)
-	{
-		// guint gtk_binding_parse_binding (GScanner *scanner);
-		return gtk_binding_parse_binding((scanner is null) ? null : scanner.getScannerGStruct());
-	}
+	public static uint bindingParseBinding(ScannerG scanner);
 	
 	/**
 	 * GTK+ maintains a global list of binding sets. Each binding set has
@@ -224,16 +137,7 @@ public class BindingSet
 	 * setName =  unique name of this binding set
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string setName)
-	{
-		// GtkBindingSet* gtk_binding_set_new (const gchar *set_name);
-		auto p = gtk_binding_set_new(Str.toStringz(setName));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_binding_set_new(Str.toStringz(setName))");
-		}
-		this(cast(GtkBindingSet*) p);
-	}
+	public this (string setName);
 	
 	/**
 	 * This function returns the binding set named after the type name of
@@ -243,16 +147,7 @@ public class BindingSet
 	 * objectClass =  a valid GtkObject class
 	 * Returns: the binding set corresponding to object_class
 	 */
-	public static BindingSet byClass(void* objectClass)
-	{
-		// GtkBindingSet* gtk_binding_set_by_class (gpointer object_class);
-		auto p = gtk_binding_set_by_class(objectClass);
-		if(p is null)
-		{
-			return null;
-		}
-		return new BindingSet(cast(GtkBindingSet*) p);
-	}
+	public static BindingSet byClass(void* objectClass);
 	
 	/**
 	 * Find a binding set by its globally unique name. The set_name can
@@ -262,16 +157,7 @@ public class BindingSet
 	 * setName =  unique binding set name
 	 * Returns: NULL or the specified binding set
 	 */
-	public static BindingSet find(string setName)
-	{
-		// GtkBindingSet* gtk_binding_set_find (const gchar *set_name);
-		auto p = gtk_binding_set_find(Str.toStringz(setName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new BindingSet(cast(GtkBindingSet*) p);
-	}
+	public static BindingSet find(string setName);
 	
 	/**
 	 * Find a key binding matching keyval and modifiers and activate the
@@ -282,12 +168,7 @@ public class BindingSet
 	 * modifiers =  key modifier of the binding
 	 * Returns: TRUE if a binding was found and activated
 	 */
-	public static int activate(ObjectGtk object, uint keyval, GdkModifierType modifiers)
-	{
-		// gboolean gtk_bindings_activate (GtkObject *object,  guint keyval,  GdkModifierType modifiers);
-		return gtk_bindings_activate((object is null) ? null : object.getObjectGtkStruct(), keyval, modifiers);
-	}
-	
+	public static int activate(ObjectGtk object, uint keyval, GdkModifierType modifiers);
 	/**
 	 * Looks up key bindings for object to find one matching
 	 * event, and if one was found, activate it.
@@ -296,11 +177,7 @@ public class BindingSet
 	 * event =  a GdkEventKey
 	 * Returns: TRUE if a matching key binding was found
 	 */
-	public static int activateEvent(ObjectGtk object, GdkEventKey* event)
-	{
-		// gboolean gtk_bindings_activate_event (GtkObject *object,  GdkEventKey *event);
-		return gtk_bindings_activate_event((object is null) ? null : object.getObjectGtkStruct(), event);
-	}
+	public static int activateEvent(ObjectGtk object, GdkEventKey* event);
 	
 	/**
 	 * Find a key binding matching keyval and modifiers within
@@ -311,11 +188,7 @@ public class BindingSet
 	 * object =  object to activate when binding found
 	 * Returns: TRUE if a binding was found and activated
 	 */
-	public int activate(uint keyval, GdkModifierType modifiers, ObjectGtk object)
-	{
-		// gboolean gtk_binding_set_activate (GtkBindingSet *binding_set,  guint keyval,  GdkModifierType modifiers,  GtkObject *object);
-		return gtk_binding_set_activate(gtkBindingSet, keyval, modifiers, (object is null) ? null : object.getObjectGtkStruct());
-	}
+	public int activate(uint keyval, GdkModifierType modifiers, ObjectGtk object);
 	
 	/**
 	 * Install a binding on binding_set which causes key lookups
@@ -326,11 +199,7 @@ public class BindingSet
 	 * keyval =  key value of binding to skip
 	 * modifiers =  key modifier of binding to skip
 	 */
-	public void bindingEntrySkip(uint keyval, GdkModifierType modifiers)
-	{
-		// void gtk_binding_entry_skip (GtkBindingSet *binding_set,  guint keyval,  GdkModifierType modifiers);
-		gtk_binding_entry_skip(gtkBindingSet, keyval, modifiers);
-	}
+	public void bindingEntrySkip(uint keyval, GdkModifierType modifiers);
 	
 	/**
 	 * Remove a binding previously installed via
@@ -339,11 +208,7 @@ public class BindingSet
 	 * keyval =  key value of binding to remove
 	 * modifiers =  key modifier of binding to remove
 	 */
-	public void bindingEntryRemove(uint keyval, GdkModifierType modifiers)
-	{
-		// void gtk_binding_entry_remove (GtkBindingSet *binding_set,  guint keyval,  GdkModifierType modifiers);
-		gtk_binding_entry_remove(gtkBindingSet, keyval, modifiers);
-	}
+	public void bindingEntryRemove(uint keyval, GdkModifierType modifiers);
 	
 	/**
 	 * This function is used internally by the GtkRC parsing mechanism to
@@ -353,9 +218,5 @@ public class BindingSet
 	 * pathPattern =  the actual match pattern
 	 * priority =  binding priority
 	 */
-	public void addPath(GtkPathType pathType, string pathPattern, GtkPathPriorityType priority)
-	{
-		// void gtk_binding_set_add_path (GtkBindingSet *binding_set,  GtkPathType path_type,  const gchar *path_pattern,  GtkPathPriorityType priority);
-		gtk_binding_set_add_path(gtkBindingSet, pathType, Str.toStringz(pathPattern), priority);
-	}
+	public void addPath(GtkPathType pathType, string pathPattern, GtkPathPriorityType priority);
 }

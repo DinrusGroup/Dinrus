@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gthread
- * outFile = Thread
- * strct   = GThread
- * realStrct=
- * ctorStrct=
- * clss    = Thread
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_thread_
- * 	- g_
- * omit structs:
- * omit prefixes:
- * 	- g_mutex_
- * 	- g_static_mutex_
- * 	- g_static_rec_mutex_
- * 	- g_static_rw_lock_
- * 	- g_cond_
- * 	- g_private_
- * 	- g_static_private_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * 	- GThread* -> Thread
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.Thread;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -129,30 +68,16 @@ public class Thread
 	protected GThread* gThread;
 	
 	
-	public GThread* getThreadStruct()
-	{
-		return gThread;
-	}
+	public GThread* getThreadStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gThread;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GThread* gThread)
-	{
-		if(gThread is null)
-		{
-			this = null;
-			return;
-		}
-		this.gThread = gThread;
-	}
+	public this (GThread* gThread);
 	
 	/**
 	 */
@@ -178,11 +103,7 @@ public class Thread
 	 * vtable = a function table of type GThreadFunctions, that provides the
 	 * entry points to the thread system to be used.
 	 */
-	public static void init(GThreadFunctions* vtable)
-	{
-		// void g_thread_init (GThreadFunctions *vtable);
-		g_thread_init(vtable);
-	}
+	public static void init(GThreadFunctions* vtable);
 	
 	/**
 	 * This function returns TRUE if the thread system is initialized, and
@@ -192,22 +113,14 @@ public class Thread
 	 * you can however use it as if it was a function.
 	 * Returns:%TRUE, if the thread system is initialized.
 	 */
-	public static int supported()
-	{
-		// gboolean g_thread_supported ();
-		return g_thread_supported();
-	}
+	public static int supported();
 	
 	/**
 	 * Indicates if g_thread_init() has been called.
 	 * Since 2.20
 	 * Returns: TRUE if threads have been initialized.
 	 */
-	public static int getInitialized()
-	{
-		// gboolean g_thread_get_initialized (void);
-		return g_thread_get_initialized();
-	}
+	public static int getInitialized();
 	
 	/**
 	 * This function creates a new thread with the default priority.
@@ -225,24 +138,7 @@ public class Thread
 	 * Returns:the new GThread on success.
 	 * Throws: GException on failure.
 	 */
-	public static Thread create(GThreadFunc func, void* data, int joinable)
-	{
-		// GThread * g_thread_create (GThreadFunc func,  gpointer data,  gboolean joinable,  GError **error);
-		GError* err = null;
-		
-		auto p = g_thread_create(func, data, joinable, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Thread(cast(GThread*) p);
-	}
+	public static Thread create(GThreadFunc func, void* data, int joinable);
 	
 	/**
 	 * This function creates a new thread with the priority priority. If the
@@ -282,39 +178,13 @@ public class Thread
 	 * Returns:the new GThread on success.
 	 * Throws: GException on failure.
 	 */
-	public static Thread createFull(GThreadFunc func, void* data, uint stackSize, int joinable, int bound, GThreadPriority priority)
-	{
-		// GThread* g_thread_create_full (GThreadFunc func,  gpointer data,  gulong stack_size,  gboolean joinable,  gboolean bound,  GThreadPriority priority,  GError **error);
-		GError* err = null;
-		
-		auto p = g_thread_create_full(func, data, stackSize, joinable, bound, priority, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Thread(cast(GThread*) p);
-	}
+	public static Thread createFull(GThreadFunc func, void* data, uint stackSize, int joinable, int bound, GThreadPriority priority);
 	
 	/**
 	 * This functions returns the GThread corresponding to the calling thread.
 	 * Returns:the current thread.
 	 */
-	public static Thread self()
-	{
-		// GThread* g_thread_self (void);
-		auto p = g_thread_self();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Thread(cast(GThread*) p);
-	}
+	public static Thread self();
 	
 	/**
 	 * Waits until thread finishes, i.e. the function func, as given
@@ -325,11 +195,7 @@ public class Thread
 	 * g_thread_exit() by thread is returned by this function.
 	 * Returns:the return value of the thread.
 	 */
-	public void* join()
-	{
-		// gpointer g_thread_join (GThread *thread);
-		return g_thread_join(gThread);
-	}
+	public void* join();
 	
 	/**
 	 * Changes the priority of thread to priority.
@@ -342,11 +208,7 @@ public class Thread
 	 * Params:
 	 * priority = a new priority for thread.
 	 */
-	public void setPriority(GThreadPriority priority)
-	{
-		// void g_thread_set_priority (GThread *thread,  GThreadPriority priority);
-		g_thread_set_priority(gThread, priority);
-	}
+	public void setPriority(GThreadPriority priority);
 	
 	/**
 	 * Gives way to other threads waiting to be scheduled.
@@ -354,12 +216,8 @@ public class Thread
 	 * evil. But in most cases you will encounter, there are better methods
 	 * to do that. So in general you shouldn't use this function.
 	 */
-	public static void yield()
-	{
-		// void g_thread_yield ();
-		g_thread_yield();
-	}
-	
+	public static void yield();
+
 	/**
 	 * Exits the current thread. If another thread is waiting for that thread
 	 * using g_thread_join() and the current thread is joinable, the waiting
@@ -376,11 +234,7 @@ public class Thread
 	 * Params:
 	 * retval = the return value of this thread.
 	 */
-	public static void exit(void* retval)
-	{
-		// void g_thread_exit (gpointer retval);
-		g_thread_exit(retval);
-	}
+	public static void exit(void* retval);
 	
 	/**
 	 * Call thread_func on all existing GThread structures. Note that
@@ -396,11 +250,7 @@ public class Thread
 	 * threadFunc =  function to call for all GThread structures
 	 * userData =  second argument to thread_func
 	 */
-	public static void foreac(GFunc threadFunc, void* userData)
-	{
-		// void g_thread_foreach (GFunc thread_func,  gpointer user_data);
-		g_thread_foreach(threadFunc, userData);
-	}
+	public static void foreac(GFunc threadFunc, void* userData);
 	
 	/**
 	 * Function to be called when starting a critical initialization section.
@@ -415,11 +265,7 @@ public class Thread
 	 * valueLocation = location of a static initializable variable containing 0.
 	 * Returns:%TRUE if the initialization section should be entered, FALSE and blocks otherwise
 	 */
-	public static int onceInitEnter(out uint valueLocation)
-	{
-		// gboolean g_once_init_enter (volatile gsize *value_location);
-		return g_once_init_enter(&valueLocation);
-	}
+	public static int onceInitEnter(out uint valueLocation);
 	
 	/**
 	 * Counterpart to g_once_init_enter(). Expects a location of a static
@@ -432,9 +278,5 @@ public class Thread
 	 * valueLocation = location of a static initializable variable containing 0.
 	 * initializationValue = new non-0 value for *value_location.
 	 */
-	public static void onceInitLeave(out uint valueLocation, uint initializationValue)
-	{
-		// void g_once_init_leave (volatile gsize *value_location,  gsize initialization_value);
-		g_once_init_leave(&valueLocation, initializationValue);
-	}
+	public static void onceInitLeave(out uint valueLocation, uint initializationValue);
 }

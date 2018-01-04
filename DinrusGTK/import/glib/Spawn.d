@@ -62,77 +62,34 @@ public class Spawn
 	/**
 	 * Creates a Spawn for execution.
 	 */
-	public this(string program, string[] envp=null)
-	{
-		argv ~= program;
-		this.envp = envp;
-	}
+	public this(string program, string[] envp=null);
 
 	/**
 	 * Creates a Spawn for execution.
 	 */
-	public this(string[] program, string[] envp=null)
-	{
-		argv = program;
-		this.envp = envp;
-	}
+	public this(string[] program, string[] envp=null);
 
 	/**
 	 * Adds a delegate to be notified on the end of the child process.
 	 * Params:
 	 *    	dlg =
 	 */
-	public void addChildWatch(ChildWatch dlg)
-	{
-		externalWatch = dlg;
-	}
+	public void addChildWatch(ChildWatch dlg);
 
 	/**
 	 * Closes all open streams and child process.
 	 */
-	public void close()
-	{
-		if (stdIn != 0 )
-		{
-			fclose(standardInput);
-			stdIn = 0;
-		}
-		if (stdOut != 0 )
-		{
-			fclose(standardOutput);
-			stdOut = 0;
-		}
-		if (stdErr != 0 )
-		{
-			fclose(standardError);
-			stdErr = 0;
-		}
-		if ( childPid != 0 )
-		{
-			closePid(childPid);
-			childPid = 0;
-		}
-	}
+	public void close();
 
 	/**
 	 * Adds a parameter to the execution program
 	 */
-	public void addParm(string parm)
-	{
-		argv ~= parm;
-	}
+	public void addParm(string parm);
 
 	/**
 	 * Gets the last error message
 	 */
-	public string getLastError()
-	{
-		if ( error != null )
-		{
-			return Str.toString(error.message);
-		}
-		return "";
-	}
+	public string getLastError();
 
 	version(Rulada)
 	{
@@ -155,42 +112,7 @@ public class Spawn
 	public int execAsyncWithPipes(
 	ChildWatch externalWatch = null,
 	bool delegate(string) readOutput = null,
-	bool delegate(string) readError = null )
-	{
-		int result = g_spawn_async_with_pipes(
-		Str.toStringz(workingDirectory),
-		Str.toStringzArray(argv),
-		Str.toStringzArray(envp),
-		flags,
-		childSetup,
-		userData,
-		&childPid,
-		&stdIn,
-		&stdOut,
-		&stdErr,
-		&error
-		);
-
-		if ( result != 0 )
-		{
-			this.externalWatch = externalWatch;
-			g_child_watch_add(childPid, cast(GChildWatchFunc)(&childWatchCallback), cast(void*)this);
-			standardInput = fdopen(stdIn, Str.toStringz("w"));
-			standardOutput = fdopen(stdOut, Str.toStringz("r"));
-			standardError = fdopen(stdErr, Str.toStringz("r"));
-
-			if ( readOutput !is null )
-			{
-				(new ReadFile(standardOutput, readOutput)).start();
-			}
-			if ( readError !is null )
-			{
-				(new ReadFile(standardError, readError)).start();
-			}
-		}
-
-		return result;
-	}
+	bool delegate(string) readError = null );
 
 	class ReadFile : Нить
 	{
@@ -199,116 +121,31 @@ public class Spawn
 
 		int lineCount;
 
-		this(фук file, bool delegate (string) read )
-		{
-			this.file = file;
-			this.read = read;
-		}
+		this(фук file, bool delegate (string) read );
 
 		version(druntime)
 		{
-			public int run()
-			{
-				string line = readLine(file);
-				while( line !is null )
-				{
-					++lineCount;
-					if ( read !is null )
-					{
-						read(line);
-					}
-					line = readLine(file);
-				}
-				return 0;
-			}
+			public int run();
 		}
 		else
 		{
-			public /*override*/ int run()
-			{
-				string line = readLine(file);
-				while( line !is null )
-				{
-					++lineCount;
-					//writefln("Spawn.ReadFile.run line (%s) ========== >>>%s<<<", lineCount, line);
-					//printf("Spawn.ReadFile.run line (%d) ========== >>>%.*s<<<", lineCount, line);
-					if ( read !is null )
-					{
-						read(line);
-					}
-					line = readLine(file);
-				}
-				return 0;
-			}
+			public /*override*/ int run();
 		}
 	}
 
-	private string readLine(фук stream, int max=4096)
-	{
-		if ( feof(stream) )
-		{
-			if ( externalWatch !is null )
-			{
-				externalWatch(this);
-			}
-			return null;
-		}
-		string line;
-		line.length = max+1;
-		char* lineP = fgets(Str.toStringz(line), max, stream);
-		if ( lineP is null )
-		{
-			return "";
-		}
-		int l = strlen(line.ptr);
-		if ( l > 0 ) --l;
-		//printf("\nreadLine\n");
-		//foreach ( char c ; line )
-		//{
-			//       printf("%c", c);
-		//}
-		//printf("\n\n");
-		return line[0..l];
-	}
+	private string readLine(фук stream, int max=4096);
 
-	extern(C) static void childWatchCallback(int pid, int status, Spawn spawn)
-	{
-		//writefln("Spawn.childWatchCallback %s %s", pid, status);
-		spawn.exitStatus = status;
-		if ( spawn.externalWatch !is null )
-		{
-			spawn.externalWatch(spawn);
-		}
-		spawn.close();
-	}
+	extern(C) static void childWatchCallback(int pid, int status, Spawn spawn);
 
+	public bool endOfOutput();
 
-	public bool endOfOutput()
-	{
-		if ( standardOutput is null ) return true;
-		return feof(standardOutput) != 0;
-	}
+	public bool endOfError();
 
-	public bool endOfError()
-	{
-		if ( standardError is null ) return true;
-		return feof(standardError) != 0;
-	}
+	string getOutputString();
 
-	string getOutputString()
-	{
-		return Str.toString(strOutput);
-	}
+	string getErrorString();
 
-	string getErrorString()
-	{
-		return Str.toString(strError);
-	}
-
-	int getExitStatus()
-	{
-		return exitStatus;
-	}
+	int getExitStatus();
 
 	/**
 	 * Executes a command synchronasly and
@@ -318,43 +155,7 @@ public class Spawn
 	public int commandLineSync(
 	ChildWatch externalWatch = null,
 	bool delegate(string) readOutput = null,
-	bool delegate(string) readError = null )
-	{
-		string commandLine;
-		foreach ( int count, string arg; argv)
-		{
-			if ( count > 0 )
-			{
-				commandLine ~= ' ';
-			}
-			commandLine ~= arg;
-		}
-		int status = g_spawn_command_line_sync(
-		Str.toStringz(commandLine),
-		&strOutput,
-		&strError,
-		&exitStatus,
-		&error);
-		if ( readOutput != null )
-		{
-			foreach ( string line ; splitlines(Str.toString(strOutput)) )
-			{
-				readOutput(line);
-			}
-		}
-		if ( readError != null )
-		{
-			foreach ( string line ; splitlines(Str.toString(strError)) )
-			{
-				readError(line);
-			}
-		}
-		if ( externalWatch != null )
-		{
-			externalWatch(this);
-		}
-		return status;
-	}
+	bool delegate(string) readError = null );
 
 	/**
 	 */
@@ -384,20 +185,7 @@ public class Spawn
 	 * Returns: TRUE on success, FALSE if error is set
 	 * Throws: GException on failure.
 	 */
-	public static int async(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, GPid* childPid)
-	{
-		// gboolean g_spawn_async (const gchar *working_directory,  gchar **argv,  gchar **envp,  GSpawnFlags flags,  GSpawnChildSetupFunc child_setup,  gpointer user_data,  GPid *child_pid,  GError **error);
-		GError* err = null;
-
-		auto p = g_spawn_async(Str.toStringz(workingDirectory), Str.toStringzArray(argv), Str.toStringzArray(envp), flags, childSetup, userData, childPid, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		return p;
-	}
+	public static int async(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, GPid* childPid);
 
 	/**
 	 * Executes a child synchronously (waits for the child to exit before returning).
@@ -427,24 +215,7 @@ public class Spawn
 	 * exitStatus =  return location for child exit status, as returned by waitpid(), or NULL
 	 * Returns: TRUE on success, FALSE if an error was set.
 	 */
-	public static int sync(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, out string standardOutput, out string standardError, out int exitStatus)
-	{
-		// gboolean g_spawn_sync (const gchar *working_directory,  gchar **argv,  gchar **envp,  GSpawnFlags flags,  GSpawnChildSetupFunc child_setup,  gpointer user_data,  gchar **standard_output,  gchar **standard_error,  gint *exit_status,  GError **error);
-		char* outstandardOutput = null;
-		char* outstandardError = null;
-		GError* err = null;
-
-		auto p = g_spawn_sync(Str.toStringz(workingDirectory), Str.toStringzArray(argv), Str.toStringzArray(envp), flags, childSetup, userData, &outstandardOutput, &outstandardError, &exitStatus, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		standardOutput = Str.toString(outstandardOutput);
-		standardError = Str.toString(outstandardError);
-		return p;
-	}
+	public static int sync(string workingDirectory, string[] argv, string[] envp, GSpawnFlags flags, GSpawnChildSetupFunc childSetup, void* userData, out string standardOutput, out string standardError, out int exitStatus);
 
 	/**
 	 * A simple version of g_spawn_async() that parses a command line with
@@ -460,20 +231,7 @@ public class Spawn
 	 * Returns: TRUE on success, FALSE if error is set.
 	 * Throws: GException on failure.
 	 */
-	public static int commandLineAsync(string commandLine)
-	{
-		// gboolean g_spawn_command_line_async (const gchar *command_line,  GError **error);
-		GError* err = null;
-
-		auto p = g_spawn_command_line_async(Str.toStringz(commandLine), &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		return p;
-	}
+	public static int commandLineAsync(string commandLine);
 
 	/**
 	 * A simple version of g_spawn_sync() with little-used parameters
@@ -503,24 +261,7 @@ public class Spawn
 	 * exitStatus =  return location for child exit status, as returned by waitpid()
 	 * Returns: TRUE on success, FALSE if an error was set
 	 */
-	public static int commandLineSync(string commandLine, out string standardOutput, out string standardError, out int exitStatus)
-	{
-		// gboolean g_spawn_command_line_sync (const gchar *command_line,  gchar **standard_output,  gchar **standard_error,  gint *exit_status,  GError **error);
-		char* outstandardOutput = null;
-		char* outstandardError = null;
-		GError* err = null;
-
-		auto p = g_spawn_command_line_sync(Str.toStringz(commandLine), &outstandardOutput, &outstandardError, &exitStatus, &err);
-
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-
-		standardOutput = Str.toString(outstandardOutput);
-		standardError = Str.toString(outstandardError);
-		return p;
-	}
+	public static int commandLineSync(string commandLine, out string standardOutput, out string standardError, out int exitStatus);
 
 	/**
 	 * On some platforms, notably Windows, the GPid type represents a resource
@@ -530,9 +271,5 @@ public class Spawn
 	 * Params:
 	 * pid =  The process reference to close
 	 */
-	public static void closePid(GPid pid)
-	{
-		// void g_spawn_close_pid (GPid pid);
-		g_spawn_close_pid(pid);
-	}
+	public static void closePid(GPid pid);
 }

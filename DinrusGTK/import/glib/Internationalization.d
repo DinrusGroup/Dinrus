@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-I18N.html
- * outPack = glib
- * outFile = Internationalization
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Internationalization
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Internationalization;
 
 public  import gtkD.gtkc.glibtypes;
@@ -103,11 +52,7 @@ public class Internationalization
 	 * msgid =  message to translate
 	 * Returns: The translated string
 	 */
-	public static string dgettext(string domain, string msgid)
-	{
-		// const gchar * g_dgettext (const gchar *domain,  const gchar *msgid);
-		return Str.toString(g_dgettext(Str.toStringz(domain), Str.toStringz(msgid)));
-	}
+	public static string dgettext(string domain, string msgid);
 	
 	/**
 	 * This function is a wrapper of dngettext() which does not translate
@@ -124,11 +69,7 @@ public class Internationalization
 	 * n =  the quantity for which translation is needed
 	 * Returns: The translated string
 	 */
-	public static string dngettext(string domain, string msgid, string msgidPlural, uint n)
-	{
-		// const gchar * g_dngettext (const gchar *domain,  const gchar *msgid,  const gchar *msgid_plural,  gulong n);
-		return Str.toString(g_dngettext(Str.toStringz(domain), Str.toStringz(msgid), Str.toStringz(msgidPlural), n));
-	}
+	public static string dngettext(string domain, string msgid, string msgidPlural, uint n);
 	
 	/**
 	 * This function is a variant of g_dgettext() which supports
@@ -151,11 +92,7 @@ public class Internationalization
 	 * msgidoffset =  the offset of the message id in msgctxid
 	 * Returns: The translated string
 	 */
-	public static string dpgettext(string domain, string msgctxtid, uint msgidoffset)
-	{
-		// const gchar * g_dpgettext (const gchar *domain,  const gchar *msgctxtid,  gsize msgidoffset);
-		return Str.toString(g_dpgettext(Str.toStringz(domain), Str.toStringz(msgctxtid), msgidoffset));
-	}
+	public static string dpgettext(string domain, string msgctxtid, uint msgidoffset);
 	
 	/**
 	 * This function is a variant of g_dgettext() which supports
@@ -174,11 +111,7 @@ public class Internationalization
 	 * msgid =  the message
 	 * Returns: The translated string
 	 */
-	public static string dpgettext2(string domain, string context, string msgid)
-	{
-		// const gchar * g_dpgettext2 (const gchar *domain,  const gchar *context,  const gchar *msgid);
-		return Str.toString(g_dpgettext2(Str.toStringz(domain), Str.toStringz(context), Str.toStringz(msgid)));
-	}
+	public static string dpgettext2(string domain, string context, string msgid);
 	
 	/**
 	 * An auxiliary function for gettext() support (see Q_()).
@@ -188,11 +121,7 @@ public class Internationalization
 	 * msgval =  another string
 	 * Returns: msgval, unless msgval is identical to msgid and contains a '|' character, in which case a pointer to the substring of msgid after the first '|' character is returned.
 	 */
-	public static string stripContext(string msgid, string msgval)
-	{
-		// const gchar * g_strip_context (const gchar *msgid,  const gchar *msgval);
-		return Str.toString(g_strip_context(Str.toStringz(msgid), Str.toStringz(msgval)));
-	}
+	public static string stripContext(string msgid, string msgval);
 	
 	/**
 	 * Computes a list of applicable locale names, which can be used to
@@ -207,9 +136,5 @@ public class Internationalization
 	 * Since 2.6
 	 * Returns: a NULL-terminated array of strings owned by GLib  that must not be modified or freed.
 	 */
-	public static string[] getLanguageNames()
-	{
-		// const gchar* const * g_get_language_names (void);
-		return Str.toStringArray(g_get_language_names());
-	}
+	public static string[] getLanguageNames();
 }

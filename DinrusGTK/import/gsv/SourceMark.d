@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSourceMark.html
- * outPack = gsv
- * outFile = SourceMark
- * strct   = GtkSourceMark
- * realStrct=
- * ctorStrct=
- * clss    = SourceMark
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_source_mark_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GtkSourceMark* -> SourceMark
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gsv.SourceMark;
 
 public  import gtkD.gsvc.gsvtypes;
@@ -86,38 +34,16 @@ public class SourceMark : TextMark
 	protected GtkSourceMark* gtkSourceMark;
 	
 	
-	public GtkSourceMark* getSourceMarkStruct()
-	{
-		return gtkSourceMark;
-	}
+	public GtkSourceMark* getSourceMarkStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourceMark;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSourceMark* gtkSourceMark)
-	{
-		if(gtkSourceMark is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourceMark);
-		if( ptr !is null )
-		{
-			this = cast(SourceMark)ptr;
-			return;
-		}
-		super(cast(GtkTextMark*)gtkSourceMark);
-		this.gtkSourceMark = gtkSourceMark;
-	}
+	public this (GtkSourceMark* gtkSourceMark);
 	
 	/**
 	 */
@@ -137,27 +63,14 @@ public class SourceMark : TextMark
 	 * "error" category).
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, string category)
-	{
-		// GtkSourceMark * gtk_source_mark_new (const gchar *name,  const gchar *category);
-		auto p = gtk_source_mark_new(Str.toStringz(name), Str.toStringz(category));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_source_mark_new(Str.toStringz(name), Str.toStringz(category))");
-		}
-		this(cast(GtkSourceMark*) p);
-	}
+	public this (string name, string category);
 	
 	/**
 	 * Returns the mark category
 	 * Since 2.2
 	 * Returns: the category of the GtkSourceMark
 	 */
-	public string getCategory()
-	{
-		// const gchar * gtk_source_mark_get_category (GtkSourceMark *mark);
-		return Str.toString(gtk_source_mark_get_category(gtkSourceMark));
-	}
+	public string getCategory();
 	
 	/**
 	 * Returns the next GtkSourceMark in the buffer or NULL if the mark
@@ -168,16 +81,7 @@ public class SourceMark : TextMark
 	 * category =  a string specifying the mark category or NULL
 	 * Returns: the next GtkSourceMark or NULL
 	 */
-	public SourceMark next(string category)
-	{
-		// GtkSourceMark * gtk_source_mark_next (GtkSourceMark *mark,  const gchar *category);
-		auto p = gtk_source_mark_next(gtkSourceMark, Str.toStringz(category));
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceMark(cast(GtkSourceMark*) p);
-	}
+	public SourceMark next(string category);
 	
 	/**
 	 * Returns the previous GtkSourceMark in the buffer or NULL if the mark
@@ -188,14 +92,5 @@ public class SourceMark : TextMark
 	 * category =  a string specifying the mark category or NULL
 	 * Returns: the previous GtkSourceMark or NULL
 	 */
-	public SourceMark prev(string category)
-	{
-		// GtkSourceMark * gtk_source_mark_prev (GtkSourceMark *mark,  const gchar *category);
-		auto p = gtk_source_mark_prev(gtkSourceMark, Str.toStringz(category));
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceMark(cast(GtkSourceMark*) p);
-	}
+	public SourceMark prev(string category);
 }

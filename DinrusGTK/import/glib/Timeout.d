@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Timeout
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Timeout
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_timeout_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Timeout;
 
 public  import gtkD.gtkc.glibtypes;
@@ -150,18 +98,7 @@ public class Timeout
 	 *    	delegate() = 	the delegate to be executed
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(uint interval, bool delegate() dlg, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		timeoutID = g_timeout_add(interval, cast(GSourceFunc)&timeoutCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = 0;
-			}
-		}
-	}
+	this(uint interval, bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * Creates a new timeout cycle.
@@ -171,18 +108,7 @@ public class Timeout
 	 *      priority = Priority for the timeout function
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(uint interval, bool delegate() dlg, GPriority priority, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		timeoutID = g_timeout_add_full(priority, interval, cast(GSourceFunc)&timeoutCallback, cast(void*)this, null);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = 0;
-			}
-		}
-	}
+	this(uint interval, bool delegate() dlg, GPriority priority, bool fireNow=false);
 	
 	/**
 	 * Creates a new timeout cycle with the default priority, GPriority.DEFAULT.
@@ -191,18 +117,7 @@ public class Timeout
 	 *      seconds = interval in seconds.
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, uint seconds, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		timeoutID = g_timeout_add_seconds(seconds, cast(GSourceFunc)&timeoutCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = 0;
-			}
-		}
-	}
+	this(bool delegate() dlg, uint seconds, bool fireNow=false);
 	
 	/**
 	 * Creates a new timeout cycle.
@@ -212,36 +127,15 @@ public class Timeout
 	 *      priority = Priority for the timeout function
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, uint seconds, GPriority priority, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		timeoutID = g_timeout_add_seconds_full(priority, seconds, cast(GSourceFunc)&timeoutCallback, cast(void*)this, null);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = 0;
-			}
-		}
-	}
+	this(bool delegate() dlg, uint seconds, GPriority priority, bool fireNow=false);
 	
 	/** */
-	public void stop()
-	{
-		if ( timeoutID > 0 )
-		{
-			g_source_remove(timeoutID);
-		}
-		timeoutListeners.length = 0;
-	}
+	public void stop();
 	
 	/**
 	 * Removes the timeout from gtk
 	 */
-	~this()
-	{
-		stop();
-	}
+	~this();
 	
 	/**
 	 * Adds a new delegate to this timeout cycle
@@ -249,17 +143,7 @@ public class Timeout
 	 *    	dlg =
 	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = timeoutListeners.length - 1;
-			}
-		}
-	}
+	public void addListener(bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * The callback execution from glib
@@ -267,35 +151,13 @@ public class Timeout
 	 *    	timeout =
 	 * Returns:
 	 */
-	extern(C) static bool timeoutCallback(Timeout timeout)
-	{
-		return timeout.callAllListeners();
-	}
+	extern(C) static bool timeoutCallback(Timeout timeout);
 	
 	/**
 	 * Executes all delegates on the execution list
 	 * Returns:
 	 */
-	private bool callAllListeners()
-	{
-		bool runAgain = false;
-		
-		int i = 0;
-		
-		while ( i<timeoutListeners.length )
-		{
-			if ( !timeoutListeners[i]() )
-			{
-				timeoutListeners = timeoutListeners[0..i] ~ timeoutListeners[i+1..timeoutListeners.length];
-			}
-			else
-			{
-				runAgain = true;
-				++i;
-			}
-		}
-		return runAgain;
-	}
+	private bool callAllListeners();
 	
 	/**
 	 */
@@ -309,16 +171,7 @@ public class Timeout
 	 * interval =  the timeout interval in milliseconds.
 	 * Returns: the newly-created timeout source
 	 */
-	public static Source sourceNew(uint interval)
-	{
-		// GSource * g_timeout_source_new (guint interval);
-		auto p = g_timeout_source_new(interval);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public static Source sourceNew(uint interval);
 	
 	/**
 	 * Creates a new timeout source.
@@ -332,16 +185,7 @@ public class Timeout
 	 * interval =  the timeout interval in seconds
 	 * Returns: the newly-created timeout source
 	 */
-	public static Source sourceNewSeconds(uint interval)
-	{
-		// GSource * g_timeout_source_new_seconds (guint interval);
-		auto p = g_timeout_source_new_seconds(interval);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public static Source sourceNewSeconds(uint interval);
 	
 	/**
 	 * Sets a function to be called at regular intervals, with the default
@@ -367,11 +211,7 @@ public class Timeout
 	 * data =  data to pass to function
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint add(uint interval, GSourceFunc funct, void* data)
-	{
-		// guint g_timeout_add (guint interval,  GSourceFunc function,  gpointer data);
-		return g_timeout_add(interval, funct, data);
-	}
+	public static uint add(uint interval, GSourceFunc funct, void* data);
 	
 	/**
 	 * Sets a function to be called at regular intervals, with the given
@@ -397,11 +237,7 @@ public class Timeout
 	 * notify =  function to call when the timeout is removed, or NULL
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint addFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_timeout_add_full (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_timeout_add_full(priority, interval, funct, data, notify);
-	}
+	public static uint addFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify);
 	
 	/**
 	 * Sets a function to be called at regular intervals with the default
@@ -418,11 +254,7 @@ public class Timeout
 	 * data =  data to pass to function
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint addSeconds(uint interval, GSourceFunc funct, void* data)
-	{
-		// guint g_timeout_add_seconds (guint interval,  GSourceFunc function,  gpointer data);
-		return g_timeout_add_seconds(interval, funct, data);
-	}
+	public static uint addSeconds(uint interval, GSourceFunc funct, void* data);
 	
 	/**
 	 * Sets a function to be called at regular intervals, with priority.
@@ -459,9 +291,5 @@ public class Timeout
 	 * notify =  function to call when the timeout is removed, or NULL
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint addSecondsFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_timeout_add_seconds_full (gint priority,  guint interval,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_timeout_add_seconds_full(priority, interval, funct, data, notify);
-	}
+	public static uint addSecondsFull(int priority, uint interval, GSourceFunc funct, void* data, GDestroyNotify notify);
 }

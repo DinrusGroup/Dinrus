@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Windows-Compatibility-Functions.html
- * outPack = glib
- * outFile = WindowsUtils
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = WindowsUtils
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_win32_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.WindowsUtils;
 
 public  import gtkD.gtkc.glibtypes;
@@ -85,11 +34,7 @@ public class WindowsUtils
 	 * error =  error code.
 	 * Returns: newly-allocated error message
 	 */
-	public static string errorMessage(int error)
-	{
-		// gchar* g_win32_error_message (gint error);
-		return Str.toString(g_win32_error_message(error));
-	}
+	public static string errorMessage(int error);
 	
 	/**
 	 * The setlocale() function in the Microsoft C library uses locale
@@ -101,11 +46,7 @@ public class WindowsUtils
 	 * g_free().
 	 * Returns: newly-allocated locale name.
 	 */
-	public static string getlocale()
-	{
-		// gchar* g_win32_getlocale (void);
-		return Str.toString(g_win32_getlocale());
-	}
+	public static string getlocale();
 	
 	/**
 	 * Warning
@@ -148,11 +89,7 @@ public class WindowsUtils
 	 * dllName =  The name of a DLL that a package provides in UTF-8, or NULL.
 	 * Returns: a string containing the installation directory forpackage. The string is in the GLib file name encoding,i.e. UTF-8. The return value should be freed with g_free() when notneeded any longer. If the function fails NULL is returned.Deprecated:2.18: Pass the HMODULE of a DLL or EXE tog_win32_get_package_installation_directory_of_module() instead.
 	 */
-	public static string getPackageInstallationDirectory(string p, string dllName)
-	{
-		// gchar* g_win32_get_package_installation_directory  (const gchar *package,  const gchar *dll_name);
-		return Str.toString(g_win32_get_package_installation_directory(Str.toStringz(p), Str.toStringz(dllName)));
-	}
+	public static string getPackageInstallationDirectory(string p, string dllName);
 	
 	/**
 	 * This function tries to determine the installation directory of a
@@ -180,11 +117,7 @@ public class WindowsUtils
 	 * hmodule =  The Win32 handle for a DLL loaded into the current process, or NULL
 	 * Returns: a string containing the guessed installation directory forthe software package hmodule is from. The string is in the GLibfile name encoding, i.e. UTF-8. The return value should be freedwith g_free() when not needed any longer. If the function failsNULL is returned.
 	 */
-	public static string getPackageInstallationDirectoryOfModule(void* hmodule)
-	{
-		// gchar* g_win32_get_package_installation_directory_of_module  (gpointer hmodule);
-		return Str.toString(g_win32_get_package_installation_directory_of_module(hmodule));
-	}
+	public static string getPackageInstallationDirectoryOfModule(void* hmodule);
 	
 	/**
 	 * Warning
@@ -204,11 +137,7 @@ public class WindowsUtils
 	 * subdir =  A subdirectory of the package installation directory, also in UTF-8
 	 * Returns: a string containing the complete path to subdir insidethe installation directory of package. The returned string is inthe GLib file name encoding, i.e. UTF-8. The return value should befreed with g_free() when no longer needed. If something goes wrong,NULL is returned.Deprecated:2.18: Pass the HMODULE of a DLL or EXE tog_win32_get_package_installation_directory_of_module() instead, andthen construct a subdirectory pathname with g_build_filename().
 	 */
-	public static string getPackageInstallationSubdirectory(string p, string dllName, string subdir)
-	{
-		// gchar* g_win32_get_package_installation_subdirectory  (const gchar *package,  const gchar *dll_name,  const gchar *subdir);
-		return Str.toString(g_win32_get_package_installation_subdirectory(Str.toStringz(p), Str.toStringz(dllName), Str.toStringz(subdir)));
-	}
+	public static string getPackageInstallationSubdirectory(string p, string dllName, string subdir);
 	
 	/**
 	 * Returns version information for the Windows operating system the
@@ -223,11 +152,7 @@ public class WindowsUtils
 	 * Since 2.6
 	 * Returns: The version information.
 	 */
-	public static uint getWindowsVersion()
-	{
-		// guint g_win32_get_windows_version (void);
-		return g_win32_get_windows_version();
-	}
+	public static uint getWindowsVersion();
 	
 	/**
 	 * Converts a filename from UTF-8 to the system codepage.
@@ -251,9 +176,5 @@ public class WindowsUtils
 	 * utf8filename =  a UTF-8 encoded filename.
 	 * Returns: The converted filename, or NULL on conversionfailure and lack of short names.
 	 */
-	public static string localeFilenameFromUtf8(string utf8filename)
-	{
-		// gchar* g_win32_locale_filename_from_utf8 (const gchar *utf8filename);
-		return Str.toString(g_win32_locale_filename_from_utf8(Str.toStringz(utf8filename)));
-	}
+	public static string localeFilenameFromUtf8(string utf8filename);
 }

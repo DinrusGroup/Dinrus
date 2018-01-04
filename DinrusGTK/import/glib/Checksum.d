@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Data-Checksums.html
- * outPack = glib
- * outFile = Checksum
- * strct   = GChecksum
- * realStrct=
- * ctorStrct=
- * clss    = Checksum
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_checksum_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GChecksum* -> Checksum
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Checksum;
 
 public  import gtkD.gtkc.glibtypes;
@@ -85,30 +33,16 @@ public class Checksum
 	protected GChecksum* gChecksum;
 	
 	
-	public GChecksum* getChecksumStruct()
-	{
-		return gChecksum;
-	}
+	public GChecksum* getChecksumStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gChecksum;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GChecksum* gChecksum)
-	{
-		if(gChecksum is null)
-		{
-			this = null;
-			return;
-		}
-		this.gChecksum = gChecksum;
-	}
+	public this (GChecksum* gChecksum);
 	
 	/**
 	 */
@@ -120,11 +54,7 @@ public class Checksum
 	 * checksumType =  a GChecksumType
 	 * Returns: the checksum length, or -1 if checksum_type isnot supported.
 	 */
-	public static int typeGetLength(GChecksumType checksumType)
-	{
-		// gssize g_checksum_type_get_length (GChecksumType checksum_type);
-		return g_checksum_type_get_length(checksumType);
-	}
+	public static int typeGetLength(GChecksumType checksumType);
 	
 	/**
 	 * Creates a new GChecksum, using the checksum algorithm checksum_type.
@@ -144,16 +74,7 @@ public class Checksum
 	 * checksumType =  the desired type of checksum
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GChecksumType checksumType)
-	{
-		// GChecksum * g_checksum_new (GChecksumType checksum_type);
-		auto p = g_checksum_new(checksumType);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_checksum_new(checksumType)");
-		}
-		this(cast(GChecksum*) p);
-	}
+	public this (GChecksumType checksumType);
 	
 	/**
 	 * Copies a GChecksum. If checksum has been closed, by calling
@@ -162,36 +83,19 @@ public class Checksum
 	 * Since 2.16
 	 * Returns: the copy of the passed GChecksum. Use g_checksum_free() when finished using it.
 	 */
-	public Checksum copy()
-	{
-		// GChecksum * g_checksum_copy (const GChecksum *checksum);
-		auto p = g_checksum_copy(gChecksum);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Checksum(cast(GChecksum*) p);
-	}
+	public Checksum copy();
 	
 	/**
 	 * Frees the memory allocated for checksum.
 	 * Since 2.16
 	 */
-	public void free()
-	{
-		// void g_checksum_free (GChecksum *checksum);
-		g_checksum_free(gChecksum);
-	}
+	public void free();
 	
 	/**
 	 * Resets the state of the checksum back to its initial state.
 	 * Since 2.18
 	 */
-	public void reset()
-	{
-		// void g_checksum_reset (GChecksum *checksum);
-		g_checksum_reset(gChecksum);
-	}
+	public void reset();
 	
 	/**
 	 * Feeds data into an existing GChecksum. The checksum must still be
@@ -202,11 +106,7 @@ public class Checksum
 	 * data =  buffer used to compute the checksum
 	 * length =  size of the buffer, or -1 if it is a null-terminated string.
 	 */
-	public void update(char* data, int length)
-	{
-		// void g_checksum_update (GChecksum *checksum,  const guchar *data,  gssize length);
-		g_checksum_update(gChecksum, data, length);
-	}
+	public void update(char* data, int length);
 	
 	/**
 	 * Gets the digest as an hexadecimal string.
@@ -216,11 +116,7 @@ public class Checksum
 	 * Since 2.16
 	 * Returns: the hexadecimal representation of the checksum. The returned string is owned by the checksum and should not be modified or freed.
 	 */
-	public string getString()
-	{
-		// const gchar * g_checksum_get_string (GChecksum *checksum);
-		return Str.toString(g_checksum_get_string(gChecksum));
-	}
+	public string getString();
 	
 	/**
 	 * Gets the digest from checksum as a raw binary vector and places it
@@ -233,11 +129,7 @@ public class Checksum
 	 * digestLen =  an inout parameter. The caller initializes it to the size of buffer.
 	 *  After the call it contains the length of the digest.
 	 */
-	public void getDigest(ubyte* buffer, uint* digestLen)
-	{
-		// void g_checksum_get_digest (GChecksum *checksum,  guint8 *buffer,  gsize *digest_len);
-		g_checksum_get_digest(gChecksum, buffer, digestLen);
-	}
+	public void getDigest(ubyte* buffer, uint* digestLen);
 	
 	/**
 	 * Computes the checksum for a binary data of length. This is a
@@ -251,11 +143,7 @@ public class Checksum
 	 * length =  length of data
 	 * Returns: the digest of the binary data as a string in hexadecimal. The returned string should be freed with g_free() when done using it.
 	 */
-	public static string gComputeChecksumForData(GChecksumType checksumType, char* data, uint length)
-	{
-		// gchar * g_compute_checksum_for_data (GChecksumType checksum_type,  const guchar *data,  gsize length);
-		return Str.toString(g_compute_checksum_for_data(checksumType, data, length));
-	}
+	public static string gComputeChecksumForData(GChecksumType checksumType, char* data, uint length);
 	
 	/**
 	 * Computes the checksum of a string.
@@ -267,9 +155,5 @@ public class Checksum
 	 * length =  the length of the string, or -1 if the string is null-terminated.
 	 * Returns: the checksum as a hexadecimal string. The returned string should be freed with g_free() when done using it.
 	 */
-	public static string gComputeChecksumForString(GChecksumType checksumType, string str, int length)
-	{
-		// gchar * g_compute_checksum_for_string (GChecksumType checksum_type,  const gchar *str,  gssize length);
-		return Str.toString(g_compute_checksum_for_string(checksumType, Str.toStringz(str), length));
-	}
+	public static string gComputeChecksumForString(GChecksumType checksumType, string str, int length);
 }

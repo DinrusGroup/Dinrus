@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = MainContext
- * strct   = GMainContext
- * realStrct=
- * ctorStrct=
- * clss    = MainContext
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_main_context_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Source
- * 	- gtkD.gthread.Cond
- * 	- gtkD.gthread.Mutex
- * structWrap:
- * 	- GCond* -> Cond
- * 	- GMainContext* -> MainContext
- * 	- GMutex* -> Mutex
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.MainContext;
 
@@ -142,30 +86,16 @@ public class MainContext
 	protected GMainContext* gMainContext;
 	
 	
-	public GMainContext* getMainContextStruct()
-	{
-		return gMainContext;
-	}
+	public GMainContext* getMainContextStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMainContext;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMainContext* gMainContext)
-	{
-		if(gMainContext is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMainContext = gMainContext;
-	}
+	public this (GMainContext* gMainContext);
 	
 	/**
 	 */
@@ -174,41 +104,19 @@ public class MainContext
 	 * Creates a new GMainContext structure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GMainContext * g_main_context_new (void);
-		auto p = g_main_context_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_main_context_new()");
-		}
-		this(cast(GMainContext*) p);
-	}
+	public this ();
 	
 	/**
 	 * Increases the reference count on a GMainContext object by one.
 	 * Returns: the context that was passed in (since 2.6)
 	 */
-	public MainContext doref()
-	{
-		// GMainContext * g_main_context_ref (GMainContext *context);
-		auto p = g_main_context_ref(gMainContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainContext(cast(GMainContext*) p);
-	}
+	public MainContext doref();
 	
 	/**
 	 * Decreases the reference count on a GMainContext object by one. If
 	 * the result is zero, free the context and free all associated memory.
 	 */
-	public void unref()
-	{
-		// void g_main_context_unref (GMainContext *context);
-		g_main_context_unref(gMainContext);
-	}
+	public void unref();
 	
 	/**
 	 * Returns the global default main context. This is the main context
@@ -217,17 +125,8 @@ public class MainContext
 	 * g_main_context_get_thread_default().
 	 * Returns: the global default main context.
 	 */
-	public static MainContext defaulx()
-	{
-		// GMainContext * g_main_context_default (void);
-		auto p = g_main_context_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainContext(cast(GMainContext*) p);
-	}
-	
+	public static MainContext defaulx();
+
 	/**
 	 * Runs a single iteration for the given main loop. This involves
 	 * checking to see if any event sources are ready to be processed,
@@ -244,21 +143,13 @@ public class MainContext
 	 * mayBlock =  whether the call may block.
 	 * Returns: TRUE if events were dispatched.
 	 */
-	public int iteration(int mayBlock)
-	{
-		// gboolean g_main_context_iteration (GMainContext *context,  gboolean may_block);
-		return g_main_context_iteration(gMainContext, mayBlock);
-	}
+	public int iteration(int mayBlock);
 	
 	/**
 	 * Checks if any sources have pending events for the given context.
 	 * Returns: TRUE if events are pending.
 	 */
-	public int pending()
-	{
-		// gboolean g_main_context_pending (GMainContext *context);
-		return g_main_context_pending(gMainContext);
-	}
+	public int pending();
 	
 	/**
 	 * Finds a GSource given a pair of context and ID.
@@ -266,16 +157,7 @@ public class MainContext
 	 * sourceId =  the source ID, as returned by g_source_get_id().
 	 * Returns: the GSource if found, otherwise, NULL
 	 */
-	public Source findSourceById(uint sourceId)
-	{
-		// GSource * g_main_context_find_source_by_id (GMainContext *context,  guint source_id);
-		auto p = g_main_context_find_source_by_id(gMainContext, sourceId);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source findSourceById(uint sourceId);
 	
 	/**
 	 * Finds a source with the given user data for the callback. If
@@ -285,16 +167,7 @@ public class MainContext
 	 * userData =  the user_data for the callback.
 	 * Returns: the source, if one was found, otherwise NULL
 	 */
-	public Source findSourceByUserData(void* userData)
-	{
-		// GSource * g_main_context_find_source_by_user_data  (GMainContext *context,  gpointer user_data);
-		auto p = g_main_context_find_source_by_user_data(gMainContext, userData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source findSourceByUserData(void* userData);
 	
 	/**
 	 * Finds a source with the given source functions and user data. If
@@ -305,26 +178,13 @@ public class MainContext
 	 * userData =  the user data from the callback.
 	 * Returns: the source, if one was found, otherwise NULL
 	 */
-	public Source findSourceByFuncsUserData(GSourceFuncs* funcs, void* userData)
-	{
-		// GSource * g_main_context_find_source_by_funcs_user_data  (GMainContext *context,  GSourceFuncs *funcs,  gpointer user_data);
-		auto p = g_main_context_find_source_by_funcs_user_data(gMainContext, funcs, userData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source findSourceByFuncsUserData(GSourceFuncs* funcs, void* userData);
 	
 	/**
 	 * If context is currently waiting in a poll(), interrupt
 	 * the poll(), and continue the iteration process.
 	 */
-	public void wakeup()
-	{
-		// void g_main_context_wakeup (GMainContext *context);
-		g_main_context_wakeup(gMainContext);
-	}
+	public void wakeup();
 	
 	/**
 	 * Tries to become the owner of the specified context.
@@ -338,11 +198,7 @@ public class MainContext
 	 * g_main_context_check(), g_main_context_dispatch().
 	 * Returns: TRUE if the operation succeeded, and this thread is now the owner of context.
 	 */
-	public int acquire()
-	{
-		// gboolean g_main_context_acquire (GMainContext *context);
-		return g_main_context_acquire(gMainContext);
-	}
+	public int acquire();
 	
 	/**
 	 * Releases ownership of a context previously acquired by this thread
@@ -350,11 +206,7 @@ public class MainContext
 	 * times, the ownership will be released only when g_main_context_release()
 	 * is called as many times as it was acquired.
 	 */
-	public void release()
-	{
-		// void g_main_context_release (GMainContext *context);
-		g_main_context_release(gMainContext);
-	}
+	public void release();
 	
 	/**
 	 * Determines whether this thread holds the (recursive)
@@ -364,11 +216,7 @@ public class MainContext
 	 * Since 2.10
 	 * Returns: TRUE if current thread is owner of context.
 	 */
-	public int isOwner()
-	{
-		// gboolean g_main_context_is_owner (GMainContext *context);
-		return g_main_context_is_owner(gMainContext);
-	}
+	public int isOwner();
 	
 	/**
 	 * Tries to become the owner of the specified context,
@@ -381,11 +229,7 @@ public class MainContext
 	 * mutex =  a mutex, currently held
 	 * Returns: TRUE if the operation succeeded, and this thread is now the owner of context.
 	 */
-	public int wait(Cond cond, Mutex mutex)
-	{
-		// gboolean g_main_context_wait (GMainContext *context,  GCond *cond,  GMutex *mutex);
-		return g_main_context_wait(gMainContext, (cond is null) ? null : cond.getCondStruct(), (mutex is null) ? null : mutex.getMutexStruct());
-	}
+	public int wait(Cond cond, Mutex mutex);
 	
 	/**
 	 * Prepares to poll sources within a main loop. The resulting information
@@ -395,11 +239,7 @@ public class MainContext
 	 *  source already ready.
 	 * Returns: TRUE if some source is ready to be dispatched prior to polling.
 	 */
-	public int prepare(out int priority)
-	{
-		// gboolean g_main_context_prepare (GMainContext *context,  gint *priority);
-		return g_main_context_prepare(gMainContext, &priority);
-	}
+	public int prepare(out int priority);
 	
 	/**
 	 * Determines information necessary to poll this main loop.
@@ -410,11 +250,7 @@ public class MainContext
 	 * nFds =  length of fds.
 	 * Returns: the number of records actually stored in fds, or, if more than n_fds records need to be stored, the number of records that need to be stored.
 	 */
-	public int query(int maxPriority, out int timeout, GPollFD* fds, int nFds)
-	{
-		// gint g_main_context_query (GMainContext *context,  gint max_priority,  gint *timeout_,  GPollFD *fds,  gint n_fds);
-		return g_main_context_query(gMainContext, maxPriority, &timeout, fds, nFds);
-	}
+	public int query(int maxPriority, out int timeout, GPollFD* fds, int nFds);
 	
 	/**
 	 * Passes the results of polling back to the main loop.
@@ -425,20 +261,12 @@ public class MainContext
 	 * nFds =  return value of g_main_context_query()
 	 * Returns: TRUE if some sources are ready to be dispatched.
 	 */
-	public int check(int maxPriority, GPollFD* fds, int nFds)
-	{
-		// gint g_main_context_check (GMainContext *context,  gint max_priority,  GPollFD *fds,  gint n_fds);
-		return g_main_context_check(gMainContext, maxPriority, fds, nFds);
-	}
+	public int check(int maxPriority, GPollFD* fds, int nFds);
 	
 	/**
 	 * Dispatches all pending sources.
 	 */
-	public void dispatch()
-	{
-		// void g_main_context_dispatch (GMainContext *context);
-		g_main_context_dispatch(gMainContext);
-	}
+	public void dispatch();
 	
 	/**
 	 * Sets the function to use to handle polling of file descriptors. It
@@ -450,21 +278,13 @@ public class MainContext
 	 * Params:
 	 * func =  the function to call to poll all file descriptors
 	 */
-	public void setPollFunc(GPollFunc func)
-	{
-		// void g_main_context_set_poll_func (GMainContext *context,  GPollFunc func);
-		g_main_context_set_poll_func(gMainContext, func);
-	}
+	public void setPollFunc(GPollFunc func);
 	
 	/**
 	 * Gets the poll function set by g_main_context_set_poll_func().
 	 * Returns: the poll function
 	 */
-	public GPollFunc getPollFunc()
-	{
-		// GPollFunc g_main_context_get_poll_func (GMainContext *context);
-		return g_main_context_get_poll_func(gMainContext);
-	}
+	public GPollFunc getPollFunc();
 	
 	/**
 	 * Adds a file descriptor to the set of file descriptors polled for
@@ -477,11 +297,7 @@ public class MainContext
 	 *  the same as the priority used for g_source_attach() to ensure that the
 	 *  file descriptor is polled whenever the results may be needed.
 	 */
-	public void addPoll(GPollFD* fd, int priority)
-	{
-		// void g_main_context_add_poll (GMainContext *context,  GPollFD *fd,  gint priority);
-		g_main_context_add_poll(gMainContext, fd, priority);
-	}
+	public void addPoll(GPollFD* fd, int priority);
 	
 	/**
 	 * Removes file descriptor from the set of file descriptors to be
@@ -489,12 +305,8 @@ public class MainContext
 	 * Params:
 	 * fd =  a GPollFD descriptor previously added with g_main_context_add_poll()
 	 */
-	public void removePoll(GPollFD* fd)
-	{
-		// void g_main_context_remove_poll (GMainContext *context,  GPollFD *fd);
-		g_main_context_remove_poll(gMainContext, fd);
-	}
-	
+	public void removePoll(GPollFD* fd);
+
 	/**
 	 * Gets the thread-default GMainContext for this thread. Asynchronous
 	 * operations that want to be able to be run in contexts other than
@@ -506,16 +318,7 @@ public class MainContext
 	 * Since 2.22
 	 * Returns: the thread-default GMainContext, or NULL if thethread-default context is the global default context.
 	 */
-	public static MainContext getThreadDefault()
-	{
-		// GMainContext * g_main_context_get_thread_default (void);
-		auto p = g_main_context_get_thread_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainContext(cast(GMainContext*) p);
-	}
+	public static MainContext getThreadDefault();
 	
 	/**
 	 * Acquires context and sets it as the thread-default context for the
@@ -546,20 +349,12 @@ public class MainContext
 	 * see g_file_supports_thread_contexts().
 	 * Since 2.22
 	 */
-	public void pushThreadDefault()
-	{
-		// void g_main_context_push_thread_default (GMainContext *context);
-		g_main_context_push_thread_default(gMainContext);
-	}
+	public void pushThreadDefault();
 	
 	/**
 	 * Pops context off the thread-default context stack (verifying that
 	 * it was on the top of the stack).
 	 * Since 2.22
 	 */
-	public void popThreadDefault()
-	{
-		// void g_main_context_pop_thread_default (GMainContext *context);
-		g_main_context_pop_thread_default(gMainContext);
-	}
+	public void popThreadDefault();
 }

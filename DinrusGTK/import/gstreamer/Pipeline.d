@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstPipeline.html
- * outPack = gstreamer
- * outFile = Pipeline
- * strct   = GstPipeline
- * realStrct=
- * ctorStrct=
- * clss    = Pipeline
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_pipeline_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Element
- * 	- gtkD.gstreamer.Clock
- * 	- gtkD.gstreamer.Bus
- * structWrap:
- * 	- GstBus* -> Bus
- * 	- GstClock* -> Clock
- * 	- GstElement* -> Element
- * 	- GstPipeline* -> Pipeline
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Pipeline;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -126,45 +67,19 @@ public class Pipeline : Bin
 	protected GstPipeline* gstPipeline;
 	
 	
-	public GstPipeline* getPipelineStruct()
-	{
-		return gstPipeline;
-	}
+	public GstPipeline* getPipelineStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstPipeline;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstPipeline* gstPipeline)
-	{
-		if(gstPipeline is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstPipeline);
-		if( ptr !is null )
-		{
-			this = cast(Pipeline)ptr;
-			return;
-		}
-		super(cast(GstBin*)gstPipeline);
-		this.gstPipeline = gstPipeline;
-	}
+	public this (GstPipeline* gstPipeline);
 	
 	/** */
-	public this (string name)
-	{
-		this.gstPipeline = cast(GstPipeline*) gst_pipeline_new(Str.toStringz(name));
-		super(cast(GstBin*)this.gstPipeline);
-	}
+	public this (string name);
 	
 	/**
 	 */
@@ -175,31 +90,13 @@ public class Pipeline : Bin
 	 * name =  name of new pipeline
 	 * Returns: newly created GstPipelineMT safe.
 	 */
-	public static Element newPipeline(string name)
-	{
-		// GstElement* gst_pipeline_new (const gchar *name);
-		auto p = gst_pipeline_new(Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Element(cast(GstElement*) p);
-	}
+	public static Element newPipeline(string name);
 	
 	/**
 	 * Gets the GstBus of pipeline.
 	 * Returns: a GstBus, unref after usage.MT safe.
 	 */
-	public Bus getBus()
-	{
-		// GstBus* gst_pipeline_get_bus (GstPipeline *pipeline);
-		auto p = gst_pipeline_get_bus(gstPipeline);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Bus(cast(GstBus*) p);
-	}
+	public Bus getBus();
 	
 	/**
 	 * Set the clock for pipeline. The clock will be distributed
@@ -208,26 +105,13 @@ public class Pipeline : Bin
 	 * clock =  the clock to set
 	 * Returns: TRUE if the clock could be set on the pipeline. FALSE if some element did not accept the clock.MT safe.
 	 */
-	public int setClock(Clock clock)
-	{
-		// gboolean gst_pipeline_set_clock (GstPipeline *pipeline,  GstClock *clock);
-		return gst_pipeline_set_clock(gstPipeline, (clock is null) ? null : clock.getClockStruct());
-	}
+	public int setClock(Clock clock);
 	
 	/**
 	 * Gets the current clock used by pipeline.
 	 * Returns: a GstClock, unref after usage.
 	 */
-	public Clock getClock()
-	{
-		// GstClock* gst_pipeline_get_clock (GstPipeline *pipeline);
-		auto p = gst_pipeline_get_clock(gstPipeline);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Clock(cast(GstClock*) p);
-	}
+	public Clock getClock();
 	
 	/**
 	 * Force pipeline to use the given clock. The pipeline will
@@ -239,11 +123,7 @@ public class Pipeline : Bin
 	 * Params:
 	 * clock =  the clock to use
 	 */
-	public void useClock(Clock clock)
-	{
-		// void gst_pipeline_use_clock (GstPipeline *pipeline,  GstClock *clock);
-		gst_pipeline_use_clock(gstPipeline, (clock is null) ? null : clock.getClockStruct());
-	}
+	public void useClock(Clock clock);
 	
 	/**
 	 * Let pipeline select a clock automatically. This is the default
@@ -253,11 +133,7 @@ public class Pipeline : Bin
 	 * pipeline clock selection algorithm.
 	 * MT safe.
 	 */
-	public void autoClock()
-	{
-		// void gst_pipeline_auto_clock (GstPipeline *pipeline);
-		gst_pipeline_auto_clock(gstPipeline);
-	}
+	public void autoClock();
 	
 	/**
 	 * Set the new stream time of pipeline to time. The stream time is used to
@@ -272,11 +148,7 @@ public class Pipeline : Bin
 	 * Params:
 	 * time =  the new stream time to set
 	 */
-	public void setNewStreamTime(GstClockTime time)
-	{
-		// void gst_pipeline_set_new_stream_time  (GstPipeline *pipeline,  GstClockTime time);
-		gst_pipeline_set_new_stream_time(gstPipeline, time);
-	}
+	public void setNewStreamTime(GstClockTime time);
 	
 	/**
 	 * Gets the last stream time of pipeline. If the pipeline is PLAYING,
@@ -288,11 +160,7 @@ public class Pipeline : Bin
 	 * (see gst_pipeline_set_new_stream_time()).
 	 * Returns: a GstClockTime.MT safe.
 	 */
-	public GstClockTime getLastStreamTime()
-	{
-		// GstClockTime gst_pipeline_get_last_stream_time  (GstPipeline *pipeline);
-		return gst_pipeline_get_last_stream_time(gstPipeline);
-	}
+	public GstClockTime getLastStreamTime();
 	
 	/**
 	 * Usually, when a pipeline goes from READY to NULL state, it automatically
@@ -311,22 +179,14 @@ public class Pipeline : Bin
 	 * the pipeline goes from READY to NULL state
 	 * Since 0.10.4
 	 */
-	public void setAutoFlushBus(int autoFlush)
-	{
-		// void gst_pipeline_set_auto_flush_bus (GstPipeline *pipeline,  gboolean auto_flush);
-		gst_pipeline_set_auto_flush_bus(gstPipeline, autoFlush);
-	}
+	public void setAutoFlushBus(int autoFlush);
 	
 	/**
 	 * Check if pipeline will automatically flush messages when going to
 	 * the NULL state.
 	 * Returns: whether the pipeline will automatically flush its bus whengoing from READY to NULL state or not.MT safe.Since 0.10.4
 	 */
-	public int getAutoFlushBus()
-	{
-		// gboolean gst_pipeline_get_auto_flush_bus (GstPipeline *pipeline);
-		return gst_pipeline_get_auto_flush_bus(gstPipeline);
-	}
+	public int getAutoFlushBus();
 	
 	/**
 	 * Set the expected delay needed for all elements to perform the
@@ -341,19 +201,11 @@ public class Pipeline : Bin
 	 * delay =  the delay
 	 * Since 0.10.5
 	 */
-	public void setDelay(GstClockTime delay)
-	{
-		// void gst_pipeline_set_delay (GstPipeline *pipeline,  GstClockTime delay);
-		gst_pipeline_set_delay(gstPipeline, delay);
-	}
+	public void setDelay(GstClockTime delay);
 	
 	/**
 	 * Get the configured delay (see gst_pipeline_set_delay()).
 	 * Returns: The configured delay.MT safe.Since 0.10.5
 	 */
-	public GstClockTime getDelay()
-	{
-		// GstClockTime gst_pipeline_get_delay (GstPipeline *pipeline);
-		return gst_pipeline_get_delay(gstPipeline);
-	}
+	public GstClockTime getDelay();
 }

@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-URI-Functions.html
- * outPack = glib
- * outFile = URI
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = URI
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_uri_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.URI;
 
 public  import gtkD.gtkc.glibtypes;
@@ -81,11 +30,7 @@ public class URI
 	 * uri =  a valid URI.
 	 * Returns: The "Scheme" component of the URI, or NULL on error. The returned string should be freed when no longer needed.
 	 */
-	public static string parseScheme(string uri)
-	{
-		// char * g_uri_parse_scheme (const char *uri);
-		return Str.toString(g_uri_parse_scheme(Str.toStringz(uri)));
-	}
+	public static string parseScheme(string uri);
 	
 	/**
 	 * Escapes a string for use in a URI.
@@ -103,11 +48,7 @@ public class URI
 	 * allowUtf8 =  TRUE if the result can include UTF-8 characters.
 	 * Returns: an escaped version of unescaped. The returned string should be freed when no longer needed.
 	 */
-	public static string escapeString(string unescaped, string reservedCharsAllowed, int allowUtf8)
-	{
-		// char * g_uri_escape_string (const char *unescaped,  const char *reserved_chars_allowed,  gboolean allow_utf8);
-		return Str.toString(g_uri_escape_string(Str.toStringz(unescaped), Str.toStringz(reservedCharsAllowed), allowUtf8));
-	}
+	public static string escapeString(string unescaped, string reservedCharsAllowed, int allowUtf8);
 	
 	/**
 	 * Unescapes a whole escaped string.
@@ -122,11 +63,7 @@ public class URI
 	 * illegalCharacters =  an optional string of illegal characters not to be allowed.
 	 * Returns: an unescaped version of escaped_string. The returned string should be freed when no longer needed.
 	 */
-	public static string unescapeString(string escapedString, string illegalCharacters)
-	{
-		// char * g_uri_unescape_string (const char *escaped_string,  const char *illegal_characters);
-		return Str.toString(g_uri_unescape_string(Str.toStringz(escapedString), Str.toStringz(illegalCharacters)));
-	}
+	public static string unescapeString(string escapedString, string illegalCharacters);
 	
 	/**
 	 * Unescapes a segment of an escaped string.
@@ -142,11 +79,7 @@ public class URI
 	 * illegalCharacters =  an optional string of illegal characters not to be allowed.
 	 * Returns: an unescaped version of escaped_string or NULL on error.The returned string should be freed when no longer needed.
 	 */
-	public static string unescapeSegment(string escapedString, string escapedStringEnd, string illegalCharacters)
-	{
-		// char * g_uri_unescape_segment (const char *escaped_string,  const char *escaped_string_end,  const char *illegal_characters);
-		return Str.toString(g_uri_unescape_segment(Str.toStringz(escapedString), Str.toStringz(escapedStringEnd), Str.toStringz(illegalCharacters)));
-	}
+	public static string unescapeSegment(string escapedString, string escapedStringEnd, string illegalCharacters);
 	
 	/**
 	 * Splits an URI list conforming to the text/uri-list
@@ -157,9 +90,5 @@ public class URI
 	 * uriList =  an URI list
 	 * Returns: a newly allocated NULL-terminated list of strings holding the individual URIs. The array should be freed with g_strfreev().
 	 */
-	public static string[] listExtractUris(string uriList)
-	{
-		// gchar ** g_uri_list_extract_uris (const gchar *uri_list);
-		return Str.toStringArray(g_uri_list_extract_uris(Str.toStringz(uriList)));
-	}
+	public static string[] listExtractUris(string uriList);
 }

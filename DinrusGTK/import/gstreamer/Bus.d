@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstBus.html
- * outPack = gstreamer
- * outFile = Bus
- * strct   = GstBus
- * realStrct=
- * ctorStrct=
- * clss    = Bus
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_bus_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_bus_add_watch
- * 	- gst_bus_set_sync_handler
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Message
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GSource* -> Source
- * 	- GstBus* -> Bus
- * 	- GstMessage* -> Message
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Bus;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -116,38 +57,16 @@ public class Bus : ObjectGst
 	protected GstBus* gstBus;
 	
 	
-	public GstBus* getBusStruct()
-	{
-		return gstBus;
-	}
+	public GstBus* getBusStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstBus;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstBus* gstBus)
-	{
-		if(gstBus is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstBus);
-		if( ptr !is null )
-		{
-			this = cast(Bus)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstBus);
-		this.gstBus = gstBus;
-	}
+	public this (GstBus* gstBus);
 	
 	/**
 	 * Adds a bus watch to the default main context with the default priority.
@@ -160,20 +79,11 @@ public class Bus : ObjectGst
 	 * Returns:
 	 *  The event source id.
 	 */
-	public uint addWatch( bool delegate(Message) dlg )
-	{
-		onWatchListener = dlg;
-		return gst_bus_add_watch(gstBus, cast(GstBusFunc)&watchCallBack, cast(void*)this);
-	}
+	public uint addWatch( bool delegate(Message) dlg );
 	
 	bool delegate(Message) onWatchListener;
 	
-	extern(C) static gboolean watchCallBack(GstBus* bus, GstMessage* msg, Bus bus_d )//gpointer data)
-	{
-		Message msg_d = new Message( msg );
-		
-		return bus_d.onWatchListener( msg_d );
-	}
+	extern(C) static gboolean watchCallBack(GstBus* bus, GstMessage* msg, Bus bus_d );
 	
 	/**
 	 * Use this for making an XOverlay.
@@ -188,21 +98,11 @@ public class Bus : ObjectGst
 	 * Params:
 	 *  dlg = The handler function to install
 	 */
-	public void setSyncHandler( GstBusSyncReply delegate(Message) dlg )
-	{
-		onSyncHandlerListener = dlg;
-		gst_bus_set_sync_handler(gstBus, cast(GstBusSyncHandler)&syncHandlerCallBack, cast(void*)this);
-	}
+	public void setSyncHandler( GstBusSyncReply delegate(Message) dlg );
 	
 	GstBusSyncReply delegate(Message) onSyncHandlerListener;
 	
-	extern(C) static GstBusSyncReply syncHandlerCallBack(GstBus * bus, GstMessage * msg, Bus bus_d )//GstPipeline * pipeline)
-	//extern(C) static gboolean watchCallBack(GstBus* bus, GstMessage* msg, Bus bus_d )//gpointer data)
-	{
-		Message msg_d = new Message( msg );
-		
-		return bus_d.onSyncHandlerListener( msg_d );
-	}
+	extern(C) static GstBusSyncReply syncHandlerCallBack(GstBus * bus, GstMessage * msg, Bus bus_d );
 	
 	/**
 	 */
@@ -214,28 +114,8 @@ public class Bus : ObjectGst
 	 * GSource added to the mainloop. this signal will only be emitted when
 	 * there is a mainloop running.
 	 */
-	void addOnMessage(void delegate(Message, Bus) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("message" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"message",
-			cast(GCallback)&callBackMessage,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["message"] = 1;
-		}
-		onMessageListeners ~= dlg;
-	}
-	extern(C) static void callBackMessage(GstBus* busStruct, GstMessage* message, Bus bus)
-	{
-		foreach ( void delegate(Message, Bus) dlg ; bus.onMessageListeners )
-		{
-			dlg(new Message(message), bus);
-		}
-	}
+	void addOnMessage(void delegate(Message, Bus) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMessage(GstBus* busStruct, GstMessage* message, Bus bus);
 	
 	void delegate(Message, Bus)[] onSyncMessageListeners;
 	/**
@@ -247,44 +127,15 @@ public class Bus : ObjectGst
 	 * See Also
 	 * GstMessage, GstElement
 	 */
-	void addOnSyncMessage(void delegate(Message, Bus) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("sync-message" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"sync-message",
-			cast(GCallback)&callBackSyncMessage,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["sync-message"] = 1;
-		}
-		onSyncMessageListeners ~= dlg;
-	}
-	extern(C) static void callBackSyncMessage(GstBus* busStruct, GstMessage* message, Bus bus)
-	{
-		foreach ( void delegate(Message, Bus) dlg ; bus.onSyncMessageListeners )
-		{
-			dlg(new Message(message), bus);
-		}
-	}
+	void addOnSyncMessage(void delegate(Message, Bus) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSyncMessage(GstBus* busStruct, GstMessage* message, Bus bus);
 	
 	
 	/**
 	 * Creates a new GstBus instance.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GstBus* gst_bus_new (void);
-		auto p = gst_bus_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_bus_new()");
-		}
-		this(cast(GstBus*) p);
-	}
+	public this ();
 	
 	/**
 	 * Post a message on the given bus. Ownership of the message
@@ -293,22 +144,14 @@ public class Bus : ObjectGst
 	 * message =  The GstMessage to post
 	 * Returns: TRUE if the message could be posted, FALSE if the bus is flushing.MT safe.
 	 */
-	public int post(Message message)
-	{
-		// gboolean gst_bus_post (GstBus *bus,  GstMessage *message);
-		return gst_bus_post(gstBus, (message is null) ? null : message.getMessageStruct());
-	}
+	public int post(Message message);
 	
 	/**
 	 * Check if there are pending messages on the bus that
 	 * should be handled.
 	 * Returns: TRUE if there are messages on the bus to be handled, FALSE otherwise.MT safe.
 	 */
-	public int havePending()
-	{
-		// gboolean gst_bus_have_pending (GstBus *bus);
-		return gst_bus_have_pending(gstBus);
-	}
+	public int havePending();
 	
 	/**
 	 * Peek the message on the top of the bus' queue. The message will remain
@@ -316,31 +159,13 @@ public class Bus : ObjectGst
 	 * by the caller.
 	 * Returns: The GstMessage that is on the bus, or NULL if the bus is empty.MT safe.
 	 */
-	public Message peek()
-	{
-		// GstMessage* gst_bus_peek (GstBus *bus);
-		auto p = gst_bus_peek(gstBus);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Message(cast(GstMessage*) p);
-	}
+	public Message peek();
 	
 	/**
 	 * Get a message from the bus.
 	 * Returns: The GstMessage that is on the bus, or NULL if the bus is empty.The message is taken from the bus and needs to be unreffed withgst_message_unref() after usage.MT safe.
 	 */
-	public Message pop()
-	{
-		// GstMessage* gst_bus_pop (GstBus *bus);
-		auto p = gst_bus_pop(gstBus);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Message(cast(GstMessage*) p);
-	}
+	public Message pop();
 	
 	/**
 	 * Get a message from the bus, waiting up to the specified timeout.
@@ -351,16 +176,7 @@ public class Bus : ObjectGst
 	 * timeout =  a timeout
 	 * Returns: The GstMessage that is on the bus after the specified timeoutor NULL if the bus is empty after the timeout expired.The message is taken from the bus and needs to be unreffed withgst_message_unref() after usage.MT safe.Since 0.10.12
 	 */
-	public Message timedPop(GstClockTime timeout)
-	{
-		// GstMessage* gst_bus_timed_pop (GstBus *bus,  GstClockTime timeout);
-		auto p = gst_bus_timed_pop(gstBus, timeout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Message(cast(GstMessage*) p);
-	}
+	public Message timedPop(GstClockTime timeout);
 	
 	/**
 	 * If flushing, flush out and unref any messages queued in the bus. Releases
@@ -370,11 +186,7 @@ public class Bus : ObjectGst
 	 * Params:
 	 * flushing =  whether or not to flush the bus
 	 */
-	public void setFlushing(int flushing)
-	{
-		// void gst_bus_set_flushing (GstBus *bus,  gboolean flushing);
-		gst_bus_set_flushing(gstBus, flushing);
-	}
+	public void setFlushing(int flushing);
 	
 	/**
 	 * A helper GstBusSyncHandler that can be used to convert all synchronous
@@ -384,11 +196,7 @@ public class Bus : ObjectGst
 	 * data =  user data
 	 * Returns: GST_BUS_PASS
 	 */
-	public GstBusSyncReply syncSignalHandler(Message message, void* data)
-	{
-		// GstBusSyncReply gst_bus_sync_signal_handler (GstBus *bus,  GstMessage *message,  gpointer data);
-		return gst_bus_sync_signal_handler(gstBus, (message is null) ? null : message.getMessageStruct(), data);
-	}
+	public GstBusSyncReply syncSignalHandler(Message message, void* data);
 	
 	/**
 	 * Create watch for this bus. The GSource will be dispatched whenever
@@ -396,16 +204,7 @@ public class Bus : ObjectGst
 	 * message is popped off the bus and unreffed.
 	 * Returns: A GSource that can be added to a mainloop.
 	 */
-	public Source createWatch()
-	{
-		// GSource* gst_bus_create_watch (GstBus *bus);
-		auto p = gst_bus_create_watch(gstBus);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public Source createWatch();
 	
 	/**
 	 * Adds a bus watch to the default main context with the given priority.
@@ -421,11 +220,7 @@ public class Bus : ObjectGst
 	 * notify =  the function to call when the source is removed.
 	 * Returns: The event source id.MT safe.
 	 */
-	public uint addWatchFull(int priority, GstBusFunc func, void* userData, GDestroyNotify notify)
-	{
-		// guint gst_bus_add_watch_full (GstBus *bus,  gint priority,  GstBusFunc func,  gpointer user_data,  GDestroyNotify notify);
-		return gst_bus_add_watch_full(gstBus, priority, func, userData, notify);
-	}
+	public uint addWatchFull(int priority, GstBusFunc func, void* userData, GDestroyNotify notify);
 	
 	/**
 	 * Instructs GStreamer to stop emitting the "sync-message" signal for this bus.
@@ -438,11 +233,7 @@ public class Bus : ObjectGst
 	 * disable.
 	 * MT safe.
 	 */
-	public void disableSyncMessageEmission()
-	{
-		// void gst_bus_disable_sync_message_emission  (GstBus *bus);
-		gst_bus_disable_sync_message_emission(gstBus);
-	}
+	public void disableSyncMessageEmission();
 	
 	/**
 	 * Instructs GStreamer to emit the "sync-message" signal after running the bus's
@@ -460,11 +251,7 @@ public class Bus : ObjectGst
 	 * signal is marshalled to the main thread via the main loop.
 	 * MT safe.
 	 */
-	public void enableSyncMessageEmission()
-	{
-		// void gst_bus_enable_sync_message_emission  (GstBus *bus);
-		gst_bus_enable_sync_message_emission(gstBus);
-	}
+	public void enableSyncMessageEmission();
 	
 	/**
 	 * A helper GstBusFunc that can be used to convert all asynchronous messages
@@ -474,11 +261,7 @@ public class Bus : ObjectGst
 	 * data =  user data
 	 * Returns: TRUE
 	 */
-	public int asyncSignalFunc(Message message, void* data)
-	{
-		// gboolean gst_bus_async_signal_func (GstBus *bus,  GstMessage *message,  gpointer data);
-		return gst_bus_async_signal_func(gstBus, (message is null) ? null : message.getMessageStruct(), data);
-	}
+	public int asyncSignalFunc(Message message, void* data);
 	
 	/**
 	 * Adds a bus signal watch to the default main context with the default
@@ -490,11 +273,7 @@ public class Bus : ObjectGst
 	 * function is called.
 	 * MT safe.
 	 */
-	public void addSignalWatch()
-	{
-		// void gst_bus_add_signal_watch (GstBus *bus);
-		gst_bus_add_signal_watch(gstBus);
-	}
+	public void addSignalWatch();
 	
 	/**
 	 * Adds a bus signal watch to the default main context with the given priority.
@@ -507,21 +286,13 @@ public class Bus : ObjectGst
 	 * Params:
 	 * priority =  The priority of the watch.
 	 */
-	public void addSignalWatchFull(int priority)
-	{
-		// void gst_bus_add_signal_watch_full (GstBus *bus,  gint priority);
-		gst_bus_add_signal_watch_full(gstBus, priority);
-	}
+	public void addSignalWatchFull(int priority);
 	
 	/**
 	 * Removes a signal watch previously added with gst_bus_add_signal_watch().
 	 * MT safe.
 	 */
-	public void removeSignalWatch()
-	{
-		// void gst_bus_remove_signal_watch (GstBus *bus);
-		gst_bus_remove_signal_watch(gstBus);
-	}
+	public void removeSignalWatch();
 	
 	/**
 	 * Poll the bus for messages. Will block while waiting for messages to come.
@@ -541,14 +312,5 @@ public class Bus : ObjectGst
 	 * timeout =  the poll timeout, as a GstClockTimeDiff, or -1 to poll indefinitely.
 	 * Returns: The message that was received, or NULL if the poll timed out.The message is taken from the bus and needs to be unreffed withgst_message_unref() after usage.Signal DetailsThe "message" signalvoid user_function (GstBus *bus, GstMessage *message, gpointer user_data) : Run last / Has detailsA message has been posted on the bus. This signal is emitted from aGSource added to the mainloop. this signal will only be emitted whenthere is a mainloop running.
 	 */
-	public Message poll(GstMessageType events, GstClockTimeDiff timeout)
-	{
-		// GstMessage* gst_bus_poll (GstBus *bus,  GstMessageType events,  GstClockTimeDiff timeout);
-		auto p = gst_bus_poll(gstBus, events, timeout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Message(cast(GstMessage*) p);
-	}
+	public Message poll(GstMessageType events, GstClockTimeDiff timeout);
 }

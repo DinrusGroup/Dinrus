@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Date-and-Time-Functions.html
- * outPack = glib
- * outFile = TimeVal
- * strct   = GTimeVal
- * realStrct=
- * ctorStrct=
- * clss    = TimeVal
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_time_val_
- * 	- g_
- * omit structs:
- * omit prefixes:
- * 	- g_date_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.TimeVal;
 
 public  import gtkD.gtkc.glibtypes;
@@ -112,30 +59,15 @@ public class TimeVal
 	protected GTimeVal* gTimeVal;
 	
 	
-	public GTimeVal* getTimeValStruct()
-	{
-		return gTimeVal;
-	}
+	public GTimeVal* getTimeValStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gTimeVal;
-	}
-	
+	protected void* getStruct();
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GTimeVal* gTimeVal)
-	{
-		if(gTimeVal is null)
-		{
-			this = null;
-			return;
-		}
-		this.gTimeVal = gTimeVal;
-	}
+	public this (GTimeVal* gTimeVal);
 	
 	/**
 	 */
@@ -143,11 +75,7 @@ public class TimeVal
 	/**
 	 * Equivalent to the UNIX gettimeofday() function, but portable.
 	 */
-	public void getCurrentTime()
-	{
-		// void g_get_current_time (GTimeVal *result);
-		g_get_current_time(gTimeVal);
-	}
+	public void getCurrentTime();
 	
 	/**
 	 * Pauses the current thread for the given number of microseconds. There
@@ -158,11 +86,7 @@ public class TimeVal
 	 * Params:
 	 * microseconds = number of microseconds to pause
 	 */
-	public static void usleep(uint microseconds)
-	{
-		// void g_usleep (gulong microseconds);
-		g_usleep(microseconds);
-	}
+	public static void usleep(uint microseconds);
 	
 	/**
 	 * Adds the given number of microseconds to time_. microseconds can
@@ -170,11 +94,7 @@ public class TimeVal
 	 * Params:
 	 * microseconds =  number of microseconds to add to time
 	 */
-	public void add(int microseconds)
-	{
-		// void g_time_val_add (GTimeVal *time_,  glong microseconds);
-		g_time_val_add(gTimeVal, microseconds);
-	}
+	public void add(int microseconds);
 	
 	/**
 	 * Converts a string containing an ISO 8601 encoded date and time
@@ -185,11 +105,7 @@ public class TimeVal
 	 * time =  a GTimeVal
 	 * Returns: TRUE if the conversion was successful.
 	 */
-	public static int fromIso8601(string isoDate, GTimeVal* time)
-	{
-		// gboolean g_time_val_from_iso8601 (const gchar *iso_date,  GTimeVal *time_);
-		return g_time_val_from_iso8601(Str.toStringz(isoDate), time);
-	}
+	public static int fromIso8601(string isoDate, GTimeVal* time);
 	
 	/**
 	 * Converts time_ into an ISO 8601 encoded string, relative to the
@@ -197,9 +113,5 @@ public class TimeVal
 	 * Since 2.12
 	 * Returns: a newly allocated string containing an ISO 8601 date
 	 */
-	public string toIso8601()
-	{
-		// gchar* g_time_val_to_iso8601 (GTimeVal *time_);
-		return Str.toString(g_time_val_to_iso8601(gTimeVal));
-	}
+	public string toIso8601();
 }

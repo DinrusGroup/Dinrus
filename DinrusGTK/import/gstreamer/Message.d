@@ -1,78 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstMessage.html
- * outPack = gstreamer
- * outFile = Message
- * strct   = GstMessage
- * realStrct=
- * ctorStrct=
- * clss    = Message
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_message_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_message_parse_tag
- * 	- gst_message_type_to_quark
- * 	- gst_message_new_element
- * 	- gst_message_new_new_clock
- * 	- gst_message_new_segment_done
- * 	- gst_message_new_segment_start
- * 	- gst_message_new_warning
- * 	- gst_message_new_state_dirty
- * 	- gst_message_new_eos
- * 	- gst_message_new_error
- * 	- gst_message_new_info
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.Quark
- * 	- gtkD.gstreamer.Structure
- * 	- gtkD.gstreamer.ObjectGst
- * 	- gtkD.gstreamer.Clock
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.gstreamer.TagList
- * structWrap:
- * 	- GQuark -> Quark
- * 	- GstClock* -> Clock
- * 	- GstMessage* -> Message
- * 	- GstObject* -> ObjectGst
- * 	- GstStructure* -> Structure
- * 	- GstTagList* -> TagList
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Message;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -114,54 +39,31 @@ public class Message
 	protected GstMessage* gstMessage;
 	
 	
-	public GstMessage* getMessageStruct()
-	{
-		return gstMessage;
-	}
+	public GstMessage* getMessageStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstMessage;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstMessage* gstMessage)
-	{
-		if(gstMessage is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstMessage = gstMessage;
-	}
+	public this (GstMessage* gstMessage);
 	
 	/**
 	 * Get the type of the message.
 	 */
-	public GstMessageType type()
-	{
-		return cast(GstMessageType)getMessageStruct().type;
-	}
+	public GstMessageType type();
 	
 	/**
 	 * Get the src (the element that originated the message) of the message.
 	 */
-	public ObjectGst src()
-	{
-		return new ObjectGst( cast(GstObject*)getMessageStruct().src );
-	}
+	public ObjectGst src();
 	
 	/**
 	 * Get the structure.
 	 */
-	public Structure structure()
-	{
-		return new Structure( getMessageStruct().structure );
-	}
+	public Structure structure();
 	
 	/**
 	 * Extracts the tag list from the GstMessage. The tag list returned in the
@@ -175,13 +77,7 @@ public class Message
 		// void gst_message_parse_tag (GstMessage *message,  GstTagList **tag_list);
 		gst_message_parse_tag(gstMessage, tagList);
 	}*/
-	public TagList parseTag()
-	{
-		// void gst_message_parse_tag (GstMessage *message,  GstTagList **tag_list);
-		GstTagList* tag_list_c;
-		gst_message_parse_tag(gstMessage, &tag_list_c);
-		return new TagList(tag_list_c);
-	}
+	public TagList parseTag();
 	
 	//I'm not so sure about the following:
 	/**
@@ -191,11 +87,7 @@ public class Message
 	 * Returns:
 	 *  the quark associated with the message type
 	 */
-	public static Quark typeToQuark(GstMessageType type)
-	{
-		// GQuark gst_message_type_to_quark (GstMessageType type);
-		return new Quark( cast(uint*)gst_message_type_to_quark(type) );
-	}
+	public static Quark typeToQuark(GstMessageType type);
 	
 	/**
 	 * Create a new element-specific message. This is meant as a generic way of
@@ -210,11 +102,7 @@ public class Message
 	 * Returns:
 	 *  The new element message.
 	 */
-	public static Message newElement(ObjectGst src, Structure structure)
-	{
-		// GstMessage* gst_message_new_element (GstObject *src,  GstStructure *structure);
-		return new Message(cast(GstMessage*)gst_message_new_element((src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct()) );
-	}
+	public static Message newElement(ObjectGst src, Structure structure);
 	
 	/**
 	 * Create a new clock message. This message is posted whenever the
@@ -226,11 +114,7 @@ public class Message
 	 * Returns:
 	 *  The new new clock message.
 	 */
-	public static Message newNewClock(ObjectGst src, Clock clock)
-	{
-		// GstMessage* gst_message_new_new_clock (GstObject *src,  GstClock *clock);
-		return new Message(cast(GstMessage*)gst_message_new_new_clock((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct()) );
-	}
+	public static Message newNewClock(ObjectGst src, Clock clock);
 	
 	/**
 	 * Create a new segment done message. This message is posted by elements that
@@ -245,11 +129,7 @@ public class Message
 	 * Returns:
 	 *  The new segment done message.
 	 */
-	public static Message newSegmentDone(ObjectGst src, GstFormat format, long position)
-	{
-		// GstMessage* gst_message_new_segment_done (GstObject *src,  GstFormat format,  gint64 position);
-		return new Message(cast(GstMessage*)gst_message_new_segment_done((src is null) ? null : src.getObjectGstStruct(), format, position) );
-	}
+	public static Message newSegmentDone(ObjectGst src, GstFormat format, long position);
 	
 	/**
 	 * Create a new segment message. This message is posted by elements that
@@ -264,11 +144,7 @@ public class Message
 	 * Returns:
 	 *  The new segment start message.
 	 */
-	public static Message newSegmentStart(ObjectGst src, GstFormat format, long position)
-	{
-		// GstMessage* gst_message_new_segment_start (GstObject *src,  GstFormat format,  gint64 position);
-		return new Message(cast(GstMessage*)gst_message_new_segment_start((src is null) ? null : src.getObjectGstStruct(), format, position) );
-	}
+	public static Message newSegmentStart(ObjectGst src, GstFormat format, long position);
 	
 	/**
 	 * Create a new warning message. The message will make copies of error and
@@ -281,11 +157,7 @@ public class Message
 	 * Returns:
 	 *  The new warning message.
 	 */
-	public static Message newWarning(ObjectGst src, ErrorG error, string dbug)
-	{
-		// GstMessage* gst_message_new_warning (GstObject *src,  GError *error,  gchar *debug);
-		return new Message(cast(GstMessage*)gst_message_new_warning((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug)) );
-	}
+	public static Message newWarning(ObjectGst src, ErrorG error, string dbug);
 	
 	/**
 	 * Create a state dirty message. This message is posted whenever an element
@@ -297,11 +169,7 @@ public class Message
 	 * Returns:
 	 *  The new state dirty message.
 	 */
-	public static Message newStateDirty(ObjectGst src)
-	{
-		// GstMessage* gst_message_new_state_dirty (GstObject *src);
-		return new Message(cast(GstMessage*)gst_message_new_state_dirty((src is null) ? null : src.getObjectGstStruct()) );
-	}
+	public static Message newStateDirty(ObjectGst src);
 	
 	/**
 	 * Create a new eos message. This message is generated and posted in
@@ -313,11 +181,7 @@ public class Message
 	 * Returns:
 	 *  The new eos message.
 	 */
-	public static Message newEOS(ObjectGst src)
-	{
-		// GstMessage* gst_message_new_eos (GstObject *src);
-		return new Message(cast(GstMessage*)gst_message_new_eos((src is null) ? null : src.getObjectGstStruct()) );
-	}
+	public static Message newEOS(ObjectGst src);
 	
 	/**
 	 * Create a new error message. The message will copy error and
@@ -332,11 +196,7 @@ public class Message
 	 * Returns:
 	 *  The new error message.
 	 */
-	public static Message newError(ObjectGst src, ErrorG error, string dbug)
-	{
-		// GstMessage* gst_message_new_error (GstObject *src,  GError *error,  gchar *debug);
-		return new Message(cast(GstMessage*)gst_message_new_error((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug)) );
-	}
+	public static Message newError(ObjectGst src, ErrorG error, string dbug);
 	
 	/**
 	 * Create a new info message. The message will make copies of error and
@@ -350,11 +210,7 @@ public class Message
 	 * Returns:
 	 *  The new info message.
 	 */
-	public static Message newInfo(ObjectGst src, ErrorG error, string dbug)
-	{
-		// GstMessage* gst_message_new_info (GstObject *src,  GError *error,  gchar *debug);
-		return new Message(cast(GstMessage*)gst_message_new_info((src is null) ? null : src.getObjectGstStruct(), (error is null) ? null : error.getErrorGStruct(), Str.toStringz(dbug)) );
-	}
+	public static Message newInfo(ObjectGst src, ErrorG error, string dbug);
 	
 	/**
 	 */
@@ -365,26 +221,13 @@ public class Message
 	 * type =  the message type
 	 * Returns: a reference to the static name of the message.
 	 */
-	public static string typeGetName(GstMessageType type)
-	{
-		// const gchar* gst_message_type_get_name (GstMessageType type);
-		return Str.toString(gst_message_type_get_name(type));
-	}
+	public static string typeGetName(GstMessageType type);
 	
 	/**
 	 * Access the structure of the message.
 	 * Returns: The structure of the message. The structure is stillowned by the message, which means that you should not free it andthat the pointer becomes invalid when you free the message.MT safe.
 	 */
-	public Structure getStructure()
-	{
-		// const GstStructure* gst_message_get_structure  (GstMessage *message);
-		auto p = gst_message_get_structure(gstMessage);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Structure(cast(GstStructure*) p);
-	}
+	public Structure getStructure();
 	
 	/**
 	 * Create a new application-typed message. GStreamer will never create these
@@ -395,16 +238,7 @@ public class Message
 	 * the structure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, Structure structure)
-	{
-		// GstMessage* gst_message_new_application (GstObject *src,  GstStructure *structure);
-		auto p = gst_message_new_application((src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_application((src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct())");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, Structure structure);
 	
 	/**
 	 * Create a clock provide message. This message is posted whenever an
@@ -418,16 +252,7 @@ public class Message
 	 * ready =  TRUE if the sender can provide a clock
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, Clock clock, int ready)
-	{
-		// GstMessage* gst_message_new_clock_provide (GstObject *src,  GstClock *clock,  gboolean ready);
-		auto p = gst_message_new_clock_provide((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct(), ready);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_clock_provide((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct(), ready)");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, Clock clock, int ready);
 	
 	/**
 	 * Create a clock lost message. This message is posted whenever the
@@ -440,16 +265,7 @@ public class Message
 	 * clock =  the clock that was lost
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, Clock clock)
-	{
-		// GstMessage* gst_message_new_clock_lost (GstObject *src,  GstClock *clock);
-		auto p = gst_message_new_clock_lost((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_clock_lost((src is null) ? null : src.getObjectGstStruct(), (clock is null) ? null : clock.getClockStruct())");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, Clock clock);
 	
 	/**
 	 * Create a new custom-typed message. This can be used for anything not
@@ -462,16 +278,7 @@ public class Message
 	 * the structure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GstMessageType type, ObjectGst src, Structure structure)
-	{
-		// GstMessage* gst_message_new_custom (GstMessageType type,  GstObject *src,  GstStructure *structure);
-		auto p = gst_message_new_custom(type, (src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_custom(type, (src is null) ? null : src.getObjectGstStruct(), (structure is null) ? null : structure.getStructureStruct())");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (GstMessageType type, ObjectGst src, Structure structure);
 	
 	/**
 	 * Create a state change message. This message is posted whenever an element
@@ -483,16 +290,7 @@ public class Message
 	 * pending =  the pending (target) state
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, GstState oldstate, GstState newstate, GstState pending)
-	{
-		// GstMessage* gst_message_new_state_changed (GstObject *src,  GstState oldstate,  GstState newstate,  GstState pending);
-		auto p = gst_message_new_state_changed((src is null) ? null : src.getObjectGstStruct(), oldstate, newstate, pending);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_state_changed((src is null) ? null : src.getObjectGstStruct(), oldstate, newstate, pending)");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, GstState oldstate, GstState newstate, GstState pending);
 	
 	/**
 	 * Create a new tag message. The message will take ownership of the tag list.
@@ -502,16 +300,7 @@ public class Message
 	 * tagList =  The tag list for the message.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, TagList tagList)
-	{
-		// GstMessage* gst_message_new_tag (GstObject *src,  GstTagList *tag_list);
-		auto p = gst_message_new_tag((src is null) ? null : src.getObjectGstStruct(), (tagList is null) ? null : tagList.getTagListStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_tag((src is null) ? null : src.getObjectGstStruct(), (tagList is null) ? null : tagList.getTagListStruct())");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, TagList tagList);
 	
 	/**
 	 * Create a new buffering message. This message can be posted by an element that
@@ -528,16 +317,7 @@ public class Message
 	 * percent =  The buffering percent
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, int percent)
-	{
-		// GstMessage* gst_message_new_buffering (GstObject *src,  gint percent);
-		auto p = gst_message_new_buffering((src is null) ? null : src.getObjectGstStruct(), percent);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_buffering((src is null) ? null : src.getObjectGstStruct(), percent)");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, int percent);
 	
 	/**
 	 * Create a new duration message. This message is posted by elements that
@@ -553,16 +333,7 @@ public class Message
 	 * duration =  The new duration
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src, GstFormat format, long duration)
-	{
-		// GstMessage* gst_message_new_duration (GstObject *src,  GstFormat format,  gint64 duration);
-		auto p = gst_message_new_duration((src is null) ? null : src.getObjectGstStruct(), format, duration);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_duration((src is null) ? null : src.getObjectGstStruct(), format, duration)");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src, GstFormat format, long duration);
 	
 	/**
 	 * This message can be posted by elements when their latency requirements have
@@ -571,16 +342,7 @@ public class Message
 	 * src =  The object originating the message.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ObjectGst src)
-	{
-		// GstMessage* gst_message_new_latency (GstObject *src);
-		auto p = gst_message_new_latency((src is null) ? null : src.getObjectGstStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_message_new_latency((src is null) ? null : src.getObjectGstStruct())");
-		}
-		this(cast(GstMessage*) p);
-	}
+	public this (ObjectGst src);
 	
 	/**
 	 * Extracts the lost clock from the GstMessage.
@@ -589,11 +351,7 @@ public class Message
 	 * Params:
 	 * clock =  A pointer to hold the lost clock
 	 */
-	public void parseClockLost(GstClock** clock)
-	{
-		// void gst_message_parse_clock_lost (GstMessage *message,  GstClock **clock);
-		gst_message_parse_clock_lost(gstMessage, clock);
-	}
+	public void parseClockLost(GstClock** clock);
 	
 	/**
 	 * Extracts the clock and ready flag from the GstMessage.
@@ -603,11 +361,7 @@ public class Message
 	 * clock =  A pointer to hold a clock object.
 	 * ready =  A pointer to hold the ready flag.
 	 */
-	public void parseClockProvide(GstClock** clock, int* ready)
-	{
-		// void gst_message_parse_clock_provide (GstMessage *message,  GstClock **clock,  gboolean *ready);
-		gst_message_parse_clock_provide(gstMessage, clock, ready);
-	}
+	public void parseClockProvide(GstClock** clock, int* ready);
 	
 	/**
 	 * Extracts the GError and debug string from the GstMessage. The values returned
@@ -617,15 +371,7 @@ public class Message
 	 * gerror =  Location for the GError
 	 * dbug =  Location for the debug message, or NULL
 	 */
-	public void parseError(out GError* gerror, out string dbug)
-	{
-		// void gst_message_parse_error (GstMessage *message,  GError **gerror,  gchar **debug);
-		char* outdbug = null;
-		
-		gst_message_parse_error(gstMessage, &gerror, &outdbug);
-		
-		dbug = Str.toString(outdbug);
-	}
+	public void parseError(out GError* gerror, out string dbug);
 	
 	/**
 	 * Extracts the GError and debug string from the GstMessage. The values returned
@@ -636,15 +382,7 @@ public class Message
 	 * dbug =  Location for the debug message, or NULL
 	 * Since 0.10.12
 	 */
-	public void parseInfo(out GError* gerror, out string dbug)
-	{
-		// void gst_message_parse_info (GstMessage *message,  GError **gerror,  gchar **debug);
-		char* outdbug = null;
-		
-		gst_message_parse_info(gstMessage, &gerror, &outdbug);
-		
-		dbug = Str.toString(outdbug);
-	}
+	public void parseInfo(out GError* gerror, out string dbug);
 	
 	/**
 	 * Extracts the new clock from the GstMessage.
@@ -653,11 +391,7 @@ public class Message
 	 * Params:
 	 * clock =  A pointer to hold the selected new clock
 	 */
-	public void parseNewClock(GstClock** clock)
-	{
-		// void gst_message_parse_new_clock (GstMessage *message,  GstClock **clock);
-		gst_message_parse_new_clock(gstMessage, clock);
-	}
+	public void parseNewClock(GstClock** clock);
 	
 	/**
 	 * Extracts the position and format from the segment start message.
@@ -666,11 +400,7 @@ public class Message
 	 * format =  Result location for the format, or NULL
 	 * position =  Result location for the position, or NULL
 	 */
-	public void parseSegmentDone(GstFormat* format, long* position)
-	{
-		// void gst_message_parse_segment_done (GstMessage *message,  GstFormat *format,  gint64 *position);
-		gst_message_parse_segment_done(gstMessage, format, position);
-	}
+	public void parseSegmentDone(GstFormat* format, long* position);
 	
 	/**
 	 * Extracts the position and format from the segment start message.
@@ -679,11 +409,7 @@ public class Message
 	 * format =  Result location for the format, or NULL
 	 * position =  Result location for the position, or NULL
 	 */
-	public void parseSegmentStart(GstFormat* format, long* position)
-	{
-		// void gst_message_parse_segment_start (GstMessage *message,  GstFormat *format,  gint64 *position);
-		gst_message_parse_segment_start(gstMessage, format, position);
-	}
+	public void parseSegmentStart(GstFormat* format, long* position);
 	
 	/**
 	 * Extracts the old and new states from the GstMessage.
@@ -693,11 +419,7 @@ public class Message
 	 * newstate =  the new (current) state, or NULL
 	 * pending =  the pending (target) state, or NULL
 	 */
-	public void parseStateChanged(GstState* oldstate, GstState* newstate, GstState* pending)
-	{
-		// void gst_message_parse_state_changed (GstMessage *message,  GstState *oldstate,  GstState *newstate,  GstState *pending);
-		gst_message_parse_state_changed(gstMessage, oldstate, newstate, pending);
-	}
+	public void parseStateChanged(GstState* oldstate, GstState* newstate, GstState* pending);
 	
 	/**
 	 * Extracts the buffering percent from the GstMessage. see also
@@ -707,11 +429,7 @@ public class Message
 	 * Since 0.10.11
 	 * MT safe.
 	 */
-	public void parseBuffering(int* percent)
-	{
-		// void gst_message_parse_buffering (GstMessage *message,  gint *percent);
-		gst_message_parse_buffering(gstMessage, percent);
-	}
+	public void parseBuffering(int* percent);
 	
 	/**
 	 * Extracts the GError and debug string from the GstMessage. The values returned
@@ -721,15 +439,7 @@ public class Message
 	 * gerror =  Location for the GError
 	 * dbug =  Location for the debug message, or NULL
 	 */
-	public void parseWarning(out GError* gerror, out string dbug)
-	{
-		// void gst_message_parse_warning (GstMessage *message,  GError **gerror,  gchar **debug);
-		char* outdbug = null;
-		
-		gst_message_parse_warning(gstMessage, &gerror, &outdbug);
-		
-		dbug = Str.toString(outdbug);
-	}
+	public void parseWarning(out GError* gerror, out string dbug);
 	
 	/**
 	 * Extracts the duration and format from the duration message. The duration
@@ -741,24 +451,11 @@ public class Message
 	 * format =  Result location for the format, or NULL
 	 * duration =  Result location for the duration, or NULL
 	 */
-	public void parseDuration(GstFormat* format, long* duration)
-	{
-		// void gst_message_parse_duration (GstMessage *message,  GstFormat *format,  gint64 *duration);
-		gst_message_parse_duration(gstMessage, format, duration);
-	}
+	public void parseDuration(GstFormat* format, long* duration);
 	
 	/**
 	 * Convenience macro to increase the reference count of the message.
 	 * Returns: msg (for convenience when doing assignments)
 	 */
-	public Message doref()
-	{
-		// GstMessage* gst_message_ref (GstMessage *msg);
-		auto p = gst_message_ref(gstMessage);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Message(cast(GstMessage*) p);
-	}
+	public Message doref();
 }

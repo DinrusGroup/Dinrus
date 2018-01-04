@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkButtonBox.html
- * outPack = gtk
- * outFile = ButtonBox
- * strct   = GtkButtonBox
- * realStrct=
- * ctorStrct=
- * clss    = ButtonBox
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_button_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Button
- * 	- gtkD.gtk.HButtonBox
- * 	- gtkD.gtk.VButtonBox
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ButtonBox;
 
 public  import gtkD.gtkc.gtktypes;
@@ -96,38 +40,16 @@ public class ButtonBox : Box
 	protected GtkButtonBox* gtkButtonBox;
 	
 	
-	public GtkButtonBox* getButtonBoxStruct()
-	{
-		return gtkButtonBox;
-	}
+	public GtkButtonBox* getButtonBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkButtonBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkButtonBox* gtkButtonBox)
-	{
-		if(gtkButtonBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkButtonBox);
-		if( ptr !is null )
-		{
-			this = cast(ButtonBox)ptr;
-			return;
-		}
-		super(cast(GtkBox*)gtkButtonBox);
-		this.gtkButtonBox = gtkButtonBox;
-	}
+	public this (GtkButtonBox* gtkButtonBox);
 	
 	/** */
 	static ButtonBox createActionBox(
@@ -135,48 +57,14 @@ public class ButtonBox : Box
 	StockID[] stocks,
 	string[] actions,
 	bool vertical=false
-	)
-	{
-		ButtonBox bBox;
-		if ( vertical )
-		{
-			bBox = VButtonBox.createActionBox();
-		}
-		else
-		{
-			bBox = HButtonBox.createActionBox();
-		}
-		
-		Button button;
-		for( int i=0 ; i<stocks.length && i<actions.length ; i++)
-		{
-			button =  new Button(stocks[i]);
-			bBox.packEnd(button, false, false, 7);
-			button.setActionName(actions[i]);
-			button.addOnClicked(onClicked);
-		}
-		return bBox;
-	}
+	);
 	
 	/** */
-	static ButtonBox createOkBox(void delegate(Button) onClicked)
-	{
-		static StockID[] stocks = [StockID.OK];
-		string[] actions;
-		actions ~= "action.ok";
-		return createActionBox(onClicked, stocks, actions);
-	}
+	static ButtonBox createOkBox(void delegate(Button) onClicked);
 	
 	/** */
-	static ButtonBox createOkCancelBox(void delegate(Button) onClicked)
-	{
-		static StockID[] stocks = [StockID.OK, StockID.CANCEL];
-		string[] actions;
-		actions ~= "action.ok";
-		actions ~= "action.cancel";
-		return createActionBox(onClicked, stocks, actions);
-	}
-	
+	static ButtonBox createOkCancelBox(void delegate(Button) onClicked);
+
 	/**
 	 */
 	
@@ -184,11 +72,7 @@ public class ButtonBox : Box
 	 * Retrieves the method being used to arrange the buttons in a button box.
 	 * Returns:the method used to layout buttons in widget.
 	 */
-	public GtkButtonBoxStyle getLayout()
-	{
-		// GtkButtonBoxStyle gtk_button_box_get_layout (GtkButtonBox *widget);
-		return gtk_button_box_get_layout(gtkButtonBox);
-	}
+	public GtkButtonBoxStyle getLayout();
 	
 	/**
 	 * Warning
@@ -200,11 +84,7 @@ public class ButtonBox : Box
 	 * minWidth = the width of the buttons contained by widget.
 	 * minHeight = the height of the buttons contained by widget.
 	 */
-	public void getChildSize(out int minWidth, out int minHeight)
-	{
-		// void gtk_button_box_get_child_size (GtkButtonBox *widget,  gint *min_width,  gint *min_height);
-		gtk_button_box_get_child_size(gtkButtonBox, &minWidth, &minHeight);
-	}
+	public void getChildSize(out int minWidth, out int minHeight);
 	
 	/**
 	 * Warning
@@ -218,11 +98,7 @@ public class ButtonBox : Box
 	 * ipadX = the horizontal padding used by buttons in widget.
 	 * ipadY = the vertical padding used by buttons in widget.
 	 */
-	public void getChildIpadding(out int ipadX, out int ipadY)
-	{
-		// void gtk_button_box_get_child_ipadding (GtkButtonBox *widget,  gint *ipad_x,  gint *ipad_y);
-		gtk_button_box_get_child_ipadding(gtkButtonBox, &ipadX, &ipadY);
-	}
+	public void getChildIpadding(out int ipadX, out int ipadY);
 	
 	/**
 	 * Returns whether child should appear in a secondary group of children.
@@ -231,22 +107,14 @@ public class ButtonBox : Box
 	 * child =  a child of widget
 	 * Returns: whether child should appear in a secondary group of children.
 	 */
-	public int getChildSecondary(Widget child)
-	{
-		// gboolean gtk_button_box_get_child_secondary (GtkButtonBox *widget,  GtkWidget *child);
-		return gtk_button_box_get_child_secondary(gtkButtonBox, (child is null) ? null : child.getWidgetStruct());
-	}
+	public int getChildSecondary(Widget child);
 	
 	/**
 	 * Changes the way buttons are arranged in their container.
 	 * Params:
 	 * layoutStyle = the new layout style.
 	 */
-	public void setLayout(GtkButtonBoxStyle layoutStyle)
-	{
-		// void gtk_button_box_set_layout (GtkButtonBox *widget,  GtkButtonBoxStyle layout_style);
-		gtk_button_box_set_layout(gtkButtonBox, layoutStyle);
-	}
+	public void setLayout(GtkButtonBoxStyle layoutStyle);
 	
 	/**
 	 * Warning
@@ -260,11 +128,7 @@ public class ButtonBox : Box
 	 * minWidth = a default width for buttons in widget
 	 * minHeight = a default height for buttons in widget
 	 */
-	public void setChildSize(int minWidth, int minHeight)
-	{
-		// void gtk_button_box_set_child_size (GtkButtonBox *widget,  gint min_width,  gint min_height);
-		gtk_button_box_set_child_size(gtkButtonBox, minWidth, minHeight);
-	}
+	public void setChildSize(int minWidth, int minHeight);
 	
 	/**
 	 * Warning
@@ -276,11 +140,7 @@ public class ButtonBox : Box
 	 * ipadX = the horizontal padding that should be used by each button in widget.
 	 * ipadY = the vertical padding that should be used by each button in widget.
 	 */
-	public void setChildIpadding(int ipadX, int ipadY)
-	{
-		// void gtk_button_box_set_child_ipadding (GtkButtonBox *widget,  gint ipad_x,  gint ipad_y);
-		gtk_button_box_set_child_ipadding(gtkButtonBox, ipadX, ipadY);
-	}
+	public void setChildIpadding(int ipadX, int ipadY);
 	
 	/**
 	 * Sets whether child should appear in a secondary group of children.
@@ -299,9 +159,5 @@ public class ButtonBox : Box
 	 * isSecondary =  if TRUE, the child appears in a secondary group of the
 	 *  button box.
 	 */
-	public void setChildSecondary(Widget child, int isSecondary)
-	{
-		// void gtk_button_box_set_child_secondary (GtkButtonBox *widget,  GtkWidget *child,  gboolean is_secondary);
-		gtk_button_box_set_child_secondary(gtkButtonBox, (child is null) ? null : child.getWidgetStruct(), isSecondary);
-	}
+	public void setChildSecondary(Widget child, int isSecondary);
 }

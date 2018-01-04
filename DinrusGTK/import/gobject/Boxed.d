@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-Boxed-Types.html
- * outPack = gobject
- * outFile = Boxed
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Boxed
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gobject.Boxed;
 
 public  import gtkD.gtkc.gobjecttypes;
@@ -84,11 +33,7 @@ public class Boxed
 	 * srcBoxed =  The boxed structure to be copied.
 	 * Returns: The newly created copy of the boxed structure.
 	 */
-	public static void* boxedCopy(GType boxedType, void* srcBoxed)
-	{
-		// gpointer g_boxed_copy (GType boxed_type,  gconstpointer src_boxed);
-		return g_boxed_copy(boxedType, srcBoxed);
-	}
+	public static void* boxedCopy(GType boxedType, void* srcBoxed);
 	
 	/**
 	 * Free the boxed structure boxed which is of type boxed_type.
@@ -96,11 +41,7 @@ public class Boxed
 	 * boxedType =  The type of boxed.
 	 * boxed =  The boxed structure to be freed.
 	 */
-	public static void boxedFree(GType boxedType, void* boxed)
-	{
-		// void g_boxed_free (GType boxed_type,  gpointer boxed);
-		g_boxed_free(boxedType, boxed);
-	}
+	public static void boxedFree(GType boxedType, void* boxed);
 	
 	/**
 	 * This function creates a new G_TYPE_BOXED derived type id for a new
@@ -112,11 +53,7 @@ public class Boxed
 	 * boxedFree =  Boxed structure free function.
 	 * Returns: New G_TYPE_BOXED derived type id for name.
 	 */
-	public static GType boxedTypeRegisterStatic(string name, GBoxedCopyFunc boxedCopy, GBoxedFreeFunc boxedFree)
-	{
-		// GType g_boxed_type_register_static (const gchar *name,  GBoxedCopyFunc boxed_copy,  GBoxedFreeFunc boxed_free);
-		return g_boxed_type_register_static(Str.toStringz(name), boxedCopy, boxedFree);
-	}
+	public static GType boxedTypeRegisterStatic(string name, GBoxedCopyFunc boxedCopy, GBoxedFreeFunc boxedFree);
 	
 	/**
 	 * Creates a new G_TYPE_POINTER derived type id for a new
@@ -125,9 +62,5 @@ public class Boxed
 	 * name =  the name of the new pointer type.
 	 * Returns: a new G_TYPE_POINTER derived type id for name.
 	 */
-	public static GType pointerTypeRegisterStatic(string name)
-	{
-		// GType g_pointer_type_register_static (const gchar *name);
-		return g_pointer_type_register_static(Str.toStringz(name));
-	}
+	public static GType pointerTypeRegisterStatic(string name);
 }

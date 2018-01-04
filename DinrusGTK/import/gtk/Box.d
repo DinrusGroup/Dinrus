@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkBox.html
- * outPack = gtk
- * outFile = Box
- * strct   = GtkBox
- * realStrct=
- * ctorStrct=
- * clss    = Box
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- OrientableIF
- * prefixes:
- * 	- gtk_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.OrientableIF
- * 	- gtkD.gtk.OrientableT
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Box;
 
 public  import gtkD.gtkc.gtktypes;
@@ -117,38 +61,16 @@ public class Box : Container, OrientableIF
 	protected GtkBox* gtkBox;
 	
 	
-	public GtkBox* getBoxStruct()
-	{
-		return gtkBox;
-	}
+	public GtkBox* getBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkBox* gtkBox)
-	{
-		if(gtkBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkBox);
-		if( ptr !is null )
-		{
-			this = cast(Box)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkBox);
-		this.gtkBox = gtkBox;
-	}
+	public this (GtkBox* gtkBox);
 	
 	// add the Orientable capabilities
 	mixin OrientableT!(GtkBox);
@@ -176,11 +98,7 @@ public class Box : Container, OrientableIF
 	 *  reference ends of box, then padding pixels are also put between
 	 *  child and the reference edge of box
 	 */
-	public void packStart(Widget child, int expand, int fill, uint padding)
-	{
-		// void gtk_box_pack_start (GtkBox *box,  GtkWidget *child,  gboolean expand,  gboolean fill,  guint padding);
-		gtk_box_pack_start(gtkBox, (child is null) ? null : child.getWidgetStruct(), expand, fill, padding);
-	}
+	public void packStart(Widget child, int expand, int fill, uint padding);
 	
 	/**
 	 * Adds child to box, packed with reference to the end of box.
@@ -202,11 +120,7 @@ public class Box : Container, OrientableIF
 	 *  reference ends of box, then padding pixels are also put between
 	 *  child and the reference edge of box
 	 */
-	public void packEnd(Widget child, int expand, int fill, uint padding)
-	{
-		// void gtk_box_pack_end (GtkBox *box,  GtkWidget *child,  gboolean expand,  gboolean fill,  guint padding);
-		gtk_box_pack_end(gtkBox, (child is null) ? null : child.getWidgetStruct(), expand, fill, padding);
-	}
+	public void packEnd(Widget child, int expand, int fill, uint padding);
 	
 	/**
 	 * Warning
@@ -220,11 +134,7 @@ public class Box : Container, OrientableIF
 	 * Params:
 	 * widget =  the GtkWidget to be added to box
 	 */
-	public void packStartDefaults(Widget widget)
-	{
-		// void gtk_box_pack_start_defaults (GtkBox *box,  GtkWidget *widget);
-		gtk_box_pack_start_defaults(gtkBox, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void packStartDefaults(Widget widget);
 	
 	/**
 	 * Warning
@@ -238,22 +148,14 @@ public class Box : Container, OrientableIF
 	 * Params:
 	 * widget =  the GtkWidget to be added to box
 	 */
-	public void packEndDefaults(Widget widget)
-	{
-		// void gtk_box_pack_end_defaults (GtkBox *box,  GtkWidget *widget);
-		gtk_box_pack_end_defaults(gtkBox, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void packEndDefaults(Widget widget);
 	
 	/**
 	 * Returns whether the box is homogeneous (all children are the
 	 * same size). See gtk_box_set_homogeneous().
 	 * Returns: TRUE if the box is homogeneous.
 	 */
-	public int getHomogeneous()
-	{
-		// gboolean gtk_box_get_homogeneous (GtkBox *box);
-		return gtk_box_get_homogeneous(gtkBox);
-	}
+	public int getHomogeneous();
 	
 	/**
 	 * Sets the "homogeneous" property of box, controlling
@@ -263,21 +165,13 @@ public class Box : Container, OrientableIF
 	 * homogeneous =  a boolean value, TRUE to create equal allotments,
 	 *  FALSE for variable allotments
 	 */
-	public void setHomogeneous(int homogeneous)
-	{
-		// void gtk_box_set_homogeneous (GtkBox *box,  gboolean homogeneous);
-		gtk_box_set_homogeneous(gtkBox, homogeneous);
-	}
+	public void setHomogeneous(int homogeneous);
 	
 	/**
 	 * Gets the value set by gtk_box_set_spacing().
 	 * Returns: spacing between children
 	 */
-	public int getSpacing()
-	{
-		// gint gtk_box_get_spacing (GtkBox *box);
-		return gtk_box_get_spacing(gtkBox);
-	}
+	public int getSpacing();
 	
 	/**
 	 * Sets the "spacing" property of box, which is the
@@ -285,11 +179,7 @@ public class Box : Container, OrientableIF
 	 * Params:
 	 * spacing =  the number of pixels to put between children
 	 */
-	public void setSpacing(int spacing)
-	{
-		// void gtk_box_set_spacing (GtkBox *box,  gint spacing);
-		gtk_box_set_spacing(gtkBox, spacing);
-	}
+	public void setSpacing(int spacing);
 	
 	/**
 	 * Moves child to a new position in the list of box children.
@@ -307,11 +197,7 @@ public class Box : Container, OrientableIF
 	 *  of box, starting from 0. If negative, indicates the end of
 	 *  the list
 	 */
-	public void reorderChild(Widget child, int position)
-	{
-		// void gtk_box_reorder_child (GtkBox *box,  GtkWidget *child,  gint position);
-		gtk_box_reorder_child(gtkBox, (child is null) ? null : child.getWidgetStruct(), position);
-	}
+	public void reorderChild(Widget child, int position);
 	
 	/**
 	 * Obtains information about how child is packed into box.
@@ -322,11 +208,7 @@ public class Box : Container, OrientableIF
 	 * padding =  pointer to return location for "padding" child property
 	 * packType =  pointer to return location for "pack-type" child property
 	 */
-	public void queryChildPacking(Widget child, out int expand, out int fill, out uint padding, out GtkPackType packType)
-	{
-		// void gtk_box_query_child_packing (GtkBox *box,  GtkWidget *child,  gboolean *expand,  gboolean *fill,  guint *padding,  GtkPackType *pack_type);
-		gtk_box_query_child_packing(gtkBox, (child is null) ? null : child.getWidgetStruct(), &expand, &fill, &padding, &packType);
-	}
+	public void queryChildPacking(Widget child, out int expand, out int fill, out uint padding, out GtkPackType packType);
 	
 	/**
 	 * Sets the way child is packed into box.
@@ -337,9 +219,5 @@ public class Box : Container, OrientableIF
 	 * padding =  the new value of the "padding" child property
 	 * packType =  the new value of the "pack-type" child property
 	 */
-	public void setChildPacking(Widget child, int expand, int fill, uint padding, GtkPackType packType)
-	{
-		// void gtk_box_set_child_packing (GtkBox *box,  GtkWidget *child,  gboolean expand,  gboolean fill,  guint padding,  GtkPackType pack_type);
-		gtk_box_set_child_packing(gtkBox, (child is null) ? null : child.getWidgetStruct(), expand, fill, padding, packType);
-	}
+	public void setChildPacking(Widget child, int expand, int fill, uint padding, GtkPackType packType);
 }

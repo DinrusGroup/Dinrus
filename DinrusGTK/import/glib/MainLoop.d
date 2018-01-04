@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-The-Main-Event-Loop.html
- * outPack = glib
- * outFile = MainLoop
- * strct   = GMainLoop
- * realStrct=
- * ctorStrct=
- * clss    = MainLoop
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_main_loop_
- * 	- g_
- * omit structs:
- * omit prefixes:
- * 	- g_main_context_
- * 	- g_timeout_
- * 	- g_idle_
- * 	- g_child_
- * 	- g_source_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.MainContext
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GMainContext* -> MainContext
- * 	- GMainLoop* -> MainLoop
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.MainLoop;
 
 public  import gtkD.gtkc.glibtypes;
@@ -145,30 +84,16 @@ public class MainLoop
 	protected GMainLoop* gMainLoop;
 	
 	
-	public GMainLoop* getMainLoopStruct()
-	{
-		return gMainLoop;
-	}
+	public GMainLoop* getMainLoopStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMainLoop;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMainLoop* gMainLoop)
-	{
-		if(gMainLoop is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMainLoop = gMainLoop;
-	}
+	public this (GMainLoop* gMainLoop);
 	
 	/**
 	 */
@@ -182,41 +107,19 @@ public class MainLoop
 	 * TRUE anyway.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (MainContext context, int isRunning)
-	{
-		// GMainLoop * g_main_loop_new (GMainContext *context,  gboolean is_running);
-		auto p = g_main_loop_new((context is null) ? null : context.getMainContextStruct(), isRunning);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_main_loop_new((context is null) ? null : context.getMainContextStruct(), isRunning)");
-		}
-		this(cast(GMainLoop*) p);
-	}
+	public this (MainContext context, int isRunning);
 	
 	/**
 	 * Increases the reference count on a GMainLoop object by one.
 	 * Returns: loop
 	 */
-	public MainLoop doref()
-	{
-		// GMainLoop * g_main_loop_ref (GMainLoop *loop);
-		auto p = g_main_loop_ref(gMainLoop);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainLoop(cast(GMainLoop*) p);
-	}
+	public MainLoop doref();
 	
 	/**
 	 * Decreases the reference count on a GMainLoop object by one. If
 	 * the result is zero, free the loop and free all associated memory.
 	 */
-	public void unref()
-	{
-		// void g_main_loop_unref (GMainLoop *loop);
-		g_main_loop_unref(gMainLoop);
-	}
+	public void unref();
 	
 	/**
 	 * Runs a main loop until g_main_loop_quit() is called on the loop.
@@ -224,11 +127,7 @@ public class MainLoop
 	 * it will process events from the loop, otherwise it will
 	 * simply wait.
 	 */
-	public void run()
-	{
-		// void g_main_loop_run (GMainLoop *loop);
-		g_main_loop_run(gMainLoop);
-	}
+	public void run();
 	
 	/**
 	 * Stops a GMainLoop from running. Any calls to g_main_loop_run()
@@ -236,36 +135,19 @@ public class MainLoop
 	 * Note that sources that have already been dispatched when
 	 * g_main_loop_quit() is called will still be executed.
 	 */
-	public void quit()
-	{
-		// void g_main_loop_quit (GMainLoop *loop);
-		g_main_loop_quit(gMainLoop);
-	}
+	public void quit();
 	
 	/**
 	 * Checks to see if the main loop is currently being run via g_main_loop_run().
 	 * Returns: TRUE if the mainloop is currently being run.
 	 */
-	public int isRunning()
-	{
-		// gboolean g_main_loop_is_running (GMainLoop *loop);
-		return g_main_loop_is_running(gMainLoop);
-	}
+	public int isRunning();
 	
 	/**
 	 * Returns the GMainContext of loop.
 	 * Returns: the GMainContext of loop
 	 */
-	public MainContext getContext()
-	{
-		// GMainContext * g_main_loop_get_context (GMainLoop *loop);
-		auto p = g_main_loop_get_context(gMainLoop);
-		if(p is null)
-		{
-			return null;
-		}
-		return new MainContext(cast(GMainContext*) p);
-	}
+	public MainContext getContext();
 	
 	/**
 	 * Returns the depth of the stack of calls to
@@ -277,27 +159,14 @@ public class MainLoop
 	 * it returns 2. And so forth.
 	 * Returns: The main loop recursion level in the current thread
 	 */
-	public static int mainDepth()
-	{
-		// gint g_main_depth (void);
-		return g_main_depth();
-	}
+	public static int mainDepth();
 	
 	/**
 	 * Returns the currently firing source for this thread.
 	 * Since 2.12
 	 * Returns: The currently firing source or NULL.
 	 */
-	public static Source mainCurrentSource()
-	{
-		// GSource * g_main_current_source (void);
-		auto p = g_main_current_source();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public static Source mainCurrentSource();
 	
 	/**
 	 * Polls fds, as with the poll() system call, but portably. (On
@@ -321,9 +190,5 @@ public class MainLoop
 	 * timeout =  amount of time to wait, in milliseconds, or -1 to wait forever
 	 * Returns: the number of entries in fds whose revents fieldswere filled in, or 0 if the operation timed out, or -1 on error orif the call was interrupted.
 	 */
-	public static int poll(GPollFD[] fds, int timeout)
-	{
-		// gint g_poll (GPollFD *fds,  guint nfds,  gint timeout);
-		return g_poll(fds.ptr, fds.length, timeout);
-	}
+	public static int poll(GPollFD[] fds, int timeout);
 }

@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = MatchInfo
- * strct   = GMatchInfo
- * realStrct=
- * ctorStrct=
- * clss    = MatchInfo
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_match_info_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.Regex
- * structWrap:
- * 	- GRegex* -> Regex
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.MatchInfo;
 
 public  import gtkD.gtkc.glibtypes;
@@ -126,30 +71,16 @@ public class MatchInfo
 	protected GMatchInfo* gMatchInfo;
 	
 	
-	public GMatchInfo* getMatchInfoStruct()
-	{
-		return gMatchInfo;
-	}
+	public GMatchInfo* getMatchInfoStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMatchInfo;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMatchInfo* gMatchInfo)
-	{
-		if(gMatchInfo is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMatchInfo = gMatchInfo;
-	}
+	public this (GMatchInfo* gMatchInfo);
 	
 	/**
 	 */
@@ -161,16 +92,7 @@ public class MatchInfo
 	 * Since 2.14
 	 * Returns: GRegex object used in match_info
 	 */
-	public Regex getRegex()
-	{
-		// GRegex * g_match_info_get_regex (const GMatchInfo *match_info);
-		auto p = g_match_info_get_regex(gMatchInfo);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Regex(cast(GRegex*) p);
-	}
+	public Regex getRegex();
 	
 	/**
 	 * Returns the string searched with match_info. This is the
@@ -179,32 +101,20 @@ public class MatchInfo
 	 * Since 2.14
 	 * Returns: the string searched with match_info
 	 */
-	public string getString()
-	{
-		// const gchar * g_match_info_get_string (const GMatchInfo *match_info);
-		return Str.toString(g_match_info_get_string(gMatchInfo));
-	}
+	public string getString();
 	
 	/**
 	 * Frees all the memory associated with the GMatchInfo structure.
 	 * Since 2.14
 	 */
-	public void free()
-	{
-		// void g_match_info_free (GMatchInfo *match_info);
-		g_match_info_free(gMatchInfo);
-	}
+	public void free();
 	
 	/**
 	 * Returns whether the previous match operation succeeded.
 	 * Since 2.14
 	 * Returns: TRUE if the previous match operation succeeded,  FALSE otherwise
 	 */
-	public int matches()
-	{
-		// gboolean g_match_info_matches (const GMatchInfo *match_info);
-		return g_match_info_matches(gMatchInfo);
-	}
+	public int matches();
 	
 	/**
 	 * Scans for the next match using the same parameters of the previous
@@ -216,20 +126,7 @@ public class MatchInfo
 	 * Returns: TRUE is the string matched, FALSE otherwise
 	 * Throws: GException on failure.
 	 */
-	public int next()
-	{
-		// gboolean g_match_info_next (GMatchInfo *match_info,  GError **error);
-		GError* err = null;
-		
-		auto p = g_match_info_next(gMatchInfo, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int next();
 	
 	/**
 	 * Retrieves the number of matched substrings (including substring 0,
@@ -242,11 +139,7 @@ public class MatchInfo
 	 * Since 2.14
 	 * Returns: Number of matched substrings, or -1 if an error occurred
 	 */
-	public int getMatchCount()
-	{
-		// gint g_match_info_get_match_count (const GMatchInfo *match_info);
-		return g_match_info_get_match_count(gMatchInfo);
-	}
+	public int getMatchCount();
 	
 	/**
 	 * Usually if the string passed to g_regex_match*() matches as far as
@@ -280,11 +173,7 @@ public class MatchInfo
 	 * Since 2.14
 	 * Returns: TRUE if the match was partial, FALSE otherwise
 	 */
-	public int isPartialMatch()
-	{
-		// gboolean g_match_info_is_partial_match (const GMatchInfo *match_info);
-		return g_match_info_is_partial_match(gMatchInfo);
-	}
+	public int isPartialMatch();
 	
 	/**
 	 * Returns a new string containing the text in string_to_expand with
@@ -307,20 +196,7 @@ public class MatchInfo
 	 * Returns: the expanded string, or NULL if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public string expandReferences(string stringToExpand)
-	{
-		// gchar * g_match_info_expand_references (const GMatchInfo *match_info,  const gchar *string_to_expand,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_match_info_expand_references(gMatchInfo, Str.toStringz(stringToExpand), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public string expandReferences(string stringToExpand);
 	
 	/**
 	 * Retrieves the text matching the match_num'th capturing
@@ -341,11 +217,7 @@ public class MatchInfo
 	 * matchNum =  number of the sub expression
 	 * Returns: The matched substring, or NULL if an error occurred. You have to free the string yourself
 	 */
-	public string fetch(int matchNum)
-	{
-		// gchar * g_match_info_fetch (const GMatchInfo *match_info,  gint match_num);
-		return Str.toString(g_match_info_fetch(gMatchInfo, matchNum));
-	}
+	public string fetch(int matchNum);
 	
 	/**
 	 * Retrieves the position in bytes of the match_num'th capturing
@@ -366,11 +238,7 @@ public class MatchInfo
 	 * endPos =  pointer to location where to store the end position
 	 * Returns: TRUE if the position was fetched, FALSE otherwise. If  the position cannot be fetched, start_pos and end_pos are left  unchanged
 	 */
-	public int fetchPos(int matchNum, out int startPos, out int endPos)
-	{
-		// gboolean g_match_info_fetch_pos (const GMatchInfo *match_info,  gint match_num,  gint *start_pos,  gint *end_pos);
-		return g_match_info_fetch_pos(gMatchInfo, matchNum, &startPos, &endPos);
-	}
+	public int fetchPos(int matchNum, out int startPos, out int endPos);
 	
 	/**
 	 * Retrieves the text matching the capturing parentheses named name.
@@ -384,11 +252,7 @@ public class MatchInfo
 	 * name =  name of the subexpression
 	 * Returns: The matched substring, or NULL if an error occurred. You have to free the string yourself
 	 */
-	public string fetchNamed(string name)
-	{
-		// gchar * g_match_info_fetch_named (const GMatchInfo *match_info,  const gchar *name);
-		return Str.toString(g_match_info_fetch_named(gMatchInfo, Str.toStringz(name)));
-	}
+	public string fetchNamed(string name);
 	
 	/**
 	 * Retrieves the position in bytes of the capturing parentheses named name.
@@ -402,11 +266,7 @@ public class MatchInfo
 	 * endPos =  pointer to location where to store the end position
 	 * Returns: TRUE if the position was fetched, FALSE otherwise. If  the position cannot be fetched, start_pos and end_pos are left unchanged
 	 */
-	public int fetchNamedPos(string name, out int startPos, out int endPos)
-	{
-		// gboolean g_match_info_fetch_named_pos (const GMatchInfo *match_info,  const gchar *name,  gint *start_pos,  gint *end_pos);
-		return g_match_info_fetch_named_pos(gMatchInfo, Str.toStringz(name), &startPos, &endPos);
-	}
+	public int fetchNamedPos(string name, out int startPos, out int endPos);
 	
 	/**
 	 * Bundles up pointers to each of the matching substrings from a match
@@ -425,9 +285,5 @@ public class MatchInfo
 	 * Since 2.14
 	 * Returns: a NULL-terminated array of gchar * pointers. It must be  freed using g_strfreev(). If the previous match failed NULL is returned
 	 */
-	public string[] fetchAll()
-	{
-		// gchar ** g_match_info_fetch_all (const GMatchInfo *match_info);
-		return Str.toStringArray(g_match_info_fetch_all(gMatchInfo));
-	}
+	public string[] fetchAll();
 }

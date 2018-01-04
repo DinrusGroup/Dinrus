@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Character-Set-Conversion.html
- * outPack = glib
- * outFile = CharacterSet
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = CharacterSet
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * 	- g_convert_with_iconv
- * 	- g_iconv_open
- * 	- g_iconv
- * 	- g_iconv_close
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.CharacterSet;
 
 public  import gtkD.gtkc.glibtypes;
@@ -189,20 +132,7 @@ public class CharacterSet
 	 * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
 	 * Throws: GException on failure.
 	 */
-	public static string convert(string str, int len, string toCodeset, string fromCodeset, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_convert (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_convert(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string convert(string str, int len, string toCodeset, string fromCodeset, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Converts a string from one character set to another, possibly
@@ -235,20 +165,7 @@ public class CharacterSet
 	 * Returns: If the conversion was successful, a newly allocated nul-terminated string, which must be freed with g_free(). Otherwise NULL and error will be set.
 	 * Throws: GException on failure.
 	 */
-	public static string convertWithFallback(string str, int len, string toCodeset, string fromCodeset, string fallback, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_convert_with_fallback (const gchar *str,  gssize len,  const gchar *to_codeset,  const gchar *from_codeset,  gchar *fallback,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_convert_with_fallback(Str.toStringz(str), len, Str.toStringz(toCodeset), Str.toStringz(fromCodeset), Str.toStringz(fallback), &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string convertWithFallback(string str, int len, string toCodeset, string fromCodeset, string fallback, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Converts a string which is in the encoding used for strings by
@@ -273,20 +190,7 @@ public class CharacterSet
 	 * Returns: The converted string, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string localeToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_locale_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_locale_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string localeToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Converts a string which is in the encoding used by GLib for
@@ -310,20 +214,7 @@ public class CharacterSet
 	 * Returns: The converted string, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string filenameToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_filename_to_utf8 (const gchar *opsysstring,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_to_utf8(Str.toStringz(opsysstring), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string filenameToUtf8(string opsysstring, int len, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Converts a string from UTF-8 to the encoding GLib uses for
@@ -347,20 +238,7 @@ public class CharacterSet
 	 * Returns: The converted string, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string filenameFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_filename_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string filenameFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Converts an escaped ASCII-encoded URI to a local filename in the
@@ -373,22 +251,7 @@ public class CharacterSet
 	 * Returns: a newly-allocated string holding the resulting filename, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string filenameFromUri(string uri, out string hostname)
-	{
-		// gchar * g_filename_from_uri (const gchar *uri,  gchar **hostname,  GError **error);
-		char* outhostname = null;
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_from_uri(Str.toStringz(uri), &outhostname, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		hostname = Str.toString(outhostname);
-		return p;
-	}
+	public static string filenameFromUri(string uri, out string hostname);
 	
 	/**
 	 * Converts an absolute filename to an escaped ASCII-encoded URI, with the path
@@ -401,20 +264,7 @@ public class CharacterSet
 	 * Returns: a newly-allocated string holding the resulting URI, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string filenameToUri(string filename, string hostname)
-	{
-		// gchar * g_filename_to_uri (const gchar *filename,  const gchar *hostname,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_filename_to_uri(Str.toStringz(filename), Str.toStringz(hostname), &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string filenameToUri(string filename, string hostname);
 	
 	/**
 	 * Determines the preferred character sets used for filenames.
@@ -443,16 +293,7 @@ public class CharacterSet
 	 * charsets =  return location for the NULL-terminated list of encoding names
 	 * Returns: TRUE if the filename encoding is UTF-8.
 	 */
-	public static int getFilenameCharsets(out string[] charsets)
-	{
-		// gboolean g_get_filename_charsets (G_CONST_RETURN gchar ***charsets);
-		char** outcharsets = null;
-		
-		auto p = g_get_filename_charsets(&outcharsets);
-		
-		charsets = Str.toStringArray(outcharsets);
-		return p;
-	}
+	public static int getFilenameCharsets(out string[] charsets);
 	
 	/**
 	 * Converts a filename into a valid UTF-8 string. The conversion is
@@ -473,11 +314,7 @@ public class CharacterSet
 	 * filename =  a pathname hopefully in the GLib file name encoding
 	 * Returns: a newly allocated string containing a rendition of the filename in valid UTF-8
 	 */
-	public static string filenameDisplayName(string filename)
-	{
-		// gchar * g_filename_display_name (const gchar *filename);
-		return Str.toString(g_filename_display_name(Str.toStringz(filename)));
-	}
+	public static string filenameDisplayName(string filename);
 	
 	/**
 	 * Returns the display basename for the particular filename, guaranteed
@@ -498,11 +335,7 @@ public class CharacterSet
 	 * filename =  an absolute pathname in the GLib file name encoding
 	 * Returns: a newly allocated string containing a rendition of the basename of the filename in valid UTF-8
 	 */
-	public static string filenameDisplayBasename(string filename)
-	{
-		// gchar * g_filename_display_basename (const gchar *filename);
-		return Str.toString(g_filename_display_basename(Str.toStringz(filename)));
-	}
+	public static string filenameDisplayBasename(string filename);
 	
 	/**
 	 * Converts a string from UTF-8 to the encoding used for strings by
@@ -526,20 +359,7 @@ public class CharacterSet
 	 * Returns: The converted string, or NULL on an error.
 	 * Throws: GException on failure.
 	 */
-	public static string localeFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten)
-	{
-		// gchar* g_locale_from_utf8 (const gchar *utf8string,  gssize len,  gsize *bytes_read,  gsize *bytes_written,  GError **error);
-		GError* err = null;
-		
-		auto p = Str.toString(g_locale_from_utf8(Str.toStringz(utf8string), len, &bytesRead, &bytesWritten, &err));
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static string localeFromUtf8(string utf8string, int len, out uint bytesRead, out uint bytesWritten);
 	
 	/**
 	 * Obtains the character set for the current
@@ -560,14 +380,5 @@ public class CharacterSet
 	 * charset =  return location for character set name
 	 * Returns: TRUE if the returned charset is UTF-8[1]  Note that some encodings may allow nul bytes to  occur inside strings. In that case, using -1 for  the len parameter is unsafe.[2] Despite the fact that byes_read can return information about partial characters, the g_convert_... functionsare not generally suitable for streaming. If the underlying converter being used maintains internal state, then this won't be preserved across successive calls to g_convert(), g_convert_with_iconv() or g_convert_with_fallback(). (An example of this is the GNU C converter for CP1255 which does not emit a base character until it knows that the next character is not a mark that could combine with the base character.)
 	 */
-	public static int getCharset(out string charset)
-	{
-		// gboolean g_get_charset (G_CONST_RETURN char **charset);
-		char* outcharset = null;
-		
-		auto p = g_get_charset(&outcharset);
-		
-		charset = Str.toString(outcharset);
-		return p;
-	}
+	public static int getCharset(out string charset);
 }

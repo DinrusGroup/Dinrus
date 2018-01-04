@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstElementFactory.html
- * outPack = gstreamer
- * outFile = ElementFactory
- * strct   = GstElementFactory
- * realStrct=
- * ctorStrct=
- * clss    = ElementFactory
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_element_factory_
- * 	- gst_element_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Element
- * 	- gtkD.gstreamer.Plugin
- * 	- gtkD.gstreamer.Caps
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * 	- GstCaps* -> Caps
- * 	- GstElement* -> Element
- * 	- GstElementFactory* -> ElementFactory
- * 	- GstPlugin* -> Plugin
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.ElementFactory;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -106,38 +44,16 @@ public class ElementFactory : PluginFeature
 	protected GstElementFactory* gstElementFactory;
 	
 	
-	public GstElementFactory* getElementFactoryStruct()
-	{
-		return gstElementFactory;
-	}
+	public GstElementFactory* getElementFactoryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstElementFactory;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstElementFactory* gstElementFactory)
-	{
-		if(gstElementFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstElementFactory);
-		if( ptr !is null )
-		{
-			this = cast(ElementFactory)ptr;
-			return;
-		}
-		super(cast(GstPluginFeature*)gstElementFactory);
-		this.gstElementFactory = gstElementFactory;
-	}
+	public this (GstElementFactory* gstElementFactory);
 	
 	/**
 	 * Create a new element of the type defined by the given element factory.
@@ -148,11 +64,7 @@ public class ElementFactory : PluginFeature
 	 * Returns:
 	 *  new GstElement or NULL if unable to create element
 	 */
-	public static Element make( string factoryname )
-	{
-		// GstElement* gst_element_factory_make (const gchar *factoryname,  const gchar *name);
-		return new Element( gst_element_factory_make(Str.toStringz(factoryname), null ) );
-	}
+	public static Element make( string factoryname );
 	
 	/**
 	 */
@@ -167,11 +79,7 @@ public class ElementFactory : PluginFeature
 	 * type =  GType of element to register
 	 * Returns: TRUE, if the registering succeeded, FALSE on error
 	 */
-	public static int register(Plugin plugin, string name, uint rank, GType type)
-	{
-		// gboolean gst_element_register (GstPlugin *plugin,  const gchar *name,  guint rank,  GType type);
-		return gst_element_register((plugin is null) ? null : plugin.getPluginStruct(), Str.toStringz(name), rank, type);
-	}
+	public static int register(Plugin plugin, string name, uint rank, GType type);
 	
 	/**
 	 * Search for an element factory of the given name. Refs the returned
@@ -180,16 +88,7 @@ public class ElementFactory : PluginFeature
 	 * name =  name of factory to find
 	 * Returns: GstElementFactory if found, NULL otherwise
 	 */
-	public static ElementFactory find(string name)
-	{
-		// GstElementFactory* gst_element_factory_find (const gchar *name);
-		auto p = gst_element_factory_find(Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ElementFactory(cast(GstElementFactory*) p);
-	}
+	public static ElementFactory find(string name);
 	
 	/**
 	 * Get the GType for elements managed by this factory. The type can
@@ -197,71 +96,43 @@ public class ElementFactory : PluginFeature
 	 * assured with gst_plugin_feature_load().
 	 * Returns: the GType for elements managed by this factory or 0 ifthe factory is not loaded.
 	 */
-	public GType getElementType()
-	{
-		// GType gst_element_factory_get_element_type  (GstElementFactory *factory);
-		return gst_element_factory_get_element_type(gstElementFactory);
-	}
+	public GType getElementType();
 	
 	/**
 	 * Gets the longname for this factory
 	 * Returns: the longname
 	 */
-	public string getLongname()
-	{
-		// const gchar* gst_element_factory_get_longname  (GstElementFactory *factory);
-		return Str.toString(gst_element_factory_get_longname(gstElementFactory));
-	}
+	public string getLongname();
 	
 	/**
 	 * Gets the class for this factory.
 	 * Returns: the class
 	 */
-	public string getKlass()
-	{
-		// const gchar* gst_element_factory_get_klass (GstElementFactory *factory);
-		return Str.toString(gst_element_factory_get_klass(gstElementFactory));
-	}
+	public string getKlass();
 	
 	/**
 	 * Gets the description for this factory.
 	 * Returns: the description
 	 */
-	public string getDescription()
-	{
-		// const gchar* gst_element_factory_get_description  (GstElementFactory *factory);
-		return Str.toString(gst_element_factory_get_description(gstElementFactory));
-	}
+	public string getDescription();
 	
 	/**
 	 * Gets the author for this factory.
 	 * Returns: the author
 	 */
-	public string getAuthor()
-	{
-		// const gchar* gst_element_factory_get_author (GstElementFactory *factory);
-		return Str.toString(gst_element_factory_get_author(gstElementFactory));
-	}
+	public string getAuthor();
 	
 	/**
 	 * Gets the number of pad_templates in this factory.
 	 * Returns: the number of pad_templates
 	 */
-	public uint getNumPadTemplates()
-	{
-		// guint gst_element_factory_get_num_pad_templates  (GstElementFactory *factory);
-		return gst_element_factory_get_num_pad_templates(gstElementFactory);
-	}
+	public uint getNumPadTemplates();
 	
 	/**
 	 * Gets the type of URIs the element supports or GST_URI_UNKNOWN if none.
 	 * Returns: type of URIs this element supports
 	 */
-	public int getUriType()
-	{
-		// gint gst_element_factory_get_uri_type  (GstElementFactory *factory);
-		return gst_element_factory_get_uri_type(gstElementFactory);
-	}
+	public int getUriType();
 	
 	/**
 	 * Gets a NULL-terminated array of protocols this element supports or NULL if
@@ -270,11 +141,7 @@ public class ElementFactory : PluginFeature
 	 * make a copy of the protocol string array if you need to.
 	 * Returns: the supported protocols or NULL
 	 */
-	public string[] getUriProtocols()
-	{
-		// gchar** gst_element_factory_get_uri_protocols  (GstElementFactory *factory);
-		return Str.toStringArray(gst_element_factory_get_uri_protocols(gstElementFactory));
-	}
+	public string[] getUriProtocols();
 	
 	/**
 	 * Create a new element of the type defined by the given elementfactory.
@@ -284,16 +151,7 @@ public class ElementFactory : PluginFeature
 	 * name =  name of new element
 	 * Returns: new GstElement or NULL if the element couldn't be created
 	 */
-	public Element create(string name)
-	{
-		// GstElement* gst_element_factory_create (GstElementFactory *factory,  const gchar *name);
-		auto p = gst_element_factory_create(gstElementFactory, Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Element(cast(GstElement*) p);
-	}
+	public Element create(string name);
 	
 	/**
 	 * Create a new element of the type defined by the given element factory.
@@ -305,16 +163,7 @@ public class ElementFactory : PluginFeature
 	 * name =  name of new element
 	 * Returns: new GstElement or NULL if unable to create element
 	 */
-	public static Element make(string factoryname, string name)
-	{
-		// GstElement* gst_element_factory_make (const gchar *factoryname,  const gchar *name);
-		auto p = gst_element_factory_make(Str.toStringz(factoryname), Str.toStringz(name));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Element(cast(GstElement*) p);
-	}
+	public static Element make(string factoryname, string name);
 	
 	/**
 	 * Checks if the factory can sink the given capability.
@@ -322,11 +171,7 @@ public class ElementFactory : PluginFeature
 	 * caps =  the caps to check
 	 * Returns: true if it can sink the capabilities
 	 */
-	public int canSinkCaps(Caps caps)
-	{
-		// gboolean gst_element_factory_can_sink_caps  (GstElementFactory *factory,  const GstCaps *caps);
-		return gst_element_factory_can_sink_caps(gstElementFactory, (caps is null) ? null : caps.getCapsStruct());
-	}
+	public int canSinkCaps(Caps caps);
 	
 	/**
 	 * Checks if the factory can source the given capability.
@@ -334,24 +179,11 @@ public class ElementFactory : PluginFeature
 	 * caps =  the caps to check
 	 * Returns: true if it can src the capabilities
 	 */
-	public int canSrcCaps(Caps caps)
-	{
-		// gboolean gst_element_factory_can_src_caps  (GstElementFactory *factory,  const GstCaps *caps);
-		return gst_element_factory_can_src_caps(gstElementFactory, (caps is null) ? null : caps.getCapsStruct());
-	}
+	public int canSrcCaps(Caps caps);
 	
 	/**
 	 * Gets the GList of GstStaticPadTemplate for this factory.
 	 * Returns: the padtemplates
 	 */
-	public ListG getStaticPadTemplates()
-	{
-		// const GList* gst_element_factory_get_static_pad_templates  (GstElementFactory *factory);
-		auto p = gst_element_factory_get_static_pad_templates(gstElementFactory);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getStaticPadTemplates();
 }

@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = OptionGroup
- * strct   = GOptionGroup
- * realStrct=
- * ctorStrct=
- * clss    = OptionGroup
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_option_group_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.OptionGroup;
 
@@ -147,30 +97,16 @@ public class OptionGroup
 	protected GOptionGroup* gOptionGroup;
 	
 	
-	public GOptionGroup* getOptionGroupStruct()
-	{
-		return gOptionGroup;
-	}
+	public GOptionGroup* getOptionGroupStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gOptionGroup;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GOptionGroup* gOptionGroup)
-	{
-		if(gOptionGroup is null)
-		{
-			this = null;
-			return;
-		}
-		this.gOptionGroup = gOptionGroup;
-	}
+	public this (GOptionGroup* gOptionGroup);
 	
 	/**
 	 */
@@ -192,27 +128,14 @@ public class OptionGroup
 	 * destroy =  a function that will be called to free user_data, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, string description, string helpDescription, void* userData, GDestroyNotify destroy)
-	{
-		// GOptionGroup * g_option_group_new (const gchar *name,  const gchar *description,  const gchar *help_description,  gpointer user_data,  GDestroyNotify destroy);
-		auto p = g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_option_group_new(Str.toStringz(name), Str.toStringz(description), Str.toStringz(helpDescription), userData, destroy)");
-		}
-		this(cast(GOptionGroup*) p);
-	}
+	public this (string name, string description, string helpDescription, void* userData, GDestroyNotify destroy);
 	
 	/**
 	 * Frees a GOptionGroup. Note that you must not
 	 * free groups which have been added to a GOptionContext.
 	 * Since 2.6
 	 */
-	public void free()
-	{
-		// void g_option_group_free (GOptionGroup *group);
-		g_option_group_free(gOptionGroup);
-	}
+	public void free();
 	
 	/**
 	 * Adds the options specified in entries to group.
@@ -220,11 +143,7 @@ public class OptionGroup
 	 * Params:
 	 * entries =  a NULL-terminated array of GOptionEntrys
 	 */
-	public void addEntries(GOptionEntry* entries)
-	{
-		// void g_option_group_add_entries (GOptionGroup *group,  const GOptionEntry *entries);
-		g_option_group_add_entries(gOptionGroup, entries);
-	}
+	public void addEntries(GOptionEntry* entries);
 	
 	/**
 	 * Associates two functions with group which will be called
@@ -238,11 +157,7 @@ public class OptionGroup
 	 * preParseFunc =  a function to call before parsing, or NULL
 	 * postParseFunc =  a function to call after parsing, or NULL
 	 */
-	public void setParseHooks(GOptionParseFunc preParseFunc, GOptionParseFunc postParseFunc)
-	{
-		// void g_option_group_set_parse_hooks (GOptionGroup *group,  GOptionParseFunc pre_parse_func,  GOptionParseFunc post_parse_func);
-		g_option_group_set_parse_hooks(gOptionGroup, preParseFunc, postParseFunc);
-	}
+	public void setParseHooks(GOptionParseFunc preParseFunc, GOptionParseFunc postParseFunc);
 	
 	/**
 	 * Associates a function with group which will be called
@@ -253,11 +168,7 @@ public class OptionGroup
 	 * Params:
 	 * errorFunc =  a function to call when an error occurs
 	 */
-	public void setErrorHook(GOptionErrorFunc errorFunc)
-	{
-		// void g_option_group_set_error_hook (GOptionGroup *group,  GOptionErrorFunc error_func);
-		g_option_group_set_error_hook(gOptionGroup, errorFunc);
-	}
+	public void setErrorHook(GOptionErrorFunc errorFunc);
 	
 	/**
 	 * Sets the function which is used to translate user-visible
@@ -272,11 +183,7 @@ public class OptionGroup
 	 * data =  user data to pass to func, or NULL
 	 * destroyNotify =  a function which gets called to free data, or NULL
 	 */
-	public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify)
-	{
-		// void g_option_group_set_translate_func (GOptionGroup *group,  GTranslateFunc func,  gpointer data,  GDestroyNotify destroy_notify);
-		g_option_group_set_translate_func(gOptionGroup, func, data, destroyNotify);
-	}
+	public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify);
 	
 	/**
 	 * A convenience function to use gettext() for translating
@@ -285,9 +192,5 @@ public class OptionGroup
 	 * Params:
 	 * domain =  the domain to use
 	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void g_option_group_set_translation_domain  (GOptionGroup *group,  const gchar *domain);
-		g_option_group_set_translation_domain(gOptionGroup, Str.toStringz(domain));
-	}
+	public void setTranslationDomain(string domain);
 }

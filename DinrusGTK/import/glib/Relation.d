@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Relations-and-Tuples.html
- * outPack = glib
- * outFile = Relation
- * strct   = GRelation
- * realStrct=
- * ctorStrct=
- * clss    = Relation
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_relation_
- * omit structs:
- * omit prefixes:
- * 	- g_tuples_
- * omit code:
- * 	- g_relation_print
- * omit signals:
- * imports:
- * 	- gtkD.glib.Tuples
- * structWrap:
- * 	- GTuples* -> Tuples
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Relation;
 
@@ -98,30 +45,16 @@ public class Relation
 	protected GRelation* gRelation;
 	
 	
-	public GRelation* getRelationStruct()
-	{
-		return gRelation;
-	}
+	public GRelation* getRelationStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gRelation;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GRelation* gRelation)
-	{
-		if(gRelation is null)
-		{
-			this = null;
-			return;
-		}
-		this.gRelation = gRelation;
-	}
+	public this (GRelation* gRelation);
 	
 	/**
 	 * Outputs information about all records in a GRelation, as well as the indexes.
@@ -129,27 +62,15 @@ public class Relation
 	 */
 	version(Rulada)
 	{
-		public void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
+		public void print();
 	}
 	else version(D_Version2)
 	{
-		public void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
+		public void print();
 	}
 	else
 	{
-		public override void print()
-		{
-			// void g_relation_print (GRelation *relation);
-			g_relation_print(gRelation);
-		}
+		public override void print();
 	}
 	
 	/**
@@ -162,16 +83,7 @@ public class Relation
 	 * fields = the number of fields.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (int fields)
-	{
-		// GRelation* g_relation_new (gint fields);
-		auto p = g_relation_new(fields);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_relation_new(fields)");
-		}
-		this(cast(GRelation*) p);
-	}
+	public this (int fields);
 	
 	/**
 	 * Creates an index on the given field.
@@ -181,11 +93,7 @@ public class Relation
 	 * hashFunc = a function to produce a hash value from the field data.
 	 * keyEqualFunc = a function to compare two values of the given field.
 	 */
-	public void index(int field, GHashFunc hashFunc, GEqualFunc keyEqualFunc)
-	{
-		// void g_relation_index (GRelation *relation,  gint field,  GHashFunc hash_func,  GEqualFunc key_equal_func);
-		g_relation_index(gRelation, field, hashFunc, keyEqualFunc);
-	}
+	public void index(int field, GHashFunc hashFunc, GEqualFunc keyEqualFunc);
 	
 	/**
 	 * Returns the number of tuples in a GRelation that have the given value
@@ -195,11 +103,7 @@ public class Relation
 	 * field = the field of each record to match.
 	 * Returns:the number of matches.
 	 */
-	public int count(void* key, int field)
-	{
-		// gint g_relation_count (GRelation *relation,  gconstpointer key,  gint field);
-		return g_relation_count(gRelation, key, field);
-	}
+	public int count(void* key, int field);
 	
 	/**
 	 * Returns all of the tuples which have the given key in the given field.
@@ -210,16 +114,7 @@ public class Relation
 	 * field = the field of each record to match.
 	 * Returns:the records (tuples) that matched.
 	 */
-	public Tuples select(void* key, int field)
-	{
-		// GTuples* g_relation_select (GRelation *relation,  gconstpointer key,  gint field);
-		auto p = g_relation_select(gRelation, key, field);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Tuples(cast(GTuples*) p);
-	}
+	public Tuples select(void* key, int field);
 	
 	/**
 	 * Deletes any records from a GRelation that have the given key value in
@@ -229,20 +124,12 @@ public class Relation
 	 * field = the field of each record to match.
 	 * Returns:the number of records deleted.
 	 */
-	public int delet(void* key, int field)
-	{
-		// gint g_relation_delete (GRelation *relation,  gconstpointer key,  gint field);
-		return g_relation_delete(gRelation, key, field);
-	}
+	public int delet(void* key, int field);
 	
 	/**
 	 * Destroys the GRelation, freeing all memory allocated.
 	 * However, it does not free memory allocated for the
 	 * tuple data, so you should free that first if appropriate.
 	 */
-	public void destroy()
-	{
-		// void g_relation_destroy (GRelation *relation);
-		g_relation_destroy(gRelation);
-	}
+	public void destroy();
 }

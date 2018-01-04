@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkCellRendererToggle.html
- * outPack = gtk
- * outFile = CellRendererToggle
- * strct   = GtkCellRendererToggle
- * realStrct=
- * ctorStrct=GtkCellRenderer
- * clss    = CellRendererToggle
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_cell_renderer_toggle_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.CellRenderer
- * structWrap:
- * 	- GtkCellRenderer* -> CellRenderer
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.CellRendererToggle;
 
 public  import gtkD.gtkc.gtktypes;
@@ -83,38 +29,16 @@ public class CellRendererToggle : CellRenderer
 	protected GtkCellRendererToggle* gtkCellRendererToggle;
 	
 	
-	public GtkCellRendererToggle* getCellRendererToggleStruct()
-	{
-		return gtkCellRendererToggle;
-	}
+	public GtkCellRendererToggle* getCellRendererToggleStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkCellRendererToggle;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkCellRendererToggle* gtkCellRendererToggle)
-	{
-		if(gtkCellRendererToggle is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkCellRendererToggle);
-		if( ptr !is null )
-		{
-			this = cast(CellRendererToggle)ptr;
-			return;
-		}
-		super(cast(GtkCellRenderer*)gtkCellRendererToggle);
-		this.gtkCellRendererToggle = gtkCellRendererToggle;
-	}
+	public this (GtkCellRendererToggle* gtkCellRendererToggle);
 	
 	/**
 	 */
@@ -124,28 +48,8 @@ public class CellRendererToggle : CellRenderer
 	/**
 	 * The ::toggled signal is emitted when the cell is toggled.
 	 */
-	void addOnToggled(void delegate(string, CellRendererToggle) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toggled" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toggled",
-			cast(GCallback)&callBackToggled,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toggled"] = 1;
-		}
-		onToggledListeners ~= dlg;
-	}
-	extern(C) static void callBackToggled(GtkCellRendererToggle* cellRendererStruct, gchar* path, CellRendererToggle cellRendererToggle)
-	{
-		foreach ( void delegate(string, CellRendererToggle) dlg ; cellRendererToggle.onToggledListeners )
-		{
-			dlg(Str.toString(path), cellRendererToggle);
-		}
-	}
+	void addOnToggled(void delegate(string, CellRendererToggle) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToggled(GtkCellRendererToggle* cellRendererStruct, gchar* path, CellRendererToggle cellRendererToggle);
 	
 	
 	/**
@@ -158,26 +62,13 @@ public class CellRendererToggle : CellRenderer
 	 * the model.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkCellRenderer * gtk_cell_renderer_toggle_new (void);
-		auto p = gtk_cell_renderer_toggle_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_cell_renderer_toggle_new()");
-		}
-		this(cast(GtkCellRendererToggle*) p);
-	}
+	public this ();
 	
 	/**
 	 * Returns whether we're rendering radio toggles rather than checkboxes.
 	 * Returns: TRUE if we're rendering radio toggles rather than checkboxes
 	 */
-	public int getRadio()
-	{
-		// gboolean gtk_cell_renderer_toggle_get_radio (GtkCellRendererToggle *toggle);
-		return gtk_cell_renderer_toggle_get_radio(gtkCellRendererToggle);
-	}
+	public int getRadio();
 	
 	/**
 	 * If radio is TRUE, the cell renderer renders a radio toggle
@@ -190,33 +81,21 @@ public class CellRendererToggle : CellRenderer
 	 * Params:
 	 * radio =  TRUE to make the toggle look like a radio button
 	 */
-	public void setRadio(int radio)
-	{
-		// void gtk_cell_renderer_toggle_set_radio (GtkCellRendererToggle *toggle,  gboolean radio);
-		gtk_cell_renderer_toggle_set_radio(gtkCellRendererToggle, radio);
-	}
+	public void setRadio(int radio);
 	
 	/**
 	 * Returns whether the cell renderer is active. See
 	 * gtk_cell_renderer_toggle_set_active().
 	 * Returns: TRUE if the cell renderer is active.
 	 */
-	public int getActive()
-	{
-		// gboolean gtk_cell_renderer_toggle_get_active (GtkCellRendererToggle *toggle);
-		return gtk_cell_renderer_toggle_get_active(gtkCellRendererToggle);
-	}
+	public int getActive();
 	
 	/**
 	 * Activates or deactivates a cell renderer.
 	 * Params:
 	 * setting =  the value to set.
 	 */
-	public void setActive(int setting)
-	{
-		// void gtk_cell_renderer_toggle_set_active (GtkCellRendererToggle *toggle,  gboolean setting);
-		gtk_cell_renderer_toggle_set_active(gtkCellRendererToggle, setting);
-	}
+	public void setActive(int setting);
 	
 	/**
 	 * Returns whether the cell renderer is activatable. See
@@ -224,11 +103,7 @@ public class CellRendererToggle : CellRenderer
 	 * Since 2.18
 	 * Returns: TRUE if the cell renderer is activatable.
 	 */
-	public int getActivatable()
-	{
-		// gboolean gtk_cell_renderer_toggle_get_activatable  (GtkCellRendererToggle *toggle);
-		return gtk_cell_renderer_toggle_get_activatable(gtkCellRendererToggle);
-	}
+	public int getActivatable();
 	
 	/**
 	 * Makes the cell renderer activatable.
@@ -236,9 +111,5 @@ public class CellRendererToggle : CellRenderer
 	 * Params:
 	 * setting =  the value to set.
 	 */
-	public void setActivatable(int setting)
-	{
-		// void gtk_cell_renderer_toggle_set_activatable  (GtkCellRendererToggle *toggle,  gboolean setting);
-		gtk_cell_renderer_toggle_set_activatable(gtkCellRendererToggle, setting);
-	}
+	public void setActivatable(int setting);
 }

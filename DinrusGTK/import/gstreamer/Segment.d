@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstSegment.html
- * outPack = gstreamer
- * outFile = Segment
- * strct   = GstSegment
- * realStrct=
- * ctorStrct=
- * clss    = Segment
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_segment_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GstSegment* -> Segment
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.Segment;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -111,30 +58,16 @@ public class Segment
 	protected GstSegment* gstSegment;
 	
 	
-	public GstSegment* getSegmentStruct()
-	{
-		return gstSegment;
-	}
+	public GstSegment* getSegmentStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstSegment;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstSegment* gstSegment)
-	{
-		if(gstSegment is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstSegment = gstSegment;
-	}
+	public this (GstSegment* gstSegment);
 	
 	/**
 	 */
@@ -156,11 +89,7 @@ public class Segment
 	 * clipStop =  the clipped stop position in the segment
 	 * Returns: TRUE if the given start and stop times fall partially or  completely in segment, FALSE if the values are completely outside  of the segment.
 	 */
-	public int clip(GstFormat format, long start, long stop, long* clipStart, long* clipStop)
-	{
-		// gboolean gst_segment_clip (GstSegment *segment,  GstFormat format,  gint64 start,  gint64 stop,  gint64 *clip_start,  gint64 *clip_stop);
-		return gst_segment_clip(gstSegment, format, start, stop, clipStart, clipStop);
-	}
+	public int clip(GstFormat format, long start, long stop, long* clipStart, long* clipStop);
 	
 	/**
 	 * The start/last_stop positions are set to 0 and the stop/duration
@@ -170,36 +99,19 @@ public class Segment
 	 * Params:
 	 * format =  the format of the segment.
 	 */
-	public void init(GstFormat format)
-	{
-		// void gst_segment_init (GstSegment *segment,  GstFormat format);
-		gst_segment_init(gstSegment, format);
-	}
+	public void init(GstFormat format);
 	
 	/**
 	 * Allocate a new GstSegment structure and initialize it using
 	 * gst_segment_init().
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GstSegment* gst_segment_new (void);
-		auto p = gst_segment_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gst_segment_new()");
-		}
-		this(cast(GstSegment*) p);
-	}
+	public this ();
 	
 	/**
 	 * Free the allocated segment segment.
 	 */
-	public void free()
-	{
-		// void gst_segment_free (GstSegment *segment);
-		gst_segment_free(gstSegment);
-	}
+	public void free();
 	
 	/**
 	 * Set the duration of the segment to duration. This function is mainly
@@ -211,11 +123,7 @@ public class Segment
 	 * format =  the format of the segment.
 	 * duration =  the duration of the segment info or -1 if unknown.
 	 */
-	public void setDuration(GstFormat format, long duration)
-	{
-		// void gst_segment_set_duration (GstSegment *segment,  GstFormat format,  gint64 duration);
-		gst_segment_set_duration(gstSegment, format, duration);
-	}
+	public void setDuration(GstFormat format, long duration);
 	
 	/**
 	 * Set the last observed stop position in the segment to position.
@@ -225,11 +133,7 @@ public class Segment
 	 * format =  the format of the segment.
 	 * position =  the position
 	 */
-	public void setLastStop(GstFormat format, long position)
-	{
-		// void gst_segment_set_last_stop (GstSegment *segment,  GstFormat format,  gint64 position);
-		gst_segment_set_last_stop(gstSegment, format, position);
-	}
+	public void setLastStop(GstFormat format, long position);
 	
 	/**
 	 * Update the segment structure with the field values of a new segment event and
@@ -244,11 +148,7 @@ public class Segment
 	 * time =  the new stream time
 	 * Since 0.10.6
 	 */
-	public void setNewsegment(int update, double rate, GstFormat format, long start, long stop, long time)
-	{
-		// void gst_segment_set_newsegment (GstSegment *segment,  gboolean update,  gdouble rate,  GstFormat format,  gint64 start,  gint64 stop,  gint64 time);
-		gst_segment_set_newsegment(gstSegment, update, rate, format, start, stop, time);
-	}
+	public void setNewsegment(int update, double rate, GstFormat format, long start, long stop, long time);
 	
 	/**
 	 * Update the segment structure with the field values of a new segment event.
@@ -262,11 +162,7 @@ public class Segment
 	 * stop =  the new stop value
 	 * time =  the new stream time
 	 */
-	public void setNewsegmentFull(int update, double rate, double appliedRate, GstFormat format, long start, long stop, long time)
-	{
-		// void gst_segment_set_newsegment_full (GstSegment *segment,  gboolean update,  gdouble rate,  gdouble applied_rate,  GstFormat format,  gint64 start,  gint64 stop,  gint64 time);
-		gst_segment_set_newsegment_full(gstSegment, update, rate, appliedRate, format, start, stop, time);
-	}
+	public void setNewsegmentFull(int update, double rate, double appliedRate, GstFormat format, long start, long stop, long time);
 	
 	/**
 	 * Update the segment structure with the field values of a seek event (see
@@ -301,11 +197,7 @@ public class Segment
 	 * stop =  the seek stop value
 	 * update =  boolean holding whether last_stop was updated.
 	 */
-	public void setSeek(double rate, GstFormat format, GstSeekFlags flags, GstSeekType startType, long start, GstSeekType stopType, long stop, int* update)
-	{
-		// void gst_segment_set_seek (GstSegment *segment,  gdouble rate,  GstFormat format,  GstSeekFlags flags,  GstSeekType start_type,  gint64 start,  GstSeekType stop_type,  gint64 stop,  gboolean *update);
-		gst_segment_set_seek(gstSegment, rate, format, flags, startType, start, stopType, stop, update);
-	}
+	public void setSeek(double rate, GstFormat format, GstSeekFlags flags, GstSeekType startType, long start, GstSeekType stopType, long stop, int* update);
 	
 	/**
 	 * Translate position to the total running time using the currently configured
@@ -321,11 +213,7 @@ public class Segment
 	 * position =  the position in the segment
 	 * Returns: the position as the total running time or -1 when an invalid positionwas given.
 	 */
-	public long toRunningTime(GstFormat format, long position)
-	{
-		// gint64 gst_segment_to_running_time (GstSegment *segment,  GstFormat format,  gint64 position);
-		return gst_segment_to_running_time(gstSegment, format, position);
-	}
+	public long toRunningTime(GstFormat format, long position);
 	
 	/**
 	 * Translate position to stream time using the currently configured
@@ -342,9 +230,5 @@ public class Segment
 	 * position =  the position in the segment
 	 * Returns: the position in stream_time or -1 when an invalid positionwas given.
 	 */
-	public long toStreamTime(GstFormat format, long position)
-	{
-		// gint64 gst_segment_to_stream_time (GstSegment *segment,  GstFormat format,  gint64 position);
-		return gst_segment_to_stream_time(gstSegment, format, position);
-	}
+	public long toStreamTime(GstFormat format, long position);
 }

@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gthread
- * outFile = RWLock
- * strct   = GStaticRWLock
- * realStrct=
- * ctorStrct=
- * clss    = RWLock
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_static_rw_lock_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.RWLock;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -116,40 +66,21 @@ public class RWLock
 	protected GStaticRWLock* gStaticRWLock;
 	
 	
-	public GStaticRWLock* getRWLockStruct()
-	{
-		return gStaticRWLock;
-	}
+	public GStaticRWLock* getRWLockStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStaticRWLock;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GStaticRWLock* gStaticRWLock)
-	{
-		if(gStaticRWLock is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStaticRWLock = gStaticRWLock;
-	}
+	public this (GStaticRWLock* gStaticRWLock);
 	
 	/**
 	 * Creates a new initialized RWLock.
 	 */
-	public this ()
-	{
-		this(new GStaticRWLock);
-		
-		init();
-	}
+	public this ();
 	
 	/**
 	 */
@@ -159,11 +90,7 @@ public class RWLock
 	 * be used. Alternatively you can initialize it with
 	 * G_STATIC_RW_LOCK_INIT.
 	 */
-	public void init()
-	{
-		// void g_static_rw_lock_init (GStaticRWLock *lock);
-		g_static_rw_lock_init(gStaticRWLock);
-	}
+	public void init();
 	
 	/**
 	 * Locks lock for reading. There may be unlimited concurrent locks for
@@ -177,11 +104,7 @@ public class RWLock
 	 * recursively lock for reading, but that can result in a deadlock, due
 	 * to writer preference.
 	 */
-	public void readerLock()
-	{
-		// void g_static_rw_lock_reader_lock (GStaticRWLock *lock);
-		g_static_rw_lock_reader_lock(gStaticRWLock);
-	}
+	public void readerLock();
 	
 	/**
 	 * Tries to lock lock for reading. If lock is already locked for
@@ -193,12 +116,8 @@ public class RWLock
 	 * lock = a GStaticRWLock to lock for reading.
 	 * Returns:%TRUE, if lock could be locked for reading.
 	 */
-	public int readerTrylock()
-	{
-		// gboolean g_static_rw_lock_reader_trylock (GStaticRWLock *lock);
-		return g_static_rw_lock_reader_trylock(gStaticRWLock);
-	}
-	
+	public int readerTrylock();
+
 	/**
 	 * Unlocks lock. If a thread waits to lock lock for writing and all
 	 * locks for reading have been unlocked, the waiting thread is woken up
@@ -206,11 +125,7 @@ public class RWLock
 	 * Params:
 	 * lock = a GStaticRWLock to unlock after reading.
 	 */
-	public void readerUnlock()
-	{
-		// void g_static_rw_lock_reader_unlock (GStaticRWLock *lock);
-		g_static_rw_lock_reader_unlock(gStaticRWLock);
-	}
+	public void readerUnlock();
 	
 	/**
 	 * Locks lock for writing. If lock is already locked for writing or
@@ -221,11 +136,7 @@ public class RWLock
 	 * lock (neither for reading nor writing). This lock has to be unlocked
 	 * by g_static_rw_lock_writer_unlock().
 	 */
-	public void writerLock()
-	{
-		// void g_static_rw_lock_writer_lock (GStaticRWLock *lock);
-		g_static_rw_lock_writer_lock(gStaticRWLock);
-	}
+	public void writerLock();
 	
 	/**
 	 * Tries to lock lock for writing. If lock is already locked (for
@@ -236,11 +147,7 @@ public class RWLock
 	 * lock = a GStaticRWLock to lock for writing.
 	 * Returns:%TRUE, if lock could be locked for writing.
 	 */
-	public int writerTrylock()
-	{
-		// gboolean g_static_rw_lock_writer_trylock (GStaticRWLock *lock);
-		return g_static_rw_lock_writer_trylock(gStaticRWLock);
-	}
+	public int writerTrylock();
 	
 	/**
 	 * Unlocks lock. If a thread is waiting to lock lock for writing and
@@ -252,11 +159,7 @@ public class RWLock
 	 * Params:
 	 * lock = a GStaticRWLock to unlock after writing.
 	 */
-	public void writerUnlock()
-	{
-		// void g_static_rw_lock_writer_unlock (GStaticRWLock *lock);
-		g_static_rw_lock_writer_unlock(gStaticRWLock);
-	}
+	public void writerUnlock();
 	
 	/**
 	 * Releases all resources allocated to lock.
@@ -265,9 +168,5 @@ public class RWLock
 	 * GStaticRWLock as a member of a structure, and the structure is freed,
 	 * you should also free the GStaticRWLock.
 	 */
-	public void free()
-	{
-		// void g_static_rw_lock_free (GStaticRWLock *lock);
-		g_static_rw_lock_free(gStaticRWLock);
-	}
+	public void free();
 }

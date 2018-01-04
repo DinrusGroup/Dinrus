@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Commandline-option-parser.html
- * outPack = glib
- * outFile = OptionContext
- * strct   = GOptionContext
- * realStrct=
- * ctorStrct=
- * clss    = OptionContext
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_option_context_
- * omit structs:
- * omit prefixes:
- * 	- g_option_group_
- * omit code:
- * 	- g_option_context_parse
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.OptionGroup
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GOptionGroup* -> OptionGroup
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.OptionContext;
 
 public  import gtkD.gtkc.glibtypes;
@@ -156,30 +99,16 @@ public class OptionContext
 	protected GOptionContext* gOptionContext;
 	
 	
-	public GOptionContext* getOptionContextStruct()
-	{
-		return gOptionContext;
-	}
+	public GOptionContext* getOptionContextStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gOptionContext;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GOptionContext* gOptionContext)
-	{
-		if(gOptionContext is null)
-		{
-			this = null;
-			return;
-		}
-		this.gOptionContext = gOptionContext;
-	}
+	public this (GOptionContext* gOptionContext);
 	
 	/**
 	 * Parses the command line arguments, recognizing options
@@ -208,22 +137,7 @@ public class OptionContext
 	 * Returns: TRUE if the parsing was successful,  FALSE if an error occurred
 	 * Throws: GException on failure.
 	 */
-	public int parse(out int argc, out string[] argv)
-	{
-		// gboolean g_option_context_parse (GOptionContext *context,  gint *argc,  gchar ***argv,  GError **error);
-		GError* err = null;
-		char** arg = null;
-		
-		auto p = g_option_context_parse(gOptionContext, &argc, &arg, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		argv = Str.toStringArray(arg);
-		return p;
-	}
+	public int parse(out int argc, out string[] argv);
 	
 	/**
 	 */
@@ -253,16 +167,7 @@ public class OptionContext
 	 *  programname [OPTION...]
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string parameterString)
-	{
-		// GOptionContext * g_option_context_new (const gchar *parameter_string);
-		auto p = g_option_context_new(Str.toStringz(parameterString));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_option_context_new(Str.toStringz(parameterString))");
-		}
-		this(cast(GOptionContext*) p);
-	}
+	public this (string parameterString);
 	
 	/**
 	 * Adds a string to be displayed in --help output
@@ -276,22 +181,14 @@ public class OptionContext
 	 * summary =  a string to be shown in --help output
 	 *  before the list of options, or NULL
 	 */
-	public void setSummary(string summary)
-	{
-		// void g_option_context_set_summary (GOptionContext *context,  const gchar *summary);
-		g_option_context_set_summary(gOptionContext, Str.toStringz(summary));
-	}
+	public void setSummary(string summary);
 	
 	/**
 	 * Returns the summary. See g_option_context_set_summary().
 	 * Since 2.12
 	 * Returns: the summary
 	 */
-	public string getSummary()
-	{
-		// const gchar * g_option_context_get_summary (GOptionContext *context);
-		return Str.toString(g_option_context_get_summary(gOptionContext));
-	}
+	public string getSummary();
 	
 	/**
 	 * Adds a string to be displayed in --help output
@@ -304,22 +201,14 @@ public class OptionContext
 	 * description =  a string to be shown in --help output
 	 *  after the list of options, or NULL
 	 */
-	public void setDescription(string description)
-	{
-		// void g_option_context_set_description (GOptionContext *context,  const gchar *description);
-		g_option_context_set_description(gOptionContext, Str.toStringz(description));
-	}
+	public void setDescription(string description);
 	
 	/**
 	 * Returns the description. See g_option_context_set_description().
 	 * Since 2.12
 	 * Returns: the description
 	 */
-	public string getDescription()
-	{
-		// const gchar * g_option_context_get_description (GOptionContext *context);
-		return Str.toString(g_option_context_get_description(gOptionContext));
-	}
+	public string getDescription();
 	
 	/**
 	 * Sets the function which is used to translate the contexts
@@ -337,11 +226,7 @@ public class OptionContext
 	 * data =  user data to pass to func, or NULL
 	 * destroyNotify =  a function which gets called to free data, or NULL
 	 */
-	public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify)
-	{
-		// void g_option_context_set_translate_func (GOptionContext *context,  GTranslateFunc func,  gpointer data,  GDestroyNotify destroy_notify);
-		g_option_context_set_translate_func(gOptionContext, func, data, destroyNotify);
-	}
+	public void setTranslateFunc(GTranslateFunc func, void* data, GDestroyNotify destroyNotify);
 	
 	/**
 	 * A convenience function to use gettext() for translating
@@ -350,11 +235,7 @@ public class OptionContext
 	 * Params:
 	 * domain =  the domain to use
 	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void g_option_context_set_translation_domain  (GOptionContext *context,  const gchar *domain);
-		g_option_context_set_translation_domain(gOptionContext, Str.toStringz(domain));
-	}
+	public void setTranslationDomain(string domain);
 	
 	/**
 	 * Frees context and all the groups which have been
@@ -363,11 +244,7 @@ public class OptionContext
 	 * GOptionEntry).
 	 * Since 2.6
 	 */
-	public void free()
-	{
-		// void g_option_context_free (GOptionContext *context);
-		g_option_context_free(gOptionContext);
-	}
+	public void free();
 	
 	/**
 	 * Enables or disables automatic generation of --help
@@ -380,11 +257,7 @@ public class OptionContext
 	 * Params:
 	 * helpEnabled =  TRUE to enable --help, FALSE to disable it
 	 */
-	public void setHelpEnabled(int helpEnabled)
-	{
-		// void g_option_context_set_help_enabled (GOptionContext *context,  gboolean help_enabled);
-		g_option_context_set_help_enabled(gOptionContext, helpEnabled);
-	}
+	public void setHelpEnabled(int helpEnabled);
 	
 	/**
 	 * Returns whether automatic --help generation
@@ -392,11 +265,7 @@ public class OptionContext
 	 * Since 2.6
 	 * Returns: TRUE if automatic help generation is turned on.
 	 */
-	public int getHelpEnabled()
-	{
-		// gboolean g_option_context_get_help_enabled (GOptionContext *context);
-		return g_option_context_get_help_enabled(gOptionContext);
-	}
+	public int getHelpEnabled();
 	
 	/**
 	 * Sets whether to ignore unknown options or not. If an argument is
@@ -410,11 +279,7 @@ public class OptionContext
 	 * ignoreUnknown =  TRUE to ignore unknown options, FALSE to produce
 	 *  an error when unknown options are met
 	 */
-	public void setIgnoreUnknownOptions(int ignoreUnknown)
-	{
-		// void g_option_context_set_ignore_unknown_options  (GOptionContext *context,  gboolean ignore_unknown);
-		g_option_context_set_ignore_unknown_options(gOptionContext, ignoreUnknown);
-	}
+	public void setIgnoreUnknownOptions(int ignoreUnknown);
 	
 	/**
 	 * Returns whether unknown options are ignored or not. See
@@ -422,11 +287,7 @@ public class OptionContext
 	 * Since 2.6
 	 * Returns: TRUE if unknown options are ignored.
 	 */
-	public int getIgnoreUnknownOptions()
-	{
-		// gboolean g_option_context_get_ignore_unknown_options  (GOptionContext *context);
-		return g_option_context_get_ignore_unknown_options(gOptionContext);
-	}
+	public int getIgnoreUnknownOptions();
 	
 	/**
 	 * Returns a formatted, translated help text for the given context.
@@ -442,11 +303,7 @@ public class OptionContext
 	 * group =  the GOptionGroup to create help for, or NULL
 	 * Returns: A newly allocated string containing the help text
 	 */
-	public string getHelp(int mainHelp, OptionGroup group)
-	{
-		// gchar * g_option_context_get_help (GOptionContext *context,  gboolean main_help,  GOptionGroup *group);
-		return Str.toString(g_option_context_get_help(gOptionContext, mainHelp, (group is null) ? null : group.getOptionGroupStruct()));
-	}
+	public string getHelp(int mainHelp, OptionGroup group);
 	
 	/**
 	 * A convenience function which creates a main group if it doesn't
@@ -458,11 +315,7 @@ public class OptionContext
 	 *  the --help output for the options in entries
 	 *  with gettext(), or NULL
 	 */
-	public void addMainEntries(GOptionEntry* entries, string translationDomain)
-	{
-		// void g_option_context_add_main_entries (GOptionContext *context,  const GOptionEntry *entries,  const gchar *translation_domain);
-		g_option_context_add_main_entries(gOptionContext, entries, Str.toStringz(translationDomain));
-	}
+	public void addMainEntries(GOptionEntry* entries, string translationDomain);
 	
 	/**
 	 * Adds a GOptionGroup to the context, so that parsing with context
@@ -474,11 +327,7 @@ public class OptionContext
 	 * Params:
 	 * group =  the group to add
 	 */
-	public void addGroup(OptionGroup group)
-	{
-		// void g_option_context_add_group (GOptionContext *context,  GOptionGroup *group);
-		g_option_context_add_group(gOptionContext, (group is null) ? null : group.getOptionGroupStruct());
-	}
+	public void addGroup(OptionGroup group);
 	
 	/**
 	 * Sets a GOptionGroup as main group of the context.
@@ -489,25 +338,12 @@ public class OptionContext
 	 * Params:
 	 * group =  the group to set as main group
 	 */
-	public void setMainGroup(OptionGroup group)
-	{
-		// void g_option_context_set_main_group (GOptionContext *context,  GOptionGroup *group);
-		g_option_context_set_main_group(gOptionContext, (group is null) ? null : group.getOptionGroupStruct());
-	}
+	public void setMainGroup(OptionGroup group);
 	
 	/**
 	 * Returns a pointer to the main group of context.
 	 * Since 2.6
 	 * Returns: the main group of context, or NULL if context doesn't have a main group. Note that group belongs to context and should not be modified or freed.
 	 */
-	public OptionGroup getMainGroup()
-	{
-		// GOptionGroup * g_option_context_get_main_group (GOptionContext *context);
-		auto p = g_option_context_get_main_group(gOptionContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new OptionGroup(cast(GOptionGroup*) p);
-	}
+	public OptionGroup getMainGroup();
 }

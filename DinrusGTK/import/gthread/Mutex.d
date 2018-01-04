@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Threads.html
- * outPack = gthread
- * outFile = Mutex
- * strct   = GMutex
- * realStrct=
- * ctorStrct=
- * clss    = Mutex
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_mutex_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.Mutex;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -116,30 +66,16 @@ public class Mutex
 	protected GMutex* gMutex;
 	
 	
-	public GMutex* getMutexStruct()
-	{
-		return gMutex;
-	}
+	public GMutex* getMutexStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMutex;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMutex* gMutex)
-	{
-		if(gMutex is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMutex = gMutex;
-	}
+	public this (GMutex* gMutex);
 	
 	/**
 	 */
@@ -150,16 +86,7 @@ public class Mutex
 	 * This function will abort if g_thread_init() has not been called yet.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GMutex * g_mutex_new ();
-		auto p = g_mutex_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mutex_new()");
-		}
-		this(cast(GMutex*) p);
-	}
+	public this ();
 	
 	/**
 	 * Locks mutex. If mutex is already locked by another thread, the
@@ -173,11 +100,7 @@ public class Mutex
 	 * already has locked mutex. Use GStaticRecMutex, if you need recursive
 	 * mutexes.
 	 */
-	public void lock()
-	{
-		// void g_mutex_lock (GMutex *mutex);
-		g_mutex_lock(gMutex);
-	}
+	public void lock();
 	
 	/**
 	 * Tries to lock mutex. If mutex is already locked by another
@@ -192,11 +115,7 @@ public class Mutex
 	 * GStaticRecMutex, if you need recursive mutexes.
 	 * Returns:%TRUE, if mutex could be locked.
 	 */
-	public int trylock()
-	{
-		// gboolean g_mutex_trylock (GMutex *mutex);
-		return g_mutex_trylock(gMutex);
-	}
+	public int trylock();
 	
 	/**
 	 * Unlocks mutex. If another thread is blocked in a g_mutex_lock() call
@@ -204,20 +123,12 @@ public class Mutex
 	 * This function can be used even if g_thread_init() has not yet been
 	 * called, and, in that case, will do nothing.
 	 */
-	public void unlock()
-	{
-		// void g_mutex_unlock (GMutex *mutex);
-		g_mutex_unlock(gMutex);
-	}
+	public void unlock();
 	
 	/**
 	 * Destroys mutex.
 	 * Note
 	 * Calling g_mutex_free() on a locked mutex may result in undefined behaviour.
 	 */
-	public void free()
-	{
-		// void g_mutex_free (GMutex *mutex);
-		g_mutex_free(gMutex);
-	}
+	public void free();
 }

@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Directory
- * strct   = GDir
- * realStrct=
- * ctorStrct=
- * clss    = Directory
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_dir_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * 	- GDir* -> Directory
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Directory;
 
@@ -95,30 +42,16 @@ public class Directory
 	protected GDir* gDir;
 	
 	
-	public GDir* getDirectoryStruct()
-	{
-		return gDir;
-	}
+	public GDir* getDirectoryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gDir;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GDir* gDir)
-	{
-		if(gDir is null)
-		{
-			this = null;
-			return;
-		}
-		this.gDir = gDir;
-	}
+	public this (GDir* gDir);
 	
 	/**
 	 */
@@ -133,24 +66,7 @@ public class Directory
 	 * Returns: a newly allocated GDir on success, NULL on failure. If non-NULL, you must free the result with g_dir_close() when you are finished with it.
 	 * Throws: GException on failure.
 	 */
-	public static Directory open(string path, uint flags)
-	{
-		// GDir * g_dir_open (const gchar *path,  guint flags,  GError **error);
-		GError* err = null;
-		
-		auto p = g_dir_open(Str.toStringz(path), flags, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Directory(cast(GDir*) p);
-	}
+	public static Directory open(string path, uint flags);
 	
 	/**
 	 * Retrieves the name of the next entry in the directory. The '.' and
@@ -158,28 +74,16 @@ public class Directory
 	 * UTF-8. On Unix, it is in the on-disk encoding.
 	 * Returns: The entry's name or NULL if there are no  more entries. The return value is owned by GLib and must not be modified or freed.
 	 */
-	public string readName()
-	{
-		// const gchar * g_dir_read_name (GDir *dir);
-		return Str.toString(g_dir_read_name(gDir));
-	}
+	public string readName();
 	
 	/**
 	 * Resets the given directory. The next call to g_dir_read_name()
 	 * will return the first entry again.
 	 */
-	public void rewind()
-	{
-		// void g_dir_rewind (GDir *dir);
-		g_dir_rewind(gDir);
-	}
+	public void rewind();
 	
 	/**
 	 * Closes the directory and deallocates all related resources.
 	 */
-	public void close()
-	{
-		// void g_dir_close (GDir *dir);
-		g_dir_close(gDir);
-	}
+	public void close();
 }

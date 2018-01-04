@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstPluginFeature.html
- * outPack = gstreamer
- * outFile = PluginFeature
- * strct   = GstPluginFeature
- * realStrct=
- * ctorStrct=
- * clss    = PluginFeature
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_plugin_feature_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gst_plugin_feature_set_name
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * 	- GstPluginFeature* -> PluginFeature
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.PluginFeature;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -80,38 +24,16 @@ public class PluginFeature : ObjectGst
 	protected GstPluginFeature* gstPluginFeature;
 	
 	
-	public GstPluginFeature* getPluginFeatureStruct()
-	{
-		return gstPluginFeature;
-	}
+	public GstPluginFeature* getPluginFeatureStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gstPluginFeature;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstPluginFeature* gstPluginFeature)
-	{
-		if(gstPluginFeature is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gstPluginFeature);
-		if( ptr !is null )
-		{
-			this = cast(PluginFeature)ptr;
-			return;
-		}
-		super(cast(GstObject*)gstPluginFeature);
-		this.gstPluginFeature = gstPluginFeature;
-	}
+	public this (GstPluginFeature* gstPluginFeature);
 	
 	/**
 	 * Sets the name of a plugin feature. The name uniquely identifies a feature
@@ -121,11 +43,7 @@ public class PluginFeature : ObjectGst
 	 * Params:
 	 *  name = the name to set
 	 */
-	public void setFeatureName(string name)
-	{
-		// void gst_plugin_feature_set_name (GstPluginFeature *feature,  const gchar *name);
-		gst_plugin_feature_set_name(gstPluginFeature, Str.toStringz(name));
-	}
+	public void setFeatureName(string name);
 	
 	/**
 	 */
@@ -136,11 +54,7 @@ public class PluginFeature : ObjectGst
 	 * data =  the type and name to check against
 	 * Returns: TRUE if equal.
 	 */
-	public int typeNameFilter(GstTypeNameData* data)
-	{
-		// gboolean gst_plugin_feature_type_name_filter  (GstPluginFeature *feature,  GstTypeNameData *data);
-		return gst_plugin_feature_type_name_filter(gstPluginFeature, data);
-	}
+	public int typeNameFilter(GstTypeNameData* data);
 	
 	/**
 	 * Specifies a rank for a plugin feature, so that autoplugging uses
@@ -148,58 +62,33 @@ public class PluginFeature : ObjectGst
 	 * Params:
 	 * rank =  rank value - higher number means more priority rank
 	 */
-	public void setRank(uint rank)
-	{
-		// void gst_plugin_feature_set_rank (GstPluginFeature *feature,  guint rank);
-		gst_plugin_feature_set_rank(gstPluginFeature, rank);
-	}
+	public void setRank(uint rank);
 	
 	/**
 	 * Gets the rank of a plugin feature.
 	 * Returns: The rank of the feature
 	 */
-	public uint getRank()
-	{
-		// guint gst_plugin_feature_get_rank (GstPluginFeature *feature);
-		return gst_plugin_feature_get_rank(gstPluginFeature);
-	}
+	public uint getRank();
 	
 	/**
 	 * Gets the name of a plugin feature.
 	 * Returns: the name
 	 */
-	public string getName()
-	{
-		// const gchar* gst_plugin_feature_get_name (GstPluginFeature *feature);
-		return Str.toString(gst_plugin_feature_get_name(gstPluginFeature));
-	}
+	public string getName();
 	
 	/**
 	 * Loads the plugin containing feature if it's not already loaded. feature is
 	 * unaffected; use the return value instead.
 	 * Returns: A reference to the loaded feature, or NULL on error.
 	 */
-	public PluginFeature load()
-	{
-		// GstPluginFeature* gst_plugin_feature_load (GstPluginFeature *feature);
-		auto p = gst_plugin_feature_load(gstPluginFeature);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PluginFeature(cast(GstPluginFeature*) p);
-	}
+	public PluginFeature load();
 	
 	/**
 	 * Unrefs each member of list, then frees the list.
 	 * Params:
 	 * list =  list of GstPluginFeature
 	 */
-	public static void listFree(ListG list)
-	{
-		// void gst_plugin_feature_list_free (GList *list);
-		gst_plugin_feature_list_free((list is null) ? null : list.getListGStruct());
-	}
+	public static void listFree(ListG list);
 	
 	/**
 	 * Checks whether the given plugin feature is at least
@@ -210,9 +99,5 @@ public class PluginFeature : ObjectGst
 	 * minMicro =  minimum required micro version
 	 * Returns: TRUE if the plugin feature has at least the required version, otherwise FALSE.
 	 */
-	public int checkVersion(uint minMajor, uint minMinor, uint minMicro)
-	{
-		// gboolean gst_plugin_feature_check_version  (GstPluginFeature *feature,  guint min_major,  guint min_minor,  guint min_micro);
-		return gst_plugin_feature_check_version(gstPluginFeature, minMajor, minMinor, minMicro);
-	}
+	public int checkVersion(uint minMajor, uint minMinor, uint minMicro);
 }

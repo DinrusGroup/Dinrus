@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtkglext-gdkglinit.html
- * outPack = glgdk
- * outFile = GLdInit
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = GLdInit
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gdk_gl_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glgdk.GLdInit;
 
 public  import gtkD.gtkglc.glgdktypes;
@@ -86,16 +35,7 @@ public class GLdInit
 	 *  main(). Any parameters understood by
 	 *  gdk_gl_init() are stripped before return.
 	 */
-	public static void init(inout string[] argv)
-	{
-		// void gdk_gl_init (int *argc,  char ***argv);
-		char** outargv = Str.toStringzArray(argv);
-		int argc;
-		
-		gdk_gl_init(&argc, &outargv);
-		
-		argv = Str.toStringArray(outargv);
-	}
+	public static void init(inout string[] argv);
 	
 	/**
 	 * This function does the same work as gdk_gl_init() with only
@@ -109,17 +49,7 @@ public class GLdInit
 	 *  gdk_gl_init() are stripped before return.
 	 * Returns: TRUE if the GUI has been successfully initialized,  FALSE otherwise.
 	 */
-	public static int initCheck(inout string[] argv)
-	{
-		// gboolean gdk_gl_init_check (int *argc,  char ***argv);
-		char** outargv = Str.toStringzArray(argv);
-		int argc;
-		
-		auto p = gdk_gl_init_check(&argc, &outargv);
-		
-		argv = Str.toStringArray(outargv);
-		return p;
-	}
+	public static int initCheck(inout string[] argv);
 	
 	/**
 	 * Parses command line arguments, and initializes global
@@ -132,15 +62,5 @@ public class GLdInit
 	 * argv =  the array of command line arguments.
 	 * Returns: TRUE if initialization succeeded, otherwise FALSE.<<PartII.GdkGLExt API ReferenceQuery>>
 	 */
-	public static int parseArgs(inout string[] argv)
-	{
-		// gboolean gdk_gl_parse_args (int *argc,  char ***argv);
-		char** outargv = Str.toStringzArray(argv);
-		int argc;
-		
-		auto p = gdk_gl_parse_args(&argc, &outargv);
-		
-		argv = Str.toStringArray(outargv);
-		return p;
-	}
+	public static int parseArgs(inout string[] argv);
 }

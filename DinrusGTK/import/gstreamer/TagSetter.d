@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GstTagSetter.html
- * outPack = gstreamer
- * outFile = TagSetter
- * strct   = GstTagSetter
- * realStrct=
- * ctorStrct=
- * clss    = TagSetter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_tag_setter_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.TagList
- * structWrap:
- * 	- GstTagList* -> TagList
- * 	- GstTagSetter* -> TagSetter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.TagSetter;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -105,30 +50,16 @@ public class TagSetter
 	protected GstTagSetter* gstTagSetter;
 	
 	
-	public GstTagSetter* getTagSetterStruct()
-	{
-		return gstTagSetter;
-	}
+	public GstTagSetter* getTagSetterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstTagSetter;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstTagSetter* gstTagSetter)
-	{
-		if(gstTagSetter is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstTagSetter = gstTagSetter;
-	}
+	public this (GstTagSetter* gstTagSetter);
 	
 	/**
 	 */
@@ -139,11 +70,7 @@ public class TagSetter
 	 * list =  a tag list to merge from
 	 * mode =  the mode to merge with
 	 */
-	public void mergeTags(TagList list, GstTagMergeMode mode)
-	{
-		// void gst_tag_setter_merge_tags (GstTagSetter *setter,  const GstTagList *list,  GstTagMergeMode mode);
-		gst_tag_setter_merge_tags(gstTagSetter, (list is null) ? null : list.getTagListStruct(), mode);
-	}
+	public void mergeTags(TagList list, GstTagMergeMode mode);
 	
 	/**
 	 * Adds the given tag / value pairs on the setter using the given merge mode.
@@ -153,11 +80,7 @@ public class TagSetter
 	 * tag =  tag to set
 	 * varArgs =  tag / value pairs to set
 	 */
-	public void addTagValist(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_setter_add_tag_valist (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_setter_add_tag_valist(gstTagSetter, mode, Str.toStringz(tag), varArgs);
-	}
+	public void addTagValist(GstTagMergeMode mode, string tag, void* varArgs);
 	
 	/**
 	 * Adds the given tag / GValue pairs on the setter using the given merge mode.
@@ -167,27 +90,14 @@ public class TagSetter
 	 * tag =  tag to set
 	 * varArgs =  tag / GValue pairs to set
 	 */
-	public void addTagValistValues(GstTagMergeMode mode, string tag, void* varArgs)
-	{
-		// void gst_tag_setter_add_tag_valist_values  (GstTagSetter *setter,  GstTagMergeMode mode,  const gchar *tag,  va_list var_args);
-		gst_tag_setter_add_tag_valist_values(gstTagSetter, mode, Str.toStringz(tag), varArgs);
-	}
+	public void addTagValistValues(GstTagMergeMode mode, string tag, void* varArgs);
 	
 	/**
 	 * Returns the current list of tags the setter uses. The list should not be
 	 * modified or freed.
 	 * Returns: a current snapshot of the taglist used in the setter or NULL if none is used.
 	 */
-	public TagList getTagList()
-	{
-		// const GstTagList* gst_tag_setter_get_tag_list  (GstTagSetter *setter);
-		auto p = gst_tag_setter_get_tag_list(gstTagSetter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TagList(cast(GstTagList*) p);
-	}
+	public TagList getTagList();
 	
 	/**
 	 * Sets the given merge mode that is used for adding tags from events to tags
@@ -196,20 +106,12 @@ public class TagSetter
 	 * Params:
 	 * mode =  The mode with which tags are added
 	 */
-	public void setTagMergeMode(GstTagMergeMode mode)
-	{
-		// void gst_tag_setter_set_tag_merge_mode  (GstTagSetter *setter,  GstTagMergeMode mode);
-		gst_tag_setter_set_tag_merge_mode(gstTagSetter, mode);
-	}
+	public void setTagMergeMode(GstTagMergeMode mode);
 	
 	/**
 	 * Queries the mode by which tags inside the setter are overwritten by tags
 	 * from events
 	 * Returns: the merge mode used inside the element.
 	 */
-	public GstTagMergeMode getTagMergeMode()
-	{
-		// GstTagMergeMode gst_tag_setter_get_tag_merge_mode  (GstTagSetter *setter);
-		return gst_tag_setter_get_tag_merge_mode(gstTagSetter);
-	}
+	public GstTagMergeMode getTagMergeMode();
 }

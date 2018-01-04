@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gobject-Closures.html
- * outPack = gobject
- * outFile = Closure
- * strct   = GClosure
- * realStrct=
- * ctorStrct=
- * clss    = Closure
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_closure_
- * omit structs:
- * omit prefixes:
- * 	- g_cclosure_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gobject.ObjectG
- * 	- gtkD.gobject.Value
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GClosure* -> Closure
- * 	- GObject* -> ObjectG
- * 	- GSource* -> Source
- * 	- GValue* -> Value
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gobject.Closure;
 
 public  import gtkD.gtkc.gobjecttypes;
@@ -115,30 +57,16 @@ public class Closure
 	protected GClosure* gClosure;
 	
 	
-	public GClosure* getClosureStruct()
-	{
-		return gClosure;
-	}
+	public GClosure* getClosureStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gClosure;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GClosure* gClosure)
-	{
-		if(gClosure is null)
-		{
-			this = null;
-			return;
-		}
-		this.gClosure = gClosure;
-	}
+	public this (GClosure* gClosure);
 	
 	/**
 	 */
@@ -155,32 +83,14 @@ public class Closure
 	 *  allocated GClosure
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (uint sizeofClosure, ObjectG object)
-	{
-		// GClosure* g_closure_new_object (guint sizeof_closure,  GObject *object);
-		auto p = g_closure_new_object(sizeofClosure, (object is null) ? null : object.getObjectGStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_closure_new_object(sizeofClosure, (object is null) ? null : object.getObjectGStruct())");
-		}
-		this(cast(GClosure*) p);
-	}
+	public this (uint sizeofClosure, ObjectG object);
 	
 	/**
 	 * Increments the reference count on a closure to force it staying
 	 * alive while the caller holds a pointer to it.
 	 * Returns: The closure passed in, for convenience
 	 */
-	public Closure doref()
-	{
-		// GClosure* g_closure_ref (GClosure *closure);
-		auto p = g_closure_ref(gClosure);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Closure(cast(GClosure*) p);
-	}
+	public Closure doref();
 	
 	/**
 	 * Takes over the initial ownership of a closure. Each closure is
@@ -191,22 +101,14 @@ public class Closure
 	 * count. If the closure is not floating, g_closure_sink() does
 	 * nothing. The reason for the existance of the floating state is to
 	 */
-	public void sink()
-	{
-		// void g_closure_sink (GClosure *closure);
-		g_closure_sink(gClosure);
-	}
+	public void sink();
 	
 	/**
 	 * Decrements the reference count of a closure after it was previously
 	 * incremented by the same caller. If no other callers are using the
 	 * closure, then the closure will be destroyed and freed.
 	 */
-	public void unref()
-	{
-		// void g_closure_unref (GClosure *closure);
-		g_closure_unref(gClosure);
-	}
+	public void unref();
 	
 	/**
 	 * Invokes the closure, i.e. executes the callback represented by the closure.
@@ -218,11 +120,7 @@ public class Closure
 	 *  which to invoke the callback of closure
 	 * invocationHint =  a context-dependent invocation hint
 	 */
-	public void invoke(Value returnValue, uint nParamValues, Value paramValues, void* invocationHint)
-	{
-		// void g_closure_invoke (GClosure *closure,  GValue *return_value,  guint n_param_values,  const GValue *param_values,  gpointer invocation_hint);
-		g_closure_invoke(gClosure, (returnValue is null) ? null : returnValue.getValueStruct(), nParamValues, (paramValues is null) ? null : paramValues.getValueStruct(), invocationHint);
-	}
+	public void invoke(Value returnValue, uint nParamValues, Value paramValues, void* invocationHint);
 	
 	/**
 	 * Sets a flag on the closure to indicate that its calling
@@ -238,11 +136,7 @@ public class Closure
 	 * reference count of a closure drops to zero (unless it has already
 	 * been invalidated before).
 	 */
-	public void invalidate()
-	{
-		// void g_closure_invalidate (GClosure *closure);
-		g_closure_invalidate(gClosure);
-	}
+	public void invalidate();
 	
 	/**
 	 * Registers a finalization notifier which will be called when the
@@ -255,11 +149,7 @@ public class Closure
 	 * notifyData =  data to pass to notify_func
 	 * notifyFunc =  the callback function to register
 	 */
-	public void addFinalizeNotifier(void* notifyData, GClosureNotify notifyFunc)
-	{
-		// void g_closure_add_finalize_notifier (GClosure *closure,  gpointer notify_data,  GClosureNotify notify_func);
-		g_closure_add_finalize_notifier(gClosure, notifyData, notifyFunc);
-	}
+	public void addFinalizeNotifier(void* notifyData, GClosureNotify notifyFunc);
 	
 	/**
 	 * Registers an invalidation notifier which will be called when the
@@ -270,11 +160,7 @@ public class Closure
 	 * notifyData =  data to pass to notify_func
 	 * notifyFunc =  the callback function to register
 	 */
-	public void addInvalidateNotifier(void* notifyData, GClosureNotify notifyFunc)
-	{
-		// void g_closure_add_invalidate_notifier (GClosure *closure,  gpointer notify_data,  GClosureNotify notify_func);
-		g_closure_add_invalidate_notifier(gClosure, notifyData, notifyFunc);
-	}
+	public void addInvalidateNotifier(void* notifyData, GClosureNotify notifyFunc);
 	
 	/**
 	 * Removes a finalization notifier.
@@ -284,11 +170,7 @@ public class Closure
 	 *  when registering notify_func
 	 * notifyFunc =  the callback function to remove
 	 */
-	public void removeFinalizeNotifier(void* notifyData, GClosureNotify notifyFunc)
-	{
-		// void g_closure_remove_finalize_notifier (GClosure *closure,  gpointer notify_data,  GClosureNotify notify_func);
-		g_closure_remove_finalize_notifier(gClosure, notifyData, notifyFunc);
-	}
+	public void removeFinalizeNotifier(void* notifyData, GClosureNotify notifyFunc);
 	
 	/**
 	 * Removes an invalidation notifier.
@@ -298,11 +180,7 @@ public class Closure
 	 *  when registering notify_func
 	 * notifyFunc =  the callback function to remove
 	 */
-	public void removeInvalidateNotifier(void* notifyData, GClosureNotify notifyFunc)
-	{
-		// void g_closure_remove_invalidate_notifier  (GClosure *closure,  gpointer notify_data,  GClosureNotify notify_func);
-		g_closure_remove_invalidate_notifier(gClosure, notifyData, notifyFunc);
-	}
+	public void removeInvalidateNotifier(void* notifyData, GClosureNotify notifyFunc);
 	
 	/**
 	 * Allocates a struct of the given size and initializes the initial
@@ -338,16 +216,7 @@ public class Closure
 	 * data =  data to store in the data field of the newly allocated GClosure
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (uint sizeofClosure, void* data)
-	{
-		// GClosure* g_closure_new_simple (guint sizeof_closure,  gpointer data);
-		auto p = g_closure_new_simple(sizeofClosure, data);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_closure_new_simple(sizeofClosure, data)");
-		}
-		this(cast(GClosure*) p);
-	}
+	public this (uint sizeofClosure, void* data);
 	
 	/**
 	 * Sets the marshaller of closure. The marshal_data
@@ -359,11 +228,7 @@ public class Closure
 	 * Params:
 	 * marshal =  a GClosureMarshal function
 	 */
-	public void setMarshal(GClosureMarshal marshal)
-	{
-		// void g_closure_set_marshal (GClosure *closure,  GClosureMarshal marshal);
-		g_closure_set_marshal(gClosure, marshal);
-	}
+	public void setMarshal(GClosureMarshal marshal);
 	
 	/**
 	 * Adds a pair of notifiers which get invoked before and after the
@@ -376,12 +241,8 @@ public class Closure
 	 * postMarshalData =  data to pass to post_marshal_notify
 	 * postMarshalNotify =  a function to call after the closure callback
 	 */
-	public void addMarshalGuards(void* preMarshalData, GClosureNotify preMarshalNotify, void* postMarshalData, GClosureNotify postMarshalNotify)
-	{
-		// void g_closure_add_marshal_guards (GClosure *closure,  gpointer pre_marshal_data,  GClosureNotify pre_marshal_notify,  gpointer post_marshal_data,  GClosureNotify post_marshal_notify);
-		g_closure_add_marshal_guards(gClosure, preMarshalData, preMarshalNotify, postMarshalData, postMarshalNotify);
-	}
-	
+	public void addMarshalGuards(void* preMarshalData, GClosureNotify preMarshalNotify, void* postMarshalData, GClosureNotify postMarshalNotify);
+
 	/**
 	 * Sets the meta marshaller of closure. A meta marshaller wraps
 	 * closure->marshal and modifies the way it is called in some
@@ -400,11 +261,7 @@ public class Closure
 	 * marshalData =  context-dependent data to pass to meta_marshal
 	 * metaMarshal =  a GClosureMarshal function
 	 */
-	public void setMetaMarshal(void* marshalData, GClosureMarshal metaMarshal)
-	{
-		// void g_closure_set_meta_marshal (GClosure *closure,  gpointer marshal_data,  GClosureMarshal meta_marshal);
-		g_closure_set_meta_marshal(gClosure, marshalData, metaMarshal);
-	}
+	public void setMetaMarshal(void* marshalData, GClosureMarshal metaMarshal);
 	
 	/**
 	 * Set the callback for a source as a GClosure.
@@ -415,9 +272,5 @@ public class Closure
 	 * source =  the source
 	 * closure =  a GClosure
 	 */
-	public static void gSourceSetClosure(Source source, Closure closure)
-	{
-		// void g_source_set_closure (GSource *source,  GClosure *closure);
-		g_source_set_closure((source is null) ? null : source.getSourceStruct(), (closure is null) ? null : closure.getClosureStruct());
-	}
+	public static void gSourceSetClosure(Source source, Closure closure);
 }

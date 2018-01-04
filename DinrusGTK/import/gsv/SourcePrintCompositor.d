@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSourcePrintCompositor.html
- * outPack = gsv
- * outFile = SourcePrintCompositor
- * strct   = GtkSourcePrintCompositor
- * realStrct=
- * ctorStrct=
- * clss    = SourcePrintCompositor
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_source_print_compositor_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gsv.SourceBuffer
- * 	- gtkD.gsv.SourceView
- * 	- gtkD.gtk.PrintContext
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GtkPrintContext* -> PrintContext
- * 	- GtkSourceBuffer* -> SourceBuffer
- * 	- GtkSourceView* -> SourceView
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gsv.SourcePrintCompositor;
 
 public  import gtkD.gsvc.gsvtypes;
@@ -92,38 +35,16 @@ public class SourcePrintCompositor : ObjectG
 	protected GtkSourcePrintCompositor* gtkSourcePrintCompositor;
 	
 	
-	public GtkSourcePrintCompositor* getSourcePrintCompositorStruct()
-	{
-		return gtkSourcePrintCompositor;
-	}
+	public GtkSourcePrintCompositor* getSourcePrintCompositorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSourcePrintCompositor;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSourcePrintCompositor* gtkSourcePrintCompositor)
-	{
-		if(gtkSourcePrintCompositor is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSourcePrintCompositor);
-		if( ptr !is null )
-		{
-			this = cast(SourcePrintCompositor)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSourcePrintCompositor);
-		this.gtkSourcePrintCompositor = gtkSourcePrintCompositor;
-	}
+	public this (GtkSourcePrintCompositor* gtkSourcePrintCompositor);
 	
 	/**
 	 */
@@ -135,16 +56,7 @@ public class SourcePrintCompositor : ObjectG
 	 * buffer =  the GtkSourceBuffer to print
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (SourceBuffer buffer)
-	{
-		// GtkSourcePrintCompositor * gtk_source_print_compositor_new  (GtkSourceBuffer *buffer);
-		auto p = gtk_source_print_compositor_new((buffer is null) ? null : buffer.getSourceBufferStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_source_print_compositor_new((buffer is null) ? null : buffer.getSourceBufferStruct())");
-		}
-		this(cast(GtkSourcePrintCompositor*) p);
-	}
+	public this (SourceBuffer buffer);
 	
 	/**
 	 * Creates a new print compositor that can be used to print the buffer
@@ -159,16 +71,7 @@ public class SourcePrintCompositor : ObjectG
 	 * view =  a GtkSourceView to get configuration from.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (SourceView view)
-	{
-		// GtkSourcePrintCompositor * gtk_source_print_compositor_new_from_view  (GtkSourceView *view);
-		auto p = gtk_source_print_compositor_new_from_view((view is null) ? null : view.getSourceViewStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_source_print_compositor_new_from_view((view is null) ? null : view.getSourceViewStruct())");
-		}
-		this(cast(GtkSourcePrintCompositor*) p);
-	}
+	public this (SourceView view);
 	
 	/**
 	 * Gets the GtkSourceBuffer associated with the compositor. The returned
@@ -177,16 +80,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: the GtkSourceBuffer associated with the compositor.
 	 */
-	public SourceBuffer getBuffer()
-	{
-		// GtkSourceBuffer * gtk_source_print_compositor_get_buffer  (GtkSourcePrintCompositor *compositor);
-		auto p = gtk_source_print_compositor_get_buffer(gtkSourcePrintCompositor);
-		if(p is null)
-		{
-			return null;
-		}
-		return new SourceBuffer(cast(GtkSourceBuffer*) p);
-	}
+	public SourceBuffer getBuffer();
 	
 	/**
 	 * Sets the width of tabulation in characters for printed text.
@@ -196,22 +90,14 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * width =  width of tab in characters.
 	 */
-	public void setTabWidth(uint width)
-	{
-		// void gtk_source_print_compositor_set_tab_width  (GtkSourcePrintCompositor *compositor,  guint width);
-		gtk_source_print_compositor_set_tab_width(gtkSourcePrintCompositor, width);
-	}
+	public void setTabWidth(uint width);
 	
 	/**
 	 * Returns the width of tabulation in characters for printed text.
 	 * Since 2.2
 	 * Returns: width of tab.
 	 */
-	public uint getTabWidth()
-	{
-		// guint gtk_source_print_compositor_get_tab_width  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_tab_width(gtkSourcePrintCompositor);
-	}
+	public uint getTabWidth();
 	
 	/**
 	 * Sets the line wrapping mode for the printed text.
@@ -221,22 +107,14 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * wrapMode =  a GtkWrapMode.
 	 */
-	public void setWrapMode(GtkWrapMode wrapMode)
-	{
-		// void gtk_source_print_compositor_set_wrap_mode  (GtkSourcePrintCompositor *compositor,  GtkWrapMode wrap_mode);
-		gtk_source_print_compositor_set_wrap_mode(gtkSourcePrintCompositor, wrapMode);
-	}
+	public void setWrapMode(GtkWrapMode wrapMode);
 	
 	/**
 	 * Gets the line wrapping mode for the printed text.
 	 * Since 2.2
 	 * Returns: the line wrap mode.
 	 */
-	public GtkWrapMode getWrapMode()
-	{
-		// GtkWrapMode gtk_source_print_compositor_get_wrap_mode  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_wrap_mode(gtkSourcePrintCompositor);
-	}
+	public GtkWrapMode getWrapMode();
 	
 	/**
 	 * Sets whether the printed text will be highlighted according to the
@@ -247,11 +125,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * highlight =  whether syntax should be highlighted.
 	 */
-	public void setHighlightSyntax(int highlight)
-	{
-		// void gtk_source_print_compositor_set_highlight_syntax  (GtkSourcePrintCompositor *compositor,  gboolean highlight);
-		gtk_source_print_compositor_set_highlight_syntax(gtkSourcePrintCompositor, highlight);
-	}
+	public void setHighlightSyntax(int highlight);
 	
 	/**
 	 * Determines whether the printed text will be highlighted according to the
@@ -260,11 +134,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: TRUE if the printed output will be highlighted.
 	 */
-	public int getHighlightSyntax()
-	{
-		// gboolean gtk_source_print_compositor_get_highlight_syntax  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_highlight_syntax(gtkSourcePrintCompositor);
-	}
+	public int getHighlightSyntax();
 	
 	/**
 	 * Sets the interval for printed line numbers. If interval is 0 no
@@ -277,11 +147,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * interval =  interval for printed line numbers.
 	 */
-	public void setPrintLineNumbers(uint interval)
-	{
-		// void gtk_source_print_compositor_set_print_line_numbers  (GtkSourcePrintCompositor *compositor,  guint interval);
-		gtk_source_print_compositor_set_print_line_numbers(gtkSourcePrintCompositor, interval);
-	}
+	public void setPrintLineNumbers(uint interval);
 	
 	/**
 	 * Returns the interval used for line number printing. If the
@@ -290,11 +156,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: the interval of printed line numbers.
 	 */
-	public uint getPrintLineNumbers()
-	{
-		// guint gtk_source_print_compositor_get_print_line_numbers  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_print_line_numbers(gtkSourcePrintCompositor);
-	}
+	public uint getPrintLineNumbers();
 	
 	/**
 	 * Sets the default font for the printed text.
@@ -308,11 +170,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * fontName =  the name of the default font for the body text.
 	 */
-	public void setBodyFontName(string fontName)
-	{
-		// void gtk_source_print_compositor_set_body_font_name  (GtkSourcePrintCompositor *compositor,  const gchar *font_name);
-		gtk_source_print_compositor_set_body_font_name(gtkSourcePrintCompositor, Str.toStringz(fontName));
-	}
+	public void setBodyFontName(string fontName);
 	
 	/**
 	 * Returns the name of the font used to print the text body. The returned string
@@ -320,11 +178,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: a new string containing the name of the font used to print the text body.
 	 */
-	public string getBodyFontName()
-	{
-		// gchar * gtk_source_print_compositor_get_body_font_name  (GtkSourcePrintCompositor *compositor);
-		return Str.toString(gtk_source_print_compositor_get_body_font_name(gtkSourcePrintCompositor));
-	}
+	public string getBodyFontName();
 	
 	/**
 	 * Sets the font for printing line numbers on the left margin. If
@@ -340,11 +194,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * fontName =  the name of the font for line numbers, or NULL.
 	 */
-	public void setLineNumbersFontName(string fontName)
-	{
-		// void gtk_source_print_compositor_set_line_numbers_font_name  (GtkSourcePrintCompositor *compositor,  const gchar *font_name);
-		gtk_source_print_compositor_set_line_numbers_font_name(gtkSourcePrintCompositor, Str.toStringz(fontName));
-	}
+	public void setLineNumbersFontName(string fontName);
 	
 	/**
 	 * Returns the name of the font used to print line numbers on the left margin.
@@ -352,11 +202,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: a new string containing the name of the font used to print line numbers on the left margin.
 	 */
-	public string getLineNumbersFontName()
-	{
-		// gchar * gtk_source_print_compositor_get_line_numbers_font_name  (GtkSourcePrintCompositor *compositor);
-		return Str.toString(gtk_source_print_compositor_get_line_numbers_font_name(gtkSourcePrintCompositor));
-	}
+	public string getLineNumbersFontName();
 	
 	/**
 	 * Sets the font for printing the page header. If
@@ -372,11 +218,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * fontName =  the name of the font for header text, or NULL.
 	 */
-	public void setHeaderFontName(string fontName)
-	{
-		// void gtk_source_print_compositor_set_header_font_name  (GtkSourcePrintCompositor *compositor,  const gchar *font_name);
-		gtk_source_print_compositor_set_header_font_name(gtkSourcePrintCompositor, Str.toStringz(fontName));
-	}
+	public void setHeaderFontName(string fontName);
 	
 	/**
 	 * Returns the name of the font used to print the page header.
@@ -384,11 +226,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: a new string containing the name of the font used to print the page header.
 	 */
-	public string getHeaderFontName()
-	{
-		// gchar * gtk_source_print_compositor_get_header_font_name  (GtkSourcePrintCompositor *compositor);
-		return Str.toString(gtk_source_print_compositor_get_header_font_name(gtkSourcePrintCompositor));
-	}
+	public string getHeaderFontName();
 	
 	/**
 	 * Sets the font for printing the page footer. If
@@ -404,11 +242,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * fontName =  the name of the font for the footer text, or NULL.
 	 */
-	public void setFooterFontName(string fontName)
-	{
-		// void gtk_source_print_compositor_set_footer_font_name  (GtkSourcePrintCompositor *compositor,  const gchar *font_name);
-		gtk_source_print_compositor_set_footer_font_name(gtkSourcePrintCompositor, Str.toStringz(fontName));
-	}
+	public void setFooterFontName(string fontName);
 	
 	/**
 	 * Returns the name of the font used to print the page footer.
@@ -416,11 +250,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: a new string containing the name of the font used to print the page footer.
 	 */
-	public string getFooterFontName()
-	{
-		// gchar * gtk_source_print_compositor_get_footer_font_name  (GtkSourcePrintCompositor *compositor);
-		return Str.toString(gtk_source_print_compositor_get_footer_font_name(gtkSourcePrintCompositor));
-	}
+	public string getFooterFontName();
 	
 	/**
 	 * Gets the top margin in units of unit.
@@ -429,11 +259,7 @@ public class SourcePrintCompositor : ObjectG
 	 * unit =  the unit for the return value.
 	 * Returns: the top margin.
 	 */
-	public double getTopMargin(GtkUnit unit)
-	{
-		// gdouble gtk_source_print_compositor_get_top_margin  (GtkSourcePrintCompositor *compositor,  GtkUnit unit);
-		return gtk_source_print_compositor_get_top_margin(gtkSourcePrintCompositor, unit);
-	}
+	public double getTopMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the top margin used by compositor.
@@ -442,11 +268,7 @@ public class SourcePrintCompositor : ObjectG
 	 * margin =  the new top margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setTopMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_source_print_compositor_set_top_margin  (GtkSourcePrintCompositor *compositor,  gdouble margin,  GtkUnit unit);
-		gtk_source_print_compositor_set_top_margin(gtkSourcePrintCompositor, margin, unit);
-	}
+	public void setTopMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the bottom margin in units of unit.
@@ -455,11 +277,7 @@ public class SourcePrintCompositor : ObjectG
 	 * unit =  the unit for the return value.
 	 * Returns: the bottom margin.
 	 */
-	public double getBottomMargin(GtkUnit unit)
-	{
-		// gdouble gtk_source_print_compositor_get_bottom_margin  (GtkSourcePrintCompositor *compositor,  GtkUnit unit);
-		return gtk_source_print_compositor_get_bottom_margin(gtkSourcePrintCompositor, unit);
-	}
+	public double getBottomMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the bottom margin used by compositor.
@@ -468,11 +286,7 @@ public class SourcePrintCompositor : ObjectG
 	 * margin =  the new bottom margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setBottomMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_source_print_compositor_set_bottom_margin  (GtkSourcePrintCompositor *compositor,  gdouble margin,  GtkUnit unit);
-		gtk_source_print_compositor_set_bottom_margin(gtkSourcePrintCompositor, margin, unit);
-	}
+	public void setBottomMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the left margin in units of unit.
@@ -481,11 +295,7 @@ public class SourcePrintCompositor : ObjectG
 	 * unit =  the unit for the return value.
 	 * Returns: the left margin
 	 */
-	public double getLeftMargin(GtkUnit unit)
-	{
-		// gdouble gtk_source_print_compositor_get_left_margin  (GtkSourcePrintCompositor *compositor,  GtkUnit unit);
-		return gtk_source_print_compositor_get_left_margin(gtkSourcePrintCompositor, unit);
-	}
+	public double getLeftMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the left margin used by compositor.
@@ -494,11 +304,7 @@ public class SourcePrintCompositor : ObjectG
 	 * margin =  the new left margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setLeftMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_source_print_compositor_set_left_margin  (GtkSourcePrintCompositor *compositor,  gdouble margin,  GtkUnit unit);
-		gtk_source_print_compositor_set_left_margin(gtkSourcePrintCompositor, margin, unit);
-	}
+	public void setLeftMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the right margin in units of unit.
@@ -507,11 +313,7 @@ public class SourcePrintCompositor : ObjectG
 	 * unit =  the unit for the return value.
 	 * Returns: the right margin
 	 */
-	public double getRightMargin(GtkUnit unit)
-	{
-		// gdouble gtk_source_print_compositor_get_right_margin  (GtkSourcePrintCompositor *compositor,  GtkUnit unit);
-		return gtk_source_print_compositor_get_right_margin(gtkSourcePrintCompositor, unit);
-	}
+	public double getRightMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the right margin used by compositor.
@@ -520,11 +322,7 @@ public class SourcePrintCompositor : ObjectG
 	 * margin =  the new right margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setRightMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_source_print_compositor_set_right_margin  (GtkSourcePrintCompositor *compositor,  gdouble margin,  GtkUnit unit);
-		gtk_source_print_compositor_set_right_margin(gtkSourcePrintCompositor, margin, unit);
-	}
+	public void setRightMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Sets whether you want to print a header in each page. The
@@ -539,11 +337,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * print =  TRUE if you want the header to be printed.
 	 */
-	public void setPrintHeader(int print)
-	{
-		// void gtk_source_print_compositor_set_print_header  (GtkSourcePrintCompositor *compositor,  gboolean print);
-		gtk_source_print_compositor_set_print_header(gtkSourcePrintCompositor, print);
-	}
+	public void setPrintHeader(int print);
 	
 	/**
 	 * Determines if a header is set to be printed for each page. A
@@ -553,11 +347,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: TRUE if the header is set to be printed.
 	 */
-	public int getPrintHeader()
-	{
-		// gboolean gtk_source_print_compositor_get_print_header  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_print_header(gtkSourcePrintCompositor);
-	}
+	public int getPrintHeader();
 	
 	/**
 	 * Sets whether you want to print a footer in each page. The
@@ -572,11 +362,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Params:
 	 * print =  TRUE if you want the footer to be printed.
 	 */
-	public void setPrintFooter(int print)
-	{
-		// void gtk_source_print_compositor_set_print_footer  (GtkSourcePrintCompositor *compositor,  gboolean print);
-		gtk_source_print_compositor_set_print_footer(gtkSourcePrintCompositor, print);
-	}
+	public void setPrintFooter(int print);
 	
 	/**
 	 * Determines if a footer is set to be printed for each page. A
@@ -586,11 +372,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: TRUE if the footer is set to be printed.
 	 */
-	public int getPrintFooter()
-	{
-		// gboolean gtk_source_print_compositor_get_print_footer  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_print_footer(gtkSourcePrintCompositor);
-	}
+	public int getPrintFooter();
 	
 	/**
 	 * Sets strftime like header format strings, to be printed on the
@@ -614,11 +396,7 @@ public class SourcePrintCompositor : ObjectG
 	 * center =  a format string to print on the center of the header.
 	 * right =  a format string to print on the right of the header.
 	 */
-	public void setHeaderFormat(int separator, string left, string center, string right)
-	{
-		// void gtk_source_print_compositor_set_header_format  (GtkSourcePrintCompositor *compositor,  gboolean separator,  const gchar *left,  const gchar *center,  const gchar *right);
-		gtk_source_print_compositor_set_header_format(gtkSourcePrintCompositor, separator, Str.toStringz(left), Str.toStringz(center), Str.toStringz(right));
-	}
+	public void setHeaderFormat(int separator, string left, string center, string right);
 	
 	/**
 	 * Sets strftime like header format strings, to be printed on the
@@ -642,11 +420,7 @@ public class SourcePrintCompositor : ObjectG
 	 * center =  a format string to print on the center of the footer.
 	 * right =  a format string to print on the right of the footer.
 	 */
-	public void setFooterFormat(int separator, string left, string center, string right)
-	{
-		// void gtk_source_print_compositor_set_footer_format  (GtkSourcePrintCompositor *compositor,  gboolean separator,  const gchar *left,  const gchar *center,  const gchar *right);
-		gtk_source_print_compositor_set_footer_format(gtkSourcePrintCompositor, separator, Str.toStringz(left), Str.toStringz(center), Str.toStringz(right));
-	}
+	public void setFooterFormat(int separator, string left, string center, string right);
 	
 	/**
 	 * Returns the number of pages in the document or -1 if the
@@ -654,11 +428,7 @@ public class SourcePrintCompositor : ObjectG
 	 * Since 2.2
 	 * Returns: the number of pages in the document or -1 if the document has not been completely paginated.
 	 */
-	public int getNPages()
-	{
-		// gint gtk_source_print_compositor_get_n_pages  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_n_pages(gtkSourcePrintCompositor);
-	}
+	public int getNPages();
 	
 	/**
 	 * Paginate the document associated with the compositor.
@@ -674,22 +444,14 @@ public class SourcePrintCompositor : ObjectG
 	 * are used by the the compositor to paginate the document.
 	 * Returns: TRUE if the document has been completely paginated, FALSE otherwise.
 	 */
-	public int paginate(PrintContext context)
-	{
-		// gboolean gtk_source_print_compositor_paginate  (GtkSourcePrintCompositor *compositor,  GtkPrintContext *context);
-		return gtk_source_print_compositor_paginate(gtkSourcePrintCompositor, (context is null) ? null : context.getPrintContextStruct());
-	}
+	public int paginate(PrintContext context);
 	
 	/**
 	 * Returns the current fraction of the document pagination that has been completed.
 	 * Since 2.2
 	 * Returns: a fraction from 0.0 to 1.0 inclusive
 	 */
-	public double getPaginationProgress()
-	{
-		// gdouble gtk_source_print_compositor_get_pagination_progress  (GtkSourcePrintCompositor *compositor);
-		return gtk_source_print_compositor_get_pagination_progress(gtkSourcePrintCompositor);
-	}
+	public double getPaginationProgress();
 	
 	/**
 	 * Draw page page_nr for printing on the the Cairo context encapsuled in context.
@@ -699,9 +461,5 @@ public class SourcePrintCompositor : ObjectG
 	 *  drawing the page for printing.
 	 * pageNr =  the number of the page to print.
 	 */
-	public void drawPage(PrintContext context, int pageNr)
-	{
-		// void gtk_source_print_compositor_draw_page  (GtkSourcePrintCompositor *compositor,  GtkPrintContext *context,  gint page_nr);
-		gtk_source_print_compositor_draw_page(gtkSourcePrintCompositor, (context is null) ? null : context.getPrintContextStruct(), pageNr);
-	}
+	public void drawPage(PrintContext context, int pageNr);
 }

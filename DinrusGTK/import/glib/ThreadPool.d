@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Thread-Pools.html
- * outPack = glib
- * outFile = ThreadPool
- * strct   = GThreadPool
- * realStrct=
- * ctorStrct=
- * clss    = ThreadPool
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_thread_pool_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.ThreadPool;
 
@@ -105,23 +54,12 @@ public class ThreadPool
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gThreadPool;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GThreadPool* gThreadPool)
-	{
-		if(gThreadPool is null)
-		{
-			this = null;
-			return;
-		}
-		this.gThreadPool = gThreadPool;
-	}
+	public this (GThreadPool* gThreadPool);
 	
 	/**
 	 */
@@ -156,24 +94,7 @@ public class ThreadPool
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GFunc func, void* userData, int maxThreads, int exclusive)
-	{
-		// GThreadPool* g_thread_pool_new (GFunc func,  gpointer user_data,  gint max_threads,  gboolean exclusive,  GError **error);
-		GError* err = null;
-		
-		auto p = g_thread_pool_new(func, userData, maxThreads, exclusive, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_thread_pool_new(func, userData, maxThreads, exclusive, &err)");
-		}
-		this(cast(GThreadPool*) p);
-	}
+	public this (GFunc func, void* userData, int maxThreads, int exclusive);
 	
 	/**
 	 * Inserts data into the list of tasks to be executed by pool. When
@@ -190,19 +111,7 @@ public class ThreadPool
 	 * data =  a new task for pool
 	 * Throws: GException on failure.
 	 */
-	public void push(void* data)
-	{
-		// void g_thread_pool_push (GThreadPool *pool,  gpointer data,  GError **error);
-		GError* err = null;
-		
-		g_thread_pool_push(gThreadPool, data, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-	}
+	public void push(void* data);
 	
 	/**
 	 * Sets the maximal allowed number of threads for pool. A value of -1
@@ -222,49 +131,25 @@ public class ThreadPool
 	 * maxThreads =  a new maximal number of threads for pool
 	 * Throws: GException on failure.
 	 */
-	public void setMaxThreads(int maxThreads)
-	{
-		// void g_thread_pool_set_max_threads (GThreadPool *pool,  gint max_threads,  GError **error);
-		GError* err = null;
-		
-		g_thread_pool_set_max_threads(gThreadPool, maxThreads, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-	}
+	public void setMaxThreads(int maxThreads);
 	
 	/**
 	 * Returns the maximal number of threads for pool.
 	 * Returns: the maximal number of threads
 	 */
-	public int getMaxThreads()
-	{
-		// gint g_thread_pool_get_max_threads (GThreadPool *pool);
-		return g_thread_pool_get_max_threads(gThreadPool);
-	}
+	public int getMaxThreads();
 	
 	/**
 	 * Returns the number of threads currently running in pool.
 	 * Returns: the number of threads currently running
 	 */
-	public uint getNumThreads()
-	{
-		// guint g_thread_pool_get_num_threads (GThreadPool *pool);
-		return g_thread_pool_get_num_threads(gThreadPool);
-	}
-	
+	public uint getNumThreads();
+
 	/**
 	 * Returns the number of tasks still unprocessed in pool.
 	 * Returns: the number of unprocessed tasks
 	 */
-	public uint unprocessed()
-	{
-		// guint g_thread_pool_unprocessed (GThreadPool *pool);
-		return g_thread_pool_unprocessed(gThreadPool);
-	}
+	public uint unprocessed();
 	
 	/**
 	 * Frees all resources allocated for pool.
@@ -281,11 +166,7 @@ public class ThreadPool
 	 * immediate =  should pool shut down immediately?
 	 * wait =  should the function wait for all tasks to be finished?
 	 */
-	public void free(int immediate, int wait)
-	{
-		// void g_thread_pool_free (GThreadPool *pool,  gboolean immediate,  gboolean wait_);
-		g_thread_pool_free(gThreadPool, immediate, wait);
-	}
+	public void free(int immediate, int wait);
 	
 	/**
 	 * Sets the maximal number of unused threads to max_threads. If
@@ -294,42 +175,26 @@ public class ThreadPool
 	 * Params:
 	 * maxThreads =  maximal number of unused threads
 	 */
-	public static void setMaxUnusedThreads(int maxThreads)
-	{
-		// void g_thread_pool_set_max_unused_threads  (gint max_threads);
-		g_thread_pool_set_max_unused_threads(maxThreads);
-	}
+	public static void setMaxUnusedThreads(int maxThreads);
 	
 	/**
 	 * Returns the maximal allowed number of unused threads.
 	 * Returns: the maximal number of unused threads
 	 */
-	public static int getMaxUnusedThreads()
-	{
-		// gint g_thread_pool_get_max_unused_threads  (void);
-		return g_thread_pool_get_max_unused_threads();
-	}
+	public static int getMaxUnusedThreads();
 	
 	/**
 	 * Returns the number of currently unused threads.
 	 * Returns: the number of currently unused threads
 	 */
-	public static uint getNumUnusedThreads()
-	{
-		// guint g_thread_pool_get_num_unused_threads  (void);
-		return g_thread_pool_get_num_unused_threads();
-	}
+	public static uint getNumUnusedThreads();
 	
 	/**
 	 * Stops all currently unused threads. This does not change the
 	 * maximal number of unused threads. This function can be used to
 	 * regularly stop all unused threads e.g. from g_timeout_add().
 	 */
-	public static void stopUnusedThreads()
-	{
-		// void g_thread_pool_stop_unused_threads (void);
-		g_thread_pool_stop_unused_threads();
-	}
+	public static void stopUnusedThreads();
 	
 	/**
 	 * Sets the function used to sort the list of tasks. This allows the
@@ -350,11 +215,7 @@ public class ThreadPool
 	 *  processed first.
 	 * userData =  user data passed to func.
 	 */
-	public void setSortFunction(GCompareDataFunc func, void* userData)
-	{
-		// void g_thread_pool_set_sort_function (GThreadPool *pool,  GCompareDataFunc func,  gpointer user_data);
-		g_thread_pool_set_sort_function(gThreadPool, func, userData);
-	}
+	public void setSortFunction(GCompareDataFunc func, void* userData);
 	
 	/**
 	 * This function will set the maximum interval that a thread waiting
@@ -370,11 +231,7 @@ public class ThreadPool
 	 * interval =  the maximum interval (1/1000ths of a second) a thread
 	 *  can be idle.
 	 */
-	public static void setMaxIdleTime(uint interval)
-	{
-		// void g_thread_pool_set_max_idle_time (guint interval);
-		g_thread_pool_set_max_idle_time(interval);
-	}
+	public static void setMaxIdleTime(uint interval);
 	
 	/**
 	 * This function will return the maximum interval that a thread will
@@ -384,9 +241,5 @@ public class ThreadPool
 	 * Since 2.10
 	 * Returns: the maximum interval to wait for new tasks in the thread pool before stopping the thread (1/1000ths of a second).
 	 */
-	public static uint getMaxIdleTime()
-	{
-		// guint g_thread_pool_get_max_idle_time (void);
-		return g_thread_pool_get_max_idle_time();
-	}
+	public static uint getMaxIdleTime();
 }

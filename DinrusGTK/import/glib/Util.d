@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Miscellaneous-Utility-Functions.html
- * outPack = glib
- * outFile = Util
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Util
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.ListG
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- GList* -> ListG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Util;
 
 public  import gtkD.gtkc.glibtypes;
@@ -91,11 +38,7 @@ public class Util
 	 * ... =  remaining elements in path, terminated by NULL
 	 * Returns: a newly-allocated string that must be freed with g_free().
 	 */
-	public static string buildFilename(string[] firstElement ... )
-	{
-		// gchar* g_build_filename (const gchar *first_element,  ...);
-		return buildFilenamev(Str.toStringzArray(firstElement));
-	}
+	public static string buildFilename(string[] firstElement ... );
 	
 	/**
 	 * Creates a path from a series of elements using separator as the
@@ -126,11 +69,7 @@ public class Util
 	 * ... =  remaining elements in path, terminated by NULL
 	 * Returns: a newly-allocated string that must be freed with g_free().
 	 */
-	public static string buildPath(string separator, string[] firstElement ... )
-	{
-		// gchar* g_build_path (const gchar *separator,  const gchar *first_element,  ...);
-		return buildPathv(separator, Str.toStringzArray(firstElement));
-	}
+	public static string buildPath(string separator, string[] firstElement ... );
 	
 	/**
 	 */
@@ -146,11 +85,7 @@ public class Util
 	 * Since 2.2
 	 * Returns: human-readable application name. may return NULL
 	 */
-	public static string getApplicationName()
-	{
-		// const gchar* g_get_application_name (void);
-		return Str.toString(g_get_application_name());
-	}
+	public static string getApplicationName();
 	
 	/**
 	 * Sets a human-readable name for the application. This name should be
@@ -166,11 +101,7 @@ public class Util
 	 * Params:
 	 * applicationName =  localized name of the application
 	 */
-	public static void setApplicationName(string applicationName)
-	{
-		// void g_set_application_name (const gchar *application_name);
-		g_set_application_name(Str.toStringz(applicationName));
-	}
+	public static void setApplicationName(string applicationName);
 	
 	/**
 	 * Gets the name of the program. This name should not
@@ -180,11 +111,7 @@ public class Util
 	 * the last component of argv[0].)
 	 * Returns: the name of the program. The returned string belongs to GLib and must not be modified or freed.
 	 */
-	public static string getPrgname()
-	{
-		// gchar* g_get_prgname (void);
-		return Str.toString(g_get_prgname());
-	}
+	public static string getPrgname();
 	
 	/**
 	 * Sets the name of the program. This name should not
@@ -193,11 +120,7 @@ public class Util
 	 * Params:
 	 * prgname =  the name of the program.
 	 */
-	public static void setPrgname(string prgname)
-	{
-		// void g_set_prgname (const gchar *prgname);
-		g_set_prgname(Str.toStringz(prgname));
-	}
+	public static void setPrgname(string prgname);
 	
 	/**
 	 * Returns the value of an environment variable. The name and value
@@ -210,11 +133,7 @@ public class Util
 	 * variable =  the environment variable to get, in the GLib file name encoding.
 	 * Returns: the value of the environment variable, or NULL ifthe environment variable is not found. The returned string may beoverwritten by the next call to g_getenv(), g_setenv() org_unsetenv().
 	 */
-	public static string getenv(string variable)
-	{
-		// const gchar* g_getenv (const gchar *variable);
-		return Str.toString(g_getenv(Str.toStringz(variable)));
-	}
+	public static string getenv(string variable);
 	
 	/**
 	 * Sets an environment variable. Both the variable's name and value
@@ -230,11 +149,7 @@ public class Util
 	 * overwrite =  whether to change the variable if it already exists.
 	 * Returns: FALSE if the environment variable couldn't be set.
 	 */
-	public static int setenv(string variable, string value, int overwrite)
-	{
-		// gboolean g_setenv (const gchar *variable,  const gchar *value,  gboolean overwrite);
-		return g_setenv(Str.toStringz(variable), Str.toStringz(value), overwrite);
-	}
+	public static int setenv(string variable, string value, int overwrite);
 	
 	/**
 	 * Removes an environment variable from the environment.
@@ -246,22 +161,14 @@ public class Util
 	 * Params:
 	 * variable =  the environment variable to remove, must not contain '='.
 	 */
-	public static void unsetenv(string variable)
-	{
-		// void g_unsetenv (const gchar *variable);
-		g_unsetenv(Str.toStringz(variable));
-	}
+	public static void unsetenv(string variable);
 	
 	/**
 	 * Gets the names of all variables set in the environment.
 	 * Since 2.8
 	 * Returns: a NULL-terminated list of strings which must be freedwith g_strfreev().Programs that want to be portable to Windows should typically usethis function and g_getenv() instead of using the environ arrayfrom the C library directly. On Windows, the strings in the environarray are in system codepage encoding, while in most of the typicaluse cases for environment variables in GLib-using programs you wantthe UTF-8 encoding that this function and g_getenv() provide.
 	 */
-	public static string[] listenv()
-	{
-		// gchar** g_listenv (void);
-		return Str.toStringArray(g_listenv());
-	}
+	public static string[] listenv();
 	
 	/**
 	 * Gets the user name of the current user. The encoding of the returned
@@ -270,11 +177,7 @@ public class Util
 	 * consistent on a machine. On Windows, it is always UTF-8.
 	 * Returns: the user name of the current user.
 	 */
-	public static string getUserName()
-	{
-		// const gchar* g_get_user_name (void);
-		return Str.toString(g_get_user_name());
-	}
+	public static string getUserName();
 	
 	/**
 	 * Gets the real name of the user. This usually comes from the user's entry
@@ -284,11 +187,7 @@ public class Util
 	 * returned.
 	 * Returns: the user's real name.
 	 */
-	public static string getRealName()
-	{
-		// const gchar* g_get_real_name (void);
-		return Str.toString(g_get_real_name());
-	}
+	public static string getRealName();
 	
 	/**
 	 * Returns a base directory in which to store non-essential, cached
@@ -299,11 +198,7 @@ public class Util
 	 * Since 2.6
 	 * Returns: a string owned by GLib that must not be modified  or freed.
 	 */
-	public static string getUserCacheDir()
-	{
-		// const gchar* g_get_user_cache_dir (void);
-		return Str.toString(g_get_user_cache_dir());
-	}
+	public static string getUserCacheDir();
 	
 	/**
 	 * Returns a base directory in which to access application data such
@@ -314,11 +209,7 @@ public class Util
 	 * Since 2.6
 	 * Returns: a string owned by GLib that must not be modified  or freed.
 	 */
-	public static string getUserDataDir()
-	{
-		// const gchar* g_get_user_data_dir (void);
-		return Str.toString(g_get_user_data_dir());
-	}
+	public static string getUserDataDir();
 	
 	/**
 	 * Returns a base directory in which to store user-specific application
@@ -329,11 +220,7 @@ public class Util
 	 * Since 2.6
 	 * Returns: a string owned by GLib that must not be modified  or freed.
 	 */
-	public static string getUserConfigDir()
-	{
-		// const gchar* g_get_user_config_dir (void);
-		return Str.toString(g_get_user_config_dir());
-	}
+	public static string getUserConfigDir();
 	
 	/**
 	 * Returns the full path of a special directory using its logical id.
@@ -349,11 +236,7 @@ public class Util
 	 * directory =  the logical id of special directory
 	 * Returns: the path to the specified special directory, or NULL if the logical id was not found. The returned string is owned by GLib and should not be modified or freed.
 	 */
-	public static string getUserSpecialDir(GUserDirectory directory)
-	{
-		// const gchar* g_get_user_special_dir (GUserDirectory directory);
-		return Str.toString(g_get_user_special_dir(directory));
-	}
+	public static string getUserSpecialDir(GUserDirectory directory);
 	
 	/**
 	 * Returns an ordered list of base directories in which to access
@@ -381,11 +264,7 @@ public class Util
 	 * Since 2.6
 	 * Returns: a NULL-terminated array of strings owned by GLib that must  not be modified or freed.
 	 */
-	public static string[] getSystemDataDirs()
-	{
-		// const gchar* const * g_get_system_data_dirs (void);
-		return Str.toStringArray(g_get_system_data_dirs());
-	}
+	public static string[] getSystemDataDirs();
 	
 	/**
 	 * Returns an ordered list of base directories in which to access
@@ -396,11 +275,7 @@ public class Util
 	 * Since 2.6
 	 * Returns: a NULL-terminated array of strings owned by GLib that must  not be modified or freed.
 	 */
-	public static string[] getSystemConfigDirs()
-	{
-		// const gchar* const * g_get_system_config_dirs (void);
-		return Str.toStringArray(g_get_system_config_dirs());
-	}
+	public static string[] getSystemConfigDirs();
 	
 	/**
 	 * Resets the cache used for g_get_user_special_dir(), so
@@ -412,11 +287,7 @@ public class Util
 	 * the directories that actually changed value though.
 	 * Since 2.22
 	 */
-	public static void reloadUserSpecialDirsCache()
-	{
-		// void g_reload_user_special_dirs_cache (void);
-		g_reload_user_special_dirs_cache();
-	}
+	public static void reloadUserSpecialDirsCache();
 	
 	/**
 	 * Return a name for the machine.
@@ -433,11 +304,7 @@ public class Util
 	 * Since 2.8
 	 * Returns: the host name of the machine.
 	 */
-	public static string getHostName()
-	{
-		// const gchar* g_get_host_name (void);
-		return Str.toString(g_get_host_name());
-	}
+	public static string getHostName();
 	
 	/**
 	 * Gets the current user's home directory as defined in the
@@ -457,11 +324,7 @@ public class Util
 	 * return the real home directory for the user. If applications
 	 * Returns: the current user's home directory
 	 */
-	public static string getHomeDir()
-	{
-		// const gchar* g_get_home_dir (void);
-		return Str.toString(g_get_home_dir());
-	}
+	public static string getHomeDir();
 	
 	/**
 	 * Gets the directory to use for temporary files. This is found from
@@ -472,11 +335,7 @@ public class Util
 	 * it is always UTF-8. The return value is never NULL.
 	 * Returns: the directory to use for temporary files.
 	 */
-	public static string getTmpDir()
-	{
-		// const gchar* g_get_tmp_dir (void);
-		return Str.toString(g_get_tmp_dir());
-	}
+	public static string getTmpDir();
 	
 	/**
 	 * Gets the current directory.
@@ -484,11 +343,7 @@ public class Util
 	 * of the returned string is system defined. On Windows, it is always UTF-8.
 	 * Returns: the current directory.
 	 */
-	public static string getCurrentDir()
-	{
-		// gchar* g_get_current_dir (void);
-		return Str.toString(g_get_current_dir());
-	}
+	public static string getCurrentDir();
 	
 	/**
 	 * Warning
@@ -501,11 +356,7 @@ public class Util
 	 * fileName =  the name of the file.
 	 * Returns: the name of the file without any leading directory components.
 	 */
-	public static string basename(string fileName)
-	{
-		// const gchar* g_basename (const gchar *file_name);
-		return Str.toString(g_basename(Str.toStringz(fileName)));
-	}
+	public static string basename(string fileName);
 	
 	/**
 	 * Returns TRUE if the given file_name is an absolute file name,
@@ -515,11 +366,7 @@ public class Util
 	 * fileName =  a file name.
 	 * Returns: TRUE if file_name is an absolute path.
 	 */
-	public static int pathIsAbsolute(string fileName)
-	{
-		// gboolean g_path_is_absolute (const gchar *file_name);
-		return g_path_is_absolute(Str.toStringz(fileName));
-	}
+	public static int pathIsAbsolute(string fileName);
 	
 	/**
 	 * Returns a pointer into file_name after the root component, i.e. after
@@ -529,11 +376,7 @@ public class Util
 	 * fileName =  a file name.
 	 * Returns: a pointer into file_name after the root component.
 	 */
-	public static string pathSkipRoot(string fileName)
-	{
-		// const gchar* g_path_skip_root (const gchar *file_name);
-		return Str.toString(g_path_skip_root(Str.toStringz(fileName)));
-	}
+	public static string pathSkipRoot(string fileName);
 	
 	/**
 	 * Gets the last component of the filename. If file_name ends with a
@@ -545,11 +388,7 @@ public class Util
 	 * fileName =  the name of the file.
 	 * Returns: a newly allocated string containing the last component of  the filename.
 	 */
-	public static string pathGetBasename(string fileName)
-	{
-		// gchar* g_path_get_basename (const gchar *file_name);
-		return Str.toString(g_path_get_basename(Str.toStringz(fileName)));
-	}
+	public static string pathGetBasename(string fileName);
 	
 	/**
 	 * Gets the directory components of a file name. If the file name has no
@@ -559,11 +398,7 @@ public class Util
 	 * fileName =  the name of the file.
 	 * Returns: the directory components of the file.
 	 */
-	public static string pathGetDirname(string fileName)
-	{
-		// gchar* g_path_get_dirname (const gchar *file_name);
-		return Str.toString(g_path_get_dirname(Str.toStringz(fileName)));
-	}
+	public static string pathGetDirname(string fileName);
 	
 	/**
 	 * Behaves exactly like g_build_filename(), but takes the path elements
@@ -574,11 +409,7 @@ public class Util
 	 * args =  NULL-terminated array of strings containing the path elements.
 	 * Returns: a newly-allocated string that must be freed with g_free().
 	 */
-	public static string buildFilenamev(char** args)
-	{
-		// gchar * g_build_filenamev (gchar **args);
-		return Str.toString(g_build_filenamev(args));
-	}
+	public static string buildFilenamev(char** args);
 	
 	/**
 	 * Behaves exactly like g_build_path(), but takes the path elements
@@ -590,11 +421,7 @@ public class Util
 	 * args =  NULL-terminated array of strings containing the path elements.
 	 * Returns: a newly-allocated string that must be freed with g_free().
 	 */
-	public static string buildPathv(string separator, char** args)
-	{
-		// gchar * g_build_pathv (const gchar *separator,  gchar **args);
-		return Str.toString(g_build_pathv(Str.toStringz(separator), args));
-	}
+	public static string buildPathv(string separator, char** args);
 	
 	/**
 	 * Formats a size (for example the size of a file) into a human readable string.
@@ -608,11 +435,7 @@ public class Util
 	 * size =  a size in bytes.
 	 * Returns: a newly-allocated formatted string containing a human readable file size.
 	 */
-	public static string formatSizeForDisplay(long size)
-	{
-		// char * g_format_size_for_display (goffset size);
-		return Str.toString(g_format_size_for_display(size));
-	}
+	public static string formatSizeForDisplay(long size);
 	
 	/**
 	 * Locates the first executable named program in the user's path, in the
@@ -634,11 +457,7 @@ public class Util
 	 * program =  a program name in the GLib file name encoding
 	 * Returns: absolute path, or NULL
 	 */
-	public static string findProgramInPath(string program)
-	{
-		// gchar* g_find_program_in_path (const gchar *program);
-		return Str.toString(g_find_program_in_path(Str.toStringz(program)));
-	}
+	public static string findProgramInPath(string program);
 	
 	/**
 	 * Find the position of the first bit set in mask, searching from (but not
@@ -650,11 +469,7 @@ public class Util
 	 * nthBit = the index of the bit to start the search from.
 	 * Returns:the index of the first bit set which is higher than nth_bit.
 	 */
-	public static int bitNthLsf(uint mask, int nthBit)
-	{
-		// gint g_bit_nth_lsf (gulong mask,  gint nth_bit);
-		return g_bit_nth_lsf(mask, nthBit);
-	}
+	public static int bitNthLsf(uint mask, int nthBit);
 	
 	/**
 	 * Find the position of the first bit set in mask, searching from (but not
@@ -666,11 +481,7 @@ public class Util
 	 * nthBit = the index of the bit to start the search from.
 	 * Returns:the index of the first bit set which is lower than nth_bit.
 	 */
-	public static int bitNthMsf(uint mask, int nthBit)
-	{
-		// gint g_bit_nth_msf (gulong mask,  gint nth_bit);
-		return g_bit_nth_msf(mask, nthBit);
-	}
+	public static int bitNthMsf(uint mask, int nthBit);
 	
 	/**
 	 * Gets the number of bits used to hold number,
@@ -679,11 +490,7 @@ public class Util
 	 * number = a guint.
 	 * Returns:the number of bits used to hold number.
 	 */
-	public static uint bitStorage(uint number)
-	{
-		// guint g_bit_storage (gulong number);
-		return g_bit_storage(number);
-	}
+	public static uint bitStorage(uint number);
 	
 	/**
 	 * Gets the smallest prime number from a built-in array of primes which
@@ -695,11 +502,7 @@ public class Util
 	 * num = a guint.
 	 * Returns:the smallest prime number from a built-in array of primes which islarger than num.
 	 */
-	public static uint spacedPrimesClosest(uint num)
-	{
-		// guint g_spaced_primes_closest (guint num);
-		return g_spaced_primes_closest(num);
-	}
+	public static uint spacedPrimesClosest(uint num);
 	
 	/**
 	 * Specifies a function to be called at normal program termination.
@@ -729,11 +532,7 @@ public class Util
 	 * Params:
 	 * func =  the function to call on normal program termination.
 	 */
-	public static void atexit(GVoidFunc func)
-	{
-		// void g_atexit (GVoidFunc func);
-		g_atexit(func);
-	}
+	public static void atexit(GVoidFunc func);
 	
 	/**
 	 * Parses a string containing debugging options
@@ -751,11 +550,7 @@ public class Util
 	 * nkeys =  the number of GDebugKeys in the array.
 	 * Returns: the combined set of bit flags.
 	 */
-	public static uint parseDebugString(string string, GDebugKey* keys, uint nkeys)
-	{
-		// guint g_parse_debug_string (const gchar *string,  const GDebugKey *keys,  guint nkeys);
-		return g_parse_debug_string(Str.toStringz(string), keys, nkeys);
-	}
+	public static uint parseDebugString(string string, GDebugKey* keys, uint nkeys);
 	
 	/**
 	 * This is just like the standard C qsort() function, but
@@ -767,20 +562,12 @@ public class Util
 	 * compareFunc =  function to compare elements
 	 * userData =  data to pass to compare_func
 	 */
-	public static void qsortWithData(void* pbase, int totalElems, uint size, GCompareDataFunc compareFunc, void* userData)
-	{
-		// void g_qsort_with_data (gconstpointer pbase,  gint total_elems,  gsize size,  GCompareDataFunc compare_func,  gpointer user_data);
-		g_qsort_with_data(pbase, totalElems, size, compareFunc, userData);
-	}
+	public static void qsortWithData(void* pbase, int totalElems, uint size, GCompareDataFunc compareFunc, void* userData);
 	
 	/**
 	 * Set the pointer at the specified location to NULL.
 	 * Params:
 	 * nullifyLocation =  the memory address of the pointer.
 	 */
-	public static void nullifyPointer(void** nullifyLocation)
-	{
-		// void g_nullify_pointer (gpointer *nullify_location);
-		g_nullify_pointer(nullifyLocation);
-	}
+	public static void nullifyPointer(void** nullifyLocation);
 }

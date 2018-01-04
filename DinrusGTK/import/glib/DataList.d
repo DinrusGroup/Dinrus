@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Keyed-Data-Lists.html
- * outPack = glib
- * outFile = DataList
- * strct   = GData
- * realStrct=
- * ctorStrct=
- * clss    = DataList
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_datalist_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.DataList;
 
 public  import gtkD.gtkc.glibtypes;
@@ -87,30 +37,16 @@ public class DataList
 	protected GData* gData;
 	
 	
-	public GData* getDataListStruct()
-	{
-		return gData;
-	}
+	public GData* getDataListStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gData;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GData* gData)
-	{
-		if(gData is null)
-		{
-			this = null;
-			return;
-		}
-		this.gData = gData;
-	}
+	public this (GData* gData);
 	
 	/**
 	 */
@@ -121,11 +57,7 @@ public class DataList
 	 * Params:
 	 * datalist = a pointer to a pointer to a datalist.
 	 */
-	public static void init(GData** datalist)
-	{
-		// void g_datalist_init (GData **datalist);
-		g_datalist_init(datalist);
-	}
+	public static void init(GData** datalist);
 	
 	/**
 	 * Sets the data corresponding to the given GQuark id, and the function to
@@ -142,11 +74,7 @@ public class DataList
 	 * memory allocated for it. If data is NULL, then destroy_func must
 	 * also be NULL.
 	 */
-	public static void idSetDataFull(GData** datalist, GQuark keyId, void* data, GDestroyNotify destroyFunc)
-	{
-		// void g_datalist_id_set_data_full (GData **datalist,  GQuark key_id,  gpointer data,  GDestroyNotify destroy_func);
-		g_datalist_id_set_data_full(datalist, keyId, data, destroyFunc);
-	}
+	public static void idSetDataFull(GData** datalist, GQuark keyId, void* data, GDestroyNotify destroyFunc);
 	
 	/**
 	 * Retrieves the data element corresponding to key_id.
@@ -155,11 +83,7 @@ public class DataList
 	 * keyId = the GQuark identifying a data element.
 	 * Returns:the data element, or NULL if it is not found.
 	 */
-	public static void* idGetData(GData** datalist, GQuark keyId)
-	{
-		// gpointer g_datalist_id_get_data (GData **datalist,  GQuark key_id);
-		return g_datalist_id_get_data(datalist, keyId);
-	}
+	public static void* idGetData(GData** datalist, GQuark keyId);
 	
 	/**
 	 * Removes an element, without calling its destroy notification function.
@@ -168,11 +92,7 @@ public class DataList
 	 * keyId = the GQuark identifying a data element.
 	 * Returns:the data previously stored at key_id, or NULL if none.
 	 */
-	public static void* idRemoveNoNotify(GData** datalist, GQuark keyId)
-	{
-		// gpointer g_datalist_id_remove_no_notify (GData **datalist,  GQuark key_id);
-		return g_datalist_id_remove_no_notify(datalist, keyId);
-	}
+	public static void* idRemoveNoNotify(GData** datalist, GQuark keyId);
 	
 	/**
 	 * Calls the given function for each data element of the datalist.
@@ -186,11 +106,7 @@ public class DataList
 	 * func = the function to call for each data element.
 	 * userData = user data to pass to the function.
 	 */
-	public static void foreac(GData** datalist, GDataForeachFunc func, void* userData)
-	{
-		// void g_datalist_foreach (GData **datalist,  GDataForeachFunc func,  gpointer user_data);
-		g_datalist_foreach(datalist, func, userData);
-	}
+	public static void foreac(GData** datalist, GDataForeachFunc func, void* userData);
 	
 	/**
 	 * Frees all the data elements of the datalist.
@@ -198,11 +114,7 @@ public class DataList
 	 * Params:
 	 * datalist = a datalist.
 	 */
-	public static void clear(GData** datalist)
-	{
-		// void g_datalist_clear (GData **datalist);
-		g_datalist_clear(datalist);
-	}
+	public static void clear(GData** datalist);
 	
 	/**
 	 * Turns on flag values for a data list. This function is used
@@ -220,11 +132,7 @@ public class DataList
 	 *  A value for flags that doesn't fit within the mask is
 	 *  an error.
 	 */
-	public static void setFlags(GData** datalist, uint flags)
-	{
-		// void g_datalist_set_flags (GData **datalist,  guint flags);
-		g_datalist_set_flags(datalist, flags);
-	}
+	public static void setFlags(GData** datalist, uint flags);
 	
 	/**
 	 * Turns off flag values for a data list. See g_datalist_unset_flags()
@@ -237,11 +145,7 @@ public class DataList
 	 *  A value for flags that doesn't fit within the mask is
 	 *  an error.
 	 */
-	public static void unsetFlags(GData** datalist, uint flags)
-	{
-		// void g_datalist_unset_flags (GData **datalist,  guint flags);
-		g_datalist_unset_flags(datalist, flags);
-	}
+	public static void unsetFlags(GData** datalist, uint flags);
 	
 	/**
 	 * Gets flags values packed in together with the datalist.
@@ -251,9 +155,5 @@ public class DataList
 	 * datalist =  pointer to the location that holds a list
 	 * Returns: the flags of the datalist
 	 */
-	public static uint getFlags(GData** datalist)
-	{
-		// guint g_datalist_get_flags (GData **datalist);
-		return g_datalist_get_flags(datalist);
-	}
+	public static uint getFlags(GData** datalist);
 }

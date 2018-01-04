@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Pointer-Arrays.html
- * outPack = glib
- * outFile = PtrArray
- * strct   = GPtrArray
- * realStrct=
- * ctorStrct=
- * clss    = PtrArray
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_ptr_array_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- GPtrArray* -> PtrArray
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.PtrArray;
 
 public  import gtkD.gtkc.glibtypes;
@@ -96,30 +45,16 @@ public class PtrArray
 	protected GPtrArray* gPtrArray;
 	
 	
-	public GPtrArray* getPtrArrayStruct()
-	{
-		return gPtrArray;
-	}
+	public GPtrArray* getPtrArrayStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gPtrArray;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GPtrArray* gPtrArray)
-	{
-		if(gPtrArray is null)
-		{
-			this = null;
-			return;
-		}
-		this.gPtrArray = gPtrArray;
-	}
+	public this (GPtrArray* gPtrArray);
 	
 	/**
 	 */
@@ -128,16 +63,7 @@ public class PtrArray
 	 * Creates a new GPtrArray with a reference count of 1.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GPtrArray* g_ptr_array_new (void);
-		auto p = g_ptr_array_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_ptr_array_new()");
-		}
-		this(cast(GPtrArray*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a new GPtrArray with reserved_size pointers
@@ -148,16 +74,7 @@ public class PtrArray
 	 * reservedSize = number of pointers preallocated.
 	 * Returns:the new GPtrArray.
 	 */
-	public static PtrArray sizedNew(uint reservedSize)
-	{
-		// GPtrArray* g_ptr_array_sized_new (guint reserved_size);
-		auto p = g_ptr_array_sized_new(reservedSize);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PtrArray(cast(GPtrArray*) p);
-	}
+	public static PtrArray sizedNew(uint reservedSize);
 	
 	/**
 	 * Creates a new GPtrArray with a reference count of 1 and use element_free_func
@@ -169,16 +86,7 @@ public class PtrArray
 	 * elementFreeFunc =  A function to free elements with destroy array or NULL.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GDestroyNotify elementFreeFunc)
-	{
-		// GPtrArray* g_ptr_array_new_with_free_func (GDestroyNotify element_free_func);
-		auto p = g_ptr_array_new_with_free_func(elementFreeFunc);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_ptr_array_new_with_free_func(elementFreeFunc)");
-		}
-		this(cast(GPtrArray*) p);
-	}
+	public this (GDestroyNotify elementFreeFunc);
 	
 	/**
 	 * Sets a function for freeing each element when array is destroyed
@@ -188,11 +96,7 @@ public class PtrArray
 	 * Params:
 	 * elementFreeFunc =  A function to free elements with destroy array or NULL.
 	 */
-	public void setFreeFunc(GDestroyNotify elementFreeFunc)
-	{
-		// void g_ptr_array_set_free_func (GPtrArray *array,  GDestroyNotify element_free_func);
-		g_ptr_array_set_free_func(gPtrArray, elementFreeFunc);
-	}
+	public void setFreeFunc(GDestroyNotify elementFreeFunc);
 	
 	/**
 	 * Atomically increments the reference count of array by one. This
@@ -200,16 +104,7 @@ public class PtrArray
 	 * Since 2.22
 	 * Returns: The passed in GPtrArray.
 	 */
-	public PtrArray doref()
-	{
-		// GPtrArray* g_ptr_array_ref (GPtrArray *array);
-		auto p = g_ptr_array_ref(gPtrArray);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PtrArray(cast(GPtrArray*) p);
-	}
+	public PtrArray doref();
 	
 	/**
 	 * Atomically decrements the reference count of array by one. If the
@@ -218,11 +113,7 @@ public class PtrArray
 	 * is MT-safe and may be called from any thread.
 	 * Since 2.22
 	 */
-	public void unref()
-	{
-		// void g_ptr_array_unref (GPtrArray *array);
-		g_ptr_array_unref(gPtrArray);
-	}
+	public void unref();
 	
 	/**
 	 * Adds a pointer to the end of the pointer array.
@@ -230,11 +121,7 @@ public class PtrArray
 	 * Params:
 	 * data = the pointer to add.
 	 */
-	public void add(void* data)
-	{
-		// void g_ptr_array_add (GPtrArray *array,  gpointer data);
-		g_ptr_array_add(gPtrArray, data);
-	}
+	public void add(void* data);
 	
 	/**
 	 * Removes the first occurrence of the given pointer from the pointer array.
@@ -247,11 +134,7 @@ public class PtrArray
 	 * data = the pointer to remove.
 	 * Returns:%TRUE if the pointer is removed. FALSE if the pointer is not foundin the array.
 	 */
-	public int remove(void* data)
-	{
-		// gboolean g_ptr_array_remove (GPtrArray *array,  gpointer data);
-		return g_ptr_array_remove(gPtrArray, data);
-	}
+	public int remove(void* data);
 	
 	/**
 	 * Removes the pointer at the given index from the pointer array.
@@ -262,11 +145,7 @@ public class PtrArray
 	 * index = the index of the pointer to remove.
 	 * Returns:the pointer which was removed.
 	 */
-	public void* removeIndex(uint index)
-	{
-		// gpointer g_ptr_array_remove_index (GPtrArray *array,  guint index_);
-		return g_ptr_array_remove_index(gPtrArray, index);
-	}
+	public void* removeIndex(uint index);
 	
 	/**
 	 * Removes the first occurrence of the given pointer from the pointer array.
@@ -281,12 +160,8 @@ public class PtrArray
 	 * data = the pointer to remove.
 	 * Returns:%TRUE if the pointer was found in the array.
 	 */
-	public int removeFast(void* data)
-	{
-		// gboolean g_ptr_array_remove_fast (GPtrArray *array,  gpointer data);
-		return g_ptr_array_remove_fast(gPtrArray, data);
-	}
-	
+	public int removeFast(void* data);
+
 	/**
 	 * Removes the pointer at the given index from the pointer array.
 	 * The last element in the array is used to fill in the space, so this function
@@ -298,11 +173,7 @@ public class PtrArray
 	 * index = the index of the pointer to remove.
 	 * Returns:the pointer which was removed.
 	 */
-	public void* removeIndexFast(uint index)
-	{
-		// gpointer g_ptr_array_remove_index_fast (GPtrArray *array,  guint index_);
-		return g_ptr_array_remove_index_fast(gPtrArray, index);
-	}
+	public void* removeIndexFast(uint index);
 	
 	/**
 	 * Removes the given number of pointers starting at the given index from a
@@ -314,11 +185,7 @@ public class PtrArray
 	 * index = the index of the first pointer to remove.
 	 * length = the number of pointers to remove.
 	 */
-	public void removeRange(uint index, uint length)
-	{
-		// void g_ptr_array_remove_range (GPtrArray *array,  guint index_,  guint length);
-		g_ptr_array_remove_range(gPtrArray, index, length);
-	}
+	public void removeRange(uint index, uint length);
 	
 	/**
 	 * Sorts the array, using compare_func which should be a qsort()-style comparison
@@ -332,11 +199,7 @@ public class PtrArray
 	 * Params:
 	 * compareFunc = comparison function.
 	 */
-	public void sort(GCompareFunc compareFunc)
-	{
-		// void g_ptr_array_sort (GPtrArray *array,  GCompareFunc compare_func);
-		g_ptr_array_sort(gPtrArray, compareFunc);
-	}
+	public void sort(GCompareFunc compareFunc);
 	
 	/**
 	 * Like g_ptr_array_sort(), but the comparison function has an extra user data
@@ -349,11 +212,7 @@ public class PtrArray
 	 * compareFunc = comparison function.
 	 * userData = data to pass to compare_func.
 	 */
-	public void sortWithData(GCompareDataFunc compareFunc, void* userData)
-	{
-		// void g_ptr_array_sort_with_data (GPtrArray *array,  GCompareDataFunc compare_func,  gpointer user_data);
-		g_ptr_array_sort_with_data(gPtrArray, compareFunc, userData);
-	}
+	public void sortWithData(GCompareDataFunc compareFunc, void* userData);
 	
 	/**
 	 * Sets the size of the array. When making the array larger, newly-added
@@ -363,11 +222,7 @@ public class PtrArray
 	 * Params:
 	 * length = the new length of the pointer array.
 	 */
-	public void setSize(int length)
-	{
-		// void g_ptr_array_set_size (GPtrArray *array,  gint length);
-		g_ptr_array_set_size(gPtrArray, length);
-	}
+	public void setSize(int length);
 	
 	/**
 	 * Frees the memory allocated for the GPtrArray.
@@ -384,11 +239,7 @@ public class PtrArray
 	 * freeSeg = if TRUE the actual pointer array is freed as well.
 	 * Returns:the pointer array if free_seg is FALSE, otherwise NULL.	The pointer array should be freed using g_free().
 	 */
-	public void** free(int freeSeg)
-	{
-		// gpointer* g_ptr_array_free (GPtrArray *array,  gboolean free_seg);
-		return g_ptr_array_free(gPtrArray, freeSeg);
-	}
+	public void** free(int freeSeg);
 	
 	/**
 	 * Calls a function for each element of a GPtrArray.
@@ -397,9 +248,5 @@ public class PtrArray
 	 * func =  the function to call for each array element
 	 * userData =  user data to pass to the function
 	 */
-	public void foreac(GFunc func, void* userData)
-	{
-		// void g_ptr_array_foreach (GPtrArray *array,  GFunc func,  gpointer user_data);
-		g_ptr_array_foreach(gPtrArray, func, userData);
-	}
+	public void foreac(GFunc func, void* userData);
 }

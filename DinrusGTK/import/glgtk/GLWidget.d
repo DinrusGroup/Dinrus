@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtkglext-gtkglwidget.html
- * outPack = glgtk
- * outFile = GLWidget
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = GLWidget
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_widget_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.glgdk.GLDrawable
- * 	- gtkD.glgdk.GLConfig
- * 	- gtkD.glgdk.GLContext
- * 	- gtkD.glgdk.GLWindow
- * structWrap:
- * 	- GdkGLConfig* -> GLConfig
- * 	- GdkGLContext* -> GLContext
- * 	- GdkGLDrawable* -> Drawable
- * 	- GdkGLWindow* -> GLWindow
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glgtk.GLWidget;
 
@@ -96,10 +37,7 @@ public class GLWidget
 	 *  widget =
 	 * Returns: a new GLDrawable
 	 */
-	static GLDrawable getGLDrawable(Widget widget)
-	{
-		return new GLDrawable(cast(GdkGLDrawable*)gtk_widget_get_gl_window((widget is null) ? null : widget.getWidgetStruct()));
-	}
+	static GLDrawable getGLDrawable(Widget widget);
 	
 	/**
 	 */
@@ -118,11 +56,7 @@ public class GLWidget
 	 *  used).
 	 * Returns: TRUE if it is successful, FALSE otherwise.
 	 */
-	public static int setGLCapability(Widget widget, GLConfig glconfig, GLContext shareList, int direct, int renderType)
-	{
-		// gboolean gtk_widget_set_gl_capability (GtkWidget *widget,  GdkGLConfig *glconfig,  GdkGLContext *share_list,  gboolean direct,  int render_type);
-		return gtk_widget_set_gl_capability((widget is null) ? null : widget.getWidgetStruct(), (glconfig is null) ? null : glconfig.getGLConfigStruct(), (shareList is null) ? null : shareList.getGLContextStruct(), direct, renderType);
-	}
+	public static int setGLCapability(Widget widget, GLConfig glconfig, GLContext shareList, int direct, int renderType);
 	
 	/**
 	 * Returns whether the widget is OpenGL-capable.
@@ -130,11 +64,7 @@ public class GLWidget
 	 * widget =  a GtkWidget.
 	 * Returns: TRUE if the widget is OpenGL-capable, FALSE otherwise.
 	 */
-	public static int isGLCapable(Widget widget)
-	{
-		// gboolean gtk_widget_is_gl_capable (GtkWidget *widget);
-		return gtk_widget_is_gl_capable((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static int isGLCapable(Widget widget);
 	
 	/**
 	 * Returns the GdkGLConfig referred by the widget.
@@ -142,16 +72,7 @@ public class GLWidget
 	 * widget =  a GtkWidget.
 	 * Returns: the GdkGLConfig.
 	 */
-	public static GLConfig getGLConfig(Widget widget)
-	{
-		// GdkGLConfig* gtk_widget_get_gl_config (GtkWidget *widget);
-		auto p = gtk_widget_get_gl_config((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new GLConfig(cast(GdkGLConfig*) p);
-	}
+	public static GLConfig getGLConfig(Widget widget);
 	
 	/**
 	 * Creates a new GdkGLContext with the appropriate GdkGLDrawable
@@ -167,16 +88,7 @@ public class GLWidget
 	 *  used).
 	 * Returns: the new GdkGLContext.
 	 */
-	public static GLContext createGLContext(Widget widget, GLContext shareList, int direct, int renderType)
-	{
-		// GdkGLContext* gtk_widget_create_gl_context (GtkWidget *widget,  GdkGLContext *share_list,  gboolean direct,  int render_type);
-		auto p = gtk_widget_create_gl_context((widget is null) ? null : widget.getWidgetStruct(), (shareList is null) ? null : shareList.getGLContextStruct(), direct, renderType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new GLContext(cast(GdkGLContext*) p);
-	}
+	public static GLContext createGLContext(Widget widget, GLContext shareList, int direct, int renderType);
 	
 	/**
 	 * Returns the GdkGLContext with the appropriate GdkGLDrawable
@@ -188,16 +100,7 @@ public class GLWidget
 	 * widget =  a GtkWidget.
 	 * Returns: the GdkGLContext.
 	 */
-	public static GLContext getGLContext(Widget widget)
-	{
-		// GdkGLContext* gtk_widget_get_gl_context (GtkWidget *widget);
-		auto p = gtk_widget_get_gl_context((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new GLContext(cast(GdkGLContext*) p);
-	}
+	public static GLContext getGLContext(Widget widget);
 	
 	/**
 	 * Returns the GdkGLWindow owned by the widget.
@@ -205,14 +108,5 @@ public class GLWidget
 	 * widget =  a GtkWidget.
 	 * Returns: the GdkGLWindow.
 	 */
-	public static GLWindow getGLWindow(Widget widget)
-	{
-		// GdkGLWindow* gtk_widget_get_gl_window (GtkWidget *widget);
-		auto p = gtk_widget_get_gl_window((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new GLWindow(cast(GdkGLWindow*) p);
-	}
+	public static GLWindow getGLWindow(Widget widget);
 }

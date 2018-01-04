@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Memory-Chunks.html
- * outPack = glib
- * outFile = MemoryChunk
- * strct   = GMemChunk
- * realStrct=
- * ctorStrct=
- * clss    = MemoryChunk
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_mem_chunk_
- * 	- g_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- g_mem_chunk_print
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.MemoryChunk;
 
@@ -145,30 +93,16 @@ public class MemoryChunk
 	protected GMemChunk* gMemChunk;
 	
 	
-	public GMemChunk* getMemoryChunkStruct()
-	{
-		return gMemChunk;
-	}
+	public GMemChunk* getMemoryChunkStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gMemChunk;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GMemChunk* gMemChunk)
-	{
-		if(gMemChunk is null)
-		{
-			this = null;
-			return;
-		}
-		this.gMemChunk = gMemChunk;
-	}
+	public this (GMemChunk* gMemChunk);
 	
 	/**
 	 * Warning
@@ -180,27 +114,15 @@ public class MemoryChunk
 	 */
 	version(Rulada)
 	{
-		public void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
+		public void print();
 	}
 	else version(D_Version2)
 	{
-		public void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
+		public void print();
 	}
 	else
 	{
-		public override void print()
-		{
-			// void g_mem_chunk_print (GMemChunk *mem_chunk);
-			g_mem_chunk_print(gMemChunk);
-		}
+		public override void print();
 	}
 	
 	/**
@@ -225,16 +147,7 @@ public class MemoryChunk
 	 * but it obviously wastes memory if you no longer need many of the atoms.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, int atomSize, uint areaSize, int type)
-	{
-		// GMemChunk* g_mem_chunk_new (const gchar *name,  gint atom_size,  gsize area_size,  gint type);
-		auto p = g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by g_mem_chunk_new(Str.toStringz(name), atomSize, areaSize, type)");
-		}
-		this(cast(GMemChunk*) p);
-	}
+	public this (string name, int atomSize, uint areaSize, int type);
 	
 	/**
 	 * Warning
@@ -242,11 +155,7 @@ public class MemoryChunk
 	 * Allocates an atom of memory from a GMemChunk.
 	 * Returns:a pointer to the allocated atom.
 	 */
-	public void* alloc()
-	{
-		// gpointer g_mem_chunk_alloc (GMemChunk *mem_chunk);
-		return g_mem_chunk_alloc(gMemChunk);
-	}
+	public void* alloc();
 	
 	/**
 	 * Warning
@@ -254,11 +163,7 @@ public class MemoryChunk
 	 * Allocates an atom of memory from a GMemChunk, setting the memory to 0.
 	 * Returns:a pointer to the allocated atom.
 	 */
-	public void* alloc0()
-	{
-		// gpointer g_mem_chunk_alloc0 (GMemChunk *mem_chunk);
-		return g_mem_chunk_alloc0(gMemChunk);
-	}
+	public void* alloc0();
 	
 	/**
 	 * Warning
@@ -269,11 +174,7 @@ public class MemoryChunk
 	 * Params:
 	 * mem = a pointer to the atom to free.
 	 */
-	public void free(void* mem)
-	{
-		// void g_mem_chunk_free (GMemChunk *mem_chunk,  gpointer mem);
-		g_mem_chunk_free(gMemChunk, mem);
-	}
+	public void free(void* mem);
 	
 	/**
 	 * Warning
@@ -281,11 +182,7 @@ public class MemoryChunk
 	 *  allocator instead
 	 * Frees all of the memory allocated for a GMemChunk.
 	 */
-	public void destroy()
-	{
-		// void g_mem_chunk_destroy (GMemChunk *mem_chunk);
-		g_mem_chunk_destroy(gMemChunk);
-	}
+	public void destroy();
 	
 	/**
 	 * Warning
@@ -294,11 +191,7 @@ public class MemoryChunk
 	 * Resets a GMemChunk to its initial state.
 	 * It frees all of the currently allocated blocks of memory.
 	 */
-	public void reset()
-	{
-		// void g_mem_chunk_reset (GMemChunk *mem_chunk);
-		g_mem_chunk_reset(gMemChunk);
-	}
+	public void reset();
 	
 	/**
 	 * Warning
@@ -306,11 +199,7 @@ public class MemoryChunk
 	 *  allocator instead
 	 * Frees any blocks in a GMemChunk which are no longer being used.
 	 */
-	public void clean()
-	{
-		// void g_mem_chunk_clean (GMemChunk *mem_chunk);
-		g_mem_chunk_clean(gMemChunk);
-	}
+	public void clean();
 	
 	/**
 	 * Warning
@@ -318,11 +207,7 @@ public class MemoryChunk
 	 *  allocator instead
 	 * Calls g_mem_chunk_clean() on all GMemChunk objects.
 	 */
-	public static void blowChunks()
-	{
-		// void g_blow_chunks (void);
-		g_blow_chunks();
-	}
+	public static void blowChunks();
 	
 	/**
 	 * Warning
@@ -332,9 +217,5 @@ public class MemoryChunk
 	 * It outputs the number of GMemChunk objects currently allocated,
 	 * and calls g_mem_chunk_print() to output information on each one.
 	 */
-	public static void info()
-	{
-		// void g_mem_chunk_info (void);
-		g_mem_chunk_info();
-	}
+	public static void info();
 }

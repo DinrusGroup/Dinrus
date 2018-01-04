@@ -1,52 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Datasets.html
- * outPack = glib
- * outFile = Dataset
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Dataset
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_dataset_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.glib.Dataset;
 
@@ -104,11 +55,7 @@ public class Dataset
 	 * function will be called with the data element and can be used to free any
 	 * memory allocated for it.
 	 */
-	public static void idSetDataFull(void* datasetLocation, GQuark keyId, void* data, GDestroyNotify destroyFunc)
-	{
-		// void g_dataset_id_set_data_full (gconstpointer dataset_location,  GQuark key_id,  gpointer data,  GDestroyNotify destroy_func);
-		g_dataset_id_set_data_full(datasetLocation, keyId, data, destroyFunc);
-	}
+	public static void idSetDataFull(void* datasetLocation, GQuark keyId, void* data, GDestroyNotify destroyFunc);
 	
 	/**
 	 * Gets the data element corresponding to a GQuark.
@@ -117,11 +64,7 @@ public class Dataset
 	 * keyId = the GQuark id to identify the data element.
 	 * Returns:the data element corresponding to the GQuark, or NULL if it isnot found.
 	 */
-	public static void* idGetData(void* datasetLocation, GQuark keyId)
-	{
-		// gpointer g_dataset_id_get_data (gconstpointer dataset_location,  GQuark key_id);
-		return g_dataset_id_get_data(datasetLocation, keyId);
-	}
+	public static void* idGetData(void* datasetLocation, GQuark keyId);
 	
 	/**
 	 * Removes an element, without calling its destroy notification function.
@@ -130,11 +73,7 @@ public class Dataset
 	 * keyId = the GQuark ID identifying the data element.
 	 * Returns:the data previously stored at key_id, or NULL if none.
 	 */
-	public static void* idRemoveNoNotify(void* datasetLocation, GQuark keyId)
-	{
-		// gpointer g_dataset_id_remove_no_notify (gconstpointer dataset_location,  GQuark key_id);
-		return g_dataset_id_remove_no_notify(datasetLocation, keyId);
-	}
+	public static void* idRemoveNoNotify(void* datasetLocation, GQuark keyId);
 	
 	/**
 	 * Calls the given function for each data element which is associated with the
@@ -147,11 +86,7 @@ public class Dataset
 	 * func = the function to call for each data element.
 	 * userData = user data to pass to the function.
 	 */
-	public static void foreac(void* datasetLocation, GDataForeachFunc func, void* userData)
-	{
-		// void g_dataset_foreach (gconstpointer dataset_location,  GDataForeachFunc func,  gpointer user_data);
-		g_dataset_foreach(datasetLocation, func, userData);
-	}
+	public static void foreac(void* datasetLocation, GDataForeachFunc func, void* userData);
 	
 	/**
 	 * Destroys the dataset, freeing all memory allocated, and calling any
@@ -159,9 +94,5 @@ public class Dataset
 	 * Params:
 	 * datasetLocation = the location identifying the dataset.
 	 */
-	public static void destroy(void* datasetLocation)
-	{
-		// void g_dataset_destroy (gconstpointer dataset_location);
-		g_dataset_destroy(datasetLocation);
-	}
+	public static void destroy(void* datasetLocation);
 }

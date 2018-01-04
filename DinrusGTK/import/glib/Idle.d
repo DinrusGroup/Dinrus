@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = glib
- * outFile = Idle
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Idle
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_idle_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Source
- * structWrap:
- * 	- GSource* -> Source
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.Idle;
 
 public  import gtkD.gtkc.glibtypes;
@@ -143,18 +91,7 @@ public class Idle
 	 *    	dlg = the delegate to be executed
 	 *    	fireNow = When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		idleID = g_idle_add(cast(GSourceFunc)&idleCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = 0;
-			}
-		}
-	}
+	this(bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * Creates a new idle cycle.
@@ -163,36 +100,15 @@ public class Idle
 	 *      priority = Priority for the idle function
 	 *    	fireNow = When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, GPriority priority, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		idleID = g_idle_add_full(priority, cast(GSourceFunc)&idleCallback, cast(void*)this, null);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = 0;
-			}
-		}
-	}
+	this(bool delegate() dlg, GPriority priority, bool fireNow=false);
 	
 	/** */
-	public void stop()
-	{
-		if ( idleID > 0 )
-		{
-			g_source_remove(idleID);
-		}
-		idleListeners.length = 0;
-	}
+	public void stop();
 	
 	/**
 	 * Removes the idle from gtk
 	 */
-	~this()
-	{
-		stop();
-	}
+	~this();
 	
 	/**
 	 * Adds a new delegate to this idle cycle
@@ -200,17 +116,7 @@ public class Idle
 	 *    	dlg =
 	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = idleListeners.length - 1;
-			}
-		}
-	}
+	public void addListener(bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * The callback execution from glib
@@ -218,35 +124,13 @@ public class Idle
 	 *    	idle =
 	 * Returns:
 	 */
-	extern(C) static bool idleCallback(Idle idle)
-	{
-		return idle.callAllListeners();
-	}
+	extern(C) static bool idleCallback(Idle idle);
 	
 	/**
 	 * Executes all delegates on the execution list
 	 * Returns:
 	 */
-	private bool callAllListeners()
-	{
-		bool runAgain = false;
-		
-		int i = 0;
-		
-		while ( i<idleListeners.length )
-		{
-			if ( !idleListeners[i]() )
-			{
-				idleListeners = idleListeners[0..i] ~ idleListeners[i+1..idleListeners.length];
-			}
-			else
-			{
-				runAgain = true;
-				++i;
-			}
-		}
-		return runAgain;
-	}
+	private bool callAllListeners();
 	
 	/**
 	 */
@@ -260,16 +144,7 @@ public class Idle
 	 * have a default priority of G_PRIORITY_DEFAULT.
 	 * Returns: the newly-created idle source
 	 */
-	public static Source sourceNew()
-	{
-		// GSource * g_idle_source_new (void);
-		auto p = g_idle_source_new();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Source(cast(GSource*) p);
-	}
+	public static Source sourceNew();
 	
 	/**
 	 * Adds a function to be called whenever there are no higher priority
@@ -284,11 +159,7 @@ public class Idle
 	 * data =  data to pass to function.
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint add(GSourceFunc funct, void* data)
-	{
-		// guint g_idle_add (GSourceFunc function,  gpointer data);
-		return g_idle_add(funct, data);
-	}
+	public static uint add(GSourceFunc funct, void* data);
 	
 	/**
 	 * Adds a function to be called whenever there are no higher priority
@@ -304,11 +175,7 @@ public class Idle
 	 * notify =  function to call when the idle is removed, or NULL
 	 * Returns: the ID (greater than 0) of the event source.
 	 */
-	public static uint addFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify)
-	{
-		// guint g_idle_add_full (gint priority,  GSourceFunc function,  gpointer data,  GDestroyNotify notify);
-		return g_idle_add_full(priority, funct, data, notify);
-	}
+	public static uint addFull(int priority, GSourceFunc funct, void* data, GDestroyNotify notify);
 	
 	/**
 	 * Removes the idle function with the given data.
@@ -316,9 +183,5 @@ public class Idle
 	 * data =  the data for the idle source's callback.
 	 * Returns: TRUE if an idle source was found and removed.
 	 */
-	public static int removeByData(void* data)
-	{
-		// gboolean g_idle_remove_by_data (gpointer data);
-		return g_idle_remove_by_data(data);
-	}
+	public static int removeByData(void* data);
 }

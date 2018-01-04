@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = glib-Memory-Slices.html
- * outPack = glib
- * outFile = MemorySlice
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = MemorySlice
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_slice_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.glib.MemorySlice;
 
 public  import gtkD.gtkc.glibtypes;
@@ -136,11 +86,7 @@ public class MemorySlice
 	 * blockSize = the number of bytes to allocate
 	 * Returns:a pointer to the allocated memory block
 	 */
-	public static void* alloc(uint blockSize)
-	{
-		// gpointer g_slice_alloc (gsize block_size);
-		return g_slice_alloc(blockSize);
-	}
+	public static void* alloc(uint blockSize);
 	
 	/**
 	 * Allocates a block of memory via g_slice_alloc()
@@ -153,11 +99,7 @@ public class MemorySlice
 	 * blockSize = the number of bytes to allocate
 	 * Returns:a pointer to the allocated block
 	 */
-	public static void* alloc0(uint blockSize)
-	{
-		// gpointer g_slice_alloc0 (gsize block_size);
-		return g_slice_alloc0(blockSize);
-	}
+	public static void* alloc0(uint blockSize);
 	
 	/**
 	 * Allocates a block of memory from the slice allocator and copies
@@ -168,11 +110,7 @@ public class MemorySlice
 	 * memBlock = the memory to copy
 	 * Returns:a pointer to the allocated memory block
 	 */
-	public static void* copy(uint blockSize, void* memBlock)
-	{
-		// gpointer g_slice_copy (gsize block_size,  gconstpointer mem_block);
-		return g_slice_copy(blockSize, memBlock);
-	}
+	public static void* copy(uint blockSize, void* memBlock);
 	
 	/**
 	 * Frees a block of memory. The memory must have been allocated via
@@ -186,11 +124,7 @@ public class MemorySlice
 	 * blockSize = the size of the block
 	 * memBlock = a pointer to the block to free
 	 */
-	public static void free1(uint blockSize, void* memBlock)
-	{
-		// void g_slice_free1 (gsize block_size,  gpointer mem_block);
-		g_slice_free1(blockSize, memBlock);
-	}
+	public static void free1(uint blockSize, void* memBlock);
 	
 	/**
 	 * Frees a linked list of memory blocks of structure type type.
@@ -207,9 +141,5 @@ public class MemorySlice
 	 * memChain =  a pointer to the first block of the chain
 	 * nextOffset = the offset of the next field in the blocks
 	 */
-	public static void freeChainWithOffset(uint blockSize, void* memChain, uint nextOffset)
-	{
-		// void g_slice_free_chain_with_offset (gsize block_size,  gpointer mem_chain,  gsize next_offset);
-		g_slice_free_chain_with_offset(blockSize, memChain, nextOffset);
-	}
+	public static void freeChainWithOffset(uint blockSize, void* memChain, uint nextOffset);
 }

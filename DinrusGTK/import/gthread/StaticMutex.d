@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gthread
- * outFile = StaticMutex
- * strct   = GStaticMutex
- * realStrct=
- * ctorStrct=
- * clss    = StaticMutex
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- g_static_mutex_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gthread.Mutex
- * structWrap:
- * 	- GMutex* -> Mutex
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gthread.StaticMutex;
 
 public  import gtkD.gtkc.gthreadtypes;
@@ -119,40 +67,21 @@ public class StaticMutex
 	protected GStaticMutex* gStaticMutex;
 	
 	
-	public GStaticMutex* getStaticMutexStruct()
-	{
-		return gStaticMutex;
-	}
+	public GStaticMutex* getStaticMutexStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gStaticMutex;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GStaticMutex* gStaticMutex)
-	{
-		if(gStaticMutex is null)
-		{
-			this = null;
-			return;
-		}
-		this.gStaticMutex = gStaticMutex;
-	}
+	public this (GStaticMutex* gStaticMutex);
 	
 	/**
 	 * Creates a new initialized StaticMutex.
 	 */
-	public this ()
-	{
-		this(new GStaticMutex);
-		
-		init();
-	}
+	public this ();
 	
 	/**
 	 */
@@ -161,39 +90,23 @@ public class StaticMutex
 	 * Initializes mutex. Alternatively you can initialize it with
 	 * G_STATIC_MUTEX_INIT.
 	 */
-	public void init()
-	{
-		// void g_static_mutex_init (GStaticMutex *mutex);
-		g_static_mutex_init(gStaticMutex);
-	}
+	public void init();
 	
 	/**
 	 * Works like g_mutex_lock(), but for a GStaticMutex.
 	 */
-	public void lock()
-	{
-		// void g_static_mutex_lock (GStaticMutex *mutex);
-		g_static_mutex_lock(gStaticMutex);
-	}
+	public void lock();
 	
 	/**
 	 * Works like g_mutex_trylock(), but for a GStaticMutex.
 	 * Returns:%TRUE, if the GStaticMutex could be locked.
 	 */
-	public int trylock()
-	{
-		// gboolean g_static_mutex_trylock (GStaticMutex *mutex);
-		return g_static_mutex_trylock(gStaticMutex);
-	}
-	
+	public int trylock();
+
 	/**
 	 * Works like g_mutex_unlock(), but for a GStaticMutex.
 	 */
-	public void unlock()
-	{
-		// void g_static_mutex_unlock (GStaticMutex *mutex);
-		g_static_mutex_unlock(gStaticMutex);
-	}
+	public void unlock();
 	
 	/**
 	 * For some operations (like g_cond_wait()) you must have a GMutex
@@ -201,16 +114,7 @@ public class StaticMutex
 	 * corresponding GMutex for mutex.
 	 * Returns:the GMutex corresponding to mutex.
 	 */
-	public Mutex getMutex()
-	{
-		// GMutex * g_static_mutex_get_mutex (GStaticMutex *mutex);
-		auto p = g_static_mutex_get_mutex(gStaticMutex);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Mutex(cast(GMutex*) p);
-	}
+	public Mutex getMutex();
 	
 	/**
 	 * Releases all resources allocated to mutex.
@@ -221,9 +125,5 @@ public class StaticMutex
 	 * Note
 	 * Calling g_static_mutex_free() on a locked mutex may result in undefined behaviour.
 	 */
-	public void free()
-	{
-		// void g_static_mutex_free (GStaticMutex *mutex);
-		g_static_mutex_free(gStaticMutex);
-	}
+	public void free();
 }

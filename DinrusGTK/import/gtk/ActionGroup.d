@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkActionGroup.html
- * outPack = gtk
- * outFile = ActionGroup
- * strct   = GtkActionGroup
- * realStrct=
- * ctorStrct=
- * clss    = ActionGroup
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- BuildableIF
- * prefixes:
- * 	- gtk_action_group_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Action
- * 	- gtkD.glib.ListG
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.BuildableIF
- * 	- gtkD.gtk.BuildableT
- * structWrap:
- * 	- GList* -> ListG
- * 	- GtkAction* -> Action
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gtk.ActionGroup;
 
@@ -127,38 +67,16 @@ public class ActionGroup : ObjectG, BuildableIF
 	protected GtkActionGroup* gtkActionGroup;
 	
 	
-	public GtkActionGroup* getActionGroupStruct()
-	{
-		return gtkActionGroup;
-	}
+	public GtkActionGroup* getActionGroupStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkActionGroup;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkActionGroup* gtkActionGroup)
-	{
-		if(gtkActionGroup is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkActionGroup);
-		if( ptr !is null )
-		{
-			this = cast(ActionGroup)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkActionGroup);
-		this.gtkActionGroup = gtkActionGroup;
-	}
+	public this (GtkActionGroup* gtkActionGroup);
 	
 	// add the Buildable capabilities
 	mixin BuildableT!(GtkActionGroup);
@@ -180,28 +98,8 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * convenient to use.
 	 * Since 2.4
 	 */
-	void addOnConnectProxy(void delegate(Action, Widget, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("connect-proxy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"connect-proxy",
-			cast(GCallback)&callBackConnectProxy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["connect-proxy"] = 1;
-		}
-		onConnectProxyListeners ~= dlg;
-	}
-	extern(C) static void callBackConnectProxy(GtkActionGroup* actionGroupStruct, GtkAction* action, GtkWidget* proxy, ActionGroup actionGroup)
-	{
-		foreach ( void delegate(Action, Widget, ActionGroup) dlg ; actionGroup.onConnectProxyListeners )
-		{
-			dlg(new Action(action), new Widget(proxy), actionGroup);
-		}
-	}
+	void addOnConnectProxy(void delegate(Action, Widget, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackConnectProxy(GtkActionGroup* actionGroupStruct, GtkAction* action, GtkWidget* proxy, ActionGroup actionGroup);
 	
 	void delegate(Action, Widget, ActionGroup)[] onDisconnectProxyListeners;
 	/**
@@ -212,28 +110,8 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * convenient to use.
 	 * Since 2.4
 	 */
-	void addOnDisconnectProxy(void delegate(Action, Widget, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("disconnect-proxy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"disconnect-proxy",
-			cast(GCallback)&callBackDisconnectProxy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["disconnect-proxy"] = 1;
-		}
-		onDisconnectProxyListeners ~= dlg;
-	}
-	extern(C) static void callBackDisconnectProxy(GtkActionGroup* actionGroupStruct, GtkAction* action, GtkWidget* proxy, ActionGroup actionGroup)
-	{
-		foreach ( void delegate(Action, Widget, ActionGroup) dlg ; actionGroup.onDisconnectProxyListeners )
-		{
-			dlg(new Action(action), new Widget(proxy), actionGroup);
-		}
-	}
+	void addOnDisconnectProxy(void delegate(Action, Widget, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDisconnectProxy(GtkActionGroup* actionGroupStruct, GtkAction* action, GtkWidget* proxy, ActionGroup actionGroup);
 	
 	void delegate(Action, ActionGroup)[] onPostActivateListeners;
 	/**
@@ -243,28 +121,8 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * notification just after any action is activated.
 	 * Since 2.4
 	 */
-	void addOnPostActivate(void delegate(Action, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("post-activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"post-activate",
-			cast(GCallback)&callBackPostActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["post-activate"] = 1;
-		}
-		onPostActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackPostActivate(GtkActionGroup* actionGroupStruct, GtkAction* action, ActionGroup actionGroup)
-	{
-		foreach ( void delegate(Action, ActionGroup) dlg ; actionGroup.onPostActivateListeners )
-		{
-			dlg(new Action(action), actionGroup);
-		}
-	}
+	void addOnPostActivate(void delegate(Action, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPostActivate(GtkActionGroup* actionGroupStruct, GtkAction* action, ActionGroup actionGroup);
 	
 	void delegate(Action, ActionGroup)[] onPreActivateListeners;
 	/**
@@ -274,28 +132,8 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * notification just before any action is activated.
 	 * Since 2.4
 	 */
-	void addOnPreActivate(void delegate(Action, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("pre-activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"pre-activate",
-			cast(GCallback)&callBackPreActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["pre-activate"] = 1;
-		}
-		onPreActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackPreActivate(GtkActionGroup* actionGroupStruct, GtkAction* action, ActionGroup actionGroup)
-	{
-		foreach ( void delegate(Action, ActionGroup) dlg ; actionGroup.onPreActivateListeners )
-		{
-			dlg(new Action(action), actionGroup);
-		}
-	}
+	void addOnPreActivate(void delegate(Action, ActionGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPreActivate(GtkActionGroup* actionGroupStruct, GtkAction* action, ActionGroup actionGroup);
 	
 	
 	/**
@@ -307,27 +145,14 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * name =  the name of the action group.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name)
-	{
-		// GtkActionGroup * gtk_action_group_new (const gchar *name);
-		auto p = gtk_action_group_new(Str.toStringz(name));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_action_group_new(Str.toStringz(name))");
-		}
-		this(cast(GtkActionGroup*) p);
-	}
+	public this (string name);
 	
 	/**
 	 * Gets the name of the action group.
 	 * Since 2.4
 	 * Returns: the name of the action group.
 	 */
-	public string getName()
-	{
-		// const gchar * gtk_action_group_get_name (GtkActionGroup *action_group);
-		return Str.toString(gtk_action_group_get_name(gtkActionGroup));
-	}
+	public string getName();
 	
 	/**
 	 * Returns TRUE if the group is sensitive. The constituent actions
@@ -337,11 +162,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Since 2.4
 	 * Returns: TRUE if the group is sensitive.
 	 */
-	public int getSensitive()
-	{
-		// gboolean gtk_action_group_get_sensitive (GtkActionGroup *action_group);
-		return gtk_action_group_get_sensitive(gtkActionGroup);
-	}
+	public int getSensitive();
 	
 	/**
 	 * Changes the sensitivity of action_group
@@ -349,11 +170,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Params:
 	 * sensitive =  new sensitivity
 	 */
-	public void setSensitive(int sensitive)
-	{
-		// void gtk_action_group_set_sensitive (GtkActionGroup *action_group,  gboolean sensitive);
-		gtk_action_group_set_sensitive(gtkActionGroup, sensitive);
-	}
+	public void setSensitive(int sensitive);
 	
 	/**
 	 * Returns TRUE if the group is visible. The constituent actions
@@ -363,11 +180,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Since 2.4
 	 * Returns: TRUE if the group is visible.
 	 */
-	public int getVisible()
-	{
-		// gboolean gtk_action_group_get_visible (GtkActionGroup *action_group);
-		return gtk_action_group_get_visible(gtkActionGroup);
-	}
+	public int getVisible();
 	
 	/**
 	 * Changes the visible of action_group.
@@ -375,11 +188,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Params:
 	 * visible =  new visiblity
 	 */
-	public void setVisible(int visible)
-	{
-		// void gtk_action_group_set_visible (GtkActionGroup *action_group,  gboolean visible);
-		gtk_action_group_set_visible(gtkActionGroup, visible);
-	}
+	public void setVisible(int visible);
 	
 	/**
 	 * Looks up an action in the action group by name.
@@ -388,32 +197,14 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * actionName =  the name of the action
 	 * Returns: the action, or NULL if no action by that name exists
 	 */
-	public Action getAction(string actionName)
-	{
-		// GtkAction * gtk_action_group_get_action (GtkActionGroup *action_group,  const gchar *action_name);
-		auto p = gtk_action_group_get_action(gtkActionGroup, Str.toStringz(actionName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Action(cast(GtkAction*) p);
-	}
+	public Action getAction(string actionName);
 	
 	/**
 	 * Lists the actions in the action group.
 	 * Since 2.4
 	 * Returns: an allocated list of the action objects in the action group
 	 */
-	public ListG listActions()
-	{
-		// GList * gtk_action_group_list_actions (GtkActionGroup *action_group);
-		auto p = gtk_action_group_list_actions(gtkActionGroup);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG listActions();
 	
 	/**
 	 * Adds an action object to the action group. Note that this function
@@ -426,11 +217,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Params:
 	 * action =  an action
 	 */
-	public void addAction(Action action)
-	{
-		// void gtk_action_group_add_action (GtkActionGroup *action_group,  GtkAction *action);
-		gtk_action_group_add_action(gtkActionGroup, (action is null) ? null : action.getActionStruct());
-	}
+	public void addAction(Action action);
 	
 	/**
 	 * Adds an action object to the action group and sets up the accelerator.
@@ -445,11 +232,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 *  the format understood by gtk_accelerator_parse(), or "" for no accelerator, or
 	 *  NULL to use the stock accelerator
 	 */
-	public void addActionWithAccel(Action action, string accelerator)
-	{
-		// void gtk_action_group_add_action_with_accel  (GtkActionGroup *action_group,  GtkAction *action,  const gchar *accelerator);
-		gtk_action_group_add_action_with_accel(gtkActionGroup, (action is null) ? null : action.getActionStruct(), Str.toStringz(accelerator));
-	}
+	public void addActionWithAccel(Action action, string accelerator);
 	
 	/**
 	 * Removes an action object from the action group.
@@ -457,11 +240,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Params:
 	 * action =  an action
 	 */
-	public void removeAction(Action action)
-	{
-		// void gtk_action_group_remove_action (GtkActionGroup *action_group,  GtkAction *action);
-		gtk_action_group_remove_action(gtkActionGroup, (action is null) ? null : action.getActionStruct());
-	}
+	public void removeAction(Action action);
 	
 	/**
 	 * This is a convenience function to create a number of actions and add them
@@ -474,11 +253,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * entries =  an array of action descriptions
 	 * userData =  data to pass to the action callbacks
 	 */
-	public void addActions(GtkActionEntry[] entries, void* userData)
-	{
-		// void gtk_action_group_add_actions (GtkActionGroup *action_group,  const GtkActionEntry *entries,  guint n_entries,  gpointer user_data);
-		gtk_action_group_add_actions(gtkActionGroup, entries.ptr, entries.length, userData);
-	}
+	public void addActions(GtkActionEntry[] entries, void* userData);
 	
 	/**
 	 * This variant of gtk_action_group_add_actions() adds a GDestroyNotify
@@ -489,11 +264,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * userData =  data to pass to the action callbacks
 	 * destroy =  destroy notification callback for user_data
 	 */
-	public void addActionsFull(GtkActionEntry[] entries, void* userData, GDestroyNotify destroy)
-	{
-		// void gtk_action_group_add_actions_full (GtkActionGroup *action_group,  const GtkActionEntry *entries,  guint n_entries,  gpointer user_data,  GDestroyNotify destroy);
-		gtk_action_group_add_actions_full(gtkActionGroup, entries.ptr, entries.length, userData, destroy);
-	}
+	public void addActionsFull(GtkActionEntry[] entries, void* userData, GDestroyNotify destroy);
 	
 	/**
 	 * This is a convenience function to create a number of toggle actions and add them
@@ -506,11 +277,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * entries =  an array of toggle action descriptions
 	 * userData =  data to pass to the action callbacks
 	 */
-	public void addToggleActions(GtkToggleActionEntry[] entries, void* userData)
-	{
-		// void gtk_action_group_add_toggle_actions (GtkActionGroup *action_group,  const GtkToggleActionEntry *entries,  guint n_entries,  gpointer user_data);
-		gtk_action_group_add_toggle_actions(gtkActionGroup, entries.ptr, entries.length, userData);
-	}
+	public void addToggleActions(GtkToggleActionEntry[] entries, void* userData);
 	
 	/**
 	 * This variant of gtk_action_group_add_toggle_actions() adds a
@@ -521,11 +288,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * userData =  data to pass to the action callbacks
 	 * destroy =  destroy notification callback for user_data
 	 */
-	public void addToggleActionsFull(GtkToggleActionEntry[] entries, void* userData, GDestroyNotify destroy)
-	{
-		// void gtk_action_group_add_toggle_actions_full  (GtkActionGroup *action_group,  const GtkToggleActionEntry *entries,  guint n_entries,  gpointer user_data,  GDestroyNotify destroy);
-		gtk_action_group_add_toggle_actions_full(gtkActionGroup, entries.ptr, entries.length, userData, destroy);
-	}
+	public void addToggleActionsFull(GtkToggleActionEntry[] entries, void* userData, GDestroyNotify destroy);
 	
 	/**
 	 * This is a convenience routine to create a group of radio actions and
@@ -541,11 +304,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * onChange =  the callback to connect to the changed signal
 	 * userData =  data to pass to the action callbacks
 	 */
-	public void addRadioActions(GtkRadioActionEntry[] entries, int value, GCallback onChange, void* userData)
-	{
-		// void gtk_action_group_add_radio_actions (GtkActionGroup *action_group,  const GtkRadioActionEntry *entries,  guint n_entries,  gint value,  GCallback on_change,  gpointer user_data);
-		gtk_action_group_add_radio_actions(gtkActionGroup, entries.ptr, entries.length, value, onChange, userData);
-	}
+	public void addRadioActions(GtkRadioActionEntry[] entries, int value, GCallback onChange, void* userData);
 	
 	/**
 	 * This variant of gtk_action_group_add_radio_actions() adds a
@@ -559,11 +318,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * userData =  data to pass to the action callbacks
 	 * destroy =  destroy notification callback for user_data
 	 */
-	public void addRadioActionsFull(GtkRadioActionEntry[] entries, int value, GCallback onChange, void* userData, GDestroyNotify destroy)
-	{
-		// void gtk_action_group_add_radio_actions_full  (GtkActionGroup *action_group,  const GtkRadioActionEntry *entries,  guint n_entries,  gint value,  GCallback on_change,  gpointer user_data,  GDestroyNotify destroy);
-		gtk_action_group_add_radio_actions_full(gtkActionGroup, entries.ptr, entries.length, value, onChange, userData, destroy);
-	}
+	public void addRadioActionsFull(GtkRadioActionEntry[] entries, int value, GCallback onChange, void* userData, GDestroyNotify destroy);
 	
 	/**
 	 * Sets a function to be used for translating the label and tooltip of
@@ -577,11 +332,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * notify =  a GDestroyNotify function to be called when action_group is
 	 *  destroyed and when the translation function is changed again
 	 */
-	public void setTranslateFunc(GtkTranslateFunc func, void* data, GDestroyNotify notify)
-	{
-		// void gtk_action_group_set_translate_func (GtkActionGroup *action_group,  GtkTranslateFunc func,  gpointer data,  GDestroyNotify notify);
-		gtk_action_group_set_translate_func(gtkActionGroup, func, data, notify);
-	}
+	public void setTranslateFunc(GtkTranslateFunc func, void* data, GDestroyNotify notify);
 	
 	/**
 	 * Sets the translation domain and uses g_dgettext() for translating the
@@ -593,11 +344,7 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * Params:
 	 * domain =  the translation domain to use for g_dgettext() calls
 	 */
-	public void setTranslationDomain(string domain)
-	{
-		// void gtk_action_group_set_translation_domain  (GtkActionGroup *action_group,  const gchar *domain);
-		gtk_action_group_set_translation_domain(gtkActionGroup, Str.toStringz(domain));
-	}
+	public void setTranslationDomain(string domain);
 	
 	/**
 	 * Translates a string using the specified translate_func(). This
@@ -607,9 +354,5 @@ public class ActionGroup : ObjectG, BuildableIF
 	 * string =  a string
 	 * Returns: the translation of string
 	 */
-	public string translateString(string string)
-	{
-		// const gchar * gtk_action_group_translate_string (GtkActionGroup *action_group,  const gchar *string);
-		return Str.toString(gtk_action_group_translate_string(gtkActionGroup, Str.toStringz(string)));
-	}
+	public string translateString(string string);
 }

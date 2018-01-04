@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gstreamer-GstTypeFind.html
- * outPack = gstreamer
- * outFile = TypeFind
- * strct   = GstTypeFind
- * realStrct=
- * ctorStrct=
- * clss    = TypeFind
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gst_type_find_
- * 	- gst_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gstreamer.Caps
- * 	- gtkD.gstreamer.Plugin
- * structWrap:
- * 	- GstCaps* -> Caps
- * 	- GstPlugin* -> Plugin
- * 	- GstTypeFind* -> TypeFind
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gstreamer.TypeFind;
 
 public  import gtkD.gstreamerc.gstreamertypes;
@@ -83,30 +26,16 @@ public class TypeFind
 	protected GstTypeFind* gstTypeFind;
 	
 	
-	public GstTypeFind* getTypeFindStruct()
-	{
-		return gstTypeFind;
-	}
+	public GstTypeFind* getTypeFindStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gstTypeFind;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GstTypeFind* gstTypeFind)
-	{
-		if(gstTypeFind is null)
-		{
-			this = null;
-			return;
-		}
-		this.gstTypeFind = gstTypeFind;
-	}
+	public this (GstTypeFind* gstTypeFind);
 	
 	/**
 	 */
@@ -122,11 +51,7 @@ public class TypeFind
 	 * size =  The number of bytes to return
 	 * Returns: the requested data, or NULL if that data is not available.
 	 */
-	public ubyte* peek(long offset, uint size)
-	{
-		// guint8* gst_type_find_peek (GstTypeFind *find,  gint64 offset,  guint size);
-		return gst_type_find_peek(gstTypeFind, offset, size);
-	}
+	public ubyte* peek(long offset, uint size);
 	
 	/**
 	 * If a GstTypeFindFunction calls this function it suggests the caps with the
@@ -137,21 +62,13 @@ public class TypeFind
 	 * probability =  The probability in percent that the suggestion is right
 	 * caps =  The fixed GstCaps to suggest
 	 */
-	public void suggest(uint probability, Caps caps)
-	{
-		// void gst_type_find_suggest (GstTypeFind *find,  guint probability,  const GstCaps *caps);
-		gst_type_find_suggest(gstTypeFind, probability, (caps is null) ? null : caps.getCapsStruct());
-	}
+	public void suggest(uint probability, Caps caps);
 	
 	/**
 	 * Get the length of the data stream.
 	 * Returns: The length of the data stream, or 0 if it is not available.
 	 */
-	public ulong getLength()
-	{
-		// guint64 gst_type_find_get_length (GstTypeFind *find);
-		return gst_type_find_get_length(gstTypeFind);
-	}
+	public ulong getLength();
 	
 	/**
 	 * Registers a new typefind function to be used for typefinding. After
@@ -171,9 +88,5 @@ public class TypeFind
 	 *  is unloaded.
 	 * Returns: TRUE on success, FALSE otherwise
 	 */
-	public static int register(Plugin plugin, string name, uint rank, GstTypeFindFunction func, char** extensions, Caps possibleCaps, void* data, GDestroyNotify dataNotify)
-	{
-		// gboolean gst_type_find_register (GstPlugin *plugin,  const gchar *name,  guint rank,  GstTypeFindFunction func,  gchar **extensions,  const GstCaps *possible_caps,  gpointer data,  GDestroyNotify data_notify);
-		return gst_type_find_register((plugin is null) ? null : plugin.getPluginStruct(), Str.toStringz(name), rank, func, extensions, (possibleCaps is null) ? null : possibleCaps.getCapsStruct(), data, dataNotify);
-	}
+	public static int register(Plugin plugin, string name, uint rank, GstTypeFindFunction func, char** extensions, Caps possibleCaps, void* data, GDestroyNotify dataNotify);
 }
