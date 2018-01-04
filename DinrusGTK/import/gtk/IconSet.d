@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = IconSet
- * strct   = GtkIconSet
- * realStrct=
- * ctorStrct=
- * clss    = IconSet
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_icon_set_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.IconSource
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.gtk.Style
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkIconSet* -> IconSet
- * 	- GtkIconSource* -> IconSource
- * 	- GtkStyle* -> Style
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IconSet;
 
 public  import gtkD.gtkc.gtktypes;
@@ -138,30 +78,16 @@ public class IconSet
 	protected GtkIconSet* gtkIconSet;
 	
 	
-	public GtkIconSet* getIconSetStruct()
-	{
-		return gtkIconSet;
-	}
+	public GtkIconSet* getIconSetStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkIconSet;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkIconSet* gtkIconSet)
-	{
-		if(gtkIconSet is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkIconSet = gtkIconSet;
-	}
+	public this (GtkIconSet* gtkIconSet);
 	
 	/**
 	 */
@@ -191,27 +117,14 @@ public class IconSet
 	 * Params:
 	 * source =  a GtkIconSource
 	 */
-	public void addSource(IconSource source)
-	{
-		// void gtk_icon_set_add_source (GtkIconSet *icon_set,  const GtkIconSource *source);
-		gtk_icon_set_add_source(gtkIconSet, (source is null) ? null : source.getIconSourceStruct());
-	}
+	public void addSource(IconSource source);
 	
 	/**
 	 * Copies icon_set by value.
 	 * Returns: a new GtkIconSet identical to the first.
 	 */
-	public IconSet copy()
-	{
-		// GtkIconSet* gtk_icon_set_copy (GtkIconSet *icon_set);
-		auto p = gtk_icon_set_copy(gtkIconSet);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconSet(cast(GtkIconSet*) p);
-	}
-	
+	public IconSet copy();
+
 	/**
 	 * Creates a new GtkIconSet. A GtkIconSet represents a single icon
 	 * in various sizes and widget states. It can provide a GdkPixbuf
@@ -223,16 +136,7 @@ public class IconSet
 	 * a GtkIconFactory.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkIconSet* gtk_icon_set_new (void);
-		auto p = gtk_icon_set_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_icon_set_new()");
-		}
-		this(cast(GtkIconSet*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a new GtkIconSet with pixbuf as the default/fallback
@@ -244,31 +148,13 @@ public class IconSet
 	 * pixbuf =  a GdkPixbuf
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Pixbuf pixbuf)
-	{
-		// GtkIconSet* gtk_icon_set_new_from_pixbuf (GdkPixbuf *pixbuf);
-		auto p = gtk_icon_set_new_from_pixbuf((pixbuf is null) ? null : pixbuf.getPixbufStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_icon_set_new_from_pixbuf((pixbuf is null) ? null : pixbuf.getPixbufStruct())");
-		}
-		this(cast(GtkIconSet*) p);
-	}
+	public this (Pixbuf pixbuf);
 	
 	/**
 	 * Increments the reference count on icon_set.
 	 * Returns: icon_set.
 	 */
-	public IconSet doref()
-	{
-		// GtkIconSet* gtk_icon_set_ref (GtkIconSet *icon_set);
-		auto p = gtk_icon_set_ref(gtkIconSet);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconSet(cast(GtkIconSet*) p);
-	}
+	public IconSet doref();
 	
 	/**
 	 * Renders an icon using gtk_style_render_icon(). In most cases,
@@ -291,26 +177,13 @@ public class IconSet
 	 *  will disable caching.
 	 * Returns: a GdkPixbuf to be displayed
 	 */
-	public Pixbuf renderIcon(Style style, GtkTextDirection direction, GtkStateType state, GtkIconSize size, Widget widget, string detail)
-	{
-		// GdkPixbuf* gtk_icon_set_render_icon (GtkIconSet *icon_set,  GtkStyle *style,  GtkTextDirection direction,  GtkStateType state,  GtkIconSize size,  GtkWidget *widget,  const char *detail);
-		auto p = gtk_icon_set_render_icon(gtkIconSet, (style is null) ? null : style.getStyleStruct(), direction, state, size, (widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(detail));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf renderIcon(Style style, GtkTextDirection direction, GtkStateType state, GtkIconSize size, Widget widget, string detail);
 	
 	/**
 	 * Decrements the reference count on icon_set, and frees memory
 	 * if the reference count reaches 0.
 	 */
-	public void unref()
-	{
-		// void gtk_icon_set_unref (GtkIconSet *icon_set);
-		gtk_icon_set_unref(gtkIconSet);
-	}
+	public void unref();
 	
 	/**
 	 * Obtains a list of icon sizes this icon set can render. The returned
@@ -318,14 +191,5 @@ public class IconSet
 	 * Params:
 	 * sizes =  return location for array of sizes
 	 */
-	public void getSizes(out GtkIconSize[] sizes)
-	{
-		// void gtk_icon_set_get_sizes (GtkIconSet *icon_set,  GtkIconSize **sizes,  gint *n_sizes);
-		GtkIconSize* outsizes = null;
-		int nSizes;
-		
-		gtk_icon_set_get_sizes(gtkIconSet, &outsizes, &nSizes);
-		
-		sizes = outsizes[0 .. nSizes];
-	}
+	public void getSizes(out GtkIconSize[] sizes);
 }

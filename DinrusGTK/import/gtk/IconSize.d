@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = IconSize
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = IconSize
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_icon_size_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Settings
- * structWrap:
- * 	- GtkSettings* -> Settings
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IconSize;
 
 public  import gtkD.gtkc.gtktypes;
@@ -145,11 +92,7 @@ public class IconSize
 	 * height =  location to store icon height
 	 * Returns: TRUE if size was a valid size
 	 */
-	public static int lookup(GtkIconSize size, out int width, out int height)
-	{
-		// gboolean gtk_icon_size_lookup (GtkIconSize size,  gint *width,  gint *height);
-		return gtk_icon_size_lookup(size, &width, &height);
-	}
+	public static int lookup(GtkIconSize size, out int width, out int height);
 	
 	/**
 	 * Obtains the pixel size of a semantic icon size, possibly
@@ -171,11 +114,7 @@ public class IconSize
 	 * height =  location to store icon height
 	 * Returns: TRUE if size was a valid size
 	 */
-	public static int lookupForSettings(Settings settings, GtkIconSize size, out int width, out int height)
-	{
-		// gboolean gtk_icon_size_lookup_for_settings (GtkSettings *settings,  GtkIconSize size,  gint *width,  gint *height);
-		return gtk_icon_size_lookup_for_settings((settings is null) ? null : settings.getSettingsStruct(), size, &width, &height);
-	}
+	public static int lookupForSettings(Settings settings, GtkIconSize size, out int width, out int height);
 	
 	/**
 	 * Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU,
@@ -186,11 +125,7 @@ public class IconSize
 	 * height =  the icon height
 	 * Returns: integer value representing the size
 	 */
-	public static GtkIconSize register(string name, int width, int height)
-	{
-		// GtkIconSize gtk_icon_size_register (const gchar *name,  gint width,  gint height);
-		return gtk_icon_size_register(Str.toStringz(name), width, height);
-	}
+	public static GtkIconSize register(string name, int width, int height);
 	
 	/**
 	 * Registers alias as another name for target.
@@ -199,11 +134,7 @@ public class IconSize
 	 * Params:
 	 * target =  an existing icon size
 	 */
-	public static void registerAlias(string alia, GtkIconSize target)
-	{
-		// void gtk_icon_size_register_alias (const gchar *alias,  GtkIconSize target);
-		gtk_icon_size_register_alias(Str.toStringz(alia), target);
-	}
+	public static void registerAlias(string alia, GtkIconSize target);
 	
 	/**
 	 * Looks up the icon size associated with name.
@@ -211,11 +142,7 @@ public class IconSize
 	 * name =  the name to look up.
 	 * Returns: the icon size with the given name.
 	 */
-	public static GtkIconSize fromName(string name)
-	{
-		// GtkIconSize gtk_icon_size_from_name (const gchar *name);
-		return gtk_icon_size_from_name(Str.toStringz(name));
-	}
+	public static GtkIconSize fromName(string name);
 	
 	/**
 	 * Gets the canonical name of the given icon size. The returned string
@@ -224,9 +151,5 @@ public class IconSize
 	 * size =  a GtkIconSize.
 	 * Returns: the name of the given icon size.
 	 */
-	public static string getName(GtkIconSize size)
-	{
-		// const gchar* gtk_icon_size_get_name (GtkIconSize size);
-		return Str.toString(gtk_icon_size_get_name(size));
-	}
+	public static string getName(GtkIconSize size);
 }

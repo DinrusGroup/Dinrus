@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkIMMulticontext.html
- * outPack = gtk
- * outFile = IMMulticontext
- * strct   = GtkIMMulticontext
- * realStrct=
- * ctorStrct=
- * clss    = IMMulticontext
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_im_multicontext_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.IMContext
- * 	- gtkD.gtk.MenuShell
- * structWrap:
- * 	- GtkIMContext* -> IMContext
- * 	- GtkMenuShell* -> MenuShell
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IMMulticontext;
 
 public  import gtkD.gtkc.gtktypes;
@@ -80,38 +24,16 @@ public class IMMulticontext : IMContext
 	protected GtkIMMulticontext* gtkIMMulticontext;
 	
 	
-	public GtkIMMulticontext* getIMMulticontextStruct()
-	{
-		return gtkIMMulticontext;
-	}
+	public GtkIMMulticontext* getIMMulticontextStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkIMMulticontext;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkIMMulticontext* gtkIMMulticontext)
-	{
-		if(gtkIMMulticontext is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkIMMulticontext);
-		if( ptr !is null )
-		{
-			this = cast(IMMulticontext)ptr;
-			return;
-		}
-		super(cast(GtkIMContext*)gtkIMMulticontext);
-		this.gtkIMMulticontext = gtkIMMulticontext;
-	}
+	public this (GtkIMMulticontext* gtkIMMulticontext);
 	
 	/**
 	 */
@@ -120,16 +42,7 @@ public class IMMulticontext : IMContext
 	 * Creates a new GtkIMMulticontext.
 	 * Returns: a new GtkIMMulticontext.
 	 */
-	public static IMContext newIMMulticontext()
-	{
-		// GtkIMContext * gtk_im_multicontext_new (void);
-		auto p = gtk_im_multicontext_new();
-		if(p is null)
-		{
-			return null;
-		}
-		return new IMContext(cast(GtkIMContext*) p);
-	}
+	public static IMContext newIMMulticontext();
 	
 	/**
 	 * Add menuitems for various available input methods to a menu;
@@ -138,22 +51,14 @@ public class IMMulticontext : IMContext
 	 * Params:
 	 * menushell =  a GtkMenuShell
 	 */
-	public void appendMenuitems(MenuShell menushell)
-	{
-		// void gtk_im_multicontext_append_menuitems  (GtkIMMulticontext *context,  GtkMenuShell *menushell);
-		gtk_im_multicontext_append_menuitems(gtkIMMulticontext, (menushell is null) ? null : menushell.getMenuShellStruct());
-	}
+	public void appendMenuitems(MenuShell menushell);
 	
 	/**
 	 * Gets the id of the currently active slave of the context.
 	 * Since 2.16
 	 * Returns: the id of the currently active slave
 	 */
-	public string getContextId()
-	{
-		// const char * gtk_im_multicontext_get_context_id (GtkIMMulticontext *context);
-		return Str.toString(gtk_im_multicontext_get_context_id(gtkIMMulticontext));
-	}
+	public string getContextId();
 	
 	/**
 	 * Sets the context id for context.
@@ -164,9 +69,5 @@ public class IMMulticontext : IMContext
 	 * context =  a GtkIMMulticontext
 	 * contextId =  the id to use
 	 */
-	public void setContextId(string contextId)
-	{
-		// void gtk_im_multicontext_set_context_id (GtkIMMulticontext *context,  const char *context_id);
-		gtk_im_multicontext_set_context_id(gtkIMMulticontext, Str.toStringz(contextId));
-	}
+	public void setContextId(string contextId);
 }

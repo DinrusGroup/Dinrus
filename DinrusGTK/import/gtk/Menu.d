@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkMenu.html
- * outPack = gtk
- * outFile = Menu
- * strct   = GtkMenu
- * realStrct=
- * ctorStrct=
- * clss    = Menu
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_menu_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gtk.AccelGroup
- * 	- gtkD.glib.ListG
- * 	- gtkD.gtk.MenuItem
- * structWrap:
- * 	- GList* -> ListG
- * 	- GdkScreen* -> Screen
- * 	- GtkAccelGroup* -> AccelGroup
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Menu;
 
 public  import gtkD.gtkc.gtktypes;
@@ -130,38 +69,16 @@ public class Menu : MenuShell
 	protected GtkMenu* gtkMenu;
 	
 	
-	public GtkMenu* getMenuStruct()
-	{
-		return gtkMenu;
-	}
+	public GtkMenu* getMenuStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkMenu;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkMenu* gtkMenu)
-	{
-		if(gtkMenu is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkMenu);
-		if( ptr !is null )
-		{
-			this = cast(Menu)ptr;
-			return;
-		}
-		super(cast(GtkMenuShell*)gtkMenu);
-		this.gtkMenu = gtkMenu;
-	}
+	public this (GtkMenu* gtkMenu);
 	
 	/**
 	 * Popups up this menu
@@ -169,10 +86,7 @@ public class Menu : MenuShell
 	 *  button = you can pass a button number here
 	 *  activateTime = you can pass the time from an event here
 	 */
-	void popup(guint button, guint32 activateTime)
-	{
-		popup(null, null, null, null, button, activateTime);
-	}
+	void popup(guint button, guint32 activateTime);
 	
 	/**
 	 * Creates and append a submenu to this menu.
@@ -181,32 +95,13 @@ public class Menu : MenuShell
 	 *  label = the sub menu item label
 	 * Returns: the new menu
 	 */
-	Menu appendSubmenu(string label)
-	{
-		MenuItem item = new MenuItem(label);
-		append(item);
-		Menu submenu = new Menu();
-		item.setSubmenu(submenu);
-		return submenu;
-	}
+	Menu appendSubmenu(string label);
 	
 	/** */
-	void appendSubmenu(string label, Menu submenu)
-	{
-		MenuItem item = new MenuItem(label);
-		append(item);
-		item.setSubmenu(submenu);
-	}
+	void appendSubmenu(string label, Menu submenu);
 	
 	/** */
-	Menu prependSubmenu(string label)
-	{
-		MenuItem item = new MenuItem(label);
-		prepend(item);
-		Menu submenu = new Menu();
-		item.setSubmenu(submenu);
-		return submenu;
-	}
+	Menu prependSubmenu(string label);
 	
 	/**
 	 */
@@ -215,44 +110,15 @@ public class Menu : MenuShell
 	void delegate(GtkScrollType, Menu)[] onMoveScrollListeners;
 	/**
 	 */
-	void addOnMoveScroll(void delegate(GtkScrollType, Menu) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-scroll" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-scroll",
-			cast(GCallback)&callBackMoveScroll,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-scroll"] = 1;
-		}
-		onMoveScrollListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveScroll(GtkMenu* menuStruct, GtkScrollType arg1, Menu menu)
-	{
-		foreach ( void delegate(GtkScrollType, Menu) dlg ; menu.onMoveScrollListeners )
-		{
-			dlg(arg1, menu);
-		}
-	}
+	void addOnMoveScroll(void delegate(GtkScrollType, Menu) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveScroll(GtkMenu* menuStruct, GtkScrollType arg1, Menu menu);
 	
 	
 	/**
 	 * Creates a new GtkMenu.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_menu_new (void);
-		auto p = gtk_menu_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_menu_new()");
-		}
-		this(cast(GtkMenu*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the GdkScreen on which the menu will be displayed.
@@ -261,11 +127,7 @@ public class Menu : MenuShell
 	 * screen =  a GdkScreen, or NULL if the screen should be
 	 *  determined by the widget the menu is attached to.
 	 */
-	public void setScreen(Screen screen)
-	{
-		// void gtk_menu_set_screen (GtkMenu *menu,  GdkScreen *screen);
-		gtk_menu_set_screen(gtkMenu, (screen is null) ? null : screen.getScreenStruct());
-	}
+	public void setScreen(Screen screen);
 	
 	/**
 	 * Moves a GtkMenuItem to a new position within the GtkMenu.
@@ -274,11 +136,7 @@ public class Menu : MenuShell
 	 * position = the new position to place child. Positions are numbered from
 	 * 0 to n-1.
 	 */
-	public void reorderChild(Widget child, int position)
-	{
-		// void gtk_menu_reorder_child (GtkMenu *menu,  GtkWidget *child,  gint position);
-		gtk_menu_reorder_child(gtkMenu, (child is null) ? null : child.getWidgetStruct(), position);
-	}
+	public void reorderChild(Widget child, int position);
 	
 	/**
 	 * Adds a new GtkMenuItem to a (table) menu. The number of 'cells' that
@@ -295,11 +153,7 @@ public class Menu : MenuShell
 	 * topAttach =  The row number to attach the top of the item to.
 	 * bottomAttach =  The row number to attach the bottom of the item to.
 	 */
-	public void attach(Widget child, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach)
-	{
-		// void gtk_menu_attach (GtkMenu *menu,  GtkWidget *child,  guint left_attach,  guint right_attach,  guint top_attach,  guint bottom_attach);
-		gtk_menu_attach(gtkMenu, (child is null) ? null : child.getWidgetStruct(), leftAttach, rightAttach, topAttach, bottomAttach);
-	}
+	public void attach(Widget child, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach);
 	
 	/**
 	 * Displays a menu and makes it available for selection. Applications can use
@@ -325,11 +179,7 @@ public class Menu : MenuShell
 	 * button =  the mouse button which was pressed to initiate the event.
 	 * activateTime =  the time at which the activation event occurred.
 	 */
-	public void popup(Widget parentMenuShell, Widget parentMenuItem, GtkMenuPositionFunc func, void* data, uint button, uint activateTime)
-	{
-		// void gtk_menu_popup (GtkMenu *menu,  GtkWidget *parent_menu_shell,  GtkWidget *parent_menu_item,  GtkMenuPositionFunc func,  gpointer data,  guint button,  guint32 activate_time);
-		gtk_menu_popup(gtkMenu, (parentMenuShell is null) ? null : parentMenuShell.getWidgetStruct(), (parentMenuItem is null) ? null : parentMenuItem.getWidgetStruct(), func, data, button, activateTime);
-	}
+	public void popup(Widget parentMenuShell, Widget parentMenuItem, GtkMenuPositionFunc func, void* data, uint button, uint activateTime);
 	
 	/**
 	 * Set the GtkAccelGroup which holds global accelerators for the menu.
@@ -339,11 +189,7 @@ public class Menu : MenuShell
 	 * Params:
 	 * accelGroup = the GtkAccelGroup to be associated with the menu.
 	 */
-	public void setAccelGroup(AccelGroup accelGroup)
-	{
-		// void gtk_menu_set_accel_group (GtkMenu *menu,  GtkAccelGroup *accel_group);
-		gtk_menu_set_accel_group(gtkMenu, (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-	}
+	public void setAccelGroup(AccelGroup accelGroup);
 	
 	/**
 	 * Gets the GtkAccelGroup which holds global accelerators for the menu.
@@ -351,15 +197,7 @@ public class Menu : MenuShell
 	 * Returns:the GtkAccelGroup associated with the menu.
 	 */
 	public AccelGroup getAccelGroup()
-	{
-		// GtkAccelGroup* gtk_menu_get_accel_group (GtkMenu *menu);
-		auto p = gtk_menu_get_accel_group(gtkMenu);
-		if(p is null)
-		{
-			return null;
-		}
-		return new AccelGroup(cast(GtkAccelGroup*) p);
-	}
+	{;
 	
 	/**
 	 * Sets an accelerator path for this menu from which accelerator paths
@@ -375,22 +213,14 @@ public class Menu : MenuShell
 	 * Params:
 	 * accelPath =  a valid accelerator path
 	 */
-	public void setAccelPath(string accelPath)
-	{
-		// void gtk_menu_set_accel_path (GtkMenu *menu,  const gchar *accel_path);
-		gtk_menu_set_accel_path(gtkMenu, Str.toStringz(accelPath));
-	}
+	public void setAccelPath(string accelPath);
 	
 	/**
 	 * Retrieves the accelerator path set on the menu.
 	 * Since 2.14
 	 * Returns: the accelerator path set on the menu.
 	 */
-	public string getAccelPath()
-	{
-		// const gchar* gtk_menu_get_accel_path (GtkMenu *menu);
-		return Str.toString(gtk_menu_get_accel_path(gtkMenu));
-	}
+	public string getAccelPath();
 	
 	/**
 	 * Sets the title string for the menu. The title is displayed when the menu
@@ -400,21 +230,13 @@ public class Menu : MenuShell
 	 * Params:
 	 * title =  a string containing the title for the menu.
 	 */
-	public void setTitle(string title)
-	{
-		// void gtk_menu_set_title (GtkMenu *menu,  const gchar *title);
-		gtk_menu_set_title(gtkMenu, Str.toStringz(title));
-	}
+	public void setTitle(string title);
 	
 	/**
 	 * Returns the title of the menu. See gtk_menu_set_title().
 	 * Returns: the title of the menu, or NULL if the menu has notitle set on it. This string is owned by the widget and shouldnot be modified or freed.
 	 */
-	public string getTitle()
-	{
-		// const gchar * gtk_menu_get_title (GtkMenu *menu);
-		return Str.toString(gtk_menu_get_title(gtkMenu));
-	}
+	public string getTitle();
 	
 	/**
 	 * Informs GTK+ on which monitor a menu should be popped up.
@@ -429,33 +251,21 @@ public class Menu : MenuShell
 	 * monitorNum =  the number of the monitor on which the menu should
 	 *  be popped up
 	 */
-	public void setMonitor(int monitorNum)
-	{
-		// void gtk_menu_set_monitor (GtkMenu *menu,  gint monitor_num);
-		gtk_menu_set_monitor(gtkMenu, monitorNum);
-	}
+	public void setMonitor(int monitorNum);
 	
 	/**
 	 * Retrieves the number of the monitor on which to show the menu.
 	 * Since 2.14
 	 * Returns: the number of the monitor on which the menu should be popped up or -1, if no monitor has been set
 	 */
-	public int getMonitor()
-	{
-		// gint gtk_menu_get_monitor (GtkMenu *menu);
-		return gtk_menu_get_monitor(gtkMenu);
-	}
+	public int getMonitor();
 	
 	/**
 	 * Returns whether the menu is torn off. See
 	 * gtk_menu_set_tearoff_state().
 	 * Returns: TRUE if the menu is currently torn off.
 	 */
-	public int getTearoffState()
-	{
-		// gboolean gtk_menu_get_tearoff_state (GtkMenu *menu);
-		return gtk_menu_get_tearoff_state(gtkMenu);
-	}
+	public int getTearoffState();
 	
 	/**
 	 * Sets whether the menu should reserve space for drawing toggles
@@ -464,11 +274,7 @@ public class Menu : MenuShell
 	 * Params:
 	 * reserveToggleSize =  whether to reserve size for toggles
 	 */
-	public void setReserveToggleSize(int reserveToggleSize)
-	{
-		// void gtk_menu_set_reserve_toggle_size (GtkMenu *menu,  gboolean reserve_toggle_size);
-		gtk_menu_set_reserve_toggle_size(gtkMenu, reserveToggleSize);
-	}
+	public void setReserveToggleSize(int reserveToggleSize);
 	
 	/**
 	 * Returns whether the menu reserves space for toggles and
@@ -476,45 +282,24 @@ public class Menu : MenuShell
 	 * Since 2.18
 	 * Returns: Whether the menu reserves toggle space
 	 */
-	public int getReserveToggleSize()
-	{
-		// gboolean gtk_menu_get_reserve_toggle_size (GtkMenu *menu);
-		return gtk_menu_get_reserve_toggle_size(gtkMenu);
-	}
+	public int getReserveToggleSize();
 	
 	/**
 	 * Removes the menu from the screen.
 	 */
-	public void popdown()
-	{
-		// void gtk_menu_popdown (GtkMenu *menu);
-		gtk_menu_popdown(gtkMenu);
-	}
+	public void popdown();
 	
 	/**
 	 * Repositions the menu according to its position function.
 	 */
-	public void reposition()
-	{
-		// void gtk_menu_reposition (GtkMenu *menu);
-		gtk_menu_reposition(gtkMenu);
-	}
+	public void reposition();
 	
 	/**
 	 * Returns the selected menu item from the menu. This is used by the
 	 * GtkOptionMenu.
 	 * Returns:the GtkMenuItem that was last selected in the menu. If a selection has not yet been made, the first menu item is selected.
 	 */
-	public Widget getActive()
-	{
-		// GtkWidget* gtk_menu_get_active (GtkMenu *menu);
-		auto p = gtk_menu_get_active(gtkMenu);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getActive();
 	
 	/**
 	 * Selects the specified menu item within the menu. This is used by the
@@ -523,11 +308,7 @@ public class Menu : MenuShell
 	 * index = the index of the menu item to select. Index values are from
 	 * 0 to n-1.
 	 */
-	public void setActive(uint index)
-	{
-		// void gtk_menu_set_active (GtkMenu *menu,  guint index_);
-		gtk_menu_set_active(gtkMenu, index);
-	}
+	public void setActive(uint index);
 	
 	/**
 	 * Changes the tearoff state of the menu. A menu is normally displayed
@@ -537,11 +318,7 @@ public class Menu : MenuShell
 	 * Params:
 	 * tornOff = If TRUE, menu is displayed as a tearoff menu.
 	 */
-	public void setTearoffState(int tornOff)
-	{
-		// void gtk_menu_set_tearoff_state (GtkMenu *menu,  gboolean torn_off);
-		gtk_menu_set_tearoff_state(gtkMenu, tornOff);
-	}
+	public void setTearoffState(int tornOff);
 	
 	/**
 	 * Attaches the menu to the widget and provides a callback function that will
@@ -551,37 +328,20 @@ public class Menu : MenuShell
 	 * detacher = the user supplied callback function that will be called when
 	 * the menu calls gtk_menu_detach().
 	 */
-	public void attachToWidget(Widget attachWidget, GtkMenuDetachFunc detacher)
-	{
-		// void gtk_menu_attach_to_widget (GtkMenu *menu,  GtkWidget *attach_widget,  GtkMenuDetachFunc detacher);
-		gtk_menu_attach_to_widget(gtkMenu, (attachWidget is null) ? null : attachWidget.getWidgetStruct(), detacher);
-	}
+	public void attachToWidget(Widget attachWidget, GtkMenuDetachFunc detacher);
 	
 	/**
 	 * Detaches the menu from the widget to which it had been attached.
 	 * This function will call the callback function, detacher, provided
 	 * when the gtk_menu_attach_to_widget() function was called.
 	 */
-	public void detach()
-	{
-		// void gtk_menu_detach (GtkMenu *menu);
-		gtk_menu_detach(gtkMenu);
-	}
+	public void detach();
 	
 	/**
 	 * Returns the GtkWidget that the menu is attached to.
 	 * Returns:the GtkWidget that the menu is attached to.
 	 */
-	public Widget getAttachWidget()
-	{
-		// GtkWidget* gtk_menu_get_attach_widget (GtkMenu *menu);
-		auto p = gtk_menu_get_attach_widget(gtkMenu);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getAttachWidget();
 	
 	/**
 	 * Returns a list of the menus which are attached to this widget.
@@ -591,14 +351,5 @@ public class Menu : MenuShell
 	 * widget =  a GtkWidget
 	 * Returns: the list of menus attached to his widget.
 	 */
-	public static ListG getForAttachWidget(Widget widget)
-	{
-		// GList* gtk_menu_get_for_attach_widget (GtkWidget *widget);
-		auto p = gtk_menu_get_for_attach_widget((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public static ListG getForAttachWidget(Widget widget);
 }

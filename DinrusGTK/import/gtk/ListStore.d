@@ -1,76 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkListStore.html
- * outPack = gtk
- * outFile = ListStore
- * strct   = GtkListStore
- * realStrct=
- * ctorStrct=
- * clss    = ListStore
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- BuildableIF
- * 	- TreeModelIF
- * 	- TreeDragSourceIF
- * 	- TreeDragDestIF
- * 	- TreeSortableIF
- * prefixes:
- * 	- gtk_list_store_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_list_store_set
- * omit signals:
- * imports:
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TreeIter
- * 	- gtkD.gobject.Value
- * 	- gtkD.gtk.BuildableIF
- * 	- gtkD.gtk.BuildableT
- * 	- gtkD.gtk.TreeModelT
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreeDragSourceT
- * 	- gtkD.gtk.TreeDragSourceIF
- * 	- gtkD.gtk.TreeDragDestT
- * 	- gtkD.gtk.TreeDragDestIF
- * 	- gtkD.gtk.TreeSortableT
- * 	- gtkD.gtk.TreeSortableIF
- * structWrap:
- * 	- GValue* -> Value
- * 	- GtkTreeIter* -> TreeIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ListStore;
 
 public  import gtkD.gtkc.gtktypes;
@@ -223,38 +150,16 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	protected GtkListStore* gtkListStore;
 	
 	
-	public GtkListStore* getListStoreStruct()
-	{
-		return gtkListStore;
-	}
+	public GtkListStore* getListStoreStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkListStore;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkListStore* gtkListStore)
-	{
-		if(gtkListStore is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkListStore);
-		if( ptr !is null )
-		{
-			this = cast(ListStore)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkListStore);
-		this.gtkListStore = gtkListStore;
-	}
+	public this (GtkListStore* gtkListStore);
 	
 	// add the Buildable capabilities
 	mixin BuildableT!(GtkListStore);
@@ -275,12 +180,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * Creates a top level iteractor.
 	 * I don't think lists have but the top level iteractor
 	 */
-	TreeIter createIter()
-	{
-		GtkTreeIter* iter = new GtkTreeIter;
-		gtk_list_store_append(getListStoreStruct(), iter);
-		return new TreeIter(iter);
-	}
+	TreeIter createIter();
 	
 	/**
 	 * sets the values for one row
@@ -289,49 +189,16 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 *  columns = an arrays with the columns to set
 	 *  values = an arrays with the values
 	 */
-	void set(TreeIter iter, int [] columns, char*[] values)
-	{
-		for ( int i=0 ; i<columns.length && i<values.length; i++ )
-		{
-			//Value v = new Value(values[i]);
-			//gtk_list_store_set(obj(), iter.getIter(), columns[i], v.getV(),-1);
-			gtk_list_store_set(
-			gtkListStore,
-			iter.getTreeIterStruct(),
-			columns[i],
-			values[i],-1);
-		}
-	}
+	void set(TreeIter iter, int [] columns, char*[] values);
 	
 	/** */
-	void set(TreeIter iter, int [] columns, string[] values)
-	{
-		for ( int i=0 ; i<columns.length && i<values.length; i++ )
-		{
-			//Value v = new Value(values[i]);
-			//gtk_list_store_set(obj(), iter.getIter(), columns[i], v.getV(),-1);
-			gtk_list_store_set(
-			gtkListStore,
-			iter.getTreeIterStruct(),
-			columns[i],
-			Str.toStringz(values[i]),-1);
-		}
-	}
+	void set(TreeIter iter, int [] columns, string[] values);
 	
 	/** */
-	void setValue(TreeIter iter, int column, string value)
-	{
-		Value v = new Value(value);
-		gtk_list_store_set_value(gtkListStore, iter.getTreeIterStruct(), column, v.getValueStruct());
-		//gtk_list_store_set_value(obj(), iter.getIter(), column, (GValue*)cChar(value));
-	}
+	void setValue(TreeIter iter, int column, string value);
 	
 	/** */
-	void setValue(TreeIter iter, int column, int value)
-	{
-		Value v = new Value(value);
-		gtk_list_store_set_value(gtkListStore, iter.getTreeIterStruct(), column, v.getValueStruct());
-	}
+	void setValue(TreeIter iter, int column, int value);
 	
 	/**
 	 */
@@ -342,16 +209,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * types =  an array of GType types for the columns, from first to last
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GType[] types)
-	{
-		// GtkListStore * gtk_list_store_newv (gint n_columns,  GType *types);
-		auto p = gtk_list_store_newv(types.length, types.ptr);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_list_store_newv(types.length, types.ptr)");
-		}
-		this(cast(GtkListStore*) p);
-	}
+	public this (GType[] types);
 	
 	/**
 	 * This function is meant primarily for GObjects that inherit from GtkListStore,
@@ -361,11 +219,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * Params:
 	 * types =  An array length n of GTypes
 	 */
-	public void setColumnTypes(GType[] types)
-	{
-		// void gtk_list_store_set_column_types (GtkListStore *list_store,  gint n_columns,  GType *types);
-		gtk_list_store_set_column_types(gtkListStore, types.length, types.ptr);
-	}
+	public void setColumnTypes(GType[] types);
 	
 	/**
 	 * See gtk_list_store_set(); this version takes a va_list for use by language
@@ -374,11 +228,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  A valid GtkTreeIter for the row being modified
 	 * varArgs =  va_list of column/value pairs
 	 */
-	public void setValist(TreeIter iter, void* varArgs)
-	{
-		// void gtk_list_store_set_valist (GtkListStore *list_store,  GtkTreeIter *iter,  va_list var_args);
-		gtk_list_store_set_valist(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), varArgs);
-	}
+	public void setValist(TreeIter iter, void* varArgs);
 	
 	/**
 	 * Sets the data in the cell specified by iter and column.
@@ -389,11 +239,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * column =  column number to modify
 	 * value =  new value for the cell
 	 */
-	public void setValue(TreeIter iter, int column, Value value)
-	{
-		// void gtk_list_store_set_value (GtkListStore *list_store,  GtkTreeIter *iter,  gint column,  GValue *value);
-		gtk_list_store_set_value(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), column, (value is null) ? null : value.getValueStruct());
-	}
+	public void setValue(TreeIter iter, int column, Value value);
 	
 	/**
 	 * A variant of gtk_list_store_set_valist() which
@@ -407,11 +253,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * columns =  an array of column numbers
 	 * values =  an array of GValues
 	 */
-	public void setValuesv(TreeIter iter, int[] columns, GValue[] values)
-	{
-		// void gtk_list_store_set_valuesv (GtkListStore *list_store,  GtkTreeIter *iter,  gint *columns,  GValue *values,  gint n_values);
-		gtk_list_store_set_valuesv(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), columns.ptr, values.ptr, values.length);
-	}
+	public void setValuesv(TreeIter iter, int[] columns, GValue[] values);
 	
 	/**
 	 * Removes the given row from the list store. After being removed,
@@ -421,11 +263,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  A valid GtkTreeIter
 	 * Returns: TRUE if iter is valid, FALSE if not.
 	 */
-	public int remove(TreeIter iter)
-	{
-		// gboolean gtk_list_store_remove (GtkListStore *list_store,  GtkTreeIter *iter);
-		return gtk_list_store_remove(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public int remove(TreeIter iter);
 	
 	/**
 	 * Creates a new row at position. iter will be changed to point to this new
@@ -437,11 +275,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  An unset GtkTreeIter to set to the new row
 	 * position =  position to insert the new row
 	 */
-	public void insert(TreeIter iter, int position)
-	{
-		// void gtk_list_store_insert (GtkListStore *list_store,  GtkTreeIter *iter,  gint position);
-		gtk_list_store_insert(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), position);
-	}
+	public void insert(TreeIter iter, int position);
 	
 	/**
 	 * Inserts a new row before sibling. If sibling is NULL, then the row will
@@ -452,11 +286,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  An unset GtkTreeIter to set to the new row
 	 * sibling =  A valid GtkTreeIter, or NULL
 	 */
-	public void insertBefore(TreeIter iter, TreeIter sibling)
-	{
-		// void gtk_list_store_insert_before (GtkListStore *list_store,  GtkTreeIter *iter,  GtkTreeIter *sibling);
-		gtk_list_store_insert_before(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), (sibling is null) ? null : sibling.getTreeIterStruct());
-	}
+	public void insertBefore(TreeIter iter, TreeIter sibling);
 	
 	/**
 	 * Inserts a new row after sibling. If sibling is NULL, then the row will be
@@ -467,11 +297,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  An unset GtkTreeIter to set to the new row
 	 * sibling =  A valid GtkTreeIter, or NULL
 	 */
-	public void insertAfter(TreeIter iter, TreeIter sibling)
-	{
-		// void gtk_list_store_insert_after (GtkListStore *list_store,  GtkTreeIter *iter,  GtkTreeIter *sibling);
-		gtk_list_store_insert_after(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), (sibling is null) ? null : sibling.getTreeIterStruct());
-	}
+	public void insertAfter(TreeIter iter, TreeIter sibling);
 	
 	/**
 	 * A variant of gtk_list_store_insert_with_values() which
@@ -485,11 +311,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * columns =  an array of column numbers
 	 * values =  an array of GValues
 	 */
-	public void insertWithValuesv(TreeIter iter, int position, int[] columns, GValue[] values)
-	{
-		// void gtk_list_store_insert_with_valuesv (GtkListStore *list_store,  GtkTreeIter *iter,  gint position,  gint *columns,  GValue *values,  gint n_values);
-		gtk_list_store_insert_with_valuesv(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), position, columns.ptr, values.ptr, values.length);
-	}
+	public void insertWithValuesv(TreeIter iter, int position, int[] columns, GValue[] values);
 	
 	/**
 	 * Prepends a new row to list_store. iter will be changed to point to this new
@@ -498,11 +320,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * Params:
 	 * iter =  An unset GtkTreeIter to set to the prepend row
 	 */
-	public void prepend(TreeIter iter)
-	{
-		// void gtk_list_store_prepend (GtkListStore *list_store,  GtkTreeIter *iter);
-		gtk_list_store_prepend(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public void prepend(TreeIter iter);
 	
 	/**
 	 * Appends a new row to list_store. iter will be changed to point to this new
@@ -511,20 +329,12 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * Params:
 	 * iter =  An unset GtkTreeIter to set to the appended row
 	 */
-	public void append(TreeIter iter)
-	{
-		// void gtk_list_store_append (GtkListStore *list_store,  GtkTreeIter *iter);
-		gtk_list_store_append(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public void append(TreeIter iter);
 	
 	/**
 	 * Removes all rows from the list store.
 	 */
-	public void clear()
-	{
-		// void gtk_list_store_clear (GtkListStore *list_store);
-		gtk_list_store_clear(gtkListStore);
-	}
+	public void clear();
 	
 	/**
 	 * Warning
@@ -536,11 +346,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  A GtkTreeIter.
 	 * Returns: TRUE if the iter is valid, FALSE if the iter is invalid.
 	 */
-	public int iterIsValid(TreeIter iter)
-	{
-		// gboolean gtk_list_store_iter_is_valid (GtkListStore *list_store,  GtkTreeIter *iter);
-		return gtk_list_store_iter_is_valid(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public int iterIsValid(TreeIter iter);
 	
 	/**
 	 * Reorders store to follow the order indicated by new_order. Note that
@@ -551,11 +357,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 *  to its old position before the re-ordering,
 	 *  i.e. new_order[newpos] = oldpos.
 	 */
-	public void reorder(int[] newOrder)
-	{
-		// void gtk_list_store_reorder (GtkListStore *store,  gint *new_order);
-		gtk_list_store_reorder(gtkListStore, newOrder.ptr);
-	}
+	public void reorder(int[] newOrder);
 	
 	/**
 	 * Swaps a and b in store. Note that this function only works with
@@ -565,11 +367,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * a =  A GtkTreeIter.
 	 * b =  Another GtkTreeIter.
 	 */
-	public void swap(TreeIter a, TreeIter b)
-	{
-		// void gtk_list_store_swap (GtkListStore *store,  GtkTreeIter *a,  GtkTreeIter *b);
-		gtk_list_store_swap(gtkListStore, (a is null) ? null : a.getTreeIterStruct(), (b is null) ? null : b.getTreeIterStruct());
-	}
+	public void swap(TreeIter a, TreeIter b);
 	
 	/**
 	 * Moves iter in store to the position before position. Note that this
@@ -580,11 +378,7 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  A GtkTreeIter.
 	 * position =  A GtkTreeIter, or NULL.
 	 */
-	public void moveBefore(TreeIter iter, TreeIter position)
-	{
-		// void gtk_list_store_move_before (GtkListStore *store,  GtkTreeIter *iter,  GtkTreeIter *position);
-		gtk_list_store_move_before(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), (position is null) ? null : position.getTreeIterStruct());
-	}
+	public void moveBefore(TreeIter iter, TreeIter position);
 	
 	/**
 	 * Moves iter in store to the position after position. Note that this
@@ -595,9 +389,5 @@ public class ListStore : ObjectG, BuildableIF, TreeModelIF, TreeDragSourceIF, Tr
 	 * iter =  A GtkTreeIter.
 	 * position =  A GtkTreeIter or NULL.
 	 */
-	public void moveAfter(TreeIter iter, TreeIter position)
-	{
-		// void gtk_list_store_move_after (GtkListStore *store,  GtkTreeIter *iter,  GtkTreeIter *position);
-		gtk_list_store_move_after(gtkListStore, (iter is null) ? null : iter.getTreeIterStruct(), (position is null) ? null : position.getTreeIterStruct());
-	}
+	public void moveAfter(TreeIter iter, TreeIter position);
 }

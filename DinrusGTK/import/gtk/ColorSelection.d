@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkColorSelection.html
- * outPack = gtk
- * outFile = ColorSelection
- * strct   = GtkColorSelection
- * realStrct=
- * ctorStrct=
- * clss    = ColorSelection
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_color_selection_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Color
- * structWrap:
- * 	- GdkColor* -> Color
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ColorSelection;
 
 public  import gtkD.gtkc.gtktypes;
@@ -84,38 +30,16 @@ public class ColorSelection : VBox
 	protected GtkColorSelection* gtkColorSelection;
 	
 	
-	public GtkColorSelection* getColorSelectionStruct()
-	{
-		return gtkColorSelection;
-	}
+	public GtkColorSelection* getColorSelectionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkColorSelection;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkColorSelection* gtkColorSelection)
-	{
-		if(gtkColorSelection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkColorSelection);
-		if( ptr !is null )
-		{
-			this = cast(ColorSelection)ptr;
-			return;
-		}
-		super(cast(GtkVBox*)gtkColorSelection);
-		this.gtkColorSelection = gtkColorSelection;
-	}
+	public this (GtkColorSelection* gtkColorSelection);
 	
 	/**
 	 */
@@ -126,44 +50,15 @@ public class ColorSelection : VBox
 	 * This signal is emitted when the color changes in the GtkColorSelection
 	 * according to its update policy.
 	 */
-	void addOnColorChanged(void delegate(ColorSelection) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("color-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"color-changed",
-			cast(GCallback)&callBackColorChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["color-changed"] = 1;
-		}
-		onColorChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackColorChanged(GtkColorSelection* colorselectionStruct, ColorSelection colorSelection)
-	{
-		foreach ( void delegate(ColorSelection) dlg ; colorSelection.onColorChangedListeners )
-		{
-			dlg(colorSelection);
-		}
-	}
+	void addOnColorChanged(void delegate(ColorSelection) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackColorChanged(GtkColorSelection* colorselectionStruct, ColorSelection colorSelection);
 	
 	
 	/**
 	 * Creates a new GtkColorSelection.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget * gtk_color_selection_new (void);
-		auto p = gtk_color_selection_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_color_selection_new()");
-		}
-		this(cast(GtkColorSelection*) p);
-	}
+	public this ();
 	
 	/**
 	 * Warning
@@ -172,63 +67,39 @@ public class ColorSelection : VBox
 	 * Params:
 	 * policy = a GtkUpdateType value indicating the desired policy.
 	 */
-	public void setUpdatePolicy(GtkUpdateType policy)
-	{
-		// void gtk_color_selection_set_update_policy  (GtkColorSelection *colorsel,  GtkUpdateType policy);
-		gtk_color_selection_set_update_policy(gtkColorSelection, policy);
-	}
+	public void setUpdatePolicy(GtkUpdateType policy);
 	
 	/**
 	 * Sets the colorsel to use or not use opacity.
 	 * Params:
 	 * hasOpacity =  TRUE if colorsel can set the opacity, FALSE otherwise.
 	 */
-	public void setHasOpacityControl(int hasOpacity)
-	{
-		// void gtk_color_selection_set_has_opacity_control  (GtkColorSelection *colorsel,  gboolean has_opacity);
-		gtk_color_selection_set_has_opacity_control(gtkColorSelection, hasOpacity);
-	}
+	public void setHasOpacityControl(int hasOpacity);
 	
 	/**
 	 * Determines whether the colorsel has an opacity control.
 	 * Returns: TRUE if the colorsel has an opacity control. FALSE if it does't.
 	 */
-	public int getHasOpacityControl()
-	{
-		// gboolean gtk_color_selection_get_has_opacity_control  (GtkColorSelection *colorsel);
-		return gtk_color_selection_get_has_opacity_control(gtkColorSelection);
-	}
+	public int getHasOpacityControl();
 	
 	/**
 	 * Shows and hides the palette based upon the value of has_palette.
 	 * Params:
 	 * hasPalette =  TRUE if palette is to be visible, FALSE otherwise.
 	 */
-	public void setHasPalette(int hasPalette)
-	{
-		// void gtk_color_selection_set_has_palette (GtkColorSelection *colorsel,  gboolean has_palette);
-		gtk_color_selection_set_has_palette(gtkColorSelection, hasPalette);
-	}
+	public void setHasPalette(int hasPalette);
 	
 	/**
 	 * Determines whether the color selector has a color palette.
 	 * Returns: TRUE if the selector has a palette. FALSE if it hasn't.
 	 */
-	public int getHasPalette()
-	{
-		// gboolean gtk_color_selection_get_has_palette (GtkColorSelection *colorsel);
-		return gtk_color_selection_get_has_palette(gtkColorSelection);
-	}
+	public int getHasPalette();
 	
 	/**
 	 * Returns the current alpha value.
 	 * Returns: an integer between 0 and 65535.
 	 */
-	public ushort getCurrentAlpha()
-	{
-		// guint16 gtk_color_selection_get_current_alpha  (GtkColorSelection *colorsel);
-		return gtk_color_selection_get_current_alpha(gtkColorSelection);
-	}
+	public ushort getCurrentAlpha();
 	
 	/**
 	 * Sets the current opacity to be alpha. The first time this is called, it will
@@ -236,22 +107,14 @@ public class ColorSelection : VBox
 	 * Params:
 	 * alpha =  an integer between 0 and 65535.
 	 */
-	public void setCurrentAlpha(ushort alpha)
-	{
-		// void gtk_color_selection_set_current_alpha  (GtkColorSelection *colorsel,  guint16 alpha);
-		gtk_color_selection_set_current_alpha(gtkColorSelection, alpha);
-	}
+	public void setCurrentAlpha(ushort alpha);
 	
 	/**
 	 * Sets color to be the current color in the GtkColorSelection widget.
 	 * Params:
 	 * color =  a GdkColor to fill in with the current color.
 	 */
-	public void getCurrentColor(Color color)
-	{
-		// void gtk_color_selection_get_current_color  (GtkColorSelection *colorsel,  GdkColor *color);
-		gtk_color_selection_get_current_color(gtkColorSelection, (color is null) ? null : color.getColorStruct());
-	}
+	public void getCurrentColor(Color color);
 	
 	/**
 	 * Sets the current color to be color. The first time this is called, it will
@@ -259,21 +122,13 @@ public class ColorSelection : VBox
 	 * Params:
 	 * color =  A GdkColor to set the current color with.
 	 */
-	public void setCurrentColor(Color color)
-	{
-		// void gtk_color_selection_set_current_color  (GtkColorSelection *colorsel,  const GdkColor *color);
-		gtk_color_selection_set_current_color(gtkColorSelection, (color is null) ? null : color.getColorStruct());
-	}
+	public void setCurrentColor(Color color);
 	
 	/**
 	 * Returns the previous alpha value.
 	 * Returns: an integer between 0 and 65535.
 	 */
-	public ushort getPreviousAlpha()
-	{
-		// guint16 gtk_color_selection_get_previous_alpha  (GtkColorSelection *colorsel);
-		return gtk_color_selection_get_previous_alpha(gtkColorSelection);
-	}
+	public ushort getPreviousAlpha();
 	
 	/**
 	 * Sets the 'previous' alpha to be alpha. This function should be called with
@@ -281,22 +136,14 @@ public class ColorSelection : VBox
 	 * Params:
 	 * alpha =  an integer between 0 and 65535.
 	 */
-	public void setPreviousAlpha(ushort alpha)
-	{
-		// void gtk_color_selection_set_previous_alpha  (GtkColorSelection *colorsel,  guint16 alpha);
-		gtk_color_selection_set_previous_alpha(gtkColorSelection, alpha);
-	}
+	public void setPreviousAlpha(ushort alpha);
 	
 	/**
 	 * Fills color in with the original color value.
 	 * Params:
 	 * color =  a GdkColor to fill in with the original color value.
 	 */
-	public void getPreviousColor(Color color)
-	{
-		// void gtk_color_selection_get_previous_color  (GtkColorSelection *colorsel,  GdkColor *color);
-		gtk_color_selection_get_previous_color(gtkColorSelection, (color is null) ? null : color.getColorStruct());
-	}
+	public void getPreviousColor(Color color);
 	
 	/**
 	 * Sets the 'previous' color to be color. This function should be called with
@@ -306,21 +153,13 @@ public class ColorSelection : VBox
 	 * Params:
 	 * color =  a GdkColor to set the previous color with.
 	 */
-	public void setPreviousColor(Color color)
-	{
-		// void gtk_color_selection_set_previous_color  (GtkColorSelection *colorsel,  const GdkColor *color);
-		gtk_color_selection_set_previous_color(gtkColorSelection, (color is null) ? null : color.getColorStruct());
-	}
+	public void setPreviousColor(Color color);
 	
 	/**
 	 * Gets the current state of the colorsel.
 	 * Returns: TRUE if the user is currently dragging a color around, and FALSEif the selection has stopped.
 	 */
-	public int isAdjusting()
-	{
-		// gboolean gtk_color_selection_is_adjusting (GtkColorSelection *colorsel);
-		return gtk_color_selection_is_adjusting(gtkColorSelection);
-	}
+	public int isAdjusting();
 	
 	/**
 	 * Parses a color palette string; the string is a colon-separated
@@ -330,17 +169,7 @@ public class ColorSelection : VBox
 	 * colors =  return location for allocated array of GdkColor.
 	 * Returns: TRUE if a palette was successfully parsed.
 	 */
-	public static int paletteFromString(string str, out GdkColor[] colors)
-	{
-		// gboolean gtk_color_selection_palette_from_string  (const gchar *str,  GdkColor **colors,  gint *n_colors);
-		GdkColor* outcolors = null;
-		int nColors;
-		
-		auto p = gtk_color_selection_palette_from_string(Str.toStringz(str), &outcolors, &nColors);
-		
-		colors = outcolors[0 .. nColors];
-		return p;
-	}
+	public static int paletteFromString(string str, out GdkColor[] colors);
 	
 	/**
 	 * Encodes a palette as a string, useful for persistent storage.
@@ -349,11 +178,7 @@ public class ColorSelection : VBox
 	 * nColors =  length of the array.
 	 * Returns: allocated string encoding the palette.
 	 */
-	public static string paletteToString(Color colors, int nColors)
-	{
-		// gchar* gtk_color_selection_palette_to_string  (const GdkColor *colors,  gint n_colors);
-		return Str.toString(gtk_color_selection_palette_to_string((colors is null) ? null : colors.getColorStruct(), nColors));
-	}
+	public static string paletteToString(Color colors, int nColors);
 	
 	/**
 	 * Warning
@@ -367,11 +192,7 @@ public class ColorSelection : VBox
 	 * func =  a function to call when the custom palette needs saving.
 	 * Returns: the previous change palette hook (that was replaced).
 	 */
-	public static GtkColorSelectionChangePaletteFunc setChangePaletteHook(GtkColorSelectionChangePaletteFunc func)
-	{
-		// GtkColorSelectionChangePaletteFunc gtk_color_selection_set_change_palette_hook  (GtkColorSelectionChangePaletteFunc func);
-		return gtk_color_selection_set_change_palette_hook(func);
-	}
+	public static GtkColorSelectionChangePaletteFunc setChangePaletteHook(GtkColorSelectionChangePaletteFunc func);
 	
 	/**
 	 * Installs a global function to be called whenever the user tries to
@@ -383,11 +204,7 @@ public class ColorSelection : VBox
 	 * func =  a function to call when the custom palette needs saving.
 	 * Returns: the previous change palette hook (that was replaced).
 	 */
-	public static GtkColorSelectionChangePaletteWithScreenFunc setChangePaletteWithScreenHook(GtkColorSelectionChangePaletteWithScreenFunc func)
-	{
-		// GtkColorSelectionChangePaletteWithScreenFunc gtk_color_selection_set_change_palette_with_screen_hook  (GtkColorSelectionChangePaletteWithScreenFunc func);
-		return gtk_color_selection_set_change_palette_with_screen_hook(func);
-	}
+	public static GtkColorSelectionChangePaletteWithScreenFunc setChangePaletteWithScreenHook(GtkColorSelectionChangePaletteWithScreenFunc func);
 	
 	/**
 	 * Warning
@@ -398,11 +215,7 @@ public class ColorSelection : VBox
 	 * color =  an array of 4 doubles specifying the red, green, blue and opacity
 	 *  to set the current color to.
 	 */
-	public void setColor(double[] color)
-	{
-		// void gtk_color_selection_set_color (GtkColorSelection *colorsel,  gdouble *color);
-		gtk_color_selection_set_color(gtkColorSelection, color.ptr);
-	}
+	public void setColor(double[] color);
 	
 	/**
 	 * Warning
@@ -411,9 +224,5 @@ public class ColorSelection : VBox
 	 * Params:
 	 * color =  an array of 4 gdouble to fill in with the current color.
 	 */
-	public void getColor(double[] color)
-	{
-		// void gtk_color_selection_get_color (GtkColorSelection *colorsel,  gdouble *color);
-		gtk_color_selection_get_color(gtkColorSelection, color.ptr);
-	}
+	public void getColor(double[] color);
 }

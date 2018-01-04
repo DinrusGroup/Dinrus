@@ -1,70 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkComboBox.html
- * outPack = gtk
- * outFile = ComboBox
- * strct   = GtkComboBox
- * realStrct=
- * ctorStrct=
- * clss    = ComboBox
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- CellLayoutIF
- * 	- CellEditableIF
- * prefixes:
- * 	- gtk_combo_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_combo_box_new
- * 	- gtk_combo_box_new_text
- * omit signals:
- * imports:
- * 	- gtkD.atk.ObjectAtk
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreeIter
- * 	- gtkD.gtk.CellLayoutIF
- * 	- gtkD.gtk.CellLayoutT
- * 	- gtkD.gtk.CellEditableT
- * 	- gtkD.gtk.CellEditableIF
- * structWrap:
- * 	- AtkObject* -> ObjectAtk
- * 	- GtkTreeIter* -> TreeIter
- * 	- GtkTreeModel* -> TreeModelIF
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ComboBox;
 
 public  import gtkD.gtkc.gtktypes;
@@ -119,38 +52,16 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	protected GtkComboBox* gtkComboBox;
 	
 	
-	public GtkComboBox* getComboBoxStruct()
-	{
-		return gtkComboBox;
-	}
+	public GtkComboBox* getComboBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkComboBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkComboBox* gtkComboBox)
-	{
-		if(gtkComboBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkComboBox);
-		if( ptr !is null )
-		{
-			this = cast(ComboBox)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkComboBox);
-		this.gtkComboBox = gtkComboBox;
-	}
+	public this (GtkComboBox* gtkComboBox);
 	
 	private int count = 0;
 	public int maxCount = 0;
@@ -176,89 +87,16 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 *  A new GtkComboBox.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (bool text=true)
-	{
-		GtkComboBox* p;
-		if ( text )
-		{
-			// GtkWidget* gtk_combo_box_new_text (void);
-			p = cast(GtkComboBox*)gtk_combo_box_new_text();
-		}
-		else
-		{
-			// GtkWidget* gtk_combo_box_new (void);
-			p = cast(GtkComboBox*)gtk_combo_box_new();
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_combo_box_new");
-		}
-		
-		this(p);
-	}
+	public this (bool text=true);
 	
 	/** */
-	public void setActiveText(string text, bool insert=false)
-	{
-		int active = 0;
-		setActive(0);
-		while ( getActive >= 0 ) // returns -1 if end of list if reached
-		{
-			if( text == getActiveText() ) return;
-			++active;
-			setActive(active);
-		}
-		// was not found, the combo has now nothing selected
-		if ( insert )
-		{
-			appendText(text);
-			setActive(active);
-		}
-	}
+	public void setActiveText(string text, bool insert=false);
 	
 	/** */
-	int getIndex(string text)
-	{
-		TreeIter iter = new TreeIter();
-		TreeModelIF model = getModel();
-		iter.setModel(model);
-		int index = 0;
-		bool found = false;
-		bool end = false;
-		if ( model.getIterFirst(iter) )
-		{
-			while ( !end && iter !is  null && !found )
-			{
-				found = iter.getValueString(0) == text;
-				if ( !found )
-				{
-					end = !model.iterNext(iter);
-					++index;
-				}
-			}
-		}
-		else
-		{
-			end = true;
-		}
-		return end ? -1 : index;
-	}
+	int getIndex(string text);
 	
 	/** */
-	void prependOrReplaceText(string text)
-	{
-		int index = getIndex(text);
-		if ( index > 0 )
-		{
-			removeText(index);
-			prependText(text);
-		}
-		else if ( index == -1 )
-		{
-			prependText(text);
-		}
-	}
+	void prependOrReplaceText(string text);
 	
 	
 	/**
@@ -275,28 +113,8 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * as well as when selecting an item from the GtkComboBoxEntry's list.
 	 * Since 2.4
 	 */
-	void addOnChanged(void delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkComboBox* widgetStruct, ComboBox comboBox)
-	{
-		foreach ( void delegate(ComboBox) dlg ; comboBox.onChangedListeners )
-		{
-			dlg(comboBox);
-		}
-	}
+	void addOnChanged(void delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkComboBox* widgetStruct, ComboBox comboBox);
 	
 	void delegate(GtkScrollType, ComboBox)[] onMoveActiveListeners;
 	/**
@@ -305,28 +123,8 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * which gets emitted to move the active selection.
 	 * Since 2.12
 	 */
-	void addOnMoveActive(void delegate(GtkScrollType, ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-active" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-active",
-			cast(GCallback)&callBackMoveActive,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-active"] = 1;
-		}
-		onMoveActiveListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveActive(GtkComboBox* widgetStruct, GtkScrollType scrollType, ComboBox comboBox)
-	{
-		foreach ( void delegate(GtkScrollType, ComboBox) dlg ; comboBox.onMoveActiveListeners )
-		{
-			dlg(scrollType, comboBox);
-		}
-	}
+	void addOnMoveActive(void delegate(GtkScrollType, ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveActive(GtkComboBox* widgetStruct, GtkScrollType scrollType, ComboBox comboBox);
 	
 	bool delegate(ComboBox)[] onPopdownListeners;
 	/**
@@ -336,33 +134,8 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * The default bindings for this signal are Alt+Up and Escape.
 	 * Since 2.12
 	 */
-	void addOnPopdown(bool delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("popdown" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"popdown",
-			cast(GCallback)&callBackPopdown,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["popdown"] = 1;
-		}
-		onPopdownListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackPopdown(GtkComboBox* buttonStruct, ComboBox comboBox)
-	{
-		foreach ( bool delegate(ComboBox) dlg ; comboBox.onPopdownListeners )
-		{
-			if ( dlg(comboBox) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnPopdown(bool delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackPopdown(GtkComboBox* buttonStruct, ComboBox comboBox);
 	
 	void delegate(ComboBox)[] onPopupListeners;
 	/**
@@ -374,28 +147,8 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * See Also
 	 * GtkComboBoxEntry, GtkTreeModel, GtkCellRenderer
 	 */
-	void addOnPopup(void delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("popup" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"popup",
-			cast(GCallback)&callBackPopup,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["popup"] = 1;
-		}
-		onPopupListeners ~= dlg;
-	}
-	extern(C) static void callBackPopup(GtkComboBox* widgetStruct, ComboBox comboBox)
-	{
-		foreach ( void delegate(ComboBox) dlg ; comboBox.onPopupListeners )
-		{
-			dlg(comboBox);
-		}
-	}
+	void addOnPopup(void delegate(ComboBox) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopup(GtkComboBox* widgetStruct, ComboBox comboBox);
 	
 	
 	/**
@@ -405,16 +158,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * model =  A GtkTreeModel.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (TreeModelIF model)
-	{
-		// GtkWidget * gtk_combo_box_new_with_model (GtkTreeModel *model);
-		auto p = gtk_combo_box_new_with_model((model is null) ? null : model.getTreeModelTStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_combo_box_new_with_model((model is null) ? null : model.getTreeModelTStruct())");
-		}
-		this(cast(GtkComboBox*) p);
-	}
+	public this (TreeModelIF model);
 	
 	/**
 	 * Returns the wrap width which is used to determine the number of columns
@@ -423,12 +167,8 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.6
 	 * Returns: the wrap width.
 	 */
-	public int getWrapWidth()
-	{
-		// gint gtk_combo_box_get_wrap_width (GtkComboBox *combo_box);
-		return gtk_combo_box_get_wrap_width(gtkComboBox);
-	}
-	
+	public int getWrapWidth();
+
 	/**
 	 * Sets the wrap width of combo_box to be width. The wrap width is basically
 	 * the preferred number of columns when you want the popup to be layed out
@@ -437,22 +177,14 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * width =  Preferred number of columns
 	 */
-	public void setWrapWidth(int width)
-	{
-		// void gtk_combo_box_set_wrap_width (GtkComboBox *combo_box,  gint width);
-		gtk_combo_box_set_wrap_width(gtkComboBox, width);
-	}
+	public void setWrapWidth(int width);
 	
 	/**
 	 * Returns the column with row span information for combo_box.
 	 * Since 2.6
 	 * Returns: the row span column.
 	 */
-	public int getRowSpanColumn()
-	{
-		// gint gtk_combo_box_get_row_span_column (GtkComboBox *combo_box);
-		return gtk_combo_box_get_row_span_column(gtkComboBox);
-	}
+	public int getRowSpanColumn();
 	
 	/**
 	 * Sets the column with row span information for combo_box to be row_span.
@@ -462,22 +194,14 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * rowSpan =  A column in the model passed during construction.
 	 */
-	public void setRowSpanColumn(int rowSpan)
-	{
-		// void gtk_combo_box_set_row_span_column (GtkComboBox *combo_box,  gint row_span);
-		gtk_combo_box_set_row_span_column(gtkComboBox, rowSpan);
-	}
+	public void setRowSpanColumn(int rowSpan);
 	
 	/**
 	 * Returns the column with column span information for combo_box.
 	 * Since 2.6
 	 * Returns: the column span column.
 	 */
-	public int getColumnSpanColumn()
-	{
-		// gint gtk_combo_box_get_column_span_column  (GtkComboBox *combo_box);
-		return gtk_combo_box_get_column_span_column(gtkComboBox);
-	}
+	public int getColumnSpanColumn();
 	
 	/**
 	 * Sets the column with column span information for combo_box to be
@@ -487,11 +211,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * columnSpan =  A column in the model passed during construction
 	 */
-	public void setColumnSpanColumn(int columnSpan)
-	{
-		// void gtk_combo_box_set_column_span_column  (GtkComboBox *combo_box,  gint column_span);
-		gtk_combo_box_set_column_span_column(gtkComboBox, columnSpan);
-	}
+	public void setColumnSpanColumn(int columnSpan);
 	
 	/**
 	 * Returns the index of the currently active item, or -1 if there's no
@@ -502,11 +222,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.4
 	 * Returns: An integer which is the index of the currently active item,  or -1 if there's no active item.
 	 */
-	public int getActive()
-	{
-		// gint gtk_combo_box_get_active (GtkComboBox *combo_box);
-		return gtk_combo_box_get_active(gtkComboBox);
-	}
+	public int getActive();
 	
 	/**
 	 * Sets the active item of combo_box to be the item at index.
@@ -515,11 +231,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * index =  An index in the model passed during construction, or -1 to have
 	 * no active item
 	 */
-	public void setActive(int index)
-	{
-		// void gtk_combo_box_set_active (GtkComboBox *combo_box,  gint index_);
-		gtk_combo_box_set_active(gtkComboBox, index);
-	}
+	public void setActive(int index);
 	
 	/**
 	 * Sets iter to point to the current active item, if it exists.
@@ -528,11 +240,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * iter =  The uninitialized GtkTreeIter
 	 * Returns: TRUE, if iter was set
 	 */
-	public int getActiveIter(TreeIter iter)
-	{
-		// gboolean gtk_combo_box_get_active_iter (GtkComboBox *combo_box,  GtkTreeIter *iter);
-		return gtk_combo_box_get_active_iter(gtkComboBox, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public int getActiveIter(TreeIter iter);
 	
 	/**
 	 * Sets the current active item to be the one referenced by iter.
@@ -541,27 +249,14 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * iter =  The GtkTreeIter
 	 */
-	public void setActiveIter(TreeIter iter)
-	{
-		// void gtk_combo_box_set_active_iter (GtkComboBox *combo_box,  GtkTreeIter *iter);
-		gtk_combo_box_set_active_iter(gtkComboBox, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public void setActiveIter(TreeIter iter);
 	
 	/**
 	 * Returns the GtkTreeModel which is acting as data source for combo_box.
 	 * Since 2.4
 	 * Returns: A GtkTreeModel which was passed during construction.
 	 */
-	public TreeModelIF getModel()
-	{
-		// GtkTreeModel * gtk_combo_box_get_model (GtkComboBox *combo_box);
-		auto p = gtk_combo_box_get_model(gtkComboBox);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
+	public TreeModelIF getModel();
 	
 	/**
 	 * Sets the model used by combo_box to be model. Will unset a previously set
@@ -573,11 +268,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * model =  A GtkTreeModel
 	 */
-	public void setModel(TreeModelIF model)
-	{
-		// void gtk_combo_box_set_model (GtkComboBox *combo_box,  GtkTreeModel *model);
-		gtk_combo_box_set_model(gtkComboBox, (model is null) ? null : model.getTreeModelTStruct());
-	}
+	public void setModel(TreeModelIF model);
 	
 	/**
 	 * Appends string to the list of strings stored in combo_box. Note that
@@ -587,11 +278,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * text =  A string
 	 */
-	public void appendText(string text)
-	{
-		// void gtk_combo_box_append_text (GtkComboBox *combo_box,  const gchar *text);
-		gtk_combo_box_append_text(gtkComboBox, Str.toStringz(text));
-	}
+	public void appendText(string text);
 	
 	/**
 	 * Inserts string at position in the list of strings stored in combo_box.
@@ -602,11 +289,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * position =  An index to insert text
 	 * text =  A string
 	 */
-	public void insertText(int position, string text)
-	{
-		// void gtk_combo_box_insert_text (GtkComboBox *combo_box,  gint position,  const gchar *text);
-		gtk_combo_box_insert_text(gtkComboBox, position, Str.toStringz(text));
-	}
+	public void insertText(int position, string text);
 	
 	/**
 	 * Prepends string to the list of strings stored in combo_box. Note that
@@ -616,11 +299,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * text =  A string
 	 */
-	public void prependText(string text)
-	{
-		// void gtk_combo_box_prepend_text (GtkComboBox *combo_box,  const gchar *text);
-		gtk_combo_box_prepend_text(gtkComboBox, Str.toStringz(text));
-	}
+	public void prependText(string text);
 	
 	/**
 	 * Removes the string at position from combo_box. Note that you can only use
@@ -629,11 +308,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * position =  Index of the item to remove
 	 */
-	public void removeText(int position)
-	{
-		// void gtk_combo_box_remove_text (GtkComboBox *combo_box,  gint position);
-		gtk_combo_box_remove_text(gtkComboBox, position);
-	}
+	public void removeText(int position);
 	
 	/**
 	 * Returns the currently active string in combo_box or NULL if none
@@ -643,11 +318,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.6
 	 * Returns: a newly allocated string containing the currently active text. Must be freed with g_free().
 	 */
-	public string getActiveText()
-	{
-		// gchar * gtk_combo_box_get_active_text (GtkComboBox *combo_box);
-		return Str.toString(gtk_combo_box_get_active_text(gtkComboBox));
-	}
+	public string getActiveText();
 	
 	/**
 	 * Pops up the menu or dropdown list of combo_box.
@@ -655,11 +326,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * applications should have little use for it.
 	 * Since 2.4
 	 */
-	public void popup()
-	{
-		// void gtk_combo_box_popup (GtkComboBox *combo_box);
-		gtk_combo_box_popup(gtkComboBox);
-	}
+	public void popup();
 	
 	/**
 	 * Hides the menu or dropdown list of combo_box.
@@ -667,11 +334,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * applications should have little use for it.
 	 * Since 2.4
 	 */
-	public void popdown()
-	{
-		// void gtk_combo_box_popdown (GtkComboBox *combo_box);
-		gtk_combo_box_popdown(gtkComboBox);
-	}
+	public void popdown();
 	
 	/**
 	 * Gets the accessible object corresponding to the combo box's popup.
@@ -680,27 +343,14 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.6
 	 * Returns: the accessible object corresponding to the combo box's popup.
 	 */
-	public ObjectAtk getPopupAccessible()
-	{
-		// AtkObject* gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box);
-		auto p = gtk_combo_box_get_popup_accessible(gtkComboBox);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectAtk(cast(AtkObject*) p);
-	}
+	public ObjectAtk getPopupAccessible();
 	
 	/**
 	 * Returns the current row separator function.
 	 * Since 2.6
 	 * Returns: the current row separator function.
 	 */
-	public GtkTreeViewRowSeparatorFunc getRowSeparatorFunc()
-	{
-		// GtkTreeViewRowSeparatorFunc gtk_combo_box_get_row_separator_func  (GtkComboBox *combo_box);
-		return gtk_combo_box_get_row_separator_func(gtkComboBox);
-	}
+	public GtkTreeViewRowSeparatorFunc getRowSeparatorFunc();
 	
 	/**
 	 * Sets the row separator function, which is used to determine
@@ -712,11 +362,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * data =  user data to pass to func, or NULL
 	 * destroy =  destroy notifier for data, or NULL
 	 */
-	public void setRowSeparatorFunc(GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_combo_box_set_row_separator_func  (GtkComboBox *combo_box,  GtkTreeViewRowSeparatorFunc func,  gpointer data,  GDestroyNotify destroy);
-		gtk_combo_box_set_row_separator_func(gtkComboBox, func, data, destroy);
-	}
+	public void setRowSeparatorFunc(GtkTreeViewRowSeparatorFunc func, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Sets whether the popup menu should have a tearoff
@@ -725,21 +371,13 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * addTearoffs =  TRUE to add tearoff menu items
 	 */
-	public void setAddTearoffs(int addTearoffs)
-	{
-		// void gtk_combo_box_set_add_tearoffs (GtkComboBox *combo_box,  gboolean add_tearoffs);
-		gtk_combo_box_set_add_tearoffs(gtkComboBox, addTearoffs);
-	}
+	public void setAddTearoffs(int addTearoffs);
 	
 	/**
 	 * Gets the current value of the :add-tearoffs property.
 	 * Returns: the current value of the :add-tearoffs property.
 	 */
-	public int getAddTearoffs()
-	{
-		// gboolean gtk_combo_box_get_add_tearoffs (GtkComboBox *combo_box);
-		return gtk_combo_box_get_add_tearoffs(gtkComboBox);
-	}
+	public int getAddTearoffs();
 	
 	/**
 	 * Sets the menu's title in tearoff mode.
@@ -747,11 +385,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * title =  a title for the menu in tearoff mode
 	 */
-	public void setTitle(string title)
-	{
-		// void gtk_combo_box_set_title (GtkComboBox *combo_box,  const gchar *title);
-		gtk_combo_box_set_title(gtkComboBox, Str.toStringz(title));
-	}
+	public void setTitle(string title);
 	
 	/**
 	 * Gets the current title of the menu in tearoff mode. See
@@ -759,11 +393,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.10
 	 * Returns: the menu's title in tearoff mode. This is an internal copy of thestring which must not be freed.
 	 */
-	public string getTitle()
-	{
-		// const gchar * gtk_combo_box_get_title (GtkComboBox *combo_box);
-		return Str.toString(gtk_combo_box_get_title(gtkComboBox));
-	}
+	public string getTitle();
 	
 	/**
 	 * Sets whether the combo box will grab focus when it is clicked with
@@ -775,11 +405,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * focusOnClick =  whether the combo box grabs focus when clicked
 	 *  with the mouse
 	 */
-	public void setFocusOnClick(int focusOnClick)
-	{
-		// void gtk_combo_box_set_focus_on_click (GtkComboBox *combo,  gboolean focus_on_click);
-		gtk_combo_box_set_focus_on_click(gtkComboBox, focusOnClick);
-	}
+	public void setFocusOnClick(int focusOnClick);
 	
 	/**
 	 * Returns whether the combo box grabs focus when it is clicked
@@ -787,11 +413,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.6
 	 * Returns: TRUE if the combo box grabs focus when it is  clicked with the mouse.
 	 */
-	public int getFocusOnClick()
-	{
-		// gboolean gtk_combo_box_get_focus_on_click (GtkComboBox *combo);
-		return gtk_combo_box_get_focus_on_click(gtkComboBox);
-	}
+	public int getFocusOnClick();
 	
 	/**
 	 * Sets whether the dropdown button of the combo box should be
@@ -801,11 +423,7 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Params:
 	 * sensitivity =  specify the sensitivity of the dropdown button
 	 */
-	public void setButtonSensitivity(GtkSensitivityType sensitivity)
-	{
-		// void gtk_combo_box_set_button_sensitivity  (GtkComboBox *combo_box,  GtkSensitivityType sensitivity);
-		gtk_combo_box_set_button_sensitivity(gtkComboBox, sensitivity);
-	}
+	public void setButtonSensitivity(GtkSensitivityType sensitivity);
 	
 	/**
 	 * Returns whether the combo box sets the dropdown button
@@ -813,9 +431,5 @@ public class ComboBox : Bin, CellLayoutIF, CellEditableIF
 	 * Since 2.14
 	 * Returns: GTK_SENSITIVITY_ON if the dropdown button is sensitive when the model is empty, GTK_SENSITIVITY_OFF if the button is always insensitive or GTK_SENSITIVITY_AUTO if it is only sensitive as long as the model has one item to be selected.
 	 */
-	public GtkSensitivityType getButtonSensitivity()
-	{
-		// GtkSensitivityType gtk_combo_box_get_button_sensitivity  (GtkComboBox *combo_box);
-		return gtk_combo_box_get_button_sensitivity(gtkComboBox);
-	}
+	public GtkSensitivityType getButtonSensitivity();
 }

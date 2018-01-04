@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkHButtonBox.html
- * outPack = gtk
- * outFile = HButtonBox
- * strct   = GtkHButtonBox
- * realStrct=
- * ctorStrct=
- * clss    = HButtonBox
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_hbutton_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.HButtonBox;
 
 public  import gtkD.gtkc.gtktypes;
@@ -87,50 +36,21 @@ public class HButtonBox : ButtonBox
 	protected GtkHButtonBox* gtkHButtonBox;
 	
 	
-	public GtkHButtonBox* getHButtonBoxStruct()
-	{
-		return gtkHButtonBox;
-	}
+	public GtkHButtonBox* getHButtonBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkHButtonBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkHButtonBox* gtkHButtonBox)
-	{
-		if(gtkHButtonBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkHButtonBox);
-		if( ptr !is null )
-		{
-			this = cast(HButtonBox)ptr;
-			return;
-		}
-		super(cast(GtkButtonBox*)gtkHButtonBox);
-		this.gtkHButtonBox = gtkHButtonBox;
-	}
+	public this (GtkHButtonBox* gtkHButtonBox);
 	
 	/**
 	 * Creates a new HButtonBox and sets comon parameters
 	 */
-	static ButtonBox createActionBox()
-	{
-		ButtonBox bBox = new HButtonBox();
-		bBox.setLayout(ButtonBoxStyle.END);
-		bBox.setBorderWidth(5);
-		bBox.setSpacing(7);
-		return bBox;
-	}
+	static ButtonBox createActionBox();
 	
 	
 	/**
@@ -140,16 +60,7 @@ public class HButtonBox : ButtonBox
 	 * Creates a new horizontal button box.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_hbutton_box_new (void);
-		auto p = gtk_hbutton_box_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_hbutton_box_new()");
-		}
-		this(cast(GtkHButtonBox*) p);
-	}
+	public this ();
 	
 	/**
 	 * Warning
@@ -158,11 +69,7 @@ public class HButtonBox : ButtonBox
 	 * to be placed between the buttons when they are arranged.
 	 * Returns:the default number of pixels between buttons.
 	 */
-	public static int getSpacingDefault()
-	{
-		// gint gtk_hbutton_box_get_spacing_default (void);
-		return gtk_hbutton_box_get_spacing_default();
-	}
+	public static int getSpacingDefault();
 	
 	/**
 	 * Warning
@@ -170,11 +77,7 @@ public class HButtonBox : ButtonBox
 	 * Retrieves the current layout used to arrange buttons in button box widgets.
 	 * Returns:the current GtkButtonBoxStyle.
 	 */
-	public static GtkButtonBoxStyle getLayoutDefault()
-	{
-		// GtkButtonBoxStyle gtk_hbutton_box_get_layout_default (void);
-		return gtk_hbutton_box_get_layout_default();
-	}
+	public static GtkButtonBoxStyle getLayoutDefault();
 	
 	/**
 	 * Warning
@@ -184,11 +87,7 @@ public class HButtonBox : ButtonBox
 	 * Params:
 	 * spacing = an integer value.
 	 */
-	public static void setSpacingDefault(int spacing)
-	{
-		// void gtk_hbutton_box_set_spacing_default (gint spacing);
-		gtk_hbutton_box_set_spacing_default(spacing);
-	}
+	public static void setSpacingDefault(int spacing);
 	
 	/**
 	 * Warning
@@ -197,9 +96,5 @@ public class HButtonBox : ButtonBox
 	 * Params:
 	 * layout = a new GtkButtonBoxStyle.
 	 */
-	public static void setLayoutDefault(GtkButtonBoxStyle layout)
-	{
-		// void gtk_hbutton_box_set_layout_default (GtkButtonBoxStyle layout);
-		gtk_hbutton_box_set_layout_default(layout);
-	}
+	public static void setLayoutDefault(GtkButtonBoxStyle layout);
 }

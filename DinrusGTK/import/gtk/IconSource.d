@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Themeable-Stock-Images.html
- * outPack = gtk
- * outFile = IconSource
- * strct   = GtkIconSource
- * realStrct=
- * ctorStrct=
- * clss    = IconSource
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_icon_source_
- * omit structs:
- * omit prefixes:
- * 	- gtk_icon_factory_
- * 	- gtk_icon_set_
- * 	- gtk_icon_size_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkIconSource* -> IconSource
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IconSource;
 
 public  import gtkD.gtkc.gtktypes;
@@ -132,30 +75,16 @@ public class IconSource
 	protected GtkIconSource* gtkIconSource;
 	
 	
-	public GtkIconSource* getIconSourceStruct()
-	{
-		return gtkIconSource;
-	}
+	public GtkIconSource* getIconSourceStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkIconSource;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkIconSource* gtkIconSource)
-	{
-		if(gtkIconSource is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkIconSource = gtkIconSource;
-	}
+	public this (GtkIconSource* gtkIconSource);
 	
 	/**
 	 */
@@ -164,26 +93,13 @@ public class IconSource
 	 * Creates a copy of source; mostly useful for language bindings.
 	 * Returns: a new GtkIconSource
 	 */
-	public IconSource copy()
-	{
-		// GtkIconSource* gtk_icon_source_copy (const GtkIconSource *source);
-		auto p = gtk_icon_source_copy(gtkIconSource);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconSource(cast(GtkIconSource*) p);
-	}
+	public IconSource copy();
 	
 	/**
 	 * Frees a dynamically-allocated icon source, along with its
 	 * filename, size, and pixbuf fields if those are not NULL.
 	 */
-	public void free()
-	{
-		// void gtk_icon_source_free (GtkIconSource *source);
-		gtk_icon_source_free(gtkIconSource);
-	}
+	public void free();
 	
 	/**
 	 * Obtains the text direction this icon source applies to. The return
@@ -191,21 +107,13 @@ public class IconSource
 	 * wildcarded.
 	 * Returns: text direction this source matches
 	 */
-	public GtkTextDirection getDirection()
-	{
-		// GtkTextDirection gtk_icon_source_get_direction (const GtkIconSource *source);
-		return gtk_icon_source_get_direction(gtkIconSource);
-	}
+	public GtkTextDirection getDirection();
 	
 	/**
 	 * Gets the value set by gtk_icon_source_set_direction_wildcarded().
 	 * Returns: TRUE if this icon source is a base for any text direction variant
 	 */
-	public int getDirectionWildcarded()
-	{
-		// gboolean gtk_icon_source_get_direction_wildcarded  (const GtkIconSource *source);
-		return gtk_icon_source_get_direction_wildcarded(gtkIconSource);
-	}
+	public int getDirectionWildcarded();
 	
 	/**
 	 * Retrieves the source filename, or NULL if none is set. The
@@ -213,11 +121,7 @@ public class IconSource
 	 * persist beyond the lifetime of the icon source.
 	 * Returns: image filename. This string must not be modifiedor freed.
 	 */
-	public string getFilename()
-	{
-		// const gchar* gtk_icon_source_get_filename (const GtkIconSource *source);
-		return Str.toString(gtk_icon_source_get_filename(gtkIconSource));
-	}
+	public string getFilename();
 	
 	/**
 	 * Retrieves the source pixbuf, or NULL if none is set.
@@ -229,16 +133,7 @@ public class IconSource
 	 * not incremented.
 	 * Returns: source pixbuf
 	 */
-	public Pixbuf getPixbuf()
-	{
-		// GdkPixbuf* gtk_icon_source_get_pixbuf (const GtkIconSource *source);
-		auto p = gtk_icon_source_get_pixbuf(gtkIconSource);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getPixbuf();
 	
 	/**
 	 * Retrieves the source icon name, or NULL if none is set. The
@@ -246,32 +141,20 @@ public class IconSource
 	 * persist beyond the lifetime of the icon source.
 	 * Returns: icon name. This string must not be modified or freed.
 	 */
-	public string getIconName()
-	{
-		// const gchar* gtk_icon_source_get_icon_name (const GtkIconSource *source);
-		return Str.toString(gtk_icon_source_get_icon_name(gtkIconSource));
-	}
+	public string getIconName();
 	
 	/**
 	 * Obtains the icon size this source applies to. The return value
 	 * is only useful/meaningful if the icon size is not wildcarded.
 	 * Returns: icon size this source matches.
 	 */
-	public GtkIconSize getSize()
-	{
-		// GtkIconSize gtk_icon_source_get_size (const GtkIconSource *source);
-		return gtk_icon_source_get_size(gtkIconSource);
-	}
+	public GtkIconSize getSize();
 	
 	/**
 	 * Gets the value set by gtk_icon_source_set_size_wildcarded().
 	 * Returns: TRUE if this icon source is a base for any icon size variant
 	 */
-	public int getSizeWildcarded()
-	{
-		// gboolean gtk_icon_source_get_size_wildcarded (const GtkIconSource *source);
-		return gtk_icon_source_get_size_wildcarded(gtkIconSource);
-	}
+	public int getSizeWildcarded();
 	
 	/**
 	 * Obtains the widget state this icon source applies to. The return
@@ -279,21 +162,13 @@ public class IconSource
 	 * wildcarded.
 	 * Returns: widget state this source matches
 	 */
-	public GtkStateType getState()
-	{
-		// GtkStateType gtk_icon_source_get_state (const GtkIconSource *source);
-		return gtk_icon_source_get_state(gtkIconSource);
-	}
+	public GtkStateType getState();
 	
 	/**
 	 * Gets the value set by gtk_icon_source_set_state_wildcarded().
 	 * Returns: TRUE if this icon source is a base for any widget state variant
 	 */
-	public int getStateWildcarded()
-	{
-		// gboolean gtk_icon_source_get_state_wildcarded  (const GtkIconSource *source);
-		return gtk_icon_source_get_state_wildcarded(gtkIconSource);
-	}
+	public int getStateWildcarded();
 	
 	/**
 	 * Creates a new GtkIconSource. A GtkIconSource contains a GdkPixbuf (or
@@ -322,16 +197,7 @@ public class IconSource
 	 * direction, widget state, or icon size.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkIconSource* gtk_icon_source_new (void);
-		auto p = gtk_icon_source_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_icon_source_new()");
-		}
-		this(cast(GtkIconSource*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the text direction this icon source is intended to be used
@@ -343,11 +209,7 @@ public class IconSource
 	 * Params:
 	 * direction =  text direction this source applies to
 	 */
-	public void setDirection(GtkTextDirection direction)
-	{
-		// void gtk_icon_source_set_direction (GtkIconSource *source,  GtkTextDirection direction);
-		gtk_icon_source_set_direction(gtkIconSource, direction);
-	}
+	public void setDirection(GtkTextDirection direction);
 	
 	/**
 	 * If the text direction is wildcarded, this source can be used
@@ -361,11 +223,7 @@ public class IconSource
 	 * Params:
 	 * setting =  TRUE to wildcard the text direction
 	 */
-	public void setDirectionWildcarded(int setting)
-	{
-		// void gtk_icon_source_set_direction_wildcarded  (GtkIconSource *source,  gboolean setting);
-		gtk_icon_source_set_direction_wildcarded(gtkIconSource, setting);
-	}
+	public void setDirectionWildcarded(int setting);
 	
 	/**
 	 * Sets the name of an image file to use as a base image when creating
@@ -373,23 +231,15 @@ public class IconSource
 	 * Params:
 	 * filename =  image file to use
 	 */
-	public void setFilename(string filename)
-	{
-		// void gtk_icon_source_set_filename (GtkIconSource *source,  const gchar *filename);
-		gtk_icon_source_set_filename(gtkIconSource, Str.toStringz(filename));
-	}
-	
+	public void setFilename(string filename);
+
 	/**
 	 * Sets a pixbuf to use as a base image when creating icon variants
 	 * for GtkIconSet.
 	 * Params:
 	 * pixbuf =  pixbuf to use as a source
 	 */
-	public void setPixbuf(Pixbuf pixbuf)
-	{
-		// void gtk_icon_source_set_pixbuf (GtkIconSource *source,  GdkPixbuf *pixbuf);
-		gtk_icon_source_set_pixbuf(gtkIconSource, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public void setPixbuf(Pixbuf pixbuf);
 	
 	/**
 	 * Sets the name of an icon to look up in the current icon theme
@@ -397,11 +247,7 @@ public class IconSource
 	 * Params:
 	 * iconName =  name of icon to use
 	 */
-	public void setIconName(string iconName)
-	{
-		// void gtk_icon_source_set_icon_name (GtkIconSource *source,  const gchar *icon_name);
-		gtk_icon_source_set_icon_name(gtkIconSource, Str.toStringz(iconName));
-	}
+	public void setIconName(string iconName);
 	
 	/**
 	 * Sets the icon size this icon source is intended to be used
@@ -413,11 +259,7 @@ public class IconSource
 	 * Params:
 	 * size =  icon size this source applies to
 	 */
-	public void setSize(GtkIconSize size)
-	{
-		// void gtk_icon_source_set_size (GtkIconSource *source,  GtkIconSize size);
-		gtk_icon_source_set_size(gtkIconSource, size);
-	}
+	public void setSize(GtkIconSize size);
 	
 	/**
 	 * If the icon size is wildcarded, this source can be used as the base
@@ -433,11 +275,7 @@ public class IconSource
 	 * Params:
 	 * setting =  TRUE to wildcard the widget state
 	 */
-	public void setSizeWildcarded(int setting)
-	{
-		// void gtk_icon_source_set_size_wildcarded (GtkIconSource *source,  gboolean setting);
-		gtk_icon_source_set_size_wildcarded(gtkIconSource, setting);
-	}
+	public void setSizeWildcarded(int setting);
 	
 	/**
 	 * Sets the widget state this icon source is intended to be used
@@ -449,11 +287,7 @@ public class IconSource
 	 * Params:
 	 * state =  widget state this source applies to
 	 */
-	public void setState(GtkStateType state)
-	{
-		// void gtk_icon_source_set_state (GtkIconSource *source,  GtkStateType state);
-		gtk_icon_source_set_state(gtkIconSource, state);
-	}
+	public void setState(GtkStateType state);
 	
 	/**
 	 * If the widget state is wildcarded, this source can be used as the
@@ -470,9 +304,5 @@ public class IconSource
 	 * Params:
 	 * setting =  TRUE to wildcard the widget state
 	 */
-	public void setStateWildcarded(int setting)
-	{
-		// void gtk_icon_source_set_state_wildcarded  (GtkIconSource *source,  gboolean setting);
-		gtk_icon_source_set_state_wildcarded(gtkIconSource, setting);
-	}
+	public void setStateWildcarded(int setting);
 }

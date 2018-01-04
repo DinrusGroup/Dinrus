@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkEventBox.html
- * outPack = gtk
- * outFile = EventBox
- * strct   = GtkEventBox
- * realStrct=
- * ctorStrct=
- * clss    = EventBox
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_event_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.EventBox;
 
 public  import gtkD.gtkc.gtktypes;
@@ -75,38 +24,16 @@ public class EventBox : Bin
 	protected GtkEventBox* gtkEventBox;
 	
 	
-	public GtkEventBox* getEventBoxStruct()
-	{
-		return gtkEventBox;
-	}
+	public GtkEventBox* getEventBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkEventBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkEventBox* gtkEventBox)
-	{
-		if(gtkEventBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkEventBox);
-		if( ptr !is null )
-		{
-			this = cast(EventBox)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkEventBox);
-		this.gtkEventBox = gtkEventBox;
-	}
+	public this (GtkEventBox* gtkEventBox);
 	
 	/**
 	 */
@@ -115,16 +42,7 @@ public class EventBox : Bin
 	 * Creates a new GtkEventBox.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_event_box_new (void);
-		auto p = gtk_event_box_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_event_box_new()");
-		}
-		this(cast(GtkEventBox*) p);
-	}
+	public this ();
 	
 	/**
 	 * Set whether the event box window is positioned above the windows of its child,
@@ -137,11 +55,7 @@ public class EventBox : Bin
 	 * Params:
 	 * aboveChild =  TRUE if the event box window is above the windows of its child
 	 */
-	public void setAboveChild(int aboveChild)
-	{
-		// void gtk_event_box_set_above_child (GtkEventBox *event_box,  gboolean above_child);
-		gtk_event_box_set_above_child(gtkEventBox, aboveChild);
-	}
+	public void setAboveChild(int aboveChild);
 	
 	/**
 	 * Returns whether the event box window is above or below the
@@ -150,11 +64,7 @@ public class EventBox : Bin
 	 * Since 2.4
 	 * Returns: TRUE if the event box window is above the windowof its child.
 	 */
-	public int getAboveChild()
-	{
-		// gboolean gtk_event_box_get_above_child (GtkEventBox *event_box);
-		return gtk_event_box_get_above_child(gtkEventBox);
-	}
+	public int getAboveChild();
 	
 	/**
 	 * Set whether the event box uses a visible or invisible child
@@ -189,11 +99,7 @@ public class EventBox : Bin
 	 * Params:
 	 * visibleWindow =  boolean value
 	 */
-	public void setVisibleWindow(int visibleWindow)
-	{
-		// void gtk_event_box_set_visible_window (GtkEventBox *event_box,  gboolean visible_window);
-		gtk_event_box_set_visible_window(gtkEventBox, visibleWindow);
-	}
+	public void setVisibleWindow(int visibleWindow);
 	
 	/**
 	 * Returns whether the event box has a visible window.
@@ -201,9 +107,5 @@ public class EventBox : Bin
 	 * Since 2.4
 	 * Returns: TRUE if the event box window is visible
 	 */
-	public int getVisibleWindow()
-	{
-		// gboolean gtk_event_box_get_visible_window (GtkEventBox *event_box);
-		return gtk_event_box_get_visible_window(gtkEventBox);
-	}
+	public int getVisibleWindow();
 }

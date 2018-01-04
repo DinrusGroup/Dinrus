@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkExpander.html
- * outPack = gtk
- * outFile = Expander
- * strct   = GtkExpander
- * realStrct=
- * ctorStrct=
- * clss    = Expander
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_expander_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_expander_new
- * 	- gtk_expander_new_with_mnemonic
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Expander;
 
 public  import gtkD.gtkc.gtktypes;
@@ -130,38 +74,16 @@ public class Expander : Bin
 	protected GtkExpander* gtkExpander;
 	
 	
-	public GtkExpander* getExpanderStruct()
-	{
-		return gtkExpander;
-	}
+	public GtkExpander* getExpanderStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkExpander;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkExpander* gtkExpander)
-	{
-		if(gtkExpander is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkExpander);
-		if( ptr !is null )
-		{
-			this = cast(Expander)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkExpander);
-		this.gtkExpander = gtkExpander;
-	}
+	public this (GtkExpander* gtkExpander);
 	
 	/**
 	 * Creates a new expander using label as the text of the label.
@@ -175,29 +97,8 @@ public class Expander : Bin
 	 *  accelerator called a mnemonic.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string label, bool mnemonic=true)
-	{
-		GtkExpander* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_expander_new_with_mnemonic (const gchar *label);
-			p = cast(GtkExpander*)gtk_expander_new_with_mnemonic(Str.toStringz(label));
-		}
-		else
-		{
-			// GtkWidget* gtk_expander_new (const gchar *label);
-			p = cast(GtkExpander*)gtk_expander_new(Str.toStringz(label));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_expander_new");
-		}
-		
-		this(p);
-	}
-	
+	public this (string label, bool mnemonic=true);
+
 	/**
 	 */
 	int[char[]] connectedSignals;
@@ -205,28 +106,8 @@ public class Expander : Bin
 	void delegate(Expander)[] onActivateListeners;
 	/**
 	 */
-	void addOnActivate(void delegate(Expander) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate",
-			cast(GCallback)&callBackActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate"] = 1;
-		}
-		onActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackActivate(GtkExpander* expanderStruct, Expander expander)
-	{
-		foreach ( void delegate(Expander) dlg ; expander.onActivateListeners )
-		{
-			dlg(expander);
-		}
-	}
+	void addOnActivate(void delegate(Expander) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivate(GtkExpander* expanderStruct, Expander expander);
 	
 	
 	/**
@@ -237,11 +118,7 @@ public class Expander : Bin
 	 * Params:
 	 * expanded =  whether the child widget is revealed
 	 */
-	public void setExpanded(int expanded)
-	{
-		// void gtk_expander_set_expanded (GtkExpander *expander,  gboolean expanded);
-		gtk_expander_set_expanded(gtkExpander, expanded);
-	}
+	public void setExpanded(int expanded);
 	
 	/**
 	 * Queries a GtkExpander and returns its current state. Returns TRUE
@@ -250,11 +127,7 @@ public class Expander : Bin
 	 * Since 2.4
 	 * Returns: the current state of the expander.
 	 */
-	public int getExpanded()
-	{
-		// gboolean gtk_expander_get_expanded (GtkExpander *expander);
-		return gtk_expander_get_expanded(gtkExpander);
-	}
+	public int getExpanded();
 	
 	/**
 	 * Sets the spacing field of expander, which is the number of pixels to
@@ -263,22 +136,14 @@ public class Expander : Bin
 	 * Params:
 	 * spacing =  distance between the expander and child in pixels.
 	 */
-	public void setSpacing(int spacing)
-	{
-		// void gtk_expander_set_spacing (GtkExpander *expander,  gint spacing);
-		gtk_expander_set_spacing(gtkExpander, spacing);
-	}
+	public void setSpacing(int spacing);
 	
 	/**
 	 * Gets the value set by gtk_expander_set_spacing().
 	 * Since 2.4
 	 * Returns: spacing between the expander and child.
 	 */
-	public int getSpacing()
-	{
-		// gint gtk_expander_get_spacing (GtkExpander *expander);
-		return gtk_expander_get_spacing(gtkExpander);
-	}
+	public int getSpacing();
 	
 	/**
 	 * Sets the text of the label of the expander to label.
@@ -287,11 +152,7 @@ public class Expander : Bin
 	 * Params:
 	 * label =  a string
 	 */
-	public void setLabel(string label)
-	{
-		// void gtk_expander_set_label (GtkExpander *expander,  const gchar *label);
-		gtk_expander_set_label(gtkExpander, Str.toStringz(label));
-	}
+	public void setLabel(string label);
 	
 	/**
 	 * Fetches the text from a label widget including any embedded
@@ -307,11 +168,7 @@ public class Expander : Bin
 	 * Since 2.4
 	 * Returns: The text of the label widget. This string is ownedby the widget and must not be modified or freed.
 	 */
-	public string getLabel()
-	{
-		// const gchar * gtk_expander_get_label (GtkExpander *expander);
-		return Str.toString(gtk_expander_get_label(gtkExpander));
-	}
+	public string getLabel();
 	
 	/**
 	 * If true, an underline in the text of the expander label indicates
@@ -320,11 +177,7 @@ public class Expander : Bin
 	 * Params:
 	 * useUnderline =  TRUE if underlines in the text indicate mnemonics
 	 */
-	public void setUseUnderline(int useUnderline)
-	{
-		// void gtk_expander_set_use_underline (GtkExpander *expander,  gboolean use_underline);
-		gtk_expander_set_use_underline(gtkExpander, useUnderline);
-	}
+	public void setUseUnderline(int useUnderline);
 	
 	/**
 	 * Returns whether an embedded underline in the expander label indicates a
@@ -332,11 +185,7 @@ public class Expander : Bin
 	 * Since 2.4
 	 * Returns: TRUE if an embedded underline in the expander label indicates the mnemonic accelerator keys.
 	 */
-	public int getUseUnderline()
-	{
-		// gboolean gtk_expander_get_use_underline (GtkExpander *expander);
-		return gtk_expander_get_use_underline(gtkExpander);
-	}
+	public int getUseUnderline();
 	
 	/**
 	 * Sets whether the text of the label contains markup in Pango's text markup
@@ -345,11 +194,7 @@ public class Expander : Bin
 	 * Params:
 	 * useMarkup =  TRUE if the label's text should be parsed for markup
 	 */
-	public void setUseMarkup(int useMarkup)
-	{
-		// void gtk_expander_set_use_markup (GtkExpander *expander,  gboolean use_markup);
-		gtk_expander_set_use_markup(gtkExpander, useMarkup);
-	}
+	public void setUseMarkup(int useMarkup);
 	
 	/**
 	 * Returns whether the label's text is interpreted as marked up with
@@ -358,11 +203,7 @@ public class Expander : Bin
 	 * Since 2.4
 	 * Returns: TRUE if the label's text will be parsed for markup
 	 */
-	public int getUseMarkup()
-	{
-		// gboolean gtk_expander_get_use_markup (GtkExpander *expander);
-		return gtk_expander_get_use_markup(gtkExpander);
-	}
+	public int getUseMarkup();
 	
 	/**
 	 * Set the label widget for the expander. This is the widget
@@ -371,11 +212,7 @@ public class Expander : Bin
 	 * Params:
 	 * labelWidget =  the new label widget
 	 */
-	public void setLabelWidget(Widget labelWidget)
-	{
-		// void gtk_expander_set_label_widget (GtkExpander *expander,  GtkWidget *label_widget);
-		gtk_expander_set_label_widget(gtkExpander, (labelWidget is null) ? null : labelWidget.getWidgetStruct());
-	}
+	public void setLabelWidget(Widget labelWidget);
 	
 	/**
 	 * Retrieves the label widget for the frame. See
@@ -383,14 +220,5 @@ public class Expander : Bin
 	 * Since 2.4
 	 * Returns: the label widget, or NULL if there is none.
 	 */
-	public Widget getLabelWidget()
-	{
-		// GtkWidget * gtk_expander_get_label_widget (GtkExpander *expander);
-		auto p = gtk_expander_get_label_widget(gtkExpander);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getLabelWidget();
 }

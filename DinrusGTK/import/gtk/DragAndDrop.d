@@ -1,73 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Drag-and-Drop.html
- * outPack = gtk
- * outFile = DragAndDrop
- * strct   = GdkDragContext
- * realStrct=
- * ctorStrct=
- * clss    = DragAndDrop
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_drag_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gdk.Window
- * 	- gtkD.gdk.DragContext
- * 	- gtkD.gtk.TargetList
- * 	- gtkD.gdk.Event
- * 	- gtkD.gdk.Colormap
- * 	- gtkD.gdk.Pixmap
- * 	- gtkD.gdk.Bitmap
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GdkBitmap* -> Bitmap
- * 	- GdkColormap* -> Colormap
- * 	- GdkDragContext* -> DragContext
- * 	- GdkEvent* -> Event
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkPixmap* -> Pixmap
- * 	- GdkWindow* -> Window
- * 	- GtkTargetList* -> TargetList
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.DragAndDrop;
 
 public  import gtkD.gtkc.gtktypes;
@@ -110,30 +40,16 @@ public class DragAndDrop
 	protected GdkDragContext* gdkDragContext;
 	
 	
-	public GdkDragContext* getDragAndDropStruct()
-	{
-		return gdkDragContext;
-	}
+	public GdkDragContext* getDragAndDropStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gdkDragContext;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GdkDragContext* gdkDragContext)
-	{
-		if(gdkDragContext is null)
-		{
-			this = null;
-			return;
-		}
-		this.gdkDragContext = gdkDragContext;
-	}
+	public this (GdkDragContext* gdkDragContext);
 	
 	/**
 	 */
@@ -163,11 +79,7 @@ public class DragAndDrop
 	 * nTargets =  the number of entries in targets.
 	 * actions =  a bitmask of possible actions for a drop onto this widget.
 	 */
-	public static void destSet(Widget widget, GtkDestDefaults flags, GtkTargetEntry* targets, int nTargets, GdkDragAction actions)
-	{
-		// void gtk_drag_dest_set (GtkWidget *widget,  GtkDestDefaults flags,  const GtkTargetEntry *targets,  gint n_targets,  GdkDragAction actions);
-		gtk_drag_dest_set((widget is null) ? null : widget.getWidgetStruct(), flags, targets, nTargets, actions);
-	}
+	public static void destSet(Widget widget, GtkDestDefaults flags, GtkTargetEntry* targets, int nTargets, GdkDragAction actions);
 	
 	/**
 	 * Sets this widget as a proxy for drops to another window.
@@ -180,11 +92,7 @@ public class DragAndDrop
 	 *  destination, because it is an embedded
 	 *  subwindow.
 	 */
-	public static void destSetProxy(Widget widget, Window proxyWindow, GdkDragProtocol protocol, int useCoordinates)
-	{
-		// void gtk_drag_dest_set_proxy (GtkWidget *widget,  GdkWindow *proxy_window,  GdkDragProtocol protocol,  gboolean use_coordinates);
-		gtk_drag_dest_set_proxy((widget is null) ? null : widget.getWidgetStruct(), (proxyWindow is null) ? null : proxyWindow.getWindowStruct(), protocol, useCoordinates);
-	}
+	public static void destSetProxy(Widget widget, Window proxyWindow, GdkDragProtocol protocol, int useCoordinates);
 	
 	/**
 	 * Clears information about a drop destination set with
@@ -193,11 +101,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget = a GtkWidget
 	 */
-	public static void destUnset(Widget widget)
-	{
-		// void gtk_drag_dest_unset (GtkWidget *widget);
-		gtk_drag_dest_unset((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void destUnset(Widget widget);
 	
 	/**
 	 * Looks for a match between context->targets and the
@@ -214,11 +118,7 @@ public class DragAndDrop
 	 *  gtk_drag_dest_get_target_list (widget).
 	 * Returns: first target that the source offers and the dest can accept, or GDK_NONE
 	 */
-	public static GdkAtom destFindTarget(Widget widget, DragContext context, TargetList targetList)
-	{
-		// GdkAtom gtk_drag_dest_find_target (GtkWidget *widget,  GdkDragContext *context,  GtkTargetList *target_list);
-		return gtk_drag_dest_find_target((widget is null) ? null : widget.getWidgetStruct(), (context is null) ? null : context.getDragContextStruct(), (targetList is null) ? null : targetList.getTargetListStruct());
-	}
+	public static GdkAtom destFindTarget(Widget widget, DragContext context, TargetList targetList);
 	
 	/**
 	 * Returns the list of targets this widget can accept from
@@ -227,16 +127,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget
 	 * Returns: the GtkTargetList, or NULL if none
 	 */
-	public static TargetList destGetTargetList(Widget widget)
-	{
-		// GtkTargetList* gtk_drag_dest_get_target_list (GtkWidget *widget);
-		auto p = gtk_drag_dest_get_target_list((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TargetList(cast(GtkTargetList*) p);
-	}
+	public static TargetList destGetTargetList(Widget widget);
 	
 	/**
 	 * Sets the target types that this widget can accept from drag-and-drop.
@@ -246,11 +137,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget that's a drag destination
 	 * targetList =  list of droppable targets, or NULL for none
 	 */
-	public static void destSetTargetList(Widget widget, TargetList targetList)
-	{
-		// void gtk_drag_dest_set_target_list (GtkWidget *widget,  GtkTargetList *target_list);
-		gtk_drag_dest_set_target_list((widget is null) ? null : widget.getWidgetStruct(), (targetList is null) ? null : targetList.getTargetListStruct());
-	}
+	public static void destSetTargetList(Widget widget, TargetList targetList);
 	
 	/**
 	 * Add the text targets supported by GtkSelection to
@@ -262,11 +149,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's a drag destination
 	 */
-	public static void destAddTextTargets(Widget widget)
-	{
-		// void gtk_drag_dest_add_text_targets (GtkWidget *widget);
-		gtk_drag_dest_add_text_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void destAddTextTargets(Widget widget);
 	
 	/**
 	 * Add the image targets supported by GtkSelection to
@@ -278,11 +161,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's a drag destination
 	 */
-	public static void destAddImageTargets(Widget widget)
-	{
-		// void gtk_drag_dest_add_image_targets (GtkWidget *widget);
-		gtk_drag_dest_add_image_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void destAddImageTargets(Widget widget);
 	
 	/**
 	 * Add the URI targets supported by GtkSelection to
@@ -294,11 +173,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's a drag destination
 	 */
-	public static void destAddUriTargets(Widget widget)
-	{
-		// void gtk_drag_dest_add_uri_targets (GtkWidget *widget);
-		gtk_drag_dest_add_uri_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void destAddUriTargets(Widget widget);
 	
 	/**
 	 * Tells the widget to emit ::drag-motion and ::drag-leave
@@ -311,11 +186,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget that's a drag destination
 	 * trackMotion =  whether to accept all targets
 	 */
-	public static void destSetTrackMotion(Widget widget, int trackMotion)
-	{
-		// void gtk_drag_dest_set_track_motion (GtkWidget *widget,  gboolean track_motion);
-		gtk_drag_dest_set_track_motion((widget is null) ? null : widget.getWidgetStruct(), trackMotion);
-	}
+	public static void destSetTrackMotion(Widget widget, int trackMotion);
 	
 	/**
 	 * Returns whether the widget has been configured to always
@@ -325,11 +196,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget that's a drag destination
 	 * Returns: TRUE if the widget always emits ::drag-motion events
 	 */
-	public static int destGetTrackMotion(Widget widget)
-	{
-		// gboolean gtk_drag_dest_get_track_motion (GtkWidget *widget);
-		return gtk_drag_dest_get_track_motion((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static int destGetTrackMotion(Widget widget);
 	
 	/**
 	 * Informs the drag source that the drop is finished, and
@@ -340,11 +207,7 @@ public class DragAndDrop
 	 *  original data. (This should be TRUE for a move)
 	 * time = the timestamp from the "drag_data_drop" signal.
 	 */
-	public void finish(int success, int del, uint time)
-	{
-		// void gtk_drag_finish (GdkDragContext *context,  gboolean success,  gboolean del,  guint32 time_);
-		gtk_drag_finish(gdkDragContext, success, del, time);
-	}
+	public void finish(int success, int del, uint time);
 	
 	/**
 	 * Gets the data associated with a drag. When the data
@@ -364,26 +227,13 @@ public class DragAndDrop
 	 *  generally be the time received in a "drag_data_motion"
 	 *  or "drag_data_drop" signal.
 	 */
-	public static void getData(Widget widget, DragContext context, GdkAtom target, uint time)
-	{
-		// void gtk_drag_get_data (GtkWidget *widget,  GdkDragContext *context,  GdkAtom target,  guint32 time_);
-		gtk_drag_get_data((widget is null) ? null : widget.getWidgetStruct(), (context is null) ? null : context.getDragContextStruct(), target, time);
-	}
-	
+	public static void getData(Widget widget, DragContext context, GdkAtom target, uint time);
+
 	/**
 	 * Determines the source widget for a drag.
 	 * Returns:if the drag is occurring within a single application, a pointer to the source widget. Otherwise, NULL.
 	 */
-	public Widget getSourceWidget()
-	{
-		// GtkWidget * gtk_drag_get_source_widget (GdkDragContext *context);
-		auto p = gtk_drag_get_source_widget(gdkDragContext);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getSourceWidget();
 	
 	/**
 	 * Draws a highlight around a widget. This will attach
@@ -393,11 +243,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget = a widget to highlight
 	 */
-	public static void highlight(Widget widget)
-	{
-		// void gtk_drag_highlight (GtkWidget *widget);
-		gtk_drag_highlight((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void highlight(Widget widget);
 	
 	/**
 	 * Removes a highlight set by gtk_drag_highlight() from
@@ -405,11 +251,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget = a widget to remove the highlight from.
 	 */
-	public static void unhighlight(Widget widget)
-	{
-		// void gtk_drag_unhighlight (GtkWidget *widget);
-		gtk_drag_unhighlight((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void unhighlight(Widget widget);
 	
 	/**
 	 * Initiates a drag on the source side. The function
@@ -425,16 +267,7 @@ public class DragAndDrop
 	 * event =  The event that triggered the start of the drag.
 	 * Returns: the context for this drag.
 	 */
-	public static DragContext begin(Widget widget, TargetList targets, GdkDragAction actions, int button, Event event)
-	{
-		// GdkDragContext * gtk_drag_begin (GtkWidget *widget,  GtkTargetList *targets,  GdkDragAction actions,  gint button,  GdkEvent *event);
-		auto p = gtk_drag_begin((widget is null) ? null : widget.getWidgetStruct(), (targets is null) ? null : targets.getTargetListStruct(), actions, button, (event is null) ? null : event.getEventStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new DragContext(cast(GdkDragContext*) p);
-	}
+	public static DragContext begin(Widget widget, TargetList targets, GdkDragAction actions, int button, Event event);
 	
 	/**
 	 * Changes the icon for a widget to a given widget. GTK+
@@ -446,11 +279,7 @@ public class DragAndDrop
 	 * hotX =  the X offset within widget of the hotspot.
 	 * hotY =  the Y offset within widget of the hotspot.
 	 */
-	public void setIconWidget(Widget widget, int hotX, int hotY)
-	{
-		// void gtk_drag_set_icon_widget (GdkDragContext *context,  GtkWidget *widget,  gint hot_x,  gint hot_y);
-		gtk_drag_set_icon_widget(gdkDragContext, (widget is null) ? null : widget.getWidgetStruct(), hotX, hotY);
-	}
+	public void setIconWidget(Widget widget, int hotX, int hotY);
 	
 	/**
 	 * Sets pixmap as the icon for a given drag. GTK+ retains
@@ -464,11 +293,7 @@ public class DragAndDrop
 	 * hotX =  the X offset within pixmap of the hotspot.
 	 * hotY =  the Y offset within pixmap of the hotspot.
 	 */
-	public void setIconPixmap(Colormap colormap, Pixmap pixmap, Bitmap mask, int hotX, int hotY)
-	{
-		// void gtk_drag_set_icon_pixmap (GdkDragContext *context,  GdkColormap *colormap,  GdkPixmap *pixmap,  GdkBitmap *mask,  gint hot_x,  gint hot_y);
-		gtk_drag_set_icon_pixmap(gdkDragContext, (colormap is null) ? null : colormap.getColormapStruct(), (pixmap is null) ? null : pixmap.getPixmapStruct(), (mask is null) ? null : mask.getBitmapStruct(), hotX, hotY);
-	}
+	public void setIconPixmap(Colormap colormap, Pixmap pixmap, Bitmap mask, int hotX, int hotY);
 	
 	/**
 	 * Sets pixbuf as the icon for a given drag.
@@ -477,11 +302,7 @@ public class DragAndDrop
 	 * hotX =  the X offset within widget of the hotspot.
 	 * hotY =  the Y offset within widget of the hotspot.
 	 */
-	public void setIconPixbuf(Pixbuf pixbuf, int hotX, int hotY)
-	{
-		// void gtk_drag_set_icon_pixbuf (GdkDragContext *context,  GdkPixbuf *pixbuf,  gint hot_x,  gint hot_y);
-		gtk_drag_set_icon_pixbuf(gdkDragContext, (pixbuf is null) ? null : pixbuf.getPixbufStruct(), hotX, hotY);
-	}
+	public void setIconPixbuf(Pixbuf pixbuf, int hotX, int hotY);
 	
 	/**
 	 * Sets the icon for a given drag from a stock ID.
@@ -490,11 +311,7 @@ public class DragAndDrop
 	 * hotX =  the X offset within the icon of the hotspot.
 	 * hotY =  the Y offset within the icon of the hotspot.
 	 */
-	public void setIconStock(string stockId, int hotX, int hotY)
-	{
-		// void gtk_drag_set_icon_stock (GdkDragContext *context,  const gchar *stock_id,  gint hot_x,  gint hot_y);
-		gtk_drag_set_icon_stock(gdkDragContext, Str.toStringz(stockId), hotX, hotY);
-	}
+	public void setIconStock(string stockId, int hotX, int hotY);
 	
 	/**
 	 * Sets the icon for a given drag from a named themed icon. See
@@ -508,21 +325,13 @@ public class DragAndDrop
 	 * hotX =  the X offset of the hotspot within the icon
 	 * hotY =  the Y offset of the hotspot within the icon
 	 */
-	public void setIconName(string iconName, int hotX, int hotY)
-	{
-		// void gtk_drag_set_icon_name (GdkDragContext *context,  const gchar *icon_name,  gint hot_x,  gint hot_y);
-		gtk_drag_set_icon_name(gdkDragContext, Str.toStringz(iconName), hotX, hotY);
-	}
+	public void setIconName(string iconName, int hotX, int hotY);
 	
 	/**
 	 * Sets the icon for a particular drag to the default
 	 * icon.
 	 */
-	public void setIconDefault()
-	{
-		// void gtk_drag_set_icon_default (GdkDragContext *context);
-		gtk_drag_set_icon_default(gdkDragContext);
-	}
+	public void setIconDefault();
 	
 	/**
 	 * Warning
@@ -537,11 +346,7 @@ public class DragAndDrop
 	 * hotX =  The X offset within widget of the hotspot.
 	 * hotY =  The Y offset within widget of the hotspot.
 	 */
-	public static void setDefaultIcon(Colormap colormap, Pixmap pixmap, Bitmap mask, int hotX, int hotY)
-	{
-		// void gtk_drag_set_default_icon (GdkColormap *colormap,  GdkPixmap *pixmap,  GdkBitmap *mask,  gint hot_x,  gint hot_y);
-		gtk_drag_set_default_icon((colormap is null) ? null : colormap.getColormapStruct(), (pixmap is null) ? null : pixmap.getPixmapStruct(), (mask is null) ? null : mask.getBitmapStruct(), hotX, hotY);
-	}
+	public static void setDefaultIcon(Colormap colormap, Pixmap pixmap, Bitmap mask, int hotX, int hotY);
 	
 	/**
 	 * Checks to see if a mouse drag starting at (start_x, start_y) and ending
@@ -555,11 +360,7 @@ public class DragAndDrop
 	 * currentY =  current Y coordinate
 	 * Returns: TRUE if the drag threshold has been passed.
 	 */
-	public static int checkThreshold(Widget widget, int startX, int startY, int currentX, int currentY)
-	{
-		// gboolean gtk_drag_check_threshold (GtkWidget *widget,  gint start_x,  gint start_y,  gint current_x,  gint current_y);
-		return gtk_drag_check_threshold((widget is null) ? null : widget.getWidgetStruct(), startX, startY, currentX, currentY);
-	}
+	public static int checkThreshold(Widget widget, int startX, int startY, int currentX, int currentY);
 	
 	/**
 	 * Sets up a widget so that GTK+ will start a drag
@@ -573,11 +374,7 @@ public class DragAndDrop
 	 * actions = the bitmask of possible actions for a drag from this
 	 *  widget.
 	 */
-	public static void sourceSet(Widget widget, GdkModifierType startButtonMask, GtkTargetEntry* targets, int nTargets, GdkDragAction actions)
-	{
-		// void gtk_drag_source_set (GtkWidget *widget,  GdkModifierType start_button_mask,  const GtkTargetEntry *targets,  gint n_targets,  GdkDragAction actions);
-		gtk_drag_source_set((widget is null) ? null : widget.getWidgetStruct(), startButtonMask, targets, nTargets, actions);
-	}
+	public static void sourceSet(Widget widget, GdkModifierType startButtonMask, GtkTargetEntry* targets, int nTargets, GdkDragAction actions);
 	
 	/**
 	 * Sets the icon that will be used for drags from a particular widget
@@ -590,11 +387,7 @@ public class DragAndDrop
 	 * pixmap =  the image data for the icon
 	 * mask =  the transparency mask for an image.
 	 */
-	public static void sourceSetIcon(Widget widget, Colormap colormap, Pixmap pixmap, Bitmap mask)
-	{
-		// void gtk_drag_source_set_icon (GtkWidget *widget,  GdkColormap *colormap,  GdkPixmap *pixmap,  GdkBitmap *mask);
-		gtk_drag_source_set_icon((widget is null) ? null : widget.getWidgetStruct(), (colormap is null) ? null : colormap.getColormapStruct(), (pixmap is null) ? null : pixmap.getPixmapStruct(), (mask is null) ? null : mask.getBitmapStruct());
-	}
+	public static void sourceSetIcon(Widget widget, Colormap colormap, Pixmap pixmap, Bitmap mask);
 	
 	/**
 	 * Sets the icon that will be used for drags from a particular widget
@@ -604,11 +397,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget
 	 * pixbuf =  the GdkPixbuf for the drag icon
 	 */
-	public static void sourceSetIconPixbuf(Widget widget, Pixbuf pixbuf)
-	{
-		// void gtk_drag_source_set_icon_pixbuf (GtkWidget *widget,  GdkPixbuf *pixbuf);
-		gtk_drag_source_set_icon_pixbuf((widget is null) ? null : widget.getWidgetStruct(), (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public static void sourceSetIconPixbuf(Widget widget, Pixbuf pixbuf);
 	
 	/**
 	 * Sets the icon that will be used for drags from a particular source
@@ -617,11 +406,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget
 	 * stockId =  the ID of the stock icon to use
 	 */
-	public static void sourceSetIconStock(Widget widget, string stockId)
-	{
-		// void gtk_drag_source_set_icon_stock (GtkWidget *widget,  const gchar *stock_id);
-		gtk_drag_source_set_icon_stock((widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(stockId));
-	}
+	public static void sourceSetIconStock(Widget widget, string stockId);
 	
 	/**
 	 * Sets the icon that will be used for drags from a particular source
@@ -631,22 +416,14 @@ public class DragAndDrop
 	 * widget =  a GtkWidget
 	 * iconName =  name of icon to use
 	 */
-	public static void sourceSetIconName(Widget widget, string iconName)
-	{
-		// void gtk_drag_source_set_icon_name (GtkWidget *widget,  const gchar *icon_name);
-		gtk_drag_source_set_icon_name((widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(iconName));
-	}
+	public static void sourceSetIconName(Widget widget, string iconName);
 	
 	/**
 	 * Undoes the effects of gtk_drag_source_set().
 	 * Params:
 	 * widget = a GtkWidget
 	 */
-	public static void sourceUnset(Widget widget)
-	{
-		// void gtk_drag_source_unset (GtkWidget *widget);
-		gtk_drag_source_unset((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void sourceUnset(Widget widget);
 	
 	/**
 	 * Changes the target types that this widget offers for drag-and-drop.
@@ -657,11 +434,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget that's a drag source
 	 * targetList =  list of draggable targets, or NULL for none
 	 */
-	public static void sourceSetTargetList(Widget widget, TargetList targetList)
-	{
-		// void gtk_drag_source_set_target_list (GtkWidget *widget,  GtkTargetList *target_list);
-		gtk_drag_source_set_target_list((widget is null) ? null : widget.getWidgetStruct(), (targetList is null) ? null : targetList.getTargetListStruct());
-	}
+	public static void sourceSetTargetList(Widget widget, TargetList targetList);
 	
 	/**
 	 * Gets the list of targets this widget can provide for
@@ -671,16 +444,7 @@ public class DragAndDrop
 	 * widget =  a GtkWidget
 	 * Returns: the GtkTargetList, or NULL if none
 	 */
-	public static TargetList sourceGetTargetList(Widget widget)
-	{
-		// GtkTargetList* gtk_drag_source_get_target_list (GtkWidget *widget);
-		auto p = gtk_drag_source_get_target_list((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TargetList(cast(GtkTargetList*) p);
-	}
+	public static TargetList sourceGetTargetList(Widget widget);
 	
 	/**
 	 * Add the text targets supported by GtkSelection to
@@ -692,11 +456,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's is a drag source
 	 */
-	public static void sourceAddTextTargets(Widget widget)
-	{
-		// void gtk_drag_source_add_text_targets (GtkWidget *widget);
-		gtk_drag_source_add_text_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void sourceAddTextTargets(Widget widget);
 	
 	/**
 	 * Add the writable image targets supported by GtkSelection to
@@ -708,11 +468,7 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's is a drag source
 	 */
-	public static void sourceAddImageTargets(Widget widget)
-	{
-		// void gtk_drag_source_add_image_targets (GtkWidget *widget);
-		gtk_drag_source_add_image_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void sourceAddImageTargets(Widget widget);
 	
 	/**
 	 * Add the URI targets supported by GtkSelection to
@@ -724,9 +480,5 @@ public class DragAndDrop
 	 * Params:
 	 * widget =  a GtkWidget that's is a drag source
 	 */
-	public static void sourceAddUriTargets(Widget widget)
-	{
-		// void gtk_drag_source_add_uri_targets (GtkWidget *widget);
-		gtk_drag_source_add_uri_targets((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void sourceAddUriTargets(Widget widget);
 }

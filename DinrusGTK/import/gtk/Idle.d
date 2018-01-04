@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = Idle
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Idle
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_idle_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Idle;
 
 public  import gtkD.gtkc.gtktypes;
@@ -121,36 +71,15 @@ public class Idle
 	 *    	dlg = the delegate to be executed
 	 *    	fireNow = When true the delegate will be executed emmidiatly
 	 */
-	this(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		idleID = gtk_idle_add(cast(GtkFunction)&idleCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = 0;
-			}
-		}
-	}
+	this(bool delegate() dlg, bool fireNow=false);
 	
 	/** */
-	public void stop()
-	{
-		if ( idleID > 0 )
-		{
-			gtk_idle_remove(idleID);
-		}
-		idleListeners.length = 0;
-	}
+	public void stop();
 	
 	/**
 	 * Removes the idle from gtk
 	 */
-	~this()
-	{
-		stop();
-	}
+	~this();
 	
 	/**
 	 * Adds a new delegate to this idle cycle
@@ -158,17 +87,7 @@ public class Idle
 	 *    	dlg =
 	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false)
-	{
-		idleListeners ~= dlg;
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				idleListeners.length = idleListeners.length - 1;
-			}
-		}
-	}
+	public void addListener(bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * The callback execution from glib
@@ -176,35 +95,13 @@ public class Idle
 	 *    	idle =
 	 * Returns:
 	 */
-	extern(C) static bool idleCallback(Idle idle)
-	{
-		return idle.callAllListeners();
-	}
+	extern(C) static bool idleCallback(Idle idle);
 	
 	/**
 	 * Executes all delegates on the execution list
 	 * Returns:
 	 */
-	private bool callAllListeners()
-	{
-		bool runAgain = false;
-		
-		int i = 0;
-		
-		while ( i<idleListeners.length )
-		{
-			if ( !idleListeners[i]() )
-			{
-				idleListeners = idleListeners[0..i] ~ idleListeners[i+1..idleListeners.length];
-			}
-			else
-			{
-				runAgain = true;
-				++i;
-			}
-		}
-		return runAgain;
-	}
+	private bool callAllListeners();
 	
 	/**
 	 */
@@ -219,11 +116,7 @@ public class Idle
 	 * data = The information to pass to the function.
 	 * Returns:a unique handle for this registration.
 	 */
-	public static uint add(GtkFunction funct, void* data)
-	{
-		// guint gtk_idle_add (GtkFunction function,  gpointer data);
-		return gtk_idle_add(funct, data);
-	}
+	public static uint add(GtkFunction funct, void* data);
 	
 	/**
 	 * Warning
@@ -238,11 +131,7 @@ public class Idle
 	 * data = Data to pass to that function.
 	 * Returns:A unique id for the event source.
 	 */
-	public static uint addPriority(int priority, GtkFunction funct, void* data)
-	{
-		// guint gtk_idle_add_priority (gint priority,  GtkFunction function,  gpointer data);
-		return gtk_idle_add_priority(priority, funct, data);
-	}
+	public static uint addPriority(int priority, GtkFunction funct, void* data);
 	
 	/**
 	 * Warning
@@ -259,11 +148,7 @@ public class Idle
 	 * destroy = Function to call when the timeout is destroyed or NULL.
 	 * Returns:A unique id for the event source.
 	 */
-	public static uint addFull(int priority, GtkFunction funct, GtkCallbackMarshal marshal, void* data, GDestroyNotify destroy)
-	{
-		// guint gtk_idle_add_full (gint priority,  GtkFunction function,  GtkCallbackMarshal marshal,  gpointer data,  GDestroyNotify destroy);
-		return gtk_idle_add_full(priority, funct, marshal, data, destroy);
-	}
+	public static uint addFull(int priority, GtkFunction funct, GtkCallbackMarshal marshal, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Warning
@@ -272,11 +157,7 @@ public class Idle
 	 * Params:
 	 * idleHandlerId = Identifies the idle function to remove.
 	 */
-	public static void remove(uint idleHandlerId)
-	{
-		// void gtk_idle_remove (guint idle_handler_id);
-		gtk_idle_remove(idleHandlerId);
-	}
+	public static void remove(uint idleHandlerId);
 	
 	/**
 	 * Warning
@@ -285,9 +166,5 @@ public class Idle
 	 * Params:
 	 * data = remove the idle function which was registered with this user data.
 	 */
-	public static void removeByData(void* data)
-	{
-		// void gtk_idle_remove_by_data (gpointer data);
-		gtk_idle_remove_by_data(data);
-	}
+	public static void removeByData(void* data);
 }

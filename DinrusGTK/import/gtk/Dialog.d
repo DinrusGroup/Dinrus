@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkDialog.html
- * outPack = gtk
- * outFile = Dialog
- * strct   = GtkDialog
- * realStrct=
- * ctorStrct=
- * clss    = Dialog
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_dialog_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_dialog_get_action_area
- * 	- gtk_dialog_get_content_area
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Window
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gtk.HButtonBox
- * 	- gtkD.gtk.VBox
- * structWrap:
- * 	- GdkScreen* -> Screen
- * 	- GtkWidget* -> Widget
- * 	- GtkWindow* -> Window
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Dialog;
 
 public  import gtkD.gtkc.gtktypes;
@@ -178,62 +116,25 @@ public class Dialog : Window
 	protected GtkDialog* gtkDialog;
 	
 	
-	public GtkDialog* getDialogStruct()
-	{
-		return gtkDialog;
-	}
+	public GtkDialog* getDialogStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkDialog;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkDialog* gtkDialog)
-	{
-		if(gtkDialog is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkDialog);
-		if( ptr !is null )
-		{
-			this = cast(Dialog)ptr;
-			return;
-		}
-		super(cast(GtkWindow*)gtkDialog);
-		this.gtkDialog = gtkDialog;
-	}
+	public this (GtkDialog* gtkDialog);
 	
 	/** */
-	public Widget addButton(StockID stockID, int responseId)
-	{
-		return addButton(StockDesc[stockID], responseId);
-	}
+	public Widget addButton(StockID stockID, int responseId);
 	
 	/** */
-	public void addButtons(string[] buttonsText, ResponseType[] responses)
-	{
-		for ( int i=0 ; i<buttonsText.length && i<responses.length ; i++)
-		{
-			addButton(buttonsText[i], responses[i]);
-		}
-	}
+	public void addButtons(string[] buttonsText, ResponseType[] responses);
 	
 	/** */
-	public void addButtons(StockID[] stockIDs, ResponseType[] responses)
-	{
-		for ( int i=0 ; i<stockIDs.length && i<responses.length ; i++)
-		{
-			addButton(stockIDs[i], responses[i]);
-		}
-	}
+	public void addButtons(StockID[] stockIDs, ResponseType[] responses);
 	
 	//Return the corect class instead of Widget
 	/**
@@ -241,16 +142,7 @@ public class Dialog : Window
 	 * Since 2.14
 	 * Returns: the action area.
 	 */
-	public HButtonBox getActionArea()
-	{
-		// GtkWidget* gtk_dialog_get_action_area (GtkDialog *dialog);
-		auto p = gtk_dialog_get_action_area(gtkDialog);
-		if(p is null)
-		{
-			return null;
-		}
-		return new HButtonBox(cast(GtkHButtonBox*) p);
-	}
+	public HButtonBox getActionArea();
 	
 	//Return the corect class instead of Widget
 	/**
@@ -258,16 +150,7 @@ public class Dialog : Window
 	 * Since 2.14
 	 * Returns: the content area GtkVBox.
 	 */
-	public VBox getContentArea()
-	{
-		// GtkWidget* gtk_dialog_get_content_area (GtkDialog *dialog);
-		auto p = gtk_dialog_get_content_area(gtkDialog);
-		if(p is null)
-		{
-			return null;
-		}
-		return new VBox(cast(GtkVBox*) p);
-	}
+	public VBox getContentArea();
 	
 	/**
 	 */
@@ -281,28 +164,8 @@ public class Dialog : Window
 	 * the dialog.
 	 * The default binding for this signal is the Escape key.
 	 */
-	void addOnClose(void delegate(Dialog) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("close" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"close",
-			cast(GCallback)&callBackClose,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["close"] = 1;
-		}
-		onCloseListeners ~= dlg;
-	}
-	extern(C) static void callBackClose(GtkDialog* arg0Struct, Dialog dialog)
-	{
-		foreach ( void delegate(Dialog) dlg ; dialog.onCloseListeners )
-		{
-			dlg(dialog);
-		}
-	}
+	void addOnClose(void delegate(Dialog) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackClose(GtkDialog* arg0Struct, Dialog dialog);
 	
 	void delegate(gint, Dialog)[] onResponseListeners;
 	/**
@@ -319,28 +182,8 @@ public class Dialog : Window
 	 * Add them to the action_area to get a
 	 * response from the user.
 	 */
-	void addOnResponse(void delegate(gint, Dialog) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("response" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"response",
-			cast(GCallback)&callBackResponse,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["response"] = 1;
-		}
-		onResponseListeners ~= dlg;
-	}
-	extern(C) static void callBackResponse(GtkDialog* dialogStruct, gint responseId, Dialog dialog)
-	{
-		foreach ( void delegate(gint, Dialog) dlg ; dialog.onResponseListeners )
-		{
-			dlg(responseId, dialog);
-		}
-	}
+	void addOnResponse(void delegate(gint, Dialog) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackResponse(GtkDialog* dialogStruct, gint responseId, Dialog dialog);
 	
 	
 	/**
@@ -348,16 +191,7 @@ public class Dialog : Window
 	 * directly, but into the vbox and action_area, as described above.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_dialog_new (void);
-		auto p = gtk_dialog_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_dialog_new()");
-		}
-		this(cast(GtkDialog*) p);
-	}
+	public this ();
 	
 	/**
 	 * Blocks in a recursive main loop until the dialog either emits the
@@ -380,11 +214,7 @@ public class Dialog : Window
 	 * destroying the dialog if you wish to do so.
 	 * Returns: response ID
 	 */
-	public int run()
-	{
-		// gint gtk_dialog_run (GtkDialog *dialog);
-		return gtk_dialog_run(gtkDialog);
-	}
+	public int run();
 	
 	/**
 	 * Emits the "response" signal with the given response ID.
@@ -394,11 +224,7 @@ public class Dialog : Window
 	 * Params:
 	 * responseId =  response ID
 	 */
-	public void response(int responseId)
-	{
-		// void gtk_dialog_response (GtkDialog *dialog,  gint response_id);
-		gtk_dialog_response(gtkDialog, responseId);
-	}
+	public void response(int responseId);
 	
 	/**
 	 * Adds a button with the given text (or a stock button, if button_text is a
@@ -411,16 +237,7 @@ public class Dialog : Window
 	 * responseId =  response ID for the button
 	 * Returns: the button widget that was added
 	 */
-	public Widget addButton(string buttonText, int responseId)
-	{
-		// GtkWidget* gtk_dialog_add_button (GtkDialog *dialog,  const gchar *button_text,  gint response_id);
-		auto p = gtk_dialog_add_button(gtkDialog, Str.toStringz(buttonText), responseId);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget addButton(string buttonText, int responseId);
 	
 	/**
 	 * Adds an activatable widget to the action area of a GtkDialog,
@@ -433,21 +250,13 @@ public class Dialog : Window
 	 * child =  an activatable widget
 	 * responseId =  response ID for child
 	 */
-	public void addActionWidget(Widget child, int responseId)
-	{
-		// void gtk_dialog_add_action_widget (GtkDialog *dialog,  GtkWidget *child,  gint response_id);
-		gtk_dialog_add_action_widget(gtkDialog, (child is null) ? null : child.getWidgetStruct(), responseId);
-	}
+	public void addActionWidget(Widget child, int responseId);
 	
 	/**
 	 * Accessor for whether the dialog has a separator.
 	 * Returns: TRUE if the dialog has a separator
 	 */
-	public int getHasSeparator()
-	{
-		// gboolean gtk_dialog_get_has_separator (GtkDialog *dialog);
-		return gtk_dialog_get_has_separator(gtkDialog);
-	}
+	public int getHasSeparator();
 	
 	/**
 	 * Sets the last widget in the dialog's action area with the given response_id
@@ -456,11 +265,7 @@ public class Dialog : Window
 	 * Params:
 	 * responseId =  a response ID
 	 */
-	public void setDefaultResponse(int responseId)
-	{
-		// void gtk_dialog_set_default_response (GtkDialog *dialog,  gint response_id);
-		gtk_dialog_set_default_response(gtkDialog, responseId);
-	}
+	public void setDefaultResponse(int responseId);
 	
 	/**
 	 * Sets whether the dialog has a separator above the buttons.
@@ -468,11 +273,7 @@ public class Dialog : Window
 	 * Params:
 	 * setting =  TRUE to have a separator
 	 */
-	public void setHasSeparator(int setting)
-	{
-		// void gtk_dialog_set_has_separator (GtkDialog *dialog,  gboolean setting);
-		gtk_dialog_set_has_separator(gtkDialog, setting);
-	}
+	public void setHasSeparator(int setting);
 	
 	/**
 	 * Calls gtk_widget_set_sensitive (widget, setting)
@@ -482,11 +283,7 @@ public class Dialog : Window
 	 * responseId =  a response ID
 	 * setting =  TRUE for sensitive
 	 */
-	public void setResponseSensitive(int responseId, int setting)
-	{
-		// void gtk_dialog_set_response_sensitive (GtkDialog *dialog,  gint response_id,  gboolean setting);
-		gtk_dialog_set_response_sensitive(gtkDialog, responseId, setting);
-	}
+	public void setResponseSensitive(int responseId, int setting);
 	
 	/**
 	 * Gets the response id of a widget in the action area
@@ -496,11 +293,7 @@ public class Dialog : Window
 	 * widget =  a widget in the action area of dialog
 	 * Returns: the response id of widget, or GTK_RESPONSE_NONE if widget doesn't have a response id set.
 	 */
-	public int getResponseForWidget(Widget widget)
-	{
-		// gint gtk_dialog_get_response_for_widget (GtkDialog *dialog,  GtkWidget *widget);
-		return gtk_dialog_get_response_for_widget(gtkDialog, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public int getResponseForWidget(Widget widget);
 	
 	/**
 	 * Returns TRUE if dialogs are expected to use an alternative
@@ -516,11 +309,7 @@ public class Dialog : Window
 	 * screen =  a GdkScreen, or NULL to use the default screen
 	 * Returns: Whether the alternative button order should be used
 	 */
-	public static int alternativeDialogButtonOrder(Screen screen)
-	{
-		// gboolean gtk_alternative_dialog_button_order (GdkScreen *screen);
-		return gtk_alternative_dialog_button_order((screen is null) ? null : screen.getScreenStruct());
-	}
+	public static int alternativeDialogButtonOrder(Screen screen);
 	
 	/**
 	 * Sets an alternative button order. If the
@@ -533,9 +322,5 @@ public class Dialog : Window
 	 * Params:
 	 * newOrder =  an array of response ids of dialog's buttons
 	 */
-	public void setAlternativeButtonOrderFromArray(int[] newOrder)
-	{
-		// void gtk_dialog_set_alternative_button_order_from_array  (GtkDialog *dialog,  gint n_params,  gint *new_order);
-		gtk_dialog_set_alternative_button_order_from_array(gtkDialog, newOrder.length, newOrder.ptr);
-	}
+	public void setAlternativeButtonOrderFromArray(int[] newOrder);
 }

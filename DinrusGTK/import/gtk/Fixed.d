@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkFixed.html
- * outPack = gtk
- * outFile = Fixed
- * strct   = GtkFixed
- * realStrct=
- * ctorStrct=
- * clss    = Fixed
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_fixed_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Fixed;
 
 public  import gtkD.gtkc.gtktypes;
@@ -102,38 +49,16 @@ public class Fixed : Container
 	protected GtkFixed* gtkFixed;
 	
 	
-	public GtkFixed* getFixedStruct()
-	{
-		return gtkFixed;
-	}
+	public GtkFixed* getFixedStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFixed;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkFixed* gtkFixed)
-	{
-		if(gtkFixed is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFixed);
-		if( ptr !is null )
-		{
-			this = cast(Fixed)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkFixed);
-		this.gtkFixed = gtkFixed;
-	}
+	public this (GtkFixed* gtkFixed);
 	
 	/**
 	 */
@@ -142,16 +67,7 @@ public class Fixed : Container
 	 * Creates a new GtkFixed.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_fixed_new (void);
-		auto p = gtk_fixed_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_fixed_new()");
-		}
-		this(cast(GtkFixed*) p);
-	}
+	public this ();
 	
 	/**
 	 * Adds a widget to a GtkFixed container at the given position.
@@ -160,11 +76,7 @@ public class Fixed : Container
 	 * x = the horizontal position to place the widget at.
 	 * y = the vertical position to place the widget at.
 	 */
-	public void put(Widget widget, int x, int y)
-	{
-		// void gtk_fixed_put (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
-		gtk_fixed_put(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
-	}
+	public void put(Widget widget, int x, int y);
 	
 	/**
 	 * Moves a child of a GtkFixed container to the given position.
@@ -173,22 +85,14 @@ public class Fixed : Container
 	 * x = the horizontal position to move the widget to.
 	 * y = the vertical position to move the widget to.
 	 */
-	public void move(Widget widget, int x, int y)
-	{
-		// void gtk_fixed_move (GtkFixed *fixed,  GtkWidget *widget,  gint x,  gint y);
-		gtk_fixed_move(gtkFixed, (widget is null) ? null : widget.getWidgetStruct(), x, y);
-	}
+	public void move(Widget widget, int x, int y);
 	
 	/**
 	 * Gets whether the GtkFixed has its own GdkWindow.
 	 * See gtk_fixed_set_has_window().
 	 * Returns: TRUE if fixed has its own window.
 	 */
-	public int getHasWindow()
-	{
-		// gboolean gtk_fixed_get_has_window (GtkFixed *fixed);
-		return gtk_fixed_get_has_window(gtkFixed);
-	}
+	public int getHasWindow();
 	
 	/**
 	 * Sets whether a GtkFixed widget is created with a separate
@@ -206,9 +110,5 @@ public class Fixed : Container
 	 * X position of child widget.
 	 * Default value: 0
 	 */
-	public void setHasWindow(int hasWindow)
-	{
-		// void gtk_fixed_set_has_window (GtkFixed *fixed,  gboolean has_window);
-		gtk_fixed_set_has_window(gtkFixed, hasWindow);
-	}
+	public void setHasWindow(int hasWindow);
 }

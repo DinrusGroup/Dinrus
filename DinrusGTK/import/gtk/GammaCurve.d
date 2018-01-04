@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkGammaCurve.html
- * outPack = gtk
- * outFile = GammaCurve
- * strct   = GtkGammaCurve
- * realStrct=
- * ctorStrct=
- * clss    = GammaCurve
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_gamma_curve_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.GammaCurve;
 
 public  import gtkD.gtkc.gtktypes;
@@ -88,38 +37,16 @@ public class GammaCurve : VBox
 	protected GtkGammaCurve* gtkGammaCurve;
 	
 	
-	public GtkGammaCurve* getGammaCurveStruct()
-	{
-		return gtkGammaCurve;
-	}
+	public GtkGammaCurve* getGammaCurveStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkGammaCurve;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkGammaCurve* gtkGammaCurve)
-	{
-		if(gtkGammaCurve is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkGammaCurve);
-		if( ptr !is null )
-		{
-			this = cast(GammaCurve)ptr;
-			return;
-		}
-		super(cast(GtkVBox*)gtkGammaCurve);
-		this.gtkGammaCurve = gtkGammaCurve;
-	}
+	public this (GtkGammaCurve* gtkGammaCurve);
 	
 	/**
 	 */
@@ -128,14 +55,5 @@ public class GammaCurve : VBox
 	 * Creates a new GtkGammaCurve.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_gamma_curve_new (void);
-		auto p = gtk_gamma_curve_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_gamma_curve_new()");
-		}
-		this(cast(GtkGammaCurve*) p);
-	}
+	public this ();
 }

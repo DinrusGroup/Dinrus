@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkItemFactory.html
- * outPack = gtk
- * outFile = ItemFactory
- * strct   = GtkItemFactory
- * realStrct=
- * ctorStrct=
- * clss    = ItemFactory
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_item_factory_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * 	- gtk_item_factory_create_menu_entries
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.AccelGroup
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkAccelGroup* -> AccelGroup
- * 	- GtkItemFactory* -> ItemFactory
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ItemFactory;
 
 public  import gtkD.gtkc.gtktypes;
@@ -83,38 +25,16 @@ public class ItemFactory : ObjectGtk
 	protected GtkItemFactory* gtkItemFactory;
 	
 	
-	public GtkItemFactory* getItemFactoryStruct()
-	{
-		return gtkItemFactory;
-	}
+	public GtkItemFactory* getItemFactoryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkItemFactory;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkItemFactory* gtkItemFactory)
-	{
-		if(gtkItemFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkItemFactory);
-		if( ptr !is null )
-		{
-			this = cast(ItemFactory)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkItemFactory);
-		this.gtkItemFactory = gtkItemFactory;
-	}
+	public this (GtkItemFactory* gtkItemFactory);
 	
 	/**
 	 */
@@ -133,16 +53,7 @@ public class ItemFactory : ObjectGtk
 	 *  menu items will be added, or NULL to create a new one
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GType containerType, string path, AccelGroup accelGroup)
-	{
-		// GtkItemFactory* gtk_item_factory_new (GType container_type,  const gchar *path,  GtkAccelGroup *accel_group);
-		auto p = gtk_item_factory_new(containerType, Str.toStringz(path), (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_item_factory_new(containerType, Str.toStringz(path), (accelGroup is null) ? null : accelGroup.getAccelGroupStruct())");
-		}
-		this(cast(GtkItemFactory*) p);
-	}
+	public this (GType containerType, string path, AccelGroup accelGroup);
 	
 	/**
 	 * Warning
@@ -156,11 +67,7 @@ public class ItemFactory : ObjectGtk
 	 * accelGroup =  a GtkAccelGroup to which the accelerators for the
 	 *  menu items will be added, or NULL to create a new one
 	 */
-	public void construct(GType containerType, string path, AccelGroup accelGroup)
-	{
-		// void gtk_item_factory_construct (GtkItemFactory *ifactory,  GType container_type,  const gchar *path,  GtkAccelGroup *accel_group);
-		gtk_item_factory_construct(gtkItemFactory, containerType, Str.toStringz(path), (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-	}
+	public void construct(GType containerType, string path, AccelGroup accelGroup);
 	
 	/**
 	 * Warning
@@ -181,11 +88,7 @@ public class ItemFactory : ObjectGtk
 	 * keyval =  key value of the accelerator
 	 * modifiers =  modifier combination of the accelerator
 	 */
-	public static void addForeign(Widget accelWidget, string fullPath, AccelGroup accelGroup, uint keyval, GdkModifierType modifiers)
-	{
-		// void gtk_item_factory_add_foreign (GtkWidget *accel_widget,  const gchar *full_path,  GtkAccelGroup *accel_group,  guint keyval,  GdkModifierType modifiers);
-		gtk_item_factory_add_foreign((accelWidget is null) ? null : accelWidget.getWidgetStruct(), Str.toStringz(fullPath), (accelGroup is null) ? null : accelGroup.getAccelGroupStruct(), keyval, modifiers);
-	}
+	public static void addForeign(Widget accelWidget, string fullPath, AccelGroup accelGroup, uint keyval, GdkModifierType modifiers);
 	
 	/**
 	 * Warning
@@ -195,16 +98,7 @@ public class ItemFactory : ObjectGtk
 	 * widget =  a widget
 	 * Returns: the item factory from which widget was created, or NULL
 	 */
-	public static ItemFactory fromWidget(Widget widget)
-	{
-		// GtkItemFactory* gtk_item_factory_from_widget (GtkWidget *widget);
-		auto p = gtk_item_factory_from_widget((widget is null) ? null : widget.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ItemFactory(cast(GtkItemFactory*) p);
-	}
+	public static ItemFactory fromWidget(Widget widget);
 	
 	/**
 	 * Warning
@@ -217,12 +111,8 @@ public class ItemFactory : ObjectGtk
 	 * widget =  a widget
 	 * Returns: the full path to widget if it has been created by an item factory, NULL otherwise. This value is owned by GTK+ and must not be modified or freed.
 	 */
-	public static string pathFromWidget(Widget widget)
-	{
-		// const gchar* gtk_item_factory_path_from_widget (GtkWidget *widget);
-		return Str.toString(gtk_item_factory_path_from_widget((widget is null) ? null : widget.getWidgetStruct()));
-	}
-	
+	public static string pathFromWidget(Widget widget);
+
 	/**
 	 * Warning
 	 * gtk_item_factory_get_item has been deprecated since version 2.4 and should not be used in newly-written code. Use GtkUIManager instead.
@@ -234,16 +124,7 @@ public class ItemFactory : ObjectGtk
 	 * path =  the path to the menu item
 	 * Returns: the menu item for the given path, or NULL if path doesn't lead to a menu item
 	 */
-	public Widget getItem(string path)
-	{
-		// GtkWidget* gtk_item_factory_get_item (GtkItemFactory *ifactory,  const gchar *path);
-		auto p = gtk_item_factory_get_item(gtkItemFactory, Str.toStringz(path));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getItem(string path);
 	
 	/**
 	 * Warning
@@ -256,16 +137,7 @@ public class ItemFactory : ObjectGtk
 	 * path =  the path to the widget
 	 * Returns: the widget for the given path, or NULL if path doesn't lead to a widget
 	 */
-	public Widget getWidget(string path)
-	{
-		// GtkWidget* gtk_item_factory_get_widget (GtkItemFactory *ifactory,  const gchar *path);
-		auto p = gtk_item_factory_get_widget(gtkItemFactory, Str.toStringz(path));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getWidget(string path);
 	
 	/**
 	 * Warning
@@ -279,16 +151,7 @@ public class ItemFactory : ObjectGtk
 	 *  of GtkItemFactoryEntry
 	 * Returns: the widget which corresponds to the given action, or NULL if no widget was found
 	 */
-	public Widget getWidgetByAction(uint action)
-	{
-		// GtkWidget* gtk_item_factory_get_widget_by_action  (GtkItemFactory *ifactory,  guint action);
-		auto p = gtk_item_factory_get_widget_by_action(gtkItemFactory, action);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getWidgetByAction(uint action);
 	
 	/**
 	 * Warning
@@ -300,16 +163,7 @@ public class ItemFactory : ObjectGtk
 	 *  of GtkItemFactoryEntry
 	 * Returns: the menu item which corresponds to the given action, or NULL if no menu item was found
 	 */
-	public Widget getItemByAction(uint action)
-	{
-		// GtkWidget* gtk_item_factory_get_item_by_action (GtkItemFactory *ifactory,  guint action);
-		auto p = gtk_item_factory_get_item_by_action(gtkItemFactory, action);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getItemByAction(uint action);
 	
 	/**
 	 * Warning
@@ -321,11 +175,7 @@ public class ItemFactory : ObjectGtk
 	 * callbackType =  1 if the callback function of entry is of type
 	 *  GtkItemFactoryCallback1, 2 if it is of type GtkItemFactoryCallback2
 	 */
-	public void createItem(GtkItemFactoryEntry* entry, void* callbackData, uint callbackType)
-	{
-		// void gtk_item_factory_create_item (GtkItemFactory *ifactory,  GtkItemFactoryEntry *entry,  gpointer callback_data,  guint callback_type);
-		gtk_item_factory_create_item(gtkItemFactory, entry, callbackData, callbackType);
-	}
+	public void createItem(GtkItemFactoryEntry* entry, void* callbackData, uint callbackType);
 	
 	/**
 	 * Warning
@@ -337,11 +187,7 @@ public class ItemFactory : ObjectGtk
 	 *  must by of type GtkItemFactoryCallback1
 	 * callbackData =  data passed to the callback functions of all entries
 	 */
-	public void createItems(uint nEntries, GtkItemFactoryEntry* entries, void* callbackData)
-	{
-		// void gtk_item_factory_create_items (GtkItemFactory *ifactory,  guint n_entries,  GtkItemFactoryEntry *entries,  gpointer callback_data);
-		gtk_item_factory_create_items(gtkItemFactory, nEntries, entries, callbackData);
-	}
+	public void createItems(uint nEntries, GtkItemFactoryEntry* entries, void* callbackData);
 	
 	/**
 	 * Warning
@@ -354,11 +200,7 @@ public class ItemFactory : ObjectGtk
 	 * callbackType =  1 if the callback functions in entries are of type
 	 *  GtkItemFactoryCallback1, 2 if they are of type GtkItemFactoryCallback2
 	 */
-	public void createItemsAc(uint nEntries, GtkItemFactoryEntry* entries, void* callbackData, uint callbackType)
-	{
-		// void gtk_item_factory_create_items_ac (GtkItemFactory *ifactory,  guint n_entries,  GtkItemFactoryEntry *entries,  gpointer callback_data,  guint callback_type);
-		gtk_item_factory_create_items_ac(gtkItemFactory, nEntries, entries, callbackData, callbackType);
-	}
+	public void createItemsAc(uint nEntries, GtkItemFactoryEntry* entries, void* callbackData, uint callbackType);
 	
 	/**
 	 * Warning
@@ -368,11 +210,7 @@ public class ItemFactory : ObjectGtk
 	 * Params:
 	 * path =  a path
 	 */
-	public void deleteItem(string path)
-	{
-		// void gtk_item_factory_delete_item (GtkItemFactory *ifactory,  const gchar *path);
-		gtk_item_factory_delete_item(gtkItemFactory, Str.toStringz(path));
-	}
+	public void deleteItem(string path);
 	
 	/**
 	 * Warning
@@ -382,11 +220,7 @@ public class ItemFactory : ObjectGtk
 	 * Params:
 	 * entry =  a GtkItemFactoryEntry
 	 */
-	public void deleteEntry(GtkItemFactoryEntry* entry)
-	{
-		// void gtk_item_factory_delete_entry (GtkItemFactory *ifactory,  GtkItemFactoryEntry *entry);
-		gtk_item_factory_delete_entry(gtkItemFactory, entry);
-	}
+	public void deleteEntry(GtkItemFactoryEntry* entry);
 	
 	/**
 	 * Warning
@@ -397,11 +231,7 @@ public class ItemFactory : ObjectGtk
 	 * nEntries =  the length of entries
 	 * entries =  an array of GtkItemFactoryEntrys
 	 */
-	public void deleteEntries(uint nEntries, GtkItemFactoryEntry* entries)
-	{
-		// void gtk_item_factory_delete_entries (GtkItemFactory *ifactory,  guint n_entries,  GtkItemFactoryEntry *entries);
-		gtk_item_factory_delete_entries(gtkItemFactory, nEntries, entries);
-	}
+	public void deleteEntries(uint nEntries, GtkItemFactoryEntry* entries);
 	
 	/**
 	 * Warning
@@ -422,11 +252,7 @@ public class ItemFactory : ObjectGtk
 	 * mouseButton =  the mouse button which was pressed to initiate the popup
 	 * time =  the time at which the activation event occurred
 	 */
-	public void popup(uint x, uint y, uint mouseButton, uint time)
-	{
-		// void gtk_item_factory_popup (GtkItemFactory *ifactory,  guint x,  guint y,  guint mouse_button,  guint32 time_);
-		gtk_item_factory_popup(gtkItemFactory, x, y, mouseButton, time);
-	}
+	public void popup(uint x, uint y, uint mouseButton, uint time);
 	
 	/**
 	 * Warning
@@ -452,11 +278,7 @@ public class ItemFactory : ObjectGtk
 	 * mouseButton =  the mouse button which was pressed to initiate the popup
 	 * time =  the time at which the activation event occurred
 	 */
-	public void popupWithData(void* popupData, GDestroyNotify destroy, uint x, uint y, uint mouseButton, uint time)
-	{
-		// void gtk_item_factory_popup_with_data (GtkItemFactory *ifactory,  gpointer popup_data,  GDestroyNotify destroy,  guint x,  guint y,  guint mouse_button,  guint32 time_);
-		gtk_item_factory_popup_with_data(gtkItemFactory, popupData, destroy, x, y, mouseButton, time);
-	}
+	public void popupWithData(void* popupData, GDestroyNotify destroy, uint x, uint y, uint mouseButton, uint time);
 	
 	/**
 	 * Warning
@@ -466,11 +288,7 @@ public class ItemFactory : ObjectGtk
 	 * is popped down again.
 	 * Returns: popup_data associated with ifactory
 	 */
-	public void* popupData()
-	{
-		// gpointer gtk_item_factory_popup_data (GtkItemFactory *ifactory);
-		return gtk_item_factory_popup_data(gtkItemFactory);
-	}
+	public void* popupData();
 	
 	/**
 	 * Warning
@@ -482,11 +300,7 @@ public class ItemFactory : ObjectGtk
 	 * widget =  a widget
 	 * Returns: popup_data associated with the item factory from which widget was created, or NULL if widget wasn't created by an item factory
 	 */
-	public static void* popupDataFromWidget(Widget widget)
-	{
-		// gpointer gtk_item_factory_popup_data_from_widget  (GtkWidget *widget);
-		return gtk_item_factory_popup_data_from_widget((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void* popupDataFromWidget(Widget widget);
 	
 	/**
 	 * Warning
@@ -499,16 +313,7 @@ public class ItemFactory : ObjectGtk
 	 *  "<name>"
 	 * Returns: the GtkItemFactory created for the given factory path, or NULL
 	 */
-	public static ItemFactory fromPath(string path)
-	{
-		// GtkItemFactory* gtk_item_factory_from_path (const gchar *path);
-		auto p = gtk_item_factory_from_path(Str.toStringz(path));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ItemFactory(cast(GtkItemFactory*) p);
-	}
+	public static ItemFactory fromPath(string path);
 	
 	/**
 	 * Warning
@@ -519,11 +324,7 @@ public class ItemFactory : ObjectGtk
 	 *  starts with a factory path
 	 * path =  a path
 	 */
-	public static void itemFactoriesPathDelete(string ifactoryPath, string path)
-	{
-		// void gtk_item_factories_path_delete (const gchar *ifactory_path,  const gchar *path);
-		gtk_item_factories_path_delete(Str.toStringz(ifactoryPath), Str.toStringz(path));
-	}
+	public static void itemFactoriesPathDelete(string ifactoryPath, string path);
 	
 	/**
 	 * Warning
@@ -536,9 +337,5 @@ public class ItemFactory : ObjectGtk
 	 * notify =  a GDestroyNotify function to be called when ifactory is
 	 *  destroyed and when the translation function is changed again
 	 */
-	public void setTranslateFunc(GtkTranslateFunc func, void* data, GDestroyNotify notify)
-	{
-		// void gtk_item_factory_set_translate_func (GtkItemFactory *ifactory,  GtkTranslateFunc func,  gpointer data,  GDestroyNotify notify);
-		gtk_item_factory_set_translate_func(gtkItemFactory, func, data, notify);
-	}
+	public void setTranslateFunc(GtkTranslateFunc func, void* data, GDestroyNotify notify);
 }

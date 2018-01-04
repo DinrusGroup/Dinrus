@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkImageMenuItem.html
- * outPack = gtk
- * outFile = ImageMenuItem
- * strct   = GtkImageMenuItem
- * realStrct=
- * ctorStrct=
- * clss    = ImageMenuItem
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_image_menu_item_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_image_menu_item_new_with_label
- * 	- gtk_image_menu_item_new_with_mnemonic
- * 	- gtk_image_menu_item_new_from_stock
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.AccelGroup
- * structWrap:
- * 	- GtkAccelGroup* -> AccelGroup
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ImageMenuItem;
 
 public  import gtkD.gtkc.gtktypes;
@@ -86,38 +27,16 @@ public class ImageMenuItem : MenuItem
 	protected GtkImageMenuItem* gtkImageMenuItem;
 	
 	
-	public GtkImageMenuItem* getImageMenuItemStruct()
-	{
-		return gtkImageMenuItem;
-	}
+	public GtkImageMenuItem* getImageMenuItemStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkImageMenuItem;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkImageMenuItem* gtkImageMenuItem)
-	{
-		if(gtkImageMenuItem is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkImageMenuItem);
-		if( ptr !is null )
-		{
-			this = cast(ImageMenuItem)ptr;
-			return;
-		}
-		super(cast(GtkMenuItem*)gtkImageMenuItem);
-		this.gtkImageMenuItem = gtkImageMenuItem;
-	}
+	public this (GtkImageMenuItem* gtkImageMenuItem);
 	
 	/**
 	 * Creates a new GtkImageMenuItem containing a label.
@@ -130,28 +49,7 @@ public class ImageMenuItem : MenuItem
 	 *  a new GtkImageMenuItem.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string label, bool mnemonic=true)
-	{
-		GtkImageMenuItem* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_image_menu_item_new_with_mnemonic  (const gchar *label);
-			p = cast(GtkImageMenuItem*)gtk_image_menu_item_new_with_mnemonic(Str.toStringz(label));
-		}
-		else
-		{
-			// GtkWidget* gtk_image_menu_item_new_with_label  (const gchar *label);
-			p = cast(GtkImageMenuItem*)gtk_image_menu_item_new_with_label(Str.toStringz(label));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_image_menu_item_new_with_");
-		}
-		
-		this(p);
-	}
+	public this (string label, bool mnemonic=true);
 	
 	/**
 	 * Creates a new GtkImageMenuItem containing the image and text from a
@@ -168,16 +66,7 @@ public class ImageMenuItem : MenuItem
 	 *  or NULL.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (StockID stockID, AccelGroup accelGroup)
-	{
-		// GtkWidget* gtk_image_menu_item_new_from_stock (const gchar *stock_id,  GtkAccelGroup *accel_group);
-		auto p = gtk_image_menu_item_new_from_stock(Str.toStringz(StockDesc[stockID]), (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_image_menu_item_new_from_stock");
-		}
-		this(cast(GtkImageMenuItem*) p);
-	}
+	public this (StockID stockID, AccelGroup accelGroup);
 	
 	/**
 	 */
@@ -189,42 +78,20 @@ public class ImageMenuItem : MenuItem
 	 * Params:
 	 * image =  a widget to set as the image for the menu item.
 	 */
-	public void setImage(Widget image)
-	{
-		// void gtk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,  GtkWidget *image);
-		gtk_image_menu_item_set_image(gtkImageMenuItem, (image is null) ? null : image.getWidgetStruct());
-	}
+	public void setImage(Widget image);
 	
 	/**
 	 * Gets the widget that is currently set as the image of image_menu_item.
 	 * See gtk_image_menu_item_set_image().
 	 * Returns: the widget set as image of image_menu_item.
 	 */
-	public Widget getImage()
-	{
-		// GtkWidget* gtk_image_menu_item_get_image (GtkImageMenuItem *image_menu_item);
-		auto p = gtk_image_menu_item_get_image(gtkImageMenuItem);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getImage();
 	
 	/**
 	 * Creates a new GtkImageMenuItem with an empty label.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_image_menu_item_new (void);
-		auto p = gtk_image_menu_item_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_image_menu_item_new()");
-		}
-		this(cast(GtkImageMenuItem*) p);
-	}
+	public this ();
 	
 	/**
 	 * Checks whether the label set in the menuitem is used as a
@@ -232,11 +99,7 @@ public class ImageMenuItem : MenuItem
 	 * Since 2.16
 	 * Returns: TRUE if the label set in the menuitem is used as a stock id to select the stock item for the item
 	 */
-	public int getUseStock()
-	{
-		// gboolean gtk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item);
-		return gtk_image_menu_item_get_use_stock(gtkImageMenuItem);
-	}
+	public int getUseStock();
 	
 	/**
 	 * If TRUE, the label set in the menuitem is used as a
@@ -245,11 +108,7 @@ public class ImageMenuItem : MenuItem
 	 * Params:
 	 * useStock =  TRUE if the menuitem should use a stock item
 	 */
-	public void setUseStock(int useStock)
-	{
-		// void gtk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,  gboolean use_stock);
-		gtk_image_menu_item_set_use_stock(gtkImageMenuItem, useStock);
-	}
+	public void setUseStock(int useStock);
 	
 	/**
 	 * Returns whether the menu item will ignore the "gtk-menu-images"
@@ -257,11 +116,7 @@ public class ImageMenuItem : MenuItem
 	 * Since 2.16
 	 * Returns: TRUE if the menu item will always show the image
 	 */
-	public int getAlwaysShowImage()
-	{
-		// gboolean gtk_image_menu_item_get_always_show_image  (GtkImageMenuItem *image_menu_item);
-		return gtk_image_menu_item_get_always_show_image(gtkImageMenuItem);
-	}
+	public int getAlwaysShowImage();
 	
 	/**
 	 * If TRUE, the menu item will ignore the "gtk-menu-images"
@@ -272,11 +127,7 @@ public class ImageMenuItem : MenuItem
 	 * Params:
 	 * alwaysShow =  TRUE if the menuitem should always show the image
 	 */
-	public void setAlwaysShowImage(int alwaysShow)
-	{
-		// void gtk_image_menu_item_set_always_show_image  (GtkImageMenuItem *image_menu_item,  gboolean always_show);
-		gtk_image_menu_item_set_always_show_image(gtkImageMenuItem, alwaysShow);
-	}
+	public void setAlwaysShowImage(int alwaysShow);
 	
 	/**
 	 * Specifies an accel_group to add the menu items accelerator to
@@ -289,9 +140,5 @@ public class ImageMenuItem : MenuItem
 	 * Params:
 	 * accelGroup =  the GtkAccelGroup
 	 */
-	public void setAccelGroup(AccelGroup accelGroup)
-	{
-		// void gtk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,  GtkAccelGroup *accel_group);
-		gtk_image_menu_item_set_accel_group(gtkImageMenuItem, (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-	}
+	public void setAccelGroup(AccelGroup accelGroup);
 }

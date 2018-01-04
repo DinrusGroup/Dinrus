@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkFileChooserDialog.html
- * outPack = gtk
- * outFile = FileChooserDialog
- * strct   = GtkFileChooserDialog
- * realStrct=
- * ctorStrct=
- * clss    = FileChooserDialog
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- FileChooserIF
- * prefixes:
- * 	- gtk_file_chooser_dialog_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_file_chooser_dialog_new
- * 	- gtk_file_chooser_dialog_new_with_backend
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Window
- * 	- gtkD.gtk.FileChooserT
- * 	- gtkD.gtk.FileChooserIF
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.FileChooserDialog;
 
 public  import gtkD.gtkc.gtktypes;
@@ -166,38 +108,16 @@ public class FileChooserDialog : Dialog, FileChooserIF
 	protected GtkFileChooserDialog* gtkFileChooserDialog;
 	
 	
-	public GtkFileChooserDialog* getFileChooserDialogStruct()
-	{
-		return gtkFileChooserDialog;
-	}
+	public GtkFileChooserDialog* getFileChooserDialogStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFileChooserDialog;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkFileChooserDialog* gtkFileChooserDialog)
-	{
-		if(gtkFileChooserDialog is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFileChooserDialog);
-		if( ptr !is null )
-		{
-			this = cast(FileChooserDialog)ptr;
-			return;
-		}
-		super(cast(GtkDialog*)gtkFileChooserDialog);
-		this.gtkFileChooserDialog = gtkFileChooserDialog;
-	}
+	public this (GtkFileChooserDialog* gtkFileChooserDialog);
 	
 	// add the FileChooser capabilities
 	mixin FileChooserT!(GtkFileChooserDialog);
@@ -214,35 +134,7 @@ public class FileChooserDialog : Dialog, FileChooserIF
 	 *  responses = response ID's for the buttons
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	this(string title, Window parent, FileChooserAction action,  string[] buttonsText=null, ResponseType[] responses=null)
-	{
-		if ( buttonsText  is  null )
-		{
-			buttonsText ~= "OK";
-			buttonsText ~= "Cancel";
-		}
-		if ( responses  is  null )
-		{
-			responses ~= ResponseType.GTK_RESPONSE_OK;
-			responses ~= ResponseType.GTK_RESPONSE_CANCEL;
-		}
-		
-		auto p = gtk_file_chooser_dialog_new(
-		Str.toStringz(title),
-		parent.getWindowStruct(),
-		action,
-		null,
-		0);
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_chooser_dialog_new");
-		}
-		
-		this(cast(GtkFileChooserDialog*) p);
-		
-		addButtons(buttonsText, responses);
-	}
+	this(string title, Window parent, FileChooserAction action,  string[] buttonsText=null, ResponseType[] responses=null);
 	
 	/**
 	 * Creates a new GtkFileChooserDialog with a specified backend. This is
@@ -261,38 +153,7 @@ public class FileChooserDialog : Dialog, FileChooserIF
 	 *  GtkFileChooser, GtkDialog
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string title, Window parent, GtkFileChooserAction action, string backend,  string[] buttonsText=null, ResponseType[] responses=null)
-	{
-		// GtkWidget* gtk_file_chooser_dialog_new_with_backend  (const gchar *title,  GtkWindow *parent,  GtkFileChooserAction action,  const gchar *backend,  const gchar *first_button_text,  ...);
-		auto p = gtk_file_chooser_dialog_new_with_backend(
-		Str.toStringz(title),
-		parent.getWindowStruct(),
-		action,
-		Str.toStringz(backend),
-		null,
-		0
-		);
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_chooser_dialog_new_with_backend");
-		}
-		
-		this(cast(GtkFileChooserDialog*) p);
-		
-		if ( buttonsText  is  null )
-		{
-			buttonsText ~= "OK";
-			buttonsText ~= "Cancel";
-		}
-		if ( responses  is  null )
-		{
-			responses ~= ResponseType.GTK_RESPONSE_OK;
-			responses ~= ResponseType.GTK_RESPONSE_CANCEL;
-		}
-		
-		addButtons(buttonsText, responses);
-	}
+	public this (string title, Window parent, GtkFileChooserAction action, string backend,  string[] buttonsText=null, ResponseType[] responses=null);
 	
 	/**
 	 */

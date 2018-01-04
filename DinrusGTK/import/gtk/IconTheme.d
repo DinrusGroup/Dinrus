@@ -1,69 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkIconTheme.html
- * outPack = gtk
- * outFile = IconTheme
- * strct   = GtkIconTheme
- * realStrct=
- * ctorStrct=
- * clss    = IconTheme
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_icon_theme_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * 	- gtk_icon_info_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gio.IconIF
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gtk.IconInfo
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GIcon* -> IconIF
- * 	- GList* -> ListG
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkScreen* -> Screen
- * 	- GtkIconInfo* -> IconInfo
- * 	- GtkIconTheme* -> IconTheme
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IconTheme;
 
 public  import gtkD.gtkc.gtktypes;
@@ -158,38 +92,16 @@ public class IconTheme : ObjectG
 	protected GtkIconTheme* gtkIconTheme;
 	
 	
-	public GtkIconTheme* getIconThemeStruct()
-	{
-		return gtkIconTheme;
-	}
+	public GtkIconTheme* getIconThemeStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkIconTheme;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkIconTheme* gtkIconTheme)
-	{
-		if(gtkIconTheme is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkIconTheme);
-		if( ptr !is null )
-		{
-			this = cast(IconTheme)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkIconTheme);
-		this.gtkIconTheme = gtkIconTheme;
-	}
+	public this (GtkIconTheme* gtkIconTheme);
 	
 	/**
 	 */
@@ -201,28 +113,8 @@ public class IconTheme : ObjectG
 	 * that a change has occurred in the contents of the current
 	 * icon theme.
 	 */
-	void addOnChanged(void delegate(IconTheme) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkIconTheme* iconThemeStruct, IconTheme iconTheme)
-	{
-		foreach ( void delegate(IconTheme) dlg ; iconTheme.onChangedListeners )
-		{
-			dlg(iconTheme);
-		}
-	}
+	void addOnChanged(void delegate(IconTheme) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkIconTheme* iconThemeStruct, IconTheme iconTheme);
 	
 	
 	/**
@@ -234,16 +126,7 @@ public class IconTheme : ObjectG
 	 * Since 2.4
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkIconTheme * gtk_icon_theme_new (void);
-		auto p = gtk_icon_theme_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_icon_theme_new()");
-		}
-		this(cast(GtkIconTheme*) p);
-	}
+	public this ();
 	
 	/**
 	 * Gets the icon theme for the default screen. See
@@ -251,16 +134,7 @@ public class IconTheme : ObjectG
 	 * Since 2.4
 	 * Returns: A unique GtkIconTheme associated with the default screen. This icon theme is associated with the screen and can be used as long as the screen is open. Do not ref or unref it.
 	 */
-	public static IconTheme getDefault()
-	{
-		// GtkIconTheme * gtk_icon_theme_get_default (void);
-		auto p = gtk_icon_theme_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconTheme(cast(GtkIconTheme*) p);
-	}
+	public static IconTheme getDefault();
 	
 	/**
 	 * Gets the icon theme object associated with screen; if this
@@ -276,16 +150,7 @@ public class IconTheme : ObjectG
 	 * screen =  a GdkScreen
 	 * Returns: A unique GtkIconTheme associated with the given screen. This icon theme is associated with the screen and can be used as long as the screen is open. Do not ref or unref it.
 	 */
-	public static IconTheme getForScreen(Screen screen)
-	{
-		// GtkIconTheme * gtk_icon_theme_get_for_screen (GdkScreen *screen);
-		auto p = gtk_icon_theme_get_for_screen((screen is null) ? null : screen.getScreenStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconTheme(cast(GtkIconTheme*) p);
-	}
+	public static IconTheme getForScreen(Screen screen);
 	
 	/**
 	 * Sets the screen for an icon theme; the screen is used
@@ -295,11 +160,7 @@ public class IconTheme : ObjectG
 	 * Params:
 	 * screen =  a GdkScreen
 	 */
-	public void setScreen(Screen screen)
-	{
-		// void gtk_icon_theme_set_screen (GtkIconTheme *icon_theme,  GdkScreen *screen);
-		gtk_icon_theme_set_screen(gtkIconTheme, (screen is null) ? null : screen.getScreenStruct());
-	}
+	public void setScreen(Screen screen);
 	
 	/**
 	 * Sets the search path for the icon theme object. When looking
@@ -320,11 +181,7 @@ public class IconTheme : ObjectG
 	 * path =  array of directories that are searched for icon themes
 	 * nElements =  number of elements in path.
 	 */
-	public void setSearchPath(char*[] path, int nElements)
-	{
-		// void gtk_icon_theme_set_search_path (GtkIconTheme *icon_theme,  const gchar *path[],  gint n_elements);
-		gtk_icon_theme_set_search_path(gtkIconTheme, path, nElements);
-	}
+	public void setSearchPath(char*[] path, int nElements);
 	
 	/**
 	 * Gets the current search path. See gtk_icon_theme_set_search_path().
@@ -335,11 +192,7 @@ public class IconTheme : ObjectG
 	 * nElements =  location to store number of elements
 	 *  in path, or NULL
 	 */
-	public void getSearchPath(char**[] path, int* nElements)
-	{
-		// void gtk_icon_theme_get_search_path (GtkIconTheme *icon_theme,  gchar **path[],  gint *n_elements);
-		gtk_icon_theme_get_search_path(gtkIconTheme, path, nElements);
-	}
+	public void getSearchPath(char**[] path, int* nElements);
 	
 	/**
 	 * Appends a directory to the search path.
@@ -348,11 +201,7 @@ public class IconTheme : ObjectG
 	 * Params:
 	 * path =  directory name to append to the icon path
 	 */
-	public void appendSearchPath(string path)
-	{
-		// void gtk_icon_theme_append_search_path (GtkIconTheme *icon_theme,  const gchar *path);
-		gtk_icon_theme_append_search_path(gtkIconTheme, Str.toStringz(path));
-	}
+	public void appendSearchPath(string path);
 	
 	/**
 	 * Prepends a directory to the search path.
@@ -361,11 +210,7 @@ public class IconTheme : ObjectG
 	 * Params:
 	 * path =  directory name to prepend to the icon path
 	 */
-	public void prependSearchPath(string path)
-	{
-		// void gtk_icon_theme_prepend_search_path (GtkIconTheme *icon_theme,  const gchar *path);
-		gtk_icon_theme_prepend_search_path(gtkIconTheme, Str.toStringz(path));
-	}
+	public void prependSearchPath(string path);
 	
 	/**
 	 * Sets the name of the icon theme that the GtkIconTheme object uses
@@ -377,12 +222,8 @@ public class IconTheme : ObjectG
 	 * themeName =  name of icon theme to use instead of configured theme,
 	 *  or NULL to unset a previously set custom theme
 	 */
-	public void setCustomTheme(string themeName)
-	{
-		// void gtk_icon_theme_set_custom_theme (GtkIconTheme *icon_theme,  const gchar *theme_name);
-		gtk_icon_theme_set_custom_theme(gtkIconTheme, Str.toStringz(themeName));
-	}
-	
+	public void setCustomTheme(string themeName);
+
 	/**
 	 * Checks whether an icon theme includes an icon
 	 * for a particular name.
@@ -391,11 +232,7 @@ public class IconTheme : ObjectG
 	 * iconName =  the name of an icon
 	 * Returns: TRUE if icon_theme includes an icon for icon_name.
 	 */
-	public int hasIcon(string iconName)
-	{
-		// gboolean gtk_icon_theme_has_icon (GtkIconTheme *icon_theme,  const gchar *icon_name);
-		return gtk_icon_theme_has_icon(gtkIconTheme, Str.toStringz(iconName));
-	}
+	public int hasIcon(string iconName);
 	
 	/**
 	 * Looks up a named icon and returns a structure containing
@@ -410,16 +247,7 @@ public class IconTheme : ObjectG
 	 * flags =  flags modifying the behavior of the icon lookup
 	 * Returns: a GtkIconInfo structure containing informationabout the icon, or NULL if the icon wasn't found. Free withgtk_icon_info_free()
 	 */
-	public IconInfo lookupIcon(string iconName, int size, GtkIconLookupFlags flags)
-	{
-		// GtkIconInfo * gtk_icon_theme_lookup_icon (GtkIconTheme *icon_theme,  const gchar *icon_name,  gint size,  GtkIconLookupFlags flags);
-		auto p = gtk_icon_theme_lookup_icon(gtkIconTheme, Str.toStringz(iconName), size, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconInfo(cast(GtkIconInfo*) p);
-	}
+	public IconInfo lookupIcon(string iconName, int size, GtkIconLookupFlags flags);
 	
 	/**
 	 * Looks up a named icon and returns a structure containing
@@ -437,16 +265,7 @@ public class IconTheme : ObjectG
 	 * flags =  flags modifying the behavior of the icon lookup
 	 * Returns: a GtkIconInfo structure containing informationabout the icon, or NULL if the icon wasn't found. Free withgtk_icon_info_free()
 	 */
-	public IconInfo chooseIcon(char*[] iconNames, int size, GtkIconLookupFlags flags)
-	{
-		// GtkIconInfo * gtk_icon_theme_choose_icon (GtkIconTheme *icon_theme,  const gchar *icon_names[],  gint size,  GtkIconLookupFlags flags);
-		auto p = gtk_icon_theme_choose_icon(gtkIconTheme, iconNames, size, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconInfo(cast(GtkIconInfo*) p);
-	}
+	public IconInfo chooseIcon(char*[] iconNames, int size, GtkIconLookupFlags flags);
 	
 	/**
 	 * Looks up an icon and returns a structure containing
@@ -460,16 +279,7 @@ public class IconTheme : ObjectG
 	 * flags =  flags modifying the behavior of the icon lookup
 	 * Returns: a GtkIconInfo structure containing  information about the icon, or NULL if the icon  wasn't found. Free with gtk_icon_info_free()
 	 */
-	public IconInfo lookupByGicon(IconIF icon, int size, GtkIconLookupFlags flags)
-	{
-		// GtkIconInfo * gtk_icon_theme_lookup_by_gicon (GtkIconTheme *icon_theme,  GIcon *icon,  gint size,  GtkIconLookupFlags flags);
-		auto p = gtk_icon_theme_lookup_by_gicon(gtkIconTheme, (icon is null) ? null : icon.getIconTStruct(), size, flags);
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconInfo(cast(GtkIconInfo*) p);
-	}
+	public IconInfo lookupByGicon(IconIF icon, int size, GtkIconLookupFlags flags);
 	
 	/**
 	 * Looks up an icon in an icon theme, scales it to the given size
@@ -492,24 +302,7 @@ public class IconTheme : ObjectG
 	 * Returns: the rendered icon; this may be a newly created icon or a new reference to an internal icon, so you must not modify the icon. Use g_object_unref() to release your reference to the icon. NULL if the icon isn't found.
 	 * Throws: GException on failure.
 	 */
-	public Pixbuf loadIcon(string iconName, int size, GtkIconLookupFlags flags)
-	{
-		// GdkPixbuf * gtk_icon_theme_load_icon (GtkIconTheme *icon_theme,  const gchar *icon_name,  gint size,  GtkIconLookupFlags flags,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_icon_theme_load_icon(gtkIconTheme, Str.toStringz(iconName), size, flags, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf loadIcon(string iconName, int size, GtkIconLookupFlags flags);
 	
 	/**
 	 * Gets the list of contexts available within the current
@@ -517,16 +310,7 @@ public class IconTheme : ObjectG
 	 * Since 2.12
 	 * Returns: a GList list holding the names of all the contexts in the theme. You must first free each element in the list with g_free(), then free the list itself with g_list_free().
 	 */
-	public ListG listContexts()
-	{
-		// GList * gtk_icon_theme_list_contexts (GtkIconTheme *icon_theme);
-		auto p = gtk_icon_theme_list_contexts(gtkIconTheme);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG listContexts();
 	
 	/**
 	 * Lists the icons in the current icon theme. Only a subset
@@ -540,16 +324,7 @@ public class IconTheme : ObjectG
 	 *  or NULL to list all icons.
 	 * Returns: a GList list holding the names of all the icons in the theme. You must first free each element in the list with g_free(), then free the list itself with g_list_free().
 	 */
-	public ListG listIcons(string context)
-	{
-		// GList * gtk_icon_theme_list_icons (GtkIconTheme *icon_theme,  const gchar *context);
-		auto p = gtk_icon_theme_list_icons(gtkIconTheme, Str.toStringz(context));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG listIcons(string context);
 	
 	/**
 	 * Returns an array of integers describing the sizes at which
@@ -561,11 +336,7 @@ public class IconTheme : ObjectG
 	 * iconName =  the name of an icon
 	 * Returns: An newly allocated array describing the sizes atwhich the icon is available. The array should be freed with g_free()when it is no longer needed.
 	 */
-	public int* getIconSizes(string iconName)
-	{
-		// gint * gtk_icon_theme_get_icon_sizes (GtkIconTheme *icon_theme,  const gchar *icon_name);
-		return gtk_icon_theme_get_icon_sizes(gtkIconTheme, Str.toStringz(iconName));
-	}
+	public int* getIconSizes(string iconName);
 	
 	/**
 	 * Gets the name of an icon that is representative of the
@@ -574,11 +345,7 @@ public class IconTheme : ObjectG
 	 * Since 2.4
 	 * Returns: the name of an example icon or NULL. Free with g_free().
 	 */
-	public string getExampleIconName()
-	{
-		// char * gtk_icon_theme_get_example_icon_name  (GtkIconTheme *icon_theme);
-		return Str.toString(gtk_icon_theme_get_example_icon_name(gtkIconTheme));
-	}
+	public string getExampleIconName();
 	
 	/**
 	 * Checks to see if the icon theme has changed; if it has, any
@@ -587,11 +354,7 @@ public class IconTheme : ObjectG
 	 * Since 2.4
 	 * Returns: TRUE if the icon theme has changed and needed to be reloaded.
 	 */
-	public int rescanIfNeeded()
-	{
-		// gboolean gtk_icon_theme_rescan_if_needed (GtkIconTheme *icon_theme);
-		return gtk_icon_theme_rescan_if_needed(gtkIconTheme);
-	}
+	public int rescanIfNeeded();
 	
 	/**
 	 * Registers a built-in icon for icon theme lookups. The idea
@@ -614,9 +377,5 @@ public class IconTheme : ObjectG
 	 * pixbuf =  GdkPixbuf that contains the image to use
 	 *  for icon_name.
 	 */
-	public static void addBuiltinIcon(string iconName, int size, Pixbuf pixbuf)
-	{
-		// void gtk_icon_theme_add_builtin_icon (const gchar *icon_name,  gint size,  GdkPixbuf *pixbuf);
-		gtk_icon_theme_add_builtin_icon(Str.toStringz(iconName), size, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public static void addBuiltinIcon(string iconName, int size, Pixbuf pixbuf);
 }

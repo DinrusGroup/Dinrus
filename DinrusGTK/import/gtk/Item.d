@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkItem.html
- * outPack = gtk
- * outFile = Item
- * strct   = GtkItem
- * realStrct=
- * ctorStrct=
- * clss    = Item
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_item_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Item;
 
 public  import gtkD.gtkc.gtktypes;
@@ -76,38 +25,16 @@ public class Item : Bin
 	protected GtkItem* gtkItem;
 	
 	
-	public GtkItem* getItemStruct()
-	{
-		return gtkItem;
-	}
+	public GtkItem* getItemStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkItem;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkItem* gtkItem)
-	{
-		if(gtkItem is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkItem);
-		if( ptr !is null )
-		{
-			this = cast(Item)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkItem);
-		this.gtkItem = gtkItem;
-	}
+	public this (GtkItem* gtkItem);
 	
 	/**
 	 */
@@ -117,108 +44,36 @@ public class Item : Bin
 	/**
 	 * Emitted when the item is deselected.
 	 */
-	void addOnDeselect(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("deselect" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"deselect",
-			cast(GCallback)&callBackDeselect,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["deselect"] = 1;
-		}
-		onDeselectListeners ~= dlg;
-	}
-	extern(C) static void callBackDeselect(GtkItem* itemStruct, Item item)
-	{
-		foreach ( void delegate(Item) dlg ; item.onDeselectListeners )
-		{
-			dlg(item);
-		}
-	}
+	void addOnDeselect(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDeselect(GtkItem* itemStruct, Item item);
 	
 	void delegate(Item)[] onSelectListeners;
 	/**
 	 * Emitted when the item is selected.
 	 */
-	void addOnSelect(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("select" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"select",
-			cast(GCallback)&callBackSelect,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["select"] = 1;
-		}
-		onSelectListeners ~= dlg;
-	}
-	extern(C) static void callBackSelect(GtkItem* itemStruct, Item item)
-	{
-		foreach ( void delegate(Item) dlg ; item.onSelectListeners )
-		{
-			dlg(item);
-		}
-	}
+	void addOnSelect(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSelect(GtkItem* itemStruct, Item item);
 	
 	void delegate(Item)[] onToggleListeners;
 	/**
 	 * Emitted when the item is toggled.
 	 */
-	void addOnToggle(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toggle" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toggle",
-			cast(GCallback)&callBackToggle,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toggle"] = 1;
-		}
-		onToggleListeners ~= dlg;
-	}
-	extern(C) static void callBackToggle(GtkItem* itemStruct, Item item)
-	{
-		foreach ( void delegate(Item) dlg ; item.onToggleListeners )
-		{
-			dlg(item);
-		}
-	}
+	void addOnToggle(void delegate(Item) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToggle(GtkItem* itemStruct, Item item);
 	
 	
 	/**
 	 * Emits the "select" signal on the given item.
 	 */
-	public void select()
-	{
-		// void gtk_item_select (GtkItem *item);
-		gtk_item_select(gtkItem);
-	}
+	public void select();
 	
 	/**
 	 * Emits the "deselect" signal on the given item.
 	 */
-	public void deselect()
-	{
-		// void gtk_item_deselect (GtkItem *item);
-		gtk_item_deselect(gtkItem);
-	}
+	public void deselect();
 	
 	/**
 	 * Emits the "toggle" signal on the given item.
 	 */
-	public void toggle()
-	{
-		// void gtk_item_toggle (GtkItem *item);
-		gtk_item_toggle(gtkItem);
-	}
+	public void toggle();
 }

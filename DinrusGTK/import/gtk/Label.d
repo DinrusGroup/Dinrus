@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkLabel.html
- * outPack = gtk
- * outFile = Label
- * strct   = GtkLabel
- * realStrct=
- * ctorStrct=
- * clss    = Label
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_label_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_label_new
- * 	- gtk_label_new_with_mnemonic
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.pango.PgAttributeList
- * 	- gtkD.pango.PgLayout
- * structWrap:
- * 	- GtkWidget* -> Widget
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoLayout* -> PgLayout
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Label;
 
 public  import gtkD.gtkc.gtktypes;
@@ -184,38 +124,16 @@ public class Label : Misc
 	protected GtkLabel* gtkLabel;
 	
 	
-	public GtkLabel* getLabelStruct()
-	{
-		return gtkLabel;
-	}
+	public GtkLabel* getLabelStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkLabel;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkLabel* gtkLabel)
-	{
-		if(gtkLabel is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkLabel);
-		if( ptr !is null )
-		{
-			this = cast(Label)ptr;
-			return;
-		}
-		super(cast(GtkMisc*)gtkLabel);
-		this.gtkLabel = gtkLabel;
-	}
+	public this (GtkLabel* gtkLabel);
 	
 	/**
 	 * Creates a new GtkLabel, containing the text in str.
@@ -237,28 +155,7 @@ public class Label : Misc
 	 *  mnemonic = when false uses the literal text passed in without mnemonic
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string str, bool mnemonic=true)
-	{
-		GtkLabel* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_label_new_with_mnemonic (const gchar *str);
-			p = cast(GtkLabel*)gtk_label_new_with_mnemonic(Str.toStringz(str));
-		}
-		else
-		{
-			// GtkWidget* gtk_label_new (const gchar *str);
-			p = cast(GtkLabel*)gtk_label_new(Str.toStringz(str));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_label_new");
-		}
-		
-		this(p);
-	}
+	public this (string str, bool mnemonic=true);
 	
 	/**
 	 */
@@ -273,28 +170,8 @@ public class Label : Misc
 	 * The default bindings for this signal are all forms of the Enter key.
 	 * Since 2.18
 	 */
-	void addOnActivateCurrentLink(void delegate(Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate-current-link" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate-current-link",
-			cast(GCallback)&callBackActivateCurrentLink,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate-current-link"] = 1;
-		}
-		onActivateCurrentLinkListeners ~= dlg;
-	}
-	extern(C) static void callBackActivateCurrentLink(GtkLabel* labelStruct, Label label)
-	{
-		foreach ( void delegate(Label) dlg ; label.onActivateCurrentLinkListeners )
-		{
-			dlg(label);
-		}
-	}
+	void addOnActivateCurrentLink(void delegate(Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivateCurrentLink(GtkLabel* labelStruct, Label label);
 	
 	bool delegate(string, Label)[] onActivateLinkListeners;
 	/**
@@ -303,33 +180,8 @@ public class Label : Misc
 	 * which is to call gtk_show_uri().
 	 * Since 2.18
 	 */
-	void addOnActivateLink(bool delegate(string, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate-link" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate-link",
-			cast(GCallback)&callBackActivateLink,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate-link"] = 1;
-		}
-		onActivateLinkListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackActivateLink(GtkLabel* labelStruct, gchar* uri, Label label)
-	{
-		foreach ( bool delegate(string, Label) dlg ; label.onActivateLinkListeners )
-		{
-			if ( dlg(Str.toString(uri), label) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnActivateLink(bool delegate(string, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackActivateLink(GtkLabel* labelStruct, gchar* uri, Label label);
 	
 	void delegate(Label)[] onCopyClipboardListeners;
 	/**
@@ -338,28 +190,8 @@ public class Label : Misc
 	 * which gets emitted to copy the selection to the clipboard.
 	 * The default binding for this signal is Ctrl-c.
 	 */
-	void addOnCopyClipboard(void delegate(Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("copy-clipboard" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"copy-clipboard",
-			cast(GCallback)&callBackCopyClipboard,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["copy-clipboard"] = 1;
-		}
-		onCopyClipboardListeners ~= dlg;
-	}
-	extern(C) static void callBackCopyClipboard(GtkLabel* labelStruct, Label label)
-	{
-		foreach ( void delegate(Label) dlg ; label.onCopyClipboardListeners )
-		{
-			dlg(label);
-		}
-	}
+	void addOnCopyClipboard(void delegate(Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCopyClipboard(GtkLabel* labelStruct, Label label);
 	
 	void delegate(GtkMovementStep, gint, gboolean, Label)[] onMoveCursorListeners;
 	/**
@@ -379,28 +211,8 @@ public class Label : Misc
 	 * Ctrl-arrow key combinations move by words/paragraphs
 	 * Home/End keys move to the ends of the buffer
 	 */
-	void addOnMoveCursor(void delegate(GtkMovementStep, gint, gboolean, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-cursor" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-cursor",
-			cast(GCallback)&callBackMoveCursor,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-cursor"] = 1;
-		}
-		onMoveCursorListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveCursor(GtkLabel* entryStruct, GtkMovementStep step, gint count, gboolean extendSelection, Label label)
-	{
-		foreach ( void delegate(GtkMovementStep, gint, gboolean, Label) dlg ; label.onMoveCursorListeners )
-		{
-			dlg(step, count, extendSelection, label);
-		}
-	}
+	void addOnMoveCursor(void delegate(GtkMovementStep, gint, gboolean, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveCursor(GtkLabel* entryStruct, GtkMovementStep step, gint count, gboolean extendSelection, Label label);
 	
 	void delegate(GtkMenu*, Label)[] onPopulatePopupListeners;
 	/**
@@ -410,28 +222,8 @@ public class Label : Misc
 	 * If you need to add items to the context menu, connect
 	 * to this signal and append your menuitems to the menu.
 	 */
-	void addOnPopulatePopup(void delegate(GtkMenu*, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("populate-popup" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"populate-popup",
-			cast(GCallback)&callBackPopulatePopup,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["populate-popup"] = 1;
-		}
-		onPopulatePopupListeners ~= dlg;
-	}
-	extern(C) static void callBackPopulatePopup(GtkLabel* labelStruct, GtkMenu* menu, Label label)
-	{
-		foreach ( void delegate(GtkMenu*, Label) dlg ; label.onPopulatePopupListeners )
-		{
-			dlg(menu, label);
-		}
-	}
+	void addOnPopulatePopup(void delegate(GtkMenu*, Label) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopulatePopup(GtkLabel* labelStruct, GtkMenu* menu, Label label);
 	
 	
 	/**
@@ -441,12 +233,8 @@ public class Label : Misc
 	 * Params:
 	 * str =  The text you want to set
 	 */
-	public void setText(string str)
-	{
-		// void gtk_label_set_text (GtkLabel *label,  const gchar *str);
-		gtk_label_set_text(gtkLabel, Str.toStringz(str));
-	}
-	
+	public void setText(string str);
+
 	/**
 	 * Sets a PangoAttrList; the attributes in the list are applied to the
 	 * label text.
@@ -460,11 +248,7 @@ public class Label : Misc
 	 * Params:
 	 * attrs =  a PangoAttrList
 	 */
-	public void setAttributes(PgAttributeList attrs)
-	{
-		// void gtk_label_set_attributes (GtkLabel *label,  PangoAttrList *attrs);
-		gtk_label_set_attributes(gtkLabel, (attrs is null) ? null : attrs.getPgAttributeListStruct());
-	}
+	public void setAttributes(PgAttributeList attrs);
 	
 	/**
 	 * Parses str which is marked up with the Pango text markup language, setting the
@@ -473,11 +257,7 @@ public class Label : Misc
 	 * Params:
 	 * str =  a markup string (see Pango markup format)
 	 */
-	public void setMarkup(string str)
-	{
-		// void gtk_label_set_markup (GtkLabel *label,  const gchar *str);
-		gtk_label_set_markup(gtkLabel, Str.toStringz(str));
-	}
+	public void setMarkup(string str);
 	
 	/**
 	 * Parses str which is marked up with the Pango text markup language,
@@ -489,11 +269,7 @@ public class Label : Misc
 	 * Params:
 	 * str =  a markup string (see Pango markup format)
 	 */
-	public void setMarkupWithMnemonic(string str)
-	{
-		// void gtk_label_set_markup_with_mnemonic (GtkLabel *label,  const gchar *str);
-		gtk_label_set_markup_with_mnemonic(gtkLabel, Str.toStringz(str));
-	}
+	public void setMarkupWithMnemonic(string str);
 	
 	/**
 	 * The pattern of underlines you want under the existing text within the
@@ -503,11 +279,7 @@ public class Label : Misc
 	 * Params:
 	 * pattern = The pattern as described above.
 	 */
-	public void setPattern(string pattern)
-	{
-		// void gtk_label_set_pattern (GtkLabel *label,  const gchar *pattern);
-		gtk_label_set_pattern(gtkLabel, Str.toStringz(pattern));
-	}
+	public void setPattern(string pattern);
 	
 	/**
 	 * Sets the alignment of the lines in the text of the label relative to
@@ -519,12 +291,8 @@ public class Label : Misc
 	 * Params:
 	 * jtype =  a GtkJustification
 	 */
-	public void setJustify(GtkJustification jtype)
-	{
-		// void gtk_label_set_justify (GtkLabel *label,  GtkJustification jtype);
-		gtk_label_set_justify(gtkLabel, jtype);
-	}
-	
+	public void setJustify(GtkJustification jtype);
+
 	/**
 	 * Sets the mode used to ellipsize (add an ellipsis: "...") to the text
 	 * if there is not enough space to render the entire string.
@@ -532,11 +300,7 @@ public class Label : Misc
 	 * Params:
 	 * mode =  a PangoEllipsizeMode
 	 */
-	public void setEllipsize(PangoEllipsizeMode mode)
-	{
-		// void gtk_label_set_ellipsize (GtkLabel *label,  PangoEllipsizeMode mode);
-		gtk_label_set_ellipsize(gtkLabel, mode);
-	}
+	public void setEllipsize(PangoEllipsizeMode mode);
 	
 	/**
 	 * Sets the desired width in characters of label to n_chars.
@@ -544,11 +308,7 @@ public class Label : Misc
 	 * Params:
 	 * nChars =  the new desired width, in characters.
 	 */
-	public void setWidthChars(int nChars)
-	{
-		// void gtk_label_set_width_chars (GtkLabel *label,  gint n_chars);
-		gtk_label_set_width_chars(gtkLabel, nChars);
-	}
+	public void setWidthChars(int nChars);
 	
 	/**
 	 * Sets the desired maximum width in characters of label to n_chars.
@@ -556,11 +316,7 @@ public class Label : Misc
 	 * Params:
 	 * nChars =  the new desired maximum width, in characters.
 	 */
-	public void setMaxWidthChars(int nChars)
-	{
-		// void gtk_label_set_max_width_chars (GtkLabel *label,  gint n_chars);
-		gtk_label_set_max_width_chars(gtkLabel, nChars);
-	}
+	public void setMaxWidthChars(int nChars);
 	
 	/**
 	 * Warning
@@ -571,15 +327,7 @@ public class Label : Misc
 	 * Params:
 	 * str = The reference to the pointer you want to point to the text.
 	 */
-	public void get(out string str)
-	{
-		// void gtk_label_get (GtkLabel *label,  gchar **str);
-		char* outstr = null;
-		
-		gtk_label_get(gtkLabel, &outstr);
-		
-		str = Str.toString(outstr);
-	}
+	public void get(out string str);
 	
 	/**
 	 * Warning
@@ -593,11 +341,7 @@ public class Label : Misc
 	 * string = The string you want to parse for underlines.
 	 * Returns:The lowercase keyval of the last character underlined.
 	 */
-	public uint parseUline(string string)
-	{
-		// guint gtk_label_parse_uline (GtkLabel *label,  const gchar *string);
-		return gtk_label_parse_uline(gtkLabel, Str.toStringz(string));
-	}
+	public uint parseUline(string string);
 	
 	/**
 	 * Toggles line wrapping within the GtkLabel widget. TRUE makes it break
@@ -611,11 +355,7 @@ public class Label : Misc
 	 * Params:
 	 * wrap =  the setting
 	 */
-	public void setLineWrap(int wrap)
-	{
-		// void gtk_label_set_line_wrap (GtkLabel *label,  gboolean wrap);
-		gtk_label_set_line_wrap(gtkLabel, wrap);
-	}
+	public void setLineWrap(int wrap);
 	
 	/**
 	 * If line wrapping is on (see gtk_label_set_line_wrap()) this controls how
@@ -625,11 +365,7 @@ public class Label : Misc
 	 * Params:
 	 * wrapMode =  the line wrapping mode
 	 */
-	public void setLineWrapMode(PangoWrapMode wrapMode)
-	{
-		// void gtk_label_set_line_wrap_mode (GtkLabel *label,  PangoWrapMode wrap_mode);
-		gtk_label_set_line_wrap_mode(gtkLabel, wrapMode);
-	}
+	public void setLineWrapMode(PangoWrapMode wrapMode);
 	
 	/**
 	 * Obtains the coordinates where the label will draw the PangoLayout
@@ -644,11 +380,7 @@ public class Label : Misc
 	 * x =  location to store X offset of layout, or NULL
 	 * y =  location to store Y offset of layout, or NULL
 	 */
-	public void getLayoutOffsets(out int x, out int y)
-	{
-		// void gtk_label_get_layout_offsets (GtkLabel *label,  gint *x,  gint *y);
-		gtk_label_get_layout_offsets(gtkLabel, &x, &y);
-	}
+	public void getLayoutOffsets(out int x, out int y);
 	
 	/**
 	 * If the label has been set so that it has an mnemonic key this function
@@ -656,21 +388,13 @@ public class Label : Misc
 	 * mnemonic set up it returns GDK_VoidSymbol.
 	 * Returns: GDK keyval usable for accelerators, or GDK_VoidSymbol
 	 */
-	public uint getMnemonicKeyval()
-	{
-		// guint gtk_label_get_mnemonic_keyval (GtkLabel *label);
-		return gtk_label_get_mnemonic_keyval(gtkLabel);
-	}
+	public uint getMnemonicKeyval();
 	
 	/**
 	 * Gets the value set by gtk_label_set_selectable().
 	 * Returns: TRUE if the user can copy text from the label
 	 */
-	public int getSelectable()
-	{
-		// gboolean gtk_label_get_selectable (GtkLabel *label);
-		return gtk_label_get_selectable(gtkLabel);
-	}
+	public int getSelectable();
 	
 	/**
 	 * Fetches the text from a label widget, as displayed on the
@@ -678,11 +402,7 @@ public class Label : Misc
 	 * indicating mnemonics or Pango markup. (See gtk_label_get_label())
 	 * Returns: the text in the label widget. This is the internal string used by the label, and must not be modified.
 	 */
-	public string getText()
-	{
-		// const gchar* gtk_label_get_text (GtkLabel *label);
-		return Str.toString(gtk_label_get_text(gtkLabel));
-	}
+	public string getText();
 	
 	/**
 	 * Selects a range of characters in the label, if the label is selectable.
@@ -693,11 +413,7 @@ public class Label : Misc
 	 * startOffset =  start offset (in characters not bytes)
 	 * endOffset =  end offset (in characters not bytes)
 	 */
-	public void selectRegion(int startOffset, int endOffset)
-	{
-		// void gtk_label_select_region (GtkLabel *label,  gint start_offset,  gint end_offset);
-		gtk_label_select_region(gtkLabel, startOffset, endOffset);
-	}
+	public void selectRegion(int startOffset, int endOffset);
 	
 	/**
 	 * If the label has been set so that it has an mnemonic key (using
@@ -716,11 +432,7 @@ public class Label : Misc
 	 * Params:
 	 * widget =  the target GtkWidget
 	 */
-	public void setMnemonicWidget(Widget widget)
-	{
-		// void gtk_label_set_mnemonic_widget (GtkLabel *label,  GtkWidget *widget);
-		gtk_label_set_mnemonic_widget(gtkLabel, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void setMnemonicWidget(Widget widget);
 	
 	/**
 	 * Selectable labels allow the user to select text from the label, for
@@ -728,11 +440,7 @@ public class Label : Misc
 	 * Params:
 	 * setting =  TRUE to allow selecting text in the label
 	 */
-	public void setSelectable(int setting)
-	{
-		// void gtk_label_set_selectable (GtkLabel *label,  gboolean setting);
-		gtk_label_set_selectable(gtkLabel, setting);
-	}
+	public void setSelectable(int setting);
 	
 	/**
 	 * Sets the label's text from the string str.
@@ -743,11 +451,7 @@ public class Label : Misc
 	 * Params:
 	 * str =  a string
 	 */
-	public void setTextWithMnemonic(string str)
-	{
-		// void gtk_label_set_text_with_mnemonic (GtkLabel *label,  const gchar *str);
-		gtk_label_set_text_with_mnemonic(gtkLabel, Str.toStringz(str));
-	}
+	public void setTextWithMnemonic(string str);
 	
 	/**
 	 * Gets the attribute list that was set on the label using
@@ -758,37 +462,20 @@ public class Label : Misc
 	 * pango_layout_get_attribute (gtk_label_get_layout (label)).
 	 * Returns: the attribute list, or NULL if none was set.
 	 */
-	public PgAttributeList getAttributes()
-	{
-		// PangoAttrList * gtk_label_get_attributes (GtkLabel *label);
-		auto p = gtk_label_get_attributes(gtkLabel);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeList(cast(PangoAttrList*) p);
-	}
+	public PgAttributeList getAttributes();
 	
 	/**
 	 * Returns the justification of the label. See gtk_label_set_justify().
 	 * Returns: GtkJustification
 	 */
-	public GtkJustification getJustify()
-	{
-		// GtkJustification gtk_label_get_justify (GtkLabel *label);
-		return gtk_label_get_justify(gtkLabel);
-	}
+	public GtkJustification getJustify();
 	
 	/**
 	 * Returns the ellipsizing position of the label. See gtk_label_set_ellipsize().
 	 * Since 2.6
 	 * Returns: PangoEllipsizeMode
 	 */
-	public PangoEllipsizeMode getEllipsize()
-	{
-		// PangoEllipsizeMode gtk_label_get_ellipsize (GtkLabel *label);
-		return gtk_label_get_ellipsize(gtkLabel);
-	}
+	public PangoEllipsizeMode getEllipsize();
 	
 	/**
 	 * Retrieves the desired width of label, in characters. See
@@ -796,11 +483,7 @@ public class Label : Misc
 	 * Since 2.6
 	 * Returns: the width of the label in characters.
 	 */
-	public int getWidthChars()
-	{
-		// gint gtk_label_get_width_chars (GtkLabel *label);
-		return gtk_label_get_width_chars(gtkLabel);
-	}
+	public int getWidthChars();
 	
 	/**
 	 * Retrieves the desired maximum width of label, in characters. See
@@ -808,11 +491,7 @@ public class Label : Misc
 	 * Since 2.6
 	 * Returns: the maximum width of the label in characters.
 	 */
-	public int getMaxWidthChars()
-	{
-		// gint gtk_label_get_max_width_chars (GtkLabel *label);
-		return gtk_label_get_max_width_chars(gtkLabel);
-	}
+	public int getMaxWidthChars();
 	
 	/**
 	 * Fetches the text from a label widget including any embedded
@@ -820,11 +499,7 @@ public class Label : Misc
 	 * gtk_label_get_text()).
 	 * Returns: the text of the label widget. This string is owned by the widget and must not be modified or freed.
 	 */
-	public string getLabel()
-	{
-		// const gchar * gtk_label_get_label (GtkLabel *label);
-		return Str.toString(gtk_label_get_label(gtkLabel));
-	}
+	public string getLabel();
 	
 	/**
 	 * Gets the PangoLayout used to display the label.
@@ -834,54 +509,28 @@ public class Label : Misc
 	 * freed by the caller.
 	 * Returns: the PangoLayout for this label
 	 */
-	public PgLayout getLayout()
-	{
-		// PangoLayout * gtk_label_get_layout (GtkLabel *label);
-		auto p = gtk_label_get_layout(gtkLabel);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public PgLayout getLayout();
 	
 	/**
 	 * Returns whether lines in the label are automatically wrapped.
 	 * See gtk_label_set_line_wrap().
 	 * Returns: TRUE if the lines of the label are automatically wrapped.
 	 */
-	public int getLineWrap()
-	{
-		// gboolean gtk_label_get_line_wrap (GtkLabel *label);
-		return gtk_label_get_line_wrap(gtkLabel);
-	}
+	public int getLineWrap();
 	
 	/**
 	 * Returns line wrap mode used by the label. See gtk_label_set_line_wrap_mode().
 	 * Since 2.10
 	 * Returns: TRUE if the lines of the label are automatically wrapped.
 	 */
-	public PangoWrapMode getLineWrapMode()
-	{
-		// PangoWrapMode gtk_label_get_line_wrap_mode (GtkLabel *label);
-		return gtk_label_get_line_wrap_mode(gtkLabel);
-	}
+	public PangoWrapMode getLineWrapMode();
 	
 	/**
 	 * Retrieves the target of the mnemonic (keyboard shortcut) of this
 	 * label. See gtk_label_set_mnemonic_widget().
 	 * Returns: the target of the label's mnemonic, or NULL if none has been set and the default algorithm will be used.
 	 */
-	public Widget getMnemonicWidget()
-	{
-		// GtkWidget * gtk_label_get_mnemonic_widget (GtkLabel *label);
-		auto p = gtk_label_get_mnemonic_widget(gtkLabel);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getMnemonicWidget();
 	
 	/**
 	 * Gets the selected range of characters in the label, returning TRUE
@@ -891,11 +540,7 @@ public class Label : Misc
 	 * end =  return location for end of selection, as a character offset
 	 * Returns: TRUE if selection is non-empty
 	 */
-	public int getSelectionBounds(out int start, out int end)
-	{
-		// gboolean gtk_label_get_selection_bounds (GtkLabel *label,  gint *start,  gint *end);
-		return gtk_label_get_selection_bounds(gtkLabel, &start, &end);
-	}
+	public int getSelectionBounds(out int start, out int end);
 	
 	/**
 	 * Returns whether the label's text is interpreted as marked up with
@@ -903,33 +548,21 @@ public class Label : Misc
 	 * language. See gtk_label_set_use_markup().
 	 * Returns: TRUE if the label's text will be parsed for markup.
 	 */
-	public int getUseMarkup()
-	{
-		// gboolean gtk_label_get_use_markup (GtkLabel *label);
-		return gtk_label_get_use_markup(gtkLabel);
-	}
+	public int getUseMarkup();
 	
 	/**
 	 * Returns whether an embedded underline in the label indicates a
 	 * mnemonic. See gtk_label_set_use_underline().
 	 * Returns: TRUE whether an embedded underline in the label indicates the mnemonic accelerator keys.
 	 */
-	public int getUseUnderline()
-	{
-		// gboolean gtk_label_get_use_underline (GtkLabel *label);
-		return gtk_label_get_use_underline(gtkLabel);
-	}
+	public int getUseUnderline();
 	
 	/**
 	 * Returns whether the label is in single line mode.
 	 * Since 2.6
 	 * Returns: TRUE when the label is in single line mode.
 	 */
-	public int getSingleLineMode()
-	{
-		// gboolean gtk_label_get_single_line_mode (GtkLabel *label);
-		return gtk_label_get_single_line_mode(gtkLabel);
-	}
+	public int getSingleLineMode();
 	
 	/**
 	 * Gets the angle of rotation for the label. See
@@ -937,11 +570,7 @@ public class Label : Misc
 	 * Since 2.6
 	 * Returns: the angle of rotation for the label
 	 */
-	public double getAngle()
-	{
-		// gdouble gtk_label_get_angle (GtkLabel *label);
-		return gtk_label_get_angle(gtkLabel);
-	}
+	public double getAngle();
 	
 	/**
 	 * Sets the text of the label. The label is interpreted as
@@ -951,11 +580,7 @@ public class Label : Misc
 	 * Params:
 	 * str =  the new text to set for the label
 	 */
-	public void setLabel(string str)
-	{
-		// void gtk_label_set_label (GtkLabel *label,  const gchar *str);
-		gtk_label_set_label(gtkLabel, Str.toStringz(str));
-	}
+	public void setLabel(string str);
 	
 	/**
 	 * Sets whether the text of the label contains markup in Pango's text markup
@@ -963,11 +588,7 @@ public class Label : Misc
 	 * Params:
 	 * setting =  TRUE if the label's text should be parsed for markup.
 	 */
-	public void setUseMarkup(int setting)
-	{
-		// void gtk_label_set_use_markup (GtkLabel *label,  gboolean setting);
-		gtk_label_set_use_markup(gtkLabel, setting);
-	}
+	public void setUseMarkup(int setting);
 	
 	/**
 	 * If true, an underline in the text indicates the next character should be
@@ -975,11 +596,7 @@ public class Label : Misc
 	 * Params:
 	 * setting =  TRUE if underlines in the text indicate mnemonics
 	 */
-	public void setUseUnderline(int setting)
-	{
-		// void gtk_label_set_use_underline (GtkLabel *label,  gboolean setting);
-		gtk_label_set_use_underline(gtkLabel, setting);
-	}
+	public void setUseUnderline(int setting);
 	
 	/**
 	 * Sets whether the label is in single line mode.
@@ -987,11 +604,7 @@ public class Label : Misc
 	 * Params:
 	 * singleLineMode =  TRUE if the label should be in single line mode
 	 */
-	public void setSingleLineMode(int singleLineMode)
-	{
-		// void gtk_label_set_single_line_mode (GtkLabel *label,  gboolean single_line_mode);
-		gtk_label_set_single_line_mode(gtkLabel, singleLineMode);
-	}
+	public void setSingleLineMode(int singleLineMode);
 	
 	/**
 	 * Sets the angle of rotation for the label. An angle of 90 reads from
@@ -1003,11 +616,7 @@ public class Label : Misc
 	 * angle =  the angle that the baseline of the label makes with
 	 *  the horizontal, in degrees, measured counterclockwise
 	 */
-	public void setAngle(double angle)
-	{
-		// void gtk_label_set_angle (GtkLabel *label,  gdouble angle);
-		gtk_label_set_angle(gtkLabel, angle);
-	}
+	public void setAngle(double angle);
 	
 	/**
 	 * Returns the URI for the currently active link in the label.
@@ -1019,11 +628,7 @@ public class Label : Misc
 	 * Since 2.18
 	 * Returns: the currently active URI. The string is owned by GTK+ and must not be freed or modified.
 	 */
-	public string getCurrentUri()
-	{
-		// const gchar * gtk_label_get_current_uri (GtkLabel *label);
-		return Str.toString(gtk_label_get_current_uri(gtkLabel));
-	}
+	public string getCurrentUri();
 	
 	/**
 	 * Sets whether the label should keep track of clicked
@@ -1032,11 +637,7 @@ public class Label : Misc
 	 * Params:
 	 * trackLinks =  TRUE to track visited links
 	 */
-	public void setTrackVisitedLinks(int trackLinks)
-	{
-		// void gtk_label_set_track_visited_links (GtkLabel *label,  gboolean track_links);
-		gtk_label_set_track_visited_links(gtkLabel, trackLinks);
-	}
+	public void setTrackVisitedLinks(int trackLinks);
 	
 	/**
 	 * Returns whether the label is currently keeping track
@@ -1044,9 +645,5 @@ public class Label : Misc
 	 * Since 2.18
 	 * Returns: TRUE if clicked links are remembered
 	 */
-	public int getTrackVisitedLinks()
-	{
-		// gboolean gtk_label_get_track_visited_links (GtkLabel *label);
-		return gtk_label_get_track_visited_links(gtkLabel);
-	}
+	public int getTrackVisitedLinks();
 }

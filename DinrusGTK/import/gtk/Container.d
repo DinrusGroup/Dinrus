@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkContainer.html
- * outPack = gtk
- * outFile = Container
- * strct   = GtkContainer
- * realStrct=
- * ctorStrct=
- * clss    = Container
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_container_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Adjustment
- * 	- gtkD.glib.ListG
- * 	- gtkD.gobject.Value
- * 	- gtkD.gobject.ParamSpec
- * structWrap:
- * 	- GList* -> ListG
- * 	- GParamSpec* -> ParamSpec
- * 	- GValue* -> Value
- * 	- GtkAdjustment* -> Adjustment
- * 	- GtkContainerClass* -> Container
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Container;
 
 public  import gtkD.gtkc.gtktypes;
@@ -178,54 +116,21 @@ public class Container : Widget
 	protected GtkContainer* gtkContainer;
 	
 	
-	public GtkContainer* getContainerStruct()
-	{
-		return gtkContainer;
-	}
+	public GtkContainer* getContainerStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkContainer;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkContainer* gtkContainer)
-	{
-		if(gtkContainer is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkContainer);
-		if( ptr !is null )
-		{
-			this = cast(Container)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkContainer);
-		this.gtkContainer = gtkContainer;
-	}
+	public this (GtkContainer* gtkContainer);
 	
 	/**
 	 * Removes all widgets from the container
 	 */
-	void removeAll()
-	{
-		GList* gList = gtk_container_get_children(getContainerStruct());
-		if ( gList !is null )
-		{
-			ListG children = new ListG(gList);
-			for ( int i=children.length()-1 ; i>=0 ; i-- )
-			{
-				gtk_container_remove(getContainerStruct(), cast(GtkWidget*)children.nthData(i));
-			}
-		}
-	}
+	void removeAll();
 	
 	/**
 	 */
@@ -234,106 +139,26 @@ public class Container : Widget
 	void delegate(Widget, Container)[] onAddListeners;
 	/**
 	 */
-	void addOnAdd(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("add" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"add",
-			cast(GCallback)&callBackAdd,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["add"] = 1;
-		}
-		onAddListeners ~= dlg;
-	}
-	extern(C) static void callBackAdd(GtkContainer* containerStruct, GtkWidget* widget, Container container)
-	{
-		foreach ( void delegate(Widget, Container) dlg ; container.onAddListeners )
-		{
-			dlg(new Widget(widget), container);
-		}
-	}
+	void addOnAdd(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAdd(GtkContainer* containerStruct, GtkWidget* widget, Container container);
 	
 	void delegate(Container)[] onCheckResizeListeners;
 	/**
 	 */
-	void addOnCheckResize(void delegate(Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("check-resize" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"check-resize",
-			cast(GCallback)&callBackCheckResize,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["check-resize"] = 1;
-		}
-		onCheckResizeListeners ~= dlg;
-	}
-	extern(C) static void callBackCheckResize(GtkContainer* containerStruct, Container container)
-	{
-		foreach ( void delegate(Container) dlg ; container.onCheckResizeListeners )
-		{
-			dlg(container);
-		}
-	}
+	void addOnCheckResize(void delegate(Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCheckResize(GtkContainer* containerStruct, Container container);
 	
 	void delegate(Widget, Container)[] onRemoveListeners;
 	/**
 	 */
-	void addOnRemove(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("remove" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"remove",
-			cast(GCallback)&callBackRemove,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["remove"] = 1;
-		}
-		onRemoveListeners ~= dlg;
-	}
-	extern(C) static void callBackRemove(GtkContainer* containerStruct, GtkWidget* widget, Container container)
-	{
-		foreach ( void delegate(Widget, Container) dlg ; container.onRemoveListeners )
-		{
-			dlg(new Widget(widget), container);
-		}
-	}
+	void addOnRemove(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackRemove(GtkContainer* containerStruct, GtkWidget* widget, Container container);
 	
 	void delegate(Widget, Container)[] onSetFocusChildListeners;
 	/**
 	 */
-	void addOnSetFocusChild(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("set-focus-child" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"set-focus-child",
-			cast(GCallback)&callBackSetFocusChild,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["set-focus-child"] = 1;
-		}
-		onSetFocusChildListeners ~= dlg;
-	}
-	extern(C) static void callBackSetFocusChild(GtkContainer* containerStruct, GtkWidget* widget, Container container)
-	{
-		foreach ( void delegate(Widget, Container) dlg ; container.onSetFocusChildListeners )
-		{
-			dlg(new Widget(widget), container);
-		}
-	}
+	void addOnSetFocusChild(void delegate(Widget, Container) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSetFocusChild(GtkContainer* containerStruct, GtkWidget* widget, Container container);
 	
 	
 	/**
@@ -348,11 +173,7 @@ public class Container : Widget
 	 * Params:
 	 * widget =  a widget to be placed inside container
 	 */
-	public void add(Widget widget)
-	{
-		// void gtk_container_add (GtkContainer *container,  GtkWidget *widget);
-		gtk_container_add(gtkContainer, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void add(Widget widget);
 	
 	/**
 	 * Removes widget from container. widget must be inside container.
@@ -367,22 +188,14 @@ public class Container : Widget
 	 * Params:
 	 * widget =  a current child of container
 	 */
-	public void remove(Widget widget)
-	{
-		// void gtk_container_remove (GtkContainer *container,  GtkWidget *widget);
-		gtk_container_remove(gtkContainer, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void remove(Widget widget);
 	
 	/**
 	 * Returns the resize mode for the container. See
 	 * gtk_container_set_resize_mode().
 	 * Returns: the current resize mode
 	 */
-	public GtkResizeMode getResizeMode()
-	{
-		// GtkResizeMode gtk_container_get_resize_mode (GtkContainer *container);
-		return gtk_container_get_resize_mode(gtkContainer);
-	}
+	public GtkResizeMode getResizeMode();
 	
 	/**
 	 * Sets the resize mode for the container.
@@ -392,19 +205,11 @@ public class Container : Widget
 	 * Params:
 	 * resizeMode =  the new resize mode
 	 */
-	public void setResizeMode(GtkResizeMode resizeMode)
-	{
-		// void gtk_container_set_resize_mode (GtkContainer *container,  GtkResizeMode resize_mode);
-		gtk_container_set_resize_mode(gtkContainer, resizeMode);
-	}
+	public void setResizeMode(GtkResizeMode resizeMode);
 	
 	/**
 	 */
-	public void checkResize()
-	{
-		// void gtk_container_check_resize (GtkContainer *container);
-		gtk_container_check_resize(gtkContainer);
-	}
+	public void checkResize();
 	
 	/**
 	 * Invokes callback on each non-internal child of container. See
@@ -415,38 +220,21 @@ public class Container : Widget
 	 * callback =  a callback
 	 * callbackData =  callback user data
 	 */
-	public void foreac(GtkCallback callback, void* callbackData)
-	{
-		// void gtk_container_foreach (GtkContainer *container,  GtkCallback callback,  gpointer callback_data);
-		gtk_container_foreach(gtkContainer, callback, callbackData);
-	}
+	public void foreac(GtkCallback callback, void* callbackData);
 	
 	/**
 	 * Warning
 	 * gtk_container_foreach_full is deprecated and should not be used in newly-written code. Use gtk_container_foreach() instead.
 	 * Params:
 	 */
-	public void foreachFull(GtkCallback callback, GtkCallbackMarshal marshal, void* callbackData, GDestroyNotify notify)
-	{
-		// void gtk_container_foreach_full (GtkContainer *container,  GtkCallback callback,  GtkCallbackMarshal marshal,  gpointer callback_data,  GDestroyNotify notify);
-		gtk_container_foreach_full(gtkContainer, callback, marshal, callbackData, notify);
-	}
+	public void foreachFull(GtkCallback callback, GtkCallbackMarshal marshal, void* callbackData, GDestroyNotify notify);
 	
 	/**
 	 * Returns the container's non-internal children. See
 	 * gtk_container_forall() for details on what constitutes an "internal" child.
 	 * Returns: a newly-allocated list of the container's non-internal children.
 	 */
-	public ListG getChildren()
-	{
-		// GList* gtk_container_get_children (GtkContainer *container);
-		auto p = gtk_container_get_children(gtkContainer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getChildren();
 	
 	/**
 	 * Sets the reallocate_redraws flag of the container to the given value.
@@ -455,27 +243,14 @@ public class Container : Widget
 	 * Params:
 	 * needsRedraws =  the new value for the container's reallocate_redraws flag
 	 */
-	public void setReallocateRedraws(int needsRedraws)
-	{
-		// void gtk_container_set_reallocate_redraws  (GtkContainer *container,  gboolean needs_redraws);
-		gtk_container_set_reallocate_redraws(gtkContainer, needsRedraws);
-	}
+	public void setReallocateRedraws(int needsRedraws);
 	
 	/**
 	 * Returns the current focus child widget inside container.
 	 * Since 2.14
 	 * Returns: The child widget which has the focus inside container, or NULL if none is set.
 	 */
-	public Widget getFocusChild()
-	{
-		// GtkWidget * gtk_container_get_focus_child (GtkContainer *container);
-		auto p = gtk_container_get_focus_child(gtkContainer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getFocusChild();
 	
 	/**
 	 * Sets, or unsets if child is NULL, the focused child of container.
@@ -485,27 +260,14 @@ public class Container : Widget
 	 * Params:
 	 * child =  a GtkWidget, or NULL
 	 */
-	public void setFocusChild(Widget child)
-	{
-		// void gtk_container_set_focus_child (GtkContainer *container,  GtkWidget *child);
-		gtk_container_set_focus_child(gtkContainer, (child is null) ? null : child.getWidgetStruct());
-	}
+	public void setFocusChild(Widget child);
 	
 	/**
 	 * Retrieves the vertical focus adjustment for the container. See
 	 * gtk_container_set_focus_vadjustment().
 	 * Returns: the vertical focus adjustment, or NULL if none has been set.
 	 */
-	public Adjustment getFocusVadjustment()
-	{
-		// GtkAdjustment * gtk_container_get_focus_vadjustment (GtkContainer *container);
-		auto p = gtk_container_get_focus_vadjustment(gtkContainer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getFocusVadjustment();
 	
 	/**
 	 * Hooks up an adjustment to focus handling in a container, so when a
@@ -520,27 +282,14 @@ public class Container : Widget
 	 * adjustment =  an adjustment which should be adjusted when the focus
 	 *  is moved among the descendents of container
 	 */
-	public void setFocusVadjustment(Adjustment adjustment)
-	{
-		// void gtk_container_set_focus_vadjustment (GtkContainer *container,  GtkAdjustment *adjustment);
-		gtk_container_set_focus_vadjustment(gtkContainer, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setFocusVadjustment(Adjustment adjustment);
 	
 	/**
 	 * Retrieves the horizontal focus adjustment for the container. See
 	 * gtk_container_set_focus_hadjustment().
 	 * Returns: the horizontal focus adjustment, or NULL if none has been set.
 	 */
-	public Adjustment getFocusHadjustment()
-	{
-		// GtkAdjustment * gtk_container_get_focus_hadjustment (GtkContainer *container);
-		auto p = gtk_container_get_focus_hadjustment(gtkContainer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getFocusHadjustment();
 	
 	/**
 	 * Hooks up an adjustment to focus handling in a container, so when a child
@@ -555,19 +304,11 @@ public class Container : Widget
 	 * adjustment =  an adjustment which should be adjusted when the focus is
 	 *  moved among the descendents of container
 	 */
-	public void setFocusHadjustment(Adjustment adjustment)
-	{
-		// void gtk_container_set_focus_hadjustment (GtkContainer *container,  GtkAdjustment *adjustment);
-		gtk_container_set_focus_hadjustment(gtkContainer, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setFocusHadjustment(Adjustment adjustment);
 	
 	/**
 	 */
-	public void resizeChildren()
-	{
-		// void gtk_container_resize_children (GtkContainer *container);
-		gtk_container_resize_children(gtkContainer);
-	}
+	public void resizeChildren();
 	
 	/**
 	 * Returns the type of the children supported by the container.
@@ -576,12 +317,8 @@ public class Container : Widget
 	 * children.
 	 * Returns: a GType.
 	 */
-	public GType childType()
-	{
-		// GType gtk_container_child_type (GtkContainer *container);
-		return gtk_container_child_type(gtkContainer);
-	}
-	
+	public GType childType();
+
 	/**
 	 * Gets the value of a child property for child and container.
 	 * Params:
@@ -589,11 +326,7 @@ public class Container : Widget
 	 * propertyName =  the name of the property to get
 	 * value =  a location to return the value
 	 */
-	public void childGetProperty(Widget child, string propertyName, Value value)
-	{
-		// void gtk_container_child_get_property (GtkContainer *container,  GtkWidget *child,  const gchar *property_name,  GValue *value);
-		gtk_container_child_get_property(gtkContainer, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(propertyName), (value is null) ? null : value.getValueStruct());
-	}
+	public void childGetProperty(Widget child, string propertyName, Value value);
 	
 	/**
 	 * Sets a child property for child and container.
@@ -602,11 +335,7 @@ public class Container : Widget
 	 * propertyName =  the name of the property to set
 	 * value =  the value to set the property to
 	 */
-	public void childSetProperty(Widget child, string propertyName, Value value)
-	{
-		// void gtk_container_child_set_property (GtkContainer *container,  GtkWidget *child,  const gchar *property_name,  const GValue *value);
-		gtk_container_child_set_property(gtkContainer, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(propertyName), (value is null) ? null : value.getValueStruct());
-	}
+	public void childSetProperty(Widget child, string propertyName, Value value);
 	
 	/**
 	 * Gets the values of one or more child properties for child and container.
@@ -616,11 +345,7 @@ public class Container : Widget
 	 * varArgs =  return location for the first property, followed
 	 *  optionally by more name/return location pairs, followed by NULL
 	 */
-	public void childGetValist(Widget child, string firstPropertyName, void* varArgs)
-	{
-		// void gtk_container_child_get_valist (GtkContainer *container,  GtkWidget *child,  const gchar *first_property_name,  va_list var_args);
-		gtk_container_child_get_valist(gtkContainer, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(firstPropertyName), varArgs);
-	}
+	public void childGetValist(Widget child, string firstPropertyName, void* varArgs);
 	
 	/**
 	 * Sets one or more child properties for child and container.
@@ -630,11 +355,7 @@ public class Container : Widget
 	 * varArgs =  a NULL-terminated list of property names and values, starting
 	 *  with first_prop_name
 	 */
-	public void childSetValist(Widget child, string firstPropertyName, void* varArgs)
-	{
-		// void gtk_container_child_set_valist (GtkContainer *container,  GtkWidget *child,  const gchar *first_property_name,  va_list var_args);
-		gtk_container_child_set_valist(gtkContainer, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(firstPropertyName), varArgs);
-	}
+	public void childSetValist(Widget child, string firstPropertyName, void* varArgs);
 	
 	/**
 	 * Invokes callback on each child of container, including children
@@ -647,22 +368,14 @@ public class Container : Widget
 	 * callback =  a callback
 	 * callbackData =  callback user data
 	 */
-	public void forall(GtkCallback callback, void* callbackData)
-	{
-		// void gtk_container_forall (GtkContainer *container,  GtkCallback callback,  gpointer callback_data);
-		gtk_container_forall(gtkContainer, callback, callbackData);
-	}
+	public void forall(GtkCallback callback, void* callbackData);
 	
 	/**
 	 * Retrieves the border width of the container. See
 	 * gtk_container_set_border_width().
 	 * Returns: the current border width
 	 */
-	public uint getBorderWidth()
-	{
-		// guint gtk_container_get_border_width (GtkContainer *container);
-		return gtk_container_get_border_width(gtkContainer);
-	}
+	public uint getBorderWidth();
 	
 	/**
 	 * Sets the border width of the container.
@@ -678,11 +391,7 @@ public class Container : Widget
 	 * borderWidth =  amount of blank space to leave outside
 	 *  the container. Valid values are in the range 0-65535 pixels.
 	 */
-	public void setBorderWidth(uint borderWidth)
-	{
-		// void gtk_container_set_border_width (GtkContainer *container,  guint border_width);
-		gtk_container_set_border_width(gtkContainer, borderWidth);
-	}
+	public void setBorderWidth(uint borderWidth);
 	
 	/**
 	 * When a container receives an expose event, it must send synthetic
@@ -700,11 +409,7 @@ public class Container : Widget
 	 * child =  a child of container
 	 * event =  a expose event sent to container
 	 */
-	public void propagateExpose(Widget child, GdkEventExpose* event)
-	{
-		// void gtk_container_propagate_expose (GtkContainer *container,  GtkWidget *child,  GdkEventExpose *event);
-		gtk_container_propagate_expose(gtkContainer, (child is null) ? null : child.getWidgetStruct(), event);
-	}
+	public void propagateExpose(Widget child, GdkEventExpose* event);
 	
 	/**
 	 * Retrieves the focus chain of the container, if one has been
@@ -720,16 +425,7 @@ public class Container : Widget
 	 *  individual widgets in the focus chain.
 	 * Returns: TRUE if the focus chain of the container has been set explicitly.
 	 */
-	public int getFocusChain(out ListG focusableWidgets)
-	{
-		// gboolean gtk_container_get_focus_chain (GtkContainer *container,  GList **focusable_widgets);
-		GList* outfocusableWidgets = null;
-		
-		auto p = gtk_container_get_focus_chain(gtkContainer, &outfocusableWidgets);
-		
-		focusableWidgets = new ListG(outfocusableWidgets);
-		return p;
-	}
+	public int getFocusChain(out ListG focusableWidgets);
 	
 	/**
 	 * Sets a focus chain, overriding the one computed automatically by GTK+.
@@ -741,20 +437,12 @@ public class Container : Widget
 	 * Params:
 	 * focusableWidgets =  the new focus chain
 	 */
-	public void setFocusChain(ListG focusableWidgets)
-	{
-		// void gtk_container_set_focus_chain (GtkContainer *container,  GList *focusable_widgets);
-		gtk_container_set_focus_chain(gtkContainer, (focusableWidgets is null) ? null : focusableWidgets.getListGStruct());
-	}
+	public void setFocusChain(ListG focusableWidgets);
 	
 	/**
 	 * Removes a focus chain explicitly set with gtk_container_set_focus_chain().
 	 */
-	public void unsetFocusChain()
-	{
-		// void gtk_container_unset_focus_chain (GtkContainer *container);
-		gtk_container_unset_focus_chain(gtkContainer);
-	}
+	public void unsetFocusChain();
 	
 	/**
 	 * Finds a child property of a container class by name.
@@ -763,16 +451,7 @@ public class Container : Widget
 	 * propertyName =  the name of the child property to find
 	 * Returns: the GParamSpec of the child property or NULL if class has no child property with that name.
 	 */
-	public static ParamSpec classFindChildProperty(GObjectClass* cclass, string propertyName)
-	{
-		// GParamSpec* gtk_container_class_find_child_property  (GObjectClass *cclass,  const gchar *property_name);
-		auto p = gtk_container_class_find_child_property(cclass, Str.toStringz(propertyName));
-		if(p is null)
-		{
-			return null;
-		}
-		return new ParamSpec(cast(GParamSpec*) p);
-	}
+	public static ParamSpec classFindChildProperty(GObjectClass* cclass, string propertyName);
 	
 	/**
 	 * Installs a child property on a container class.
@@ -781,11 +460,7 @@ public class Container : Widget
 	 * propertyId =  the id for the property
 	 * pspec =  the GParamSpec for the property
 	 */
-	public static void classInstallChildProperty(Container cclass, uint propertyId, ParamSpec pspec)
-	{
-		// void gtk_container_class_install_child_property  (GtkContainerClass *cclass,  guint property_id,  GParamSpec *pspec);
-		gtk_container_class_install_child_property((cclass is null) ? null : cclass.getContainerStruct(), propertyId, (pspec is null) ? null : pspec.getParamSpecStruct());
-	}
+	public static void classInstallChildProperty(Container cclass, uint propertyId, ParamSpec pspec);
 	
 	/**
 	 * Returns all child properties of a container class.
@@ -793,22 +468,5 @@ public class Container : Widget
 	 * cclass =  a GtkContainerClass
 	 * Returns: a newly allocated NULL-terminated array of GParamSpec*.  The array must be freed with g_free().
 	 */
-	public static ParamSpec[] classListChildProperties(GObjectClass* cclass)
-	{
-		// GParamSpec** gtk_container_class_list_child_properties  (GObjectClass *cclass,  guint *n_properties);
-		uint nProperties;
-		auto p = gtk_container_class_list_child_properties(cclass, &nProperties);
-		if(p is null)
-		{
-			return null;
-		}
-		
-		ParamSpec[] arr = new ParamSpec[nProperties];
-		for(int i = 0; i < nProperties; i++)
-		{
-			arr[i] = new ParamSpec(cast(GParamSpec*) p[i]);
-		}
-		
-		return arr;
-	}
+	public static ParamSpec[] classListChildProperties(GObjectClass* cclass);
 }

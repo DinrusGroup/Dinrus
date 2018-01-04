@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkFrame.html
- * outPack = gtk
- * outFile = Frame
- * strct   = GtkFrame
- * realStrct=
- * ctorStrct=
- * clss    = Frame
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_frame_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Frame;
 
 public  import gtkD.gtkc.gtktypes;
@@ -97,47 +43,21 @@ public class Frame : Bin
 	protected GtkFrame* gtkFrame;
 	
 	
-	public GtkFrame* getFrameStruct()
-	{
-		return gtkFrame;
-	}
+	public GtkFrame* getFrameStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFrame;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkFrame* gtkFrame)
-	{
-		if(gtkFrame is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFrame);
-		if( ptr !is null )
-		{
-			this = cast(Frame)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkFrame);
-		this.gtkFrame = gtkFrame;
-	}
+	public this (GtkFrame* gtkFrame);
 	
 	/**
 	 * Creates frame with label and set it's child widget
 	 */
-	public this(Widget widget, string label)
-	{
-		this(label);
-		add(widget);
-	}
+	public this(Widget widget, string label);
 	
 	/**
 	 */
@@ -149,16 +69,7 @@ public class Frame : Bin
 	 * label =  the text to use as the label of the frame
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string label)
-	{
-		// GtkWidget* gtk_frame_new (const gchar *label);
-		auto p = gtk_frame_new(Str.toStringz(label));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_frame_new(Str.toStringz(label))");
-		}
-		this(cast(GtkFrame*) p);
-	}
+	public this (string label);
 	
 	/**
 	 * Sets the text of the label. If label is NULL,
@@ -166,12 +77,8 @@ public class Frame : Bin
 	 * Params:
 	 * label =  the text to use as the label of the frame
 	 */
-	public void setLabel(string label)
-	{
-		// void gtk_frame_set_label (GtkFrame *frame,  const gchar *label);
-		gtk_frame_set_label(gtkFrame, Str.toStringz(label));
-	}
-	
+	public void setLabel(string label);
+
 	/**
 	 * Sets the label widget for the frame. This is the widget that
 	 * will appear embedded in the top edge of the frame as a
@@ -179,11 +86,7 @@ public class Frame : Bin
 	 * Params:
 	 * labelWidget =  the new label widget
 	 */
-	public void setLabelWidget(Widget labelWidget)
-	{
-		// void gtk_frame_set_label_widget (GtkFrame *frame,  GtkWidget *label_widget);
-		gtk_frame_set_label_widget(gtkFrame, (labelWidget is null) ? null : labelWidget.getWidgetStruct());
-	}
+	public void setLabelWidget(Widget labelWidget);
 	
 	/**
 	 * Sets the alignment of the frame widget's label. The
@@ -197,22 +100,14 @@ public class Frame : Bin
 	 *  0.0 or 1.0 the gap in the frame won't be painted because the label
 	 *  will be completely above or below the frame.
 	 */
-	public void setLabelAlign(float xalign, float yalign)
-	{
-		// void gtk_frame_set_label_align (GtkFrame *frame,  gfloat xalign,  gfloat yalign);
-		gtk_frame_set_label_align(gtkFrame, xalign, yalign);
-	}
+	public void setLabelAlign(float xalign, float yalign);
 	
 	/**
 	 * Sets the shadow type for frame.
 	 * Params:
 	 * type =  the new GtkShadowType
 	 */
-	public void setShadowType(GtkShadowType type)
-	{
-		// void gtk_frame_set_shadow_type (GtkFrame *frame,  GtkShadowType type);
-		gtk_frame_set_shadow_type(gtkFrame, type);
-	}
+	public void setShadowType(GtkShadowType type);
 	
 	/**
 	 * If the frame's label widget is a GtkLabel, returns the
@@ -221,11 +116,7 @@ public class Frame : Bin
 	 * to gtk_frame_new().)
 	 * Returns: the text in the label, or NULL if there was no label widget or the lable widget was not a GtkLabel. This string is owned by GTK+ and must not be modified or freed.
 	 */
-	public string getLabel()
-	{
-		// const gchar * gtk_frame_get_label (GtkFrame *frame);
-		return Str.toString(gtk_frame_get_label(gtkFrame));
-	}
+	public string getLabel();
 	
 	/**
 	 * Retrieves the X and Y alignment of the frame's label. See
@@ -234,36 +125,19 @@ public class Frame : Bin
 	 * xalign =  location to store X alignment of frame's label, or NULL
 	 * yalign =  location to store X alignment of frame's label, or NULL
 	 */
-	public void getLabelAlign(out float xalign, out float yalign)
-	{
-		// void gtk_frame_get_label_align (GtkFrame *frame,  gfloat *xalign,  gfloat *yalign);
-		gtk_frame_get_label_align(gtkFrame, &xalign, &yalign);
-	}
+	public void getLabelAlign(out float xalign, out float yalign);
 	
 	/**
 	 * Retrieves the label widget for the frame. See
 	 * gtk_frame_set_label_widget().
 	 * Returns: the label widget, or NULL if there is none.
 	 */
-	public Widget getLabelWidget()
-	{
-		// GtkWidget * gtk_frame_get_label_widget (GtkFrame *frame);
-		auto p = gtk_frame_get_label_widget(gtkFrame);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getLabelWidget();
 	
 	/**
 	 * Retrieves the shadow type of the frame. See
 	 * gtk_frame_set_shadow_type().
 	 * Returns: the current shadow type of the frame.
 	 */
-	public GtkShadowType getShadowType()
-	{
-		// GtkShadowType gtk_frame_get_shadow_type (GtkFrame *frame);
-		return gtk_frame_get_shadow_type(gtkFrame);
-	}
+	public GtkShadowType getShadowType();
 }

@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = IconFactory
- * strct   = GtkIconFactory
- * realStrct=
- * ctorStrct=
- * clss    = IconFactory
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_icon_factory_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.IconSet
- * structWrap:
- * 	- GtkIconFactory* -> IconFactory
- * 	- GtkIconSet* -> IconSet
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.IconFactory;
 
 public  import gtkD.gtkc.gtktypes;
@@ -130,38 +76,16 @@ public class IconFactory : ObjectG
 	protected GtkIconFactory* gtkIconFactory;
 	
 	
-	public GtkIconFactory* getIconFactoryStruct()
-	{
-		return gtkIconFactory;
-	}
+	public GtkIconFactory* getIconFactoryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkIconFactory;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkIconFactory* gtkIconFactory)
-	{
-		if(gtkIconFactory is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkIconFactory);
-		if( ptr !is null )
-		{
-			this = cast(IconFactory)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkIconFactory);
-		this.gtkIconFactory = gtkIconFactory;
-	}
+	public this (GtkIconFactory* gtkIconFactory);
 	
 	/**
 	 */
@@ -181,11 +105,7 @@ public class IconFactory : ObjectG
 	 * stockId =  icon name
 	 * iconSet =  icon set
 	 */
-	public void add(string stockId, IconSet iconSet)
-	{
-		// void gtk_icon_factory_add (GtkIconFactory *factory,  const gchar *stock_id,  GtkIconSet *icon_set);
-		gtk_icon_factory_add(gtkIconFactory, Str.toStringz(stockId), (iconSet is null) ? null : iconSet.getIconSetStruct());
-	}
+	public void add(string stockId, IconSet iconSet);
 	
 	/**
 	 * Adds an icon factory to the list of icon factories searched by
@@ -195,11 +115,7 @@ public class IconFactory : ObjectG
 	 * application that comes with icons. The default icon factories
 	 * can be overridden by themes.
 	 */
-	public void addDefault()
-	{
-		// void gtk_icon_factory_add_default (GtkIconFactory *factory);
-		gtk_icon_factory_add_default(gtkIconFactory);
-	}
+	public void addDefault();
 	
 	/**
 	 * Looks up stock_id in the icon factory, returning an icon set
@@ -211,16 +127,7 @@ public class IconFactory : ObjectG
 	 * stockId =  an icon name
 	 * Returns: icon set of stock_id.
 	 */
-	public IconSet lookup(string stockId)
-	{
-		// GtkIconSet* gtk_icon_factory_lookup (GtkIconFactory *factory,  const gchar *stock_id);
-		auto p = gtk_icon_factory_lookup(gtkIconFactory, Str.toStringz(stockId));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconSet(cast(GtkIconSet*) p);
-	}
+	public IconSet lookup(string stockId);
 	
 	/**
 	 * Looks for an icon in the list of default icon factories. For
@@ -232,16 +139,7 @@ public class IconFactory : ObjectG
 	 * stockId =  an icon name
 	 * Returns: a GtkIconSet, or NULL
 	 */
-	public static IconSet lookupDefault(string stockId)
-	{
-		// GtkIconSet* gtk_icon_factory_lookup_default (const gchar *stock_id);
-		auto p = gtk_icon_factory_lookup_default(Str.toStringz(stockId));
-		if(p is null)
-		{
-			return null;
-		}
-		return new IconSet(cast(GtkIconSet*) p);
-	}
+	public static IconSet lookupDefault(string stockId);
 	
 	/**
 	 * Creates a new GtkIconFactory. An icon factory manages a collection
@@ -259,25 +157,12 @@ public class IconFactory : ObjectG
 	 * themes to override the icons for the application.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkIconFactory* gtk_icon_factory_new (void);
-		auto p = gtk_icon_factory_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_icon_factory_new()");
-		}
-		this(cast(GtkIconFactory*) p);
-	}
+	public this ();
 	
 	/**
 	 * Removes an icon factory from the list of default icon
 	 * factories. Not normally used; you might use it for a library that
 	 * can be unloaded or shut down.
 	 */
-	public void removeDefault()
-	{
-		// void gtk_icon_factory_remove_default (GtkIconFactory *factory);
-		gtk_icon_factory_remove_default(gtkIconFactory);
-	}
+	public void removeDefault();
 }

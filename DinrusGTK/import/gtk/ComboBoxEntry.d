@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkComboBoxEntry.html
- * outPack = gtk
- * outFile = ComboBoxEntry
- * strct   = GtkComboBoxEntry
- * realStrct=
- * ctorStrct=
- * clss    = ComboBoxEntry
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_combo_box_entry_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_combo_box_entry_new
- * 	- gtk_combo_box_entry_new_text
- * omit signals:
- * imports:
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.Adjustment
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * 	- GtkTreeModel* -> TreeModelIF
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ComboBoxEntry;
 
 public  import gtkD.gtkc.gtktypes;
@@ -104,38 +48,16 @@ public class ComboBoxEntry : ComboBox
 	protected GtkComboBoxEntry* gtkComboBoxEntry;
 	
 	
-	public GtkComboBoxEntry* getComboBoxEntryStruct()
-	{
-		return gtkComboBoxEntry;
-	}
+	public GtkComboBoxEntry* getComboBoxEntryStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkComboBoxEntry;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkComboBoxEntry* gtkComboBoxEntry)
-	{
-		if(gtkComboBoxEntry is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkComboBoxEntry);
-		if( ptr !is null )
-		{
-			this = cast(ComboBoxEntry)ptr;
-			return;
-		}
-		super(cast(GtkComboBox*)gtkComboBoxEntry);
-		this.gtkComboBoxEntry = gtkComboBoxEntry;
-	}
+	public this (GtkComboBoxEntry* gtkComboBoxEntry);
 	
 	/**
 	 * Creates a new GtkComboBoxEntry which has a GtkEntry as child. After
@@ -146,28 +68,7 @@ public class ComboBoxEntry : ComboBox
 	 *  A new GtkComboBoxEntry.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (bool text=true)
-	{
-		GtkComboBoxEntry* p;
-		
-		if ( text )
-		{
-			// GtkWidget* gtk_combo_box_entry_new_text (void);
-			p = cast(GtkComboBoxEntry*)gtk_combo_box_entry_new_text();
-		}
-		else
-		{
-			// GtkWidget* gtk_combo_box_entry_new (void);
-			p = cast(GtkComboBoxEntry*)gtk_combo_box_entry_new();
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_combo_box_entry_new");
-		}
-		
-		this(p);
-	}
+	public this (bool text=true);
 	
 	/**
 	 */
@@ -184,16 +85,7 @@ public class ComboBoxEntry : ComboBox
 	 * textColumn =  A column in model to get the strings from.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (TreeModelIF model, int textColumn)
-	{
-		// GtkWidget * gtk_combo_box_entry_new_with_model (GtkTreeModel *model,  gint text_column);
-		auto p = gtk_combo_box_entry_new_with_model((model is null) ? null : model.getTreeModelTStruct(), textColumn);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_combo_box_entry_new_with_model((model is null) ? null : model.getTreeModelTStruct(), textColumn)");
-		}
-		this(cast(GtkComboBoxEntry*) p);
-	}
+	public this (TreeModelIF model, int textColumn);
 	
 	/**
 	 * Sets the model column which entry_box should use to get strings from
@@ -202,20 +94,12 @@ public class ComboBoxEntry : ComboBox
 	 * Params:
 	 * textColumn =  A column in model to get the strings from.
 	 */
-	public void setTextColumn(int textColumn)
-	{
-		// void gtk_combo_box_entry_set_text_column (GtkComboBoxEntry *entry_box,  gint text_column);
-		gtk_combo_box_entry_set_text_column(gtkComboBoxEntry, textColumn);
-	}
+	public void setTextColumn(int textColumn);
 	
 	/**
 	 * Returns the column which entry_box is using to get the strings from.
 	 * Since 2.4
 	 * Returns: A column in the data source model of entry_box.
 	 */
-	public int getTextColumn()
-	{
-		// gint gtk_combo_box_entry_get_text_column (GtkComboBoxEntry *entry_box);
-		return gtk_combo_box_entry_get_text_column(gtkComboBoxEntry);
-	}
+	public int getTextColumn();
 }

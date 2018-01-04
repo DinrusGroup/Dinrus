@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkEntryCompletion.html
- * outPack = gtk
- * outFile = EntryCompletion
- * strct   = GtkEntryCompletion
- * realStrct=
- * ctorStrct=
- * clss    = EntryCompletion
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- CellLayoutIF
- * prefixes:
- * 	- gtk_entry_completion_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.CellLayoutIF
- * 	- gtkD.gtk.CellLayoutT
- * structWrap:
- * 	- GtkTreeModel* -> TreeModelIF
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.EntryCompletion;
 
 public  import gtkD.gtkc.gtktypes;
@@ -111,38 +51,16 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	protected GtkEntryCompletion* gtkEntryCompletion;
 	
 	
-	public GtkEntryCompletion* getEntryCompletionStruct()
-	{
-		return gtkEntryCompletion;
-	}
+	public GtkEntryCompletion* getEntryCompletionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkEntryCompletion;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkEntryCompletion* gtkEntryCompletion)
-	{
-		if(gtkEntryCompletion is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkEntryCompletion);
-		if( ptr !is null )
-		{
-			this = cast(EntryCompletion)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkEntryCompletion);
-		this.gtkEntryCompletion = gtkEntryCompletion;
-	}
+	public this (GtkEntryCompletion* gtkEntryCompletion);
 	
 	// add the CellLayout capabilities
 	mixin CellLayoutT!(GtkEntryCompletion);
@@ -156,28 +74,8 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Gets emitted when an action is activated.
 	 * Since 2.4
 	 */
-	void addOnActionActivated(void delegate(gint, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("action-activated" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"action-activated",
-			cast(GCallback)&callBackActionActivated,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["action-activated"] = 1;
-		}
-		onActionActivatedListeners ~= dlg;
-	}
-	extern(C) static void callBackActionActivated(GtkEntryCompletion* widgetStruct, gint index, EntryCompletion entryCompletion)
-	{
-		foreach ( void delegate(gint, EntryCompletion) dlg ; entryCompletion.onActionActivatedListeners )
-		{
-			dlg(index, entryCompletion);
-		}
-	}
+	void addOnActionActivated(void delegate(gint, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActionActivated(GtkEntryCompletion* widgetStruct, gint index, EntryCompletion entryCompletion);
 	
 	bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion)[] onCursorOnMatchListeners;
 	/**
@@ -187,33 +85,8 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * pointed to by iter.
 	 * Since 2.12
 	 */
-	void addOnCursorOnMatch(bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("cursor-on-match" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"cursor-on-match",
-			cast(GCallback)&callBackCursorOnMatch,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["cursor-on-match"] = 1;
-		}
-		onCursorOnMatchListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackCursorOnMatch(GtkEntryCompletion* widgetStruct, GtkTreeModel* model, GtkTreeIter* iter, EntryCompletion entryCompletion)
-	{
-		foreach ( bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg ; entryCompletion.onCursorOnMatchListeners )
-		{
-			if ( dlg(new TreeModel(model), iter, entryCompletion) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnCursorOnMatch(bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackCursorOnMatch(GtkEntryCompletion* widgetStruct, GtkTreeModel* model, GtkTreeIter* iter, EntryCompletion entryCompletion);
 	
 	bool delegate(string, EntryCompletion)[] onInsertPrefixListeners;
 	/**
@@ -226,33 +99,8 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * next '/'.
 	 * Since 2.6
 	 */
-	void addOnInsertPrefix(bool delegate(string, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("insert-prefix" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"insert-prefix",
-			cast(GCallback)&callBackInsertPrefix,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["insert-prefix"] = 1;
-		}
-		onInsertPrefixListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackInsertPrefix(GtkEntryCompletion* widgetStruct, gchar* prefix, EntryCompletion entryCompletion)
-	{
-		foreach ( bool delegate(string, EntryCompletion) dlg ; entryCompletion.onInsertPrefixListeners )
-		{
-			if ( dlg(Str.toString(prefix), entryCompletion) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnInsertPrefix(bool delegate(string, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackInsertPrefix(GtkEntryCompletion* widgetStruct, gchar* prefix, EntryCompletion entryCompletion);
 	
 	bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion)[] onMatchSelectedListeners;
 	/**
@@ -262,33 +110,8 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * pointed to by iter.
 	 * Since 2.4
 	 */
-	void addOnMatchSelected(bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("match-selected" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"match-selected",
-			cast(GCallback)&callBackMatchSelected,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["match-selected"] = 1;
-		}
-		onMatchSelectedListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackMatchSelected(GtkEntryCompletion* widgetStruct, GtkTreeModel* model, GtkTreeIter* iter, EntryCompletion entryCompletion)
-	{
-		foreach ( bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg ; entryCompletion.onMatchSelectedListeners )
-		{
-			if ( dlg(new TreeModel(model), iter, entryCompletion) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnMatchSelected(bool delegate(TreeModelIF, GtkTreeIter*, EntryCompletion) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackMatchSelected(GtkEntryCompletion* widgetStruct, GtkTreeModel* model, GtkTreeIter* iter, EntryCompletion entryCompletion);
 	
 	
 	/**
@@ -296,32 +119,14 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Since 2.4
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkEntryCompletion * gtk_entry_completion_new (void);
-		auto p = gtk_entry_completion_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_entry_completion_new()");
-		}
-		this(cast(GtkEntryCompletion*) p);
-	}
+	public this ();
 	
 	/**
 	 * Gets the entry completion has been attached to.
 	 * Since 2.4
 	 * Returns: The entry completion has been attached to.
 	 */
-	public Widget getEntry()
-	{
-		// GtkWidget * gtk_entry_completion_get_entry (GtkEntryCompletion *completion);
-		auto p = gtk_entry_completion_get_entry(gtkEntryCompletion);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getEntry();
 	
 	/**
 	 * Sets the model for a GtkEntryCompletion. If completion already has
@@ -331,28 +136,15 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * model =  The GtkTreeModel.
 	 */
-	public void setModel(TreeModelIF model)
-	{
-		// void gtk_entry_completion_set_model (GtkEntryCompletion *completion,  GtkTreeModel *model);
-		gtk_entry_completion_set_model(gtkEntryCompletion, (model is null) ? null : model.getTreeModelTStruct());
-	}
-	
+	public void setModel(TreeModelIF model);
+
 	/**
 	 * Returns the model the GtkEntryCompletion is using as data source.
 	 * Returns NULL if the model is unset.
 	 * Since 2.4
 	 * Returns: A GtkTreeModel, or NULL if none is currently being used.
 	 */
-	public TreeModelIF getModel()
-	{
-		// GtkTreeModel * gtk_entry_completion_get_model (GtkEntryCompletion *completion);
-		auto p = gtk_entry_completion_get_model(gtkEntryCompletion);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
+	public TreeModelIF getModel();
 	
 	/**
 	 * Sets the match function for completion to be func. The match function
@@ -364,11 +156,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * funcData =  The user data for func.
 	 * funcNotify =  Destroy notifier for func_data.
 	 */
-	public void setMatchFunc(GtkEntryCompletionMatchFunc func, void* funcData, GDestroyNotify funcNotify)
-	{
-		// void gtk_entry_completion_set_match_func (GtkEntryCompletion *completion,  GtkEntryCompletionMatchFunc func,  gpointer func_data,  GDestroyNotify func_notify);
-		gtk_entry_completion_set_match_func(gtkEntryCompletion, func, funcData, funcNotify);
-	}
+	public void setMatchFunc(GtkEntryCompletionMatchFunc func, void* funcData, GDestroyNotify funcNotify);
 	
 	/**
 	 * Requires the length of the search key for completion to be at least
@@ -379,22 +167,14 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * length =  The minimum length of the key in order to start completing.
 	 */
-	public void setMinimumKeyLength(int length)
-	{
-		// void gtk_entry_completion_set_minimum_key_length  (GtkEntryCompletion *completion,  gint length);
-		gtk_entry_completion_set_minimum_key_length(gtkEntryCompletion, length);
-	}
+	public void setMinimumKeyLength(int length);
 	
 	/**
 	 * Returns the minimum key length as set for completion.
 	 * Since 2.4
 	 * Returns: The currently used minimum key length.
 	 */
-	public int getMinimumKeyLength()
-	{
-		// gint gtk_entry_completion_get_minimum_key_length  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_minimum_key_length(gtkEntryCompletion);
-	}
+	public int getMinimumKeyLength();
 	
 	/**
 	 * Requests a completion operation, or in other words a refiltering of the
@@ -402,11 +182,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * view will be updated accordingly.
 	 * Since 2.4
 	 */
-	public void complete()
-	{
-		// void gtk_entry_completion_complete (GtkEntryCompletion *completion);
-		gtk_entry_completion_complete(gtkEntryCompletion);
-	}
+	public void complete();
 	
 	/**
 	 * Get the original text entered by the user that triggered
@@ -414,21 +190,13 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Since 2.12
 	 * Returns: the prefix for the current completion
 	 */
-	public string getCompletionPrefix()
-	{
-		// const gchar * gtk_entry_completion_get_completion_prefix  (GtkEntryCompletion *completion);
-		return Str.toString(gtk_entry_completion_get_completion_prefix(gtkEntryCompletion));
-	}
+	public string getCompletionPrefix();
 	
 	/**
 	 * Requests a prefix insertion.
 	 * Since 2.6
 	 */
-	public void insertPrefix()
-	{
-		// void gtk_entry_completion_insert_prefix (GtkEntryCompletion *completion);
-		gtk_entry_completion_insert_prefix(gtkEntryCompletion);
-	}
+	public void insertPrefix();
 	
 	/**
 	 * Inserts an action in completion's action item list at position index_
@@ -439,11 +207,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * index =  The index of the item to insert.
 	 * text =  Text of the item to insert.
 	 */
-	public void insertActionText(int index, string text)
-	{
-		// void gtk_entry_completion_insert_action_text  (GtkEntryCompletion *completion,  gint index_,  const gchar *text);
-		gtk_entry_completion_insert_action_text(gtkEntryCompletion, index, Str.toStringz(text));
-	}
+	public void insertActionText(int index, string text);
 	
 	/**
 	 * Inserts an action in completion's action item list at position index_
@@ -453,11 +217,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * index =  The index of the item to insert.
 	 * markup =  Markup of the item to insert.
 	 */
-	public void insertActionMarkup(int index, string markup)
-	{
-		// void gtk_entry_completion_insert_action_markup  (GtkEntryCompletion *completion,  gint index_,  const gchar *markup);
-		gtk_entry_completion_insert_action_markup(gtkEntryCompletion, index, Str.toStringz(markup));
-	}
+	public void insertActionMarkup(int index, string markup);
 	
 	/**
 	 * Deletes the action at index_ from completion's action list.
@@ -465,11 +225,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * index =  The index of the item to Delete.
 	 */
-	public void deleteAction(int index)
-	{
-		// void gtk_entry_completion_delete_action (GtkEntryCompletion *completion,  gint index_);
-		gtk_entry_completion_delete_action(gtkEntryCompletion, index);
-	}
+	public void deleteAction(int index);
 	
 	/**
 	 * Convenience function for setting up the most used case of this code: a
@@ -483,22 +239,14 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * column =  The column in the model of completion to get strings from.
 	 */
-	public void setTextColumn(int column)
-	{
-		// void gtk_entry_completion_set_text_column  (GtkEntryCompletion *completion,  gint column);
-		gtk_entry_completion_set_text_column(gtkEntryCompletion, column);
-	}
+	public void setTextColumn(int column);
 	
 	/**
 	 * Returns the column in the model of completion to get strings from.
 	 * Since 2.6
 	 * Returns: the column containing the strings
 	 */
-	public int getTextColumn()
-	{
-		// gint gtk_entry_completion_get_text_column  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_text_column(gtkEntryCompletion);
-	}
+	public int getTextColumn();
 	
 	/**
 	 * Sets whether the common prefix of the possible completions should
@@ -507,11 +255,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * inlineCompletion =  TRUE to do inline completion
 	 */
-	public void setInlineCompletion(int inlineCompletion)
-	{
-		// void gtk_entry_completion_set_inline_completion  (GtkEntryCompletion *completion,  gboolean inline_completion);
-		gtk_entry_completion_set_inline_completion(gtkEntryCompletion, inlineCompletion);
-	}
+	public void setInlineCompletion(int inlineCompletion);
 	
 	/**
 	 * Returns whether the common prefix of the possible completions should
@@ -519,11 +263,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Since 2.6
 	 * Returns: TRUE if inline completion is turned on
 	 */
-	public int getInlineCompletion()
-	{
-		// gboolean gtk_entry_completion_get_inline_completion  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_inline_completion(gtkEntryCompletion);
-	}
+	public int getInlineCompletion();
 	
 	/**
 	 * Sets whether it is possible to cycle through the possible completions
@@ -532,22 +272,14 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * inlineSelection =  TRUE to do inline selection
 	 */
-	public void setInlineSelection(int inlineSelection)
-	{
-		// void gtk_entry_completion_set_inline_selection  (GtkEntryCompletion *completion,  gboolean inline_selection);
-		gtk_entry_completion_set_inline_selection(gtkEntryCompletion, inlineSelection);
-	}
+	public void setInlineSelection(int inlineSelection);
 	
 	/**
 	 * Returns TRUE if inline-selection mode is turned on.
 	 * Since 2.12
 	 * Returns: TRUE if inline-selection mode is on
 	 */
-	public int getInlineSelection()
-	{
-		// gboolean gtk_entry_completion_get_inline_selection  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_inline_selection(gtkEntryCompletion);
-	}
+	public int getInlineSelection();
 	
 	/**
 	 * Sets whether the completions should be presented in a popup window.
@@ -555,22 +287,14 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * popupCompletion =  TRUE to do popup completion
 	 */
-	public void setPopupCompletion(int popupCompletion)
-	{
-		// void gtk_entry_completion_set_popup_completion  (GtkEntryCompletion *completion,  gboolean popup_completion);
-		gtk_entry_completion_set_popup_completion(gtkEntryCompletion, popupCompletion);
-	}
+	public void setPopupCompletion(int popupCompletion);
 	
 	/**
 	 * Returns whether the completions should be presented in a popup window.
 	 * Since 2.6
 	 * Returns: TRUE if popup completion is turned on
 	 */
-	public int getPopupCompletion()
-	{
-		// gboolean gtk_entry_completion_get_popup_completion  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_popup_completion(gtkEntryCompletion);
-	}
+	public int getPopupCompletion();
 	
 	/**
 	 * Sets whether the completion popup window will be resized to be the same
@@ -579,23 +303,15 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Params:
 	 * popupSetWidth =  TRUE to make the width of the popup the same as the entry
 	 */
-	public void setPopupSetWidth(int popupSetWidth)
-	{
-		// void gtk_entry_completion_set_popup_set_width  (GtkEntryCompletion *completion,  gboolean popup_set_width);
-		gtk_entry_completion_set_popup_set_width(gtkEntryCompletion, popupSetWidth);
-	}
-	
+	public void setPopupSetWidth(int popupSetWidth);
+
 	/**
 	 * Returns whether the completion popup window will be resized to the
 	 * width of the entry.
 	 * Since 2.8
 	 * Returns: TRUE if the popup window will be resized to the width of  the entry
 	 */
-	public int getPopupSetWidth()
-	{
-		// gboolean gtk_entry_completion_get_popup_set_width  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_popup_set_width(gtkEntryCompletion);
-	}
+	public int getPopupSetWidth();
 	
 	/**
 	 * Sets whether the completion popup window will appear even if there is
@@ -607,11 +323,7 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * popupSingleMatch =  TRUE if the popup should appear even for a single
 	 *  match
 	 */
-	public void setPopupSingleMatch(int popupSingleMatch)
-	{
-		// void gtk_entry_completion_set_popup_single_match  (GtkEntryCompletion *completion,  gboolean popup_single_match);
-		gtk_entry_completion_set_popup_single_match(gtkEntryCompletion, popupSingleMatch);
-	}
+	public void setPopupSingleMatch(int popupSingleMatch);
 	
 	/**
 	 * Returns whether the completion popup window will appear even if there is
@@ -619,9 +331,5 @@ public class EntryCompletion : ObjectG, CellLayoutIF
 	 * Since 2.8
 	 * Returns: TRUE if the popup window will appear regardless of the number of matches.
 	 */
-	public int getPopupSingleMatch()
-	{
-		// gboolean gtk_entry_completion_get_popup_single_match  (GtkEntryCompletion *completion);
-		return gtk_entry_completion_get_popup_single_match(gtkEntryCompletion);
-	}
+	public int getPopupSingleMatch();
 }

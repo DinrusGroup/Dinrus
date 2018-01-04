@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-gtkfilefilter.html
- * outPack = gtk
- * outFile = FileFilter
- * strct   = GtkFileFilter
- * realStrct=
- * ctorStrct=
- * clss    = FileFilter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_file_filter_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.FileFilter;
 
 public  import gtkD.gtkc.gtktypes;
@@ -87,38 +35,16 @@ public class FileFilter : ObjectGtk
 	protected GtkFileFilter* gtkFileFilter;
 	
 	
-	public GtkFileFilter* getFileFilterStruct()
-	{
-		return gtkFileFilter;
-	}
+	public GtkFileFilter* getFileFilterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkFileFilter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkFileFilter* gtkFileFilter)
-	{
-		if(gtkFileFilter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkFileFilter);
-		if( ptr !is null )
-		{
-			this = cast(FileFilter)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkFileFilter);
-		this.gtkFileFilter = gtkFileFilter;
-	}
+	public this (GtkFileFilter* gtkFileFilter);
 	
 	/**
 	 */
@@ -132,16 +58,7 @@ public class FileFilter : ObjectGtk
 	 * Since 2.4
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkFileFilter * gtk_file_filter_new (void);
-		auto p = gtk_file_filter_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_file_filter_new()");
-		}
-		this(cast(GtkFileFilter*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the human-readable name of the filter; this is the string
@@ -152,22 +69,14 @@ public class FileFilter : ObjectGtk
 	 * name =  the human-readable-name for the filter, or NULL
 	 *  to remove any existing name.
 	 */
-	public void setName(string name)
-	{
-		// void gtk_file_filter_set_name (GtkFileFilter *filter,  const gchar *name);
-		gtk_file_filter_set_name(gtkFileFilter, Str.toStringz(name));
-	}
-	
+	public void setName(string name);
+
 	/**
 	 * Gets the human-readable name for the filter. See gtk_file_filter_set_name().
 	 * Since 2.4
 	 * Returns: The human-readable name of the filter, or NULL. This value is owned by GTK+ and must not be modified or freed.
 	 */
-	public string getName()
-	{
-		// const gchar * gtk_file_filter_get_name (GtkFileFilter *filter);
-		return Str.toString(gtk_file_filter_get_name(gtkFileFilter));
-	}
+	public string getName();
 	
 	/**
 	 * Adds a rule allowing a given mime type to filter.
@@ -175,11 +84,7 @@ public class FileFilter : ObjectGtk
 	 * Params:
 	 * mimeType =  name of a MIME type
 	 */
-	public void addMimeType(string mimeType)
-	{
-		// void gtk_file_filter_add_mime_type (GtkFileFilter *filter,  const gchar *mime_type);
-		gtk_file_filter_add_mime_type(gtkFileFilter, Str.toStringz(mimeType));
-	}
+	public void addMimeType(string mimeType);
 	
 	/**
 	 * Adds a rule allowing a shell style glob to a filter.
@@ -187,22 +92,14 @@ public class FileFilter : ObjectGtk
 	 * Params:
 	 * pattern =  a shell style glob
 	 */
-	public void addPattern(string pattern)
-	{
-		// void gtk_file_filter_add_pattern (GtkFileFilter *filter,  const gchar *pattern);
-		gtk_file_filter_add_pattern(gtkFileFilter, Str.toStringz(pattern));
-	}
+	public void addPattern(string pattern);
 	
 	/**
 	 * Adds a rule allowing image files in the formats supported
 	 * by GdkPixbuf.
 	 * Since 2.6
 	 */
-	public void addPixbufFormats()
-	{
-		// void gtk_file_filter_add_pixbuf_formats (GtkFileFilter *filter);
-		gtk_file_filter_add_pixbuf_formats(gtkFileFilter);
-	}
+	public void addPixbufFormats();
 	
 	/**
 	 * Adds rule to a filter that allows files based on a custom callback
@@ -219,11 +116,7 @@ public class FileFilter : ObjectGtk
 	 * data =  data to pass to func
 	 * notify =  function to call to free data when it is no longer needed.
 	 */
-	public void addCustom(GtkFileFilterFlags needed, GtkFileFilterFunc func, void* data, GDestroyNotify notify)
-	{
-		// void gtk_file_filter_add_custom (GtkFileFilter *filter,  GtkFileFilterFlags needed,  GtkFileFilterFunc func,  gpointer data,  GDestroyNotify notify);
-		gtk_file_filter_add_custom(gtkFileFilter, needed, func, data, notify);
-	}
+	public void addCustom(GtkFileFilterFlags needed, GtkFileFilterFunc func, void* data, GDestroyNotify notify);
 	
 	/**
 	 * Gets the fields that need to be filled in for the structure
@@ -234,11 +127,7 @@ public class FileFilter : ObjectGtk
 	 * Since 2.4
 	 * Returns: bitfield of flags indicating needed fields when calling gtk_file_filter_filter()
 	 */
-	public GtkFileFilterFlags getNeeded()
-	{
-		// GtkFileFilterFlags gtk_file_filter_get_needed (GtkFileFilter *filter);
-		return gtk_file_filter_get_needed(gtkFileFilter);
-	}
+	public GtkFileFilterFlags getNeeded();
 	
 	/**
 	 * Tests whether a file should be displayed according to filter.
@@ -254,9 +143,5 @@ public class FileFilter : ObjectGtk
 	 *  about a file.
 	 * Returns: TRUE if the file should be displayed
 	 */
-	public int filter(GtkFileFilterInfo* filterInfo)
-	{
-		// gboolean gtk_file_filter_filter (GtkFileFilter *filter,  const GtkFileFilterInfo *filter_info);
-		return gtk_file_filter_filter(gtkFileFilter, filterInfo);
-	}
+	public int filter(GtkFileFilterInfo* filterInfo);
 }

@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkInfoBar.html
- * outPack = gtk
- * outFile = InfoBar
- * strct   = GtkInfoBar
- * realStrct=
- * ctorStrct=GtkWidget
- * clss    = InfoBar
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_info_bar_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_info_bar_get_action_area
- * 	- gtk_info_bar_get_content_area
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.HBox;
- * 	- gtkD.gtk.VButtonBox
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.InfoBar;
 
 public  import gtkD.gtkc.gtktypes;
@@ -130,116 +73,45 @@ public class InfoBar : HBox
 	protected GtkInfoBar* gtkInfoBar;
 	
 	
-	public GtkInfoBar* getInfoBarStruct()
-	{
-		return gtkInfoBar;
-	}
+	public GtkInfoBar* getInfoBarStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkInfoBar;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkInfoBar* gtkInfoBar)
-	{
-		if(gtkInfoBar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkInfoBar);
-		if( ptr !is null )
-		{
-			this = cast(InfoBar)ptr;
-			return;
-		}
-		super(cast(GtkHBox*)gtkInfoBar);
-		this.gtkInfoBar = gtkInfoBar;
-	}
+	public this (GtkInfoBar* gtkInfoBar);
 	
 	/** */
-	public this(string[] buttonsText, ResponseType[] responses)
-	{
-		this();
-		
-		for ( int i=0 ; i<buttonsText.length && i<responses.length ; i++)
-		{
-			addButton(buttonsText[i], responses[i]);
-		}
-	}
+	public this(string[] buttonsText, ResponseType[] responses);
 	
 	/** */
-	public this(StockID[] stockIDs, ResponseType[] responses)
-	{
-		this();
-		
-		for ( int i=0 ; i<stockIDs.length && i<responses.length ; i++)
-		{
-			addButton(stockIDs[i], responses[i]);
-		}
-	}
+	public this(StockID[] stockIDs, ResponseType[] responses);
 	
 	/** */
-	public Widget addButton(StockID stockID, int responseId)
-	{
-		return addButton(StockDesc[stockID], responseId);
-	}
+	public Widget addButton(StockID stockID, int responseId);
 	
 	/** */
-	public void addButtons(string[] buttonsText, ResponseType[] responses)
-	{
-		for ( int i=0 ; i<buttonsText.length && i<responses.length ; i++)
-		{
-			addButton(buttonsText[i], responses[i]);
-		}
-	}
+	public void addButtons(string[] buttonsText, ResponseType[] responses);
 	
 	/** */
-	public void addButtons(StockID[] stockIDs, ResponseType[] responses)
-	{
-		for ( int i=0 ; i<stockIDs.length && i<responses.length ; i++)
-		{
-			addButton(stockIDs[i], responses[i]);
-		}
-	}
+	public void addButtons(StockID[] stockIDs, ResponseType[] responses);
 	
 	/**
 	 * Returns the action area of info_bar.
 	 * Since 2.18
 	 * Returns: the action area.
 	 */
-	public VButtonBox getActionArea()
-	{
-		// GtkWidget * gtk_info_bar_get_action_area (GtkInfoBar *info_bar);
-		auto p = gtk_info_bar_get_action_area(gtkInfoBar);
-		if(p is null)
-		{
-			return null;
-		}
-		return new VButtonBox(cast(GtkVButtonBox*) p);
-	}
+	public VButtonBox getActionArea();
 	
 	/**
 	 * Returns the content area of info_bar.
 	 * Since 2.18
 	 * Returns: the content area.
 	 */
-	public HBox getContentArea()
-	{
-		// GtkWidget * gtk_info_bar_get_content_area (GtkInfoBar *info_bar);
-		auto p = gtk_info_bar_get_content_area(gtkInfoBar);
-		if(p is null)
-		{
-			return null;
-		}
-		return new HBox(cast(GtkHBox*) p);
-	}
+	public HBox getContentArea();
 	
 	/**
 	 */
@@ -254,28 +126,8 @@ public class InfoBar : HBox
 	 * The default binding for this signal is the Escape key.
 	 * Since 2.18
 	 */
-	void addOnClose(void delegate(InfoBar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("close" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"close",
-			cast(GCallback)&callBackClose,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["close"] = 1;
-		}
-		onCloseListeners ~= dlg;
-	}
-	extern(C) static void callBackClose(GtkInfoBar* arg0Struct, InfoBar infoBar)
-	{
-		foreach ( void delegate(InfoBar) dlg ; infoBar.onCloseListeners )
-		{
-			dlg(infoBar);
-		}
-	}
+	void addOnClose(void delegate(InfoBar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackClose(GtkInfoBar* arg0Struct, InfoBar infoBar);
 	
 	void delegate(gint, InfoBar)[] onResponseListeners;
 	/**
@@ -286,28 +138,8 @@ public class InfoBar : HBox
 	 * See Also
 	 * #GtkStatusbar, GtkMessageDialog
 	 */
-	void addOnResponse(void delegate(gint, InfoBar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("response" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"response",
-			cast(GCallback)&callBackResponse,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["response"] = 1;
-		}
-		onResponseListeners ~= dlg;
-	}
-	extern(C) static void callBackResponse(GtkInfoBar* infoBarStruct, gint responseId, InfoBar infoBar)
-	{
-		foreach ( void delegate(gint, InfoBar) dlg ; infoBar.onResponseListeners )
-		{
-			dlg(responseId, infoBar);
-		}
-	}
+	void addOnResponse(void delegate(gint, InfoBar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackResponse(GtkInfoBar* infoBarStruct, gint responseId, InfoBar infoBar);
 	
 	
 	/**
@@ -315,16 +147,7 @@ public class InfoBar : HBox
 	 * Since 2.18
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget * gtk_info_bar_new (void);
-		auto p = gtk_info_bar_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_info_bar_new()");
-		}
-		this(cast(GtkInfoBar*) p);
-	}
+	public this ();
 	
 	/**
 	 * Add an activatable widget to the action area of a GtkInfoBar,
@@ -336,11 +159,7 @@ public class InfoBar : HBox
 	 * child =  an activatable widget
 	 * responseId =  response ID for child
 	 */
-	public void addActionWidget(Widget child, int responseId)
-	{
-		// void gtk_info_bar_add_action_widget (GtkInfoBar *info_bar,  GtkWidget *child,  gint response_id);
-		gtk_info_bar_add_action_widget(gtkInfoBar, (child is null) ? null : child.getWidgetStruct(), responseId);
-	}
+	public void addActionWidget(Widget child, int responseId);
 	
 	/**
 	 * Adds a button with the given text (or a stock button, if button_text
@@ -354,16 +173,7 @@ public class InfoBar : HBox
 	 * responseId =  response ID for the button
 	 * Returns: the button widget that was added
 	 */
-	public Widget addButton(string buttonText, int responseId)
-	{
-		// GtkWidget * gtk_info_bar_add_button (GtkInfoBar *info_bar,  const gchar *button_text,  gint response_id);
-		auto p = gtk_info_bar_add_button(gtkInfoBar, Str.toStringz(buttonText), responseId);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget addButton(string buttonText, int responseId);
 	
 	/**
 	 * Calls gtk_widget_set_sensitive (widget, setting) for each
@@ -374,11 +184,7 @@ public class InfoBar : HBox
 	 * responseId =  a response ID
 	 * setting =  TRUE for sensitive
 	 */
-	public void setResponseSensitive(int responseId, int setting)
-	{
-		// void gtk_info_bar_set_response_sensitive (GtkInfoBar *info_bar,  gint response_id,  gboolean setting);
-		gtk_info_bar_set_response_sensitive(gtkInfoBar, responseId, setting);
-	}
+	public void setResponseSensitive(int responseId, int setting);
 	
 	/**
 	 * Sets the last widget in the info bar's action area with
@@ -388,11 +194,7 @@ public class InfoBar : HBox
 	 * Params:
 	 * responseId =  a response ID
 	 */
-	public void setDefaultResponse(int responseId)
-	{
-		// void gtk_info_bar_set_default_response (GtkInfoBar *info_bar,  gint response_id);
-		gtk_info_bar_set_default_response(gtkInfoBar, responseId);
-	}
+	public void setDefaultResponse(int responseId);
 	
 	/**
 	 * Emits the 'response' signal with the given response_id.
@@ -400,11 +202,7 @@ public class InfoBar : HBox
 	 * Params:
 	 * responseId =  a response ID
 	 */
-	public void response(int responseId)
-	{
-		// void gtk_info_bar_response (GtkInfoBar *info_bar,  gint response_id);
-		gtk_info_bar_response(gtkInfoBar, responseId);
-	}
+	public void response(int responseId);
 	
 	/**
 	 * Sets the message type of the message area.
@@ -414,20 +212,12 @@ public class InfoBar : HBox
 	 * Params:
 	 * messageType =  a GtkMessageType
 	 */
-	public void setMessageType(GtkMessageType messageType)
-	{
-		// void gtk_info_bar_set_message_type (GtkInfoBar *info_bar,  GtkMessageType message_type);
-		gtk_info_bar_set_message_type(gtkInfoBar, messageType);
-	}
+	public void setMessageType(GtkMessageType messageType);
 	
 	/**
 	 * Returns the message type of the message area.
 	 * Since 2.18
 	 * Returns: the message type of the message area.
 	 */
-	public GtkMessageType getMessageType()
-	{
-		// GtkMessageType gtk_info_bar_get_message_type (GtkInfoBar *info_bar);
-		return gtk_info_bar_get_message_type(gtkInfoBar);
-	}
+	public GtkMessageType getMessageType();
 }
