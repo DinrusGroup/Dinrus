@@ -29,6 +29,7 @@ version(Rulada)
     private import tango.text.Util;
     private import tango.stdc.string;
     alias FILE* фук;
+    alias Thread Нить;
 }
 
 /**
@@ -205,7 +206,7 @@ public class Spawn
         return result;
     }
 
-    class ReadFile : stdrus.Нить
+    class ReadFile : Нить
     {
         bool delegate(string) read;
         фук file;

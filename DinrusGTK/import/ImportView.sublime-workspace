@@ -89,10 +89,59 @@
 			}
 		},
 		{
-			"file": "ImportView.sublime-project",
+			"file": "gio/File.d",
 			"settings":
 			{
-				"buffer_size": 45,
+				"buffer_size": 90417,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "glib/Str.d",
+			"settings":
+			{
+				"buffer_size": 42764,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "glib/Unicode.d",
+			"settings":
+			{
+				"buffer_size": 33604,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gobject/Enums.d",
+			"settings":
+			{
+				"buffer_size": 3113,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gsv/SourceBuffer.d",
+			"settings":
+			{
+				"buffer_size": 11703,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/*\n * This file is part of gtkD. Adapted from:\n *\n * paths.d  -- list of libraries that will be dynamically linked with DUI\n *\n * Added:\tJohn Reimer\t-- 2004-12-20\n * Updated: 2005-02-21 changed names; added version(linux)\n * Updated: 2005-05-05 updated Linux support\n * Updated: 2008-02-16 Tango support\n */\n\nmodule gtkD.gtkc.paths;\n\n//version(Rulada) private alias char[] string;\nversion(Rulada) import gtkD.gtkc.glibtypes;\n\n/*\n * Define the Libraries that gtkD will be using.\n *   This is a growable list, as long as the programmer\n *   also adds to the importLibs list.\n */\n\nenum LIBRARY\n{\n\tATK,\n\tCAIRO,\n\tGDK,\n\tGDKPIXBUF,\n\tGLIB,\n\tGMODULE,\n\tGOBJECT,\n\tGIO,\n\tGTHREAD,\n\tGTK,\n\tPANGO,\n\tPANGOCAIRO,\n\tGLGDK,\n\tGLGTK,\n\tGL,\n\tGLU,\n\tGLEXT,\n\tGDA,\n\tGLADE,\n\tGSV,\n\tGSTREAMER,\n\tGSTINTERFACES\n}\n\nversion (Windows)\n{\nconst string[LIBRARY.max+1] importLibs =\n\t[\n\tLIBRARY.ATK:           \"libatk-1.0-0.dll\",\n\tLIBRARY.CAIRO:         \"libcairo-2.dll\",\n\tLIBRARY.GDK:           \"libgdk-win32-2.0-0.dll\",\n\tLIBRARY.GDKPIXBUF:     \"libgdk_pixbuf-2.0-0.dll\",\n\tLIBRARY.GLIB:          \"libglib-2.0-0.dll\",\n\tLIBRARY.GMODULE:       \"libgmodule-2.0-0.dll\",\n\tLIBRARY.GOBJECT:       \"libgobject-2.0-0.dll\",\n\tLIBRARY.GIO:           \"libgio-2.0-0.dll\",\n\tLIBRARY.GTHREAD:       \"libgthread-2.0-0.dll\",\n\tLIBRARY.GTK:           \"libgtk-win32-2.0-0.dll\",\n\tLIBRARY.PANGO:         \"libpango-1.0-0.dll\",\n\tLIBRARY.PANGOCAIRO:    \"libpangocairo-1.0-0.dll\",\n\tLIBRARY.GLGDK:         \"libgdkglext-win32-1.0-0.dll\",\n\tLIBRARY.GLGTK:         \"libgtkglext-win32-1.0-0.dll\",\n\tLIBRARY.GL:            \"Dinrus.OpenGL.dll\",\n\tLIBRARY.GLU:           \"Dinrus.Glu.dll\",\n\tLIBRARY.GDA:           \"libgda-5.0-4.dll\",\n\tLIBRARY.GLADE:         \"libglade-2.0-0.dll\",\n\tLIBRARY.GSV:           \"libgtksourceview-2.0-0.dll\",\n\tLIBRARY.GSTREAMER:     \"libgstreamer-0.10.dll\",\n\tLIBRARY.GSTINTERFACES: \"libgstinterfaces-0.10.dll\"\n\t];\n}\nelse version(darwin)\n{\n/**\n* On OS X, currently there are (atleast) two places where\n* GTK+ might be installed. The default for gtkD is the native\n* Quartz port. The other one is the X11 version, which runs\n* under the separate X11 environment of OS X. You can\n* uncomment the version=darwinX11 in the gtkD toplevel dsss.conf file\n* to build gtkD for X11.\n* Currently gtkDgl (which uses gtkglext) is only available under X11,\n* because gtkglext is not yet ported to the Quartz backend.\n*/\n\nversion(darwinX11)\n{\n\t//This version is for the non-native OS X, X11 port\n\t//of GTK+. This directory is according to the Macports http://www.macports.org\n\t//default installation location. There should be installation instructions\n\t//in the gtkD wiki at DSource.\n\tconst char[] DIRECTORY = \"/opt/local/lib/\";\n\tconst char[] INTERFACE = \"x11\";\n\n\tconst char[][LIBRARY.max+1] importLibs =\n\t[\n\t\tLIBRARY.ATK:           DIRECTORY~\"libatk-1.0.dylib\",\n\t\tLIBRARY.CAIRO:         DIRECTORY~\"libgtkD.cairo.dylib\",\n\t\tLIBRARY.GDK:           DIRECTORY~\"libgdk-\"~INTERFACE~\"-2.0.dylib\",\n\t\tLIBRARY.GDKPIXBUF:     DIRECTORY~\"libgdk_pixbuf-2.0.dylib\",\n\t\tLIBRARY.GLIB:          DIRECTORY~\"libglib-2.0.dylib\",\n\t\tLIBRARY.GMODULE:       DIRECTORY~\"libgmodule-2.0.dylib\",\n\t\tLIBRARY.GOBJECT:       DIRECTORY~\"libgobject-2.0.dylib\",\n\t\tLIBRARY.GTHREAD:       DIRECTORY~\"libgthread-2.0.dylib\",\n\t\tLIBRARY.GTK:           DIRECTORY~\"libgtk-\"~INTERFACE~\"-2.0.dylib\",\n\t\tLIBRARY.PANGO:         DIRECTORY~\"libpango-1.0.dylib\",\n\t\tLIBRARY.GLGDK:         DIRECTORY~\"libgdkglext-\"~INTERFACE~\"-1.0.dylib\",\n\t\tLIBRARY.GLGTK:         DIRECTORY~\"libgtkglext-\"~INTERFACE~\"-1.0.dylib\",\n\t\tLIBRARY.GL:            \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GLU:           \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GLEXT:         \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GDA:           DIRECTORY~\"libgda-2.dylib\",\n\t\tLIBRARY.GLADE:         DIRECTORY~\"libglade-2.0.dylib\",\n\t\tLIBRARY.GSV:           DIRECTORY~\"libgtksourceview-1.0.dylib\",\n\t\tLIBRARY.GSTREAMER:     DIRECTORY~\"libgstreamer-0.10.dylib\",\n\t\tLIBRARY.GSTINTERFACES: DIRECTORY~\"libgstinterfaces-0.10.dylib\"\n\t];\n}\nelse //default version (The Quartz GTK+ Framework):\n{\n\t//This version is for the native Quartz port of GTK+\n\t//which can be found from http://www.gtk-osx.org/\n\t//The libraries in the /opt/ directory are not part of\n\t//that package and need to be installed separately,\n\t//possibly through Macports.\n\n\tconst char[] FRAMEWORKS_DIR = \"/Library/Frameworks/\";\n\tconst char[] INTERFACE = \"quartz\";\n\tconst char[] DIRECTORY = \"/opt/local/lib/\";\n\n\t//On OS X we can just specify the framework. But we could also\n\t//specify the individual libraries like this:\n\t//LIBRARY.CAIRO:  \tFRAMEWORKS_DIR~\"Cairo.framework/Libraries/libgtkD.cairo.2.dylib\",\n\t//but we'll do it like this instead:\n\t//LIBRARY.CAIRO:  \tFRAMEWORKS_DIR~\"Cairo.framework/Cairo\",\n\n\tconst string[LIBRARY.max+1] importLibs =\n\t[\n\t\tLIBRARY.ATK:           FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.CAIRO:         FRAMEWORKS_DIR~\"Cairo.framework/Cairo\",\n\t\tLIBRARY.GDK:           FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.GDKPIXBUF:     FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.GLIB:          FRAMEWORKS_DIR~\"GLib.framework/GLib\",\n\t\tLIBRARY.GMODULE:       FRAMEWORKS_DIR~\"GLib.framework/GLib\",\n\t\tLIBRARY.GOBJECT:       FRAMEWORKS_DIR~\"GLib.framework/GLib\",\n\t\tLIBRARY.GIO:           FRAMEWORKS_DIR~\"GLib.framework/GLib\",\n\t\tLIBRARY.GTHREAD:       FRAMEWORKS_DIR~\"GLib.framework/GLib\",\n\t\tLIBRARY.GTK:           FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.PANGO:         FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.PANGOCAIRO:    FRAMEWORKS_DIR~\"Gtk.framework/Gtk\",\n\t\tLIBRARY.GLGDK:         DIRECTORY~\"libgdkglext-\"~INTERFACE~\"-1.0.dylib\",//This isn't currently available\n\t\tLIBRARY.GLGTK:         DIRECTORY~\"libgtkglext-\"~INTERFACE~\"-1.0.dylib\",//This isn't currently available\n\t\tLIBRARY.GL:            \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GLU:           \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GLEXT:         \"/System/Library/Frameworks/OpenGL.framework/OpenGL\",\n\t\tLIBRARY.GDA:           DIRECTORY~\"libgda-2.dylib\",\n\t\tLIBRARY.GLADE:         DIRECTORY~\"libglade-2.0.dylib\",\n\t\tLIBRARY.GSV:           DIRECTORY~\"libgtksourceview-1.0.dylib\",\n\t\tLIBRARY.GSTREAMER:     DIRECTORY~\"libgstreamer-0.10.dylib\",\n\t\tLIBRARY.GSTINTERFACES: DIRECTORY~\"libgstinterfaces-0.10.dylib\"\n\t];\n}}\nelse\n{\nconst string[LIBRARY.max+1] importLibs =\n\t[\n\tLIBRARY.ATK:           \"libatk-1.0.so\",\n\tLIBRARY.CAIRO:         \"libgtkD.cairo.so.2\",\n\tLIBRARY.GDK:           \"libgdk-x11-2.0.so\",\n\tLIBRARY.GDKPIXBUF:     \"libgdk_pixbuf-2.0.so\",\n\tLIBRARY.GLIB:          \"libglib-2.0.so\",\n\tLIBRARY.GMODULE:       \"libgmodule-2.0.so\",\n\tLIBRARY.GOBJECT:       \"libgobject-2.0.so\",\n\tLIBRARY.GIO:           \"libgio-2.0.so\",\n\tLIBRARY.GTHREAD:       \"libgthread-2.0.so\",\n\tLIBRARY.GTK:           \"libgtk-x11-2.0.so\",\n\tLIBRARY.PANGO:         \"libpango-1.0.so\",\n\tLIBRARY.PANGOCAIRO:    \"libpangocairo-1.0.so\",\n\tLIBRARY.GLGDK:         \"libgdkglext-x11-1.0.so\",\n\tLIBRARY.GLGTK:         \"libgtkglext-x11-1.0.so\",\n\tLIBRARY.GL:            \"libGL.so\",\n\tLIBRARY.GLU:           \"libGLU.so\",\n\tLIBRARY.GLEXT:         \"libGL.so\",\n\tLIBRARY.GDA:           \"libgda-4.0.so\",\n\tLIBRARY.GLADE:         \"libglade-2.0.so\",\n\tLIBRARY.GSV:           \"libgtksourceview-2.0.so\",\n\tLIBRARY.GSTREAMER:     \"libgstreamer-0.10.so\",\n\tLIBRARY.GSTINTERFACES: \"libgstinterfaces-0.10.so\"\n\t];\n}\n\nversion(Windows)\n{\n\t//version(Phobos)\n\tversion(Rulada){}\n\tversion(Dinrus)\n\t{\n\t\timport sys.registry;\n\t\timport dinrus;\n\t}\n\n\textern (Windows)\n\t{\n\t\tprivate uint GetEnvironmentVariableA(char*, char*, uint);\n\t}\n\n\t//Based on tango.sys.Environment.Environment.get\n\tstatic string GetEnvironmentVariable(string variable)\n\t{\n\t\tchar[] var = variable ~ \"\\0\".dup;\n\t\tuint size = GetEnvironmentVariableA(var.ptr, cast(char*)null, 0);\n\n\t\tif (size == 0) return \"\";\n\n\t\tchar[] buf = new char[size];\n\t\tsize = GetEnvironmentVariableA(var.ptr, buf.ptr, size);\n\n\t\tif (size == 0) return \"\";\n\n\t\treturn cast(string)buf[0 .. size];\n\t}\n\n\tstring libPath()\n\t{\n\t\tstring libPath;\n\n\t\tlibPath = GetEnvironmentVariable(\"GTK_BASEPATH\");\n\n\t\tif ( libPath.length > 0 )\n\t\t{\n\t\t\tif ( libPath.length > 5 && libPath[$-5..$] == \"\\\\bin\\\\\" )\n\t\t\t\treturn libPath;\n\t\t\telse\n\t\t\t\treturn libPath ~ \"\\\\bin\\\\\";\n\t\t}\n\n/* Throws an Access Violation with DMD 2.*\n\t\t// version(Phobos)\n\t\tversion(Rulada){} else\n\t\t{\n\t\t\t// When using phobos Also try the Register\n\n\t\t\tKey k = Registry.localMachine();\n\n\t\t\tdebug(register) foreach ( Key key ; k.keys() )\n\t\t\t{\n\t\t\t\twritefln(\"key = \", key.name());\n\t\t\t}\n\n\t\t\ttry\n\t\t\t{\n\t\t\t\tk = k.getKey(\"SOFTWARE\");\n\t\t\t\t//writefln(\"key.value = %s\", k.name());\n\t\t\t\tk = k.getKey(\"GTK\");\n\t\t\t\t//writefln(\"key.value = %s\", k.name());\n\t\t\t\tk = k.getKey(\"2.0\");\n\t\t\t\t//writefln(\"key.value = %s\", k.name());\n\t\t\t\tValue v = k.getValue(\"DllPath\");\n\t\t\t\tlibPath = v.value_SZ() ~ \"\\\\\";\n\t\t\t}\n\t\t\tcatch ( Exception e )\n\t\t\t{\n\t\t\t\tlibPath = \"\";\n\t\t\t}\n\t\t}\n*/\n\n\t\t// Returns the found location or an empty string\n\t\t// to load the libraries from the path.\n\t\t// see http://msdn2.microsoft.com/en-us/library/ms682586(VS.85).aspx\n\t\treturn libPath;\n\t}\n}\nelse\n{\n\t// empty for Linux, Unix and Mac because default path is known by ld\n\tstring libPath()\n\t{\n\t\treturn \"\";\n\t}\n}\n",
+			"file": "gtkc/paths.d",
+			"file_size": 9145,
+			"file_write_time": 131596427449394531,
+			"settings":
+			{
+				"buffer_size": 9145,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -130,7 +179,8 @@
 	"expanded_folders":
 	[
 		"/D/dinrus/dev/DINRUS/DinrusGTK/import",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango"
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gdac",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtkc"
 	],
 	"file_history":
 	[
@@ -296,7 +346,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 14,
 			"sheets":
 			[
 				{
@@ -325,7 +375,7 @@
 						"translation.y": 1620.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -354,7 +404,7 @@
 						"translation.y": 2970.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -383,7 +433,7 @@
 						"translation.y": 3375.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -412,7 +462,7 @@
 						"translation.y": 3650.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -441,7 +491,7 @@
 						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -470,7 +520,7 @@
 						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -499,7 +549,7 @@
 						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -528,7 +578,7 @@
 						"translation.y": 765.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -557,32 +607,177 @@
 						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "ImportView.sublime-project",
-					"semi_transient": true,
+					"file": "gio/File.d",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 45,
+						"buffer_size": 90417,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								37697,
+								37697
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/D/D.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 27405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "glib/Str.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 42764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24731,
+								24731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 14940.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "glib/Unicode.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 33604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8681,
+								8681
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12015.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "gobject/Enums.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3110,
+								3110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "gsv/SourceBuffer.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11703,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1929,
+								1929
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4410.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "gtkc/paths.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9145,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1641,
+								1641
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

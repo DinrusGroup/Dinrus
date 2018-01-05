@@ -250,9 +250,11 @@ template GLCapability()
             width = event.width;
             height = event.height;
         }
-        version(Rulada) tango.core.Memory.GC.disable();
-        else version(D_Version2) core.memory.GC.disable();
-        else std.gc.disable();
+		version(Tango) tango.core.Memory.GC.disable();
+		else version(D_Version2) core.memory.GC.disable();
+		version(Rulada) std.gc.disable();
+		version(Dinrus) смОтключи();
+
         //writefln("configureFrame 1");
         //printf("GLCapabilityT.configureFrame \n" );
         GLContext context = GLWidget.getGLContext(widget);
@@ -289,9 +291,10 @@ template GLCapability()
         //writefln("configureFrame 9");
         /*** OpenGL END ***/
 
-        version(Rulada) tango.core.Memory.GC.enable();
-        else version(D_Version2) core.memory.GC.enable();
-        else std.gc.enable();
+        version(Tango) tango.core.Memory.GC.enable();
+		else version(D_Version2) core.memory.GC.enable();
+		version(Rulada) std.gc.enable();
+		version(Dinrus) смВключи();
 
         return consumeEvent;
     }

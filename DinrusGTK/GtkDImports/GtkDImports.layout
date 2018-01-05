@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Release" />
+	<File name="..\import\atk\ObjectAtk.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2385" topLine="81" />
+		</Cursor>
+	</File>
+	<File name="..\import\gio\File.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="90416" topLine="1832" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\EntryBuffer.d" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1459" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\Menu.d" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7059" topLine="190" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\StatusIcon.d" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6532" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="..\import\glib\Unicode.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8763" topLine="247" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\Border.d" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1078" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="..\import\atk\Selection.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1588" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\AccelGroup.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2191" topLine="72" />
+		</Cursor>
+	</File>
+	<File name="..\import\atk\Table.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2056" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="..\import\gio\IOStream.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1995" topLine="40" />
+		</Cursor>
+	</File>
+	<File name="..\import\gstreamer\Element.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6503" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\import\glib\Str.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="42776" topLine="1009" />
+		</Cursor>
+	</File>
+	<File name="..\import\gsv\SourceBuffer.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11702" topLine="307" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\Widget.d" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29680" topLine="1138" />
+		</Cursor>
+	</File>
+	<File name="..\import\atk\Hyperlink.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1416" topLine="103" />
+		</Cursor>
+	</File>
+	<File name="..\import\gobject\ParamSpec.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8682" topLine="225" />
+		</Cursor>
+	</File>
+	<File name="..\import\gtk\CellRendererAccel.d" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1356" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="..\import\gobject\Enums.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3113" topLine="80" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

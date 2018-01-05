@@ -721,7 +721,7 @@ public class BookmarkFile
         char* outexec = null;
         GError* err = null;
 
-        auto p = g_bookmark_file_get_app_info(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), &outexec, &count, cast(int*) &stamp, &err);
+        auto p = g_bookmark_file_get_app_info(gBookmarkFile, Str.toStringz(uri), Str.toStringz(name), &outexec, &count, cast(uint*) &stamp, &err);
 
         if (err !is null)
         {
