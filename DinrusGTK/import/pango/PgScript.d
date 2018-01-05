@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Scripts-and-Languages.html
- * outPack = pango
- * outFile = PgScript
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = PgScript
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_
- * 	- pango_script_
- * omit structs:
- * omit prefixes:
- * 	- pango_script_iter_
- * 	- pango_language_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.pango.PgLanguage
- * structWrap:
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgScript;
 
 public  import gtkD.gtkc.pangotypes;
@@ -90,11 +35,7 @@ public class PgScript
 	 * ch =  a Unicode character
 	 * Returns: the PangoScript for the character.
 	 */
-	public static PangoScript scriptForUnichar(gunichar ch)
-	{
-		// PangoScript pango_script_for_unichar (gunichar ch);
-		return pango_script_for_unichar(ch);
-	}
+	public static PangoScript scriptForUnichar(gunichar ch);
 	
 	/**
 	 * Given a script, finds a language tag that is reasonably
@@ -104,14 +45,5 @@ public class PgScript
 	 * script =  a PangoScript
 	 * Returns: a PangoLanguage that is representativeof the script, or NULL if no such language exists.
 	 */
-	public static PgLanguage scriptGetSampleLanguage(PangoScript script)
-	{
-		// PangoLanguage * pango_script_get_sample_language (PangoScript script);
-		auto p = pango_script_get_sample_language(script);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLanguage(cast(PangoLanguage*) p);
-	}
+	public static PgLanguage scriptGetSampleLanguage(PangoScript script);
 }

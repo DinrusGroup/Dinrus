@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Vertical-Text.html
- * outPack = pango
- * outFile = PgVertical
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = PgVertical
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.pango.PgMatrix
- * structWrap:
- * 	- PangoMatrix* -> PgMatrix
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.pango.PgVertical;
 
@@ -117,11 +66,7 @@ public class PgVertical
 	 * matrix =  a PangoMatrix
 	 * Returns: the gravity of matrix, which will never bePANGO_GRAVITY_AUTO, or PANGO_GRAVITY_SOUTH if matrix is NULL
 	 */
-	public static PangoGravity gravityGetForMatrix(PgMatrix matrix)
-	{
-		// PangoGravity pango_gravity_get_for_matrix (const PangoMatrix *matrix);
-		return pango_gravity_get_for_matrix((matrix is null) ? null : matrix.getPgMatrixStruct());
-	}
+	public static PangoGravity gravityGetForMatrix(PgMatrix matrix);
 	
 	/**
 	 * Based on the script, base gravity, and hint, returns actual gravity
@@ -136,11 +81,7 @@ public class PgVertical
 	 * hint =  orientation hint
 	 * Returns: resolved gravity suitable to use for a run of textwith script.
 	 */
-	public static PangoGravity gravityGetForScript(PangoScript script, PangoGravity baseGravity, PangoGravityHint hint)
-	{
-		// PangoGravity pango_gravity_get_for_script (PangoScript script,  PangoGravity base_gravity,  PangoGravityHint hint);
-		return pango_gravity_get_for_script(script, baseGravity, hint);
-	}
+	public static PangoGravity gravityGetForScript(PangoScript script, PangoGravity baseGravity, PangoGravityHint hint);
 	
 	/**
 	 * Based on the script, East Asian width, base gravity, and hint,
@@ -162,11 +103,7 @@ public class PgVertical
 	 * hint =  orientation hint
 	 * Returns: resolved gravity suitable to use for a run of textwith script and wide.
 	 */
-	public static PangoGravity gravityGetForScriptAndWidth(PangoScript script, int wide, PangoGravity baseGravity, PangoGravityHint hint)
-	{
-		// PangoGravity pango_gravity_get_for_script_and_width  (PangoScript script,  gboolean wide,  PangoGravity base_gravity,  PangoGravityHint hint);
-		return pango_gravity_get_for_script_and_width(script, wide, baseGravity, hint);
-	}
+	public static PangoGravity gravityGetForScriptAndWidth(PangoScript script, int wide, PangoGravity baseGravity, PangoGravityHint hint);
 	
 	/**
 	 * Converts a PangoGravity value to its natural rotation in radians.
@@ -179,9 +116,5 @@ public class PgVertical
 	 * gravity =  gravity to query
 	 * Returns: the rotation value corresponding to gravity.
 	 */
-	public static double gravityToRotation(PangoGravity gravity)
-	{
-		// double pango_gravity_to_rotation (PangoGravity gravity);
-		return pango_gravity_to_rotation(gravity);
-	}
+	public static double gravityToRotation(PangoGravity gravity);
 }

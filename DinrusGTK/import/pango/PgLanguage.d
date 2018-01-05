@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgLanguage
- * strct   = PangoLanguage
- * realStrct=
- * ctorStrct=
- * clss    = PgLanguage
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_language_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgLanguage;
 
 public  import gtkD.gtkc.pangotypes;
@@ -76,30 +24,16 @@ public class PgLanguage
 	protected PangoLanguage* pangoLanguage;
 	
 	
-	public PangoLanguage* getPgLanguageStruct()
-	{
-		return pangoLanguage;
-	}
+	public PangoLanguage* getPgLanguageStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoLanguage;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoLanguage* pangoLanguage)
-	{
-		if(pangoLanguage is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoLanguage = pangoLanguage;
-	}
+	public this (PangoLanguage* pangoLanguage);
 	
 	/**
 	 */
@@ -118,26 +52,13 @@ public class PgLanguage
 	 * language =  a string representing a language tag, or NULL
 	 * Returns: an opaque pointer to a PangoLanguage structure, or NULL if language was NULL. The returned pointer will be valid forever after, and should not be freed.
 	 */
-	public static PgLanguage fromString(string language)
-	{
-		// PangoLanguage * pango_language_from_string (const char *language);
-		auto p = pango_language_from_string(Str.toStringz(language));
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLanguage(cast(PangoLanguage*) p);
-	}
+	public static PgLanguage fromString(string language);
 	
 	/**
 	 * Gets the RFC-3066 format string representing the given language tag.
 	 * Returns: a string representing the language tag. This is owned by Pango and should not be freed.
 	 */
-	public string toString()
-	{
-		// const char * pango_language_to_string (PangoLanguage *language);
-		return Str.toString(pango_language_to_string(pangoLanguage));
-	}
+	public string toString();
 	
 	/**
 	 * Checks if a language tag matches one of the elements in a list of
@@ -152,12 +73,8 @@ public class PgLanguage
 	 *  canonicalized as by pango_language_from_string()
 	 * Returns: TRUE if a match was found.
 	 */
-	public int matches(string rangeList)
-	{
-		// gboolean pango_language_matches (PangoLanguage *language,  const char *range_list);
-		return pango_language_matches(pangoLanguage, Str.toStringz(rangeList));
-	}
-	
+	public int matches(string rangeList);
+
 	/**
 	 * Determines if script is one of the scripts used to
 	 * write language. The returned value is conservative;
@@ -174,11 +91,7 @@ public class PgLanguage
 	 * script =  a PangoScript
 	 * Returns: TRUE if script is one of the scripts usedto write language or if nothing is known about language(including the case that language is NULL),FALSE otherwise.
 	 */
-	public int includesScript(PangoScript script)
-	{
-		// gboolean pango_language_includes_script (PangoLanguage *language,  PangoScript script);
-		return pango_language_includes_script(pangoLanguage, script);
-	}
+	public int includesScript(PangoScript script);
 	
 	/**
 	 * Determines the scripts used to to write language.
@@ -201,11 +114,7 @@ public class PgLanguage
 	 * numScripts =  location to return number of scripts, or NULL
 	 * Returns: An array of PangoScript values, with thenumber of entries in the array stored in num_scripts, orNULL if Pango does not have any information about thisparticular language tag (also the case if language is NULL).The returned array is owned by Pango and should not be modifiedor freed.
 	 */
-	public PangoScript* getScripts(int* numScripts)
-	{
-		// const PangoScript * pango_language_get_scripts (PangoLanguage *language,  int *num_scripts);
-		return pango_language_get_scripts(pangoLanguage, numScripts);
-	}
+	public PangoScript* getScripts(int* numScripts);
 	
 	/**
 	 * Returns the PangoLanguage for the current locale of the process.
@@ -234,16 +143,7 @@ public class PgLanguage
 	 * Since 1.16
 	 * Returns: the default language as a PangoLanguage, must not be freed.
 	 */
-	public static PgLanguage getDefault()
-	{
-		// PangoLanguage * pango_language_get_default (void);
-		auto p = pango_language_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLanguage(cast(PangoLanguage*) p);
-	}
+	public static PgLanguage getDefault();
 	
 	/**
 	 * Get a string that is representative of the characters needed to
@@ -259,9 +159,5 @@ public class PgLanguage
 	 * comparing the returned pointer value to that returned for (non-existent)
 	 * Returns: the sample string. This value is owned by Pango and should not be freed.
 	 */
-	public string getSampleString()
-	{
-		// const char * pango_language_get_sample_string (PangoLanguage *language);
-		return Str.toString(pango_language_get_sample_string(pangoLanguage));
-	}
+	public string getSampleString();
 }

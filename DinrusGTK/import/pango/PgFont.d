@@ -1,73 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Fonts.html
- * outPack = pango
- * outFile = PgFont
- * strct   = PangoFont
- * realStrct=
- * ctorStrct=
- * clss    = PgFont
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_font_
- * omit structs:
- * omit prefixes:
- * 	- pango_font_description_
- * 	- pango_font_descriptions_
- * 	- pango_font_metrics_
- * 	- pango_font_family_
- * 	- pango_font_face_
- * 	- pango_font_map_
- * 	- pango_fontset_
- * 	- pango_fontset_simple_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.pango.PgEngineShape
- * 	- gtkD.pango.PgFontDescription
- * 	- gtkD.pango.PgCoverage
- * 	- gtkD.pango.PgFontMetrics
- * 	- gtkD.pango.PgFontMap
- * 	- gtkD.pango.PgLanguage
- * structWrap:
- * 	- PangoCoverage* -> PgCoverage
- * 	- PangoEngineShape* -> PgEngineShape
- * 	- PangoFontDescription* -> PgFontDescription
- * 	- PangoFontMap* -> PgFontMap
- * 	- PangoFontMetrics* -> PgFontMetrics
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgFont;
 
 public  import gtkD.gtkc.pangotypes;
@@ -103,38 +33,16 @@ public class PgFont : ObjectG
 	protected PangoFont* pangoFont;
 	
 	
-	public PangoFont* getPgFontStruct()
-	{
-		return pangoFont;
-	}
+	public PangoFont* getPgFontStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoFont;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoFont* pangoFont)
-	{
-		if(pangoFont is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoFont);
-		if( ptr !is null )
-		{
-			this = cast(PgFont)ptr;
-			return;
-		}
-		super(cast(GObject*)pangoFont);
-		this.pangoFont = pangoFont;
-	}
+	public this (PangoFont* pangoFont);
 	
 	/**
 	 */
@@ -147,16 +55,7 @@ public class PgFont : ObjectG
 	 * ch =  a Unicode character.
 	 * Returns: the best matching shaper.
 	 */
-	public PgEngineShape findShaper(PgLanguage language, uint ch)
-	{
-		// PangoEngineShape * pango_font_find_shaper (PangoFont *font,  PangoLanguage *language,  guint32 ch);
-		auto p = pango_font_find_shaper(pangoFont, (language is null) ? null : language.getPgLanguageStruct(), ch);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgEngineShape(cast(PangoEngineShape*) p);
-	}
+	public PgEngineShape findShaper(PgLanguage language, uint ch);
 	
 	/**
 	 * Returns a description of the font, with font size set in points.
@@ -164,16 +63,7 @@ public class PgFont : ObjectG
 	 * size in device units.
 	 * Returns: a newly-allocated PangoFontDescription object.
 	 */
-	public PgFontDescription describe()
-	{
-		// PangoFontDescription * pango_font_describe (PangoFont *font);
-		auto p = pango_font_describe(pangoFont);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public PgFontDescription describe();
 	
 	/**
 	 * Returns a description of the font, with absolute font size set
@@ -182,16 +72,7 @@ public class PgFont : ObjectG
 	 * Since 1.14
 	 * Returns: a newly-allocated PangoFontDescription object.
 	 */
-	public PgFontDescription describeWithAbsoluteSize()
-	{
-		// PangoFontDescription * pango_font_describe_with_absolute_size  (PangoFont *font);
-		auto p = pango_font_describe_with_absolute_size(pangoFont);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public PgFontDescription describeWithAbsoluteSize();
 	
 	/**
 	 * Computes the coverage map for a given font and language tag.
@@ -199,16 +80,7 @@ public class PgFont : ObjectG
 	 * language =  the language tag
 	 * Returns: a newly-allocated PangoCoverage object.
 	 */
-	public PgCoverage getCoverage(PgLanguage language)
-	{
-		// PangoCoverage * pango_font_get_coverage (PangoFont *font,  PangoLanguage *language);
-		auto p = pango_font_get_coverage(pangoFont, (language is null) ? null : language.getPgLanguageStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgCoverage(cast(PangoCoverage*) p);
-	}
+	public PgCoverage getCoverage(PgLanguage language);
 	
 	/**
 	 * Gets the logical and ink extents of a glyph within a font. The
@@ -227,11 +99,7 @@ public class PgFont : ObjectG
 	 * logicalRect =  rectangle used to store the logical extents of the glyph
 	 *  or NULL to indicate that the result is not needed.
 	 */
-	public void getGlyphExtents(PangoGlyph glyph, PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_font_get_glyph_extents (PangoFont *font,  PangoGlyph glyph,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_font_get_glyph_extents(pangoFont, glyph, inkRect, logicalRect);
-	}
+	public void getGlyphExtents(PangoGlyph glyph, PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Gets overall metric information for a font. Since the metrics may be
@@ -246,16 +114,7 @@ public class PgFont : ObjectG
 	 *  font.
 	 * Returns: a PangoFontMetrics object. The caller must call pango_font_metrics_unref() when finished using the object.
 	 */
-	public PgFontMetrics getMetrics(PgLanguage language)
-	{
-		// PangoFontMetrics * pango_font_get_metrics (PangoFont *font,  PangoLanguage *language);
-		auto p = pango_font_get_metrics(pangoFont, (language is null) ? null : language.getPgLanguageStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMetrics(cast(PangoFontMetrics*) p);
-	}
+	public PgFontMetrics getMetrics(PgLanguage language);
 	
 	/**
 	 * Gets the font map for which the font was created.
@@ -269,14 +128,5 @@ public class PgFont : ObjectG
 	 * Since 1.10
 	 * Returns: the PangoFontMap for the font, or NULL if font is NULL.
 	 */
-	public PgFontMap getFontMap()
-	{
-		// PangoFontMap * pango_font_get_font_map (PangoFont *font);
-		auto p = pango_font_get_font_map(pangoFont);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMap(cast(PangoFontMap*) p);
-	}
+	public PgFontMap getFontMap();
 }

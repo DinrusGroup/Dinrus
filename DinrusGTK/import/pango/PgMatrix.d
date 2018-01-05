@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Glyph-Storage.html
- * outPack = pango
- * outFile = PgMatrix
- * strct   = PangoMatrix
- * realStrct=
- * ctorStrct=
- * clss    = PgMatrix
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_
- * 	- pango_matrix_
- * omit structs:
- * omit prefixes:
- * 	- pango_glyph_string_
- * 	- pango_glyph_item_
- * 	- pango_glyph_item_iter_
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- PangoMatrix* -> PgMatrix
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgMatrix;
 
 public  import gtkD.gtkc.pangotypes;
@@ -79,30 +24,16 @@ public class PgMatrix
 	protected PangoMatrix* pangoMatrix;
 	
 	
-	public PangoMatrix* getPgMatrixStruct()
-	{
-		return pangoMatrix;
-	}
+	public PangoMatrix* getPgMatrixStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoMatrix;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoMatrix* pangoMatrix)
-	{
-		if(pangoMatrix is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoMatrix = pangoMatrix;
-	}
+	public this (PangoMatrix* pangoMatrix);
 	
 	/**
 	 */
@@ -115,12 +46,8 @@ public class PgMatrix
 	 * i =  value in Pango units
 	 * Returns: the double value.
 	 */
-	public static double unitsToDouble(int i)
-	{
-		// double pango_units_to_double (int i);
-		return pango_units_to_double(i);
-	}
-	
+	public static double unitsToDouble(int i);
+
 	/**
 	 * Converts a floating-point number to Pango units: multiplies
 	 * it by PANGO_SCALE and rounds to nearest integer.
@@ -129,11 +56,7 @@ public class PgMatrix
 	 * d =  double floating-point value
 	 * Returns: the value in Pango units.
 	 */
-	public static int unitsFromDouble(double d)
-	{
-		// int pango_units_from_double (double d);
-		return pango_units_from_double(d);
-	}
+	public static int unitsFromDouble(double d);
 	
 	/**
 	 * Converts extents from Pango units to device units, dividing by the
@@ -153,11 +76,7 @@ public class PgMatrix
 	 * inclusive =  rectangle to round to pixels inclusively, or NULL.
 	 * nearest =  rectangle to round to nearest pixels, or NULL.
 	 */
-	public static void extentsToPixels(PangoRectangle* inclusive, PangoRectangle* nearest)
-	{
-		// void pango_extents_to_pixels (PangoRectangle *inclusive,  PangoRectangle *nearest);
-		pango_extents_to_pixels(inclusive, nearest);
-	}
+	public static void extentsToPixels(PangoRectangle* inclusive, PangoRectangle* nearest);
 	
 	/**
 	 * Copies a PangoMatrix.
@@ -166,16 +85,7 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix, may be NULL
 	 * Returns: the newly allocated PangoMatrix, which should be freed with pango_matrix_free(), or NULL if matrix was NULL.
 	 */
-	public PgMatrix matrixCopy()
-	{
-		// PangoMatrix * pango_matrix_copy (const PangoMatrix *matrix);
-		auto p = pango_matrix_copy(pangoMatrix);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgMatrix(cast(PangoMatrix*) p);
-	}
+	public PgMatrix matrixCopy();
 	
 	/**
 	 * Free a PangoMatrix created with pango_matrix_copy().
@@ -183,11 +93,7 @@ public class PgMatrix
 	 * Params:
 	 * matrix =  a PangoMatrix, may be NULL
 	 */
-	public void matrixFree()
-	{
-		// void pango_matrix_free (PangoMatrix *matrix);
-		pango_matrix_free(pangoMatrix);
-	}
+	public void matrixFree();
 	
 	/**
 	 * Changes the transformation represented by matrix to be the
@@ -199,11 +105,7 @@ public class PgMatrix
 	 * tx =  amount to translate in the X direction
 	 * ty =  amount to translate in the Y direction
 	 */
-	public void matrixTranslate(double tx, double ty)
-	{
-		// void pango_matrix_translate (PangoMatrix *matrix,  double tx,  double ty);
-		pango_matrix_translate(pangoMatrix, tx, ty);
-	}
+	public void matrixTranslate(double tx, double ty);
 	
 	/**
 	 * Changes the transformation represented by matrix to be the
@@ -216,11 +118,7 @@ public class PgMatrix
 	 * scaleX =  amount to scale by in X direction
 	 * scaleY =  amount to scale by in Y direction
 	 */
-	public void matrixScale(double scaleX, double scaleY)
-	{
-		// void pango_matrix_scale (PangoMatrix *matrix,  double scale_x,  double scale_y);
-		pango_matrix_scale(pangoMatrix, scaleX, scaleY);
-	}
+	public void matrixScale(double scaleX, double scaleY);
 	
 	/**
 	 * Changes the transformation represented by matrix to be the
@@ -231,12 +129,8 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix
 	 * degrees =  degrees to rotate counter-clockwise
 	 */
-	public void matrixRotate(double degrees)
-	{
-		// void pango_matrix_rotate (PangoMatrix *matrix,  double degrees);
-		pango_matrix_rotate(pangoMatrix, degrees);
-	}
-	
+	public void matrixRotate(double degrees);
+
 	/**
 	 * Changes the transformation represented by matrix to be the
 	 * transformation given by first applying transformation
@@ -246,11 +140,7 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix
 	 * newMatrix =  a PangoMatrix
 	 */
-	public void matrixConcat(PgMatrix newMatrix)
-	{
-		// void pango_matrix_concat (PangoMatrix *matrix,  const PangoMatrix *new_matrix);
-		pango_matrix_concat(pangoMatrix, (newMatrix is null) ? null : newMatrix.getPgMatrixStruct());
-	}
+	public void matrixConcat(PgMatrix newMatrix);
 	
 	/**
 	 * Transforms the point (x, y) by matrix.
@@ -260,11 +150,7 @@ public class PgMatrix
 	 * x =  in/out X position
 	 * y =  in/out Y position
 	 */
-	public void matrixTransformPoint(inout double x, inout double y)
-	{
-		// void pango_matrix_transform_point (const PangoMatrix *matrix,  double *x,  double *y);
-		pango_matrix_transform_point(pangoMatrix, &x, &y);
-	}
+	public void matrixTransformPoint(inout double x, inout double y);
 	
 	/**
 	 * Transforms the distance vector (dx,dy) by matrix. This is
@@ -276,11 +162,7 @@ public class PgMatrix
 	 * dx =  in/out X component of a distance vector
 	 * dy =  yn/out Y component of a distance vector
 	 */
-	public void matrixTransformDistance(inout double dx, inout double dy)
-	{
-		// void pango_matrix_transform_distance (const PangoMatrix *matrix,  double *dx,  double *dy);
-		pango_matrix_transform_distance(pangoMatrix, &dx, &dy);
-	}
+	public void matrixTransformDistance(inout double dx, inout double dy);
 	
 	/**
 	 * First transforms rect using matrix, then calculates the bounding box
@@ -303,11 +185,7 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix, or NULL
 	 * rect =  in/out bounding box in Pango units, or NULL
 	 */
-	public void matrixTransformRectangle(PangoRectangle* rect)
-	{
-		// void pango_matrix_transform_rectangle (const PangoMatrix *matrix,  PangoRectangle *rect);
-		pango_matrix_transform_rectangle(pangoMatrix, rect);
-	}
+	public void matrixTransformRectangle(PangoRectangle* rect);
 	
 	/**
 	 * First transforms the rect using matrix, then calculates the bounding box
@@ -324,11 +202,7 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix, or NULL
 	 * rect =  in/out bounding box in device units, or NULL
 	 */
-	public void matrixTransformPixelRectangle(PangoRectangle* rect)
-	{
-		// void pango_matrix_transform_pixel_rectangle  (const PangoMatrix *matrix,  PangoRectangle *rect);
-		pango_matrix_transform_pixel_rectangle(pangoMatrix, rect);
-	}
+	public void matrixTransformPixelRectangle(PangoRectangle* rect);
 	
 	/**
 	 * Returns the scale factor of a matrix on the height of the font.
@@ -339,9 +213,5 @@ public class PgMatrix
 	 * matrix =  a PangoMatrix, may be NULL
 	 * Returns: the scale factor of matrix on the height of the font,or 1.0 if matrix is NULL.
 	 */
-	public double matrixGetFontScaleFactor()
-	{
-		// double pango_matrix_get_font_scale_factor (const PangoMatrix *matrix);
-		return pango_matrix_get_font_scale_factor(pangoMatrix);
-	}
+	public double matrixGetFontScaleFactor();
 }

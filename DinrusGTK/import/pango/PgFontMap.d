@@ -1,66 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgFontMap
- * strct   = PangoFontMap
- * realStrct=
- * ctorStrct=
- * clss    = PgFontMap
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = GObject
- * implements:
- * prefixes:
- * 	- pango_font_map_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgFont
- * 	- gtkD.pango.PgFontset
- * 	- gtkD.pango.PgContext
- * 	- gtkD.pango.PgFontDescription
- * 	- gtkD.pango.PgLanguage
- * 	- gtkD.pango.PgFontFamily
- * structWrap:
- * 	- PangoContext* -> PgContext
- * 	- PangoFont* -> PgFont
- * 	- PangoFontDescription* -> PgFontDescription
- * 	- PangoFontFamily* -> PgFontFamily
- * 	- PangoFontset* -> PgFontset
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgFontMap;
 
 public  import gtkD.gtkc.pangotypes;
@@ -97,38 +34,16 @@ public class PgFontMap : ObjectG
 	protected PangoFontMap* pangoFontMap;
 	
 	
-	public PangoFontMap* getPgFontMapStruct()
-	{
-		return pangoFontMap;
-	}
+	public PangoFontMap* getPgFontMapStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoFontMap;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoFontMap* pangoFontMap)
-	{
-		if(pangoFontMap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoFontMap);
-		if( ptr !is null )
-		{
-			this = cast(PgFontMap)ptr;
-			return;
-		}
-		super(cast(GObject*)pangoFontMap);
-		this.pangoFontMap = pangoFontMap;
-	}
+	public this (PangoFontMap* pangoFontMap);
 	
 	/**
 	 */
@@ -144,16 +59,7 @@ public class PgFontMap : ObjectG
 	 * Since 1.22
 	 * Returns: the newly allocated PangoContext, which should be freed with g_object_unref().
 	 */
-	public PgContext createContext()
-	{
-		// PangoContext * pango_font_map_create_context (PangoFontMap *fontmap);
-		auto p = pango_font_map_create_context(pangoFontMap);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
+	public PgContext createContext();
 	
 	/**
 	 * Load the font in the fontmap that is the closest match for desc.
@@ -162,16 +68,7 @@ public class PgFontMap : ObjectG
 	 * desc =  a PangoFontDescription describing the font to load
 	 * Returns: the font loaded, or NULL if no font matched.
 	 */
-	public PgFont loadFont(PgContext context, PgFontDescription desc)
-	{
-		// PangoFont * pango_font_map_load_font (PangoFontMap *fontmap,  PangoContext *context,  const PangoFontDescription *desc);
-		auto p = pango_font_map_load_font(pangoFontMap, (context is null) ? null : context.getPgContextStruct(), (desc is null) ? null : desc.getPgFontDescriptionStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFont(cast(PangoFont*) p);
-	}
+	public PgFont loadFont(PgContext context, PgFontDescription desc);
 	
 	/**
 	 * Load a set of fonts in the fontmap that can be used to render
@@ -182,38 +79,15 @@ public class PgFontMap : ObjectG
 	 * language =  a PangoLanguage the fonts will be used for
 	 * Returns: the fontset, or NULL if no font matched.
 	 */
-	public PgFontset loadFontset(PgContext context, PgFontDescription desc, PgLanguage language)
-	{
-		// PangoFontset * pango_font_map_load_fontset (PangoFontMap *fontmap,  PangoContext *context,  const PangoFontDescription *desc,  PangoLanguage *language);
-		auto p = pango_font_map_load_fontset(pangoFontMap, (context is null) ? null : context.getPgContextStruct(), (desc is null) ? null : desc.getPgFontDescriptionStruct(), (language is null) ? null : language.getPgLanguageStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontset(cast(PangoFontset*) p);
-	}
-	
+	public PgFontset loadFontset(PgContext context, PgFontDescription desc, PgLanguage language);
+
 	/**
 	 * List all families for a fontmap.
 	 * Params:
 	 * families =  location to store a pointer to an array of PangoFontFamily *.
 	 *  This array should be freed with g_free().
 	 */
-	public void listFamilies(out PgFontFamily[] families)
-	{
-		// void pango_font_map_list_families (PangoFontMap *fontmap,  PangoFontFamily ***families,  int *n_families);
-		PangoFontFamily** outfamilies = null;
-		int nFamilies;
-		
-		pango_font_map_list_families(pangoFontMap, &outfamilies, &nFamilies);
-		
-		
-		families = new PgFontFamily[nFamilies];
-		for(int i = 0; i < nFamilies; i++)
-		{
-			families[i] = new PgFontFamily(cast(PangoFontFamily*) outfamilies[i]);
-		}
-	}
+	public void listFamilies(out PgFontFamily[] families);
 	
 	/**
 	 * Returns the render ID for shape engines for this fontmap.
@@ -222,9 +96,5 @@ public class PgFontMap : ObjectG
 	 * Since 1.4
 	 * Returns: the ID string for shape engines for this fontmap. Owned by Pango, should not be modified or freed.
 	 */
-	public string getShapeEngineType()
-	{
-		// const char * pango_font_map_get_shape_engine_type  (PangoFontMap *fontmap);
-		return Str.toString(pango_font_map_get_shape_engine_type(pangoFontMap));
-	}
+	public string getShapeEngineType();
 }

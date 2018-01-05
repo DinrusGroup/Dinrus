@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgLayoutLine
- * strct   = PangoLayoutLine
- * realStrct=
- * ctorStrct=
- * clss    = PgLayoutLine
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_layout_line_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- PangoLayoutLine* -> PgLayoutLine
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgLayoutLine;
 
 public  import gtkD.gtkc.pangotypes;
@@ -77,30 +26,16 @@ public class PgLayoutLine
 	protected PangoLayoutLine* pangoLayoutLine;
 	
 	
-	public PangoLayoutLine* getPgLayoutLineStruct()
-	{
-		return pangoLayoutLine;
-	}
+	public PangoLayoutLine* getPgLayoutLineStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoLayoutLine;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoLayoutLine* pangoLayoutLine)
-	{
-		if(pangoLayoutLine is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoLayoutLine = pangoLayoutLine;
-	}
+	public this (PangoLayoutLine* pangoLayoutLine);
 	
 	/**
 	 */
@@ -110,27 +45,14 @@ public class PgLayoutLine
 	 * Since 1.10
 	 * Returns: the line passed in.
 	 */
-	public PgLayoutLine doref()
-	{
-		// PangoLayoutLine * pango_layout_line_ref (PangoLayoutLine *line);
-		auto p = pango_layout_line_ref(pangoLayoutLine);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine doref();
 	
 	/**
 	 * Decrease the reference count of a PangoLayoutLine by one.
 	 * If the result is zero, the line and all associated memory
 	 * will be freed.
 	 */
-	public void unref()
-	{
-		// void pango_layout_line_unref (PangoLayoutLine *line);
-		pango_layout_line_unref(pangoLayoutLine);
-	}
+	public void unref();
 	
 	/**
 	 * Computes the logical and ink extents of a layout line. See
@@ -142,11 +64,7 @@ public class PgLayoutLine
 	 * logicalRect =  rectangle used to store the logical extents of the glyph
 	 *  string, or NULL
 	 */
-	public void getExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_line_get_extents (PangoLayoutLine *line,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_line_get_extents(pangoLayoutLine, inkRect, logicalRect);
-	}
+	public void getExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Computes the logical and ink extents of layout_line in device units.
@@ -160,11 +78,7 @@ public class PgLayoutLine
 	 * logicalRect =  rectangle used to store the logical extents of the glyph
 	 *  string, or NULL
 	 */
-	public void getPixelExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_line_get_pixel_extents (PangoLayoutLine *layout_line,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_line_get_pixel_extents(pangoLayoutLine, inkRect, logicalRect);
-	}
+	public void getPixelExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Converts an index within a line to a X position.
@@ -175,11 +89,7 @@ public class PgLayoutLine
 	 *  if 0, the leading of the grapheme.
 	 * xPos =  location to store the x_offset (in Pango unit)
 	 */
-	public void indexToX(int index, int trailing, out int xPos)
-	{
-		// void pango_layout_line_index_to_x (PangoLayoutLine *line,  int index_,  gboolean trailing,  int *x_pos);
-		pango_layout_line_index_to_x(pangoLayoutLine, index, trailing, &xPos);
-	}
+	public void indexToX(int index, int trailing, out int xPos);
 	
 	/**
 	 * Converts from x offset to the byte index of the corresponding
@@ -203,11 +113,7 @@ public class PgLayoutLine
 	 *  grapheme. 0 represents the leading edge of the grapheme.
 	 * Returns: FALSE if x_pos was outside the line, TRUE if inside
 	 */
-	public int xToIndex(int xPos, out int index, out int trailing)
-	{
-		// gboolean pango_layout_line_x_to_index (PangoLayoutLine *line,  int x_pos,  int *index_,  int *trailing);
-		return pango_layout_line_x_to_index(pangoLayoutLine, xPos, &index, &trailing);
-	}
+	public int xToIndex(int xPos, out int index, out int trailing);
 	
 	/**
 	 * Gets a list of visual ranges corresponding to a given logical range.
@@ -228,14 +134,5 @@ public class PgLayoutLine
 	 *  trailing edge of the last character.
 	 * ranges = out): (array length=n_ranges): (transfer=full. out): (array length=n_ranges): (transfer=full.
 	 */
-	public void getXRanges(int startIndex, int endIndex, out int[] ranges)
-	{
-		// void pango_layout_line_get_x_ranges (PangoLayoutLine *line,  int start_index,  int end_index,  int **ranges,  int *n_ranges);
-		int* outranges = null;
-		int nRanges;
-		
-		pango_layout_line_get_x_ranges(pangoLayoutLine, startIndex, endIndex, &outranges, &nRanges);
-		
-		ranges = outranges[0 .. nRanges];
-	}
+	public void getXRanges(int startIndex, int endIndex, out int[] ranges);
 }

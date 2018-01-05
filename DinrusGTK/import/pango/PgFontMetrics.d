@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgFontMetrics
- * strct   = PangoFontMetrics
- * realStrct=
- * ctorStrct=
- * clss    = PgFontMetrics
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_font_metrics_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * 	- PangoFontMetrics* -> PgFontMetrics
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgFontMetrics;
 
 public  import gtkD.gtkc.pangotypes;
@@ -77,30 +26,16 @@ public class PgFontMetrics
 	protected PangoFontMetrics* pangoFontMetrics;
 	
 	
-	public PangoFontMetrics* getPgFontMetricsStruct()
-	{
-		return pangoFontMetrics;
-	}
+	public PangoFontMetrics* getPgFontMetricsStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoFontMetrics;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoFontMetrics* pangoFontMetrics)
-	{
-		if(pangoFontMetrics is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoFontMetrics = pangoFontMetrics;
-	}
+	public this (PangoFontMetrics* pangoFontMetrics);
 	
 	/**
 	 */
@@ -109,27 +44,14 @@ public class PgFontMetrics
 	 * Increase the reference count of a font metrics structure by one.
 	 * Returns: metrics
 	 */
-	public PgFontMetrics doref()
-	{
-		// PangoFontMetrics * pango_font_metrics_ref (PangoFontMetrics *metrics);
-		auto p = pango_font_metrics_ref(pangoFontMetrics);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMetrics(cast(PangoFontMetrics*) p);
-	}
+	public PgFontMetrics doref();
 	
 	/**
 	 * Decrease the reference count of a font metrics structure by one. If
 	 * the result is zero, frees the structure and any associated
 	 * memory.
 	 */
-	public void unref()
-	{
-		// void pango_font_metrics_unref (PangoFontMetrics *metrics);
-		pango_font_metrics_unref(pangoFontMetrics);
-	}
+	public void unref();
 	
 	/**
 	 * Gets the ascent from a font metrics structure. The ascent is
@@ -139,11 +61,7 @@ public class PgFontMetrics
 	 * where the ink will be.)
 	 * Returns: the ascent, in Pango units.
 	 */
-	public int getAscent()
-	{
-		// int pango_font_metrics_get_ascent (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_ascent(pangoFontMetrics);
-	}
+	public int getAscent();
 	
 	/**
 	 * Gets the descent from a font metrics structure. The descent is
@@ -153,11 +71,7 @@ public class PgFontMetrics
 	 * where the ink will be.)
 	 * Returns: the descent, in Pango units.
 	 */
-	public int getDescent()
-	{
-		// int pango_font_metrics_get_descent (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_descent(pangoFontMetrics);
-	}
+	public int getDescent();
 	
 	/**
 	 * Gets the approximate character width for a font metrics structure.
@@ -166,12 +80,8 @@ public class PgFontMetrics
 	 * text will be wider and narrower than this.
 	 * Returns: the character width, in Pango units.
 	 */
-	public int getApproximateCharWidth()
-	{
-		// int pango_font_metrics_get_approximate_char_width  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_approximate_char_width(pangoFontMetrics);
-	}
-	
+	public int getApproximateCharWidth();
+
 	/**
 	 * Gets the approximate digit width for a font metrics structure.
 	 * This is merely a representative value useful, for example, for
@@ -181,22 +91,14 @@ public class PgFontMetrics
 	 * pango_font_metrics_get_approximate_char_width() for digits.
 	 * Returns: the digit width, in Pango units.
 	 */
-	public int getApproximateDigitWidth()
-	{
-		// int pango_font_metrics_get_approximate_digit_width  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_approximate_digit_width(pangoFontMetrics);
-	}
+	public int getApproximateDigitWidth();
 	
 	/**
 	 * Gets the suggested thickness to draw for the underline.
 	 * Since 1.6
 	 * Returns: the suggested underline thickness, in Pango units.
 	 */
-	public int getUnderlineThickness()
-	{
-		// int pango_font_metrics_get_underline_thickness  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_underline_thickness(pangoFontMetrics);
-	}
+	public int getUnderlineThickness();
 	
 	/**
 	 * Gets the suggested position to draw the underline.
@@ -207,22 +109,14 @@ public class PgFontMetrics
 	 * Since 1.6
 	 * Returns: the suggested underline position, in Pango units.
 	 */
-	public int getUnderlinePosition()
-	{
-		// int pango_font_metrics_get_underline_position  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_underline_position(pangoFontMetrics);
-	}
+	public int getUnderlinePosition();
 	
 	/**
 	 * Gets the suggested thickness to draw for the strikethrough.
 	 * Since 1.6
 	 * Returns: the suggested strikethrough thickness, in Pango units.
 	 */
-	public int getStrikethroughThickness()
-	{
-		// int pango_font_metrics_get_strikethrough_thickness  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_strikethrough_thickness(pangoFontMetrics);
-	}
+	public int getStrikethroughThickness();
 	
 	/**
 	 * Gets the suggested position to draw the strikethrough.
@@ -231,9 +125,5 @@ public class PgFontMetrics
 	 * Since 1.6
 	 * Returns: the suggested strikethrough position, in Pango units.
 	 */
-	public int getStrikethroughPosition()
-	{
-		// int pango_font_metrics_get_strikethrough_position  (PangoFontMetrics *metrics);
-		return pango_font_metrics_get_strikethrough_position(pangoFontMetrics);
-	}
+	public int getStrikethroughPosition();
 }

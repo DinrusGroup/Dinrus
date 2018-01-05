@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Miscellaneous-Utilities.html
- * outPack = pango
- * outFile = PgMiscellaneous
- * strct   =
- * realStrct=
- * ctorStrct=
- * clss    = PgMiscellaneous
- * interf  =
- * class Code: No
- * interface Code: No
- * template for:
- * extend  =
- * implements:
- * prefixes:
- * 	- pango_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- std.c.stdio
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.StringG
- * 	- gtkD.pango.PgLanguage
- * structWrap:
- * 	- GString* -> StringG
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgMiscellaneous;
 
 public  import gtkD.gtkc.pangotypes;
@@ -89,11 +33,7 @@ public class PgMiscellaneous
 	 * str =  a G_SEARCHPATH_SEPARATOR separated list of filenames
 	 * Returns: a list of strings to be freed with g_strfreev()
 	 */
-	public static string[] splitFileList(string str)
-	{
-		// char ** pango_split_file_list (const char *str);
-		return Str.toStringArray(pango_split_file_list(Str.toStringz(str)));
-	}
+	public static string[] splitFileList(string str);
 
 	/**
 	 * Trims leading and trailing whitespace from a string.
@@ -101,11 +41,7 @@ public class PgMiscellaneous
 	 * str =  a string
 	 * Returns: A newly-allocated string that must be freed with g_free()
 	 */
-	public static string trimString(string str)
-	{
-		// char * pango_trim_string (const char *str);
-		return Str.toString(pango_trim_string(Str.toStringz(str)));
-	}
+	public static string trimString(string str);
 
 	/**
 	 * Reads an entire line from a file into a buffer. Lines may
@@ -120,11 +56,7 @@ public class PgMiscellaneous
 	 * str =  GString buffer into which to write the result
 	 * Returns: 0 if the stream was already at an EOF character, otherwise the number of lines read (this is useful for maintaining a line number counter which doesn't combine lines with '\')
 	 */
-	public static int readLine(FILE* stream, StringG str)
-	{
-		// gint pango_read_line (FILE *stream,  GString *str);
-		return pango_read_line(cast(void*)stream, (str is null) ? null : str.getStringGStruct());
-	}
+	public static int readLine(FILE* stream, StringG str);
 
 	/**
 	 * Skips 0 or more characters of white space.
@@ -132,16 +64,7 @@ public class PgMiscellaneous
 	 * pos =  in/out string position
 	 * Returns: FALSE if skipping the white space leavesthe position at a '\0' character.
 	 */
-	public static int skipSpace(inout string pos)
-	{
-		// gboolean pango_skip_space (const char **pos);
-		char* outpos = Str.toStringz(pos);
-
-		auto p = pango_skip_space(&outpos);
-
-		pos = Str.toString(outpos);
-		return p;
-	}
+	public static int skipSpace(inout string pos);
 
 	/**
 	 * Scans a word into a GString buffer. A word consists
@@ -152,16 +75,7 @@ public class PgMiscellaneous
 	 * out =  a GString into which to write the result
 	 * Returns: FALSE if a parse error occurred.
 	 */
-	public static int scanWord(inout string pos, StringG f_out)
-	{
-		// gboolean pango_scan_word (const char **pos,  GString *out);
-		char* outpos = Str.toStringz(pos);
-
-		auto p = pango_scan_word(&outpos, (f_out is null) ? null : f_out.getStringGStruct());
-
-		pos = Str.toString(outpos);
-		return p;
-	}
+	public static int scanWord(inout string pos, StringG f_out);
 
 	/**
 	 * Scans a string into a GString buffer. The string may either
@@ -173,16 +87,7 @@ public class PgMiscellaneous
 	 * out =  a GString into which to write the result
 	 * Returns: FALSE if a parse error occurred.
 	 */
-	public static int scanString(inout string pos, StringG f_out)
-	{
-		// gboolean pango_scan_string (const char **pos,  GString *out);
-		char* outpos = Str.toStringz(pos);
-
-		auto p = pango_scan_string(&outpos, (f_out is null) ? null : f_out.getStringGStruct());
-
-		pos = Str.toString(outpos);
-		return p;
-	}
+	public static int scanString(inout string pos, StringG f_out);
 
 	/**
 	 * Scans an integer.
@@ -192,16 +97,7 @@ public class PgMiscellaneous
 	 * out =  an int into which to write the result
 	 * Returns: FALSE if a parse error occurred.
 	 */
-	public static int scanInt(inout string pos, out int f_out)
-	{
-		// gboolean pango_scan_int (const char **pos,  int *out);
-		char* outpos = Str.toStringz(pos);
-
-		auto p = pango_scan_int(&outpos, &f_out);
-
-		pos = Str.toString(outpos);
-		return p;
-	}
+	public static int scanInt(inout string pos, out int f_out);
 
 	/**
 	 * Looks up a key in the Pango config database
@@ -211,11 +107,7 @@ public class PgMiscellaneous
 	 * key =  Key to look up, in the form "SECTION/KEY".
 	 * Returns: the value, if found, otherwise NULL. The value is anewly-allocated string and must be freed with g_free().
 	 */
-	public static string configKeyGet(string key)
-	{
-		// char * pango_config_key_get (const char *key);
-		return Str.toString(pango_config_key_get(Str.toStringz(key)));
-	}
+	public static string configKeyGet(string key);
 
 	/**
 	 * Look up all user defined aliases for the alias fontname.
@@ -226,16 +118,7 @@ public class PgMiscellaneous
 	 * families =  will be set to an array of font family names.
 	 *  this array is owned by pango and should not be freed.
 	 */
-	public static void lookupAliases(string fontname, out string[] families)
-	{
-		// void pango_lookup_aliases (const char *fontname,  char ***families,  int *n_families);
-		char** outfamilies = null;
-		int nFamilies;
-
-		pango_lookup_aliases(Str.toStringz(fontname), &outfamilies, &nFamilies);
-
-		families = Str.toStringArray(outfamilies);
-	}
+	public static void lookupAliases(string fontname, out string[] families);
 
 	/**
 	 * Parses an enum type and stores the result in value.
@@ -255,16 +138,7 @@ public class PgMiscellaneous
 	 * possibleValues =  place to store list of possible values on failure, or NULL.
 	 * Returns: TRUE if str was successfully parsed.
 	 */
-	public static int parseEnum(GType type, string str, out int value, int warn, out string possibleValues)
-	{
-		// gboolean pango_parse_enum (GType type,  const char *str,  int *value,  gboolean warn,  char **possible_values);
-		char* outpossibleValues = null;
-
-		auto p = pango_parse_enum(type, Str.toStringz(str), &value, warn, &outpossibleValues);
-
-		possibleValues = Str.toString(outpossibleValues);
-		return p;
-	}
+	public static int parseEnum(GType type, string str, out int value, int warn, out string possibleValues);
 
 	/**
 	 * Parses a font style. The allowed values are "normal",
@@ -276,11 +150,7 @@ public class PgMiscellaneous
 	 * warn =  if TRUE, issue a g_warning() on bad input.
 	 * Returns: TRUE if str was successfully parsed.
 	 */
-	public static int parseStyle(string str, out PangoStyle style, int warn)
-	{
-		// gboolean pango_parse_style (const char *str,  PangoStyle *style,  gboolean warn);
-		return pango_parse_style(Str.toStringz(str), &style, warn);
-	}
+	public static int parseStyle(string str, out PangoStyle style, int warn);
 
 	/**
 	 * Parses a font variant. The allowed values are "normal"
@@ -292,11 +162,7 @@ public class PgMiscellaneous
 	 * warn =  if TRUE, issue a g_warning() on bad input.
 	 * Returns: TRUE if str was successfully parsed.
 	 */
-	public static int parseVariant(string str, out PangoVariant variant, int warn)
-	{
-		// gboolean pango_parse_variant (const char *str,  PangoVariant *variant,  gboolean warn);
-		return pango_parse_variant(Str.toStringz(str), &variant, warn);
-	}
+	public static int parseVariant(string str, out PangoVariant variant, int warn);
 
 	/**
 	 * Parses a font weight. The allowed values are "heavy",
@@ -308,11 +174,7 @@ public class PgMiscellaneous
 	 * warn =  if TRUE, issue a g_warning() on bad input.
 	 * Returns: TRUE if str was successfully parsed.
 	 */
-	public static int parseWeight(string str, out PangoWeight weight, int warn)
-	{
-		// gboolean pango_parse_weight (const char *str,  PangoWeight *weight,  gboolean warn);
-		return pango_parse_weight(Str.toStringz(str), &weight, warn);
-	}
+	public static int parseWeight(string str, out PangoWeight weight, int warn);
 
 	/**
 	 * Parses a font stretch. The allowed values are
@@ -326,11 +188,7 @@ public class PgMiscellaneous
 	 * warn =  if TRUE, issue a g_warning() on bad input.
 	 * Returns: TRUE if str was successfully parsed.
 	 */
-	public static int parseStretch(string str, out PangoStretch stretch, int warn)
-	{
-		// gboolean pango_parse_stretch (const char *str,  PangoStretch *stretch,  gboolean warn);
-		return pango_parse_stretch(Str.toStringz(str), &stretch, warn);
-	}
+	public static int parseStretch(string str, out PangoStretch stretch, int warn);
 
 	/**
 	 * On Unix, returns the name of the "pango" subdirectory of SYSCONFDIR
@@ -339,11 +197,7 @@ public class PgMiscellaneous
 	 * at run time from the DLL's location).
 	 * Returns: the Pango sysconf directory. The returned string shouldnot be freed.
 	 */
-	public static string getSysconfSubdirectory()
-	{
-		// const char * pango_get_sysconf_subdirectory (void);
-		return Str.toString(pango_get_sysconf_subdirectory());
-	}
+	public static string getSysconfSubdirectory();
 
 	/**
 	 * On Unix, returns the name of the "pango" subdirectory of LIBDIR
@@ -352,11 +206,7 @@ public class PgMiscellaneous
 	 * at run time from the DLL's location).
 	 * Returns: the Pango lib directory. The returned string shouldnot be freed.
 	 */
-	public static string getLibSubdirectory()
-	{
-		// const char * pango_get_lib_subdirectory (void);
-		return Str.toString(pango_get_lib_subdirectory());
-	}
+	public static string getLibSubdirectory();
 
 	/**
 	 * This will return the bidirectional embedding levels of the input paragraph
@@ -368,11 +218,7 @@ public class PgMiscellaneous
 	 * pbaseDir =  input base direction, and output resolved direction.
 	 * Returns: a newly allocated array of embedding levels, one item per character (not byte), that should be freed using g_free.
 	 */
-	public static ubyte* log2visGetEmbeddingLevels(string text, int length, out PangoDirection pbaseDir)
-	{
-		// guint8 * pango_log2vis_get_embedding_levels (const gchar *text,  int length,  PangoDirection *pbase_dir);
-		return pango_log2vis_get_embedding_levels(Str.toStringz(text), length, &pbaseDir);
-	}
+	public static ubyte* log2visGetEmbeddingLevels(string text, int length, out PangoDirection pbaseDir);
 
 	/**
 	 * Checks ch to see if it is a character that should not be
@@ -385,11 +231,7 @@ public class PgMiscellaneous
 	 * ch =  a Unicode character
 	 * Returns: TRUE if ch is a zero-width character, FALSE otherwise
 	 */
-	public static int isZeroWidth(gunichar ch)
-	{
-		// gboolean pango_is_zero_width (gunichar ch);
-		return pango_is_zero_width(ch);
-	}
+	public static int isZeroWidth(gunichar ch);
 
 	/**
 	 * Quantizes the thickness and position of a line, typically an
@@ -404,9 +246,5 @@ public class PgMiscellaneous
 	 * thickness =  pointer to the thickness of a line, in Pango units
 	 * position =  corresponding position
 	 */
-	public static void quantizeLineGeometry(inout int thickness, inout int position)
-	{
-		// void pango_quantize_line_geometry (int *thickness,  int *position);
-		pango_quantize_line_geometry(&thickness, &position);
-	}
+	public static void quantizeLineGeometry(inout int thickness, inout int position);
 }

@@ -1,68 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Text-Attributes.html
- * outPack = pango
- * outFile = PgAttribute
- * strct   = PangoAttribute
- * realStrct=
- * ctorStrct=
- * clss    = PgAttribute
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_attr_
- * 	- pango_
- * omit structs:
- * omit prefixes:
- * 	- pango_color_
- * 	- pango_language_
- * 	- pango_attr_list_
- * 	- pango_attr_iterator_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.pango.PgAttributeList
- * 	- gtkD.pango.PgLanguage
- * 	- gtkD.pango.PgFontDescription
- * structWrap:
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoAttribute* -> PgAttribute
- * 	- PangoFontDescription* -> PgFontDescription
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgAttribute;
 
 public  import gtkD.gtkc.pangotypes;
@@ -96,30 +31,16 @@ public class PgAttribute
 	protected PangoAttribute* pangoAttribute;
 	
 	
-	public PangoAttribute* getPgAttributeStruct()
-	{
-		return pangoAttribute;
-	}
+	public PangoAttribute* getPgAttributeStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoAttribute;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoAttribute* pangoAttribute)
-	{
-		if(pangoAttribute is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoAttribute = pangoAttribute;
-	}
+	public this (PangoAttribute* pangoAttribute);
 	
 	/**
 	 */
@@ -147,24 +68,7 @@ public class PgAttribute
 	 * Returns: FALSE if error is set, otherwise TRUE
 	 * Throws: GException on failure.
 	 */
-	public static int parseMarkup(string markupText, int length, gunichar accelMarker, out PgAttributeList attrList, out string text, gunichar* accelChar)
-	{
-		// gboolean pango_parse_markup (const char *markup_text,  int length,  gunichar accel_marker,  PangoAttrList **attr_list,  char **text,  gunichar *accel_char,  GError **error);
-		PangoAttrList* outattrList = null;
-		char* outtext = null;
-		GError* err = null;
-		
-		auto p = pango_parse_markup(Str.toStringz(markupText), length, accelMarker, &outattrList, &outtext, accelChar, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		attrList = new PgAttributeList(outattrList);
-		text = Str.toString(outtext);
-		return p;
-	}
+	public static int parseMarkup(string markupText, int length, gunichar accelMarker, out PgAttributeList attrList, out string text, gunichar* accelChar);
 	
 	/**
 	 * Allocate a new attribute type ID. The attribute type name can be accessed
@@ -173,11 +77,7 @@ public class PgAttribute
 	 * name =  an identifier for the type
 	 * Returns: the new type ID.
 	 */
-	public static PangoAttrType typeRegister(string name)
-	{
-		// PangoAttrType pango_attr_type_register (const gchar *name);
-		return pango_attr_type_register(Str.toStringz(name));
-	}
+	public static PangoAttrType typeRegister(string name);
 	
 	/**
 	 * Fetches the attribute type name passed in when registering the type using
@@ -189,11 +89,7 @@ public class PgAttribute
 	 * type =  an attribute type ID to fetch the name for
 	 * Returns: the type ID name (which may be NULL), or NULL if type isa built-in Pango attribute type or invalid.
 	 */
-	public static string typeGetName(PangoAttrType type)
-	{
-		// const char * pango_attr_type_get_name (PangoAttrType type);
-		return Str.toString(pango_attr_type_get_name(type));
-	}
+	public static string typeGetName(PangoAttrType type);
 	
 	/**
 	 * Initializes attr's klass to klass,
@@ -206,11 +102,7 @@ public class PgAttribute
 	 * attr =  a PangoAttribute
 	 * klass =  a PangoAttributeClass
 	 */
-	public void attributeInit(PangoAttrClass* klass)
-	{
-		// void pango_attribute_init (PangoAttribute *attr,  const PangoAttrClass *klass);
-		pango_attribute_init(pangoAttribute, klass);
-	}
+	public void attributeInit(PangoAttrClass* klass);
 	
 	/**
 	 * Make a copy of an attribute.
@@ -218,16 +110,7 @@ public class PgAttribute
 	 * attr =  a PangoAttribute
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public PgAttribute attributeCopy()
-	{
-		// PangoAttribute * pango_attribute_copy (const PangoAttribute *attr);
-		auto p = pango_attribute_copy(pangoAttribute);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public PgAttribute attributeCopy();
 	
 	/**
 	 * Compare two attributes for equality. This compares only the
@@ -237,22 +120,14 @@ public class PgAttribute
 	 * attr2 =  another PangoAttribute
 	 * Returns: TRUE if the two attributes have the same value.
 	 */
-	public int attributeEqual(PgAttribute attr2)
-	{
-		// gboolean pango_attribute_equal (const PangoAttribute *attr1,  const PangoAttribute *attr2);
-		return pango_attribute_equal(pangoAttribute, (attr2 is null) ? null : attr2.getPgAttributeStruct());
-	}
+	public int attributeEqual(PgAttribute attr2);
 	
 	/**
 	 * Destroy a PangoAttribute and free all associated memory.
 	 * Params:
 	 * attr =  a PangoAttribute.
 	 */
-	public void attributeDestroy()
-	{
-		// void pango_attribute_destroy (PangoAttribute *attr);
-		pango_attribute_destroy(pangoAttribute);
-	}
+	public void attributeDestroy();
 	
 	/**
 	 * Create a new language tag attribute.
@@ -260,16 +135,7 @@ public class PgAttribute
 	 * language =  language tag
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute languageNew(PgLanguage language)
-	{
-		// PangoAttribute * pango_attr_language_new (PangoLanguage *language);
-		auto p = pango_attr_language_new((language is null) ? null : language.getPgLanguageStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute languageNew(PgLanguage language);
 	
 	/**
 	 * Create a new font family attribute.
@@ -277,16 +143,7 @@ public class PgAttribute
 	 * family =  the family or comma separated list of families
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute familyNew(string family)
-	{
-		// PangoAttribute * pango_attr_family_new (const char *family);
-		auto p = pango_attr_family_new(Str.toStringz(family));
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute familyNew(string family);
 	
 	/**
 	 * Create a new font slant style attribute.
@@ -294,16 +151,7 @@ public class PgAttribute
 	 * style =  the slant style
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute styleNew(PangoStyle style)
-	{
-		// PangoAttribute * pango_attr_style_new (PangoStyle style);
-		auto p = pango_attr_style_new(style);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute styleNew(PangoStyle style);
 	
 	/**
 	 * Create a new font variant attribute (normal or small caps)
@@ -311,16 +159,7 @@ public class PgAttribute
 	 * variant =  the variant
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute variantNew(PangoVariant variant)
-	{
-		// PangoAttribute * pango_attr_variant_new (PangoVariant variant);
-		auto p = pango_attr_variant_new(variant);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute variantNew(PangoVariant variant);
 	
 	/**
 	 * Create a new font stretch attribute
@@ -328,16 +167,7 @@ public class PgAttribute
 	 * stretch =  the stretch
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute stretchNew(PangoStretch stretch)
-	{
-		// PangoAttribute * pango_attr_stretch_new (PangoStretch stretch);
-		auto p = pango_attr_stretch_new(stretch);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute stretchNew(PangoStretch stretch);
 	
 	/**
 	 * Create a new font weight attribute.
@@ -345,16 +175,7 @@ public class PgAttribute
 	 * weight =  the weight
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute weightNew(PangoWeight weight)
-	{
-		// PangoAttribute * pango_attr_weight_new (PangoWeight weight);
-		auto p = pango_attr_weight_new(weight);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute weightNew(PangoWeight weight);
 	
 	/**
 	 * Create a new font-size attribute in fractional points.
@@ -362,16 +183,7 @@ public class PgAttribute
 	 * size =  the font size, in PANGO_SCALEths of a point.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute sizeNew(int size)
-	{
-		// PangoAttribute * pango_attr_size_new (int size);
-		auto p = pango_attr_size_new(size);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute sizeNew(int size);
 	
 	/**
 	 * Create a new font-size attribute in device units.
@@ -380,16 +192,7 @@ public class PgAttribute
 	 * size =  the font size, in PANGO_SCALEths of a device unit.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute sizeNewAbsolute(int size)
-	{
-		// PangoAttribute * pango_attr_size_new_absolute (int size);
-		auto p = pango_attr_size_new_absolute(size);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute sizeNewAbsolute(int size);
 	
 	/**
 	 * Create a new font description attribute. This attribute
@@ -399,16 +202,7 @@ public class PgAttribute
 	 * desc =  the font description
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute fontDescNew(PgFontDescription desc)
-	{
-		// PangoAttribute * pango_attr_font_desc_new (const PangoFontDescription *desc);
-		auto p = pango_attr_font_desc_new((desc is null) ? null : desc.getPgFontDescriptionStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute fontDescNew(PgFontDescription desc);
 	
 	/**
 	 * Create a new foreground color attribute.
@@ -418,16 +212,7 @@ public class PgAttribute
 	 * blue =  the blue value
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute foregroundNew(ushort red, ushort green, ushort blue)
-	{
-		// PangoAttribute * pango_attr_foreground_new (guint16 red,  guint16 green,  guint16 blue);
-		auto p = pango_attr_foreground_new(red, green, blue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute foregroundNew(ushort red, ushort green, ushort blue);
 	
 	/**
 	 * Create a new background color attribute.
@@ -437,16 +222,7 @@ public class PgAttribute
 	 * blue =  the blue value
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute backgroundNew(ushort red, ushort green, ushort blue)
-	{
-		// PangoAttribute * pango_attr_background_new (guint16 red,  guint16 green,  guint16 blue);
-		auto p = pango_attr_background_new(red, green, blue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute backgroundNew(ushort red, ushort green, ushort blue);
 	
 	/**
 	 * Create a new strike-through attribute.
@@ -454,16 +230,7 @@ public class PgAttribute
 	 * strikethrough =  TRUE if the text should be struck-through.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute strikethroughNew(int strikethrough)
-	{
-		// PangoAttribute * pango_attr_strikethrough_new (gboolean strikethrough);
-		auto p = pango_attr_strikethrough_new(strikethrough);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute strikethroughNew(int strikethrough);
 	
 	/**
 	 * Create a new strikethrough color attribute. This attribute
@@ -476,16 +243,7 @@ public class PgAttribute
 	 * blue =  the blue value
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute strikethroughColorNew(ushort red, ushort green, ushort blue)
-	{
-		// PangoAttribute * pango_attr_strikethrough_color_new (guint16 red,  guint16 green,  guint16 blue);
-		auto p = pango_attr_strikethrough_color_new(red, green, blue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute strikethroughColorNew(ushort red, ushort green, ushort blue);
 	
 	/**
 	 * Create a new underline-style attribute.
@@ -493,16 +251,7 @@ public class PgAttribute
 	 * underline =  the underline style.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute underlineNew(PangoUnderline underline)
-	{
-		// PangoAttribute * pango_attr_underline_new (PangoUnderline underline);
-		auto p = pango_attr_underline_new(underline);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute underlineNew(PangoUnderline underline);
 	
 	/**
 	 * Create a new underline color attribute. This attribute
@@ -515,16 +264,7 @@ public class PgAttribute
 	 * blue =  the blue value
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute underlineColorNew(ushort red, ushort green, ushort blue)
-	{
-		// PangoAttribute * pango_attr_underline_color_new (guint16 red,  guint16 green,  guint16 blue);
-		auto p = pango_attr_underline_color_new(red, green, blue);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute underlineColorNew(ushort red, ushort green, ushort blue);
 	
 	/**
 	 * Create a new shape attribute. A shape is used to impose a
@@ -536,16 +276,7 @@ public class PgAttribute
 	 * logicalRect =  logical rectangle to assign to each character
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute shapeNew(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// PangoAttribute * pango_attr_shape_new (const PangoRectangle *ink_rect,  const PangoRectangle *logical_rect);
-		auto p = pango_attr_shape_new(inkRect, logicalRect);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute shapeNew(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Like pango_attr_shape_new(), but a user data pointer is also
@@ -563,16 +294,7 @@ public class PgAttribute
 	 *  is freed, or NULL
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute shapeNewWithData(PangoRectangle* inkRect, PangoRectangle* logicalRect, void* data, PangoAttrDataCopyFunc copyFunc, GDestroyNotify destroyFunc)
-	{
-		// PangoAttribute * pango_attr_shape_new_with_data (const PangoRectangle *ink_rect,  const PangoRectangle *logical_rect,  gpointer data,  PangoAttrDataCopyFunc copy_func,  GDestroyNotify destroy_func);
-		auto p = pango_attr_shape_new_with_data(inkRect, logicalRect, data, copyFunc, destroyFunc);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute shapeNewWithData(PangoRectangle* inkRect, PangoRectangle* logicalRect, void* data, PangoAttrDataCopyFunc copyFunc, GDestroyNotify destroyFunc);
 	
 	/**
 	 * Create a new font size scale attribute. The base font for the
@@ -581,16 +303,7 @@ public class PgAttribute
 	 * scaleFactor =  factor to scale the font
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute scaleNew(double scaleFactor)
-	{
-		// PangoAttribute * pango_attr_scale_new (double scale_factor);
-		auto p = pango_attr_scale_new(scaleFactor);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute scaleNew(double scaleFactor);
 	
 	/**
 	 * Create a new baseline displacement attribute.
@@ -599,16 +312,7 @@ public class PgAttribute
 	 *  in Pango units. Positive values displace the text upwards.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute riseNew(int rise)
-	{
-		// PangoAttribute * pango_attr_rise_new (int rise);
-		auto p = pango_attr_rise_new(rise);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute riseNew(int rise);
 	
 	/**
 	 * Create a new letter-spacing attribute.
@@ -618,16 +322,7 @@ public class PgAttribute
 	 *  of the text, in Pango units.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute letterSpacingNew(int letterSpacing)
-	{
-		// PangoAttribute * pango_attr_letter_spacing_new (int letter_spacing);
-		auto p = pango_attr_letter_spacing_new(letterSpacing);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute letterSpacingNew(int letterSpacing);
 	
 	/**
 	 * Create a new font fallback attribute.
@@ -641,16 +336,7 @@ public class PgAttribute
 	 *  for characters the active font is missing.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute fallbackNew(int enableFallback)
-	{
-		// PangoAttribute * pango_attr_fallback_new (gboolean enable_fallback);
-		auto p = pango_attr_fallback_new(enableFallback);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute fallbackNew(int enableFallback);
 	
 	/**
 	 * Create a new gravity attribute.
@@ -659,16 +345,7 @@ public class PgAttribute
 	 * gravity =  the gravity value; should not be PANGO_GRAVITY_AUTO.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute gravityNew(PangoGravity gravity)
-	{
-		// PangoAttribute * pango_attr_gravity_new (PangoGravity gravity);
-		auto p = pango_attr_gravity_new(gravity);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute gravityNew(PangoGravity gravity);
 	
 	/**
 	 * Create a new gravity hint attribute.
@@ -677,14 +354,5 @@ public class PgAttribute
 	 * hint =  the gravity hint value.
 	 * Returns: the newly allocated PangoAttribute, which should be freed with pango_attribute_destroy().
 	 */
-	public static PgAttribute gravityHintNew(PangoGravityHint hint)
-	{
-		// PangoAttribute * pango_attr_gravity_hint_new (PangoGravityHint hint);
-		auto p = pango_attr_gravity_hint_new(hint);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttribute(cast(PangoAttribute*) p);
-	}
+	public static PgAttribute gravityHintNew(PangoGravityHint hint);
 }

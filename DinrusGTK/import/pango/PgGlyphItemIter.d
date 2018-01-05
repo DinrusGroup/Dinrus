@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgGlyphItemIter
- * strct   = PangoGlyphItemIter
- * realStrct=
- * ctorStrct=
- * clss    = PgGlyphItemIter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_glyph_item_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgGlyphItem
- * structWrap:
- * 	- PangoGlyphItem* -> PgGlyphItem
- * 	- PangoGlyphItemIter* -> PgGlyphItemIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgGlyphItemIter;
 
 public  import gtkD.gtkc.pangotypes;
@@ -80,30 +26,16 @@ public class PgGlyphItemIter
 	protected PangoGlyphItemIter* pangoGlyphItemIter;
 	
 	
-	public PangoGlyphItemIter* getPgGlyphItemIterStruct()
-	{
-		return pangoGlyphItemIter;
-	}
+	public PangoGlyphItemIter* getPgGlyphItemIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoGlyphItemIter;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoGlyphItemIter* pangoGlyphItemIter)
-	{
-		if(pangoGlyphItemIter is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoGlyphItemIter = pangoGlyphItemIter;
-	}
+	public this (PangoGlyphItemIter* pangoGlyphItemIter);
 	
 	/**
 	 */
@@ -113,26 +45,13 @@ public class PgGlyphItemIter
 	 * Since 1.22
 	 * Returns: the newly allocated PangoGlyphItemIter, which should be freed with pango_glyph_item_iter_free(), or NULL if orig was NULL.
 	 */
-	public PgGlyphItemIter copy()
-	{
-		// PangoGlyphItemIter * pango_glyph_item_iter_copy (PangoGlyphItemIter *orig);
-		auto p = pango_glyph_item_iter_copy(pangoGlyphItemIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgGlyphItemIter(cast(PangoGlyphItemIter*) p);
-	}
+	public PgGlyphItemIter copy();
 	
 	/**
 	 * Frees a PangoGlyphItemIter created by pango_glyph_item_iter_copy().
 	 * Since 1.22
 	 */
-	public void free()
-	{
-		// void pango_glyph_item_iter_free (PangoGlyphItemIter *iter);
-		pango_glyph_item_iter_free(pangoGlyphItemIter);
-	}
+	public void free();
 	
 	/**
 	 * Initializes a PangoGlyphItemIter structure to point to the
@@ -144,11 +63,7 @@ public class PgGlyphItemIter
 	 * text =  text corresponding to the glyph item
 	 * Returns: FALSE if there are no clusters in the glyph item
 	 */
-	public int initStart(PgGlyphItem glyphItem, string text)
-	{
-		// gboolean pango_glyph_item_iter_init_start (PangoGlyphItemIter *iter,  PangoGlyphItem *glyph_item,  const char *text);
-		return pango_glyph_item_iter_init_start(pangoGlyphItemIter, (glyphItem is null) ? null : glyphItem.getPgGlyphItemStruct(), Str.toStringz(text));
-	}
+	public int initStart(PgGlyphItem glyphItem, string text);
 	
 	/**
 	 * Initializes a PangoGlyphItemIter structure to point to the
@@ -160,11 +75,7 @@ public class PgGlyphItemIter
 	 * text =  text corresponding to the glyph item
 	 * Returns: FALSE if there are no clusters in the glyph item
 	 */
-	public int initEnd(PgGlyphItem glyphItem, string text)
-	{
-		// gboolean pango_glyph_item_iter_init_end (PangoGlyphItemIter *iter,  PangoGlyphItem *glyph_item,  const char *text);
-		return pango_glyph_item_iter_init_end(pangoGlyphItemIter, (glyphItem is null) ? null : glyphItem.getPgGlyphItemStruct(), Str.toStringz(text));
-	}
+	public int initEnd(PgGlyphItem glyphItem, string text);
 	
 	/**
 	 * Advances the iterator to the next cluster in the glyph item.
@@ -172,11 +83,7 @@ public class PgGlyphItemIter
 	 * Since 1.22
 	 * Returns: TRUE if the iterator was advanced, FALSE if we were already on the last cluster.
 	 */
-	public int nextCluster()
-	{
-		// gboolean pango_glyph_item_iter_next_cluster (PangoGlyphItemIter *iter);
-		return pango_glyph_item_iter_next_cluster(pangoGlyphItemIter);
-	}
+	public int nextCluster();
 	
 	/**
 	 * Moves the iterator to the preceding cluster in the glyph item.
@@ -184,9 +91,5 @@ public class PgGlyphItemIter
 	 * Since 1.22
 	 * Returns: TRUE if the iterator was moved, FALSE if we were already on the first cluster.
 	 */
-	public int prevCluster()
-	{
-		// gboolean pango_glyph_item_iter_prev_cluster (PangoGlyphItemIter *iter);
-		return pango_glyph_item_iter_prev_cluster(pangoGlyphItemIter);
-	}
+	public int prevCluster();
 }

@@ -1,73 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgCairo
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = PgCairo
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_cairo_
- * omit structs:
- * omit prefixes:
- * 	- pango_cairo_font_map_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.cairo.Context
- * 	- gtkD.cairo.ScaledFont
- * 	- gtkD.cairo.FontOption
- * 	- gtkD.pango.PgContext
- * 	- gtkD.pango.PgFont
- * 	- gtkD.pango.PgGlyphItem
- * 	- gtkD.pango.PgGlyphString
- * 	- gtkD.pango.PgLayout
- * 	- gtkD.pango.PgLayoutLine
- * structWrap:
- * 	- PangoContext* -> PgContext
- * 	- PangoFont* -> PgFont
- * 	- PangoGlyphItem* -> PgGlyphItem
- * 	- PangoGlyphString* -> PgGlyphString
- * 	- PangoLayout* -> PgLayout
- * 	- PangoLayoutLine* -> PgLayoutLine
- * 	- cairo_font_options_t* -> FontOption
- * 	- cairo_scaled_font_t* -> ScaledFont
- * 	- cairo_t* -> Context
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgCairo;
 
 public  import gtkD.gtkc.pangotypes;
@@ -204,16 +134,7 @@ public class PgCairo
 	 * font =  a PangoFont from a PangoCairoFontMap
 	 * Returns: the cairo_scaled_font_t used by font, or NULL if font is NULL.
 	 */
-	public static ScaledFont fontGetScaledFont(PangoCairoFont* font)
-	{
-		// cairo_scaled_font_t * pango_cairo_font_get_scaled_font (PangoCairoFont *font);
-		auto p = pango_cairo_font_get_scaled_font(font);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ScaledFont(cast(cairo_scaled_font_t*) p);
-	}
+	public static ScaledFont fontGetScaledFont(PangoCairoFont* font);
 	
 	/**
 	 * Sets the resolution for the context. This is a scale factor between
@@ -227,11 +148,7 @@ public class PgCairo
 	 *  involved; the terminology is conventional.) A 0 or negative value
 	 *  means to use the resolution from the font map.
 	 */
-	public static void contextSetResolution(PgContext context, double dpi)
-	{
-		// void pango_cairo_context_set_resolution (PangoContext *context,  double dpi);
-		pango_cairo_context_set_resolution((context is null) ? null : context.getPgContextStruct(), dpi);
-	}
+	public static void contextSetResolution(PgContext context, double dpi);
 	
 	/**
 	 * Gets the resolution for the context. See pango_cairo_context_set_resolution()
@@ -240,11 +157,7 @@ public class PgCairo
 	 * context =  a PangoContext, from a pangocairo font map
 	 * Returns: the resolution in "dots per inch". A negative value will be returned if no resolution has previously been set.
 	 */
-	public static double contextGetResolution(PgContext context)
-	{
-		// double pango_cairo_context_get_resolution (PangoContext *context);
-		return pango_cairo_context_get_resolution((context is null) ? null : context.getPgContextStruct());
-	}
+	public static double contextGetResolution(PgContext context);
 	
 	/**
 	 * Sets the font options used when rendering text with this context.
@@ -256,11 +169,7 @@ public class PgCairo
 	 * options =  a cairo_font_options_t, or NULL to unset any previously set
 	 *  options. A copy is made.
 	 */
-	public static void contextSetFontOptions(PgContext context, FontOption options)
-	{
-		// void pango_cairo_context_set_font_options  (PangoContext *context,  const cairo_font_options_t *options);
-		pango_cairo_context_set_font_options((context is null) ? null : context.getPgContextStruct(), (options is null) ? null : options.getFontOptionStruct());
-	}
+	public static void contextSetFontOptions(PgContext context, FontOption options);
 	
 	/**
 	 * Retrieves any font rendering options previously set with
@@ -271,16 +180,7 @@ public class PgCairo
 	 * context =  a PangoContext, from a pangocairo font map
 	 * Returns: the font options previously set on the context, or NULL if no options have been set. This value is owned by the context and must not be modified or freed.
 	 */
-	public static FontOption contextGetFontOptions(PgContext context)
-	{
-		// const cairo_font_options_t * pango_cairo_context_get_font_options  (PangoContext *context);
-		auto p = pango_cairo_context_get_font_options((context is null) ? null : context.getPgContextStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new FontOption(cast(cairo_font_options_t*) p);
-	}
+	public static FontOption contextGetFontOptions(PgContext context);
 	
 	/**
 	 * Sets callback function for context to use for rendering attributes
@@ -295,11 +195,7 @@ public class PgCairo
 	 * dnotify =  Callback that will be called when the
 	 *  context is freed to release data, or NULL.
 	 */
-	public static void contextSetShapeRenderer(PgContext context, PangoCairoShapeRendererFunc func, void* data, GDestroyNotify dnotify)
-	{
-		// void pango_cairo_context_set_shape_renderer  (PangoContext *context,  PangoCairoShapeRendererFunc func,  gpointer data,  GDestroyNotify dnotify);
-		pango_cairo_context_set_shape_renderer((context is null) ? null : context.getPgContextStruct(), func, data, dnotify);
-	}
+	public static void contextSetShapeRenderer(PgContext context, PangoCairoShapeRendererFunc func, void* data, GDestroyNotify dnotify);
 	
 	/**
 	 * Sets callback function for context to use for rendering attributes
@@ -314,11 +210,7 @@ public class PgCairo
 	 * data =  Pointer to gpointer to return user data
 	 * Returns: the shape rendering callback previously set on the context, or NULL if no shape rendering callback have been set.
 	 */
-	public static PangoCairoShapeRendererFunc contextGetShapeRenderer(PgContext context, void** data)
-	{
-		// PangoCairoShapeRendererFunc pango_cairo_context_get_shape_renderer  (PangoContext *context,  gpointer *data);
-		return pango_cairo_context_get_shape_renderer((context is null) ? null : context.getPgContextStruct(), data);
-	}
+	public static PangoCairoShapeRendererFunc contextGetShapeRenderer(PgContext context, void** data);
 	
 	/**
 	 * Creates a context object set up to match the current transformation
@@ -333,16 +225,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * Returns: the newly created PangoContext. Free with g_object_unref().
 	 */
-	public static PgContext createContext(Context cr)
-	{
-		// PangoContext * pango_cairo_create_context (cairo_t *cr);
-		auto p = pango_cairo_create_context((cr is null) ? null : cr.getContextStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
+	public static PgContext createContext(Context cr);
 	
 	/**
 	 * Updates a PangoContext previously created for use with Cairo to
@@ -355,11 +238,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * context =  a PangoContext, from a pangocairo font map
 	 */
-	public static void updateContext(Context cr, PgContext context)
-	{
-		// void pango_cairo_update_context (cairo_t *cr,  PangoContext *context);
-		pango_cairo_update_context((cr is null) ? null : cr.getContextStruct(), (context is null) ? null : context.getPgContextStruct());
-	}
+	public static void updateContext(Context cr, PgContext context);
 	
 	/**
 	 * Creates a layout object set up to match the current transformation
@@ -377,16 +256,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * Returns: the newly created PangoLayout. Free with g_object_unref().
 	 */
-	public static PgLayout createLayout(Context cr)
-	{
-		// PangoLayout * pango_cairo_create_layout (cairo_t *cr);
-		auto p = pango_cairo_create_layout((cr is null) ? null : cr.getContextStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public static PgLayout createLayout(Context cr);
 	
 	/**
 	 * Updates the private PangoContext of a PangoLayout created with
@@ -397,11 +267,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * layout =  a PangoLayout, from pango_cairo_create_layout()
 	 */
-	public static void updateLayout(Context cr, PgLayout layout)
-	{
-		// void pango_cairo_update_layout (cairo_t *cr,  PangoLayout *layout);
-		pango_cairo_update_layout((cr is null) ? null : cr.getContextStruct(), (layout is null) ? null : layout.getPgLayoutStruct());
-	}
+	public static void updateLayout(Context cr, PgLayout layout);
 	
 	/**
 	 * Draws the glyphs in glyphs in the specified cairo context.
@@ -413,11 +279,7 @@ public class PgCairo
 	 * font =  a PangoFont from a PangoCairoFontMap
 	 * glyphs =  a PangoGlyphString
 	 */
-	public static void showGlyphString(Context cr, PgFont font, PgGlyphString glyphs)
-	{
-		// void pango_cairo_show_glyph_string (cairo_t *cr,  PangoFont *font,  PangoGlyphString *glyphs);
-		pango_cairo_show_glyph_string((cr is null) ? null : cr.getContextStruct(), (font is null) ? null : font.getPgFontStruct(), (glyphs is null) ? null : glyphs.getPgGlyphStringStruct());
-	}
+	public static void showGlyphString(Context cr, PgFont font, PgGlyphString glyphs);
 	
 	/**
 	 * Draws the glyphs in glyph_item in the specified cairo context,
@@ -434,11 +296,7 @@ public class PgCairo
 	 * text =  the UTF-8 text that glyph_item refers to
 	 * glyphItem =  a PangoGlyphItem
 	 */
-	public static void showGlyphItem(Context cr, string text, PgGlyphItem glyphItem)
-	{
-		// void pango_cairo_show_glyph_item (cairo_t *cr,  const char *text,  PangoGlyphItem *glyph_item);
-		pango_cairo_show_glyph_item((cr is null) ? null : cr.getContextStruct(), Str.toStringz(text), (glyphItem is null) ? null : glyphItem.getPgGlyphItemStruct());
-	}
+	public static void showGlyphItem(Context cr, string text, PgGlyphItem glyphItem);
 	
 	/**
 	 * Draws a PangoLayoutLine in the specified cairo context.
@@ -449,11 +307,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * line =  a PangoLayoutLine
 	 */
-	public static void showLayoutLine(Context cr, PgLayoutLine line)
-	{
-		// void pango_cairo_show_layout_line (cairo_t *cr,  PangoLayoutLine *line);
-		pango_cairo_show_layout_line((cr is null) ? null : cr.getContextStruct(), (line is null) ? null : line.getPgLayoutLineStruct());
-	}
+	public static void showLayoutLine(Context cr, PgLayoutLine line);
 	
 	/**
 	 * Draws a PangoLayoutLine in the specified cairo context.
@@ -464,11 +318,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * layout =  a Pango layout
 	 */
-	public static void showLayout(Context cr, PgLayout layout)
-	{
-		// void pango_cairo_show_layout (cairo_t *cr,  PangoLayout *layout);
-		pango_cairo_show_layout((cr is null) ? null : cr.getContextStruct(), (layout is null) ? null : layout.getPgLayoutStruct());
-	}
+	public static void showLayout(Context cr, PgLayout layout);
 	
 	/**
 	 * Draw a squiggly line in the specified cairo context that approximately
@@ -484,11 +334,7 @@ public class PgCairo
 	 * width =  Non-negative width of the rectangle
 	 * height =  Non-negative height of the rectangle
 	 */
-	public static void showErrorUnderline(Context cr, double x, double y, double width, double height)
-	{
-		// void pango_cairo_show_error_underline (cairo_t *cr,  double x,  double y,  double width,  double height);
-		pango_cairo_show_error_underline((cr is null) ? null : cr.getContextStruct(), x, y, width, height);
-	}
+	public static void showErrorUnderline(Context cr, double x, double y, double width, double height);
 	
 	/**
 	 * Adds the glyphs in glyphs to the current path in the specified
@@ -500,11 +346,7 @@ public class PgCairo
 	 * font =  a PangoFont from a PangoCairoFontMap
 	 * glyphs =  a PangoGlyphString
 	 */
-	public static void glyphStringPath(Context cr, PgFont font, PgGlyphString glyphs)
-	{
-		// void pango_cairo_glyph_string_path (cairo_t *cr,  PangoFont *font,  PangoGlyphString *glyphs);
-		pango_cairo_glyph_string_path((cr is null) ? null : cr.getContextStruct(), (font is null) ? null : font.getPgFontStruct(), (glyphs is null) ? null : glyphs.getPgGlyphStringStruct());
-	}
+	public static void glyphStringPath(Context cr, PgFont font, PgGlyphString glyphs);
 	
 	/**
 	 * Adds the text in PangoLayoutLine to the current path in the
@@ -515,11 +357,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * line =  a PangoLayoutLine
 	 */
-	public static void layoutLinePath(Context cr, PgLayoutLine line)
-	{
-		// void pango_cairo_layout_line_path (cairo_t *cr,  PangoLayoutLine *line);
-		pango_cairo_layout_line_path((cr is null) ? null : cr.getContextStruct(), (line is null) ? null : line.getPgLayoutLineStruct());
-	}
+	public static void layoutLinePath(Context cr, PgLayoutLine line);
 	
 	/**
 	 * Adds the text in a PangoLayout to the current path in the
@@ -530,11 +368,7 @@ public class PgCairo
 	 * cr =  a Cairo context
 	 * layout =  a Pango layout
 	 */
-	public static void layoutPath(Context cr, PgLayout layout)
-	{
-		// void pango_cairo_layout_path (cairo_t *cr,  PangoLayout *layout);
-		pango_cairo_layout_path((cr is null) ? null : cr.getContextStruct(), (layout is null) ? null : layout.getPgLayoutStruct());
-	}
+	public static void layoutPath(Context cr, PgLayout layout);
 	
 	/**
 	 * Add a squiggly line to the current path in the specified cairo context that
@@ -550,9 +384,5 @@ public class PgCairo
 	 * width =  Non-negative width of the rectangle
 	 * height =  Non-negative height of the rectangle
 	 */
-	public static void errorUnderlinePath(Context cr, double x, double y, double width, double height)
-	{
-		// void pango_cairo_error_underline_path (cairo_t *cr,  double x,  double y,  double width,  double height);
-		pango_cairo_error_underline_path((cr is null) ? null : cr.getContextStruct(), x, y, width, height);
-	}
+	public static void errorUnderlinePath(Context cr, double x, double y, double width, double height);
 }

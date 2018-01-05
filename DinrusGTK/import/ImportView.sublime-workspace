@@ -8,19 +8,91 @@
 	"buffers":
 	[
 		{
-			"file": "gobject/Signals.d",
+			"file": "pango/PgLayoutLine.d",
 			"settings":
 			{
-				"buffer_size": 25098,
+				"buffer_size": 5140,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "gsvc/gsv.d",
+			"file": "pango/PgMatrix.d",
 			"settings":
 			{
-				"buffer_size": 45949,
+				"buffer_size": 7147,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgMiscellaneous.d",
+			"settings":
+			{
+				"buffer_size": 9310,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgRenderer.d",
+			"settings":
+			{
+				"buffer_size": 9086,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgScript.d",
+			"settings":
+			{
+				"buffer_size": 1269,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgScriptIter.d",
+			"settings":
+			{
+				"buffer_size": 2053,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgTabArray.d",
+			"settings":
+			{
+				"buffer_size": 2953,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgVersion.d",
+			"settings":
+			{
+				"buffer_size": 2563,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pango/PgVertical.d",
+			"settings":
+			{
+				"buffer_size": 5324,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ImportView.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
 				"line_ending": "Unix"
 			}
 		}
@@ -58,142 +130,138 @@
 	"expanded_folders":
 	[
 		"/D/dinrus/dev/DINRUS/DinrusGTK/import",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gstreamer",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gstreamerc",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gsv",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gsvc"
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango"
 	],
 	"file_history":
 	[
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/Boxed.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/CClosure.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/Closure.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/Enums.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/Flags.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/ObjectG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/ParamSpec.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/ParamSpecPool.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/Type.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gobject/TypeModule.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Regex.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Relation.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ScannerG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Sequence.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/SequenceIter.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ShellUtils.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/SimpleXML.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Source.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Spawn.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Str.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/StringCompletion.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/StringG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/StringGChunk.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ThreadPool.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Timeout.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Timer.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/TimeVal.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/TrashStack.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Tuples.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Unicode.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/URI.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Util.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/WindowsUtils.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/MemoryInputStream.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/MemoryOutputStream.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/Mount.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/MountIF.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/MountOperation.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/MountT.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/NetworkAddress.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/NetworkService.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/OutputStream.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/Resolver.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SeekableIF.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SeekableT.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SimpleAsyncResult.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/Socket.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketAddress.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketAddressEnumerator.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketClient.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketConnectableIF.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketConnectableT.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketConnection.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketControlMessage.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketListener.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SocketService.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/SrvTarget.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/TcpConnection.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/ThemedIcon.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/ThreadedSocketService.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixConnection.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixFDMessage.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixInputStream.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixMountEntry.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixMountMonitor.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixMountPoint.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixOutputStream.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/UnixSocketAddress.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/Vfs.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/Volume.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/VolumeIF.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/VolumeMonitor.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gio/VolumeT.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glade/Glade.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLConfig.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLContext.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLdInit.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLDraw.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLDrawable.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLdVersion.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLFont.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLPixmap.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLQuery.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLTokens.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgdk/GLWindow.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgtk/GLCapability.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgtk/GLtInit.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgtk/GLtVersion.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glgtk/GLWidget.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Allocator.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ArrayG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/AsyncQueue.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Atomic.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Base64.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/BBTree.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/BookmarkFile.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ByteArray.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Cache.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/CharacterSet.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Checksum.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Child.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ConstructionException.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/DataList.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Dataset.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Date.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Directory.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ErrorG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/FileUtils.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/GException.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/GLib.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/HashTable.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/HashTableIter.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Hostname.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Idle.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Internationalization.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/IOChannel.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/KeyFile.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ListG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/ListSG.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MainContext.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MainLoop.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MappedFile.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MatchInfo.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Memory.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MemoryChunk.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MemorySlice.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/MessageLog.d",
-		"/D/dinrus/dev/DINRUS/DinrusGTK/import/glib/Messages.d"
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgAttribute.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgAttributeIterator.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgAttributeList.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgCairo.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgCairoFontMap.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgColor.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgContext.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgCoverage.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgEngine.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgEngineLang.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgEngineShape.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFont.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontDescription.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontFace.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontFamily.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontMap.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontMetrics.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontset.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgFontsetSimple.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgGlyphItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgGlyphItemIter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgGlyphString.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgLanguage.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgLayout.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/pango/PgLayoutIter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtkc/atk.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtkc/atktypes.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VButtonBox.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Version.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Viewport.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VolumeButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VPaned.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VRuler.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VScale.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VScrollbar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/VSeparator.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Widget.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Window.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/WindowGroup.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeStore.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeView.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeViewColumn.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Types.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/UIManager.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeRowReference.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeSelection.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeSortableIF.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeSortableT.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Tooltip.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Tooltips.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeDragDestIF.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeDragDestT.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeDragSourceIF.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeDragSourceT.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeIter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeIterError.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeModel.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeModelFilter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeModelIF.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeModelSort.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeModelT.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreeNode.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TreePath.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Timeout.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ToggleAction.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ToggleButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ToggleToolButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Toolbar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ToolButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ToolItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextView.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Table.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TargetList.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TearoffMenuItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Testing.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextBuffer.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextChildAnchor.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextIter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextMark.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextTag.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/TextTagTable.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/SizeGroup.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Socket.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/SpinButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/StandardEnumerations.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Statusbar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/StatusIcon.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/StockItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Style.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Signals.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RadioMenuItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RadioToolButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Range.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RcStyle.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentAction.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentChooserDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentChooserIF.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentChooserMenu.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentChooserWidget.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentFilter.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentInfo.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RecentManager.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Ruler.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Scale.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ScaleButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Scrollbar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ScrolledWindow.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Selections.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Separator.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/SeparatorMenuItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/SeparatorToolItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Settings.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ProgressBar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RadioAction.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/RadioButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/PrintUnixDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Progress.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MenuBar.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MenuItem.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MenuShell.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MenuToolButton.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MessageDialog.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Misc.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/MountOperation.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/Notebook.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/ObjectGtk.d",
+		"/D/dinrus/dev/DINRUS/DinrusGTK/import/gtk/OrientableIF.d"
 	],
 	"find":
 	{
@@ -228,24 +296,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "gobject/Signals.d",
+					"file": "pango/PgLayoutLine.d",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25098,
+						"buffer_size": 5140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								25095,
-								25095
+								5137,
+								5137
 							]
 						],
 						"settings":
@@ -254,19 +322,251 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1620.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "pango/PgMatrix.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7144,
+								7144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2970.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "pango/PgMiscellaneous.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9307,
+								9307
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3375.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "pango/PgRenderer.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9083,
+								9083
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3650.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "pango/PgScript.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1269,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1266,
+								1266
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "pango/PgScriptIter.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2053,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2050,
+								2050
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "pango/PgTabArray.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2953,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2950,
+								2950
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1215.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "pango/PgVersion.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2563,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2560,
+								2560
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 765.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "pango/PgVertical.d",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5321,
+								5321
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/D/D.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "gsvc/gsv.d",
+					"buffer": 9,
+					"file": "ImportView.sublime-project",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 45949,
+						"buffer_size": 45,
 						"regions":
 						{
 						},
@@ -279,11 +579,10 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/D/D.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 7411.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -369,7 +668,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 148.0,
+	"side_bar_width": 140.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgFontDescription
- * strct   = PangoFontDescription
- * realStrct=
- * ctorStrct=
- * clss    = PgFontDescription
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_font_description_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- PangoFontDescription* -> PgFontDescription
- * module aliases:
- * local aliases:
- * overrides:
- * 	- toString
- */
-
 module gtkD.pango.PgFontDescription;
 
 public  import gtkD.gtkc.pangotypes;
@@ -80,30 +27,15 @@ public class PgFontDescription
 	protected PangoFontDescription* pangoFontDescription;
 	
 	
-	public PangoFontDescription* getPgFontDescriptionStruct()
-	{
-		return pangoFontDescription;
-	}
+	public PangoFontDescription* getPgFontDescriptionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoFontDescription;
-	}
-	
+	protected void* getStruct();
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoFontDescription* pangoFontDescription)
-	{
-		if(pangoFontDescription is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoFontDescription = pangoFontDescription;
-	}
+	public this (PangoFontDescription* pangoFontDescription);
 	
 	/**
 	 * Creates a nwe font description and set the family nd the size
@@ -111,12 +43,7 @@ public class PgFontDescription
 	 *  family = Family
 	 *  size = Size
 	 */
-	public this(string family, int size)
-	{
-		this();
-		setFamily(family);
-		setSize(size * PANGO_SCALE);
-	}
+	public this(string family, int size);
 	
 	/**
 	 */
@@ -125,31 +52,13 @@ public class PgFontDescription
 	 * Creates a new font description structure with all fields unset.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// PangoFontDescription * pango_font_description_new (void);
-		auto p = pango_font_description_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_font_description_new()");
-		}
-		this(cast(PangoFontDescription*) p);
-	}
+	public this ();
 	
 	/**
 	 * Make a copy of a PangoFontDescription.
 	 * Returns: the newly allocated PangoFontDescription, which should be freed with pango_font_description_free(), or NULL if desc was NULL.
 	 */
-	public PgFontDescription copy()
-	{
-		// PangoFontDescription * pango_font_description_copy (const PangoFontDescription *desc);
-		auto p = pango_font_description_copy(pangoFontDescription);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public PgFontDescription copy();
 	
 	/**
 	 * Like pango_font_description_copy(), but only a shallow copy is made
@@ -158,16 +67,7 @@ public class PgFontDescription
 	 * when the copy is only needed temporarily.
 	 * Returns: the newly allocated PangoFontDescription, which should be freed with pango_font_description_free(), or NULL if desc was NULL.
 	 */
-	public PgFontDescription copyStatic()
-	{
-		// PangoFontDescription * pango_font_description_copy_static  (const PangoFontDescription *desc);
-		auto p = pango_font_description_copy_static(pangoFontDescription);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public PgFontDescription copyStatic();
 	
 	/**
 	 * Computes a hash of a PangoFontDescription structure suitable
@@ -175,11 +75,7 @@ public class PgFontDescription
 	 * The hash value is independent of desc->mask.
 	 * Returns: the hash value.
 	 */
-	public uint hash()
-	{
-		// guint pango_font_description_hash (const PangoFontDescription *desc);
-		return pango_font_description_hash(pangoFontDescription);
-	}
+	public uint hash();
 	
 	/**
 	 * Compares two font descriptions for equality. Two font descriptions
@@ -191,21 +87,13 @@ public class PgFontDescription
 	 * desc2 =  another PangoFontDescription
 	 * Returns: TRUE if the two font descriptions are identical,	 FALSE otherwise.
 	 */
-	public int equal(PgFontDescription desc2)
-	{
-		// gboolean pango_font_description_equal (const PangoFontDescription *desc1,  const PangoFontDescription *desc2);
-		return pango_font_description_equal(pangoFontDescription, (desc2 is null) ? null : desc2.getPgFontDescriptionStruct());
-	}
+	public int equal(PgFontDescription desc2);
 	
 	/**
 	 * Frees a font description.
 	 */
-	public void free()
-	{
-		// void pango_font_description_free (PangoFontDescription *desc);
-		pango_font_description_free(pangoFontDescription);
-	}
-	
+	public void free();
+
 	/**
 	 * Sets the family name field of a font description. The family
 	 * name represents a family of related font styles, and will
@@ -215,11 +103,7 @@ public class PgFontDescription
 	 * Params:
 	 * family =  a string representing the family name.
 	 */
-	public void setFamily(string family)
-	{
-		// void pango_font_description_set_family (PangoFontDescription *desc,  const char *family);
-		pango_font_description_set_family(pangoFontDescription, Str.toStringz(family));
-	}
+	public void setFamily(string family);
 	
 	/**
 	 * Like pango_font_description_set_family(), except that no
@@ -231,22 +115,14 @@ public class PgFontDescription
 	 * Params:
 	 * family =  a string representing the family name.
 	 */
-	public void setFamilyStatic(string family)
-	{
-		// void pango_font_description_set_family_static  (PangoFontDescription *desc,  const char *family);
-		pango_font_description_set_family_static(pangoFontDescription, Str.toStringz(family));
-	}
+	public void setFamilyStatic(string family);
 	
 	/**
 	 * Gets the family name field of a font description. See
 	 * pango_font_description_set_family().
 	 * Returns: the family name field for the font description, or NULL if not previously set. This has the same life-time as the font description itself and should not be freed.
 	 */
-	public string getFamily()
-	{
-		// const char * pango_font_description_get_family (const PangoFontDescription *desc);
-		return Str.toString(pango_font_description_get_family(pangoFontDescription));
-	}
+	public string getFamily();
 	
 	/**
 	 * Sets the style field of a PangoFontDescription. The
@@ -260,22 +136,14 @@ public class PgFontDescription
 	 * Params:
 	 * style =  the style for the font description
 	 */
-	public void setStyle(PangoStyle style)
-	{
-		// void pango_font_description_set_style (PangoFontDescription *desc,  PangoStyle style);
-		pango_font_description_set_style(pangoFontDescription, style);
-	}
+	public void setStyle(PangoStyle style);
 	
 	/**
 	 * Gets the style field of a PangoFontDescription. See
 	 * pango_font_description_set_style().
 	 * Returns: the style field for the font description. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public PangoStyle getStyle()
-	{
-		// PangoStyle pango_font_description_get_style (const PangoFontDescription *desc);
-		return pango_font_description_get_style(pangoFontDescription);
-	}
+	public PangoStyle getStyle();
 	
 	/**
 	 * Sets the variant field of a font description. The PangoVariant
@@ -283,22 +151,14 @@ public class PgFontDescription
 	 * Params:
 	 * variant =  the variant type for the font description.
 	 */
-	public void setVariant(PangoVariant variant)
-	{
-		// void pango_font_description_set_variant (PangoFontDescription *desc,  PangoVariant variant);
-		pango_font_description_set_variant(pangoFontDescription, variant);
-	}
+	public void setVariant(PangoVariant variant);
 	
 	/**
 	 * Gets the variant field of a PangoFontDescription. See
 	 * pango_font_description_set_variant().
 	 * Returns: the variant field for the font description. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public PangoVariant getVariant()
-	{
-		// PangoVariant pango_font_description_get_variant (const PangoFontDescription *desc);
-		return pango_font_description_get_variant(pangoFontDescription);
-	}
+	public PangoVariant getVariant();
 	
 	/**
 	 * Sets the weight field of a font description. The weight field
@@ -308,22 +168,14 @@ public class PgFontDescription
 	 * Params:
 	 * weight =  the weight for the font description.
 	 */
-	public void setWeight(PangoWeight weight)
-	{
-		// void pango_font_description_set_weight (PangoFontDescription *desc,  PangoWeight weight);
-		pango_font_description_set_weight(pangoFontDescription, weight);
-	}
+	public void setWeight(PangoWeight weight);
 	
 	/**
 	 * Gets the weight field of a font description. See
 	 * pango_font_description_set_weight().
 	 * Returns: the weight field for the font description. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public PangoWeight getWeight()
-	{
-		// PangoWeight pango_font_description_get_weight (const PangoFontDescription *desc);
-		return pango_font_description_get_weight(pangoFontDescription);
-	}
+	public PangoWeight getWeight();
 	
 	/**
 	 * Sets the stretch field of a font description. The stretch field
@@ -331,22 +183,14 @@ public class PgFontDescription
 	 * Params:
 	 * stretch =  the stretch for the font description
 	 */
-	public void setStretch(PangoStretch stretch)
-	{
-		// void pango_font_description_set_stretch (PangoFontDescription *desc,  PangoStretch stretch);
-		pango_font_description_set_stretch(pangoFontDescription, stretch);
-	}
+	public void setStretch(PangoStretch stretch);
 	
 	/**
 	 * Gets the stretch field of a font description.
 	 * See pango_font_description_set_stretch().
 	 * Returns: the stretch field for the font description. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public PangoStretch getStretch()
-	{
-		// PangoStretch pango_font_description_get_stretch (const PangoFontDescription *desc);
-		return pango_font_description_get_stretch(pangoFontDescription);
-	}
+	public PangoStretch getStretch();
 	
 	/**
 	 * Sets the size field of a font description in fractional points. This is mutually
@@ -360,22 +204,14 @@ public class PgFontDescription
 	 *  pixel font. Use pango_font_description_set_absolute_size() if you need
 	 *  a particular size in device units.
 	 */
-	public void setSize(int size)
-	{
-		// void pango_font_description_set_size (PangoFontDescription *desc,  gint size);
-		pango_font_description_set_size(pangoFontDescription, size);
-	}
+	public void setSize(int size);
 	
 	/**
 	 * Gets the size field of a font description.
 	 * See pango_font_description_set_size().
 	 * Returns: the size field for the font description in points or device units. You must call pango_font_description_get_size_is_absolute() to find out which is the case. Returns 0 if the size field has not previously been set or it has been set to 0 explicitly. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public int getSize()
-	{
-		// gint pango_font_description_get_size (const PangoFontDescription *desc);
-		return pango_font_description_get_size(pangoFontDescription);
-	}
+	public int getSize();
 	
 	/**
 	 * Sets the size field of a font description, in device units. This is mutually
@@ -387,11 +223,7 @@ public class PgFontDescription
 	 *  device unit. For an output backend where a device unit is a pixel, a size
 	 *  value of 10 * PANGO_SCALE gives a 10 pixel font.
 	 */
-	public void setAbsoluteSize(double size)
-	{
-		// void pango_font_description_set_absolute_size  (PangoFontDescription *desc,  double size);
-		pango_font_description_set_absolute_size(pangoFontDescription, size);
-	}
+	public void setAbsoluteSize(double size);
 	
 	/**
 	 * Determines whether the size of the font is in points (not absolute) or device units (absolute).
@@ -399,11 +231,7 @@ public class PgFontDescription
 	 * Since 1.8
 	 * Returns: whether the size for the font description is in points or device units. Use pango_font_description_get_set_fields() to find out if the size field of the font description was explicitly set or not.
 	 */
-	public int getSizeIsAbsolute()
-	{
-		// gboolean pango_font_description_get_size_is_absolute  (const PangoFontDescription *desc);
-		return pango_font_description_get_size_is_absolute(pangoFontDescription);
-	}
+	public int getSizeIsAbsolute();
 	
 	/**
 	 * Sets the gravity field of a font description. The gravity field
@@ -416,11 +244,7 @@ public class PgFontDescription
 	 * Params:
 	 * gravity =  the gravity for the font description.
 	 */
-	public void setGravity(PangoGravity gravity)
-	{
-		// void pango_font_description_set_gravity (PangoFontDescription *desc,  PangoGravity gravity);
-		pango_font_description_set_gravity(pangoFontDescription, gravity);
-	}
+	public void setGravity(PangoGravity gravity);
 	
 	/**
 	 * Gets the gravity field of a font description. See
@@ -428,21 +252,13 @@ public class PgFontDescription
 	 * Since 1.16
 	 * Returns: the gravity field for the font description. Use pango_font_description_get_set_fields() to find out if the field was explicitly set or not.
 	 */
-	public PangoGravity getGravity()
-	{
-		// PangoGravity pango_font_description_get_gravity (const PangoFontDescription *desc);
-		return pango_font_description_get_gravity(pangoFontDescription);
-	}
+	public PangoGravity getGravity();
 	
 	/**
 	 * Determines which fields in a font description have been set.
 	 * Returns: a bitmask with bits set corresponding to the fields in desc that have been set.
 	 */
-	public PangoFontMask getSetFields()
-	{
-		// PangoFontMask pango_font_description_get_set_fields  (const PangoFontDescription *desc);
-		return pango_font_description_get_set_fields(pangoFontDescription);
-	}
+	public PangoFontMask getSetFields();
 	
 	/**
 	 * Unsets some of the fields in a PangoFontDescription. The unset
@@ -450,11 +266,7 @@ public class PgFontDescription
 	 * Params:
 	 * toUnset =  bitmask of fields in the desc to unset.
 	 */
-	public void unsetFields(PangoFontMask toUnset)
-	{
-		// void pango_font_description_unset_fields (PangoFontDescription *desc,  PangoFontMask to_unset);
-		pango_font_description_unset_fields(pangoFontDescription, toUnset);
-	}
+	public void unsetFields(PangoFontMask toUnset);
 	
 	/**
 	 * Merges the fields that are set in desc_to_merge into the fields in
@@ -469,11 +281,7 @@ public class PgFontDescription
 	 *  corresponding values from desc_to_merge, even if they
 	 *  are already exist.
 	 */
-	public void merge(PgFontDescription descToMerge, int replaceExisting)
-	{
-		// void pango_font_description_merge (PangoFontDescription *desc,  const PangoFontDescription *desc_to_merge,  gboolean replace_existing);
-		pango_font_description_merge(pangoFontDescription, (descToMerge is null) ? null : descToMerge.getPgFontDescriptionStruct(), replaceExisting);
-	}
+	public void merge(PgFontDescription descToMerge, int replaceExisting);
 	
 	/**
 	 * Like pango_font_description_merge(), but only a shallow copy is made
@@ -487,11 +295,7 @@ public class PgFontDescription
 	 *  corresponding values from desc_to_merge, even if they
 	 *  are already exist.
 	 */
-	public void mergeStatic(PgFontDescription descToMerge, int replaceExisting)
-	{
-		// void pango_font_description_merge_static (PangoFontDescription *desc,  const PangoFontDescription *desc_to_merge,  gboolean replace_existing);
-		pango_font_description_merge_static(pangoFontDescription, (descToMerge is null) ? null : descToMerge.getPgFontDescriptionStruct(), replaceExisting);
-	}
+	public void mergeStatic(PgFontDescription descToMerge, int replaceExisting);
 	
 	/**
 	 * Determines if the style attributes of new_match are a closer match
@@ -509,11 +313,7 @@ public class PgFontDescription
 	 * newMatch =  a PangoFontDescription
 	 * Returns: TRUE if new_match is a better match
 	 */
-	public int betterMatch(PgFontDescription oldMatch, PgFontDescription newMatch)
-	{
-		// gboolean pango_font_description_better_match (const PangoFontDescription *desc,  const PangoFontDescription *old_match,  const PangoFontDescription *new_match);
-		return pango_font_description_better_match(pangoFontDescription, (oldMatch is null) ? null : oldMatch.getPgFontDescriptionStruct(), (newMatch is null) ? null : newMatch.getPgFontDescriptionStruct());
-	}
+	public int betterMatch(PgFontDescription oldMatch, PgFontDescription newMatch);
 	
 	/**
 	 * Creates a new font description from a string representation in the
@@ -532,16 +332,7 @@ public class PgFontDescription
 	 * str =  string representation of a font description.
 	 * Returns: a new PangoFontDescription.
 	 */
-	public static PgFontDescription fromString(string str)
-	{
-		// PangoFontDescription * pango_font_description_from_string  (const char *str);
-		auto p = pango_font_description_from_string(Str.toStringz(str));
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public static PgFontDescription fromString(string str);
 	
 	/**
 	 * Creates a string representation of a font description. See
@@ -551,11 +342,7 @@ public class PgFontDescription
 	 * last word of the list is a valid style option.
 	 * Returns: a new string that must be freed with g_free().
 	 */
-	public override string toString()
-	{
-		// char * pango_font_description_to_string (const PangoFontDescription *desc);
-		return Str.toString(pango_font_description_to_string(pangoFontDescription));
-	}
+	public override string toString();
 	
 	/**
 	 * Creates a filename representation of a font description. The
@@ -564,9 +351,5 @@ public class PgFontDescription
 	 * characters that are untypical in filenames, and in lower case only.
 	 * Returns: a new string that must be freed with g_free().
 	 */
-	public string toFilename()
-	{
-		// char * pango_font_description_to_filename (const PangoFontDescription *desc);
-		return Str.toString(pango_font_description_to_filename(pangoFontDescription));
-	}
+	public string toFilename();
 }

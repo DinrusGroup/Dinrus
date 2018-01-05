@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgScriptIter
- * strct   = PangoScriptIter
- * realStrct=
- * ctorStrct=
- * clss    = PgScriptIter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_script_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- PangoScriptIter* -> PgScriptIter
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.pango.PgScriptIter;
 
@@ -76,30 +25,16 @@ public class PgScriptIter
 	protected PangoScriptIter* pangoScriptIter;
 	
 	
-	public PangoScriptIter* getPgScriptIterStruct()
-	{
-		return pangoScriptIter;
-	}
+	public PangoScriptIter* getPgScriptIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoScriptIter;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoScriptIter* pangoScriptIter)
-	{
-		if(pangoScriptIter is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoScriptIter = pangoScriptIter;
-	}
+	public this (PangoScriptIter* pangoScriptIter);
 	
 	/**
 	 */
@@ -115,16 +50,7 @@ public class PgScriptIter
 	 * length =  length of text, or -1 if text is nul-terminated.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string text, int length)
-	{
-		// PangoScriptIter * pango_script_iter_new (const char *text,  int length);
-		auto p = pango_script_iter_new(Str.toStringz(text), length);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_script_iter_new(Str.toStringz(text), length)");
-		}
-		this(cast(PangoScriptIter*) p);
-	}
+	public this (string text, int length);
 	
 	/**
 	 * Gets information about the range to which iter currently points.
@@ -136,17 +62,7 @@ public class PgScriptIter
 	 * end =  location to store end position of the range, or NULL
 	 * script =  location to store script for range, or NULL
 	 */
-	public void getRange(out string start, out string end, out PangoScript script)
-	{
-		// void pango_script_iter_get_range (PangoScriptIter *iter,  G_CONST_RETURN char **start,  G_CONST_RETURN char **end,  PangoScript *script);
-		char* outstart = null;
-		char* outend = null;
-		
-		pango_script_iter_get_range(pangoScriptIter, &outstart, &outend, &script);
-		
-		start = Str.toString(outstart);
-		end = Str.toString(outend);
-	}
+	public void getRange(out string start, out string end, out PangoScript script);
 	
 	/**
 	 * Advances a PangoScriptIter to the next range. If iter
@@ -155,19 +71,11 @@ public class PgScriptIter
 	 * Since 1.4
 	 * Returns: TRUE if iter was successfully advanced.
 	 */
-	public int next()
-	{
-		// gboolean pango_script_iter_next (PangoScriptIter *iter);
-		return pango_script_iter_next(pangoScriptIter);
-	}
+	public int next();
 	
 	/**
 	 * Frees a PangoScriptIter created with pango_script_iter_new().
 	 * Since 1.4
 	 */
-	public void free()
-	{
-		// void pango_script_iter_free (PangoScriptIter *iter);
-		pango_script_iter_free(pangoScriptIter);
-	}
+	public void free();
 }

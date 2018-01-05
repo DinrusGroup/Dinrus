@@ -1,68 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = PangoRenderer.html
- * outPack = pango
- * outFile = PgRenderer
- * strct   = PangoRenderer
- * realStrct=
- * ctorStrct=
- * clss    = PgRenderer
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_renderer_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgColor
- * 	- gtkD.pango.PgFont
- * 	- gtkD.pango.PgGlyphItem
- * 	- gtkD.pango.PgGlyphString
- * 	- gtkD.pango.PgLayout
- * 	- gtkD.pango.PgLayoutLine
- * 	- gtkD.pango.PgMatrix
- * structWrap:
- * 	- PangoColor* -> PgColor
- * 	- PangoFont* -> PgFont
- * 	- PangoGlyphItem* -> PgGlyphItem
- * 	- PangoGlyphString* -> PgGlyphString
- * 	- PangoLayout* -> PgLayout
- * 	- PangoLayoutLine* -> PgLayoutLine
- * 	- PangoMatrix* -> PgMatrix
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgRenderer;
 
 public  import gtkD.gtkc.pangotypes;
@@ -99,38 +34,16 @@ public class PgRenderer : ObjectG
 	protected PangoRenderer* pangoRenderer;
 	
 	
-	public PangoRenderer* getPgRendererStruct()
-	{
-		return pangoRenderer;
-	}
+	public PangoRenderer* getPgRendererStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoRenderer;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoRenderer* pangoRenderer)
-	{
-		if(pangoRenderer is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoRenderer);
-		if( ptr !is null )
-		{
-			this = cast(PgRenderer)ptr;
-			return;
-		}
-		super(cast(GObject*)pangoRenderer);
-		this.pangoRenderer = pangoRenderer;
-	}
+	public this (PangoRenderer* pangoRenderer);
 	
 	/**
 	 */
@@ -145,11 +58,7 @@ public class PgRenderer : ObjectG
 	 * y =  Y position of left edge of baseline, in user space coordinates
 	 *  in Pango units.
 	 */
-	public void drawLayout(PgLayout layout, int x, int y)
-	{
-		// void pango_renderer_draw_layout (PangoRenderer *renderer,  PangoLayout *layout,  int x,  int y);
-		pango_renderer_draw_layout(pangoRenderer, (layout is null) ? null : layout.getPgLayoutStruct(), x, y);
-	}
+	public void drawLayout(PgLayout layout, int x, int y);
 	
 	/**
 	 * Draws line with the specified PangoRenderer.
@@ -161,11 +70,7 @@ public class PgRenderer : ObjectG
 	 * y =  Y position of left edge of baseline, in user space coordinates
 	 *  in Pango units.
 	 */
-	public void drawLayoutLine(PgLayoutLine line, int x, int y)
-	{
-		// void pango_renderer_draw_layout_line (PangoRenderer *renderer,  PangoLayoutLine *line,  int x,  int y);
-		pango_renderer_draw_layout_line(pangoRenderer, (line is null) ? null : line.getPgLayoutLineStruct(), x, y);
-	}
+	public void drawLayoutLine(PgLayoutLine line, int x, int y);
 	
 	/**
 	 * Draws the glyphs in glyphs with the specified PangoRenderer.
@@ -178,11 +83,7 @@ public class PgRenderer : ObjectG
 	 * y =  Y position of left edge of baseline, in user space coordinates
 	 *  in Pango units.
 	 */
-	public void drawGlyphs(PgFont font, PgGlyphString glyphs, int x, int y)
-	{
-		// void pango_renderer_draw_glyphs (PangoRenderer *renderer,  PangoFont *font,  PangoGlyphString *glyphs,  int x,  int y);
-		pango_renderer_draw_glyphs(pangoRenderer, (font is null) ? null : font.getPgFontStruct(), (glyphs is null) ? null : glyphs.getPgGlyphStringStruct(), x, y);
-	}
+	public void drawGlyphs(PgFont font, PgGlyphString glyphs, int x, int y);
 	
 	/**
 	 * Draws the glyphs in glyph_item with the specified PangoRenderer,
@@ -202,11 +103,7 @@ public class PgRenderer : ObjectG
 	 * y =  Y position of left edge of baseline, in user space coordinates
 	 *  in Pango units.
 	 */
-	public void drawGlyphItem(string text, PgGlyphItem glyphItem, int x, int y)
-	{
-		// void pango_renderer_draw_glyph_item (PangoRenderer *renderer,  const char *text,  PangoGlyphItem *glyph_item,  int x,  int y);
-		pango_renderer_draw_glyph_item(pangoRenderer, Str.toStringz(text), (glyphItem is null) ? null : glyphItem.getPgGlyphItemStruct(), x, y);
-	}
+	public void drawGlyphItem(string text, PgGlyphItem glyphItem, int x, int y);
 	
 	/**
 	 * Draws an axis-aligned rectangle in user space coordinates with the
@@ -221,12 +118,8 @@ public class PgRenderer : ObjectG
 	 * width =  width of rectangle in Pango units in user space coordinates
 	 * height =  height of rectangle in Pango units in user space coordinates
 	 */
-	public void drawRectangle(PangoRenderPart part, int x, int y, int width, int height)
-	{
-		// void pango_renderer_draw_rectangle (PangoRenderer *renderer,  PangoRenderPart part,  int x,  int y,  int width,  int height);
-		pango_renderer_draw_rectangle(pangoRenderer, part, x, y, width, height);
-	}
-	
+	public void drawRectangle(PangoRenderPart part, int x, int y, int width, int height);
+
 	/**
 	 * Draw a squiggly line that approximately covers the given rectangle
 	 * in the style of an underline used to indicate a spelling error.
@@ -242,11 +135,7 @@ public class PgRenderer : ObjectG
 	 * width =  width of underline, in Pango units in user coordinate system
 	 * height =  height of underline, in Pango units in user coordinate system
 	 */
-	public void drawErrorUnderline(int x, int y, int width, int height)
-	{
-		// void pango_renderer_draw_error_underline (PangoRenderer *renderer,  int x,  int y,  int width,  int height);
-		pango_renderer_draw_error_underline(pangoRenderer, x, y, width, height);
-	}
+	public void drawErrorUnderline(int x, int y, int width, int height);
 	
 	/**
 	 * Draws a trapezoid with the parallel sides aligned with the X axis
@@ -261,11 +150,7 @@ public class PgRenderer : ObjectG
 	 * x12 =  X coordinate of left end of bottom of trapezoid
 	 * x22 =  X coordinate of right end of bottom of trapezoid
 	 */
-	public void drawTrapezoid(PangoRenderPart part, double y1_, double x11, double x21, double y2, double x12, double x22)
-	{
-		// void pango_renderer_draw_trapezoid (PangoRenderer *renderer,  PangoRenderPart part,  double y1_,  double x11,  double x21,  double y2,  double x12,  double x22);
-		pango_renderer_draw_trapezoid(pangoRenderer, part, y1_, x11, x21, y2, x12, x22);
-	}
+	public void drawTrapezoid(PangoRenderPart part, double y1_, double x11, double x21, double y2, double x12, double x22);
 	
 	/**
 	 * Draws a single glyph with coordinates in device space.
@@ -276,11 +161,7 @@ public class PgRenderer : ObjectG
 	 * x =  X coordinate of left edge of baseline of glyph
 	 * y =  Y coordinate of left edge of baseline of glyph
 	 */
-	public void drawGlyph(PgFont font, PangoGlyph glyph, double x, double y)
-	{
-		// void pango_renderer_draw_glyph (PangoRenderer *renderer,  PangoFont *font,  PangoGlyph glyph,  double x,  double y);
-		pango_renderer_draw_glyph(pangoRenderer, (font is null) ? null : font.getPgFontStruct(), glyph, x, y);
-	}
+	public void drawGlyph(PgFont font, PangoGlyph glyph, double x, double y);
 	
 	/**
 	 * Does initial setup before rendering operations on renderer.
@@ -292,22 +173,14 @@ public class PgRenderer : ObjectG
 	 * deinitialized once.
 	 * Since 1.8
 	 */
-	public void activate()
-	{
-		// void pango_renderer_activate (PangoRenderer *renderer);
-		pango_renderer_activate(pangoRenderer);
-	}
+	public void activate();
 	
 	/**
 	 * Cleans up after rendering operations on renderer. See
 	 * docs for pango_renderer_activate().
 	 * Since 1.8
 	 */
-	public void deactivate()
-	{
-		// void pango_renderer_deactivate (PangoRenderer *renderer);
-		pango_renderer_deactivate(pangoRenderer);
-	}
+	public void deactivate();
 	
 	/**
 	 * Informs Pango that the way that the rendering is done
@@ -323,12 +196,8 @@ public class PgRenderer : ObjectG
 	 * Params:
 	 * part =  the part for which rendering has changed.
 	 */
-	public void partChanged(PangoRenderPart part)
-	{
-		// void pango_renderer_part_changed (PangoRenderer *renderer,  PangoRenderPart part);
-		pango_renderer_part_changed(pangoRenderer, part);
-	}
-	
+	public void partChanged(PangoRenderPart part);
+
 	/**
 	 * Sets the color for part of the rendering.
 	 * Since 1.8
@@ -336,11 +205,7 @@ public class PgRenderer : ObjectG
 	 * part =  the part to change the color of
 	 * color =  the new color or NULL to unset the current color
 	 */
-	public void setColor(PangoRenderPart part, PgColor color)
-	{
-		// void pango_renderer_set_color (PangoRenderer *renderer,  PangoRenderPart part,  const PangoColor *color);
-		pango_renderer_set_color(pangoRenderer, part, (color is null) ? null : color.getPgColorStruct());
-	}
+	public void setColor(PangoRenderPart part, PgColor color);
 	
 	/**
 	 * Gets the current rendering color for the specified part.
@@ -349,16 +214,7 @@ public class PgRenderer : ObjectG
 	 * part =  the part to get the color for
 	 * Returns: the color for the specified part, or NULL if it hasn't been set and should be inherited from the environment.
 	 */
-	public PgColor getColor(PangoRenderPart part)
-	{
-		// PangoColor * pango_renderer_get_color (PangoRenderer *renderer,  PangoRenderPart part);
-		auto p = pango_renderer_get_color(pangoRenderer, part);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgColor(cast(PangoColor*) p);
-	}
+	public PgColor getColor(PangoRenderPart part);
 	
 	/**
 	 * Sets the transformation matrix that will be applied when rendering.
@@ -367,11 +223,7 @@ public class PgRenderer : ObjectG
 	 * matrix =  a PangoMatrix, or NULL to unset any existing matrix.
 	 *  (No matrix set is the same as setting the identity matrix.)
 	 */
-	public void setMatrix(PgMatrix matrix)
-	{
-		// void pango_renderer_set_matrix (PangoRenderer *renderer,  const PangoMatrix *matrix);
-		pango_renderer_set_matrix(pangoRenderer, (matrix is null) ? null : matrix.getPgMatrixStruct());
-	}
+	public void setMatrix(PgMatrix matrix);
 	
 	/**
 	 * Gets the transformation matrix that will be applied when
@@ -379,16 +231,7 @@ public class PgRenderer : ObjectG
 	 * Since 1.8
 	 * Returns: the matrix, or NULL if no matrix has been set (which is the same as the identity matrix). The returned matrix is owned by Pango and must not be modified or freed.
 	 */
-	public PgMatrix getMatrix()
-	{
-		// const PangoMatrix * pango_renderer_get_matrix (PangoRenderer *renderer);
-		auto p = pango_renderer_get_matrix(pangoRenderer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgMatrix(cast(PangoMatrix*) p);
-	}
+	public PgMatrix getMatrix();
 	
 	/**
 	 * Gets the layout currently being rendered using renderer.
@@ -399,16 +242,7 @@ public class PgRenderer : ObjectG
 	 * Since 1.20
 	 * Returns: the layout, or NULL if no layout is being rendered using renderer at this time.
 	 */
-	public PgLayout getLayout()
-	{
-		// PangoLayout * pango_renderer_get_layout (PangoRenderer *renderer);
-		auto p = pango_renderer_get_layout(pangoRenderer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public PgLayout getLayout();
 	
 	/**
 	 * Gets the layout line currently being rendered using renderer.
@@ -419,14 +253,5 @@ public class PgRenderer : ObjectG
 	 * Since 1.20
 	 * Returns: the layout line, or NULL if no layout line is being rendered using renderer at this time.
 	 */
-	public PgLayoutLine getLayoutLine()
-	{
-		// PangoLayoutLine * pango_renderer_get_layout_line (PangoRenderer *renderer);
-		auto p = pango_renderer_get_layout_line(pangoRenderer);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine getLayoutLine();
 }

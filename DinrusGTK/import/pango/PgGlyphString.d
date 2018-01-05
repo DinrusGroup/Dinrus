@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgGlyphString
- * strct   = PangoGlyphString
- * realStrct=
- * ctorStrct=
- * clss    = PgGlyphString
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_glyph_string_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgFont
- * structWrap:
- * 	- PangoFont* -> PgFont
- * 	- PangoGlyphString* -> PgGlyphString
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgGlyphString;
 
 public  import gtkD.gtkc.pangotypes;
@@ -80,30 +26,16 @@ public class PgGlyphString
 	protected PangoGlyphString* pangoGlyphString;
 	
 	
-	public PangoGlyphString* getPgGlyphStringStruct()
-	{
-		return pangoGlyphString;
-	}
+	public PangoGlyphString* getPgGlyphStringStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoGlyphString;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoGlyphString* pangoGlyphString)
-	{
-		if(pangoGlyphString is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoGlyphString = pangoGlyphString;
-	}
+	public this (PangoGlyphString* pangoGlyphString);
 	
 	/**
 	 */
@@ -112,51 +44,25 @@ public class PgGlyphString
 	 * Create a new PangoGlyphString.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// PangoGlyphString * pango_glyph_string_new (void);
-		auto p = pango_glyph_string_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_glyph_string_new()");
-		}
-		this(cast(PangoGlyphString*) p);
-	}
+	public this ();
 	
 	/**
 	 * Copy a glyph string and associated storage.
 	 * Returns: the newly allocated PangoGlyphString, which should be freed with pango_glyph_string_free(), or NULL if string was NULL.
 	 */
-	public PgGlyphString copy()
-	{
-		// PangoGlyphString * pango_glyph_string_copy (PangoGlyphString *string);
-		auto p = pango_glyph_string_copy(pangoGlyphString);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgGlyphString(cast(PangoGlyphString*) p);
-	}
+	public PgGlyphString copy();
 	
 	/**
 	 * Resize a glyph string to the given length.
 	 * Params:
 	 * newLen =  the new length of the string.
 	 */
-	public void setSize(int newLen)
-	{
-		// void pango_glyph_string_set_size (PangoGlyphString *string,  gint new_len);
-		pango_glyph_string_set_size(pangoGlyphString, newLen);
-	}
+	public void setSize(int newLen);
 	
 	/**
 	 * Free a glyph string and associated storage.
 	 */
-	public void free()
-	{
-		// void pango_glyph_string_free (PangoGlyphString *string);
-		pango_glyph_string_free(pangoGlyphString);
-	}
+	public void free();
 	
 	/**
 	 * Compute the logical and ink extents of a glyph string. See the documentation
@@ -169,11 +75,7 @@ public class PgGlyphString
 	 * logicalRect =  rectangle used to store the logical extents of the glyph string
 	 *  or NULL to indicate that the result is not needed.
 	 */
-	public void extents(PgFont font, PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_glyph_string_extents (PangoGlyphString *glyphs,  PangoFont *font,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_glyph_string_extents(pangoGlyphString, (font is null) ? null : font.getPgFontStruct(), inkRect, logicalRect);
-	}
+	public void extents(PgFont font, PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Computes the extents of a sub-portion of a glyph string. The extents are
@@ -190,11 +92,7 @@ public class PgGlyphString
 	 * logicalRect =  rectangle used to store the logical extents of the glyph string range
 	 *  or NULL to indicate that the result is not needed.
 	 */
-	public void extentsRange(int start, int end, PgFont font, PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_glyph_string_extents_range (PangoGlyphString *glyphs,  int start,  int end,  PangoFont *font,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_glyph_string_extents_range(pangoGlyphString, start, end, (font is null) ? null : font.getPgFontStruct(), inkRect, logicalRect);
-	}
+	public void extentsRange(int start, int end, PgFont font, PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Computes the logical width of the glyph string as can also be computed
@@ -204,11 +102,7 @@ public class PgGlyphString
 	 * Since 1.14
 	 * Returns: the logical width of the glyph string.
 	 */
-	public int getWidth()
-	{
-		// int pango_glyph_string_get_width (PangoGlyphString *glyphs);
-		return pango_glyph_string_get_width(pangoGlyphString);
-	}
+	public int getWidth();
 	
 	/**
 	 * Converts from character position to x position. (X position
@@ -223,11 +117,7 @@ public class PgGlyphString
 	 *  or end (TRUE) of the character.
 	 * xPos =  location to store result
 	 */
-	public void indexToX(string text, int length, PangoAnalysis* analysis, int index, int trailing, out int xPos)
-	{
-		// void pango_glyph_string_index_to_x (PangoGlyphString *glyphs,  char *text,  int length,  PangoAnalysis *analysis,  int index_,  gboolean trailing,  int *x_pos);
-		pango_glyph_string_index_to_x(pangoGlyphString, Str.toStringz(text), length, analysis, index, trailing, &xPos);
-	}
+	public void indexToX(string text, int length, PangoAnalysis* analysis, int index, int trailing, out int xPos);
 	
 	/**
 	 * Convert from x offset to character position. Character positions
@@ -246,11 +136,7 @@ public class PgGlyphString
 	 *  whether the user clicked on the leading or trailing
 	 *  edge of the character.
 	 */
-	public void xToIndex(string text, int length, PangoAnalysis* analysis, int xPos, out int index, out int trailing)
-	{
-		// void pango_glyph_string_x_to_index (PangoGlyphString *glyphs,  char *text,  int length,  PangoAnalysis *analysis,  int x_pos,  int *index_,  int *trailing);
-		pango_glyph_string_x_to_index(pangoGlyphString, Str.toStringz(text), length, analysis, xPos, &index, &trailing);
-	}
+	public void xToIndex(string text, int length, PangoAnalysis* analysis, int xPos, out int index, out int trailing);
 	
 	/**
 	 * Given a PangoGlyphString resulting from pango_shape() and the corresponding
@@ -267,9 +153,5 @@ public class PgGlyphString
 	 *  text has NUL bytes)
 	 *  to be filled in with the resulting character widths.
 	 */
-	public void getLogicalWidths(string text, int length, int embeddingLevel, int* logicalWidths)
-	{
-		// void pango_glyph_string_get_logical_widths  (PangoGlyphString *glyphs,  const char *text,  int length,  int embedding_level,  int *logical_widths);
-		pango_glyph_string_get_logical_widths(pangoGlyphString, Str.toStringz(text), length, embeddingLevel, logicalWidths);
-	}
+	public void getLogicalWidths(string text, int length, int embeddingLevel, int* logicalWidths);
 }

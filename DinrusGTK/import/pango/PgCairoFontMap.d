@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Cairo-Rendering.html
- * outPack = pango
- * outFile = PgCairoFontMap
- * strct   = PangoCairoFontMap
- * realStrct=
- * ctorStrct=PangoFontMap
- * clss    = PgCairoFontMap
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = PangoFontMap
- * implements:
- * prefixes:
- * 	- pango_cairo_font_map_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgFontMap
- * 	- gtkD.pango.PgContext
- * structWrap:
- * 	- PangoContext* -> PgContext
- * 	- PangoFontMap* -> PgFontMap
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgCairoFontMap;
 
 public  import gtkD.gtkc.pangotypes;
@@ -175,38 +120,16 @@ public class PgCairoFontMap : PgFontMap
 	protected PangoCairoFontMap* pangoCairoFontMap;
 	
 	
-	public PangoCairoFontMap* getPgCairoFontMapStruct()
-	{
-		return pangoCairoFontMap;
-	}
+	public PangoCairoFontMap* getPgCairoFontMapStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoCairoFontMap;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoCairoFontMap* pangoCairoFontMap)
-	{
-		if(pangoCairoFontMap is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoCairoFontMap);
-		if( ptr !is null )
-		{
-			this = cast(PgCairoFontMap)ptr;
-			return;
-		}
-		super(cast(PangoFontMap*)pangoCairoFontMap);
-		this.pangoCairoFontMap = pangoCairoFontMap;
-	}
+	public this (PangoCairoFontMap* pangoCairoFontMap);
 	
 	/**
 	 */
@@ -224,16 +147,7 @@ public class PgCairoFontMap : PgFontMap
 	 * Since 1.10
 	 * Returns: the default Cairo fontmap for Pango. This object is owned by Pango and must not be freed.
 	 */
-	public static PgFontMap getDefault()
-	{
-		// PangoFontMap * pango_cairo_font_map_get_default (void);
-		auto p = pango_cairo_font_map_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontMap(cast(PangoFontMap*) p);
-	}
+	public static PgFontMap getDefault();
 	
 	/**
 	 * Sets a default PangoCairoFontMap to use with Cairo.
@@ -245,11 +159,7 @@ public class PgCairoFontMap : PgFontMap
 	 * map to be created on demand, using pango_cairo_font_map_new().
 	 * Since 1.22
 	 */
-	public void setDefault()
-	{
-		// void pango_cairo_font_map_set_default (PangoCairoFontMap *fontmap);
-		pango_cairo_font_map_set_default(pangoCairoFontMap);
-	}
+	public void setDefault();
 	
 	/**
 	 * Creates a new PangoCairoFontMap object; a fontmap is used
@@ -264,16 +174,7 @@ public class PgCairoFontMap : PgFontMap
 	 * Since 1.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// PangoFontMap * pango_cairo_font_map_new (void);
-		auto p = pango_cairo_font_map_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_cairo_font_map_new()");
-		}
-		this(cast(PangoCairoFontMap*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a new PangoCairoFontMap object of the type suitable
@@ -286,27 +187,14 @@ public class PgCairoFontMap : PgFontMap
 	 * fonttype =  desired cairo_font_type_t
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (cairo_font_type_t fonttype)
-	{
-		// PangoFontMap * pango_cairo_font_map_new_for_font_type  (cairo_font_type_t fonttype);
-		auto p = pango_cairo_font_map_new_for_font_type(fonttype);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_cairo_font_map_new_for_font_type(fonttype)");
-		}
-		this(cast(PangoCairoFontMap*) p);
-	}
+	public this (cairo_font_type_t fonttype);
 	
 	/**
 	 * Gets the type of Cairo font backend that fontmap uses.
 	 * Since 1.18
 	 * Returns: the cairo_font_type_t cairo font backend type
 	 */
-	public cairo_font_type_t getFontType()
-	{
-		// cairo_font_type_t pango_cairo_font_map_get_font_type (PangoCairoFontMap *fontmap);
-		return pango_cairo_font_map_get_font_type(pangoCairoFontMap);
-	}
+	public cairo_font_type_t getFontType();
 	
 	/**
 	 * Sets the resolution for the fontmap. This is a scale factor between
@@ -318,22 +206,14 @@ public class PgCairoFontMap : PgFontMap
 	 * dpi =  the resolution in "dots per inch". (Physical inches aren't actually
 	 *  involved; the terminology is conventional.)
 	 */
-	public void setResolution(double dpi)
-	{
-		// void pango_cairo_font_map_set_resolution (PangoCairoFontMap *fontmap,  double dpi);
-		pango_cairo_font_map_set_resolution(pangoCairoFontMap, dpi);
-	}
+	public void setResolution(double dpi);
 	
 	/**
 	 * Gets the resolution for the fontmap. See pango_cairo_font_map_set_resolution()
 	 * Since 1.10
 	 * Returns: the resolution in "dots per inch"
 	 */
-	public double getResolution()
-	{
-		// double pango_cairo_font_map_get_resolution (PangoCairoFontMap *fontmap);
-		return pango_cairo_font_map_get_resolution(pangoCairoFontMap);
-	}
+	public double getResolution();
 	
 	/**
 	 * Warning
@@ -342,14 +222,5 @@ public class PgCairoFontMap : PgFontMap
 	 * Since 1.10
 	 * Returns: the newly created context; free with g_object_unref().
 	 */
-	public PgContext createContext()
-	{
-		// PangoContext * pango_cairo_font_map_create_context (PangoCairoFontMap *fontmap);
-		auto p = pango_cairo_font_map_create_context(pangoCairoFontMap);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
+	public PgContext createContext();
 }

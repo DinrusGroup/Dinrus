@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgLayoutIter
- * strct   = PangoLayoutIter
- * realStrct=
- * ctorStrct=
- * clss    = PgLayoutIter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_layout_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.pango.PgLayout
- * 	- gtkD.pango.PgLayoutLine
- * structWrap:
- * 	- PangoLayout* -> PgLayout
- * 	- PangoLayoutIter* -> PgLayoutIter
- * 	- PangoLayoutLine* -> PgLayoutLine
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgLayoutIter;
 
 public  import gtkD.gtkc.pangotypes;
@@ -83,30 +28,15 @@ public class PgLayoutIter
 	protected PangoLayoutIter* pangoLayoutIter;
 	
 	
-	public PangoLayoutIter* getPgLayoutIterStruct()
-	{
-		return pangoLayoutIter;
-	}
+	public PangoLayoutIter* getPgLayoutIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoLayoutIter;
-	}
-	
+	protected void* getStruct();
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoLayoutIter* pangoLayoutIter)
-	{
-		if(pangoLayoutIter is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoLayoutIter = pangoLayoutIter;
-	}
+	public this (PangoLayoutIter* pangoLayoutIter);
 	
 	/**
 	 */
@@ -116,79 +46,46 @@ public class PgLayoutIter
 	 * Since 1.20
 	 * Returns: the newly allocated PangoLayoutIter, which should be freed with pango_layout_iter_free(), or NULL if iter was NULL.
 	 */
-	public PgLayoutIter copy()
-	{
-		// PangoLayoutIter * pango_layout_iter_copy (PangoLayoutIter *iter);
-		auto p = pango_layout_iter_copy(pangoLayoutIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutIter(cast(PangoLayoutIter*) p);
-	}
+	public PgLayoutIter copy();
 	
 	/**
 	 * Frees an iterator that's no longer in use.
 	 */
-	public void free()
-	{
-		// void pango_layout_iter_free (PangoLayoutIter *iter);
-		pango_layout_iter_free(pangoLayoutIter);
-	}
+	public void free();
 	
 	/**
 	 * Moves iter forward to the next run in visual order. If iter was
 	 * already at the end of the layout, returns FALSE.
 	 * Returns: whether motion was possible.
 	 */
-	public int nextRun()
-	{
-		// gboolean pango_layout_iter_next_run (PangoLayoutIter *iter);
-		return pango_layout_iter_next_run(pangoLayoutIter);
-	}
+	public int nextRun();
 	
 	/**
 	 * Moves iter forward to the next character in visual order. If iter was already at
 	 * the end of the layout, returns FALSE.
 	 * Returns: whether motion was possible.
 	 */
-	public int nextChar()
-	{
-		// gboolean pango_layout_iter_next_char (PangoLayoutIter *iter);
-		return pango_layout_iter_next_char(pangoLayoutIter);
-	}
+	public int nextChar();
 	
 	/**
 	 * Moves iter forward to the next cluster in visual order. If iter
 	 * was already at the end of the layout, returns FALSE.
 	 * Returns: whether motion was possible.
 	 */
-	public int nextCluster()
-	{
-		// gboolean pango_layout_iter_next_cluster (PangoLayoutIter *iter);
-		return pango_layout_iter_next_cluster(pangoLayoutIter);
-	}
+	public int nextCluster();
 	
 	/**
 	 * Moves iter forward to the start of the next line. If iter is
 	 * already on the last line, returns FALSE.
 	 * Returns: whether motion was possible.
 	 */
-	public int nextLine()
-	{
-		// gboolean pango_layout_iter_next_line (PangoLayoutIter *iter);
-		return pango_layout_iter_next_line(pangoLayoutIter);
-	}
+	public int nextLine();
 	
 	/**
 	 * Determines whether iter is on the last line of the layout.
 	 * Returns: TRUE if iter is on the last line.
 	 */
-	public int atLastLine()
-	{
-		// gboolean pango_layout_iter_at_last_line (PangoLayoutIter *iter);
-		return pango_layout_iter_at_last_line(pangoLayoutIter);
-	}
+	public int atLastLine();
 	
 	/**
 	 * Gets the current byte index. Note that iterating forward by char
@@ -197,23 +94,15 @@ public class PgLayoutIter
 	 * in the layout, if on the NULL run (see pango_layout_iter_get_run()).
 	 * Returns: current byte index.
 	 */
-	public int getIndex()
-	{
-		// int pango_layout_iter_get_index (PangoLayoutIter *iter);
-		return pango_layout_iter_get_index(pangoLayoutIter);
-	}
+	public int getIndex();
 	
 	/**
 	 * Gets the Y position of the current line's baseline, in layout
 	 * coordinates (origin at top left of the entire layout).
 	 * Returns: baseline of current line.
 	 */
-	public int getBaseline()
-	{
-		// int pango_layout_iter_get_baseline (PangoLayoutIter *iter);
-		return pango_layout_iter_get_baseline(pangoLayoutIter);
-	}
-	
+	public int getBaseline();
+
 	/**
 	 * Gets the current run. When iterating by run, at the end of each
 	 * line, there's a position with a NULL run, so this function can return
@@ -223,11 +112,7 @@ public class PgLayoutIter
 	 * to modify the contents of the run (glyphs, glyph widths, etc.).
 	 * Returns: the current run.
 	 */
-	public PangoLayoutRun* getRun()
-	{
-		// PangoLayoutRun * pango_layout_iter_get_run (PangoLayoutIter *iter);
-		return pango_layout_iter_get_run(pangoLayoutIter);
-	}
+	public PangoLayoutRun* getRun();
 	
 	/**
 	 * Gets the current run. When iterating by run, at the end of each
@@ -240,28 +125,15 @@ public class PgLayoutIter
 	 * Since 1.16
 	 * Returns: the current run, that should not be modified.
 	 */
-	public PangoLayoutRun* getRunReadonly()
-	{
-		// PangoLayoutRun * pango_layout_iter_get_run_readonly (PangoLayoutIter *iter);
-		return pango_layout_iter_get_run_readonly(pangoLayoutIter);
-	}
-	
+	public PangoLayoutRun* getRunReadonly();
+
 	/**
 	 * Gets the current line.
 	 * Use the faster pango_layout_iter_get_line_readonly() if you do not plan
 	 * to modify the contents of the line (glyphs, glyph widths, etc.).
 	 * Returns: the current line.
 	 */
-	public PgLayoutLine getLine()
-	{
-		// PangoLayoutLine * pango_layout_iter_get_line (PangoLayoutIter *iter);
-		auto p = pango_layout_iter_get_line(pangoLayoutIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine getLine();
 	
 	/**
 	 * Gets the current line for read-only access.
@@ -271,32 +143,14 @@ public class PgLayoutIter
 	 * Since 1.16
 	 * Returns: the current line, that should not be modified.
 	 */
-	public PgLayoutLine getLineReadonly()
-	{
-		// PangoLayoutLine * pango_layout_iter_get_line_readonly (PangoLayoutIter *iter);
-		auto p = pango_layout_iter_get_line_readonly(pangoLayoutIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine getLineReadonly();
 	
 	/**
 	 * Gets the layout associated with a PangoLayoutIter.
 	 * Since 1.20
 	 * Returns: the layout associated with iter.
 	 */
-	public PgLayout getLayout()
-	{
-		// PangoLayout * pango_layout_iter_get_layout (PangoLayoutIter *iter);
-		auto p = pango_layout_iter_get_layout(pangoLayoutIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public PgLayout getLayout();
 	
 	/**
 	 * Gets the extents of the current character, in layout coordinates
@@ -306,11 +160,7 @@ public class PgLayoutIter
 	 * Params:
 	 * logicalRect =  rectangle to fill with logical extents
 	 */
-	public void getCharExtents(PangoRectangle* logicalRect)
-	{
-		// void pango_layout_iter_get_char_extents (PangoLayoutIter *iter,  PangoRectangle *logical_rect);
-		pango_layout_iter_get_char_extents(pangoLayoutIter, logicalRect);
-	}
+	public void getCharExtents(PangoRectangle* logicalRect);
 	
 	/**
 	 * Gets the extents of the current cluster, in layout coordinates
@@ -319,11 +169,7 @@ public class PgLayoutIter
 	 * inkRect =  rectangle to fill with ink extents, or NULL
 	 * logicalRect =  rectangle to fill with logical extents, or NULL
 	 */
-	public void getClusterExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_iter_get_cluster_extents  (PangoLayoutIter *iter,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_iter_get_cluster_extents(pangoLayoutIter, inkRect, logicalRect);
-	}
+	public void getClusterExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Gets the extents of the current run in layout coordinates
@@ -332,11 +178,7 @@ public class PgLayoutIter
 	 * inkRect =  rectangle to fill with ink extents, or NULL
 	 * logicalRect =  rectangle to fill with logical extents, or NULL
 	 */
-	public void getRunExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_iter_get_run_extents (PangoLayoutIter *iter,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_iter_get_run_extents(pangoLayoutIter, inkRect, logicalRect);
-	}
+	public void getRunExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Divides the vertical space in the PangoLayout being iterated over
@@ -350,11 +192,7 @@ public class PgLayoutIter
 	 * y0_ =  start of line
 	 * y1_ =  end of line
 	 */
-	public void getLineYrange(out int y0_, out int y1_)
-	{
-		// void pango_layout_iter_get_line_yrange (PangoLayoutIter *iter,  int *y0_,  int *y1_);
-		pango_layout_iter_get_line_yrange(pangoLayoutIter, &y0_, &y1_);
-	}
+	public void getLineYrange(out int y0_, out int y1_);
 	
 	/**
 	 * Obtains the extents of the current line. ink_rect or logical_rect
@@ -367,11 +205,7 @@ public class PgLayoutIter
 	 * inkRect =  rectangle to fill with ink extents, or NULL
 	 * logicalRect =  rectangle to fill with logical extents, or NULL
 	 */
-	public void getLineExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_iter_get_line_extents (PangoLayoutIter *iter,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_iter_get_line_extents(pangoLayoutIter, inkRect, logicalRect);
-	}
+	public void getLineExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Obtains the extents of the PangoLayout being iterated
@@ -381,9 +215,5 @@ public class PgLayoutIter
 	 * inkRect =  rectangle to fill with ink extents, or NULL
 	 * logicalRect =  rectangle to fill with logical extents, or NULL
 	 */
-	public void getLayoutExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_iter_get_layout_extents  (PangoLayoutIter *iter,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_iter_get_layout_extents(pangoLayoutIter, inkRect, logicalRect);
-	}
+	public void getLayoutExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 }

@@ -1,72 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = pango-Layout-Objects.html
- * outPack = pango
- * outFile = PgLayout
- * strct   = PangoLayout
- * realStrct=
- * ctorStrct=
- * clss    = PgLayout
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_layout_
- * omit structs:
- * omit prefixes:
- * 	- pango_layout_iter_
- * 	- pango_layout_line_
- * omit code:
- * 	- pango_layout_set_text
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgLayoutLine
- * 	- gtkD.pango.PgContext
- * 	- gtkD.pango.PgAttributeList
- * 	- gtkD.pango.PgFontDescription
- * 	- gtkD.pango.PgTabArray
- * 	- gtkD.pango.PgLayoutIter
- * 	- gtkD.glib.ListSG
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoContext* -> PgContext
- * 	- PangoFontDescription* -> PgFontDescription
- * 	- PangoLayout* -> PgLayout
- * 	- PangoLayoutIter* -> PgLayoutIter
- * 	- PangoLayoutLine* -> PgLayoutLine
- * 	- PangoTabArray* -> PgTabArray
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgLayout;
 
 public  import gtkD.gtkc.pangotypes;
@@ -104,49 +35,23 @@ public class PgLayout : ObjectG
 	protected PangoLayout* pangoLayout;
 	
 	
-	public PangoLayout* getPgLayoutStruct()
-	{
-		return pangoLayout;
-	}
+	public PangoLayout* getPgLayoutStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)pangoLayout;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoLayout* pangoLayout)
-	{
-		if(pangoLayout is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)pangoLayout);
-		if( ptr !is null )
-		{
-			this = cast(PgLayout)ptr;
-			return;
-		}
-		super(cast(GObject*)pangoLayout);
-		this.pangoLayout = pangoLayout;
-	}
+	public this (PangoLayout* pangoLayout);
 	
 	/**
 	 * Sets the text of the layout.
 	 * Params:
 	 *  text = a UTF-8 string
 	 */
-	public void setText(string text)
-	{
-		// void pango_layout_set_text (PangoLayout *layout,  const char *text,  int length);
-		pango_layout_set_text(pangoLayout, Str.toStringz(text), text.length);
-	}
+	public void setText(string text);
 	
 	
 	/**
@@ -159,16 +64,7 @@ public class PgLayout : ObjectG
 	 * context =  a PangoContext
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (PgContext context)
-	{
-		// PangoLayout * pango_layout_new (PangoContext *context);
-		auto p = pango_layout_new((context is null) ? null : context.getPgContextStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_layout_new((context is null) ? null : context.getPgContextStruct())");
-		}
-		this(cast(PangoLayout*) p);
-	}
+	public this (PgContext context);
 	
 	/**
 	 * Does a deep copy-by-value of the src layout. The attribute list,
@@ -176,31 +72,13 @@ public class PgLayout : ObjectG
 	 * value.
 	 * Returns: the newly allocated PangoLayout, with a reference count of one, which should be freed with g_object_unref().
 	 */
-	public PgLayout copy()
-	{
-		// PangoLayout * pango_layout_copy (PangoLayout *src);
-		auto p = pango_layout_copy(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public PgLayout copy();
 	
 	/**
 	 * Retrieves the PangoContext used for this layout.
 	 * Returns: the PangoContext for the layout. This does nothave an additional refcount added, so if you want to keepa copy of this around, you must reference it yourself.
 	 */
-	public PgContext getContext()
-	{
-		// PangoContext * pango_layout_get_context (PangoLayout *layout);
-		auto p = pango_layout_get_context(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgContext(cast(PangoContext*) p);
-	}
+	public PgContext getContext();
 	
 	/**
 	 * Forces recomputation of any state in the PangoLayout that
@@ -208,22 +86,14 @@ public class PgLayout : ObjectG
 	 * be called if you make changes to the context subsequent
 	 * to creating the layout.
 	 */
-	public void contextChanged()
-	{
-		// void pango_layout_context_changed (PangoLayout *layout);
-		pango_layout_context_changed(pangoLayout);
-	}
+	public void contextChanged();
 	
 	/**
 	 * Gets the text in the layout. The returned text should not
 	 * be freed or modified.
 	 * Returns: the text in the layout.
 	 */
-	public string getText()
-	{
-		// const char * pango_layout_get_text (PangoLayout *layout);
-		return Str.toString(pango_layout_get_text(pangoLayout));
-	}
+	public string getText();
 	
 	/**
 	 * Same as pango_layout_set_markup_with_accel(), but
@@ -233,11 +103,7 @@ public class PgLayout : ObjectG
 	 * length =  length of marked-up text in bytes, or -1 if markup is
 	 * nul-terminated
 	 */
-	public void setMarkup(string markup, int length)
-	{
-		// void pango_layout_set_markup (PangoLayout *layout,  const char *markup,  int length);
-		pango_layout_set_markup(pangoLayout, Str.toStringz(markup), length);
-	}
+	public void setMarkup(string markup, int length);
 	
 	/**
 	 * Sets the layout text and attribute list from marked-up text (see
@@ -258,11 +124,7 @@ public class PgLayout : ObjectG
 	 * accelMarker =  marker for accelerators in the text
 	 * accelChar =  return location for first located accelerator, or NULL
 	 */
-	public void setMarkupWithAccel(string markup, int length, gunichar accelMarker, gunichar* accelChar)
-	{
-		// void pango_layout_set_markup_with_accel (PangoLayout *layout,  const char *markup,  int length,  gunichar accel_marker,  gunichar *accel_char);
-		pango_layout_set_markup_with_accel(pangoLayout, Str.toStringz(markup), length, accelMarker, accelChar);
-	}
+	public void setMarkupWithAccel(string markup, int length, gunichar accelMarker, gunichar* accelChar);
 	
 	/**
 	 * Sets the text attributes for a layout object.
@@ -270,26 +132,13 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * attrs =  a PangoAttrList, can be NULL
 	 */
-	public void setAttributes(PgAttributeList attrs)
-	{
-		// void pango_layout_set_attributes (PangoLayout *layout,  PangoAttrList *attrs);
-		pango_layout_set_attributes(pangoLayout, (attrs is null) ? null : attrs.getPgAttributeListStruct());
-	}
+	public void setAttributes(PgAttributeList attrs);
 	
 	/**
 	 * Gets the attribute list for the layout, if any.
 	 * Returns: a PangoAttrList.
 	 */
-	public PgAttributeList getAttributes()
-	{
-		// PangoAttrList * pango_layout_get_attributes (PangoLayout *layout);
-		auto p = pango_layout_get_attributes(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeList(cast(PangoAttrList*) p);
-	}
+	public PgAttributeList getAttributes();
 	
 	/**
 	 * Sets the default font description for the layout. If no font
@@ -299,27 +148,14 @@ public class PgLayout : ObjectG
 	 * desc =  the new PangoFontDescription, or NULL to unset the
 	 *  current font description
 	 */
-	public void setFontDescription(PgFontDescription desc)
-	{
-		// void pango_layout_set_font_description (PangoLayout *layout,  const PangoFontDescription *desc);
-		pango_layout_set_font_description(pangoLayout, (desc is null) ? null : desc.getPgFontDescriptionStruct());
-	}
+	public void setFontDescription(PgFontDescription desc);
 	
 	/**
 	 * Gets the font description for the layout, if any.
 	 * Since 1.8
 	 * Returns: a pointer to the layout's font description, or NULL if the font description from the layout's context is inherited. This value is owned by the layout and must not be modified or freed.
 	 */
-	public PgFontDescription getFontDescription()
-	{
-		// const PangoFontDescription * pango_layout_get_font_description  (PangoLayout *layout);
-		auto p = pango_layout_get_font_description(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgFontDescription(cast(PangoFontDescription*) p);
-	}
+	public PgFontDescription getFontDescription();
 	
 	/**
 	 * Sets the width to which the lines of the PangoLayout should wrap or
@@ -328,21 +164,13 @@ public class PgLayout : ObjectG
 	 * width =  the desired width in Pango units, or -1 to indicate that no
 	 *  wrapping or ellipsization should be performed.
 	 */
-	public void setWidth(int width)
-	{
-		// void pango_layout_set_width (PangoLayout *layout,  int width);
-		pango_layout_set_width(pangoLayout, width);
-	}
+	public void setWidth(int width);
 	
 	/**
 	 * Gets the width to which the lines of the PangoLayout should wrap.
 	 * Returns: the width in Pango units, or -1 if no width set.
 	 */
-	public int getWidth()
-	{
-		// int pango_layout_get_width (PangoLayout *layout);
-		return pango_layout_get_width(pangoLayout);
-	}
+	public int getWidth();
 	
 	/**
 	 * Sets the height to which the PangoLayout should be ellipsized at. There
@@ -370,11 +198,7 @@ public class PgLayout : ObjectG
 	 * height =  the desired height of the layout in Pango units if positive,
 	 *  or desired number of lines if negative.
 	 */
-	public void setHeight(int height)
-	{
-		// void pango_layout_set_height (PangoLayout *layout,  int height);
-		pango_layout_set_height(pangoLayout, height);
-	}
+	public void setHeight(int height);
 	
 	/**
 	 * Gets the height of layout used for ellipsization. See
@@ -382,11 +206,7 @@ public class PgLayout : ObjectG
 	 * Since 1.20
 	 * Returns: the height, in Pango units if positive, ornumber of lines if negative.
 	 */
-	public int getHeight()
-	{
-		// int pango_layout_get_height (PangoLayout *layout);
-		return pango_layout_get_height(pangoLayout);
-	}
+	public int getHeight();
 	
 	/**
 	 * Sets the wrap mode; the wrap mode only has effect if a width
@@ -395,11 +215,7 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * wrap =  the wrap mode
 	 */
-	public void setWrap(PangoWrapMode wrap)
-	{
-		// void pango_layout_set_wrap (PangoLayout *layout,  PangoWrapMode wrap);
-		pango_layout_set_wrap(pangoLayout, wrap);
-	}
+	public void setWrap(PangoWrapMode wrap);
 	
 	/**
 	 * Gets the wrap mode for the layout.
@@ -407,11 +223,7 @@ public class PgLayout : ObjectG
 	 * were actually wrapped.
 	 * Returns: active wrap mode.
 	 */
-	public PangoWrapMode getWrap()
-	{
-		// PangoWrapMode pango_layout_get_wrap (PangoLayout *layout);
-		return pango_layout_get_wrap(pangoLayout);
-	}
+	public PangoWrapMode getWrap();
 	
 	/**
 	 * Queries whether the layout had to wrap any paragraphs.
@@ -422,11 +234,7 @@ public class PgLayout : ObjectG
 	 * Since 1.16
 	 * Returns: TRUE if any paragraphs had to be wrapped, FALSEotherwise.
 	 */
-	public int isWrapped()
-	{
-		// gboolean pango_layout_is_wrapped (PangoLayout *layout);
-		return pango_layout_is_wrapped(pangoLayout);
-	}
+	public int isWrapped();
 	
 	/**
 	 * Sets the type of ellipsization being performed for layout.
@@ -443,11 +251,7 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * ellipsize =  the new ellipsization mode for layout
 	 */
-	public void setEllipsize(PangoEllipsizeMode ellipsize)
-	{
-		// void pango_layout_set_ellipsize (PangoLayout *layout,  PangoEllipsizeMode ellipsize);
-		pango_layout_set_ellipsize(pangoLayout, ellipsize);
-	}
+	public void setEllipsize(PangoEllipsizeMode ellipsize);
 	
 	/**
 	 * Gets the type of ellipsization being performed for layout.
@@ -455,11 +259,7 @@ public class PgLayout : ObjectG
 	 * Since 1.6
 	 * Returns: the current ellipsization mode for layout.Use pango_layout_is_ellipsized() to query whether any paragraphswere actually ellipsized.
 	 */
-	public PangoEllipsizeMode getEllipsize()
-	{
-		// PangoEllipsizeMode pango_layout_get_ellipsize (PangoLayout *layout);
-		return pango_layout_get_ellipsize(pangoLayout);
-	}
+	public PangoEllipsizeMode getEllipsize();
 	
 	/**
 	 * Queries whether the layout had to ellipsize any paragraphs.
@@ -470,11 +270,7 @@ public class PgLayout : ObjectG
 	 * Since 1.16
 	 * Returns: TRUE if any paragraphs had to be ellipsized, FALSEotherwise.
 	 */
-	public int isEllipsized()
-	{
-		// gboolean pango_layout_is_ellipsized (PangoLayout *layout);
-		return pango_layout_is_ellipsized(pangoLayout);
-	}
+	public int isEllipsized();
 	
 	/**
 	 * Sets the width in Pango units to indent each paragraph. A negative value
@@ -486,32 +282,20 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * indent =  the amount by which to indent.
 	 */
-	public void setIndent(int indent)
-	{
-		// void pango_layout_set_indent (PangoLayout *layout,  int indent);
-		pango_layout_set_indent(pangoLayout, indent);
-	}
+	public void setIndent(int indent);
 	
 	/**
 	 * Gets the paragraph indent width in Pango units. A negative value
 	 * indicates a hanging indentation.
 	 * Returns: the indent in Pango units.
 	 */
-	public int getIndent()
-	{
-		// int pango_layout_get_indent (PangoLayout *layout);
-		return pango_layout_get_indent(pangoLayout);
-	}
+	public int getIndent();
 	
 	/**
 	 * Gets the amount of spacing between the lines of the layout.
 	 * Returns: the spacing in Pango units.
 	 */
-	public int getSpacing()
-	{
-		// int pango_layout_get_spacing (PangoLayout *layout);
-		return pango_layout_get_spacing(pangoLayout);
-	}
+	public int getSpacing();
 	
 	/**
 	 * Sets the amount of spacing in Pango unit between the lines of the
@@ -519,11 +303,7 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * spacing =  the amount of spacing
 	 */
-	public void setSpacing(int spacing)
-	{
-		// void pango_layout_set_spacing (PangoLayout *layout,  int spacing);
-		pango_layout_set_spacing(pangoLayout, spacing);
-	}
+	public void setSpacing(int spacing);
 	
 	/**
 	 * Sets whether each complete line should be stretched to
@@ -536,22 +316,14 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * justify =  whether the lines in the layout should be justified.
 	 */
-	public void setJustify(int justify)
-	{
-		// void pango_layout_set_justify (PangoLayout *layout,  gboolean justify);
-		pango_layout_set_justify(pangoLayout, justify);
-	}
+	public void setJustify(int justify);
 	
 	/**
 	 * Gets whether each complete line should be stretched to fill the entire
 	 * width of the layout.
 	 * Returns: the justify.
 	 */
-	public int getJustify()
-	{
-		// gboolean pango_layout_get_justify (PangoLayout *layout);
-		return pango_layout_get_justify(pangoLayout);
-	}
+	public int getJustify();
 	
 	/**
 	 * Sets whether to calculate the bidirectional base direction
@@ -573,11 +345,7 @@ public class PgLayout : ObjectG
 	 * autoDir =  if TRUE, compute the bidirectional base direction
 	 *  from the layout's contents.
 	 */
-	public void setAutoDir(int autoDir)
-	{
-		// void pango_layout_set_auto_dir (PangoLayout *layout,  gboolean auto_dir);
-		pango_layout_set_auto_dir(pangoLayout, autoDir);
-	}
+	public void setAutoDir(int autoDir);
 	
 	/**
 	 * Gets whether to calculate the bidirectional base direction
@@ -586,11 +354,7 @@ public class PgLayout : ObjectG
 	 * Since 1.4
 	 * Returns: TRUE if the bidirectional base direction is computed from the layout's contents, FALSE otherwise.
 	 */
-	public int getAutoDir()
-	{
-		// gboolean pango_layout_get_auto_dir (PangoLayout *layout);
-		return pango_layout_get_auto_dir(pangoLayout);
-	}
+	public int getAutoDir();
 	
 	/**
 	 * Sets the alignment for the layout: how partial lines are
@@ -598,22 +362,14 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * alignment =  the alignment
 	 */
-	public void setAlignment(PangoAlignment alignment)
-	{
-		// void pango_layout_set_alignment (PangoLayout *layout,  PangoAlignment alignment);
-		pango_layout_set_alignment(pangoLayout, alignment);
-	}
+	public void setAlignment(PangoAlignment alignment);
 	
 	/**
 	 * Gets the alignment for the layout: how partial lines are
 	 * positioned within the horizontal space available.
 	 * Returns: the alignment.
 	 */
-	public PangoAlignment getAlignment()
-	{
-		// PangoAlignment pango_layout_get_alignment (PangoLayout *layout);
-		return pango_layout_get_alignment(pangoLayout);
-	}
+	public PangoAlignment getAlignment();
 	
 	/**
 	 * Sets the tabs to use for layout, overriding the default tabs
@@ -623,11 +379,7 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * tabs =  a PangoTabArray, or NULL
 	 */
-	public void setTabs(PgTabArray tabs)
-	{
-		// void pango_layout_set_tabs (PangoLayout *layout,  PangoTabArray *tabs);
-		pango_layout_set_tabs(pangoLayout, (tabs is null) ? null : tabs.getPgTabArrayStruct());
-	}
+	public void setTabs(PgTabArray tabs);
 	
 	/**
 	 * Gets the current PangoTabArray used by this layout. If no
@@ -636,16 +388,7 @@ public class PgLayout : ObjectG
 	 * The return value should be freed with pango_tab_array_free().
 	 * Returns: a copy of the tabs for this layout, or NULL.
 	 */
-	public PgTabArray getTabs()
-	{
-		// PangoTabArray* pango_layout_get_tabs (PangoLayout *layout);
-		auto p = pango_layout_get_tabs(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgTabArray(cast(PangoTabArray*) p);
-	}
+	public PgTabArray getTabs();
 	
 	/**
 	 * If setting is TRUE, do not treat newlines and similar characters
@@ -655,21 +398,13 @@ public class PgLayout : ObjectG
 	 * Params:
 	 * setting =  new setting
 	 */
-	public void setSingleParagraphMode(int setting)
-	{
-		// void pango_layout_set_single_paragraph_mode  (PangoLayout *layout,  gboolean setting);
-		pango_layout_set_single_paragraph_mode(pangoLayout, setting);
-	}
+	public void setSingleParagraphMode(int setting);
 	
 	/**
 	 * Obtains the value set by pango_layout_set_single_paragraph_mode().
 	 * Returns: TRUE if the layout does not break paragraphs atparagraph separator characters, FALSE otherwise.
 	 */
-	public int getSingleParagraphMode()
-	{
-		// gboolean pango_layout_get_single_paragraph_mode  (PangoLayout *layout);
-		return pango_layout_get_single_paragraph_mode(pangoLayout);
-	}
+	public int getSingleParagraphMode();
 	
 	/**
 	 * Counts the number unknown glyphs in layout. That is, zero if
@@ -682,11 +417,7 @@ public class PgLayout : ObjectG
 	 * Since 1.16
 	 * Returns: The number of unknown glyphs in layout.
 	 */
-	public int getUnknownGlyphsCount()
-	{
-		// int pango_layout_get_unknown_glyphs_count  (PangoLayout *layout);
-		return pango_layout_get_unknown_glyphs_count(pangoLayout);
-	}
+	public int getUnknownGlyphsCount();
 	
 	/**
 	 * Retrieves an array of logical attributes for each character in
@@ -695,16 +426,7 @@ public class PgLayout : ObjectG
 	 * attrs =  location to store a pointer to an array of logical attributes
 	 *  This value must be freed with g_free().
 	 */
-	public void getLogAttrs(out PangoLogAttr[] attrs)
-	{
-		// void pango_layout_get_log_attrs (PangoLayout *layout,  PangoLogAttr **attrs,  gint *n_attrs);
-		PangoLogAttr* outattrs = null;
-		int nAttrs;
-		
-		pango_layout_get_log_attrs(pangoLayout, &outattrs, &nAttrs);
-		
-		attrs = outattrs[0 .. nAttrs];
-	}
+	public void getLogAttrs(out PangoLogAttr[] attrs);
 	
 	/**
 	 * Converts from an index within a PangoLayout to the onscreen position
@@ -717,11 +439,7 @@ public class PgLayout : ObjectG
 	 * index =  byte index within layout
 	 * pos =  rectangle in which to store the position of the grapheme
 	 */
-	public void indexToPos(int index, PangoRectangle* pos)
-	{
-		// void pango_layout_index_to_pos (PangoLayout *layout,  int index_,  PangoRectangle *pos);
-		pango_layout_index_to_pos(pangoLayout, index, pos);
-	}
+	public void indexToPos(int index, PangoRectangle* pos);
 	
 	/**
 	 * Converts from byte index_ within the layout to line and X position.
@@ -736,12 +454,8 @@ public class PgLayout : ObjectG
 	 * xPos =  location to store resulting position within line
 	 *  (PANGO_SCALE units per device unit)
 	 */
-	public void indexToLineX(int index, int trailing, out int line, out int xPos)
-	{
-		// void pango_layout_index_to_line_x (PangoLayout *layout,  int index_,  gboolean trailing,  int *line,  int *x_pos);
-		pango_layout_index_to_line_x(pangoLayout, index, trailing, &line, &xPos);
-	}
-	
+	public void indexToLineX(int index, int trailing, out int line, out int xPos);
+
 	/**
 	 * Converts from X and Y position within a layout to the byte
 	 * index to the character at that logical position. If the
@@ -763,11 +477,7 @@ public class PgLayout : ObjectG
 	 *  grapheme. 0 represents the trailing edge of the grapheme.
 	 * Returns: TRUE if the coordinates were inside text, FALSE otherwise.
 	 */
-	public int xyToIndex(int x, int y, out int index, out int trailing)
-	{
-		// gboolean pango_layout_xy_to_index (PangoLayout *layout,  int x,  int y,  int *index_,  int *trailing);
-		return pango_layout_xy_to_index(pangoLayout, x, y, &index, &trailing);
-	}
+	public int xyToIndex(int x, int y, out int index, out int trailing);
 	
 	/**
 	 * Given an index within a layout, determines the positions that of the
@@ -783,11 +493,7 @@ public class PgLayout : ObjectG
 	 * strongPos =  location to store the strong cursor position (may be NULL)
 	 * weakPos =  location to store the weak cursor position (may be NULL)
 	 */
-	public void getCursorPos(int index, PangoRectangle* strongPos, PangoRectangle* weakPos)
-	{
-		// void pango_layout_get_cursor_pos (PangoLayout *layout,  int index_,  PangoRectangle *strong_pos,  PangoRectangle *weak_pos);
-		pango_layout_get_cursor_pos(pangoLayout, index, strongPos, weakPos);
-	}
+	public void getCursorPos(int index, PangoRectangle* strongPos, PangoRectangle* weakPos);
 	
 	/**
 	 * Computes a new cursor position from an old position and
@@ -825,11 +531,7 @@ public class PgLayout : ObjectG
 	 *  of the preceding line. new_index is always on the line
 	 *  where the cursor should be displayed.
 	 */
-	public void moveCursorVisually(int strong, int oldIndex, int oldTrailing, int direction, out int newIndex, out int newTrailing)
-	{
-		// void pango_layout_move_cursor_visually (PangoLayout *layout,  gboolean strong,  int old_index,  int old_trailing,  int direction,  int *new_index,  int *new_trailing);
-		pango_layout_move_cursor_visually(pangoLayout, strong, oldIndex, oldTrailing, direction, &newIndex, &newTrailing);
-	}
+	public void moveCursorVisually(int strong, int oldIndex, int oldTrailing, int direction, out int newIndex, out int newTrailing);
 	
 	/**
 	 * Computes the logical and ink extents of layout. Logical extents
@@ -846,11 +548,7 @@ public class PgLayout : ObjectG
 	 * logicalRect =  rectangle used to store the logical extents of the layout
 	 * 		 or NULL to indicate that the result is not needed.
 	 */
-	public void getExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_get_extents (PangoLayout *layout,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_get_extents(pangoLayout, inkRect, logicalRect);
-	}
+	public void getExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Computes the logical and ink extents of layout in device units.
@@ -864,11 +562,7 @@ public class PgLayout : ObjectG
 	 * logicalRect =  rectangle used to store the logical extents of the
 	 *  layout or NULL to indicate that the result is not needed.
 	 */
-	public void getPixelExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect)
-	{
-		// void pango_layout_get_pixel_extents (PangoLayout *layout,  PangoRectangle *ink_rect,  PangoRectangle *logical_rect);
-		pango_layout_get_pixel_extents(pangoLayout, inkRect, logicalRect);
-	}
+	public void getPixelExtents(PangoRectangle* inkRect, PangoRectangle* logicalRect);
 	
 	/**
 	 * Determines the logical width and height of a PangoLayout
@@ -878,11 +572,7 @@ public class PgLayout : ObjectG
 	 * width =  location to store the logical width, or NULL
 	 * height =  location to store the logical height, or NULL
 	 */
-	public void getSize(out int width, out int height)
-	{
-		// void pango_layout_get_size (PangoLayout *layout,  int *width,  int *height);
-		pango_layout_get_size(pangoLayout, &width, &height);
-	}
+	public void getSize(out int width, out int height);
 	
 	/**
 	 * Determines the logical width and height of a PangoLayout
@@ -894,32 +584,20 @@ public class PgLayout : ObjectG
 	 * width =  location to store the logical width, or NULL
 	 * height =  location to store the logical height, or NULL
 	 */
-	public void getPixelSize(out int width, out int height)
-	{
-		// void pango_layout_get_pixel_size (PangoLayout *layout,  int *width,  int *height);
-		pango_layout_get_pixel_size(pangoLayout, &width, &height);
-	}
-	
+	public void getPixelSize(out int width, out int height);
+
 	/**
 	 * Gets the Y position of baseline of the first line in layout.
 	 * Since 1.22
 	 * Returns: baseline of first line, from top of layout.
 	 */
-	public int getBaseline()
-	{
-		// int pango_layout_get_baseline (PangoLayout *layout);
-		return pango_layout_get_baseline(pangoLayout);
-	}
+	public int getBaseline();
 	
 	/**
 	 * Retrieves the count of lines for the layout.
 	 * Returns: the line count.
 	 */
-	public int getLineCount()
-	{
-		// int pango_layout_get_line_count (PangoLayout *layout);
-		return pango_layout_get_line_count(pangoLayout);
-	}
+	public int getLineCount();
 	
 	/**
 	 * Retrieves a particular line from a PangoLayout.
@@ -930,16 +608,7 @@ public class PgLayout : ObjectG
 	 *  pango_layout_get_line_count(layout) - 1, inclusive.
 	 * Returns: the requested PangoLayoutLine, or NULL if the index is out of range. This layout line can be ref'ed and retained, but will become invalid if changes are made to the PangoLayout.
 	 */
-	public PgLayoutLine getLine(int line)
-	{
-		// PangoLayoutLine * pango_layout_get_line (PangoLayout *layout,  int line);
-		auto p = pango_layout_get_line(pangoLayout, line);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine getLine(int line);
 	
 	/**
 	 * Retrieves a particular line from a PangoLayout.
@@ -952,16 +621,7 @@ public class PgLayout : ObjectG
 	 *  pango_layout_get_line_count(layout) - 1, inclusive.
 	 * Returns: the requested PangoLayoutLine, or NULL if the index is out of range. This layout line can be ref'ed and retained, but will become invalid if changes are made to the PangoLayout. No changes should be made to the line.
 	 */
-	public PgLayoutLine getLineReadonly(int line)
-	{
-		// PangoLayoutLine * pango_layout_get_line_readonly (PangoLayout *layout,  int line);
-		auto p = pango_layout_get_line_readonly(pangoLayout, line);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutLine(cast(PangoLayoutLine*) p);
-	}
+	public PgLayoutLine getLineReadonly(int line);
 	
 	/**
 	 * Returns the lines of the layout as a list.
@@ -969,16 +629,7 @@ public class PgLayout : ObjectG
 	 * to modify the contents of the lines (glyphs, glyph widths, etc.).
 	 * Returns:element-type Pango.LayoutLine): (transfer none. element-type Pango.LayoutLine): (transfer none.
 	 */
-	public ListSG getLines()
-	{
-		// GSList * pango_layout_get_lines (PangoLayout *layout);
-		auto p = pango_layout_get_lines(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getLines();
 	
 	/**
 	 * Returns the lines of the layout as a list.
@@ -988,29 +639,11 @@ public class PgLayout : ObjectG
 	 * Since 1.16
 	 * Returns:element-type Pango.LayoutLine): (transfer none. element-type Pango.LayoutLine): (transfer none.
 	 */
-	public ListSG getLinesReadonly()
-	{
-		// GSList * pango_layout_get_lines_readonly (PangoLayout *layout);
-		auto p = pango_layout_get_lines_readonly(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getLinesReadonly();
 	
 	/**
 	 * Returns an iterator to iterate over the visual extents of the layout.
 	 * Returns: the new PangoLayoutIter that should be freed using pango_layout_iter_free().
 	 */
-	public PgLayoutIter getIter()
-	{
-		// PangoLayoutIter * pango_layout_get_iter (PangoLayout *layout);
-		auto p = pango_layout_get_iter(pangoLayout);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayoutIter(cast(PangoLayoutIter*) p);
-	}
+	public PgLayoutIter getIter();
 }

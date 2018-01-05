@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgAttributeList
- * strct   = PangoAttrList
- * realStrct=
- * ctorStrct=
- * clss    = PgAttributeList
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_attr_list_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.pango.PgAttribute
- * 	- gtkD.pango.PgAttributeIterator
- * structWrap:
- * 	- PangoAttrIterator* -> PgAttributeIterator
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoAttribute* -> PgAttribute
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgAttributeList;
 
 public  import gtkD.gtkc.pangotypes;
@@ -82,30 +27,16 @@ public class PgAttributeList
 	protected PangoAttrList* pangoAttrList;
 	
 	
-	public PangoAttrList* getPgAttributeListStruct()
-	{
-		return pangoAttrList;
-	}
+	public PangoAttrList* getPgAttributeListStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoAttrList;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoAttrList* pangoAttrList)
-	{
-		if(pangoAttrList is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoAttrList = pangoAttrList;
-	}
+	public this (PangoAttrList* pangoAttrList);
 	
 	/**
 	 */
@@ -114,58 +45,27 @@ public class PgAttributeList
 	 * Create a new empty attribute list with a reference count of one.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// PangoAttrList * pango_attr_list_new (void);
-		auto p = pango_attr_list_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by pango_attr_list_new()");
-		}
-		this(cast(PangoAttrList*) p);
-	}
+	public this ();
 	
 	/**
 	 * Increase the reference count of the given attribute list by one.
 	 * Since 1.10
 	 * Returns: The attribute list passed in
 	 */
-	public PgAttributeList doref()
-	{
-		// PangoAttrList * pango_attr_list_ref (PangoAttrList *list);
-		auto p = pango_attr_list_ref(pangoAttrList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeList(cast(PangoAttrList*) p);
-	}
+	public PgAttributeList doref();
 	
 	/**
 	 * Decrease the reference count of the given attribute list by one.
 	 * If the result is zero, free the attribute list and the attributes
 	 * it contains.
 	 */
-	public void unref()
-	{
-		// void pango_attr_list_unref (PangoAttrList *list);
-		pango_attr_list_unref(pangoAttrList);
-	}
+	public void unref();
 	
 	/**
 	 * Copy list and return an identical new list.
 	 * Returns: the newly allocated PangoAttrList, with a reference count of one, which should be freed with pango_attr_list_unref(). Returns NULL if list was NULL.
 	 */
-	public PgAttributeList copy()
-	{
-		// PangoAttrList * pango_attr_list_copy (PangoAttrList *list);
-		auto p = pango_attr_list_copy(pangoAttrList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeList(cast(PangoAttrList*) p);
-	}
+	public PgAttributeList copy();
 	
 	/**
 	 * Insert the given attribute into the PangoAttrList. It will
@@ -175,11 +75,7 @@ public class PgAttributeList
 	 * attr =  the attribute to insert. Ownership of this value is
 	 *  assumed by the list.
 	 */
-	public void insert(PgAttribute attr)
-	{
-		// void pango_attr_list_insert (PangoAttrList *list,  PangoAttribute *attr);
-		pango_attr_list_insert(pangoAttrList, (attr is null) ? null : attr.getPgAttributeStruct());
-	}
+	public void insert(PgAttribute attr);
 	
 	/**
 	 * Insert the given attribute into the PangoAttrList. It will
@@ -189,11 +85,7 @@ public class PgAttributeList
 	 * attr =  the attribute to insert. Ownership of this value is
 	 *  assumed by the list.
 	 */
-	public void insertBefore(PgAttribute attr)
-	{
-		// void pango_attr_list_insert_before (PangoAttrList *list,  PangoAttribute *attr);
-		pango_attr_list_insert_before(pangoAttrList, (attr is null) ? null : attr.getPgAttributeStruct());
-	}
+	public void insertBefore(PgAttribute attr);
 	
 	/**
 	 * Insert the given attribute into the PangoAttrList. It will
@@ -208,11 +100,7 @@ public class PgAttributeList
 	 * attr =  the attribute to insert. Ownership of this value is
 	 *  assumed by the list.
 	 */
-	public void change(PgAttribute attr)
-	{
-		// void pango_attr_list_change (PangoAttrList *list,  PangoAttribute *attr);
-		pango_attr_list_change(pangoAttrList, (attr is null) ? null : attr.getPgAttributeStruct());
-	}
+	public void change(PgAttribute attr);
 	
 	/**
 	 * This function opens up a hole in list, fills it in with attributes from
@@ -230,11 +118,7 @@ public class PgAttributeList
 	 *  must be specified since the attributes in other
 	 *  may only be present at some subsection of this range)
 	 */
-	public void splice(PgAttributeList other, int pos, int len)
-	{
-		// void pango_attr_list_splice (PangoAttrList *list,  PangoAttrList *other,  gint pos,  gint len);
-		pango_attr_list_splice(pangoAttrList, (other is null) ? null : other.getPgAttributeListStruct(), pos, len);
-	}
+	public void splice(PgAttributeList other, int pos, int len);
 	
 	/**
 	 * Given a PangoAttrList and callback function, removes any elements
@@ -247,30 +131,12 @@ public class PgAttributeList
 	 * data =  Data to be passed to func
 	 * Returns: the new PangoAttrList or NULL if no attributes of the given types were found.
 	 */
-	public PgAttributeList filter(PangoAttrFilterFunc func, void* data)
-	{
-		// PangoAttrList * pango_attr_list_filter (PangoAttrList *list,  PangoAttrFilterFunc func,  gpointer data);
-		auto p = pango_attr_list_filter(pangoAttrList, func, data);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeList(cast(PangoAttrList*) p);
-	}
+	public PgAttributeList filter(PangoAttrFilterFunc func, void* data);
 	
 	/**
 	 * Create a iterator initialized to the beginning of the list.
 	 * list must not be modified until this iterator is freed.
 	 * Returns: the newly allocated PangoAttrIterator, which should be freed with pango_attr_iterator_destroy().
 	 */
-	public PgAttributeIterator getIterator()
-	{
-		// PangoAttrIterator * pango_attr_list_get_iterator (PangoAttrList *list);
-		auto p = pango_attr_list_get_iterator(pangoAttrList);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgAttributeIterator(cast(PangoAttrIterator*) p);
-	}
+	public PgAttributeIterator getIterator();
 }

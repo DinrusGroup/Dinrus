@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgColor
- * strct   = PangoColor
- * realStrct=
- * ctorStrct=
- * clss    = PgColor
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_color_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * 	- PangoColor* -> PgColor
- * module aliases:
- * local aliases:
- * overrides:
- * 	- toString
- */
-
 module gtkD.pango.PgColor;
 
 public  import gtkD.gtkc.pangotypes;
@@ -79,30 +26,16 @@ public class PgColor
 	protected PangoColor* pangoColor;
 	
 	
-	public PangoColor* getPgColorStruct()
-	{
-		return pangoColor;
-	}
+	public PangoColor* getPgColorStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoColor;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoColor* pangoColor)
-	{
-		if(pangoColor is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoColor = pangoColor;
-	}
+	public this (PangoColor* pangoColor);
 	
 	/**
 	 */
@@ -119,11 +52,7 @@ public class PgColor
 	 * spec =  a string specifying the new color
 	 * Returns: TRUE if parsing of the specifier succeeded, otherwise false.
 	 */
-	public int parse(string spec)
-	{
-		// gboolean pango_color_parse (PangoColor *color,  const char *spec);
-		return pango_color_parse(pangoColor, Str.toStringz(spec));
-	}
+	public int parse(string spec);
 	
 	/**
 	 * Creates a copy of src, which should be freed with
@@ -132,26 +61,12 @@ public class PgColor
 	 * by assignment in C).
 	 * Returns: the newly allocated PangoColor, which should be freed with pango_color_free(), or NULL if src was NULL.
 	 */
-	public PgColor copy()
-	{
-		// PangoColor * pango_color_copy (const PangoColor *src);
-		auto p = pango_color_copy(pangoColor);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgColor(cast(PangoColor*) p);
-	}
+	public PgColor copy();
 	
 	/**
 	 * Frees a color allocated by pango_color_copy().
 	 */
-	public void free()
-	{
-		// void pango_color_free (PangoColor *color);
-		pango_color_free(pangoColor);
-	}
-	
+	public void free();
 	/**
 	 * Returns a textual specification of color in the hexadecimal form
 	 * #rrrrggggbbbb, where r,
@@ -160,9 +75,5 @@ public class PgColor
 	 * Since 1.16
 	 * Returns: a newly-allocated text string that must be freed with g_free().
 	 */
-	public override string toString()
-	{
-		// gchar * pango_color_to_string (const PangoColor *color);
-		return Str.toString(pango_color_to_string(pangoColor));
-	}
+	public override string toString();
 }

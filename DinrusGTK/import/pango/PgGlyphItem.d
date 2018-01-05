@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = pango
- * outFile = PgGlyphItem
- * strct   = PangoGlyphItem
- * realStrct=
- * ctorStrct=
- * clss    = PgGlyphItem
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- pango_glyph_item_
- * omit structs:
- * omit prefixes:
- * 	- pango_glyph_item_iter_
- * omit code:
- * 	- pango_glyph_item_get_logical_widths
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgAttributeList
- * 	- gtkD.glib.ListSG
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- PangoAttrList* -> PgAttributeList
- * 	- PangoGlyphItem* -> PgGlyphItem
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.pango.PgGlyphItem;
 
 public  import gtkD.gtkc.pangotypes;
@@ -85,30 +27,16 @@ public class PgGlyphItem
 	protected PangoGlyphItem* pangoGlyphItem;
 	
 	
-	public PangoGlyphItem* getPgGlyphItemStruct()
-	{
-		return pangoGlyphItem;
-	}
+	public PangoGlyphItem* getPgGlyphItemStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)pangoGlyphItem;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (PangoGlyphItem* pangoGlyphItem)
-	{
-		if(pangoGlyphItem is null)
-		{
-			this = null;
-			return;
-		}
-		this.pangoGlyphItem = pangoGlyphItem;
-	}
+	public this (PangoGlyphItem* pangoGlyphItem);
 	
 	/**
 	 * Given a PangoGlyphItem and the corresponding
@@ -125,13 +53,7 @@ public class PgGlyphItem
 	 *  glyph_item (equal to glyph_item->item->num_chars)
 	 *  to be filled in with the resulting character widths.
 	 */
-	public void getLogicalWidths(string text, out int[] logicalWidths)
-	{
-		logicalWidths = new int[pangoGlyphItem.item.numChars];
-		
-		// void pango_glyph_item_get_logical_widths (PangoGlyphItem *glyph_item,  const char *text,  int *logical_widths);
-		pango_glyph_item_get_logical_widths(pangoGlyphItem, Str.toStringz(text), logicalWidths.ptr);
-	}
+	public void getLogicalWidths(string text, out int[] logicalWidths);
 	
 	/**
 	 */
@@ -141,26 +63,13 @@ public class PgGlyphItem
 	 * Since 1.20
 	 * Returns: the newly allocated PangoGlyphItem, which should be freed with pango_glyph_item_free(), or NULL if orig was NULL.
 	 */
-	public PgGlyphItem copy()
-	{
-		// PangoGlyphItem * pango_glyph_item_copy (PangoGlyphItem *orig);
-		auto p = pango_glyph_item_copy(pangoGlyphItem);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgGlyphItem(cast(PangoGlyphItem*) p);
-	}
+	public PgGlyphItem copy();
 	
 	/**
 	 * Frees a PangoGlyphItem and resources to which it points.
 	 * Since 1.6
 	 */
-	public void free()
-	{
-		// void pango_glyph_item_free (PangoGlyphItem *glyph_item);
-		pango_glyph_item_free(pangoGlyphItem);
-	}
+	public void free();
 	
 	/**
 	 * Modifies orig to cover only the text after split_index, and
@@ -178,16 +87,7 @@ public class PgGlyphItem
 	 * splitIndex =  byte index of position to split item, relative to the start of the item
 	 * Returns: the newly allocated item representing text before split_index, which should be freed with pango_glyph_item_free().
 	 */
-	public PgGlyphItem split(string text, int splitIndex)
-	{
-		// PangoGlyphItem * pango_glyph_item_split (PangoGlyphItem *orig,  const char *text,  int split_index);
-		auto p = pango_glyph_item_split(pangoGlyphItem, Str.toStringz(text), splitIndex);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgGlyphItem(cast(PangoGlyphItem*) p);
-	}
+	public PgGlyphItem split(string text, int splitIndex);
 	
 	/**
 	 * Splits a shaped item (PangoGlyphItem) into multiple items based
@@ -210,16 +110,7 @@ public class PgGlyphItem
 	 * list =  a PangoAttrList
 	 * Returns: a list of glyph items resulting from splitting glyph_item. Free the elements using pango_glyph_item_free(), the list using g_slist_free().
 	 */
-	public ListSG applyAttrs(string text, PgAttributeList list)
-	{
-		// GSList * pango_glyph_item_apply_attrs (PangoGlyphItem *glyph_item,  const char *text,  PangoAttrList *list);
-		auto p = pango_glyph_item_apply_attrs(pangoGlyphItem, Str.toStringz(text), (list is null) ? null : list.getPgAttributeListStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG applyAttrs(string text, PgAttributeList list);
 	
 	/**
 	 * Adds spacing between the graphemes of glyph_item to
@@ -236,9 +127,5 @@ public class PgGlyphItem
 	 *  in Pango units. May be negative, though too large
 	 *  negative values will give ugly results.
 	 */
-	public void letterSpace(string text, inout PangoLogAttr logAttrs, int letterSpacing)
-	{
-		// void pango_glyph_item_letter_space (PangoGlyphItem *glyph_item,  const char *text,  PangoLogAttr *log_attrs,  int letter_spacing);
-		pango_glyph_item_letter_space(pangoGlyphItem, Str.toStringz(text), &logAttrs, letterSpacing);
-	}
+	public void letterSpace(string text, inout PangoLogAttr logAttrs, int letterSpacing);
 }
