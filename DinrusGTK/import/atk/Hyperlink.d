@@ -25,14 +25,14 @@ private import gtkD.gobject.ObjectG;
  */
 public class Hyperlink : ObjectG
 {
-	
+
 	/** the main Gtk struct */
 	protected AtkHyperlink* atkHyperlink;
-	
-	
+
+
 	public AtkHyperlink* getHyperlinkStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct();
 
@@ -40,20 +40,20 @@ public class Hyperlink : ObjectG
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (AtkHyperlink* atkHyperlink);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	void delegate(Hyperlink)[] onLinkActivatedListeners;
 	/**
 	 * The signal link-activated is emitted when a link is activated.
 	 */
 	void addOnLinkActivated(void delegate(Hyperlink) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackLinkActivated(AtkHyperlink* atkhyperlinkStruct, Hyperlink hyperlink);
-	}
-	
-	
+
+
+
 	/**
 	 * Get a the URI associated with the anchor specified
 	 * by i of link_.
@@ -63,7 +63,7 @@ public class Hyperlink : ObjectG
 	 * Returns: a string specifying the URI
 	 */
 	public string getUri(int i);
-	
+
 	/**
 	 * Returns the item associated with this hyperlinks nth anchor.
 	 * For instance, the returned AtkObject will implement AtkText
@@ -75,19 +75,19 @@ public class Hyperlink : ObjectG
 	 * Returns: an AtkObject associated with this hyperlinks i-th anchor
 	 */
 	public ObjectAtk getObject(int i);
-	
+
 	/**
 	 * Gets the index with the hypertext document at which this link ends.
 	 * Returns: the index with the hypertext document at which this link ends
 	 */
 	public int getEndIndex();
-	
+
 	/**
 	 * Gets the index with the hypertext document at which this link begins.
 	 * Returns: the index with the hypertext document at which this link begins
 	 */
 	public int getStartIndex();
-	
+
 	/**
 	 * Since the document that a link is associated with may have changed
 	 * this method returns TRUE if the link is still valid (with
@@ -95,7 +95,7 @@ public class Hyperlink : ObjectG
 	 * Returns: whether or not this link is still valid
 	 */
 	public int isValid();
-	
+
 	/**
 	 * Indicates whether the link currently displays some or all of its
 	 *  content inline. Ordinary HTML links will usually return
@@ -105,13 +105,13 @@ public class Hyperlink : ObjectG
 	 * Returns: whether or not this link displays its content inline.
 	 */
 	public int isInline();
-	
+
 	/**
 	 * Gets the number of anchors associated with this hyperlink.
 	 * Returns: the number of anchors associated with this hyperlink
 	 */
 	public int getNAnchors();
-	
+
 	/**
 	 * Warning
 	 * atk_hyperlink_is_selected_link is deprecated and should not be used in newly-written code. Please use ATK_STATE_SELECTED to indicate when a hyperlink within a Hypertext container is selected.

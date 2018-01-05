@@ -176,11 +176,7 @@ public class Unicode
 	 * c =  a Unicode character
 	 * Returns: TRUE if the character is titlecase
 	 */
-	public static int unicharIstitle(gunichar c)
-	{
-		// gboolean g_unichar_istitle (gunichar c);
-		return g_unichar_istitle(c);
-	}
+	public static int unicharIstitle(gunichar c);
 	
 	/**
 	 * Determines if a character is uppercase.
@@ -223,7 +219,7 @@ public class Unicode
 	 * Returns: TRUE if the character is wide in legacy East Asian locales
 	 */
 	public static int unicharIswideCjk(gunichar c);
-	}
+	
 	
 	/**
 	 * Determines if a given character typically takes zero width when rendered.
@@ -264,7 +260,7 @@ public class Unicode
 	 * Returns: the result of converting c to titlecase. If c is not an uppercase or lowercase character, c is returned unchanged.
 	 */
 	public static gunichar unicharTotitle(gunichar c);
-	}
+	
 	
 	/**
 	 * Determines the numeric value of a character as a decimal

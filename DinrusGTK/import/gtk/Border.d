@@ -17,26 +17,26 @@ public  import gtkD.gtkc.gdktypes;
  */
 public class Border
 {
-	
+
 	/** the main Gtk struct */
 	protected GtkBorder* gtkBorder;
-	
-	
+
+
 	public GtkBorder* getBorderStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GtkBorder* gtkBorder);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	void delegate(Border)[] onRealizeListeners;
 	/**
 	 * Emitted when the style has been initialized for a particular
@@ -45,10 +45,10 @@ public class Border
 	 * deal with styles that have been already realized.
 	 * Since 2.4
 	 */
-	void addOnRealize(void delegate(Border) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	void addOnRealize(void delegate(Border) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackRealize(GtkStyle* styleStruct, Border border);
-	}
-	
+
+
 	void delegate(Border)[] onUnrealizeListeners;
 	/**
 	 * Emitted when the aspects of the style specific to a particular colormap
@@ -59,21 +59,21 @@ public class Border
 	 */
 	void addOnUnrealize(void delegate(Border) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackUnrealize(GtkStyle* styleStruct, Border border);
-	
-	
+
+
 	/**
 	 * Allocates a new GtkBorder structure and initializes its elements to zero.
 	 * Since 2.14
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this ();
-	
+
 	/**
 	 * Copies a GtkBorder structure.
 	 * Returns: a copy of border_.
 	 */
 	public Border copy();
-	
+
 	/**
 	 * Frees a GtkBorder structure.
 	 */

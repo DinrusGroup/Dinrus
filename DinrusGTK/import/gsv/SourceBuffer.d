@@ -60,7 +60,7 @@ public class SourceBuffer : TextBuffer
 	 */
 	void addOnHighlightUpdated(void delegate(TextIter, TextIter, SourceBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackHighlightUpdated(GtkSourceBuffer* sourcebufferStruct, GtkTextIter* arg1, GtkTextIter* arg2, SourceBuffer sourceBuffer);
-	}
+	
 	
 	void delegate(GtkTextMark*, SourceBuffer)[] onSourceMarkUpdatedListeners;
 	/**

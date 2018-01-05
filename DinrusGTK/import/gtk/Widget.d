@@ -609,8 +609,6 @@ public class Widget : ObjectGtk, BuildableIF
 	void addOnEnterNotify(bool delegate(GdkEventCrossing*, Widget) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static gboolean callBackEnterNotify(GtkWidget* widgetStruct, GdkEventCrossing* event, Widget widget);
 
-		return 0;
-	}
 
 	bool delegate(Event, Widget)[] onListeners;
 	/**
@@ -728,8 +726,6 @@ public class Widget : ObjectGtk, BuildableIF
 	void addOnKeyPress(bool delegate(GdkEventKey*, Widget) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static gboolean callBackKeyPress(GtkWidget* widgetStruct, GdkEventKey* event, Widget widget);
 
-		return 0;
-	}
 
 	bool delegate(GdkEventKey*, Widget)[] onKeyReleaseListeners;
 	/**

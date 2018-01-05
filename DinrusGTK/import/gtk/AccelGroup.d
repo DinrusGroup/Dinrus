@@ -37,26 +37,26 @@ private import gtkD.gobject.ObjectG;
  */
 public class AccelGroup : ObjectG
 {
-	
+
 	/** the main Gtk struct */
 	protected GtkAccelGroup* gtkAccelGroup;
-	
-	
+
+
 	public GtkAccelGroup* getAccelGroupStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GtkAccelGroup* gtkAccelGroup);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	bool delegate(ObjectG, guint, GdkModifierType, AccelGroup)[] onAccelActivateListeners;
 	/**
 	 * The accel-activate signal is an implementation detail of
@@ -64,10 +64,7 @@ public class AccelGroup : ObjectG
 	 */
 	void addOnAccelActivate(bool delegate(ObjectG, guint, GdkModifierType, AccelGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static gboolean callBackAccelActivate(GtkAccelGroup* accelGroupStruct, GObject* acceleratable, guint keyval, GdkModifierType modifier, AccelGroup accelGroup);
-		
-		return 0;
-	}
-	
+
 	void delegate(guint, GdkModifierType, Closure, AccelGroup)[] onAccelChangedListeners;
 	/**
 	 * The accel-changed signal is emitted when a GtkAccelGroupEntry
@@ -81,14 +78,14 @@ public class AccelGroup : ObjectG
 	 */
 	void addOnAccelChanged(void delegate(guint, GdkModifierType, Closure, AccelGroup) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackAccelChanged(GtkAccelGroup* accelGroupStruct, guint keyval, GdkModifierType modifier, GClosure* accelClosure, AccelGroup accelGroup);
-	
-	
+
+
 	/**
 	 * Creates a new GtkAccelGroup.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this ();
-	
+
 	/**
 	 * Installs an accelerator in this group. When accel_group is being activated
 	 * in response to a call to gtk_accel_groups_activate(), closure will be
@@ -104,7 +101,7 @@ public class AccelGroup : ObjectG
 	 * closure =  closure to be executed upon accelerator activation
 	 */
 	public void connect(uint accelKey, GdkModifierType accelMods, GtkAccelFlags accelFlags, Closure closure);
-	
+
 	/**
 	 * Installs an accelerator in this group, using an accelerator path to look
 	 * up the appropriate key and modifiers (see gtk_accel_map_add_entry()).
@@ -121,7 +118,7 @@ public class AccelGroup : ObjectG
 	 * closure =  closure to be executed upon accelerator activation
 	 */
 	public void connectByPath(string accelPath, Closure closure);
-	
+
 	/**
 	 * Removes an accelerator previously installed through
 	 * gtk_accel_group_connect().
@@ -130,7 +127,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if the closure was found and got disconnected
 	 */
 	public int disconnect(Closure closure);
-	
+
 	/**
 	 * Removes an accelerator previously installed through
 	 * gtk_accel_group_connect().
@@ -140,7 +137,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if there was an accelerator which could be  removed, FALSE otherwise
 	 */
 	public int disconnectKey(uint accelKey, GdkModifierType accelMods);
-	
+
 	/**
 	 * Queries an accelerator group for all entries matching accel_key and
 	 * accel_mods.
@@ -150,7 +147,7 @@ public class AccelGroup : ObjectG
 	 * Returns: an array of n_entries GtkAccelGroupEntry elements, or NULL. The array is owned by GTK+ and must not be freed.
 	 */
 	public GtkAccelGroupEntry[] query(uint accelKey, GdkModifierType accelMods);
-	
+
 	/**
 	 * Finds the first accelerator in accel_group
 	 * that matches accel_key and accel_mods, and
@@ -164,7 +161,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if an accelerator was activated and handled this keypress
 	 */
 	public int activate(GQuark accelQuark, ObjectG acceleratable, uint accelKey, GdkModifierType accelMods);
-		
+
 	/**
 	 * Locks the given accelerator group.
 	 * Locking an acelerator group prevents the accelerators contained
@@ -175,12 +172,12 @@ public class AccelGroup : ObjectG
 	 * of times.
 	 */
 	public void lock();
-	
+
 	/**
 	 * Undoes the last call to gtk_accel_group_lock() on this accel_group.
 	 */
 	public void unlock();
-	
+
 	/**
 	 * Locks are added and removed using gtk_accel_group_lock() and
 	 * gtk_accel_group_unlock().
@@ -188,7 +185,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if there are 1 or more locks on the accel_group,FALSE otherwise.
 	 */
 	public int getIsLocked();
-	
+
 	/**
 	 * Finds the GtkAccelGroup to which closure is connected;
 	 * see gtk_accel_group_connect().
@@ -197,7 +194,7 @@ public class AccelGroup : ObjectG
 	 * Returns: the GtkAccelGroup to which closure is connected, or NULL.
 	 */
 	public static AccelGroup fromAccelClosure(Closure closure);
-	
+
 	/**
 	 * Gets a GdkModifierType representing the mask for this
 	 * accel_group. For example, GDK_CONTROL_MASK, GDK_SHIFT_MASK, etc.
@@ -205,7 +202,7 @@ public class AccelGroup : ObjectG
 	 * Returns: the modifier mask for this accel group.
 	 */
 	public GdkModifierType getModifierMask();
-	
+
 	/**
 	 * Finds the first accelerator in any GtkAccelGroup attached
 	 * to object that matches accel_key and accel_mods, and
@@ -218,7 +215,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if an accelerator was activated and handled this keypress
 	 */
 	public static int accelGroupsActivate(ObjectG object, uint accelKey, GdkModifierType accelMods);
-	
+
 	/**
 	 * Gets a list of all accel groups which are attached to object.
 	 * Params:
@@ -226,7 +223,7 @@ public class AccelGroup : ObjectG
 	 * Returns: a list of all accel groups which are attached to object
 	 */
 	public static ListSG accelGroupsFromObject(ObjectG object);
-	
+
 	/**
 	 * Finds the first entry in an accelerator group for which
 	 * find_func returns TRUE and returns its GtkAccelKey.
@@ -236,7 +233,7 @@ public class AccelGroup : ObjectG
 	 * Returns: the key of the first entry passing find_func. The key is owned by GTK+ and must not be freed.
 	 */
 	public GtkAccelKey* find(GtkAccelGroupFindFunc findFunc, void* data);
-	
+
 	/**
 	 * Determines whether a given keyval and modifier mask constitute
 	 * a valid keyboard accelerator. For example, the GDK_a keyval
@@ -249,7 +246,7 @@ public class AccelGroup : ObjectG
 	 * Returns: TRUE if the accelerator is valid
 	 */
 	public static int acceleratorValid(uint keyval, GdkModifierType modifiers);
-	
+
 	/**
 	 * Parses a string representing an accelerator. The
 	 * format looks like "<Control>a" or "<Shift><Alt>F1" or
@@ -264,7 +261,7 @@ public class AccelGroup : ObjectG
 	 * acceleratorMods =  return location for accelerator modifier mask
 	 */
 	public static void acceleratorParse(string accelerator, out uint acceleratorKey, out GdkModifierType acceleratorMods);
-	
+
 	/**
 	 * Converts an accelerator keyval and modifier mask
 	 * into a string parseable by gtk_accelerator_parse().
@@ -278,7 +275,7 @@ public class AccelGroup : ObjectG
 	 * Returns: a newly-allocated accelerator name
 	 */
 	public static string acceleratorName(uint acceleratorKey, GdkModifierType acceleratorMods);
-	
+
 	/**
 	 * Converts an accelerator keyval and modifier mask into a string
 	 * which can be used to represent the accelerator to the user.
@@ -289,7 +286,7 @@ public class AccelGroup : ObjectG
 	 * Returns: a newly-allocated string representing the accelerator.
 	 */
 	public static string acceleratorGetLabel(uint acceleratorKey, GdkModifierType acceleratorMods);
-	
+
 	/**
 	 * Sets the modifiers that will be considered significant for keyboard
 	 * accelerators. The default mod mask is GDK_CONTROL_MASK |
@@ -305,7 +302,7 @@ public class AccelGroup : ObjectG
 	 * defaultModMask =  accelerator modifier mask
 	 */
 	public static void acceleratorSetDefaultModMask(GdkModifierType defaultModMask);
-	
+
 	/**
 	 * Gets the value set by gtk_accelerator_set_default_mod_mask().
 	 * Returns: the default accelerator modifier mask

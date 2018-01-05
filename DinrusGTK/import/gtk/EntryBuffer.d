@@ -28,39 +28,39 @@ private import gtkD.gobject.ObjectG;
  */
 public class EntryBuffer : ObjectG
 {
-	
+
 	/** the main Gtk struct */
 	protected GtkEntryBuffer* gtkEntryBuffer;
-	
-	
+
+
 	public GtkEntryBuffer* getEntryBufferStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GtkEntryBuffer* gtkEntryBuffer);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	void delegate(guint, guint, EntryBuffer)[] onDeletedTextListeners;
 	/**
 	 */
-	void addOnDeletedText(void delegate(guint, guint, EntryBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
+	void addOnDeletedText(void delegate(guint, guint, EntryBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackDeletedText(GtkEntryBuffer* entrybufferStruct, guint arg1, guint arg2, EntryBuffer entryBuffer);
-	
+
 	void delegate(guint, string, guint, EntryBuffer)[] onInsertedTextListeners;
 	/**
 	 */
 	void addOnInsertedText(void delegate(guint, string, guint, EntryBuffer) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackInsertedText(GtkEntryBuffer* entrybufferStruct, guint arg1, gchar* arg2, guint arg3, EntryBuffer entryBuffer);
-	
-	
+
+
 	/**
 	 * Create a new GtkEntryBuffer object.
 	 * Optionally, specify initial text to set in the buffer.
@@ -70,7 +70,7 @@ public class EntryBuffer : ObjectG
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this (char[] initialChars);
-	
+
 	/**
 	 * Retrieves the contents of the buffer.
 	 * The memory pointer returned by this call will not change
@@ -79,7 +79,7 @@ public class EntryBuffer : ObjectG
 	 * Returns: a pointer to the contents of the widget as a string. This string points to internally allocated storage in the buffer and must not be freed, modified or stored.
 	 */
 	public string getText();
-	
+
 	/**
 	 * Sets the text in the buffer.
 	 * This is roughly equivalent to calling gtk_entry_buffer_delete_text()
@@ -90,7 +90,7 @@ public class EntryBuffer : ObjectG
 	 * chars =  the new text
 	 */
 	public void setText(char[] chars);
-	
+
 	/**
 	 * Retrieves the length in bytes of the buffer.
 	 * See gtk_entry_buffer_get_length().
@@ -98,14 +98,14 @@ public class EntryBuffer : ObjectG
 	 * Returns: The byte length of the buffer.
 	 */
 	public uint getBytes();
-	
+
 	/**
 	 * Retrieves the length in characters of the buffer.
 	 * Since 2.18
 	 * Returns: The number of characters in the buffer.
 	 */
 	public uint getLength();
-	
+
 	/**
 	 * Retrieves the maximum allowed length of the text in
 	 * buffer. See gtk_entry_buffer_set_max_length().
@@ -113,7 +113,7 @@ public class EntryBuffer : ObjectG
 	 * Returns: the maximum allowed number of characters in GtkEntryBuffer, or 0 if there is no maximum.
 	 */
 	public int getMaxLength();
-	
+
 	/**
 	 * Sets the maximum allowed length of the contents of the buffer. If
 	 * the current contents are longer than the given length, then they
@@ -125,7 +125,7 @@ public class EntryBuffer : ObjectG
 	 *  be clamped to the range 0-65536.
 	 */
 	public void setMaxLength(int maxLength);
-	
+
 	/**
 	 * Inserts n_chars characters of chars into the contents of the
 	 * buffer, at position position.
@@ -141,7 +141,7 @@ public class EntryBuffer : ObjectG
 	 * Returns: The number of characters actually inserted.
 	 */
 	public uint insertText(uint position, char[] chars);
-	
+
 	/**
 	 * Deletes a sequence of characters from the buffer. n_chars characters are
 	 * deleted starting at position. If n_chars is negative, then all characters
@@ -156,7 +156,7 @@ public class EntryBuffer : ObjectG
 	 * Returns: The number of characters deleted.
 	 */
 	public uint deleteText(uint position, int nChars);
-	
+
 	/**
 	 * Used when subclassing GtkEntryBuffer
 	 * Since 2.18
@@ -165,7 +165,7 @@ public class EntryBuffer : ObjectG
 	 * nChars =  number of characters deleted
 	 */
 	public void emitDeletedText(uint position, uint nChars);
-	
+
 	/**
 	 * Used when subclassing GtkEntryBuffer
 	 * Since 2.18

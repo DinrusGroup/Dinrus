@@ -26,36 +26,36 @@ private import gtkD.glib.ListG;
  */
 public class ParamSpec
 {
-	
+
 	/** the main Gtk struct */
 	protected GParamSpec* gParamSpec;
-	
-	
+
+
 	public GParamSpec* getParamSpecStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GParamSpec* gParamSpec);
-	
+
 	/**
 	 */
-	
+
 	/**
 	 * Increments the reference count of pspec.
 	 * Returns: the GParamSpec that was passed into this function
 	 */
 	public ParamSpec doref();
-	
+
 	/**
 	 * Decrements the reference count of a pspec.
 	 */
 	public void unref();
-	
+
 	/**
 	 * The initial reference count of a newly created GParamSpec is 1,
 	 * even though no one has explicitly called g_param_spec_ref() on it
@@ -66,14 +66,14 @@ public class ParamSpec
 	 * count of 1 still, but is not flagged "floating" anymore).
 	 */
 	public void sink();
-	
+
 	/**
 	 * Convenience function to ref and sink a GParamSpec.
 	 * Since 2.10
 	 * Returns: the GParamSpec that was passed into this function
 	 */
 	public ParamSpec refSink();
-	
+
 	/**
 	 * Sets value to its default value as specified in pspec.
 	 * Params:
@@ -88,7 +88,7 @@ public class ParamSpec
 	 * Returns: whether value contains the canonical default for this pspec
 	 */
 	public int gParamValueDefaults(Value value);
-	
+
 	/**
 	 * Ensures that the contents of value comply with the specifications
 	 * set out by pspec. For example, a GParamSpecInt might require
@@ -101,7 +101,7 @@ public class ParamSpec
 	 * Returns: whether modifying value was necessary to ensure validity
 	 */
 	public int gParamValueValidate(Value value);
-	
+
 	/**
 	 * Transforms src_value into dest_value if possible, and then
 	 * validates dest_value, in order for it to conform to pspec. If
@@ -117,7 +117,7 @@ public class ParamSpec
 	 * Returns: TRUE if transformation and validation were successful, FALSE otherwise and dest_value is left untouched.
 	 */
 	public int gParamValueConvert(Value srcValue, Value destValue, int strictValidation);
-	
+
 	/**
 	 * Compares value1 with value2 according to pspec, and return -1, 0 or +1,
 	 * if value1 is found to be less than, equal to or greater than value2,
@@ -128,25 +128,25 @@ public class ParamSpec
 	 * Returns: -1, 0 or +1, for a less than, equal to or greater than result
 	 */
 	public int gParamValuesCmp(Value value1, Value value2);
-	
+
 	/**
 	 * Get the name of a GParamSpec.
 	 * Returns: the name of pspec.
 	 */
 	public string getName();
-	
+
 	/**
 	 * Get the nickname of a GParamSpec.
 	 * Returns: the nickname of pspec.
 	 */
 	public string getNick();
-	
+
 	/**
 	 * Get the short description of a GParamSpec.
 	 * Returns: the short description of pspec.
 	 */
 	public string getBlurb();
-	
+
 	/**
 	 * Gets back user data pointers stored via g_param_spec_set_qdata().
 	 * Params:
@@ -154,7 +154,7 @@ public class ParamSpec
 	 * Returns: the user data pointer set, or NULL
 	 */
 	public void* getQdata(GQuark quark);
-	
+
 	/**
 	 * Sets an opaque, named pointer on a GParamSpec. The name is
 	 * specified through a GQuark (retrieved e.g. via
@@ -167,7 +167,7 @@ public class ParamSpec
 	 * data =  an opaque user data pointer
 	 */
 	public void setQdata(GQuark quark, void* data);
-	
+
 	/**
 	 * This function works like g_param_spec_set_qdata(), but in addition,
 	 * a void (*destroy) (gpointer) function may be
@@ -181,7 +181,7 @@ public class ParamSpec
 	 *  be freed
 	 */
 	public void setQdataFull(GQuark quark, void* data, GDestroyNotify destroy);
-	
+
 	/**
 	 * Gets back user data pointers stored via g_param_spec_set_qdata()
 	 * and removes the data from pspec without invoking its destroy()
@@ -192,7 +192,7 @@ public class ParamSpec
 	 * Returns: the user data pointer set, or NULL
 	 */
 	public void* stealQdata(GQuark quark);
-	
+
 	/**
 	 * If the paramspec redirects operations to another paramspec,
 	 * returns that paramspec. Redirect is used typically for
@@ -205,7 +205,7 @@ public class ParamSpec
 	 * Returns: paramspec to which requests on this paramspec should be redirected, or NULL if none.
 	 */
 	public ParamSpec getRedirectTarget();
-	
+
 	/**
 	 * Creates a new GParamSpec instance.
 	 * A property name consists of segments consisting of ASCII letters and
@@ -230,7 +230,7 @@ public class ParamSpec
 	 * Returns: a newly allocated GParamSpec instance
 	 */
 	public static void* internal(GType paramType, string name, string nick, string blurb, GParamFlags flags);
-	
+
 	/**
 	 * Registers name as the name of a new static type derived from
 	 * G_TYPE_PARAM. The type system uses the information contained in
@@ -241,5 +241,5 @@ public class ParamSpec
 	 * pspecInfo =  The GParamSpecTypeInfo for this GParamSpec type.
 	 * Returns: The new type identifier.
 	 */
-	public static GType gParamTypeRegisterStatic(string name, GParamSpecTypeInfo* pspecInfo)
+	public static GType gParamTypeRegisterStatic(string name, GParamSpecTypeInfo* pspecInfo);
 }

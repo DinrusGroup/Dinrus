@@ -628,8 +628,7 @@ public class Str
 	 * Returns: the result of converting c to upper case. If c is not an ASCII lower case letter, c is returned unchanged.
 	 */
 	public static char asciiToupper(char c);
-	}
-
+	
 	/**
 	 * Converts all lower case ASCII letters to upper case ASCII letters.
 	 * Params:

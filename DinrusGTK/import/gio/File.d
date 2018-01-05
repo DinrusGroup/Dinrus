@@ -785,7 +785,7 @@ public class File : ObjectG
 	 * Throws: GException on failure.
 	 */
 	public FileEnumerator enumerateChildrenFinish(AsyncResultIF res);
-	}
+	
 	
 	/**
 	 * Renames file to the specified display name.

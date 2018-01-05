@@ -64,22 +64,22 @@ private import gtkD.gtk.MenuShell;
  */
 public class Menu : MenuShell
 {
-	
+
 	/** the main Gtk struct */
 	protected GtkMenu* gtkMenu;
-	
-	
+
+
 	public GtkMenu* getMenuStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GtkMenu* gtkMenu);
-	
+
 	/**
 	 * Popups up this menu
 	 * Params:
@@ -87,7 +87,7 @@ public class Menu : MenuShell
 	 *  activateTime = you can pass the time from an event here
 	 */
 	void popup(guint button, guint32 activateTime);
-	
+
 	/**
 	 * Creates and append a submenu to this menu.
 	 * This menu item that actualy has the sub menu is also created.
@@ -96,30 +96,30 @@ public class Menu : MenuShell
 	 * Returns: the new menu
 	 */
 	Menu appendSubmenu(string label);
-	
+
 	/** */
 	void appendSubmenu(string label, Menu submenu);
-	
+
 	/** */
 	Menu prependSubmenu(string label);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	void delegate(GtkScrollType, Menu)[] onMoveScrollListeners;
 	/**
 	 */
 	void addOnMoveScroll(void delegate(GtkScrollType, Menu) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackMoveScroll(GtkMenu* menuStruct, GtkScrollType arg1, Menu menu);
-	
-	
+
+
 	/**
 	 * Creates a new GtkMenu.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
 	public this ();
-	
+
 	/**
 	 * Sets the GdkScreen on which the menu will be displayed.
 	 * Since 2.2
@@ -128,7 +128,7 @@ public class Menu : MenuShell
 	 *  determined by the widget the menu is attached to.
 	 */
 	public void setScreen(Screen screen);
-	
+
 	/**
 	 * Moves a GtkMenuItem to a new position within the GtkMenu.
 	 * Params:
@@ -137,7 +137,7 @@ public class Menu : MenuShell
 	 * 0 to n-1.
 	 */
 	public void reorderChild(Widget child, int position);
-	
+
 	/**
 	 * Adds a new GtkMenuItem to a (table) menu. The number of 'cells' that
 	 * an item will occupy is specified by left_attach, right_attach,
@@ -154,7 +154,7 @@ public class Menu : MenuShell
 	 * bottomAttach =  The row number to attach the bottom of the item to.
 	 */
 	public void attach(Widget child, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach);
-	
+
 	/**
 	 * Displays a menu and makes it available for selection. Applications can use
 	 * this function to display context-sensitive menus, and will typically supply
@@ -180,7 +180,7 @@ public class Menu : MenuShell
 	 * activateTime =  the time at which the activation event occurred.
 	 */
 	public void popup(Widget parentMenuShell, Widget parentMenuItem, GtkMenuPositionFunc func, void* data, uint button, uint activateTime);
-	
+
 	/**
 	 * Set the GtkAccelGroup which holds global accelerators for the menu.
 	 * This accelerator group needs to also be added to all windows that
@@ -190,15 +190,14 @@ public class Menu : MenuShell
 	 * accelGroup = the GtkAccelGroup to be associated with the menu.
 	 */
 	public void setAccelGroup(AccelGroup accelGroup);
-	
+
 	/**
 	 * Gets the GtkAccelGroup which holds global accelerators for the menu.
 	 * See gtk_menu_set_accel_group().
 	 * Returns:the GtkAccelGroup associated with the menu.
 	 */
-	public AccelGroup getAccelGroup()
-	{;
-	
+	public AccelGroup getAccelGroup();
+
 	/**
 	 * Sets an accelerator path for this menu from which accelerator paths
 	 * for its immediate children, its menu items, can be constructed.
@@ -214,14 +213,14 @@ public class Menu : MenuShell
 	 * accelPath =  a valid accelerator path
 	 */
 	public void setAccelPath(string accelPath);
-	
+
 	/**
 	 * Retrieves the accelerator path set on the menu.
 	 * Since 2.14
 	 * Returns: the accelerator path set on the menu.
 	 */
 	public string getAccelPath();
-	
+
 	/**
 	 * Sets the title string for the menu. The title is displayed when the menu
 	 * is shown as a tearoff menu. If title is NULL, the menu will see if it is
@@ -231,13 +230,13 @@ public class Menu : MenuShell
 	 * title =  a string containing the title for the menu.
 	 */
 	public void setTitle(string title);
-	
+
 	/**
 	 * Returns the title of the menu. See gtk_menu_set_title().
 	 * Returns: the title of the menu, or NULL if the menu has notitle set on it. This string is owned by the widget and shouldnot be modified or freed.
 	 */
 	public string getTitle();
-	
+
 	/**
 	 * Informs GTK+ on which monitor a menu should be popped up.
 	 * See gdk_screen_get_monitor_geometry().
@@ -252,21 +251,21 @@ public class Menu : MenuShell
 	 *  be popped up
 	 */
 	public void setMonitor(int monitorNum);
-	
+
 	/**
 	 * Retrieves the number of the monitor on which to show the menu.
 	 * Since 2.14
 	 * Returns: the number of the monitor on which the menu should be popped up or -1, if no monitor has been set
 	 */
 	public int getMonitor();
-	
+
 	/**
 	 * Returns whether the menu is torn off. See
 	 * gtk_menu_set_tearoff_state().
 	 * Returns: TRUE if the menu is currently torn off.
 	 */
 	public int getTearoffState();
-	
+
 	/**
 	 * Sets whether the menu should reserve space for drawing toggles
 	 * or icons, regardless of their actual presence.
@@ -275,7 +274,7 @@ public class Menu : MenuShell
 	 * reserveToggleSize =  whether to reserve size for toggles
 	 */
 	public void setReserveToggleSize(int reserveToggleSize);
-	
+
 	/**
 	 * Returns whether the menu reserves space for toggles and
 	 * icons, regardless of their actual presence.
@@ -283,24 +282,24 @@ public class Menu : MenuShell
 	 * Returns: Whether the menu reserves toggle space
 	 */
 	public int getReserveToggleSize();
-	
+
 	/**
 	 * Removes the menu from the screen.
 	 */
 	public void popdown();
-	
+
 	/**
 	 * Repositions the menu according to its position function.
 	 */
 	public void reposition();
-	
+
 	/**
 	 * Returns the selected menu item from the menu. This is used by the
 	 * GtkOptionMenu.
 	 * Returns:the GtkMenuItem that was last selected in the menu. If a selection has not yet been made, the first menu item is selected.
 	 */
 	public Widget getActive();
-	
+
 	/**
 	 * Selects the specified menu item within the menu. This is used by the
 	 * GtkOptionMenu and should not be used by anyone else.
@@ -309,7 +308,7 @@ public class Menu : MenuShell
 	 * 0 to n-1.
 	 */
 	public void setActive(uint index);
-	
+
 	/**
 	 * Changes the tearoff state of the menu. A menu is normally displayed
 	 * as drop down menu which persists as long as the menu is active. It can
@@ -319,7 +318,7 @@ public class Menu : MenuShell
 	 * tornOff = If TRUE, menu is displayed as a tearoff menu.
 	 */
 	public void setTearoffState(int tornOff);
-	
+
 	/**
 	 * Attaches the menu to the widget and provides a callback function that will
 	 * be invoked when the menu calls gtk_menu_detach() during its destruction.
@@ -329,20 +328,20 @@ public class Menu : MenuShell
 	 * the menu calls gtk_menu_detach().
 	 */
 	public void attachToWidget(Widget attachWidget, GtkMenuDetachFunc detacher);
-	
+
 	/**
 	 * Detaches the menu from the widget to which it had been attached.
 	 * This function will call the callback function, detacher, provided
 	 * when the gtk_menu_attach_to_widget() function was called.
 	 */
 	public void detach();
-	
+
 	/**
 	 * Returns the GtkWidget that the menu is attached to.
 	 * Returns:the GtkWidget that the menu is attached to.
 	 */
 	public Widget getAttachWidget();
-	
+
 	/**
 	 * Returns a list of the menus which are attached to this widget.
 	 * This list is owned by GTK+ and must not be modified.

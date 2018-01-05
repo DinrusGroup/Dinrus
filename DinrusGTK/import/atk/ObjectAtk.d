@@ -37,26 +37,26 @@ private import gtkD.gobject.ObjectG;
  */
 public class ObjectAtk : ObjectG
 {
-	
+
 	/** the main Gtk struct */
 	protected AtkObject* atkObject;
-	
-	
+
+
 	public AtkObject* getObjectAtkStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
 	protected override void* getStruct();
-	
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (AtkObject* atkObject);
-	
+
 	/**
 	 */
 	int[char[]] connectedSignals;
-	
+
 	void delegate(gpointer, ObjectAtk)[] onActiveDescendantChangedListeners;
 	/**
 	 * The "active-descendant-changed" signal is emitted by an object which has
@@ -66,8 +66,8 @@ public class ObjectAtk : ObjectG
 	 */
 	void addOnActiveDescendantChanged(void delegate(gpointer, ObjectAtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackActiveDescendantChanged(AtkObject* atkobjectStruct, gpointer arg1, ObjectAtk objectAtk);
-	}
-	
+
+
 	void delegate(guint, gpointer, ObjectAtk)[] onChildrenChangedListeners;
 	/**
 	 * The signal "children-changed" is emitted when a child is added or
@@ -81,7 +81,7 @@ public class ObjectAtk : ObjectG
 	 */
 	void addOnFocus(void delegate(gboolean, ObjectAtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackFocus(AtkObject* atkobjectStruct, gboolean arg1, ObjectAtk objectAtk);
-	
+
 	void delegate(gpointer, ObjectAtk)[] onPropertyChangeListeners;
 	/**
 	 * The signal "property-change" is emitted when an object's property
@@ -90,8 +90,8 @@ public class ObjectAtk : ObjectG
 	 */
 	void addOnPropertyChange(void delegate(gpointer, ObjectAtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackPropertyChange(AtkObject* atkobjectStruct, gpointer arg1, ObjectAtk objectAtk);
-	}
-	
+
+
 	void delegate(string, gboolean, ObjectAtk)[] onStateChangeListeners;
 	/**
 	 * The "state-change" signal is emitted when an object's state changes.
@@ -99,7 +99,7 @@ public class ObjectAtk : ObjectG
 	 */
 	void addOnStateChange(void delegate(string, gboolean, ObjectAtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackStateChange(AtkObject* atkobjectStruct, gchar* arg1, gboolean arg2, ObjectAtk objectAtk);
-	
+
 	void delegate(ObjectAtk)[] onVisibleDataChangedListeners;
 	/**
 	 * The "visible-data-changed" signal is emitted when the visual appearance of
@@ -110,8 +110,8 @@ public class ObjectAtk : ObjectG
 	 */
 	void addOnVisibleDataChanged(void delegate(ObjectAtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
 	extern(C) static void callBackVisibleDataChanged(AtkObject* atkobjectStruct, ObjectAtk objectAtk);
-	
-	
+
+
 	/**
 	 * Registers the role specified by name.
 	 * Params:
@@ -119,7 +119,7 @@ public class ObjectAtk : ObjectG
 	 * Returns: an AtkRole for the new role.
 	 */
 	public static AtkRole roleRegister(string name);
-	
+
 	/**
 	 * Gets a reference to an object's AtkObject implementation, if
 	 * the object implements AtkObjectIface
@@ -129,31 +129,31 @@ public class ObjectAtk : ObjectG
 	 * Returns: a reference to an object's AtkObject implementation
 	 */
 	public static ObjectAtk implementorRefAccessible(AtkImplementor* implementor);
-	
+
 	/**
 	 * Gets the accessible name of the accessible.
 	 * Returns: a character string representing the accessible name of the object.
 	 */
 	public string getName();
-	
+
 	/**
 	 * Gets the accessible description of the accessible.
 	 * Returns: a character string representing the accessible descriptionof the accessible.
 	 */
 	public string getDescription();
-	
+
 	/**
 	 * Gets the accessible parent of the accessible.
 	 * Returns: a AtkObject representing the accessible parent of the accessible
 	 */
 	public ObjectAtk getParent();
-	
+
 	/**
 	 * Gets the number of accessible children of the accessible.
 	 * Returns: an integer representing the number of accessible childrenof the accessible.
 	 */
 	public int getNAccessibleChildren();
-	
+
 	/**
 	 * Gets a reference to the specified accessible child of the object.
 	 * The accessible children are 0-based so the first accessible child is
@@ -163,13 +163,13 @@ public class ObjectAtk : ObjectG
 	 * Returns: an AtkObject representing the specified accessible childof the accessible.
 	 */
 	public ObjectAtk refAccessibleChild(int i);
-	
+
 	/**
 	 * Gets the AtkRelationSet associated with the object.
 	 * Returns: an AtkRelationSet representing the relation set of the object.
 	 */
 	public RelationSet refRelationSet();
-	
+
 	/**
 	 * Warning
 	 * atk_object_get_layer is deprecated and should not be used in newly-written code. Use atk_component_get_layer instead.
@@ -177,7 +177,7 @@ public class ObjectAtk : ObjectG
 	 * Returns: an AtkLayer which is the layer of the accessible
 	 */
 	public AtkLayer getLayer();
-	
+
 	/**
 	 * Warning
 	 * atk_object_get_mdi_zorder is deprecated and should not be used in newly-written code. Use atk_component_get_mdi_zorder instead.
@@ -186,41 +186,41 @@ public class ObjectAtk : ObjectG
 	 * Returns: a gint which is the zorder of the accessible, i.e. the depth at which the component is shown in relation to other components in the same container.
 	 */
 	public int getMdiZorder();
-	
+
 	/**
 	 * Gets the role of the accessible.
 	 * Returns: an AtkRole which is the role of the accessible
 	 */
 	public AtkRole getRole();
-	
+
 	/**
 	 * Gets a reference to the state set of the accessible; the caller must
 	 * unreference it when it is no longer needed.
 	 * Returns: a reference to an AtkStateSet which is the stateset of the accessible
 	 */
 	public StateSet refStateSet();
-	
+
 	/**
 	 * Gets the 0-based index of this accessible in its parent; returns -1 if the
 	 * accessible does not have an accessible parent.
 	 * Returns: an integer which is the index of the accessible in its parent
 	 */
 	public int getIndexInParent();
-	
+
 	/**
 	 * Sets the accessible name of the accessible.
 	 * Params:
 	 * name =  a character string to be set as the accessible name
 	 */
 	public void setName(string name);
-	
+
 	/**
 	 * Sets the accessible description of the accessible.
 	 * Params:
 	 * description =  a character string to be set as the accessible description
 	 */
 	public void setDescription(string description);
-	
+
 	/**
 	 * Sets the accessible parent of the accessible.
 	 * Params:
@@ -234,7 +234,7 @@ public class ObjectAtk : ObjectG
 	 * role =  an AtkRole to be set as the role
 	 */
 	public void setRole(AtkRole role);
-	
+
 	/**
 	 * Specifies a function to be called when a property changes value.
 	 * Params:
@@ -242,14 +242,14 @@ public class ObjectAtk : ObjectG
 	 * Returns: a guint which is the handler id used in atk_object_remove_property_change_handler()
 	 */
 	public uint connectPropertyChangeHandler(AtkPropertyChangeHandler* handler);
-	
+
 	/**
 	 * Removes a property change handler.
 	 * Params:
 	 * handlerId =  a guint which identifies the handler to be removed.
 	 */
 	public void removePropertyChangeHandler(uint handlerId);
-	
+
 	/**
 	 * Emits a state-change signal for the specified state.
 	 * Params:
@@ -257,7 +257,7 @@ public class ObjectAtk : ObjectG
 	 * value =  a gboolean which indicates whether the state is being set on or off
 	 */
 	public void notifyStateChange(AtkState state, int value);
-	
+
 	/**
 	 * This function is called when implementing subclasses of AtkObject.
 	 * It does initialization required for the new object. It is intended
@@ -267,7 +267,7 @@ public class ObjectAtk : ObjectG
 	 * data =  a gpointer which identifies the object for which the AtkObject was created.
 	 */
 	public void initialize(void* data);
-	
+
 	/**
 	 * Adds a relationship of the specified type with the specified target.
 	 * Params:
@@ -276,7 +276,7 @@ public class ObjectAtk : ObjectG
 	 * Returns:TRUE if the relationship is added.
 	 */
 	public int addRelationship(AtkRelationType relationship, ObjectAtk target);
-	
+
 	/**
 	 * Removes a relationship of the specified type with the specified target.
 	 * Params:
@@ -285,7 +285,7 @@ public class ObjectAtk : ObjectG
 	 * Returns:TRUE if the relationship is removed.
 	 */
 	public int removeRelationship(AtkRelationType relationship, ObjectAtk target);
-	
+
 	/**
 	 * Get a list of properties applied to this object as a whole, as an AtkAttributeSet consisting of
 	 * name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
@@ -295,7 +295,7 @@ public class ObjectAtk : ObjectG
 	 * Returns: an AtkAttributeSet consisting of all explicit properties/annotations applied to the object, or an empty set if the object has no name-value pair attributes assigned to it.
 	 */
 	public AtkAttributeSet* getAttributes();
-	
+
 	/**
 	 * Gets the description string describing the AtkRole role.
 	 * Params:
@@ -303,7 +303,7 @@ public class ObjectAtk : ObjectG
 	 * Returns: the string describing the AtkRole
 	 */
 	public static string roleGetName(AtkRole role);
-	
+
 	/**
 	 * Gets the localized description string describing the AtkRole role.
 	 * Params:
@@ -311,7 +311,7 @@ public class ObjectAtk : ObjectG
 	 * Returns: the localized string describing the AtkRole
 	 */
 	public static string roleGetLocalizedName(AtkRole role);
-	
+
 	/**
 	 * Get the AtkRole type corresponding to a rolew name.
 	 * Params:

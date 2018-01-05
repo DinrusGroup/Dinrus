@@ -42,25 +42,25 @@ private import gtkD.gobject.ObjectG;
  */
 public class IOStream : ObjectG
 {
-	
+
 	/** the main Gtk struct */
 	protected GIOStream* gIOStream;
-	
-	
+
+
 	public GIOStream* getIOStreamStruct();
-	
-	
+
+
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct;
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
 	public this (GIOStream* gIOStream);
-	
+
 	/**
 	 */
-	
+
 	/**
 	 * Gets the input stream for this object. This is used
 	 * for reading.
@@ -68,7 +68,7 @@ public class IOStream : ObjectG
 	 * Returns: a GInputStream, owned by the GIOStream. Do not free.
 	 */
 	public InputStream getInputStream();
-	
+
 	/**
 	 * Gets the output stream for this object. This is used for
 	 * writing.
@@ -76,7 +76,7 @@ public class IOStream : ObjectG
 	 * Returns: a GOutputStream, owned by the GIOStream. Do not free.
 	 */
 	public OutputStream getOutputStream();
-	
+
 	/**
 	 * Closes the stream, releasing resources related to it. This will also
 	 * closes the individual input and output streams, if they are not already
@@ -111,7 +111,7 @@ public class IOStream : ObjectG
 	 * Throws: GException on failure.
 	 */
 	public int close(Cancellable cancellable);
-	
+
 	/**
 	 * Requests an asynchronous close of the stream, releasing resources
 	 * related to it. When the operation is finished callback will be
@@ -129,7 +129,7 @@ public class IOStream : ObjectG
 	 * userData =  the data to pass to callback function
 	 */
 	public void closeAsync(int ioPriority, Cancellable cancellable, GAsyncReadyCallback callback, void* userData);
-	
+
 	/**
 	 * Closes a stream.
 	 * Since 2.22
@@ -139,21 +139,21 @@ public class IOStream : ObjectG
 	 * Throws: GException on failure.
 	 */
 	public int closeFinish(AsyncResultIF result);
-	
+
 	/**
 	 * Checks if a stream is closed.
 	 * Since 2.22
 	 * Returns: TRUE if the stream is closed.
 	 */
 	public int isClosed();
-	
+
 	/**
 	 * Checks if a stream has pending actions.
 	 * Since 2.22
 	 * Returns: TRUE if stream has pending actions.
 	 */
 	public int hasPending();
-	
+
 	/**
 	 * Sets stream to have actions pending. If the pending flag is
 	 * already set or stream is closed, it will return FALSE and set
@@ -163,7 +163,7 @@ public class IOStream : ObjectG
 	 * Throws: GException on failure.
 	 */
 	public int setPending();
-	
+
 	/**
 	 * Clears the pending flag on stream.
 	 * Since 2.22
