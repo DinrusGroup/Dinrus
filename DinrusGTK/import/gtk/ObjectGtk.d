@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkObject.html
- * outPack = gtk
- * outFile = ObjectGtk
- * strct   = GtkObject
- * realStrct=
- * ctorStrct=
- * clss    = ObjectGtk
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_object_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.ObjectGtk
- * structWrap:
- * 	- GtkObject* -> ObjectGtk
- * module aliases:
- * local aliases:
- * overrides:
- * 	- setData
- * 	- getData
- */
-
 module gtkD.gtk.ObjectGtk;
 
 public  import gtkD.gtkc.gtktypes;
@@ -128,44 +72,19 @@ public class ObjectGtk : ObjectG
 	protected GtkObject* gtkObject;
 	
 	
-	public GtkObject* getObjectGtkStruct()
-	{
-		return gtkObject;
-	}
+	public GtkObject* getObjectGtkStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkObject;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkObject* gtkObject)
-	{
-		if(gtkObject is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkObject);
-		if( ptr !is null )
-		{
-			this = cast(ObjectGtk)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkObject);
-		this.gtkObject = gtkObject;
-	}
+	public this (GtkObject* gtkObject);
 	
 	/** */
-	public static string getId(StockID id)
-	{
-		return StockDesc[id];
-	}
+	public static string getId(StockID id);
 	
 	/**
 	 */
@@ -179,28 +98,8 @@ public class ObjectGtk : ObjectG
 	 * See Also
 	 * GObject
 	 */
-	void addOnDestroy(void delegate(ObjectGtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("destroy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"destroy",
-			cast(GCallback)&callBackDestroy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["destroy"] = 1;
-		}
-		onDestroyListeners ~= dlg;
-	}
-	extern(C) static void callBackDestroy(GtkObject* objectStruct, ObjectGtk objectGtk)
-	{
-		foreach ( void delegate(ObjectGtk) dlg ; objectGtk.onDestroyListeners )
-		{
-			dlg(objectGtk);
-		}
-	}
+	void addOnDestroy(void delegate(ObjectGtk) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDestroy(GtkObject* objectStruct, ObjectGtk objectGtk);
 	
 	
 	/**
@@ -210,11 +109,7 @@ public class ObjectGtk : ObjectG
 	 * otherwise does nothing. See the GtkObject overview documentation at
 	 * the top of the page.
 	 */
-	public void sink()
-	{
-		// void gtk_object_sink (GtkObject *object);
-		gtk_object_sink(gtkObject);
-	}
+	public void sink();
 	
 	/**
 	 * Warning
@@ -222,16 +117,7 @@ public class ObjectGtk : ObjectG
 	 * Increases the reference count of the object.
 	 * Returns:@object.
 	 */
-	public ObjectGtk doref()
-	{
-		// GtkObject* gtk_object_ref (GtkObject *object);
-		auto p = gtk_object_ref(gtkObject);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ObjectGtk(cast(GtkObject*) p);
-	}
+	public ObjectGtk doref();
 	
 	/**
 	 * Warning
@@ -239,11 +125,7 @@ public class ObjectGtk : ObjectG
 	 * Decreases the reference count of an object. When its reference count drops
 	 * to 0, the object is finalized (i.e. its memory is freed).
 	 */
-	public void unref()
-	{
-		// void gtk_object_unref (GtkObject *object);
-		gtk_object_unref(gtkObject);
-	}
+	public void unref();
 	
 	/**
 	 * Warning
@@ -256,11 +138,7 @@ public class ObjectGtk : ObjectG
 	 * notify = callback to invoke before the object is freed.
 	 * data = extra data to pass to notify.
 	 */
-	public void weakref(GDestroyNotify notify, void* data)
-	{
-		// void gtk_object_weakref (GtkObject *object,  GDestroyNotify notify,  gpointer data);
-		gtk_object_weakref(gtkObject, notify, data);
-	}
+	public void weakref(GDestroyNotify notify, void* data);
 	
 	/**
 	 * Warning
@@ -270,11 +148,7 @@ public class ObjectGtk : ObjectG
 	 * notify = callback to search for.
 	 * data = data to search for.
 	 */
-	public void weakunref(GDestroyNotify notify, void* data)
-	{
-		// void gtk_object_weakunref (GtkObject *object,  GDestroyNotify notify,  gpointer data);
-		gtk_object_weakunref(gtkObject, notify, data);
-	}
+	public void weakunref(GDestroyNotify notify, void* data);
 	
 	/**
 	 * Emits the "destroy" signal notifying all reference holders that they should
@@ -284,11 +158,7 @@ public class ObjectGtk : ObjectG
 	 * its reference count actually drops to 0; gtk_object_destroy() merely asks
 	 * reference holders to release their references, it does not free the object.
 	 */
-	public void destroy()
-	{
-		// void gtk_object_destroy (GtkObject *object);
-		gtk_object_destroy(gtkObject);
-	}
+	public void destroy();
 	
 	/**
 	 * Warning
@@ -301,11 +171,7 @@ public class ObjectGtk : ObjectG
 	 * key = name of the key.
 	 * data = data to associate with that key.
 	 */
-	public override void setData(string key, void* data)
-	{
-		// void gtk_object_set_data (GtkObject *object,  const gchar *key,  gpointer data);
-		gtk_object_set_data(gtkObject, Str.toStringz(key), data);
-	}
+	public override void setData(string key, void* data);
 	
 	/**
 	 * Warning
@@ -318,11 +184,7 @@ public class ObjectGtk : ObjectG
 	 * data = data to associate with that key.
 	 * destroy = function to call when the association is destroyed.
 	 */
-	public void setDataFull(string key, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_object_set_data_full (GtkObject *object,  const gchar *key,  gpointer data,  GDestroyNotify destroy);
-		gtk_object_set_data_full(gtkObject, Str.toStringz(key), data, destroy);
-	}
+	public void setDataFull(string key, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Warning
@@ -334,11 +196,7 @@ public class ObjectGtk : ObjectG
 	 * Params:
 	 * key = name of the key for that association.
 	 */
-	public void removeData(string key)
-	{
-		// void gtk_object_remove_data (GtkObject *object,  const gchar *key);
-		gtk_object_remove_data(gtkObject, Str.toStringz(key));
-	}
+	public void removeData(string key);
 	
 	/**
 	 * Warning
@@ -348,11 +206,7 @@ public class ObjectGtk : ObjectG
 	 * key = name of the key for that association.
 	 * Returns:the data if found, or NULL if no such data exists.
 	 */
-	public override void* getData(string key)
-	{
-		// gpointer gtk_object_get_data (GtkObject *object,  const gchar *key);
-		return gtk_object_get_data(gtkObject, Str.toStringz(key));
-	}
+	public override void* getData(string key);
 	
 	/**
 	 * Warning
@@ -365,11 +219,7 @@ public class ObjectGtk : ObjectG
 	 * Params:
 	 * key = name of the key for that association.
 	 */
-	public void removeNoNotify(string key)
-	{
-		// void gtk_object_remove_no_notify (GtkObject *object,  const gchar *key);
-		gtk_object_remove_no_notify(gtkObject, Str.toStringz(key));
-	}
+	public void removeNoNotify(string key);
 	
 	/**
 	 * Warning
@@ -379,11 +229,7 @@ public class ObjectGtk : ObjectG
 	 * Params:
 	 * data = the new value for the user data.
 	 */
-	public void setUserData(void* data)
-	{
-		// void gtk_object_set_user_data (GtkObject *object,  gpointer data);
-		gtk_object_set_user_data(gtkObject, data);
-	}
+	public void setUserData(void* data);
 	
 	/**
 	 * Warning
@@ -393,11 +239,7 @@ public class ObjectGtk : ObjectG
 	 * writing applications.
 	 * Returns:the user data field for object.
 	 */
-	public void* getUserData()
-	{
-		// gpointer gtk_object_get_user_data (GtkObject *object);
-		return gtk_object_get_user_data(gtkObject);
-	}
+	public void* getUserData();
 	
 	/**
 	 * Warning
@@ -413,11 +255,7 @@ public class ObjectGtk : ObjectG
 	 * argId = an internal number, passed in from here to the "set_arg" and
 	 * "get_arg" handlers of the object.
 	 */
-	public static void addArgType(string argName, GType argType, uint argFlags, uint argId)
-	{
-		// void gtk_object_add_arg_type (const gchar *arg_name,  GType arg_type,  guint arg_flags,  guint arg_id);
-		gtk_object_add_arg_type(Str.toStringz(argName), argType, argFlags, argId);
-	}
+	public static void addArgType(string argName, GType argType, uint argFlags, uint argId);
 	
 	/**
 	 * Warning
@@ -430,11 +268,7 @@ public class ObjectGtk : ObjectG
 	 * dataId = quark of the key.
 	 * data = data to associate with that key.
 	 */
-	public void setDataById(GQuark dataId, void* data)
-	{
-		// void gtk_object_set_data_by_id (GtkObject *object,  GQuark data_id,  gpointer data);
-		gtk_object_set_data_by_id(gtkObject, dataId, data);
-	}
+	public void setDataById(GQuark dataId, void* data);
 	
 	/**
 	 * Warning
@@ -448,11 +282,7 @@ public class ObjectGtk : ObjectG
 	 * data = data to associate with that key.
 	 * destroy = function to call when the association is destroyed.
 	 */
-	public void setDataByIdFull(GQuark dataId, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_object_set_data_by_id_full (GtkObject *object,  GQuark data_id,  gpointer data,  GDestroyNotify destroy);
-		gtk_object_set_data_by_id_full(gtkObject, dataId, data, destroy);
-	}
+	public void setDataByIdFull(GQuark dataId, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Warning
@@ -465,11 +295,7 @@ public class ObjectGtk : ObjectG
 	 * dataId = quark of the key.
 	 * Returns:the data if found, or NULL if no such data exists.
 	 */
-	public void* getDataById(GQuark dataId)
-	{
-		// gpointer gtk_object_get_data_by_id (GtkObject *object,  GQuark data_id);
-		return gtk_object_get_data_by_id(gtkObject, dataId);
-	}
+	public void* getDataById(GQuark dataId);
 	
 	/**
 	 * Warning
@@ -483,11 +309,7 @@ public class ObjectGtk : ObjectG
 	 * Params:
 	 * dataId = quark of the key.
 	 */
-	public void removeDataById(GQuark dataId)
-	{
-		// void gtk_object_remove_data_by_id (GtkObject *object,  GQuark data_id);
-		gtk_object_remove_data_by_id(gtkObject, dataId);
-	}
+	public void removeDataById(GQuark dataId);
 	
 	/**
 	 * Warning
@@ -499,9 +321,5 @@ public class ObjectGtk : ObjectG
 	 * Params:
 	 * keyId = quark of the key.
 	 */
-	public void removeNoNotifyById(GQuark keyId)
-	{
-		// void gtk_object_remove_no_notify_by_id (GtkObject *object,  GQuark key_id);
-		gtk_object_remove_no_notify_by_id(gtkObject, keyId);
-	}
+	public void removeNoNotifyById(GQuark keyId);
 }

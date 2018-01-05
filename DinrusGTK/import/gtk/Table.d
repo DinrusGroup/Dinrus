@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTable.html
- * outPack = gtk
- * outFile = Table
- * strct   = GtkTable
- * realStrct=
- * ctorStrct=
- * clss    = Table
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_table_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_table_new
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Table;
 
 public  import gtkD.gtkc.gtktypes;
@@ -89,38 +35,16 @@ public class Table : Container
 	protected GtkTable* gtkTable;
 	
 	
-	public GtkTable* getTableStruct()
-	{
-		return gtkTable;
-	}
+	public GtkTable* getTableStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTable;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTable* gtkTable)
-	{
-		if(gtkTable is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTable);
-		if( ptr !is null )
-		{
-			this = cast(Table)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkTable);
-		this.gtkTable = gtkTable;
-	}
+	public this (GtkTable* gtkTable);
 	
 	int row;
 	int col;
@@ -133,11 +57,7 @@ public class Table : Container
 	/**
 	 * Removes all children and resizes the table to 1,1
 	 */
-	override void removeAll()
-	{
-		super.removeAll();
-		resize(1,1);
-	}
+	override void removeAll();
 	
 	/**
 	 * Used to create a new table widget. An initial size must be given by
@@ -151,40 +71,13 @@ public class Table : Container
 	 *  containing the largest widget.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (uint rows, uint columns, int homogeneous)
-	{
-		// GtkWidget* gtk_table_new (guint rows,  guint columns,  gboolean homogeneous);
-		auto p = gtk_table_new(rows, columns, homogeneous);
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_table_new");
-		}
-		
-		this(cast(GtkTable*) p);
-		
-		row = 0;
-		col = 0;
-		maxRows = rows;
-		maxCols = columns;
-	}
+	public this (uint rows, uint columns, int homogeneous);
 	
 	
 	/**
 	 * Attach a new widget creating a new row if necessary
 	 */
-	void attach(Widget child)
-	{
-		attach(child, col, col + 1, row, row + 1,
-		defaultXOption, defaultYOption,
-		getDefaultColSpacing(), getDefaultRowSpacing());
-		++col;
-		if (col >= maxCols)
-		{
-			col = 0;
-			++row;
-		}
-	}
+	void attach(Widget child);
 	
 	/**
 	 */
@@ -195,11 +88,7 @@ public class Table : Container
 	 * rows = The new number of rows.
 	 * columns = The new number of columns.
 	 */
-	public void resize(uint rows, uint columns)
-	{
-		// void gtk_table_resize (GtkTable *table,  guint rows,  guint columns);
-		gtk_table_resize(gtkTable, rows, columns);
-	}
+	public void resize(uint rows, uint columns);
 	
 	/**
 	 * Adds a widget to a table. The number of 'cells' that a widget will occupy is
@@ -217,11 +106,7 @@ public class Table : Container
 	 * xpadding = An integer value specifying the padding on the left and right of the widget being added to the table.
 	 * ypadding = The amount of padding above and below the child widget.
 	 */
-	public void attach(Widget child, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach, GtkAttachOptions xoptions, GtkAttachOptions yoptions, uint xpadding, uint ypadding)
-	{
-		// void gtk_table_attach (GtkTable *table,  GtkWidget *child,  guint left_attach,  guint right_attach,  guint top_attach,  guint bottom_attach,  GtkAttachOptions xoptions,  GtkAttachOptions yoptions,  guint xpadding,  guint ypadding);
-		gtk_table_attach(gtkTable, (child is null) ? null : child.getWidgetStruct(), leftAttach, rightAttach, topAttach, bottomAttach, xoptions, yoptions, xpadding, ypadding);
-	}
+	public void attach(Widget child, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach, GtkAttachOptions xoptions, GtkAttachOptions yoptions, uint xpadding, uint ypadding);
 	
 	/**
 	 * As there are many options associated with gtk_table_attach(), this convenience function provides the programmer with a means to add children to a table with identical padding and expansion options. The values used for the GtkAttachOptions are GTK_EXPAND | GTK_FILL, and the padding is set to 0.
@@ -232,11 +117,7 @@ public class Table : Container
 	 * topAttach = The row number to attach the top of the child widget to.
 	 * bottomAttach = The row number to attach the bottom of the child widget to.
 	 */
-	public void attachDefaults(Widget widget, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach)
-	{
-		// void gtk_table_attach_defaults (GtkTable *table,  GtkWidget *widget,  guint left_attach,  guint right_attach,  guint top_attach,  guint bottom_attach);
-		gtk_table_attach_defaults(gtkTable, (widget is null) ? null : widget.getWidgetStruct(), leftAttach, rightAttach, topAttach, bottomAttach);
-	}
+	public void attachDefaults(Widget widget, uint leftAttach, uint rightAttach, uint topAttach, uint bottomAttach);
 	
 	/**
 	 * Changes the space between a given table row and the subsequent row.
@@ -244,11 +125,7 @@ public class Table : Container
 	 * row = row number whose spacing will be changed.
 	 * spacing = number of pixels that the spacing should take up.
 	 */
-	public void setRowSpacing(uint row, uint spacing)
-	{
-		// void gtk_table_set_row_spacing (GtkTable *table,  guint row,  guint spacing);
-		gtk_table_set_row_spacing(gtkTable, row, spacing);
-	}
+	public void setRowSpacing(uint row, uint spacing);
 	
 	/**
 	 * Alters the amount of space between a given table column and the following
@@ -257,33 +134,21 @@ public class Table : Container
 	 * column = the column whose spacing should be changed.
 	 * spacing = number of pixels that the spacing should take up.
 	 */
-	public void setColSpacing(uint column, uint spacing)
-	{
-		// void gtk_table_set_col_spacing (GtkTable *table,  guint column,  guint spacing);
-		gtk_table_set_col_spacing(gtkTable, column, spacing);
-	}
+	public void setColSpacing(uint column, uint spacing);
 	
 	/**
 	 * Sets the space between every row in table equal to spacing.
 	 * Params:
 	 * spacing = the number of pixels of space to place between every row in the table.
 	 */
-	public void setRowSpacings(uint spacing)
-	{
-		// void gtk_table_set_row_spacings (GtkTable *table,  guint spacing);
-		gtk_table_set_row_spacings(gtkTable, spacing);
-	}
+	public void setRowSpacings(uint spacing);
 	
 	/**
 	 * Sets the space between every column in table equal to spacing.
 	 * Params:
 	 * spacing = the number of pixels of space to place between every column in the table.
 	 */
-	public void setColSpacings(uint spacing)
-	{
-		// void gtk_table_set_col_spacings (GtkTable *table,  guint spacing);
-		gtk_table_set_col_spacings(gtkTable, spacing);
-	}
+	public void setColSpacings(uint spacing);
 	
 	/**
 	 * Changes the homogenous property of table cells, ie. whether all cells are an equal size or not.
@@ -291,11 +156,7 @@ public class Table : Container
 	 * homogeneous = Set to TRUE to ensure all table cells are the same size. Set
 	 * to FALSE if this is not your desired behaviour.
 	 */
-	public void setHomogeneous(int homogeneous)
-	{
-		// void gtk_table_set_homogeneous (GtkTable *table,  gboolean homogeneous);
-		gtk_table_set_homogeneous(gtkTable, homogeneous);
-	}
+	public void setHomogeneous(int homogeneous);
 	
 	/**
 	 * Gets the default row spacing for the table. This is
@@ -303,22 +164,14 @@ public class Table : Container
 	 * (See gtk_table_set_row_spacings())
 	 * Returns: the default row spacing
 	 */
-	public uint getDefaultRowSpacing()
-	{
-		// guint gtk_table_get_default_row_spacing (GtkTable *table);
-		return gtk_table_get_default_row_spacing(gtkTable);
-	}
+	public uint getDefaultRowSpacing();
 	
 	/**
 	 * Returns whether the table cells are all constrained to the same
 	 * width and height. (See gtk_table_set_homogenous())
 	 * Returns: TRUE if the cells are all constrained to the same size
 	 */
-	public int getHomogeneous()
-	{
-		// gboolean gtk_table_get_homogeneous (GtkTable *table);
-		return gtk_table_get_homogeneous(gtkTable);
-	}
+	public int getHomogeneous();
 	
 	/**
 	 * Gets the amount of space between row row, and
@@ -327,11 +180,7 @@ public class Table : Container
 	 * row =  a row in the table, 0 indicates the first row
 	 * Returns: the row spacing
 	 */
-	public uint getRowSpacing(uint row)
-	{
-		// guint gtk_table_get_row_spacing (GtkTable *table,  guint row);
-		return gtk_table_get_row_spacing(gtkTable, row);
-	}
+	public uint getRowSpacing(uint row);
 	
 	/**
 	 * Gets the amount of space between column col, and
@@ -340,11 +189,7 @@ public class Table : Container
 	 * column =  a column in the table, 0 indicates the first column
 	 * Returns: the column spacing
 	 */
-	public uint getColSpacing(uint column)
-	{
-		// guint gtk_table_get_col_spacing (GtkTable *table,  guint column);
-		return gtk_table_get_col_spacing(gtkTable, column);
-	}
+	public uint getColSpacing(uint column);
 	
 	/**
 	 * Gets the default column spacing for the table. This is
@@ -352,9 +197,5 @@ public class Table : Container
 	 * (See gtk_table_set_col_spacings())
 	 * Returns: the default column spacing
 	 */
-	public uint getDefaultColSpacing()
-	{
-		// guint gtk_table_get_default_col_spacing (GtkTable *table);
-		return gtk_table_get_default_col_spacing(gtkTable);
-	}
+	public uint getDefaultColSpacing();
 }

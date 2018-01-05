@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRange.html
- * outPack = gtk
- * outFile = Range
- * strct   = GtkRange
- * realStrct=
- * ctorStrct=
- * clss    = Range
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- OrientableIF
- * prefixes:
- * 	- gtk_range_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Adjustment
- * 	- gtkD.gtk.OrientableIF
- * 	- gtkD.gtk.OrientableT
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Range;
 
 public  import gtkD.gtkc.gtktypes;
@@ -88,38 +32,16 @@ public class Range : Widget, OrientableIF
 	protected GtkRange* gtkRange;
 	
 	
-	public GtkRange* getRangeStruct()
-	{
-		return gtkRange;
-	}
+	public GtkRange* getRangeStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRange;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRange* gtkRange)
-	{
-		if(gtkRange is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRange);
-		if( ptr !is null )
-		{
-			this = cast(Range)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkRange);
-		this.gtkRange = gtkRange;
-	}
+	public this (GtkRange* gtkRange);
 	
 	// add the Orientable capabilities
 	mixin OrientableT!(GtkRange);
@@ -131,28 +53,8 @@ public class Range : Widget, OrientableIF
 	void delegate(gdouble, Range)[] onAdjustBoundsListeners;
 	/**
 	 */
-	void addOnAdjustBounds(void delegate(gdouble, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("adjust-bounds" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"adjust-bounds",
-			cast(GCallback)&callBackAdjustBounds,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["adjust-bounds"] = 1;
-		}
-		onAdjustBoundsListeners ~= dlg;
-	}
-	extern(C) static void callBackAdjustBounds(GtkRange* rangeStruct, gdouble arg1, Range range)
-	{
-		foreach ( void delegate(gdouble, Range) dlg ; range.onAdjustBoundsListeners )
-		{
-			dlg(arg1, range);
-		}
-	}
+	void addOnAdjustBounds(void delegate(gdouble, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAdjustBounds(GtkRange* rangeStruct, gdouble arg1, Range range);
 	
 	bool delegate(GtkScrollType, gdouble, Range)[] onChangeValueListeners;
 	/**
@@ -171,87 +73,22 @@ public class Range : Widget, OrientableIF
 	 * ::change-value handler.
 	 * Since 2.6
 	 */
-	void addOnChangeValue(bool delegate(GtkScrollType, gdouble, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("change-value" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"change-value",
-			cast(GCallback)&callBackChangeValue,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["change-value"] = 1;
-		}
-		onChangeValueListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackChangeValue(GtkRange* rangeStruct, GtkScrollType scroll, gdouble value, Range range)
-	{
-		foreach ( bool delegate(GtkScrollType, gdouble, Range) dlg ; range.onChangeValueListeners )
-		{
-			if ( dlg(scroll, value, range) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnChangeValue(bool delegate(GtkScrollType, gdouble, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackChangeValue(GtkRange* rangeStruct, GtkScrollType scroll, gdouble value, Range range);
 	
 	void delegate(GtkScrollType, Range)[] onMoveSliderListeners;
 	/**
 	 * Virtual function that moves the slider. Used for keybindings.
 	 */
-	void addOnMoveSlider(void delegate(GtkScrollType, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-slider" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-slider",
-			cast(GCallback)&callBackMoveSlider,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-slider"] = 1;
-		}
-		onMoveSliderListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveSlider(GtkRange* rangeStruct, GtkScrollType step, Range range)
-	{
-		foreach ( void delegate(GtkScrollType, Range) dlg ; range.onMoveSliderListeners )
-		{
-			dlg(step, range);
-		}
-	}
+	void addOnMoveSlider(void delegate(GtkScrollType, Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveSlider(GtkRange* rangeStruct, GtkScrollType step, Range range);
 	
 	void delegate(Range)[] onValueChangedListeners;
 	/**
 	 * Emitted when the range value changes.
 	 */
-	void addOnValueChanged(void delegate(Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("value-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"value-changed",
-			cast(GCallback)&callBackValueChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["value-changed"] = 1;
-		}
-		onValueChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackValueChanged(GtkRange* rangeStruct, Range range)
-	{
-		foreach ( void delegate(Range) dlg ; range.onValueChangedListeners )
-		{
-			dlg(range);
-		}
-	}
+	void addOnValueChanged(void delegate(Range) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackValueChanged(GtkRange* rangeStruct, Range range);
 	
 	
 	/**
@@ -259,33 +96,21 @@ public class Range : Widget, OrientableIF
 	 * Since 2.12
 	 * Returns: The current fill level
 	 */
-	public double getFillLevel()
-	{
-		// gdouble gtk_range_get_fill_level (GtkRange *range);
-		return gtk_range_get_fill_level(gtkRange);
-	}
+	public double getFillLevel();
 	
 	/**
 	 * Gets whether the range is restricted to the fill level.
 	 * Since 2.12
 	 * Returns: TRUE if range is restricted to the fill level.
 	 */
-	public int getRestrictToFillLevel()
-	{
-		// gboolean gtk_range_get_restrict_to_fill_level  (GtkRange *range);
-		return gtk_range_get_restrict_to_fill_level(gtkRange);
-	}
+	public int getRestrictToFillLevel();
 	
 	/**
 	 * Gets whether the range displays the fill level graphically.
 	 * Since 2.12
 	 * Returns: TRUE if range shows the fill level.
 	 */
-	public int getShowFillLevel()
-	{
-		// gboolean gtk_range_get_show_fill_level (GtkRange *range);
-		return gtk_range_get_show_fill_level(gtkRange);
-	}
+	public int getShowFillLevel();
 	
 	/**
 	 * Set the new position of the fill level indicator.
@@ -306,11 +131,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * fillLevel =  the new position of the fill level indicator
 	 */
-	public void setFillLevel(double fillLevel)
-	{
-		// void gtk_range_set_fill_level (GtkRange *range,  gdouble fill_level);
-		gtk_range_set_fill_level(gtkRange, fillLevel);
-	}
+	public void setFillLevel(double fillLevel);
 	
 	/**
 	 * Sets whether the slider is restricted to the fill level. See
@@ -320,11 +141,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * restrictToFillLevel =  Whether the fill level restricts slider movement.
 	 */
-	public void setRestrictToFillLevel(int restrictToFillLevel)
-	{
-		// void gtk_range_set_restrict_to_fill_level  (GtkRange *range,  gboolean restrict_to_fill_level);
-		gtk_range_set_restrict_to_fill_level(gtkRange, restrictToFillLevel);
-	}
+	public void setRestrictToFillLevel(int restrictToFillLevel);
 	
 	/**
 	 * Sets whether a graphical fill level is show on the trough. See
@@ -334,11 +151,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * showFillLevel =  Whether a fill level indicator graphics is shown.
 	 */
-	public void setShowFillLevel(int showFillLevel)
-	{
-		// void gtk_range_set_show_fill_level (GtkRange *range,  gboolean show_fill_level);
-		gtk_range_set_show_fill_level(gtkRange, showFillLevel);
-	}
+	public void setShowFillLevel(int showFillLevel);
 	
 	/**
 	 * Get the GtkAdjustment which is the "model" object for GtkRange.
@@ -347,16 +160,7 @@ public class Range : Widget, OrientableIF
 	 * be unreferenced.
 	 * Returns: a GtkAdjustment
 	 */
-	public Adjustment getAdjustment()
-	{
-		// GtkAdjustment* gtk_range_get_adjustment (GtkRange *range);
-		auto p = gtk_range_get_adjustment(gtkRange);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getAdjustment();
 	
 	/**
 	 * Sets the update policy for the range. GTK_UPDATE_CONTINUOUS means that
@@ -370,11 +174,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * policy =  update policy
 	 */
-	public void setUpdatePolicy(GtkUpdateType policy)
-	{
-		// void gtk_range_set_update_policy (GtkRange *range,  GtkUpdateType policy);
-		gtk_range_set_update_policy(gtkRange, policy);
-	}
+	public void setUpdatePolicy(GtkUpdateType policy);
 	
 	/**
 	 * Sets the adjustment to be used as the "model" object for this range
@@ -387,21 +187,13 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * adjustment =  a GtkAdjustment
 	 */
-	public void setAdjustment(Adjustment adjustment)
-	{
-		// void gtk_range_set_adjustment (GtkRange *range,  GtkAdjustment *adjustment);
-		gtk_range_set_adjustment(gtkRange, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setAdjustment(Adjustment adjustment);
 	
 	/**
 	 * Gets the value set by gtk_range_set_inverted().
 	 * Returns: TRUE if the range is inverted
 	 */
-	public int getInverted()
-	{
-		// gboolean gtk_range_get_inverted (GtkRange *range);
-		return gtk_range_get_inverted(gtkRange);
-	}
+	public int getInverted();
 	
 	/**
 	 * Ranges normally move from lower to higher values as the
@@ -411,31 +203,19 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * setting =  TRUE to invert the range
 	 */
-	public void setInverted(int setting)
-	{
-		// void gtk_range_set_inverted (GtkRange *range,  gboolean setting);
-		gtk_range_set_inverted(gtkRange, setting);
-	}
+	public void setInverted(int setting);
 	
 	/**
 	 * Gets the update policy of range. See gtk_range_set_update_policy().
 	 * Returns: the current update policy
 	 */
-	public GtkUpdateType getUpdatePolicy()
-	{
-		// GtkUpdateType gtk_range_get_update_policy (GtkRange *range);
-		return gtk_range_get_update_policy(gtkRange);
-	}
+	public GtkUpdateType getUpdatePolicy();
 	
 	/**
 	 * Gets the current value of the range.
 	 * Returns: current value of the range.
 	 */
-	public double getValue()
-	{
-		// gdouble gtk_range_get_value (GtkRange *range);
-		return gtk_range_get_value(gtkRange);
-	}
+	public double getValue();
 	
 	/**
 	 * Sets the step and page sizes for the range.
@@ -446,11 +226,7 @@ public class Range : Widget, OrientableIF
 	 * step =  step size
 	 * page =  page size
 	 */
-	public void setIncrements(double step, double page)
-	{
-		// void gtk_range_set_increments (GtkRange *range,  gdouble step,  gdouble page);
-		gtk_range_set_increments(gtkRange, step, page);
-	}
+	public void setIncrements(double step, double page);
 	
 	/**
 	 * Sets the allowable values in the GtkRange, and clamps the range
@@ -460,11 +236,7 @@ public class Range : Widget, OrientableIF
 	 * min =  minimum range value
 	 * max =  maximum range value
 	 */
-	public void setRange(double min, double max)
-	{
-		// void gtk_range_set_range (GtkRange *range,  gdouble min,  gdouble max);
-		gtk_range_set_range(gtkRange, min, max);
-	}
+	public void setRange(double min, double max);
 	
 	/**
 	 * Sets the current value of the range; if the value is outside the
@@ -474,11 +246,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * value =  new value of the range
 	 */
-	public void setValue(double value)
-	{
-		// void gtk_range_set_value (GtkRange *range,  gdouble value);
-		gtk_range_set_value(gtkRange, value);
-	}
+	public void setValue(double value);
 	
 	/**
 	 * Sets the sensitivity policy for the stepper that points to the
@@ -487,11 +255,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * sensitivity =  the lower stepper's sensitivity policy.
 	 */
-	public void setLowerStepperSensitivity(GtkSensitivityType sensitivity)
-	{
-		// void gtk_range_set_lower_stepper_sensitivity  (GtkRange *range,  GtkSensitivityType sensitivity);
-		gtk_range_set_lower_stepper_sensitivity(gtkRange, sensitivity);
-	}
+	public void setLowerStepperSensitivity(GtkSensitivityType sensitivity);
 	
 	/**
 	 * Gets the sensitivity policy for the stepper that points to the
@@ -499,11 +263,7 @@ public class Range : Widget, OrientableIF
 	 * Since 2.10
 	 * Returns: The lower stepper's sensitivity policy.
 	 */
-	public GtkSensitivityType getLowerStepperSensitivity()
-	{
-		// GtkSensitivityType gtk_range_get_lower_stepper_sensitivity  (GtkRange *range);
-		return gtk_range_get_lower_stepper_sensitivity(gtkRange);
-	}
+	public GtkSensitivityType getLowerStepperSensitivity();
 	
 	/**
 	 * Sets the sensitivity policy for the stepper that points to the
@@ -512,11 +272,7 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * sensitivity =  the upper stepper's sensitivity policy.
 	 */
-	public void setUpperStepperSensitivity(GtkSensitivityType sensitivity)
-	{
-		// void gtk_range_set_upper_stepper_sensitivity  (GtkRange *range,  GtkSensitivityType sensitivity);
-		gtk_range_set_upper_stepper_sensitivity(gtkRange, sensitivity);
-	}
+	public void setUpperStepperSensitivity(GtkSensitivityType sensitivity);
 	
 	/**
 	 * Gets the sensitivity policy for the stepper that points to the
@@ -524,22 +280,14 @@ public class Range : Widget, OrientableIF
 	 * Since 2.10
 	 * Returns: The upper stepper's sensitivity policy.
 	 */
-	public GtkSensitivityType getUpperStepperSensitivity()
-	{
-		// GtkSensitivityType gtk_range_get_upper_stepper_sensitivity  (GtkRange *range);
-		return gtk_range_get_upper_stepper_sensitivity(gtkRange);
-	}
+	public GtkSensitivityType getUpperStepperSensitivity();
 	
 	/**
 	 * Gets the value set by gtk_range_set_flippable().
 	 * Since 2.18
 	 * Returns: TRUE if the range is flippable
 	 */
-	public int getFlippable()
-	{
-		// gboolean gtk_range_get_flippable (GtkRange *range);
-		return gtk_range_get_flippable(gtkRange);
-	}
+	public int getFlippable();
 	
 	/**
 	 * If a range is flippable, it will switch its direction if it is
@@ -549,9 +297,5 @@ public class Range : Widget, OrientableIF
 	 * Params:
 	 * flippable =  TRUE to make the range flippable
 	 */
-	public void setFlippable(int flippable)
-	{
-		// void gtk_range_set_flippable (GtkRange *range,  gboolean flippable);
-		gtk_range_set_flippable(gtkRange, flippable);
-	}
+	public void setFlippable(int flippable);
 }

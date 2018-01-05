@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSocket.html
- * outPack = gtk
- * outFile = Socket
- * strct   = GtkSocket
- * realStrct=
- * ctorStrct=
- * clss    = Socket
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_socket_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gdk.Window
- * structWrap:
- * 	- GdkWindow* -> Window
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Socket;
 
 public  import gtkD.gtkc.gtktypes;
@@ -129,38 +76,16 @@ public class Socket : Container
 	protected GtkSocket* gtkSocket;
 	
 	
-	public GtkSocket* getSocketStruct()
-	{
-		return gtkSocket;
-	}
+	public GtkSocket* getSocketStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSocket;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSocket* gtkSocket)
-	{
-		if(gtkSocket is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSocket);
-		if( ptr !is null )
-		{
-			this = cast(Socket)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkSocket);
-		this.gtkSocket = gtkSocket;
-	}
+	public this (GtkSocket* gtkSocket);
 	
 	/**
 	 */
@@ -171,28 +96,8 @@ public class Socket : Container
 	 * This signal is emitted when a client is successfully
 	 * added to the socket.
 	 */
-	void addOnPlugAdded(void delegate(Socket) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("plug-added" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"plug-added",
-			cast(GCallback)&callBackPlugAdded,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["plug-added"] = 1;
-		}
-		onPlugAddedListeners ~= dlg;
-	}
-	extern(C) static void callBackPlugAdded(GtkSocket* socketStruct, Socket socket)
-	{
-		foreach ( void delegate(Socket) dlg ; socket.onPlugAddedListeners )
-		{
-			dlg(socket);
-		}
-	}
+	void addOnPlugAdded(void delegate(Socket) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPlugAdded(GtkSocket* socketStruct, Socket socket);
 	
 	bool delegate(Socket)[] onPlugRemovedListeners;
 	/**
@@ -205,49 +110,15 @@ public class Socket : Container
 	 * XEmbed
 	 * the XEmbed Protocol Specification.
 	 */
-	void addOnPlugRemoved(bool delegate(Socket) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("plug-removed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"plug-removed",
-			cast(GCallback)&callBackPlugRemoved,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["plug-removed"] = 1;
-		}
-		onPlugRemovedListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackPlugRemoved(GtkSocket* socketStruct, Socket socket)
-	{
-		foreach ( bool delegate(Socket) dlg ; socket.onPlugRemovedListeners )
-		{
-			if ( dlg(socket) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnPlugRemoved(bool delegate(Socket) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackPlugRemoved(GtkSocket* socketStruct, Socket socket);
 	
 	
 	/**
 	 * Create a new empty GtkSocket.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_socket_new (void);
-		auto p = gtk_socket_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_socket_new()");
-		}
-		this(cast(GtkSocket*) p);
-	}
+	public this ();
 	
 	/**
 	 * Warning
@@ -261,11 +132,7 @@ public class Socket : Container
 	 * Params:
 	 * wid =  the window ID of an existing toplevel window.
 	 */
-	public void steal(GdkNativeWindow wid)
-	{
-		// void gtk_socket_steal (GtkSocket *socket_,  GdkNativeWindow wid);
-		gtk_socket_steal(gtkSocket, wid);
-	}
+	public void steal(GdkNativeWindow wid);
 	
 	/**
 	 * Adds an XEMBED client, such as a GtkPlug, to the GtkSocket. The
@@ -281,11 +148,7 @@ public class Socket : Container
 	 * Params:
 	 * windowId =  the window ID of a client participating in the XEMBED protocol.
 	 */
-	public void addId(GdkNativeWindow windowId)
-	{
-		// void gtk_socket_add_id (GtkSocket *socket_,  GdkNativeWindow window_id);
-		gtk_socket_add_id(gtkSocket, windowId);
-	}
+	public void addId(GdkNativeWindow windowId);
 	
 	/**
 	 * Gets the window ID of a GtkSocket widget, which can then
@@ -295,11 +158,7 @@ public class Socket : Container
 	 * before you can make this call.
 	 * Returns: the window ID for the socket
 	 */
-	public GdkNativeWindow getId()
-	{
-		// GdkNativeWindow gtk_socket_get_id (GtkSocket *socket_);
-		return gtk_socket_get_id(gtkSocket);
-	}
+	public GdkNativeWindow getId();
 	
 	/**
 	 * Retrieves the window of the plug. Use this to check if the plug has
@@ -313,14 +172,5 @@ public class Socket : Container
 	 * added to the socket.
 	 * Returns: the window of the plug if available, or NULL
 	 */
-	public Window getPlugWindow()
-	{
-		// GdkWindow* gtk_socket_get_plug_window (GtkSocket *socket_);
-		auto p = gtk_socket_get_plug_window(gtkSocket);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Window(cast(GdkWindow*) p);
-	}
+	public Window getPlugWindow();
 }

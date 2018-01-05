@@ -1,54 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkVButtonBox.html
- * outPack = gtk
- * outFile = VButtonBox
- * strct   = GtkVButtonBox
- * realStrct=
- * ctorStrct=
- * clss    = VButtonBox
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_vbutton_box_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.VButtonBox;
 
 public  import gtkD.gtkc.gtktypes;
@@ -87,51 +36,22 @@ public class VButtonBox : ButtonBox
 	protected GtkVButtonBox* gtkVButtonBox;
 	
 	
-	public GtkVButtonBox* getVButtonBoxStruct()
-	{
-		return gtkVButtonBox;
-	}
+	public GtkVButtonBox* getVButtonBoxStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkVButtonBox;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkVButtonBox* gtkVButtonBox)
-	{
-		if(gtkVButtonBox is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkVButtonBox);
-		if( ptr !is null )
-		{
-			this = cast(VButtonBox)ptr;
-			return;
-		}
-		super(cast(GtkButtonBox*)gtkVButtonBox);
-		this.gtkVButtonBox = gtkVButtonBox;
-	}
+	public this (GtkVButtonBox* gtkVButtonBox);
 	
 	/**
 	 * Creates a new vertical button box and sets standart values for it's comon parameters
 	 * Returns: a new vertical button box
 	 */
-	static ButtonBox createActionBox()
-	{
-		ButtonBox bBox = new VButtonBox();
-		bBox.setLayout(ButtonBoxStyle.START);
-		bBox.setBorderWidth(5);
-		bBox.setSpacing(7);
-		return bBox;
-	}
+	static ButtonBox createActionBox();
 	
 	/**
 	 */
@@ -140,16 +60,7 @@ public class VButtonBox : ButtonBox
 	 * Creates a new vertical button box.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget * gtk_vbutton_box_new (void);
-		auto p = gtk_vbutton_box_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_vbutton_box_new()");
-		}
-		this(cast(GtkVButtonBox*) p);
-	}
+	public this ();
 	
 	/**
 	 * Warning
@@ -158,11 +69,7 @@ public class VButtonBox : ButtonBox
 	 * to be placed between the buttons when they are arranged.
 	 * Returns:the default number of pixels between buttons.
 	 */
-	public static int getSpacingDefault()
-	{
-		// gint gtk_vbutton_box_get_spacing_default (void);
-		return gtk_vbutton_box_get_spacing_default();
-	}
+	public static int getSpacingDefault();
 	
 	/**
 	 * Warning
@@ -172,11 +79,7 @@ public class VButtonBox : ButtonBox
 	 * Params:
 	 * spacing = an integer value.
 	 */
-	public static void setSpacingDefault(int spacing)
-	{
-		// void gtk_vbutton_box_set_spacing_default (gint spacing);
-		gtk_vbutton_box_set_spacing_default(spacing);
-	}
+	public static void setSpacingDefault(int spacing);
 	
 	/**
 	 * Warning
@@ -184,11 +87,7 @@ public class VButtonBox : ButtonBox
 	 * Retrieves the current layout used to arrange buttons in button box widgets.
 	 * Returns:the current GtkButtonBoxStyle.
 	 */
-	public static GtkButtonBoxStyle getLayoutDefault()
-	{
-		// GtkButtonBoxStyle gtk_vbutton_box_get_layout_default (void);
-		return gtk_vbutton_box_get_layout_default();
-	}
+	public static GtkButtonBoxStyle getLayoutDefault();
 	
 	/**
 	 * Warning
@@ -197,9 +96,5 @@ public class VButtonBox : ButtonBox
 	 * Params:
 	 * layout = a new GtkButtonBoxStyle.
 	 */
-	public static void setLayoutDefault(GtkButtonBoxStyle layout)
-	{
-		// void gtk_vbutton_box_set_layout_default (GtkButtonBoxStyle layout);
-		gtk_vbutton_box_set_layout_default(layout);
-	}
+	public static void setLayoutDefault(GtkButtonBoxStyle layout);
 }

@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRecentManager.html
- * outPack = gtk
- * outFile = RecentManager
- * strct   = GtkRecentManager
- * realStrct=
- * ctorStrct=
- * clss    = RecentManager
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_recent_manager_
- * omit structs:
- * omit prefixes:
- * 	- gtk_recent_info_
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gtk.RecentInfo
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * 	- GdkScreen* -> Screen
- * 	- GtkRecentInfo* -> RecentInfo
- * 	- GtkRecentManager* -> RecentManager
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RecentManager;
 
 public  import gtkD.gtkc.gtktypes;
@@ -125,38 +64,16 @@ public class RecentManager : ObjectG
 	protected GtkRecentManager* gtkRecentManager;
 	
 	
-	public GtkRecentManager* getRecentManagerStruct()
-	{
-		return gtkRecentManager;
-	}
+	public GtkRecentManager* getRecentManagerStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRecentManager;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRecentManager* gtkRecentManager)
-	{
-		if(gtkRecentManager is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRecentManager);
-		if( ptr !is null )
-		{
-			this = cast(RecentManager)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkRecentManager);
-		this.gtkRecentManager = gtkRecentManager;
-	}
+	public this (GtkRecentManager* gtkRecentManager);
 	
 	/**
 	 */
@@ -168,28 +85,8 @@ public class RecentManager : ObjectG
 	 * contents.
 	 * Since 2.10
 	 */
-	void addOnChanged(void delegate(RecentManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkRecentManager* recentManagerStruct, RecentManager recentManager)
-	{
-		foreach ( void delegate(RecentManager) dlg ; recentManager.onChangedListeners )
-		{
-			dlg(recentManager);
-		}
-	}
+	void addOnChanged(void delegate(RecentManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkRecentManager* recentManagerStruct, RecentManager recentManager);
 	
 	
 	/**
@@ -202,16 +99,7 @@ public class RecentManager : ObjectG
 	 * Since 2.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkRecentManager * gtk_recent_manager_new (void);
-		auto p = gtk_recent_manager_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_manager_new()");
-		}
-		this(cast(GtkRecentManager*) p);
-	}
+	public this ();
 	
 	/**
 	 * Gets a unique instance of GtkRecentManager, that you can share
@@ -220,16 +108,7 @@ public class RecentManager : ObjectG
 	 * Since 2.10
 	 * Returns: A unique GtkRecentManager. Do not ref or unref it.
 	 */
-	public static RecentManager getDefault()
-	{
-		// GtkRecentManager * gtk_recent_manager_get_default (void);
-		auto p = gtk_recent_manager_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new RecentManager(cast(GtkRecentManager*) p);
-	}
+	public static RecentManager getDefault();
 	
 	/**
 	 * Warning
@@ -249,16 +128,7 @@ public class RecentManager : ObjectG
 	 * screen =  a GdkScreen
 	 * Returns: A unique GtkRecentManager associated with the given screen. This recent manager is associated to the with the screen and can be used as long as the screen is open. Do not ref or unref it.
 	 */
-	public static RecentManager getForScreen(Screen screen)
-	{
-		// GtkRecentManager * gtk_recent_manager_get_for_screen (GdkScreen *screen);
-		auto p = gtk_recent_manager_get_for_screen((screen is null) ? null : screen.getScreenStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new RecentManager(cast(GtkRecentManager*) p);
-	}
+	public static RecentManager getForScreen(Screen screen);
 	
 	/**
 	 * Warning
@@ -272,11 +142,7 @@ public class RecentManager : ObjectG
 	 * Params:
 	 * screen =  a GdkScreen
 	 */
-	public void setScreen(Screen screen)
-	{
-		// void gtk_recent_manager_set_screen (GtkRecentManager *manager,  GdkScreen *screen);
-		gtk_recent_manager_set_screen(gtkRecentManager, (screen is null) ? null : screen.getScreenStruct());
-	}
+	public void setScreen(Screen screen);
 	
 	/**
 	 * Adds a new resource, pointed by uri, into the recently used
@@ -291,11 +157,7 @@ public class RecentManager : ObjectG
 	 * uri =  a valid URI
 	 * Returns: TRUE if the new item was successfully added to the recently used resources list
 	 */
-	public int addItem(string uri)
-	{
-		// gboolean gtk_recent_manager_add_item (GtkRecentManager *manager,  const gchar *uri);
-		return gtk_recent_manager_add_item(gtkRecentManager, Str.toStringz(uri));
-	}
+	public int addItem(string uri);
 	
 	/**
 	 * Adds a new resource, pointed by uri, into the recently used
@@ -320,11 +182,7 @@ public class RecentManager : ObjectG
 	 * recentData =  metadata of the resource
 	 * Returns: TRUE if the new item was successfully added to therecently used resources list, FALSE otherwise.
 	 */
-	public int addFull(string uri, GtkRecentData* recentData)
-	{
-		// gboolean gtk_recent_manager_add_full (GtkRecentManager *manager,  const gchar *uri,  const GtkRecentData *recent_data);
-		return gtk_recent_manager_add_full(gtkRecentManager, Str.toStringz(uri), recentData);
-	}
+	public int addFull(string uri, GtkRecentData* recentData);
 	
 	/**
 	 * Removes a resource pointed by uri from the recently used resources
@@ -335,20 +193,7 @@ public class RecentManager : ObjectG
 	 * Returns: TRUE if the item pointed by uri has been successfully removed by the recently used resources list, and FALSE otherwise.
 	 * Throws: GException on failure.
 	 */
-	public int removeItem(string uri)
-	{
-		// gboolean gtk_recent_manager_remove_item (GtkRecentManager *manager,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_recent_manager_remove_item(gtkRecentManager, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int removeItem(string uri);
 	
 	/**
 	 * Searches for a URI inside the recently used resources list, and
@@ -360,24 +205,7 @@ public class RecentManager : ObjectG
 	 * Returns: a GtkRecentInfo structure containing information about the resource pointed by uri, or NULL if the URI was not registered in the recently used resources list. Free with gtk_recent_info_unref().
 	 * Throws: GException on failure.
 	 */
-	public RecentInfo lookupItem(string uri)
-	{
-		// GtkRecentInfo * gtk_recent_manager_lookup_item (GtkRecentManager *manager,  const gchar *uri,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_recent_manager_lookup_item(gtkRecentManager, Str.toStringz(uri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			return null;
-		}
-		return new RecentInfo(cast(GtkRecentInfo*) p);
-	}
+	public RecentInfo lookupItem(string uri);
 	
 	/**
 	 * Checks whether there is a recently used resource registered
@@ -387,11 +215,7 @@ public class RecentManager : ObjectG
 	 * uri =  a URI
 	 * Returns: TRUE if the resource was found, FALSE otherwise.
 	 */
-	public int hasItem(string uri)
-	{
-		// gboolean gtk_recent_manager_has_item (GtkRecentManager *manager,  const gchar *uri);
-		return gtk_recent_manager_has_item(gtkRecentManager, Str.toStringz(uri));
-	}
+	public int hasItem(string uri);
 	
 	/**
 	 * Changes the location of a recently used resource from uri to new_uri.
@@ -405,20 +229,7 @@ public class RecentManager : ObjectG
 	 * Returns: TRUE on success.
 	 * Throws: GException on failure.
 	 */
-	public int moveItem(string uri, string newUri)
-	{
-		// gboolean gtk_recent_manager_move_item (GtkRecentManager *manager,  const gchar *uri,  const gchar *new_uri,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_recent_manager_move_item(gtkRecentManager, Str.toStringz(uri), Str.toStringz(newUri), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int moveItem(string uri, string newUri);
 	
 	/**
 	 * Gets the maximum number of items that the gtk_recent_manager_get_items()
@@ -426,11 +237,7 @@ public class RecentManager : ObjectG
 	 * Since 2.10
 	 * Returns: the number of items to return, or -1 for every item.
 	 */
-	public int getLimit()
-	{
-		// gint gtk_recent_manager_get_limit (GtkRecentManager *manager);
-		return gtk_recent_manager_get_limit(gtkRecentManager);
-	}
+	public int getLimit();
 	
 	/**
 	 * Sets the maximum number of item that the gtk_recent_manager_get_items()
@@ -440,27 +247,14 @@ public class RecentManager : ObjectG
 	 * Params:
 	 * limit =  the maximum number of items to return, or -1.
 	 */
-	public void setLimit(int limit)
-	{
-		// void gtk_recent_manager_set_limit (GtkRecentManager *manager,  gint limit);
-		gtk_recent_manager_set_limit(gtkRecentManager, limit);
-	}
+	public void setLimit(int limit);
 	
 	/**
 	 * Gets the list of recently used resources.
 	 * Since 2.10
 	 * Returns: a list of newly allocated GtkRecentInfo objects. Use gtk_recent_info_unref() on each item inside the list, and then free the list itself using g_list_free().
 	 */
-	public ListG getItems()
-	{
-		// GList * gtk_recent_manager_get_items (GtkRecentManager *manager);
-		auto p = gtk_recent_manager_get_items(gtkRecentManager);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getItems();
 	
 	/**
 	 * Purges every item from the recently used resources list.
@@ -468,18 +262,5 @@ public class RecentManager : ObjectG
 	 * Returns: the number of items that have been removed from the recently used resources list.
 	 * Throws: GException on failure.
 	 */
-	public int purgeItems()
-	{
-		// gint gtk_recent_manager_purge_items (GtkRecentManager *manager,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_recent_manager_purge_items(gtkRecentManager, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int purgeItems();
 }

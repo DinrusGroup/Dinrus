@@ -1,70 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTreeModelSort.html
- * outPack = gtk
- * outFile = TreeModelSort
- * strct   = GtkTreeModelSort
- * realStrct=
- * ctorStrct=
- * clss    = TreeModelSort
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- TreeModelIF
- * 	- TreeDragSourceIF
- * 	- TreeSortableIF
- * prefixes:
- * 	- gtk_tree_model_sort_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreePath
- * 	- gtkD.gtk.TreeIter
- * 	- gtkD.gtk.TreeModelT
- * 	- gtkD.gtk.TreeDragSourceT
- * 	- gtkD.gtk.TreeDragSourceIF
- * 	- gtkD.gtk.TreeSortableT
- * 	- gtkD.gtk.TreeSortableIF
- * structWrap:
- * 	- GtkTreeIter* -> TreeIter
- * 	- GtkTreeModel* -> TreeModelIF
- * 	- GtkTreePath* -> TreePath
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TreeModelSort;
 
 public  import gtkD.gtkc.gtktypes;
@@ -175,38 +108,16 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	protected GtkTreeModelSort* gtkTreeModelSort;
 	
 	
-	public GtkTreeModelSort* getTreeModelSortStruct()
-	{
-		return gtkTreeModelSort;
-	}
+	public GtkTreeModelSort* getTreeModelSortStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTreeModelSort;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTreeModelSort* gtkTreeModelSort)
-	{
-		if(gtkTreeModelSort is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTreeModelSort);
-		if( ptr !is null )
-		{
-			this = cast(TreeModelSort)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTreeModelSort);
-		this.gtkTreeModelSort = gtkTreeModelSort;
-	}
+	public this (GtkTreeModelSort* gtkTreeModelSort);
 	
 	// add the TreeModel capabilities
 	mixin TreeModelT!(GtkTreeModelSort);
@@ -226,31 +137,13 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * childModel =  A GtkTreeModel
 	 * Returns: A new GtkTreeModel.
 	 */
-	public static TreeModelIF newWithModel(TreeModelIF childModel)
-	{
-		// GtkTreeModel * gtk_tree_model_sort_new_with_model (GtkTreeModel *child_model);
-		auto p = gtk_tree_model_sort_new_with_model((childModel is null) ? null : childModel.getTreeModelTStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
+	public static TreeModelIF newWithModel(TreeModelIF childModel);
 	
 	/**
 	 * Returns the model the GtkTreeModelSort is sorting.
 	 * Returns: the "child model" being sorted
 	 */
-	public TreeModelIF getModel()
-	{
-		// GtkTreeModel * gtk_tree_model_sort_get_model (GtkTreeModelSort *tree_model);
-		auto p = gtk_tree_model_sort_get_model(gtkTreeModelSort);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
+	public TreeModelIF getModel();
 	
 	/**
 	 * Converts child_path to a path relative to tree_model_sort. That is,
@@ -261,16 +154,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * childPath =  A GtkTreePath to convert
 	 * Returns: A newly allocated GtkTreePath, or NULL
 	 */
-	public TreePath convertChildPathToPath(TreePath childPath)
-	{
-		// GtkTreePath * gtk_tree_model_sort_convert_child_path_to_path  (GtkTreeModelSort *tree_model_sort,  GtkTreePath *child_path);
-		auto p = gtk_tree_model_sort_convert_child_path_to_path(gtkTreeModelSort, (childPath is null) ? null : childPath.getTreePathStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
+	public TreePath convertChildPathToPath(TreePath childPath);
 	
 	/**
 	 * Sets sort_iter to point to the row in tree_model_sort that corresponds to
@@ -281,11 +165,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * childIter =  A valid GtkTreeIter pointing to a row on the child model
 	 * Returns: TRUE, if sort_iter was set, i.e. if sort_iter is avalid iterator pointer to a visible row in the child model.
 	 */
-	public int convertChildIterToIter(TreeIter sortIter, TreeIter childIter)
-	{
-		// gboolean gtk_tree_model_sort_convert_child_iter_to_iter  (GtkTreeModelSort *tree_model_sort,  GtkTreeIter *sort_iter,  GtkTreeIter *child_iter);
-		return gtk_tree_model_sort_convert_child_iter_to_iter(gtkTreeModelSort, (sortIter is null) ? null : sortIter.getTreeIterStruct(), (childIter is null) ? null : childIter.getTreeIterStruct());
-	}
+	public int convertChildIterToIter(TreeIter sortIter, TreeIter childIter);
 	
 	/**
 	 * Converts sorted_path to a path on the child model of tree_model_sort.
@@ -297,16 +177,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * sortedPath =  A GtkTreePath to convert
 	 * Returns: A newly allocated GtkTreePath, or NULL
 	 */
-	public TreePath convertPathToChildPath(TreePath sortedPath)
-	{
-		// GtkTreePath * gtk_tree_model_sort_convert_path_to_child_path  (GtkTreeModelSort *tree_model_sort,  GtkTreePath *sorted_path);
-		auto p = gtk_tree_model_sort_convert_path_to_child_path(gtkTreeModelSort, (sortedPath is null) ? null : sortedPath.getTreePathStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
+	public TreePath convertPathToChildPath(TreePath sortedPath);
 	
 	/**
 	 * Sets child_iter to point to the row pointed to by sorted_iter.
@@ -314,11 +185,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * childIter =  An uninitialized GtkTreeIter
 	 * sortedIter =  A valid GtkTreeIter pointing to a row on tree_model_sort.
 	 */
-	public void convertIterToChildIter(TreeIter childIter, TreeIter sortedIter)
-	{
-		// void gtk_tree_model_sort_convert_iter_to_child_iter  (GtkTreeModelSort *tree_model_sort,  GtkTreeIter *child_iter,  GtkTreeIter *sorted_iter);
-		gtk_tree_model_sort_convert_iter_to_child_iter(gtkTreeModelSort, (childIter is null) ? null : childIter.getTreeIterStruct(), (sortedIter is null) ? null : sortedIter.getTreeIterStruct());
-	}
+	public void convertIterToChildIter(TreeIter childIter, TreeIter sortedIter);
 	
 	/**
 	 * This resets the default sort function to be in the 'unsorted' state. That
@@ -326,11 +193,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * to be in the same order as the child model only if the GtkTreeModelSort
 	 * is in 'unsorted' state.
 	 */
-	public void resetDefaultSortFunc()
-	{
-		// void gtk_tree_model_sort_reset_default_sort_func  (GtkTreeModelSort *tree_model_sort);
-		gtk_tree_model_sort_reset_default_sort_func(gtkTreeModelSort);
-	}
+	public void resetDefaultSortFunc();
 	
 	/**
 	 * This function should almost never be called. It clears the tree_model_sort
@@ -340,11 +203,7 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * unreffed access to nodes. As a side effect of this function, all unreffed
 	 * iters will be invalid.
 	 */
-	public void clearCache()
-	{
-		// void gtk_tree_model_sort_clear_cache (GtkTreeModelSort *tree_model_sort);
-		gtk_tree_model_sort_clear_cache(gtkTreeModelSort);
-	}
+	public void clearCache();
 	
 	/**
 	 * Warning
@@ -355,9 +214,5 @@ public class TreeModelSort : ObjectG, TreeModelIF, TreeDragSourceIF, TreeSortabl
 	 * iter =  A GtkTreeIter.
 	 * Returns: TRUE if the iter is valid, FALSE if the iter is invalid.
 	 */
-	public int iterIsValid(TreeIter iter)
-	{
-		// gboolean gtk_tree_model_sort_iter_is_valid (GtkTreeModelSort *tree_model_sort,  GtkTreeIter *iter);
-		return gtk_tree_model_sort_iter_is_valid(gtkTreeModelSort, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public int iterIsValid(TreeIter iter);
 }

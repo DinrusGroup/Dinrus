@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRecentFilter.html
- * outPack = gtk
- * outFile = RecentFilter
- * strct   = GtkRecentFilter
- * realStrct=
- * ctorStrct=
- * clss    = RecentFilter
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_recent_filter_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RecentFilter;
 
 public  import gtkD.gtkc.gtktypes;
@@ -89,38 +37,16 @@ public class RecentFilter : ObjectGtk
 	protected GtkRecentFilter* gtkRecentFilter;
 	
 	
-	public GtkRecentFilter* getRecentFilterStruct()
-	{
-		return gtkRecentFilter;
-	}
+	public GtkRecentFilter* getRecentFilterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRecentFilter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRecentFilter* gtkRecentFilter)
-	{
-		if(gtkRecentFilter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRecentFilter);
-		if( ptr !is null )
-		{
-			this = cast(RecentFilter)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkRecentFilter);
-		this.gtkRecentFilter = gtkRecentFilter;
-	}
+	public this (GtkRecentFilter* gtkRecentFilter);
 	
 	/**
 	 */
@@ -134,16 +60,7 @@ public class RecentFilter : ObjectGtk
 	 * Since 2.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkRecentFilter * gtk_recent_filter_new (void);
-		auto p = gtk_recent_filter_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_filter_new()");
-		}
-		this(cast(GtkRecentFilter*) p);
-	}
+	public this ();
 	
 	/**
 	 * Gets the human-readable name for the filter.
@@ -151,11 +68,7 @@ public class RecentFilter : ObjectGtk
 	 * Since 2.10
 	 * Returns: the name of the filter, or NULL. The returned string is owned by the filter object and should not be freed.
 	 */
-	public string getName()
-	{
-		// const gchar * gtk_recent_filter_get_name (GtkRecentFilter *filter);
-		return Str.toString(gtk_recent_filter_get_name(gtkRecentFilter));
-	}
+	public string getName();
 	
 	/**
 	 * Sets the human-readable name of the filter; this is the string
@@ -165,11 +78,7 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * name =  then human readable name of filter
 	 */
-	public void setName(string name)
-	{
-		// void gtk_recent_filter_set_name (GtkRecentFilter *filter,  const gchar *name);
-		gtk_recent_filter_set_name(gtkRecentFilter, Str.toStringz(name));
-	}
+	public void setName(string name);
 	
 	/**
 	 * Adds a rule that allows resources based on their registered MIME type.
@@ -177,11 +86,7 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * mimeType =  a MIME type
 	 */
-	public void addMimeType(string mimeType)
-	{
-		// void gtk_recent_filter_add_mime_type (GtkRecentFilter *filter,  const gchar *mime_type);
-		gtk_recent_filter_add_mime_type(gtkRecentFilter, Str.toStringz(mimeType));
-	}
+	public void addMimeType(string mimeType);
 	
 	/**
 	 * Adds a rule that allows resources based on a pattern matching their
@@ -190,22 +95,14 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * pattern =  a file pattern
 	 */
-	public void addPattern(string pattern)
-	{
-		// void gtk_recent_filter_add_pattern (GtkRecentFilter *filter,  const gchar *pattern);
-		gtk_recent_filter_add_pattern(gtkRecentFilter, Str.toStringz(pattern));
-	}
+	public void addPattern(string pattern);
 	
 	/**
 	 * Adds a rule allowing image files in the formats supported
 	 * by GdkPixbuf.
 	 * Since 2.10
 	 */
-	public void addPixbufFormats()
-	{
-		// void gtk_recent_filter_add_pixbuf_formats  (GtkRecentFilter *filter);
-		gtk_recent_filter_add_pixbuf_formats(gtkRecentFilter);
-	}
+	public void addPixbufFormats();
 	
 	/**
 	 * Adds a rule that allows resources based on the name of the application
@@ -214,11 +111,7 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * application =  an application name
 	 */
-	public void addApplication(string application)
-	{
-		// void gtk_recent_filter_add_application (GtkRecentFilter *filter,  const gchar *application);
-		gtk_recent_filter_add_application(gtkRecentFilter, Str.toStringz(application));
-	}
+	public void addApplication(string application);
 	
 	/**
 	 * Adds a rule that allows resources based on the name of the group
@@ -227,11 +120,7 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * group =  a group name
 	 */
-	public void addGroup(string group)
-	{
-		// void gtk_recent_filter_add_group (GtkRecentFilter *filter,  const gchar *group);
-		gtk_recent_filter_add_group(gtkRecentFilter, Str.toStringz(group));
-	}
+	public void addGroup(string group);
 	
 	/**
 	 * Adds a rule that allows resources based on their age - that is, the number
@@ -240,11 +129,7 @@ public class RecentFilter : ObjectGtk
 	 * Params:
 	 * days =  number of days
 	 */
-	public void addAge(int days)
-	{
-		// void gtk_recent_filter_add_age (GtkRecentFilter *filter,  gint days);
-		gtk_recent_filter_add_age(gtkRecentFilter, days);
-	}
+	public void addAge(int days);
 	
 	/**
 	 * Adds a rule to a filter that allows resources based on a custom callback
@@ -261,11 +146,7 @@ public class RecentFilter : ObjectGtk
 	 * data =  data to pass to func
 	 * dataDestroy =  function to call to free data when it is no longer needed.
 	 */
-	public void addCustom(GtkRecentFilterFlags needed, GtkRecentFilterFunc func, void* data, GDestroyNotify dataDestroy)
-	{
-		// void gtk_recent_filter_add_custom (GtkRecentFilter *filter,  GtkRecentFilterFlags needed,  GtkRecentFilterFunc func,  gpointer data,  GDestroyNotify data_destroy);
-		gtk_recent_filter_add_custom(gtkRecentFilter, needed, func, data, dataDestroy);
-	}
+	public void addCustom(GtkRecentFilterFlags needed, GtkRecentFilterFunc func, void* data, GDestroyNotify dataDestroy);
 	
 	/**
 	 * Gets the fields that need to be filled in for the structure
@@ -276,11 +157,7 @@ public class RecentFilter : ObjectGtk
 	 * Since 2.10
 	 * Returns: bitfield of flags indicating needed fields when calling gtk_recent_filter_filter()
 	 */
-	public GtkRecentFilterFlags getNeeded()
-	{
-		// GtkRecentFilterFlags gtk_recent_filter_get_needed (GtkRecentFilter *filter);
-		return gtk_recent_filter_get_needed(gtkRecentFilter);
-	}
+	public GtkRecentFilterFlags getNeeded();
 	
 	/**
 	 * Tests whether a file should be displayed according to filter.
@@ -296,9 +173,5 @@ public class RecentFilter : ObjectGtk
 	 *  about a recently used resource
 	 * Returns: TRUE if the file should be displayed
 	 */
-	public int filter(GtkRecentFilterInfo* filterInfo)
-	{
-		// gboolean gtk_recent_filter_filter (GtkRecentFilter *filter,  const GtkRecentFilterInfo *filter_info);
-		return gtk_recent_filter_filter(gtkRecentFilter, filterInfo);
-	}
+	public int filter(GtkRecentFilterInfo* filterInfo);
 }

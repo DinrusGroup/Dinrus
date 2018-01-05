@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = RecentInfo
- * strct   = GtkRecentInfo
- * realStrct=
- * ctorStrct=
- * clss    = RecentInfo
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_recent_info_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * 	- changed
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkRecentInfo* -> RecentInfo
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RecentInfo;
 
 public  import gtkD.gtkc.gtktypes;
@@ -114,30 +59,16 @@ public class RecentInfo
 	protected GtkRecentInfo* gtkRecentInfo;
 	
 	
-	public GtkRecentInfo* getRecentInfoStruct()
-	{
-		return gtkRecentInfo;
-	}
+	public GtkRecentInfo* getRecentInfoStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkRecentInfo;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRecentInfo* gtkRecentInfo)
-	{
-		if(gtkRecentInfo is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkRecentInfo = gtkRecentInfo;
-	}
+	public this (GtkRecentInfo* gtkRecentInfo);
 	
 	/**
 	 */
@@ -147,38 +78,21 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: the recent info object with its reference count increased by one.
 	 */
-	public RecentInfo doref()
-	{
-		// GtkRecentInfo * gtk_recent_info_ref (GtkRecentInfo *info);
-		auto p = gtk_recent_info_ref(gtkRecentInfo);
-		if(p is null)
-		{
-			return null;
-		}
-		return new RecentInfo(cast(GtkRecentInfo*) p);
-	}
+	public RecentInfo doref();
 	
 	/**
 	 * Decreases the reference count of info by one. If the reference
 	 * count reaches zero, info is deallocated, and the memory freed.
 	 * Since 2.10
 	 */
-	public void unref()
-	{
-		// void gtk_recent_info_unref (GtkRecentInfo *info);
-		gtk_recent_info_unref(gtkRecentInfo);
-	}
+	public void unref();
 	
 	/**
 	 * Gets the URI of the resource.
 	 * Since 2.10
 	 * Returns: the URI of the resource. The returned string is owned by the recent manager, and should not be freed.
 	 */
-	public string getUri()
-	{
-		// const gchar * gtk_recent_info_get_uri (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_uri(gtkRecentInfo));
-	}
+	public string getUri();
 	
 	/**
 	 * Gets the name of the resource. If none has been defined, the basename
@@ -186,33 +100,21 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: the display name of the resource. The returned string is owned by the recent manager, and should not be freed.
 	 */
-	public string getDisplayName()
-	{
-		// const gchar * gtk_recent_info_get_display_name (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_display_name(gtkRecentInfo));
-	}
+	public string getDisplayName();
 	
 	/**
 	 * Gets the (short) description of the resource.
 	 * Since 2.10
 	 * Returns: the description of the resource. The returned string is owned by the recent manager, and should not be freed.
 	 */
-	public string getDescription()
-	{
-		// const gchar * gtk_recent_info_get_description (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_description(gtkRecentInfo));
-	}
+	public string getDescription();
 	
 	/**
 	 * Gets the MIME type of the resource.
 	 * Since 2.10
 	 * Returns: the MIME type of the resource. The returned string is owned by the recent manager, and should not be freed.
 	 */
-	public string getMimeType()
-	{
-		// const gchar * gtk_recent_info_get_mime_type (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_mime_type(gtkRecentInfo));
-	}
+	public string getMimeType();
 	
 	/**
 	 * Gets the timestamp (seconds from system's Epoch) when the resource
@@ -220,11 +122,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: the number of seconds elapsed from system's Epoch when the resource was added to the list, or -1 on failure.
 	 */
-	public uint getAdded()
-	{
-		// time_t gtk_recent_info_get_added (GtkRecentInfo *info);
-		return gtk_recent_info_get_added(gtkRecentInfo);
-	}
+	public uint getAdded();
 	
 	/**
 	 * Gets the timestamp (seconds from system's Epoch) when the resource
@@ -232,11 +130,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: the number of seconds elapsed from system's Epoch when the resource was last modified, or -1 on failure.
 	 */
-	public uint getModified()
-	{
-		// time_t gtk_recent_info_get_modified (GtkRecentInfo *info);
-		return gtk_recent_info_get_modified(gtkRecentInfo);
-	}
+	public uint getModified();
 	
 	/**
 	 * Gets the timestamp (seconds from system's Epoch) when the resource
@@ -244,11 +138,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: the number of seconds elapsed from system's Epoch when the resource was last visited, or -1 on failure.
 	 */
-	public uint getVisited()
-	{
-		// time_t gtk_recent_info_get_visited (GtkRecentInfo *info);
-		return gtk_recent_info_get_visited(gtkRecentInfo);
-	}
+	public uint getVisited();
 	
 	/**
 	 * Gets the value of the "private" flag. Resources in the recently used
@@ -257,11 +147,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: TRUE if the private flag was found, FALSE otherwise.
 	 */
-	public int getPrivateHint()
-	{
-		// gboolean gtk_recent_info_get_private_hint (GtkRecentInfo *info);
-		return gtk_recent_info_get_private_hint(gtkRecentInfo);
-	}
+	public int getPrivateHint();
 	
 	/**
 	 * Gets the data regarding the application that has registered the resource
@@ -277,28 +163,14 @@ public class RecentInfo
 	 *  for this application
 	 * Returns: TRUE if an application with app_name has registered this resource inside the recently used list, or FALSE otherwise. The app_exec string is owned by the GtkRecentInfo and should not be modified or freed
 	 */
-	public int getApplicationInfo(string appName, out string appExec, out uint count, out uint time)
-	{
-		// gboolean gtk_recent_info_get_application_info  (GtkRecentInfo *info,  const gchar *app_name,  const gchar **app_exec,  guint *count,  time_t *time_);
-		char* outappExec = null;
-		
-		auto p = gtk_recent_info_get_application_info(gtkRecentInfo, Str.toStringz(appName), &outappExec, &count, &time);
-		
-		appExec = Str.toString(outappExec);
-		return p;
-	}
+	public int getApplicationInfo(string appName, out string appExec, out uint count, out uint time);
 	
 	/**
 	 * Retrieves the list of applications that have registered this resource.
 	 * Since 2.10
 	 * Returns: a newly allocated NULL-terminated array of strings. Use g_strfreev() to free it.
 	 */
-	public string[] getApplications()
-	{
-		// gchar ** gtk_recent_info_get_applications (GtkRecentInfo *info,  gsize *length);
-		uint length;
-		return Str.toStringArray(gtk_recent_info_get_applications(gtkRecentInfo, &length));
-	}
+	public string[] getApplications();
 	
 	/**
 	 * Gets the name of the last application that have registered the
@@ -306,11 +178,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: an application name. Use g_free() to free it.
 	 */
-	public string lastApplication()
-	{
-		// gchar * gtk_recent_info_last_application (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_last_application(gtkRecentInfo));
-	}
+	public string lastApplication();
 	
 	/**
 	 * Returns all groups registered for the recently used item info. The
@@ -319,12 +187,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: a newly allocated NULL terminated array of strings. Use g_strfreev() to free it.
 	 */
-	public string[] getGroups()
-	{
-		// gchar ** gtk_recent_info_get_groups (GtkRecentInfo *info,  gsize *length);
-		uint length;
-		return Str.toStringArray(gtk_recent_info_get_groups(gtkRecentInfo, &length));
-	}
+	public string[] getGroups();
 	
 	/**
 	 * Checks whether group_name appears inside the groups registered for the
@@ -334,11 +197,7 @@ public class RecentInfo
 	 * groupName =  name of a group
 	 * Returns: TRUE if the group was found.
 	 */
-	public int hasGroup(string groupName)
-	{
-		// gboolean gtk_recent_info_has_group (GtkRecentInfo *info,  const gchar *group_name);
-		return gtk_recent_info_has_group(gtkRecentInfo, Str.toStringz(groupName));
-	}
+	public int hasGroup(string groupName);
 	
 	/**
 	 * Checks whether an application registered this resource using app_name.
@@ -347,11 +206,7 @@ public class RecentInfo
 	 * appName =  a string containing an application name
 	 * Returns: TRUE if an application with name app_name was found, FALSE otherwise.
 	 */
-	public int hasApplication(string appName)
-	{
-		// gboolean gtk_recent_info_has_application (GtkRecentInfo *info,  const gchar *app_name);
-		return gtk_recent_info_has_application(gtkRecentInfo, Str.toStringz(appName));
-	}
+	public int hasApplication(string appName);
 	
 	/**
 	 * Retrieves the icon of size size associated to the resource MIME type.
@@ -360,16 +215,7 @@ public class RecentInfo
 	 * size =  the size of the icon in pixels
 	 * Returns: a GdkPixbuf containing the icon, or NULL. Use g_object_unref() when finished using the icon.
 	 */
-	public Pixbuf getIcon(int size)
-	{
-		// GdkPixbuf * gtk_recent_info_get_icon (GtkRecentInfo *info,  gint size);
-		auto p = gtk_recent_info_get_icon(gtkRecentInfo, size);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getIcon(int size);
 	
 	/**
 	 * Computes a valid UTF-8 string that can be used as the name of the item in a
@@ -378,11 +224,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: A newly-allocated string in UTF-8 encoding; free it with g_free().
 	 */
-	public string getShortName()
-	{
-		// gchar * gtk_recent_info_get_short_name (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_short_name(gtkRecentInfo));
-	}
+	public string getShortName();
 	
 	/**
 	 * Gets a displayable version of the resource's URI. If the resource
@@ -391,11 +233,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: a newly allocated UTF-8 string containing the resource's URI or NULL. Use g_free() when done using it.
 	 */
-	public string getUriDisplay()
-	{
-		// gchar * gtk_recent_info_get_uri_display (GtkRecentInfo *info);
-		return Str.toString(gtk_recent_info_get_uri_display(gtkRecentInfo));
-	}
+	public string getUriDisplay();
 	
 	/**
 	 * Gets the number of days elapsed since the last update of the resource
@@ -403,11 +241,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: a positive integer containing the number of days elapsed since the time this resource was last modified.
 	 */
-	public int getAge()
-	{
-		// gint gtk_recent_info_get_age (GtkRecentInfo *info);
-		return gtk_recent_info_get_age(gtkRecentInfo);
-	}
+	public int getAge();
 	
 	/**
 	 * Checks whether the resource is local or not by looking at the
@@ -415,11 +249,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: TRUE if the resource is local.
 	 */
-	public int isLocal()
-	{
-		// gboolean gtk_recent_info_is_local (GtkRecentInfo *info);
-		return gtk_recent_info_is_local(gtkRecentInfo);
-	}
+	public int isLocal();
 	
 	/**
 	 * Checks whether the resource pointed by info still exists. At
@@ -427,11 +257,7 @@ public class RecentInfo
 	 * Since 2.10
 	 * Returns: TRUE if the resource exists
 	 */
-	public int exists()
-	{
-		// gboolean gtk_recent_info_exists (GtkRecentInfo *info);
-		return gtk_recent_info_exists(gtkRecentInfo);
-	}
+	public int exists();
 	
 	/**
 	 * Checks whether two GtkRecentInfo structures point to the same
@@ -441,9 +267,5 @@ public class RecentInfo
 	 * infoB =  a GtkRecentInfo
 	 * Returns: TRUE if both GtkRecentInfo structures point to se same resource, FALSE otherwise.
 	 */
-	public int match(RecentInfo infoB)
-	{
-		// gboolean gtk_recent_info_match (GtkRecentInfo *info_a,  GtkRecentInfo *info_b);
-		return gtk_recent_info_match(gtkRecentInfo, (infoB is null) ? null : infoB.getRecentInfoStruct());
-	}
+	public int match(RecentInfo infoB);
 }

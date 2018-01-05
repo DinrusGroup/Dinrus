@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = Selections
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Selections
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_selection_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Display
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gdk.Display
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.gtk.TextBuffer
- * structWrap:
- * 	- GdkDisplay* -> Display
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkTextBuffer* -> TextBuffer
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Selections;
 
 public  import gtkD.gtkc.gtktypes;
@@ -106,11 +46,7 @@ public class Selections
 	 * time =  timestamp with which to claim the selection
 	 * Returns: TRUE if the operation succeeded
 	 */
-	public static int ownerSet(Widget widget, GdkAtom selection, uint time)
-	{
-		// gboolean gtk_selection_owner_set (GtkWidget *widget,  GdkAtom selection,  guint32 time_);
-		return gtk_selection_owner_set((widget is null) ? null : widget.getWidgetStruct(), selection, time);
-	}
+	public static int ownerSet(Widget widget, GdkAtom selection, uint time);
 	
 	/**
 	 * Claim ownership of a given selection for a particular widget, or,
@@ -123,11 +59,7 @@ public class Selections
 	 * time =  timestamp with which to claim the selection
 	 * Returns: TRUE if the operation succeeded
 	 */
-	public static int ownerSetForDisplay(Display display, Widget widget, GdkAtom selection, uint time)
-	{
-		// gboolean gtk_selection_owner_set_for_display (GdkDisplay *display,  GtkWidget *widget,  GdkAtom selection,  guint32 time_);
-		return gtk_selection_owner_set_for_display((display is null) ? null : display.getDisplayStruct(), (widget is null) ? null : widget.getWidgetStruct(), selection, time);
-	}
+	public static int ownerSetForDisplay(Display display, Widget widget, GdkAtom selection, uint time);
 	
 	/**
 	 * Appends a specified target to the list of supported targets for a
@@ -138,11 +70,7 @@ public class Selections
 	 * target =  target to add.
 	 * info =  A unsigned integer which will be passed back to the application.
 	 */
-	public static void addTarget(Widget widget, GdkAtom selection, GdkAtom target, uint info)
-	{
-		// void gtk_selection_add_target (GtkWidget *widget,  GdkAtom selection,  GdkAtom target,  guint info);
-		gtk_selection_add_target((widget is null) ? null : widget.getWidgetStruct(), selection, target, info);
-	}
+	public static void addTarget(Widget widget, GdkAtom selection, GdkAtom target, uint info);
 	
 	/**
 	 * Prepends a table of targets to the list of supported targets
@@ -152,11 +80,7 @@ public class Selections
 	 * selection =  the selection
 	 * targets =  a table of targets to add
 	 */
-	public static void addTargets(Widget widget, GdkAtom selection, GtkTargetEntry[] targets)
-	{
-		// void gtk_selection_add_targets (GtkWidget *widget,  GdkAtom selection,  const GtkTargetEntry *targets,  guint ntargets);
-		gtk_selection_add_targets((widget is null) ? null : widget.getWidgetStruct(), selection, targets.ptr, targets.length);
-	}
+	public static void addTargets(Widget widget, GdkAtom selection, GtkTargetEntry[] targets);
 	
 	/**
 	 * Remove all targets registered for the given selection for the
@@ -165,11 +89,7 @@ public class Selections
 	 * widget =  a GtkWidget
 	 * selection =  an atom representing a selection
 	 */
-	public static void clearTargets(Widget widget, GdkAtom selection)
-	{
-		// void gtk_selection_clear_targets (GtkWidget *widget,  GdkAtom selection);
-		gtk_selection_clear_targets((widget is null) ? null : widget.getWidgetStruct(), selection);
-	}
+	public static void clearTargets(Widget widget, GdkAtom selection);
 	
 	/**
 	 * Requests the contents of a selection. When received,
@@ -182,12 +102,8 @@ public class Selections
 	 *  In emergency, you could use GDK_CURRENT_TIME
 	 * Returns: TRUE if requested succeeded. FALSE if we could not process request. (e.g., there was already a request in process for this widget).
 	 */
-	public static int convert(Widget widget, GdkAtom selection, GdkAtom target, uint time)
-	{
-		// gboolean gtk_selection_convert (GtkWidget *widget,  GdkAtom selection,  GdkAtom target,  guint32 time_);
-		return gtk_selection_convert((widget is null) ? null : widget.getWidgetStruct(), selection, target, time);
-	}
-	
+	public static int convert(Widget widget, GdkAtom selection, GdkAtom target, uint time);
+
 	/**
 	 * Stores new data into a GtkSelectionData object. Should
 	 * only be called from a selection handler callback.
@@ -198,11 +114,7 @@ public class Selections
 	 * format =  format (number of bits in a unit)
 	 * data =  pointer to the data (will be copied)
 	 */
-	public static void dataSet(GtkSelectionData* selectionData, GdkAtom type, int format, char[] data)
-	{
-		// void gtk_selection_data_set (GtkSelectionData *selection_data,  GdkAtom type,  gint format,  const guchar *data,  gint length);
-		gtk_selection_data_set(selectionData, type, format, data.ptr, data.length);
-	}
+	public static void dataSet(GtkSelectionData* selectionData, GdkAtom type, int format, char[] data);
 	
 	/**
 	 * Sets the contents of the selection from a UTF-8 encoded string.
@@ -214,11 +126,7 @@ public class Selections
 	 * len =  the length of str, or -1 if str is nul-terminated.
 	 * Returns: TRUE if the selection was successfully set, otherwise FALSE.
 	 */
-	public static int dataSetText(GtkSelectionData* selectionData, string str, int len)
-	{
-		// gboolean gtk_selection_data_set_text (GtkSelectionData *selection_data,  const gchar *str,  gint len);
-		return gtk_selection_data_set_text(selectionData, Str.toStringz(str), len);
-	}
+	public static int dataSetText(GtkSelectionData* selectionData, string str, int len);
 	
 	/**
 	 * Gets the contents of the selection data as a UTF-8 string.
@@ -226,11 +134,7 @@ public class Selections
 	 * selectionData =  a GtkSelectionData
 	 * Returns: if the selection data contained a recognized text type and it could be converted to UTF-8, a newly allocated string containing the converted text, otherwise NULL. If the result is non-NULL it must be freed with g_free().
 	 */
-	public static char* dataGetText(GtkSelectionData* selectionData)
-	{
-		// guchar * gtk_selection_data_get_text (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_text(selectionData);
-	}
+	public static char* dataGetText(GtkSelectionData* selectionData);
 	
 	/**
 	 * Sets the contents of the selection from a GdkPixbuf
@@ -242,11 +146,7 @@ public class Selections
 	 * pixbuf =  a GdkPixbuf
 	 * Returns: TRUE if the selection was successfully set, otherwise FALSE.
 	 */
-	public static int dataSetPixbuf(GtkSelectionData* selectionData, Pixbuf pixbuf)
-	{
-		// gboolean gtk_selection_data_set_pixbuf (GtkSelectionData *selection_data,  GdkPixbuf *pixbuf);
-		return gtk_selection_data_set_pixbuf(selectionData, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public static int dataSetPixbuf(GtkSelectionData* selectionData, Pixbuf pixbuf);
 	
 	/**
 	 * Gets the contents of the selection data as a GdkPixbuf.
@@ -255,16 +155,7 @@ public class Selections
 	 * selectionData =  a GtkSelectionData
 	 * Returns: if the selection data contained a recognized image type and it could be converted to a GdkPixbuf, a  newly allocated pixbuf is returned, otherwise NULL. If the result is non-NULL it must be freed with g_object_unref().
 	 */
-	public static Pixbuf dataGetPixbuf(GtkSelectionData* selectionData)
-	{
-		// GdkPixbuf * gtk_selection_data_get_pixbuf (GtkSelectionData *selection_data);
-		auto p = gtk_selection_data_get_pixbuf(selectionData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public static Pixbuf dataGetPixbuf(GtkSelectionData* selectionData);
 	
 	/**
 	 * Sets the contents of the selection from a list of URIs.
@@ -276,11 +167,7 @@ public class Selections
 	 * uris =  a NULL-terminated array of strings holding URIs
 	 * Returns: TRUE if the selection was successfully set, otherwise FALSE.
 	 */
-	public static int dataSetUris(GtkSelectionData* selectionData, string[] uris)
-	{
-		// gboolean gtk_selection_data_set_uris (GtkSelectionData *selection_data,  gchar **uris);
-		return gtk_selection_data_set_uris(selectionData, Str.toStringzArray(uris));
-	}
+	public static int dataSetUris(GtkSelectionData* selectionData, string[] uris);
 	
 	/**
 	 * Gets the contents of the selection data as array of URIs.
@@ -289,11 +176,7 @@ public class Selections
 	 * selectionData =  a GtkSelectionData
 	 * Returns: if the selection data contains a list of URIs, a newly allocated NULL-terminated string array containing the URIs, otherwise NULL. If the result is  non-NULL it must be freed with g_strfreev().
 	 */
-	public static string[] dataGetUris(GtkSelectionData* selectionData)
-	{
-		// gchar ** gtk_selection_data_get_uris (GtkSelectionData *selection_data);
-		return Str.toStringArray(gtk_selection_data_get_uris(selectionData));
-	}
+	public static string[] dataGetUris(GtkSelectionData* selectionData);
 	
 	/**
 	 * Gets the contents of selection_data as an array of targets.
@@ -306,17 +189,7 @@ public class Selections
 	 *  stored here must be freed with g_free().
 	 * Returns: TRUE if selection_data contains a valid array of targets, otherwise FALSE.
 	 */
-	public static int dataGetTargets(GtkSelectionData* selectionData, out GdkAtom[] targets)
-	{
-		// gboolean gtk_selection_data_get_targets (GtkSelectionData *selection_data,  GdkAtom **targets,  gint *n_atoms);
-		GdkAtom* outtargets = null;
-		int nAtoms;
-		
-		auto p = gtk_selection_data_get_targets(selectionData, &outtargets, &nAtoms);
-		
-		targets = outtargets[0 .. nAtoms];
-		return p;
-	}
+	public static int dataGetTargets(GtkSelectionData* selectionData, out GdkAtom[] targets);
 	
 	/**
 	 * Given a GtkSelectionData object holding a list of targets,
@@ -329,11 +202,7 @@ public class Selections
 	 *  how to convert a pixbuf into the format
 	 * Returns: TRUE if selection_data holds a list of targets, and a suitable target for images is included, otherwise FALSE.
 	 */
-	public static int dataTargetsIncludeImage(GtkSelectionData* selectionData, int writable)
-	{
-		// gboolean gtk_selection_data_targets_include_image  (GtkSelectionData *selection_data,  gboolean writable);
-		return gtk_selection_data_targets_include_image(selectionData, writable);
-	}
+	public static int dataTargetsIncludeImage(GtkSelectionData* selectionData, int writable);
 	
 	/**
 	 * Given a GtkSelectionData object holding a list of targets,
@@ -343,11 +212,7 @@ public class Selections
 	 * selectionData =  a GtkSelectionData object
 	 * Returns: TRUE if selection_data holds a list of targets, and a suitable target for text is included, otherwise FALSE.
 	 */
-	public static int dataTargetsIncludeText(GtkSelectionData* selectionData)
-	{
-		// gboolean gtk_selection_data_targets_include_text  (GtkSelectionData *selection_data);
-		return gtk_selection_data_targets_include_text(selectionData);
-	}
+	public static int dataTargetsIncludeText(GtkSelectionData* selectionData);
 	
 	/**
 	 * Given a GtkSelectionData object holding a list of targets,
@@ -358,11 +223,7 @@ public class Selections
 	 * selectionData =  a GtkSelectionData object
 	 * Returns: TRUE if selection_data holds a list of targets, and a suitable target for URI lists is included, otherwise FALSE.
 	 */
-	public static int dataTargetsIncludeUri(GtkSelectionData* selectionData)
-	{
-		// gboolean gtk_selection_data_targets_include_uri  (GtkSelectionData *selection_data);
-		return gtk_selection_data_targets_include_uri(selectionData);
-	}
+	public static int dataTargetsIncludeUri(GtkSelectionData* selectionData);
 	
 	/**
 	 * Given a GtkSelectionData object holding a list of targets,
@@ -374,11 +235,7 @@ public class Selections
 	 * buffer =  a GtkTextBuffer
 	 * Returns: TRUE if selection_data holds a list of targets, and a suitable target for rich text is included, otherwise FALSE.
 	 */
-	public static int dataTargetsIncludeRichText(GtkSelectionData* selectionData, TextBuffer buffer)
-	{
-		// gboolean gtk_selection_data_targets_include_rich_text  (GtkSelectionData *selection_data,  GtkTextBuffer *buffer);
-		return gtk_selection_data_targets_include_rich_text(selectionData, (buffer is null) ? null : buffer.getTextBufferStruct());
-	}
+	public static int dataTargetsIncludeRichText(GtkSelectionData* selectionData, TextBuffer buffer);
 	
 	/**
 	 * Retrieves the selection GdkAtom of the selection data.
@@ -387,11 +244,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the selection GdkAtom of the selection data.
 	 */
-	public static GdkAtom dataGetSelection(GtkSelectionData* selectionData)
-	{
-		// GdkAtom gtk_selection_data_get_selection (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_selection(selectionData);
-	}
+	public static GdkAtom dataGetSelection(GtkSelectionData* selectionData);
 	
 	/**
 	 * Retrieves the raw data of the selection.
@@ -400,11 +253,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the raw data of the selection.
 	 */
-	public static char* dataGetData(GtkSelectionData* selectionData)
-	{
-		// const guchar * gtk_selection_data_get_data (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_data(selectionData);
-	}
+	public static char* dataGetData(GtkSelectionData* selectionData);
 	
 	/**
 	 * Retrieves the length of the raw data of the selection.
@@ -413,12 +262,8 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the length of the data of the selection.
 	 */
-	public static int dataGetLength(GtkSelectionData* selectionData)
-	{
-		// gint gtk_selection_data_get_length (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_length(selectionData);
-	}
-	
+	public static int dataGetLength(GtkSelectionData* selectionData);
+
 	/**
 	 * Retrieves the data type of the selection.
 	 * Since 2.14
@@ -426,11 +271,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the data type of the selection.
 	 */
-	public static GdkAtom dataGetDataType(GtkSelectionData* selectionData)
-	{
-		// GdkAtom gtk_selection_data_get_data_type (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_data_type(selectionData);
-	}
+	public static GdkAtom dataGetDataType(GtkSelectionData* selectionData);
 	
 	/**
 	 * Retrieves the display of the selection.
@@ -439,16 +280,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the display of the selection.
 	 */
-	public static Display dataGetDisplay(GtkSelectionData* selectionData)
-	{
-		// GdkDisplay * gtk_selection_data_get_display (GtkSelectionData *selection_data);
-		auto p = gtk_selection_data_get_display(selectionData);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Display(cast(GdkDisplay*) p);
-	}
+	public static Display dataGetDisplay(GtkSelectionData* selectionData);
 	
 	/**
 	 * Retrieves the format of the selection.
@@ -457,11 +289,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the format of the selection.
 	 */
-	public static int dataGetFormat(GtkSelectionData* selectionData)
-	{
-		// gint gtk_selection_data_get_format (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_format(selectionData);
-	}
+	public static int dataGetFormat(GtkSelectionData* selectionData);
 	
 	/**
 	 * Retrieves the target of the selection.
@@ -470,11 +298,7 @@ public class Selections
 	 * selectionData =  a pointer to a GtkSelectionData structure.
 	 * Returns: the target of the selection.
 	 */
-	public static GdkAtom dataGetTarget(GtkSelectionData* selectionData)
-	{
-		// GdkAtom gtk_selection_data_get_target (GtkSelectionData *selection_data);
-		return gtk_selection_data_get_target(selectionData);
-	}
+	public static GdkAtom dataGetTarget(GtkSelectionData* selectionData);
 	
 	/**
 	 * Removes all handlers and unsets ownership of all
@@ -484,11 +308,7 @@ public class Selections
 	 * Params:
 	 * widget =  a GtkWidget
 	 */
-	public static void removeAll(Widget widget)
-	{
-		// void gtk_selection_remove_all (GtkWidget *widget);
-		gtk_selection_remove_all((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static void removeAll(Widget widget);
 	
 	/**
 	 * Warning
@@ -503,11 +323,7 @@ public class Selections
 	 * event =  the event
 	 * Returns: TRUE if the event was handled, otherwise false
 	 */
-	public static int clear(Widget widget, GdkEventSelection* event)
-	{
-		// gboolean gtk_selection_clear (GtkWidget *widget,  GdkEventSelection *event);
-		return gtk_selection_clear((widget is null) ? null : widget.getWidgetStruct(), event);
-	}
+	public static int clear(Widget widget, GdkEventSelection* event);
 	
 	/**
 	 * Makes a copy of a GtkSelectionData structure and its data.
@@ -515,11 +331,7 @@ public class Selections
 	 * data =  a pointer to a GtkSelectionData structure.
 	 * Returns: a pointer to a copy of data.
 	 */
-	public static GtkSelectionData* dataCopy(GtkSelectionData* data)
-	{
-		// GtkSelectionData * gtk_selection_data_copy (GtkSelectionData *data);
-		return gtk_selection_data_copy(data);
-	}
+	public static GtkSelectionData* dataCopy(GtkSelectionData* data);
 	
 	/**
 	 * Frees a GtkSelectionData structure returned from
@@ -527,9 +339,5 @@ public class Selections
 	 * Params:
 	 * data =  a pointer to a GtkSelectionData structure.
 	 */
-	public static void dataFree(GtkSelectionData* data)
-	{
-		// void gtk_selection_data_free (GtkSelectionData *data);
-		gtk_selection_data_free(data);
-	}
+	public static void dataFree(GtkSelectionData* data);
 }

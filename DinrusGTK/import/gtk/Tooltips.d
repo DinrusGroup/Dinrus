@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTooltips.html
- * outPack = gtk
- * outFile = Tooltips
- * strct   = GtkTooltips
- * realStrct=
- * ctorStrct=
- * clss    = Tooltips
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_tooltips_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Window
- * structWrap:
- * 	- GtkWidget* -> Widget
- * 	- GtkWindow* -> Window
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Tooltips;
 
 public  import gtkD.gtkc.gtktypes;
@@ -120,38 +64,16 @@ public class Tooltips : ObjectGtk
 	protected GtkTooltips* gtkTooltips;
 	
 	
-	public GtkTooltips* getTooltipsStruct()
-	{
-		return gtkTooltips;
-	}
+	public GtkTooltips* getTooltipsStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTooltips;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTooltips* gtkTooltips)
-	{
-		if(gtkTooltips is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTooltips);
-		if( ptr !is null )
-		{
-			this = cast(Tooltips)ptr;
-			return;
-		}
-		super(cast(GtkObject*)gtkTooltips);
-		this.gtkTooltips = gtkTooltips;
-	}
+	public this (GtkTooltips* gtkTooltips);
 	
 	/**
 	 */
@@ -162,38 +84,21 @@ public class Tooltips : ObjectGtk
 	 * Creates an empty group of tooltips. This function initialises a GtkTooltips structure. Without at least one such structure, you can not add tips to your application.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkTooltips* gtk_tooltips_new (void);
-		auto p = gtk_tooltips_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tooltips_new()");
-		}
-		this(cast(GtkTooltips*) p);
-	}
+	public this ();
 	
 	/**
 	 * Warning
 	 * gtk_tooltips_enable has been deprecated since version 2.12 and should not be used in newly-written code.
 	 * Allows the user to see your tooltips as they navigate your application.
 	 */
-	public void enable()
-	{
-		// void gtk_tooltips_enable (GtkTooltips *tooltips);
-		gtk_tooltips_enable(gtkTooltips);
-	}
+	public void enable();
 	
 	/**
 	 * Warning
 	 * gtk_tooltips_disable has been deprecated since version 2.12 and should not be used in newly-written code.
 	 * Causes all tooltips in tooltips to become inactive. Any widgets that have tips associated with that group will no longer display their tips until they are enabled again with gtk_tooltips_enable().
 	 */
-	public void disable()
-	{
-		// void gtk_tooltips_disable (GtkTooltips *tooltips);
-		gtk_tooltips_disable(gtkTooltips);
-	}
+	public void disable();
 	
 	/**
 	 * Warning
@@ -202,11 +107,7 @@ public class Tooltips : ObjectGtk
 	 * Params:
 	 * delay = an integer value representing milliseconds.
 	 */
-	public void setDelay(uint delay)
-	{
-		// void gtk_tooltips_set_delay (GtkTooltips *tooltips,  guint delay);
-		gtk_tooltips_set_delay(gtkTooltips, delay);
-	}
+	public void setDelay(uint delay);
 	
 	/**
 	 * Warning
@@ -217,11 +118,7 @@ public class Tooltips : ObjectGtk
 	 * tipText = a string containing the tip itself.
 	 * tipPrivate = a string of any further information that may be useful if the user gets stuck.
 	 */
-	public void setTip(Widget widget, string tipText, string tipPrivate)
-	{
-		// void gtk_tooltips_set_tip (GtkTooltips *tooltips,  GtkWidget *widget,  const gchar *tip_text,  const gchar *tip_private);
-		gtk_tooltips_set_tip(gtkTooltips, (widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(tipText), Str.toStringz(tipPrivate));
-	}
+	public void setTip(Widget widget, string tipText, string tipPrivate);
 	
 	/**
 	 * Warning
@@ -231,11 +128,7 @@ public class Tooltips : ObjectGtk
 	 * widget = a GtkWidget.
 	 * Returns:a GtkTooltipsData struct, or NULL if the widget has no tooltip.
 	 */
-	public static GtkTooltipsData* dataGet(Widget widget)
-	{
-		// GtkTooltipsData* gtk_tooltips_data_get (GtkWidget *widget);
-		return gtk_tooltips_data_get((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static GtkTooltipsData* dataGet(Widget widget);
 	
 	/**
 	 * Warning
@@ -244,11 +137,7 @@ public class Tooltips : ObjectGtk
 	 * Applications should never have to call this function, since GTK+ takes
 	 * care of this.
 	 */
-	public void forceWindow()
-	{
-		// void gtk_tooltips_force_window (GtkTooltips *tooltips);
-		gtk_tooltips_force_window(gtkTooltips);
-	}
+	public void forceWindow();
 	
 	/**
 	 * Warning
@@ -266,14 +155,5 @@ public class Tooltips : ObjectGtk
 	 *  are displayed, or NULL
 	 * Returns: TRUE if tip_window is displaying tooltips, otherwise FALSE.
 	 */
-	public static int getInfoFromTipWindow(Window tipWindow, out GtkTooltips* tooltips, out Widget currentWidget)
-	{
-		// gboolean gtk_tooltips_get_info_from_tip_window  (GtkWindow *tip_window,  GtkTooltips **tooltips,  GtkWidget **current_widget);
-		GtkWidget* outcurrentWidget = null;
-		
-		auto p = gtk_tooltips_get_info_from_tip_window((tipWindow is null) ? null : tipWindow.getWindowStruct(), &tooltips, &outcurrentWidget);
-		
-		currentWidget = new Widget(outcurrentWidget);
-		return p;
-	}
+	public static int getInfoFromTipWindow(Window tipWindow, out GtkTooltips* tooltips, out Widget currentWidget);
 }

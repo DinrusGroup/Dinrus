@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkScrolledWindow.html
- * outPack = gtk
- * outFile = ScrolledWindow
- * strct   = GtkScrolledWindow
- * realStrct=
- * ctorStrct=
- * clss    = ScrolledWindow
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_scrolled_window_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_scrolled_window_new
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Adjustment
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ScrolledWindow;
 
 public  import gtkD.gtkc.gtktypes;
@@ -113,51 +57,22 @@ public class ScrolledWindow : Bin
 	protected GtkScrolledWindow* gtkScrolledWindow;
 	
 	
-	public GtkScrolledWindow* getScrolledWindowStruct()
-	{
-		return gtkScrolledWindow;
-	}
+	public GtkScrolledWindow* getScrolledWindowStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkScrolledWindow;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkScrolledWindow* gtkScrolledWindow)
-	{
-		if(gtkScrolledWindow is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkScrolledWindow);
-		if( ptr !is null )
-		{
-			this = cast(ScrolledWindow)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkScrolledWindow);
-		this.gtkScrolledWindow = gtkScrolledWindow;
-	}
+	public this (GtkScrolledWindow* gtkScrolledWindow);
 	
 	/** */
-	public this()
-	{
-		this(null, null);
-	}
+	public this();
 	
 	/** */
-	public this(Widget widget)
-	{
-		this();
-		addWithViewport(widget);
-	}
+	public this(Widget widget);
 	
 	/**
 	 * Creates a new scrolled window. The two arguments are the scrolled
@@ -170,20 +85,7 @@ public class ScrolledWindow : Bin
 	 *  vadjustment = Vertical adjustment.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Adjustment hadjustment, Adjustment vadjustment)
-	{
-		// GtkWidget* gtk_scrolled_window_new (GtkAdjustment *hadjustment,  GtkAdjustment *vadjustment);
-		auto p = gtk_scrolled_window_new(
-		hadjustment is null ? null : hadjustment.getAdjustmentStruct(),
-		vadjustment is null ? null : vadjustment.getAdjustmentStruct());
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_scrolled_window_new");
-		}
-		
-		this(cast(GtkScrolledWindow*) p);
-	}
+	public this (Adjustment hadjustment, Adjustment vadjustment);
 	
 	/**
 	 * Creates a new Scrolled window and set the policy type
@@ -191,11 +93,7 @@ public class ScrolledWindow : Bin
 	 *  hPolicy = the horizontal policy
 	 *  vPolicy = the vertical policy
 	 */
-	this(PolicyType hPolicy, PolicyType vPolicy)
-	{
-		this();
-		setPolicy(hPolicy, vPolicy);
-	}
+	this(PolicyType hPolicy, PolicyType vPolicy);
 	
 	/**
 	 */
@@ -204,28 +102,8 @@ public class ScrolledWindow : Bin
 	void delegate(GtkDirectionType, ScrolledWindow)[] onMoveFocusOutListeners;
 	/**
 	 */
-	void addOnMoveFocusOut(void delegate(GtkDirectionType, ScrolledWindow) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-focus-out" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-focus-out",
-			cast(GCallback)&callBackMoveFocusOut,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-focus-out"] = 1;
-		}
-		onMoveFocusOutListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveFocusOut(GtkScrolledWindow* scrolledwindowStruct, GtkDirectionType arg1, ScrolledWindow scrolledWindow)
-	{
-		foreach ( void delegate(GtkDirectionType, ScrolledWindow) dlg ; scrolledWindow.onMoveFocusOutListeners )
-		{
-			dlg(arg1, scrolledWindow);
-		}
-	}
+	void addOnMoveFocusOut(void delegate(GtkDirectionType, ScrolledWindow) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveFocusOut(GtkScrolledWindow* scrolledwindowStruct, GtkDirectionType arg1, ScrolledWindow scrolledWindow);
 	
 	bool delegate(GtkScrollType, gboolean, ScrolledWindow)[] onScrollChildListeners;
 	/**
@@ -240,33 +118,8 @@ public class ScrolledWindow : Bin
 	 * implementation, but it wasn't worth breaking the
 	 * API.)
 	 */
-	void addOnScrollChild(bool delegate(GtkScrollType, gboolean, ScrolledWindow) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("scroll-child" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"scroll-child",
-			cast(GCallback)&callBackScrollChild,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["scroll-child"] = 1;
-		}
-		onScrollChildListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackScrollChild(GtkScrolledWindow* scrolledwindowStruct, GtkScrollType arg1, gboolean arg2, ScrolledWindow scrolledWindow)
-	{
-		foreach ( bool delegate(GtkScrollType, gboolean, ScrolledWindow) dlg ; scrolledWindow.onScrollChildListeners )
-		{
-			if ( dlg(arg1, arg2, scrolledWindow) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnScrollChild(bool delegate(GtkScrollType, gboolean, ScrolledWindow) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackScrollChild(GtkScrolledWindow* scrolledwindowStruct, GtkScrollType arg1, gboolean arg2, ScrolledWindow scrolledWindow);
 	
 	
 	/**
@@ -275,16 +128,7 @@ public class ScrolledWindow : Bin
 	 * functionality.
 	 * Returns: the horizontal GtkAdjustment
 	 */
-	public Adjustment getHadjustment()
-	{
-		// GtkAdjustment* gtk_scrolled_window_get_hadjustment (GtkScrolledWindow *scrolled_window);
-		auto p = gtk_scrolled_window_get_hadjustment(gtkScrolledWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getHadjustment();
 	
 	/**
 	 * Returns the vertical scrollbar's adjustment, used to connect the
@@ -292,48 +136,21 @@ public class ScrolledWindow : Bin
 	 * functionality.
 	 * Returns: the vertical GtkAdjustment
 	 */
-	public Adjustment getVadjustment()
-	{
-		// GtkAdjustment* gtk_scrolled_window_get_vadjustment (GtkScrolledWindow *scrolled_window);
-		auto p = gtk_scrolled_window_get_vadjustment(gtkScrolledWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getVadjustment();
 	
 	/**
 	 * Returns the horizontal scrollbar of scrolled_window.
 	 * Since 2.8
 	 * Returns: the horizontal scrollbar of the scrolled window, or  NULL if it does not have one.
 	 */
-	public Widget getHscrollbar()
-	{
-		// GtkWidget* gtk_scrolled_window_get_hscrollbar (GtkScrolledWindow *scrolled_window);
-		auto p = gtk_scrolled_window_get_hscrollbar(gtkScrolledWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getHscrollbar();
 	
 	/**
 	 * Returns the vertical scrollbar of scrolled_window.
 	 * Since 2.8
 	 * Returns: the vertical scrollbar of the scrolled window, or NULL if it does not have one.
 	 */
-	public Widget getVscrollbar()
-	{
-		// GtkWidget* gtk_scrolled_window_get_vscrollbar (GtkScrolledWindow *scrolled_window);
-		auto p = gtk_scrolled_window_get_vscrollbar(gtkScrolledWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getVscrollbar();
 	
 	/**
 	 * Sets the scrollbar policy for the horizontal and vertical scrollbars.
@@ -347,11 +164,7 @@ public class ScrolledWindow : Bin
 	 * hscrollbarPolicy =  policy for horizontal bar
 	 * vscrollbarPolicy =  policy for vertical bar
 	 */
-	public void setPolicy(GtkPolicyType hscrollbarPolicy, GtkPolicyType vscrollbarPolicy)
-	{
-		// void gtk_scrolled_window_set_policy (GtkScrolledWindow *scrolled_window,  GtkPolicyType hscrollbar_policy,  GtkPolicyType vscrollbar_policy);
-		gtk_scrolled_window_set_policy(gtkScrolledWindow, hscrollbarPolicy, vscrollbarPolicy);
-	}
+	public void setPolicy(GtkPolicyType hscrollbarPolicy, GtkPolicyType vscrollbarPolicy);
 	
 	/**
 	 * Used to add children without native scrolling capabilities. This
@@ -372,11 +185,7 @@ public class ScrolledWindow : Bin
 	 * Params:
 	 * child =  the widget you want to scroll
 	 */
-	public void addWithViewport(Widget child)
-	{
-		// void gtk_scrolled_window_add_with_viewport  (GtkScrolledWindow *scrolled_window,  GtkWidget *child);
-		gtk_scrolled_window_add_with_viewport(gtkScrolledWindow, (child is null) ? null : child.getWidgetStruct());
-	}
+	public void addWithViewport(Widget child);
 	
 	/**
 	 * Sets the placement of the contents with respect to the scrollbars
@@ -390,11 +199,7 @@ public class ScrolledWindow : Bin
 	 * Params:
 	 * windowPlacement =  position of the child window
 	 */
-	public void setPlacement(GtkCornerType windowPlacement)
-	{
-		// void gtk_scrolled_window_set_placement (GtkScrolledWindow *scrolled_window,  GtkCornerType window_placement);
-		gtk_scrolled_window_set_placement(gtkScrolledWindow, windowPlacement);
-	}
+	public void setPlacement(GtkCornerType windowPlacement);
 	
 	/**
 	 * Unsets the placement of the contents with respect to the scrollbars
@@ -404,11 +209,7 @@ public class ScrolledWindow : Bin
 	 * gtk_scrolled_window_get_placement().
 	 * Since 2.10
 	 */
-	public void unsetPlacement()
-	{
-		// void gtk_scrolled_window_unset_placement (GtkScrolledWindow *scrolled_window);
-		gtk_scrolled_window_unset_placement(gtkScrolledWindow);
-	}
+	public void unsetPlacement();
 	
 	/**
 	 * Changes the type of shadow drawn around the contents of
@@ -416,44 +217,28 @@ public class ScrolledWindow : Bin
 	 * Params:
 	 * type =  kind of shadow to draw around scrolled window contents
 	 */
-	public void setShadowType(GtkShadowType type)
-	{
-		// void gtk_scrolled_window_set_shadow_type (GtkScrolledWindow *scrolled_window,  GtkShadowType type);
-		gtk_scrolled_window_set_shadow_type(gtkScrolledWindow, type);
-	}
+	public void setShadowType(GtkShadowType type);
 	
 	/**
 	 * Sets the GtkAdjustment for the horizontal scrollbar.
 	 * Params:
 	 * hadjustment =  horizontal scroll adjustment
 	 */
-	public void setHadjustment(Adjustment hadjustment)
-	{
-		// void gtk_scrolled_window_set_hadjustment (GtkScrolledWindow *scrolled_window,  GtkAdjustment *hadjustment);
-		gtk_scrolled_window_set_hadjustment(gtkScrolledWindow, (hadjustment is null) ? null : hadjustment.getAdjustmentStruct());
-	}
+	public void setHadjustment(Adjustment hadjustment);
 	
 	/**
 	 * Sets the GtkAdjustment for the vertical scrollbar.
 	 * Params:
 	 * vadjustment =  vertical scroll adjustment
 	 */
-	public void setVadjustment(Adjustment vadjustment)
-	{
-		// void gtk_scrolled_window_set_vadjustment (GtkScrolledWindow *scrolled_window,  GtkAdjustment *vadjustment);
-		gtk_scrolled_window_set_vadjustment(gtkScrolledWindow, (vadjustment is null) ? null : vadjustment.getAdjustmentStruct());
-	}
+	public void setVadjustment(Adjustment vadjustment);
 	
 	/**
 	 * Gets the placement of the contents with respect to the scrollbars
 	 * for the scrolled window. See gtk_scrolled_window_set_placement().
 	 * Returns: the current placement value.See also gtk_scrolled_window_set_placement() andgtk_scrolled_window_unset_placement().
 	 */
-	public GtkCornerType getPlacement()
-	{
-		// GtkCornerType gtk_scrolled_window_get_placement (GtkScrolledWindow *scrolled_window);
-		return gtk_scrolled_window_get_placement(gtkScrolledWindow);
-	}
+	public GtkCornerType getPlacement();
 	
 	/**
 	 * Retrieves the current policy values for the horizontal and vertical
@@ -464,20 +249,12 @@ public class ScrolledWindow : Bin
 	 * vscrollbarPolicy =  location to store the policy for the vertical
 	 *  scrollbar, or NULL.
 	 */
-	public void getPolicy(out GtkPolicyType hscrollbarPolicy, out GtkPolicyType vscrollbarPolicy)
-	{
-		// void gtk_scrolled_window_get_policy (GtkScrolledWindow *scrolled_window,  GtkPolicyType *hscrollbar_policy,  GtkPolicyType *vscrollbar_policy);
-		gtk_scrolled_window_get_policy(gtkScrolledWindow, &hscrollbarPolicy, &vscrollbarPolicy);
-	}
+	public void getPolicy(out GtkPolicyType hscrollbarPolicy, out GtkPolicyType vscrollbarPolicy);
 	
 	/**
 	 * Gets the shadow type of the scrolled window. See
 	 * gtk_scrolled_window_set_shadow_type().
 	 * Returns: the current shadow type
 	 */
-	public GtkShadowType getShadowType()
-	{
-		// GtkShadowType gtk_scrolled_window_get_shadow_type (GtkScrolledWindow *scrolled_window);
-		return gtk_scrolled_window_get_shadow_type(gtkScrolledWindow);
-	}
+	public GtkShadowType getShadowType();
 }

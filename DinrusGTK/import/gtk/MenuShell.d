@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkMenuShell.html
- * outPack = gtk
- * outFile = MenuShell
- * strct   = GtkMenuShell
- * realStrct=
- * ctorStrct=
- * clss    = MenuShell
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_menu_shell_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.MenuShell;
 
 public  import gtkD.gtkc.gtktypes;
@@ -83,38 +30,16 @@ public class MenuShell : Container
 	protected GtkMenuShell* gtkMenuShell;
 	
 	
-	public GtkMenuShell* getMenuShellStruct()
-	{
-		return gtkMenuShell;
-	}
+	public GtkMenuShell* getMenuShellStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkMenuShell;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkMenuShell* gtkMenuShell)
-	{
-		if(gtkMenuShell is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkMenuShell);
-		if( ptr !is null )
-		{
-			this = cast(MenuShell)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkMenuShell);
-		this.gtkMenuShell = gtkMenuShell;
-	}
+	public this (GtkMenuShell* gtkMenuShell);
 	
 	/**
 	 */
@@ -125,137 +50,37 @@ public class MenuShell : Container
 	 * An action signal that activates the current menu item within the menu
 	 * shell.
 	 */
-	void addOnActivateCurrent(void delegate(gboolean, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate-current" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate-current",
-			cast(GCallback)&callBackActivateCurrent,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate-current"] = 1;
-		}
-		onActivateCurrentListeners ~= dlg;
-	}
-	extern(C) static void callBackActivateCurrent(GtkMenuShell* menushellStruct, gboolean forceHide, MenuShell menuShell)
-	{
-		foreach ( void delegate(gboolean, MenuShell) dlg ; menuShell.onActivateCurrentListeners )
-		{
-			dlg(forceHide, menuShell);
-		}
-	}
+	void addOnActivateCurrent(void delegate(gboolean, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivateCurrent(GtkMenuShell* menushellStruct, gboolean forceHide, MenuShell menuShell);
 	
 	void delegate(MenuShell)[] onCancelListeners;
 	/**
 	 * An action signal which cancels the selection within the menu shell.
 	 * Causes the GtkMenuShell::selection-done signal to be emitted.
 	 */
-	void addOnCancel(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("cancel" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"cancel",
-			cast(GCallback)&callBackCancel,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["cancel"] = 1;
-		}
-		onCancelListeners ~= dlg;
-	}
-	extern(C) static void callBackCancel(GtkMenuShell* menushellStruct, MenuShell menuShell)
-	{
-		foreach ( void delegate(MenuShell) dlg ; menuShell.onCancelListeners )
-		{
-			dlg(menuShell);
-		}
-	}
+	void addOnCancel(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCancel(GtkMenuShell* menushellStruct, MenuShell menuShell);
 	
 	void delegate(GtkDirectionType, MenuShell)[] onCycleFocusListeners;
 	/**
 	 */
-	void addOnCycleFocus(void delegate(GtkDirectionType, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("cycle-focus" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"cycle-focus",
-			cast(GCallback)&callBackCycleFocus,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["cycle-focus"] = 1;
-		}
-		onCycleFocusListeners ~= dlg;
-	}
-	extern(C) static void callBackCycleFocus(GtkMenuShell* menushellStruct, GtkDirectionType arg1, MenuShell menuShell)
-	{
-		foreach ( void delegate(GtkDirectionType, MenuShell) dlg ; menuShell.onCycleFocusListeners )
-		{
-			dlg(arg1, menuShell);
-		}
-	}
+	void addOnCycleFocus(void delegate(GtkDirectionType, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCycleFocus(GtkMenuShell* menushellStruct, GtkDirectionType arg1, MenuShell menuShell);
 	
 	void delegate(MenuShell)[] onDeactivateListeners;
 	/**
 	 * This signal is emitted when a menu shell is deactivated.
 	 */
-	void addOnDeactivate(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("deactivate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"deactivate",
-			cast(GCallback)&callBackDeactivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["deactivate"] = 1;
-		}
-		onDeactivateListeners ~= dlg;
-	}
-	extern(C) static void callBackDeactivate(GtkMenuShell* menushellStruct, MenuShell menuShell)
-	{
-		foreach ( void delegate(MenuShell) dlg ; menuShell.onDeactivateListeners )
-		{
-			dlg(menuShell);
-		}
-	}
+	void addOnDeactivate(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDeactivate(GtkMenuShell* menushellStruct, MenuShell menuShell);
 	
 	void delegate(GtkMenuDirectionType, MenuShell)[] onMoveCurrentListeners;
 	/**
 	 * An action signal which moves the current menu item in the direction
 	 * specified by direction.
 	 */
-	void addOnMoveCurrent(void delegate(GtkMenuDirectionType, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-current" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-current",
-			cast(GCallback)&callBackMoveCurrent,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-current"] = 1;
-		}
-		onMoveCurrentListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveCurrent(GtkMenuShell* menushellStruct, GtkMenuDirectionType direction, MenuShell menuShell)
-	{
-		foreach ( void delegate(GtkMenuDirectionType, MenuShell) dlg ; menuShell.onMoveCurrentListeners )
-		{
-			dlg(direction, menuShell);
-		}
-	}
+	void addOnMoveCurrent(void delegate(GtkMenuDirectionType, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveCurrent(GtkMenuShell* menushellStruct, GtkMenuDirectionType direction, MenuShell menuShell);
 	
 	bool delegate(gint, MenuShell)[] onMoveSelectedListeners;
 	/**
@@ -263,61 +88,16 @@ public class MenuShell : Container
 	 * another item.
 	 * Since 2.12
 	 */
-	void addOnMoveSelected(bool delegate(gint, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-selected" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-selected",
-			cast(GCallback)&callBackMoveSelected,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-selected"] = 1;
-		}
-		onMoveSelectedListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackMoveSelected(GtkMenuShell* menuShellStruct, gint distance, MenuShell menuShell)
-	{
-		foreach ( bool delegate(gint, MenuShell) dlg ; menuShell.onMoveSelectedListeners )
-		{
-			if ( dlg(distance, menuShell) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnMoveSelected(bool delegate(gint, MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackMoveSelected(GtkMenuShell* menuShellStruct, gint distance, MenuShell menuShell);
 	
 	void delegate(MenuShell)[] onSelectionDoneListeners;
 	/**
 	 * This signal is emitted when a selection has been completed within a menu
 	 * shell.
 	 */
-	void addOnSelectionDone(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("selection-done" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"selection-done",
-			cast(GCallback)&callBackSelectionDone,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["selection-done"] = 1;
-		}
-		onSelectionDoneListeners ~= dlg;
-	}
-	extern(C) static void callBackSelectionDone(GtkMenuShell* menushellStruct, MenuShell menuShell)
-	{
-		foreach ( void delegate(MenuShell) dlg ; menuShell.onSelectionDoneListeners )
-		{
-			dlg(menuShell);
-		}
-	}
+	void addOnSelectionDone(void delegate(MenuShell) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSelectionDone(GtkMenuShell* menushellStruct, MenuShell menuShell);
 	
 	
 	/**
@@ -325,22 +105,14 @@ public class MenuShell : Container
 	 * Params:
 	 * child = The GtkMenuItem to add.
 	 */
-	public void append(Widget child)
-	{
-		// void gtk_menu_shell_append (GtkMenuShell *menu_shell,  GtkWidget *child);
-		gtk_menu_shell_append(gtkMenuShell, (child is null) ? null : child.getWidgetStruct());
-	}
+	public void append(Widget child);
 	
 	/**
 	 * Adds a new GtkMenuItem to the beginning of the menu shell's item list.
 	 * Params:
 	 * child = The GtkMenuItem to add.
 	 */
-	public void prepend(Widget child)
-	{
-		// void gtk_menu_shell_prepend (GtkMenuShell *menu_shell,  GtkWidget *child);
-		gtk_menu_shell_prepend(gtkMenuShell, (child is null) ? null : child.getWidgetStruct());
-	}
+	public void prepend(Widget child);
 	
 	/**
 	 * Adds a new GtkMenuItem to the menu shell's item list at the position
@@ -350,33 +122,21 @@ public class MenuShell : Container
 	 * position = The position in the item list where child is added.
 	 * Positions are numbered from 0 to n-1.
 	 */
-	public void insert(Widget child, int position)
-	{
-		// void gtk_menu_shell_insert (GtkMenuShell *menu_shell,  GtkWidget *child,  gint position);
-		gtk_menu_shell_insert(gtkMenuShell, (child is null) ? null : child.getWidgetStruct(), position);
-	}
+	public void insert(Widget child, int position);
 	
 	/**
 	 * Deactivates the menu shell. Typically this results in the menu shell
 	 * being erased from the screen.
 	 */
-	public void deactivate()
-	{
-		// void gtk_menu_shell_deactivate (GtkMenuShell *menu_shell);
-		gtk_menu_shell_deactivate(gtkMenuShell);
-	}
+	public void deactivate();
 	
 	/**
 	 * Selects the menu item from the menu shell.
 	 * Params:
 	 * menuItem = The GtkMenuItem to select.
 	 */
-	public void selectItem(Widget menuItem)
-	{
-		// void gtk_menu_shell_select_item (GtkMenuShell *menu_shell,  GtkWidget *menu_item);
-		gtk_menu_shell_select_item(gtkMenuShell, (menuItem is null) ? null : menuItem.getWidgetStruct());
-	}
-	
+	public void selectItem(Widget menuItem);
+
 	/**
 	 * Select the first visible or selectable child of the menu shell;
 	 * don't select tearoff items unless the only item is a tearoff
@@ -389,20 +149,12 @@ public class MenuShell : Container
 	 *  should be FALSE if the menu is being
 	 *  popped up initially.
 	 */
-	public void selectFirst(int searchSensitive)
-	{
-		// void gtk_menu_shell_select_first (GtkMenuShell *menu_shell,  gboolean search_sensitive);
-		gtk_menu_shell_select_first(gtkMenuShell, searchSensitive);
-	}
+	public void selectFirst(int searchSensitive);
 	
 	/**
 	 * Deselects the currently selected item from the menu shell, if any.
 	 */
-	public void deselect()
-	{
-		// void gtk_menu_shell_deselect (GtkMenuShell *menu_shell);
-		gtk_menu_shell_deselect(gtkMenuShell);
-	}
+	public void deselect();
 	
 	/**
 	 * Activates the menu item within the menu shell.
@@ -411,21 +163,13 @@ public class MenuShell : Container
 	 * forceDeactivate = If TRUE, force the deactivation of the menu shell
 	 * after the menu item is activated.
 	 */
-	public void activateItem(Widget menuItem, int forceDeactivate)
-	{
-		// void gtk_menu_shell_activate_item (GtkMenuShell *menu_shell,  GtkWidget *menu_item,  gboolean force_deactivate);
-		gtk_menu_shell_activate_item(gtkMenuShell, (menuItem is null) ? null : menuItem.getWidgetStruct(), forceDeactivate);
-	}
+	public void activateItem(Widget menuItem, int forceDeactivate);
 	
 	/**
 	 * Cancels the selection within the menu shell.
 	 * Since 2.4
 	 */
-	public void cancel()
-	{
-		// void gtk_menu_shell_cancel (GtkMenuShell *menu_shell);
-		gtk_menu_shell_cancel(gtkMenuShell);
-	}
+	public void cancel();
 	
 	/**
 	 * If take_focus is TRUE (the default) the menu shell will take the keyboard
@@ -443,20 +187,12 @@ public class MenuShell : Container
 	 * Params:
 	 * takeFocus =  TRUE if the menu shell should take the keyboard focus on popup.
 	 */
-	public void setTakeFocus(int takeFocus)
-	{
-		// void gtk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,  gboolean take_focus);
-		gtk_menu_shell_set_take_focus(gtkMenuShell, takeFocus);
-	}
+	public void setTakeFocus(int takeFocus);
 	
 	/**
 	 * Returns TRUE if the menu shell will take the keyboard focus on popup.
 	 * Since 2.8
 	 * Returns: TRUE if the menu shell will take the keyboard focus on popup.
 	 */
-	public int getTakeFocus()
-	{
-		// gboolean gtk_menu_shell_get_take_focus (GtkMenuShell *menu_shell);
-		return gtk_menu_shell_get_take_focus(gtkMenuShell);
-	}
+	public int getTakeFocus();
 }

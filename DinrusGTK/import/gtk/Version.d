@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Feature-Test-Macros.html
- * outPack = gtk
- * outFile = Version
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Version
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtkc.Loader
- * 	- gtkD.gtkc.paths
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Version;
 
 public  import gtkD.gtkc.gtktypes;
@@ -79,61 +26,19 @@ public class Version
 	 * The major version number of the GTK+ library. (e.g. in GTK+ version 2.12.4 this is 2.)
 	 * This variable is in the library, so represents the GTK+ library you have linked against.
 	 */
-	public static int major()
-	{
-		uint* vers;
-		
-		Linker.link(vers, "gtk_major_version", LIBRARY.GTK);
-		
-		if ( vers is null )
-		{
-			return -1;
-		}
-		else
-		{
-			return *vers;
-		}
-	}
+	public static int major();
 	
 	/*
 	 * The minor version number of the GTK+ library. (e.g. in GTK+ version 2.12.4 this is 12.)
 	 * This variable is in the library, so represents the GTK+ library you have linked against.
 	 */
-	public static int minor()
-	{
-		uint* vers;
-		
-		Linker.link(vers, "gtk_minor_version", LIBRARY.GTK);
-		
-		if ( vers is null )
-		{
-			return -1;
-		}
-		else
-		{
-			return *vers;
-		}
-	}
+	public static int minor();
 	
 	/*
 	 * The micro version number of the GTK+ library. (e.g. in GTK+ version 2.12.4 this is 4.)
 	 * This variable is in the library, so represents the GTK+ library you have linked against.
 	 */
-	public static int micro()
-	{
-		uint* vers;
-		
-		Linker.link(vers, "gtk_micro_version", LIBRARY.GTK);
-		
-		if ( vers is null )
-		{
-			return -1;
-		}
-		else
-		{
-			return *vers;
-		}
-	}
+	public static int micro();
 	
 	/**
 	 */
@@ -165,9 +70,5 @@ public class Version
 	 * requiredMicro =  the required micro version.
 	 * Returns: NULL if the GTK+ library is compatible with the given version, or a string describing the version mismatch. The returned string is owned by GTK+ and should not be modified or freed.
 	 */
-	public static string checkVersion(uint requiredMajor, uint requiredMinor, uint requiredMicro)
-	{
-		// const gchar* gtk_check_version (guint required_major,  guint required_minor,  guint required_micro);
-		return Str.toString(gtk_check_version(requiredMajor, requiredMinor, requiredMicro));
-	}
+	public static string checkVersion(uint requiredMajor, uint requiredMinor, uint requiredMicro);
 }

@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRadioButton.html
- * outPack = gtk
- * outFile = RadioButton
- * strct   = GtkRadioButton
- * realStrct=
- * ctorStrct=
- * clss    = RadioButton
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_radio_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_radio_button_new_with_label
- * 	- gtk_radio_button_new_with_mnemonic
- * 	- gtk_radio_button_new_with_label_from_widget
- * 	- gtk_radio_button_new_with_mnemonic_from_widget
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ListSG
- * structWrap:
- * 	- GSList* -> ListSG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RadioButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -127,38 +69,16 @@ public class RadioButton : CheckButton
 	protected GtkRadioButton* gtkRadioButton;
 	
 	
-	public GtkRadioButton* getRadioButtonStruct()
-	{
-		return gtkRadioButton;
-	}
+	public GtkRadioButton* getRadioButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRadioButton;
-	}
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRadioButton* gtkRadioButton)
-	{
-		if(gtkRadioButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRadioButton);
-		if( ptr !is null )
-		{
-			this = cast(RadioButton)ptr;
-			return;
-		}
-		super(cast(GtkCheckButton*)gtkRadioButton);
-		this.gtkRadioButton = gtkRadioButton;
-	}
+	public this (GtkRadioButton* gtkRadioButton);
 	
 	/**
 	 * Creates a new RadioButton with a text label.
@@ -170,32 +90,7 @@ public class RadioButton : CheckButton
 	 *  mnemonic for the button.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ListSG group, string label, bool mnemonic=true)
-	{
-		GtkRadioButton* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_radio_button_new_with_mnemonic  (GSList *group,  const gchar *label);
-			p = cast(GtkRadioButton*)gtk_radio_button_new_with_mnemonic(
-			group is null ? null : group.getListSGStruct(),
-			Str.toStringz(label));
-		}
-		else
-		{
-			// GtkWidget* gtk_radio_button_new_with_label (GSList *group,  const gchar *label);
-			p = cast(GtkRadioButton*)gtk_radio_button_new_with_label(
-			group is null ? null : group.getListSGStruct(),
-			Str.toStringz(label));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_radio_button_new_");
-		}
-		
-		this(p);
-	}
+	public this (ListSG group, string label, bool mnemonic=true);
 	
 	/**
 	 * Creates a new RadioButton with a text label, adding it to the same group
@@ -208,32 +103,7 @@ public class RadioButton : CheckButton
 	 *  in label indicate the mnemonic for the button.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (RadioButton radioButton, string label, bool mnemonic=true)
-	{
-		GtkRadioButton* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_radio_button_new_with_mnemonic_from_widget  (GtkRadioButton *group,  const gchar *label);
-			p = cast(GtkRadioButton*)gtk_radio_button_new_with_mnemonic_from_widget(
-			radioButton.getRadioButtonStruct(),
-			Str.toStringz(label));
-		}
-		else
-		{
-			// GtkWidget* gtk_radio_button_new_with_label_from_widget  (GtkRadioButton *group,  const gchar *label);
-			p = cast(GtkRadioButton*)gtk_radio_button_new_with_label_from_widget(
-			radioButton.getRadioButtonStruct(),
-			Str.toStringz(label));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_radio_button_new_");
-		}
-		
-		this(p);
-	}
+	public this (RadioButton radioButton, string label, bool mnemonic=true);
 	
 	/**
 	 * Creates a new RadioButton with a text label,
@@ -245,10 +115,7 @@ public class RadioButton : CheckButton
 	 *  in label indicate the mnemonic for the button.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string label, bool mnemonic=true)
-	{
-		this(cast(ListSG)null, label, mnemonic);
-	}
+	public this (string label, bool mnemonic=true);
 	
 	/**
 	 */
@@ -268,28 +135,8 @@ public class RadioButton : CheckButton
 	 * Another way of offering the user a single choice from
 	 * many.
 	 */
-	void addOnGroupChanged(void delegate(RadioButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("group-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"group-changed",
-			cast(GCallback)&callBackGroupChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["group-changed"] = 1;
-		}
-		onGroupChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackGroupChanged(GtkRadioButton* styleStruct, RadioButton radioButton)
-	{
-		foreach ( void delegate(RadioButton) dlg ; radioButton.onGroupChangedListeners )
-		{
-			dlg(radioButton);
-		}
-	}
+	void addOnGroupChanged(void delegate(RadioButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackGroupChanged(GtkRadioButton* styleStruct, RadioButton radioButton);
 	
 	
 	/**
@@ -299,32 +146,14 @@ public class RadioButton : CheckButton
 	 * group = an existing radio button group, or NULL if you are creating a new group.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (ListSG group)
-	{
-		// GtkWidget* gtk_radio_button_new (GSList *group);
-		auto p = gtk_radio_button_new((group is null) ? null : group.getListSGStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_radio_button_new((group is null) ? null : group.getListSGStruct())");
-		}
-		this(cast(GtkRadioButton*) p);
-	}
+	public this (ListSG group);
 	
 	/**
 	 * Creates a new GtkRadioButton, adding it to the same group as radio_group_member.
 	 * As with gtk_radio_button_new(), a widget should be packed into the radio button.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_radio_button_new_from_widget (GtkRadioButton *radio_group_member);
-		auto p = gtk_radio_button_new_from_widget(gtkRadioButton);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_radio_button_new_from_widget(gtkRadioButton)");
-		}
-		this(cast(GtkRadioButton*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets a GtkRadioButton's group. It should be noted that this does not change
@@ -335,24 +164,11 @@ public class RadioButton : CheckButton
 	 * group = an existing radio button group, such as one returned from
 	 * gtk_radio_button_get_group().
 	 */
-	public void setGroup(ListSG group)
-	{
-		// void gtk_radio_button_set_group (GtkRadioButton *radio_button,  GSList *group);
-		gtk_radio_button_set_group(gtkRadioButton, (group is null) ? null : group.getListSGStruct());
-	}
+	public void setGroup(ListSG group);
 	
 	/**
 	 * Retrieves the group assigned to a radio button.
 	 * Returns:a linked list containing all the radio buttons in the same groupas radio_button. The returned list is owned by the radio buttonand must not be modified or freed.
 	 */
-	public ListSG getGroup()
-	{
-		// GSList* gtk_radio_button_get_group (GtkRadioButton *radio_button);
-		auto p = gtk_radio_button_get_group(gtkRadioButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getGroup();
 }

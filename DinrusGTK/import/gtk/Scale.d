@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkScale.html
- * outPack = gtk
- * outFile = Scale
- * strct   = GtkScale
- * realStrct=
- * ctorStrct=
- * clss    = Scale
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_scale_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.pango.PgLayout
- * structWrap:
- * 	- PangoLayout* -> PgLayout
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Scale;
 
 public  import gtkD.gtkc.gtktypes;
@@ -95,38 +41,16 @@ public class Scale : Range
 	protected GtkScale* gtkScale;
 	
 	
-	public GtkScale* getScaleStruct()
-	{
-		return gtkScale;
-	}
+	public GtkScale* getScaleStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkScale;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkScale* gtkScale)
-	{
-		if(gtkScale is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkScale);
-		if( ptr !is null )
-		{
-			this = cast(Scale)ptr;
-			return;
-		}
-		super(cast(GtkRange*)gtkScale);
-		this.gtkScale = gtkScale;
-	}
+	public this (GtkScale* gtkScale);
 	
 	/**
 	 */
@@ -147,28 +71,8 @@ public class Scale : Range
 		 *  gtk_scale_get_digits (scale), value);
 	 *  }
 	 */
-	void addOnFormatValue(string delegate(gdouble, Scale) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("format-value" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"format-value",
-			cast(GCallback)&callBackFormatValue,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["format-value"] = 1;
-		}
-		onFormatValueListeners ~= dlg;
-	}
-	extern(C) static void callBackFormatValue(GtkScale* scaleStruct, gdouble value, Scale scale)
-	{
-		foreach ( string delegate(gdouble, Scale) dlg ; scale.onFormatValueListeners )
-		{
-			dlg(value, scale);
-		}
-	}
+	void addOnFormatValue(string delegate(gdouble, Scale) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackFormatValue(GtkScale* scaleStruct, gdouble value, Scale scale);
 	
 	
 	/**
@@ -179,11 +83,7 @@ public class Scale : Range
 	 * digits =  the number of decimal places to display,
 	 *  e.g. use 1 to display 1.0, 2 to display 1.00, etc
 	 */
-	public void setDigits(int digits)
-	{
-		// void gtk_scale_set_digits (GtkScale *scale,  gint digits);
-		gtk_scale_set_digits(gtkScale, digits);
-	}
+	public void setDigits(int digits);
 	
 	/**
 	 * Specifies whether the current value is displayed as a string next
@@ -191,53 +91,33 @@ public class Scale : Range
 	 * Params:
 	 * drawValue =  TRUE to draw the value
 	 */
-	public void setDrawValue(int drawValue)
-	{
-		// void gtk_scale_set_draw_value (GtkScale *scale,  gboolean draw_value);
-		gtk_scale_set_draw_value(gtkScale, drawValue);
-	}
+	public void setDrawValue(int drawValue);
 	
 	/**
 	 * Sets the position in which the current value is displayed.
 	 * Params:
 	 * pos =  the position in which the current value is displayed
 	 */
-	public void setValuePos(GtkPositionType pos)
-	{
-		// void gtk_scale_set_value_pos (GtkScale *scale,  GtkPositionType pos);
-		gtk_scale_set_value_pos(gtkScale, pos);
-	}
+	public void setValuePos(GtkPositionType pos);
 	
 	/**
 	 * Gets the number of decimal places that are displayed in the value.
 	 * Returns: the number of decimal places that are displayed
 	 */
-	public int getDigits()
-	{
-		// gint gtk_scale_get_digits (GtkScale *scale);
-		return gtk_scale_get_digits(gtkScale);
-	}
+	public int getDigits();
 	
 	/**
 	 * Returns whether the current value is displayed as a string
 	 * next to the slider.
 	 * Returns: whether the current value is displayed as a string
 	 */
-	public int getDrawValue()
-	{
-		// gboolean gtk_scale_get_draw_value (GtkScale *scale);
-		return gtk_scale_get_draw_value(gtkScale);
-	}
+	public int getDrawValue();
 	
 	/**
 	 * Gets the position in which the current value is displayed.
 	 * Returns: the position in which the current value is displayed
 	 */
-	public GtkPositionType getValuePos()
-	{
-		// GtkPositionType gtk_scale_get_value_pos (GtkScale *scale);
-		return gtk_scale_get_value_pos(gtkScale);
-	}
+	public GtkPositionType getValuePos();
 	
 	/**
 	 * Gets the PangoLayout used to display the scale.
@@ -246,16 +126,7 @@ public class Scale : Range
 	 * Since 2.4
 	 * Returns: the PangoLayout for this scale, or NULL  if the "draw-value" property is FALSE.
 	 */
-	public PgLayout getLayout()
-	{
-		// PangoLayout * gtk_scale_get_layout (GtkScale *scale);
-		auto p = gtk_scale_get_layout(gtkScale);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLayout(cast(PangoLayout*) p);
-	}
+	public PgLayout getLayout();
 	
 	/**
 	 * Obtains the coordinates where the scale will draw the
@@ -269,11 +140,7 @@ public class Scale : Range
 	 * x =  location to store X offset of layout, or NULL
 	 * y =  location to store Y offset of layout, or NULL
 	 */
-	public void getLayoutOffsets(out int x, out int y)
-	{
-		// void gtk_scale_get_layout_offsets (GtkScale *scale,  gint *x,  gint *y);
-		gtk_scale_get_layout_offsets(gtkScale, &x, &y);
-	}
+	public void getLayoutOffsets(out int x, out int y);
 	
 	/**
 	 * Adds a mark at value.
@@ -292,19 +159,11 @@ public class Scale : Range
 	 *  right.
 	 * markup =  Text to be shown at the mark, using Pango markup, or NULL
 	 */
-	public void addMark(double value, GtkPositionType position, string markup)
-	{
-		// void gtk_scale_add_mark (GtkScale *scale,  gdouble value,  GtkPositionType position,  const gchar *markup);
-		gtk_scale_add_mark(gtkScale, value, position, Str.toStringz(markup));
-	}
+	public void addMark(double value, GtkPositionType position, string markup);
 	
 	/**
 	 * Removes any marks that have been added with gtk_scale_add_mark().
 	 * Since 2.16
 	 */
-	public void clearMarks()
-	{
-		// void gtk_scale_clear_marks (GtkScale *scale);
-		gtk_scale_clear_marks(gtkScale);
-	}
+	public void clearMarks();
 }

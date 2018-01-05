@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkToolButton.html
- * outPack = gtk
- * outFile = ToolButton
- * strct   = GtkToolButton
- * realStrct=
- * ctorStrct=GtkToolItem
- * clss    = ToolButton
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_tool_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.ToolItem
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ToolButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -96,59 +41,28 @@ public class ToolButton : ToolItem
 	protected GtkToolButton* gtkToolButton;
 	
 	
-	public GtkToolButton* getToolButtonStruct()
-	{
-		return gtkToolButton;
-	}
+	public GtkToolButton* getToolButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkToolButton;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkToolButton* gtkToolButton)
-	{
-		if(gtkToolButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkToolButton);
-		if( ptr !is null )
-		{
-			this = cast(ToolButton)ptr;
-			return;
-		}
-		super(cast(GtkToolItem*)gtkToolButton);
-		this.gtkToolButton = gtkToolButton;
-	}
+	public this (GtkToolButton* gtkToolButton);
 	
 	/** An arbitrary string to be used by the application */
 	private string action;
 	
 	/** */
-	public void setActionName(string action)
-	{
-		this.action = action;
-	}
+	public void setActionName(string action);
 	
 	/** */
-	public string getActionName()
-	{
-		return action;
-	}
+	public string getActionName();
 	
 	/** */
-	public this (StockID stockID)
-	{
-		this(StockDesc[stockID]);
-	}
+	public this (StockID stockID);
 	
 	/**
 	 */
@@ -175,28 +89,8 @@ public class ToolButton : ToolItem
 	 * A subclass of GtkToolItem that separates groups of
 	 *  items on a toolbar
 	 */
-	void addOnClicked(void delegate(ToolButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("clicked" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"clicked",
-			cast(GCallback)&callBackClicked,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["clicked"] = 1;
-		}
-		onClickedListeners ~= dlg;
-	}
-	extern(C) static void callBackClicked(GtkToolButton* toolbuttonStruct, ToolButton toolButton)
-	{
-		foreach ( void delegate(ToolButton) dlg ; toolButton.onClickedListeners )
-		{
-			dlg(toolButton);
-		}
-	}
+	void addOnClicked(void delegate(ToolButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackClicked(GtkToolButton* toolbuttonStruct, ToolButton toolButton);
 	
 	
 	/**
@@ -208,16 +102,7 @@ public class ToolButton : ToolItem
 	 * label =  a string that will be used as label, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Widget iconWidget, string label)
-	{
-		// GtkToolItem * gtk_tool_button_new (GtkWidget *icon_widget,  const gchar *label);
-		auto p = gtk_tool_button_new((iconWidget is null) ? null : iconWidget.getWidgetStruct(), Str.toStringz(label));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tool_button_new((iconWidget is null) ? null : iconWidget.getWidgetStruct(), Str.toStringz(label))");
-		}
-		this(cast(GtkToolButton*) p);
-	}
+	public this (Widget iconWidget, string label);
 	
 	/**
 	 * Creates a new GtkToolButton containing the image and text from a
@@ -229,16 +114,7 @@ public class ToolButton : ToolItem
 	 * stockId =  the name of the stock item
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string stockId)
-	{
-		// GtkToolItem * gtk_tool_button_new_from_stock (const gchar *stock_id);
-		auto p = gtk_tool_button_new_from_stock(Str.toStringz(stockId));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tool_button_new_from_stock(Str.toStringz(stockId))");
-		}
-		this(cast(GtkToolButton*) p);
-	}
+	public this (string stockId);
 	
 	/**
 	 * Sets label as the label used for the tool button. The "label" property
@@ -250,11 +126,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * label =  a string that will be used as label, or NULL.
 	 */
-	public void setLabel(string label)
-	{
-		// void gtk_tool_button_set_label (GtkToolButton *button,  const gchar *label);
-		gtk_tool_button_set_label(gtkToolButton, Str.toStringz(label));
-	}
+	public void setLabel(string label);
 	
 	/**
 	 * Returns the label used by the tool button, or NULL if the tool button
@@ -263,11 +135,7 @@ public class ToolButton : ToolItem
 	 * Since 2.4
 	 * Returns: The label, or NULL
 	 */
-	public string getLabel()
-	{
-		// const gchar * gtk_tool_button_get_label (GtkToolButton *button);
-		return Str.toString(gtk_tool_button_get_label(gtkToolButton));
-	}
+	public string getLabel();
 	
 	/**
 	 * If set, an underline in the label property indicates that the next character
@@ -281,11 +149,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * useUnderline =  whether the button label has the form "_Open"
 	 */
-	public void setUseUnderline(int useUnderline)
-	{
-		// void gtk_tool_button_set_use_underline (GtkToolButton *button,  gboolean use_underline);
-		gtk_tool_button_set_use_underline(gtkToolButton, useUnderline);
-	}
+	public void setUseUnderline(int useUnderline);
 	
 	/**
 	 * Returns whether underscores in the label property are used as mnemonics
@@ -293,11 +157,7 @@ public class ToolButton : ToolItem
 	 * Since 2.4
 	 * Returns: TRUE if underscores in the label property are used asmnemonics on menu items on the overflow menu.
 	 */
-	public int getUseUnderline()
-	{
-		// gboolean gtk_tool_button_get_use_underline (GtkToolButton *button);
-		return gtk_tool_button_get_use_underline(gtkToolButton);
-	}
+	public int getUseUnderline();
 	
 	/**
 	 * Sets the name of the stock item. See gtk_tool_button_new_from_stock().
@@ -307,11 +167,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * stockId =  a name of a stock item, or NULL
 	 */
-	public void setStockId(string stockId)
-	{
-		// void gtk_tool_button_set_stock_id (GtkToolButton *button,  const gchar *stock_id);
-		gtk_tool_button_set_stock_id(gtkToolButton, Str.toStringz(stockId));
-	}
+	public void setStockId(string stockId);
 	
 	/**
 	 * Returns the name of the stock item. See gtk_tool_button_set_stock_id().
@@ -319,11 +175,7 @@ public class ToolButton : ToolItem
 	 * Since 2.4
 	 * Returns: the name of the stock item for button.
 	 */
-	public string getStockId()
-	{
-		// const gchar * gtk_tool_button_get_stock_id (GtkToolButton *button);
-		return Str.toString(gtk_tool_button_get_stock_id(gtkToolButton));
-	}
+	public string getStockId();
 	
 	/**
 	 * Sets the icon for the tool button from a named themed icon.
@@ -335,11 +187,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * iconName =  the name of the themed icon
 	 */
-	public void setIconName(string iconName)
-	{
-		// void gtk_tool_button_set_icon_name (GtkToolButton *button,  const gchar *icon_name);
-		gtk_tool_button_set_icon_name(gtkToolButton, Str.toStringz(iconName));
-	}
+	public void setIconName(string iconName);
 	
 	/**
 	 * Returns the name of the themed icon for the tool button,
@@ -347,11 +195,7 @@ public class ToolButton : ToolItem
 	 * Since 2.8
 	 * Returns: the icon name or NULL if the tool button hasno themed icon
 	 */
-	public string getIconName()
-	{
-		// const gchar * gtk_tool_button_get_icon_name (GtkToolButton *button);
-		return Str.toString(gtk_tool_button_get_icon_name(gtkToolButton));
-	}
+	public string getIconName();
 	
 	/**
 	 * Sets icon as the widget used as icon on button. If icon_widget is
@@ -361,11 +205,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * iconWidget =  the widget used as icon, or NULL
 	 */
-	public void setIconWidget(Widget iconWidget)
-	{
-		// void gtk_tool_button_set_icon_widget (GtkToolButton *button,  GtkWidget *icon_widget);
-		gtk_tool_button_set_icon_widget(gtkToolButton, (iconWidget is null) ? null : iconWidget.getWidgetStruct());
-	}
+	public void setIconWidget(Widget iconWidget);
 	
 	/**
 	 * Return the widget used as icon widget on button. See
@@ -373,16 +213,7 @@ public class ToolButton : ToolItem
 	 * Since 2.4
 	 * Returns: The widget used as icon on button, or NULL.
 	 */
-	public Widget getIconWidget()
-	{
-		// GtkWidget * gtk_tool_button_get_icon_widget (GtkToolButton *button);
-		auto p = gtk_tool_button_get_icon_widget(gtkToolButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getIconWidget();
 	
 	/**
 	 * Sets label_widget as the widget that will be used as the label
@@ -394,11 +225,7 @@ public class ToolButton : ToolItem
 	 * Params:
 	 * labelWidget =  the widget used as label, or NULL
 	 */
-	public void setLabelWidget(Widget labelWidget)
-	{
-		// void gtk_tool_button_set_label_widget (GtkToolButton *button,  GtkWidget *label_widget);
-		gtk_tool_button_set_label_widget(gtkToolButton, (labelWidget is null) ? null : labelWidget.getWidgetStruct());
-	}
+	public void setLabelWidget(Widget labelWidget);
 	
 	/**
 	 * Returns the widget used as label on button. See
@@ -406,14 +233,5 @@ public class ToolButton : ToolItem
 	 * Since 2.4
 	 * Returns: The widget used as label on button, or NULL.
 	 */
-	public Widget getLabelWidget()
-	{
-		// GtkWidget * gtk_tool_button_get_label_widget (GtkToolButton *button);
-		auto p = gtk_tool_button_get_label_widget(gtkToolButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getLabelWidget();
 }

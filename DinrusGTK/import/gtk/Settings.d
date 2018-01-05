@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSettings.html
- * outPack = gtk
- * outFile = Settings
- * strct   = GtkSettings
- * realStrct=
- * ctorStrct=
- * clss    = Settings
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_settings_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Settings
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gobject.ParamSpec
- * 	- gtkD.glib.StringG
- * 	- gtkD.gobject.Value
- * structWrap:
- * 	- GParamSpec* -> ParamSpec
- * 	- GString* -> StringG
- * 	- GValue* -> Value
- * 	- GdkScreen* -> Screen
- * 	- GtkSettings* -> Settings
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Settings;
 
 public  import gtkD.gtkc.gtktypes;
@@ -108,38 +46,16 @@ public class Settings : ObjectG
 	protected GtkSettings* gtkSettings;
 	
 	
-	public GtkSettings* getSettingsStruct()
-	{
-		return gtkSettings;
-	}
+	public GtkSettings* getSettingsStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSettings;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSettings* gtkSettings)
-	{
-		if(gtkSettings is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSettings);
-		if( ptr !is null )
-		{
-			this = cast(Settings)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSettings);
-		this.gtkSettings = gtkSettings;
-	}
+	public this (GtkSettings* gtkSettings);
 	
 	/**
 	 */
@@ -149,16 +65,7 @@ public class Settings : ObjectG
 	 * it if necessary. See gtk_settings_get_for_screen().
 	 * Returns: a GtkSettings object. If there is no default screen, then returns NULL.
 	 */
-	public static Settings getDefault()
-	{
-		// GtkSettings* gtk_settings_get_default (void);
-		auto p = gtk_settings_get_default();
-		if(p is null)
-		{
-			return null;
-		}
-		return new Settings(cast(GtkSettings*) p);
-	}
+	public static Settings getDefault();
 	
 	/**
 	 * Gets the GtkSettings object for screen, creating it if necessary.
@@ -167,34 +74,17 @@ public class Settings : ObjectG
 	 * screen =  a GdkScreen.
 	 * Returns: a GtkSettings object.
 	 */
-	public static Settings getForScreen(Screen screen)
-	{
-		// GtkSettings* gtk_settings_get_for_screen (GdkScreen *screen);
-		auto p = gtk_settings_get_for_screen((screen is null) ? null : screen.getScreenStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Settings(cast(GtkSettings*) p);
-	}
+	public static Settings getForScreen(Screen screen);
 	
 	/**
 	 * Params:
 	 */
-	public static void installProperty(ParamSpec pspec)
-	{
-		// void gtk_settings_install_property (GParamSpec *pspec);
-		gtk_settings_install_property((pspec is null) ? null : pspec.getParamSpecStruct());
-	}
+	public static void installProperty(ParamSpec pspec);
 	
 	/**
 	 * Params:
 	 */
-	public static void installPropertyParser(ParamSpec pspec, GtkRcPropertyParser parser)
-	{
-		// void gtk_settings_install_property_parser  (GParamSpec *pspec,  GtkRcPropertyParser parser);
-		gtk_settings_install_property_parser((pspec is null) ? null : pspec.getParamSpecStruct(), parser);
-	}
+	public static void installPropertyParser(ParamSpec pspec, GtkRcPropertyParser parser);
 	
 	/**
 	 * A GtkRcPropertyParser for use with gtk_settings_install_property_parser()
@@ -209,12 +99,8 @@ public class Settings : ObjectG
 	 * propertyValue =  a GValue which must hold GdkColor values.
 	 * Returns: TRUE if gstring could be parsed and property_valuehas been set to the resulting GdkColor.
 	 */
-	public static int rcPropertyParseColor(ParamSpec pspec, StringG gstring, Value propertyValue)
-	{
-		// gboolean gtk_rc_property_parse_color (const GParamSpec *pspec,  const GString *gstring,  GValue *property_value);
-		return gtk_rc_property_parse_color((pspec is null) ? null : pspec.getParamSpecStruct(), (gstring is null) ? null : gstring.getStringGStruct(), (propertyValue is null) ? null : propertyValue.getValueStruct());
-	}
-	
+	public static int rcPropertyParseColor(ParamSpec pspec, StringG gstring, Value propertyValue);
+
 	/**
 	 * A GtkRcPropertyParser for use with gtk_settings_install_property_parser()
 	 * or gtk_widget_class_install_style_property_parser() which parses a single
@@ -228,11 +114,7 @@ public class Settings : ObjectG
 	 * propertyValue =  a GValue which must hold enum values.
 	 * Returns: TRUE if gstring could be parsed and property_valuehas been set to the resulting GEnumValue.
 	 */
-	public static int rcPropertyParseEnum(ParamSpec pspec, StringG gstring, Value propertyValue)
-	{
-		// gboolean gtk_rc_property_parse_enum (const GParamSpec *pspec,  const GString *gstring,  GValue *property_value);
-		return gtk_rc_property_parse_enum((pspec is null) ? null : pspec.getParamSpecStruct(), (gstring is null) ? null : gstring.getStringGStruct(), (propertyValue is null) ? null : propertyValue.getValueStruct());
-	}
+	public static int rcPropertyParseEnum(ParamSpec pspec, StringG gstring, Value propertyValue);
 	
 	/**
 	 * A GtkRcPropertyParser for use with gtk_settings_install_property_parser()
@@ -246,11 +128,7 @@ public class Settings : ObjectG
 	 * propertyValue =  a GValue which must hold flags values.
 	 * Returns: TRUE if gstring could be parsed and property_valuehas been set to the resulting flags value.
 	 */
-	public static int rcPropertyParseFlags(ParamSpec pspec, StringG gstring, Value propertyValue)
-	{
-		// gboolean gtk_rc_property_parse_flags (const GParamSpec *pspec,  const GString *gstring,  GValue *property_value);
-		return gtk_rc_property_parse_flags((pspec is null) ? null : pspec.getParamSpecStruct(), (gstring is null) ? null : gstring.getStringGStruct(), (propertyValue is null) ? null : propertyValue.getValueStruct());
-	}
+	public static int rcPropertyParseFlags(ParamSpec pspec, StringG gstring, Value propertyValue);
 	
 	/**
 	 * A GtkRcPropertyParser for use with gtk_settings_install_property_parser()
@@ -263,11 +141,7 @@ public class Settings : ObjectG
 	 * propertyValue =  a GValue which must hold boxed values.
 	 * Returns: TRUE if gstring could be parsed and property_valuehas been set to the resulting GtkRequisition.
 	 */
-	public static int rcPropertyParseRequisition(ParamSpec pspec, StringG gstring, Value propertyValue)
-	{
-		// gboolean gtk_rc_property_parse_requisition (const GParamSpec *pspec,  const GString *gstring,  GValue *property_value);
-		return gtk_rc_property_parse_requisition((pspec is null) ? null : pspec.getParamSpecStruct(), (gstring is null) ? null : gstring.getStringGStruct(), (propertyValue is null) ? null : propertyValue.getValueStruct());
-	}
+	public static int rcPropertyParseRequisition(ParamSpec pspec, StringG gstring, Value propertyValue);
 	
 	/**
 	 * A GtkRcPropertyParser for use with gtk_settings_install_property_parser()
@@ -281,45 +155,25 @@ public class Settings : ObjectG
 	 * propertyValue =  a GValue which must hold boxed values.
 	 * Returns: TRUE if gstring could be parsed and property_valuehas been set to the resulting GtkBorder.
 	 */
-	public static int rcPropertyParseBorder(ParamSpec pspec, StringG gstring, Value propertyValue)
-	{
-		// gboolean gtk_rc_property_parse_border (const GParamSpec *pspec,  const GString *gstring,  GValue *property_value);
-		return gtk_rc_property_parse_border((pspec is null) ? null : pspec.getParamSpecStruct(), (gstring is null) ? null : gstring.getStringGStruct(), (propertyValue is null) ? null : propertyValue.getValueStruct());
-	}
+	public static int rcPropertyParseBorder(ParamSpec pspec, StringG gstring, Value propertyValue);
 	
 	/**
 	 * Params:
 	 */
-	public void setPropertyValue(string name, GtkSettingsValue* svalue)
-	{
-		// void gtk_settings_set_property_value (GtkSettings *settings,  const gchar *name,  const GtkSettingsValue *svalue);
-		gtk_settings_set_property_value(gtkSettings, Str.toStringz(name), svalue);
-	}
+	public void setPropertyValue(string name, GtkSettingsValue* svalue);
 	
 	/**
 	 * Params:
 	 */
-	public void setStringProperty(string name, string vString, string origin)
-	{
-		// void gtk_settings_set_string_property (GtkSettings *settings,  const gchar *name,  const gchar *v_string,  const gchar *origin);
-		gtk_settings_set_string_property(gtkSettings, Str.toStringz(name), Str.toStringz(vString), Str.toStringz(origin));
-	}
+	public void setStringProperty(string name, string vString, string origin);
 	
 	/**
 	 * Params:
 	 */
-	public void setLongProperty(string name, int vLong, string origin)
-	{
-		// void gtk_settings_set_long_property (GtkSettings *settings,  const gchar *name,  glong v_long,  const gchar *origin);
-		gtk_settings_set_long_property(gtkSettings, Str.toStringz(name), vLong, Str.toStringz(origin));
-	}
+	public void setLongProperty(string name, int vLong, string origin);
 	
 	/**
 	 * Params:
 	 */
-	public void setDoubleProperty(string name, double vDouble, string origin)
-	{
-		// void gtk_settings_set_double_property (GtkSettings *settings,  const gchar *name,  gdouble v_double,  const gchar *origin);
-		gtk_settings_set_double_property(gtkSettings, Str.toStringz(name), vDouble, Str.toStringz(origin));
-	}
+	public void setDoubleProperty(string name, double vDouble, string origin);
 }

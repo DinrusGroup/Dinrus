@@ -1,53 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = Timeout
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Timeout
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_timeout_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Timeout;
 
 public  import gtkD.gtkc.gtktypes;
@@ -122,36 +72,15 @@ public class Timeout
 	 *    	delegate() = 	the delegate to be executed
 	 *    	fireNow = 	When true the delegate will be executed emmidiatly
 	 */
-	this(uint interval, bool delegate() dlg, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		timeoutID = gtk_timeout_add(interval, cast(GtkFunction)&timeoutCallback, cast(void*)this);
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = 0;
-			}
-		}
-	}
+	this(uint interval, bool delegate() dlg, bool fireNow=false);
 	
 	/** */
-	public void stop()
-	{
-		if ( timeoutID > 0 )
-		{
-			gtk_timeout_remove(timeoutID);
-		}
-		timeoutListeners.length = 0;
-	}
+	public void stop();
 	
 	/**
 	 * Removes the timeout from gtk
 	 */
-	~this()
-	{
-		stop();
-	}
+	~this();
 	
 	/**
 	 * Adds a new delegate to this timeout cycle
@@ -159,17 +88,7 @@ public class Timeout
 	 *    	dlg =
 	 *    	fireNow =
 	 */
-	public void addListener(bool delegate() dlg, bool fireNow=false)
-	{
-		timeoutListeners ~= dlg;
-		if ( fireNow )
-		{
-			if ( !dlg() )
-			{
-				timeoutListeners.length = timeoutListeners.length - 1;
-			}
-		}
-	}
+	public void addListener(bool delegate() dlg, bool fireNow=false);
 	
 	/**
 	 * The callback execution from glib
@@ -177,35 +96,13 @@ public class Timeout
 	 *    	timeout =
 	 * Returns:
 	 */
-	extern(C) static bool timeoutCallback(Timeout timeout)
-	{
-		return timeout.callAllListeners();
-	}
+	extern(C) static bool timeoutCallback(Timeout timeout);
 	
 	/**
 	 * Executes all delegates on the execution list
 	 * Returns:
 	 */
-	private bool callAllListeners()
-	{
-		bool runAgain = false;
-		
-		int i = 0;
-		
-		while ( i<timeoutListeners.length )
-		{
-			if ( !timeoutListeners[i]() )
-			{
-				timeoutListeners = timeoutListeners[0..i] ~ timeoutListeners[i+1..timeoutListeners.length];
-			}
-			else
-			{
-				runAgain = true;
-				++i;
-			}
-		}
-		return runAgain;
-	}
+	private bool callAllListeners();
 	
 	/**
 	 */
@@ -224,11 +121,7 @@ public class Timeout
 	 * destroy = Function to call when the timeout is destroyed or NULL.
 	 * Returns:A unique id for the event source.
 	 */
-	public static uint addFull(uint interval, GtkFunction funct, GtkCallbackMarshal marshal, void* data, GDestroyNotify destroy)
-	{
-		// guint gtk_timeout_add_full (guint32 interval,  GtkFunction function,  GtkCallbackMarshal marshal,  gpointer data,  GDestroyNotify destroy);
-		return gtk_timeout_add_full(interval, funct, marshal, data, destroy);
-	}
+	public static uint addFull(uint interval, GtkFunction funct, GtkCallbackMarshal marshal, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Warning
@@ -242,11 +135,7 @@ public class Timeout
 	 * data = The data to pass to the function.
 	 * Returns:A unique id for the event source.
 	 */
-	public static uint add(uint interval, GtkFunction funct, void* data)
-	{
-		// guint gtk_timeout_add (guint32 interval,  GtkFunction function,  gpointer data);
-		return gtk_timeout_add(interval, funct, data);
-	}
+	public static uint add(uint interval, GtkFunction funct, void* data);
 	
 	/**
 	 * Warning
@@ -255,9 +144,5 @@ public class Timeout
 	 * Params:
 	 * timeoutHandlerId = The identifier returned when installing the timeout.
 	 */
-	public static void remove(uint timeoutHandlerId)
-	{
-		// void gtk_timeout_remove (guint timeout_handler_id);
-		gtk_timeout_remove(timeoutHandlerId);
-	}
+	public static void remove(uint timeoutHandlerId);
 }

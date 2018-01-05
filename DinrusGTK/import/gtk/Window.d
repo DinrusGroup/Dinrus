@@ -1,71 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkWindow.html
- * outPack = gtk
- * outFile = Window
- * strct   = GtkWindow
- * realStrct=
- * ctorStrct=
- * clss    = Window
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_window_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gtk.AccelGroup
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.WindowGroup
- * 	- gtkD.gdk.Screen
- * 	- gtkD.glib.ListG
- * 	- gtkD.gdk.Pixbuf
- * structWrap:
- * 	- GList* -> ListG
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkScreen* -> Screen
- * 	- GtkAccelGroup* -> AccelGroup
- * 	- GtkWidget* -> Widget
- * 	- GtkWindow* -> Window
- * 	- GtkWindowGroup* -> WindowGroup
- * module aliases:
- * local aliases:
- * overrides:
- * 	- getScreen
- */
-
 module gtkD.gtk.Window;
 
 public  import gtkD.gtkc.gtktypes;
@@ -113,59 +45,30 @@ public class Window : Bin
 	protected GtkWindow* gtkWindow;
 	
 	
-	public GtkWindow* getWindowStruct()
-	{
-		return gtkWindow;
-	}
+	public GtkWindow* getWindowStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkWindow;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkWindow* gtkWindow)
-	{
-		if(gtkWindow is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkWindow);
-		if( ptr !is null )
-		{
-			this = cast(Window)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkWindow);
-		this.gtkWindow = gtkWindow;
-	}
+	public this (GtkWindow* gtkWindow);
 	
 	/**
 	 * Creates a top level window with a title
 	 * Params:
 	 * 		title = The Window title
 	 */
-	public this(string title)
-	{
-		this(GtkWindowType.TOPLEVEL);
-		setTitle(title);
-	}
+	public this(string title);
 	
 	/**
 	 * Move the window to an absolute position.
 	 * just calls move(int, int).
 	 * convinience because GdkEvent structs return the position coords as doubles
 	 */
-	public void move(double x, double y)
-	{
-		move(cast(int)x, cast(int)y);
-	}
+	public void move(double x, double y);
 	
 	/**
 	 */
@@ -178,28 +81,8 @@ public class Window : Bin
 	 * which gets emitted when the user activates the default widget
 	 * of window.
 	 */
-	void addOnActivateDefault(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate-default" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate-default",
-			cast(GCallback)&callBackActivateDefault,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate-default"] = 1;
-		}
-		onActivateDefaultListeners ~= dlg;
-	}
-	extern(C) static void callBackActivateDefault(GtkWindow* windowStruct, Window window)
-	{
-		foreach ( void delegate(Window) dlg ; window.onActivateDefaultListeners )
-		{
-			dlg(window);
-		}
-	}
+	void addOnActivateDefault(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivateDefault(GtkWindow* windowStruct, Window window);
 	
 	void delegate(Window)[] onActivateFocusListeners;
 	/**
@@ -208,113 +91,28 @@ public class Window : Bin
 	 * which gets emitted when the user activates the currently
 	 * focused widget of window.
 	 */
-	void addOnActivateFocus(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate-focus" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate-focus",
-			cast(GCallback)&callBackActivateFocus,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate-focus"] = 1;
-		}
-		onActivateFocusListeners ~= dlg;
-	}
-	extern(C) static void callBackActivateFocus(GtkWindow* windowStruct, Window window)
-	{
-		foreach ( void delegate(Window) dlg ; window.onActivateFocusListeners )
-		{
-			dlg(window);
-		}
-	}
+	void addOnActivateFocus(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivateFocus(GtkWindow* windowStruct, Window window);
 	
 	bool delegate(GdkEvent*, Window)[] onFrameListeners;
 	/**
 	 */
-	void addOnFrame(bool delegate(GdkEvent*, Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("frame-event" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"frame-event",
-			cast(GCallback)&callBackFrame,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["frame-event"] = 1;
-		}
-		onFrameListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackFrame(GtkWindow* windowStruct, GdkEvent* event, Window window)
-	{
-		foreach ( bool delegate(GdkEvent*, Window) dlg ; window.onFrameListeners )
-		{
-			if ( dlg(event, window) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnFrame(bool delegate(GdkEvent*, Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackFrame(GtkWindow* windowStruct, GdkEvent* event, Window window);
 	
 	void delegate(Window)[] onKeysChangedListeners;
 	/**
 	 * The ::keys-changed signal gets emitted when the set of accelerators
 	 * or mnemonics that are associated with window changes.
 	 */
-	void addOnKeysChanged(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("keys-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"keys-changed",
-			cast(GCallback)&callBackKeysChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["keys-changed"] = 1;
-		}
-		onKeysChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackKeysChanged(GtkWindow* windowStruct, Window window)
-	{
-		foreach ( void delegate(Window) dlg ; window.onKeysChangedListeners )
-		{
-			dlg(window);
-		}
-	}
+	void addOnKeysChanged(void delegate(Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackKeysChanged(GtkWindow* windowStruct, Window window);
 	
 	void delegate(Widget, Window)[] onSetFocusListeners;
 	/**
 	 */
-	void addOnSetFocus(void delegate(Widget, Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("set-focus" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"set-focus",
-			cast(GCallback)&callBackSetFocus,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["set-focus"] = 1;
-		}
-		onSetFocusListeners ~= dlg;
-	}
-	extern(C) static void callBackSetFocus(GtkWindow* windowStruct, GtkWidget* widget, Window window)
-	{
-		foreach ( void delegate(Widget, Window) dlg ; window.onSetFocusListeners )
-		{
-			dlg(new Widget(widget), window);
-		}
-	}
+	void addOnSetFocus(void delegate(Widget, Window) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSetFocus(GtkWindow* windowStruct, GtkWidget* widget, Window window);
 	
 	
 	/**
@@ -332,16 +130,7 @@ public class Window : Bin
 	 * type =  type of window
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GtkWindowType type)
-	{
-		// GtkWidget* gtk_window_new (GtkWindowType type);
-		auto p = gtk_window_new(type);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_window_new(type)");
-		}
-		this(cast(GtkWindow*) p);
-	}
+	public this (GtkWindowType type);
 	
 	/**
 	 * Sets the title of the GtkWindow. The title of a window will be
@@ -355,11 +144,7 @@ public class Window : Bin
 	 * Params:
 	 * title =  title of the window
 	 */
-	public void setTitle(string title)
-	{
-		// void gtk_window_set_title (GtkWindow *window,  const gchar *title);
-		gtk_window_set_title(gtkWindow, Str.toStringz(title));
-	}
+	public void setTitle(string title);
 	
 	/**
 	 * Don't use this function. It sets the X Window System "class" and
@@ -374,11 +159,7 @@ public class Window : Bin
 	 * wmclassName =  window name hint
 	 * wmclassClass =  window class hint
 	 */
-	public void setWmclass(string wmclassName, string wmclassClass)
-	{
-		// void gtk_window_set_wmclass (GtkWindow *window,  const gchar *wmclass_name,  const gchar *wmclass_class);
-		gtk_window_set_wmclass(gtkWindow, Str.toStringz(wmclassName), Str.toStringz(wmclassClass));
-	}
+	public void setWmclass(string wmclassName, string wmclassClass);
 	
 	/**
 	 * Warning
@@ -390,11 +171,7 @@ public class Window : Bin
 	 * autoShrink = whether the window automatically snaps back to its size request
 	 *  if it's larger
 	 */
-	public void setPolicy(int allowShrink, int allowGrow, int autoShrink)
-	{
-		// void gtk_window_set_policy (GtkWindow *window,  gint allow_shrink,  gint allow_grow,  gint auto_shrink);
-		gtk_window_set_policy(gtkWindow, allowShrink, allowGrow, autoShrink);
-	}
+	public void setPolicy(int allowShrink, int allowGrow, int autoShrink);
 	
 	/**
 	 * Sets whether the user can resize a window. Windows are user resizable
@@ -402,21 +179,13 @@ public class Window : Bin
 	 * Params:
 	 * resizable =  TRUE if the user can resize this window
 	 */
-	public void setResizable(int resizable)
-	{
-		// void gtk_window_set_resizable (GtkWindow *window,  gboolean resizable);
-		gtk_window_set_resizable(gtkWindow, resizable);
-	}
+	public void setResizable(int resizable);
 	
 	/**
 	 * Gets the value set by gtk_window_set_resizable().
 	 * Returns: TRUE if the user can resize the window
 	 */
-	public int getResizable()
-	{
-		// gboolean gtk_window_get_resizable (GtkWindow *window);
-		return gtk_window_get_resizable(gtkWindow);
-	}
+	public int getResizable();
 	
 	/**
 	 * Associate accel_group with window, such that calling
@@ -425,32 +194,20 @@ public class Window : Bin
 	 * Params:
 	 * accelGroup =  a GtkAccelGroup
 	 */
-	public void addAccelGroup(AccelGroup accelGroup)
-	{
-		// void gtk_window_add_accel_group (GtkWindow *window,  GtkAccelGroup *accel_group);
-		gtk_window_add_accel_group(gtkWindow, (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-	}
+	public void addAccelGroup(AccelGroup accelGroup);
 	
 	/**
 	 * Reverses the effects of gtk_window_add_accel_group().
 	 * Params:
 	 * accelGroup =  a GtkAccelGroup
 	 */
-	public void removeAccelGroup(AccelGroup accelGroup)
-	{
-		// void gtk_window_remove_accel_group (GtkWindow *window,  GtkAccelGroup *accel_group);
-		gtk_window_remove_accel_group(gtkWindow, (accelGroup is null) ? null : accelGroup.getAccelGroupStruct());
-	}
+	public void removeAccelGroup(AccelGroup accelGroup);
 	
 	/**
 	 * Activates the current focused widget within the window.
 	 * Returns: TRUE if a widget got activated.
 	 */
-	public int activateFocus()
-	{
-		// gboolean gtk_window_activate_focus (GtkWindow *window);
-		return gtk_window_activate_focus(gtkWindow);
-	}
+	public int activateFocus();
 	
 	/**
 	 * Activates the default widget for the window, unless the current
@@ -459,11 +216,7 @@ public class Window : Bin
 	 * focused widget is activated.
 	 * Returns: TRUE if a widget got activated.
 	 */
-	public int activateDefault()
-	{
-		// gboolean gtk_window_activate_default (GtkWindow *window);
-		return gtk_window_activate_default(gtkWindow);
-	}
+	public int activateDefault();
 	
 	/**
 	 * Sets a window modal or non-modal. Modal windows prevent interaction
@@ -475,11 +228,7 @@ public class Window : Bin
 	 * Params:
 	 * modal =  whether the window is modal
 	 */
-	public void setModal(int modal)
-	{
-		// void gtk_window_set_modal (GtkWindow *window,  gboolean modal);
-		gtk_window_set_modal(gtkWindow, modal);
-	}
+	public void setModal(int modal);
 	
 	/**
 	 * Sets the default size of a window. If the window's "natural" size
@@ -509,11 +258,7 @@ public class Window : Bin
 	 * width =  width in pixels, or -1 to unset the default width
 	 * height =  height in pixels, or -1 to unset the default height
 	 */
-	public void setDefaultSize(int width, int height)
-	{
-		// void gtk_window_set_default_size (GtkWindow *window,  gint width,  gint height);
-		gtk_window_set_default_size(gtkWindow, width, height);
-	}
+	public void setDefaultSize(int width, int height);
 	
 	/**
 	 * This function sets up hints about how a window can be resized by
@@ -525,11 +270,7 @@ public class Window : Bin
 	 * geometry =  struct containing geometry information
 	 * geomMask =  mask indicating which struct fields should be paid attention to
 	 */
-	public void setGeometryHints(Widget geometryWidget, GdkGeometry* geometry, GdkWindowHints geomMask)
-	{
-		// void gtk_window_set_geometry_hints (GtkWindow *window,  GtkWidget *geometry_widget,  GdkGeometry *geometry,  GdkWindowHints geom_mask);
-		gtk_window_set_geometry_hints(gtkWindow, (geometryWidget is null) ? null : geometryWidget.getWidgetStruct(), geometry, geomMask);
-	}
+	public void setGeometryHints(Widget geometryWidget, GdkGeometry* geometry, GdkWindowHints geomMask);
 	
 	/**
 	 * Window gravity defines the meaning of coordinates passed to
@@ -540,21 +281,13 @@ public class Window : Bin
 	 * Params:
 	 * gravity =  window gravity
 	 */
-	public void setGravity(GdkGravity gravity)
-	{
-		// void gtk_window_set_gravity (GtkWindow *window,  GdkGravity gravity);
-		gtk_window_set_gravity(gtkWindow, gravity);
-	}
+	public void setGravity(GdkGravity gravity);
 	
 	/**
 	 * Gets the value set by gtk_window_set_gravity().
 	 * Returns: window gravity
 	 */
-	public GdkGravity getGravity()
-	{
-		// GdkGravity gtk_window_get_gravity (GtkWindow *window);
-		return gtk_window_get_gravity(gtkWindow);
-	}
+	public GdkGravity getGravity();
 	
 	/**
 	 * Sets a position constraint for this window. If the old or new
@@ -563,11 +296,7 @@ public class Window : Bin
 	 * Params:
 	 * position =  a position constraint.
 	 */
-	public void setPosition(GtkWindowPosition position)
-	{
-		// void gtk_window_set_position (GtkWindow *window,  GtkWindowPosition position);
-		gtk_window_set_position(gtkWindow, position);
-	}
+	public void setPosition(GtkWindowPosition position);
 	
 	/**
 	 * Dialog windows should be set transient for the main application
@@ -581,11 +310,7 @@ public class Window : Bin
 	 * Params:
 	 * parent =  parent window
 	 */
-	public void setTransientFor(Window parent)
-	{
-		// void gtk_window_set_transient_for (GtkWindow *window,  GtkWindow *parent);
-		gtk_window_set_transient_for(gtkWindow, (parent is null) ? null : parent.getWindowStruct());
-	}
+	public void setTransientFor(Window parent);
 	
 	/**
 	 * If setting is TRUE, then destroying the transient parent of window
@@ -595,11 +320,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  whether to destroy window with its transient parent
 	 */
-	public void setDestroyWithParent(int setting)
-	{
-		// void gtk_window_set_destroy_with_parent (GtkWindow *window,  gboolean setting);
-		gtk_window_set_destroy_with_parent(gtkWindow, setting);
-	}
+	public void setDestroyWithParent(int setting);
 	
 	/**
 	 * Sets the GdkScreen where the window is displayed; if
@@ -609,27 +330,14 @@ public class Window : Bin
 	 * Params:
 	 * screen =  a GdkScreen.
 	 */
-	public void setScreen(Screen screen)
-	{
-		// void gtk_window_set_screen (GtkWindow *window,  GdkScreen *screen);
-		gtk_window_set_screen(gtkWindow, (screen is null) ? null : screen.getScreenStruct());
-	}
+	public void setScreen(Screen screen);
 	
 	/**
 	 * Returns the GdkScreen associated with window.
 	 * Since 2.2
 	 * Returns: a GdkScreen.
 	 */
-	public override Screen getScreen()
-	{
-		// GdkScreen* gtk_window_get_screen (GtkWindow *window);
-		auto p = gtk_window_get_screen(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Screen(cast(GdkScreen*) p);
-	}
+	public override Screen getScreen();
 	
 	/**
 	 * Returns whether the window is part of the current active toplevel.
@@ -642,11 +350,7 @@ public class Window : Bin
 	 * Since 2.4
 	 * Returns: TRUE if the window part of the current active window.
 	 */
-	public int isActive()
-	{
-		// gboolean gtk_window_is_active (GtkWindow *window);
-		return gtk_window_is_active(gtkWindow);
-	}
+	public int isActive();
 	
 	/**
 	 * Returns whether the input focus is within this GtkWindow.
@@ -655,11 +359,7 @@ public class Window : Bin
 	 * Since 2.4
 	 * Returns: TRUE if the input focus is within this GtkWindow
 	 */
-	public int hasToplevelFocus()
-	{
-		// gboolean gtk_window_has_toplevel_focus (GtkWindow *window);
-		return gtk_window_has_toplevel_focus(gtkWindow);
-	}
+	public int hasToplevelFocus();
 	
 	/**
 	 * Returns a list of all existing toplevel windows. The widgets
@@ -670,16 +370,7 @@ public class Window : Bin
 	 * then unref all the widgets afterwards.
 	 * Returns: list of toplevel widgets
 	 */
-	public static ListG listToplevels()
-	{
-		// GList* gtk_window_list_toplevels (void);
-		auto p = gtk_window_list_toplevels();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public static ListG listToplevels();
 	
 	/**
 	 * Adds a mnemonic to this window.
@@ -687,23 +378,15 @@ public class Window : Bin
 	 * keyval =  the mnemonic
 	 * target =  the widget that gets activated by the mnemonic
 	 */
-	public void addMnemonic(uint keyval, Widget target)
-	{
-		// void gtk_window_add_mnemonic (GtkWindow *window,  guint keyval,  GtkWidget *target);
-		gtk_window_add_mnemonic(gtkWindow, keyval, (target is null) ? null : target.getWidgetStruct());
-	}
-	
+	public void addMnemonic(uint keyval, Widget target);
+
 	/**
 	 * Removes a mnemonic from this window.
 	 * Params:
 	 * keyval =  the mnemonic
 	 * target =  the widget that gets activated by the mnemonic
 	 */
-	public void removeMnemonic(uint keyval, Widget target)
-	{
-		// void gtk_window_remove_mnemonic (GtkWindow *window,  guint keyval,  GtkWidget *target);
-		gtk_window_remove_mnemonic(gtkWindow, keyval, (target is null) ? null : target.getWidgetStruct());
-	}
+	public void removeMnemonic(uint keyval, Widget target);
 	
 	/**
 	 * Activates the targets associated with the mnemonic.
@@ -712,11 +395,7 @@ public class Window : Bin
 	 * modifier =  the modifiers
 	 * Returns: TRUE if the activation is done.
 	 */
-	public int mnemonicActivate(uint keyval, GdkModifierType modifier)
-	{
-		// gboolean gtk_window_mnemonic_activate (GtkWindow *window,  guint keyval,  GdkModifierType modifier);
-		return gtk_window_mnemonic_activate(gtkWindow, keyval, modifier);
-	}
+	public int mnemonicActivate(uint keyval, GdkModifierType modifier);
 	
 	/**
 	 * Activates mnemonics and accelerators for this GtkWindow. This is normally
@@ -727,11 +406,7 @@ public class Window : Bin
 	 * event =  a GdkEventKey
 	 * Returns: TRUE if a mnemonic or accelerator was found and activated.
 	 */
-	public int activateKey(GdkEventKey* event)
-	{
-		// gboolean gtk_window_activate_key (GtkWindow *window,  GdkEventKey *event);
-		return gtk_window_activate_key(gtkWindow, event);
-	}
+	public int activateKey(GdkEventKey* event);
 	
 	/**
 	 * Propagate a key press or release event to the focus widget and
@@ -744,11 +419,7 @@ public class Window : Bin
 	 * event =  a GdkEventKey
 	 * Returns: TRUE if a widget in the focus chain handled the event.
 	 */
-	public int propagateKeyEvent(GdkEventKey* event)
-	{
-		// gboolean gtk_window_propagate_key_event (GtkWindow *window,  GdkEventKey *event);
-		return gtk_window_propagate_key_event(gtkWindow, event);
-	}
+	public int propagateKeyEvent(GdkEventKey* event);
 	
 	/**
 	 * Retrieves the current focused widget within the window.
@@ -758,16 +429,7 @@ public class Window : Bin
 	 * not be TRUE for the widget.
 	 * Returns: the currently focused widget, or NULL if there is none.
 	 */
-	public Widget getFocus()
-	{
-		// GtkWidget * gtk_window_get_focus (GtkWindow *window);
-		auto p = gtk_window_get_focus(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getFocus();
 	
 	/**
 	 * If focus is not the current focus widget, and is focusable, sets
@@ -779,11 +441,7 @@ public class Window : Bin
 	 * focus =  widget to be the new focus widget, or NULL to unset
 	 *  any focus widget for the toplevel window.
 	 */
-	public void setFocus(Widget focus)
-	{
-		// void gtk_window_set_focus (GtkWindow *window,  GtkWidget *focus);
-		gtk_window_set_focus(gtkWindow, (focus is null) ? null : focus.getWidgetStruct());
-	}
+	public void setFocus(Widget focus);
 	
 	/**
 	 * Returns the default widget for window. See gtk_window_set_default()
@@ -791,16 +449,7 @@ public class Window : Bin
 	 * Since 2.14
 	 * Returns: the default widget, or NULL if there is none.
 	 */
-	public Widget getDefaultWidget()
-	{
-		// GtkWidget * gtk_window_get_default_widget (GtkWindow *window);
-		auto p = gtk_window_get_default_widget(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getDefaultWidget();
 	
 	/**
 	 * The default widget is the widget that's activated when the user
@@ -814,11 +463,7 @@ public class Window : Bin
 	 * defaultWidget =  widget to be the default, or NULL to unset the
 	 *  default widget for the toplevel.
 	 */
-	public void setDefault(Widget defaultWidget)
-	{
-		// void gtk_window_set_default (GtkWindow *window,  GtkWidget *default_widget);
-		gtk_window_set_default(gtkWindow, (defaultWidget is null) ? null : defaultWidget.getWidgetStruct());
-	}
+	public void setDefault(Widget defaultWidget);
 	
 	/**
 	 * Presents a window to the user. This may mean raising the window
@@ -835,11 +480,7 @@ public class Window : Bin
 	 * If you are calling this function in response to a user interaction,
 	 * it is preferable to use gtk_window_present_with_time().
 	 */
-	public void present()
-	{
-		// void gtk_window_present (GtkWindow *window);
-		gtk_window_present(gtkWindow);
-	}
+	public void present();
 	
 	/**
 	 * Presents a window to the user in response to a user interaction.
@@ -850,11 +491,7 @@ public class Window : Bin
 	 * timestamp =  the timestamp of the user interaction (typically a
 	 *  button or key press event) which triggered this call
 	 */
-	public void presentWithTime(uint timestamp)
-	{
-		// void gtk_window_present_with_time (GtkWindow *window,  guint32 timestamp);
-		gtk_window_present_with_time(gtkWindow, timestamp);
-	}
+	public void presentWithTime(uint timestamp);
 	
 	/**
 	 * Asks to iconify (i.e. minimize) the specified window. Note that
@@ -869,11 +506,7 @@ public class Window : Bin
 	 * You can track iconification via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void iconify()
-	{
-		// void gtk_window_iconify (GtkWindow *window);
-		gtk_window_iconify(gtkWindow);
-	}
+	public void iconify();
 	
 	/**
 	 * Asks to deiconify (i.e. unminimize) the specified window. Note
@@ -883,11 +516,7 @@ public class Window : Bin
 	 * You can track iconification via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void deiconify()
-	{
-		// void gtk_window_deiconify (GtkWindow *window);
-		gtk_window_deiconify(gtkWindow);
-	}
+	public void deiconify();
 	
 	/**
 	 * Asks to stick window, which means that it will appear on all user
@@ -900,11 +529,7 @@ public class Window : Bin
 	 * You can track stickiness via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void stick()
-	{
-		// void gtk_window_stick (GtkWindow *window);
-		gtk_window_stick(gtkWindow);
-	}
+	public void stick();
 	
 	/**
 	 * Asks to unstick window, which means that it will appear on only
@@ -916,11 +541,7 @@ public class Window : Bin
 	 * You can track stickiness via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void unstick()
-	{
-		// void gtk_window_unstick (GtkWindow *window);
-		gtk_window_unstick(gtkWindow);
-	}
+	public void unstick();
 	
 	/**
 	 * Asks to maximize window, so that it becomes full-screen. Note that
@@ -935,11 +556,7 @@ public class Window : Bin
 	 * You can track maximization via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void maximize()
-	{
-		// void gtk_window_maximize (GtkWindow *window);
-		gtk_window_maximize(gtkWindow);
-	}
+	public void maximize();
 	
 	/**
 	 * Asks to unmaximize window. Note that you shouldn't assume the
@@ -951,11 +568,7 @@ public class Window : Bin
 	 * You can track maximization via the "window-state-event" signal
 	 * on GtkWidget.
 	 */
-	public void unmaximize()
-	{
-		// void gtk_window_unmaximize (GtkWindow *window);
-		gtk_window_unmaximize(gtkWindow);
-	}
+	public void unmaximize();
 	
 	/**
 	 * Asks to place window in the fullscreen state. Note that you
@@ -968,11 +581,7 @@ public class Window : Bin
 	 * on GtkWidget.
 	 * Since 2.2
 	 */
-	public void fullscreen()
-	{
-		// void gtk_window_fullscreen (GtkWindow *window);
-		gtk_window_fullscreen(gtkWindow);
-	}
+	public void fullscreen();
 	
 	/**
 	 * Asks to toggle off the fullscreen state for window. Note that you
@@ -985,11 +594,7 @@ public class Window : Bin
 	 * on GtkWidget.
 	 * Since 2.2
 	 */
-	public void unfullscreen()
-	{
-		// void gtk_window_unfullscreen (GtkWindow *window);
-		gtk_window_unfullscreen(gtkWindow);
-	}
+	public void unfullscreen();
 	
 	/**
 	 * Asks to keep window above, so that it stays on top. Note that
@@ -1011,11 +616,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  whether to keep window above other windows
 	 */
-	public void setKeepAbove(int setting)
-	{
-		// void gtk_window_set_keep_above (GtkWindow *window,  gboolean setting);
-		gtk_window_set_keep_above(gtkWindow, setting);
-	}
+	public void setKeepAbove(int setting);
 	
 	/**
 	 * Asks to keep window below, so that it stays in bottom. Note that
@@ -1037,11 +638,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  whether to keep window below other windows
 	 */
-	public void setKeepBelow(int setting)
-	{
-		// void gtk_window_set_keep_below (GtkWindow *window,  gboolean setting);
-		gtk_window_set_keep_below(gtkWindow, setting);
-	}
+	public void setKeepBelow(int setting);
 	
 	/**
 	 * Starts resizing a window. This function is used if an application
@@ -1056,11 +653,7 @@ public class Window : Bin
 	 * rootY =  Y position where the user clicked to initiate the drag
 	 * timestamp =  timestamp from the click event that initiated the drag
 	 */
-	public void beginResizeDrag(GdkWindowEdge edge, int button, int rootX, int rootY, uint timestamp)
-	{
-		// void gtk_window_begin_resize_drag (GtkWindow *window,  GdkWindowEdge edge,  gint button,  gint root_x,  gint root_y,  guint32 timestamp);
-		gtk_window_begin_resize_drag(gtkWindow, edge, button, rootX, rootY, timestamp);
-	}
+	public void beginResizeDrag(GdkWindowEdge edge, int button, int rootX, int rootY, uint timestamp);
 	
 	/**
 	 * Starts moving a window. This function is used if an application has
@@ -1074,11 +667,7 @@ public class Window : Bin
 	 * rootY =  Y position where the user clicked to initiate the drag
 	 * timestamp =  timestamp from the click event that initiated the drag
 	 */
-	public void beginMoveDrag(int button, int rootX, int rootY, uint timestamp)
-	{
-		// void gtk_window_begin_move_drag (GtkWindow *window,  gint button,  gint root_x,  gint root_y,  guint32 timestamp);
-		gtk_window_begin_move_drag(gtkWindow, button, rootX, rootY, timestamp);
-	}
+	public void beginMoveDrag(int button, int rootX, int rootY, uint timestamp);
 	
 	/**
 	 * By default, windows are decorated with a title bar, resize
@@ -1094,11 +683,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to decorate the window
 	 */
-	public void setDecorated(int setting)
-	{
-		// void gtk_window_set_decorated (GtkWindow *window,  gboolean setting);
-		gtk_window_set_decorated(gtkWindow, setting);
-	}
+	public void setDecorated(int setting);
 	
 	/**
 	 * By default, windows have a close button in the window frame. Some
@@ -1114,11 +699,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to decorate the window as deletable
 	 */
-	public void setDeletable(int setting)
-	{
-		// void gtk_window_set_deletable (GtkWindow *window,  gboolean setting);
-		gtk_window_set_deletable(gtkWindow, setting);
-	}
+	public void setDeletable(int setting);
 	
 	/**
 	 * (Note: this is a special-purpose function intended for the framebuffer
@@ -1133,11 +714,7 @@ public class Window : Bin
 	 * right =  The width of the right border
 	 * bottom =  The height of the bottom border
 	 */
-	public void setFrameDimensions(int left, int top, int right, int bottom)
-	{
-		// void gtk_window_set_frame_dimensions (GtkWindow *window,  gint left,  gint top,  gint right,  gint bottom);
-		gtk_window_set_frame_dimensions(gtkWindow, left, top, right, bottom);
-	}
+	public void setFrameDimensions(int left, int top, int right, int bottom);
 	
 	/**
 	 * (Note: this is a special-purpose function for the framebuffer port,
@@ -1154,11 +731,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  a boolean
 	 */
-	public void setHasFrame(int setting)
-	{
-		// void gtk_window_set_has_frame (GtkWindow *window,  gboolean setting);
-		gtk_window_set_has_frame(gtkWindow, setting);
-	}
+	public void setHasFrame(int setting);
 	
 	/**
 	 * Sets the mnemonic modifier for this window.
@@ -1166,11 +739,7 @@ public class Window : Bin
 	 * modifier =  the modifier mask used to activate
 	 *  mnemonics on this window.
 	 */
-	public void setMnemonicModifier(GdkModifierType modifier)
-	{
-		// void gtk_window_set_mnemonic_modifier (GtkWindow *window,  GdkModifierType modifier);
-		gtk_window_set_mnemonic_modifier(gtkWindow, modifier);
-	}
+	public void setMnemonicModifier(GdkModifierType modifier);
 	
 	/**
 	 * By setting the type hint for the window, you allow the window
@@ -1182,11 +751,7 @@ public class Window : Bin
 	 * Params:
 	 * hint =  the window type
 	 */
-	public void setTypeHint(GdkWindowTypeHint hint)
-	{
-		// void gtk_window_set_type_hint (GtkWindow *window,  GdkWindowTypeHint hint);
-		gtk_window_set_type_hint(gtkWindow, hint);
-	}
+	public void setTypeHint(GdkWindowTypeHint hint);
 	
 	/**
 	 * Windows may set a hint asking the desktop environment not to display
@@ -1195,11 +760,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to keep this window from appearing in the task bar
 	 */
-	public void setSkipTaskbarHint(int setting)
-	{
-		// void gtk_window_set_skip_taskbar_hint (GtkWindow *window,  gboolean setting);
-		gtk_window_set_skip_taskbar_hint(gtkWindow, setting);
-	}
+	public void setSkipTaskbarHint(int setting);
 	
 	/**
 	 * Windows may set a hint asking the desktop environment not to display
@@ -1211,11 +772,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to keep this window from appearing in the pager
 	 */
-	public void setSkipPagerHint(int setting)
-	{
-		// void gtk_window_set_skip_pager_hint (GtkWindow *window,  gboolean setting);
-		gtk_window_set_skip_pager_hint(gtkWindow, setting);
-	}
+	public void setSkipPagerHint(int setting);
 	
 	/**
 	 * Windows may set a hint asking the desktop environment to draw
@@ -1224,11 +781,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to mark this window as urgent
 	 */
-	public void setUrgencyHint(int setting)
-	{
-		// void gtk_window_set_urgency_hint (GtkWindow *window,  gboolean setting);
-		gtk_window_set_urgency_hint(gtkWindow, setting);
-	}
+	public void setUrgencyHint(int setting);
 	
 	/**
 	 * Windows may set a hint asking the desktop environment not to receive
@@ -1237,12 +790,8 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to let this window receive input focus
 	 */
-	public void setAcceptFocus(int setting)
-	{
-		// void gtk_window_set_accept_focus (GtkWindow *window,  gboolean setting);
-		gtk_window_set_accept_focus(gtkWindow, setting);
-	}
-	
+	public void setAcceptFocus(int setting);
+
 	/**
 	 * Windows may set a hint asking the desktop environment not to receive
 	 * the input focus when the window is mapped. This function sets this
@@ -1251,11 +800,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to let this window receive input focus on map
 	 */
-	public void setFocusOnMap(int setting)
-	{
-		// void gtk_window_set_focus_on_map (GtkWindow *window,  gboolean setting);
-		gtk_window_set_focus_on_map(gtkWindow, setting);
-	}
+	public void setFocusOnMap(int setting);
 	
 	/**
 	 * Startup notification identifiers are used by desktop environment to
@@ -1271,11 +816,7 @@ public class Window : Bin
 	 * Params:
 	 * startupId =  a string with startup-notification identifier
 	 */
-	public void setStartupId(string startupId)
-	{
-		// void gtk_window_set_startup_id (GtkWindow *window,  const gchar *startup_id);
-		gtk_window_set_startup_id(gtkWindow, Str.toStringz(startupId));
-	}
+	public void setStartupId(string startupId);
 	
 	/**
 	 * This function is only useful on X11, not with other GTK+ targets.
@@ -1291,22 +832,14 @@ public class Window : Bin
 	 * Params:
 	 * role =  unique identifier for the window to be used when restoring a session
 	 */
-	public void setRole(string role)
-	{
-		// void gtk_window_set_role (GtkWindow *window,  const gchar *role);
-		gtk_window_set_role(gtkWindow, Str.toStringz(role));
-	}
+	public void setRole(string role);
 	
 	/**
 	 * Returns whether the window has been set to have decorations
 	 * such as a title bar via gtk_window_set_decorated().
 	 * Returns: TRUE if the window has been set to have decorations
 	 */
-	public int getDecorated()
-	{
-		// gboolean gtk_window_get_decorated (GtkWindow *window);
-		return gtk_window_get_decorated(gtkWindow);
-	}
+	public int getDecorated();
 	
 	/**
 	 * Returns whether the window has been set to have a close button
@@ -1314,11 +847,7 @@ public class Window : Bin
 	 * Since 2.10
 	 * Returns: TRUE if the window has been set to have a close button
 	 */
-	public int getDeletable()
-	{
-		// gboolean gtk_window_get_deletable (GtkWindow *window);
-		return gtk_window_get_deletable(gtkWindow);
-	}
+	public int getDeletable();
 	
 	/**
 	 * Gets the value set by gtk_window_set_default_icon_list().
@@ -1327,16 +856,7 @@ public class Window : Bin
 	 * incremented.
 	 * Returns: copy of default icon list
 	 */
-	public static ListG getDefaultIconList()
-	{
-		// GList* gtk_window_get_default_icon_list (void);
-		auto p = gtk_window_get_default_icon_list();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public static ListG getDefaultIconList();
 	
 	/**
 	 * Returns the fallback icon name for windows that has been set
@@ -1347,11 +867,7 @@ public class Window : Bin
 	 * Since 2.16
 	 * Returns: the fallback icon name for windows
 	 */
-	public static string getDefaultIconName()
-	{
-		// gchar * gtk_window_get_default_icon_name (void);
-		return Str.toString(gtk_window_get_default_icon_name());
-	}
+	public static string getDefaultIconName();
 	
 	/**
 	 * Gets the default size of the window. A value of -1 for the width or
@@ -1362,22 +878,14 @@ public class Window : Bin
 	 * width =  location to store the default width, or NULL
 	 * height =  location to store the default height, or NULL
 	 */
-	public void getDefaultSize(out int width, out int height)
-	{
-		// void gtk_window_get_default_size (GtkWindow *window,  gint *width,  gint *height);
-		gtk_window_get_default_size(gtkWindow, &width, &height);
-	}
+	public void getDefaultSize(out int width, out int height);
 	
 	/**
 	 * Returns whether the window will be destroyed with its transient parent. See
 	 * gtk_window_set_destroy_with_parent().
 	 * Returns: TRUE if the window will be destroyed with its transient parent.
 	 */
-	public int getDestroyWithParent()
-	{
-		// gboolean gtk_window_get_destroy_with_parent (GtkWindow *window);
-		return gtk_window_get_destroy_with_parent(gtkWindow);
-	}
+	public int getDestroyWithParent();
 	
 	/**
 	 * (Note: this is a special-purpose function intended for the
@@ -1394,22 +902,14 @@ public class Window : Bin
 	 * right =  location to store the width of the frame at the returns, or NULL
 	 * bottom =  location to store the height of the frame at the bottom, or NULL
 	 */
-	public void getFrameDimensions(out int left, out int top, out int right, out int bottom)
-	{
-		// void gtk_window_get_frame_dimensions (GtkWindow *window,  gint *left,  gint *top,  gint *right,  gint *bottom);
-		gtk_window_get_frame_dimensions(gtkWindow, &left, &top, &right, &bottom);
-	}
+	public void getFrameDimensions(out int left, out int top, out int right, out int bottom);
 	
 	/**
 	 * Accessor for whether the window has a frame window exterior to
 	 * window->window. Gets the value set by gtk_window_set_has_frame().
 	 * Returns: TRUE if a frame has been added to the window via gtk_window_set_has_frame().
 	 */
-	public int getHasFrame()
-	{
-		// gboolean gtk_window_get_has_frame (GtkWindow *window);
-		return gtk_window_get_has_frame(gtkWindow);
-	}
+	public int getHasFrame();
 	
 	/**
 	 * Gets the value set by gtk_window_set_icon() (or if you've
@@ -1417,16 +917,7 @@ public class Window : Bin
 	 * the icon list).
 	 * Returns: icon for window
 	 */
-	public Pixbuf getIcon()
-	{
-		// GdkPixbuf* gtk_window_get_icon (GtkWindow *window);
-		auto p = gtk_window_get_icon(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getIcon();
 	
 	/**
 	 * Retrieves the list of icons set by gtk_window_set_icon_list().
@@ -1434,16 +925,7 @@ public class Window : Bin
 	 * member won't be incremented.
 	 * Returns: copy of window's icon list
 	 */
-	public ListG getIconList()
-	{
-		// GList* gtk_window_get_icon_list (GtkWindow *window);
-		auto p = gtk_window_get_icon_list(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getIconList();
 	
 	/**
 	 * Returns the name of the themed icon for the window,
@@ -1451,32 +933,21 @@ public class Window : Bin
 	 * Since 2.6
 	 * Returns: the icon name or NULL if the window has no themed icon
 	 */
-	public string getIconName()
-	{
-		// gchar * gtk_window_get_icon_name (GtkWindow *window);
-		return Str.toString(gtk_window_get_icon_name(gtkWindow));
-	}
+	public string getIconName();
 	
 	/**
 	 * Returns the mnemonic modifier for this window. See
 	 * gtk_window_set_mnemonic_modifier().
 	 * Returns: the modifier mask used to activate mnemonics on this window.
 	 */
-	public GdkModifierType getMnemonicModifier()
-	{
-		// GdkModifierType gtk_window_get_mnemonic_modifier (GtkWindow *window);
-		return gtk_window_get_mnemonic_modifier(gtkWindow);
-	}
+	public GdkModifierType getMnemonicModifier();
+
 	
 	/**
 	 * Returns whether the window is modal. See gtk_window_set_modal().
 	 * Returns: TRUE if the window is set to be modal and establishes a grab when shown
 	 */
-	public int getModal()
-	{
-		// gboolean gtk_window_get_modal (GtkWindow *window);
-		return gtk_window_get_modal(gtkWindow);
-	}
+	public int getModal();
 	
 	/**
 	 * This function returns the position you need to pass to
@@ -1514,22 +985,14 @@ public class Window : Bin
 	 * rootX =  return location for X coordinate of gravity-determined reference point
 	 * rootY =  return location for Y coordinate of gravity-determined reference point
 	 */
-	public void getPosition(out int rootX, out int rootY)
-	{
-		// void gtk_window_get_position (GtkWindow *window,  gint *root_x,  gint *root_y);
-		gtk_window_get_position(gtkWindow, &rootX, &rootY);
-	}
+	public void getPosition(out int rootX, out int rootY);
 	
 	/**
 	 * Returns the role of the window. See gtk_window_set_role() for
 	 * further explanation.
 	 * Returns: the role of the window if set, or NULL. The returned is owned by the widget and must not be modified or freed.
 	 */
-	public string getRole()
-	{
-		// const gchar * gtk_window_get_role (GtkWindow *window);
-		return Str.toString(gtk_window_get_role(gtkWindow));
-	}
+	public string getRole();
 	
 	/**
 	 * Obtains the current size of window. If window is not onscreen,
@@ -1575,102 +1038,61 @@ public class Window : Bin
 	 * width =  return location for width, or NULL
 	 * height =  return location for height, or NULL
 	 */
-	public void getSize(out int width, out int height)
-	{
-		// void gtk_window_get_size (GtkWindow *window,  gint *width,  gint *height);
-		gtk_window_get_size(gtkWindow, &width, &height);
-	}
+	public void getSize(out int width, out int height);
 	
 	/**
 	 * Retrieves the title of the window. See gtk_window_set_title().
 	 * Returns: the title of the window, or NULL if none has been set explicitely. The returned string is owned by the widget and must not be modified or freed.
 	 */
-	public string getTitle()
-	{
-		// const gchar * gtk_window_get_title (GtkWindow *window);
-		return Str.toString(gtk_window_get_title(gtkWindow));
-	}
+	public string getTitle();
 	
 	/**
 	 * Fetches the transient parent for this window. See
 	 * gtk_window_set_transient_for().
 	 * Returns: the transient parent for this window, or NULL if no transient parent has been set.
 	 */
-	public Window getTransientFor()
-	{
-		// GtkWindow * gtk_window_get_transient_for (GtkWindow *window);
-		auto p = gtk_window_get_transient_for(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Window(cast(GtkWindow*) p);
-	}
+	public Window getTransientFor();
 	
 	/**
 	 * Gets the type hint for this window. See gtk_window_set_type_hint().
 	 * Returns: the type hint for window.
 	 */
-	public GdkWindowTypeHint getTypeHint()
-	{
-		// GdkWindowTypeHint gtk_window_get_type_hint (GtkWindow *window);
-		return gtk_window_get_type_hint(gtkWindow);
-	}
+	public GdkWindowTypeHint getTypeHint();
 	
 	/**
 	 * Gets the value set by gtk_window_set_skip_taskbar_hint()
 	 * Since 2.2
 	 * Returns: TRUE if window shouldn't be in taskbar
 	 */
-	public int getSkipTaskbarHint()
-	{
-		// gboolean gtk_window_get_skip_taskbar_hint (GtkWindow *window);
-		return gtk_window_get_skip_taskbar_hint(gtkWindow);
-	}
+	public int getSkipTaskbarHint();
 	
 	/**
 	 * Gets the value set by gtk_window_set_skip_pager_hint().
 	 * Since 2.2
 	 * Returns: TRUE if window shouldn't be in pager
 	 */
-	public int getSkipPagerHint()
-	{
-		// gboolean gtk_window_get_skip_pager_hint (GtkWindow *window);
-		return gtk_window_get_skip_pager_hint(gtkWindow);
-	}
+	public int getSkipPagerHint();
 	
 	/**
 	 * Gets the value set by gtk_window_set_urgency_hint()
 	 * Since 2.8
 	 * Returns: TRUE if window is urgent
 	 */
-	public int getUrgencyHint()
-	{
-		// gboolean gtk_window_get_urgency_hint (GtkWindow *window);
-		return gtk_window_get_urgency_hint(gtkWindow);
-	}
+	public int getUrgencyHint();
 	
 	/**
 	 * Gets the value set by gtk_window_set_accept_focus().
 	 * Since 2.4
 	 * Returns: TRUE if window should receive the input focus
 	 */
-	public int getAcceptFocus()
-	{
-		// gboolean gtk_window_get_accept_focus (GtkWindow *window);
-		return gtk_window_get_accept_focus(gtkWindow);
-	}
+	public int getAcceptFocus();
 	
 	/**
 	 * Gets the value set by gtk_window_set_focus_on_map().
 	 * Since 2.6
 	 * Returns: TRUE if window should receive the input focus whenmapped.
 	 */
-	public int getFocusOnMap()
-	{
-		// gboolean gtk_window_get_focus_on_map (GtkWindow *window);
-		return gtk_window_get_focus_on_map(gtkWindow);
-	}
+	public int getFocusOnMap();
 	
 	/**
 	 * Returns the group for window or the default group, if
@@ -1679,16 +1101,7 @@ public class Window : Bin
 	 * Since 2.10
 	 * Returns: the GtkWindowGroup for a window or the default group
 	 */
-	public WindowGroup getGroup()
-	{
-		// GtkWindowGroup * gtk_window_get_group (GtkWindow *window);
-		auto p = gtk_window_get_group(gtkWindow);
-		if(p is null)
-		{
-			return null;
-		}
-		return new WindowGroup(cast(GtkWindowGroup*) p);
-	}
+	public WindowGroup getGroup();
 	
 	/**
 	 * Asks the window manager to move
@@ -1701,11 +1114,7 @@ public class Window : Bin
 	 * x =  X coordinate to move window to
 	 * y =  Y coordinate to move window to
 	 */
-	public void move(int x, int y)
-	{
-		// void gtk_window_move (GtkWindow *window,  gint x,  gint y);
-		gtk_window_move(gtkWindow, x, y);
-	}
+	public void move(int x, int y);
 	
 	/**
 	 * Parses a standard X Window System geometry string - see the
@@ -1763,22 +1172,14 @@ public class Window : Bin
 	 * geometry =  geometry string
 	 * Returns: TRUE if string was parsed successfully
 	 */
-	public int parseGeometry(string geometry)
-	{
-		// gboolean gtk_window_parse_geometry (GtkWindow *window,  const gchar *geometry);
-		return gtk_window_parse_geometry(gtkWindow, Str.toStringz(geometry));
-	}
+	public int parseGeometry(string geometry);
 	
 	/**
 	 * Hides window, then reshows it, resetting the
 	 * default size and position of the window. Used
 	 * by GUI builders only.
 	 */
-	public void reshowWithInitialSize()
-	{
-		// void gtk_window_reshow_with_initial_size (GtkWindow *window);
-		gtk_window_reshow_with_initial_size(gtkWindow);
-	}
+	public void reshowWithInitialSize();
 	
 	/**
 	 * Resizes the window as if the user had done so, obeying geometry
@@ -1794,11 +1195,7 @@ public class Window : Bin
 	 * width =  width in pixels to resize the window to
 	 * height =  height in pixels to resize the window to
 	 */
-	public void resize(int width, int height)
-	{
-		// void gtk_window_resize (GtkWindow *window,  gint width,  gint height);
-		gtk_window_resize(gtkWindow, width, height);
-	}
+	public void resize(int width, int height);
 	
 	/**
 	 * Sets an icon list to be used as fallback for windows that haven't
@@ -1809,11 +1206,7 @@ public class Window : Bin
 	 * Params:
 	 * list =  a list of GdkPixbuf
 	 */
-	public static void setDefaultIconList(ListG list)
-	{
-		// void gtk_window_set_default_icon_list (GList *list);
-		gtk_window_set_default_icon_list((list is null) ? null : list.getListGStruct());
-	}
+	public static void setDefaultIconList(ListG list);
 	
 	/**
 	 * Sets an icon to be used as fallback for windows that haven't
@@ -1822,11 +1215,7 @@ public class Window : Bin
 	 * Params:
 	 * icon =  the icon
 	 */
-	public static void setDefaultIcon(Pixbuf icon)
-	{
-		// void gtk_window_set_default_icon (GdkPixbuf *icon);
-		gtk_window_set_default_icon((icon is null) ? null : icon.getPixbufStruct());
-	}
+	public static void setDefaultIcon(Pixbuf icon);
 	
 	/**
 	 * Sets an icon to be used as fallback for windows that haven't
@@ -1838,20 +1227,7 @@ public class Window : Bin
 	 * Returns: TRUE if setting the icon succeeded.
 	 * Throws: GException on failure.
 	 */
-	public static int setDefaultIconFromFile(string filename)
-	{
-		// gboolean gtk_window_set_default_icon_from_file  (const gchar *filename,  GError **err);
-		GError* err = null;
-		
-		auto p = gtk_window_set_default_icon_from_file(Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public static int setDefaultIconFromFile(string filename);
 	
 	/**
 	 * Sets an icon to be used as fallback for windows that haven't
@@ -1861,11 +1237,7 @@ public class Window : Bin
 	 * Params:
 	 * name =  the name of the themed icon
 	 */
-	public static void setDefaultIconName(string name)
-	{
-		// void gtk_window_set_default_icon_name (const gchar *name);
-		gtk_window_set_default_icon_name(Str.toStringz(name));
-	}
+	public static void setDefaultIconName(string name);
 	
 	/**
 	 * Sets up the icon representing a GtkWindow. This icon is used when
@@ -1885,11 +1257,7 @@ public class Window : Bin
 	 * Params:
 	 * icon =  icon image, or NULL
 	 */
-	public void setIcon(Pixbuf icon)
-	{
-		// void gtk_window_set_icon (GtkWindow *window,  GdkPixbuf *icon);
-		gtk_window_set_icon(gtkWindow, (icon is null) ? null : icon.getPixbufStruct());
-	}
+	public void setIcon(Pixbuf icon);
 	
 	/**
 	 * Sets up the icon representing a GtkWindow. The icon is used when
@@ -1914,11 +1282,7 @@ public class Window : Bin
 	 * Params:
 	 * list =  list of GdkPixbuf
 	 */
-	public void setIconList(ListG list)
-	{
-		// void gtk_window_set_icon_list (GtkWindow *window,  GList *list);
-		gtk_window_set_icon_list(gtkWindow, (list is null) ? null : list.getListGStruct());
-	}
+	public void setIconList(ListG list);
 	
 	/**
 	 * Sets the icon for window.
@@ -1931,20 +1295,7 @@ public class Window : Bin
 	 * Returns: TRUE if setting the icon succeeded.
 	 * Throws: GException on failure.
 	 */
-	public int setIconFromFile(string filename)
-	{
-		// gboolean gtk_window_set_icon_from_file (GtkWindow *window,  const gchar *filename,  GError **err);
-		GError* err = null;
-		
-		auto p = gtk_window_set_icon_from_file(gtkWindow, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int setIconFromFile(string filename);
 	
 	/**
 	 * Sets the icon for the window from a named themed icon. See
@@ -1955,11 +1306,7 @@ public class Window : Bin
 	 * Params:
 	 * name =  the name of the themed icon
 	 */
-	public void setIconName(string name)
-	{
-		// void gtk_window_set_icon_name (GtkWindow *window,  const gchar *name);
-		gtk_window_set_icon_name(gtkWindow, Str.toStringz(name));
-	}
+	public void setIconName(string name);
 	
 	/**
 	 * By default, after showing the first GtkWindow, GTK+ calls
@@ -1974,11 +1321,7 @@ public class Window : Bin
 	 * Params:
 	 * setting =  TRUE to automatically do startup notification
 	 */
-	public static void setAutoStartupNotification(int setting)
-	{
-		// void gtk_window_set_auto_startup_notification  (gboolean setting);
-		gtk_window_set_auto_startup_notification(setting);
-	}
+	public static void setAutoStartupNotification(int setting);
 	
 	/**
 	 * Fetches the requested opacity for this window. See
@@ -1986,11 +1329,7 @@ public class Window : Bin
 	 * Since 2.12
 	 * Returns: the requested opacity for this window.
 	 */
-	public double getOpacity()
-	{
-		// gdouble gtk_window_get_opacity (GtkWindow *window);
-		return gtk_window_get_opacity(gtkWindow);
-	}
+	public double getOpacity();
 	
 	/**
 	 * Request the windowing system to make window partially transparent,
@@ -2005,9 +1344,5 @@ public class Window : Bin
 	 * Params:
 	 * opacity =  desired opacity, between 0 and 1
 	 */
-	public void setOpacity(double opacity)
-	{
-		// void gtk_window_set_opacity (GtkWindow *window,  gdouble opacity);
-		gtk_window_set_opacity(gtkWindow, opacity);
-	}
+	public void setOpacity(double opacity);
 }

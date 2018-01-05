@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSizeGroup.html
- * outPack = gtk
- * outFile = SizeGroup
- * strct   = GtkSizeGroup
- * realStrct=
- * ctorStrct=
- * clss    = SizeGroup
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- BuildableIF
- * prefixes:
- * 	- gtk_size_group_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.glib.ListSG
- * 	- gtkD.gtk.BuildableIF
- * 	- gtkD.gtk.BuildableT
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gtk.SizeGroup;
 
@@ -127,38 +70,16 @@ public class SizeGroup : ObjectG, BuildableIF
 	protected GtkSizeGroup* gtkSizeGroup;
 	
 	
-	public GtkSizeGroup* getSizeGroupStruct()
-	{
-		return gtkSizeGroup;
-	}
+	public GtkSizeGroup* getSizeGroupStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSizeGroup;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSizeGroup* gtkSizeGroup)
-	{
-		if(gtkSizeGroup is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSizeGroup);
-		if( ptr !is null )
-		{
-			this = cast(SizeGroup)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkSizeGroup);
-		this.gtkSizeGroup = gtkSizeGroup;
-	}
+	public this (GtkSizeGroup* gtkSizeGroup);
 	
 	// add the Buildable capabilities
 	mixin BuildableT!(GtkSizeGroup);
@@ -172,16 +93,7 @@ public class SizeGroup : ObjectG, BuildableIF
 	 * mode =  the mode for the new size group.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GtkSizeGroupMode mode)
-	{
-		// GtkSizeGroup * gtk_size_group_new (GtkSizeGroupMode mode);
-		auto p = gtk_size_group_new(mode);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_size_group_new(mode)");
-		}
-		this(cast(GtkSizeGroup*) p);
-	}
+	public this (GtkSizeGroupMode mode);
 	
 	/**
 	 * Sets the GtkSizeGroupMode of the size group. The mode of the size
@@ -193,21 +105,13 @@ public class SizeGroup : ObjectG, BuildableIF
 	 * Params:
 	 * mode =  the mode to set for the size group.
 	 */
-	public void setMode(GtkSizeGroupMode mode)
-	{
-		// void gtk_size_group_set_mode (GtkSizeGroup *size_group,  GtkSizeGroupMode mode);
-		gtk_size_group_set_mode(gtkSizeGroup, mode);
-	}
+	public void setMode(GtkSizeGroupMode mode);
 	
 	/**
 	 * Gets the current mode of the size group. See gtk_size_group_set_mode().
 	 * Returns: the current mode of the size group.
 	 */
-	public GtkSizeGroupMode getMode()
-	{
-		// GtkSizeGroupMode gtk_size_group_get_mode (GtkSizeGroup *size_group);
-		return gtk_size_group_get_mode(gtkSizeGroup);
-	}
+	public GtkSizeGroupMode getMode();
 	
 	/**
 	 * Sets whether unmapped widgets should be ignored when
@@ -217,22 +121,14 @@ public class SizeGroup : ObjectG, BuildableIF
 	 * ignoreHidden =  whether unmapped widgets should be ignored
 	 *  when calculating the size
 	 */
-	public void setIgnoreHidden(int ignoreHidden)
-	{
-		// void gtk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,  gboolean ignore_hidden);
-		gtk_size_group_set_ignore_hidden(gtkSizeGroup, ignoreHidden);
-	}
+	public void setIgnoreHidden(int ignoreHidden);
 	
 	/**
 	 * Returns if invisible widgets are ignored when calculating the size.
 	 * Since 2.8
 	 * Returns: TRUE if invisible widgets are ignored.
 	 */
-	public int getIgnoreHidden()
-	{
-		// gboolean gtk_size_group_get_ignore_hidden (GtkSizeGroup *size_group);
-		return gtk_size_group_get_ignore_hidden(gtkSizeGroup);
-	}
+	public int getIgnoreHidden();
 	
 	/**
 	 * Adds a widget to a GtkSizeGroup. In the future, the requisition
@@ -245,36 +141,19 @@ public class SizeGroup : ObjectG, BuildableIF
 	 * Params:
 	 * widget =  the GtkWidget to add
 	 */
-	public void addWidget(Widget widget)
-	{
-		// void gtk_size_group_add_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
-		gtk_size_group_add_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void addWidget(Widget widget);
 	
 	/**
 	 * Removes a widget from a GtkSizeGroup.
 	 * Params:
 	 * widget =  the GtkWidget to remove
 	 */
-	public void removeWidget(Widget widget)
-	{
-		// void gtk_size_group_remove_widget (GtkSizeGroup *size_group,  GtkWidget *widget);
-		gtk_size_group_remove_widget(gtkSizeGroup, (widget is null) ? null : widget.getWidgetStruct());
-	}
+	public void removeWidget(Widget widget);
 	
 	/**
 	 * Returns the list of widgets associated with size_group.
 	 * Since 2.10
 	 * Returns: a GSList of widgets. The list is owned by GTK+  and should not be modified.
 	 */
-	public ListSG getWidgets()
-	{
-		// GSList * gtk_size_group_get_widgets (GtkSizeGroup *size_group);
-		auto p = gtk_size_group_get_widgets(gtkSizeGroup);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getWidgets();
 }

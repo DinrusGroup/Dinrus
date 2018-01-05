@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Testing.html
- * outPack = gtk
- * outFile = Testing
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Testing
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_test_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.SpinButton
- * structWrap:
- * 	- GtkSpinButton* -> SpinButton
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Testing;
 
 public  import gtkD.gtkc.gtktypes;
@@ -84,16 +29,7 @@ public class Testing
 	 * Params:
 	 *  argvp = Address of the argv parameter of main(). Any parameters understood by g_test_init() or gtk_init() are stripped before return.
 	 */
-	public static void testInit(inout string[] argv)
-	{
-		// gboolean gtk_parse_args (int *argc,  char ***argv);
-		char** outargv = Str.toStringzArray(argv);
-		int argc = argv.length;
-		
-		gtk_test_init(&argc, &outargv, null);
-		
-		argv = Str.toStringArray(outargv);
-	}
+	public static void testInit(inout string[] argv);
 	
 	/**
 	 */
@@ -109,16 +45,7 @@ public class Testing
 	 * dialogText =  Text inside the window to be displayed.
 	 * Returns: a widget pointer to the newly created GtkWindow.
 	 */
-	public static Widget createSimpleWindow(string windowTitle, string dialogText)
-	{
-		// GtkWidget* gtk_test_create_simple_window (const gchar *window_title,  const gchar *dialog_text);
-		auto p = gtk_test_create_simple_window(Str.toStringz(windowTitle), Str.toStringz(dialogText));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public static Widget createSimpleWindow(string windowTitle, string dialogText);
 	
 	/**
 	 * This function will search widget and all its descendants for a GtkLabel
@@ -134,16 +61,7 @@ public class Testing
 	 * labelPattern =  Shell-glob pattern to match a label string.
 	 * Returns: a GtkLabel widget if any is found.
 	 */
-	public static Widget findLabel(Widget widget, string labelPattern)
-	{
-		// GtkWidget* gtk_test_find_label (GtkWidget *widget,  const gchar *label_pattern);
-		auto p = gtk_test_find_label((widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(labelPattern));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public static Widget findLabel(Widget widget, string labelPattern);
 	
 	/**
 	 * This function will search siblings of base_widget and siblings of its
@@ -159,16 +77,7 @@ public class Testing
 	 * widgetType =  Type of a aearched for sibling widget
 	 * Returns: a widget of type widget_type if any is found.
 	 */
-	public static Widget findSibling(Widget baseWidget, GType widgetType)
-	{
-		// GtkWidget* gtk_test_find_sibling (GtkWidget *base_widget,  GType widget_type);
-		auto p = gtk_test_find_sibling((baseWidget is null) ? null : baseWidget.getWidgetStruct(), widgetType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public static Widget findSibling(Widget baseWidget, GType widgetType);
 	
 	/**
 	 * This function will search the descendants of widget for a widget
@@ -185,16 +94,7 @@ public class Testing
 	 * widgetType =  Type of a aearched for label sibling widget.
 	 * Returns: a valid widget if any is found or NULL.
 	 */
-	public static Widget findWidget(Widget widget, string labelPattern, GType widgetType)
-	{
-		// GtkWidget* gtk_test_find_widget (GtkWidget *widget,  const gchar *label_pattern,  GType widget_type);
-		auto p = gtk_test_find_widget((widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(labelPattern), widgetType);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public static Widget findWidget(Widget widget, string labelPattern, GType widgetType);
 	
 	/**
 	 * Return the type ids that have been registered after
@@ -204,11 +104,7 @@ public class Testing
 	 * nTypes =  location to store number of types
 	 * Returns: 0-terminated array of type ids
 	 */
-	public static GType* listAllTypes(uint* nTypes)
-	{
-		// const GType* gtk_test_list_all_types (guint *n_types);
-		return gtk_test_list_all_types(nTypes);
-	}
+	public static GType* listAllTypes(uint* nTypes);
 	
 	/**
 	 * Force registration of all core Gtk+ and Gdk object types.
@@ -216,11 +112,7 @@ public class Testing
 	 * g_type_from_name() after calling this function.
 	 * Since 2.14
 	 */
-	public static void registerAllTypes()
-	{
-		// void gtk_test_register_all_types (void);
-		gtk_test_register_all_types();
-	}
+	public static void registerAllTypes();
 	
 	/**
 	 * Retrive the literal adjustment value for GtkRange based
@@ -233,11 +125,7 @@ public class Testing
 	 * widget =  valid widget pointer.
 	 * Returns: adjustment->value for an adjustment belonging to widget.
 	 */
-	public static double sliderGetValue(Widget widget)
-	{
-		// double gtk_test_slider_get_value (GtkWidget *widget);
-		return gtk_test_slider_get_value((widget is null) ? null : widget.getWidgetStruct());
-	}
+	public static double sliderGetValue(Widget widget);
 	
 	/**
 	 * This function will adjust the slider position of all GtkRange
@@ -250,11 +138,7 @@ public class Testing
 	 * widget =  valid widget pointer.
 	 * percentage =  value between 0 and 100.
 	 */
-	public static void sliderSetPerc(Widget widget, double percentage)
-	{
-		// void gtk_test_slider_set_perc (GtkWidget *widget,  double percentage);
-		gtk_test_slider_set_perc((widget is null) ? null : widget.getWidgetStruct(), percentage);
-	}
+	public static void sliderSetPerc(Widget widget, double percentage);
 	
 	/**
 	 * This function will generate a button click in the upwards or downwards
@@ -267,11 +151,7 @@ public class Testing
 	 * upwards =  TRUE for upwards arrow click, FALSE for downwards arrow click.
 	 * Returns: wether all actions neccessary for the button click simulation were carried out successfully.
 	 */
-	public static int spinButtonClick(SpinButton spinner, uint button, int upwards)
-	{
-		// gboolean gtk_test_spin_button_click (GtkSpinButton *spinner,  guint button,  gboolean upwards);
-		return gtk_test_spin_button_click((spinner is null) ? null : spinner.getSpinButtonStruct(), button, upwards);
-	}
+	public static int spinButtonClick(SpinButton spinner, uint button, int upwards);
 	
 	/**
 	 * Retrive the text string of widget if it is a GtkLabel,
@@ -281,11 +161,7 @@ public class Testing
 	 * widget =  valid widget pointer.
 	 * Returns: new 0-terminated C string, needs to be released with g_free().
 	 */
-	public static string textGet(Widget widget)
-	{
-		// gchar* gtk_test_text_get (GtkWidget *widget);
-		return Str.toString(gtk_test_text_get((widget is null) ? null : widget.getWidgetStruct()));
-	}
+	public static string textGet(Widget widget);
 	
 	/**
 	 * Set the text string of widget to string if it is a GtkLabel,
@@ -295,11 +171,7 @@ public class Testing
 	 * widget =  valid widget pointer.
 	 * string =  a 0-terminated C string
 	 */
-	public static void textSet(Widget widget, string string)
-	{
-		// void gtk_test_text_set (GtkWidget *widget,  const gchar *string);
-		gtk_test_text_set((widget is null) ? null : widget.getWidgetStruct(), Str.toStringz(string));
-	}
+	public static void textSet(Widget widget, string string);
 	
 	/**
 	 * This function will generate a button click (button press and button
@@ -317,11 +189,7 @@ public class Testing
 	 * modifiers =  Keyboard modifiers the event is setup with.
 	 * Returns: wether all actions neccessary for the button click simulation were carried out successfully.
 	 */
-	public static int widgetClick(Widget widget, uint button, GdkModifierType modifiers)
-	{
-		// gboolean gtk_test_widget_click (GtkWidget *widget,  guint button,  GdkModifierType modifiers);
-		return gtk_test_widget_click((widget is null) ? null : widget.getWidgetStruct(), button, modifiers);
-	}
+	public static int widgetClick(Widget widget, uint button, GdkModifierType modifiers);
 	
 	/**
 	 * This function will generate keyboard press and release events in
@@ -338,9 +206,5 @@ public class Testing
 	 * modifiers =  Keyboard modifiers the event is setup with.
 	 * Returns: wether all actions neccessary for the key event simulation were carried out successfully.
 	 */
-	public static int widgetSendKey(Widget widget, uint keyval, GdkModifierType modifiers)
-	{
-		// gboolean gtk_test_widget_send_key (GtkWidget *widget,  guint keyval,  GdkModifierType modifiers);
-		return gtk_test_widget_send_key((widget is null) ? null : widget.getWidgetStruct(), keyval, modifiers);
-	}
+	public static int widgetSendKey(Widget widget, uint keyval, GdkModifierType modifiers);
 }

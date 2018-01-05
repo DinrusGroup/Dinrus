@@ -1,72 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkUIManager.html
- * outPack = gtk
- * outFile = UIManager
- * strct   = GtkUIManager
- * realStrct=
- * ctorStrct=
- * clss    = UIManager
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- BuildableIF
- * prefixes:
- * 	- gtk_ui_manager_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.gtk.ActionGroup
- * 	- gtkD.glib.ListG
- * 	- gtkD.gtk.AccelGroup
- * 	- gtkD.gtk.Widget
- * 	- gtkD.glib.ListSG
- * 	- gtkD.gtk.Action
- * 	- gtkD.gtk.BuildableIF
- * 	- gtkD.gtk.BuildableT
- * structWrap:
- * 	- GList* -> ListG
- * 	- GSList* -> ListSG
- * 	- GtkAccelGroup* -> AccelGroup
- * 	- GtkAction* -> Action
- * 	- GtkActionGroup* -> ActionGroup
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.UIManager;
 
 public  import gtkD.gtkc.gtktypes;
@@ -277,38 +208,16 @@ public class UIManager : ObjectG, BuildableIF
 	protected GtkUIManager* gtkUIManager;
 	
 	
-	public GtkUIManager* getUIManagerStruct()
-	{
-		return gtkUIManager;
-	}
+	public GtkUIManager* getUIManagerStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkUIManager;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkUIManager* gtkUIManager)
-	{
-		if(gtkUIManager is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkUIManager);
-		if( ptr !is null )
-		{
-			this = cast(UIManager)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkUIManager);
-		this.gtkUIManager = gtkUIManager;
-	}
+	public this (GtkUIManager* gtkUIManager);
 	
 	// add the Buildable capabilities
 	mixin BuildableT!(GtkUIManager);
@@ -323,28 +232,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * changes.
 	 * Since 2.4
 	 */
-	void addOnActionsChanged(void delegate(UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("actions-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"actions-changed",
-			cast(GCallback)&callBackActionsChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["actions-changed"] = 1;
-		}
-		onActionsChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackActionsChanged(GtkUIManager* mergeStruct, UIManager uIManager)
-	{
-		foreach ( void delegate(UIManager) dlg ; uIManager.onActionsChangedListeners )
-		{
-			dlg(uIManager);
-		}
-	}
+	void addOnActionsChanged(void delegate(UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActionsChanged(GtkUIManager* mergeStruct, UIManager uIManager);
 	
 	void delegate(Widget, UIManager)[] onAddWidgetListeners;
 	/**
@@ -353,28 +242,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * gtk_ui_manager_get_widget().
 	 * Since 2.4
 	 */
-	void addOnAddWidget(void delegate(Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("add-widget" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"add-widget",
-			cast(GCallback)&callBackAddWidget,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["add-widget"] = 1;
-		}
-		onAddWidgetListeners ~= dlg;
-	}
-	extern(C) static void callBackAddWidget(GtkUIManager* mergeStruct, GtkWidget* widget, UIManager uIManager)
-	{
-		foreach ( void delegate(Widget, UIManager) dlg ; uIManager.onAddWidgetListeners )
-		{
-			dlg(new Widget(widget), uIManager);
-		}
-	}
+	void addOnAddWidget(void delegate(Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackAddWidget(GtkUIManager* mergeStruct, GtkWidget* widget, UIManager uIManager);
 	
 	void delegate(Action, Widget, UIManager)[] onConnectProxyListeners;
 	/**
@@ -385,28 +254,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * statusbar.
 	 * Since 2.4
 	 */
-	void addOnConnectProxy(void delegate(Action, Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("connect-proxy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"connect-proxy",
-			cast(GCallback)&callBackConnectProxy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["connect-proxy"] = 1;
-		}
-		onConnectProxyListeners ~= dlg;
-	}
-	extern(C) static void callBackConnectProxy(GtkUIManager* uimanagerStruct, GtkAction* action, GtkWidget* proxy, UIManager uIManager)
-	{
-		foreach ( void delegate(Action, Widget, UIManager) dlg ; uIManager.onConnectProxyListeners )
-		{
-			dlg(new Action(action), new Widget(proxy), uIManager);
-		}
-	}
+	void addOnConnectProxy(void delegate(Action, Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackConnectProxy(GtkUIManager* uimanagerStruct, GtkAction* action, GtkWidget* proxy, UIManager uIManager);
 	
 	void delegate(Action, Widget, UIManager)[] onDisconnectProxyListeners;
 	/**
@@ -414,28 +263,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * from an action in the group.
 	 * Since 2.4
 	 */
-	void addOnDisconnectProxy(void delegate(Action, Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("disconnect-proxy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"disconnect-proxy",
-			cast(GCallback)&callBackDisconnectProxy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["disconnect-proxy"] = 1;
-		}
-		onDisconnectProxyListeners ~= dlg;
-	}
-	extern(C) static void callBackDisconnectProxy(GtkUIManager* uimanagerStruct, GtkAction* action, GtkWidget* proxy, UIManager uIManager)
-	{
-		foreach ( void delegate(Action, Widget, UIManager) dlg ; uIManager.onDisconnectProxyListeners )
-		{
-			dlg(new Action(action), new Widget(proxy), uIManager);
-		}
-	}
+	void addOnDisconnectProxy(void delegate(Action, Widget, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDisconnectProxy(GtkUIManager* uimanagerStruct, GtkAction* action, GtkWidget* proxy, UIManager uIManager);
 	
 	void delegate(Action, UIManager)[] onPostActivateListeners;
 	/**
@@ -445,28 +274,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * just after any action is activated.
 	 * Since 2.4
 	 */
-	void addOnPostActivate(void delegate(Action, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("post-activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"post-activate",
-			cast(GCallback)&callBackPostActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["post-activate"] = 1;
-		}
-		onPostActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackPostActivate(GtkUIManager* uimanagerStruct, GtkAction* action, UIManager uIManager)
-	{
-		foreach ( void delegate(Action, UIManager) dlg ; uIManager.onPostActivateListeners )
-		{
-			dlg(new Action(action), uIManager);
-		}
-	}
+	void addOnPostActivate(void delegate(Action, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPostActivate(GtkUIManager* uimanagerStruct, GtkAction* action, UIManager uIManager);
 	
 	void delegate(Action, UIManager)[] onPreActivateListeners;
 	/**
@@ -478,28 +287,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * See Also
 	 * GtkBuilder
 	 */
-	void addOnPreActivate(void delegate(Action, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("pre-activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"pre-activate",
-			cast(GCallback)&callBackPreActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["pre-activate"] = 1;
-		}
-		onPreActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackPreActivate(GtkUIManager* uimanagerStruct, GtkAction* action, UIManager uIManager)
-	{
-		foreach ( void delegate(Action, UIManager) dlg ; uIManager.onPreActivateListeners )
-		{
-			dlg(new Action(action), uIManager);
-		}
-	}
+	void addOnPreActivate(void delegate(Action, UIManager) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPreActivate(GtkUIManager* uimanagerStruct, GtkAction* action, UIManager uIManager);
 	
 	
 	/**
@@ -507,16 +296,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Since 2.4
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkUIManager * gtk_ui_manager_new (void);
-		auto p = gtk_ui_manager_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_ui_manager_new()");
-		}
-		this(cast(GtkUIManager*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets the "add_tearoffs" property, which controls whether menus
@@ -527,11 +307,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Params:
 	 * addTearoffs =  whether tearoff menu items are added
 	 */
-	public void setAddTearoffs(int addTearoffs)
-	{
-		// void gtk_ui_manager_set_add_tearoffs (GtkUIManager *self,  gboolean add_tearoffs);
-		gtk_ui_manager_set_add_tearoffs(gtkUIManager, addTearoffs);
-	}
+	public void setAddTearoffs(int addTearoffs);
 	
 	/**
 	 * Returns whether menus generated by this GtkUIManager
@@ -539,11 +315,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Since 2.4
 	 * Returns: whether tearoff menu items are added
 	 */
-	public int getAddTearoffs()
-	{
-		// gboolean gtk_ui_manager_get_add_tearoffs (GtkUIManager *self);
-		return gtk_ui_manager_get_add_tearoffs(gtkUIManager);
-	}
+	public int getAddTearoffs();
 	
 	/**
 	 * Inserts an action group into the list of action groups associated
@@ -554,12 +326,8 @@ public class UIManager : ObjectG, BuildableIF
 	 * actionGroup =  the action group to be inserted
 	 * pos =  the position at which the group will be inserted.
 	 */
-	public void insertActionGroup(ActionGroup actionGroup, int pos)
-	{
-		// void gtk_ui_manager_insert_action_group (GtkUIManager *self,  GtkActionGroup *action_group,  gint pos);
-		gtk_ui_manager_insert_action_group(gtkUIManager, (actionGroup is null) ? null : actionGroup.getActionGroupStruct(), pos);
-	}
-	
+	public void insertActionGroup(ActionGroup actionGroup, int pos);
+
 	/**
 	 * Removes an action group from the list of action groups associated
 	 * with self.
@@ -567,43 +335,21 @@ public class UIManager : ObjectG, BuildableIF
 	 * Params:
 	 * actionGroup =  the action group to be removed
 	 */
-	public void removeActionGroup(ActionGroup actionGroup)
-	{
-		// void gtk_ui_manager_remove_action_group (GtkUIManager *self,  GtkActionGroup *action_group);
-		gtk_ui_manager_remove_action_group(gtkUIManager, (actionGroup is null) ? null : actionGroup.getActionGroupStruct());
-	}
+	public void removeActionGroup(ActionGroup actionGroup);
 	
 	/**
 	 * Returns the list of action groups associated with self.
 	 * Since 2.4
 	 * Returns: a GList of action groups. The list is owned by GTK+  and should not be modified.
 	 */
-	public ListG getActionGroups()
-	{
-		// GList * gtk_ui_manager_get_action_groups (GtkUIManager *self);
-		auto p = gtk_ui_manager_get_action_groups(gtkUIManager);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getActionGroups();
 	
 	/**
 	 * Returns the GtkAccelGroup associated with self.
 	 * Since 2.4
 	 * Returns: the GtkAccelGroup.
 	 */
-	public AccelGroup getAccelGroup()
-	{
-		// GtkAccelGroup * gtk_ui_manager_get_accel_group (GtkUIManager *self);
-		auto p = gtk_ui_manager_get_accel_group(gtkUIManager);
-		if(p is null)
-		{
-			return null;
-		}
-		return new AccelGroup(cast(GtkAccelGroup*) p);
-	}
+	public AccelGroup getAccelGroup();
 	
 	/**
 	 * Looks up a widget by following a path.
@@ -622,16 +368,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * path =  a path
 	 * Returns: the widget found by following the path, or NULL if no widget was found.
 	 */
-	public Widget getWidget(string path)
-	{
-		// GtkWidget * gtk_ui_manager_get_widget (GtkUIManager *self,  const gchar *path);
-		auto p = gtk_ui_manager_get_widget(gtkUIManager, Str.toStringz(path));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getWidget(string path);
 	
 	/**
 	 * Obtains a list of all toplevel widgets of the requested types.
@@ -642,16 +379,7 @@ public class UIManager : ObjectG, BuildableIF
 	 *  GTK_UI_MANAGER_POPUP.
 	 * Returns: a newly-allocated GSList of all toplevel widgets of therequested types. Free the returned list with g_slist_free().
 	 */
-	public ListSG getToplevels(GtkUIManagerItemType types)
-	{
-		// GSList * gtk_ui_manager_get_toplevels (GtkUIManager *self,  GtkUIManagerItemType types);
-		auto p = gtk_ui_manager_get_toplevels(gtkUIManager, types);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getToplevels(GtkUIManagerItemType types);
 	
 	/**
 	 * Looks up an action by following a path. See gtk_ui_manager_get_widget()
@@ -661,16 +389,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * path =  a path
 	 * Returns: the action whose proxy widget is found by following the path,  or NULL if no widget was found.
 	 */
-	public Action getAction(string path)
-	{
-		// GtkAction * gtk_ui_manager_get_action (GtkUIManager *self,  const gchar *path);
-		auto p = gtk_ui_manager_get_action(gtkUIManager, Str.toStringz(path));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Action(cast(GtkAction*) p);
-	}
+	public Action getAction(string path);
 	
 	/**
 	 * Parses a string containing a UI definition and
@@ -683,20 +402,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Returns: The merge id for the merged UI. The merge id can be used to unmerge the UI with gtk_ui_manager_remove_ui(). If an error occurred, the return value is 0.
 	 * Throws: GException on failure.
 	 */
-	public uint addUiFromString(string buffer, int length)
-	{
-		// guint gtk_ui_manager_add_ui_from_string (GtkUIManager *self,  const gchar *buffer,  gssize length,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_ui_manager_add_ui_from_string(gtkUIManager, Str.toStringz(buffer), length, &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addUiFromString(string buffer, int length);
 	
 	/**
 	 * Parses a file containing a UI definition and
@@ -707,20 +413,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Returns: The merge id for the merged UI. The merge id can be used to unmerge the UI with gtk_ui_manager_remove_ui(). If an error occurred, the return value is 0.
 	 * Throws: GException on failure.
 	 */
-	public uint addUiFromFile(string filename)
-	{
-		// guint gtk_ui_manager_add_ui_from_file (GtkUIManager *self,  const gchar *filename,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_ui_manager_add_ui_from_file(gtkUIManager, Str.toStringz(filename), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public uint addUiFromFile(string filename);
 	
 	/**
 	 * Returns an unused merge id, suitable for use with
@@ -728,11 +421,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * Since 2.4
 	 * Returns: an unused merge id.
 	 */
-	public uint newMergeId()
-	{
-		// guint gtk_ui_manager_new_merge_id (GtkUIManager *self);
-		return gtk_ui_manager_new_merge_id(gtkUIManager);
-	}
+	public uint newMergeId();
 	
 	/**
 	 * Adds a UI element to the current contents of self.
@@ -752,11 +441,7 @@ public class UIManager : ObjectG, BuildableIF
 	 * top =  if TRUE, the UI element is added before its siblings, otherwise it
 	 *  is added after its siblings.
 	 */
-	public void addUi(uint mergeId, string path, string name, string action, GtkUIManagerItemType type, int top)
-	{
-		// void gtk_ui_manager_add_ui (GtkUIManager *self,  guint merge_id,  const gchar *path,  const gchar *name,  const gchar *action,  GtkUIManagerItemType type,  gboolean top);
-		gtk_ui_manager_add_ui(gtkUIManager, mergeId, Str.toStringz(path), Str.toStringz(name), Str.toStringz(action), type, top);
-	}
+	public void addUi(uint mergeId, string path, string name, string action, GtkUIManagerItemType type, int top);
 	
 	/**
 	 * Unmerges the part of selfs content identified by merge_id.
@@ -764,22 +449,14 @@ public class UIManager : ObjectG, BuildableIF
 	 * Params:
 	 * mergeId =  a merge id as returned by gtk_ui_manager_add_ui_from_string()
 	 */
-	public void removeUi(uint mergeId)
-	{
-		// void gtk_ui_manager_remove_ui (GtkUIManager *self,  guint merge_id);
-		gtk_ui_manager_remove_ui(gtkUIManager, mergeId);
-	}
+	public void removeUi(uint mergeId);
 	
 	/**
 	 * Creates a UI definition of the merged UI.
 	 * Since 2.4
 	 * Returns: A newly allocated string containing an XML representation of the merged UI.
 	 */
-	public string getUi()
-	{
-		// gchar * gtk_ui_manager_get_ui (GtkUIManager *self);
-		return Str.toString(gtk_ui_manager_get_ui(gtkUIManager));
-	}
+	public string getUi();
 	
 	/**
 	 * Makes sure that all pending updates to the UI have been completed.
@@ -788,9 +465,5 @@ public class UIManager : ObjectG, BuildableIF
 	 * useful is to enforce that the menubar and toolbar have been added to
 	 * Since 2.4
 	 */
-	public void ensureUpdate()
-	{
-		// void gtk_ui_manager_ensure_update (GtkUIManager *self);
-		gtk_ui_manager_ensure_update(gtkUIManager);
-	}
+	public void ensureUpdate();
 }

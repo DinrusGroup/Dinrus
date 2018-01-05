@@ -1,71 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-GtkTextIter.html
- * outPack = gtk
- * outFile = TextIter
- * strct   = GtkTextIter
- * realStrct=
- * ctorStrct=
- * clss    = TextIter
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_text_iter_
- * 	- gtk_
- * omit structs:
- * 	- GtkTextIter
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TextBuffer
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.glib.ListSG
- * 	- gtkD.gtk.TextChildAnchor
- * 	- gtkD.gtk.TextTag
- * 	- gtkD.gtk.TextAttributes
- * 	- gtkD.pango.PgLanguage
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GtkTextAttributes* -> TextAttributes
- * 	- GtkTextBuffer* -> TextBuffer
- * 	- GtkTextChildAnchor* -> TextChildAnchor
- * 	- GtkTextIter* -> TextIter
- * 	- GtkTextTag* -> TextTag
- * 	- PangoLanguage* -> PgLanguage
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TextIter;
 
 public  import gtkD.gtkc.gtktypes;
@@ -99,36 +31,19 @@ public class TextIter
 	protected GtkTextIter* gtkTextIter;
 	
 	
-	public GtkTextIter* getTextIterStruct()
-	{
-		return gtkTextIter;
-	}
+	public GtkTextIter* getTextIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkTextIter;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTextIter* gtkTextIter)
-	{
-		if(gtkTextIter is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkTextIter = gtkTextIter;
-	}
+	public this (GtkTextIter* gtkTextIter);
 	
 	/** */
-	public this()
-	{
-		this(new GtkTextIter);
-	}
+	public this();
 	
 	
 	/**
@@ -138,16 +53,7 @@ public class TextIter
 	 * Returns the GtkTextBuffer this iterator is associated with.
 	 * Returns: the buffer
 	 */
-	public TextBuffer getBuffer()
-	{
-		// GtkTextBuffer * gtk_text_iter_get_buffer (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_buffer(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TextBuffer(cast(GtkTextBuffer*) p);
-	}
+	public TextBuffer getBuffer();
 	
 	/**
 	 * Creates a dynamically-allocated copy of an iterator. This function
@@ -156,16 +62,7 @@ public class TextIter
 	 * function is used by language bindings.
 	 * Returns: a copy of the iter, free with gtk_text_iter_free()
 	 */
-	public TextIter copy()
-	{
-		// GtkTextIter * gtk_text_iter_copy (const GtkTextIter *iter);
-		auto p = gtk_text_iter_copy(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TextIter(cast(GtkTextIter*) p);
-	}
+	public TextIter copy();
 	
 	/**
 	 * Free an iterator allocated on the heap. This function
@@ -173,11 +70,7 @@ public class TextIter
 	 * especially useful for applications, because iterators can
 	 * simply be allocated on the stack.
 	 */
-	public void free()
-	{
-		// void gtk_text_iter_free (GtkTextIter *iter);
-		gtk_text_iter_free(gtkTextIter);
-	}
+	public void free();
 	
 	/**
 	 * Returns the character offset of an iterator.
@@ -187,11 +80,7 @@ public class TextIter
 	 * offset back into an iterator.
 	 * Returns: a character offset
 	 */
-	public int getOffset()
-	{
-		// gint gtk_text_iter_get_offset (const GtkTextIter *iter);
-		return gtk_text_iter_get_offset(gtkTextIter);
-	}
+	public int getOffset();
 	
 	/**
 	 * Returns the line number containing the iterator. Lines in
@@ -199,11 +88,7 @@ public class TextIter
 	 * line in the buffer.
 	 * Returns: a line number
 	 */
-	public int getLine()
-	{
-		// gint gtk_text_iter_get_line (const GtkTextIter *iter);
-		return gtk_text_iter_get_line(gtkTextIter);
-	}
+	public int getLine();
 	
 	/**
 	 * Returns the character offset of the iterator,
@@ -211,11 +96,7 @@ public class TextIter
 	 * The first character on the line has offset 0.
 	 * Returns: offset from start of line
 	 */
-	public int getLineOffset()
-	{
-		// gint gtk_text_iter_get_line_offset (const GtkTextIter *iter);
-		return gtk_text_iter_get_line_offset(gtkTextIter);
-	}
+	public int getLineOffset();
 	
 	/**
 	 * Returns the byte index of the iterator, counting
@@ -225,11 +106,7 @@ public class TextIter
 	 * number of bytes to represent.
 	 * Returns: distance from start of line, in bytes
 	 */
-	public int getLineIndex()
-	{
-		// gint gtk_text_iter_get_line_index (const GtkTextIter *iter);
-		return gtk_text_iter_get_line_index(gtkTextIter);
-	}
+	public int getLineIndex();
 	
 	/**
 	 * Returns the number of bytes from the start of the
@@ -238,11 +115,7 @@ public class TextIter
 	 * toggled on.
 	 * Returns: byte index of iter with respect to the start of the line
 	 */
-	public int getVisibleLineIndex()
-	{
-		// gint gtk_text_iter_get_visible_line_index  (const GtkTextIter *iter);
-		return gtk_text_iter_get_visible_line_index(gtkTextIter);
-	}
+	public int getVisibleLineIndex();
 	
 	/**
 	 * Returns the offset in characters from the start of the
@@ -251,11 +124,7 @@ public class TextIter
 	 * toggled on.
 	 * Returns: offset in visible characters from the start of the line
 	 */
-	public int getVisibleLineOffset()
-	{
-		// gint gtk_text_iter_get_visible_line_offset  (const GtkTextIter *iter);
-		return gtk_text_iter_get_visible_line_offset(gtkTextIter);
-	}
+	public int getVisibleLineOffset();
 	
 	/**
 	 * Returns the Unicode character at this iterator. (Equivalent to
@@ -267,11 +136,7 @@ public class TextIter
 	 * returns 0.
 	 * Returns: a Unicode character, or 0 if iter is not dereferenceable
 	 */
-	public gunichar getChar()
-	{
-		// gunichar gtk_text_iter_get_char (const GtkTextIter *iter);
-		return gtk_text_iter_get_char(gtkTextIter);
-	}
+	public gunichar getChar();
 	
 	/**
 	 * Returns the text in the given range. A "slice" is an array of
@@ -286,11 +151,7 @@ public class TextIter
 	 * end =  iterator at end of a range
 	 * Returns: slice of text from the buffer
 	 */
-	public string getSlice(TextIter end)
-	{
-		// gchar * gtk_text_iter_get_slice (const GtkTextIter *start,  const GtkTextIter *end);
-		return Str.toString(gtk_text_iter_get_slice(gtkTextIter, (end is null) ? null : end.getTextIterStruct()));
-	}
+	public string getSlice(TextIter end);
 	
 	/**
 	 * Returns text in the given range. If the range
@@ -302,11 +163,7 @@ public class TextIter
 	 * end =  iterator at end of a range
 	 * Returns: array of characters from the buffer
 	 */
-	public string getText(TextIter end)
-	{
-		// gchar * gtk_text_iter_get_text (const GtkTextIter *start,  const GtkTextIter *end);
-		return Str.toString(gtk_text_iter_get_text(gtkTextIter, (end is null) ? null : end.getTextIterStruct()));
-	}
+	public string getText(TextIter end);
 	
 	/**
 	 * Like gtk_text_iter_get_slice(), but invisible text is not included.
@@ -316,11 +173,7 @@ public class TextIter
 	 * end =  iterator at end of range
 	 * Returns: slice of text from the buffer
 	 */
-	public string getVisibleSlice(TextIter end)
-	{
-		// gchar * gtk_text_iter_get_visible_slice (const GtkTextIter *start,  const GtkTextIter *end);
-		return Str.toString(gtk_text_iter_get_visible_slice(gtkTextIter, (end is null) ? null : end.getTextIterStruct()));
-	}
+	public string getVisibleSlice(TextIter end);
 	
 	/**
 	 * Like gtk_text_iter_get_text(), but invisible text is not included.
@@ -330,11 +183,7 @@ public class TextIter
 	 * end =  iterator at end of range
 	 * Returns: string containing visible text in the range
 	 */
-	public string getVisibleText(TextIter end)
-	{
-		// gchar * gtk_text_iter_get_visible_text (const GtkTextIter *start,  const GtkTextIter *end);
-		return Str.toString(gtk_text_iter_get_visible_text(gtkTextIter, (end is null) ? null : end.getTextIterStruct()));
-	}
+	public string getVisibleText(TextIter end);
 	
 	/**
 	 * If the element at iter is a pixbuf, the pixbuf is returned
@@ -342,16 +191,7 @@ public class TextIter
 	 * NULL is returned.
 	 * Returns: the pixbuf at iter
 	 */
-	public Pixbuf getPixbuf()
-	{
-		// GdkPixbuf* gtk_text_iter_get_pixbuf (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_pixbuf(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getPixbuf();
 	
 	/**
 	 * Returns a list of all GtkTextMark at this location. Because marks
@@ -361,16 +201,7 @@ public class TextIter
 	 * meaningful order.
 	 * Returns: list of GtkTextMark
 	 */
-	public ListSG getMarks()
-	{
-		// GSList * gtk_text_iter_get_marks (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_marks(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getMarks();
 	
 	/**
 	 * Returns a list of GtkTextTag that are toggled on or off at this
@@ -383,16 +214,7 @@ public class TextIter
 	 * toggledOn =  TRUE to get toggled-on tags
 	 * Returns: tags toggled at this point
 	 */
-	public ListSG getToggledTags(int toggledOn)
-	{
-		// GSList * gtk_text_iter_get_toggled_tags (const GtkTextIter *iter,  gboolean toggled_on);
-		auto p = gtk_text_iter_get_toggled_tags(gtkTextIter, toggledOn);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getToggledTags(int toggledOn);
 	
 	/**
 	 * If the location at iter contains a child anchor, the
@@ -400,16 +222,7 @@ public class TextIter
 	 * NULL is returned.
 	 * Returns: the anchor at iter
 	 */
-	public TextChildAnchor getChildAnchor()
-	{
-		// GtkTextChildAnchor* gtk_text_iter_get_child_anchor (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_child_anchor(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TextChildAnchor(cast(GtkTextChildAnchor*) p);
-	}
+	public TextChildAnchor getChildAnchor();
 	
 	/**
 	 * Returns TRUE if tag is toggled on at exactly this point. If tag
@@ -422,11 +235,7 @@ public class TextIter
 	 * tag =  a GtkTextTag, or NULL
 	 * Returns: whether iter is the start of a range tagged with tag
 	 */
-	public int beginsTag(TextTag tag)
-	{
-		// gboolean gtk_text_iter_begins_tag (const GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_begins_tag(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int beginsTag(TextTag tag);
 	
 	/**
 	 * Returns TRUE if tag is toggled off at exactly this point. If tag
@@ -439,11 +248,7 @@ public class TextIter
 	 * tag =  a GtkTextTag, or NULL
 	 * Returns: whether iter is the end of a range tagged with tag
 	 */
-	public int endsTag(TextTag tag)
-	{
-		// gboolean gtk_text_iter_ends_tag (const GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_ends_tag(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int endsTag(TextTag tag);
 	
 	/**
 	 * This is equivalent to (gtk_text_iter_begins_tag() ||
@@ -453,11 +258,7 @@ public class TextIter
 	 * tag =  a GtkTextTag, or NULL
 	 * Returns: whether tag is toggled on or off at iter
 	 */
-	public int togglesTag(TextTag tag)
-	{
-		// gboolean gtk_text_iter_toggles_tag (const GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_toggles_tag(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int togglesTag(TextTag tag);
 	
 	/**
 	 * Returns TRUE if iter is within a range tagged with tag.
@@ -465,11 +266,7 @@ public class TextIter
 	 * tag =  a GtkTextTag
 	 * Returns: whether iter is tagged with tag
 	 */
-	public int hasTag(TextTag tag)
-	{
-		// gboolean gtk_text_iter_has_tag (const GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_has_tag(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int hasTag(TextTag tag);
 	
 	/**
 	 * Returns a list of tags that apply to iter, in ascending order of
@@ -478,16 +275,7 @@ public class TextIter
 	 * itself.
 	 * Returns: list of GtkTextTag
 	 */
-	public ListSG getTags()
-	{
-		// GSList * gtk_text_iter_get_tags (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_tags(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public ListSG getTags();
 	
 	/**
 	 * Returns whether the character at iter is within an editable region
@@ -505,11 +293,7 @@ public class TextIter
 	 * defaultSetting =  TRUE if text is editable by default
 	 * Returns: whether iter is inside an editable range
 	 */
-	public int editable(int defaultSetting)
-	{
-		// gboolean gtk_text_iter_editable (const GtkTextIter *iter,  gboolean default_setting);
-		return gtk_text_iter_editable(gtkTextIter, defaultSetting);
-	}
+	public int editable(int defaultSetting);
 	
 	/**
 	 * Considering the default editability of the buffer, and tags that
@@ -522,11 +306,7 @@ public class TextIter
 	 * defaultEditability =  TRUE if text is editable by default
 	 * Returns: whether text inserted at iter would be editable
 	 */
-	public int canInsert(int defaultEditability)
-	{
-		// gboolean gtk_text_iter_can_insert (const GtkTextIter *iter,  gboolean default_editability);
-		return gtk_text_iter_can_insert(gtkTextIter, defaultEditability);
-	}
+	public int canInsert(int defaultEditability);
 	
 	/**
 	 * Determines whether iter begins a natural-language word. Word
@@ -535,11 +315,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter is at the start of a word
 	 */
-	public int startsWord()
-	{
-		// gboolean gtk_text_iter_starts_word (const GtkTextIter *iter);
-		return gtk_text_iter_starts_word(gtkTextIter);
-	}
+	public int startsWord();
 	
 	/**
 	 * Determines whether iter ends a natural-language word. Word breaks
@@ -548,11 +324,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter is at the end of a word
 	 */
-	public int endsWord()
-	{
-		// gboolean gtk_text_iter_ends_word (const GtkTextIter *iter);
-		return gtk_text_iter_ends_word(gtkTextIter);
-	}
+	public int endsWord();
 	
 	/**
 	 * Determines whether iter is inside a natural-language word (as
@@ -561,11 +333,7 @@ public class TextIter
 	 * correct fix would be to the Pango word break algorithms).
 	 * Returns: TRUE if iter is inside a word
 	 */
-	public int insideWord()
-	{
-		// gboolean gtk_text_iter_inside_word (const GtkTextIter *iter);
-		return gtk_text_iter_inside_word(gtkTextIter);
-	}
+	public int insideWord();
 	
 	/**
 	 * Returns TRUE if iter begins a paragraph,
@@ -575,11 +343,7 @@ public class TextIter
 	 * the offset, it just has to see whether it's 0.
 	 * Returns: whether iter begins a line
 	 */
-	public int startsLine()
-	{
-		// gboolean gtk_text_iter_starts_line (const GtkTextIter *iter);
-		return gtk_text_iter_starts_line(gtkTextIter);
-	}
+	public int startsLine();
 	
 	/**
 	 * Returns TRUE if iter points to the start of the paragraph
@@ -592,11 +356,7 @@ public class TextIter
 	 * paragraph delimiter chars there.
 	 * Returns: whether iter is at the end of a line
 	 */
-	public int endsLine()
-	{
-		// gboolean gtk_text_iter_ends_line (const GtkTextIter *iter);
-		return gtk_text_iter_ends_line(gtkTextIter);
-	}
+	public int endsLine();
 	
 	/**
 	 * Determines whether iter begins a sentence. Sentence boundaries are
@@ -605,11 +365,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter is at the start of a sentence.
 	 */
-	public int startsSentence()
-	{
-		// gboolean gtk_text_iter_starts_sentence (const GtkTextIter *iter);
-		return gtk_text_iter_starts_sentence(gtkTextIter);
-	}
+	public int startsSentence();
 	
 	/**
 	 * Determines whether iter ends a sentence. Sentence boundaries are
@@ -618,11 +374,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter is at the end of a sentence.
 	 */
-	public int endsSentence()
-	{
-		// gboolean gtk_text_iter_ends_sentence (const GtkTextIter *iter);
-		return gtk_text_iter_ends_sentence(gtkTextIter);
-	}
+	public int endsSentence();
 	
 	/**
 	 * Determines whether iter is inside a sentence (as opposed to in
@@ -632,44 +384,28 @@ public class TextIter
 	 * correct fix would be to the Pango text boundary algorithms).
 	 * Returns: TRUE if iter is inside a sentence.
 	 */
-	public int insideSentence()
-	{
-		// gboolean gtk_text_iter_inside_sentence (const GtkTextIter *iter);
-		return gtk_text_iter_inside_sentence(gtkTextIter);
-	}
+	public int insideSentence();
 	
 	/**
 	 * See gtk_text_iter_forward_cursor_position() or PangoLogAttr or
 	 * pango_break() for details on what a cursor position is.
 	 * Returns: TRUE if the cursor can be placed at iter
 	 */
-	public int isCursorPosition()
-	{
-		// gboolean gtk_text_iter_is_cursor_position (const GtkTextIter *iter);
-		return gtk_text_iter_is_cursor_position(gtkTextIter);
-	}
+	public int isCursorPosition();
 	
 	/**
 	 * Returns the number of characters in the line containing iter,
 	 * including the paragraph delimiters.
 	 * Returns: number of characters in the line
 	 */
-	public int getCharsInLine()
-	{
-		// gint gtk_text_iter_get_chars_in_line (const GtkTextIter *iter);
-		return gtk_text_iter_get_chars_in_line(gtkTextIter);
-	}
+	public int getCharsInLine();
 	
 	/**
 	 * Returns the number of bytes in the line containing iter,
 	 * including the paragraph delimiters.
 	 * Returns: number of bytes in the line
 	 */
-	public int getBytesInLine()
-	{
-		// gint gtk_text_iter_get_bytes_in_line (const GtkTextIter *iter);
-		return gtk_text_iter_get_bytes_in_line(gtkTextIter);
-	}
+	public int getBytesInLine();
 	
 	/**
 	 * Computes the effect of any tags applied to this spot in the
@@ -683,11 +419,7 @@ public class TextIter
 	 * values =  a GtkTextAttributes to be filled in
 	 * Returns: TRUE if values was modified
 	 */
-	public int getAttributes(TextAttributes values)
-	{
-		// gboolean gtk_text_iter_get_attributes (const GtkTextIter *iter,  GtkTextAttributes *values);
-		return gtk_text_iter_get_attributes(gtkTextIter, (values is null) ? null : values.getTextAttributesStruct());
-	}
+	public int getAttributes(TextAttributes values);
 	
 	/**
 	 * A convenience wrapper around gtk_text_iter_get_attributes(),
@@ -696,16 +428,7 @@ public class TextIter
 	 * gtk_get_default_language().
 	 * Returns: language in effect at iter
 	 */
-	public PgLanguage getLanguage()
-	{
-		// PangoLanguage* gtk_text_iter_get_language (const GtkTextIter *iter);
-		auto p = gtk_text_iter_get_language(gtkTextIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PgLanguage(cast(PangoLanguage*) p);
-	}
+	public PgLanguage getLanguage();
 	
 	/**
 	 * Returns TRUE if iter is the end iterator, i.e. one past the last
@@ -714,22 +437,14 @@ public class TextIter
 	 * iterator.
 	 * Returns: whether iter is the end iterator
 	 */
-	public int isEnd()
-	{
-		// gboolean gtk_text_iter_is_end (const GtkTextIter *iter);
-		return gtk_text_iter_is_end(gtkTextIter);
-	}
+	public int isEnd();
 	
 	/**
 	 * Returns TRUE if iter is the first iterator in the buffer, that is
 	 * if iter has a character offset of 0.
 	 * Returns: whether iter is the first in the buffer
 	 */
-	public int isStart()
-	{
-		// gboolean gtk_text_iter_is_start (const GtkTextIter *iter);
-		return gtk_text_iter_is_start(gtkTextIter);
-	}
+	public int isStart();
 	
 	/**
 	 * Moves iter forward by one character offset. Note that images
@@ -741,11 +456,7 @@ public class TextIter
 	 * convenience when writing loops.
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int forwardChar()
-	{
-		// gboolean gtk_text_iter_forward_char (GtkTextIter *iter);
-		return gtk_text_iter_forward_char(gtkTextIter);
-	}
+	public int forwardChar();
 	
 	/**
 	 * Moves backward by one character offset. Returns TRUE if movement
@@ -754,11 +465,7 @@ public class TextIter
 	 * writing loops.
 	 * Returns: whether movement was possible
 	 */
-	public int backwardChar()
-	{
-		// gboolean gtk_text_iter_backward_char (GtkTextIter *iter);
-		return gtk_text_iter_backward_char(gtkTextIter);
-	}
+	public int backwardChar();
 	
 	/**
 	 * Moves count characters if possible (if count would move past the
@@ -771,11 +478,7 @@ public class TextIter
 	 * count =  number of characters to move, may be negative
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int forwardChars(int count)
-	{
-		// gboolean gtk_text_iter_forward_chars (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_chars(gtkTextIter, count);
-	}
+	public int forwardChars(int count);
 	
 	/**
 	 * Moves count characters backward, if possible (if count would move
@@ -788,11 +491,7 @@ public class TextIter
 	 * count =  number of characters to move
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int backwardChars(int count)
-	{
-		// gboolean gtk_text_iter_backward_chars (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_chars(gtkTextIter, count);
-	}
+	public int backwardChars(int count);
 	
 	/**
 	 * Moves iter to the start of the next line. If the iter is already on the
@@ -801,11 +500,7 @@ public class TextIter
 	 * dereferencable, returns FALSE. Otherwise, returns TRUE.
 	 * Returns: whether iter can be dereferenced
 	 */
-	public int forwardLine()
-	{
-		// gboolean gtk_text_iter_forward_line (GtkTextIter *iter);
-		return gtk_text_iter_forward_line(gtkTextIter);
-	}
+	public int forwardLine();
 	
 	/**
 	 * Moves iter to the start of the previous line. Returns TRUE if
@@ -817,11 +512,7 @@ public class TextIter
 	 * every iteration, if your first iteration is on line 0.)
 	 * Returns: whether iter moved
 	 */
-	public int backwardLine()
-	{
-		// gboolean gtk_text_iter_backward_line (GtkTextIter *iter);
-		return gtk_text_iter_backward_line(gtkTextIter);
-	}
+	public int backwardLine();
 	
 	/**
 	 * Moves count lines forward, if possible (if count would move
@@ -835,11 +526,7 @@ public class TextIter
 	 * count =  number of lines to move forward
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int forwardLines(int count)
-	{
-		// gboolean gtk_text_iter_forward_lines (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_lines(gtkTextIter, count);
-	}
+	public int forwardLines(int count);
 	
 	/**
 	 * Moves count lines backward, if possible (if count would move
@@ -853,11 +540,7 @@ public class TextIter
 	 * count =  number of lines to move backward
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int backwardLines(int count)
-	{
-		// gboolean gtk_text_iter_backward_lines (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_lines(gtkTextIter, count);
-	}
+	public int backwardLines(int count);
 	
 	/**
 	 * Calls gtk_text_iter_forward_word_end() up to count times.
@@ -865,11 +548,7 @@ public class TextIter
 	 * count =  number of times to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardWordEnds(int count)
-	{
-		// gboolean gtk_text_iter_forward_word_ends (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_word_ends(gtkTextIter, count);
-	}
+	public int forwardWordEnds(int count);
 	
 	/**
 	 * Calls gtk_text_iter_backward_word_start() up to count times.
@@ -877,11 +556,7 @@ public class TextIter
 	 * count =  number of times to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardWordStarts(int count)
-	{
-		// gboolean gtk_text_iter_backward_word_starts (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_word_starts(gtkTextIter, count);
-	}
+	public int backwardWordStarts(int count);
 	
 	/**
 	 * Moves forward to the next word end. (If iter is currently on a
@@ -891,11 +566,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardWordEnd()
-	{
-		// gboolean gtk_text_iter_forward_word_end (GtkTextIter *iter);
-		return gtk_text_iter_forward_word_end(gtkTextIter);
-	}
+	public int forwardWordEnd();
 	
 	/**
 	 * Moves backward to the previous word start. (If iter is currently on a
@@ -905,11 +576,7 @@ public class TextIter
 	 * algorithms).
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardWordStart()
-	{
-		// gboolean gtk_text_iter_backward_word_start (GtkTextIter *iter);
-		return gtk_text_iter_backward_word_start(gtkTextIter);
-	}
+	public int backwardWordStart();
 	
 	/**
 	 * Moves iter forward by a single cursor position. Cursor positions
@@ -924,21 +591,13 @@ public class TextIter
 	 * pango_break() function.
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int forwardCursorPosition()
-	{
-		// gboolean gtk_text_iter_forward_cursor_position  (GtkTextIter *iter);
-		return gtk_text_iter_forward_cursor_position(gtkTextIter);
-	}
+	public int forwardCursorPosition();
 	
 	/**
 	 * Like gtk_text_iter_forward_cursor_position(), but moves backward.
 	 * Returns: TRUE if we moved
 	 */
-	public int backwardCursorPosition()
-	{
-		// gboolean gtk_text_iter_backward_cursor_position  (GtkTextIter *iter);
-		return gtk_text_iter_backward_cursor_position(gtkTextIter);
-	}
+	public int backwardCursorPosition();
 	
 	/**
 	 * Moves up to count cursor positions. See
@@ -947,11 +606,7 @@ public class TextIter
 	 * count =  number of positions to move
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int forwardCursorPositions(int count)
-	{
-		// gboolean gtk_text_iter_forward_cursor_positions  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_cursor_positions(gtkTextIter, count);
-	}
+	public int forwardCursorPositions(int count);
 	
 	/**
 	 * Moves up to count cursor positions. See
@@ -960,11 +615,7 @@ public class TextIter
 	 * count =  number of positions to move
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int backwardCursorPositions(int count)
-	{
-		// gboolean gtk_text_iter_backward_cursor_positions  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_cursor_positions(gtkTextIter, count);
-	}
+	public int backwardCursorPositions(int count);
 	
 	/**
 	 * Moves backward to the previous sentence start; if iter is already at
@@ -974,11 +625,7 @@ public class TextIter
 	 * boundary algorithms).
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardSentenceStart()
-	{
-		// gboolean gtk_text_iter_backward_sentence_start  (GtkTextIter *iter);
-		return gtk_text_iter_backward_sentence_start(gtkTextIter);
-	}
+	public int backwardSentenceStart();
 	
 	/**
 	 * Calls gtk_text_iter_backward_sentence_start() up to count times,
@@ -988,11 +635,7 @@ public class TextIter
 	 * count =  number of sentences to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardSentenceStarts(int count)
-	{
-		// gboolean gtk_text_iter_backward_sentence_starts  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_sentence_starts(gtkTextIter, count);
-	}
+	public int backwardSentenceStarts(int count);
 	
 	/**
 	 * Moves forward to the next sentence end. (If iter is at the end of
@@ -1002,11 +645,7 @@ public class TextIter
 	 * boundary algorithms).
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardSentenceEnd()
-	{
-		// gboolean gtk_text_iter_forward_sentence_end (GtkTextIter *iter);
-		return gtk_text_iter_forward_sentence_end(gtkTextIter);
-	}
+	public int forwardSentenceEnd();
 	
 	/**
 	 * Calls gtk_text_iter_forward_sentence_end() count times (or until
@@ -1016,11 +655,7 @@ public class TextIter
 	 * count =  number of sentences to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardSentenceEnds(int count)
-	{
-		// gboolean gtk_text_iter_forward_sentence_ends (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_sentence_ends(gtkTextIter, count);
-	}
+	public int forwardSentenceEnds(int count);
 	
 	/**
 	 * Calls gtk_text_iter_forward_visible_word_end() up to count times.
@@ -1029,11 +664,7 @@ public class TextIter
 	 * count =  number of times to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardVisibleWordEnds(int count)
-	{
-		// gboolean gtk_text_iter_forward_visible_word_ends  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_visible_word_ends(gtkTextIter, count);
-	}
+	public int forwardVisibleWordEnds(int count);
 	
 	/**
 	 * Calls gtk_text_iter_backward_visible_word_start() up to count times.
@@ -1042,11 +673,7 @@ public class TextIter
 	 * count =  number of times to move
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardVisibleWordStarts(int count)
-	{
-		// gboolean gtk_text_iter_backward_visible_word_starts  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_visible_word_starts(gtkTextIter, count);
-	}
+	public int backwardVisibleWordStarts(int count);
 	
 	/**
 	 * Moves forward to the next visible word end. (If iter is currently on a
@@ -1057,11 +684,7 @@ public class TextIter
 	 * Since 2.4
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int forwardVisibleWordEnd()
-	{
-		// gboolean gtk_text_iter_forward_visible_word_end  (GtkTextIter *iter);
-		return gtk_text_iter_forward_visible_word_end(gtkTextIter);
-	}
+	public int forwardVisibleWordEnd();
 	
 	/**
 	 * Moves backward to the previous visible word start. (If iter is currently
@@ -1072,11 +695,7 @@ public class TextIter
 	 * Since 2.4
 	 * Returns: TRUE if iter moved and is not the end iterator
 	 */
-	public int backwardVisibleWordStart()
-	{
-		// gboolean gtk_text_iter_backward_visible_word_start  (GtkTextIter *iter);
-		return gtk_text_iter_backward_visible_word_start(gtkTextIter);
-	}
+	public int backwardVisibleWordStart();
 	
 	/**
 	 * Moves iter forward to the next visible cursor position. See
@@ -1084,11 +703,7 @@ public class TextIter
 	 * Since 2.4
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int forwardVisibleCursorPosition()
-	{
-		// gboolean gtk_text_iter_forward_visible_cursor_position  (GtkTextIter *iter);
-		return gtk_text_iter_forward_visible_cursor_position(gtkTextIter);
-	}
+	public int forwardVisibleCursorPosition();
 	
 	/**
 	 * Moves iter forward to the previous visible cursor position. See
@@ -1096,11 +711,7 @@ public class TextIter
 	 * Since 2.4
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int backwardVisibleCursorPosition()
-	{
-		// gboolean gtk_text_iter_backward_visible_cursor_position  (GtkTextIter *iter);
-		return gtk_text_iter_backward_visible_cursor_position(gtkTextIter);
-	}
+	public int backwardVisibleCursorPosition();
 	
 	/**
 	 * Moves up to count visible cursor positions. See
@@ -1110,11 +721,7 @@ public class TextIter
 	 * count =  number of positions to move
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int forwardVisibleCursorPositions(int count)
-	{
-		// gboolean gtk_text_iter_forward_visible_cursor_positions  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_visible_cursor_positions(gtkTextIter, count);
-	}
+	public int forwardVisibleCursorPositions(int count);
 	
 	/**
 	 * Moves up to count visible cursor positions. See
@@ -1124,12 +731,7 @@ public class TextIter
 	 * count =  number of positions to move
 	 * Returns: TRUE if we moved and the new position is dereferenceable
 	 */
-	public int backwardVisibleCursorPositions(int count)
-	{
-		// gboolean gtk_text_iter_backward_visible_cursor_positions  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_visible_cursor_positions(gtkTextIter, count);
-	}
-	
+	public int backwardVisibleCursorPositions(int count);
 	/**
 	 * Moves iter to the start of the next visible line. Returns TRUE if there
 	 * was a next line to move to, and FALSE if iter was simply moved to
@@ -1138,12 +740,8 @@ public class TextIter
 	 * Since 2.8
 	 * Returns: whether iter can be dereferenced
 	 */
-	public int forwardVisibleLine()
-	{
-		// gboolean gtk_text_iter_forward_visible_line (GtkTextIter *iter);
-		return gtk_text_iter_forward_visible_line(gtkTextIter);
-	}
-	
+	public int forwardVisibleLine();
+
 	/**
 	 * Moves iter to the start of the previous visible line. Returns TRUE if
 	 * iter could be moved; i.e. if iter was at character offset 0, this
@@ -1155,11 +753,7 @@ public class TextIter
 	 * Since 2.8
 	 * Returns: whether iter moved
 	 */
-	public int backwardVisibleLine()
-	{
-		// gboolean gtk_text_iter_backward_visible_line (GtkTextIter *iter);
-		return gtk_text_iter_backward_visible_line(gtkTextIter);
-	}
+	public int backwardVisibleLine();
 	
 	/**
 	 * Moves count visible lines forward, if possible (if count would move
@@ -1174,11 +768,7 @@ public class TextIter
 	 * count =  number of lines to move forward
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int forwardVisibleLines(int count)
-	{
-		// gboolean gtk_text_iter_forward_visible_lines (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_forward_visible_lines(gtkTextIter, count);
-	}
+	public int forwardVisibleLines(int count);
 	
 	/**
 	 * Moves count visible lines backward, if possible (if count would move
@@ -1193,11 +783,7 @@ public class TextIter
 	 * count =  number of lines to move backward
 	 * Returns: whether iter moved and is dereferenceable
 	 */
-	public int backwardVisibleLines(int count)
-	{
-		// gboolean gtk_text_iter_backward_visible_lines  (GtkTextIter *iter,  gint count);
-		return gtk_text_iter_backward_visible_lines(gtkTextIter, count);
-	}
+	public int backwardVisibleLines(int count);
 	
 	/**
 	 * Sets iter to point to char_offset. char_offset counts from the start
@@ -1205,11 +791,7 @@ public class TextIter
 	 * Params:
 	 * charOffset =  a character number
 	 */
-	public void setOffset(int charOffset)
-	{
-		// void gtk_text_iter_set_offset (GtkTextIter *iter,  gint char_offset);
-		gtk_text_iter_set_offset(gtkTextIter, charOffset);
-	}
+	public void setOffset(int charOffset);
 	
 	/**
 	 * Moves iterator iter to the start of the line line_number. If
@@ -1218,11 +800,7 @@ public class TextIter
 	 * Params:
 	 * lineNumber =  line number (counted from 0)
 	 */
-	public void setLine(int lineNumber)
-	{
-		// void gtk_text_iter_set_line (GtkTextIter *iter,  gint line_number);
-		gtk_text_iter_set_line(gtkTextIter, lineNumber);
-	}
+	public void setLine(int lineNumber);
 	
 	/**
 	 * Moves iter within a line, to a new character
@@ -1234,11 +812,7 @@ public class TextIter
 	 * Params:
 	 * charOnLine =  a character offset relative to the start of iter's current line
 	 */
-	public void setLineOffset(int charOnLine)
-	{
-		// void gtk_text_iter_set_line_offset (GtkTextIter *iter,  gint char_on_line);
-		gtk_text_iter_set_line_offset(gtkTextIter, charOnLine);
-	}
+	public void setLineOffset(int charOnLine);
 	
 	/**
 	 * Same as gtk_text_iter_set_line_offset(), but works with a
@@ -1248,11 +822,7 @@ public class TextIter
 	 * Params:
 	 * byteOnLine =  a byte index relative to the start of iter's current line
 	 */
-	public void setLineIndex(int byteOnLine)
-	{
-		// void gtk_text_iter_set_line_index (GtkTextIter *iter,  gint byte_on_line);
-		gtk_text_iter_set_line_index(gtkTextIter, byteOnLine);
-	}
+	public void setLineIndex(int byteOnLine);
 	
 	/**
 	 * Like gtk_text_iter_set_line_index(), but the index is in visible
@@ -1261,11 +831,7 @@ public class TextIter
 	 * Params:
 	 * byteOnLine =  a byte index
 	 */
-	public void setVisibleLineIndex(int byteOnLine)
-	{
-		// void gtk_text_iter_set_visible_line_index  (GtkTextIter *iter,  gint byte_on_line);
-		gtk_text_iter_set_visible_line_index(gtkTextIter, byteOnLine);
-	}
+	public void setVisibleLineIndex(int byteOnLine);
 	
 	/**
 	 * Like gtk_text_iter_set_line_offset(), but the offset is in visible
@@ -1274,22 +840,14 @@ public class TextIter
 	 * Params:
 	 * charOnLine =  a character offset
 	 */
-	public void setVisibleLineOffset(int charOnLine)
-	{
-		// void gtk_text_iter_set_visible_line_offset  (GtkTextIter *iter,  gint char_on_line);
-		gtk_text_iter_set_visible_line_offset(gtkTextIter, charOnLine);
-	}
+	public void setVisibleLineOffset(int charOnLine);
 	
 	/**
 	 * Moves iter forward to the "end iterator," which points one past the last
 	 * valid character in the buffer. gtk_text_iter_get_char() called on the
 	 * end iterator returns 0, which is convenient for writing loops.
 	 */
-	public void forwardToEnd()
-	{
-		// void gtk_text_iter_forward_to_end (GtkTextIter *iter);
-		gtk_text_iter_forward_to_end(gtkTextIter);
-	}
+	public void forwardToEnd();
 	
 	/**
 	 * Moves the iterator to point to the paragraph delimiter characters,
@@ -1302,11 +860,7 @@ public class TextIter
 	 * the last line), and returns FALSE.
 	 * Returns: TRUE if we moved and the new location is not the end iterator
 	 */
-	public int forwardToLineEnd()
-	{
-		// gboolean gtk_text_iter_forward_to_line_end (GtkTextIter *iter);
-		return gtk_text_iter_forward_to_line_end(gtkTextIter);
-	}
+	public int forwardToLineEnd();
 	
 	/**
 	 * Moves forward to the next toggle (on or off) of the
@@ -1320,11 +874,7 @@ public class TextIter
 	 * tag =  a GtkTextTag, or NULL
 	 * Returns: whether we found a tag toggle after iter
 	 */
-	public int forwardToTagToggle(TextTag tag)
-	{
-		// gboolean gtk_text_iter_forward_to_tag_toggle (GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_forward_to_tag_toggle(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int forwardToTagToggle(TextTag tag);
 	
 	/**
 	 * Moves backward to the next toggle (on or off) of the
@@ -1338,11 +888,7 @@ public class TextIter
 	 * tag =  a GtkTextTag, or NULL
 	 * Returns: whether we found a tag toggle before iter
 	 */
-	public int backwardToTagToggle(TextTag tag)
-	{
-		// gboolean gtk_text_iter_backward_to_tag_toggle  (GtkTextIter *iter,  GtkTextTag *tag);
-		return gtk_text_iter_backward_to_tag_toggle(gtkTextIter, (tag is null) ? null : tag.getTextTagStruct());
-	}
+	public int backwardToTagToggle(TextTag tag);
 	
 	/**
 	 * Advances iter, calling pred on each character. If
@@ -1355,11 +901,7 @@ public class TextIter
 	 * limit =  search limit, or NULL for none
 	 * Returns: whether a match was found
 	 */
-	public int forwardFindChar(GtkTextCharPredicate pred, void* userData, TextIter limit)
-	{
-		// gboolean gtk_text_iter_forward_find_char (GtkTextIter *iter,  GtkTextCharPredicate pred,  gpointer user_data,  const GtkTextIter *limit);
-		return gtk_text_iter_forward_find_char(gtkTextIter, pred, userData, (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public int forwardFindChar(GtkTextCharPredicate pred, void* userData, TextIter limit);
 	
 	/**
 	 * Same as gtk_text_iter_forward_find_char(), but goes backward from iter.
@@ -1369,11 +911,7 @@ public class TextIter
 	 * limit =  search limit, or NULL for none
 	 * Returns: whether a match was found
 	 */
-	public int backwardFindChar(GtkTextCharPredicate pred, void* userData, TextIter limit)
-	{
-		// gboolean gtk_text_iter_backward_find_char (GtkTextIter *iter,  GtkTextCharPredicate pred,  gpointer user_data,  const GtkTextIter *limit);
-		return gtk_text_iter_backward_find_char(gtkTextIter, pred, userData, (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public int backwardFindChar(GtkTextCharPredicate pred, void* userData, TextIter limit);
 	
 	/**
 	 * Searches forward for str. Any match is returned by setting
@@ -1397,11 +935,7 @@ public class TextIter
 	 * limit =  bound for the search, or NULL for the end of the buffer
 	 * Returns: whether a match was found
 	 */
-	public int forwardSearch(string str, GtkTextSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit)
-	{
-		// gboolean gtk_text_iter_forward_search (const GtkTextIter *iter,  const gchar *str,  GtkTextSearchFlags flags,  GtkTextIter *match_start,  GtkTextIter *match_end,  const GtkTextIter *limit);
-		return gtk_text_iter_forward_search(gtkTextIter, Str.toStringz(str), flags, (matchStart is null) ? null : matchStart.getTextIterStruct(), (matchEnd is null) ? null : matchEnd.getTextIterStruct(), (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public int forwardSearch(string str, GtkTextSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit);
 	
 	/**
 	 * Same as gtk_text_iter_forward_search(), but moves backward.
@@ -1413,11 +947,7 @@ public class TextIter
 	 * limit =  location of last possible match_start, or NULL for start of buffer
 	 * Returns: whether a match was found
 	 */
-	public int backwardSearch(string str, GtkTextSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit)
-	{
-		// gboolean gtk_text_iter_backward_search (const GtkTextIter *iter,  const gchar *str,  GtkTextSearchFlags flags,  GtkTextIter *match_start,  GtkTextIter *match_end,  const GtkTextIter *limit);
-		return gtk_text_iter_backward_search(gtkTextIter, Str.toStringz(str), flags, (matchStart is null) ? null : matchStart.getTextIterStruct(), (matchEnd is null) ? null : matchEnd.getTextIterStruct(), (limit is null) ? null : limit.getTextIterStruct());
-	}
+	public int backwardSearch(string str, GtkTextSearchFlags flags, TextIter matchStart, TextIter matchEnd, TextIter limit);
 	
 	/**
 	 * Tests whether two iterators are equal, using the fastest possible
@@ -1429,11 +959,7 @@ public class TextIter
 	 * rhs =  another GtkTextIter
 	 * Returns: TRUE if the iterators point to the same place in the buffer
 	 */
-	public int equal(TextIter rhs)
-	{
-		// gboolean gtk_text_iter_equal (const GtkTextIter *lhs,  const GtkTextIter *rhs);
-		return gtk_text_iter_equal(gtkTextIter, (rhs is null) ? null : rhs.getTextIterStruct());
-	}
+	public int equal(TextIter rhs);
 	
 	/**
 	 * A qsort()-style function that returns negative if lhs is less than
@@ -1444,11 +970,7 @@ public class TextIter
 	 * rhs =  another GtkTextIter
 	 * Returns: -1 if lhs is less than rhs, 1 if lhs is greater, 0 if they are equal
 	 */
-	public int compare(TextIter rhs)
-	{
-		// gint gtk_text_iter_compare (const GtkTextIter *lhs,  const GtkTextIter *rhs);
-		return gtk_text_iter_compare(gtkTextIter, (rhs is null) ? null : rhs.getTextIterStruct());
-	}
+	public int compare(TextIter rhs);
 	
 	/**
 	 * Checks whether iter falls in the range [start, end).
@@ -1458,11 +980,7 @@ public class TextIter
 	 * end =  end of range
 	 * Returns: TRUE if iter is in the range
 	 */
-	public int inRange(TextIter start, TextIter end)
-	{
-		// gboolean gtk_text_iter_in_range (const GtkTextIter *iter,  const GtkTextIter *start,  const GtkTextIter *end);
-		return gtk_text_iter_in_range(gtkTextIter, (start is null) ? null : start.getTextIterStruct(), (end is null) ? null : end.getTextIterStruct());
-	}
+	public int inRange(TextIter start, TextIter end);
 	
 	/**
 	 * Swaps the value of first and second if second comes before
@@ -1474,9 +992,5 @@ public class TextIter
 	 * Params:
 	 * second =  another GtkTextIter
 	 */
-	public void order(TextIter second)
-	{
-		// void gtk_text_iter_order (GtkTextIter *first,  GtkTextIter *second);
-		gtk_text_iter_order(gtkTextIter, (second is null) ? null : second.getTextIterStruct());
-	}
+	public void order(TextIter second);
 }

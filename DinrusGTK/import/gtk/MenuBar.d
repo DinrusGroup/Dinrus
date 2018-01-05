@@ -1,60 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkMenuBar.html
- * outPack = gtk
- * outFile = MenuBar
- * strct   = GtkMenuBar
- * realStrct=
- * ctorStrct=
- * clss    = MenuBar
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_menu_bar_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Menu;
- * 	- gtkD.gtk.MenuItem;
- * structWrap:
- * 	- GtkMenu* -> Menu
- * 	- GtkMenuItem* -> MenuItem
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.MenuBar;
 
 public  import gtkD.gtkc.gtktypes;
@@ -82,55 +25,22 @@ public class MenuBar : MenuShell
 	protected GtkMenuBar* gtkMenuBar;
 	
 	
-	public GtkMenuBar* getMenuBarStruct()
-	{
-		return gtkMenuBar;
-	}
+	public GtkMenuBar* getMenuBarStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkMenuBar;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkMenuBar* gtkMenuBar)
-	{
-		if(gtkMenuBar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkMenuBar);
-		if( ptr !is null )
-		{
-			this = cast(MenuBar)ptr;
-			return;
-		}
-		super(cast(GtkMenuShell*)gtkMenuBar);
-		this.gtkMenuBar = gtkMenuBar;
-	}
+	public this (GtkMenuBar* gtkMenuBar);
 	
 	/** */
-	Menu append(string label, bool rightJustify=false)
-	{
-		MenuItem item = new MenuItem(label);
-		super.append(item);
-		item.setRightJustified(rightJustify);
-		Menu menu= new Menu();
-		item.setSubmenu(menu);
-		return menu;
-	}
+	Menu append(string label, bool rightJustify=false);
 	
 	/** */
-	public override void append(Widget widget)
-	{
-		super.append(widget);
-	}
+	public override void append(Widget widget);
 	
 	/**
 	 */
@@ -139,16 +49,7 @@ public class MenuBar : MenuShell
 	 * Creates the new GtkMenuBar
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_menu_bar_new (void);
-		auto p = gtk_menu_bar_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_menu_bar_new()");
-		}
-		this(cast(GtkMenuBar*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets how items should be packed inside a menubar.
@@ -156,11 +57,7 @@ public class MenuBar : MenuShell
 	 * Params:
 	 * packDir =  a new GtkPackDirection
 	 */
-	public void setPackDirection(GtkPackDirection packDir)
-	{
-		// void gtk_menu_bar_set_pack_direction (GtkMenuBar *menubar,  GtkPackDirection pack_dir);
-		gtk_menu_bar_set_pack_direction(gtkMenuBar, packDir);
-	}
+	public void setPackDirection(GtkPackDirection packDir);
 	
 	/**
 	 * Retrieves the current pack direction of the menubar.
@@ -168,11 +65,7 @@ public class MenuBar : MenuShell
 	 * Since 2.8
 	 * Returns: the pack direction
 	 */
-	public GtkPackDirection getPackDirection()
-	{
-		// GtkPackDirection gtk_menu_bar_get_pack_direction (GtkMenuBar *menubar);
-		return gtk_menu_bar_get_pack_direction(gtkMenuBar);
-	}
+	public GtkPackDirection getPackDirection();
 	
 	/**
 	 * Sets how widgets should be packed inside the children of a menubar.
@@ -180,11 +73,7 @@ public class MenuBar : MenuShell
 	 * Params:
 	 * childPackDir =  a new GtkPackDirection
 	 */
-	public void setChildPackDirection(GtkPackDirection childPackDir)
-	{
-		// void gtk_menu_bar_set_child_pack_direction  (GtkMenuBar *menubar,  GtkPackDirection child_pack_dir);
-		gtk_menu_bar_set_child_pack_direction(gtkMenuBar, childPackDir);
-	}
+	public void setChildPackDirection(GtkPackDirection childPackDir);
 	
 	/**
 	 * Retrieves the current child pack direction of the menubar.
@@ -192,9 +81,5 @@ public class MenuBar : MenuShell
 	 * Since 2.8
 	 * Returns: the child pack direction
 	 */
-	public GtkPackDirection getChildPackDirection()
-	{
-		// GtkPackDirection gtk_menu_bar_get_child_pack_direction  (GtkMenuBar *menubar);
-		return gtk_menu_bar_get_child_pack_direction(gtkMenuBar);
-	}
+	public GtkPackDirection getChildPackDirection();
 }

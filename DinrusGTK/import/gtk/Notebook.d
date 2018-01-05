@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkNotebook.html
- * outPack = gtk
- * outFile = Notebook
- * strct   = GtkNotebook
- * realStrct=
- * ctorStrct=
- * clss    = Notebook
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_notebook_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Label
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Notebook;
 
 public  import gtkD.gtkc.gtktypes;
@@ -110,38 +55,16 @@ public class Notebook : Container
 	protected GtkNotebook* gtkNotebook;
 	
 	
-	public GtkNotebook* getNotebookStruct()
-	{
-		return gtkNotebook;
-	}
+	public GtkNotebook* getNotebookStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkNotebook;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkNotebook* gtkNotebook)
-	{
-		if(gtkNotebook is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkNotebook);
-		if( ptr !is null )
-		{
-			this = cast(Notebook)ptr;
-			return;
-		}
-		super(cast(GtkContainer*)gtkNotebook);
-		this.gtkNotebook = gtkNotebook;
-	}
+	public this (GtkNotebook* gtkNotebook);
 	
 	/** The GtkNotebookTab is not documented */
 	public enum GtkNotebookTab
@@ -154,16 +77,10 @@ public class Notebook : Container
 	/**
 	 * Append a page with a widget and a text for a label
 	 */
-	public int appendPage(Widget child, string tabLabel)
-	{
-		return appendPage(child, new Label(tabLabel));
-	}
+	public int appendPage(Widget child, string tabLabel);
 	
 	/** */
-	void setCurrentPage(Widget child)
-	{
-		gtk_notebook_set_current_page(gtkNotebook,gtk_notebook_page_num(gtkNotebook, child.getWidgetStruct()));
-	}
+	void setCurrentPage(Widget child);
 	
 	/**
 	 */
@@ -172,33 +89,8 @@ public class Notebook : Container
 	bool delegate(gint, Notebook)[] onChangeCurrentPageListeners;
 	/**
 	 */
-	void addOnChangeCurrentPage(bool delegate(gint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("change-current-page" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"change-current-page",
-			cast(GCallback)&callBackChangeCurrentPage,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["change-current-page"] = 1;
-		}
-		onChangeCurrentPageListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackChangeCurrentPage(GtkNotebook* notebookStruct, gint arg1, Notebook notebook)
-	{
-		foreach ( bool delegate(gint, Notebook) dlg ; notebook.onChangeCurrentPageListeners )
-		{
-			if ( dlg(arg1, notebook) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnChangeCurrentPage(bool delegate(gint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackChangeCurrentPage(GtkNotebook* notebookStruct, gint arg1, Notebook notebook);
 	
 	GtkNotebook* delegate(Widget, gint, gint, Notebook)[] onCreateWindowListeners;
 	/**
@@ -213,85 +105,20 @@ public class Notebook : Container
 	 * if one has been set with gtk_notebook_set_window_creation_hook().
 	 * Since 2.12
 	 */
-	void addOnCreateWindow(GtkNotebook* delegate(Widget, gint, gint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("create-window" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"create-window",
-			cast(GCallback)&callBackCreateWindow,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["create-window"] = 1;
-		}
-		onCreateWindowListeners ~= dlg;
-	}
-	extern(C) static void callBackCreateWindow(GtkNotebook* notebookStruct, GtkWidget* page, gint x, gint y, Notebook notebook)
-	{
-		foreach ( GtkNotebook* delegate(Widget, gint, gint, Notebook) dlg ; notebook.onCreateWindowListeners )
-		{
-			dlg(new Widget(page), x, y, notebook);
-		}
-	}
+	void addOnCreateWindow(GtkNotebook* delegate(Widget, gint, gint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCreateWindow(GtkNotebook* notebookStruct, GtkWidget* page, gint x, gint y, Notebook notebook);
 	
 	bool delegate(GtkNotebookTab, Notebook)[] onFocusTabListeners;
 	/**
 	 */
-	void addOnFocusTab(bool delegate(GtkNotebookTab, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("focus-tab" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"focus-tab",
-			cast(GCallback)&callBackFocusTab,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["focus-tab"] = 1;
-		}
-		onFocusTabListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackFocusTab(GtkNotebook* notebookStruct, GtkNotebookTab arg1, Notebook notebook)
-	{
-		foreach ( bool delegate(GtkNotebookTab, Notebook) dlg ; notebook.onFocusTabListeners )
-		{
-			if ( dlg(arg1, notebook) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnFocusTab(bool delegate(GtkNotebookTab, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackFocusTab(GtkNotebook* notebookStruct, GtkNotebookTab arg1, Notebook notebook);
 	
 	void delegate(GtkDirectionType, Notebook)[] onMoveFocusOutListeners;
 	/**
 	 */
-	void addOnMoveFocusOut(void delegate(GtkDirectionType, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-focus-out" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-focus-out",
-			cast(GCallback)&callBackMoveFocusOut,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-focus-out"] = 1;
-		}
-		onMoveFocusOutListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveFocusOut(GtkNotebook* notebookStruct, GtkDirectionType arg1, Notebook notebook)
-	{
-		foreach ( void delegate(GtkDirectionType, Notebook) dlg ; notebook.onMoveFocusOutListeners )
-		{
-			dlg(arg1, notebook);
-		}
-	}
+	void addOnMoveFocusOut(void delegate(GtkDirectionType, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveFocusOut(GtkNotebook* notebookStruct, GtkDirectionType arg1, Notebook notebook);
 	
 	void delegate(Widget, guint, Notebook)[] onPageAddedListeners;
 	/**
@@ -299,28 +126,8 @@ public class Notebook : Container
 	 * right after a page is added to the notebook.
 	 * Since 2.10
 	 */
-	void addOnPageAdded(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("page-added" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"page-added",
-			cast(GCallback)&callBackPageAdded,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["page-added"] = 1;
-		}
-		onPageAddedListeners ~= dlg;
-	}
-	extern(C) static void callBackPageAdded(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook)
-	{
-		foreach ( void delegate(Widget, guint, Notebook) dlg ; notebook.onPageAddedListeners )
-		{
-			dlg(new Widget(child), pageNum, notebook);
-		}
-	}
+	void addOnPageAdded(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPageAdded(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook);
 	
 	void delegate(Widget, guint, Notebook)[] onPageRemovedListeners;
 	/**
@@ -328,28 +135,8 @@ public class Notebook : Container
 	 * right after a page is removed from the notebook.
 	 * Since 2.10
 	 */
-	void addOnPageRemoved(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("page-removed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"page-removed",
-			cast(GCallback)&callBackPageRemoved,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["page-removed"] = 1;
-		}
-		onPageRemovedListeners ~= dlg;
-	}
-	extern(C) static void callBackPageRemoved(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook)
-	{
-		foreach ( void delegate(Widget, guint, Notebook) dlg ; notebook.onPageRemovedListeners )
-		{
-			dlg(new Widget(child), pageNum, notebook);
-		}
-	}
+	void addOnPageRemoved(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPageRemoved(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook);
 	
 	void delegate(Widget, guint, Notebook)[] onPageReorderedListeners;
 	/**
@@ -357,90 +144,20 @@ public class Notebook : Container
 	 * right after a page has been reordered.
 	 * Since 2.10
 	 */
-	void addOnPageReordered(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("page-reordered" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"page-reordered",
-			cast(GCallback)&callBackPageReordered,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["page-reordered"] = 1;
-		}
-		onPageReorderedListeners ~= dlg;
-	}
-	extern(C) static void callBackPageReordered(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook)
-	{
-		foreach ( void delegate(Widget, guint, Notebook) dlg ; notebook.onPageReorderedListeners )
-		{
-			dlg(new Widget(child), pageNum, notebook);
-		}
-	}
+	void addOnPageReordered(void delegate(Widget, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPageReordered(GtkNotebook* notebookStruct, GtkWidget* child, guint pageNum, Notebook notebook);
 	
 	bool delegate(GtkDirectionType, gboolean, Notebook)[] onReorderTabListeners;
 	/**
 	 */
-	void addOnReorderTab(bool delegate(GtkDirectionType, gboolean, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("reorder-tab" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"reorder-tab",
-			cast(GCallback)&callBackReorderTab,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["reorder-tab"] = 1;
-		}
-		onReorderTabListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackReorderTab(GtkNotebook* notebookStruct, GtkDirectionType arg1, gboolean arg2, Notebook notebook)
-	{
-		foreach ( bool delegate(GtkDirectionType, gboolean, Notebook) dlg ; notebook.onReorderTabListeners )
-		{
-			if ( dlg(arg1, arg2, notebook) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnReorderTab(bool delegate(GtkDirectionType, gboolean, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackReorderTab(GtkNotebook* notebookStruct, GtkDirectionType arg1, gboolean arg2, Notebook notebook);
 	
 	bool delegate(gboolean, Notebook)[] onSelectPageListeners;
 	/**
 	 */
-	void addOnSelectPage(bool delegate(gboolean, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("select-page" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"select-page",
-			cast(GCallback)&callBackSelectPage,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["select-page"] = 1;
-		}
-		onSelectPageListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackSelectPage(GtkNotebook* notebookStruct, gboolean arg1, Notebook notebook)
-	{
-		foreach ( bool delegate(gboolean, Notebook) dlg ; notebook.onSelectPageListeners )
-		{
-			if ( dlg(arg1, notebook) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnSelectPage(bool delegate(gboolean, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackSelectPage(GtkNotebook* notebookStruct, gboolean arg1, Notebook notebook);
 	
 	void delegate(GtkNotebookPage*, guint, Notebook)[] onSwitchPageListeners;
 	/**
@@ -449,44 +166,15 @@ public class Notebook : Container
 	 * GtkContainer
 	 * For functions that apply to every GtkContainer
 	 */
-	void addOnSwitchPage(void delegate(GtkNotebookPage*, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("switch-page" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"switch-page",
-			cast(GCallback)&callBackSwitchPage,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["switch-page"] = 1;
-		}
-		onSwitchPageListeners ~= dlg;
-	}
-	extern(C) static void callBackSwitchPage(GtkNotebook* notebookStruct, GtkNotebookPage* page, guint pageNum, Notebook notebook)
-	{
-		foreach ( void delegate(GtkNotebookPage*, guint, Notebook) dlg ; notebook.onSwitchPageListeners )
-		{
-			dlg(page, pageNum, notebook);
-		}
-	}
+	void addOnSwitchPage(void delegate(GtkNotebookPage*, guint, Notebook) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSwitchPage(GtkNotebook* notebookStruct, GtkNotebookPage* page, guint pageNum, Notebook notebook);
 	
 	
 	/**
 	 * Creates a new GtkNotebook widget with no pages.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget * gtk_notebook_new (void);
-		auto p = gtk_notebook_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_notebook_new()");
-		}
-		this(cast(GtkNotebook*) p);
-	}
+	public this ();
 	
 	/**
 	 * Appends a page to notebook.
@@ -496,11 +184,7 @@ public class Notebook : Container
 	 *  or NULL to use the default label, 'page N'.
 	 * Returns: the index (starting from 0) of the appendedpage in the notebook, or -1 if function fails
 	 */
-	public int appendPage(Widget child, Widget tabLabel)
-	{
-		// gint gtk_notebook_append_page (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label);
-		return gtk_notebook_append_page(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct());
-	}
+	public int appendPage(Widget child, Widget tabLabel);
 	
 	/**
 	 * Appends a page to notebook, specifying the widget to use as the
@@ -517,11 +201,7 @@ public class Notebook : Container
 	 *  specified if the page-switch menu is to be used.
 	 * Returns: the index (starting from 0) of the appendedpage in the notebook, or -1 if function fails
 	 */
-	public int appendPageMenu(Widget child, Widget tabLabel, Widget menuLabel)
-	{
-		// gint gtk_notebook_append_page_menu (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label,  GtkWidget *menu_label);
-		return gtk_notebook_append_page_menu(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct(), (menuLabel is null) ? null : menuLabel.getWidgetStruct());
-	}
+	public int appendPageMenu(Widget child, Widget tabLabel, Widget menuLabel);
 	
 	/**
 	 * Prepends a page to notebook.
@@ -531,11 +211,7 @@ public class Notebook : Container
 	 *  or NULL to use the default label, 'page N'.
 	 * Returns: the index (starting from 0) of the prependedpage in the notebook, or -1 if function fails
 	 */
-	public int prependPage(Widget child, Widget tabLabel)
-	{
-		// gint gtk_notebook_prepend_page (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label);
-		return gtk_notebook_prepend_page(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct());
-	}
+	public int prependPage(Widget child, Widget tabLabel);
 	
 	/**
 	 * Prepends a page to notebook, specifying the widget to use as the
@@ -552,11 +228,7 @@ public class Notebook : Container
 	 *  specified if the page-switch menu is to be used.
 	 * Returns: the index (starting from 0) of the prependedpage in the notebook, or -1 if function fails
 	 */
-	public int prependPageMenu(Widget child, Widget tabLabel, Widget menuLabel)
-	{
-		// gint gtk_notebook_prepend_page_menu (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label,  GtkWidget *menu_label);
-		return gtk_notebook_prepend_page_menu(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct(), (menuLabel is null) ? null : menuLabel.getWidgetStruct());
-	}
+	public int prependPageMenu(Widget child, Widget tabLabel, Widget menuLabel);
 	
 	/**
 	 * Insert a page into notebook at the given position.
@@ -568,11 +240,7 @@ public class Notebook : Container
 	 *  or -1 to append the page after all other pages.
 	 * Returns: the index (starting from 0) of the insertedpage in the notebook, or -1 if function fails
 	 */
-	public int insertPage(Widget child, Widget tabLabel, int position)
-	{
-		// gint gtk_notebook_insert_page (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label,  gint position);
-		return gtk_notebook_insert_page(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct(), position);
-	}
+	public int insertPage(Widget child, Widget tabLabel, int position);
 	
 	/**
 	 * Insert a page into notebook at the given position, specifying
@@ -591,11 +259,7 @@ public class Notebook : Container
 	 *  or -1 to append the page after all other pages.
 	 * Returns: the index (starting from 0) of the insertedpage in the notebook
 	 */
-	public int insertPageMenu(Widget child, Widget tabLabel, Widget menuLabel, int position)
-	{
-		// gint gtk_notebook_insert_page_menu (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label,  GtkWidget *menu_label,  gint position);
-		return gtk_notebook_insert_page_menu(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct(), (menuLabel is null) ? null : menuLabel.getWidgetStruct(), position);
-	}
+	public int insertPageMenu(Widget child, Widget tabLabel, Widget menuLabel, int position);
 	
 	/**
 	 * Removes a page from the notebook given its index
@@ -605,11 +269,7 @@ public class Notebook : Container
 	 *  from 0. If -1, the last page will
 	 *  be removed.
 	 */
-	public void removePage(int pageNum)
-	{
-		// void gtk_notebook_remove_page (GtkNotebook *notebook,  gint page_num);
-		gtk_notebook_remove_page(gtkNotebook, pageNum);
-	}
+	public void removePage(int pageNum);
 	
 	/**
 	 * Finds the index of the page which contains the given child
@@ -618,32 +278,20 @@ public class Notebook : Container
 	 * child =  a GtkWidget
 	 * Returns: the index of the page containing child, or -1 if child is not in the notebook.
 	 */
-	public int pageNum(Widget child)
-	{
-		// gint gtk_notebook_page_num (GtkNotebook *notebook,  GtkWidget *child);
-		return gtk_notebook_page_num(gtkNotebook, (child is null) ? null : child.getWidgetStruct());
-	}
+	public int pageNum(Widget child);
 	
 	/**
 	 * Switches to the next page. Nothing happens if the current page is
 	 * the last page.
 	 */
-	public void nextPage()
-	{
-		// void gtk_notebook_next_page (GtkNotebook *notebook);
-		gtk_notebook_next_page(gtkNotebook);
-	}
-	
+	public void nextPage();
+
 	/**
 	 * Switches to the previous page. Nothing happens if the current page
 	 * is the first page.
 	 */
-	public void prevPage()
-	{
-		// void gtk_notebook_prev_page (GtkNotebook *notebook);
-		gtk_notebook_prev_page(gtkNotebook);
-	}
-	
+	public void prevPage();
+
 	/**
 	 * Reorders the page containing child, so that it appears in position
 	 * position. If position is greater than or equal to the number of
@@ -653,11 +301,7 @@ public class Notebook : Container
 	 * child =  the child to move
 	 * position =  the new position, or -1 to move to the end
 	 */
-	public void reorderChild(Widget child, int position)
-	{
-		// void gtk_notebook_reorder_child (GtkNotebook *notebook,  GtkWidget *child,  gint position);
-		gtk_notebook_reorder_child(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), position);
-	}
+	public void reorderChild(Widget child, int position);
 	
 	/**
 	 * Sets the edge at which the tabs for switching pages in the
@@ -665,22 +309,14 @@ public class Notebook : Container
 	 * Params:
 	 * pos =  the edge to draw the tabs at.
 	 */
-	public void setTabPos(GtkPositionType pos)
-	{
-		// void gtk_notebook_set_tab_pos (GtkNotebook *notebook,  GtkPositionType pos);
-		gtk_notebook_set_tab_pos(gtkNotebook, pos);
-	}
+	public void setTabPos(GtkPositionType pos);
 	
 	/**
 	 * Sets whether to show the tabs for the notebook or not.
 	 * Params:
 	 * showTabs =  TRUE if the tabs should be shown.
 	 */
-	public void setShowTabs(int showTabs)
-	{
-		// void gtk_notebook_set_show_tabs (GtkNotebook *notebook,  gboolean show_tabs);
-		gtk_notebook_set_show_tabs(gtkNotebook, showTabs);
-	}
+	public void setShowTabs(int showTabs);
 	
 	/**
 	 * Sets whether a bevel will be drawn around the notebook pages.
@@ -689,11 +325,7 @@ public class Notebook : Container
 	 * Params:
 	 * showBorder =  TRUE if a bevel should be drawn around the notebook.
 	 */
-	public void setShowBorder(int showBorder)
-	{
-		// void gtk_notebook_set_show_border (GtkNotebook *notebook,  gboolean show_border);
-		gtk_notebook_set_show_border(gtkNotebook, showBorder);
-	}
+	public void setShowBorder(int showBorder);
 	
 	/**
 	 * Sets whether the tab label area will have arrows for scrolling if
@@ -701,12 +333,8 @@ public class Notebook : Container
 	 * Params:
 	 * scrollable =  TRUE if scroll arrows should be added
 	 */
-	public void setScrollable(int scrollable)
-	{
-		// void gtk_notebook_set_scrollable (GtkNotebook *notebook,  gboolean scrollable);
-		gtk_notebook_set_scrollable(gtkNotebook, scrollable);
-	}
-	
+	public void setScrollable(int scrollable);
+
 	/**
 	 * Warning
 	 * gtk_notebook_set_tab_border is deprecated and should not be used in newly-written code.
@@ -717,40 +345,24 @@ public class Notebook : Container
 	 * Params:
 	 * borderWidth =  width of the border around the tab labels.
 	 */
-	public void setTabBorder(uint borderWidth)
-	{
-		// void gtk_notebook_set_tab_border (GtkNotebook *notebook,  guint border_width);
-		gtk_notebook_set_tab_border(gtkNotebook, borderWidth);
-	}
+	public void setTabBorder(uint borderWidth);
 	
 	/**
 	 * Enables the popup menu: if the user clicks with the right mouse button on
 	 * the bookmarks, a menu with all the pages will be popped up.
 	 */
-	public void popupEnable()
-	{
-		// void gtk_notebook_popup_enable (GtkNotebook *notebook);
-		gtk_notebook_popup_enable(gtkNotebook);
-	}
+	public void popupEnable();
 	
 	/**
 	 * Disables the popup menu.
 	 */
-	public void popupDisable()
-	{
-		// void gtk_notebook_popup_disable (GtkNotebook *notebook);
-		gtk_notebook_popup_disable(gtkNotebook);
-	}
+	public void popupDisable();
 	
 	/**
 	 * Returns the page number of the current page.
 	 * Returns: the index (starting from 0) of the currentpage in the notebook. If the notebook has no pages, then-1 will be returned.
 	 */
-	public int getCurrentPage()
-	{
-		// gint gtk_notebook_get_current_page (GtkNotebook *notebook);
-		return gtk_notebook_get_current_page(gtkNotebook);
-	}
+	public int getCurrentPage();
 	
 	/**
 	 * Retrieves the menu label widget of the page containing child.
@@ -758,16 +370,7 @@ public class Notebook : Container
 	 * child =  a widget contained in a page of notebook
 	 * Returns: the menu label, or NULL if the notebook page does not have a menu label other than the default (the tab label).
 	 */
-	public Widget getMenuLabel(Widget child)
-	{
-		// GtkWidget * gtk_notebook_get_menu_label (GtkNotebook *notebook,  GtkWidget *child);
-		auto p = gtk_notebook_get_menu_label(gtkNotebook, (child is null) ? null : child.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getMenuLabel(Widget child);
 	
 	/**
 	 * Returns the child widget contained in page number page_num.
@@ -776,27 +379,14 @@ public class Notebook : Container
 	 *  to get the last page.
 	 * Returns: the child widget, or NULL if page_num isout of bounds.
 	 */
-	public Widget getNthPage(int pageNum)
-	{
-		// GtkWidget* gtk_notebook_get_nth_page (GtkNotebook *notebook,  gint page_num);
-		auto p = gtk_notebook_get_nth_page(gtkNotebook, pageNum);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getNthPage(int pageNum);
 	
 	/**
 	 * Gets the number of pages in a notebook.
 	 * Since 2.2
 	 * Returns: the number of pages in the notebook.
 	 */
-	public int getNPages()
-	{
-		// gint gtk_notebook_get_n_pages (GtkNotebook *notebook);
-		return gtk_notebook_get_n_pages(gtkNotebook);
-	}
+	public int getNPages();
 	
 	/**
 	 * Returns the tab label widget for the page child. NULL is returned
@@ -806,16 +396,7 @@ public class Notebook : Container
 	 * child =  the page
 	 * Returns: the tab label
 	 */
-	public Widget getTabLabel(Widget child)
-	{
-		// GtkWidget * gtk_notebook_get_tab_label (GtkNotebook *notebook,  GtkWidget *child);
-		auto p = gtk_notebook_get_tab_label(gtkNotebook, (child is null) ? null : child.getWidgetStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getTabLabel(Widget child);
 	
 	/**
 	 * Query the packing attributes for the tab label of the page
@@ -826,11 +407,7 @@ public class Notebook : Container
 	 * fill =  location to store the fill value (or NULL)
 	 * packType =  location to store the pack_type (or NULL)
 	 */
-	public void queryTabLabelPacking(Widget child, out int expand, out int fill, out GtkPackType packType)
-	{
-		// void gtk_notebook_query_tab_label_packing  (GtkNotebook *notebook,  GtkWidget *child,  gboolean *expand,  gboolean *fill,  GtkPackType *pack_type);
-		gtk_notebook_query_tab_label_packing(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), &expand, &fill, &packType);
-	}
+	public void queryTabLabelPacking(Widget child, out int expand, out int fill, out GtkPackType packType);
 	
 	/**
 	 * Warning
@@ -839,11 +416,7 @@ public class Notebook : Container
 	 * Params:
 	 * homogeneous =  TRUE if all tabs should be the same size.
 	 */
-	public void setHomogeneousTabs(int homogeneous)
-	{
-		// void gtk_notebook_set_homogeneous_tabs (GtkNotebook *notebook,  gboolean homogeneous);
-		gtk_notebook_set_homogeneous_tabs(gtkNotebook, homogeneous);
-	}
+	public void setHomogeneousTabs(int homogeneous);
 	
 	/**
 	 * Changes the menu label for the page containing child.
@@ -851,11 +424,7 @@ public class Notebook : Container
 	 * child =  the child widget
 	 * menuLabel =  the menu label, or NULL for default
 	 */
-	public void setMenuLabel(Widget child, Widget menuLabel)
-	{
-		// void gtk_notebook_set_menu_label (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *menu_label);
-		gtk_notebook_set_menu_label(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (menuLabel is null) ? null : menuLabel.getWidgetStruct());
-	}
+	public void setMenuLabel(Widget child, Widget menuLabel);
 	
 	/**
 	 * Creates a new label and sets it as the menu label of child.
@@ -863,11 +432,7 @@ public class Notebook : Container
 	 * child =  the child widget
 	 * menuText =  the label text
 	 */
-	public void setMenuLabelText(Widget child, string menuText)
-	{
-		// void gtk_notebook_set_menu_label_text (GtkNotebook *notebook,  GtkWidget *child,  const gchar *menu_text);
-		gtk_notebook_set_menu_label_text(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(menuText));
-	}
+	public void setMenuLabelText(Widget child, string menuText);
 	
 	/**
 	 * Warning
@@ -876,11 +441,7 @@ public class Notebook : Container
 	 * Params:
 	 * tabHborder =  width of the horizontal border of tab labels.
 	 */
-	public void setTabHborder(uint tabHborder)
-	{
-		// void gtk_notebook_set_tab_hborder (GtkNotebook *notebook,  guint tab_hborder);
-		gtk_notebook_set_tab_hborder(gtkNotebook, tabHborder);
-	}
+	public void setTabHborder(uint tabHborder);
 	
 	/**
 	 * Changes the tab label for child. If NULL is specified
@@ -890,11 +451,7 @@ public class Notebook : Container
 	 * tabLabel =  the tab label widget to use, or NULL for default tab
 	 *  label.
 	 */
-	public void setTabLabel(Widget child, Widget tabLabel)
-	{
-		// void gtk_notebook_set_tab_label (GtkNotebook *notebook,  GtkWidget *child,  GtkWidget *tab_label);
-		gtk_notebook_set_tab_label(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), (tabLabel is null) ? null : tabLabel.getWidgetStruct());
-	}
+	public void setTabLabel(Widget child, Widget tabLabel);
 	
 	/**
 	 * Sets the packing parameters for the tab label of the page
@@ -906,11 +463,7 @@ public class Notebook : Container
 	 * fill =  whether the bookmark should fill the allocated area or not
 	 * packType =  the position of the bookmark
 	 */
-	public void setTabLabelPacking(Widget child, int expand, int fill, GtkPackType packType)
-	{
-		// void gtk_notebook_set_tab_label_packing (GtkNotebook *notebook,  GtkWidget *child,  gboolean expand,  gboolean fill,  GtkPackType pack_type);
-		gtk_notebook_set_tab_label_packing(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), expand, fill, packType);
-	}
+	public void setTabLabelPacking(Widget child, int expand, int fill, GtkPackType packType);
 	
 	/**
 	 * Creates a new label and sets it as the tab label for the page
@@ -919,11 +472,7 @@ public class Notebook : Container
 	 * child =  the page
 	 * tabText =  the label text
 	 */
-	public void setTabLabelText(Widget child, string tabText)
-	{
-		// void gtk_notebook_set_tab_label_text (GtkNotebook *notebook,  GtkWidget *child,  const gchar *tab_text);
-		gtk_notebook_set_tab_label_text(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), Str.toStringz(tabText));
-	}
+	public void setTabLabelText(Widget child, string tabText);
 	
 	/**
 	 * Warning
@@ -932,11 +481,7 @@ public class Notebook : Container
 	 * Params:
 	 * tabVborder =  width of the vertical border of tab labels.
 	 */
-	public void setTabVborder(uint tabVborder)
-	{
-		// void gtk_notebook_set_tab_vborder (GtkNotebook *notebook,  guint tab_vborder);
-		gtk_notebook_set_tab_vborder(gtkNotebook, tabVborder);
-	}
+	public void setTabVborder(uint tabVborder);
 	
 	/**
 	 * Sets whether the notebook tab can be reordered
@@ -946,11 +491,7 @@ public class Notebook : Container
 	 * child =  a child GtkWidget
 	 * reorderable =  whether the tab is reorderable or not.
 	 */
-	public void setTabReorderable(Widget child, int reorderable)
-	{
-		// void gtk_notebook_set_tab_reorderable (GtkNotebook *notebook,  GtkWidget *child,  gboolean reorderable);
-		gtk_notebook_set_tab_reorderable(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), reorderable);
-	}
+	public void setTabReorderable(Widget child, int reorderable);
 	
 	/**
 	 * Sets whether the tab can be detached from notebook to another
@@ -987,11 +528,7 @@ public class Notebook : Container
 	 * child =  a child GtkWidget
 	 * detachable =  whether the tab is detachable or not
 	 */
-	public void setTabDetachable(Widget child, int detachable)
-	{
-		// void gtk_notebook_set_tab_detachable (GtkNotebook *notebook,  GtkWidget *child,  gboolean detachable);
-		gtk_notebook_set_tab_detachable(gtkNotebook, (child is null) ? null : child.getWidgetStruct(), detachable);
-	}
+	public void setTabDetachable(Widget child, int detachable);
 	
 	/**
 	 * Retrieves the text of the menu label for the page containing
@@ -1000,44 +537,28 @@ public class Notebook : Container
 	 * child =  the child widget of a page of the notebook.
 	 * Returns: the text of the tab label, or NULL if the widget does not have a menu label other than the default menu label, or the menu label widget is not a GtkLabel. The string is owned by the widget and must not be freed.
 	 */
-	public string getMenuLabelText(Widget child)
-	{
-		// const gchar * gtk_notebook_get_menu_label_text (GtkNotebook *notebook,  GtkWidget *child);
-		return Str.toString(gtk_notebook_get_menu_label_text(gtkNotebook, (child is null) ? null : child.getWidgetStruct()));
-	}
+	public string getMenuLabelText(Widget child);
 	
 	/**
 	 * Returns whether the tab label area has arrows for scrolling. See
 	 * gtk_notebook_set_scrollable().
 	 * Returns: TRUE if arrows for scrolling are present
 	 */
-	public int getScrollable()
-	{
-		// gboolean gtk_notebook_get_scrollable (GtkNotebook *notebook);
-		return gtk_notebook_get_scrollable(gtkNotebook);
-	}
+	public int getScrollable();
 	
 	/**
 	 * Returns whether a bevel will be drawn around the notebook pages. See
 	 * gtk_notebook_set_show_border().
 	 * Returns: TRUE if the bevel is drawn
 	 */
-	public int getShowBorder()
-	{
-		// gboolean gtk_notebook_get_show_border (GtkNotebook *notebook);
-		return gtk_notebook_get_show_border(gtkNotebook);
-	}
+	public int getShowBorder();
 	
 	/**
 	 * Returns whether the tabs of the notebook are shown. See
 	 * gtk_notebook_set_show_tabs().
 	 * Returns: TRUE if the tabs are shown
 	 */
-	public int getShowTabs()
-	{
-		// gboolean gtk_notebook_get_show_tabs (GtkNotebook *notebook);
-		return gtk_notebook_get_show_tabs(gtkNotebook);
-	}
+	public int getShowTabs();
 	
 	/**
 	 * Retrieves the text of the tab label for the page containing
@@ -1046,22 +567,14 @@ public class Notebook : Container
 	 * child =  a widget contained in a page of notebook
 	 * Returns: the text of the tab label, or NULL if the tab label widget is not a GtkLabel. The string is owned by the widget and must not be freed.
 	 */
-	public string getTabLabelText(Widget child)
-	{
-		// const gchar * gtk_notebook_get_tab_label_text (GtkNotebook *notebook,  GtkWidget *child);
-		return Str.toString(gtk_notebook_get_tab_label_text(gtkNotebook, (child is null) ? null : child.getWidgetStruct()));
-	}
+	public string getTabLabelText(Widget child);
 	
 	/**
 	 * Gets the edge at which the tabs for switching pages in the
 	 * notebook are drawn.
 	 * Returns: the edge at which the tabs are drawn
 	 */
-	public GtkPositionType getTabPos()
-	{
-		// GtkPositionType gtk_notebook_get_tab_pos (GtkNotebook *notebook);
-		return gtk_notebook_get_tab_pos(gtkNotebook);
-	}
+	public GtkPositionType getTabPos();
 	
 	/**
 	 * Gets whether the tab can be reordered via drag and drop or not.
@@ -1070,11 +583,7 @@ public class Notebook : Container
 	 * child =  a child GtkWidget
 	 * Returns: TRUE if the tab is reorderable.
 	 */
-	public int getTabReorderable(Widget child)
-	{
-		// gboolean gtk_notebook_get_tab_reorderable (GtkNotebook *notebook,  GtkWidget *child);
-		return gtk_notebook_get_tab_reorderable(gtkNotebook, (child is null) ? null : child.getWidgetStruct());
-	}
+	public int getTabReorderable(Widget child);
 	
 	/**
 	 * Returns whether the tab contents can be detached from notebook.
@@ -1083,11 +592,7 @@ public class Notebook : Container
 	 * child =  a child GtkWidget
 	 * Returns: TRUE if the tab is detachable.
 	 */
-	public int getTabDetachable(Widget child)
-	{
-		// gboolean gtk_notebook_get_tab_detachable (GtkNotebook *notebook,  GtkWidget *child);
-		return gtk_notebook_get_tab_detachable(gtkNotebook, (child is null) ? null : child.getWidgetStruct());
-	}
+	public int getTabDetachable(Widget child);
 	
 	/**
 	 * Switches to the page number page_num.
@@ -1101,12 +606,8 @@ public class Notebook : Container
 	 *  than the number of pages in the notebook, nothing
 	 *  will be done.
 	 */
-	public void setCurrentPage(int pageNum)
-	{
-		// void gtk_notebook_set_current_page (GtkNotebook *notebook,  gint page_num);
-		gtk_notebook_set_current_page(gtkNotebook, pageNum);
-	}
-	
+	public void setCurrentPage(int pageNum);
+
 	/**
 	 * Warning
 	 * gtk_notebook_set_group_id has been deprecated since version 2.12 and should not be used in newly-written code. use gtk_notebook_set_group() instead.
@@ -1118,11 +619,7 @@ public class Notebook : Container
 	 * Params:
 	 * groupId =  a group identificator, or -1 to unset it
 	 */
-	public void setGroupId(int groupId)
-	{
-		// void gtk_notebook_set_group_id (GtkNotebook *notebook,  gint group_id);
-		gtk_notebook_set_group_id(gtkNotebook, groupId);
-	}
+	public void setGroupId(int groupId);
 	
 	/**
 	 * Warning
@@ -1131,12 +628,8 @@ public class Notebook : Container
 	 * Since 2.10
 	 * Returns: the group identificator, or -1 if none is set.
 	 */
-	public int getGroupId()
-	{
-		// gint gtk_notebook_get_group_id (GtkNotebook *notebook);
-		return gtk_notebook_get_group_id(gtkNotebook);
-	}
-	
+	public int getGroupId();
+
 	/**
 	 * Sets a group identificator pointer for notebook, notebooks sharing
 	 * the same group identificator pointer will be able to exchange tabs
@@ -1146,22 +639,14 @@ public class Notebook : Container
 	 * Params:
 	 * group =  a pointer to identify the notebook group, or NULL to unset it
 	 */
-	public void setGroup(void* group)
-	{
-		// void gtk_notebook_set_group (GtkNotebook *notebook,  gpointer group);
-		gtk_notebook_set_group(gtkNotebook, group);
-	}
+	public void setGroup(void* group);
 	
 	/**
 	 * Gets the current group identificator pointer for notebook.
 	 * Since 2.12
 	 * Returns: the group identificator, or NULL if none is set.
 	 */
-	public void* getGroup()
-	{
-		// gpointer gtk_notebook_get_group (GtkNotebook *notebook);
-		return gtk_notebook_get_group(gtkNotebook);
-	}
+	public void* getGroup();
 	
 	/**
 	 * Installs a global function used to create a window
@@ -1172,9 +657,5 @@ public class Notebook : Container
 	 * data =  user data for func
 	 * destroy =  Destroy notifier for data, or NULL
 	 */
-	public static void setWindowCreationHook(GtkNotebookWindowCreationFunc func, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_notebook_set_window_creation_hook  (GtkNotebookWindowCreationFunc func,  gpointer data,  GDestroyNotify destroy);
-		gtk_notebook_set_window_creation_hook(func, data, destroy);
-	}
+	public static void setWindowCreationHook(GtkNotebookWindowCreationFunc func, void* data, GDestroyNotify destroy);
 }

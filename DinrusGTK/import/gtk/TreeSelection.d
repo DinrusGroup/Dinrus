@@ -1,68 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTreeSelection.html
- * outPack = gtk
- * outFile = TreeSelection
- * strct   = GtkTreeSelection
- * realStrct=
- * ctorStrct=
- * clss    = TreeSelection
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_tree_selection_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_tree_selection_get_selected_rows
- * omit signals:
- * imports:
- * 	- gtkD.gtk.TreeView
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreeIter
- * 	- gtkD.glib.ListG
- * 	- gtkD.gtk.TreePath
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreeIter
- * structWrap:
- * 	- GList* -> ListG
- * 	- GtkTreeIter* -> TreeIter
- * 	- GtkTreeModel* -> TreeModelIF
- * 	- GtkTreePath* -> TreePath
- * 	- GtkTreeView* -> TreeView
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TreeSelection;
 
 public  import gtkD.gtkc.gtktypes;
@@ -117,38 +52,16 @@ public class TreeSelection : ObjectG
 	protected GtkTreeSelection* gtkTreeSelection;
 	
 	
-	public GtkTreeSelection* getTreeSelectionStruct()
-	{
-		return gtkTreeSelection;
-	}
+	public GtkTreeSelection* getTreeSelectionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTreeSelection;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTreeSelection* gtkTreeSelection)
-	{
-		if(gtkTreeSelection is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTreeSelection);
-		if( ptr !is null )
-		{
-			this = cast(TreeSelection)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTreeSelection);
-		this.gtkTreeSelection = gtkTreeSelection;
-	}
+	public this (GtkTreeSelection* gtkTreeSelection);
 	
 	/**
 	 * Returns an TreeIter set to the currently selected node if selection
@@ -156,21 +69,7 @@ public class TreeSelection : ObjectG
 	 * This function will not work if you use selection is GTK_SELECTION_MULTIPLE.
 	 * Returns: A TreeIter for the selected node.
 	 */
-	public TreeIter getSelected()
-	{
-		TreeModelIF model;
-		TreeIter iter = new TreeIter();
-		
-		if ( getSelected(model, iter) )
-		{
-			iter.setModel(model);
-			return iter;
-		}
-		else
-		{
-			return null;
-		}
-	}
+	public TreeIter getSelected();
 	
 	/**
 	 * Creates a list of path of all selected rows. Additionally, if you are
@@ -186,23 +85,7 @@ public class TreeSelection : ObjectG
 	 * Returns:
 	 *  A GList containing a GtkTreePath for each selected row.
 	 */
-	TreePath[] getSelectedRows(out TreeModelIF model)
-	{
-		TreePath[] paths;
-		GtkTreeModel* outmodel = null;
-		GList* gList = gtk_tree_selection_get_selected_rows(gtkTreeSelection, &outmodel);
-		if ( gList !is null )
-		{
-			ListG list = new ListG(gList);
-			for ( int i=0 ; i<list.length() ; i++ )
-			{
-				paths ~= new TreePath(cast(GtkTreePath*)list.nthData(i));
-			}
-		}
-		model = new TreeModel(outmodel);
-		
-		return paths;
-	}
+	TreePath[] getSelectedRows(out TreeModelIF model);
 	
 	/**
 	 */
@@ -217,28 +100,8 @@ public class TreeSelection : ObjectG
 	 * See Also
 	 * GtkTreeView, GtkTreeViewColumn, GtkTreeDnd, GtkTreeMode, GtkTreeSortable, GtkTreeModelSort, GtkListStore, GtkTreeStore, GtkCellRenderer, GtkCellEditable, GtkCellRendererPixbuf, GtkCellRendererText, GtkCellRendererToggle
 	 */
-	void addOnChanged(void delegate(TreeSelection) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"changed",
-			cast(GCallback)&callBackChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["changed"] = 1;
-		}
-		onChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackChanged(GtkTreeSelection* treeselectionStruct, TreeSelection treeSelection)
-	{
-		foreach ( void delegate(TreeSelection) dlg ; treeSelection.onChangedListeners )
-		{
-			dlg(treeSelection);
-		}
-	}
+	void addOnChanged(void delegate(TreeSelection) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChanged(GtkTreeSelection* treeselectionStruct, TreeSelection treeSelection);
 	
 	
 	/**
@@ -248,22 +111,14 @@ public class TreeSelection : ObjectG
 	 * Params:
 	 * type =  The selection mode
 	 */
-	public void setMode(GtkSelectionMode type)
-	{
-		// void gtk_tree_selection_set_mode (GtkTreeSelection *selection,  GtkSelectionMode type);
-		gtk_tree_selection_set_mode(gtkTreeSelection, type);
-	}
+	public void setMode(GtkSelectionMode type);
 	
 	/**
 	 * Gets the selection mode for selection. See
 	 * gtk_tree_selection_set_mode().
 	 * Returns: the current selection mode
 	 */
-	public GtkSelectionMode getMode()
-	{
-		// GtkSelectionMode gtk_tree_selection_get_mode (GtkTreeSelection *selection);
-		return gtk_tree_selection_get_mode(gtkTreeSelection);
-	}
+	public GtkSelectionMode getMode();
 	
 	/**
 	 * Sets the selection function. If set, this function is called before any node
@@ -275,47 +130,26 @@ public class TreeSelection : ObjectG
 	 * data =  The selection function's data.
 	 * destroy =  The destroy function for user data. May be NULL.
 	 */
-	public void setSelectFunction(GtkTreeSelectionFunc func, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_tree_selection_set_select_function  (GtkTreeSelection *selection,  GtkTreeSelectionFunc func,  gpointer data,  GDestroyNotify destroy);
-		gtk_tree_selection_set_select_function(gtkTreeSelection, func, data, destroy);
-	}
+	public void setSelectFunction(GtkTreeSelectionFunc func, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Returns the current selection function.
 	 * Since 2.14
 	 * Returns: The function.
 	 */
-	public GtkTreeSelectionFunc getSelectFunction()
-	{
-		// GtkTreeSelectionFunc gtk_tree_selection_get_select_function  (GtkTreeSelection *selection);
-		return gtk_tree_selection_get_select_function(gtkTreeSelection);
-	}
+	public GtkTreeSelectionFunc getSelectFunction();
 	
 	/**
 	 * Returns the user data for the selection function.
 	 * Returns: The user data.
 	 */
-	public void* getUserData()
-	{
-		// gpointer gtk_tree_selection_get_user_data (GtkTreeSelection *selection);
-		return gtk_tree_selection_get_user_data(gtkTreeSelection);
-	}
+	public void* getUserData();
 	
 	/**
 	 * Returns the tree view associated with selection.
 	 * Returns: A GtkTreeView
 	 */
-	public TreeView getTreeView()
-	{
-		// GtkTreeView* gtk_tree_selection_get_tree_view (GtkTreeSelection *selection);
-		auto p = gtk_tree_selection_get_tree_view(gtkTreeSelection);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeView(cast(GtkTreeView*) p);
-	}
+	public TreeView getTreeView();
 	
 	/**
 	 * Sets iter to the currently selected node if selection is set to
@@ -328,16 +162,7 @@ public class TreeSelection : ObjectG
 	 * iter =  The GtkTreeIter, or NULL.
 	 * Returns: TRUE, if there is a selected node.
 	 */
-	public int getSelected(out TreeModelIF model, TreeIter iter)
-	{
-		// gboolean gtk_tree_selection_get_selected (GtkTreeSelection *selection,  GtkTreeModel **model,  GtkTreeIter *iter);
-		GtkTreeModel* outmodel = null;
-		
-		auto p = gtk_tree_selection_get_selected(gtkTreeSelection, &outmodel, (iter is null) ? null : iter.getTreeIterStruct());
-		
-		model = new TreeModel(outmodel);
-		return p;
-	}
+	public int getSelected(out TreeModelIF model, TreeIter iter);
 	
 	/**
 	 * Calls a function for each selected node. Note that you cannot modify
@@ -347,45 +172,28 @@ public class TreeSelection : ObjectG
 	 * func =  The function to call for each selected node.
 	 * data =  user data to pass to the function.
 	 */
-	public void selectedForeach(GtkTreeSelectionForeachFunc func, void* data)
-	{
-		// void gtk_tree_selection_selected_foreach (GtkTreeSelection *selection,  GtkTreeSelectionForeachFunc func,  gpointer data);
-		gtk_tree_selection_selected_foreach(gtkTreeSelection, func, data);
-	}
+	public void selectedForeach(GtkTreeSelectionForeachFunc func, void* data);
 	
 	/**
 	 * Returns the number of rows that have been selected in tree.
 	 * Since 2.2
 	 * Returns: The number of rows selected.
 	 */
-	public int countSelectedRows()
-	{
-		// gint gtk_tree_selection_count_selected_rows  (GtkTreeSelection *selection);
-		return gtk_tree_selection_count_selected_rows(gtkTreeSelection);
-	}
+	public int countSelectedRows();
 	
 	/**
 	 * Select the row at path.
 	 * Params:
 	 * path =  The GtkTreePath to be selected.
 	 */
-	public void selectPath(TreePath path)
-	{
-		// void gtk_tree_selection_select_path (GtkTreeSelection *selection,  GtkTreePath *path);
-		gtk_tree_selection_select_path(gtkTreeSelection, (path is null) ? null : path.getTreePathStruct());
-	}
+	public void selectPath(TreePath path);
 	
 	/**
 	 * Unselects the row at path.
 	 * Params:
 	 * path =  The GtkTreePath to be unselected.
 	 */
-	public void unselectPath(TreePath path)
-	{
-		// void gtk_tree_selection_unselect_path (GtkTreeSelection *selection,  GtkTreePath *path);
-		gtk_tree_selection_unselect_path(gtkTreeSelection, (path is null) ? null : path.getTreePathStruct());
-	}
-	
+	public void unselectPath(TreePath path);
 	/**
 	 * Returns TRUE if the row pointed to by path is currently selected. If path
 	 * does not point to a valid location, FALSE is returned
@@ -393,33 +201,21 @@ public class TreeSelection : ObjectG
 	 * path =  A GtkTreePath to check selection on.
 	 * Returns: TRUE if path is selected.
 	 */
-	public int pathIsSelected(TreePath path)
-	{
-		// gboolean gtk_tree_selection_path_is_selected (GtkTreeSelection *selection,  GtkTreePath *path);
-		return gtk_tree_selection_path_is_selected(gtkTreeSelection, (path is null) ? null : path.getTreePathStruct());
-	}
+	public int pathIsSelected(TreePath path);
 	
 	/**
 	 * Selects the specified iterator.
 	 * Params:
 	 * iter =  The GtkTreeIter to be selected.
 	 */
-	public void selectIter(TreeIter iter)
-	{
-		// void gtk_tree_selection_select_iter (GtkTreeSelection *selection,  GtkTreeIter *iter);
-		gtk_tree_selection_select_iter(gtkTreeSelection, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public void selectIter(TreeIter iter);
 	
 	/**
 	 * Unselects the specified iterator.
 	 * Params:
 	 * iter =  The GtkTreeIter to be unselected.
 	 */
-	public void unselectIter(TreeIter iter)
-	{
-		// void gtk_tree_selection_unselect_iter (GtkTreeSelection *selection,  GtkTreeIter *iter);
-		gtk_tree_selection_unselect_iter(gtkTreeSelection, (iter is null) ? null : iter.getTreeIterStruct());
-	}
+	public void unselectIter(TreeIter iter);
 	
 	/**
 	 * Returns TRUE if the row at iter is currently selected.
@@ -427,30 +223,18 @@ public class TreeSelection : ObjectG
 	 * iter =  A valid GtkTreeIter
 	 * Returns: TRUE, if iter is selected
 	 */
-	public int iterIsSelected(TreeIter iter)
-	{
-		// gboolean gtk_tree_selection_iter_is_selected (GtkTreeSelection *selection,  GtkTreeIter *iter);
-		return gtk_tree_selection_iter_is_selected(gtkTreeSelection, (iter is null) ? null : iter.getTreeIterStruct());
-	}
-	
+	public int iterIsSelected(TreeIter iter);
+
 	/**
 	 * Selects all the nodes. selection must be set to GTK_SELECTION_MULTIPLE
 	 * mode.
 	 */
-	public void selectAll()
-	{
-		// void gtk_tree_selection_select_all (GtkTreeSelection *selection);
-		gtk_tree_selection_select_all(gtkTreeSelection);
-	}
+	public void selectAll();
 	
 	/**
 	 * Unselects all the nodes.
 	 */
-	public void unselectAll()
-	{
-		// void gtk_tree_selection_unselect_all (GtkTreeSelection *selection);
-		gtk_tree_selection_unselect_all(gtkTreeSelection);
-	}
+	public void unselectAll();
 	
 	/**
 	 * Selects a range of nodes, determined by start_path and end_path inclusive.
@@ -459,11 +243,7 @@ public class TreeSelection : ObjectG
 	 * startPath =  The initial node of the range.
 	 * endPath =  The final node of the range.
 	 */
-	public void selectRange(TreePath startPath, TreePath endPath)
-	{
-		// void gtk_tree_selection_select_range (GtkTreeSelection *selection,  GtkTreePath *start_path,  GtkTreePath *end_path);
-		gtk_tree_selection_select_range(gtkTreeSelection, (startPath is null) ? null : startPath.getTreePathStruct(), (endPath is null) ? null : endPath.getTreePathStruct());
-	}
+	public void selectRange(TreePath startPath, TreePath endPath);
 	
 	/**
 	 * Unselects a range of nodes, determined by start_path and end_path
@@ -481,9 +261,5 @@ public class TreeSelection : ObjectG
 	 * startPath =  The initial node of the range.
 	 * endPath =  The initial node of the range.
 	 */
-	public void unselectRange(TreePath startPath, TreePath endPath)
-	{
-		// void gtk_tree_selection_unselect_range (GtkTreeSelection *selection,  GtkTreePath *start_path,  GtkTreePath *end_path);
-		gtk_tree_selection_unselect_range(gtkTreeSelection, (startPath is null) ? null : startPath.getTreePathStruct(), (endPath is null) ? null : endPath.getTreePathStruct());
-	}
+	public void unselectRange(TreePath startPath, TreePath endPath);
 }

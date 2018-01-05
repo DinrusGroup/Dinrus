@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = TextChildAnchor
- * strct   = GtkTextChildAnchor
- * realStrct=
- * ctorStrct=
- * clss    = TextChildAnchor
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_text_child_anchor_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.glib.ListG
- * structWrap:
- * 	- GList* -> ListG
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TextChildAnchor;
 
 public  import gtkD.gtkc.gtktypes;
@@ -80,30 +27,15 @@ public class TextChildAnchor
 	protected GtkTextChildAnchor* gtkTextChildAnchor;
 	
 	
-	public GtkTextChildAnchor* getTextChildAnchorStruct()
-	{
-		return gtkTextChildAnchor;
-	}
-	
+	public GtkTextChildAnchor* getTextChildAnchorStruct();
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkTextChildAnchor;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTextChildAnchor* gtkTextChildAnchor)
-	{
-		if(gtkTextChildAnchor is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkTextChildAnchor = gtkTextChildAnchor;
-	}
+	public this (GtkTextChildAnchor* gtkTextChildAnchor);
 	
 	/**
 	 */
@@ -117,28 +49,8 @@ public class TextChildAnchor
 	 * The default bindings for this signal are
 	 * Backspace and Shift-Backspace.
 	 */
-	void addOnBackspace(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("backspace" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"backspace",
-			cast(GCallback)&callBackBackspace,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["backspace"] = 1;
-		}
-		onBackspaceListeners ~= dlg;
-	}
-	extern(C) static void callBackBackspace(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onBackspaceListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnBackspace(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackBackspace(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onCopyClipboardListeners;
 	/**
@@ -148,28 +60,8 @@ public class TextChildAnchor
 	 * The default bindings for this signal are
 	 * Ctrl-c and Ctrl-Insert.
 	 */
-	void addOnCopyClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("copy-clipboard" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"copy-clipboard",
-			cast(GCallback)&callBackCopyClipboard,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["copy-clipboard"] = 1;
-		}
-		onCopyClipboardListeners ~= dlg;
-	}
-	extern(C) static void callBackCopyClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onCopyClipboardListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnCopyClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCopyClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onCutClipboardListeners;
 	/**
@@ -179,28 +71,8 @@ public class TextChildAnchor
 	 * The default bindings for this signal are
 	 * Ctrl-x and Shift-Delete.
 	 */
-	void addOnCutClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("cut-clipboard" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"cut-clipboard",
-			cast(GCallback)&callBackCutClipboard,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["cut-clipboard"] = 1;
-		}
-		onCutClipboardListeners ~= dlg;
-	}
-	extern(C) static void callBackCutClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onCutClipboardListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnCutClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackCutClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(GtkDeleteType, gint, TextChildAnchor)[] onDeleteFromCursorListeners;
 	/**
@@ -215,28 +87,8 @@ public class TextChildAnchor
 	 * deleting a word and Ctrl-Backspace for deleting a word
 	 * backwords.
 	 */
-	void addOnDeleteFromCursor(void delegate(GtkDeleteType, gint, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("delete-from-cursor" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"delete-from-cursor",
-			cast(GCallback)&callBackDeleteFromCursor,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["delete-from-cursor"] = 1;
-		}
-		onDeleteFromCursorListeners ~= dlg;
-	}
-	extern(C) static void callBackDeleteFromCursor(GtkTextView* textViewStruct, GtkDeleteType type, gint count, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(GtkDeleteType, gint, TextChildAnchor) dlg ; textChildAnchor.onDeleteFromCursorListeners )
-		{
-			dlg(type, count, textChildAnchor);
-		}
-	}
+	void addOnDeleteFromCursor(void delegate(GtkDeleteType, gint, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackDeleteFromCursor(GtkTextView* textViewStruct, GtkDeleteType type, gint count, TextChildAnchor textChildAnchor);
 	
 	void delegate(string, TextChildAnchor)[] onInsertAtCursorListeners;
 	/**
@@ -246,28 +98,8 @@ public class TextChildAnchor
 	 * fixed string at the cursor.
 	 * This signal has no default bindings.
 	 */
-	void addOnInsertAtCursor(void delegate(string, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("insert-at-cursor" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"insert-at-cursor",
-			cast(GCallback)&callBackInsertAtCursor,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["insert-at-cursor"] = 1;
-		}
-		onInsertAtCursorListeners ~= dlg;
-	}
-	extern(C) static void callBackInsertAtCursor(GtkTextView* textViewStruct, gchar* str, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(string, TextChildAnchor) dlg ; textChildAnchor.onInsertAtCursorListeners )
-		{
-			dlg(Str.toString(str), textChildAnchor);
-		}
-	}
+	void addOnInsertAtCursor(void delegate(string, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackInsertAtCursor(GtkTextView* textViewStruct, gchar* str, TextChildAnchor textChildAnchor);
 	
 	void delegate(GtkMovementStep, gint, gboolean, TextChildAnchor)[] onMoveCursorListeners;
 	/**
@@ -289,28 +121,8 @@ public class TextChildAnchor
 	 * PageUp/PageDown keys move vertically by pages
 	 * Ctrl-PageUp/PageDown keys move horizontally by pages
 	 */
-	void addOnMoveCursor(void delegate(GtkMovementStep, gint, gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-cursor" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-cursor",
-			cast(GCallback)&callBackMoveCursor,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-cursor"] = 1;
-		}
-		onMoveCursorListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveCursor(GtkTextView* textViewStruct, GtkMovementStep step, gint count, gboolean extendSelection, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(GtkMovementStep, gint, gboolean, TextChildAnchor) dlg ; textChildAnchor.onMoveCursorListeners )
-		{
-			dlg(step, count, extendSelection, textChildAnchor);
-		}
-	}
+	void addOnMoveCursor(void delegate(GtkMovementStep, gint, gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveCursor(GtkTextView* textViewStruct, GtkMovementStep step, gint count, gboolean extendSelection, TextChildAnchor textChildAnchor);
 	
 	void delegate(GtkScrollStep, gint, TextChildAnchor)[] onMoveViewportListeners;
 	/**
@@ -321,28 +133,8 @@ public class TextChildAnchor
 	 * is visible in a containing scrolled window.
 	 * There are no default bindings for this signal.
 	 */
-	void addOnMoveViewport(void delegate(GtkScrollStep, gint, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("move-viewport" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"move-viewport",
-			cast(GCallback)&callBackMoveViewport,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["move-viewport"] = 1;
-		}
-		onMoveViewportListeners ~= dlg;
-	}
-	extern(C) static void callBackMoveViewport(GtkTextView* textViewStruct, GtkScrollStep step, gint count, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(GtkScrollStep, gint, TextChildAnchor) dlg ; textChildAnchor.onMoveViewportListeners )
-		{
-			dlg(step, count, textChildAnchor);
-		}
-	}
+	void addOnMoveViewport(void delegate(GtkScrollStep, gint, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackMoveViewport(GtkTextView* textViewStruct, GtkScrollStep step, gint count, TextChildAnchor textChildAnchor);
 	
 	void delegate(gint, gboolean, TextChildAnchor)[] onPageHorizontallyListeners;
 	/**
@@ -354,28 +146,8 @@ public class TextChildAnchor
 	 * "move-cursor" signal with the GTK_MOVEMENT_HORIZONTAL_PAGES
 	 * granularity.
 	 */
-	void addOnPageHorizontally(void delegate(gint, gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("page-horizontally" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"page-horizontally",
-			cast(GCallback)&callBackPageHorizontally,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["page-horizontally"] = 1;
-		}
-		onPageHorizontallyListeners ~= dlg;
-	}
-	extern(C) static void callBackPageHorizontally(GtkTextView* textViewStruct, gint count, gboolean extendSelection, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(gint, gboolean, TextChildAnchor) dlg ; textChildAnchor.onPageHorizontallyListeners )
-		{
-			dlg(count, extendSelection, textChildAnchor);
-		}
-	}
+	void addOnPageHorizontally(void delegate(gint, gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPageHorizontally(GtkTextView* textViewStruct, gint count, gboolean extendSelection, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onPasteClipboardListeners;
 	/**
@@ -386,28 +158,8 @@ public class TextChildAnchor
 	 * The default bindings for this signal are
 	 * Ctrl-v and Shift-Insert.
 	 */
-	void addOnPasteClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("paste-clipboard" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"paste-clipboard",
-			cast(GCallback)&callBackPasteClipboard,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["paste-clipboard"] = 1;
-		}
-		onPasteClipboardListeners ~= dlg;
-	}
-	extern(C) static void callBackPasteClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onPasteClipboardListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnPasteClipboard(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPasteClipboard(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(GtkMenu*, TextChildAnchor)[] onPopulatePopupListeners;
 	/**
@@ -416,28 +168,8 @@ public class TextChildAnchor
 	 * If you need to add items to the context menu, connect
 	 * to this signal and append your menuitems to the menu.
 	 */
-	void addOnPopulatePopup(void delegate(GtkMenu*, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("populate-popup" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"populate-popup",
-			cast(GCallback)&callBackPopulatePopup,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["populate-popup"] = 1;
-		}
-		onPopulatePopupListeners ~= dlg;
-	}
-	extern(C) static void callBackPopulatePopup(GtkTextView* entryStruct, GtkMenu* menu, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(GtkMenu*, TextChildAnchor) dlg ; textChildAnchor.onPopulatePopupListeners )
-		{
-			dlg(menu, textChildAnchor);
-		}
-	}
+	void addOnPopulatePopup(void delegate(GtkMenu*, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopulatePopup(GtkTextView* entryStruct, GtkMenu* menu, TextChildAnchor textChildAnchor);
 	
 	void delegate(gboolean, TextChildAnchor)[] onSelectAllListeners;
 	/**
@@ -448,28 +180,8 @@ public class TextChildAnchor
 	 * The default bindings for this signal are Ctrl-a and Ctrl-/
 	 * for selecting and Shift-Ctrl-a and Ctrl-\ for unselecting.
 	 */
-	void addOnSelectAll(void delegate(gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("select-all" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"select-all",
-			cast(GCallback)&callBackSelectAll,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["select-all"] = 1;
-		}
-		onSelectAllListeners ~= dlg;
-	}
-	extern(C) static void callBackSelectAll(GtkTextView* textViewStruct, gboolean select, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(gboolean, TextChildAnchor) dlg ; textChildAnchor.onSelectAllListeners )
-		{
-			dlg(select, textChildAnchor);
-		}
-	}
+	void addOnSelectAll(void delegate(gboolean, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSelectAll(GtkTextView* textViewStruct, gboolean select, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onSetAnchorListeners;
 	/**
@@ -480,28 +192,8 @@ public class TextChildAnchor
 	 * "insert" mark.
 	 * This signal has no default bindings.
 	 */
-	void addOnSetAnchor(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("set-anchor" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"set-anchor",
-			cast(GCallback)&callBackSetAnchor,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["set-anchor"] = 1;
-		}
-		onSetAnchorListeners ~= dlg;
-	}
-	extern(C) static void callBackSetAnchor(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onSetAnchorListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnSetAnchor(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSetAnchor(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(GtkAdjustment*, GtkAdjustment*, TextChildAnchor)[] onSetScrollAdjustmentsListeners;
 	/**
@@ -509,28 +201,8 @@ public class TextChildAnchor
 	 * like GtkScrolledWindow will emit this signal to connect two instances
 	 * of GtkScrollbar to the scroll directions of the GtkTextView.
 	 */
-	void addOnSetScrollAdjustments(void delegate(GtkAdjustment*, GtkAdjustment*, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("set-scroll-adjustments" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"set-scroll-adjustments",
-			cast(GCallback)&callBackSetScrollAdjustments,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["set-scroll-adjustments"] = 1;
-		}
-		onSetScrollAdjustmentsListeners ~= dlg;
-	}
-	extern(C) static void callBackSetScrollAdjustments(GtkTextView* horizontalStruct, GtkAdjustment* vertical, GtkAdjustment* arg2, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(GtkAdjustment*, GtkAdjustment*, TextChildAnchor) dlg ; textChildAnchor.onSetScrollAdjustmentsListeners )
-		{
-			dlg(vertical, arg2, textChildAnchor);
-		}
-	}
+	void addOnSetScrollAdjustments(void delegate(GtkAdjustment*, GtkAdjustment*, TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackSetScrollAdjustments(GtkTextView* horizontalStruct, GtkAdjustment* vertical, GtkAdjustment* arg2, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onToggleCursorVisibleListeners;
 	/**
@@ -539,28 +211,8 @@ public class TextChildAnchor
 	 * which gets emitted to toggle the visibility of the cursor.
 	 * The default binding for this signal is F7.
 	 */
-	void addOnToggleCursorVisible(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toggle-cursor-visible" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toggle-cursor-visible",
-			cast(GCallback)&callBackToggleCursorVisible,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toggle-cursor-visible"] = 1;
-		}
-		onToggleCursorVisibleListeners ~= dlg;
-	}
-	extern(C) static void callBackToggleCursorVisible(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onToggleCursorVisibleListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnToggleCursorVisible(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToggleCursorVisible(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	void delegate(TextChildAnchor)[] onToggleOverwriteListeners;
 	/**
@@ -571,28 +223,8 @@ public class TextChildAnchor
 	 * See Also
 	 * GtkTextBuffer, GtkTextIter
 	 */
-	void addOnToggleOverwrite(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toggle-overwrite" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toggle-overwrite",
-			cast(GCallback)&callBackToggleOverwrite,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toggle-overwrite"] = 1;
-		}
-		onToggleOverwriteListeners ~= dlg;
-	}
-	extern(C) static void callBackToggleOverwrite(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor)
-	{
-		foreach ( void delegate(TextChildAnchor) dlg ; textChildAnchor.onToggleOverwriteListeners )
-		{
-			dlg(textChildAnchor);
-		}
-	}
+	void addOnToggleOverwrite(void delegate(TextChildAnchor) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToggleOverwrite(GtkTextView* textViewStruct, TextChildAnchor textChildAnchor);
 	
 	
 	/**
@@ -602,32 +234,14 @@ public class TextChildAnchor
 	 * convenience function gtk_text_buffer_create_child_anchor().
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkTextChildAnchor* gtk_text_child_anchor_new (void);
-		auto p = gtk_text_child_anchor_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_text_child_anchor_new()");
-		}
-		this(cast(GtkTextChildAnchor*) p);
-	}
+	public this ();
 	
 	/**
 	 * Gets a list of all widgets anchored at this child anchor.
 	 * The returned list should be freed with g_list_free().
 	 * Returns: list of widgets anchored at anchor
 	 */
-	public ListG getWidgets()
-	{
-		// GList* gtk_text_child_anchor_get_widgets (GtkTextChildAnchor *anchor);
-		auto p = gtk_text_child_anchor_get_widgets(gtkTextChildAnchor);
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListG(cast(GList*) p);
-	}
+	public ListG getWidgets();
 	
 	/**
 	 * Determines whether a child anchor has been deleted from
@@ -638,9 +252,5 @@ public class TextChildAnchor
 	 * will also be finalized.
 	 * Returns: TRUE if the child anchor has been deleted from its buffer
 	 */
-	public int getDeleted()
-	{
-		// gboolean gtk_text_child_anchor_get_deleted (GtkTextChildAnchor *anchor);
-		return gtk_text_child_anchor_get_deleted(gtkTextChildAnchor);
-	}
+	public int getDeleted();
 }

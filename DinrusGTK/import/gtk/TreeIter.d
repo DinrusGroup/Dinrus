@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = 
- * outPack = gtk
- * outFile = TreeIter
- * strct   = GtkTreeIter
- * realStrct=
- * ctorStrct=
- * clss    = TreeIter
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_tree_iter_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * 	- row-changed
- * 	- row-deleted
- * 	- row-has-child-toggled
- * 	- row-inserted
- * 	- rows-reordered
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreePath
- * 	- gtkD.gtk.TreeIterError
- * 	- gtkD.gobject.Value
- * structWrap:
- * 	- GtkTreeIter* -> TreeIter
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TreeIter;
 
 public  import gtkD.gtkc.gtktypes;
@@ -215,30 +154,16 @@ public class TreeIter
 	protected GtkTreeIter* gtkTreeIter;
 	
 	
-	public GtkTreeIter* getTreeIterStruct()
-	{
-		return gtkTreeIter;
-	}
+	public GtkTreeIter* getTreeIterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkTreeIter;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTreeIter* gtkTreeIter)
-	{
-		if(gtkTreeIter is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkTreeIter = gtkTreeIter;
-	}
+	public this (GtkTreeIter* gtkTreeIter);
 	
 	/**
 	 * this will be set only when the iter
@@ -247,40 +172,21 @@ public class TreeIter
 	GtkTreeModel* gtkTreeModel;
 	
 	/** */
-	public void setModel(GtkTreeModel* gtkTreeModel)
-	{
-		this.gtkTreeModel = gtkTreeModel;
-	}
+	public void setModel(GtkTreeModel* gtkTreeModel);
 	
 	/** */
-	public void setModel(TreeModelIF treeModel)
-	{
-		this.gtkTreeModel = treeModel.getTreeModelTStruct();
-	}
+	public void setModel(TreeModelIF treeModel);
 	
 	/**
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(TreeModelIF treeModel, TreePath treePath)
-	{
-		this();
-		setModel(treeModel);
-		if ( !gtk_tree_model_get_iter_from_string(
-		treeModel.getTreeModelTStruct(),
-		getTreeIterStruct(), Str.toStringz(treePath.toString())) )
-		{
-			throw new ConstructionException("null returned by gtk_tree_model_get_iter_from_string");
-		}
-	}
+	public this(TreeModelIF treeModel, TreePath treePath);
 	
 	/**
 	 * creates a new tree iteractor.
 	 * used TreeView.createIter and TreeView.append() to create iteractor for a tree or list
 	 */
-	this()
-	{
-		this(new GtkTreeIter);
-	}
+	this();
 	
 	/**
 	 * Get Value
@@ -288,14 +194,7 @@ public class TreeIter
 	 *  column =
 	 *  value =
 	 */
-	void getValue(int column, Value value)
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getValue","Tree model not set");
-		}
-		gtk_tree_model_get_value(gtkTreeModel, gtkTreeIter, column, value.getValueStruct());
-	}
+	void getValue(int column, Value value);
 	
 	/**
 	 * Get the value of a column as a string
@@ -303,17 +202,7 @@ public class TreeIter
 	 *  column = the column number
 	 * Returns: a string representing the value of the column
 	 */
-	string getValueString(int column)
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getValueString","Tree model not set");
-		}
-		Value value = new Value();
-		gtk_tree_model_get_value(gtkTreeModel, gtkTreeIter, column, value.getValueStruct());
-		//printf("TreeIter.getValuaString = %.*s\n", value.getString().toString());
-		return value.getString();
-	}
+	string getValueString(int column);
 	
 	/**
 	 * Get the value of a column as an int
@@ -321,113 +210,36 @@ public class TreeIter
 	 *  column = the column number
 	 * Returns: a string representing the value of the column
 	 */
-	int getValueInt(int column)
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getValueInt", "Tree model not set");
-		}
-		Value value = new Value();
-		gtk_tree_model_get_value(gtkTreeModel, gtkTreeIter, column, value.getValueStruct());
-		return value.getInt();
-	}
+	int getValueInt(int column);
 	
 	/** */
-	TreePath getTreePath()
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getTreePath","Tree model not set");
-		}
-		return new TreePath(gtk_tree_model_get_path(gtkTreeModel, gtkTreeIter));
-	}
+	TreePath getTreePath();
 	
 	/**
 	 * This return the path visible to the user.
 	 */
-	string getVisiblePath(string separator)
-	{
-		string vPath;
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getVisiblePath", "Tree model not set");
-		}
-		
-		vPath = getValueString(0);
-		TreeIter parent = getParent();
-		while ( parent !is  null )
-		{
-			//printf("TreeIter.getVisiblePath parent = %.*s\n",parent.getValueString(0).toString());
-			vPath = parent.getValueString(0) ~ separator ~ vPath;
-			parent = parent.getParent();
-		}
-		
-		//printf("TreeIter.getVisiblePath = %.*s\n", vPath.toString());
-		
-		return vPath;
-	}
+	string getVisiblePath(string separator);
 	
 	/**
 	 * Gets the parent of this iter
 	 * Returns: the parent iter or null if can't get parent or an error occured
 	 */
-	TreeIter getParent()
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getParent", "Tree model not set");
-		}
-		TreeIter parent = new TreeIter();
-		bool gotParent = gtk_tree_model_iter_parent(gtkTreeModel, parent.getTreeIterStruct(), gtkTreeIter) == 0 ? false : true;
-		if ( !gotParent )
-		{
-			return null;
-		}
-		parent.setModel(gtkTreeModel);
-		return parent;
-	}
+	TreeIter getParent();
 	
 	/** */
-	TreeIter getGrandParent()
-	{
-		if ( gtkTreeModel  is  null )
-		{
-			throw new TreeIterError("getGrandParent", "Tree model not set");
-		}
-		TreeIter grandParent = this;
-		TreeIter parent = grandParent.getParent();
-		while ( parent !is null )
-		{
-			grandParent = parent;
-			parent = grandParent.getParent();
-		}
-		
-		return grandParent;
-	}
+	TreeIter getGrandParent();
 	
 	/** A unique stamp to catch invalid iterators */
-	public int stamp()
-	{
-		return gtkTreeIter.stamp;
-	}
+	public int stamp();
 	
 	/** Ditto */
-	public void stamp(int stamp)
-	{
-		gtkTreeIter.stamp = stamp;
-	}
+	public void stamp(int stamp);
 	
 	/** Model specific data */
-	public void* userData()
-	{
-		return gtkTreeIter.userData;
-	}
+	public void* userData();
 	
 	/** Ditto */
-	public void userData(void* data)
-	{
-		gtkTreeIter.userData = data;
-	}
+	public void userData(void* data);
 	
 	public struct IterData
 	{
@@ -587,24 +399,11 @@ public class TreeIter
 	 * You must free this iter with gtk_tree_iter_free().
 	 * Returns: a newly-allocated copy of iter.
 	 */
-	public TreeIter copy()
-	{
-		// GtkTreeIter * gtk_tree_iter_copy (GtkTreeIter *iter);
-		auto p = gtk_tree_iter_copy(gtkTreeIter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeIter(cast(GtkTreeIter*) p);
-	}
+	public TreeIter copy();
 	
 	/**
 	 * Frees an iterator that has been allocated by gtk_tree_iter_copy().
 	 * This function is mainly used for language bindings.
 	 */
-	public void free()
-	{
-		// void gtk_tree_iter_free (GtkTreeIter *iter);
-		gtk_tree_iter_free(gtkTreeIter);
-	}
+	public void free();
 }

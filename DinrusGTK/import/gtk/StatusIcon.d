@@ -1,69 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkStatusIcon.html
- * outPack = gtk
- * outFile = StatusIcon
- * strct   = GtkStatusIcon
- * realStrct=
- * ctorStrct=
- * clss    = StatusIcon
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_status_icon_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_status_icon_new_from_stock
- * 	- gtk_status_icon_new_from_file
- * 	- gtk_status_icon_new_from_icon_name
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gio.Icon
- * 	- gtkD.gio.IconIF
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.gdk.Screen
- * 	- gtkD.gtk.Menu
- * 	- gtkD.gtk.Tooltip
- * structWrap:
- * 	- GIcon* -> IconIF
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkScreen* -> Screen
- * 	- GtkMenu* -> Menu
- * 	- GtkTooltip* -> Tooltip
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.StatusIcon;
 
 public  import gtkD.gtkc.gtktypes;
@@ -113,38 +47,16 @@ public class StatusIcon : ObjectG
 	protected GtkStatusIcon* gtkStatusIcon;
 	
 	
-	public GtkStatusIcon* getStatusIconStruct()
-	{
-		return gtkStatusIcon;
-	}
+	public GtkStatusIcon* getStatusIconStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkStatusIcon;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkStatusIcon* gtkStatusIcon)
-	{
-		if(gtkStatusIcon is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkStatusIcon);
-		if( ptr !is null )
-		{
-			this = cast(StatusIcon)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkStatusIcon);
-		this.gtkStatusIcon = gtkStatusIcon;
-	}
+	public this (GtkStatusIcon* gtkStatusIcon);
 	
 	/**
 	 * Creates a status icon displaying a stock icon. Sample stock icon
@@ -158,16 +70,7 @@ public class StatusIcon : ObjectG
 	 *  a new GtkStatusIcon
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (StockID stockID)
-	{
-		// GtkStatusIcon* gtk_status_icon_new_from_stock (const gchar *stock_id);
-		auto p = gtk_status_icon_new_from_stock(Str.toStringz(StockDesc[stockID]));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_status_icon_new_from_stock");
-		}
-		this(cast(GtkStatusIcon*)p);
-	}
+	public this (StockID stockID);
 	
 	/**
 	 * Creates a status icon displaying an icon from the current icon theme.
@@ -180,29 +83,7 @@ public class StatusIcon : ObjectG
 	 *  with gtk_status_icon_new_from_file.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string iconName, bool loadFromFile = false)
-	{
-		//TODO: look at a better way to do this.
-		GtkStatusIcon* p;
-		
-		if(loadFromFile)
-		{
-			// GtkStatusIcon* gtk_status_icon_new_from_file (const gchar *filename);
-			p = cast(GtkStatusIcon*)gtk_status_icon_new_from_file(Str.toStringz(iconName));
-		}
-		else
-		{
-			// GtkStatusIcon* gtk_status_icon_new_from_icon_name (const gchar *icon_name);
-			p = cast(GtkStatusIcon*)gtk_status_icon_new_from_icon_name(Str.toStringz(iconName));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_status_icon_new_from_");
-		}
-		
-		this(p);
-	}
+	public this (string iconName, bool loadFromFile = false);
 	
 	/**
 	 */
@@ -216,28 +97,8 @@ public class StatusIcon : ObjectG
 	 * be used by applications and should be wrapped by language bindings.
 	 * Since 2.10
 	 */
-	void addOnActivate(void delegate(StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("activate" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"activate",
-			cast(GCallback)&callBackActivate,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["activate"] = 1;
-		}
-		onActivateListeners ~= dlg;
-	}
-	extern(C) static void callBackActivate(GtkStatusIcon* statusIconStruct, StatusIcon statusIcon)
-	{
-		foreach ( void delegate(StatusIcon) dlg ; statusIcon.onActivateListeners )
-		{
-			dlg(statusIcon);
-		}
-	}
+	void addOnActivate(void delegate(StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackActivate(GtkStatusIcon* statusIconStruct, StatusIcon statusIcon);
 	
 	bool delegate(GdkEventButton*, StatusIcon)[] onButtonPressListeners;
 	/**
@@ -247,33 +108,8 @@ public class StatusIcon : ObjectG
 	 * and ::popup-menu signals in preference.
 	 * Since 2.14
 	 */
-	void addOnButtonPress(bool delegate(GdkEventButton*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("button-press-event" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"button-press-event",
-			cast(GCallback)&callBackButtonPress,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["button-press-event"] = 1;
-		}
-		onButtonPressListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackButtonPress(GtkStatusIcon* statusIconStruct, GdkEventButton* event, StatusIcon statusIcon)
-	{
-		foreach ( bool delegate(GdkEventButton*, StatusIcon) dlg ; statusIcon.onButtonPressListeners )
-		{
-			if ( dlg(event, statusIcon) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnButtonPress(bool delegate(GdkEventButton*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackButtonPress(GtkStatusIcon* statusIconStruct, GdkEventButton* event, StatusIcon statusIcon);
 	
 	bool delegate(GdkEventButton*, StatusIcon)[] onButtonReleaseListeners;
 	/**
@@ -283,33 +119,8 @@ public class StatusIcon : ObjectG
 	 * and ::popup-menu signals in preference.
 	 * Since 2.14
 	 */
-	void addOnButtonRelease(bool delegate(GdkEventButton*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("button-release-event" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"button-release-event",
-			cast(GCallback)&callBackButtonRelease,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["button-release-event"] = 1;
-		}
-		onButtonReleaseListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackButtonRelease(GtkStatusIcon* statusIconStruct, GdkEventButton* event, StatusIcon statusIcon)
-	{
-		foreach ( bool delegate(GdkEventButton*, StatusIcon) dlg ; statusIcon.onButtonReleaseListeners )
-		{
-			if ( dlg(event, statusIcon) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnButtonRelease(bool delegate(GdkEventButton*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackButtonRelease(GtkStatusIcon* statusIconStruct, GdkEventButton* event, StatusIcon statusIcon);
 	
 	void delegate(guint, guint, StatusIcon)[] onPopupMenuListeners;
 	/**
@@ -322,28 +133,8 @@ public class StatusIcon : ObjectG
 	 * be used by applications and should be wrapped by language bindings.
 	 * Since 2.10
 	 */
-	void addOnPopupMenu(void delegate(guint, guint, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("popup-menu" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"popup-menu",
-			cast(GCallback)&callBackPopupMenu,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["popup-menu"] = 1;
-		}
-		onPopupMenuListeners ~= dlg;
-	}
-	extern(C) static void callBackPopupMenu(GtkStatusIcon* statusIconStruct, guint button, guint activateTime, StatusIcon statusIcon)
-	{
-		foreach ( void delegate(guint, guint, StatusIcon) dlg ; statusIcon.onPopupMenuListeners )
-		{
-			dlg(button, activateTime, statusIcon);
-		}
-	}
+	void addOnPopupMenu(void delegate(guint, guint, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopupMenu(GtkStatusIcon* statusIconStruct, guint button, guint activateTime, StatusIcon statusIcon);
 	
 	bool delegate(gint, gint, gboolean, Tooltip, StatusIcon)[] onQueryTooltipListeners;
 	/**
@@ -361,30 +152,8 @@ public class StatusIcon : ObjectG
 	 * For plain text tooltips, use "tooltip-text" in preference.
 	 * Since 2.16
 	 */
-	void addOnQueryTooltip(bool delegate(gint, gint, gboolean, Tooltip, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("query-tooltip" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"query-tooltip",
-			cast(GCallback)&callBackQueryTooltip,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["query-tooltip"] = 1;
-		}
-		onQueryTooltipListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackQueryTooltip(GtkStatusIcon* statusIconStruct, gint x, gint y, gboolean keyboardMode, GtkTooltip* tooltip, StatusIcon statusIcon)
-	{
-		foreach ( bool delegate(gint, gint, gboolean, Tooltip, StatusIcon) dlg ; statusIcon.onQueryTooltipListeners )
-		{
-			if ( dlg(x, y, keyboardMode, new Tooltip(tooltip), statusIcon) )
-			{
-				return 1;
-			}
-		}
+	void addOnQueryTooltip(bool delegate(gint, gint, gboolean, Tooltip, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackQueryTooltip(GtkStatusIcon* statusIconStruct, gint x, gint y, gboolean keyboardMode, GtkTooltip* tooltip, StatusIcon statusIcon);
 		
 		return 0;
 	}
@@ -396,33 +165,8 @@ public class StatusIcon : ObjectG
 	 * button press events for buttons 4 and 5 when the wheel is turned.
 	 * Whether this event is emitted is platform-dependent.
 	 */
-	void addOnScroll(bool delegate(GdkEventScroll*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("scroll-event" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"scroll-event",
-			cast(GCallback)&callBackScroll,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["scroll-event"] = 1;
-		}
-		onScrollListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackScroll(GtkStatusIcon* statusIconStruct, GdkEventScroll* event, StatusIcon statusIcon)
-	{
-		foreach ( bool delegate(GdkEventScroll*, StatusIcon) dlg ; statusIcon.onScrollListeners )
-		{
-			if ( dlg(event, statusIcon) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnScroll(bool delegate(GdkEventScroll*, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackScroll(GtkStatusIcon* statusIconStruct, GdkEventScroll* event, StatusIcon statusIcon);
 	
 	bool delegate(gint, StatusIcon)[] onSizeChangedListeners;
 	/**
@@ -430,33 +174,8 @@ public class StatusIcon : ObjectG
 	 * changes, e.g. because the notification area got resized.
 	 * Since 2.10
 	 */
-	void addOnSizeChanged(bool delegate(gint, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("size-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"size-changed",
-			cast(GCallback)&callBackSizeChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["size-changed"] = 1;
-		}
-		onSizeChangedListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackSizeChanged(GtkStatusIcon* statusIconStruct, gint size, StatusIcon statusIcon)
-	{
-		foreach ( bool delegate(gint, StatusIcon) dlg ; statusIcon.onSizeChangedListeners )
-		{
-			if ( dlg(size, statusIcon) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnSizeChanged(bool delegate(gint, StatusIcon) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackSizeChanged(GtkStatusIcon* statusIconStruct, gint size, StatusIcon statusIcon);
 	
 	
 	/**
@@ -464,16 +183,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkStatusIcon * gtk_status_icon_new (void);
-		auto p = gtk_status_icon_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_status_icon_new()");
-		}
-		this(cast(GtkStatusIcon*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a status icon displaying pixbuf.
@@ -484,16 +194,7 @@ public class StatusIcon : ObjectG
 	 * pixbuf =  a GdkPixbuf
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Pixbuf pixbuf)
-	{
-		// GtkStatusIcon * gtk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf);
-		auto p = gtk_status_icon_new_from_pixbuf((pixbuf is null) ? null : pixbuf.getPixbufStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_status_icon_new_from_pixbuf((pixbuf is null) ? null : pixbuf.getPixbufStruct())");
-		}
-		this(cast(GtkStatusIcon*) p);
-	}
+	public this (Pixbuf pixbuf);
 	
 	/**
 	 * Creates a status icon displaying a GIcon. If the icon is a
@@ -503,16 +204,7 @@ public class StatusIcon : ObjectG
 	 * icon =  a GIcon
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (IconIF icon)
-	{
-		// GtkStatusIcon * gtk_status_icon_new_from_gicon (GIcon *icon);
-		auto p = gtk_status_icon_new_from_gicon((icon is null) ? null : icon.getIconTStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_status_icon_new_from_gicon((icon is null) ? null : icon.getIconTStruct())");
-		}
-		this(cast(GtkStatusIcon*) p);
-	}
+	public this (IconIF icon);
 	
 	/**
 	 * Makes status_icon display pixbuf.
@@ -521,11 +213,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * pixbuf =  a GdkPixbuf or NULL
 	 */
-	public void setFromPixbuf(Pixbuf pixbuf)
-	{
-		// void gtk_status_icon_set_from_pixbuf (GtkStatusIcon *status_icon,  GdkPixbuf *pixbuf);
-		gtk_status_icon_set_from_pixbuf(gtkStatusIcon, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public void setFromPixbuf(Pixbuf pixbuf);
 	
 	/**
 	 * Makes status_icon display the file filename.
@@ -534,11 +222,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * filename =  a filename
 	 */
-	public void setFromFile(string filename)
-	{
-		// void gtk_status_icon_set_from_file (GtkStatusIcon *status_icon,  const gchar *filename);
-		gtk_status_icon_set_from_file(gtkStatusIcon, Str.toStringz(filename));
-	}
+	public void setFromFile(string filename);
 	
 	/**
 	 * Makes status_icon display the stock icon with the id stock_id.
@@ -547,11 +231,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * stockId =  a stock icon id
 	 */
-	public void setFromStock(string stockId)
-	{
-		// void gtk_status_icon_set_from_stock (GtkStatusIcon *status_icon,  const gchar *stock_id);
-		gtk_status_icon_set_from_stock(gtkStatusIcon, Str.toStringz(stockId));
-	}
+	public void setFromStock(string stockId);
 	
 	/**
 	 * Makes status_icon display the icon named icon_name from the
@@ -561,11 +241,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * iconName =  an icon name
 	 */
-	public void setFromIconName(string iconName)
-	{
-		// void gtk_status_icon_set_from_icon_name (GtkStatusIcon *status_icon,  const gchar *icon_name);
-		gtk_status_icon_set_from_icon_name(gtkStatusIcon, Str.toStringz(iconName));
-	}
+	public void setFromIconName(string iconName);
 	
 	/**
 	 * Makes status_icon display the GIcon.
@@ -574,11 +250,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * icon =  a GIcon
 	 */
-	public void setFromGicon(IconIF icon)
-	{
-		// void gtk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,  GIcon *icon);
-		gtk_status_icon_set_from_gicon(gtkStatusIcon, (icon is null) ? null : icon.getIconTStruct());
-	}
+	public void setFromGicon(IconIF icon);
 	
 	/**
 	 * Gets the type of representation being used by the GtkStatusIcon
@@ -587,11 +259,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: the image representation being used
 	 */
-	public GtkImageType getStorageType()
-	{
-		// GtkImageType gtk_status_icon_get_storage_type (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_storage_type(gtkStatusIcon);
-	}
+	public GtkImageType getStorageType();
 	
 	/**
 	 * Gets the GdkPixbuf being displayed by the GtkStatusIcon.
@@ -602,16 +270,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: the displayed pixbuf, or NULL if the image is empty.
 	 */
-	public Pixbuf getPixbuf()
-	{
-		// GdkPixbuf * gtk_status_icon_get_pixbuf (GtkStatusIcon *status_icon);
-		auto p = gtk_status_icon_get_pixbuf(gtkStatusIcon);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Pixbuf(cast(GdkPixbuf*) p);
-	}
+	public Pixbuf getPixbuf();
 	
 	/**
 	 * Gets the id of the stock icon being displayed by the GtkStatusIcon.
@@ -622,11 +281,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: stock id of the displayed stock icon, or NULL if the image is empty.
 	 */
-	public string getStock()
-	{
-		// const gchar * gtk_status_icon_get_stock (GtkStatusIcon *status_icon);
-		return Str.toString(gtk_status_icon_get_stock(gtkStatusIcon));
-	}
+	public string getStock();
 	
 	/**
 	 * Gets the name of the icon being displayed by the GtkStatusIcon.
@@ -637,11 +292,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: name of the displayed icon, or NULL if the image is empty.
 	 */
-	public string getIconName()
-	{
-		// const gchar * gtk_status_icon_get_icon_name (GtkStatusIcon *status_icon);
-		return Str.toString(gtk_status_icon_get_icon_name(gtkStatusIcon));
-	}
+	public string getIconName();
 	
 	/**
 	 * Retrieves the GIcon being displayed by the GtkStatusIcon.
@@ -653,16 +304,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.14
 	 * Returns: the displayed icon, or NULL if the image is empty
 	 */
-	public IconIF getGicon()
-	{
-		// GIcon * gtk_status_icon_get_gicon (GtkStatusIcon *status_icon);
-		auto p = gtk_status_icon_get_gicon(gtkStatusIcon);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Icon(cast(GIcon*) p);
-	}
+	public IconIF getGicon();
 	
 	/**
 	 * Gets the size in pixels that is available for the image.
@@ -675,11 +317,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: the size that is available for the image
 	 */
-	public int getSize()
-	{
-		// gint gtk_status_icon_get_size (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_size(gtkStatusIcon);
-	}
+	public int getSize();
 	
 	/**
 	 * Sets the GdkScreen where status_icon is displayed; if
@@ -689,27 +327,14 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * screen =  a GdkScreen
 	 */
-	public void setScreen(Screen screen)
-	{
-		// void gtk_status_icon_set_screen (GtkStatusIcon *status_icon,  GdkScreen *screen);
-		gtk_status_icon_set_screen(gtkStatusIcon, (screen is null) ? null : screen.getScreenStruct());
-	}
+	public void setScreen(Screen screen);
 	
 	/**
 	 * Returns the GdkScreen associated with status_icon.
 	 * Since 2.12
 	 * Returns: a GdkScreen.
 	 */
-	public Screen getScreen()
-	{
-		// GdkScreen * gtk_status_icon_get_screen (GtkStatusIcon *status_icon);
-		auto p = gtk_status_icon_get_screen(gtkStatusIcon);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Screen(cast(GdkScreen*) p);
-	}
+	public Screen getScreen();
 	
 	/**
 	 * Warning
@@ -719,11 +344,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * tooltipText =  the tooltip text, or NULL
 	 */
-	public void setTooltip(string tooltipText)
-	{
-		// void gtk_status_icon_set_tooltip (GtkStatusIcon *status_icon,  const gchar *tooltip_text);
-		gtk_status_icon_set_tooltip(gtkStatusIcon, Str.toStringz(tooltipText));
-	}
+	public void setTooltip(string tooltipText);
 	
 	/**
 	 * Sets text as the contents of the tooltip.
@@ -736,22 +357,14 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * text =  the contents of the tooltip for status_icon
 	 */
-	public void setTooltipText(string text)
-	{
-		// void gtk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,  const gchar *text);
-		gtk_status_icon_set_tooltip_text(gtkStatusIcon, Str.toStringz(text));
-	}
+	public void setTooltipText(string text);
 	
 	/**
 	 * Gets the contents of the tooltip for status_icon.
 	 * Since 2.16
 	 * Returns: the tooltip text, or NULL. You should free the returned string with g_free() when done.
 	 */
-	public string getTooltipText()
-	{
-		// gchar * gtk_status_icon_get_tooltip_text (GtkStatusIcon *status_icon);
-		return Str.toString(gtk_status_icon_get_tooltip_text(gtkStatusIcon));
-	}
+	public string getTooltipText();
 	
 	/**
 	 * Sets markup as the contents of the tooltip, which is marked up with
@@ -764,23 +377,15 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * markup =  the contents of the tooltip for status_icon, or NULL
 	 */
-	public void setTooltipMarkup(string markup)
-	{
-		// void gtk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,  const gchar *markup);
-		gtk_status_icon_set_tooltip_markup(gtkStatusIcon, Str.toStringz(markup));
-	}
+	public void setTooltipMarkup(string markup);
 	
 	/**
 	 * Gets the contents of the tooltip for status_icon.
 	 * Since 2.16
 	 * Returns: the tooltip text, or NULL. You should free the returned string with g_free() when done.
 	 */
-	public string getTooltipMarkup()
-	{
-		// gchar * gtk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon);
-		return Str.toString(gtk_status_icon_get_tooltip_markup(gtkStatusIcon));
-	}
-	
+	public string getTooltipMarkup();
+
 	/**
 	 * Sets the has-tooltip property on status_icon to has_tooltip.
 	 * See "has-tooltip" for more information.
@@ -788,11 +393,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * hasTooltip =  whether or not status_icon has a tooltip
 	 */
-	public void setHasTooltip(int hasTooltip)
-	{
-		// void gtk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,  gboolean has_tooltip);
-		gtk_status_icon_set_has_tooltip(gtkStatusIcon, hasTooltip);
-	}
+	public void setHasTooltip(int hasTooltip);
 	
 	/**
 	 * Returns the current value of the has-tooltip property.
@@ -800,11 +401,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.16
 	 * Returns: current value of has-tooltip on status_icon.
 	 */
-	public int getHasTooltip()
-	{
-		// gboolean gtk_status_icon_get_has_tooltip (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_has_tooltip(gtkStatusIcon);
-	}
+	public int getHasTooltip();
 	
 	/**
 	 * Sets the title of this tray icon.
@@ -815,22 +412,14 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * title =  the title
 	 */
-	public void setTitle(string title)
-	{
-		// void gtk_status_icon_set_title (GtkStatusIcon *status_icon,  const gchar *title);
-		gtk_status_icon_set_title(gtkStatusIcon, Str.toStringz(title));
-	}
+	public void setTitle(string title);
 	
 	/**
 	 * Gets the title of this tray icon. See gtk_status_icon_set_title().
 	 * Since 2.18
 	 * Returns: the title of the status icon
 	 */
-	public string getTitle()
-	{
-		// const gchar * gtk_status_icon_get_title (GtkStatusIcon *status_icon);
-		return Str.toString(gtk_status_icon_get_title(gtkStatusIcon));
-	}
+	public string getTitle();
 	
 	/**
 	 * Shows or hides a status icon.
@@ -838,12 +427,8 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * visible =  TRUE to show the status icon, FALSE to hide it
 	 */
-	public void setVisible(int visible)
-	{
-		// void gtk_status_icon_set_visible (GtkStatusIcon *status_icon,  gboolean visible);
-		gtk_status_icon_set_visible(gtkStatusIcon, visible);
-	}
-	
+	public void setVisible(int visible);
+
 	/**
 	 * Returns whether the status icon is visible or not.
 	 * Note that being visible does not guarantee that
@@ -852,11 +437,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: TRUE if the status icon is visible
 	 */
-	public int getVisible()
-	{
-		// gboolean gtk_status_icon_get_visible (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_visible(gtkStatusIcon);
-	}
+	public int getVisible();
 	
 	/**
 	 * Makes the status icon start or stop blinking.
@@ -867,11 +448,7 @@ public class StatusIcon : ObjectG
 	 * Params:
 	 * blinking =  TRUE to turn blinking on, FALSE to turn it off
 	 */
-	public void setBlinking(int blinking)
-	{
-		// void gtk_status_icon_set_blinking (GtkStatusIcon *status_icon,  gboolean blinking);
-		gtk_status_icon_set_blinking(gtkStatusIcon, blinking);
-	}
+	public void setBlinking(int blinking);
 	
 	/**
 	 * Returns whether the icon is blinking, see
@@ -879,11 +456,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: TRUE if the icon is blinking
 	 */
-	public int getBlinking()
-	{
-		// gboolean gtk_status_icon_get_blinking (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_blinking(gtkStatusIcon);
-	}
+	public int getBlinking();
 	
 	/**
 	 * Returns whether the status icon is embedded in a notification
@@ -891,11 +464,7 @@ public class StatusIcon : ObjectG
 	 * Since 2.10
 	 * Returns: TRUE if the status icon is embedded in a notification area.
 	 */
-	public int isEmbedded()
-	{
-		// gboolean gtk_status_icon_is_embedded (GtkStatusIcon *status_icon);
-		return gtk_status_icon_is_embedded(gtkStatusIcon);
-	}
+	public int isEmbedded();
 	
 	/**
 	 * Menu positioning function to use with gtk_menu_popup()
@@ -909,11 +478,7 @@ public class StatusIcon : ObjectG
 	 *  aligned with the menu popup position (only useful for GtkOptionMenu).
 	 * userData =  the status icon to position the menu on
 	 */
-	public static void positionMenu(Menu menu, out int x, out int y, out int pushIn, void* userData)
-	{
-		// void gtk_status_icon_position_menu (GtkMenu *menu,  gint *x,  gint *y,  gboolean *push_in,  gpointer user_data);
-		gtk_status_icon_position_menu((menu is null) ? null : menu.getMenuStruct(), &x, &y, &pushIn, userData);
-	}
+	public static void positionMenu(Menu menu, out int x, out int y, out int pushIn, void* userData);
 	
 	/**
 	 * Obtains information about the location of the status icon
@@ -938,16 +503,7 @@ public class StatusIcon : ObjectG
 	 *  at the left or right is vertical.
 	 * Returns: TRUE if the location information has  been filled in
 	 */
-	public int getGeometry(out Screen screen, out GdkRectangle area, out GtkOrientation orientation)
-	{
-		// gboolean gtk_status_icon_get_geometry (GtkStatusIcon *status_icon,  GdkScreen **screen,  GdkRectangle *area,  GtkOrientation *orientation);
-		GdkScreen* outscreen = null;
-		
-		auto p = gtk_status_icon_get_geometry(gtkStatusIcon, &outscreen, &area, &orientation);
-		
-		screen = new Screen(outscreen);
-		return p;
-	}
+	public int getGeometry(out Screen screen, out GdkRectangle area, out GtkOrientation orientation);
 	
 	/**
 	 * This function is only useful on the X11/freedesktop.org platform.
@@ -962,9 +518,5 @@ public class StatusIcon : ObjectG
 	 * Since 2.14
 	 * Returns: An 32 bit unsigned integer identifier for the underlying X11 Window
 	 */
-	public uint getX11_WindowId()
-	{
-		// guint32 gtk_status_icon_get_x11_window_id (GtkStatusIcon *status_icon);
-		return gtk_status_icon_get_x11_window_id(gtkStatusIcon);
-	}
+	public uint getX11_WindowId();
 }

@@ -1,64 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkToolItem.html
- * outPack = gtk
- * outFile = ToolItem
- * strct   = GtkToolItem
- * realStrct=
- * ctorStrct=
- * clss    = ToolItem
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- ActivatableIF
- * prefixes:
- * 	- gtk_tool_item_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Tooltips
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.ActivatableT
- * 	- gtkD.gtk.ActivatableIF
- * structWrap:
- * 	- GtkTooltips* -> Tooltips
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- * 	- setTooltipText
- * 	- setTooltipMarkup
- */
-
 module gtkD.gtk.ToolItem;
 
 public  import gtkD.gtkc.gtktypes;
@@ -97,38 +36,16 @@ public class ToolItem : Bin, ActivatableIF
 	protected GtkToolItem* gtkToolItem;
 	
 	
-	public GtkToolItem* getToolItemStruct()
-	{
-		return gtkToolItem;
-	}
+	public GtkToolItem* getToolItemStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkToolItem;
-	}
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkToolItem* gtkToolItem)
-	{
-		if(gtkToolItem is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkToolItem);
-		if( ptr !is null )
-		{
-			this = cast(ToolItem)ptr;
-			return;
-		}
-		super(cast(GtkBin*)gtkToolItem);
-		this.gtkToolItem = gtkToolItem;
-	}
+	public this (GtkToolItem* gtkToolItem);
 	
 	// add the Activatable capabilities
 	mixin ActivatableT!(GtkToolItem);
@@ -140,11 +57,7 @@ public class ToolItem : Bin, ActivatableIF
 	 *  tipText = the tooltip
 	 *  tipPrivate = a private text
 	 */
-	override void setTooltip(string tipText, string tipPrivate)
-	{
-		Tooltips tt = new Tooltips();
-		tt.setTip(this, tipText, tipPrivate);
-	}
+	override void setTooltip(string tipText, string tipPrivate);
 	
 	/**
 	 */
@@ -169,33 +82,8 @@ public class ToolItem : Bin, ActivatableIF
 	 * to invalidate the cache and ensure that the toolbar rebuilds its overflow
 	 * menu.
 	 */
-	void addOnCreateMenuProxy(bool delegate(ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("create-menu-proxy" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"create-menu-proxy",
-			cast(GCallback)&callBackCreateMenuProxy,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["create-menu-proxy"] = 1;
-		}
-		onCreateMenuProxyListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackCreateMenuProxy(GtkToolItem* toolItemStruct, ToolItem toolItem)
-	{
-		foreach ( bool delegate(ToolItem) dlg ; toolItem.onCreateMenuProxyListeners )
-		{
-			if ( dlg(toolItem) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnCreateMenuProxy(bool delegate(ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackCreateMenuProxy(GtkToolItem* toolItemStruct, ToolItem toolItem);
 	
 	bool delegate(Tooltips, string, string, ToolItem)[] onSetTooltipListeners;
 	/**
@@ -203,33 +91,8 @@ public class ToolItem : Bin, ActivatableIF
 	 * Application developers can use gtk_tool_item_set_tooltip() to
 	 * set the item's tooltip.
 	 */
-	void addOnSetTooltip(bool delegate(Tooltips, string, string, ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("set-tooltip" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"set-tooltip",
-			cast(GCallback)&callBackSetTooltip,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["set-tooltip"] = 1;
-		}
-		onSetTooltipListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackSetTooltip(GtkToolItem* toolItemStruct, GtkTooltips* tooltips, gchar* tipText, gchar* tipPrivate, ToolItem toolItem)
-	{
-		foreach ( bool delegate(Tooltips, string, string, ToolItem) dlg ; toolItem.onSetTooltipListeners )
-		{
-			if ( dlg(new Tooltips(tooltips), Str.toString(tipText), Str.toString(tipPrivate), toolItem) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnSetTooltip(bool delegate(Tooltips, string, string, ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackSetTooltip(GtkToolItem* toolItemStruct, GtkTooltips* tooltips, gchar* tipText, gchar* tipPrivate, ToolItem toolItem);
 	
 	void delegate(ToolItem)[] onToolbarReconfiguredListeners;
 	/**
@@ -252,28 +115,8 @@ public class ToolItem : Bin, ActivatableIF
 	 * A subclass of GtkToolItem that separates groups of
 	 *  items on a toolbar
 	 */
-	void addOnToolbarReconfigured(void delegate(ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toolbar-reconfigured" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toolbar-reconfigured",
-			cast(GCallback)&callBackToolbarReconfigured,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toolbar-reconfigured"] = 1;
-		}
-		onToolbarReconfiguredListeners ~= dlg;
-	}
-	extern(C) static void callBackToolbarReconfigured(GtkToolItem* toolItemStruct, ToolItem toolItem)
-	{
-		foreach ( void delegate(ToolItem) dlg ; toolItem.onToolbarReconfiguredListeners )
-		{
-			dlg(toolItem);
-		}
-	}
+	void addOnToolbarReconfigured(void delegate(ToolItem) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToolbarReconfigured(GtkToolItem* toolItemStruct, ToolItem toolItem);
 	
 	
 	/**
@@ -281,16 +124,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkToolItem * gtk_tool_item_new (void);
-		auto p = gtk_tool_item_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tool_item_new()");
-		}
-		this(cast(GtkToolItem*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets whether tool_item is to be allocated the same size as other
@@ -300,11 +134,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * homogeneous =  whether tool_item is the same size as other homogeneous items
 	 */
-	public void setHomogeneous(int homogeneous)
-	{
-		// void gtk_tool_item_set_homogeneous (GtkToolItem *tool_item,  gboolean homogeneous);
-		gtk_tool_item_set_homogeneous(gtkToolItem, homogeneous);
-	}
+	public void setHomogeneous(int homogeneous);
 	
 	/**
 	 * Returns whether tool_item is the same size as other homogeneous
@@ -312,12 +142,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: TRUE if the item is the same size as other homogeneousitems.
 	 */
-	public int getHomogeneous()
-	{
-		// gboolean gtk_tool_item_get_homogeneous (GtkToolItem *tool_item);
-		return gtk_tool_item_get_homogeneous(gtkToolItem);
-	}
-	
+	public int getHomogeneous();
 	/**
 	 * Sets whether tool_item is allocated extra space when there
 	 * is more room on the toolbar then needed for the items. The
@@ -327,11 +152,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * expand =  Whether tool_item is allocated extra space
 	 */
-	public void setExpand(int expand)
-	{
-		// void gtk_tool_item_set_expand (GtkToolItem *tool_item,  gboolean expand);
-		gtk_tool_item_set_expand(gtkToolItem, expand);
-	}
+	public void setExpand(int expand);
 	
 	/**
 	 * Returns whether tool_item is allocated extra space.
@@ -339,12 +160,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: TRUE if tool_item is allocated extra space.
 	 */
-	public int getExpand()
-	{
-		// gboolean gtk_tool_item_get_expand (GtkToolItem *tool_item);
-		return gtk_tool_item_get_expand(gtkToolItem);
-	}
-	
+	public int getExpand();
 	/**
 	 * Warning
 	 * gtk_tool_item_set_tooltip has been deprecated since version 2.12 and should not be used in newly-written code. Use gtk_tool_item_set_tooltip_text() instead.
@@ -357,11 +173,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * tipText =  text to be used as tooltip text for tool_item
 	 * tipPrivate =  text to be used as private tooltip text
 	 */
-	public void setTooltip(Tooltips tooltips, string tipText, string tipPrivate)
-	{
-		// void gtk_tool_item_set_tooltip (GtkToolItem *tool_item,  GtkTooltips *tooltips,  const gchar *tip_text,  const gchar *tip_private);
-		gtk_tool_item_set_tooltip(gtkToolItem, (tooltips is null) ? null : tooltips.getTooltipsStruct(), Str.toStringz(tipText), Str.toStringz(tipPrivate));
-	}
+	public void setTooltip(Tooltips tooltips, string tipText, string tipPrivate);
 	
 	/**
 	 * Sets the text to be displayed as tooltip on the item.
@@ -370,11 +182,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * text =  text to be used as tooltip for tool_item
 	 */
-	public override void setTooltipText(string text)
-	{
-		// void gtk_tool_item_set_tooltip_text (GtkToolItem *tool_item,  const gchar *text);
-		gtk_tool_item_set_tooltip_text(gtkToolItem, Str.toStringz(text));
-	}
+	public override void setTooltipText(string text);
 	
 	/**
 	 * Sets the markup text to be displayed as tooltip on the item.
@@ -383,11 +191,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * markup =  markup text to be used as tooltip for tool_item
 	 */
-	public override void setTooltipMarkup(string markup)
-	{
-		// void gtk_tool_item_set_tooltip_markup (GtkToolItem *tool_item,  const gchar *markup);
-		gtk_tool_item_set_tooltip_markup(gtkToolItem, Str.toStringz(markup));
-	}
+	public override void setTooltipMarkup(string markup);
 	
 	/**
 	 * Sets whether tool_item has a drag window. When TRUE the
@@ -398,11 +202,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * useDragWindow =  Whether tool_item has a drag window.
 	 */
-	public void setUseDragWindow(int useDragWindow)
-	{
-		// void gtk_tool_item_set_use_drag_window (GtkToolItem *tool_item,  gboolean use_drag_window);
-		gtk_tool_item_set_use_drag_window(gtkToolItem, useDragWindow);
-	}
+	public void setUseDragWindow(int useDragWindow);
 	
 	/**
 	 * Returns whether tool_item has a drag window. See
@@ -410,11 +210,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: TRUE if tool_item uses a drag window.
 	 */
-	public int getUseDragWindow()
-	{
-		// gboolean gtk_tool_item_get_use_drag_window (GtkToolItem *tool_item);
-		return gtk_tool_item_get_use_drag_window(gtkToolItem);
-	}
+	public int getUseDragWindow();
 	
 	/**
 	 * Sets whether tool_item is visible when the toolbar is docked horizontally.
@@ -422,11 +218,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * visibleHorizontal =  Whether tool_item is visible when in horizontal mode
 	 */
-	public void setVisibleHorizontal(int visibleHorizontal)
-	{
-		// void gtk_tool_item_set_visible_horizontal  (GtkToolItem *tool_item,  gboolean visible_horizontal);
-		gtk_tool_item_set_visible_horizontal(gtkToolItem, visibleHorizontal);
-	}
+	public void setVisibleHorizontal(int visibleHorizontal);
 	
 	/**
 	 * Returns whether the tool_item is visible on toolbars that are
@@ -434,11 +226,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: TRUE if tool_item is visible on toolbars that aredocked horizontally.
 	 */
-	public int getVisibleHorizontal()
-	{
-		// gboolean gtk_tool_item_get_visible_horizontal  (GtkToolItem *tool_item);
-		return gtk_tool_item_get_visible_horizontal(gtkToolItem);
-	}
+	public int getVisibleHorizontal();
 	
 	/**
 	 * Sets whether tool_item is visible when the toolbar is docked
@@ -450,11 +238,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * visibleVertical =  whether tool_item is visible when the toolbar
 	 * is in vertical mode
 	 */
-	public void setVisibleVertical(int visibleVertical)
-	{
-		// void gtk_tool_item_set_visible_vertical (GtkToolItem *tool_item,  gboolean visible_vertical);
-		gtk_tool_item_set_visible_vertical(gtkToolItem, visibleVertical);
-	}
+	public void setVisibleVertical(int visibleVertical);
 	
 	/**
 	 * Returns whether tool_item is visible when the toolbar is docked vertically.
@@ -462,11 +246,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: Whether tool_item is visible when the toolbar is docked vertically
 	 */
-	public int getVisibleVertical()
-	{
-		// gboolean gtk_tool_item_get_visible_vertical (GtkToolItem *tool_item);
-		return gtk_tool_item_get_visible_vertical(gtkToolItem);
-	}
+	public int getVisibleVertical();
 	
 	/**
 	 * Sets whether tool_item should be considered important. The GtkToolButton
@@ -478,11 +258,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Params:
 	 * isImportant =  whether the tool item should be considered important
 	 */
-	public void setIsImportant(int isImportant)
-	{
-		// void gtk_tool_item_set_is_important (GtkToolItem *tool_item,  gboolean is_important);
-		gtk_tool_item_set_is_important(gtkToolItem, isImportant);
-	}
+	public void setIsImportant(int isImportant);
 	
 	/**
 	 * Returns whether tool_item is considered important. See
@@ -490,11 +266,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: TRUE if tool_item is considered important.
 	 */
-	public int getIsImportant()
-	{
-		// gboolean gtk_tool_item_get_is_important (GtkToolItem *tool_item);
-		return gtk_tool_item_get_is_important(gtkToolItem);
-	}
+	public int getIsImportant();
 	
 	/**
 	 * Returns the icon size used for tool_item. Custom subclasses of
@@ -503,11 +275,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: a GtkIconSize indicating the icon size used for tool_item
 	 */
-	public GtkIconSize getIconSize()
-	{
-		// GtkIconSize gtk_tool_item_get_icon_size (GtkToolItem *tool_item);
-		return gtk_tool_item_get_icon_size(gtkToolItem);
-	}
+	public GtkIconSize getIconSize();
 	
 	/**
 	 * Returns the orientation used for tool_item. Custom subclasses of
@@ -516,11 +284,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: a GtkOrientation indicating the orientationused for tool_item
 	 */
-	public GtkOrientation getOrientation()
-	{
-		// GtkOrientation gtk_tool_item_get_orientation (GtkToolItem *tool_item);
-		return gtk_tool_item_get_orientation(gtkToolItem);
-	}
+	public GtkOrientation getOrientation();
 	
 	/**
 	 * Returns the toolbar style used for tool_item. Custom subclasses of
@@ -530,11 +294,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: A GtkToolbarStyle indicating the toolbar style usedfor tool_item.
 	 */
-	public GtkToolbarStyle getToolbarStyle()
-	{
-		// GtkToolbarStyle gtk_tool_item_get_toolbar_style (GtkToolItem *tool_item);
-		return gtk_tool_item_get_toolbar_style(gtkToolItem);
-	}
+	public GtkToolbarStyle getToolbarStyle();
 	
 	/**
 	 * Returns the relief style of tool_item. See gtk_button_set_relief_style().
@@ -544,11 +304,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: a GtkReliefStyle indicating the relief style usedfor tool_item.
 	 */
-	public GtkReliefStyle getReliefStyle()
-	{
-		// GtkReliefStyle gtk_tool_item_get_relief_style (GtkToolItem *tool_item);
-		return gtk_tool_item_get_relief_style(gtkToolItem);
-	}
+	public GtkReliefStyle getReliefStyle();
 	
 	/**
 	 * Returns the GtkMenuItem that was last set by
@@ -557,16 +313,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * Since 2.4
 	 * Returns: The GtkMenuItem that is going to appear in theoverflow menu for tool_item.
 	 */
-	public Widget retrieveProxyMenuItem()
-	{
-		// GtkWidget * gtk_tool_item_retrieve_proxy_menu_item  (GtkToolItem *tool_item);
-		auto p = gtk_tool_item_retrieve_proxy_menu_item(gtkToolItem);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget retrieveProxyMenuItem();
 	
 	/**
 	 * If menu_item_id matches the string passed to
@@ -580,16 +327,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * menuItemId =  a string used to identify the menu item
 	 * Returns: The GtkMenuItem passed togtk_tool_item_set_proxy_menu_item(), if the menu_item_ids match.
 	 */
-	public Widget getProxyMenuItem(string menuItemId)
-	{
-		// GtkWidget * gtk_tool_item_get_proxy_menu_item (GtkToolItem *tool_item,  const gchar *menu_item_id);
-		auto p = gtk_tool_item_get_proxy_menu_item(gtkToolItem, Str.toStringz(menuItemId));
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getProxyMenuItem(string menuItemId);
 	
 	/**
 	 * Sets the GtkMenuItem used in the toolbar overflow menu. The
@@ -600,11 +338,7 @@ public class ToolItem : Bin, ActivatableIF
 	 * menuItemId =  a string used to identify menu_item
 	 * menuItem =  a GtkMenuItem to be used in the overflow menu
 	 */
-	public void setProxyMenuItem(string menuItemId, Widget menuItem)
-	{
-		// void gtk_tool_item_set_proxy_menu_item (GtkToolItem *tool_item,  const gchar *menu_item_id,  GtkWidget *menu_item);
-		gtk_tool_item_set_proxy_menu_item(gtkToolItem, Str.toStringz(menuItemId), (menuItem is null) ? null : menuItem.getWidgetStruct());
-	}
+	public void setProxyMenuItem(string menuItemId, Widget menuItem);
 	
 	/**
 	 * Calling this function signals to the toolbar that the
@@ -616,21 +350,12 @@ public class ToolItem : Bin, ActivatableIF
 	 * signal.
 	 * Since 2.6
 	 */
-	public void rebuildMenu()
-	{
-		// void gtk_tool_item_rebuild_menu (GtkToolItem *tool_item);
-		gtk_tool_item_rebuild_menu(gtkToolItem);
-	}
-	
+	public void rebuildMenu();
 	/**
 	 * Emits the signal "toolbar_reconfigured" on tool_item.
 	 * GtkToolbar and other GtkToolShell implementations use this function
 	 * to notify children, when some aspect of their configuration changes.
 	 * Since 2.14
 	 */
-	public void toolbarReconfigured()
-	{
-		// void gtk_tool_item_toolbar_reconfigured (GtkToolItem *tool_item);
-		gtk_tool_item_toolbar_reconfigured(gtkToolItem);
-	}
+	public void toolbarReconfigured();
 }

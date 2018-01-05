@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkPageSetup.html
- * outPack = gtk
- * outFile = PageSetup
- * strct   = GtkPageSetup
- * realStrct=
- * ctorStrct=
- * clss    = PageSetup
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_page_setup_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.PaperSize
- * 	- gtkD.glib.ErrorG
- * 	- gtkD.glib.GException
- * 	- gtkD.glib.KeyFile
- * structWrap:
- * 	- GKeyFile* -> KeyFile
- * 	- GtkPageSetup* -> PageSetup
- * 	- GtkPaperSize* -> PaperSize
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.PageSetup;
 
 public  import gtkD.gtkc.gtktypes;
@@ -115,38 +56,16 @@ public class PageSetup : ObjectG
 	protected GtkPageSetup* gtkPageSetup;
 	
 	
-	public GtkPageSetup* getPageSetupStruct()
-	{
-		return gtkPageSetup;
-	}
+	public GtkPageSetup* getPageSetupStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkPageSetup;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkPageSetup* gtkPageSetup)
-	{
-		if(gtkPageSetup is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkPageSetup);
-		if( ptr !is null )
-		{
-			this = cast(PageSetup)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkPageSetup);
-		this.gtkPageSetup = gtkPageSetup;
-	}
+	public this (GtkPageSetup* gtkPageSetup);
 	
 	/**
 	 */
@@ -156,43 +75,21 @@ public class PageSetup : ObjectG
 	 * Since 2.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkPageSetup * gtk_page_setup_new (void);
-		auto p = gtk_page_setup_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_page_setup_new()");
-		}
-		this(cast(GtkPageSetup*) p);
-	}
+	public this ();
 	
 	/**
 	 * Copies a GtkPageSetup.
 	 * Since 2.10
 	 * Returns: a copy of other
 	 */
-	public PageSetup copy()
-	{
-		// GtkPageSetup * gtk_page_setup_copy (GtkPageSetup *other);
-		auto p = gtk_page_setup_copy(gtkPageSetup);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PageSetup(cast(GtkPageSetup*) p);
-	}
+	public PageSetup copy();
 	
 	/**
 	 * Gets the page orientation of the GtkPageSetup.
 	 * Since 2.10
 	 * Returns: the page orientation
 	 */
-	public GtkPageOrientation getOrientation()
-	{
-		// GtkPageOrientation gtk_page_setup_get_orientation (GtkPageSetup *setup);
-		return gtk_page_setup_get_orientation(gtkPageSetup);
-	}
+	public GtkPageOrientation getOrientation();
 	
 	/**
 	 * Sets the page orientation of the GtkPageSetup.
@@ -200,27 +97,14 @@ public class PageSetup : ObjectG
 	 * Params:
 	 * orientation =  a GtkPageOrientation value
 	 */
-	public void setOrientation(GtkPageOrientation orientation)
-	{
-		// void gtk_page_setup_set_orientation (GtkPageSetup *setup,  GtkPageOrientation orientation);
-		gtk_page_setup_set_orientation(gtkPageSetup, orientation);
-	}
+	public void setOrientation(GtkPageOrientation orientation);
 	
 	/**
 	 * Gets the paper size of the GtkPageSetup.
 	 * Since 2.10
 	 * Returns: the paper size
 	 */
-	public PaperSize getPaperSize()
-	{
-		// GtkPaperSize * gtk_page_setup_get_paper_size (GtkPageSetup *setup);
-		auto p = gtk_page_setup_get_paper_size(gtkPageSetup);
-		if(p is null)
-		{
-			return null;
-		}
-		return new PaperSize(cast(GtkPaperSize*) p);
-	}
+	public PaperSize getPaperSize();
 	
 	/**
 	 * Sets the paper size of the GtkPageSetup without
@@ -230,11 +114,7 @@ public class PageSetup : ObjectG
 	 * Params:
 	 * size =  a GtkPaperSize
 	 */
-	public void setPaperSize(PaperSize size)
-	{
-		// void gtk_page_setup_set_paper_size (GtkPageSetup *setup,  GtkPaperSize *size);
-		gtk_page_setup_set_paper_size(gtkPageSetup, (size is null) ? null : size.getPaperSizeStruct());
-	}
+	public void setPaperSize(PaperSize size);
 	
 	/**
 	 * Gets the top margin in units of unit.
@@ -243,11 +123,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the top margin
 	 */
-	public double getTopMargin(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_top_margin (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_top_margin(gtkPageSetup, unit);
-	}
+	public double getTopMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the top margin of the GtkPageSetup.
@@ -256,11 +132,7 @@ public class PageSetup : ObjectG
 	 * margin =  the new top margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setTopMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_page_setup_set_top_margin (GtkPageSetup *setup,  gdouble margin,  GtkUnit unit);
-		gtk_page_setup_set_top_margin(gtkPageSetup, margin, unit);
-	}
+	public void setTopMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the bottom margin in units of unit.
@@ -269,11 +141,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the bottom margin
 	 */
-	public double getBottomMargin(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_bottom_margin (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_bottom_margin(gtkPageSetup, unit);
-	}
+	public double getBottomMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the bottom margin of the GtkPageSetup.
@@ -282,11 +150,7 @@ public class PageSetup : ObjectG
 	 * margin =  the new bottom margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setBottomMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_page_setup_set_bottom_margin (GtkPageSetup *setup,  gdouble margin,  GtkUnit unit);
-		gtk_page_setup_set_bottom_margin(gtkPageSetup, margin, unit);
-	}
+	public void setBottomMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the left margin in units of unit.
@@ -295,11 +159,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the left margin
 	 */
-	public double getLeftMargin(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_left_margin (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_left_margin(gtkPageSetup, unit);
-	}
+	public double getLeftMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the left margin of the GtkPageSetup.
@@ -308,11 +168,7 @@ public class PageSetup : ObjectG
 	 * margin =  the new left margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setLeftMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_page_setup_set_left_margin (GtkPageSetup *setup,  gdouble margin,  GtkUnit unit);
-		gtk_page_setup_set_left_margin(gtkPageSetup, margin, unit);
-	}
+	public void setLeftMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Gets the right margin in units of unit.
@@ -321,11 +177,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the right margin
 	 */
-	public double getRightMargin(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_right_margin (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_right_margin(gtkPageSetup, unit);
-	}
+	public double getRightMargin(GtkUnit unit);
 	
 	/**
 	 * Sets the right margin of the GtkPageSetup.
@@ -334,11 +186,7 @@ public class PageSetup : ObjectG
 	 * margin =  the new right margin in units of unit
 	 * unit =  the units for margin
 	 */
-	public void setRightMargin(double margin, GtkUnit unit)
-	{
-		// void gtk_page_setup_set_right_margin (GtkPageSetup *setup,  gdouble margin,  GtkUnit unit);
-		gtk_page_setup_set_right_margin(gtkPageSetup, margin, unit);
-	}
+	public void setRightMargin(double margin, GtkUnit unit);
 	
 	/**
 	 * Sets the paper size of the GtkPageSetup and modifies
@@ -347,11 +195,7 @@ public class PageSetup : ObjectG
 	 * Params:
 	 * size =  a GtkPaperSize
 	 */
-	public void setPaperSizeAndDefaultMargins(PaperSize size)
-	{
-		// void gtk_page_setup_set_paper_size_and_default_margins  (GtkPageSetup *setup,  GtkPaperSize *size);
-		gtk_page_setup_set_paper_size_and_default_margins(gtkPageSetup, (size is null) ? null : size.getPaperSizeStruct());
-	}
+	public void setPaperSizeAndDefaultMargins(PaperSize size);
 	
 	/**
 	 * Returns the paper width in units of unit.
@@ -363,11 +207,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the paper width.
 	 */
-	public double getPaperWidth(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_paper_width (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_paper_width(gtkPageSetup, unit);
-	}
+	public double getPaperWidth(GtkUnit unit);
 	
 	/**
 	 * Returns the paper height in units of unit.
@@ -379,11 +219,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the paper height.
 	 */
-	public double getPaperHeight(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_paper_height (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_paper_height(gtkPageSetup, unit);
-	}
+	public double getPaperHeight(GtkUnit unit);
 	
 	/**
 	 * Returns the page width in units of unit.
@@ -395,11 +231,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the page width.
 	 */
-	public double getPageWidth(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_page_width (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_page_width(gtkPageSetup, unit);
-	}
+	public double getPageWidth(GtkUnit unit);
 	
 	/**
 	 * Returns the page height in units of unit.
@@ -411,11 +243,7 @@ public class PageSetup : ObjectG
 	 * unit =  the unit for the return value
 	 * Returns: the page height.
 	 */
-	public double getPageHeight(GtkUnit unit)
-	{
-		// gdouble gtk_page_setup_get_page_height (GtkPageSetup *setup,  GtkUnit unit);
-		return gtk_page_setup_get_page_height(gtkPageSetup, unit);
-	}
+	public double getPageHeight(GtkUnit unit);
 	
 	/**
 	 * Reads the page setup from the file file_name. Returns a
@@ -427,24 +255,7 @@ public class PageSetup : ObjectG
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string fileName)
-	{
-		// GtkPageSetup * gtk_page_setup_new_from_file (const gchar *file_name,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_page_setup_new_from_file(Str.toStringz(fileName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_page_setup_new_from_file(Str.toStringz(fileName), &err)");
-		}
-		this(cast(GtkPageSetup*) p);
-	}
+	public this (string fileName);
 	
 	/**
 	 * Reads the page setup from the group group_name in the key file
@@ -458,24 +269,7 @@ public class PageSetup : ObjectG
 	 * Throws: GException on failure.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (KeyFile keyFile, string groupName)
-	{
-		// GtkPageSetup * gtk_page_setup_new_from_key_file (GKeyFile *key_file,  const gchar *group_name,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_page_setup_new_from_key_file((keyFile is null) ? null : keyFile.getKeyFileStruct(), Str.toStringz(groupName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_page_setup_new_from_key_file((keyFile is null) ? null : keyFile.getKeyFileStruct(), Str.toStringz(groupName), &err)");
-		}
-		this(cast(GtkPageSetup*) p);
-	}
+	public this (KeyFile keyFile, string groupName);
 	
 	/**
 	 * Reads the page setup from the file file_name.
@@ -486,20 +280,7 @@ public class PageSetup : ObjectG
 	 * Returns: TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int loadFile(string fileName)
-	{
-		// gboolean gtk_page_setup_load_file (GtkPageSetup *setup,  const char *file_name,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_page_setup_load_file(gtkPageSetup, Str.toStringz(fileName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int loadFile(string fileName);
 	
 	/**
 	 * Reads the page setup from the group group_name in the key file
@@ -512,20 +293,7 @@ public class PageSetup : ObjectG
 	 * Returns: TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int loadKeyFile(KeyFile keyFile, string groupName)
-	{
-		// gboolean gtk_page_setup_load_key_file (GtkPageSetup *setup,  GKeyFile *key_file,  const gchar *group_name,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_page_setup_load_key_file(gtkPageSetup, (keyFile is null) ? null : keyFile.getKeyFileStruct(), Str.toStringz(groupName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int loadKeyFile(KeyFile keyFile, string groupName);
 	
 	/**
 	 * This function saves the information from setup to file_name.
@@ -535,20 +303,7 @@ public class PageSetup : ObjectG
 	 * Returns: TRUE on success
 	 * Throws: GException on failure.
 	 */
-	public int toFile(string fileName)
-	{
-		// gboolean gtk_page_setup_to_file (GtkPageSetup *setup,  const char *file_name,  GError **error);
-		GError* err = null;
-		
-		auto p = gtk_page_setup_to_file(gtkPageSetup, Str.toStringz(fileName), &err);
-		
-		if (err !is null)
-		{
-			throw new GException( new ErrorG(err) );
-		}
-		
-		return p;
-	}
+	public int toFile(string fileName);
 	
 	/**
 	 * This function adds the page setup from setup to key_file.
@@ -558,9 +313,5 @@ public class PageSetup : ObjectG
 	 * groupName =  the group to add the settings to in key_file,
 	 *  or NULL to use the default name "Page Setup"
 	 */
-	public void toKeyFile(KeyFile keyFile, string groupName)
-	{
-		// void gtk_page_setup_to_key_file (GtkPageSetup *setup,  GKeyFile *key_file,  const gchar *group_name);
-		gtk_page_setup_to_key_file(gtkPageSetup, (keyFile is null) ? null : keyFile.getKeyFileStruct(), Str.toStringz(groupName));
-	}
+	public void toKeyFile(KeyFile keyFile, string groupName);
 }

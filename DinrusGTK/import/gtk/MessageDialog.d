@@ -1,61 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkMessageDialog.html
- * outPack = gtk
- * outFile = MessageDialog
- * strct   = GtkMessageDialog
- * realStrct=
- * ctorStrct=
- * clss    = MessageDialog
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_message_dialog_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_message_dialog_new
- * 	- gtk_message_dialog_new_with_markup
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Window
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GtkWidget* -> Widget
- * 	- GtkWindow* -> Window
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.MessageDialog;
 
 public  import gtkD.gtkc.gtktypes;
@@ -111,38 +53,16 @@ public class MessageDialog : Dialog
 	protected GtkMessageDialog* gtkMessageDialog;
 	
 	
-	public GtkMessageDialog* getMessageDialogStruct()
-	{
-		return gtkMessageDialog;
-	}
+	public GtkMessageDialog* getMessageDialogStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkMessageDialog;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkMessageDialog* gtkMessageDialog)
-	{
-		if(gtkMessageDialog is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkMessageDialog);
-		if( ptr !is null )
-		{
-			this = cast(MessageDialog)ptr;
-			return;
-		}
-		super(cast(GtkDialog*)gtkMessageDialog);
-		this.gtkMessageDialog = gtkMessageDialog;
-	}
+	public this (GtkMessageDialog* gtkMessageDialog);
 	
 	/**
 	 * Creates a new message dialog, which is a simple dialog with an icon
@@ -161,10 +81,7 @@ public class MessageDialog : Dialog
 	 * Returns:
 	 *  a new GtkMessageDialog
 	 */
-	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, string messageFormat, string message=null )
-	{
-		this(parent, flags, type, buttons, false, messageFormat, message );
-	}
+	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, string messageFormat, string message=null );
 	
 	/**
 	 * Creates a new message dialog, which is a simple dialog with an icon
@@ -203,44 +120,7 @@ public class MessageDialog : Dialog
 	 *  message = the message - should be null, any formatting should be done prior to call this constructor
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, bool markup, string messageFormat, string message=null )
-	{
-		GtkMessageDialog* p;
-		
-		if ( markup )
-		{
-			// GtkWidget* gtk_message_dialog_new_with_markup  (GtkWindow *parent,  GtkDialogFlags flags,  GtkMessageType type,  GtkButtonsType buttons,  const gchar *message_format,  ...);
-			p = cast(GtkMessageDialog*)gtk_message_dialog_new_with_markup(
-			parent is null ? null : parent.getWindowStruct(),
-			flags,
-			type,
-			buttons,
-			Str.toStringz(messageFormat),
-			Str.toStringz(message),	// this should be null
-			null
-			);
-		}
-		else
-		{
-			// GtkWidget* gtk_message_dialog_new (GtkWindow *parent,  GtkDialogFlags flags,  GtkMessageType type,  GtkButtonsType buttons,  const gchar *message_format,  ...);
-			p = cast(GtkMessageDialog*)gtk_message_dialog_new(
-			parent is null ? null : parent.getWindowStruct(),
-			flags,
-			type,
-			buttons,
-			Str.toStringz(messageFormat),
-			Str.toStringz(message),	// this should be null
-			null
-			);
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_button_new()");
-		}
-		
-		this(p);
-	}
+	public this (Window parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, bool markup, string messageFormat, string message=null );
 	
 	
 	/**
@@ -254,11 +134,7 @@ public class MessageDialog : Dialog
 	 * Params:
 	 * str =  markup string (see Pango markup format)
 	 */
-	public void setMarkup(string str)
-	{
-		// void gtk_message_dialog_set_markup (GtkMessageDialog *message_dialog,  const gchar *str);
-		gtk_message_dialog_set_markup(gtkMessageDialog, Str.toStringz(str));
-	}
+	public void setMarkup(string str);
 	
 	/**
 	 * Sets the dialog's image to image.
@@ -266,25 +142,12 @@ public class MessageDialog : Dialog
 	 * Params:
 	 * image =  the image
 	 */
-	public void setImage(Widget image)
-	{
-		// void gtk_message_dialog_set_image (GtkMessageDialog *dialog,  GtkWidget *image);
-		gtk_message_dialog_set_image(gtkMessageDialog, (image is null) ? null : image.getWidgetStruct());
-	}
+	public void setImage(Widget image);
 	
 	/**
 	 * Gets the dialog's image.
 	 * Since 2.14
 	 * Returns: the dialog's image
 	 */
-	public Widget getImage()
-	{
-		// GtkWidget * gtk_message_dialog_get_image (GtkMessageDialog *dialog);
-		auto p = gtk_message_dialog_get_image(gtkMessageDialog);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getImage();
 }

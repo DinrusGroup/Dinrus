@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRecentAction.html
- * outPack = gtk
- * outFile = RecentAction
- * strct   = GtkRecentAction
- * realStrct=
- * ctorStrct=GtkAction
- * clss    = RecentAction
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_recent_action_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_recent_action_new
- * 	- gtk_recent_action_new_for_manager
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.RecentManager
- * structWrap:
- * 	- GtkRecentManager* -> RecentManager
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RecentAction;
 
 public  import gtkD.gtkc.gtktypes;
@@ -86,38 +30,16 @@ public class RecentAction : Action
 	protected GtkRecentAction* gtkRecentAction;
 	
 	
-	public GtkRecentAction* getRecentActionStruct()
-	{
-		return gtkRecentAction;
-	}
+	public GtkRecentAction* getRecentActionStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRecentAction;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRecentAction* gtkRecentAction)
-	{
-		if(gtkRecentAction is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRecentAction);
-		if( ptr !is null )
-		{
-			this = cast(RecentAction)ptr;
-			return;
-		}
-		super(cast(GtkAction*)gtkRecentAction);
-		this.gtkRecentAction = gtkRecentAction;
-	}
+	public this (GtkRecentAction* gtkRecentAction);
 	
 	/**
 	 * Creates a new GtkRecentAction object. To add the action to
@@ -132,16 +54,7 @@ public class RecentAction : Action
 	 *  action, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, string label, string tooltip, StockID stockID)
-	{
-		// GtkAction* gtk_recent_action_new (const gchar *name,  const gchar *label,  const gchar *tooltip,  const gchar *stock_id);
-		auto p = gtk_recent_action_new(Str.toStringz(name), Str.toStringz(label), Str.toStringz(tooltip), Str.toStringz(StockDesc[stockID]));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_action_new");
-		}
-		this(cast(GtkRecentAction*) p);
-	}
+	public this (string name, string label, string tooltip, StockID stockID);
 	
 	/**
 	 * Creates a new GtkRecentAction object. To add the action to
@@ -158,16 +71,7 @@ public class RecentAction : Action
 	 *  GtkRecentManager
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, string label, string tooltip, StockID stockID, RecentManager manager)
-	{
-		// GtkAction* gtk_recent_action_new_for_manager (const gchar *name,  const gchar *label,  const gchar *tooltip,  const gchar *stock_id,  GtkRecentManager *manager);
-		auto p = gtk_recent_action_new_for_manager(Str.toStringz(name), Str.toStringz(label), Str.toStringz(tooltip), Str.toStringz(StockDesc[stockID]), (manager is null) ? null : manager.getRecentManagerStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_action_new_for_manager");
-		}
-		this(cast(GtkRecentAction*) p);
-	}
+	public this (string name, string label, string tooltip, StockID stockID, RecentManager manager);
 	
 	/**
 	 */
@@ -177,11 +81,7 @@ public class RecentAction : Action
 	 * Since 2.12
 	 * Returns: TRUE if numbers should be shown.
 	 */
-	public int getShowNumbers()
-	{
-		// gboolean gtk_recent_action_get_show_numbers (GtkRecentAction *action);
-		return gtk_recent_action_get_show_numbers(gtkRecentAction);
-	}
+	public int getShowNumbers();
 	
 	/**
 	 * Sets whether a number should be added to the items shown by the
@@ -192,9 +92,5 @@ public class RecentAction : Action
 	 * Params:
 	 * showNumbers =  TRUE if the shown items should be numbered
 	 */
-	public void setShowNumbers(int showNumbers)
-	{
-		// void gtk_recent_action_set_show_numbers (GtkRecentAction *action,  gboolean show_numbers);
-		gtk_recent_action_set_show_numbers(gtkRecentAction, showNumbers);
-	}
+	public void setShowNumbers(int showNumbers);
 }

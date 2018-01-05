@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkMenuToolButton.html
- * outPack = gtk
- * outFile = MenuToolButton
- * strct   = GtkMenuToolButton
- * realStrct=
- * ctorStrct=GtkToolItem
- * clss    = MenuToolButton
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_menu_tool_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_menu_tool_button_new
- * 	- gtk_menu_tool_button_new_from_stock
- * 	- gtk_menu_tool_button_get_menu
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.ToolItem
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Tooltips
- * 	- gtkD.gtk.Menu
- * structWrap:
- * 	- GtkToolItem* -> ToolItem
- * 	- GtkTooltips* -> Tooltips
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.MenuToolButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -96,38 +34,16 @@ public class MenuToolButton : ToolButton
 	protected GtkMenuToolButton* gtkMenuToolButton;
 	
 	
-	public GtkMenuToolButton* getMenuToolButtonStruct()
-	{
-		return gtkMenuToolButton;
-	}
+	public GtkMenuToolButton* getMenuToolButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkMenuToolButton;
-	}
-	
+	protected override void* getStruct();
+
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkMenuToolButton* gtkMenuToolButton)
-	{
-		if(gtkMenuToolButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkMenuToolButton);
-		if( ptr !is null )
-		{
-			this = cast(MenuToolButton)ptr;
-			return;
-		}
-		super(cast(GtkToolButton*)gtkMenuToolButton);
-		this.gtkMenuToolButton = gtkMenuToolButton;
-	}
+	public this (GtkMenuToolButton* gtkMenuToolButton);
 	
 	/**
 	 * Creates a new GtkMenuToolButton using icon_widget as icon and
@@ -138,19 +54,7 @@ public class MenuToolButton : ToolButton
 	 *  label = a string that will be used as label, or NULL
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(Widget iconWidget, string label)
-	{
-		// GtkToolItem* gtk_menu_tool_button_new (GtkWidget *icon_widget,  const gchar *label);
-		auto p = gtk_menu_tool_button_new((iconWidget is null) ? null : iconWidget.getWidgetStruct(),
-		Str.toStringz(label));
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_menu_tool_button_new");
-		}
-		
-		this(cast(GtkMenuToolButton*) p);
-	}
+	public this(Widget iconWidget, string label);
 	
 	/**
 	 * Creates a new GtkMenuToolButton.
@@ -161,19 +65,7 @@ public class MenuToolButton : ToolButton
 	 * stockID = the name of a stock item
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this(StockID stockId)
-	{
-		// GtkToolItem* gtk_menu_tool_button_new_from_stock  (const gchar *stock_id);
-		auto p = gtk_menu_tool_button_new_from_stock(
-		Str.toStringz(StockDesc[stockId]));
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_menu_tool_button_new_from_stock");
-		}
-		
-		this(cast(GtkMenuToolButton*) p);
-	}
+	public this(StockID stockId);
 	
 	/**
 	 * Gets the GtkMenu associated with GtkMenuToolButton.
@@ -183,16 +75,7 @@ public class MenuToolButton : ToolButton
 	 * Returns:
 	 *  the GtkMenu associated with GtkMenuToolButton
 	 */
-	public Menu getMenu()
-	{
-		// GtkWidget* gtk_menu_tool_button_get_menu (GtkMenuToolButton *button);
-		auto p =  gtk_menu_tool_button_get_menu(gtkMenuToolButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Menu(cast(GtkMenu*)p);
-	}
+	public Menu getMenu();
 	
 	/**
 	 * Sets the toolTip for the arrow
@@ -201,16 +84,7 @@ public class MenuToolButton : ToolButton
 	 *    	tipText =
 	 *    	tipPrivate =
 	 */
-	public void setArrowTooltip(string tipText, string tipPrivate)
-	{
-		Tooltips tooltips = new Tooltips();
-		gtk_menu_tool_button_set_arrow_tooltip(
-		gtkMenuToolButton,
-		(tooltips is null) ? null : tooltips.getTooltipsStruct(),
-		Str.toStringz(tipText),
-		Str.toStringz(tipPrivate)
-		);
-	}
+	public void setArrowTooltip(string tipText, string tipPrivate);
 	
 	/**
 	 */
@@ -234,28 +108,8 @@ public class MenuToolButton : ToolButton
 	 *  GtkMenuToolButtons.
 	 *
 	 */
-	void addOnShowMenu(void delegate(MenuToolButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("show-menu" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"show-menu",
-			cast(GCallback)&callBackShowMenu,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["show-menu"] = 1;
-		}
-		onShowMenuListeners ~= dlg;
-	}
-	extern(C) static void callBackShowMenu(GtkMenuToolButton* buttonStruct, MenuToolButton menuToolButton)
-	{
-		foreach ( void delegate(MenuToolButton) dlg ; menuToolButton.onShowMenuListeners )
-		{
-			dlg(menuToolButton);
-		}
-	}
+	void addOnShowMenu(void delegate(MenuToolButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackShowMenu(GtkMenuToolButton* buttonStruct, MenuToolButton menuToolButton);
 	
 	
 	/**
@@ -265,11 +119,7 @@ public class MenuToolButton : ToolButton
 	 * Params:
 	 * menu =  the GtkMenu associated with GtkMenuToolButton
 	 */
-	public void setMenu(Widget menu)
-	{
-		// void gtk_menu_tool_button_set_menu (GtkMenuToolButton *button,  GtkWidget *menu);
-		gtk_menu_tool_button_set_menu(gtkMenuToolButton, (menu is null) ? null : menu.getWidgetStruct());
-	}
+	public void setMenu(Widget menu);
 	
 	/**
 	 * Warning
@@ -284,11 +134,7 @@ public class MenuToolButton : ToolButton
 	 * tipText =  text to be used as tooltip text for tool_item
 	 * tipPrivate =  text to be used as private tooltip text
 	 */
-	public void setArrowTooltip(Tooltips tooltips, string tipText, string tipPrivate)
-	{
-		// void gtk_menu_tool_button_set_arrow_tooltip  (GtkMenuToolButton *button,  GtkTooltips *tooltips,  const gchar *tip_text,  const gchar *tip_private);
-		gtk_menu_tool_button_set_arrow_tooltip(gtkMenuToolButton, (tooltips is null) ? null : tooltips.getTooltipsStruct(), Str.toStringz(tipText), Str.toStringz(tipPrivate));
-	}
+	public void setArrowTooltip(Tooltips tooltips, string tipText, string tipPrivate);
 	
 	/**
 	 * Sets the tooltip text to be used as tooltip for the arrow button which
@@ -298,11 +144,7 @@ public class MenuToolButton : ToolButton
 	 * Params:
 	 * text =  text to be used as tooltip text for button's arrow button
 	 */
-	public void setArrowTooltipText(string text)
-	{
-		// void gtk_menu_tool_button_set_arrow_tooltip_text  (GtkMenuToolButton *button,  const gchar *text);
-		gtk_menu_tool_button_set_arrow_tooltip_text(gtkMenuToolButton, Str.toStringz(text));
-	}
+	public void setArrowTooltipText(string text);
 	
 	/**
 	 * Sets the tooltip markup text to be used as tooltip for the arrow button
@@ -312,9 +154,5 @@ public class MenuToolButton : ToolButton
 	 * Params:
 	 * markup =  markup text to be used as tooltip text for button's arrow button
 	 */
-	public void setArrowTooltipMarkup(string markup)
-	{
-		// void gtk_menu_tool_button_set_arrow_tooltip_markup  (GtkMenuToolButton *button,  const gchar *markup);
-		gtk_menu_tool_button_set_arrow_tooltip_markup(gtkMenuToolButton, Str.toStringz(markup));
-	}
+	public void setArrowTooltipMarkup(string markup);
 }

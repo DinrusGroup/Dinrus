@@ -1,66 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTreeModelFilter.html
- * outPack = gtk
- * outFile = TreeModelFilter
- * strct   = GtkTreeModelFilter
- * realStrct=
- * ctorStrct=GtkTreeModel
- * clss    = TreeModelFilter
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- TreeModelIF
- * 	- TreeDragSourceIF
- * prefixes:
- * 	- gtk_tree_model_filter_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.TreeModel
- * 	- gtkD.gtk.TreeModelIF
- * 	- gtkD.gtk.TreePath
- * 	- gtkD.gtk.TreeIter
- * 	- gtkD.gtk.TreeModelT
- * 	- gtkD.gtk.TreeDragSourceT
- * 	- gtkD.gtk.TreeDragSourceIF
- * structWrap:
- * 	- GtkTreeIter* -> TreeIter
- * 	- GtkTreeModel* -> TreeModelIF
- * 	- GtkTreePath* -> TreePath
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TreeModelFilter;
 
 public  import gtkD.gtkc.gtktypes;
@@ -104,38 +41,16 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	protected GtkTreeModelFilter* gtkTreeModelFilter;
 	
 	
-	public GtkTreeModelFilter* getTreeModelFilterStruct()
-	{
-		return gtkTreeModelFilter;
-	}
+	public GtkTreeModelFilter* getTreeModelFilterStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTreeModelFilter;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTreeModelFilter* gtkTreeModelFilter)
-	{
-		if(gtkTreeModelFilter is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTreeModelFilter);
-		if( ptr !is null )
-		{
-			this = cast(TreeModelFilter)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTreeModelFilter);
-		this.gtkTreeModelFilter = gtkTreeModelFilter;
-	}
+	public this (GtkTreeModelFilter* gtkTreeModelFilter);
 	
 	// add the TreeModel capabilities
 	mixin TreeModelT!(GtkTreeModelFilter);
@@ -155,16 +70,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * root =  A GtkTreePath or NULL.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (TreeModelIF childModel, TreePath root)
-	{
-		// GtkTreeModel * gtk_tree_model_filter_new (GtkTreeModel *child_model,  GtkTreePath *root);
-		auto p = gtk_tree_model_filter_new((childModel is null) ? null : childModel.getTreeModelTStruct(), (root is null) ? null : root.getTreePathStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_tree_model_filter_new((childModel is null) ? null : childModel.getTreeModelTStruct(), (root is null) ? null : root.getTreePathStruct())");
-		}
-		this(cast(GtkTreeModelFilter*) p);
-	}
+	public this (TreeModelIF childModel, TreePath root);
 	
 	/**
 	 * Sets the visible function used when filtering the filter to be func. The
@@ -197,11 +103,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * data =  User data to pass to the visible function, or NULL.
 	 * destroy =  Destroy notifier of data, or NULL.
 	 */
-	public void setVisibleFunc(GtkTreeModelFilterVisibleFunc func, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_tree_model_filter_set_visible_func  (GtkTreeModelFilter *filter,  GtkTreeModelFilterVisibleFunc func,  gpointer data,  GDestroyNotify destroy);
-		gtk_tree_model_filter_set_visible_func(gtkTreeModelFilter, func, data, destroy);
-	}
+	public void setVisibleFunc(GtkTreeModelFilterVisibleFunc func, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * With the n_columns and types parameters, you give an array of column
@@ -218,11 +120,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * data =  User data to pass to the modify function, or NULL.
 	 * destroy =  Destroy notifier of data, or NULL.
 	 */
-	public void setModifyFunc(GType[] types, GtkTreeModelFilterModifyFunc func, void* data, GDestroyNotify destroy)
-	{
-		// void gtk_tree_model_filter_set_modify_func  (GtkTreeModelFilter *filter,  gint n_columns,  GType *types,  GtkTreeModelFilterModifyFunc func,  gpointer data,  GDestroyNotify destroy);
-		gtk_tree_model_filter_set_modify_func(gtkTreeModelFilter, types.length, types.ptr, func, data, destroy);
-	}
+	public void setModifyFunc(GType[] types, GtkTreeModelFilterModifyFunc func, void* data, GDestroyNotify destroy);
 	
 	/**
 	 * Sets column of the child_model to be the column where filter should
@@ -233,27 +131,14 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * Params:
 	 * column =  A gint which is the column containing the visible information.
 	 */
-	public void setVisibleColumn(int column)
-	{
-		// void gtk_tree_model_filter_set_visible_column  (GtkTreeModelFilter *filter,  gint column);
-		gtk_tree_model_filter_set_visible_column(gtkTreeModelFilter, column);
-	}
+	public void setVisibleColumn(int column);
 	
 	/**
 	 * Returns a pointer to the child model of filter.
 	 * Since 2.4
 	 * Returns: A pointer to a GtkTreeModel.
 	 */
-	public TreeModelIF getModel()
-	{
-		// GtkTreeModel * gtk_tree_model_filter_get_model (GtkTreeModelFilter *filter);
-		auto p = gtk_tree_model_filter_get_model(gtkTreeModelFilter);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreeModel(cast(GtkTreeModel*) p);
-	}
+	public TreeModelIF getModel();
 	
 	/**
 	 * Sets filter_iter to point to the row in filter that corresponds to the
@@ -266,11 +151,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * childIter =  A valid GtkTreeIter pointing to a row on the child model.
 	 * Returns: TRUE, if filter_iter was set, i.e. if child_iter is avalid iterator pointing to a visible row in child model.
 	 */
-	public int convertChildIterToIter(TreeIter filterIter, TreeIter childIter)
-	{
-		// gboolean gtk_tree_model_filter_convert_child_iter_to_iter  (GtkTreeModelFilter *filter,  GtkTreeIter *filter_iter,  GtkTreeIter *child_iter);
-		return gtk_tree_model_filter_convert_child_iter_to_iter(gtkTreeModelFilter, (filterIter is null) ? null : filterIter.getTreeIterStruct(), (childIter is null) ? null : childIter.getTreeIterStruct());
-	}
+	public int convertChildIterToIter(TreeIter filterIter, TreeIter childIter);
 	
 	/**
 	 * Sets child_iter to point to the row pointed to by filter_iter.
@@ -280,11 +161,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * childIter =  An uninitialized GtkTreeIter.
 	 * filterIter =  A valid GtkTreeIter pointing to a row on filter.
 	 */
-	public void convertIterToChildIter(TreeIter childIter, TreeIter filterIter)
-	{
-		// void gtk_tree_model_filter_convert_iter_to_child_iter  (GtkTreeModelFilter *filter,  GtkTreeIter *child_iter,  GtkTreeIter *filter_iter);
-		gtk_tree_model_filter_convert_iter_to_child_iter(gtkTreeModelFilter, (childIter is null) ? null : childIter.getTreeIterStruct(), (filterIter is null) ? null : filterIter.getTreeIterStruct());
-	}
+	public void convertIterToChildIter(TreeIter childIter, TreeIter filterIter);
 	
 	/**
 	 * Converts child_path to a path relative to filter. That is, child_path
@@ -297,16 +174,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * childPath =  A GtkTreePath to convert.
 	 * Returns: A newly allocated GtkTreePath, or NULL.
 	 */
-	public TreePath convertChildPathToPath(TreePath childPath)
-	{
-		// GtkTreePath * gtk_tree_model_filter_convert_child_path_to_path  (GtkTreeModelFilter *filter,  GtkTreePath *child_path);
-		auto p = gtk_tree_model_filter_convert_child_path_to_path(gtkTreeModelFilter, (childPath is null) ? null : childPath.getTreePathStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
+	public TreePath convertChildPathToPath(TreePath childPath);
 	
 	/**
 	 * Converts filter_path to a path on the child model of filter. That is,
@@ -319,16 +187,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * filterPath =  A GtkTreePath to convert.
 	 * Returns: A newly allocated GtkTreePath, or NULL.
 	 */
-	public TreePath convertPathToChildPath(TreePath filterPath)
-	{
-		// GtkTreePath * gtk_tree_model_filter_convert_path_to_child_path  (GtkTreeModelFilter *filter,  GtkTreePath *filter_path);
-		auto p = gtk_tree_model_filter_convert_path_to_child_path(gtkTreeModelFilter, (filterPath is null) ? null : filterPath.getTreePathStruct());
-		if(p is null)
-		{
-			return null;
-		}
-		return new TreePath(cast(GtkTreePath*) p);
-	}
+	public TreePath convertPathToChildPath(TreePath filterPath);
 	
 	/**
 	 * Emits ::row_changed for each row in the child model, which causes
@@ -337,11 +196,7 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * Params:
 	 * filter =  A GtkTreeModelFilter.
 	 */
-	public void refilter()
-	{
-		// void gtk_tree_model_filter_refilter (GtkTreeModelFilter *filter);
-		gtk_tree_model_filter_refilter(gtkTreeModelFilter);
-	}
+	public void refilter();
 	
 	/**
 	 * This function should almost never be called. It clears the filter
@@ -352,9 +207,5 @@ public class TreeModelFilter : ObjectG, TreeModelIF, TreeDragSourceIF
 	 * all unreffed iters will be invalid.
 	 * Since 2.4
 	 */
-	public void clearCache()
-	{
-		// void gtk_tree_model_filter_clear_cache (GtkTreeModelFilter *filter);
-		gtk_tree_model_filter_clear_cache(gtkTreeModelFilter);
-	}
+	public void clearCache();
 }

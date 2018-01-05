@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Signals.html
- * outPack = gtk
- * outFile = Signals
- * strct   = 
- * realStrct=
- * ctorStrct=
- * clss    = Signals
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_signal_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.ObjectGtk
- * structWrap:
- * 	- GtkObject* -> ObjectGtk
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Signals;
 
 public  import gtkD.gtkc.gtktypes;
@@ -181,11 +127,7 @@ public class Signals
 	 * the callbacks.
 	 * Returns:the signal id.
 	 */
-	public static uint newv(string name, GtkSignalRunType signalFlags, GType objectType, uint functionOffset, GSignalCMarshaller marshaller, GType returnVal, GType[] args)
-	{
-		// guint gtk_signal_newv (const gchar *name,  GtkSignalRunType signal_flags,  GType object_type,  guint function_offset,  GSignalCMarshaller marshaller,  GType return_val,  guint n_args,  GType *args);
-		return gtk_signal_newv(Str.toStringz(name), signalFlags, objectType, functionOffset, marshaller, returnVal, args.length, args.ptr);
-	}
+	public static uint newv(string name, GtkSignalRunType signalFlags, GType objectType, uint functionOffset, GSignalCMarshaller marshaller, GType returnVal, GType[] args);
 	
 	/**
 	 * Warning
@@ -199,11 +141,7 @@ public class Signals
 	 * args = an array of GtkArgs, one for each parameter,
 	 * followed by one which is a pointer to the return type.
 	 */
-	public static void emitv(ObjectGtk object, uint signalId, GtkArg[] args)
-	{
-		// void gtk_signal_emitv (GtkObject *object,  guint signal_id,  GtkArg *args);
-		gtk_signal_emitv((object is null) ? null : object.getObjectGtkStruct(), signalId, args.ptr);
-	}
+	public static void emitv(ObjectGtk object, uint signalId, GtkArg[] args);
 	
 	/**
 	 * Warning
@@ -217,11 +155,7 @@ public class Signals
 	 * args = an array of GtkArgs, one for each parameter,
 	 * followed by one which is a pointer to the return type.
 	 */
-	public static void emitvByName(ObjectGtk object, string name, GtkArg[] args)
-	{
-		// void gtk_signal_emitv_by_name (GtkObject *object,  const gchar *name,  GtkArg *args);
-		gtk_signal_emitv_by_name((object is null) ? null : object.getObjectGtkStruct(), Str.toStringz(name), args.ptr);
-	}
+	public static void emitvByName(ObjectGtk object, string name, GtkArg[] args);
 	
 	/**
 	 * Warning
@@ -233,11 +167,7 @@ public class Signals
 	 * object = the object whose signal handlers you wish to stop.
 	 * name = the name of the signal you wish to stop.
 	 */
-	public static void emitStopByName(ObjectGtk object, string name)
-	{
-		// void gtk_signal_emit_stop_by_name (GtkObject *object,  const gchar *name);
-		gtk_signal_emit_stop_by_name((object is null) ? null : object.getObjectGtkStruct(), Str.toStringz(name));
-	}
+	public static void emitStopByName(ObjectGtk object, string name);
 	
 	/**
 	 * Warning
@@ -261,11 +191,7 @@ public class Signals
 	 * and GTK_RUN_LAST).
 	 * Returns:the connection id.
 	 */
-	public static uint connectFull(ObjectGtk object, string name, GCallback func, GtkCallbackMarshal unsupported, void* data, GDestroyNotify destroyFunc, int objectSignal, int after)
-	{
-		// gulong gtk_signal_connect_full (GtkObject *object,  const gchar *name,  GCallback func,  GtkCallbackMarshal unsupported,  gpointer data,  GDestroyNotify destroy_func,  gint object_signal,  gint after);
-		return gtk_signal_connect_full((object is null) ? null : object.getObjectGtkStruct(), Str.toStringz(name), func, unsupported, data, destroyFunc, objectSignal, after);
-	}
+	public static uint connectFull(ObjectGtk object, string name, GCallback func, GtkCallbackMarshal unsupported, void* data, GDestroyNotify destroyFunc, int objectSignal, int after);
 	
 	/**
 	 * Warning
@@ -288,11 +214,7 @@ public class Signals
 	 * aliveObject = object whose death should cause the handler connection
 	 * to be destroyed.
 	 */
-	public static void connectWhileAlive(ObjectGtk object, string name, GCallback func, void* funcData, ObjectGtk aliveObject)
-	{
-		// void gtk_signal_connect_while_alive (GtkObject *object,  const gchar *name,  GCallback func,  gpointer func_data,  GtkObject *alive_object);
-		gtk_signal_connect_while_alive((object is null) ? null : object.getObjectGtkStruct(), Str.toStringz(name), func, funcData, (aliveObject is null) ? null : aliveObject.getObjectGtkStruct());
-	}
+	public static void connectWhileAlive(ObjectGtk object, string name, GCallback func, void* funcData, ObjectGtk aliveObject);
 	
 	/**
 	 * Warning
@@ -313,9 +235,5 @@ public class Signals
 	 * aliveObject = the user data, which must be an object, whose destruction
 	 * should signal the removal of this signal.
 	 */
-	public static void connectObjectWhileAlive(ObjectGtk object, string name, GCallback func, ObjectGtk aliveObject)
-	{
-		// void gtk_signal_connect_object_while_alive  (GtkObject *object,  const gchar *name,  GCallback func,  GtkObject *alive_object);
-		gtk_signal_connect_object_while_alive((object is null) ? null : object.getObjectGtkStruct(), Str.toStringz(name), func, (aliveObject is null) ? null : aliveObject.getObjectGtkStruct());
-	}
+	public static void connectObjectWhileAlive(ObjectGtk object, string name, GCallback func, ObjectGtk aliveObject);
 }

@@ -1,62 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkScaleButton.html
- * outPack = gtk
- * outFile = ScaleButton
- * strct   = GtkScaleButton
- * realStrct=
- * ctorStrct=
- * clss    = ScaleButton
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- OrientableIF
- * prefixes:
- * 	- gtk_scale_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Adjustment
- * 	- gtkD.gtk.OrientableIF
- * 	- gtkD.gtk.OrientableT
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ScaleButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -91,38 +32,16 @@ public class ScaleButton : Button, OrientableIF
 	protected GtkScaleButton* gtkScaleButton;
 	
 	
-	public GtkScaleButton* getScaleButtonStruct()
-	{
-		return gtkScaleButton;
-	}
+	public GtkScaleButton* getScaleButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkScaleButton;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkScaleButton* gtkScaleButton)
-	{
-		if(gtkScaleButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkScaleButton);
-		if( ptr !is null )
-		{
-			this = cast(ScaleButton)ptr;
-			return;
-		}
-		super(cast(GtkButton*)gtkScaleButton);
-		this.gtkScaleButton = gtkScaleButton;
-	}
+	public this (GtkScaleButton* gtkScaleButton);
 	
 	// add the Orientable capabilities
 	mixin OrientableT!(GtkScaleButton);
@@ -139,28 +58,8 @@ public class ScaleButton : Button, OrientableIF
 	 * The default binding for this signal is Escape.
 	 * Since 2.12
 	 */
-	void addOnPopdown(void delegate(ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("popdown" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"popdown",
-			cast(GCallback)&callBackPopdown,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["popdown"] = 1;
-		}
-		onPopdownListeners ~= dlg;
-	}
-	extern(C) static void callBackPopdown(GtkScaleButton* buttonStruct, ScaleButton scaleButton)
-	{
-		foreach ( void delegate(ScaleButton) dlg ; scaleButton.onPopdownListeners )
-		{
-			dlg(scaleButton);
-		}
-	}
+	void addOnPopdown(void delegate(ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopdown(GtkScaleButton* buttonStruct, ScaleButton scaleButton);
 	
 	void delegate(ScaleButton)[] onPopupListeners;
 	/**
@@ -170,28 +69,8 @@ public class ScaleButton : Button, OrientableIF
 	 * The default bindings for this signal are Space, Enter and Return.
 	 * Since 2.12
 	 */
-	void addOnPopup(void delegate(ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("popup" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"popup",
-			cast(GCallback)&callBackPopup,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["popup"] = 1;
-		}
-		onPopupListeners ~= dlg;
-	}
-	extern(C) static void callBackPopup(GtkScaleButton* buttonStruct, ScaleButton scaleButton)
-	{
-		foreach ( void delegate(ScaleButton) dlg ; scaleButton.onPopupListeners )
-		{
-			dlg(scaleButton);
-		}
-	}
+	void addOnPopup(void delegate(ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackPopup(GtkScaleButton* buttonStruct, ScaleButton scaleButton);
 	
 	void delegate(gdouble, ScaleButton)[] onValueChangedListeners;
 	/**
@@ -199,28 +78,8 @@ public class ScaleButton : Button, OrientableIF
 	 * changed.
 	 * Since 2.12
 	 */
-	void addOnValueChanged(void delegate(gdouble, ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("value-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"value-changed",
-			cast(GCallback)&callBackValueChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["value-changed"] = 1;
-		}
-		onValueChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackValueChanged(GtkScaleButton* buttonStruct, gdouble value, ScaleButton scaleButton)
-	{
-		foreach ( void delegate(gdouble, ScaleButton) dlg ; scaleButton.onValueChangedListeners )
-		{
-			dlg(value, scaleButton);
-		}
-	}
+	void addOnValueChanged(void delegate(gdouble, ScaleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackValueChanged(GtkScaleButton* buttonStruct, gdouble value, ScaleButton scaleButton);
 	
 	
 	/**
@@ -237,16 +96,7 @@ public class ScaleButton : Button, OrientableIF
 	 *  you want to set the list later with gtk_scale_button_set_icons()
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (GtkIconSize size, double min, double max, double step, string[] icons)
-	{
-		// GtkWidget * gtk_scale_button_new (GtkIconSize size,  gdouble min,  gdouble max,  gdouble step,  const gchar **icons);
-		auto p = gtk_scale_button_new(size, min, max, step, Str.toStringzArray(icons));
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_scale_button_new(size, min, max, step, Str.toStringzArray(icons))");
-		}
-		this(cast(GtkScaleButton*) p);
-	}
+	public this (GtkIconSize size, double min, double max, double step, string[] icons);
 	
 	/**
 	 * Sets the GtkAdjustment to be used as a model
@@ -256,11 +106,7 @@ public class ScaleButton : Button, OrientableIF
 	 * Params:
 	 * adjustment =  a GtkAdjustment
 	 */
-	public void setAdjustment(Adjustment adjustment)
-	{
-		// void gtk_scale_button_set_adjustment (GtkScaleButton *button,  GtkAdjustment *adjustment);
-		gtk_scale_button_set_adjustment(gtkScaleButton, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setAdjustment(Adjustment adjustment);
 	
 	/**
 	 * Sets the icons to be used by the scale button.
@@ -269,11 +115,7 @@ public class ScaleButton : Button, OrientableIF
 	 * Params:
 	 * icons =  a NULL-terminated array of icon names
 	 */
-	public void setIcons(string[] icons)
-	{
-		// void gtk_scale_button_set_icons (GtkScaleButton *button,  const gchar **icons);
-		gtk_scale_button_set_icons(gtkScaleButton, Str.toStringzArray(icons));
-	}
+	public void setIcons(string[] icons);
 	
 	/**
 	 * Sets the current value of the scale; if the value is outside
@@ -284,11 +126,7 @@ public class ScaleButton : Button, OrientableIF
 	 * Params:
 	 * value =  new value of the scale button
 	 */
-	public void setValue(double value)
-	{
-		// void gtk_scale_button_set_value (GtkScaleButton *button,  gdouble value);
-		gtk_scale_button_set_value(gtkScaleButton, value);
-	}
+	public void setValue(double value);
 	
 	/**
 	 * Gets the GtkAdjustment associated with the GtkScaleButton's scale.
@@ -296,75 +134,35 @@ public class ScaleButton : Button, OrientableIF
 	 * Since 2.12
 	 * Returns: the adjustment associated with the scale
 	 */
-	public Adjustment getAdjustment()
-	{
-		// GtkAdjustment * gtk_scale_button_get_adjustment (GtkScaleButton *button);
-		auto p = gtk_scale_button_get_adjustment(gtkScaleButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getAdjustment();
 	
 	/**
 	 * Gets the current value of the scale button.
 	 * Since 2.12
 	 * Returns: current value of the scale button
 	 */
-	public double getValue()
-	{
-		// gdouble gtk_scale_button_get_value (GtkScaleButton *button);
-		return gtk_scale_button_get_value(gtkScaleButton);
-	}
-	
+	public double getValue();
+
 	/**
 	 * Retrieves the popup of the GtkScaleButton.
 	 * Since 2.14
 	 * Returns: the popup of the GtkScaleButton
 	 */
-	public Widget getPopup()
-	{
-		// GtkWidget * gtk_scale_button_get_popup (GtkScaleButton *button);
-		auto p = gtk_scale_button_get_popup(gtkScaleButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getPopup();
 	
 	/**
 	 * Retrieves the plus button of the GtkScaleButton.
 	 * Since 2.14
 	 * Returns: the plus button of the GtkScaleButton.
 	 */
-	public Widget getPlusButton()
-	{
-		// GtkWidget * gtk_scale_button_get_plus_button (GtkScaleButton *button);
-		auto p = gtk_scale_button_get_plus_button(gtkScaleButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getPlusButton();
 	
 	/**
 	 * Retrieves the minus button of the GtkScaleButton.
 	 * Since 2.14
 	 * Returns: the minus button of the GtkScaleButton.
 	 */
-	public Widget getMinusButton()
-	{
-		// GtkWidget * gtk_scale_button_get_minus_button (GtkScaleButton *button);
-		auto p = gtk_scale_button_get_minus_button(gtkScaleButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Widget(cast(GtkWidget*) p);
-	}
+	public Widget getMinusButton();
 	
 	/**
 	 * Warning
@@ -374,11 +172,7 @@ public class ScaleButton : Button, OrientableIF
 	 * Params:
 	 * orientation =  the new orientation
 	 */
-	public void setOrientation(GtkOrientation orientation)
-	{
-		// void gtk_scale_button_set_orientation (GtkScaleButton *button,  GtkOrientation orientation);
-		gtk_scale_button_set_orientation(gtkScaleButton, orientation);
-	}
+	public void setOrientation(GtkOrientation orientation);
 	
 	/**
 	 * Warning
@@ -387,9 +181,5 @@ public class ScaleButton : Button, OrientableIF
 	 * Since 2.14
 	 * Returns: the GtkScaleButton's orientation.
 	 */
-	public GtkOrientation getOrientation()
-	{
-		// GtkOrientation gtk_scale_button_get_orientation (GtkScaleButton *button);
-		return gtk_scale_button_get_orientation(gtkScaleButton);
-	}
+	public GtkOrientation getOrientation();
 }

@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkToggleButton.html
- * outPack = gtk
- * outFile = ToggleButton
- * strct   = GtkToggleButton
- * realStrct=
- * ctorStrct=
- * clss    = ToggleButton
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_toggle_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * 	- gtk_toggle_button_new_with_label
- * 	- gtk_toggle_button_new_with_mnemonic
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.ToggleButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -108,38 +54,16 @@ public class ToggleButton : Button
 	protected GtkToggleButton* gtkToggleButton;
 	
 	
-	public GtkToggleButton* getToggleButtonStruct()
-	{
-		return gtkToggleButton;
-	}
+	public GtkToggleButton* getToggleButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkToggleButton;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkToggleButton* gtkToggleButton)
-	{
-		if(gtkToggleButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkToggleButton);
-		if( ptr !is null )
-		{
-			this = cast(ToggleButton)ptr;
-			return;
-		}
-		super(cast(GtkButton*)gtkToggleButton);
-		this.gtkToggleButton = gtkToggleButton;
-	}
+	public this (GtkToggleButton* gtkToggleButton);
 	
 	/**
 	 * Creates a new toggle button with a text label.
@@ -150,28 +74,7 @@ public class ToggleButton : Button
 	 *  in label indicate the mnemonic for the button.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string label, bool mnemonic=true)
-	{
-		GtkToggleButton* p;
-		
-		if ( mnemonic )
-		{
-			// GtkWidget* gtk_toggle_button_new_with_mnemonic  (const gchar *label);
-			p = cast(GtkToggleButton*)gtk_toggle_button_new_with_mnemonic(Str.toStringz(label));
-		}
-		else
-		{
-			// GtkWidget* gtk_toggle_button_new_with_label  (const gchar *label);
-			p = cast(GtkToggleButton*)gtk_toggle_button_new_with_label(Str.toStringz(label));
-		}
-		
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_toggle_button_new_");
-		}
-		
-		this(p);
-	}
+	public this (string label, bool mnemonic=true);
 	
 	/**
 	 */
@@ -189,44 +92,15 @@ public class ToggleButton : Button
 	 * GtkCheckMenuItem
 	 * a GtkToggleButton as a menu item.
 	 */
-	void addOnToggled(void delegate(ToggleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("toggled" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"toggled",
-			cast(GCallback)&callBackToggled,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["toggled"] = 1;
-		}
-		onToggledListeners ~= dlg;
-	}
-	extern(C) static void callBackToggled(GtkToggleButton* togglebuttonStruct, ToggleButton toggleButton)
-	{
-		foreach ( void delegate(ToggleButton) dlg ; toggleButton.onToggledListeners )
-		{
-			dlg(toggleButton);
-		}
-	}
+	void addOnToggled(void delegate(ToggleButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackToggled(GtkToggleButton* togglebuttonStruct, ToggleButton toggleButton);
 	
 	
 	/**
 	 * Creates a new toggle button. A widget should be packed into the button, as in gtk_button_new().
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_toggle_button_new (void);
-		auto p = gtk_toggle_button_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_toggle_button_new()");
-		}
-		this(cast(GtkToggleButton*) p);
-	}
+	public this ();
 	
 	/**
 	 * Sets whether the button is displayed as a separate indicator and label.
@@ -239,44 +113,28 @@ public class ToggleButton : Button
 	 * drawIndicator =  if TRUE, draw the button as a separate indicator
 	 * and label; if FALSE, draw the button like a normal button
 	 */
-	public void setMode(int drawIndicator)
-	{
-		// void gtk_toggle_button_set_mode (GtkToggleButton *toggle_button,  gboolean draw_indicator);
-		gtk_toggle_button_set_mode(gtkToggleButton, drawIndicator);
-	}
+	public void setMode(int drawIndicator);
 	
 	/**
 	 * Retrieves whether the button is displayed as a separate indicator
 	 * and label. See gtk_toggle_button_set_mode().
 	 * Returns: TRUE if the togglebutton is drawn as a separate indicator and label.
 	 */
-	public int getMode()
-	{
-		// gboolean gtk_toggle_button_get_mode (GtkToggleButton *toggle_button);
-		return gtk_toggle_button_get_mode(gtkToggleButton);
-	}
+	public int getMode();
 	
 	/**
 	 * Emits the toggled
 	 * signal on the GtkToggleButton. There is no good reason for an
 	 * application ever to call this function.
 	 */
-	public void toggled()
-	{
-		// void gtk_toggle_button_toggled (GtkToggleButton *toggle_button);
-		gtk_toggle_button_toggled(gtkToggleButton);
-	}
+	public void toggled();
 	
 	/**
 	 * Queries a GtkToggleButton and returns its current state. Returns TRUE if
 	 * the toggle button is pressed in and FALSE if it is raised.
 	 * Returns:a gboolean value.
 	 */
-	public int getActive()
-	{
-		// gboolean gtk_toggle_button_get_active (GtkToggleButton *toggle_button);
-		return gtk_toggle_button_get_active(gtkToggleButton);
-	}
+	public int getActive();
 	
 	/**
 	 * Sets the status of the toggle button. Set to TRUE if you want the
@@ -285,21 +143,13 @@ public class ToggleButton : Button
 	 * Params:
 	 * isActive = %TRUE or FALSE.
 	 */
-	public void setActive(int isActive)
-	{
-		// void gtk_toggle_button_set_active (GtkToggleButton *toggle_button,  gboolean is_active);
-		gtk_toggle_button_set_active(gtkToggleButton, isActive);
-	}
+	public void setActive(int isActive);
 	
 	/**
 	 * Gets the value set by gtk_toggle_button_set_inconsistent().
 	 * Returns: TRUE if the button is displayed as inconsistent, FALSE otherwise
 	 */
-	public int getInconsistent()
-	{
-		// gboolean gtk_toggle_button_get_inconsistent (GtkToggleButton *toggle_button);
-		return gtk_toggle_button_get_inconsistent(gtkToggleButton);
-	}
+	public int getInconsistent();
 	
 	/**
 	 * If the user has selected a range of elements (such as some text or
@@ -313,9 +163,5 @@ public class ToggleButton : Button
 	 * Params:
 	 * setting =  TRUE if state is inconsistent
 	 */
-	public void setInconsistent(int setting)
-	{
-		// void gtk_toggle_button_set_inconsistent (GtkToggleButton *toggle_button,  gboolean setting);
-		gtk_toggle_button_set_inconsistent(gtkToggleButton, setting);
-	}
+	public void setInconsistent(int setting);
 }

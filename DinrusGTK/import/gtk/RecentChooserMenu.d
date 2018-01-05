@@ -1,65 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkRecentChooserMenu.html
- * outPack = gtk
- * outFile = RecentChooserMenu
- * strct   = GtkRecentChooserMenu
- * realStrct=
- * ctorStrct=
- * clss    = RecentChooserMenu
- * interf  = 
- * class Code: Yes
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * 	- ActivatableIF
- * 	- RecentChooserIF
- * prefixes:
- * 	- gtk_recent_chooser_menu_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.RecentManager
- * 	- gtkD.gtk.ActivatableT
- * 	- gtkD.gtk.ActivatableIF
- * 	- gtkD.gtk.RecentChooserIF
- * 	- gtkD.gtk.RecentChooserT
- * structWrap:
- * 	- GtkRecentManager* -> RecentManager
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.RecentChooserMenu;
 
 public  import gtkD.gtkc.gtktypes;
@@ -105,38 +43,16 @@ public class RecentChooserMenu : Menu, ActivatableIF, RecentChooserIF
 	protected GtkRecentChooserMenu* gtkRecentChooserMenu;
 	
 	
-	public GtkRecentChooserMenu* getRecentChooserMenuStruct()
-	{
-		return gtkRecentChooserMenu;
-	}
+	public GtkRecentChooserMenu* getRecentChooserMenuStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkRecentChooserMenu;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkRecentChooserMenu* gtkRecentChooserMenu)
-	{
-		if(gtkRecentChooserMenu is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkRecentChooserMenu);
-		if( ptr !is null )
-		{
-			this = cast(RecentChooserMenu)ptr;
-			return;
-		}
-		super(cast(GtkMenu*)gtkRecentChooserMenu);
-		this.gtkRecentChooserMenu = gtkRecentChooserMenu;
-	}
+	public this (GtkRecentChooserMenu* gtkRecentChooserMenu);
 	
 	// add the Activatable capabilities
 	mixin ActivatableT!(GtkRecentChooserMenu);
@@ -160,16 +76,7 @@ public class RecentChooserMenu : Menu, ActivatableIF, RecentChooserIF
 	 * Since 2.10
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget * gtk_recent_chooser_menu_new (void);
-		auto p = gtk_recent_chooser_menu_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_chooser_menu_new()");
-		}
-		this(cast(GtkRecentChooserMenu*) p);
-	}
+	public this ();
 	
 	/**
 	 * Creates a new GtkRecentChooserMenu widget using manager as
@@ -183,27 +90,14 @@ public class RecentChooserMenu : Menu, ActivatableIF, RecentChooserIF
 	 * manager =  a GtkRecentManager
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (RecentManager manager)
-	{
-		// GtkWidget * gtk_recent_chooser_menu_new_for_manager  (GtkRecentManager *manager);
-		auto p = gtk_recent_chooser_menu_new_for_manager((manager is null) ? null : manager.getRecentManagerStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_recent_chooser_menu_new_for_manager((manager is null) ? null : manager.getRecentManagerStruct())");
-		}
-		this(cast(GtkRecentChooserMenu*) p);
-	}
+	public this (RecentManager manager);
 	
 	/**
 	 * Returns the value set by gtk_recent_chooser_menu_set_show_numbers().
 	 * Since 2.10
 	 * Returns: TRUE if numbers should be shown.
 	 */
-	public int getShowNumbers()
-	{
-		// gboolean gtk_recent_chooser_menu_get_show_numbers  (GtkRecentChooserMenu *menu);
-		return gtk_recent_chooser_menu_get_show_numbers(gtkRecentChooserMenu);
-	}
+	public int getShowNumbers();
 	
 	/**
 	 * Sets whether a number should be added to the items of menu. The
@@ -214,9 +108,5 @@ public class RecentChooserMenu : Menu, ActivatableIF, RecentChooserIF
 	 * Params:
 	 * showNumbers =  whether to show numbers
 	 */
-	public void setShowNumbers(int showNumbers)
-	{
-		// void gtk_recent_chooser_menu_set_show_numbers  (GtkRecentChooserMenu *menu,  gboolean show_numbers);
-		gtk_recent_chooser_menu_set_show_numbers(gtkRecentChooserMenu, showNumbers);
-	}
+	public void setShowNumbers(int showNumbers);
 }

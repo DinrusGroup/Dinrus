@@ -1,63 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTooltip.html
- * outPack = gtk
- * outFile = Tooltip
- * strct   = GtkTooltip
- * realStrct=
- * ctorStrct=
- * clss    = Tooltip
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_tooltip_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gdk.Pixbuf
- * 	- gtkD.gdk.Display
- * 	- gtkD.gdk.Rectangle
- * 	- gtkD.gtk.Widget
- * structWrap:
- * 	- GdkDisplay* -> Display
- * 	- GdkPixbuf* -> Pixbuf
- * 	- GdkRectangle* -> Rectangle
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Tooltip;
 
 public  import gtkD.gtkc.gtktypes;
@@ -119,38 +59,16 @@ public class Tooltip : ObjectG
 	protected GtkTooltip* gtkTooltip;
 	
 	
-	public GtkTooltip* getTooltipStruct()
-	{
-		return gtkTooltip;
-	}
+	public GtkTooltip* getTooltipStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTooltip;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTooltip* gtkTooltip)
-	{
-		if(gtkTooltip is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTooltip);
-		if( ptr !is null )
-		{
-			this = cast(Tooltip)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTooltip);
-		this.gtkTooltip = gtkTooltip;
-	}
+	public this (GtkTooltip* gtkTooltip);
 	
 	/**
 	 */
@@ -163,11 +81,7 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * markup =  a markup string (see Pango markup format) or NULL
 	 */
-	public void setMarkup(string markup)
-	{
-		// void gtk_tooltip_set_markup (GtkTooltip *tooltip,  const gchar *markup);
-		gtk_tooltip_set_markup(gtkTooltip, Str.toStringz(markup));
-	}
+	public void setMarkup(string markup);
 	
 	/**
 	 * Sets the text of the tooltip to be text. If text is NULL, the label
@@ -176,11 +90,7 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * text =  a text string or NULL
 	 */
-	public void setText(string text)
-	{
-		// void gtk_tooltip_set_text (GtkTooltip *tooltip,  const gchar *text);
-		gtk_tooltip_set_text(gtkTooltip, Str.toStringz(text));
-	}
+	public void setText(string text);
 	
 	/**
 	 * Sets the icon of the tooltip (which is in front of the text) to be
@@ -189,11 +99,7 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * pixbuf =  a GdkPixbuf, or NULL
 	 */
-	public void setIcon(Pixbuf pixbuf)
-	{
-		// void gtk_tooltip_set_icon (GtkTooltip *tooltip,  GdkPixbuf *pixbuf);
-		gtk_tooltip_set_icon(gtkTooltip, (pixbuf is null) ? null : pixbuf.getPixbufStruct());
-	}
+	public void setIcon(Pixbuf pixbuf);
 	
 	/**
 	 * Sets the icon of the tooltip (which is in front of the text) to be
@@ -204,11 +110,7 @@ public class Tooltip : ObjectG
 	 * stockId =  a stock id, or NULL
 	 * size =  a stock icon size
 	 */
-	public void setIconFromStock(string stockId, GtkIconSize size)
-	{
-		// void gtk_tooltip_set_icon_from_stock (GtkTooltip *tooltip,  const gchar *stock_id,  GtkIconSize size);
-		gtk_tooltip_set_icon_from_stock(gtkTooltip, Str.toStringz(stockId), size);
-	}
+	public void setIconFromStock(string stockId, GtkIconSize size);
 	
 	/**
 	 * Sets the icon of the tooltip (which is in front of the text) to be
@@ -219,11 +121,7 @@ public class Tooltip : ObjectG
 	 * iconName =  an icon name, or NULL
 	 * size =  a stock icon size
 	 */
-	public void setIconFromIconName(string iconName, GtkIconSize size)
-	{
-		// void gtk_tooltip_set_icon_from_icon_name (GtkTooltip *tooltip,  const gchar *icon_name,  GtkIconSize size);
-		gtk_tooltip_set_icon_from_icon_name(gtkTooltip, Str.toStringz(iconName), size);
-	}
+	public void setIconFromIconName(string iconName, GtkIconSize size);
 	
 	/**
 	 * Replaces the widget packed into the tooltip with
@@ -236,11 +134,7 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * customWidget =  a GtkWidget, or NULL to unset the old custom widget.
 	 */
-	public void setCustom(Widget customWidget)
-	{
-		// void gtk_tooltip_set_custom (GtkTooltip *tooltip,  GtkWidget *custom_widget);
-		gtk_tooltip_set_custom(gtkTooltip, (customWidget is null) ? null : customWidget.getWidgetStruct());
-	}
+	public void setCustom(Widget customWidget);
 	
 	/**
 	 * Triggers a new tooltip query on display, in order to update the current
@@ -251,11 +145,7 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * display =  a GdkDisplay
 	 */
-	public static void triggerTooltipQuery(Display display)
-	{
-		// void gtk_tooltip_trigger_tooltip_query (GdkDisplay *display);
-		gtk_tooltip_trigger_tooltip_query((display is null) ? null : display.getDisplayStruct());
-	}
+	public static void triggerTooltipQuery(Display display);
 	
 	/**
 	 * Sets the area of the widget, where the contents of this tooltip apply,
@@ -269,9 +159,5 @@ public class Tooltip : ObjectG
 	 * Params:
 	 * rect =  a GdkRectangle
 	 */
-	public void setTipArea(Rectangle rect)
-	{
-		// void gtk_tooltip_set_tip_area (GtkTooltip *tooltip,  const GdkRectangle *rect);
-		gtk_tooltip_set_tip_area(gtkTooltip, (rect is null) ? null : rect.getRectangleStruct());
-	}
+	public void setTipArea(Rectangle rect);
 }

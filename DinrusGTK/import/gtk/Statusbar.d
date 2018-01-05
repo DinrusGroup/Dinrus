@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkStatusbar.html
- * outPack = gtk
- * outFile = Statusbar
- * strct   = GtkStatusbar
- * realStrct=
- * ctorStrct=
- * clss    = Statusbar
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_statusbar_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Statusbar;
 
 public  import gtkD.gtkc.gtktypes;
@@ -99,38 +47,15 @@ public class Statusbar : HBox
 	protected GtkStatusbar* gtkStatusbar;
 	
 	
-	public GtkStatusbar* getStatusbarStruct()
-	{
-		return gtkStatusbar;
-	}
-	
+	public GtkStatusbar* getStatusbarStruct();
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkStatusbar;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkStatusbar* gtkStatusbar)
-	{
-		if(gtkStatusbar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkStatusbar);
-		if( ptr !is null )
-		{
-			this = cast(Statusbar)ptr;
-			return;
-		}
-		super(cast(GtkHBox*)gtkStatusbar);
-		this.gtkStatusbar = gtkStatusbar;
-	}
+	public this (GtkStatusbar* gtkStatusbar);
 	
 	/**
 	 */
@@ -140,71 +65,22 @@ public class Statusbar : HBox
 	/**
 	 * Is emitted whenever a new message is popped off a statusbar's stack.
 	 */
-	void addOnTextPopped(void delegate(guint, string, Statusbar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("text-popped" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"text-popped",
-			cast(GCallback)&callBackTextPopped,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["text-popped"] = 1;
-		}
-		onTextPoppedListeners ~= dlg;
-	}
-	extern(C) static void callBackTextPopped(GtkStatusbar* statusbarStruct, guint contextId, gchar* text, Statusbar statusbar)
-	{
-		foreach ( void delegate(guint, string, Statusbar) dlg ; statusbar.onTextPoppedListeners )
-		{
-			dlg(contextId, Str.toString(text), statusbar);
-		}
-	}
+	void addOnTextPopped(void delegate(guint, string, Statusbar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackTextPopped(GtkStatusbar* statusbarStruct, guint contextId, gchar* text, Statusbar statusbar);
 	
 	void delegate(guint, string, Statusbar)[] onTextPushedListeners;
 	/**
 	 * Is emitted whenever a new message gets pushed onto a statusbar's stack.
 	 */
-	void addOnTextPushed(void delegate(guint, string, Statusbar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("text-pushed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"text-pushed",
-			cast(GCallback)&callBackTextPushed,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["text-pushed"] = 1;
-		}
-		onTextPushedListeners ~= dlg;
-	}
-	extern(C) static void callBackTextPushed(GtkStatusbar* statusbarStruct, guint contextId, gchar* text, Statusbar statusbar)
-	{
-		foreach ( void delegate(guint, string, Statusbar) dlg ; statusbar.onTextPushedListeners )
-		{
-			dlg(contextId, Str.toString(text), statusbar);
-		}
-	}
+	void addOnTextPushed(void delegate(guint, string, Statusbar) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackTextPushed(GtkStatusbar* statusbarStruct, guint contextId, gchar* text, Statusbar statusbar);
 	
 	
 	/**
 	 * Creates a new GtkStatusbar ready for messages.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_statusbar_new (void);
-		auto p = gtk_statusbar_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_statusbar_new()");
-		}
-		this(cast(GtkStatusbar*) p);
-	}
+	public this ();
 	
 	/**
 	 * Returns a new context identifier, given a description
@@ -215,11 +91,7 @@ public class Statusbar : HBox
 	 *  the new message is being used in
 	 * Returns: an integer id
 	 */
-	public uint getContextId(string contextDescription)
-	{
-		// guint gtk_statusbar_get_context_id (GtkStatusbar *statusbar,  const gchar *context_description);
-		return gtk_statusbar_get_context_id(gtkStatusbar, Str.toStringz(contextDescription));
-	}
+	public uint getContextId(string contextDescription);
 	
 	/**
 	 * Pushes a new message onto a statusbar's stack.
@@ -229,11 +101,7 @@ public class Statusbar : HBox
 	 * text =  the message to add to the statusbar
 	 * Returns: a message id that can be used with  gtk_statusbar_remove().
 	 */
-	public uint push(uint contextId, string text)
-	{
-		// guint gtk_statusbar_push (GtkStatusbar *statusbar,  guint context_id,  const gchar *text);
-		return gtk_statusbar_push(gtkStatusbar, contextId, Str.toStringz(text));
-	}
+	public uint push(uint contextId, string text);
 	
 	/**
 	 * Removes the first message in the GtkStatusBar's stack
@@ -244,11 +112,7 @@ public class Statusbar : HBox
 	 * Params:
 	 * contextId =  a context identifier
 	 */
-	public void pop(uint contextId)
-	{
-		// void gtk_statusbar_pop (GtkStatusbar *statusbar,  guint context_id);
-		gtk_statusbar_pop(gtkStatusbar, contextId);
-	}
+	public void pop(uint contextId);
 	
 	/**
 	 * Forces the removal of a message from a statusbar's stack.
@@ -257,11 +121,7 @@ public class Statusbar : HBox
 	 * contextId =  a context identifier
 	 * messageId =  a message identifier, as returned by gtk_statusbar_push()
 	 */
-	public void remove(uint contextId, uint messageId)
-	{
-		// void gtk_statusbar_remove (GtkStatusbar *statusbar,  guint context_id,  guint message_id);
-		gtk_statusbar_remove(gtkStatusbar, contextId, messageId);
-	}
+	public void remove(uint contextId, uint messageId);
 	
 	/**
 	 * Sets whether the statusbar has a resize grip.
@@ -269,19 +129,11 @@ public class Statusbar : HBox
 	 * Params:
 	 * setting =  TRUE to have a resize grip
 	 */
-	public void setHasResizeGrip(int setting)
-	{
-		// void gtk_statusbar_set_has_resize_grip (GtkStatusbar *statusbar,  gboolean setting);
-		gtk_statusbar_set_has_resize_grip(gtkStatusbar, setting);
-	}
+	public void setHasResizeGrip(int setting);
 	
 	/**
 	 * Returns whether the statusbar has a resize grip.
 	 * Returns: TRUE if the statusbar has a resize grip.
 	 */
-	public int getHasResizeGrip()
-	{
-		// gboolean gtk_statusbar_get_has_resize_grip (GtkStatusbar *statusbar);
-		return gtk_statusbar_get_has_resize_grip(gtkStatusbar);
-	}
+	public int getHasResizeGrip();
 }

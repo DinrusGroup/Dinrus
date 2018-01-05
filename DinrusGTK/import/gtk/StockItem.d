@@ -1,59 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Stock-Items.html
- * outPack = gtk
- * outFile = StockItem
- * strct   = GtkStockItem
- * realStrct=
- * ctorStrct=
- * clss    = StockItem
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_stock_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.StockItem
- * 	- gtkD.glib.ListSG
- * structWrap:
- * 	- GSList* -> ListSG
- * 	- GtkStockItem* -> StockItem
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.StockItem;
 
 public  import gtkD.gtkc.gtktypes;
@@ -94,30 +38,16 @@ public class StockItem
 	protected GtkStockItem* gtkStockItem;
 	
 	
-	public GtkStockItem* getStockItemStruct()
-	{
-		return gtkStockItem;
-	}
+	public GtkStockItem* getStockItemStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkStockItem;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkStockItem* gtkStockItem)
-	{
-		if(gtkStockItem is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkStockItem = gtkStockItem;
-	}
+	public this (GtkStockItem* gtkStockItem);
 	
 	/**
 	 */
@@ -132,11 +62,7 @@ public class StockItem
 	 * Params:
 	 * nItems =  number of GtkStockItem in items
 	 */
-	public void add(uint nItems)
-	{
-		// void gtk_stock_add (const GtkStockItem *items,  guint n_items);
-		gtk_stock_add(gtkStockItem, nItems);
-	}
+	public void add(uint nItems);
 	
 	/**
 	 * Same as gtk_stock_add(), but doesn't copy items, so
@@ -144,11 +70,7 @@ public class StockItem
 	 * Params:
 	 * nItems =  number of items
 	 */
-	public void addStatic(uint nItems)
-	{
-		// void gtk_stock_add_static (const GtkStockItem *items,  guint n_items);
-		gtk_stock_add_static(gtkStockItem, nItems);
-	}
+	public void addStatic(uint nItems);
 	
 	/**
 	 * Copies a stock item, mostly useful for language bindings and not in applications.
@@ -156,16 +78,7 @@ public class StockItem
 	 * item =  a GtkStockItem
 	 * Returns: a new GtkStockItem
 	 */
-	public StockItem itemCopy()
-	{
-		// GtkStockItem * gtk_stock_item_copy (const GtkStockItem *item);
-		auto p = gtk_stock_item_copy(gtkStockItem);
-		if(p is null)
-		{
-			return null;
-		}
-		return new StockItem(cast(GtkStockItem*) p);
-	}
+	public StockItem itemCopy();
 	
 	/**
 	 * Frees a stock item allocated on the heap, such as one returned by
@@ -174,11 +87,7 @@ public class StockItem
 	 * Params:
 	 * item =  a GtkStockItem
 	 */
-	public void itemFree()
-	{
-		// void gtk_stock_item_free (GtkStockItem *item);
-		gtk_stock_item_free(gtkStockItem);
-	}
+	public void itemFree();
 	
 	/**
 	 * Retrieves a list of all known stock IDs added to a GtkIconFactory
@@ -186,16 +95,7 @@ public class StockItem
 	 * and each string in the list must be freed with g_free().
 	 * Returns: a list of known stock IDs
 	 */
-	public static ListSG listIds()
-	{
-		// GSList* gtk_stock_list_ids (void);
-		auto p = gtk_stock_list_ids();
-		if(p is null)
-		{
-			return null;
-		}
-		return new ListSG(cast(GSList*) p);
-	}
+	public static ListSG listIds();
 	
 	/**
 	 * Fills item with the registered values for stock_id, returning TRUE
@@ -205,11 +105,7 @@ public class StockItem
 	 * item =  stock item to initialize with values
 	 * Returns: TRUE if item was initialized
 	 */
-	public static int lookup(string stockId, StockItem item)
-	{
-		// gboolean gtk_stock_lookup (const gchar *stock_id,  GtkStockItem *item);
-		return gtk_stock_lookup(Str.toStringz(stockId), (item is null) ? null : item.getStockItemStruct());
-	}
+	public static int lookup(string stockId, StockItem item);
 	
 	/**
 	 * Sets a function to be used for translating the label of
@@ -229,9 +125,5 @@ public class StockItem
 	 * notify =  a GDestroyNotify that is called when data is
 	 *  no longer needed
 	 */
-	public static void setTranslateFunc(string domain, GtkTranslateFunc func, void* data, GDestroyNotify notify)
-	{
-		// void gtk_stock_set_translate_func (const gchar *domain,  GtkTranslateFunc func,  gpointer data,  GDestroyNotify notify);
-		gtk_stock_set_translate_func(Str.toStringz(domain), func, data, notify);
-	}
+	public static void setTranslateFunc(string domain, GtkTranslateFunc func, void* data, GDestroyNotify notify);
 }

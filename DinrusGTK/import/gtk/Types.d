@@ -1,55 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = gtk-Types.html
- * outPack = gtk
- * outFile = Types
- * strct   = GtkType
- * realStrct=
- * ctorStrct=
- * clss    = Types
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_type_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * structWrap:
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Types;
 
 public  import gtkD.gtkc.gtktypes;
@@ -75,30 +23,16 @@ public class Types
 	protected GtkType* gtkType;
 	
 	
-	public GtkType* getTypesStruct()
-	{
-		return gtkType;
-	}
+	public GtkType* getTypesStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected void* getStruct()
-	{
-		return cast(void*)gtkType;
-	}
+	protected void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkType* gtkType)
-	{
-		if(gtkType is null)
-		{
-			this = null;
-			return;
-		}
-		this.gtkType = gtkType;
-	}
+	public this (GtkType* gtkType);
 	
 	/**
 	 */
@@ -110,11 +44,7 @@ public class Types
 	 * Params:
 	 * debugFlags = debug flags
 	 */
-	public static void init(GTypeDebugFlags debugFlags)
-	{
-		// void gtk_type_init (GTypeDebugFlags debug_flags);
-		gtk_type_init(debugFlags);
-	}
+	public static void init(GTypeDebugFlags debugFlags);
 	
 	/**
 	 * Warning
@@ -125,11 +55,7 @@ public class Types
 	 * gtkinfo = must not be NULL, and type_info->type_name must also not be NULL
 	 * Returns:the new GtkType
 	 */
-	public static GtkType unique(GtkType parentType, GtkTypeInfo* gtkinfo)
-	{
-		// GtkType gtk_type_unique (GtkType parent_type,  const GtkTypeInfo *gtkinfo);
-		return gtk_type_unique(parentType, gtkinfo);
-	}
+	public static GtkType unique(GtkType parentType, GtkTypeInfo* gtkinfo);
 	
 	/**
 	 * Warning
@@ -143,11 +69,7 @@ public class Types
 	 * type =  a GtkType.
 	 * Returns: pointer to the class.
 	 */
-	public static void* clss(GtkType type)
-	{
-		// gpointer gtk_type_class (GtkType type);
-		return gtk_type_class(type);
-	}
+	public static void* clss(GtkType type);
 	
 	/**
 	 * Warning
@@ -160,11 +82,7 @@ public class Types
 	 * type = a GtkType.
 	 * Returns:pointer to a GtkTypeObject.
 	 */
-	public static void* newTypes(GtkType type)
-	{
-		// gpointer gtk_type_new (GtkType type);
-		return gtk_type_new(type);
-	}
+	public static void* newTypes(GtkType type);
 	
 	/**
 	 * Warning
@@ -174,11 +92,7 @@ public class Types
 	 * enumType = a GtkType.
 	 * Returns:#GtkEnumValue*
 	 */
-	public static GtkEnumValue* enumGetValues(GtkType enumType)
-	{
-		// GtkEnumValue* gtk_type_enum_get_values (GtkType enum_type);
-		return gtk_type_enum_get_values(enumType);
-	}
+	public static GtkEnumValue* enumGetValues(GtkType enumType);
 	
 	/**
 	 * Warning
@@ -188,11 +102,7 @@ public class Types
 	 * flagsType = a GtkType.
 	 * Returns:#GtkFlagValue*
 	 */
-	public static GtkFlagValue* flagsGetValues(GtkType flagsType)
-	{
-		// GtkFlagValue* gtk_type_flags_get_values (GtkType flags_type);
-		return gtk_type_flags_get_values(flagsType);
-	}
+	public static GtkFlagValue* flagsGetValues(GtkType flagsType);
 	
 	/**
 	 * Warning
@@ -203,11 +113,7 @@ public class Types
 	 * valueName = the name to look for.
 	 * Returns:#GtkEnumValue*
 	 */
-	public static GtkEnumValue* enumFindValue(GtkType enumType, string valueName)
-	{
-		// GtkEnumValue* gtk_type_enum_find_value (GtkType enum_type,  const gchar *value_name);
-		return gtk_type_enum_find_value(enumType, Str.toStringz(valueName));
-	}
+	public static GtkEnumValue* enumFindValue(GtkType enumType, string valueName);
 	
 	/**
 	 * Warning
@@ -218,9 +124,5 @@ public class Types
 	 * valueName = the name to look for.
 	 * Returns:#GtkFlagValue*
 	 */
-	public static GtkFlagValue* flagsFindValue(GtkType flagsType, string valueName)
-	{
-		// GtkFlagValue* gtk_type_flags_find_value (GtkType flags_type,  const gchar *value_name);
-		return gtk_type_flags_find_value(flagsType, Str.toStringz(valueName));
-	}
+	public static GtkFlagValue* flagsFindValue(GtkType flagsType, string valueName);
 }

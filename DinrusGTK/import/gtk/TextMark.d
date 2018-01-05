@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkTextMark.html
- * outPack = gtk
- * outFile = TextMark
- * strct   = GtkTextMark
- * realStrct=
- * ctorStrct=
- * clss    = TextMark
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_text_mark_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.TextBuffer
- * structWrap:
- * 	- GtkTextBuffer* -> TextBuffer
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.TextMark;
 
 public  import gtkD.gtkc.gtktypes;
@@ -97,38 +43,16 @@ public class TextMark : ObjectG
 	protected GtkTextMark* gtkTextMark;
 	
 	
-	public GtkTextMark* getTextMarkStruct()
-	{
-		return gtkTextMark;
-	}
+	public GtkTextMark* getTextMarkStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkTextMark;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkTextMark* gtkTextMark)
-	{
-		if(gtkTextMark is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkTextMark);
-		if( ptr !is null )
-		{
-			this = cast(TextMark)ptr;
-			return;
-		}
-		super(cast(GObject*)gtkTextMark);
-		this.gtkTextMark = gtkTextMark;
-	}
+	public this (GtkTextMark* gtkTextMark);
 	
 	/**
 	 */
@@ -149,16 +73,7 @@ public class TextMark : ObjectG
 	 * leftGravity =  whether the mark should have left gravity
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (string name, int leftGravity)
-	{
-		// GtkTextMark * gtk_text_mark_new (const gchar *name,  gboolean left_gravity);
-		auto p = gtk_text_mark_new(Str.toStringz(name), leftGravity);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_text_mark_new(Str.toStringz(name), leftGravity)");
-		}
-		this(cast(GtkTextMark*) p);
-	}
+	public this (string name, int leftGravity);
 	
 	/**
 	 * Sets the visibility of mark; the insertion point is normally
@@ -169,22 +84,14 @@ public class TextMark : ObjectG
 	 * Params:
 	 * setting =  visibility of mark
 	 */
-	public void setVisible(int setting)
-	{
-		// void gtk_text_mark_set_visible (GtkTextMark *mark,  gboolean setting);
-		gtk_text_mark_set_visible(gtkTextMark, setting);
-	}
+	public void setVisible(int setting);
 	
 	/**
 	 * Returns TRUE if the mark is visible (i.e. a cursor is displayed
 	 * for it).
 	 * Returns: TRUE if visible
 	 */
-	public int getVisible()
-	{
-		// gboolean gtk_text_mark_get_visible (GtkTextMark *mark);
-		return gtk_text_mark_get_visible(gtkTextMark);
-	}
+	public int getVisible();
 	
 	/**
 	 * Returns TRUE if the mark has been removed from its buffer
@@ -192,45 +99,24 @@ public class TextMark : ObjectG
 	 * for a way to add it to a buffer again.
 	 * Returns: whether the mark is deleted
 	 */
-	public int getDeleted()
-	{
-		// gboolean gtk_text_mark_get_deleted (GtkTextMark *mark);
-		return gtk_text_mark_get_deleted(gtkTextMark);
-	}
+	public int getDeleted();
 	
 	/**
 	 * Returns the mark name; returns NULL for anonymous marks.
 	 * Returns: mark name
 	 */
-	public string getName()
-	{
-		// const gchar* gtk_text_mark_get_name (GtkTextMark *mark);
-		return Str.toString(gtk_text_mark_get_name(gtkTextMark));
-	}
+	public string getName();
 	
 	/**
 	 * Gets the buffer this mark is located inside,
 	 * or NULL if the mark is deleted.
 	 * Returns: the mark's GtkTextBuffer
 	 */
-	public TextBuffer getBuffer()
-	{
-		// GtkTextBuffer* gtk_text_mark_get_buffer (GtkTextMark *mark);
-		auto p = gtk_text_mark_get_buffer(gtkTextMark);
-		if(p is null)
-		{
-			return null;
-		}
-		return new TextBuffer(cast(GtkTextBuffer*) p);
-	}
+	public TextBuffer getBuffer();
 	
 	/**
 	 * Determines whether the mark has left gravity.
 	 * Returns: TRUE if the mark has left gravity, FALSE otherwise
 	 */
-	public int getLeftGravity()
-	{
-		// gboolean gtk_text_mark_get_left_gravity (GtkTextMark *mark);
-		return gtk_text_mark_get_left_gravity(gtkTextMark);
-	}
+	public int getLeftGravity();
 }

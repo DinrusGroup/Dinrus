@@ -1,56 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkProgressBar.html
- * outPack = gtk
- * outFile = ProgressBar
- * strct   = GtkProgressBar
- * realStrct=
- * ctorStrct=
- * clss    = ProgressBar
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_progress_bar_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Adjustment
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * module aliases:
- * local aliases:
- * overrides:
- */
 
 module gtkD.gtk.ProgressBar;
 
@@ -107,38 +54,16 @@ public class ProgressBar : Progress
 	protected GtkProgressBar* gtkProgressBar;
 	
 	
-	public GtkProgressBar* getProgressBarStruct()
-	{
-		return gtkProgressBar;
-	}
+	public GtkProgressBar* getProgressBarStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkProgressBar;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkProgressBar* gtkProgressBar)
-	{
-		if(gtkProgressBar is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkProgressBar);
-		if( ptr !is null )
-		{
-			this = cast(ProgressBar)ptr;
-			return;
-		}
-		super(cast(GtkProgress*)gtkProgressBar);
-		this.gtkProgressBar = gtkProgressBar;
-	}
+	public this (GtkProgressBar* gtkProgressBar);
 	
 	/**
 	 */
@@ -147,16 +72,7 @@ public class ProgressBar : Progress
 	 * Creates a new GtkProgressBar.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this ()
-	{
-		// GtkWidget* gtk_progress_bar_new (void);
-		auto p = gtk_progress_bar_new();
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_progress_bar_new()");
-		}
-		this(cast(GtkProgressBar*) p);
-	}
+	public this ();
 	
 	/**
 	 * Indicates that some progress is made, but you don't know how much.
@@ -165,22 +81,14 @@ public class ProgressBar : Progress
 	 * causes the block to move by a little bit (the amount of movement
 	 * per pulse is determined by gtk_progress_bar_set_pulse_step()).
 	 */
-	public void pulse()
-	{
-		// void gtk_progress_bar_pulse (GtkProgressBar *pbar);
-		gtk_progress_bar_pulse(gtkProgressBar);
-	}
+	public void pulse();
 	
 	/**
 	 * Causes the given text to appear superimposed on the progress bar.
 	 * Params:
 	 * text =  a UTF-8 string, or NULL
 	 */
-	public void setText(string text)
-	{
-		// void gtk_progress_bar_set_text (GtkProgressBar *pbar,  const gchar *text);
-		gtk_progress_bar_set_text(gtkProgressBar, Str.toStringz(text));
-	}
+	public void setText(string text);
 	
 	/**
 	 * Causes the progress bar to "fill in" the given fraction
@@ -189,11 +97,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * fraction =  fraction of the task that's been completed
 	 */
-	public void setFraction(double fraction)
-	{
-		// void gtk_progress_bar_set_fraction (GtkProgressBar *pbar,  gdouble fraction);
-		gtk_progress_bar_set_fraction(gtkProgressBar, fraction);
-	}
+	public void setFraction(double fraction);
 	
 	/**
 	 * Sets the fraction of total progress bar length to move the
@@ -201,11 +105,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * fraction =  fraction between 0.0 and 1.0
 	 */
-	public void setPulseStep(double fraction)
-	{
-		// void gtk_progress_bar_set_pulse_step (GtkProgressBar *pbar,  gdouble fraction);
-		gtk_progress_bar_set_pulse_step(gtkProgressBar, fraction);
-	}
+	public void setPulseStep(double fraction);
 	
 	/**
 	 * Causes the progress bar to switch to a different orientation
@@ -213,11 +113,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * orientation =  orientation of the progress bar
 	 */
-	public void setOrientation(GtkProgressBarOrientation orientation)
-	{
-		// void gtk_progress_bar_set_orientation (GtkProgressBar *pbar,  GtkProgressBarOrientation orientation);
-		gtk_progress_bar_set_orientation(gtkProgressBar, orientation);
-	}
+	public void setOrientation(GtkProgressBarOrientation orientation);
 	
 	/**
 	 * Sets the mode used to ellipsize (add an ellipsis: "...") the text
@@ -226,11 +122,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * mode =  a PangoEllipsizeMode
 	 */
-	public void setEllipsize(PangoEllipsizeMode mode)
-	{
-		// void gtk_progress_bar_set_ellipsize (GtkProgressBar *pbar,  PangoEllipsizeMode mode);
-		gtk_progress_bar_set_ellipsize(gtkProgressBar, mode);
-	}
+	public void setEllipsize(PangoEllipsizeMode mode);
 	
 	/**
 	 * Retrieves the text displayed superimposed on the progress bar,
@@ -239,41 +131,25 @@ public class ProgressBar : Progress
 	 * if you change the text in the progress bar.
 	 * Returns: text, or NULL; this string is owned by the widgetand should not be modified or freed.
 	 */
-	public string getText()
-	{
-		// const gchar* gtk_progress_bar_get_text (GtkProgressBar *pbar);
-		return Str.toString(gtk_progress_bar_get_text(gtkProgressBar));
-	}
+	public string getText();
 	
 	/**
 	 * Returns the current fraction of the task that's been completed.
 	 * Returns: a fraction from 0.0 to 1.0
 	 */
-	public double getFraction()
-	{
-		// gdouble gtk_progress_bar_get_fraction (GtkProgressBar *pbar);
-		return gtk_progress_bar_get_fraction(gtkProgressBar);
-	}
+	public double getFraction();
 	
 	/**
 	 * Retrieves the pulse step set with gtk_progress_bar_set_pulse_step()
 	 * Returns: a fraction from 0.0 to 1.0
 	 */
-	public double getPulseStep()
-	{
-		// gdouble gtk_progress_bar_get_pulse_step (GtkProgressBar *pbar);
-		return gtk_progress_bar_get_pulse_step(gtkProgressBar);
-	}
+	public double getPulseStep();
 	
 	/**
 	 * Retrieves the current progress bar orientation.
 	 * Returns: orientation of the progress bar
 	 */
-	public GtkProgressBarOrientation getOrientation()
-	{
-		// GtkProgressBarOrientation gtk_progress_bar_get_orientation  (GtkProgressBar *pbar);
-		return gtk_progress_bar_get_orientation(gtkProgressBar);
-	}
+	public GtkProgressBarOrientation getOrientation();
 	
 	/**
 	 * Returns the ellipsizing position of the progressbar.
@@ -281,11 +157,7 @@ public class ProgressBar : Progress
 	 * Since 2.6
 	 * Returns: PangoEllipsizeMode
 	 */
-	public PangoEllipsizeMode getEllipsize()
-	{
-		// PangoEllipsizeMode gtk_progress_bar_get_ellipsize (GtkProgressBar *pbar);
-		return gtk_progress_bar_get_ellipsize(gtkProgressBar);
-	}
+	public PangoEllipsizeMode getEllipsize();
 	
 	/**
 	 * Warning
@@ -295,16 +167,7 @@ public class ProgressBar : Progress
 	 * adjustment = a GtkAdjustment.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Adjustment adjustment)
-	{
-		// GtkWidget* gtk_progress_bar_new_with_adjustment  (GtkAdjustment *adjustment);
-		auto p = gtk_progress_bar_new_with_adjustment((adjustment is null) ? null : adjustment.getAdjustmentStruct());
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_progress_bar_new_with_adjustment((adjustment is null) ? null : adjustment.getAdjustmentStruct())");
-		}
-		this(cast(GtkProgressBar*) p);
-	}
+	public this (Adjustment adjustment);
 	
 	/**
 	 * Warning
@@ -314,11 +177,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * style = a GtkProgressBarStyle value indicating the desired style.
 	 */
-	public void setBarStyle(GtkProgressBarStyle style)
-	{
-		// void gtk_progress_bar_set_bar_style (GtkProgressBar *pbar,  GtkProgressBarStyle style);
-		gtk_progress_bar_set_bar_style(gtkProgressBar, style);
-	}
+	public void setBarStyle(GtkProgressBarStyle style);
 	
 	/**
 	 * Warning
@@ -328,11 +187,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * blocks = number of individual blocks making up the bar.
 	 */
-	public void setDiscreteBlocks(uint blocks)
-	{
-		// void gtk_progress_bar_set_discrete_blocks  (GtkProgressBar *pbar,  guint blocks);
-		gtk_progress_bar_set_discrete_blocks(gtkProgressBar, blocks);
-	}
+	public void setDiscreteBlocks(uint blocks);
 	
 	/**
 	 * Warning
@@ -344,11 +199,7 @@ public class ProgressBar : Progress
 	 * step = the amount which the progress is incremented in activity
 	 * mode.
 	 */
-	public void setActivityStep(uint step)
-	{
-		// void gtk_progress_bar_set_activity_step (GtkProgressBar *pbar,  guint step);
-		gtk_progress_bar_set_activity_step(gtkProgressBar, step);
-	}
+	public void setActivityStep(uint step);
 	
 	/**
 	 * Warning
@@ -358,11 +209,7 @@ public class ProgressBar : Progress
 	 * Params:
 	 * blocks = number of blocks which can fit within the progress bar area.
 	 */
-	public void setActivityBlocks(uint blocks)
-	{
-		// void gtk_progress_bar_set_activity_blocks  (GtkProgressBar *pbar,  guint blocks);
-		gtk_progress_bar_set_activity_blocks(gtkProgressBar, blocks);
-	}
+	public void setActivityBlocks(uint blocks);
 	
 	/**
 	 * Warning
@@ -372,9 +219,5 @@ public class ProgressBar : Progress
 	 * Params:
 	 * percentage = the new percent complete value.
 	 */
-	public void update(double percentage)
-	{
-		// void gtk_progress_bar_update (GtkProgressBar *pbar,  gdouble percentage);
-		gtk_progress_bar_update(gtkProgressBar, percentage);
-	}
+	public void update(double percentage);
 }

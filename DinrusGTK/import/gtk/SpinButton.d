@@ -1,58 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkSpinButton.html
- * outPack = gtk
- * outFile = SpinButton
- * strct   = GtkSpinButton
- * realStrct=
- * ctorStrct=
- * clss    = SpinButton
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_spin_button_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.gtk.Widget
- * 	- gtkD.gtk.Adjustment
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * 	- GtkWidget* -> Widget
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.SpinButton;
 
 public  import gtkD.gtkc.gtktypes;
@@ -125,38 +70,16 @@ public class SpinButton : Entry
 	protected GtkSpinButton* gtkSpinButton;
 	
 	
-	public GtkSpinButton* getSpinButtonStruct()
-	{
-		return gtkSpinButton;
-	}
+	public GtkSpinButton* getSpinButtonStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkSpinButton;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkSpinButton* gtkSpinButton)
-	{
-		if(gtkSpinButton is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkSpinButton);
-		if( ptr !is null )
-		{
-			this = cast(SpinButton)ptr;
-			return;
-		}
-		super(cast(GtkEntry*)gtkSpinButton);
-		this.gtkSpinButton = gtkSpinButton;
-	}
+	public this (GtkSpinButton* gtkSpinButton);
 	
 	/**
 	 */
@@ -165,54 +88,14 @@ public class SpinButton : Entry
 	void delegate(GtkScrollType, SpinButton)[] onChangeValueListeners;
 	/**
 	 */
-	void addOnChangeValue(void delegate(GtkScrollType, SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("change-value" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"change-value",
-			cast(GCallback)&callBackChangeValue,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["change-value"] = 1;
-		}
-		onChangeValueListeners ~= dlg;
-	}
-	extern(C) static void callBackChangeValue(GtkSpinButton* spinbuttonStruct, GtkScrollType arg1, SpinButton spinButton)
-	{
-		foreach ( void delegate(GtkScrollType, SpinButton) dlg ; spinButton.onChangeValueListeners )
-		{
-			dlg(arg1, spinButton);
-		}
-	}
+	void addOnChangeValue(void delegate(GtkScrollType, SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackChangeValue(GtkSpinButton* spinbuttonStruct, GtkScrollType arg1, SpinButton spinButton);
 	
 	gint delegate(gpointer, SpinButton)[] onInputListeners;
 	/**
 	 */
-	void addOnInput(gint delegate(gpointer, SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("input" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"input",
-			cast(GCallback)&callBackInput,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["input"] = 1;
-		}
-		onInputListeners ~= dlg;
-	}
-	extern(C) static void callBackInput(GtkSpinButton* spinbuttonStruct, gpointer arg1, SpinButton spinButton)
-	{
-		foreach ( gint delegate(gpointer, SpinButton) dlg ; spinButton.onInputListeners )
-		{
-			dlg(arg1, spinButton);
-		}
-	}
+	void addOnInput(gint delegate(gpointer, SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackInput(GtkSpinButton* spinbuttonStruct, gpointer arg1, SpinButton spinButton);
 	
 	bool delegate(SpinButton)[] onOutputListeners;
 	/**
@@ -235,59 +118,14 @@ public class SpinButton : Entry
 		 *  return TRUE;
 	 * }
 	 */
-	void addOnOutput(bool delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("output" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"output",
-			cast(GCallback)&callBackOutput,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["output"] = 1;
-		}
-		onOutputListeners ~= dlg;
-	}
-	extern(C) static gboolean callBackOutput(GtkSpinButton* spinButtonStruct, SpinButton spinButton)
-	{
-		foreach ( bool delegate(SpinButton) dlg ; spinButton.onOutputListeners )
-		{
-			if ( dlg(spinButton) )
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
-	}
+	void addOnOutput(bool delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static gboolean callBackOutput(GtkSpinButton* spinButtonStruct, SpinButton spinButton);
 	
 	void delegate(SpinButton)[] onValueChangedListeners;
 	/**
 	 */
-	void addOnValueChanged(void delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("value-changed" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"value-changed",
-			cast(GCallback)&callBackValueChanged,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["value-changed"] = 1;
-		}
-		onValueChangedListeners ~= dlg;
-	}
-	extern(C) static void callBackValueChanged(GtkSpinButton* spinbuttonStruct, SpinButton spinButton)
-	{
-		foreach ( void delegate(SpinButton) dlg ; spinButton.onValueChangedListeners )
-		{
-			dlg(spinButton);
-		}
-	}
+	void addOnValueChanged(void delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackValueChanged(GtkSpinButton* spinbuttonStruct, SpinButton spinButton);
 	
 	void delegate(SpinButton)[] onWrappedListeners;
 	/**
@@ -298,28 +136,8 @@ public class SpinButton : Entry
 	 * GtkEntry
 	 * retrieve text rather than numbers.
 	 */
-	void addOnWrapped(void delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0)
-	{
-		if ( !("wrapped" in connectedSignals) )
-		{
-			Signals.connectData(
-			getStruct(),
-			"wrapped",
-			cast(GCallback)&callBackWrapped,
-			cast(void*)this,
-			null,
-			connectFlags);
-			connectedSignals["wrapped"] = 1;
-		}
-		onWrappedListeners ~= dlg;
-	}
-	extern(C) static void callBackWrapped(GtkSpinButton* spinbuttonStruct, SpinButton spinButton)
-	{
-		foreach ( void delegate(SpinButton) dlg ; spinButton.onWrappedListeners )
-		{
-			dlg(spinButton);
-		}
-	}
+	void addOnWrapped(void delegate(SpinButton) dlg, ConnectFlags connectFlags=cast(ConnectFlags)0);
+	extern(C) static void callBackWrapped(GtkSpinButton* spinbuttonStruct, SpinButton spinButton);
 	
 	
 	/**
@@ -329,11 +147,7 @@ public class SpinButton : Entry
 	 * climbRate = the new climb rate.
 	 * digits = the number of decimal places to display in the spin button.
 	 */
-	public void configure(Adjustment adjustment, double climbRate, uint digits)
-	{
-		// void gtk_spin_button_configure (GtkSpinButton *spin_button,  GtkAdjustment *adjustment,  gdouble climb_rate,  guint digits);
-		gtk_spin_button_configure(gtkSpinButton, (adjustment is null) ? null : adjustment.getAdjustmentStruct(), climbRate, digits);
-	}
+	public void configure(Adjustment adjustment, double climbRate, uint digits);
 	
 	/**
 	 * Creates a new GtkSpinButton.
@@ -343,16 +157,7 @@ public class SpinButton : Entry
 	 * digits = the number of decimal places to display.
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (Adjustment adjustment, double climbRate, uint digits)
-	{
-		// GtkWidget* gtk_spin_button_new (GtkAdjustment *adjustment,  gdouble climb_rate,  guint digits);
-		auto p = gtk_spin_button_new((adjustment is null) ? null : adjustment.getAdjustmentStruct(), climbRate, digits);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_spin_button_new((adjustment is null) ? null : adjustment.getAdjustmentStruct(), climbRate, digits)");
-		}
-		this(cast(GtkSpinButton*) p);
-	}
+	public this (Adjustment adjustment, double climbRate, uint digits);
 	
 	/**
 	 * This is a convenience constructor that allows creation of a numeric
@@ -369,42 +174,20 @@ public class SpinButton : Entry
 	 * step =  Increment added or subtracted by spinning the widget
 	 * Throws: ConstructionException GTK+ fails to create the object.
 	 */
-	public this (double min, double max, double step)
-	{
-		// GtkWidget* gtk_spin_button_new_with_range (gdouble min,  gdouble max,  gdouble step);
-		auto p = gtk_spin_button_new_with_range(min, max, step);
-		if(p is null)
-		{
-			throw new ConstructionException("null returned by gtk_spin_button_new_with_range(min, max, step)");
-		}
-		this(cast(GtkSpinButton*) p);
-	}
+	public this (double min, double max, double step);
 	
 	/**
 	 * Replaces the GtkAdjustment associated with spin_button.
 	 * Params:
 	 * adjustment =  a GtkAdjustment to replace the existing adjustment
 	 */
-	public void setAdjustment(Adjustment adjustment)
-	{
-		// void gtk_spin_button_set_adjustment (GtkSpinButton *spin_button,  GtkAdjustment *adjustment);
-		gtk_spin_button_set_adjustment(gtkSpinButton, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setAdjustment(Adjustment adjustment);
 	
 	/**
 	 * Get the adjustment associated with a GtkSpinButton
 	 * Returns: the GtkAdjustment of spin_button
 	 */
-	public Adjustment getAdjustment()
-	{
-		// GtkAdjustment* gtk_spin_button_get_adjustment (GtkSpinButton *spin_button);
-		auto p = gtk_spin_button_get_adjustment(gtkSpinButton);
-		if(p is null)
-		{
-			return null;
-		}
-		return new Adjustment(cast(GtkAdjustment*) p);
-	}
+	public Adjustment getAdjustment();
 	
 	/**
 	 * Set the precision to be displayed by spin_button. Up to 20 digit precision
@@ -412,11 +195,7 @@ public class SpinButton : Entry
 	 * Params:
 	 * digits =  the number of digits after the decimal point to be displayed for the spin button's value
 	 */
-	public void setDigits(uint digits)
-	{
-		// void gtk_spin_button_set_digits (GtkSpinButton *spin_button,  guint digits);
-		gtk_spin_button_set_digits(gtkSpinButton, digits);
-	}
+	public void setDigits(uint digits);
 	
 	/**
 	 * Sets the step and page increments for spin_button. This affects how
@@ -425,11 +204,7 @@ public class SpinButton : Entry
 	 * step =  increment applied for a button 1 press.
 	 * page =  increment applied for a button 2 press.
 	 */
-	public void setIncrements(double step, double page)
-	{
-		// void gtk_spin_button_set_increments (GtkSpinButton *spin_button,  gdouble step,  gdouble page);
-		gtk_spin_button_set_increments(gtkSpinButton, step, page);
-	}
+	public void setIncrements(double step, double page);
 	
 	/**
 	 * Sets the minimum and maximum allowable values for spin_button
@@ -437,32 +212,20 @@ public class SpinButton : Entry
 	 * min =  minimum allowable value
 	 * max =  maximum allowable value
 	 */
-	public void setRange(double min, double max)
-	{
-		// void gtk_spin_button_set_range (GtkSpinButton *spin_button,  gdouble min,  gdouble max);
-		gtk_spin_button_set_range(gtkSpinButton, min, max);
-	}
+	public void setRange(double min, double max);
 	
 	/**
 	 * Get the value spin_button represented as an integer.
 	 * Returns: the value of spin_button
 	 */
-	public int getValueAsInt()
-	{
-		// gint gtk_spin_button_get_value_as_int (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_value_as_int(gtkSpinButton);
-	}
+	public int getValueAsInt();
 	
 	/**
 	 * Set the value of spin_button.
 	 * Params:
 	 * value =  the new value
 	 */
-	public void setValue(double value)
-	{
-		// void gtk_spin_button_set_value (GtkSpinButton *spin_button,  gdouble value);
-		gtk_spin_button_set_value(gtkSpinButton, value);
-	}
+	public void setValue(double value);
 	
 	/**
 	 * Sets the update behavior of a spin button. This determines whether the
@@ -470,11 +233,7 @@ public class SpinButton : Entry
 	 * Params:
 	 * policy =  a GtkSpinButtonUpdatePolicy value
 	 */
-	public void setUpdatePolicy(GtkSpinButtonUpdatePolicy policy)
-	{
-		// void gtk_spin_button_set_update_policy (GtkSpinButton *spin_button,  GtkSpinButtonUpdatePolicy policy);
-		gtk_spin_button_set_update_policy(gtkSpinButton, policy);
-	}
+	public void setUpdatePolicy(GtkSpinButtonUpdatePolicy policy);
 	
 	/**
 	 * Sets the flag that determines if non-numeric text can be typed into
@@ -482,11 +241,7 @@ public class SpinButton : Entry
 	 * Params:
 	 * numeric =  flag indicating if only numeric entry is allowed.
 	 */
-	public void setNumeric(int numeric)
-	{
-		// void gtk_spin_button_set_numeric (GtkSpinButton *spin_button,  gboolean numeric);
-		gtk_spin_button_set_numeric(gtkSpinButton, numeric);
-	}
+	public void setNumeric(int numeric);
 	
 	/**
 	 * Increment or decrement a spin button's value in a specified direction
@@ -495,11 +250,7 @@ public class SpinButton : Entry
 	 * direction =  a GtkSpinType indicating the direction to spin.
 	 * increment =  step increment to apply in the specified direction.
 	 */
-	public void spin(GtkSpinType direction, double increment)
-	{
-		// void gtk_spin_button_spin (GtkSpinButton *spin_button,  GtkSpinType direction,  gdouble increment);
-		gtk_spin_button_spin(gtkSpinButton, direction, increment);
-	}
+	public void spin(GtkSpinType direction, double increment);
 	
 	/**
 	 * Sets the flag that determines if a spin button value wraps around to the
@@ -507,11 +258,7 @@ public class SpinButton : Entry
 	 * Params:
 	 * wrap =  a flag indicating if wrapping behavior is performed.
 	 */
-	public void setWrap(int wrap)
-	{
-		// void gtk_spin_button_set_wrap (GtkSpinButton *spin_button,  gboolean wrap);
-		gtk_spin_button_set_wrap(gtkSpinButton, wrap);
-	}
+	public void setWrap(int wrap);
 	
 	/**
 	 * Sets the policy as to whether values are corrected to the nearest step
@@ -519,30 +266,18 @@ public class SpinButton : Entry
 	 * Params:
 	 * snapToTicks =  a flag indicating if invalid values should be corrected.
 	 */
-	public void setSnapToTicks(int snapToTicks)
-	{
-		// void gtk_spin_button_set_snap_to_ticks (GtkSpinButton *spin_button,  gboolean snap_to_ticks);
-		gtk_spin_button_set_snap_to_ticks(gtkSpinButton, snapToTicks);
-	}
+	public void setSnapToTicks(int snapToTicks);
 	
 	/**
 	 * Manually force an update of the spin button.
 	 */
-	public void update()
-	{
-		// void gtk_spin_button_update (GtkSpinButton *spin_button);
-		gtk_spin_button_update(gtkSpinButton);
-	}
+	public void update();
 	
 	/**
 	 * Fetches the precision of spin_button. See gtk_spin_button_set_digits().
 	 * Returns: the current precision
 	 */
-	public uint getDigits()
-	{
-		// guint gtk_spin_button_get_digits (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_digits(gtkSpinButton);
-	}
+	public uint getDigits();
 	
 	/**
 	 * Gets the current step and page the increments used by spin_button. See
@@ -551,22 +286,14 @@ public class SpinButton : Entry
 	 * step =  location to store step increment, or NULL
 	 * page =  location to store page increment, or NULL
 	 */
-	public void getIncrements(out double step, out double page)
-	{
-		// void gtk_spin_button_get_increments (GtkSpinButton *spin_button,  gdouble *step,  gdouble *page);
-		gtk_spin_button_get_increments(gtkSpinButton, &step, &page);
-	}
+	public void getIncrements(out double step, out double page);
 	
 	/**
 	 * Returns whether non-numeric text can be typed into the spin button.
 	 * See gtk_spin_button_set_numeric().
 	 * Returns: TRUE if only numeric text can be entered
 	 */
-	public int getNumeric()
-	{
-		// gboolean gtk_spin_button_get_numeric (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_numeric(gtkSpinButton);
-	}
+	public int getNumeric();
 	
 	/**
 	 * Gets the range allowed for spin_button. See
@@ -575,43 +302,27 @@ public class SpinButton : Entry
 	 * min =  location to store minimum allowed value, or NULL
 	 * max =  location to store maximum allowed value, or NULL
 	 */
-	public void getRange(out double min, out double max)
-	{
-		// void gtk_spin_button_get_range (GtkSpinButton *spin_button,  gdouble *min,  gdouble *max);
-		gtk_spin_button_get_range(gtkSpinButton, &min, &max);
-	}
+	public void getRange(out double min, out double max);
 	
 	/**
 	 * Returns whether the values are corrected to the nearest step. See
 	 * gtk_spin_button_set_snap_to_ticks().
 	 * Returns: TRUE if values are snapped to the nearest step.
 	 */
-	public int getSnapToTicks()
-	{
-		// gboolean gtk_spin_button_get_snap_to_ticks (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_snap_to_ticks(gtkSpinButton);
-	}
+	public int getSnapToTicks();
 	
 	/**
 	 * Gets the update behavior of a spin button. See
 	 * gtk_spin_button_set_update_policy().
 	 * Returns: the current update policy
 	 */
-	public GtkSpinButtonUpdatePolicy getUpdatePolicy()
-	{
-		// GtkSpinButtonUpdatePolicy gtk_spin_button_get_update_policy  (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_update_policy(gtkSpinButton);
-	}
+	public GtkSpinButtonUpdatePolicy getUpdatePolicy();
 	
 	/**
 	 * Get the value in the spin_button.
 	 * Returns: the value of spin_button
 	 */
-	public double getValue()
-	{
-		// gdouble gtk_spin_button_get_value (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_value(gtkSpinButton);
-	}
+	public double getValue();
 	
 	/**
 	 * Returns whether the spin button's value wraps around to the
@@ -619,9 +330,5 @@ public class SpinButton : Entry
 	 * exceeded. See gtk_spin_button_set_wrap().
 	 * Returns: TRUE if the spin button wraps around
 	 */
-	public int getWrap()
-	{
-		// gboolean gtk_spin_button_get_wrap (GtkSpinButton *spin_button);
-		return gtk_spin_button_get_wrap(gtkSpinButton);
-	}
+	public int getWrap();
 }

@@ -1,57 +1,3 @@
-/*
- * This file is part of gtkD.
- *
- * gtkD is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * gtkD is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with gtkD; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
- 
-// generated automatically - do not change
-// find conversion definition on APILookup.txt
-// implement new conversion functionalities on the wrap.utils pakage
-
-/*
- * Conversion parameters:
- * inFile  = GtkProgress.html
- * outPack = gtk
- * outFile = Progress
- * strct   = GtkProgress
- * realStrct=
- * ctorStrct=
- * clss    = Progress
- * interf  = 
- * class Code: No
- * interface Code: No
- * template for:
- * extend  = 
- * implements:
- * prefixes:
- * 	- gtk_progress_
- * 	- gtk_
- * omit structs:
- * omit prefixes:
- * omit code:
- * omit signals:
- * imports:
- * 	- gtkD.glib.Str
- * 	- gtkD.gtk.Adjustment
- * structWrap:
- * 	- GtkAdjustment* -> Adjustment
- * module aliases:
- * local aliases:
- * overrides:
- */
-
 module gtkD.gtk.Progress;
 
 public  import gtkD.gtkc.gtktypes;
@@ -80,38 +26,16 @@ public class Progress : Widget
 	protected GtkProgress* gtkProgress;
 	
 	
-	public GtkProgress* getProgressStruct()
-	{
-		return gtkProgress;
-	}
+	public GtkProgress* getProgressStruct();
 	
 	
 	/** the main Gtk struct as a void* */
-	protected override void* getStruct()
-	{
-		return cast(void*)gtkProgress;
-	}
+	protected override void* getStruct();
 	
 	/**
 	 * Sets our main struct and passes it to the parent class
 	 */
-	public this (GtkProgress* gtkProgress)
-	{
-		if(gtkProgress is null)
-		{
-			this = null;
-			return;
-		}
-		//Check if there already is a D object for this gtk struct
-		void* ptr = getDObject(cast(GObject*)gtkProgress);
-		if( ptr !is null )
-		{
-			this = cast(Progress)ptr;
-			return;
-		}
-		super(cast(GtkWidget*)gtkProgress);
-		this.gtkProgress = gtkProgress;
-	}
+	public this (GtkProgress* gtkProgress);
 	
 	/**
 	 */
@@ -124,11 +48,7 @@ public class Progress : Widget
 	 * showText = a boolean indicating whether the progress text
 	 * is shown.
 	 */
-	public void setShowText(int showText)
-	{
-		// void gtk_progress_set_show_text (GtkProgress *progress,  gboolean show_text);
-		gtk_progress_set_show_text(gtkProgress, showText);
-	}
+	public void setShowText(int showText);
 	
 	/**
 	 * Warning
@@ -140,11 +60,7 @@ public class Progress : Widget
 	 * yAlign = a number between 0.0 and 1.0 indicating the vertical
 	 * alignment of the progress text within the GtkProgress.
 	 */
-	public void setTextAlignment(float xAlign, float yAlign)
-	{
-		// void gtk_progress_set_text_alignment (GtkProgress *progress,  gfloat x_align,  gfloat y_align);
-		gtk_progress_set_text_alignment(gtkProgress, xAlign, yAlign);
-	}
+	public void setTextAlignment(float xAlign, float yAlign);
 	
 	/**
 	 * Warning
@@ -154,11 +70,7 @@ public class Progress : Widget
 	 * format = a string used to display progress text, or NULL
 	 *  to restore to the default format.
 	 */
-	public void setFormatString(string format)
-	{
-		// void gtk_progress_set_format_string (GtkProgress *progress,  const gchar *format);
-		gtk_progress_set_format_string(gtkProgress, Str.toStringz(format));
-	}
+	public void setFormatString(string format);
 	
 	/**
 	 * Warning
@@ -169,11 +81,7 @@ public class Progress : Widget
 	 * Params:
 	 * adjustment = the GtkAdjustment to be associated with the GtkProgress.
 	 */
-	public void setAdjustment(Adjustment adjustment)
-	{
-		// void gtk_progress_set_adjustment (GtkProgress *progress,  GtkAdjustment *adjustment);
-		gtk_progress_set_adjustment(gtkProgress, (adjustment is null) ? null : adjustment.getAdjustmentStruct());
-	}
+	public void setAdjustment(Adjustment adjustment);
 	
 	/**
 	 * Warning
@@ -183,11 +91,7 @@ public class Progress : Widget
 	 * percentage = the percentage complete which must be between 0.0
 	 * and 1.0.
 	 */
-	public void setPercentage(double percentage)
-	{
-		// void gtk_progress_set_percentage (GtkProgress *progress,  gdouble percentage);
-		gtk_progress_set_percentage(gtkProgress, percentage);
-	}
+	public void setPercentage(double percentage);
 	
 	/**
 	 * Warning
@@ -198,11 +102,7 @@ public class Progress : Widget
 	 * Params:
 	 * value = the value indicating the current completed amount.
 	 */
-	public void setValue(double value)
-	{
-		// void gtk_progress_set_value (GtkProgress *progress,  gdouble value);
-		gtk_progress_set_value(gtkProgress, value);
-	}
+	public void setValue(double value);
 	
 	/**
 	 * Warning
@@ -210,11 +110,7 @@ public class Progress : Widget
 	 * Returns the current progress complete value.
 	 * Returns:the current progress complete value.
 	 */
-	public double getValue()
-	{
-		// gdouble gtk_progress_get_value (GtkProgress *progress);
-		return gtk_progress_get_value(gtkProgress);
-	}
+	public double getValue();
 	
 	/**
 	 * Warning
@@ -226,11 +122,7 @@ public class Progress : Widget
 	 * Params:
 	 * activityMode = a boolean, TRUE for activity mode.
 	 */
-	public void setActivityMode(int activityMode)
-	{
-		// void gtk_progress_set_activity_mode (GtkProgress *progress,  gboolean activity_mode);
-		gtk_progress_set_activity_mode(gtkProgress, activityMode);
-	}
+	public void setActivityMode(int activityMode);
 	
 	/**
 	 * Warning
@@ -240,11 +132,7 @@ public class Progress : Widget
 	 * are made.
 	 * Returns:the text indicating the current progress.
 	 */
-	public string getCurrentText()
-	{
-		// gchar* gtk_progress_get_current_text (GtkProgress *progress);
-		return Str.toString(gtk_progress_get_current_text(gtkProgress));
-	}
+	public string getCurrentText();
 	
 	/**
 	 * Warning
@@ -255,11 +143,7 @@ public class Progress : Widget
 	 * value = an absolute progress value to use when formatting the progress text.
 	 * Returns:a string indicating the progress.
 	 */
-	public string getTextFromValue(double value)
-	{
-		// gchar* gtk_progress_get_text_from_value (GtkProgress *progress,  gdouble value);
-		return Str.toString(gtk_progress_get_text_from_value(gtkProgress, value));
-	}
+	public string getTextFromValue(double value);
 	
 	/**
 	 * Warning
@@ -267,11 +151,7 @@ public class Progress : Widget
 	 * Returns the current progress as a percentage.
 	 * Returns:a number between 0.0 and 1.0 indicating the percentage complete.
 	 */
-	public double getCurrentPercentage()
-	{
-		// gdouble gtk_progress_get_current_percentage (GtkProgress *progress);
-		return gtk_progress_get_current_percentage(gtkProgress);
-	}
+	public double getCurrentPercentage();
 	
 	/**
 	 * Warning
@@ -282,11 +162,7 @@ public class Progress : Widget
 	 * value = an absolute progress value.
 	 * Returns:a number between 0.0 and 1.0 indicating the percentage completerepresented by value.
 	 */
-	public double getPercentageFromValue(double value)
-	{
-		// gdouble gtk_progress_get_percentage_from_value  (GtkProgress *progress,  gdouble value);
-		return gtk_progress_get_percentage_from_value(gtkProgress, value);
-	}
+	public double getPercentageFromValue(double value);
 	
 	/**
 	 * Warning
@@ -298,9 +174,5 @@ public class Progress : Widget
 	 * min = the minimum progress value.
 	 * max = the maximum progress value.
 	 */
-	public void configure(double value, double min, double max)
-	{
-		// void gtk_progress_configure (GtkProgress *progress,  gdouble value,  gdouble min,  gdouble max);
-		gtk_progress_configure(gtkProgress, value, min, max);
-	}
+	public void configure(double value, double min, double max);
 }
