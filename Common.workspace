@@ -14,5 +14,9 @@
 		<Project filename="DRC/DRC.cbp" />
 		<Project filename="Dsss/Dsss.cbp" />
 		<Project filename="DinrusGTK/DinrusGTK.cbp" />
+		<Project filename="DinrusGTK/GtkDImports/GtkDImports.cbp" />
+		<Project filename="Base/DinrusBaseDLL/DinrusBaseDLL.cbp" />
+		<Project filename="DinrusWX/DinrusWX.cbp" />
+		<Project filename="DinrusWX/Dinrus.WX-2.9_gnu.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
