@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1484227061 source:d:\dinrus\dev\dinrus\viz\viz\app.d
+	<cidrus.d>
+	<winapi.d>
+	<viz/timer.d>
+
+1474717862 d:\dinrus\dev\dinrus\viz\\viz\timer.d
+
+1474717861 source:d:\dinrus\dev\dinrus\viz\viz\button.d
+
+1422285055 source:d:\dinrus\dev\dinrus\viz\viz\collections.d
+
+1484243840 source:d:\dinrus\dev\dinrus\viz\viz\common.d
+	<viz/application.d>
+
+1373487642 source:d:\dinrus\dev\dinrus\viz\viz\consts.d
+	<winapi.d>
+

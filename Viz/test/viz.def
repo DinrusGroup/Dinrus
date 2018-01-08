@@ -1,0 +1,7 @@
+LIBRARY "Dinrus.Viz.dll"
+DESCRIPTION "<Библиотека Графического Интерфейса Приложений Динрус"
+EXETYPE NT
+SUBSYSTEM WINDOWS
+CODE SHARED EXECUTE
+DATA WRITE
+
