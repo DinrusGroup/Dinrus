@@ -25,8 +25,7 @@ interface Обходчик(V)
      *
      * If not supported, returns ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ.
      */
-    бцел длина();
-    alias длина length;
+    бцел длина(); alias длина length;
 
     /**
      * foreach operator.

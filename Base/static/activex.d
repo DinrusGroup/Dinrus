@@ -6,20 +6,17 @@ module sys.activex;
  * $Author: l8night $
  */
 
-import win, tpl.args, stdrus;
+import win, stdrus, tpl.args;
 
 pragma(lib, "DinrusWin32.lib");
 //pragma(lib, "import.lib");
 
 import win32.winnt, win32.winnls, win32.uuid, win32.wtypes, win32.basetyps;
-import win32.oaidl, win32.objbase; /* for win32.oaidl.VARIANTARG */
+import win32.oaidl, win32.objbase; /* for VARIANTARG */
 
 class ИсклАктивОбъ: Исключение
 {
-    this(ткст сооб)
-    {
-        super(сооб);
-    }
+this(ткст сооб){super(сооб);}
 }
 
 class АктивОбъ
@@ -52,14 +49,14 @@ export:
     private MemberDef [] allMembers;
     private ткст [ DISPID ] methods;
     private ткст [ DISPID ] getters;
-    private SHORT [ DISPID ] returns;
+        private SHORT [ DISPID ] returns;
     private ткст [ DISPID ] setters;
     private ткст [ DISPID ] settersbyref;
 
     this(ткст имяПриложения)
     {
         шим* prog = вЮ16н(имяПриложения);
-        win32.oaidl.CLSID clsid;
+        CLSID clsid;
         HRESULT hr = CLSIDFromProgID(cast(шим*)prog, &clsid);
         hr = CoCreateInstance(&clsid, пусто, win32.objbase.CLSCTX_SERVER, &win32.uuid.IID_IDispatch, cast(void**)&pIDispatch);
         загрузиСостав();
@@ -68,7 +65,7 @@ export:
     ~this()
     {
         foreach (FUNCDESC* pFuncDesc, win32.oaidl.ITypeInfo иот; allFuncDescs)
-        иот.ReleaseFuncDesc(cast(FUNCDESC *)pFuncDesc);
+            иот.ReleaseFuncDesc(cast(FUNCDESC *)pFuncDesc);
     }
 
     void загрузиСостав()
@@ -82,7 +79,7 @@ export:
         TYPEATTR * pTypeAttr;
         HRESULT hr = pTypeInfo.GetTypeAttr(&pTypeAttr);
 
-        for(бцел i; i<pTypeAttr.cImplTypes; ++i)
+        for(бцел i;i<pTypeAttr.cImplTypes;++i)
         {
             HREFTYPE pRefType;
             hr = pTypeInfo.GetRefTypeOfImplType(i,&pRefType);
@@ -91,7 +88,7 @@ export:
             загрузиСостав(ppTInfo);
         }
 
-        for(бцел i; i<pTypeAttr.cFuncs; ++i)
+        for(бцел i;i<pTypeAttr.cFuncs;++i)
         {
             MemberDef mem;
             hr = pTypeInfo.GetFuncDesc(i,& mem.pFuncDesc);
@@ -105,7 +102,7 @@ export:
             шим [] tmp;
             бцел l=wcslen(methodName);
             tmp.length=l;
-            for (бцел j; j<l; ++j)
+            for (бцел j;j<l;++j)
                 tmp[j]=methodName[j];
             ткст theName_i=вЮ8(tmp);
             ткст theName = theName_i.dup;
@@ -123,60 +120,60 @@ export:
 
             switch (mem.invkind)
             {
-            case INVOKE_FUNC:
-                methods[dispid] = theName;
-                break;
-            case INVOKE_PROPERTYGET:
-                getters[dispid] = theName;
-                returns[dispid] = cast(SHORT) pFuncDesc.lprgelemdescParam[0].tdesc.vt;
-                break;
-            case INVOKE_PROPERTYPUT:
-                setters[dispid] = theName;
-                break;
-            case INVOKE_PROPERTYPUTREF:
-                settersbyref[dispid] = theName;
-                break;
-            default:
+                case INVOKE_FUNC:
+					methods[dispid] = theName;
+                    break;
+                case INVOKE_PROPERTYGET:
+                    getters[dispid] = theName;
+                    returns[dispid] = cast(SHORT) pFuncDesc.lprgelemdescParam[0].tdesc.vt;
+                    break;
+                case INVOKE_PROPERTYPUT:
+                    setters[dispid] = theName;
+                    break;
+                case INVOKE_PROPERTYPUTREF:
+                    settersbyref[dispid] = theName;
+                    break;
+                default:
             }
         }
 
         pTypeInfo.ReleaseTypeAttr(pTypeAttr);
     }
 
-    public void покажиСостав()
+	public void покажиСостав()
+	{
+
+		скажинс("Методы:");		
+		foreach(ткст ключ; methods)
+			скажинс(фм("\t%s", ключ));
+
+		скажинс("Получатели:");
+		foreach(DISPID value, ткст ключ; getters)
+			скажинс(фм("\t%s", ключ));
+
+		скажинс("Установщики:");
+		foreach(DISPID value, ткст ключ; setters)
+			скажинс(фм("\t%s", ключ));
+
+		скажинс("Установщики по ссылке:");
+		foreach(DISPID value, ткст ключ; settersbyref)
+			скажинс(фм("\t%s", ключ));
+
+/+		
+    private SHORT [ DISPID ] returns;
++/
+		
+	}
+	
+    VARIANTARG [] делайМассив(TypeInfo [] args, ук ptr)
     {
-
-        скажинс("Методы:");
-        foreach(ткст ключ; methods)
-        скажинс(фм("\t%s", ключ));
-
-        скажинс("Получатели:");
-        foreach(DISPID value, ткст ключ; getters)
-        скажинс(фм("\t%s", ключ));
-
-        скажинс("Установщики:");
-        foreach(DISPID value, ткст ключ; setters)
-        скажинс(фм("\t%s", ключ));
-
-        скажинс("Установщики по ссылке:");
-        foreach(DISPID value, ткст ключ; settersbyref)
-        скажинс(фм("\t%s", ключ));
-
-        /+
-        private SHORT [ DISPID ] returns;
-        +/
-
-    }
-
-    win32.oaidl.VARIANTARG [] делайМассив(TypeInfo [] args, ук ptr)
-    {
-        win32.oaidl.VARIANTARG [] массив;
+        VARIANTARG [] массив;
         массив.length = args.length;
 
-        for (бцел i; i<args.length; ++i)
+        for (бцел i;i<args.length;++i)
         {
-            if (args[i] == typeid(win32.oaidl.VARIANTARG))
-                массив [i] = va_arg!(win32.oaidl.VARIANTARG)(ptr);
+            if (args[i] == typeid(VARIANTARG))
+                массив [i] = va_arg!(VARIANTARG)(ptr);
             else
                 throw new ИсклАктивОбъ( "Ожидались аргументы типа Варарг" );
         }
@@ -188,19 +185,19 @@ export:
     {
         INVOKEKIND tmp=0xffff;
         foreach(inout MemberDef mem; allMembers)
-        if (mem.имя==member)
-            if (mem.invkind==ik)
-                return mem.dispid;
-            else
-                tmp=mem.invkind;
+            if (mem.имя==member)
+                if (mem.invkind==ik)
+                    return mem.dispid;
+                else
+                    tmp=mem.invkind;
 
         if (tmp==0xffff)
             throw new ИсклАктивОбъ(фм("отсутствует член '%s'",member));
         else
-            throw new ИсклАктивОбъ(фм("член '%s' найден с ПТипВызова %s",member,tmp));
+		    throw new ИсклАктивОбъ(фм("член '%s' найден с ПТипВызова %s",member,tmp));
     }
 
-    win32.oaidl.VARIANT дай(ткст member)
+    VARIANT дай(ткст member)
     {
         INVOKEKIND ik=INVOKE_PROPERTYGET;
         DISPID dispid = найдиЧлен(member,ik);
@@ -209,13 +206,13 @@ export:
             throw new ИсклАктивОбъ("можно получить только свойства");
 
         DISPPARAMS param;
-        win32.oaidl.VARIANT result;
+        VARIANT result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, &result, пусто, пусто);
         return result;
     }
 
-    void установи(ткст member,win32.oaidl.VARIANTARG арг)
+    void установи(ткст member,VARIANTARG арг)
     {
         INVOKEKIND ik=INVOKE_PROPERTYPUT;
         DISPID dispid = найдиЧлен(member,ik);
@@ -223,7 +220,7 @@ export:
         if (!(dispid in setters))
             throw new ИсклАктивОбъ("можно только установить свойства");
 
-        win32.oaidl.VARIANTARG [] myArgs = (&арг)[0..1];
+        VARIANTARG [] myArgs = (&арг)[0..1];
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
@@ -237,7 +234,7 @@ export:
                                        ik, &param, пусто, пусто, пусто);
     }
 
-    void установиПоСсыл(ткст member,win32.oaidl.VARIANTARG арг)
+    void установиПоСсыл(ткст member,VARIANTARG арг)
     {
         INVOKEKIND ik=INVOKE_PROPERTYPUTREF;
         DISPID dispid = найдиЧлен(member,ik);
@@ -245,7 +242,7 @@ export:
         if (!(dispid in settersbyref))
             throw new ИсклАктивОбъ("можно только установить свойства");
 
-        win32.oaidl.VARIANTARG [] myArgs = (&арг)[0..1];
+        VARIANTARG [] myArgs = (&арг)[0..1];
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
@@ -255,12 +252,12 @@ export:
         param.cNamedArgs = 1;
         param.rgdispidNamedArgs = &dispidNamed;
 
-        win32.oaidl.VARIANT * result;
+        VARIANT * result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, result, пусто, пусто);
     }
 
-    win32.oaidl.VARIANT вызови(ткст member,...)
+    VARIANT вызови(ткст member,...)
     {
 
         /* Can I change the ткст into a variant? */
@@ -272,15 +269,15 @@ export:
         if (!(dispid in methods))
             throw new ИсклАктивОбъ("можно только вызывать методы");
 
-        win32.oaidl.VARIANTARG [] myArgs = делайМассив(_arguments,_argptr);
+        VARIANTARG [] myArgs = делайМассив(_arguments,_argptr);
 
         DISPPARAMS param;
         param.cArgs=myArgs.length;
         param.rgvarg=myArgs.ptr;
 
-        debug пишиф("Calling %s...", member);
-
-        win32.oaidl.VARIANT result;
+		debug пишиф("Calling %s...", member);
+		
+        VARIANT result;
         HRESULT hr = pIDispatch.Invoke(dispid, cast(REFIID) &IID_NULL, defaultLCID,
                                        ik, &param, &result, пусто, пусто);
         return result;
@@ -290,12 +287,12 @@ export:
 
 
 
-export extern(D) win32.oaidl.VARIANTARG вар(...)
+export extern(D) VARIANTARG вар(...)
 {
-    win32.oaidl.VARIANTARG variant;
+    VARIANTARG variant;
 
     if (_arguments.length < 1)
-        return win32.oaidl.VARIANT.init;
+        return VARIANT.init;
 
     if(_arguments.length == 1)
     {
@@ -323,11 +320,11 @@ export extern(D) win32.oaidl.VARIANTARG вар(...)
         else if (_arguments[0] == typeid(bool))
         {
             debug пишиф("bool\t");
-            variant.vt = VARENUM.VT_BOOL;
+            variant.vt = VARENUM.VT_BOOL;            
             if(va_arg!(bool)(_argptr) == true)
                 variant.boolVal = 1;
             else
-                variant.boolVal = 0;
+                variant.boolVal = 0;                
         }
         else if (_arguments[0] == typeid(ubyte))
         {
@@ -366,13 +363,13 @@ export extern(D) win32.oaidl.VARIANTARG вар(...)
         else if (_arguments[0] == typeid(крат))
         {
             debug пишиф("крат\t");
-            variant.vt = VARENUM.VT_I2;
+            variant.vt = VARENUM.VT_I2; 
             variant.iVal = va_arg!(крат)(_argptr);
         }
         else if (_arguments[0] == typeid(цел))
         {
             debug пишиф("цел\t");
-            variant.vt = VARENUM.VT_I4;
+            variant.vt = VARENUM.VT_I4; 
             variant.lVal = va_arg!(цел)(_argptr);
         }
         else if (_arguments[0] == typeid(дол)) /* 8 биты */
@@ -388,43 +385,40 @@ export extern(D) win32.oaidl.VARIANTARG вар(...)
         else if (_arguments[0] == typeid(float))
         {
             debug пишиф("float\t");
-            variant.vt = VARENUM.VT_R4;
+            variant.vt = VARENUM.VT_R4; 
             variant.fltVal = va_arg!(float)(_argptr);
         }
         else if (_arguments[0] == typeid(double))
         {
             debug пишиф("double\t");
-            variant.vt = VARENUM.VT_R8;
+            variant.vt = VARENUM.VT_R8; 
             variant.dblVal = va_arg!(double)(_argptr);
         }
 
 
         /* objects */
 
-        else if (_arguments[0] == typeid(Object))
-            /* need to be an AXO to work right now */
-        {
+		else if (_arguments[0] == typeid(Object)) 
+			/* need to be an AXO to work right now */
+		{
             debug пишиф("object\t");
-            variant.vt = VARENUM.VT_BYREF; //VARENUM.VT_STORED_OBJECT; /* I doubt this is right. */
-            variant.byref = cast(void*)( va_arg!(Object)(_argptr) );
-            /* need to дай some kind of pointer from the AXO object */
-        }
-
+			variant.vt = VARENUM.VT_BYREF; //VARENUM.VT_STORED_OBJECT; /* I doubt this is right. */
+			variant.byref = cast(void*)( va_arg!(Object)(_argptr) );
+				/* need to дай some kind of pointer from the AXO object */
+		}
+		
 
         else
             throw new ИсклАктивОбъ("вар не представляет, что с этим делать.");
 
     }
-    else
+    else 
         throw new ИсклАктивОбъ("[нереализованно] вар ещё не способен к использованию нескольких аргументов");
 
     return variant;
 }
 
-export extern(D) АктивОбъ объАктив(ткст арг)
-{
-    return new АктивОбъ(арг);
-}
+export extern(D) АктивОбъ объАктив(ткст арг){return new АктивОбъ(арг);}
 
 
 extern(C)
@@ -448,7 +442,7 @@ extern(Windows)
     const WORD DISPATCH_PROPERTYPUTREF = 0x8;
     alias win32.uuid.GUID_NULL IID_NULL;
 
-    HRESULT CLSIDFromProgID (LPCOLESTR lpszProgID, win32.basetyps.CLSID * lpclsid);
+    HRESULT CLSIDFromProgID (LPCOLESTR lpszProgID, CLSID * lpclsid);
     LCID GetUserDefaultLCID();
     BSTR SysAllocString(OLECHAR *);
     void SysFreeString(шим*);

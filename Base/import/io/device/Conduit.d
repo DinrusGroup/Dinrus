@@ -1,4 +1,4 @@
-module io.device.Conduit;
+﻿module io.device.Conduit;
 
 private import thread;
 public  import io.model;

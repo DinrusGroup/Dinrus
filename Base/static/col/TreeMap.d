@@ -33,7 +33,7 @@ private import col.Iterators;
  *                      ФункцСравнения!(V))
  *   обновлФункц -> the update function to use (should be an
  *                     ФункцОбновления!(V))
- *
+ * 
  * проц установка(parameters p) -> initializes the tree with the given parameters.
  *
  * бцел счёт -> счёт of the элементы in the tree
@@ -108,8 +108,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
      */
     struct курсор
     {
-        private Реализ.Узел укз;
-        alias укз ptr;
+        private Реализ.Узел укз; alias укз ptr;
 
         /**
          * дай the значение in this элемент
@@ -221,7 +220,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
         {
             return this.outer.length;
         }
-        alias длина length;
+		alias длина length;
 
         final цел opApply(цел delegate(ref K) дг)
         {
@@ -324,7 +323,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     {
         return _дерево.счёт;
     }
-    alias длина length;
+	alias длина length;
 
     /**
      * returns a курсор to the первый элемент in the collection.
@@ -483,20 +482,20 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
 
     /**
      * Removes all the элементы whose ключи are in the поднабор.
-     *
+     * 
      * returns this.
      */
     ДеревоКарта удали(Обходчик!(K) поднабор)
     {
         foreach(k; поднабор)
-        удалиПо(k);
+            удалиПо(k);
         return this;
     }
 
     /**
      * Removes all the элементы whose ключи are in the поднабор.  Sets чло_Удалённых
      * to the number of ключ/значение pairs removed.
-     *
+     * 
      * returns this.
      */
     ДеревоКарта удали(Обходчик!(K) поднабор, ref бцел чло_Удалённых)
@@ -520,10 +519,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
         //
         // scope allocates on the стэк.
         //
-        scope w = new ТрансформОбходчик!(элемент, K)(поднабор, function проц(ref K k, ref элемент e)
-        {
-            e.ключ = k;
-        });
+        scope w = new ТрансформОбходчик!(элемент, K)(поднабор, function проц(ref K k, ref элемент e) { e.ключ = k;});
 
         чло_Удалённых = _дерево.накладка(w);
         return this;
@@ -608,7 +604,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     ДеревоКарта установи(Ключник!(K, V) исток)
     {
         foreach(k, v; исток)
-        установи(k, v);
+            установи(k, v);
         return this;
     }
 
@@ -646,8 +642,8 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     {
         бцел экземпляры = 0;
         foreach(x; this)
-        if(x == v)
-            экземпляры++;
+            if(x == v)
+                экземпляры++;
         return экземпляры;
     }
 
@@ -659,7 +655,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     ДеревоКарта удалиВсе(V v)
     {
         foreach(ref b, x; &очистить)
-        b = cast(бул)(x == v);
+            b = cast(бул)(x == v);
         return this;
     }
 
@@ -739,7 +735,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     ДеревоКарта установи(V[K] исток)
     {
         foreach(K k, V v; исток)
-        this[k] = v;
+            this[k] = v;
         return this;
     }
 
@@ -767,7 +763,7 @@ class ДеревоКарта(K, V, alias ШаблРеализац=КЧДерев
     ДеревоКарта удали(K[] поднабор)
     {
         foreach(k; поднабор)
-        удалиПо(k);
+            удалиПо(k);
         return this;
     }
 

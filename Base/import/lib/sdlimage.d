@@ -1,8 +1,9 @@
-module lib.sdlimage;
+﻿module lib.sdlimage;
 
 private
 {
-import lib.sdl, stdrus;
+import stdrus, lib.sdl;
+pragma(lib,"dinrus.lib");
 }
 
 private проц грузи(Биб биб)

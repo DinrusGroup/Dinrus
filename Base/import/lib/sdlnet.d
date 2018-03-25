@@ -1,9 +1,9 @@
-module lib.sdlnet;
+﻿module lib.sdlnet;
 
 private
 {
- import lib.sdl, stdrus;
-
+ import stdrus, lib.sdl;
+pragma(lib,"dinrus.lib");
 }
 
 

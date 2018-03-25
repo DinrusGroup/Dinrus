@@ -7,7 +7,7 @@
 		<Option compiler="dmd" />
 		<Build>
 			<Target title="Debug">
-				<Option output="-of./bin/Debug/Dinrus.Base" prefix_auto="1" extension_auto="1" />
+				<Option output="-of./bin/Debug/DinrusBase_dbg" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option external_deps="../../../../lib/DinrusRtClib.lib;" />
 				<Option type="3" />
@@ -18,6 +18,7 @@
 					<Add option="-w" />
 					<Add option="-g" />
 					<Add option="-debug" />
+					<Add directory="../import" />
 					<Add directory="../base" />
 				</Compiler>
 				<Linker>
@@ -33,8 +34,9 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
-					<Add option="-w" />
 					<Add option="-O" />
+					<Add option="-w" />
+					<Add directory="../base" />
 				</Compiler>
 				<Linker>
 					<Add library="user32" />
@@ -49,7 +51,7 @@
 		<Unit filename="../base/dinrus.d" />
 		<Unit filename="../base/exception.d" />
 		<Unit filename="../base/gc.d" />
-		<Unit filename="../base/object_.d" />
+		<Unit filename="../base/object.d" />
 		<Unit filename="../base/rt/aApply.d" />
 		<Unit filename="../base/rt/aApplyR.d" />
 		<Unit filename="../base/rt/aaA.d" />
@@ -100,7 +102,6 @@
 		<Unit filename="../base/std/random.d" />
 		<Unit filename="../base/std/regexp.d" />
 		<Unit filename="../base/std/socket.d" />
-		<Unit filename="../base/std/stream.d" />
 		<Unit filename="../base/std/string.d" />
 		<Unit filename="../base/std/system.d" />
 		<Unit filename="../base/std/traits.d" />

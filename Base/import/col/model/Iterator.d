@@ -1,8 +1,8 @@
-/*********************************************************
-   Авторское право: (C) 2008 принадлежит Steven Schveighoffer.
-              Все права защищены
+﻿/*********************************************************
+   Copyright: (C) 2008 by Steven Schveighoffer.
+              All rights reserved
 
-   Лицензия: $(LICENSE)
+   License: $(LICENSE)
 
 **********************************************************/
 module col.model.Iterator;
@@ -16,49 +16,49 @@ enum : бцел
 }
 
 /**
- * базовый итератор.  Позволяет обходить по элементам объекта.
+ * Basic iterator.  Allows iterating over all the elements of an object.
  */
 interface Обходчик(З)
 {
     /**
-     *Если поддерживается, возвращает число элементов, которые будут итерированы.
+     * If supported, returns the number of elements that will be iterated.
      *
-     * Если не поддерживается, возвращает ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ.
+     * If not supported, returns ДЛИНА_НЕ_ПОДДЕРЖИВАЕТСЯ.
      */
     бцел длина(); alias длина length;
 
     /**
-     *оператор  foreach.
+     * foreach operator.
      */
     цел opApply(цел delegate(ref З з) дг);
 }
 
 /**
- * Обходчик с ключами.  Это позволяет видеть ключ элемента как и
- * значение при итерации.
+ * Обходчик с ключами.  This allows one to view the ключ of the элемент as well
+ * as the значение while iterating.
  */
 interface Ключник(К, З) : Обходчик!(З)
 {
     alias Обходчик!(З).opApply opApply;
 
     /**
-     * Итерировать по ключам и значениям одновременно
+     * iterate over both ключи and values
      */
     цел opApply(цел delegate(ref К к, ref З з) дг);
 }
 
 /**
- * Чистящий итератор используется для очистки значений из коллекции.  Это выполняется путём
- * сообщения итератору, который должен удалить обходчик, последнего итерированного значения.
+ * A очистить iterator is используется to очистить values from a collection.  This works by
+ * telling the iterator that you want обх to удали the значение последн iterated.
  */
 interface Чистящий(З)
 {
     /**
-     * Итерирует по значениям итератора, сообщая обх, какие значения
-     * удалить.  Чтобы удали значение, установить чистить_ли в да перед выходом из
-     * цикла
+     * iterate over the values of the iterator, telling обх which values to
+     * удали.  To удали a значение, установи чистить_ли to true перед exiting the
+     * loop.
      *
-     * Прим.: укажите ref для параметра чистить_ли:
+     * Make sure you specify ref for the чистить_ли parameter:
      *
      * -----
      * foreach(ref чистить_ли, з; &чистящий.очистить){
@@ -69,15 +69,15 @@ interface Чистящий(З)
 }
 
 /**
- * Чистящий обходчик для контейнеров с ключами.
+ * A очистить iterator for keyed containers.
  */
 interface ЧистящийКлючи(К, З) : Чистящий!(З)
 {
     /**
-     * Итерировать по парам ключ/значение обходчика, сообщая ему, какие следует
-     * удалить.
+     * iterate over the ключ/значение pairs of the iterator, telling обх which ones
+     * to удали.
      *
-     * Прим.: укажите ref для параметра чистить_ли:
+     * Make sure you specify ref for the чистить_ли parameter:
      *
      * -----
      * foreach(ref чистить_ли, к, з; &чистящий.чисть_ключ){

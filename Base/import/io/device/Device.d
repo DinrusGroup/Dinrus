@@ -1,4 +1,4 @@
-module io.device.Device;
+﻿module io.device.Device;
 
 private import  dinrus;
 public  import  io.device.Conduit;

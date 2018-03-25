@@ -1,8 +1,8 @@
-module linalg.Quadric;
+﻿module linalg.Quadric;
 import linalg.Vector;
 //import stdrus;
 
-//== ОПРЕДЕЛЕНИЕ КЛАССА =========================================================
+//== CLASS DEFINITION =========================================================
 
 
 /** /class Квадрик Квадрик.hh <OSG/Geometry/Types/Квадрик.hh>

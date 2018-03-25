@@ -1,8 +1,8 @@
-/*********************************************************
-   Авторское право: (C) 2008 принадлежит Steven Schveighoffer.
-              Все права защищены
+﻿/*********************************************************
+   Copyright: (C) 2008 by Steven Schveighoffer.
+              All rights reserved
 
-   Лицензия: $(LICENSE)
+   License: $(LICENSE)
 
 **********************************************************/
 module col.model.Multiset;
@@ -11,14 +11,14 @@ public import col.model.Collection,
        col.model.Multi;
 
 /**
- * Мультинабор - это контейнер, допускающий несколько экземпляров с одним и тем же значением
- *добавляемым.
+ * Мультинабор is a container that allows multiple экземпляры of the same значение
+ * to be добавленный.
  *
- *Это похоже на список, но упорядоченность не обязательна.  То
- * есть, элементы могут хрониться в порядке добавления.
+ * It is similar to a list, except there is no requirement for ordering.  That
+ * is, elements may not be stored in the order добавленный.
  *
- * Поскольку упорядоченность необязательна, коллекция может менять порядок элементов по
- * удалению или добавлению, чтобы оптимизировать операции.
+ * Since ordering is not important, the collection can reorder elements on
+ * removal or addition to optimize the operations.
  */
 interface Мультинабор(З) : Коллекция!(З), Добавляемый!(З), Мульти!(З)
 {
@@ -83,20 +83,20 @@ interface Мультинабор(З) : Коллекция!(З), Добавляе
     Мультинабор!(З) удалиВсе(З з, ref бцел чло_Удалённых);
 
     /**
-     * Получает самый удобный элемент их мультинабора.  Прим.: не
-     * предполагается никакого определённого порядка элементов, поэтому это м.б.последн
-     * добавленным элементом, м.б. первым, может быть одним из середины.  Эта
-     * элементь - была бы первой итерируемой, если бы мутьтинабор использовался как
-     * итератор (обходчик).  Следовательно, удаление его посредством удали(дай())
-     * будет меньше по времени, чем обычно в рантайме O(n).
+     * gets the most convenient элемент in the multiset.  Note that no
+     * particular order of elements is assumed, so this might be the последн
+     * элемент добавленный, might be the первый, might be one in the middle.  This
+     * элемент would be the первый iterated if the multiset is используется as an
+     * iterator.  Therefore, the removal of this элемент via удали(дай())
+     * would be less than the normal O(n) runtime.
      */
     З дай();
 
     /**
-     * Удалить наиболее подходящий элемент из мультинабра и вернуть его
-     * значение.  Это эквивалентно удали(дай()), но выполняет только 1 поиск.
+     * Remove the most convenient элемент in the multiset and return its
+     * значение.  This is equivalent to удали(дай()), but only does one lookup.
      *
-     * Результат при вызове на пустом мультинаборе не определённый.
+     * Undefined if called on an empty multiset.
      */
     З изыми();
 }

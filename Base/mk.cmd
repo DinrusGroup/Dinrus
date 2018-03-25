@@ -367,6 +367,8 @@ cd %this%
 :::Copying Dinrus.lib to main Dinrus lib folder
 :%LIB% -p256  Dinrus.lib %LDIR%\import.lib
 copy %this%\Dinrus.lib %LDIR%
+copy %this%\Dinrus.lib %LDIR%\Dinrus_dbg.lib
+
 copy %this%\Dinrus.Base.dll %DINRUS%
 
 

@@ -26,56 +26,42 @@ import mesh.Handles;
 
 /+
 /// Macro for defining the vertex traits. See \ref mesh_type.
-template VertexTraits(defs... )
+template VertexTraits(defs... ) 
 {
-    struct VertexT(Base, Refs) : public Base
-        {
-            defs;
-        }
-    }
+    struct VertexT(Base, Refs) : public Base { defs; }
+}
 
 /// Macro for defining the halfedge traits. See \ref mesh_type.
-    template HalfedgeTraits(defs...)
+template HalfedgeTraits(defs...)
 {
-    struct HalfedgeT(Base,Refs) : public Base
-        {
-            defs;
-        }
-    }
+    struct HalfedgeT(Base,Refs) : public Base { defs; }
+}
 
 /// Macro for defining the edge traits. See \ref mesh_type.
-    template EdgeTraits(defs...)
-{
-    struct EdgeT(Base,Refs) : public Base
-        {
-            defs;
-        }
-    }
+template EdgeTraits(defs...) {
+    struct EdgeT(Base,Refs) : public Base { defs; }
+}
 
 /// Macro for defining the face traits. See \ref mesh_type.
-    template FaceTraits(defs...)
-{
-    struct FaceT(Base,Refs) : public Base
-        {
-            defs
-        }
-    }
-    +/
+template FaceTraits(defs...) {
+    struct FaceT(Base,Refs) : public Base { defs }
+}
++/
 
 //== CLASS DEFINITION =========================================================
 
 
-    /** \class ДефолтныеТрэты Traits.hh <OpenMesh/Mesh/Traits.hh>
+/** \class ДефолтныеТрэты Traits.hh <OpenMesh/Mesh/Traits.hh>
+    
+    Base class for all traits.  All user traits should be derived from
+    this class. You may enrich all basic items by additional
+    properties or define one or more of the types \c Точка, \c Нормаль,
+    \c ТексКоорд, or \c Цвет.
 
-        Base class for all traits.  All user traits should be derived from
-        this class. You may enrich all basic items by additional
-        properties or define one or more of the types \c Точка, \c Нормаль,
-        \c ТексКоорд, or \c Цвет.
-
-        See_Also: The Mesh doc section on \ref mesh_type,
-                  Traits.d for a list of macros for traits classes.
-    */
-    class ДефолтныеТрэты
+    See_Also: The Mesh doc section on \ref mesh_type,
+              Traits.d for a list of macros for traits classes.
+*/
+class ДефолтныеТрэты
 {
     /// The default coordinate type is auxd.OpenMesh.Век3п.
     alias Век3п  Точка;
@@ -93,11 +79,11 @@ template VertexTraits(defs... )
     /// The default color type is auxd.OpenMesh.Vec3uc.
     alias Век3бб Цвет;
 
-    struct VertexT(Base,Refs) /* : Base */ {}
+    struct VertexT(Base,Refs) /* : Base */{}
     struct HalfedgeT(Base,Refs) /* : Base */ {}
     struct EdgeT(Base,Refs)  /* : Base */ {}
     struct FaceT(Base,Refs)  /* : Base */ {}
-
+  
     const бцел VertexAttributes = 0;
     const бцел HalfedgeAttributes = АтрибутныеБиты.ПредшПолукрай;
     const бцел EdgeAttributes = 0;
@@ -105,7 +91,7 @@ template VertexTraits(defs... )
 }
 
 /// TODO: Currently there isn't a way to extend the traits
-/// The original код inherited from Base but we can't do that
+/// The original код inherited from Base but we can't do that 
 /// because structs can't inherit.  I can't think of a good way to do it
 /// и still maintain the value-type semantics in текущ D
 
@@ -113,7 +99,7 @@ template VertexTraits(defs... )
 //== CLASS DEFINITION =========================================================
 
 
-/** Helper class to merge two mesh traits.
+/** Helper class to merge two mesh traits. 
  *  \internal
  *
  *  With the помощь of this class it's possible to merge two mesh traits.
@@ -144,45 +130,41 @@ struct MergeTraits(_Traits1,_Traits2)
         alias T1.ТексКоорд ТексКоорд;
 
         struct VertexT(Base,Refs)
-    {
-        mixin T1.VertexT!(T2.VertexT!(Base, Refs), Refs);
-    }
+        {
+            mixin T1.VertexT!(T2.VertexT!(Base, Refs), Refs);
+        }
 
-    struct HalfedgeT(Base,Refs)
-    {
-        mixin T1.HalfedgeT!(T2.HalfedgeT!(Base, Refs), Refs);
-    }
+        struct HalfedgeT(Base,Refs)
+        {
+            mixin T1.HalfedgeT!(T2.HalfedgeT!(Base, Refs), Refs);
+        }
 
-    struct EdgeT(Base,Refs)
-    {
-        mixin T1.EdgeT!(T2.EdgeT!(Base, Refs), Refs);
-    }
+        struct EdgeT(Base,Refs) {
+            mixin T1.EdgeT!(T2.EdgeT!(Base, Refs), Refs);
+        }
 
-    struct FaceT(Base,Refs)
-    {
-        mixin T1.FaceT!(T2.FaceT!(Base, Refs), Refs);
-    }
+        struct FaceT(Base,Refs) {
+            mixin T1.FaceT!(T2.FaceT!(Base, Refs), Refs);
+        }
     }
 }
 
 
-/**
+/** 
     Macro for merging two traits classes _S1 и _S2 into one traits class _D.
     Note that in case of ambiguities class _S1 overrides _S2, especially
     the point/normal/color/texcoord type to be использован is taken from _S1.Точка/
     _S1.Нормаль/_S1.Цвет/_S1.ТексКоорд.
 */
-template OM_Merge_Traits(_S1, _S2, alias _D)
-{
+template OM_Merge_Traits(_S1, _S2, alias _D) {
     alias mesh.Traits.MergeTraits!(_S1, _S2).Result _D;
 }
 
 
-/**
+/** 
     Macro for merging two traits classes _S1 и _S2 into one traits class _D.
     Same as OM_Merge_Traits, but this can be использован inside template classes.
 */
-template OM_Merge_Traits_In_Template(_S1, _S2, alias _D)
-{
+template OM_Merge_Traits_In_Template(_S1, _S2, alias _D) {
     alias mesh.Traits.MergeTraits!(_S1, _S2).Result _D;
 }

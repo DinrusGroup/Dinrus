@@ -1,11 +1,11 @@
-module mesh.Traits;
+﻿module mesh.Traits;
 
 public import mesh.Attributes;
 import linalg.VectorTypes;
 import mesh.Handles;
 
 
-//== ОПРЕДЕЛЕНИЕ КЛАССА =========================================================
+//== CLASS DEFINITION =========================================================
 
 
 /// Macro for defining the vertex attributes. See \ref mesh_type.
@@ -48,7 +48,7 @@ template FaceTraits(defs...) {
 }
 +/
 
-//== ОПРЕДЕЛЕНИЕ КЛАССА =========================================================
+//== CLASS DEFINITION =========================================================
 
 
 /** \class ДефолтныеТрэты Traits.hh <OpenMesh/Mesh/Traits.hh>
@@ -96,7 +96,7 @@ class ДефолтныеТрэты
 /// и still maintain the value-type semantics in текущ D
 
 
-//== ОПРЕДЕЛЕНИЕ КЛАССА =========================================================
+//== CLASS DEFINITION =========================================================
 
 
 /** Helper class to merge two mesh traits. 

@@ -1,8 +1,8 @@
-/*********************************************************
-   Авторское право: (C) 2008 принадлежит Steven Schveighoffer.
-              Все права защищены
+﻿/*********************************************************
+   Copyright: (C) 2008 by Steven Schveighoffer.
+              All rights reserved
 
-   Лицензия: $(LICENSE)
+   License: $(LICENSE)
 
 **********************************************************/
 module col.HashSet;
@@ -62,72 +62,72 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
 +/
 
 /**
- * Реализация набора, которая использует Хэш, чтобы иметь около O(1) вставок,
- * при удалении и поиске.
+ * A установи implementation which uses a Хэш to have near O(1) insertion,
+ * deletion and lookup time.
  *
- * Добавление элемента может сделать невалидными курсоры, зависимые от реализации.
+ * Adding an элемент can invalidate cursors depending on the implementation.
  *
- *Удаление элемента повреждает только курсоры, которые указывали на этот
+ * Removing an элемент only invalidates cursors that were pointing at that
  * элемент.
  *
- * Можно заменить реализацию Хэша адаптированной реализацией,
- * Хэш должен быть шаблоном структуры, который инстанциируется единственным аргументом
- * шаблона З, и должен реализовывать следующие члены (члены-нефункции
- * могут быть свойствами, если не указано иное):
+ * You can replace the Хэш implementation with a custom implementation, the
+ * Хэш must be a struct template which can be instantiated with a single
+ * template argument З, and must implement the following members (non-function
+ * members can be properties unless otherwise specified):
  *
  *
- * параметры -> должны быть структорой как минимум со следущими членами
- *   хэшФункц -> используемая хэш-функция (должна быть какой-л. ХэшФунк!(З))
- *   обновлФункц -> используемая функция обновления (должна быть вроде
+ * parameters -> must be a struct with at least the following members:
+ *   хэшФункц -> the hash function to use (should be a ХэшФунк!(З))
+ *   обновлФункц -> the update function to use (should be an
  *                     ФункцОбновления!(З))
  * 
- * проц установка(параметры p) -> инициализирует хэш с указанными параметрами.
+ * проц установка(parameters p) -> initializes the hash with the given parameters.
  *
- * бцел счёт -> счёт элементов в хэше
+ * бцел счёт -> счёт of the elements in the hash
  *
- * позиция -> должна быть структурой со следующим членом:
- *   укз -> должно определять следующий член:
- *     З значение -> значение, на которое указывает данная позиция (не может являться
- *  каким-либо свойством)
- *   позиция следщ -> должно быть следующим значениес в хэше
- *   позиция предш -> должно быть предшествующим значением в хэше
+ * позиция -> must be a struct with the following member:
+ *   укз -> must define the following member:
+ *     З значение -> the значение which is pointed to by this позиция (cannot be a
+ *                property)
+ *   позиция следщ -> must be the следщ значение in the hash
+ *   позиция предш -> must be the previous значение in the hash
  *
- * бул добавь(З з) -> добавить данное значение в хэш.  * Хэш этого значения
- * будет задан хэшФункц(з).  Если значение уже есть в хэше,
- *это вызовет обновлФункц(з) и не должно увеличивать счётчик.
+ * бул добавь(З з) -> добавь the given значение to the hash.  The hash of the значение
+ * will be given by хэшФункц(з).  If the значение already exists in the hash,
+ * this should call обновлФункц(з) and should not increment счёт.
  *
- * позиция начало -> должна быть позицией, которая указывает на самый первый целостный
- * элемент в хэше, или на конце, если нет никаких элементов.
+ * позиция начало -> must be a позиция that points to the very первый valid
+ * элемент in the hash, or конец if no elements exist.
  *
- * позиция конец -> должна быть позицией, которая указывает сразу после самого последнего
- *валидного элемента.
+ * позиция конец -> must be a позиция that points to just past the very последн
+ * valid элемент.
  *
- * позиция найди(З з) ->возвращает позицию, которая указывает на элемент, который
- * содержит з, или на конец , если его не существует.
+ * позиция найди(З з) -> returns a позиция that points to the элемент that
+ * содержит з, or конец if the элемент doesn'т exist.
  *
- * позиция удали(позиция p) -> удаляет данный элемент из хэша,
- *возвращает следующий валидный элемент или конец, если p был последним в хэше.
+ * позиция удали(позиция p) -> removes the given элемент from the hash,
+ * returns the следщ valid элемент or конец if p was последн in the hash.
  *
- * проц очисти() -> удаляет все элементы из хэша, устанавливает счётчик на 0.
+ * проц очисти() -> removes all elements from the hash, sets счёт to 0.
  */
 class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбновлений, alias хэшФункц=ДефХэш) : Набор!(З)
 {
     /**
-     * алиас инстанциации шаблона.
+     * an alias the the implementation template instantiation.
      */
     alias ШаблРеализац!(З, хэшФункц) Реализ;
 
     private Реализ _хэш;
 
     /**
-     * Курсор для данного хэш-набора.
+     * A курсор for the hash установи.
      */
     struct курсор
     {
         private Реализ.позиция позиция;
 
         /**
-         * даёт значение в данной позиции
+         * дай the значение at this позиция
          */
         З значение()
         {
@@ -135,8 +135,8 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         }
 
         /**
-         * Увеличивает этот курсор, возвращая то значение, которое было до
-         * этого.
+         * increment this курсор, returns what the курсор was перед
+         * incrementing.
          */
         курсор opPostInc()
         {
@@ -146,8 +146,8 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         }
 
         /**
-         * Уменьшает этот курсор, возращая значение, которое было до
-         * декрементации.
+         * decrement this курсор, returns what the курсор was перед
+         * decrementing.
          */
         курсор opPostDec()
         {
@@ -157,10 +157,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         }
 
         /**
-         * Увеличивает курсор на указанное количество.
+         * increment the курсор by the given amount.
          *
-         * Это операция O(прир)!  * Следует лишь использовать этот оператор в 
-         * такой форме:
+         * This is an O(прир) operation!  You should only use this operator in
+         * the form:
          *
          * ++i;
          */
@@ -174,10 +174,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         }
 
         /**
-         * Уменьшает курсор на заданное значение.
+         * decrement the курсор by the given amount.
          *
-         * Это операция O(прир)!  * Следует лишь использовать этот оператор в 
-         * такой форме:
+         * This is an O(прир) operation!  You should only use this operator in
+         * the form:
          *
          * --i;
          */
@@ -191,7 +191,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         }
 
         /**
-         * Сравнивает два курсора на равенство
+         * compare two cursors for equality
          */
         бул opEquals(курсор обх)
         {
@@ -200,12 +200,12 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * итерирует по элементам набора, определяет, которые из них удалить.
+     * Iterate over the elements in the установи, specifying which ones to удали.
      *
-     * Используйте таким образом:
+     * Use like this:
      *
      * ---------------
-     * // удалить все нечётные элементы
+     * // удали all odd elements
      * foreach(ref чистить_ли, з; &hashSet.очистить)
      * {
      *   чистить_ли = ((з & 1) == 1);
@@ -221,14 +221,14 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
         курсор обх = начало;
         бул чистить_ли;
         цел возврдг = 0;
-        курсор _конец = конец; //  ***
+        курсор _конец = конец; // cache конец so обх isn'т always being generated
         while(!возврдг && обх != _конец)
         {
             //
-            // не позволяет пользователю изменить значение
+            // don'т allow user to change значение
             //
             З врмзначение = обх.значение;
-            чистить_ли = нет;
+            чистить_ли = false;
             if((возврдг = дг(чистить_ли, врмзначение)) != 0)
                 break;
             if(чистить_ли)
@@ -240,7 +240,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Итерирует по значениям коллекции
+     * iterate over the collection's values
      */
     цел opApply(цел delegate(ref З з) дг)
     {
@@ -252,7 +252,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *инстанциировать хэш-шабор, используя указанные параметры реализации.
+     * Instantiate the hash установи using the implementation parameters given.
      */
     this()
     {
@@ -260,7 +260,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     //
-    // Приватный конструктор для dup
+    // private constructor for dup
     //
     private this(ref Реализ дубИз)
     {
@@ -268,7 +268,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Очистить все элементы коллекции
+     * Clear the collection of all elements
      */
     ХэшНабор очисти()
     {
@@ -277,7 +277,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Возвращает число элементов в коллекции
+     * returns number of elements in the collection
      */
     бцел длина()
     {
@@ -286,7 +286,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
 	alias длина length;
 
     /**
-     * Возвращает курсор на первый элемент в коллекции.
+     * returns a курсор to the первый элемент in the collection.
      */
     курсор начало()
     {
@@ -296,8 +296,8 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Возвращает курсор, который указывает сразу после последнего элемента
-     * коллекции.
+     * returns a курсор that points just past the последн элемент in the
+     * collection.
      */
     курсор конец()
     {
@@ -307,10 +307,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Удаляет элемент, на который указывает данный курсор, возвращая
-     * курсор, указывающий на следующий элемент в коллекции.
+     * удали the элемент pointed at by the given курсор, returning an
+     * курсор that points to the следщ элемент in the collection.
      *
-     *Выполняется в среднем за O(1) раз.
+     * Runs on average in O(1) time.
      */
     курсор удали(курсор обх)
     {
@@ -319,10 +319,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * находит экземпляр значения в коллекции.  Возвращает конец, если
-     * значение отсутствует.
+     * найди the instance of a значение in the collection.  Returns конец if the
+     * значение is not present.
      *
-     * Выполняется в среднем O(1) раз.
+     * Runs in average O(1) time.
      */
     курсор найди(З з)
     {
@@ -332,9 +332,9 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Возвращает да, если данное значение есть в коллекции.
+     * Returns true if the given значение exists in the collection.
      *
-     * Выполняется в среднем O(1) раз.
+     * Runs in average O(1) time.
      */
     бул содержит(З з)
     {
@@ -342,10 +342,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Удаляет первый элемент, у которого значение з.  Возвращает да, если
-     * значение имелось и было удалено.
+     * Removes the первый элемент that has the значение з.  Returns true if the
+     * значение was present and was removed.
      *
-     * Выполняется за O(n) раз.
+     * Runs in O(n) time.
      */
     ХэшНабор удали(З з)
     {
@@ -356,21 +356,21 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Удаляет первый элемент, у которого значение з.  Возвращает да, если
-     * значение имелось и было удалено.
+     * Removes the первый элемент that has the значение з.  Returns true if the
+     * значение was present and was removed.
      *
-     * Выполняется за O(n) раз.
+     * Runs in O(n) time.
      */
     ХэшНабор удали(З з, ref бул был_Удалён)
     {
         курсор обх = найди(з);
         if(обх == конец)
         {
-            был_Удалён = нет;
+            был_Удалён = false;
         }
         else
         {
-            был_Удалён = да;
+            был_Удалён = true;
             удали(обх);
         }
         return this;
@@ -384,10 +384,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Удаляет все элементы в итераторе.  * Устанавливает чло_Удалённых
-     *на число удалённых элементтов.
+     * Remove all the elements that appear in the iterator.  Sets чло_Удалённых
+     * to the number of elements removed.
      *
-     *Возвращает this.
+     * Returns this.
      */
     ХэшНабор удали(Обходчик!(З) обх, ref бцел чло_Удалённых)
     {
@@ -398,10 +398,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Добавляет элемент в набор.  * Возвращает да, если элемент ещё не
-     * присутствовал.
+     * Adds an элемент to the установи.  Returns true if the элемент was not
+     * already present.
      *
-     *Выполняется в среднем за O(1) раз.
+     * Runs on average in O(1) time.
      */
     ХэшНабор добавь(З з)
     {
@@ -410,10 +410,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Добавляет элемент в набор.  * Возвращает да, если элемент ещё не
-     * присутствовал.
+     * Adds an элемент to the установи.  Returns true if the элемент was not
+     * already present.
      *
-     *Выполняется в среднем за O(1) раз.
+     * Runs on average in O(1) time.
      */
     ХэшНабор добавь(З з, ref бул был_добавлен)
     {
@@ -422,11 +422,11 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Добавляет все элементы из итератора в набор.  Возвращает число
-     * добавленных элементов.
+     * Adds all the elements from the iterator to the установи.  Returns the number
+     * of elements добавленный.
      *
-     * Выполняется в среднем за O(1) + O(m) раз, где m - число элементов
-     * в итераторе.
+     * Runs on average in O(1) + O(m) time, where m is the number of elements
+     * in the iterator.
      */
     ХэшНабор добавь(Обходчик!(З) обх)
     {
@@ -436,11 +436,11 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Добавляет все элементы из итератора в набор.  Возвращает число
-     * добавленных элементов.
+     * Adds all the elements from the iterator to the установи.  Returns the number
+     * of elements добавленный.
      *
-     * Выполняется в среднем за O(1) + O(m) раз, где m - число элементов
-     * в итераторе.
+     * Runs on average in O(1) + O(m) time, where m is the number of elements
+     * in the iterator.
      */
     ХэшНабор добавь(Обходчик!(З) обх, ref бцел чло_добавленных)
     {
@@ -451,10 +451,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Добавляет все элементы из массива в набор.  * Возвращает число
-     *добавленных элементов.
+     * Adds all the elements from the массив to the установи.  Returns the number of
+     * elements добавленный.
      *
-     * Выполняется в среднем за O(1) + O(m) раз, где m - длина массива.
+     * Runs on average in O(1) + O(m) time, where m is the массив длина.
      */
     ХэшНабор добавь(З[] массив)
     {
@@ -464,10 +464,10 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Добавляет все элементы из массива в набор.  * Возвращает число
-     *добавленных элементов.
+     * Adds all the elements from the массив to the установи.  Returns the number of
+     * elements добавленный.
      *
-     * Выполняется в среднем за O(1) + O(m) раз, где m - длина массива.
+     * Runs on average in O(1) + O(m) time, where m is the массив длина.
      */
     ХэшНабор добавь(З[] массив, ref бцел чло_добавленных)
     {
@@ -478,40 +478,40 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     * Удалить все значения из набора, которых нет в указанном поднаборе
+     * Remove all the values from the установи that are not in the given поднабор
      *
-     * возвращает this.
+     * returns this.
      */
     ХэшНабор накладка(Обходчик!(З) поднабор)
     {
         //
-        //пересечение сложнее удаления, поскольку нам не
-        //видны детали реализации.  * Следовательно, пусть
-        //реализация выполнит обх.
+        // intersection is more difficult than removal, because we do not have
+        // insight into the implementation details.  Therefore, make the
+        // implementation do обх.
         //
         _хэш.накладка(поднабор);
         return this;
     }
 
     /**
-     *  Удалить все значения из набора, которых нет в указанном поднаборе.
-     * Устанавливает чло_Удалённых на число удалённых элементов.
+     * Remove all the values from the установи that are not in the given поднабор.
+     * Sets чло_Удалённых to the number of elements removed.
      *
-     * возвращает this.
+     * returns this.
      */
     ХэшНабор накладка(Обходчик!(З) поднабор, ref бцел чло_Удалённых)
     {
         //
-        //пересечение сложнее удаления, поскольку нам не
-        //видны детали реализации.  * Следовательно, пусть
-        //реализация выполнит обх.
+        // intersection is more difficult than removal, because we do not have
+        // insight into the implementation details.  Therefore, make the
+        // implementation do обх.
         //
         чло_Удалённых = _хэш.накладка(поднабор);
         return this;
     }
 
     /**
-     * дублировать данный хэш-набор
+     * duplicate this hash установи
      */
     ХэшНабор dup()
     {
@@ -520,7 +520,7 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
 
     цел opEquals(Объект o)
     {
-        if(o !is пусто)
+        if(o !is null)
         {
             auto s = cast(Набор!(З))o;
             if(s !is null && s.length == длина)
@@ -532,21 +532,21 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
                 }
 
                 //
-                // равно
+                // equal
                 //
                 return 1;
             }
         }
         //
-        // сравнение невозможно.
+        // no comparison possible.
         //
         return 0;
     }
 
     /**
-     * Даёт наиболее подходящий элемент из набора.  * Это элемент, который
-     *должен итерироваться первым.  Следовательно, вызов удали(дай())
-     * гарантировано меньше, чем операция O(n).
+     * дай the most convenient элемент in the установи.  This is the элемент that
+     * would be iterated первый.  Therefore, calling удали(дай()) is
+     * guaranteed to be less than an O(n) operation.
      */
     З дай()
     {
@@ -554,9 +554,9 @@ class ХэшНабор(З, alias ШаблРеализац=ХэшБезОбнов
     }
 
     /**
-     *Удалить наиболее подходящий элемент из набора, и вернуть его значение.
-     * Это равносильно удали(дай()), только лишь один поиск
-     * выполняется.
+     * Remove the most convenient элемент from the установи, and return its значение.
+     * This is equivalent to удали(дай()), except that only one lookup is
+     * performed.
      */
     З изыми()
     {

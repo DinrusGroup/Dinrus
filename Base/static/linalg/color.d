@@ -22,8 +22,8 @@ Authors:
 
 module linalg.color;
 
-import linalg.basic,
-       linalg.config, cidrus;
+ import linalg.basic,
+               linalg.config;
 
 /** Defines байты orders for плав to бцел conversions. */
 enum ПорядокБайтов
@@ -38,27 +38,27 @@ enum ПорядокБайтов
 Wrapper template to provide possibility to use different плав types
 in implemented structs и routines.
 */
-template Цвет(т_плав)
+ template Цвет(т_плав)
 {
-    alias linalg.basic.закрепиПод  закрепиПод;
-    alias linalg.basic.закрепиНад  закрепиНад;
-    alias linalg.basic.закрепи       закрепи;
-    alias linalg.basic.равны       равны;
+     alias linalg.basic.закрепиПод  закрепиПод;
+     alias linalg.basic.закрепиНад  закрепиНад;
+     alias linalg.basic.закрепи       закрепи;
+     alias linalg.basic.равны       равны;
 
-    alias .Цвет!(плав).ХСЛ      ХСЛп;
-    alias .Цвет!(плав).Цвет3   Цвет3п;
-    alias .Цвет!(плав).Цвет4   Цвет4п;
+     alias .Цвет!(плав).ХСЛ      ХСЛп;
+     alias .Цвет!(плав).Цвет3   Цвет3п;
+     alias .Цвет!(плав).Цвет4   Цвет4п;
 
-    alias .Цвет!(дво).ХСЛ     ХСЛд;
-    alias .Цвет!(дво).Цвет3  Цвет3д;
-    alias .Цвет!(дво).Цвет4  Цвет4д;
+     alias .Цвет!(дво).ХСЛ     ХСЛд;
+     alias .Цвет!(дво).Цвет3  Цвет3д;
+     alias .Цвет!(дво).Цвет4  Цвет4д;
 
-    alias .Цвет!(реал).ХСЛ       ХСЛр;
-    alias .Цвет!(реал).Цвет3    Цвет3р;
-    alias .Цвет!(реал).Цвет4    Цвет4р;
+     alias .Цвет!(реал).ХСЛ       ХСЛр;
+     alias .Цвет!(реал).Цвет3    Цвет3р;
+     alias .Цвет!(реал).Цвет4    Цвет4р;
 
-    static const т_плав кзсК = 255;
-    static const т_плав хслК = 240;
+     static const т_плав кзсК = 255;
+     static const т_плав хслК = 240;
 
     /************************************************************************************
     Hue, Saturation, Luminance triple.
@@ -78,120 +78,120 @@ template Цвет(т_плав)
         ------------
         */
         static ХСЛ opCall(т_плав х, т_плав с, т_плав л)
-    {
-        ХСЛ hsl;
-        hsl.установи(х, с, л);
-        return hsl;
-    }
-
-    /** Sets components to значения of passed аргументы. */
-    проц установи(т_плав х, т_плав с, т_плав л)
-    {
-        this.х = х;
-        this.с = с;
-        this.л = л;
-    }
-
-    /** Возвращает: Integer value of corresponding component in диапазон [0; 240]. */
-    бцел хц()
-    {
-        return cast(бцел)(х * хслК);
-    }
-
-    /** описано */
-    бцел сц()
-    {
-        return cast(бцел)(с * хслК);
-    }
-
-    /** описано */
-    бцел лц()
-    {
-        return cast(бцел)(л * хслК);
-    }
-
-    /**
-    Set components to значения of passed аргументы. It is assumed that значения of
-    аргументы are in диапазон [0; 240].
-    */
-    проц хц(бцел х)
-    {
-        this.х = cast(т_плав)х / хслК;
-    }
-
-    /** описано */
-    проц сц(бцел с)
-    {
-        this.с = cast(т_плав)с / хслК;
-    }
-
-    /** описано */
-    проц лц(бцел л)
-    {
-        this.л = cast(т_плав)л / хслК;
-    }
-
-    /** Component-wise equality operator. */
-    бул opEquals(ХСЛ hsl)
-    {
-        return х == hsl.х && с == hsl.с && л == hsl.л;
-    }
-
-    /** Возвращает: Цвет3 representing the same color as this triple. */
-    Цвет3 вЦвет3()
-    {
-        const крат кзсMax = cast(крат)кзсК;
-        const крат hslMax = cast(крат)хслК;
-        крат HueToRGB(крат n1, крат n2, крат hue)
         {
-            // диапазон проверь: note значения passed add/subtract thirds of диапазон
-            if (hue < 0)
-                        hue += hslMax;
-
-            if (hue > hslMax)
-                hue -= hslMax;
-
-            // return к,з, or с value from this tridrant
-            if (hue < hslMax / 6)
-                return n1 + ((n2 - n1) * hue + hslMax / 12) / (hslMax / 6);
-            if (hue < hslMax / 2)
-                return n2;
-            if (hue < hslMax * 2 / 3)
-                return n1 + ((n2 - n1) * ((hslMax * 2/3) - hue) + (hslMax / 12)) / (hslMax / 6);
-            else
-                return n1;
+            ХСЛ hsl;
+            hsl.установи(х, с, л);
+            return hsl;
         }
 
-        крат hue = cast(крат)хц;
-        крат lum = cast(крат)лц;
-        крат sat = cast(крат)сц;
-        крат magic1, magic2; // calculated magic numbers
-
-        Цвет3 возвр;
-
-        if (sat == 0) // achromatic case
+        /** Sets components to значения of passed аргументы. */
+        проц установи(т_плав х, т_плав с, т_плав л)
         {
-            возвр.установи(л, л, л);
-        }
-        else // chromatic case
-        {
-            // установи up magic numbers
-            if (lum <= hslMax / 2)
-                magic2 = (lum * (hslMax + sat) + hslMax / 2) / hslMax;
-            else
-                magic2 = lum + sat - (lum * sat + hslMax / 2) / hslMax;
-
-            magic1 = 2 * lum - magic2;
-
-            // дай RGB, change units from hslMax to [0; 1] диапазон
-            возвр.к = cast(т_плав)(HueToRGB(magic1, magic2, hue + (hslMax / 3)) * кзсMax + hslMax / 2) / хслК / кзсК;
-            возвр.з = cast(т_плав)(HueToRGB(magic1, magic2, hue) * кзсMax + hslMax / 2) / хслК / кзсК;
-            возвр.с = cast(т_плав)(HueToRGB(magic1, magic2, hue - (hslMax / 3)) * кзсMax + hslMax / 2) / хслК / кзсК;
+            this.х = х;
+            this.с = с;
+            this.л = л;
         }
 
-        return возвр;
+        /** Возвращает: Integer value of corresponding component in диапазон [0; 240]. */
+        бцел хц()
+        {
+            return cast(бцел)(х * хслК);
+        }
+
+        /** описано */
+        бцел сц()
+        {
+            return cast(бцел)(с * хслК);
+        }
+
+        /** описано */
+        бцел лц()
+        {
+            return cast(бцел)(л * хслК);
+        }
+
+        /**
+        Set components to значения of passed аргументы. It is assumed that значения of
+        аргументы are in диапазон [0; 240].
+        */
+        проц хц(бцел х)
+        {
+            this.х = cast(т_плав)х / хслК;
+        }
+
+        /** описано */
+        проц сц(бцел с)
+        {
+            this.с = cast(т_плав)с / хслК;
+        }
+
+        /** описано */
+        проц лц(бцел л)
+        {
+            this.л = cast(т_плав)л / хслК;
+        }
+
+        /** Component-wise equality operator. */
+        бул opEquals(ХСЛ hsl)
+        {
+            return х == hsl.х && с == hsl.с && л == hsl.л;
+        }
+
+        /** Возвращает: Цвет3 representing the same color as this triple. */
+        Цвет3 вЦвет3()
+        {
+            const крат кзсMax = cast(крат)кзсК;
+            const крат hslMax = cast(крат)хслК;
+            крат HueToRGB(крат n1, крат n2, крат hue)
+            {
+                // диапазон проверь: note значения passed add/subtract thirds of диапазон
+                if (hue < 0)
+                    hue += hslMax;
+
+                if (hue > hslMax)
+                    hue -= hslMax;
+
+                // return к,з, or с value from this tridrant
+                if (hue < hslMax / 6)
+                    return n1 + ((n2 - n1) * hue + hslMax / 12) / (hslMax / 6);
+                if (hue < hslMax / 2)
+                    return n2;
+                if (hue < hslMax * 2 / 3)
+                    return n1 + ((n2 - n1) * ((hslMax * 2/3) - hue) + (hslMax / 12)) / (hslMax / 6);
+                else
+                    return n1;
+            }
+
+            крат hue = cast(крат)хц;
+            крат lum = cast(крат)лц;
+            крат sat = cast(крат)сц;
+            крат magic1, magic2; // calculated magic numbers
+
+            Цвет3 возвр;
+
+            if (sat == 0) // achromatic case
+            {
+                возвр.установи(л, л, л);
+            }
+            else // chromatic case
+            {
+                // установи up magic numbers
+                if (lum <= hslMax / 2)
+                    magic2 = (lum * (hslMax + sat) + hslMax / 2) / hslMax;
+                else
+                    magic2 = lum + sat - (lum * sat + hslMax / 2) / hslMax;
+
+                magic1 = 2 * lum - magic2;
+
+                // дай RGB, change units from hslMax to [0; 1] диапазон
+                возвр.к = cast(т_плав)(HueToRGB(magic1, magic2, hue + (hslMax / 3)) * кзсMax + hslMax / 2) / хслК / кзсК;
+                возвр.з = cast(т_плав)(HueToRGB(magic1, magic2, hue) * кзсMax + hslMax / 2) / хслК / кзсК;
+                возвр.с = cast(т_плав)(HueToRGB(magic1, magic2, hue - (hslMax / 3)) * кзсMax + hslMax / 2) / хслК / кзсК;
+            }
+
+            return возвр;
+        }
     }
-       }
 
     /**
     Approximate equality function.
@@ -275,36 +275,36 @@ template Цвет(т_плав)
         {
             switch (порядок)
             {
-            case ПорядокБайтов.АКЗС:
-                кц = (ист & 0x00FF0000) >> 16;
-                зц = (ист & 0x0000FF00) >> 8;
-                сц = (ист & 0x000000FF) >> 0;
-                break;
+                case ПорядокБайтов.АКЗС:
+                    кц = (ист & 0x00FF0000) >> 16;
+                    зц = (ист & 0x0000FF00) >> 8;
+                    сц = (ист & 0x000000FF) >> 0;
+                    break;
 
-            case ПорядокБайтов.АСЗК:
-                сц = (ист & 0x00FF0000) >> 16;
-                зц = (ист & 0x0000FF00) >> 8;
-                кц = (ист & 0x000000FF) >> 0;
-                break;
+                case ПорядокБайтов.АСЗК:
+                    сц = (ист & 0x00FF0000) >> 16;
+                    зц = (ист & 0x0000FF00) >> 8;
+                    кц = (ист & 0x000000FF) >> 0;
+                    break;
 
-            case ПорядокБайтов.КЗСА:
-                кц = (ист & 0xFF000000) >>> 24;
-                зц = (ист & 0x00FF0000) >>> 16;
-                сц = (ист & 0x0000FF00) >>> 8;
-                break;
+                case ПорядокБайтов.КЗСА:
+                    кц = (ист & 0xFF000000) >>> 24;
+                    зц = (ист & 0x00FF0000) >>> 16;
+                    сц = (ист & 0x0000FF00) >>> 8;
+                    break;
 
-            case ПорядокБайтов.СЗКА:
-                сц = (ист & 0xFF000000) >>> 24;
-                зц = (ист & 0x00FF0000) >>> 16;
-                кц = (ист & 0x0000FF00) >>> 8;
-                break;
+                case ПорядокБайтов.СЗКА:
+                    сц = (ист & 0xFF000000) >>> 24;
+                    зц = (ист & 0x00FF0000) >>> 16;
+                    кц = (ист & 0x0000FF00) >>> 8;
+                    break;
             }
         }
 
         /** Возвращает: Whether all components are нормализованный numbers. */
         бул нормален_ли()
         {
-            return cidrus.нормаль_ли(к) && cidrus.нормаль_ли(з) && cidrus.нормаль_ли(с);
+            return stdrus.нормален_ли(к) && stdrus.нормален_ли(з) && stdrus.нормален_ли(с);
         }
 
         /**
@@ -370,14 +370,10 @@ template Цвет(т_плав)
 
             switch (порядок)
             {
-            case ПорядокБайтов.АКЗС:
-                return (кц << 16) | (зц <<  8) | (сц << 0);
-            case ПорядокБайтов.АСЗК:
-                return (сц << 16) | (зц <<  8) | (кц << 0);
-            case ПорядокБайтов.КЗСА:
-                return (кц << 24) | (зц << 16) | (сц << 8);
-            case ПорядокБайтов.СЗКА:
-                return (сц << 24) | (зц << 16) | (кц << 8);
+                case ПорядокБайтов.АКЗС: return (кц << 16) | (зц <<  8) | (сц << 0);
+                case ПорядокБайтов.АСЗК: return (сц << 16) | (зц <<  8) | (кц << 0);
+                case ПорядокБайтов.КЗСА: return (кц << 24) | (зц << 16) | (сц << 8);
+                case ПорядокБайтов.СЗКА: return (сц << 24) | (зц << 16) | (кц << 8);
             }
 
             return 0;
@@ -411,8 +407,7 @@ template Цвет(т_плав)
                 х = с = 0;
             }
             else
-            {
-                // chromatic case
+            {                                // chromatic case
                 // saturation
                 if (л <= hslMax / 2)
                     с = ((cMax - cMin) * hslMax + (cMax + cMin) / 2) / (cMax + cMin);
@@ -610,14 +605,8 @@ template Цвет(т_плав)
             Нов color constructed from this one и having component значения
             that correspond to method имя.
         */
-        Цвет4 кзс0()
-        {
-            return Цвет4(к, з, с, 0);
-        }
-        Цвет4 кзс1()
-        {
-            return Цвет4(к, з, с, 1);    /// описано
-        }
+        Цвет4 кзс0()    { return Цвет4(к, з, с, 0); }
+        Цвет4 кзс1()    { return Цвет4(к, з, с, 1); } /// описано
     }
 
     /**
@@ -726,40 +715,40 @@ template Цвет(т_плав)
         {
             switch (порядок)
             {
-            case ПорядокБайтов.АКЗС:
-                ац = (ист & 0xFF000000) >>> 24;
-                кц = (ист & 0x00FF0000) >>> 16;
-                зц = (ист & 0x0000FF00) >>> 8;
-                сц = (ист & 0x000000FF) >>> 0;
-                break;
+                case ПорядокБайтов.АКЗС:
+                    ац = (ист & 0xFF000000) >>> 24;
+                    кц = (ист & 0x00FF0000) >>> 16;
+                    зц = (ист & 0x0000FF00) >>> 8;
+                    сц = (ист & 0x000000FF) >>> 0;
+                    break;
 
-            case ПорядокБайтов.АСЗК:
-                ац = (ист & 0xFF000000) >>> 24;
-                сц = (ист & 0x00FF0000) >>> 16;
-                зц = (ист & 0x0000FF00) >>> 8;
-                кц = (ист & 0x000000FF) >>> 0;
-                break;
+                case ПорядокБайтов.АСЗК:
+                    ац = (ист & 0xFF000000) >>> 24;
+                    сц = (ист & 0x00FF0000) >>> 16;
+                    зц = (ист & 0x0000FF00) >>> 8;
+                    кц = (ист & 0x000000FF) >>> 0;
+                    break;
 
-            case ПорядокБайтов.КЗСА:
-                кц = (ист & 0xFF000000) >>> 24;
-                зц = (ист & 0x00FF0000) >>> 16;
-                сц = (ист & 0x0000FF00) >>> 8;
-                ац = (ист & 0x000000FF) >>> 0;
-                break;
+                case ПорядокБайтов.КЗСА:
+                    кц = (ист & 0xFF000000) >>> 24;
+                    зц = (ист & 0x00FF0000) >>> 16;
+                    сц = (ист & 0x0000FF00) >>> 8;
+                    ац = (ист & 0x000000FF) >>> 0;
+                    break;
 
-            case ПорядокБайтов.СЗКА:
-                сц = (ист & 0xFF000000) >>> 24;
-                зц = (ист & 0x00FF0000) >>> 16;
-                кц = (ист & 0x0000FF00) >>> 8;
-                ац = (ист & 0x000000FF) >>> 0;
-                break;
+                case ПорядокБайтов.СЗКА:
+                    сц = (ист & 0xFF000000) >>> 24;
+                    зц = (ист & 0x00FF0000) >>> 16;
+                    кц = (ист & 0x0000FF00) >>> 8;
+                    ац = (ист & 0x000000FF) >>> 0;
+                    break;
             }
         }
 
         /** Возвращает: Whether all components are нормализованный numbers. */
         бул нормален_ли()
         {
-            return cidrus.нормаль_ли(к) && cidrus.нормаль_ли(з) && cidrus.нормаль_ли(с) && cidrus.нормаль_ли(а);
+            return stdrus.нормален_ли(к) && stdrus.нормален_ли(з) && stdrus.нормален_ли(с) && stdrus.нормален_ли(а);
         }
 
         /**
@@ -838,14 +827,10 @@ template Цвет(т_плав)
 
             switch (порядок)
             {
-            case ПорядокБайтов.АКЗС:
-                return (ац << 24) | (кц << 16) | (зц <<  8) | (сц << 0);
-            case ПорядокБайтов.АСЗК:
-                return (ац << 24) | (сц << 16) | (зц <<  8) | (кц << 0);
-            case ПорядокБайтов.КЗСА:
-                return (кц << 24) | (зц << 16) | (сц <<  8) | (ац << 0);
-            case ПорядокБайтов.СЗКА:
-                return (сц << 24) | (зц << 16) | (кц <<  8) | (ац << 0);
+                case ПорядокБайтов.АКЗС: return (ац << 24) | (кц << 16) | (зц <<  8) | (сц << 0);
+                case ПорядокБайтов.АСЗК: return (ац << 24) | (сц << 16) | (зц <<  8) | (кц << 0);
+                case ПорядокБайтов.КЗСА: return (кц << 24) | (зц << 16) | (сц <<  8) | (ац << 0);
+                case ПорядокБайтов.СЗКА: return (сц << 24) | (зц << 16) | (кц <<  8) | (ац << 0);
             }
 
             return 0;
@@ -1101,7 +1086,7 @@ unittest
 unittest
 {
     Цвет3 c = Цвет3( 0.2, 0.5, 1.0 );
-    assert( равны(c.вХСЛ.вЦвет3(), c) );
+    assert( равны(c.вХСЛ.вЦвет3(), c) );	
 }
 
 //============================
@@ -1113,15 +1098,14 @@ unittest
 
 */
 import linalg.VectorTypes;
-import stdrus:
-пол;
+import stdrus: пол;
 
 alias Век3бб  Color3ub;
 alias Век3п   Color3f;
 alias Век3д   Color3d;
 
 
-/** convert hsv color to rgb color
+/** convert hsv color to rgb color 
    From: http://www.cs.rit.edu/~ncs/color/t_convert.html
    HSV и RGB components all on [0,1] interval.
 */
@@ -1131,8 +1115,7 @@ alias Век3д   Color3d;
     плав х = hsv[0]*6.0f; // х sector in [0.0, 6.0]
     плав с = hsv[1];
     плав v = hsv[2];
-    if( с <= 0 )
-    {
+    if( с <= 0 ) {
         // achromatic (grey)
         (*rgb)[0]=v;
         (*rgb)[1]=v;
@@ -1147,8 +1130,7 @@ alias Век3д   Color3d;
     плав t = v * ( 1 - с * ( 1 - f ) );
 
     плав r,g,b;
-    switch( i )
-    {
+    switch( i ) {
     case 0:
         r = v;
         g = t;
@@ -1185,61 +1167,46 @@ alias Век3д   Color3d;
     (*rgb)[2]=b;
 }
 
-/** convert rgb color to hsv color
- *   From: http://www.cs.rit.edu/~ncs/color/t_convert.html
+/** convert rgb color to hsv color 
+ *   From: http://www.cs.rit.edu/~ncs/color/t_convert.html 
  *   х = [0,1], с = [0,1], v = [0,1]
  *		if с == 0, then х = -1 (undefined)
  */
 проц RGB_to_HSV( ref Color3f rgb, Color3f *hsv)
 {
-    плав cmin = rgb[0];
-    if (rgb[1]<cmin)
-    {
-        cmin = rgb[1];
-    }
-    if (rgb[2]<cmin)
-    {
-        cmin = rgb[2];
-    }
+	плав cmin = rgb[0]; 
+    if (rgb[1]<cmin) { cmin = rgb[1]; }
+    if (rgb[2]<cmin) { cmin = rgb[2]; }
 
-    плав cmax = rgb[0];
+	плав cmax = rgb[0]; 
     цел   imax = 0;
-    if (rgb[1]>cmax)
-    {
-        cmax = rgb[1];
-        imax=1;
-    }
-    if (rgb[2]>cmax)
-    {
-        cmax = rgb[2];
-        imax=2;
-    }
+    if (rgb[1]>cmax) { cmax = rgb[1]; imax=1; }
+    if (rgb[2]>cmax) { cmax = rgb[2]; imax=2; }
 
-    (*hsv)[2] = cmax;				// v
+	(*hsv)[2] = cmax;				// v
 
-    плав delta = cmax - cmin;
+	плав delta = cmax - cmin;
 
-    if( cmax > 0 )
-        (*hsv)[1] = delta / cmax;		// с
-    else
-    {
-        // rgb = (0,0,0)		// с = 0, v is undefined
-        (*hsv)[1] = 0;
-        (*hsv)[0] = -1;
-        return;
-    }
+	if( cmax > 0 )
+		(*hsv)[1] = delta / cmax;		// с
+	else {
+		// rgb = (0,0,0)		// с = 0, v is undefined
+		(*hsv)[1] = 0;
+		(*hsv)[0] = -1;
+		return;
+	}
 
     плав х;
-    if( 0 == imax )
-        х = ( rgb[1] - rgb[2] ) / delta;		// between yellow & magenta
-    else if( 1 == imax )
-        х = 2. + ( rgb[1] - rgb[0] ) / delta;	// between cyan & yellow
-    else
-        х = 4. + ( rgb[0] - rgb[1] ) / delta;	// between magenta & cyan
+	if( 0 == imax )
+		х = ( rgb[1] - rgb[2] ) / delta;		// between yellow & magenta
+	else if( 1 == imax )
+		х = 2. + ( rgb[1] - rgb[0] ) / delta;	// between cyan & yellow
+	else
+		х = 4. + ( rgb[0] - rgb[1] ) / delta;	// between magenta & cyan
 
-    х /= 6.0;				// [0,1] interval
-    if( х < 0 )
-        х += 1.0;
+	х /= 6.0;				// [0,1] interval
+	if( х < 0 )
+		х += 1.0;
 
     (*hsv)[0] = х;
 }

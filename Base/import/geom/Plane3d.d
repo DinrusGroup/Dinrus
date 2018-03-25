@@ -1,8 +1,8 @@
-module geom.Plane3d;
+﻿module geom.Plane3d;
 import linalg.Vector;
 
 
-//== ОПРЕДЕЛЕНИЕ КЛАССА =========================================================
+//== CLASS DEFINITION =========================================================
 
 	      
 /** \class Plane3d Plane3d.hh <OpenMesh/Tools/VDPM/Plane3d.hh>

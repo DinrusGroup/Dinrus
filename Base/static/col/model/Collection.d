@@ -17,7 +17,7 @@ public import col.model.Iterator;
  * here, because элементы are not always simply addable.  For example, a map
  * needs both the элемент и the ключ to добавь обх.
  */
-interface Коллекция(V) : Обходчик!(V), Чистящий!(V)
+interface Коллекция(V) : Обходчик!(V), Чистящий!(V) 
 {
     /**
      * очисти the container of all значения

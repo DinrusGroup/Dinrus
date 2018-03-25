@@ -20,11 +20,6 @@ extern (Windows) int WideCharToMultiByte(uint, uint, wchar_t*, int, char*, int, 
 
 alias extern(C) проц function() МодИниц;
 
-export extern(C) бул использоватьЮникод()
-{
-return GetVersion() < 0x80000000;
-}
-
 //======================================================================
 //Получение аргументов командной строки
 
@@ -40,7 +35,7 @@ export extern (C) ткст[] ртПолучиАрги(int argc, char **argv)
         size_t    wclen = wcslen(wcbuf);
         int       wargc = 0;
         wchar**   wargs = CommandLineToArgvW(wcbuf, &wargc);
-       // assert(wargc == argc, stdrus.вТкст("Расхождение числа аргументов командной строки"));
+        assert(wargc == argc, stdrus.вТкст("Расхождение числа аргументов командной строки"));
 
         char*     cargp = null;
         size_t    cargl = WideCharToMultiByte(65001, 0, wcbuf, wclen, null, 0, null, 0);

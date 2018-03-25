@@ -75,10 +75,7 @@ class Бул
        *   Бул d = new Бул(0);  // Инициализует в Нет.
        *  --------------------
     **/
-    this(цел x)
-    {
-        м_Знач = (x != 0 ? 1 : 0);
-    }
+    this(цел x) { м_Знач = (x != 0 ? 1 : 0); }
 
     /**
        * Constructor
@@ -93,10 +90,7 @@ class Бул
        *   Бул d = new Бул(b);  // Инициализует в Нет.
        *  --------------------
     **/
-    this(Бул x)
-    {
-        м_Знач = x.м_Знач;
-    }
+    this(Бул x) { м_Знач = x.м_Знач; }
 
     /**
        * Constructor
@@ -117,57 +111,50 @@ class Бул
        *   Бул g = new Бул("");  // Инициализует в Нет.
        *  --------------------
     **/
-    this(ткст x)
-    {
+    this(ткст x) {
         switch (x)
         {
-        case "TRUE", "True", "true",
-                "YES",  "Yes",  "yes",
-                "ON",   "On",   "on",
-                "T", "t",
-                "1",
-                "да", "вкл", "ИСТИНА", "Да"
-                :
-            м_Знач = 1;
-            break;
-        default:
-            м_Знач = 0;
+            case "TRUE", "True", "true",
+                 "YES",  "Yes",  "yes",
+                 "ON",   "On",   "on",
+                 "T", "t",
+                 "1",
+				 "да", "вкл", "ИСТИНА", "Да"
+                 :
+                м_Знач = 1;
+                break;
+            default:
+                м_Знач = 0;
         }
     }
 
     version(БулНеизвестно)
     {
-        /**
-          * Constructor
-          *
-          * This sets the boolean to Неизвестно.
-          *
-          * Examples:
-          *  --------------------
-          *   Бул a = new Бул();  // Инициализует в Неизвестно;
-          *  --------------------
-        **/
-        this()
-        {
-            м_Знач = -1;
-        }
+     /**
+       * Constructor
+       *
+       * This sets the boolean to Неизвестно.
+       *
+       * Examples:
+       *  --------------------
+       *   Бул a = new Бул();  // Инициализует в Неизвестно;
+       *  --------------------
+    **/
+        this() { м_Знач = -1; }
     }
     else
     {
-        /**
-          * Constructor
-          *
-          * This sets the boolean to Нет.
-          *
-          * Examples:
-          *  --------------------
-          *   Бул a = new Бул();  // Инициализует в Нет;
-          *  --------------------
-        **/
-        this()
-        {
-            м_Знач = 0;
-        }
+     /**
+       * Constructor
+       *
+       * This sets the boolean to Нет.
+       *
+       * Examples:
+       *  --------------------
+       *   Бул a = new Бул();  // Инициализует в Нет;
+       *  --------------------
+    **/
+        this() { м_Знач = 0; }
     }
 
 
@@ -183,15 +170,14 @@ class Бул
        *   if (a == Да) { . . . }
        *  --------------------
     **/
-    цел opEquals(Бул pOther)
-    {
+    цел opEquals(Бул pOther) {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("opEquals LHS не указан");
+        if (м_Знач == -1)
+            throw new БулИскл("opEquals LHS не указан");
 
-            if (pOther.м_Знач == -1)
-                throw new БулИскл("opEquals RHS не указан");
+        if (pOther.м_Знач == -1)
+            throw new БулИскл("opEquals RHS не указан");
         }
         return (м_Знач == pOther.м_Знач ? 1 : 0);
     }
@@ -212,15 +198,14 @@ class Бул
        *   if (a < b) { . . . }
        *  --------------------
     **/
-    цел opCmp(Бул pOther)
-    {
+    цел opCmp(Бул pOther) {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("opCmp LHS не указан");
+        if (м_Знач == -1)
+            throw new БулИскл("opCmp LHS не указан");
 
-            if (pOther.м_Знач == -1)
-                throw new БулИскл("opCmp RHS не указан");
+        if (pOther.м_Знач == -1)
+            throw new БулИскл("opCmp RHS не указан");
         }
         // Нет sorts before Да.
         if (м_Знач == pOther.м_Знач)
@@ -246,8 +231,8 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("Значение opCom не указано");
+        if (м_Знач == -1)
+            throw new БулИскл("Значение opCom не указано");
         }
         if (м_Знач == 1)
             return Нет;
@@ -271,11 +256,11 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("opAnd LHS не указан");
+        if (м_Знач == -1)
+            throw new БулИскл("opAnd LHS не указан");
 
-            if (pOther.м_Знач == -1)
-                throw new БулИскл("opAnd RHS не указан");
+        if (pOther.м_Знач == -1)
+            throw new БулИскл("opAnd RHS не указан");
         }
         if (м_Знач == 0 || pOther.м_Знач == 0)
             return Нет;
@@ -299,11 +284,11 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("opOr LHS не указан");
+        if (м_Знач == -1)
+            throw new БулИскл("opOr LHS не указан");
 
-            if (pOther.м_Знач == -1)
-                throw new БулИскл("opOr RHS не указан");
+        if (pOther.м_Знач == -1)
+            throw new БулИскл("opOr RHS не указан");
         }
         if (м_Знач == 1 || pOther.м_Знач == 1)
             return Да;
@@ -327,11 +312,11 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("opXor LHS не указан");
+        if (м_Знач == -1)
+            throw new БулИскл("opXor LHS не указан");
 
-            if (pOther.м_Знач == -1)
-                throw new БулИскл("opXor RHS не указан");
+        if (pOther.м_Знач == -1)
+            throw new БулИскл("opXor RHS не указан");
         }
         if (м_Знач == pOther.м_Знач)
             return Нет;
@@ -343,34 +328,34 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            /**
-               * Convert to a displayable string.
-               *
-               * Нет displays as "Нет" и Да dispays as "Да".
-               *
-               * If the value имеется not been установи yet, this returns "Неизвестно".
-               *
-               * Examples:
-               *  --------------------
-               *   Бул a = SomeFunc();
-               *   скажифнс("The result was %s", a);
-               *  --------------------
-            **/
+        /**
+           * Convert to a displayable string.
+           *
+           * Нет displays as "Нет" и Да dispays as "Да".
+           *
+           * If the value имеется not been установи yet, this returns "Неизвестно".
+           *
+           * Examples:
+           *  --------------------
+           *   Бул a = SomeFunc();
+           *   скажифнс("The result was %s", a);
+           *  --------------------
+        **/
             ткст вТкст();
         }
         else
         {
-            /**
-               * Convert to a displayable string.
-               *
-               * Нет displays as "Нет" и Да dispays as "Да".
-               *
-               * Examples:
-               *  --------------------
-               *   Бул a = SomeFunc();
-               *   скажифнс("The result was %s", a);
-               *  --------------------
-            **/
+        /**
+           * Convert to a displayable string.
+           *
+           * Нет displays as "Нет" и Да dispays as "Да".
+           *
+           * Examples:
+           *  --------------------
+           *   Бул a = SomeFunc();
+           *   скажифнс("The result was %s", a);
+           *  --------------------
+        **/
             ткст вТкст();
         }
     }
@@ -381,8 +366,8 @@ class Бул
         {
             version(БулНеизвестно)
             {
-                if (м_Знач == -1)
-                    return "Неизвестно".dup;
+            if (м_Знач == -1)
+                return "Неизвестно".dup;
             }
             if (м_Знач == 1)
                 return "Да".dup;
@@ -406,8 +391,8 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                throw new БулИскл("Значение вЦел не указано");
+        if (м_Знач == -1)
+            throw new БулИскл("Значение вЦел не указано");
         }
         return м_Знач;
     }
@@ -425,8 +410,8 @@ class Бул
     {
         version(БулНеизвестно)
         {
-            if (м_Знач == -1)
-                return new Бул();
+        if (м_Знач == -1)
+            return new Бул();
         }
 
         return new Бул(м_Знач);
@@ -461,41 +446,41 @@ static Бул Нет;  /// Literal 'Нет' value.
 
 version(БулНеизвестно)
 {
-    static Бул Неизвестно;  /// Literal 'Неизвестно' value.
+static Бул Неизвестно;  /// Literal 'Неизвестно' value.
 }
 
 private static this()
 {
     Да = new Бул(1);
     Нет = new Бул(0);
-    version(БулНеизвестно)
-    {
-        Неизвестно = new Бул();
-    }
+version(БулНеизвестно)
+{
+    Неизвестно = new Бул();
+}
 }
 
 
 version(БулНеизвестно)
 {
-    /**
-       Defines the exception for this class.
+/**
+   Defines the exception for this class.
 
+**/
+class БулИскл : Исключение
+{
+     /**
+       * Constructor
+       * Params:
+       *  pMsg = Text of the message displayed during the exception.
+       *
+       * Examples:
+       *  --------------------
+       *   throw new БулИскл("Some Message");
+       *  --------------------
     **/
-    class БулИскл : Исключение
+   this(ткст pMsg)
     {
-        /**
-          * Constructor
-          * Params:
-          *  pMsg = Text of the message displayed during the exception.
-          *
-          * Examples:
-          *  --------------------
-          *   throw new БулИскл("Some Message");
-          *  --------------------
-        **/
-        this(ткст pMsg)
-        {
-            super(pMsg);
-        }
+        super(pMsg);
     }
+}
 }

@@ -32,7 +32,7 @@ private import col.Iterators;
  *   хэшФункц -> the хэш function to use (should be a ХэшФунк!(V))
  *   обновлФункц -> the update function to use (should be an
  *                     ФункцОбновления!(V))
- *
+ * 
  * проц установка(parameters p) -> initializes the хэш with the given parameters.
  *
  * бцел счёт -> счёт of the элементы in the хэш
@@ -235,8 +235,8 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
             return this.outer.length;
         }
 
-        alias длина length;
-
+		alias длина length;
+		
         final цел opApply(цел delegate(ref K) дг)
         {
             цел _дг(ref бул чистить_ли, ref K k, ref V v)
@@ -330,7 +330,7 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
     {
         return _хэш.счёт;
     }
-    alias длина length;
+	alias длина length;
 
     /**
      * returns a курсор to the первый элемент in the collection.
@@ -567,7 +567,7 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
     ХэшКарта удали(Обходчик!(K) поднабор)
     {
         foreach(k; поднабор)
-        удалиПо(k);
+            удалиПо(k);
         return this;
     }
 
@@ -612,10 +612,7 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
         //
         // scope allocates on the стэк.
         //
-        scope w = new ТрансформОбходчик!(элемент, K)(поднабор, function проц(ref K k, ref элемент e)
-        {
-            e.ключ = k;
-        });
+        scope w = new ТрансформОбходчик!(элемент, K)(поднабор, function проц(ref K k, ref элемент e) { e.ключ = k;});
 
         чло_Удалённых = _хэш.накладка(w);
         return this;
@@ -727,7 +724,7 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
     ХэшКарта установи(V[K] исток)
     {
         foreach(K k, V v; исток)
-        this[k] = v;
+            this[k] = v;
         return this;
     }
 
@@ -755,7 +752,7 @@ class ХэшКарта(K, V, alias ШаблРеализац=Хэш, alias хэш
     ХэшКарта удали(K[] поднабор)
     {
         foreach(k; поднабор)
-        удалиПо(k);
+            удалиПо(k);
         return this;
     }
 

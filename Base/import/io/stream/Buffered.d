@@ -1,4 +1,4 @@
-module io.stream.Buffered;
+﻿module io.stream.Buffered;
 
 private import io.device.Conduit, io.model;
 

@@ -83,7 +83,7 @@ gui=-L/subsystem:windows
 [liblink]
 safe=yes
 oneatatime=yes
-cmd=%DINRUS%\\lib.exe -c -p512 $o $i
+cmd=%DINRUS%\\dmlib.exe -c -p512 $o $i
 response=@
 
 libdir=
@@ -114,7 +114,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus.lib
+DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -130,7 +130,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus.lib -L+DinrusWin32.lib+DinrusConc.lib+import.lib+DinrusTango.lib+DinrusDbi.lib+DinrusWinDLL.lib+DinrusStd.lib
+DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib -L+DinrusWin32.lib+DinrusConc.lib+DinrusTango.lib+DinrusDbi.lib+DinrusWinDLL.lib+import.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -146,7 +146,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus.lib -L+DinrusWin32.lib+DinrusConc.lib+import.lib+DinrusTango.lib+DinrusDbi.lib -L/exet:nt/su:windows:4.0
+DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib -L+DinrusWin32.lib+DinrusConc.lib+DinrusTango.lib+DinrusDbi.lib+WX.lib+import.lib -L/exet:nt/su:windows:4.0
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -300,7 +300,7 @@ return нет;
 
 	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(рг(СЦ_ИНИ)));
 	нс;
-	скажинс(" ВЕРСИЯ = РУЛАДА КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИОТЕКАМИ");
+	скажинс(" ВЕРСИЯ = РУЛАДА КОНСОЛЬ С ДОБАВОЧНЫМИ БИБЛИОТЕКАМИ для ГИП");
 }
 /+
 	

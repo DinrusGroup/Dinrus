@@ -1,4 +1,4 @@
-
+﻿
 /***************************************************************************
  * Класс матрицы фиксированного размера (типа значения)
  *
@@ -14,7 +14,9 @@
 
 module linalg.Matrix;
 
-import std.string, linalg.Vector;
+import linalg.Vector;
+import stdrus;
+
 
 /// Перестанавливает два значения
 void переставь(Т)(inout Т a, inout Т b) { Т t = a; a = b; b = t; }
@@ -466,11 +468,11 @@ struct Матрица(Т, цел M, цел N)
                 возвр ~= "[ ";
             for (цел i = 0; i < члостолбцов; i++) {
                 static if (is(Т == struct))
-                    возвр ~= std.string.фм("%15s",(*this)[j,i].вТкст);
+                    возвр ~= stdrus.фм("%15s",(*this)[j,i].вТкст);
                 else if (is(Т : цел))
-                    возвр ~= std.string.фм("%7s",(*this)[j,i]);
+                    возвр ~= stdrus.фм("%7s",(*this)[j,i]);
                 else
-                    возвр ~= std.string.фм("%7.4f",(*this)[j,i]);
+                    возвр ~= stdrus.фм("%7.4f",(*this)[j,i]);
                 if (i != члостолбцов -1)
                     возвр ~= ",  ";
                 else 

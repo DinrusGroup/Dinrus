@@ -1,8 +1,8 @@
-/*********************************************************
-   Авторское право: (C) 2008 принадлежит Steven Schveighoffer.
-              Все права защищены
+﻿/*********************************************************
+   Copyright: (C) 2008 by Steven Schveighoffer.
+              All rights reserved
 
-   Лицензия: $(LICENSE)
+   License: $(LICENSE)
 
 **********************************************************/
 module col.TreeSet;
@@ -66,7 +66,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  * O(lg(n)) insertion, removal, and lookup times.  It also creates a sorted
  * установи.  З must be comparable.
  *
- * Добавление элемента не влияет на валидность ни одно из курсоров.
+ * Adding an элемент does not invalidate any cursors.
  *
  * Removing an элемент only invalidates the cursors that were pointing at
  * that элемент.
@@ -74,12 +74,12 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  * You can replace the Tree implementation with a custom implementation, the
  * implementation must be a struct template which can be instantiated with a
  * single template argument З, and must implement the following members
- * (члены-нефункции могут быть свойствами, если не задано иное):
+ * (non-function members can be properties unless otherwise specified):
  *
- * параметры -> должны быть структорой как минимум со следущими членами
+ * parameters -> must be a struct with at least the following members:
  *   функцСравнения -> the compare function to use (should be a
  *                      ФункцСравнения!(З))
- *   обновлФункц -> используемая функция обновления (должна быть вроде
+ *   обновлФункц -> the update function to use (should be an
  *                     ФункцОбновления!(З))
  * 
  * проц установка(parameters p) -> initializes the tree with the given parameters.
@@ -88,7 +88,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  *
  * Узел -> must be a struct/class with the following members:
  *   З значение -> the значение which is pointed to by this позиция (cannot be a
- *  каким-либо свойством)
+ *                property)
  *   Узел следщ -> the следщ Узел in the tree as defined by the compare
  *                function, or конец if no other nodes exist.
  *   Узел предш -> the previous Узел in the tree as defined by the compare
@@ -102,10 +102,10 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
  * элемент in the tree, or конец if no elements exist.
  *
  * Узел конец -> must be a Узел that points to just past the very последн
- *валидного элемента.
+ * valid элемент.
  *
  * Узел найди(З з) -> returns a Узел that points to the элемент that
- * содержит з, или на конец , если его не существует.
+ * содержит з, or конец if the элемент doesn'т exist.
  *
  * Узел удали(Узел p) -> removes the given элемент from the tree,
  * returns the следщ valid элемент or конец if p was последн in the tree.
@@ -137,8 +137,8 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         }
 
         /**
-         * Увеличивает этот курсор, возвращая то значение, которое было до
-         * этого.
+         * increment this курсор, returns what the курсор was перед
+         * incrementing.
          */
         курсор opPostInc()
         {
@@ -148,8 +148,8 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         }
 
         /**
-         * Уменьшает этот курсор, возращая значение, которое было до
-         * декрементации.
+         * decrement this курсор, returns what the курсор was перед
+         * decrementing.
          */
         курсор opPostDec()
         {
@@ -159,10 +159,10 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         }
 
         /**
-         * Увеличивает курсор на указанное количество.
+         * increment the курсор by the given amount.
          *
-         * Это операция O(прир)!  * Следует лишь использовать этот оператор в 
-         * такой форме:
+         * This is an O(прир) operation!  You should only use this operator in
+         * the form:
          *
          * ++i;
          */
@@ -176,10 +176,10 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         }
 
         /**
-         * Уменьшает курсор на заданное значение.
+         * decrement the курсор by the given amount.
          *
-         * Это операция O(прир)!  * Следует лишь использовать этот оператор в 
-         * такой форме:
+         * This is an O(прир) operation!  You should only use this operator in
+         * the form:
          *
          * --i;
          */
@@ -193,7 +193,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         }
 
         /**
-         * Сравнивает два курсора на равенство
+         * compare two cursors for equality
          */
         бул opEquals(курсор обх)
         {
@@ -203,11 +203,11 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
 
     /**
      * Iterate through elements of the ДеревоНабор, specifying which ones to
-     * удалить.
+     * удали.
      *
-     * Используйте таким образом:
+     * Use like this:
      * -------------
-     * // удалить все нечётные элементы
+     * // удали all odd elements
      * foreach(ref чистить_ли, з; &treeSet.очистить)
      * {
      *   чистить_ли = ((з % 1) == 1);
@@ -224,14 +224,14 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         курсор обх = начало;
         бул чистить_ли;
         цел возврдг = 0;
-        курсор _конец = конец; //  ***
+        курсор _конец = конец; // cache конец so обх isn'т always being generated
         while(!возврдг && обх != _конец)
         {
             //
-            // не позволяет пользователю изменить значение
+            // don'т allow user to change значение
             //
             З врмзначение = обх.значение;
-            чистить_ли = нет;
+            чистить_ли = false;
             if((возврдг = дг(чистить_ли, врмзначение)) != 0)
                 break;
             if(чистить_ли)
@@ -243,7 +243,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     * Итерирует по значениям коллекции
+     * iterate over the collection's values
      */
     цел opApply(цел delegate(ref З з) дг)
     {
@@ -271,7 +271,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     *Очистить все элементы коллекции
+     * Clear the collection of all elements
      */
     ДеревоНабор очисти()
     {
@@ -280,7 +280,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     * Возвращает число элементов в коллекции
+     * returns number of elements in the collection
      */
     бцел длина()
     {
@@ -289,7 +289,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
 	alias длина length;
 
     /**
-     * Возвращает курсор на первый элемент в коллекции.
+     * returns a курсор to the первый элемент in the collection.
      */
     курсор начало()
     {
@@ -299,8 +299,8 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     * Возвращает курсор, который указывает сразу после последнего элемента
-     * коллекции.
+     * returns a курсор that points just past the последн элемент in the
+     * collection.
      */
     курсор конец()
     {
@@ -310,8 +310,8 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     * Удаляет элемент, на который указывает данный курсор, возвращая
-     * курсор, указывающий на следующий элемент в коллекции.
+     * удали the элемент pointed at by the given курсор, returning an
+     * курсор that points to the следщ элемент in the collection.
      *
      * Runs in O(lg(n)) time.
      */
@@ -322,8 +322,8 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     * находит экземпляр значения в коллекции.  Возвращает конец, если
-     * значение отсутствует.
+     * найди the instance of a значение in the collection.  Returns конец if the
+     * значение is not present.
      *
      * Runs in O(lg(n)) time.
      */
@@ -335,7 +335,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     *Возвращает да, если данное значение есть в коллекции.
+     * Returns true if the given значение exists in the collection.
      *
      * Runs in O(lg(n)) time.
      */
@@ -369,19 +369,19 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
         курсор обх = найди(з);
         if(обх == конец)
         {
-            был_Удалён = нет;
+            был_Удалён = false;
         }
         else
         {
             удали(обх);
-            был_Удалён = да;
+            был_Удалён = true;
         }
         return this;
     }
 
     /**
      * Adds a значение to the collection.
-     * Возвращает да.
+     * Returns true.
      *
      * Runs in O(lg(n)) time.
      */
@@ -393,7 +393,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
 
     /**
      * Adds a значение to the collection.
-     * Возвращает да.
+     * Returns true.
      *
      * Runs in O(lg(n)) time.
      */
@@ -481,7 +481,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
      * Remove all the elements that match in the поднабор.  Sets чло_Удалённых to
      * number of elements removed.
      *
-     * возвращает this.
+     * returns this.
      */
     ДеревоНабор удали(Обходчик!(З) поднабор, ref бцел чло_Удалённых)
     {
@@ -494,7 +494,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     /**
      * Remove all the elements that do NOT match in the поднабор.
      *
-     * возвращает this.
+     * returns this.
      */
     ДеревоНабор накладка(Обходчик!(З) поднабор)
     {
@@ -506,7 +506,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
      * Remove all the elements that do NOT match in the поднабор.  Sets
      * чло_Удалённых to number of elements removed.
      *
-     * возвращает this.
+     * returns this.
      */
     ДеревоНабор накладка(Обходчик!(З) поднабор, ref бцел чло_Удалённых)
     {
@@ -522,7 +522,7 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
      */
     цел opEquals(Объект o)
     {
-        if(o !is пусто)
+        if(o !is null)
         {
             auto s = cast(Набор!(З))o;
             if(s !is null && s.length == длина)
@@ -561,22 +561,22 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
                     }
 
                     //
-                    // равно
+                    // equal
                     //
                     return 1;
                 }
             }
         }
         //
-        // сравнение невозможно.
+        // no comparison possible.
         //
         return 0;
     }
 
     /**
-     * Даёт наиболее подходящий элемент из набора.  * Это элемент, который
-     *должен итерироваться первым.  Следовательно, вызов удали(дай())
-     * гарантировано меньше, чем операция O(n).
+     * дай the most convenient элемент in the установи.  This is the элемент that
+     * would be iterated первый.  Therefore, calling удали(дай()) is
+     * guaranteed to be less than an O(n) operation.
      */
     З дай()
     {
@@ -584,9 +584,9 @@ class ДеревоНабор(З, alias ШаблРеализац = КЧДерев
     }
 
     /**
-     *Удалить наиболее подходящий элемент из набора, и вернуть его значение.
-     * Это равносильно удали(дай()), только лишь один поиск
-     * выполняется.
+     * Remove the most convenient элемент from the установи, and return its значение.
+     * This is equivalent to удали(дай()), except that only one lookup is
+     * performed.
      */
     З изыми()
     {

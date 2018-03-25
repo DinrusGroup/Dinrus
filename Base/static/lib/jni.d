@@ -388,15 +388,15 @@ struct JavaVM_
 
 
 extern (Windows):
-    jint  JNI_GetDefaultJavaVMInitArgs(void *args);
-    jint  JNI_CreateJavaVM(JavaVM **pvm, void **penv, void *args);
-    jint  JNI_GetCreatedJavaVMs(JavaVM **, jsize, jsize *);
-    jint  JNI_OnLoad(JavaVM *vm, void *reserved);
-    void  JNI_OnUnload(JavaVM *vm, void *reserved);
+jint  JNI_GetDefaultJavaVMInitArgs(void *args);
+jint  JNI_CreateJavaVM(JavaVM **pvm, void **penv, void *args);
+jint  JNI_GetCreatedJavaVMs(JavaVM **, jsize , jsize *);
+jint  JNI_OnLoad(JavaVM *vm, void *reserved);
+void  JNI_OnUnload(JavaVM *vm, void *reserved);
 
-    const JNI_VERSION_1_1 = 0x00010001;
-    const JNI_VERSION_1_2 = 0x00010002;
-    const JNI_VERSION_1_4 = 0x00010004;
-    const JNI_VERSION_1_6 = 0x00010006;
-    const JNI_VERSION_1_8 = 0x00010008;
+const JNI_VERSION_1_1 = 0x00010001;
+const JNI_VERSION_1_2 = 0x00010002;
+const JNI_VERSION_1_4 = 0x00010004;
+const JNI_VERSION_1_6 = 0x00010006;
+const JNI_VERSION_1_8 = 0x00010008;
 

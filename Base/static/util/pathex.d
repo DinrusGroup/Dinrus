@@ -3,19 +3,17 @@
 version(linux)  version = Posix;
 version(darwin) version = Posix;
 
-private
-{
+private {
     import util.str;
     import util.booltype;   // definition of Да и Нет
     alias util.booltype.Да Да;
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
 
-    import stdrus, exception;
+    import dinrus;
 }
 
-private
-{
+private {
     ткст vInitCurDir;
 }
 
@@ -151,23 +149,20 @@ static this()
         }
 
     }
-    version(Posix)
-    {
+    version(Posix){
         if ( (lPath.length == 0) || (lPath[0] != РАЗДПАП[0]) )
         {
             lPath = дайТекПап() ~ lPath;
         }
     }
 
-    if (pDirInput && (lPath[$-РАЗДПАП.length .. $] != РАЗДПАП) )
-    {
+    if (pDirInput && (lPath[$-РАЗДПАП.length .. $] != РАЗДПАП) ){
         lPath ~= РАЗДПАП;
     }
 
     lLevel = РАЗДПАП ~ "." ~ РАЗДПАП;
     lPosA = stdrus.найди(lPath, lLevel);
-    while( lPosA != -1 )
-    {
+    while( lPosA != -1 ){
         lPath = lPath[0..lPosA] ~
                 lPath[lPosA + lLevel.length - РАЗДПАП.length .. length];
 
@@ -176,8 +171,7 @@ static this()
 
     lLevel = РАЗДПАП ~ ".." ~ РАЗДПАП;
     lPosA = stdrus.найди(lPath, lLevel);
-    while( lPosA != -1 )
-    {
+    while( lPosA != -1 ){
         // Locate preceding directory separator.
         lPosB = lPosA-1;
         while((lPosB > 0) && (lPath[lPosB] != РАЗДПАП[0]))
@@ -253,50 +247,45 @@ static this()
             break;
         }
     }
-    version(Windows)
-    {
+    version(Windows) {
         if ((lNewPath.length > 0) && (lNewPath[length-1] == ':'))
             lNewPath.length = 0;
     }
 
     if (lNewPath.length == 0)
         return false;
-    else
+    else {
+    // выкинь out the parent directory
+    for (цел i = lNewPath.length-1; i >= 0; i--)
     {
-        // выкинь out the parent directory
-        for (цел i = lNewPath.length-1; i >= 0; i--)
+        if (lNewPath[i] == РАЗДПАП[0])
         {
-            if (lNewPath[i] == РАЗДПАП[0])
-            {
-                lParentPath = lNewPath[0 .. i].dup;
-                break;
-            }
+            lParentPath = lNewPath[0 .. i].dup;
+            break;
         }
+    }
 
-        // make sure the parent exists.
-        version(Windows)
-        {
-            if ((lParentPath.length > 0) && (lParentPath[length-1] == ':'))
+    // make sure the parent exists.
+    version(Windows) {
+        if ((lParentPath.length > 0) && (lParentPath[length-1] == ':'))
                 lParentPath.length = 0;
-        }
-        if (lParentPath.length != 0)
-        {
-            сделайПуть(lParentPath ~ РАЗДПАП);
-        }
+    }
+    if (lParentPath.length != 0)
+    {
+        сделайПуть(lParentPath ~ РАЗДПАП);
+    }
 
 
-        // create this directory
-        try
-        {
-            сделайпап(lNewPath);
-            рез = true;
-        }
-        catch (ФайлИскл Е)
-        {
-            // Assume the exception is that the directory already exists.
-            рез = false;
-        }
-        return рез;
+    // create this directory
+    try {
+        сделайпап(lNewPath);
+        рез = true;
+    }
+    catch (ФайлИскл Е) {
+         // Assume the exception is that the directory already exists.
+         рез = false;
+    }
+    return рез;
     }
 }
 
@@ -319,7 +308,7 @@ static this()
         lPrefixList[1..$] = списПрефиксов[];
     }
     lFullName = каноническийПуть(имя, false);
-LBL_CheckDirs:
+    LBL_CheckDirs:
     foreach (ткст текпап; lPrefixList)
     {
         lOrigName = lFullName.dup;
@@ -328,7 +317,7 @@ LBL_CheckDirs:
             version(Windows)
             {
                 if( stdrus.впроп(lOrigName[0.. текпап.length]) ==
-                        stdrus.впроп(текпап) )
+                    stdrus.впроп(текпап) )
                 {
                     lShortName = lOrigName[текпап.length .. $];
                     break LBL_CheckDirs;
@@ -351,22 +340,20 @@ LBL_CheckDirs:
 
     version(Windows)
     // Remove any double путь seps.
-    {
+    {{
+        бцел lPos;
+        while ( (lPos = stdrus.найди(lShortName, `\\`)) != -1)
         {
-            бцел lPos;
-            while ( (lPos = stdrus.найди(lShortName, `\\`)) != -1)
-            {
-                lShortName = lShortName[0..lPos] ~ lShortName[lPos+1 .. $];
-            }
+            lShortName = lShortName[0..lPos] ~ lShortName[lPos+1 .. $];
         }
-    }
+    }}
     return lShortName;
 }
 
 ткст определиФайл(ткст фимя, ткст списПутей)
 {
     return определиФайл(фимя,
-                                    stdrus.разбей(списПутей, РАЗДПСТР));
+                        разбей(списПутей, РАЗДПСТР));
 }
 
 ткст определиФайл(ткст фимя, ткст[] списПутей)
@@ -471,7 +458,7 @@ LBL_CheckDirs:
         необработЗнач = pSymName;
 
     // Rearrange путь list into an массив of paths.
-    пути = stdrus.разбей(util.str.вАСКИ(необработЗнач), РАЗДПСТР);
+    пути = разбей(util.str.вАСКИ(необработЗнач), РАЗДПСТР);
 
     путьККомпилятору.length = 0;
     foreach(ткст lPath; пути)
