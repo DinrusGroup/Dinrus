@@ -9,7 +9,7 @@
 @set LDIR=%DINRUS%\..\lib
 @set DMD=%DINRUS%\dmd.exe
 @set DMC=%DINRUS%\dmc.exe
-@set LIB=%DINRUS%\lib.exe
+@set LIB=%DINRUS%\dmlib.exe
 @set IMPLIB=%DINRUS%\implib.exe
 @set ARCDIR=%this%\..\Arc
 @set MINIDDIR=%this%\..\Minid

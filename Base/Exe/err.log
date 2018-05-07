@@ -1,9 +1,0 @@
-é‚™†ß†≠Æ ¢ §Æ·‚„Ø•.
-upx: dinrus.exe: CantPackException: unexpected value in PE header (try --force)
-upx: dinrusex.exe: CantPackException: unexpected value in PE header (try --force)
-upx: dgui.exe: CantPackException: unexpected value in PE header (try --force)
-upx: rulada.exe: CantPackException: unexpected value in PE header (try --force)
-upx: ruladaex.exe: CantPackException: unexpected value in PE header (try --force)
-d:\dinrus\bin\..\dev\DINRUS\Base\Exe\drbuild.d(4): Error: identifier '–ø–∞—É–∑–∞' is not defined
-upx: drbuild.exe: FileNotFoundException: drbuild.exe
-upx: libproc.exe: CantPackException: unexpected value in PE header (try --force)

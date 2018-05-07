@@ -16,15 +16,15 @@ private import io.stream.Iterator;
 
 /*******************************************************************************
 
-        Iterate across a установи of текст образцы.
+        Итерация по набору текстовых образцов.
 
-        Each образец is exposed в_ the клиент as a срез of the original
-        контент, where the срез is transient. If you need в_ retain the
-        exposed контент, then you should .dup it appropriately. 
+        Каждый образец представлен клиенту как срез оригинального
+        контента, который транзитивен. Если требуется придержать
+        представленный контент, нужно выполнить соответственно .dup.
 
-        The контент exposed via an iterator is supposed в_ be entirely
-        читай-only. все current iterators abопрe by this правило, but it is
-        possible a пользователь could mutate the контент through a получи() срез.
+        Контент, представленный через обходчик, всецело только для чтения.
+        Все текущие обходчики придерживаются этого правила, но допускается
+        возможность изменения пользователем контента через получи() срез.
         To enforce the desired читай-only aspect, the код would have в_
         introduce redundant copying or the compiler would have в_ support
         читай-only массивы.
@@ -38,7 +38,7 @@ class Разграничители(T) : Обходчик!(T)
         private T[] разделитель;
 
         /***********************************************************************
-        
+
                 Construct an uninitialized iterator. For example:
                 ---
                 auto lines = new Строки!(сим);
@@ -58,7 +58,7 @@ class Разграничители(T) : Обходчик!(T)
                                  Квывод (строка).нс;
                 }
                 ---
-                
+
                 Construct a Потокing iterator upon a провод:
                 ---
                 foreach (строка; new Строки!(сим) (new Файл ("myfile")))
@@ -94,6 +94,7 @@ class Разграничители(T) : Обходчик!(T)
 
                 return неНайдено;
         }
+		
 }
 
 
@@ -105,8 +106,9 @@ class Разграничители(T) : Обходчик!(T)
 debug(UnitTest)
 {
         private import io.device.Array;
+        import io.stream.Delimiters;
 
-        unittest 
+        unittest
         {
                 auto p = new Разграничители!(сим) (", ", new Массив("blah"));
         }

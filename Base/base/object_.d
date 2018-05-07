@@ -1338,7 +1338,7 @@ export:
 	}
 	body*/
     {
-				Object o = *cast(Object*)p;				
+				Object o = *cast(Object*)p;
 				return o ? o.toHash() : 0;
 			
 	 }
@@ -1349,7 +1349,7 @@ export:
     цел equals(ук p1, ук p2)
     {
 	Object o1 = *cast(Object*)p1;
-	Object o2 = *cast(Object*)p2;	
+	Object o2 = *cast(Object*)p2;
 
 	return (o1 is o2) || (o1 && o1.opEquals(o2));
     }

@@ -4,8 +4,8 @@
 
         license:        BSD стиль: $(LICENSE)
 
-        version:        Initial release: June 2004      
-        
+        version:        Initial release: June 2004
+
         author:         Kris
 
 *******************************************************************************/
@@ -18,11 +18,11 @@ private import         io.model;
 
 /******************************************************************************
 
-        Abstract class в_ asynchronously слушай for incoming данные on a 
-        сокет. This can be использован with DatagramСОКЕТ & MulticastСОКЕТ, 
+        Abstract class в_ asynchronously слушай for incoming данные on a
+        сокет. This can be использован with DatagramСОКЕТ & MulticastСОКЕТ,
         и might possibly be useful with a basic СокетПровод also.
         Note that DatagramСОКЕТ must первый be bound в_ a local network
-        адрес via вяжи(), и MulticastСОКЕТ should первый be made a 
+        адрес via вяжи(), и MulticastСОКЕТ should первый be made a
         member of a multicast группа via its объедини() метод. Note also
         that the underlying нить is not пущен by the constructor;
         you should do that manually via the старт() метод.
@@ -38,7 +38,7 @@ class СОКЕТListener
         private цел                     предел = 3;
 
         /**********************************************************************
-               
+
                 Construct a listener with the requisite аргументы. The
                 specified буфер is populated via the provопрed экземпляр
                 of IСОКЕТЧитатель before being passed в_ the сообщи()
@@ -53,7 +53,7 @@ class СОКЕТListener
         }
 
         /**********************************************************************
-               
+
                 Construct a listener with the requisite аргументы. The
                 specified буфер is populated via the provопрed экземпляр
                 of IСОКЕТЧитатель before being passed в_ the сообщи()
@@ -71,7 +71,7 @@ class СОКЕТListener
         }
 
         /***********************************************************************
-                
+
                 Notification обрвызов invoked whenever the listener имеется
                 anything в_ report. The буфер will have whatever контент
                 was available из_ the читай() operation
@@ -89,7 +89,7 @@ class СОКЕТListener
         abstract проц исключение (ткст сооб);
 
         /**********************************************************************
-             
+
                 Start this listener
 
         **********************************************************************/
@@ -100,8 +100,8 @@ class СОКЕТListener
         }
 
         /**********************************************************************
-             
-                Cancel this listener. The нить will quit only after the 
+
+                Cancel this listener. The нить will quit only after the
                 текущ читай() request responds, or is interrrupted.
 
         **********************************************************************/
@@ -112,11 +112,11 @@ class СОКЕТListener
         }
 
         /**********************************************************************
-             
-                Набор the maximum contiguous число of exceptions this 
-                listener will survive. Setting a предел of zero will 
+
+                Набор the maximum contiguous число of exceptions this
+                listener will survive. Setting a предел of zero will
                 not survive any ошибки at все, whereas a предел of two
-                will survive as дол as two consecutive ошибки don't 
+                will survive as дол as two consecutive ошибки don't
                 arrive back в_ back.
 
         **********************************************************************/
@@ -135,7 +135,7 @@ class СОКЕТListener
                 actually interrupt a блокed читай() operation.
 
                 Note that exceptions are все directed towards the handler
-                implemented by the class экземпляр. 
+                implemented by the class экземпляр.
 
         **********************************************************************/
 
@@ -151,14 +151,14 @@ class СОКЕТListener
                            // жди for incoming контент
                            auto результат = буфер.писатель (&провод.ввод.читай);
 
-                           // время в_ quit? Note that a v0.95 compiler bug 
+                           // время в_ quit? Note that a v0.95 compiler bug
                            // prohibits 'break' из_ exiting the try{} блок
-                           if (quit || 
+                           if (quit ||
                               (результат is провод.Кф && !провод.жив_ли))
                                lives = 0;
                            else
                               {
-                              // invoke обрвызов                        
+                              // invoke обрвызов
                               сообщи (буфер);
                               lives = предел;
                               }

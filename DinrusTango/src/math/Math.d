@@ -254,7 +254,7 @@ unittest {
 }
 
 debug(UnitTest) {
-private {    
+private {
 /*
  * отнравх for комплексное numbers. Returns the worst relative
  * equality of the two components.
@@ -277,7 +277,7 @@ unittest {
  * Evaluate polynomial A(x) = $(SUB a, 0) + $(SUB a, 1)x + $(SUB a, 2)$(POWER x,2)
  *                          + $(SUB a,3)$(POWER x,3); ...
  *
- * Uses Horner's правило A(x) = $(SUB a, 0) + x($(SUB a, 1) + x($(SUB a, 2) 
+ * Uses Horner's правило A(x) = $(SUB a, 0) + x($(SUB a, 1) + x($(SUB a, 2)
  *                         + x($(SUB a, 3) + ...)))
  * Параметры:
  *      A =     Массив of coefficients $(SUB a, 0), $(SUB a, 1), etc.
@@ -292,7 +292,7 @@ body
   version (Naked_D_InlineAsm_X86) {
       const бул Use_D_InlineAsm_X86 = да;
   } else const бул Use_D_InlineAsm_X86 = нет;
-  
+
   // BUG (Inherited из_ Phobos): This код assumes a frame pointer in EBP.
   // This is not in the spec.
   static if (Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof == 10) {

@@ -665,6 +665,7 @@ class Массив : Провод, БуферВвода, БуферВывода,
 debug (Array)
 {
     import io.Stdout;
+    import io.device.Array;
 
     проц main()
     {

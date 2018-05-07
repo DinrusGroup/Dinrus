@@ -1,4 +1,4 @@
-﻿import stdrus, win, cidrus;
+﻿ import stdrus, win, cidrus;
 
 version(UCRT)
 {
