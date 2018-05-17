@@ -1,0 +1,23 @@
+syntax: glob
+
+*.obj
+*.lib
+*.swp
+*.proto
+
+syntax: regexp
+
+^dsss_objs
+^dsss.last
+^dsss_imports
+^dwtexamples/simple$
+^dwtexamples/helloworld/HelloWorld1$
+^dwtexamples/helloworld/HelloWorld2$
+^dwtexamples/helloworld/HelloWorld3$
+^dwtexamples/helloworld/HelloWorld4$
+^dwtexamples/helloworld/HelloWorld5$
+^dwtexamples/addressbook/AddressBook$
+
+
+
+

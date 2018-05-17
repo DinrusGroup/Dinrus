@@ -1,0 +1,34 @@
+# DWT dwt-samples/jface directory
+
+[*]
+buildflags+=-g -gc
+buildflags+=-J$LIB_PREFIX/res -J../res -I..
+
+version(Windows) {
+    # if no console window is wanted/needed use -version=gui
+    version(gui) {
+        buildflags+= -L/SUBSYSTEM:windows:5 -d
+    } else {
+        buildflags+= -L/SUBSYSTEM:console:5 -d
+    }
+    buildflags+= -L/rc:..\dwt
+}
+
+
+
+[FileTreeViewer.d]
+[Librarian.d]
+[ActionAndStatusbar.d]
+[ShowFieldPrefs.d]
+[ShowPrefs.d]
+[snippets/Snippet001TableViewer.d]
+[snippets/Snippet002TreeViewer.d]
+[snippets/Snippet004HideSelection.d]
+[snippets/Snippet005TreeCustomMenu.d]
+[snippets/Snippet006TableMultiLineCells.d]
+[snippets/Snippet007FullSelection.d]
+[snippets/Snippet010OwnerDraw.d]
+[snippets/Snippet016TableLayout.d]
+[snippets/Snippet031TableViewerCustomTooltipsMultiSelection.d]
+[snippets/Snippet040TableViewerSorting.d]
+

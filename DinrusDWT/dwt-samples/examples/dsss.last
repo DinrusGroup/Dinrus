@@ -1,0 +1,27 @@
+[*]
+buildflags+=-g -gc
+buildflags+=-J$LIB_PREFIX/res -J../res -I..
+
+version(Windows) {
+    # if no console window is wanted/needed use -version=gui
+    version(gui) {
+        buildflags+= -L/SUBSYSTEM:windows:5
+    } else {
+        buildflags+= -L/SUBSYSTEM:console:5
+    }
+    buildflags+= -L/rc:..\dwt
+}
+
+[simple.d]
+
+[addressbook/AddressBook.d]
+[clipboard/ClipboardExample.d]
+[controlexample/ControlExample.d]
+[controlexample/CustomControlExample.d]
+[helloworld/HelloWorld1.d]
+[helloworld/HelloWorld2.d]
+[helloworld/HelloWorld3.d]
+[helloworld/HelloWorld4.d]
+[helloworld/HelloWorld5.d]
+[texteditor/TextEditor.d]
+

@@ -1,0 +1,18 @@
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+dwt.lib
+ Warning 2: File Not Found dwt.lib
+dwtx.lib
+ Warning 2: File Not Found dwtx.lib
+c:\dm\bin\..\lib\rulada\DD-dwt.lib
+ Warning 178: .LIB pagesize exceeds 512 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+dwt.lib
+ Warning 2: File Not Found dwt.lib
+dwtx.lib
+ Warning 2: File Not Found dwtx.lib
+c:\dm\bin\..\lib\rulada\DD-dwt.lib
+ Warning 178: .LIB pagesize exceeds 512 

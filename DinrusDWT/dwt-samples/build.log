@@ -1,0 +1,59 @@
+WARNING: Section for nonexistant file client.d.
+WARNING: Section for nonexistant file server.d.
+WARNING: Section for nonexistant file test.d.
+simple.d => simple
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+DD-dwt.lib
+ Warning 2: File Not Found DD-dwt.lib
+gtkD.lib
+ Warning 2: File Not Found gtkD.lib
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets4Text4Text5_ctorMFC3dwt7widgets9Composite9CompositeiZC3dwt7widgets4Text4Text
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets7Display7Display7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets7Display7Display5_ctorMFZC3dwt7widgets7Display7Display
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets5Shell5Shell7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets5Shell5Shell5_ctorMFC3dwt7widgets7Display7DisplayZC3dwt7widgets5Shell5Shell
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets6Button6Button7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets6Button6Button5_ctorMFC3dwt7widgets9Composite9CompositeiZC3dwt7widgets6Button6Button
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets4Text4Text7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt9dwthelper6System7__arrayZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt9dwthelper6System8__assertFiZv
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt9dwthelper5utils12ValueWrapper7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt9dwthelper5utils12ArrayWrapper7__ClassZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets4Text12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets5Shell12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets7Display12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt7widgets6Button12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt6events17SelectionListener12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt6events14SelectionEvent12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt3DWT12__ModuleInfoZ
+dsss_objs\D\example-simple.obj(example-simple) 
+ Error 42: Symbol Undefined _D3dwt6events17SelectionListener17SelectionListener11__InterfaceZ
+dwt.res
+ Warning 2: File Not Found dwt.res
+--- errorlevel 20
+Command D:\dm\bin\rebuild.exe returned with code -1, aborting.
+WARNING: Section for nonexistant file client.d.
+WARNING: Section for nonexistant file server.d.
+WARNING: Section for nonexistant file test.d.
+simple.d => simple

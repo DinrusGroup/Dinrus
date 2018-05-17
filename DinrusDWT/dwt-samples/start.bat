@@ -1,0 +1,1 @@
+dsss build -full>>build.log

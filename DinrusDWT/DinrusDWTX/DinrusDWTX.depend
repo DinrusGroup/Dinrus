@@ -1,0 +1,2077 @@
+# depslib dependency file v1.0
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\cdt\managedbuilder\ui\properties\multilinetextfieldeditor.d
+	<org/eclipse/cdt/managedbuilder/internal/ui/ManagedBuilderUIMessages.d>
+	<dwtx/jface/preference/FieldEditor.d>
+	<dwtx/jface/util/Assert.d>
+	<dwt/DWT.d>
+	<dwt/events/DisposeEvent.d>
+	<dwt/events/DisposeListener.d>
+	<dwt/events/FocusAdapter.d>
+	<dwt/events/FocusEvent.d>
+	<dwt/events/KeyAdapter.d>
+	<dwt/events/KeyEvent.d>
+	<dwt/layout/GridData.d>
+	<dwt/widgets/Composite.d>
+	<dwt/widgets/Label.d>
+	<dwt/widgets/Text.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\cdt\managedbuilder\ui\properties\passwordfieldeditor.d
+	<dwtx/jface/util/Assert.d>
+	<dwt/DWT.d>
+	<dwt/events/DisposeEvent.d>
+	<dwt/events/DisposeListener.d>
+	<dwt/events/FocusAdapter.d>
+	<dwt/events/FocusEvent.d>
+	<dwt/events/KeyAdapter.d>
+	<dwt/events/KeyEvent.d>
+	<dwt/widgets/Composite.d>
+	<dwt/widgets/Text.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/jface/preference/StringFieldEditor.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\abstracthandler.d
+	<dwtx/core/commands/common/EventManager.d>
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/HandlerEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\abstracthandlerwithstate.d
+	<dwtx/core/commands/AbstractHandler.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/IStateListener.d>
+	<dwtx/core/commands/State.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\abstractparametervalueconverter.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\category.d
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/ICategoryListener.d>
+	<dwtx/core/commands/CategoryEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\categoryevent.d
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwtx/core/commands/Category.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\command.d
+	<java/io/BufferedWriter.d>
+	<java/io/IOException.d>
+	<java/io/StringWriter.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/runtime/ISafeRunnable.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/SafeRunner.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/CommandEvent.d>
+	<dwtx/core/commands/State.d>
+	<dwtx/core/commands/Category.d>
+	<dwtx/core/commands/NamedHandleObjectWithState.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/ICommandListener.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/IExecutionListenerWithChecks.d>
+	<dwtx/core/commands/ITypedParameter.d>
+	<dwtx/core/commands/HandlerEvent.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+	<tango/io/Stdout.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\commandevent.d
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwtx/core/commands/Command.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\commandmanager.d
+	<dwtx/core/commands/common/HandleObjectManager.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/commands/ICategoryListener.d>
+	<dwtx/core/commands/ICommandListener.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/IExecutionListenerWithChecks.d>
+	<dwtx/core/commands/IParameterTypeListener.d>
+	<dwtx/core/commands/ICommandManagerListener.d>
+	<dwtx/core/commands/CommandEvent.d>
+	<dwtx/core/commands/CommandManagerEvent.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/Category.d>
+	<dwtx/core/commands/CategoryEvent.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/Parameterization.d>
+	<dwtx/core/commands/ParameterizedCommand.d>
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwtx/core/commands/SerializationException.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+	<dwt/dwthelper/WeakHashMap.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\commandmanagerevent.d
+	<dwtx/core/commands/CommandManager.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\abstractbitsetevent.d
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\abstracthandleobjectevent.d
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\abstractnamedhandleevent.d
+	<dwtx/core/commands/common/AbstractHandleObjectEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\commandexception.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\eventmanager.d
+	<dwtx/core/runtime/ListenerList.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\handleobject.d
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/common/IIdentifiable.d>
+	<dwtx/core/commands/common/EventManager.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\handleobjectmanager.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/EventManager.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<java/util/HashMap.d>
+	<java/util/HashSet.d>
+	<java/util/Iterator.d>
+	<java/util/Map.d>
+	<java/util/Set.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\iidentifiable.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\namedhandleobject.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\namedhandleobjectcomparator.d
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\common\notdefinedexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\context.d
+	<dwtx/core/commands/contexts/ContextEvent.d>
+	<dwtx/core/commands/contexts/IContextListener.d>
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\contextevent.d
+	<dwtx/core/commands/contexts/Context.d>
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\contextmanager.d
+	<dwtx/core/commands/contexts/IContextListener.d>
+	<dwtx/core/commands/contexts/IContextManagerListener.d>
+	<dwtx/core/commands/contexts/ContextEvent.d>
+	<dwtx/core/commands/contexts/ContextManagerEvent.d>
+	<dwtx/core/commands/contexts/Context.d>
+	<dwtx/core/commands/common/HandleObjectManager.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\contextmanagerevent.d
+	<dwtx/core/commands/contexts/ContextManager.d>
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\icontextlistener.d
+	<dwtx/core/commands/contexts/ContextEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\contexts\icontextmanagerlistener.d
+	<dwtx/core/commands/contexts/ContextManagerEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\executionevent.d
+	<java/util/Collections.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/ParameterValueConversionException.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\executionexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\handlerevent.d
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\icategorylistener.d
+	<dwtx/core/commands/CategoryEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\icommandlistener.d
+	<dwtx/core/commands/CommandEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\icommandmanagerlistener.d
+	<dwtx/core/commands/CommandManagerEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iexecutionlistener.d
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iexecutionlistenerwithchecks.d
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\ihandler.d
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\ihandler2.d
+	<dwtx/core/commands/IHandler.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\ihandlerattributes.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\ihandlerlistener.d
+	<dwtx/core/commands/HandlerEvent.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\inamedhandlestateids.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iobjectwithstate.d
+	<dwtx/core/commands/State.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iparameter.d
+	<dwtx/core/commands/IParameterValues.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iparametertypelistener.d
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\iparametervalues.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\istatelistener.d
+	<dwtx/core/commands/State.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\itypedparameter.d
+	<dwtx/core/commands/ParameterType.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\namedhandleobjectwithstate.d
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/State.d>
+	<dwtx/core/commands/INamedHandleStateIds.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\notenabledexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\nothandledexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\abstractoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\defaultoperationhistory.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/ISafeRunnable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/SafeRunner.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistoryListener.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwtx/core/commands/operations/IAdvancedUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\iadvancedundoableoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\iadvancedundoableoperation2.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\icompositeoperation.d
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\icontextreplacingoperation.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\ioperationapprover.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\ioperationapprover2.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\ioperationhistory.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/internal/commands/operations/GlobalUndoContext.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistoryListener.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/OperationStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\ioperationhistorylistener.d
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\iundoableoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\iundocontext.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\linearundoenforcer.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/LinearUndoViolationDetector.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\linearundoviolationdetector.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\objectundocontext.d
+	<dwtx/core/commands/operations/UndoContext.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\operationhistoryevent.d
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\operationhistoryfactory.d
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/DefaultOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\operationstatus.d
+	<dwtx/core/runtime/Status.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\triggeredoperations.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/AbstractOperation.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/IAdvancedUndoableOperation.d>
+	<dwtx/core/commands/operations/IContextReplacingOperation.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\operations\undocontext.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parameterization.d
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parameterizedcommand.d
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/CommandManager.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/IParameterValues.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/Parameterization.d>
+	<dwtx/core/commands/ParameterValuesException.d>
+	<dwtx/core/commands/ParameterValueConversionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+	<tango/text/Text.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parametertype.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/IParameterTypeListener.d>
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parametertypeevent.d
+	<dwtx/core/commands/common/AbstractHandleObjectEvent.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parametervalueconversionexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\parametervaluesexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\serializationexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\state.d
+	<dwtx/core/commands/common/EventManager.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/IStateListener.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\commands\util\tracing.d
+	<dwt/dwthelper/utils.d>
+	<tango/util/log/Trace.d>
+	<tango/text/Text.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\commands\operations\globalundocontext.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\commands\util\util.d
+	<dwt/dwthelper/utils.d>
+	<java/util/Collections.d>
+	<java/util/HashMap.d>
+	<java/util/HashSet.d>
+	<java/util/Iterator.d>
+	<java/util/Map.d>
+	<java/util/Set.d>
+	<java/util/SortedMap.d>
+	<java/util/SortedSet.d>
+	<java/util/TreeMap.d>
+	<java/util/TreeSet.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\deadlock.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\deadlockdetector.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/MultiStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/internal/jobs/Deadlock.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\implicitjobs.d
+	<tango/text/convert/Format.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+
+1526541833 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\internaljob.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/PlatformObject.d>
+	<dwtx/core/runtime/QualifiedName.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/jobs/MultiRule.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/ObjectMap.d>
+	<tango/text/convert/Format.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobactivator.d
+	<dwt/dwthelper/utils.d>
+	<org/osgi/framework/BundleActivator.d>
+	<org/osgi/framework/BundleContext.d>
+	<org/osgi/framework/ServiceRegistration.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobchangeevent.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\joblisteners.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/JobChangeEvent.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/JobOSGiUtils.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobmanager.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/io/Stdout.d>
+	<tango/text/convert/Format.d>
+	<tango/time/WallClock.d>
+	<tango/time/Time.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/text/convert/Format.d>
+	<java/text/DateFormat.d>
+	<java/text/FieldPosition.d>
+	<java/text/SimpleDateFormat.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IProgressMonitorWithBlocking.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/NullProgressMonitor.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/jobs/JobChangeAdapter.d>
+	<dwtx/core/runtime/jobs/LockListener.d>
+	<dwtx/core/runtime/jobs/ProgressProvider.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/ImplicitJobs.d>
+	<dwtx/core/internal/jobs/WorkerPool.d>
+	<dwtx/core/internal/jobs/JobListeners.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+	<dwtx/core/internal/jobs/JobQueue.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+	<dwtx/core/internal/jobs/JobOSGiUtils.d>
+	<dwtx/core/internal/jobs/Worker.d>
+	<dwtx/core/internal/jobs/Semaphore.d>
+	<dwtx/core/internal/jobs/JobChangeEvent.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+	<dwtx/core/internal/jobs/JobStatus.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobmessages.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<tango/time/WallClock.d>
+	<tango/text/convert/TimeStamp.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/osgi/util/NLS.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobosgiutils.d
+	<dwt/dwthelper/utils.d>
+	<org/osgi/framework/Bundle.d>
+	<org/osgi/framework/BundleContext.d>
+	<org/osgi/service/packageadmin/PackageAdmin.d>
+	<org/osgi/util/tracker/ServiceTracker.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/osgi/service/debug/DebugOptions.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobqueue.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\jobstatus.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\lockmanager.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/CoreException.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/MultiStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/LockListener.d>
+	<dwtx/core/internal/jobs/OrderedLock.d>
+	<dwtx/core/internal/jobs/DeadlockDetector.d>
+	<dwtx/core/internal/jobs/Deadlock.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/Worker.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\objectmap.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/jobs/StringPool.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\orderedlock.d
+	<tango/text/convert/Format.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+	<dwtx/core/internal/jobs/Queue.d>
+	<dwtx/core/internal/jobs/Semaphore.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\queue.d
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526541946 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\semaphore.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<dwt/dwthelper/utils.d>
+	<dwt/dwthelper/Runnable.d>
+	<tango/text/convert/Format.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\stringpool.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526541969 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\threadjob.d
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+	<tango/io/Stdout.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\worker.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/WorkerPool.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1526541995 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\jobs\workerpool.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/Worker.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\runtime\iruntimeconstants.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\runtime\localizationutils.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\runtime\printstackutil.d
+	<dwtx/core/runtime/IStatus.d>
+	<tango/io/stream/Format.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\internal\runtime\runtimelog.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/runtime/ILogListener.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/internal/runtime/IRuntimeConstants.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\assert.d
+	<dwtx/core/runtime/AssertionFailedException.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\assertionfailedexception.d
+	<dwt/dwthelper/utils.d>
+	<jive/stacktrace.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\coreexception.d
+	<dwtx/core/runtime/IStatus.d>
+	<java/io/PrintStream.d>
+	<java/io/PrintWriter.d>
+	<dwt/dwthelper/utils.d>
+	<tango/io/Stdout.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\iadaptable.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\iadapterfactory.d
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\iadaptermanager.d
+	<dwtx/core/runtime/IAdapterFactory.d>
+	<dwt/dwthelper/utils.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\ilog.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/ILogListener.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/org/osgi/framework/Bundle.d>
+
+1453312890 source:d:\dinrus\dev\dinrus\dinrusswt\dwt-win\dinrusdwtx\src\dwtx\core\runtime\iloglistener.d
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1526550845 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\cdt\managedbuilder\ui\properties\multilinetextfieldeditor.d
+	<org/eclipse/cdt/managedbuilder/internal/ui/ManagedBuilderUIMessages.d>
+	<dwtx/jface/preference/FieldEditor.d>
+	<dwtx/jface/util/Assert.d>
+	<dwt/DWT.d>
+	<dwt/events/DisposeEvent.d>
+	<dwt/events/DisposeListener.d>
+	<dwt/events/FocusAdapter.d>
+	<dwt/events/FocusEvent.d>
+	<dwt/events/KeyAdapter.d>
+	<dwt/events/KeyEvent.d>
+	<dwt/layout/GridData.d>
+	<dwt/widgets/Composite.d>
+	<dwt/widgets/Label.d>
+	<dwt/widgets/Text.d>
+	<dwt/dwthelper/utils.d>
+
+1526550798 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\cdt\managedbuilder\ui\properties\passwordfieldeditor.d
+	<dwtx/jface/util/Assert.d>
+	<dwt/DWT.d>
+	<dwt/events/DisposeEvent.d>
+	<dwt/events/DisposeListener.d>
+	<dwt/events/FocusAdapter.d>
+	<dwt/events/FocusEvent.d>
+	<dwt/events/KeyAdapter.d>
+	<dwt/events/KeyEvent.d>
+	<dwt/widgets/Composite.d>
+	<dwt/widgets/Text.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/jface/preference/StringFieldEditor.d>
+
+1526550828 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\abstracthandler.d
+	<dwtx/core/commands/common/EventManager.d>
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/HandlerEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550834 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\abstracthandlerwithstate.d
+	<dwtx/core/commands/AbstractHandler.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/IStateListener.d>
+	<dwtx/core/commands/State.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550840 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\abstractparametervalueconverter.d
+	<dwt/dwthelper/utils.d>
+
+1526550846 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\category.d
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/ICategoryListener.d>
+	<dwtx/core/commands/CategoryEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+
+1526550852 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\categoryevent.d
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwtx/core/commands/Category.d>
+	<dwt/dwthelper/utils.d>
+
+1526550858 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\command.d
+	<java/io/BufferedWriter.d>
+	<java/io/IOException.d>
+	<java/io/StringWriter.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/runtime/ISafeRunnable.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/SafeRunner.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/CommandEvent.d>
+	<dwtx/core/commands/State.d>
+	<dwtx/core/commands/Category.d>
+	<dwtx/core/commands/NamedHandleObjectWithState.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/ICommandListener.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/IExecutionListenerWithChecks.d>
+	<dwtx/core/commands/ITypedParameter.d>
+	<dwtx/core/commands/HandlerEvent.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+	<tango/io/Stdout.d>
+
+1526550864 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\commandevent.d
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwtx/core/commands/Command.d>
+	<dwt/dwthelper/utils.d>
+
+1526550782 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\commandmanager.d
+	<dwtx/core/commands/common/HandleObjectManager.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/commands/ICategoryListener.d>
+	<dwtx/core/commands/ICommandListener.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/IExecutionListenerWithChecks.d>
+	<dwtx/core/commands/IParameterTypeListener.d>
+	<dwtx/core/commands/ICommandManagerListener.d>
+	<dwtx/core/commands/CommandEvent.d>
+	<dwtx/core/commands/CommandManagerEvent.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/Category.d>
+	<dwtx/core/commands/CategoryEvent.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/Parameterization.d>
+	<dwtx/core/commands/ParameterizedCommand.d>
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwtx/core/commands/SerializationException.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+	<dwt/dwthelper/WeakHashMap.d>
+
+1526550787 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\commandmanagerevent.d
+	<dwtx/core/commands/CommandManager.d>
+	<dwt/dwthelper/utils.d>
+
+1526550819 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\abstractbitsetevent.d
+
+1526550803 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\abstracthandleobjectevent.d
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+
+1526550814 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\abstractnamedhandleevent.d
+	<dwtx/core/commands/common/AbstractHandleObjectEvent.d>
+
+1526550842 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\commandexception.d
+	<dwt/dwthelper/utils.d>
+
+1526550784 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\eventmanager.d
+	<dwtx/core/runtime/ListenerList.d>
+
+1526550836 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\handleobject.d
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/common/IIdentifiable.d>
+	<dwtx/core/commands/common/EventManager.d>
+	<dwt/dwthelper/utils.d>
+
+1526550848 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\handleobjectmanager.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/EventManager.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<java/util/HashMap.d>
+	<java/util/HashSet.d>
+	<java/util/Iterator.d>
+	<java/util/Map.d>
+	<java/util/Set.d>
+
+1526550806 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\iidentifiable.d
+	<dwt/dwthelper/utils.d>
+
+1526550793 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\namedhandleobject.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550787 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\namedhandleobjectcomparator.d
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+
+1526550852 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\common\notdefinedexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550782 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\context.d
+	<dwtx/core/commands/contexts/ContextEvent.d>
+	<dwtx/core/commands/contexts/IContextListener.d>
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+
+1526550801 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\contextevent.d
+	<dwtx/core/commands/contexts/Context.d>
+	<dwtx/core/commands/common/AbstractNamedHandleEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550854 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\contextmanager.d
+	<dwtx/core/commands/contexts/IContextListener.d>
+	<dwtx/core/commands/contexts/IContextManagerListener.d>
+	<dwtx/core/commands/contexts/ContextEvent.d>
+	<dwtx/core/commands/contexts/ContextManagerEvent.d>
+	<dwtx/core/commands/contexts/Context.d>
+	<dwtx/core/commands/common/HandleObjectManager.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550825 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\contextmanagerevent.d
+	<dwtx/core/commands/contexts/ContextManager.d>
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550830 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\icontextlistener.d
+	<dwtx/core/commands/contexts/ContextEvent.d>
+
+1526550815 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\contexts\icontextmanagerlistener.d
+	<dwtx/core/commands/contexts/ContextManagerEvent.d>
+
+1526550793 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\executionevent.d
+	<java/util/Collections.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/ParameterValueConversionException.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+
+1526550798 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\executionexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550804 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\handlerevent.d
+	<dwtx/core/commands/common/AbstractBitSetEvent.d>
+	<dwtx/core/commands/IHandler.d>
+	<dwt/dwthelper/utils.d>
+
+1526550810 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\icategorylistener.d
+	<dwtx/core/commands/CategoryEvent.d>
+
+1526550815 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\icommandlistener.d
+	<dwtx/core/commands/CommandEvent.d>
+
+1526550821 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\icommandmanagerlistener.d
+	<dwtx/core/commands/CommandManagerEvent.d>
+
+1526550826 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iexecutionlistener.d
+	<dwtx/core/commands/NotHandledException.d>
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550832 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iexecutionlistenerwithchecks.d
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/IExecutionListener.d>
+	<dwtx/core/commands/NotEnabledException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550838 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\ihandler.d
+	<dwtx/core/commands/IHandlerListener.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+
+1526550843 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\ihandler2.d
+	<dwtx/core/commands/IHandler.d>
+
+1526550850 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\ihandlerattributes.d
+	<dwt/dwthelper/utils.d>
+
+1526550856 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\ihandlerlistener.d
+	<dwtx/core/commands/HandlerEvent.d>
+
+1526550862 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\inamedhandlestateids.d
+	<dwt/dwthelper/utils.d>
+
+1526550779 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iobjectwithstate.d
+	<dwtx/core/commands/State.d>
+	<dwt/dwthelper/utils.d>
+
+1526550785 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iparameter.d
+	<dwtx/core/commands/IParameterValues.d>
+	<dwt/dwthelper/utils.d>
+
+1526550791 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iparametertypelistener.d
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550796 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\iparametervalues.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550802 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\istatelistener.d
+	<dwtx/core/commands/State.d>
+
+1526550808 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\itypedparameter.d
+	<dwtx/core/commands/ParameterType.d>
+
+1526550813 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\namedhandleobjectwithstate.d
+	<dwtx/core/commands/common/NamedHandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/commands/IObjectWithState.d>
+	<dwtx/core/commands/State.d>
+	<dwtx/core/commands/INamedHandleStateIds.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550818 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\notenabledexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550824 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\nothandledexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550797 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\abstractoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/Text.d>
+
+1526550809 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\defaultoperationhistory.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/commands/util/Tracing.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/ISafeRunnable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/SafeRunner.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistoryListener.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwtx/core/commands/operations/IAdvancedUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550858 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\iadvancedundoableoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550811 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\iadvancedundoableoperation2.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1526550791 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\icompositeoperation.d
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+
+1526550834 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\icontextreplacingoperation.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1526550776 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\ioperationapprover.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1526550808 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\ioperationapprover2.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1526550860 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\ioperationhistory.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/internal/commands/operations/GlobalUndoContext.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistoryListener.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/OperationStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1526550789 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\ioperationhistorylistener.d
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+
+1526550795 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\iundoableoperation.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1526550822 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\iundocontext.d
+	<dwt/dwthelper/utils.d>
+
+1526550817 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\linearundoenforcer.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/LinearUndoViolationDetector.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1526550804 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\linearundoviolationdetector.d
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/IOperationApprover.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1526550828 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\objectundocontext.d
+	<dwtx/core/commands/operations/UndoContext.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550864 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\operationhistoryevent.d
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwt/dwthelper/utils.d>
+
+1526550840 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\operationhistoryfactory.d
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/DefaultOperationHistory.d>
+	<dwt/dwthelper/utils.d>
+
+1526550806 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\operationstatus.d
+	<dwtx/core/runtime/Status.d>
+	<dwt/dwthelper/utils.d>
+
+1526550812 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\triggeredoperations.d
+	<dwtx/core/commands/ExecutionException.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/commands/operations/AbstractOperation.d>
+	<dwtx/core/commands/operations/ICompositeOperation.d>
+	<dwtx/core/commands/operations/IAdvancedUndoableOperation.d>
+	<dwtx/core/commands/operations/IContextReplacingOperation.d>
+	<dwtx/core/commands/operations/IUndoableOperation.d>
+	<dwtx/core/commands/operations/IOperationHistory.d>
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwtx/core/commands/operations/OperationHistoryEvent.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550817 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\operations\undocontext.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1526550830 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parameterization.d
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550835 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parameterizedcommand.d
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/Command.d>
+	<dwtx/core/commands/CommandManager.d>
+	<dwtx/core/commands/IParameter.d>
+	<dwtx/core/commands/IParameterValues.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwtx/core/commands/Parameterization.d>
+	<dwtx/core/commands/ParameterValuesException.d>
+	<dwtx/core/commands/ParameterValueConversionException.d>
+	<dwtx/core/commands/ExecutionEvent.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/text/convert/Format.d>
+	<tango/text/Text.d>
+
+1526550841 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parametertype.d
+	<dwtx/core/commands/common/HandleObject.d>
+	<dwtx/core/commands/common/NotDefinedException.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/AbstractParameterValueConverter.d>
+	<dwtx/core/commands/IParameterTypeListener.d>
+	<dwtx/core/commands/ParameterTypeEvent.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+
+1526550847 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parametertypeevent.d
+	<dwtx/core/commands/common/AbstractHandleObjectEvent.d>
+	<dwtx/core/commands/ParameterType.d>
+	<dwt/dwthelper/utils.d>
+
+1526550853 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parametervalueconversionexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550851 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\parametervaluesexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550857 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\serializationexception.d
+	<dwtx/core/commands/common/CommandException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550863 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\state.d
+	<dwtx/core/commands/common/EventManager.d>
+	<dwtx/core/internal/commands/util/Util.d>
+	<dwtx/core/commands/IStateListener.d>
+	<dwt/dwthelper/utils.d>
+
+1526550823 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\commands\util\tracing.d
+	<dwt/dwthelper/utils.d>
+	<tango/util/log/Trace.d>
+	<tango/text/Text.d>
+
+1526550780 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\commands\operations\globalundocontext.d
+	<dwtx/core/commands/operations/IUndoContext.d>
+	<dwt/dwthelper/utils.d>
+
+1526550786 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\commands\util\util.d
+	<dwt/dwthelper/utils.d>
+	<java/util/Collections.d>
+	<java/util/HashMap.d>
+	<java/util/HashSet.d>
+	<java/util/Iterator.d>
+	<java/util/Map.d>
+	<java/util/Set.d>
+	<java/util/SortedMap.d>
+	<java/util/SortedSet.d>
+	<java/util/TreeMap.d>
+	<java/util/TreeSet.d>
+
+1526550791 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\deadlock.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+
+1526550797 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\deadlockdetector.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/MultiStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/internal/jobs/Deadlock.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1526550803 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\implicitjobs.d
+	<tango/text/convert/Format.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+
+1526550809 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\internaljob.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/PlatformObject.d>
+	<dwtx/core/runtime/QualifiedName.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/jobs/MultiRule.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/ObjectMap.d>
+	<tango/text/convert/Format.d>
+
+1526550814 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobactivator.d
+	<dwt/dwthelper/utils.d>
+	<org/osgi/framework/BundleActivator.d>
+	<org/osgi/framework/BundleContext.d>
+	<org/osgi/framework/ServiceRegistration.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+
+1526550820 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobchangeevent.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1526550825 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\joblisteners.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/ListenerList.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/JobChangeEvent.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/JobOSGiUtils.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+
+1526550830 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobmanager.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<tango/io/Stdout.d>
+	<tango/text/convert/Format.d>
+	<tango/time/WallClock.d>
+	<tango/time/Time.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/text/convert/Format.d>
+	<java/text/DateFormat.d>
+	<java/text/FieldPosition.d>
+	<java/text/SimpleDateFormat.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IProgressMonitorWithBlocking.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/NullProgressMonitor.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/jobs/JobChangeAdapter.d>
+	<dwtx/core/runtime/jobs/LockListener.d>
+	<dwtx/core/runtime/jobs/ProgressProvider.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/ImplicitJobs.d>
+	<dwtx/core/internal/jobs/WorkerPool.d>
+	<dwtx/core/internal/jobs/JobListeners.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+	<dwtx/core/internal/jobs/JobQueue.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+	<dwtx/core/internal/jobs/JobOSGiUtils.d>
+	<dwtx/core/internal/jobs/Worker.d>
+	<dwtx/core/internal/jobs/Semaphore.d>
+	<dwtx/core/internal/jobs/JobChangeEvent.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+	<dwtx/core/internal/jobs/JobStatus.d>
+
+1526550836 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobmessages.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<tango/time/WallClock.d>
+	<tango/text/convert/TimeStamp.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/osgi/util/NLS.d>
+
+1526550842 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobosgiutils.d
+	<dwt/dwthelper/utils.d>
+	<org/osgi/framework/Bundle.d>
+	<org/osgi/framework/BundleContext.d>
+	<org/osgi/service/packageadmin/PackageAdmin.d>
+	<org/osgi/util/tracker/ServiceTracker.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/osgi/service/debug/DebugOptions.d>
+
+1526550848 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobqueue.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+
+1526550854 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\jobstatus.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1526550860 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\lockmanager.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/CoreException.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/MultiStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/LockListener.d>
+	<dwtx/core/internal/jobs/OrderedLock.d>
+	<dwtx/core/internal/jobs/DeadlockDetector.d>
+	<dwtx/core/internal/jobs/Deadlock.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/Worker.d>
+
+1526550777 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\objectmap.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/internal/jobs/StringPool.d>
+
+1526550784 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\orderedlock.d
+	<tango/text/convert/Format.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/io/Stdout.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+	<dwtx/core/internal/jobs/Queue.d>
+	<dwtx/core/internal/jobs/Semaphore.d>
+
+1526550789 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\queue.d
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550795 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\semaphore.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<dwt/dwthelper/utils.d>
+	<dwt/dwthelper/Runnable.d>
+	<tango/text/convert/Format.d>
+
+1526550801 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\stringpool.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550806 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\threadjob.d
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+	<tango/io/Stdout.d>
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+
+1526550812 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\worker.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/runtime/RuntimeLog.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/osgi/util/NLS.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/WorkerPool.d>
+	<dwtx/core/internal/jobs/JobMessages.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+
+1526550817 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\jobs\workerpool.d
+	<dwtx/dwtxhelper/JThread.d>
+	<tango/core/sync/Mutex.d>
+	<tango/core/sync/Condition.d>
+	<tango/text/convert/Format.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/Worker.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/ThreadJob.d>
+
+1526550823 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\runtime\iruntimeconstants.d
+	<dwt/dwthelper/utils.d>
+
+1526550828 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\runtime\localizationutils.d
+	<dwt/dwthelper/utils.d>
+
+1526550834 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\runtime\printstackutil.d
+	<dwtx/core/runtime/IStatus.d>
+	<tango/io/stream/Format.d>
+	<dwt/dwthelper/utils.d>
+
+1526550840 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\internal\runtime\runtimelog.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/runtime/ILogListener.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/internal/runtime/IRuntimeConstants.d>
+
+1526550826 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\assert.d
+	<dwtx/core/runtime/AssertionFailedException.d>
+	<dwt/dwthelper/utils.d>
+
+1526550831 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\assertionfailedexception.d
+	<dwt/dwthelper/utils.d>
+	<jive/stacktrace.d>
+
+1526550837 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\coreexception.d
+	<dwtx/core/runtime/IStatus.d>
+	<java/io/PrintStream.d>
+	<java/io/PrintWriter.d>
+	<dwt/dwthelper/utils.d>
+	<tango/io/Stdout.d>
+
+1526550843 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iadaptable.d
+	<dwt/dwthelper/utils.d>
+
+1526550849 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iadapterfactory.d
+	<dwt/dwthelper/utils.d>
+
+1526550855 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iadaptermanager.d
+	<dwtx/core/runtime/IAdapterFactory.d>
+	<dwt/dwthelper/utils.d>
+
+1526550861 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\ilog.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/ILogListener.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/org/osgi/framework/Bundle.d>
+
+1526550778 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iloglistener.d
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1526550785 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\ipath.d
+	<dwt/dwthelper/utils.d>
+	<tango/io/FilePath.d>
+
+1526550790 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iprogressmonitor.d
+	<dwt/dwthelper/utils.d>
+
+1526550796 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\iprogressmonitorwithblocking.d
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+
+1526550802 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\isaferunnable.d
+	<dwt/internal/Platform.d>
+	<dwt/dwthelper/utils.d>
+
+1526550807 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\istatus.d
+	<dwt/dwthelper/utils.d>
+
+1526550845 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ijobchangeevent.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1526550852 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ijobchangelistener.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+
+1526550858 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ijobmanager.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/jobs/ILock.d>
+	<dwtx/core/runtime/jobs/LockListener.d>
+	<dwtx/core/runtime/jobs/ProgressProvider.d>
+	<dwtx/dwtxhelper/JThread.d>
+
+1526550864 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ijobstatus.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1526550782 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ilock.d
+	<dwt/dwthelper/utils.d>
+
+1526550787 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\ischedulingrule.d
+	<dwt/dwthelper/utils.d>
+
+1526550793 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\job.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/jobs/InternalJob.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/QualifiedName.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+
+1526550798 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\jobchangeadapter.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/jobs/IJobChangeListener.d>
+	<dwtx/core/runtime/jobs/IJobChangeEvent.d>
+
+1526550804 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\locklistener.d
+	<dwtx/dwtxhelper/JThread.d>
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/internal/jobs/JobManager.d>
+	<dwtx/core/internal/jobs/LockManager.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1526550810 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\multirule.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/core/runtime/jobs/ISchedulingRule.d>
+
+1526550820 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\jobs\progressprovider.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/NullProgressMonitor.d>
+	<dwtx/core/runtime/SubProgressMonitor.d>
+	<dwtx/core/runtime/jobs/Job.d>
+
+1526550813 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\listenerlist.d
+	<dwt/dwthelper/utils.d>
+
+1526550818 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\multistatus.d
+	<dwtx/core/runtime/Assert.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/Text.d>
+
+1526550824 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\nullprogressmonitor.d
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwt/dwthelper/utils.d>
+
+1526550829 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\operationcanceledexception.d
+	<dwt/dwthelper/utils.d>
+
+1526550835 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\path.d
+	<tango/io/FilePath.d>
+	<tango/io/Path.d>
+	<dwtx/core/runtime/IPath.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwt/dwthelper/utils.d>
+	<tango/io/model/IFile.d>
+	<tango/text/Text.d>
+
+1526550841 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\platform.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IPath.d>
+	<dwtx/core/runtime/ILog.d>
+	<java/io/IOException.d>
+	<java/lang/reflect/Method.d>
+	<java/net/URL.d>
+	<java/util/HashMap.d>
+	<java/util/Map.d>
+	<java/util/MissingResourceException.d>
+	<java/util/ResourceBundle.d>
+	<dwtx/org/osgi/framework/Bundle.d>
+	<org/osgi/service/packageadmin/PackageAdmin.d>
+	<dwtx/core/internal/runtime/CompatibilityHelper.d>
+	<dwtx/core/internal/runtime/InternalPlatform.d>
+	<dwtx/core/internal/runtime/Messages.d>
+	<dwtx/core/internal/runtime/PlatformActivator.d>
+	<dwtx/core/internal/runtime/auth/AuthorizationHandler.d>
+	<dwtx/core/runtime/content/IContentTypeManager.d>
+	<dwtx/core/runtime/jobs/IJobManager.d>
+	<dwtx/core/runtime/jobs/Job.d>
+	<dwtx/core/runtime/preferences/IPreferencesService.d>
+	<dwtx/osgi/service/datalocation/Location.d>
+	<dwtx/osgi/service/debug/DebugOptions.d>
+	<dwtx/osgi/service/environment/EnvironmentInfo.d>
+	<dwtx/osgi/service/resolver/PlatformAdmin.d>
+
+1526550846 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\platformobject.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/core/runtime/IAdaptable.d>
+	<dwtx/core/internal/runtime/AdapterManager.d>
+
+1526550853 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\progressmonitorwrapper.d
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IProgressMonitorWithBlocking.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwt/dwthelper/utils.d>
+
+1526550859 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\qualifiedname.d
+	<dwtx/core/runtime/Assert.d>
+	<dwt/dwthelper/utils.d>
+
+1526550865 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\saferunner.d
+	<dwtx/core/runtime/OperationCanceledException.d>
+	<dwtx/core/runtime/MultiStatus.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Status.d>
+	<dwtx/core/runtime/CoreException.d>
+	<dwtx/core/internal/runtime/IRuntimeConstants.d>
+	<dwtx/core/runtime/ISafeRunnable.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwt/dwthelper/utils.d>
+
+1526550783 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\status.d
+	<dwtx/core/internal/runtime/IRuntimeConstants.d>
+	<dwtx/core/internal/runtime/LocalizationUtils.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/Assert.d>
+	<dwt/dwthelper/utils.d>
+	<tango/text/convert/Format.d>
+
+1526550788 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\submonitor.d
+	<dwtx/core/runtime/IProgressMonitorWithBlocking.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwtx/core/runtime/IStatus.d>
+	<dwtx/core/runtime/NullProgressMonitor.d>
+	<dwt/dwthelper/utils.d>
+
+1526550794 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\core\runtime\subprogressmonitor.d
+	<dwtx/core/runtime/ProgressMonitorWrapper.d>
+	<dwtx/core/runtime/IProgressMonitor.d>
+	<dwt/dwthelper/utils.d>
+
+1526550786 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\absolutebendpoint.d
+	<dwt/dwthelper/utils.d>
+
+1526550792 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractbackground.d
+	<dwt/dwthelper/utils.d>
+
+1526550797 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractborder.d
+	<dwt/dwthelper/utils.d>
+
+1526550803 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractconnectionanchor.d
+	<dwt/dwthelper/utils.d>
+
+1526550809 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstracthintlayout.d
+	<dwt/dwthelper/utils.d>
+
+1526550814 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractlabeledborder.d
+	<dwt/dwthelper/utils.d>
+	<dwt/graphics/Color.d>
+	<dwt/graphics/Font.d>
+
+1526550820 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractlayout.d
+	<dwt/dwthelper/utils.d>
+
+1526550825 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractlocator.d
+	<dwt/dwthelper/utils.d>
+
+1526550831 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\abstractrouter.d
+	<dwt/dwthelper/utils.d>
+
+1526550836 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\accessiblebase.d
+	<dwt/dwthelper/utils.d>
+
+1526550842 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\actionevent.d
+	<dwt/dwthelper/utils.d>
+
+1526550849 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\actionlistener.d
+	<dwt/dwthelper/utils.d>
+	<tango/core/Traits.d>
+	<tango/core/Tuple.d>
+
+1526550854 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\ancestorhelper.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Bean.d>
+
+1526550861 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\ancestorlistener.d
+	<dwt/dwthelper/utils.d>
+
+1526550777 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\anchorlistener.d
+	<dwt/dwthelper/utils.d>
+
+1526550784 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\animation.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550789 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\animator.d
+	<dwt/dwthelper/utils.d>
+
+1526550795 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\arrowbutton.d
+	<dwt/dwthelper/utils.d>
+
+1526550801 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\arrowlocator.d
+	<dwt/dwthelper/utils.d>
+
+1526550806 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\automaticrouter.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550812 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\bendpoint.d
+	<dwt/dwthelper/utils.d>
+
+1526550817 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\bendpointconnectionrouter.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550823 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\bendpointlocator.d
+	<dwt/dwthelper/utils.d>
+
+1526550828 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\border.d
+	<dwt/dwthelper/utils.d>
+
+1526550834 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\borderlayout.d
+	<dwt/dwthelper/utils.d>
+
+1526551825 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\bufferedgraphicssource.d
+	<dwt/dwthelper/utils.d>
+	<dwt/DWT.d>
+	<dwt/DWTError.d>
+	<dwt/graphics/GC.d>
+	<dwt/graphics/Image.d>
+	<dwt/graphics/Point.d>
+	<dwt/widgets/Canvas.d>
+	<dwt/widgets/Caret.d>
+	<dwt/widgets/Control.d>
+
+1526550846 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\button.d
+	<dwt/dwthelper/utils.d>
+	<dwt/graphics/Image.d>
+
+1526550852 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\buttonborder.d
+	<dwt/dwthelper/utils.d>
+	<dwt/graphics/Color.d>
+
+1526550858 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\buttongroup.d
+	<dwt/dwthelper/utils.d>
+	<dwtx/dwtxhelper/Bean.d>
+	<dwtx/dwtxhelper/Collection.d>
+
+1526550864 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\buttonmodel.d
+	<dwt/dwthelper/utils.d>
+	<dwt/dwthelper/Runnable.d>
+	<dwtx/dwtxhelper/Collection.d>
+	<dwtx/dwtxhelper/Timer.d>
+	<dwtx/dwtxhelper/TimerTask.d>
+	<dwt/widgets/Display.d>
+
+1526550782 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\buttonstatetransitionlistener.d
+	<dwt/dwthelper/utils.d>
+
+1526550787 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\changeevent.d
+	<dwt/dwthelper/utils.d>
+
+1526550793 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\changelistener.d
+	<dwt/dwthelper/utils.d>
+	<tango/core/Traits.d>
+	<tango/core/Tuple.d>
+
+1526550798 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\checkbox.d
+	<dwt/dwthelper/utils.d>
+	<dwt/dwthelper/ByteArrayInputStream.d>
+	<dwt/graphics/Image.d>
+	<dwt/graphics/ImageData.d>
+
+1526550804 source:d:\dinrus\dev\dinrus\dinrusdwt\dinrusdwtx\src\dwtx\draw2d\chopboxanchor.d
+	<dwt/dwthelper/utils.d>
+
