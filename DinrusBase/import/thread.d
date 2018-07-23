@@ -14,9 +14,9 @@ extern (D)	class Нить
     final Объект присоедини( бул rethrow = да );
     final ткст имя();
     final проц имя( ткст знач );
-    final бул демон_ли();
-    final проц демон_ли( бул знач );
-    final бул пущена_ли();
+    final бул демон();
+    final проц демон( бул знач );
+    final бул пущена();
 
     static const цел МИНПРИОР;
     static const цел МАКСПРИОР;

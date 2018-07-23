@@ -45,7 +45,7 @@ MsgIDs:
 - {ID: 40, Name: OutContract, Order: 40}
 - {ID: 41, Name: MissingLinkageType, Order: 41}
 - {ID: 42, Name: UnrecognizedLinkageType, Order: 42}
-- {ID: 43, Name: ExpectedBaseClasses, Order: 43}
+- {ID: 43, Name: ОжидалисьКлассыОсновы, Order: 43}
 - {ID: 44, Name: BaseClassInForwardDeclaration, Order: 44}
 - {ID: 45, Name: HelpMain, Order: 45}
 - {ID: 46, Name: HelpGenerate, Order: 46}

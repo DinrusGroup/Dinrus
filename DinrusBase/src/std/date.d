@@ -58,7 +58,7 @@ alias Date Дата;
 //alias DayFromYear деньИзГода;
 //alias TimeFromYear времяИзГода;
 //alias YearFromTime годИзВремени;
-//alias inLeapYear високосный_ли;
+//alias inLeapYear високосный;
 //alias MonthFromTime месИзВрем;  
 //alias DateFromTime датаИзВрем;
 alias WeekDay деньНедели;
@@ -196,7 +196,7 @@ const int[12] mdays = [ 0,31,59,90,120,151,181,212,243,273,304,334 ];
 	return YearFromTime(t);
 	}	
 	
-бул високосный_ли(д_время t)
+бул високосный(д_время t)
 	{
 		if(LeapYear(YearFromTime(t)) != 0)
 		return true;

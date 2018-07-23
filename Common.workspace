@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_file>
 	<Workspace title="Рабочее пространство Динрус">
-		<Project filename="DinrusBase/DinrusBase.cbp" />
-		<Project filename="DinrusCommon/DinrusCommon.cbp" />
+		<Project filename="DRC/DRC.cbp" />
+		<Project filename="Viz/Viz.cbp" />
+		<Project filename="Dsss/Dsss.cbp" />
 		<Project filename="DinrusTango/DinrusTango.cbp" />
+		<Project filename="DinrusTango/TangoImports.cbp" />
 		<Project filename="DinrusWin32/DinrusWin32.cbp" />
 		<Project filename="DinrusConc/DinrusConc.cbp" />
-		<Project filename="DinrusDbi/DinrusDbi.cbp" />
-		<Project filename="DinrusCommon/CommonImports.cbp" />
-		<Project filename="DinrusTango/TangoImports.cbp" />
 		<Project filename="DinrusConc/ConcImports.cbp" />
+		<Project filename="DinrusDbi/DinrusDbi.cbp" />
 		<Project filename="DinrusDbi/DbiImports.cbp" />
-		<Project filename="DRC/DRC.cbp" />
-		<Project filename="Dsss/Dsss.cbp" />
 		<Project filename="DinrusGTK/DinrusGTK.cbp" />
 		<Project filename="DinrusGTK/GtkDImports/GtkDImports.cbp" />
-		<Project filename="Base/DinrusBaseDLL/DinrusBaseDLL.cbp" />
 		<Project filename="DinrusWX/DinrusWX.cbp" />
 		<Project filename="DinrusWX/Dinrus.WX-2.9_gnu.cbp" />
+		<Project filename="Base/DinrusBaseDLL/DinrusBaseDLL.cbp" />
+		<Project filename="DinrusBase/DinrusBase.cbp" />
+		<Project filename="DinrusCommon/DinrusCommon.cbp" />
+		<Project filename="DinrusCommon/CommonImports.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

@@ -208,7 +208,7 @@ enum DflCompat
 									  `<!-- Enable Windows Vista-style font scaling on Vista -->` "\r\n"
 									  `<asmv3:application xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">` "\r\n"
 										`<asmv3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">` "\r\n"
-										  `<dpiAware>да</dpiAware>` "\r\n"
+										  `<dpiAware>true</dpiAware>` "\r\n"
 										`</asmv3:windowsSettings>` "\r\n"
 									  `</asmv3:application>` "\r\n"
 									`</assembly>` "\r\n";
@@ -2223,7 +2223,7 @@ body
 			if(!первОкПроцМдиКлиента)
 				_unableToInit(MDICLIENT_CLASSNAME);
 			стильКлассаМдиКлиент = инфо.ко.стиль;
-		}c
+		}
 	}
 
 

@@ -1,4 +1,4 @@
-﻿module stdrus;
+module stdrus;
 
 private import sys.WinStructs, sys.WinConsts,sys.WinFuncs;
 private import tpl.args, tpl.stream;
@@ -720,10 +720,10 @@ extern (D) class ПотокСрез : ФильтрПоток
  {
 extern (C) extern
 {
-     бдол поз;  // our позиция relative to low
-    бдол низ; // низ stream смещение.
-    бдол верх; // верх stream смещение.
-    бул ограничен; // upper-ограничен by верх.
+  бдол поз;  // our позиция relative to low
+  бдол низ; // низ stream смещение.
+  бдол верх; // верх stream смещение.
+  бул ограничен; // upper-ограничен by верх.
 	Поток п;
 }
 	static this(){};

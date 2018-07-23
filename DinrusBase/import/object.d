@@ -426,14 +426,14 @@ extern (D) class TypeInfo_Pointer : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
-    т_хэш дайХэш(ук п);
+    override  hash_t getHash(ук p);
+    override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -460,14 +460,14 @@ extern (D) class TypeInfo_Array : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
+    override hash_t getHash(ук p);
     override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -623,14 +623,14 @@ extern (D) class TypeInfo_Class : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
+    override hash_t getHash(ук p);
     override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -656,14 +656,14 @@ extern (D) class TypeInfo_Interface : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
-    т_хэш дайХэш(ук п);
+    override hash_t getHash(ук p);
+    override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -687,14 +687,14 @@ extern (D) class TypeInfo_Struct : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
-    т_хэш дайХэш(ук п);
+    override hash_t getHash(ук p);
+    override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -736,14 +736,14 @@ extern (D) class TypeInfo_Tuple : ИнфОТипе
 
     override int opEquals(Object o);
 
-    hash_t getHash(ук p);
-    т_хэш дайХэш(ук п);
+    override hash_t getHash(ук p);
+    override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2);
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2);
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2);
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2);
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize();
     override т_мера тразм();
@@ -760,14 +760,14 @@ extern (D) class TypeInfo_Const : ИнфОТипе
     override ткст вТкст();
 
     override int opEquals(Object o);
-    hash_t getHash(ук p);
-    т_хэш дайХэш(ук п);
+    override hash_t getHash(ук p);
+    override т_хэш дайХэш(ук п);
 
-    int equals(ук p1, ук p2) ;
-    цел равны(ук п1, ук п2);
+    override int equals(ук p1, ук p2) ;
+    override цел равны(ук п1, ук п2);
 
-    int compare(ук p1, ук p2) ;
-    цел сравни(ук п1, ук п2);
+    override int compare(ук p1, ук p2) ;
+    override цел сравни(ук п1, ук п2);
 
     override size_t tsize() ;
     override т_мера тразм();
@@ -911,7 +911,7 @@ alias TypeInfo_Ad ТипДвомас;
 extern (D) class TypeInfo_Ap : TypeInfo_Ad
 {
 
-    ткст toString();
+    override ткст toString();
     override ткст вТкст();
     override ИнфОТипе next();
     override ИнфОТипе следщ();

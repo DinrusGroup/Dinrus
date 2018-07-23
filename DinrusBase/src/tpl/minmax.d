@@ -1,6 +1,6 @@
 ﻿module tpl.minmax;
 
-protected import stdrus : нч_ли;
+protected import stdrus : нч;
 
 /**
  * Возвращает наименьшее из двух чисел.
@@ -22,7 +22,7 @@ T мин(T)(T знач1, T знач2) {
   }
   else static if (is(T == плав)
     || is(T == дво)) {
-    return (знач1 < знач2) ? знач1 : нч_ли(знач1) ? знач1 : знач2;
+    return (знач1 < знач2) ? знач1 : нч(знач1) ? знач1 : знач2;
   }
   else
     static assert(нет);
@@ -48,7 +48,7 @@ T макс(T)(T знач1, T знач2) {
   }
   else static if (is(T == плав) 
     || is(T == дво)) {
-    return (знач1 > знач2) ? знач1 : нч_ли(знач1) ? знач1 : знач2;
+    return (знач1 > знач2) ? знач1 : нч(знач1) ? знач1 : знач2;
   }
   else
     static assert(нет);

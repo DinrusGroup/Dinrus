@@ -13,34 +13,34 @@ export:
 
 private
  {
-    template целыйТип_ли( T )
+    template целыйТип( T )
     {
-        const bool целыйТип_ли = целыйЗначныйТип_ли!(T) ||
-                                   целыйБеззначныйТип_ли!(T);
+        const bool целыйТип = целыйЗначныйТип!(T) ||
+                                   целыйБеззначныйТип!(T);
     }
 
-    template указательИлиКласс_ли(T)
+    template указательИлиКласс(T)
     {
-        const указательИлиКласс_ли = is(T==class);
+        const указательИлиКласс = is(T==class);
     }
 
-    template указательИлиКласс_ли(T : T*)
+    template указательИлиКласс(T : T*)
     {
-            const указательИлиКласс_ли = true;
+            const указательИлиКласс = true;
     }
   
-    template целыйЗначныйТип_ли( T )
+    template целыйЗначныйТип( T )
     {
-        const bool целыйЗначныйТип_ли = is( T == byte )  ||
+        const bool целыйЗначныйТип = is( T == byte )  ||
                                          is( T == short ) ||
                                          is( T == int )   ||
                                          is( T == long )/+||
                                          is( T == cent  )+/;
     }
 
-    template целыйБеззначныйТип_ли( T )
+    template целыйБеззначныйТип( T )
     {
-        const bool целыйБеззначныйТип_ли = is( T == ubyte )  ||
+        const bool целыйБеззначныйТип = is( T == ubyte )  ||
                                            is( T == ushort ) ||
                                            is( T == uint )   ||
                                            is( T == ulong )/+||
@@ -463,7 +463,7 @@ in {
 version (D_InlineAsm_X86){
     T атомнаяПрибавка(T,U=T)(ref   T знач, U incV_){
         T incV=cast(T)incV_;
-        static if (целыйТип_ли!(T)||указательИлиКласс_ли!(T)){
+        static if (целыйТип!(T)||указательИлиКласс!(T)){
             T* posVal=&знач;
             T res;
             static if (T.sizeof==1){
@@ -504,7 +504,7 @@ version (D_InlineAsm_X86){
 } else version (D_InlineAsm_X86_64){
     T атомнаяПрибавка(T,U=T)(ref   T знач, U incV_){
         T incV=cast(T)incV_;
-        static if (целыйТип_ли!(T)||указательИлиКласс_ли!(T)){
+        static if (целыйТип!(T)||указательИлиКласс!(T)){
             T* posVal=&знач;
             T res;
             static if (T.sizeof==1){
@@ -553,7 +553,7 @@ version (D_InlineAsm_X86){
     static if (LockVersion){
         T атомнаяПрибавка(T,U=T)(ref   T знач, U incV_){
             T incV=cast(T)incV_;
-            static assert( целыйТип_ли!(T)||указательИлиКласс_ли!(T),"invalid type: "~T.stringof );
+            static assert( целыйТип!(T)||указательИлиКласс!(T),"invalid type: "~T.stringof );
             synchronized(typeid(T)){
                 T oldV=знач;
                 знач+=incV;
@@ -563,7 +563,7 @@ version (D_InlineAsm_X86){
     } else {
         T атомнаяПрибавка(T,U=T)(ref   T знач, U incV_){
             T incV=cast(T)incV_;
-            static assert( целыйТип_ли!(T)||указательИлиКласс_ли!(T),"invalid type: "~T.stringof );
+            static assert( целыйТип!(T)||указательИлиКласс!(T),"invalid type: "~T.stringof );
             synchronized(typeid(T)){
                 T oldV,newVal,nextVal;
                 volatile nextVal=знач;
@@ -1313,7 +1313,7 @@ class Писатель :
                 ++м_члоЖдущихПисателей;
                 scope(exit) --м_члоЖдущихПисателей;
 
-                while( поставитьВОчередьПисателя_ли() )
+                while( поставитьВОчередьПисателя() )
                     м_очередьПисателей.жди();
                 ++м_члоАктивнПисателей;
             }
@@ -1351,7 +1351,7 @@ class Писатель :
         {
             synchronized( м_общийМютекс )
             {
-                if( поставитьВОчередьПисателя_ли() )
+                if( поставитьВОчередьПисателя() )
                     return false;
                 ++м_члоАктивнПисателей;
                 return true;
@@ -1360,7 +1360,7 @@ class Писатель :
 
 
     private:
-        bool поставитьВОчередьПисателя_ли()
+        bool поставитьВОчередьПисателя()
         {
             if( м_члоАктивнПисателей > 0 ||
                 м_члоАктивнЧитателей > 0 )

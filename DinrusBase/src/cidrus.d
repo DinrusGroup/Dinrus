@@ -1153,24 +1153,24 @@ export extern (D)
     }
 
     //цел isfinite(реал-floating x);
-    цел конечен_ли(плав x)       { return птклассифицируй(x) >= FP_NORMAL; }
-    цел конечен_ли(дво x)      { return птклассифицируй(x) >= FP_NORMAL; }
-    цел конечен_ли(реал x)        { return птклассифицируй(x) >= FP_NORMAL; }
+    цел конечен(плав x)       { return птклассифицируй(x) >= FP_NORMAL; }
+    цел конечен(дво x)      { return птклассифицируй(x) >= FP_NORMAL; }
+    цел конечен(реал x)        { return птклассифицируй(x) >= FP_NORMAL; }
 
     //цел isinf(реал-floating x);
-    цел беск_ли(плав x)          { return птклассифицируй(x) == FP_INFINITE; }
-    цел беск_ли(дво x)         { return птклассифицируй(x) == FP_INFINITE; }
-    цел беск_ли(реал x)           { return птклассифицируй(x) == FP_INFINITE; }
+    цел беск(плав x)          { return птклассифицируй(x) == FP_INFINITE; }
+    цел беск(дво x)         { return птклассифицируй(x) == FP_INFINITE; }
+    цел беск(реал x)           { return птклассифицируй(x) == FP_INFINITE; }
 
     //цел isnan(реал-floating x);
-    цел нечисло_ли(плав x)          { return птклассифицируй(x) <= FP_NANQ;   }
-    цел нечисло_ли(дво x)         { return птклассифицируй(x) <= FP_NANQ;   }
-    цел нечисло_ли(реал x)           { return птклассифицируй(x) <= FP_NANQ;   }
+    цел нечисло(плав x)          { return птклассифицируй(x) <= FP_NANQ;   }
+    цел нечисло(дво x)         { return птклассифицируй(x) <= FP_NANQ;   }
+    цел нечисло(реал x)           { return птклассифицируй(x) <= FP_NANQ;   }
 
     //цел isnormal(реал-floating x);
-    цел нормаль_ли(плав x)       { return птклассифицируй(x) == FP_NORMAL; }
-    цел нормаль_ли(дво x)      { return птклассифицируй(x) == FP_NORMAL; }
-    цел нормаль_ли(реал x)        { return птклассифицируй(x) == FP_NORMAL; }
+    цел нормаль(плав x)       { return птклассифицируй(x) == FP_NORMAL; }
+    цел нормаль(дво x)      { return птклассифицируй(x) == FP_NORMAL; }
+    цел нормаль(реал x)        { return птклассифицируй(x) == FP_NORMAL; }
 
     //цел signbit(реал-floating x);
     цел знакбит(плав x)     { return (cast(крат*)&(x))[1] & 0x8000; }
@@ -1182,34 +1182,34 @@ export extern (D)
             : (cast(крат*)&(x))[4] & 0x8000;
     }
 	  //цел isgreater(реал-floating x, реал-floating y);
-    цел больше_ли(плав x, плав y)        { return !(x !>  y); }
-    цел больше_ли(дво x, дво y)      { return !(x !>  y); }
-    цел больше_ли(реал x, реал y)          { return !(x !>  y); }
+    цел больше(плав x, плав y)        { return !(x !>  y); }
+    цел больше(дво x, дво y)      { return !(x !>  y); }
+    цел больше(реал x, реал y)          { return !(x !>  y); }
 
-    //цел большеравны_ли(реал-floating x, реал-floating y);
-    цел большеравен_ли(плав x, плав y)   { return !(x !>= y); }
-    цел большеравен_ли(дво x, дво y) { return !(x !>= y); }
-    цел большеравен_ли(реал x, реал y)     { return !(x !>= y); }
+    //цел большеравны(реал-floating x, реал-floating y);
+    цел большеравен(плав x, плав y)   { return !(x !>= y); }
+    цел большеравен(дво x, дво y) { return !(x !>= y); }
+    цел большеравен(реал x, реал y)     { return !(x !>= y); }
 
     //цел isless(реал-floating x, реал-floating y);
-    цел меньше_ли(плав x, плав y)           { return !(x !<  y); }
-    цел меньше_ли(дво x, дво y)         { return !(x !<  y); }
-    цел меньше_ли(реал x, реал y)             { return !(x !<  y); }
+    цел меньше(плав x, плав y)           { return !(x !<  y); }
+    цел меньше(дво x, дво y)         { return !(x !<  y); }
+    цел меньше(реал x, реал y)             { return !(x !<  y); }
 
-    //цел меньше_ли(реал-floating x, реал-floating y);
-    цел меньшеравен_ли(плав x, плав y)      { return !(x !<= y); }
-    цел меньшеравен_ли(дво x, дво y)    { return !(x !<= y); }
-    цел меньшеравен_ли(реал x, реал y)        { return !(x !<= y); }
+    //цел меньше(реал-floating x, реал-floating y);
+    цел меньшеравен(плав x, плав y)      { return !(x !<= y); }
+    цел меньшеравен(дво x, дво y)    { return !(x !<= y); }
+    цел меньшеравен(реал x, реал y)        { return !(x !<= y); }
 
-    //цел меньше_лиgreater(реал-floating x, реал-floating y);
-    цел меньшебольше_ли(плав x, плав y)    { return !(x !<> y); }
-    цел меньшебольше_ли(дво x, дво y)  { return !(x !<> y); }
-    цел меньшебольше_ли(реал x, реал y)      { return !(x !<> y); }
+    //цел меньшеgreater(реал-floating x, реал-floating y);
+    цел меньшебольше(плав x, плав y)    { return !(x !<> y); }
+    цел меньшебольше(дво x, дво y)  { return !(x !<> y); }
+    цел меньшебольше(реал x, реал y)      { return !(x !<> y); }
 
     //цел isunordered(реал-floating x, реал-floating y);
-    цел беспорядочны_ли(плав x, плав y)      { return (x !<>= y); }
-    цел беспорядочны_ли(дво x, дво y)    { return (x !<>= y); }
-    цел беспорядочны_ли(реал x, реал y)        { return (x !<>= y); }
+    цел беспорядочны(плав x, плав y)      { return (x !<>= y); }
+    цел беспорядочны(дво x, дво y)    { return (x !<>= y); }
+    цел беспорядочны(реал x, реал y)        { return (x !<>= y); }
 	  дво  акос(дво x){return acos(x);}
     плав   акосп(плав x){return acosf(x);}
     реал    акосд(реал x){return acosl(x);}
@@ -1656,33 +1656,33 @@ struct т_делид
  //реал  креалд(креал z){return creall(z);}
  
  
-цел числобукв_ли(цел c){return isalnum(c);}
-цел буква_ли(цел c){return isalpha(c);}
-цел пробел_ли(цел c){return isblank(c);}
-цел управ_ли(цел c){return iscntrl(c);}
-цел цифра_ли(цел c){return isdigit(c);}
-цел граф_ли(цел c){return isgraph(c);}
-цел проп_ли(цел c){return islower(c);}
-цел печат_ли(цел c){return isprint(c);}
-цел пункт_ли(цел c){return ispunct(c);}
-цел межбукв_ли(цел c){return isspace(c);}
-цел заг_ли(цел c){return isupper(c);}
-цел цифраикс_ли(цел c){return isxdigit(c);}
+цел числобукв(цел c){return isalnum(c);}
+цел буква(цел c){return isalpha(c);}
+цел пробел(цел c){return isblank(c);}
+цел управ(цел c){return iscntrl(c);}
+цел цифра(цел c){return isdigit(c);}
+цел граф(цел c){return isgraph(c);}
+цел проп(цел c){return islower(c);}
+цел печат(цел c){return isprint(c);}
+цел пункт(цел c){return ispunct(c);}
+цел межбукв(цел c){return isspace(c);}
+цел заг(цел c){return isupper(c);}
+цел цифраикс(цел c){return isxdigit(c);}
 цел впроп(цел c){return tolower(c);}
 цел взаг(цел c){return toupper(c);}
 
-цел числобуквш_ли(шим c){return iswalnum(cast(wchar_t) c);}
-цел букваш_ли(шим c){return iswalpha(cast(wchar_t) c);}
-//цел пробелш_ли(шим c){return iswblank(cast(wchar_t) c);}
-цел управш_ли(шим c){return iswcntrl(cast(wchar_t) c);}
-цел цифраш_ли(шим c){return iswdigit(cast(wchar_t) c);}
-цел графш_ли(шим c){return iswgraph(cast(wchar_t) c);}
-цел пропш_ли(шим c){return iswlower(cast(wchar_t) c);}
-цел печатш_ли(шим c){return iswprint(cast(wchar_t) c);}
-цел пунктш_ли(шим c){return iswpunct(cast(wchar_t) c);}
-цел межбуквш_ли(шим c){return iswspace(cast(wchar_t) c);}
-цел загш_ли(шим c){return iswupper(cast(wchar_t) c);}
-цел цифраиксш_ли(шим c){return iswxdigit(cast(wchar_t) c);}
+цел числобуквш(шим c){return iswalnum(cast(wchar_t) c);}
+цел букваш(шим c){return iswalpha(cast(wchar_t) c);}
+//цел пробелш(шим c){return iswblank(cast(wchar_t) c);}
+цел управш(шим c){return iswcntrl(cast(wchar_t) c);}
+цел цифраш(шим c){return iswdigit(cast(wchar_t) c);}
+цел графш(шим c){return iswgraph(cast(wchar_t) c);}
+цел пропш(шим c){return iswlower(cast(wchar_t) c);}
+цел печатш(шим c){return iswprint(cast(wchar_t) c);}
+цел пунктш(шим c){return iswpunct(cast(wchar_t) c);}
+цел межбуквш(шим c){return iswspace(cast(wchar_t) c);}
+цел загш(шим c){return iswupper(cast(wchar_t) c);}
+цел цифраиксш(шим c){return iswxdigit(cast(wchar_t) c);}
 цел впропш(шим c){return towlower(cast(wchar_t) c);}
 цел взагш(шим c){return towupper(cast(wchar_t) c);}
 //шим    втрансш(шим ш, шим опис){return cast(шим) towctrans(cast(wchar_t) ш, cast(wctrans_t) опис);}

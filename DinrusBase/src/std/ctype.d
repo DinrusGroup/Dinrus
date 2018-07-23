@@ -24,7 +24,7 @@ module std.ctype;
 
  юткст[33] РУСв = [\U00000410,\U00000411,\U00000412,\U00000413,\U00000414,\U00000415,\U00000401,\U00000416,\U00000417,\U00000418,\U00000419,\U0000041a,\U0000041b,\U0000041c,\U0000041d,\U0000041e,\U0000041f,\U00000420,\U00000421,\U00000422,\U00000423,\U00000424,\U00000425,\U00000426,\U00000427,\U00000428,\U00000429,\U0000042a,\U0000042b,\U0000042c,\U0000042d,\U0000042e,\U0000042f];
  
- бул рус_ли(дим б)
+ бул рус(дим б)
  {
   юткст м_б =[б];
   switch(м_б)
@@ -56,20 +56,20 @@ int isalnum(dchar б)
   {
   цел рез;
   рез =	(б <= 0x7F) ? _ctype[б] & (_БУКВ|_ЦИФР) : 0;
-  if(рус_ли(б)) рез = проверьРус(б)& (_БУКВ|_ЦИФР);
+  if(рус(б)) рез = проверьРус(б)& (_БУКВ|_ЦИФР);
   return рез;
  }
-цел числобукв_ли(дим б){return isalnum(б);}
+цел числобукв(дим б){return isalnum(б);}
 /**
  * Returns !=0 if б is an ascii upper or lower case letter.
  */
 int isalpha(dchar б)  {
 цел рез;
   рез =	(б <= 0x7F) ? _ctype[б] & (_БУКВ): 0;
-  if(рус_ли(б)) рез = проверьРус(б) & (_БУКВ); 
+  if(рус(б)) рез = проверьРус(б) & (_БУКВ); 
  return рез;
  }
-цел буква_ли(дим б){return  isalpha(б);}
+цел буква(дим б){return  isalpha(б);}
 /**
  * Returns !=0 if б is a control character.
  */
@@ -77,40 +77,40 @@ int iscntrl(dchar б)
   { 
   цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_КТРЛ)      : 0;
-  if(рус_ли(б)) рез = проверьРус(б)& (_КТРЛ);  
+  if(рус(б)) рез = проверьРус(б)& (_КТРЛ);  
  return рез;  
   }
-цел управ_ли(дим б){return iscntrl(б);}
+цел управ(дим б){return iscntrl(б);}
 /**
  * Returns !=0 if б is a digit.
  */
 int isdigit(dchar б)  {
  цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_ЦИФР): 0;
-	if(рус_ли(б)) рез = проверьРус(б)& (_ЦИФР);
+	if(рус(б)) рез = проверьРус(б)& (_ЦИФР);
  return рез;
  }
-цел цифра_ли(дим б){return isdigit(б);}
+цел цифра(дим б){return isdigit(б);}
 /**
  * Returns !=0 if б is lower case ascii letter.
  */
 int islower(dchar б)  { 
 цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_БНР) : 0;
-if(рус_ли(б)) рез = проверьРус(б)& (_БНР);
+if(рус(б)) рез = проверьРус(б)& (_БНР);
  return рез;
   }
-цел проп_ли(дим б){return islower(б);}
+цел проп(дим б){return islower(б);}
 /**
  * Returns !=0 if б is a punctuation character.
  */
 int ispunct(dchar б)  {
 цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_ПУНКТ)      : 0;
-  if(рус_ли(б)) рез = проверьРус(б)&(_ПУНКТ);
+  if(рус(б)) рез = проверьРус(б)&(_ПУНКТ);
  return рез;
  }
-цел пунктзнак_ли(дим б){return  ispunct(б);}
+цел пунктзнак(дим б){return  ispunct(б);}
 /**
  * Returns !=0 if б is a space, tab, vertical tab, form feed,
  * carriage return, or linefeed.
@@ -118,40 +118,40 @@ int ispunct(dchar б)  {
 int isspace(dchar б)  {
 цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_ПБЕЛ)      : 0;
-    if(рус_ли(б)) рез = проверьРус(б)&(_ПБЕЛ);
+    if(рус(б)) рез = проверьРус(б)&(_ПБЕЛ);
  return рез;
  }
-цел межбукв_ли(дим б){return isspace(б);}
+цел межбукв(дим б){return isspace(б);}
 /**
  * Returns !=0 if б is an upper case ascii character.
  */
 int isupper(dchar б)  {
 цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_БВР)       : 0;
-if(рус_ли(б)) рез = проверьРус(б)&(_БВР);
+if(рус(б)) рез = проверьРус(б)&(_БВР);
  return рез;
  }
-цел заг_ли(дим б){return isupper(б);}
+цел заг(дим б){return isupper(б);}
 /**
  * Returns !=0 if б is a hex digit (0..9, a..f, A..F).
  */
 int isxdigit(dchar б) {
 цел рез;
   рез = (б <= 0x7F) ? _ctype[б] & (_ГЕКС)      : 0; 
- if(рус_ли(б)) рез = проверьРус(б)&(_ГЕКС);
+ if(рус(б)) рез = проверьРус(б)&(_ГЕКС);
  return рез;
  }
-цел цифраикс_ли(дим б){return isxdigit(б);}
+цел цифраикс(дим б){return isxdigit(б);}
 /**
  * Returns !=0 if б is a printing character except for the space character.
  */
 int isgraph(dchar б)  {
 цел рез;
   рез =(б <= 0x7F) ? _ctype[б] & (_БУКВ|_ЦИФР|_ПУНКТ) : 0;
-   if(рус_ли(б)) рез = проверьРус(б)&(_БУКВ|_ЦИФР|_ПУНКТ);
+   if(рус(б)) рез = проверьРус(б)&(_БУКВ|_ЦИФР|_ПУНКТ);
  return рез;
  }
-цел граф_ли(дим б){return  isgraph(б);}
+цел граф(дим б){return  isgraph(б);}
 /**
  * Returns !=0 if б is a printing character including the space character.
  */
@@ -159,15 +159,15 @@ int isprint(dchar б)
   {
  цел рез;
   рез =(б <= 0x7F) ? _ctype[б] & (_БУКВ|_ЦИФР|_ПУНКТ|_БЛК) : 0;
-     if(рус_ли(б)) рез = проверьРус(б)&(_БУКВ|_ЦИФР|_ПУНКТ|_БЛК);
+     if(рус(б)) рез = проверьРус(б)&(_БУКВ|_ЦИФР|_ПУНКТ|_БЛК);
  return рез;
   }
-цел печат_ли(дим б) {return  isprint(б);}
+цел печат(дим б) {return  isprint(б);}
 /**
  * Returns !=0 if б is in the ascii character set, i.e. in the range 0..0x7F.
  */
 int isascii(dchar б)  { return б <= 0x7F; }
-цел аски_ли(дим б){return  isascii(б);}
+цел аски(дим б){return  isascii(б);}
 
 /**
  * If б is an upper case ascii character,
@@ -241,8 +241,8 @@ enum
 public:
 int isruslower(dchar б)  { return (б <= 'я' &&  б >='а' || б == 'ё'); }
 int isrusupper(dchar б)  { return (б <=  'Я' && б >= 'А' || б == 'Ё') ; }
-цел руспроп_ли(дим б)  { return (б <= 'я' &&  б >='а' || б == 'ё'); }
-цел русзаг_ли(дим б)  { return (б <=  'Я' && б >= 'А' || б == 'Ё') ; }
+цел руспроп(дим б)  { return (б <= 'я' &&  б >='а' || б == 'ё'); }
+цел русзаг(дим б)  { return (б <=  'Я' && б >= 'А' || б == 'Ё') ; }
 
 unittest
 {

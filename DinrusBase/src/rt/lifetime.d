@@ -223,7 +223,7 @@ extern (C) ulong _d_newarrayT(TypeInfo ti, size_t length)
         результат = 0;
     else
     {
-        if(!смИниц_ли())//version (D_InlineAsm_X86)
+        if(!смИниц())//version (D_InlineAsm_X86)
         {
             asm
             {
@@ -1049,4 +1049,4 @@ extern (C):
 бул смОсвободи( ук  p );
 т_мера смРазмер( ук  p );
 ИнфОБл смОпроси( ук  p );
-бул смИниц_ли();
+бул смИниц();

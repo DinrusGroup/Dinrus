@@ -14,7 +14,7 @@
 /*
  * Authors:
  *	Walter Bright, Digital Mars, www.digitalmars.com
- *	Tomasz Stachowiak (статМас_ли, кортежВыражений_ли)
+ *	Tomasz Stachowiak (статМас, кортежВыражений)
  */
 
 module tpl.traits;
@@ -157,28 +157,28 @@ private template isStaticArray_impl(Т)
 /**
  * Detect whether тип Т is a static массив.
  */
-template статМас_ли(Т)
+template статМас(Т)
 {
-    const бул статМас_ли = isStaticArray_impl!(Т).рез;
+    const бул статМас = isStaticArray_impl!(Т).рез;
 }
 
 
-static assert (статМас_ли!(цел[51]));
-static assert (статМас_ли!(цел[][2]));
-static assert (статМас_ли!(сим[][цел][11]));
-static assert (!статМас_ли!(цел[]));
-static assert (!статМас_ли!(цел[сим]));
-static assert (!статМас_ли!(цел[1][]));
+static assert (статМас!(цел[51]));
+static assert (статМас!(цел[][2]));
+static assert (статМас!(сим[][цел][11]));
+static assert (!статМас!(цел[]));
+static assert (!статМас!(цел[сим]));
+static assert (!статМас!(цел[1][]));
 
 /**
  * Tells whether the кортеж Т is an expression кортеж.
  */
-template кортежВыражений_ли(Т ...)
+template кортежВыражений(Т ...)
 {
     static if (is(проц function(Т)))
-        const бул кортежВыражений_ли = false;
+        const бул кортежВыражений = false;
     else
-        const бул кортежВыражений_ли = true;
+        const бул кортежВыражений = true;
 }
 
 //std2.traits
@@ -1146,9 +1146,9 @@ unittest
 /**
  * Оценивается как true, если Т является char[], wchar[] или dchar[].
  */
-template текстТип_ли( Т )
+template текстТип( Т )
 {
-    const bool текстТип_ли = is( Т : char[] )  ||
+    const bool текстТип = is( Т : char[] )  ||
     is( Т : wchar[] ) ||
     is( Т : dchar[] ) ||
     is( Т : сим[] )  ||
@@ -1159,9 +1159,9 @@ template текстТип_ли( Т )
 /**
  * Evaluates to true if Т is char, wchar, or dchar.
  */
-template симТип_ли( Т )
+template симТип( Т )
 {
-    const bool симТип_ли = is( Т == char )  ||
+    const bool симТип = is( Т == char )  ||
     is( Т == wchar ) ||
     is( Т == dchar ) ||
     is( Т == сим )  ||
@@ -1173,9 +1173,9 @@ template симТип_ли( Т )
 /**
  * Evaluates to true if Т is a signed integer type.
  */
-template целСоЗнакомТип_ли( Т )
+template целСоЗнакомТип( Т )
 {
-    const bool целСоЗнакомТип_ли = is( Т == byte )  ||
+    const bool целСоЗнакомТип = is( Т == byte )  ||
     is( Т == short ) ||
     is( Т == int )   ||
     is( Т == long ) ||
@@ -1191,9 +1191,9 @@ template целСоЗнакомТип_ли( Т )
 /**
  * Evaluates to true if Т is an unsigned integer type.
  */
-template целБезЗнакаТип_ли( Т )
+template целБезЗнакаТип( Т )
 {
-    const bool целБезЗнакаТип_ли = is( Т == ubyte )  ||
+    const bool целБезЗнакаТип = is( Т == ubyte )  ||
     is( Т == ushort ) ||
     is( Т == uint )   ||
     is( Т == ulong ) ||
@@ -1209,19 +1209,19 @@ template целБезЗнакаТип_ли( Т )
 /**
  * Evaluates to true if Т is a signed or unsigned integer type.
  */
-template целТип_ли( Т )
+template целТип( Т )
 {
-    const bool целТип_ли = целСоЗнакомТип_ли!(Т) ||
-    целБезЗнакаТип_ли!(Т);
+    const bool целТип = целСоЗнакомТип!(Т) ||
+    целБезЗнакаТип!(Т);
 }
 
 
 /**
  * Evaluates to true if Т is a real floating-point type.
  */
-template реалТип_ли( Т )
+template реалТип( Т )
 {
-    const bool реалТип_ли = is( Т == float )  ||
+    const bool реалТип = is( Т == float )  ||
     is( Т == double ) ||
     is( Т == real ) ||
     is( Т == плав )  ||
@@ -1233,9 +1233,9 @@ template реалТип_ли( Т )
 /**
  * Evaluates to true if Т is a complex floating-point type.
  */
-template комплексТип_ли( Т )
+template комплексТип( Т )
 {
-    const bool комплексТип_ли = is( Т == cfloat ) ||
+    const bool комплексТип = is( Т == cfloat ) ||
     is( Т == cdouble ) ||
     is( Т == creal )||
     is( Т == кплав ) ||
@@ -1247,9 +1247,9 @@ template комплексТип_ли( Т )
 /**
  * Evaluates to true if Т is an imaginary floating-point type.
  */
-template мнимыйТип_ли( Т )
+template мнимыйТип( Т )
 {
-    const bool мнимыйТип_ли = is( Т == ifloat )  ||
+    const bool мнимыйТип = is( Т == ifloat )  ||
     is( Т == idouble ) ||
     is( Т == ireal )||
     is( Т == вплав )  ||
@@ -1262,15 +1262,15 @@ template мнимыйТип_ли( Т )
  * Evaluates to true if Т is any floating-point type: real, complex, or
  * imaginary.
  */
-template плавзапТип_ли( Т )
+template плавзапТип( Т )
 {
-    const bool плавзапТип_ли = реалТип_ли!(Т)    ||
-    комплексТип_ли!(Т) ||
-    мнимыйТип_ли!(Т);
+    const bool плавзапТип = реалТип!(Т)    ||
+    комплексТип!(Т) ||
+    мнимыйТип!(Т);
 }
 
 /// true if Т is an atomic type
-template атомТип_ли(Т)
+template атомТип(Т)
 {
     static if( is( Т == bool )
                || is( Т == char )
@@ -1308,9 +1308,9 @@ template атомТип_ли(Т)
                || is( Т == вплав )
                || is( Т == вдво )
                || is( Т == вреал ))
-        const атомТип_ли = true;
+        const атомТип = true;
     else
-        const атомТип_ли = false;
+        const атомТип = false;
 }
 
 /**
@@ -1376,11 +1376,11 @@ template ImaginaryTypeOf(Т)
 /// type with maximum precision
 template MaxPrecTypeOf(Т)
 {
-    static if (комплексТип_ли!(Т))
+    static if (комплексТип!(Т))
     {
         alias creal MaxPrecTypeOf;
     }
-    else static if (мнимыйТип_ли!(Т))
+    else static if (мнимыйТип!(Т))
     {
         alias ireal MaxPrecTypeOf;
     }
@@ -1394,26 +1394,26 @@ template MaxPrecTypeOf(Т)
 /**
  * Evaluates to true if Т is a pointer type.
  */
-template типУказатель_ли(Т)
+template типУказатель(Т)
 {
-    const типУказатель_ли = false;
+    const типУказатель = false;
 }
 
-template типУказатель_ли(Т : Т*)
+template типУказатель(Т : Т*)
 {
-    const типУказатель_ли = true;
+    const типУказатель = true;
 }
 
 debug( UnitTest )
 {
     unittest
     {
-        static assert( типУказатель_ли!(void*) );
-        static assert( !типУказатель_ли!(char[]) );
-        static assert( типУказатель_ли!(char[]*) );
-        static assert( !типУказатель_ли!(char*[]) );
-        static assert( типУказатель_ли!(real*) );
-        static assert( !типУказатель_ли!(uint) );
+        static assert( типУказатель!(void*) );
+        static assert( !типУказатель!(char[]) );
+        static assert( типУказатель!(char[]*) );
+        static assert( !типУказатель!(char*[]) );
+        static assert( типУказатель!(real*) );
+        static assert( !типУказатель!(uint) );
         static assert( is(MaxPrecTypeOf!(float)==real));
         static assert( is(MaxPrecTypeOf!(cfloat)==creal));
         static assert( is(MaxPrecTypeOf!(ifloat)==ireal));
@@ -1423,7 +1423,7 @@ debug( UnitTest )
             void* a;
         }
 
-        static assert( !типУказатель_ли!(Ham) );
+        static assert( !типУказатель!(Ham) );
 
         union Eggs
         {
@@ -1431,12 +1431,12 @@ debug( UnitTest )
             uint  b;
         };
 
-        static assert( !типУказатель_ли!(Eggs) );
-        static assert( типУказатель_ли!(Eggs*) );
+        static assert( !типУказатель!(Eggs) );
+        static assert( типУказатель!(Eggs*) );
 
         struct Bacon {};
 
-        static assert( !типУказатель_ли!(Bacon) );
+        static assert( !типУказатель!(Bacon) );
 
     }
 }
@@ -1444,10 +1444,10 @@ debug( UnitTest )
 /**
  * Evaluates to true if Т is a a pointer, class, interface, or delegate.
  */
-template типСсылка_ли( Т )
+template типСсылка( Т )
 {
 
-    const bool типСсылка_ли = типУказатель_ли!(Т)  ||
+    const bool типСсылка = типУказатель!(Т)  ||
     is( Т == class )     ||
     is( Т == interface ) ||
     is( Т == delegate );
@@ -1457,9 +1457,9 @@ template типСсылка_ли( Т )
 /**
  * Evaulates to true if Т is a dynamic array type.
  */
-template типДинМасс_ли( Т )
+template типДинМасс( Т )
 {
-    const bool типДинМасс_ли = is( typeof(Т.init[0])[] == Т );
+    const bool типДинМасс = is( typeof(Т.init[0])[] == Т );
 }
 
 /**
@@ -1475,66 +1475,66 @@ version( GNU )
         const Т isStaticArrayTypeInst = void;
     }
 
-    template типСтатМасс_ли( Т )
+    template типСтатМасс( Т )
     {
         static if( is( typeof(Т.length) ) && !is( typeof(Т) == typeof(Т.init) ) )
         {
-            const bool типСтатМасс_ли = is( Т == typeof(Т[0])[isStaticArrayTypeInst!(Т).length] );
+            const bool типСтатМасс = is( Т == typeof(Т[0])[isStaticArrayTypeInst!(Т).length] );
         }
         else
         {
-            const bool типСтатМасс_ли = false;
+            const bool типСтатМасс = false;
         }
     }
 }
 else
 {
-    template типСтатМасс_ли( Т : Т[U], size_t U )
+    template типСтатМасс( Т : Т[U], size_t U )
     {
-        const bool типСтатМасс_ли = true;
+        const bool типСтатМасс = true;
     }
 
-    template типСтатМасс_ли( Т )
+    template типСтатМасс( Т )
     {
-        const bool типСтатМасс_ли = false;
+        const bool типСтатМасс = false;
     }
 }
 
 /// true for array types
-template типМассив_ли(Т)
+template типМассив(Т)
 {
     static if (is( Т U : U[] ))
-        const bool типМассив_ли=true;
+        const bool типМассив=true;
     else
-        const bool типМассив_ли=false;
+        const bool типМассив=false;
 }
 
 debug( UnitTest )
 {
     unittest
     {
-        static assert( типСтатМасс_ли!(char[5][2]) );
-        static assert( !типДинМасс_ли!(char[5][2]) );
-        static assert( типМассив_ли!(char[5][2]) );
+        static assert( типСтатМасс!(char[5][2]) );
+        static assert( !типДинМасс!(char[5][2]) );
+        static assert( типМассив!(char[5][2]) );
 
-        static assert( типСтатМасс_ли!(char[15]) );
-        static assert( !типСтатМасс_ли!(char[]) );
+        static assert( типСтатМасс!(char[15]) );
+        static assert( !типСтатМасс!(char[]) );
 
-        static assert( типДинМасс_ли!(char[]) );
-        static assert( !типДинМасс_ли!(char[15]) );
+        static assert( типДинМасс!(char[]) );
+        static assert( !типДинМасс!(char[15]) );
 
-        static assert( типМассив_ли!(char[15]) );
-        static assert( типМассив_ли!(char[]) );
-        static assert( !типМассив_ли!(char) );
+        static assert( типМассив!(char[15]) );
+        static assert( типМассив!(char[]) );
+        static assert( !типМассив!(char) );
     }
 }
 
 /**
  * Evaluates to true if Т is an associative array type.
  */
-template типАссоцМасс_ли( Т )
+template типАссоцМасс( Т )
 {
-    const bool типАссоцМасс_ли = is( typeof(Т.init.values[0])[typeof(Т.init.keys[0])] == Т );
+    const bool типАссоцМасс = is( typeof(Т.init.values[0])[typeof(Т.init.keys[0])] == Т );
 }
 
 
@@ -1682,7 +1682,7 @@ template ТипЗначенияАМ(Т)
 /// returns the size of a static array
 template размерСтатМассива(Т)
 {
-    static assert(типСтатМасс_ли!(Т),"размерСтатМассива требует указать статический массив в качестве типа");
+    static assert(типСтатМасс!(Т),"размерСтатМассива требует указать статический массив в качестве типа");
     static assert(рангМассива!(Т)==1,"реализовано только для массивов 1d...");
     const size_t размерСтатМассива=(Т).sizeof / typeof(Т.init).sizeof;
 }
@@ -1690,7 +1690,7 @@ template размерСтатМассива(Т)
 /// is Т is static array returns a dynamic array, otherwise returns Т
 template ТипДинМас(Т)
 {
-    static if( типСтатМасс_ли!(Т) )
+    static if( типСтатМасс!(Т) )
         alias typeof(Т.dup) ТипДинМас;
     else
         alias Т ТипДинМас;
@@ -1710,8 +1710,8 @@ debug( UnitTest )
     static assert( is(ТипКлючаАМ!(char[int])==int));
     static assert( is(ТипЗначенияАМ!(char[][int])==char[]));
     static assert( is(ТипКлючаАМ!(char[][int[]])==int[]));
-    static assert( типАссоцМасс_ли!(char[][int[]]));
-    static assert( !типАссоцМасс_ли!(char[]));
+    static assert( типАссоцМасс!(char[][int[]]));
+    static assert( !типАссоцМасс!(char[]));
     static assert( is(ТипДинМас!(char[2])==ТипДинМас!(char[])));
     static assert( is(ТипДинМас!(char[2])==char[]));
     static assert( размерСтатМассива!(char[2])==2);

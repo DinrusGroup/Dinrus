@@ -181,8 +181,8 @@ export extern(D) class Нить
             м_вызов = Вызов.ДГ;
             м_тек = &м_глав;
         }
-
-
+		
+		
         /**
          * Очищает остатки ресурсов, использованных объектом.
          */
@@ -260,13 +260,13 @@ export extern(D) class Нить
          */
     export  final Объект присоедини( бул повторноБросить = true )
         {
-            if(!пущена_ли())
+            if(!пущена())
                 return null;
         
                 if( ЖдиОдинОбъект( м_дескр, БЕСК ) != ЖДИ_ОБЪЕКТ_0 )
                     throw new ОшибкаНити( "Не удаётся присоединить нити" );
                 // NOTE: м_адр must be cleared before м_дескр is closed to avoid
-                //       a race condition with пущена_ли.  The operation is labeled
+                //       a race condition with пущена.  The operation is labeled
                 //       volatile to prevent compiler reordering.
                 volatile м_адр = м_адр.init;
                 ЗакройДескр( м_дескр );
@@ -327,7 +327,7 @@ export extern(D) class Нить
          * Returns:
          *  true if this is a daemon thread.
          */
-        final бул демон_ли()
+        final бул демон()
         {
             synchronized( this )
             {
@@ -346,7 +346,7 @@ export extern(D) class Нить
          * Параметры:
          *  знач = The new daemon status for this thread.
          */
-    export  final проц демон_ли( бул знач )
+    export  final проц демон( бул знач )
         {
             synchronized( this )
             {
@@ -361,7 +361,7 @@ export extern(D) class Нить
          * Returns:
          *  true if the thread is running, false if not.
          */
-    export  final бул пущена_ли()
+    export  final бул пущена()
         {
             if( м_адр == м_адр.init )
             {
@@ -1054,7 +1054,7 @@ export extern(D) class Нить
         {
             assert( t );
             assert( !t.следщ && !t.предщ );
-            assert( t.пущена_ли );
+            assert( t.пущена );
         }
         body
         {
@@ -1196,7 +1196,7 @@ export extern(D) class Нить
 
             foreach( t; Нить )
             {
-                if( !t.демон_ли )
+                if( !t.демон )
                 {
                     неДемон = t;
                     break;
@@ -1220,7 +1220,7 @@ export extern(D) class Нить
 
         for( Нить t = Нить.см_ннач; t; t = t.следщ )
         {
-            if( !t.пущена_ли )
+            if( !t.пущена )
                 Нить.удали( t );
         }
     }
@@ -1280,7 +1280,7 @@ export extern(D) class Нить
             {
                 if( t.м_адр != ДайИдТекущейНити() && ЗаморозьНить( t.м_дескр ) == 0xFFFFFFFF )
                 {
-                    if( !t.пущена_ли )
+                    if( !t.пущена )
                     {
                         Нить.удали( t );
                         return;
@@ -1311,7 +1311,7 @@ export extern(D) class Нить
                 {
                     if( pthread_kill( t.м_адр, SIGUSR1 ) != 0 )
                     {
-                        if( !t.пущена_ли )
+                        if( !t.пущена )
                         {
                             Нить.удали( t );
                             return;
@@ -1375,7 +1375,7 @@ export extern(D) class Нить
         {
             if( ++suspendDepth > 1 )
                 return;
-            // NOTE: I'd really prefer not to check пущена_ли внутри this loop but
+            // NOTE: I'd really prefer not to check пущена внутри this loop but
             //       not doing so could be problematic if threads are termianted
             //       abnormally and a new thread is created with the same thread
             //       address before the следщ GC пуск.  This situation might cause
@@ -1384,7 +1384,7 @@ export extern(D) class Нить
             //       abort, and Bad Things to occur.
             for( Нить t = Нить.см_ннач; t; t = t.следщ )
             {
-                if( t.пущена_ли ){
+                if( t.пущена ){
                     заморозь( t );
                 } else
                     Нить.удали( t );
@@ -1450,7 +1450,7 @@ export extern(D) class Нить
             {
                 if( t.м_адр != ДайИдТекущейНити() && РазморозьНить( t.м_дескр ) == 0xFFFFFFFF )
                 {
-                    if( !t.пущена_ли )
+                    if( !t.пущена )
                     {
                         Нить.удали( t );
                         return;
@@ -1468,7 +1468,7 @@ export extern(D) class Нить
                 {
                     if( pthread_kill( t.м_адр, SIGUSR2 ) != 0 )
                     {
-                        if( !t.пущена_ли )
+                        if( !t.пущена )
                         {
                             Нить.удали( t );
                             return;

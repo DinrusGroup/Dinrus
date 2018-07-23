@@ -1,11 +1,12 @@
-﻿/** \mainpage  Concurrent library for D
- * 
- * This is a port of Doug Lea's concurrent Java library to D. It
- * contains basic sychronization constructs that extend the
- * builtin D "synchronized" statement. <br>
+﻿/** \mainpage  Конкурентная библиотека для Динрус
+ *
+ * Это портированная в Динрус конкурентная библиотека для Java
+ * написанная Дугом Ли(Doug Lea). Она содержит базовые
+ * конструкты синхронизации, дополняющие встроенный
+ * в D "synchronized". <br>
  *
  * For more information about D see http://www.digitalmars.com/d
- * and for Doug Lea's Java implementation see 
+ * and for Doug Lea's Java implementation see
  * http://gee.cs.oswego.edu/dl/классы/EDU/oswego/cs/dl/util/concurrent/intro.html
  */
 

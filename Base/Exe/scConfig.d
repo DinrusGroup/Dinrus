@@ -176,9 +176,9 @@ version=7.51 Build 020
 [Environment]
 PATH=%DINRUS%\\..
 BIN=%DINRUS%
-INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
-LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\rulada_eng\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+DD-dwt.lib+DinrusWX.lib
+INCLUDE=\"%PATH%\\include\";%INCLUDE%
+LIB=\"%PATH%\\lib\";\"%PATH%\\lib\\rulada\";\"%PATH%\\lib\\rulada_eng\";\"%PATH%\\lib\\c\";\"%PATH%\\lib\\sysimport\"
+DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+DD-dwt.lib+DinrusWX.lib+dwt.lib+dwtx.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	

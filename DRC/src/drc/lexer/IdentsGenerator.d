@@ -20,7 +20,7 @@ private static const сим[][] предопрИденты = [
   // Предопределенные идентификаторы версии:
   "DigitalMars", "X86", "X86_64",
   /*"Windows", */"Win32", "Win64",
-  "Linux:linux", "ЛитлЭндиан", "BigEndian",
+  "Linux:linux", "LittleEndian", "BigEndian",
   "D_Coverage", "D_InlineAsm_X86", "D_Version2",
   "none", "all",
   // Вариадические параметры:

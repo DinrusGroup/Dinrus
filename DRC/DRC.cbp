@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add option="-debug" />
 					<Add directory="src" />
+					<Add directory="../../../imp/dinrus" />
 				</Compiler>
 			</Target>
 			<Target title="Release">

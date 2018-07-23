@@ -71,7 +71,7 @@ alias син dSin;
 alias кос dCos;
 alias фабс dFabs;
 alias атан2 dAtan2;
-alias нч_ли dIsNan;
+alias нч dIsNan;
 alias копируйзнак dCopySign;
 
 struct dxWorld {};

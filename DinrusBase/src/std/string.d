@@ -15,7 +15,7 @@ private import std.format;
 private import std.ctype;
 private import tpl.args;
 
-	/+alias iswhite пробел_ли;
+	/+alias iswhite пробел;
 	 alias atoi алфнац;
 	 alias atof алфнапз;
 	 alias cmp сравни;
@@ -59,11 +59,11 @@ private import tpl.args;
 	 alias removechars удалисимв;
 	 alias squeeze сквиз;
 	 alias succ следщ;
-	 alias isNumeric число_ли;
+	 alias isNumeric число;
 	 alias column колном;
 	 alias wrap параграф;
-	 alias isEmail эладр_ли;
-	 alias isURL урл_ли;
+	 alias isEmail эладр;
+	 alias isURL урл;
 	 alias intToUtf8 целВУтф8;
 	 alias ulongToUtf8 бдолВУтф8;
 
@@ -4171,7 +4171,7 @@ alias  object.stringCompare cmp;
 *****************************************************************/
 
 /////////////////////////////////
-бул пробел_ли(дим s)
+бул пробел(дим s)
 {
 return cast(бул)(iswhite(cast(dchar) s));
 }

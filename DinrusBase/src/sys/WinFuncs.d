@@ -879,17 +879,17 @@ return cast(экз)GetModuleHandleW(cast(LPCWSTR) toUTF16z(фимя));
 
 бцел СбросьОбзорЗаписи(ук базАдр, т_мера размРег){ return cast(бцел) ResetWriteWatch( cast(LPVOID) базАдр, размРег);}
 
-бул ПлохойУкНаКод_ли(ук проц){return cast(бул) IsBadCodePtr(cast(FARPROC) проц);}
+бул ПлохойУкНаКод(ук проц){return cast(бул) IsBadCodePtr(cast(FARPROC) проц);}
 
-бул ПлохойЧтенУк_ли(ук первБайтБлока, бцел размБлока){return cast(бул) IsBadReadPtr(cast(LPVOID) первБайтБлока, cast(UINT) размБлока);}
+бул ПлохойЧтенУк(ук первБайтБлока, бцел размБлока){return cast(бул) IsBadReadPtr(cast(LPVOID) первБайтБлока, cast(UINT) размБлока);}
 
-бул ПлохойЗапУк_ли(ук первБайтБлока, бцел размБлока){return cast(бул) IsBadWritePtr(cast(LPVOID) первБайтБлока, cast(UINT) размБлока);}
+бул ПлохойЗапУк(ук первБайтБлока, бцел размБлока){return cast(бул) IsBadWritePtr(cast(LPVOID) первБайтБлока, cast(UINT) размБлока);}
 //{return cast(бул) IsBadHugeReadPtr(LPVOID, UINT);}
 //{return cast(бул) IsBadHugeWritePtr(cast(LPVOID), UINT);}
 
-бул ПлохойСтрУк_ли(усим т, бцел разм){return cast(бул) IsBadStringPtrA(cast(LPCSTR) т , cast(UINT) разм);}
+бул ПлохойСтрУк(усим т, бцел разм){return cast(бул) IsBadStringPtrA(cast(LPCSTR) т , cast(UINT) разм);}
 
-бул ПлохойШСтрУк_ли(ушим т, бцел разм){return cast(бул) IsBadStringPtrW(cast(LPCWSTR)т, cast(UINT) разм);}
+бул ПлохойШСтрУк(ушим т, бцел разм){return cast(бул) IsBadStringPtrW(cast(LPCWSTR)т, cast(UINT) разм);}
 
 проц ПереместиПамять(ук куда, ук откуда, т_мера длина){ RtlMoveMemory( cast(PVOID) куда,  cast(VOID*) откуда, длина);}
 

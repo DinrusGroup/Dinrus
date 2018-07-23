@@ -1,0 +1,66 @@
+dgui.lib
+ Warning 2: File Not Found dgui.lib
+DD-dwt.lib
+ Warning 2: File Not Found DD-dwt.lib
+DinrusWX.lib
+ Warning 2: File Not Found DinrusWX.lib
+obj\Release\src\dwt\internal\image\OS2BMPFileFormat.obj(OS2BMPFileFormat) 
+ Error 42: Symbol Undefined _D3dwt9Úhelper21ByteArrayOutpÑStream€——5_ctorMFZC€¼Æ
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_StringContainerInit@4
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_StringGetData@12
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_StringContainerFinish@4
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_CStringContainerInit@4
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_CStringGetData@12
+obj\Release\src\dwt\internal\mozilla\nsEmbedString.obj(nsEmbedString) 
+ Error 42: Symbol Undefined _NS_CStringContainerFinish@4
+obj\Release\src\dwt\opengl\GLCanvas.obj(GLCanvas) 
+ Error 42: Symbol Undefined _wglDeleteContext@4
+obj\Release\src\dwt\opengl\GLCanvas.obj(GLCanvas) 
+ Error 42: Symbol Undefined _wglGetCurrentContext@0
+obj\Release\src\dwt\opengl\GLCanvas.obj(GLCanvas) 
+ Error 42: Symbol Undefined _wglMakeCurrent@8
+OPTLINK : Warning 134: No Start Address 
+
+ Start         Length     Name                   Class
+ 0002:00000000 0014DBFBH  _TEXT                  CODE 32-bit
+ 0002:0014DBFC 00000B28H  ICODE                  ICODE 32-bit
+ 0003:00000000 00000000H  FMB                    DATA 32-bit
+ 0003:00000000 00000998H  FM                     DATA 32-bit
+ 0003:00000998 00000000H  FME                    DATA 32-bit
+ 0003:000009A0 00000004H  .CRT$XIA               DATA 32-bit
+ 0003:000009B0 00000004H  .CRT$XIZ               DATA 32-bit
+ 0003:000009C0 00000004H  .CRT$XCA               DATA 32-bit
+ 0003:000009D0 00000004H  .CRT$XCZ               DATA 32-bit
+ 0003:000009E0 00000004H  .CRT$XPA               DATA 32-bit
+ 0003:000009F0 00000004H  .CRT$XPZ               DATA 32-bit
+ 0003:00000A00 00000004H  .CRT$XTA               DATA 32-bit
+ 0003:00000A10 00000004H  .CRT$XTZ               DATA 32-bit
+ 0003:00000A14 00000000H  IMP__DATA              IMP__DATA 32-bit
+ 0003:00000A20 0020EE38H  _DATA                  DATA 32-bit
+ 0003:0020F858 00000000H  XIB                    DATA 32-bit
+ 0003:0020F858 0000001CH  XI                     DATA 32-bit
+ 0003:0020F874 00000000H  XIE                    DATA 32-bit
+ 0003:0020F874 00000000H  XIFCB                  DATA 32-bit
+ 0003:0020F874 00000004H  XIFU                   DATA 32-bit
+ 0003:0020F878 00000000H  XIFL                   DATA 32-bit
+ 0003:0020F878 00000004H  XIFM                   DATA 32-bit
+ 0003:0020F87C 00000000H  XIFCE                  DATA 32-bit
+ 0003:0020F87C 00000000H  XCB                    DATA 32-bit
+ 0003:0020F87C 00000014H  XC                     DATA 32-bit
+ 0003:0020F890 00000000H  XCE                    DATA 32-bit
+ 0003:0020F890 00000000H  CONST                  CONST 32-bit
+ 0003:0020F890 00009DC4H  _BSS                   BSS 32-bit
+ 0003:00219654 00000000H  XOB                    BSS 32-bit
+ 0003:00219654 00000000H  XO                     BSS 32-bit
+ 0003:00219654 00000000H  XOE                    BSS 32-bit
+ 0003:00219654 00000000H  XOFB                   BSS 32-bit
+ 0003:00219654 00000108H  XOF                    BSS 32-bit
+ 0003:0021975C 00000000H  XOFE                   BSS 32-bit
+ 0003:00219760 00000413H  c_common               BSS 32-bit
+ 0003:00219B74 00000000H  EEND                   ENDBSS 32-bit
+ 0003:00219B80 00000000H  STACK                  STACK 32-bit

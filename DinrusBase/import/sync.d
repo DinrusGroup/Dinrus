@@ -93,34 +93,34 @@ extern (D) class ИсключениеСинх : Исключение
 private
 {
 
-    template целыйТип_ли( T )
+    template целыйТип( T )
     {
-        const бул целыйТип_ли = целыйЗначныйТип_ли!(T) ||
-        целыйБеззначныйТип_ли!(T);
+        const бул целыйТип = целыйЗначныйТип!(T) ||
+        целыйБеззначныйТип!(T);
     }
 
-    template указательИлиКласс_ли(T)
+    template указательИлиКласс(T)
     {
-        const указательИлиКласс_ли = is(T == class);
+        const указательИлиКласс = is(T == class);
     }
 
-    template указательИлиКласс_ли(T : T*)
+    template указательИлиКласс(T : T*)
     {
-        const указательИлиКласс_ли = true;
+        const указательИлиКласс = true;
     }
 
-    template целыйЗначныйТип_ли( T )
+    template целыйЗначныйТип( T )
     {
-        const бул целыйЗначныйТип_ли = is( T == byte )  ||
+        const бул целыйЗначныйТип = is( T == byte )  ||
         is( T == short ) ||
         is( T == int )   ||
         is( T == long )/+||
         is( T == cent  )+/;
     }
 
-    template целыйБеззначныйТип_ли( T )
+    template целыйБеззначныйТип( T )
     {
-        const бул целыйБеззначныйТип_ли = is( T == ббайт )  ||
+        const бул целыйБеззначныйТип = is( T == ббайт )  ||
         is( T == ushort ) ||
         is( T == бцел )   ||
         is( T == ulong )/+||
@@ -676,7 +676,7 @@ version (D_InlineAsm_X86)
     T атомнаяПрибавка(T,U=T)(ref   T val, U incV_)
     {
         T incV=cast(T)incV_;
-        static if (целыйТип_ли!(T)||указательИлиКласс_ли!(T))
+        static if (целыйТип!(T)||указательИлиКласс!(T))
         {
             T* posVal=&val;
             T res;
@@ -740,7 +740,7 @@ else version (D_InlineAsm_X86_64)
     T атомнаяПрибавка(T,U=T)(ref   T val, U incV_)
     {
         T incV=cast(T)incV_;
-        static if (целыйТип_ли!(T)||указательИлиКласс_ли!(T))
+        static if (целыйТип!(T)||указательИлиКласс!(T))
         {
             T* posVal=&val;
             T res;
@@ -810,7 +810,7 @@ else
         T атомнаяПрибавка(T,U=T)(ref   T val, U incV_)
         {
             T incV=cast(T)incV_;
-            static assert( целыйТип_ли!(T)||указательИлиКласс_ли!(T),"неверный тип: "~T.stringof );
+            static assert( целыйТип!(T)||указательИлиКласс!(T),"неверный тип: "~T.stringof );
             synchronized(typeid(T))
             {
                 T oldV=val;
@@ -824,7 +824,7 @@ else
         T атомнаяПрибавка(T,U=T)(ref   T val, U incV_)
         {
             T incV=cast(T)incV_;
-            static assert( целыйТип_ли!(T)||указательИлиКласс_ли!(T),"неверный тип: "~T.stringof );
+            static assert( целыйТип!(T)||указательИлиКласс!(T),"неверный тип: "~T.stringof );
             synchronized(typeid(T))
             {
                 T oldV,newVal,nextVal;

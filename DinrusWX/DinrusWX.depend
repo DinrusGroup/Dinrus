@@ -1,1 +1,55 @@
 # depslib dependency file v1.0
+1513754413 source:d:\dinrus\dev\dinrus\dinruswx\wxd\accelerator.d
+	<wx/common.d>
+	<wx/MenuItem.d>
+
+1513754424 source:d:\dinrus\dev\dinrus\dinruswx\wxd\activateevent.d
+	<wx/common.d>
+	<wx/Event.d>
+
+1513754413 source:d:\dinrus\dev\dinrus\dinruswx\wxd\app.d
+	<wx/common.d>
+	<wx/EvtHandler.d>
+	<wx/Window.d>
+	<wx/GdiCommon.d>
+	<wx/Clipboard.d>
+	<wx/FontMisc.d>
+	<stdrus.d>
+
+1513754419 source:d:\dinrus\dev\dinrus\dinruswx\wxd\arrayint.d
+	<wx/common.d>
+
+1513754423 source:d:\dinrus\dev\dinrus\dinruswx\wxd\arraystring.d
+	<wx/common.d>
+
+1513754425 source:d:\dinrus\dev\dinrus\dinruswx\wxd\artprovider.d
+	<wx/common.d>
+	<wx/Bitmap.d>
+	<wx/Icon.d>
+	<wx/Window.d>
+
+1163769662 source:d:\dinrus\dev\dinrus\dinruswx\wxd\aui\aui.d
+	<wx/common.d>
+	<wx/aui/FrameManager.d>
+	<wx/aui/DockArt.d>
+
+1513754415 source:d:\dinrus\dev\dinrus\dinruswx\wxd\aui\dockart.d
+	<wx/aui/FrameManager.d>
+	<wx/wx.d>
+
+1513754416 source:d:\dinrus\dev\dinrus\dinruswx\wxd\aui\framemanager.d
+	<wx/wx.d>
+	<wx/MiniFrame.d>
+	<wx/Image.d>
+	<wx/Event.d>
+	<wx/EvtHandler.d>
+	<wx/aui/DockArt.d>
+
+1513754414 source:d:\dinrus\dev\dinrus\dinruswx\wxd\bitmap.d
+	<wx/common.d>
+	<wx/GDIObject.d>
+	<wx/Colour.d>
+	<wx/Palette.d>
+	<wx/Image.d>
+	<wx/Icon.d>
+

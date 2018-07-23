@@ -1,1 +1,193 @@
 # depslib dependency file v1.0
+1512822677 source:d:\dinrus\dev\dinrus\dinrusbase\import\com.d
+
+1512822677 source:d:\dinrus\dev\dinrus\dinrusbase\import\dinrus.d
+	<cidrus.d>
+	<com.d>
+
+1515527781 d:\dinrus\dev\dinrus\dinrusbase\import\cidrus.d
+
+1512822677 d:\dinrus\dev\dinrus\dinrusbase\import\com.d
+
+1512822677 source:d:\dinrus\dev\dinrus\dinrusbase\import\exception.d
+
+1515445189 source:d:\dinrus\dev\dinrus\dinrusbase\import\gc.d
+	<dinrus.d>
+
+1512822677 d:\dinrus\dev\dinrus\dinrusbase\import\dinrus.d
+	<cidrus.d>
+	<com.d>
+
+1512822678 source:d:\dinrus\dev\dinrus\dinrusbase\import\global.d
+
+1512822678 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\cosyne.d
+
+1512822678 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\dinruswindll.d
+
+1512822678 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\freeimage.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\ode.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\ogg.d
+	<stdrus.d>
+
+1515508394 d:\dinrus\dev\dinrus\dinrusbase\import\stdrus.d
+	<exception.d>
+
+1512822677 d:\dinrus\dev\dinrus\dinrusbase\import\exception.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\openal.d
+	<stdrus.d>
+	<stdrus.d>
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdl.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlimage.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlmixer.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlnet.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\sdlttf.d
+
+1512822679 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\zlib.d
+
+1512822680 source:d:\dinrus\dev\dinrus\dinrusbase\import\runtime.d
+
+1512822680 source:d:\dinrus\dev\dinrus\dinrusbase\import\std\intrinsic.d
+	<std/stdio.d>
+	<std/intrinsic.d>
+	<std/stdio.d>
+	<std/intrinsic.d>
+
+1512822680 d:\dinrus\dev\dinrus\dinrusbase\import\std\intrinsic.d
+
+1512822681 source:d:\dinrus\dev\dinrus\dinrusbase\import\stringz.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\sync.d
+
+1512822681 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\activex.d
+
+1512822681 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\com\all.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\com\msscriptcontrol.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\com\shell32.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\inc\kernel32.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\memory.d
+	<sys/WinConsts.d>
+
+1512822684 d:\dinrus\dev\dinrus\dinrusbase\import\sys\winconsts.d
+	<sys/uuid.d>
+
+1512822683 d:\dinrus\dev\dinrus\dinrusbase\import\sys\uuid.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\msscript.d
+
+1512822682 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\registry.d
+	<sys/registry.d>
+
+1512822682 d:\dinrus\dev\dinrus\dinrusbase\import\sys\registry.d
+
+1512822683 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\uuid.d
+
+1512822684 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\winconsts.d
+	<sys/WinStructs.d>
+	<sys/uuid.d>
+	<cidrus.d>
+
+1515445190 d:\dinrus\dev\dinrus\dinrusbase\import\sys\winstructs.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\winfuncs.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\winstructs.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\thread.d
+
+1512822684 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\all.d
+	<tpl/com.d>
+
+1515445190 d:\dinrus\dev\dinrus\dinrusbase\import\tpl\com.d
+
+1512822684 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\alloc.d
+
+1512822684 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\args.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\box.d
+	<dinrus.d>
+
+1512822684 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\collection.d
+
+1515445190 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\com.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\handles.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\metastrings.d
+	<tpl/metastrings.d>
+	<stdrus.d>
+
+1512822685 d:\dinrus\dev\dinrus\dinrusbase\import\tpl\metastrings.d
+
+1515445191 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\minmax.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\signal.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\singleton.d
+
+1514730655 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\std.d
+
+1515445191 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\traits.d
+	<tpl/traits.d>
+	<tpl/traits.d>
+	<tpl/traits.d>
+	<std/traits.d>
+
+1515445191 d:\dinrus\dev\dinrus\dinrusbase\import\tpl\traits.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\typetuple.d
+	<tpl/typetuple.d>
+	<tpl/typetuple.d>
+	<stdrus.d>
+
+1512822685 d:\dinrus\dev\dinrus\dinrusbase\import\tpl\typetuple.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\weakref.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\typestruct.d
+
+1512822685 source:d:\dinrus\dev\dinrus\dinrusbase\import\win.d
+
+1512822686 source:d:\dinrus\dev\dinrus\dinrusbase\import\winapi.d
+	<sys/uuid.d>
+	<os/win/base/native.d>
+
+1512822686 source:d:\dinrus\dev\dinrus\dinrusbase\import\winthread.d
+
+1515506909 source:d:\dinrus\dev\dinrus\dinrusbase\import\base.d
+
+1515527781 source:d:\dinrus\dev\dinrus\dinrusbase\import\cidrus.d
+
+1515451321 source:d:\dinrus\dev\dinrus\dinrusbase\import\lib\arc.d
+
+1515513215 source:d:\dinrus\dev\dinrus\dinrusbase\import\object.d
+	<base.d>
+
+1515506909 d:\dinrus\dev\dinrus\dinrusbase\import\base.d
+
+1515508394 source:d:\dinrus\dev\dinrus\dinrusbase\import\stdrus.d
+	<exception.d>
+
+1515501735 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\winifaces.d
+	<tpl/com.d>
+
+1515501507 source:d:\dinrus\dev\dinrus\dinrusbase\import\sys\winprocess.d
+
+1515447457 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\bind.d
+	<stdrus.d>
+	<tpl/traits.d>
+	<tpl/typetuple.d>
+
+1515493131 source:d:\dinrus\dev\dinrus\dinrusbase\import\tpl\stream.d
+

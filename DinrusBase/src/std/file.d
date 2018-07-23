@@ -42,10 +42,10 @@ static this()
     alias remove удали;
 	alias getSize дайРазмер;
 	alias getTimes дайВремя;
-	 alias exists есть_ли;
+	 alias exists есть;
 	 alias getAttributes дайАтры;
-	  alias isfile файл_ли;
-	  alias isdir папка_ли;
+	  alias isfile файл;
+	  alias isdir папка;
 	  alias chdir сменипап;
 	  alias mkdir сделпап;
 	  alias rmdir удалипап;
@@ -470,8 +470,8 @@ struct DirEntry
 	alias lastWriteTime последнВремяЗап;
 	alias attributes атрибуты;	
 	alias init иниц;
-	alias isdir папка_ли;  
-	alias isfile файл_ли;
+	alias isdir папка;  
+	alias isfile файл;
 	
     string name;			/// file or directory name
     ulong size = ~0UL;			/// size of file in bytes
@@ -1236,8 +1236,8 @@ string getcwd()
 alias DirEntry ПапЗапись;
 struct DirEntry
 {
-alias isfile файл_ли;
-alias isdir папка_ли;
+alias isfile файл;
+alias isdir папка;
 alias init иниц;
 alias attributes атрибуты;
 alias lastWriteTime последнВремяЗап;

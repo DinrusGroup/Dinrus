@@ -73,7 +73,7 @@ enum ИДС
   КонтрактАут,
   ОтсутствуетТипКомпоновки,
   НеопознанныйТипКомпоновки,
-  ExpectedBaseClasses,
+  ОжидалисьКлассыОсновы,
   BaseClassInForwardDeclaration,
 }
 

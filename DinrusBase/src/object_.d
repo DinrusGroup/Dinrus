@@ -5,7 +5,6 @@ public import base, win, cidrus;
 private import rt.lifetime, rt.hash, rt.aaA /*rt.console*/;//: кразмести, перемести, освободи, перембуф, копирбуф, сравбуф;
 private import  runtime;
 private  import std.string, std.utf;
-alias std.string.format фм;
 import sys.memory;
 //debug = НА_КОНСОЛЬ;
 
@@ -30,7 +29,7 @@ export extern (C)
 extern (C)
 {
 	проц ошибка(ткст сооб, ткст файл = ткст.init, дол  строка = дол.init );
-		
+
 	проц ошибкаПодтверждения(ткст файл, т_мера строка);
 	проц ошибкаГраницМассива(ткст файл, т_мера строка);
 	проц ошибкаФинализации(ИнфОКлассе инфо, Исключение ис);
@@ -39,7 +38,7 @@ extern (C)
 	проц ошибкаЮникод(ткст сооб, т_мера индкс);
 	проц ошибкаДиапазона(ткст файл, т_мера строка);
 	проц ошибкаСкрытойФункции(Объект о);
-	
+
 }
 private
 {
@@ -54,26 +53,26 @@ export extern (D) class Object
 
 {
 
-   
+
 	/**
-     * Перепешите для захвата явного удаления или для косвенного 
+     * Перепешите для захвата явного удаления или для косвенного
      * удаления через масштабный экземпляр. В отличие от dtor(), ссылки GC
      * при вызове этого метода остаются нетронутыми
      */
    export проц dispose()
     {
-	
+
     }
     /**
      * Преобразует Object в удобочитаемую форму и записывает эту строку в stdout.
      */
 	 export проц вымести(){dispose();}
-	 
+
    export  проц print()
     {
 	эхо("%.*s\n", toString());
     }
-	
+
 	export проц выведи() {print();}
     /**
      * Преобразует Object в удобочитаемую строку.
@@ -82,9 +81,9 @@ export extern (D) class Object
     {
 	return this.classinfo.name;
     }
-	
+
 	export ткст вТкст(){return toString();}
-	
+
     /**
      * Вычисляет хеш-функцию для Object.
      */
@@ -93,9 +92,9 @@ export extern (D) class Object
 	// BUG: this prevents a compacting GC from working, needs to be fixed
 	return cast(hash_t)cast(ук)this;
     }
-	
+
 	export т_хэш вХэш(){return toHash();}
-	
+
     /**
      * Сравнить с другим Объектом obj.
      * Возвращает:
@@ -113,7 +112,7 @@ export extern (D) class Object
 	//throw new Error("need opCmp for class " ~ this.classinfo.name);
 	return this !is o;
     }
-	
+
 	 /**
      * Returns !=0 if this object does have the same contents as obj.
      */
@@ -121,14 +120,14 @@ export extern (D) class Object
     {
 	return cast(цел)(this is o);
     }
-	
-	
+
+
 	export interface Monitor
     {
 	export:
         проц lock();
 		alias lock блокируй;
-		
+
         проц unlock();
 		alias unlock разблокируй;
     }
@@ -213,9 +212,9 @@ export extern (D) class Object
 	}
 	return null;
     }
-	
+
 	export static Объект фабрика(ткст имякласса){return factory(имякласса);}
-	
+
 }
 alias Object Объект;
 
@@ -269,60 +268,60 @@ extern(C)
     TraceInfo   info;
     Exception   next;
 	бул выведено = нет;
-	
+
 	alias msg сооб;
 	alias file файл;
 	alias line строка;
 	alias info инфо;
 	alias next следщ;
 }
-	
-	export:	
+
+	export:
     struct FrameInfo
 	{
 	export:
-	
+
         дол  line;
 		alias line строка;
-		
+
         т_мера iframe;
 		alias iframe икадр;
-		
+
         ptrdiff_t offsetSymb;
 		alias offsetSymb симвСмещ;
-		
+
         т_мера baseSymb;
 		alias baseSymb симвОвы;
-		
+
         ptrdiff_t offsetImg;
 		alias offsetImg обрСмещ;
-		
+
         т_мера baseImg;
 		alias baseImg обрОвы;
-		
+
         т_мера address;
 		alias address адрес;
-		
+
         ткст file;
 		alias file файл;
-		
+
         ткст func;
 		alias func функц;
-		
+
         ткст extra;
 		alias extra экстра;
-		
+
         bool exactAddress;
 		 alias exactAddress точныйАдрес;
-		
+
         bool internalFunction;
 		 alias internalFunction внутрФункция;
-		 
+
         alias проц function(FrameInfo*,проц delegate(char[])) FramePrintHandler, ОбработчикПечатиКадра;
-		
+
         static ОбработчикПечатиКадра defaultFramePrintingFunction;
 		alias defaultFramePrintingFunction дефФцияПечатиКадра;
-		
+
         проц writeOut(проц delegate(char[])sink){
 
             if (дефФцияПечатиКадра){
@@ -356,7 +355,7 @@ extern(C)
             }
         }
 		проц выпиши(проц delegate(ткст) синк){writeOut(синк);}
-        
+
         проц clear(){
             line=0;
             iframe=-1;
@@ -372,31 +371,31 @@ extern(C)
             extra=null;
         }
 		проц сотри(){clear();}
-		
+
     }
-	
+
     interface TraceInfo
     {
 	export:
-	
+
         цел opApply( цел delegate( ref FrameInfo fInfo ) );
         проц writeOut(проц delegate(char[])sink);
-		
+
 	alias writeOut выпиши;
     }
-	
+
 
 	private проц окрась()
 	{
 		УстановиАтрибутыТекстаКонсоли(КОНСОШ, 0x0004|0x0008);
 	}
-	
+
 	проц сбрось()
 	{
 	УстановиАтрибутыТекстаКонсоли(КОНСОШ, 0x0001|0x0002|0x0008); runtime.смОсвободи(cast(ук) this);
 	}
 
-	
+
     this( ткст msg, ткст file, дол  line, Exception следщ, TraceInfo info )
     {
         // main constructor, breakpoint this if you want...
@@ -406,20 +405,20 @@ extern(C)
         this.file = file;
         this.line = cast(т_мера)line;
         this.info = info;
-		
+
 //debug  {
 
 if(!выведено)
 {
 		this.выведи();
-		wchar[] soob = toUTF16(фм("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
+		wchar[] soob = toUTF16(std.string.format("Класс Исключения: "~this.classinfo.name~"\nСообщение: "~msg~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)~"\nСообщение Системы: "~СистОШ.последнСооб));
         ОкноСооб(null, soob, "Исключение Динрус", ПСооб.Ошибка|ПСооб.Поверх);
-		сбросьЦветКонсоли();	
+		сбросьЦветКонсоли();
 		выведено = да;
-} 
-		
+}
+
 		//}
-		
+
     }
 
     this( ткст msg, Exception следщ=null )
@@ -428,51 +427,51 @@ if(!выведено)
     }
 
     this( ткст msg, ткст file, дол  line, Exception следщ=null )
-    {	
+    {
 		this(msg,file,cast(т_мера) line,null,ртСоздайКонтекстСледа(null));
     }
 	override проц print()
     {
 		{
 		УстановиАтрибутыТекстаКонсоли(КОНСОШ, 0x0002|0x0008);
-		ошибнс(фм("\n\nВНИМАНИЕ! Произошло исключение со следующим контекстом:"));
-		окрась();		
+		ошибнс(std.string.format("\n\nВНИМАНИЕ! Произошло исключение со следующим контекстом:"));
+		окрась();
 		if (file.length>0 || line!=0)
         {
             char[25]buf;
-			ошибнс(фм("\n\n"~this.classinfo.name~"@"~file~"("~std.string.ulongToUtf8(buf, line)~"):\n "~this.msg~"\r\n"));	
+			ошибнс(std.string.format("\n\n"~this.classinfo.name~"@"~file~"("~std.string.ulongToUtf8(buf, line)~"):\n "~this.msg~"\r\n"));
         }
         else
         {
-           ошибнс(фм(this.classinfo.name~":\n "~this.msg~"\r\n"));
+           ошибнс(std.string.format(this.classinfo.name~":\n "~this.msg~"\r\n"));
         }
-		УстановиАтрибутыТекстаКонсоли(КОНСВЫВОД, 0x0001|0x0002|0x0008);	
-		//сбрось();		
-		}	
+		УстановиАтрибутыТекстаКонсоли(КОНСВЫВОД, 0x0001|0x0002|0x0008);
+		//сбрось();
+		}
 	}
 	override проц выведи(){print();}
-	
-	
+
+
     override ткст toString()
     {
         return this.classinfo.name;
 	}
 	override ткст вТкст(){return toString();}
-	
+
 	/+
     проц writeOutMsg(проц delegate(char[])sink)
 	{
-	
+
 	//	wchar[] soob =cast(wchar[])(toUTF16(this.msg)~"\n"~toUTF16(СистОШ.последнСооб)~"\nФайл: "~toUTF16(file)~"\nСтрока:"~toUTF16(std.string.toString(line)));
-        sink(фм(this.msg~"\n"~СистОШ.последнСооб~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)));		
-		//ОкноСооб(null, soob, "Исключение Динрус: "~toUTF16(this.classinfo.name), ПСооб.Ошибка|ПСооб.Поверх);			
-	
+        sink(std.string.format(this.msg~"\n"~СистОШ.последнСооб~"\nФайл: "~file~"\nСтрока:"~std.string.toString(line)));
+		//ОкноСооб(null, soob, "Исключение Динрус: "~toUTF16(this.classinfo.name), ПСооб.Ошибка|ПСооб.Поверх);
+
    }
 	проц выпишиСооб(проц delegate(ткст) синк){writeOutMsg(синк);}
-	
-	
+
+
     проц writeOut(проц delegate(char[])sink){
-	
+
         if (file.length>0 || line!=0)
         {
             char[25]buf;
@@ -480,7 +479,7 @@ if(!выведено)
             sink(this.classinfo.name~"@"~file~"("~std.string.ulongToUtf8(buf, line)~"): ");
             sink(this.msg);
             sink("\n");
-			
+
         }
         else
         {
@@ -512,28 +511,28 @@ export:
 
     Error next;
 	ткст msg;
-	
+
 	override проц print()
     {
-	скажинс(фм("%s\n", msg));
+	скажинс(std.string.format("%s\n", msg));
 	//ОкноСооб(null, cast(wchar[]) (toUTF16(msg)), "Ошибка Динрус: "~toUTF16(this.classinfo.name), ПСооб.Ошибка|ПСооб.Поверх);
-	
+
     }
 	override проц выведи(){print();}
-	
+
 	override ткст toString() { return msg; }
 	override ткст вТкст(){return toString();}
     /**
      * Конструктор; msg - сообщение, описывающее исключение.
      */
-	this(ткст msg){     
+	this(ткст msg){
 	super(msg," ",0, super.next,ртСоздайКонтекстСледа(null));
-	this.msg = msg;	
+	this.msg = msg;
 	this.next = cast(Error) super.next;
     }
 
     this(ткст msg, Error следщ)
-    {	
+    {
 	super(msg," ",0, cast(Исключение) следщ,ртСоздайКонтекстСледа(null));
 	this.msg = msg;
 	this.next = следщ;
@@ -553,11 +552,11 @@ export extern (C) struct Interface
 export:
    extern(C) extern ИнфОКлассе classinfo;	/// .classinfo для данного интерфейса (а не для включающего класса)
 	alias classinfo классинфо;
-	
-   extern(C) extern ук[] vtbl;	
+
+   extern(C) extern ук[] vtbl;
 	alias vtbl вирттаб;
-	
-   extern(C) extern цел offset;			/// смещение к Интерфейсу 'this' от Объекта 'this'	
+
+   extern(C) extern цел offset;			/// смещение к Интерфейсу 'this' от Объекта 'this'
 	alias offset смещение;
 }
 alias Interface Интерфейс;
@@ -579,34 +578,34 @@ export:
 	alias init иниц;
 	байт[] getSetInit(байт[] init = null){if(init) this.иниц = init; return this.init;}
 	байт[] дайУстИниц(байт[] init = null){if(init) this.иниц = init; return this.init;}
-	
+
    extern(C) extern ткст name;		/// имя класса
 	alias name имя;
 	ткст getSetName(ткст name = null){if(name) this.имя = name; return this.name;}
-	ткст дайУстИмя(ткст name = null){if(name) this.имя = name; return this.name;}	
-	
+	ткст дайУстИмя(ткст name = null){if(name) this.имя = name; return this.name;}
+
    extern(C) extern ук [] vtbl;		/// таблица указателей на виртуальные функции
 	alias vtbl вирттаб;
 	ук[] getSetVtbl(ук[] vtbl){if(vtbl) this.вирттаб = vtbl; return this.vtbl;}
 	ук[] дайУстВирттаб(ук[] vtbl){if(vtbl) this.вирттаб = vtbl; return this.vtbl;}
-	
+
     extern(C) extern Interface[] interfaces;	/// реализуемые данным классом интерфейсы
-	alias interfaces интерфейсы;	
+	alias interfaces интерфейсы;
 	Интерфейс[] getSetInterfaces(Интерфейс[] interfaces = null){if(interfaces) this.интерфейсы = interfaces; return this.interfaces;}
 	Интерфейс[] дайУстИнтерфейсы(Интерфейс[] interfaces = null){if(interfaces) this.интерфейсы = interfaces; return this.interfaces;}
-	
+
     extern(C) extern ИнфОКлассе base;		/// класс-основа
-	alias base основа;	
+	alias base основа;
 	ИнфОКлассе getSetBase(ИнфОКлассе base = null){if(base) this.основа = base; return this.base;}
 	ИнфОКлассе дайУстОву(ИнфОКлассе base = null){if(base) this.основа = base; return this.base;}
-	
+
    extern(C) extern ук destructor;
 	alias destructor деструктор;
 	ук getSetDestructor(ук destructor = null){if(destructor) this.деструктор = destructor; return this.деструктор;}
 	ук дайУстДестр(ук destructor = null){if(destructor) this.деструктор = destructor; return this.destructor;}
-	
+
     проц (*classInvariant)(Object);
-	
+
     extern(C) extern бцел flags;
 	alias flags флаги;
 	//	1:			// IUnknown
@@ -614,25 +613,25 @@ export:
     //	4:			// has offTi[] member
     //	8:			// has constructors
     //	32:			// has typeinfo
-	бцел getSetFlags(бцел flags = бцел.init){if(flags) this.флаги = flags; return this.флаги;}    
-	
+	бцел getSetFlags(бцел flags = бцел.init){if(flags) this.флаги = flags; return this.флаги;}
+
    extern(C) extern ук deallocator;
 	alias deallocator выместитель;
 	ук getSetDeallocator(ук deallocator = null){if(deallocator) this.выместитель = deallocator; return this.выместитель;}
 	ук дайУстДеаллок(ук deallocator = null){if(deallocator) this.выместитель = deallocator; return this.deallocator;}
-	
+
     extern(C) extern OffsetTypeInfo[] offTi;
 	alias offTi смТи;
 	OffsetTypeInfo[] getSetOffTi(OffsetTypeInfo[] offTi = null){if(offTi) this.смТи = offTi; return this.смТи;}
 	OffsetTypeInfo[] дайУстСмТи(OffsetTypeInfo[] offTi = null){if(offTi) this.смТи = offTi; return this.offTi;}
-	
+
     проц function(Object) defaultConstructor;	// default Constructor
-	
+
    extern(C) extern TypeInfo typeinfo;
     alias typeinfo инфотипе;
 	ИнфОТипе getSetTypeinfo(ИнфОТипе typeinfo = null){if(typeinfo) this.инфотипе = typeinfo; return this.инфотипе;}
 	ИнфОТипе дайУстИнфОТипе(ИнфОТипе typeinfo = null){if(typeinfo) this.инфотипе = typeinfo; return this.typeinfo;}
-	
+
 	/*************
      * Ищет во всех модулях ИнфОКлассе, соответствующее classname.
      * Возвращает: null if not found
@@ -653,7 +652,7 @@ export:
     }
 
 	static ИнфОКлассе найди (ткст имякласса){ return find(имякласса);}
-	
+
     /********************
      * Создаёт экземпляр Объекта, представленного 'this'.
      * Возвращает:
@@ -698,10 +697,10 @@ private import std.string;
 export struct OffsetTypeInfo
 {
 	export:
-		
+
    extern(C) extern т_мера offset;	/// Смещение члена от начала объекта
 	alias offset смещение;
-	
+
    extern(C) extern TypeInfo ti;	/// ИнфОТипе для данного члена
 	alias ti иот;
 }
@@ -713,18 +712,18 @@ alias OffsetTypeInfo ИнфОТипеИСмещ;
  * Может быть получена для любого типа с помощью
  * <a href="../expression.html#typeidexpression">TypeidExpression</a>.
  */
- alias TypeInfo ИнфОТипе; 
+ alias TypeInfo ИнфОТипе;
 export extern (D) class TypeInfo
 {
 export:
 
     hash_t toHash()
-    {	        
+    {
 	auto data = this.toString();
     return hashOf(data.ptr, data.length);
-    }	
+    }
 	т_хэш вХэш(){return toHash();}
-	
+
 
     override цел opCmp(Object o)
     {
@@ -734,7 +733,7 @@ export:
 	if (ti is null)
 	    return 1;
 	return std.string.cmp(this.toString(), ti.toString());
-    }	
+    }
 
     override цел opEquals(Object o)
     {
@@ -750,20 +749,20 @@ export:
     /// Возвращает хэш экземпляра типа.
     hash_t getHash(in ук p) { return cast(hash_t)p; }
 	т_хэш дайХэш(in ук п){ return getHash(п);}
-	
+
     /// Сравнивает два экземпляра на равенство.
     цел equals(in ук p1, in ук p2) { return cast(цел)(p1 == p2); }
 	цел равны(in ук п1, in ук п2){return equals(п1, п2);}
-	
+
 
     /// Сравнивает два экземпляра на &lt;, == или &gt;.
     цел compare(in ук p1, in ук p2) { return 0; }
 	цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
-	
+
     /// Возвращает размер типа.
     т_мера tsize() { return 0; }
-	т_мера тразм(){return tsize();}	
-	
+	т_мера тразм(){return tsize();}
+
     /// Меняет местами два экземпляра типа.
     проц swap(ук p1, ук p2)
     {
@@ -777,13 +776,13 @@ export:
 		}
     }
 	проц поменяй(ук п1, ук п2){swap(п1, п2);}
-	
+
 
     /// Получить ИнфОТипе для следующего типа 'следщ', в соответствии с данным типом,
     /// null если нет.
     TypeInfo next() { return null; }
 	ИнфОТипе следщ(){return next();}
-	
+
     /// Возвращает дефолтный инициализатор, null, если дефолт инициализируется в 0
     проц[] init() { return null; }
 	проц[] иниц(){return init();}
@@ -795,7 +794,7 @@ export:
     /// Get type information on the contents of the type; null if not available
     OffsetTypeInfo[] offTi() { return null; }
 	ИнфОТипеИСмещ[] смТи(){return offTi();}
-		
+
 }
 //////////////////////////////////////////////////////////////
 export extern (D) class TypeInfo_Typedef : TypeInfo
@@ -804,7 +803,7 @@ export:
 
     override ткст toString() { return name; }
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
     {   TypeInfo_Typedef c;
@@ -818,25 +817,25 @@ export:
 
     override hash_t getHash(in ук p) { return super.getHash(p); }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
     override цел equals(in ук p1, in ук p2) { return super.equals(p1, p2); }
 	override цел равны(in ук п1, in ук п2){return equals(п1, п2);}
-	
+
     override цел compare(in ук p1, in ук p2) { return super.compare(p1, p2); }
 	override цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
-	
+
     override т_мера tsize() { return tsize(); }
 	override т_мера тразм(){return tsize();}
-	
+
     override проц swap(ук p1, ук p2) { return super.swap(p1, p2); }
 	override проц поменяй( ук п1, ук п2){return swap(п1, п2);}
-	
+
     override TypeInfo next() { return super.next(); }
 	override ИнфОТипе следщ(){return next();}
-	
+
    override  бцел flags() { return super.flags(); }
    override бцел флаги(){return flags();}
-   
+
     override проц[] init() { return m_init.length ? m_init : init(); }
 	override проц[] иниц(){return init();}
 
@@ -844,12 +843,12 @@ export:
 	alias base основа;
 	ИнфОТипе getSetBase(ИнфОТипе base = null){if(base) this.основа = base; return this.base;}
 	ИнфОТипе дайУстОву(ИнфОТипе base = null){if(base) this.основа = base; return this.base;}
-	
+
     extern(C) extern ткст name;
 	alias name имя;
 	ткст getSetName(ткст name = null){if(name) this.имя = name; return this.name;}
 	ткст дайУстИмя(ткст name = null){if(name) this.имя = name; return this.name;}
-	
+
     extern(C) extern проц[] m_init;
 }
 alias TypeInfo_Typedef ТипТипдеф;
@@ -868,7 +867,7 @@ export:
 
     override ткст toString() { return m_next.toString() ~ "*"; }
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
     {   TypeInfo_Pointer c;
@@ -877,22 +876,22 @@ export:
 		((c = cast(TypeInfo_Pointer)o) !is null &&
 		 this.m_next == c.m_next);
     }
-	
+
 
     hash_t getHash(ук p)
     {
         return cast(бцел)*cast(ук  *)p;
     }
 	т_хэш дайХэш(ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {
         return cast(цел)(*cast(ук  *)p1 == *cast(ук  *)p2);
     }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
-	
+
+
     цел compare(ук p1, ук p2)
     {
 	if (*cast(ук  *)p1 < *cast(ук  *)p2)
@@ -903,14 +902,14 @@ export:
 	    return 0;
     }
 	цел сравни(ук п1, ук п2){return compare(п1, п2);}
-	
+
 
     override т_мера tsize()
     {
 	return (ук ).sizeof;
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override проц swap(ук p1, ук p2)
     {	ук  tmp;
@@ -919,15 +918,15 @@ export:
 	*cast(ук*)p2 = tmp;
     }
 	override проц поменяй( ук п1, ук п2){return swap(п1, п2);}
-	
+
 
     override TypeInfo next() { return m_next; }
 	override ИнфОТипе следщ(){return next();}
-	
-	
+
+
     override бцел flags() { return 1; }
 	override бцел флаги(){return flags();}
-	
+
 
    extern(C) extern TypeInfo m_next;
 }
@@ -959,7 +958,7 @@ export:
         return hash;
     }
 	override т_хэш дайХэш(ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {
@@ -976,7 +975,7 @@ export:
         return 1;
     }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
+
 
     цел compare(ук p1, ук p2)
     {
@@ -996,14 +995,14 @@ export:
         return cast(цел)a1.length - cast(цел)a2.length;
     }
 	цел сравни(ук п1, ук п2){return compare(п1, п2);}
-	
-	
+
+
     override т_мера tsize()
     {
 	return (проц[]).sizeof;
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override проц swap(ук p1, ук p2)
     {	проц[] tmp;
@@ -1012,7 +1011,7 @@ export:
 	*cast(проц[]*)p2 = tmp;
     }
 	override проц поменяй( ук п1, ук п2){return swap(п1, п2);}
-	
+
 
     extern(C) extern TypeInfo value;
 
@@ -1021,7 +1020,7 @@ export:
 	return value;
     }
 	override ИнфОТипе следщ(){return next();}
-	
+
 
     override бцел flags() { return 1; }
 	override бцел флаги(){return flags();}
@@ -1041,7 +1040,7 @@ export:
 			return value.toString() ~ "[" ~ std.string.intToUtf8(tmp, len) ~ "]";
 		}
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
 		{   TypeInfo_StaticArray c;
@@ -1069,8 +1068,8 @@ export:
 			return hash;
 		}
 	override т_хэш дайХэш(in ук п){return getHash(п);}
-	
-	
+
+
     override цел equals(in ук p1, in ук p2)
 		{
 		т_мера разм = value.tsize();
@@ -1097,14 +1096,14 @@ export:
 			return 0;
 		}
 	override цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
-	
+
 
     override т_мера tsize()
 		{
 		return len * value.tsize();
 		}
 	override т_мера тразм(){return tsize();}
-	
+
 
     override проц swap(ук p1, ук p2)
     {	ук  tmp;
@@ -1130,10 +1129,10 @@ export:
 
     override проц[] init() { return value.init(); }
 	override проц[] иниц(){return init();}
-	
+
     override TypeInfo next() { return value; }
 	override ИнфОТипе следщ(){return next();}
-	
+
     override бцел flags() { return value.flags(); }
 	override бцел флаги(){return flags();}
 
@@ -1141,7 +1140,7 @@ export:
 	alias value значение;
 	ИнфОТипе getSetValue(ИнфОТипе value = null){if(value) this.значение = value; return this.value;}
 	ИнфОТипе дайУстЗначение(ИнфОТипе value = null){if(value) this.значение = value; return this.value;}
-	
+
     extern(C) extern т_мера len;
 	alias len длин;
 	т_мера getSetLength(т_мера len = т_мера.init){if(len) this.длин = len; return this.len;}
@@ -1159,7 +1158,7 @@ export:
         return next.toString() ~ "[" ~ key.toString() ~ "]";
     }
 	override ткст вТкст(){return toString();}
-	
+
 
     override /*цел*/ цел opEquals(Object o)
     {
@@ -1183,15 +1182,15 @@ export:
         return hash;
     }
 	override т_хэш дайХэш(in ук п){return getHash(п);}
-	
+
 
     override т_мера tsize()
     {
         return (сим[цел]).sizeof;
     }
 	override т_мера тразм(){return tsize();}
-	
-	
+
+
     override цел equals(in ук  p1, in ук  p2)
     {
         AA a=*cast(AA*)p1;
@@ -1214,18 +1213,18 @@ export:
         return same;
     }
 	override цел равны(in ук п1, in ук п2){return equals(п1, п2);}
-	
+
 
     override цел compare(in ук  p1, in ук  p2)
     {
         throw new Exception("Не подлежит сравнению",__FILE__,__LINE__);
     }
 	override цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
-	
+
 
    override TypeInfo next() { return value; }
    override ИнфОТипе следщ(){return next();}
-   
+
     override бцел flags() { return 1; }
 	override бцел флаги(){return flags();}
 
@@ -1233,7 +1232,7 @@ export:
 	alias value значение;
 	ИнфОТипе getSetValue(ИнфОТипе value = null){if(value) this.значение = value; return this.value;}
 	ИнфОТипе дайУстЗначение(ИнфОТипе value = null){if(value) this.значение = value; return this.value;}
-	
+
    extern(C) extern TypeInfo key;
 	alias key ключ;
 	ИнфОТипе getSetKey(ИнфОТипе key = null){if(key) this.key = key; return this.key;}
@@ -1251,7 +1250,7 @@ export:
 	return next.toString() ~ "()";
     }
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
     {   TypeInfo_Function c;
@@ -1267,13 +1266,13 @@ export:
     {
 	return 0;	// размера для функций нет
     }
-	override т_мера тразм(){return tsize();}	
+	override т_мера тразм(){return tsize();}
 
    extern(C) extern TypeInfo next;
 	alias next следщ;
 	ИнфОТипе getSetNext(ИнфОТипе следщ = null){if(следщ) this.next = следщ; return this.next;}
 	ИнфОТипе дайУстСледщ(ИнфОТипе следщ = null){if(следщ) this.next = следщ; return this.next;}
-	
+
 }
 alias TypeInfo_Function ТипФункция;
 /////////////////////////////////////////////////////////////////////////////////////
@@ -1287,7 +1286,7 @@ export:
 	return next.toString() ~ " delegate()";
     }
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
     {   TypeInfo_Delegate c;
@@ -1338,23 +1337,23 @@ export:
 	}
 	body*/
     {
-				Object o = *cast(Object*)p;				
+				Object o = *cast(Object*)p;
 				return o ? o.toHash() : 0;
-			
+
 	 }
 
 	override т_хэш дайХэш(in ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {
 	Object o1 = *cast(Object*)p1;
-	Object o2 = *cast(Object*)p2;	
+	Object o2 = *cast(Object*)p2;
 
 	return (o1 is o2) || (o1 && o1.opEquals(o2));
     }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
+
 
     цел compare(ук p1, ук p2)
     {
@@ -1377,14 +1376,14 @@ export:
 	return c;
     }
 	цел сравни(ук п1, ук п2){return compare(п1, п2);}
-	
+
 
     override т_мера tsize()
     {
 	return Object.sizeof;
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override бцел flags() { return 1; }
 	 override бцел флаги(){return flags();}
@@ -1394,7 +1393,7 @@ export:
 	return (info.flags & 4) ? info.offTi : null;
     }
 	override ИнфОТипеИСмещ[] смТи(){return offTi();}
-	
+
 
     extern(C) extern ИнфОКлассе info;
 	alias info инфо;
@@ -1426,7 +1425,7 @@ export:
 	return o.toHash();
     }
 	т_хэш дайХэш(ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {
@@ -1438,7 +1437,7 @@ export:
 	return o1 == o2 || (o1 && o1.opCmp(o2) == 0);
     }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
+
 
     цел compare(ук p1, ук p2)
     {
@@ -1469,7 +1468,7 @@ export:
 	return Object.sizeof;
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override бцел flags() { return 1; }
 	 override бцел флаги(){return flags();}
@@ -1497,7 +1496,7 @@ export:
 		 this.name == s.name &&
 		 this.init.length == s.init.length);
     }
-	
+
 
     hash_t getHash(ук p)
     {	hash_t h;
@@ -1521,7 +1520,7 @@ export:
 	return h;
     }
 	т_хэш дайХэш(ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {	цел c;
@@ -1567,20 +1566,20 @@ export:
 	return init.length;
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override проц[] init() { return m_init; }
 	override проц[] иниц(){return init();}
 
     override бцел flags() { return m_flags; }
 	override бцел флаги(){return flags();}
-	
+
 
    extern(C) extern ткст name;
 	alias name имя;
 	ткст getSetName(ткст name = null){if(name) this.name = name; return this.name;}
 	ткст дайУстИмя(ткст name = null){if(name) this.name = name; return this.name;}
-	
+
    extern(C) extern проц[] m_init;	// инициализатор; init.ptr == null, если инициализует 0
 
     hash_t function(ук ) xtoHash;
@@ -1601,7 +1600,7 @@ export:
 	alias elements элементы;
 	ИнфОТипе[] getSetElements(ИнфОТипе[] elements = null){if(elements) this.elements = elements; return this.elements;}
 	ИнфОТипе[] дайУстЭлементы(ИнфОТипе[] elements = null){if(elements) this.elements = elements; return this.elements;}
-	
+
 
     override ткст toString()
     {
@@ -1617,7 +1616,7 @@ export:
         return s;
     }
 	override ткст вТкст(){return toString();}
-	
+
 
     override цел opEquals(Object o)
     {
@@ -1642,28 +1641,28 @@ export:
         assert(0);
     }
 	т_хэш дайХэш(ук п){return getHash(п);}
-	
+
 
     цел equals(ук p1, ук p2)
     {
         assert(0);
     }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
+
 
     цел compare(ук p1, ук p2)
     {
         assert(0);
     }
 	цел сравни(ук п1, ук п2){return compare(п1, п2);}
-	
+
 
     override т_мера tsize()
     {
         assert(0);
     }
 	override т_мера тразм(){return tsize();}
-	
+
 
     override проц swap(ук p1, ук p2)
     {
@@ -1684,30 +1683,30 @@ export:
     override цел opEquals(Object o) { return opEquals(o); }
     hash_t getHash(ук p) { return getHash(p); }
 	т_хэш дайХэш(ук п){return getHash(п);}
-	
+
     цел equals(ук p1, ук p2) { return equals(p1, p2); }
 	цел равны(ук п1, ук п2){return equals(п1, п2);}
-	
+
     цел compare(ук p1, ук p2) { return compare(p1, p2); }
 	цел сравни(ук п1, ук п2){return compare(п1, п2);}
-	
+
     override т_мера tsize() { return tsize(); }
 	override т_мера тразм(){return tsize();}
-	
+
     override проц swap(ук p1, ук p2) { return swap(p1, p2); }
 	override проц поменяй( ук п1, ук п2){return swap(п1, п2);}
 
     override TypeInfo next() { return next(); }
 	override ИнфОТипе следщ(){return next();}
-	
+
     override бцел flags() { return flags(); }
 	 override бцел флаги(){return flags();}
-	 
+
     override проц[] init() { return init(); }
 	override проц[] иниц(){return init();}
 
     extern(C) extern TypeInfo base;
-	alias base основа;	
+	alias base основа;
 	ИнфОТипе getSetBase(ИнфОТипе base = null){if(base) this.основа = base; return this.base;}
 	ИнфОТипе дайУстОву(ИнфОТипе base = null){if(base) this.base = base; return this.base;}
 }
@@ -1732,7 +1731,7 @@ alias проц delegate(Object) ДСобыт;
 export struct Monitor
 {
 export:
-		
+
     проц delegate(Object)[] delegates;
 
     /* More stuff goes here defined by internal/monitor.c */
@@ -1782,8 +1781,8 @@ export extern (C) проц _d_monitordelete(Объект h, bool det)
 		}
 	}
 	export extern (C) проц удалиМонитор(Объект о, бул уд){ _d_monitordelete(о, уд);}
-	
-	
+
+
 	export  extern (C) проц _d_monitorenter(Объект h)
 	{
 		//_monitorenter(&h);
@@ -1805,15 +1804,15 @@ export extern (C) проц _d_monitordelete(Объект h, bool det)
 		i.lock();
 	}
 	export extern (C) проц войдиВМонитор(Объект о){_d_monitorenter(о);}
-	
-	
+
+
 	export extern (C) проц _d_monitorexit(Объект h)
 	{
-	    
+
 		Монитор* m = дайМонитор(h);
 		IMonitor i = m.impl;
 		//_monitorexit(&h);
-		
+
 		if (i is null)
 		{
 			разблокируйМонитор(h);
@@ -1822,7 +1821,7 @@ export extern (C) проц _d_monitordelete(Объект h, bool det)
 		i.unlock();
 	}
 	export extern (C) проц выйдиИзМонитора(Объект о){ _d_monitorexit(о);}
-	
+
 
 	 export extern (C) проц _d_monitor_devt(Монитор* m, Объект h)
 	{
@@ -1844,8 +1843,8 @@ export extern (C) проц _d_monitordelete(Объект h, bool det)
 		}
 	}
 	export extern (C) проц событиеМонитора(Монитор* м, Объект о){ _d_monitor_devt(м, о);}
-	
-	
+
+
   export extern (C) проц rt_attachDisposeEvent(Объект h, ДСобыт e)
 	{
 		synchronized (h)
@@ -1905,7 +1904,7 @@ alias ModuleInfo ИнфОМодуле;
 export extern(D) class ModuleInfo
 {
 export:
-	
+
     extern(C) extern char name[];
     extern(C) extern ИнфОМодуле importedModules[];
     extern(C) extern ИнфОКлассе localClasses[];
@@ -1991,7 +1990,7 @@ export:
         return cast(т_хэш)(*cast(байт *)p);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2034,7 +2033,7 @@ export:
         return o ? o.toHash() : cast(т_хэш)0xdeadbeef;
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2093,7 +2092,7 @@ export:
         return hashOf(p,кдво.sizeof,0);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     static цел _equals(кдво f1, кдво f2)
     {
@@ -2150,8 +2149,8 @@ export:
         return (cast(кдво *)&r)[0 .. 1];
     }
 	override проц[] иниц(){return init();}
-	
-	
+
+
 }
 
 ////////////////////////////////////////
@@ -2167,7 +2166,7 @@ export:
         return hashOf(p, кплав.sizeof,0);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     static цел _equals(cfloat f1, cfloat f2)
     {
@@ -2239,7 +2238,7 @@ export:
         return cast(т_хэш)(*cast(сим *)p);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2289,13 +2288,13 @@ export:
         return hashOf(p,креал.sizeof,0);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     static цел _equals(креал f1, креал f2)
     {
         return f1 == f2;
     }
-	
+
 
     static цел _compare(креал f1, креал f2)
     {   цел результат;
@@ -2362,7 +2361,7 @@ export:
         return cast(т_хэш)*cast(dchar *)p;
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2412,7 +2411,7 @@ export:
         return rt_hash_block(cast(т_мера *)p,2,0);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2455,7 +2454,7 @@ export:
         return hashOf(p,дво.sizeof);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     static цел _equals(double f1, double f2)
     {
@@ -2525,7 +2524,7 @@ export:
         return cast(т_хэш)(*cast(бцел *)p);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     static цел _equals(float f1, float f2)
     {
@@ -2837,7 +2836,7 @@ export:
         return cast(т_хэш)(*cast(бкрат *)p);
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -2929,7 +2928,7 @@ export:
         return *cast(бцел *)p;
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -3025,7 +3024,7 @@ export:
         return *cast(бкрат *)p;
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
-	
+
 
     override цел equals(in ук p1, in ук p2)
     {
@@ -3176,7 +3175,7 @@ export:
     }
 	override т_хэш дайХэш(in  ук п){return getHash(п);}
 
-	
+
     override цел equals(in ук p1, in ук p2)
     {
         Объект[] s1 = *cast(Объект[]*)p1;
@@ -3240,7 +3239,7 @@ export:
         return 0;
     }
 	override цел сравни(in ук п1, in ук п2){return compare(п1, п2);}
-	
+
 
     override т_мера tsize()
     {
@@ -3808,16 +3807,16 @@ export:
     override т_хэш getHash(in ук p){
        ткст s = *cast(ткст*)p;
 	   т_хэш hash = 0;
-	   
+
 			version(all) version (OldHash)
 			{
 				foreach (сим c; s)
 					hash = hash * 11 + c;
 				return hash;
-			} 
+			}
 		else
 			{/+
-			
+
 				т_мера len = s.length;
 				char *str = cast(char*)s;
 
@@ -3884,7 +3883,7 @@ export:
     }
 
 	override т_хэш дайХэш(in ук p){ return getHash(p);}
-	
+
     override цел equals(in ук p1, in ук p2)
     {
         цел[] s1 = *cast(цел[]*)p1;
@@ -4016,7 +4015,7 @@ export:
     }
 
 	override т_хэш дайХэш(in ук p){ return getHash(p);}
-	
+
     override цел equals(in ук p1, in ук p2)
     {
         дол[] s1 = *cast(дол[]*)p1;

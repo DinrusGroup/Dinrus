@@ -1,1 +1,194 @@
 # depslib dependency file v1.0
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\all.d
+	<conc/waitnotify.d>
+	<conc/sync.d>
+	<conc/semaphore.d>
+	<conc/mutex.d>
+	<conc/fairsemaphore.d>
+	<conc/queuedsemaphore.d>
+	<conc/fifosemaphore.d>
+	<conc/reentrantlock.d>
+	<conc/latch.d>
+	<conc/countdown.d>
+	<conc/barrier.d>
+	<conc/cyclicbarrier.d>
+	<conc/rendezvous.d>
+	<conc/boundedchannel.d>
+	<conc/boundedlinkedqueue.d>
+	<conc/channel.d>
+	<conc/linkednode.d>
+	<conc/linkedqueue.d>
+	<conc/puttable.d>
+	<conc/takable.d>
+	<conc/synchronouschannel.d>
+	<conc/directexecutor.d>
+	<conc/executor.d>
+	<conc/queuedexecutor.d>
+	<conc/lockedexecutor.d>
+	<conc/pooledexecutor.d>
+	<conc/threadedexecutor.d>
+	<conc/threadfactory.d>
+	<conc/threadfactoryuser.d>
+	<conc/readwritelock.d>
+	<conc/readwritelockutils.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\barrier.d
+	<conc/sync.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\boundedchannel.d
+	<conc/channel.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\boundedlinkedqueue.d
+	<conc/boundedchannel.d>
+	<conc/defaultchannelcapacity.d>
+	<conc/linkednode.d>
+	<conc/sync.d>
+	<conc/waitnotify.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\channel.d
+	<conc/puttable.d>
+	<conc/takable.d>
+
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\countdown.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<thread.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\cyclicbarrier.d
+	<conc/barrier.d>
+	<cidrus.d>
+
+1420981743 source:d:\dinrus\dev\dinrus\dinrusconc\src\defaultchannelcapacity.d
+	<conc/synchronizedint.d>
+
+1420981743 source:d:\dinrus\dev\dinrus\dinrusconc\src\directexecutor.d
+	<conc/executor.d>
+
+1420981743 source:d:\dinrus\dev\dinrus\dinrusconc\src\executor.d
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\fairsemaphore.d
+	<conc/semaphore.d>
+	<cidrus.d>
+	<thread.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\fifosemaphore.d
+	<conc/queuedsemaphore.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<thread.d>
+
+1425459894 source:d:\dinrus\dev\dinrus\dinrusconc\src\latch.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<stdrus.d>
+
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\linkednode.d
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\linkedqueue.d
+	<conc/channel.d>
+	<conc/linkednode.d>
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<thread.d>
+
+1425454971 source:d:\dinrus\dev\dinrus\dinrusconc\src\lockedexecutor.d
+	<conc/executor.d>
+	<conc/sync.d>
+
+1425454971 source:d:\dinrus\dev\dinrus\dinrusconc\src\mutex.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<thread.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\pooledexecutor.d
+	<conc/threadfactoryuser.d>
+	<conc/executor.d>
+	<conc/channel.d>
+	<conc/waitnotify.d>
+	<stdrus.d>
+	<conc/synchronouschannel.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\puttable.d
+
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\queuedexecutor.d
+	<conc/boundedlinkedqueue.d>
+	<conc/channel.d>
+	<conc/executor.d>
+	<conc/threadfactoryuser.d>
+	<stdrus.d>
+	<conc/linkedqueue.d>
+
+1511959320 source:d:\dinrus\dev\dinrus\dinrusconc\src\queuedsemaphore.d
+	<conc/semaphore.d>
+	<cidrus.d>
+	<thread.d>
+
+1451085413 source:d:\dinrus\dev\dinrus\dinrusconc\src\readwritelock.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<thread.d>
+
+1451084295 source:d:\dinrus\dev\dinrus\dinrusconc\src\readwritelockutils.d
+	<conc/waitnotify.d>
+	<conc/fifosemaphore.d>
+	<cidrus.d>
+	<thread.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\reentrantlock.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<stdrus.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\rendezvous.d
+	<conc/barrier.d>
+	<conc/waitnotify.d>
+	<stdrus.d>
+	<cidrus.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\semaphore.d
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<stdrus.d>
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\sync.d
+
+1420981743 source:d:\dinrus\dev\dinrus\dinrusconc\src\synchronizedint.d
+	<conc/synchronizedvariable.d>
+
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\synchronizedvariable.d
+	<conc/executor.d>
+
+1425459267 source:d:\dinrus\dev\dinrus\dinrusconc\src\synchronouschannel.d
+	<conc/boundedchannel.d>
+	<conc/linkednode.d>
+	<conc/sync.d>
+	<conc/waitnotify.d>
+	<cidrus.d>
+	<thread.d>
+
+1511960402 source:d:\dinrus\dev\dinrus\dinrusconc\src\syncutils.d
+
+1425459904 source:d:\dinrus\dev\dinrus\dinrusconc\src\takable.d
+
+1425454971 source:d:\dinrus\dev\dinrus\dinrusconc\src\threadedexecutor.d
+	<conc/executor.d>
+	<conc/threadfactoryuser.d>
+
+1425454971 source:d:\dinrus\dev\dinrus\dinrusconc\src\threadfactory.d
+	<stdrus.d>
+
+1425459533 source:d:\dinrus\dev\dinrus\dinrusconc\src\threadfactoryuser.d
+
+1511961306 source:d:\dinrus\dev\dinrus\dinrusconc\src\waitnotify.d
+	<conc/sync.d>
+	<thread.d>
+	<winapi.d>
+	<std/c/linux/linux.d>
+	<std/c/linux/linuxextern.d>
+

@@ -1,7 +1,7 @@
 ﻿module std.utf;
 private import std.io, sys.WinFuncs /*rt.console*/, std.string: format;
 
-alias isValidDchar реальноДсим_ли;
+alias isValidDchar реальноДсим;
 alias stride пролёт;
 alias toUCSindex вИндексУНC;
 alias toUTFindex вИндексУТШ;
@@ -197,18 +197,18 @@ ubyte[256] UTF8stride =
  */
  
 /// Возвращает: да if this is a trail байт of a UTF-8 sequence.
-бул ведомыйБайт_ли(ббайт b)
+бул ведомыйБайт(ббайт b)
 {
   return (b & 0xC0) == 0x80; // 10xx_xxxx
 }
 
 /// Возвращает: да if this is a lead байт of a UTF-8 sequence.
-бул ведущийБайт_ли(ббайт b)
+бул ведущийБайт(ббайт b)
 {
   return (b & 0xC0) == 0xC0; // 11xx_xxxx
 }
 
-бул рус_ли(дим б)
+бул рус(дим б)
  {
 	switch(б)
 	{
@@ -286,14 +286,14 @@ default:
 
  }
  
-бул верноСимвол_ли(дим d)
+бул верноСимвол(дим d)
 {
-  return d < СИМ_ОШИБКИ || d > 0xDFFF && d <= 0x10FFFF||рус_ли(d);
+  return d < СИМ_ОШИБКИ || d > 0xDFFF && d <= 0x10FFFF||рус(d);
 }
 
 дим раскод(ref сим* ref_p, сим* конец)
 in { assert(ref_p && ref_p < конец); }
-out(c) { assert(ref_p <= конец && (верноСимвол_ли(c) || c == СИМ_ОШИБКИ)); }
+out(c) { assert(ref_p <= конец && (верноСимвол(c) || c == СИМ_ОШИБКИ)); }
 body
 {
   сим* p = ref_p;
@@ -307,7 +307,7 @@ body
     return СИМ_ОШИБКИ;
 
   // Ошибка if second байт is not a trail байт.
-  if (!ведомыйБайт_ли(*p))
+  if (!ведомыйБайт(*p))
     return СИМ_ОШИБКИ;
 
   // Check for overlong sequences.
@@ -324,7 +324,7 @@ body
       return СИМ_ОШИБКИ;
   }
 
-  const ткст проверьСледующийБайт = "if (!(++p < конец && ведомыйБайт_ли(*p)))"
+  const ткст проверьСледующийБайт = "if (!(++p < конец && ведомыйБайт(*p)))"
                                 "  return СИМ_ОШИБКИ;";
   const ткст добавьШестьБит = "c = (c << 6) | *p & 0b0011_1111;";
 
@@ -356,9 +356,9 @@ body
     // 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
     return СИМ_ОШИБКИ;
 
-  assert(ведомыйБайт_ли(*p));
+  assert(ведомыйБайт(*p));
 
-  if (!верноСимвол_ли(c))
+  if (!верноСимвол(c))
     return СИМ_ОШИБКИ;
   ref_p = p+1;
   return c;
@@ -651,9 +651,9 @@ assert(ткт.length && индекс < ткт.length);
  void encode(ref ткст ткт, дим c)
  {
   ткст рез;
-// if(!верноСимвол_ли(c)) скажинс(ткт~рез[cast(сим) c]);
+// if(!верноСимвол(c)) скажинс(ткт~рез[cast(сим) c]);
  
-  assert(верноСимвол_ли(c), "При проверке валидности текста:\n "~ткт);
+  assert(верноСимвол(c), "При проверке валидности текста:\n "~ткт);
  
   сим[6] b = void;
   if (c < 0x80)

@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
-	<ActiveTarget name="Debug" />
+	<ActiveTarget name="Release" />
+	<File name="src\sqlite\all.d" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\lib\mysql.d" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12549" topLine="1269" />
+		</Cursor>
+	</File>
+	<File name="src\sqlite\imp.d" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="169" topLine="811" />
+		</Cursor>
+	</File>
+	<File name="src\lib\sqlite3.d" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2873" topLine="2008" />
+		</Cursor>
+	</File>
+	<File name="src\model\Constants.d" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="272" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="src\model\Database.d" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="179" topLine="88" />
+		</Cursor>
+	</File>
 	<File name="src\model\Result.d" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="106" />
@@ -42,7 +72,7 @@
 			<Cursor1 position="255" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="src\pg\PgDatabase.d" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\pg\PgDatabase.d" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5335" topLine="167" />
 		</Cursor>
@@ -52,14 +82,14 @@
 			<Cursor1 position="520" topLine="180" />
 		</Cursor>
 	</File>
-	<File name="src\pg\PgError.d" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\pg\PgError.d" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="211" topLine="166" />
+			<Cursor1 position="211" topLine="165" />
 		</Cursor>
 	</File>
-	<File name="src\pg\PgResult.d" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\pg\PgResult.d" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="110" topLine="46" />
+			<Cursor1 position="110" topLine="45" />
 		</Cursor>
 	</File>
 	<File name="src\Result.d" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -90,36 +120,6 @@
 	<File name="src\connect.d" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="308" topLine="165" />
-		</Cursor>
-	</File>
-	<File name="src\sqlite\all.d" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\lib\mysql.d" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12549" topLine="1269" />
-		</Cursor>
-	</File>
-	<File name="src\sqlite\imp.d" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="169" topLine="811" />
-		</Cursor>
-	</File>
-	<File name="src\lib\sqlite3.d" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2873" topLine="2008" />
-		</Cursor>
-	</File>
-	<File name="src\model\Constants.d" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="272" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="src\model\Database.d" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="179" topLine="88" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

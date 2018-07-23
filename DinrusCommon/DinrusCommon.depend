@@ -1,1 +1,169 @@
 # depslib dependency file v1.0
+1512595636 source:d:\dinrus\dev\dinrus\dinruscommon\static\activex.d
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\base.d
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\arraylist.d
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\arraymultiset.d
+	<col/model/Multiset.d>
+	<col/Link.d>
+	<col/DefaultAllocator.d>
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\defaultallocator.d
+	<cidrus.d>
+
+1511978767 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\functions.d
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\hash.d
+	<col/Link.d>
+	<col/model/Iterator.d>
+	<col/DefaultAllocator.d>
+
+1511978767 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\hashmap.d
+	<col/model/Map.d>
+	<col/Functions.d>
+	<col/Hash.d>
+	<col/Iterators.d>
+
+1511978764 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\hashmultiset.d
+	<col/model/Multiset.d>
+	<col/Functions.d>
+	<col/Hash.d>
+
+1511978767 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\hashset.d
+	<col/model/Set.d>
+	<col/Functions.d>
+	<col/Hash.d>
+
+1511978764 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\heap.d
+	<auxd/OpenMesh/Core/IO/Streams.d>
+	<tpl/Std.d>
+
+1511978768 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\iterators.d
+	<col/model/Iterator.d>
+
+1511978764 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\link.d
+	<col/DefaultAllocator.d>
+
+1511978768 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\linklist.d
+	<col/model/List.d>
+	<col/Link.d>
+	<col/Functions.d>
+
+1511978764 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\list.d
+	<stdrus.d>
+
+1511978765 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\addable.d
+	<col/model/Collection.d>
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\collection.d
+	<col/model/Iterator.d>
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\iterator.d
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\keyed.d
+	<col/model/Iterator.d>
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\list.d
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\map.d
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\multi.d
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\multiset.d
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\model\set.d
+
+1511978768 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\rbtree.d
+	<col/model/Iterator.d>
+	<col/DefaultAllocator.d>
+	<stdrus.d>
+
+1511978764 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\treemap.d
+	<col/model/Map.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+	<col/Iterators.d>
+
+1511978768 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\treemultiset.d
+	<col/model/Multiset.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+
+1511978765 source:d:\dinrus\dev\dinrus\dinruscommon\static\col\treeset.d
+	<col/model/Set.d>
+	<col/Functions.d>
+	<col/RBTree.d>
+
+1511978766 source:d:\dinrus\dev\dinrus\dinruscommon\static\com.d
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\core\type\boolean.d
+
+1508162664 source:d:\dinrus\dev\dinrus\dinruscommon\static\exemain.d
+
+1511978767 source:d:\dinrus\dev\dinrus\dinruscommon\static\gcembeded.d
+	<cidrus.d>
+
+1511978765 source:d:\dinrus\dev\dinrus\dinruscommon\static\geom\figure.d
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\geom\loopschememask.d
+	<tpl/singleton.d>
+
+1511978765 source:d:\dinrus\dev\dinrus\dinruscommon\static\geom\mathdefs.d
+	<stdrus.d>
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\geom\plane3d.d
+	<linalg/Vector.d>
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\ini.d
+
+1511978767 source:d:\dinrus\dev\dinrus\dinruscommon\static\json.d
+	<stdrus.d>
+
+1511970192 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\7z.d
+	<stdrus.d>
+
+1422462192 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\archive1.d
+	<stdrus.d>
+
+1422462215 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\bzip2.d
+	<stdrus.d>
+
+1422462286 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\dbghelp.d
+	<stdrus.d>
+
+1422462697 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\devil.d
+	<stdrus.d>
+
+1422462313 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\ftgl.d
+	<stdrus.d>
+
+1423913444 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\iconv.d
+	<stdrus.d>
+
+1511978769 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\jni.d
+
+1422462865 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\libapr.d
+	<stdrus.d>
+
+1387406970 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\mesa.d
+
+1468950920 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\qtcore4.d
+	<stdrus.d>
+
+1421602915 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\qtgui4.d
+	<stdrus.d>
+
+1422462116 source:d:\dinrus\dev\dinrus\dinruscommon\static\lib\sqlite3.d
+	<stdrus.d>
+
+1511978763 source:d:\dinrus\dev\dinrus\dinruscommon\static\linalg\basic.d
+	<stdrus.d>
+	<linalg/config.d>
+
+1515527781 source:d:\dinrus\dev\dinrus\dinruscommon\static\linalg\color.d
+	<linalg/VectorTypes.d>
+
+1387406973 source:d:\dinrus\dev\dinrus\dinruscommon\static\linalg\config.d
+

@@ -15,8 +15,7 @@
 module tpl.bind;
 
 
-import stdrus:
-форматируй;
+import stdrus: форматируй;
 import tpl.traits;
 import tpl.typetuple;
 
@@ -52,26 +51,26 @@ const ДинАрг!(9) _9;		/// описано ранее
 /*
 	Выявить, есть ли данный тип ДинАрг с любым индексом
 */
-template динАрг_ли(T)
+template динАрг(T)
 {
     static if (is(typeof(T.аргНом)))
     {
         static if(is(T : ДинАрг!(T.аргНом)))
         {
-            static const бул динАрг_ли =да;
+            static const бул динАрг =да;
         }
-        else static const бул динАрг_ли = нет;
+        else static const бул динАрг = нет;
     }
-    else static const бул динАрг_ли = нет;
+    else static const бул динАрг = нет;
 }
 
 
 /*
 	Выявить, есть ли данный тип ДинАрг с указанным индексом
 */
-template динАрг_ли(T, цел i)
+template динАрг(T, цел i)
 {
-    static const бул динАрг_ли = is(T : ДинАрг!(i));
+    static const бул динАрг = is(T : ДинАрг!(i));
 }
 
 
@@ -93,7 +92,7 @@ template ТипДинМас(T)
 */
 template _присвой(T)
 {
-    static if (статМас_ли!(T))
+    static if (статМас!(T))
     {
         проц _присвой(ТипДинМас!(T) a, ТипДинМас!(T) b)
         {
@@ -124,7 +123,7 @@ template _присвой(T)
 */
 template _присвой(T, Y, бул копироватьСтатМас =да)
 {
-    static if (статМас_ли!(T))
+    static if (статМас!(T))
     {
 
         // если приёмник - статический массив, то каждый элемент копируется из источника с помощью foreach
@@ -136,7 +135,7 @@ template _присвой(T, Y, бул копироватьСтатМас =да)
             }
         }
     }
-    else static if (!статМас_ли!(T) && статМас_ли!(Y))
+    else static if (!статМас!(T) && статМас!(Y))
     {
 
         // приёмник - динамический массив, а источник - статический. Порой здесь нужен .dup
@@ -178,9 +177,9 @@ template _присвой(T, Y, бул копироватьСтатМас =да)
 struct Кортеж(T ...)
 {
     alias Кортеж	meta;
-    const бул	кортежВыражений = кортежВыражений_ли!(T);
+    const бул	кВыр = кортежВыражений!(T);
 
-    static if (!кортежВыражений)
+    static if (!кВыр)
     {
         alias T	тип;		// встроенный кортеж
         T			значение;		// экземпляр встроенного кортежа
@@ -340,25 +339,25 @@ struct Кортеж()
 /**
 	Checks whether a given тип is the Кортеж struct of any length
 */
-template типКортеж_ли(T)
+template типКортеж(T)
 {
     static if (is(T.тип))
     {
         static if (is(T == Кортеж!(T.тип)))
         {
-            const бул типКортеж_ли =да;
+            const бул типКортеж =да;
         }
-        else const бул типКортеж_ли = нет;
+        else const бул типКортеж = нет;
     }
-    else const бул типКортеж_ли = нет;
+    else const бул типКортеж = нет;
 }
 
-static assert(типКортеж_ли!(Кортеж!(цел)));
-static assert(типКортеж_ли!(Кортеж!(float, сим)));
-static assert(типКортеж_ли!(Кортеж!(double, float, цел, сим[])));
-static assert(типКортеж_ли!(Кортеж!(Object, creal, дол)));
-static assert(!типКортеж_ли!(Object));
-static assert(!типКортеж_ли!(цел));
+static assert(типКортеж!(Кортеж!(цел)));
+static assert(типКортеж!(Кортеж!(float, сим)));
+static assert(типКортеж!(Кортеж!(double, float, цел, сим[])));
+static assert(типКортеж!(Кортеж!(Object, creal, дол)));
+static assert(!типКортеж!(Object));
+static assert(!типКортеж!(цел));
 
 
 
@@ -443,7 +442,7 @@ template СФункцСвязки()
         {
 
             // the argI-th арг is a composed/nested function
-            static if (функцСвязки_ли!(ВсеСвязанныеАрги.тип[argI]))
+            static if (функцСвязки!(ВсеСвязанныеАрги.тип[argI]))
             {
                 alias ДерефФункц!(ВсеСвязанныеАрги.тип[argI]).ВозврТип		ТипВозвратаФункц;
                 const цел argLen = дайДлинуАрга!(ПарамыФункц.тип[fargI], ТипВозвратаФункц);
@@ -451,7 +450,7 @@ template СФункцСвязки()
             }
 
             // the argI-th арг is a dynamic argument whose значение we will дай in the вызови to func()
-            else static if (динАрг_ли!(ВсеСвязанныеАрги.тип[argI]))
+            else static if (динАрг!(ВсеСвязанныеАрги.тип[argI]))
             {
                 const цел argLen = дайДлинуАрга!(ПарамыФункц.тип[fargI], ДинПарамы[ВсеСвязанныеАрги.тип[argI].аргНом]);
                 const цел bargInc = 0;
@@ -494,7 +493,7 @@ template СФункцСвязки()
         {
 
             // the argI-th арг is a composed/nested function
-            static if (функцСвязки_ли!(ВсеСвязанныеАрги.тип[argI]))
+            static if (функцСвязки!(ВсеСвязанныеАрги.тип[argI]))
             {
                 alias ДерефФункц!(ВсеСвязанныеАрги.тип[argI]).ВозврТип		ТипВозвратаФункц;
                 alias ДерефФункц!(ВсеСвязанныеАрги.тип[argI]).ДинПарамы	ДинПарамыФункц;
@@ -534,7 +533,7 @@ template СФункцСвязки()
             }
 
             // the argI-th арг is a dynamic argument whose значение we will дай in the вызови to func()
-            else static if (динАрг_ли!(ВсеСвязанныеАрги.тип[argI]))
+            else static if (динАрг!(ВсеСвязанныеАрги.тип[argI]))
             {
 
                 // we'll take data from динАрги
@@ -558,7 +557,7 @@ template СФункцСвязки()
             // the number of bound-function parameters this argument will cover after кортеж expansion
             const цел argLen = дайДлинуАрга!(funcArgs.тип[fargI], typeof(*srcItem));
 
-            static if (типКортеж_ли!(typeof(*srcItem)) && !типКортеж_ли!(funcArgs.тип[fargI]))
+            static if (типКортеж!(typeof(*srcItem)) && !типКортеж!(funcArgs.тип[fargI]))
             {
                 foreach (i, x; srcItem.значение)
                 {
@@ -828,7 +827,7 @@ template привяжиАлиас(alias FT)
 /*
 	Tells whether the specified тип is a bound function
 */
-template функцСвязки_ли(T)
+template функцСвязки(T)
 {
     static if (is(ДерефФункц!(T).ТипФункц))
     {
@@ -838,15 +837,15 @@ template функцСвязки_ли(T)
             {
                 static if (is(ДерефФункц!(T) : СвязаннаяФункц!(ДерефФункц!(T).ТипФункц, ДерефФункц!(T).АлиасФ, ДерефФункц!(T).ВсеСвязанныеАрги)))
                 {
-                    static const бул функцСвязки_ли =да;
+                    static const бул функцСвязки =да;
                 }
-                else static const бул функцСвязки_ли = нет;
+                else static const бул функцСвязки = нет;
             }
-            else static const бул функцСвязки_ли = нет;
+            else static const бул функцСвязки = нет;
         }
-        else static const бул функцСвязки_ли = нет;
+        else static const бул функцСвязки = нет;
     }
-    else static const бул функцСвязки_ли = нет;
+    else static const бул функцСвязки = нет;
 }
 
 
@@ -872,7 +871,7 @@ template типыДинАргов(цел i, ПарамыФункц, Связан
     // SkipType - the тип in СвязанныеАрги that we're just processing
     template prependType(T, SkipType)
     {
-        static if (типКортеж_ли!(SkipType) && !типКортеж_ли!(ПарамыФункц.тип[0]))
+        static if (типКортеж!(SkipType) && !типКортеж!(ПарамыФункц.тип[0]))
         {
             // perform кортеж decomposition
             // e.g. if a function being bound is accepting (цел, цел) and the current тип is a Кортеж!(цел, цел),
@@ -917,13 +916,13 @@ template типыДинАргов(цел i, ПарамыФункц, Связан
     {
 
         // w00t, detected a regular dynamic арг
-        static if (динАрг_ли!(СвязанныеАрги.тип[0], i))
+        static if (динАрг!(СвязанныеАрги.тип[0], i))
         {
             alias prependType!(ПарамыФункц.тип[0], СвязанныеАрги.тип[0]).рез рез;
         }
 
         // the арг is a bound function, extract info from it. we will be evaluating it later
-        else static if (функцСвязки_ли!(СвязанныеАрги.тип[0]))
+        else static if (функцСвязки!(СвязанныеАрги.тип[0]))
         {
             alias ДерефФункц!(СвязанныеАрги.тип[0]) СвязаннаяФункц;		// the bound function is a struct pointer, we have to derefernce its тип
 
@@ -966,13 +965,13 @@ template члоДинАргов(СвязанныеАрги)
     else
     {
         // ordinary dynamic арг
-        static if (динАрг_ли!(СвязанныеАрги.тип[0]))
+        static if (динАрг!(СвязанныеАрги.тип[0]))
         {
             static const цел рез = макЦел!(СвязанныеАрги.тип[0].аргНом+1, члоДинАргов!(Кортеж!(СвязанныеАрги.тип[1..$])).рез);
         }
 
         // count the args in nested / composed functions
-        else static if (функцСвязки_ли!(СвязанныеАрги.тип[0]))
+        else static if (функцСвязки!(СвязанныеАрги.тип[0]))
         {
             static const цел рез = макЦел!(ДерефФункц!(СвязанныеАрги.тип[0]).ДинПарамы.length, члоДинАргов!(Кортеж!(СвязанныеАрги.тип[1..$])).рез);
         }
@@ -1050,7 +1049,7 @@ template ИзвлечённыеСвязанныеАрги(СвязанныеАр
     }
 
     // we'll store all non-dynamic arguments...
-    else static if (!динАрг_ли!(СвязанныеАрги[0]))
+    else static if (!динАрг!(СвязанныеАрги[0]))
     {
         alias ИзвлечённыеСвязанныеАрги!(СвязанныеАрги[1..$]).meta.приставьТ!(СвязанныеАрги[0]) ИзвлечённыеСвязанныеАрги;
     }
@@ -1071,7 +1070,7 @@ template ИзвлечённыеСвязанныеАрги(СвязанныеАр
     static if (dst < результат.length)
     {
         // again, we only want non-dynamic arguments here
-        static if (!динАрг_ли!(СвязанныеАрги[src]))
+        static if (!динАрг!(СвязанныеАрги[src]))
         {
             _присвой!(typeof(результат.значение[dst]), typeof(связанныеАрги[src]))(результат.значение[dst], связанныеАрги[src]);
             return извлекиСвязанныеАрги!(dst+1, src+1, СвязанныеАрги)(результат, связанныеАрги);
@@ -1092,7 +1091,7 @@ template ИзвлечённыеСвязанныеАрги(СвязанныеАр
 template дайДлинуАрга(Dst, Src)
 {
     // if the арг is a кортеж and the target isn't one, it will be expanded/decomposed to the кортеж's length
-    static if (типКортеж_ли!(Src) && !типКортеж_ли!(Dst))
+    static if (типКортеж!(Src) && !типКортеж!(Dst))
     {
         static const цел дайДлинуАрга = Src.length;
     }

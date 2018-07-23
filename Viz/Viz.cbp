@@ -16,6 +16,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-debug" />
+					<Add directory="import" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -29,55 +30,24 @@
 				</Compiler>
 			</Target>
 		</Build>
-		<Unit filename="dflSource/all.d" />
-		<Unit filename="dflSource/app.d" />
-		<Unit filename="dflSource/base.d" />
-		<Unit filename="dflSource/button.d" />
-		<Unit filename="dflSource/clipboard.d" />
-		<Unit filename="dflSource/collections.d" />
-		<Unit filename="dflSource/colordialog.d" />
-		<Unit filename="dflSource/combobox.d" />
-		<Unit filename="dflSource/commondialog.d" />
-		<Unit filename="dflSource/control.d" />
-		<Unit filename="dflSource/data.d" />
-		<Unit filename="dflSource/drawing.d" />
-		<Unit filename="dflSource/environment.d" />
-		<Unit filename="dflSource/event.d" />
-		<Unit filename="dflSource/filedialog.d" />
-		<Unit filename="dflSource/folderdialog.d" />
-		<Unit filename="dflSource/fontdialog.d" />
-		<Unit filename="dflSource/form.d" />
-		<Unit filename="dflSource/groupbox.d" />
-		<Unit filename="dflSource/imagelist.d" />
-		<Unit filename="dflSource/label.d" />
-		<Unit filename="dflSource/listbox.d" />
-		<Unit filename="dflSource/listview.d" />
-		<Unit filename="dflSource/menu.d" />
-		<Unit filename="dflSource/messagebox.d" />
-		<Unit filename="dflSource/notifyicon.d" />
-		<Unit filename="dflSource/panel.d" />
-		<Unit filename="dflSource/picturebox.d" />
-		<Unit filename="dflSource/progressbar.d" />
-		<Unit filename="dflSource/registry.d" />
-		<Unit filename="dflSource/resources.d" />
-		<Unit filename="dflSource/richtextbox.d" />
-		<Unit filename="dflSource/socket.d" />
-		<Unit filename="dflSource/splitter.d" />
-		<Unit filename="dflSource/statusbar.d" />
-		<Unit filename="dflSource/tabcontrol.d" />
-		<Unit filename="dflSource/textbox.d" />
-		<Unit filename="dflSource/timer.d" />
-		<Unit filename="dflSource/toolbar.d" />
-		<Unit filename="dflSource/tooltip.d" />
-		<Unit filename="dflSource/treeview.d" />
-		<Unit filename="dflSource/usercontrol.d" />
-		<Unit filename="dflSource/x/_stdcwindows.d" />
-		<Unit filename="dflSource/x/clib.d" />
-		<Unit filename="dflSource/x/com.d" />
-		<Unit filename="dflSource/x/dlib.d" />
-		<Unit filename="dflSource/x/utf.d" />
-		<Unit filename="dflSource/x/winapi.d" />
-		<Unit filename="dflSource/x/wincom.d" />
+		<Unit filename="Viz/app.d" />
+		<Unit filename="Viz/button.d" />
+		<Unit filename="Viz/collections.d" />
+		<Unit filename="Viz/common.d" />
+		<Unit filename="Viz/consts.d" />
+		<Unit filename="Viz/control.d" />
+		<Unit filename="Viz/data.d" />
+		<Unit filename="Viz/environment.d" />
+		<Unit filename="Viz/event.d" />
+		<Unit filename="Viz/form.d" />
+		<Unit filename="Viz/graphics.d" />
+		<Unit filename="Viz/iface.d" />
+		<Unit filename="Viz/label.d" />
+		<Unit filename="Viz/menu.d" />
+		<Unit filename="Viz/resources.d" />
+		<Unit filename="Viz/structs.d" />
+		<Unit filename="Viz/textbox.d" />
+		<Unit filename="Viz/timer.d" />
 		<Extensions>
 			<code_completion />
 			<envvars />

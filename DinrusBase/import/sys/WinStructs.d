@@ -451,10 +451,10 @@ extern(D)
             else static if (is(V : ИДиспетчер)) return cast(V)депЗнач;
             else static if (is(V : Инкогнито)) return cast(V)инкЗнач;
             else static if (is(V == БЕЗОПМАС*)) return массив;
-            else static if (массив_ли!(V)) return массив.вМассив!(typeof(*V))();
+            else static if (массив!(V)) return массив.вМассив!(typeof(*V))();
             else static if (is(V == ВАРИАНТ*)) return уварЗнач;
             else static if (is(V : Объект)) return cast(V)байреф;
-            else static if (указатель_ли!(V)) return cast(V)байреф;
+            else static if (указатель!(V)) return cast(V)байреф;
             else static if (is(V == байт)) return байтЗнач;
             else static if (is(V == бкрат)) return бкратЗнач;
             else static if (is(V == бцел)) return бцелЗнач;
@@ -466,16 +466,16 @@ extern(D)
         /**
          * Определяет, пуст ли данный экземпляр.
          */
-        бул пуст_ли();
+        бул пуст();
         /**
          * Определяет, является ли экземпляр _null.
          */
-        бул нулл_ли();
+        бул нулл();
 
         /**
          * Определяет, является ли экземпляр Nothing.
          */
-        бул ничто_ли() ;
+        бул ничто() ;
 
         цел opCmp(ВАРИАНТ тот);
 

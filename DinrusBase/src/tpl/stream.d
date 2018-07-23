@@ -11,33 +11,34 @@ alias toUTF8 вЮ8;
 alias init_crc32 иницЦПИ32;
 alias update_crc32 обновиЦПИ32;
 
-protected бул пробел(сим c) {
+export extern(D) бул пробел(сим c) {
   return c == ' ' || c == '\t' || c == '\r' || c == '\n';
 }
 
-protected бул цифра(сим c) {
+export extern(D) бул цифра(сим c) {
   return c >= '0' && c <= '9';
 }
 
-protected бул цифра8(сим c) {
+export extern(D) бул цифра8(сим c) {
   return c >= '0' && c <= '7';
 }
 
-protected бул цифра16(сим c) {
+export extern(D) бул цифра16(сим c) {
   return цифра(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
 }
 
 
 export extern (D) abstract class Поток :  win.ПотокВвода, win.ПотокВывода
  {
-extern(C) extern
+ 
+private
 {
-      шим[] возврат;
+      шткст возврат;
 	  бул читаем;	
 	  бул записываем;
 	  бул сканируем;
-	  бул открыт;	
-	  бул читайдоКФ;
+	  бул открытый;	
+	  бул читдоКФ;
 	  бул предВкар;
  }
 	  
@@ -51,26 +52,26 @@ export:
 	  проц записываемый(бул б){this.записываем = б;}
 	  проц сканируемый(бул б){this.сканируем = б;}
 	  
-	  проц открытый(бул б){this.открыт = б;}
-	  бул открытый(){return открыт;}
+	  проц открыт(бул б){this.открытый = б;}
+	  бул открыт(){return this.открытый;}
 	  
-	   проц читатьдоКФ(бул б){this.читайдоКФ = б;}
-	  бул читатьдоКФ(){return  this.читайдоКФ;}
+	   проц читатьдоКФ(бул б){this.читдоКФ = б;}
+	  бул читатьдоКФ(){return  this.читдоКФ;}
 	  
 	  проц возвратКаретки(бул б){this.предВкар = б;}
 	  бул возвратКаретки(){return  this.предВкар;} 
 	  
-
-	  //protected static this() {}
+	  шткст возврТекст(){return this.возврат;}
+	  проц устВозврТекст(шткст т){this.возврат = т;}
 
 	  this() 
 	  {
-	  this.читаем = false;	
-	  this.записываем = false;
-	  this.сканируем = false;
-	  this.открыт = true;	
-	  this.читайдоКФ = false;
-	  this.предВкар = false;
+	  this.читаем = нет;	
+	  this.записываем = нет;
+	  this.сканируем = нет;
+	  this.открытый = да;	
+	  this.читдоКФ = нет;
+	  this.предВкар = нет;
 	  }
 	  ~this(){}
 	  
@@ -150,7 +151,7 @@ export:
 		  if (ch != '\n')
 			отдайс(ch);
 		} else {
-		  предВкар = true;
+		  предВкар = да;
 		}
 		  case '\n':
 		  case сим.init:
@@ -192,7 +193,7 @@ export:
 		  if (c != '\n')
 			отдайш(c);
 		} else {
-		  предВкар = true;
+		  предВкар = да;
 		}
 		  case '\n':
 		  case шим.init:
@@ -291,7 +292,7 @@ export:
 	  сим берис() {
 		сим c;
 		if (предВкар) {
-		  предВкар = false;
+		  предВкар = нет;
 		  c = берис();
 		  if (c != '\n') 
 		  return c;
@@ -314,7 +315,7 @@ export:
 	  шим бериш() {
 		шим c;
 		if (предВкар) {
-		  предВкар = false;
+		  предВкар = нет;
 		  c = бериш();
 		  if (c != '\n') 
 		return c;
@@ -389,9 +390,9 @@ export:
 		  }
 		  if (fmt[i] == '%') {	// a field
 		i++;
-		бул suppress = false;
+		бул suppress = нет;
 		if (fmt[i] == '*') {	// suppress assignment
-		  suppress = true;
+		  suppress = да;
 		  i++;
 		}
 		// читай field width
@@ -422,9 +423,9 @@ export:
 			  c = берис();
 			  count++;
 			}
-			бул neg = false;
+			бул neg = нет;
 			if (c == '-') {
-			  neg = true;
+			  neg = да;
 			  c = берис();
 			  count++;
 			} else if (c == '+') {
@@ -527,9 +528,9 @@ export:
 			  c = берис();
 			  count++;
 			}
-			бул neg = false;
+			бул neg = нет;
 			if (c == '-') {
-			  neg = true;
+			  neg = да;
 			  c = берис();
 			  count++;
 			} else if (c == '+') {
@@ -562,9 +563,9 @@ export:
 			  c = берис();
 			  count++;
 			  if (width) {
-			бул expneg = false;
+			бул expneg = нет;
 			if (c == '-') {
-			  expneg = true;
+			  expneg = да;
 			  width--;
 			  c = берис();
 			  count++;
@@ -786,7 +787,7 @@ export:
 		auto f = format;
 		т_мера psize = буфер.length;
 		т_мера count;
-		while (true) {
+		while (да) {
 		  version (Win32) {
 		count = вснвыводф(stdrus.вТкст(p), psize, f, args);
 		if (count != -1)
@@ -915,19 +916,16 @@ export:
 		return результат;
 	  }
 
-	  // returns true if end of stream is reached, false otherwise
+	  // returns да if end of stream is reached, нет otherwise
 	  бул кф() { 
 		// for unсканируемый streams we only know the end when we читай it
-		if (читайдоКФ && !верниЧтоЕсть())
-		  return true;
+		if (читдоКФ && !верниЧтоЕсть())
+		  return да;
 		else if (сканируем)
 		  return позиция() == размер(); 
 		else
-		  return false;
+		  return нет;
 	  }
-
-	  // returns true if the stream is open
-	  бул открыт_ли() { return открытый(); }
 
 	  // слей the буфер if записываем
 	  проц слей() {
@@ -937,14 +935,14 @@ export:
 
 	  // закрой the stream somehow; the default just flushes the буфер
 	  проц закрой() {
-		if (открытый())
+		if (открытый)
 		  слей();
-		читатьдоКФ(false); возвратКаретки(false);открытый(false);читаемый(false);
-		записываемый(false);сканируемый(false);
+		читатьдоКФ(нет); возвратКаретки(нет);открыт(нет);читаемый(нет);
+		записываемый(нет);сканируемый(нет);
 	  }
 
 	 проц удали (ткст имяф)
-	  {if(открытый())закрой();
+	  {if(открытый)закрой();
 	  if(!естьФайл(имяф))
 		{
 		скажинс(std.string.format("\n\tИНФО:  Файл %s удалён ранее или вовсе не существовал", имяф)); return ;
@@ -1020,19 +1018,19 @@ export:
 	  бул проверьЧитаемость(ткст имяПотока = ткст.init,ткст файл = ткст.init, дол  строка = дол.init) {
 		if (!читаемый()){
 		  ошибка(имяПотока~" : поток не читаем!",файл, строка);}
-		  return true;
+		  return да;
 	  }
 	  // helper for checking that the stream is записываем
 	  бул проверьЗаписываемость(ткст имяПотока = ткст.init,ткст файл = ткст.init, дол  строка = дол.init) {
 		if (!записываемый()){
 		  ошибка(имяПотока~": поток не записываем!",файл,строка);}
-		  return true;
+		  return да;
 	  }
 	  // helper for checking that the stream is сканируем
 	  бул проверьСканируемость(ткст имяПотока = ткст.init,ткст файл = ткст.init, дол  строка = дол.init) {
 		if (!сканируемый()){
 		  ошибка(имяПотока~": поток не сканируем",файл,строка);}
-		  return true;
+		  return да;
 	  }
 	}
 

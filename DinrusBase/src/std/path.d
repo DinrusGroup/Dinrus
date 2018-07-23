@@ -115,7 +115,7 @@ alias getDirName дайИмяПапки;
 alias getDrive дайДиск;
 alias defaultExt устДефРасш;
 alias addExt добРасш;
-alias isabs абс_ли;
+alias isabs абс;
 alias join объедени; 
 alias fncharmatch  сверьсимиф;
 alias fnmatch сверьиф;  
