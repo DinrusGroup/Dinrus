@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="DMD\root\rmem.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1574" topLine="26" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\dt.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="583" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\dwarf.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1031" topLine="37" />
+		</Cursor>
+	</File>
+	<File name="DMD\hdrgen.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="634" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\strtold.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="26075" topLine="533" />
+		</Cursor>
+	</File>
+	<File name="DMD\iasm.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1304" topLine="40" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\el.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="788" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="DMD\libomf.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4448" topLine="172" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\elfobj.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="675" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="DMD\identifier.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="623" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="DMD\macro.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="433" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="DMD\arrayop.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2922" topLine="106" />
+		</Cursor>
+	</File>
+	<File name="DMD\mangle.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2234" topLine="81" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\gflow.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="630" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="DMD\mtype.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10240" topLine="443" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\gother.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="606" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\blockopt.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="728" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cdef.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29827" topLine="791" />
+		</Cursor>
+	</File>
+	<File name="DMD\lexer.c" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="36930" topLine="771" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cod3.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="656" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="DMD\declaration.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20057" topLine="777" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\nteh.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="716" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="DMD\root\root.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="39387" topLine="51" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\out.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="583" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cppman.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="599" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cgsched.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="630" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="DMD\fltables.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\symbol.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="532" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\ee.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="688" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="DMD\identifier.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="855" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\token.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11870" topLine="428" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\evalu8.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="796" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\type.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="524" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\gdag.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="629" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\var.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="504" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="DMD\msc.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="561" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\html.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12311" topLine="502" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cc.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="65235" topLine="1551" />
+		</Cursor>
+	</File>
+	<File name="DMD\root\dchar.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="717" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\machobj.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="999" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\cg87.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="110170" topLine="3521" />
+		</Cursor>
+	</File>
+	<File name="DMD\parse.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="356" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="DMD\lexer.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4988" topLine="162" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\newman.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="558" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="DMD\util.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="739" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="DMD\backend\oper.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7336" topLine="224" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

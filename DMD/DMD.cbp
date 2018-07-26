@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DMD" />
+		<Option pch_mode="2" />
+		<Option compiler="dmc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DMD" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="dmc" />
+				<Compiler>
+					<Add option="-6" />
+					<Add option="-Ar" />
+					<Add option="-g" />
+					<Add option="-D__DMC__" />
+					<Add option="-DMARS -cpp -e -wx -D_DH" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DMD" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="dmc" />
+				<Compiler>
+					<Add option="-o" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-w-" />
+			<Add option="-Ae" />
+		</Compiler>
+		<Unit filename="DMD/access.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/aggregate.h" />
+		<Unit filename="DMD/aliasthis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/aliasthis.h" />
+		<Unit filename="DMD/argtypes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/arrayop.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/arraytypes.h" />
+		<Unit filename="DMD/attrib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/attrib.h" />
+		<Unit filename="DMD/backend/aa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/aa.h" />
+		<Unit filename="DMD/backend/bcomplex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/bcomplex.h" />
+		<Unit filename="DMD/backend/blockopt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cc.h" />
+		<Unit filename="DMD/backend/cdef.h" />
+		<Unit filename="DMD/backend/cdeflnx.h" />
+		<Unit filename="DMD/backend/cg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cg87.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgcod.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgcs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgcv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgcv.h" />
+		<Unit filename="DMD/backend/cgelem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgobj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgreg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cgsched.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cod1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cod2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cod3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cod4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cod5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/code.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/code.h" />
+		<Unit filename="DMD/backend/cpp.h" />
+		<Unit filename="DMD/backend/cppman.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/cv4.h" />
+		<Unit filename="DMD/backend/debug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/dt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/dt.h" />
+		<Unit filename="DMD/backend/dwarf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/dwarf.h" />
+		<Unit filename="DMD/backend/dwarf2.h" />
+		<Unit filename="DMD/backend/ee.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/el.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/el.h" />
+		<Unit filename="DMD/backend/elfobj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/evalu8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/exh.h" />
+		<Unit filename="DMD/backend/gdag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/gflow.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/global.h" />
+		<Unit filename="DMD/backend/glocal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/gloop.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/go.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/go.h" />
+		<Unit filename="DMD/backend/gother.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/html.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/html.h" />
+		<Unit filename="DMD/backend/iasm.h" />
+		<Unit filename="DMD/backend/mach.h" />
+		<Unit filename="DMD/backend/machobj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/md5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/md5.h" />
+		<Unit filename="DMD/backend/melf.h" />
+		<Unit filename="DMD/backend/newman.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/nteh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/oper.h" />
+		<Unit filename="DMD/backend/os.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/out.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/outbuf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/outbuf.h" />
+		<Unit filename="DMD/backend/parser.h" />
+		<Unit filename="DMD/backend/ptrntab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/rtlsym.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/rtlsym.h" />
+		<Unit filename="DMD/backend/strtold.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/symbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/tassert.h" />
+		<Unit filename="DMD/backend/ti_achar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/tinfo.h" />
+		<Unit filename="DMD/backend/token.h" />
+		<Unit filename="DMD/backend/ty.h" />
+		<Unit filename="DMD/backend/type.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/backend/type.h" />
+		<Unit filename="DMD/backend/var.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/bit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/builtin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/cast.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/class.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/clone.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/complex_t.h" />
+		<Unit filename="DMD/cond.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/cond.h" />
+		<Unit filename="DMD/constfold.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/cppmangle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/declaration.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/declaration.h" />
+		<Unit filename="DMD/delegatize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/doc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/doc.h" />
+		<Unit filename="DMD/dsymbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/dsymbol.h" />
+		<Unit filename="DMD/dump.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/e2ir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/eh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/entity.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/enum.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/enum.h" />
+		<Unit filename="DMD/expression.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/expression.h" />
+		<Unit filename="DMD/fltables.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/func.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/glue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/hdrgen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/hdrgen.h" />
+		<Unit filename="DMD/iasm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/id.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/id.h" />
+		<Unit filename="DMD/identifier.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/identifier.h" />
+		<Unit filename="DMD/idgen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/impcnvtab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/imphint.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/import.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/import.h" />
+		<Unit filename="DMD/inifile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/init.h" />
+		<Unit filename="DMD/inline.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/interpret.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/irstate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/irstate.h" />
+		<Unit filename="DMD/json.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/json.h" />
+		<Unit filename="DMD/lexer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/lexer.h" />
+		<Unit filename="DMD/lib.h" />
+		<Unit filename="DMD/libomf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/link.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/macro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/macro.h" />
+		<Unit filename="DMD/mangle.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/mars.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/mars.h" />
+		<Unit filename="DMD/module.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/module.h" />
+		<Unit filename="DMD/msc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/mtype.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/mtype.h" />
+		<Unit filename="DMD/objfile.h" />
+		<Unit filename="DMD/opover.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/optimize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/parse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/parse.h" />
+		<Unit filename="DMD/ph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/aav.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/aav.h" />
+		<Unit filename="DMD/root/array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/async.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/async.h" />
+		<Unit filename="DMD/root/dchar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/dchar.h" />
+		<Unit filename="DMD/root/gnuc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/gnuc.h" />
+		<Unit filename="DMD/root/lstring.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/lstring.h" />
+		<Unit filename="DMD/root/man.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/port.h" />
+		<Unit filename="DMD/root/response.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/rmem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/rmem.h" />
+		<Unit filename="DMD/root/root.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/root.h" />
+		<Unit filename="DMD/root/speller.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/speller.h" />
+		<Unit filename="DMD/root/stringtable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/root/stringtable.h" />
+		<Unit filename="DMD/s2ir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/scope.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/scope.h" />
+		<Unit filename="DMD/statement.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/statement.h" />
+		<Unit filename="DMD/staticassert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/staticassert.h" />
+		<Unit filename="DMD/stdafx.h" />
+		<Unit filename="DMD/struct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/targetver.h" />
+		<Unit filename="DMD/template.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/template.h" />
+		<Unit filename="DMD/tk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tk/allH.h" />
+		<Unit filename="DMD/tk/filespec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tk/filespec.h" />
+		<Unit filename="DMD/tk/list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tk/list.h" />
+		<Unit filename="DMD/tk/mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tk/mem.h" />
+		<Unit filename="DMD/tk/vec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tk/vec.h" />
+		<Unit filename="DMD/tocsym.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/toctype.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tocvdebug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/todt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/toelfdebug.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/toir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/toir.h" />
+		<Unit filename="DMD/toobj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/traits.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/typinf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/tytab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/unialpha.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/unittests.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/utf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/utf.h" />
+		<Unit filename="DMD/util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/version.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DMD/version.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

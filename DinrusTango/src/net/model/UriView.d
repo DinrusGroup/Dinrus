@@ -1,4 +1,4 @@
-﻿/*******************************************************************************
+/*******************************************************************************
 
         copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
 
@@ -14,9 +14,9 @@ module net.model.UriView;
 
 /*******************************************************************************
 
-        Implements an RFC 2396 compliant URI specification. See
-        <A HREF="http://ftp.ics.uci.edu/pub/ietf/уир/rfc2396.txt">this страница</A>
-        for ещё information.
+       Реализует совместимую с RFC 2396 спецификацию URI. Смотрите
+        <A HREF="http://ftp.ics.uci.edu/pub/ietf/уир/rfc2396.txt">эту страницу</A>
+        для дополнительной информации.
 
         The implementation fails the spec on two counts: it doesn't insist
         on a scheme being present in the ОбзорУИР, и it doesn't implement the

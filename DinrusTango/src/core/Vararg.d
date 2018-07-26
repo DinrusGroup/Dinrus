@@ -1,8 +1,8 @@
 ﻿/**
- * The vararg module is intended в_ facilitate vararg manИПulation in D.
- * It should be interface compatible with the C module "stdarg," and the
- * two modules may совместно a common implementation if possible (as is готово
- * here).
+ * Модуль vararg предназначен для облегчения манипуляции vararg в D/Динрусе.
+ * Он должен быть по интерфейсу совместим с модулем C "stdarg," и эти
+ * два модуля могут использовать общую реализацию по возможности (как готово
+ * здесь).
  *
  * Copyright: Public Domain
  * License:   Public Domain

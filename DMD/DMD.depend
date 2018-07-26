@@ -1,0 +1,1763 @@
+# depslib dependency file v1.0
+1486927441 source:d:\dinrus\dev\dinrus\dmd\dmd\access.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"./root/root.h"
+	"./root/rmem.h"
+	"enum.h"
+	"aggregate.h"
+	"init.h"
+	"attrib.h"
+	"scope.h"
+	"id.h"
+	"mtype.h"
+	"declaration.h"
+	"aggregate.h"
+	"expression.h"
+	"module.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\root.h
+	<stdlib.h>
+	<stdarg.h>
+	"dchar.h"
+	<float.h>
+	<malloc.h>
+
+1532520358 d:\dinrus\dev\dinrus\dmd\dmd\root\dchar.h
+	"gnuc.h"
+	<string.h>
+	<wchar.h>
+	<cwctype>
+	<limits.h>
+	<mbstring.h>
+	<string.h>
+	<ctype.h>
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\gnuc.h
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\rmem.h
+	<stddef.h>
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\enum.h
+	"./root/root.h"
+	"dsymbol.h"
+	"hdrgen.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\dsymbol.h
+	"./root/root.h"
+	"./root/stringtable.h"
+	"mars.h"
+	"arraytypes.h"
+	"hdrgen.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\stringtable.h
+	"root.h"
+	"dchar.h"
+	"lstring.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\lstring.h
+	"dchar.h"
+
+1487183904 d:\dinrus\dev\dinrus\dmd\dmd\mars.h
+	<stdio.h>
+	<stdint.h>
+	<stdarg.h>
+	<windef.h>
+	"complex_t.h"
+	"d-gcc-real.h"
+	"d-gcc-complex_t.h"
+
+1486913782 d:\dinrus\dev\dinrus\dmd\dmd\complex_t.h
+
+1486920930 d:\dinrus\dev\dinrus\dmd\dmd\arraytypes.h
+	"./root/root.h"
+
+1486978000 d:\dinrus\dev\dinrus\dmd\dmd\hdrgen.h
+
+1486955509 d:\dinrus\dev\dinrus\dmd\dmd\aggregate.h
+	"./root/root.h"
+	"hdrgen.h"
+	"dsymbol.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\init.h
+	"./root/root.h"
+	"hdrgen.h"
+	"mars.h"
+	"arraytypes.h"
+	"hdrgen.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\attrib.h
+	"dsymbol.h"
+	"hdrgen.h"
+
+1486913788 d:\dinrus\dev\dinrus\dmd\dmd\scope.h
+	"dsymbol.h"
+	"mars.h"
+
+1486914983 d:\dinrus\dev\dinrus\dmd\dmd\id.h
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\mtype.h
+	"./root/root.h"
+	"./root/stringtable.h"
+	"arraytypes.h"
+	"expression.h"
+	"hdrgen.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\expression.h
+	"mars.h"
+	"identifier.h"
+	"lexer.h"
+	"arraytypes.h"
+	"hdrgen.h"
+
+1532525842 d:\dinrus\dev\dinrus\dmd\dmd\identifier.h
+	"./root/root.h"
+
+1486922199 d:\dinrus\dev\dinrus\dmd\dmd\lexer.h
+	"./root/root.h"
+	"mars.h"
+
+1486913782 d:\dinrus\dev\dinrus\dmd\dmd\declaration.h
+	"dsymbol.h"
+	"lexer.h"
+	"mtype.h"
+
+1486979123 d:\dinrus\dev\dinrus\dmd\dmd\module.h
+	"./root/root.h"
+	"dsymbol.h"
+
+1486955509 source:d:\dinrus\dev\dinrus\dmd\dmd\aliasthis.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"identifier.h"
+	"aliasthis.h"
+	"scope.h"
+	"aggregate.h"
+	"dsymbol.h"
+	"hdrgen.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\aliasthis.h
+	"mars.h"
+	"dsymbol.h"
+
+1486958008 source:d:\dinrus\dev\dinrus\dmd\dmd\argtypes.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"dsymbol.h"
+	"mtype.h"
+	"scope.h"
+	"init.h"
+	"expression.h"
+	"attrib.h"
+	"declaration.h"
+	"template.h"
+	"id.h"
+	"enum.h"
+	"import.h"
+	"aggregate.h"
+
+1486956454 d:\dinrus\dev\dinrus\dmd\dmd\template.h
+	"./root/root.h"
+	"arraytypes.h"
+	"dsymbol.h"
+	"hdrgen.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\import.h
+	"dsymbol.h"
+	"hdrgen.h"
+
+1490641786 source:d:\dinrus\dev\dinrus\dmd\dmd\arrayop.c
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	"./root/rmem.h"
+	"./root/stringtable.h"
+	"expression.h"
+	"statement.h"
+	"mtype.h"
+	"declaration.h"
+	"scope.h"
+	"id.h"
+	"module.h"
+	"init.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\statement.h
+	"./root/root.h"
+	"arraytypes.h"
+	"dsymbol.h"
+	"lexer.h"
+	"hdrgen.h"
+
+1487158875 source:d:\dinrus\dev\dinrus\dmd\dmd\attrib.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"./root/rmem.h"
+	"init.h"
+	"declaration.h"
+	"attrib.h"
+	"cond.h"
+	"scope.h"
+	"id.h"
+	"expression.h"
+	"dsymbol.h"
+	"aggregate.h"
+	"module.h"
+	"parse.h"
+	"template.h"
+	"frontend.net/pragma.h"
+
+1487010188 d:\dinrus\dev\dinrus\dmd\dmd\cond.h
+	"lexer.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\parse.h
+	"arraytypes.h"
+	"lexer.h"
+	"enum.h"
+
+1487010187 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\aa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"tinfo.h"
+	"aa.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\tinfo.h
+	<stdlib.h>
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\aa.h
+	<stdlib.h>
+	"tinfo.h"
+
+1487010187 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\bcomplex.c
+	<math.h>
+	"bcomplex.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\bcomplex.h
+
+1532523708 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\blockopt.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	"cc.h"
+	"oper.h"
+	"el.h"
+	"type.h"
+	"global.h"
+	"./parser.h"
+	"go.h"
+	"code.h"
+	"iasm.h"
+	"TG.h"
+	"tassert.h"
+
+1487170064 d:\dinrus\dev\dinrus\dmd\dmd\backend\cc.h
+	"../targetver.h"
+	"cdef.h"
+	"msgs2.h"
+	"ty.h"
+	"../tk/mem.h"
+	"../tk/mem.h"
+	"../tk/list.h"
+	"../tk/vec.h"
+	"token.h"
+	"rtlsym.h"
+
+1487184426 d:\dinrus\dev\dinrus\dmd\dmd\targetver.h
+	<SDKDDKVer.h>
+
+1487175038 d:\dinrus\dev\dinrus\dmd\dmd\backend\cdef.h
+	"cdeflnx.h"
+	"bcomplex.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\cdeflnx.h
+	<time.h>
+	"token.h"
+	"optdata.h"
+
+1532523361 d:\dinrus\dev\dinrus\dmd\dmd\backend\token.h
+
+1487175231 d:\dinrus\dev\dinrus\dmd\dmd\backend\ty.h
+	"cdef.h"
+
+1486913788 d:\dinrus\dev\dinrus\dmd\dmd\tk\mem.h
+	<stdlib.h>
+
+1486913788 d:\dinrus\dev\dinrus\dmd\dmd\tk\list.h
+
+1486913788 d:\dinrus\dev\dinrus\dmd\dmd\tk\vec.h
+	<bitops.h>
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\rtlsym.h
+
+1286160290 d:\dinrus\dev\dinrus\dmd\dmd\backend\oper.h
+	"TGoper.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\el.h
+	"TGel.h"
+
+1487019696 d:\dinrus\dev\dinrus\dmd\dmd\backend\type.h
+	<limits.h>
+
+1487021344 d:\dinrus\dev\dinrus\dmd\dmd\backend\global.h
+	"el.h"
+	"CGproto.h"
+	"TGglobal.h"
+
+1487155147 d:\dinrus\dev\dinrus\dmd\dmd\backend\parser.h
+	"scope.h"
+	"type.h"
+	"el.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\go.h
+
+1487176224 d:\dinrus\dev\dinrus\dmd\dmd\backend\code.h
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\iasm.h
+	<setjmp.h>
+
+1487084336 d:\dinrus\dev\dinrus\dmd\dmd\backend\tassert.h
+
+1487155146 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cg.c
+	<stdio.h>
+	<time.h>
+	<string.h>
+	<stdlib.h>
+	"cc.h"
+	"global.h"
+	"code.h"
+	"type.h"
+	"aa.h"
+	"../tk/filespec.h"
+	"../fltables.c"
+
+1486913788 d:\dinrus\dev\dinrus\dmd\dmd\tk\filespec.h
+
+1532523023 d:\dinrus\dev\dinrus\dmd\dmd\fltables.c
+	"backend/cc.h"
+
+1532521754 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cg87.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<math.h>
+	"cc.h"
+	"ty.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"global.h"
+	"tassert.h"
+	"cdef.h"
+
+1487176609 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgcod.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<alloca.h>
+	<malloc.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"global.h"
+	"type.h"
+	"exh.h"
+	"tassert.h"
+	"../cdxxx.c"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\exh.h
+
+1487176501 d:\dinrus\dev\dinrus\dmd\dmd\cdxxx.c
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgcs.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"global.h"
+	"code.h"
+	"type.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgcv.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<malloc.h>
+	<alloca.h>
+	"cc.h"
+	"type.h"
+	"code.h"
+	"cgcv.h"
+	"cv4.h"
+	"global.h"
+	"cpp.h"
+	"tassert.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\cgcv.h
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\cv4.h
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\cpp.h
+
+1487025765 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgelem.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"global.h"
+	"el.h"
+	"dt.h"
+	"code.h"
+	"type.h"
+	"tassert.h"
+	"../elxxx.c"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\dt.h
+
+1487176501 d:\dinrus\dev\dinrus\dmd\dmd\elxxx.c
+
+1487159377 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgen.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"type.h"
+	"global.h"
+	"tassert.h"
+
+1487162227 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgobj.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<malloc.h>
+	<ctype.h>
+	<direct.h>
+	"../tk/filespec.h"
+	"cc.h"
+	"global.h"
+	"cgcv.h"
+	"code.h"
+	"type.h"
+	"outbuf.h"
+	"md5.h"
+	"tassert.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\outbuf.h
+	<string.h>
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\md5.h
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgreg.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"global.h"
+	"type.h"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cgsched.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"code.h"
+	"oper.h"
+	"global.h"
+	"type.h"
+	"./parser.h"
+	"cpp.h"
+	"exh.h"
+	"../tk/list.h"
+	"tassert.h"
+
+1487159655 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cod1.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<alloca.h>
+	<malloc.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"global.h"
+	"type.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cod2.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"el.h"
+	"code.h"
+	"global.h"
+	"type.h"
+	"exh.h"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cod3.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"code.h"
+	"oper.h"
+	"global.h"
+	"type.h"
+	"./parser.h"
+	"cpp.h"
+	"exh.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cod4.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"type.h"
+	"global.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cod5.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"oper.h"
+	"code.h"
+	"global.h"
+	"type.h"
+	"tassert.h"
+
+1487016419 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\code.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"code.h"
+	"global.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\cppman.c
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	"cc.h"
+	"./parser.h"
+	"token.h"
+	"global.h"
+	"oper.h"
+	"el.h"
+	"type.h"
+	"cpp.h"
+	"filespec.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\debug.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"type.h"
+	"el.h"
+	"token.h"
+	"global.h"
+	"vec.h"
+	"go.h"
+	"code.h"
+	"debtab.c"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\dt.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"global.h"
+	"./parser.h"
+	"el.h"
+	"type.h"
+	"dt.h"
+	"tassert.h"
+
+1487025997 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\dwarf.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<ctype.h>
+	<malloc.h>
+	<signal.h>
+	<unistd.h>
+	<errno.h>
+	"cc.h"
+	"global.h"
+	"code.h"
+	"type.h"
+	"outbuf.h"
+	"../tk/filespec.h"
+	"cv4.h"
+	"cgcv.h"
+	"dt.h"
+	"aa.h"
+	"tinfo.h"
+	"melf.h"
+	"mach.h"
+	"mars.h"
+	"dwarf.h"
+	"dwarf2.h"
+	"tassert.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\melf.h
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\mach.h
+	<mach-o/loader.h>
+	<mach-o/nlist.h>
+	<mach-o/stab.h>
+	<mach-o/reloc.h>
+	<stdint.h>
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\dwarf.h
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\dwarf2.h
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\ee.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"token.h"
+	"global.h"
+	"type.h"
+	"oper.h"
+	"el.h"
+	"./parser.h"
+	"cpp.h"
+	"exh.h"
+	"cgcv.h"
+	"iasm.h"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\el.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<stdarg.h>
+	"paccfp.h"
+	"cc.h"
+	"type.h"
+	"el.h"
+	"../tk/list.h"
+	"../tk/mem.h"
+	"oper.h"
+	"type.h"
+	"./parser.h"
+	"code.h"
+	"global.h"
+	"go.h"
+	"TG.h"
+	"tassert.h"
+	"cgobjxcoff.h"
+	"xcoff.h"
+
+1532521897 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\elfobj.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<alloca.h>
+	"cc.h"
+	"global.h"
+	"code.h"
+	"type.h"
+	"melf.h"
+	"outbuf.h"
+	"../tk/filespec.h"
+	"cv4.h"
+	"cgcv.h"
+	"dt.h"
+	"aa.h"
+	"tinfo.h"
+	"dwarf.h"
+	"aa.h"
+	"tinfo.h"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\evalu8.c
+	<math.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<float.h>
+	<time.h>
+	<fenv.h>
+	<fp.h>
+	"cc.h"
+	"oper.h"
+	"global.h"
+	"./parser.h"
+	"el.h"
+	"type.h"
+	"cpp.h"
+	"tassert.h"
+
+1532521946 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\gdag.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"global.h"
+	"el.h"
+	"go.h"
+	"ty.h"
+	"oper.h"
+	"../tk/vec.h"
+	"tassert.h"
+
+1532521972 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\gflow.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"global.h"
+	"el.h"
+	"go.h"
+	"type.h"
+	"oper.h"
+	"../tk/vec.h"
+	"tassert.h"
+
+1487160801 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\glocal.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<alloca.h>
+	<malloc.h>
+	"cc.h"
+	"global.h"
+	"el.h"
+	"go.h"
+	"type.h"
+	"oper.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\gloop.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"go.h"
+	"oper.h"
+	"global.h"
+	"type.h"
+	"tassert.h"
+
+1487160982 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\go.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"global.h"
+	"oper.h"
+	"el.h"
+	"go.h"
+	"type.h"
+	"TG.h"
+	"tassert.h"
+
+1532522003 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\gother.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"global.h"
+	"el.h"
+	"go.h"
+	"oper.h"
+	"../tk/list.h"
+	"type.h"
+	"tassert.h"
+
+1532522039 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\html.c
+	"../targetver.h"
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<stdarg.h>
+	<errno.h>
+	<wchar.h>
+	"html.h"
+	<assert.h>
+	"../root/root.h"
+	"outbuf.h"
+	"msgs2.h"
+	"tassert.h"
+
+1486913755 d:\dinrus\dev\dinrus\dmd\dmd\backend\html.h
+
+1532522074 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\machobj.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<ctype.h>
+	<malloc.h>
+	<signal.h>
+	<unistd.h>
+	"cc.h"
+	"global.h"
+	"code.h"
+	"type.h"
+	"mach.h"
+	"outbuf.h"
+	"../tk/filespec.h"
+	"cv4.h"
+	"cgcv.h"
+	"dt.h"
+	"aa.h"
+	"tinfo.h"
+	"mars.h"
+	"mach.h"
+	"dwarf.h"
+	"tassert.h"
+
+1486913755 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\md5.c
+	"md5.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\newman.c
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"./parser.h"
+	"token.h"
+	"global.h"
+	"oper.h"
+	"el.h"
+	"type.h"
+	"cpp.h"
+	"../tk/filespec.h"
+	"tassert.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\nteh.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"el.h"
+	"code.h"
+	"oper.h"
+	"global.h"
+	"type.h"
+	"dt.h"
+	"scope.h"
+	"./parser.h"
+	"cpp.h"
+	"exh.h"
+	"tassert.h"
+
+1487176479 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\optabgen.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<assert.h>
+	"cc.h"
+	"oper.h"
+
+1487164167 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\os.c
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+	<string.h>
+	<dos.h>
+	<sys\stat.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<errno.h>
+	<unistd.h>
+	<pthread.h>
+	<dos.h>
+	<sys\stat.h>
+	<windows.h>
+	"tassert.h"
+	<assert.h>
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\out.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"oper.h"
+	"global.h"
+	"type.h"
+	"./parser.h"
+	"../tk/filespec.h"
+	"code.h"
+	"cgcv.h"
+	"go.h"
+	"dt.h"
+	"cpp.h"
+	"el.h"
+	"TG.h"
+	"cgobjxcoff.h"
+	"xcoff.h"
+	"cgfunc.h"
+	"tassert.h"
+	"TGout.c"
+
+1487164726 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\outbuf.c
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"outbuf.h"
+	"../tk/mem.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\ptrntab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"code.h"
+	"iasm.h"
+	"tassert.h"
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\rtlsym.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"type.h"
+	"oper.h"
+	"global.h"
+	"code.h"
+	"tassert.h"
+
+1532522153 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\strtold.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<float.h>
+	<string.h>
+	<math.h>
+	<fenv.h>
+	<fltpnt.h>
+	<errno.h>
+	<stdio.h>
+	<float.h>
+	<errno.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1532523853 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\symbol.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"cc.h"
+	"./parser.h"
+	"global.h"
+	"type.h"
+	"dt.h"
+	"cgcv.h"
+	"el.h"
+	"cpp.h"
+	"oper.h"
+	"token.h"
+	"TG.h"
+	"tassert.h"
+	"TGsymbol.c"
+
+1486913755 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\ti_achar.c
+	<string.h>
+	<stdlib.h>
+	"tinfo.h"
+
+1532523852 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\type.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"cc.h"
+	"global.h"
+	"type.h"
+	"el.h"
+	"./parser.h"
+	"TG.h"
+	"tassert.h"
+
+1532523853 source:d:\dinrus\dev\dinrus\dmd\dmd\backend\var.c
+	<stdio.h>
+	<time.h>
+	"cc.h"
+	"./parser.h"
+	"global.h"
+	"oper.h"
+	"type.h"
+	"go.h"
+	"ty.h"
+	"../optab.c"
+	"../tytab.c"
+
+1532530739 d:\dinrus\dev\dinrus\dmd\dmd\optab.c
+	"backend/oper.h"
+
+1487176501 d:\dinrus\dev\dinrus\dmd\dmd\tytab.c
+
+1487016210 source:d:\dinrus\dev\dinrus\dmd\dmd\bit.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"./backend/cc.h"
+	"./backend/el.h"
+	"./backend/oper.h"
+	"./backend/global.h"
+	"./backend/code.h"
+	"./backend/type.h"
+	"./backend/dt.h"
+	"./backend/tassert.h"
+
+1486913782 source:d:\dinrus\dev\dinrus\dmd\dmd\builtin.c
+	<stdio.h>
+	<assert.h>
+	<math.h>
+	"mars.h"
+	"declaration.h"
+	"attrib.h"
+	"expression.h"
+	"scope.h"
+	"mtype.h"
+	"aggregate.h"
+	"identifier.h"
+	"id.h"
+	"module.h"
+
+1486932750 source:d:\dinrus\dev\dinrus\dmd\dmd\cast.c
+	<stdio.h>
+	<assert.h>
+	"./root/rmem.h"
+	"expression.h"
+	"mtype.h"
+	"utf.h"
+	"declaration.h"
+	"aggregate.h"
+
+1486913791 d:\dinrus\dev\dinrus\dmd\dmd\utf.h
+
+1487010188 source:d:\dinrus\dev\dinrus\dmd\dmd\class.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"./root/root.h"
+	"./root/rmem.h"
+	"enum.h"
+	"init.h"
+	"attrib.h"
+	"declaration.h"
+	"aggregate.h"
+	"id.h"
+	"mtype.h"
+	"scope.h"
+	"module.h"
+	"expression.h"
+	"statement.h"
+
+1486932835 source:d:\dinrus\dev\dinrus\dmd\dmd\clone.c
+	<stdio.h>
+	<assert.h>
+	"./root/root.h"
+	"aggregate.h"
+	"scope.h"
+	"mtype.h"
+	"declaration.h"
+	"module.h"
+	"id.h"
+	"expression.h"
+	"statement.h"
+
+1487177431 source:d:\dinrus\dev\dinrus\dmd\dmd\cond.c
+	<stdio.h>
+	<assert.h>
+	"id.h"
+	"init.h"
+	"declaration.h"
+	"identifier.h"
+	"expression.h"
+	"cond.h"
+	"module.h"
+	"template.h"
+	"lexer.h"
+	"mtype.h"
+	"scope.h"
+
+1487010188 source:d:\dinrus\dev\dinrus\dmd\dmd\constfold.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<math.h>
+	<complex.h>
+	"./root/rmem.h"
+	"./root/root.h"
+	"./root/port.h"
+	"mtype.h"
+	"expression.h"
+	"aggregate.h"
+	"declaration.h"
+	"utf.h"
+	"d-gcc-real.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\port.h
+	<wchar.h>
+
+1487010188 source:d:\dinrus\dev\dinrus\dmd\dmd\cppmangle.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"dsymbol.h"
+	"mtype.h"
+	"scope.h"
+	"init.h"
+	"expression.h"
+	"attrib.h"
+	"declaration.h"
+	"template.h"
+	"id.h"
+	"enum.h"
+	"import.h"
+	"aggregate.h"
+
+1487010188 source:d:\dinrus\dev\dinrus\dmd\dmd\declaration.c
+	<stdio.h>
+	<assert.h>
+	"init.h"
+	"declaration.h"
+	"attrib.h"
+	"mtype.h"
+	"template.h"
+	"scope.h"
+	"aggregate.h"
+	"module.h"
+	"id.h"
+	"expression.h"
+	"hdrgen.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\delegatize.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"expression.h"
+	"statement.h"
+	"mtype.h"
+	"utf.h"
+	"declaration.h"
+	"aggregate.h"
+	"scope.h"
+
+1486958008 source:d:\dinrus\dev\dinrus\dmd\dmd\doc.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<assert.h>
+	"./root/rmem.h"
+	"./root/root.h"
+	"mars.h"
+	"dsymbol.h"
+	"macro.h"
+	"template.h"
+	"lexer.h"
+	"aggregate.h"
+	"declaration.h"
+	"enum.h"
+	"id.h"
+	"module.h"
+	"scope.h"
+	"doc.h"
+	"mtype.h"
+	"utf.h"
+
+1486922326 d:\dinrus\dev\dinrus\dmd\dmd\macro.h
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	"./root/root.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\doc.h
+
+1486958008 source:d:\dinrus\dev\dinrus\dmd\dmd\dsymbol.c
+	<stdio.h>
+	<string.h>
+	<assert.h>
+	"./root/rmem.h"
+	"./root/speller.h"
+	"./root/aav.h"
+	"mars.h"
+	"dsymbol.h"
+	"aggregate.h"
+	"identifier.h"
+	"module.h"
+	"mtype.h"
+	"expression.h"
+	"statement.h"
+	"declaration.h"
+	"id.h"
+	"scope.h"
+	"init.h"
+	"import.h"
+	"template.h"
+	"attrib.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\speller.h
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\aav.h
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\dump.c
+	<stdio.h>
+	<ctype.h>
+	<assert.h>
+	"mars.h"
+	"mtype.h"
+	"declaration.h"
+	"expression.h"
+	"template.h"
+
+1486990456 source:d:\dinrus\dev\dinrus\dmd\dmd\e2ir.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<complex.h>
+	"./root/port.h"
+	"lexer.h"
+	"expression.h"
+	"mtype.h"
+	"dsymbol.h"
+	"declaration.h"
+	"enum.h"
+	"aggregate.h"
+	"attrib.h"
+	"module.h"
+	"init.h"
+	"template.h"
+	"./tk/mem.h"
+	"./backend/cc.h"
+	"./backend/el.h"
+	"./backend/oper.h"
+	"./backend/global.h"
+	"./backend/code.h"
+	"./backend/type.h"
+	"./backend/dt.h"
+	"irstate.h"
+	"id.h"
+	"toir.h"
+	"./backend/tassert.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\irstate.h
+
+1486913791 d:\dinrus\dev\dinrus\dmd\dmd\toir.h
+
+1486990456 source:d:\dinrus\dev\dinrus\dmd\dmd\eh.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	"./backend/cc.h"
+	"./backend/el.h"
+	"./backend/code.h"
+	"./backend/oper.h"
+	"./backend/global.h"
+	"./backend/type.h"
+	"./backend/dt.h"
+	"./backend/tassert.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\entity.c
+	<string.h>
+	<ctype.h>
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\enum.c
+	<stdio.h>
+	<assert.h>
+	"./root/root.h"
+	"enum.h"
+	"mtype.h"
+	"scope.h"
+	"module.h"
+	"declaration.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\expression.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<math.h>
+	<assert.h>
+	<complex>
+	<complex.h>
+	"./root/rmem.h"
+	"./root/port.h"
+	"mtype.h"
+	"init.h"
+	"expression.h"
+	"template.h"
+	"utf.h"
+	"enum.h"
+	"scope.h"
+	"statement.h"
+	"declaration.h"
+	"aggregate.h"
+	"import.h"
+	"id.h"
+	"dsymbol.h"
+	"module.h"
+	"attrib.h"
+	"parse.h"
+
+1532523023 source:d:\dinrus\dev\dinrus\dmd\dmd\fltables.c
+	"backend/cc.h"
+
+1486958008 source:d:\dinrus\dev\dinrus\dmd\dmd\func.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"init.h"
+	"declaration.h"
+	"attrib.h"
+	"expression.h"
+	"scope.h"
+	"mtype.h"
+	"aggregate.h"
+	"identifier.h"
+	"id.h"
+	"module.h"
+	"statement.h"
+	"template.h"
+	"d-dmd-gcc.h"
+
+1487024368 source:d:\dinrus\dev\dinrus\dmd\dmd\glue.c
+	<stdio.h>
+	<stddef.h>
+	<time.h>
+	<assert.h>
+	<alloca.h>
+	"mars.h"
+	"module.h"
+	"mtype.h"
+	"declaration.h"
+	"statement.h"
+	"enum.h"
+	"aggregate.h"
+	"init.h"
+	"attrib.h"
+	"id.h"
+	"import.h"
+	"template.h"
+	"lib.h"
+	"./root/rmem.h"
+	"./backend/cc.h"
+	"./backend/global.h"
+	"./backend/oper.h"
+	"./backend/code.h"
+	"./backend/type.h"
+	"./backend/dt.h"
+	"./backend/cgcv.h"
+	"./backend/outbuf.h"
+	"irstate.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\lib.h
+
+1532523441 source:d:\dinrus\dev\dinrus\dmd\dmd\hdrgen.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<complex.h>
+	"root/rmem.h"
+	"id.h"
+	"init.h"
+	"attrib.h"
+	"cond.h"
+	"enum.h"
+	"import.h"
+	"module.h"
+	"mtype.h"
+	"scope.h"
+	"staticassert.h"
+	"template.h"
+	"utf.h"
+	"version.h"
+	"declaration.h"
+	"aggregate.h"
+	"expression.h"
+	"statement.h"
+	"mtype.h"
+
+1486955410 d:\dinrus\dev\dinrus\dmd\dmd\staticassert.h
+	"dsymbol.h"
+	"hdrgen.h"
+
+1486956480 d:\dinrus\dev\dinrus\dmd\dmd\version.h
+	"dsymbol.h"
+	"hdrgen.h"
+
+1532524077 source:d:\dinrus\dev\dinrus\dmd\dmd\iasm.c
+	<ctype.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<assert.h>
+	<setjmp.h>
+	<limits.h>
+	"mars.h"
+	"lexer.h"
+	"mtype.h"
+	"statement.h"
+	"id.h"
+	"declaration.h"
+	"scope.h"
+	"init.h"
+	"enum.h"
+	"module.h"
+	"./backend/cc.h"
+	"./backend/token.h"
+	"./backend/parser.h"
+	"./backend/global.h"
+	"./backend/el.h"
+	"./backend/type.h"
+	"./backend/oper.h"
+	"./backend/code.h"
+	"./backend/iasm.h"
+	"./backend/cpp.h"
+
+1486914983 source:d:\dinrus\dev\dinrus\dmd\dmd\id.c
+	"id.h"
+	"identifier.h"
+	"lexer.h"
+
+1532525894 source:d:\dinrus\dev\dinrus\dmd\dmd\identifier.c
+	<stdio.h>
+	<string.h>
+	"./root/root.h"
+	"identifier.h"
+	"mars.h"
+	"lexer.h"
+	"id.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\idgen.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+
+1487172894 source:d:\dinrus\dev\dinrus\dmd\dmd\impcnvtab.c
+	"mtype.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\imphint.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<assert.h>
+	<string.h>
+	"mars.h"
+
+1487028758 source:d:\dinrus\dev\dinrus\dmd\dmd\import.c
+	<stdio.h>
+	<assert.h>
+	"./root/root.h"
+	"dsymbol.h"
+	"import.h"
+	"identifier.h"
+	"module.h"
+	"scope.h"
+	"hdrgen.h"
+	"mtype.h"
+	"declaration.h"
+	"id.h"
+	"attrib.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\inifile.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<windows.h>
+	<sys/syslimits.h>
+	<limits.h>
+	<alloca.h>
+	"./root/root.h"
+	"./root/rmem.h"
+
+1486958176 source:d:\dinrus\dev\dinrus\dmd\dmd\init.c
+	<stdio.h>
+	<assert.h>
+	"mars.h"
+	"init.h"
+	"expression.h"
+	"statement.h"
+	"identifier.h"
+	"declaration.h"
+	"aggregate.h"
+	"scope.h"
+	"mtype.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\inline.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"id.h"
+	"init.h"
+	"declaration.h"
+	"aggregate.h"
+	"expression.h"
+	"statement.h"
+	"mtype.h"
+	"scope.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\interpret.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"./root/rmem.h"
+	"statement.h"
+	"expression.h"
+	"cond.h"
+	"init.h"
+	"staticassert.h"
+	"mtype.h"
+	"scope.h"
+	"declaration.h"
+	"aggregate.h"
+	"id.h"
+
+1486913783 source:d:\dinrus\dev\dinrus\dmd\dmd\irstate.c
+	<stdio.h>
+	"irstate.h"
+
+1487028758 source:d:\dinrus\dev\dinrus\dmd\dmd\json.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<assert.h>
+	"./root/rmem.h"
+	"./root/root.h"
+	"mars.h"
+	"dsymbol.h"
+	"macro.h"
+	"template.h"
+	"lexer.h"
+	"aggregate.h"
+	"declaration.h"
+	"enum.h"
+	"id.h"
+	"module.h"
+	"scope.h"
+	"json.h"
+	"mtype.h"
+	"attrib.h"
+	"cond.h"
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\json.h
+
+1532526004 source:d:\dinrus\dev\dinrus\dmd\dmd\lexer.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<stdarg.h>
+	<errno.h>
+	<wchar.h>
+	<stdlib.h>
+	<assert.h>
+	<time.h>
+	"./root/rmem.h"
+	"./root/stringtable.h"
+	"lexer.h"
+	"utf.h"
+	"identifier.h"
+	"id.h"
+	"module.h"
+
+1532527329 source:d:\dinrus\dev\dinrus\dmd\dmd\libomf.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"./root/rmem.h"
+	"./root/root.h"
+	"./root/stringtable.h"
+	"mars.h"
+	"lib.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\link.c
+	<stdio.h>
+	<ctype.h>
+	<assert.h>
+	<stdarg.h>
+	<string.h>
+	<stdlib.h>
+	<process.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	"./root/root.h"
+	"mars.h"
+	"./root/rmem.h"
+
+1532527377 source:d:\dinrus\dev\dinrus\dmd\dmd\macro.c
+	<stdio.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	<assert.h>
+	"root/rmem.h"
+	"root/root.h"
+	"macro.h"
+
+1532527399 source:d:\dinrus\dev\dinrus\dmd\dmd\mangle.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<assert.h>
+	"./root/root.h"
+	"init.h"
+	"declaration.h"
+	"aggregate.h"
+	"mtype.h"
+	"attrib.h"
+	"template.h"
+	"id.h"
+	"module.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\mars.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<assert.h>
+	<limits.h>
+	<errno.h>
+	"./root/rmem.h"
+	"./root/root.h"
+	"./root/async.h"
+	"mars.h"
+	"module.h"
+	"mtype.h"
+	"id.h"
+	"cond.h"
+	"expression.h"
+	"lexer.h"
+	"lib.h"
+	"json.h"
+	<windows.h>
+
+1486913783 d:\dinrus\dev\dinrus\dmd\dmd\root\async.h
+
+1487170073 source:d:\dinrus\dev\dinrus\dmd\dmd\module.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<alloca.h>
+	<malloc.h>
+	"gdc_alloca.h"
+	"./root/rmem.h"
+	"mars.h"
+	"module.h"
+	"parse.h"
+	"scope.h"
+	"identifier.h"
+	"id.h"
+	"import.h"
+	"dsymbol.h"
+	"lexer.h"
+	"targetver.h"
+	"./backend/html.h"
+	"d-dmd-gcc.h"
+
+1532523920 source:d:\dinrus\dev\dinrus\dmd\dmd\msc.c
+	<stdio.h>
+	<string.h>
+	<stddef.h>
+	"mars.h"
+	"./backend/cc.h"
+	"./backend/global.h"
+	"./backend/parser.h"
+	"./backend/oper.h"
+	"./backend/code.h"
+	"./backend/type.h"
+	"./backend/dt.h"
+	"./backend/cgcv.h"
+	"./backend/tassert.h"
+
+1532530665 source:d:\dinrus\dev\dinrus\dmd\dmd\mtype.c
+	<alloca.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<float.h>
+	<malloc.h>
+	<complex>
+	<limits>
+	<complex.h>
+	<malloc.h>
+	"root/rmem.h"
+	"root/port.h"
+	"dsymbol.h"
+	"mtype.h"
+	"scope.h"
+	"init.h"
+	"expression.h"
+	"attrib.h"
+	"declaration.h"
+	"template.h"
+	"id.h"
+	"enum.h"
+	"import.h"
+	"aggregate.h"
+	"hdrgen.h"
+
+1487023287 source:d:\dinrus\dev\dinrus\dmd\dmd\opover.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<assert.h>
+	<complex>
+	<complex.h>
+	"./root/rmem.h"
+	"mtype.h"
+	"init.h"
+	"expression.h"
+	"id.h"
+	"declaration.h"
+	"aggregate.h"
+	"template.h"
+
