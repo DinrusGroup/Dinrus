@@ -1,0 +1,7 @@
+LIBRARY "Dinrus.Arc.dll"
+DESCRIPTION "Графическая библиотека Arc (я.п. Динрус)"
+EXETYPE NT
+SUBSYSTEM WINDOWS
+CODE SHARED EXECUTE
+DATA WRITE
+

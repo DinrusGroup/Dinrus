@@ -1,0 +1,45 @@
+dgui.lib
+ Warning 2: File Not Found dgui.lib
+DD-dwt.lib
+ Warning 2: File Not Found DD-dwt.lib
+
+ Start         Length     Name                   Class
+ 0002:00000000 000B3C25H  _TEXT                  CODE 32-bit
+ 0002:000B3C28 000001C8H  ICODE                  ICODE 32-bit
+ 0003:00000000 00000004H  .CRT$XIA               DATA 32-bit
+ 0003:00000010 00000004H  .CRT$XIZ               DATA 32-bit
+ 0003:00000020 00000004H  .CRT$XCA               DATA 32-bit
+ 0003:00000030 00000004H  .CRT$XCZ               DATA 32-bit
+ 0003:00000040 00000004H  .CRT$XPA               DATA 32-bit
+ 0003:00000050 00000004H  .CRT$XPZ               DATA 32-bit
+ 0003:00000060 00000004H  .CRT$XTA               DATA 32-bit
+ 0003:00000070 00000004H  .CRT$XTZ               DATA 32-bit
+ 0003:00000074 00000008H  IMP__DATA              IMP__DATA 32-bit
+ 0003:00000080 000732E0H  _DATA                  DATA 32-bit
+ 0003:00073360 00000000H  FMB                    DATA 32-bit
+ 0003:00073360 000002DCH  FM                     DATA 32-bit
+ 0003:0007363C 00000000H  FME                    DATA 32-bit
+ 0003:0007363C 00000000H  XIB                    DATA 32-bit
+ 0003:0007363C 00000018H  XI                     DATA 32-bit
+ 0003:00073654 00000000H  XIE                    DATA 32-bit
+ 0003:00073654 00000000H  XIFCB                  DATA 32-bit
+ 0003:00073654 00000004H  XIFU                   DATA 32-bit
+ 0003:00073658 00000000H  XIFL                   DATA 32-bit
+ 0003:00073658 00000004H  XIFM                   DATA 32-bit
+ 0003:0007365C 00000000H  XIFCE                  DATA 32-bit
+ 0003:0007365C 00000000H  XCB                    DATA 32-bit
+ 0003:0007365C 00000010H  XC                     DATA 32-bit
+ 0003:0007366C 00000000H  XCE                    DATA 32-bit
+ 0003:00073670 00000000H  CONST                  CONST 32-bit
+ 0003:00073670 00000000H  EEND                   ENDBSS 32-bit
+ 0003:00073670 00009FC0H  _BSS                   BSS 32-bit
+ 0003:0007D630 00000000H  XOB                    BSS 32-bit
+ 0003:0007D630 00000004H  XO                     BSS 32-bit
+ 0003:0007D634 00000000H  XOE                    BSS 32-bit
+ 0003:0007D634 00000000H  XOFB                   BSS 32-bit
+ 0003:0007D634 00000108H  XOF                    BSS 32-bit
+ 0003:0007D73C 00000000H  XOFE                   BSS 32-bit
+ 0003:0007D740 0000041DH  c_common               BSS 32-bit
+ 0003:0007DB60 00000000H  STACK                  STACK 32-bit
+
+Program entry point at 00097274 
