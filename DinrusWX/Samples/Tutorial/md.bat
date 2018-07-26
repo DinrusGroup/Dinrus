@@ -1,3 +1,0 @@
-dmmake clean
-dmmake
-pause
