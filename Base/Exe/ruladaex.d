@@ -1,4 +1,4 @@
-﻿module ruladaex;
+module ruladaex;
 import scConfig, cidrus;
 
 проц main()

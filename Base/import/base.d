@@ -100,10 +100,10 @@ version(БигЭндиан)
 
 enum Эндиан
 {
-    Неизвестно =   0,                   //!< Неизвестно эндиан-ness. Indicates an ошиб
-    Литл  =   1,                   //!< Литтл эндиан architecture
-    Биг     =   2 ,                  //!< Биг эндиан architecture
-    Мидл  =   3   ,                //!< Миддл эндиан architecture
+    Неизвестно =   0,                   //!< Неизвестный эндиан-ness. Указывает на ошибку
+    Литл  =   1,                   //!< архитектура Литтл эндиан
+    Биг     =   2 ,                  //!< архитектура Биг эндиан 
+    Мидл  =   3   ,                //!< архитектура Миддл эндиан 
     БайтСекс =   4,
     Амбьент =   Эндиан_Амбьент 
 }
@@ -156,11 +156,11 @@ version(ЛитлЭндиан) {
 // Они обслуживают встроеннные свойства плавающей точки.
 template плавТрэтс(T) {
  // МАСКАВЫР - это бкрат маска для выделения экспонентной части (без знака)
- // СТП2ЧИСМАНТ = pow(2, реал.mant_dig): ЭТО ЗНАЧЕНИЕis the value such that
+ // СТП2ЧИСМАНТ = pow(2, реал.mant_dig): ЭТО ЗНАЧЕНИЕ, при котором
  //  (smallest_denormal)*СТП2ЧИСМАНТ == реал.min
- // ПОЗВЫР_КРАТ is the index of the exponent when represented as а ushort array.
- // ПОЗЗНАКА_БАЙТ is the index of the sign when represented as а ббайт array.
- static if (T.mant_dig == 24) { // float
+ // ПОЗВЫР_КРАТ - индекс экспоненты, предсталенной как массив из ushort (бкрат).
+ // ПОЗЗНАКА_БАЙТ - индекс знака, представленный как массив из ббайт (беззначных байтов).
+ static if (T.mant_dig == 24) { // float (плав)
     const бкрат МАСКАВЫР = 0x7F80;
     const бкрат БИАСВЫР = 0x3F00;
     const uint МАСКАВЫР_ЦЕЛ = 0x7F80_0000;
@@ -171,11 +171,11 @@ template плавТрэтс(T) {
     } else {
       const ПОЗВЫР_КРАТ = 0;
     }
- } else static if (T.mant_dig == 53) { // double, or реал==double
+ } else static if (T.mant_dig == 53) { // double, или реал==double
     const бкрат МАСКАВЫР = 0x7FF0;
     const бкрат БИАСВЫР = 0x3FE0;
     const uint МАСКАВЫР_ЦЕЛ = 0x7FF0_0000;
-    const uint МАСКАМАНТИССЫ_ЦЕЛ = 0x000F_FFFF; // for the MSB only
+    const uint МАСКАМАНТИССЫ_ЦЕЛ = 0x000F_FFFF; // только для MSB
     const реал СТП2ЧИСМАНТ = 0x1p+53;
     version(ЛитлЭндиан) {
       const ПОЗВЫР_КРАТ = 3;
@@ -219,7 +219,7 @@ template плавТрэтс(T) {
  }
 }
 
-// These apply to all floating-point types
+// Применяется ко всем типам с плавающей запятой
 version(ЛитлЭндиан) {
     const МАНТИССА_МЗЧ = 0; //LSB
     const МАНТИССА_БЗЧ = 1; //MSB
@@ -814,28 +814,31 @@ struct СМСтат
      * можно манипулировать функциями дайАтр, устАтр, удалиАтр.
      */
 
-	struct Пространство
-	{
-		ук Низ;
-		ук Верх;
-	};
+struct Пространство
+{
+  ук Низ;
+  ук Верх;
+};
 
-	struct Array
-	{
-		size_t length;
-		byte *data;
-		ук ptr;
-		
-		alias length длина;
-		alias data данные;
-		alias ptr укз;
-	}
+struct Массив
+{
+  т_мера длина;
+  байт *данные;
+  ук укз;
+}
+alias Массив Array ;
 
 
 struct Complex
 {
     реал re;
     реал im;
+}
+
+struct Комплексное
+{
+    реал ре;
+    реал вообр;
 }
 
 	struct aaA

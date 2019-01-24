@@ -1,4 +1,4 @@
-﻿module util.str;
+module util.str;
 
 private{
     static import util.linetoken;

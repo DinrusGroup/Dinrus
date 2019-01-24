@@ -1,9 +1,9 @@
-﻿module dinrus;
+module dinrus;
 import scConfig, cidrus;
 
 проц main()
 {
 версияДинрус();
 сбросьЦветКонсоли();
-	выход(0);
+scope(exit) выход(0);
 }

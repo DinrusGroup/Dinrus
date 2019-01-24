@@ -1,4 +1,4 @@
-﻿module rulada;
+module rulada;
 import scConfig, cidrus;
 
 

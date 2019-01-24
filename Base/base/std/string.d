@@ -1,4 +1,4 @@
-﻿
+
 // Written in the D programming language.
 
 

@@ -1,4 +1,4 @@
-﻿module gc;
+module gc;
 
 private import exception, stdrus, sync, sys.WinConsts, cidrus, std.intrinsic, util, rt.lifetime;
 
@@ -13,13 +13,13 @@ private import exception, stdrus, sync, sys.WinConsts, cidrus, std.intrinsic, ut
 //debug = SENTINEL;		// добавить underrun/overrrun защиту
 //debug = PTRCHECK;		// дополнительная проверка указателей
 //debug = PTRCHECK2;		// тщательная, но медленная проверка указателей
-//debug = PROFILING;            // measure performance of various steps.
+//debug = PROFILING;            // измерить производительность различных этапов
 /*************** Конфигурация *********************/
 //debug = SENTINEL;
 //debug = НА_КОНСОЛЬ;
-version = СТЭК_РАСТЁТ_ВНИЗ;	// growing the stack means subtracting from the stack pointer
-				// (use for Intel X86 CPUs)
-				// else growing the stack means adding to the stack pointer
+version = СТЭК_РАСТЁТ_ВНИЗ;	// наращивание стека означает уменьшение от стекового указателя (СУ)
+				// (используется для процессоров Intel X86)
+				// иначе наращивание стека подразумевает прибавление к СУ
 version = МНОГОПОТОЧНАЯ;	// произвести многопоточную версию
 
     version (МНОГОПОТОЧНАЯ)

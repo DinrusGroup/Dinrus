@@ -1,9 +1,10 @@
-﻿module scConfig;
+module scConfig;
 import util.worktools, cidrus, win, stdrus, exception;
+
 
 version(UCRT)
 {
-	pragma(lib, "ucrt.lib");
+
 	extern(C)
 	{
 	int _waccess(wchar* path, int access_mode);
@@ -130,7 +131,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib -L+DinrusWin32.lib+DinrusConc.lib+DinrusTango.lib+DinrusDbi.lib+DinrusWinDLL.lib+import.lib
+DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib -L+DinrusWin32.lib+DinrusConc.lib+DinrusTango.lib+DinrusDbi.lib+DinrusWinDLL.lib+DinrusWX.lib+DinrusPyd.lib+import.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -176,9 +177,9 @@ version=7.51 Build 020
 [Environment]
 PATH=%DINRUS%\\..
 BIN=%DINRUS%
-INCLUDE=\"%PATH%\\include\";%INCLUDE%
-LIB=\"%PATH%\\lib\";\"%PATH%\\lib\\rulada\";\"%PATH%\\lib\\rulada_eng\";\"%PATH%\\lib\\c\";\"%PATH%\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+DD-dwt.lib+DinrusWX.lib+dwt.lib+dwtx.lib
+INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
+LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\rulada_eng\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
+DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+RuladaWX.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	
@@ -194,7 +195,7 @@ PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
 LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\rulada_eng\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
-DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+DD-dwt.lib+DinrusWX.lib -L/exet:nt/su:windows:4.0
+DFLAGS=\"-I%DINRUS%\\..\\imp\\rulada_eng\" -O -version=Rulada -defaultlib=rulada.lib -debuglib=rulada.lib -L+derelict.lib+tango.lib+auxc.lib+auxd.lib+amigos.lib+arc.lib+gtkD.lib+dgui.lib+RuladaWX.lib -L/exet:nt/su:windows:4.0
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
 	

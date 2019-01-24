@@ -1,4 +1,4 @@
-﻿//============================================================================
+//============================================================================
 // Вектор.d - 
 // Written in the D Programming Language (http://www.digitalmars.com/d)
 module linalg.Vector;
@@ -68,7 +68,7 @@ struct Вектор(Т, цел N)
 {
     alias Т Скаляр;
 
-private alias откат!(N) откат_;
+private alias откат!(N) откатец;
 public:
 
   //---------------------------------------------------------------- class info
@@ -234,7 +234,7 @@ public:
         }
         else { assert(_rhs.length == N, "Вектор.opAssign: rhs неправильной длины"); }
         const ткст выр = "значения_[i] = cast(Скаляр)_rhs[i];";
-        mixin( откат_(выр) );
+        mixin( откатец(выр) );
         //return *this
     }
 
@@ -291,7 +291,7 @@ alias укз ptr;
     /// component-wise comparison
     цел opEquals(/*const*/ ref т_вектор _rhs) /*const*/ {
         const ткст выр = "if(значения_[z]!=_rhs.значения_[z]) return 0;";
-        mixin( откат_(выр,'z') );
+        mixin(откатец(выр,'z'));
         return 1;
     }
 
@@ -300,7 +300,7 @@ alias укз ptr;
     /// component-wise self-multiplication with скаляр
     void opMulAssign(/*const*/ Скаляр _s) {
         const ткст выр = "значения_[i] *= _s;";
-        mixin( откат_(выр) );
+        mixin( откатец(выр) );
         //return *this;
     }
 
@@ -313,8 +313,8 @@ alias укз ptr;
         } else {
             const ткст выр = "значения_[i] /= _s;";
         }
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         //return *this;
     }
 
@@ -326,7 +326,7 @@ alias укз ptr;
             return M;
         } else {
             //const ткст выр = "значения_[i] * _s;";
-            //pragma(msg,откат_(выр,'i'));
+            //pragma(msg,откатец(выр,'i'));
             //return т_вектор(unroll_csv(выр));
         }
     }
@@ -348,16 +348,16 @@ alias укз ptr;
     /// component-wise self-multiplication
     void opMulAssign(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "значения_[i] *= _rhs[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         //return *this;
     }
 
     /// component-wise self-division
     void opDivAssign(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "значения_[i] /= _rhs[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         //return *this;
     }
 
@@ -365,16 +365,16 @@ alias укз ptr;
     /// вектор difference from this
     void opSubAssign(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "значения_[i] -= _rhs[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         //return *this;
     }
 
     /// вектор self-addition
     void opAddAssign(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "значения_[i] += _rhs[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         //return *this;
     }
 
@@ -412,8 +412,8 @@ alias укз ptr;
     т_вектор opNeg() /*const*/ {
         т_вектор v = void;
         const ткст выр = "v.значения_[i] = -значения_[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         return v;
     }
 
@@ -444,8 +444,8 @@ alias укз ptr;
     Скаляр точка(/*const*/ ref т_вектор _rhs) /*const*/ {
         Скаляр p = 0;
         const ткст выр = "p += значения_[i] * _rhs.значения_[i];";
-        //pragma(msg,откат_(выр,'i'));
-        mixin( откат_(выр) );
+        //pragma(msg,откатец(выр,'i'));
+        mixin( откатец(выр) );
         return p;
     }
 
@@ -464,7 +464,7 @@ alias укз ptr;
         {
             Скаляр s = 0;
             const ткст выр = "s += значения_[i] * значения_[i];";
-            mixin( откат_(выр) );
+            mixin( откатец(выр) );
             return s;
         }
 
@@ -562,14 +562,14 @@ alias укз ptr;
     /// минимируй значения: same as *this = мин(*this, _rhs), but faster
     т_вектор минимируй(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "if (_rhs[z] < значения_[z]) значения_[z] = _rhs[z];";
-        mixin( откат_(выр,'z') );
+        mixin( откатец(выр,'z') );
         return *this;
     }
 
     /// максимируй значения: same as *this = макс(*this, _rhs), but faster
     т_вектор максимируй(/*const*/ ref т_вектор _rhs) {
         const ткст выр = "if (_rhs[z] > значения_[z]) значения_[z] = _rhs[z];";
-        mixin( откат_(выр,'z') );
+        mixin( откатец(выр,'z') );
         return *this;
     }
 
@@ -596,14 +596,14 @@ alias укз ptr;
     т_вектор примени(Функтор)(/*const*/ Функтор _func) /*const*/ {
         т_вектор result;
         const ткст выр = "result[i] = _func(значения_[i]);";
-        mixin( откат_(выр) );
+        mixin( откатец(выр) );
         return result;
     }
 
     /// store the same value in each component (e.g. to clear all entries)
     void векторизуй(/*const*/ Скаляр _s) {
         const ткст выр = "значения_[i] = _s;";
-        mixin( откат_(выр) );
+        mixin( откатец(выр) );
         //return *this;
     }
 
@@ -622,7 +622,7 @@ alias укз ptr;
             "cmp=сравни(значения_[z],_rhs.значения_[z]);\n"
             "if (cmp!=0) return cmp;\n";
         цел cmp;
-        mixin (откат_(выр,'z'));
+        mixin (откатец(выр,'z'));
         return false;
     }
 
@@ -720,7 +720,7 @@ template кросс( Скаляр, цел N)
     Вектор!(Скаляр,N) v = _v1;
     Скаляр s = 1.0-t;
     const ткст выр = "v.значения_[i] *= s; v.значения_[i] += t*_v2.значения_[i];";
-    //pragma(msg,откат_(выр,'i'));
+    //pragma(msg,откатец(выр,'i'));
     mixin( откат!(N)(выр) );
     return v;
 }

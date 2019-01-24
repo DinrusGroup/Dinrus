@@ -1,4 +1,4 @@
-﻿module util.worktools;
+module util.worktools;
 public import win, dinrus, util.str, util.fileex;
 
 alias дайСред дайГлоб;

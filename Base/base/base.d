@@ -22,8 +22,8 @@ alias пусто NULL;
 //const неук = void; //получить тип от инициализатора не удаётся...
 
 /* ************* Константы *************** */
-    /** String used to separate directory names in а path. Under
-     *  Windows this is а backslash, under Linux а slash. */
+    /** Строка, используемая для разделения имён папок в пути. Для
+     *  Windows является обратным слэшем, для Linux - слэш. */
     const сим[1] РАЗДПАП = "\\";
     /** Alternate version of sep[] used in Windows (а slash). Under
      *  Linux this is empty. */

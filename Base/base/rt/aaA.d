@@ -712,6 +712,10 @@ BB* _d_assocarrayliteralTX(TypeInfo_AssociativeArray ti, void[] keys, void[] val
     return result;
 }
 
+BB* _d_arrayliteralTX(TypeInfo_AssociativeArray ti, void[] keys, void[] values)
+{
+return _d_assocarrayliteralTX( ti,  keys, values);
+}
 /***********************************
  * Compare AA contents for equality.
  * Returns:
