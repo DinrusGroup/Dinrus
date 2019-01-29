@@ -146,7 +146,7 @@ extern (C)
         // yadda yadda
     };
 
-    typedef BIO* function(цел сок, цел close_flag) tBIO_new_СОКЕТ;
+    typedef BIO* function(цел сок, цел close_flag) tBIO_new_SOCKET;
     typedef BIO* function(SSL_CTX *ctx, цел клиент) tBIO_new_ssl;
     typedef проц function(BIO *bio) tBIO_free_all;
     typedef BIO* function(BIO *b, BIO *append) tBIO_push;
@@ -400,7 +400,7 @@ extern (C)
 }
 private bool _bioTestFlags = true;
 tBIO_test_flags BIO_test_flags;
-tBIO_new_СОКЕТ BIO_new_socket;
+tBIO_new_SOCKET BIO_new_socket;
 tBIO_new_ssl BIO_new_ssl;
 tBIO_free_all BIO_free_all;
 tBIO_push BIO_push;

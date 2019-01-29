@@ -1,5 +1,5 @@
 ﻿/**
- * This module содержит a collection of bit-уровень operations.
+ * Модуль содержит коллекцию операций на уровне битов.
  *
  * Copyright: Public Domain
  * License:   Public Domain

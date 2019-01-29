@@ -55,7 +55,6 @@ else
 version (Posix)
         {
         private import cidrus;
-        private import cidrus;
         }
 else
    {
