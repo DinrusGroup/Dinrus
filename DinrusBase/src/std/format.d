@@ -11,7 +11,7 @@
 
 /*
  *  Copyright (C) 2004-2009 by Digital Mars, www.digitalmars.com
- *  Written by Walter Bright
+ *  Автор Walter Bright
  *
  *  This software is provided 'as-is', without any express or implied
  *  warranty. In no событие will the authors be held liable for any damages

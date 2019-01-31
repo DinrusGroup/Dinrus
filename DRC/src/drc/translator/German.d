@@ -171,7 +171,7 @@ override:
     printLoc(n);
     ткст was;
     if (вхАгрегат)
-      was = "Membervariable";
+      was = "Членvariable";
     else if (вхФунк)
       was = "lokale Переменная";
     else
@@ -289,18 +289,18 @@ override:
       (c1 = pointer ? ""[] : "n"), (c2 = "s");
     pointer = нет;
     if (n.ассоцТип)
-      put.форматируй("assoziative{} Array{} von ", c1, c2);
+      put.форматируй("assoziative{} Массив{} von ", c1, c2);
 //       посетиТ(n.ассоцТип);
     else if (n.e1)
     {
       if (n.e2)
-        put.форматируй("gescheibte{} Array{} von ", c1, c2);
+        put.форматируй("gescheibte{} Массив{} von ", c1, c2);
       else
-        put.форматируй("statische{} Array{} von ", c1, c2);
+        put.форматируй("statische{} Массив{} von ", c1, c2);
 //       посетиВ(n.в), n.e2 && посетиВ(n.e2);
     }
     else
-      put.форматируй("dynamische{} Array{} von ", c1, c2);
+      put.форматируй("dynamische{} Массив{} von ", c1, c2);
     // Типы following массивs should be in plural.
     pluralize = да;
     посетиТ(n.следщ);

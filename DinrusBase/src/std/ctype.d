@@ -1,7 +1,7 @@
 ﻿/*
- * Placed into the Public Domain.
+ * Помещено в Public Domain.
  * Digital Mars, www.digitalmars.com
- * Written by Walter Bright
+ * Автор Walter Bright
  */
 
 /**

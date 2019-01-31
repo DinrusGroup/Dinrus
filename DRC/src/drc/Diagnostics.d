@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity average)
 module drc.Diagnostics;
 
 public import drc.Information;

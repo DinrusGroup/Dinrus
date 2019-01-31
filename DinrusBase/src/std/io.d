@@ -1,7 +1,7 @@
 ﻿
 // Написано на языке программирования Динрус. Разработчик Виталий Кулич.
 
-/* Written by Walter Bright and Andrei Alexandrescu
+/* Автор Walter Bright and Andrei Alexandrescu
  * http://www.digitalmars.com/d
  * Placed in the Public Domain.
  */

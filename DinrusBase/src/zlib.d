@@ -923,7 +923,7 @@ int inflateBack(z_stream* strm,
    non-zero, inflateBack() will return with an error.  Neither in() nor out()
    are permitted to change the contents of the window provided to
    inflateBackInit(), which is also the buffer that out() uses to write from.
-   The длина written by out() will be at most the window size.  Any non-zero
+   The длина Автор out() will be at most the window size.  Any non-zero
    amount of input may be provided by in().
 
      For convenience, inflateBack() can be provided input on the first call by

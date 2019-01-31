@@ -1,6 +1,4 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity average)
+
 module drc.semantic.Analysis;
 
 import drc.ast.Node,
@@ -20,7 +18,7 @@ import common;
   else if (идент is Идент.lib)
     прагма_биб(масш, pragmaLoc, арги);
   // else
-  //   масш.ошибка(начало, "unrecognized pragma");
+  //   масш.ошибка(начало, "нераспознанная прагма");
 }
 
 /// Оценивает прагма сообщение.
@@ -48,7 +46,7 @@ import common;
   выдай('\n');
 }
 
-/// Evaluates a lib pragma.
+/// Оценивает прагму lib.
 проц  прагма_биб(Масштаб масш, Сема* pragmaLoc, Выражение[] арги)
 {
   if (арги.length != 1)

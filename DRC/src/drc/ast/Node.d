@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.ast.Node;
 
 import common;
@@ -13,7 +10,7 @@ abstract class Узел
 {
   КатегорияУзла категория; /// Категория данного узла.
   ВидУзла вид; /// Вид данного узла.
-  Узел[] отпрыски; // Will be probably removed sometime.
+  Узел[] отпрыски; // Когда-нибудь, кажется, будет удалён.
   Сема* начало, конец; /// Семы в начале и конце данного узла.
 
   /// Строит объект Узел.
@@ -63,7 +60,7 @@ abstract class Узел
     отпрыски is null || добавьОтпрыски(отпрыски);
   }
 
-  /// Returns a reference в Класс if this узел can be cast в it.
+  /// Возврашает референцию на Класс, если узел можно преобразовать в него.
   Класс Является(Класс)()
   {
     if (вид == mixin("ВидУзла." ~ Класс.stringof))
@@ -71,27 +68,27 @@ abstract class Узел
     return null;
   }
 
-  /// Casts this узел в Класс.
+  /// Преобразует данный узел в Класс.
   Класс в(Класс)()
   {
     return cast(Класс)cast(ук)this;
   }
 
-  /// Returns a deep копируй of this узел.
+  /// Возвращает глубокую (deep) копию этого узла.
   abstract Узел копируй();
 
-  /// Returns a shallow копируй of this объект.
+  /// Возвращает поверхностную (shallow)  копию этого объекта.
   final Узел dup()
   {
-    // Find out the размер of this объект.
+    // Найти размер этого объекта.
     alias typeof(this.classinfo.иниц[0]) т_байт;
     т_мера размер = this.classinfo.иниц.length;
-    // Copy this объект's данные.
+    // Скопировать данные этого объекта.
     т_байт[] данные = (cast(т_байт*)this)[0..размер].dup;
     return cast(Узел)данные.ptr;
   }
 
-  /// Этот ткст is mixed into the constructor of a class that inherits
-  /// из Узел. It sets the член вид.
+  /// Этот ткст миксирован в конструктор класса, наследующего
+  /// от Узел. Устанавливает вид члена.
   const ткст установить_вид = `this.вид = mixin("ВидУзла." ~ typeof(this).stringof);`;
 }

@@ -102,7 +102,7 @@ class Символ
   }
 
   /// Возвращает: the fully qualified имя of this символ.
-  /// E.g.: drc.semantic.Symbol.Символ.дайПКН
+  /// Напр.: drc.semantic.Symbol.Символ.дайПКН
   ткст дайПКН()
   {
     if (!имя)

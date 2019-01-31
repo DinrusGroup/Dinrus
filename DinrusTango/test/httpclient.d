@@ -15,7 +15,7 @@ void main()
 
 
         // создай клиент for a GET request
-        auto клиент = new КлиентППГТ (КлиентППГТ.Get, "http://www.google.com");
+        auto клиент = new КлиентППГТ (КлиентППГТ.Взять, "http://www.google.com");
 
         // сделай request
         клиент.открой;

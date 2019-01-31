@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity average)
 module cmd.ASTStats;
 
 import drc.ast.DefaultVisitor,
@@ -15,7 +12,7 @@ class СтатАДС : ДефолтныйВизитёр
 {
   бцел[] таблица; /// Таблица для подсчёта узлов.
 
-  /// Starts counting.
+  /// Начать подсчёт.
   бцел[] счёт(Узел корень)
   {
     таблица = new бцел[г_именаКлассов.length];
@@ -23,7 +20,7 @@ class СтатАДС : ДефолтныйВизитёр
     return таблица;
   }
 
-  // Перепись отправь function.
+  // Переписываемая функция отправки.
   override Узел отправь(Узел n)
   {
     таблица[n.вид]++;

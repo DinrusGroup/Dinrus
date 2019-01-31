@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.parser.Parser;
 
 import drc.lexer.Lexer,
@@ -92,7 +89,7 @@ class Парсер
     return разборВыражения();
   }
 
-  // Members related в the method пробуй_().
+  // Членs related в the method пробуй_().
   бцел пробуем; /// Больше than 0 if Парсер is in пробуй_().
   бцел счётОшибок; /// Используется для отслеживания числа ошибок при обороте пробуй_().
 
@@ -486,7 +483,7 @@ class Парсер
       }
       else version(D2) if (вид == T.ЛСкобка)
       { // Check for auto return тип template function.
-        // КлассыСохранения Name ( TemplateParameterList ) ( ParameterList )
+        // КлассыСохранения Имя ( TemplateParameterList ) ( ParameterList )
         имя = сема.идент;
         auto следщ = сема;
         возьмиПосле(следщ);
@@ -516,7 +513,7 @@ class Парсер
       тип = разборТипаУказательНаФункциюСи(тип, имя, optionalParameterList);
     }
     else if (возьмиСледщ() == T.ЛСкобка)
-    { // Тип FunctionName ( ParameterList ) FunctionBody
+    { // Тип FunctionИмя ( ParameterList ) FunctionBody
       имя = требуетсяИдентификатор(сооб.ОжидалосьНазваниеФункции);
       имя || далее(); // Skip non-identifier сема.
       assert(сема.вид == T.ЛСкобка);
@@ -547,7 +544,7 @@ class Парсер
       default:
       }
     }
-      // ТипИтога FunctionName ( ParameterList )
+      // ТипИтога FunctionИмя ( ParameterList )
       auto телоФунк = разборТелаФункции();
       auto дф = new ДекларацияФункции(тип, имя,/+ шпарамы,+/ парамы, телоФунк);
       дф.установиКлассХранения(кхр);
@@ -563,7 +560,7 @@ class Парсер
       return установи(дф, начало);
     }
     else
-    { // Тип VariableName DeclaratorSuffix
+    { // Тип VariableИмя DeclaratorSuffix
       имя = требуетсяИдентификатор(сооб.ОжидалосьНазваниеПеременной);
       тип = разборСуффиксаДекларатора(тип);
     }
@@ -613,9 +610,9 @@ class Парсер
     switch (сема.вид)
     {
     case T.ЛКвСкобка:
-      // ArrayInitializer:
+      // МассивInitializer:
       //         [ ]
-      //         [ ArrayMemberInitializations ]
+      //         [ МассивЧленInitializations ]
       Выражение[] ключи;
       Выражение[] значения;
 
@@ -643,7 +640,7 @@ class Парсер
     case T.ЛФСкобка:
       // StructInitializer:
       //         { }
-      //         { StructMemberInitializers }
+      //         { StructЧленInitializers }
       Выражение разборИнициализатораСтрукт()
       {
         Идентификатор*[] иденты;
@@ -996,10 +993,10 @@ class Парсер
     {
       ПКИМодуля пкиМодуля;
       Идентификатор* moduleAlias;
-      // AliasName = ModuleName
+      // AliasИмя = ModuleИмя
       if (возьмиСледщ() == T.Присвоить)
       {
-        moduleAlias = требуетсяИдентификатор(сооб.ExpectedAliasModuleName);
+        moduleAlias = требуетсяИдентификатор(сооб.ОжидалосьПсевдоимяМодуля);
         пропусти(T.Присвоить);
       }
       // Идентификатор ("." Идентификатор)*
@@ -1012,19 +1009,19 @@ class Парсер
     } while (проверено(T.Запятая))
 
     if (проверено(T.Двоеточие))
-    { // BindAlias "=" BindName ("," BindAlias "=" BindName)*;
-      // BindName ("," BindName)*;
+    { // BindAlias "=" BindИмя ("," BindAlias "=" BindИмя)*;
+      // BindИмя ("," BindИмя)*;
       do
       {
         Идентификатор* bindAlias;
-        // BindAlias = BindName
+        // BindAlias = BindИмя
         if (возьмиСледщ() == T.Присвоить)
         {
-          bindAlias = требуетсяИдентификатор(сооб.ОжидаемоеИмяАлиасаИмпорта);
+          bindAlias = требуетсяИдентификатор(сооб.ОжидалосьПсевдоимяИмпорта);
           пропусти(T.Присвоить);
         }
         // Push identifiers.
-        связанныеИмена ~= требуетсяИдентификатор(сооб.ОжидаемоеИмяИмпорта);
+        связанныеИмена ~= требуетсяИдентификатор(сооб.ОжидалосьИмяИмпорта);
         связанныеАлиасы ~= bindAlias;
       } while (проверено(T.Запятая))
     }
@@ -1048,7 +1045,7 @@ version(D2)
     {
       вид = возьмиПосле(следщ);
       if (вид == T.Двоеточие || вид == T.ЛФСкобка || вид == T.ТочкаЗапятая)
-        return нет; // Named enum.
+        return нет; // Имяd enum.
     }
     return да; // Манифест enum.
   }
@@ -2408,11 +2405,11 @@ version(D2)
     Идентификатор* идент;
     switch (сема.вид)
     {
-    // Keywords that are valid opcodes.
+    // ключwords that are valid opКодs.
     case T.Вхо, T.Цел, T.Вых:
       идент = сема.идент;
       далее();
-      goto LOpcode;
+      goto LOpКод;
     case T.Идентификатор:
       идент = сема.идент;
       далее();
@@ -2422,10 +2419,10 @@ version(D2)
         break;
       }
 
-    LOpcode:
-      // Opcode ;
-      // Opcode Operands ;
-      // Opcode
+    LOpКод:
+      // OpКод ;
+      // OpКод Operands ;
+      // OpКод
       //     Идентификатор
       Выражение[] es;
       if (сема.вид != T.ТочкаЗапятая)
@@ -3354,7 +3351,7 @@ version(D2)
       {
         в = разборВыраженияПрисвой();
         if (проверено(T.Двоеточие))
-          goto LparseAssocArray;
+          goto LparseAssocМассив;
         if (проверено(T.Запятая))
           значения = [в] ~ разборСпискаВыражений();
         требуетсяЗакрыв(T.ПКвСкобка, начало);
@@ -3363,7 +3360,7 @@ version(D2)
       в = new ВыражениеЛитералМассива(значения);
       break;
 
-    LparseAssocArray:
+    LparseAssocМассив:
       Выражение[] ключи = [в];
 
       goto LenterLoop;
@@ -3384,7 +3381,7 @@ version(D2)
       break;
     case T.Функция, T.Делегат:
       // FunctionLiteral := ("function"|"delegate") Тип? "(" ArgumentList ")" FunctionBody
-      далее(); // Skip function or delegate keyword.
+      далее(); // Skip function or delegate ключword.
       Тип типВозврата;
       Параметры параметры;
       if (сема.вид != T.ЛФСкобка)
@@ -3699,7 +3696,7 @@ version(D2)
   {
     assert(следщ !is null && следщ.вид == T.ЛСкобка);
     // We счёт nested parentheses семы because template types, typeof etc.
-    // may appear внутри parameter lists. E.g.: (цел x, Foo!(цел) y)
+    // may appear внутри parameter lists. Напр.: (цел x, Foo!(цел) y)
     бцел уровень = 1;
   Loop:
     while (1)
@@ -3719,7 +3716,7 @@ version(D2)
     assert(0, "должно быть недоступно");
   }
 
-  /// Parse the массив types after the declarator (C-style.) E.g.: цел a[]
+  /// Parse the массив types after the declarator (C-style.) Напр.: цел a[]
   Тип разборСуффиксаДекларатора(Тип lhsType)
   {
     // The Тип chain should be as follows:

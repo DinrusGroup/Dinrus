@@ -7,7 +7,7 @@ import drc.Unicode : юАльфа_ли;
 
 const дим _Z_ = 26; /// Control+Z.
 
-/// Возвращает: да if d is a Unicode line or paragraph разделитель.
+/// Возвращает: да if d is a Юникод line or paragraph разделитель.
 бул симНовСтрЮ_ли(дим d)
 {
   return d == РСд || d == РАд;

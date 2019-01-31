@@ -2,7 +2,7 @@
 
 /*
  *  Copyright (C) 2003-2009 by Digital Mars, http://www.digitalmars.com
- *  Written by Matthew Wilson and Walter Bright
+ *  Автор Matthew Wilson and Walter Bright
  *
  *  Incorporating idea (for execvpe() on Linux) from Russ Lewis
  *

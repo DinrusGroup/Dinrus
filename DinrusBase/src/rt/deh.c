@@ -1,7 +1,7 @@
 //
 // Copyright (c) 1999-2003 by Digital Mars, www.digitalmars.com
 // All Rights Reserved
-// Written by Walter Bright
+// Автор Walter Bright
 
 // Exception handling support
 

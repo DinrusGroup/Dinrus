@@ -12,7 +12,7 @@ import common;
 /// A package groups модули and другой пакеты.
 class Пакет : СимволМасштаба
 {
-  ткст имяПкт;    /// The имя of the package. E.g.: 'dil'.
+  ткст имяПкт;    /// The имя of the package. Напр.: 'dil'.
   Пакет[] пакеты; /// The sub-пакеты contained in this package.
   Модуль[] модули;   /// The модули contained in this package.
 

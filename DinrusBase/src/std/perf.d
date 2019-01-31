@@ -14,7 +14,7 @@
  *
  * Copyright (C) 2004 by Digital Mars
  * All Rights Reserved
- * Written by Matthew Wilson
+ * Автор Matthew Wilson
  * www.digitalmars.com
  * License for redistribution is by either the Artistic License in artistic.txt,
  * or the LGPL

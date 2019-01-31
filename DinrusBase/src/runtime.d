@@ -1293,8 +1293,8 @@ extern (C) bool rt_isHalting()
 /+ Текст из CRITICAL.c Задача: ---Переделать в Динрус---
 
 /*
- * Placed into the Public Domain
- * written by Walter Bright, Digital Mars
+ * Помещено в Public Domain
+ * Автор Walter Bright, Digital Mars
  * www.digitalmars.com
  */
 

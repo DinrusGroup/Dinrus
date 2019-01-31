@@ -5,19 +5,19 @@
 ;-----------------------------------------------------------------------------
 ;PrintString, PrintStringByAddr, PrintDec, PrintHex, PrintDouble, PrintText,
 ;PrintLine, Spy, StopSpy, PrintError, ASSERT, PrintException, TrapException,
-;FillString, FillMem, GetSize macros are written by vkim.
+;FillString, FillMem, GetSize macros are Автор vkim.
 ;-----------------------------------------------------------------------------
-;SFileName is written by vkim and based on Four-F's idea.
+;SFileName is Автор vkim and based on Four-F's idea.
 ;-----------------------------------------------------------------------------
-;DbgDump is written by Thomas.
+;DbgDump is Автор Thomas.
 ;-----------------------------------------------------------------------------
-;DumpMem, DumpFPU are written by NaN.
+;DumpMem, DumpFPU are Автор NaN.
 ;-----------------------------------------------------------------------------
-;CTEXT is written by huh.
+;CTEXT is Автор huh.
 ;-----------------------------------------------------------------------------
-;m2m is written by hutch.
+;m2m is Автор hutch.
 ;-----------------------------------------------------------------------------
-;Fix is written by Four-F.
+;Fix is Автор Four-F.
 ;-----------------------------------------------------------------------------
 ;FillStirng and FillMem are optimized by bitRAKE.
 ;-----------------------------------------------------------------------------

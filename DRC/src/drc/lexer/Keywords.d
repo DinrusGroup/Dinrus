@@ -1,7 +1,7 @@
 /// Author: Aziz Köksal
 /// License: GPL3
 /// $(Maturity high)
-module drc.lexer.Keywords;
+module drc.lexer.ключwords;
 
 import drc.lexer.Token,
        drc.lexer.Identifier;

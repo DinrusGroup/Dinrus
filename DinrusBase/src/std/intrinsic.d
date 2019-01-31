@@ -1,7 +1,7 @@
 ﻿// Written in the D programming language
-// written by Walter Bright
+// Автор Walter Bright
 // www.digitalmars.com
-// Placed into the public domain
+// Помещено в public domain
 
 /** These functions are built-in intrinsics to the compiler.
  *

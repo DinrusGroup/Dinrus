@@ -3,7 +3,7 @@
  * For use with the Digital Mars DMD compiler.
  * Copyright (C) 1995-2006 by Digital Mars
  * All Rights Reserved
- * Written by Walter Bright
+ * Автор Walter Bright
  * www.digitalmars.com
  */
 

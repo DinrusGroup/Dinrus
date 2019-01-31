@@ -1,8 +1,8 @@
 ;_ minit.asm
-; Written by Walter Bright
+; Автор Walter Bright
 ; Digital Mars
 ; http://www.digitalmars.com/d/
-; Placed into the Public Domain
+; Помещено в Public Domain
 
 include macros.asm
 

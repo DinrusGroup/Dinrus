@@ -1,7 +1,7 @@
 /// Author: Aziz Köksal
 /// License: GPL3
 /// $(Maturity very low)
-module drc.code.Interpreter;
+module drc.Код.Interpreter;
 
 import  drc.ast.Visitor,
        drc.ast.Node,

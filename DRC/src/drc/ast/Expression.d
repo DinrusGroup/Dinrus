@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.ast.Expression;
 
 import drc.ast.Node;

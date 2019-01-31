@@ -4,7 +4,7 @@
 module drc.lexer.Lexer;
 
 import drc.lexer.Token,
-       drc.lexer.Keywords,
+       drc.lexer.ключwords,
        drc.lexer.Identifier,
        drc.lexer.IdTable;
 import drc.Diagnostics;
@@ -40,7 +40,7 @@ class Лексер
   Сема* хвост;  /// Хвост линкованного список. Set in сканируй().
   Сема* сема; /// Указывает на текущую сему в списке сем.
 
-  // Members used for ошибка сообщения:
+  // Членs used for ошибка сообщения:
   Диагностика диаг;
   ОшибкаЛексера[] ошибки;
   /// Всегда указывает на первый символ текущей строки.
@@ -371,7 +371,7 @@ class Лексер
           if (аски_ли(c) || isBinary)
             буфер ~= c;
           else
-            encodeUTF8(буфер, c);
+            enКодUTF8(буфер, c);
         } while (*p == '\\')
         буфер ~= 0;
         t.вид = TOK.Ткст;
@@ -663,7 +663,7 @@ class Лексер
   }
   static assert(вБцел!("\xAA\xBB\xCC\xDD") == 0xAABBCCDD);
 
-  /// Constructs case инструкции. E.g.:
+  /// Constructs case инструкции. Напр.:
   /// ---
   //// // case_!("<", "Меньше", "Lcommon") ->
   /// case 60u:
@@ -951,7 +951,7 @@ class Лексер
         if (аски_ли(c) || isBinary)
           буфер ~= c;
         else
-          encodeUTF8(буфер, c);
+          enКодUTF8(буфер, c);
       } while (*p == '\\')
       буфер ~= 0;
       t.вид = TOK.Ткст;
@@ -1119,7 +1119,7 @@ class Лексер
 
   /// Scans a block comment.
   ///
-  /// BlockComment := "/*" AnyChar* "*/"
+  /// BlockComment := "/*" ЛюбойСим* "*/"
   проц  сканируйБлочныйКомментарий(ref Сема t)
   {
     assert(p[-1] == '/' && *p == '*');
@@ -1151,7 +1151,7 @@ class Лексер
         }
         else if (кф_ли(*p))
         {
-          ошибка(tokenLineNum, tokenLineBegin, t.старт, ИДС.UnterminatedBlockComment);
+          ошибка(tokenLineNum, tokenLineBegin, t.старт, ИДС.НезавершённыйБлочныйКомментарий);
           break Loop;
         }
       }
@@ -1164,7 +1164,7 @@ class Лексер
 
   /// Scans a nested comment.
   ///
-  /// NestedComment := "/+" (AnyChar* | NestedComment) "+/"
+  /// NestedComment := "/+" (ЛюбойСим* | NestedComment) "+/"
   проц  сканируйГнездовойКомментарий(ref Сема t)
   {
     assert(p[-1] == '/' && *p == '+');
@@ -1204,7 +1204,7 @@ class Лексер
         }
         else if (кф_ли(*p))
         {
-          ошибка(tokenLineNum, tokenLineBegin, t.старт, ИДС.UnterminatedNestedComment);
+          ошибка(tokenLineNum, tokenLineBegin, t.старт, ИДС.НезавершённыйГнездовойКомментарий);
           break Loop;
         }
       }
@@ -1266,7 +1266,7 @@ class Лексер
         if (аски_ли(c) || isBinary)
           буфер ~= c;
         else
-          encodeUTF8(буфер, c);
+          enКодUTF8(буфер, c);
         continue;
       case '\r':
         if (p[1] == '\n')
@@ -1286,7 +1286,7 @@ class Лексер
           c = раскодируйЮ8();
           if (симНовСтрЮ_ли(c))
             goto case '\n';
-          encodeUTF8(буфер, c);
+          enКодUTF8(буфер, c);
           continue;
         }
       }
@@ -1332,7 +1332,7 @@ class Лексер
 
   /// Scans a raw ткст literal.
   ///
-  /// RawStringLiteral := "r\"" AnyChar* "\"" | "`" AnyChar* "`"
+  /// RawStringLiteral := "r\"" ЛюбойСим* "\"" | "`" ЛюбойСим* "`"
   проц  сканируйСыройСтроковыйЛитерал(ref Сема t)
   {
     assert(*p == '`' || *p == '"' && p[-1] == 'r');
@@ -1370,7 +1370,7 @@ class Лексер
         break;
       case 0, _Z_:
         ошибка(tokenLineNum, tokenLineBegin, t.старт,
-          delim == 'r' ? ИДС.НеоконченнаяСыраяСтрока : ИДС.UnterminatedBackQuoteString);
+          delim == 'r' ? ИДС.НеоконченнаяСыраяСтрока : ИДС.НезавершённаяСтрокаСОбратнымиКавычками);
         goto Lreturn;
       default:
         if (!аски_ли(c))
@@ -1378,7 +1378,7 @@ class Лексер
           c = раскодируйЮ8();
           if (симНовСтрЮ_ли(c))
             goto case '\n';
-          encodeUTF8(буфер, c);
+          enКодUTF8(буфер, c);
           continue;
         }
       }
@@ -1497,7 +1497,7 @@ version(D2)
     дим открывающий_delim = 0, // 0 if no nested delimiter or '[', '(', '<', '{'
           закрывающий_delim; // Will be ']', ')', '>', '},
                          // the first символ of an identifier or
-                         // any другой Unicode/ASCII символ.
+                         // any другой Юникод/ASCII символ.
     ткст ткт_delim; // Идентификатор delimiter.
     бцел уровень = 1; // Counter for nestable delimiters.
 
@@ -1620,7 +1620,7 @@ version(D2)
               goto Lreturn;
             }
           }
-          encodeUTF8(буфер, c);
+          enКодUTF8(буфер, c);
           continue;
         }
         else
@@ -1798,7 +1798,7 @@ version(D2)
     {
     case 'x':
       isBinary = да;
-    case_Unicode:
+    case_Юникод:
       assert(c == 0);
       assert(цифры == 2 || цифры == 4 || цифры == 8);
       while (1)
@@ -1834,10 +1834,10 @@ version(D2)
       break;
     case 'u':
       цифры = 4;
-      goto case_Unicode;
+      goto case_Юникод;
     case 'U':
       цифры = 8;
-      goto case_Unicode;
+      goto case_Юникод;
     default:
       if (восмир_ли(*p))
       {
@@ -1893,7 +1893,7 @@ version(D2)
         if (аски_ли(c))
           ткт ~= *p;
         else
-          encodeUTF8(ткт, раскодируйЮ8());
+          enКодUTF8(ткт, раскодируйЮ8());
         ++p;
         // TODO: check for unprintable символ?
         ошибка(началоПоследовательности, ИДС.НеопределённаяИскейпПоследовательность, ткт);
@@ -1999,7 +1999,7 @@ version(D2)
     }
 
     if (overflow)
-      ошибка(t.старт, ИДС.OverflowDecimalNumber);
+      ошибка(t.старт, ИДС.ПереполнениеДесятичнЧисла);
 
     assert((цифра_ли(p[-1]) || p[-1] == '_') && !цифра_ли(*p) && *p != '_');
     goto Lfinalize;
@@ -2160,7 +2160,7 @@ version(D2)
       if (бдол_ & 0x8000_0000_0000_0000)
       {
         if (isDecimal)
-          ошибка(t.старт, ИДС.OverflowDecimalSign);
+          ошибка(t.старт, ИДС.ПереполнениеДесятичнЗнака);
         t.вид = TOK.Бцел64;
       }
       else if (бдол_ & 0xFFFF_FFFF_0000_0000)
@@ -2180,7 +2180,7 @@ version(D2)
       if (бдол_ & 0x8000_0000_0000_0000)
       {
         if (isDecimal)
-          ошибка(t.старт, ИДС.OverflowDecimalSign);
+          ошибка(t.старт, ИДС.ПереполнениеДесятичнЗнака);
         t.вид = TOK.Бцел64;
       }
       else
@@ -2550,7 +2550,7 @@ version(D2)
     return да;
   }
 
-  /// Returns да if ткт is a keyword or
+  /// Returns да if ткт is a ключword or
   /// a special сема (__FILE__, __LINE__ etc.)
   static бул резервныйИдентификатор_ли(ткст ткт)
   {
@@ -2568,8 +2568,8 @@ version(D2)
     return строкаИдентификатора_ли(ткт) && !резервныйИдентификатор_ли(ткт);
   }
 
-  /// Returns да if the current символ в be decoded is
-  /// a Unicode alpha символ.
+  /// Returns да if the current символ в be deКодd is
+  /// a Юникод alpha символ.
   ///
   /// The current pointer 'p' is установи в the last trailbyte if да is returned.
   бул юАльфа_ли()
@@ -2594,7 +2594,7 @@ version(D2)
     const ткст проверьСледующийБайт = "if (!ведомыйБайт_ли(*++p))"
                                  "  return нет;";
     const ткст добавьШестьБит = "d = (d << 6) | *p & 0b0011_1111;";
-    // Decode
+    // DeКод
     if ((d & 0b1110_0000) == 0b1100_0000)
     {
       d &= 0b0001_1111;
@@ -2619,12 +2619,12 @@ version(D2)
     assert(ведомыйБайт_ли(*p));
     if (!верноСимвол_ли(d) || !униАльфа_ли(d))
       return нет;
-    // Only advance pointer if this is a Unicode alpha символ.
+    // Only advance pointer if this is a Юникод alpha символ.
     this.p = p;
     return да;
   }
 
-  /// Decodes the следщ UTF-8 sequence.
+  /// DeКодs the следщ UTF-8 sequence.
   дим раскодируйЮ8()
   {
     assert(!аски_ли(*p), "проверка символа ASCII перед вызовом раскодируйЮ8().");
@@ -2654,7 +2654,7 @@ version(D2)
                                  "  goto Lerr2;";
     const ткст добавьШестьБит = "d = (d << 6) | *p & 0b0011_1111;";
 
-    // Decode
+    // DeКод
     if ((d & 0b1110_0000) == 0b1100_0000)
     { // 110xxxxx 10xxxxxx
       d &= 0b0001_1111;
@@ -2685,7 +2685,7 @@ version(D2)
     {
     Lerr:
       // Three cases:
-      // *) the UTF-8 sequence was successfully decoded but the resulting
+      // *) the UTF-8 sequence was successfully deКодd but the resulting
       //    символ is invalid.
       //    p points в last trail байт in the sequence.
       // *) the UTF-8 sequence is overlong.
@@ -2708,11 +2708,11 @@ version(D2)
     return d;
   }
 
-  /// Encodes the символ d and appends it в ткт.
-  static проц  encodeUTF8(ref ткст ткт, дим d)
+  /// EnКодs the символ d and appends it в ткт.
+  static проц  enКодUTF8(ref ткст ткт, дим d)
   {
-    assert(!аски_ли(d), "check for ASCII сим before calling encodeUTF8().");
-    assert(верноСимвол_ли(d), "check if символ is valid before calling encodeUTF8().");
+    assert(!аски_ли(d), "check for ASCII сим before calling enКодUTF8().");
+    assert(верноСимвол_ли(d), "check if символ is valid before calling enКодUTF8().");
 
     сим[6] b = void;
     if (d < 0x800)

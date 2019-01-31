@@ -13,10 +13,10 @@ import text.Ascii : сравнилюб;
 
 alias drc.doc.Parser.ПарсерЗначенияИдентификатора.телоТекста телоТекста;
 
-/// Represents a sanitized and parsed DDoc comment.
+/// Представляет собой санитированный и парсированный комментарий DDoc.
 class КомментарийДДок
 {
-  Раздел[] резделы; /// The резделы of this comment.
+  Раздел[] резделы; /// Разделы этого комментария.
   Раздел сводка; /// Optional сводка раздел.
   Раздел описание; /// Optional описание раздел.
 
@@ -47,7 +47,7 @@ class КомментарийДДок
   }
 }
 
-/// A namespace for some utility functions.
+/// A Имяspace for some utility functions.
 struct УтилитыДДок
 {
 static:
@@ -92,7 +92,7 @@ static:
   Сема*[] дайСемыДокум(Узел узел, бул function(Сема*) isDocComment = &комментДДока_ли)
   {
     Сема*[] comments;
-    auto isEnumMember = узел.вид == ВидУзла.ДекларацияЧленаПеречня;
+    auto isEnumЧлен = узел.вид == ВидУзла.ДекларацияЧленаПеречня;
     // Get preceding comments.
     auto сема = узел.начало;
     // Scan backwards until we hit another declaration.
@@ -103,7 +103,7 @@ static:
           сема.вид == TOK.ПФСкобка ||
           сема.вид == TOK.ТочкаЗапятая ||
           /+сема.вид == TOK.ГОЛОВА ||+/
-          (isEnumMember && сема.вид == TOK.Запятая))
+          (isEnumЧлен && сема.вид == TOK.Запятая))
         break;
 
       if (сема.вид == TOK.Комментарий)
@@ -122,7 +122,7 @@ static:
     сема = узел.конец.следщ;
     if (сема.вид == TOK.Комментарий && isDocComment(сема))
       comments ~= сема;
-    else if (isEnumMember)
+    else if (isEnumЧлен)
     {
       сема = узел.конец.следщНепроб;
       if (сема.вид == TOK.Запятая)
@@ -424,10 +424,10 @@ class Раздел
     this.текст = текст;
   }
 
-  /// Реле-insensitively compares the раздел's имя with name2.
-  бул Является(ткст name2)
+  /// Реле-insensitively compares the раздел's имя with Имя2.
+  бул Является(ткст Имя2)
   {
-    return сравнилюб(имя, name2) == 0;
+    return сравнилюб(имя, Имя2) == 0;
   }
 
   /// Возвращает раздел's текст including its имя.
@@ -441,18 +441,18 @@ class Раздел
 
 class РазделПараметров : Раздел
 {
-  ткст[] paramNames; /// Параметр имена.
+  ткст[] paramИмяs; /// Параметр имена.
   ткст[] paramDescs; /// Параметр descriptions.
   this(ткст имя, ткст текст)
   {
     super(имя, текст);
     ПарсерЗначенияИдентификатора парсер;
     auto идзначения = парсер.разбор(текст);
-    this.paramNames = new ткст[идзначения.length];
+    this.paramИмяs = new ткст[идзначения.length];
     this.paramDescs = new ткст[идзначения.length];
     foreach (i, идзначение; идзначения)
     {
-      this.paramNames[i] = идзначение.идент;
+      this.paramИмяs[i] = идзначение.идент;
       this.paramDescs[i] = идзначение.значение;
     }
   }

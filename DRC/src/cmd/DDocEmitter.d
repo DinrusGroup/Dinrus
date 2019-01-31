@@ -51,7 +51,7 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
   /// Метод ввода.
   ткст выдать()
   {
-    if (isDDocFile(модуль))
+    if (файлДДок_ли(модуль))
     { // Модуль действительно является текстовым файлом DDoc.
       auto c = УтилитыДДок.дайКомментарийДДок(дайТекстДДок(модуль));
       foreach (s; c.резделы)
@@ -81,7 +81,7 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
   }
 
   /// Returns да if the source текст starts with "Ddoc\n" (ignores letter case.)
-  static бул isDDocFile(Модуль мод)
+  static бул файлДДок_ли(Модуль мод)
   {
     auto данные = мод.исходныйТекст.данные;
     // 5 = "ddoc\n".length; +1 = trailing '\0' in данные.
@@ -138,8 +138,8 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
   ткст дайПКНСимвола(ткст имя)
   {
     ткст fqn;
-    foreach (name_part; fqnStack)
-      fqn ~= name_part ~ ".";
+    foreach (Имя_part; fqnStack)
+      fqn ~= Имя_part ~ ".";
     fqn ~= имя;
 
     бцел счёт;
@@ -240,9 +240,9 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
         { // Process параметры раздел.
           auto ps = new РазделПараметров(s.имя, s.текст);
           пиши("\n$(DDOC_PARAMS ");
-          foreach (i, paramName; ps.paramNames)
+          foreach (i, paramИмя; ps.paramИмяs)
             пиши("\n$(DDOC_PARAM_ROW ",
-                    "$(DDOC_PARAM_ID $(DDOC_PARAM ", paramName, "))",
+                    "$(DDOC_PARAM_ID $(DDOC_PARAM ", paramИмя, "))",
                     "$(DDOC_PARAM_DESC ", ps.paramDescs[i], ")",
                   ")");
           пиши(")");
@@ -348,26 +348,26 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
         { // Found "---".
           while (p < конец && *p == '-') // Skip leading dashes.
             p++;
-          auto codeBegin = p;
+          auto КодBegin = p;
           while (p < конец && пбел_ли(*p))
             p++;
           if (p < конец && *p == '\n') // Skip first нс.
-            codeBegin = ++p;
+            КодBegin = ++p;
           // Find закрывающий dashes.
           while (p < конец && !(*p == '-' && p+2 < конец &&
                             p[1] == '-' && p[2] == '-'))
             p++;
           // Remove last нс if present.
-          auto codeEnd = p;
-          while (пбел_ли(*--codeEnd))
+          auto КодEnd = p;
+          while (пбел_ли(*--КодEnd))
           {}
-          if (*codeEnd != '\n') // Leaving the pointer on '\n' will exclude it.
-            codeEnd++; // Include the non-нс символ.
-          if (codeBegin < codeEnd)
+          if (*КодEnd != '\n') // Leaving the pointer on '\n' will exclude it.
+            КодEnd++; // Include the non-нс символ.
+          if (КодBegin < КодEnd)
           { // Highlight the extracted source код.
-            auto codeText = сделайТекст(codeBegin, codeEnd);
-            codeText = УтилитыДДок.unindentText(codeText);
-            результат ~= псвСем.highlight(codeText, модуль.дайПКН());
+            auto КодText = сделайТекст(КодBegin, КодEnd);
+            КодText = УтилитыДДок.unindentText(КодText);
+            результат ~= псвСем.highlight(КодText, модуль.дайПКН());
           }
           while (p < конец && *p == '-') // Skip remaining dashes.
             p++;
@@ -383,7 +383,7 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
     return результат;
   }
 
-  /// Escapes '<', '>' and '&' with named ГЯР entities.
+  /// Escapes '<', '>' and '&' with Имяd ГЯР entities.
   ткст escape(ткст текст)
   {
     ткст результат = new сим[текст.length]; // Reserve space.
@@ -507,7 +507,7 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
     }
   }
 
-  /// Wraps the DDOC_DECL_DD macro around the текст written by dg().
+  /// Wraps the DDOC_DECL_DD macro around the текст Автор dg().
   /// Writes the comment before dg() is called.
   проц  ДЕСК(проц  delegate() dg = null)
   {
@@ -532,12 +532,12 @@ abstract class ЭмиттерДДок : ДефолтныйВизитёр
     // пиши("$(DDOC_PСИМВОЛ ", имя, ")"); // DMD's macro with no инфо.
   }
 
-  /// Wraps the DDOC_kind_MEMBERS macro around the текст
-  /// written by посети(члены).
+  /// Wraps the DDOC_kind_ЧленS macro around the текст
+  /// Автор посети(члены).
   проц  ЧЛЕНЫ(D)(ткст вид, ткст имя, D члены)
   {
     scope s = new МасштабДДок(имя);
-    пиши("\n$(DDOC_"~вид~"_MEMBERS ");
+    пиши("\n$(DDOC_"~вид~"_ЧленS ");
     if (члены !is null)
       super.посети(члены);
     пиши(")");

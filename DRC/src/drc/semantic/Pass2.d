@@ -17,7 +17,7 @@ import drc.semantic.Symbol,
        drc.semantic.Scope,
        drc.semantic.Module,
        drc.semantic.Analysis;
-import drc.code.Interpreter;
+import drc.Код.Interpreter;
 import drc.parser.Parser;
 import drc.SourceText;
 import drc.Diagnostics;
@@ -84,7 +84,7 @@ class СемантическаяПроходка2 : ДефолтныйВизит
   private alias УзелТипа T; /// определено
 
   /// The current Масштаб символ в use for looking up identifiers.
-  /// E.g.:
+  /// Напр.:
   /// ---
   /// объект.method(); // *) объект is looked up in the current Масштаб.
   ///                  // *) идМасштаб is установи if объект is a СимволМасштаба.
@@ -319,7 +319,7 @@ override
     if (в.тип)
       return в;
     в.тип = Типы.Т_мера;
-    // if (!inArraySubscript)
+    // if (!inМассивSubscript)
     //   ошибка("$ can only be in an массив subscript.");
     return в;
   }

@@ -1,6 +1,6 @@
 /*
- *  Placed into the public domain.
- *  Written by Walter Bright
+ *  Помещено в public domain.
+ *  Автор Walter Bright
  *  www.digitalmars.com
  */
 

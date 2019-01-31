@@ -105,7 +105,7 @@ struct Статистика
 {
   бцел квоПробелов; /// Counter for whitespace characters.
   бцел квоПробелнТокенов;    /// Counter for all whitespace семы.
-  бцел квоКСлов;    /// Counter for keywords.
+  бцел квоКСлов;    /// Counter for ключwords.
   бцел квоИдент;      /// Counter for identifiers.
   бцел квоЧисел;     /// Counter for число literals.
   бцел квоКомментариев;    /// Counter for comments.

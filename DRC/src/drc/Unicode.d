@@ -1,11 +1,8 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.Unicode;
 
 import util.uni : униАльфа_ли;
 
-/// U+FFFD = �. Используется для замены неверных символов Unicode.
+/// U+FFFD = �. Используется для замены неверных символов Юникод.
 const дим СИМ_ЗАМЕНЫ = '\uFFFD';
 const сим[3] СТР_ЗАМЕНЫ = \uFFFD; /// Ditto
 /// Неверный символ, возвращается при ошибке.
@@ -20,7 +17,7 @@ const дим СИМ_ОШИБКИ = 0xD800;
 
 /// There are a всего of 66 noncharacters.
 /// Возвращает: да if this is one of them.
-/// See_also: Chapter 16.7 Noncharacters in Unicode 5.0
+/// See_also: Chapter 16.7 Noncharacters in Юникод 5.0
 бул неСимвол_ли(дим d)
 {
   return 0xFDD0 <= d && d <= 0xFDEF || // 32
@@ -39,7 +36,7 @@ const дим СИМ_ОШИБКИ = 0xD800;
   return (b & 0xC0) == 0xC0; // 11xx_xxxx
 }
 
-/// Advances ref_p only if this is a valid Unicode alpha символ.
+/// Advances ref_p only if this is a valid Юникод alpha символ.
 /// Параметры:
 ///   ref_p = установи в the last trail байт of the valid UTF-8 sequence.
 бул юАльфа_ли(ref сим* ref_p, сим* конец)
@@ -56,7 +53,7 @@ body
   return да;
 }
 
-/// Decodes a символ из ткт at индекс.
+/// DeКодs a символ из ткт at индекс.
 /// Параметры:
 ///   индекс = установи в one past the ASCII сим or one past the last trail байт
 ///           of the valid UTF-8 sequence.
@@ -73,7 +70,7 @@ body
   return c;
 }
 
-/// Decodes a символ starting at ref_p.
+/// DeКодs a символ starting at ref_p.
 /// Параметры:
 ///   ref_p = установи в one past the ASCII сим or one past the last trail байт
 ///           of the valid UTF-8 sequence.
@@ -114,7 +111,7 @@ body
                                 "  return СИМ_ОШИБКИ;";
   const ткст добавьШестьБит = "c = (c << 6) | *p & 0b0011_1111;";
 
-  // Decode
+  // DeКод
   if ((c & 0b1110_0000) == 0b1100_0000)
   {
     // 110xxxxx 10xxxxxx
@@ -211,7 +208,7 @@ body
   if (c < 0x10000)
     ткт ~= cast(шим)c;
   else
-  { // Encode with surrogate пара.
+  { // EnКод with surrogate пара.
     шим[2] пара = void;
     c -= 0x10000; // c'
     // higher10bits(c') | 0b1101_10xx_xxxx_xxxx
@@ -222,7 +219,7 @@ body
   }
 }
 
-/// Decodes a символ из a UTF-16 sequence.
+/// DeКодs a символ из a UTF-16 sequence.
 /// Параметры:
 ///   ткт = the UTF-16 sequence.
 ///   индекс = where в старт из.
@@ -240,7 +237,7 @@ body
   {
     шим c2 = ткт[индекс+1];
     if (0xDC00 <= c2 && c2 <= 0xDFFF)
-    { // Decode surrogate пара.
+    { // DeКод surrogate пара.
       // (c - 0xD800) << 10 + 0x10000 ->
       // (c - 0xD800 + 0x40) << 10 ->
       c = (c - 0xD7C0) << 10;
@@ -252,7 +249,7 @@ body
   return СИМ_ОШИБКИ;
 }
 
-/// Decodes a символ из a UTF-16 sequence.
+/// DeКодs a символ из a UTF-16 sequence.
 /// Параметры:
 ///   p = старт of the UTF-16 sequence.
 ///   конец = one past the конец of the sequence.
@@ -280,7 +277,7 @@ body
   return СИМ_ОШИБКИ;
 }
 
-/// Decodes a символ из a zero-terminated UTF-16 ткст.
+/// DeКодs a символ из a zero-terminated UTF-16 ткст.
 /// Параметры:
 ///   p = старт of the UTF-16 sequence.
 /// Возвращает: СИМ_ОШИБКИ in case of an ошибка in the sequence.

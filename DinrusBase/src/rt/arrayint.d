@@ -1,7 +1,7 @@
 /***************************
  * D programming language http://www.digitalmars.com/d/
  * Runtime support for byte array operations.
- * Based on code originally written by Burton Radons.
+ * Based on code originally Автор Burton Radons.
  * Placed in public domain.
  */
 

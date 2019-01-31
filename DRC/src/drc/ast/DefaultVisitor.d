@@ -1,10 +1,7 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.ast.DefaultVisitor;
 
 import  drc.ast.Visitor,
-       drc.ast.NodeMembers,
+       drc.ast.NodeЧленs,
        drc.ast.Node,
        drc.ast.Declarations,
        drc.ast.Expressions,
@@ -56,12 +53,12 @@ private ткст создайКод(ВидУзла видУзла)
   return код;
 }
 
-/// Generates the default посети methods.
+/// Генерирует дефолтные методы посещения "посети".
 ///
-/// E.g.:
+/// Напр.:
 /// ---
 /// override типВозврата!("ДекларацияКласса") посети(ДекларацияКласса n)
-/// { /* Code that посетиИ the subnodes... */ return n; }
+/// { /* Код посещения субмодулей... */ return n; }
 /// ---
 ткст генерируйДефМетодыВизита()
 {
@@ -76,10 +73,10 @@ private ткст создайКод(ВидУзла видУзла)
 }
 // pragma(сооб, генерируйДефМетодыВизита());
 
-/// Этот class provides default methods for
-/// traversing nodes and their subnodes.
+/// Этот класс предоставляет дефолтные методы для
+/// обхода узлов и их субузлов.
 class ДефолтныйВизитёр : Визитёр
 {
-  // Комментарий out if too many ошибки are shown.
+  // Закомментируйте, если выводится слишком много ошибок.
   mixin(генерируйДефМетодыВизита());
 }

@@ -210,7 +210,7 @@ class ГрафоПостроитель
   /// Loads all модули recursively and builds the граф at the same время.
   /// Параметры:
   ///   путьПоПКНМодуля = the путь version of the module ПКИ.$(BR)
-  ///                   E.g.: ПКИ = drc.ast.Node -> FQNPath = dil/ast/Узел
+  ///                   Напр.: ПКИ = drc.ast.Node -> FQNPath = dil/ast/Узел
   Вершина загрузиМодуль(ткст путьПоПКНМодуля)
   {
     // Look up in таблица if the module is already loaded.

@@ -70,7 +70,7 @@ struct КомандаВыделить
   }
 }
 
-/// Escapes the characters '<', '>' and '&' with named символ entities.
+/// Escapes the characters '<', '>' and '&' with Имяd символ entities.
 ткст xml_escape(ткст текст)
 {
   ткст результат;
@@ -172,14 +172,14 @@ class КартаТегов
 }
 
 /// Возвращает крат class имя of a class descending из Узел.$(BR)
-/// E.g.: drc.ast.Declarations.ДекларацияКласса -> Класс
+/// Напр.: drc.ast.Declarations.ДекларацияКласса -> Класс
 ткст дайКраткоеИмяКласса(Узел узел)
 {
-  static сим[][] name_table;
-  if (name_table is null)
-    name_table = new сим[][ВидУзла.max+1]; // Create a new таблица.
+  static сим[][] Имя_table;
+  if (Имя_table is null)
+    Имя_table = new сим[][ВидУзла.max+1]; // Create a new таблица.
   // Look up in таблица.
-  ткст имя = name_table[узел.вид];
+  ткст имя = Имя_table[узел.вид];
   if (имя !is null)
     return имя; // Итог cached имя.
 
@@ -210,7 +210,7 @@ class КартаТегов
   // Remove common суффикс.
   имя = имя[0 .. $ - suffixLength];
   // Store the имя in the таблица.
-  name_table[узел.вид] = имя;
+  Имя_table[узел.вид] = имя;
   return имя;
 }
 
@@ -408,7 +408,7 @@ class ПодсветчикСем
     lx.сканируйВсе();
 
     // Traverse linked список and print семы.
-    print("$(D_CODE\n");
+    print("$(D_Код\n");
     if (lx.ошибки.length)
     { // Output ошибка сообщения.
       // FIXME: CompBegin and CompEnd break the таблица layout.

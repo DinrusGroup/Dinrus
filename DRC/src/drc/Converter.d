@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity very high)
 module drc.Converter;
 
 import drc.lexer.Funcs;
@@ -10,8 +7,14 @@ import drc.Unicode;
 import drc.FileBOM;
 import drc.Messages;
 import common;
+import base;
 
-/// Преобразует различные форматы кодировки Unicode в UTF-8.
+version (Windows)
+{
+	version = ЛитлЭндиан;
+}
+
+/// Преобразует различные форматы кодировки Юникод в UTF-8.
 struct Преобразователь
 {
   ткст путьКФайлу; /// Для сообщений об ошибках.
@@ -25,7 +28,7 @@ struct Преобразователь
     return конв;
   }
 
-  /// Байт-swaps c.
+  /// Инвертирует байты в c.
   дим инвертироватьБайты(дим c)
   {
     return c = (c << 24) |
@@ -34,13 +37,13 @@ struct Преобразователь
               ((c << 8) & 0xFF0000);
   }
 
-  /// Байт-swaps c.
+  /// Инвертирует байты в c.
   шим инвертироватьБайты(шим c)
   {
     return (c << 8) | (c >> 8);
   }
 
-  /// Swaps the bytes of c on a little-endian machine.
+  /// Инвертирует байты на машине с ЛитлЭндиан.
   дим БЕВМашинноеДслово(дим c)
   {
     version(ЛитлЭндиан)
@@ -49,7 +52,7 @@ struct Преобразователь
       return c;
   }
 
-  /// Swaps the bytes of c on a big-endian machine.
+  /// Инвертирует байты в c на машине с БигЭндиан.
   дим ЛЕВМашинноеДслово(дим c)
   {
     version(ЛитлЭндиан)
@@ -58,7 +61,7 @@ struct Преобразователь
       return инвертироватьБайты(c);
   }
 
-  /// Swaps the bytes of c on a little-endian machine.
+  /// Инвертирует байты в c на машине с ЛитлЭндиан.
   шим БЕВМашинноеСлово(шим c)
   {
     version(ЛитлЭндиан)
@@ -67,7 +70,7 @@ struct Преобразователь
       return c;
   }
 
-  /// Swaps the bytes of c on a big-endian machine.
+  /// Инвертирует байты в c на машине с БигЭндианe.
   шим ЛЕВМашинноеСлово(шим c)
   {
     version(ЛитлЭндиан)
@@ -84,7 +87,7 @@ struct Преобразователь
 
     ткст результат;
     бцел номСтр = 1;
-    дим[] текст = cast(дим[]) данные[0 .. $-($%4)]; // Trim в multiple of 4.
+    дим[] текст = cast(дим[]) данные[0 .. $-($%4)]; 
     foreach (дим c; текст)
     {
       static if (БЕ_ли)
@@ -115,16 +118,16 @@ struct Преобразователь
     return результат;
   }
 
-  alias УТФ32вУТФ8!(да) UTF32BEtoUTF8; /// Instantiation for UTF-32 BE.
-  alias УТФ32вУТФ8!(нет) UTF32LEtoUTF8; /// Instantiation for UTF-32 LE.
+  alias УТФ32вУТФ8!(да) УТФ32БЭ_в_УТФ8; /// Создание экземпляра для UTF-32 BE.
+  alias УТФ32вУТФ8!(нет) УТФ32ЛЭ_в_УТФ8; /// Создание экземпляра для UTF-32 LE.
 
-  /// Converts a UTF-16 текст в UTF-8.
+  /// Конвертирует текст UTF-16 в UTF-8.
   ткст УТФ16вУТФ8(бул БЕ_ли)(ббайт[] данные)
   {
     if (данные.length == 0)
       return null;
 
-    шим[] текст = cast(шим[]) данные[0 .. $-($%2)]; // Trim в multiple of two.
+    шим[] текст = cast(шим[]) данные[0 .. $-($%2)]; 
     шим* p = текст.ptr,
          конец = текст.ptr + текст.length;
     ткст результат;
@@ -141,7 +144,7 @@ struct Преобразователь
       if (0xD800 > c || c > 0xDFFF)
       {}
       else if (c <= 0xDBFF && p+1 < конец)
-      { // Decode surrogate пары.
+      { // Декодировать суррогатные пары.
         шим c2 = p[1];
         static if (БЕ_ли)
           c2 = БЕВМашинноеСлово(c2);
@@ -177,11 +180,11 @@ struct Преобразователь
     return результат;
   }
 
-  alias УТФ16вУТФ8!(да) UTF16BEtoUTF8; /// Instantiation for UTF-16 BE.
-  alias УТФ16вУТФ8!(нет) UTF16LEtoUTF8; /// Instantiation for UTF-16 LE.
+  alias УТФ16вУТФ8!(да) UTF16BEtoUTF8; /// Создание экземпляра для UTF-16 BE.
+  alias УТФ16вУТФ8!(нет) UTF16LEtoUTF8; /// Создание экземпляра для UTF-16 LE.
 
-  /// Converts the текст in данные в UTF-8.
-  /// Leaves данные unchanged if it is in UTF-8 already.
+  /// Преобразует текст в данные в UTF-8.
+  /// Оставляет данные неизменными, если он уже в UTF-8.
   ткст данныеВУТФ8(ббайт[] данные)
   {
     if (данные.length == 0)
@@ -193,18 +196,19 @@ struct Преобразователь
     switch (мпб)
     {
     case МПБ.Нет:
-      // No МПБ found. According в the specs the first символ
-      // must be an ASCII символ.
+      // МПБ (метка порядка байтов, eng. BOM) не найдена.
+	 //  Согласно спецификациям, первый символ
+    //   должен быть символом ASCII.
       if (данные.length >= 4)
       {
         if (данные[0..3] == cast(ббайт[3])x"00 00 00")
         {
-          текст = UTF32BEtoUTF8(данные); // UTF-32BE: 00 00 00 XX
+          текст = УТФ32БЭ_в_УТФ8(данные); // UTF-32BE: 00 00 00 XX
           break;
         }
         else if (данные[1..4] == cast(ббайт[3])x"00 00 00")
         {
-          текст = UTF32LEtoUTF8(данные); // UTF-32LE: XX 00 00 00
+          текст = УТФ32ЛЭ_в_УТФ8(данные); // UTF-32LE: XX 00 00 00
           break;
         }
       }
@@ -233,10 +237,10 @@ struct Преобразователь
       текст = UTF16LEtoUTF8(данные[2..$]);
       break;
     case МПБ.Ю32БЕ:
-      текст = UTF32BEtoUTF8(данные[4..$]);
+      текст = УТФ32БЭ_в_УТФ8(данные[4..$]);
       break;
     case МПБ.Ю32ЛЕ:
-      текст = UTF32LEtoUTF8(данные[4..$]);
+      текст = УТФ32ЛЭ_в_УТФ8(данные[4..$]);
       break;
     default:
       assert(0);
@@ -245,8 +249,8 @@ struct Преобразователь
   }
 }
 
-/// Replaces invalid UTF-8 sequences with U+FFFD (if there's enough space,)
-/// and Newlines with '\n'.
+/// Заменяет неверные последовательности UTF-8 на U+FFFD (если места достаточно,)
+/// а Newlines на '\n'.
 ткст обеззаразьТекст(ткст текст)
 {
   if (!текст.length)
@@ -278,7 +282,7 @@ struct Преобразователь
         goto case '\n';
       }
 
-      auto p2 = p; // Remember beginning of the UTF-8 sequence.
+      auto p2 = p; // Запомнить начало цепочки UTF-8.
       дим c = раскодируй(p, конец);
 
       if (c == СИМ_ОШИБКИ)

@@ -12,7 +12,7 @@
  * Author:      Matthew Wilson
  *
  * Copyright 2004-2005 by Matthew Wilson and Synesis Software
- * Written by Matthew Wilson
+ * Автор Matthew Wilson
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no событие will the authors be held liable for any damages

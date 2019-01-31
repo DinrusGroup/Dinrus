@@ -55,7 +55,7 @@ struct Сема
                           КФ in case конец of source текст is "q{" КФ.
                       +/
     }
-    Идентификатор* идент; /// При keywords and identifiers.
+    Идентификатор* идент; /// При ключwords and identifiers.
     дим  дим_;   /// A символ значение.
     дол   дол_;    /// A дол integer значение.
     бдол  бдол_;   /// An unsigned дол integer значение.

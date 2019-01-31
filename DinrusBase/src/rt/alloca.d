@@ -1,7 +1,7 @@
 /*_ _alloca.d
  * Copyright (C) 1990-2003 by Digital Mars, www.digitalmars.com
  * All Rights Reserved
- * Written by Walter Bright
+ * Автор Walter Bright
  */
 
 module rt.alloca;

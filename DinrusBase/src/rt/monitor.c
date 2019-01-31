@@ -1,6 +1,6 @@
 // D programming language runtime library
 // Public Domain
-// written by Walter Bright, Digital Mars
+// Автор Walter Bright, Digital Mars
 // www.digitalmars.com
 
 // This is written in C because nobody has written a pthreads interface

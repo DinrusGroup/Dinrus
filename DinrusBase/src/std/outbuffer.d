@@ -12,7 +12,7 @@
  */
 
 
-// Written by Walter Bright
+// Автор Walter Bright
 
 module std.outbuffer;
 

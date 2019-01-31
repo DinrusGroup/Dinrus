@@ -1,5 +1,5 @@
 ﻿
-// Written in the D programming language.
+// Написано на языке программирования Динрус.
 
 
 module std.string;

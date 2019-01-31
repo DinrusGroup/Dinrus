@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity high)
 module drc.parser.ImportParser;
 
 import drc.parser.Parser;
@@ -198,7 +195,7 @@ class ПарсерИмпорта : Парсер
     case T.Импорт:
     случай_Импорт:
       auto декл = разборДекларацииИмпорта();
-      декл.установиЗащиту(защ); // Set the защита атрибут.
+      декл.установиЗащиту(защ); // Установить атрибут защиты.
       импорты ~= декл.в!(ДекларацияИмпорта);
       break;
     case T.Перечень:

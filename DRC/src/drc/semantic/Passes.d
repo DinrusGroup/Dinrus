@@ -21,7 +21,7 @@ import drc.semantic.Symbol,
        drc.semantic.Scope,
        drc.semantic.Module,
        drc.semantic.Analysis;
-import drc.code.Interpreter;
+import drc.Код.Interpreter;
 import drc.Compilation;
 import drc.SourceText;
 import drc.Diagnostics;
@@ -855,7 +855,7 @@ override
   бул errorOnUndefinedSymbol;
   //бул errorOnUnknownSymbol;
 
-  /// Reports an ошибка if 'e' is of тип бул.
+  /// Reports an ошибка if 'e' is типа бул.
   проц  errorЕслиBool(Выражение в)
   {
     ошибка(в.начало, "такая операция для типа бул не определена");
@@ -870,7 +870,7 @@ override
   {
     // TODO:
     // check в for struct or class
-    // ищи for function named ид
+    // ищи for function Имяd ид
     // return call выражение: в.opXYZ()
     return null;
   }
@@ -1366,7 +1366,7 @@ override
     if (в.естьТип)
       return в;
     в.тип = Типы.Т_мера;
-    // if (!inArraySubscript)
+    // if (!inМассивSubscript)
     //   ошибка("$ can only be in an массив subscript.");
     return в;
   }

@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity average)
 module main;
 
 import drc.parser.Parser;
@@ -15,7 +12,7 @@ import drc.semantic.Module,
        drc.semantic.Pass1,
        drc.semantic.Pass2,
        drc.semantic.Passes;
-import drc.code.Interpreter;
+import drc.Код.Interpreter;
 import drc.translator.German;
 import drc.Messages;
 import drc.CompilerInfo;
@@ -98,7 +95,7 @@ import text.Ascii : сравнилюб;
     кмд.контекст = новКонтекстКомпиляции();
     кмд.диаг = диаг;
 
-    // Parse arguments.
+    // Разбор аргументов.
     foreach (арг; арги[3..$])
     {
       if (разборОтладкаИлиВерсия(арг, кмд.контекст))
@@ -260,10 +257,10 @@ import text.Ascii : сравнилюб;
     диаг = new Диагностика();
     auto путьКФайлу = арги[3];
     auto мод = new Модуль(путьКФайлу, диаг);
-    // Parse the file.
+    // Разбор файла.
     мод.разбор();
     if (!мод.естьОшибки)
-    { // Translate
+    { // Перевод
       auto немецк = new НемецкийПереводчик(выдай, "  ");
       немецк.переведи(мод.корень);
     }
@@ -399,8 +396,8 @@ version(D2)
   }
 }
 
-/// Prints the справка сообщение of a команда.
-/// Если the команда wasn't found, the main справка сообщение is printed.
+/// Распечатывает справочное сообщение о команде.
+/// Если команда не найдена, распечатывается главное справочное сообщение.
 проц  выведиСправку(ткст команда)
 {
   ткст сооб;
@@ -534,7 +531,7 @@ version(D2)
 	  --табаст      : вывести число всех видов узлов в таблице.
 
 	Пример:
-	  drc(дрк) стат src/main.d src/drc/Unicode.d`;+/
+	  drc(дрк) стат src/main.d src/drc/Юникод.d`;+/
 		break;
 	  case "п", "переведи","t", "translate":
 		сооб = ДайСооб(ИДС.СправкаОПереводе);

@@ -14,7 +14,7 @@
 
 // Copyright (c) 1999-2008 by Digital Mars
 // All Rights Reserved
-// written by Walter Bright
+// Автор Walter Bright
 // http://www.digitalmars.com
 
 module std.date;

@@ -1,6 +1,6 @@
 ﻿/*
- * Placed into the Public Domain
- * written by Walter Bright
+ * Помещено в Public Domain
+ * Автор Walter Bright
  * www.digitalmars.com
  */
 //module rt.invariant;

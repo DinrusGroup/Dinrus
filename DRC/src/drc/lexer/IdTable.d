@@ -5,7 +5,7 @@ module drc.lexer.IdTable;
 
 import drc.lexer.TokensEnum,
        drc.lexer.IdentsGenerator,
-       drc.lexer.Keywords;
+       drc.lexer.ключwords;
 import common;
 
 public import drc.lexer.Identifier,

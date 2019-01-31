@@ -52,10 +52,10 @@ abstract class Тип/* : Символ*/
 
   /// Returns an associative массив тип using this тип as its base.
   /// Параметры:
-  ///   key = the key тип.
-  АМассивТип массивИз(Тип key)
+  ///   ключ = the ключ тип.
+  АМассивТип массивИз(Тип ключ)
   {
-    return new АМассивТип(this, key);
+    return new АМассивТип(this, ключ);
   }
 
   /// Возвращает байт размер of this тип.
@@ -130,7 +130,7 @@ abstract class Тип/* : Символ*/
   }
 }
 
-/// All basic types. E.g.: цел, сим, реал etc.
+/// All basic types. Напр.: цел, сим, реал etc.
 class ТипБазовый : Тип
 {
   this(ТИП typ)
@@ -421,7 +421,7 @@ struct МетаИнфоТип
   Значение* дефолтИниц; /// Дефолт initialization значение.
 }
 
-/// Namespace for the meta инфо таблица.
+/// Имяspace for the meta инфо таблица.
 struct МИТаблица
 {
 static:
@@ -496,7 +496,7 @@ static:
   }
 }
 
-/// Namespace for a установи of predefined types.
+/// Имяspace for a установи of predefined types.
 struct Типы
 {
 static:
@@ -516,7 +516,7 @@ static:
   ТипБазовый Неопределённый; /// The undefined тип.
   ТипБазовый ПокаНеИзвестен; /// The символ is undefined but might be resolved.
 
-  /// Allocates an instance of ТипБазовый and assigns it в имяТипа.
+  /// Allocates an instance типаБазовый and assigns it в имяТипа.
   template новТБ(ткст имяТипа)
   {
     const новТБ = mixin(имяТипа~" = new ТипБазовый(ТИП."~имяТипа~")");

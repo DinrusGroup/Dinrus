@@ -1,32 +1,32 @@
 ﻿
-// Written in the D programming language.
+// Написано на языке программирования Динрус.
 
 /*
- * Placed into the Публичный Domain.
+ * Помещено в Публичный Домен.
  * Digital Mars, www.digitalmars.com
- * Written by Walter Bright
+ * Автор Walter Bright
  */
 
 /**
- * Simple Unicode символ classification functions.
- * При ASCII classification, see $(LINK2 std_ctype.html, std.ctype).
+ * Простые функции классификации символов Юникод.
+ * О классификации ASCII см. $(LINK2 std_ctype.html, std.ctype).
  * Macros:
  *	WIKI=Phobos/StdUni
  * References:
  *	$(LINK2 http://www.digitalmars.com/d/ascii-таблица.html, ASCII Table),
- *	$(LINK2 http://en.wikipedia.org/wiki/Unicode, Wikipedia),
- *	$(LINK2 http://www.unicode.org, The Unicode Consortium)
+ *	$(LINK2 http://en.wikipedia.org/wiki/Юникод, Wikipedia),
+ *	$(LINK2 http://www.Юникод.org, The Юникод Consortium)
  * Trademarks:
- *	Unicode(tm) is a trademark of Unicode, Inc.
+ *	Юникод(tm) является торговой маркой Unicode, Inc.
  * Copyright:
- *	Публичный Domain.
+ *	Публичный Домен.
  */
 
 
 module util.uni;
 
 /**
- * Returns !=0 if c is a Unicode нижний case символ.
+ * Возвращает !=0, если c - символ Юникод в нижнем регистре.
  */
 цел униПроп_ли(дим c)
 {
@@ -37,7 +37,7 @@ module util.uni;
 }
 
 /**
- * Returns !=0 if c is a Unicode верхний case символ.
+ * Возвращает !=0, если c - символ Юникод в верхнем регистре.
  */
 цел униЗаг_ли(дим c)
 {
@@ -48,8 +48,8 @@ module util.uni;
 }
 
 /**
- * Если c is a Unicode верхний case символ, return the нижний case
- * equivalent, otherwise return c.
+ * Если c символ Юникод в верхнем регистре, вернуть его эквивалент в верхнем регистре,
+   в противном случае вернёт c.
  */
 дим вУниПроп(дим c)
 {
@@ -114,8 +114,8 @@ module util.uni;
 }
 
 /**
- * Если c is a Unicode нижний case символ, return the верхний case
- * equivalent, otherwise return c.
+ * Если c символ Юникод в нижнем регистре, вернуть его эквивалент в нижнем регистре,
+ * в противном случае вернёт c.
  */
 дим вУниЗаг(дим c)
 {
@@ -181,10 +181,10 @@ module util.uni;
 
 
 /*******************************
- * Итог !=0 if u is a Unicode alpha символ.
- * (general Unicode категория: Lu, Ll, Lt, Lm and Lo)
+ * Вернуть !=0, если u - алфавитный символ Юникод.
+ * (общая категория Юникод: Lu, Ll, Lt, Lm и Lo)
  *
- * Standards: Unicode 5.0.0
+ * Стандарты: Юникод 5.0.0
  */
 
 цел униАльфа_ли(дим u)
@@ -577,7 +577,7 @@ module util.uni;
 	goto Lisnot;
     }
 
-    // Binary ищи
+    // Бинарный поиск
     бцел идс;
     бцел low;
     бцел high;
@@ -613,7 +613,7 @@ Lis:
 	    if (u >= таблица[i][0] && u <= таблица[i][1])
 		return 1;
 	}
-	assert(0);		// should have been in таблица
+	assert(0);		// должно было быть в таблице
     }
     return 1;
 }

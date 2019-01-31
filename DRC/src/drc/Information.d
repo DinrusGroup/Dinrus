@@ -1,7 +1,4 @@
-﻿/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity average)
-module drc.Information;
+﻿module drc.Information;
 
 import drc.Messages;
 import common;

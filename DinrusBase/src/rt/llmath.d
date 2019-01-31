@@ -1,7 +1,7 @@
 ﻿// llmath.d
 // Copyright (C) 1993-2009 by Digital Mars, http://www.digitalmars.com
 // All Rights Reserved
-// Written by Walter Bright
+// Автор Walter Bright
 
 // Compiler runtime support for 64 bit longs
 
