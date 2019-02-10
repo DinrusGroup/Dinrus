@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity high)
 module drc.lexer.Identifier;
 
 import drc.lexer.TokensEnum,

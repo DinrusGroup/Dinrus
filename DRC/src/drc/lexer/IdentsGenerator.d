@@ -1,6 +1,4 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity high)
+
 module drc.lexer.IdentsGenerator;
 
 /// Таблица предопределенных идентификаторов.

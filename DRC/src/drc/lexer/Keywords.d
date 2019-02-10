@@ -1,6 +1,4 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity high)
+
 module drc.lexer.ключwords;
 
 import drc.lexer.Token,
@@ -194,7 +192,7 @@ static const Идентификатор[] g_reservedIds = [
   {"пока", TOK.Пока},
   {"with", TOK.Для},
   {"для", TOK.Для},
-  // Special семы:
+  // Специальные семы:
   {"__FILE__", TOK.ФАЙЛ},
   {"__ФАЙЛ__", TOK.ФАЙЛ},
   {"__LINE__", TOK.СТРОКА},

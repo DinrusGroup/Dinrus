@@ -1,6 +1,3 @@
-/// Author: Aziz Köksal
-/// License: GPL3
-/// $(Maturity high)
 module drc.lexer.IdTable;
 
 import drc.lexer.TokensEnum,
@@ -82,7 +79,7 @@ static:
 
   /// Ищет ткстИда в таблице.
   ///
-  /// Adds ткстИда в the таблица if not found.
+  /// Добавляет ткстИда в таблицу, если он не найден.
   private Идентификатор* _inGrowing_unsafe(ткст ткстИда)
   out(ид)
   { assert(ид !is null); }
@@ -96,10 +93,10 @@ static:
     return newID;
   }
 
-  /// Looks up ткстИда in the таблица.
+  /// Находит ткстИда в таблице.
   ///
-  /// Adds ткстИда в the таблица if not found.
-  /// Access в the данные structure is synchronized.
+  /// Добавляет ткстИда в таблицу, если он не найден.
+  /// Доступ к структуре данных синхронизируется.
   private Идентификатор* _inGrowing_safe(ткст ткстИда)
   {
     synchronized
@@ -124,49 +121,49 @@ static:
   }
   +/
 
-  static бцел anonCount; /// Counter for anonymous identifiers.
+  static бцел anonCount; /// Счётчик анонимных идентификаторов.
 
-  /// Generates an anonymous identifier.
+  /// Генерирует анонимный идентификатор.
   ///
-  /// Concatenates prefix with anonCount.
-  /// The identifier is not inserted into the таблица.
-  Идентификатор* генБезымянныйИД(ткст prefix)
+  /// Объединяет префикс с anonCount.
+  /// Этот идентификатор не вставляется в таблицу.
+  Идентификатор* генБезымянныйИД(ткст префикс)
   {
     ++anonCount;
     auto x = anonCount;
-    // Convert счёт в a ткст and добавь it в ткт.
+    // Конвертировать счёт в ткст и добавить его в ткт.
     ткст чис;
     do
       чис = cast(сим)('0' + (x % 10)) ~ чис;
     while (x /= 10)
-    return Идентификатор(prefix ~ чис, TOK.Идентификатор);
+    return Идентификатор(префикс ~ чис, TOK.Идентификатор);
   }
 
-  /// Generates an identifier for an anonymous enum.
+  /// Генерирует идентификатор для анонимного перечня.
   Идентификатор* генИДАнонПеречня()
   {
     return генБезымянныйИД("__anonenum");
   }
 
-  /// Generates an identifier for an anonymous class.
+  /// Генерирует идентификатор для анонимного класса.
   Идентификатор* genAnonClassID()
   {
     return генБезымянныйИД("__anonclass");
   }
 
-  /// Generates an identifier for an anonymous struct.
+  /// Генерирует идентификатор для анонимной структуры.
   Идентификатор* genAnonStructID()
   {
     return генБезымянныйИД("__anonstruct");
   }
 
-  /// Generates an identifier for an anonymous union.
+  /// Генерирует идентификатор для анонимного союза.
   Идентификатор* genAnonUnionID()
   {
     return генБезымянныйИД("__anonunion");
   }
 
-  /// Generates an identifier for a module which has got no valid имя.
+  /// Генерирует идентификатор для модуля, у которого нет соответствующего имени.
   Идентификатор* генИдМодуля()
   {
     return генБезымянныйИД("__module");
