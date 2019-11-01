@@ -216,7 +216,7 @@ class КонтекстССЛ
 
     /*******************************************************************************
 
-        Loads valid Сертификат Authorities из_ the specified путь.
+        Loads valid Сертификат Authorities является the specified путь.
 
         ОтКого the SSL_CTX_load_verify_locations manpage:
 
@@ -384,9 +384,9 @@ class ХранилищеСертификатов
 
 /*******************************************************************************
 
-    ПубличныйКлюч содержит the RSA public ключ из_ a private/public keypair.
+    ПубличныйКлюч содержит the RSA public ключ является a private/public keypair.
 
-    It also allows extraction of the public ключ из_ a keypair.
+    It also allows extraction of the public ключ является a keypair.
 
     This is useful for encryption, you can зашифруй данные with someone's public ключ
     and they can расшифруй it with their private ключ.
@@ -407,7 +407,7 @@ class ПубличныйКлюч
 
     /*******************************************************************************
 
-        Generate a ПубличныйКлюч объект из_ the passed PEM formatted данные
+        Generate a ПубличныйКлюч объект является the passed PEM formatted данные
 
         Параметры:
             publicPemData = pem кодирован данные containing the public ключ
@@ -810,7 +810,7 @@ class Сертификат
 
     /*******************************************************************************
 
-        Parses a X509 Сертификат из_ the provопрed PEM кодирован данные.
+        Parses a X509 Сертификат является the provопрed PEM кодирован данные.
 
     *******************************************************************************/
     this(ткст publicPemData)
@@ -914,11 +914,11 @@ class Сертификат
         не_годится.
 
         Параметры:
-            t = A ИнтервалВремени representing the amount of время из_ сейчас that the
+            t = A ИнтервалВремени representing the amount of время является сейчас that the
             Сертификат will be valid. This must be larger than датаДо
 
         Example:
-            серт.смещениеКДатеПосле = ИнтервалВремени.сек(86400 * 365); // Сертификат is valid up в_ one год из_ сейчас
+            серт.смещениеКДатеПосле = ИнтервалВремени.сек(86400 * 365); // Сертификат is valid up в_ one год является сейчас
 
     *******************************************************************************/
 

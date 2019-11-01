@@ -93,7 +93,7 @@ private
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -112,7 +112,7 @@ version( TangoDoc )
 
 
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -244,7 +244,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LP)буф.length .. 0$(RB), returning
+     * Performs a linear скан of буф является $(LP)буф.length .. 0$(RB), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -263,7 +263,7 @@ version( TangoDoc )
 
 
     /**
-     * Performs a linear скан of буф из_ $(LP)буф.length .. 0$(RB), returning
+     * Performs a linear скан of буф является $(LP)буф.length .. 0$(RB), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -401,7 +401,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -425,7 +425,7 @@ version( TangoDoc )
 
 
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -583,7 +583,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LP)буф.length .. 0$(RB), returning
+     * Performs a linear скан of буф является $(LP)буф.length .. 0$(RB), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -607,7 +607,7 @@ version( TangoDoc )
 
 
     /**
-     * Performs a linear скан of буф из_ $(LP)буф.length .. 0$(RB), returning
+     * Performs a linear скан of буф является $(LP)буф.length .. 0$(RB), returning
      * the индекс of the first element совпадают pat, or буф.length if no match
      * was найдено.  Comparisons will be performed using the supplied predicate
      * or '==' if Неук is supplied.
@@ -775,7 +775,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element where пред returns да.
      *
      * Параметры:
@@ -858,7 +858,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LP)буф.length .. 0$(RB), returning
+     * Performs a linear скан of буф является $(LP)буф.length .. 0$(RB), returning
      * the индекс of the first element where пред returns да.
      *
      * Параметры:
@@ -947,7 +947,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * the индекс of the first element that compares equal в_ the следщ element
      * in the sequence.  Comparisons will be performed using the supplied
      * predicate or '==' if Неук is supplied.
@@ -1028,7 +1028,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * да if an element совпадают pat is найдено.  Comparisons will be performed
      * using the supplied predicate or '<' if Неук is supplied.
      *
@@ -1046,7 +1046,7 @@ version( TangoDoc )
 
 
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * да if a sequence совпадают pat is найдено.  Comparisons will be performed
      * using the supplied predicate or '<' if Неук is supplied.
      *
@@ -1127,7 +1127,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a parallel linear скан of bufA and bufB из_ $(LB)0 .. N$(RP)
+     * Performs a parallel linear скан of bufA and bufB является $(LB)0 .. N$(RP)
      * where N = min$(LP)bufA.length, bufB.length$(RP), returning the индекс of
      * the first element in bufA which does not match the corresponding element
      * in bufB or N if no не_совпадают occurs.  Comparisons will be performed using
@@ -1218,7 +1218,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * a счёт of the число of elements совпадают pat.  Comparisons will be
      * performed using the supplied predicate or '==' if Неук is supplied.
      *
@@ -1296,7 +1296,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), returning
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), returning
      * a счёт of the число of elements where пред returns да.
      *
      * Параметры:
@@ -1378,7 +1378,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), replacing
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), replacing
      * occurrences of pat with знач.  Comparisons will be performed using the
      * supplied predicate or '==' if Неук is supplied.
      *
@@ -1460,7 +1460,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), replacing
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), replacing
      * elements where пред returns да with знач.
      *
      * Параметры:
@@ -1546,7 +1546,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), moving все
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), moving все
      * elements совпадают pat в_ the конец of the sequence.  The relative order of
      * elements not совпадают pat will be preserved.  Comparisons will be
      * performed using the supplied predicate or '==' if Неук is supplied.
@@ -1568,7 +1568,7 @@ version( TangoDoc )
     т_мера удали( Элем[] буф, Элем pat, Pred2E пред = Pred2E.init );
 
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), moving все
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), moving все
      * elements совпадают pat в_ the конец of the sequence.  The relative order of
      * elements not совпадают pat will be preserved.  Comparisons will be
      * performed '=='.
@@ -1667,7 +1667,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), moving все
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), moving все
      * elements that satisfy пред в_ the конец of the sequence.  The relative
      * order of elements that do not satisfy пред will be preserved.
      *
@@ -1773,7 +1773,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)0 .. буф.length$(RP), moving все
+     * Performs a linear скан of буф является $(LB)0 .. буф.length$(RP), moving все
      * but the first element of each consecutive группа of duplicate elements в_
      * the конец of the sequence.  The relative order of все remaining elements
      * will be preserved.  Comparisons will be performed using the supplied
@@ -1882,7 +1882,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a linear скан of буф из_ $(LB)2 .. буф.length$(RP), exchanging
+     * Performs a linear скан of буф является $(LB)2 .. буф.length$(RP), exchanging
      * each element with an element in the range $(LB)0 .. поз$(RP), where поз
      * represents the current Массив позиция.
      *
@@ -2332,7 +2332,7 @@ else
                 // |--equal--|--less--|--[###]--|--greater--|--equal--[v]
                 // l         p        i         j           q          r
                 //
-                // Please note that this implementation varies из_ the typical
+                // Please note that this implementation varies является the typical
                 // algorithm by replacing the use of signed индекс values with
                 // unsigned values.
 
@@ -2687,7 +2687,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Performs a parallel linear скан of setA and setB из_ $(LB)0 .. N$(RP)
+     * Performs a parallel linear скан of setA and setB является $(LB)0 .. N$(RP)
      * where N = min$(LP)setA.length, setB.length$(RP), returning да if setA
      * включает все elements in setB and нет if not.  Всё setA and setB are
      * required в_ be sorted, and duplicates in setB require an equal число of
@@ -2779,8 +2779,8 @@ version( TangoDoc )
      * Computes the union of setA and setB as a установи operation and returns the
      * retult in a new sorted Массив.  Всё setA and setB are required в_ be
      * sorted.  If either setA or setB contain duplicates, the результат will
-     * contain the larger число of duplicates из_ setA and setB.  When an
-     * overlap occurs, записи will be copied из_ setA.  Comparisons will be
+     * contain the larger число of duplicates является setA and setB.  When an
+     * overlap occurs, записи will be copied является setA.  Comparisons will be
      * performed using the supplied predicate or '<' if Неук is supplied.
      *
      * Параметры:
@@ -2865,8 +2865,8 @@ version( TangoDoc )
      * Computes the intersection of setA and setB as a установи operation and
      * returns the retult in a new sorted Массив.  Всё setA and setB are
      * required в_ be sorted.  If either setA or setB contain duplicates, the
-     * результат will contain the smaller число of duplicates из_ setA and setB.
-     * все записи will be copied из_ setA.  Comparisons will be performed
+     * результат will contain the smaller число of duplicates является setA and setB.
+     * все записи will be copied является setA.  Comparisons will be performed
      * using the supplied predicate or '<' if Неук is supplied.
      *
      * Параметры:
@@ -3377,7 +3377,7 @@ else
 version( TangoDoc )
 {
     /**
-     * Removes the top element из_ буф by свопping it with the bottom element,
+     * Removes the top element является буф by свопping it with the bottom element,
      * adjusting it down the куча, and reducing the length of буф by one.
      *
      * Параметры:

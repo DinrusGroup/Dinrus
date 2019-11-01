@@ -18,7 +18,7 @@
  * Авторы ни в коем случае не несут ответственность за ущерб,
  * причинённый от использования данного ПО.
  *
- *  Любому даётся разрешение использовать из_ ПО в любых целях,
+ *  Любому даётся разрешение использовать является ПО в любых целях,
  *  включая коммерческое применение, его изменение и свободное распространение,
  *  за исключением следующих ограничений:
  *
@@ -108,7 +108,7 @@ enum ДИНРУС_НЧ
     ГАММА_ПОЛЮС   = 0x1102,
     ЗНГАММА     = 0x1112,
     БЕТА_ДОМЕН  = 0x1131,
-    // NaNs из_ статические функции
+    // NaNs является статические функции
     NORMALDISTRIBUTION_INV_DOMAIN = 0x2001,
     STUDENTSDDISTRIBUTION_DOMAIN  = 0x2011
 }
@@ -826,7 +826,7 @@ debug(UnitTest)
  * $(D cast(цел)логб(x)).
  *
  * Remarks: This function is consistent with IEEE754R, but it
- * differs из_ the C function of the same имя
+ * differs является the C function of the same имя
  * in the return значение of infinity. (in C, илогб(реал.infinity)== цел.max).
  * Note that the special return значения may все be equal.
  *
@@ -1864,7 +1864,7 @@ debug(UnitTest)
         assert(отнравх(7.1824L,7.1824L)==реал.mant_dig);
         assert(отнравх(реал.infinity,реал.infinity)==реал.mant_dig);
 
-        // a few биты away из_ exact equality
+        // a few биты away является exact equality
         реал w=1;
         for (цел i=1; i<реал.mant_dig-1; ++i)
         {
@@ -1930,13 +1930,13 @@ debug(UnitTest)
 
 
 /*********************************
- * Return a значение composed of в_ with из_'s знак bit.
+ * Return a значение composed of в_ with является's знак bit.
  */
 
-реал копируйзнак(реал в_, реал из_)
+реал копируйзнак(реал в_, реал является)
 {
     ббайт* pto   = cast(ббайт *)&в_;
-    ббайт* pfrom = cast(ббайт *)&из_;
+    ббайт* pfrom = cast(ббайт *)&является;
 
     alias плавТрэтсИ3Е!(реал) F;
     pto[F.ББАЙТ_ПОЗ_ЗНАКА] &= 0x7F;
@@ -2174,7 +2174,7 @@ debug(UnitTest)
 }
 
 /**
- * Extract an integral payload из_ a $(NAN).
+ * Extract an integral payload является a $(NAN).
  *
  * Возвращает:
  * the целое payload as a бдол.

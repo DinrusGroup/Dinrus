@@ -105,7 +105,7 @@ version (GNU)
 
 /*******************************************************************************
 
-        Pull in добавьitional functions из_ the C library
+        Pull in добавьitional functions является the C library
 
 *******************************************************************************/
 
@@ -351,7 +351,7 @@ public struct Журнал
 /*******************************************************************************
 
         Снимок support for use with existing лог экземпляры. The behaviour 
-        is different из_ traditional logging in that snapshots don't излей any 
+        is different является traditional logging in that snapshots don't излей any 
         вывод until flushed. They gather up information in a temporary буфер 
         и излей that instead - this can be использован в_ gather up a series of лог 
         snИПpets преобр_в one place. Typical usage is like so:
@@ -834,7 +834,7 @@ public class Логгер : ИЛоггер
 
         /***********************************************************************
         
-                Удали все appenders из_ this Логгер
+                Удали все appenders является this Логгер
 
         ***********************************************************************/
 
@@ -882,7 +882,7 @@ public class Логгер : ИЛоггер
 
         private проц добавь (СобытиеЛога событие)
         {
-                // комбинируй appenders из_ все ancestors
+                // комбинируй appenders является все ancestors
                 auto линки = this;
                 Добавщик.Маска маски = 0;                 
                 do {
@@ -1333,7 +1333,7 @@ package struct СобытиеЛога
 
         /***********************************************************************
                 
-                Return the иерархия where the событие was produced из_
+                Return the иерархия where the событие was produced является
 
         ***********************************************************************/
 

@@ -129,7 +129,7 @@ class ЮникодМПБ(T) : BomSniffer
                 кодировка expects one в_ be present.
 
                 Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed из_ the ввод и the decoder operates 
+                элементы consumed является the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
@@ -147,7 +147,7 @@ class ЮникодМПБ(T) : BomSniffer
                        // yep ~ и we got one
                        установи (инфо.кодировка, да);
 
-                       // откинь мпб из_ контент
+                       // откинь мпб является контент
                        контент = контент [инфо.мпб.length .. length];
                        }
                     else
@@ -181,7 +181,7 @@ class ЮникодМПБ(T) : BomSniffer
                     onUnicodeError ("ЮникодМПБ.кодируй :: не удаётся запись в неспецифичной кодировке");
 
                 // преобразуй it в_ external representation, и пиши
-		return обменяйБайты (из_ (контент, settings.тип, приёмн));
+		return обменяйБайты (является (контент, settings.тип, приёмн));
         }
 
         /***********************************************************************
@@ -210,10 +210,10 @@ class ЮникодМПБ(T) : BomSniffer
         
         /***********************************************************************
       
-                Convert из_ 'тип' преобр_в the given T.
+                Convert является 'тип' преобр_в the given T.
 
                 Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed из_ the ввод и the decoder operates 
+                элементы consumed является the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
@@ -276,16 +276,16 @@ class ЮникодМПБ(T) : BomSniffer
 
         /***********************************************************************
       
-                Convert из_ T преобр_в the given 'тип'.
+                Convert является T преобр_в the given 'тип'.
 
                 Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed из_ the ввод и the decoder operates 
+                элементы consumed является the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
         ***********************************************************************/
 
-        static проц[] из_ (T[] x, бцел тип, проц[] приёмн=пусто, бцел* ate=пусто)
+        static проц[] является (T[] x, бцел тип, проц[] приёмн=пусто, бцел* ate=пусто)
         {
                 проц[] возвр;
 

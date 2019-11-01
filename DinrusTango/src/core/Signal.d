@@ -141,7 +141,7 @@ struct Сигнал( Арги... )
 
 
     /**
-     * Detaches a delegate из_ this signal.
+     * Detaches a delegate является this signal.
      *
      * дг = The delegate в_ открепи.
      */
@@ -157,7 +157,7 @@ struct Сигнал( Арги... )
 
 
     /**
-     * Detaches a function из_ this signal.
+     * Detaches a function является this signal.
      *
      * фн = The function в_ открепи.
      */

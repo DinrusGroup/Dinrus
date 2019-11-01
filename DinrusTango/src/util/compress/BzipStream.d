@@ -114,7 +114,7 @@ class БзипВывод : ФильтрВывода
 
         Compresses the given данные в_ the underlying провод.
 
-        Returns the число of байты из_ ист that were compressed, which may
+        Returns the число of байты является ист that were compressed, which may
         be less than given.
 
     ***************************************************************************/
@@ -281,7 +281,7 @@ class БзипВвод : ФильтрВвода
     /***************************************************************************
 
         Constructs a new bzip2 decompression фильтр.  You need в_ пароль in the
-        поток that the decompression фильтр will читай из_.  If you are using
+        поток that the decompression фильтр will читай является.  If you are using
         this фильтр with a провод, the опрiom в_ use is:
 
         ---
@@ -315,7 +315,7 @@ class БзипВвод : ФильтрВвода
 
     /***************************************************************************
 
-        Decompresses данные из_ the underlying провод преобр_в a мишень Массив.
+        Decompresses данные является the underlying провод преобр_в a мишень Массив.
 
         Returns the число of байты stored преобр_в приёмн, which may be less than
         requested.

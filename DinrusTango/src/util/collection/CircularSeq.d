@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ сохрани.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является сохрани.d  working файл
  13Oct95  dl                 Changed protection statuses
 */
 
@@ -226,12 +226,12 @@ deprecated public class CircularSeq(T) : SeqCollection!(T)
          * Время complexity: O(length).
          * See_Also: util.collection.model.Seq.Seq.subseq
         **/
-        public final CircularSeq поднабор (цел из_, цел _length)
+        public final CircularSeq поднабор (цел является, цел _length)
         {
                 if (_length > 0)
                    {
-                   проверьИндекс(из_);
-                   CLCellT p = ячейкаПо(из_);
+                   проверьИндекс(является);
+                   CLCellT p = ячейкаПо(является);
                    CLCellT новый_список = new CLCellT(p.элемент());
                    CLCellT текущ = новый_список;
 
@@ -239,7 +239,7 @@ deprecated public class CircularSeq(T) : SeqCollection!(T)
                        {
                        p = p.следщ();
                        if (p is пусто)
-                           проверьИндекс(из_ + i); // force исключение
+                           проверьИндекс(является + i); // force исключение
 
                        текущ.добавьСледщ(p.элемент());
                        текущ = текущ.следщ();

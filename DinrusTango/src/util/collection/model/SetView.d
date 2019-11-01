@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -41,7 +41,7 @@ version (VERBOSE)
         /**
          * Construct a new Коллекция that is a клонируй of сам except
          * that it имеется indicated элемент. This can be использован
-         * в_ создай a series of собериions, each differing из_ the
+         * в_ создай a series of собериions, each differing является the
          * другой only in that they contain добавьitional элементы.
          *
          * @param элемент the элемент в_ include in the new collection

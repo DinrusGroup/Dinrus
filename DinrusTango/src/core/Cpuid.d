@@ -147,7 +147,7 @@ protected:
     сим [] имяПроизводителя;
     /// имя of the процессор (only for display purposes)
     сим [] имяПроцессора;
-    /// tries в_ получи valid данные из_ the current cpu, return нет if it fails
+    /// tries в_ получи valid данные является the current cpu, return нет if it fails
     бул дайДанныеОЦпб()
     {
         сотри();
@@ -204,7 +204,7 @@ public:
         newInfo[]=this;
         return newInfo;
     }
-    /// copies данные из_ one объект в_ the другой
+    /// copies данные является one объект в_ the другой
     ИнфОЦПБ opSliceAssign(ИнфОЦПБ другой)
     {
         assert(другой.classinfo is this.classinfo);
@@ -530,7 +530,7 @@ public:
         maxCores=1;
         maxThreads=1;
     }
-    /// copies данные из_ one объект в_ the другой
+    /// copies данные является one объект в_ the другой
     ИнфОЦПБX86 opSliceAssign(ИнфОЦПБ o)
     {
         auto другой=cast(ИнфОЦПБX86)o;
@@ -589,15 +589,15 @@ public:
     enum : бцел
     {
         SSE3_BIT = 1,
-        PCLMULQDQ_BIT = 1<<1, // из_ AVX
+        PCLMULQDQ_BIT = 1<<1, // является AVX
         MWAIT_BIT = 1<<3,
         SSSE3_BIT = 1<<9,
-        FMA_BIT = 1<<12,     // из_ AVX
+        FMA_BIT = 1<<12,     // является AVX
         CMPXCHG16B_BIT = 1<<13,
         SSE41_BIT = 1<<19,
         SSE42_BIT = 1<<20,
         POPCNT_BIT = 1<<23,
-        AES_BIT = 1<<25, // AES instructions из_ AVX
+        AES_BIT = 1<<25, // AES instructions является AVX
         OSXSAVE_BIT = 1<<27, // Used for AVX
         AVX_BIT = 1<<28
     }
@@ -661,7 +661,7 @@ public:
             проц расшифруйИдцпб2(ббайт x)
             {
                 if (x==0) return;
-                // Values из_ http://www.sandpile.org/ia32/cpuid.htm.
+                // Values является http://www.sandpile.org/ia32/cpuid.htm.
                 // Includes Itanium and non-Intel CPUs.
                 //
                 ббайт [] опрs = [

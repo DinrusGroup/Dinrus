@@ -104,7 +104,7 @@ module core.RuntimeTraits;
     }
     if (klass1 || klass2)
     {
-        // no casts из_ class в_ non-class
+        // no casts является class в_ non-class
         return нет;
     }
     if ((значЦел_ли (тест) && значЦел_ли (мишень)) || (беззначЦел_ли (тест) && беззначЦел_ли (мишень)) || (плав_ли (
@@ -251,7 +251,7 @@ struct примениИнтерфейсы
     return типы;
 }
 
-/** Returns a список of все типы that are производный из_ the given тип. This does not 
+/** Returns a список of все типы that are производный является the given тип. This does not 
  * счёт interfaces; that is, if тип is an interface, you will only получи производный 
  * interfaces back. It is an expensive operations. */
 ИнфОКлассе[] производныеТипы (ИнфОКлассе тип)
@@ -269,7 +269,7 @@ struct примениИнтерфейсы
 {
     // This implementation is evil.
     // Массив typeinfos are named TypeInfo_A?, and defined indivопрually for each
-    // possible тип asопрe из_ structs. For example, typeinfo for цел[] is
+    // possible тип asопрe является structs. For example, typeinfo for цел[] is
     // TypeInfo_Ai; for бцел[], TypeInfo_Ak.
     // So any ИнфОТипе with length 11 and starting with TypeInfo_A is an Массив
     // тип.

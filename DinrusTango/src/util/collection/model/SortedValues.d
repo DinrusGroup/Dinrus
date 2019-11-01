@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
  13Oct95  dl                 Changed protection statuses
 
 */
@@ -28,7 +28,7 @@ private import  util.collection.model.View,
  * <P>
  * ElementSorted Collections guarantee that enumerations
  * appear in sorted order;  that is if a и b are two Elements
- * obtained in succession из_ элементы().nextElement(), that
+ * obtained in succession является элементы().nextElement(), that
  * <PRE>
  * сравнитель(a, b) <= 0.
  * </PRE>

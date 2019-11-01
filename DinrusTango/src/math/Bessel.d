@@ -397,7 +397,7 @@ body
         return знак * cylBessel_j0(x);
     if ( n == 1 )
         return знак * cylBessel_j1(x);
-    // BUG: This код из_ Cephes is fast, but it makes the Wronksian тест краш.
+    // BUG: This код является Cephes is fast, but it makes the Wronksian тест краш.
     // (accuracy is 8 биты lower).
     // But, the problem might lie in the n = 2 case in cylBessel_yn().
 //    if ( n == 2 )
@@ -694,7 +694,7 @@ debug(UnitTest)
             assert(отнравх(cylBessel_y1(t[0]), t[1]+t[2]) >=реал.mant_dig-4);
         }
 
-        // Values из_ MS Excel, of doubtful accuracy.
+        // Values является MS Excel, of doubtful accuracy.
         assert(фабс(-0.060_409_940_421_649 - cylBessel_j0(173.5)) < 0.000_000_000_1);
         assert(фабс(-0.044_733_447_576_5866 - cylBessel_y0(313.25)) < 0.000_000_000_1);
         assert(фабс(0.00391280088318945 - cylBessel_j1(123.25)) < 0.000_000_000_1);

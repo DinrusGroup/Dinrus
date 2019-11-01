@@ -1,4 +1,4 @@
-/// Author: Aziz Köksal
+/// Author: Aziz Köksal, Vitaly Kulich
 /// License: GPL3
 /// $(Maturity average)
 module cmd.Statistics;
@@ -105,7 +105,7 @@ struct Статистика
 {
   бцел квоПробелов; /// Counter for whitespace characters.
   бцел квоПробелнТокенов;    /// Counter for all whitespace семы.
-  бцел квоКСлов;    /// Counter for ключwords.
+  бцел квоКСлов;    /// Counter for Keywords.
   бцел квоИдент;      /// Counter for identifiers.
   бцел квоЧисел;     /// Counter for число literals.
   бцел квоКомментариев;    /// Counter for comments.
@@ -150,7 +150,7 @@ struct Статистика
 /// Возвращает statistics for a D source file.
 Статистика дайСтатистику(ткст путьКФайлу, бул выводитьТаблицуТокенов, бул выводитьТаблицуУзлов)
 {
-  // Create a new record.
+  // Create a new recилиd.
   auto статс = Статистика(выводитьТаблицуТокенов);
 
   auto исходныйТекст = new ИсходныйТекст(путьКФайлу, да);
@@ -161,7 +161,7 @@ struct Статистика
     парсер = new Парсер(исходныйТекст);
     auto корневойУзел = парсер.старт();
     // Count nodes.
-    статс.таблицаУзлов = (new СтатАДС).счёт(корневойУзел);
+    статс.таблицаУзлов = (new СтатАСД).счёт(корневойУзел);
     lx = парсер.лексер;
   }
   else
@@ -176,7 +176,7 @@ struct Статистика
   // Лексер creates ГОЛОВА + Новстр, which are not in the source текст.
   // No сема левый behind!
   статс.квоТокенов = 2;
-  статс.строкиКода = lx.номСтр;
+  статс.строкиКода = lx.номерСтроки;
   if (выводитьТаблицуТокенов)
   {
     статс.таблицаТокенов[TOK.ГОЛОВА] = 1;
@@ -192,7 +192,7 @@ struct Статистика
       статс.таблицаТокенов[сема.вид] += 1;
 
     // Count whitespace characters
-    if (сема.пп !is null)
+    if (сема.пп !is пусто)
       статс.квоПробелов += сема.старт - сема.пп;
 
     switch (сема.вид)
@@ -211,9 +211,9 @@ struct Статистика
     case TOK.Новстр:
       break;
     default:
-      if (сема.кслово_ли)
+      if (сема.кслово)
         статс.квоКСлов++;
-      else if (сема.пробел_ли)
+      else if (сема.пробел)
         статс.квоПробелнТокенов++;
     }
   }

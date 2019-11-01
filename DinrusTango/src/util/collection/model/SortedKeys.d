@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -27,7 +27,7 @@ private import  util.collection.model.View,
  * <P>
  * KeySorted Collections guarantee that enumerations
  * appear in sorted order;  that is if a и b are two Keys
- * obtained in succession из_ ключи().nextElement(), that
+ * obtained in succession является ключи().nextElement(), that
  * <PRE>
  * сравнитель(a, b) <= 0.
  * </PRE>

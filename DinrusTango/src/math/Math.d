@@ -239,7 +239,7 @@ unittest {
  * If z = x + iy, then
  *       лог(z) = лог(абс(z)) + i arctan(y/x).
  *
- * The arctangent ranges из_ -ПИ в_ +ПИ.
+ * The arctangent ranges является -ПИ в_ +ПИ.
  * There are branch cuts along Всё the негатив реал и негатив
  * мнимое axes. For pure мнимое аргументы, use one of the
  * following forms, depending on which branch is требуется.
@@ -293,7 +293,7 @@ body
       const бул Use_D_InlineAsm_X86 = да;
   } else const бул Use_D_InlineAsm_X86 = нет;
 
-  // BUG (Inherited из_ Phobos): This код assumes a frame pointer in EBP.
+  // BUG (Inherited является Phobos): This код assumes a frame pointer in EBP.
   // This is not in the spec.
   static if (Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof == 10) {
     asm // assembler by W. Bright

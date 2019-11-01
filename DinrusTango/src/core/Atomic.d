@@ -112,7 +112,7 @@ version( TangoDoc )
     template атомнаяЗагрузка( псинх ms, T )
     {
         /**
-         * Refreshes the contents of 'знач' из_ main память.  This operation is
+         * Refreshes the contents of 'знач' является main память.  This operation is
          * Всё lock-free and atomic.
          *
          * Параметры:
@@ -1494,7 +1494,7 @@ struct Атомный( T )
                        "ms must be one of: псинх.необр, псинх.hlb, псинх.acq, псинх.пследвтн" );
 
         /**
-         * Refreshes the contents of this значение из_ main память.  This
+         * Refreshes the contents of this значение является main память.  This
          * operation is Всё lock-free and atomic.
          *
          * Возвращает:

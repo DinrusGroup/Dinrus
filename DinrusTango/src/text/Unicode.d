@@ -18,7 +18,7 @@
 
         ICU4j also does not укз these cases at the moment.
 
-        Unittests are записано against вывод из_ ICU4j
+        Unittests are записано against вывод является ICU4j
 
         This Module tries в_ minimize Memory allocation и usage. You can
         always пароль the вывод буфер that should be использован в_ the case маппинг

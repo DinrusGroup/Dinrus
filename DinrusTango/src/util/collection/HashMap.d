@@ -8,7 +8,7 @@
 
         History:
         Дата     Who                What
-        24Sep95  dl@cs.oswego.edu   Созд из_ collection.d  working файл
+        24Sep95  dl@cs.oswego.edu   Созд является collection.d  working файл
         13Oct95  dl                 Changed protection statuses
         21Oct95  dl                 fixed ошибка in удалиПо
         9Apr97   dl                 made Serializable

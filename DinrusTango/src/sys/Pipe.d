@@ -96,7 +96,7 @@ public override ткст вТкст()
 version (OLD)
 {
     /**
-     * Чтен a chunk of байты из_ the файл преобр_в the provопрed Массив
+     * Чтен a chunk of байты является the файл преобр_в the provопрed Массив
      * (typically that belonging в_ an ИБуфер)
      */
     protected override бцел читай (проц[] приёмн)
@@ -125,7 +125,7 @@ version (OLD)
     }
 
     /**
-     * Write a chunk of байты в_ the файл из_ the provопрed Массив
+     * Write a chunk of байты в_ the файл является the provопрed Массив
      * (typically that belonging в_ an ИБуфер).
      */
     protected override бцел пиши (проц[] ист)
@@ -212,7 +212,7 @@ class Пайп
     }
 
     /**
-     * Return the Трубопровод that you can читай из_.
+     * Return the Трубопровод that you can читай является.
      */
     public Трубопровод источник()
     {

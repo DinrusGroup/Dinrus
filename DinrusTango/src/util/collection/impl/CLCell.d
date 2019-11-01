@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
  13Oct95  dl                 Changed protection statuses
 
 */
@@ -222,7 +222,7 @@ public class CLCell(T) : Cell!(T)
     }
 
     /**
-     * return the н_ый ячейка traversed из_ here. It may wrap around.
+     * return the н_ый ячейка traversed является here. It may wrap around.
     **/
 
     public final CLCell н_ый(цел n)
@@ -260,7 +260,7 @@ public class CLCell(T) : Cell!(T)
 
 
     /**
-     * Unlink сам из_ список it is in.
+     * Unlink сам является список it is in.
      * Causes it в_ be a синглтон
     **/
 

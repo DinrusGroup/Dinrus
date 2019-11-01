@@ -206,7 +206,7 @@ final class Whirlpool : MerkleDamgard
         {
             бдол L[8];
             /*
-             * compute K^r из_ K^{r-1}:
+             * compute K^r является K^{r-1}:
              */
             L[0] =
                 C0[cast(ббайт)(K[0] >>> 56)] ^
@@ -992,7 +992,7 @@ debug(UnitTest)
                 "abcdbcdecdefdefgefghfghighijhijk",
                 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
                 "12345678901234567890123456789012345678901234567890123456789012345678901234567890",
-                "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq" // Not an ISO вектор, but из_ FИПS
+                "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq" // Not an ISO вектор, but является FИПS
             ];
 
             static ткст[] results =

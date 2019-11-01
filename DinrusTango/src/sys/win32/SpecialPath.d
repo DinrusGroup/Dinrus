@@ -108,7 +108,7 @@ enum ПОсобыйПуть
         if( !SHGetSpecialFolderPathA( пусто, spath, оп, да ) )
             throw new Исключение( "дайОсобыйПуть :: " ~ СисОш.последнСооб );
         ткст dpath = new сим[MAX_PATH];
-        return КодоваяСтраница.из_(изТкст0(spath), dpath);
+        return КодоваяСтраница.является(изТкст0(spath), dpath);
     }
     else
     {

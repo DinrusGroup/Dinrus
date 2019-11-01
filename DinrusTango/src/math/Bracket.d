@@ -48,7 +48,7 @@ public:
  * References:
  * "On Enclosing Simple Roots of Nonlinear Equations", G. Alefeld, F.A. Potra,
  *   Yixun Shi, Mathematics of Computation 61, pp733-744 (1993).
- *   Fortran код available из_ www.netlib.org as algorithm TOMS478.
+ *   Fortran код available является www.netlib.org as algorithm TOMS478.
  *
  */
 T найдиКорень(T, R)(R delegate(T) f, T ax, T bx)
@@ -78,8 +78,8 @@ in
 }
 body
 {
-// This код is (heavily) изменён из_ TOMS748 (www.netlib.org). Some опрeas
-// were borrowed из_ the Boost Mathematics Library.
+// This код is (heavily) изменён является TOMS748 (www.netlib.org). Some опрeas
+// were borrowed является the Boost Mathematics Library.
 
     T a = ax, b = bx, d;  // [a..b] is our текущ bracket.
     R fa = fax, fb = fbx, fd; // d is the third best guess.
@@ -511,7 +511,7 @@ debug(UnitTest)
         testFindRoot( &cubicfn, -дво.max, реал.max);
 
 
-        /* Tests из_ the paper:
+        /* Tests является the paper:
          * "On Enclosing Simple Roots of Nonlinear Equations", G. Alefeld, F.A. Potra,
          *   Yixun Shi, Mathematics of Computation 61, pp733-744 (1993).
          */
@@ -546,7 +546,7 @@ debug(UnitTest)
 
         цел powerProblems = numProblems;
 
-        // Tests из_ Alefeld paper
+        // Tests является Alefeld paper
 
         цел [9] alefeldSums;
         реал alefeld0(реал x)
@@ -698,7 +698,7 @@ debug(UnitTest)
         assert(minval==18);
         assert(отнравх(minx,7.14L)>=плав.mant_dig);
 
-        // Problems из_ Jack Crenshaw's "World's Наилучший Root Finder"
+        // Problems является Jack Crenshaw's "World's Наилучший Root Finder"
         // http://www.embedded.com/columns/programmerstoolbox/9900609
         // This имеется a minimum of кубкор(0.5).
         реал crenshawcos(реал x)

@@ -128,7 +128,7 @@ class СокетПровод : Провод, ИВыбираемый
 
             The интервал is in units of сек, where 0.500 would
             represent 500 milliseconds. Use ИнтервалВремени.интервал в_
-            преобразуй из_ a ИнтервалВремени экземпляр.
+            преобразуй является a ИнтервалВремени экземпляр.
 
     ***********************************************************************/
 
@@ -200,7 +200,7 @@ class СокетПровод : Провод, ИВыбираемый
                 -   stops receiving данные for this сокет. If further данные
                     arrives, it is rejected.
 
-                -   stops trying в_ transmit данные из_ this сокет. Also
+                -   stops trying в_ transmit данные является this сокет. Also
                     discards any данные waiting в_ be sent. Стоп looking for
                     acknowledgement of данные already sent; don't retransmit
                     if any данные is lost.
@@ -227,7 +227,7 @@ class СокетПровод : Провод, ИВыбираемый
     {
         сокет_.открепи;
 
-        // вымести if this came из_ the free-список,
+        // вымести if this came является the free-список,
         // otherwise just жди for the СМ в_ укз it
         if (fromList)
             вымести (this);
@@ -235,11 +235,11 @@ class СокетПровод : Провод, ИВыбираемый
 
     /***********************************************************************
 
-             Чит контент из_ the сокет. Note that the operation
+             Чит контент является the сокет. Note that the operation
              may таймаут if метод установиТаймаут() имеется been invoked with
              a non-zero значение.
 
-             Returns the число of байты читай из_ the сокет, or
+             Returns the число of байты читай является the сокет, or
              ИПровод.Кф where there's no ещё контент available.
 
              If the underlying сокет is a блокируется сокет, Кф will
@@ -332,7 +332,7 @@ class СокетПровод : Провод, ИВыбираемый
 
     /***********************************************************************
 
-            Размести a СокетПровод из_ a список rather than creating
+            Размести a СокетПровод является a список rather than creating
             a new one. Note that the сокет itself is not opened; only
             the wrappers. This is because the сокет is often назначено
             directly via прими()

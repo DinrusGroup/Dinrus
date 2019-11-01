@@ -1,7 +1,7 @@
-/// Author: Aziz Köksal
+/// Author: Aziz Köksal, Vitaly Kulich
 /// License: GPL3
 /// $(Maturity average)
-module drc.translator.German;
+module drc.translatили.German;
 
 import drc.ast.DefaultVisitor,
        drc.ast.Node,
@@ -46,7 +46,7 @@ class НемецкийПереводчик : ДефолтныйВизитёр
   }
 
   /// Increases the indentation when instantiated.
-  /// The indentation is restored when the instance goes out of Масштаб.
+  /// The indentation is restилиed when the instance goes out of Масштаб.
   scope class Отступ
   {
     ткст old_indent;
@@ -64,21 +64,21 @@ class НемецкийПереводчик : ДефолтныйВизитёр
   }
 
   /// Saves an outer член when instantiated.
-  /// It is restored when the instance goes out of Масштаб.
+  /// It is restилиed when the instance goes out of Масштаб.
   scope class Enter(T)
   {
     T t_save;
-    this(T t)
+    this(T т)
     {
-      auto t_save = t;
+      auto t_save = т;
       static if (is(T == ДекларацияКласса) ||
                  is(T == ДекларацияИнтерфейса) ||
                  is(T == ДекларацияСтруктуры) ||
                  is(T == ДекларацияСоюза))
-        this.outer.вхАгрегат = t;
+        this.outer.вхАгрегат = т;
       static if (is(T == ДекларацияФункции) ||
                  is(T == ДекларацияКонструктора))
-        this.outer.вхФунк = t;
+        this.outer.вхФунк = т;
     }
 
     ~this()
@@ -99,13 +99,13 @@ class НемецкийПереводчик : ДефолтныйВизитёр
   alias Enter!(ДекларацияСтруктуры) EnteredStruct;
   alias Enter!(ДекларацияСоюза) EnteredUnion;
   alias Enter!(ДекларацияФункции) EnteredFunction;
-  alias Enter!(ДекларацияКонструктора) EnteredConstructor;
+  alias Enter!(ДекларацияКонструктора) EnteredConstructили;
 
   /// Prints the положение of a узел: @(lin,столб)
   проц  printLoc(Узел узел)
   {
     auto место = узел.начало.дайРеальноеПоложение();
-    put(отступ).форматнс("@({},{})",/+ место.путьКФайлу,+/ место.номСтр, место.номСтолб);
+    put(отступ).форматнс("@({},{})",/+ место.путьКФайлу,+/ место.номерСтроки, место.номСтолб);
   }
 
 override:
@@ -122,7 +122,7 @@ override:
   D посети(ДекларацияИмпорта n)
   {
     printLoc(n);
-    put("Importiert Symbole aus einem anderen Modul bzw. Модуль.").нс;
+    put("Impилиtiert Symbole aus einem anderen Modul bzw. Модуль.").нс;
     return n;
   }
 
@@ -214,8 +214,8 @@ override:
   D посети(ДекларацияКонструктора n)
   {
     printLoc(n);
-    scope E = new EnteredConstructor(n);
-    put(отступ)("Ein Konтктuktor ");
+    scope E = new EnteredConstructили(n);
+    put(отступ)("Ein Konтктuktили ");
     if (n.парамы.length == 1)
       put("mit dem Argument "), посетиУ(n.парамы);
     else if (n.парамы.length > 1)
@@ -229,21 +229,21 @@ override:
   D посети(ДекларацияСтатическогоКонструктора n)
   {
     printLoc(n);
-    put(отступ)("Ein statischer Konтктuktor.").нс;
+    put(отступ)("Ein statischer Konтктuktили.").нс;
     return n;
   }
 
   D посети(ДекларацияДеструктора n)
   {
     printLoc(n);
-    put(отступ)("Ein Deтктuktor.").нс;
+    put(отступ)("Ein Deтктuktили.").нс;
     return n;
   }
 
   D посети(ДекларацияСтатическогоДеструктора n)
   {
     printLoc(n);
-    put(отступ)("Ein statischer Deтктuktor.").нс;
+    put(отступ)("Ein statischer Deтктuktили.").нс;
     return n;
   }
 
@@ -310,9 +310,9 @@ override:
 
   УзелТипа посети(ТУказатель n)
   {
-    ткст c = pluralize ? (pointer ? ""[] : "n") : "";
+    ткст с = pluralize ? (pointer ? ""[] : "n") : "";
     pointer = да;
-    put.форматируй("Zeiger{} auf ", c), посетиТ(n.следщ);
+    put.форматируй("Zeiger{} auf ", с), посетиТ(n.следщ);
     return n;
   }
 
@@ -332,10 +332,10 @@ override:
 
   УзелТипа посети(ИнтегральныйТип n)
   {
-    ткст c = pluralize ? "s"[] : "";
+    ткст с = pluralize ? "s"[] : "";
     if (n.лекс == TOK.Проц) // Avoid pluralizing "проц "
-      c = "";
-    put.форматируй("{}{}", n.начало.исхТекст, c);
+      с = "";
+    put.форматируй("{}{}", n.начало.исхТекст, с);
     return n;
   }
 }

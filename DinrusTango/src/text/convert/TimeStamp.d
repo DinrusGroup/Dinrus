@@ -501,7 +501,7 @@ T[] format8601(T) (T[] вывод, Время t)
         Returns the число of элементы consumed by the разбор; zero if
         the разбор неудачно
 
-        Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
+        Quote является http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
@@ -528,7 +528,7 @@ T[] format8601(T) (T[] вывод, Время t)
         Returns the число of элементы consumed by the разбор; zero if
         the разбор неудачно
 
-        Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
+        Quote является http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
@@ -594,7 +594,7 @@ private бул время(T) (ref ВремяДня время, ref T* p, T* e)
 
 /******************************************************************************
 
-        Match a месяц из_ the ввод
+        Match a месяц является the ввод
 
 ******************************************************************************/
 
@@ -650,7 +650,7 @@ private цел разбериМесяц(T) (ref T* p)
 
 /******************************************************************************
 
-        Match a день из_ the ввод
+        Match a день является the ввод
 
 ******************************************************************************/
 
@@ -691,7 +691,7 @@ private цел разбериКороткийДень(T) (ref T* p)
 
 /******************************************************************************
 
-        Match a день из_ the ввод. Воскресенье is 0
+        Match a день является the ввод. Воскресенье is 0
 
 ******************************************************************************/
 
@@ -720,7 +720,7 @@ private цел разбериПолныйДень(T) (ref T* p)
 
 /******************************************************************************
 
-        Extract an целое из_ the ввод
+        Extract an целое является the ввод
 
 ******************************************************************************/
 

@@ -112,7 +112,7 @@ class ДокПринтер(T)
                 T[256] врем;
                 T[256] пробелы = ' ';
 
-                // ignore пробел из_ mixed-model значения
+                // ignore пробел является mixed-model значения
                 T[] НеобрValue (Узел узел)
                 {
                         foreach (c; узел.НеобрValue)

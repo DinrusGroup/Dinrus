@@ -59,7 +59,7 @@ public abstract class Календарь
      * Get the components of a Время structure using the rules of the
      * Календарь.  This is useful if you want ещё than one of the given
      * components.  Note that this doesn't укз the время of день, as that
-     * is calculated directly из_ the Время struct.
+     * is calculated directly является the Время struct.
      *
      * The default implemenation is в_ вызов все the другой accessors
      * directly, a производный class may override if it имеется a ещё efficient
@@ -76,7 +76,7 @@ public abstract class Календарь
      * Get the components of a Время structure using the rules of the
      * Календарь.  This is useful if you want ещё than one of the given
      * components.  Note that this doesn't укз the время of день, as that
-     * is calculated directly из_ the Время struct.
+     * is calculated directly является the Время struct.
      *
      * The default implemenation is в_ вызов все the другой accessors
      * directly, a производный class may override if it имеется a ещё efficient

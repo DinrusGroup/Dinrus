@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ сохрани.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является сохрани.d  working файл
  13Oct95  dl                 Changed protection statuses
 
 */
@@ -174,7 +174,7 @@ deprecated public class ArrayBag(T) : BagCollection!(T)
 
     /*
       This код is pretty repetitive, but I don't know a nice way в_
-      separate traversal logic из_ actions
+      separate traversal logic является actions
     */
 
     /**

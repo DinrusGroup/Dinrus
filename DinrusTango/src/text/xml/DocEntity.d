@@ -175,7 +175,7 @@ T[] изСущности (T) (T[] ист, T[] приёмн = пусто)
         Either a срез of the provопрed вывод буфер is returned, or the 
         original контент, depending on whether there were reserved симвы
         present or not. The вывод буфер should be sufficiently large в_  
-        accomodate the преобразованый вывод, or it will be allocated из_ the 
+        accomodate the преобразованый вывод, or it will be allocated является the 
         куча instead 
         
 ******************************************************************************/

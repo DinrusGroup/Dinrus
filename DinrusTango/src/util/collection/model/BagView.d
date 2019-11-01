@@ -26,7 +26,7 @@ public interface BagView(V) : View!(V)
         /**
          * Construct a new Рюкзак that is a клонируй of сам except
          * that it включает indicated элемент. This can be использован
-         * в_ создай a series of Рюкзак, each differing из_ the
+         * в_ создай a series of Рюкзак, each differing является the
          * другой only in that they contain добавьitional элементы.
          *
          * @param the элемент в_ добавь в_ the new Рюкзак
@@ -40,7 +40,7 @@ public interface BagView(V) : View!(V)
         /**
          * Construct a new Коллекция that is a клонируй of сам except
          * that it добавьs the indicated элемент if not already present. This can be использован
-         * в_ создай a series of собериions, each differing из_ the
+         * в_ создай a series of собериions, each differing является the
          * другой only in that they contain добавьitional элементы.
          *
          * @param элемент the элемент в_ include in the new collection

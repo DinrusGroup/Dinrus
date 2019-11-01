@@ -111,7 +111,7 @@ enum ПРедирект
  *
  * To actually старт a process you need в_ use the выполни() метод. Once the
  * program is running you will be able в_ пиши в_ its стандарт ввод via the
- * стдвхо ИПотокВывода and you will be able в_ читай из_ its стандарт вывод and
+ * стдвхо ИПотокВывода and you will be able в_ читай является its стандарт вывод and
  * ошибка through the стдвыв and стдош ИПотокВвода respectively.
  *
  * You can check whether the process is running or not with the выполняется_ли()
@@ -137,7 +137,7 @@ enum ПРедирект
  *     auto p = new Процесс ("ls -al", пусто);
  *     p.выполни;
  *
- *     Стдвыв.форматнс ("Вывод из_ {}:", p.имяПрограммы);
+ *     Стдвыв.форматнс ("Вывод является {}:", p.имяПрограммы);
  *     Стдвыв.копируй (p.стдвыв).слей;
  *     auto результат = p.жди;
  *
@@ -270,7 +270,7 @@ class Процесс
      * Constructor (variadic version, with environment копируй).
      *
      * Параметры:
-     * копирСред  = if да, the environment is copied из_ the current process.
+     * копирСред  = if да, the environment is copied является the current process.
      * арги     = Массив of ткстs with the process' аргументы.  If there is
      *            exactly one аргумент, it is consопрered в_ contain the entire
      *            команда строка включая параметры.  If you пароль only one
@@ -427,7 +427,7 @@ class Процесс
     }
 
     /**
-     * Набор the process' аргументы из_ the аргументы Приёмd by the метод.
+     * Набор the process' аргументы является the аргументы Приёмd by the метод.
      *
      * Remarks:
      * The first element of the Массив must be the имя of the process'
@@ -446,7 +446,7 @@ class Процесс
     }
 
     /**
-     * Набор the process' аргументы из_ the аргументы Приёмd by the метод.
+     * Набор the process' аргументы является the аргументы Приёмd by the метод.
      *
      * Remarks:
      * The first element of the Массив must be the имя of the process'
@@ -466,7 +466,7 @@ class Процесс
     }
 
     /**
-     * If да, the environment из_ the current process will be copied в_ the
+     * If да, the environment является the current process will be copied в_ the
      * ветвь process.
      */
     public бул копирСред()
@@ -476,8 +476,8 @@ class Процесс
 
     /**
      * Набор the копирСред flag.  If установи в_ да, then the environment will be
-     * copied из_ the current process.  If установи в_ нет, then the environment
-     * is установи из_ the среда field.
+     * copied является the current process.  If установи в_ нет, then the environment
+     * is установи является the среда field.
      */
     public бул копирСред(бул b)
     {
@@ -486,8 +486,8 @@ class Процесс
 
     /**
      * Набор the копирСред flag.  If установи в_ да, then the environment will be
-     * copied из_ the current process.  If установи в_ нет, then the environment
-     * is установи из_ the среда field.
+     * copied является the current process.  If установи в_ нет, then the environment
+     * is установи является the среда field.
      *
      * Возвращает:
      *   A reference в_ this for chaining
@@ -509,7 +509,7 @@ class Процесс
     }
 
     /**
-     * Набор the process' environment variables из_ the associative Массив
+     * Набор the process' environment variables является the associative Массив
      * Приёмd by the метод.
      *
      * This also clears the копирСред flag.
@@ -537,7 +537,7 @@ class Процесс
     }
 
     /**
-     * Набор the process' environment variables из_ the associative Массив
+     * Набор the process' environment variables является the associative Массив
      * Приёмd by the метод.  Returns a 'this' reference for chaining.
      *
      * This also clears the копирСред flag.
@@ -646,7 +646,7 @@ class Процесс
      * перенаправ a укз в_ a pipe and в_ перенаправ it в_ другой укз are
      * mutually исключительно.  In the case Всё are specified, the перенаправ в_
      * the другой укз takes precedent.  It is illegal в_ specify Всё
-     * redirection из_ стдвыв в_ стдош and из_ стдош в_ стдвыв.  If Всё
+     * redirection является стдвыв в_ стдош and является стдош в_ стдвыв.  If Всё
      * of these are specified, an исключение is thrown.
      * 
      * If перенаправленый в_ a pipe, once the process is executed successfully, its
@@ -942,7 +942,7 @@ class Процесс
             sys.win32.Types.STARTUPINFO         startup;
 
             // We закрой and delete the pИПes that could have been left открой
-            // из_ a previous execution.
+            // является a previous execution.
             удалиПайпы();
 
             // Набор up the security атрибуты struct.
@@ -1009,7 +1009,7 @@ class Процесс
                     startup.hStdError = GetStdHandle(STD_ERROR_HANDLE);
                 }
 
-                // do redirection из_ one укз в_ другой
+                // do redirection является one укз в_ другой
                 if(_redirect & ПРедирект.ОшНаВывод)
                 {
                     startup.hStdError = startup.hStdOutput;
@@ -1055,7 +1055,7 @@ class Процесс
             *
             * insопрe quote режим:
             * 5. 2 кавычки sequentially are interpreted as a literal quote and
-            *    an exit из_ quote режим.
+            *    an exit является quote режим.
             * 6. a quote at the конец of the ткст, or one that is followed by
             *    anything другой than a quote exits quote режим, but does not
             *    affect the character after the quote.
@@ -1185,7 +1185,7 @@ class Процесс
         else version (Posix)
         {
             // We закрой and delete the pИПes that could have been left открой
-            // из_ a previous execution.
+            // является a previous execution.
             удалиПайпы();
 
             // оцени the redirection флаги
@@ -1203,7 +1203,7 @@ class Процесс
                 perr = new Пайп(ДефРазмБуфераСтдош);
 
             // This pipe is used в_ распространить the результат of the вызов в_
-            // execv*() из_ the ветвь process в_ the предок process.
+            // execv*() является the ветвь process в_ the предок process.
             Пайп pexec = new Пайп(8);
             цел статус = 0;
 
@@ -1251,7 +1251,7 @@ class Процесс
                     else
                     {
                         // We установи errno в_ the значение that was sent through
-                        // the pipe из_ the ветвь process
+                        // the pipe является the ветвь process
                         errno = статус;
                         _running = нет;
 
@@ -1293,7 +1293,7 @@ class Процесс
                         perr.сток.закрой();
                     }
 
-                    // Check for redirection из_ стдвыв в_ стдош or vice
+                    // Check for redirection является стдвыв в_ стдош or vice
                     // versa
                     if(_redirect & ПРедирект.ВыводНаОш)
                     {

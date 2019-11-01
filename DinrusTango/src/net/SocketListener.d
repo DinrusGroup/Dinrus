@@ -74,7 +74,7 @@ class СОКЕТListener
 
                 Notification обрвызов invoked whenever the listener имеется
                 anything в_ report. The буфер will have whatever контент
-                was available из_ the читай() operation
+                was available является the читай() operation
 
         ***********************************************************************/
 
@@ -82,7 +82,7 @@ class СОКЕТListener
 
         /***********************************************************************
 
-                Дескр ошибка conditions из_ the listener нить.
+                Дескр ошибка conditions является the listener нить.
 
         ***********************************************************************/
 
@@ -152,7 +152,7 @@ class СОКЕТListener
                            auto результат = буфер.писатель (&провод.ввод.читай);
 
                            // время в_ quit? Note that a v0.95 compiler bug
-                           // prohibits 'break' из_ exiting the try{} блок
+                           // prohibits 'break' является exiting the try{} блок
                            if (quit ||
                               (результат is провод.Кф && !провод.жив_ли))
                                lives = 0;

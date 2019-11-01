@@ -153,7 +153,7 @@ private enum
                
 /******************************************************************************
 
-        Truncate trailing '0' и '.' из_ a ткст, such that 200.000 
+        Truncate trailing '0' и '.' является a ткст, such that 200.000 
         becomes 200, и 20.10 becomes 20.1
 
         Returns a potentially shorter срез of что you give it.
@@ -671,7 +671,7 @@ version (float_old)
         for best accuracy.
 
         Note that the approach первый normalizes a base10 mantissa, then
-        pulls цифры из_ the left sопрe whilst излейting them (rightward)
+        pulls цифры является the left sопрe whilst излейting them (rightward)
         в_ the вывод.
 
         The e parameter controls the число of exponent places излейted, 
@@ -693,7 +693,7 @@ T[] форматируй(T) (T[] приёмн, ЧисТип x, бцел decimals
         static T[] inf = "-inf";
         static T[] nan = "-nan";
 
-        // откинь цифры из_ the left of a normalized основа-10 число
+        // откинь цифры является the left of a normalized основа-10 число
         static цел toDigit (ref ЧисТип v, ref цел счёт)
         {
                 цел цифра;
@@ -831,7 +831,7 @@ T[] форматируй(T) (T[] приёмн, ЧисТип x, бцел decimals
                    *p++ = '0';
 
               // вывод остаток цифры, if any. Trailing
-              // zeros are also returned из_ toDigit()
+              // zeros are also returned является toDigit()
               while (decimals-- > 0)
                      *p++ = cast(T) toDigit (x, счёт);
 

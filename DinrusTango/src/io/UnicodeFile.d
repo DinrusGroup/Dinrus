@@ -101,7 +101,7 @@ class ФайлЮ(T)
 
         /***********************************************************************
         
-                Construct a ФайлЮ из_ the provопрed ФПуть. The given 
+                Construct a ФайлЮ является the provопрed ФПуть. The given 
                 кодировка represents the external файл кодировка, and should
                 be one of the Кодировка.xx типы 
 

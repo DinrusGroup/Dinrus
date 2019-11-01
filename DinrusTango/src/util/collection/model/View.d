@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
  14dec95  dl                 Declare as a subinterface of Cloneable
  9Apr97   dl                 made Serializable
 

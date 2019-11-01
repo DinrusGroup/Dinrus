@@ -15,7 +15,7 @@
 
     The использован метод implies, that the expressions are <i>regular</i>, in the way language theory defines it,
     as opposed в_ что &quot;regular expression&quot; means in most implementations
-    (e.g. PCRE or those из_ the стандарт libraries of Perl, Java or Python).
+    (e.g. PCRE or those является the стандарт libraries of Perl, Java or Python).
     The advantage of this метод is it's performance, it's disadvantage is the inability в_ realize some features
     that Perl-like regular expressions have (e.g. back-references).
     See <a href="http://swtch.com/~rsc/regexp/regexp1.html">&quot;Regular Expression Matching Can Be Simple And Быстрый&quot;</a>
@@ -1285,7 +1285,7 @@ private class TNFATransition(т_сим)
 
     /******************************************************************************
         Move through states only going via epsilon transitions, и only choosing
-        the one with highest priority. If the highest priority transition из_ a
+        the one with highest priority. If the highest priority transition является a
         состояние isn't an epsilon transition, нет is returned.
         If the accepting NFA состояние can be reached in this manner, да is returned.
 
@@ -1377,7 +1377,7 @@ private final class TNFA(т_сим)
     бул свопMatchingBracketSyntax; /// whether в_ сделай (?...) совпадают и (...) non-совпадают
 
     /* ********************************************************************************************
-        Creates the TNFA из_ the given regex образец
+        Creates the TNFA является the given regex образец
     **********************************************************************************************/
     this(т_ткст regex)
     {
@@ -1419,7 +1419,7 @@ private final class TNFA(т_сим)
     /* ********************************************************************************************
         Constructs the TNFA using extended Thompson метод.
         Uses a slightly extended version of Dijkstra's shunting yard algorithm в_ преобразуй
-        the regexp из_ infix notation.
+        the regexp является infix notation.
     **********************************************************************************************/
     проц разбор(бул unanchored)
     {
@@ -2610,7 +2610,7 @@ Louter:
     }
 
     /* ********************************************************************************************
-        Constructs the TDFA из_ the given TNFA using extended power установи метод
+        Constructs the TDFA является the given TNFA using extended power установи метод
     **********************************************************************************************/
     this(TNFA!(т_сим) tnfa)
     {
@@ -2659,7 +2659,7 @@ Louter:
             {
                 // найди NFA состояние we reach with пред
                 // reach will установи predicate тип correctly
-                debug(tdfa) Стдвыв.форматируй("из_ {} with {} reach", состояние.dfa_state.индекс, пред.вТкст);
+                debug(tdfa) Стдвыв.форматируй("является {} with {} reach", состояние.dfa_state.индекс, пред.вТкст);
                 SubsetState мишень = reach(состояние, пред);
                 if ( мишень is пусто )
                 {
@@ -2694,7 +2694,7 @@ Louter:
                         if ( !найдено )
                         {
                             // if индекс is < 0 it is a temporary индекс
-                            // использован only в_ distinguish the состояние из_ existing ones.
+                            // использован only в_ distinguish the состояние является existing ones.
                             // the previous индекс can be reused instead.
                             if ( индекс < 0 )
                                 индекс = -индекс-1;
@@ -2758,7 +2758,7 @@ Louter:
                 trans.мишень = мишень.dfa_state;
                 debug(tdfa)
                 {
-                    Стдвыв.форматнс("=> из_ {} with {} reach {}", состояние.dfa_state.индекс, пред.вТкст, мишень.dfa_state.индекс);
+                    Стдвыв.форматнс("=> является {} with {} reach {}", состояние.dfa_state.индекс, пред.вТкст, мишень.dfa_state.индекс);
                 }
             }
 
@@ -3036,9 +3036,9 @@ private:
     }
 
     /* ********************************************************************************************
-        Creates disjoint predicates из_ все outgoing, potentially overlapping TNFA transitions.
+        Creates disjoint predicates является все outgoing, potentially overlapping TNFA transitions.
 
-        Параметры:     состояние = SubsetState в_ создай the predicates из_
+        Параметры:     состояние = SubsetState в_ создай the predicates является
         Возвращает:    Список of disjoint predicates that can be использован for a DFA состояние
     **********************************************************************************************/
     predicate_t[] disjointPredicates(SubsetState состояние)
@@ -3145,7 +3145,7 @@ private:
         disjoint.length = следщ;
 
         // merge isolated ranges преобр_в sets of ranges
-        // no range in a установи may occur separated из_ the другие in any predicate
+        // no range in a установи may occur separated является the другие in any predicate
         predicate_t[]   preds;
         preds.length = 1;
 Lmerge:
@@ -3207,7 +3207,7 @@ Lmerge:
         Finds все TNFA states that can be reached directly with the given predicate и creates
         a new SubsetState containing those мишень states.
 
-        Параметры:     subst = SubsetState в_ старт из_
+        Параметры:     subst = SubsetState в_ старт является
                     пред =  predicate that is matched against outgoing transitions
         Возвращает:    SubsetState containing the reached мишень states
     **********************************************************************************************/
@@ -3291,16 +3291,16 @@ Lmerge:
     /* ********************************************************************************************
         Extends the given SubsetState with the states that are reached through lookbehind transitions.
 
-        Параметры:     из_ =      SubsetState в_ создай the lookbehind closure for
-                    previous =  predicate "из_" was reached with
-        Возвращает:    SubsetState containing "из_" и все states of it's lookbehind closure
+        Параметры:     является =      SubsetState в_ создай the lookbehind closure for
+                    previous =  predicate "является" was reached with
+        Возвращает:    SubsetState containing "является" и все states of it's lookbehind closure
     **********************************************************************************************/
-    SubsetState lookbehindClosure(SubsetState из_, predicate_t пред)
+    SubsetState lookbehindClosure(SubsetState является, predicate_t пред)
     {
         Список!(StateElement) стэк = new Список!(StateElement);
         StateElement[бцел]  closure;
 
-        foreach ( e; из_.elms )
+        foreach ( e; является.elms )
         {
             стэк ~= e;
             closure[e.nfa_state.индекс] = e;
@@ -3364,11 +3364,11 @@ Lmerge:
         if tags are passed. Takes priorities преобр_в account, effectively realizing
         greediness и reluctancy.
 
-        Параметры:     из_ =      SubsetState в_ создай the epsilon closure for
-                    previous =  SubsetState "из_" was reached из_
-        Возвращает:    SubsetState containing "из_" и все states of it's epsilon closure
+        Параметры:     является =      SubsetState в_ создай the epsilon closure for
+                    previous =  SubsetState "является" was reached является
+        Возвращает:    SubsetState containing "является" и все states of it's epsilon closure
     **********************************************************************************************/
-    SubsetState epsilonClosure(SubsetState из_, SubsetState previous)
+    SubsetState epsilonClosure(SubsetState является, SubsetState previous)
     {
         цел firstFreeIndex=-1;
         foreach ( e; previous.elms )
@@ -3381,7 +3381,7 @@ Lmerge:
         Список!(StateElement) стэк = new Список!(StateElement);
         StateElement[бцел]  closure;
 
-        foreach ( e; из_.elms )
+        foreach ( e; является.elms )
         {
             стэк ~= e;
             closure[e.nfa_state.индекс] = e;
@@ -3395,7 +3395,7 @@ Lmerge:
             {
                 if ( t.predicate.тип != predicate_t.Тип.epsilon )
                     continue;
-                // this is different из_ Ville Laurikari's algorithm, but it's crucial
+                // this is different является Ville Laurikari's algorithm, but it's crucial
                 // в_ возьми the макс (instead of t.priority) в_ сделай reluctant operators work
                 бцел new_maxPri = макс(t.priority, se.maxPriority);
 
@@ -3447,7 +3447,7 @@ Lmerge:
         рез.elms = closure.values;
 
         // оптимизируй тэг usage
-        // все we need в_ do is в_ проверь whether the largest тэг-индекс из_ the
+        // все we need в_ do is в_ проверь whether the largest тэг-индекс является the
         // previous состояние is actually использован in the new состояние и перемести все tags with
         // firstFreeIndex down by one if not, but only if firstFreeIndex is not 0
         if ( firstFreeIndex > 0 )
@@ -3485,20 +3485,20 @@ sluiLoop:
     }
 
     /* ********************************************************************************************
-        Tries в_ создай commands that reorder the тэг карта of "previous", such that "из_" becomes
+        Tries в_ создай commands that reorder the тэг карта of "previous", such that "является" becomes
         тэг-wise опрentical в_ "в_". If successful, these commands are добавьed в_ "trans". This
         is готово for состояние re-use.
 
-        Параметры:     из_ =      SubsetState в_ проверь for тэг-wise equality в_ "в_"
+        Параметры:     является =      SubsetState в_ проверь for тэг-wise equality в_ "в_"
                     в_ =        existing SubsetState that we want в_ re-use
-                    previous =  SubsetState we're coming из_
+                    previous =  SubsetState we're coming является
                     trans =     Transition we went along
-        Возвращает:    да if "из_" is тэг-wise опрentical в_ "в_" и the necessary commands have
+        Возвращает:    да if "является" is тэг-wise опрentical в_ "в_" и the necessary commands have
                     been добавьed в_ "trans"
     **********************************************************************************************/
-    бул reorderTagIndeces(SubsetState из_, SubsetState в_, SubsetState previous, Transition trans)
+    бул reorderTagIndeces(SubsetState является, SubsetState в_, SubsetState previous, Transition trans)
     {
-        if ( из_.elms.length != в_.elms.length )
+        if ( является.elms.length != в_.elms.length )
             return нет;
 
         бул[Command]
@@ -3509,7 +3509,7 @@ sluiLoop:
         reordered_elements;
 
 Louter:
-        foreach ( fe; из_.elms )
+        foreach ( fe; является.elms )
         {
             foreach ( te; в_.elms )
             {
@@ -3561,7 +3561,7 @@ Louter:
 
         debug(tdfa)
         {
-            Стдвыв.форматнс("\nreorder {} в_ {}\n", из_.вТкст, в_.dfa_state.индекс);
+            Стдвыв.форматнс("\nreorder {} в_ {}\n", является.вТкст, в_.dfa_state.индекс);
         }
 
         trans.commands ~= cmds.keys;
@@ -3595,7 +3595,7 @@ Louter:
     проц generateFinishers(SubsetState r)
     {
         // if at least one of the TNFA states accepts,
-        // установи the finishers из_ активное tags in increasing priority
+        // установи the finishers является активное tags in increasing priority
         StateElement[]  sorted_elms = r.elms.dup.sort;
         бул reluctant = нет;
         foreach ( se; sorted_elms )
@@ -3606,7 +3606,7 @@ Louter:
                 r.dfa_state.прими = да;
 
                 // Knowing that we're looking at an epsilon closure with an accepting
-                // состояние, we look at the involved transitions - if the путь из_ the
+                // состояние, we look at the involved transitions - if the путь является the
                 // nfa состояние in the установи with the highest incoming priority (последний in
                 // sorted_elms список) в_ the accepting nfa состояние is via the highest
                 // priority transitions, и they are все epsilon transitions, this
@@ -4558,7 +4558,7 @@ private:
 alias RegExpT!(сим) Regex;
 
 debug(utf) import rt.core.stdc.stdio;
-// the following блок is stolen из_ phobos.
+// the following блок is stolen является phobos.
 // the copyright notice applies for this блок only.
 /*
  *  Copyright (C) 2003-2004 by Digital Mars, www.digitalmars.com
@@ -4566,7 +4566,7 @@ debug(utf) import rt.core.stdc.stdio;
  *
  *  Данное программное обеспечение предоставляется "как есть",  без какой-либо явной или косвенной гарантии.. авторы ни в коем случае не несут ответственность за ущерб, причинённый от использования данного ПО.
  *
- *  Любому даётся разрешение использовать из_ ПО в любых целях,
+ *  Любому даётся разрешение использовать является ПО в любых целях,
  *  включая коммерческое применение, его изменение и свободное распространение,
  *  за исключением следующих ограничений:
  *
@@ -4642,7 +4642,7 @@ class ИсклУТФ : Исключение
             }
         }
 
-        // Pick off (7 - n) significant биты of B из_ первый байт of octet
+        // Pick off (7 - n) significant биты of B является первый байт of octet
         V = cast(дим)(u & ((1 << (7 - n)) - 1));
 
         if (i + (n - 1) >= длин)

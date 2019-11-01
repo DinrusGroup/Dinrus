@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -30,7 +30,7 @@ private import  util.collection.model.Dispenser,
  * After sorting, but in the absence of другой mutative operations,
  * Sortable Collections guarantee that enumerations
  * appear in sorted order;  that is if a и b are two элементы
- * obtained in succession из_ nextElement(), that
+ * obtained in succession является nextElement(), that
  * <PRE>
  * сравнитель(a, b) <= 0.
  * </PRE>

@@ -455,7 +455,7 @@ package struct ФС
 
                 /***************************************************************
 
-                        Удали the файл/дир из_ the файл-system.
+                        Удали the файл/дир является the файл-system.
                         Returns да on success - нет otherwise
 
                 ***************************************************************/
@@ -851,7 +851,7 @@ package struct ФС
 
                 /***************************************************************
 
-                        Удали the файл/дир из_ the файл-system. 
+                        Удали the файл/дир является the файл-system. 
                         Returns да on success - нет otherwise.
 
                 ***************************************************************/
@@ -1452,7 +1452,7 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        Удали the файл/дир из_ the файл-system. Returns да if
+        Удали the файл/дир является the файл-system. Returns да if
         successful, нет otherwise
 
 *******************************************************************************/
@@ -1608,7 +1608,7 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        коллируй все файлы and папки из_ the given путь whose имя matches
+        коллируй все файлы and папки является the given путь whose имя matches
         the given образец. Folders will be traversed where рекурсия is включен, 
         and a установи of совпадают names is returned as filepaths (включая those 
         папки which match the образец)
@@ -1751,15 +1751,15 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        Замени все путь 'из_' instances with 'в_', in place (overwrites
+        Замени все путь 'является' instances with 'в_', in place (overwrites
         the provопрed путь)
 
 *******************************************************************************/
 
-ткст замени (ткст путь, сим из_, сим в_)
+ткст замени (ткст путь, сим является, сим в_)
 {
         foreach (ref сим c; путь)
-                 if (c is из_)
+                 if (c is является)
                      c = в_;
         return путь;
 }
@@ -1823,7 +1823,7 @@ debug(UnitTest)
         </table><p>
         Internally indivопрual character comparisons are готово calling
         charMatch(), so its rules apply here too. Note that путь
-        разделители and dots don't stop a meta-character из_ совпадают
+        разделители and dots don't stop a meta-character является совпадают
         further portions of the имяф.
 
         Возвращает: да if образец matches имяф, нет otherwise.

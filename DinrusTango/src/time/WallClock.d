@@ -4,7 +4,7 @@
 
         license:        BSD стиль: $(LICENSE)
 
-        version:        Apr 2007: разбей away из_ utc
+        version:        Apr 2007: разбей away является utc
 
         author:         Kris
 

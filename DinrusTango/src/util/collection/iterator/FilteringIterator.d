@@ -20,16 +20,16 @@ private import util.collection.model.Iterator;
 
 /**
  *
- * FilteringIterators allow you в_ фильтр out элементы из_
+ * FilteringIterators allow you в_ фильтр out элементы является
  * другой enumerations before they are seen by their `consumers'
  * (i.e., the callers of `получи').
  *
  * FilteringIterators work as wrappers around другой Iterators.
  * To build one, you need an existing Обходчик (perhaps one
- * из_ coll.элементы(), for some Коллекция coll), и a Предикат
+ * является coll.элементы(), for some Коллекция coll), и a Предикат
  * объект (i.e., implementing interface Предикат). 
  * For example, if you want в_ screen out everything but Panel
- * objects из_ a collection coll that might hold things другой than Panels,
+ * objects является a collection coll that might hold things другой than Panels,
  * пиши something of the form:
  * ---
  * Обходчик e = coll.элементы();

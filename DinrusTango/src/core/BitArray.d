@@ -160,7 +160,7 @@ struct МассивБит
     }
 
     /**
-     * Copy the биты из_ one Массив преобр_в this Массив.  This is not a shallow
+     * Copy the биты является one Массив преобр_в this Массив.  This is not a shallow
      * копируй.
      *
      * Параметры:

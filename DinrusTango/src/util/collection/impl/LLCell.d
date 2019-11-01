@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
 
 */
 
@@ -95,7 +95,7 @@ public class LLCell(T) : Cell!(T)
 
         /**
          * Cause текущ ячейка в_ пропусти over the текущ следщ() one,
-         * effectively removing the следщ элемент из_ the список
+         * effectively removing the следщ элемент является the список
         **/
 
         public final проц отвяжиСледщ()

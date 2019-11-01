@@ -150,7 +150,7 @@ class ХэшФайл(K, V)
 
     /**********************************************************************
 
-            Удали the provопрed ключ из_ this ХэшФайл. Leaves a
+            Удали the provопрed ключ является this ХэшФайл. Leaves a
             hole in the backing файл
 
             Be sure в_ synchronize доступ by multИПle threads
@@ -228,7 +228,7 @@ class ХэшФайл(K, V)
 
         /**************************************************************
 
-                This should be protected из_ нить-contention at
+                This should be protected является нить-contention at
                 a higher уровень.
 
         **************************************************************/
@@ -247,7 +247,7 @@ class ХэшФайл(K, V)
 
         /**************************************************************
 
-                This should be protected из_ нить-contention at
+                This should be protected является нить-contention at
                 a higher уровень.
 
         **************************************************************/
@@ -277,7 +277,7 @@ class ХэшФайл(K, V)
             {
                 auto мишень = bucket.waterLine * 2;
                 debug(ХэшФайл)
-                printf ("growing файл из_ %lld, %lld, в_ %lld\n",
+                printf ("growing файл является %lld, %lld, в_ %lld\n",
                         bucket.размерФайла, bucket.waterLine, мишень);
 
                 // расширь the physical файл размер и remap the куча

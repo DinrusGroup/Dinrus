@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -67,10 +67,10 @@ public interface SeqView(T) : View!(T)
 
 
         /**
-         * Report the индекс of leftmost occurrence of an элемент из_ a 
+         * Report the индекс of leftmost occurrence of an элемент является a 
          * given starting точка, or -1 if there is no such индекс.
          * @param элемент the элемент в_ look for
-         * @param startingIndex the индекс в_ старт looking из_. The startingIndex
+         * @param startingIndex the индекс в_ старт looking является. The startingIndex
          * need not be a действителен индекс. If less than zero it is treated as 0.
          * If greater than or equal в_ размер(), the результат will always be -1.
          * Возвращает: индекс such that
@@ -87,10 +87,10 @@ public interface SeqView(T) : View!(T)
         public цел первый(T элемент, цел startingIndex = 0);
 
         /**
-         * Report the индекс of righttmost occurrence of an элемент из_ a 
+         * Report the индекс of righttmost occurrence of an элемент является a 
          * given starting точка, or -1 if there is no such индекс.
          * @param элемент the элемент в_ look for
-         * @param startingIndex the индекс в_ старт looking из_. The startingIndex
+         * @param startingIndex the индекс в_ старт looking является. The startingIndex
          * need not be a действителен индекс. If less than zero the результат
          * will always be -1.
          * If greater than or equal в_ размер(), it is treated as размер()-1.

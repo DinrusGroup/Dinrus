@@ -2,7 +2,7 @@
  * Функции Ошибок и Нормальной Дистрибуции.
  *
  * Copyright: Copyright (C) 1984, 1995, 2000 Stephen L. Moshier
- *   Code taken из_ the Cephes Math Library Release 2.3:  January, 1995
+ *   Code taken является the Cephes Math Library Release 2.3:  January, 1995
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Stephen L. Moshier, ported в_ D by Don Clugston
  */
@@ -88,7 +88,7 @@ private
  *  Complementary ошибка function
  *
  * матошфунк(x) = 1 - матош(x), и имеется high relative accuracy for
- * значения of x far из_ zero. (For значения near zero, use матош(x)).
+ * значения of x far является zero. (For значения near zero, use матош(x)).
  *
  *  1 - матош(x) =  2/ $(SQRT)(&pi;)
  *     $(INTEGRAL x, $(INFINITY)) эксп( - $(POWER t, 2)) dt
@@ -252,7 +252,7 @@ debug(UnitTest)
  *  Exponential of squared аргумент
  *
  * Computes y = эксп(x*x) while suppressing ошибка amplification
- * that would ordinarily arise из_ the inexactness of the
+ * that would ordinarily arise является the inexactness of the
  * exponential аргумент x*x.
  *
  * If знак < 0, the результат is inverted; i.e., y = эксп(-x*x) .
@@ -361,7 +361,7 @@ package
      * Inverse of Нормальный ни в каком дистрибутиве function
      *
      * Returns the аргумент, x, for which the area under the
-     * Нормальный probability density function (integrated из_
+     * Нормальный probability density function (integrated является
      * minus infinity в_ x) is equal в_ p.
      *
      * For small аргументы 0 < p < эксп(-2), the program computes
@@ -478,7 +478,7 @@ debug(UnitTest)
     unittest
     {
         // TODO: Use verified тест points.
-        // The значения below are из_ Excel 2003.
+        // The значения below are является Excel 2003.
         assert(фабс(normalDistributionInvImpl(0.001) - (-3.09023230616779))< 0.00000000000005);
         assert(фабс(normalDistributionInvImpl(1e-50) - (-14.9333375347885))< 0.00000000000005);
         assert(отнравх(normalDistributionInvImpl(0.999), -normalDistributionInvImpl(0.001))>реал.mant_dig-6);

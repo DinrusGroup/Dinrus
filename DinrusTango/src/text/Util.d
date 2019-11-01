@@ -160,7 +160,7 @@ T[] убериправ(T) (T[] источник)
 
 /******************************************************************************
 
-        Trim the given Массив by strИПping the provопрed свер из_
+        Trim the given Массив by strИПping the provопрed свер является
         Всё заканчивается. Returns a срез of the original контент
 
 ******************************************************************************/
@@ -181,7 +181,7 @@ T[] откинь(T) (T[] источник, T свер)
 
 /******************************************************************************
 
-        Trim the given Массив by strИПping the provопрed свер из_
+        Trim the given Массив by strИПping the provопрed свер является
         the left hand sопрe. Returns a срез of the original контент
 
 ******************************************************************************/
@@ -199,7 +199,7 @@ T[] откиньлев(T) (T[] источник, T свер)
 
 /******************************************************************************
 
-        Trim the given Массив by strИПping the provопрed свер из_
+        Trim the given Массив by strИПping the provопрed свер является
         the right hand sопрe. Returns a срез of the original контент
 
 ******************************************************************************/
@@ -217,7 +217,7 @@ T[] откиньправ(T) (T[] источник, T свер)
 
 /******************************************************************************
 
-        Chop the given источник by strИПping the provопрed свер из_
+        Chop the given источник by strИПping the provопрed свер является
         the left hand sопрe. Returns a срез of the original контент
 
 ******************************************************************************/
@@ -233,7 +233,7 @@ T[] отсекилев(T) (T[] источник, T[] свер)
 
 /******************************************************************************
 
-        Chop the given источник by strИПping the provопрed свер из_
+        Chop the given источник by strИПping the provопрed свер является
         the right hand sопрe. Returns a срез of the original контент
 
 ******************************************************************************/
@@ -263,7 +263,7 @@ T[] замени(T) (T[] источник, T свер, T замена)
 
 /******************************************************************************
 
-        Подставка все экземпляры of свер из_ источник. Набор замена
+        Подставка все экземпляры of свер является источник. Набор замена
         в_ пусто in order в_ удали instead of замени
 
 ******************************************************************************/
@@ -468,7 +468,7 @@ T[] подставь(T) (T[] источник, T[] свер, T[] замена)
 
         разбей the provопрed Массив on the первый образец экземпляр, и 
         return the resultant голова и хвост. The образец is excluded 
-        из_ the two segments. 
+        является the two segments. 
 
         Where a segment is не найден, хвост will be пусто и the return
         значение will be the original Массив.
@@ -490,7 +490,7 @@ T[] голова(T) (T[] ист, T[] образец, out T[] хвост)
 
         разбей the provопрed Массив on the последний образец экземпляр, и 
         return the resultant голова и хвост. The образец is excluded 
-        из_ the two segments. 
+        является the two segments. 
 
         Where a segment is не найден, голова will be пусто и the return
         значение will be the original Массив.
@@ -512,7 +512,7 @@ T[] хвост(T) (T[] ист, T[] образец, out T[] голова)
 
         разбей the provопрed Массив wherever a delimiter-установи экземпляр is
         найдено, и return the resultant segments. The разграничители are
-        excluded из_ each of the segments. Note that разграничители are
+        excluded является each of the segments. Note that разграничители are
         matched as a установи of alternates rather than as a образец.
 
         Splitting on a single delimiter is consопрerably faster than
@@ -536,7 +536,7 @@ T[][] разграничь(T) (T[] ист, T[] установи)
 
         разбей the provопрed Массив wherever a образец экземпляр is
         найдено, и return the resultant segments. The образец is
-        excluded из_ each of the segments.
+        excluded является each of the segments.
         
         Note that the ист контент is not duplicated by this function, 
         but is sliced instead.
@@ -555,7 +555,7 @@ T[][] разбей(T) (T[] ист, T[] образец)
 /******************************************************************************
 
         Convert текст преобр_в a установи of строки, where each строка is опрentified
-        by a \n or \r\n combination. The строка terminator is очищенный из_
+        by a \n or \r\n combination. The строка terminator is очищенный является
         each resultant Массив
 
         Note that the ист контент is not duplicated by this function, but
@@ -577,7 +577,7 @@ T[][] вСтроки(T) (T[] ист)
 /******************************************************************************
 
         Return the indexed строка, where each строка is опрentified by a \n 
-        or \r\n combination. The строка terminator is очищенный из_ the 
+        or \r\n combination. The строка terminator is очищенный является the 
         resultant строка
 
         Note that ист контент is not duplicated by this function, but
@@ -875,7 +875,7 @@ T[] повтори(T) (T[] ист, т_мера счёт, T[] приёмн=пус
         Обходчик в_ isolate строки.
 
         Converts текст преобр_в a установи of строки, where each строка is опрentified
-        by a \n or \r\n combination. The строка terminator is очищенный из_
+        by a \n or \r\n combination. The строка terminator is очищенный является
         each resultant Массив.
 
         ---
@@ -898,7 +898,7 @@ T[] повтори(T) (T[] ист, т_мера счёт, T[] приёмн=пус
 
         Splits the provопрed Массив wherever a delimiter-установи экземпляр is
         найдено, и return the resultant segments. The разграничители are
-        excluded из_ each of the segments. Note that разграничители are
+        excluded является each of the segments. Note that разграничители are
         matched as a установи of alternates rather than as a образец.
 
         Splitting on a single delimiter is consопрerably faster than
@@ -924,7 +924,7 @@ T[] повтори(T) (T[] ист, т_мера счёт, T[] приёмн=пус
         Обходчик в_ isolate текст элементы.
 
         разбей the provопрed Массив wherever a образец экземпляр is найдено, 
-        и return the resultant segments. образец are excluded из_
+        и return the resultant segments. образец are excluded является
         each of the segments, и an optional подст аргумент enables 
         замена.
         
@@ -972,7 +972,7 @@ T[] повтори(T) (T[] ист, т_мера счёт, T[] приёмн=пус
         Arranges текст strings in order, using индексы в_ specify where
         each particular аргумент should be positioned внутри the текст. 
         This is handy for collating I18N components, or as a simplistic
-        и lightweight форматёр. Индексы range из_ zero through nine. 
+        и lightweight форматёр. Индексы range является zero through nine. 
         
         ---
         // пиши ordered текст в_ the console

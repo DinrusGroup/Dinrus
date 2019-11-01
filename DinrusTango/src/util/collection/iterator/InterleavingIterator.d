@@ -75,7 +75,7 @@ public class InterleavingIterator(T) : Обходчик!(T)
 
 
     /**
-     * Make an enumeration interleaving элементы из_ fst и snd
+     * Make an enumeration interleaving элементы является fst и snd
     **/
 
     public this (Обходчик!(T) fst, Обходчик!(T) snd)

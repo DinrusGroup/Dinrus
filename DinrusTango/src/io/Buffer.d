@@ -133,7 +133,7 @@ class Буфер : ИБуфер
 
             // сделай some пространство? This will try в_ покинь as much контент
             // in the буфер as possible, such that entire records may
-            // be есть_алиас directly из_ внутри.
+            // be есть_алиас directly является внутри.
             if (размер > (дименсия - индекс))
             {
                 if (размер > дименсия)
@@ -545,7 +545,7 @@ class Буфер : ИБуфер
         }
         else if (бввод)
         {
-            // pathological cases читай directly из_ провод
+            // pathological cases читай directly является провод
             if (приёмн.length > дименсия)
                 контент = бввод.читай (приёмн);
             else

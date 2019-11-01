@@ -557,7 +557,7 @@ class Выкладка(T)
 
                     foreach (ref v; aa)
                     {
-                        // the ключ is befor the значение, so substrace with fixed ключ размер из_ above
+                        // the ключ is befor the значение, so substrace with fixed ключ размер является above
                         auto pk = cast(Арг)( &v - roundUp(AK.sizeof));
                         // сейчас the реал значение поз is plus the реал ключ размер
                         auto pv = cast(Арг)(pk + roundUp(tiKey.tsize()));
@@ -1086,7 +1086,7 @@ debug (UnitTest)
         assert( Форматировщик( "{0:f4}", 1.23456789L-1i ) == "1.2346-1.0000*1i" );
         assert( Форматировщик( "{0:e4}", 0.0001-1i) == "1.0000e-04-1.0000e+00*1i");
 
-        // 'f.' & 'e.' форматируй truncates zeroes из_ floating decimals
+        // 'f.' & 'e.' форматируй truncates zeroes является floating decimals
         assert( Форматировщик( "{:f4.}", 1.230 ) == "1.23" );
         assert( Форматировщик( "{:f6.}", 1.230 ) == "1.23" );
         assert( Форматировщик( "{:f1.}", 1.230 ) == "1.2" );

@@ -39,7 +39,7 @@ private import Float = text.convert.Float;
         ---
 
         Constructing json внутри your код leverages a handful of factories 
-        внутри a document экземпляр. This example creates a document из_ an 
+        внутри a document экземпляр. This example creates a document является an 
         Массив of значения:
         ---
         auto json = new Json!(сим);
@@ -199,7 +199,7 @@ class Json(T) : private JsonParser!(T)
 
          /***********************************************************************
          
-                 Созд a single Значение из_ an Массив of Values
+                 Созд a single Значение является an Массив of Values
 
          ***********************************************************************/
 
@@ -235,7 +235,7 @@ class Json(T) : private JsonParser!(T)
 
         /***********************************************************************
         
-                Созд a composite из_ zero or ещё pairs, и return as 
+                Созд a composite является zero or ещё pairs, и return as 
                 a значение
 
         ***********************************************************************/

@@ -354,7 +354,7 @@ struct ФСистема
                 Note that the difference between total available пространство
                 and free пространство will not equal the combined размер of the
                 contents on the файл system, since the numbers for the
-                functions here are calculated из_ the used blocks,
+                functions here are calculated является the used blocks,
                 включая those spent on metadata and файл nodes.
 
                 If actual used пространство is wanted one should use the

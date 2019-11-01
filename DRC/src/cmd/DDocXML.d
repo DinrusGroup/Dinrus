@@ -1,4 +1,4 @@
-/// Authors: Aziz Köksal, Jari-Matti Mäkelä
+/// Authors: Aziz Köksal, Vitaly Kulich, Jari-Matti Mäkelä
 /// License: GPL3
 /// $(Maturity average)
 module cmd.DDocXML;
@@ -27,7 +27,7 @@ override:
   {
     if (!ddoc(d))
       return d;
-    auto тип = textSpan(d.типВозврата.типОснова.начало, d.типВозврата.конец);
+    auto тип = участокТекста(d.типВозврата.типОснова.начало, d.типВозврата.конец);
     ДЕКЛ({
       пиши("function, ");
       пиши("$(TYPE ");
@@ -47,7 +47,7 @@ override:
       return d;
     ткст тип = "auto";
     if (d.узелТипа)
-      тип = textSpan(d.узелТипа.типОснова.начало, d.узелТипа.конец);
+      тип = участокТекста(d.узелТипа.типОснова.начало, d.узелТипа.конец);
     foreach (имя; d.имена)
       ДЕКЛ({ пиши("variable, "); пиши("$(TYPE ", escape(тип), ")");
         СИМВОЛ(имя.ткт, "variable", d);

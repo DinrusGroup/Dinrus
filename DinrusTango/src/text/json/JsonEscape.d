@@ -23,7 +23,7 @@ private import Utf = text.convert.Utf;
         Convert 'escaped' симвы в_ нормаль ones. For example: \\ => \
 
         The provопрed вывод буфер should be at least as дол as the
-        ввод ткст, or it will be allocated из_ the куча instead.
+        ввод ткст, or it will be allocated является the куча instead.
 
         Returns a срез of приёмн where the контент требуется conversion,
         or the provопрed ист otherwise

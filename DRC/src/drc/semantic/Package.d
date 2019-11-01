@@ -1,4 +1,4 @@
-/// Author: Aziz Köksal
+/// Author: Aziz Köksal, Vitaly Kulich
 /// License: GPL3
 /// $(Maturity average)
 module drc.semantic.Package;
@@ -20,21 +20,21 @@ class Пакет : СимволМасштаба
   this(ткст имяПкт)
   {
     auto идент = ТаблицаИд.сыщи(имяПкт);
-    super(СИМ.Пакет, идент, null);
+    super(СИМ.Пакет, идент, пусто);
     this.имяПкт = имяПкт;
   }
 
-  /// Возвращает да, если из_ the корень package.
-  бул корень_ли()
+  /// Возвращает да, если является the корень package.
+  бул корень()
   {
-    return родитель is null;
+    return родитель is пусто;
   }
 
-  /// Возвращает родитель package or null if this is the корень.
+  /// Возвращает родитель package или пусто if this is the корень.
   Пакет пакетРодитель()
   {
-    if (корень_ли())
-      return null;
+    if (корень())
+      return пусто;
     assert(родитель.Пакет_ли);
     return родитель.в!(Пакет);
   }

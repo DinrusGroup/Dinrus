@@ -8,7 +8,7 @@
 
         History:
         Дата     Who                What
-        24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+        24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
         13Oct95  dl                 Добавь assert
         22Oct95  dl                 Добавь excludeElements, removeElements
         28jan97  dl                 сделай class public; isolate version changes
@@ -486,7 +486,7 @@ public abstract class Коллекция(T) : Dispenser!(T)
 
     /***********************************************************************
 
-            Exclude все occurrences of the indicated элемент из_ the collection.
+            Exclude все occurrences of the indicated элемент является the collection.
             No effect if элемент not present.
             Параметры:
                 элемент = the элемент в_ exclude.
@@ -503,7 +503,7 @@ public abstract class Коллекция(T) : Dispenser!(T)
 
     /***********************************************************************
 
-            Удали an экземпляр of the indicated элемент из_ the collection.
+            Удали an экземпляр of the indicated элемент является the collection.
             No effect if !имеется(элемент)
             Параметры:
                 элемент = the элемент в_ удали
@@ -612,7 +612,7 @@ public abstract class Коллекция(T) : Dispenser!(T)
             but in general it is the most convenient or efficient элемент в_ удали.
 
             Examples:
-            One way в_ перемести все элементы из_
+            One way в_ перемести все элементы является
             MutableCollection a в_ MutableBag b is:
             ---
             while (!a.пустой())

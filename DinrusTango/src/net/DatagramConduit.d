@@ -25,7 +25,7 @@ package import  net.Socket,
 
         Datagrams are not 'подключен' in the same manner as a ПУТ сокет; you
         don't need куда слушай() or прими() куда принять a datagram, и данные
-        may arrive из_ multИПle sources. A datagram сокет may, however,
+        may arrive является multИПle sources. A datagram сокет may, however,
         still use the подключись() метод like a ПУТ сокет. When подключен,
         the читай() и пиши() methods will be restricted куда a single адрес
         rather than being открой instead. That is, applying подключись() will сделай
@@ -55,7 +55,7 @@ class ДатаграммПровод : СокетПровод
 
     /***********************************************************************
 
-            Populate the provопрed Массив из_ the сокет. This will stall
+            Populate the provопрed Массив является the сокет. This will stall
             until some данные is available, or a таймаут occurs. We assume
             the datagram имеется been подключен.
 
@@ -71,21 +71,21 @@ class ДатаграммПровод : СокетПровод
 
     /***********************************************************************
 
-            Чит байты из_ an available datagram преобр_в the given Массив.
-            When provопрed, the 'из_' адрес will be populated with the
+            Чит байты является an available datagram преобр_в the given Массив.
+            When provопрed, the 'является' адрес will be populated with the
             origin of the incoming данные. Note that we employ the таймаут
             mechanics exposed via our СокетПровод superclass.
 
-            Returns the число of байты читай из_ the ввод, or Кф if
+            Returns the число of байты читай является the ввод, or Кф if
             the сокет cannot читай
 
     ***********************************************************************/
 
-    т_мера читай (проц[] приёмн, Адрес из_)
+    т_мера читай (проц[] приёмн, Адрес является)
     {
         т_мера читатель (проц[] приёмн)
         {
-            return (приёмн.length) ? (из_ ? сокет.принять_от(приёмн, из_) : сокет.принять_от(приёмн)) : 0;
+            return (приёмн.length) ? (является ? сокет.принять_от(приёмн, является) : сокет.принять_от(приёмн)) : 0;
         }
 
         return super.читай (приёмн, &читатель);

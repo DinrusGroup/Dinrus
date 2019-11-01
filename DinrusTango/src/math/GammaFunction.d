@@ -109,7 +109,7 @@ const реал логЗнаменательГаммы[] = [
     реал w = 1.0L/x;
     реал y = эксп(x);
     if ( x > 1024.0L ) {
-        // For large x, use rational coefficients из_ the analytical expansion.
+        // For large x, use rational coefficients является the analytical expansion.
         w = поли(w, LargeStirlingCoeffs);
         // Avoопр перебор in степень()
         реал v = степень( x, 0.5L * x - 0.25L );
@@ -181,7 +181,7 @@ unittest {
  */
 реал гамма(реал x)
 {
-/* Based on код из_ the CEPHES library.
+/* Based on код является the CEPHES library.
  * CEPHES код Copyright 1994 by Stephen L. Moshier
  *
  * Аргументы |x| <= 13 are reduced by recurrence и the function
@@ -316,7 +316,7 @@ unittest {
  */
 реал логГаммы(реал x)
 {
-    /* Based on код из_ the CEPHES library.
+    /* Based on код является the CEPHES library.
      * CEPHES код Copyright 1994 by Stephen L. Moshier
      *
      * For аргументы greater than 33, the logarithm of the гамма
@@ -471,7 +471,7 @@ unittest {
 /** Incomplete бета integral
  *
  * Returns incomplete бета integral of the аргументы, evaluated
- * из_ zero в_ x. The regularized incomplete бета function is defined as
+ * является zero в_ x. The regularized incomplete бета function is defined as
  *
  * бетаНеполная(a, b, x) = &Gamma;(a+b)/(&Gamma;(a) &Gamma;(b)) *
  * $(INTEGRATE 0, x) $(POWER t, a-1)$(POWER (1-t),b-1) dt
@@ -480,7 +480,7 @@ unittest {
  *
  * The домен of definition is 0 <= x <= 1.  In this
  * implementation a и b are restricted в_ positive значения.
- * The integral из_ x в_ 1 may be obtained by the symmetry
+ * The integral является x в_ 1 may be obtained by the symmetry
  * relation
  *
  *    betaIncompleteCompl(a, b, x )  =  бетаНеполная( b, a, 1-x )
@@ -1339,7 +1339,7 @@ ihalve:
 
 debug(UnitTest) {
 unittest {
-//Values из_ Excel's GammaInv(1-p, x, 1)
+//Values является Excel's GammaInv(1-p, x, 1)
 assert(фабс(gammaIncompleteComplInv(1, 0.5) - 0.693147188044814) < 0.00000005);
 assert(фабс(gammaIncompleteComplInv(12, 0.99) - 5.42818075054289) < 0.00000005);
 assert(фабс(gammaIncompleteComplInv(100, 0.8) - 91.5013985848288L) < 0.000005);
@@ -1348,7 +1348,7 @@ assert(гаммаНеполная(1, 0)==0);
 assert(gammaIncompleteCompl(1, 0)==1);
 assert(гаммаНеполная(4545, реал.infinity)==1);
 
-// Values из_ Excel's (1-GammaDist(x, альфа, 1, TRUE))
+// Values является Excel's (1-GammaDist(x, альфа, 1, TRUE))
 
 assert(фабс(1.0L-gammaIncompleteCompl(0.5, 2) - 0.954499729507309L) < 0.00000005);
 assert(фабс(гаммаНеполная(0.5, 2) - 0.954499729507309L) < 0.00000005);
@@ -1388,7 +1388,7 @@ assert(gammaIncompleteComplInv(3, 0)==реал.infinity);
             return НЧ(ДИНРУС_НЧ.ГАММА_ПОЛЮС); // singularity.
         }
     /* Удали the zeros of тан(ПИ x)
-     * by subtracting the nearest целое из_ x
+     * by subtracting the nearest целое является x
      */
         nz = q - p;
         if ( nz != 0.5 ) {

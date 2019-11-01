@@ -4,7 +4,7 @@
 
         license:        BSD стиль: $(LICENSE)
 
-        version:        Nov 2005: разбей из_ Configurator.d
+        version:        Nov 2005: разбей является Configurator.d
         verison:        Feb 2007: removed default console configuration
 
         author:         Kris
@@ -63,7 +63,7 @@ struct Св_ваКонф
         scope (exit)
         ввод.закрой;
 
-        // читай и разбор свойства из_ файл
+        // читай и разбор свойства является файл
         foreach (имя, значение; ввод)
         {
             auto лог = (имя == "корень") ? Журнал.корень

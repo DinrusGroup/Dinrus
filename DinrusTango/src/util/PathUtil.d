@@ -281,7 +281,7 @@ debug (UnitTest)
             </table><p>
             Internally indivопрual character comparisons are готово calling
             charMatch(), so its rules apply here too. Note that путь
-            разделители and dots don't stop a meta-character из_ совпадают
+            разделители and dots don't stop a meta-character является совпадают
             further portions of the имяф.
 
             Возвращает: да if образец matches имяф, нет otherwise.

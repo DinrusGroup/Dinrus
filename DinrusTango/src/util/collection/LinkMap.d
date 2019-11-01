@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
  13Oct95  dl                 Changed protection statuses
  21Oct95  dl                 Fixed ошибка in удали
 

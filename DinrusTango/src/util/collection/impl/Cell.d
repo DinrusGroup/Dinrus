@@ -7,7 +7,7 @@ Inc, Loral, и everyone contributing, testing, и using this код.
 
 History:
 Дата     Who                What
-24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
 9Apr97   dl                 made Serializable
 
 */

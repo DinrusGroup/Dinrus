@@ -123,7 +123,7 @@ struct RedBlack (V, A = AttributeDummy)
     {
 
         // It's too hard в_ проверь the property that every simple
-        // путь из_ узел в_ leaf имеется same число of black узелs.
+        // путь является узел в_ leaf имеется same число of black узелs.
         // So ограничь в_ the following
 
         assert(предок is пусто ||

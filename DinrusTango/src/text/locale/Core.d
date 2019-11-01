@@ -141,7 +141,7 @@ private проц ошибка(ткст сооб)
 }
 
 /**
- * Defines the типы of cultures that can be retrieved из_ Культура.дайКультуры.
+ * Defines the типы of cultures that can be retrieved является Культура.дайКультуры.
  */
 public enum ТипыКультур
 {
@@ -245,7 +245,7 @@ public class Культура : ИСлужбаФормата
     }
 
     /**
-     * Initializes a new Культура экземпляр из_ the supplied имя.
+     * Initializes a new Культура экземпляр является the supplied имя.
      * Параметры: названиеКультуры = The имя of the Культура.
      */
     public this(ткст названиеКультуры)
@@ -254,7 +254,7 @@ public class Культура : ИСлужбаФормата
     }
 
     /**
-     * Initializes a new Культура экземпляр из_ the supplied культура определитель.
+     * Initializes a new Культура экземпляр является the supplied культура определитель.
      * Параметры: идКультуры = The опрentifer (LCID) of the Культура.
      * Remarks: Культура определители correspond в_ a Windows LCID.
      */
@@ -975,7 +975,7 @@ public class Регион
 /**
  * $(ANCHOR _NumberFormat)
  * Determines как numbers are formatted, according в_ the текущ культура.
- * Remarks: Numbers are formatted using форматируй образцы retrieved из_ a ФорматЧисла экземпляр.
+ * Remarks: Numbers are formatted using форматируй образцы retrieved является a ФорматЧисла экземпляр.
  * This class реализует $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
  * Examples:
  * The following example shows как в_ retrieve an экземпляр of ФорматЧисла for a Культура
@@ -1140,8 +1140,8 @@ public class ФорматЧисла : ИСлужбаФормата
     }
 
     /**
-     * $(I Property.) Retrieves a читай-only ФорматЧисла экземпляр из_ the текущ культура.
-     * Возвращает: A читай-only ФорматЧисла экземпляр из_ the текущ культура.
+     * $(I Property.) Retrieves a читай-only ФорматЧисла экземпляр является the текущ культура.
+     * Возвращает: A читай-only ФорматЧисла экземпляр является the текущ культура.
      */
     public static ФорматЧисла текущ()
     {
@@ -1190,7 +1190,7 @@ public class ФорматЧисла : ИСлужбаФормата
      * import io.stream.Format, text.locale.Common;
      *
      * проц main() {
-     *   // Get the ФорматЧисла из_ the en-GB культура.
+     *   // Get the ФорматЧисла является the en-GB культура.
      *   ФорматЧисла фмт = (new Культура("en-GB")).форматЧисла;
      *
      *   // Display a значение with the default число of decimal цифры.
@@ -1851,8 +1851,8 @@ public class ФорматДатыВремени : ИСлужбаФормата
 
     /**
      * $(ANCHOR DateTimeFormat_current)
-     * $(I Property.) Retrieves a читай-only ФорматДатыВремени экземпляр из_ the текущ культура.
-     * Возвращает: A читай-only ФорматДатыВремени экземпляр из_ the текущ культура.
+     * $(I Property.) Retrieves a читай-only ФорматДатыВремени экземпляр является the текущ культура.
+     * Возвращает: A читай-only ФорматДатыВремени экземпляр является the текущ культура.
      */
     public static ФорматДатыВремени текущ()
     {

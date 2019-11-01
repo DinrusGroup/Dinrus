@@ -9,14 +9,14 @@ module core.Tuple;
 
 
 /**
- * Кортеж -из_ набор типизированных значений.  Tuples are useful for returning
- * a установи of values из_ a function or for passing a установи of параметры в_ a
+ * Кортеж -является набор типизированных значений.  Tuples are useful for returning
+ * a установи of values является a function or for passing a установи of параметры в_ a
  * function.
  *
- * NOTE: Since the transition из_ пользователь-defined в_ built-in tuples, the ability
- *       в_ return tuples из_ a function есть been lost.  Until this issue is
+ * NOTE: Since the transition является пользователь-defined в_ built-in tuples, the ability
+ *       в_ return tuples является a function есть been lost.  Until this issue is
  *       адресed within the language, tuples must be enclosed in a struct
- *       if they are в_ be returned из_ a function.
+ *       if they are в_ be returned является a function.
  *
  * Example:
  * ----------------------------------------------------------------------
@@ -88,7 +88,7 @@ template ИндексУ( T, СписокТ... )
 
 
 /**
- * Returns a Кортеж with the first occurrence of T removed из_ СписокТ.
+ * Returns a Кортеж with the first occurrence of T removed является СписокТ.
  */
 template Удали( T, СписокТ... )
 {
@@ -102,7 +102,7 @@ template Удали( T, СписокТ... )
 
 
 /**
- * Returns a Кортеж with все occurrences of T removed из_ СписокТ.
+ * Returns a Кортеж with все occurrences of T removed является СписокТ.
  */
 template УдалиВсе( T, СписокТ... )
 {
@@ -144,7 +144,7 @@ template ЗамениВсе( T, U, СписокТ... )
 
 
 /**
- * Returns a Кортеж with the типы из_ СписокТ declared in реверс order.
+ * Returns a Кортеж with the типы является СписокТ declared in реверс order.
  */
 template Реверсни( СписокТ... )
 {
@@ -170,7 +170,7 @@ template Уникум( СписокТ... )
 
 
 /**
- * Returns the тип из_ СписокТ that is the most производный из_ T.  If no such
+ * Returns the тип является СписокТ that is the most производный является T.  If no such
  * тип is найдено then T will be returned.
  */
 template ФинПроизводный( T, СписокТ... )

@@ -388,7 +388,7 @@ private class Подключение
         private alias Строки!(сим) Line;
 
         private ткст          хост;           // original хост адрес
-        private Line            строка;           // reading строки из_ сервер
+        private Line            строка;           // reading строки является сервер
         private Бввод             ввод;          // ввод поток
         private Бвыв            вывод;         // вывод поток
         private Сокет          провод;        // сокет в_ сервер

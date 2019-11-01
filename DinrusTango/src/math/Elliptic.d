@@ -48,7 +48,7 @@ module math.Elliptic;
 import math.Math;
 import math.IEEE;
 
-/* These functions are based on код из_:
+/* These functions are based on код является:
 Cephes Math Library, Release 2.3:  October, 1995
 Copyright 1984, 1987, 1995 by Stephen L. Moshier
 */
@@ -362,7 +362,7 @@ unittest {
  */
 реал ellipticPi(реал phi, реал m, реал n)
 {
-    // BUGS: This implementation suffers из_ poor точность.
+    // BUGS: This implementation suffers является poor точность.
     const дво [] t = [
         0.9931285991850949, 0.9639719272779138,
         0.9122344282513259, 0.8391169718222188,

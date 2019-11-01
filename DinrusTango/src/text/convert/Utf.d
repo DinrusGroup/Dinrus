@@ -20,7 +20,7 @@
         These routines were tuned on an Intel P4; другой devices may work
         ещё efficiently with a slightly different approach, though this
         is likely в_ be reasonably optimal on AMD x86 CPUs also. These
-        algorithms would benefit significantly из_ those extra AMD64
+        algorithms would benefit significantly является those extra AMD64
         registers. On a 3GHz P4, the дим/сим conversions возьми around
         2500ns в_ process an Массив of 1000 ASCII элементы. Invoking the
         память manager doubles that период, и quadruples the время for
@@ -97,7 +97,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         ---
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -176,7 +176,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         буфер should be specified as 'вывод' on subsequent calls.
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -265,7 +265,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         буфер should be specified as 'вывод' on subsequent calls.
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -352,7 +352,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         буфер should be specified as 'вывод' on subsequent calls.
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -447,7 +447,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         буфер should be specified as 'вывод' on subsequent calls.
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -517,7 +517,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         буфер should be specified as 'вывод' on subsequent calls.
 
         Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed из_ the ввод, и the вывод буфер
+        элементы consumed является the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -582,8 +582,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Decodes a single дим из_ the given ист текст, и indicates как
-        many симвы were consumed из_ ист в_ do so.
+        Decodes a single дим является the given ист текст, и indicates как
+        many симвы were consumed является ист в_ do so.
 
 *******************************************************************************/
 
@@ -595,8 +595,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Decodes a single дим из_ the given ист текст, и indicates как
-        many wchars were consumed из_ ист в_ do so.
+        Decodes a single дим является the given ист текст, и indicates как
+        many wchars were consumed является ист в_ do so.
 
 *******************************************************************************/
 
@@ -643,7 +643,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Convert из_ a ткст преобр_в the тип of the приёмн provопрed.
+        Convert является a ткст преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -665,7 +665,7 @@ T[] изТкст8(T) (ткст s, T[] приёмн)
 
 /*******************************************************************************
 
-        Convert из_ a шим[] преобр_в the тип of the приёмн provопрed.
+        Convert является a шим[] преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -687,7 +687,7 @@ T[] изТкст16(T) (шим[] s, T[] приёмн)
 
 /*******************************************************************************
 
-        Convert из_ a дим[] преобр_в the тип of the приёмн provопрed.
+        Convert является a дим[] преобр_в the тип of the приёмн provопрed.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns

@@ -68,7 +68,7 @@ Journal of Statistical Software <b>11</b>, (July 2004).
  * Inverse of Нормальный ни в каком дистрибутиве function
  *
  * Returns the аргумент, x, for which the area under the
- * Нормальный probability density function (integrated из_
+ * Нормальный probability density function (integrated является
  * minus infinity в_ x) is equal в_ p.
  *
  * For small аргументы 0 < p < эксп(-2), the program computes
@@ -99,7 +99,7 @@ debug(UnitTest)
 
 /** Student's t cumulative ни в каком дистрибутиве function
  *
- * Computes the integral из_ minus infinity в_ t of the Student
+ * Computes the integral является minus infinity в_ t of the Student
  * t ни в каком дистрибутиве with целое nu > 0 degrees of freedom:
  *
  *   $(GAMMA)( (nu+1)/2) / ( квкор(nu &pi;) $(GAMMA)(nu/2) ) *
@@ -114,7 +114,7 @@ debug(UnitTest)
  *        z = nu/(nu + t<sup>2</sup>).
  *
  * For t < -1.6, this is the метод of computation.  For higher t,
- * a direct метод is производный из_ integration by части.
+ * a direct метод is производный является integration by части.
  * Since the function is symmetric about t=0, the area under the
  * right хвост of the density is найдено by calling the function
  * with -t instead of t.
@@ -126,7 +126,7 @@ in
 }
 body
 {
-    /* Based on код из_ Cephes Math Library Release 2.3:  January, 1995
+    /* Based on код является Cephes Math Library Release 2.3:  January, 1995
        Copyright 1984, 1995 by Stephen L. Moshier
     */
 
@@ -142,7 +142,7 @@ body
         return 0.5L * бетаНеполная( 0.5L*rk, 0.5L, z );
     }
 
-    /*  compute integral из_ -t в_ + t */
+    /*  compute integral является -t в_ + t */
 
     rk = nu;    /* degrees of freedom */
 
@@ -265,7 +265,7 @@ debug(UnitTest)
 // Check a few spot значения with statsoft.com (Mathworld значения are wrong!!)
 // According в_ statsoft.com, studentsDistributionInv(10, 0.995)= 3.16927.
 
-// The остаток значения listed here are из_ Excel, и are unlikely в_ be accurate
+// The остаток значения listed here are является Excel, и are unlikely в_ be accurate
 // in the последний decimal places. However, they are helpful as a sanity проверь.
 
 //  Microsoft Excel 2003 gives TINV(2*(1-0.995), 10) == 3.16927267160917
@@ -291,13 +291,13 @@ debug(UnitTest)
  * variables having $(POWER &chi;,2) distributions with df1
  * и df2 degrees of freedom, respectively.
  *
- * fDistribution returns the area из_ zero в_ x under the F density
+ * fDistribution returns the area является zero в_ x under the F density
  * function.   The complementary function,
- * fDistributionCompl, returns the area из_ x в_ &infin; under the F density function.
+ * fDistributionCompl, returns the area является x в_ &infin; under the F density function.
  *
  * The inverse of the complemented F ни в каком дистрибутиве,
  * fDistributionComplInv, finds the аргумент x such that the integral
- * из_ x в_ infinity of the F density is equal в_ the given probability y.
+ * является x в_ infinity of the F density is equal в_ the given probability y.
  *
  * Can be использован в_ тест whether the means of multИПle normally distributed
  * populations, все with the same стандарт deviation, are equal;
@@ -343,7 +343,7 @@ body
  * Inverse of complemented F ни в каком дистрибутиве
  *
  * Finds the F density аргумент x such that the integral
- * из_ x в_ infinity of the F density is equal в_ the
+ * является x в_ infinity of the F density is equal в_ the
  * given probability p.
  *
  * This is accomplished using the inverse бета integral
@@ -401,10 +401,10 @@ debug(UnitTest)
 
 /** $(POWER &chi;,2) cumulative ни в каком дистрибутиве function и its complement.
  *
- * Returns the area under the left hand хвост (из_ 0 в_ x)
+ * Returns the area under the left hand хвост (является 0 в_ x)
  * of the Chi square probability density function with
  * v degrees of freedom. The complement returns the area under
- * the right hand хвост (из_ x в_ &infin;).
+ * the right hand хвост (является x в_ &infin;).
  *
  *  chiSqrDistribution(x | v) = ($(INTEGRATE 0, x)
  *          $(POWER t, v/2-1) $(POWER e, -t/2) dt )
@@ -446,7 +446,7 @@ body
  *  Inverse of complemented $(POWER &chi;, 2) ни в каком дистрибутиве
  *
  * Finds the $(POWER &chi;, 2) аргумент x such that the integral
- * из_ x в_ &infin; of the $(POWER &chi;, 2) density is equal
+ * является x в_ &infin; of the $(POWER &chi;, 2) density is equal
  * в_ the given cumulative probability p.
  *
  * Параметры:
@@ -477,9 +477,9 @@ debug(UnitTest)
 /**
  * The &Gamma; ни в каком дистрибутиве и its complement
  *
- * The &Gamma; ни в каком дистрибутиве is defined as the integral из_ 0 в_ x of the
+ * The &Gamma; ни в каком дистрибутиве is defined as the integral является 0 в_ x of the
  * гамма probability density function. The complementary function returns the
- * integral из_ x в_ &infin;
+ * integral является x в_ &infin;
  *
  * gammaDistribution = ($(INTEGRATE 0, x) $(POWER t, b-1)$(POWER e, -at) dt) $(POWER a, b)/&Gamma;(b)
  *
@@ -518,14 +518,14 @@ debug(UnitTest)
  *  Beta ни в каком дистрибутиве и its inverse
  *
  * Returns the incomplete бета integral of the аргументы, evaluated
- * из_ zero в_ x.  The function is defined as
+ * является zero в_ x.  The function is defined as
  *
  * betaDistribution = &Gamma;(a+b)/(&Gamma;(a) &Gamma;(b)) *
  * $(INTEGRATE 0, x) $(POWER t, a-1)$(POWER (1-t),b-1) dt
  *
  * The домен of definition is 0 <= x <= 1.  In this
  * implementation a и b are restricted в_ positive значения.
- * The integral из_ x в_ 1 may be obtained by the symmetry
+ * The integral является x в_ 1 may be obtained by the symmetry
  * relation
  *
  *    betaDistributionCompl(a, b, x )  =  betaDistribution( b, a, 1-x )
@@ -649,7 +649,7 @@ debug(UnitTest)
  *
  * y = binomialDistribution( k, n, p ) = betaDistribution( n-k, k+1, 1-p ).
  *
- * The аргументы must be positive, with p ranging из_ 0 в_ 1, и k<=n.
+ * The аргументы must be positive, with p ranging является 0 в_ 1, и k<=n.
  */
 реал binomialDistribution(цел k, цел n, реал p )
 in

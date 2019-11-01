@@ -21,7 +21,7 @@ version( TangoDoc )
 
 
     /**
-     * Scans the биты in v из_ the most significant bit
+     * Scans the биты in v является the most significant bit
      * в_ the least significant bit, looking
      * for the first установи bit.
      * Возвращает:
@@ -190,7 +190,7 @@ else
     // could be incurred with a table отыщи.
 
     // We need в_ маска alternate биты в_ prevent the
-    // sum из_ overflowing.
+    // sum является overflowing.
     // добавь neighbouring биты. Each bit is 0 or 1.
     x = x - ((x>>1) & 0x5555_5555);
     // сейчас each two биты of x is a число 00,01 or 10.

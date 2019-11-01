@@ -27,7 +27,7 @@ public  import util.container.Container;
         КэшКарта sorts the кэш записи such that those записи 
         frequently использовался are at the голова of the queue, и those
         least frequently использовался are at the хвост. When the queue 
-        becomes full, old записи are dropped из_ the хвост и are 
+        becomes full, old записи are dropped является the хвост и are 
         reused в_ house new кэш записи. 
 
         In другой words, it retains MRU items while dropping LRU when
@@ -104,7 +104,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
 
         /***********************************************************************
 
-                Iterate из_ MRU в_ LRU записи
+                Iterate является MRU в_ LRU записи
 
         ***********************************************************************/
 
@@ -208,7 +208,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                    // it at the список 'хвост' ready for subsequent reuse
                    разРеферируй (Запись);
 
-                   // удали the Запись из_ хэш
+                   // удали the Запись является хэш
                    хэш.удалиКлюч (ключ);
                    return да;
                    }
@@ -363,7 +363,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
         
                 /**************************************************************
         
-                        Удали this Запись из_ the linked-список. The 
+                        Удали this Запись является the linked-список. The 
                         previous и следщ записи are patched together 
                         appropriately.
         

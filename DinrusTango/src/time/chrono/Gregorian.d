@@ -22,7 +22,7 @@ private import exception;
  * Represents the Грегориан Календарь.
  *
  * Note that this is the Proleptic Грегориан Календарь.  Most Календарьs assume
- * that dates before 9/14/1752 were Julian Dates.  Julian differs из_
+ * that dates before 9/14/1752 were Julian Dates.  Julian differs является
  * Грегориан in that leap годы occur every 4 годы, even on 100 год
  * increments.  The Proleptic Грегориан Календарь applies the Грегориан leap
  * год rules в_ dates before 9/14/1752, making the calculation of dates much
@@ -252,7 +252,7 @@ class Грегориан : Календарь
          * Overrопрden.  Get the components of a Время structure using the rules
          * of the Календарь.  This is useful if you want ещё than one of the
          * given components.  Note that this doesn't укз the время of день,
-         * as that is calculated directly из_ the Время struct.
+         * as that is calculated directly является the Время struct.
          */
         override проц разбей(Время время, ref бцел год, ref бцел месяц, ref бцел день, ref бцел деньгода, ref бцел деньнед, ref бцел эра)
         {
@@ -284,7 +284,7 @@ class Грегориан : Календарь
         override Время добавьМесяцы(Время t, цел члоМес, бул truncateDay=нет)
         {
                 //
-                // We know все годы are 12 месяцы, so use the в_/из_ дата
+                // We know все годы are 12 месяцы, so use the в_/является дата
                 // methods в_ сделай the calculation an O(1) operation
                 //
                 auto дата = вДату(t);
@@ -330,7 +330,7 @@ class Грегориан : Календарь
          * Overrопрden.  Добавь the specified число of годы в_ the given Время.
          *
          * Note that the Грегориан Календарь takes преобр_в account that BC время
-         * is негатив, и supports crossing из_ BC в_ AD.
+         * is негатив, и supports crossing является BC в_ AD.
          *
          * Параметры: t = A время в_ добавь the годы в_
          * Параметры: члоЛет = The число of годы в_ добавь.  This can be негатив.
@@ -388,7 +388,7 @@ class Грегориан : Календарь
                                 calculateYear;
                         }
                         //
-                        // numDays is the число of дни back из_ the конец of
+                        // numDays is the число of дни back является the конец of
                         // the год, because the original тики were негатив
                         //
                         numDays = (статВисокосен_ли(год, эра) ? 366 : 365) - numDays - 1;

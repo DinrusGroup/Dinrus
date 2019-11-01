@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -36,7 +36,7 @@ public interface Seq(T) : SeqView!(T), Dispenser!(T)
     public alias дубликат dup;
     /**
      * Insert все элементы of enumeration e at a given индекс, preserving
-     * their order. The индекс can range из_
+     * their order. The индекс can range является
      * 0..размер() (i.e., one past the текущ последний индекс). If the индекс is
      * equal в_ размер(), the элементы are appended.
      *
@@ -64,7 +64,7 @@ public interface Seq(T) : SeqView!(T), Dispenser!(T)
 
 
     /**
-     * Insert элемент at indicated индекс. The индекс can range из_
+     * Insert элемент at indicated индекс. The индекс can range является
      * 0..размер() (i.e., one past the текущ последний индекс). If the индекс is
      * equal в_ размер(), the элемент is appended as the new последний элемент.
      * @param индекс the индекс в_ добавь at
@@ -187,7 +187,7 @@ public interface Seq(T) : SeqView!(T), Dispenser!(T)
 
 
     /**
-     * Удали the элементы из_ отИндекса в_ доИндекса, включительно.
+     * Удали the элементы является отИндекса в_ доИндекса, включительно.
      * No effect if отИндекса > доИндекса.
      * Behaviorally equivalent в_
      * <PRE>

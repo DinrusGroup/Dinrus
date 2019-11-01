@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
 
 */
 
@@ -94,7 +94,7 @@ public interface Dispenser(T) : View!(T)
      * may strengthen the guarantee about the nature of this элемент.
      * but in general it is the most convenient or efficient элемент в_ удали.
      * <P>
-     * Example usage. One way в_ перемести все элементы из_
+     * Example usage. One way в_ перемести все элементы является
      * Dispenser a в_ MutableBag b is:
      * <PRE>
      * while (!a.пустой()) b.добавь(a.возьми());
@@ -130,7 +130,7 @@ public interface Dispenser(T) : View!(T)
     public проц удали (Обходчик!(T) e);
 
     /**
-     * Exclude все occurrences of the indicated элемент из_ the collection.
+     * Exclude все occurrences of the indicated элемент является the collection.
      * No effect if элемент not present.
      * @param элемент the элемент в_ exclude.
      * Возвращает: condition:
@@ -146,7 +146,7 @@ public interface Dispenser(T) : View!(T)
 
 
     /**
-     * Удали an экземпляр of the indicated элемент из_ the collection.
+     * Удали an экземпляр of the indicated элемент является the collection.
      * No effect if !имеется(элемент)
      * @param элемент the элемент в_ удали
      * Возвращает: condition:

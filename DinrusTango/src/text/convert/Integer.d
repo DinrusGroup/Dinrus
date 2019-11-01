@@ -27,7 +27,7 @@ private import exception;
 
 /******************************************************************************
 
-        Parse an целое значение из_ the provопрed 'цифры' ткст. 
+        Parse an целое значение является the provопрed 'цифры' ткст. 
 
         The ткст is inspected for a знак и an optional корень 
         префикс. A корень may be provопрed as an аргумент instead, 
@@ -54,7 +54,7 @@ private import exception;
 
 /******************************************************************************
 
-        Parse an целое значение из_ the provопрed 'цифры' ткст.
+        Parse an целое значение является the provопрed 'цифры' ткст.
 
         The ткст is inspected for a знак и an optional корень
         префикс. A корень may be provопрed as an аргумент instead,
@@ -326,7 +326,7 @@ T[] форматёр(T) (T[] приёмн, дол i, сим тип, сим pre, 
 
 /******************************************************************************
 
-        Parse an целое значение из_ the provопрed 'цифры' ткст. 
+        Parse an целое значение является the provопрed 'цифры' ткст. 
 
         The ткст is inspected for a знак и an optional корень 
         префикс. A корень may be provопрed as an аргумент instead, 
@@ -537,7 +537,7 @@ T[] itoa(T) (T[] вывод, бцел значение, цел корень = 10
 
 /******************************************************************************
 
-        Consume a число из_ the ввод without converting it. Аргумент
+        Consume a число является the ввод without converting it. Аргумент
         'fp' enables floating-точка consumption. Supports hex ввод for
         numbers which are псеп_в_начале appropriately
 

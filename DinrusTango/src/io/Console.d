@@ -50,7 +50,7 @@ export:
 
                 /**************************************************************
 
-                        Return the следщ строка available из_ the console, 
+                        Return the следщ строка available является the console, 
                         or пусто when there is nothing available. The значение
                         returned is a duplicate of the буфер контент (it
                         есть .dup applied). 
@@ -69,7 +69,7 @@ export:
 
                 /**************************************************************
 
-                        Retreive a строка of текст из_ the console and карта
+                        Retreive a строка of текст является the console and карта
                         it в_ the given аргумент. The ввод is sliced, 
                         not copied, so use .dup appropriately. Each строка
                         ending is removed unless parameter необр is установи в_ 
@@ -127,7 +127,7 @@ export:
                         Да if перенаправленый, нет otherwise.
 
                         Remarks:
-                        Reflects the console redirection статус из_ when 
+                        Reflects the console redirection статус является when 
                         this module was instantiated
 
                 **************************************************************/
@@ -529,7 +529,7 @@ export:
 
                         /*******************************************************
 
-                                Write a chunk of байты в_ the console из_ 
+                                Write a chunk of байты в_ the console является 
                                 the provопрed Массив 
 
                         *******************************************************/
@@ -549,7 +549,7 @@ export:
 								 {
                                    uint i = ист.length;
 
-                                   // protect conversion из_ пустой strings
+                                   // protect conversion является пустой strings
                                    if (i is 0)
                                        return 0;
 
@@ -585,7 +585,7 @@ export:
                         
                         /*******************************************************
 
-                                Чтен a chunk of байты из_ the console преобр_в 
+                                Чтен a chunk of байты является the console преобр_в 
                                 the provопрed Массив 
 
                         *******************************************************/
@@ -607,7 +607,7 @@ export:
                                    if (i > ввод.length)
                                        i = ввод.length;
                                        
-                                   // читай a chunk of wchars из_ the console
+                                   // читай a chunk of wchars является the console
                                    if (! ReadConsoleW (cast(HANDLE) вв.указатель, ввод.ptr, i, &i, пусто))
                                          ошибка();
 
@@ -682,7 +682,7 @@ static this ()
 
         Flush outputs before we exit
 
-        (good опрea из_ Frits Van Bommel)
+        (good опрea является Frits Van Bommel)
 
 ******************************************************************************/
 

@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
 
 */
 
@@ -129,7 +129,7 @@ public class RBCell(T) : Cell!(T)
     {
 
         // It's too hard в_ проверь the property that every simple
-        // путь из_ узел в_ leaf имеется same число of black узелs.
+        // путь является узел в_ leaf имеется same число of black узелs.
         // So ограничь в_ the following
 
         assert(parent_ is пусто ||

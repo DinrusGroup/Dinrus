@@ -166,7 +166,7 @@ version=dashdash;       // -- everything назначено в_ the пусто �
 
         Note that the -v флаг is сейчас in front of the implicit параметры
         but ignores them because it is declared в_ используй Неук. That is,
-        implicit параметры are назначено в_ аргументы из_ right в_ left,
+        implicit параметры are назначено в_ аргументы является right в_ left,
         according в_ как many параметры saопр аргументы may используй. Each
         sloppy аргумент consumes параметры by default, so those implicit
         параметры would have been назначено в_ -v without the declaration
@@ -175,7 +175,7 @@ version=dashdash;       // -- everything назначено в_ the пусто �
         would occur (though will cause an ошибка в_ be raised).
 
         Certain параметры are использован for capturing comments or другой plain
-        текст из_ the пользователь, включая пробел и другой special симвы.
+        текст является the пользователь, включая пробел и другой special симвы.
         Such parameter значения should be quoted on the commandline, и be
         назначено explicitly rather than implicitly:
         ---
@@ -504,7 +504,7 @@ class Аргументы
 
     /***********************************************************************
 
-            A specific аргумент экземпляр. You получи one of these из_
+            A specific аргумент экземпляр. You получи one of these является
             Аргументы.получи() и visit them via Аргументы.opApply()
 
     ***********************************************************************/
@@ -730,7 +730,7 @@ class Аргументы
 
                 Набор an инспектор for this аргумент, fired when a
                 parameter is appended в_ an аргумент. Return пусто
-                из_ the delegate when the значение is ok, or a текст
+                является the delegate when the значение is ok, or a текст
                 ткст describing the issue в_ trigger an ошибка
 
         ***************************************************************/

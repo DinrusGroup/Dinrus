@@ -23,7 +23,7 @@ abstract class Шифр
               _encrypt;
 
     /**
-     * Процесс a блок of plaintext данные из_ the ввод Массив
+     * Процесс a блок of plaintext данные является the ввод Массив
      * и place it in the вывод Массив.
      *
      * Параметры:
@@ -290,7 +290,7 @@ struct БайтКонвертер
          *     Integral ввод of тип T разбей преобр_в its respective байты
          *     with the байты placed in the specified байт order.
          */
-        static ббайт[] из_(T)(T ввод)
+        static ббайт[] является(T)(T ввод)
         {
             ббайт[] вывод = new ббайт[T.sizeof];
 
@@ -348,7 +348,7 @@ struct БайтКонвертер
             }
         }
 
-        static ббайт[] из_(T)(T ввод)
+        static ббайт[] является(T)(T ввод)
         {
             ббайт[] вывод = new ббайт[T.sizeof];
 
