@@ -221,12 +221,8 @@ void remove(char[] name)
 {
     BOOL результат;
 
-    if (useWfuncs)
-	результат = УдалиФайл(вЮ16(name));
-    else
-	результат = УдалиФайлА(name);
-    if (!результат)
-	throw new ФайлИскл(name, GetLastError());
+	результат = УдалиФайл(name);
+    if (!результат)	throw new ФайлИскл(name, GetLastError());
 }
 
 
@@ -279,7 +275,7 @@ void getTimes(char[] name, out d_time ftc, out d_time fta, out d_time ftm)
     {
 	ПДАН filefindbuf;
 
-	findhndl = НайдиПервыйФайл(std.utf.toUTF16(name), &filefindbuf);
+	findhndl = НайдиПервыйФайл(name, &filefindbuf);
 	ftc = std.date.FILETIME2d_time(&filefindbuf.времяСоздания);
 	fta = std.date.FILETIME2d_time(&filefindbuf.времяПоследнегоДоступа);
 	ftm = std.date.FILETIME2d_time(&filefindbuf.времяПоследнейЗаписи);
@@ -734,7 +730,7 @@ void listdir(string pathname, bool delegate(DirEntry* de) callback)
     {
 	ПДАН fileinfo;
 
-	h = НайдиПервыйФайл(std.utf.toUTF16(c), &fileinfo);
+	h = НайдиПервыйФайл(c, &fileinfo);
 	if (h != cast(ук) НЕВЕРНХЭНДЛ)
 	{
 	    try

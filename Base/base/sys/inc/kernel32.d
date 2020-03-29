@@ -169,11 +169,11 @@ export extern(C):
 	{return cast(бул) ActivateActCtx(cast(HANDLE)актКткст, cast(ULONG**)куки); }
 АТОМ ДобавьАтомА(ткст атом)
 	{return cast(АТОМ) AddAtomA(cast(LPCSTR) атом);}
-АТОМ ДобавьАтом(шткст атом)
+АТОМ ДобавьАтом(ткст атом)
 	{return cast(АТОМ) AddAtomW(cast(LPCWSTR) атом);}
 ПОшибка ДобавьЛокальноеАльтернативноеИмяКомпьютераА(ткст днсИмяХоста, бцел флаги = 0)
 	{return cast(ПОшибка) AddLocalAlternateComputerNameA(cast(LPCSTR) днсИмяХоста, cast(ULONG) флаги);}
-ПОшибка ДобавьЛокальноеАльтернативноеИмяКомпьютера(шткст днсИмяХоста, бцел флаги = 0)
+ПОшибка ДобавьЛокальноеАльтернативноеИмяКомпьютера(ткст днсИмяХоста, бцел флаги = 0)
 	{return cast(ПОшибка) AddLocalAlternateComputerNameW (cast(LPCWSTR) днсИмяХоста, cast(ULONG) флаги);}
 проц ДобавьСсылАктКткс(ук актКткст)
 	{AddRefActCtx(cast(HANDLE) актКткст);}
@@ -199,21 +199,21 @@ export extern(C):
 	{return cast(бул) Beep(cast(DWORD) герц, cast(DWORD) мсек);}
 ук НачниОбновлениеРесурсаА(ткст рес, бул б)
 	{return cast(ук) BeginUpdateResourceA(cast(LPCSTR) рес, cast(BOOL) б);}
-ук НачниОбновлениеРесурса(шткст рес, бул б)
+ук НачниОбновлениеРесурса(ткст рес, бул б)
 	{return cast(ук) BeginUpdateResourceW(cast(LPCWSTR) рес, cast(BOOL) б);}
 бул ПривяжиОбрвызовВыполненияВВ(ук файл, ПРОЦЕДУРА_АСИНХ_ВЫПОЛНЕНИЯ_ВВ фн, бцел флаги = 0)	
 	{return cast(бул) BindIoCompletionCallback(cast(HANDLE) файл, cast(LPOVERLAPPED_COMPLETION_ROUTINE) фн, cast(ULONG) флаги);}
 бул СтройКоммСКУА(ткст описание, СКУ *ску)
 	{return cast(бул) BuildCommDCBA(cast(LPCSTR) описание, cast(LPDCB) ску);}
-бул СтройКоммСКУ(шткст описание, СКУ *ску)
+бул СтройКоммСКУ(ткст описание, СКУ *ску)
 	{return cast(бул) BuildCommDCBW(cast(LPCWSTR) описание, cast(LPDCB) ску);}
 бул СтройКоммСКУИТаймаутыА(ткст определение, СКУ *ску, КОММТАЙМАУТЫ *кт)	
 	{return cast(бул) BuildCommDCBAndTimeoutsA(cast(LPCSTR) определение, cast(LPDCB) ску, cast(LPCOMMTIMEOUTS) кт);}
-бул СтройКоммСКУИТаймауты(шткст определение, СКУ *ску, КОММТАЙМАУТЫ *кт)	
+бул СтройКоммСКУИТаймауты(ткст определение, СКУ *ску, КОММТАЙМАУТЫ *кт)	
 	{return cast(бул) BuildCommDCBAndTimeoutsW(cast(LPCWSTR) определение, cast(LPDCB) ску, cast(LPCOMMTIMEOUTS) кт);}	
 бул ВызовиИменованныйПайпА(ткст имяПайпа, ук вхБуф, бцел вхБуфРазм, ук выхБуф, бцел выхБуфРазм, бцел *байтЧитать, бцел таймаут  )
 	{return cast(бул) CallNamedPipeA(cast(LPCSTR) имяПайпа, cast(LPVOID) вхБуф, cast(DWORD)вхБуфРазм, cast(LPVOID) выхБуф, cast(DWORD) выхБуфРазм, cast(LPDWORD) байтЧитать, cast(DWORD) таймаут);}
-бул ВызовиИменованныйПайп(шткст имяПайпа, ук вхБуф, бцел вхБуфРазм, ук выхБуф, бцел выхБуфРазм, бцел *байтЧитать, бцел таймаут  )
+бул ВызовиИменованныйПайп(ткст имяПайпа, ук вхБуф, бцел вхБуфРазм, ук выхБуф, бцел выхБуфРазм, бцел *байтЧитать, бцел таймаут  )
 	{return cast(бул) CallNamedPipeW(cast(LPCWSTR) имяПайпа, cast(LPVOID) вхБуф, cast(DWORD)вхБуфРазм, cast(LPVOID) выхБуф, cast(DWORD) выхБуфРазм, cast(LPDWORD) байтЧитать, cast(DWORD) таймаут);}
 бул  ОтмениЗапросПобудкиУстройства(ук устр)
 	{return cast(бул) CancelDeviceWakeupRequest(cast(HANDLE) устр);}
@@ -227,7 +227,7 @@ export extern(C):
 	{return cast(бул) CancelTimerQueueTimer(cast(HANDLE) очередьТаймеров ,cast(HANDLE) таймер);}
 бул ПроверьЛегальностьИмениФайлаДляДОС8_3А(in ткст имя, out ткст оемИмя,in бцел размОЕМИмени, out бул естьПробелы, out бул имяЛегально)	
 	{return cast(бул) CheckNameLegalDOS8Dot3A(cast(LPCSTR) имя, cast(LPSTR)  оемИмя, cast(DWORD)размОЕМИмени, cast(PBOOL) естьПробелы,cast(PBOOL) имяЛегально);}
-бул ПроверьЛегальностьИмениФайлаДляДОС8_3(in шткст имя, out ткст оемИмя,in бцел размОЕМИмени, out бул естьПробелы, out бул имяЛегально)	
+бул ПроверьЛегальностьИмениФайлаДляДОС8_3(in ткст имя, out ткст оемИмя,in бцел размОЕМИмени, out бул естьПробелы, out бул имяЛегально)	
 	{return cast(бул) CheckNameLegalDOS8Dot3W(cast(LPCWSTR) имя, cast(LPSTR)  оемИмя, cast(DWORD)размОЕМИмени, cast(PBOOL) естьПробелы,cast(PBOOL) имяЛегально);}
 бул ПроверьПрисутствиеУдалённогоОтладчика(in ук процесс, inout бул естьОтл )
 	{return cast(бул) CheckRemoteDebuggerPresent(cast(HANDLE) процесс, cast(PBOOL) естьОтл );}
@@ -241,7 +241,7 @@ export extern(C):
 	}
 бул ДиалогКонфигурацииКоммА(ткст имяУстр, ук окноРодитель, КОММКОНФИГ *кк)
 	{return cast(бул)  CommConfigDialogA(cast(LPCSTR) имяУстр, cast(HWND) окноРодитель, cast(LPCOMMCONFIG) кк);}
-бул ДиалогКонфигурацииКомм(шткст имяУстр, ук окноРодитель, КОММКОНФИГ *кк)
+бул ДиалогКонфигурацииКомм(ткст имяУстр, ук окноРодитель, КОММКОНФИГ *кк)
 	{return cast(бул)  CommConfigDialogW(cast(LPCWSTR) имяУстр, cast(HWND) окноРодитель, cast(LPCOMMCONFIG) кк);}
 ПСравнВремФла СравниФВремя(in ФВРЕМЯ *фвр1, in ФВРЕМЯ *фвр2)
 	{
@@ -249,7 +249,7 @@ export extern(C):
 	}
 ПСравнСтр СравниСтрокиА(бцел локаль, ПФлагиНормСорт флаги, ткст0 стр1, цел члоСимВСтр1, ткст0 стр2, цел члоСимВСтр2)
 	{return cast(ПСравнСтр) CompareStringA(cast(LCID) локаль, cast(DWORD) флаги, cast(LPCSTR) стр1, члоСимВСтр1, cast(LPCSTR) стр2, члоСимВСтр2);	}
-ПСравнСтр СравниСтроки(ЛКИД локаль, ПФлагиНормСорт флаги, шткст *стр1, цел члоСимВСтр1, шткст *стр2, цел члоСимВСтр2)
+ПСравнСтр СравниСтроки(ЛКИД локаль, ПФлагиНормСорт флаги, ткст *стр1, цел члоСимВСтр1, ткст *стр2, цел члоСимВСтр2)
 	{return cast(ПСравнСтр) CompareStringW(cast(LCID) локаль, cast(DWORD) флаги, cast(LPCWSTR) стр1, члоСимВСтр1, cast(LPCWSTR) стр2, члоСимВСтр2);}
 бул ПодключиИменованныйПайп(ук имПайп, АСИНХРОН *асинх)	
 	{return cast(бул) ConnectNamedPipe(cast(HANDLE) имПайп, cast(LPOVERLAPPED) асинх);}
@@ -267,15 +267,13 @@ export extern(C):
 	return cast(бул)   CopyFileA(cast(LPCSTR) имяСущФайла, cast(LPCSTR) новФимя, cast(BOOL) ошЕслиСуществует);
 	}
 	
-бул КопируйФайл(шткст имяСущФайла, шткст новФимя, бул ошЕслиСуществует)
+бул КопируйФайл(ткст имяСущФайла, ткст новФимя, бул ошЕслиСуществует)
 	{
-	ткст сф = toUTF8(имяСущФайла);
-	ткст нф = toUTF8(новФимя);
-	return cast(бул)   CopyFileW(toUTF16z(сф), toUTF16z(нф), cast(BOOL) ошЕслиСуществует);
+	return cast(бул)   CopyFileW(toUTF16z(имяСущФайла), toUTF16z(новФимя), cast(BOOL) ошЕслиСуществует);
 	}
 бул КопируйФайлДопА(ткст0 сущФИмя, ткст0 новФИмя, ПРОЦ_ПРОГРЕССА пп, ук данные, бул *отменить, ПКопирФайл флаги)
 		{return cast(бул) CopyFileExA(cast(LPCSTR) сущФИмя, cast(LPCSTR) новФИмя, cast(LPPROGRESS_ROUTINE) пп, cast(LPVOID) данные, cast(LPBOOL) отменить, cast(DWORD) флаги);}
-бул КопируйФайлДоп(шткст *сущФИмя, шткст *новФИмя, ПРОЦ_ПРОГРЕССА пп, ук данные, бул *отменить, ПКопирФайл флаги)
+бул КопируйФайлДоп(ткст *сущФИмя, ткст *новФИмя, ПРОЦ_ПРОГРЕССА пп, ук данные, бул *отменить, ПКопирФайл флаги)
 		{return cast(бул) CopyFileExW(cast(LPCWSTR) сущФИмя, cast(LPCWSTR) новФИмя, cast(LPPROGRESS_ROUTINE) пп, cast(LPVOID) данные, cast(LPBOOL) отменить, cast(DWORD) флаги);}
 ук СоздайАктКтксА(АКТКТКСА *ак)
 	{return cast(ук) CreateActCtxA(cast(PCACTCTXA) ак);}	
@@ -289,10 +287,9 @@ export extern(C):
 	return cast(бул) CreateDirectoryA(cast(LPCSTR) путь, cast(LPSECURITY_ATTRIBUTES) безАтры);
 	}
 
-бул СоздайПапку(шткст путь, БЕЗАТРЫ *безАтры )
+бул СоздайПапку(ткст путь, БЕЗАТРЫ *безАтры )
 	{
-	ткст путь1 = toUTF8(путь);
-	return cast(бул) CreateDirectoryW(toUTF16z(путь1), cast(LPSECURITY_ATTRIBUTES) безАтры);
+	return cast(бул) CreateDirectoryW(toUTF16z(путь), cast(LPSECURITY_ATTRIBUTES) безАтры);
 	}
 
 бул СоздайПапкуДопА(ткст папкаШаблон, ткст новаяПапка, БЕЗАТРЫ *безАтры )
@@ -300,16 +297,14 @@ export extern(C):
 	return cast(бул) CreateDirectoryExA(cast(LPCSTR) папкаШаблон, cast(LPCSTR) новаяПапка, cast(LPSECURITY_ATTRIBUTES) безАтры);
 	}
 
-бул СоздайПапкуДоп(шткст папкаШаблон, шткст новаяПапка, БЕЗАТРЫ *безАтры )
+бул СоздайПапкуДоп(ткст папкаШаблон, ткст новаяПапка, БЕЗАТРЫ *безАтры )
 	{
-	ткст пШ = toUTF8(папкаШаблон);
-	ткст нП = toUTF8(новаяПапка);
-	return cast(бул) CreateDirectoryExW(toUTF16z(пШ), toUTF16z(нП),  cast(LPSECURITY_ATTRIBUTES) безАтры);
+	return cast(бул) CreateDirectoryExW(toUTF16z(папкаШаблон), toUTF16z(новаяПапка),  cast(LPSECURITY_ATTRIBUTES) безАтры);
 	}
 
 ук СоздайСобытиеА(БЕЗАТРЫ *ба, бул ручнойСброс, бул сигнализироватьНачСост, ткст0 имя)	
 	{return cast(HANDLE) CreateEventA(cast(LPSECURITY_ATTRIBUTES) ба, cast(BOOL) ручнойСброс, cast(BOOL) сигнализироватьНачСост, cast(LPCSTR) имя);}
-ук СоздайСобытие(БЕЗАТРЫ *ба, бул ручнойСброс, бул сигнализироватьНачСост, шткст *имя)	
+ук СоздайСобытие(БЕЗАТРЫ *ба, бул ручнойСброс, бул сигнализироватьНачСост, ткст *имя)	
 	{return cast(HANDLE) CreateEventW(cast(LPSECURITY_ATTRIBUTES) ба, cast(BOOL) ручнойСброс, cast(BOOL) сигнализироватьНачСост, cast(LPCWSTR) имя);}	
 ук СоздатьФибру(т_мера размСтека ,ПРОЦ_СТАРТА_ФИБРЫ псф, ук параметр)
 	{return cast(ук) CreateFiber(cast(SIZE_T) размСтека, cast(LPFIBER_START_ROUTINE) псф, cast(LPVOID) параметр);}
@@ -321,18 +316,17 @@ export extern(C):
 	return cast(ук) CreateFileA(cast(char*) фимя, cast(DWORD) доступ, cast(DWORD) режСовмест, cast(SECURITY_ATTRIBUTES *) безАтры, cast(DWORD)диспозицияСозд, cast(DWORD) флагиИАтры, cast(HANDLE) файлШаблон);
 	}
 
-ук СоздайФайл(in шткст фимя, ППраваДоступа доступ, ПСовмИспФайла режСовмест, 
+ук СоздайФайл(in ткст фимя, ППраваДоступа доступ, ПСовмИспФайла режСовмест, 
 		БЕЗАТРЫ *безАтры, ПРежСоздФайла диспозицияСозд, ПФайл флагиИАтры, ук файлШаблон)		
 	{
-	ткст фл = toUTF8(фимя);
-	return cast(ук) CreateFileW(toUTF16z(фл), cast(DWORD) доступ, cast(DWORD) режСовмест, cast(SECURITY_ATTRIBUTES *) безАтры, cast(DWORD) диспозицияСозд, cast(DWORD) флагиИАтры, cast(HANDLE) файлШаблон);
+	return cast(ук) CreateFileW(toUTF16z(фимя), cast(DWORD) доступ, cast(DWORD) режСовмест, cast(SECURITY_ATTRIBUTES *) безАтры, cast(DWORD) диспозицияСозд, cast(DWORD) флагиИАтры, cast(HANDLE) файлШаблон);
 	}
 
 ук СоздайМаппингФайлаА(ук ф, БЕЗАТРЫ *ба, ППамять защ, бцел максРазмН, бцел максРазмВ, ткст имя)
 	{
 	return cast(ук) CreateFileMappingA( cast(HANDLE) ф, cast(SECURITY_ATTRIBUTES*) ба, cast(бцел) защ, cast(бцел) максРазмН, cast(бцел) максРазмВ, cast(ткст0) имя);
 	}
-ук СоздайМаппингФайла(ук ф, БЕЗАТРЫ *ба,ППамять защ, бцел максРазмН, бцел максРазмВ, шткст имя)
+ук СоздайМаппингФайла(ук ф, БЕЗАТРЫ *ба,ППамять защ, бцел максРазмН, бцел максРазмВ, ткст имя)
 	{
 	return cast(ук) CreateFileMappingW(cast(HANDLE) ф,cast(SECURITY_ATTRIBUTES*) ба,
 	cast(бцел) защ, cast(бцел) максРазмН, cast(бцел) максРазмВ, cast(шим*) имя);
@@ -340,27 +334,27 @@ export extern(C):
 
 бул СоздайЖёсткуюСвязкуА(ткст0 имяСвязываемогоФайла, ткст0 имяСвязующегоФайла)
 		{return cast(бул)  CreateHardLinkA(cast(LPCSTR) имяСвязываемогоФайла, cast(LPCSTR) имяСвязующегоФайла, null);}
-бул СоздайЖёсткуюСвязку(шткст *имяСвязываемогоФайла, шткст *имяСвязующегоФайла)
+бул СоздайЖёсткуюСвязку(ткст *имяСвязываемогоФайла, ткст *имяСвязующегоФайла)
 		{return cast(бул)  CreateHardLinkW(cast(LPCWSTR) имяСвязываемогоФайла, cast(LPCWSTR) имяСвязующегоФайла, null);}
 ук 	СоздайПортВыполненияВВ(ук файл, ук сущПортВып, бцел ключВып, бцел числоКонкурентныхНитей)
 		{return cast(ук) CreateIoCompletionPort(cast(HANDLE) файл, cast(HANDLE) сущПортВып, ключВып, cast(DWORD) числоКонкурентныхНитей);}
 ук СоздайОбъектДжобА(БЕЗАТРЫ *ба, ткст0 имя )		
 			{return cast(ук) CreateJobObjectA(cast(LPSECURITY_ATTRIBUTES) ба, cast(LPCSTR) имя);}
-ук СоздайОбъектДжоб(БЕЗАТРЫ *ба, шткст *имя )		
+ук СоздайОбъектДжоб(БЕЗАТРЫ *ба, ткст *имя )		
 			{return cast(ук) CreateJobObjectW(cast(LPSECURITY_ATTRIBUTES) ба, cast(LPCWSTR) имя);}
 ук СоздайСлотПочтыА(ткст0 имя, бцел максРазмСооб, бцел таймаутЧтен, БЕЗАТРЫ *ба)		
 			{return cast(ук) CreateMailslotA(cast(LPCSTR) имя, cast(DWORD) максРазмСооб, cast(DWORD) таймаутЧтен, cast(LPSECURITY_ATTRIBUTES) ба);}
-ук СоздайСлотПочты(шткст *имя, бцел максРазмСооб, бцел таймаутЧтен, БЕЗАТРЫ *ба)		
+ук СоздайСлотПочты(ткст *имя, бцел максРазмСооб, бцел таймаутЧтен, БЕЗАТРЫ *ба)		
 			{return cast(ук) CreateMailslotW(cast(LPCWSTR) имя, cast(DWORD) максРазмСооб, cast(DWORD) таймаутЧтен, cast(LPSECURITY_ATTRIBUTES) ба);}
 ук СоздайПометкуРесурсаПамяти(ТПРП метка)		
 			{return cast(ук) CreateMemoryResourceNotification(cast(MEMORY_RESOURCE_NOTIFICATION_TYPE) метка);}
 ук СоздайМютексА(БЕЗАТРЫ* ба, бул иницВладеть, ткст0 имя)			
 			{return cast(ук) CreateMutexA(cast(LPSECURITY_ATTRIBUTES) ба, cast(BOOL) иницВладеть, cast(LPCSTR) имя);}
-ук СоздайМютекс(БЕЗАТРЫ* ба, бул иницВладеть, шткст *имя)			
+ук СоздайМютекс(БЕЗАТРЫ* ба, бул иницВладеть, ткст *имя)			
 			{return cast(ук) CreateMutexW(cast(LPSECURITY_ATTRIBUTES) ба, cast(BOOL) иницВладеть, cast(LPCWSTR) имя);}
 ук СоздайИменованныйПайпА(ткст0 имя, ППайп режПайп, ППайп типПайп, бцел максЭкз, бцел размВыхБуф, бцел размВхБуф, бцел дефТаймаут, БЕЗАТРЫ *ба)		
 	{return cast(ук) CreateNamedPipeA(cast(LPCSTR) имя, cast(DWORD) режПайп, cast(DWORD) типПайп, cast(DWORD) максЭкз, cast(DWORD) размВыхБуф, cast(DWORD) размВхБуф, cast(DWORD) дефТаймаут, cast(LPSECURITY_ATTRIBUTES) ба);}	
-ук СоздайИменованныйПайп(шткст *имя, ППайп режПайп, ППайп типПайп, бцел максЭкз, бцел размВыхБуф, бцел размВхБуф, бцел дефТаймаут, БЕЗАТРЫ *ба)		
+ук СоздайИменованныйПайп(ткст *имя, ППайп режПайп, ППайп типПайп, бцел максЭкз, бцел размВыхБуф, бцел размВхБуф, бцел дефТаймаут, БЕЗАТРЫ *ба)		
 	{return cast(ук) CreateNamedPipeW(cast(LPCWSTR) имя, cast(DWORD) режПайп, cast(DWORD) типПайп, cast(DWORD) максЭкз, cast(DWORD) размВыхБуф, cast(DWORD) размВхБуф, cast(DWORD) дефТаймаут, cast(LPSECURITY_ATTRIBUTES) ба);}
 бул СоздайПайп(ук *пайпЧтен, ук *пайпЗап, БЕЗАТРЫ *баПайпа, бцел размБайтБуф)
 	{return cast(бул) CreatePipe(cast(PHANDLE) пайпЧтен, cast(PHANDLE) пайпЗап, cast(LPSECURITY_ATTRIBUTES) баПайпа, cast(DWORD) размБайтБуф);}
@@ -369,18 +363,15 @@ export extern(C):
 	 return cast(бул) CreateProcessA(cast(LPCTSTR) назвПриложения, cast(LPTSTR) комСтр, cast(LPSECURITY_ATTRIBUTES)атрыПроц, cast(LPSECURITY_ATTRIBUTES) атрыНити, cast(BOOL) наследоватьДескр, cast(DWORD) флаги, cast(LPVOID) среда, cast(LPCSTR) текПап, cast(LPSTARTUPINFO) ис, cast(LPPROCESS_INFORMATION) пи);
 	 }
 
-бул СоздайПроцесс(шткст назвПриложения, шткст комСтр, БЕЗАТРЫ* атрыПроц, БЕЗАТРЫ* атрыНити, бул наследоватьДескр, ПФлагСоздПроц флаги , ук среда, шткст текПап, ИНФОСТАРТА* ис, ИНФОПРОЦ* пи)
+бул СоздайПроцесс(ткст назвПриложения, ткст комСтр, БЕЗАТРЫ* атрыПроц, БЕЗАТРЫ* атрыНити, бул наследоватьДескр, ПФлагСоздПроц флаги , ук среда, ткст текПап, ИНФОСТАРТА* ис, ИНФОПРОЦ* пи)
 	 {
-	ткст назвПриложения2 = toUTF8(назвПриложения);
-	ткст комСтр2 = toUTF8(комСтр);
-	ткст текПап2 = toUTF8(текПап);
-	return cast(бул) CreateProcessW(cast(LPCWSTR) toUTF16z(назвПриложения2), cast(LPWSTR) toUTF16z(комСтр2), cast(LPSECURITY_ATTRIBUTES) атрыПроц, cast(LPSECURITY_ATTRIBUTES) атрыНити, cast(BOOL) наследоватьДескр, cast(DWORD) флаги, cast(LPVOID) среда, cast(LPCWSTR) toUTF16z(текПап2), cast(LPSTARTUPINFO) ис, cast(LPPROCESS_INFORMATION) пи);
+	return cast(бул) CreateProcessW(cast(LPCWSTR) toUTF16z(назвПриложения), cast(LPWSTR) toUTF16z(комСтр), cast(LPSECURITY_ATTRIBUTES) атрыПроц, cast(LPSECURITY_ATTRIBUTES) атрыНити, cast(BOOL) наследоватьДескр, cast(DWORD) флаги, cast(LPVOID) среда, cast(LPCWSTR) toUTF16z(текПап), cast(LPSTARTUPINFO) ис, cast(LPPROCESS_INFORMATION) пи);
 	}		
 ук СоздайУдалённуюНить(ук процесс, БЕЗАТРЫ *баНити, т_мера размСтека, ПРОЦ_СТАРТА_НИТИ стартАдрНити, ук параметр, ПФлагСоздПроц флагиСозд, убцел идНити )
 	{return cast(ук) CreateRemoteThread(cast(HANDLE) процесс, cast(LPSECURITY_ATTRIBUTES) баНити, cast(DWORD) размСтека, cast(LPTHREAD_START_ROUTINE) стартАдрНити, cast(LPVOID) параметр, cast(DWORD) флагиСозд, cast(LPDWORD) идНити);}
 ук СоздайСемафорА(БЕЗАТРЫ *ба, цел начСчёт, цел максСчёт, ткст0 имя)
 	{return cast(ук) CreateSemaphoreA(cast(LPSECURITY_ATTRIBUTES) ба, cast(LONG) начСчёт, cast(LONG) максСчёт, cast(LPCSTR) имя);}
-ук СоздайСемафор(БЕЗАТРЫ *ба, цел начСчёт, цел максСчёт, шткст *имя)
+ук СоздайСемафор(БЕЗАТРЫ *ба, цел начСчёт, цел максСчёт, ткст *имя)
 	{return cast(ук) CreateSemaphoreW(cast(LPSECURITY_ATTRIBUTES) ба, cast(LONG) начСчёт, cast(LONG) максСчёт, cast(LPCWSTR) имя);}
 ПОшибка СоздайТейпОтдел(ук устр, ПТейп мсо, бцел чло, бцел размер)
 	{return cast(ПОшибка) CreateTapePartition(cast(HANDLE) устр, cast(DWORD) мсо, cast(DWORD) чло, cast(DWORD) размер);}
@@ -396,7 +387,7 @@ export extern(C):
 	{return cast(ук) CreateToolhelp32Snapshot(cast(DWORD) флаги, cast(DWORD) идПроцесса32);}
 ук СоздайОжидающийТаймерА(БЕЗАТРЫ *баТаймера, бул ручнСброс, ткст0 имя)	
 	{return cast(ук) CreateWaitableTimerA(cast(LPSECURITY_ATTRIBUTES) баТаймера, cast(BOOL) ручнСброс, cast(LPCSTR) имя);}
-ук СоздайОжидающийТаймер(БЕЗАТРЫ *баТаймера, бул ручнСброс, шткст *имя)	
+ук СоздайОжидающийТаймер(БЕЗАТРЫ *баТаймера, бул ручнСброс, ткст *имя)	
 	{return cast(ук) CreateWaitableTimerW(cast(LPSECURITY_ATTRIBUTES) баТаймера, cast(BOOL) ручнСброс, cast(LPCWSTR) имя);}
 бул ДеактивируйАктКткс(ПАктКткс флаги, бцел куки){return cast (бул) DeactivateActCtx(cast(DWORD) флаги, cast(ULONG_PTR) куки);}
 бул ОтладкаАктивногоПроцесса(бцел идПроцесса)
@@ -408,29 +399,28 @@ export extern(C):
 	//BOOL DebugSetProcessKillOnExit(BOOL);
 бул ОпределиУстройствоДосА(ПДосУстройство флаги , ткст0 имяУстр, ткст0 целПуть )	
 	{return cast(бул) DefineDosDeviceA(cast(DWORD) флаги, cast(LPCSTR) имяУстр, cast(LPCSTR) целПуть);}
-бул ОпределиУстройствоДос(ПДосУстройство флаги , шткст *имяУстр, шткст *целПуть )	
+бул ОпределиУстройствоДос(ПДосУстройство флаги , ткст *имяУстр, ткст *целПуть )	
 	{return cast(бул) DefineDosDeviceW(cast(DWORD) флаги, cast(LPCWSTR) имяУстр, cast(LPCWSTR) целПуть);}
 АТОМ УдалитьАтом(АТОМ а){return cast(АТОМ) DeleteAtom(cast(ATOM) а);}
 проц УдалиКритическуюСекцию(КРИТСЕКЦ *критСекц)	{	DeleteCriticalSection(cast(CRITICAL_SECTION *) критСекц);	}
 проц УдалиФибру(ук фиб){ DeleteFiber(cast(PVOID) фиб);}
 бул УдалиФайлА(in ткст фимя)	{	return cast(бул) DeleteFileA(toStringz(фимя));	}
-бул УдалиФайл(in шткст фимя)
+бул УдалиФайл(in ткст фимя)
 	{
-	ткст ф = toUTF8(фимя);
-	return cast(бул) DeleteFileW(toUTF16z(ф));
+	return cast(бул) DeleteFileW(toUTF16z(фимя));
 	}
 бул УдалиОчередьТаймеров(ук от ){return cast(бул) DeleteTimerQueue(cast(HANDLE) от);}
 бул УдалиОчередьТаймеровДоп(ук от, ук событиеЗавершения){return cast(бул) DeleteTimerQueueEx(cast(HANDLE) от, cast(HANDLE) событиеЗавершения);}
 бул УдалиТаймерОчередиТаймеров(ук от , ук т, ук собЗав ) {return cast(бул) DeleteTimerQueueTimer(cast(HANDLE) от, cast(HANDLE) т, cast(HANDLE) собЗав);}
 бул УдалиМонтажнуюТочкуТомаА(ткст0 монтТчк){return cast(бул) DeleteVolumeMountPointA(cast(LPCSTR) монтТчк);}
-бул УдалиМонтажнуюТочкуТома(шткст *монтТчк){return cast(бул) DeleteVolumeMountPointW(cast(LPCWSTR) монтТчк);}
+бул УдалиМонтажнуюТочкуТома(ткст *монтТчк){return cast(бул) DeleteVolumeMountPointW(cast(LPCWSTR) монтТчк);}
 бул УправляйВВУстройства(ук устр, бцел кодУпрВВ /*см. win32.winioctl*/, ук вхБуф, т_мера размВхБуф, ук выхБуф, т_мера размВыхБуф, бцел *возвращеноБайт, АСИНХРОН *ас)
 	{return cast(бул) DeviceIoControl(cast(HANDLE) устр, cast(DWORD) кодУпрВВ, cast(LPVOID) вхБуф, cast(DWORD) размВхБуф, cast(LPVOID) выхБуф, cast(DWORD) размВыхБуф, cast(LPDWORD) возвращеноБайт, cast(LPOVERLAPPED) ас );}
 бул ОтключиВызовыБиблиотекиИзНити(ук модуль){return cast(бул) DisableThreadLibraryCalls(cast(HMODULE) модуль);}
 бул ОтключиИменованныйПайп(ук пайп){return cast(бул) DisconnectNamedPipe(cast(HANDLE) пайп);}
 бул ХостИмяДнсВИмяКомпьютераА(ткст0 имяХоста, ткст0 имяКомпа, убцел разм)
 	{return cast(бул) DnsHostnameToComputerNameA( cast(LPCTSTR) имяХоста, cast(LPTSTR) имяКомпа, cast(LPDWORD) разм);}  
-бул ХостИмяДнсВИмяКомпьютера(шткст  имяХоста, шткст имяКомпа, убцел разм)
+бул ХостИмяДнсВИмяКомпьютера(ткст  имяХоста, ткст имяКомпа, убцел разм)
 	{return cast(бул) DnsHostnameToComputerNameW( cast(LPCWSTR) имяХоста, cast(LPWSTR) имяКомпа, cast(LPDWORD) разм);}
   
   

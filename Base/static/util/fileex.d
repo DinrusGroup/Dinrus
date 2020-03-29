@@ -1,4 +1,4 @@
-
+﻿
 module util.fileex;
 
 version(unix)   version = Unix;
@@ -6,8 +6,9 @@ version(Unix)   version = Posix;
 version(linux)  version = Posix;
 version(darwin) version = Posix;
 
-private{
-    import dinrus;
+private
+{
+    import cidrus, stdrus, exception;
 
     import util.str;
     import util.booltype;   // definition of Да и Нет
@@ -15,6 +16,8 @@ private{
     alias util.booltype.Нет Нет;
     alias util.booltype.Бул Бул;
     static import util.pathex;
+
+    alias stdrus.извлекиРасш дайРасш;
 
     ткст[] vGrepOpts;
 
@@ -28,7 +31,8 @@ private{
 
 }
 
-public {
+public
+{
     version(BuildVerbose) Бул подробно;
     Бул тестЗапуск;
     ткст расширениеЭкзэ;
@@ -57,7 +61,7 @@ enum ОпцПолучения
 {
     Есть = 'e',   // Must exist otherwise Get fails.
     Всегда = 'a'    // Get always returns something, even if it's just
-                    //   empty строки for a missing файл.
+                   //   empty строки for a missing файл.
 };
 
 // Зачитать весь файл в текстовое представление.
@@ -68,10 +72,11 @@ enum ОпцПолучения
     {
         текстф = cast(ткст) читайФайл(имяф);
         if ( (текстф.length == 0) ||
-             (текстф[$-1] != '\n'))
-             текстф ~= РАЗДСТР;
+                (текстф[$-1] != '\n'))
+            текстф ~= РАЗДСТР;
     }
-    else if (опц == ОпцПолучения.Есть) {
+    else if (опц == ОпцПолучения.Есть)
+    {
         ошибка( фм("Файл '%s' не найден.", имяф));
     }
     return текстф;
@@ -110,7 +115,8 @@ enum ОпцСоздания
     if (естьФайл(имяф))
         удалиФайл(имяф);
 
-    foreach(ткст текст; строки) {
+    foreach(ткст текст; строки)
+    {
         // Strip off any trailing line-end chars.
         for(цел i = текст.length-1; i >= 0; i--)
         {
@@ -168,32 +174,32 @@ enum ОпцСоздания
     {
         switch (c)
         {
-            case 'i', 'I':
-                lCaseSensitive = false;
-                break;
+        case 'i', 'I':
+            lCaseSensitive = false;
+            break;
 
-            case 'r', 'R':
-                lRegExp = true;
-                break;
+        case 'r', 'R':
+            lRegExp = true;
+            break;
 
-            case 'w', 'W':
-                lWordOnly = true;
-                break;
+        case 'w', 'W':
+            lWordOnly = true;
+            break;
 
-            case 'a', 'A':
-                lCounting = false;
-                break;
+        case 'a', 'A':
+            lCounting = false;
+            break;
 
-            case 'd', 'D':
-                lCaseSensitive = true;
-                lRegExp = false;
-                lWordOnly = false;
-                lCounting = true;
-                break;
+        case 'd', 'D':
+            lCaseSensitive = true;
+            lRegExp = false;
+            lWordOnly = false;
+            lCounting = true;
+            break;
 
-            default:
-                // Ignore unrecognized опции.
-                break;
+        default:
+            // Ignore unrecognized опции.
+            break;
         }
     }
 
@@ -309,7 +315,8 @@ enum ОпцСоздания
     цел lRC;
     цел lTrueRC;
 
-    if (тестЗапуск == Да) {
+    if (тестЗапуск == Да)
+    {
         скажифнс("Команда: '%s'",команда);
         return 0;
     }
@@ -329,11 +336,15 @@ enum ОпцСоздания
 
         version(BuildVerbose)
         {
-            if(подробно == Да) {
-                if (lTrueRC == 0){
+            if(подробно == Да)
+            {
+                if (lTrueRC == 0)
+                {
                     скажинс("Успешно");
-                } else {
-                   скажифнс("Неудачно. Возвратный код: %04x",lRC);
+                }
+                else
+                {
+                    скажифнс("Неудачно. Возвратный код: %04x",lRC);
                 }
             }
         }

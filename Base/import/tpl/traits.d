@@ -88,10 +88,11 @@ template КортежТипаПоле(S)
 	static assert(0, cast(ткст)"аргумент не является структурой или классом");
 }
 
-
 /***
- * Получить КортежТипа базового класса и базовые интерфейсы
- * данного класса или интерфейса.
+ * Получить $(D_PARAM КортежТипов) базового класса и базовые интерфейсы
+ * этого класса или интерфейса. $(D_PARAM КортежТипаОснова!(Объект)) возвращает
+ * пустой кортеж типов.
+ * 
  * Пример:
  * ---
  * import tpl.traits, tpl.typetuple, stdrus;
@@ -102,7 +103,7 @@ template КортежТипаПоле(S)
  * проц main()
  * {
  *     alias КортежТипаОснова!(B) TL;
- *     writefln(typeid(TL));	// prints: (A,I)
+ *     пишинс(typeid(TL));  // выводит: (A,I)
  * }
  * ---
  */
@@ -110,21 +111,25 @@ template КортежТипаПоле(S)
 template КортежТипаОснова(A)
 {
     static if (is(A P == super))
-	alias P КортежТипаОснова;
+    alias P КортежТипаОснова;
     else
-	static assert(0, cast(ткст) "аргумент не является классом или интерфейсом");
+    static assert(0, "аргумент не является классом или интерфейсом");
 }
 
 unittest
 {
-    interface I { }
+    interface I1 { }
+    interface I2 { }
     class A { }
-    class B : A, I { }
+    class C : A, I1, I2 { }
 
-    alias КортежТипаОснова!(B) TL;
-    assert(TL.length == 2);
+    alias КортежТипаОснова!(C) TL;
+    assert(TL.length == 3);
     assert(is (TL[0] == A));
-    assert(is (TL[1] == I));
+    assert(is (TL[1] == I1));
+    assert(is (TL[2] == I2));
+
+    assert(КортежТипаОснова!(Объект).length == 0);
 }
 
 /* *******************************************
@@ -174,9 +179,9 @@ static assert (!статМас_ли!(цел[1][]));
 template кортежВыражений_ли(Т ...)
 {
     static if (is(проц function(Т)))
-	const бул кортежВыражений_ли = false;
+	const бул кортежВыражений_ли = нет;
     else
-	const бул кортежВыражений_ли = true;
+	const бул кортежВыражений_ли = да;
 }
 
 //std2.traits
@@ -208,7 +213,7 @@ template ТипВозврата2(дг, dummy = void)
     else static if (is(дг C == class))
 	alias ТипВозврата2!(typeof(&дг.opCall), проц) ТипВозврата2;
     else
-	static assert(0, "у аргумента false возвратного типа");
+	static assert(0, "у аргумента нет возвратного типа");
 }
 
 unittest
@@ -267,412 +272,368 @@ template КортежТипаПараметров(дг)
     else
 	static assert(0, "у аргумента параметры отсутствуют");
 }
-/+
+
 
 /***
- * Get the типы of the fields of a struct or class.
- * This consists of the fields that take up memory space,
- * excluding the hidden fields like the virtual function
- * table pointer.
+ * Получить типы полей структуры или класса.
+ * Состоит из полей, которые захватывают пространство памяти,
+ * исключая скрытые поля, как указатель на таблицу виртуальных
+ * функций.
  */
 
-template FieldTypeTuple(S)
+template КортежТиповПолей(S)
 {
     static if (is(S == struct) || is(S == class) || is(S == union))
-	alias typeof(S.tupleof) FieldTypeTuple;
+	alias typeof(S.tupleof) КортежТиповПолей;
     else
-        alias S FieldTypeTuple;
-	//static assert(0, "argument is not struct or class");
+        alias S КортежТиповПолей;
+	//static assert(0, "аргумент не является структурой или классом");
 }
 
-// // FieldOffsetsTuple
-// protected template FieldOffsetsTupleImpl(т_мера n, Т...)
+// // КортежСмещенийПолей
+// protected template КортежСмещенийПолей_реализ(т_мера n, Т...)
 // {
 //     static if (Т.length == 0)
 //     {
-//         alias КортежТипа!() Result;
+//         alias КортежТипов!() Результат;
 //     }
 //     else
 //     {
-//         //protected alias FieldTypeTuple!(Т[0]) Types;
-//         protected enum т_мера myOffset =
+//         //protected alias КортежТиповПолей!(Т[0]) Типы;
+//         protected const т_мера мСмещение =
 //             ((n + Т[0].alignof - 1) / Т[0].alignof) * Т[0].alignof;
 //         static if (is(Т[0] == struct))
 //         {
-//             alias FieldTypeTuple!(Т[0]) MyRep;
-//             alias FieldOffsetsTupleImpl!(myOffset, MyRep, Т[1 .. $]).Result
-//                 Result;
+//             alias КортежТиповПолей!(Т[0]) MyRep;
+//             alias КортежСмещенийПолей_реализ!(мСмещение, MyRep, Т[1 .. $]).Результат
+//                 Результат;
 //         }
 //         else
 //         {
 //             protected enum т_мера mySize = Т[0].sizeof;
-//             alias КортежТипа!(myOffset) Head;
+//             alias КортежТипов!(мСмещение) Голова;
 //             static if (is(Т == union))
 //             {
-//                 alias FieldOffsetsTupleImpl!(myOffset, Т[1 .. $]).Result
+//                 alias КортежСмещенийПолей_реализ!(мСмещение, Т[1 .. $]).Результат
 //                     Tail;
 //             }
 //             else
 //             {
-//                 alias FieldOffsetsTupleImpl!(myOffset + mySize,
-//                                              Т[1 .. $]).Result
+//                 alias КортежСмещенийПолей_реализ!(мСмещение + mySize,
+//                                              Т[1 .. $]).Результат
 //                     Tail;
 //             }
-//             alias КортежТипа!(Head, Tail) Result;
+//             alias КортежТипов!(Голова, Tail) Результат;
 //         }
 //     }
 // }
 
-// template FieldOffsetsTuple(Т...)
+// template КортежСмещенийПолей(Т...)
 // {
-//     alias FieldOffsetsTupleImpl!(0, Т).Result FieldOffsetsTuple;
+//     alias КортежСмещенийПолей_реализ!(0, Т).Результат КортежСмещенийПолей;
 // }
 
 // unittest
 // {
-//     alias FieldOffsetsTuple!(цел) T1;
+//     alias КортежСмещенийПолей!(цел) T1;
 //     assert(T1.length == 1 && T1[0] == 0);
 //     //
-//     struct S2 { char a; цел b; char c; double d; char e, f; }
-//     alias FieldOffsetsTuple!(S2) T2;
+//     struct S2 { сим a; цел b; сим c; дво d; сим e, f; }
+//     alias КортежСмещенийПолей!(S2) T2;
 //     //pragma(msg, T2);
 //     static assert(T2.length == 6
 //            && T2[0] == 0 && T2[1] == 4 && T2[2] == 8 && T2[3] == 16
 //                   && T2[4] == 24&& T2[5] == 25);
 //     //
 //     class C { цел a, b, c, d; }
-//     struct S3 { char a; C b; char c; }
-//     alias FieldOffsetsTuple!(S3) T3;
+//     struct S3 { сим a; C b; сим c; }
+//     alias КортежСмещенийПолей!(S3) T3;
 //     //pragma(msg, T2);
 //     static assert(T3.length == 3
 //            && T3[0] == 0 && T3[1] == 4 && T3[2] == 8);
 //     //
-//     struct S4 { char a; union { цел b; char c; } цел d; }
-//     alias FieldOffsetsTuple!(S4) T4;
-//     //pragma(msg, FieldTypeTuple!(S4));
+//     struct S4 { сим a; union { цел b; сим c; } цел d; }
+//     alias КортежСмещенийПолей!(S4) T4;
+//     //pragma(msg, КортежТиповПолей!(S4));
 //     static assert(T4.length == 4
 //            && T4[0] == 0 && T4[1] == 4 && T4[2] == 8);
 // }
 
 // /***
-// Get the offsets of the fields of a struct or class.
+// Поучить смещение полея структуры или класса.
 // */
 
-// template FieldOffsetsTuple(S)
+// template КортежСмещенийПолей(S)
 // {
 //     static if (is(S == struct) || is(S == class))
-// 	alias typeof(S.tupleof) FieldTypeTuple;
+// 	alias typeof(S.tupleof) КортежТиповПолей;
 //     else
-// 	static assert(0, "argument is not struct or class");
+// 	static assert(0, "аргумент не является структурой или классом");
 // }
 
 /***
-Get the primitive типы of the fields of a struct or class, in
-topological order.
+Получить примитивные типы полей структуры или класса, в
+топологическом порядке.
 
-Example:
+Пример:
 ----
-struct S1 { цел a; float b; }
+struct S1 { цел a; плав b; }
 struct S2 { ткст a; union { S1 b; S1 * c; } }
-alias RepresentationTypeTuple!(S2) R;
+alias КортежТиповПредставления!(S2) R;
 assert(R.length == 4
-    && is(R[0] == char[]) && is(R[1] == цел)
-    && is(R[2] == float) && is(R[3] == S1*));
+    && is(R[0] == сим[]) && is(R[1] == цел)
+    && is(R[2] == плав) && is(R[3] == S1*));
 ----
 */
 
-template RepresentationTypeTuple(Т...)
+template КортежТиповПредставления(Т...)
 {
     static if (Т.length == 0)
     {
-        alias КортежТипа!() RepresentationTypeTuple;
+        alias КортежТипов!() КортежТиповПредставления;
     }
     else
     {
         static if (is(Т[0] == struct) || is(Т[0] == union))
 // @@@BUG@@@ this should work
-//             alias .RepresentationTypes!(Т[0].tupleof)
-//                 RepresentationTypes;
-            alias .RepresentationTypeTuple!(FieldTypeTuple!(Т[0]),
+//             alias .ТипыПредставления!(Т[0].tupleof)
+//                 ТипыПредставления;
+            alias .КортежТиповПредставления!(КортежТиповПолей!(Т[0]),
                                             Т[1 .. $])
-                RepresentationTypeTuple;
+                КортежТиповПредставления;
         else static if (is(Т[0] U == typedef))
         {
-            alias .RepresentationTypeTuple!(FieldTypeTuple!(U),
+            alias .КортежТиповПредставления!(КортежТиповПолей!(U),
                                             Т[1 .. $])
-                RepresentationTypeTuple;
+                КортежТиповПредставления;
         }
         else
         {
-            alias КортежТипа!(Т[0], RepresentationTypeTuple!(Т[1 .. $]))
-                RepresentationTypeTuple;
+            alias КортежТипов!(Т[0], КортежТиповПредставления!(Т[1 .. $]))
+                КортежТиповПредставления;
         }
     }
 }
 
 unittest
 {
-    alias RepresentationTypeTuple!(цел) S1;
-    static assert(is(S1 == КортежТипа!(цел)));
+    alias КортежТиповПредставления!(цел) S1;
+    static assert(is(S1 == КортежТипов!(цел)));
     struct S2 { цел a; }
-    static assert(is(RepresentationTypeTuple!(S2) == КортежТипа!(цел)));
-    struct S3 { цел a; char b; }
-    static assert(is(RepresentationTypeTuple!(S3) == КортежТипа!(цел, char)));
+    static assert(is(КортежТиповПредставления!(S2) == КортежТипов!(цел)));
+    struct S3 { цел a; сим b; }
+    static assert(is(КортежТиповПредставления!(S3) == КортежТипов!(цел, сим)));
     struct S4 { S1 a; цел b; S3 c; }
-    static assert(is(RepresentationTypeTuple!(S4) ==
-                     КортежТипа!(цел, цел, цел, char)));
+    static assert(is(КортежТиповПредставления!(S4) ==
+                     КортежТипов!(цел, цел, цел, сим)));
 
-    struct S11 { цел a; float b; }
+    struct S11 { цел a; плав b; }
     struct S21 { ткст a; union { S11 b; S11 * c; } }
-    alias RepresentationTypeTuple!(S21) R;
+    alias КортежТиповПредставления!(S21) R;
     assert(R.length == 4
-           && is(R[0] == char[]) && is(R[1] == цел)
-           && is(R[2] == float) && is(R[3] == S11*));
+           && is(R[0] == сим[]) && is(R[1] == цел)
+           && is(R[2] == плав) && is(R[3] == S11*));
 }
 
 /*
-RepresentationOffsets
+СмещенияПредставления
 */
 
-// protected template Repeat(т_мера n, Т...)
+// protected template Повторить(т_мера n, Т...)
 // {
-//     static if (n == 0) alias КортежТипа!() Repeat;
-//     else alias КортежТипа!(Т, Repeat!(n - 1, Т)) Repeat;
+//     static if (n == 0) alias КортежТипов!() Повторить;
+//     else alias КортежТипов!(Т, Повторить!(n - 1, Т)) Повторить;
 // }
 
-// template RepresentationOffsetsImpl(т_мера n, Т...)
+// template СмещенияПредставления_реализ(т_мера n, Т...)
 // {
 //     static if (Т.length == 0)
 //     {
-//         alias КортежТипа!() Result;
+//         alias КортежТипов!() Результат;
 //     }
 //     else
 //     {
-//         protected enum т_мера myOffset =
+//         protected enum т_мера мСмещение =
 //             ((n + Т[0].alignof - 1) / Т[0].alignof) * Т[0].alignof;
 //         static if (!is(Т[0] == union))
 //         {
-//             alias Repeat!(n, FieldTypeTuple!(Т[0])).Result
-//                 Head;
+//             alias Повторить!(n, КортежТиповПолей!(Т[0])).Результат
+//                 Голова;
 //         }
 //         static if (is(Т[0] == struct))
 //         {
-//             alias .RepresentationOffsetsImpl!(n, FieldTypeTuple!(Т[0])).Result
-//                 Head;
+//             alias .СмещенияПредставления_реализ!(n, КортежТиповПолей!(Т[0])).Результат
+//                 Голова;
 //         }
 //         else
 //         {
-//             alias КортежТипа!(myOffset) Head;
+//             alias КортежТипов!(мСмещение) Голова;
 //         }
-//         alias КортежТипа!(Head,
-//                          RepresentationOffsetsImpl!(
-//                              myOffset + Т[0].sizeof, Т[1 .. $]).Result)
-//             Result;
+//         alias КортежТипов!(Голова,
+//                          СмещенияПредставления_реализ!(
+//                              мСмещение + Т[0].sizeof, Т[1 .. $]).Результат)
+//             Результат;
 //     }
 // }
 
-// template RepresentationOffsets(Т)
+// template СмещенияПредставления(Т)
 // {
-//     alias RepresentationOffsetsImpl!(0, Т).Result
-//         RepresentationOffsets;
+//     alias СмещенияПредставления_реализ!(0, Т).Результат
+//         СмещенияПредставления;
 // }
 
 // unittest
 // {
-//     struct S1 { char c; цел i; }
-//     alias RepresentationOffsets!(S1) Offsets;
-//     static assert(Offsets[0] == 0);
-//     //pragma(msg, Offsets[1]);
-//     static assert(Offsets[1] == 4);
+//     struct S1 { сим c; цел i; }
+//     alias СмещенияПредставления!(S1) Смещения;
+//     static assert(Смещения[0] == 0);
+//     //pragma(msg, Смещения[1]);
+//     static assert(Смещения[1] == 4);
 // }
 
-// hasRawAliasing
+// естьСырАлиасинг
 
-protected template HasRawPointerImpl(Т...)
+protected template ЕстьЛиСыройУк_реализ(Т...)
 {
     static if (Т.length == 0)
     {
-        const результат = false;
+        const результат = нет;
     }
     else
     {
         static if (is(Т[0] U : U*))
-            const hasRawAliasing = true;
+            const естьСырАлиасинг = да;
         else static if (is(Т[0] U : U[]))
-            const hasRawAliasing = true;
+            const естьСырАлиасинг = да;
         else
-            const hasRawAliasing = false;
-        const результат = hasRawAliasing || HasRawPointerImpl!(Т[1 .. $]).результат;
+            const естьСырАлиасинг = нет;
+        const результат = естьСырАлиасинг || ЕстьЛиСыройУк_реализ!(Т[1 .. $]).результат;
     }
 }
 
 /*
-Statically evaluates to $(D true) if and only if $(D Т)'s
-representation contains at least one field of pointer or массив type.
-Members of class типы are not considered raw pointers. Pointers to
-invariant objects are not considered raw aliasing.
+Статически оценивается в $(D да), тогда и только тогда, когда представление $(D Т)
+содержит как минимум одно поле типа указатель или массив.
+Члены типов класс не считаются сырыми указателями. Указатели на инвариантные объекты
+не рассматриваются в сыром алиасинге.
 
-Example:
+Пример:
 ---
-// simple типы
-static assert(!hasRawAliasing!(цел));
-static assert(hasRawAliasing!(char*));
-// references aren't raw pointers
-static assert(!hasRawAliasing!(Object));
-// built-in arrays do contain raw pointers
-static assert(hasRawAliasing!(цел[]));
-// aggregate of simple типы
-struct S1 { цел a; double b; }
-static assert(!hasRawAliasing!(S1));
+// простые типы
+static assert(!естьСырАлиасинг!(цел));
+static assert(естьСырАлиасинг!(сим*));
+// ссылки не являются сырыми указателями
+static assert(!естьСырАлиасинг!(Объект));
+// встроенные массивы содержат сырые указатели
+static assert(естьСырАлиасинг!(цел[]));
+// агрегат простых типов
+struct S1 { цел a; дво b; }
+static assert(!естьСырАлиасинг!(S1));
 // indirect aggregation
-struct S2 { S1 a; double b; }
-static assert(!hasRawAliasing!(S2));
+struct S2 { S1 a; дво b; }
+static assert(!естьСырАлиасинг!(S2));
 // struct with a pointer member
-struct S3 { цел a; double * b; }
-static assert(hasRawAliasing!(S3));
+struct S3 { цел a; дво * b; }
+static assert(естьСырАлиасинг!(S3));
 // struct with an indirect pointer member
-struct S4 { S3 a; double b; }
-static assert(hasRawAliasing!(S4));
+struct S4 { S3 a; дво b; }
+static assert(естьСырАлиасинг!(S4));
 ----
 */
-protected template hasRawAliasing(Т...)
+protected template естьСырАлиасинг(Т...)
 {
-    const hasRawAliasing
-        = HasRawPointerImpl!(RepresentationTypeTuple!(Т)).результат;
+    const естьСырАлиасинг
+        = ЕстьЛиСыройУк_реализ!(КортежТиповПредставления!(Т)).результат;
 }
 
 unittest
 {
 // simple типы
-    static assert(!hasRawAliasing!(цел));
-    static assert(hasRawAliasing!(char*));
-// references aren't raw pointers
-    static assert(!hasRawAliasing!(Object));
-    static assert(!hasRawAliasing!(цел));
+    static assert(!естьСырАлиасинг!(цел));
+    static assert(естьСырАлиасинг!(сим*));
+// ссылки не являются сырыми указателями
+    static assert(!естьСырАлиасинг!(Объект));
+    static assert(!естьСырАлиасинг!(цел));
     struct S1 { цел z; }
-    static assert(!hasRawAliasing!(S1));
+    static assert(!естьСырАлиасинг!(S1));
     struct S2 { цел* z; }
-    static assert(hasRawAliasing!(S2));
+    static assert(естьСырАлиасинг!(S2));
     struct S3 { цел a; цел* z; цел c; }
-    static assert(hasRawAliasing!(S3));
+    static assert(естьСырАлиасинг!(S3));
     struct S4 { цел a; цел z; цел c; }
-    static assert(!hasRawAliasing!(S4));
-    struct S5 { цел a; Object z; цел c; }
-    static assert(!hasRawAliasing!(S5));
+    static assert(!естьСырАлиасинг!(S4));
+    struct S5 { цел a; Объект z; цел c; }
+    static assert(!естьСырАлиасинг!(S5));
     union S6 { цел a; цел b; }
-    static assert(!hasRawAliasing!(S6));
+    static assert(!естьСырАлиасинг!(S6));
     union S7 { цел a; цел * b; }
-    static assert(hasRawAliasing!(S7));
+    static assert(естьСырАлиасинг!(S7));
     typedef цел* S8;
-    static assert(hasRawAliasing!(S8));
+    static assert(естьСырАлиасинг!(S8));
     enum S9 { a };
-    static assert(!hasRawAliasing!(S9));
+    static assert(!естьСырАлиасинг!(S9));
     // indirect members
     struct S10 { S7 a; цел b; }
-    static assert(hasRawAliasing!(S10));
+    static assert(естьСырАлиасинг!(S10));
     struct S11 { S6 a; цел b; }
-    static assert(!hasRawAliasing!(S11));
+    static assert(!естьСырАлиасинг!(S11));
 }
 
 /*
-Statically evaluates to $(D true) if and only if $(D Т)'s
-representation includes at least one non-invariant object reference.
+Статически оценивается в $(D да), тогда и только тогда, когда в 
+представление $(D Т) входит хотя бы одна инвариантная ссылка на объект.
 */
 
-protected template hasObjects(Т...)
+protected template имеетОбъекты(Т...)
 {
     static if (Т.length == 0)
     {
-        const hasObjects = false;
+        const имеетОбъекты = нет;
     }
     else static if (is(Т[0] U == typedef))
     {
-        const hasObjects = hasObjects!(U, Т[1 .. $]);
+        const имеетОбъекты = имеетОбъекты!(U, Т[1 .. $]);
     }
     else static if (is(Т[0] == struct))
     {
-        const hasObjects = hasObjects!(
-            RepresentationTypeTuple!(Т[0]), Т[1 .. $]);
+        const имеетОбъекты = имеетОбъекты!(
+            КортежТиповПредставления!(Т[0]), Т[1 .. $]);
     }
     else
     {
-        const hasObjects = is(Т[0] == class) || hasObjects!(Т[1 .. $]);
+        const имеетОбъекты = is(Т[0] == class) || имеетОбъекты!(Т[1 .. $]);
     }
 }
 
 /**
-Returns $(D true) if and only if $(D Т)'s representation includes at
-least one of the following: $(OL $(LI a raw pointer $(D U*) and $(D U)
-is not invariant;) $(LI an массив $(D U[]) and $(D U) is not
-invariant;) $(LI a reference to a class type $(D C) and $(D C) is not
-invariant.))
+* Возвращает $(D да), тогда и только тогда, если представление $(D Т)
+* включает в себя хотябы одно из следующего:
+*  $(OL $(LI сырой указатель $(D U*) и $(D U)не инвариант;)
+*  $(LI  массив $(D U[]) и $(D U) iне инвариант;) 
+* $(LI ссылка на тип класса $(D C) и $(D C) не инвариант.))
 */
 
-template hasAliasing(Т...)
+template имеетАлиасинг(Т...)
 {
-    const hasAliasing = hasRawAliasing!(Т) || hasObjects!(Т);
+    const имеетАлиасинг = естьСырАлиасинг!(Т) || имеетОбъекты!(Т);
 }
 
 unittest
 {
-    struct S1 { цел a; Object b; }
-    static assert(hasAliasing!(S1));
+    struct S1 { цел a; Объект b; }
+    static assert(имеетАлиасинг!(S1));
     struct S2 { string a; }
-    static assert(!hasAliasing!(S2));
-}
-
-/***
- * Get a $(D_PARAM КортежТипа) of the base class and base interfaces of
- * this class or interface. $(D_PARAM КортежТипаОснова!(Object)) returns
- * the empty type tuple.
- * 
- * Example:
- * ---
- * import std.traits, std.typetuple, stdrus;
- * interface I { }
- * class A { }
- * class B : A, I { }
- *
- * проц main()
- * {
- *     alias КортежТипаОснова!(B) TL;
- *     writeln(typeid(TL));	// prints: (A,I)
- * }
- * ---
- */
-
-template КортежТипаОснова(A)
-{
-    static if (is(A P == super))
-	alias P КортежТипаОснова;
-    else
-	static assert(0, "argument is not a class or interface");
-}
-
-unittest
-{
-    interface I1 { }
-    interface I2 { }
-    class A { }
-    class C : A, I1, I2 { }
-
-    alias КортежТипаОснова!(C) TL;
-    assert(TL.length == 3);
-    assert(is (TL[0] == A));
-    assert(is (TL[1] == I1));
-    assert(is (TL[2] == I2));
-
-    assert(КортежТипаОснова!(Object).length == 0);
+    static assert(!имеетАлиасинг!(S2));
 }
 
 /**
- * Get a $(D_PARAM КортежТипа) of $(I all) base classes of this class,
- * in decreasing order. Interfaces are not included. $(D_PARAM
- * BaseClassesTuple!(Object)) yields the empty type tuple.
+ * Получить $(D_PARAM КортежТипов) базовых классов $(I all) данного класса,
+ * в уменьшающемся порядке. Не включая интерфесы. $(D_PARAM
+ * КортежБазовыхКлассов!(Объект)) получает пустой кортеж типов.
  *
- * Example:
+ * Пример:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import tpl.traits, tpl.typetuple, stdrus;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -680,39 +641,39 @@ unittest
  *
  * проц main()
  * {
- *     alias BaseClassesTuple!(C) TL;
- *     writeln(typeid(TL));	// prints: (B,A,Object)
+ *     alias КортежБазовыхКлассов!(C) TL;
+ *     пишинс(typeid(TL));	// выводит: (B,A,Объект)
  * }
  * ---
  */
 
-template BaseClassesTuple(Т)
+template КортежБазовыхКлассов(Т)
 {
-    static if (is(Т == Object))
+    static if (is(Т == Объект))
     {
-        alias КортежТипа!() BaseClassesTuple;
+        alias КортежТипов!() КортежБазовыхКлассов;
     }
-    static if (is(КортежТипаОснова!(Т)[0] == Object))
+    static if (is(КортежТипаОснова!(Т)[0] == Объект))
     {
-        alias КортежТипа!(Object) BaseClassesTuple;
+        alias КортежТипов!(Объект) КортежБазовыхКлассов;
     }
     else
     {
-        alias КортежТипа!(КортежТипаОснова!(Т)[0],
-                         BaseClassesTuple!(КортежТипаОснова!(Т)[0]))
-            BaseClassesTuple;
+        alias КортежТипов!(КортежТипаОснова!(Т)[0],
+                         КортежБазовыхКлассов!(КортежТипаОснова!(Т)[0]))
+            КортежБазовыхКлассов;
     }
 }
 
 /**
- * Get a $(D_PARAM КортежТипа) of $(I all) interfaces directly or
- * indirectly inherited by this class or interface. Interfaces do not
- * repeat if multiply implemented. $(D_PARAM КортежИнтерфейсов!(Object))
- * yields the empty type tuple.
+ * Получить $(D_PARAM КортежТипов) из $(I всех) интерфейсов, прямо или
+ * косвенно унаследованных данным классом или интерфейсом. Если реализовано умножение,
+ * интерфейсы не повторяются. $(D_PARAM КортежИнтерфейсов!(Объект))
+ * получает пустой кортеж типов.
  *
- * Example:
+ * Пример:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import tpl.traits, tpl.typetuple, stdrus;
  * interface I1 { }
  * interface I2 { }
  * class A : I1, I2 { }
@@ -722,25 +683,25 @@ template BaseClassesTuple(Т)
  * проц main()
  * {
  *     alias КортежИнтерфейсов!(C) TL;
- *     writeln(typeid(TL));	// prints: (I1, I2)
+ *     пишинс(typeid(TL));	// выводит: (I1, I2)
  * }
  * ---
  */
 
 template КортежИнтерфейсов(Т)
 {
-    static if (is(Т == Object))
+    static if (is(Т == Объект))
     {
-        alias КортежТипа!() КортежИнтерфейсов;
+        alias КортежТипов!() КортежИнтерфейсов;
     }
-    static if (is(КортежТипаОснова!(Т)[0] == Object))
+    static if (is(КортежТипаОснова!(Т)[0] == Объект))
     {
-        alias КортежТипа!(КортежТипаОснова!(Т)[1 .. $]) КортежИнтерфейсов;
+        alias КортежТипов!(КортежТипаОснова!(Т)[1 .. $]) КортежИнтерфейсов;
     }
     else
     {
         alias БезДубликатов!(
-            КортежТипа!(КортежТипаОснова!(Т)[1 .. $], // direct interfaces
+            КортежТипов!(КортежТипаОснова!(Т)[1 .. $], // прямые интерфейсы
                        КортежИнтерфейсов!(КортежТипаОснова!(Т)[0])))
             КортежИнтерфейсов;
     }
@@ -769,14 +730,14 @@ unittest
 }
 
 /**
- * Get a $(D_PARAM КортежТипа) of $(I all) base classes of $(D_PARAM
- * Т), in decreasing order, followed by $(D_PARAM Т)'s
- * interfaces. $(D_PARAM TransitiveКортежТипаОснова!(Object)) yields the
- * empty type tuple.
+ * Получить $(D_PARAM КортежТипов) из  $(I всех) базовых классов для $(D_PARAM
+ * Т), в нисходящем порядке, за которым следуют интерфесы $(D_PARAM Т).
+ * $(D_PARAM ТранзитивныйКортежБазовыхТипов!(Объект)) получает
+ * пустой кортеж типов.
  *
- * Example:
+ * Пример:
  * ---
- * import std.traits, std.typetuple, stdrus;
+ * import tpl.traits, tpl.typetuple, stdrus;
  * interface I { }
  * class A { }
  * class B : A, I { }
@@ -784,20 +745,20 @@ unittest
  *
  * проц main()
  * {
- *     alias TransitiveКортежТипаОснова!(C) TL;
- *     writeln(typeid(TL));	// prints: (B,A,Object,I)
+ *     alias ТранзитивныйКортежБазовыхТипов!(C) TL;
+ *     пишинс(typeid(TL));	// выводит: (B,A,Объект,I)
  * }
  * ---
  */
 
-template TransitiveКортежТипаОснова(Т)
+template ТранзитивныйКортежБазовыхТипов(Т)
 {
-    static if (is(Т == Object))
-        alias КортежТипа!() TransitiveКортежТипаОснова;
+    static if (is(Т == Объект))
+        alias КортежТипов!() ТранзитивныйКортежБазовыхТипов;
     else
-        alias КортежТипа!(BaseClassesTuple!(Т),
+        alias КортежТипов!(КортежБазовыхКлассов!(Т),
             КортежИнтерфейсов!(Т))
-            TransitiveКортежТипаОснова;
+            ТранзитивныйКортежБазовыхТипов;
 }
 
 unittest
@@ -807,126 +768,126 @@ unittest
     class B1 {}
     class B2 : B1, I1, I2 {}
     class B3 : B2, I1 {}
-    alias TransitiveКортежТипаОснова!(B3) TL;
+    alias ТранзитивныйКортежБазовыхТипов!(B3) TL;
     assert(TL.length == 5);
     assert(is (TL[0] == B2));
     assert(is (TL[1] == B1));
-    assert(is (TL[2] == Object));
+    assert(is (TL[2] == Объект));
     assert(is (TL[3] == I1));
     assert(is (TL[4] == I2));
     
-    assert(TransitiveКортежТипаОснова!(Object).length == 0);
+    assert(ТранзитивныйКортежБазовыхТипов!(Объект).length == 0);
 }
 
 /**
-Get the type that all типы can be implicitly converted to. Useful
-e.g. in figuring out an массив type from a bunch of initializing
-values. Returns $(D_PARAM проц) if passed an empty list, or if the
-типы have no common type.
-
-Example:
-
-----
-alias CommonType!(цел, дол, крат) X;
-assert(is(X == дол));
-alias CommonType!(цел, char[], крат) Y;
-assert(is(Y == void));
-----
+* Получить тип, в который неявно преобразуются все типы. Полезно,
+* напр., для выявления типа массива из связки инициализованных
+* значений. Возвращаает $(D_PARAM проц), если передан пустой список
+* или эти типы не имеют общего типа.
+*
+* Пример:
+*
+*----
+* alias ОбщийТип!(цел, дол, крат) X;
+* assert(is(X == дол));
+* alias ОбщийТип!(цел, сим[], крат) Y;
+* assert(is(Y == void));
+* ----
 */
-template CommonType(Т...)
+template ОбщийТип(Т...)
 {
     static if (!Т.length)
-        alias проц CommonType;
+        alias проц ОбщийТип;
     else static if (Т.length == 1)
-        alias Т[0] CommonType;
-    else static if (is(typeof(true ? Т[0] : Т[1]) U))
-        alias CommonType!(U, Т[2 .. $]) CommonType;
+        alias Т[0] ОбщийТип;
+    else static if (is(typeof(да ? Т[0] : Т[1]) U))
+        alias ОбщийТип!(U, Т[2 .. $]) ОбщийТип;
     else
-        alias проц CommonType;
+        alias проц ОбщийТип;
 }
 
 unittest
 {
-    alias CommonType!(цел, дол, крат) X;
+    alias ОбщийТип!(цел, дол, крат) X;
     assert(is(X == дол));
-    alias CommonType!(char[], цел, дол, крат) Y;
+    alias ОбщийТип!(сим[], цел, дол, крат) Y;
     assert(is(Y == void), Y.stringof);
 }
 
 /**
- * Returns a tuple with all possible цель типы of an implicit
- * conversion of a value of type $(D_PARAM Т).
+ * Возвращает кортеж со всеми возможными целевыми типами неявного
+ * преобразования значения типа $(D_PARAM Т).
  *
- * Important note:
+ * Важное примечание:
  *
  * The possible targets are computed more conservatively than the D
  * 2.005 compiler does, eliminating all dangerous conversions. For
- * example, $(D_PARAM ImplicitConversionTargets!(double)) does not
- * include $(D_PARAM float).
+ * example, $(D_PARAM ЦелиНеявногоПреобразования!(дво)) does not
+ * include $(D_PARAM плав).
  */
 
-template ImplicitConversionTargets(Т)
+template ЦелиНеявногоПреобразования(Т)
 {
     static if (is(Т == бул))
-        alias КортежТипа!(byte, ббайт, крат, ushort, цел, бцел, дол, ulong,
-            float, double, real, char, шим, dchar)
-            ImplicitConversionTargets;
-    else static if (is(Т == byte))
-        alias КортежТипа!(крат, ushort, цел, бцел, дол, ulong,
-            float, double, real, char, шим, dchar)
-            ImplicitConversionTargets;
+        alias КортежТипов!(байт, ббайт, крат, бкрат, цел, бцел, дол, бдол,
+            плав, дво, реал, сим, шим, дим)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == байт))
+        alias КортежТипов!(крат, бкрат, цел, бцел, дол, бдол,
+            плав, дво, реал, сим, шим, дим)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == ббайт))
-        alias КортежТипа!(крат, ushort, цел, бцел, дол, ulong,
-            float, double, real, char, шим, dchar)
-            ImplicitConversionTargets;
+        alias КортежТипов!(крат, бкрат, цел, бцел, дол, бдол,
+            плав, дво, реал, сим, шим, дим)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == крат))
-        alias КортежТипа!(ushort, цел, бцел, дол, ulong,
-            float, double, real)
-            ImplicitConversionTargets;
-    else static if (is(Т == ushort))
-        alias КортежТипа!(цел, бцел, дол, ulong, float, double, real)
-            ImplicitConversionTargets;
+        alias КортежТипов!(бкрат, цел, бцел, дол, бдол,
+            плав, дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == бкрат))
+        alias КортежТипов!(цел, бцел, дол, бдол, плав, дво, реал)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == цел))
-        alias КортежТипа!(дол, ulong, float, double, real)
-            ImplicitConversionTargets;
+        alias КортежТипов!(дол, бдол, плав, дво, реал)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == бцел))
-        alias КортежТипа!(дол, ulong, float, double, real)
-            ImplicitConversionTargets;
+        alias КортежТипов!(дол, бдол, плав, дво, реал)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == дол))
-        alias КортежТипа!(float, double, real)
-            ImplicitConversionTargets;
-    else static if (is(Т == ulong))
-        alias КортежТипа!(float, double, real)
-            ImplicitConversionTargets;
-    else static if (is(Т == float))
-        alias КортежТипа!(double, real)
-            ImplicitConversionTargets;
-    else static if (is(Т == double))
-        alias КортежТипа!(real)
-            ImplicitConversionTargets;
-    else static if (is(Т == char))
-        alias КортежТипа!(шим, dchar, byte, ббайт, крат, ushort,
-            цел, бцел, дол, ulong, float, double, real)
-            ImplicitConversionTargets;
+        alias КортежТипов!(плав, дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == бдол))
+        alias КортежТипов!(плав, дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == плав))
+        alias КортежТипов!(дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == дво))
+        alias КортежТипов!(реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == сим))
+        alias КортежТипов!(шим, дим, байт, ббайт, крат, бкрат,
+            цел, бцел, дол, бдол, плав, дво, реал)
+            ЦелиНеявногоПреобразования;
     else static if (is(Т == шим))
-        alias КортежТипа!(шим, dchar, крат, ushort, цел, бцел, дол, ulong,
-            float, double, real)
-            ImplicitConversionTargets;
-    else static if (is(Т == dchar))
-        alias КортежТипа!(шим, dchar, цел, бцел, дол, ulong,
-            float, double, real)
-            ImplicitConversionTargets;
-    else static if(is(Т : Object))
-        alias TransitiveКортежТипаОснова!(Т) ImplicitConversionTargets;
+        alias КортежТипов!(шим, дим, крат, бкрат, цел, бцел, дол, бдол,
+            плав, дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if (is(Т == дим))
+        alias КортежТипов!(шим, дим, цел, бцел, дол, бдол,
+            плав, дво, реал)
+            ЦелиНеявногоПреобразования;
+    else static if(is(Т : Объект))
+        alias ТранзитивныйКортежБазовыхТипов!(Т) ЦелиНеявногоПреобразования;
     else static if (is(Т : ук))
-        alias КортежТипа!(ук) ImplicitConversionTargets;
+        alias КортежТипов!(ук) ЦелиНеявногоПреобразования;
     else
-        alias КортежТипа!() ImplicitConversionTargets;
+        alias КортежТипов!() ЦелиНеявногоПреобразования;
 }
 
 unittest
 {
-    assert(is(ImplicitConversionTargets!(double)[0] == real));
+    assert(is(ЦелиНеявногоПреобразования!(дво)[0] == реал));
 }
 
 /**
@@ -935,9 +896,9 @@ unittest
 
 template isIntegral(Т)
 {
-    static const isIntegral = is(Т == byte) || is(Т == ббайт) || is(Т == крат)
-        || is(Т == ushort) || is(Т == цел) || is(Т == бцел)
-        || is(Т == дол) || is(Т == ulong);
+    static const isIntegral = is(Т == байт) || is(Т == ббайт) || is(Т == крат)
+        || is(Т == бкрат) || is(Т == цел) || is(Т == бцел)
+        || is(Т == дол) || is(Т == бдол);
 }
 
 /**
@@ -946,8 +907,8 @@ template isIntegral(Т)
 
 template isFloatingPoint(Т)
 {
-    static const isFloatingPoint = is(Т == float)
-        || is(Т == double) || is(Т == real);
+    static const isFloatingPoint = is(Т == плав)
+        || is(Т == дво) || is(Т == реал);
 }
 
 /**
@@ -965,19 +926,19 @@ template isNumeric(Т)
 
 template isSomeString(Т)
 {
-    static const isSomeString = is(Т : char[])
-        || is(Т : шим[]) || is(Т : dchar[]);
+    static const isSomeString = is(Т : сим[])
+        || is(Т : шим[]) || is(Т : дим[]);
 }
 
 static assert(!isSomeString!(цел));
 static assert(!isSomeString!(цел[]));
-static assert(!isSomeString!(byte[]));
-static assert(isSomeString!(char[]));
-static assert(isSomeString!(dchar[]));
+static assert(!isSomeString!(байт[]));
+static assert(isSomeString!(сим[]));
+static assert(isSomeString!(дим[]));
 static assert(isSomeString!(string));
 static assert(isSomeString!(wstring));
 static assert(isSomeString!(dstring));
-static assert(isSomeString!(char[4]));
+static assert(isSomeString!(сим[4]));
 
 /**
  * Detect whether Т is an associative массив type
@@ -993,28 +954,28 @@ static assert(!isAssociativeArray!(цел));
 static assert(!isAssociativeArray!(цел[]));
 static assert(isAssociativeArray!(цел[цел]));
 static assert(isAssociativeArray!(цел[string]));
-static assert(isAssociativeArray!(char[5][цел]));
+static assert(isAssociativeArray!(сим[5][цел]));
 
 /**
  * Detect whether type Т is a static массив.
  */
 template isStaticArray(Т : U[N], U, т_мера N)
 {
-    const бул isStaticArray = true;
+    const бул isStaticArray = да;
 }
 
 template isStaticArray(Т)
 {
-    const бул isStaticArray = false;
+    const бул isStaticArray = нет;
 }
 
 static assert (isStaticArray!(цел[51]));
 static assert (isStaticArray!(цел[][2]));
-static assert (isStaticArray!(char[][цел][11]));
+static assert (isStaticArray!(сим[][цел][11]));
 static assert (!isStaticArray!(цел[]));
-static assert (!isStaticArray!(цел[char]));
+static assert (!isStaticArray!(цел[сим]));
 static assert (!isStaticArray!(цел[1][]));
-static assert(isStaticArray!(char[13u]));
+static assert(isStaticArray!(сим[13u]));
 static assert (isStaticArray!(typeof("string literal")));
 static assert (isStaticArray!(проц[0]));
 static assert (!isStaticArray!(цел[цел]));
@@ -1025,7 +986,7 @@ static assert (!isStaticArray!(цел));
  */
 template isDynamicArray(Т, U = void)
 {
-    static const isDynamicArray = false;
+    static const isDynamicArray = нет;
 }
 
 template isDynamicArray(Т : U[], U)
@@ -1057,9 +1018,9 @@ static assert(isArray!(проц[]));
 template isExpressionTuple(Т ...)
 {
     static if (is(проц function(Т)))
-	const бул isExpressionTuple = false;
+	const бул isExpressionTuple = нет;
     else
-	const бул isExpressionTuple = true;
+	const бул isExpressionTuple = да;
 }
 
 /**
@@ -1068,26 +1029,26 @@ template isExpressionTuple(Т ...)
  */
 
 template unsigned(Т) {
-    static if (is(Т == byte)) alias ббайт unsigned;
-    else static if (is(Т == крат)) alias ushort unsigned;
+    static if (is(Т == байт)) alias ббайт unsigned;
+    else static if (is(Т == крат)) alias бкрат unsigned;
     else static if (is(Т == цел)) alias бцел unsigned;
-    else static if (is(Т == дол)) alias ulong unsigned;
+    else static if (is(Т == дол)) alias бдол unsigned;
     else static if (is(Т == ббайт)) alias ббайт unsigned;
-    else static if (is(Т == ushort)) alias ushort unsigned;
+    else static if (is(Т == бкрат)) alias бкрат unsigned;
     else static if (is(Т == бцел)) alias бцел unsigned;
-    else static if (is(Т == ulong)) alias ulong unsigned;
-    else static if (is(Т == char)) alias char unsigned;
+    else static if (is(Т == бдол)) alias бдол unsigned;
+    else static if (is(Т == сим)) alias сим unsigned;
     else static if (is(Т == шим)) alias шим unsigned;
-    else static if (is(Т == dchar)) alias dchar unsigned;
+    else static if (is(Т == дим)) alias дим unsigned;
     else static if(is(Т == enum)) {
         static if (Т.sizeof == 1) alias ббайт unsigned;
-        else static if (Т.sizeof == 2) alias ushort unsigned;
+        else static if (Т.sizeof == 2) alias бкрат unsigned;
         else static if (Т.sizeof == 4) alias бцел unsigned;
-        else static if (Т.sizeof == 8) alias ulong unsigned;
-        else static assert(false, "Type " ~ Т.stringof
+        else static if (Т.sizeof == 8) alias бдол unsigned;
+        else static assert(нет, "Type " ~ Т.stringof
                            ~ " does not have an unsigned counterpart");
     }
-    else static assert(false, "Type " ~ Т.stringof
+    else static assert(нет, "Type " ~ Т.stringof
                        ~ " does not have an unsigned counterpart");
 }
 
@@ -1096,64 +1057,62 @@ unittest
     alias unsigned!(цел) U;
     assert(is(U == бцел));
 }
-
+/+
 /******
  * Returns the mutable version of the type Т.
  */
 
 template Mutable(Т)
 {
-/+
-    static if (is(Т U == const(U)))
+
+    static if (is(Т U == (const U)))
 	alias U Mutable;
     else static if (is(Т U == invariant(U)))
 	alias U Mutable;
     else
-+/
+
 	alias Т Mutable;
 }
-
++/
 /**
-Returns the most negative value of the numeric type Т.
+* Возвращает самое отрицательное значение числового типа Т.
 */
 
 template mostNegative(Т)
 {
-    static if (Т.min == 0) const byte mostNegative = 0;
+    static if (Т.min == 0) const байт mostNegative = 0;
     else static if (Т.min > 0) const mostNegative = -Т.max;
     else const mostNegative = Т.min;
 }
 
 unittest
 {
-    static assert(mostNegative!(float) == -float.max);
+    static assert(mostNegative!(плав) == -плав.max);
     static assert(mostNegative!(бцел) == 0);
     static assert(mostNegative!(дол) == дол.min);
 }
-+/
-
 
 /**
- * Оценивается как true, если Т является char[], wchar[] или dchar[].
+ * Оценивается как да, если Т является сим[], wchar[] или дим[].
  */
 template текстТип_ли( Т )
 {
-    const bool текстТип_ли = is( Т : char[] )  ||
+    const bool текстТип_ли = is( Т : сим[] )  ||
                               is( Т : wchar[] ) ||
-                              is( Т : dchar[] ) ||
+                              is( Т : дим[] ) ||
 							  is( Т : сим[] )  ||
                               is( Т : шим[] ) ||
                               is( Т : дим[] );
 }
 
 /**
- * Evaluates to true if Т is char, wchar, or dchar.
+ * Evaluates to да if Т is сим, wchar, or дим.
  */
 template симТип_ли( Т )
 {
-    const bool симТип_ли = is( Т == char )  ||
+    const bool симТип_ли = is( Т == сим )  ||
                             is( Т == wchar ) ||
-                            is( Т == dchar ) ||
+                            is( Т == дим ) ||
 							is( Т == сим )  ||
                             is( Т == шим ) ||
                             is( Т == дим );
@@ -1161,11 +1120,11 @@ template симТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is a signed integer type.
+ * Evaluates to да if Т is a signed integer type.
  */
 template целСоЗнакомТип_ли( Т )
 {
-    const bool целСоЗнакомТип_ли = is( Т == byte )  ||
+    const bool целСоЗнакомТип_ли = is( Т == байт )  ||
                                      is( Т == short ) ||
                                      is( Т == int )   ||
                                      is( Т == long ) ||
@@ -1179,14 +1138,14 @@ template целСоЗнакомТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is an unsigned integer type.
+ * Evaluates to да if Т is an unsigned integer type.
  */
 template целБезЗнакаТип_ли( Т )
 {
     const bool целБезЗнакаТип_ли = is( Т == ubyte )  ||
-                                       is( Т == ushort ) ||
+                                       is( Т == бкрат ) ||
                                        is( Т == uint )   ||
-                                       is( Т == ulong ) ||
+                                       is( Т == бдол ) ||
 									   is( Т == ббайт )  ||
                                        is( Т == бкрат ) ||
                                        is( Т == бцел )   ||
@@ -1197,7 +1156,7 @@ template целБезЗнакаТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is a signed or unsigned integer type.
+ * Evaluates to да if Т is a signed or unsigned integer type.
  */
 template целТип_ли( Т )
 {
@@ -1207,13 +1166,13 @@ template целТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is a real floating-point type.
+ * Evaluates to да if Т is a реал floating-point type.
  */
 template реалТип_ли( Т )
 {
-    const bool реалТип_ли = is( Т == float )  ||
-                            is( Т == double ) ||
-                            is( Т == real ) ||
+    const bool реалТип_ли = is( Т == плав )  ||
+                            is( Т == дво ) ||
+                            is( Т == реал ) ||
 							is( Т == плав )  ||
                             is( Т == дво ) ||
                             is( Т == реал );
@@ -1221,7 +1180,7 @@ template реалТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is a complex floating-point type.
+ * Evaluates to да if Т is a complex floating-point type.
  */
 template комплексТип_ли( Т )
 {
@@ -1235,7 +1194,7 @@ template комплексТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is an imaginary floating-point type.
+ * Evaluates to да if Т is an imaginary floating-point type.
  */
 template мнимыйТип_ли( Т )
 {
@@ -1249,7 +1208,7 @@ template мнимыйТип_ли( Т )
 
 
 /**
- * Evaluates to true if Т is any floating-point type: real, complex, or
+ * Evaluates to да if Т is any floating-point type: реал, complex, or
  * imaginary.
  */
 template плавзапТип_ли( Т )
@@ -1259,24 +1218,24 @@ template плавзапТип_ли( Т )
                                      мнимыйТип_ли!(Т);
 }
 
-/// true if Т is an atomic type
+/// да if Т is an atomic type
 template атомТип_ли(Т)
 {
     static if( is( Т == bool )
-            || is( Т == char )
+            || is( Т == сим )
             || is( Т == wchar )
-            || is( Т == dchar )
-            || is( Т == byte )
+            || is( Т == дим )
+            || is( Т == байт )
             || is( Т == short )
             || is( Т == int )
             || is( Т == long )
             || is( Т == ubyte )
-            || is( Т == ushort )
+            || is( Т == бкрат )
             || is( Т == uint )
-            || is( Т == ulong )
-            || is( Т == float )
-            || is( Т == double )
-            || is( Т == real )
+            || is( Т == бдол )
+            || is( Т == плав )
+            || is( Т == дво )
+            || is( Т == реал )
             || is( Т == ifloat )
             || is( Т == idouble )
             || is( Т == ireal )
@@ -1298,34 +1257,34 @@ template атомТип_ли(Т)
             || is( Т == вплав )
             || is( Т == вдво )
             || is( Т == вреал ))
-        const атомТип_ли = true;
+        const атомТип_ли = да;
     else
-        const атомТип_ли = false;
+        const атомТип_ли = нет;
 }
 
 /**
  * complex type for the given type
  */
 template ComplexTypeOf(Т){
-    static if(is(Т==float)||is(Т==ifloat)||is(Т==cfloat)){
+    static if(is(Т==плав)||is(Т==ifloat)||is(Т==cfloat)){
         alias cfloat ComplexTypeOf;
-    } else static if(is(Т==double)|| is(Т==idouble)|| is(Т==cdouble)){
+    } else static if(is(Т==дво)|| is(Т==idouble)|| is(Т==cdouble)){
         alias cdouble ComplexTypeOf;
-    } else static if(is(Т==real)|| is(Т==ireal)|| is(Т==creal)){
+    } else static if(is(Т==реал)|| is(Т==ireal)|| is(Т==creal)){
         alias creal ComplexTypeOf;
     } else static assert(0,"unsupported type in ComplexTypeOf "~Т.stringof);
 }
 
 /**
- * real type for the given type
+ * реал type for the given type
  */
 template RealTypeOf(Т){
-    static if(is(Т==float)|| is(Т==ifloat)|| is(Т==cfloat)){
-        alias float RealTypeOf;
-    } else static if(is(Т==double)|| is(Т==idouble)|| is(Т==cdouble)){
-        alias double RealTypeOf;
-    } else static if(is(Т==real)|| is(Т==ireal)|| is(Т==creal)){
-        alias real RealTypeOf;
+    static if(is(Т==плав)|| is(Т==ifloat)|| is(Т==cfloat)){
+        alias плав RealTypeOf;
+    } else static if(is(Т==дво)|| is(Т==idouble)|| is(Т==cdouble)){
+        alias дво RealTypeOf;
+    } else static if(is(Т==реал)|| is(Т==ireal)|| is(Т==creal)){
+        alias реал RealTypeOf;
     } else static assert(0,"unsupported type in RealTypeOf "~Т.stringof);
 }
 
@@ -1333,11 +1292,11 @@ template RealTypeOf(Т){
  * imaginary type for the given type
  */
 template ImaginaryTypeOf(Т){
-    static if(is(Т==float)|| is(Т==ifloat)|| is(Т==cfloat)){
+    static if(is(Т==плав)|| is(Т==ifloat)|| is(Т==cfloat)){
         alias ifloat ImaginaryTypeOf;
-    } else static if(is(Т==double)|| is(Т==idouble)|| is(Т==cdouble)){
+    } else static if(is(Т==дво)|| is(Т==idouble)|| is(Т==cdouble)){
         alias idouble ImaginaryTypeOf;
-    } else static if(is(Т==real)|| is(Т==ireal)|| is(Т==creal)){
+    } else static if(is(Т==реал)|| is(Т==ireal)|| is(Т==creal)){
         alias ireal ImaginaryTypeOf;
     } else static assert(0,"unsupported type in ImaginaryTypeOf "~Т.stringof);
 }
@@ -1349,22 +1308,22 @@ template MaxPrecTypeOf(Т){
     } else static if (мнимыйТип_ли!(Т)){
         alias ireal MaxPrecTypeOf;
     } else {
-        alias real MaxPrecTypeOf;
+        alias реал MaxPrecTypeOf;
     }
 }
 
 
 /**
- * Evaluates to true if Т is a pointer type.
+ * Evaluates to да if Т is a pointer type.
  */
 template типУказатель_ли(Т)
 {
-        const типУказатель_ли = false;
+        const типУказатель_ли = нет;
 }
 
 template типУказатель_ли(Т : Т*)
 {
-        const типУказатель_ли = true;
+        const типУказатель_ли = да;
 }
 
 debug( UnitTest )
@@ -1372,12 +1331,12 @@ debug( UnitTest )
     unittest
     {
         static assert( типУказатель_ли!(void*) );
-        static assert( !типУказатель_ли!(char[]) );
-        static assert( типУказатель_ли!(char[]*) );
-        static assert( !типУказатель_ли!(char*[]) );
-        static assert( типУказатель_ли!(real*) );
+        static assert( !типУказатель_ли!(сим[]) );
+        static assert( типУказатель_ли!(сим[]*) );
+        static assert( !типУказатель_ли!(сим*[]) );
+        static assert( типУказатель_ли!(реал*) );
         static assert( !типУказатель_ли!(uint) );
-        static assert( is(MaxPrecTypeOf!(float)==real));
+        static assert( is(MaxPrecTypeOf!(плав)==реал));
         static assert( is(MaxPrecTypeOf!(cfloat)==creal));
         static assert( is(MaxPrecTypeOf!(ifloat)==ireal));
 
@@ -1405,7 +1364,7 @@ debug( UnitTest )
 }
 
 /**
- * Evaluates to true if Т is a a pointer, class, interface, or delegate.
+ * Evaluates to да if Т is a a pointer, class, interface, or delegate.
  */
 template типСсылка_ли( Т )
 {
@@ -1418,7 +1377,7 @@ template типСсылка_ли( Т )
 
 
 /**
- * Evaulates to true if Т is a dynamic array type.
+ * Evaulates to да if Т is a dynamic array type.
  */
 template типДинМасс_ли( Т )
 {
@@ -1426,7 +1385,7 @@ template типДинМасс_ли( Т )
 }
 
 /**
- * Evaluates to true if Т is a static array type.
+ * Evaluates to да if Т is a static array type.
  */
 version( GNU )
 {
@@ -1446,7 +1405,7 @@ version( GNU )
         }
         else
         {
-            const bool типСтатМасс_ли = false;
+            const bool типСтатМасс_ли = нет;
         }
     }
 }
@@ -1454,46 +1413,46 @@ else
 {
     template типСтатМасс_ли( Т : Т[U], size_t U )
     {
-        const bool типСтатМасс_ли = true;
+        const bool типСтатМасс_ли = да;
     }
 
     template типСтатМасс_ли( Т )
     {
-        const bool типСтатМасс_ли = false;
+        const bool типСтатМасс_ли = нет;
     }
 }
 
-/// true for array types
+/// да for array types
 template типМассив_ли(Т)
 {
     static if (is( Т U : U[] ))
-        const bool типМассив_ли=true;
+        const bool типМассив_ли=да;
     else
-        const bool типМассив_ли=false;
+        const bool типМассив_ли=нет;
 }
 
 debug( UnitTest )
 {
     unittest
     {
-        static assert( типСтатМасс_ли!(char[5][2]) );
-        static assert( !типДинМасс_ли!(char[5][2]) );
-        static assert( типМассив_ли!(char[5][2]) );
+        static assert( типСтатМасс_ли!(сим[5][2]) );
+        static assert( !типДинМасс_ли!(сим[5][2]) );
+        static assert( типМассив_ли!(сим[5][2]) );
 
-        static assert( типСтатМасс_ли!(char[15]) );
-        static assert( !типСтатМасс_ли!(char[]) );
+        static assert( типСтатМасс_ли!(сим[15]) );
+        static assert( !типСтатМасс_ли!(сим[]) );
 
-        static assert( типДинМасс_ли!(char[]) );
-        static assert( !типДинМасс_ли!(char[15]) );
+        static assert( типДинМасс_ли!(сим[]) );
+        static assert( !типДинМасс_ли!(сим[15]) );
 
-        static assert( типМассив_ли!(char[15]) );
-        static assert( типМассив_ли!(char[]) );
-        static assert( !типМассив_ли!(char) );
+        static assert( типМассив_ли!(сим[15]) );
+        static assert( типМассив_ли!(сим[]) );
+        static assert( !типМассив_ли!(сим) );
     }
 }
 
 /**
- * Evaluates to true if Т is an associative array type.
+ * Evaluates to да if Т is an associative array type.
  */
 template типАссоцМасс_ли( Т )
 {
@@ -1502,7 +1461,7 @@ template типАссоцМасс_ли( Т )
 
 
 /**
- * Evaluates to true if Т is a function, function pointer, delegate, or
+ * Evaluates to да if Т is a function, function pointer, delegate, or
  * callable object.
  */
 template isCallableType( Т )
@@ -1522,7 +1481,7 @@ template ТипВозвратаУ( Fn )
     static if( is( Fn Ret == return ) )
         alias Ret ТипВозвратаУ;
     else
-        static assert( false, "Аргумент не имеет типа возврата." );
+        static assert( нет, "Аргумент не имеет типа возврата." );
 }
 
 /** 
@@ -1563,7 +1522,7 @@ template КортежПараметровУ( Fn )
     else static if( is( Fn Params == Params* ) )
         alias КортежПараметровУ!(Params) КортежПараметровУ;
     else
-        static assert( false, "У аргумента отсутствуют параметры." );
+        static assert( нет, "У аргумента отсутствуют параметры." );
 }
 
 
@@ -1589,7 +1548,7 @@ template КортежТиповОсновУ( Т )
     static if( is( Т Основа == super ) )
         alias Основа КортежТиповОсновУ;
     else
-        static assert( false, "Аргумент не является ни классом, ни интерфейсом." );
+        static assert( нет, "Аргумент не является ни классом, ни интерфейсом." );
 }
 
 /**
@@ -1653,23 +1612,23 @@ template ТипДинМас(Т)
 
 debug( UnitTest )
 {
-    static assert( is(ТипОсноваМассивов!(real[][])==real) );
-    static assert( is(ТипОсноваМассивов!(real[2][3])==real) );
-    static assert( is(ТипЭлементовМассива!(real[])==real) );
-    static assert( is(ТипЭлементовМассива!(real[][])==real[]) );
-    static assert( is(ТипЭлементовМассива!(real[2][])==real[2]) );
-    static assert( is(ТипЭлементовМассива!(real[2][2])==real[2]) );
-    static assert( рангМассива!(real[][])==2 );
-    static assert( рангМассива!(real[2][])==2 );
-    static assert( is(ТипЗначенияАМ!(char[int])==char));
-    static assert( is(ТипКлючаАМ!(char[int])==int));
-    static assert( is(ТипЗначенияАМ!(char[][int])==char[]));
-    static assert( is(ТипКлючаАМ!(char[][int[]])==int[]));
-    static assert( типАссоцМасс_ли!(char[][int[]]));
-    static assert( !типАссоцМасс_ли!(char[]));
-    static assert( is(ТипДинМас!(char[2])==ТипДинМас!(char[])));
-    static assert( is(ТипДинМас!(char[2])==char[]));
-    static assert( размерСтатМассива!(char[2])==2);
+    static assert( is(ТипОсноваМассивов!(реал[][])==реал) );
+    static assert( is(ТипОсноваМассивов!(реал[2][3])==реал) );
+    static assert( is(ТипЭлементовМассива!(реал[])==реал) );
+    static assert( is(ТипЭлементовМассива!(реал[][])==реал[]) );
+    static assert( is(ТипЭлементовМассива!(реал[2][])==реал[2]) );
+    static assert( is(ТипЭлементовМассива!(реал[2][2])==реал[2]) );
+    static assert( рангМассива!(реал[][])==2 );
+    static assert( рангМассива!(реал[2][])==2 );
+    static assert( is(ТипЗначенияАМ!(сим[int])==сим));
+    static assert( is(ТипКлючаАМ!(сим[int])==int));
+    static assert( is(ТипЗначенияАМ!(сим[][int])==сим[]));
+    static assert( is(ТипКлючаАМ!(сим[][int[]])==int[]));
+    static assert( типАссоцМасс_ли!(сим[][int[]]));
+    static assert( !типАссоцМасс_ли!(сим[]));
+    static assert( is(ТипДинМас!(сим[2])==ТипДинМас!(сим[])));
+    static assert( is(ТипДинМас!(сим[2])==сим[]));
+    static assert( размерСтатМассива!(сим[2])==2);
 }
 
 

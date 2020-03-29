@@ -1,6 +1,26 @@
 module scConfig;
 import util.worktools, cidrus, win, stdrus, exception;
 
+enum Цвет : цел
+{
+    Чёрный         = 0,
+    Красный           = 1,
+    Зелёный         = 2,
+    Синий          = 4,
+    Жёлтый        = Красный | Зелёный,
+    Магента       = Красный | Синий,
+    Цыан          = Зелёный | Синий,
+    СветлоСерый     = Красный | Зелёный | Синий,
+    Яркий        = 8,
+    ТёмноСерый      = Яркий | Чёрный,
+    ЯркоКрасный     = Яркий | Красный,
+    ЯркоЗелёный   = Яркий | Зелёный,
+    ЯркоСиний    = Яркий | Синий,
+    ЯркоЖёлтый  = Яркий | Жёлтый,
+    ЯркоМагента = Яркий | Магента,
+    ЯркоЦыан    = Яркий | Цыан,
+    Белый         = Яркий | СветлоСерый,
+}
 
 version(UCRT)
 {
@@ -17,6 +37,8 @@ alias раскройГлоб рг;
 extern(C):
 
 проц сбросьЦветКонсоли();
+проц  устЯркостьЦветаКонсоли(бул яркий);
+проц устЦветКонсоли(Цвет цвет);
 
 const ткст КОНФИГ_РЕБИЛДА;
 const ткст КОНФИГ_РУЛАДЫ;
@@ -26,9 +48,11 @@ const ткст КОНФИГ_ДИНРУС;
 const ткст КОНФИГ_ДИНРУСДОП;
 const ткст КОНФИГ_ДИНРУСДОП_ГИП;
 const ткст КОНФ, СЦ_ИНИ;
+const ткст КОНФИГ_РАЗРАБОТКИ;
 
 static this()
 {
+
 КОНФИГ_РЕБИЛДА =рг(
 "profile=phobos
 
@@ -103,6 +127,22 @@ shlibs=no
 dylibs=no
 ");
 
+КОНФИГ_РАЗРАБОТКИ = рг(
+	"
+[Version]
+version=7.51 Build 020
+
+#DINRUS CONSOLE
+
+[Environment]
+PATH=%DINRUS%\\..
+BIN=%DINRUS%
+INCLUDE=\"%DINRUS%\\..\\include\";
+LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
+DFLAGS=-O -version=Dinrus
+LINKCMD=d:\\Dinrus\\bin\\dmlink.exe
+	");
+
 КОНФИГ_ДИНРУС =рг(
 	"
 [Version]
@@ -114,7 +154,7 @@ version=7.51 Build 020
 PATH=%DINRUS%\\..
 BIN=%DINRUS%
 INCLUDE=\"%DINRUS%\\..\\include\";%INCLUDE%
-LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\rulada\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
+LIB=\"%DINRUS%\\..\\lib\";\"%DINRUS%\\..\\lib\\c\";\"%DINRUS%\\..\\lib\\sysimport\"
 DFLAGS=\"-I%DINRUS%\\..\\imp\\dinrus\" -O -version=Dinrus -defaultlib=Dinrus.lib -debuglib=Dinrus_dbg.lib
 LINKCMD=%DINRUS%\\dmlink.exe
 	");
@@ -207,6 +247,21 @@ LINKCMD=%DINRUS%\\dmlink.exe
 {
 version(UCRT) {if( _waccess(вЮ16н(файл), 2) != -1) return да;}
 return нет;
+}
+
+проц версияРазработкиДинрус()
+{
+	try
+	{
+	запиши_в(КОНФ, КОНФИГ_РЕБИЛДА);
+	запиши_в(СЦ_ИНИ, КОНФИГ_РАЗРАБОТКИ);
+	}
+	catch(ФайлИскл фи)
+	{
+	}
+	скажифнс("Файл sc.ini изменён. Его текст теперь следующий: %s", читай_из(СЦ_ИНИ));
+	нс;
+	скажинс(" ВЕРСИЯ = ДИНРУС РАЗРАБОТКА ");
 }
 
 	

@@ -14,5 +14,7 @@ set this=%DINRUS%\..\dev\DINRUS\Base\Exe
 %DINRUS%\upx rgui.exe
 %DINRUS%\dmd -release %this%\libproc.d %this%\Resources\dinrus.res
 %DINRUS%\upx libproc.exe
+%DINRUS%\dmd -release %this%\dinrusdev.d %this%\scConfig.d %this%\Resources\dinrus.res
+%DINRUS%\upx dinrusdev.exe
 copy %this%\*.exe %DINRUS%
 del %this%\*.map %this%\*.obj %this%\*.exe

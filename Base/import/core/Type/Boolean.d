@@ -13,11 +13,11 @@ class Бул
     цел м_Знач;
 
     /**
-       * Constructor
-       * Params:
-       *  x = zero sets value to Нет. Non-zero sets value to Да.
+       * Конструктор
+       * Параметры:
+       *  x = ноль устанавливает значение на Нет. Не ноль - на Да.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = new Бул(1);  // Инициализует в Да.
        *   Бул b = new Бул(-1);  // Инициализует в Да.
@@ -28,11 +28,11 @@ class Бул
     this(цел x) { м_Знач = (x != 0 ? 1 : 0); }
 
     /**
-       * Constructor
-       * Params:
-       *  x = Copies value to new object.
+       * Конструктор
+       * Параметры:
+       *  x = Копирует значение в новый объект.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = new Бул(Да);  // Инициализует в Да.
        *   Бул b = new Бул(Нет);  // Инициализует в Нет.
@@ -43,14 +43,14 @@ class Бул
     this(Бул x) { м_Знач = x.м_Знач; }
 
     /**
-       * Constructor
-       * Params:
-       *  x = zero sets value to Да when the parameter is any of
-          "TRUE","Да","true","YES","Yes","yes","ON","On","on","T","t","1".
-          Any other parameter value sets the boolean to Нет.
+       * Конструктор
+       * Параметры:
+       *  x = ноль устанавливает значение в Да, если параметром является один из:
+       *   "TRUE","Да","true","YES","Yes","yes","ON","On","on","T","t","1".
+       *   Любое иное значение параметра устанавливает это булево в Нет.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = new Бул("Да");  // Инициализует в Да.
        *   Бул b = new Бул("Нет");  // Инициализует в Нет.
@@ -81,11 +81,11 @@ class Бул
     version(БулНеизвестно)
     {
      /**
-       * Constructor
+       * Конструктор
        *
        * This sets the boolean to Неизвестно.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = new Бул();  // Инициализует в Неизвестно;
        *  --------------------
@@ -95,11 +95,11 @@ class Бул
     else
     {
      /**
-       * Constructor
+       * Конструктор
        *
        * This sets the boolean to Нет.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = new Бул();  // Инициализует в Нет;
        *  --------------------
@@ -114,7 +114,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   if (a == Да) { . . . }
@@ -141,7 +141,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   Бул b = OtherFunc();
@@ -171,7 +171,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = ~SomeFunc();
        *   if (a == Да) { . . . }
@@ -195,7 +195,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   Бул b = OtherFunc();
@@ -223,7 +223,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   Бул b = OtherFunc();
@@ -251,7 +251,7 @@ class Бул
        *  pOther = The Boolean to сравни this one to.
        *
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   Бул b = OtherFunc();
@@ -285,7 +285,7 @@ class Бул
            *
            * If the value имеется not been установи yet, this returns "Неизвестно".
            *
-           * Examples:
+           * Примеры:
            *  --------------------
            *   Бул a = SomeFunc();
            *   скажифнс("The result was %s", a);
@@ -300,7 +300,7 @@ class Бул
            *
            * Нет displays as "Нет" и Да dispays as "Да".
            *
-           * Examples:
+           * Примеры:
            *  --------------------
            *   Бул a = SomeFunc();
            *   скажифнс("The result was %s", a);
@@ -331,7 +331,7 @@ class Бул
        *
        * Нет converts to zero(0), и Да converts to one(1).
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   скажифнс("The result was %s", a.вЦел);
@@ -350,7 +350,7 @@ class Бул
     /**
        * Creates a дубликат of the object.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   Бул a = SomeFunc();
        *   Бул b = a.dup;
@@ -372,7 +372,7 @@ class Бул
         /**
            * Checks if the boolean имеется been установи yet.
            *
-           * Examples:
+           * Примеры:
            *  --------------------
            *   if (someBool.isSet() == Да)
            *   {
@@ -413,17 +413,17 @@ version(БулНеизвестно)
 version(БулНеизвестно)
 {
 /**
-   Defines the exception for this class.
-
+*   Defines the exception for this class.
+*
 **/
 class БулИскл : Исключение
 {
      /**
-       * Constructor
+       * Конструктор
        * Params:
        *  pMsg = Text of the message displayed during the exception.
        *
-       * Examples:
+       * Примеры:
        *  --------------------
        *   throw new БулИскл("Some Message");
        *  --------------------

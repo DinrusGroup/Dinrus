@@ -62,7 +62,7 @@ private
         alias util.booltype.Да Да;
         alias util.booltype.Нет Нет;
         alias util.booltype.Бул Бул;
-        import dinrus;
+        import stdrus;
     }
     version(Windows)      static import opsys = winapi;
     else version(linux)   static import opsys = std.c.linux.linux;
@@ -175,7 +175,10 @@ public
                *   if (a == ФайлДатаВремя("/usr2/bin/sample")) { . . . }
                *  --------------------
             **/
-            цел opEquals(ФайлДатаВремя pOther) { return сравни(pOther) == 0; }
+            цел opEquals(ФайлДатаВремя pOther)
+            {
+                return сравни(pOther) == 0;
+            }
 
             /**
                * Comparision Operator
@@ -194,7 +197,10 @@ public
                *   if (a < ФайлДатаВремя("/usr2/bin/sample")) { . . . }
                *  --------------------
             **/
-            цел opCmp(ФайлДатаВремя pOther) { return сравни(pOther); }
+            цел opCmp(ФайлДатаВремя pOther)
+            {
+                return сравни(pOther);
+            }
 
             /**
                * Comparision Operator
@@ -253,7 +259,8 @@ public
                 else if (pOther.mSet == Нет)
                     lResult = 1;
 
-                else {
+                else
+                {
                     opsys.FileTimeToSystemTime(&mDT, &lATime);
                     opsys.FileTimeToSystemTime(&pOther.mDT, &lBTime);
 
@@ -321,7 +328,7 @@ public
                     return "не записано";
 
                 // Convert the файл's time into the user's local timezone.
-                if (useWfuncs)
+                if (__ЮНИКОД__)
                 {
                     opsys.FileTimeToSystemTime(&mDT, &lSystemTime);
                     opsys.GetTimeZoneInformation(&lTimeZone);
@@ -337,15 +344,15 @@ public
                 //    CCYY/MM/DD hh:mm:ss
                 if (pExact)
                     return фм("%04d/%02d/%02d %02d:%02d:%02d.%04d"
-                         ,lLocalTime.wYear, lLocalTime.wMonth,  lLocalTime.wDay,
-                         lLocalTime.wHour, lLocalTime.wMinute, lLocalTime.wSecond
-                         ,lLocalTime.wMilliseconds
-                         );
+                                ,lLocalTime.wYear, lLocalTime.wMonth,  lLocalTime.wDay,
+                                lLocalTime.wHour, lLocalTime.wMinute, lLocalTime.wSecond
+                                ,lLocalTime.wMilliseconds
+                               );
                 else
                     return фм("%04d/%02d/%02d %02d:%02d:%02d"
-                         ,lLocalTime.wYear, lLocalTime.wMonth,  lLocalTime.wDay,
-                         lLocalTime.wHour, lLocalTime.wMinute, lLocalTime.wSecond
-                        );
+                                ,lLocalTime.wYear, lLocalTime.wMonth,  lLocalTime.wDay,
+                                lLocalTime.wHour, lLocalTime.wMinute, lLocalTime.wSecond
+                               );
             }
 
             private проц GetFileTime (шткст pFileName)
@@ -359,10 +366,11 @@ public
                 opsys.HANDLE lFH;
 
 
-                if (useWfuncs)
+                if (__ЮНИКОД__)
                 {
                     lFH = opsys.FindFirstFileW (cast(шим *)&(util.str.замениСим(pFileName ~ cast(шим[])"\0", '/', '\\')[0]), &lFileInfoW);
-                    if(lFH != opsys.INVALID_HANDLE_VALUE) {
+                    if(lFH != opsys.INVALID_HANDLE_VALUE)
+                    {
                         lWriteTime = lFileInfoW.ftLastWriteTime;
                     }
                 }
@@ -371,7 +379,8 @@ public
                     lASCII_FileName = вЮ8(util.str.замениСим(pFileName ~ cast(шим[])"\0", '/', '\\'));
 
                     lFH = opsys.FindFirstFileA (lASCII_FileName.ptr, &lFileInfoA);
-                    if(lFH != opsys.INVALID_HANDLE_VALUE) {
+                    if(lFH != opsys.INVALID_HANDLE_VALUE)
+                    {
                         lWriteTime = lFileInfoA.ftLastWriteTime;
                     }
 

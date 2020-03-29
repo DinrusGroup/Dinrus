@@ -57,7 +57,8 @@ struct Хэш(V, alias хэшФункц, alias обновлФункц, плав 
     struct позиция
     {
         Хэш *владелец;
-        узел укз; alias укз ptr;
+        узел укз;
+        alias укз ptr;
         цел инд;
 
         /**
@@ -445,7 +446,7 @@ struct Хэш(V, alias хэшФункц, alias обновлФункц, плав 
                     p.ptr = p.ptr.следщ;
                 }
                 while(p.ptr !is bucket)
-            }
+                }
             return рез;
         }
 

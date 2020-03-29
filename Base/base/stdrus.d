@@ -152,7 +152,7 @@ export extern(D)
 {
 	проц инфо(ткст сооб)
 			{
-			ОкноСооб(null, toUTF16(сооб), "Сообщение Динрус", ПСооб.Инфо|ПСооб.Поверх);
+			ОкноСооб(null, сооб, "Сообщение Динрус", ПСооб.Инфо|ПСооб.Поверх);
 			}
 
 	import std.md5;
@@ -2381,7 +2381,7 @@ export extern(D)
     {
 	ПОИСК_ДАННЫХ fileinfo;
 
-	h = НайдиПервыйФайл(вЮ16(c), &fileinfo);
+	h = НайдиПервыйФайл(c, &fileinfo);
 	if (h != cast(ук) НЕВЕРНХЭНДЛ)
 	{
 	    try
@@ -5737,7 +5737,7 @@ export:
 	//читаемый(); записываемый();	
 	//win.скажинс("Процедура открытия файла...");
 	//win.скажинс(фм("доступ = 0x%x шара = 0x%x режим = 0x%x",доступ, шара, режСозд));
-	файлУк = СоздайФайл(вЮ16(имяф), доступ, шара,  null, режСозд, ПФайл.Нормальный, null);
+	файлУк = СоздайФайл(имяф, доступ, шара,  null, режСозд, ПФайл.Нормальный, null);
     
     открытый(файлУк != cast(ук) НЕВЕРНХЭНДЛ);
 	
@@ -6813,28 +6813,14 @@ alias длина length;
 		
 			if (имяф)
 			{
-				if (useWfuncs)
-				{
-					auto namez = std.utf.toUTF16(имяф);
-					hFile = СоздайФайл(namez,
+					hFile = СоздайФайл(имяф,
 							dwDesiredAccess2,
 							dwShareMode,
 							null,
 							dwCreationDisposition,
 							ПФайл.Нормальный,
 							cast(ук) null);
-				}
-				else
-				{
-					auto namez = имяф;
-					hFile =cast(ук) СоздайФайлА(namez,
-							dwDesiredAccess2,
-							dwShareMode,
-							null,
-							dwCreationDisposition,
-							ПФайл.Нормальный,
-							cast(ук)null);
-				}
+
 				if (hFile == cast(ук) НЕВЕРНХЭНДЛ)
 					goto err1;
 			}

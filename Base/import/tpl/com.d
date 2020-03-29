@@ -1,4 +1,4 @@
-﻿module tpl.com;
+module tpl.com;
 import tpl.traits, tpl.args, tpl.typetuple, sys.uuid;
 import stdrus, cidrus, gc, sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
 
@@ -36,7 +36,7 @@ body {
   else static if (is(typeof(T.IID)))
     const ГУИД ууид_уТ = T.IID;
   else
-      static assert(нет, " No GUID has been associated with '" ~ T.stringof ~ "'.");
+      static assert(нет, " Отсутсвует GUID, связанный с '" ~ T.stringof ~ "'.");
 	
 }
 
@@ -237,9 +237,9 @@ template com_cast_impl(T, ППолитикаИсключений политик�
         else
           return T.init;
       }
-      else static assert(нет, "Cannot cast from '" ~ U.stringof ~ "' to '" ~ T.stringof ~ "'.");
+      else static assert(нет, "Неудачный каст из '" ~ U.stringof ~ "' в '" ~ T.stringof ~ "'.");
     }
-    else static assert(нет, "Cannot cast from '" ~ U.stringof ~ "' to '" ~ T.stringof ~ "'.");
+    else static assert(нет, "Неудачный каст из '" ~ U.stringof ~ "' в '" ~ T.stringof ~ "'.");
   }
 
 }

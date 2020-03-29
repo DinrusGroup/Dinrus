@@ -1,6 +1,6 @@
 ﻿//============================================================================
-// Вектор.d - 
-// Written in the D Programming Language (http://www.digitalmars.com/d)
+// Vector.d - 
+// Написано на языке программирования Динрус (http://www.github.com/DinrusGroup/Dinrus)
 module linalg.Vector;
 
 import stdrus, tpl.metastrings;
@@ -116,35 +116,35 @@ public:
     /// default constructor creates uninitialized values.
     static Вектор opCall();
 
-    /// special constructor  -- broadcasts the value to all elements
+    /// специальный конструктор  -- broadcasts the value to all elements
     static Вектор opCall( Скаляр v);
 
     static if(N==2) {
-    /// special constructor for 2D vectors
+    /// специальный конструктор для 2D vectors
     static Вектор opCall( Скаляр v0,  Скаляр v1) ;
 	}
 	
     static if(N==3) {
-    /// special constructor for 3D vectors
+    /// специальный конструктор для 3D vectors
     static Вектор opCall( Скаляр v0,  Скаляр v1, 
                            Скаляр v2) ;
     }
 
     static if (N==4) {
-    /// special constructor for 4D vectors
+    /// специальный конструктор для 4D vectors
     static Вектор opCall( Скаляр v0,  Скаляр v1,
                            Скаляр v2,  Скаляр v3) ;
     }
 
     static if (N==5) {
-    /// special constructor for 5D vectors
+    /// специальный конструктор для 5D vectors
     static Вектор opCall( Скаляр v0,  Скаляр v1,
                            Скаляр v2,  Скаляр v3,
                            Скаляр v4) ;
     }
 
     static if (N==6) {
-    /// special constructor for 6D vectors
+    /// специальный конструктор для 6D vectors
     static Вектор opCall( Скаляр v0,  Скаляр v1,  Скаляр v2,
                            Скаляр v3,  Скаляр v4,  Скаляр v5) ;
     }
