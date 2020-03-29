@@ -1,10 +1,10 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2007 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
-        version:        Apr 2007: разбей away является utc
+        version:        Apr 2007: разбей away из_ utc
 
         author:         Kris
 
@@ -29,7 +29,7 @@ private import  sys.Common;
         in accordance with the OS facilities. In particular, Win32 systems
         behave differently в_ Posix when calculating daylight-savings время
         (Win32 calculates with respect в_ the время of the вызов, whereas a
-        Posix system calculates based on a provопрed точка in время). Posix
+        Posix system calculates based on a предоставленный точка in время). Posix
         systems should typically have the TZ environment переменная установи в_ 
         a valid descrИПtor.
 
@@ -81,7 +81,7 @@ struct Куранты
                 /***************************************************************
 
                         Набор fields в_ represent a local version of the 
-                        provопрed UTC время. все значения must fall внутри 
+                        предоставленный UTC время. все значения must fall внутри 
                         the домен supported by the OS
 
                 ***************************************************************/
@@ -186,7 +186,7 @@ struct Куранты
                 /***************************************************************
 
                         Набор fields в_ represent a local version of the 
-                        provопрed UTC время. все значения must fall внутри 
+                        предоставленный UTC время. все значения must fall внутри 
                         the домен supported by the OS
 
                 ***************************************************************/

@@ -1,7 +1,7 @@
 ﻿/**
  * The tuple module defines a template struct used for arbitrary данные grouping.
  *
- * Copyright: Copyright (C) 2005-2006 Sean Kelly.  все rights reserved.
+ * Copyright: Copyright (C) 2005-2006 Sean Kelly.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Walter Bright, Sean Kelly
  */
@@ -9,14 +9,14 @@ module core.Tuple;
 
 
 /**
- * Кортеж -является набор типизированных значений.  Tuples are useful for returning
- * a установи of values является a function or for passing a установи of параметры в_ a
+ * Кортеж -из_ набор типизированных значений.  Tuples are useful for returning
+ * a установи of values из_ a function or for passing a установи of параметры в_ a
  * function.
  *
- * NOTE: Since the transition является пользователь-defined в_ built-in tuples, the ability
- *       в_ return tuples является a function есть been lost.  Until this issue is
+ * NOTE: Since the transition из_ пользователь-defined в_ built-in tuples, the ability
+ *       в_ return tuples из_ a function есть been lost.  Until this issue is
  *       адресed within the language, tuples must be enclosed in a struct
- *       if they are в_ be returned является a function.
+ *       if they are в_ be returned из_ a function.
  *
  * Example:
  * ----------------------------------------------------------------------
@@ -28,7 +28,7 @@ module core.Tuple;
  *     Vals знач;
  * }
  *
- * Wrap!(T2) func( T1 знач )
+ * Wrap!(T2) функц( T1 знач )
  * {
  *     Wrap!(T2) возвр;
  *     возвр.знач[0] = знач[0];
@@ -48,7 +48,7 @@ module core.Tuple;
  * alias Кортеж!(цел, реал) T1;
  * alias Кортеж!(цел, дол) T2;
  *
- * T2 func( T1 знач )
+ * T2 функц( T1 знач )
  * {
  *     T2 возвр;
  *     возвр[0] = знач[0];
@@ -62,7 +62,7 @@ module core.Tuple;
  * alias Кортеж!(IntTuple, дол) RetTuple;
  *
  * // tuples are equivalent в_ a установи of function параметры of the same тип
- * RetTuple t = func( 1, 2.3 );
+ * RetTuple t = функц( 1, 2.3 );
  *
  * ----------------------------------------------------------------------
  */
@@ -88,7 +88,7 @@ template ИндексУ( T, СписокТ... )
 
 
 /**
- * Returns a Кортеж with the first occurrence of T removed является СписокТ.
+ * Returns a Кортеж with the first occurrence of T removed из_ СписокТ.
  */
 template Удали( T, СписокТ... )
 {
@@ -102,7 +102,7 @@ template Удали( T, СписокТ... )
 
 
 /**
- * Returns a Кортеж with все occurrences of T removed является СписокТ.
+ * Returns a Кортеж with все occurrences of T removed из_ СписокТ.
  */
 template УдалиВсе( T, СписокТ... )
 {
@@ -144,7 +144,7 @@ template ЗамениВсе( T, U, СписокТ... )
 
 
 /**
- * Returns a Кортеж with the типы является СписокТ declared in реверс order.
+ * Returns a Кортеж with the типы из_ СписокТ declared in реверс order.
  */
 template Реверсни( СписокТ... )
 {
@@ -170,7 +170,7 @@ template Уникум( СписокТ... )
 
 
 /**
- * Returns the тип является СписокТ that is the most производный является T.  If no such
+ * Returns the тип из_ СписокТ that is the most производный из_ T.  If no such
  * тип is найдено then T will be returned.
  */
 template ФинПроизводный( T, СписокТ... )

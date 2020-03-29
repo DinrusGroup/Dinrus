@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        Copyright: Copyright (C) 2008 Kris Bell.  все rights reserved.
+        Copyright: Copyright (C) 2008 Kris Bell.  Все права защищены.
 
         License:   BSD стиль: $(LICENSE)
 

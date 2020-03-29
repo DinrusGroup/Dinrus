@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Jeff Davey. все rights reserved
+        copyright:      Copyright (c) 2008 Jeff Davey. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 John Chapman. все rights reserved
+        copyright:      Copyright (c) 2005 John Chapman. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 

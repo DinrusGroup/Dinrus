@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -86,7 +86,7 @@ public class ДобВФайлы : Файлер
         --индекс;
         следщФайл (нет);
 
-        // установи provопрed выкладка (ignored when пусто)
+        // установи предоставленный выкладка (ignored when пусто)
         выкладка (как);
     }
 

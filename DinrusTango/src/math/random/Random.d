@@ -91,7 +91,7 @@
     $(UL
       $(LI  easily свопpable basic источник
             ---
-            // a random generator that uses the system provопрed random generator:
+            // a random generator that uses the system предоставленный random generator:
             auto r=СлуччисГ!(Urandom)();
             ---
             One could also build an движок that can be изменён at рантайм (that calls
@@ -133,7 +133,7 @@
       Efficiency:
       $(LI  very fast methods have been использован, и some effort имеется been помести преобр_в
             optimizing some of them, but not все, but the interface имеется been choosen
-            so that закрой в_ optimal implementation can be provопрed through the same
+            so that закрой в_ optimal implementation can be предоставленный through the same
             interface.
       )
       $(LI  Нормальный и Exp sources allocated only upon request: no память waste, but

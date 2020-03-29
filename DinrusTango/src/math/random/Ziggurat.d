@@ -5,12 +5,9 @@
         author:         Fawzi Mohamed
 *******************************************************************************/
 module math.random.Ziggurat;
-import math.Bracket:
-найдиКорень;
-import math.Math:
-абс;
-import math.ErrorFunction:
-матошфунк;
+import math.Bracket: найдиКорень;
+import math.Math: абс;
+import math.ErrorFunction: матошфунк;
 import core.Traits;
 
 /// ziggurat метод for decreasing distributions.

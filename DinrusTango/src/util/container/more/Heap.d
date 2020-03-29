@@ -1,6 +1,6 @@
 ﻿/**
   *
-  * Copyright:  Copyright (C) 2008 Chris Wright.  все rights reserved.
+  * Copyright:  Copyright (C) 2008 Chris Wright.  Все права защищены.
   * License:    BSD стиль: $(LICENSE)
   * Версия:    Oct 2008: Initial release
   * Author:     Chris Wright, aka dhasenan
@@ -19,7 +19,7 @@ private import exception;
   * Pushing an элемент преобр_в the куча takes O(lg n) и popping the верх of the куча takes O(lg n). Heaps are 
   * thus popular for sorting, among другой things.
   * 
-  * No opApply is provопрed, since most people would expect this в_ return the contents in sorted order,
+  * No opApply is предоставленный, since most people would expect this в_ return the contents in sorted order,
   * not do significant куча allocation, not modify the collection, и complete in linear время. This
   * combination is not possible with a куча. 
   *
@@ -97,7 +97,7 @@ struct Куча (T, alias Сравни = minHeapCompare!(T), alias Move = defaul
                 return нет;
         }
 
-        /** Удали the элемент at the given индекс является the куча.
+        /** Удали the элемент at the given индекс из_ the куча.
           * The индекс is according в_ the куча's internal выкладка; you are 
           * responsible for making sure the индекс is correct.
           * The куча invariant is maintained. */
@@ -107,7 +107,7 @@ struct Куча (T, alias Сравни = minHeapCompare!(T), alias Move = defaul
                 {
                         throw new НетЭлементаИскл ("куча :: tried в_ удали an"
                                 ~ " элемент with индекс greater than the размер of the куча "
-                                ~ "(dопр you вызов вынь() является an пустой куча?)");
+                                ~ "(dопр you вызов вынь() из_ an пустой куча?)");
                 }
                 следщ--;
                 auto t = куча[индекс];
@@ -147,7 +147,7 @@ struct Куча (T, alias Сравни = minHeapCompare!(T), alias Move = defaul
                 следщ = 0;
         }
 
-        /** сбрось this куча, и use the provопрed хост for значение элементы */
+        /** сбрось this куча, и use the предоставленный хост for значение элементы */
         проц очисть (T[] хост)
         {
                 this.куча = хост;

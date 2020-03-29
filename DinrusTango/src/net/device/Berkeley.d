@@ -1,22 +1,67 @@
 ﻿module net.device.Berkeley;
 
-private import sys.Common;
+public import sys.Common;
 private import exception;
 private import stringz;
+
 version (Windows)
 {
-         private import sys.win32.WsaSock;
+//import sys.win32.WsaSock;
+struct Гуид
+{
+    бцел     g1;
+    бкрат   g2,
+             g3;
+    ббайт[8] g4;
 }
 
-private extern(C) цел strlen(сим*);
+enum
+{
+    WSADESCRIPTION_LEN = 256,
+    WSASYS_STATUS_LEN = 128,
+    WSAEWOULDBLOCK =  10035,
+    WSAEINTR =        10004,
+}
 
-public import sys.WinConsts:МАСКА_ВВПАРАМ, ВВК_ВХО, ВВФСБВВ, СОКОШИБ, ПОпцияСокета, ППротокол, ПТипСок, ПСемействоАдресов, ПЭкстрЗакрытиеСокета, ПФлагиСокета, ПФлагиАИ, ПОшибкаАИ,  ПФлагиУИ, ПИмИнфо;
+struct WSABUF
+{
+    uint    len;
+    void*   buf;
+}
+enum
+{
+    SIO_GET_EXTENSION_FUNCTION_POINTER = 0x40000000 | 0x80000000 | 0x08000000 | 6,
+    SO_UPDATE_CONNECT_CONTEXT = 0x7010,
+    SO_UPDATE_ACCEPT_CONTEXT = 0x700B
+}
+//Эти функции руссифицированы и импортируются из Dinrus.Base.dll:
+		 
+	//цел ВСАСтарт(крат требВерсия, ВИНСОКДАН* всадан);
+	//= int WSAStartup(WORD wVersionRequested, ВИНСОКДАН* lpWSAData);
+	
+	//цел ВСАЧистка();
+	//= int WSACleanup();
+	
+	//цел ВСАДайПоследнююОшибку();
+	//= int WSAGetLastError ();
+	
+//А эти требуется доработать и поместить в ДинрусБейс.
+//Пока же мы их импортируем из вспомогательной статической либы (import.биб):
 
-
-public import sys.WinStructs: ВИНСОКДАН, ВИНСОКБУФ, набор_уд, значврем, хостзап, адрессок, заминка, адрес_ин, протзап, служзап, адринфо;
+extern (Windows)
+{	
+	int WSAGetOverlappedResult (HANDLE, АСИНХРОН*, DWORD*, BOOL, DWORD*);
+    int WSAIoctl (HANDLE s, DWORD op, LPVOID inBuf, DWORD cbIn, LPVOID outBuf, DWORD cbOut, DWORD* result, LPOVERLAPPED, void*);
+    int WSARecv (HANDLE, WSABUF*, DWORD, DWORD*, DWORD*, АСИНХРОН*, void*);
+    int WSASend (HANDLE, WSABUF*, DWORD, DWORD*, DWORD, АСИНХРОН*, void*);	
+}	
+		 
+}
 
 extern(C)
 {
+    т_мера длинтекс(in ткст0 текст);// strlen из модуля cidrus
+
 	бкрат х8сбк(бкрат x);	//htons
 	бцел х8сбц(бцел x);//htonl
 	бкрат с8хбк(бкрат x);//ntohs
@@ -26,10 +71,7 @@ extern(C)
 	цел УД_УСТАНОВЛЕН(СОКЕТ уд, набор_уд* набор);
 	проц УД_УСТАНОВИ(СОКЕТ уд, набор_уд* набор);
 	проц УД_ОБНУЛИ(набор_уд* набор);
-
-	цел ВСАСтарт(крат требВерсия, ВИНСОКДАН* всадан);
-	цел ВСАЧистка();
-	цел ВСАДайПоследнююОшибку();
+	
 	СОКЕТ сокет(ПСемействоАдресов са, ПТипСок тип, ППротокол протокол);
 	цел ввктлсок(СОКЕТ с, цел кмд, бцел* аргук);
 	цел свяжисок(СОКЕТ с, адрессок* имя, цел длинаим);
@@ -56,73 +98,64 @@ extern(C)
 	служзап* дайслужбупоимени(ткст имя, ткст протокол);
 	служзап* дайслужбупопорту(цел порт, ткст протокол);		
 	цел дайимяхоста(ткст имя, цел длинаим);	
-	цел дайадринфо(ткст имяузла, ткст имяслуж, адринфо* хинты, адринфо** рез);		
-	проц высвободиадринфо(адринфо* аи);	
-	цел дайинфобимени(адрессок* ас, т_длинсок длинсок, ткст хост, бцел длинхост, ткст серв, бцел длинсерв, ПИмИнфо флаги);
+	//цел дайадринфо(ткст имяузла, ткст имяслуж, адринфо* хинты, адринфо** рез);		
+	//проц высвободиадринфо(адринфо* аи);	
+	//цел дайинфобимени(адрессок* ас, т_длинсок длинсок, ткст хост, бцел длинхост, ткст серв, бцел длинсерв, ПИмИнфо флаги);
 	
 }
 
 alias закройсок закрой;
 alias выбери сделвыб;
-                /**
-                The gai_strerror function translates ошибка codes of getAddrinfo, 
-                freeAddrinfo и getnameinfo куда a human читаемый ткст, suitable 
-                for ошибка reporting. (C) MAN
-                */
-                //сим* gai_strerror(цел errcode);
 
-                /**
-                Given узел и служба, which опрentify an Internet хост и a служба, 
-                getAddrinfo() returns one or ещё ИнфОбАдре structures, each of which 
-                содержит an Internet адрес that can be specified in a вызов куда вяжи 
-                or подключись. The getAddrinfo() function combines the functionality 
-                provопрed by the getservbyname и getservbyport functions преобр_в a single 
-                interface, but unlike the latter functions, getAddrinfo() is reentrant 
-                и allows programs куда eliminate ИПv4-versus-ИПv6 dependencies.(C) MAN
-                */
-                цел function(сим* узел, сим* служба, Адрес.ИнфОбАдре* hints, Адрес.ИнфОбАдре** рез) getAddrinfo;
+ /**
+* При указанных узле и службе, которые идентифицируют Интернет-хост 
+* и любую службу, getAddrinfo() возвращает одну или более структуру ИнфОбАдре,
+* каждая из которых содержит Интернет-адрес, который можно указать в вызове,
+* для связи или подключения. 
+* Функция getAddrinfo() комбинирует функционал, предоставленный функциями
+* "дайслужбупоимени" и "дайслужбупопорту" в единый интерфейс, но, в отличие от них,
+* getAddrinfo() реэнтрантна и позволяет программам обходить зависимости
+* между  ИПv4 и ИПv6.
+ */
+ цел function(сим* узел, сим* служба, Адрес.ИнфОбАдре* хинты, Адрес.ИнфОбАдре** рез) getAddrinfo;
         
-                /**
-                The freeAddrinfo() function frees the память that was allocated for the 
-                dynamically allocated linked список рез.  (C) MAN
-                */								
-                проц function(Адрес.ИнфОбАдре *рез) freeAddrinfo; 
+/**
+* Функция freeAddrinfo() освобождает память, размещённую для динамически добавляемого
+* в память линкованного списка результатов.
+*/								
+проц function(Адрес.ИнфОбАдре *рез) freeAddrinfo; 
 								
-                /**
-                The getnameinfo() function is the inverse of getAddrinfo: it converts 
-                a сокет адрес куда a corresponding хост и служба, in a протокол-
-                independent manner. It combines the functionality of дайхостпоадресу и 
-                getservbyport, but unlike those functions, getAddrinfo is reentrant и 
-                allows programs куда eliminate ИПv4-versus-ИПv6 dependencies. (C) MAN
-                */
-                цел function(Адрес.адрессок* sa, цел salen, сим* хост, цел hostlen, сим* serv, цел servlen, цел флаги) getnameinfo; 
+/**
+* Функция getnameinfo() инверсия getAddrinfo: она преобразует адрес сокета
+* в соответствующие  хост и службу, в независимой от протокола манере.
+*/
+цел function(Адрес.адрессок* sa, цел salen, сим* хост, цел hostlen, сим* serv, цел servlen, цел флаги) getnameinfo; 
 				
-                бул function (т_сокет, бцел, ук, DWORD, DWORD, DWORD, DWORD*, OVERLAPPED*) AcceptEx;
-                бул function (т_сокет, HANDLE, DWORD, DWORD, OVERLAPPED*, ук, DWORD) TransmitFile;
-                бул function (т_сокет, ук, цел, ук, DWORD, DWORD*, OVERLAPPED*) ConnectEx;
+бул function (т_сокет, бцел, ук, DWORD, DWORD, DWORD, DWORD*, АСИНХРОН*) AcceptEx;
+бул function (т_сокет, HANDLE, DWORD, DWORD, АСИНХРОН*, ук, DWORD) TransmitFile;
+бул function (т_сокет, ук, цел, ук, DWORD, DWORD*, АСИНХРОН*) ConnectEx;
 								
-                //сим* inet_ntop(цел af, проц *ист, сим *приёмн, цел длин);
-        
+//сим* inet_ntop(цел af, проц *ист, сим *приёмн, цел длин);       
 
-        private HMODULE lib;
+        private HMODULE биб;
 
 
         static this()
         {
-                lib = LoadLibraryA ("Ws2_32.dll");
-                getnameinfo = cast(typeof(getnameinfo)) GetProcAddress(lib, "getnameinfo");
+                биб = LoadLibraryA ("Ws2_32.dll");
+                getnameinfo = cast(typeof(getnameinfo)) GetProcAddress(биб, "getnameinfo");
                 if (!getnameinfo) 
                    { 
-                   FreeLibrary (lib);
-                   lib = LoadLibraryA ("Wship6.dll");
+                   FreeLibrary (биб);
+                   биб = LoadLibraryA ("Wship6.dll");
                    } 
-                getnameinfo = cast(typeof(getnameinfo)) GetProcAddress(lib, "getnameinfo"); 
-	        getAddrinfo = cast(typeof(getAddrinfo)) GetProcAddress(lib, "getAddrinfo"); 
-                freeAddrinfo = cast(typeof(freeAddrinfo)) GetProcAddress(lib, "freeAddrinfo"); 
+                getnameinfo = cast(typeof(getnameinfo)) GetProcAddress(биб, "getnameinfo"); 
+	        getAddrinfo = cast(typeof(getAddrinfo)) GetProcAddress(биб, "getAddrinfo"); 
+                freeAddrinfo = cast(typeof(freeAddrinfo)) GetProcAddress(биб, "freeAddrinfo"); 
                 if (!getnameinfo) 
                    { 
-                   FreeLibrary (lib);
-                   lib = пусто;
+                   FreeLibrary (биб);
+                   биб = пусто;
                    } 
 
                 ВИНСОКДАН wd =void;
@@ -130,9 +163,9 @@ alias выбери сделвыб;
                     throw new СокетИскл("версия библиотеки сокетов весьма устарела");
 
                 DWORD результат;
-                Guid acceptG   = {0xb5367df1, 0xcbac, 0x11cf, [0x95,0xca,0x00,0x80,0x5f,0x48,0xa1,0x92]};
-                Guid connectG  = {0x25a207b9, 0xddf3, 0x4660, [0x8e,0xe9,0x76,0xe5,0x8c,0x74,0x06,0x3e]};
-                Guid transmitG = {0xb5367df0, 0xcbac, 0x11cf, [0x95,0xca,0x00,0x80,0x5f,0x48,0xa1,0x92]};
+                Гуид acceptG   = {0xb5367df1, 0xcbac, 0x11cf, [0x95,0xca,0x00,0x80,0x5f,0x48,0xa1,0x92]};
+                Гуид connectG  = {0x25a207b9, 0xddf3, 0x4660, [0x8e,0xe9,0x76,0xe5,0x8c,0x74,0x06,0x3e]};
+                Гуид transmitG = {0xb5367df0, 0xcbac, 0x11cf, [0x95,0xca,0x00,0x80,0x5f,0x48,0xa1,0x92]};
 
                 auto s = cast(HANDLE) сокет (ПСемействоАдресов.ИНЕТ, ПТипСок.Поток, ППротокол.ПУТ);
                 assert (s != cast(HANDLE) -1);
@@ -153,8 +186,8 @@ alias выбери сделвыб;
 
         static ~this()
         {
-                if (lib)
-                    FreeLibrary (lib);
+                if (биб)
+                    FreeLibrary (биб);
                 ВСАЧистка();
         }
 
@@ -493,7 +526,7 @@ version (Windows)
 
                 if(Ошибка == .дайимяхоста (имя, имя.length))
                    исключение ("Не удаётся получить имя хоста: ");
-                return имя [0 .. strlen(имя.ptr)].dup;
+                return имя [0 .. длинтекс(имя.ptr)].dup;
         }
 
         /***********************************************************************
@@ -747,8 +780,8 @@ version (Windows)
         {
                 version (Windows)
                         {
-                        бцел num = !да;
-                        if(ввктлсок(сок, ВВФСБВВ, &num) is ОШИБКА)
+                        бцел чис = !да;
+                        if(ввктлсок(сок, ВВФСБВВ, &чис) is ОШИБКА)
                            исключение("Не удаётся установить блокировку сокета: ");
                         синхронно = да;
                         }
@@ -852,7 +885,7 @@ public abstract class Адрес
 
         private static ткст преобразуй2Д (сим* s)
         {
-                return s ? s[0 .. strlen(s)] : cast(ткст)пусто;
+                return s ? s[0 .. длинтекс(s)] : cast(ткст)пусто;
         }
 
         /***********************************************************************
@@ -982,11 +1015,11 @@ public abstract class Адрес
                         } 
 
                 ИнфОбАдре* инфо; 
-                ИнфОбАдре hints; 
-                hints.ai_flags = флаги; 
-                hints.ai_family = (флаги & ПФлагиАИ.Пассив && af == ПСемействоАдресов.НЕУК) ? ПСемействоАдресов.ИНЕТ6 : af; 
-                hints.ai_socktype = ПТипСок.Поток; 
-                цел ошибка = getAddrinfo(вТкст0(хост), служба.length == 0 ? пусто : вТкст0(служба), &hints, &инфо); 
+                ИнфОбАдре хинты; 
+                хинты.ai_flags = флаги; 
+                хинты.ai_family = (флаги & ПФлагиАИ.Пассив && af == ПСемействоАдресов.НЕУК) ? ПСемействоАдресов.ИНЕТ6 : af; 
+                хинты.ai_socktype = ПТипСок.Поток; 
+                цел ошибка = getAddrinfo(вТкст0(хост), служба.length == 0 ? пусто : вТкст0(служба), &хинты, &инфо); 
                 if (ошибка != 0)  
                     throw new АдрИскл("не удалось разрешить " ~ хост); 
 
@@ -1521,14 +1554,14 @@ protected:
                 version (Win32) 
                         { 
                         if (!getAddrinfo) 
-                             исключение ("This platform does not support ИПv6."); 
+                             исключение ("Эта платформа не поддерживает ИПv6."); 
                         } 
                 ИнфОбАдре* инфо; 
-                ИнфОбАдре hints; 
-                hints.ai_family = ПСемействоАдресов.ИНЕТ6; 
-                цел ошибка = getAddrinfo((адр ~ '\0').ptr, пусто, &hints, &инфо); 
+                ИнфОбАдре хинты; 
+                хинты.ai_family = ПСемействоАдресов.ИНЕТ6; 
+                цел ошибка = getAddrinfo((адр ~ '\0').ptr, пусто, &хинты, &инфо); 
                 if (ошибка != 0)  
-                    исключение("неудачно куда создай АдресИПв6: "); 
+                    исключение("Неудачно был создан АдресИПв6: "); 
                  
                 син = *cast(sockAddr_in6*)(инфо.ai_Addr); 
                 син.портИС = х8сбк(порт); 
@@ -1546,14 +1579,14 @@ protected:
                 version (Win32) 
                         { 
                         if(! getAddrinfo) 
-                             исключение ("This platform does not support ИПv6."); 
+                             исключение ("Эта платформа не поддерживает ИПv6."); 
                         } 
                 ИнфОбАдре* инфо; 
-                ИнфОбАдре hints; 
-                hints.ai_family = ПСемействоАдресов.ИНЕТ6; 
-                цел ошибка = getAddrinfo((адр ~ '\0').ptr, (служба ~ '\0').ptr, &hints, &инфо); 
+                ИнфОбАдре хинты; 
+                хинты.ai_family = ПСемействоАдресов.ИНЕТ6; 
+                цел ошибка = getAddrinfo((адр ~ '\0').ptr, (служба ~ '\0').ptr, &хинты, &инфо); 
                 if (ошибка != 0)  
-                    исключение ("неудачно куда создай АдресИПв6: "); 
+                    исключение ("Неудачно был создан АдресИПв6: "); 
                 син = *cast(sockAddr_in6*)(инфо.ai_Addr); 
         } 
  
@@ -1859,20 +1892,20 @@ public class НаборСокетов
 
         public:
 
-        this (бцел max)
+        this (бцел макс)
         {
                 version(Win32)
                 {
-                        члоБайт = max * т_сокет.sizeof;
+                        члоБайт = макс * т_сокет.sizeof;
                         буф = (new байт[члоБайт + бцел.sizeof]).ptr;
                         счёт = 0;
                 }
                 else version (Posix)
                 {
-                        if (max <= 32)
+                        if (макс <= 32)
                             члоБайт = 32 * бцел.sizeof;
                         else
-                           члоБайт = max * бцел.sizeof;
+                           члоБайт = макс * бцел.sizeof;
 
                         буф = (new байт[члоБайт]).ptr;
                         nfdbits = члоБайт * 8;
@@ -1946,7 +1979,7 @@ public class НаборСокетов
         {
                 version(Win32)
                 {
-                        assert(счёт < max); //добавьed too many СОКЕТs; specify a higher max in the constructor
+                        assert(счёт < макс); //добавьed too many СОКЕТs; specify a higher макс in the constructor
                 }
         }
         body
@@ -2058,7 +2091,7 @@ public class НаборСокетов
                 return набор_ли(s.укз);
         }
 
-        бцел max()
+        бцел макс()
         {
                 return члоБайт / т_сокет.sizeof;
         }

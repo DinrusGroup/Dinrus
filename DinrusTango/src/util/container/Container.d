@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -612,7 +612,7 @@ struct Контейнер
 
                 /**
                  * The previous чанк in the chain.  Требуется for O(1) removal
-                 * является the chain.
+                 * из_ the chain.
                  */
                 чанк *предш;
 
@@ -634,7 +634,7 @@ struct Контейнер
                 T[размЧанка] элемы;
 
                 /**
-                 * Размести a T* является the освободи список.
+                 * Размести a T* из_ the освободи список.
                  */
                 T *разместиИзОсвобСписка()
                 {
@@ -737,7 +737,7 @@ struct Контейнер
                         if(свежий.члоОсвобождений != 0)
                         {
                             //
-                            // can recycle элементы является свежий
+                            // can recycle элементы из_ свежий
                             //
                             использован = свежий;
                         }
@@ -774,7 +774,7 @@ struct Контейнер
                         if(использован.члоОсвобождений != 0)
                         {
                             //
-                            // первый, отвяжи тек является its текущ location
+                            // первый, отвяжи тек из_ its текущ location
                             //
                             тек.предш.следщ = тек.следщ;
                             тек.следщ.предш = тек.предш;
@@ -805,7 +805,7 @@ struct Контейнер
                     else
                     {
                         //
-                        // удали тек является список
+                        // удали тек из_ список
                         //
                         if(использован is тек)
                         {
@@ -857,7 +857,7 @@ struct Контейнер
                 алиасы в_ the correct Default разместитель depending on как big
                 the тип is.  It makes less sense в_ use a СМЧанк разместитель
                 if the тип is going в_ be larger than a страница (currently there
-                is no way в_ получи the страница размер является the СМ, so we assume 4096
+                is no way в_ получи the страница размер из_ the СМ, so we assume 4096
                 байты).  If not ещё than one unit can fit преобр_в a страница, then
                 we use the default СМ разместитель.
 

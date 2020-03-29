@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
       
@@ -105,7 +105,7 @@ version (GNU)
 
 /*******************************************************************************
 
-        Pull in добавьitional functions является the C library
+        Pull in добавьitional functions из_ the C library
 
 *******************************************************************************/
 
@@ -351,7 +351,7 @@ public struct Журнал
 /*******************************************************************************
 
         Снимок support for use with existing лог экземпляры. The behaviour 
-        is different является traditional logging in that snapshots don't излей any 
+        is different из_ traditional logging in that snapshots don't излей any 
         вывод until flushed. They gather up information in a temporary буфер 
         и излей that instead - this can be использован в_ gather up a series of лог 
         snИПpets преобр_в one place. Typical usage is like so:
@@ -529,7 +529,7 @@ public class Логгер : ИЛоггер
                                 предок;
 
         private Иерархия       host_;
-        private ткст          name_;
+        private ткст          имя_;
         private Уровень           level_;
         private бул            аддитивный_;
         private Добавщик        appender_;
@@ -547,7 +547,7 @@ public class Логгер : ИЛоггер
                 host_ = хост;
                 level_ = Уровень.След;
                 аддитивный_ = да;
-                name_ = имя;
+                имя_ = имя;
         }
 
         /***********************************************************************
@@ -747,10 +747,10 @@ public class Логгер : ИЛоггер
 
         final ткст имя ()
         {
-                цел i = name_.length;
+                цел i = имя_.length;
                 if (i > 0)
                     --i;
-                return name_[0 .. i];     
+                return имя_[0 .. i];     
         }
 
         /***********************************************************************
@@ -787,7 +787,7 @@ public class Логгер : ИЛоггер
                 level_ = уровень; 
                 if (распространить)    
                     foreach (лог; host_)
-                             if (лог.ветвь_ли_от (name_))
+                             if (лог.ветвь_ли_от (имя_))
                                  лог.level_ = уровень;
                 return this;
         }
@@ -834,7 +834,7 @@ public class Логгер : ИЛоггер
 
         /***********************************************************************
         
-                Удали все appenders является this Логгер
+                Удали все appenders из_ this Логгер
 
         ***********************************************************************/
 
@@ -868,7 +868,7 @@ public class Логгер : ИЛоггер
                    СобытиеЛога событие;
 
                    // установи the событие атрибуты и добавь it
-                   событие.установи (host_, уровень, эксп, имя.length ? name_[0..$-1] : "корень");
+                   событие.установи (host_, уровень, эксп, имя.length ? имя_[0..$-1] : "корень");
                    добавь (событие);
                    }
                 return this;
@@ -882,7 +882,7 @@ public class Логгер : ИЛоггер
 
         private проц добавь (СобытиеЛога событие)
         {
-                // комбинируй appenders является все ancestors
+                // комбинируй appenders из_ все ancestors
                 auto линки = this;
                 Добавщик.Маска маски = 0;                 
                 do {
@@ -939,7 +939,7 @@ public class Логгер : ИЛоггер
 
         /***********************************************************************
         
-                See if the provопрed Логгер имя is a предок of this one. Note 
+                See if the предоставленный Логгер имя is a предок of this one. Note 
                 that each Логгер имя имеется a '.' appended в_ the конец, such that 
                 имя segments will not partially сверь.
 
@@ -950,17 +950,17 @@ public class Логгер : ИЛоггер
                 auto длин = кандидат.length;
 
                 // possible предок if length is shorter
-                if (длин < name_.length)
+                if (длин < имя_.length)
                     // does the префикс сверь? Note we добавь a "." в_ each 
                     // (the корень is a предок of everything)
                     return (длин is 0 || 
-                            memcmp (&кандидат[0], &name_[0], длин) is 0);
+                            memcmp (&кандидат[0], &имя_[0], длин) is 0);
                 return нет;
         }
 
         /***********************************************************************
         
-                See if the provопрed Логгер is a better сверь as a предок of
+                See if the предоставленный Логгер is a better сверь as a предок of
                 this one. This is использован в_ restructure the иерархия when a
                 new logger экземпляр is introduced
 
@@ -968,10 +968,10 @@ public class Логгер : ИЛоггер
 
         private final бул близкийПотомок_ли (Логгер другой)
         {
-                auto имя = другой.name_;
+                auto имя = другой.имя_;
                 if (ветвь_ли_от (имя))
                     // is this a better (longer) сверь than приор предок?
-                    if ((предок is пусто) || (имя.length >= предок.name_.length))
+                    if ((предок is пусто) || (имя.length >= предок.имя_.length))
                          return да;
                 return нет;
         }
@@ -993,7 +993,7 @@ public class Логгер : ИЛоггер
 private class Иерархия : Логгер.Контекст
 {
         private Логгер                  root_;
-        private ткст                  name_,
+        private ткст                  имя_,
                                         адрес_;      
         private Логгер.Контекст          context_;
         private Логгер[ткст]          loggers;
@@ -1007,7 +1007,7 @@ private class Иерархия : Логгер.Контекст
 
         this (ткст имя)
         {
-                name_ = имя;
+                имя_ = имя;
                 адрес_ = "network";
 
                 // вставь a корень узел; the корень имеется an пустой имя
@@ -1042,7 +1042,7 @@ private class Иерархия : Логгер.Контекст
 
         final ткст имя ()
         {
-                return name_;
+                return имя_;
         }
 
         /**********************************************************************
@@ -1053,7 +1053,7 @@ private class Иерархия : Логгер.Контекст
 
         final проц имя (ткст имя)
         {
-                name_ = имя;
+                имя_ = имя;
         }
 
         /**********************************************************************
@@ -1118,7 +1118,7 @@ private class Иерархия : Логгер.Контекст
 
         /***********************************************************************
         
-                Return the экземпляр of a Логгер with the provопрed ярлык. If
+                Return the экземпляр of a Логгер with the предоставленный ярлык. If
                 the экземпляр does not exist, it is создан at this время.
 
                 Note that an пустой ярлык is consопрered illegal, и will be
@@ -1152,7 +1152,7 @@ private class Иерархия : Логгер.Контекст
 
         /***********************************************************************
         
-                Return the экземпляр of a Логгер with the provопрed ярлык. If
+                Return the экземпляр of a Логгер with the предоставленный ярлык. If
                 the экземпляр does not exist, it is создан at this время.
 
         ***********************************************************************/
@@ -1278,7 +1278,7 @@ private class Иерархия : Логгер.Контекст
 package struct СобытиеЛога
 {
         private ткст          msg_,
-                                name_;
+                                имя_;
         private Время            time_;
         private Уровень           level_;
         private Иерархия       host_;
@@ -1294,7 +1294,7 @@ package struct СобытиеЛога
                 time_ = Журнал.время;
                 level_ = уровень;
                 host_ = хост;
-                name_ = имя;
+                имя_ = имя;
                 msg_ = сооб;
         }
 
@@ -1317,7 +1317,7 @@ package struct СобытиеЛога
 
         ткст имя ()
         {
-                return name_;
+                return имя_;
         }
 
         /***********************************************************************
@@ -1333,7 +1333,7 @@ package struct СобытиеЛога
 
         /***********************************************************************
                 
-                Return the иерархия where the событие was produced является
+                Return the иерархия where the событие was produced из_
 
         ***********************************************************************/
 

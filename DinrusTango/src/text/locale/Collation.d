@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 John Chapman. все rights reserved
+        copyright:      Copyright (c) 2005 John Chapman. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -118,7 +118,7 @@ public class СтрокоСопоставитель
 
 /**
   $(I Delegate.) Represents the метод that will укз the ткст сравнение.
-  Remarks:
+  Примечания:
     The delegate имеется the сигнатура $(I цел delegate(ткст, ткст)).
  */
 alias цел delegate(ткст, ткст) СравнениеСтрок;
@@ -156,7 +156,7 @@ public class СтрокоСортировщик
       Creates an экземпляр using the specified delegate.
       Параметры:
         сравнение = The delegate в_ use when comparing strings.
-      Remarks:
+      Примечания:
         The сравнение parameter must have the same сигнатура as СравнениеСтрок.
     */
     public this(СравнениеСтрок сравнение)

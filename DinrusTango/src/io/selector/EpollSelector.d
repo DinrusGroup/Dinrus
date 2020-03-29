@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
-  copyright:   Copyright (c) 2006 Juan Jose Comellas. все rights reserved
+  copyright:   Copyright (c) 2006 Juan Jose Comellas. Все права защищены
   license:     BSD стиль: $(LICENSE)
   author:      Juan Jose Comellas <juanjo@comellas.com.ar>
 *******************************************************************************/
@@ -186,7 +186,7 @@ version (linux)
          * Close the selector, releasing the файл descrИПtor that had been
          * создан in the previous вызов в_ открой().
          *
-         * Remarks:
+         * Примечания:
          * It can be called multИПle times without harmful sопрe-effects.
          */
         public проц закрой()
@@ -271,7 +271,7 @@ version (linux)
                 // garbage собериed while there is still a reference в_ it in
                 // an epoll_event. This also allows в_ в_ efficiently найди the
                 // ключ corresponding в_ a укз in methods where this
-                // association is not provопрed automatically.
+                // association is not предоставленный automatically.
                 _keys[провод.фукз()] = newkey;
                 auto x = провод.фукз in _keys;
                 событие.данные.фукз = cast(ук) x;
@@ -292,7 +292,7 @@ version (linux)
          * провод      = провод that had been previously associated в_ the
          *                selector; it can be пусто.
          *
-         * Remarks:
+         * Примечания:
          * Unregistering a пусто провод is allowed и no исключение is thrown
          * if this happens.
          *
@@ -412,7 +412,7 @@ version (linux)
          * Return the выделение установи resulting из_ the вызов в_ any of the
          * выбери() methods.
          *
-         * Remarks:
+         * Примечания:
          * If the вызов в_ выбери() was unsuccessful or it dопр not return any
          * события, the returned значение will be пусто.
          */
@@ -425,7 +425,7 @@ version (linux)
          * Return the выделение ключ resulting из_ the registration of a провод
          * в_ the selector.
          *
-         * Remarks:
+         * Примечания:
          * If the провод is not registered в_ the selector the returned
          * значение will КлючВыбора.init. No исключение will be thrown by this
          * метод.

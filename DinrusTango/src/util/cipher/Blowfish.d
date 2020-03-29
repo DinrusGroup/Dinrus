@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright: Copyright (C) Thomas Dixon 2008. все rights reserved.
+ * Copyright: Copyright (C) Thomas Dixon 2008. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Thomas Dixon
  *
@@ -273,8 +273,8 @@ class Blowfish : ШифрБлок
         }
         xr ^= P[i];
 
-        вывод[0..4] = БайтКонвертер.БигЭндиан.является!(бцел)(xr);
-        вывод[4..8] = БайтКонвертер.БигЭндиан.является!(бцел)(xl);
+        вывод[0..4] = БайтКонвертер.БигЭндиан.из_!(бцел)(xr);
+        вывод[4..8] = БайтКонвертер.БигЭндиан.из_!(бцел)(xl);
 
         return BLOCK_SIZE;
     }
@@ -347,7 +347,7 @@ class Blowfish : ШифрБлок
 
 }
 
-/** Some Blowfish тест vectors является Schneier's site. */
+/** Some Blowfish тест vectors из_ Schneier's site. */
 debug (UnitTest)
 {
     unittest

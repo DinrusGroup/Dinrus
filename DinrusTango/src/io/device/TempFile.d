@@ -1,6 +1,6 @@
 ﻿/******************************************************************************
  *
- * copyright:   Copyright &копируй; 2007 Daniel Keep.  все rights reserved.
+ * copyright:   Copyright &копируй; 2007 Daniel Keep.  Все права защищены.
  * license:     BSD стиль: $(LICENSE)
  * version:     Dec 2007: Initial release
  *              May 2009: Inherit Файл

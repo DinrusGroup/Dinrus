@@ -15,27 +15,28 @@ class ПайпНить : Провод
 
 	
     /**
-     * Созд a new ПайпНить with the given buffer размер.
+     * Создаёт новый ПайпНить с заданным размером буфера.
      *
      * Парамы:
-     * размерБуфера = The размер to allocate the buffer.
+     * размерБуфера = Размер выделяемой под буфер памяти.
      */
     this(т_мера размерБуфера=(1024*16))
     {
         _буф = new ббайт[размерБуфера];
-        _закрыто = false;
+        _закрыто = нет;
         _индксЧтен = _остаток = 0;
         _мютекс = new Мютекс;
         _условие = new Условие(_мютекс);
     }
 
     /**
-     * Implements IConduit.размерБуфера.
+     * Реализует IConduit.размерБуфера.
      *
-     * Returns the appropriate buffer размер that should be использован to buffer the
-     * ПайпНить.  Note that this is simply the buffer размер passed in, и
-     * since all the ПайпНить data is in memory, buffering doesn't make
-     * much sense.
+     * Возвращает соответствующего размера буфер, который следует
+     * использовать для буферирования ПайпНити. 
+     * Заметьте, что это просто передаваемый размер буфера, и
+     * поскольку все данные ПайпНить находятся в памяти,
+     * буферирование не имеет никакого смысла.
      */
     т_мера размерБуфера()
     {
@@ -43,9 +44,9 @@ class ПайпНить : Провод
     }
 
     /**
-     * Implements IConduit.вТкст
+     * Реализует IConduit.вТкст
      *
-     * Returns "&lt;thread conduit&gt;"
+     * Возвращает "&lt;thread conduit&gt;"
      */
     ткст вТкст()
     {
@@ -53,8 +54,8 @@ class ПайпНить : Провод
     }
 
     /**
-     * Returns true if there is data left to be читай, и the пиши end isn't
-     * закрыт.
+     * Возвращает да, если ещё есть данные для чтения,
+     * и конец записи не закрыт.
      */
     override бул жив_ли()
     {
@@ -96,7 +97,7 @@ class ПайпНить : Провод
         //
         synchronized(_мютекс)
         {
-            _закрыто = true;
+            _закрыто = да;
             _условие.уведомиВсе();
         }
     }
@@ -116,7 +117,7 @@ class ПайпНить : Провод
     /**
      * Implements ИПотокВвода.читай.
      *
-     * Чит from the conduit преобр_в a target массив.  The provопрed приёмник will be
+     * Чит from the conduit преобр_в a target массив.  The предоставленный приёмник will be
      * populated with контент from the Поток.
      *
      * Returns the число of байты читай, which may be less than requested in
@@ -195,11 +196,11 @@ class ПайпНить : Провод
     /**
      * Implements OutputПоток.пиши.
      *
-     * Зап to Поток from a исток массив. The provопрed src контент will be
+     * Зап to Поток from a исток массив. The предоставленный src контент will be
      * written to the Поток.
      *
      * Returns the число of байты written from src, which may be less than
-     * the quantity provопрed. Кф is returned when an end-of-flow condition
+     * the quantity предоставленный. Кф is returned when an end-of-flow condition
      * arises.
      */
     т_мера пиши(проц[] src)

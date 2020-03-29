@@ -1,13 +1,13 @@
 ﻿/**
  * Модуль variant содержит вариант или полиморфный тип.
  *
- * Copyright: Copyright (C) 2005-2009 The Dinrus Team.  все rights reserved.
+ * Copyright: Copyright (C) 2005-2009 The Dinrus Team.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Daniel Keep, Sean Kelly
  */
 module core.Variant;
 
-private import core.Vararg :
+private import core.TangoVararg :
 спис_ва;
 private import core.Traits;
 private import core.Tuple;
@@ -1344,7 +1344,7 @@ interface B :
 
     version( РазрешитьВарарг )
     {
-        private import core.Vararg;
+        private import core.TangoVararg;
 
         unittest
         {

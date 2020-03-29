@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -41,8 +41,8 @@ private import Целое = text.convert.Integer;
 
 /******************************************************************************
 
-        Parse provопрed ввод и return a UTC эпоха время. An исключение
-        is raised where the provопрed ткст is not fully разобрано.
+        Parse предоставленный ввод и return a UTC эпоха время. An исключение
+        is raised where the предоставленный ткст is not fully разобрано.
 
 ******************************************************************************/
 
@@ -59,7 +59,7 @@ private import Целое = text.convert.Integer;
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -75,7 +75,7 @@ private import Целое = text.convert.Integer;
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -91,7 +91,7 @@ private import Целое = text.convert.Integer;
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -109,7 +109,7 @@ private import Целое = text.convert.Integer;
         RFC1123 formatted время
 
         Converts в_ the форматируй "Sun, 06 Nov 1994 08:49:37 GMT", и
-        returns a populated срез of the provопрed буфер. Note that
+        returns a populated срез of the предоставленный буфер. Note that
         RFC1123 форматируй is always in абсолютный GMT время, и a thirty-
         элемент буфер is sufficient for the produced вывод
 
@@ -198,10 +198,10 @@ T[] format8601(T) (T[] вывод, Время t)
 
 /******************************************************************************
 
-      Parse provопрed ввод и return a UTC эпоха время. A return значение
+      Parse предоставленный ввод и return a UTC эпоха время. A return значение
       of Время.макс (or нет, respectively) indicated a разбор-failure.
 
-      An опция is provопрed в_ return the счёт of characters разобрано -
+      An опция is предоставленный в_ return the счёт of characters разобрано -
       an unchanged значение here also indicates не_годится ввод.
 
 ******************************************************************************/
@@ -227,10 +227,10 @@ T[] format8601(T) (T[] вывод, Время t)
 
 /******************************************************************************
 
-      Parse provопрed ввод и return a UTC эпоха время. A return значение
+      Parse предоставленный ввод и return a UTC эпоха время. A return значение
       of Время.макс (or нет, respectively) indicated a разбор-failure.
 
-      An опция is provопрed в_ return the счёт of characters разобрано -
+      An опция is предоставленный в_ return the счёт of characters разобрано -
       an unchanged значение here also indicates не_годится ввод.
 
 ******************************************************************************/
@@ -501,7 +501,7 @@ T[] format8601(T) (T[] вывод, Время t)
         Returns the число of элементы consumed by the разбор; zero if
         the разбор неудачно
 
-        Quote является http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
+        Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
@@ -528,7 +528,7 @@ T[] format8601(T) (T[] вывод, Время t)
         Returns the число of элементы consumed by the разбор; zero if
         the разбор неудачно
 
-        Quote является http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
+        Quote из_ http://en.wikИПedia.org/wiki/ISO_8601 (2009-09-01):
         "Decimal fractions may also be добавьed в_ any of the three время элементы.
         A decimal точка, either a comma or a dot (without any preference as
         stated most recently in resolution 10 of the 22nd General Conference
@@ -594,7 +594,7 @@ private бул время(T) (ref ВремяДня время, ref T* p, T* e)
 
 /******************************************************************************
 
-        Match a месяц является the ввод
+        Match a месяц из_ the ввод
 
 ******************************************************************************/
 
@@ -650,7 +650,7 @@ private цел разбериМесяц(T) (ref T* p)
 
 /******************************************************************************
 
-        Match a день является the ввод
+        Match a день из_ the ввод
 
 ******************************************************************************/
 
@@ -691,7 +691,7 @@ private цел разбериКороткийДень(T) (ref T* p)
 
 /******************************************************************************
 
-        Match a день является the ввод. Воскресенье is 0
+        Match a день из_ the ввод. Воскресенье is 0
 
 ******************************************************************************/
 
@@ -720,7 +720,7 @@ private цел разбериПолныйДень(T) (ref T* p)
 
 /******************************************************************************
 
-        Extract an целое является the ввод
+        Extract an целое из_ the ввод
 
 ******************************************************************************/
 

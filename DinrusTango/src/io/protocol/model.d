@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -114,7 +114,7 @@ abstract class ИРазместитель
 /*******************************************************************************
 
         ИЧитатель interface. Each читатель operates upon an ИБуфер, which is
-        provопрed at construction время. Читательs are simple converters of данные,
+        предоставленный at construction время. Читательs are simple converters of данные,
         и have reasonably rigопр rules regarding данные форматируй. For example,
         each request for данные expects the контент в_ be available; an исключение
         is thrown where this is not the case. If the данные is arranged in a ещё

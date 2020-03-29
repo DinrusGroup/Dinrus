@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
       
@@ -41,7 +41,7 @@ version (Posix)
 *******************************************************************************/
 
 
-class ФайлМэп : Массив
+class ФайлМэп : io.device.Array.Массив
 {
         private КартированныйФайл файл;
 

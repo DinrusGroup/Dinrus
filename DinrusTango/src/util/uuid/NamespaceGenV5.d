@@ -10,7 +10,7 @@
   * will require a отыщи of some сортируй.
   *
   * This module publicly imports Ууид, so you don't have в_ import Всё if you
-  * are generating version 5 UUIDs. Also, this module is just provопрed for
+  * are generating version 5 UUIDs. Also, this module is just предоставленный for
   * convenience -- you can use the метод Ууид.поИмени if you already have an
   * appropriate дайджест.
   *

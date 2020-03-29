@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
 
 */
 
@@ -23,7 +23,7 @@ private import util.collection.model.Iterator;
  *
  *
  * LLPairs are LLCells with ключи, и operations that deal with them.
- * As with LLCells, the are pure implementation tools.
+ * As with LLCells, the are  implementation tools.
  *
         author: Doug Lea
  * @version 0.93

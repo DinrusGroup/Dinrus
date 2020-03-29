@@ -1,1807 +1,815 @@
-﻿/**
- * The atomic module is intended в_ provопрe some basic support for l-free
- * concurrent programming.  Some common operations are defined, each of which
- * may be performed using the specified память barrier or a less granular
- * barrier if the hardware does not support the version requested.  This
- * model is based on a design by Alexander Terekhov as outlined in
- * <a href=http://groups.google.com/groups?threadm=3E4820EE.6F408B25%40web.de>
- * this нить</a>.  другой useful reference for память ordering on modern
- * architectures is <a href=http://www.linuxjournal.com/article/8211>this
- * article by Paul McKenney</a>.
+/**
+ * The atomic module provides basic support for lock-free
+ * concurrent programming.
  *
- * Copyright: Copyright (C) 2005-2006 Sean Kelly.  все rights reserved.
- * License:   BSD стиль: $(LICENSE)
- * Authors:   Sean Kelly
+ * Copyright: Copyright Sean Kelly 2005 - 2016.
+ * License:   $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost License 1.0)
+ * Authors:   Sean Kelly, Alex Rønne Petersen, Manu Evans
+ * Source:    $(DRUNTIMESRC core/_atomic.d)
  */
-module core.Atomic;
 
+module core.atomic;
 
-pragma(msg, "core.Atomic is deprecated. Please use core.sync.Atomic instead.");
-
-deprecated:
-
-////////////////////////////////////////////////////////////////////////////////
-// Synchronization Options
-////////////////////////////////////////////////////////////////////////////////
-
+import core.internal.atomic;
+import core.internal.attributes : betterC;
+import core.internal.traits : hasUnsharedIndirections;
 
 /**
- * Memory synchronization flag.  If the supplied опция is not available on the
- * current platform then a stronger метод will be used instead.
+ * Specifies the memory ordering semantics of an atomic operation.
+ *
+ * See_Also:
+ *     $(HTTP en.cppreference.com/w/cpp/atomic/memory_order)
  */
-enum псинх
+enum MemoryOrder
 {
-    необр,    /// not sequenced
-    hlb,    /// hoist-загрузи barrier
-    hsb,    /// hoist-сохрани barrier
-    slb,    /// сток-загрузи barrier
-    ssb,    /// сток-сохрани barrier
-    acq,    /// hoist-загрузи + hoist-сохрани barrier
-    относитн,    /// сток-загрузи + сток-сохрани barrier
-    пследвтн,    /// fully sequenced (acq + относитн)
+    /**
+     * Not sequenced.
+     * Corresponds to $(LINK2 https://llvm.org/docs/Atomics.html#monotonic, LLVM AtomicOrdering.Monotonic)
+     * and C++11/C11 `memory_order_relaxed`.
+     */
+    raw = 0,
+    /**
+     * Hoist-load + hoist-store barrier.
+     * Corresponds to $(LINK2 https://llvm.org/docs/Atomics.html#acquire, LLVM AtomicOrdering.Acquire)
+     * and C++11/C11 `memory_order_acquire`.
+     */
+    acq = 2,
+    /**
+     * Sink-load + sink-store barrier.
+     * Corresponds to $(LINK2 https://llvm.org/docs/Atomics.html#release, LLVM AtomicOrdering.Release)
+     * and C++11/C11 `memory_order_release`.
+     */
+    rel = 3,
+    /**
+     * Acquire + release barrier.
+     * Corresponds to $(LINK2 https://llvm.org/docs/Atomics.html#acquirerelease, LLVM AtomicOrdering.AcquireRelease)
+     * and C++11/C11 `memory_order_acq_rel`.
+     */
+    acq_rel = 4,
+    /**
+     * Fully sequenced (acquire + release). Corresponds to
+     * $(LINK2 https://llvm.org/docs/Atomics.html#sequentiallyconsistent, LLVM AtomicOrdering.SequentiallyConsistent)
+     * and C++11/C11 `memory_order_seq_cst`.
+     */
+    seq = 5,
+}
+
+/**
+ * Loads 'val' from memory and returns it.  The memory barrier specified
+ * by 'ms' is applied to the operation, which is fully sequenced by
+ * default.  Valid memory orders are MemoryOrder.raw, MemoryOrder.acq,
+ * and MemoryOrder.seq.
+ *
+ * Params:
+ *  val = The target variable.
+ *
+ * Returns:
+ *  The value of 'val'.
+ */
+T atomicLoad(MemoryOrder ms = MemoryOrder.seq, T)(ref const T val)
+    if (!is(T == U, U) && !is(T == inout U, U) && !is(T == const U, U))
+{
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        IntTy r = core.internal.atomic.atomicLoad!ms(cast(IntTy*)&val);
+        return *cast(T*)&r;
+    }
+    else
+        return core.internal.atomic.atomicLoad!ms(cast(T*)&val);
+}
+
+/// Ditto
+T atomicLoad(MemoryOrder ms = MemoryOrder.seq, T)(ref shared const T val) pure nothrow @nogc @trusted
+    if (!hasUnsharedIndirections!T)
+{
+    import core.internal.traits : hasUnsharedIndirections;
+    static assert(!hasUnsharedIndirections!T, "Copying `" ~ shared(const(T)).stringof ~ "` would violate shared.");
+
+    return atomicLoad!ms(*cast(T*)&val);
+}
+
+/// Ditto
+TailShared!T atomicLoad(MemoryOrder ms = MemoryOrder.seq, T)(ref shared const T val) pure nothrow @nogc @trusted
+    if (hasUnsharedIndirections!T)
+{
+    // HACK: DEPRECATE THIS FUNCTION, IT IS INVALID TO DO ATOMIC LOAD OF SHARED CLASS
+    // this is here because code exists in the wild that does this...
+
+    return core.internal.atomic.atomicLoad!ms(cast(TailShared!T*)&val);
+}
+
+/**
+ * Writes 'newval' into 'val'.  The memory barrier specified by 'ms' is
+ * applied to the operation, which is fully sequenced by default.
+ * Valid memory orders are MemoryOrder.raw, MemoryOrder.rel, and
+ * MemoryOrder.seq.
+ *
+ * Params:
+ *  val    = The target variable.
+ *  newval = The value to store.
+ */
+void atomicStore(MemoryOrder ms = MemoryOrder.seq, T, V)(ref T val, V newval) pure nothrow @nogc @trusted
+    if (!is(T == shared) && !is(V == shared))
+{
+    import core.internal.traits : hasElaborateCopyConstructor;
+    static assert (!hasElaborateCopyConstructor!T, "`T` may not have an elaborate copy: atomic operations override regular copying semantics.");
+
+    // resolve implicit conversions
+    T arg = newval;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        core.internal.atomic.atomicStore!ms(cast(IntTy*)&val, *cast(IntTy*)&arg);
+    }
+    else
+        core.internal.atomic.atomicStore!ms(&val, arg);
+}
+
+/// Ditto
+void atomicStore(MemoryOrder ms = MemoryOrder.seq, T, V)(ref shared T val, V newval) pure nothrow @nogc @trusted
+    if (!is(T == class))
+{
+    static if (is (V == shared U, U))
+        alias Thunk = U;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V, "Copying argument `" ~ V.stringof ~ " newval` to `" ~ shared(T).stringof ~ " here` would violate shared.");
+        alias Thunk = V;
+    }
+    atomicStore!ms(*cast(T*)&val, *cast(Thunk*)&newval);
+}
+
+/// Ditto
+void atomicStore(MemoryOrder ms = MemoryOrder.seq, T, V)(ref shared T val, shared V newval) pure nothrow @nogc @trusted
+    if (is(T == class))
+{
+    static assert (is (V : T), "Can't assign `newval` of type `shared " ~ V.stringof ~ "` to `shared " ~ T.stringof ~ "`.");
+
+    core.internal.atomic.atomicStore!ms(cast(T*)&val, cast(V)newval);
+}
+
+/**
+ * Atomically adds `mod` to the value referenced by `val` and returns the value `val` held previously.
+ * This operation is both lock-free and atomic.
+ *
+ * Params:
+ *  val = Reference to the value to modify.
+ *  mod = The value to add.
+ *
+ * Returns:
+ *  The value held previously by `val`.
+ */
+T atomicFetchAdd(MemoryOrder ms = MemoryOrder.seq, T)(ref T val, size_t mod) pure nothrow @nogc @trusted
+    if ((__traits(isIntegral, T) || is(T == U*, U)) && !is(T == shared))
+in (atomicValueIsProperlyAligned(val))
+{
+    static if (is(T == U*, U))
+        return cast(T)core.internal.atomic.atomicFetchAdd!ms(cast(size_t*)&val, mod * U.sizeof);
+    else
+        return core.internal.atomic.atomicFetchAdd!ms(&val, cast(T)mod);
+}
+
+/// Ditto
+T atomicFetchAdd(MemoryOrder ms = MemoryOrder.seq, T)(ref shared T val, size_t mod) pure nothrow @nogc @trusted
+    if (__traits(isIntegral, T) || is(T == U*, U))
+in (atomicValueIsProperlyAligned(val))
+{
+    return atomicFetchAdd!ms(*cast(T*)&val, mod);
+}
+
+/**
+ * Atomically subtracts `mod` from the value referenced by `val` and returns the value `val` held previously.
+ * This operation is both lock-free and atomic.
+ *
+ * Params:
+ *  val = Reference to the value to modify.
+ *  mod = The value to subtract.
+ *
+ * Returns:
+ *  The value held previously by `val`.
+ */
+T atomicFetchSub(MemoryOrder ms = MemoryOrder.seq, T)(ref T val, size_t mod) pure nothrow @nogc @trusted
+    if ((__traits(isIntegral, T) || is(T == U*, U)) && !is(T == shared))
+in (atomicValueIsProperlyAligned(val))
+{
+    static if (is(T == U*, U))
+        return cast(T)core.internal.atomic.atomicFetchAdd!ms(cast(size_t*)&val, mod * U.sizeof);
+    else
+        return core.internal.atomic.atomicFetchSub!ms(&val, cast(T)mod);
+}
+
+/// Ditto
+T atomicFetchSub(MemoryOrder ms = MemoryOrder.seq, T)(ref shared T val, size_t mod) pure nothrow @nogc @trusted
+    if (__traits(isIntegral, T) || is(T == U*, U))
+in (atomicValueIsProperlyAligned(val))
+{
+    return atomicFetchSub!ms(*cast(T*)&val, mod);
+}
+
+/**
+ * Exchange `exchangeWith` with the memory referenced by `here`.
+ * This operation is both lock-free and atomic.
+ *
+ * Params:
+ *  here         = The address of the destination variable.
+ *  exchangeWith = The value to exchange.
+ *
+ * Returns:
+ *  The value held previously by `here`.
+ */
+T atomicExchange(MemoryOrder ms = MemoryOrder.seq,T,V)(T* here, V exchangeWith) pure nothrow @nogc @trusted
+    if (!is(T == shared) && !is(V == shared))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    // resolve implicit conversions
+    T arg = exchangeWith;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        IntTy r = core.internal.atomic.atomicExchange!ms(cast(IntTy*)here, *cast(IntTy*)&arg);
+        return *cast(shared(T)*)&r;
+    }
+    else
+        return core.internal.atomic.atomicExchange!ms(here, arg);
+}
+
+/// Ditto
+TailShared!T atomicExchange(MemoryOrder ms = MemoryOrder.seq,T,V)(shared(T)* here, V exchangeWith) pure nothrow @nogc @trusted
+    if (!is(T == class) && !is(T == interface))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static if (is (V == shared U, U))
+        alias Thunk = U;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V, "Copying `exchangeWith` of type `" ~ V.stringof ~ "` to `" ~ shared(T).stringof ~ "` would violate shared.");
+        alias Thunk = V;
+    }
+    return atomicExchange!ms(cast(T*)here, *cast(Thunk*)&exchangeWith);
+}
+
+/// Ditto
+shared(T) atomicExchange(MemoryOrder ms = MemoryOrder.seq,T,V)(shared(T)* here, shared(V) exchangeWith) pure nothrow @nogc @trusted
+    if (is(T == class) || is(T == interface))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static assert (is (V : T), "Can't assign `exchangeWith` of type `" ~ shared(V).stringof ~ "` to `" ~ shared(T).stringof ~ "`.");
+
+    return cast(shared)core.internal.atomic.atomicExchange!ms(cast(T*)here, cast(V)exchangeWith);
+}
+
+/**
+ * Stores 'writeThis' to the memory referenced by 'here' if the value
+ * referenced by 'here' is equal to 'ifThis'.  This operation is both
+ * lock-free and atomic.
+ *
+ * Params:
+ *  here      = The address of the destination variable.
+ *  writeThis = The value to store.
+ *  ifThis    = The comparison value.
+ *
+ * Returns:
+ *  true if the store occurred, false if not.
+ */
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(T* here, V1 ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == shared) && is(T : V1))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    // resolve implicit conversions
+    T arg1 = ifThis;
+    T arg2 = writeThis;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        return atomicCompareExchangeStrongNoResult!(succ, fail)(cast(IntTy*)here, *cast(IntTy*)&arg1, *cast(IntTy*)&arg2);
+    }
+    else
+        return atomicCompareExchangeStrongNoResult!(succ, fail)(here, arg1, arg2);
+}
+
+/// Ditto
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, V1 ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == class) && (is(T : V1) || is(shared T : V1)))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static if (is (V1 == shared U1, U1))
+        alias Thunk1 = U1;
+    else
+        alias Thunk1 = V1;
+    static if (is (V2 == shared U2, U2))
+        alias Thunk2 = U2;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V2, "Copying `" ~ V2.stringof ~ "* writeThis` to `" ~ shared(T).stringof ~ "* here` would violate shared.");
+        alias Thunk2 = V2;
+    }
+    return cas!(succ, fail)(cast(T*)here, *cast(Thunk1*)&ifThis, *cast(Thunk2*)&writeThis);
+}
+
+/// Ditto
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, shared(V1) ifThis, shared(V2) writeThis) pure nothrow @nogc @trusted
+    if (is(T == class))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    return atomicCompareExchangeStrongNoResult!(succ, fail)(cast(T*)here, cast(V1)ifThis, cast(V2)writeThis);
+}
+
+/**
+ * Stores 'writeThis' to the memory referenced by 'here' if the value
+ * referenced by 'here' is equal to the value referenced by 'ifThis'.
+ * The prior value referenced by 'here' is written to `ifThis` and
+ * returned to the user.  This operation is both lock-free and atomic.
+ *
+ * Params:
+ *  here      = The address of the destination variable.
+ *  writeThis = The value to store.
+ *  ifThis    = The address of the value to compare, and receives the prior value of `here` as output.
+ *
+ * Returns:
+ *  true if the store occurred, false if not.
+ */
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V)(T* here, T* ifThis, V writeThis) pure nothrow @nogc @trusted
+    if (!is(T == shared) && !is(V == shared))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    // resolve implicit conversions
+    T arg1 = writeThis;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        return atomicCompareExchangeStrong!(succ, fail)(cast(IntTy*)here, cast(IntTy*)ifThis, *cast(IntTy*)&writeThis);
+    }
+    else
+        return atomicCompareExchangeStrong!(succ, fail)(here, ifThis, writeThis);
+}
+
+/// Ditto
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, V1* ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == class) && (is(T : V1) || is(shared T : V1)))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static if (is (V1 == shared U1, U1))
+        alias Thunk1 = U1;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V1, "Copying `" ~ shared(T).stringof ~ "* here` to `" ~ V1.stringof ~ "* ifThis` would violate shared.");
+        alias Thunk1 = V1;
+    }
+    static if (is (V2 == shared U2, U2))
+        alias Thunk2 = U2;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V2, "Copying `" ~ V2.stringof ~ "* writeThis` to `" ~ shared(T).stringof ~ "* here` would violate shared.");
+        alias Thunk2 = V2;
+    }
+    static assert (is(T : Thunk1), "Mismatching types for `here` and `ifThis`: `" ~ shared(T).stringof ~ "` and `" ~ V1.stringof ~ "`.");
+    return cas!(succ, fail)(cast(T*)here, cast(Thunk1*)ifThis, *cast(Thunk2*)&writeThis);
+}
+
+/// Ditto
+bool cas(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V)(shared(T)* here, shared(T)* ifThis, shared(V) writeThis) pure nothrow @nogc @trusted
+    if (is(T == class))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    return atomicCompareExchangeStrong!(succ, fail)(cast(T*)here, cast(T*)ifThis, cast(V)writeThis);
+}
+
+/**
+* Stores 'writeThis' to the memory referenced by 'here' if the value
+* referenced by 'here' is equal to 'ifThis'.
+* The 'weak' version of cas may spuriously fail. It is recommended to
+* use `casWeak` only when `cas` would be used in a loop.
+* This operation is both
+* lock-free and atomic.
+*
+* Params:
+*  here      = The address of the destination variable.
+*  writeThis = The value to store.
+*  ifThis    = The comparison value.
+*
+* Returns:
+*  true if the store occurred, false if not.
+*/
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(T* here, V1 ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == shared) && is(T : V1))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    // resolve implicit conversions
+    T arg1 = ifThis;
+    T arg2 = writeThis;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        return atomicCompareExchangeWeakNoResult!(succ, fail)(cast(IntTy*)here, *cast(IntTy*)&arg1, *cast(IntTy*)&arg2);
+    }
+    else
+        return atomicCompareExchangeWeakNoResult!(succ, fail)(here, arg1, arg2);
+}
+
+/// Ditto
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, V1 ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == class) && (is(T : V1) || is(shared T : V1)))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static if (is (V1 == shared U1, U1))
+        alias Thunk1 = U1;
+    else
+        alias Thunk1 = V1;
+    static if (is (V2 == shared U2, U2))
+        alias Thunk2 = U2;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V2, "Copying `" ~ V2.stringof ~ "* writeThis` to `" ~ shared(T).stringof ~ "* here` would violate shared.");
+        alias Thunk2 = V2;
+    }
+    return casWeak!(succ, fail)(cast(T*)here, *cast(Thunk1*)&ifThis, *cast(Thunk2*)&writeThis);
+}
+
+/// Ditto
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, shared(V1) ifThis, shared(V2) writeThis) pure nothrow @nogc @trusted
+    if (is(T == class))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    return atomicCompareExchangeWeakNoResult!(succ, fail)(cast(T*)here, cast(V1)ifThis, cast(V2)writeThis);
+}
+
+/**
+* Stores 'writeThis' to the memory referenced by 'here' if the value
+* referenced by 'here' is equal to the value referenced by 'ifThis'.
+* The prior value referenced by 'here' is written to `ifThis` and
+* returned to the user.
+* The 'weak' version of cas may spuriously fail. It is recommended to
+* use `casWeak` only when `cas` would be used in a loop.
+* This operation is both lock-free and atomic.
+*
+* Params:
+*  here      = The address of the destination variable.
+*  writeThis = The value to store.
+*  ifThis    = The address of the value to compare, and receives the prior value of `here` as output.
+*
+* Returns:
+*  true if the store occurred, false if not.
+*/
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V)(T* here, T* ifThis, V writeThis) pure nothrow @nogc @trusted
+    if (!is(T == shared S, S) && !is(V == shared U, U))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    // resolve implicit conversions
+    T arg1 = writeThis;
+
+    static if (__traits(isFloating, T))
+    {
+        alias IntTy = IntForFloat!T;
+        return atomicCompareExchangeWeak!(succ, fail)(cast(IntTy*)here, cast(IntTy*)ifThis, *cast(IntTy*)&writeThis);
+    }
+    else
+        return atomicCompareExchangeWeak!(succ, fail)(here, ifThis, writeThis);
+}
+
+/// Ditto
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V1,V2)(shared(T)* here, V1* ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    if (!is(T == class) && (is(T : V1) || is(shared T : V1)))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    static if (is (V1 == shared U1, U1))
+        alias Thunk1 = U1;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V1, "Copying `" ~ shared(T).stringof ~ "* here` to `" ~ V1.stringof ~ "* ifThis` would violate shared.");
+        alias Thunk1 = V1;
+    }
+    static if (is (V2 == shared U2, U2))
+        alias Thunk2 = U2;
+    else
+    {
+        import core.internal.traits : hasUnsharedIndirections;
+        static assert(!hasUnsharedIndirections!V2, "Copying `" ~ V2.stringof ~ "* writeThis` to `" ~ shared(T).stringof ~ "* here` would violate shared.");
+        alias Thunk2 = V2;
+    }
+    static assert (is(T : Thunk1), "Mismatching types for `here` and `ifThis`: `" ~ shared(T).stringof ~ "` and `" ~ V1.stringof ~ "`.");
+    return casWeak!(succ, fail)(cast(T*)here, cast(Thunk1*)ifThis, *cast(Thunk2*)&writeThis);
+}
+
+/// Ditto
+bool casWeak(MemoryOrder succ = MemoryOrder.seq,MemoryOrder fail = MemoryOrder.seq,T,V)(shared(T)* here, shared(T)* ifThis, shared(V) writeThis) pure nothrow @nogc @trusted
+    if (is(T == class))
+in (atomicPtrIsProperlyAligned(here), "Argument `here` is not properly aligned")
+{
+    return atomicCompareExchangeWeak!(succ, fail)(cast(T*)here, cast(T*)ifThis, cast(V)writeThis);
+}
+
+/**
+ * Inserts a full load/store memory fence (on platforms that need it). This ensures
+ * that all loads and stores before a call to this function are executed before any
+ * loads and stores after the call.
+ */
+void atomicFence(MemoryOrder order = MemoryOrder.seq)() pure nothrow @nogc @safe
+{
+    core.internal.atomic.atomicFence!order();
+}
+
+/**
+ * Gives a hint to the processor that the calling thread is in a 'spin-wait' loop,
+ * allowing to more efficiently allocate resources.
+ */
+void pause() pure nothrow @nogc @safe
+{
+    core.internal.atomic.pause();
+}
+
+/**
+ * Performs the binary operation 'op' on val using 'mod' as the modifier.
+ *
+ * Params:
+ *  val = The target variable.
+ *  mod = The modifier to apply.
+ *
+ * Returns:
+ *  The result of the operation.
+ */
+TailShared!T atomicOp(string op, T, V1)(ref shared T val, V1 mod) pure nothrow @nogc @safe
+    if (__traits(compiles, mixin("*cast(T*)&val" ~ op ~ "mod")))
+in (atomicValueIsProperlyAligned(val))
+{
+    // binary operators
+    //
+    // +    -   *   /   %   ^^  &
+    // |    ^   <<  >>  >>> ~   in
+    // ==   !=  <   <=  >   >=
+    static if (op == "+"  || op == "-"  || op == "*"  || op == "/"   ||
+                op == "%"  || op == "^^" || op == "&"  || op == "|"   ||
+                op == "^"  || op == "<<" || op == ">>" || op == ">>>" ||
+                op == "~"  || // skip "in"
+                op == "==" || op == "!=" || op == "<"  || op == "<="  ||
+                op == ">"  || op == ">=")
+    {
+        T get = atomicLoad!(MemoryOrder.raw, T)(val);
+        mixin("return get " ~ op ~ " mod;");
+    }
+    else
+    // assignment operators
+    //
+    // +=   -=  *=  /=  %=  ^^= &=
+    // |=   ^=  <<= >>= >>>=    ~=
+    static if (op == "+=" && __traits(isIntegral, T) && __traits(isIntegral, V1) && T.sizeof <= size_t.sizeof && V1.sizeof <= size_t.sizeof)
+    {
+        return cast(T)(atomicFetchAdd(val, mod) + mod);
+    }
+    else static if (op == "-=" && __traits(isIntegral, T) && __traits(isIntegral, V1) && T.sizeof <= size_t.sizeof && V1.sizeof <= size_t.sizeof)
+    {
+        return cast(T)(atomicFetchSub(val, mod) - mod);
+    }
+    else static if (op == "+=" || op == "-="  || op == "*="  || op == "/=" ||
+                op == "%=" || op == "^^=" || op == "&="  || op == "|=" ||
+                op == "^=" || op == "<<=" || op == ">>=" || op == ">>>=") // skip "~="
+    {
+        T set, get = atomicLoad!(MemoryOrder.raw, T)(val);
+        do
+        {
+            set = get;
+            mixin("set " ~ op ~ " mod;");
+        } while (!casWeakByRef(val, get, set));
+        return set;
+    }
+    else
+    {
+        static assert(false, "Operation not supported.");
+    }
 }
 
 
-////////////////////////////////////////////////////////////////////////////////
-// Internal Тип Checking
-////////////////////////////////////////////////////////////////////////////////
-
-
-private
+version (D_InlineAsm_X86)
 {
-    version( TangoDoc ) {} else
-    {
-        import core.Traits;
-
-
-        template реальноАтомныйТип_ли( T )
-        {
-            const бул реальноАтомныйТип_ли = T.sizeof == байт.sizeof  ||
-                                           T.sizeof == крат.sizeof ||
-                                           T.sizeof == цел.sizeof   ||
-                                           T.sizeof == дол.sizeof;
-        }
-
-
-        template реальноЧисловойТип_ли( T )
-        {
-            const бул реальноЧисловойТип_ли = типЦелЧис_ли!( T ) ||
-                                            типУк_ли!( T );
-        }
-
-
-        template isHoistOp( псинх ms )
-        {
-            const бул isHoistOp = ms == псинх.hlb ||
-                                   ms == псинх.hsb ||
-                                   ms == псинх.acq ||
-                                   ms == псинх.пследвтн;
-        }
-
-
-        template isSinkOp( псинх ms )
-        {
-            const бул isSinkOp = ms == псинх.slb ||
-                                  ms == псинх.ssb ||
-                                  ms == псинх.относитн ||
-                                  ms == псинх.пследвтн;
-        }
-    }
+    version = AsmX86;
+    enum has64BitXCHG = false;
+    enum has64BitCAS = true;
+    enum has128BitCAS = false;
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-// DDoc Documentation for Атомный Functions
-////////////////////////////////////////////////////////////////////////////////
-
-
-version( TangoDoc )
+else version (D_InlineAsm_X86_64)
 {
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Load
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Supported псинх values:
-     *  псинх.необр
-     *  псинх.hlb
-     *  псинх.acq
-     *  псинх.пследвтн
-     */
-    template атомнаяЗагрузка( псинх ms, T )
-    {
-        /**
-         * Refreshes the contents of 'знач' является main память.  This operation is
-         * Всё lock-free and atomic.
-         *
-         * Параметры:
-         *  знач = The значение в_ загрузи.  This значение must be properly aligned.
-         *
-         * Возвращает:
-         *  The загружен значение.
-         */
-        T атомнаяЗагрузка( ref T знач )
-        {
-            return знач;
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Supported псинх values:
-     *  псинх.необр
-     *  псинх.ssb
-     *  псинх.acq
-     *  псинх.относитн
-     *  псинх.пследвтн
-     */
-    template атомноеСохранение( псинх ms, T )
-    {
-        /**
-         * Stores 'новзнач' в_ the память referenced by 'знач'.  This operation
-         * is Всё lock-free and atomic.
-         *
-         * Параметры:
-         *  знач     = The destination переменная.
-         *  новзнач  = The значение в_ сохрани.
-         */
-        проц атомноеСохранение( ref T знач, T новзнач )
-        {
-
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный StoreIf
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Supported псинх values:
-     *  псинх.необр
-     *  псинх.ssb
-     *  псинх.acq
-     *  псинх.относитн
-     *  псинх.пследвтн
-     */
-    template атомноеСохранениеЕсли( псинх ms, T )
-    {
-        /**
-         * Stores 'новзнач' в_ the память referenced by 'знач' if знач is equal в_
-         * 'равноС'.  This operation is Всё lock-free and atomic.
-         *
-         * Параметры:
-         *  знач     = The destination переменная.
-         *  новзнач  = The значение в_ сохрани.
-         *  равноС = The сравнение значение.
-         *
-         * Возвращает:
-         *  да if the сохрани occurred, нет if not.
-         */
-        бул атомноеСохранениеЕсли( ref T знач, T новзнач, T равноС )
-        {
-            return нет;
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Increment
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Supported псинх values:
-     *  псинх.необр
-     *  псинх.ssb
-     *  псинх.acq
-     *  псинх.относитн
-     *  псинх.пследвтн
-     */
-    template атомныйИнкремент( псинх ms, T )
-    {
-        /**
-         * This operation is only legal for built-in значение and pointer типы,
-         * and is equivalent в_ an atomic "знач = знач + 1" operation.  This
-         * function есть_ли в_ facilitate use of the optimized инкремент
-         * instructions provопрed by some architecures.  If no such instruction
-         * есть_ли on the мишень platform then the behavior will perform the
-         * operation using ещё traditional means.  This operation is Всё
-         * lock-free and atomic.
-         *
-         * Параметры:
-         *  знач = The значение в_ инкремент.
-         *
-         * Возвращает:
-         *  The результат of an атомнаяЗагрузка of знач immediately following the
-         *  инкремент operation.  This значение is not required в_ be equal в_ the
-         *  newly stored значение.  Thus, competing writes are allowed в_ occur
-         *  between the инкремент and successive загрузи operation.
-         */
-        T атомныйИнкремент( ref T знач )
-        {
-            return знач;
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Decrement
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * Supported псинх values:
-     *  псинх.необр
-     *  псинх.ssb
-     *  псинх.acq
-     *  псинх.относитн
-     *  псинх.пследвтн
-     */
-    template атомныйДекремент( псинх ms, T )
-    {
-        /**
-         * This operation is only legal for built-in значение and pointer типы,
-         * and is equivalent в_ an atomic "знач = знач - 1" operation.  This
-         * function есть_ли в_ facilitate use of the optimized декремент
-         * instructions provопрed by some architecures.  If no such instruction
-         * есть_ли on the мишень platform then the behavior will perform the
-         * operation using ещё traditional means.  This operation is Всё
-         * lock-free and atomic.
-         *
-         * Параметры:
-         *  знач = The значение в_ декремент.
-         *
-         * Возвращает:
-         *  The результат of an атомнаяЗагрузка of знач immediately following the
-         *  инкремент operation.  This значение is not required в_ be equal в_ the
-         *  newly stored значение.  Thus, competing writes are allowed в_ occur
-         *  between the инкремент and successive загрузи operation.
-         */
-        T атомныйДекремент( ref T знач )
-        {
-            return знач;
-        }
-    }
+    version = AsmX86;
+    enum has64BitXCHG = true;
+    enum has64BitCAS = true;
+    enum has128BitCAS = true;
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-// LDC Atomics Implementation
-////////////////////////////////////////////////////////////////////////////////
-
-
-else version( LDC )
+else version (GNU)
 {
-    import ldc.intrinsics;
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Load
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомнаяЗагрузка( псинх ms = псинх.пследвтн, T )
-    {
-        T атомнаяЗагрузка(ref T знач)
-        {
-            llvm_memory_barrier(
-                ms == псинх.hlb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.hsb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.slb || ms == псинх.относитн || ms == псинх.пследвтн,
-                ms == псинх.ssb || ms == псинх.относитн || ms == псинх.пследвтн,
-                нет);
-            static if (типУк_ли!(T))
-            {
-                return cast(T)llvm_atomic_load_добавь!(т_мера)(cast(т_мера*)&знач, 0);
-            }
-            else static if (is(T == бул))
-            {
-                return llvm_atomic_load_добавь!(ббайт)(cast(ббайт*)&знач, cast(ббайт)0) ? 1 : 0;
-            }
-            else
-            {
-                return llvm_atomic_load_добавь!(T)(&знач, cast(T)0);
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранение( псинх ms = псинх.пследвтн, T )
-    {
-        проц атомноеСохранение( ref T знач, T новзнач )
-        {
-            llvm_memory_barrier(
-                ms == псинх.hlb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.hsb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.slb || ms == псинх.относитн || ms == псинх.пследвтн,
-                ms == псинх.ssb || ms == псинх.относитн || ms == псинх.пследвтн,
-                нет);
-            static if (типУк_ли!(T))
-            {
-                llvm_atomic_своп!(т_мера)(cast(т_мера*)&знач, cast(т_мера)новзнач);
-            }
-            else static if (is(T == бул))
-            {
-                llvm_atomic_своп!(ббайт)(cast(ббайт*)&знач, новзнач?1:0);
-            }
-            else
-            {
-                llvm_atomic_своп!(T)(&знач, новзнач);
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store If
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранениеЕсли( псинх ms = псинх.пследвтн, T )
-    {
-        бул атомноеСохранениеЕсли( ref T знач, T новзнач, T равноС )
-        {
-            llvm_memory_barrier(
-                ms == псинх.hlb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.hsb || ms == псинх.acq || ms == псинх.пследвтн,
-                ms == псинх.slb || ms == псинх.относитн || ms == псинх.пследвтн,
-                ms == псинх.ssb || ms == псинх.относитн || ms == псинх.пследвтн,
-                нет);
-            T oldval =void;
-            static if (типУк_ли!(T))
-            {
-                oldval = cast(T)llvm_atomic_cmp_своп!(т_мера)(cast(т_мера*)&знач, cast(т_мера)равноС, cast(т_мера)новзнач);
-            }
-            else static if (is(T == бул))
-            {
-                oldval = llvm_atomic_cmp_своп!(ббайт)(cast(ббайт*)&знач, равноС?1:0, новзнач?1:0)?0:1;
-            }
-            else
-            {
-                oldval = llvm_atomic_cmp_своп!(T)(&знач, равноС, новзнач);
-            }
-            return oldval == равноС;
-        }
-    }
-    
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Increment
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйИнкремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйИнкремент( ref T знач )
-        {
-            static if (типУк_ли!(T))
-            {
-                llvm_atomic_load_добавь!(т_мера)(cast(т_мера*)&знач, 1);
-            }
-            else
-            {
-                llvm_atomic_load_добавь!(T)(&знач, cast(T)1);
-            }
-            return знач;
-        }
-    }
-    
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Decrement
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйДекремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйДекремент( ref T знач )
-        {
-            static if (типУк_ли!(T))
-            {
-                llvm_atomic_load_sub!(т_мера)(cast(т_мера*)&знач, 1);
-            }
-            else
-            {
-                llvm_atomic_load_sub!(T)(&знач, cast(T)1);
-            }
-            return знач;
-        }
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// x86 Атомный Function Implementation
-////////////////////////////////////////////////////////////////////////////////
-
-
-else version( D_InlineAsm_X86 )
-{
-    version( X86 )
-    {
-        version( BuildInfo )
-        {
-            pragma( msg, "core.Atomic: using IA-32 inline asm" );
-        }
-
-        version(darwin){
-            extern(C) бул OSAtomicCompareAndSwap64(дол oldValue, дол newValue, дол *theValue);
-            extern(C) бул OSAtomicCompareAndSwap64Barrier(дол oldValue, дол newValue, дол *theValue);
-        }
-        version = Has64BitCAS;
-        version = Has32BitOps;
-    }
-    version( X86_64 )
-    {
-        version( BuildInfo )
-        {
-            pragma( msg, "core.Atomic: using AMD64 inline asm" );
-        }
-
-        version = Has64BitOps;
-    }
-
-    private
-    {
-        ////////////////////////////////////////////////////////////////////////
-        // x86 Значение Requirements
-        ////////////////////////////////////////////////////////////////////////
-
-
-        // NOTE: Strictly speaking, the x86 supports atomic operations on
-        //       unaligned values.  However, this is far slower than the
-        //       common case, so such behavior should be prohibited.
-        template атомноеЗначениеРазложеноПравильно( T )
-        {
-            бул атомноеЗначениеРазложеноПравильно( т_мера адр )
-            {
-                return адр % T.sizeof == 0;
-            }
-        }
-
-
-        ////////////////////////////////////////////////////////////////////////
-        // x86 Synchronization Requirements
-        ////////////////////////////////////////////////////////////////////////
-
-
-        // NOTE: While x86 loads have acquire semantics for stores, it appears
-        //       that independent loads may be reordered by some processors
-        //       (notably the AMD64).  This implies that the hoist-загрузи barrier
-        //       op requires an ordering instruction, which also extends this
-        //       requirement в_ acquire ops (though hoist-сохрани should not need
-        //       one if support is добавьed for this later).  However, since no
-        //       modern architectures will reorder dependent loads в_ occur
-        //       before the загрузи they depend on (except the Alpha), необр loads
-        //       are actually a possible means of ordering specific sequences
-        //       of loads in some instances.  The original atomic<>
-        //       implementation provопрes a 'ddhlb' ordering specifier for
-        //       данные-dependent loads в_ укз this situation, but as there
-        //       are no plans в_ support the Alpha there is no резон в_ добавь
-        //       that опция here.
-        //
-        //       For reference, the old behavior (acquire semantics for loads)
-        //       required a память barrier if: ms == псинх.пследвтн || isSinkOp!(ms)
-        template требуетсяБарьерЗагрузки( псинх ms )
-        {
-            const бул требуетсяБарьерЗагрузки = ms != псинх.необр;
-        }
-
-
-        // NOTE: x86 stores implicitly have release semantics so a membar is only
-        //       necessary on acquires.
-        template требуетсяБарьерСохранения( псинх ms )
-        {
-            const бул требуетсяБарьерСохранения = ms == псинх.пследвтн || isHoistOp!(ms);
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Load
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомнаяЗагрузка( псинх ms = псинх.пследвтн, T )
-    {
-        T атомнаяЗагрузка( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof == байт.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 1 Byte Load
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерЗагрузки!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov DL, 42;
-                        mov AL, 42;
-                        mov ECX, знач;
-                        lock;
-                        cmpxchg [ECX], DL;
-                    }
-                }
-                else
-                {
-                    volatile
-                    {
-                        return знач;
-                    }
-                }
-            }
-            else static if( T.sizeof == крат.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 2 Byte Load
-                ////////////////////////////////////////////////////////////////
-
-                static if( требуетсяБарьерЗагрузки!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov DX, 42;
-                        mov AX, 42;
-                        mov ECX, знач;
-                        lock;
-                        cmpxchg [ECX], DX;
-                    }
-                }
-                else
-                {
-                    volatile
-                    {
-                        return знач;
-                    }
-                }
-            }
-            else static if( T.sizeof == цел.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 4 Byte Load
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерЗагрузки!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov EDX, 42;
-                        mov EAX, 42;
-                        mov ECX, знач;
-                        lock;
-                        cmpxchg [ECX], EDX;
-                    }
-                }
-                else
-                {
-                    volatile
-                    {
-                        return знач;
-                    }
-                }
-            }
-            else static if( T.sizeof == дол.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 8 Byte Load
-                ////////////////////////////////////////////////////////////////
-
-
-                version( Has64BitOps )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Load on 64-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    static if( требуетсяБарьерЗагрузки!(ms) )
-                    {
-                        volatile asm
-                        {
-                            mov RAX, знач;
-                            lock;
-                            mov RAX, [RAX];
-                        }
-                    }
-                    else
-                    {
-                        volatile
-                        {
-                            return знач;
-                        }
-                    }
-                }
-                else
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Load on 32-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    pragma( msg, "This operation is only available on 64-bit platforms." );
-                    static assert( нет );
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // Not a 1, 2, 4, or 8 Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранение( псинх ms = псинх.пследвтн, T )
-    {
-        проц атомноеСохранение( ref T знач, T новзнач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof == байт.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 1 Byte Store
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерСохранения!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov DL, новзнач;
-                        lock;
-                        xchg [EAX], DL;
-                    }
-                }
-                else
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov DL, новзнач;
-                        mov [EAX], DL;
-                    }
-                }
-            }
-            else static if( T.sizeof == крат.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 2 Byte Store
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерСохранения!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov DX, новзнач;
-                        lock;
-                        xchg [EAX], DX;
-                    }
-                }
-                else
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov DX, новзнач;
-                        mov [EAX], DX;
-                    }
-                }
-            }
-            else static if( T.sizeof == цел.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 4 Byte Store
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерСохранения!(ms) )
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov EDX, новзнач;
-                        lock;
-                        xchg [EAX], EDX;
-                    }
-                }
-                else
-                {
-                    volatile asm
-                    {
-                        mov EAX, знач;
-                        mov EDX, новзнач;
-                        mov [EAX], EDX;
-                    }
-                }
-            }
-            else static if( T.sizeof == дол.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 8 Byte Store
-                ////////////////////////////////////////////////////////////////
-
-
-                version( Has64BitOps )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Store on 64-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    static if( требуетсяБарьерСохранения!(ms) )
-                    {
-                        volatile asm
-                        {
-                            mov RAX, знач;
-                            mov RDX, новзнач;
-                            lock;
-                            xchg [RAX], RDX;
-                        }
-                    }
-                    else
-                    {
-                        volatile asm
-                        {
-                            mov RAX, знач;
-                            mov RDX, новзнач;
-                            mov [RAX], RDX;
-                        }
-                    }
-                }
-                else
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Store on 32-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    pragma( msg, "This operation is only available on 64-bit platforms." );
-                    static assert( нет );
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // Not a 1, 2, 4, or 8 Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store If
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранениеЕсли( псинх ms = псинх.пследвтн, T )
-    {
-        бул атомноеСохранениеЕсли( ref T знач, T новзнач, T равноС )
-        in
-        {
-            // NOTE: 32 bit x86 systems support 8 байт CAS, which only requires
-            //       4 байт alignment, so use т_мера as the align тип here.
-            static if( T.sizeof > т_мера.sizeof )
-                assert( атомноеЗначениеРазложеноПравильно!(т_мера)( cast(т_мера) &знач ) );
-            else
-                assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof == байт.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 1 Byte StoreIf
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov DL, новзнач;
-                    mov AL, равноС;
-                    mov ECX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    cmpxchg [ECX], DL;
-                    setz AL;
-                }
-            }
-            else static if( T.sizeof == крат.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 2 Byte StoreIf
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov DX, новзнач;
-                    mov AX, равноС;
-                    mov ECX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    cmpxchg [ECX], DX;
-                    setz AL;
-                }
-            }
-            else static if( T.sizeof == цел.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 4 Byte StoreIf
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EDX, новзнач;
-                    mov EAX, равноС;
-                    mov ECX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    cmpxchg [ECX], EDX;
-                    setz AL;
-                }
-            }
-            else static if( T.sizeof == дол.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 8 Byte StoreIf
-                ////////////////////////////////////////////////////////////////
-
-
-                version( Has64BitOps )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte StoreIf on 64-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    volatile asm
-                    {
-                        mov RDX, новзнач;
-                        mov RAX, равноС;
-                        mov RCX, знач;
-                        lock; // lock always needed в_ сделай this op atomic
-                        cmpxchg [RCX], RDX;
-                        setz AL;
-                    }
-                }
-                else version( Has64BitCAS )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte StoreIf on 32-Bit Processor
-                    ////////////////////////////////////////////////////////////
-                    version(darwin){
-                        static if(ms==псинх.необр){
-                            return OSAtomicCompareAndSwap64(cast(дол)равноС, cast(дол)новзнач,  cast(дол*)&знач);
-                        } else {
-                            return OSAtomicCompareAndSwap64Barrier(cast(дол)равноС, cast(дол)новзнач,  cast(дол*)&знач);
-                        }
-                    } else {
-                        volatile asm
-                        {
-                            push EDI;
-                            push EBX;
-                            lea EDI, новзнач;
-                            mov EBX, [EDI];
-                            mov ECX, 4[EDI];
-                            lea EDI, равноС;
-                            mov EAX, [EDI];
-                            mov EDX, 4[EDI];
-                            mov EDI, знач;
-                            lock; // lock always needed в_ сделай this op atomic
-                            cmpxch8b [EDI];
-                            setz AL;
-                            pop EBX;
-                            pop EDI;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // Not a 1, 2, 4, or 8 Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Increment
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйИнкремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйИнкремент( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof == байт.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 1 Byte Increment
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    inc [EAX];
-                    mov AL, [EAX];
-                }
-            }
-            else static if( T.sizeof == крат.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 2 Byte Increment
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    inc крат ptr [EAX];
-                    mov AX, [EAX];
-                }
-            }
-            else static if( T.sizeof == цел.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 4 Byte Increment
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    inc int ptr [EAX];
-                    mov EAX, [EAX];
-                }
-            }
-            else static if( T.sizeof == дол.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 8 Byte Increment
-                ////////////////////////////////////////////////////////////////
-
-
-                version( Has64BitOps )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Increment on 64-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    volatile asm
-                    {
-                        mov RAX, знач;
-                        lock; // lock always needed в_ сделай this op atomic
-                        inc qword ptr [RAX];
-                        mov RAX, [RAX];
-                    }
-                }
-                else
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Increment on 32-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    pragma( msg, "This operation is only available on 64-bit platforms." );
-                    static assert( нет );
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // Not a 1, 2, 4, or 8 Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Decrement
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйДекремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйДекремент( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof == байт.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 1 Byte Decrement
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    dec [EAX];
-                    mov AL, [EAX];
-                }
-            }
-            else static if( T.sizeof == крат.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 2 Byte Decrement
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    dec крат ptr [EAX];
-                    mov AX, [EAX];
-                }
-            }
-            else static if( T.sizeof == цел.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 4 Byte Decrement
-                ////////////////////////////////////////////////////////////////
-
-
-                volatile asm
-                {
-                    mov EAX, знач;
-                    lock; // lock always needed в_ сделай this op atomic
-                    dec int ptr [EAX];
-                    mov EAX, [EAX];
-                }
-            }
-            else static if( T.sizeof == дол.sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // 8 Byte Decrement
-                ////////////////////////////////////////////////////////////////
-
-
-                version( Has64BitOps )
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Decrement on 64-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    volatile asm
-                    {
-                        mov RAX, знач;
-                        lock; // lock always needed в_ сделай this op atomic
-                        dec qword ptr [RAX];
-                        mov RAX, [RAX];
-                    }
-                }
-                else
-                {
-                    ////////////////////////////////////////////////////////////
-                    // 8 Byte Decrement on 32-Bit Processor
-                    ////////////////////////////////////////////////////////////
-
-
-                    pragma( msg, "This operation is only available on 64-bit platforms." );
-                    static assert( нет );
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // Not a 1, 2, 4, or 8 Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
+    import gcc.config;
+    enum has64BitCAS = GNU_Have_64Bit_Atomics;
+    enum has64BitXCHG = GNU_Have_64Bit_Atomics;
+    enum has128BitCAS = GNU_Have_LibAtomic;
 }
 else
 {
-    version( BuildInfo )
-    {
-        pragma( msg, "core.Atomic: using synchronized ops" );
-    }
-
-    private
-    {
-        ////////////////////////////////////////////////////////////////////////
-        // Default Значение Requirements
-        ////////////////////////////////////////////////////////////////////////
-
-
-        template атомноеЗначениеРазложеноПравильно( T )
-        {
-            бул атомноеЗначениеРазложеноПравильно( т_мера адр )
-            {
-                return адр % T.sizeof == 0;
-            }
-        }
-
-
-        ////////////////////////////////////////////////////////////////////////
-        // Default Synchronization Requirements
-        ////////////////////////////////////////////////////////////////////////
-
-
-        template требуетсяБарьерЗагрузки( псинх ms )
-        {
-            const бул требуетсяБарьерЗагрузки = ms != псинх.необр;
-        }
-
-
-        template требуетсяБарьерСохранения( псинх ms )
-        {
-            const бул требуетсяБарьерСохранения = ms != псинх.необр;
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Load
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомнаяЗагрузка( псинх ms = псинх.пследвтн, T )
-    {
-        T атомнаяЗагрузка( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof <= (проц*).sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // <= (проц*).sizeof Byte Load
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерЗагрузки!(ms) )
-                {
-                    synchronized
-                    {
-                        return знач;
-                    }
-                }
-                else
-                {
-                    volatile
-                    {
-                        return знач;
-                    }
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // > (проц*).sizeof Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранение( псинх ms = псинх.пследвтн, T )
-    {
-        проц атомноеСохранение( ref T знач, T новзнач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof <= (проц*).sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // <= (проц*).sizeof Byte Store
-                ////////////////////////////////////////////////////////////////
-
-
-                static if( требуетсяБарьерСохранения!(ms) )
-                {
-                    synchronized
-                    {
-                        знач = новзнач;
-                    }
-                }
-                else
-                {
-                    volatile
-                    {
-                        знач = новзнач;
-                    }
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // > (проц*).sizeof Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store If
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомноеСохранениеЕсли( псинх ms = псинх.пследвтн, T )
-    {
-        бул атомноеСохранениеЕсли( ref T знач, T новзнач, T равноС )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof <= (проц*).sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // <= (проц*).sizeof Byte StoreIf
-                ////////////////////////////////////////////////////////////////
-
-
-                synchronized
-                {
-                    if( знач == равноС )
-                    {
-                        знач = новзнач;
-                        return да;
-                    }
-                    return нет;
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // > (проц*).sizeof Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////
-    // Атомный Increment
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйИнкремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйИнкремент( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof <= (проц*).sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // <= (проц*).sizeof Byte Increment
-                ////////////////////////////////////////////////////////////////
-
-
-                synchronized
-                {
-                    return ++знач;
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // > (проц*).sizeof Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template тип specified." );
-                static assert( нет );
-            }
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Decrement
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template атомныйДекремент( псинх ms = псинх.пследвтн, T )
-    {
-        //
-        // NOTE: This operation is only valid for целое or pointer типы
-        //
-        static assert( реальноЧисловойТип_ли!(T) );
-
-
-        T атомныйДекремент( ref T знач )
-        in
-        {
-            assert( атомноеЗначениеРазложеноПравильно!(T)( cast(т_мера) &знач ) );
-        }
-        body
-        {
-            static if( T.sizeof <= (проц*).sizeof )
-            {
-                ////////////////////////////////////////////////////////////////
-                // <= (проц*).sizeof Byte Decrement
-                ////////////////////////////////////////////////////////////////
-
-
-                synchronized
-                {
-                    return --знач;
-                }
-            }
-            else
-            {
-                ////////////////////////////////////////////////////////////////
-                // > (проц*).sizeof Byte Тип
-                ////////////////////////////////////////////////////////////////
-
-
-                pragma( msg, "Неверный template type specified." );
-                static assert( нет );
-            }
-        }
-    }
+    enum has64BitXCHG = false;
+    enum has64BitCAS = false;
+    enum has128BitCAS = false;
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Атомный
-////////////////////////////////////////////////////////////////////////////////
-
-
-/**
- * This struct represents a значение which will be субъект в_ competing access.
- * все accesses в_ this значение will be synchronized with main память, and
- * various память barriers may be employed for instruction ordering.  Any
- * primitive тип of размер equal в_ or smaller than the память bus размер is
- * allowed, so 32-bit machines may use values with размер <= цел.sizeof and
- * 64-bit machines may use values with размер <= дол.sizeof.  The one исключение
- * в_ this правило is that architectures that support DCAS will allow дво-wide
- * сохраниЕсли operations.  The 32-bit x86 architecture, for example, supports
- * 64-bit сохраниЕсли operations.
- */
-struct Атомный( T )
-{
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Load
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template загрузи( псинх ms = псинх.пследвтн )
-    {
-        static assert( ms == псинх.необр || ms == псинх.hlb ||
-                       ms == псинх.acq || ms == псинх.пследвтн,
-                       "ms must be one of: псинх.необр, псинх.hlb, псинх.acq, псинх.пследвтн" );
-
-        /**
-         * Refreshes the contents of this значение является main память.  This
-         * operation is Всё lock-free and atomic.
-         *
-         * Возвращает:
-         *  The загружен значение.
-         */
-        T загрузи()
-        {
-            return атомнаяЗагрузка!(ms,T)( m_val );
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный Store
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template сохрани( псинх ms = псинх.пследвтн )
-    {
-        static assert( ms == псинх.необр || ms == псинх.ssb ||
-                       ms == псинх.acq || ms == псинх.относитн ||
-                       ms == псинх.пследвтн,
-                       "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-
-        /**
-         * Stores 'новзнач' в_ the память referenced by this значение.  This
-         * operation is Всё lock-free and atomic.
-         *
-         * Параметры:
-         *  новзнач  = The значение в_ сохрани.
-         */
-        проц сохрани( T новзнач )
-        {
-            атомноеСохранение!(ms,T)( m_val, новзнач );
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Атомный StoreIf
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    template сохраниЕсли( псинх ms = псинх.пследвтн )
-    {
-        static assert( ms == псинх.необр || ms == псинх.ssb ||
-                       ms == псинх.acq || ms == псинх.относитн ||
-                       ms == псинх.пследвтн,
-                       "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-
-        /**
-         * Stores 'новзнач' в_ the память referenced by this значение if знач is
-         * equal в_ 'равноС'.  This operation is Всё lock-free and atomic.
-         *
-         * Параметры:
-         *  новзнач  = The значение в_ сохрани.
-         *  равноС = The сравнение значение.
-         *
-         * Возвращает:
-         *  да if the сохрани occurred, нет if not.
-         */
-        бул сохраниЕсли( T новзнач, T равноС )
-        {
-            return атомноеСохранениеЕсли!(ms,T)( m_val, новзнач, равноС );
-        }
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Numeric Functions
-    ////////////////////////////////////////////////////////////////////////////
-
-	version( TangoDoc )
-	{
-		/**
-		 * The following добавьitional functions are available for целое типы.
-		 */
-		////////////////////////////////////////////////////////////////////////
-		// Атомный Increment
-		////////////////////////////////////////////////////////////////////////
-
-
-		template инкремент( псинх ms = псинх.пследвтн )
-		{
-			/**
-			 * This operation is only legal for built-in значение and pointer
-			 * типы, and is equivalent в_ an atomic "знач = знач + 1" operation.
-			 * This function есть_ли в_ facilitate use of the optimized
-			 * инкремент instructions provопрed by some architecures.  If no
-			 * such instruction есть_ли on the мишень platform then the
-			 * behavior will perform the operation using ещё traditional
-			 * means.  This operation is Всё lock-free and atomic.
-			 *
-			 * Возвращает:
-			 *  The результат of an атомнаяЗагрузка of знач immediately following the
-			 *  инкремент operation.  This значение is not required в_ be equal в_
-			 *  the newly stored значение.  Thus, competing writes are allowed в_
-			 *  occur between the инкремент and successive загрузи operation.
-			 */
-			T инкремент()
-			{
-				return m_val;
-			}
-		}
-
-
-		////////////////////////////////////////////////////////////////////////
-		// Атомный Decrement
-		////////////////////////////////////////////////////////////////////////
-
-
-		template декремент( псинх ms = псинх.пследвтн )
-		{
-			/**
-			 * This operation is only legal for built-in значение and pointer
-			 * типы, and is equivalent в_ an atomic "знач = знач - 1" operation.
-			 * This function есть_ли в_ facilitate use of the optimized
-			 * декремент instructions provопрed by some architecures.  If no
-			 * such instruction есть_ли on the мишень platform then the behavior
-			 * will perform the operation using ещё traditional means.  This
-			 * operation is Всё lock-free and atomic.
-			 *
-			 * Возвращает:
-			 *  The результат of an атомнаяЗагрузка of знач immediately following the
-			 *  инкремент operation.  This значение is not required в_ be equal в_
-			 *  the newly stored значение.  Thus, competing writes are allowed в_
-			 *  occur between the инкремент and successive загрузи operation.
-			 */
-			T декремент()
-			{
-				return m_val;
-			}
-		}
-	}
-	else
-	{
-		static if( реальноЧисловойТип_ли!(T) )
-		{
-			////////////////////////////////////////////////////////////////////////
-			// Атомный Increment
-			////////////////////////////////////////////////////////////////////////
-
-
-			template инкремент( псинх ms = псинх.пследвтн )
-			{
-				static assert( ms == псинх.необр || ms == псинх.ssb ||
-							   ms == псинх.acq || ms == псинх.относитн ||
-							   ms == псинх.пследвтн,
-							   "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-				T инкремент()
-				{
-					return атомныйИнкремент!(ms,T)( m_val );
-				}
-			}
-
-
-			////////////////////////////////////////////////////////////////////////
-			// Атомный Decrement
-			////////////////////////////////////////////////////////////////////////
-
-
-			template декремент( псинх ms = псинх.пследвтн )
-			{
-				static assert( ms == псинх.необр || ms == псинх.ssb ||
-							   ms == псинх.acq || ms == псинх.относитн ||
-							   ms == псинх.пследвтн,
-							   "ms must be one of: псинх.необр, псинх.ssb, псинх.acq, псинх.относитн, псинх.пследвтн" );
-				T декремент()
-				{
-					return атомныйДекремент!(ms,T)( m_val );
-				}
-			}
-		}
-	}
-
-private:
-    T   m_val;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Support Code for Unit Tests
-////////////////////////////////////////////////////////////////////////////////
-
 
 private
 {
-    version( TangoDoc ) {} else
+    version (AsmX86)
     {
-        template тестЗагр( псинх ms, T )
+        // NOTE: Strictly speaking, the x86 supports atomic operations on
+        //       unaligned values.  However, this is far slower than the
+        //       common case, so such behavior should be prohibited.
+        bool atomicValueIsProperlyAligned(T)(ref T val) pure nothrow @nogc @trusted
         {
-            проц тестЗагр( T знач = T.init + 1)
-            {
-                T          основа;
-                Атомный!(T) atom;
-
-                assert( atom.загрузи!(ms)() == основа );
-                основа        = знач;
-                atom.m_val  = знач;
-                assert( atom.загрузи!(ms)() == основа );
-            }
+            return atomicPtrIsProperlyAligned(&val);
         }
 
-
-        template тестСохр( псинх ms, T )
+        bool atomicPtrIsProperlyAligned(T)(T* ptr) pure nothrow @nogc @safe
         {
-            проц тестСохр( T знач = T.init + 1)
-            {
-                T          основа;
-                Атомный!(T) atom;
-
-                assert( atom.m_val == основа );
-                основа = знач;
-                atom.сохрани!(ms)( основа );
-                assert( atom.m_val == основа );
-            }
+            // NOTE: 32 bit x86 systems support 8 byte CAS, which only requires
+            //       4 byte alignment, so use size_t as the align type here.
+            static if (T.sizeof > size_t.sizeof)
+                return cast(size_t)ptr % size_t.sizeof == 0;
+            else
+                return cast(size_t)ptr % T.sizeof == 0;
+        }
+    }
+    else
+    {
+        bool atomicValueIsProperlyAligned(T)(ref T val) pure nothrow @nogc @trusted
+        {
+            return true;
         }
 
-
-        template тестСохрЕсли( псинх ms, T )
+        bool atomicPtrIsProperlyAligned(T)(T*) pure nothrow @nogc @safe
         {
-            проц тестСохрЕсли( T знач = T.init + 1)
-            {
-                T          основа;
-                Атомный!(T) atom;
-
-                assert( atom.m_val == основа );
-                основа = знач;
-                atom.сохраниЕсли!(ms)( основа, знач );
-                assert( atom.m_val != основа );
-                atom.сохраниЕсли!(ms)( основа, T.init );
-                assert( atom.m_val == основа );
-            }
+            return true;
         }
+    }
 
+    template IntForFloat(F)
+        if (__traits(isFloating, F))
+    {
+        static if (F.sizeof == 4)
+            alias IntForFloat = uint;
+        else static if (F.sizeof == 8)
+            alias IntForFloat = ulong;
+        else
+            static assert (false, "Invalid floating point type: " ~ F.stringof ~ ", only support `float` and `double`.");
+    }
 
-        template тестИнкремент( псинх ms, T )
+    template IntForStruct(S)
+        if (is(S == struct))
+    {
+        static if (S.sizeof == 1)
+            alias IntForFloat = ubyte;
+        else static if (F.sizeof == 2)
+            alias IntForFloat = ushort;
+        else static if (F.sizeof == 4)
+            alias IntForFloat = uint;
+        else static if (F.sizeof == 8)
+            alias IntForFloat = ulong;
+        else static if (F.sizeof == 16)
+            alias IntForFloat = ulong[2]; // TODO: what's the best type here? slice/delegates pass in registers...
+        else
+            static assert (ValidateStruct!S);
+    }
+
+    template ValidateStruct(S)
+        if (is(S == struct))
+    {
+        import core.internal.traits : hasElaborateAssign;
+
+        static assert (S.sizeof <= size_t*2 && (S.sizeof & (S.sizeof - 1)) == 0, S.stringof ~ " has invalid size for atomic operations.");
+        static assert (!hasElaborateAssign!S, S.stringof ~ " may not have an elaborate assignment when used with atomic operations.");
+
+        enum ValidateStruct = true;
+    }
+
+    // TODO: it'd be nice if we had @trusted scopes; we could remove this...
+    bool casWeakByRef(T,V1,V2)(ref T value, ref V1 ifThis, V2 writeThis) pure nothrow @nogc @trusted
+    {
+        return casWeak(&value, &ifThis, writeThis);
+    }
+
+    /* Construct a type with a shared tail, and if possible with an unshared
+    head. */
+    template TailShared(U) if (!is(U == shared))
+    {
+        alias TailShared = .TailShared!(shared U);
+    }
+    template TailShared(S) if (is(S == shared))
+    {
+        // Get the unshared variant of S.
+        static if (is(S U == shared U)) {}
+        else static assert(false, "Should never be triggered. The `static " ~
+            "if` declares `U` as the unshared version of the shared type " ~
+            "`S`. `S` is explicitly declared as shared, so getting `U` " ~
+            "should always work.");
+
+        static if (is(S : U))
+            alias TailShared = U;
+        else static if (is(S == struct))
         {
-            проц тестИнкремент( T знач = T.init + 1)
-            {
-                T          основа = знач;
-                T          инкр = знач;
-                Атомный!(T) atom;
-
-                atom.m_val = знач;
-                assert( atom.m_val == основа && инкр == основа );
-                основа = cast(T)( основа + 1 );
-                инкр = atom.инкремент!(ms)();
-                assert( atom.m_val == основа && инкр == основа );
-            }
-        }
-
-
-        template тестДекремент( псинх ms, T )
-        {
-            проц тестДекремент( T знач = T.init + 1)
-            {
-                T          основа = знач;
-                T          декр = знач;
-                Атомный!(T) atom;
-
-                atom.m_val = знач;
-                assert( atom.m_val == основа && декр == основа );
-                основа = cast(T)( основа - 1 );
-                декр = atom.декремент!(ms)();
-                assert( atom.m_val == основа && декр == основа );
-            }
-        }
-
-
-        template тестТип( T )
-        {
-            проц тестТип( T знач = T.init + 1)
-            {
-                тестЗагр!(псинх.необр, T)( знач );
-                тестЗагр!(псинх.hlb, T)( знач );
-                тестЗагр!(псинх.acq, T)( знач );
-                тестЗагр!(псинх.пследвтн, T)( знач );
-
-                тестСохр!(псинх.необр, T)( знач );
-                тестСохр!(псинх.ssb, T)( знач );
-                тестСохр!(псинх.acq, T)( знач );
-                тестСохр!(псинх.относитн, T)( знач );
-                тестСохр!(псинх.пследвтн, T)( знач );
-
-                тестСохрЕсли!(псинх.необр, T)( знач );
-                тестСохрЕсли!(псинх.ssb, T)( знач );
-                тестСохрЕсли!(псинх.acq, T)( знач );
-                тестСохрЕсли!(псинх.относитн, T)( знач );
-                тестСохрЕсли!(псинх.пследвтн, T)( знач );
-
-                static if( реальноЧисловойТип_ли!(T) )
+            enum implName = () {
+                /* Start with "_impl". If S has a field with that name, append
+                underscores until the clash is resolved. */
+                string name = "_impl";
+                string[] fieldNames;
+                static foreach (alias field; S.tupleof)
                 {
-                    тестИнкремент!(псинх.необр, T)( знач );
-                    тестИнкремент!(псинх.ssb, T)( знач );
-                    тестИнкремент!(псинх.acq, T)( знач );
-                    тестИнкремент!(псинх.относитн, T)( знач );
-                    тестИнкремент!(псинх.пследвтн, T)( знач );
-
-                    тестДекремент!(псинх.необр, T)( знач );
-                    тестДекремент!(псинх.ssb, T)( знач );
-                    тестДекремент!(псинх.acq, T)( знач );
-                    тестДекремент!(псинх.относитн, T)( знач );
-                    тестДекремент!(псинх.пследвтн, T)( знач );
+                    fieldNames ~= __traits(identifier, field);
                 }
+                static bool canFind(string[] haystack, string needle)
+                {
+                    foreach (candidate; haystack)
+                    {
+                        if (candidate == needle) return true;
+                    }
+                    return false;
+                }
+                while (canFind(fieldNames, name)) name ~= "_";
+                return name;
+            } ();
+            struct TailShared
+            {
+                static foreach (i, alias field; S.tupleof)
+                {
+                    /* On @trusted: This is casting the field from shared(Foo)
+                    to TailShared!Foo. The cast is safe because the field has
+                    been loaded and is not shared anymore. */
+                    mixin("
+                        @trusted @property
+                        ref " ~ __traits(identifier, field) ~ "()
+                        {
+                            alias R = TailShared!(typeof(field));
+                            return * cast(R*) &" ~ implName ~ ".tupleof[i];
+                        }
+                    ");
+                }
+                mixin("
+                    S " ~ implName ~ ";
+                    alias " ~ implName ~ " this;
+                ");
             }
         }
+        else
+            alias TailShared = S;
+    }
+    @safe unittest
+    {
+        // No tail (no indirections) -> fully unshared.
+
+        static assert(is(TailShared!int == int));
+        static assert(is(TailShared!(shared int) == int));
+
+        static struct NoIndir { int i; }
+        static assert(is(TailShared!NoIndir == NoIndir));
+        static assert(is(TailShared!(shared NoIndir) == NoIndir));
+
+        // Tail can be independently shared or is already -> tail-shared.
+
+        static assert(is(TailShared!(int*) == shared(int)*));
+        static assert(is(TailShared!(shared int*) == shared(int)*));
+        static assert(is(TailShared!(shared(int)*) == shared(int)*));
+
+        static assert(is(TailShared!(int[]) == shared(int)[]));
+        static assert(is(TailShared!(shared int[]) == shared(int)[]));
+        static assert(is(TailShared!(shared(int)[]) == shared(int)[]));
+
+        static struct S1 { shared int* p; }
+        static assert(is(TailShared!S1 == S1));
+        static assert(is(TailShared!(shared S1) == S1));
+
+        static struct S2 { shared(int)* p; }
+        static assert(is(TailShared!S2 == S2));
+        static assert(is(TailShared!(shared S2) == S2));
+
+        // Tail follows shared-ness of head -> fully shared.
+
+        static class C { int i; }
+        static assert(is(TailShared!C == shared C));
+        static assert(is(TailShared!(shared C) == shared C));
+
+        /* However, structs get a wrapper that has getters which cast to
+        TailShared. */
+
+        static struct S3 { int* p; int _impl; int _impl_; int _impl__; }
+        static assert(!is(TailShared!S3 : S3));
+        static assert(is(TailShared!S3 : shared S3));
+        static assert(is(TailShared!(shared S3) == TailShared!S3));
+
+        static struct S4 { shared(int)** p; }
+        static assert(!is(TailShared!S4 : S4));
+        static assert(is(TailShared!S4 : shared S4));
+        static assert(is(TailShared!(shared S4) == TailShared!S4));
     }
 }
 
@@ -1811,62 +819,376 @@ private
 ////////////////////////////////////////////////////////////////////////////////
 
 
-debug( UnitTest )
+version (CoreUnittest)
 {
+    void testXCHG(T)(T val) pure nothrow @nogc @trusted
+    in
+    {
+        assert(val !is T.init);
+    }
+    do
+    {
+        T         base = cast(T)null;
+        shared(T) atom = cast(shared(T))null;
+
+        assert(base !is val, T.stringof);
+        assert(atom is base, T.stringof);
+
+        assert(atomicExchange(&atom, val) is base, T.stringof);
+        assert(atom is val, T.stringof);
+    }
+
+    void testCAS(T)(T val) pure nothrow @nogc @trusted
+    in
+    {
+        assert(val !is T.init);
+    }
+    do
+    {
+        T         base = cast(T)null;
+        shared(T) atom = cast(shared(T))null;
+
+        assert(base !is val, T.stringof);
+        assert(atom is base, T.stringof);
+
+        assert(cas(&atom, base, val), T.stringof);
+        assert(atom is val, T.stringof);
+        assert(!cas(&atom, base, base), T.stringof);
+        assert(atom is val, T.stringof);
+
+        atom = cast(shared(T))null;
+
+        shared(T) arg = base;
+        assert(cas(&atom, &arg, val), T.stringof);
+        assert(arg is base, T.stringof);
+        assert(atom is val, T.stringof);
+
+        arg = base;
+        assert(!cas(&atom, &arg, base), T.stringof);
+        assert(arg is val, T.stringof);
+        assert(atom is val, T.stringof);
+    }
+
+    void testLoadStore(MemoryOrder ms = MemoryOrder.seq, T)(T val = T.init + 1) pure nothrow @nogc @trusted
+    {
+        T         base = cast(T) 0;
+        shared(T) atom = cast(T) 0;
+
+        assert(base !is val);
+        assert(atom is base);
+        atomicStore!(ms)(atom, val);
+        base = atomicLoad!(ms)(atom);
+
+        assert(base is val, T.stringof);
+        assert(atom is val);
+    }
+
+
+    void testType(T)(T val = T.init + 1) pure nothrow @nogc @safe
+    {
+        static if (T.sizeof < 8 || has64BitXCHG)
+            testXCHG!(T)(val);
+        testCAS!(T)(val);
+        testLoadStore!(MemoryOrder.seq, T)(val);
+        testLoadStore!(MemoryOrder.raw, T)(val);
+    }
+
+    @betterC @safe pure nothrow unittest
+    {
+        testType!(bool)();
+
+        testType!(byte)();
+        testType!(ubyte)();
+
+        testType!(short)();
+        testType!(ushort)();
+
+        testType!(int)();
+        testType!(uint)();
+    }
+
+    @safe pure nothrow unittest
+    {
+
+        testType!(shared int*)();
+
+        static interface Inter {}
+        static class KlassImpl : Inter {}
+        testXCHG!(shared Inter)(new shared(KlassImpl));
+        testCAS!(shared Inter)(new shared(KlassImpl));
+
+        static class Klass {}
+        testXCHG!(shared Klass)(new shared(Klass));
+        testCAS!(shared Klass)(new shared(Klass));
+
+        testXCHG!(shared int)(42);
+
+        testType!(float)(1.0f);
+
+        static if (has64BitCAS)
+        {
+            testType!(double)(1.0);
+            testType!(long)();
+            testType!(ulong)();
+        }
+        static if (has128BitCAS)
+        {
+            () @trusted
+            {
+                align(16) struct Big { long a, b; }
+
+                shared(Big) atom;
+                shared(Big) base;
+                shared(Big) arg;
+                shared(Big) val = Big(1, 2);
+
+                assert(cas(&atom, arg, val), Big.stringof);
+                assert(atom is val, Big.stringof);
+                assert(!cas(&atom, arg, val), Big.stringof);
+                assert(atom is val, Big.stringof);
+
+                atom = Big();
+                assert(cas(&atom, &arg, val), Big.stringof);
+                assert(arg is base, Big.stringof);
+                assert(atom is val, Big.stringof);
+
+                arg = Big();
+                assert(!cas(&atom, &arg, base), Big.stringof);
+                assert(arg is val, Big.stringof);
+                assert(atom is val, Big.stringof);
+            }();
+        }
+
+        shared(size_t) i;
+
+        atomicOp!"+="(i, cast(size_t) 1);
+        assert(i == 1);
+
+        atomicOp!"-="(i, cast(size_t) 1);
+        assert(i == 0);
+
+        shared float f = 0;
+        atomicOp!"+="(f, 1);
+        assert(f == 1);
+
+        static if (has64BitCAS)
+        {
+            shared double d = 0;
+            atomicOp!"+="(d, 1);
+            assert(d == 1);
+        }
+    }
+
+    @betterC pure nothrow unittest
+    {
+        static if (has128BitCAS)
+        {
+            struct DoubleValue
+            {
+                long value1;
+                long value2;
+            }
+
+            align(16) shared DoubleValue a;
+            atomicStore(a, DoubleValue(1,2));
+            assert(a.value1 == 1 && a.value2 ==2);
+
+            while (!cas(&a, DoubleValue(1,2), DoubleValue(3,4))){}
+            assert(a.value1 == 3 && a.value2 ==4);
+
+            align(16) DoubleValue b = atomicLoad(a);
+            assert(b.value1 == 3 && b.value2 ==4);
+        }
+
+        version (D_LP64)
+        {
+            enum hasDWCAS = has128BitCAS;
+        }
+        else
+        {
+            enum hasDWCAS = has64BitCAS;
+        }
+
+        static if (hasDWCAS)
+        {
+            static struct List { size_t gen; List* next; }
+            shared(List) head;
+            assert(cas(&head, shared(List)(0, null), shared(List)(1, cast(List*)1)));
+            assert(head.gen == 1);
+            assert(cast(size_t)head.next == 1);
+        }
+
+        // https://issues.dlang.org/show_bug.cgi?id=20629
+        static struct Struct
+        {
+            uint a, b;
+        }
+        shared Struct s1 = Struct(1, 2);
+        atomicStore(s1, Struct(3, 4));
+        assert(cast(uint) s1.a == 3);
+        assert(cast(uint) s1.b == 4);
+    }
+
+    @betterC pure nothrow unittest
+    {
+        static struct S { int val; }
+        auto s = shared(S)(1);
+
+        shared(S*) ptr;
+
+        // head unshared
+        shared(S)* ifThis = null;
+        shared(S)* writeThis = &s;
+        assert(ptr is null);
+        assert(cas(&ptr, ifThis, writeThis));
+        assert(ptr is writeThis);
+
+        // head shared
+        shared(S*) ifThis2 = writeThis;
+        shared(S*) writeThis2 = null;
+        assert(cas(&ptr, ifThis2, writeThis2));
+        assert(ptr is null);
+    }
+
     unittest
     {
-        тестТип!(бул)();
+        import core.thread;
 
-        тестТип!(байт)();
-        тестТип!(ббайт)();
+        // Use heap memory to ensure an optimizing
+        // compiler doesn't put things in registers.
+        uint* x = new uint();
+        bool* f = new bool();
+        uint* r = new uint();
 
-        тестТип!(крат)();
-        тестТип!(бкрат)();
-
-        тестТип!(цел)();
-        тестТип!(бцел)();
-
-        version( Has64BitOps )
+        auto thr = new Thread(()
         {
-            тестТип!(дол)();
-            тестТип!(бдол)();
-        }
-        else version( Has64BitCAS )
-        {
-            тестСохрЕсли!(псинх.необр, дол)();
-            тестСохрЕсли!(псинх.ssb, дол)();
-            тестСохрЕсли!(псинх.acq, дол)();
-            тестСохрЕсли!(псинх.относитн, дол)();
-            тестСохрЕсли!(псинх.пследвтн, дол)();
+            while (!*f)
+            {
+            }
 
-            тестСохрЕсли!(псинх.необр, бдол)();
-            тестСохрЕсли!(псинх.ssb, бдол)();
-            тестСохрЕсли!(псинх.acq, бдол)();
-            тестСохрЕсли!(псинх.относитн, бдол)();
-            тестСохрЕсли!(псинх.пследвтн, бдол)();
+            atomicFence();
+
+            *r = *x;
+        });
+
+        thr.start();
+
+        *x = 42;
+
+        atomicFence();
+
+        *f = true;
+
+        atomicFence();
+
+        thr.join();
+
+        assert(*r == 42);
+    }
+
+    // === atomicFetchAdd and atomicFetchSub operations ====
+    @betterC pure nothrow @nogc @safe unittest
+    {
+        shared ubyte u8 = 1;
+        shared ushort u16 = 2;
+        shared uint u32 = 3;
+        shared byte i8 = 5;
+        shared short i16 = 6;
+        shared int i32 = 7;
+
+        assert(atomicOp!"+="(u8, 8) == 9);
+        assert(atomicOp!"+="(u16, 8) == 10);
+        assert(atomicOp!"+="(u32, 8) == 11);
+        assert(atomicOp!"+="(i8, 8) == 13);
+        assert(atomicOp!"+="(i16, 8) == 14);
+        assert(atomicOp!"+="(i32, 8) == 15);
+        version (D_LP64)
+        {
+            shared ulong u64 = 4;
+            shared long i64 = 8;
+            assert(atomicOp!"+="(u64, 8) == 12);
+            assert(atomicOp!"+="(i64, 8) == 16);
         }
     }
-}
 
+    @betterC pure nothrow @nogc @safe unittest
+    {
+        shared ubyte u8 = 1;
+        shared ushort u16 = 2;
+        shared uint u32 = 3;
+        shared byte i8 = 5;
+        shared short i16 = 6;
+        shared int i32 = 7;
 
-////////////////////////////////////////////////////////////////////////////////
-// Unit Tests
-////////////////////////////////////////////////////////////////////////////////
-
-
-debug(Atom)
-{
-        проц main()
+        assert(atomicOp!"-="(u8, 1) == 0);
+        assert(atomicOp!"-="(u16, 1) == 1);
+        assert(atomicOp!"-="(u32, 1) == 2);
+        assert(atomicOp!"-="(i8, 1) == 4);
+        assert(atomicOp!"-="(i16, 1) == 5);
+        assert(atomicOp!"-="(i32, 1) == 6);
+        version (D_LP64)
         {
-                Атомный!(цел) i;
-
-                i.сохрани (1);
-                i.инкремент;
-                i.декремент;
-                auto x = i.загрузи;
-                i.сохрани (2);
-
-                x = атомнаяЗагрузка (x);
+            shared ulong u64 = 4;
+            shared long i64 = 8;
+            assert(atomicOp!"-="(u64, 1) == 3);
+            assert(atomicOp!"-="(i64, 1) == 7);
         }
-}
+    }
 
+    @betterC pure nothrow @nogc @safe unittest // issue 16651
+    {
+        shared ulong a = 2;
+        uint b = 1;
+        atomicOp!"-="(a, b);
+        assert(a == 1);
+
+        shared uint c = 2;
+        ubyte d = 1;
+        atomicOp!"-="(c, d);
+        assert(c == 1);
+    }
+
+    pure nothrow @safe unittest // issue 16230
+    {
+        shared int i;
+        static assert(is(typeof(atomicLoad(i)) == int));
+
+        shared int* p;
+        static assert(is(typeof(atomicLoad(p)) == shared(int)*));
+
+        shared int[] a;
+        static if (__traits(compiles, atomicLoad(a)))
+        {
+            static assert(is(typeof(atomicLoad(a)) == shared(int)[]));
+        }
+
+        static struct S { int* _impl; }
+        shared S s;
+        static assert(is(typeof(atomicLoad(s)) : shared S));
+        static assert(is(typeof(atomicLoad(s)._impl) == shared(int)*));
+        auto u = atomicLoad(s);
+        assert(u._impl is null);
+        u._impl = new shared int(42);
+        assert(atomicLoad(*u._impl) == 42);
+
+        static struct S2 { S s; }
+        shared S2 s2;
+        static assert(is(typeof(atomicLoad(s2).s) == TailShared!S));
+
+        static struct S3 { size_t head; int* tail; }
+        shared S3 s3;
+        static if (__traits(compiles, atomicLoad(s3)))
+        {
+            static assert(is(typeof(atomicLoad(s3).head) == size_t));
+            static assert(is(typeof(atomicLoad(s3).tail) == shared(int)*));
+        }
+
+        static class C { int i; }
+        shared C c;
+        static assert(is(typeof(atomicLoad(c)) == shared C));
+
+        static struct NoIndirections { int i; }
+        shared NoIndirections n;
+        static assert(is(typeof(atomicLoad(n)) == NoIndirections));
+    }
+}

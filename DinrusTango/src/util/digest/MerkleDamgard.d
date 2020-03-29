@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
-        copyright:      Copyright (c) 2006 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2006 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -68,7 +68,7 @@ package class MerkleDamgard : Дайджест
             Параметры:
             буф = a буфер with enough пространство в_ hold the дайджест
 
-            Remarks:
+            Примечания:
             Constructs the дайджест.
 
     ***********************************************************************/
@@ -82,7 +82,7 @@ package class MerkleDamgard : Дайджест
             Возвращает:
             the блок размер
 
-            Remarks:
+            Примечания:
             Specifies the размер (in байты) of the блок of данные в_ пароль в_
             each вызов в_ трансформируй().
 
@@ -97,7 +97,7 @@ package class MerkleDamgard : Дайджест
             Возвращает:
             the length паддинг размер
 
-            Remarks:
+            Примечания:
             Specifies the размер (in байты) of the паддинг which
             uses the length of the данные which имеется been fed в_ the
             algorithm, this паддинг is carried out by the
@@ -114,7 +114,7 @@ package class MerkleDamgard : Дайджест
             Параметры:
             данные = a срез of the дайджест буфер в_ заполни with паддинг
 
-            Remarks:
+            Примечания:
             Fills the passed буфер срез with the appropriate
             паддинг for the final вызов в_ трансформируй(). This
             паддинг will заполни the сообщение данные буфер up в_
@@ -132,7 +132,7 @@ package class MerkleDamgard : Дайджест
             данные   = the срез of the дайджест буфер в_ заполни with паддинг
             length = the length of the данные which имеется been processed
 
-            Remarks:
+            Примечания:
             Fills the passed буфер срез with добавьРазмер() байты of паддинг
             based on the length in байты of the ввод данные which имеется been
             processed.
@@ -148,7 +148,7 @@ package class MerkleDamgard : Дайджест
             Параметры:
             данные = the блок of данные в_ дайджест
 
-            Remarks:
+            Примечания:
             The actual дайджест algorithm is carried out by this метод on
             the passed блок of данные. This метод is called for every
             размерБлока() байты of ввод данные и once ещё with the остаток
@@ -162,7 +162,7 @@ package class MerkleDamgard : Дайджест
 
             Final processing of дайджест.
 
-            Remarks:
+            Примечания:
             This метод is called after the final трансформируй just приор в_
             the creation of the final дайджест. The MD2 algorithm требует
             an добавьitional step at this stage. Future digests may or may not
@@ -176,7 +176,7 @@ package class MerkleDamgard : Дайджест
 
             Construct a дайджест
 
-            Remarks:
+            Примечания:
             Constructs the internal буфер for use by the дайджест, the буфер
             размер (in байты) is defined by the abstract метод размерБлока().
 
@@ -192,7 +192,7 @@ package class MerkleDamgard : Дайджест
 
             Initialize the дайджест
 
-            Remarks:
+            Примечания:
             Returns the дайджест состояние в_ its начальное значение
 
     ***********************************************************************/
@@ -209,7 +209,7 @@ package class MerkleDamgard : Дайджест
             Параметры:
             ввод = the данные в_ дайджест
 
-            Remarks:
+            Примечания:
             Continues the дайджест operation on the добавьitional данные.
 
     ***********************************************************************/
@@ -244,7 +244,7 @@ package class MerkleDamgard : Дайджест
             Возвращает:
             the completed дайджест
 
-            Remarks:
+            Примечания:
             Concludes the algorithm producing the final дайджест.
 
     ***********************************************************************/
@@ -285,7 +285,7 @@ package class MerkleDamgard : Дайджест
             ввод  = the источник Массив
             вывод = the приёмник Массив
 
-            Remarks:
+            Примечания:
             Converts an Массив of ббайт[] преобр_в бцел[] in Литл Endian байт order.
 
     ***********************************************************************/
@@ -307,7 +307,7 @@ package class MerkleDamgard : Дайджест
             ввод  = the источник Массив
             вывод = the приёмник Массив
 
-            Remarks:
+            Примечания:
             Converts an Массив of ббайт[] преобр_в бцел[] in Биг Endian байт order.
 
     ***********************************************************************/
@@ -329,7 +329,7 @@ package class MerkleDamgard : Дайджест
             ввод  = the источник Массив
             вывод = the приёмник Массив
 
-            Remarks:
+            Примечания:
             Converts an Массив of ббайт[] преобр_в бдол[] in Литл Endian байт order.
 
     ***********************************************************************/
@@ -350,7 +350,7 @@ package class MerkleDamgard : Дайджест
             Параметры: ввод  = the источник Массив
             вывод = the приёмник Массив
 
-            Remarks:
+            Примечания:
             Converts an Массив of ббайт[] преобр_в бдол[] in Биг Endian байт order.
 
     ***********************************************************************/
@@ -372,7 +372,7 @@ package class MerkleDamgard : Дайджест
             x = the значение в_ rotate
             n = the amount в_ rotate by
 
-            Remarks:
+            Примечания:
             Rotates a 32 bit значение by the specified amount.
 
     ***********************************************************************/

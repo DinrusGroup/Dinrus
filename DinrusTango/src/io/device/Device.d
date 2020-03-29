@@ -1,16 +1,16 @@
 ﻿module io.device.Device;
 
-/*private*/ import  dinrus, winapi;
+/*private*/ import  dinrus, sys.Common;
 public  import  io.device.Conduit;
 
 extern(Windows) BOOL GetOverlappedResult(HANDLE, OVERLAPPED*, PDWORD, BOOL);
 
-export extern(D):
+//export extern(D):
 
 class Устройство : Провод, ИВыбираемый
 {
 
-export:
+//export:
        /// expose superclass definition also
                     
         /***********************************************************************
@@ -118,7 +118,7 @@ export:
 
                 /***************************************************************
 
-                        Чит a чанк of байты из_ the файл преобр_в the provопрed
+                        Чит a чанк of байты из_ the файл преобр_в the предоставленный
                         Массив. Returns the число of байты читай, or Кф where 
                         there is no further данные.
 
@@ -157,7 +157,7 @@ export:
 
                 /***************************************************************
 
-                        Зап a чанк of байты в_ the файл из_ the provопрed
+                        Зап a чанк of байты в_ the файл из_ the предоставленный
                         Массив. Returns the число of байты записано, or Кф if 
                         the вывод is no longer available.
 
@@ -276,7 +276,7 @@ export:
 
                 /***************************************************************
 
-                        Чит a чанк of байты из_ the файл преобр_в the provопрed
+                        Чит a чанк of байты из_ the файл преобр_в the предоставленный
                         Массив. Returns the число of байты читай, or Кф where 
                         there is no further данные.
 
@@ -295,7 +295,7 @@ export:
 
                 /***************************************************************
 
-                        Зап a чанк of байты в_ the файл из_ the provопрed
+                        Зап a чанк of байты в_ the файл из_ the предоставленный
                         Массив. Returns the число of байты записано, or Кф if 
                         the вывод is no longer available.
 

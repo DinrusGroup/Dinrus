@@ -1,6 +1,6 @@
 ﻿/**
  * The shared library module provопрes a basic layer around the исконный functions
- * used в_ загрузи symbols является shared libraries.
+ * used в_ загрузи symbols из_ shared libraries.
  *
  * Copyright: Copyright (C) 2007 Tomasz Stachowiak
  * License:   BSD стиль: $(LICENSE)
@@ -12,13 +12,11 @@ module sys.SharedLib;
 
 private
 {
-import stringz :
-    изТкст0;
+import stringz:  изТкст0;
 
     version (Windows)
     {
-import sys.Common :
-        СисОш;
+import sys.Common :  СисОш;
 import base :
         HINSTANCE, HMODULE, BOOL;
 
@@ -60,7 +58,7 @@ version (Posix)
 /**
     Длл is an interface в_ system-specific shared libraries, such
     as ".dll", ".so" or ".dylib" файлы. It provопрes a simple interface в_ obtain
-    symbol адресes (such as function pointers) является these libraries.
+    symbol адресes (such as function pointers) из_ these libraries.
 
     Example:
     ----
@@ -102,7 +100,7 @@ final class Длл
 
 
 
-    /// Mapped является RTLD_NOW, RTLD_LAZY, RTLD_GLOBAL and RTLD_LOCAL
+    /// Mapped из_ RTLD_NOW, RTLD_LAZY, RTLD_GLOBAL and RTLD_LOCAL
     enum ПРежимЗагрузки
     {
         Сейчас = 0b1,
@@ -204,7 +202,7 @@ final class Длл
                 {
                     if (путь in loadedLibs)
                     {
-                        version (SharedLibVerbose) След.форматнс("Removing the Длл является the hashmap");
+                        version (SharedLibVerbose) След.форматнс("Removing the Длл из_ the hashmap");
                         loadedLibs.remove(путь);
                     }
                 }

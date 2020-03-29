@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -42,7 +42,7 @@ class Образцы : Обходчик!(сим)
         
         /***********************************************************************
         
-                Construct an uninitialized iterator. For example:
+                Конструирует uninitialized iterator. For example:
                 ---
                 auto lines = new Строки!(сим);
 

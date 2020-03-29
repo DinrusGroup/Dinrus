@@ -6,7 +6,7 @@ public  import io.model;
 
 pragma(lib, "dinrus.lib");
 debug=Buffer;
-//pragma (msg, "Внимание: работа io.Buffer разделена на io.stream.Buffered и io.device.Array - первый используется для дискретных потоков, а последний для комбирированного ВВ");
+//pragma (msg, "Внимание: работа io.Buffer разделена на io.stream.Buffered и io.device.Array - первый используется для дискретных потоков, а последний для комбинированного ВВ");
 class Буфер : ИБуфер
 {
     protected ИПотокВывода  бвывод;                // optional данные бвывод
@@ -133,7 +133,7 @@ class Буфер : ИБуфер
 
             // сделай some пространство? This will try в_ покинь as much контент
             // in the буфер as possible, such that entire records may
-            // be есть_алиас directly является внутри.
+            // be есть_алиас directly из_ внутри.
             if (размер > (дименсия - индекс))
             {
                 if (размер > дименсия)
@@ -545,7 +545,7 @@ class Буфер : ИБуфер
         }
         else if (бввод)
         {
-            // pathological cases читай directly является провод
+            // pathological cases читай directly из_ провод
             if (приёмн.length > дименсия)
                 контент = бввод.читай (приёмн);
             else

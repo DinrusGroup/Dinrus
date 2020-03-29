@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
  
         Copyright: Copyright (C) 2007 Aaron Craelius и Kris Bell  
-                   все rights reserved.
+                   Все права защищены.
 
         License:   BSD стиль: $(LICENSE)
 

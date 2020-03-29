@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2010 Kris. все rights reserved.
+        copyright:      Copyright (c) 2010 Kris. Все права защищены.
 
         license:        BSD стиль: $(LICENSE)
         

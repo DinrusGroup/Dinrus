@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2009 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2009 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -12,7 +12,7 @@
 
 *******************************************************************************/
 
-module text.Поиск;
+module text.Search;
 
 private import Util = text.Util;
 

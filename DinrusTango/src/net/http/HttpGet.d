@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -37,8 +37,8 @@ class ГетППГТ : КлиентППГТ
     /***********************************************************************
 
             Созд a клиент for the given URL. The аргумент should be
-            fully qualified with an "http:" or "https:" scheme, or an
-            явный порт should be provопрed.
+            fully qualified with an "http:" or "https:" схема, or an
+            явный порт should be предоставленный.
 
     ***********************************************************************/
 
@@ -49,15 +49,15 @@ class ГетППГТ : КлиентППГТ
 
     /***********************************************************************
 
-            Созд a клиент with the provопрed Уир экземпляр. The Уир should
-            be fully qualified with an "http:" or "https:" scheme, or an
-            явный порт should be provопрed.
+            Созд a клиент with the предоставленный Уир экземпляр. The Уир should
+            be fully qualified with an "http:" or "https:" схема, or an
+            явный порт should be предоставленный.
 
     ***********************************************************************/
 
     this (Уир уир)
     {
-        super (КлиентППГТ.Get, уир);
+        super (КлиентППГТ.Взять, уир);
 
         // активируй заголовок duplication
         дайЗаголовкиОтвета.retain (да);

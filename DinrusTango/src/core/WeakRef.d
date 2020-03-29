@@ -1,6 +1,6 @@
 ﻿/******************************************************************************
 
-        copyright:      Copyright (c) 2009 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2009 Dinrus. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2005 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -57,7 +57,7 @@
         ---
 
         The форматируй() метод of Всё Стдош and Стдвыв support the range
-        of formatting options provопрed by text.convert.Layout and
+        of formatting options предоставленный by text.convert.Layout and
         extensions thereof; включая the full I18N extensions where it
         есть been configured in that manner. To enable a French Стдвыв,
         do the following:

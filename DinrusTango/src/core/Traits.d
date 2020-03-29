@@ -5,7 +5,7 @@
  * именования, используемой для типов, а шаблоны, оцениваемые в какое-л.
  * значение, - конвенции именований, используемой для функций.
  *
- * Copyright: Copyright (C) 2005-2006 Sean Kelly.  все rights reserved.
+ * Copyright: Copyright (C) 2005-2006 Sean Kelly.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Sean Kelly, Fawzi Mohamed, Abscissa
  */
@@ -367,8 +367,8 @@ template типАссоцМассив_ли( T )
 
 
 /**
- * Оценивается в да, если T является a function, function pointer, delegate, or
- * callable объект.
+ * Оценивается в да, если T является функцией, указателем на функцию, делегатом или
+ * иным вызываемым объектом.
  */
 template ВызываемыйТип_ли( T )
 {
@@ -380,7 +380,7 @@ template ВызываемыйТип_ли( T )
 
 
 /**
- * Evaluates в_ the return тип of Фн.  Фн is required в_ be a callable тип.
+ * Оценивается в возвратный тип Фн.  Фн должно быть вызываемым типом (callable).
  */
 template ВозвратныйТипИз( Фн )
 {
@@ -391,8 +391,8 @@ template ВозвратныйТипИз( Фн )
 }
 
 /**
- * Returns the тип that a T would evaluate в_ in an expression.
- * Выраж is not required в_ be a callable тип
+ * Возвращает тип, в который будет оцениваться T в выражении.
+ * Выраж не обязательно должно быть вызываемого типа.
  */
 template ТипВыражениеИз( Выраж )
 {
@@ -404,7 +404,7 @@ template ТипВыражениеИз( Выраж )
 
 
 /**
- * Evaluates в_ the return тип of фн.  фн is required в_ be callable.
+ * Оценивается в возвратный тип фн.  фн должно быть вызываемым типом (callable).
  */
 template ВозвратныйТипИз( alias фн )
 {
@@ -458,7 +458,7 @@ template КортежБазовыхТиповИз( T )
 }
 
 /**
- * StrИПs the []'s off of a тип.
+ * Удаляет []'ки с типа.
  */
 template БазТипМассивов(T)
 {
@@ -473,7 +473,7 @@ template БазТипМассивов(T)
 }
 
 /**
- * strИПs one [] off a тип
+ * Удаляет одну [] с типа
  */
 template ЭлементТипаМассив(T:T[])
 {
@@ -495,19 +495,19 @@ template рангМассива(T)
     }
 }
 
-/// тип of the ключи of an AA
+/// Тип ключей ассоциативного массива.
 template ТипКлючАМ(T)
 {
     alias typeof(T.init.ключи[0]) ТипКлючАМ;
 }
 
-/// тип of the values of an AA
+/// Тип значений ассоциативного массива.
 template ТипЗначениеАМ(T)
 {
     alias typeof(T.init.values[0]) ТипЗначениеАМ;
 }
 
-/// returns the размер of a static Массив
+/// Возвращает размер статического Массива.
 template размерСтатичМассива(T)
 {
     static assert(типСтатМас_ли!(T),"размерСтатичМассива требует статический Массив в качестве типа");
@@ -556,18 +556,18 @@ debug( UnitTest )
     {
         return "0";
     }
-    бул neg=нет;
+    бул отриц = нет;
     if (i<0)
     {
-        neg=да;
+        отриц = да;
         i=-i;
     }
     while (i>0)
     {
-        рез=цифра[i%10]~рез;
+        рез = цифра[i%10]~рез;
         i/=10;
     }
-    if (neg)
+    if (отриц)
         return '-'~рез;
     else
         return рез;
@@ -581,10 +581,10 @@ debug( UnitTest )
     {
         return "0";
     }
-    бул neg=нет;
+    бул отриц = нет;
     if (i<0)
     {
-        neg=да;
+        отриц = да;
         i=-i;
     }
     while (i>0)
@@ -592,7 +592,7 @@ debug( UnitTest )
         рез=цифра[cast(т_мера)(i%10)]~рез;
         i/=10;
     }
-    if (neg)
+    if (отриц)
         return '-'~рез;
     else
         return рез;
@@ -606,7 +606,7 @@ debug( UnitTest )
     {
         return "0";
     }
-    бул neg=нет;
+    бул отриц = нет;
     while (i>0)
     {
         рез=цифра[i%10]~рез;
@@ -623,10 +623,10 @@ debug( UnitTest )
     {
         return "0";
     }
-    бул neg=нет;
+    бул отриц = нет;
     while (i>0)
     {
-        рез=цифра[cast(т_мера)(i%10)]~рез;
+        рез = цифра[cast(т_мера)(i%10)]~рез;
         i/=10;
     }
     return рез;

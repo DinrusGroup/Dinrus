@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
 
         copyright:      Copyright (c) 2005-2006 Lars Ivar Igesund, 
-                        Eric Anderton. все rights reserved
+                        Eric Anderton. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -229,13 +229,13 @@ class АргПарсер{
     }
 
     /**
-        Parses the аргументы provопрed by the parameter. The bound обрвызовы are called as
+        Parses the аргументы предоставленный by the parameter. The bound обрвызовы are called as
         аргументы are recognized. If two аргументы have the same префикс, and старт with 
         the same characters (e.g.: --открой, --opened), the longest совпадают bound обрвызов
         is called.
 
         Параметры:
-            аргументы = the команда строка аргументы является the application
+            аргументы = the команда строка аргументы из_ the application
             сбросьПорядковые = if да, все порядковый counts will be установи в_ zero
     */
     public проц разбор(ткст[] аргументы, бул сбросьПорядковые = нет){
@@ -274,7 +274,7 @@ class АргПарсер{
                     }
 
                     if (найдено) {
-                        // Find the longest совпадают обрвызов определитель является the кандидаты.
+                        // Find the longest совпадают обрвызов определитель из_ the кандидаты.
                         т_мера indexLongestMatch = 0;
 
 						if (кандидаты.length > 1) {

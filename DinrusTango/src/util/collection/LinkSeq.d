@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 2Oct95  dl@cs.oswego.edu   repack является LLSeq.d
+ 2Oct95  dl@cs.oswego.edu   repack из_ LLSeq.d
  9apr97  dl                 вставь bounds проверь in первый
 */
 
@@ -16,7 +16,7 @@ module util.collection.LinkSeq;
 
 private import  util.collection.model.Iterator,
                 util.collection.model.Sortable,
-                util.collection.model.Сравнитель,
+                util.collection.model.Comparator,
                 util.collection.model.GuardIterator;
 
 private import  util.collection.impl.LLCell,
@@ -234,11 +234,11 @@ deprecated public class LinkSeq(T) : SeqCollection!(T), Sortable!(T)
          * Время complexity: O(length).
          * See_Also: util.collection.model.Seq.Seq.subseq
         **/
-        public final LinkSeq поднабор(цел является, цел _length)
+        public final LinkSeq поднабор(цел из_, цел _length)
         {
                 if (_length > 0)
                    {
-                   LLCellT p = ячейкаПо(является);
+                   LLCellT p = ячейкаПо(из_);
                    LLCellT новый_список = new LLCellT(p.элемент(), пусто);
                    LLCellT текущ = новый_список;
          
@@ -246,7 +246,7 @@ deprecated public class LinkSeq(T) : SeqCollection!(T), Sortable!(T)
                        {
                        p = p.следщ();
                        if (p is пусто)
-                           проверьИндекс(является + i); // force исключение
+                           проверьИндекс(из_ + i); // force исключение
 
                        текущ.вяжиСледщ(new LLCellT(p.элемент(), пусто));
                        текущ = текущ.следщ();

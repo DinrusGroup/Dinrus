@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -23,7 +23,7 @@ public  import  io.protocol.model;
 /*******************************************************************************
 
         Читатель основа-class. Each читатель operates upon an ИБуфер, which is
-        provопрed at construction время. Читательs are simple converters of данные,
+        предоставленный at construction время. Читательs are simple converters of данные,
         и have reasonably rigопр rules regarding данные форматируй. For example,
         each request for данные expects the контент в_ be available; an исключение
         is thrown where this is not the case. If the данные is arranged in a ещё
@@ -117,7 +117,7 @@ class Читатель : ИЧитатель
 		
         /***********************************************************************
         
-                Construct a Читатель upon the provопрed поток. We do our own
+                Construct a Читатель upon the предоставленный поток. We do our own
                 протокол handling, equivalent в_ the ПротоколНатив. Массив
                 allocation is supported via the куча
 
@@ -135,7 +135,7 @@ class Читатель : ИЧитатель
 
         /***********************************************************************
 
-                Construct Читатель on the provопрed протокол. This configures
+                Construct Читатель on the предоставленный протокол. This configures
                 the IO conversion в_ be that of the протокол, but allocation
                 of массивы is still handled by the куча
                 

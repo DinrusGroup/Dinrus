@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2007 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -110,6 +110,7 @@ class ВыводФайлаДанных : ВыводДанных
 debug (DataFile)
 {
     import io.Stdout;
+	import io.stream.DataFile;
 
     проц main()
     {

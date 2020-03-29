@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -320,7 +320,7 @@ class SortedMap (K, V, alias Извл = Контейнер.извлеки,
 
     /***********************************************************************
 
-            Return the значение of the ключ exactly совпадают the provопрed
+            Return the значение of the ключ exactly совпадают the предоставленный
             ключ or, if Неук, the ключ just after/before it based on the
             настройка of the секунда аргумент
 

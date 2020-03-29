@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
 
 */
 
@@ -30,7 +30,7 @@ private import  util.collection.model.Iterator,
  * a little trickier than those versions since they
  * don't обменяй Cell contents or use special dummy nilузелs.
  * <P>
- * It is a pure implementation class. For harnesses, see:
+ * It is a  implementation class. For harnesses, see:
  * See_Also: RBTree
  * Authors: Doug Lea
 **/
@@ -129,7 +129,7 @@ public class RBCell(T) : Cell!(T)
     {
 
         // It's too hard в_ проверь the property that every simple
-        // путь является узел в_ leaf имеется same число of black узелs.
+        // путь из_ узел в_ leaf имеется same число of black узелs.
         // So ограничь в_ the following
 
         assert(parent_ is пусто ||

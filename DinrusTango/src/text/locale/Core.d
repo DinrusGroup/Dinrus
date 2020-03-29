@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 John Chapman. все rights reserved
+        copyright:      Copyright (c) 2005 John Chapman. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -141,7 +141,7 @@ private проц ошибка(ткст сооб)
 }
 
 /**
- * Defines the типы of cultures that can be retrieved является Культура.дайКультуры.
+ * Defines the типы of cultures that can be retrieved из_ Культура.дайКультуры.
  */
 public enum ТипыКультур
 {
@@ -156,7 +156,7 @@ public enum ТипыКультур
  * Retrieves an объект в_ control formatting.
  *
  * A class реализует $(LINK2 #IFormatService_getFormat, дайФормат) в_ retrieve an объект that provопрes форматируй information for the implementing тип.
- * Remarks: ИСлужбаФормата is implemented by $(LINK2 #Культура, Культура), $(LINK2 #ФорматЧисла, ФорматЧисла) и $(LINK2 #ФорматДатыВремени, ФорматДатыВремени) в_ provопрe локаль-specific formatting of
+ * Примечания: ИСлужбаФормата is implemented by $(LINK2 #Культура, Культура), $(LINK2 #ФорматЧисла, ФорматЧисла) и $(LINK2 #ФорматДатыВремени, ФорматДатыВремени) в_ provопрe локаль-specific formatting of
  * numbers и дата и время значения.
  */
 public interface ИСлужбаФормата
@@ -175,7 +175,7 @@ public interface ИСлужбаФормата
 /**
  * $(ANCHOR _Culture)
  * Provопрes information about a культура, such as its имя, Календарь и дата и число форматируй образцы.
- * Remarks: text.locale adopts the RFC 1766 стандарт for культура names in the форматируй &lt;language&gt;"-"&lt;region&gt;.
+ * Примечания: text.locale adopts the RFC 1766 стандарт for культура names in the форматируй &lt;language&gt;"-"&lt;region&gt;.
  * &lt;language&gt; is a lower-case two-letter код defined by ISO 639-1. &lt;region&gt; is an upper-case
  * two-letter код defined by ISO 3166. For example, "en-GB" is UK English.
  * $(BR)$(BR)There are three типы of культура: invariant, neutral и specific. The invariant культура is not tied в_
@@ -245,7 +245,7 @@ public class Культура : ИСлужбаФормата
     }
 
     /**
-     * Initializes a new Культура экземпляр является the supplied имя.
+     * Initializes a new Культура экземпляр из_ the supplied имя.
      * Параметры: названиеКультуры = The имя of the Культура.
      */
     public this(ткст названиеКультуры)
@@ -254,9 +254,9 @@ public class Культура : ИСлужбаФормата
     }
 
     /**
-     * Initializes a new Культура экземпляр является the supplied культура определитель.
+     * Initializes a new Культура экземпляр из_ the supplied культура определитель.
      * Параметры: идКультуры = The опрentifer (LCID) of the Культура.
-     * Remarks: Культура определители correspond в_ a Windows LCID.
+     * Примечания: Культура определители correspond в_ a Windows LCID.
      */
     public this(цел идКультуры)
     {
@@ -268,7 +268,7 @@ public class Культура : ИСлужбаФормата
      * Параметры: тип = The ИнфОТипе of the resulting formatting объект.
      * Возвращает: If тип is typeid($(LINK2 #ФорматЧисла, ФорматЧисла)), the значение of the $(LINK2 #Culture_numberFormat, форматЧисла) property. If тип is typeid($(LINK2 #ФорматДатыВремени, ФорматДатыВремени)), the
      * значение of the $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) property. Otherwise, пусто.
-     * Remarks: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
+     * Примечания: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
      */
     public Объект дайФормат(ИнфОТипе тип)
     {
@@ -284,7 +284,7 @@ public class Культура : ИСлужбаФормата
         /**
          * Copies the текущ Культура экземпляр.
          * Возвращает: A копируй of the текущ Культура экземпляр.
-         * Remarks: The значения of the $(LINK2 #Culture_numberFormat, форматЧисла), $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) и $(LINK2 #Culture_Календарь, Календарь) свойства are copied also.
+         * Примечания: The значения of the $(LINK2 #Culture_numberFormat, форматЧисла), $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) и $(LINK2 #Culture_Календарь, Календарь) свойства are copied also.
          */
         public Объект клонируй()
         {
@@ -306,7 +306,7 @@ public class Культура : ИСлужбаФормата
      * Returns a читай-only экземпляр of a культура using the specified культура определитель.
      * Параметры: идКультуры = The определитель of the культура.
      * Возвращает: A читай-only культура экземпляр.
-     * Remarks: Instances returned by this метод are cached.
+     * Примечания: Instances returned by this метод are cached.
      */
     public static Культура дайКультуру(цел идКультуры)
     {
@@ -326,7 +326,7 @@ public class Культура : ИСлужбаФормата
      * Returns a читай-only экземпляр of a культура using the specified культура имя.
      * Параметры: названиеКультуры = The имя of the культура.
      * Возвращает: A читай-only культура экземпляр.
-     * Remarks: Instances returned by this метод are cached.
+     * Примечания: Instances returned by this метод are cached.
      */
     public static Культура дайКультуру(ткст названиеКультуры)
     {
@@ -518,7 +518,7 @@ public class Культура : ИСлужбаФормата
     /**
      * $(I Property.) Retrieves the invariant Культура.
      * Возвращает: The Культура экземпляр that is invariant.
-     * Remarks: The invariant культура is культура-independent. It is not tied в_ any specific region, but is associated
+     * Примечания: The invariant культура is культура-independent. It is not tied в_ any specific region, but is associated
      * with the English language.
      */
     public static Культура инвариантнаяКультура()
@@ -529,7 +529,7 @@ public class Культура : ИСлужбаФормата
     /**
      * $(I Property.) Retrieves the определитель of the Культура.
      * Возвращает: The культура определитель of the текущ экземпляр.
-     * Remarks: The культура определитель corresponds в_ the Windows локаль определитель (LCID). It can therefore be использован when
+     * Примечания: The культура определитель corresponds в_ the Windows локаль определитель (LCID). It can therefore be использован when
      * interfacing with the Windows NLS functions.
      */
     public цел опр()
@@ -656,7 +656,7 @@ public class Культура : ИСлужбаФормата
     /**
      * $(I Property.) Retrieves a значение indicating whether the экземпляр is читай-only.
      * Возвращает: да if the экземпляр is читай-only; otherwise, нет.
-     * Remarks: If the культура is читай-only, the $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) и $(LINK2 #Culture_numberFormat, форматЧисла) свойства return
+     * Примечания: If the культура is читай-only, the $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) и $(LINK2 #Culture_numberFormat, форматЧисла) свойства return
      * читай-only экземпляры.
      */
     public final бул толькоЧтен_ли()
@@ -787,7 +787,7 @@ public class Культура : ИСлужбаФормата
 /**
  * $(ANCHOR _Region)
  * Provопрes information about a region.
- * Remarks: Регион does not represent пользователь preferences. It does not depend on the пользователь's language or культура.
+ * Примечания: Регион does not represent пользователь preferences. It does not depend on the пользователь's language or культура.
  * Examples:
  * The following example displays some of the свойства of the Регион class:
  * ---
@@ -815,19 +815,19 @@ public class Регион
 
     private ДанныеОКультуре* cultureData_;
     private static Регион currentRegion_;
-    private ткст name_;
+    private ткст имя_;
 
     /**
      * Initializes a new Регион экземпляр based on the region associated with the specified культура определитель.
      * Параметры: идКультуры = A культура indentifier.
-     * Remarks: The имя of the Регион экземпляр is установи в_ the ISO 3166 two-letter код for that region.
+     * Примечания: The имя of the Регион экземпляр is установи в_ the ISO 3166 two-letter код for that region.
      */
     public this(цел идКультуры)
     {
         cultureData_ = ДанныеОКультуре.дайДанныеИзИДКультуры(идКультуры);
         if (cultureData_.нейтрален_ли)
             ошибка ("Нейтральная культура не может использоваться для создания региона.");
-        name_ = cultureData_.regionName;
+        имя_ = cultureData_.regionName;
     }
 
     /**
@@ -838,7 +838,7 @@ public class Регион
     public this(ткст имя)
     {
         cultureData_ = ДанныеОКультуре.getDataFromRegionName(имя);
-        name_ = имя;
+        имя_ = имя;
         if (cultureData_.нейтрален_ли)
             ошибка ("Имя региона " ~ имя ~ " соответствует нейтральной культуре и не может
                           использоваться при создании региона.");
@@ -847,7 +847,7 @@ public class Регион
     package this(ДанныеОКультуре* данныеОКультуре)
     {
         cultureData_ = данныеОКультуре;
-        name_ = данныеОКультуре.regionName;
+        имя_ = данныеОКультуре.regionName;
     }
 
     /**
@@ -877,7 +877,7 @@ public class Регион
      */
     public ткст имя()
     {
-        return name_;
+        return имя_;
     }
 
     /**
@@ -967,7 +967,7 @@ public class Регион
      */
     public override ткст вТкст()
     {
-        return name_;
+        return имя_;
     }
 
 }
@@ -975,7 +975,7 @@ public class Регион
 /**
  * $(ANCHOR _NumberFormat)
  * Determines как numbers are formatted, according в_ the текущ культура.
- * Remarks: Numbers are formatted using форматируй образцы retrieved является a ФорматЧисла экземпляр.
+ * Примечания: Numbers are formatted using форматируй образцы retrieved из_ a ФорматЧисла экземпляр.
  * This class реализует $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
  * Examples:
  * The following example shows как в_ retrieve an экземпляр of ФорматЧисла for a Культура
@@ -1038,7 +1038,7 @@ public class ФорматЧисла : ИСлужбаФормата
     /**
      * Initializes a new, culturally independent экземпляр.
      *
-     * Remarks: Modify the свойства of the new экземпляр в_ define custom formatting.
+     * Примечания: Modify the свойства of the new экземпляр в_ define custom formatting.
      */
     public this()
     {
@@ -1093,7 +1093,7 @@ public class ФорматЧисла : ИСлужбаФормата
      * Retrieves an объект defining как в_ форматируй the specified тип.
      * Параметры: тип = The ИнфОТипе of the resulting formatting объект.
      * Возвращает: If тип is typeid($(LINK2 #ФорматЧисла, ФорматЧисла)), the текущ ФорматЧисла экземпляр. Otherwise, пусто.
-     * Remarks: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
+     * Примечания: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
      */
     public Объект дайФормат(ИнфОТипе тип)
     {
@@ -1117,7 +1117,7 @@ public class ФорматЧисла : ИСлужбаФормата
      * Retrieves the ФорматЧисла for the specified $(LINK2 #ИСлужбаФормата, ИСлужбаФормата).
      * Параметры: службаФормата = The ИСлужбаФормата использован в_ retrieve ФорматЧисла.
      * Возвращает: The ФорматЧисла for the specified ИСлужбаФормата.
-     * Remarks: The метод calls $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат) with typeof(ФорматЧисла). If службаФормата is пусто,
+     * Примечания: The метод calls $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат) with typeof(ФорматЧисла). If службаФормата is пусто,
      * then the значение of the текущ property is returned.
      */
     public static ФорматЧисла дайЭкземпляр(ИСлужбаФормата службаФормата)
@@ -1140,8 +1140,8 @@ public class ФорматЧисла : ИСлужбаФормата
     }
 
     /**
-     * $(I Property.) Retrieves a читай-only ФорматЧисла экземпляр является the текущ культура.
-     * Возвращает: A читай-only ФорматЧисла экземпляр является the текущ культура.
+     * $(I Property.) Retrieves a читай-only ФорматЧисла экземпляр из_ the текущ культура.
+     * Возвращает: A читай-only ФорматЧисла экземпляр из_ the текущ культура.
      */
     public static ФорматЧисла текущ()
     {
@@ -1190,7 +1190,7 @@ public class ФорматЧисла : ИСлужбаФормата
      * import io.stream.Format, text.locale.Common;
      *
      * проц main() {
-     *   // Get the ФорматЧисла является the en-GB культура.
+     *   // Get the ФорматЧисла из_ the en-GB культура.
      *   ФорматЧисла фмт = (new Культура("en-GB")).форматЧисла;
      *
      *   // Display a значение with the default число of decimal цифры.
@@ -1216,7 +1216,7 @@ public class ФорматЧисла : ИСлужбаФормата
     /**
      * $(I Property.) Retrieves the форматируй образец for негатив numbers.
      * Возвращает: The форматируй образец for негатив numbers. For инвариантныйФормат, the default is 1 (representing "-n").
-     * Remarks: The following таблица shows действителен значения for this property.
+     * Примечания: The following таблица shows действителен значения for this property.
      *
      * <таблица class="definitionTable">
      * <tr><th>Значение</th><th>образец</th></tr>
@@ -1567,7 +1567,7 @@ public class ФорматЧисла : ИСлужбаФормата
 /**
  * $(ANCHOR _DateTimeFormat)
  * Determines как $(LINK2 #Время, Время) значения are formatted, depending on the культура.
- * Remarks: To создай a ФорматДатыВремени for a specific культура, создай a $(LINK2 #Культура, Культура) for that культура и
+ * Примечания: To создай a ФорматДатыВремени for a specific культура, создай a $(LINK2 #Культура, Культура) for that культура и
  * retrieve its $(LINK2 #Culture_dateTimeFormat, форматДатыВремени) property. To создай a ФорматДатыВремени for the пользователь's текущ
  * культура, use the $(LINK2 #Culture_current, текущ) property.
  */
@@ -1636,7 +1636,7 @@ public class ФорматДатыВремени : ИСлужбаФормата
      * Retrieves an объект defining как в_ форматируй the specified тип.
      * Параметры: тип = The ИнфОТипе of the resulting formatting объект.
      * Возвращает: If тип is typeid(ФорматДатыВремени), the текущ ФорматДатыВремени экземпляр. Otherwise, пусто.
-     * Remarks: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
+     * Примечания: Implements $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат).
      */
     public Объект дайФормат(ИнфОТипе тип)
     {
@@ -1827,7 +1827,7 @@ public class ФорматДатыВремени : ИСлужбаФормата
      * Retrieves the ФорматДатыВремени for the specified ИСлужбаФормата.
      * Параметры: службаФормата = The ИСлужбаФормата использован в_ retrieve ФорматДатыВремени.
      * Возвращает: The ФорматДатыВремени for the specified ИСлужбаФормата.
-     * Remarks: The метод calls $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат) with typeof(ФорматДатыВремени). If службаФормата is пусто,
+     * Примечания: The метод calls $(LINK2 #IFormatService_getFormat, ИСлужбаФормата.дайФормат) with typeof(ФорматДатыВремени). If службаФормата is пусто,
      * then the значение of the текущ property is returned.
      */
     public static ФорматДатыВремени дайЭкземпляр(ИСлужбаФормата службаФормата)
@@ -1851,8 +1851,8 @@ public class ФорматДатыВремени : ИСлужбаФормата
 
     /**
      * $(ANCHOR DateTimeFormat_current)
-     * $(I Property.) Retrieves a читай-only ФорматДатыВремени экземпляр является the текущ культура.
-     * Возвращает: A читай-only ФорматДатыВремени экземпляр является the текущ культура.
+     * $(I Property.) Retrieves a читай-only ФорматДатыВремени экземпляр из_ the текущ культура.
+     * Возвращает: A читай-only ФорматДатыВремени экземпляр из_ the текущ культура.
      */
     public static ФорматДатыВремени текущ()
     {

@@ -14,7 +14,7 @@
 
 *******************************************************************************/
 
-module dwin.io.PathScan;
+module dio.PathScan;
 
 private import drTango.io.FilePath,
         drTango.time.Clock,

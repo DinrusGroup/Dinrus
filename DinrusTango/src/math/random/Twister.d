@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
 
         copyright:      Copyright (C) 1997--2004, Makoto Matsumoto,
-                        Takuji Nishimura, и Eric Landry; все rights reserved
+                        Takuji Nishimura, и Eric Landry; Все права защищены
         
 
         license:        BSD стиль: $(LICENSE)

@@ -11,17 +11,17 @@ module core.BitManip;
 version( TangoDoc )
 {
     /**
-     * Scans the биты in v starting with bit 0, looking
-     * for the first установи bit.
+     * Сканирует биты в v, начиная с бита 0, ища
+     * первый установленный бит.
      * Возвращает:
-     *	The bit число of the first bit установи.
-     *	The return значение is undefined if v is zero.
+     *	Номер первого установленного бита.
+     *	Возвратное значение неопределено, если v равен нулю.
      */
     цел bsf( бцел v );
 
 
     /**
-     * Scans the биты in v является the most significant bit
+     * Scans the биты in v из_ the most significant bit
      * в_ the least significant bit, looking
      * for the first установи bit.
      * Возвращает:
@@ -190,7 +190,7 @@ else
     // could be incurred with a table отыщи.
 
     // We need в_ маска alternate биты в_ prevent the
-    // sum является overflowing.
+    // sum из_ overflowing.
     // добавь neighbouring биты. Each bit is 0 or 1.
     x = x - ((x>>1) & 0x5555_5555);
     // сейчас each two биты of x is a число 00,01 or 10.

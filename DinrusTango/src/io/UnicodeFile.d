@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2005 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -76,7 +76,7 @@ public  import text.convert.UnicodeBom;
         explicit varieties.
 
         Метод читай() returns the current контент of the файл, whilst пиши()
-        sets the файл контент, and файл length, в_ the provопрed Массив. Метод
+        sets the файл контент, and файл length, в_ the предоставленный Массив. Метод
         добавь() добавьs контент в_ the хвост of the файл. When appending, it is
         your responsibility в_ ensure the existing and current encodings are
         correctly matched.
@@ -101,7 +101,7 @@ class ФайлЮ(T)
 
         /***********************************************************************
         
-                Construct a ФайлЮ является the provопрed ФПуть. The given 
+                Construct a ФайлЮ из_ the предоставленный ФПуть. The given 
                 кодировка represents the external файл кодировка, and should
                 be one of the Кодировка.xx типы 
 

@@ -1,6 +1,6 @@
 /*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -19,11 +19,11 @@ module net.model.UriView;
         для дополнительной информации.
 
         The implementation fails the spec on two counts: it doesn't insist
-        on a scheme being present in the ОбзорУИР, и it doesn't implement the
+        on a схема being present in the ОбзорУИР, и it doesn't implement the
         "Relative References" support noted in section 5.2.
 
-        Note that IRI support can be implied by assuming each of userinfo, путь,
-        запрос, и fragment are UTF-8 кодирован
+        Note that IRI support can be implied by assuming each of инфОПользователе, путь,
+        запрос, и фрагмент are UTF-8 кодирован
         (see <A HREF="http://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html">
         this страница</A> for further details).
 
@@ -33,43 +33,43 @@ module net.model.UriView;
 
 abstract class ОбзорУИР
 {
-    public alias порт        getPort;
-    public alias defaultPort getDefaultPort;
-    public alias scheme      getScheme;
+    public alias порт        дайПорт;
+    public alias дефолтнПорт дайДефолтнПорт;
+    public alias схема      дайСхему;
     public alias хост        дайХост;
     public alias valКСЕРort   дайВалидныйПорт;
-    public alias userinfo    getUserInfo;
+    public alias инфОПользователе    дайИнфОПользователе;
     public alias путь        дайПуть;
-    public alias запрос       getQuery;
-    public alias fragment    getFragment;
-    public alias порт        setPort;
-    public alias scheme      setScheme;
-    public alias хост        setHost;
-    public alias userinfo    setUserInfo;
-    public alias запрос       setQuery;
+    public alias запрос       дайЗапрос;
+    public alias фрагмент    дайФрагмент;
+    public alias порт        устПорт;
+    public alias схема      устСхему;
+    public alias хост        устХост;
+    public alias инфОПользователе    устИнфОПользователе;
+    public alias запрос       устЗапрос;
     public alias путь        установиПуть;
-    public alias fragment    setFragment;
+    public alias фрагмент    устФрагмент;
 
     public enum {InvalКСЕРort = -1}
 
     /***********************************************************************
 
-            Return the default порт for the given scheme. InvalКСЕРort
-            is returned if the scheme is неизвестное, or does not прими
+            Return the default порт for the given схема. InvalКСЕРort
+            is returned if the схема is неизвестное, or does not прими
             a порт.
 
     ***********************************************************************/
 
-    abstract цел defaultPort (ткст scheme);
+    abstract цел дефолтнПорт (ткст схема);
 
     /***********************************************************************
 
-            Return the разобрано scheme, or пусто if the scheme was not
+            Return the разобрано схема, or пусто if the схема was not
             specified
 
     ***********************************************************************/
 
-    abstract ткст scheme();
+    abstract ткст схема();
 
     /***********************************************************************
 
@@ -83,7 +83,7 @@ abstract class ОбзорУИР
     /***********************************************************************
 
             Return the разобрано порт число, or InvalКСЕРort if the порт
-            was not provопрed.
+            was not предоставленный.
 
     ***********************************************************************/
 
@@ -100,17 +100,17 @@ abstract class ОбзорУИР
 
     /***********************************************************************
 
-            Return the разобрано userinfo, or пусто if userinfo was not
-            provопрed.
+            Return the разобрано инфОПользователе, or пусто if инфОПользователе was not
+            предоставленный.
 
     ***********************************************************************/
 
-    abstract ткст userinfo();
+    abstract ткст инфОПользователе();
 
     /***********************************************************************
 
             Return the разобрано путь, or пусто if the путь was not
-            provопрed.
+            предоставленный.
 
     ***********************************************************************/
 
@@ -119,7 +119,7 @@ abstract class ОбзорУИР
     /***********************************************************************
 
             Return the разобрано запрос, or пусто if a запрос was not
-            provопрed.
+            предоставленный.
 
     ***********************************************************************/
 
@@ -127,16 +127,16 @@ abstract class ОбзорУИР
 
     /***********************************************************************
 
-            Return the разобрано fragment, or пусто if a fragment was not
-            provопрed.
+            Return the разобрано фрагмент, or пусто if a фрагмент was not
+            предоставленный.
 
     ***********************************************************************/
 
-    abstract ткст fragment();
+    abstract ткст фрагмент();
 
     /***********************************************************************
 
-            Return whether or not the ОбзорУИР scheme is consопрered генерный.
+            Return whether or not the ОбзорУИР схема is consопрered генерный.
 
     ***********************************************************************/
 

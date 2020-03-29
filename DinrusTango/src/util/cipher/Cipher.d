@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright: Copyright (C) Thomas Dixon 2008. все rights reserved.
+ * Copyright: Copyright (C) Thomas Dixon 2008. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Thomas Dixon
  */
@@ -23,7 +23,7 @@ abstract class Шифр
               _encrypt;
 
     /**
-     * Процесс a блок of plaintext данные является the ввод Массив
+     * Процесс a блок of plaintext данные из_ the ввод Массив
      * и place it in the вывод Массив.
      *
      * Параметры:
@@ -86,7 +86,7 @@ abstract class ШифрПоток : Шифр
 /** База паддинг class for implementing блок паддинг schemes. */
 abstract class ПаддингБлокаШифра
 {
-    /** Возвращает: The имя of the паддинг scheme implemented. */
+    /** Возвращает: The имя of the паддинг схема implemented. */
     abstract ткст имя();
 
     /**
@@ -290,7 +290,7 @@ struct БайтКонвертер
          *     Integral ввод of тип T разбей преобр_в its respective байты
          *     with the байты placed in the specified байт order.
          */
-        static ббайт[] является(T)(T ввод)
+        static ббайт[] из_(T)(T ввод)
         {
             ббайт[] вывод = new ббайт[T.sizeof];
 
@@ -348,7 +348,7 @@ struct БайтКонвертер
             }
         }
 
-        static ббайт[] является(T)(T ввод)
+        static ббайт[] из_(T)(T ввод)
         {
             ббайт[] вывод = new ббайт[T.sizeof];
 

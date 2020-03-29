@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -20,7 +20,7 @@
         These routines were tuned on an Intel P4; другой devices may work
         ещё efficiently with a slightly different approach, though this
         is likely в_ be reasonably optimal on AMD x86 CPUs also. These
-        algorithms would benefit significantly является those extra AMD64
+        algorithms would benefit significantly из_ those extra AMD64
         registers. On a 3GHz P4, the дим/сим conversions возьми around
         2500ns в_ process an Массив of 1000 ASCII элементы. Invoking the
         память manager doubles that период, и quadruples the время for
@@ -54,7 +54,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Symmetric calls for equivalent типы; these return the provопрed
+        Symmetric calls for equivalent типы; these return the предоставленный
         ввод with no conversion
 
 *******************************************************************************/
@@ -77,7 +77,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         Encode Utf8 up в_ a maximum of 4 байты дол (five & six байт
         variations are not supported).
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -96,8 +96,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
             вывод = результат;
         ---
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -167,7 +167,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
         Decode Utf8 produced by the above вТкст() метод.
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -175,8 +175,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -256,7 +256,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         байт variations are not supported). Throws an исключение
         where the ввод дим is greater than 0x10ffff.
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -264,8 +264,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -343,7 +343,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
         Decode Utf8 produced by the above вТкст() метод.
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -351,8 +351,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -438,7 +438,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         Encode Utf16 up в_ a maximum of 2 байты дол. Throws an исключение
         where the ввод дим is greater than 0x10ffff.
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -446,8 +446,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -508,7 +508,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
         Decode Utf16 produced by the above вТкст16() метод.
 
-        If the вывод is provопрed off the стэк, it should be large
+        If the вывод is предоставленный off the стэк, it should be large
         enough в_ encompass the entire transcoding; failing в_ do
         so will cause the вывод в_ be moved onto the куча instead.
 
@@ -516,8 +516,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
         преобразованый characters. For optimum performance, the returned
         буфер should be specified as 'вывод' on subsequent calls.
 
-        Where 'ate' is provопрed, it will be установи в_ the число of
-        элементы consumed является the ввод, и the вывод буфер
+        Where 'ate' is предоставленный, it will be установи в_ the число of
+        элементы consumed из_ the ввод, и the вывод буфер
         will not be resized (or allocated). This represents a
         Потокing режим, where slices of the ввод are processed
         in sequence rather than все at one время (should use 'ate'
@@ -582,8 +582,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Decodes a single дим является the given ист текст, и indicates как
-        many симвы were consumed является ист в_ do so.
+        Decodes a single дим из_ the given ист текст, и indicates как
+        many симвы were consumed из_ ист в_ do so.
 
 *******************************************************************************/
 
@@ -595,8 +595,8 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Decodes a single дим является the given ист текст, и indicates как
-        many wchars were consumed является ист в_ do so.
+        Decodes a single дим из_ the given ист текст, и indicates как
+        many wchars were consumed из_ ист в_ do so.
 
 *******************************************************************************/
 
@@ -608,7 +608,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of
+        Encode a дим преобр_в the предоставленный приёмн Массив, и return a срез of
         it representing the кодировка
 
 *******************************************************************************/
@@ -620,7 +620,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Encode a дим преобр_в the provопрed приёмн Массив, и return a срез of
+        Encode a дим преобр_в the предоставленный приёмн Массив, и return a срез of
         it representing the кодировка
 
 *******************************************************************************/
@@ -643,7 +643,7 @@ public extern (C) проц onUnicodeError (ткст сооб, т_мера инд
 
 /*******************************************************************************
 
-        Convert является a ткст преобр_в the тип of the приёмн provопрed.
+        Convert из_ a ткст преобр_в the тип of the приёмн предоставленный.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -665,7 +665,7 @@ T[] изТкст8(T) (ткст s, T[] приёмн)
 
 /*******************************************************************************
 
-        Convert является a шим[] преобр_в the тип of the приёмн provопрed.
+        Convert из_ a шим[] преобр_в the тип of the приёмн предоставленный.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -687,7 +687,7 @@ T[] изТкст16(T) (шим[] s, T[] приёмн)
 
 /*******************************************************************************
 
-        Convert является a дим[] преобр_в the тип of the приёмн provопрed.
+        Convert из_ a дим[] преобр_в the тип of the приёмн предоставленный.
 
         Returns a срез of the given приёмн, where it is sufficiently large
         в_ house the результат, or a куча-allocated Массив otherwise. Returns
@@ -710,7 +710,7 @@ T[] изТкст32(T) (дим[] s, T[] приёмн)
 /*******************************************************************************
 
         Adjust the контент such that no partial encodings exist on the
-        left sопрe of the provопрed текст.
+        left sопрe of the предоставленный текст.
 
         Returns a срез of the ввод
 
@@ -734,7 +734,7 @@ T[] отрежьЛево(T) (T[] s)
 /*******************************************************************************
 
         Adjust the контент such that no partial encodings exist on the
-        right sопрe of the provопрed текст.
+        right sопрe of the предоставленный текст.
 
         Returns a срез of the ввод
 

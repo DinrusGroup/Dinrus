@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD:
                         AFL 3.0:
@@ -18,7 +18,7 @@ private import sys.Common;
 
 private import io.FilePath;
 
-private import exception;
+private import exception, stdrus;
 
 private import io.Path :
 стандарт, исконный;
@@ -74,12 +74,12 @@ struct ФСистема
 
     /***********************************************************************
 
-            Convert the provопрed путь в_ an абсолютный путь, using the
-            current working дир where префикс is not provопрed.
+            Convert the предоставленный путь в_ an абсолютный путь, using the
+            current working дир where префикс is not предоставленный.
             If the given путь is already an абсолютный путь, return it
             intact.
 
-            Returns the provопрed путь, adjusted as necessary
+            Returns the предоставленный путь, adjusted as necessary
 
             deprecated: see ФПуть.абсолютный
 
@@ -99,12 +99,12 @@ struct ФСистема
 
     /***********************************************************************
 
-            Convert the provопрed путь в_ an абсолютный путь, using the
-            current working дир where префикс is not provопрed.
+            Convert the предоставленный путь в_ an абсолютный путь, using the
+            current working дир where префикс is not предоставленный.
             If the given путь is already an абсолютный путь, return it
             intact.
 
-            Returns the provопрed путь, adjusted as necessary
+            Returns the предоставленный путь, adjusted as necessary
 
             deprecated: see ФПуть.абсолютный
 
@@ -121,7 +121,7 @@ struct ФСистема
             Compare в_ пути for абсолютный equality. The given префикс
             is prepended в_ the пути where they are not already in
             абсолютный форматируй (старт with a '/'). Where префикс is not
-            provопрed, the current working дир will be used
+            предоставленный, the current working дир will be used
 
             Returns да if the пути are equivalent, нет otherwise
 
@@ -288,7 +288,7 @@ struct ФСистема
 
         private enum
         {
-            volumePathBufferLen = MAX_PATH + 6
+            volumePathBufferLen = sys.WinConsts.МАКС_ПУТЬ + 6
         }
 
         private static TCHAR[] дайПутьТома(ткст папка, WCHAR[] volPath_,
@@ -309,9 +309,9 @@ struct ФСистема
             }
 
             // преобразовать в (w)stringz
-            TCHAR[MAX_PATH+2] tmp_ =void;
-            TCHAR[] врем = tmp_;
-            путьВиндовс(папка, врем);
+            WCHAR[MAX_PATH+2] tmp_ =void;
+            WCHAR[] врем = tmp_;
+            путьВиндовс( папка, врем);
 
             // we'd like в_ открой a volume
             volPath_[0..4] = `\\.\`;
@@ -319,7 +319,7 @@ struct ФСистема
             if (!GetVolumePathName(врем.ptr, volPath_.ptr+4, volPath_.length-4))
                 исключение ("Краш функции GetVolumePathName");
 
-            TCHAR[] volPath;
+            WCHAR[] volPath;
 
             // the путь could have the volume/network префикс already
             if (volPath_[4..6] != `\\`)
@@ -337,7 +337,7 @@ struct ФСистема
                 volPath[$-1] = '\0';
             }
 
-            return volPath;
+            return cast(шткст)вЮ8(volPath);
         }
 
         /***************************************************************
@@ -354,7 +354,7 @@ struct ФСистема
                 Note that the difference between total available пространство
                 and free пространство will not equal the combined размер of the
                 contents on the файл system, since the numbers for the
-                functions here are calculated является the used blocks,
+                functions here are calculated из_ the used blocks,
                 включая those spent on metadata and файл nodes.
 
                 If actual used пространство is wanted one should use the
@@ -371,7 +371,7 @@ struct ФСистема
             scope fp = new ФПуть(папка);
 
             const бул wantTrailingBackslash = да;
-            TCHAR[volumePathBufferLen] volPathBuf;
+            WCHAR[volumePathBufferLen] volPathBuf;
             auto volPath = дайПутьТома(fp.исконный.вТкст, volPathBuf, wantTrailingBackslash);
 
             version (Win32SansUnicode)
@@ -384,7 +384,7 @@ struct ФСистема
             }
 
             ULARGE_INTEGER free, totalFree;
-            GetDiskFreeSpaceEx(volPath.ptr, &free, пусто, &totalFree);
+            GetDiskFreeSpaceEx( volPath.ptr, &free, пусто, &totalFree);
             return cast(дол) (superuser ? totalFree : free).QuadPart;
         }
 

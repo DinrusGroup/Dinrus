@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -287,7 +287,7 @@ class Файл : Устройство
 
     /***********************************************************************
 
-            Созд a Файл with the provопрed путь and стиль.
+            Созд a Файл with the предоставленный путь and стиль.
 
             Note that Файл is unbuffered by default - wrap an экземпляр
             внутри io.stream.Buffered for buffered I/O
@@ -324,7 +324,7 @@ class Файл : Устройство
     /***********************************************************************
 
             Convenience function в_ return the контент of a файл.
-            Returns a срез of the provопрed вывод буфер, where
+            Returns a срез of the предоставленный вывод буфер, where
             that есть sufficient ёмкость, and allocates из_ the
             куча where the файл контент is larger.
 
@@ -458,27 +458,12 @@ class Файл : Устройство
             if (планировщик)
                 атр |= FILE_FLAG_OVERLAPPED;// + FILE_FLAG_NO_BUFFERING;
 
-            // zero терминируй the путь
-            сим[512] zero =void;
-            auto имя = stringz.вТкст0 (путь, zero);
-
-            version (Win32SansUnicode)
-            вв.указатель = cast(Дескр) СоздайФайлА (путь, cast(ППраваДоступа) доступ, cast(ПСовмИспФайла) совместно, cast(АТРИБУТЫ_БЕЗОПАСНОСТИ)
-                                      null, cast(ПРежСоздФайла) созд, cast(ПФайл)
-                                      (атр | FILE_ATTRIBUTE_NORMAL),
-                                      cast(ук) null);
-            else
-            {
-                // преобразуй в_ utf16
-                шим[512] преобраз =void;
-                auto wide = Utf.вТкст16 (имя[0..путь.length+1], преобраз);
-
                 // открой the файл
-                вв.указатель = cast(Дескр) СоздайФайл (wide, cast(ППраваДоступа) доступ, cast(ПСовмИспФайла) совместно,cast(АТРИБУТЫ_БЕЗОПАСНОСТИ*)
+                вв.указатель = cast(Дескр) СоздайФайл (путь, cast(ППраваДоступа) доступ, cast(ПСовмИспФайла) совместно,cast(АТРИБУТЫ_БЕЗОПАСНОСТИ*)
                                           null, cast(ПРежСоздФайла) созд,
                                           cast(ПФайл) (атр | FILE_ATTRIBUTE_NORMAL),
                                           cast(ук) null);
-            }
+            
 
             if (вв.указатель is НЕВЕРНХЭНДЛ)
             {
@@ -505,7 +490,7 @@ class Файл : Устройство
 
         /***************************************************************
 
-                Откр a файл with the provопрed стиль.
+                Откр a файл with the предоставленный стиль.
 
         ***************************************************************/
 
@@ -687,7 +672,7 @@ class Файл : Устройство
 
         /***************************************************************
 
-                Откр a файл with the provопрed стиль.
+                Откр a файл with the предоставленный стиль.
 
                 Note that файлы default в_ no-sharing. That is,
                 they are locked exclusively в_ the хост process

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -29,7 +29,7 @@ private import         io.model;
 
 ******************************************************************************/
 
-class СОКЕТListener
+class СокетСлушатель
 {
         private бул                    quit;
         private Нить                  нить;
@@ -40,7 +40,7 @@ class СОКЕТListener
         /**********************************************************************
 
                 Construct a listener with the requisite аргументы. The
-                specified буфер is populated via the provопрed экземпляр
+                specified буфер is populated via the предоставленный экземпляр
                 of IСОКЕТЧитатель before being passed в_ the сообщи()
                 метод. все аргументы are требуется.
 
@@ -55,7 +55,7 @@ class СОКЕТListener
         /**********************************************************************
 
                 Construct a listener with the requisite аргументы. The
-                specified буфер is populated via the provопрed экземпляр
+                specified буфер is populated via the предоставленный экземпляр
                 of IСОКЕТЧитатель before being passed в_ the сообщи()
                 метод. все аргументы are требуется.
 
@@ -74,7 +74,7 @@ class СОКЕТListener
 
                 Notification обрвызов invoked whenever the listener имеется
                 anything в_ report. The буфер will have whatever контент
-                was available является the читай() operation
+                was available из_ the читай() operation
 
         ***********************************************************************/
 
@@ -82,7 +82,7 @@ class СОКЕТListener
 
         /***********************************************************************
 
-                Дескр ошибка conditions является the listener нить.
+                Дескр ошибка conditions из_ the listener нить.
 
         ***********************************************************************/
 
@@ -106,7 +106,7 @@ class СОКЕТListener
 
         **********************************************************************/
 
-        проц cancel ()
+        проц отмена ()
         {
                 quit = да;
         }
@@ -121,7 +121,7 @@ class СОКЕТListener
 
         **********************************************************************/
 
-        проц setErrorLimit (бкрат предел)
+        проц устЛимитОшибок (бкрат предел)
         {
                 this.предел = предел + 1;
         }
@@ -130,7 +130,7 @@ class СОКЕТListener
 
                 Execution of this нить is typically stalled on the
                 читай() метод belonging в_ the провод specified
-                during construction. You can invoke cancel() в_ indicate
+                during construction. You can invoke отмена() в_ indicate
                 execution should not proceed further, but that will not
                 actually interrupt a блокed читай() operation.
 
@@ -152,7 +152,7 @@ class СОКЕТListener
                            auto результат = буфер.писатель (&провод.ввод.читай);
 
                            // время в_ quit? Note that a v0.95 compiler bug
-                           // prohibits 'break' является exiting the try{} блок
+                           // prohibits 'break' из_ exiting the try{} блок
                            if (quit ||
                               (результат is провод.Кф && !провод.жив_ли))
                                lives = 0;

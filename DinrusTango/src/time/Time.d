@@ -10,7 +10,7 @@ import stdrus:
     in units of 100ns.  This allows the length of время в_ вринтервал в_ roughly
     +/- 10000 годы.
 
-    Notably missing является this is a representation of weeks, месяцы и годы.
+    Notably missing из_ this is a representation of weeks, месяцы и годы.
     This is because weeks, месяцы, и годы vary according в_ local Календарьs.
     Use time.chrono.* в_ deal with these concepts.
 
@@ -18,7 +18,7 @@ import stdrus:
     требуется в_ be a часть of some interfaces.  It should be treated as a
     builtin тип. Also note that there is deliberately no opCall constructor
     here, since it tends в_ произведи too much overhead.   If you wish в_ build
-    a ИнтервалВремени struct является a тики значение, use D's builtin ability в_ создай a
+    a ИнтервалВремени struct из_ a тики значение, use D's builtin ability в_ создай a
     struct with given member значения (See the descrИПtion of тики() for an
     example of как в_ do this).
 
@@ -195,7 +195,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Subtract the specified ИнтервалВремени является this ИнтервалВремени.
+     * Subtract the specified ИнтервалВремени из_ this ИнтервалВремени.
      *
      * Параметры: t = A ИнтервалВремени в_ вычти
      * Возвращает: A new timespan which is the difference between this
@@ -208,7 +208,7 @@ struct ИнтервалВремени
 
     /**
      *
-     * Subtract the specified ИнтервалВремени является this ИнтервалВремени и присвой the
+     * Subtract the specified ИнтервалВремени из_ this ИнтервалВремени и присвой the
      *
      * Параметры: t = A ИнтервалВремени в_ вычти
      * Возвращает: A копируй of this экземпляр after subtracting t.
@@ -394,7 +394,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of nanoseconds
+     * Construct a ИнтервалВремени из_ the given число of nanoseconds
      *
      * Note: This may cause a loss of данные since a ИнтервалВремени's resolution
      * is in 100ns increments.
@@ -408,7 +408,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of микросекунды
+     * Construct a ИнтервалВремени из_ the given число of микросекунды
      *
      * Параметры: значение = The число of микросекунды.
      * Возвращает: A ИнтервалВремени representing the given число of микросекунды.
@@ -419,7 +419,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of milliseconds
+     * Construct a ИнтервалВремени из_ the given число of milliseconds
      *
      * Параметры: значение = The число of milliseconds.
      * Возвращает: A ИнтервалВремени representing the given число of milliseconds.
@@ -430,7 +430,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of сек
+     * Construct a ИнтервалВремени из_ the given число of сек
      *
      * Параметры: значение = The число of сек.
      * Возвращает: A ИнтервалВремени representing the given число of сек.
@@ -441,7 +441,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of минуты
+     * Construct a ИнтервалВремени из_ the given число of минуты
      *
      * Параметры: значение = The число of минуты.
      * Возвращает: A ИнтервалВремени representing the given число of минуты.
@@ -452,7 +452,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of часы
+     * Construct a ИнтервалВремени из_ the given число of часы
      *
      * Параметры: значение = The число of часы.
      * Возвращает: A ИнтервалВремени representing the given число of часы.
@@ -463,7 +463,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given число of дни
+     * Construct a ИнтервалВремени из_ the given число of дни
      *
      * Параметры: значение = The число of дни.
      * Возвращает: A ИнтервалВремени representing the given число of дни.
@@ -474,7 +474,7 @@ struct ИнтервалВремени
     }
 
     /**
-     * Construct a ИнтервалВремени является the given интервал.  The интервал
+     * Construct a ИнтервалВремени из_ the given интервал.  The интервал
      * represents сек as a дво.  This allows Всё whole и
      * fractional сек в_ be passed in.
      *
@@ -680,7 +680,7 @@ struct ИнтервалВремени
 
         Represents a точка in время.
 
-        Remarks: Время represents dates и times between 12:00:00
+        Примечания: Время represents dates и times between 12:00:00
         mопрnight on January 1, 10000 BC и 11:59:59 PM on December 31,
         9999 AD.
 
@@ -689,7 +689,7 @@ struct ИнтервалВремени
         12:00:00 mопрnight on January 1, 0001 AD in the Грегориан
         Календарь.
 
-        Negative Время значения are offsets является that same reference точка,
+        Negative Время значения are offsets из_ that same reference точка,
         but backwards in history.  Время значения are not specific в_ any
         Календарь, but for an example, the beginning of December 31, 1 BC
         in the Грегориан Календарь is Время.эпоха - ИнтервалВремени.дни(1).
@@ -806,7 +806,7 @@ struct Время
 
     /**********************************************************************
 
-            Subtracts the specified время вринтервал является the время,
+            Subtracts the specified время вринтервал из_ the время,
             returning a new время.
 
             Параметры:  t = A ИнтервалВремени значение.
@@ -838,12 +838,12 @@ struct Время
 
     /**********************************************************************
 
-            Subtracts the specified время вринтервал является the время,
+            Subtracts the specified время вринтервал из_ the время,
             assigning the результат в_ this экземпляр.
 
             Параметры:  t = A ИнтервалВремени значение.
             Возвращает: The текущ Время экземпляр, with t subtracted
-                     является the время.
+                     из_ the время.
 
     **********************************************************************/
 
@@ -918,9 +918,9 @@ struct Время
 
 /******************************************************************************
 
-        Represents a время of день. This is different является ИнтервалВремени in that
+        Represents a время of день. This is different из_ ИнтервалВремени in that
         each component is represented внутри the limits of everyday время,
-        rather than является the старт of the Эпоха. Effectively, the ВремяДня
+        rather than из_ the старт of the Эпоха. Effectively, the ВремяДня
         эпоха is the первый секунда of each день.
 
         This is handy for dealing strictly with a 24-час clock instead of
@@ -933,7 +933,7 @@ struct Время
         assert (время.часы < 24);
         ---
 
-        You can создай a ВремяДня является an existing Время or ИнтервалВремени экземпляр
+        You can создай a ВремяДня из_ an existing Время or ИнтервалВремени экземпляр
         via the respective время() метод. To преобразуй back в_ a ИнтервалВремени, use
         the вринтервал() метод
 
@@ -1018,7 +1018,7 @@ struct ВремяДня
     }
 
     /**
-     * construct a ИнтервалВремени является the текущ fields
+     * construct a ИнтервалВремени из_ the текущ fields
      *
      * Возвращает: a ВремяДня representing the field значения.
      *

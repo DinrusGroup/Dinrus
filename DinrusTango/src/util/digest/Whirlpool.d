@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2009 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2009 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -57,7 +57,7 @@ final class Whirlpool : MerkleDamgard
 
     	Initialize the cipher
 
-    	Remarks:
+    	Примечания:
     		Returns the cipher состояние в_ it's начальное значение
 
      ***********************************************************************/
@@ -75,7 +75,7 @@ final class Whirlpool : MerkleDamgard
     	Возвращает:
     		the дайджест
 
-    	Remarks:
+    	Примечания:
     		Returns a дайджест of the текущ cipher состояние, this may be the
     		final дайджест, or a дайджест of the состояние between calls в_ обнови()
 
@@ -96,7 +96,7 @@ final class Whirlpool : MerkleDamgard
     	Возвращает:
     	the блок размер
 
-    	Remarks:
+    	Примечания:
     	Specifies the размер (in байты) of the блок of данные в_ пароль в_
     	each вызов в_ трансформируй(). For Whirlpool the размерБлока is 64.
 
@@ -114,7 +114,7 @@ final class Whirlpool : MerkleDamgard
     	Возвращает:
     	the length паддинг размер
 
-    	Remarks:
+    	Примечания:
     	Specifies the размер (in байты) of the паддинг which uses the
     	length of the данные which имеется been ciphered, this паддинг is
     	carried out by the padLength метод. For Whirlpool the добавьРазмер is 8.
@@ -133,7 +133,7 @@ final class Whirlpool : MerkleDamgard
     	Параметры:
     	данные = a срез of the cipher буфер в_ заполни with паддинг
 
-    	Remarks:
+    	Примечания:
     	Fills the passed буфер срез with the appropriate паддинг for
     	the final вызов в_ трансформируй(). This паддинг will заполни the cipher
     	буфер up в_ размерБлока()-добавьРазмер().
@@ -154,7 +154,7 @@ final class Whirlpool : MerkleDamgard
     	данные   = the срез of the cipher буфер в_ заполни with паддинг
     	length = the length of the данные which имеется been ciphered
 
-    	Remarks:
+    	Примечания:
     	Fills the passed буфер срез with добавьРазмер() байты of паддинг
     	based on the length in байты of the ввод данные which имеется been
     	ciphered.
@@ -176,7 +176,7 @@ final class Whirlpool : MerkleDamgard
     	Параметры:
     	данные = the блок of данные в_ cipher
 
-    	Remarks:
+    	Примечания:
     	The actual cipher algorithm is carried out by this метод on
     	the passed блок of данные. This метод is called for every
     	размерБлока() байты of ввод данные и once ещё with the остаток
@@ -206,7 +206,7 @@ final class Whirlpool : MerkleDamgard
         {
             бдол L[8];
             /*
-             * compute K^r является K^{r-1}:
+             * compute K^r из_ K^{r-1}:
              */
             L[0] =
                 C0[cast(ббайт)(K[0] >>> 56)] ^
@@ -992,7 +992,7 @@ debug(UnitTest)
                 "abcdbcdecdefdefgefghfghighijhijk",
                 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
                 "12345678901234567890123456789012345678901234567890123456789012345678901234567890",
-                "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq" // Not an ISO вектор, but является FИПS
+                "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq" // Not an ISO вектор, but из_ FИПS
             ];
 
             static ткст[] results =

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -123,7 +123,7 @@ struct RedBlack (V, A = AttributeDummy)
     {
 
         // It's too hard в_ проверь the property that every simple
-        // путь является узел в_ leaf имеется same число of black узелs.
+        // путь из_ узел в_ leaf имеется same число of black узелs.
         // So ограничь в_ the following
 
         assert(предок is пусто ||

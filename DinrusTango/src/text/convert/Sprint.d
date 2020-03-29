@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2005 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
         
@@ -72,7 +72,7 @@ class Sprint(T)
         /**********************************************************************
 
                 Созд new Sprint экземпляры with a буфер of the specified
-                размер, и the provопрed форматёр. The секунда аргумент can be
+                размер, и the предоставленный форматёр. The секунда аргумент can be
                 использован в_ apply cultural specifics (I18N) в_ Sprint
                 
         **********************************************************************/

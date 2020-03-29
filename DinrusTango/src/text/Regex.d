@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-    copyright:      Copyright (c) 2007-2008 Jascha Wetzel. все rights reserved.
+    copyright:      Copyright (c) 2007-2008 Jascha Wetzel. Все права защищены.
 
     license:        BSD стиль: $(LICENSE)
 
@@ -8,14 +8,16 @@
 
     authors:        Jascha Wetzel
 
-    This is a regular expression compiler и interpreter based on the Tagged NFA/DFA метод.
+    Это компилятор регулярных выражений и интерпретарор, основанный на методе
+	Tagged NFA/DFA.
 
-    See <a href="http://en.wikИПedia.org/wiki/Regular_expression">Wikpedia's article on regular expressions</a>
-    for details on regular expressions in general.
+    См. <a href="http://en.wikipedia.org/wiki/Regular_expression">Статью о регулярных выражениях в Wikpedia</a> об общих деталях, касающихся регулярных выражений.
 
-    The использован метод implies, that the expressions are <i>regular</i>, in the way language theory defines it,
-    as opposed в_ что &quot;regular expression&quot; means in most implementations
-    (e.g. PCRE or those является the стандарт libraries of Perl, Java or Python).
+    Используемый метод подразумевает, что выражения <i>регулярны</i>, как их
+	и определяет теория языка, напротив, &quot;регулярное выражение&quot;
+	возможно в разных реализациях(напр. PCRE или из стандартных библиотек Perl,
+	Java или Python).
+
     The advantage of this метод is it's performance, it's disadvantage is the inability в_ realize some features
     that Perl-like regular expressions have (e.g. back-references).
     See <a href="http://swtch.com/~rsc/regexp/regexp1.html">&quot;Regular Expression Matching Can Be Simple And Быстрый&quot;</a>
@@ -71,7 +73,7 @@ module text.Regex;
 debug(TangoRegex) import io.Stdout;
 
 /* *****************************************************************************
-    A simple пара
+    Простая пара
 *******************************************************************************/
 private struct Пара(T)
 {
@@ -337,10 +339,10 @@ private struct Стэк(T)
         _top = конец;
     }
 
-    проц вынь(т_мера num)
+    проц вынь(т_мера чис)
     {
-        assert(_top>=num);
-        _top -= num;
+        assert(_top>=чис);
+        _top -= чис;
     }
 
     T вынь()
@@ -814,7 +816,7 @@ struct КлассСимволов(т_сим)
         return ic;
     }
 
-    // требует the class в_ be optimized
+    // требует оптимизации класса
     бул содержит(т_диапазон вк)
     {
         foreach ( p; части )
@@ -825,7 +827,7 @@ struct КлассСимволов(т_сим)
         return нет;
     }
 
-    // требует the class в_ be optimized
+    // требует оптимизации класса
     бул содержит(КлассСимволов cc)
     {
 Louter:
@@ -864,7 +866,7 @@ Louter:
     }
 
     /* ********************************************************************************************
-        Требует the КлассСимволов в_ be optimized.
+        Требует оптимизации КлассСимволов.
     **********************************************************************************************/
     проц отрицай()
     {
@@ -1285,7 +1287,7 @@ private class TNFATransition(т_сим)
 
     /******************************************************************************
         Move through states only going via epsilon transitions, и only choosing
-        the one with highest priority. If the highest priority transition является a
+        the one with highest priority. If the highest priority transition из_ a
         состояние isn't an epsilon transition, нет is returned.
         If the accepting NFA состояние can be reached in this manner, да is returned.
 
@@ -1337,7 +1339,7 @@ private class TNFAFragment(т_сим)
     }
 
     /* ********************************************************************************************
-        Зап the given состояние as Запись состояние в_ this fragment.
+        Зап the given состояние as Запись состояние в_ this фрагмент.
     **********************************************************************************************/
     проц setEntry(state_t состояние)
     {
@@ -1347,7 +1349,7 @@ private class TNFAFragment(т_сим)
     }
 
     /* ********************************************************************************************
-        Зап the given состояние as exit состояние в_ this fragment.
+        Зап the given состояние as exit состояние в_ this фрагмент.
     **********************************************************************************************/
     проц setExit(state_t состояние)
     {
@@ -1377,7 +1379,7 @@ private final class TNFA(т_сим)
     бул свопMatchingBracketSyntax; /// whether в_ сделай (?...) совпадают и (...) non-совпадают
 
     /* ********************************************************************************************
-        Creates the TNFA является the given regex образец
+        Creates the TNFA из_ the given regex образец
     **********************************************************************************************/
     this(т_ткст regex)
     {
@@ -1419,7 +1421,7 @@ private final class TNFA(т_сим)
     /* ********************************************************************************************
         Constructs the TNFA using extended Thompson метод.
         Uses a slightly extended version of Dijkstra's shunting yard algorithm в_ преобразуй
-        the regexp является infix notation.
+        the regexp из_ infix notation.
     **********************************************************************************************/
     проц разбор(бул unanchored)
     {
@@ -1544,11 +1546,11 @@ private final class TNFA(т_сим)
         бул implicit_concat;
         predicate_t.Тип pred_type;
 
-        while ( !endOfPattern )
+        while ( !конецОбразца )
         {
             pred_type = predicate_t.Тип.используй;
 
-            дим c = readPattern;
+            дим c = читайОбразец;
             switch ( c )
             {
             case '|':
@@ -1559,9 +1561,9 @@ private final class TNFA(т_сим)
                 if ( implicit_concat )
                     perform(Operator.concat, нет);
                 implicit_concat = нет;
-                if ( ПросмотрPattern == '?' )
+                if ( просмотриОбразец == '?' )
                 {
-                    readPattern;
+                    читайОбразец;
                     perform(свопMatchingBracketSyntax?Operator.open_par:Operator.open_par_nm);
                 }
                 else
@@ -1571,27 +1573,27 @@ private final class TNFA(т_сим)
                 perform(Operator.close_par);
                 break;
             case '?':
-                if ( ПросмотрPattern == '?' )
+                if ( просмотриОбразец == '?' )
                 {
-                    readPattern;
+                    читайОбразец;
                     perform(Operator.zero_one_ng);
                 }
                 else
                     perform(Operator.zero_one_g);
                 break;
             case '*':
-                if ( ПросмотрPattern == '?' )
+                if ( просмотриОбразец == '?' )
                 {
-                    readPattern;
+                    читайОбразец;
                     perform(Operator.zero_more_ng);
                 }
                 else
                     perform(Operator.zero_more_g);
                 break;
             case '+':
-                if ( ПросмотрPattern == '?' )
+                if ( просмотриОбразец == '?' )
                 {
-                    readPattern;
+                    читайОбразец;
                     perform(Operator.one_more_ng);
                 }
                 else
@@ -1601,9 +1603,9 @@ private final class TNFA(т_сим)
                 Пара!(бцел) occur;
                 parseOccurCount(occur.a, occur.b);
                 occurСтэк ~= occur;
-                if ( ПросмотрPattern == '?' )
+                if ( просмотриОбразец == '?' )
                 {
-                    readPattern;
+                    читайОбразец;
                     perform(Operator.occur_ng);
                 }
                 else
@@ -1636,7 +1638,7 @@ private final class TNFA(т_сим)
                 frags ~= constructChars(т_кс.начкон_стр, predicate_t.Тип.lookbehind);
                 break;
             case '>':
-                c = readPattern;
+                c = читайОбразец;
                 pred_type = predicate_t.Тип.lookahead;
                 if ( c == '[' )
                 goto case '[';
@@ -1647,7 +1649,7 @@ private final class TNFA(т_сим)
                 else
                     goto default;
             case '<':
-                c = readPattern;
+                c = читайОбразец;
                 pred_type = predicate_t.Тип.lookbehind;
                 if ( c == '[' )
                 goto case '[';
@@ -1658,7 +1660,7 @@ private final class TNFA(т_сим)
                 else
                     goto default;
             case '\\':
-                c = readPattern;
+                c = читайОбразец;
 
                 if ( implicit_concat )
                     perform(Operator.concat, нет);
@@ -1878,7 +1880,7 @@ private:
             Act.poc, Act.poc, Act.poc, Act.pua, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.poc, Act.pua, Act.poc, Act.poc
         ];
 
-    final дим ПросмотрPattern()
+    final дим просмотриОбразец()
     {
         auto врем = next_cursor;
         if ( врем < образец.length )
@@ -1886,7 +1888,7 @@ private:
         return 0;
     }
 
-    final дим readPattern()
+    final дим читайОбразец()
     {
         cursor = next_cursor;
         if ( next_cursor < образец.length )
@@ -1894,7 +1896,7 @@ private:
         return 0;
     }
 
-    final бул endOfPattern()
+    final бул конецОбразца()
     {
         return next_cursor >= образец.length;
     }
@@ -1914,16 +1916,16 @@ private:
         return trans;
     }
 
-    бцел parseNumber()
+    бцел разбериЧисло()
     {
         бцел рез;
-        while ( !endOfPattern )
+        while ( !конецОбразца )
         {
-            auto c = ПросмотрPattern;
+            auto c = просмотриОбразец;
             if ( c < '0' || c > '9' )
                 break;
             рез = рез*10+(c-'0');
-            readPattern;
+            читайОбразец;
         }
         return рез;
     }
@@ -1932,20 +1934,20 @@ private:
     {
         assert(образец[cursor] == '{');
 
-        minOccur = parseNumber;
-        if ( ПросмотрPattern == '}' )
+        minOccur = разбериЧисло;
+        if ( просмотриОбразец == '}' )
         {
-            readPattern;
+            читайОбразец;
             maxOccur = minOccur;
             return;
         }
-        if ( ПросмотрPattern != ',' )
+        if ( просмотриОбразец != ',' )
             throw new ИсклРегВыр("Неверный occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
-        readPattern;
-        maxOccur = parseNumber;
-        if ( ПросмотрPattern != '}' )
+        читайОбразец;
+        maxOccur = разбериЧисло;
+        if ( просмотриОбразец != '}' )
             throw new ИсклРегВыр("Неверный occurence range at \""~Utf.вТкст(образец[cursor..$])~"\"");
-        readPattern;
+        читайОбразец;
         if ( maxOccur > 0 && maxOccur < minOccur )
             throw new ИсклРегВыр("Неверный occurence range (макс < мин) at \""~Utf.вТкст(образец[cursor..$])~"\"");
     }
@@ -2059,18 +2061,18 @@ private:
         trans_t trans = добавьПроход;
 
         бул negated=нет;
-        if ( ПросмотрPattern == '^' )
+        if ( просмотриОбразец == '^' )
         {
-            readPattern;
+            читайОбразец;
             negated = да;
         }
 
         т_сим  последний;
         бул    have_range_start,
         first_char = да;
-        for ( ; !endOfPattern && ПросмотрPattern != ']'; )
+        for ( ; !конецОбразца && просмотриОбразец != ']'; )
         {
-            дим c = readPattern;
+            дим c = читайОбразец;
             switch ( c )
             {
             case '-':
@@ -2081,19 +2083,19 @@ private:
                 }
                 if ( !have_range_start )
                     throw new ИсклРегВыр("Missing range старт for '-' operator after \""~Utf.вТкст(образец)~"\"");
-                else if ( endOfPattern || ПросмотрPattern == ']' )
+                else if ( конецОбразца || просмотриОбразец == ']' )
                     throw new ИсклРегВыр("Missing range конец for '-' operator after \""~Utf.вТкст(образец)~"\"");
                 else
                 {
-                    c = readPattern;
+                    c = читайОбразец;
                     trans.predicate.добавьВвод(т_диапазон(последний, c));
                     have_range_start = нет;
                 }
                 break;
             case '\\':
-                if ( endOfPattern )
+                if ( конецОбразца )
                     throw new ИсклРегВыр("неожиданный конец of ткст after \""~Utf.вТкст(образец)~"\"");
-                c = readPattern;
+                c = читайОбразец;
                 switch ( c )
                 {
                 case 't':
@@ -2116,8 +2118,8 @@ private:
             }
             first_char = нет;
         }
-        if ( !endOfPattern )
-            readPattern;
+        if ( !конецОбразца )
+            читайОбразец;
         if ( последний != т_сим.init )
             trans.predicate.добавьВвод(т_диапазон(последний));
         debug(tnfa) Стдвыв.форматнс(" {}", образец[oldCursor..cursor]);
@@ -2610,7 +2612,7 @@ Louter:
     }
 
     /* ********************************************************************************************
-        Constructs the TDFA является the given TNFA using extended power установи метод
+        Constructs the TDFA из_ the given TNFA using extended power установи метод
     **********************************************************************************************/
     this(TNFA!(т_сим) tnfa)
     {
@@ -2659,7 +2661,7 @@ Louter:
             {
                 // найди NFA состояние we reach with пред
                 // reach will установи predicate тип correctly
-                debug(tdfa) Стдвыв.форматируй("является {} with {} reach", состояние.dfa_state.индекс, пред.вТкст);
+                debug(tdfa) Стдвыв.форматируй("из_ {} with {} reach", состояние.dfa_state.индекс, пред.вТкст);
                 SubsetState мишень = reach(состояние, пред);
                 if ( мишень is пусто )
                 {
@@ -2694,7 +2696,7 @@ Louter:
                         if ( !найдено )
                         {
                             // if индекс is < 0 it is a temporary индекс
-                            // использован only в_ distinguish the состояние является existing ones.
+                            // использован only в_ distinguish the состояние из_ existing ones.
                             // the previous индекс can be reused instead.
                             if ( индекс < 0 )
                                 индекс = -индекс-1;
@@ -2758,7 +2760,7 @@ Louter:
                 trans.мишень = мишень.dfa_state;
                 debug(tdfa)
                 {
-                    Стдвыв.форматнс("=> является {} with {} reach {}", состояние.dfa_state.индекс, пред.вТкст, мишень.dfa_state.индекс);
+                    Стдвыв.форматнс("=> из_ {} with {} reach {}", состояние.dfa_state.индекс, пред.вТкст, мишень.dfa_state.индекс);
                 }
             }
 
@@ -3036,9 +3038,9 @@ private:
     }
 
     /* ********************************************************************************************
-        Creates disjoint predicates является все outgoing, potentially overlapping TNFA transitions.
+        Creates disjoint predicates из_ все outgoing, potentially overlapping TNFA transitions.
 
-        Параметры:     состояние = SubsetState в_ создай the predicates является
+        Параметры:     состояние = SubsetState в_ создай the predicates из_
         Возвращает:    Список of disjoint predicates that can be использован for a DFA состояние
     **********************************************************************************************/
     predicate_t[] disjointPredicates(SubsetState состояние)
@@ -3145,7 +3147,7 @@ private:
         disjoint.length = следщ;
 
         // merge isolated ranges преобр_в sets of ranges
-        // no range in a установи may occur separated является the другие in any predicate
+        // no range in a установи may occur separated из_ the другие in any predicate
         predicate_t[]   preds;
         preds.length = 1;
 Lmerge:
@@ -3207,7 +3209,7 @@ Lmerge:
         Finds все TNFA states that can be reached directly with the given predicate и creates
         a new SubsetState containing those мишень states.
 
-        Параметры:     subst = SubsetState в_ старт является
+        Параметры:     subst = SubsetState в_ старт из_
                     пред =  predicate that is matched against outgoing transitions
         Возвращает:    SubsetState containing the reached мишень states
     **********************************************************************************************/
@@ -3291,16 +3293,16 @@ Lmerge:
     /* ********************************************************************************************
         Extends the given SubsetState with the states that are reached through lookbehind transitions.
 
-        Параметры:     является =      SubsetState в_ создай the lookbehind closure for
-                    previous =  predicate "является" was reached with
-        Возвращает:    SubsetState containing "является" и все states of it's lookbehind closure
+        Параметры:     из_ =      SubsetState в_ создай the lookbehind closure for
+                    previous =  predicate "из_" was reached with
+        Возвращает:    SubsetState containing "из_" и все states of it's lookbehind closure
     **********************************************************************************************/
-    SubsetState lookbehindClosure(SubsetState является, predicate_t пред)
+    SubsetState lookbehindClosure(SubsetState из_, predicate_t пред)
     {
         Список!(StateElement) стэк = new Список!(StateElement);
         StateElement[бцел]  closure;
 
-        foreach ( e; является.elms )
+        foreach ( e; из_.elms )
         {
             стэк ~= e;
             closure[e.nfa_state.индекс] = e;
@@ -3364,11 +3366,11 @@ Lmerge:
         if tags are passed. Takes priorities преобр_в account, effectively realizing
         greediness и reluctancy.
 
-        Параметры:     является =      SubsetState в_ создай the epsilon closure for
-                    previous =  SubsetState "является" was reached является
-        Возвращает:    SubsetState containing "является" и все states of it's epsilon closure
+        Параметры:     из_ =      SubsetState в_ создай the epsilon closure for
+                    previous =  SubsetState "из_" was reached из_
+        Возвращает:    SubsetState containing "из_" и все states of it's epsilon closure
     **********************************************************************************************/
-    SubsetState epsilonClosure(SubsetState является, SubsetState previous)
+    SubsetState epsilonClosure(SubsetState из_, SubsetState previous)
     {
         цел firstFreeIndex=-1;
         foreach ( e; previous.elms )
@@ -3381,7 +3383,7 @@ Lmerge:
         Список!(StateElement) стэк = new Список!(StateElement);
         StateElement[бцел]  closure;
 
-        foreach ( e; является.elms )
+        foreach ( e; из_.elms )
         {
             стэк ~= e;
             closure[e.nfa_state.индекс] = e;
@@ -3395,7 +3397,7 @@ Lmerge:
             {
                 if ( t.predicate.тип != predicate_t.Тип.epsilon )
                     continue;
-                // this is different является Ville Laurikari's algorithm, but it's crucial
+                // this is different из_ Ville Laurikari's algorithm, but it's crucial
                 // в_ возьми the макс (instead of t.priority) в_ сделай reluctant operators work
                 бцел new_maxPri = макс(t.priority, se.maxPriority);
 
@@ -3447,7 +3449,7 @@ Lmerge:
         рез.elms = closure.values;
 
         // оптимизируй тэг usage
-        // все we need в_ do is в_ проверь whether the largest тэг-индекс является the
+        // все we need в_ do is в_ проверь whether the largest тэг-индекс из_ the
         // previous состояние is actually использован in the new состояние и перемести все tags with
         // firstFreeIndex down by one if not, but only if firstFreeIndex is not 0
         if ( firstFreeIndex > 0 )
@@ -3485,20 +3487,20 @@ sluiLoop:
     }
 
     /* ********************************************************************************************
-        Tries в_ создай commands that reorder the тэг карта of "previous", such that "является" becomes
+        Tries в_ создай commands that reorder the тэг карта of "previous", such that "из_" becomes
         тэг-wise опрentical в_ "в_". If successful, these commands are добавьed в_ "trans". This
         is готово for состояние re-use.
 
-        Параметры:     является =      SubsetState в_ проверь for тэг-wise equality в_ "в_"
+        Параметры:     из_ =      SubsetState в_ проверь for тэг-wise equality в_ "в_"
                     в_ =        existing SubsetState that we want в_ re-use
-                    previous =  SubsetState we're coming является
+                    previous =  SubsetState we're coming из_
                     trans =     Transition we went along
-        Возвращает:    да if "является" is тэг-wise опрentical в_ "в_" и the necessary commands have
+        Возвращает:    да if "из_" is тэг-wise опрentical в_ "в_" и the necessary commands have
                     been добавьed в_ "trans"
     **********************************************************************************************/
-    бул reorderTagIndeces(SubsetState является, SubsetState в_, SubsetState previous, Transition trans)
+    бул reorderTagIndeces(SubsetState из_, SubsetState в_, SubsetState previous, Transition trans)
     {
-        if ( является.elms.length != в_.elms.length )
+        if ( из_.elms.length != в_.elms.length )
             return нет;
 
         бул[Command]
@@ -3509,7 +3511,7 @@ sluiLoop:
         reordered_elements;
 
 Louter:
-        foreach ( fe; является.elms )
+        foreach ( fe; из_.elms )
         {
             foreach ( te; в_.elms )
             {
@@ -3561,7 +3563,7 @@ Louter:
 
         debug(tdfa)
         {
-            Стдвыв.форматнс("\nreorder {} в_ {}\n", является.вТкст, в_.dfa_state.индекс);
+            Стдвыв.форматнс("\nreorder {} в_ {}\n", из_.вТкст, в_.dfa_state.индекс);
         }
 
         trans.commands ~= cmds.keys;
@@ -3595,7 +3597,7 @@ Louter:
     проц generateFinishers(SubsetState r)
     {
         // if at least one of the TNFA states accepts,
-        // установи the finishers является активное tags in increasing priority
+        // установи the finishers из_ активное tags in increasing priority
         StateElement[]  sorted_elms = r.elms.dup.sort;
         бул reluctant = нет;
         foreach ( se; sorted_elms )
@@ -3606,7 +3608,7 @@ Louter:
                 r.dfa_state.прими = да;
 
                 // Knowing that we're looking at an epsilon closure with an accepting
-                // состояние, we look at the involved transitions - if the путь является the
+                // состояние, we look at the involved transitions - if the путь из_ the
                 // nfa состояние in the установи with the highest incoming priority (последний in
                 // sorted_elms список) в_ the accepting nfa состояние is via the highest
                 // priority transitions, и they are все epsilon transitions, this
@@ -3649,9 +3651,9 @@ Louter:
     {
         class DiffTable
         {
-            this(т_мера num)
+            this(т_мера чис)
             {
-                diff_ = new бул[num*(num+1)/2];
+                diff_ = new бул[чис*(чис+1)/2];
             }
 
             ~this()
@@ -4558,7 +4560,7 @@ private:
 alias RegExpT!(сим) Regex;
 
 debug(utf) import rt.core.stdc.stdio;
-// the following блок is stolen является phobos.
+// the following блок is stolen из_ phobos.
 // the copyright notice applies for this блок only.
 /*
  *  Copyright (C) 2003-2004 by Digital Mars, www.digitalmars.com
@@ -4566,7 +4568,7 @@ debug(utf) import rt.core.stdc.stdio;
  *
  *  Данное программное обеспечение предоставляется "как есть",  без какой-либо явной или косвенной гарантии.. авторы ни в коем случае не несут ответственность за ущерб, причинённый от использования данного ПО.
  *
- *  Любому даётся разрешение использовать является ПО в любых целях,
+ *  Любому даётся разрешение использовать из_ ПО в любых целях,
  *  включая коммерческое применение, его изменение и свободное распространение,
  *  за исключением следующих ограничений:
  *
@@ -4642,7 +4644,7 @@ class ИсклУТФ : Исключение
             }
         }
 
-        // Pick off (7 - n) significant биты of B является первый байт of octet
+        // Pick off (7 - n) significant биты of B из_ первый байт of octet
         V = cast(дим)(u & ((1 << (7 - n)) - 1));
 
         if (i + (n - 1) >= длин)

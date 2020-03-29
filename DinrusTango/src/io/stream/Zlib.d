@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-    copyright:  Copyright (C) 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright (C) 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -160,7 +160,7 @@ class ВводЗлиб : ФильтрВвода
 
     /*
      * This метод performs initialisation for the поток.  Note that this may
-     * be called ещё than once for an экземпляр, provопрed the экземпляр is
+     * be called ещё than once for an экземпляр, предоставленный the экземпляр is
      * either new or as часть of a вызов в_ сбрось.
      */
     private проц init(ИПотокВвода поток, Кодировка кодировка, цел окноБиты)
@@ -483,7 +483,7 @@ class ВыводЗлиб : ФильтрВывода
 
     /*
      * This метод performs initialisation for the поток.  Note that this may
-     * be called ещё than once for an экземпляр, provопрed the экземпляр is
+     * be called ещё than once for an экземпляр, предоставленный the экземпляр is
      * either new or as часть of a вызов в_ сбрось.
      */
     private проц init(ИПотокВывода поток, Уровень уровень, Кодировка кодировка,
@@ -594,7 +594,7 @@ class ВыводЗлиб : ФильтрВывода
         Compresses the given данные в_ the underlying провод.
 
         Returns the число of байты из_ ист that were compressed; пиши
-        should always используй все данные provопрed в_ it, although it may not be
+        should always используй все данные предоставленный в_ it, although it may not be
         immediately записано в_ the underlying вывод поток.
 
     ***************************************************************************/
@@ -793,7 +793,7 @@ class ИсклЗлибЕщёНеЗакрыт : ВВИскл
 
     This исключение is thrown when an ошибка occurs in the underlying zlib
     library.  Where possible, it will indicate Всё the имя of the ошибка, and
-    any textural сообщение zlib есть provопрed.
+    any textural сообщение zlib есть предоставленный.
 
 *******************************************************************************/
 

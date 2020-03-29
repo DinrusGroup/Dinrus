@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Robin Kreis. все rights reserved
+        copyright:      Copyright (c) 2008 Robin Kreis. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -151,11 +151,11 @@ class СерийныйПорт : Устройство
             // try opening COM1...COM255
             auto pre = `\\.\COM`;
             сим[11] p =void;
-            сим[3] num =void;
+            сим[3] чис =void;
             p[0..pre.length] = pre;
             for(цел i = 1; i <= 255; ++i)
             {
-                ткст portNum = Целое.форматируй(num, i);
+                ткст portNum = Целое.форматируй(чис, i);
                 p[pre.length..pre.length + portNum.length] = portNum;
                 p[pre.length + portNum.length] = '\0';
                 HANDLE порт = CreateFileA(p.ptr, GENERIC_READ | GENERIC_WRITE, 0, пусто, OPEN_EXISTING, 0, пусто);

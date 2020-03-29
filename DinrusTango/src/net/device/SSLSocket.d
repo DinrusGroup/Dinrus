@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Jeff Davey. все rights reserved
+        copyright:      Copyright (c) 2008 Jeff Davey. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -112,7 +112,7 @@ class СокетССЛ : Сокет
 
         Параметры:
             сок = The сокет в_ wrap in SSL
-            КонтекстССЛ = the SSL Контекст as provопрed by the PKI layer.
+            КонтекстССЛ = the SSL Контекст as предоставленный by the PKI layer.
             режимКлиента = if да the сокет will be Client Mode, Сервер otherwise.
 
     *******************************************************************************/
@@ -283,7 +283,7 @@ class СокетССЛ : Сокет
         the Сервер's existing КонтекстССЛ.
 
         Параметры:
-            ctx = КонтекстССЛ class as provопрed by PKI
+            ctx = КонтекстССЛ class as предоставленный by PKI
             режимКлиента = if да, the сокет will be in Client Mode, Сервер otherwise.
 
     *******************************************************************************/
@@ -365,11 +365,11 @@ class СерверСокетССЛ : СерверСокет
     /*******************************************************************************
 
         Constructs a new СерверСокетССЛ. This constructor is similar в_
-        СерверСокет, except it takes a КонтекстССЛ as provопрed by PKI.
+        СерверСокет, except it takes a КонтекстССЛ as предоставленный by PKI.
 
         Параметры:
             адр = the адрес в_ вяжи и слушай on.
-            ctx = the provопрed КонтекстССЛ
+            ctx = the предоставленный КонтекстССЛ
             backlog = the число of connections в_ backlog before refusing connection
             reuse = if включен, allow rebinding of existing ИП/порт
 
@@ -383,7 +383,7 @@ class СерверСокетССЛ : СерверСокет
 
     /*******************************************************************************
 
-      Accepts a new conection и copies the provопрed сервер КонтекстССЛ в_ a new
+      Accepts a new conection и copies the предоставленный сервер КонтекстССЛ в_ a new
       СокетССЛ.
 
     *******************************************************************************/

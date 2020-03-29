@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2007 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -37,7 +37,7 @@ class ГридиВвод : ФильтрВвода
 
         /***********************************************************************
 
-                Fill the provопрed Массив. Returns the число of байты
+                Fill the предоставленный Массив. Returns the число of байты
                 actually читай, which will be less that приёмн.length when
                 Кф есть been reached, and then Кф thereafter
 
@@ -59,7 +59,7 @@ class ГридиВвод : ФильтрВвода
 
         /***********************************************************************
         
-                Чтен из_ a поток преобр_в a мишень Массив. The provопрed приёмн
+                Чтен из_ a поток преобр_в a мишень Массив. The предоставленный приёмн
                 will be fully populated with контент из_ the ввод. 
 
                 This differs из_ читай in that it will throw an исключение
@@ -127,7 +127,7 @@ class ГридиВывод : ФильтрВывода
                              
         /***********************************************************************
         
-                Write в_ поток из_ a источник Массив. The provопрed ист контент 
+                Write в_ поток из_ a источник Массив. The предоставленный ист контент 
                 will be записано in full в_ the вывод.
 
                 This differs из_ пиши in that it will throw an исключение

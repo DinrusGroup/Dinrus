@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -964,7 +964,7 @@ class ФайлЗип : ФайлВфс
     body
     {
         if( запись ) return запись.имя;
-        else        return name_;
+        else        return имя_;
     }
 
     ///
@@ -973,7 +973,7 @@ class ФайлЗип : ФайлВфс
     body
     {
         if( запись ) return запись.полное_имя;
-        else        return предок.полное_имя ~ "/" ~ name_;
+        else        return предок.полное_имя ~ "/" ~ имя_;
     }
 
     ///
@@ -1194,7 +1194,7 @@ else
     Запись* запись;
 
     Запись* предок;
-    ткст name_;
+    ткст имя_;
 
     this()
     out { assert( !действителен ); }
@@ -1271,7 +1271,7 @@ else
         this.предок = предок;
         this.архив = архив;
         this.запись = запись;
-        this.name_ = пусто;
+        this.имя_ = пусто;
     }
 
     final проц сбрось(ПапкаЗип архив, Запись* предок, ткст имя)
@@ -1289,7 +1289,7 @@ else
         this.архив = архив;
         this.предок = предок;
         this.запись = пусто;
-        this.name_ = имя;
+        this.имя_ = имя;
     }
 
     final проц закрой()
@@ -1300,7 +1300,7 @@ else
         архив = пусто;
         предок = пусто;
         запись = пусто;
-        name_ = пусто;
+        имя_ = пусто;
     }
 }
 
@@ -1696,7 +1696,7 @@ import io.device.Conduit : Провод;
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -1755,7 +1755,7 @@ private deprecated class DummyOutputПоток : ИПотокВывода //, И
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -1944,7 +1944,7 @@ private:
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2007 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -77,7 +77,7 @@ class LinkedFolder : ВиртуальнаяПапка
 
                 The секунда аргумент represents an optional имя that the
                 прикрепи should be known as, instead of the имя exposed by 
-                the provопрed папка (it is not an alias).
+                the предоставленный папка (it is not an alias).
 
         ***********************************************************************/
 

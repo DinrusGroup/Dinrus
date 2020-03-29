@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Peter Triller. все rights reserved
+        copyright:      Copyright (c) 2007 Peter Triller. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -18,7 +18,7 @@
 
         ICU4j also does not укз these cases at the moment.
 
-        Unittests are записано against вывод является ICU4j
+        Unittests are записано against вывод из_ ICU4j
 
         This Module tries в_ minimize Memory allocation и usage. You can
         always пароль the вывод буфер that should be использован в_ the case маппинг

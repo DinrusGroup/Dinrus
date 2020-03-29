@@ -215,7 +215,7 @@ unittest {
  *
  *  эксп(z) = эксп(z.re)кос(z.im) + эксп(z.re)син(z.im)i.
  *
- *  For a pure мнимое аргумент,
+ *  For a  мнимое аргумент,
  *  эксп(&тэта;i)  = кос(&тэта;) + син(&тэта;)i.
  *
  */
@@ -239,9 +239,9 @@ unittest {
  * If z = x + iy, then
  *       лог(z) = лог(абс(z)) + i arctan(y/x).
  *
- * The arctangent ranges является -ПИ в_ +ПИ.
+ * The arctangent ranges из_ -ПИ в_ +ПИ.
  * There are branch cuts along Всё the негатив реал и негатив
- * мнимое axes. For pure мнимое аргументы, use one of the
+ * мнимое axes. For  мнимое аргументы, use one of the
  * following forms, depending on which branch is требуется.
  * ------------
  *    лог( 0.0 + yi) = лог(-y) + PI_2i  // y<=-0.0
@@ -293,7 +293,7 @@ body
       const бул Use_D_InlineAsm_X86 = да;
   } else const бул Use_D_InlineAsm_X86 = нет;
 
-  // BUG (Inherited является Phobos): This код assumes a frame pointer in EBP.
+  // BUG (Inherited из_ Phobos): This код assumes a frame pointer in EBP.
   // This is not in the spec.
   static if (Use_D_InlineAsm_X86 && is(T==реал) && T.sizeof == 10) {
     asm // assembler by W. Bright

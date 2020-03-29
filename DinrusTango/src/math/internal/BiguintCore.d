@@ -2,7 +2,7 @@
  *
  * These functions are for internal use only.
  *
- * Copyright: Copyright (C) 2008 Don Clugston.  все rights reserved.
+ * Copyright: Copyright (C) 2008 Don Clugston.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Don Clugston
  */
@@ -46,10 +46,10 @@ version(build){// bud/build won't link properly without this.
 alias многобайтПрибавОтним!('+') multibyteAdd;
 alias многобайтПрибавОтним!('-') multibyteSub;
 
-// private import core.Cpuid;
+// private import core.TangoCpuid;
 static this()
 {
-    CACHELIMIT = 8000; // core.Cpuid.кэш_данных[0].размер/2;
+    CACHELIMIT = 8000; // core.TangoCpuid.кэш_данных[0].размер/2;
     FASTDIVLIMIT = 100;
 }
 
@@ -609,7 +609,7 @@ static БольшБцел степень(БольшБцел x, бдол y)
         БольшЦифра [] t2 = secondaryBuffer;
         БольшЦифра [] r2;
     
-        цел shifts = 63; // num биты in a дол
+        цел shifts = 63; // чис биты in a дол
         while(!(y & 0x8000_0000_0000_0000L)) {
             y <<= 1;
             --shifts;
@@ -968,7 +968,7 @@ unittest {
         // For maximum performance, we want the ratio в_ be as закрой в_ 
         // 1:1 as possible. To achieve this, we can either pad x or y.
         // The best choice depends on the модуль x%y.       
-        бцел numчанки = x.length / y.length;
+        бцел чисчанки = x.length / y.length;
         бцел чанкиize = y.length;
         бцел extra =  x.length % y.length;
         бцел maxchunk = чанкиize + extra;
@@ -978,20 +978,20 @@ unittest {
             // in the existing чанки.            
             // Make все the чанки a tiny bit bigger
             // (We're паддинг y with zeros)
-            чанкиize += extra / cast(дво)numчанки;
-            extra = x.length - чанкиize*numчанки;
+            чанкиize += extra / cast(дво)чисчанки;
+            extra = x.length - чанкиize*чисчанки;
             // there will probably be a few left over.
             // Every чанк will either have размер чанкиize, or чанкиize+1.
             maxchunk = чанкиize + 1;
             pдобавимY = да;
-            assert(чанкиize + extra + чанкиize *(numчанки-1) == x.length );
+            assert(чанкиize + extra + чанкиize *(чисчанки-1) == x.length );
         } else  {
             // the extra bit is large enough that it's worth making a new чанк.
             // (This means we're паддинг x with zeros, when doing the первый one).
             maxchunk = чанкиize;
-            ++numчанки;
+            ++чисчанки;
             pдобавимY = нет;
-            assert(extra + чанкиize *(numчанки-1) == x.length );
+            assert(extra + чанкиize *(чисчанки-1) == x.length );
         }
         // We сделай the буфер a bit bigger so we have пространство for the partial sums.
         БольшЦифра [] scratchbuff = new БольшЦифра[karatsubaRequiredBuffРазмер(maxchunk) + y.length];

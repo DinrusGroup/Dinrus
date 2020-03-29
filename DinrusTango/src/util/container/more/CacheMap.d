@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
         
@@ -27,7 +27,7 @@ public  import util.container.Container;
         КэшКарта sorts the кэш записи such that those записи 
         frequently использовался are at the голова of the queue, и those
         least frequently использовался are at the хвост. When the queue 
-        becomes full, old записи are dropped является the хвост и are 
+        becomes full, old записи are dropped из_ the хвост и are 
         reused в_ house new кэш записи. 
 
         In другой words, it retains MRU items while dropping LRU when
@@ -104,7 +104,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
 
         /***********************************************************************
 
-                Iterate является MRU в_ LRU записи
+                Iterate из_ MRU в_ LRU записи
 
         ***********************************************************************/
 
@@ -150,7 +150,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
         /**********************************************************************
 
                 Place an Запись преобр_в the кэш и associate it with the
-                provопрed ключ. Note that there can be only one Запись for
+                предоставленный ключ. Note that there can be only one Запись for
                 any particular ключ. If two записи are добавьed with the 
                 same ключ, the секунда effectively overwrites the первый.
 
@@ -178,7 +178,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
 
         /**********************************************************************
 
-                Удали the кэш Запись associated with the provопрed ключ. 
+                Удали the кэш Запись associated with the предоставленный ключ. 
                 Returns нет if there is no such Запись.
 
         **********************************************************************/
@@ -193,7 +193,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
         /**********************************************************************
 
                 Удали (и return) the кэш Запись associated with the 
-                provопрed ключ. Returns нет if there is no such Запись.
+                предоставленный ключ. Returns нет if there is no such Запись.
 
         **********************************************************************/
 
@@ -208,7 +208,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                    // it at the список 'хвост' ready for subsequent reuse
                    разРеферируй (Запись);
 
-                   // удали the Запись является хэш
+                   // удали the Запись из_ хэш
                    хэш.удалиКлюч (ключ);
                    return да;
                    }
@@ -326,11 +326,11 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                            {
                            предш = before.предш;
         
-                           // patch 'предш' в_ точка at me
+                           // патч 'предш' в_ точка at me
                            if (предш)
                                предш.следщ = this;
         
-                           //patch 'before' в_ точка at me
+                           //патч 'before' в_ точка at me
                            следщ = before;
                            before.предш = this;
                            }
@@ -350,11 +350,11 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
                            {
                            следщ = after.следщ;
         
-                           // patch 'следщ' в_ точка at me
+                           // патч 'следщ' в_ точка at me
                            if (следщ)
                                следщ.предш = this;
         
-                           //patch 'after' в_ точка at me
+                           //патч 'after' в_ точка at me
                            предш = after;
                            after.следщ = this;
                            }
@@ -363,7 +363,7 @@ class КэшКарта (K, V, alias Хэш = Контейнер.хэш,
         
                 /**************************************************************
         
-                        Удали this Запись является the linked-список. The 
+                        Удали this Запись из_ the linked-список. The 
                         previous и следщ записи are patched together 
                         appropriately.
         

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        Copyright: Copyright (C) 2008 Kris Bell.  все rights reserved.
+        Copyright: Copyright (C) 2008 Kris Bell.  Все права защищены.
 
         License:   BSD стиль: $(LICENSE)
 
@@ -112,7 +112,7 @@ class ДокПринтер(T)
                 T[256] врем;
                 T[256] пробелы = ' ';
 
-                // ignore пробел является mixed-model значения
+                // ignore пробел из_ mixed-model значения
                 T[] НеобрValue (Узел узел)
                 {
                         foreach (c; узел.НеобрValue)

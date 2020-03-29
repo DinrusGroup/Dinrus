@@ -1,24 +1,13 @@
-﻿/*******************************************************************************
-
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
-
-        license:        BSD стиль: $(LICENSE)
-
-        version:        Initial release: November 2005
-
-        author:         Kris
-
-*******************************************************************************/
-
-module sys.Common;
+﻿module sys.Common;
 
 version (Win32)
         {
         public import sys.win32.UserGdi;
+        public  import sys.WinConsts, sys.WinIfaces, sys.WinStructs, sys.WinFuncs;
 		public import exception;
 		//pragma(lib,"DinrusTango.lib");
         }
-
+/+
 version (linux)
         {
         public import sys.linux.linux;
@@ -41,6 +30,8 @@ version (solaris)
         alias sys.solaris.solaris posix;
         }
 
+        +/
+
 /*******************************************************************************
 
         Stuff for sysErrorMsg(), kindly provопрed by Regan Heath.
@@ -58,7 +49,7 @@ version (Posix)
         }
 else
    {
-   pragma (msg, "Unsupported environment; neither Win32 or Posix is declared");
+   pragma (msg, "Неподдерживаемая среда; не декларирован ни Win32, ни Posix");
    static assert(0);
    }
 

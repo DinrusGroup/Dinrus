@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -60,7 +60,7 @@ private import util.container.model.IContainer;
         LinkedList очисть ()
         LinkedList сбрось ()
 
-        LinkedList поднабор (т_мера является, т_мера length = т_мера.max)
+        LinkedList поднабор (т_мера из_, т_мера length = т_мера.max)
         LinkedList dup ()
 
         т_мера размер ()
@@ -301,13 +301,13 @@ class LinkedList (V, alias Извл = Контейнер.извлеки,
 
         ***********************************************************************/
 
-        final LinkedList поднабор (т_мера является, т_мера length = т_мера.max)
+        final LinkedList поднабор (т_мера из_, т_мера length = т_мера.max)
         {
                 Реф новый_список = пусто;
 
                 if (length > 0)
                    {
-                   auto p = ячейкаПо (является);
+                   auto p = ячейкаПо (из_);
                    auto текущ = новый_список = куча.размести.установи (p.значение, пусто);
          
                    for (auto i = 1; i < length; ++i)

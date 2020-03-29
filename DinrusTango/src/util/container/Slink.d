@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -21,7 +21,7 @@ private import util.container.model.IContainer;
 /*******************************************************************************
 
         Slink экземпляры provопрe стандарт linked список следщ-fields, и
-        support стандарт operations upon them. Slink structures are pure
+        support стандарт operations upon them. Slink structures are 
         implementation tools, и perform no аргумент проверьing, no результат
         screening, и no synchronization. They rely on пользователь-уровень classes
         (see HashSet, for example) в_ do such things.
@@ -215,7 +215,7 @@ struct Slink (V, K=KeyDummy, бул Идентичность = нет, бул Х
         /***********************************************************************
 
                 Cause текущ ячейка в_ пропусти over the текущ следщ() one, 
-                effectively removing the следщ элемент является the список
+                effectively removing the следщ элемент из_ the список
                         
         ***********************************************************************/
 

@@ -48,7 +48,7 @@ public:
  * References:
  * "On Enclosing Simple Roots of Nonlinear Equations", G. Alefeld, F.A. Potra,
  *   Yixun Shi, Mathematics of Computation 61, pp733-744 (1993).
- *   Fortran код available является www.netlib.org as algorithm TOMS478.
+ *   Fortran код available из_ www.netlib.org as algorithm TOMS478.
  *
  */
 T найдиКорень(T, R)(R delegate(T) f, T ax, T bx)
@@ -78,8 +78,8 @@ in
 }
 body
 {
-// This код is (heavily) изменён является TOMS748 (www.netlib.org). Some опрeas
-// were borrowed является the Boost Mathematics Library.
+// This код is (heavily) изменён из_ TOMS748 (www.netlib.org). Some опрeas
+// were borrowed из_ the Boost Mathematics Library.
 
     T a = ax, b = bx, d;  // [a..b] is our текущ bracket.
     R fa = fax, fb = fbx, fd; // d is the third best guess.
@@ -323,9 +323,9 @@ whileloop:
 
 public:
 /**
- * Find the minimum значение of the function func().
+ * Find the minimum значение of the function функц().
  *
- * Returns the значение of x such that func(x) is minimised. Uses Brent's метод,
+ * Returns the значение of x such that функц(x) is minimised. Uses Brent's метод,
  * which uses a parabolic fit в_ rapопрly approach the minimum but reverts в_ a
  * Golden Section ищи where necessary.
  *
@@ -333,20 +333,20 @@ public:
  * реал.mant_dig/2.
  *
  * Параметры:
- *     func         The function в_ be minimized
+ *     функц         The function в_ be minimized
  *     xinitial     Initial guess в_ be использован.
  *     xlo, xhi     Upper и lower bounds on x.
- *                  func(xinitial) <= func(x1) и func(xinitial) <= func(x2)
- *     funcMin      The minimum значение of func(x).
+ *                  функц(xinitial) <= функц(x1) и функц(xinitial) <= функц(x2)
+ *     funcMin      The minimum значение of функц(x).
  */
-T найдиМинимум(T,R)(R delegate(T) func, T xlo, T xhi, T xinitial,
+T найдиМинимум(T,R)(R delegate(T) функц, T xlo, T xhi, T xinitial,
                                 out R funcMin)
 in
 {
     assert(xlo <= xhi);
     assert(xinitial >= xlo);
     assert(xinitial <= xhi);
-    assert(func(xinitial) <= func(xlo) && func(xinitial) <= func(xhi));
+    assert(функц(xinitial) <= функц(xlo) && функц(xinitial) <= функц(xhi));
 }
 body
 {
@@ -356,7 +356,7 @@ body
     T stepBeforeLast = 0.0;
     T lastStep;
     T bestx = xinitial; // the best значение so far (min значение for f(x)).
-    R fbest = func(bestx);
+    R fbest = функц(bestx);
     T секунда = xinitial;  // the точка with the секунда best значение of f(x)
     R fsecond = fbest;
     T third = xinitial;  // the previous значение of секунда.
@@ -425,7 +425,7 @@ body
         }
         xtest = bestx + lastStep;
         // Evaluate the function at точка xtest.
-        R ftest = func(xtest);
+        R ftest = функц(xtest);
 
         if (ftest <= fbest)
         {
@@ -511,7 +511,7 @@ debug(UnitTest)
         testFindRoot( &cubicfn, -дво.max, реал.max);
 
 
-        /* Tests является the paper:
+        /* Tests из_ the paper:
          * "On Enclosing Simple Roots of Nonlinear Equations", G. Alefeld, F.A. Potra,
          *   Yixun Shi, Mathematics of Computation 61, pp733-744 (1993).
          */
@@ -546,7 +546,7 @@ debug(UnitTest)
 
         цел powerProblems = numProblems;
 
-        // Tests является Alefeld paper
+        // Tests из_ Alefeld paper
 
         цел [9] alefeldSums;
         реал alefeld0(реал x)
@@ -698,7 +698,7 @@ debug(UnitTest)
         assert(minval==18);
         assert(отнравх(minx,7.14L)>=плав.mant_dig);
 
-        // Problems является Jack Crenshaw's "World's Наилучший Root Finder"
+        // Problems из_ Jack Crenshaw's "World's Наилучший Root Finder"
         // http://www.embedded.com/columns/programmerstoolbox/9900609
         // This имеется a minimum of кубкор(0.5).
         реал crenshawcos(реал x)

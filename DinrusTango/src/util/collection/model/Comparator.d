@@ -7,12 +7,12 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
 
 */
 
 
-module util.collection.model.Сравнитель;
+module util.collection.model.Comparator;
 
 
 /**

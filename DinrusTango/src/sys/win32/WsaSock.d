@@ -1,6 +1,6 @@
 ﻿module sys.win32.WsaSock;
 
-public import sys.Common;
+public import sys.win32.Types;
 struct Guid
 {
     uint     g1;

@@ -22,11 +22,11 @@ private import Utf = text.convert.Utf;
 
         Convert 'escaped' симвы в_ нормаль ones. For example: \\ => \
 
-        The provопрed вывод буфер should be at least as дол as the
-        ввод ткст, or it will be allocated является the куча instead.
+        The предоставленный вывод буфер should be at least as дол as the
+        ввод ткст, or it will be allocated из_ the куча instead.
 
         Returns a срез of приёмн where the контент требуется conversion,
-        or the provопрed ист otherwise
+        or the предоставленный ист otherwise
 
 ******************************************************************************/
 
@@ -51,7 +51,7 @@ T[] убериИскейп(T) (T[] ист, T[] приёмн = пусто)
 
         Convert reserved симвы в_ escaped ones. For example: \ => \\
 
-        Either a срез of the provопрed вывод буфер is returned, or the
+        Either a срез of the предоставленный вывод буфер is returned, or the
         original контент, depending on whether there were reserved симвы
         present or not. The вывод буфер will be expanded as necessary
 
@@ -79,7 +79,7 @@ T[] escape(T) (T[] ист, T[] приёмн = пусто)
         Convert 'escaped' симвы в_ нормаль ones. For example: \\ => \
 
         This variant does not require an interim workspace, и instead
-        излейs directly via the provопрed delegate
+        излейs directly via the предоставленный delegate
 
 ******************************************************************************/
 
@@ -194,13 +194,13 @@ T[] escape(T) (T[] ист, T[] приёмн = пусто)
                             Convert reserved симвы в_ escaped ones. For example: \ => \\
 
                             This variant does not require an interim workspace, и instead
-                            излейs directly via the provопрed delegate
+                            излейs directly via the предоставленный delegate
 
                             ******************************************************************************/
 
                             проц escape(T) (T[] ист, проц delegate(T[]) излей)
                         {
-                            T[2] patch = '\\';
+                            T[2] патч = '\\';
                             auto s = ист.ptr;
                             auto t = s;
                             auto e = s + ист.length;
@@ -212,29 +212,29 @@ T[] escape(T) (T[] ист, T[] приёмн = пусто)
                             case '"':
                             case '/':
                             case '\\':
-                            patch[1] = *s;
+                            патч[1] = *s;
                             break;
                             case '\r':
-                            patch[1] = 'r';
+                            патч[1] = 'r';
                             break;
                             case '\n':
-                            patch[1] = 'n';
+                            патч[1] = 'n';
                             break;
                             case '\t':
-                            patch[1] = 't';
+                            патч[1] = 't';
                             break;
                             case '\b':
-                            patch[1] = 'b';
+                            патч[1] = 'b';
                             break;
                             case '\f':
-                            patch[1] = 'f';
+                            патч[1] = 'f';
                             break;
                             default:
                             ++s;
                             continue;
                         }
                             излей (t [0 .. s - t]);
-                            излей (patch);
+                            излей (патч);
                             t = ++s;
                         }
 

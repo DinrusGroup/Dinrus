@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2007 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2007 Dinrus. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -57,7 +57,7 @@ interface ХостВфс :
 
             The секунда аргумент represents an optional имя that the
             прикрепи should be known as, instead of the имя exposed by
-            the provопрed папка (it is not an alias).
+            the предоставленный папка (it is not an alias).
 
     **********************************************************************/
 

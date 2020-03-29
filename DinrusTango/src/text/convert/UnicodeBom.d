@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -121,15 +121,15 @@ class ЮникодМПБ(T) : BomSniffer
         
         /***********************************************************************
 
-                Convert the provопрed контент. The контент is inspected 
+                Convert the предоставленный контент. The контент is inspected 
                 for a мпб сигнатура, which is очищенный. An исключение is
                 thrown if a сигнатура is present when, according в_ the
                 кодировка тип, it should not be. Conversely, An исключение
                 is thrown if there is no known сигнатура where the текущ
                 кодировка expects one в_ be present.
 
-                Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed является the ввод и the decoder operates 
+                Where 'ate' is предоставленный, it will be установи в_ the число of 
+                элементы consumed из_ the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
@@ -147,7 +147,7 @@ class ЮникодМПБ(T) : BomSniffer
                        // yep ~ и we got one
                        установи (инфо.кодировка, да);
 
-                       // откинь мпб является контент
+                       // откинь мпб из_ контент
                        контент = контент [инфо.мпб.length .. length];
                        }
                     else
@@ -181,7 +181,7 @@ class ЮникодМПБ(T) : BomSniffer
                     onUnicodeError ("ЮникодМПБ.кодируй :: не удаётся запись в неспецифичной кодировке");
 
                 // преобразуй it в_ external representation, и пиши
-		return обменяйБайты (является (контент, settings.тип, приёмн));
+		return обменяйБайты (из_ (контент, settings.тип, приёмн));
         }
 
         /***********************************************************************
@@ -210,10 +210,10 @@ class ЮникодМПБ(T) : BomSniffer
         
         /***********************************************************************
       
-                Convert является 'тип' преобр_в the given T.
+                Convert из_ 'тип' преобр_в the given T.
 
-                Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed является the ввод и the decoder operates 
+                Where 'ate' is предоставленный, it will be установи в_ the число of 
+                элементы consumed из_ the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
@@ -276,16 +276,16 @@ class ЮникодМПБ(T) : BomSniffer
 
         /***********************************************************************
       
-                Convert является T преобр_в the given 'тип'.
+                Convert из_ T преобр_в the given 'тип'.
 
-                Where 'ate' is provопрed, it will be установи в_ the число of 
-                элементы consumed является the ввод и the decoder operates 
+                Where 'ate' is предоставленный, it will be установи в_ the число of 
+                элементы consumed из_ the ввод и the decoder operates 
                 in Потокing-режим. That is: 'приёмн' should be supplied since 
                 it is not resized or allocated.
 
         ***********************************************************************/
 
-        static проц[] является (T[] x, бцел тип, проц[] приёмн=пусто, бцел* ate=пусто)
+        static проц[] из_ (T[] x, бцел тип, проц[] приёмн=пусто, бцел* ate=пусто)
         {
                 проц[] возвр;
 

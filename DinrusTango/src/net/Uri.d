@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
         
@@ -36,12 +36,12 @@ extern (C) сим* memchr (сим *, сим, бцел);
         for ещё information. 
 
         The implementation fails the spec on two counts: it doesn't insist
-        on a scheme being present in the Уир, и it doesn't implement the
+        on a схема being present in the Уир, и it doesn't implement the
         "Relative References" support noted in section 5.2. The latter can
         be найдено in util.PathUtil instead.
         
-        Note that IRI support can be implied by assuming each of userinfo,
-        путь, запрос, и fragment are UTF-8 кодирован 
+        Note that IRI support can be implied by assuming each of инфОПользователе,
+        путь, запрос, и фрагмент are UTF-8 кодирован 
         (see <A HREF="http://www.w3.org/2001/Talks/0912-IUC-IRI/paper.html">
         this страница</A> for further details).
 
@@ -53,26 +53,26 @@ class Уир : ОбзорУИР
         private alias т_мера delegate(проц[]) Consumer;  
         
         /// old метод names
-        public alias порт        getPort;
-        public alias defaultPort getDefaultPort;
-        public alias scheme      getScheme;
+        public alias порт        дайПорт;
+        public alias дефолтнПорт дайДефолтнПорт;
+        public alias схема      дайСхему;
         public alias хост        дайХост;
         public alias valКСЕРort   дайВалидныйПорт;
-        public alias userinfo    getUserInfo;
+        public alias инфОПользователе    дайИнфОПользователе;
         public alias путь        дайПуть;
-        public alias запрос       getQuery;
-        public alias fragment    getFragment;
-        public alias порт        setPort;
-        public alias scheme      setScheme;
-        public alias хост        setHost;
-        public alias userinfo    setUserInfo;
-        public alias запрос       setQuery;
+        public alias запрос       дайЗапрос;
+        public alias фрагмент    дайФрагмент;
+        public alias порт        устПорт;
+        public alias схема      устСхему;
+        public alias хост        устХост;
+        public alias инфОПользователе    устИнфОПользователе;
+        public alias запрос       устЗапрос;
         public alias путь        установиПуть;
-        public alias fragment    setFragment;
+        public alias фрагмент    устФрагмент;
 
         public enum {InvalКСЕРort = -1}
 
-        private цел             port_;
+        private цел             порт_;
         private ткст          host_,
                                 путь_,
                                 query_,
@@ -131,7 +131,7 @@ class Уир : ОбзорУИР
                                   IncQueryAll
         }
 
-        // scheme и порт pairs
+        // схема и порт pairs
         private struct SchemePort
         {
                 ткст  имя;
@@ -165,7 +165,7 @@ class Уир : ОбзорУИР
                 for (цел i='0'; i<='9'; ++i)  
                      карта[i] = IncGeneric;
 
-                // exclude these является parsing элементы
+                // exclude these из_ parsing элементы
                 карта[':'] |= ExcScheme;
                 карта['/'] |= ExcScheme | ExcAuthority;
                 карта['?'] |= ExcScheme | ExcAuthority | ExcPath;
@@ -182,12 +182,12 @@ class Уир : ОбзорУИР
                 карта['('] |= IncUser | IncQuery | IncQueryAll | IncPath;
                 карта[')'] |= IncUser | IncQuery | IncQueryAll | IncPath;
 
-                // include these as scheme symbols
+                // include these as схема symbols
                 карта['+'] |= IncScheme;
                 карта['-'] |= IncScheme;
                 карта['.'] |= IncScheme;
 
-                // include these as userinfo symbols
+                // include these as инфОПользователе symbols
                 карта[';'] |= IncUser;
                 карта[':'] |= IncUser;
                 карта['&'] |= IncUser;
@@ -230,13 +230,13 @@ class Уир : ОбзорУИР
 
         this ()
         {
-                port_ = InvalКСЕРort;
+                порт_ = InvalКСЕРort;
                 decoded.расширь (512);
         }
 
         /***********************************************************************
         
-                Construct a Уир является the provопрed character ткст
+                Construct a Уир из_ the предоставленный character ткст
 
         ***********************************************************************/
 
@@ -248,16 +248,16 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Construct a Уир является the given components. The запрос is
+                Construct a Уир из_ the given components. The запрос is
                 optional.
                 
         ***********************************************************************/
 
-        this (ткст scheme, ткст хост, ткст путь, ткст запрос = пусто)
+        this (ткст схема, ткст хост, ткст путь, ткст запрос = пусто)
         {
                 this ();
 
-                this.scheme_ = scheme;
+                this.scheme_ = схема;
                 this.query_ = запрос;
                 this.host_ = хост;
                 this.путь_ = путь;
@@ -266,7 +266,7 @@ class Уир : ОбзорУИР
         /***********************************************************************
         
                 Clone другой Уир. This can be использован в_ сделай a изменяемый Уир
-                является an immutable ОбзорУИР.
+                из_ an immutable ОбзорУИР.
 
         ***********************************************************************/
 
@@ -274,24 +274,24 @@ class Уир : ОбзорУИР
         {
                 with (другой)
                      {
-                     this (getScheme, дайХост, дайПуть, getQuery);
-                     this.userinfo_ = getUserInfo;
-                     this.fragment_ = getFragment;
-                     this.port_ = getPort;
+                     this (дайСхему, дайХост, дайПуть, дайЗапрос);
+                     this.userinfo_ = дайИнфОПользователе;
+                     this.fragment_ = дайФрагмент;
+                     this.порт_ = дайПорт;
                      }
         }
 
         /***********************************************************************
         
-                Return the default порт for the given scheme. InvalКСЕРort
-                is returned if the scheme is неизвестное, or does not прими
+                Return the default порт for the given схема. InvalКСЕРort
+                is returned if the схема is неизвестное, or does not прими
                 a порт.
 
         ***********************************************************************/
 
-        final цел defaultPort (ткст scheme)
+        final цел дефолтнПорт (ткст схема)
         {
-                крат* порт = scheme in genericSchemes; 
+                крат* порт = схема in genericSchemes; 
                 if (порт is пусто)
                     return InvalКСЕРort;
                 return *порт;
@@ -299,12 +299,12 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Return the разобрано scheme, or пусто if the scheme was not
+                Return the разобрано схема, or пусто if the схема was not
                 specified
 
         ***********************************************************************/
 
-        final ткст scheme()
+        final ткст схема()
         {
                 return scheme_;
         }
@@ -324,13 +324,13 @@ class Уир : ОбзорУИР
         /***********************************************************************
         
                 Return the разобрано порт число, or InvalКСЕРort if the порт
-                was not provопрed.
+                was not предоставленный.
 
         ***********************************************************************/
 
         final цел порт()
         {
-                return port_;
+                return порт_;
         }
 
         /***********************************************************************
@@ -342,19 +342,19 @@ class Уир : ОбзорУИР
 
         final цел valКСЕРort()
         {
-                if (port_ is InvalКСЕРort)
-                    return defaultPort (scheme_);
-                return port_;
+                if (порт_ is InvalКСЕРort)
+                    return дефолтнПорт (scheme_);
+                return порт_;
         }
 
         /***********************************************************************
         
-                Return the разобрано userinfo, or пусто if userinfo was not 
-                provопрed.
+                Return the разобрано инфОПользователе, or пусто if инфОПользователе was not 
+                предоставленный.
 
         ***********************************************************************/
 
-        final ткст userinfo()
+        final ткст инфОПользователе()
         {
                 return userinfo_;
         }
@@ -362,7 +362,7 @@ class Уир : ОбзорУИР
         /***********************************************************************
         
                 Return the разобрано путь, or пусто if the путь was not 
-                provопрed.
+                предоставленный.
 
         ***********************************************************************/
 
@@ -374,7 +374,7 @@ class Уир : ОбзорУИР
         /***********************************************************************
         
                 Return the разобрано запрос, or пусто if a запрос was not 
-                provопрed.
+                предоставленный.
 
         ***********************************************************************/
 
@@ -385,19 +385,19 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Return the разобрано fragment, or пусто if a fragment was not 
-                provопрed.
+                Return the разобрано фрагмент, or пусто if a фрагмент was not 
+                предоставленный.
 
         ***********************************************************************/
 
-        final ткст fragment()
+        final ткст фрагмент()
         {
                 return fragment_;
         }
 
         /***********************************************************************
         
-                Return whether or not the Уир scheme is consопрered генерный.
+                Return whether or not the Уир схема is consопрered генерный.
 
         ***********************************************************************/
 
@@ -408,7 +408,7 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Emit the контент of this Уир via the provопрed Consumer. The
+                Emit the контент of this Уир via the предоставленный Consumer. The
                 вывод is constructed per RFC 2396.
 
         ***********************************************************************/
@@ -421,7 +421,7 @@ class Уир : ОбзорУИР
                     возвр += используй (scheme_), возвр += используй (":");
 
 
-                if (userinfo_.length || host_.length || port_ != InvalКСЕРort)
+                if (userinfo_.length || host_.length || порт_ != InvalКСЕРort)
                    {
                    возвр += используй ("//");
 
@@ -431,10 +431,10 @@ class Уир : ОбзорУИР
                    if (host_.length)
                        возвр += используй (host_);
 
-                   if (port_ != InvalКСЕРort && port_ != getDefaultPort(scheme_))
+                   if (порт_ != InvalКСЕРort && порт_ != дайДефолтнПорт(scheme_))
                       {
                       сим[8] врем;
-                      возвр += используй (":"), возвр += используй (Целое.itoa (врем, cast(бцел) port_));
+                      возвр += используй (":"), возвр += используй (Целое.itoa (врем, cast(бцел) порт_));
                       }
                    }
 
@@ -458,7 +458,7 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Emit the контент of this Уир via the provопрed Consumer. The
+                Emit the контент of this Уир via the предоставленный Consumer. The
                 вывод is constructed per RFC 2396.
 
         ***********************************************************************/
@@ -577,7 +577,7 @@ class Уир : ОбзорУИР
                        *p = cast(сим)c;
                        }
 
-                   // return a срез является the decoded ввод
+                   // return a срез из_ the decoded ввод
                    return cast(ткст) decoded.срез (j);
                    }
 
@@ -604,11 +604,11 @@ class Уир : ОбзорУИР
                   ^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
                    12            3  4          5       6  7        8 9
                     
-                2 isolates scheme
+                2 isolates схема
                 4 isolates authority
                 5 isolates путь
                 7 isolates запрос
-                9 isolates fragment
+                9 isolates фрагмент
                 </pre>
 
                 This was originally a состояние-machine; it turned out в_ be a 
@@ -627,7 +627,7 @@ class Уир : ОбзорУИР
                 if (! relative)
                       сбрось;
 
-                // isolate scheme (note that it's ОК в_ not specify a scheme)
+                // isolate схема (note that it's ОК в_ not specify a схема)
                 for (i=0; i < длин && !(карта[c = уир[i]] & ExcScheme); ++i) {}
                 if (c is ':')
                    {
@@ -666,7 +666,7 @@ class Уир : ОбзорУИР
                    метка = i;
                    }
 
-                // isolate fragment
+                // isolate фрагмент
                 if (метка < длин && уир[метка] is '#')
                     fragment_ = decoder (уир[метка+1 .. длин]);
 
@@ -682,7 +682,7 @@ class Уир : ОбзорУИР
         final проц сбрось()
         {
                 decoded.сбрось;
-                port_ = InvalКСЕРort;
+                порт_ = InvalКСЕРort;
                 host_ = путь_ = query_ = scheme_ = userinfo_ = fragment_ = пусто;
         }
 
@@ -699,13 +699,13 @@ class Уир : ОбзорУИР
         
         /***********************************************************************
                 
-                Набор the Уир scheme
+                Набор the Уир схема
 
         ***********************************************************************/
 
-        final Уир scheme (ткст scheme)
+        final Уир схема (ткст схема)
         {
-                this.scheme_ = scheme;
+                this.scheme_ = схема;
                 return this;
         }
 
@@ -729,19 +729,19 @@ class Уир : ОбзорУИР
 
         final Уир порт (цел порт)
         {
-                this.port_ = порт;
+                this.порт_ = порт;
                 return this;
         }
 
         /***********************************************************************
         
-                Набор the Уир userinfo
+                Набор the Уир инфОПользователе
 
         ***********************************************************************/
 
-        final Уир userinfo (ткст userinfo)
+        final Уир инфОПользователе (ткст инфОПользователе)
         {
-                this.userinfo_ = userinfo;
+                this.userinfo_ = инфОПользователе;
                 return this;
         }
 
@@ -787,26 +787,26 @@ class Уир : ОбзорУИР
 
         /***********************************************************************
         
-                Набор the Уир fragment
+                Набор the Уир фрагмент
 
         ***********************************************************************/
 
-        final Уир fragment (ткст fragment)
+        final Уир фрагмент (ткст фрагмент)
         {
-                this.fragment_ = fragment;
+                this.fragment_ = фрагмент;
                 return this;
         }
         
         /***********************************************************************
         
-                Authority is the section after the scheme, but before the 
-                путь, запрос or fragment; it typically represents a хост.
+                Authority is the section after the схема, but before the 
+                путь, запрос or фрагмент; it typically represents a хост.
                
                 ---
                     ^(([^@]*)@?)([^:]*)?(:(.*))?
                      12         3       4 5
                   
-                2 isolates userinfo
+                2 isolates инфОПользователе
                 3 isolates хост
                 5 isolates порт
                 ---
@@ -818,7 +818,7 @@ class Уир : ОбзорУИР
                 цел     метка,
                         длин = auth.length;
 
-                // получи userinfo: (([^@]*)@?)
+                // получи инфОПользователе: (([^@]*)@?)
                 foreach (цел i, сим c; auth)
                          if (c is '@')
                             {
@@ -831,7 +831,7 @@ class Уир : ОбзорУИР
                 for (цел i=метка; i < длин; ++i)
                      if (auth [i] is ':')
                         {
-                        port_ = Целое.atoi (auth [i+1 .. длин]);
+                        порт_ = Целое.atoi (auth [i+1 .. длин]);
                         длин = i;
                         break;
                         }
@@ -907,7 +907,7 @@ private struct СрезКучи
 
         /***********************************************************************
         
-                Return a срез of the контент является the текущ позиция 
+                Return a срез of the контент из_ the текущ позиция 
                 with the specified размер. Adjusts the текущ позиция в_ 
                 точка at an пустой зона.
 
@@ -941,21 +941,21 @@ unittest
     
     with(уир)
     {
-        assert(scheme == "http");
+        assert(схема == "http");
         assert(хост == "www.example.com");
         assert(порт == InvalКСЕРort);
-        assert(userinfo == пусто);
-        assert(fragment == пусто);
+        assert(инфОПользователе == пусто);
+        assert(фрагмент == пусто);
         assert(путь == "/click.html/c=37571:RoS_Intern_search-link3_LB_Sky_Rec/b=98983:news-время-ищи-link_leader_neu/l=68||||de/url=http://ads.ad4max.com/adclick.aspx");
         assert(запрос == "опр=cf722624-efd5-4b10-ad53-88a5872a8873&pubad=b9c8acc4-e396-4b0b-b665-8bb3078128e6&avопр=963171985&adcpc=xrH/+xVeFaPVkbVCMufB5A==&a1v=6972657882&a1lang=de&a1ou=http://ad.ищи.ch/iframe_ad.html?campaignname=RoS_Intern_search-link3_LB_Sky_Rec%26bannername=news-время-ищи-link_leader_neu%26iframeопр=sl_if1%26content=vZLLbsIwEEX3+Qo3aqUW1XEgkAckSJRuKqEuoDuELD+miSEJyDEE/r7h0cKm6q6SF9bVjH3uzI3vMOaVYdpgPIwrodXGIHPYQGIb2BuyZDt2Vu2hRUh8Nx+/jj5Gc4u0UNAJ95H7jCbAJGi+Zlqix3eoqyfUIhaT3YLtabpVEiXI5pEImRBdDF7k4y53Oea+38Mh554bhO1OCL49+O6qlTTZsa3546pmoNLMHOXIvaoapNIgTnpmzKZPCJNOBUyLzBEZEbkSKyczRU5E4gW9oN2frmf0rTSgS3quw7kqVx6dvNDZ6kCnIAhPojAKvX7Z+MFGFYBvKml+skxL2JI88cOHYPxzJJCtzpP79pXQaCZWqkxppcVvlDsF9b9CqiJNLiB1Xd+QqIKlUBHXSdWnjQbN1heLoRWTcwz+CAlqLCZXg5VzHoEj1gW5XJeVffOcFR8TCKVs8vcF%26crc=ac8cc2fa9ec2e2de9d242345c2d40c25");
     
     
         разбор("psyc://example.net/~marenz?что#_presence");
         
-        assert(scheme == "psyc");
+        assert(схема == "psyc");
         assert(хост == "example.net");
         assert(порт == InvalКСЕРort);
-        assert(fragment == "_presence");
+        assert(фрагмент == "_presence");
         assert(путь == "/~marenz");
         assert(запрос == "что");
    

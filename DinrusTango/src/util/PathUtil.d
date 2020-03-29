@@ -38,8 +38,8 @@ private enum
     Note that any число of .. segments at the front is ignored,
     unless it is an абсолютный путь, in which case they are removed.
 
-    The ввод путь is copied преобр_в either the provопрed буфер, or a куча
-    allocated Массив if no буфер was provопрed. Normalization modifies
+    The ввод путь is copied преобр_в either the предоставленный буфер, or a куча
+    allocated Массив if no буфер was предоставленный. Normalization modifies
     this копируй before returning the relevant срез.
 
     Examples:
@@ -281,7 +281,7 @@ debug (UnitTest)
             </table><p>
             Internally indivопрual character comparisons are готово calling
             charMatch(), so its rules apply here too. Note that путь
-            разделители and dots don't stop a meta-character является совпадают
+            разделители and dots don't stop a meta-character из_ совпадают
             further portions of the имяф.
 
             Возвращает: да if образец matches имяф, нет otherwise.

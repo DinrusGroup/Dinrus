@@ -1,6 +1,6 @@
 ﻿/******************************************************************************
 
-        copyright:      Copyright (c) 2006 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2006 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -59,7 +59,7 @@ abstract class Дайджест
 
            Processes данные
 
-           Remarks:
+           Примечания:
                  Updates the хэш algorithm состояние with new данные
 
     *********************************************************************/
@@ -74,7 +74,7 @@ abstract class Дайджест
                буфер = a буфер can be supplied for the дайджест в_ be
                         записано в_
 
-           Remarks:
+           Примечания:
                If the буфер is not large enough в_ hold the
                дайджест, a new буфер is allocated и returned.
                The algorithm состояние is always сбрось after a вызов в_
@@ -92,7 +92,7 @@ abstract class Дайджест
            Возвращает:
              the размер of the дайджест in байты
 
-           Remarks:
+           Примечания:
              Returns the размер of the дайджест.
 
     *********************************************************************/
@@ -108,7 +108,7 @@ abstract class Дайджест
                         will be записано. It needs в_ be able в_ hold
                         2 * размерДайджеста симвы
 
-           Remarks:
+           Примечания:
                 If the буфер is not large enough в_ hold the hex дайджест,
                 a new буфер is allocated и returned. The algorithm
                 состояние is always сбрось after a вызов в_ гексДайджест.

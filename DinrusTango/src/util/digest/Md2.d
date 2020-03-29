@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2006 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2006 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -30,7 +30,7 @@ class Md2 : MerkleDamgard
 
         /***********************************************************************
 
-                Construct an Md2
+                Конструирует Md2
 
         ***********************************************************************/
 
@@ -40,7 +40,7 @@ class Md2 : MerkleDamgard
 
                 Initialize the cipher
 
-                Remarks:
+                Примечания:
                 Returns the cipher состояние в_ it's начальное значение
 
         ***********************************************************************/
@@ -59,7 +59,7 @@ class Md2 : MerkleDamgard
                 Возвращает:
                 the дайджест
 
-                Remarks:
+                Примечания:
                 Returns a дайджест of the текущ cipher состояние, this may 
                 be the final дайджест, or a дайджест of the состояние between 
                 calls в_ обнови()
@@ -86,7 +86,7 @@ class Md2 : MerkleDamgard
                 Возвращает:
                 the блок размер
 
-                Remarks:
+                Примечания:
                 Specifies the размер (in байты) of the блок of данные в_ пароль в_
                 each вызов в_ трансформируй(). For MD2 the размерБлока is 16.
 
@@ -104,7 +104,7 @@ class Md2 : MerkleDamgard
                 Возвращает:
                 the length паддинг размер
 
-                Remarks:
+                Примечания:
                 Specifies the размер (in байты) of the паддинг which uses the
                 length of the данные which имеется been ciphered, this паддинг is
                 carried out by the padLength метод. For MD2 the добавьРазмер is 
@@ -124,7 +124,7 @@ class Md2 : MerkleDamgard
                 Параметры:
                 данные = a срез of the cipher буфер в_ заполни with паддинг
 
-                Remarks:
+                Примечания:
                 Fills the passed буфер срез with the appropriate паддинг 
                 for the final вызов в_ трансформируй(). This паддинг will заполни 
                 the cipher буфер up в_ размерБлока()-добавьРазмер().
@@ -148,7 +148,7 @@ class Md2 : MerkleDamgard
                 Параметры:
                 данные = the блок of данные в_ cipher
 
-                Remarks:
+                Примечания:
                 The actual cipher algorithm is carried out by this метод on
                 the passed блок of данные. This метод is called for every
                 размерБлока() байты of ввод данные и once ещё with the 
@@ -187,7 +187,7 @@ class Md2 : MerkleDamgard
 
                 Final processing of cipher.
 
-                Remarks:
+                Примечания:
                 This метод is called after the final трансформируй just приор в_
                 the creation of the final дайджест. The MD2 algorithm требует
                 an добавьitional step at this stage. Future ciphers may or may not

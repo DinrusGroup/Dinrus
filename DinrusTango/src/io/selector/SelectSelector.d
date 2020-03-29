@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
-  copyright:   Copyright (c) 2006 Juan Jose Comellas. все rights reserved
+  copyright:   Copyright (c) 2006 Juan Jose Comellas. Все права защищены
   license:     BSD стиль: $(LICENSE)
   author:      Juan Jose Comellas <juanjo@comellas.com.ar>
 *******************************************************************************/
@@ -147,7 +147,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
     /**
      * Close the selector.
      *
-     * Remarks:
+     * Примечания:
      * It can be called multИПle times without harmful sопрe-effects.
      */
     public проц закрой()
@@ -282,7 +282,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
      * провод      = провод that had been previously associated в_ the
      *                selector; it can be пусто.
      *
-     * Remarks:
+     * Примечания:
      * Unregistering a пусто провод is allowed и no исключение is thrown
      * if this happens.
      *
@@ -467,7 +467,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
      * Return the выделение установи resulting из_ the вызов в_ any of the
      * выбери() methods.
      *
-     * Remarks:
+     * Примечания:
      * If the вызов в_ выбери() was unsuccessful or it dопр not return any
      * события, the returned значение will be пусто.
      */
@@ -481,7 +481,7 @@ public class СелекторВыбора: АбстрактныйСелекто�
      * Return the выделение ключ resulting из_ the registration of a
      * провод в_ the selector.
      *
-     * Remarks:
+     * Примечания:
      * If the провод is not registered в_ the selector the returned
      * значение will be пусто. No исключение will be thrown by this метод.
      */

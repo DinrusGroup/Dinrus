@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2009 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2009 Dinrus. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -13,8 +13,7 @@
 module net.device.LocalSocket;
 
 private import net.device.Socket;
-private import stdrus:
-вЮ16;
+private import stdrus: вЮ16;
 /*******************************************************************************
 
 
@@ -22,7 +21,7 @@ private import stdrus:
 
 version (Windows)
 {
-    pragma(msg, "LocalSocket is not available for Windows yet");
+    pragma(msg, "ЛокальныйСокет для Windows пока не реализован");
 }
 
 /*******************************************************************************

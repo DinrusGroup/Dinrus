@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2010 Ulrik Mikaelsson. все rights reserved
+        copyright:      Copyright (c) 2010 Ulrik Mikaelsson. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 

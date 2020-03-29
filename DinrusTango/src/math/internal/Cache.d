@@ -98,7 +98,7 @@ public:
 /// the остаток levels are установи в_ бцел.max (== entire память пространство)
 ИнфОКэше[5] кэш_данных;
 /// Does it have an x87 FPU on-chИП?
-бул x87onChИП()
+бул x87onChip()
 {
     return (features&FPU_BIT)!=0;
 }
@@ -220,17 +220,17 @@ public:
 }
 
 /// Is hyperthreading supported?
-бул hyperThreading()
+бул гиперПоточность()
 {
     return maxThreads>maxCores;
 }
 /// Returns число of threads per CPU
-бцел threadsPerCPU()
+бцел потоковНаЦПБ()
 {
     return maxThreads;
 }
 /// Returns число of cores in CPU
-бцел coresPerCPU()
+бцел ядерНаЦПБ()
 {
     return maxCores;
 }

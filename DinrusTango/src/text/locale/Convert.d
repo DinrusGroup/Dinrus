@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2005 John Chapman. все rights reserved
+        copyright:      Copyright (c) 2005 John Chapman. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -91,7 +91,7 @@ private struct Результат
    *   формат = A _format ткст.
    *   службаФормата = An ИСлужбаФормата that provопрes культура-specific formatting information.
    * Возвращает: A ткст representation of the значение of this экземпляр as specified by формат и службаФормата.
-   * Remarks: See $(LINK2 datetimeformat.html, Время Formatting) for ещё information about дата и время formatting.
+   * Примечания: See $(LINK2 datetimeformat.html, Время Formatting) for ещё information about дата и время formatting.
    * Examples:
    * ---
    * import io.stream.Format, text.locale.Core, time.WallClock;
@@ -278,15 +278,15 @@ version (Full)
 
                 ткст форматируйЦел (ткст врем, цел v, цел minimum)
                 {
-                        auto num = Целое.форматируй (врем, v, "u");
-                        if ((minimum -= num.length) > 0)
+                        auto чис = Целое.форматируй (врем, v, "u");
+                        if ((minimum -= чис.length) > 0)
                            {
-                           auto p = врем.ptr + врем.length - num.length;
+                           auto p = врем.ptr + врем.length - чис.length;
                            while (minimum--)
                                   *--p = '0';
-                           num = врем [p-врем.ptr .. $];
+                           чис = врем [p-врем.ptr .. $];
                            }
-                        return num;
+                        return чис;
                 }
 
                 цел разборКавычек(ткст формат, цел поз, out ткст результат)

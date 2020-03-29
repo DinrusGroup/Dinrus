@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
         
@@ -45,13 +45,13 @@ private alias реал ЧисТип;
 private extern (C)
 {
         дво лог10 (дво x);
-        дво потолок (дво num);
-        дво modf (дво num, дво *i);
+        дво потолок (дво чис);
+        дво modf (дво чис, дво *i);
         дво степень  (дво основа, дво эксп);
 
         реал log10l (реал x);
-        реал ceill (реал num);
-        реал modfl (реал num, реал *i);
+        реал ceill (реал чис);
+        реал modfl (реал чис, реал *i);
         реал powl  (реал основа, реал эксп);
 
         цел printf (сим*, ...);
@@ -106,7 +106,7 @@ private enum
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -122,7 +122,7 @@ private enum
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -138,7 +138,7 @@ private enum
 /******************************************************************************
 
         Template wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -153,7 +153,7 @@ private enum
                
 /******************************************************************************
 
-        Truncate trailing '0' и '.' является a ткст, such that 200.000 
+        Truncate trailing '0' и '.' из_ a ткст, such that 200.000 
         becomes 200, и 20.10 becomes 20.1
 
         Returns a potentially shorter срез of что you give it.
@@ -321,14 +321,14 @@ version (float_lib)
 
         Copyright (c) 2009 Ian Piumarta
         
-        все rights reserved.
+        Все права защищены.
 
         Permission is hereby granted, free of charge, в_ any person 
         obtaining a копируй of this software и associated documentation 
         файлы (the 'Software'), в_ deal in the Software without restriction, 
         включая without limitation the rights в_ use, копируй, modify, merge, 
         publish, distribute, и/or sell copies of the Software, и в_ permit 
-        persons в_ whom the Software is furnished в_ do so, provопрed that the 
+        persons в_ whom the Software is furnished в_ do so, предоставленный that the 
         above copyright notice(s) и this permission notice appear in все 
         copies of the Software.  
 
@@ -671,7 +671,7 @@ version (float_old)
         for best accuracy.
 
         Note that the approach первый normalizes a base10 mantissa, then
-        pulls цифры является the left sопрe whilst излейting them (rightward)
+        pulls цифры из_ the left sопрe whilst излейting them (rightward)
         в_ the вывод.
 
         The e parameter controls the число of exponent places излейted, 
@@ -693,7 +693,7 @@ T[] форматируй(T) (T[] приёмн, ЧисТип x, бцел decimals
         static T[] inf = "-inf";
         static T[] nan = "-nan";
 
-        // откинь цифры является the left of a normalized основа-10 число
+        // откинь цифры из_ the left of a normalized основа-10 число
         static цел toDigit (ref ЧисТип v, ref цел счёт)
         {
                 цел цифра;
@@ -831,7 +831,7 @@ T[] форматируй(T) (T[] приёмн, ЧисТип x, бцел decimals
                    *p++ = '0';
 
               // вывод остаток цифры, if any. Trailing
-              // zeros are also returned является toDigit()
+              // zeros are also returned из_ toDigit()
               while (decimals-- > 0)
                      *p++ = cast(T) toDigit (x, счёт);
 

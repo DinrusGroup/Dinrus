@@ -27,7 +27,7 @@ version( TangoDoc )
 {
     /**
      * Attempts в_ perform a значение-preserving conversion of the given значение
-     * является тип S в_ тип D.  If the conversion cannot be performed in any
+     * из_ тип S в_ тип D.  If the conversion cannot be performed in any
      * контекст, a компилируй-время ошибка will be issued describing the типы
      * involved.  If the conversion fails at run-время because the destination
      * тип could not represent the значение being преобразованый, a
@@ -102,11 +102,11 @@ version( TangoDoc )
      * -----
      *
      * If you have ещё комплексное requirements, you can also use the generic в_
-     * and является templated члены:
+     * and из_ templated члены:
      *
      * -----
      * the_type в_(the_type)();
-     * static T является(the_type)(the_type);
+     * static T из_(the_type)(the_type);
      * -----
      *
      * These templates will have the_type explicitly passed в_ them in the
@@ -122,9 +122,9 @@ version( TangoDoc )
      * ткст  вТкст();
      * -----
      *
-     * The "toString_" метод corresponding в_ the destination ткст тип will be
+     * The "вТкст_" метод corresponding в_ the destination ткст тип will be
      * tried first.  If this метод does not exist, then the function will
-     * look for другой "toString_" метод является which it will преобразуй the результат.
+     * look for другой "вТкст_" метод из_ which it will преобразуй the результат.
      * Failing this, it will try "вТкст" and преобразуй the результат в_ the
      * appropriate кодировка.
      *
@@ -191,7 +191,7 @@ typedef цел Missing;
  *
  * The следщ содержит a boat-загрузи of templates.  Most of these are trait
  * templates (things like isPOD, объект_ли, etc.)  There are also a число of
- * mixins, and some switching templates (like toString_(n).)
+ * mixins, and some switching templates (like вТкст_(n).)
  *
  * другой thing в_ mention is intCmp, which performs a safe сравнение
  * between two целыйs of arbitrary размер and signage.
@@ -474,17 +474,17 @@ template TN(T)
         const TN = ctfe_trim(T.stringof);
 }
 
-// Picks an appropriate вТкст* метод является t.текст.преобразуй.Utf.
-template toString_(T)
+// Picks an appropriate вТкст* метод из_ t.текст.преобразуй.Utf.
+template вТкст_(T)
 {
     static if( is( T == ткст ) )
-        alias text.convert.Utf.вТкст toString_;
+        alias text.convert.Utf.вТкст вТкст_;
 
     else static if( is( T == шим[] ) )
-        alias text.convert.Utf.вТкст16 toString_;
+        alias text.convert.Utf.вТкст16 вТкст_;
 
     else
-        alias text.convert.Utf.toString32 toString_;
+        alias text.convert.Utf.toString32 вТкст_;
 }
 
 template UtfNum(T)
@@ -499,7 +499,7 @@ template StringNum(T)
         is(typeof(T[0])==шим) ? "16" : "32");
 }
 
-// Decodes a single дим character является a ткст.  Yes, I know they're
+// Decodes a single дим character из_ a ткст.  Yes, I know they're
 // actually код points, but I can't be Всёered в_ тип that much.  Although
 // I suppose I just typed MORE than that by writing this коммент.  Meh.
 дим firstCharOf(T)(T s, out т_мера used)
@@ -527,13 +527,13 @@ template toUDT()
                 return mixin("D.fromUtf"~UtfNum!(S)~"(значение)");
 
             else static if( is( typeof(D.fromUtf8(""c)) : D ) )
-                return D.fromUtf8(toString_!(ткст)(значение));
+                return D.fromUtf8(вТкст_!(ткст)(значение));
 
             else static if( is( typeof(D.fromUtf16(""w)) : D ) )
-                return D.fromUtf16(toString_!(шим[])(значение));
+                return D.fromUtf16(вТкст_!(шим[])(значение));
 
             else static if( is( typeof(D.fromUtf32(""d)) : D ) )
-                return D.fromUtf32(toString_!(дим[])(значение));
+                return D.fromUtf32(вТкст_!(дим[])(значение));
 
             else static if( is( typeof(D.fromString(""c)) : D ) )
             {
@@ -541,13 +541,13 @@ template toUDT()
                     return D.fromString(значение);
 
                 else
-                    return D.fromString(toString_!(ткст)(значение));
+                    return D.fromString(вТкст_!(ткст)(значение));
             }
 
             // Default fallbacks
 
-            else static if( is( typeof(D.является!(S)(значение)) : D ) )
-                return D.является!(S)(значение);
+            else static if( is( typeof(D.из_!(S)(значение)) : D ) )
+                return D.из_!(S)(значение);
 
             else
                 mixin unsupported!("пользовательский тип");
@@ -559,12 +559,12 @@ template toUDT()
             static if( is( typeof(mixin("D.from_"~TN!(S)~"()")) : D ) )
                 return mixin("D.from_"~TN!(S)~"()");
 
-            else static if( is( typeof(mixin("D.является"
+            else static if( is( typeof(mixin("D.из_"
                                              ~ctfe_camelCase(TN!(S))~"()")) : D ) )
-                return mixin("D.является"~ctfe_camelCase(TN!(S))~"()");
+                return mixin("D.из_"~ctfe_camelCase(TN!(S))~"()");
 
-            else static if( is( typeof(D.является!(S)(значение)) : D ) )
-                return D.является!(S)(значение);
+            else static if( is( typeof(D.из_!(S)(значение)) : D ) )
+                return D.из_!(S)(значение);
 
             else
                 mixin unsupported!("пользовательский тип");
@@ -572,7 +572,7 @@ template toUDT()
     }
 }
 
-// This mixin defines a general function for converting является a UDT.
+// This mixin defines a general function for converting из_ a UDT.
 template fromUDT(ткст fallthrough="")
 {
     D toDfromS()
@@ -584,13 +584,13 @@ template fromUDT(ткст fallthrough="")
                 return mixin("значение.вТкст"~StringNum!(D)~"()");
 
             else static if( is( typeof(значение.вТкст()) == ткст ) )
-                return toString_!(D)(значение.вТкст);
+                return вТкст_!(D)(значение.вТкст);
 
             else static if( is( typeof(значение.вТкст16()) == шим[] ) )
-                return toString_!(D)(значение.вТкст16);
+                return вТкст_!(D)(значение.вТкст16);
 
             else static if( is( typeof(значение.toString32()) == дим[] ) )
-                return toString_!(D)(значение.toString32);
+                return вТкст_!(D)(значение.toString32);
 
             else static if( is( typeof(значение.вТкст()) == ткст ) )
             {
@@ -599,7 +599,7 @@ template fromUDT(ткст fallthrough="")
 
                 else
                 {
-                    return toString_!(D)(значение.вТкст);
+                    return вТкст_!(D)(значение.вТкст);
                 }
             }
 
@@ -1110,16 +1110,16 @@ D toFromUDT(D,S)(S значение)
     else static if( is( typeof(значение.в_!(D)()) : D ) )
         return значение.в_!(D)();
 
-    // Ok, try D.является* сейчас
+    // Ok, try D.из_* сейчас
     else static if( is( typeof(mixin("D.from_"~TN!(S)~"(значение)")) : D ) )
         return mixin("D.from_"~TN!(S)~"(значение)");
 
-    else static if( is( typeof(mixin("D.является"
+    else static if( is( typeof(mixin("D.из_"
                                      ~ctfe_camelCase(TN!(S))~"(значение)")) : D ) )
-        return mixin("D.является"~ctfe_camelCase(TN!(S))~"(значение)");
+        return mixin("D.из_"~ctfe_camelCase(TN!(S))~"(значение)");
 
-    else static if( is( typeof(D.является!(S)(значение)) : D ) )
-        return D.является!(S)(значение);
+    else static if( is( typeof(D.из_!(S)(значение)) : D ) )
+        return D.из_!(S)(значение);
 
     // Give up
     else
@@ -1458,7 +1458,7 @@ unittest
         assert(ex( в_!(реал)("") ));
         assert(ex( в_!(реал)("0x1.2cp+9") ));
 
-        // ОтКого d0c's patch
+        // ОтКого d0c's патч
         assert(ex( в_!(цел)("0x20") ));
         assert(ex( в_!(цел)("0x") ));
         assert(ex( в_!(цел)("-") ));

@@ -86,58 +86,23 @@ class КлиентППГТ
     alias проц delegate (БуфВывод) Помпа;
 
     // this is struct rather than typedef в_ avoопр compiler bugs
-    private struct МетодЗапроса
+    struct МетодЗапроса
     {
         final ткст            имя;
     }
-
-    // class члены; there's a surprising amount of stuff here!
-    private Уир                     уир;
-    private Бввод           ввод;
-    private Бвыв          вывод;
-    private Массив                   токены;
-    private Строки!(сим)            строка;
-    private Сокет                  сокет;
-    private МетодЗапроса           метод;
-    private АдресИнтернета         адрес;
-    private ПараметрыППГТ              парамыВых;
-    private ОбзорЗаголовковППГТ         загиНаВхо;
-    private ЗаголовкиППГТ             загиНаВых;
-    private КукикиППГТ             кукикиВых;
-    private СтрокаОтвета            строкаОтвета;
-
-    // default в_ three секунда таймаут on читай operations ...
-    private плав                   таймаут = 3.0;
-
-    // активируй уир кодировка?
-    private бул                    кодируй = да;
-
-    // should we perform internal redirection?
-    private бул                    перенаправь = да;
-
-    // attempt бытьНаСвязи?
-    private бул                    бытьНаСвязи = нет;
-
-    // предел the число of redirects, or catch circular redirects
-    private бцел                    перенаправления,
-            лимитПеренаправлений = 5;
-
-    // the http version being sent with requests
-    private ткст                  версияППГТ;
 
     // http version опр
     public enum Версия {ОдинТчкНоль, ОдинТчкОдин};
 
     // стандарт установи of request methods ...
-    static const МетодЗапроса      Get = {"GET"},
-                                               Put = {"PUT"},
-                                               Head = {"HEAD"},
-                                               Post = {"POST"},
-                                               След = {"TRACE"},
-                                               Delete = {"DELETE"},
-                                               Options = {"OPTIONS"},
-                                               Connect = {"CONNECT"};
-
+        static const МетодЗапроса      Взять = {"GET"},
+                                        Поместить = {"PUT"},
+                                        Заг = {"HEAD"},
+                                        Пост = {"POST"},
+                                        След = {"TRACE"},
+                                        Удалить = {"DELETE"},
+                                        Опции = {"OPTIONS"},
+                                        Соединить = {"CONNECT"};
     /***********************************************************************
 
             Созд a клиент for the given URL. The аргумент should be

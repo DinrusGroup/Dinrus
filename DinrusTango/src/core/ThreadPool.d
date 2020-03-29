@@ -1,7 +1,7 @@
 ﻿/**
- * This module provопрes an implementation of the classical нить-обойма model.
+ * Этот модуль предоставляет реализацию классической модели нить-обоймы (катушки).
  *
- * Copyright: Copyright (C) 2007-2008 Anders Halager. все rights reserved.
+ * Copyright: Copyright (C) 2007-2008 Anders Halager. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Author:    Anders Halager
  */
@@ -16,42 +16,42 @@ private version = Queued;
 
 
 /**
- * A нить обойма is a way в_ process multИПle jobs in parallel without creating
- * a new нить for each дело. This way the overhead of creating a нить is
- * only paопр once, and not once for each дело and you can предел the maximum
- * число of threads активное at any one точка.
+ * Катушка - это способ обработки нескольких задач (jobs) параллельно, без создания
+ * на каждую задачу новой нити. Таким образом, создание нити происходит только раз,
+ * но не один раз на каждое "дело" и можно ограничить максимальное
+ * число активных нитей в любой момент.
  *
- * In this case a "дело" is simply a delegate and some параметры the delegate
- * will be called with after having been добавьed в_ the нить обойма's queue.
+ * В этом случае "дело" - просто делегат и некоторые параметры, с которыми этот делегат
+ * будет вызываться,  после того как он добавлен в очередь обойм нитей.
  *
- * Example:
+ * Пример:
  * --------------------
- * // создай a new обойма with two threads
+ * // создать новую обойму с двумя нитями
  * auto обойма = new Катушка!(цел)(2);
  * проц delegate(цел) f = (цел x) { Журнал(x); };
  *
- * // Сейчас we have three ways of telling the обойма в_ выполни our jobs
- * // First we can say we just want it готово at some later точка
+ * // Сейчас есть три способа сообщить обойме о выполнении наших задач.
+ * // Во-первых, можно сообщить, что задача должна быть готова в точку чуть позднее
  * обойма.добавь(f, 1);
- * // Secondly we can ask for a дело в_ be готово as soon as possible, blocking
- * // until it is пущен by some нить
+ * // Во-вторых, сообщить, чтобы задача была готова как можно скорее, блокирую
+ * // пока она не пущена какой-то нитью
  * обойма.присвой(f, 2);
- * // Finally we can say we either want it готово immediately or not at все
+ * // Наконец, сообщить, что она должно быть немедленно сделана или не сделана вообще
  * if (обойма.пробуйПрисвоить(f, 3))
- *     Журнал("Someone took the дело!");
+ *     Журнал("Кто-то взялся за дело!");
  * else
- *     Журнал("No one was available в_ do the дело right сейчас");
- * // After giving the обойма some jobs в_ do, we need в_ give it a chance в_
- * // финиш, so we can do one of two things.
- * // Choice no. 1 is в_ финиш what есть already been assigned в_ the threads,
- * // but ignore any remaining queued jobs
+ *     Журнал("Никто не смог выполнить работу прямо сейчас");
+ * // После задания обойме работёнок, надо дать ей шанс завершить,
+ * // поэтому можно сделать что-то из двух вещей.
+ * // Выбор номер 1 - завершить всё, что уже задано нитям,
+ * // но игнорировать любые оставшиеся в очереди задачи
  * //   обойма.глуши();
- * // The другой choice is в_ финиш все jobs currently executing or in queue:
+ * // Другой выбор - завершить все выполняемые работы или находящиеся в очереди:
  * обойма.финиш();
  * --------------------
  *
- * If добавь isn't called there should be no добавьitional куча allocations after
- * initialization.
+ * Если добавь не вызывается, то дополнительного размещения в куче не будет
+ * после её инициализации.
  */
 
 class Катушка(Арги...)
@@ -59,7 +59,7 @@ class Катушка(Арги...)
 
 private
 {
-    // Our список of threads -- only used during startup and глуши
+    // Наш список нитей -- используется только при стартапе и глуши
     Нить[] обойма;
 	
     struct Дело

@@ -2,7 +2,7 @@
  * Модуль "Сигнал" обеспечивает базовую реализацию образца listener,
  * используя модель "Сигналов  Слотов" из Qt.
  *
- * Copyright: Copyright (C) 2005-2006 Sean Kelly.  все rights reserved.
+ * Copyright: Copyright (C) 2005-2006 Sean Kelly.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Sean Kelly
  */
@@ -141,7 +141,7 @@ struct Сигнал( Арги... )
 
 
     /**
-     * Detaches a delegate является this signal.
+     * Detaches a delegate из_ this signal.
      *
      * дг = The delegate в_ открепи.
      */
@@ -157,7 +157,7 @@ struct Сигнал( Арги... )
 
 
     /**
-     * Detaches a function является this signal.
+     * Detaches a function из_ this signal.
      *
      * фн = The function в_ открепи.
      */

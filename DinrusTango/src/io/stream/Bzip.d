@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-    copyright:  Copyright (C) 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright (C) 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -14,14 +14,9 @@ module io.stream.Bzip;
 
 private import lib.bzlib;
 
-private import exception :
-ВВИскл;
-
-private import io.device.Conduit :
-ФильтрВвода, ФильтрВывода;
-
-private import io.model :
-ИПотокВвода, ИПотокВывода, ИПровод;
+private import exception:ВВИскл;
+private import io.device.Conduit:ФильтрВвода, ФильтрВывода;
+private import io.model: ИПотокВвода, ИПотокВывода, ИПровод;
 
 private
 {
@@ -105,7 +100,7 @@ class БзипВывод : ФильтрВывода
 
     /*
      * This метод performs initialisation for the поток.  Note that this may
-     * be called ещё than once for an экземпляр, provопрed the экземпляр is
+     * be called ещё than once for an экземпляр, предоставленный the экземпляр is
      * either new or as часть of a вызов в_ сбрось.
      */
     private проц init(ИПотокВывода поток, цел размерБлока)
@@ -356,7 +351,7 @@ class БзипВвод : ФильтрВвода
 
     /*
      * This метод performs initialisation for the поток.  Note that this may
-     * be called ещё than once for an экземпляр, provопрed the экземпляр is
+     * be called ещё than once for an экземпляр, предоставленный the экземпляр is
      * either new or as часть of a вызов в_ сбрось.
      */
     private проц init(ИПотокВвода поток, бул small)

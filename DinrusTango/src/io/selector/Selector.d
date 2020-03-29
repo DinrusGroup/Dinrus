@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
-  copyright:   Copyright (c) 2006 Juan Jose Comellas. все rights reserved
+  copyright:   Copyright (c) 2006 Juan Jose Comellas. Все права защищены
   license:     BSD стиль: $(LICENSE)
   author:      Juan Jose Comellas <juanjo@comellas.com.ar>
 *******************************************************************************/

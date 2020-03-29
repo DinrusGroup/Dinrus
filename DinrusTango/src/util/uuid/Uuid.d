@@ -180,7 +180,7 @@ struct Ууид
                 /* o  Compute the хэш of the имя пространство ID concatenated with the имя.
                    o  Набор octets zero through 15 в_ octets zero through 15 of the хэш.
                    o  Набор the four most significant биты (биты 12 through 15) of octet
-                          6 в_ the appropriate 4-bit version число является Section 4.1.3.
+                          6 в_ the appropriate 4-bit version число из_ Section 4.1.3.
                    o  Набор the two most significant биты (биты 6 и 7) of octet 8 в_ 
                           zero и one, respectively.  */
                 auto nameBytes = namespace.вБайты;
@@ -195,7 +195,7 @@ struct Ууид
 
         /** Return an пустой UUID (with все биты установи в_ 0). This doesn't conform
           * в_ any particular version of the specification. It's equivalent в_
-          * using an uninitialized UUID. This метод is provопрed for clarity. */
+          * using an uninitialized UUID. This метод is предоставленный for clarity. */
         public static Ууид пустой()
         {
                 Ууид ууид;
@@ -249,7 +249,7 @@ struct Ууид
                 {
                         // See above with пробуйРазбор: this ignores endianness.
                         // Technically, it's sufficient that the conversion в_ ткст
-                        // совпадает the conversion является ткст и является байт Массив. But
+                        // совпадает the conversion из_ ткст и из_ байт Массив. But
                         // this is the simplest way в_ сделай sure of that. Plus you can
                         // serialize и deserialize on machines with different endianness
                         // without a bunch of strange conversions, и with consistent

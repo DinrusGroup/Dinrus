@@ -1,19 +1,18 @@
 ﻿module util.container.more.HashFile;
 
-private import io.device.FileMap :
-КартированныйФайл;
+private import io.device.FileMap:КартированныйФайл;
 
 /******************************************************************************
 
         ХэшФайл реализует простой механизм сохранения и восстановления
-        большоо количества данных в течение хостингового процесса.
+        большого количества данных в течение хостингового процесса.
         Он служит в качестве локального кэша для удалённого источника данных,
         или в качестве spillover area для больших кэш-экземпляров в памяти.
 
         Note that any и все stored данные is rendered не_годится the moment
         a ХэшФайл объект is garbage-собериed.
 
-        The implementation follows a fixed-ёмкость record scheme, where
+        The implementation follows a fixed-ёмкость record схема, where
         контент can be rewritten in-place until saопр ёмкость is reached.
         At such время, the altered контент is moved в_ a larger ёмкость
         record at конец-of-файл, и a hole remains at the приор location.
@@ -69,7 +68,7 @@ class ХэшФайл(K, V)
     private бдол                   размерФайла;
 
     // текущ файл usage
-    private бдол                   waterLine;
+    private бдол                   ватерлиния;
 
     // supported блок размеры
     public static const РазмерБлока   EighthK  = {128-1},
@@ -86,7 +85,7 @@ class ХэшФайл(K, V)
 
     /**********************************************************************
 
-            Construct a ХэшФайл with the provопрed путь, record-размер,
+            Construct a ХэшФайл with the предоставленный путь, record-размер,
             и inital record счёт. The latter causes records в_ be
             pre-allocated, saving a certain amount of growth activity.
             Selecting a record размер that roughly совпадает the serialized
@@ -127,12 +126,12 @@ class ХэшФайл(K, V)
 
     final бдол length ()
     {
-        return waterLine;
+        return ватерлиния;
     }
 
     /**********************************************************************
 
-            Return the serialized данные for the provопрed ключ. Returns
+            Return the serialized данные for the предоставленный ключ. Returns
             пусто if the ключ was не найден.
 
             Be sure в_ synchronize доступ by multИПle threads
@@ -150,7 +149,7 @@ class ХэшФайл(K, V)
 
     /**********************************************************************
 
-            Удали the provопрed ключ является this ХэшФайл. Leaves a
+            Удали the предоставленный ключ из_ this ХэшФайл. Leaves a
             hole in the backing файл
 
             Be sure в_ synchronize доступ by multИПle threads
@@ -165,7 +164,7 @@ class ХэшФайл(K, V)
     /**********************************************************************
 
             Зап a serialized блок of данные, и associate it with
-            the provопрed ключ. все ключи must be unique, и it is the
+            the предоставленный ключ. все ключи must be unique, и it is the
             responsibility of the programmer в_ ensure this. Reusing
             an existing ключ will overwrite previous данные.
 
@@ -214,7 +213,7 @@ class ХэшФайл(K, V)
 
             Each Record takes up a число of 'pages' внутри the файл.
             The размер of these pages is determined by the РазмерБлока
-            provопрed during ХэшФайл construction. добавьitional пространство
+            предоставленный during ХэшФайл construction. добавьitional пространство
             at the конец of each блок is potentially wasted, but enables
             контент в_ grow in размер without creating a myriad of holes.
 
@@ -228,7 +227,7 @@ class ХэшФайл(K, V)
 
         /**************************************************************
 
-                This should be protected является нить-contention at
+                This should be protected из_ нить-contention at
                 a higher уровень.
 
         **************************************************************/
@@ -247,7 +246,7 @@ class ХэшФайл(K, V)
 
         /**************************************************************
 
-                This should be protected является нить-contention at
+                This should be protected из_ нить-contention at
                 a higher уровень.
 
         **************************************************************/
@@ -269,16 +268,16 @@ class ХэшФайл(K, V)
 
         проц createBucket (ХэшФайл bucket, цел байты, РазмерБлока блок)
         {
-            this.смещение = bucket.waterLine;
+            this.смещение = bucket.ватерлиния;
             this.ёмкость = (байты + блок.ёмкость) & ~блок.ёмкость;
 
-            bucket.waterLine += this.ёмкость;
-            if (bucket.waterLine > bucket.размерФайла)
+            bucket.ватерлиния += this.ёмкость;
+            if (bucket.ватерлиния > bucket.размерФайла)
             {
-                auto мишень = bucket.waterLine * 2;
+                auto мишень = bucket.ватерлиния * 2;
                 debug(ХэшФайл)
-                printf ("growing файл является %lld, %lld, в_ %lld\n",
-                        bucket.размерФайла, bucket.waterLine, мишень);
+                printf ("growing файл из_ %lld, %lld, в_ %lld\n",
+                        bucket.размерФайла, bucket.ватерлиния, мишень);
 
                 // расширь the physical файл размер и remap the куча
                 bucket.куча = bucket.файл.перемерь (bucket.размерФайла = мишень);

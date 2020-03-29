@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд является util.collection.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд из_ util.collection.d  working файл
 
 */
 
@@ -24,7 +24,7 @@ private import util.collection.model.Comparator;
  * LLCells extend Cells with стандарт linkedlist следщ-fields,
  * и provопрe a стандарт operations on them.
  * <P>
- * LLCells are pure implementation tools. They perform
+ * LLCells are  implementation tools. They perform
  * no аргумент проверьing, no результат screening, и no synchronization.
  * They rely on пользователь-уровень classes (see for example LinkedList) в_ do such things.
  * Still, the class is made `public' so that you can use them в_
@@ -95,7 +95,7 @@ public class LLCell(T) : Cell!(T)
 
         /**
          * Cause текущ ячейка в_ пропусти over the текущ следщ() one,
-         * effectively removing the следщ элемент является the список
+         * effectively removing the следщ элемент из_ the список
         **/
 
         public final проц отвяжиСледщ()

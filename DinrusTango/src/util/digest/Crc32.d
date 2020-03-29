@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2006 James Pelcis. все rights reserved
+        copyright:      Copyright (c) 2006 James Pelcis. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 

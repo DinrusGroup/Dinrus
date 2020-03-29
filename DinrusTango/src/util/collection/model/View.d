@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 24Sep95  dl@cs.oswego.edu   Созд является собериions.d  working файл
+ 24Sep95  dl@cs.oswego.edu   Созд из_ собериions.d  working файл
  14dec95  dl                 Declare as a subinterface of Cloneable
  9Apr97   dl                 made Serializable
 
@@ -67,7 +67,7 @@ public interface View(T)
 
         /**
          * все собериions maintain a `version число'. The numbering
-         * scheme is arbitrary, but is guaranteed в_ change upon every
+         * схема is arbitrary, but is guaranteed в_ change upon every
          * modification that could possibly affect an элементы() enumeration traversal.
          * (This is да at least внутри the точность of the `цел' representation;
          * performing ещё than 2^32 operations will lead в_ reuse of version numbers).
@@ -141,7 +141,7 @@ public interface View(T)
          * <P>
          * Guarantees about the nature of the элементы returned by  получи of the
          * returned Обходчик may vary accross подст-interfaces.
-         * In все cases, the enumerations provопрed by элементы() are guaranteed в_
+         * In все cases, the enumerations предоставленный by элементы() are guaranteed в_
          * step through (via получи) все элементы in the View.
          * Unless guaranteed otherwise (for example in Seq), элементы() enumerations
          * need not have any particular получи() ordering so дол as they

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2006 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2006 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -51,7 +51,7 @@ final class Md5 : Md4
 
         /***********************************************************************
 
-                Construct an Md5
+                Конструирует Md5
 
         ***********************************************************************/
 
@@ -65,7 +65,7 @@ final class Md5 : Md4
                 Параметры:
                 данные = the блок of данные в_ cipher
 
-                Remarks:
+                Примечания:
                 The actual cipher algorithm is carried out by this метод on
                 the passed блок of данные. This метод is called for every
                 размерБлока() байты of ввод данные и once ещё with the остаток

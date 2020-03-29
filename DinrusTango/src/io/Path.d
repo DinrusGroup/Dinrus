@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
         copyright:      Normalization & Образцы copyright (c) 2006-2009 
                         Max Samukha, Thomas Kühne, Grzegorz Adam Hankiewicz
 
@@ -455,7 +455,7 @@ package struct ФС
 
                 /***************************************************************
 
-                        Удали the файл/дир является the файл-system.
+                        Удали the файл/дир из_ the файл-system.
                         Returns да on success - нет otherwise
 
                 ***************************************************************/
@@ -544,7 +544,7 @@ package struct ФС
 
                         List the установи of filenames within this папка.
 
-                        Each путь and имяф is passed в_ the provопрed
+                        Each путь and имяф is passed в_ the предоставленный
                         delegate, along with the путь префикс and whether
                         the Запись is a папка or not.
 
@@ -851,7 +851,7 @@ package struct ФС
 
                 /***************************************************************
 
-                        Удали the файл/дир является the файл-system. 
+                        Удали the файл/дир из_ the файл-system. 
                         Returns да on success - нет otherwise.
 
                 ***************************************************************/
@@ -907,7 +907,7 @@ package struct ФС
 
                         List the установи of filenames within this папка.
 
-                        Each путь and имяф is passed в_ the provопрed
+                        Each путь and имяф is passed в_ the предоставленный
                         delegate, along with the путь префикс and whether
                         the Запись is a папка or not.
 
@@ -1007,7 +1007,7 @@ package struct ФС
         default. This means that usage of '\' characters should be explicitly
         преобразованый beforehand преобр_в '/' instead (an исключение is thrown in those
         cases where '\' is present). On-the-fly conversion is avoопрed because
-        (a) the provопрed путь is consопрered immutable and (b) we avoопр taking
+        (a) the предоставленный путь is consопрered immutable and (b) we avoопр taking
         a копируй of the original путь. Module ФПуть есть_ли at a higher уровень, 
         without such contraints.
 
@@ -1018,7 +1018,7 @@ struct ПутеПарсер
         package ткст  fp;                     // фпуть with trailing
         package цел     end_,                   // before any trailing 0
                         ext_,                   // after rightmost '.'
-                        name_,                  // файл/Пап имя
+                        имя_,                  // файл/Пап имя
                         folder_,                // путь before имя
                         suffix_;                // включая leftmost '.'
 
@@ -1083,7 +1083,7 @@ struct ПутеПарсер
 
         ткст папка ()
         {
-                return fp [folder_ .. name_];
+                return fp [folder_ .. имя_];
         }
 
         /***********************************************************************
@@ -1147,7 +1147,7 @@ struct ПутеПарсер
 
         ткст имя ()
         {
-                return fp [name_ .. suffix_];
+                return fp [имя_ .. suffix_];
         }
 
         /***********************************************************************
@@ -1195,7 +1195,7 @@ struct ПутеПарсер
 
         ткст путь ()
         {
-                return fp [0 .. name_];
+                return fp [0 .. имя_];
         }
 
         /***********************************************************************
@@ -1206,7 +1206,7 @@ struct ПутеПарсер
 
         ткст файл ()
         {
-                return fp [name_ .. end_];
+                return fp [имя_ .. end_];
         }
 
         /***********************************************************************
@@ -1274,20 +1274,20 @@ struct ПутеПарсер
                 end_ = конец;
                 fp = путь;
                 folder_ = 0;
-                name_ = suffix_ = -1;
+                имя_ = suffix_ = -1;
 
                 for (цел i=end_; --i >= 0;)
                      switch (fp[i])
                             {
                             case ФайлКонст.СимФайлРазд:
-                                 if (name_ < 0)
+                                 if (имя_ < 0)
                                      if (suffix_ < 0 && i && fp[i-1] != '.')
                                          suffix_ = i;
                                  break;
 
                             case ФайлКонст.СимПутьРазд:
-                                 if (name_ < 0)
-                                     name_ = i + 1;
+                                 if (имя_ < 0)
+                                     имя_ = i + 1;
                                  break;
 
                             // Windows файл разделители are illegal. Use
@@ -1306,10 +1306,10 @@ struct ПутеПарсер
                                  break;
                             }
 
-                if (name_ < 0)
-                    name_ = folder_;
+                if (имя_ < 0)
+                    имя_ = folder_;
 
-                if (suffix_ < 0 || suffix_ is name_)
+                if (suffix_ < 0 || suffix_ is имя_)
                     suffix_ = end_;
 
                 return *this;
@@ -1452,7 +1452,7 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        Удали the файл/дир является the файл-system. Returns да if
+        Удали the файл/дир из_ the файл-system. Returns да if
         successful, нет otherwise
 
 *******************************************************************************/
@@ -1465,7 +1465,7 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        Удали the файлы and папки listed in the provопрed пути. Where
+        Удали the файлы and папки listed in the предоставленный пути. Where
         папки are listed, they should be preceded by their contained
         файлы in order в_ be successfully removed. Returns a установи of пути
         that неудачно в_ be removed (where .length is zero upon success).
@@ -1608,7 +1608,7 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        коллируй все файлы and папки является the given путь whose имя matches
+        коллируй все файлы and папки из_ the given путь whose имя matches
         the given образец. Folders will be traversed where рекурсия is включен, 
         and a установи of совпадают names is returned as filepaths (включая those 
         папки which match the образец)
@@ -1657,7 +1657,7 @@ struct ПутеПарсер
         '/' characters в_ be switches instead. Use the исконный()
         метод в_ support that.
 
-        Note: mutates the provопрed путь.
+        Note: mutates the предоставленный путь.
 
 *******************************************************************************/
 
@@ -1671,7 +1671,7 @@ struct ПутеПарсер
         Convert в_ исконный O/S путь разделители where that is required,
         such as when dealing with the Windows команда-строка. 
         
-        Note: mutates the provопрed путь. Use this образец в_ obtain a 
+        Note: mutates the предоставленный путь. Use this образец в_ obtain a 
         копируй instead: исконный(путь.dup);
 
 *******************************************************************************/
@@ -1751,15 +1751,15 @@ struct ПутеПарсер
 
 /*******************************************************************************
 
-        Замени все путь 'является' instances with 'в_', in place (overwrites
-        the provопрed путь)
+        Замени все путь 'из_' instances with 'в_', in place (overwrites
+        the предоставленный путь)
 
 *******************************************************************************/
 
-ткст замени (ткст путь, сим является, сим в_)
+ткст замени (ткст путь, сим из_, сим в_)
 {
         foreach (ref сим c; путь)
-                 if (c is является)
+                 if (c is из_)
                      c = в_;
         return путь;
 }
@@ -1768,7 +1768,7 @@ struct ПутеПарсер
 
         Parse a путь преобр_в its constituent components. 
         
-        Note that the provопрed путь is sliced, not duplicated
+        Note that the предоставленный путь is sliced, not duplicated
 
 *******************************************************************************/
 
@@ -1823,7 +1823,7 @@ debug(UnitTest)
         </table><p>
         Internally indivопрual character comparisons are готово calling
         charMatch(), so its rules apply here too. Note that путь
-        разделители and dots don't stop a meta-character является совпадают
+        разделители and dots don't stop a meta-character из_ совпадают
         further portions of the имяф.
 
         Возвращает: да if образец matches имяф, нет otherwise.
@@ -2013,8 +2013,8 @@ debug (UnitTest)
         Note that any число of .. segments at the front is ignored,
         unless it is an абсолютный путь, in which case they are removed.
 
-        The ввод путь is copied преобр_в either the provопрed буфер, or a куча
-        allocated Массив if no буфер was provопрed. Normalization modifies
+        The ввод путь is copied преобр_в either the предоставленный буфер, or a куча
+        allocated Массив if no буфер was предоставленный. Normalization modifies
         this копируй before returning the relevant срез.
         -----
         нормализуй("/home/foo/./bar/../../john/doe"); // => "/home/john/doe"

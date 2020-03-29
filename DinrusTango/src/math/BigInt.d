@@ -1,6 +1,6 @@
 ﻿/** Arbitrary-точность ('bignum') arithmetic
  *
- * Copyright: Copyright (C) 2008 Don Clugston.  все rights reserved.
+ * Copyright: Copyright (C) 2008 Don Clugston.  Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Don Clugston
  */
@@ -29,7 +29,7 @@ private:
 	БольшБцел данные;     // БольшЦел добавьs signed arithmetic в_ БольшБцел.
 	бул знак = нет;
 public:
-    /// Construct a БольшЦел является a decimal or hexadecimal ткст.
+    /// Construct a БольшЦел из_ a decimal or hexadecimal ткст.
     /// The число must be in the form of a D decimal or hex literal:
     /// It may have a leading + or - знак; followed by "0x" if hexadecimal.
     /// Underscores are permitted.

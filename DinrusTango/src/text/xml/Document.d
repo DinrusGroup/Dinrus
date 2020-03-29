@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
 
         Copyright: Copyright (C) 2007 Aaron Craelius и Kris Bell
-                   все rights reserved.
+                   Все права защищены.
 
         License:   BSD стиль: $(LICENSE)
 
@@ -33,8 +33,8 @@ version=discrete;
 
         This particular DOM employs a simple free-список в_ размести
         each of the дерево узелs, making it quite efficient at parsing
-        XML documents. The tradeoff with such a scheme is that copying
-        узелs является one document в_ другой требует a little ещё care
+        XML documents. The tradeoff with such a схема is that copying
+        узелs из_ one document в_ другой требует a little ещё care
         than otherwise. We felt this was a reasonable tradeoff, given
         the throughput gains vs the relative infrequency of grafting
         operations. For grafting внутри or across documents, please
@@ -189,7 +189,7 @@ class Документ(T) : package PullParser!(T)
 
     /***********************************************************************
 
-            Return the корень document узел, является which все другой узелs
+            Return the корень document узел, из_ which все другой узелs
             are descended.
 
             Returns пусто where there are no узелs in the document
@@ -377,7 +377,7 @@ class Документ(T) : package PullParser!(T)
 
     /***********************************************************************
 
-            размести a узел является the freelist
+            размести a узел из_ the freelist
 
     ***********************************************************************/
 
@@ -408,7 +408,7 @@ class Документ(T) : package PullParser!(T)
 
     /***********************************************************************
 
-            размести a узел является the freelist
+            размести a узел из_ the freelist
 
     ***********************************************************************/
 
@@ -812,7 +812,7 @@ class Документ(T) : package PullParser!(T)
 
         /***************************************************************
 
-                Detach this узел является its предок и siblings
+                Detach this узел из_ its предок и siblings
 
         ***************************************************************/
 
@@ -1087,9 +1087,9 @@ class Документ(T) : package PullParser!(T)
 
         ***************************************************************/
 
-        private Узел pi_ (T[] pi, T[] patch)
+        private Узел pi_ (T[] pi, T[] патч)
         {
-            добавь (создай(ПТипУзлаРЯР.ПИ, pi).patch(patch));
+            добавь (создай(ПТипУзлаРЯР.ПИ, pi).патч(патч));
             return this;
         }
 
@@ -1197,7 +1197,7 @@ class Документ(T) : package PullParser!(T)
 
         /***************************************************************
 
-                Detach this узел является its предок и siblings
+                Detach this узел из_ its предок и siblings
 
         ***************************************************************/
 
@@ -1269,14 +1269,14 @@ class Документ(T) : package PullParser!(T)
 
                 Patch the serialization текст, causing ДокПринтер
                 в_ ignore the subtree of this узел, и instead
-                излей the provопрed текст as необр XML вывод.
+                излей the предоставленный текст as необр XML вывод.
 
-                Предупреждение: this function does *not* копируй the provопрed
-                текст, и may be removed является future revisions
+                Предупреждение: this function does *not* копируй the предоставленный
+                текст, и may be removed из_ future revisions
 
         ***************************************************************/
 
-        private Узел patch (T[] текст)
+        private Узел патч (T[] текст)
         {
             конец = текст.ptr + текст.length;
             старт = текст.ptr;
@@ -1457,7 +1457,7 @@ class Документ(T) : package PullParser!(T)
 
         Note that every operation returns a discrete результат. Methods первый()
         и последний() also return a установи of one or zero элементы. Some language
-        specific extensions are provопрed for too
+        specific extensions are предоставленный for too
         ---
         * .ветвь() can be substituted with [] notation instead
 
@@ -2047,7 +2047,7 @@ private class ПутьРЯР(T)
 
                 Execute a фильтр on the given узел. We have в_
                 deal with potential запрос recusion, so we установи
-                все kinda crap в_ recover является that
+                все kinda crap в_ recover из_ that
 
         ***************************************************************/
 

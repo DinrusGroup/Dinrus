@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Jeff Davey. все rights reserved
+        copyright:      Copyright (c) 2008 Jeff Davey. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -41,7 +41,7 @@ private import lib.OpenSSL;
 
 /*******************************************************************************
 
-  Do not проверь the peer сертификат. Nor краш if it's not provопрed (сервер
+  Do not проверь the peer сертификат. Nor краш if it's not предоставленный (сервер
   only).
 
 *******************************************************************************/
@@ -50,7 +50,7 @@ const цел SSL_VERIFY_NONE = 0x00;
 
 /*******************************************************************************
 
-  Ask for a peer сертификат, but do not краш if it is not provопрed.
+  Ask for a peer сертификат, but do not краш if it is not предоставленный.
 
 *******************************************************************************/
 
@@ -58,7 +58,7 @@ const цел SSL_VERIFY_PEER = 0x01;
 
 /*******************************************************************************
 
-  Ask for a peer сертификат, however, краш if it is not provопрed
+  Ask for a peer сертификат, however, краш if it is not предоставленный
 
 *******************************************************************************/
 
@@ -89,7 +89,7 @@ extern (C) typedef цел function(цел, X509_STORE_CTX *ctx) SSLVerifyCallbac
 
 /*******************************************************************************
 
-    КонтекстССЛ is provопрed в_ SSLСОКЕТConduit and СерверСокетССЛ.
+    КонтекстССЛ is предоставленный в_ SSLСОКЕТConduit and СерверСокетССЛ.
 
     It содержит the public/private keypair, and some добавьitional options that
     control как the SSL Потокs work.
@@ -174,7 +174,7 @@ class КонтекстССЛ
 
     /*******************************************************************************
 
-        Valопрates that the X509 сертификат was signed with the provопрed
+        Valопрates that the X509 сертификат was signed with the предоставленный
         public/private keypair. Throws an исключение if this is not the case.
 
     *******************************************************************************/
@@ -216,7 +216,7 @@ class КонтекстССЛ
 
     /*******************************************************************************
 
-        Loads valid Сертификат Authorities является the specified путь.
+        Loads valid Сертификат Authorities из_ the specified путь.
 
         ОтКого the SSL_CTX_load_verify_locations manpage:
 
@@ -288,7 +288,7 @@ class КонтекстХраненияСертификатов
 
     /*******************************************************************************
 
-        This constructor takes a X509_STORE_CTX as provопрed by the SSLVerifyCallback
+        This constructor takes a X509_STORE_CTX as предоставленный by the SSLVerifyCallback
         function.
 
     *******************************************************************************/
@@ -384,9 +384,9 @@ class ХранилищеСертификатов
 
 /*******************************************************************************
 
-    ПубличныйКлюч содержит the RSA public ключ является a private/public keypair.
+    ПубличныйКлюч содержит the RSA public ключ из_ a private/public keypair.
 
-    It also allows extraction of the public ключ является a keypair.
+    It also allows extraction of the public ключ из_ a keypair.
 
     This is useful for encryption, you can зашифруй данные with someone's public ключ
     and they can расшифруй it with their private ключ.
@@ -407,7 +407,7 @@ class ПубличныйКлюч
 
     /*******************************************************************************
 
-        Generate a ПубличныйКлюч объект является the passed PEM formatted данные
+        Generate a ПубличныйКлюч объект из_ the passed PEM formatted данные
 
         Параметры:
             publicPemData = pem кодирован данные containing the public ключ
@@ -571,7 +571,7 @@ class ЧастныйКлюч
 
     /*******************************************************************************
 
-        Reads in the provопрed PEM данные, with an optional пароль в_ расшифруй
+        Reads in the предоставленный PEM данные, with an optional пароль в_ расшифруй
         the private ключ.
 
         Параметры:
@@ -646,7 +646,7 @@ class ЧастныйКлюч
         Returns the underlying public/private ключ pair in PEM форматируй.
 
         Параметры:
-            пароль = If this is provопрed, the private ключ will be encrypted using
+            пароль = If this is предоставленный, the private ключ will be encrypted using
             AES 256bit encryption, with this as the ключ.
 
     *******************************************************************************/
@@ -810,7 +810,7 @@ class Сертификат
 
     /*******************************************************************************
 
-        Parses a X509 Сертификат является the provопрed PEM кодирован данные.
+        Parses a X509 Сертификат из_ the предоставленный PEM кодирован данные.
 
     *******************************************************************************/
     this(ткст publicPemData)
@@ -861,7 +861,7 @@ class Сертификат
         Sets the serial число of the new unsigned сертификат.
 
         Note, this serial число should be unique for все certificates signed
-        by the provопрed сертификат authority. Having two Certificates with the
+        by the предоставленный сертификат authority. Having two Certificates with the
         same serial число can cause problems with web browsers and другой apps
         because they will be different certificates.
 
@@ -914,11 +914,11 @@ class Сертификат
         не_годится.
 
         Параметры:
-            t = A ИнтервалВремени representing the amount of время является сейчас that the
+            t = A ИнтервалВремени representing the amount of время из_ сейчас that the
             Сертификат will be valid. This must be larger than датаДо
 
         Example:
-            серт.смещениеКДатеПосле = ИнтервалВремени.сек(86400 * 365); // Сертификат is valid up в_ one год является сейчас
+            серт.смещениеКДатеПосле = ИнтервалВремени.сек(86400 * 365); // Сертификат is valid up в_ one год из_ сейчас
 
     *******************************************************************************/
 

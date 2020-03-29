@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
         
@@ -27,10 +27,10 @@ private import exception;
 
 /******************************************************************************
 
-        Parse an целое значение является the provопрed 'цифры' ткст. 
+        Parse an целое значение из_ the предоставленный 'цифры' ткст. 
 
         The ткст is inspected for a знак и an optional корень 
-        префикс. A корень may be provопрed as an аргумент instead, 
+        префикс. A корень may be предоставленный as an аргумент instead, 
         whereupon it must сверь the префикс (where present). When
         корень is установи в_ zero, conversion will default в_ decimal.
 
@@ -54,10 +54,10 @@ private import exception;
 
 /******************************************************************************
 
-        Parse an целое значение является the provопрed 'цифры' ткст.
+        Parse an целое значение из_ the предоставленный 'цифры' ткст.
 
         The ткст is inspected for a знак и an optional корень
-        префикс. A корень may be provопрed as an аргумент instead,
+        префикс. A корень may be предоставленный as an аргумент instead,
         whereupon it must сверь the префикс (where present). When
         корень is установи в_ zero, conversion will default в_ decimal.
 
@@ -84,7 +84,7 @@ private import exception;
 /******************************************************************************
 
         Wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -99,7 +99,7 @@ private import exception;
 /******************************************************************************
 
         Wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -114,7 +114,7 @@ private import exception;
 /******************************************************************************
 
         Wrapper в_ сделай life simpler. Returns a текст version
-        of the provопрed значение.
+        of the предоставленный значение.
 
         See форматируй() for details
 
@@ -160,7 +160,7 @@ private import exception;
 
         Note that the specified width is исключительно of the префикс, though
         the width паддинг will be shrunk as necessary in order в_ ensure
-        a requested префикс can be inserted преобр_в the provопрed вывод.
+        a requested префикс can be inserted преобр_в the предоставленный вывод.
 
 *******************************************************************************/
 
@@ -315,7 +315,7 @@ T[] форматёр(T) (T[] приёмн, дол i, сим тип, сим pre, 
               // пиши optional префикс ткст ...
               приёмн [длин .. длин + префикс.length] = префикс;
 
-              // return срез of provопрed вывод буфер
+              // return срез of предоставленный вывод буфер
               return приёмн [длин .. $];                               
               }
            }
@@ -326,10 +326,10 @@ T[] форматёр(T) (T[] приёмн, дол i, сим тип, сим pre, 
 
 /******************************************************************************
 
-        Parse an целое значение является the provопрed 'цифры' ткст. 
+        Parse an целое значение из_ the предоставленный 'цифры' ткст. 
 
         The ткст is inspected for a знак и an optional корень 
-        префикс. A корень may be provопрed as an аргумент instead, 
+        префикс. A корень may be предоставленный as an аргумент instead, 
         whereupon it must сверь the префикс (where present). When
         корень is установи в_ zero, conversion will default в_ decimal.
 
@@ -359,7 +359,7 @@ T[] форматёр(T) (T[] приёмн, дол i, сим тип, сим pre, 
 
 /******************************************************************************
 
-        Convert the provопрed 'цифры' преобр_в an целое значение,
+        Convert the предоставленный 'цифры' преобр_в an целое значение,
         without проверьing for a знак or корень. The корень дефолты
         в_ decimal (10).
 
@@ -513,11 +513,11 @@ T[] форматёр(T) (T[] приёмн, дол i, сим тип, сим pre, 
 
 /******************************************************************************
 
-        быстро & dirty unsigned в_ текст converter, where the provопрed вывод
+        быстро & dirty unsigned в_ текст converter, where the предоставленный вывод
         must be large enough в_ house the результат (10 цифры in the largest
         case). For mainПоток use, consider utilizing форматируй() instead.
 
-        Returns a populated срез of the provопрed вывод
+        Returns a populated срез of the предоставленный вывод
         
 ******************************************************************************/
 
@@ -537,7 +537,7 @@ T[] itoa(T) (T[] вывод, бцел значение, цел корень = 10
 
 /******************************************************************************
 
-        Consume a число является the ввод without converting it. Аргумент
+        Consume a число из_ the ввод without converting it. Аргумент
         'fp' enables floating-точка consumption. Supports hex ввод for
         numbers which are псеп_в_начале appropriately
 

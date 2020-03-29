@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -13,7 +13,7 @@
 
 module net.device.Datagram;
 
-package import net.device.Socket;
+package import net.device.Socket, net.device.Berkeley;
 
 /*******************************************************************************
         
@@ -52,7 +52,7 @@ class Датаграмма : Сокет
 
         /***********************************************************************
 
-                Populate the provопрed Массив из_ the сокет. This will stall
+                Populate the предоставленный Массив из_ the сокет. This will stall
                 until some данные is available, or a таймаут occurs. We assume 
                 the datagram имеется been подключен.
 
@@ -69,7 +69,7 @@ class Датаграмма : Сокет
         /***********************************************************************
         
                 Чит байты из_ an available datagram преобр_в the given Массив.
-                When provопрed, the 'из_' адрес will be populated with the
+                When предоставленный, the 'из_' адрес will be populated with the
                 origin of the incoming данные. Note that we employ the таймаут
                 mechanics exposed via our Сокет superclass. 
 
@@ -94,7 +94,7 @@ class Датаграмма : Сокет
 
         /***********************************************************************
 
-                Зап the provопрed контент в_ the сокет. This will stall
+                Зап the предоставленный контент в_ the сокет. This will stall
                 until the сокет responds in some manner. We assume the 
                 datagram имеется been подключен.
 

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -74,7 +74,7 @@ class Мультикаст : Датаграмма
                 Созд a читай/пиши multicast сокет
 
                 This flavour is necessary only for a multicast Приёмr
-                (e.g. use this ctor in conjunction with СОКЕТListener).
+                (e.g. use this ctor in conjunction with СокетСлушатель).
 
                 You should specify Всё a группа адрес и a порт в_ 
                 слушай upon. The resultant сокет will be bound в_ the

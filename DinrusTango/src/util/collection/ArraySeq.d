@@ -7,7 +7,7 @@
 
  History:
  Дата     Who                What
- 2Oct95  dl@cs.oswego.edu   refactored является DASeq.d
+ 2Oct95  dl@cs.oswego.edu   refactored из_ DASeq.d
  13Oct95  dl                 Changed protection statuses
 
 */
@@ -17,7 +17,7 @@ module util.collection.ArraySeq;
 
 private import  util.collection.model.Iterator,
                 util.collection.model.Sortable,
-                util.collection.model.Сравнитель,
+                util.collection.model.Comparator,
                 util.collection.model.GuardIterator;
 
 private import  util.collection.impl.SeqCollection,
@@ -309,17 +309,17 @@ deprecated public class ArraySeq(T) : SeqCollection!(T), Sortable!(T)
          * Время complexity: O(length).
          * See_Also: util.collection.model.Seq.Seq.subseq
         **/
-        public final ArraySeq поднабор (цел является, цел _length)
+        public final ArraySeq поднабор (цел из_, цел _length)
         {
                 if (_length > 0)
                    {
-                   проверьИндекс(является);
-                   проверьИндекс(является + _length - 1);
+                   проверьИндекс(из_);
+                   проверьИндекс(из_ + _length - 1);
 
                    T newArray[] = new T[_length];
-                   //System.копируй (Массив[0].sizeof, Массив, является, newArray, 0, _length);
+                   //System.копируй (Массив[0].sizeof, Массив, из_, newArray, 0, _length);
 
-                   newArray[0.._length] = Массив[является..является+_length];
+                   newArray[0.._length] = Массив[из_..из_+_length];
                    return new ArraySeq!(T)(скринер, newArray, _length);
                    }
                 else
@@ -600,7 +600,7 @@ deprecated public class ArraySeq(T) : SeqCollection!(T), Sortable!(T)
          * It is public и static so it can be использован  в_ сортируй plain
          * массивы as well.
          * @param s, the Массив в_ сортируй
-         * @param lo, the least индекс в_ сортируй является
+         * @param lo, the least индекс в_ сортируй из_
          * @param hi, the greatest индекс
          * @param cmp, the сравнитель в_ use for comparing элементы
         **/

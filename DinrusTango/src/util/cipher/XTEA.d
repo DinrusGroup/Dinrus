@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright: Copyright (C) Thomas Dixon 2008. все rights reserved.
+ * Copyright: Copyright (C) Thomas Dixon 2008. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Thomas Dixon
  */
@@ -95,8 +95,8 @@ class XTEA : ШифрБлок
             }
         }
         
-        вывод[0..4] = БайтКонвертер.БигЭндиан.является!(бцел)(v0);
-        вывод[4..8] = БайтКонвертер.БигЭндиан.является!(бцел)(v1);
+        вывод[0..4] = БайтКонвертер.БигЭндиан.из_!(бцел)(v0);
+        вывод[4..8] = БайтКонвертер.БигЭндиан.из_!(бцел)(v1);
         
         return BLOCK_SIZE;
     }

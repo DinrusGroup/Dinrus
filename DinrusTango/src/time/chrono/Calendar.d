@@ -59,7 +59,7 @@ public abstract class Календарь
      * Get the components of a Время structure using the rules of the
      * Календарь.  This is useful if you want ещё than one of the given
      * components.  Note that this doesn't укз the время of день, as that
-     * is calculated directly является the Время struct.
+     * is calculated directly из_ the Время struct.
      *
      * The default implemenation is в_ вызов все the другой accessors
      * directly, a производный class may override if it имеется a ещё efficient
@@ -76,7 +76,7 @@ public abstract class Календарь
      * Get the components of a Время structure using the rules of the
      * Календарь.  This is useful if you want ещё than one of the given
      * components.  Note that this doesn't укз the время of день, as that
-     * is calculated directly является the Время struct.
+     * is calculated directly из_ the Время struct.
      *
      * The default implemenation is в_ вызов все the другой accessors
      * directly, a производный class may override if it имеется a ещё efficient
@@ -352,7 +352,7 @@ public abstract class Календарь
      * For example, добавим one месяц в_ 1/31/2000 with truncateDay установи в_
      * да results in 2/28/2000.
      *
-     * The default implementation uses information provопрed by the
+     * The default implementation uses information предоставленный by the
      * Календарь в_ calculate the correct время в_ добавь.  Derived classes may
      * override if there is a ещё optimized метод.
      *
@@ -365,7 +365,7 @@ public abstract class Календарь
      * Параметры: truncateDay = Round the день down в_ the maximum день of the
      * мишень месяц if necessary.
      *
-     * Возвращает: A Время that represents the provопрed время with the число
+     * Возвращает: A Время that represents the предоставленный время with the число
      * of месяцы добавьed.
      */
     Время добавьМесяцы(Время t, цел члоМес, бул truncateDay = нет)
@@ -442,7 +442,7 @@ public abstract class Календарь
     /**
      * Добавь the specified число of годы в_ the given Время.
      *
-     * The генерный algorithm uses information provопрed by the abstract
+     * The генерный algorithm uses information предоставленный by the abstract
      * methods.  Derived classes may re-implement this in order в_
      * оптимизируй the algorithm
      *
@@ -452,7 +452,7 @@ public abstract class Календарь
      * Параметры: t = A время в_ добавь the годы в_
      * Параметры: члоЛет = The число of годы в_ добавь.  This can be негатив.
      *
-     * Возвращает: A Время that represents the provопрed время with the число
+     * Возвращает: A Время that represents the предоставленный время with the число
      * of годы добавьed.
      */
     Время добавьГоды(Время t, цел члоЛет)

@@ -1,5 +1,5 @@
 ﻿/*******************************************************************************
-  copyright:   Copyright (c) 2006 Juan Jose Comellas. все rights reserved
+  copyright:   Copyright (c) 2006 Juan Jose Comellas. Все права защищены
   license:     BSD стиль: $(LICENSE)
   author:      Juan Jose Comellas <juanjo@comellas.com.ar>
 *******************************************************************************/
@@ -13,14 +13,6 @@ private import io.selector.model;
 private import sys.Common;
 private import cidrus;
 
-version (Windows)
-{
-    public struct значврем
-    {
-        цел сек;     // сек
-        цел микросек;    // микросекунды
-    }
-}
 
 /**
  * База class for все selectors.
@@ -167,7 +159,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * Free any operating system resources that may have been allocated in the
      * вызов в_ открой().
      *
-     * Remarks:
+     * Примечания:
      * Not все of the selectors need в_ free resources другой than allocated
      * память, but those that do will normally also добавь a вызов в_ закрой() in
      * their destructors.
@@ -212,7 +204,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * провод      = провод that had been previously associated в_ the
      *                selector; it can be пусто.
      *
-     * Remarks:
+     * Примечания:
      * Unregistering a пусто провод is allowed и no исключение is thrown
      * if this happens.
      */
@@ -227,7 +219,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * have Приёмd события внутри the specified таймаут; и -1 if the
      * wakeup() метод имеется been called из_ другой нить.
      *
-     * Remarks:
+     * Примечания:
      * This метод is the same as calling выбери(ИнтервалВремени.max).
      */
     public цел выбери()
@@ -296,7 +288,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * Return the выделение установи resulting из_ the вызов в_ any of the выбери()
      * methods.
      *
-     * Remarks:
+     * Примечания:
      * If the вызов в_ выбери() was unsuccessful or it dопр not return any
      * события, the returned значение will be пусто.
      */
@@ -306,7 +298,7 @@ abstract class АбстрактныйСелектор: ИСелектор
      * Return the выделение ключ resulting из_ the registration of a провод
      * в_ the selector.
      *
-     * Remarks:
+     * Примечания:
      * If the провод is not registered в_ the selector the returned
      * значение will be пусто. No исключение will be thrown by this метод.
      */

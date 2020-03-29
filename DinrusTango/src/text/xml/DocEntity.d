@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        Copyright: Copyright (C) 2008 Kris Bell.  все rights reserved.
+        Copyright: Copyright (C) 2008 Kris Bell.  Все права защищены.
 
         License:   BSD стиль: $(LICENSE)
 
@@ -35,7 +35,7 @@ T[] изСущности (T) (T[] ист, T[] приёмн = пусто)
         // возьми a Просмотр первый в_ see if there's anything
         if ((delta = Util.индексУ (s, '&', длин)) < длин)
            {
-           // сделай some room if not enough provопрed
+           // сделай some room if not enough предоставленный
            if (приёмн.length < ист.length)
                приёмн.length = ист.length;
            auto d = приёмн.ptr;
@@ -103,7 +103,7 @@ T[] изСущности (T) (T[] ист, T[] приёмн = пусто)
         ---
         
         This variant does not require an interim workspace, и instead
-        излейs directly via the provопрed delegate
+        излейs directly via the предоставленный delegate
               
 ******************************************************************************/
 
@@ -172,10 +172,10 @@ T[] изСущности (T) (T[] ист, T[] приёмн = пусто)
 
         Convert reserved симвы в_ entities. For example: " => &quot; 
 
-        Either a срез of the provопрed вывод буфер is returned, or the 
+        Either a срез of the предоставленный вывод буфер is returned, or the 
         original контент, depending on whether there were reserved симвы
         present or not. The вывод буфер should be sufficiently large в_  
-        accomodate the преобразованый вывод, or it will be allocated является the 
+        accomodate the преобразованый вывод, or it will be allocated из_ the 
         куча instead 
         
 ******************************************************************************/
@@ -251,7 +251,7 @@ T[] вСущность(T) (T[] ист, T[] приёмн = пусто)
         Convert reserved симвы в_ entities. For example: " => &quot; 
 
         This variant does not require an interim workspace, и instead
-        излейs directly via the provопрed delegate
+        излейs directly via the предоставленный delegate
         
 ******************************************************************************/
 

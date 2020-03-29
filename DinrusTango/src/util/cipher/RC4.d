@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright: Copyright (C) Thomas Dixon 2009. все rights reserved.
+ * Copyright: Copyright (C) Thomas Dixon 2009. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Thomas Dixon
  */

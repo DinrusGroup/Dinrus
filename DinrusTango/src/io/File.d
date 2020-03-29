@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -24,7 +24,7 @@ private import exception, Провод = io.device.File;
         в_ reflect a given проц[].
 
         Метод читай() returns the current контент of the файл, whilst пиши()
-        sets the файл контент, and файл length, в_ the provопрed Массив. Метод
+        sets the файл контент, and файл length, в_ the предоставленный Массив. Метод
         добавь() добавьs контент в_ the хвост of the файл.
 
         Methods в_ inspect the файл system, check the статус of a файл or

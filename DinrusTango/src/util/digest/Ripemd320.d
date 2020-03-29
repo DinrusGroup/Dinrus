@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2009 Dinrus. все rights reserved
+        copyright:      Copyright (c) 2009 Dinrus. Все права защищены
 
         license:        BSD стиль: see doc/license.txt for details
 
@@ -69,7 +69,7 @@ final class Ripemd320 : MerkleDamgard
 
     	Initialize the cipher
 
-    	Remarks:
+    	Примечания:
     		Returns the cipher состояние в_ it's начальное значение
 
      ***********************************************************************/
@@ -87,7 +87,7 @@ final class Ripemd320 : MerkleDamgard
     	Возвращает:
     		the дайджест
 
-    	Remarks:
+    	Примечания:
     		Returns a дайджест of the текущ cipher состояние, this may be the
     		final дайджест, or a дайджест of the состояние between calls в_ обнови()
 
@@ -109,7 +109,7 @@ final class Ripemd320 : MerkleDamgard
     	Возвращает:
     	the блок размер
 
-    	Remarks:
+    	Примечания:
     	Specifies the размер (in байты) of the блок of данные в_ пароль в_
     	each вызов в_ трансформируй(). For Ripemd320 the размерБлока is 64.
 
@@ -127,7 +127,7 @@ final class Ripemd320 : MerkleDamgard
     	Возвращает:
     	the length паддинг размер
 
-    	Remarks:
+    	Примечания:
     	Specifies the размер (in байты) of the паддинг which uses the
     	length of the данные which имеется been ciphered, this паддинг is
     	carried out by the padLength метод. For Ripemd320 the добавьРазмер is 8.
@@ -146,7 +146,7 @@ final class Ripemd320 : MerkleDamgard
     	Параметры:
     	данные = a срез of the cipher буфер в_ заполни with паддинг
 
-    	Remarks:
+    	Примечания:
     	Fills the passed буфер срез with the appropriate паддинг for
     	the final вызов в_ трансформируй(). This паддинг will заполни the cipher
     	буфер up в_ размерБлока()-добавьРазмер().
@@ -167,7 +167,7 @@ final class Ripemd320 : MerkleDamgard
     	данные   = the срез of the cipher буфер в_ заполни with паддинг
     	length = the length of the данные which имеется been ciphered
 
-    	Remarks:
+    	Примечания:
     	Fills the passed буфер срез with добавьРазмер() байты of паддинг
     	based on the length in байты of the ввод данные which имеется been
     	ciphered.
@@ -187,7 +187,7 @@ final class Ripemd320 : MerkleDamgard
     	Параметры:
     	данные = the блок of данные в_ cipher
 
-    	Remarks:
+    	Примечания:
     	The actual cipher algorithm is carried out by this метод on
     	the passed блок of данные. This метод is called for every
     	размерБлока() байты of ввод данные и once ещё with the остаток

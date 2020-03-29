@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2004 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2004 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -107,7 +107,7 @@ class СканФайл
 
         /***********************************************************************
 
-                Sweep a установи of файлы and directories является the given предок
+                Sweep a установи of файлы and directories из_ the given предок
                 путь, with no filtering applied
         
         ***********************************************************************/
@@ -119,7 +119,7 @@ class СканФайл
 
         /***********************************************************************
 
-                Sweep a установи of файлы and directories является the given предок
+                Sweep a установи of файлы and directories из_ the given предок
                 путь, where the файлы are filtered by the given суффикс
         
         ***********************************************************************/
@@ -132,8 +132,8 @@ class СканФайл
 
         /***********************************************************************
 
-                Sweep a установи of файлы and directories является the given предок
-                путь, where the файлы are filtered by the provопрed delegate
+                Sweep a установи of файлы and directories из_ the given предок
+                путь, where the файлы are filtered by the предоставленный delegate
 
         ***********************************************************************/
         

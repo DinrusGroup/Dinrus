@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
                                                                                 
-        copyright:      Copyright (c) 2006 UWB. все rights reserved             
+        copyright:      Copyright (c) 2006 UWB. Все права защищены             
                                                                                 
         license:        BSD стиль: $(LICENSE)                                   
                                                                                 

@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-    copyright:  Copyright (C) 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright (C) 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -42,7 +42,7 @@ private import text.convert.Integer : вТкст;
 
 private enum { РАЗМЕР_ЧАНКА = 256 * 1024 };
 
-/* This constant specifies the default окноБиты значение.  This is taken является
+/* This constant specifies the default окноБиты значение.  This is taken из_
  * documentation in zlib.h.  It shouldn't break anything if zlib changes в_
  * a different default.
  */
@@ -99,7 +99,7 @@ class ВводЗлиб : ФильтрВвода
     /***************************************************************************
 
         Constructs a new zlib decompression фильтр.  You need в_ пароль in the
-        поток that the decompression фильтр will читай является.  If you are using
+        поток that the decompression фильтр will читай из_.  If you are using
         this фильтр with a провод, the опрiom в_ use is:
 
         ---
@@ -218,7 +218,7 @@ class ВводЗлиб : ФильтрВвода
 
     /***************************************************************************
 
-        Decompresses данные является the underlying провод преобр_в a мишень Массив.
+        Decompresses данные из_ the underlying провод преобр_в a мишень Массив.
 
         Returns the число of байты stored преобр_в приёмн, which may be less than
         requested.
@@ -259,7 +259,7 @@ class ВводЗлиб : ФильтрВвода
 
             case Z_STREAM_END:
                 // zlib поток is завершено; затуши the поток so we don't try в_
-                // читай является it again.
+                // читай из_ it again.
                 туши_зп();
                 break;
 
@@ -485,8 +485,8 @@ class ВыводЗлиб : ФильтрВывода
 
         Compresses the given данные в_ the underlying провод.
 
-        Returns the число of байты является ист that were compressed; пиши
-        should always используй все данные provопрed в_ it, although it may not be
+        Returns the число of байты из_ ист that were compressed; пиши
+        should always используй все данные предоставленный в_ it, although it may not be
         immediately записано в_ the underlying вывод поток.
 
     ***************************************************************************/
@@ -659,7 +659,7 @@ class ИсклЗлибЗакрыт : ВВИскл
   
     This исключение is thrown when an ошибка occurs in the underlying zlib
     library.  Where possible, it will indicate Всё the имя of the ошибка, and
-    any textural сообщение zlib есть provопрed.
+    any textural сообщение zlib есть предоставленный.
 
 *******************************************************************************/
 

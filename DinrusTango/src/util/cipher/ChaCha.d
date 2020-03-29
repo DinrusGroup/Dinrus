@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright: Copyright (C) Thomas Dixon 2009. все rights reserved.
+ * Copyright: Copyright (C) Thomas Dixon 2009. Все права защищены.
  * License:   BSD стиль: $(LICENSE)
  * Authors:   Thomas Dixon
  */
@@ -104,7 +104,7 @@ class ChaCha : Salsa20
             
         цел j;    
         for (i = j = 0; i < x.length; i++,j+=цел.sizeof)
-            вывод[j..j+цел.sizeof] = БайтКонвертер.ЛитлЭндиан.является!(бцел)(x[i]);
+            вывод[j..j+цел.sizeof] = БайтКонвертер.ЛитлЭндиан.из_!(бцел)(x[i]);
     }
     
     /** ChaCha тест vectors */

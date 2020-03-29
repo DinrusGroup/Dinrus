@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
 
-        copyright:      Copyright (c) 2008 Kris Bell. все rights reserved
+        copyright:      Copyright (c) 2008 Kris Bell. Все права защищены
 
         license:        BSD стиль: $(LICENSE)
 
@@ -213,7 +213,7 @@ class HashSet (V, alias Хэш = Контейнер.хэш,
 
     /***********************************************************************
 
-            Удали the provопрed элемент. Returns да if найдено, нет
+            Удали the предоставленный элемент. Returns да if найдено, нет
             otherwise
 
             Время complexity: O(1) average; O(n) worst
@@ -227,7 +227,7 @@ class HashSet (V, alias Хэш = Контейнер.хэш,
 
     /***********************************************************************
 
-            Удали the provопрed элемент. Returns да if найдено, нет
+            Удали the предоставленный элемент. Returns да if найдено, нет
             otherwise
 
             Время complexity: O(1) average; O(n) worst

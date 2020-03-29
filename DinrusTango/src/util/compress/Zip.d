@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
  *
- * copyright:   Copyright (c) 2007 Daniel Keep.  все rights reserved.
+ * copyright:   Copyright (c) 2007 Daniel Keep.  Все права защищены.
  *
  * license:     BSD стиль: $(LICENSE)
  *
@@ -614,7 +614,7 @@ class ЧитательБлокаЗип : ЧитательЗип
     version( Неук )
     {
         /**
-         * Creates a ЧитательБлокаЗип using the provопрed Файл экземпляр.  Where
+         * Creates a ЧитательБлокаЗип using the предоставленный Файл экземпляр.  Where
          * possible, the провод will be wrapped in a память-mapped буфер for
          * optimum performance.  If you do not want the Файл память-mapped,
          * either cast it в_ an ИПотокВвода first, or пароль источник.ввод в_ the
@@ -630,7 +630,7 @@ class ЧитательБлокаЗип : ЧитательЗип
     }
 
     /**
-     * Creates a ЧитательБлокаЗип using the provопрed ИПотокВвода.  Please note
+     * Creates a ЧитательБлокаЗип using the предоставленный ИПотокВвода.  Please note
      * that this ИПотокВвода must be attached в_ a провод implementing the
      * ИПровод.ИШаг interface.
      */
@@ -659,7 +659,7 @@ class ЧитательБлокаЗип : ЧитательЗип
     {
         // NOTE: Originally ещё of the СМ allocated данные in this class were
         // explicitly deleted here, such as cd_data - this caused segfaults
-        // and have been removed as they were not necessary является correctness
+        // and have been removed as they were not necessary из_ correctness
         // точка of view, and the память usage win is questionable.
         состояние = Состояние.Готово;
         источник = пусто;
@@ -703,7 +703,7 @@ class ЧитательБлокаЗип : ЧитательЗип
     }
 
     /**
-     * Retrieves the следщ файл является the архив.  Note that although this does
+     * Retrieves the следщ файл из_ the архив.  Note that although this does
      * perform IO operations, it will not читай the contents of the файл.
      *
      * The optional reuse аргумент can be used в_ instruct the читатель в_ reuse
@@ -851,7 +851,7 @@ private:
      *
      * The заголовок itself (включая the сигнатура) is at minimum 22 байты
      * дол, plus anywhere between 0 and 2^16-1 байты of коммент.  That means
-     * we need в_ читай the последний 2^16-1 + 22 байты является the файл, and look for
+     * we need в_ читай the последний 2^16-1 + 22 байты из_ the файл, and look for
      * the сигнатура [0x50,0x4b,0x05,0x06] in [0 .. $-18].
      *
      * If we найди the EOCD record, we'll return its contents.  If we couldn't
@@ -1023,7 +1023,7 @@ class ПисательБлокаЗип : ПисательЗип
     }
 
     /**
-     * Creates a ПисательБлокаЗип using the provопрed ИПотокВывода.  Please note
+     * Creates a ПисательБлокаЗип using the предоставленный ИПотокВывода.  Please note
      * that this ИПотокВывода must be attached в_ a провод implementing the
      * ИПровод.ИШаг interface.
      */
@@ -1057,7 +1057,7 @@ class ПисательБлокаЗип : ПисательЗип
     }
 
     /**
-     * добавьs a файл является the local filesystem в_ the архив.
+     * добавьs a файл из_ the local filesystem в_ the архив.
      */
     проц поместиФайл(ИнфоОЗаписиЗип инфо, ткст путь)
     {
@@ -1075,7 +1075,7 @@ class ПисательБлокаЗип : ПисательЗип
     }
 
     /**
-     * Transfers a файл является другой архив преобр_в this архив.  Note that
+     * Transfers a файл из_ другой архив преобр_в this архив.  Note that
      * this метод will not perform any compression: whatever compression was
      * applied в_ the файл originally will be preserved.
      */
@@ -1222,7 +1222,7 @@ private:
             ИПотокВвода in_chain = источник;
             ИПотокВывода out_chain = new WrapSeekOutputПоток(вывод);
 
-            // Count число of байты coming in является the источник файл
+            // Count число of байты coming in из_ the источник файл
             scope in_counter = new ВводСоСчётом(in_chain);
             in_chain = in_counter;
             assert( in_counter.счёт <= typeof(разжатый_размер).max );
@@ -1281,7 +1281,7 @@ private:
 
         debug(ZIP) Стдош.форматнс(" . CRC for \"{}\": 0x{:x8}", инфо.имя, crc);
 
-        // Rewind, and patch the заголовок
+        // Rewind, and патч the заголовок
         auto final_pos = шагун.сместись(0, шагун.Якорь.Тек);
         шагун.сместись(header_pos);
         patch_local_header(crc, сжатый_размер, разжатый_размер);
@@ -1327,7 +1327,7 @@ private:
     }
 
     /*
-     * Generates and outputs a local файл заголовок является the given инфо block and
+     * Generates and outputs a local файл заголовок из_ the given инфо block and
      * compression метод.  Note that the crc_32, сжатый_размер and
      * разжатый_размер заголовок fields will be установи в_ zero, and must be
      * patched.
@@ -1448,7 +1448,7 @@ class ЗаписьЗип
     }
 
     /**
-     * Opens a поток for reading является the файл.  The contents of this поток
+     * Opens a поток for reading из_ the файл.  The contents of this поток
      * represent the decompressed contents of the файл stored in the архив.
      *
      * You should not assume that the returned поток is seekable.
@@ -1457,11 +1457,11 @@ class ЗаписьЗип
      * the underlying архив поток.
      *
      * If the файл есть not yet been verified, then the поток will be checked
-     * as you читай является it.  When the поток is either exhausted or закрыт,
+     * as you читай из_ it.  When the поток is either exhausted or закрыт,
      * then the integrity of the файл's данные will be checked.  This means that
      * if the файл is corrupt, an исключение will be thrown only after you have
-     * завершено reading является the поток.  If you wish в_ сделай sure the данные is
-     * valid before you читай является the файл, вызов the проверь метод.
+     * завершено reading из_ the поток.  If you wish в_ сделай sure the данные is
+     * valid before you читай из_ the файл, вызов the проверь метод.
      */
     ИПотокВвода открой()
     {
@@ -1535,7 +1535,7 @@ private:
     }
 
     /*
-     * Creates a new ЗаписьЗип является the ФайлЗаг.
+     * Creates a new ЗаписьЗип из_ the ФайлЗаг.
      */
     this(ФайлЗаг заголовок, open_dg_t open_dg)
     {
@@ -1590,8 +1590,8 @@ struct ИнфоОЗаписиЗип
 //
 
 /**
- * This is the основа class является which все exceptions generated by this module
- * derive является.
+ * This is the основа class из_ which все exceptions generated by this module
+ * derive из_.
  */
 class ИсклЗип : Исключение
 {
@@ -1868,7 +1868,7 @@ private:
 /*
  * This class wraps an ввод поток, and computes the CRC as it проходки
  * through.  On the событие of either a закрой or EOF, it checks the CRC against
- * the one in the provопрed ЗаписьЗип.  If they don't match, it throws an
+ * the one in the предоставленный ЗаписьЗип.  If they don't match, it throws an
  * исключение.
  */
 
@@ -2366,7 +2366,7 @@ import io.device.Conduit :
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -2521,7 +2521,7 @@ private:
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -2548,7 +2548,7 @@ class SliceSeekInputПоток : ИПотокВвода
     //alias ИПровод.ИШаг.Якорь Якорь;
 
     /**
-     * Create a new срез поток является the given источник, covering the контент
+     * Create a new срез поток из_ the given источник, covering the контент
      * starting at позиция begin, for length байты.
      */
     this(ИПотокВвода источник, дол begin, дол length)
@@ -2666,7 +2666,7 @@ private:
 class SliceInputПоток : ИПотокВвода
 {
     /**
-     * Create a new срез поток является the given источник, covering the контент
+     * Create a new срез поток из_ the given источник, covering the контент
      * starting at the current сместись позиция for length байты.
      */
     this(ИПотокВвода источник, дол length)
@@ -2755,7 +2755,7 @@ class SliceSeekOutputПоток : ИПотокВывода
     //alias ИПровод.ИШаг.Якорь Якорь;
 
     /**
-     * Create a new срез поток является the given источник, covering the контент
+     * Create a new срез поток из_ the given источник, covering the контент
      * starting at позиция begin, for length байты.
      */
     this(ИПотокВывода источник, дол begin, дол length)
@@ -2869,7 +2869,7 @@ private:
 
 /*******************************************************************************
 
-    copyright:  Copyright © 2007 Daniel Keep.  все rights reserved.
+    copyright:  Copyright © 2007 Daniel Keep.  Все права защищены.
 
     license:    BSD стиль: $(LICENSE)
 
@@ -2897,7 +2897,7 @@ class WrapSeekInputПоток : ИПотокВвода
     //alias ИПровод.ИШаг.Якорь Якорь;
 
     /**
-     * Create a new wrap поток является the given источник.
+     * Create a new wrap поток из_ the given источник.
      */
     this(ИПотокВвода источник)
     in
@@ -2994,7 +2994,7 @@ class WrapSeekOutputПоток : ИПотокВывода
     //alias ИПровод.ИШаг.Якорь Якорь;
 
     /**
-     * Create a new wrap поток является the given источник.
+     * Create a new wrap поток из_ the given источник.
      */
     this(ИПотокВывода источник)
     in
