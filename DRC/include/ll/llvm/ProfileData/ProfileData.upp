@@ -1,0 +1,16 @@
+static_library(WIN32 MSC) LLVMProfileData.lib;
+
+file
+	GCOV.h,
+	InstrProf.h,
+	InstrProfReader.h,
+	InstrProfWriter.h,
+	ProfileCommon.h,
+	SampleProf.h,
+	SampleProfReader.h,
+	SampleProfWriter.h,
+	Coverage readonly separator,
+	Coverage\CoverageMapping.h,
+	Coverage\CoverageMappingReader.h,
+	Coverage\CoverageMappingWriter.h;
+

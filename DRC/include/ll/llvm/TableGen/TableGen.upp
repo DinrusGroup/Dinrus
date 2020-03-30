@@ -1,0 +1,13 @@
+description "Генератор таблиц\377";
+
+static_library(WIN32 MSC) LLVMTableGen.lib;
+
+file
+	Error.h,
+	Main.h,
+	Record.h,
+	SetTheory.h,
+	StringMatcher.h,
+	StringToOffsetTable.h,
+	TableGenBackend.h;
+

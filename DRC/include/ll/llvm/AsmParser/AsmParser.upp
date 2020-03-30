@@ -1,0 +1,8 @@
+description "Разборщик кода ассемблера\377";
+
+static_library(WIN32 MSC) LLVMAsmParser.lib;
+
+file
+	Parser.h,
+	SlotMapping.h;
+

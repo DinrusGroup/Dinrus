@@ -1,0 +1,35 @@
+description "Объект\377";
+
+static_library(WIN32 MSC) LLVMObject.lib;
+
+file
+	Archive.h,
+	ArchiveWriter.h,
+	Binary.h,
+	COFF.h,
+	COFFImportFile.h,
+	COFFModuleDefinition.h,
+	CVDebugRecord.h,
+	Decompressor.h,
+	ELF.h,
+	ELFObjectFile.h,
+	ELFTypes.h,
+	Error.h,
+	IRObjectFile.h,
+	IRSymtab.h,
+	MachO.h,
+	MachOUniversal.h,
+	Minidump.h,
+	ModuleSymbolTable.h,
+	ObjectFile.h,
+	RelocationResolver.h,
+	RelocVisitor.h,
+	StackMapParser.h,
+	SymbolicFile.h,
+	SymbolSize.h,
+	Wasm.h,
+	WasmTraits.h,
+	WindowsMachineFlag.h,
+	WindowsResource.h,
+	XCOFFObjectFile.h;
+

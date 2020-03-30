@@ -1,0 +1,7 @@
+file
+	LoopHint.h,
+	ParseAST.h,
+	ParseDiagnostic.h,
+	Parser.h,
+	RAIIObjectsForParser.h;
+

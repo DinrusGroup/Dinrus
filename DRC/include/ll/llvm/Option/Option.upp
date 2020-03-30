@@ -1,0 +1,9 @@
+static_library(WIN32 MSC) LLVMOption.lib;
+
+file
+	Arg.h,
+	ArgList.h,
+	Option.h,
+	OptSpecifier.h,
+	OptTable.h;
+

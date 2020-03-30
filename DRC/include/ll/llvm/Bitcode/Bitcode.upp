@@ -1,0 +1,14 @@
+description "Двоичный код\377";
+
+static_library(WIN32 MSC) "LLVMBitReader.lib LLVMBitWriter.lib";
+
+file
+	BitcodeAnalyzer.h,
+	BitcodeReader.h,
+	BitCodes.h,
+	BitcodeWriter.h,
+	BitcodeWriterPass.h,
+	BitstreamReader.h,
+	BitstreamWriter.h,
+	LLVMBitCodes.h;
+

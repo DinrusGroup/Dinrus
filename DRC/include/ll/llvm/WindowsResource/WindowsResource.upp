@@ -1,0 +1,7 @@
+description "Ресурс для Виндовс\377";
+
+file
+	ResourceProcessor.h,
+	ResourceScriptToken.h,
+	ResourceScriptTokenList.h;
+

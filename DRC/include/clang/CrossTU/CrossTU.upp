@@ -1,0 +1,6 @@
+static_library(WIN32 MSC) clangCrossTU.lib;
+
+file
+	CrossTranslationUnit.h,
+	CrossTUDiagnostic.h;
+

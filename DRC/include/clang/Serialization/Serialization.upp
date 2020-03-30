@@ -1,0 +1,14 @@
+file
+	ASTBitCodes.h,
+	ASTDeserializationListener.h,
+	ASTReader.h,
+	ASTWriter.h,
+	ContinuousRangeMap.h,
+	GlobalModuleIndex.h,
+	InMemoryModuleCache.h,
+	Module.h,
+	ModuleFileExtension.h,
+	ModuleManager.h,
+	PCHContainerOperations.h,
+	SerializationDiagnostic.h;
+

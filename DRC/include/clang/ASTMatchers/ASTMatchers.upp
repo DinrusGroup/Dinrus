@@ -1,0 +1,13 @@
+static_library(WIN32 MSC) clangASTMatchers.lib;
+
+file
+	ASTMatchers.h,
+	ASTMatchersInternal.h,
+	ASTMatchersMacros.h,
+	ASTMatchFinder.h,
+	Dynamic readonly separator,
+	Dynamic\Diagnostics.h,
+	Dynamic\Parser.h,
+	Dynamic\Registry.h,
+	Dynamic\VariantValue.h;
+

@@ -1,0 +1,9 @@
+description "Поток битов\377";
+
+static_library(WIN32 MSC) LLVMBitstreamReader.lib;
+
+file
+	BitCodes.h,
+	BitstreamReader.h,
+	BitstreamWriter.h;
+

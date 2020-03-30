@@ -1,0 +1,903 @@
+<DProject>
+ <ProjectGuid>{0AAAE592-A48E-42E1-B7E5-F3AB4D1FE610}</ProjectGuid>
+ <Config platform="Win32" name="Debug">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>0</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>1</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DINRUS)\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand>dinrus</preBuildCommand>
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config platform="Win32" name="Release">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>0</symdebug>
+  <symdebugref>0</symdebugref>
+  <optimize>1</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>1</useInline>
+  <release>1</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>1</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DINRUS)\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids>WithBase;Dinrus;</versionids>
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>0</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand>dinrusex</preBuildCommand>
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config platform="x64" name="Debug">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>1</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config platform="x64" name="Release">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>0</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>1</optimize>
+  <cpu>0</cpu>
+  <isX86_64>1</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>1</useInline>
+  <release>1</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>0</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Folder name="DinrusTango">
+  <Folder name="core">
+   <Folder name="tools">
+    <File path="..\src\core\tools_util\LinuxStackTrace.dn" />
+    <File path="..\src\core\tools_util\StackTrace.dn" />
+    <File path="..\src\core\tools_util\TraceExceptions.dn" />
+    <File path="..\src\core\tools_util\WinStackTrace.dn" />
+   </Folder>
+   <File path="..\src\core\Array.d" />
+   <File path="..\src\core\BitArray.d" />
+   <File path="..\src\core\BitManip.d" />
+   <File path="..\src\core\ByteSwap.d" />
+   <File path="..\src\core\checkedint.d" />
+   <File path="..\src\core\RuntimeTraits.d" />
+   <File path="..\src\core\Signal.d" />
+   <File path="..\src\core\TangoAtomic.d" />
+   <File path="..\src\core\TangoCpuid.d" />
+   <File path="..\src\core\TangoVararg.d" />
+   <File path="..\src\core\ThreadPool.d" />
+   <File path="..\src\core\Traits.d" />
+   <File path="..\src\core\Tuple.d" />
+   <File path="..\src\core\Variant.d" />
+   <File path="..\src\core\Version.d" />
+   <File path="..\src\core\WeakRef.d" />
+  </Folder>
+  <Folder name="io">
+   <Folder name="device">
+    <File path="..\src\io\device\Array.d" />
+    <File path="..\src\io\device\BitBucket.d" />
+    <File path="..\src\io\device\Conduit.d" />
+    <File path="..\src\io\device\Device.d" />
+    <File path="..\src\io\device\File.d" />
+    <File path="..\src\io\device\FileMap.d" />
+    <File path="..\src\io\device\SerialPort.d" />
+    <File path="..\src\io\device\TempFile.d" />
+    <File path="..\src\io\device\ThreadPipe.d" />
+   </Folder>
+   <Folder name="protocol">
+    <File path="..\src\io\protocol\Allocator.d" />
+    <File path="..\src\io\protocol\Allocator.d.save-failed" />
+    <File path="..\src\io\protocol\EndianProtocol.d" />
+    <File path="..\src\io\protocol\model.d" />
+    <File path="..\src\io\protocol\NativeProtocol.d" />
+    <File path="..\src\io\protocol\PickleProtocol.d" />
+    <File path="..\src\io\protocol\Reader.d" />
+    <File path="..\src\io\protocol\Writer.d" />
+   </Folder>
+   <Folder name="selector">
+    <File path="..\src\io\selector\AbstractSelector.d" />
+    <File path="..\src\io\selector\EpollSelector.d" />
+    <File path="..\src\io\selector\model.d" />
+    <File path="..\src\io\selector\PollSelector.d" />
+    <File path="..\src\io\selector\Selector.d" />
+    <File path="..\src\io\selector\SelectorException.d" />
+    <File path="..\src\io\selector\SelectSelector.d" />
+   </Folder>
+   <Folder name="stream">
+    <File path="..\src\io\stream\Buffered.d" />
+    <File path="..\src\io\stream\Buffered.do" />
+    <File path="..\src\io\stream\Bzip.d" />
+    <File path="..\src\io\stream\Data.d" />
+    <File path="..\src\io\stream\DataFile.d" />
+    <File path="..\src\io\stream\Delimiters.d" />
+    <File path="..\src\io\stream\Digester.d" />
+    <File path="..\src\io\stream\Endian.d" />
+    <File path="..\src\io\stream\Format.d" />
+    <File path="..\src\io\stream\Greedy.d" />
+    <File path="..\src\io\stream\Iterator.d" />
+    <File path="..\src\io\stream\Lines.d" />
+    <File path="..\src\io\stream\Map.d" />
+    <File path="..\src\io\stream\Patterns.d" />
+    <File path="..\src\io\stream\Quotes.d" />
+    <File path="..\src\io\stream\Snoop.d" />
+    <File path="..\src\io\stream\Text.d" />
+    <File path="..\src\io\stream\TextFile.d" />
+    <File path="..\src\io\stream\Typed.d" />
+    <File path="..\src\io\stream\Utf.d" />
+    <File path="..\src\io\stream\Zlib.d" />
+   </Folder>
+   <Folder name="vfs">
+    <File path="..\src\io\vfs\FileFolder.d" />
+    <File path="..\src\io\vfs\FtpFolder.d" />
+    <File path="..\src\io\vfs\LinkedFolder.d" />
+    <File path="..\src\io\vfs\model.d" />
+    <File path="..\src\io\vfs\VirtualFolder.d" />
+    <File path="..\src\io\vfs\ZipFolder.d" />
+   </Folder>
+   <File path="..\src\io\Buffer.d" />
+   <File path="..\src\io\Console.d" />
+   <File path="..\src\io\File.d" />
+   <File path="..\src\io\FilePath.d" />
+   <File path="..\src\io\FileScan.d" />
+   <File path="..\src\io\FileSystem.d" />
+   <File path="..\src\io\model.d" />
+   <File path="..\src\io\Path.d" />
+   <File path="..\src\io\Stdout.d" />
+   <File path="..\src\io\UnicodeFile.d" />
+  </Folder>
+  <Folder name="lib">
+   <File path="..\src\lib\bzlib.d" />
+   <File path="..\src\lib\OpenSSL.d" />
+   <File path="..\src\lib\zlib.d" />
+  </Folder>
+  <Folder name="math">
+   <Folder name="internal">
+    <File path="..\src\math\internal\BignumNoAsm.d" />
+    <File path="..\src\math\internal\BignumX86.d" />
+    <File path="..\src\math\internal\BiguintCore.d" />
+    <File path="..\src\math\internal\Cache.d" />
+   </Folder>
+   <Folder name="random">
+    <Folder name="engines">
+     <File path="..\src\math\random\engines\ArraySource.d" />
+     <File path="..\src\math\random\engines\CMWC.d" />
+     <File path="..\src\math\random\engines\KISS.d" />
+     <File path="..\src\math\random\engines\KissCmwc.d" />
+     <File path="..\src\math\random\engines\Sync.d" />
+     <File path="..\src\math\random\engines\Twister.d" />
+     <File path="..\src\math\random\engines\URandom.d" />
+    </Folder>
+    <File path="..\src\math\random\ExpSource.d" />
+    <File path="..\src\math\random\Kiss.d" />
+    <File path="..\src\math\random\NormalSource.d" />
+    <File path="..\src\math\random\Random.d" />
+    <File path="..\src\math\random\Twister.d" />
+    <File path="..\src\math\random\Ziggurat.d" />
+   </Folder>
+   <File path="..\src\math\Bessel.d" />
+   <File path="..\src\math\BigInt.d" />
+   <File path="..\src\math\Bracket.d" />
+   <File path="..\src\math\Elliptic.d" />
+   <File path="..\src\math\ErrorFunction.d" />
+   <File path="..\src\math\GammaFunction.d" />
+   <File path="..\src\math\IEEE.d" />
+   <File path="..\src\math\Math.d" />
+   <File path="..\src\math\Probability.d" />
+  </Folder>
+  <Folder name="net">
+   <Folder name="device">
+    <File path="..\src\net\device\Berkeley.d" />
+    <File path="..\src\net\device\Datagram.d" />
+    <File path="..\src\net\device\LocalSocket.d" />
+    <File path="..\src\net\device\Multicast.d" />
+    <File path="..\src\net\device\Socket.d" />
+    <File path="..\src\net\device\SSLSocket.d" />
+   </Folder>
+   <Folder name="ftp">
+    <File path="..\src\net\ftp\FtpClient.d" />
+    <File path="..\src\net\ftp\Telnet.d" />
+   </Folder>
+   <Folder name="http">
+    <Folder name="model">
+     <File path="..\src\net\http\model\HttpParamsView.d" />
+    </Folder>
+    <File path="..\src\net\http\ChunkStream.d" />
+    <File path="..\src\net\http\HttpClient.d" />
+    <File path="..\src\net\http\HttpClient.d.save-failed" />
+    <File path="..\src\net\http\HttpConst.d" />
+    <File path="..\src\net\http\HttpCookies.d" />
+    <File path="..\src\net\http\HttpGet.d" />
+    <File path="..\src\net\http\HttpHeaders.d" />
+    <File path="..\src\net\http\HttpParams.d" />
+    <File path="..\src\net\http\HttpPost.d" />
+    <File path="..\src\net\http\HttpStack.d" />
+    <File path="..\src\net\http\HttpTokens.d" />
+    <File path="..\src\net\http\HttpTriplet.d" />
+   </Folder>
+   <Folder name="model">
+    <File path="..\src\net\model\UriView.d" />
+   </Folder>
+   <File path="..\src\net\DatagramConduit.d" />
+   <File path="..\src\net\InternetAddress.d" />
+   <File path="..\src\net\PKI.d" />
+   <File path="..\src\net\Socket.d" />
+   <File path="..\src\net\SocketConduit.d" />
+   <File path="..\src\net\SocketListener.d" />
+   <File path="..\src\net\Uri.d" />
+  </Folder>
+  <Folder name="sys">
+   <Folder name="consts">
+    <File path="..\src\sys\consts\errno.d" />
+    <File path="..\src\sys\consts\fcntl.d" />
+    <File path="..\src\sys\consts\socket.d" />
+    <File path="..\src\sys\consts\sysctl.d" />
+    <File path="..\src\sys\consts\unistd.d" />
+   </Folder>
+   <Folder name="win32">
+    <Folder name="consts">
+     <File path="..\src\sys\win32\consts\errno.d" />
+     <File path="..\src\sys\win32\consts\fcntl.d" />
+     <File path="..\src\sys\win32\consts\socket.d" />
+     <File path="..\src\sys\win32\consts\sysctl.d" />
+     <File path="..\src\sys\win32\consts\unistd.d" />
+    </Folder>
+    <File path="..\src\sys\win32\CodePage.d" />
+    <File path="..\src\sys\win32\IUnknown.d" />
+    <File path="..\src\sys\win32\Macros.d" />
+    <File path="..\src\sys\win32\Process.d" />
+    <File path="..\src\sys\win32\SpecialPath.d" />
+    <File path="..\src\sys\win32\Types.d" />
+    <File path="..\src\sys\win32\UserGdi.d" />
+    <File path="..\src\sys\win32\WsaSock.d" />
+   </Folder>
+   <File path="..\src\sys\Common.d" />
+   <File path="..\src\sys\Environment.d" />
+   <File path="..\src\sys\HomeFolder.d" />
+   <File path="..\src\sys\Pipe.d" />
+   <File path="..\src\sys\Process.d" />
+   <File path="..\src\sys\SharedLib.d" />
+  </Folder>
+  <Folder name="text">
+   <Folder name="convert">
+    <File path="..\src\text\convert\DateTime.d" />
+    <File path="..\src\text\convert\Float.d" />
+    <File path="..\src\text\convert\Format.d" />
+    <File path="..\src\text\convert\Integer.d" />
+    <File path="..\src\text\convert\Layout.d" />
+    <File path="..\src\text\convert\Sprint.d" />
+    <File path="..\src\text\convert\TimeStamp.d" />
+    <File path="..\src\text\convert\UnicodeBom.d" />
+    <File path="..\src\text\convert\Utf.d" />
+   </Folder>
+   <Folder name="json">
+    <File path="..\src\text\json\Json.d" />
+    <File path="..\src\text\json\JsonEscape.d" />
+    <File path="..\src\text\json\JsonParser.d" />
+   </Folder>
+   <Folder name="locale">
+    <File path="..\src\text\locale\Collation.d" />
+    <File path="..\src\text\locale\Convert.d" />
+    <File path="..\src\text\locale\Core.d" />
+    <File path="..\src\text\locale\Data.d" />
+    <File path="..\src\text\locale\Locale.d" />
+    <File path="..\src\text\locale\Parse.d" />
+    <File path="..\src\text\locale\Posix.d" />
+    <File path="..\src\text\locale\Win32.d" />
+   </Folder>
+   <Folder name="xml">
+    <File path="..\src\text\xml\DocEntity.d" />
+    <File path="..\src\text\xml\DocPrinter.d" />
+    <File path="..\src\text\xml\DocTester.d" />
+    <File path="..\src\text\xml\Document.d" />
+    <File path="..\src\text\xml\PullParser.d" />
+    <File path="..\src\text\xml\SaxParser.d" />
+   </Folder>
+   <File path="..\src\text\Arguments.d" />
+   <File path="..\src\text\Ascii.d" />
+   <File path="..\src\text\Regex.d" />
+   <File path="..\src\text\Search.d" />
+   <File path="..\src\text\Text.d" />
+   <File path="..\src\text\Unicode.d" />
+   <File path="..\src\text\UnicodeData.d" />
+   <File path="..\src\text\Util.d" />
+  </Folder>
+  <Folder name="time">
+   <Folder name="chrono">
+    <File path="..\src\time\chrono\Calendar.d" />
+    <File path="..\src\time\chrono\Gregorian.d" />
+    <File path="..\src\time\chrono\GregorianBased.d" />
+    <File path="..\src\time\chrono\Hebrew.d" />
+    <File path="..\src\time\chrono\Hijri.d" />
+    <File path="..\src\time\chrono\Japanese.d" />
+    <File path="..\src\time\chrono\Korean.d" />
+    <File path="..\src\time\chrono\Taiwan.d" />
+    <File path="..\src\time\chrono\ThaiBuddhist.d" />
+   </Folder>
+   <File path="..\src\time\Clock.d" />
+   <File path="..\src\time\ISO8601.d" />
+   <File path="..\src\time\StopWatch.d" />
+   <File path="..\src\time\Time.d" />
+   <File path="..\src\time\WallClock.d" />
+  </Folder>
+  <Folder name="util">
+   <Folder name="cipher">
+    <File path="..\src\util\cipher\AES.d" />
+    <File path="..\src\util\cipher\Blowfish.d" />
+    <File path="..\src\util\cipher\ChaCha.d" />
+    <File path="..\src\util\cipher\Cipher.d" />
+    <File path="..\src\util\cipher\RC4.d" />
+    <File path="..\src\util\cipher\RC6.d" />
+    <File path="..\src\util\cipher\Salsa20.d" />
+    <File path="..\src\util\cipher\TEA.d" />
+    <File path="..\src\util\cipher\XTEA.d" />
+   </Folder>
+   <Folder name="collection">
+    <Folder name="impl">
+     <File path="..\src\util\collection\impl\AbstractIterator.d" />
+     <File path="..\src\util\collection\impl\BagCollection.d" />
+     <File path="..\src\util\collection\impl\Cell.d" />
+     <File path="..\src\util\collection\impl\CLCell.d" />
+     <File path="..\src\util\collection\impl\Collection.d" />
+     <File path="..\src\util\collection\impl\LLCell.d" />
+     <File path="..\src\util\collection\impl\LLPair.d" />
+     <File path="..\src\util\collection\impl\MapCollection.d" />
+     <File path="..\src\util\collection\impl\RBCell.d" />
+     <File path="..\src\util\collection\impl\RBPair.d" />
+     <File path="..\src\util\collection\impl\SeqCollection.d" />
+     <File path="..\src\util\collection\impl\SetCollection.d" />
+    </Folder>
+    <Folder name="iterator">
+     <File path="..\src\util\collection\iterator\ArrayIterator.d" />
+     <File path="..\src\util\collection\iterator\FilteringIterator.d" />
+     <File path="..\src\util\collection\iterator\InterleavingIterator.d" />
+    </Folder>
+    <Folder name="model">
+     <File path="..\src\util\collection\model\Bag.d" />
+     <File path="..\src\util\collection\model\BagView.d" />
+     <File path="..\src\util\collection\model\Comparator.d" />
+     <File path="..\src\util\collection\model\Dispenser.d" />
+     <File path="..\src\util\collection\model\GuardIterator.d" />
+     <File path="..\src\util\collection\model\HashParams.d" />
+     <File path="..\src\util\collection\model\Iterator.d" />
+     <File path="..\src\util\collection\model\Map.d" />
+     <File path="..\src\util\collection\model\MapView.d" />
+     <File path="..\src\util\collection\model\Seq.d" />
+     <File path="..\src\util\collection\model\SeqView.d" />
+     <File path="..\src\util\collection\model\Set.d" />
+     <File path="..\src\util\collection\model\SetView.d" />
+     <File path="..\src\util\collection\model\Sortable.d" />
+     <File path="..\src\util\collection\model\SortedKeys.d" />
+     <File path="..\src\util\collection\model\SortedValues.d" />
+     <File path="..\src\util\collection\model\View.d" />
+    </Folder>
+    <File path="..\src\util\collection\ArrayBag.d" />
+    <File path="..\src\util\collection\ArraySeq.d" />
+    <File path="..\src\util\collection\CircularSeq.d" />
+    <File path="..\src\util\collection\HashMap.d" />
+    <File path="..\src\util\collection\HashSet.d" />
+    <File path="..\src\util\collection\LinkMap.d" />
+    <File path="..\src\util\collection\LinkSeq.d" />
+    <File path="..\src\util\collection\TreeBag.d" />
+    <File path="..\src\util\collection\TreeMap.d" />
+   </Folder>
+   <Folder name="compress">
+    <File path="..\src\util\compress\BzipStream.d" />
+    <File path="..\src\util\compress\Zip.d" />
+    <File path="..\src\util\compress\ZlibStream.d" />
+   </Folder>
+   <Folder name="container">
+    <Folder name="model">
+     <File path="..\src\util\container\model\IContainer.d" />
+    </Folder>
+    <Folder name="more">
+     <File path="..\src\util\container\more\BitSet.d" />
+     <File path="..\src\util\container\more\CacheMap.d" />
+     <File path="..\src\util\container\more\HashFile.d" />
+     <File path="..\src\util\container\more\Heap.d" />
+     <File path="..\src\util\container\more\Stack.d" />
+     <File path="..\src\util\container\more\StackMap.d" />
+     <File path="..\src\util\container\more\Vector.d" />
+    </Folder>
+    <File path="..\src\util\container\CircularList.d" />
+    <File path="..\src\util\container\Clink.d" />
+    <File path="..\src\util\container\Container.d" />
+    <File path="..\src\util\container\HashMap.d" />
+    <File path="..\src\util\container\HashSet.d" />
+    <File path="..\src\util\container\LinkedList.d" />
+    <File path="..\src\util\container\RedBlack.d" />
+    <File path="..\src\util\container\Slink.d" />
+    <File path="..\src\util\container\SortedMap.d" />
+   </Folder>
+   <Folder name="digest">
+    <File path="..\src\util\digest\Crc32.d" />
+    <File path="..\src\util\digest\Digest.d" />
+    <File path="..\src\util\digest\Md2.d" />
+    <File path="..\src\util\digest\Md4.d" />
+    <File path="..\src\util\digest\Md5.d" />
+    <File path="..\src\util\digest\MerkleDamgard.d" />
+    <File path="..\src\util\digest\Ripemd128.d" />
+    <File path="..\src\util\digest\Ripemd160.d" />
+    <File path="..\src\util\digest\Ripemd256.d" />
+    <File path="..\src\util\digest\Ripemd320.d" />
+    <File path="..\src\util\digest\Sha0.d" />
+    <File path="..\src\util\digest\Sha01.d" />
+    <File path="..\src\util\digest\Sha1.d" />
+    <File path="..\src\util\digest\Sha256.d" />
+    <File path="..\src\util\digest\Sha512.d" />
+    <File path="..\src\util\digest\Tiger.d" />
+    <File path="..\src\util\digest\Whirlpool.d" />
+   </Folder>
+   <Folder name="encode">
+    <File path="..\src\util\encode\Base16.d" />
+    <File path="..\src\util\encode\Base32.d" />
+    <File path="..\src\util\encode\Base64.d" />
+   </Folder>
+   <Folder name="log">
+    <Folder name="model">
+     <File path="..\src\util\log\model\ILogger.d" />
+    </Folder>
+    <File path="..\src\util\log\AppendConsole.d" />
+    <File path="..\src\util\log\AppendFile.d" />
+    <File path="..\src\util\log\AppendFiles.d" />
+    <File path="..\src\util\log\AppendMail.d" />
+    <File path="..\src\util\log\AppendSocket.d" />
+    <File path="..\src\util\log\Config.d" />
+    <File path="..\src\util\log\ConfigProps.d" />
+    <File path="..\src\util\log\LayoutChainsaw.d" />
+    <File path="..\src\util\log\LayoutData.d" />
+    <File path="..\src\util\log\Log.d" />
+    <File path="..\src\util\log\Trace.d" />
+   </Folder>
+   <Folder name="uuid">
+    <File path="..\src\util\uuid\NamespaceGenV3.d" />
+    <File path="..\src\util\uuid\NamespaceGenV5.d" />
+    <File path="..\src\util\uuid\RandomGen.d" />
+    <File path="..\src\util\uuid\Uuid.d" />
+   </Folder>
+   <File path="..\src\util\ArgParser.d" />
+   <File path="..\src\util\ContentScan.dn" />
+   <File path="..\src\util\Convert.d" />
+   <File path="..\src\util\MemCache.dn" />
+   <File path="..\src\util\MinMax.d" />
+   <File path="..\src\util\PathScan.dn" />
+   <File path="..\src\util\PathUtil.d" />
+  </Folder>
+ </Folder>
+</DProject>

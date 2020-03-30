@@ -1,0 +1,18 @@
+static_library(WIN32 MSC) LLVMObjectYAML.lib;
+
+file
+	CodeViewYAMLDebugSections.h,
+	CodeViewYAMLSymbols.h,
+	CodeViewYAMLTypeHashing.h,
+	CodeViewYAMLTypes.h,
+	COFFYAML.h,
+	DWARFEmitter.h,
+	DWARFYAML.h,
+	ELFYAML.h,
+	MachOYAML.h,
+	MinidumpYAML.h,
+	ObjectYAML.h,
+	WasmYAML.h,
+	XCOFFYAML.h,
+	YAML.h;
+

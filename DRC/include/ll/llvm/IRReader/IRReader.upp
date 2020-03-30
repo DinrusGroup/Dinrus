@@ -1,0 +1,7 @@
+description "Чтение промежуточного кода\377";
+
+static_library(WIN32 MSC) LLVMIRReader.lib;
+
+file
+	IRReader.h;
+

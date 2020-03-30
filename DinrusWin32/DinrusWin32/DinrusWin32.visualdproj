@@ -1,0 +1,623 @@
+<DProject>
+ <ProjectGuid>{6133BE64-CA63-42EF-9F2C-2AA96B98AEDF}</ProjectGuid>
+ <Config name="Debug" platform="Win32">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <noboundscheck>0</noboundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <Dversion>2</Dversion>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <compiler>0</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbPre2043>0</cv2pdbPre2043>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config name="Release" platform="Win32">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>1</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>0</symdebug>
+  <symdebugref>0</symdebugref>
+  <optimize>1</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <noboundscheck>0</noboundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>1</useInline>
+  <release>1</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <Dversion>1</Dversion>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <compiler>0</compiler>
+  <otherDMD>1</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DINRUS)\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>0</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbPre2043>0</cv2pdbPre2043>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config name="Debug" platform="x64">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>1</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <noboundscheck>0</noboundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <Dversion>2</Dversion>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <compiler>0</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbPre2043>0</cv2pdbPre2043>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config name="Release" platform="x64">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>1</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>0</symdebug>
+  <symdebugref>1</symdebugref>
+  <optimize>1</optimize>
+  <cpu>0</cpu>
+  <isX86_64>1</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <noboundscheck>0</noboundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>1</useInline>
+  <release>1</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <Dversion>2</Dversion>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <compiler>0</compiler>
+  <otherDMD>0</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DMDInstallDir)windows\bin\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids />
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>0</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbPre2043>0</cv2pdbPre2043>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <objfiles />
+  <linkswitches />
+  <libfiles />
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).lib</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand />
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Folder name="DinrusWin32">
+  <Folder name="directx">
+   <File path="..\src\directx\d3d10.d" />
+   <File path="..\src\directx\d3d10effect.d" />
+   <File path="..\src\directx\d3d10misc.d" />
+   <File path="..\src\directx\d3d10shader.d" />
+   <File path="..\src\directx\d3d9.d" />
+   <File path="..\src\directx\d3d9.def" />
+   <File path="..\src\directx\d3d9caps.d" />
+   <File path="..\src\directx\d3d9types.d" />
+   <File path="..\src\directx\d3dx10.d" />
+   <File path="..\src\directx\d3dx10async.d" />
+   <File path="..\src\directx\d3dx10core.d" />
+   <File path="..\src\directx\d3dx10math.d" />
+   <File path="..\src\directx\d3dx10mesh.d" />
+   <File path="..\src\directx\d3dx10tex.d" />
+   <File path="..\src\directx\d3dx9.d" />
+   <File path="..\src\directx\d3dx9.def" />
+   <File path="..\src\directx\dinput8.d" />
+   <File path="..\src\directx\dinput8.def" />
+   <File path="..\src\directx\dsound8.d" />
+   <File path="..\src\directx\dsound8.def" />
+   <File path="..\src\directx\dxerr.d" />
+   <File path="..\src\directx\dxerr8.d" />
+   <File path="..\src\directx\dxerr9.d" />
+   <File path="..\src\directx\dxgi.d" />
+   <File path="..\src\directx\dxgitype.d" />
+  </Folder>
+  <File path="..\src\accctrl.d" />
+  <File path="..\src\aclapi.d" />
+  <File path="..\src\aclui.d" />
+  <File path="..\src\activex.d" />
+  <File path="..\src\basetsd.d" />
+  <File path="..\src\basetyps.d" />
+  <File path="..\src\cderr.d" />
+  <File path="..\src\cguid.d" />
+  <File path="..\src\comcat.d" />
+  <File path="..\src\commctrl.d" />
+  <File path="..\src\commdlg.d" />
+  <File path="..\src\core.d" />
+  <File path="..\src\cpl.d" />
+  <File path="..\src\cplext.d" />
+  <File path="..\src\custcntl.d" />
+  <File path="..\src\dbt.d" />
+  <File path="..\src\dde.d" />
+  <File path="..\src\ddeml.d" />
+  <File path="..\src\dhcpcsdk.d" />
+  <File path="..\src\dlgs.d" />
+  <File path="..\src\docobj.d" />
+  <File path="..\src\errorrep.d" />
+  <File path="..\src\exdisp.d" />
+  <File path="..\src\exdispid.d" />
+  <File path="..\src\httpext.d" />
+  <File path="..\src\idispids.d" />
+  <File path="..\src\imagehlp.d" />
+  <File path="..\src\imm.d" />
+  <File path="..\src\intshcut.d" />
+  <File path="..\src\ipexport.d" />
+  <File path="..\src\iphlpapi.d" />
+  <File path="..\src\ipifcons.d" />
+  <File path="..\src\iprtrmib.d" />
+  <File path="..\src\iptypes.d" />
+  <File path="..\src\isguids.d" />
+  <File path="..\src\lm.d" />
+  <File path="..\src\lmaccess.d" />
+  <File path="..\src\lmalert.d" />
+  <File path="..\src\lmapibuf.d" />
+  <File path="..\src\lmat.d" />
+  <File path="..\src\lmaudit.d" />
+  <File path="..\src\lmbrowsr.d" />
+  <File path="..\src\lmchdev.d" />
+  <File path="..\src\lmconfig.d" />
+  <File path="..\src\lmcons.d" />
+  <File path="..\src\lmerr.d" />
+  <File path="..\src\lmerrlog.d" />
+  <File path="..\src\lmmsg.d" />
+  <File path="..\src\lmremutl.d" />
+  <File path="..\src\lmrepl.d" />
+  <File path="..\src\lmserver.d" />
+  <File path="..\src\lmshare.d" />
+  <File path="..\src\lmsname.d" />
+  <File path="..\src\lmstats.d" />
+  <File path="..\src\lmsvc.d" />
+  <File path="..\src\lmuse.d" />
+  <File path="..\src\lmuseflg.d" />
+  <File path="..\src\lmwksta.d" />
+  <File path="..\src\lzexpand.d" />
+  <File path="..\src\mapi.d" />
+  <File path="..\src\mciavi.d" />
+  <File path="..\src\mcx.d" />
+  <File path="..\src\mgmtapi.d" />
+  <File path="..\src\mmsystem.d" />
+  <File path="..\src\msacm.d" />
+  <File path="..\src\mshtml.d" />
+  <File path="..\src\mswsock.d" />
+  <File path="..\src\nb30.d" />
+  <File path="..\src\nddeapi.d" />
+  <File path="..\src\nspapi.d" />
+  <File path="..\src\ntdef.d" />
+  <File path="..\src\ntdll.d" />
+  <File path="..\src\ntldap.d" />
+  <File path="..\src\ntsecapi.d" />
+  <File path="..\src\oaidl.d" />
+  <File path="..\src\objbase.d" />
+  <File path="..\src\objfwd.d" />
+  <File path="..\src\objidl.d" />
+  <File path="..\src\objsafe.d" />
+  <File path="..\src\ocidl.d" />
+  <File path="..\src\odbcinst.d" />
+  <File path="..\src\ole.d" />
+  <File path="..\src\ole2.d" />
+  <File path="..\src\ole2ver.d" />
+  <File path="..\src\oleacc.d" />
+  <File path="..\src\oleauto.d" />
+  <File path="..\src\olectl.d" />
+  <File path="..\src\olectlid.d" />
+  <File path="..\src\oledlg.d" />
+  <File path="..\src\oleidl.d" />
+  <File path="..\src\pbt.d" />
+  <File path="..\src\powrprof.d" />
+  <File path="..\src\prsht.d" />
+  <File path="..\src\psapi.d" />
+  <File path="..\src\rapi.d" />
+  <File path="..\src\ras.d" />
+  <File path="..\src\rasdlg.d" />
+  <File path="..\src\raserror.d" />
+  <File path="..\src\rassapi.d" />
+  <File path="..\src\readme.txt" />
+  <File path="..\src\reason.d" />
+  <File path="..\src\regstr.d" />
+  <File path="..\src\richedit.d" />
+  <File path="..\src\richole.d" />
+  <File path="..\src\rpc.d" />
+  <File path="..\src\rpcdce.d" />
+  <File path="..\src\rpcdce2.d" />
+  <File path="..\src\rpcdcep.d" />
+  <File path="..\src\rpcndr.d" />
+  <File path="..\src\rpcnsi.d" />
+  <File path="..\src\rpcnsip.d" />
+  <File path="..\src\rpcnterr.d" />
+  <File path="..\src\schannel.d" />
+  <File path="..\src\secext.d" />
+  <File path="..\src\servprov.d" />
+  <File path="..\src\setupapi.d" />
+  <File path="..\src\shellapi.d" />
+  <File path="..\src\shldisp.d" />
+  <File path="..\src\shlguid.d" />
+  <File path="..\src\shlobj.d" />
+  <File path="..\src\shlwapi.d" />
+  <File path="..\src\snmp.d" />
+  <File path="..\src\sql.d" />
+  <File path="..\src\sqlext.d" />
+  <File path="..\src\sqltypes.d" />
+  <File path="..\src\sqlucode.d" />
+  <File path="..\src\subauth.d" />
+  <File path="..\src\testall.d" />
+  <File path="..\src\tlhelp32.d" />
+  <File path="..\src\tmschema.d" />
+  <File path="..\src\unknwn.d" />
+  <File path="..\src\usp10.d" />
+  <File path="..\src\uuid.d" />
+  <File path="..\src\uuid.di" />
+  <File path="..\src\vfw.d" />
+  <File path="..\src\w32api.d" />
+  <File path="..\src\winbase.d" />
+  <File path="..\src\winber.d" />
+  <File path="..\src\wincon.d" />
+  <File path="..\src\wincrypt.d" />
+  <File path="..\src\windef.d" />
+  <File path="..\src\windows.d" />
+  <File path="..\src\winerror.d" />
+  <File path="..\src\wingdi.d" />
+  <File path="..\src\wininet.d" />
+  <File path="..\src\winioctl.d" />
+  <File path="..\src\winldap.d" />
+  <File path="..\src\winnetwk.d" />
+  <File path="..\src\winnls.d" />
+  <File path="..\src\winnt.d" />
+  <File path="..\src\winperf.d" />
+  <File path="..\src\winreg.d" />
+  <File path="..\src\winsock2.d" />
+  <File path="..\src\winspool.d" />
+  <File path="..\src\winsvc.d" />
+  <File path="..\src\winuser.d" />
+  <File path="..\src\winver.d" />
+  <File path="..\src\ws2tcpip.d" />
+  <File path="..\src\wtypes.d" />
+ </Folder>
+</DProject>

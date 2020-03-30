@@ -1,0 +1,9 @@
+file
+	CodegenNameGenerator.h,
+	CommentToXML.h,
+	DeclOccurrence.h,
+	IndexDataConsumer.h,
+	IndexingAction.h,
+	IndexSymbol.h,
+	USRGeneration.h;
+

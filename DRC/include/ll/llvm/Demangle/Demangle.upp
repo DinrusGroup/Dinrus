@@ -1,0 +1,14 @@
+description "Библиотека раздекорирования кода\377";
+
+static_library(WIN32 MSC) LLVMDemangle.lib;
+
+file
+	Compiler.h,
+	Demangle.h,
+	DemangleConfig.h,
+	ItaniumDemangle.h,
+	MicrosoftDemangle.h,
+	MicrosoftDemangleNodes.h,
+	StringView.h,
+	Utility.h;
+

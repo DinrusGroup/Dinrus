@@ -1,0 +1,20 @@
+static_library(WIN32 MSC) clangDriver.lib;
+
+file
+	Action.h,
+	Compilation.h,
+	DarwinSDKInfo.h,
+	Distro.h,
+	Driver.h,
+	DriverDiagnostic.h,
+	Job.h,
+	Multilib.h,
+	Options.h,
+	Phases.h,
+	SanitizerArgs.h,
+	Tool.h,
+	ToolChain.h,
+	Types.h,
+	Util.h,
+	XRayArgs.h;
+

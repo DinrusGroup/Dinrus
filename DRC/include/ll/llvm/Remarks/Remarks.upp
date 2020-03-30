@@ -1,0 +1,11 @@
+description "Замечания\377";
+
+static_library(WIN32 MSC) LLVMRemarks.lib;
+
+file
+	Remark.h,
+	RemarkFormat.h,
+	RemarkParser.h,
+	RemarkSerializer.h,
+	RemarkStringTable.h;
+

@@ -1,0 +1,10 @@
+description "Проходки\377";
+
+static_library(WIN32 MSC) LLVMPasses.lib;
+
+file
+	PassBuilder.h,
+	PassPlugin.h,
+	StandardInstrumentations.h,
+	src.tpp;
+

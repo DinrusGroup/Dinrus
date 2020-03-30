@@ -1,0 +1,7 @@
+file
+	Commit.h,
+	EditedSource.h,
+	EditsReceiver.h,
+	FileOffset.h,
+	Rewriters.h;
+

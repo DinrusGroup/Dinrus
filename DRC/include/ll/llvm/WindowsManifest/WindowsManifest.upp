@@ -1,0 +1,7 @@
+description "Манифест для Виндовс\377";
+
+static_library(WIN32 MSC) LLVMWindowsManifest.lib;
+
+file
+	WindowsManifestMerger.h;
+

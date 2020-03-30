@@ -1,0 +1,59 @@
+description "Главный пакет LLVM\377B";
+
+uses
+	LLVM\ADT,
+	LLVM\Analysis,
+	LLVM\AsmParser,
+	LLVM\BinaryFormat,
+	LLVM\Bitcode,
+	LLVM\Bitstream,
+	LLVM\CodeGen,
+	LLVM\Config,
+	LLVM\DebugInfo,
+	LLVM\Demangle,
+	LLVM\ExecutionEngine,
+	LLVM\FuzzMutate,
+	LLVM\IR,
+	LLVM\IRReader,
+	LLVM\LineEditor,
+	LLVM\Linker,
+	LLVM\LTO,
+	LLVM\MC,
+	LLVM\MCA,
+	LLVM\Object,
+	LLVM\ObjectYAML,
+	LLVM\Option,
+	LLVM\Passes,
+	LLVM\ProfileData,
+	LLVM\Remarks,
+	LLVM\Support,
+	LLVM\TableGen,
+	LLVM\Target,
+	LLVM\Testing,
+	LLVM\TextAPI,
+	LLVM\ToolDrivers,
+	LLVM\Transforms,
+	LLVM\WindowsManifest,
+	LLVM\WindowsResource,
+	LLVM\XRay,
+	llvm-c;
+
+static_library(WIN32 MSC) "d:\\LLVM\\lib\\LLVMXRay.lib d:\\LLVM\\lib\\LLVMWindowsManifest.lib d:\\LLVM\\lib\\LLVMTextAPI.lib d:\\LLVM\\lib\\LLVMTableGen.lib d:\\LLVM\\lib\\LLVMSymbolize.lib d:\\LLVM\\lib\\LLVMDebugInfoPDB.lib d:\\LLVM\\lib\\LLVMOrcJIT.lib d:\\LLVM\\lib\\LLVMJITLink.lib d:\\LLVM\\lib\\LLVMObjectYAML.lib d:\\LLVM\\lib\\LLVMMCA.lib d:\\LLVM\\lib\\LLVMLTO.lib d:\\LLVM\\lib\\LLVMPasses.lib d:\\LLVM\\lib\\LLVMObjCARCOpts.lib d:\\LLVM\\lib\\LLVMLineEditor.lib d:\\LLVM\\lib\\LLVMLibDriver.lib d:\\LLVM\\lib\\LLVMInterpreter.lib d:\\LLVM\\lib\\LLVMFuzzMutate.lib d:\\LLVM\\lib\\LLVMMCJIT.lib d:\\LLVM\\lib\\LLVMExecutionEngine.lib d:\\LLVM\\lib\\LLVMRuntimeDyld.lib d:\\LLVM\\lib\\LLVMDlltoolDriver.lib d:\\LLVM\\lib\\LLVMOption.lib d:\\LLVM\\lib\\LLVMDebugInfoGSYM.lib d:\\LLVM\\lib\\LLVMCoverage.lib d:\\LLVM\\lib\\LLVMCoroutines.lib d:\\LLVM\\lib\\LLVMXCoreDisassembler.lib d:\\LLVM\\lib\\LLVMXCoreCodeGen.lib d:\\LLVM\\lib\\LLVMXCoreDesc.lib d:\\LLVM\\lib\\LLVMXCoreInfo.lib d:\\LLVM\\lib\\LLVMX86Disassembler.lib d:\\LLVM\\lib\\LLVMX86AsmParser.lib d:\\LLVM\\lib\\LLVMX86CodeGen.lib d:\\LLVM\\lib\\LLVMX86Desc.lib d:\\LLVM\\lib\\LLVMX86Utils.lib d:\\LLVM\\lib\\LLVMX86Info.lib d:\\LLVM\\lib\\LLVMWebAssemblyDisassembler.lib d:\\LLVM\\lib\\LLVMWebAssemblyCodeGen.lib d:\\LLVM\\lib\\LLVMWebAssemblyDesc.lib d:\\LLVM\\lib\\LLVMWebAssemblyAsmParser.lib d:\\LLVM\\lib\\LLVMWebAssemblyInfo.lib d:\\LLVM\\lib\\LLVMSystemZDisassembler.lib d:\\LLVM\\lib\\LLVMSystemZCodeGen.lib d:\\LLVM\\lib\\LLVMSystemZAsmParser.lib d:\\LLVM\\lib\\LLVMSystemZDesc.lib d:\\LLVM\\lib\\LLVMSystemZInfo.lib d:\\LLVM\\lib\\LLVMSparcDisassembler.lib d:\\LLVM\\lib\\LLVMSparcCodeGen.lib d:\\LLVM\\lib\\LLVMSparcAsmParser.lib d:\\LLVM\\lib\\LLVMSparcDesc.lib d:\\LLVM\\lib\\LLVMSparcInfo.lib d:\\LLVM\\lib\\LLVMRISCVDisassembler.lib d:\\LLVM\\lib\\LLVMRISCVCodeGen.lib d:\\LLVM\\lib\\LLVMRISCVAsmParser.lib d:\\LLVM\\lib\\LLVMRISCVDesc.lib d:\\LLVM\\lib\\LLVMRISCVUtils.lib d:\\LLVM\\lib\\LLVMRISCVInfo.lib d:\\LLVM\\lib\\LLVMPowerPCDisassembler.lib d:\\LLVM\\lib\\LLVMPowerPCCodeGen.lib d:\\LLVM\\lib\\LLVMPowerPCAsmParser.lib d:\\LLVM\\lib\\LLVMPowerPCDesc.lib d:\\LLVM\\lib\\LLVMPowerPCInfo.lib d:\\LLVM\\lib\\LLVMNVPTXCodeGen.lib d:\\LLVM\\lib\\LLVMNVPTXDesc.lib d:\\LLVM\\lib\\LLVMNVPTXInfo.lib d:\\LLVM\\lib\\LLVMMSP430Disassembler.lib d:\\LLVM\\lib\\LLVMMSP430CodeGen.lib d:\\LLVM\\lib\\LLVMMSP430AsmParser.lib d:\\LLVM\\lib\\LLVMMSP430Desc.lib d:\\LLVM\\lib\\LLVMMSP430Info.lib d:\\LLVM\\lib\\LLVMMipsDisassembler.lib d:\\LLVM\\lib\\LLVMMipsCodeGen.lib d:\\LLVM\\lib\\LLVMMipsAsmParser.lib d:\\LLVM\\lib\\LLVMMipsDesc.lib d:\\LLVM\\lib\\LLVMMipsInfo.lib d:\\LLVM\\lib\\LLVMLanaiDisassembler.lib d:\\LLVM\\lib\\LLVMLanaiCodeGen.lib d:\\LLVM\\lib\\LLVMLanaiAsmParser.lib d:\\LLVM\\lib\\LLVMLanaiDesc.lib d:\\LLVM\\lib\\LLVMLanaiInfo.lib d:\\LLVM\\lib\\LLVMHexagonDisassembler.lib d:\\LLVM\\lib\\LLVMHexagonCodeGen.lib d:\\LLVM\\lib\\LLVMHexagonAsmParser.lib d:\\LLVM\\lib\\LLVMHexagonDesc.lib d:\\LLVM\\lib\\LLVMHexagonInfo.lib d:\\LLVM\\lib\\LLVMBPFDisassembler.lib d:\\LLVM\\lib\\LLVMBPFCodeGen.lib d:\\LLVM\\lib\\LLVMBPFAsmParser.lib d:\\LLVM\\lib\\LLVMBPFDesc.lib d:\\LLVM\\lib\\LLVMBPFInfo.lib d:\\LLVM\\lib\\LLVMARMDisassembler.lib d:\\LLVM\\lib\\LLVMARMCodeGen.lib d:\\LLVM\\lib\\LLVMARMAsmParser.lib d:\\LLVM\\lib\\LLVMARMDesc.lib d:\\LLVM\\lib\\LLVMARMUtils.lib d:\\LLVM\\lib\\LLVMARMInfo.lib d:\\LLVM\\lib\\LLVMAMDGPUDisassembler.lib d:\\LLVM\\lib\\LLVMAMDGPUCodeGen.lib d:\\LLVM\\lib\\LLVMMIRParser.lib d:\\LLVM\\lib\\LLVMipo.lib d:\\LLVM\\lib\\LLVMInstrumentation.lib d:\\LLVM\\lib\\LLVMVectorize.lib d:\\LLVM\\lib\\LLVMLinker.lib d:\\LLVM\\lib\\LLVMIRReader.lib d:\\LLVM\\lib\\LLVMAsmParser.lib d:\\LLVM\\lib\\LLVMAMDGPUAsmParser.lib d:\\LLVM\\lib\\LLVMAMDGPUDesc.lib d:\\LLVM\\lib\\LLVMAMDGPUUtils.lib d:\\LLVM\\lib\\LLVMAMDGPUInfo.lib d:\\LLVM\\lib\\LLVMAArch64Disassembler.lib d:\\LLVM\\lib\\LLVMMCDisassembler.lib d:\\LLVM\\lib\\LLVMAArch64CodeGen.lib d:\\LLVM\\lib\\LLVMGlobalISel.lib d:\\LLVM\\lib\\LLVMSelectionDAG.lib d:\\LLVM\\lib\\LLVMAsmPrinter.lib d:\\LLVM\\lib\\LLVMDebugInfoDWARF.lib d:\\LLVM\\lib\\LLVMCodeGen.lib d:\\LLVM\\lib\\LLVMTarget.lib d:\\LLVM\\lib\\LLVMScalarOpts.lib d:\\LLVM\\lib\\LLVMInstCombine.lib d:\\LLVM\\lib\\LLVMAggressiveInstCombine.lib d:\\LLVM\\lib\\LLVMTransformUtils.lib d:\\LLVM\\lib\\LLVMBitWriter.lib d:\\LLVM\\lib\\LLVMAnalysis.lib d:\\LLVM\\lib\\LLVMProfileData.lib d:\\LLVM\\lib\\LLVMObject.lib d:\\LLVM\\lib\\LLVMBitReader.lib d:\\LLVM\\lib\\LLVMBitstreamReader.lib d:\\LLVM\\lib\\LLVMCore.lib d:\\LLVM\\lib\\LLVMRemarks.lib d:\\LLVM\\lib\\LLVMAArch64AsmParser.lib d:\\LLVM\\lib\\LLVMMCParser.lib d:\\LLVM\\lib\\LLVMAArch64Desc.lib d:\\LLVM\\lib\\LLVMMC.lib d:\\LLVM\\lib\\LLVMDebugInfoCodeView.lib d:\\LLVM\\lib\\LLVMDebugInfoMSF.lib d:\\LLVM\\lib\\LLVMBinaryFormat.lib d:\\LLVM\\lib\\LLVMAArch64Utils.lib d:\\LLVM\\lib\\LLVMAArch64Info.lib d:\\LLVM\\lib\\LLVMSupport.lib d:\\LLVM\\lib\\LLVMDemangle.lib";
+
+options(WIN32 MSC) "/ZW /Mt";
+
+link(WIN32 MSC) "/NXCOMPAT /DYNAMICBASE \"d:\\LLVM\\lib\\LLVMXRay.lib\" \"d:\\LLVM\\lib\\LLVMWindowsManifest.lib\" \"d:\\LLVM\\lib\\LLVMTextAPI.lib\" \"d:\\LLVM\\lib\\LLVMTableGen.lib\" \"d:\\LLVM\\lib\\LLVMSymbolize.lib\" \"d:\\LLVM\\lib\\LLVMDebugInfoPDB.lib\" \"d:\\LLVM\\lib\\LLVMOrcJIT.lib\" \"d:\\LLVM\\lib\\LLVMJITLink.lib\" \"d:\\LLVM\\lib\\LLVMObjectYAML.lib\" \"d:\\LLVM\\lib\\LLVMMCA.lib\" \"d:\\LLVM\\lib\\LLVMLTO.lib\" \"d:\\LLVM\\lib\\LLVMPasses.lib\" \"d:\\LLVM\\lib\\LLVMObjCARCOpts.lib\" \"d:\\LLVM\\lib\\LLVMLineEditor.lib\" \"d:\\LLVM\\lib\\LLVMLibDriver.lib\" \"d:\\LLVM\\lib\\LLVMInterpreter.lib\" \"d:\\LLVM\\lib\\LLVMFuzzMutate.lib\" \"d:\\LLVM\\lib\\LLVMMCJIT.lib\" \"d:\\LLVM\\lib\\LLVMExecutionEngine.lib\" \"d:\\LLVM\\lib\\LLVMRuntimeDyld.lib\" \"d:\\LLVM\\lib\\LLVMDlltoolDriver.lib\" \"d:\\LLVM\\lib\\LLVMOption.lib\" \"d:\\LLVM\\lib\\LLVMDebugInfoGSYM.lib\" \"d:\\LLVM\\lib\\LLVMCoverage.lib\" \"d:\\LLVM\\lib\\LLVMCoroutines.lib\" \"d:\\LLVM\\lib\\LLVMXCoreDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMXCoreCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMXCoreDesc.lib\" \"d:\\LLVM\\lib\\LLVMXCoreInfo.lib\" \"d:\\LLVM\\lib\\LLVMX86Disassembler.lib\" \"d:\\LLVM\\lib\\LLVMX86AsmParser.lib\" \"d:\\LLVM\\lib\\LLVMX86CodeGen.lib\" \"d:\\LLVM\\lib\\LLVMX86Desc.lib\" \"d:\\LLVM\\lib\\LLVMX86Utils.lib\" \"d:\\LLVM\\lib\\LLVMX86Info.lib\" \"d:\\LLVM\\lib\\LLVMWebAssemblyDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMWebAssemblyCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMWebAssemblyDesc.lib\" \"d:\\LLVM\\lib\\LLVMWebAssemblyAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMWebAssemblyInfo.lib\" \"d:\\LLVM\\lib\\LLVMSystemZDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMSystemZCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMSystemZAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMSystemZDesc.lib\" \"d:\\LLVM\\lib\\LLVMSystemZInfo.lib\" \"d:\\LLVM\\lib\\LLVMSparcDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMSparcCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMSparcAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMSparcDesc.lib\" \"d:\\LLVM\\lib\\LLVMSparcInfo.lib\" \"d:\\LLVM\\lib\\LLVMRISCVDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMRISCVCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMRISCVAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMRISCVDesc.lib\" \"d:\\LLVM\\lib\\LLVMRISCVUtils.lib\" \"d:\\LLVM\\lib\\LLVMRISCVInfo.lib\" \"d:\\LLVM\\lib\\LLVMPowerPCDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMPowerPCCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMPowerPCAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMPowerPCDesc.lib\" \"d:\\LLVM\\lib\\LLVMPowerPCInfo.lib\" \"d:\\LLVM\\lib\\LLVMNVPTXCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMNVPTXDesc.lib\" \"d:\\LLVM\\lib\\LLVMNVPTXInfo.lib\" \"d:\\LLVM\\lib\\LLVMMSP430Disassembler.lib\" \"d:\\LLVM\\lib\\LLVMMSP430CodeGen.lib\" \"d:\\LLVM\\lib\\LLVMMSP430AsmParser.lib\" \"d:\\LLVM\\lib\\LLVMMSP430Desc.lib\" \"d:\\LLVM\\lib\\LLVMMSP430Info.lib\" \"d:\\LLVM\\lib\\LLVMMipsDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMMipsCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMMipsAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMMipsDesc.lib\" \"d:\\LLVM\\lib\\LLVMMipsInfo.lib\" \"d:\\LLVM\\lib\\LLVMLanaiDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMLanaiCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMLanaiAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMLanaiDesc.lib\" \"d:\\LLVM\\lib\\LLVMLanaiInfo.lib\" \"d:\\LLVM\\lib\\LLVMHexagonDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMHexagonCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMHexagonAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMHexagonDesc.lib\" \"d:\\LLVM\\lib\\LLVMHexagonInfo.lib\" \"d:\\LLVM\\lib\\LLVMBPFDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMBPFCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMBPFAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMBPFDesc.lib\" \"d:\\LLVM\\lib\\LLVMBPFInfo.lib\" \"d:\\LLVM\\lib\\LLVMARMDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMARMCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMARMAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMARMDesc.lib\" \"d:\\LLVM\\lib\\LLVMARMUtils.lib\" \"d:\\LLVM\\lib\\LLVMARMInfo.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMMIRParser.lib\" \"d:\\LLVM\\lib\\LLVMipo.lib\" \"d:\\LLVM\\lib\\LLVMInstrumentation.lib\" \"d:\\LLVM\\lib\\LLVMVectorize.lib\" \"d:\\LLVM\\lib\\LLVMLinker.lib\" \"d:\\LLVM\\lib\\LLVMIRReader.lib\" \"d:\\LLVM\\lib\\LLVMAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUAsmParser.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUDesc.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUUtils.lib\" \"d:\\LLVM\\lib\\LLVMAMDGPUInfo.lib\" \"d:\\LLVM\\lib\\LLVMAArch64Disassembler.lib\" \"d:\\LLVM\\lib\\LLVMMCDisassembler.lib\" \"d:\\LLVM\\lib\\LLVMAArch64CodeGen.lib\" \"d:\\LLVM\\lib\\LLVMGlobalISel.lib\" \"d:\\LLVM\\lib\\LLVMSelectionDAG.lib\" \"d:\\LLVM\\lib\\LLVMAsmPrinter.lib\" \"d:\\LLVM\\lib\\LLVMDebugInfoDWARF.lib\" \"d:\\LLVM\\lib\\LLVMCodeGen.lib\" \"d:\\LLVM\\lib\\LLVMTarget.lib\" \"d:\\LLVM\\lib\\LLVMScalarOpts.lib\" \"d:\\LLVM\\lib\\LLVMInstCombine.lib\" \"d:\\LLVM\\lib\\LLVMAggressiveInstCombine.lib\" \"d:\\LLVM\\lib\\LLVMTransformUtils.lib\" \"d:\\LLVM\\lib\\LLVMBitWriter.lib\" \"d:\\LLVM\\lib\\LLVMAnalysis.lib\" \"d:\\LLVM\\lib\\LLVMProfileData.lib\" \"d:\\LLVM\\lib\\LLVMObject.lib\" \"d:\\LLVM\\lib\\LLVMBitReader.lib\" \"d:\\LLVM\\lib\\LLVMBitstreamReader.lib\" \"d:\\LLVM\\lib\\LLVMCore.lib\" \"d:\\LLVM\\lib\\LLVMRemarks.lib\" \"d:\\LLVM\\lib\\LLVMAArch64AsmParser.lib\" \"d:\\LLVM\\lib\\LLVMMCParser.lib\" \"d:\\LLVM\\lib\\LLVMAArch64Desc.lib\" \"d:\\LLVM\\lib\\LLVMMC.lib\" \"d:\\LLVM\\lib\\LLVMDebugInfoCodeView.lib\" \"d:\\LLVM\\lib\\LLVMDebugInfoMSF.lib\" \"d:\\LLVM\\lib\\LLVMBinaryFormat.lib\" \"d:\\LLVM\\lib\\LLVMAArch64Utils.lib\" \"d:\\LLVM\\lib\\LLVMAArch64Info.lib\" \"d:\\LLVM\\lib\\LLVMSupport.lib\" \"d:\\LLVM\\lib\\LLVMDemangle.lib\" \"psapi.lib\" \"shell32.lib\" \"ole32.lib\" \"uuid.lib\" \"advapi32.lib\" \"delayimp.lib\" \"-delayload:shell32.dll\" \"-delayload:ole32.dll\" \"kernel32.lib\" \"user32.lib\" \"gdi32.lib\" \"winspool.lib\" \"oleaut32.lib\" \"comdlg32.lib\" /STACK:\"10000000\" /MACHINE:X86 /SAFESEH /ERRORREPORT:PROMPT /NOLOGO /TLBID:1";
+
+file
+	InitializePasses.h,
+	LinkAllIR.h,
+	LinkAllPasses.h,
+	Pass.h,
+	PassAnalysisSupport.h,
+	PassInfo.h,
+	PassRegistry.h,
+	PassSupport.h;
+
+mainconfig
+	"" = "";
+

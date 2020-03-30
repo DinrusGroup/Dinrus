@@ -1,0 +1,10 @@
+description "Тестирование\377";
+
+static_library(WIN32 MSC) LLVMTestingSupport.lib;
+
+file
+	Support readonly separator,
+	Support\Annotations.h,
+	Support\Error.h,
+	Support\SupportHelpers.h;
+

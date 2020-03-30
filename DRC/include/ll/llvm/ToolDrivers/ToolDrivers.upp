@@ -1,0 +1,6 @@
+file
+	llvm-dlltool readonly separator,
+	llvm-dlltool\DlltoolDriver.h,
+	llvm-lib readonly separator,
+	llvm-lib\LibDriver.h;
+

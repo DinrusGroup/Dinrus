@@ -1,0 +1,20 @@
+description "Двоичный формат\377";
+
+static_library(WIN32 MSC) LLVMBinaryFormat.lib;
+
+file
+	AMDGPUMetadataVerifier.h,
+	COFF.h,
+	Dwarf.h,
+	ELF.h,
+	MachO.h,
+	Magic.h,
+	Minidump.h,
+	MsgPack.h,
+	MsgPackDocument.h,
+	MsgPackReader.h,
+	MsgPackTypes.h,
+	MsgPackWriter.h,
+	Wasm.h,
+	XCOFF.h;
+

@@ -1,0 +1,16 @@
+description "Оптимизации во время компоновки \377";
+
+static_library(WIN32 MSC) LLVMLTO.lib;
+
+file
+	Caching.h,
+	Config.h,
+	LTO.h,
+	LTOBackend.h,
+	SummaryBasedOptimizations.h,
+	legacy readonly separator,
+	legacy\LTOCodeGenerator.h,
+	legacy\LTOModule.h,
+	legacy\ThinLTOCodeGenerator.h,
+	legacy\UpdateCompilerUsed.h;
+

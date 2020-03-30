@@ -1,0 +1,21 @@
+static_library(WIN32 MSC) LLVMXRay.lib;
+
+file
+	BlockIndexer.h,
+	BlockPrinter.h,
+	BlockVerifier.h,
+	FDRLogBuilder.h,
+	FDRRecordConsumer.h,
+	FDRRecordProducer.h,
+	FDRRecords.h,
+	FDRTraceExpander.h,
+	FDRTraceWriter.h,
+	FileHeaderReader.h,
+	Graph.h,
+	InstrumentationMap.h,
+	Profile.h,
+	RecordPrinter.h,
+	Trace.h,
+	XRayRecord.h,
+	YAMLXRayRecord.h;
+

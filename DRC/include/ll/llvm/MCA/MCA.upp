@@ -1,0 +1,26 @@
+static_library(WIN32 MSC) LLVMMCA.lib;
+
+file
+	Context.h,
+	HWEventListener.h,
+	InstrBuilder.h,
+	Instruction.h,
+	Pipeline.h,
+	SourceMgr.h,
+	Support.h,
+	Stages readonly separator,
+	Stages\DispatchStage.h,
+	Stages\EntryStage.h,
+	Stages\ExecuteStage.h,
+	Stages\InstructionTables.h,
+	Stages\MicroOpQueueStage.h,
+	Stages\RetireStage.h,
+	Stages\Stage.h,
+	HardwareUnits readonly separator,
+	HardwareUnits\HardwareUnit.h,
+	HardwareUnits\LSUnit.h,
+	HardwareUnits\RegisterFile.h,
+	HardwareUnits\ResourceManager.h,
+	HardwareUnits\RetireControlUnit.h,
+	HardwareUnits\Scheduler.h;
+

@@ -1,0 +1,7 @@
+description "Редактор строк\377";
+
+static_library(WIN32 MSC) LLVMLineEditor.lib;
+
+file
+	LineEditor.h;
+

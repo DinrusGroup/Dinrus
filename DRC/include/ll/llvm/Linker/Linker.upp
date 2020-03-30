@@ -1,0 +1,8 @@
+description "Компоновщик\377";
+
+static_library(WIN32 MSC) LLVMLinker.lib;
+
+file
+	IRMover.h,
+	Linker.h;
+

@@ -1,0 +1,10 @@
+static_library(WIN32 MSC) LLVMFuzzMutate.lib;
+
+file
+	FuzzerCLI.h,
+	IRMutator.h,
+	OpDescriptor.h,
+	Operations.h,
+	Random.h,
+	RandomIRBuilder.h;
+

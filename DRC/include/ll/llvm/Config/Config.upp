@@ -1,0 +1,7 @@
+description "Файлы основной конфигурации\377";
+
+file
+	abi-breaking.h,
+	config.h,
+	llvm-config.h;
+

@@ -1,0 +1,15 @@
+static_library(WIN32 MSC) LLVMTextAPI.lib;
+
+file
+	MachO readonly separator,
+	MachO\ArchitectureSet.h,
+	MachO\InterfaceFile.h,
+	MachO\PackedVersion.h,
+	MachO\Symbol.h,
+	MachO\TextAPIReader.h,
+	MachO\TextAPIWriter.h,
+	MachO\Architecture.h,
+	ELF readonly separator,
+	ELF\ELFStub.h,
+	ELF\TBEHandler.h;
+

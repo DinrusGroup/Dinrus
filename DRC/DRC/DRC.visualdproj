@@ -1,0 +1,616 @@
+<DProject>
+ <ProjectGuid>{1669EE65-D7E1-45AE-A15C-948B1EEBE433}</ProjectGuid>
+ <Config platform="Win32" name="Debug">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>0</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>1</symdebug>
+  <symdebugref>0</symdebugref>
+  <optimize>0</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>0</useInline>
+  <release>0</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>1</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DINRUS)\dmd.exe</program>
+  <imppath />
+  <fileImppath />
+  <outdir>$(PlatformName)\$(ConfigurationName)</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>0</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids>DMDV1</versionids>
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>1</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles>..\Debug\Dinrus.LLVM900OMF.lib</libfiles>
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).exe</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand>dinrusex</preBuildCommand>
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Config platform="Win32" name="Release">
+  <obj>0</obj>
+  <link>0</link>
+  <lib>0</lib>
+  <subsystem>1</subsystem>
+  <multiobj>0</multiobj>
+  <singleFileCompilation>0</singleFileCompilation>
+  <oneobj>0</oneobj>
+  <mscoff>0</mscoff>
+  <trace>0</trace>
+  <quiet>0</quiet>
+  <verbose>0</verbose>
+  <vtls>0</vtls>
+  <vgc>0</vgc>
+  <symdebug>0</symdebug>
+  <symdebugref>0</symdebugref>
+  <optimize>1</optimize>
+  <cpu>0</cpu>
+  <isX86_64>0</isX86_64>
+  <isLinux>0</isLinux>
+  <isOSX>0</isOSX>
+  <isWindows>0</isWindows>
+  <isFreeBSD>0</isFreeBSD>
+  <isSolaris>0</isSolaris>
+  <scheduler>0</scheduler>
+  <useDeprecated>0</useDeprecated>
+  <errDeprecated>0</errDeprecated>
+  <useAssert>0</useAssert>
+  <useInvariants>0</useInvariants>
+  <useIn>0</useIn>
+  <useOut>0</useOut>
+  <useArrayBounds>0</useArrayBounds>
+  <boundscheck>0</boundscheck>
+  <useSwitchError>0</useSwitchError>
+  <useUnitTests>0</useUnitTests>
+  <useInline>1</useInline>
+  <release>1</release>
+  <preservePaths>0</preservePaths>
+  <warnings>0</warnings>
+  <infowarnings>0</infowarnings>
+  <checkProperty>0</checkProperty>
+  <genStackFrame>0</genStackFrame>
+  <pic>0</pic>
+  <cov>0</cov>
+  <nofloat>0</nofloat>
+  <ignoreUnsupportedPragmas>0</ignoreUnsupportedPragmas>
+  <allinst>0</allinst>
+  <stackStomp>0</stackStomp>
+  <betterC>0</betterC>
+  <dip25>0</dip25>
+  <dip1000>0</dip1000>
+  <dip1008>0</dip1008>
+  <transition_field>0</transition_field>
+  <revert_import>0</revert_import>
+  <preview_dtorfields>0</preview_dtorfields>
+  <transition_checkimports>0</transition_checkimports>
+  <transition_complex>0</transition_complex>
+  <preview_intpromote>0</preview_intpromote>
+  <preview_fixAliasThis>0</preview_fixAliasThis>
+  <preview_markdown>0</preview_markdown>
+  <transition_vmarkdown>0</transition_vmarkdown>
+  <compiler>0</compiler>
+  <otherDMD>1</otherDMD>
+  <cccmd>$(CC) -c</cccmd>
+  <ccTransOpt>1</ccTransOpt>
+  <addDepImp>0</addDepImp>
+  <program>$(DINRUS)\dmd.exe</program>
+  <imppath>..\src;..\..\DinrusTango\src</imppath>
+  <fileImppath />
+  <outdir>D:\dinrus\dev\DINRUS\DRC\bin</outdir>
+  <objdir>$(OutDir)</objdir>
+  <objname />
+  <libname />
+  <doDocComments>0</doDocComments>
+  <docdir />
+  <docname />
+  <modules_ddoc />
+  <ddocfiles />
+  <doHdrGeneration>0</doHdrGeneration>
+  <hdrdir />
+  <hdrname />
+  <doXGeneration>1</doXGeneration>
+  <xfilename>$(IntDir)\$(TargetName).json</xfilename>
+  <debuglevel>0</debuglevel>
+  <debugids />
+  <versionlevel>0</versionlevel>
+  <versionids>Dinrus; MARS;DMDV2; TARGET_WINDOS;STRUCTTHISREF;_WIN32;OMFOBJ;SNAN_DEFAULT_INIT;SARRAYVALUE;CCASTSYNTAX;CARRAYDECL;</versionids>
+  <dump_source>0</dump_source>
+  <mapverbosity>0</mapverbosity>
+  <createImplib>0</createImplib>
+  <debuglib>0</debuglib>
+  <defaultlibname />
+  <debuglibname />
+  <moduleDepsFile />
+  <run>0</run>
+  <runargs />
+  <runCv2pdb>0</runCv2pdb>
+  <pathCv2pdb>$(VisualDInstallDir)cv2pdb\cv2pdb.exe</pathCv2pdb>
+  <cv2pdbNoDemangle>0</cv2pdbNoDemangle>
+  <cv2pdbEnumType>0</cv2pdbEnumType>
+  <cv2pdbOptions />
+  <enableMixin>0</enableMixin>
+  <mixinPath>$(IntDir)\$(SafeProjectName).mixin</mixinPath>
+  <objfiles />
+  <linkswitches />
+  <libfiles>..\Release\Dinrus.LLVM900OMF.lib</libfiles>
+  <libpaths />
+  <deffile />
+  <resfile />
+  <exefile>$(OutDir)\$(ProjectName).exe</exefile>
+  <pdbfile>$(IntDir)\$(SafeProjectName).pdb</pdbfile>
+  <impfile>$(IntDir)\$(SafeProjectName).lib</impfile>
+  <mapfile>$(IntDir)\$(SafeProjectName).map</mapfile>
+  <useStdLibPath>1</useStdLibPath>
+  <cRuntime>2</cRuntime>
+  <privatePhobos>0</privatePhobos>
+  <additionalOptions />
+  <preBuildCommand>dinrusex</preBuildCommand>
+  <postBuildCommand />
+  <filesToClean>*.obj;*.cmd;*.build;*.json;*.dep;*.tlog</filesToClean>
+ </Config>
+ <Folder name="DRC">
+  <Folder name="cmd">
+   <File path="..\src\cmd\ASTStats.d" />
+   <File path="..\src\cmd\Compile.d" />
+   <File path="..\src\cmd\DDoc.d" />
+   <File path="..\src\cmd\DDocEmitter.d" />
+   <File path="..\src\cmd\DDocHTML.d" />
+   <File path="..\src\cmd\DDocXML.d" />
+   <File path="..\src\cmd\Highlight.d" />
+   <File path="..\src\cmd\ImportGraph.d" />
+   <File path="..\src\cmd\Statistics.d" />
+  </Folder>
+  <Folder name="dbg">
+   <Folder name="image">
+    <File path="..\src\dbg\image\PE.d" />
+   </Folder>
+   <Folder name="symbol">
+    <File path="..\src\dbg\symbol\CodeView.d" />
+   </Folder>
+   <File path="..\src\dbg\CallStackInfo.d" />
+   <File path="..\src\dbg\Debug.d" />
+  </Folder>
+  <Folder name="drc">
+   <Folder name="ast">
+    <File path="..\src\drc\ast\AstBase.d" />
+    <File path="..\src\drc\ast\AstCodegen.d" />
+    <File path="..\src\drc\ast\Declaration.d" />
+    <File path="..\src\drc\ast\Declarations.d" />
+    <File path="..\src\drc\ast\DefaultVisitor.d" />
+    <File path="..\src\drc\ast\Expression.d" />
+    <File path="..\src\drc\ast\Expressions.d" />
+    <File path="..\src\drc\ast\Node.d" />
+    <File path="..\src\drc\ast\NodeCopier.d" />
+    <File path="..\src\drc\ast\NodeMembers.d" />
+    <File path="..\src\drc\ast\NodesEnum.d" />
+    <File path="..\src\drc\ast\Parameters.d" />
+    <File path="..\src\drc\ast\ParsetimeVisitor.d" />
+    <File path="..\src\drc\ast\PermissiveVisitor.d" />
+    <File path="..\src\drc\ast\Statement.d" />
+    <File path="..\src\drc\ast\Statements.d" />
+    <File path="..\src\drc\ast\StrictVisitor.d" />
+    <File path="..\src\drc\ast\TransitiveVisitor.d" />
+    <File path="..\src\drc\ast\Type.d" />
+    <File path="..\src\drc\ast\Types.d" />
+    <File path="..\src\drc\ast\Visitor.d" />
+   </Folder>
+   <Folder name="backend">
+    <File path="..\src\drc\backend\aarray.d" />
+    <File path="..\src\drc\backend\backconfig.d" />
+    <File path="..\src\drc\backend\backend.d" />
+    <File path="..\src\drc\backend\barray.d" />
+    <File path="..\src\drc\backend\bcomplex.d" />
+    <File path="..\src\drc\backend\blockopt.d" />
+    <File path="..\src\drc\backend\cc.d" />
+    <File path="..\src\drc\backend\cdef.d" />
+    <File path="..\src\drc\backend\cg.d" />
+    <File path="..\src\drc\backend\cg87.d" />
+    <File path="..\src\drc\backend\cgcod.d" />
+    <File path="..\src\drc\backend\cgcs.d" />
+    <File path="..\src\drc\backend\cgcse.d" />
+    <File path="..\src\drc\backend\cgcv.d" />
+    <File path="..\src\drc\backend\cgelem.d" />
+    <File path="..\src\drc\backend\cgen.d" />
+    <File path="..\src\drc\backend\cgobj.d" />
+    <File path="..\src\drc\backend\cgreg.d" />
+    <File path="..\src\drc\backend\cgsched.d" />
+    <File path="..\src\drc\backend\cgxmm.d" />
+    <File path="..\src\drc\backend\cod1.d" />
+    <File path="..\src\drc\backend\cod2.d" />
+    <File path="..\src\drc\backend\cod3.d" />
+    <File path="..\src\drc\backend\cod4.d" />
+    <File path="..\src\drc\backend\cod5.d" />
+    <File path="..\src\drc\backend\code.d" />
+    <File path="..\src\drc\backend\code_x86.d" />
+    <File path="..\src\drc\backend\codebuilder.d" />
+    <File path="..\src\drc\backend\compress.d" />
+    <File path="..\src\drc\backend\cv4.d" />
+    <File path="..\src\drc\backend\cv8.d" />
+    <File path="..\src\drc\backend\dcgcv.d" />
+    <File path="..\src\drc\backend\dcode.d" />
+    <File path="..\src\drc\backend\debugprint.d" />
+    <File path="..\src\drc\backend\divcoeff.d" />
+    <File path="..\src\drc\backend\dlist.d" />
+    <File path="..\src\drc\backend\drtlsym.d" />
+    <File path="..\src\drc\backend\dt.d" />
+    <File path="..\src\drc\backend\dtype.d" />
+    <File path="..\src\drc\backend\dvarstats.d" />
+    <File path="..\src\drc\backend\dvec.d" />
+    <File path="..\src\drc\backend\dwarf.d" />
+    <File path="..\src\drc\backend\dwarf2.d" />
+    <File path="..\src\drc\backend\dwarfdbginf.d" />
+    <File path="..\src\drc\backend\dwarfeh.d" />
+    <File path="..\src\drc\backend\ee.d" />
+    <File path="..\src\drc\backend\el.d" />
+    <File path="..\src\drc\backend\elem.d" />
+    <File path="..\src\drc\backend\elfobj.d" />
+    <File path="..\src\drc\backend\elpicpie.d" />
+    <File path="..\src\drc\backend\errors.di" />
+    <File path="..\src\drc\backend\evalu8.d" />
+    <File path="..\src\drc\backend\exh.d" />
+    <File path="..\src\drc\backend\filespec.d" />
+    <File path="..\src\drc\backend\fp.d" />
+    <File path="..\src\drc\backend\gdag.d" />
+    <File path="..\src\drc\backend\gflow.d" />
+    <File path="..\src\drc\backend\global.d" />
+    <File path="..\src\drc\backend\glocal.d" />
+    <File path="..\src\drc\backend\gloop.d" />
+    <File path="..\src\drc\backend\go.d" />
+    <File path="..\src\drc\backend\goh.d" />
+    <File path="..\src\drc\backend\gother.d" />
+    <File path="..\src\drc\backend\gsroa.d" />
+    <File path="..\src\drc\backend\iasm.d" />
+    <File path="..\src\drc\backend\mach.d" />
+    <File path="..\src\drc\backend\machobj.d" />
+    <File path="..\src\drc\backend\md5.d" />
+    <File path="..\src\drc\backend\md5.di" />
+    <File path="..\src\drc\backend\melf.d" />
+    <File path="..\src\drc\backend\mem.d" />
+    <File path="..\src\drc\backend\mscoff.d" />
+    <File path="..\src\drc\backend\mscoffobj.d" />
+    <File path="..\src\drc\backend\newman.d" />
+    <File path="..\src\drc\backend\nteh.d" />
+    <File path="..\src\drc\backend\obj.d" />
+    <File path="..\src\drc\backend\oper.d" />
+    <File path="..\src\drc\backend\os.d" />
+    <File path="..\src\drc\backend\out.d" />
+    <File path="..\src\drc\backend\outbuf.d" />
+    <File path="..\src\drc\backend\pdata.d" />
+    <File path="..\src\drc\backend\ph2.d" />
+    <File path="..\src\drc\backend\ptrntab.d" />
+    <File path="..\src\drc\backend\rtlsym.d" />
+    <File path="..\src\drc\backend\symbol.d" />
+    <File path="..\src\drc\backend\ty.d" />
+    <File path="..\src\drc\backend\type.d" />
+    <File path="..\src\drc\backend\util2.d" />
+    <File path="..\src\drc\backend\var.d" />
+    <File path="..\src\drc\backend\xmm.d" />
+   </Folder>
+   <Folder name="code">
+    <File path="..\src\drc\code\dtoh.d" />
+    <File path="..\src\drc\code\Interpreter.d" />
+   </Folder>
+   <Folder name="doc">
+    <File path="..\src\drc\doc\Doc.d" />
+    <File path="..\src\drc\doc\Doc2.d" />
+    <File path="..\src\drc\doc\Macro.d" />
+    <File path="..\src\drc\doc\Parser.d" />
+   </Folder>
+   <Folder name="lexer">
+    <File path="..\src\drc\lexer\Funcs.d" />
+    <File path="..\src\drc\lexer\Id.d" />
+    <File path="..\src\drc\lexer\Identifier.d" />
+    <File path="..\src\drc\lexer\IdentsEnum.d" />
+    <File path="..\src\drc\lexer\IdentsGenerator.d" />
+    <File path="..\src\drc\lexer\IdTable.d" />
+    <File path="..\src\drc\lexer\Keywords.d" />
+    <File path="..\src\drc\lexer\Lexer.d" />
+    <File path="..\src\drc\lexer\Lexer2.d" />
+    <File path="..\src\drc\lexer\Token.d" />
+    <File path="..\src\drc\lexer\Tokens.d" />
+    <File path="..\src\drc\lexer\TokensEnum.d" />
+   </Folder>
+   <Folder name="parser">
+    <File path="..\src\drc\parser\ImportParser.d" />
+    <File path="..\src\drc\parser\Parser.d" />
+   </Folder>
+   <Folder name="semantic">
+    <File path="..\src\drc\semantic\Analysis.d" />
+    <File path="..\src\drc\semantic\Module.d" />
+    <File path="..\src\drc\semantic\Package.d" />
+    <File path="..\src\drc\semantic\Pass1.d" />
+    <File path="..\src\drc\semantic\Pass2.d" />
+    <File path="..\src\drc\semantic\Passes.d" />
+    <File path="..\src\drc\semantic\Scope.d" />
+    <File path="..\src\drc\semantic\Symbol.d" />
+    <File path="..\src\drc\semantic\Symbols.d" />
+    <File path="..\src\drc\semantic\SymbolTable.d" />
+    <File path="..\src\drc\semantic\Types.d" />
+    <File path="..\src\drc\semantic\TypesEnum.d" />
+   </Folder>
+   <Folder name="translator">
+    <File path="..\src\drc\translator\German.d" />
+   </Folder>
+   <File path="..\src\drc\Compilation.d" />
+   <File path="..\src\drc\CompilerInfo.d" />
+   <File path="..\src\drc\Converter.d" />
+   <File path="..\src\drc\Diagnostics.d" />
+   <File path="..\src\drc\Enums.d" />
+   <File path="..\src\drc\FileBOM.d" />
+   <File path="..\src\drc\HtmlEntities.d" />
+   <File path="..\src\drc\Information.d" />
+   <File path="..\src\drc\Location.d" />
+   <File path="..\src\drc\Messages.d" />
+   <File path="..\src\drc\ModuleManager.d" />
+   <File path="..\src\drc\SourceText.d" />
+   <File path="..\src\drc\Time.d" />
+   <File path="..\src\drc\Unicode.d" />
+   <File path="..\src\drc\Version.d" />
+  </Folder>
+  <Folder name="dmd">
+   <File path="..\src\dmd\access.d" />
+   <File path="..\src\dmd\aggregate.d" />
+   <File path="..\src\dmd\aliasthis.d" />
+   <File path="..\src\dmd\apply.d" />
+   <File path="..\src\dmd\argtypes.d" />
+   <File path="..\src\dmd\argtypes_sysv_x64.d" />
+   <File path="..\src\dmd\arrayop.d" />
+   <File path="..\src\dmd\arraytypes.d" />
+   <File path="..\src\dmd\asttypename.d" />
+   <File path="..\src\dmd\attrib.d" />
+   <File path="..\src\dmd\blockexit.d" />
+   <File path="..\src\dmd\builtin.d" />
+   <File path="..\src\dmd\canthrow.d" />
+   <File path="..\src\dmd\cli.d" />
+   <File path="..\src\dmd\clone.d" />
+   <File path="..\src\dmd\compiler.d" />
+   <File path="..\src\dmd\complex.d" />
+   <File path="..\src\dmd\cond.d" />
+   <File path="..\src\dmd\constfold.d" />
+   <File path="..\src\dmd\cppmangle.d" />
+   <File path="..\src\dmd\cppmanglewin.d" />
+   <File path="..\src\dmd\ctfeexpr.d" />
+   <File path="..\src\dmd\ctorflow.d" />
+   <File path="..\src\dmd\dcast.d" />
+   <File path="..\src\dmd\dclass.d" />
+   <File path="..\src\dmd\declaration.d" />
+   <File path="..\src\dmd\delegatize.d" />
+   <File path="..\src\dmd\denum.d" />
+   <File path="..\src\dmd\dimport.d" />
+   <File path="..\src\dmd\dinifile.d" />
+   <File path="..\src\dmd\dinterpret.d" />
+   <File path="..\src\dmd\dmacro.d" />
+   <File path="..\src\dmd\dmangle.d" />
+   <File path="..\src\dmd\dmodule.d" />
+   <File path="..\src\dmd\dmsc.d" />
+   <File path="..\src\dmd\dscope.d" />
+   <File path="..\src\dmd\dstruct.d" />
+   <File path="..\src\dmd\dsymbol.d" />
+   <File path="..\src\dmd\dsymbolsem.d" />
+   <File path="..\src\dmd\dtemplate.d" />
+   <File path="..\src\dmd\dversion.d" />
+   <File path="..\src\dmd\e2ir.d" />
+   <File path="..\src\dmd\eh.d" />
+   <File path="..\src\dmd\entity.d" />
+   <File path="..\src\dmd\env.d" />
+   <File path="..\src\dmd\errors.d" />
+   <File path="..\src\dmd\escape.d" />
+   <File path="..\src\dmd\expression.d" />
+   <File path="..\src\dmd\expressionsem.d" />
+   <File path="..\src\dmd\foreachvar.d" />
+   <File path="..\src\dmd\frontend.d" />
+   <File path="..\src\dmd\func.d" />
+   <File path="..\src\dmd\globals.d" />
+   <File path="..\src\dmd\glue.d" />
+   <File path="..\src\dmd\gluelayer.d" />
+   <File path="..\src\dmd\hdrgen.d" />
+   <File path="..\src\dmd\iasm.d" />
+   <File path="..\src\dmd\iasmdmd.d" />
+   <File path="..\src\dmd\iasmgcc.d" />
+   <File path="..\src\dmd\impcnvtab.d" />
+   <File path="..\src\dmd\imphint.d" />
+   <File path="..\src\dmd\init.d" />
+   <File path="..\src\dmd\initsem.d" />
+   <File path="..\src\dmd\inline.d" />
+   <File path="..\src\dmd\inlinecost.d" />
+   <File path="..\src\dmd\intrange.d" />
+   <File path="..\src\dmd\irstate.d" />
+   <File path="..\src\dmd\json.d" />
+   <File path="..\src\dmd\lambdacomp.d" />
+   <File path="..\src\dmd\lib.d" />
+   <File path="..\src\dmd\libelf.d" />
+   <File path="..\src\dmd\libmach.d" />
+   <File path="..\src\dmd\libmscoff.d" />
+   <File path="..\src\dmd\libomf.d" />
+   <File path="..\src\dmd\link.d" />
+   <File path="..\src\dmd\mars.d" />
+   <File path="..\src\dmd\mtype.d" />
+   <File path="..\src\dmd\nogc.d" />
+   <File path="..\src\dmd\nspace.d" />
+   <File path="..\src\dmd\ob.d" />
+   <File path="..\src\dmd\objc.d" />
+   <File path="..\src\dmd\objc_glue.d" />
+   <File path="..\src\dmd\opover.d" />
+   <File path="..\src\dmd\optimize.d" />
+   <File path="..\src\dmd\parse.d" />
+   <File path="..\src\dmd\printast.d" />
+   <File path="..\src\dmd\s2ir.d" />
+   <File path="..\src\dmd\safe.d" />
+   <File path="..\src\dmd\sapply.d" />
+   <File path="..\src\dmd\scanelf.d" />
+   <File path="..\src\dmd\scanmach.d" />
+   <File path="..\src\dmd\scanmscoff.d" />
+   <File path="..\src\dmd\scanomf.d" />
+   <File path="..\src\dmd\semantic2.d" />
+   <File path="..\src\dmd\semantic3.d" />
+   <File path="..\src\dmd\sideeffect.d" />
+   <File path="..\src\dmd\statement.d" />
+   <File path="..\src\dmd\statement_rewrite_walker.d" />
+   <File path="..\src\dmd\statementsem.d" />
+   <File path="..\src\dmd\staticassert.d" />
+   <File path="..\src\dmd\staticcond.d" />
+   <File path="..\src\dmd\target.d" />
+   <File path="..\src\dmd\templateparamsem.d" />
+   <File path="..\src\dmd\tocsym.d" />
+   <File path="..\src\dmd\toctype.d" />
+   <File path="..\src\dmd\tocvdebug.d" />
+   <File path="..\src\dmd\todt.d" />
+   <File path="..\src\dmd\toir.d" />
+   <File path="..\src\dmd\toobj.d" />
+   <File path="..\src\dmd\traits.d" />
+   <File path="..\src\dmd\typesem.d" />
+   <File path="..\src\dmd\typinf.d" />
+  </Folder>
+  <Folder name="ll">
+   <File path="..\src\ll\Analysis.d" />
+   <File path="..\src\ll\BitReader.d" />
+   <File path="..\src\ll\BitWriter.d" />
+   <File path="..\src\ll\Comdat.d" />
+   <File path="..\src\ll\Core.d" />
+   <File path="..\src\ll\DataTypes.d" />
+   <File path="..\src\ll\DebugInfo.d" />
+   <File path="..\src\ll\Disassembler.d" />
+   <File path="..\src\ll\DisassemblerTypes.d" />
+   <File path="..\src\ll\Error.d" />
+   <File path="..\src\ll\ErrorHandling.d" />
+   <File path="..\src\ll\ExecutionEngine.d" />
+   <File path="..\src\ll\Initialization.d" />
+   <File path="..\src\ll\IRReader.d" />
+   <File path="..\src\ll\Linker.d" />
+   <File path="..\src\ll\LinkTimeOptimizer.d" />
+   <File path="..\src\ll\lto.d" />
+   <File path="..\src\ll\Object.d" />
+   <File path="..\src\ll\OptRemarks.d" />
+   <File path="..\src\ll\OrcBindings.d" />
+   <File path="..\src\ll\PassManagerBuilder.d" />
+   <File path="..\src\ll\Remarks.d" />
+   <File path="..\src\ll\Support.d" />
+   <File path="..\src\ll\Target.d" />
+   <File path="..\src\ll\TargetMachine.d" />
+   <File path="..\src\ll\Transforms.d" />
+   <File path="..\src\ll\Types.d" />
+  </Folder>
+  <Folder name="util">
+   <File path="..\src\util\aav.d" />
+   <File path="..\src\util\array.d" />
+   <File path="..\src\util\bitarray.d" />
+   <File path="..\src\util\ctfloat.d" />
+   <File path="..\src\util\file.d" />
+   <File path="..\src\util\filecache.d" />
+   <File path="..\src\util\filename.d" />
+   <File path="..\src\util\hash.d" />
+   <File path="..\src\util\longdouble.d" />
+   <File path="..\src\util\man.d" />
+   <File path="..\src\util\outbuffer.d" />
+   <File path="..\src\util\port.d" />
+   <File path="..\src\util\region.d" />
+   <File path="..\src\util\response.d" />
+   <File path="..\src\util\rmem.d" />
+   <File path="..\src\util\speller.d" />
+   <File path="..\src\util\string.d" />
+   <File path="..\src\util\stringtable.d" />
+   <File path="..\src\util\strtold.d" />
+   <File path="..\src\util\uni.d" />
+   <File path="..\src\util\utf.d" />
+   <File path="..\src\util\utils.d" />
+  </Folder>
+  <File path="..\src\common.d" />
+  <File path="..\src\main.d" />
+  <File path="..\src\Settings.d" />
+  <File path="..\src\SettingsLoader.d" />
+ </Folder>
+</DProject>

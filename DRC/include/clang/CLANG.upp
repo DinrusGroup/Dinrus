@@ -1,0 +1,30 @@
+description "Компилятор языка Си/LLVM\377";
+
+uses
+	CLANG\Analysis,
+	CLANG\ARCMigrate,
+	CLANG\AST,
+	CLANG\ASTMatchers,
+	CLANG\Basic,
+	CLANG\CodeGen,
+	CLANG\Config,
+	CLANG\CrossTU,
+	CLANG\DirectoryWatcher,
+	CLANG\Edit,
+	CLANG\Driver,
+	CLANG\Format,
+	CLANG\Frontend,
+	CLANG\Index,
+	CLANG\Lex,
+	CLANG\Parse,
+	CLANG\Rewrite,
+	CLANG\Sema,
+	CLANG\Serialization,
+	CLANG\StaticAnalyzer,
+	CLANG\Tooling,
+	CLANG\FrontendTool,
+	LLVM;
+
+mainconfig
+	"" = "";
+

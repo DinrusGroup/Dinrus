@@ -1,0 +1,14 @@
+file
+	Frontend readonly separator,
+	Frontend\ASTConsumers.h,
+	Frontend\FixItRewriter.h,
+	Frontend\FrontendActions.h,
+	Frontend\Rewriters.h,
+	Core readonly separator,
+	Core\DeltaTree.h,
+	Core\HTMLRewrite.h,
+	Core\RewriteBuffer.h,
+	Core\Rewriter.h,
+	Core\RewriteRope.h,
+	Core\TokenRewriter.h;
+
