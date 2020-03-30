@@ -9,7 +9,7 @@ struct Diagnostic
 {
     mixin CX;
 
-    string format (uint options = clang_defaultDiagnosticDisplayOptions)
+    ткст format (uint options = clang_defaultDiagnosticDisplayOptions)
     {
         return toD(clang_formatDiagnostic(cx, options));
     }
@@ -19,7 +19,7 @@ struct Diagnostic
         return clang_getDiagnosticSeverity(cx);
     }
 
-    toString()
+    вТкст()
     {
         return format();
     }
@@ -41,8 +41,8 @@ struct DiagnosticSet
     }
 
     private RefCounted!(Container) container;
-    private size_t begin;
-    private size_t end;
+    private т_мера begin;
+    private т_мера end;
 
     private static RefCounted!(Container) makeContainer(
         CXDiagnosticSet set)
@@ -54,8 +54,8 @@ struct DiagnosticSet
 
     private this(
         RefCounted!(Container) container,
-        size_t begin,
-        size_t end)
+        т_мера begin,
+        т_мера end)
     {
         this.container = container;
         this.begin = begin;
@@ -69,7 +69,7 @@ struct DiagnosticSet
         end = clang_getNumDiagnosticsInSet(container.set);
     }
 
-    bool empty()
+    бул empty()
     {
         return begin >= end;
     }
@@ -84,12 +84,12 @@ struct DiagnosticSet
         return Diagnostic(clang_getDiagnosticInSet(container.set, cast(uint) (end - 1)));
     }
 
-    void popFront()
+    проц popFront()
     {
         ++begin;
     }
 
-    void popBack()
+    проц popBack()
     {
         --end;
     }
@@ -99,22 +99,22 @@ struct DiagnosticSet
         return this;
     }
 
-    size_t length()
+    т_мера length()
     {
         return end - begin;
     }
 
-    Diagnostic opIndex(size_t index)
+    Diagnostic opIndex(т_мера index)
     {
         return Diagnostic(clang_getDiagnosticInSet(container.set, cast(uint) (begin + index)));
     }
 
-    DiagnosticSet opSlice(size_t begin, size_t end)
+    DiagnosticSet opSlice(т_мера begin, т_мера end)
     {
         return DiagnosticSet(container, this.begin + begin, this.begin + end);
     }
 
-    size_t opDollar()
+    т_мера opDollar()
     {
         return length;
     }
@@ -133,7 +133,7 @@ CXDiagnosticSeverity severity(DiagnosticSet diagnostics)
         return diagnostics.map!(diagnostic => diagnostic.severity).minPos!less.front;
 }
 
-bool hasError(DiagnosticSet diagnostics)
+бул hasError(DiagnosticSet diagnostics)
 {
     auto severity = diagnostics.severity;
 

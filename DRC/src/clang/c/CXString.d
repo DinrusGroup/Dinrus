@@ -23,16 +23,16 @@ extern (C):
  */
 
 /**
- * A character string.
+ * A character ткст.
  *
- * The \c CXString type is used to return strings from the interface when
- * the ownership of that string might differ from one call to the next.
- * Use \c clang_getCString() to retrieve the string data and, once finished
- * with the string data, call \c clang_disposeString() to free the string.
+ * The \c CXString тип is used to return strings from the interface when
+ * the ownership of that ткст might differ from one call to the next.
+ * Use \c clang_getCString() to retrieve the ткст data and, once finished
+ * with the ткст data, call \c clang_disposeString() to free the ткст.
  */
 struct CXString
 {
-    void* data;
+    ук data;
     uint private_flags;
 }
 
@@ -43,19 +43,19 @@ struct CXStringSet
 }
 
 /**
- * Retrieve the character data associated with the given string.
+ * Retrieve the character data associated with the given ткст.
  */
-char* clang_getCString(CXString string);
+ткст0 clang_getCString(CXString ткст);
 
 /**
- * Free the given string.
+ * Free the given ткст.
  */
-void clang_disposeString(CXString string);
+проц clang_disposeString(CXString ткст);
 
 /**
- * Free the given string set.
+ * Free the given ткст set.
  */
-void clang_disposeStringSet(CXStringSet* set);
+проц clang_disposeStringSet(CXStringSet* set);
 
 /**
  * @}

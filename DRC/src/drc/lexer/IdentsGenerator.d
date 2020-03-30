@@ -16,7 +16,7 @@ private static const сим[][] предопрИденты = [
   // Специальный пустой идентификатор:
   "Пусто:",
   // Предопределенные идентификаторы версии:
-  "DigitalMars", "X86", "X86_64",
+  "DinrusGroup", "X86", "X86_64",
   /*"Windows", */"Win32", "Win64",
   "Linux:linux", "LittleEndian", "BigEndian",
   "D_Coverage", "D_InlineAsm_X86", "D_Version2",
@@ -25,17 +25,17 @@ private static const сим[][] предопрИденты = [
   "Аргументы:_arguments", "Аргук:_argptr",
   // масштаб(Идентификатор):
   "выход", "успех", "сбой", "exit", "success", "failure",
-  // pragma:
+  // Прагма:
   "сооб", "биб", "startaddress", "msg",
-  // Linkage:
+  // Компоновка:
   "C", "D", "Windows", "Pascal", "System",
-  // Con-/Destructили:
-  "Ктор:__ctили", "Дтор:__dtили",
-  // new() and delete() methods.
+  // Конструктор/Деструктор:
+  "Ктор:__ctor", "Дтор:__dtor",
+  // Методы new() и delete().
   "Нов:__new", "Удалить:__delete",
-  // Юниттест and invariant.
+  // Юниттест и инвариант.
   "Юниттест:__unittest", "Инвариант:__invariant",
-  // Operatили overload methods:
+  // Методы перегрузки операторов:
   "opNeg", "opPos", "opCom",
   "opEquals", "opCmp",  "opAssign",
   "opAdd",  "opAdd_r",  "opAddAssign",
@@ -45,7 +45,7 @@ private static const сим[][] предопрИденты = [
   "opMod",  "opMod_r",  "opModAssign",
   "opAnd",  "opAnd_r",  "opAndAssign",
   "opOr",   "opOr_r",   "opOrAssign",
-  "opXили",  "opXили_r",  "opXилиAssign",
+  "opXor",  "opXor_r",  "opXorAssign",
   "opShl",  "opShl_r",  "opShlAssign",
   "opShr",  "opShr_r",  "opShrAssign",
   "opUShr", "opUShr_r", "opUShrAssign",
@@ -58,13 +58,13 @@ private static const сим[][] предопрИденты = [
   "opCall",
   "opCast",
   "opStar", // D2
-  // foreach and foreach_reverse:
+  // foreach и foreach_reverse:
   "opApply", "opApplyReverse",
-  // Entry function:
+  // Функция входа:
   "main",
-  // ASM identifiers:
+  // Идентификаторы ASM :
   "near", "far", "word", "dword", "qword",
-  "ptr", "offset", "seg", "__LOCAL_SIZE",
+  "ptr", "смещение", "seg", "__LOCAL_SIZE",
   "FS", "ST",
   "AL", "AH", "AX", "EAX",
   "BL", "BH", "BX", "EBX",
@@ -105,8 +105,8 @@ unittest
   Результирующий текст выглядить примерно так:
   ---
   private struct Иды {static const:
-    Идентификатор _Empty = {"", TOK.Идентификатор, ВИД.Пусто};
-    Идентификатор _main = {"main", TOK.Идентификатор, ВИД.main};
+    Идентификатор _Empty = {"", ТОК2.Идентификатор, ВИД.Пусто};
+    Идентификатор _main = {"main", ТОК2.Идентификатор, ВИД.main};
     // и т.д.
   }
   Идентификатор* Пусто = &Иды._Empty;
@@ -128,8 +128,8 @@ unittest
   foreach (идент; предопрИденты)
   {
     сим[][] пара = дайПару(идент);
-    // Идентификатор _Имя = {"имя", TOK.Идентификатор, ID.имя};
-    приват_члены ~= "Идентификатор _"~пара[0]~` = {"`~пара[1]~`", TOK.Идентификатор, ВИД.`~пара[0]~"};\n";
+    // Идентификатор _Имя = {"имя", ТОК2.Идентификатор, ид.имя};
+    приват_члены ~= "Идентификатор _"~пара[0]~` = {"`~пара[1]~`", ТОК2.Идентификатор, ВИД.`~пара[0]~"};\n";
     // Идентификатор* имя = &_Имя;
     публ_члены ~= "Идентификатор* "~пара[0]~" = &Иды._"~пара[0]~";\n";
     массив ~= пара[0]~",";
@@ -141,7 +141,7 @@ unittest
   return приват_члены ~ публ_члены ~ массив;
 }
 
-/// CTF for generating the члены of the enum ВИД.
+/// CTF для генерации членов перечня ВИД.
 ткст генерируйЧленыИД()
 {
   ткст члены;

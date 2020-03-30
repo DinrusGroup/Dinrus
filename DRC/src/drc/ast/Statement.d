@@ -1,7 +1,7 @@
 /// Author: Aziz Köksal, Vitaly Kulich
 /// License: GPL3
 /// $(Maturity very high)
-module drc.ast.Statement;
+module drc.ast.Инструкция2;
 
 import drc.ast.Node;
 

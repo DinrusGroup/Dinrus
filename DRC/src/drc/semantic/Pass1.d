@@ -7,7 +7,7 @@ import  drc.ast.Visitor,
        drc.ast.Node,
        drc.ast.Declarations,
        drc.ast.Expressions,
-       drc.ast.Statements,
+       drc.ast.Инструкции,
        drc.ast.Types,
        drc.ast.Parameters;
 import drc.lexer.IdTable;
@@ -183,7 +183,7 @@ class СемантическаяПроходка1 : Визитёр
     deferred ~= d;
   }
 
-  private alias Декларация Д; /// A handy alias. Saves typing.
+  private alias Декларация Д; /// атр handy alias. Saves typing.
 
 override
 {
@@ -415,8 +415,8 @@ override
     if (d.определение)
     { // debug = Ид | Цел
       if (!масштабМодуля())
-        ошибка(d.начало, сооб.DebugSpecModuleLevel, d.спец.исхТекст);
-      else if (d.спец.вид == TOK.Идентификатор)
+        ошибка(d.начало, сооб.ОтладкаОпрНаУровнеМодуля, d.спец.исхТекст);
+      else if (d.спец.вид == ТОК2.Идентификатор)
         контекст.добавьИдОтладки(d.спец.идент.ткт);
       else
         контекст.уровеньОтладки = d.спец.бцел_;
@@ -438,7 +438,7 @@ override
     { // version = Ид | Цел
       if (!масштабМодуля())
         ошибка(d.начало, сооб.УровеньВерсииСпецМодуля, d.спец.исхТекст);
-      else if (d.спец.вид == TOK.Идентификатор)
+      else if (d.спец.вид == ТОК2.Идентификатор)
         контекст.добавьИдВерсии(d.спец.идент.ткт);
       else
         контекст.уровеньВерсии = d.спец.бцел_;

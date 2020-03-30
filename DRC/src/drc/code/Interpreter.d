@@ -7,7 +7,7 @@ import  drc.ast.Visitor,
        drc.ast.Node,
        drc.ast.Declarations,
        drc.ast.Expressions,
-       drc.ast.Statements,
+       drc.ast.Инструкции,
        drc.ast.Types,
        drc.ast.Parameters;
 import drc.semantic.Symbol,
@@ -72,19 +72,19 @@ class Интерпретатор : Визитёр
 
     // TODO: check for nested/method
 
-    // Проверим на invalid parameter types
+    // Проверим на invalid параметр types
     if(дф.парамы.естьВариадические() || дф.парамы.естьЛэйзи())
     {
       дф.нельзяИнтерпретировать = да;
       return НЕИ;
     }
 
-    // remove me plx
+    // удали me plx
     assert(нет);
     return НЕИ;
   }
 
-  /// Some handy aliases.
+  /// Некоторые удобные  алиасы.
   private alias Декларация D, Д;
   private alias Выражение E, В; /// определено
   private alias Инструкция S, И; /// определено
@@ -92,7 +92,7 @@ class Интерпретатор : Визитёр
   private alias Параметр P, П; /// определено
   private alias Узел N, У; /// определено
 
-  /// Возвращает "да", если в is immutable.
+  /// Возвращает "да", если в не изменяемо.
   static бул неизменное(Выражение в)
   {
     switch (в.вид)
@@ -311,7 +311,7 @@ override
 } // override
 
   /+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  |                                 Statements                                |
+  |                                 Инструкции                                |
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+/
 
 override
@@ -510,7 +510,7 @@ override
 } // override
 
   /+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  |                                Expressions                                |
+  |                                Выражения                                |
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+/
 
 override
@@ -1067,7 +1067,7 @@ override
     return т;
   }
 
-  T посети(ТУказательНаФункСи т)
+  T посети(ТУказательНаФункцСи т)
   {
     return т;
   }

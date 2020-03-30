@@ -24,18 +24,18 @@ enum TokenKind
     keyword = CXTokenKind.keyword,
     identifier = CXTokenKind.identifier,
     literal = CXTokenKind.literal,
-    comment = CXTokenKind.comment,
+    коммент = CXTokenKind.коммент,
 }
 
-TokenKind toD(CXTokenKind kind)
+TokenKind toD(CXTokenKind вид)
 {
-    return cast(TokenKind) kind;
+    return cast(TokenKind) вид;
 }
 
 struct Token
 {
-    TokenKind kind;
-    string spelling;
+    TokenKind вид;
+    ткст spelling;
     SourceRange extent;
 
     SourceLocation location()
@@ -43,10 +43,10 @@ struct Token
         return extent.start;
     }
 
-    string toString() const
+    ткст вТкст() const
     {
         import std.format: format;
-        return format("Token(kind = %s, spelling = %s)", kind, spelling);
+        return format("Token(вид = %s, spelling = %s)", вид, spelling);
     }
 }
 

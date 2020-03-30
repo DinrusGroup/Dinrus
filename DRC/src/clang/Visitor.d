@@ -14,8 +14,8 @@ import clang.TranslationUnit;
 
 struct Visitor
 {
-    alias int delegate (ref Cursor, ref Cursor) Delegate;
-    alias int delegate (Delegate dg) OpApply;
+    alias цел delegate (ref Cursor, ref Cursor) Delegate;
+    alias цел delegate (Delegate dg) OpApply;
 
     private CXCursor cursor;
 
@@ -29,7 +29,7 @@ struct Visitor
         this.cursor = cursor.cx;
     }
 
-    int opApply (Delegate dg)
+    цел opApply (Delegate dg)
     {
         auto data = OpApplyData(dg);
         clang_visitChildren(cursor, &visitorFunction, cast(CXClientData) &data);
@@ -37,9 +37,9 @@ struct Visitor
         return data.returnCode;
     }
 
-    int opApply(int delegate (ref Cursor) dg)
+    цел opApply(цел delegate (ref Cursor) dg)
     {
-        int wrapper (ref Cursor cursor, ref Cursor)
+        цел wrapper (ref Cursor cursor, ref Cursor)
         {
             return dg(cursor);
         }
@@ -54,7 +54,7 @@ private:
 
     extern (C) static CXChildVisitResult visitorFunction (
         CXCursor cursor,
-        CXCursor parent,
+        CXCursor родитель,
         CXClientData data)
     {
         auto tmp = cast(OpApplyData*) data;
@@ -62,7 +62,7 @@ private:
         with (CXChildVisitResult)
         {
             auto dCursor = Cursor(cursor);
-            auto dParent = Cursor(parent);
+            auto dParent = Cursor(родитель);
             auto r = tmp.dg(dCursor, dParent);
             tmp.returnCode = r;
             return r ? break_ : continue_;
@@ -71,7 +71,7 @@ private:
 
     static struct OpApplyData
     {
-        int returnCode;
+        цел returnCode;
         Delegate dg;
 
         this (Delegate dg)
@@ -103,7 +103,7 @@ private:
 
 struct InOrderVisitor
 {
-    alias int delegate (ref Cursor, ref Cursor) Delegate;
+    alias цел delegate (ref Cursor, ref Cursor) Delegate;
 
     private Cursor cursor;
 
@@ -117,15 +117,15 @@ struct InOrderVisitor
         this.cursor = cursor;
     }
 
-    int opApply (Delegate dg)
+    цел opApply (Delegate dg)
     {
         import std.array;
 
         auto visitor = Visitor(cursor);
-        int result = 0;
+        цел result = 0;
 
         auto macrosAppender = appender!(Cursor[])();
-        size_t itr = 0;
+        т_мера itr = 0;
 
         foreach (cursor, _; visitor)
         {
@@ -137,17 +137,17 @@ struct InOrderVisitor
         auto query = cursor.translationUnit
             .relativeLocationAccessorImpl(macros);
 
-        ulong macroIndex = macros.length != 0
+        бдол macroIndex = macros.length != 0
             ? query(macros[0].location)
-            : ulong.max;
+            : бдол.max;
 
-        size_t jtr = 0;
+        т_мера jtr = 0;
 
-        foreach (cursor, parent; visitor)
+        foreach (cursor, родитель; visitor)
         {
             if (!cursor.isPreprocessor)
             {
-                ulong cursorIndex = query(cursor.location);
+                бдол cursorIndex = query(cursor.location);
 
                 while (macroIndex < cursorIndex)
                 {
@@ -162,10 +162,10 @@ struct InOrderVisitor
 
                     macroIndex = jtr < macros.length
                         ? query(macros[jtr].location)
-                        : ulong.max;
+                        : бдол.max;
                 }
 
-                result = dg(cursor, parent);
+                result = dg(cursor, родитель);
 
                 if (result)
                     return result;
@@ -195,18 +195,18 @@ struct DeclarationVisitor
 {
     mixin Visitor.Constructors;
 
-    int opApply (Visitor.Delegate dg)
+    цел opApply (Visitor.Delegate dg)
     {
-        foreach (cursor, parent ; visitor)
+        foreach (cursor, родитель ; visitor)
             if (cursor.isDeclaration)
-                if (auto result = dg(cursor, parent))
+                if (auto result = dg(cursor, родитель))
                     return result;
 
         return 0;
     }
 }
 
-struct TypedVisitor (CXCursorKind kind)
+struct TypedVisitor (CXCursorKind вид)
 {
     private Visitor visitor;
 
@@ -225,11 +225,11 @@ struct TypedVisitor (CXCursorKind kind)
         this(cursor.cx);
     }
 
-    int opApply (Visitor.Delegate dg)
+    цел opApply (Visitor.Delegate dg)
     {
-        foreach (cursor, parent ; visitor)
-            if (cursor.kind == kind)
-                if (auto result = dg(cursor, parent))
+        foreach (cursor, родитель ; visitor)
+            if (cursor.вид == вид)
+                if (auto result = dg(cursor, родитель))
                     return result;
 
         return 0;
@@ -245,10 +245,10 @@ struct ParamVisitor
 {
     mixin Visitor.Constructors;
 
-    int opApply (int delegate (ref ParamCursor) dg)
+    цел opApply (цел delegate (ref ParamCursor) dg)
     {
-        foreach (cursor, parent ; visitor)
-            if (cursor.kind == CXCursorKind.parmDecl)
+        foreach (cursor, родитель ; visitor)
+            if (cursor.вид == CXCursorKind.parmDecl)
             {
                 auto paramCursor = ParamCursor(cursor);
 
@@ -259,16 +259,16 @@ struct ParamVisitor
         return 0;
     }
 
-    size_t length ()
+    т_мера length ()
     {
-        auto type = Cursor(visitor.cursor).type;
+        auto тип = Cursor(visitor.cursor).тип;
 
-        if (type.isValid)
-            return type.func.arguments.length;
+        if (тип.isValid)
+            return тип.func.arguments.length;
 
         else
         {
-            size_t i;
+            т_мера i;
 
             foreach (_ ; this)
                 i++;
@@ -277,12 +277,12 @@ struct ParamVisitor
         }
     }
 
-    bool any ()
+    бул any ()
     {
         return length > 0;
     }
 
-    bool isEmpty ()
+    бул isEmpty ()
     {
         return !any;
     }

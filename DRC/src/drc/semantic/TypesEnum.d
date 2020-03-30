@@ -9,8 +9,8 @@ enum ТИП
   Ошибка,
   // Basic types.
   Сим,    /// сим
-  Шим,   /// шим
-  Дим,   /// дим
+  Шим,   /// wchar
+  Дим,   /// dchar
   Бул,    /// бул
   Байт,    /// int8
   Ббайт,   /// uint8
@@ -42,14 +42,14 @@ enum ТИП
   Перечень,       /// An enum.
   Структура,     /// A struct.
   Класс,      /// A class.
-  Типдеф,    /// A typedef.
+  Типдеф,    /// A alias.
   Функция,   /// A function.
   Делегат,   /// A delegate.
   Указатель,    /// A pointer.
   Ссылка,  /// A reference.
   Идентификатор, /// An идентификатор.
   ШЭкземпляр,  /// Шаблон instance.
-  Кортеж,      /// A template tuple.
+  Кортеж,      /// A template кортеж.
   Конст,      /// A constant тип. D2.0
   Инвариант,  /// An invariant тип. D2.0
 }

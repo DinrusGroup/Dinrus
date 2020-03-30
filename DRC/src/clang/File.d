@@ -13,22 +13,22 @@ struct File
 {
     mixin CX;
 
-    string name()
+    ткст name()
     {
         return toD(clang_getFileName(cx));
     }
 
-    string absolutePath()
+    ткст absolutePath()
     {
         import std.conv;
         import std.path;
         return name
             .asAbsolutePath()
             .asNormalizedPath()
-            .to!string();
+            .to!ткст();
     }
 
-    string toString()
+    ткст вТкст()
     {
         return name;
     }

@@ -3,13 +3,13 @@ module clang.Util;
 import stdrus;
 import clang.c.Index;
 
-char** strToCArray (const string[] arr)
+сим** strToCМассив (const ткст[] arr)
 {
 
     if (!arr)
         return пусто;
 
-    char*[] cArr;
+    сим*[] cArr;
    //// cArr.reserve(arr.length);
 
     foreach (str ; arr)
@@ -18,7 +18,7 @@ char** strToCArray (const string[] arr)
     return cArr.ptr;
 }
 
-string toD (CXString cxString)
+ткст toD (CXString cxString)
 {
     auto cstr = clang_getCString(cxString);
     auto str = tвТкст(cstr.dup);
@@ -29,7 +29,7 @@ string toD (CXString cxString)
 
 template isCX (T)
 {
-   //// enum bool isCX = __traits(hasMember, T, "cx");
+   //// enum бул isCX = __traits(hasMember, T, "cx");
 }
 
 template cxName (T)
@@ -37,13 +37,13 @@ template cxName (T)
     enum cxName = "CX" ~ T.stringof;
 }
 
-U* toCArray (U, T) (T[] arr)
+U* toCМассив (U, T) (T[] arr)
 {
     if (!arr)
         return пусто;
 
     static if (is(typeof(T.init.cx)))
-        return arr.map!(e => e.cx).toArray.ptr;
+        return arr.map!(e => e.cx).toМассив.ptr;
 
     else
         return arr.ptr;
@@ -56,23 +56,23 @@ mixin template CX ()
     CType cx;
     alias cx this;
 
-    void dispose ()
+    проц dispose ()
     {
         enum methodCall = "clang_dispose" ~ typeof(this).stringof ~ "(cx);";
 
-        static if (false && __traits(compiles, methodCall))
+        static if (нет && __traits(compiles, methodCall))
             mixin(methodCall);
     }
 
-    bool isValid ()
+    бул isValid ()
     {
         return cx !is CType.init;
     }
 }
 
-string clangVersionString()
+ткст clangVersionString()
 {
-    import std.string : strip;
+    import std.ткст : strip;
 
     return strip(clang_getClangVersion().toD);
 }
@@ -105,25 +105,25 @@ Version clangVersion()
     return result;
 }
 
-alias Set(T) = void[0][T];
+alias Set(T) = проц[0][T];
 
-void add(T)(ref void[0][T] self, T value) {
-    self[value] = (void[0]).init;
+проц add(T)(ref проц[0][T] self, T value) {
+    self[value] = (проц[0]).init;
 }
 
-void add(T)(ref void[0][T] self, void[0][T] set) {
+проц add(T)(ref проц[0][T] self, проц[0][T] set) {
     foreach (key; set.byKey) {
         self.add(key);
     }
 }
 
-Set!T clone(T)(ref void[0][T] self) {
+Set!T clone(T)(ref проц[0][T] self) {
     Set!T result;
     result.add(self);
     return result;
 }
 
-bool contains(T)(inout(void[0][T]) set, T value) {
+бул contains(T)(inout(проц[0][T]) set, T value) {
     return (value in set) !is пусто;
 }
 
@@ -141,29 +141,29 @@ auto setFromList(T)(T[] list)
 
 version (Posix)
 {
-    private extern (C) int mkstemps(char*, int);
-    private extern (C) int close(int);
+    private extern (C) цел mkstemps(сим*, цел);
+    private extern (C) цел close(цел);
 }
 else
 {
     import core.sys.windows.objbase : CoCreateGuid;
     import core.sys.windows.basetyps : GUID;
 
-    string createGUID()
+    ткст createGUID()
     {
-        char toHex(uint x)
+        сим toHex(uint x)
         {
             if (x < 10)
-                return cast(char) ('0' + x);
+                return cast(сим) ('0' + x);
             else
-                return cast(char) ('A' + x - 10);
+                return cast(сим) ('A' + x - 10);
         }
 
         GUID guid;
         CoCreateGuid(&guid);
 
-        ubyte* data = cast(ubyte*)&guid;
-        char[32] result;
+        ббайт* data = cast(ббайт*)&guid;
+        сим[32] result;
 
         foreach (i; 0 .. 16)
         {
@@ -177,16 +177,16 @@ else
 
 class NamedTempFileException : object.Exception
 {
-    immutable string path;
+    immutable ткст path;
 
-    this (string path, string file = __FILE__, size_t line = __LINE__)
+    this (ткст path, ткст file = __FILE__, т_мера line = __LINE__)
     {
         this.path = path;
         super(format("Cannot create temporary file \"%s\".", path), file, line);
     }
 }
 
-File namedTempFile(string prefix, string suffix)
+File namedTempFile(ткст prefix, ткст suffix)
 {
     import std.file;
     import std.path;
@@ -194,7 +194,7 @@ File namedTempFile(string prefix, string suffix)
 
     version (Posix)
     {
-        static void randstr (char[] slice)
+        static проц randstr (ткст slice)
         {
             import std.random;
 
@@ -202,16 +202,16 @@ File namedTempFile(string prefix, string suffix)
                 slice[i] = uniform!("[]")('A', 'Z');
         }
 
-        string name = format("%sXXXXXXXXXXXXXXXX%s\0", prefix, suffix);
-        char[] path = buildPath(tempDir(), name).dup;
-        const size_t termAnd6XSize = 7;
+        ткст name = format("%sXXXXXXXXXXXXXXXX%s\0", prefix, suffix);
+        ткст path = buildPath(tempDir(), name).dup;
+        const т_мера termAnd6XSize = 7;
 
-        immutable size_t begin = path.length - name.length + prefix.length;
-        immutable size_t end = path.length - suffix.length - termAnd6XSize;
+        immutable т_мера begin = path.length - name.length + prefix.length;
+        immutable т_мера end = path.length - suffix.length - termAnd6XSize;
 
         randstr(path[begin .. end]);
 
-        int fd = mkstemps(path.ptr, cast(int) suffix.length);
+        цел fd = mkstemps(path.ptr, cast(цел) suffix.length);
         scope (exit) close(fd);
 
         path = path[0 .. $ - 1];
@@ -223,16 +223,16 @@ File namedTempFile(string prefix, string suffix)
     }
     else
     {
-        string name = format("%s%s%s", prefix, createGUID(), suffix);
-        string path = buildPath(tempDir(), name);
+        ткст name = format("%s%s%s", prefix, createGUID(), suffix);
+        ткст path = buildPath(tempDir(), name);
         return File(path, "wb+");
     }
 }
 
-string asAbsNormPath(string path)
+ткст asAbsNormPath(ткст path)
 {
     import std.path;
     import std.conv : to;
 
-    return to!string(path.asAbsolutePath.asNormalizedPath);
+    return to!ткст(path.asAbsolutePath.asNormalizedPath);
 }

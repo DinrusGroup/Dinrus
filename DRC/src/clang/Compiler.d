@@ -16,17 +16,17 @@ struct Compiler
         else
             const root = "/";
 
-        string virtualPath_;
+        ткст virtualPath_;
 
-        static template toInternalHeader (string file)
+        static template toInternalHeader (ткст file)
         {
             static auto toInternalHeader = InternalHeader(file, import(file));
         }
 
         static struct InternalHeader
         {
-            string filename;
-            string content;
+            ткст filename;
+            ткст content;
         }
 
         static auto internalHeaders = [
@@ -36,18 +36,18 @@ struct Compiler
                 "float.h",
                 "limits.h",
                 "stdarg.h",
-                "stdbool.h",
+                "stdбул.h",
                 "stddef.h"
             )
         ];
     }
 
-    string[] extraIncludePaths ()
+    ткст[] extraIncludePaths ()
     {
         return [virtualPath];
     }
 
-    string[] extraIncludeFlags ()
+    ткст[] extraIncludeFlags ()
     {
        //*V-tas: import std.algorithm;
        //*V-tas: import std.array;
@@ -60,18 +60,18 @@ struct Compiler
     {
       //*V-tas:  import std.algorithm : map;
       //*V-tas:  import std.array;
-      //*V-tas:  import std.string : toStringz;
+      //*V-tas:  import std.ткст : вТкстz;
 /*V-tas:
         return internalHeaders.map!((e) {
             auto path = buildPath(virtualPath, e.filename);
-            return CXUnsavedFile(path.toStringz, e.content.ptr, cast(uint)e.content.length);
+            return CXUnsavedFile(path.вТкстz, e.content.ptr, cast(uint)e.content.length);
         }).array();
 		*/
     }
 
 private:
 
-    string virtualPath ()
+    ткст virtualPath ()
     {
       //*V-tas:  import std.random;
       //*V-tas:  import std.conv;
@@ -79,12 +79,12 @@ private:
         if (virtualPath_.length)
             return virtualPath_;
 
-        //return virtualPath_ = buildPath(root, uniform(1, 10_000_000).to!string);
+        //return virtualPath_ = buildPath(root, uniform(1, 10_000_000).to!ткст);
 		return virtualPath_ = buildPath(root, stdrus.вТкст(uniform(1, 10_000_000)));
     }
 }
 
-string[] internalIncludeFlags()
+ткст[] internalIncludeFlags()
 {
     //*V-tas:import std.algorithm;
     //*V-tas:import std.array;

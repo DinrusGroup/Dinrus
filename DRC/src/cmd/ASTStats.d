@@ -3,7 +3,7 @@ module cmd.ASTStats;
 import drc.ast.DefaultVisitor,
        drc.ast.Node,
        drc.ast.Declaration,
-       drc.ast.Statement,
+       drc.ast.Инструкция2,
        drc.ast.Expression,
        drc.ast.Types;
 

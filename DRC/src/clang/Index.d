@@ -13,7 +13,7 @@ struct Index
 {
     mixin CX;
 
-    this (bool excludeDeclarationsFromPCH, bool displayDiagnostics)
+    this (бул excludeDeclarationsFromPCH, бул displayDiagnostics)
     {
         cx = clang_createIndex(excludeDeclarationsFromPCH ? 1 : 0, displayDiagnostics ? 1 : 0);
     }

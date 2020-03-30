@@ -26,7 +26,7 @@ extern (C):
  * Return the timestamp for use with Clang's
  * \c -fbuild-session-timestamp= option.
  */
-ulong clang_getBuildSessionTimestamp();
+бдол clang_getBuildSessionTimestamp();
 
 /**
  * Object encapsulating information about overlaying virtual
@@ -50,8 +50,8 @@ CXVirtualFileOverlay clang_VirtualFileOverlay_create(uint options);
  */
 CXErrorCode clang_VirtualFileOverlay_addFileMapping(
     CXVirtualFileOverlay,
-    char* virtualPath,
-    char* realPath);
+    ткст0 virtualPath,
+    ткст0 realPath);
 
 /**
  * Set the case sensitivity for the \c CXVirtualFileOverlay object.
@@ -61,10 +61,10 @@ CXErrorCode clang_VirtualFileOverlay_addFileMapping(
  */
 CXErrorCode clang_VirtualFileOverlay_setCaseSensitivity(
     CXVirtualFileOverlay,
-    int caseSensitive);
+    цел caseSensitive);
 
 /**
- * Write out the \c CXVirtualFileOverlay object to a char buffer.
+ * Write out the \c CXVirtualFileOverlay object to a сим buffer.
  *
  * \param options is reserved, always pass 0.
  * \param out_buffer_ptr pointer to receive the buffer pointer, which should be
@@ -75,7 +75,7 @@ CXErrorCode clang_VirtualFileOverlay_setCaseSensitivity(
 CXErrorCode clang_VirtualFileOverlay_writeToBuffer(
     CXVirtualFileOverlay,
     uint options,
-    char** out_buffer_ptr,
+    сим** out_buffer_ptr,
     uint* out_buffer_size);
 
 /**
@@ -84,12 +84,12 @@ CXErrorCode clang_VirtualFileOverlay_writeToBuffer(
  *
  * \param buffer memory pointer to free.
  */
-void clang_free(void* buffer);
+проц clang_free(ук buffer);
 
 /**
  * Dispose a \c CXVirtualFileOverlay object.
  */
-void clang_VirtualFileOverlay_dispose(CXVirtualFileOverlay);
+проц clang_VirtualFileOverlay_dispose(CXVirtualFileOverlay);
 
 /**
  * Object encapsulating information about a module.map file.
@@ -111,7 +111,7 @@ CXModuleMapDescriptor clang_ModuleMapDescriptor_create(uint options);
  */
 CXErrorCode clang_ModuleMapDescriptor_setFrameworkModuleName(
     CXModuleMapDescriptor,
-    char* name);
+    ткст0 name);
 
 /**
  * Sets the umbrealla header name that the module.map describes.
@@ -119,10 +119,10 @@ CXErrorCode clang_ModuleMapDescriptor_setFrameworkModuleName(
  */
 CXErrorCode clang_ModuleMapDescriptor_setUmbrellaHeader(
     CXModuleMapDescriptor,
-    char* name);
+    ткст0 name);
 
 /**
- * Write out the \c CXModuleMapDescriptor object to a char buffer.
+ * Write out the \c CXModuleMapDescriptor object to a сим buffer.
  *
  * \param options is reserved, always pass 0.
  * \param out_buffer_ptr pointer to receive the buffer pointer, which should be
@@ -133,13 +133,13 @@ CXErrorCode clang_ModuleMapDescriptor_setUmbrellaHeader(
 CXErrorCode clang_ModuleMapDescriptor_writeToBuffer(
     CXModuleMapDescriptor,
     uint options,
-    char** out_buffer_ptr,
+    сим** out_buffer_ptr,
     uint* out_buffer_size);
 
 /**
  * Dispose a \c CXModuleMapDescriptor object.
  */
-void clang_ModuleMapDescriptor_dispose(CXModuleMapDescriptor);
+проц clang_ModuleMapDescriptor_dispose(CXModuleMapDescriptor);
 
 /**
  * @}

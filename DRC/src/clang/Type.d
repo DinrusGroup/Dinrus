@@ -14,7 +14,7 @@ import clang.Util;
 
 struct Type
 {
-    static assert(Type.init.kind == CXTypeKind.invalid);
+    static assert(Type.init.вид == CXTypeKind.invalid);
 
     mixin CX;
 
@@ -22,24 +22,24 @@ struct Type
     private Type* canonical_;
 
     mixin(bitfields!(
-        bool, "isConst", 1,
-        bool, "isVolatile", 1,
-        bool, "isClang", 1,
+        бул, "isConst", 1,
+        бул, "isVolatile", 1,
+        бул, "isClang", 1,
         uint, "", 5));
 
-    string spelling = "";
+    ткст spelling = "";
 
     this (CXType cx)
     {
         this.cx = cx;
         spelling = Cursor(clang_getTypeDeclaration(cx)).spelling;
         isConst = clang_isConstQualifiedType(cx) == 1;
-        isClang = true;
+        isClang = да;
     }
 
-    this (CXTypeKind kind, string spelling)
+    this (CXTypeKind вид, ткст spelling)
     {
-        cx.kind = kind;
+        cx.вид = вид;
         this.spelling = spelling;
     }
 
@@ -51,7 +51,7 @@ struct Type
         return result;
     }
 
-    static Type makeTypedef(string spelling, Type canonical)
+    static Type makeTypedef(ткст spelling, Type canonical)
     {
         Type result = Type(CXTypeKind.typedef_, spelling);
         result.canonical_ = new Type();
@@ -59,7 +59,7 @@ struct Type
         return result;
     }
 
-    bool isAnonymous ()
+    бул isAnonymous ()
     {
         return spelling == "";
     }
@@ -69,104 +69,104 @@ struct Type
         return declaration.underlyingType;
     }
 
-    bool isArray ()
+    бул isМассив ()
     {
         return
-            kind == CXTypeKind.constantArray ||
-            kind == CXTypeKind.incompleteArray ||
-            kind == CXTypeKind.variableArray ||
-            kind == CXTypeKind.dependentSizedArray;
+            вид == CXTypeKind.constantМассив ||
+            вид == CXTypeKind.incompleteМассив ||
+            вид == CXTypeKind.variableМассив ||
+            вид == CXTypeKind.dependentSizedМассив;
     }
 
     /**
-     * Removes array and pointer modifiers from the type.
+     * Removes array and pointer modifiers from the тип.
      */
     Type undecorated()
     {
-        if (isArray)
+        if (isМассив)
             return array.elementType.undecorated;
-        else if (kind == CXTypeKind.pointer && !pointee.isFunctionType)
+        else if (вид == CXTypeKind.pointer && !pointee.isFunctionType)
             return pointee.undecorated;
         else
             return this;
     }
 
-    bool isDecorated()
+    бул isDecorated()
     {
-        return isArray || (kind == CXTypeKind.pointer && !pointee.isFunctionType);
+        return isМассив || (вид == CXTypeKind.pointer && !pointee.isFunctionType);
     }
 
-    bool isEnum ()
+    бул isEnum ()
     {
-        return kind == CXTypeKind.enum_;
+        return вид == CXTypeKind.enum_;
     }
 
-    bool isExposed ()
+    бул isExposed ()
     {
-        return kind != CXTypeKind.unexposed;
+        return вид != CXTypeKind.unexposed;
     }
 
-    bool isFunctionType ()
+    бул isFunctionType ()
     {
-        return canonical.kind == CXTypeKind.functionProto;
+        return canonical.вид == CXTypeKind.functionProto;
     }
 
-    bool isFunctionPointerType ()
+    бул isFunctionPointerType ()
     {
-        return kind == CXTypeKind.pointer && pointee.isFunctionType;
+        return вид == CXTypeKind.pointer && pointee.isFunctionType;
     }
 
-    bool isObjCIdType ()
+    бул isObjCIdType ()
     {
         return isTypedef &&
-            canonical.kind == CXTypeKind.objCObjectPointer &&
-            spelling == "id";
+            canonical.вид == CXTypeKind.objCObjectPointer &&
+            spelling == "ид";
     }
 
-    bool isObjCClassType ()
+    бул isObjCClassType ()
     {
         return isTypedef &&
-            canonical.kind == CXTypeKind.objCObjectPointer &&
+            canonical.вид == CXTypeKind.objCObjectPointer &&
             spelling == "Class";
     }
 
-    bool isObjCSelType ()
+    бул isObjCSelType ()
     {
         with(CXTypeKind)
             if (isTypedef)
             {
                 auto c = canonical;
-                return c.kind == pointer &&
-                    c.pointee.kind == objCSel;
+                return c.вид == pointer &&
+                    c.pointee.вид == objCSel;
             }
 
             else
-                return false;
+                return нет;
     }
 
-    bool isObjCBuiltinType ()
+    бул isObjCBuiltinType ()
     {
         return isObjCIdType || isObjCClassType || isObjCSelType;
     }
 
-    bool isPointer ()
+    бул isPointer ()
     {
-        return kind == CXTypeKind.pointer;
+        return вид == CXTypeKind.pointer;
     }
 
-    bool isTypedef ()
+    бул isTypedef ()
     {
-        return kind == CXTypeKind.typedef_;
+        return вид == CXTypeKind.typedef_;
     }
 
-    bool isValid ()
+    бул isValid ()
     {
-        return kind != CXTypeKind.invalid;
+        return вид != CXTypeKind.invalid;
     }
 
-    bool isWideCharType ()
+    бул isWideCharType ()
     {
-        return kind == CXTypeKind.wChar;
+        return вид == CXTypeKind.wChar;
     }
 
     Type canonical()
@@ -225,12 +225,12 @@ struct Type
         return FuncType(this);
     }
 
-    ArrayType array ()
+    МассивType array ()
     {
-        return ArrayType(this);
+        return МассивType(this);
     }
 
-    size_t sizeOf()
+    т_мера sizeOf()
     {
         if (isClang)
         {
@@ -239,7 +239,7 @@ struct Type
             if (result < 0)
                 throwTypeLayoutError(cast(CXTypeLayoutError) result, spelling);
 
-            return cast(size_t) result;
+            return cast(т_мера) result;
         }
         else
         {
@@ -247,27 +247,27 @@ struct Type
         }
     }
 
-    string toString() const
+    ткст вТкст() const
     {
         import std.format: format;
-        return format("Type(kind = %s, spelling = %s, isConst = %s)", kind, spelling, isConst);
+        return format("Type(вид = %s, spelling = %s, isConst = %s)", вид, spelling, isConst);
     }
 
-    string toString()
+    ткст вТкст()
     {
         import std.format : format;
-        return format("Type(kind = %s, spelling = %s)", kind, spelling);
+        return format("Type(вид = %s, spelling = %s)", вид, spelling);
     }
 }
 
 struct FuncType
 {
-    Type type;
-    alias type this;
+    Type тип;
+    alias тип this;
 
     Type resultType ()
     {
-        auto r = clang_getResultType(type.cx);
+        auto r = clang_getResultType(тип.cx);
         return Type(r);
     }
 
@@ -276,40 +276,40 @@ struct FuncType
         return Arguments(this);
     }
 
-    bool isVariadic ()
+    бул isVariadic ()
     {
-        return clang_isFunctionTypeVariadic(type.cx) == 1;
+        return clang_isFunctionTypeVariadic(тип.cx) == 1;
     }
 }
 
-struct ArrayType
+struct МассивType
 {
-    Type type;
-    alias type this;
+    Type тип;
+    alias тип this;
 
-    this (Type type)
+    this (Type тип)
     {
-        assert(type.isArray);
-        this.type = type;
+        assert(тип.isМассив);
+        this.тип = тип;
     }
 
     Type elementType ()
     {
-        auto r = clang_getArrayElementType(cx);
+        auto r = clang_getМассивElementType(cx);
         return Type(r);
     }
 
     long size ()
     {
-        return clang_getArraySize(cx);
+        return clang_getМассивSize(cx);
     }
 
-    size_t numDimensions ()
+    т_мера numDimensions ()
     {
-        size_t result = 1;
+        т_мера result = 1;
         auto subtype = elementType();
 
-        while (subtype.isArray)
+        while (subtype.isМассив)
         {
             ++result;
             subtype = subtype.array.elementType();
@@ -321,26 +321,26 @@ struct ArrayType
 
 struct Arguments
 {
-    FuncType type;
+    FuncType тип;
 
     uint length ()
     {
-        return clang_getNumArgTypes(type.type.cx);
+        return clang_getNumArgTypes(тип.тип.cx);
     }
 
     Type opIndex (uint i)
     {
-        auto r = clang_getArgType(type.type.cx, i);
+        auto r = clang_getArgType(тип.тип.cx, i);
         return Type(r);
     }
 
-    int opApply (int delegate (ref Type) dg)
+    цел opApply (цел delegate (ref Type) dg)
     {
         foreach (i ; 0 .. length)
         {
-            auto type = this[i];
+            auto тип = this[i];
 
-            if (auto result = dg(type))
+            if (auto result = dg(тип))
                 return result;
         }
 
@@ -348,12 +348,12 @@ struct Arguments
     }
 }
 
-bool isIntegral (CXTypeKind kind)
+бул isIntegral (CXTypeKind вид)
 {
     with (CXTypeKind)
-        switch (kind)
+        switch (вид)
         {
-            case bool_:
+            case бул_:
             case charU:
             case uChar:
             case char16:
@@ -371,33 +371,33 @@ bool isIntegral (CXTypeKind kind)
             case long_:
             case longLong:
             case int128:
-                return true;
+                return да;
 
             default:
-                return false;
+                return нет;
         }
 }
 
-bool isUnsigned (CXTypeKind kind)
+бул isUnsigned (CXTypeKind вид)
 {
     with (CXTypeKind)
-        switch (kind)
+        switch (вид)
         {
-            case charU: return true;
-            case uChar: return true;
-            case uShort: return true;
-            case uInt: return true;
-            case uLong: return true;
-            case uLongLong: return true;
-            case uInt128: return true;
+            case charU: return да;
+            case uChar: return да;
+            case uShort: return да;
+            case uInt: return да;
+            case uLong: return да;
+            case uLongLong: return да;
+            case uInt128: return да;
 
-            default: return false;
+            default: return нет;
         }
 }
 
 class TypeLayoutError : object.Exception
 {
-    this (string message, string file = __FILE__, size_t line = __LINE__)
+    this (ткст message, ткст file = __FILE__, т_мера line = __LINE__)
     {
         super(message, file, line);
     }
@@ -405,57 +405,57 @@ class TypeLayoutError : object.Exception
 
 class TypeLayoutErrorUnknown : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
-        super("The layout of the type is unknown: '" ~ spelling ~ "'.");
+        super("The layout of the тип is unknown: '" ~ spelling ~ "'.");
     }
 }
 
 class TypeLayoutErrorInvalid : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
-        super("The type is of invalid kind.");
+        super("The тип is of invalid вид.");
     }
 }
 
 class TypeLayoutErrorIncomplete : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
-        super("The type '" ~ spelling ~ "' is an incomplete type.");
+        super("The тип '" ~ spelling ~ "' is an incomplete тип.");
     }
 }
 
 class TypeLayoutErrorDependent : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
-        super("The type `" ~ spelling ~ "` is a dependent type.");
+        super("The тип `" ~ spelling ~ "` is a dependent тип.");
     }
 }
 
 class TypeLayoutErrorNotConstantSize : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
-        super("The type '" ~ spelling ~ "'is not a constant size type.");
+        super("The тип '" ~ spelling ~ "'is not a constant size тип.");
     }
 }
 
 class TypeLayoutErrorInvalidFieldName : TypeLayoutError
 {
-    this (string spelling, string file = __FILE__, size_t line = __LINE__)
+    this (ткст spelling, ткст file = __FILE__, т_мера line = __LINE__)
     {
         super("The field name '" ~ spelling ~ "' is not valid for this record.");
     }
 }
 
-void throwTypeLayoutError(
+проц throwTypeLayoutError(
     CXTypeLayoutError layout,
-    string spelling,
-    string file = __FILE__,
-    size_t line = __LINE__)
+    ткст spelling,
+    ткст file = __FILE__,
+    т_мера line = __LINE__)
 {
     final switch (layout)
     {

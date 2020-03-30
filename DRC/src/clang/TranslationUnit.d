@@ -24,16 +24,16 @@ struct TranslationUnit
 {
     mixin CX;
 
-    string sourceString = пусто;
+    ткст sourceString = пусто;
 
     static TranslationUnit parse (
         Index index,
-        string sourceFilename,
-        const string[] commandLineArgs = ["-Wno-missing-declarations"],
+        ткст sourceFilename,
+        const ткст[] commandLineArgs = ["-Wno-missing-declarations"],
         CXUnsavedFile[] unsavedFiles = пусто,
         uint options = CXTranslationUnit_Flags.detailedPreprocessingRecord)
     {
-        string[] arguments = commandLineArgs.dup;
+        ткст[] arguments = commandLineArgs.dup;
 
         auto version_ = clangVersion();
 
@@ -43,18 +43,18 @@ struct TranslationUnit
         return TranslationUnit(
             clang_parseTranslationUnit(
                 index.cx,
-                sourceFilename.toStringz,
-                strToCArray(arguments),
-                cast(int) arguments.length,
-                toCArray!(CXUnsavedFile)(unsavedFiles),
+                sourceFilename.вТкстz,
+                strToCМассив(arguments),
+                cast(цел) arguments.length,
+                toCМассив!(CXUnsavedFile)(unsavedFiles),
                 cast(uint) unsavedFiles.length,
                 options));
     }
 
     static TranslationUnit parseString (
         Index index,
-        string source,
-        string[] commandLineArgs = ["-Wno-missing-declarations"],
+        ткст source,
+        ткст[] commandLineArgs = ["-Wno-missing-declarations"],
         CXUnsavedFile[] unsavedFiles = пусто,
         uint options = CXTranslationUnit_Flags.detailedPreprocessingRecord)
     {
@@ -95,12 +95,12 @@ struct TranslationUnit
         return DiagnosticSet(clang_getDiagnosticSetFromTU(cx));
     }
 
-    size_t numDiagnostics ()
+    т_мера numDiagnostics ()
     {
         return clang_getNumDiagnostics(cx);
     }
 
-    bool isCompiled()
+    бул isCompiled()
     {
         import std.algorithm;
 
@@ -116,9 +116,9 @@ struct TranslationUnit
         return DeclarationVisitor(clang_getTranslationUnitCursor(cx));
     }
 
-    File file (string filename)
+    File file (ткст filename)
     {
-        return File(clang_getFile(cx, filename.toStringz));
+        return File(clang_getFile(cx, filename.вТкстz));
     }
 
     File file ()
@@ -126,12 +126,12 @@ struct TranslationUnit
         return file(spelling);
     }
 
-    string spelling ()
+    ткст spelling ()
     {
         return toD(clang_getTranslationUnitSpelling(cx));
     }
 
-    string source ()
+    ткст source ()
     {
         import std.file : readText;
         return sourceString ? sourceString : readText(spelling);
@@ -145,19 +145,19 @@ struct TranslationUnit
 
     SourceLocation location (uint offset)
     {
-        CXFile file = clang_getFile(cx, spelling.toStringz);
+        CXFile file = clang_getFile(cx, spelling.вТкстz);
         return SourceLocation(clang_getLocationForOffset(cx, file, offset));
     }
 
-    SourceLocation location (string path, uint offset)
+    SourceLocation location (ткст path, uint offset)
     {
-        CXFile file = clang_getFile(cx, path.toStringz);
+        CXFile file = clang_getFile(cx, path.вТкстz);
         return SourceLocation(clang_getLocationForOffset(cx, file, offset));
     }
 
     SourceRange extent (uint startOffset, uint endOffset)
     {
-        CXFile file = clang_getFile(cx, spelling.toStringz);
+        CXFile file = clang_getFile(cx, spelling.вТкстz);
         auto start = clang_getLocationForOffset(cx, file, startOffset);
         auto end = clang_getLocationForOffset(cx, file, endOffset);
         return SourceRange(clang_getRange(start, end));
@@ -165,17 +165,17 @@ struct TranslationUnit
 
     package SourceLocation[] includeLocationsImpl(Range)(Range cursors)
     {
-        // `cursors` range should at least contain all global
+        // `cursors` range should at least contain all глоб2
         // preprocessor cursors, although it can contain more.
 
-        Set!string stacked;
-        Set!string included;
+        Set!ткст stacked;
+        Set!ткст included;
         SourceLocation[] locationStack;
         SourceLocation[] locations = [ location("", 0), location(file.name, 0) ];
 
         foreach (cursor; cursors)
         {
-            if (cursor.kind == CXCursorKind.inclusionDirective)
+            if (cursor.вид == CXCursorKind.inclusionDirective)
             {
                 auto ptr = cursor.path in stacked;
 
@@ -217,36 +217,36 @@ struct TranslationUnit
         return includeLocationsImpl(cursor.all);
     }
 
-    package ulong delegate (SourceLocation)
+    package бдол delegate (SourceLocation)
         relativeLocationAccessorImpl(Range)(Range cursors)
     {
-        // `cursors` range should at least contain all global
+        // `cursors` range should at least contain all глоб2
         // preprocessor cursors, although it can contain more.
 
         SourceLocation[] locations = includeLocationsImpl(cursors);
 
         struct Entry
         {
-            size_t index;
+            т_мера index;
             SourceLocation location;
 
-            int opCmp(ref const Entry s) const
+            цел opCmp(ref const Entry s) const
             {
                 return location.offset < s.location.offset ? -1 : 1;
             }
 
-            int opCmp(ref const SourceLocation s) const
+            цел opCmp(ref const SourceLocation s) const
             {
                 return location.offset < s.offset + 1 ? -1 : 1;
             }
         }
 
-        Entry[][string] map;
+        Entry[][ткст] map;
 
         foreach (index, location; locations)
             map[location.path] ~= Entry(index, location);
 
-        size_t findIndex(SourceLocation a)
+        т_мера findIndex(SourceLocation a)
         {
             auto entries = map[a.path];
 
@@ -257,27 +257,27 @@ struct TranslationUnit
             return lower.empty ? 0 : lower.back.index;
         }
 
-        ulong accessor(SourceLocation location)
+        бдол accessor(SourceLocation location)
         {
-            return ((cast(ulong) findIndex(location)) << 32) |
-                (cast(ulong) location.offset);
+            return ((cast(бдол) findIndex(location)) << 32) |
+                (cast(бдол) location.offset);
         }
 
         return &accessor;
     }
 
-    ulong delegate (SourceLocation)
+    бдол delegate (SourceLocation)
         relativeLocationAccessor()
     {
         return relativeLocationAccessorImpl(cursor.all);
     }
 
-    bool delegate (SourceLocation, SourceLocation)
+    бул delegate (SourceLocation, SourceLocation)
         relativeLocationLessOp()
     {
         auto accessor = relativeLocationAccessor();
 
-        bool lessOp(SourceLocation a, SourceLocation b)
+        бул lessOp(SourceLocation a, SourceLocation b)
         {
             if (a.file == b.file)
                 return a.offset < b.offset;
@@ -288,12 +288,12 @@ struct TranslationUnit
         return &lessOp;
     }
 
-    bool delegate (Cursor, Cursor)
+    бул delegate (Cursor, Cursor)
         relativeCursorLocationLessOp()
     {
         auto accessor = relativeLocationAccessor();
 
-        bool lessOp(Cursor a, Cursor b)
+        бул lessOp(Cursor a, Cursor b)
         {
             if (a.file == b.file)
                 return a.location.offset < b.location.offset;
@@ -324,17 +324,17 @@ struct TranslationUnit
             return makeToken(tokens[currentToken]);
         }
 
-        bool empty()
+        бул empty()
         {
             return numTokens == 0 || numTokens == currentToken;
         }
 
-        void popFront()
+        проц popFront()
         {
             currentToken++;
         }
 
-        void dispose()
+        проц dispose()
         {
             clang_disposeTokens(cx, tokens, numTokens);
         }
@@ -366,7 +366,7 @@ struct TranslationUnit
         import std.algorithm : filter, stripRight;
 
         auto range = tokenizeImpl(cx, extent);
-        auto tokens = range.filter!(e => e.kind != TokenKind.comment).array;
+        auto tokens = range.filter!(e => e.вид != TokenKind.коммент).array;
         range.dispose();
 
         // For some reason libclang returns some tokens out of cursors extent.cursor
@@ -393,22 +393,22 @@ struct TranslationUnit
         return tokenizeNoComments(extent(0, cast(uint) source.length));
     }
 
-    bool isFileMultipleIncludeGuarded(string path)
+    бул isFileMultipleIncludeGuarded(ткст path)
     {
-        auto file = clang_getFile(cx, path.toStringz);
+        auto file = clang_getFile(cx, path.вТкстz);
         return clang_isFileMultipleIncludeGuarded(cx, file) != 0;
     }
 
-    bool isMultipleIncludeGuarded()
+    бул isMultipleIncludeGuarded()
     {
         return isFileMultipleIncludeGuarded(spelling);
     }
 
-    string dumpAST(bool skipIncluded = true)
+    ткст dumpAST(бул skipIncluded = да)
     {
         import std.array : appender;
 
-        auto result = appender!string();
+        auto result = appender!ткст();
 
         if (skipIncluded)
         {
@@ -433,14 +433,14 @@ struct DiagnosticVisitor
         this.translatoinUnit = translatoinUnit;
     }
 
-    size_t length ()
+    т_мера length ()
     {
         return clang_getNumDiagnostics(translatoinUnit);
     }
 
-    int opApply (int delegate (ref Diagnostic) dg)
+    цел opApply (цел delegate (ref Diagnostic) dg)
     {
-        int result;
+        цел result;
 
         foreach (i ; 0 .. length)
         {
@@ -456,16 +456,16 @@ struct DiagnosticVisitor
     }
 }
 
-Token[] tokenize(string source)
+Token[] tokenize(ткст source)
 {
-    Index index = Index(false, false);
+    Index index = Index(нет, нет);
     auto translUnit = TranslationUnit.parseString(index, source);
     return translUnit.tokenize(translUnit.extent(0, cast(uint) source.length));
 }
 
-Token[] tokenizeNoComments(string source)
+Token[] tokenizeNoComments(ткст source)
 {
-    Index index = Index(false, false);
+    Index index = Index(нет, нет);
     auto translUnit = TranslationUnit.parseString(index, source);
     return translUnit.tokenizeNoComments(
         translUnit.extent(0, cast(uint) source.length));

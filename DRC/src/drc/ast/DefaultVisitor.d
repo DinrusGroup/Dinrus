@@ -1,11 +1,11 @@
 module drc.ast.DefaultVisitor;
 
 import  drc.ast.Visitor,
-       drc.ast.NodeЧленs,
+       drc.ast.NodeMembers,
        drc.ast.Node,
        drc.ast.Declarations,
        drc.ast.Expressions,
-       drc.ast.Statements,
+       drc.ast.Инструкции,
        drc.ast.Types,
        drc.ast.Parameters;
 import common;
@@ -13,7 +13,7 @@ import common;
 /// Генерирует рабочий код для посещения предоставленных членов.
 private ткст создайКод(ВидУзла видУзла)
 {
-  ткст[] члены; // Массив из имен членов, которые будут посещаться.
+  ткст[] члены; // МассивДРК из имен членов, которые будут посещаться.
 
   // Поиск членов для узла данного вида в таблице.
   члены = г_таблицаЧленов[видУзла];

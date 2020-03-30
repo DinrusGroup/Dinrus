@@ -22,15 +22,15 @@ private ткст вТкст(бцел x, бцел pad)
 }
 
 version(D2)
-  const бцел VERSION_MAJOR_DEFAULT = 2;
+  const бцел ВЕРСИЯ_МАЖОР_ДЕФОЛТ = 2;
 else
-  const бцел VERSION_MAJOR_DEFAULT = 1;
+  const бцел ВЕРСИЯ_МАЖОР_ДЕФОЛТ = 1;
 
-/// The majили version число of this compiler.
-const бцел ВЕРСИЯ_МАЖОР = VERSION_MAJOR_DEFAULT;
-/// The minили version число of this compiler.
+/// Мажорное число версии этого компилятора.
+const бцел ВЕРСИЯ_МАЖОР = ВЕРСИЯ_МАЖОР_ДЕФОЛТ;
+/// Минорное число версии этого компилятора.
 const бцел ВЕРСИЯ_МИНОР = 0;
-/// The compiler version formatted as a ткст.
+/// Версия компилятора, форматированная как ткст.
 const ткст ВЕРСИЯ = вТкст(ВЕРСИЯ_МАЖОР)~"."~вТкст(ВЕРСИЯ_МИНОР, 3);
-/// The имя of the compiler.
-const ткст ПОСТАВЩИК = "Dinrus Group";
+/// Имя компилятора.
+const ткст ПОСТАВЩИК = "DinrusGroup";

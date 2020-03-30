@@ -6,7 +6,7 @@ module drc.lexer.TokensEnum;
 import common;
 
 /// Перечисление типов сем.
-enum TOK : бкрат
+enum ТОК : бкрат
 {
   Неверно,
 
@@ -113,15 +113,15 @@ enum TOK : бкрат
   МАКС
 }
 
-alias TOK.Абстрактный НачалоКС;
-alias TOK.Проц КонецКС;
-alias TOK.Сим НачалоИнтегральногоТипа;
-alias TOK.Проц КонецИнтегральногоТипа;
-alias TOK.ФАЙЛ НачалоСпецСем;
-alias TOK.ВЕРСИЯ КонецСпецСем;
+alias ТОК.Абстрактный НачалоКС;
+alias ТОК.Проц КонецКС;
+alias ТОК.Сим НачалоИнтегральногоТипа;
+alias ТОК.Проц КонецИнтегральногоТипа;
+alias ТОК.ФАЙЛ НачалоСпецСем;
+alias ТОК.ВЕРСИЯ КонецСпецСем;
 
 /// Таблица, преобразующая семы каждого вида в текст.
-const ткст[TOK.МАКС] семаВТкст = [
+const ткст[ТОК.МАКС] семаВТкст = [
   "Неверный",
 
   "Нелегал",
@@ -189,20 +189,20 @@ const ткст[TOK.МАКС] семаВТкст = [
   ",",
   "$",
 
-  "abstract","alias","align","asm","assert","auto","body",
-  "break","case","cast","catch",
-  "class","const","continue",
-  "debug","default","delegate","delete","deprecated","do",
-  "else","enum","export","extern","нет","final",
-  "finally","for","foreach","foreach_reverse","function","goto",
-  "if","import","in","inout",
-  "interface","invariant","is","lazy","macro",
-  "mixin","module","new","nothrow","пусто","out","override","package",
-  "pragma","private","protected","public","pure","ref","return",
-  "scope","static","struct","super","switch","synchronized",
-  "template","this","throw","__traits","да","try","typedef","typeid",
-  "typeof","union","unittest",
-  "version","volatile","while","with",
+  "абстр","ник","расклад","асм","подтверди","авто","тело",
+  "всё","равно","как","лови",
+  "класс","конст","далее",
+  "отладка","дефолт","делегат","удали","устар","делай",
+  "иначе","перечень","экспорт","экстерн","нет","фин",
+  "итожь","при","длявсех","длявсех_рев","функция","идик",
+  "если","возьми","вхо","вховых",
+  "интерфейс","инвариант","есть","отлож","макро",
+  "впиши","модуль","нов","неброс","пусто","вых","поверх","пакет",
+  "прагма","прив","защ","пуб","чист","ссыл","верни",
+  "масшт","стат","структ","супер","щит","синхр",
+  "шаблон","сам","брось","__трэтс","да","пробуй","ник","идтипа",
+  "типа","союз","тест",
+  "версия","волатил","пока","над",
   // Целочисленные типы.
   "сим",   "шим",   "дим", "бул",
   "байт",   "ббайт",   "крат", "бкрат",
@@ -215,4 +215,21 @@ const ткст[TOK.МАКС] семаВТкст = [
   "ГОЛОВА",
   "КФ"
 ];
-static assert(семаВТкст.length == TOK.КФ+1);
+static assert(семаВТкст.length == ТОК.КФ+1);
+
+/+
+  "abstract","alias","align","asm","assert","auto","body",
+  "break","case","cast","catch",
+  "class","const","continue",
+  "debug","default","delegate","delete","deprecated","do",
+  "else","enum","export","extern","false","final",
+  "finally","for","foreach","foreach_reverse","function","goto",
+  "if","import","in","inout",
+  "interface","invariant","is","lazy","macro",
+  "mixin","module","new","","null","out","override","package",
+  "pragma","private","protected","public","","ref","return",
+  "scope","static","struct","super","switch","synchronized",
+  "template","this","throw","__traits","true","try","alias","typeid",
+  "typeof","union","unittest",
+  "version","volatile","while","with",
+  +/

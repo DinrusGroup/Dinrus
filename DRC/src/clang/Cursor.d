@@ -8,7 +8,7 @@ module clang.Cursor;
 
 import std.array : appender, Appender;
 import std.conv : to;
-import std.string;
+import std.ткст;
 
 import clang.c.Index;
 import clang.Index;
@@ -25,7 +25,7 @@ struct Cursor
 {
     mixin CX;
 
-    private static CXCursorKind[string] predefined;
+    private static CXCursorKind[ткст] predefined;
 
     static this()
     {
@@ -38,21 +38,21 @@ struct Cursor
         return Cursor(r);
     }
 
-    string spelling () 
+    ткст spelling () 
     {
         return toD(clang_getCursorSpelling(cx));
     }
 
-    CXCursorKind kind () 
+    CXCursorKind вид () 
     {
         return clang_getCursorKind(cx);
     }
 
-    bool isPreprocessor () 
+    бул isPreprocessor () 
     {
-        CXCursorKind kind = clang_getCursorKind(cx);
-        return CXCursorKind.firstPreprocessing <= kind &&
-            kind <= CXCursorKind.lastPreprocessing;
+        CXCursorKind вид = clang_getCursorKind(cx);
+        return CXCursorKind.firstPreprocessing <= вид &&
+            вид <= CXCursorKind.lastPreprocessing;
     }
 
     SourceLocation location () 
@@ -65,7 +65,7 @@ struct Cursor
         return location.file;
     }
 
-    string path () 
+    ткст path () 
     {
         return file.name;
     }
@@ -82,7 +82,7 @@ struct Cursor
         return SourceRange(clang_getCursorExtent(cx));
     }
 
-    Type type () 
+    Type тип () 
     {
         auto r = clang_getCursorType(cx);
         return Type(r);
@@ -97,11 +97,11 @@ struct Cursor
     {
         foreach (child; all)
         {
-            if (child.kind == CXCursorKind.typeRef)
+            if (child.вид == CXCursorKind.typeRef)
                 return child.referenced;
 
             if (child.isDeclaration &&
-                child.kind != CXCursorKind.parmDecl)
+                child.вид != CXCursorKind.parmDecl)
             {
                 return child;
             }
@@ -110,9 +110,9 @@ struct Cursor
         return empty;
     }
 
-    bool isDeclaration ()
+    бул isDeclaration ()
     {
-        return clang_isDeclaration(cx.kind) != 0;
+        return clang_isDeclaration(cx.вид) != 0;
     }
 
     DeclarationVisitor declarations ()
@@ -135,12 +135,12 @@ struct Cursor
         return EnumCursor(this);
     }
 
-    bool isValid ()
+    бул isValid ()
     {
-        return !clang_isInvalid(cx.kind);
+        return !clang_isInvalid(cx.вид);
     }
 
-    bool isEmpty ()
+    бул isEmpty ()
     {
         return clang_Cursor_isNull(cx) != 0;
     }
@@ -155,7 +155,7 @@ struct Cursor
         return InOrderVisitor(this);
     }
 
-    private Cursor[] childrenImpl(T)(bool ignorePredefined) 
+    private Cursor[] childrenImpl(T)(бул ignorePredefined) 
     {
         import std.array : appender;
 
@@ -179,12 +179,12 @@ struct Cursor
         return app.data;
     }
 
-    Cursor[] children(bool ignorePredefined = false) 
+    Cursor[] children(бул ignorePredefined = нет) 
     {
         return childrenImpl!Visitor(ignorePredefined);
     }
 
-    Cursor[] childrenInOrder(bool ignorePredefined = false) 
+    Cursor[] childrenInOrder(бул ignorePredefined = нет) 
     {
         return childrenImpl!InOrderVisitor(ignorePredefined);
     }
@@ -197,18 +197,18 @@ struct Cursor
         return Cursor.empty;
     }
 
-    Cursor findChild(CXCursorKind kind) 
+    Cursor findChild(CXCursorKind вид) 
     {
         foreach (child; all)
         {
-            if (child.kind == kind)
+            if (child.вид == вид)
                 return child;
         }
 
         return Cursor.empty();
     }
 
-    Cursor[] filterChildren(CXCursorKind kind)
+    Cursor[] filterChildren(CXCursorKind вид)
     {
         import std.array;
 
@@ -216,7 +216,7 @@ struct Cursor
 
         foreach (child; all)
         {
-            if (child.kind == kind)
+            if (child.вид == вид)
                 result.put(child);
         }
 
@@ -231,9 +231,9 @@ struct Cursor
 
         foreach (child; all)
         {
-            foreach (kind; kinds)
+            foreach (вид; kinds)
             {
-                if (child.kind == kind)
+                if (child.вид == вид)
                 {
                     result.put(child);
                     break;
@@ -269,14 +269,14 @@ struct Cursor
         return clang_hashCursor(cast(CXCursor) cx);
     }
 
-    bool isDefinition () 
+    бул isDefinition () 
     {
         return clang_isCursorDefinition(cast(CXCursor) cx) != 0;
     }
 
-    bool isTranslationUnit() 
+    бул isTranslationUnit() 
     {
-        return clang_isTranslationUnit(kind) != 0;
+        return clang_isTranslationUnit(вид) != 0;
     }
 
     File includedFile()
@@ -284,24 +284,24 @@ struct Cursor
         return File(clang_getIncludedFile(cx));
     }
 
-    string includedPath ()
+    ткст includedPath ()
     {
         auto file = clang_getIncludedFile(cx);
         return toD(clang_getFileName(file));
     }
 
-    private static CXCursorKind[string] queryPredefined()
+    private static CXCursorKind[ткст] queryPredefined()
     {
-        CXCursorKind[string] result;
+        CXCursorKind[ткст] result;
 
-        Index index = Index(false, false);
+        Index index = Index(нет, нет);
         TranslationUnit unit = TranslationUnit.parseString(
             index,
             "",
             []);
 
         foreach (cursor; unit.cursor.children)
-            result[cursor.spelling] = cursor.kind;
+            result[cursor.spelling] = cursor.вид;
 
         auto version_ = clangVersion();
 
@@ -311,10 +311,10 @@ struct Cursor
         return result;
     }
 
-    bool isPredefined() 
+    бул isPredefined() 
     {
         auto xkind = spelling in predefined;
-        return xkind !is пусто && *xkind == kind;
+        return xkind !is пусто && *xkind == вид;
     }
 
     TranslationUnit translationUnit ()
@@ -337,12 +337,12 @@ struct Cursor
         return Cursor(clang_getCanonicalCursor(cast(CXCursor) cx));
     }
 
-    int bitFieldWidth() 
+    цел bitFieldWidth() 
     {
         return clang_getFieldDeclBitWidth(cast(CXCursor) cx);
     }
 
-    bool isBitField() 
+    бул isBitField() 
     {
         return clang_Cursor_isBitField(cast(CXCursor) cx) != 0;
     }
@@ -353,39 +353,39 @@ struct Cursor
         return this;
     }
 
-    bool opCast(T)() /* if (is(T == bool))*/
-	in {assert(is(T == bool));}
+    бул opCast(T)() /* if (is(T == бул))*/
+	in {assert(is(T == бул));}
     {
         return !isEmpty && isValid;
     }
 
-    void dumpAST(ref Appender!string result, size_t indent, File* file)
+    проц dumpAST(ref Appender!ткст result, т_мера indent, File* file)
     {
         import std.format;
         import std.array : replicate;
         import std.algorithm.comparison : min;
 
-        string stripPrefix(string x)
+        ткст stripPrefix(ткст x)
         {
-             string prefix = "";
-             size_t prefixSize = prefix.length;
+             ткст prefix = "";
+             т_мера prefixSize = prefix.length;
             return x.startsWith(prefix) ? x[prefixSize..$] : x;
         }
 
-        string prettyTokens(Token[] tokens, size_t limit = 5)
+        ткст prettyTokens(Token[] tokens, т_мера limit = 5)
         {
-            string prettyToken(Token token)
+            ткст prettyToken(Token token)
             {
-                 string prefix = "CXToken_";
-                 size_t prefixSize = prefix.length;
-                auto x = toString(token.kind);
+                 ткст prefix = "CXToken_";
+                 т_мера prefixSize = prefix.length;
+                auto x = вТкст(token.вид);
                 return format(
                     "%s \"%s\"",
                     x.startsWith(prefix) ? x[prefixSize .. $] : x,
                     token.spelling);
             }
 
-            auto result = appender!string("[");
+            auto result = appender!ткст("[");
 
             if (tokens.length != 0)
             {
@@ -406,13 +406,13 @@ struct Cursor
             return result.data;
         }
 
-         size_t step = 4;
+         т_мера step = 4;
 
         result.put(" ".replicate(indent));
         formattedWrite(
             result,
             "%s \"%s\" [%d..%d] %s\n",
-            stripPrefix(to!string(kind)),
+            stripPrefix(to!ткст(вид)),
             spelling,
             extent.start.offset,
             extent.end.offset,
@@ -436,22 +436,22 @@ struct Cursor
         }
     }
 
-    void dumpAST(ref Appender!string result, size_t indent)
+    проц dumpAST(ref Appender!ткст result, т_мера indent)
     {
         dumpAST(result, indent, пусто);
     }
 
-    string dumpAST()
+    ткст dumpAST()
     {
-        auto result = appender!string();
+        auto result = appender!ткст();
         dumpAST(result, 0);
         return result.data;
     }
 
-    string toString()
+    ткст вТкст()
     {
         import std.format : format;
-        return format("Cursor(kind = %s, spelling = %s)", kind, spelling);
+        return format("Cursor(вид = %s, spelling = %s)", вид, spelling);
     }
 }
 
@@ -477,7 +477,7 @@ struct ObjcCursor
 
     Cursor superClass ()
     {
-        foreach (cursor, parent ; TypedVisitor!(CXCursorKind.objCSuperClassRef)(cursor))
+        foreach (cursor, родитель ; TypedVisitor!(CXCursorKind.objCSuperClassRef)(cursor))
             return cursor;
 
         return Cursor.empty;
@@ -490,7 +490,7 @@ struct ObjcCursor
 
     Cursor category ()
     {
-        assert(cursor.kind == CXCursorKind.objCCategoryDecl);
+        assert(cursor.вид == CXCursorKind.objCCategoryDecl);
 
         foreach (c, _ ; TypedVisitor!(CXCursorKind.objCClassRef)(cursor))
             return c;
@@ -510,9 +510,9 @@ struct FunctionCursor
         return Type(r);
     }
 
-    bool isVariadic ()
+    бул isVariadic ()
     {
-        return type.func.isVariadic;
+        return тип.func.isVariadic;
     }
 
     ParamVisitor parameters ()
@@ -532,10 +532,10 @@ struct EnumCursor
     Cursor cursor;
     alias cursor this;
 
-    string value ()
+    ткст value ()
     {
-        //return type.kind.isUnsigned ? unsignedValue.toString : signedValue.toString;
-        return signedValue.to!string;
+        //return тип.вид.isUnsigned ? unsignedValue.вТкст : signedValue.вТкст;
+        return signedValue.to!ткст;
     }
 
     long signedValue ()
@@ -543,7 +543,7 @@ struct EnumCursor
         return clang_getEnumConstantDeclValue(cx);
     }
 
-    ulong unsignedValue ()
+    бдол unsignedValue ()
     {
         return clang_getEnumConstantDeclUnsignedValue(cx);
     }

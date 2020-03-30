@@ -3,12 +3,12 @@ module drc.parser.ImportParser;
 import drc.parser.Parser;
 import drc.ast.Node,
        drc.ast.Declarations,
-       drc.ast.Statements;
+       drc.ast.Инструкции;
 import drc.SourceText;
 import drc.Enums;
 import common;
 
-private alias TOK T;
+private alias ТОК T;
 
 /// Облегчённый парсер, который находит лишь инструкции импорта
 /// в тексте исходника.
@@ -84,7 +84,7 @@ class ПарсерИмпорта : Парсер
     далее();
   }
 
-  проц  пропусти(TOK лекс)
+  проц  пропусти(ТОК2 лекс)
   {
     сема.вид == лекс && далее();
   }

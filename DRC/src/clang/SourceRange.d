@@ -25,7 +25,7 @@ struct SourceRange
         return SourceRange(clang_getNullRange());
     }
 
-    bool isEmpty()
+    бул isEmpty()
     {
         return clang_Range_isNull(cx) != 0;
     }
@@ -45,31 +45,31 @@ struct SourceRange
         return SourceLocation(clang_getRangeEnd(cx));
     }
 
-    bool isMultiline() const
+    бул isMultiline() const
     {
         return start.line != end.line;
     }
 
-    string path() const
+    ткст path() const
     {
         return start.path;
     }
 
-    string toString() const
+    ткст вТкст() const
     {
         import std.format: format;
         return format("SourceRange(start = %s, end = %s)", start, end);
     }
 }
 
-bool intersects(in SourceRange a, in SourceRange b)
+бул intersects(in SourceRange a, in SourceRange b)
 {
     return a.path == b.path &&
         (a.start.offset <= b.start.offset && b.start.offset < a.end.offset) ||
         (a.start.offset < b.end.offset && b.end.offset <= a.end.offset);
 }
 
-bool contains(in SourceRange a, in SourceRange b)
+бул contains(in SourceRange a, in SourceRange b)
 {
     return a.path == b.path &&
         a.start.offset <= b.start.offset && b.end.offset <= a.end.offset;

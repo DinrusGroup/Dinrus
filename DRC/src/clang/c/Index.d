@@ -43,11 +43,11 @@ extern (D) auto CINDEX_VERSION_ENCODE(T0, T1)(ref T0 major, ref T1 minor)
 
 enum CINDEX_VERSION = CINDEX_VERSION_ENCODE(CINDEX_VERSION_MAJOR, CINDEX_VERSION_MINOR);
 
-extern (D) string CINDEX_VERSION_STRINGIZE_(T0, T1)(ref T0 major, ref T1 minor)
+extern (D) ткст CINDEX_VERSION_STRINGIZE_(T0, T1)(ref T0 major, ref T1 minor)
 {
     import std.conv : to;
 
-    return to!string(major) ~ "." ~ to!string(minor);
+    return to!ткст(major) ~ "." ~ to!ткст(minor);
 }
 
 alias CINDEX_VERSION_STRINGIZE_ CINDEX_VERSION_STRINGIZE;
@@ -78,10 +78,10 @@ const CINDEX_VERSION_STRING = CINDEX_VERSION_STRINGIZE(CINDEX_VERSION_MAJOR, CIN
  * An "index" that consists of a set of translation units that would
  * typically be linked together into an executable or library.
  */
-alias void* CXIndex;
+alias ук CXIndex;
 
 /**
- * An opaque type representing target information for a given translation
+ * An opaque тип representing target information for a given translation
  * unit.
  */
 struct CXTargetInfoImpl;
@@ -97,7 +97,7 @@ alias CXTranslationUnitImpl* CXTranslationUnit;
  * Opaque pointer representing client data that will be passed through
  * to various callbacks and visitors.
  */
-alias void* CXClientData;
+alias ук CXClientData;
 
 /**
  * Provides the contents of a file that has not yet been saved to disk.
@@ -113,12 +113,12 @@ struct CXUnsavedFile
      *
      * This file must already exist in the file system.
      */
-    char* Filename;
+    ткст0 Filename;
 
     /**
      * A buffer containing the unsaved contents of this file.
      */
-    char* Contents;
+    ткст0 Contents;
 
     /**
      * The length of the unsaved contents of this buffer.
@@ -162,19 +162,19 @@ struct CXVersion
      * The major version number, e.g., the '10' in '10.7.3'. A negative
      * value indicates that there is no version number at all.
      */
-    int Major;
+    цел Major;
     /**
      * The minor version number, e.g., the '7' in '10.7.3'. This value
      * will be negative if no minor version number was provided, e.g., for
      * version '10'.
      */
-    int Minor;
+    цел Minor;
     /**
      * The subminor version number, e.g., the '3' in '10.7.3'. This value
      * will be negative if no minor or subminor version number was provided,
      * e.g., in version '10' or '10.7'.
      */
-    int Subminor;
+    цел Subminor;
 }
 
 /**
@@ -258,7 +258,7 @@ enum CXCursor_ExceptionSpecificationKind
  *
  *   // This will load all the symbols from 'IndexTest.c', excluding symbols
  *   // from 'IndexTest.pch'.
- *   char *args[] = { "-Xclang", "-include-pch=IndexTest.pch" };
+ *   сим *args[] = { "-Xclang", "-include-pch=IndexTest.pch" };
  *   TU = clang_createTranslationUnitFromSourceFile(Idx, "IndexTest.c", 2, args,
  *                                                  0, 0);
  *   clang_visitChildren(clang_getTranslationUnitCursor(TU),
@@ -271,8 +271,8 @@ enum CXCursor_ExceptionSpecificationKind
  * (which gives the indexer the same performance benefit as the compiler).
  */
 CXIndex clang_createIndex(
-    int excludeDeclarationsFromPCH,
-    int displayDiagnostics);
+    цел excludeDeclarationsFromPCH,
+    цел displayDiagnostics);
 
 /**
  * Destroy the given index.
@@ -280,7 +280,7 @@ CXIndex clang_createIndex(
  * The index must not be destroyed until all of the translation units created
  * within that index have been destroyed.
  */
-void clang_disposeIndex(CXIndex index);
+проц clang_disposeIndex(CXIndex index);
 
 enum CXGlobalOptFlags
 {
@@ -327,7 +327,7 @@ enum CXGlobalOptFlags
  *
  * \param options A bitmask of options, a bitwise OR of CXGlobalOpt_XXX flags.
  */
-void clang_CXIndex_setGlobalOptions(CXIndex, uint options);
+проц clang_CXIndex_setGlobalOptions(CXIndex, uint options);
 
 /**
  * Gets the general options associated with a CXIndex.
@@ -344,7 +344,7 @@ uint clang_CXIndex_getGlobalOptions(CXIndex);
  * files for certain libclang invocations. A пусто value (default) implies that
  * libclang invocations are not logged..
  */
-void clang_CXIndex_setInvocationEmissionPathOption(CXIndex, char* Path);
+проц clang_CXIndex_setInvocationEmissionPathOption(CXIndex, ткст0 Path);
 
 /**
  * \defgroup CINDEX_FILES File manipulation routines
@@ -355,7 +355,7 @@ void clang_CXIndex_setInvocationEmissionPathOption(CXIndex, char* Path);
 /**
  * A particular source file that is part of a translation unit.
  */
-alias  void* CXFile;
+alias  ук CXFile;
 
 /**
  * Retrieve the complete file and path name of the given file.
@@ -373,7 +373,7 @@ time_t clang_getFileTime(CXFile SFile);
  */
 struct CXFileUniqueID
 {
-    ulong[3] data;
+    бдол[3] data;
 }
 
 /**
@@ -384,7 +384,7 @@ struct CXFileUniqueID
  * \returns If there was a failure getting the unique ID, returns non-zero,
  * otherwise returns 0.
 */
-int clang_getFileUniqueID(CXFile file, CXFileUniqueID* outID);
+цел clang_getFileUniqueID(CXFile file, CXFileUniqueID* outID);
 
 /**
  * Determine whether the given header is guarded against
@@ -403,7 +403,7 @@ uint clang_isFileMultipleIncludeGuarded(CXTranslationUnit tu, CXFile file);
  * \returns the file handle for the named file in the translation unit \p tu,
  * or a NULL file handle if the file was not a part of this translation unit.
  */
-CXFile clang_getFile(CXTranslationUnit tu, char* file_name);
+CXFile clang_getFile(CXTranslationUnit tu, ткст0 file_name);
 
 /**
  * Retrieve the buffer associated with the given file.
@@ -417,21 +417,21 @@ CXFile clang_getFile(CXTranslationUnit tu, char* file_name);
  * \returns a pointer to the buffer in memory that holds the contents of
  * \p file, or a NULL pointer when the file is not loaded.
  */
-char* clang_getFileContents(
+ткст0 clang_getFileContents(
     CXTranslationUnit tu,
     CXFile file,
-    size_t* size);
+    т_мера* size);
 
 /**
  * Returns non-zero if the \c file1 and \c file2 point to the same file,
  * or they are both NULL.
  */
-int clang_File_isEqual(CXFile file1, CXFile file2);
+цел clang_File_isEqual(CXFile file1, CXFile file2);
 
 /**
  * Returns the real path name of \c file.
  *
- * An empty string may be returned. Use \c clang_getFileName() in that case.
+ * An empty ткст may be returned. Use \c clang_getFileName() in that case.
  */
 CXString clang_File_tryGetRealPathName(CXFile file);
 
@@ -461,7 +461,7 @@ CXString clang_File_tryGetRealPathName(CXFile file);
  */
 struct CXSourceLocation
 {
-    void*[2] ptr_data;
+    ук[2] ptr_data;
     uint int_data;
 }
 
@@ -473,7 +473,7 @@ struct CXSourceLocation
  */
 struct CXSourceRange
 {
-    void*[2] ptr_data;
+    ук[2] ptr_data;
     uint begin_int_data;
     uint end_int_data;
 }
@@ -514,13 +514,13 @@ CXSourceLocation clang_getLocationForOffset(
 /**
  * Returns non-zero if the given source location is in a system header.
  */
-int clang_Location_isInSystemHeader(CXSourceLocation location);
+цел clang_Location_isInSystemHeader(CXSourceLocation location);
 
 /**
  * Returns non-zero if the given source location is in the main file of
  * the corresponding translation unit.
  */
-int clang_Location_isFromMainFile(CXSourceLocation location);
+цел clang_Location_isFromMainFile(CXSourceLocation location);
 
 /**
  * Retrieve a NULL (invalid) source range.
@@ -543,7 +543,7 @@ uint clang_equalRanges(CXSourceRange range1, CXSourceRange range2);
 /**
  * Returns non-zero if \p range is пусто.
  */
-int clang_Range_isNull(CXSourceRange range);
+цел clang_Range_isNull(CXSourceRange range);
 
 /**
  * Retrieve the file, line, column, and offset represented by
@@ -567,7 +567,7 @@ int clang_Range_isNull(CXSourceRange range);
  * \param offset [out] if non-NULL, will be set to the offset into the
  * buffer to which the given source location points.
  */
-void clang_getExpansionLocation(
+проц clang_getExpansionLocation(
     CXSourceLocation location,
     CXFile* file,
     uint* line,
@@ -583,7 +583,7 @@ void clang_getExpansionLocation(
  * \code
  * #123 "dummy.c" 1
  *
- * static int func(void)
+ * static цел func(проц)
  * {
  *     return 0;
  * }
@@ -606,7 +606,7 @@ void clang_getExpansionLocation(
  * parsing preprocessed output obtained from a different environment. If
  * a non-NULL value is passed in, remember to dispose of the returned value
  * using \c clang_disposeString() once you've finished with it. For an invalid
- * source location, an empty string is returned.
+ * source location, an empty ткст is returned.
  *
  * \param line [out] if non-NULL, will be set to the line number of the
  * source location. For an invalid source location, zero is returned.
@@ -614,7 +614,7 @@ void clang_getExpansionLocation(
  * \param column [out] if non-NULL, will be set to the column number of the
  * source location. For an invalid source location, zero is returned.
  */
-void clang_getPresumedLocation(
+проц clang_getPresumedLocation(
     CXSourceLocation location,
     CXString* filename,
     uint* line,
@@ -628,7 +628,7 @@ void clang_getPresumedLocation(
  * #clang_getExpansionLocation(). See that interface's documentation for
  * details.
  */
-void clang_getInstantiationLocation(
+проц clang_getInstantiationLocation(
     CXSourceLocation location,
     CXFile* file,
     uint* line,
@@ -657,7 +657,7 @@ void clang_getInstantiationLocation(
  * \param offset [out] if non-NULL, will be set to the offset into the
  * buffer to which the given source location points.
  */
-void clang_getSpellingLocation(
+проц clang_getSpellingLocation(
     CXSourceLocation location,
     CXFile* file,
     uint* line,
@@ -687,7 +687,7 @@ void clang_getSpellingLocation(
  * \param offset [out] if non-NULL, will be set to the offset into the
  * buffer to which the given source location points.
  */
-void clang_getFileLocation(
+проц clang_getFileLocation(
     CXSourceLocation location,
     CXFile* file,
     uint* line,
@@ -723,7 +723,7 @@ struct CXSourceRangeList
  * Retrieve all ranges that were skipped by the preprocessor.
  *
  * The preprocessor will skip lines when they are surrounded by an
- * if/ifdef/ifndef directive whose condition does not evaluate to true.
+ * if/ifdef/ifndef directive whose condition does not evaluate to да.
  */
 CXSourceRangeList* clang_getSkippedRanges(CXTranslationUnit tu, CXFile file);
 
@@ -732,14 +732,14 @@ CXSourceRangeList* clang_getSkippedRanges(CXTranslationUnit tu, CXFile file);
  * preprocessor.
  *
  * The preprocessor will skip lines when they are surrounded by an
- * if/ifdef/ifndef directive whose condition does not evaluate to true.
+ * if/ifdef/ifndef directive whose condition does not evaluate to да.
  */
 CXSourceRangeList* clang_getAllSkippedRanges(CXTranslationUnit tu);
 
 /**
  * Destroy the given \c CXSourceRangeList.
  */
-void clang_disposeSourceRangeList(CXSourceRangeList* ranges);
+проц clang_disposeSourceRangeList(CXSourceRangeList* ranges);
 
 /**
  * @}
@@ -791,12 +791,12 @@ enum CXDiagnosticSeverity
  * A single diagnostic, containing the diagnostic's severity,
  * location, text, source ranges, and fix-it hints.
  */
-alias void* CXDiagnostic;
+alias ук CXDiagnostic;
 
 /**
  * A group of CXDiagnostics.
  */
-alias void* CXDiagnosticSet;
+alias ук CXDiagnosticSet;
 
 /**
  * Determine the number of diagnostics in a CXDiagnosticSet.
@@ -815,7 +815,7 @@ uint clang_getNumDiagnosticsInSet(CXDiagnosticSet Diags);
 CXDiagnostic clang_getDiagnosticInSet(CXDiagnosticSet Diags, uint Index);
 
 /**
- * Describes the kind of error that occurred (if any) in a call to
+ * Describes the вид of error that occurred (if any) in a call to
  * \c clang_loadDiagnostics.
  */
 enum CXLoadDiag_Error
@@ -851,21 +851,21 @@ enum CXLoadDiag_Error
  * \param file The name of the file to deserialize.
  * \param error A pointer to a enum value recording if there was a problem
  *        deserializing the diagnostics.
- * \param errorString A pointer to a CXString for recording the error string
+ * \param errorString A pointer to a CXString for recording the error ткст
  *        if the file was not successfully loaded.
  *
  * \returns A loaded CXDiagnosticSet if successful, and NULL otherwise.  These
  * diagnostics should be released using clang_disposeDiagnosticSet().
  */
 CXDiagnosticSet clang_loadDiagnostics(
-    char* file,
+    ткст0 file,
     CXLoadDiag_Error* error,
     CXString* errorString);
 
 /**
  * Release a CXDiagnosticSet and all of its contained diagnostics.
  */
-void clang_disposeDiagnosticSet(CXDiagnosticSet Diags);
+проц clang_disposeDiagnosticSet(CXDiagnosticSet Diags);
 
 /**
  * Retrieve the child diagnostics of a CXDiagnostic.
@@ -903,7 +903,7 @@ CXDiagnosticSet clang_getDiagnosticSetFromTU(CXTranslationUnit Unit);
 /**
  * Destroy a diagnostic.
  */
-void clang_disposeDiagnostic(CXDiagnostic Diagnostic);
+проц clang_disposeDiagnostic(CXDiagnostic Diagnostic);
 
 /**
  * Options to control the display of diagnostics.
@@ -960,7 +960,7 @@ enum CXDiagnosticDisplayOptions
      *
      * The category number is displayed within brackets after the diagnostic text.
      * This option corresponds to the clang flag
-     * \c -fdiagnostics-show-category=id.
+     * \c -fdiagnostics-show-category=ид.
      */
     displayCategoryId = 0x10,
 
@@ -977,7 +977,7 @@ enum CXDiagnosticDisplayOptions
 /**
  * Format the given diagnostic in a manner that is suitable for display.
  *
- * This routine will format the given diagnostic to a string, rendering
+ * This routine will format the given diagnostic to a ткст, rendering
  * the diagnostic according to the various options given. The
  * \c clang_defaultDiagnosticDisplayOptions() function returns the set of
  * options that most closely mimics the behavior of the clang compiler.
@@ -987,7 +987,7 @@ enum CXDiagnosticDisplayOptions
  * \param Options A set of options that control the diagnostic display,
  * created by combining \c CXDiagnosticDisplayOptions values.
  *
- * \returns A new string containing for formatted diagnostic.
+ * \returns A new ткст containing for formatted diagnostic.
  */
 CXString clang_formatDiagnostic(CXDiagnostic Diagnostic, uint Options);
 
@@ -1027,7 +1027,7 @@ CXString clang_getDiagnosticSpelling(CXDiagnostic);
  * \param Disable If non-NULL, will be set to the option that disables this
  * diagnostic (if any).
  *
- * \returns A string that contains the command-line option used to enable this
+ * \returns A ткст that contains the command-line option used to enable this
  * warning, such as "-Wconversion" or "-pedantic".
  */
 CXString clang_getDiagnosticOption(CXDiagnostic Diag, CXString* Disable);
@@ -1094,13 +1094,13 @@ uint clang_getDiagnosticNumFixIts(CXDiagnostic Diagnostic);
  * Retrieve the replacement information for a given fix-it.
  *
  * Fix-its are described in terms of a source range whose contents
- * should be replaced by a string. This approach generalizes over
+ * should be replaced by a ткст. This approach generalizes over
  * three kinds of operations: removal of source code (the range covers
- * the code to be removed and the replacement string is empty),
+ * the code to be removed and the replacement ткст is empty),
  * replacement of source code (the range covers the code to be
- * replaced and the replacement string provides the new code), and
+ * replaced and the replacement ткст provides the new code), and
  * insertion (both the start and end of the range point at the
- * insertion location, and the replacement string provides the text to
+ * insertion location, and the replacement ткст provides the text to
  * insert).
  *
  * \param Diagnostic The diagnostic whose fix-its are being queried.
@@ -1108,11 +1108,11 @@ uint clang_getDiagnosticNumFixIts(CXDiagnostic Diagnostic);
  * \param FixIt The zero-based index of the fix-it.
  *
  * \param ReplacementRange The source range whose contents will be
- * replaced with the returned replacement string. Note that source
+ * replaced with the returned replacement ткст. Note that source
  * ranges are half-open ranges [a, b), so the source code should be
  * replaced from a and up to (but not including) b.
  *
- * \returns A string containing text that should be replace the source
+ * \returns A ткст containing text that should be replace the source
  * code indicated by the \c ReplacementRange.
  */
 CXString clang_getDiagnosticFixIt(
@@ -1181,9 +1181,9 @@ CXString clang_getTranslationUnitSpelling(CXTranslationUnit CTUnit);
  */
 CXTranslationUnit clang_createTranslationUnitFromSourceFile(
     CXIndex CIdx,
-    char* source_filename,
-    int num_clang_command_line_args,
-    char** clang_command_line_args,
+    ткст0 source_filename,
+    цел num_clang_command_line_args,
+    сим** clang_command_line_args,
     uint num_unsaved_files,
     CXUnsavedFile* unsaved_files);
 
@@ -1195,7 +1195,7 @@ CXTranslationUnit clang_createTranslationUnitFromSourceFile(
  */
 CXTranslationUnit clang_createTranslationUnit(
     CXIndex CIdx,
-    char* ast_filename);
+    ткст0 ast_filename);
 
 /**
  * Create a translation unit from an AST file (\c -emit-ast).
@@ -1207,13 +1207,13 @@ CXTranslationUnit clang_createTranslationUnit(
  */
 CXErrorCode clang_createTranslationUnit2(
     CXIndex CIdx,
-    char* ast_filename,
+    ткст0 ast_filename,
     CXTranslationUnit* out_TU);
 
 /**
  * Flags that control the creation of translation units.
  *
- * The enumerators in this enumeration type are meant to be bitwise
+ * The enumerators in this enumeration тип are meant to be bitwise
  * ORed together to specify which options should be used when
  * constructing the translation unit.
  */
@@ -1364,9 +1364,9 @@ uint clang_defaultEditingTranslationUnitOptions();
  */
 CXTranslationUnit clang_parseTranslationUnit(
     CXIndex CIdx,
-    char* source_filename,
-    char** command_line_args,
-    int num_command_line_args,
+    ткст0 source_filename,
+    сим** command_line_args,
+    цел num_command_line_args,
     CXUnsavedFile* unsaved_files,
     uint num_unsaved_files,
     uint options);
@@ -1417,9 +1417,9 @@ CXTranslationUnit clang_parseTranslationUnit(
  */
 CXErrorCode clang_parseTranslationUnit2(
     CXIndex CIdx,
-    char* source_filename,
-    char** command_line_args,
-    int num_command_line_args,
+    ткст0 source_filename,
+    сим** command_line_args,
+    цел num_command_line_args,
     CXUnsavedFile* unsaved_files,
     uint num_unsaved_files,
     uint options,
@@ -1432,9 +1432,9 @@ CXErrorCode clang_parseTranslationUnit2(
  */
 CXErrorCode clang_parseTranslationUnit2FullArgv(
     CXIndex CIdx,
-    char* source_filename,
-    char** command_line_args,
-    int num_command_line_args,
+    ткст0 source_filename,
+    сим** command_line_args,
+    цел num_command_line_args,
     CXUnsavedFile* unsaved_files,
     uint num_unsaved_files,
     uint options,
@@ -1443,7 +1443,7 @@ CXErrorCode clang_parseTranslationUnit2FullArgv(
 /**
  * Flags that control how translation units are saved.
  *
- * The enumerators in this enumeration type are meant to be bitwise
+ * The enumerators in this enumeration тип are meant to be bitwise
  * ORed together to specify which options should be used when
  * saving the translation unit.
  */
@@ -1467,7 +1467,7 @@ enum CXSaveTranslationUnit_Flags
 uint clang_defaultSaveOptions(CXTranslationUnit TU);
 
 /**
- * Describes the kind of error that occurred (if any) in a call to
+ * Describes the вид of error that occurred (if any) in a call to
  * \c clang_saveTranslationUnit().
  */
 enum CXSaveError
@@ -1525,9 +1525,9 @@ enum CXSaveError
  * enumeration. Zero (CXSaveError_None) indicates that the translation unit was
  * saved successfully, while a non-zero value indicates that a problem occurred.
  */
-int clang_saveTranslationUnit(
+цел clang_saveTranslationUnit(
     CXTranslationUnit TU,
-    char* FileName,
+    ткст0 FileName,
     uint options);
 
 /**
@@ -1542,12 +1542,12 @@ uint clang_suspendTranslationUnit(CXTranslationUnit);
 /**
  * Destroy the specified CXTranslationUnit object.
  */
-void clang_disposeTranslationUnit(CXTranslationUnit);
+проц clang_disposeTranslationUnit(CXTranslationUnit);
 
 /**
  * Flags that control the reparsing of translation units.
  *
- * The enumerators in this enumeration type are meant to be bitwise
+ * The enumerators in this enumeration тип are meant to be bitwise
  * ORed together to specify which options should be used when
  * reparsing the translation unit.
  */
@@ -1610,7 +1610,7 @@ uint clang_defaultReparseOptions(CXTranslationUnit TU);
  * \c clang_disposeTranslationUnit(TU).  The error codes returned by this
  * routine are described by the \c CXErrorCode enum.
  */
-int clang_reparseTranslationUnit(
+цел clang_reparseTranslationUnit(
     CXTranslationUnit TU,
     uint num_unsaved_files,
     CXUnsavedFile* unsaved_files,
@@ -1643,17 +1643,17 @@ enum CXTUResourceUsageKind
 }
 
 /**
-  * Returns the human-readable пусто-terminated C string that represents
-  *  the name of the memory category.  This string should never be freed.
+  * Returns the human-readable пусто-terminated C ткст that represents
+  *  the name of the memory category.  This ткст should never be freed.
   */
-char* clang_getTUResourceUsageName(CXTUResourceUsageKind kind);
+ткст0 clang_getTUResourceUsageName(CXTUResourceUsageKind вид);
 
 struct CXTUResourceUsageEntry
 {
     /* The memory usage category. */
-    CXTUResourceUsageKind kind;
+    CXTUResourceUsageKind вид;
     /* Amount of resources used.
-        The units will depend on the resource kind. */
+        The units will depend on the resource вид. */
     c_ulong amount;
 }
 
@@ -1663,7 +1663,7 @@ struct CXTUResourceUsageEntry
 struct CXTUResourceUsage
 {
     /* Private data member, used for queries. */
-    void* data;
+    ук data;
 
     /* The number of entries in the 'entries' array. */
     uint numEntries;
@@ -1679,7 +1679,7 @@ struct CXTUResourceUsage
   */
 CXTUResourceUsage clang_getCXTUResourceUsage(CXTranslationUnit TU);
 
-void clang_disposeCXTUResourceUsage(CXTUResourceUsage usage);
+проц clang_disposeCXTUResourceUsage(CXTUResourceUsage usage);
 
 /**
  * Get target information for this translation unit.
@@ -1691,12 +1691,12 @@ CXTargetInfo clang_getTranslationUnitTargetInfo(CXTranslationUnit CTUnit);
 /**
  * Destroy the CXTargetInfo object.
  */
-void clang_TargetInfo_dispose(CXTargetInfo Info);
+проц clang_TargetInfo_dispose(CXTargetInfo Info);
 
 /**
- * Get the normalized target triple as a string.
+ * Get the normalized target triple as a ткст.
  *
- * Returns the empty string in case of any error.
+ * Returns the empty ткст in case of any error.
  */
 CXString clang_TargetInfo_getTriple(CXTargetInfo Info);
 
@@ -1705,25 +1705,25 @@ CXString clang_TargetInfo_getTriple(CXTargetInfo Info);
  *
  * Returns -1 in case of error.
  */
-int clang_TargetInfo_getPointerWidth(CXTargetInfo Info);
+цел clang_TargetInfo_getPointerWidth(CXTargetInfo Info);
 
 /**
  * @}
  */
 
 /**
- * Describes the kind of entity that a cursor refers to.
+ * Describes the вид of entity that a cursor refers to.
  */
 enum CXCursorKind
 {
     /* Declarations */
     /**
-     * A declaration whose specific kind is not exposed via this
+     * A declaration whose specific вид is not exposed via this
      * interface.
      *
-     * Unexposed declarations have the same operations as any other kind
+     * Unexposed declarations have the same operations as any other вид
      * of declaration; one can extract their location information,
-     * spelling, find their definitions, etc. However, the specific kind
+     * spelling, find their definitions, etc. However, the specific вид
      * of the declaration is not reported.
      */
     unexposedDecl = 1,
@@ -1772,7 +1772,7 @@ enum CXCursorKind
     cxxMethod = 21,
     /** A C++ namespace. */
     namespace = 22,
-    /** A linkage specification, e.g. 'extern "C"'. */
+    /** A компонаж specification, e.g. 'extern "C"'. */
     linkageSpec = 23,
     /** A C++ constructor. */
     constructor = 24,
@@ -1780,9 +1780,9 @@ enum CXCursorKind
     destructor = 25,
     /** A C++ conversion function. */
     conversionFunction = 26,
-    /** A C++ template type parameter. */
+    /** A C++ template тип parameter. */
     templateTypeParameter = 27,
-    /** A C++ non-type template parameter. */
+    /** A C++ non-тип template parameter. */
     nonTypeTemplateParameter = 28,
     /** A C++ template template parameter. */
     templateTemplateParameter = 29,
@@ -1816,19 +1816,19 @@ enum CXCursorKind
     objCProtocolRef = 41,
     objCClassRef = 42,
     /**
-     * A reference to a type declaration.
+     * A reference to a тип declaration.
      *
-     * A type reference occurs anywhere where a type is named but not
+     * A тип reference occurs anywhere where a тип is named but not
      * declared. For example, given:
      *
      * \code
-     * typedef unsigned size_type;
-     * size_type size;
+     * typedef unsigned т_мераype;
+     * т_мераype size;
      * \endcode
      *
-     * The typedef is a declaration of size_type (CXCursor_TypedefDecl),
-     * while the type of the variable "size" is referenced. The cursor
-     * referenced by the type of size is the typedef for size_type.
+     * The typedef is a declaration of т_мераype (CXCursor_TypedefDecl),
+     * while the тип of the variable "size" is referenced. The cursor
+     * referenced by the тип of size is the typedef for т_мераype.
      */
     typeRef = 43,
     cxxBaseSpecifier = 44,
@@ -1849,7 +1849,7 @@ enum CXCursorKind
     /**
      * A reference to a labeled statement.
      *
-     * This cursor kind is used to describe the jump to "start_over" in the
+     * This cursor вид is used to describe the jump to "start_over" in the
      * goto statement in the following example:
      *
      * \code
@@ -1871,13 +1871,13 @@ enum CXCursorKind
      * a dependent name refers to a function. For example:
      *
      * \code
-     * template<typename T> void swap(T&, T&);
+     * template<typename T> проц swap(T&, T&);
      *
      * struct X { ... };
-     * void swap(X&, X&);
+     * проц swap(X&, X&);
      *
      * template<typename T>
-     * void reverse(T* first, T* last) {
+     * проц reverse(T* first, T* last) {
      *   while (first < last - 1) {
      *     swap(*first, *--last);
      *     ++first;
@@ -1885,7 +1885,7 @@ enum CXCursorKind
      * }
      *
      * struct Y { };
-     * void swap(Y&, Y&);
+     * проц swap(Y&, Y&);
      * \endcode
      *
      * Here, the identifier "swap" is associated with an overloaded declaration
@@ -1921,12 +1921,12 @@ enum CXCursorKind
     firstExpr = 100,
 
     /**
-     * An expression whose specific kind is not exposed via this
+     * An expression whose specific вид is not exposed via this
      * interface.
      *
-     * Unexposed expressions have the same operations as any other kind
+     * Unexposed expressions have the same operations as any other вид
      * of expression; one can extract their location information,
-     * spelling, children, etc. However, the specific kind of the
+     * spelling, children, etc. However, the specific вид of the
      * expression is not reported.
      */
     unexposedExpr = 100,
@@ -1965,7 +1965,7 @@ enum CXCursorKind
      */
     imaginaryLiteral = 108,
 
-    /** A string literal.
+    /** A ткст literal.
      */
     stringLiteral = 109,
 
@@ -1984,7 +1984,7 @@ enum CXCursorKind
      */
     unaryOperator = 112,
 
-    /** [C99 6.5.2.1] Array Subscripting.
+    /** [C99 6.5.2.1] Массив Subscripting.
      */
     arraySubscriptExpr = 113,
 
@@ -2004,7 +2004,7 @@ enum CXCursorKind
     /** An explicit cast in C (C99 6.5.4) or a C-style cast in C++
      * (C++ [expr.cast]), which uses the syntax (Type)expr.
      *
-     * For example: (int)f.
+     * For example: (цел)f.
      */
     cStyleCastExpr = 117,
 
@@ -2020,7 +2020,7 @@ enum CXCursorKind
      */
     addrLabelExpr = 120,
 
-    /** This is the GNU Statement Expression extension: ({int X=4; X;})
+    /** This is the GNU Инструкция2 Expression extension: ({цел X=4; X;})
      */
     stmtExpr = 121,
 
@@ -2029,7 +2029,7 @@ enum CXCursorKind
     genericSelectionExpr = 122,
 
     /** Implements the GNU __null extension, which is a name for a пусто
-     * pointer constant that has integral type (e.g., int or long) and is the same
+     * pointer constant that has integral тип (e.g., цел or long) and is the same
      * size and alignment as a pointer.
      *
      * The __null extension is typically only used by system headers, which define
@@ -2054,12 +2054,12 @@ enum CXCursorKind
      */
     cxxConstCastExpr = 127,
 
-    /** Represents an explicit C++ type conversion that uses "functional"
-     * notion (C++ [expr.type.conv]).
+    /** Represents an explicit C++ тип conversion that uses "functional"
+     * notion (C++ [expr.тип.conv]).
      *
      * Example:
      * \code
-     *   x = int(0.5);
+     *   x = цел(0.5);
      * \endcode
      */
     cxxFunctionalCastExpr = 128,
@@ -2093,7 +2093,7 @@ enum CXCursorKind
     cxxNewExpr = 134,
 
     /** A delete expression for memory deallocation and destructor calls,
-     * e.g. "delete[] pArray".
+     * e.g. "delete[] pМассив".
      */
     cxxDeleteExpr = 135,
 
@@ -2101,7 +2101,7 @@ enum CXCursorKind
      */
     unaryExpr = 136,
 
-    /** An Objective-C string literal i.e. @"foo".
+    /** An Objective-C ткст literal i.e. @"foo".
      */
     objCStringLiteral = 137,
 
@@ -2134,7 +2134,7 @@ enum CXCursorKind
      *
      * \code
      * template<typename F, typename ...Types>
-     * void forward(F f, Types &&...args) {
+     * проц forward(F f, Types &&...args) {
      *  f(static_cast<Types&&>(args)...);
      * }
      * \endcode
@@ -2157,7 +2157,7 @@ enum CXCursorKind
      * object.
      *
      * \code
-     * void abssort(float *x, unsigned N) {
+     * проц abssort(float *x, unsigned N) {
      *   std::sort(x, x + N,
      *             [](float a, float b) {
      *               return std::abs(a) < std::abs(b);
@@ -2175,9 +2175,9 @@ enum CXCursorKind
      */
     objCSelfExpr = 146,
 
-    /** OpenMP 4.0 [2.4, Array Section].
+    /** OpenMP 4.0 [2.4, Массив Section].
      */
-    ompArraySectionExpr = 147,
+    ompМассивSectionExpr = 147,
 
     /** Represents an @available(...) check.
      */
@@ -2190,22 +2190,22 @@ enum CXCursorKind
 
     lastExpr = fixedPointLiteral,
 
-    /* Statements */
+    /* Инструкции */
     firstStmt = 200,
     /**
-     * A statement whose specific kind is not exposed via this
+     * A statement whose specific вид is not exposed via this
      * interface.
      *
-     * Unexposed statements have the same operations as any other kind of
+     * Unexposed statements have the same operations as any other вид of
      * statement; one can extract their location information, spelling,
-     * children, etc. However, the specific kind of the statement is not
+     * children, etc. However, the specific вид of the statement is not
      * reported.
      */
     unexposedStmt = 200,
 
     /** A labelled statement in a function.
      *
-     * This cursor kind is used to describe the "start_over:" label statement in
+     * This cursor вид is used to describe the "start_over:" label statement in
      * the following example:
      *
      * \code
@@ -2218,7 +2218,7 @@ enum CXCursorKind
 
     /** A group of statements like { stmt stmt }.
      *
-     * This cursor kind is used to describe compound statements, e.g. function
+     * This cursor вид is used to describe compound statements, e.g. function
      * bodies.
      */
     compoundStmt = 202,
@@ -2334,7 +2334,7 @@ enum CXCursorKind
 
     /** The пусто statement ";": C99 6.8.3p3.
      *
-     * This cursor kind is used to describe the пусто statement.
+     * This cursor вид is used to describe the пусто statement.
      */
     nullStmt = 230,
 
@@ -2548,7 +2548,7 @@ enum CXCursorKind
     /* Attributes */
     firstAttr = 400,
     /**
-     * An attribute whose specific kind is not exposed via this
+     * An attribute whose specific вид is not exposed via this
      * interface.
      */
     unexposedAttr = 400,
@@ -2626,9 +2626,9 @@ enum CXCursorKind
  */
 struct CXCursor
 {
-    CXCursorKind kind;
-    int xdata;
-    void*[3] data;
+    CXCursorKind вид;
+    цел xdata;
+    ук[3] data;
 }
 
 /**
@@ -2658,7 +2658,7 @@ uint clang_equalCursors(CXCursor, CXCursor);
 /**
  * Returns non-zero if \p cursor is пусто.
  */
-int clang_Cursor_isNull(CXCursor cursor);
+цел clang_Cursor_isNull(CXCursor cursor);
 
 /**
  * Compute a hash value for the given cursor.
@@ -2666,12 +2666,12 @@ int clang_Cursor_isNull(CXCursor cursor);
 uint clang_hashCursor(CXCursor);
 
 /**
- * Retrieve the kind of the given cursor.
+ * Retrieve the вид of the given cursor.
  */
 CXCursorKind clang_getCursorKind(CXCursor);
 
 /**
- * Determine whether the given cursor kind represents a declaration.
+ * Determine whether the given cursor вид represents a declaration.
  */
 uint clang_isDeclaration(CXCursorKind);
 
@@ -2686,7 +2686,7 @@ uint clang_isDeclaration(CXCursorKind);
 uint clang_isInvalidDeclaration(CXCursor);
 
 /**
- * Determine whether the given cursor kind represents a simple
+ * Determine whether the given cursor вид represents a simple
  * reference.
  *
  * Note that other kinds of cursors (such as expressions) can also refer to
@@ -2696,17 +2696,17 @@ uint clang_isInvalidDeclaration(CXCursor);
 uint clang_isReference(CXCursorKind);
 
 /**
- * Determine whether the given cursor kind represents an expression.
+ * Determine whether the given cursor вид represents an expression.
  */
 uint clang_isExpression(CXCursorKind);
 
 /**
- * Determine whether the given cursor kind represents a statement.
+ * Determine whether the given cursor вид represents a statement.
  */
 uint clang_isStatement(CXCursorKind);
 
 /**
- * Determine whether the given cursor kind represents an attribute.
+ * Determine whether the given cursor вид represents an attribute.
  */
 uint clang_isAttribute(CXCursorKind);
 
@@ -2716,13 +2716,13 @@ uint clang_isAttribute(CXCursorKind);
 uint clang_Cursor_hasAttrs(CXCursor C);
 
 /**
- * Determine whether the given cursor kind represents an invalid
+ * Determine whether the given cursor вид represents an invalid
  * cursor.
  */
 uint clang_isInvalid(CXCursorKind);
 
 /**
- * Determine whether the given cursor kind represents a translation
+ * Determine whether the given cursor вид represents a translation
  * unit.
  */
 uint clang_isTranslationUnit(CXCursorKind);
@@ -2740,29 +2740,29 @@ uint clang_isPreprocessing(CXCursorKind);
 uint clang_isUnexposed(CXCursorKind);
 
 /**
- * Describe the linkage of the entity referred to by a cursor.
+ * Describe the компонаж of the entity referred to by a cursor.
  */
 enum CXLinkageKind
 {
-    /** This value indicates that no linkage information is available
+    /** This value indicates that no компонаж information is available
      * for a provided CXCursor. */
     invalid = 0,
     /**
-     * This is the linkage for variables, parameters, and so on that
+     * This is the компонаж for variables, parameters, and so on that
      *  have automatic storage.  This covers normal (non-extern) local variables.
      */
     noLinkage = 1,
-    /** This is the linkage for static variables and static functions. */
+    /** This is the компонаж for static variables and static functions. */
     internal = 2,
-    /** This is the linkage for entities with external linkage that live
+    /** This is the компонаж for entities with external компонаж that live
      * in C++ anonymous namespaces.*/
     uniqueExternal = 3,
-    /** This is the linkage for entities with true, external linkage. */
+    /** This is the компонаж for entities with да, external компонаж. */
     external = 4
 }
 
 /**
- * Determine the linkage of the entity referred to by a given cursor.
+ * Determine the компонаж of the entity referred to by a given cursor.
  */
 CXLinkageKind clang_getCursorLinkage(CXCursor cursor);
 
@@ -2810,7 +2810,7 @@ CXAvailabilityKind clang_getCursorAvailability(CXCursor cursor);
 struct CXPlatformAvailability
 {
     /**
-     * A string that describes the platform for which this structure
+     * A ткст that describes the platform for which this structure
      * provides availability information.
      *
      * Possible values are "ios" or "macos".
@@ -2833,7 +2833,7 @@ struct CXPlatformAvailability
     /**
      * Whether the entity is unconditionally unavailable on this platform.
      */
-    int Unavailable;
+    цел Unavailable;
     /**
      * An optional message to provide to a user of this API, e.g., to
      * suggest replacement APIs.
@@ -2852,14 +2852,14 @@ struct CXPlatformAvailability
  *
  * \param deprecated_message If non-NULL, will be set to the message text
  * provided along with the unconditional deprecation of this entity. The client
- * is responsible for deallocating this string.
+ * is responsible for deallocating this ткст.
  *
  * \param always_unavailable If non-NULL, will be set to indicate whether the
  * entity is unavailable on all platforms.
  *
  * \param unavailable_message If non-NULL, will be set to the message text
  * provided along with the unconditional unavailability of this entity. The
- * client is responsible for deallocating this string.
+ * client is responsible for deallocating this ткст.
  *
  * \param availability If non-NULL, an array of CXPlatformAvailability instances
  * that will be populated with platform availability information, up to either
@@ -2877,19 +2877,19 @@ struct CXPlatformAvailability
  * platform-availability structures returned. There are
  * \c min(N, availability_size) such structures.
  */
-int clang_getCursorPlatformAvailability(
+цел clang_getCursorPlatformAvailability(
     CXCursor cursor,
-    int* always_deprecated,
+    цел* always_deprecated,
     CXString* deprecated_message,
-    int* always_unavailable,
+    цел* always_unavailable,
     CXString* unavailable_message,
     CXPlatformAvailability* availability,
-    int availability_size);
+    цел availability_size);
 
 /**
  * Free the memory associated with a \c CXPlatformAvailability structure.
  */
-void clang_disposeCXPlatformAvailability(CXPlatformAvailability* availability);
+проц clang_disposeCXPlatformAvailability(CXPlatformAvailability* availability);
 
 /**
  * Describe the "language" of the entity referred to by a cursor.
@@ -2908,7 +2908,7 @@ enum CXLanguageKind
 CXLanguageKind clang_getCursorLanguage(CXCursor cursor);
 
 /**
- * Describe the "thread-local storage (TLS) kind" of the declaration
+ * Describe the "thread-local storage (TLS) вид" of the declaration
  * referred to by a cursor.
  */
 enum CXTLSKind
@@ -2919,7 +2919,7 @@ enum CXTLSKind
 }
 
 /**
- * Determine the "thread-local storage (TLS) kind" of the declaration
+ * Determine the "thread-local storage (TLS) вид" of the declaration
  * referred to by a cursor.
  */
 CXTLSKind clang_getCursorTLSKind(CXCursor cursor);
@@ -2943,7 +2943,7 @@ CXCursorSet clang_createCXCursorSet();
 /**
  * Disposes a CXCursorSet and releases its associated memory.
  */
-void clang_disposeCXCursorSet(CXCursorSet cset);
+проц clang_disposeCXCursorSet(CXCursorSet cset);
 
 /**
  * Queries a CXCursorSet to see if it contains a specific CXCursor.
@@ -2960,29 +2960,29 @@ uint clang_CXCursorSet_contains(CXCursorSet cset, CXCursor cursor);
 uint clang_CXCursorSet_insert(CXCursorSet cset, CXCursor cursor);
 
 /**
- * Determine the semantic parent of the given cursor.
+ * Determine the semantic родитель of the given cursor.
  *
- * The semantic parent of a cursor is the cursor that semantically contains
+ * The semantic родитель of a cursor is the cursor that semantically contains
  * the given \p cursor. For many declarations, the lexical and semantic parents
- * are equivalent (the lexical parent is returned by
+ * are equivalent (the lexical родитель is returned by
  * \c clang_getCursorLexicalParent()). They diverge when declarations or
  * definitions are provided out-of-line. For example:
  *
  * \code
  * class C {
- *  void f();
+ *  проц f();
  * };
  *
- * void C::f() { }
+ * проц C::f() { }
  * \endcode
  *
- * In the out-of-line definition of \c C::f, the semantic parent is
- * the class \c C, of which this function is a member. The lexical parent is
+ * In the out-of-line definition of \c C::f, the semantic родитель is
+ * the class \c C, of which this function is a member. The lexical родитель is
  * the place where the declaration actually occurs in the source code; in this
  * case, the definition occurs in the translation unit. In general, the
- * lexical parent for a given entity can change without affecting the semantics
- * of the program, and the lexical parent of different declarations of the
- * same entity may be different. Changing the semantic parent of a declaration,
+ * lexical родитель for a given entity can change without affecting the semantics
+ * of the program, and the lexical родитель of different declarations of the
+ * same entity may be different. Changing the semantic родитель of a declaration,
  * on the other hand, can have a major impact on semantics, and redeclarations
  * of a particular entity should all have the same semantic context.
  *
@@ -2990,34 +2990,34 @@ uint clang_CXCursorSet_insert(CXCursorSet cset, CXCursor cursor);
  * semantic context, while the lexical context of the first \c C::f is \c C
  * and the lexical context of the second \c C::f is the translation unit.
  *
- * For global declarations, the semantic parent is the translation unit.
+ * For глоб2 declarations, the semantic родитель is the translation unit.
  */
 CXCursor clang_getCursorSemanticParent(CXCursor cursor);
 
 /**
- * Determine the lexical parent of the given cursor.
+ * Determine the lexical родитель of the given cursor.
  *
- * The lexical parent of a cursor is the cursor in which the given \p cursor
+ * The lexical родитель of a cursor is the cursor in which the given \p cursor
  * was actually written. For many declarations, the lexical and semantic parents
- * are equivalent (the semantic parent is returned by
+ * are equivalent (the semantic родитель is returned by
  * \c clang_getCursorSemanticParent()). They diverge when declarations or
  * definitions are provided out-of-line. For example:
  *
  * \code
  * class C {
- *  void f();
+ *  проц f();
  * };
  *
- * void C::f() { }
+ * проц C::f() { }
  * \endcode
  *
- * In the out-of-line definition of \c C::f, the semantic parent is
- * the class \c C, of which this function is a member. The lexical parent is
+ * In the out-of-line definition of \c C::f, the semantic родитель is
+ * the class \c C, of which this function is a member. The lexical родитель is
  * the place where the declaration actually occurs in the source code; in this
  * case, the definition occurs in the translation unit. In general, the
- * lexical parent for a given entity can change without affecting the semantics
- * of the program, and the lexical parent of different declarations of the
- * same entity may be different. Changing the semantic parent of a declaration,
+ * lexical родитель for a given entity can change without affecting the semantics
+ * of the program, and the lexical родитель of different declarations of the
+ * same entity may be different. Changing the semantic родитель of a declaration,
  * on the other hand, can have a major impact on semantics, and redeclarations
  * of a particular entity should all have the same semantic context.
  *
@@ -3025,7 +3025,7 @@ CXCursor clang_getCursorSemanticParent(CXCursor cursor);
  * semantic context, while the lexical context of the first \c C::f is \c C
  * and the lexical context of the second \c C::f is the translation unit.
  *
- * For declarations written in the global scope, the lexical parent is
+ * For declarations written in the глоб2 scope, the lexical родитель is
  * the translation unit.
  */
 CXCursor clang_getCursorLexicalParent(CXCursor cursor);
@@ -3038,7 +3038,7 @@ CXCursor clang_getCursorLexicalParent(CXCursor cursor);
  * in C++) can override a virtual method in a base class. For
  * Objective-C, a method is said to override any method in the class's
  * base class, its protocols, or its categories' protocols, that has the same
- * selector and is of the same kind (class or instance).
+ * selector and is of the same вид (class or instance).
  * If no such method exists, the search continues to the class's superclass,
  * its protocols, and its categories, and so on. A method from an Objective-C
  * implementation is considered to override the same methods as its
@@ -3073,7 +3073,7 @@ CXCursor clang_getCursorLexicalParent(CXCursor cursor);
  * functions, will be set to the number of overridden functions in the
  * array pointed to by \p overridden.
  */
-void clang_getOverriddenCursors(
+проц clang_getOverriddenCursors(
     CXCursor cursor,
     CXCursor** overridden,
     uint* num_overridden);
@@ -3082,7 +3082,7 @@ void clang_getOverriddenCursors(
  * Free the set of overridden cursors returned by \c
  * clang_getOverriddenCursors().
  */
-void clang_disposeOverriddenCursors(CXCursor* overridden);
+проц clang_disposeOverriddenCursors(CXCursor* overridden);
 
 /**
  * Retrieve the file that is included by the given inclusion directive
@@ -3158,24 +3158,24 @@ CXSourceRange clang_getCursorExtent(CXCursor);
  */
 
 /**
- * Describes the kind of type
+ * Describes the вид of тип
  */
 enum CXTypeKind
 {
     /**
-     * Represents an invalid type (e.g., where no type is available).
+     * Represents an invalid тип (e.g., where no тип is available).
      */
     invalid = 0,
 
     /**
-     * A type whose specific kind is not exposed via this
+     * A тип whose specific вид is not exposed via this
      * interface.
      */
     unexposed = 1,
 
     /* Builtin types */
     void_ = 2,
-    bool_ = 3,
+    бул_ = 3,
     charU = 4,
     uChar = 5,
     char16 = 6,
@@ -3226,18 +3226,18 @@ enum CXTypeKind
     objCObjectPointer = 109,
     functionNoProto = 110,
     functionProto = 111,
-    constantArray = 112,
+    constantМассив = 112,
     vector = 113,
-    incompleteArray = 114,
-    variableArray = 115,
-    dependentSizedArray = 116,
+    incompleteМассив = 114,
+    variableМассив = 115,
+    dependentSizedМассив = 116,
     memberPointer = 117,
     auto_ = 118,
 
     /**
-     * Represents a type that was referred to using an elaborated type keyword.
+     * Represents a тип that was referred to using an elaborated тип keyword.
      *
-     * E.g., struct S, or via a qualified name, e.g., N::M::type, or both.
+     * E.g., struct S, or via a qualified name, e.g., N::M::тип, or both.
      */
     elaborated = 119,
 
@@ -3246,40 +3246,40 @@ enum CXTypeKind
 
     /* OpenCL builtin types. */
     oclImage1dRO = 121,
-    oclImage1dArrayRO = 122,
+    oclImage1dМассивRO = 122,
     oclImage1dBufferRO = 123,
     oclImage2dRO = 124,
-    oclImage2dArrayRO = 125,
+    oclImage2dМассивRO = 125,
     oclImage2dDepthRO = 126,
-    oclImage2dArrayDepthRO = 127,
+    oclImage2dМассивDepthRO = 127,
     oclImage2dMSAARO = 128,
-    oclImage2dArrayMSAARO = 129,
+    oclImage2dМассивMSAARO = 129,
     oclImage2dMSAADepthRO = 130,
-    oclImage2dArrayMSAADepthRO = 131,
+    oclImage2dМассивMSAADepthRO = 131,
     oclImage3dRO = 132,
     oclImage1dWO = 133,
-    oclImage1dArrayWO = 134,
+    oclImage1dМассивWO = 134,
     oclImage1dBufferWO = 135,
     oclImage2dWO = 136,
-    oclImage2dArrayWO = 137,
+    oclImage2dМассивWO = 137,
     oclImage2dDepthWO = 138,
-    oclImage2dArrayDepthWO = 139,
+    oclImage2dМассивDepthWO = 139,
     oclImage2dMSAAWO = 140,
-    oclImage2dArrayMSAAWO = 141,
+    oclImage2dМассивMSAAWO = 141,
     oclImage2dMSAADepthWO = 142,
-    oclImage2dArrayMSAADepthWO = 143,
+    oclImage2dМассивMSAADepthWO = 143,
     oclImage3dWO = 144,
     oclImage1dRW = 145,
-    oclImage1dArrayRW = 146,
+    oclImage1dМассивRW = 146,
     oclImage1dBufferRW = 147,
     oclImage2dRW = 148,
-    oclImage2dArrayRW = 149,
+    oclImage2dМассивRW = 149,
     oclImage2dDepthRW = 150,
-    oclImage2dArrayDepthRW = 151,
+    oclImage2dМассивDepthRW = 151,
     oclImage2dMSAARW = 152,
-    oclImage2dArrayMSAARW = 153,
+    oclImage2dМассивMSAARW = 153,
     oclImage2dMSAADepthRW = 154,
-    oclImage2dArrayMSAADepthRW = 155,
+    oclImage2dМассивMSAADepthRW = 155,
     oclImage3dRW = 156,
     oclSampler = 157,
     oclEvent = 158,
@@ -3288,7 +3288,7 @@ enum CXTypeKind
 }
 
 /**
- * Describes the calling convention of a function type
+ * Describes the calling convention of a function тип
  */
 enum CXCallingConv
 {
@@ -3316,40 +3316,40 @@ enum CXCallingConv
 }
 
 /**
- * The type of an element in the abstract syntax tree.
+ * The тип of an element in the abstract syntax tree.
  *
  */
 struct CXType
 {
-    CXTypeKind kind;
-    void*[2] data;
+    CXTypeKind вид;
+    ук[2] data;
 }
 
 /**
- * Retrieve the type of a CXCursor (if any).
+ * Retrieve the тип of a CXCursor (if any).
  */
 CXType clang_getCursorType(CXCursor C);
 
 /**
- * Pretty-print the underlying type using the rules of the
+ * Pretty-print the underlying тип using the rules of the
  * language of the translation unit from which it came.
  *
- * If the type is invalid, an empty string is returned.
+ * If the тип is invalid, an empty ткст is returned.
  */
 CXString clang_getTypeSpelling(CXType CT);
 
 /**
- * Retrieve the underlying type of a typedef declaration.
+ * Retrieve the underlying тип of a typedef declaration.
  *
- * If the cursor does not reference a typedef declaration, an invalid type is
+ * If the cursor does not reference a typedef declaration, an invalid тип is
  * returned.
  */
 CXType clang_getTypedefDeclUnderlyingType(CXCursor C);
 
 /**
- * Retrieve the integer type of an enum declaration.
+ * Retrieve the integer тип of an enum declaration.
  *
- * If the cursor does not reference an enum declaration, an invalid type is
+ * If the cursor does not reference an enum declaration, an invalid тип is
  * returned.
  */
 CXType clang_getEnumDeclIntegerType(CXCursor C);
@@ -3359,7 +3359,7 @@ CXType clang_getEnumDeclIntegerType(CXCursor C);
  *  long long.
  *
  * If the cursor does not reference an enum constant declaration, LLONG_MIN is returned.
- * Since this is also potentially a valid constant value, the kind of the cursor
+ * Since this is also potentially a valid constant value, the вид of the cursor
  * must be verified before calling this function.
  */
 long clang_getEnumConstantDeclValue(CXCursor C);
@@ -3369,17 +3369,17 @@ long clang_getEnumConstantDeclValue(CXCursor C);
  *  long long.
  *
  * If the cursor does not reference an enum constant declaration, ULLONG_MAX is returned.
- * Since this is also potentially a valid constant value, the kind of the cursor
+ * Since this is also potentially a valid constant value, the вид of the cursor
  * must be verified before calling this function.
  */
-ulong clang_getEnumConstantDeclUnsignedValue(CXCursor C);
+бдол clang_getEnumConstantDeclUnsignedValue(CXCursor C);
 
 /**
  * Retrieve the bit width of a bit field declaration as an integer.
  *
  * If a cursor that is not a bit field declaration is passed in, -1 is returned.
  */
-int clang_getFieldDeclBitWidth(CXCursor C);
+цел clang_getFieldDeclBitWidth(CXCursor C);
 
 /**
  * Retrieve the number of non-variadic arguments associated with a given
@@ -3388,7 +3388,7 @@ int clang_getFieldDeclBitWidth(CXCursor C);
  * The number of arguments can be determined for calls as well as for
  * declarations of functions or methods. For other cursors -1 is returned.
  */
-int clang_Cursor_getNumArguments(CXCursor C);
+цел clang_Cursor_getNumArguments(CXCursor C);
 
 /**
  * Retrieve the argument cursor of a function or method.
@@ -3400,7 +3400,7 @@ int clang_Cursor_getNumArguments(CXCursor C);
 CXCursor clang_Cursor_getArgument(CXCursor C, uint i);
 
 /**
- * Describes the kind of a template argument.
+ * Describes the вид of a template argument.
  *
  * See the definition of llvm::clang::TemplateArgument::ArgKind for full
  * element descriptions.
@@ -3408,7 +3408,7 @@ CXCursor clang_Cursor_getArgument(CXCursor C, uint i);
 enum CXTemplateArgumentKind
 {
     null_ = 0,
-    type = 1,
+    тип = 1,
     declaration = 2,
     nullPtr = 3,
     integral = 4,
@@ -3416,7 +3416,7 @@ enum CXTemplateArgumentKind
     templateExpansion = 6,
     expression = 7,
     pack = 8,
-    /* Indicates an error case, preventing the kind from being deduced. */
+    /* Indicates an error case, preventing the вид from being deduced. */
     invalid = 9
 }
 
@@ -3428,28 +3428,28 @@ enum CXTemplateArgumentKind
  * declaration, -1 is returned.
  *
  * For example, for the following declaration and specialization:
- *   template <typename T, int kInt, bool kBool>
- *   void foo() { ... }
+ *   template <typename T, цел kInt, бул kBool>
+ *   проц foo() { ... }
  *
  *   template <>
- *   void foo<float, -7, true>();
+ *   проц foo<float, -7, да>();
  *
  * The value 3 would be returned from this call.
  */
-int clang_Cursor_getNumTemplateArguments(CXCursor C);
+цел clang_Cursor_getNumTemplateArguments(CXCursor C);
 
 /**
- * Retrieve the kind of the I'th template argument of the CXCursor C.
+ * Retrieve the вид of the I'th template argument of the CXCursor C.
  *
  * If the argument CXCursor does not represent a FunctionDecl, an invalid
- * template argument kind is returned.
+ * template argument вид is returned.
  *
  * For example, for the following declaration and specialization:
- *   template <typename T, int kInt, bool kBool>
- *   void foo() { ... }
+ *   template <typename T, цел kInt, бул kBool>
+ *   проц foo() { ... }
  *
  *   template <>
- *   void foo<float, -7, true>();
+ *   проц foo<float, -7, да>();
  *
  * For I = 0, 1, and 2, Type, Integral, and Integral will be returned,
  * respectively.
@@ -3457,19 +3457,19 @@ int clang_Cursor_getNumTemplateArguments(CXCursor C);
 CXTemplateArgumentKind clang_Cursor_getTemplateArgumentKind(CXCursor C, uint I);
 
 /**
- * Retrieve a CXType representing the type of a TemplateArgument of a
+ * Retrieve a CXType representing the тип of a TemplateArgument of a
  *  function decl representing a template specialization.
  *
  * If the argument CXCursor does not represent a FunctionDecl whose I'th
- * template argument has a kind of CXTemplateArgKind_Integral, an invalid type
+ * template argument has a вид of CXTemplateArgKind_Integral, an invalid тип
  * is returned.
  *
  * For example, for the following declaration and specialization:
- *   template <typename T, int kInt, bool kBool>
- *   void foo() { ... }
+ *   template <typename T, цел kInt, бул kBool>
+ *   проц foo() { ... }
  *
  *   template <>
- *   void foo<float, -7, true>();
+ *   проц foo<float, -7, да>();
  *
  * If called with I = 0, "float", will be returned.
  * Invalid types will be returned for I == 1 or 2.
@@ -3484,13 +3484,13 @@ CXType clang_Cursor_getTemplateArgumentType(CXCursor C, uint I);
  * FunctionDecl or whose I'th template argument is not an integral value.
  *
  * For example, for the following declaration and specialization:
- *   template <typename T, int kInt, bool kBool>
- *   void foo() { ... }
+ *   template <typename T, цел kInt, бул kBool>
+ *   проц foo() { ... }
  *
  *   template <>
- *   void foo<float, -7, true>();
+ *   проц foo<float, -7, да>();
  *
- * If called with I = 1 or 2, -7 or true will be returned, respectively.
+ * If called with I = 1 or 2, -7 or да will be returned, respectively.
  * For I == 0, this function's behavior is undefined.
  */
 long clang_Cursor_getTemplateArgumentValue(CXCursor C, uint I);
@@ -3503,32 +3503,32 @@ long clang_Cursor_getTemplateArgumentValue(CXCursor C, uint I);
  * FunctionDecl or whose I'th template argument is not an integral value.
  *
  * For example, for the following declaration and specialization:
- *   template <typename T, int kInt, bool kBool>
- *   void foo() { ... }
+ *   template <typename T, цел kInt, бул kBool>
+ *   проц foo() { ... }
  *
  *   template <>
- *   void foo<float, 2147483649, true>();
+ *   проц foo<float, 2147483649, да>();
  *
- * If called with I = 1 or 2, 2147483649 or true will be returned, respectively.
+ * If called with I = 1 or 2, 2147483649 or да will be returned, respectively.
  * For I == 0, this function's behavior is undefined.
  */
-ulong clang_Cursor_getTemplateArgumentUnsignedValue(CXCursor C, uint I);
+бдол clang_Cursor_getTemplateArgumentUnsignedValue(CXCursor C, uint I);
 
 /**
- * Determine whether two CXTypes represent the same type.
+ * Determine whether two CXTypes represent the same тип.
  *
- * \returns non-zero if the CXTypes represent the same type and
+ * \returns non-zero if the CXTypes represent the same тип and
  *          zero otherwise.
  */
 uint clang_equalTypes(CXType A, CXType B);
 
 /**
- * Return the canonical type for a CXType.
+ * Return the canonical тип for a CXType.
  *
- * Clang's type system explicitly models typedefs and all the ways
- * a specific type can be represented.  The canonical type is the underlying
- * type with all the "sugar" removed.  For example, if 'T' is a typedef
- * for 'int', the canonical type for 'T' would be 'int'.
+ * Clang's тип system explicitly models typedefs and all the ways
+ * a specific тип can be represented.  The canonical тип is the underlying
+ * тип with all the "sugar" removed.  For example, if 'T' is a typedef
+ * for 'цел', the canonical тип for 'T' would be 'цел'.
  */
 CXType clang_getCanonicalType(CXType T);
 
@@ -3572,34 +3572,34 @@ uint clang_isVolatileQualifiedType(CXType T);
 uint clang_isRestrictQualifiedType(CXType T);
 
 /**
- * Returns the address space of the given type.
+ * Returns the address space of the given тип.
  */
 uint clang_getAddressSpace(CXType T);
 
 /**
- * Returns the typedef name of the given type.
+ * Returns the typedef name of the given тип.
  */
 CXString clang_getTypedefName(CXType CT);
 
 /**
- * For pointer types, returns the type of the pointee.
+ * For pointer types, returns the тип of the pointee.
  */
 CXType clang_getPointeeType(CXType T);
 
 /**
- * Return the cursor for the declaration of the given type.
+ * Return the cursor for the declaration of the given тип.
  */
 CXCursor clang_getTypeDeclaration(CXType T);
 
 /**
- * Returns the Objective-C type encoding for the specified declaration.
+ * Returns the Objective-C тип encoding for the specified declaration.
  */
 CXString clang_getDeclObjCTypeEncoding(CXCursor C);
 
 /**
- * Returns the Objective-C type encoding for the specified CXType.
+ * Returns the Objective-C тип encoding for the specified CXType.
  */
-CXString clang_Type_getObjCEncoding(CXType type);
+CXString clang_Type_getObjCEncoding(CXType тип);
 
 /**
  * Retrieve the spelling of a given CXTypeKind.
@@ -3607,103 +3607,103 @@ CXString clang_Type_getObjCEncoding(CXType type);
 CXString clang_getTypeKindSpelling(CXTypeKind K);
 
 /**
- * Retrieve the calling convention associated with a function type.
+ * Retrieve the calling convention associated with a function тип.
  *
- * If a non-function type is passed in, CXCallingConv_Invalid is returned.
+ * If a non-function тип is passed in, CXCallingConv_Invalid is returned.
  */
 CXCallingConv clang_getFunctionTypeCallingConv(CXType T);
 
 /**
- * Retrieve the return type associated with a function type.
+ * Retrieve the return тип associated with a function тип.
  *
- * If a non-function type is passed in, an invalid type is returned.
+ * If a non-function тип is passed in, an invalid тип is returned.
  */
 CXType clang_getResultType(CXType T);
 
 /**
- * Retrieve the exception specification type associated with a function type.
- * This is a value of type CXCursor_ExceptionSpecificationKind.
+ * Retrieve the exception specification тип associated with a function тип.
+ * This is a value of тип CXCursor_ExceptionSpecificationKind.
  *
- * If a non-function type is passed in, an error code of -1 is returned.
+ * If a non-function тип is passed in, an error code of -1 is returned.
  */
-int clang_getExceptionSpecificationType(CXType T);
+цел clang_getExceptionSpecificationType(CXType T);
 
 /**
  * Retrieve the number of non-variadic parameters associated with a
- * function type.
+ * function тип.
  *
- * If a non-function type is passed in, -1 is returned.
+ * If a non-function тип is passed in, -1 is returned.
  */
-int clang_getNumArgTypes(CXType T);
+цел clang_getNumArgTypes(CXType T);
 
 /**
- * Retrieve the type of a parameter of a function type.
+ * Retrieve the тип of a parameter of a function тип.
  *
- * If a non-function type is passed in or the function does not have enough
- * parameters, an invalid type is returned.
+ * If a non-function тип is passed in or the function does not have enough
+ * parameters, an invalid тип is returned.
  */
 CXType clang_getArgType(CXType T, uint i);
 
 /**
- * Return 1 if the CXType is a variadic function type, and 0 otherwise.
+ * Return 1 if the CXType is a variadic function тип, and 0 otherwise.
  */
 uint clang_isFunctionTypeVariadic(CXType T);
 
 /**
- * Retrieve the return type associated with a given cursor.
+ * Retrieve the return тип associated with a given cursor.
  *
- * This only returns a valid type if the cursor refers to a function or method.
+ * This only returns a valid тип if the cursor refers to a function or method.
  */
 CXType clang_getCursorResultType(CXCursor C);
 
 /**
- * Retrieve the exception specification type associated with a given cursor.
- * This is a value of type CXCursor_ExceptionSpecificationKind.
+ * Retrieve the exception specification тип associated with a given cursor.
+ * This is a value of тип CXCursor_ExceptionSpecificationKind.
  *
  * This only returns a valid result if the cursor refers to a function or method.
  */
-int clang_getCursorExceptionSpecificationType(CXCursor C);
+цел clang_getCursorExceptionSpecificationType(CXCursor C);
 
 /**
- * Return 1 if the CXType is a POD (plain old data) type, and 0
+ * Return 1 if the CXType is a POD (plain old data) тип, and 0
  *  otherwise.
  */
 uint clang_isPODType(CXType T);
 
 /**
- * Return the element type of an array, complex, or vector type.
+ * Return the element тип of an array, complex, or vector тип.
  *
- * If a type is passed in that is not an array, complex, or vector type,
- * an invalid type is returned.
+ * If a тип is passed in that is not an array, complex, or vector тип,
+ * an invalid тип is returned.
  */
 CXType clang_getElementType(CXType T);
 
 /**
- * Return the number of elements of an array or vector type.
+ * Return the number of elements of an array or vector тип.
  *
- * If a type is passed in that is not an array or vector type,
+ * If a тип is passed in that is not an array or vector тип,
  * -1 is returned.
  */
 long clang_getNumElements(CXType T);
 
 /**
- * Return the element type of an array type.
+ * Return the element тип of an array тип.
  *
- * If a non-array type is passed in, an invalid type is returned.
+ * If a non-array тип is passed in, an invalid тип is returned.
  */
-CXType clang_getArrayElementType(CXType T);
+CXType clang_getМассивElementType(CXType T);
 
 /**
  * Return the array size of a constant array.
  *
- * If a non-array type is passed in, -1 is returned.
+ * If a non-array тип is passed in, -1 is returned.
  */
-long clang_getArraySize(CXType T);
+long clang_getМассивSize(CXType T);
 
 /**
- * Retrieve the type named by the qualified-id.
+ * Retrieve the тип named by the qualified-ид.
  *
- * If a non-elaborated type is passed in, an invalid type is returned.
+ * If a non-elaborated тип is passed in, an invalid тип is returned.
  */
 CXType clang_Type_getNamedType(CXType T);
 
@@ -3711,7 +3711,7 @@ CXType clang_Type_getNamedType(CXType T);
  * Determine if a typedef is 'transparent' tag.
  *
  * A typedef is considered 'transparent' if it shares a name and spelling
- * location with its underlying tag type, as is the case with the NS_ENUM macro.
+ * location with its underlying tag тип, as is the case with the NS_ENUM macro.
  *
  * \returns non-zero if transparent and zero otherwise.
  */
@@ -3722,25 +3722,25 @@ uint clang_Type_isTransparentTagTypedef(CXType T);
  *   \c clang_Type_getAlignOf, \c clang_Type_getOffsetOf and
  *   \c clang_Cursor_getOffsetOf.
  *
- * A value of this enumeration type can be returned if the target type is not
+ * A value of this enumeration тип can be returned if the target тип is not
  * a valid argument to sizeof, alignof or offsetof.
  */
 enum CXTypeLayoutError
 {
     /**
-     * Type is of kind CXType_Invalid.
+     * Type is of вид CXType_Invalid.
      */
     invalid = -1,
     /**
-     * The type is an incomplete Type.
+     * The тип is an incomplete Type.
      */
     incomplete = -2,
     /**
-     * The type is a dependent Type.
+     * The тип is a dependent Type.
      */
     dependent = -3,
     /**
-     * The type is not a constant size type.
+     * The тип is not a constant size тип.
      */
     notConstantSize = -4,
     /**
@@ -3750,61 +3750,61 @@ enum CXTypeLayoutError
 }
 
 /**
- * Return the alignment of a type in bytes as per C++[expr.alignof]
+ * Return the alignment of a тип in bytes as per C++[expr.alignof]
  *   standard.
  *
- * If the type declaration is invalid, CXTypeLayoutError_Invalid is returned.
- * If the type declaration is an incomplete type, CXTypeLayoutError_Incomplete
+ * If the тип declaration is invalid, CXTypeLayoutError_Invalid is returned.
+ * If the тип declaration is an incomplete тип, CXTypeLayoutError_Incomplete
  *   is returned.
- * If the type declaration is a dependent type, CXTypeLayoutError_Dependent is
+ * If the тип declaration is a dependent тип, CXTypeLayoutError_Dependent is
  *   returned.
- * If the type declaration is not a constant size type,
+ * If the тип declaration is not a constant size тип,
  *   CXTypeLayoutError_NotConstantSize is returned.
  */
 long clang_Type_getAlignOf(CXType T);
 
 /**
- * Return the class type of an member pointer type.
+ * Return the class тип of an member pointer тип.
  *
- * If a non-member-pointer type is passed in, an invalid type is returned.
+ * If a non-member-pointer тип is passed in, an invalid тип is returned.
  */
 CXType clang_Type_getClassType(CXType T);
 
 /**
- * Return the size of a type in bytes as per C++[expr.sizeof] standard.
+ * Return the size of a тип in bytes as per C++[expr.sizeof] standard.
  *
- * If the type declaration is invalid, CXTypeLayoutError_Invalid is returned.
- * If the type declaration is an incomplete type, CXTypeLayoutError_Incomplete
+ * If the тип declaration is invalid, CXTypeLayoutError_Invalid is returned.
+ * If the тип declaration is an incomplete тип, CXTypeLayoutError_Incomplete
  *   is returned.
- * If the type declaration is a dependent type, CXTypeLayoutError_Dependent is
+ * If the тип declaration is a dependent тип, CXTypeLayoutError_Dependent is
  *   returned.
  */
 long clang_Type_getSizeOf(CXType T);
 
 /**
- * Return the offset of a field named S in a record of type T in bits
+ * Return the offset of a field named S in a record of тип T in bits
  *   as it would be returned by __offsetof__ as per C++11[18.2p4]
  *
  * If the cursor is not a record field declaration, CXTypeLayoutError_Invalid
  *   is returned.
- * If the field's type declaration is an incomplete type,
+ * If the field's тип declaration is an incomplete тип,
  *   CXTypeLayoutError_Incomplete is returned.
- * If the field's type declaration is a dependent type,
+ * If the field's тип declaration is a dependent тип,
  *   CXTypeLayoutError_Dependent is returned.
  * If the field's name S is not found,
  *   CXTypeLayoutError_InvalidFieldName is returned.
  */
-long clang_Type_getOffsetOf(CXType T, char* S);
+long clang_Type_getOffsetOf(CXType T, ткст0 S);
 
 /**
  * Return the offset of the field represented by the Cursor.
  *
  * If the cursor is not a field declaration, -1 is returned.
- * If the cursor semantic parent is not a record field declaration,
+ * If the cursor semantic родитель is not a record field declaration,
  *   CXTypeLayoutError_Invalid is returned.
- * If the field's type declaration is an incomplete type,
+ * If the field's тип declaration is an incomplete тип,
  *   CXTypeLayoutError_Incomplete is returned.
- * If the field's type declaration is a dependent type,
+ * If the field's тип declaration is a dependent тип,
  *   CXTypeLayoutError_Dependent is returned.
  * If the field's name S is not found,
  *   CXTypeLayoutError_InvalidFieldName is returned.
@@ -3829,21 +3829,21 @@ enum CXRefQualifierKind
 
 /**
  * Returns the number of template arguments for given template
- * specialization, or -1 if type \c T is not a template specialization.
+ * specialization, or -1 if тип \c T is not a template specialization.
  */
-int clang_Type_getNumTemplateArguments(CXType T);
+цел clang_Type_getNumTemplateArguments(CXType T);
 
 /**
- * Returns the type template argument of a template class specialization
+ * Returns the тип template argument of a template class specialization
  * at given index.
  *
- * This function only returns template type arguments and does not handle
+ * This function only returns template тип arguments and does not handle
  * template template arguments or variadic packs.
  */
 CXType clang_Type_getTemplateArgumentAsType(CXType T, uint i);
 
 /**
- * Retrieve the ref-qualifier kind of a function or method.
+ * Retrieve the ref-qualifier вид of a function or method.
  *
  * The ref-qualifier is returned for C++ functions or methods. For other types
  * or non-C++ declarations, CXRefQualifier_None is returned.
@@ -3857,14 +3857,14 @@ CXRefQualifierKind clang_Type_getCXXRefQualifier(CXType T);
 uint clang_Cursor_isBitField(CXCursor C);
 
 /**
- * Returns 1 if the base class specified by the cursor with kind
+ * Returns 1 if the base class specified by the cursor with вид
  *   CX_CXXBaseSpecifier is virtual.
  */
 uint clang_isVirtualBase(CXCursor);
 
 /**
  * Represents the C++ access control level to a base class for a
- * cursor with kind CX_CXXBaseSpecifier.
+ * cursor with вид CX_CXXBaseSpecifier.
  */
 enum CX_CXXAccessSpecifier
 {
@@ -3878,7 +3878,7 @@ enum CX_CXXAccessSpecifier
  * Returns the access control level for the referenced object.
  *
  * If the cursor refers to a C++ declaration, its access control level within its
- * parent scope is returned. Otherwise, if the cursor refers to a base specifier or
+ * родитель scope is returned. Otherwise, if the cursor refers to a base specifier or
  * access specifier, the specifier itself is returned.
  */
 CX_CXXAccessSpecifier clang_getCXXAccessSpecifier(CXCursor);
@@ -3946,7 +3946,7 @@ CXCursor clang_getOverloadedDecl(CXCursor cursor, uint index);
 
 /**
  * For cursors representing an iboutletcollection attribute,
- *  this function returns the collection element type.
+ *  this function returns the collection element тип.
  *
  */
 CXType clang_getIBOutletCollectionType(CXCursor);
@@ -3968,7 +3968,7 @@ CXType clang_getIBOutletCollectionType(CXCursor);
  * Describes how the traversal of the children of a particular
  * cursor should proceed after visiting a particular child cursor.
  *
- * A value of this enumeration type should be returned by each
+ * A value of this enumeration тип should be returned by each
  * \c CXCursorVisitor to indicate how clang_visitChildren() proceed.
  */
 enum CXChildVisitResult
@@ -3994,7 +3994,7 @@ enum CXChildVisitResult
  *
  * This visitor function will be invoked for each cursor found by
  * clang_visitCursorChildren(). Its first argument is the cursor being
- * visited, its second argument is the parent visitor for that cursor,
+ * visited, its second argument is the родитель visitor for that cursor,
  * and its third argument is the client data provided to
  * clang_visitCursorChildren().
  *
@@ -4003,7 +4003,7 @@ enum CXChildVisitResult
  */
 alias  CXChildVisitResult function(
     CXCursor cursor,
-    CXCursor parent,
+    CXCursor родитель,
     CXClientData client_data) CXCursorVisitor;
 
 /**
@@ -4015,12 +4015,12 @@ alias  CXChildVisitResult function(
  * \c CXChildVisit_Recurse. The traversal may also be ended prematurely, if
  * the visitor returns \c CXChildVisit_Break.
  *
- * \param parent the cursor whose child may be visited. All kinds of
+ * \param родитель the cursor whose child may be visited. All kinds of
  * cursors can be visited, including invalid cursors (which, by
  * definition, have no children).
  *
  * \param visitor the visitor function that will be invoked for each
- * child of \p parent.
+ * child of \p родитель.
  *
  * \param client_data pointer data supplied by the client, which will
  * be passed to the visitor each time it is invoked.
@@ -4029,7 +4029,7 @@ alias  CXChildVisitResult function(
  * prematurely by the visitor returning \c CXChildVisit_Break.
  */
 uint clang_visitChildren(
-    CXCursor parent,
+    CXCursor родитель,
     CXCursorVisitor visitor,
     CXClientData client_data);
 /**
@@ -4037,7 +4037,7 @@ uint clang_visitChildren(
  *
  * This visitor block will be invoked for each cursor found by
  * clang_visitChildrenWithBlock(). Its first argument is the cursor being
- * visited, its second argument is the parent visitor for that cursor.
+ * visited, its second argument is the родитель visitor for that cursor.
  *
  * The visitor should return one of the \c CXChildVisitResult values
  * to direct clang_visitChildrenWithBlock().
@@ -4056,7 +4056,7 @@ uint clang_visitChildren(
  * \defgroup CINDEX_CURSOR_XREF Cross-referencing in the AST
  *
  * These routines provide the ability to determine references within and
- * across translation units, by providing the names of the entities referenced
+ * across translation units, by providing the имена of the entities referenced
  * by cursors, follow reference cursors to the declarations they reference,
  * and associate declarations with their definitions.
  *
@@ -4067,7 +4067,7 @@ uint clang_visitChildren(
  * Retrieve a Unified Symbol Resolution (USR) for the entity referenced
  * by the given cursor.
  *
- * A Unified Symbol Resolution (USR) is a string that identifies a particular
+ * A Unified Symbol Resolution (USR) is a ткст that identifies a particular
  * entity (function, class, variable, etc.) within a program. USRs can be
  * compared across translation units to determine, e.g., when references in
  * one translation refer to an entity defined in another translation unit.
@@ -4077,32 +4077,32 @@ CXString clang_getCursorUSR(CXCursor);
 /**
  * Construct a USR for a specified Objective-C class.
  */
-CXString clang_constructUSR_ObjCClass(char* class_name);
+CXString clang_constructUSR_ObjCClass(ткст0 class_name);
 
 /**
  * Construct a USR for a specified Objective-C category.
  */
 CXString clang_constructUSR_ObjCCategory(
-    char* class_name,
-    char* category_name);
+    ткст0 class_name,
+    ткст0 category_name);
 
 /**
  * Construct a USR for a specified Objective-C protocol.
  */
-CXString clang_constructUSR_ObjCProtocol(char* protocol_name);
+CXString clang_constructUSR_ObjCProtocol(ткст0 protocol_name);
 
 /**
  * Construct a USR for a specified Objective-C instance variable and
  *   the USR for its containing class.
  */
-CXString clang_constructUSR_ObjCIvar(char* name, CXString classUSR);
+CXString clang_constructUSR_ObjCIvar(ткст0 name, CXString classUSR);
 
 /**
  * Construct a USR for a specified Objective-C method and
  *   the USR for its containing class.
  */
 CXString clang_constructUSR_ObjCMethod(
-    char* name,
+    ткст0 name,
     uint isInstanceMethod,
     CXString classUSR);
 
@@ -4111,7 +4111,7 @@ CXString clang_constructUSR_ObjCMethod(
  *  for its containing class.
  */
 CXString clang_constructUSR_ObjCProperty(
-   char* property,
+   ткст0 property,
     CXString classUSR);
 
 /**
@@ -4139,7 +4139,7 @@ CXSourceRange clang_Cursor_getSpellingNameRange(
  * Opaque pointer representing a policy that controls pretty printing
  * for \c clang_getCursorPrettyPrinted.
  */
-alias void* CXPrintingPolicy;
+alias ук CXPrintingPolicy;
 
 /**
  * Properties for the printing policy.
@@ -4155,12 +4155,12 @@ enum CXPrintingPolicyProperty
     suppressScope = 4,
     suppressUnwrittenScope = 5,
     suppressInitializers = 6,
-    constantArraySizeAsWritten = 7,
+    constantМассивSizeAsWritten = 7,
     anonymousTagLocations = 8,
     suppressStrongLifetime = 9,
     suppressLifetimeQualifiers = 10,
     suppressTemplateArgsInCXXConstructors = 11,
-    bool_ = 12,
+    бул_ = 12,
     restrict = 13,
     alignof_ = 14,
     underscoreAlignof = 15,
@@ -4188,7 +4188,7 @@ uint clang_PrintingPolicy_getProperty(
 /**
  * Set a property value for the given printing policy.
  */
-void clang_PrintingPolicy_setProperty(
+проц clang_PrintingPolicy_setProperty(
     CXPrintingPolicy Policy,
     CXPrintingPolicyProperty Property,
     uint Value);
@@ -4204,7 +4204,7 @@ CXPrintingPolicy clang_getCursorPrintingPolicy(CXCursor);
 /**
  * Release a printing policy.
  */
-void clang_PrintingPolicy_dispose(CXPrintingPolicy Policy);
+проц clang_PrintingPolicy_dispose(CXPrintingPolicy Policy);
 
 /**
  * Pretty print declarations.
@@ -4214,7 +4214,7 @@ void clang_PrintingPolicy_dispose(CXPrintingPolicy Policy);
  * \param Policy The policy to control the entities being printed. If
  * NULL, a default policy is used.
  *
- * \returns The pretty printed declaration or the empty string for
+ * \returns The pretty printed declaration or the empty ткст for
  * other cursors.
  */
 CXString clang_getCursorPrettyPrinted(CXCursor Cursor, CXPrintingPolicy Policy);
@@ -4250,10 +4250,10 @@ CXCursor clang_getCursorReferenced(CXCursor);
  *  definition. For example, given:
  *
  *  \code
- *  int f(int, int);
- *  int g(int x, int y) { return f(x, y); }
- *  int f(int a, int b) { return a + b; }
- *  int f(int, int);
+ *  цел f(цел, цел);
+ *  цел g(цел x, цел y) { return f(x, y); }
+ *  цел f(цел a, цел b) { return a + b; }
+ *  цел f(цел, цел);
  *  \endcode
  *
  *  there are three declarations of the function "f", but only the
@@ -4280,14 +4280,14 @@ uint clang_isCursorDefinition(CXCursor);
  * Retrieve the canonical cursor corresponding to the given cursor.
  *
  * In the C family of languages, many kinds of entities can be declared several
- * times within a single translation unit. For example, a structure type can
+ * times within a single translation unit. For example, a structure тип can
  * be forward-declared (possibly multiple times) and later defined:
  *
  * \code
  * struct X;
  * struct X;
  * struct X {
- *   int member;
+ *   цел member;
  * };
  * \endcode
  *
@@ -4313,7 +4313,7 @@ CXCursor clang_getCanonicalCursor(CXCursor);
  * expression and the cursor is pointing to a selector identifier, or -1
  * otherwise.
  */
-int clang_Cursor_getObjCSelectorIndex(CXCursor);
+цел clang_Cursor_getObjCSelectorIndex(CXCursor);
 
 /**
  * Given a cursor pointing to a C++ method call or an Objective-C
@@ -4326,7 +4326,7 @@ int clang_Cursor_getObjCSelectorIndex(CXCursor);
  * If the method/message is "static" or the cursor does not point to a
  * method/message, it will return zero.
  */
-int clang_Cursor_isDynamicCall(CXCursor C);
+цел clang_Cursor_isDynamicCall(CXCursor C);
 
 /**
  * Given a cursor pointing to an Objective-C message or property
@@ -4382,7 +4382,7 @@ enum CXObjCDeclQualifierKind
 /**
  * Given a cursor that represents an Objective-C method or parameter
  * declaration, return the associated Objective-C qualifiers for the return
- * type or the parameter respectively. The bits are formed from
+ * тип or the parameter respectively. The bits are formed from
  * CXObjCDeclQualifierKind.
  */
 uint clang_Cursor_getObjCDeclQualifiers(CXCursor C);
@@ -4404,10 +4404,10 @@ uint clang_Cursor_isVariadic(CXCursor C);
  * external_source_symbol attribute.
  *
  * \param language If non-NULL, and the attribute is present, will be set to
- * the 'language' string from the attribute.
+ * the 'language' ткст from the attribute.
  *
  * \param definedIn If non-NULL, and the attribute is present, will be set to
- * the 'definedIn' string from the attribute.
+ * the 'definedIn' ткст from the attribute.
  *
  * \param isGenerated If non-NULL, and the attribute is present, will be set to
  * non-zero if the 'generated_declaration' is set in the attribute.
@@ -4420,14 +4420,14 @@ uint clang_Cursor_isExternalSymbol(
 
 /**
  * Given a cursor that represents a declaration, return the associated
- * comment's source range.  The range may include multiple consecutive comments
+ * коммент's source range.  The range may include multiple consecutive comments
  * with whitespace in between.
  */
 CXSourceRange clang_Cursor_getCommentRange(CXCursor C);
 
 /**
  * Given a cursor that represents a declaration, return the associated
- * comment text, including comment markers.
+ * коммент text, including коммент markers.
  */
 CXString clang_Cursor_getRawCommentText(CXCursor C);
 
@@ -4476,7 +4476,7 @@ CXStringSet* clang_Cursor_getObjCManglings(CXCursor);
  * @{
  */
 
-alias void* CXModule;
+alias ук CXModule;
 
 /**
  * Given a CXCursor_ModuleImportDecl cursor, return the associated module.
@@ -4499,7 +4499,7 @@ CXFile clang_Module_getASTFile(CXModule Module);
 /**
  * \param Module a module object.
  *
- * \returns the parent of a sub-module or NULL if the given module is top-level,
+ * \returns the родитель of a sub-module or NULL if the given module is top-level,
  * e.g. for 'std.vector' it will return the 'std' module.
  */
 CXModule clang_Module_getParent(CXModule Module);
@@ -4524,7 +4524,7 @@ CXString clang_Module_getFullName(CXModule Module);
  *
  * \returns non-zero if the module is a system one.
  */
-int clang_Module_isSystem(CXModule Module);
+цел clang_Module_isSystem(CXModule Module);
 
 /**
  * \param Module a module object.
@@ -4626,7 +4626,7 @@ uint clang_CXXMethod_isConst(CXCursor C);
 
 /**
  * Given a cursor that represents a template, determine
- * the cursor kind of the specializations would be generated by instantiating
+ * the cursor вид of the specializations would be generated by instantiating
  * the template.
  *
  * This routine can be used to determine what flavor of function template,
@@ -4637,7 +4637,7 @@ uint clang_CXXMethod_isConst(CXCursor C);
  * \param C The cursor to query. This cursor should represent a template
  * declaration.
  *
- * \returns The cursor kind of the specializations that would be generated
+ * \returns The cursor вид of the specializations that would be generated
  * by instantiating the template \p C. If \p C is not a template, returns
  * \c CXCursor_NoDeclFound.
  */
@@ -4651,16 +4651,16 @@ CXCursorKind clang_getTemplateCursorKind(CXCursor C);
  * This routine determines the template involved both for explicit
  * specializations of templates and for implicit instantiations of the template,
  * both of which are referred to as "specializations". For a class template
- * specialization (e.g., \c std::vector<bool>), this routine will return
+ * specialization (e.g., \c std::vector<бул>), this routine will return
  * either the primary template (\c std::vector) or, if the specialization was
  * instantiated from a class template partial specialization, the class template
  * partial specialization. For a class template partial specialization and a
  * function template specialization (including instantiations), this
  * this routine will return the specialized template.
  *
- * For members of a class template (e.g., member functions, member classes, or
- * static data members), returns the specialized or instantiated member.
- * Although not strictly "templates" in the C++ language, members of class
+ * For члены of a class template (e.g., member functions, member classes, or
+ * static data члены), returns the specialized or instantiated member.
+ * Although not strictly "templates" in the C++ language, члены of class
  * templates have the same notions of specializations and instantiations that
  * templates do, so this routine treats them similarly.
  *
@@ -4682,10 +4682,10 @@ CXCursor clang_getSpecializedCursorTemplate(CXCursor C);
  * \param NameFlags A bitset with three independent flags:
  * CXNameRange_WantQualifier, CXNameRange_WantTemplateArgs, and
  * CXNameRange_WantSinglePiece.
- * \param PieceIndex For contiguous names or when passing the flag
+ * \param PieceIndex For contiguous имена or when passing the flag
  * CXNameRange_WantSinglePiece, only one piece with index 0 is
  * available. When the CXNameRange_WantSinglePiece flag is not passed for a
- * non-contiguous names, this index can be used to retrieve the individual
+ * non-contiguous имена, this index can be used to retrieve the individual
  * pieces of the name. See also CXNameRange_WantSinglePiece.
  *
  * \returns The piece of the name pointed to by the given cursor. If there is no
@@ -4705,7 +4705,7 @@ enum CXNameRefFlags
     wantQualifier = 0x1,
 
     /**
-     * Include the explicit template arguments, e.g. \<int> in x.f<int>,
+     * Include the explicit template arguments, e.g. \<цел> in x.f<цел>,
      * in the range.
      */
     wantTemplateArgs = 0x2,
@@ -4713,7 +4713,7 @@ enum CXNameRefFlags
     /**
      * If the name is non-contiguous, return the full spanning range.
      *
-     * Non-contiguous names occur in Objective-C when a selector with two or more
+     * Non-contiguous имена occur in Objective-C when a selector with two or more
      * parameters is used, or in C++ when using an operator:
      * \code
      * [object doSomething:here withValue:there]; // Objective-C
@@ -4738,12 +4738,12 @@ enum CXNameRefFlags
  */
 
 /**
- * Describes a kind of token.
+ * Describes a вид of token.
  */
 enum CXTokenKind
 {
     /**
-     * A token that contains some kind of punctuation.
+     * A token that contains some вид of punctuation.
      */
     punctuation = 0,
 
@@ -4758,14 +4758,14 @@ enum CXTokenKind
     identifier = 2,
 
     /**
-     * A numeric, string, or character literal.
+     * A numeric, ткст, or character literal.
      */
     literal = 3,
 
     /**
-     * A comment.
+     * A коммент.
      */
-    comment = 4
+    коммент = 4
 }
 
 /**
@@ -4774,7 +4774,7 @@ enum CXTokenKind
 struct CXToken
 {
     uint[4] int_data;
-    void* ptr_data;
+    ук ptr_data;
 }
 
 /**
@@ -4791,7 +4791,7 @@ struct CXToken
 CXToken* clang_getToken(CXTranslationUnit TU, CXSourceLocation Location);
 
 /**
- * Determine the kind of the given token.
+ * Determine the вид of the given token.
  */
 CXTokenKind clang_getTokenKind(CXToken);
 
@@ -4830,7 +4830,7 @@ CXSourceRange clang_getTokenExtent(CXTranslationUnit, CXToken);
  * array.
  *
  */
-void clang_tokenize(
+проц clang_tokenize(
     CXTranslationUnit TU,
     CXSourceRange Range,
     CXToken** Tokens,
@@ -4866,7 +4866,7 @@ void clang_tokenize(
  * \param Cursors an array of \p NumTokens cursors, whose contents will be
  * replaced with the cursors corresponding to each token.
  */
-void clang_annotateTokens(
+проц clang_annotateTokens(
     CXTranslationUnit TU,
     CXToken* Tokens,
     uint NumTokens,
@@ -4875,7 +4875,7 @@ void clang_annotateTokens(
 /**
  * Free the given set of tokens.
  */
-void clang_disposeTokens(CXTranslationUnit TU, CXToken* Tokens, uint NumTokens);
+проц clang_disposeTokens(CXTranslationUnit TU, CXToken* Tokens, uint NumTokens);
 
 /**
  * @}
@@ -4892,18 +4892,18 @@ void clang_disposeTokens(CXTranslationUnit TU, CXToken* Tokens, uint NumTokens);
 
 /* for debug/testing */
 CXString clang_getCursorKindSpelling(CXCursorKind Kind);
-void clang_getDefinitionSpellingAndExtent(
+проц clang_getDefinitionSpellingAndExtent(
     CXCursor,
-    char** startBuf,
-   char** endBuf,
+    сим** startBuf,
+   сим** endBuf,
     uint* startLine,
     uint* startColumn,
     uint* endLine,
     uint* endColumn);
-void clang_enableStackTraces();
-void clang_executeOnThread(
-    void function(void*) fn,
-    void* user_data,
+проц clang_enableStackTraces();
+проц clang_executeOnThread(
+    проц function(ук) fn,
+    ук user_data,
     uint stack_size);
 
 /**
@@ -4923,19 +4923,19 @@ void clang_executeOnThread(
  */
 
 /**
- * A semantic string that describes a code-completion result.
+ * A semantic ткст that describes a code-completion result.
  *
- * A semantic string that describes the formatting of a code-completion
+ * A semantic ткст that describes the formatting of a code-completion
  * result as a single "template" of text that should be inserted into the
  * source buffer when a particular code-completion result is selected.
- * Each semantic string is made up of some number of "chunks", each of which
+ * Each semantic ткст is made up of some number of "chunks", each of which
  * contains some text along with a description of what that text means, e.g.,
  * the name of the entity being referenced, whether the text chunk is part of
  * the template, or whether it is a "placeholder" that the user should replace
- * with actual code,of a specific kind. See \c CXCompletionChunkKind for a
+ * with actual code,of a specific вид. See \c CXCompletionChunkKind for a
  * description of the different kinds of chunks.
  */
-alias void* CXCompletionString;
+alias ук CXCompletionString;
 
 /**
  * A single result of code completion.
@@ -4943,9 +4943,9 @@ alias void* CXCompletionString;
 struct CXCompletionResult
 {
     /**
-     * The kind of entity that this completion refers to.
+     * The вид of entity that this completion refers to.
      *
-     * The cursor kind will be a macro, keyword, or a declaration (one of the
+     * The cursor вид will be a macro, keyword, or a declaration (one of the
      * *Decl cursor kinds), describing the entity that the completion is
      * referring to.
      *
@@ -4955,40 +4955,40 @@ struct CXCompletionResult
     CXCursorKind CursorKind;
 
     /**
-     * The code-completion string that describes how to insert this
+     * The code-completion ткст that describes how to insert this
      * code-completion result into the editing buffer.
      */
     CXCompletionString CompletionString;
 }
 
 /**
- * Describes a single piece of text within a code-completion string.
+ * Describes a single piece of text within a code-completion ткст.
  *
- * Each "chunk" within a code-completion string (\c CXCompletionString) is
- * either a piece of text with a specific "kind" that describes how that text
- * should be interpreted by the client or is another completion string.
+ * Each "chunk" within a code-completion ткст (\c CXCompletionString) is
+ * either a piece of text with a specific "вид" that describes how that text
+ * should be interpreted by the client or is another completion ткст.
  */
 enum CXCompletionChunkKind
 {
     /**
-     * A code-completion string that describes "optional" text that
+     * A code-completion ткст that describes "optional" text that
      * could be a part of the template (but is not required).
      *
-     * The Optional chunk is the only kind of chunk that has a code-completion
-     * string for its representation, which is accessible via
-     * \c clang_getCompletionChunkCompletionString(). The code-completion string
+     * The Optional chunk is the only вид of chunk that has a code-completion
+     * ткст for its representation, which is accessible via
+     * \c clang_getCompletionChunkCompletionString(). The code-completion ткст
      * describes an additional part of the template that is completely optional.
      * For example, optional chunks can be used to describe the placeholders for
      * arguments that match up with defaulted function parameters, e.g. given:
      *
      * \code
-     * void f(int x, float y = 3.14, double z = 2.71828);
+     * проц f(цел x, float y = 3.14, double z = 2.71828);
      * \endcode
      *
-     * The code-completion string for this function would contain:
+     * The code-completion ткст for this function would contain:
      *   - a TypedText chunk for "f".
      *   - a LeftParen chunk for "(".
-     *   - a Placeholder chunk for "int x"
+     *   - a Placeholder chunk for "цел x"
      *   - an Optional chunk containing the remaining defaulted arguments, e.g.,
      *       - a Comma chunk for ","
      *       - a Placeholder chunk for "float y"
@@ -4999,16 +4999,16 @@ enum CXCompletionChunkKind
      *
      * There are many ways to handle Optional chunks. Two simple approaches are:
      *   - Completely ignore optional chunks, in which case the template for the
-     *     function "f" would only include the first parameter ("int x").
+     *     function "f" would only include the first parameter ("цел x").
      *   - Fully expand all optional chunks, in which case the template for the
      *     function "f" would have all of the parameters.
      */
     optional = 0,
     /**
-     * Text that a user would be expected to type to get this
+     * Text that a user would be expected to тип to get this
      * code-completion result.
      *
-     * There will be exactly one "typed text" chunk in a semantic string, which
+     * There will be exactly one "typed text" chunk in a semantic ткст, which
      * will typically provide the spelling of a keyword or the name of a
      * declaration that could be used at the current code point. Clients are
      * expected to filter the code-completion results based on the text in this
@@ -5053,15 +5053,15 @@ enum CXCompletionChunkKind
      * code-completion point. For example, given a function
      *
      * \code
-     * int add(int x, int y);
+     * цел add(цел x, цел y);
      * \endcode
      *
      * and the source code \c add(, where the code-completion point is after the
-     * "(", the code-completion string will contain a "current parameter" chunk
-     * for "int x", indicating that the current argument will initialize that
+     * "(", the code-completion ткст will contain a "current parameter" chunk
+     * for "цел x", indicating that the current argument will initialize that
      * parameter. After typing further, to \c add(17, (where the code-completion
-     * point is after the ","), the code-completion string will contain a
-     * "current parameter" chunk to "int y".
+     * point is after the ","), the code-completion ткст will contain a
+     * "current parameter" chunk to "цел y".
      */
     currentParameter = 5,
     /**
@@ -5103,11 +5103,11 @@ enum CXCompletionChunkKind
      */
     comma = 14,
     /**
-     * Text that specifies the result type of a given result.
+     * Text that specifies the result тип of a given result.
      *
-     * This special kind of informative chunk is not meant to be inserted into
-     * the text buffer. Rather, it is meant to illustrate the type that an
-     * expression using the given completion string would have.
+     * This special вид of informative chunk is not meant to be inserted into
+     * the text buffer. Rather, it is meant to illustrate the тип that an
+     * expression using the given completion ткст would have.
      */
     resultType = 15,
     /**
@@ -5134,13 +5134,13 @@ enum CXCompletionChunkKind
 }
 
 /**
- * Determine the kind of a particular chunk within a completion string.
+ * Determine the вид of a particular chunk within a completion ткст.
  *
- * \param completion_string the completion string to query.
+ * \param completion_string the completion ткст to query.
  *
- * \param chunk_number the 0-based index of the chunk in the completion string.
+ * \param chunk_number the 0-based index of the chunk in the completion ткст.
  *
- * \returns the kind of the chunk at the index \c chunk_number.
+ * \returns the вид of the chunk at the index \c chunk_number.
  */
 CXCompletionChunkKind clang_getCompletionChunkKind(
     CXCompletionString completion_string,
@@ -5148,11 +5148,11 @@ CXCompletionChunkKind clang_getCompletionChunkKind(
 
 /**
  * Retrieve the text associated with a particular chunk within a
- * completion string.
+ * completion ткст.
  *
- * \param completion_string the completion string to query.
+ * \param completion_string the completion ткст to query.
  *
- * \param chunk_number the 0-based index of the chunk in the completion string.
+ * \param chunk_number the 0-based index of the chunk in the completion ткст.
  *
  * \returns the text associated with the chunk at index \c chunk_number.
  */
@@ -5161,14 +5161,14 @@ CXString clang_getCompletionChunkText(
     uint chunk_number);
 
 /**
- * Retrieve the completion string associated with a particular chunk
- * within a completion string.
+ * Retrieve the completion ткст associated with a particular chunk
+ * within a completion ткст.
  *
- * \param completion_string the completion string to query.
+ * \param completion_string the completion ткст to query.
  *
- * \param chunk_number the 0-based index of the chunk in the completion string.
+ * \param chunk_number the 0-based index of the chunk in the completion ткст.
  *
- * \returns the completion string associated with the chunk at index
+ * \returns the completion ткст associated with the chunk at index
  * \c chunk_number.
  */
 CXCompletionString clang_getCompletionChunkCompletionString(
@@ -5176,7 +5176,7 @@ CXCompletionString clang_getCompletionChunkCompletionString(
     uint chunk_number);
 
 /**
- * Retrieve the number of chunks in the given code-completion string.
+ * Retrieve the number of chunks in the given code-completion ткст.
  */
 uint clang_getNumCompletionChunks(CXCompletionString completion_string);
 
@@ -5187,83 +5187,83 @@ uint clang_getNumCompletionChunks(CXCompletionString completion_string);
  * particular completion is the completion that the user will select. The
  * priority is selected by various internal heuristics.
  *
- * \param completion_string The completion string to query.
+ * \param completion_string The completion ткст to query.
  *
- * \returns The priority of this completion string. Smaller values indicate
+ * \returns The priority of this completion ткст. Smaller values indicate
  * higher-priority (more likely) completions.
  */
 uint clang_getCompletionPriority(CXCompletionString completion_string);
 
 /**
  * Determine the availability of the entity that this code-completion
- * string refers to.
+ * ткст refers to.
  *
- * \param completion_string The completion string to query.
+ * \param completion_string The completion ткст to query.
  *
- * \returns The availability of the completion string.
+ * \returns The availability of the completion ткст.
  */
 CXAvailabilityKind clang_getCompletionAvailability(
     CXCompletionString completion_string);
 
 /**
  * Retrieve the number of annotations associated with the given
- * completion string.
+ * completion ткст.
  *
- * \param completion_string the completion string to query.
+ * \param completion_string the completion ткст to query.
  *
  * \returns the number of annotations associated with the given completion
- * string.
+ * ткст.
  */
 uint clang_getCompletionNumAnnotations(CXCompletionString completion_string);
 
 /**
- * Retrieve the annotation associated with the given completion string.
+ * Retrieve the annotation associated with the given completion ткст.
  *
- * \param completion_string the completion string to query.
+ * \param completion_string the completion ткст to query.
  *
  * \param annotation_number the 0-based index of the annotation of the
- * completion string.
+ * completion ткст.
  *
- * \returns annotation string associated with the completion at index
- * \c annotation_number, or a NULL string if that annotation is not available.
+ * \returns annotation ткст associated with the completion at index
+ * \c annotation_number, or a NULL ткст if that annotation is not available.
  */
 CXString clang_getCompletionAnnotation(
     CXCompletionString completion_string,
     uint annotation_number);
 
 /**
- * Retrieve the parent context of the given completion string.
+ * Retrieve the родитель context of the given completion ткст.
  *
- * The parent context of a completion string is the semantic parent of
+ * The родитель context of a completion ткст is the semantic родитель of
  * the declaration (if any) that the code completion represents. For example,
  * a code completion for an Objective-C method would have the method's class
  * or protocol as its context.
  *
- * \param completion_string The code completion string whose parent is
+ * \param completion_string The code completion ткст whose родитель is
  * being queried.
  *
- * \param kind DEPRECATED: always set to CXCursor_NotImplemented if non-NULL.
+ * \param вид DEPRECATED: always set to CXCursor_NotImplemented if non-NULL.
  *
- * \returns The name of the completion parent, e.g., "NSObject" if
- * the completion string represents a method in the NSObject class.
+ * \returns The name of the completion родитель, e.g., "NSObject" if
+ * the completion ткст represents a method in the NSObject class.
  */
 CXString clang_getCompletionParent(
     CXCompletionString completion_string,
-    CXCursorKind* kind);
+    CXCursorKind* вид);
 
 /**
- * Retrieve the brief documentation comment attached to the declaration
- * that corresponds to the given completion string.
+ * Retrieve the brief documentation коммент attached to the declaration
+ * that corresponds to the given completion ткст.
  */
 CXString clang_getCompletionBriefComment(CXCompletionString completion_string);
 
 /**
- * Retrieve a completion string for an arbitrary declaration or macro
+ * Retrieve a completion ткст for an arbitrary declaration or macro
  * definition cursor.
  *
  * \param cursor The cursor to query.
  *
- * \returns A non-context-sensitive completion string for declaration and macro
+ * \returns A non-context-sensitive completion ткст for declaration and macro
  * definition cursors, or NULL for other kinds of cursors.
  */
 CXCompletionString clang_getCursorCompletionString(CXCursor cursor);
@@ -5330,7 +5330,7 @@ uint clang_getCompletionNumFixIts(
  * completion point. One example of completions with corrections are the ones
  * replacing '.' with '->' and vice versa:
  *
- * std::unique_ptr<std::vector<int>> vec_ptr;
+ * std::unique_ptr<std::vector<цел>> vec_ptr;
  * In 'vec_ptr.^', one of the completions is 'push_back', it requires
  * replacing '.' with '->'.
  * In 'vec_ptr->^', one of the completions is 'release', it requires
@@ -5346,7 +5346,7 @@ uint clang_getCompletionNumFixIts(
  * \param replacement_range The fix-it range that must be replaced before the
  * completion at completion_index can be applied
  *
- * \returns The fix-it string that must replace the code at replacement_range
+ * \returns The fix-it ткст that must replace the code at replacement_range
  * before the completion at completion_index can be applied
  */
 CXString clang_getCompletionFixIt(
@@ -5411,7 +5411,7 @@ enum CXCompletionContext
     unexposed = 0,
 
     /**
-     * Completions for any possible type should be included in the results.
+     * Completions for any possible тип should be included in the results.
      */
     anyType = 1 << 0,
 
@@ -5431,7 +5431,7 @@ enum CXCompletionContext
      */
     objCSelectorValue = 1 << 3,
     /**
-     * Completions for values that resolve to a C++ class type should be
+     * Completions for values that resolve to a C++ class тип should be
      * included in the results.
      */
     cxxClassTypeValue = 1 << 4,
@@ -5466,11 +5466,11 @@ enum CXCompletionContext
     structTag = 1 << 10,
 
     /**
-     * Completions for C++ class names should be included in the results.
+     * Completions for C++ class имена should be included in the results.
      */
     classTag = 1 << 11,
     /**
-     * Completions for C++ namespaces and namespace aliases should be
+     * Completions for C++ namespaces and namespace ники should be
      * included in the results.
      */
     namespace = 1 << 12,
@@ -5506,13 +5506,13 @@ enum CXCompletionContext
      */
     objCClassMessage = 1 << 18,
     /**
-     * Completions for Objective-C selector names should be included in
+     * Completions for Objective-C selector имена should be included in
      * the results.
      */
     objCSelectorName = 1 << 19,
 
     /**
-     * Completions for preprocessor macro names should be included in
+     * Completions for preprocessor macro имена should be included in
      * the results.
      */
     macroName = 1 << 20,
@@ -5553,7 +5553,7 @@ uint clang_defaultCodeCompleteOptions();
  * code-completion location will coincide with the cursor. For example, if \c p
  * is a pointer, code-completion might be triggered after the "-" and then
  * after the ">" in \c p->. When the code-completion location is after the ">",
- * the completion results will provide, e.g., the members of the struct that
+ * the completion results will provide, e.g., the члены of the struct that
  * "p" points to. The client is responsible for placing the cursor at the
  * beginning of the token currently being typed, then filtering the results
  * based on the contents of the token. For example, when code-completing for
@@ -5604,7 +5604,7 @@ uint clang_defaultCodeCompleteOptions();
  */
 CXCodeCompleteResults* clang_codeCompleteAt(
     CXTranslationUnit TU,
-    char* complete_filename,
+    ткст0 complete_filename,
     uint complete_line,
     uint complete_column,
     CXUnsavedFile* unsaved_files,
@@ -5618,14 +5618,14 @@ CXCodeCompleteResults* clang_codeCompleteAt(
  * \param Results The set of results to sort.
  * \param NumResults The number of results in \p Results.
  */
-void clang_sortCodeCompletionResults(
+проц clang_sortCodeCompletionResults(
     CXCompletionResult* Results,
     uint NumResults);
 
 /**
  * Free the given set of code-completion results.
  */
-void clang_disposeCodeCompleteResults(CXCodeCompleteResults* Results);
+проц clang_disposeCodeCompleteResults(CXCodeCompleteResults* Results);
 
 /**
  * Determine the number of diagnostics produced prior to the
@@ -5655,10 +5655,10 @@ CXDiagnostic clang_codeCompleteGetDiagnostic(
  * \returns the kinds of completions that are appropriate for use
  * along with the given code completion results.
  */
-ulong clang_codeCompleteGetContexts(CXCodeCompleteResults* Results);
+бдол clang_codeCompleteGetContexts(CXCodeCompleteResults* Results);
 
 /**
- * Returns the cursor kind for the container for the current code
+ * Returns the cursor вид for the container for the current code
  * completion context. The container is only guaranteed to be set for
  * contexts where a container exists (i.e. member accesses or Objective-C
  * message sends); if there is not a container, this function will return
@@ -5666,11 +5666,11 @@ ulong clang_codeCompleteGetContexts(CXCodeCompleteResults* Results);
  *
  * \param Results the code completion results to query
  *
- * \param IsIncomplete on return, this value will be false if Clang has complete
+ * \param IsIncomplete on return, this value will be нет if Clang has complete
  * information about the container. If Clang does not have complete
- * information, this value will be true.
+ * information, this value will be да.
  *
- * \returns the container kind, or CXCursor_InvalidCode if there is not a
+ * \returns the container вид, or CXCursor_InvalidCode if there is not a
  * container
  */
 CXCursorKind clang_codeCompleteGetContainerKind(
@@ -5680,7 +5680,7 @@ CXCursorKind clang_codeCompleteGetContainerKind(
 /**
  * Returns the USR for the container for the current code completion
  * context. If there is not a container for the current context, this
- * function will return the empty string.
+ * function will return the empty ткст.
  *
  * \param Results the code completion results to query
  *
@@ -5691,7 +5691,7 @@ CXString clang_codeCompleteGetContainerUSR(CXCodeCompleteResults* Results);
 /**
  * Returns the currently-entered selector for an Objective-C message
  * send, formatted like "initWithFoo:bar:". Only guaranteed to return a
- * non-empty string for CXCompletionContext_ObjCInstanceMessage and
+ * non-empty ткст for CXCompletionContext_ObjCInstanceMessage and
  * CXCompletionContext_ObjCClassMessage.
  *
  * \param Results the code completion results to query
@@ -5712,7 +5712,7 @@ CXString clang_codeCompleteGetObjCSelector(CXCodeCompleteResults* Results);
  */
 
 /**
- * Return a version string, suitable for showing to a user, but not
+ * Return a version ткст, suitable for showing to a user, but not
  *        intended to be parsed (the format is not guaranteed to be stable).
  */
 CXString clang_getClangVersion();
@@ -5723,7 +5723,7 @@ CXString clang_getClangVersion();
  * \param isEnabled Flag to indicate if crash recovery is enabled.  A non-zero
  *        value enables crash recovery, while 0 disables it.
  */
-void clang_toggleCrashRecovery(uint isEnabled);
+проц clang_toggleCrashRecovery(uint isEnabled);
 
 /**
  * Visitor invoked for each file in a translation unit
@@ -5736,7 +5736,7 @@ void clang_toggleCrashRecovery(uint isEnabled);
  * array is sorted in order of immediate inclusion.  For example,
  * the first element refers to the location that included 'included_file'.
  */
-alias void function(
+alias проц function(
     CXFile included_file,
     CXSourceLocation* inclusion_stack,
     uint include_len,
@@ -5748,7 +5748,7 @@ alias void function(
  *   file.  This does not include headers included by the PCH file (unless one
  *   is inspecting the inclusions in the PCH file itself).
  */
-void clang_getInclusions(
+проц clang_getInclusions(
     CXTranslationUnit tu,
     CXInclusionVisitor visitor,
     CXClientData client_data);
@@ -5768,63 +5768,63 @@ enum CXEvalResultKind
 /**
  * Evaluation result of a cursor
  */
-alias void* CXEvalResult ;
+alias ук CXEvalResult ;
 
 /**
  * If cursor is a statement declaration tries to evaluate the
  * statement and if its variable, tries to evaluate its initializer,
- * into its corresponding type.
+ * into its corresponding тип.
  */
 CXEvalResult clang_Cursor_Evaluate(CXCursor C);
 
 /**
- * Returns the kind of the evaluated result.
+ * Returns the вид of the evaluated result.
  */
 CXEvalResultKind clang_EvalResult_getKind(CXEvalResult E);
 
 /**
  * Returns the evaluation result as integer if the
- * kind is Int.
+ * вид is Int.
  */
-int clang_EvalResult_getAsInt(CXEvalResult E);
+цел clang_EvalResult_getAsInt(CXEvalResult E);
 
 /**
  * Returns the evaluation result as a long long integer if the
- * kind is Int. This prevents overflows that may happen if the result is
+ * вид is Int. This prevents overflows that may happen if the result is
  * returned with clang_EvalResult_getAsInt.
  */
 long clang_EvalResult_getAsLongLong(CXEvalResult E);
 
 /**
- * Returns a non-zero value if the kind is Int and the evaluation
+ * Returns a non-zero value if the вид is Int and the evaluation
  * result resulted in an unsigned integer.
  */
 uint clang_EvalResult_isUnsignedInt(CXEvalResult E);
 
 /**
  * Returns the evaluation result as an unsigned integer if
- * the kind is Int and clang_EvalResult_isUnsignedInt is non-zero.
+ * the вид is Int and clang_EvalResult_isUnsignedInt is non-zero.
  */
-ulong clang_EvalResult_getAsUnsigned(CXEvalResult E);
+бдол clang_EvalResult_getAsUnsigned(CXEvalResult E);
 
 /**
  * Returns the evaluation result as double if the
- * kind is double.
+ * вид is double.
  */
 double clang_EvalResult_getAsDouble(CXEvalResult E);
 
 /**
- * Returns the evaluation result as a constant string if the
- * kind is other than Int or float. User must not free this pointer,
+ * Returns the evaluation result as a constant ткст if the
+ * вид is other than Int or float. User must not free this pointer,
  * instead call clang_EvalResult_dispose on the CXEvalResult returned
  * by clang_Cursor_Evaluate.
  */
-char* clang_EvalResult_getAsStr(CXEvalResult E);
+ткст0 clang_EvalResult_getAsStr(CXEvalResult E);
 
 /**
  * Disposes the created Eval memory.
  */
-void clang_EvalResult_dispose(CXEvalResult E);
+проц clang_EvalResult_dispose(CXEvalResult E);
 /**
  * @}
  */
@@ -5837,7 +5837,7 @@ void clang_EvalResult_dispose(CXEvalResult E);
 /**
  * A remapping of original source files and their translated files.
  */
-alias void* CXRemapping;
+alias ук CXRemapping;
 
 /**
  * Retrieve a remapping.
@@ -5847,7 +5847,7 @@ alias void* CXRemapping;
  * \returns the requested remapping. This remapping must be freed
  * via a call to \c clang_remap_dispose(). Can return NULL if an error occurred.
  */
-CXRemapping clang_getRemappings(char* path);
+CXRemapping clang_getRemappings(ткст0 path);
 
 /**
  * Retrieve a remapping.
@@ -5860,7 +5860,7 @@ CXRemapping clang_getRemappings(char* path);
  * via a call to \c clang_remap_dispose(). Can return NULL if an error occurred.
  */
 CXRemapping clang_getRemappingsFromFileList(
-   char** filePaths,
+   сим** filePaths,
     uint numFiles);
 
 /**
@@ -5876,7 +5876,7 @@ uint clang_remap_getNumFiles(CXRemapping);
  * \param transformed If non-NULL, will be set to the filename that the original
  * is associated with.
  */
-void clang_remap_getFilenames(
+проц clang_remap_getFilenames(
     CXRemapping,
     uint index,
     CXString* original,
@@ -5885,7 +5885,7 @@ void clang_remap_getFilenames(
 /**
  * Dispose the remapping.
  */
-void clang_remap_dispose(CXRemapping);
+проц clang_remap_dispose(CXRemapping);
 
 /**
  * @}
@@ -5904,8 +5904,8 @@ enum CXVisitorResult
 
 struct CXCursorAndRangeVisitor
 {
-    void* context;
-    CXVisitorResult function(void* context, CXCursor, CXSourceRange) visit;
+    ук context;
+    CXVisitorResult function(ук context, CXCursor, CXSourceRange) visit;
 }
 
 enum CXResult
@@ -5964,31 +5964,31 @@ CXResult clang_findIncludesInFile(
 /**
  * The client's data object that is associated with a CXFile.
  */
-alias void* CXIdxClientFile;
+alias ук CXIdxClientFile;
 
 /**
  * The client's data object that is associated with a semantic entity.
  */
-alias void* CXIdxClientEntity;
+alias ук CXIdxClientEntity;
 
 /**
  * The client's data object that is associated with a semantic container
  * of entities.
  */
-alias void* CXIdxClientContainer;
+alias ук CXIdxClientContainer;
 
 /**
  * The client's data object that is associated with an AST file (PCH
  * or module).
  */
-alias void* CXIdxClientASTFile;
+alias ук CXIdxClientASTFile;
 
 /**
  * Source location passed to index callbacks.
  */
 struct CXIdxLoc
 {
-    void*[2] ptr_data;
+    ук[2] ptr_data;
     uint int_data;
 }
 
@@ -6004,18 +6004,18 @@ struct CXIdxIncludedFileInfo
     /**
      * Filename as written in the \#include/\#import directive.
      */
-    char* filename;
+    ткст0 filename;
     /**
      * The actual file that the \#include/\#import directive resolved to.
      */
     CXFile file;
-    int isImport;
-    int isAngled;
+    цел isImport;
+    цел isAngled;
     /**
      * Non-zero if the directive was automatically turned into a module
      * import.
      */
-    int isModuleImport;
+    цел isModuleImport;
 }
 
 /**
@@ -6039,7 +6039,7 @@ struct CXIdxImportedASTFileInfo
      * Non-zero if an inclusion directive was automatically turned into
      * a module import. Applicable only for modules.
      */
-    int isImplicit;
+    цел isImplicit;
 }
 
 enum CXIdxEntityKind
@@ -6114,18 +6114,18 @@ enum CXIdxAttrKind
 
 struct CXIdxAttrInfo
 {
-    CXIdxAttrKind kind;
+    CXIdxAttrKind вид;
     CXCursor cursor;
     CXIdxLoc loc;
 }
 
 struct CXIdxEntityInfo
 {
-    CXIdxEntityKind kind;
+    CXIdxEntityKind вид;
     CXIdxEntityCXXTemplateKind templateKind;
     CXIdxEntityLanguage lang;
-    char* name;
-    char* USR;
+    ткст0 name;
+    ткст0 USR;
     CXCursor cursor;
     CXIdxAttrInfo** attributes;
     uint numAttributes;
@@ -6160,15 +6160,15 @@ struct CXIdxDeclInfo
      * cases like out-of-line C++ member functions.
      */
     CXIdxContainerInfo* lexicalContainer;
-    int isRedeclaration;
-    int isDefinition;
-    int isContainer;
+    цел isRedeclaration;
+    цел isDefinition;
+    цел isContainer;
     CXIdxContainerInfo* declAsContainer;
     /**
      * Whether the declaration exists in code or was created implicitly
      * by the compiler, e.g. implicit Objective-C methods for properties.
      */
-    int isImplicit;
+    цел isImplicit;
     CXIdxAttrInfo** attributes;
     uint numAttributes;
 
@@ -6185,7 +6185,7 @@ enum CXIdxObjCContainerKind
 struct CXIdxObjCContainerDeclInfo
 {
     CXIdxDeclInfo* declInfo;
-    CXIdxObjCContainerKind kind;
+    CXIdxObjCContainerKind вид;
 }
 
 struct CXIdxBaseClassInfo
@@ -6282,7 +6282,7 @@ enum CXSymbolRole
  */
 struct CXIdxEntityRefInfo
 {
-    CXIdxEntityRefKind kind;
+    CXIdxEntityRefKind вид;
     /**
      * Reference cursor.
      */
@@ -6293,13 +6293,13 @@ struct CXIdxEntityRefInfo
      */
     CXIdxEntityInfo* referencedEntity;
     /**
-     * Immediate "parent" of the reference. For example:
+     * Immediate "родитель" of the reference. For example:
      *
      * \code
      * Foo *var;
      * \endcode
      *
-     * The parent of reference of type 'Foo' is the variable 'var'.
+     * The родитель of reference of тип 'Foo' is the variable 'var'.
      * For references inside statement bodies of functions/methods,
      * the parentEntity will be the function/method.
      */
@@ -6324,20 +6324,20 @@ struct IndexerCallbacks
      * Called periodically to check whether indexing should be aborted.
      * Should return 0 to continue, and non-zero to abort.
      */
-    int function(CXClientData client_data, void* reserved) abortQuery;
+    цел function(CXClientData client_data, ук reserved) abortQuery;
 
     /**
      * Called at the end of indexing; passes the complete diagnostic set.
      */
-    void function(
+    проц function(
         CXClientData client_data,
         CXDiagnosticSet,
-        void* reserved) diagnostic;
+        ук reserved) diagnostic;
 
     CXIdxClientFile function(
         CXClientData client_data,
         CXFile mainFile,
-        void* reserved) enteredMainFile;
+        ук reserved) enteredMainFile;
 
     /**
      * Called when a file gets \#included/\#imported.
@@ -6363,21 +6363,21 @@ struct IndexerCallbacks
      */
     CXIdxClientContainer function(
         CXClientData client_data,
-        void* reserved) startedTranslationUnit;
+        ук reserved) startedTranslationUnit;
 
-    void function(
+    проц function(
         CXClientData client_data,
         CXIdxDeclInfo*) indexDeclaration;
 
     /**
      * Called to index a reference of an entity.
      */
-    void function(
+    проц function(
         CXClientData client_data,
         CXIdxEntityRefInfo*) indexEntityReference;
 }
 
-int clang_index_isEntityObjCContainerKind(CXIdxEntityKind);
+цел clang_index_isEntityObjCContainerKind(CXIdxEntityKind);
 CXIdxObjCContainerDeclInfo* clang_index_getObjCContainerDeclInfo(
     CXIdxDeclInfo*);
 
@@ -6409,7 +6409,7 @@ CXIdxClientContainer clang_index_getClientContainer(CXIdxContainerInfo*);
  * For setting a custom CXIdxClientContainer attached to a
  * container.
  */
-void clang_index_setClientContainer(
+проц clang_index_setClientContainer(
     CXIdxContainerInfo*,
     CXIdxClientContainer);
 
@@ -6421,13 +6421,13 @@ CXIdxClientEntity clang_index_getClientEntity(CXIdxEntityInfo*);
 /**
  * For setting a custom CXIdxClientEntity attached to an entity.
  */
-void clang_index_setClientEntity(CXIdxEntityInfo*, CXIdxClientEntity);
+проц clang_index_setClientEntity(CXIdxEntityInfo*, CXIdxClientEntity);
 
 /**
  * An indexing action/session, to be applied to one or multiple
  * translation units.
  */
-alias void* CXIndexAction;
+alias ук CXIndexAction;
 
 /**
  * An indexing action/session, to be applied to one or multiple
@@ -6443,7 +6443,7 @@ CXIndexAction clang_IndexAction_create(CXIndex CIdx);
  * The index action must not be destroyed until all of the translation units
  * created within that index action have been destroyed.
  */
-void clang_IndexAction_dispose(CXIndexAction);
+проц clang_IndexAction_dispose(CXIndexAction);
 
 enum CXIndexOptFlags
 {
@@ -6509,15 +6509,15 @@ enum CXIndexOptFlags
  *
  * The rest of the parameters are the same as #clang_parseTranslationUnit.
  */
-int clang_indexSourceFile(
+цел clang_indexSourceFile(
     CXIndexAction,
     CXClientData client_data,
     IndexerCallbacks* index_callbacks,
     uint index_callbacks_size,
     uint index_options,
-    char* source_filename,
-   char** command_line_args,
-    int num_command_line_args,
+    ткст0 source_filename,
+   сим** command_line_args,
+    цел num_command_line_args,
     CXUnsavedFile* unsaved_files,
     uint num_unsaved_files,
     CXTranslationUnit* out_TU,
@@ -6528,15 +6528,15 @@ int clang_indexSourceFile(
  * for \c command_line_args including argv[0]. This is useful if the standard
  * library paths are relative to the binary.
  */
-int clang_indexSourceFileFullArgv(
+цел clang_indexSourceFileFullArgv(
     CXIndexAction,
     CXClientData client_data,
     IndexerCallbacks* index_callbacks,
     uint index_callbacks_size,
     uint index_options,
-    char* source_filename,
-   char** command_line_args,
-    int num_command_line_args,
+    ткст0 source_filename,
+   сим** command_line_args,
+    цел num_command_line_args,
     CXUnsavedFile* unsaved_files,
     uint num_unsaved_files,
     CXTranslationUnit* out_TU,
@@ -6558,7 +6558,7 @@ int clang_indexSourceFileFullArgv(
  * \returns If there is a failure from which there is no recovery, returns
  * non-zero, otherwise returns 0.
  */
-int clang_indexTranslationUnit(
+цел clang_indexTranslationUnit(
     CXIndexAction,
     CXClientData client_data,
     IndexerCallbacks* index_callbacks,
@@ -6574,7 +6574,7 @@ int clang_indexTranslationUnit(
  * location of the macro expansion and if it refers into a macro argument
  * retrieves the location of the argument.
  */
-void clang_indexLoc_getFileLocation(
+проц clang_indexLoc_getFileLocation(
     CXIdxLoc loc,
     CXIdxClientFile* indexFile,
     CXFile* file,
@@ -6603,14 +6603,14 @@ alias CXVisitorResult function(
     CXClientData client_data) CXFieldVisitor;
 
 /**
- * Visit the fields of a particular type.
+ * Visit the fields of a particular тип.
  *
  * This function visits all the direct fields of the given cursor,
  * invoking the given \p visitor function with the cursors of each
  * visited field. The traversal may be ended prematurely, if
  * the visitor returns \c CXFieldVisit_Break.
  *
- * \param T the record type whose field may be visited.
+ * \param T the record тип whose field may be visited.
  *
  * \param visitor the visitor function that will be invoked for each
  * field of \p T.

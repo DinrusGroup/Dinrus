@@ -1,4 +1,4 @@
-/*==-- clang-c/Documentation.h - Utilities for comment processing -*- C -*-===*\
+/*==-- clang-c/Documentation.h - Utilities for ??????? processing -*- C -*-===*\
 |*                                                                            *|
 |*                     The LLVM Compiler Infrastructure                       *|
 |*                                                                            *|
@@ -30,30 +30,30 @@ extern (C):
  */
 
 /**
- * A parsed comment.
+ * A parsed ???????.
  */
 struct CXComment
 {
-    void* ASTNode;
+    ук ASTNode;
     CXTranslationUnit TranslationUnit;
 }
 
 /**
  * Given a cursor that represents a documentable entity (e.g.,
- * declaration), return the associated parsed comment as a
+ * declaration), return the associated parsed ??????? as a
  * \c CXComment_FullComment AST node.
  */
 CXComment clang_Cursor_getParsedComment(CXCursor C);
 
 /**
- * Describes the type of the comment AST node (\c CXComment).  A comment
+ * Describes the ??? of the ??????? AST node (\c CXComment).  A ???????
  * node can be considered block content (e. g., paragraph), inline content
  * (plain text) or neither (the root AST node).
  */
 enum CXCommentKind
 {
     /**
-     * Null comment.  No AST node is constructed at the requested location
+     * Null ???????.  No AST node is constructed at the requested location
      * because there is no text or a syntax error.
      */
     null_ = 0,
@@ -92,7 +92,7 @@ enum CXCommentKind
     htmlEndTag = 4,
 
     /**
-     * A paragraph, contains inline comment.  The paragraph itself is
+     * A paragraph, contains inline ???????.  The paragraph itself is
      * block content.
      */
     paragraph = 5,
@@ -153,7 +153,7 @@ enum CXCommentKind
     verbatimLine = 11,
 
     /**
-     * A full comment attached to a declaration, contains block content.
+     * A full ??????? attached to a declaration, contains block content.
      */
     fullComment = 12
 }
@@ -208,21 +208,21 @@ enum CXCommentParamPassDirection
 }
 
 /**
- * \param Comment AST node of any kind.
+ * \param Comment AST node of any ???.
  *
- * \returns the type of the AST node.
+ * \returns the ??? of the AST node.
  */
 CXCommentKind clang_Comment_getKind(CXComment Comment);
 
 /**
- * \param Comment AST node of any kind.
+ * \param Comment AST node of any ???.
  *
  * \returns number of children of the AST node.
  */
 uint clang_Comment_getNumChildren(CXComment Comment);
 
 /**
- * \param Comment AST node of any kind.
+ * \param Comment AST node of any ???.
  *
  * \param ChildIdx child index (zero-based).
  *
@@ -243,7 +243,7 @@ uint clang_Comment_isWhitespace(CXComment Comment);
 
 /**
  * \returns non-zero if \c Comment is inline content and has a newline
- * immediately following it in the comment text.  Newlines between paragraphs
+ * immediately following it in the ??????? text.  Newlines between paragraphs
  * do not count.
  */
 uint clang_InlineContentComment_hasTrailingNewline(CXComment Comment);
@@ -385,7 +385,7 @@ uint clang_ParamCommandComment_getParamIndex(CXComment Comment);
  * \param Comment a \c CXComment_ParamCommand AST node.
  *
  * \returns non-zero if parameter passing direction was specified explicitly in
- * the comment.
+ * the ???????.
  */
 uint clang_ParamCommandComment_isDirectionExplicit(CXComment Comment);
 
@@ -423,7 +423,7 @@ uint clang_TParamCommandComment_isParamPositionValid(CXComment Comment);
  * For example,
  * \verbatim
  *     template<typename C, template<typename T> class TT>
- *     void test(TT<int> aaa);
+ *     ???? test(TT<???> aaa);
  * \endverbatim
  * for C and TT nesting depth is 0,
  * for T nesting depth is 1.
@@ -439,7 +439,7 @@ uint clang_TParamCommandComment_getDepth(CXComment Comment);
  * For example,
  * \verbatim
  *     template<typename C, template<typename T> class TT>
- *     void test(TT<int> aaa);
+ *     ???? test(TT<???> aaa);
  * \endverbatim
  * for C and TT nesting depth is 0, so we can ask for index at depth 0:
  * at depth 0 C's index is 0, TT's index is 1.
@@ -465,17 +465,17 @@ CXString clang_VerbatimBlockLineComment_getText(CXComment Comment);
 CXString clang_VerbatimLineComment_getText(CXComment Comment);
 
 /**
- * Convert an HTML tag AST node to string.
+ * Convert an HTML tag AST node to ????.
  *
  * \param Comment a \c CXComment_HTMLStartTag or \c CXComment_HTMLEndTag AST
  * node.
  *
- * \returns string containing an HTML tag.
+ * \returns ???? containing an HTML tag.
  */
 CXString clang_HTMLTagComment_getAsString(CXComment Comment);
 
 /**
- * Convert a given full parsed comment to an HTML fragment.
+ * Convert a given full parsed ??????? to an HTML fragment.
  *
  * Specific details of HTML layout are subject to change.  Don't try to parse
  * this HTML back into an AST, use other APIs instead.
@@ -497,25 +497,25 @@ CXString clang_HTMLTagComment_getAsString(CXComment Comment);
  * \li "tparam-name-index-NUMBER" for parameter name (\<dt\>);
  * \li "tparam-descr-index-NUMBER" for parameter description (\<dd\>);
  * \li "tparam-name-index-other" and "tparam-descr-index-other" are used for
- * names inside template template parameters;
+ * ????? inside template template parameters;
  * \li "tparam-name-index-invalid" and "tparam-descr-index-invalid" are used if
  * parameter position is invalid.
  *
  * \param Comment a \c CXComment_FullComment AST node.
  *
- * \returns string containing an HTML fragment.
+ * \returns ???? containing an HTML fragment.
  */
 CXString clang_FullComment_getAsHTML(CXComment Comment);
 
 /**
- * Convert a given full parsed comment to an XML document.
+ * Convert a given full parsed ??????? to an XML document.
  *
- * A Relax NG schema for the XML can be found in comment-xml-schema.rng file
+ * A Relax NG schema for the XML can be found in ???????-xml-schema.rng file
  * inside clang source tree.
  *
  * \param Comment a \c CXComment_FullComment AST node.
  *
- * \returns string containing an XML document.
+ * \returns ???? containing an XML document.
  */
 CXString clang_FullComment_getAsXML(CXComment Comment);
 

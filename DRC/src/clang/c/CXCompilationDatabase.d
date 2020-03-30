@@ -31,7 +31,7 @@ extern (C):
  *
  * Must be freed by \c clang_CompilationDatabase_dispose
  */
-alias void* CXCompilationDatabase;
+alias ук CXCompilationDatabase;
 
 /**
  * Contains the results of a search in the compilation database
@@ -42,12 +42,12 @@ alias void* CXCompilationDatabase;
  * commands is wrapped in this opaque data structure. It must be freed by
  * \c clang_CompileCommands_dispose.
  */
-alias void* CXCompileCommands;
+alias ук CXCompileCommands;
 
 /**
  * Represents the command line invocation to compile a specific file.
  */
-alias void* CXCompileCommand;
+alias ук CXCompileCommand;
 
 /**
  * Error codes for Compilation Database
@@ -73,13 +73,13 @@ enum CXCompilationDatabase_Error
  * It must be freed by \c clang_CompilationDatabase_dispose.
  */
 CXCompilationDatabase clang_CompilationDatabase_fromDirectory(
-    char* BuildDir,
+    ткст0 BuildDir,
     CXCompilationDatabase_Error* ErrorCode);
 
 /**
  * Free the given compilation database
  */
-void clang_CompilationDatabase_dispose(CXCompilationDatabase);
+проц clang_CompilationDatabase_dispose(CXCompilationDatabase);
 
 /**
  * Find the compile commands used for a file. The compile commands
@@ -87,7 +87,7 @@ void clang_CompilationDatabase_dispose(CXCompilationDatabase);
  */
 CXCompileCommands clang_CompilationDatabase_getCompileCommands(
     CXCompilationDatabase,
-    char* CompleteFileName);
+    ткст0 CompleteFileName);
 
 /**
  * Get all the compile commands in the given compilation database.
@@ -98,7 +98,7 @@ CXCompileCommands clang_CompilationDatabase_getAllCompileCommands(
 /**
  * Free the given CompileCommands
  */
-void clang_CompileCommands_dispose(CXCompileCommands);
+проц clang_CompileCommands_dispose(CXCompileCommands);
 
 /**
  * Get the number of CompileCommand we have for a file

@@ -31,7 +31,7 @@ enum CXErrorCode
     /**
      * A generic error code, no further details are available.
      *
-     * Errors of this kind can get their own specific error codes in future
+     * Errors of this вид can get their own specific error codes in future
      * libclang versions.
      */
     failure = 1,
